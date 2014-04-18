@@ -44,10 +44,40 @@ public class ApiTest {
   }
 
   @Test
+  public void shouldCreateAGetTracksUrl() {
+    Api api = Api.DEFAULT_API;
+    Request request = api.track().id("6hDH3YWFdcUNQjubYztIsG","2IA4WEsWAYpV9eKkwR2UYv").build();
+    assertEquals("https://api.spotify.com:80/v1/tracks", request.toString());
+    assertHasParameter(request.toUrl(), "ids", "6hDH3YWFdcUNQjubYztIsG,2IA4WEsWAYpV9eKkwR2UYv");
+  }
+
+  @Test
+  public void shouldCreateAGetArtistsUrl() {
+    Api api = Api.DEFAULT_API;
+    Request request = api.track().id("4AK6F7OLvEQ5QYCBNiQWHq","6rEzedK7cKWjeQWdAYvWVG").build();
+    assertEquals("https://api.spotify.com:80/v1/tracks", request.toString());
+    assertHasParameter(request.toUrl(), "ids", "4AK6F7OLvEQ5QYCBNiQWHq,6rEzedK7cKWjeQWdAYvWVG");
+  }
+
+  @Test
   public void shouldModifySchemeInUrl() {
     Api api = Api.builder().scheme(Scheme.HTTP).build();
     Request request = api.album().id("5oEljuMoe9MXH6tBIPbd5e").build();
     assertEquals("http://api.spotify.com:80/v1/albums/5oEljuMoe9MXH6tBIPbd5e", request.toString());
+  }
+
+  @Test
+  public void shouldModifyPortInUrl() {
+    Api api = Api.builder().port(8080).build();
+    Request request = api.album().id("5oEljuMoe9MXH6tBIPbd5e").build();
+    assertEquals("https://api.spotify.com:8080/v1/albums/5oEljuMoe9MXH6tBIPbd5e", request.toString());
+  }
+
+  @Test
+  public void shouldModifyHostInUrl() {
+    Api api = Api.builder().host("www.michaelthelin.se").build();
+    Request request = api.album().id("5oEljuMoe9MXH6tBIPbd5e").build();
+    assertEquals("https://www.michaelthelin.se:80/v1/albums/5oEljuMoe9MXH6tBIPbd5e", request.toString());
   }
 
   void assertHasParameter(Url url, String name, Object value) {
