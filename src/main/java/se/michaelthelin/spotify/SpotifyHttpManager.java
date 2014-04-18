@@ -1,19 +1,21 @@
 package se.michaelthelin.spotify;
 
+import org.apache.commons.httpclient.HttpConnectionManager;
+import org.apache.commons.httpclient.MultiThreadedHttpConnectionManager;
+
 public class SpotifyHttpManager implements HttpManager {
 
-  public static Builder builder() {
-    return new Builder();
-  }
+  private HttpConnectionManager connectionManager = null;
 
-  @Override
-  public boolean hasCredentials() {
-    throw new RuntimeException("Not implemented");
-  }
-
-  @Override
-  public void clearCredentials() {
-    throw new RuntimeException("Not implemented");
+  /**
+   * Construct a new SpotifyHttpManager instance.
+   */
+  public SpotifyHttpManager(Builder builder) {
+    if (builder.connectionManager != null) {
+      connectionManager = builder.connectionManager;
+    } else {
+      connectionManager = new MultiThreadedHttpConnectionManager();
+    }
   }
 
   @Override
@@ -36,7 +38,19 @@ public class SpotifyHttpManager implements HttpManager {
     throw new RuntimeException("Not implemented");
   }
 
+  public static Builder builder() {
+    return new Builder();
+  }
+
   public static class Builder {
+
+    private HttpConnectionManager connectionManager = null;
+
+    public Builder() {}
+
+    public SpotifyHttpManager build() {
+      return new SpotifyHttpManager(this);
+    }
 
   }
 

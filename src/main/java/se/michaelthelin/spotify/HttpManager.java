@@ -7,10 +7,6 @@ import se.michaelthelin.spotify.UtilProtos.Url;
  */
 public interface HttpManager {
 
-  boolean hasCredentials();
-
-  void clearCredentials();
-
   /**
    * Perform an HTTP GET request to the specified URL.
    *
