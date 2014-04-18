@@ -1,10 +1,7 @@
 package se.michaelthelin.spotify;
 
 import se.michaelthelin.spotify.UtilProtos.Url.Scheme;
-import se.michaelthelin.spotify.methods.AlbumRequest;
-import se.michaelthelin.spotify.methods.ArtistRequest;
-import se.michaelthelin.spotify.methods.Request;
-import se.michaelthelin.spotify.methods.TrackRequest;
+import se.michaelthelin.spotify.methods.*;
 
 /**
  * Instances of the Api class provide access to the Spotify Web API.
@@ -79,6 +76,12 @@ public class Api {
 
   public TrackRequest.Builder track() {
     TrackRequest.Builder builder = TrackRequest.builder();
+    setDefaults(builder);
+    return builder;
+  }
+
+  public SearchRequest.Builder search() {
+    SearchRequest.Builder builder = SearchRequest.builder();
     setDefaults(builder);
     return builder;
   }

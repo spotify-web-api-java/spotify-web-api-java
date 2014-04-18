@@ -103,6 +103,14 @@ public class ApiTest {
   }
 
   @Test
+  public void shouldCreateSearchUrl() {
+    Api api = Api.DEFAULT_API;
+    Request request = api.search().query("moulat swalf").build();
+    assertEquals("https://api.spotify.com:80/v1/search", request.toString());
+    assertHasParameter(request.toUrl(), "q", "moulat+swalf");
+  }
+
+  @Test
   public void shouldModifySchemeInUrl() {
     Api api = Api.builder().scheme(Scheme.HTTP).build();
     Request request = api.album().id("5oEljuMoe9MXH6tBIPbd5e").build();
