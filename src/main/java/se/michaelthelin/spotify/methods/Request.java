@@ -10,9 +10,9 @@ public interface Request {
     Builder host(String host);
     Builder port(int port);
     Builder scheme(Url.Scheme scheme);
-    Builder version(String defaultVersion);
     Request build();
   }
 
   Url toUrl();
+
 }

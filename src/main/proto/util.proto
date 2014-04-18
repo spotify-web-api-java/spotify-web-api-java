@@ -7,10 +7,9 @@ message Url {
   required Scheme scheme = 1;
   required string host = 2;
   required int32 port = 3;
-  required string version = 4;
-  required string path = 5;
-  repeated Parameter parameters = 6;
-  repeated Part parts = 7;
+  required string path = 4;
+  repeated Parameter parameters = 5;
+  repeated Part parts = 6;
 
   enum Scheme {
     HTTP = 0;

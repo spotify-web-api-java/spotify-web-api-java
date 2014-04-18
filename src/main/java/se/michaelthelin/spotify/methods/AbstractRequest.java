@@ -2,6 +2,7 @@ package se.michaelthelin.spotify.methods;
 
 import se.michaelthelin.spotify.Api;
 import se.michaelthelin.spotify.HttpManager;
+import se.michaelthelin.spotify.UrlUtil;
 import se.michaelthelin.spotify.UtilProtos.Url;
 
 import java.util.ArrayList;
@@ -13,11 +14,18 @@ public abstract class AbstractRequest implements Request {
 
   private HttpManager httpManager;
 
-  protected AbstractRequest(Builder<?> builder) {
+  public Url toUrl() {
+    return url;
+  }
+
+  public String toString() {
+    return UrlUtil.assemble(url);
+  }
+
+  AbstractRequest(Builder<?> builder) {
     assert (builder.path != null);
     assert (builder.host != null);
     assert (builder.port > 0);
-    assert (builder.version != null);
     assert (builder.scheme != null);
     assert (builder.parameters != null);
     assert (builder.parts != null);
@@ -32,27 +40,17 @@ public abstract class AbstractRequest implements Request {
              .setScheme(builder.scheme)
              .setHost(builder.host)
              .setPort(builder.port)
-             .setVersion(builder.version)
              .setPath(builder.path)
              .addAllParameters(builder.parameters)
              .addAllParts(builder.parts)
              .build();
   }
 
-  public Url toUrl() {
-    return url;
-  }
-
-  public String toString() {
-    return toUrl().getHost() + toUrl().getVersion() + toUrl().getPath();
-  }
-
   public static abstract class Builder<BuilderType extends Builder<?>> implements Request.Builder {
 
+    protected Url.Scheme scheme = Api.DEFAULT_SCHEME;
     protected String host = Api.DEFAULT_HOST;
     protected int port = Api.DEFAULT_PORT;
-    protected Url.Scheme scheme = Api.DEFAULT_SCHEME;
-    protected String version = Api.DEFAULT_VERSION;
     protected String path = null;
     protected HttpManager httpManager;
     protected List<Url.Parameter> parameters = new ArrayList<Url.Parameter>();
@@ -78,19 +76,20 @@ public abstract class AbstractRequest implements Request {
       return (BuilderType) this;
     }
 
-    public BuilderType version(String version) {
-      this.version = version;
-      return (BuilderType) this;
-    }
-
     public BuilderType parameter(String name, String value) {
-      assert (null != null);
+      assert (name != null);
       assert (name.length() > 0);
       assert (value != null);
 
       Url.Parameter parameter = Url.Parameter.newBuilder().setName(name).setValue(value).build();
       parameters.add(parameter);
 
+      return (BuilderType) this;
+    }
+
+    public BuilderType part(Url.Part part) {
+      assert (part != null);
+      parts.add(part);
       return (BuilderType) this;
     }
 

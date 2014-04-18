@@ -46,82 +46,67 @@ public final class UtilProtos {
      */
     int getPort();
 
-    // required string version = 4;
+    // required string path = 4;
     /**
-     * <code>required string version = 4;</code>
-     */
-    boolean hasVersion();
-    /**
-     * <code>required string version = 4;</code>
-     */
-    java.lang.String getVersion();
-    /**
-     * <code>required string version = 4;</code>
-     */
-    com.google.protobuf.ByteString
-        getVersionBytes();
-
-    // required string path = 5;
-    /**
-     * <code>required string path = 5;</code>
+     * <code>required string path = 4;</code>
      */
     boolean hasPath();
     /**
-     * <code>required string path = 5;</code>
+     * <code>required string path = 4;</code>
      */
     java.lang.String getPath();
     /**
-     * <code>required string path = 5;</code>
+     * <code>required string path = 4;</code>
      */
     com.google.protobuf.ByteString
         getPathBytes();
 
-    // repeated .spotify.Url.Parameter parameters = 6;
+    // repeated .spotify.Url.Parameter parameters = 5;
     /**
-     * <code>repeated .spotify.Url.Parameter parameters = 6;</code>
+     * <code>repeated .spotify.Url.Parameter parameters = 5;</code>
      */
     java.util.List<se.michaelthelin.spotify.UtilProtos.Url.Parameter> 
         getParametersList();
     /**
-     * <code>repeated .spotify.Url.Parameter parameters = 6;</code>
+     * <code>repeated .spotify.Url.Parameter parameters = 5;</code>
      */
     se.michaelthelin.spotify.UtilProtos.Url.Parameter getParameters(int index);
     /**
-     * <code>repeated .spotify.Url.Parameter parameters = 6;</code>
+     * <code>repeated .spotify.Url.Parameter parameters = 5;</code>
      */
     int getParametersCount();
     /**
-     * <code>repeated .spotify.Url.Parameter parameters = 6;</code>
+     * <code>repeated .spotify.Url.Parameter parameters = 5;</code>
      */
     java.util.List<? extends se.michaelthelin.spotify.UtilProtos.Url.ParameterOrBuilder> 
         getParametersOrBuilderList();
     /**
-     * <code>repeated .spotify.Url.Parameter parameters = 6;</code>
+     * <code>repeated .spotify.Url.Parameter parameters = 5;</code>
      */
     se.michaelthelin.spotify.UtilProtos.Url.ParameterOrBuilder getParametersOrBuilder(
         int index);
 
-    // repeated .spotify.Url.Part parts = 7;
+    // repeated .spotify.Url.Part parts = 6;
     /**
-     * <code>repeated .spotify.Url.Part parts = 7;</code>
+     * <code>repeated .spotify.Url.Part parts = 6;</code>
      */
     java.util.List<se.michaelthelin.spotify.UtilProtos.Url.Part> 
         getPartsList();
     /**
-     * <code>repeated .spotify.Url.Part parts = 7;</code>
+     * <code>repeated .spotify.Url.Part parts = 6;</code>
      */
     se.michaelthelin.spotify.UtilProtos.Url.Part getParts(int index);
     /**
-     * <code>repeated .spotify.Url.Part parts = 7;</code>
+     * <code>repeated .spotify.Url.Part parts = 6;</code>
      */
     int getPartsCount();
     /**
-     * <code>repeated .spotify.Url.Part parts = 7;</code>
+     * <code>repeated .spotify.Url.Part parts = 6;</code>
      */
     java.util.List<? extends se.michaelthelin.spotify.UtilProtos.Url.PartOrBuilder> 
         getPartsOrBuilderList();
     /**
-     * <code>repeated .spotify.Url.Part parts = 7;</code>
+     * <code>repeated .spotify.Url.Part parts = 6;</code>
      */
     se.michaelthelin.spotify.UtilProtos.Url.PartOrBuilder getPartsOrBuilder(
         int index);
@@ -200,26 +185,21 @@ public final class UtilProtos {
             }
             case 34: {
               bitField0_ |= 0x00000008;
-              version_ = input.readBytes();
-              break;
-            }
-            case 42: {
-              bitField0_ |= 0x00000010;
               path_ = input.readBytes();
               break;
             }
-            case 50: {
-              if (!((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
+            case 42: {
+              if (!((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
                 parameters_ = new java.util.ArrayList<se.michaelthelin.spotify.UtilProtos.Url.Parameter>();
-                mutable_bitField0_ |= 0x00000020;
+                mutable_bitField0_ |= 0x00000010;
               }
               parameters_.add(input.readMessage(se.michaelthelin.spotify.UtilProtos.Url.Parameter.PARSER, extensionRegistry));
               break;
             }
-            case 58: {
-              if (!((mutable_bitField0_ & 0x00000040) == 0x00000040)) {
+            case 50: {
+              if (!((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
                 parts_ = new java.util.ArrayList<se.michaelthelin.spotify.UtilProtos.Url.Part>();
-                mutable_bitField0_ |= 0x00000040;
+                mutable_bitField0_ |= 0x00000020;
               }
               parts_.add(input.readMessage(se.michaelthelin.spotify.UtilProtos.Url.Part.PARSER, extensionRegistry));
               break;
@@ -232,10 +212,10 @@ public final class UtilProtos {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
+        if (((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
           parameters_ = java.util.Collections.unmodifiableList(parameters_);
         }
-        if (((mutable_bitField0_ & 0x00000040) == 0x00000040)) {
+        if (((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
           parts_ = java.util.Collections.unmodifiableList(parts_);
         }
         this.unknownFields = unknownFields.build();
@@ -2077,60 +2057,17 @@ public final class UtilProtos {
       return port_;
     }
 
-    // required string version = 4;
-    public static final int VERSION_FIELD_NUMBER = 4;
-    private java.lang.Object version_;
+    // required string path = 4;
+    public static final int PATH_FIELD_NUMBER = 4;
+    private java.lang.Object path_;
     /**
-     * <code>required string version = 4;</code>
+     * <code>required string path = 4;</code>
      */
-    public boolean hasVersion() {
+    public boolean hasPath() {
       return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
-     * <code>required string version = 4;</code>
-     */
-    public java.lang.String getVersion() {
-      java.lang.Object ref = version_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          version_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>required string version = 4;</code>
-     */
-    public com.google.protobuf.ByteString
-        getVersionBytes() {
-      java.lang.Object ref = version_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        version_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    // required string path = 5;
-    public static final int PATH_FIELD_NUMBER = 5;
-    private java.lang.Object path_;
-    /**
-     * <code>required string path = 5;</code>
-     */
-    public boolean hasPath() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
-    }
-    /**
-     * <code>required string path = 5;</code>
+     * <code>required string path = 4;</code>
      */
     public java.lang.String getPath() {
       java.lang.Object ref = path_;
@@ -2147,7 +2084,7 @@ public final class UtilProtos {
       }
     }
     /**
-     * <code>required string path = 5;</code>
+     * <code>required string path = 4;</code>
      */
     public com.google.protobuf.ByteString
         getPathBytes() {
@@ -2163,72 +2100,72 @@ public final class UtilProtos {
       }
     }
 
-    // repeated .spotify.Url.Parameter parameters = 6;
-    public static final int PARAMETERS_FIELD_NUMBER = 6;
+    // repeated .spotify.Url.Parameter parameters = 5;
+    public static final int PARAMETERS_FIELD_NUMBER = 5;
     private java.util.List<se.michaelthelin.spotify.UtilProtos.Url.Parameter> parameters_;
     /**
-     * <code>repeated .spotify.Url.Parameter parameters = 6;</code>
+     * <code>repeated .spotify.Url.Parameter parameters = 5;</code>
      */
     public java.util.List<se.michaelthelin.spotify.UtilProtos.Url.Parameter> getParametersList() {
       return parameters_;
     }
     /**
-     * <code>repeated .spotify.Url.Parameter parameters = 6;</code>
+     * <code>repeated .spotify.Url.Parameter parameters = 5;</code>
      */
     public java.util.List<? extends se.michaelthelin.spotify.UtilProtos.Url.ParameterOrBuilder> 
         getParametersOrBuilderList() {
       return parameters_;
     }
     /**
-     * <code>repeated .spotify.Url.Parameter parameters = 6;</code>
+     * <code>repeated .spotify.Url.Parameter parameters = 5;</code>
      */
     public int getParametersCount() {
       return parameters_.size();
     }
     /**
-     * <code>repeated .spotify.Url.Parameter parameters = 6;</code>
+     * <code>repeated .spotify.Url.Parameter parameters = 5;</code>
      */
     public se.michaelthelin.spotify.UtilProtos.Url.Parameter getParameters(int index) {
       return parameters_.get(index);
     }
     /**
-     * <code>repeated .spotify.Url.Parameter parameters = 6;</code>
+     * <code>repeated .spotify.Url.Parameter parameters = 5;</code>
      */
     public se.michaelthelin.spotify.UtilProtos.Url.ParameterOrBuilder getParametersOrBuilder(
         int index) {
       return parameters_.get(index);
     }
 
-    // repeated .spotify.Url.Part parts = 7;
-    public static final int PARTS_FIELD_NUMBER = 7;
+    // repeated .spotify.Url.Part parts = 6;
+    public static final int PARTS_FIELD_NUMBER = 6;
     private java.util.List<se.michaelthelin.spotify.UtilProtos.Url.Part> parts_;
     /**
-     * <code>repeated .spotify.Url.Part parts = 7;</code>
+     * <code>repeated .spotify.Url.Part parts = 6;</code>
      */
     public java.util.List<se.michaelthelin.spotify.UtilProtos.Url.Part> getPartsList() {
       return parts_;
     }
     /**
-     * <code>repeated .spotify.Url.Part parts = 7;</code>
+     * <code>repeated .spotify.Url.Part parts = 6;</code>
      */
     public java.util.List<? extends se.michaelthelin.spotify.UtilProtos.Url.PartOrBuilder> 
         getPartsOrBuilderList() {
       return parts_;
     }
     /**
-     * <code>repeated .spotify.Url.Part parts = 7;</code>
+     * <code>repeated .spotify.Url.Part parts = 6;</code>
      */
     public int getPartsCount() {
       return parts_.size();
     }
     /**
-     * <code>repeated .spotify.Url.Part parts = 7;</code>
+     * <code>repeated .spotify.Url.Part parts = 6;</code>
      */
     public se.michaelthelin.spotify.UtilProtos.Url.Part getParts(int index) {
       return parts_.get(index);
     }
     /**
-     * <code>repeated .spotify.Url.Part parts = 7;</code>
+     * <code>repeated .spotify.Url.Part parts = 6;</code>
      */
     public se.michaelthelin.spotify.UtilProtos.Url.PartOrBuilder getPartsOrBuilder(
         int index) {
@@ -2239,7 +2176,6 @@ public final class UtilProtos {
       scheme_ = se.michaelthelin.spotify.UtilProtos.Url.Scheme.HTTP;
       host_ = "";
       port_ = 0;
-      version_ = "";
       path_ = "";
       parameters_ = java.util.Collections.emptyList();
       parts_ = java.util.Collections.emptyList();
@@ -2258,10 +2194,6 @@ public final class UtilProtos {
         return false;
       }
       if (!hasPort()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasVersion()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -2286,16 +2218,13 @@ public final class UtilProtos {
         output.writeInt32(3, port_);
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeBytes(4, getVersionBytes());
-      }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        output.writeBytes(5, getPathBytes());
+        output.writeBytes(4, getPathBytes());
       }
       for (int i = 0; i < parameters_.size(); i++) {
-        output.writeMessage(6, parameters_.get(i));
+        output.writeMessage(5, parameters_.get(i));
       }
       for (int i = 0; i < parts_.size(); i++) {
-        output.writeMessage(7, parts_.get(i));
+        output.writeMessage(6, parts_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -2320,19 +2249,15 @@ public final class UtilProtos {
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(4, getVersionBytes());
-      }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(5, getPathBytes());
+          .computeBytesSize(4, getPathBytes());
       }
       for (int i = 0; i < parameters_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(6, parameters_.get(i));
+          .computeMessageSize(5, parameters_.get(i));
       }
       for (int i = 0; i < parts_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(7, parts_.get(i));
+          .computeMessageSize(6, parts_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -2458,19 +2383,17 @@ public final class UtilProtos {
         bitField0_ = (bitField0_ & ~0x00000002);
         port_ = 0;
         bitField0_ = (bitField0_ & ~0x00000004);
-        version_ = "";
-        bitField0_ = (bitField0_ & ~0x00000008);
         path_ = "";
-        bitField0_ = (bitField0_ & ~0x00000010);
+        bitField0_ = (bitField0_ & ~0x00000008);
         if (parametersBuilder_ == null) {
           parameters_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000020);
+          bitField0_ = (bitField0_ & ~0x00000010);
         } else {
           parametersBuilder_.clear();
         }
         if (partsBuilder_ == null) {
           parts_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000040);
+          bitField0_ = (bitField0_ & ~0x00000020);
         } else {
           partsBuilder_.clear();
         }
@@ -2517,24 +2440,20 @@ public final class UtilProtos {
         if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
           to_bitField0_ |= 0x00000008;
         }
-        result.version_ = version_;
-        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
-          to_bitField0_ |= 0x00000010;
-        }
         result.path_ = path_;
         if (parametersBuilder_ == null) {
-          if (((bitField0_ & 0x00000020) == 0x00000020)) {
+          if (((bitField0_ & 0x00000010) == 0x00000010)) {
             parameters_ = java.util.Collections.unmodifiableList(parameters_);
-            bitField0_ = (bitField0_ & ~0x00000020);
+            bitField0_ = (bitField0_ & ~0x00000010);
           }
           result.parameters_ = parameters_;
         } else {
           result.parameters_ = parametersBuilder_.build();
         }
         if (partsBuilder_ == null) {
-          if (((bitField0_ & 0x00000040) == 0x00000040)) {
+          if (((bitField0_ & 0x00000020) == 0x00000020)) {
             parts_ = java.util.Collections.unmodifiableList(parts_);
-            bitField0_ = (bitField0_ & ~0x00000040);
+            bitField0_ = (bitField0_ & ~0x00000020);
           }
           result.parts_ = parts_;
         } else {
@@ -2567,13 +2486,8 @@ public final class UtilProtos {
         if (other.hasPort()) {
           setPort(other.getPort());
         }
-        if (other.hasVersion()) {
-          bitField0_ |= 0x00000008;
-          version_ = other.version_;
-          onChanged();
-        }
         if (other.hasPath()) {
-          bitField0_ |= 0x00000010;
+          bitField0_ |= 0x00000008;
           path_ = other.path_;
           onChanged();
         }
@@ -2581,7 +2495,7 @@ public final class UtilProtos {
           if (!other.parameters_.isEmpty()) {
             if (parameters_.isEmpty()) {
               parameters_ = other.parameters_;
-              bitField0_ = (bitField0_ & ~0x00000020);
+              bitField0_ = (bitField0_ & ~0x00000010);
             } else {
               ensureParametersIsMutable();
               parameters_.addAll(other.parameters_);
@@ -2594,7 +2508,7 @@ public final class UtilProtos {
               parametersBuilder_.dispose();
               parametersBuilder_ = null;
               parameters_ = other.parameters_;
-              bitField0_ = (bitField0_ & ~0x00000020);
+              bitField0_ = (bitField0_ & ~0x00000010);
               parametersBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                    getParametersFieldBuilder() : null;
@@ -2607,7 +2521,7 @@ public final class UtilProtos {
           if (!other.parts_.isEmpty()) {
             if (parts_.isEmpty()) {
               parts_ = other.parts_;
-              bitField0_ = (bitField0_ & ~0x00000040);
+              bitField0_ = (bitField0_ & ~0x00000020);
             } else {
               ensurePartsIsMutable();
               parts_.addAll(other.parts_);
@@ -2620,7 +2534,7 @@ public final class UtilProtos {
               partsBuilder_.dispose();
               partsBuilder_ = null;
               parts_ = other.parts_;
-              bitField0_ = (bitField0_ & ~0x00000040);
+              bitField0_ = (bitField0_ & ~0x00000020);
               partsBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                    getPartsFieldBuilder() : null;
@@ -2643,10 +2557,6 @@ public final class UtilProtos {
           return false;
         }
         if (!hasPort()) {
-          
-          return false;
-        }
-        if (!hasVersion()) {
           
           return false;
         }
@@ -2819,90 +2729,16 @@ public final class UtilProtos {
         return this;
       }
 
-      // required string version = 4;
-      private java.lang.Object version_ = "";
+      // required string path = 4;
+      private java.lang.Object path_ = "";
       /**
-       * <code>required string version = 4;</code>
+       * <code>required string path = 4;</code>
        */
-      public boolean hasVersion() {
+      public boolean hasPath() {
         return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
-       * <code>required string version = 4;</code>
-       */
-      public java.lang.String getVersion() {
-        java.lang.Object ref = version_;
-        if (!(ref instanceof java.lang.String)) {
-          java.lang.String s = ((com.google.protobuf.ByteString) ref)
-              .toStringUtf8();
-          version_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>required string version = 4;</code>
-       */
-      public com.google.protobuf.ByteString
-          getVersionBytes() {
-        java.lang.Object ref = version_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          version_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>required string version = 4;</code>
-       */
-      public Builder setVersion(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000008;
-        version_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required string version = 4;</code>
-       */
-      public Builder clearVersion() {
-        bitField0_ = (bitField0_ & ~0x00000008);
-        version_ = getDefaultInstance().getVersion();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required string version = 4;</code>
-       */
-      public Builder setVersionBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000008;
-        version_ = value;
-        onChanged();
-        return this;
-      }
-
-      // required string path = 5;
-      private java.lang.Object path_ = "";
-      /**
-       * <code>required string path = 5;</code>
-       */
-      public boolean hasPath() {
-        return ((bitField0_ & 0x00000010) == 0x00000010);
-      }
-      /**
-       * <code>required string path = 5;</code>
+       * <code>required string path = 4;</code>
        */
       public java.lang.String getPath() {
         java.lang.Object ref = path_;
@@ -2916,7 +2752,7 @@ public final class UtilProtos {
         }
       }
       /**
-       * <code>required string path = 5;</code>
+       * <code>required string path = 4;</code>
        */
       public com.google.protobuf.ByteString
           getPathBytes() {
@@ -2932,48 +2768,48 @@ public final class UtilProtos {
         }
       }
       /**
-       * <code>required string path = 5;</code>
+       * <code>required string path = 4;</code>
        */
       public Builder setPath(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000010;
+  bitField0_ |= 0x00000008;
         path_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required string path = 5;</code>
+       * <code>required string path = 4;</code>
        */
       public Builder clearPath() {
-        bitField0_ = (bitField0_ & ~0x00000010);
+        bitField0_ = (bitField0_ & ~0x00000008);
         path_ = getDefaultInstance().getPath();
         onChanged();
         return this;
       }
       /**
-       * <code>required string path = 5;</code>
+       * <code>required string path = 4;</code>
        */
       public Builder setPathBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000010;
+  bitField0_ |= 0x00000008;
         path_ = value;
         onChanged();
         return this;
       }
 
-      // repeated .spotify.Url.Parameter parameters = 6;
+      // repeated .spotify.Url.Parameter parameters = 5;
       private java.util.List<se.michaelthelin.spotify.UtilProtos.Url.Parameter> parameters_ =
         java.util.Collections.emptyList();
       private void ensureParametersIsMutable() {
-        if (!((bitField0_ & 0x00000020) == 0x00000020)) {
+        if (!((bitField0_ & 0x00000010) == 0x00000010)) {
           parameters_ = new java.util.ArrayList<se.michaelthelin.spotify.UtilProtos.Url.Parameter>(parameters_);
-          bitField0_ |= 0x00000020;
+          bitField0_ |= 0x00000010;
          }
       }
 
@@ -2981,7 +2817,7 @@ public final class UtilProtos {
           se.michaelthelin.spotify.UtilProtos.Url.Parameter, se.michaelthelin.spotify.UtilProtos.Url.Parameter.Builder, se.michaelthelin.spotify.UtilProtos.Url.ParameterOrBuilder> parametersBuilder_;
 
       /**
-       * <code>repeated .spotify.Url.Parameter parameters = 6;</code>
+       * <code>repeated .spotify.Url.Parameter parameters = 5;</code>
        */
       public java.util.List<se.michaelthelin.spotify.UtilProtos.Url.Parameter> getParametersList() {
         if (parametersBuilder_ == null) {
@@ -2991,7 +2827,7 @@ public final class UtilProtos {
         }
       }
       /**
-       * <code>repeated .spotify.Url.Parameter parameters = 6;</code>
+       * <code>repeated .spotify.Url.Parameter parameters = 5;</code>
        */
       public int getParametersCount() {
         if (parametersBuilder_ == null) {
@@ -3001,7 +2837,7 @@ public final class UtilProtos {
         }
       }
       /**
-       * <code>repeated .spotify.Url.Parameter parameters = 6;</code>
+       * <code>repeated .spotify.Url.Parameter parameters = 5;</code>
        */
       public se.michaelthelin.spotify.UtilProtos.Url.Parameter getParameters(int index) {
         if (parametersBuilder_ == null) {
@@ -3011,7 +2847,7 @@ public final class UtilProtos {
         }
       }
       /**
-       * <code>repeated .spotify.Url.Parameter parameters = 6;</code>
+       * <code>repeated .spotify.Url.Parameter parameters = 5;</code>
        */
       public Builder setParameters(
           int index, se.michaelthelin.spotify.UtilProtos.Url.Parameter value) {
@@ -3028,7 +2864,7 @@ public final class UtilProtos {
         return this;
       }
       /**
-       * <code>repeated .spotify.Url.Parameter parameters = 6;</code>
+       * <code>repeated .spotify.Url.Parameter parameters = 5;</code>
        */
       public Builder setParameters(
           int index, se.michaelthelin.spotify.UtilProtos.Url.Parameter.Builder builderForValue) {
@@ -3042,7 +2878,7 @@ public final class UtilProtos {
         return this;
       }
       /**
-       * <code>repeated .spotify.Url.Parameter parameters = 6;</code>
+       * <code>repeated .spotify.Url.Parameter parameters = 5;</code>
        */
       public Builder addParameters(se.michaelthelin.spotify.UtilProtos.Url.Parameter value) {
         if (parametersBuilder_ == null) {
@@ -3058,7 +2894,7 @@ public final class UtilProtos {
         return this;
       }
       /**
-       * <code>repeated .spotify.Url.Parameter parameters = 6;</code>
+       * <code>repeated .spotify.Url.Parameter parameters = 5;</code>
        */
       public Builder addParameters(
           int index, se.michaelthelin.spotify.UtilProtos.Url.Parameter value) {
@@ -3075,7 +2911,7 @@ public final class UtilProtos {
         return this;
       }
       /**
-       * <code>repeated .spotify.Url.Parameter parameters = 6;</code>
+       * <code>repeated .spotify.Url.Parameter parameters = 5;</code>
        */
       public Builder addParameters(
           se.michaelthelin.spotify.UtilProtos.Url.Parameter.Builder builderForValue) {
@@ -3089,7 +2925,7 @@ public final class UtilProtos {
         return this;
       }
       /**
-       * <code>repeated .spotify.Url.Parameter parameters = 6;</code>
+       * <code>repeated .spotify.Url.Parameter parameters = 5;</code>
        */
       public Builder addParameters(
           int index, se.michaelthelin.spotify.UtilProtos.Url.Parameter.Builder builderForValue) {
@@ -3103,7 +2939,7 @@ public final class UtilProtos {
         return this;
       }
       /**
-       * <code>repeated .spotify.Url.Parameter parameters = 6;</code>
+       * <code>repeated .spotify.Url.Parameter parameters = 5;</code>
        */
       public Builder addAllParameters(
           java.lang.Iterable<? extends se.michaelthelin.spotify.UtilProtos.Url.Parameter> values) {
@@ -3117,12 +2953,12 @@ public final class UtilProtos {
         return this;
       }
       /**
-       * <code>repeated .spotify.Url.Parameter parameters = 6;</code>
+       * <code>repeated .spotify.Url.Parameter parameters = 5;</code>
        */
       public Builder clearParameters() {
         if (parametersBuilder_ == null) {
           parameters_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000020);
+          bitField0_ = (bitField0_ & ~0x00000010);
           onChanged();
         } else {
           parametersBuilder_.clear();
@@ -3130,7 +2966,7 @@ public final class UtilProtos {
         return this;
       }
       /**
-       * <code>repeated .spotify.Url.Parameter parameters = 6;</code>
+       * <code>repeated .spotify.Url.Parameter parameters = 5;</code>
        */
       public Builder removeParameters(int index) {
         if (parametersBuilder_ == null) {
@@ -3143,14 +2979,14 @@ public final class UtilProtos {
         return this;
       }
       /**
-       * <code>repeated .spotify.Url.Parameter parameters = 6;</code>
+       * <code>repeated .spotify.Url.Parameter parameters = 5;</code>
        */
       public se.michaelthelin.spotify.UtilProtos.Url.Parameter.Builder getParametersBuilder(
           int index) {
         return getParametersFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .spotify.Url.Parameter parameters = 6;</code>
+       * <code>repeated .spotify.Url.Parameter parameters = 5;</code>
        */
       public se.michaelthelin.spotify.UtilProtos.Url.ParameterOrBuilder getParametersOrBuilder(
           int index) {
@@ -3160,7 +2996,7 @@ public final class UtilProtos {
         }
       }
       /**
-       * <code>repeated .spotify.Url.Parameter parameters = 6;</code>
+       * <code>repeated .spotify.Url.Parameter parameters = 5;</code>
        */
       public java.util.List<? extends se.michaelthelin.spotify.UtilProtos.Url.ParameterOrBuilder> 
            getParametersOrBuilderList() {
@@ -3171,14 +3007,14 @@ public final class UtilProtos {
         }
       }
       /**
-       * <code>repeated .spotify.Url.Parameter parameters = 6;</code>
+       * <code>repeated .spotify.Url.Parameter parameters = 5;</code>
        */
       public se.michaelthelin.spotify.UtilProtos.Url.Parameter.Builder addParametersBuilder() {
         return getParametersFieldBuilder().addBuilder(
             se.michaelthelin.spotify.UtilProtos.Url.Parameter.getDefaultInstance());
       }
       /**
-       * <code>repeated .spotify.Url.Parameter parameters = 6;</code>
+       * <code>repeated .spotify.Url.Parameter parameters = 5;</code>
        */
       public se.michaelthelin.spotify.UtilProtos.Url.Parameter.Builder addParametersBuilder(
           int index) {
@@ -3186,7 +3022,7 @@ public final class UtilProtos {
             index, se.michaelthelin.spotify.UtilProtos.Url.Parameter.getDefaultInstance());
       }
       /**
-       * <code>repeated .spotify.Url.Parameter parameters = 6;</code>
+       * <code>repeated .spotify.Url.Parameter parameters = 5;</code>
        */
       public java.util.List<se.michaelthelin.spotify.UtilProtos.Url.Parameter.Builder> 
            getParametersBuilderList() {
@@ -3199,7 +3035,7 @@ public final class UtilProtos {
           parametersBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               se.michaelthelin.spotify.UtilProtos.Url.Parameter, se.michaelthelin.spotify.UtilProtos.Url.Parameter.Builder, se.michaelthelin.spotify.UtilProtos.Url.ParameterOrBuilder>(
                   parameters_,
-                  ((bitField0_ & 0x00000020) == 0x00000020),
+                  ((bitField0_ & 0x00000010) == 0x00000010),
                   getParentForChildren(),
                   isClean());
           parameters_ = null;
@@ -3207,13 +3043,13 @@ public final class UtilProtos {
         return parametersBuilder_;
       }
 
-      // repeated .spotify.Url.Part parts = 7;
+      // repeated .spotify.Url.Part parts = 6;
       private java.util.List<se.michaelthelin.spotify.UtilProtos.Url.Part> parts_ =
         java.util.Collections.emptyList();
       private void ensurePartsIsMutable() {
-        if (!((bitField0_ & 0x00000040) == 0x00000040)) {
+        if (!((bitField0_ & 0x00000020) == 0x00000020)) {
           parts_ = new java.util.ArrayList<se.michaelthelin.spotify.UtilProtos.Url.Part>(parts_);
-          bitField0_ |= 0x00000040;
+          bitField0_ |= 0x00000020;
          }
       }
 
@@ -3221,7 +3057,7 @@ public final class UtilProtos {
           se.michaelthelin.spotify.UtilProtos.Url.Part, se.michaelthelin.spotify.UtilProtos.Url.Part.Builder, se.michaelthelin.spotify.UtilProtos.Url.PartOrBuilder> partsBuilder_;
 
       /**
-       * <code>repeated .spotify.Url.Part parts = 7;</code>
+       * <code>repeated .spotify.Url.Part parts = 6;</code>
        */
       public java.util.List<se.michaelthelin.spotify.UtilProtos.Url.Part> getPartsList() {
         if (partsBuilder_ == null) {
@@ -3231,7 +3067,7 @@ public final class UtilProtos {
         }
       }
       /**
-       * <code>repeated .spotify.Url.Part parts = 7;</code>
+       * <code>repeated .spotify.Url.Part parts = 6;</code>
        */
       public int getPartsCount() {
         if (partsBuilder_ == null) {
@@ -3241,7 +3077,7 @@ public final class UtilProtos {
         }
       }
       /**
-       * <code>repeated .spotify.Url.Part parts = 7;</code>
+       * <code>repeated .spotify.Url.Part parts = 6;</code>
        */
       public se.michaelthelin.spotify.UtilProtos.Url.Part getParts(int index) {
         if (partsBuilder_ == null) {
@@ -3251,7 +3087,7 @@ public final class UtilProtos {
         }
       }
       /**
-       * <code>repeated .spotify.Url.Part parts = 7;</code>
+       * <code>repeated .spotify.Url.Part parts = 6;</code>
        */
       public Builder setParts(
           int index, se.michaelthelin.spotify.UtilProtos.Url.Part value) {
@@ -3268,7 +3104,7 @@ public final class UtilProtos {
         return this;
       }
       /**
-       * <code>repeated .spotify.Url.Part parts = 7;</code>
+       * <code>repeated .spotify.Url.Part parts = 6;</code>
        */
       public Builder setParts(
           int index, se.michaelthelin.spotify.UtilProtos.Url.Part.Builder builderForValue) {
@@ -3282,7 +3118,7 @@ public final class UtilProtos {
         return this;
       }
       /**
-       * <code>repeated .spotify.Url.Part parts = 7;</code>
+       * <code>repeated .spotify.Url.Part parts = 6;</code>
        */
       public Builder addParts(se.michaelthelin.spotify.UtilProtos.Url.Part value) {
         if (partsBuilder_ == null) {
@@ -3298,7 +3134,7 @@ public final class UtilProtos {
         return this;
       }
       /**
-       * <code>repeated .spotify.Url.Part parts = 7;</code>
+       * <code>repeated .spotify.Url.Part parts = 6;</code>
        */
       public Builder addParts(
           int index, se.michaelthelin.spotify.UtilProtos.Url.Part value) {
@@ -3315,7 +3151,7 @@ public final class UtilProtos {
         return this;
       }
       /**
-       * <code>repeated .spotify.Url.Part parts = 7;</code>
+       * <code>repeated .spotify.Url.Part parts = 6;</code>
        */
       public Builder addParts(
           se.michaelthelin.spotify.UtilProtos.Url.Part.Builder builderForValue) {
@@ -3329,7 +3165,7 @@ public final class UtilProtos {
         return this;
       }
       /**
-       * <code>repeated .spotify.Url.Part parts = 7;</code>
+       * <code>repeated .spotify.Url.Part parts = 6;</code>
        */
       public Builder addParts(
           int index, se.michaelthelin.spotify.UtilProtos.Url.Part.Builder builderForValue) {
@@ -3343,7 +3179,7 @@ public final class UtilProtos {
         return this;
       }
       /**
-       * <code>repeated .spotify.Url.Part parts = 7;</code>
+       * <code>repeated .spotify.Url.Part parts = 6;</code>
        */
       public Builder addAllParts(
           java.lang.Iterable<? extends se.michaelthelin.spotify.UtilProtos.Url.Part> values) {
@@ -3357,12 +3193,12 @@ public final class UtilProtos {
         return this;
       }
       /**
-       * <code>repeated .spotify.Url.Part parts = 7;</code>
+       * <code>repeated .spotify.Url.Part parts = 6;</code>
        */
       public Builder clearParts() {
         if (partsBuilder_ == null) {
           parts_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000040);
+          bitField0_ = (bitField0_ & ~0x00000020);
           onChanged();
         } else {
           partsBuilder_.clear();
@@ -3370,7 +3206,7 @@ public final class UtilProtos {
         return this;
       }
       /**
-       * <code>repeated .spotify.Url.Part parts = 7;</code>
+       * <code>repeated .spotify.Url.Part parts = 6;</code>
        */
       public Builder removeParts(int index) {
         if (partsBuilder_ == null) {
@@ -3383,14 +3219,14 @@ public final class UtilProtos {
         return this;
       }
       /**
-       * <code>repeated .spotify.Url.Part parts = 7;</code>
+       * <code>repeated .spotify.Url.Part parts = 6;</code>
        */
       public se.michaelthelin.spotify.UtilProtos.Url.Part.Builder getPartsBuilder(
           int index) {
         return getPartsFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .spotify.Url.Part parts = 7;</code>
+       * <code>repeated .spotify.Url.Part parts = 6;</code>
        */
       public se.michaelthelin.spotify.UtilProtos.Url.PartOrBuilder getPartsOrBuilder(
           int index) {
@@ -3400,7 +3236,7 @@ public final class UtilProtos {
         }
       }
       /**
-       * <code>repeated .spotify.Url.Part parts = 7;</code>
+       * <code>repeated .spotify.Url.Part parts = 6;</code>
        */
       public java.util.List<? extends se.michaelthelin.spotify.UtilProtos.Url.PartOrBuilder> 
            getPartsOrBuilderList() {
@@ -3411,14 +3247,14 @@ public final class UtilProtos {
         }
       }
       /**
-       * <code>repeated .spotify.Url.Part parts = 7;</code>
+       * <code>repeated .spotify.Url.Part parts = 6;</code>
        */
       public se.michaelthelin.spotify.UtilProtos.Url.Part.Builder addPartsBuilder() {
         return getPartsFieldBuilder().addBuilder(
             se.michaelthelin.spotify.UtilProtos.Url.Part.getDefaultInstance());
       }
       /**
-       * <code>repeated .spotify.Url.Part parts = 7;</code>
+       * <code>repeated .spotify.Url.Part parts = 6;</code>
        */
       public se.michaelthelin.spotify.UtilProtos.Url.Part.Builder addPartsBuilder(
           int index) {
@@ -3426,7 +3262,7 @@ public final class UtilProtos {
             index, se.michaelthelin.spotify.UtilProtos.Url.Part.getDefaultInstance());
       }
       /**
-       * <code>repeated .spotify.Url.Part parts = 7;</code>
+       * <code>repeated .spotify.Url.Part parts = 6;</code>
        */
       public java.util.List<se.michaelthelin.spotify.UtilProtos.Url.Part.Builder> 
            getPartsBuilderList() {
@@ -3439,7 +3275,7 @@ public final class UtilProtos {
           partsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               se.michaelthelin.spotify.UtilProtos.Url.Part, se.michaelthelin.spotify.UtilProtos.Url.Part.Builder, se.michaelthelin.spotify.UtilProtos.Url.PartOrBuilder>(
                   parts_,
-                  ((bitField0_ & 0x00000040) == 0x00000040),
+                  ((bitField0_ & 0x00000020) == 0x00000020),
                   getParentForChildren(),
                   isClean());
           parts_ = null;
@@ -3482,17 +3318,16 @@ public final class UtilProtos {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\nutil.proto\022\007spotify\"\332\002\n\003Url\022#\n\006scheme\030" +
+      "\n\nutil.proto\022\007spotify\"\311\002\n\003Url\022#\n\006scheme\030" +
       "\001 \002(\0162\023.spotify.Url.Scheme\022\014\n\004host\030\002 \002(\t" +
-      "\022\014\n\004port\030\003 \002(\005\022\017\n\007version\030\004 \002(\t\022\014\n\004path\030" +
-      "\005 \002(\t\022*\n\nparameters\030\006 \003(\0132\026.spotify.Url." +
-      "Parameter\022 \n\005parts\030\007 \003(\0132\021.spotify.Url.P" +
-      "art\032(\n\tParameter\022\014\n\004name\030\001 \001(\t\022\r\n\005value\030" +
-      "\002 \001(\t\032\\\n\004Part\022\014\n\004name\030\001 \001(\t\022\020\n\010filename\030" +
-      "\002 \001(\t\022\024\n\014content_type\030\003 \001(\t\022\017\n\007charset\030\004" +
-      " \001(\t\022\r\n\005value\030\005 \001(\014\"\035\n\006Scheme\022\010\n\004HTTP\020\000\022" +
-      "\t\n\005HTTPS\020\001B&\n\030se.michaelthelin.spotifyB\n",
-      "UtilProtos"
+      "\022\014\n\004port\030\003 \002(\005\022\014\n\004path\030\004 \002(\t\022*\n\nparamete" +
+      "rs\030\005 \003(\0132\026.spotify.Url.Parameter\022 \n\005part" +
+      "s\030\006 \003(\0132\021.spotify.Url.Part\032(\n\tParameter\022" +
+      "\014\n\004name\030\001 \001(\t\022\r\n\005value\030\002 \001(\t\032\\\n\004Part\022\014\n\004" +
+      "name\030\001 \001(\t\022\020\n\010filename\030\002 \001(\t\022\024\n\014content_" +
+      "type\030\003 \001(\t\022\017\n\007charset\030\004 \001(\t\022\r\n\005value\030\005 \001" +
+      "(\014\"\035\n\006Scheme\022\010\n\004HTTP\020\000\022\t\n\005HTTPS\020\001B&\n\030se." +
+      "michaelthelin.spotifyB\nUtilProtos"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -3504,7 +3339,7 @@ public final class UtilProtos {
           internal_static_spotify_Url_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_spotify_Url_descriptor,
-              new java.lang.String[] { "Scheme", "Host", "Port", "Version", "Path", "Parameters", "Parts", });
+              new java.lang.String[] { "Scheme", "Host", "Port", "Path", "Parameters", "Parts", });
           internal_static_spotify_Url_Parameter_descriptor =
             internal_static_spotify_Url_descriptor.getNestedTypes().get(0);
           internal_static_spotify_Url_Parameter_fieldAccessorTable = new
