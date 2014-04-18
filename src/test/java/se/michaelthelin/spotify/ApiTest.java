@@ -5,6 +5,8 @@ import se.michaelthelin.spotify.methods.Request;
 import se.michaelthelin.spotify.UtilProtos.Url.Scheme;
 import se.michaelthelin.spotify.UtilProtos.Url.Parameter;
 import se.michaelthelin.spotify.UtilProtos.Url;
+import static se.michaelthelin.spotify.SpotifyProtos.AlbumType.ALBUM;
+import static se.michaelthelin.spotify.SpotifyProtos.AlbumType.SINGLE;
 
 import static junit.framework.TestCase.assertEquals;
 import static org.junit.Assert.fail;
@@ -56,6 +58,14 @@ public class ApiTest {
     Api api = Api.DEFAULT_API;
     Request request = api.album().forArtist("4AK6F7OLvEQ5QYCBNiQWHq").build();
     assertEquals("https://api.spotify.com:80/v1/artists/4AK6F7OLvEQ5QYCBNiQWHq/albums", request.toString());
+  }
+
+  @Test
+  public void shouldHaveAlbumTypeParametersInArtistsAlbumUrl() {
+    Api api = Api.DEFAULT_API;
+    Request request = api.album().forArtist("4AK6F7OLvEQ5QYCBNiQWHq").types(ALBUM, SINGLE).build();
+    assertEquals("https://api.spotify.com:80/v1/artists/4AK6F7OLvEQ5QYCBNiQWHq/albums", request.toString());
+    assertHasParameter(request.toUrl(), "album_type", "ALBUM,SINGLE");
   }
 
   @Test

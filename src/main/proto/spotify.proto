@@ -14,3 +14,10 @@ message Artist {
 message Track {
     required string id = 1;
 }
+
+enum AlbumType {
+    ALBUM = 0;
+    SINGLE = 1;
+    COMPILATION = 2;
+    APPEARS_ON = 3;
+}

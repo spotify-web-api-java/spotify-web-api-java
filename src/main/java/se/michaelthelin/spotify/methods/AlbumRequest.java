@@ -1,6 +1,7 @@
 package se.michaelthelin.spotify.methods;
 
 import com.google.common.base.Joiner;
+import se.michaelthelin.spotify.SpotifyProtos.AlbumType;
 
 public final class AlbumRequest extends AbstractRequest {
 
@@ -41,6 +42,13 @@ public final class AlbumRequest extends AbstractRequest {
     public Builder forArtist(String id) {
       assert (id != null);
       return path(String.format("/v1/artists/%s/albums", id));
+    }
+
+    public Builder types(AlbumType... types) {
+      assert (types != null);
+      assert (types.length > 0);
+      String albumsParameter = Joiner.on(",").join(types).toString();
+      return parameter("album_type", albumsParameter);
     }
 
     public AlbumRequest build() {

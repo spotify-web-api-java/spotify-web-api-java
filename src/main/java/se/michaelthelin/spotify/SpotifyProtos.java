@@ -8,6 +8,106 @@ public final class SpotifyProtos {
   public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
   }
+  /**
+   * Protobuf enum {@code spotify.AlbumType}
+   */
+  public enum AlbumType
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>ALBUM = 0;</code>
+     */
+    ALBUM(0, 0),
+    /**
+     * <code>SINGLE = 1;</code>
+     */
+    SINGLE(1, 1),
+    /**
+     * <code>COMPILATION = 2;</code>
+     */
+    COMPILATION(2, 2),
+    /**
+     * <code>APPEARS_ON = 3;</code>
+     */
+    APPEARS_ON(3, 3),
+    ;
+
+    /**
+     * <code>ALBUM = 0;</code>
+     */
+    public static final int ALBUM_VALUE = 0;
+    /**
+     * <code>SINGLE = 1;</code>
+     */
+    public static final int SINGLE_VALUE = 1;
+    /**
+     * <code>COMPILATION = 2;</code>
+     */
+    public static final int COMPILATION_VALUE = 2;
+    /**
+     * <code>APPEARS_ON = 3;</code>
+     */
+    public static final int APPEARS_ON_VALUE = 3;
+
+
+    public final int getNumber() { return value; }
+
+    public static AlbumType valueOf(int value) {
+      switch (value) {
+        case 0: return ALBUM;
+        case 1: return SINGLE;
+        case 2: return COMPILATION;
+        case 3: return APPEARS_ON;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<AlbumType>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static com.google.protobuf.Internal.EnumLiteMap<AlbumType>
+        internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<AlbumType>() {
+            public AlbumType findValueByNumber(int number) {
+              return AlbumType.valueOf(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(index);
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return se.michaelthelin.spotify.SpotifyProtos.getDescriptor().getEnumTypes().get(0);
+    }
+
+    private static final AlbumType[] VALUES = values();
+
+    public static AlbumType valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int index;
+    private final int value;
+
+    private AlbumType(int index, int value) {
+      this.index = index;
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:spotify.AlbumType)
+  }
+
   public interface AlbumOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
@@ -1471,8 +1571,9 @@ public final class SpotifyProtos {
     java.lang.String[] descriptorData = {
       "\n\rspotify.proto\022\007spotify\"\023\n\005Album\022\n\n\002id\030" +
       "\001 \002(\t\"\024\n\006Artist\022\n\n\002id\030\001 \002(\t\"\023\n\005Track\022\n\n\002" +
-      "id\030\001 \002(\tB)\n\030se.michaelthelin.spotifyB\rSp" +
-      "otifyProtos"
+      "id\030\001 \002(\t*C\n\tAlbumType\022\t\n\005ALBUM\020\000\022\n\n\006SING" +
+      "LE\020\001\022\017\n\013COMPILATION\020\002\022\016\n\nAPPEARS_ON\020\003B)\n" +
+      "\030se.michaelthelin.spotifyB\rSpotifyProtos"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
