@@ -22,6 +22,10 @@ public abstract class AbstractRequest implements Request {
     return UrlUtil.assemble(url);
   }
 
+  public String getJson() {
+    return httpManager.get(url);
+  }
+
   AbstractRequest(Builder<?> builder) {
     assert (builder.path != null);
     assert (builder.host != null);

@@ -6,3 +6,11 @@ option java_outer_classname = "SpotifyProtos";
 message Album {
     required string id = 1;
 }
+
+message Artist {
+    required string id = 1;
+}
+
+message Track {
+    required string id = 1;
+}

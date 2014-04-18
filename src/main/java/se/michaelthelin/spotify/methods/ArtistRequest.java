@@ -1,9 +1,18 @@
 package se.michaelthelin.spotify.methods;
 
+import se.michaelthelin.spotify.JsonUtil;
+import se.michaelthelin.spotify.SpotifyProtos.Artist;
+
+import java.util.List;
+
 public class ArtistRequest extends AbstractRequest {
 
   protected ArtistRequest(Builder builder) {
     super(builder);
+  }
+
+  public Artist get() {
+    return JsonUtil.newArtist(getJson());
   }
 
   public static Builder builder() {
