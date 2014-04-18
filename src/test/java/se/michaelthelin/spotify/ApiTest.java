@@ -52,6 +52,13 @@ public class ApiTest {
   }
 
   @Test
+  public void shouldCreateAUrlForArtistsAlbum() {
+    Api api = Api.DEFAULT_API;
+    Request request = api.album().forArtist("4AK6F7OLvEQ5QYCBNiQWHq").build();
+    assertEquals("https://api.spotify.com:80/v1/artists/4AK6F7OLvEQ5QYCBNiQWHq/albums", request.toString());
+  }
+
+  @Test
   public void shouldCreateAGetArtistsUrl() {
     Api api = Api.DEFAULT_API;
     Request request = api.track().id("4AK6F7OLvEQ5QYCBNiQWHq","6rEzedK7cKWjeQWdAYvWVG").build();

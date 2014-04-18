@@ -38,6 +38,11 @@ public final class AlbumRequest extends AbstractRequest {
       return parameter("ids", idsParameter);
     }
 
+    public Builder forArtist(String id) {
+      assert (id != null);
+      return path(String.format("/v1/artists/%s/albums", id));
+    }
+
     public AlbumRequest build() {
       return new AlbumRequest(this);
     }
