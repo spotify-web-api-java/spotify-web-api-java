@@ -9,6 +9,18 @@ import java.util.List;
 
 public class JsonUtil {
 
+  public static Image newImage(String json) {
+    return newImage(JSONObject.fromObject(json));
+  }
+
+  public static Image newImage(JSONObject jsonObject) {
+    Image.Builder builder = Image.newBuilder();
+    builder.setHeight(jsonObject.getInt("height"));
+    builder.setImageUrl(jsonObject.getString("image_url"));
+    builder.setWidth(jsonObject.getInt("width"));
+    return builder.build();
+  }
+
   public static List<Artist> newArtistList(String json) {
     throw new RuntimeException("Not implemented");
   }
@@ -35,26 +47,17 @@ public class JsonUtil {
     Artist.Images.Builder artistImagesBuilder = Artist.Images.newBuilder();
     JSONObject imagesJsonObject = jsonObject.getJSONObject("images");
 
-    Image.Builder smallImageBuilder = Image.newBuilder();
     JSONObject smallImageJsonObject = imagesJsonObject.getJSONObject("SMALL");
-    smallImageBuilder.setHeight(smallImageJsonObject.getInt("height"));
-    smallImageBuilder.setImageUrl(smallImageJsonObject.getString("image_url"));
-    smallImageBuilder.setWidth(smallImageJsonObject.getInt("width"));
-    artistImagesBuilder.setSMALL(smallImageBuilder.build());
+    Image smallImage = newImage(smallImageJsonObject);
+    artistImagesBuilder.setSMALL(smallImage);
 
-    Image.Builder mediumImageBuilder = Image.newBuilder();
     JSONObject mediumImageJsonObject = imagesJsonObject.getJSONObject("MEDIUM");
-    mediumImageBuilder.setHeight(mediumImageJsonObject.getInt("height"));
-    mediumImageBuilder.setImageUrl(mediumImageJsonObject.getString("image_url"));
-    mediumImageBuilder.setWidth(mediumImageJsonObject.getInt("width"));
-    artistImagesBuilder.setMEDIUM(mediumImageBuilder.build());
+    Image mediumImage = newImage(smallImageJsonObject);
+    artistImagesBuilder.setMEDIUM(smallImage);
 
-    Image.Builder largeImageBuilder = Image.newBuilder();
     JSONObject largeImageJsonObject = imagesJsonObject.getJSONObject("LARGE");
-    largeImageBuilder.setHeight(largeImageJsonObject.getInt("height"));
-    largeImageBuilder.setImageUrl(largeImageJsonObject.getString("image_url"));
-    largeImageBuilder.setWidth(largeImageJsonObject.getInt("width"));
-    artistImagesBuilder.setLARGE(largeImageBuilder.build());
+    Image largeImage = newImage(largeImageJsonObject);
+    artistImagesBuilder.setLARGE(largeImage);
 
     artistBuilder.setImages(artistImagesBuilder.build());
 
