@@ -5,6 +5,7 @@ import net.sf.json.JSONObject;
 import se.michaelthelin.spotify.SpotifyProtos.Artist;
 import se.michaelthelin.spotify.SpotifyProtos.Image;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class JsonUtil {
@@ -22,7 +23,16 @@ public class JsonUtil {
   }
 
   public static List<Artist> newArtistList(String json) {
-    throw new RuntimeException("Not implemented");
+    return newArtistList(JSONObject.fromObject(json));
+  }
+
+  public static List<Artist> newArtistList(JSONObject jsonObject) {
+    List<Artist> returnedArtists = new ArrayList<Artist>();
+    JSONArray artistsObject = jsonObject.getJSONArray("artists");
+    for (int i = 0; i < artistsObject.size(); i++) {
+      returnedArtists.add(newArtist(artistsObject.getJSONObject(i)));
+    }
+    return returnedArtists;
   }
 
   public static Artist newArtist(String json) {
@@ -52,8 +62,8 @@ public class JsonUtil {
     artistImagesBuilder.setSMALL(smallImage);
 
     JSONObject mediumImageJsonObject = imagesJsonObject.getJSONObject("MEDIUM");
-    Image mediumImage = newImage(smallImageJsonObject);
-    artistImagesBuilder.setMEDIUM(smallImage);
+    Image mediumImage = newImage(mediumImageJsonObject);
+    artistImagesBuilder.setMEDIUM(mediumImage);
 
     JSONObject largeImageJsonObject = imagesJsonObject.getJSONObject("LARGE");
     Image largeImage = newImage(largeImageJsonObject);
