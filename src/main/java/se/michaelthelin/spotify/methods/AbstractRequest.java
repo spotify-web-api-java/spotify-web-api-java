@@ -26,7 +26,7 @@ public abstract class AbstractRequest implements Request {
     return httpManager.get(url);
   }
 
-  AbstractRequest(Builder<?> builder) {
+  public AbstractRequest(Builder<?> builder) {
     assert (builder.path != null);
     assert (builder.host != null);
     assert (builder.port > 0);

@@ -1,9 +1,28 @@
 package se.michaelthelin.spotify.methods;
 
+import se.michaelthelin.spotify.JsonUtil;
+import se.michaelthelin.spotify.SpotifyProtos.Album;
+import se.michaelthelin.spotify.SpotifyProtos.Artist;
+import se.michaelthelin.spotify.SpotifyProtos.Track;
+
+import java.util.List;
+
 public class SearchRequest extends AbstractRequest {
 
   protected SearchRequest(Builder builder) {
     super(builder);
+  }
+
+  public List<Album> getAlbums() {
+    throw new RuntimeException(("Not implemented");
+  }
+
+  public List<Track> getTracks() {
+    throw new RuntimeException(("Not implemented");
+  }
+
+  public List<Artist> getArtists() {
+    return JsonUtil.newArtistList(getJson());
   }
 
   public static Builder builder() {
@@ -37,6 +56,7 @@ public class SearchRequest extends AbstractRequest {
       assert (type != null);
       return parameter("type", type);
     }
+
   }
 
 }
