@@ -4,15 +4,63 @@ option java_package = "se.michaelthelin.spotify";
 option java_outer_classname = "SpotifyProtos";
 
 message Album {
-    required string id = 1;
+    required AlbumType album_type = 1;
+    required string api_link = 2;
+    repeated Artist artists = 3;
+    repeated string available_markets = 4;
+    repeated ExternalId external_ids = 5;
+    repeated string genres = 6;
+    required string id = 7;
+    repeated Image images = 8;
+    required string link = 9;
+    required string name = 10;
+    required int32 popularity = 11;
+    required int32 release_year = 12;
+    required string spotify_uri = 13;
+    repeated Track tracks = 14;
+    required string type = 15;
 }
 
 message Artist {
-    required string id = 1;
+    required string api_link = 1;
+    repeated string genres = 2;
+    required string id = 3;
+    repeated Image images = 4;
+    required string link = 5;
+    required string name = 6;
+    required int32 popularity = 7;
+    required string spotify_uri = 8;
+    required string type = 9;
 }
 
 message Track {
+    required Album album = 1;
+    required string api_link = 2;
+    repeated Artist artists = 3;
+    repeated string available_markets = 4;
+    required int32 disc_number = 5;
+    required int32 duration_ms = 6;
+    required bool explicit = 7;
+    repeated ExternalId external_ids = 8;
+    required string id = 9;
+    required string link = 10;
+    required string name = 11;
+    required int32 popularity = 12;
+    required string preview_url = 13;
+    required string spotify_url = 14;
+    required int32 track_number = 15;
+    required string type = 16;
+}
+
+message ExternalId {
     required string id = 1;
+    required string type = 2;
+}
+
+message Image {
+    required int32 height = 1;
+    required string image_url = 2;
+    required int32 width = 3;
 }
 
 enum AlbumType {
