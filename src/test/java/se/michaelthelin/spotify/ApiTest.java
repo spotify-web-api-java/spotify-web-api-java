@@ -111,6 +111,33 @@ public class ApiTest {
   }
 
   @Test
+  public void shouldCreateSearchUrlWithLimitParameter() {
+    Api api = Api.DEFAULT_API;
+    Request request = api.search().query("moulat swalf").limit(2).build();
+    assertEquals("https://api.spotify.com:80/v1/search", request.toString());
+    assertHasParameter(request.toUrl(), "q", "moulat+swalf");
+    assertHasParameter(request.toUrl(), "limit", "2");
+  }
+
+  @Test
+  public void shouldCreateSearchUrlWithOffsetParameter() {
+    Api api = Api.DEFAULT_API;
+    Request request = api.search().query("moulat swalf").offset(2).build();
+    assertEquals("https://api.spotify.com:80/v1/search", request.toString());
+    assertHasParameter(request.toUrl(), "q", "moulat+swalf");
+    assertHasParameter(request.toUrl(), "offset", "2");
+  }
+
+  @Test
+  public void shouldCreateSearchUrlWithTypeParameter() {
+    Api api = Api.DEFAULT_API;
+    Request request = api.search().query("moulat swalf").type("album").build();
+    assertEquals("https://api.spotify.com:80/v1/search", request.toString());
+    assertHasParameter(request.toUrl(), "q", "moulat+swalf");
+    assertHasParameter(request.toUrl(), "type", "album");
+  }
+
+  @Test
   public void shouldModifySchemeInUrl() {
     Api api = Api.builder().scheme(Scheme.HTTP).build();
     Request request = api.album().id("5oEljuMoe9MXH6tBIPbd5e").build();
