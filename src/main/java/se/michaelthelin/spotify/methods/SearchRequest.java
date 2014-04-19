@@ -14,11 +14,11 @@ public class SearchRequest extends AbstractRequest {
   }
 
   public List<Album> getAlbums() {
-    throw new RuntimeException(("Not implemented");
+    throw new RuntimeException("Not implemented");
   }
 
   public List<Track> getTracks() {
-    throw new RuntimeException(("Not implemented");
+    throw new RuntimeException("Not implemented");
   }
 
   public List<Artist> getArtists() {

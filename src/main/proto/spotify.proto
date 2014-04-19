@@ -25,12 +25,18 @@ message Artist {
     required string api_link = 1;
     repeated string genres = 2;
     required string id = 3;
-    repeated Image images = 4;
+    required Images images = 4;
     required string link = 5;
     required string name = 6;
     required int32 popularity = 7;
     required string spotify_uri = 8;
     required string type = 9;
+
+    message Images {
+        required Image MEDIUM = 1;
+        required Image SMALL = 2;
+        required Image LARGE = 3;
+    }
 }
 
 message Track {
