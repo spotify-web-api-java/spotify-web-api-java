@@ -97,8 +97,8 @@ public class ApiTest {
   @Test
   public void shouldCreateAGetArtistsUrl() {
     Api api = Api.DEFAULT_API;
-    Request request = api.track().id("4AK6F7OLvEQ5QYCBNiQWHq","6rEzedK7cKWjeQWdAYvWVG").build();
-    assertEquals("https://api.spotify.com:80/v1/tracks", request.toString());
+    Request request = api.artist().id("4AK6F7OLvEQ5QYCBNiQWHq","6rEzedK7cKWjeQWdAYvWVG").build();
+    assertEquals("https://api.spotify.com:80/v1/artists", request.toString());
     assertHasParameter(request.toUrl(), "ids", "4AK6F7OLvEQ5QYCBNiQWHq,6rEzedK7cKWjeQWdAYvWVG");
   }
 

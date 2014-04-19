@@ -1,16 +1,11 @@
 package se.michaelthelin.spotify.methods;
 
-import se.michaelthelin.spotify.JsonUtil;
-import se.michaelthelin.spotify.SpotifyProtos.Artist;
+import com.google.common.base.Joiner;
 
 public class ArtistRequest extends AbstractRequest {
 
   protected ArtistRequest(Builder builder) {
     super(builder);
-  }
-
-  public Artist get() {
-    return JsonUtil.newArtist(getJson());
   }
 
   public static Builder builder() {
@@ -28,6 +23,13 @@ public class ArtistRequest extends AbstractRequest {
     public Builder id(String id) {
       assert (id != null);
       return path(String.format("/v1/artists/%s", id));
+    }
+
+    public Builder id(String... ids) {
+      assert (ids != null);
+      String idsParameter = Joiner.on(",").join(ids).toString();
+      path("/v1/artists");
+      return parameter("ids", idsParameter);
     }
 
     public ArtistRequest build() {
