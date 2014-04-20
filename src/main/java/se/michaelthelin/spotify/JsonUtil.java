@@ -112,6 +112,19 @@ public class JsonUtil {
     return albumBuilder.build();
   }
 
+  public static List<Album> newAlbumsList(String json) {
+    return newAlbumsList(JSONObject.fromObject(json));
+  }
+
+  private static List<Album> newAlbumsList(JSONObject jsonObject) {
+    List<Album> returnedAlbums = new ArrayList<Album>();
+    JSONArray albumsJsonArray = jsonObject.getJSONArray("albums");
+    for (int i = 0; i < albumsJsonArray.size(); i++) {
+      returnedAlbums.add(newAlbum(albumsJsonArray.getJSONObject(i)));
+    }
+    return returnedAlbums;
+  }
+
   public static SimpleArtist newSimpleArtist(String json) {
     return newSimpleArtist(JSONObject.fromObject(json));
   }
@@ -130,4 +143,5 @@ public class JsonUtil {
 
     return artistBuilder.build();
   }
+
 }

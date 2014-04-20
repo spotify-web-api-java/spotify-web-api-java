@@ -67,6 +67,14 @@ public class JsonUtilTest {
     assertEquals("https://api.spotify.com/v1/albums/0sNOF9WDwhWunNAHPD3Baj", album.getApiLink());
   }
 
+  @Test
+  public void testNewAlbumsList() throws Exception {
+    String json = readTestData("albums.json");
+    List<Album> albums = JsonUtil.newAlbumsList(json);
+
+    assertEquals(2, albums.size());
+  }
+
   private String TEST_DATA_DIR = "src/test/fixtures/";
 
   private int MAX_TEST_DATA_FILE_SIZE = 65536;
@@ -74,6 +82,7 @@ public class JsonUtilTest {
   private String readTestData(String fileName) throws IOException {
     return readFromFile(new File(TEST_DATA_DIR, fileName));
   }
+
 
   private String readFromFile(File file) throws IOException {
     Reader reader = new FileReader(file);
