@@ -11,15 +11,10 @@ import se.michaelthelin.spotify.SpotifyProtos.SimpleAlbum;
 import se.michaelthelin.spotify.SpotifyProtos.Track;
 import se.michaelthelin.spotify.SpotifyProtos.ExternalId;
 
-import javax.print.attribute.standard.JobName;
 import java.util.ArrayList;
 import java.util.List;
 
 public class JsonUtil {
-
-  public static Image newImage(String json) {
-    return newImage(JSONObject.fromObject(json));
-  }
 
   private static Image newImage(JSONObject jsonObject) {
     Image.Builder builder = Image.newBuilder();
@@ -29,24 +24,24 @@ public class JsonUtil {
     return builder.build();
   }
 
-  public static List<Artist> newArtistList(String json) {
-    return newArtistList(JSONObject.fromObject(json));
+  public static List<Artist> createArtists(String json) {
+    return createArtists(JSONObject.fromObject(json));
   }
 
-  private static List<Artist> newArtistList(JSONObject jsonObject) {
+  private static List<Artist> createArtists(JSONObject jsonObject) {
     List<Artist> returnedArtists = new ArrayList<Artist>();
     JSONArray artistsObject = jsonObject.getJSONArray("artists");
     for (int i = 0; i < artistsObject.size(); i++) {
-      returnedArtists.add(newArtist(artistsObject.getJSONObject(i)));
+      returnedArtists.add(createArtist(artistsObject.getJSONObject(i)));
     }
     return returnedArtists;
   }
 
-  public static Artist newArtist(String json) {
-    return newArtist(JSONObject.fromObject(json));
+  public static Artist createArtist(String json) {
+    return createArtist(JSONObject.fromObject(json));
   }
 
-  private static Artist newArtist(JSONObject jsonObject) {
+  private static Artist createArtist(JSONObject jsonObject) {
     if (jsonObject == null || jsonObject.isNullObject()) {
       return null;
     }
@@ -91,11 +86,11 @@ public class JsonUtil {
     return artistBuilder.build();
   }
 
-  public static Album newAlbum(String json) {
-    return newAlbum(JSONObject.fromObject(json));
+  public static Album createAlbum(String json) {
+    return createAlbum(JSONObject.fromObject(json));
   }
 
-  private static Album newAlbum(JSONObject jsonObject) {
+  private static Album createAlbum(JSONObject jsonObject) {
     if (jsonObject == null || jsonObject.isNullObject()) {
       return null;
     }
@@ -106,7 +101,7 @@ public class JsonUtil {
 
     JSONArray artistsJsonArray = jsonObject.getJSONArray("artists");
     for (int i = 0; i < artistsJsonArray.size(); i++) {
-      albumBuilder.addArtists(newSimpleArtist(artistsJsonArray.getJSONObject(i)));
+      albumBuilder.addArtists(createSimpleArtist(artistsJsonArray.getJSONObject(i)));
     }
 
     albumBuilder.setId(jsonObject.getString("id"));
@@ -120,11 +115,7 @@ public class JsonUtil {
     return albumBuilder.build();
   }
 
-  public static SimpleAlbum newSimpleALbum(String json) {
-    return newSimpleAlbum(JSONObject.fromObject(json));
-  }
-
-  private static SimpleAlbum newSimpleAlbum(JSONObject jsonObject) {
+  private static SimpleAlbum createSimpleAlbum(JSONObject jsonObject) {
     if (jsonObject == null || jsonObject.isNullObject()) {
       return null;
     }
@@ -139,24 +130,20 @@ public class JsonUtil {
     return albumBuilder.build();
   }
 
-  public static List<Album> newAlbumsList(String json) {
-    return newAlbumsList(JSONObject.fromObject(json));
+  public static List<Album> createAlbums(String json) {
+    return createAlbums(JSONObject.fromObject(json));
   }
 
-  private static List<Album> newAlbumsList(JSONObject jsonObject) {
+  private static List<Album> createAlbums(JSONObject jsonObject) {
     List<Album> returnedAlbums = new ArrayList<Album>();
     JSONArray albumsJsonArray = jsonObject.getJSONArray("albums");
     for (int i = 0; i < albumsJsonArray.size(); i++) {
-      returnedAlbums.add(newAlbum(albumsJsonArray.getJSONObject(i)));
+      returnedAlbums.add(createAlbum(albumsJsonArray.getJSONObject(i)));
     }
     return returnedAlbums;
   }
 
-  public static SimpleArtist newSimpleArtist(String json) {
-    return newSimpleArtist(JSONObject.fromObject(json));
-  }
-
-  private static SimpleArtist newSimpleArtist(JSONObject jsonObject) {
+  private static SimpleArtist createSimpleArtist(JSONObject jsonObject) {
     if (jsonObject == null || jsonObject.isNullObject()) {
       return null;
     }
@@ -171,27 +158,27 @@ public class JsonUtil {
     return artistBuilder.build();
   }
 
-  private static List<SimpleArtist> newSimpleArtistsList(JSONArray artists) {
+  private static List<SimpleArtist> createSimpleArtists(JSONArray artists) {
    List<SimpleArtist> returnedArtists = new ArrayList<SimpleArtist>();
     for (int i = 0; i < artists.size(); i++) {
-      returnedArtists.add(newSimpleArtist(artists.getJSONObject(i)));
+      returnedArtists.add(createSimpleArtist(artists.getJSONObject(i)));
     }
     return returnedArtists;
   }
 
-  public static Track newTrack(String json) {
-    return newTrack(JSONObject.fromObject(json));
+  public static Track createTrack(String json) {
+    return createTrack(JSONObject.fromObject(json));
   }
 
-  private static Track newTrack(JSONObject jsonObject) {
+  private static Track createTrack(JSONObject jsonObject) {
     Track.Builder trackBuilder = Track.newBuilder();
 
-    SimpleAlbum album = newSimpleAlbum(jsonObject.getJSONObject("album"));
+    SimpleAlbum album = createSimpleAlbum(jsonObject.getJSONObject("album"));
     trackBuilder.setAlbum(album);
 
     trackBuilder.setApiLink(jsonObject.getString("api_link"));
 
-    List<SimpleArtist> simpleArtists = newSimpleArtistsList(jsonObject.getJSONArray("artists"));
+    List<SimpleArtist> simpleArtists = createSimpleArtists(jsonObject.getJSONArray("artists"));
     trackBuilder.addAllArtists(simpleArtists);
 
     trackBuilder.addAllAvailableMarkets(jsonObject.getJSONArray("available_markets"));
@@ -199,7 +186,7 @@ public class JsonUtil {
     trackBuilder.setDiscNumber(jsonObject.getInt("disc_number"));
     trackBuilder.setDurationMs(jsonObject.getInt("duration_ms"));
     trackBuilder.setExplicit(jsonObject.getBoolean("explicit"));
-    trackBuilder.addAllExternalIds(newExternalIdList(jsonObject.getJSONArray("external_ids")));
+    trackBuilder.addAllExternalIds(createExternalIds(jsonObject.getJSONArray("external_ids")));
     trackBuilder.setId(jsonObject.getString("id"));
     trackBuilder.setLink(jsonObject.getString("link"));
     trackBuilder.setName(jsonObject.getString("name"));
@@ -212,31 +199,32 @@ public class JsonUtil {
     return trackBuilder.build();
   }
 
-  private static List<ExternalId> newExternalIdList(JSONArray externalIds) {
+  public static List<Track> createTracks(String json) {
+    return createTracks(JSONObject.fromObject(json));
+  }
+
+  private static List<Track> createTracks(JSONObject jsonObject) {
+    List<Track> returnedTracks = new ArrayList<Track>();
+    JSONArray tracks = jsonObject.getJSONArray("tracks");
+    for (int i = 0; i < tracks.size(); i++) {
+      returnedTracks.add(createTrack(tracks.getJSONObject(i)));
+    }
+    return returnedTracks;
+  }
+
+  private static List<ExternalId> createExternalIds(JSONArray externalIds) {
     List<ExternalId> returnedExternalIds = new ArrayList<ExternalId>();
     for (int i = 0; i < externalIds.size(); i++) {
-      returnedExternalIds.add(newExternalId(externalIds.getJSONObject(i)));
+      returnedExternalIds.add(createExternalId(externalIds.getJSONObject(i)));
     }
     return returnedExternalIds;
   }
 
-  private static ExternalId newExternalId(JSONObject externalId) {
+  private static ExternalId createExternalId(JSONObject externalId) {
     ExternalId.Builder builder = ExternalId.newBuilder();
     builder.setId(externalId.getString("id"));
     builder.setType(externalId.getString("type"));
     return builder.build();
   }
 
-  public static List<Track> newTracksList(String json) {
-    return newTracksList(JSONObject.fromObject(json));
-  }
-
-  private static List<Track> newTracksList(JSONObject jsonObject) {
-    List<Track> returnedTracks = new ArrayList<Track>();
-    JSONArray tracks = jsonObject.getJSONArray("tracks");
-    for (int i = 0; i < tracks.size(); i++) {
-      returnedTracks.add(newTrack(tracks.getJSONObject(i)));
-    }
-    return returnedTracks;
-  }
 }

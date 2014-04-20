@@ -19,9 +19,9 @@ import static org.junit.Assert.assertEquals;
 public class JsonUtilTest {
 
   @Test
-  public void testNewArtist() throws Exception {
+  public void shouldCreateArtist() throws Exception {
     String json = readTestData("artist.json");
-    Artist artist = JsonUtil.newArtist(json);
+    Artist artist = JsonUtil.createArtist(json);
 
     assertEquals("https://api.spotify.com/v1/artists/0LcJLqbBmaGUft1e9Mm8HV", artist.getApiLink());
 
@@ -50,9 +50,9 @@ public class JsonUtilTest {
   }
 
   @Test
-  public void testNewArtistsList() throws Exception {
+  public void shouldCreateSeveralArtists() throws Exception {
     String json = readTestData("artists.json");
-    List<Artist> artists = JsonUtil.newArtistList(json);
+    List<Artist> artists = JsonUtil.createArtists(json);
     assertEquals(2, artists.size());
 
     Artist firstArtist = artists.get(0);
@@ -101,31 +101,31 @@ public class JsonUtilTest {
   }
 
   @Test
-  public void testNewAlbum() throws Exception {
+  public void shouldCreateAlbum() throws Exception {
     String json = readTestData("album.json");
-    Album album = JsonUtil.newAlbum(json);
+    Album album = JsonUtil.createAlbum(json);
     assertEquals("https://api.spotify.com/v1/albums/0sNOF9WDwhWunNAHPD3Baj", album.getApiLink());
   }
 
   @Test
-  public void testNewAlbumsList() throws Exception {
+  public void shouldCreateSeveralAlbums() throws Exception {
     String json = readTestData("albums.json");
-    List<Album> albums = JsonUtil.newAlbumsList(json);
+    List<Album> albums = JsonUtil.createAlbums(json);
 
     assertEquals(2, albums.size());
   }
 
   @Test
-  public void testNewTrack() throws Exception {
+  public void shouldCreateTrack() throws Exception {
     String json = readTestData("track.json");
-    Track track = JsonUtil.newTrack(json);
+    Track track = JsonUtil.createTrack(json);
     assertEquals("0eGsygTp906u18L0Oimnem", track.getId());
   }
 
   @Test
-  public void testNewTracksList() throws Exception {
+  public void shouldCreateSeveralTracks() throws Exception {
     String json = readTestData("tracks.json");
-    List<Track> tracks = JsonUtil.newTracksList(json);
+    List<Track> tracks = JsonUtil.createTracks(json);
     assertEquals(2, tracks.size());
   }
 

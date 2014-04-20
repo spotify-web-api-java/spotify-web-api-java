@@ -22,7 +22,7 @@ public class SearchRequest extends AbstractRequest {
   }
 
   public List<Artist> getArtists() {
-    return JsonUtil.newArtistList(getJson());
+    return JsonUtil.createArtists(getJson());
   }
 
   public static Builder builder() {
