@@ -6,6 +6,7 @@ import se.michaelthelin.spotify.SpotifyProtos.Artist;
 import se.michaelthelin.spotify.SpotifyProtos.Album;
 import se.michaelthelin.spotify.SpotifyProtos.AlbumType;
 import se.michaelthelin.spotify.SpotifyProtos.Image;
+import se.michaelthelin.spotify.SpotifyProtos.SimpleArtist;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +17,7 @@ public class JsonUtil {
     return newImage(JSONObject.fromObject(json));
   }
 
-  public static Image newImage(JSONObject jsonObject) {
+  private static Image newImage(JSONObject jsonObject) {
     Image.Builder builder = Image.newBuilder();
     builder.setHeight(jsonObject.getInt("height"));
     builder.setImageUrl(jsonObject.getString("image_url"));
@@ -28,7 +29,7 @@ public class JsonUtil {
     return newArtistList(JSONObject.fromObject(json));
   }
 
-  public static List<Artist> newArtistList(JSONObject jsonObject) {
+  private static List<Artist> newArtistList(JSONObject jsonObject) {
     List<Artist> returnedArtists = new ArrayList<Artist>();
     JSONArray artistsObject = jsonObject.getJSONArray("artists");
     for (int i = 0; i < artistsObject.size(); i++) {
@@ -41,7 +42,7 @@ public class JsonUtil {
     return newArtist(JSONObject.fromObject(json));
   }
 
-  public static Artist newArtist(JSONObject jsonObject) {
+  private static Artist newArtist(JSONObject jsonObject) {
     if (jsonObject == null || jsonObject.isNullObject()) {
       return null;
     }
@@ -86,7 +87,7 @@ public class JsonUtil {
     return newAlbum(JSONObject.fromObject(json));
   }
 
-  public static Album newAlbum(JSONObject jsonObject) {
+  private static Album newAlbum(JSONObject jsonObject) {
     if (jsonObject == null || jsonObject.isNullObject()) {
       return null;
     }
@@ -97,9 +98,36 @@ public class JsonUtil {
 
     JSONArray artistsJsonArray = jsonObject.getJSONArray("artists");
     for (int i = 0; i < artistsJsonArray.size(); i++) {
-      albumBuilder.addArtists(newArtist(artistsJsonArray.getJSONObject(i)));
+      albumBuilder.addArtists(newSimpleArtist(artistsJsonArray.getJSONObject(i)));
     }
 
+    albumBuilder.setId(jsonObject.getString("id"));
+    albumBuilder.setLink(jsonObject.getString("link"));
+    albumBuilder.setName(jsonObject.getString("name"));
+    albumBuilder.setPopularity(jsonObject.getInt("popularity"));
+    albumBuilder.setReleaseYear(jsonObject.getInt("release_year"));
+    albumBuilder.setSpotifyUri(jsonObject.getString("spotify_uri"));
+    albumBuilder.setType(jsonObject.getString("type"));
+
     return albumBuilder.build();
+  }
+
+  public static SimpleArtist newSimpleArtist(String json) {
+    return newSimpleArtist(JSONObject.fromObject(json));
+  }
+
+  private static SimpleArtist newSimpleArtist(JSONObject jsonObject) {
+    if (jsonObject == null || jsonObject.isNullObject()) {
+      return null;
+    }
+    SimpleArtist.Builder artistBuilder = SimpleArtist.newBuilder();
+
+    artistBuilder.setApiLink(jsonObject.getString("api_link"));
+    artistBuilder.setId(jsonObject.getString("id"));
+    artistBuilder.setName(jsonObject.getString("name"));
+    artistBuilder.setSpotifyUri(jsonObject.getString("spotify_uri"));
+    artistBuilder.setType(jsonObject.getString("type"));
+
+    return artistBuilder.build();
   }
 }

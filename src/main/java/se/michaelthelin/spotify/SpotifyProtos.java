@@ -8467,19 +8467,19 @@ public final class SpotifyProtos {
   public interface TrackOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // required .spotify.Album album = 1;
+    // required .spotify.SimpleAlbum album = 1;
     /**
-     * <code>required .spotify.Album album = 1;</code>
+     * <code>required .spotify.SimpleAlbum album = 1;</code>
      */
     boolean hasAlbum();
     /**
-     * <code>required .spotify.Album album = 1;</code>
+     * <code>required .spotify.SimpleAlbum album = 1;</code>
      */
-    se.michaelthelin.spotify.SpotifyProtos.Album getAlbum();
+    se.michaelthelin.spotify.SpotifyProtos.SimpleAlbum getAlbum();
     /**
-     * <code>required .spotify.Album album = 1;</code>
+     * <code>required .spotify.SimpleAlbum album = 1;</code>
      */
-    se.michaelthelin.spotify.SpotifyProtos.AlbumOrBuilder getAlbumOrBuilder();
+    se.michaelthelin.spotify.SpotifyProtos.SimpleAlbumOrBuilder getAlbumOrBuilder();
 
     // required string api_link = 2;
     /**
@@ -8496,29 +8496,29 @@ public final class SpotifyProtos {
     com.google.protobuf.ByteString
         getApiLinkBytes();
 
-    // repeated .spotify.Artist artists = 3;
+    // repeated .spotify.SimpleArtist artists = 3;
     /**
-     * <code>repeated .spotify.Artist artists = 3;</code>
+     * <code>repeated .spotify.SimpleArtist artists = 3;</code>
      */
-    java.util.List<se.michaelthelin.spotify.SpotifyProtos.Artist> 
+    java.util.List<se.michaelthelin.spotify.SpotifyProtos.SimpleArtist> 
         getArtistsList();
     /**
-     * <code>repeated .spotify.Artist artists = 3;</code>
+     * <code>repeated .spotify.SimpleArtist artists = 3;</code>
      */
-    se.michaelthelin.spotify.SpotifyProtos.Artist getArtists(int index);
+    se.michaelthelin.spotify.SpotifyProtos.SimpleArtist getArtists(int index);
     /**
-     * <code>repeated .spotify.Artist artists = 3;</code>
+     * <code>repeated .spotify.SimpleArtist artists = 3;</code>
      */
     int getArtistsCount();
     /**
-     * <code>repeated .spotify.Artist artists = 3;</code>
+     * <code>repeated .spotify.SimpleArtist artists = 3;</code>
      */
-    java.util.List<? extends se.michaelthelin.spotify.SpotifyProtos.ArtistOrBuilder> 
+    java.util.List<? extends se.michaelthelin.spotify.SpotifyProtos.SimpleArtistOrBuilder> 
         getArtistsOrBuilderList();
     /**
-     * <code>repeated .spotify.Artist artists = 3;</code>
+     * <code>repeated .spotify.SimpleArtist artists = 3;</code>
      */
-    se.michaelthelin.spotify.SpotifyProtos.ArtistOrBuilder getArtistsOrBuilder(
+    se.michaelthelin.spotify.SpotifyProtos.SimpleArtistOrBuilder getArtistsOrBuilder(
         int index);
 
     // repeated string available_markets = 4;
@@ -8758,11 +8758,11 @@ public final class SpotifyProtos {
               break;
             }
             case 10: {
-              se.michaelthelin.spotify.SpotifyProtos.Album.Builder subBuilder = null;
+              se.michaelthelin.spotify.SpotifyProtos.SimpleAlbum.Builder subBuilder = null;
               if (((bitField0_ & 0x00000001) == 0x00000001)) {
                 subBuilder = album_.toBuilder();
               }
-              album_ = input.readMessage(se.michaelthelin.spotify.SpotifyProtos.Album.PARSER, extensionRegistry);
+              album_ = input.readMessage(se.michaelthelin.spotify.SpotifyProtos.SimpleAlbum.PARSER, extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(album_);
                 album_ = subBuilder.buildPartial();
@@ -8777,10 +8777,10 @@ public final class SpotifyProtos {
             }
             case 26: {
               if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
-                artists_ = new java.util.ArrayList<se.michaelthelin.spotify.SpotifyProtos.Artist>();
+                artists_ = new java.util.ArrayList<se.michaelthelin.spotify.SpotifyProtos.SimpleArtist>();
                 mutable_bitField0_ |= 0x00000004;
               }
-              artists_.add(input.readMessage(se.michaelthelin.spotify.SpotifyProtos.Artist.PARSER, extensionRegistry));
+              artists_.add(input.readMessage(se.michaelthelin.spotify.SpotifyProtos.SimpleArtist.PARSER, extensionRegistry));
               break;
             }
             case 34: {
@@ -8903,25 +8903,25 @@ public final class SpotifyProtos {
     }
 
     private int bitField0_;
-    // required .spotify.Album album = 1;
+    // required .spotify.SimpleAlbum album = 1;
     public static final int ALBUM_FIELD_NUMBER = 1;
-    private se.michaelthelin.spotify.SpotifyProtos.Album album_;
+    private se.michaelthelin.spotify.SpotifyProtos.SimpleAlbum album_;
     /**
-     * <code>required .spotify.Album album = 1;</code>
+     * <code>required .spotify.SimpleAlbum album = 1;</code>
      */
     public boolean hasAlbum() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>required .spotify.Album album = 1;</code>
+     * <code>required .spotify.SimpleAlbum album = 1;</code>
      */
-    public se.michaelthelin.spotify.SpotifyProtos.Album getAlbum() {
+    public se.michaelthelin.spotify.SpotifyProtos.SimpleAlbum getAlbum() {
       return album_;
     }
     /**
-     * <code>required .spotify.Album album = 1;</code>
+     * <code>required .spotify.SimpleAlbum album = 1;</code>
      */
-    public se.michaelthelin.spotify.SpotifyProtos.AlbumOrBuilder getAlbumOrBuilder() {
+    public se.michaelthelin.spotify.SpotifyProtos.SimpleAlbumOrBuilder getAlbumOrBuilder() {
       return album_;
     }
 
@@ -8968,38 +8968,38 @@ public final class SpotifyProtos {
       }
     }
 
-    // repeated .spotify.Artist artists = 3;
+    // repeated .spotify.SimpleArtist artists = 3;
     public static final int ARTISTS_FIELD_NUMBER = 3;
-    private java.util.List<se.michaelthelin.spotify.SpotifyProtos.Artist> artists_;
+    private java.util.List<se.michaelthelin.spotify.SpotifyProtos.SimpleArtist> artists_;
     /**
-     * <code>repeated .spotify.Artist artists = 3;</code>
+     * <code>repeated .spotify.SimpleArtist artists = 3;</code>
      */
-    public java.util.List<se.michaelthelin.spotify.SpotifyProtos.Artist> getArtistsList() {
+    public java.util.List<se.michaelthelin.spotify.SpotifyProtos.SimpleArtist> getArtistsList() {
       return artists_;
     }
     /**
-     * <code>repeated .spotify.Artist artists = 3;</code>
+     * <code>repeated .spotify.SimpleArtist artists = 3;</code>
      */
-    public java.util.List<? extends se.michaelthelin.spotify.SpotifyProtos.ArtistOrBuilder> 
+    public java.util.List<? extends se.michaelthelin.spotify.SpotifyProtos.SimpleArtistOrBuilder> 
         getArtistsOrBuilderList() {
       return artists_;
     }
     /**
-     * <code>repeated .spotify.Artist artists = 3;</code>
+     * <code>repeated .spotify.SimpleArtist artists = 3;</code>
      */
     public int getArtistsCount() {
       return artists_.size();
     }
     /**
-     * <code>repeated .spotify.Artist artists = 3;</code>
+     * <code>repeated .spotify.SimpleArtist artists = 3;</code>
      */
-    public se.michaelthelin.spotify.SpotifyProtos.Artist getArtists(int index) {
+    public se.michaelthelin.spotify.SpotifyProtos.SimpleArtist getArtists(int index) {
       return artists_.get(index);
     }
     /**
-     * <code>repeated .spotify.Artist artists = 3;</code>
+     * <code>repeated .spotify.SimpleArtist artists = 3;</code>
      */
-    public se.michaelthelin.spotify.SpotifyProtos.ArtistOrBuilder getArtistsOrBuilder(
+    public se.michaelthelin.spotify.SpotifyProtos.SimpleArtistOrBuilder getArtistsOrBuilder(
         int index) {
       return artists_.get(index);
     }
@@ -9409,7 +9409,7 @@ public final class SpotifyProtos {
     }
 
     private void initFields() {
-      album_ = se.michaelthelin.spotify.SpotifyProtos.Album.getDefaultInstance();
+      album_ = se.michaelthelin.spotify.SpotifyProtos.SimpleAlbum.getDefaultInstance();
       apiLink_ = "";
       artists_ = java.util.Collections.emptyList();
       availableMarkets_ = com.google.protobuf.LazyStringArrayList.EMPTY;
@@ -9752,7 +9752,7 @@ public final class SpotifyProtos {
       public Builder clear() {
         super.clear();
         if (albumBuilder_ == null) {
-          album_ = se.michaelthelin.spotify.SpotifyProtos.Album.getDefaultInstance();
+          album_ = se.michaelthelin.spotify.SpotifyProtos.SimpleAlbum.getDefaultInstance();
         } else {
           albumBuilder_.clear();
         }
@@ -10129,20 +10129,20 @@ public final class SpotifyProtos {
       }
       private int bitField0_;
 
-      // required .spotify.Album album = 1;
-      private se.michaelthelin.spotify.SpotifyProtos.Album album_ = se.michaelthelin.spotify.SpotifyProtos.Album.getDefaultInstance();
+      // required .spotify.SimpleAlbum album = 1;
+      private se.michaelthelin.spotify.SpotifyProtos.SimpleAlbum album_ = se.michaelthelin.spotify.SpotifyProtos.SimpleAlbum.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
-          se.michaelthelin.spotify.SpotifyProtos.Album, se.michaelthelin.spotify.SpotifyProtos.Album.Builder, se.michaelthelin.spotify.SpotifyProtos.AlbumOrBuilder> albumBuilder_;
+          se.michaelthelin.spotify.SpotifyProtos.SimpleAlbum, se.michaelthelin.spotify.SpotifyProtos.SimpleAlbum.Builder, se.michaelthelin.spotify.SpotifyProtos.SimpleAlbumOrBuilder> albumBuilder_;
       /**
-       * <code>required .spotify.Album album = 1;</code>
+       * <code>required .spotify.SimpleAlbum album = 1;</code>
        */
       public boolean hasAlbum() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>required .spotify.Album album = 1;</code>
+       * <code>required .spotify.SimpleAlbum album = 1;</code>
        */
-      public se.michaelthelin.spotify.SpotifyProtos.Album getAlbum() {
+      public se.michaelthelin.spotify.SpotifyProtos.SimpleAlbum getAlbum() {
         if (albumBuilder_ == null) {
           return album_;
         } else {
@@ -10150,9 +10150,9 @@ public final class SpotifyProtos {
         }
       }
       /**
-       * <code>required .spotify.Album album = 1;</code>
+       * <code>required .spotify.SimpleAlbum album = 1;</code>
        */
-      public Builder setAlbum(se.michaelthelin.spotify.SpotifyProtos.Album value) {
+      public Builder setAlbum(se.michaelthelin.spotify.SpotifyProtos.SimpleAlbum value) {
         if (albumBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -10166,10 +10166,10 @@ public final class SpotifyProtos {
         return this;
       }
       /**
-       * <code>required .spotify.Album album = 1;</code>
+       * <code>required .spotify.SimpleAlbum album = 1;</code>
        */
       public Builder setAlbum(
-          se.michaelthelin.spotify.SpotifyProtos.Album.Builder builderForValue) {
+          se.michaelthelin.spotify.SpotifyProtos.SimpleAlbum.Builder builderForValue) {
         if (albumBuilder_ == null) {
           album_ = builderForValue.build();
           onChanged();
@@ -10180,14 +10180,14 @@ public final class SpotifyProtos {
         return this;
       }
       /**
-       * <code>required .spotify.Album album = 1;</code>
+       * <code>required .spotify.SimpleAlbum album = 1;</code>
        */
-      public Builder mergeAlbum(se.michaelthelin.spotify.SpotifyProtos.Album value) {
+      public Builder mergeAlbum(se.michaelthelin.spotify.SpotifyProtos.SimpleAlbum value) {
         if (albumBuilder_ == null) {
           if (((bitField0_ & 0x00000001) == 0x00000001) &&
-              album_ != se.michaelthelin.spotify.SpotifyProtos.Album.getDefaultInstance()) {
+              album_ != se.michaelthelin.spotify.SpotifyProtos.SimpleAlbum.getDefaultInstance()) {
             album_ =
-              se.michaelthelin.spotify.SpotifyProtos.Album.newBuilder(album_).mergeFrom(value).buildPartial();
+              se.michaelthelin.spotify.SpotifyProtos.SimpleAlbum.newBuilder(album_).mergeFrom(value).buildPartial();
           } else {
             album_ = value;
           }
@@ -10199,11 +10199,11 @@ public final class SpotifyProtos {
         return this;
       }
       /**
-       * <code>required .spotify.Album album = 1;</code>
+       * <code>required .spotify.SimpleAlbum album = 1;</code>
        */
       public Builder clearAlbum() {
         if (albumBuilder_ == null) {
-          album_ = se.michaelthelin.spotify.SpotifyProtos.Album.getDefaultInstance();
+          album_ = se.michaelthelin.spotify.SpotifyProtos.SimpleAlbum.getDefaultInstance();
           onChanged();
         } else {
           albumBuilder_.clear();
@@ -10212,17 +10212,17 @@ public final class SpotifyProtos {
         return this;
       }
       /**
-       * <code>required .spotify.Album album = 1;</code>
+       * <code>required .spotify.SimpleAlbum album = 1;</code>
        */
-      public se.michaelthelin.spotify.SpotifyProtos.Album.Builder getAlbumBuilder() {
+      public se.michaelthelin.spotify.SpotifyProtos.SimpleAlbum.Builder getAlbumBuilder() {
         bitField0_ |= 0x00000001;
         onChanged();
         return getAlbumFieldBuilder().getBuilder();
       }
       /**
-       * <code>required .spotify.Album album = 1;</code>
+       * <code>required .spotify.SimpleAlbum album = 1;</code>
        */
-      public se.michaelthelin.spotify.SpotifyProtos.AlbumOrBuilder getAlbumOrBuilder() {
+      public se.michaelthelin.spotify.SpotifyProtos.SimpleAlbumOrBuilder getAlbumOrBuilder() {
         if (albumBuilder_ != null) {
           return albumBuilder_.getMessageOrBuilder();
         } else {
@@ -10230,14 +10230,14 @@ public final class SpotifyProtos {
         }
       }
       /**
-       * <code>required .spotify.Album album = 1;</code>
+       * <code>required .spotify.SimpleAlbum album = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilder<
-          se.michaelthelin.spotify.SpotifyProtos.Album, se.michaelthelin.spotify.SpotifyProtos.Album.Builder, se.michaelthelin.spotify.SpotifyProtos.AlbumOrBuilder> 
+          se.michaelthelin.spotify.SpotifyProtos.SimpleAlbum, se.michaelthelin.spotify.SpotifyProtos.SimpleAlbum.Builder, se.michaelthelin.spotify.SpotifyProtos.SimpleAlbumOrBuilder> 
           getAlbumFieldBuilder() {
         if (albumBuilder_ == null) {
           albumBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-              se.michaelthelin.spotify.SpotifyProtos.Album, se.michaelthelin.spotify.SpotifyProtos.Album.Builder, se.michaelthelin.spotify.SpotifyProtos.AlbumOrBuilder>(
+              se.michaelthelin.spotify.SpotifyProtos.SimpleAlbum, se.michaelthelin.spotify.SpotifyProtos.SimpleAlbum.Builder, se.michaelthelin.spotify.SpotifyProtos.SimpleAlbumOrBuilder>(
                   album_,
                   getParentForChildren(),
                   isClean());
@@ -10320,23 +10320,23 @@ public final class SpotifyProtos {
         return this;
       }
 
-      // repeated .spotify.Artist artists = 3;
-      private java.util.List<se.michaelthelin.spotify.SpotifyProtos.Artist> artists_ =
+      // repeated .spotify.SimpleArtist artists = 3;
+      private java.util.List<se.michaelthelin.spotify.SpotifyProtos.SimpleArtist> artists_ =
         java.util.Collections.emptyList();
       private void ensureArtistsIsMutable() {
         if (!((bitField0_ & 0x00000004) == 0x00000004)) {
-          artists_ = new java.util.ArrayList<se.michaelthelin.spotify.SpotifyProtos.Artist>(artists_);
+          artists_ = new java.util.ArrayList<se.michaelthelin.spotify.SpotifyProtos.SimpleArtist>(artists_);
           bitField0_ |= 0x00000004;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilder<
-          se.michaelthelin.spotify.SpotifyProtos.Artist, se.michaelthelin.spotify.SpotifyProtos.Artist.Builder, se.michaelthelin.spotify.SpotifyProtos.ArtistOrBuilder> artistsBuilder_;
+          se.michaelthelin.spotify.SpotifyProtos.SimpleArtist, se.michaelthelin.spotify.SpotifyProtos.SimpleArtist.Builder, se.michaelthelin.spotify.SpotifyProtos.SimpleArtistOrBuilder> artistsBuilder_;
 
       /**
-       * <code>repeated .spotify.Artist artists = 3;</code>
+       * <code>repeated .spotify.SimpleArtist artists = 3;</code>
        */
-      public java.util.List<se.michaelthelin.spotify.SpotifyProtos.Artist> getArtistsList() {
+      public java.util.List<se.michaelthelin.spotify.SpotifyProtos.SimpleArtist> getArtistsList() {
         if (artistsBuilder_ == null) {
           return java.util.Collections.unmodifiableList(artists_);
         } else {
@@ -10344,7 +10344,7 @@ public final class SpotifyProtos {
         }
       }
       /**
-       * <code>repeated .spotify.Artist artists = 3;</code>
+       * <code>repeated .spotify.SimpleArtist artists = 3;</code>
        */
       public int getArtistsCount() {
         if (artistsBuilder_ == null) {
@@ -10354,9 +10354,9 @@ public final class SpotifyProtos {
         }
       }
       /**
-       * <code>repeated .spotify.Artist artists = 3;</code>
+       * <code>repeated .spotify.SimpleArtist artists = 3;</code>
        */
-      public se.michaelthelin.spotify.SpotifyProtos.Artist getArtists(int index) {
+      public se.michaelthelin.spotify.SpotifyProtos.SimpleArtist getArtists(int index) {
         if (artistsBuilder_ == null) {
           return artists_.get(index);
         } else {
@@ -10364,10 +10364,10 @@ public final class SpotifyProtos {
         }
       }
       /**
-       * <code>repeated .spotify.Artist artists = 3;</code>
+       * <code>repeated .spotify.SimpleArtist artists = 3;</code>
        */
       public Builder setArtists(
-          int index, se.michaelthelin.spotify.SpotifyProtos.Artist value) {
+          int index, se.michaelthelin.spotify.SpotifyProtos.SimpleArtist value) {
         if (artistsBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -10381,10 +10381,10 @@ public final class SpotifyProtos {
         return this;
       }
       /**
-       * <code>repeated .spotify.Artist artists = 3;</code>
+       * <code>repeated .spotify.SimpleArtist artists = 3;</code>
        */
       public Builder setArtists(
-          int index, se.michaelthelin.spotify.SpotifyProtos.Artist.Builder builderForValue) {
+          int index, se.michaelthelin.spotify.SpotifyProtos.SimpleArtist.Builder builderForValue) {
         if (artistsBuilder_ == null) {
           ensureArtistsIsMutable();
           artists_.set(index, builderForValue.build());
@@ -10395,9 +10395,9 @@ public final class SpotifyProtos {
         return this;
       }
       /**
-       * <code>repeated .spotify.Artist artists = 3;</code>
+       * <code>repeated .spotify.SimpleArtist artists = 3;</code>
        */
-      public Builder addArtists(se.michaelthelin.spotify.SpotifyProtos.Artist value) {
+      public Builder addArtists(se.michaelthelin.spotify.SpotifyProtos.SimpleArtist value) {
         if (artistsBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -10411,10 +10411,10 @@ public final class SpotifyProtos {
         return this;
       }
       /**
-       * <code>repeated .spotify.Artist artists = 3;</code>
+       * <code>repeated .spotify.SimpleArtist artists = 3;</code>
        */
       public Builder addArtists(
-          int index, se.michaelthelin.spotify.SpotifyProtos.Artist value) {
+          int index, se.michaelthelin.spotify.SpotifyProtos.SimpleArtist value) {
         if (artistsBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -10428,10 +10428,10 @@ public final class SpotifyProtos {
         return this;
       }
       /**
-       * <code>repeated .spotify.Artist artists = 3;</code>
+       * <code>repeated .spotify.SimpleArtist artists = 3;</code>
        */
       public Builder addArtists(
-          se.michaelthelin.spotify.SpotifyProtos.Artist.Builder builderForValue) {
+          se.michaelthelin.spotify.SpotifyProtos.SimpleArtist.Builder builderForValue) {
         if (artistsBuilder_ == null) {
           ensureArtistsIsMutable();
           artists_.add(builderForValue.build());
@@ -10442,10 +10442,10 @@ public final class SpotifyProtos {
         return this;
       }
       /**
-       * <code>repeated .spotify.Artist artists = 3;</code>
+       * <code>repeated .spotify.SimpleArtist artists = 3;</code>
        */
       public Builder addArtists(
-          int index, se.michaelthelin.spotify.SpotifyProtos.Artist.Builder builderForValue) {
+          int index, se.michaelthelin.spotify.SpotifyProtos.SimpleArtist.Builder builderForValue) {
         if (artistsBuilder_ == null) {
           ensureArtistsIsMutable();
           artists_.add(index, builderForValue.build());
@@ -10456,10 +10456,10 @@ public final class SpotifyProtos {
         return this;
       }
       /**
-       * <code>repeated .spotify.Artist artists = 3;</code>
+       * <code>repeated .spotify.SimpleArtist artists = 3;</code>
        */
       public Builder addAllArtists(
-          java.lang.Iterable<? extends se.michaelthelin.spotify.SpotifyProtos.Artist> values) {
+          java.lang.Iterable<? extends se.michaelthelin.spotify.SpotifyProtos.SimpleArtist> values) {
         if (artistsBuilder_ == null) {
           ensureArtistsIsMutable();
           super.addAll(values, artists_);
@@ -10470,7 +10470,7 @@ public final class SpotifyProtos {
         return this;
       }
       /**
-       * <code>repeated .spotify.Artist artists = 3;</code>
+       * <code>repeated .spotify.SimpleArtist artists = 3;</code>
        */
       public Builder clearArtists() {
         if (artistsBuilder_ == null) {
@@ -10483,7 +10483,7 @@ public final class SpotifyProtos {
         return this;
       }
       /**
-       * <code>repeated .spotify.Artist artists = 3;</code>
+       * <code>repeated .spotify.SimpleArtist artists = 3;</code>
        */
       public Builder removeArtists(int index) {
         if (artistsBuilder_ == null) {
@@ -10496,16 +10496,16 @@ public final class SpotifyProtos {
         return this;
       }
       /**
-       * <code>repeated .spotify.Artist artists = 3;</code>
+       * <code>repeated .spotify.SimpleArtist artists = 3;</code>
        */
-      public se.michaelthelin.spotify.SpotifyProtos.Artist.Builder getArtistsBuilder(
+      public se.michaelthelin.spotify.SpotifyProtos.SimpleArtist.Builder getArtistsBuilder(
           int index) {
         return getArtistsFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .spotify.Artist artists = 3;</code>
+       * <code>repeated .spotify.SimpleArtist artists = 3;</code>
        */
-      public se.michaelthelin.spotify.SpotifyProtos.ArtistOrBuilder getArtistsOrBuilder(
+      public se.michaelthelin.spotify.SpotifyProtos.SimpleArtistOrBuilder getArtistsOrBuilder(
           int index) {
         if (artistsBuilder_ == null) {
           return artists_.get(index);  } else {
@@ -10513,9 +10513,9 @@ public final class SpotifyProtos {
         }
       }
       /**
-       * <code>repeated .spotify.Artist artists = 3;</code>
+       * <code>repeated .spotify.SimpleArtist artists = 3;</code>
        */
-      public java.util.List<? extends se.michaelthelin.spotify.SpotifyProtos.ArtistOrBuilder> 
+      public java.util.List<? extends se.michaelthelin.spotify.SpotifyProtos.SimpleArtistOrBuilder> 
            getArtistsOrBuilderList() {
         if (artistsBuilder_ != null) {
           return artistsBuilder_.getMessageOrBuilderList();
@@ -10524,33 +10524,33 @@ public final class SpotifyProtos {
         }
       }
       /**
-       * <code>repeated .spotify.Artist artists = 3;</code>
+       * <code>repeated .spotify.SimpleArtist artists = 3;</code>
        */
-      public se.michaelthelin.spotify.SpotifyProtos.Artist.Builder addArtistsBuilder() {
+      public se.michaelthelin.spotify.SpotifyProtos.SimpleArtist.Builder addArtistsBuilder() {
         return getArtistsFieldBuilder().addBuilder(
-            se.michaelthelin.spotify.SpotifyProtos.Artist.getDefaultInstance());
+            se.michaelthelin.spotify.SpotifyProtos.SimpleArtist.getDefaultInstance());
       }
       /**
-       * <code>repeated .spotify.Artist artists = 3;</code>
+       * <code>repeated .spotify.SimpleArtist artists = 3;</code>
        */
-      public se.michaelthelin.spotify.SpotifyProtos.Artist.Builder addArtistsBuilder(
+      public se.michaelthelin.spotify.SpotifyProtos.SimpleArtist.Builder addArtistsBuilder(
           int index) {
         return getArtistsFieldBuilder().addBuilder(
-            index, se.michaelthelin.spotify.SpotifyProtos.Artist.getDefaultInstance());
+            index, se.michaelthelin.spotify.SpotifyProtos.SimpleArtist.getDefaultInstance());
       }
       /**
-       * <code>repeated .spotify.Artist artists = 3;</code>
+       * <code>repeated .spotify.SimpleArtist artists = 3;</code>
        */
-      public java.util.List<se.michaelthelin.spotify.SpotifyProtos.Artist.Builder> 
+      public java.util.List<se.michaelthelin.spotify.SpotifyProtos.SimpleArtist.Builder> 
            getArtistsBuilderList() {
         return getArtistsFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilder<
-          se.michaelthelin.spotify.SpotifyProtos.Artist, se.michaelthelin.spotify.SpotifyProtos.Artist.Builder, se.michaelthelin.spotify.SpotifyProtos.ArtistOrBuilder> 
+          se.michaelthelin.spotify.SpotifyProtos.SimpleArtist, se.michaelthelin.spotify.SpotifyProtos.SimpleArtist.Builder, se.michaelthelin.spotify.SpotifyProtos.SimpleArtistOrBuilder> 
           getArtistsFieldBuilder() {
         if (artistsBuilder_ == null) {
           artistsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
-              se.michaelthelin.spotify.SpotifyProtos.Artist, se.michaelthelin.spotify.SpotifyProtos.Artist.Builder, se.michaelthelin.spotify.SpotifyProtos.ArtistOrBuilder>(
+              se.michaelthelin.spotify.SpotifyProtos.SimpleArtist, se.michaelthelin.spotify.SpotifyProtos.SimpleArtist.Builder, se.michaelthelin.spotify.SpotifyProtos.SimpleArtistOrBuilder>(
                   artists_,
                   ((bitField0_ & 0x00000004) == 0x00000004),
                   getParentForChildren(),
@@ -12883,22 +12883,22 @@ public final class SpotifyProtos {
       "MALL\030\002 \002(\0132\016.spotify.Image\022\035\n\005LARGE\030\003 \002(" +
       "\0132\016.spotify.Image\"]\n\014SimpleArtist\022\020\n\010api",
       "_link\030\001 \002(\t\022\n\n\002id\030\003 \002(\t\022\014\n\004name\030\006 \002(\t\022\023\n" +
-      "\013spotify_uri\030\010 \002(\t\022\014\n\004type\030\t \002(\t\"\346\002\n\005Tra" +
-      "ck\022\035\n\005album\030\001 \002(\0132\016.spotify.Album\022\020\n\010api" +
-      "_link\030\002 \002(\t\022 \n\007artists\030\003 \003(\0132\017.spotify.A" +
-      "rtist\022\031\n\021available_markets\030\004 \003(\t\022\023\n\013disc" +
-      "_number\030\005 \002(\005\022\023\n\013duration_ms\030\006 \002(\005\022\020\n\010ex" +
-      "plicit\030\007 \002(\010\022)\n\014external_ids\030\010 \003(\0132\023.spo" +
-      "tify.ExternalId\022\n\n\002id\030\t \002(\t\022\014\n\004link\030\n \002(" +
-      "\t\022\014\n\004name\030\013 \002(\t\022\022\n\npopularity\030\014 \002(\005\022\023\n\013p" +
-      "review_url\030\r \002(\t\022\023\n\013spotify_url\030\016 \002(\t\022\024\n",
-      "\014track_number\030\017 \002(\005\022\014\n\004type\030\020 \002(\t\"&\n\nExt" +
-      "ernalId\022\n\n\002id\030\001 \002(\t\022\014\n\004type\030\002 \002(\t\"9\n\005Ima" +
-      "ge\022\016\n\006height\030\001 \002(\005\022\021\n\timage_url\030\002 \002(\t\022\r\n" +
-      "\005width\030\003 \002(\005*C\n\tAlbumType\022\t\n\005ALBUM\020\000\022\n\n\006" +
-      "SINGLE\020\001\022\017\n\013COMPILATION\020\002\022\016\n\nAPPEARS_ON\020" +
-      "\003B)\n\030se.michaelthelin.spotifyB\rSpotifyPr" +
-      "otos"
+      "\013spotify_uri\030\010 \002(\t\022\014\n\004type\030\t \002(\t\"\362\002\n\005Tra" +
+      "ck\022#\n\005album\030\001 \002(\0132\024.spotify.SimpleAlbum\022" +
+      "\020\n\010api_link\030\002 \002(\t\022&\n\007artists\030\003 \003(\0132\025.spo" +
+      "tify.SimpleArtist\022\031\n\021available_markets\030\004" +
+      " \003(\t\022\023\n\013disc_number\030\005 \002(\005\022\023\n\013duration_ms" +
+      "\030\006 \002(\005\022\020\n\010explicit\030\007 \002(\010\022)\n\014external_ids" +
+      "\030\010 \003(\0132\023.spotify.ExternalId\022\n\n\002id\030\t \002(\t\022" +
+      "\014\n\004link\030\n \002(\t\022\014\n\004name\030\013 \002(\t\022\022\n\npopularit" +
+      "y\030\014 \002(\005\022\023\n\013preview_url\030\r \002(\t\022\023\n\013spotify_",
+      "url\030\016 \002(\t\022\024\n\014track_number\030\017 \002(\005\022\014\n\004type\030" +
+      "\020 \002(\t\"&\n\nExternalId\022\n\n\002id\030\001 \002(\t\022\014\n\004type\030" +
+      "\002 \002(\t\"9\n\005Image\022\016\n\006height\030\001 \002(\005\022\021\n\timage_" +
+      "url\030\002 \002(\t\022\r\n\005width\030\003 \002(\005*C\n\tAlbumType\022\t\n" +
+      "\005ALBUM\020\000\022\n\n\006SINGLE\020\001\022\017\n\013COMPILATION\020\002\022\016\n" +
+      "\nAPPEARS_ON\020\003B)\n\030se.michaelthelin.spotif" +
+      "yB\rSpotifyProtos"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

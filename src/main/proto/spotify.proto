@@ -56,9 +56,9 @@ message SimpleArtist {
 }
 
 message Track {
-    required Album album = 1;
+    required SimpleAlbum album = 1;
     required string api_link = 2;
-    repeated Artist artists = 3;
+    repeated SimpleArtist artists = 3;
     repeated string available_markets = 4;
     required int32 disc_number = 5;
     required int32 duration_ms = 6;
