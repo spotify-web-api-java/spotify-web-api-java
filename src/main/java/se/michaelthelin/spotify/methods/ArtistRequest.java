@@ -1,6 +1,7 @@
 package se.michaelthelin.spotify.methods;
 
-import com.google.common.base.Joiner;
+import se.michaelthelin.spotify.JsonUtil;
+import se.michaelthelin.spotify.SpotifyProtos.Artist;
 
 public class ArtistRequest extends AbstractRequest {
 
@@ -10,6 +11,10 @@ public class ArtistRequest extends AbstractRequest {
 
   public static Builder builder() {
     return new Builder();
+  }
+
+  public Artist getArtist() {
+    return JsonUtil.createArtist(getJson());
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
