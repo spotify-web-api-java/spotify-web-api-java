@@ -25,13 +25,6 @@ public class ArtistRequest extends AbstractRequest {
       return path(String.format("/v1/artists/%s", id));
     }
 
-    public Builder id(String... ids) {
-      assert (ids != null);
-      String idsParameter = Joiner.on(",").join(ids).toString();
-      path("/v1/artists");
-      return parameter("ids", idsParameter);
-    }
-
     public ArtistRequest build() {
       return new ArtistRequest(this);
     }

@@ -68,14 +68,32 @@ public class Api {
     return builder;
   }
 
+  public AlbumsRequest.Builder albums() {
+    AlbumsRequest.Builder builder = AlbumsRequest.builder();
+    setDefaults(builder);
+    return builder;
+  }
+
   public ArtistRequest.Builder artist() {
     ArtistRequest.Builder builder = ArtistRequest.builder();
     setDefaults(builder);
     return builder;
   }
 
+  public ArtistsRequest.Builder artists() {
+    ArtistsRequest.Builder builder = ArtistsRequest.builder();
+    setDefaults(builder);
+    return builder;
+  }
+
   public TrackRequest.Builder track() {
     TrackRequest.Builder builder = TrackRequest.builder();
+    setDefaults(builder);
+    return builder;
+  }
+
+  public TracksRequest.Builder tracks() {
+    TracksRequest.Builder builder = TracksRequest.builder();
     setDefaults(builder);
     return builder;
   }

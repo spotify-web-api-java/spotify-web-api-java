@@ -2,17 +2,19 @@ package se.michaelthelin.spotify.methods;
 
 import com.google.common.base.Joiner;
 import se.michaelthelin.spotify.JsonUtil;
+import se.michaelthelin.spotify.SpotifyProtos;
 import se.michaelthelin.spotify.SpotifyProtos.Album;
-import se.michaelthelin.spotify.SpotifyProtos.AlbumType;
 
-public class AlbumRequest extends AbstractRequest {
+import java.util.List;
 
-  public AlbumRequest(Builder builder) {
+public class AlbumsRequest extends AbstractRequest {
+
+  public AlbumsRequest(Builder builder) {
     super(builder);
   }
 
-  public Album getAlbum() {
-    return JsonUtil.createAlbum(this.getJson());
+  public List<Album> getAlbums() {
+    return JsonUtil.createAlbums(getJson());
   }
 
   public static Builder builder() {
@@ -22,17 +24,24 @@ public class AlbumRequest extends AbstractRequest {
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
     /**
-     * The album with the given id.
+     * The albums with the given ids.
      *
-     * @param id The id for the album.
+     * @param ids The ids for the albums.
      * @return AlbumRequest
      */
-    public Builder id(String id) {
-      assert (id != null);
-      return path(String.format("/v1/albums/%s", id));
+    public Builder id(String... ids) {
+      assert (ids != null);
+      String idsParameter = Joiner.on(",").join(ids).toString();
+      path("/v1/albums");
+      return parameter("ids", idsParameter);
     }
 
-    public Builder types(AlbumType... types) {
+    public Builder forArtist(String id) {
+      assert (id != null);
+      return path(String.format("/v1/artists/%s/albums", id));
+    }
+
+    public Builder types(SpotifyProtos.AlbumType... types) {
       assert (types != null);
       assert (types.length > 0);
       String albumsParameter = Joiner.on(",").join(types).toString();
@@ -49,10 +58,9 @@ public class AlbumRequest extends AbstractRequest {
       return parameter("offset", String.valueOf(offset));
     }
 
-    public AlbumRequest build() {
-      return new AlbumRequest(this);
+    public AlbumsRequest build() {
+      return new AlbumsRequest(this);
     }
 
   }
-
 }

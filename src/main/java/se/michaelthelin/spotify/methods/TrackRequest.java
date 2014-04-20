@@ -25,13 +25,6 @@ public class TrackRequest extends AbstractRequest {
       return path(String.format("/v1/tracks/%s", id));
     }
 
-    public Builder id(String... ids) {
-      assert (ids != null);
-      String idsParameter = Joiner.on(",").join(ids).toString();
-      path("/v1/tracks");
-      return parameter("ids", idsParameter);
-    }
-
     public TrackRequest build() {
       return new TrackRequest(this);
     }
