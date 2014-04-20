@@ -3,6 +3,8 @@ package se.michaelthelin.spotify;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import se.michaelthelin.spotify.SpotifyProtos.Artist;
+import se.michaelthelin.spotify.SpotifyProtos.Album;
+import se.michaelthelin.spotify.SpotifyProtos.AlbumType;
 import se.michaelthelin.spotify.SpotifyProtos.Image;
 
 import java.util.ArrayList;
@@ -78,5 +80,26 @@ public class JsonUtil {
     artistBuilder.setType(jsonObject.getString("type"));
 
     return artistBuilder.build();
+  }
+
+  public static Album newAlbum(String json) {
+    return newAlbum(JSONObject.fromObject(json));
+  }
+
+  public static Album newAlbum(JSONObject jsonObject) {
+    if (jsonObject == null || jsonObject.isNullObject()) {
+      return null;
+    }
+    Album.Builder albumBuilder = Album.newBuilder();
+
+    albumBuilder.setAlbumType(AlbumType.valueOf(jsonObject.getString("album_type")));
+    albumBuilder.setApiLink(jsonObject.getString("api_link"));
+
+    JSONArray artistsJsonArray = jsonObject.getJSONArray("artists");
+    for (int i = 0; i < artistsJsonArray.size(); i++) {
+      albumBuilder.addArtists(newArtist(artistsJsonArray.getJSONObject(i)));
+    }
+
+    return albumBuilder.build();
   }
 }

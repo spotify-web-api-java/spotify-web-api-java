@@ -2,7 +2,7 @@ package se.michaelthelin.spotify;
 
 import org.junit.Test;
 import se.michaelthelin.spotify.SpotifyProtos.Artist;
-import se.michaelthelin.spotify.SpotifyProtos.Image;
+import se.michaelthelin.spotify.SpotifyProtos.Album;
 
 import java.io.File;
 import java.io.FileReader;
@@ -58,6 +58,13 @@ public class JsonUtilTest {
 
     Artist secondArtist = artists.get(1);
     assertEquals("https://api.spotify.com/v1/artists/3dBVyJ7JuOMt4GE9607Qin", secondArtist.getApiLink());
+  }
+
+  @Test
+  public void testNewAlbum() throws Exception {
+    String json = readTestData("album.json");
+    Album album = JsonUtil.newAlbum(json);
+    assertEquals("https://api.spotify.com/v1/albums/0sNOF9WDwhWunNAHPD3Baj", album.getApiLink());
   }
 
   private String TEST_DATA_DIR = "src/test/fixtures/";
