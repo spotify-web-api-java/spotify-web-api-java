@@ -14,11 +14,11 @@ public class SearchRequest extends AbstractRequest {
   }
 
   public List<Album> getAlbums() {
-    throw new RuntimeException("Not implemented");
+    return JsonUtil.createAlbums(getJson());
   }
 
   public List<Track> getTracks() {
-    throw new RuntimeException("Not implemented");
+    return JsonUtil.createTracks(getJson());
   }
 
   public List<Artist> getArtists() {
