@@ -11,6 +11,7 @@ import se.michaelthelin.spotify.SpotifyProtos.SimpleAlbum;
 import se.michaelthelin.spotify.SpotifyProtos.Track;
 import se.michaelthelin.spotify.SpotifyProtos.ExternalId;
 
+import javax.print.attribute.standard.JobName;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -226,4 +227,16 @@ public class JsonUtil {
     return builder.build();
   }
 
+  public static List<Track> newTracksList(String json) {
+    return newTracksList(JSONObject.fromObject(json));
+  }
+
+  private static List<Track> newTracksList(JSONObject jsonObject) {
+    List<Track> returnedTracks = new ArrayList<Track>();
+    JSONArray tracks = jsonObject.getJSONArray("tracks");
+    for (int i = 0; i < tracks.size(); i++) {
+      returnedTracks.add(newTrack(tracks.getJSONObject(i)));
+    }
+    return returnedTracks;
+  }
 }

@@ -122,6 +122,13 @@ public class JsonUtilTest {
     assertEquals("0eGsygTp906u18L0Oimnem", track.getId());
   }
 
+  @Test
+  public void testNewTracksList() throws Exception {
+    String json = readTestData("tracks.json");
+    List<Track> tracks = JsonUtil.newTracksList(json);
+    assertEquals(2, tracks.size());
+  }
+
   private String TEST_DATA_DIR = "src/test/fixtures/";
 
   private int MAX_TEST_DATA_FILE_SIZE = 65536;
