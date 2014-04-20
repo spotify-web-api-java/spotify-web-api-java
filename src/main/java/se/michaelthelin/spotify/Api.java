@@ -16,7 +16,7 @@ public class Api {
   /**
    * The default port of Spotify API calls.
    */
-  public static final int DEFAULT_PORT = 80;
+  public static final int DEFAULT_PORT = 443;
 
   /**
    * A HttpManager configured with default settings.
