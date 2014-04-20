@@ -1,12 +1,18 @@
 package se.michaelthelin.spotify.methods;
 
 import com.google.common.base.Joiner;
+import se.michaelthelin.spotify.JsonUtil;
+import se.michaelthelin.spotify.SpotifyProtos.Album;
 import se.michaelthelin.spotify.SpotifyProtos.AlbumType;
 
-public final class AlbumRequest extends AbstractRequest {
+public class AlbumRequest extends AbstractRequest {
 
   public AlbumRequest(Builder builder) {
     super(builder);
+  }
+
+  public Album getAlbum() {
+    return JsonUtil.createAlbum(this.getJson());
   }
 
   public static Builder builder() {

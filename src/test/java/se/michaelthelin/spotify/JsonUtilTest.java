@@ -129,15 +129,15 @@ public class JsonUtilTest {
     assertEquals(2, tracks.size());
   }
 
-  private String TEST_DATA_DIR = "src/test/fixtures/";
+  private static final String TEST_DATA_DIR = "src/test/fixtures/";
 
-  private int MAX_TEST_DATA_FILE_SIZE = 65536;
+  private static final int MAX_TEST_DATA_FILE_SIZE = 65536;
 
-  private String readTestData(String fileName) throws IOException {
+  public static String readTestData(String fileName) throws IOException {
     return readFromFile(new File(TEST_DATA_DIR, fileName));
   }
 
-  private String readFromFile(File file) throws IOException {
+  private static String readFromFile(File file) throws IOException {
     Reader reader = new FileReader(file);
     CharBuffer charBuffer = CharBuffer.allocate(MAX_TEST_DATA_FILE_SIZE);
     reader.read(charBuffer);

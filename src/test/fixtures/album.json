@@ -5,7 +5,7 @@
         {
             "api_link": "https://api.spotify.com/v1/artists/2BTZIqw0ntH9MvilQ3ewNY",
             "id": "2BTZIqw0ntH9MvilQ3ewNY",
-            "name": "Cyndi Lauper",
+            "name": "Mock Lauper",
             "spotify_uri": "spotify:artist:2BTZIqw0ntH9MvilQ3ewNY",
             "type": "artist"
         }

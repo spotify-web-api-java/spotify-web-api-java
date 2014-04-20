@@ -20,28 +20,28 @@ public class ApiTest {
   public void shouldCreateAGetAlbumUrl() {
     Api api = Api.DEFAULT_API;
     Request request = api.album().id("5oEljuMoe9MXH6tBIPbd5e").build();
-    assertEquals("https://api.spotify.com:80/v1/albums/5oEljuMoe9MXH6tBIPbd5e", request.toString());
+    assertEquals("https://api.spotify.com:443/v1/albums/5oEljuMoe9MXH6tBIPbd5e", request.toString());
   }
 
   @Test
   public void shouldCreateAGetArtistUrl() {
     Api api = Api.DEFAULT_API;
     Request request = api.artist().id("5rSXSAkZ67PYJSvpUpkOr7").build();
-    assertEquals("https://api.spotify.com:80/v1/artists/5rSXSAkZ67PYJSvpUpkOr7", request.toString());
+    assertEquals("https://api.spotify.com:443/v1/artists/5rSXSAkZ67PYJSvpUpkOr7", request.toString());
   }
 
   @Test
   public void shouldCreateAGetTrackUrl() {
     Api api = Api.DEFAULT_API;
     Request request = api.track().id("6hDH3YWFdcUNQjubYztIsG").build();
-    assertEquals("https://api.spotify.com:80/v1/tracks/6hDH3YWFdcUNQjubYztIsG", request.toString());
+    assertEquals("https://api.spotify.com:443/v1/tracks/6hDH3YWFdcUNQjubYztIsG", request.toString());
   }
 
   @Test
   public void shouldCreateAGetAlbumsUrl() {
     Api api = Api.DEFAULT_API;
     Request request = api.album().id("6hDH3YWFdcUNQjubYztIsG", "2IA4WEsWAYpV9eKkwR2UYv").build();
-    assertEquals("https://api.spotify.com:80/v1/albums", request.toString());
+    assertEquals("https://api.spotify.com:443/v1/albums", request.toString());
     assertHasParameter(request.toUrl(), "ids", "6hDH3YWFdcUNQjubYztIsG,2IA4WEsWAYpV9eKkwR2UYv");
   }
 
@@ -49,7 +49,7 @@ public class ApiTest {
   public void shouldCreateAGetTracksUrl() {
     Api api = Api.DEFAULT_API;
     Request request = api.track().id("6hDH3YWFdcUNQjubYztIsG","2IA4WEsWAYpV9eKkwR2UYv").build();
-    assertEquals("https://api.spotify.com:80/v1/tracks", request.toString());
+    assertEquals("https://api.spotify.com:443/v1/tracks", request.toString());
     assertHasParameter(request.toUrl(), "ids", "6hDH3YWFdcUNQjubYztIsG,2IA4WEsWAYpV9eKkwR2UYv");
   }
 
@@ -57,14 +57,14 @@ public class ApiTest {
   public void shouldCreateAUrlForArtistsAlbum() {
     Api api = Api.DEFAULT_API;
     Request request = api.album().forArtist("4AK6F7OLvEQ5QYCBNiQWHq").build();
-    assertEquals("https://api.spotify.com:80/v1/artists/4AK6F7OLvEQ5QYCBNiQWHq/albums", request.toString());
+    assertEquals("https://api.spotify.com:443/v1/artists/4AK6F7OLvEQ5QYCBNiQWHq/albums", request.toString());
   }
 
   @Test
   public void shouldHaveAlbumTypeParametersInArtistsAlbumUrl() {
     Api api = Api.DEFAULT_API;
     Request request = api.album().forArtist("4AK6F7OLvEQ5QYCBNiQWHq").types(ALBUM, SINGLE).build();
-    assertEquals("https://api.spotify.com:80/v1/artists/4AK6F7OLvEQ5QYCBNiQWHq/albums", request.toString());
+    assertEquals("https://api.spotify.com:443/v1/artists/4AK6F7OLvEQ5QYCBNiQWHq/albums", request.toString());
     assertHasParameter(request.toUrl(), "album_type", "ALBUM,SINGLE");
   }
 
@@ -72,7 +72,7 @@ public class ApiTest {
   public void shouldHaveLimitParameterInArtistsAlbumUrl() {
     Api api = Api.DEFAULT_API;
     Request request = api.album().forArtist("4AK6F7OLvEQ5QYCBNiQWHq").limit(2).build();
-    assertEquals("https://api.spotify.com:80/v1/artists/4AK6F7OLvEQ5QYCBNiQWHq/albums", request.toString());
+    assertEquals("https://api.spotify.com:443/v1/artists/4AK6F7OLvEQ5QYCBNiQWHq/albums", request.toString());
     assertHasParameter(request.toUrl(), "limit", "2");
   }
 
@@ -80,7 +80,7 @@ public class ApiTest {
   public void shouldHaveOffsetParameterInArtistsAlbumUrl() {
     Api api = Api.DEFAULT_API;
     Request request = api.album().forArtist("4AK6F7OLvEQ5QYCBNiQWHq").offset(5).build();
-    assertEquals("https://api.spotify.com:80/v1/artists/4AK6F7OLvEQ5QYCBNiQWHq/albums", request.toString());
+    assertEquals("https://api.spotify.com:443/v1/artists/4AK6F7OLvEQ5QYCBNiQWHq/albums", request.toString());
     assertHasParameter(request.toUrl(), "offset", "5");
   }
 
@@ -88,7 +88,7 @@ public class ApiTest {
   public void shouldHaveSeveralQueryParametersAtTheSameTimeInArtistsAlbumUrl() {
     Api api = Api.DEFAULT_API;
     Request request = api.album().forArtist("4AK6F7OLvEQ5QYCBNiQWHq").types(SINGLE).limit(2).offset(5).build();
-    assertEquals("https://api.spotify.com:80/v1/artists/4AK6F7OLvEQ5QYCBNiQWHq/albums", request.toString());
+    assertEquals("https://api.spotify.com:443/v1/artists/4AK6F7OLvEQ5QYCBNiQWHq/albums", request.toString());
     assertHasParameter(request.toUrl(), "offset", "5");
     assertHasParameter(request.toUrl(), "limit", "2");
     assertHasParameter(request.toUrl(), "album_type", "SINGLE");
@@ -98,7 +98,7 @@ public class ApiTest {
   public void shouldCreateAGetArtistsUrl() {
     Api api = Api.DEFAULT_API;
     Request request = api.artist().id("4AK6F7OLvEQ5QYCBNiQWHq","6rEzedK7cKWjeQWdAYvWVG").build();
-    assertEquals("https://api.spotify.com:80/v1/artists", request.toString());
+    assertEquals("https://api.spotify.com:443/v1/artists", request.toString());
     assertHasParameter(request.toUrl(), "ids", "4AK6F7OLvEQ5QYCBNiQWHq,6rEzedK7cKWjeQWdAYvWVG");
   }
 
@@ -106,7 +106,7 @@ public class ApiTest {
   public void shouldCreateSearchUrl() {
     Api api = Api.DEFAULT_API;
     Request request = api.search().query("moulat swalf").build();
-    assertEquals("https://api.spotify.com:80/v1/search", request.toString());
+    assertEquals("https://api.spotify.com:443/v1/search", request.toString());
     assertHasParameter(request.toUrl(), "q", "moulat+swalf");
   }
 
@@ -114,7 +114,7 @@ public class ApiTest {
   public void shouldCreateSearchUrlWithLimitParameter() {
     Api api = Api.DEFAULT_API;
     Request request = api.search().query("moulat swalf").limit(2).build();
-    assertEquals("https://api.spotify.com:80/v1/search", request.toString());
+    assertEquals("https://api.spotify.com:443/v1/search", request.toString());
     assertHasParameter(request.toUrl(), "q", "moulat+swalf");
     assertHasParameter(request.toUrl(), "limit", "2");
   }
@@ -123,7 +123,7 @@ public class ApiTest {
   public void shouldCreateSearchUrlWithOffsetParameter() {
     Api api = Api.DEFAULT_API;
     Request request = api.search().query("moulat swalf").offset(2).build();
-    assertEquals("https://api.spotify.com:80/v1/search", request.toString());
+    assertEquals("https://api.spotify.com:443/v1/search", request.toString());
     assertHasParameter(request.toUrl(), "q", "moulat+swalf");
     assertHasParameter(request.toUrl(), "offset", "2");
   }
@@ -132,7 +132,7 @@ public class ApiTest {
   public void shouldCreateSearchUrlWithTypeParameter() {
     Api api = Api.DEFAULT_API;
     Request request = api.search().query("moulat swalf").type("album").build();
-    assertEquals("https://api.spotify.com:80/v1/search", request.toString());
+    assertEquals("https://api.spotify.com:443/v1/search", request.toString());
     assertHasParameter(request.toUrl(), "q", "moulat+swalf");
     assertHasParameter(request.toUrl(), "type", "album");
   }
@@ -141,7 +141,7 @@ public class ApiTest {
   public void shouldModifySchemeInUrl() {
     Api api = Api.builder().scheme(Scheme.HTTP).build();
     Request request = api.album().id("5oEljuMoe9MXH6tBIPbd5e").build();
-    assertEquals("http://api.spotify.com:80/v1/albums/5oEljuMoe9MXH6tBIPbd5e", request.toString());
+    assertEquals("http://api.spotify.com:443/v1/albums/5oEljuMoe9MXH6tBIPbd5e", request.toString());
   }
 
   @Test
@@ -155,7 +155,7 @@ public class ApiTest {
   public void shouldModifyHostInUrl() {
     Api api = Api.builder().host("www.michaelthelin.se").build();
     Request request = api.album().id("5oEljuMoe9MXH6tBIPbd5e").build();
-    assertEquals("https://www.michaelthelin.se:80/v1/albums/5oEljuMoe9MXH6tBIPbd5e", request.toString());
+    assertEquals("https://www.michaelthelin.se:443/v1/albums/5oEljuMoe9MXH6tBIPbd5e", request.toString());
   }
 
   void assertHasParameter(Url url, String name, Object value) {

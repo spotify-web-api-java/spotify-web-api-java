@@ -1,0 +1,36 @@
+{
+    "artists": [
+        {
+            "api_link": "https://api.spotify.com/v1/artists/08td7MxkoHQkXnWAYD8d6Q",
+            "genres": [],
+            "id": "08td7MxkoHQkXnWAYD8d6Q",
+            "images": {
+                "MEDIUM": {
+                    "height": 300,
+                    "image_url": "https://d3rt1990lpmkn.cloudfront.net/original/b414091165ea0f4172089c2fc67bb35aa37cfc55",
+                    "width": 300
+                },
+                "SMALL": {
+                    "height": 64,
+                    "image_url": "https://d3rt1990lpmkn.cloudfront.net/original/8522fc78be4bf4e83fea8e67bb742e7d3dfe21b4",
+                    "width": 64
+                },
+                "LARGE": {
+                    "height": 640,
+                    "image_url": "https://d3rt1990lpmkn.cloudfront.net/original/f2798ddab0c7b76dc2d270b65c4f67ddef7f6718",
+                    "width": 640
+                }
+            },
+            "link": "https://open.spotify.com/artist/08td7MxkoHQkXnWAYD8d6Q",
+            "name": "Tania Bowra",
+            "popularity": 0,
+            "spotify_uri": "spotify:artist:08td7MxkoHQkXnWAYD8d6Q",
+            "type": "artist"
+        }
+    ],
+    "paging": {
+        "next": null,
+        "previous": null,
+        "total_result_count": 1
+    }
+}
