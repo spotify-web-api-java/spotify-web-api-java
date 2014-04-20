@@ -6,7 +6,7 @@ option java_outer_classname = "SpotifyProtos";
 message Album {
     required AlbumType album_type = 1;
     required string api_link = 2;
-    repeated Artist artists = 3;
+    repeated SimpleArtist artists = 3;
     repeated string available_markets = 4;
     repeated ExternalId external_ids = 5;
     repeated string genres = 6;
@@ -19,6 +19,14 @@ message Album {
     required string spotify_uri = 13;
     repeated Track tracks = 14;
     required string type = 15;
+}
+
+message SimpleAlbum {
+    required string api_link = 1;
+    required int32 id = 2;
+    required string name = 3;
+    required string spotify_uri = 4;
+    required string type = 5;
 }
 
 message Artist {
@@ -37,6 +45,14 @@ message Artist {
         required Image SMALL = 2;
         required Image LARGE = 3;
     }
+}
+
+message SimpleArtist {
+    required string api_link = 1;
+    required string id = 3;
+    required string name = 6;
+    required string spotify_uri = 8;
+    required string type = 9;
 }
 
 message Track {
