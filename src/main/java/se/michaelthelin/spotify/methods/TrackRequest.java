@@ -1,11 +1,16 @@
 package se.michaelthelin.spotify.methods;
 
-import com.google.common.base.Joiner;
+import se.michaelthelin.spotify.JsonUtil;
+import se.michaelthelin.spotify.SpotifyProtos.Track;
 
 public class TrackRequest extends AbstractRequest {
 
   public TrackRequest(Builder builder) {
     super(builder);
+  }
+
+  public Track getTrack() {
+    return JsonUtil.createTrack(getJson());
   }
 
   public static Builder builder() {
