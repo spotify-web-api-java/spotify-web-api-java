@@ -3,6 +3,7 @@ package se.michaelthelin.spotify;
 import org.junit.Test;
 import se.michaelthelin.spotify.SpotifyProtos.Artist;
 import se.michaelthelin.spotify.SpotifyProtos.Album;
+import se.michaelthelin.spotify.SpotifyProtos.Image;
 
 import java.io.File;
 import java.io.FileReader;
@@ -56,8 +57,46 @@ public class JsonUtilTest {
     Artist firstArtist = artists.get(0);
     assertEquals("https://api.spotify.com/v1/artists/0oSGxfWSnnOXhD2fKuz2Gy", firstArtist.getApiLink());
 
+    List<String> genresFirstArtist = firstArtist.getGenresList();
+    assertTrue(genresFirstArtist.contains("Mod"));
+    assertTrue(genresFirstArtist.contains("Club/Dance"));
+
+    assertEquals("0oSGxfWSnnOXhD2fKuz2Gy", firstArtist.getId());
+
+    Artist.Images artistImages = firstArtist.getImages();
+
+    Image smallImage = artistImages.getSMALL();
+    assertEquals(45, smallImage.getHeight());
+    assertEquals(64, smallImage.getWidth());
+    assertEquals("https://d3rt1990lpmkn.cloudfront.net/original/5b2b602e58962bc09e38ee7aa2b74d261aa5bce0", smallImage.getImageUrl());
+
+    Image mediumImage = artistImages.getMEDIUM();
+    assertEquals(141, mediumImage.getHeight());
+    assertEquals(199, mediumImage.getWidth());
+    assertEquals("https://d3rt1990lpmkn.cloudfront.net/original/3326e1f51f1eb147c3b24a4b828ed5f1191e09db", mediumImage.getImageUrl());
+
+    Image largeImage = artistImages.getLARGE();
+    assertEquals(453, largeImage.getHeight());
+    assertEquals(640, largeImage.getWidth());
+    assertEquals("https://d3rt1990lpmkn.cloudfront.net/original/341f90bcf363b2577dacdf4c4e9b828c51c5b18a", largeImage.getImageUrl());
+
+    Image xLargeImage = artistImages.getXLARGE();
+    assertEquals(707, xLargeImage.getHeight());
+    assertEquals(1000, xLargeImage.getWidth());
+    assertEquals("https://d3rt1990lpmkn.cloudfront.net/original/407f471e15ac91b153b4ec81bac3973bde221bb8", xLargeImage.getImageUrl());
+
+    assertEquals("https://open.spotify.com/artist/0oSGxfWSnnOXhD2fKuz2Gy", firstArtist.getLink());
+    assertEquals("David Bowie", firstArtist.getName());
+    assertEquals(78, firstArtist.getPopularity());
+    assertEquals("spotify:artist:0oSGxfWSnnOXhD2fKuz2Gy", firstArtist.getSpotifyUri());
+    assertEquals("artist", firstArtist.getType());
+
     Artist secondArtist = artists.get(1);
     assertEquals("https://api.spotify.com/v1/artists/3dBVyJ7JuOMt4GE9607Qin", secondArtist.getApiLink());
+
+    List<String> genresSecondArtist = secondArtist.getGenresList();
+    assertTrue(genresSecondArtist.contains("Album Rock"));
+    assertTrue(genresSecondArtist.contains("Hard Rock"));
   }
 
   @Test

@@ -72,6 +72,10 @@ public class JsonUtil {
     Image largeImage = newImage(largeImageJsonObject);
     artistImagesBuilder.setLARGE(largeImage);
 
+    JSONObject xLargeImageJsonObject = imagesJsonObject.getJSONObject("XLARGE");
+    Image xLargeImage = newImage(xLargeImageJsonObject);
+    artistImagesBuilder.setXLARGE(xLargeImage);
+
     artistBuilder.setImages(artistImagesBuilder.build());
 
     artistBuilder.setLink(jsonObject.getString("link"));
