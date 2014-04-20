@@ -29,7 +29,7 @@ message Album {
 
 message SimpleAlbum {
     required string api_link = 1;
-    required int32 id = 2;
+    required string id = 2;
     required string name = 3;
     required string spotify_uri = 4;
     required string type = 5;

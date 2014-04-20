@@ -4506,15 +4506,20 @@ public final class SpotifyProtos {
     com.google.protobuf.ByteString
         getApiLinkBytes();
 
-    // required int32 id = 2;
+    // required string id = 2;
     /**
-     * <code>required int32 id = 2;</code>
+     * <code>required string id = 2;</code>
      */
     boolean hasId();
     /**
-     * <code>required int32 id = 2;</code>
+     * <code>required string id = 2;</code>
      */
-    int getId();
+    java.lang.String getId();
+    /**
+     * <code>required string id = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getIdBytes();
 
     // required string name = 3;
     /**
@@ -4617,9 +4622,9 @@ public final class SpotifyProtos {
               apiLink_ = input.readBytes();
               break;
             }
-            case 16: {
+            case 18: {
               bitField0_ |= 0x00000002;
-              id_ = input.readInt32();
+              id_ = input.readBytes();
               break;
             }
             case 26: {
@@ -4720,20 +4725,47 @@ public final class SpotifyProtos {
       }
     }
 
-    // required int32 id = 2;
+    // required string id = 2;
     public static final int ID_FIELD_NUMBER = 2;
-    private int id_;
+    private java.lang.Object id_;
     /**
-     * <code>required int32 id = 2;</code>
+     * <code>required string id = 2;</code>
      */
     public boolean hasId() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>required int32 id = 2;</code>
+     * <code>required string id = 2;</code>
      */
-    public int getId() {
-      return id_;
+    public java.lang.String getId() {
+      java.lang.Object ref = id_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          id_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string id = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getIdBytes() {
+      java.lang.Object ref = id_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        id_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     // required string name = 3;
@@ -4867,7 +4899,7 @@ public final class SpotifyProtos {
 
     private void initFields() {
       apiLink_ = "";
-      id_ = 0;
+      id_ = "";
       name_ = "";
       spotifyUri_ = "";
       type_ = "";
@@ -4908,7 +4940,7 @@ public final class SpotifyProtos {
         output.writeBytes(1, getApiLinkBytes());
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeInt32(2, id_);
+        output.writeBytes(2, getIdBytes());
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         output.writeBytes(3, getNameBytes());
@@ -4934,7 +4966,7 @@ public final class SpotifyProtos {
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, id_);
+          .computeBytesSize(2, getIdBytes());
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
@@ -5066,7 +5098,7 @@ public final class SpotifyProtos {
         super.clear();
         apiLink_ = "";
         bitField0_ = (bitField0_ & ~0x00000001);
-        id_ = 0;
+        id_ = "";
         bitField0_ = (bitField0_ & ~0x00000002);
         name_ = "";
         bitField0_ = (bitField0_ & ~0x00000004);
@@ -5144,7 +5176,9 @@ public final class SpotifyProtos {
           onChanged();
         }
         if (other.hasId()) {
-          setId(other.getId());
+          bitField0_ |= 0x00000002;
+          id_ = other.id_;
+          onChanged();
         }
         if (other.hasName()) {
           bitField0_ |= 0x00000004;
@@ -5282,35 +5316,76 @@ public final class SpotifyProtos {
         return this;
       }
 
-      // required int32 id = 2;
-      private int id_ ;
+      // required string id = 2;
+      private java.lang.Object id_ = "";
       /**
-       * <code>required int32 id = 2;</code>
+       * <code>required string id = 2;</code>
        */
       public boolean hasId() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>required int32 id = 2;</code>
+       * <code>required string id = 2;</code>
        */
-      public int getId() {
-        return id_;
+      public java.lang.String getId() {
+        java.lang.Object ref = id_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          id_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
       }
       /**
-       * <code>required int32 id = 2;</code>
+       * <code>required string id = 2;</code>
        */
-      public Builder setId(int value) {
-        bitField0_ |= 0x00000002;
+      public com.google.protobuf.ByteString
+          getIdBytes() {
+        java.lang.Object ref = id_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          id_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string id = 2;</code>
+       */
+      public Builder setId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
         id_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 id = 2;</code>
+       * <code>required string id = 2;</code>
        */
       public Builder clearId() {
         bitField0_ = (bitField0_ & ~0x00000002);
-        id_ = 0;
+        id_ = getDefaultInstance().getId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string id = 2;</code>
+       */
+      public Builder setIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        id_ = value;
         onChanged();
         return this;
       }
@@ -14027,7 +14102,7 @@ public final class SpotifyProtos {
       "f\n\006Images\022\036\n\006MEDIUM\030\001 \002(\0132\016.spotify.Imag" +
       "e\022\035\n\005SMALL\030\002 \002(\0132\016.spotify.Image\022\035\n\005LARG" +
       "E\030\003 \002(\0132\016.spotify.Image\"\\\n\013SimpleAlbum\022\020" +
-      "\n\010api_link\030\001 \002(\t\022\n\n\002id\030\002 \002(\005\022\014\n\004name\030\003 \002" +
+      "\n\010api_link\030\001 \002(\t\022\n\n\002id\030\002 \002(\t\022\014\n\004name\030\003 \002" +
       "(\t\022\023\n\013spotify_uri\030\004 \002(\t\022\014\n\004type\030\005 \002(\t\"\272\002" +
       "\n\006Artist\022\020\n\010api_link\030\001 \002(\t\022\016\n\006genres\030\002 \003" +
       "(\t\022\n\n\002id\030\003 \002(\t\022&\n\006images\030\004 \002(\0132\026.spotify" +

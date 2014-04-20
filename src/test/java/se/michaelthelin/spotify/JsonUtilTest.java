@@ -4,6 +4,7 @@ import org.junit.Test;
 import se.michaelthelin.spotify.SpotifyProtos.Artist;
 import se.michaelthelin.spotify.SpotifyProtos.Album;
 import se.michaelthelin.spotify.SpotifyProtos.Image;
+import se.michaelthelin.spotify.SpotifyProtos.Track;
 
 import java.io.File;
 import java.io.FileReader;
@@ -114,6 +115,13 @@ public class JsonUtilTest {
     assertEquals(2, albums.size());
   }
 
+  @Test
+  public void testNewTrack() throws Exception {
+    String json = readTestData("track.json");
+    Track track = JsonUtil.newTrack(json);
+    assertEquals("0eGsygTp906u18L0Oimnem", track.getId());
+  }
+
   private String TEST_DATA_DIR = "src/test/fixtures/";
 
   private int MAX_TEST_DATA_FILE_SIZE = 65536;
@@ -121,7 +129,6 @@ public class JsonUtilTest {
   private String readTestData(String fileName) throws IOException {
     return readFromFile(new File(TEST_DATA_DIR, fileName));
   }
-
 
   private String readFromFile(File file) throws IOException {
     Reader reader = new FileReader(file);
