@@ -12735,6 +12735,714 @@ public final class SpotifyProtos {
     // @@protoc_insertion_point(class_scope:spotify.Track)
   }
 
+  public interface SearchResultPageOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // optional string next = 1;
+    /**
+     * <code>optional string next = 1;</code>
+     */
+    boolean hasNext();
+    /**
+     * <code>optional string next = 1;</code>
+     */
+    java.lang.String getNext();
+    /**
+     * <code>optional string next = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getNextBytes();
+
+    // optional string previous = 2;
+    /**
+     * <code>optional string previous = 2;</code>
+     */
+    boolean hasPrevious();
+    /**
+     * <code>optional string previous = 2;</code>
+     */
+    java.lang.String getPrevious();
+    /**
+     * <code>optional string previous = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getPreviousBytes();
+
+    // optional int32 total_result_count = 3;
+    /**
+     * <code>optional int32 total_result_count = 3;</code>
+     */
+    boolean hasTotalResultCount();
+    /**
+     * <code>optional int32 total_result_count = 3;</code>
+     */
+    int getTotalResultCount();
+  }
+  /**
+   * Protobuf type {@code spotify.SearchResultPage}
+   */
+  public static final class SearchResultPage extends
+      com.google.protobuf.GeneratedMessage
+      implements SearchResultPageOrBuilder {
+    // Use SearchResultPage.newBuilder() to construct.
+    private SearchResultPage(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private SearchResultPage(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final SearchResultPage defaultInstance;
+    public static SearchResultPage getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public SearchResultPage getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private SearchResultPage(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              bitField0_ |= 0x00000001;
+              next_ = input.readBytes();
+              break;
+            }
+            case 18: {
+              bitField0_ |= 0x00000002;
+              previous_ = input.readBytes();
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000004;
+              totalResultCount_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return se.michaelthelin.spotify.SpotifyProtos.internal_static_spotify_SearchResultPage_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return se.michaelthelin.spotify.SpotifyProtos.internal_static_spotify_SearchResultPage_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              se.michaelthelin.spotify.SpotifyProtos.SearchResultPage.class, se.michaelthelin.spotify.SpotifyProtos.SearchResultPage.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<SearchResultPage> PARSER =
+        new com.google.protobuf.AbstractParser<SearchResultPage>() {
+      public SearchResultPage parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new SearchResultPage(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<SearchResultPage> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // optional string next = 1;
+    public static final int NEXT_FIELD_NUMBER = 1;
+    private java.lang.Object next_;
+    /**
+     * <code>optional string next = 1;</code>
+     */
+    public boolean hasNext() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>optional string next = 1;</code>
+     */
+    public java.lang.String getNext() {
+      java.lang.Object ref = next_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          next_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string next = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getNextBytes() {
+      java.lang.Object ref = next_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        next_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // optional string previous = 2;
+    public static final int PREVIOUS_FIELD_NUMBER = 2;
+    private java.lang.Object previous_;
+    /**
+     * <code>optional string previous = 2;</code>
+     */
+    public boolean hasPrevious() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional string previous = 2;</code>
+     */
+    public java.lang.String getPrevious() {
+      java.lang.Object ref = previous_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          previous_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string previous = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getPreviousBytes() {
+      java.lang.Object ref = previous_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        previous_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // optional int32 total_result_count = 3;
+    public static final int TOTAL_RESULT_COUNT_FIELD_NUMBER = 3;
+    private int totalResultCount_;
+    /**
+     * <code>optional int32 total_result_count = 3;</code>
+     */
+    public boolean hasTotalResultCount() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional int32 total_result_count = 3;</code>
+     */
+    public int getTotalResultCount() {
+      return totalResultCount_;
+    }
+
+    private void initFields() {
+      next_ = "";
+      previous_ = "";
+      totalResultCount_ = 0;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeBytes(1, getNextBytes());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeBytes(2, getPreviousBytes());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeInt32(3, totalResultCount_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, getNextBytes());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(2, getPreviousBytes());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, totalResultCount_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static se.michaelthelin.spotify.SpotifyProtos.SearchResultPage parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static se.michaelthelin.spotify.SpotifyProtos.SearchResultPage parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static se.michaelthelin.spotify.SpotifyProtos.SearchResultPage parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static se.michaelthelin.spotify.SpotifyProtos.SearchResultPage parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static se.michaelthelin.spotify.SpotifyProtos.SearchResultPage parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static se.michaelthelin.spotify.SpotifyProtos.SearchResultPage parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static se.michaelthelin.spotify.SpotifyProtos.SearchResultPage parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static se.michaelthelin.spotify.SpotifyProtos.SearchResultPage parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static se.michaelthelin.spotify.SpotifyProtos.SearchResultPage parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static se.michaelthelin.spotify.SpotifyProtos.SearchResultPage parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(se.michaelthelin.spotify.SpotifyProtos.SearchResultPage prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code spotify.SearchResultPage}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements se.michaelthelin.spotify.SpotifyProtos.SearchResultPageOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return se.michaelthelin.spotify.SpotifyProtos.internal_static_spotify_SearchResultPage_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return se.michaelthelin.spotify.SpotifyProtos.internal_static_spotify_SearchResultPage_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                se.michaelthelin.spotify.SpotifyProtos.SearchResultPage.class, se.michaelthelin.spotify.SpotifyProtos.SearchResultPage.Builder.class);
+      }
+
+      // Construct using se.michaelthelin.spotify.SpotifyProtos.SearchResultPage.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        next_ = "";
+        bitField0_ = (bitField0_ & ~0x00000001);
+        previous_ = "";
+        bitField0_ = (bitField0_ & ~0x00000002);
+        totalResultCount_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return se.michaelthelin.spotify.SpotifyProtos.internal_static_spotify_SearchResultPage_descriptor;
+      }
+
+      public se.michaelthelin.spotify.SpotifyProtos.SearchResultPage getDefaultInstanceForType() {
+        return se.michaelthelin.spotify.SpotifyProtos.SearchResultPage.getDefaultInstance();
+      }
+
+      public se.michaelthelin.spotify.SpotifyProtos.SearchResultPage build() {
+        se.michaelthelin.spotify.SpotifyProtos.SearchResultPage result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public se.michaelthelin.spotify.SpotifyProtos.SearchResultPage buildPartial() {
+        se.michaelthelin.spotify.SpotifyProtos.SearchResultPage result = new se.michaelthelin.spotify.SpotifyProtos.SearchResultPage(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.next_ = next_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.previous_ = previous_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.totalResultCount_ = totalResultCount_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof se.michaelthelin.spotify.SpotifyProtos.SearchResultPage) {
+          return mergeFrom((se.michaelthelin.spotify.SpotifyProtos.SearchResultPage)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(se.michaelthelin.spotify.SpotifyProtos.SearchResultPage other) {
+        if (other == se.michaelthelin.spotify.SpotifyProtos.SearchResultPage.getDefaultInstance()) return this;
+        if (other.hasNext()) {
+          bitField0_ |= 0x00000001;
+          next_ = other.next_;
+          onChanged();
+        }
+        if (other.hasPrevious()) {
+          bitField0_ |= 0x00000002;
+          previous_ = other.previous_;
+          onChanged();
+        }
+        if (other.hasTotalResultCount()) {
+          setTotalResultCount(other.getTotalResultCount());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        se.michaelthelin.spotify.SpotifyProtos.SearchResultPage parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (se.michaelthelin.spotify.SpotifyProtos.SearchResultPage) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // optional string next = 1;
+      private java.lang.Object next_ = "";
+      /**
+       * <code>optional string next = 1;</code>
+       */
+      public boolean hasNext() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>optional string next = 1;</code>
+       */
+      public java.lang.String getNext() {
+        java.lang.Object ref = next_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          next_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string next = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getNextBytes() {
+        java.lang.Object ref = next_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          next_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string next = 1;</code>
+       */
+      public Builder setNext(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        next_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string next = 1;</code>
+       */
+      public Builder clearNext() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        next_ = getDefaultInstance().getNext();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string next = 1;</code>
+       */
+      public Builder setNextBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        next_ = value;
+        onChanged();
+        return this;
+      }
+
+      // optional string previous = 2;
+      private java.lang.Object previous_ = "";
+      /**
+       * <code>optional string previous = 2;</code>
+       */
+      public boolean hasPrevious() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional string previous = 2;</code>
+       */
+      public java.lang.String getPrevious() {
+        java.lang.Object ref = previous_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          previous_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string previous = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getPreviousBytes() {
+        java.lang.Object ref = previous_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          previous_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string previous = 2;</code>
+       */
+      public Builder setPrevious(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        previous_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string previous = 2;</code>
+       */
+      public Builder clearPrevious() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        previous_ = getDefaultInstance().getPrevious();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string previous = 2;</code>
+       */
+      public Builder setPreviousBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        previous_ = value;
+        onChanged();
+        return this;
+      }
+
+      // optional int32 total_result_count = 3;
+      private int totalResultCount_ ;
+      /**
+       * <code>optional int32 total_result_count = 3;</code>
+       */
+      public boolean hasTotalResultCount() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>optional int32 total_result_count = 3;</code>
+       */
+      public int getTotalResultCount() {
+        return totalResultCount_;
+      }
+      /**
+       * <code>optional int32 total_result_count = 3;</code>
+       */
+      public Builder setTotalResultCount(int value) {
+        bitField0_ |= 0x00000004;
+        totalResultCount_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 total_result_count = 3;</code>
+       */
+      public Builder clearTotalResultCount() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        totalResultCount_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:spotify.SearchResultPage)
+    }
+
+    static {
+      defaultInstance = new SearchResultPage(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:spotify.SearchResultPage)
+  }
+
   public interface ExternalIdOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
@@ -14071,6 +14779,11 @@ public final class SpotifyProtos {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_spotify_Track_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_spotify_SearchResultPage_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_spotify_SearchResultPage_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_spotify_ExternalId_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -14123,10 +14836,12 @@ public final class SpotifyProtos {
       "alId\022\n\n\002id\030\t \002(\t\022\014\n\004link\030\n \002(\t\022\014\n\004name\030\013" +
       " \002(\t\022\022\n\npopularity\030\014 \002(\005\022\023\n\013preview_url\030" +
       "\r \002(\t\022\023\n\013spotify_url\030\016 \002(\t\022\024\n\014track_numb" +
-      "er\030\017 \002(\005\022\014\n\004type\030\020 \002(\t\"&\n\nExternalId\022\n\n\002" +
+      "er\030\017 \002(\005\022\014\n\004type\030\020 \002(\t\"N\n\020SearchResultPa" +
+      "ge\022\014\n\004next\030\001 \001(\t\022\020\n\010previous\030\002 \001(\t\022\032\n\022to" +
+      "tal_result_count\030\003 \001(\005\"&\n\nExternalId\022\n\n\002" +
       "id\030\001 \002(\t\022\014\n\004type\030\002 \002(\t\"9\n\005Image\022\016\n\006heigh" +
       "t\030\001 \002(\005\022\021\n\timage_url\030\002 \002(\t\022\r\n\005width\030\003 \002(" +
-      "\005*C\n\tAlbumType\022\t\n\005ALBUM\020\000\022\n\n\006SINGLE\020\001\022\017\n" +
+      "\005*C\n\tAlbumType\022\t\n\005ALBUM\020\000\022\n\n\006SINGLE\020\001\022\017\n",
       "\013COMPILATION\020\002\022\016\n\nAPPEARS_ON\020\003B)\n\030se.mic" +
       "haelthelin.spotifyB\rSpotifyProtos"
     };
@@ -14177,14 +14892,20 @@ public final class SpotifyProtos {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_spotify_Track_descriptor,
               new java.lang.String[] { "Album", "ApiLink", "Artists", "AvailableMarkets", "DiscNumber", "DurationMs", "Explicit", "ExternalIds", "Id", "Link", "Name", "Popularity", "PreviewUrl", "SpotifyUrl", "TrackNumber", "Type", });
-          internal_static_spotify_ExternalId_descriptor =
+          internal_static_spotify_SearchResultPage_descriptor =
             getDescriptor().getMessageTypes().get(5);
+          internal_static_spotify_SearchResultPage_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_spotify_SearchResultPage_descriptor,
+              new java.lang.String[] { "Next", "Previous", "TotalResultCount", });
+          internal_static_spotify_ExternalId_descriptor =
+            getDescriptor().getMessageTypes().get(6);
           internal_static_spotify_ExternalId_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_spotify_ExternalId_descriptor,
               new java.lang.String[] { "Id", "Type", });
           internal_static_spotify_Image_descriptor =
-            getDescriptor().getMessageTypes().get(6);
+            getDescriptor().getMessageTypes().get(7);
           internal_static_spotify_Image_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_spotify_Image_descriptor,

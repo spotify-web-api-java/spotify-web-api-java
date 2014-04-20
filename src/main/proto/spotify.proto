@@ -81,6 +81,12 @@ message Track {
     required string type = 16;
 }
 
+message SearchResultPage {
+    optional string next = 1;
+    optional string previous = 2;
+    optional int32 total_result_count = 3;
+}
+
 message ExternalId {
     required string id = 1;
     required string type = 2;
