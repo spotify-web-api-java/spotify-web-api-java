@@ -1,11 +1,9 @@
 package se.michaelthelin.spotify.methods;
 
 import se.michaelthelin.spotify.JsonUtil;
-import se.michaelthelin.spotify.SpotifyProtos.Album;
-import se.michaelthelin.spotify.SpotifyProtos.Artist;
-import se.michaelthelin.spotify.SpotifyProtos.Track;
-
-import java.util.List;
+import se.michaelthelin.spotify.SpotifyProtos.AlbumSearchResult;
+import se.michaelthelin.spotify.SpotifyProtos.ArtistSearchResult;
+import se.michaelthelin.spotify.SpotifyProtos.TrackSearchResult;
 
 public class SearchRequest extends AbstractRequest {
 
@@ -13,16 +11,16 @@ public class SearchRequest extends AbstractRequest {
     super(builder);
   }
 
-  public List<Album> getAlbums() {
-    return JsonUtil.createAlbums(getJson());
+  public AlbumSearchResult getAlbums() {
+    return JsonUtil.createAlbumSearchResult(getJson());
   }
 
-  public List<Track> getTracks() {
-    return JsonUtil.createTracks(getJson());
+  public TrackSearchResult getTracks() {
+    return JsonUtil.createTrackSearchResult(getJson());
   }
 
-  public List<Artist> getArtists() {
-    return JsonUtil.createArtists(getJson());
+  public ArtistSearchResult getArtists() {
+    return JsonUtil.createArtistSearchResult(getJson());
   }
 
   public static Builder builder() {

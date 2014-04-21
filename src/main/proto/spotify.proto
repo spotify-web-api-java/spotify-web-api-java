@@ -24,6 +24,7 @@ message Album {
         required Image MEDIUM = 1;
         required Image SMALL = 2;
         required Image LARGE = 3;
+        optional Image XLARGE = 4;
     }
 }
 
@@ -50,7 +51,7 @@ message Artist {
         required Image MEDIUM = 1;
         required Image SMALL = 2;
         required Image LARGE = 3;
-        required Image XLARGE = 4;
+        optional Image XLARGE = 4;
     }
 }
 
@@ -81,7 +82,22 @@ message Track {
     required string type = 16;
 }
 
-message SearchResultPage {
+message ArtistSearchResult {
+    repeated Artist artists = 1;
+    required PagingInformation paging = 2;
+}
+
+message TrackSearchResult {
+    repeated Track tracks = 1;
+    required PagingInformation paging = 2;
+}
+
+message AlbumSearchResult {
+    repeated Album albums = 1;
+    required PagingInformation paging = 2;
+}
+
+message PagingInformation {
     optional string next = 1;
     optional string previous = 2;
     optional int32 total_result_count = 3;

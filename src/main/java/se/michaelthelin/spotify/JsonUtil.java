@@ -10,6 +10,11 @@ import se.michaelthelin.spotify.SpotifyProtos.SimpleArtist;
 import se.michaelthelin.spotify.SpotifyProtos.SimpleAlbum;
 import se.michaelthelin.spotify.SpotifyProtos.Track;
 import se.michaelthelin.spotify.SpotifyProtos.ExternalId;
+import se.michaelthelin.spotify.SpotifyProtos.AlbumSearchResult;
+import se.michaelthelin.spotify.SpotifyProtos.TrackSearchResult;
+import se.michaelthelin.spotify.SpotifyProtos.ArtistSearchResult;
+import se.michaelthelin.spotify.SpotifyProtos.PagingInformation;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -72,8 +77,10 @@ public class JsonUtil {
     artistImagesBuilder.setLARGE(largeImage);
 
     JSONObject xLargeImageJsonObject = imagesJsonObject.getJSONObject("XLARGE");
-    Image xLargeImage = newImage(xLargeImageJsonObject);
-    artistImagesBuilder.setXLARGE(xLargeImage);
+    if (!xLargeImageJsonObject.isNullObject()) {
+      Image xLargeImage = newImage(xLargeImageJsonObject);
+      artistImagesBuilder.setXLARGE(xLargeImage);
+    }
 
     artistBuilder.setImages(artistImagesBuilder.build());
 
@@ -227,4 +234,62 @@ public class JsonUtil {
     return builder.build();
   }
 
+  public static AlbumSearchResult createAlbumSearchResult(String json) {
+    return createAlbumSearchResult(JSONObject.fromObject(json));
+  }
+
+  public static AlbumSearchResult createAlbumSearchResult(JSONObject jsonObject) {
+    AlbumSearchResult.Builder builder = AlbumSearchResult.newBuilder();
+
+    JSONArray albumsJsonArray = jsonObject.getJSONArray("albums");
+    for (int i = 0; i < albumsJsonArray.size(); i++) {
+      builder.addAlbums(createAlbum(albumsJsonArray.getJSONObject(i)));
+    }
+
+    builder.setPaging(createPagingInformation(jsonObject.getJSONObject("paging")));
+
+    return builder.build();
+  }
+
+  public static TrackSearchResult createTrackSearchResult(String json) {
+    return createTrackSearchResult(JSONObject.fromObject(json));
+  }
+
+  public static TrackSearchResult createTrackSearchResult(JSONObject jsonObject) {
+    TrackSearchResult.Builder builder = TrackSearchResult.newBuilder();
+
+    JSONArray trackJsonArray = jsonObject.getJSONArray("tracks");
+    for (int i = 0; i < trackJsonArray.size(); i++) {
+      builder.addTracks(createTrack(trackJsonArray.getJSONObject(i)));
+    }
+
+    builder.setPaging(createPagingInformation(jsonObject.getJSONObject("paging")));
+
+    return builder.build();
+  }
+
+  public static ArtistSearchResult createArtistSearchResult(String json) {
+    return createArtistSearchResult(JSONObject.fromObject(json));
+  }
+
+  public static ArtistSearchResult createArtistSearchResult(JSONObject jsonObject) {
+    ArtistSearchResult.Builder builder = ArtistSearchResult.newBuilder();
+
+    JSONArray artistsJsonArray = jsonObject.getJSONArray("artists");
+    for (int i = 0; i < artistsJsonArray.size(); i++) {
+      builder.addArtists(createArtist(artistsJsonArray.getJSONObject(i)));
+    }
+
+    builder.setPaging(createPagingInformation(jsonObject.getJSONObject("paging")));
+
+    return builder.build();
+  }
+
+  public static PagingInformation createPagingInformation(JSONObject jsonObject) {
+    PagingInformation.Builder builder = PagingInformation.newBuilder();
+    builder.setNext(jsonObject.getString("next"));
+    builder.setPrevious(jsonObject.getString("previous"));
+    builder.setTotalResultCount(jsonObject.getInt("total_result_count"));
+    return builder.build();
+  }
 }

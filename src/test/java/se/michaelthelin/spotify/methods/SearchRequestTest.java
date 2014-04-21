@@ -5,9 +5,7 @@ import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 import se.michaelthelin.spotify.Api;
 import se.michaelthelin.spotify.JsonUtilTest;
-import se.michaelthelin.spotify.SpotifyProtos.Track;
-import se.michaelthelin.spotify.SpotifyProtos.Album;
-import se.michaelthelin.spotify.SpotifyProtos.Artist;
+import se.michaelthelin.spotify.SpotifyProtos.*;
 
 import java.util.List;
 
@@ -24,18 +22,23 @@ public class SearchRequestTest {
     SearchRequest request = api.search().query("David Bowie").type("artist").build();
 
     // Mock response
-    String responseFixture = JsonUtilTest.readTestData("artists.json");
+    String responseFixture = JsonUtilTest.readTestData("search-artist.json");
     SearchRequest spy = spy(request);
     when(spy.getJson()).thenReturn(responseFixture);
 
-    List<Artist> artists = spy.getArtists();
-    assertEquals(2, artists.size());
+    ArtistSearchResult searchResult = spy.getArtists();
+
+    List<Artist> artists = searchResult.getArtistsList();
+    assertEquals(1, artists.size());
 
     Artist firstArtist = artists.get(0);
-    Artist secondArtist = artists.get(1);
 
-    assertEquals("0oSGxfWSnnOXhD2fKuz2Gy", firstArtist.getId());
-    assertEquals("3dBVyJ7JuOMt4GE9607Qin", secondArtist.getId());
+    assertEquals("2Bw6FyyzgCc8OD7MX59TEQ", firstArtist.getId());
+
+    PagingInformation pagingInformation = searchResult.getPaging();
+    assertEquals("null", pagingInformation.getNext());
+    assertEquals("null", pagingInformation.getPrevious());
+    assertEquals(1, pagingInformation.getTotalResultCount());
   }
 
   @Test
@@ -44,19 +47,26 @@ public class SearchRequestTest {
     SearchRequest request = api.search().query("Mr. Brightside").type("track").build();
 
     // Mock response
-    String responseFixture = JsonUtilTest.readTestData("tracks.json");
+    String responseFixture = JsonUtilTest.readTestData("search-track-page1.json");
     SearchRequest spy = spy(request);
     when(spy.getJson()).thenReturn(responseFixture);
 
-    List<Track> tracks = spy.getTracks();
+    TrackSearchResult searchResult = spy.getTracks();
 
-    assertEquals(2, tracks.size());
+    List<Track> tracks = searchResult.getTracksList();
+
+    assertEquals(20, tracks.size());
 
     Track firstTrack = tracks.get(0);
-    assertEquals("0eGsygTp906u18L0Oimnem", firstTrack.getId());
+    assertEquals("3q8WojYJVZsGClFGFBYdTc", firstTrack.getId());
 
     Track secondTrack = tracks.get(1);
-    assertEquals("1lDWb6b6ieDQ2xT7ewTC3G", secondTrack.getId());
+    assertEquals("2jEPQKvz7dh1pfpRyq6G1C", secondTrack.getId());
+
+    PagingInformation pagingInformation = searchResult.getPaging();
+    assertEquals("https://api.spotify.com/v1/search?query=Gatan&type=TRACK&offset=20&limit=20", pagingInformation.getNext());
+    assertEquals("null", pagingInformation.getPrevious());
+    assertEquals(258, pagingInformation.getTotalResultCount());
   }
 
   @Test
@@ -65,19 +75,23 @@ public class SearchRequestTest {
     SearchRequest request = api.search().query("The Best Of Keane").type("album").build();
 
     // Mock response
-    String responseFixture = JsonUtilTest.readTestData("albums.json");
+    String responseFixture = JsonUtilTest.readTestData("search-album.json");
     SearchRequest spy = spy(request);
     when(spy.getJson()).thenReturn(responseFixture);
 
-    List<Album> albums = spy.getAlbums();
+    AlbumSearchResult searchResult = spy.getAlbums();
 
-    assertEquals(2, albums.size());
+    List<Album> albums = searchResult.getAlbumsList();
+
+    assertEquals(1, albums.size());
 
     Album firstAlbum = albums.get(0);
-    assertEquals("41MnTivkwTO3UUJ8DrqEJJ", firstAlbum.getId());
+    assertEquals("2fOs6I0CgvaZj9agU8EAlH", firstAlbum.getId());
 
-    Album secondAlbum = albums.get(1);
-    assertEquals("6JWc4iAiJ9FjyK0B59ABb4", secondAlbum.getId());
+    PagingInformation pagingInformation = searchResult.getPaging();
+    assertEquals("https://api.spotify.com/v1/search?query=Gatan&type=ALBUM&offset=1&limit=1", pagingInformation.getNext());
+    assertEquals("null", pagingInformation.getPrevious());
+    assertEquals(17, pagingInformation.getTotalResultCount());
   }
 
 }
