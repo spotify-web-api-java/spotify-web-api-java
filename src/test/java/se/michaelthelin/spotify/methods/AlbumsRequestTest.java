@@ -8,7 +8,6 @@ import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 import se.michaelthelin.spotify.Api;
 import se.michaelthelin.spotify.JsonUtilTest;
-import se.michaelthelin.spotify.SpotifyProtos;
 import se.michaelthelin.spotify.SpotifyProtos.Album;
 
 import java.util.List;

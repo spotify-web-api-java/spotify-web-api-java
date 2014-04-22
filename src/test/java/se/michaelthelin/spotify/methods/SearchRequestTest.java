@@ -10,7 +10,6 @@ import se.michaelthelin.spotify.Api;
 import se.michaelthelin.spotify.JsonUtilTest;
 import se.michaelthelin.spotify.SpotifyProtos.*;
 
-import javax.swing.*;
 import java.util.List;
 
 import static junit.framework.Assert.assertEquals;
