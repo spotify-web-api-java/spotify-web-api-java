@@ -4,97 +4,97 @@ option java_package = "se.michaelthelin.spotify";
 option java_outer_classname = "SpotifyProtos";
 
 message Album {
-    required AlbumType album_type = 1;
-    required string api_link = 2;
+    optional AlbumType album_type = 1;
+    optional string api_link = 2;
     repeated SimpleArtist artists = 3;
     repeated string available_markets = 4;
     repeated ExternalId external_ids = 5;
     repeated string genres = 6;
-    required string id = 7;
+    optional string id = 7;
     repeated Image images = 8;
-    required string link = 9;
-    required string name = 10;
-    required int32 popularity = 11;
-    required int32 release_year = 12;
-    required string spotify_uri = 13;
+    optional string link = 9;
+    optional string name = 10;
+    optional int32 popularity = 11;
+    optional int32 release_year = 12;
+    optional string spotify_uri = 13;
     repeated Track tracks = 14;
-    required string type = 15;
+    optional string type = 15;
 
     message Images {
-        required Image MEDIUM = 1;
-        required Image SMALL = 2;
-        required Image LARGE = 3;
+        optional Image MEDIUM = 1;
+        optional Image SMALL = 2;
+        optional Image LARGE = 3;
         optional Image XLARGE = 4;
     }
 }
 
 message SimpleAlbum {
-    required string api_link = 1;
-    required string id = 2;
-    required string name = 3;
-    required string spotify_uri = 4;
-    required string type = 5;
+    optional string api_link = 1;
+    optional string id = 2;
+    optional string name = 3;
+    optional string spotify_uri = 4;
+    optional string type = 5;
 }
 
 message Artist {
-    required string api_link = 1;
+    optional string api_link = 1;
     repeated string genres = 2;
-    required string id = 3;
-    required Images images = 4;
-    required string link = 5;
-    required string name = 6;
-    required int32 popularity = 7;
-    required string spotify_uri = 8;
-    required string type = 9;
+    optional string id = 3;
+    optional Images images = 4;
+    optional string link = 5;
+    optional string name = 6;
+    optional int32 popularity = 7;
+    optional string spotify_uri = 8;
+    optional string type = 9;
 
     message Images {
-        required Image MEDIUM = 1;
-        required Image SMALL = 2;
-        required Image LARGE = 3;
+        optional Image MEDIUM = 1;
+        optional Image SMALL = 2;
+        optional Image LARGE = 3;
         optional Image XLARGE = 4;
     }
 }
 
 message SimpleArtist {
-    required string api_link = 1;
-    required string id = 3;
-    required string name = 6;
-    required string spotify_uri = 8;
-    required string type = 9;
+    optional string api_link = 1;
+    optional string id = 3;
+    optional string name = 6;
+    optional string spotify_uri = 8;
+    optional string type = 9;
 }
 
 message Track {
-    required SimpleAlbum album = 1;
-    required string api_link = 2;
+    optional SimpleAlbum album = 1;
+    optional string api_link = 2;
     repeated SimpleArtist artists = 3;
     repeated string available_markets = 4;
-    required int32 disc_number = 5;
-    required int32 duration_ms = 6;
-    required bool explicit = 7;
+    optional int32 disc_number = 5;
+    optional int32 duration_ms = 6;
+    optional bool explicit = 7;
     repeated ExternalId external_ids = 8;
-    required string id = 9;
-    required string link = 10;
-    required string name = 11;
-    required int32 popularity = 12;
-    required string preview_url = 13;
-    required string spotify_url = 14;
-    required int32 track_number = 15;
-    required string type = 16;
+    optional string id = 9;
+    optional string link = 10;
+    optional string name = 11;
+    optional int32 popularity = 12;
+    optional string preview_url = 13;
+    optional string spotify_url = 14;
+    optional int32 track_number = 15;
+    optional string type = 16;
 }
 
 message ArtistSearchResult {
     repeated Artist artists = 1;
-    required PagingInformation paging = 2;
+    optional PagingInformation paging = 2;
 }
 
 message TrackSearchResult {
     repeated Track tracks = 1;
-    required PagingInformation paging = 2;
+    optional PagingInformation paging = 2;
 }
 
 message AlbumSearchResult {
     repeated Album albums = 1;
-    required PagingInformation paging = 2;
+    optional PagingInformation paging = 2;
 }
 
 message PagingInformation {
@@ -104,14 +104,14 @@ message PagingInformation {
 }
 
 message ExternalId {
-    required string id = 1;
-    required string type = 2;
+    optional string id = 1;
+    optional string type = 2;
 }
 
 message Image {
-    required int32 height = 1;
-    required string image_url = 2;
-    required int32 width = 3;
+    optional int32 height = 1;
+    optional string image_url = 2;
+    optional int32 width = 3;
 }
 
 enum AlbumType {
