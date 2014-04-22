@@ -1,9 +1,15 @@
 package se.michaelthelin.spotify.methods;
 
+import com.google.common.util.concurrent.ListenableFuture;
+import com.google.common.util.concurrent.ListeningExecutorService;
+import com.google.common.util.concurrent.MoreExecutors;
 import se.michaelthelin.spotify.JsonUtil;
 import se.michaelthelin.spotify.SpotifyProtos.AlbumSearchResult;
 import se.michaelthelin.spotify.SpotifyProtos.ArtistSearchResult;
 import se.michaelthelin.spotify.SpotifyProtos.TrackSearchResult;
+
+import java.util.concurrent.Callable;
+import java.util.concurrent.Executors;
 
 public class SearchRequest extends AbstractRequest {
 
@@ -11,16 +17,34 @@ public class SearchRequest extends AbstractRequest {
     super(builder);
   }
 
-  public AlbumSearchResult getAlbums() {
-    return JsonUtil.createAlbumSearchResult(getJson());
+  public ListenableFuture<AlbumSearchResult> getAlbums() {
+    ListeningExecutorService service = MoreExecutors.listeningDecorator(Executors.newFixedThreadPool(10));
+    ListenableFuture<AlbumSearchResult> albumSearchResultFuture = service.submit(new Callable<AlbumSearchResult>() {
+      public AlbumSearchResult call() {
+        return JsonUtil.createAlbumSearchResult(getJson());
+      }
+    });
+    return albumSearchResultFuture;
   }
 
-  public TrackSearchResult getTracks() {
-    return JsonUtil.createTrackSearchResult(getJson());
+  public ListenableFuture<TrackSearchResult> getTracks() {
+    ListeningExecutorService service = MoreExecutors.listeningDecorator(Executors.newFixedThreadPool(10));
+    ListenableFuture<TrackSearchResult> trackSearchResultFuture = service.submit(new Callable<TrackSearchResult>() {
+      public TrackSearchResult call() {
+        return JsonUtil.createTrackSearchResult(getJson());
+      }
+    });
+    return trackSearchResultFuture;
   }
 
-  public ArtistSearchResult getArtists() {
-    return JsonUtil.createArtistSearchResult(getJson());
+  public ListenableFuture<ArtistSearchResult> getArtists() {
+    ListeningExecutorService service = MoreExecutors.listeningDecorator(Executors.newFixedThreadPool(10));
+    ListenableFuture<ArtistSearchResult> artistSearchResultFuture = service.submit(new Callable<ArtistSearchResult>() {
+      public ArtistSearchResult call() {
+        return JsonUtil.createArtistSearchResult(getJson());
+      }
+    });
+    return artistSearchResultFuture;
   }
 
   public static Builder builder() {

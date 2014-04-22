@@ -1,5 +1,8 @@
 package se.michaelthelin.spotify.methods;
 
+import com.google.common.util.concurrent.FutureCallback;
+import com.google.common.util.concurrent.Futures;
+import com.google.common.util.concurrent.ListenableFuture;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -9,6 +12,7 @@ import se.michaelthelin.spotify.SpotifyProtos.Artist;
 
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertNotNull;
+import static junit.framework.TestCase.fail;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.when;
 
@@ -25,9 +29,20 @@ public class ArtistRequestTest {
     ArtistRequest spy = spy(request);
     when(spy.getJson()).thenReturn(responseFixture);
 
-    Artist artist = spy.getArtist();
-    assertNotNull(artist);
-    assertEquals("0LcJLqbBmaGUft1e9Mm8HV", artist.getId());
+    ListenableFuture<Artist> artistFuture = spy.getArtist();
+
+    Futures.addCallback(artistFuture, new FutureCallback<Artist>() {
+      @Override
+      public void onSuccess(Artist artist) {
+        assertNotNull(artist);
+        assertEquals("0LcJLqbBmaGUft1e9Mm8HV", artist.getId());
+      }
+
+      @Override
+      public void onFailure(Throwable throwable) {
+        fail("Failed to resolve future");
+      }
+    });
   }
 
 }

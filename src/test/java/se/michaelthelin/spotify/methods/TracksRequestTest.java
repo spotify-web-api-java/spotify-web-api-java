@@ -1,15 +1,20 @@
 package se.michaelthelin.spotify.methods;
 
+import com.google.common.util.concurrent.FutureCallback;
+import com.google.common.util.concurrent.Futures;
+import com.google.common.util.concurrent.ListenableFuture;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 import se.michaelthelin.spotify.Api;
 import se.michaelthelin.spotify.JsonUtilTest;
+import se.michaelthelin.spotify.SpotifyProtos;
 import se.michaelthelin.spotify.SpotifyProtos.Track;
 
 import java.util.List;
 
 import static junit.framework.Assert.assertEquals;
+import static junit.framework.TestCase.fail;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.when;
 
@@ -26,14 +31,24 @@ public class TracksRequestTest {
     TracksRequest spy = spy(request);
     when(spy.getJson()).thenReturn(responseFixture);
 
-    List<Track> tracks = spy.getTracks();
+    ListenableFuture<List<Track>> tracksFuture = spy.getTracks();
 
-    assertEquals(2, tracks.size());
+    Futures.addCallback(tracksFuture, new FutureCallback<List<Track>>() {
+      @Override
+      public void onSuccess(List<Track> tracks) {
+        assertEquals(2, tracks.size());
 
-    Track firstTrack = tracks.get(0);
-    assertEquals("0eGsygTp906u18L0Oimnem", firstTrack.getId());
+        Track firstTrack = tracks.get(0);
+        assertEquals("0eGsygTp906u18L0Oimnem", firstTrack.getId());
 
-    Track secondTrack = tracks.get(1);
-    assertEquals("1lDWb6b6ieDQ2xT7ewTC3G", secondTrack.getId());
+        Track secondTrack = tracks.get(1);
+        assertEquals("1lDWb6b6ieDQ2xT7ewTC3G", secondTrack.getId());
+      }
+
+      @Override
+      public void onFailure(Throwable throwable) {
+        fail("Failed to resolve future");
+      }
+    });
   }
 }

@@ -1,7 +1,13 @@
 package se.michaelthelin.spotify.methods;
 
+import com.google.common.util.concurrent.ListenableFuture;
+import com.google.common.util.concurrent.ListeningExecutorService;
+import com.google.common.util.concurrent.MoreExecutors;
 import se.michaelthelin.spotify.JsonUtil;
 import se.michaelthelin.spotify.SpotifyProtos.Track;
+
+import java.util.concurrent.Callable;
+import java.util.concurrent.Executors;
 
 public class TrackRequest extends AbstractRequest {
 
@@ -9,8 +15,14 @@ public class TrackRequest extends AbstractRequest {
     super(builder);
   }
 
-  public Track getTrack() {
-    return JsonUtil.createTrack(getJson());
+  public ListenableFuture<Track> getTrack() {
+    ListeningExecutorService service = MoreExecutors.listeningDecorator(Executors.newFixedThreadPool(10));
+    ListenableFuture<Track> trackFuture = service.submit(new Callable<Track>() {
+      public Track call() {
+        return JsonUtil.createTrack(getJson());
+      }
+    });
+    return trackFuture;
   }
 
   public static Builder builder() {

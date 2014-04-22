@@ -1,5 +1,8 @@
 package se.michaelthelin.spotify.methods;
 
+import com.google.common.util.concurrent.FutureCallback;
+import com.google.common.util.concurrent.Futures;
+import com.google.common.util.concurrent.ListenableFuture;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -7,9 +10,11 @@ import se.michaelthelin.spotify.Api;
 import se.michaelthelin.spotify.JsonUtilTest;
 import se.michaelthelin.spotify.SpotifyProtos.*;
 
+import javax.swing.*;
 import java.util.List;
 
 import static junit.framework.Assert.assertEquals;
+import static junit.framework.TestCase.fail;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.when;
 
@@ -26,19 +31,29 @@ public class SearchRequestTest {
     SearchRequest spy = spy(request);
     when(spy.getJson()).thenReturn(responseFixture);
 
-    ArtistSearchResult searchResult = spy.getArtists();
+    final ListenableFuture<ArtistSearchResult> searchResultFuture = spy.getArtists();
 
-    List<Artist> artists = searchResult.getArtistsList();
-    assertEquals(1, artists.size());
+    Futures.addCallback(searchResultFuture, new FutureCallback<ArtistSearchResult>() {
+      @Override
+      public void onSuccess(ArtistSearchResult artistSearchResult) {
+        List<Artist> artists = artistSearchResult.getArtistsList();
+        assertEquals(1, artists.size());
 
-    Artist firstArtist = artists.get(0);
+        Artist firstArtist = artists.get(0);
 
-    assertEquals("2Bw6FyyzgCc8OD7MX59TEQ", firstArtist.getId());
+        assertEquals("2Bw6FyyzgCc8OD7MX59TEQ", firstArtist.getId());
 
-    PagingInformation pagingInformation = searchResult.getPaging();
-    assertEquals("null", pagingInformation.getNext());
-    assertEquals("null", pagingInformation.getPrevious());
-    assertEquals(1, pagingInformation.getTotalResultCount());
+        PagingInformation pagingInformation = artistSearchResult.getPaging();
+        assertEquals("null", pagingInformation.getNext());
+        assertEquals("null", pagingInformation.getPrevious());
+        assertEquals(1, pagingInformation.getTotalResultCount());
+      }
+
+      @Override
+      public void onFailure(Throwable throwable) {
+        fail("Failed to resolve future");
+      }
+    });
   }
 
   @Test
@@ -51,22 +66,32 @@ public class SearchRequestTest {
     SearchRequest spy = spy(request);
     when(spy.getJson()).thenReturn(responseFixture);
 
-    TrackSearchResult searchResult = spy.getTracks();
+    ListenableFuture<TrackSearchResult> searchResultFuture = spy.getTracks();
 
-    List<Track> tracks = searchResult.getTracksList();
+    Futures.addCallback(searchResultFuture, new FutureCallback<TrackSearchResult>() {
+      @Override
+      public void onSuccess(TrackSearchResult trackSearchResult) {
+        List<Track> tracks = trackSearchResult.getTracksList();
 
-    assertEquals(20, tracks.size());
+        assertEquals(20, tracks.size());
 
-    Track firstTrack = tracks.get(0);
-    assertEquals("3q8WojYJVZsGClFGFBYdTc", firstTrack.getId());
+        Track firstTrack = tracks.get(0);
+        assertEquals("3q8WojYJVZsGClFGFBYdTc", firstTrack.getId());
 
-    Track secondTrack = tracks.get(1);
-    assertEquals("2jEPQKvz7dh1pfpRyq6G1C", secondTrack.getId());
+        Track secondTrack = tracks.get(1);
+        assertEquals("2jEPQKvz7dh1pfpRyq6G1C", secondTrack.getId());
 
-    PagingInformation pagingInformation = searchResult.getPaging();
-    assertEquals("https://api.spotify.com/v1/search?query=Gatan&type=TRACK&offset=20&limit=20", pagingInformation.getNext());
-    assertEquals("null", pagingInformation.getPrevious());
-    assertEquals(258, pagingInformation.getTotalResultCount());
+        PagingInformation pagingInformation = trackSearchResult.getPaging();
+        assertEquals("https://api.spotify.com/v1/search?query=Gatan&type=TRACK&offset=20&limit=20", pagingInformation.getNext());
+        assertEquals("null", pagingInformation.getPrevious());
+        assertEquals(258, pagingInformation.getTotalResultCount());
+      }
+
+      @Override
+      public void onFailure(Throwable throwable) {
+        fail("Failed to resolve future");
+      }
+    });
   }
 
   @Test
@@ -79,19 +104,30 @@ public class SearchRequestTest {
     SearchRequest spy = spy(request);
     when(spy.getJson()).thenReturn(responseFixture);
 
-    AlbumSearchResult searchResult = spy.getAlbums();
+    ListenableFuture<AlbumSearchResult> searchResultFuture = spy.getAlbums();
 
-    List<Album> albums = searchResult.getAlbumsList();
+    Futures.addCallback(searchResultFuture, new FutureCallback<AlbumSearchResult>() {
+      @Override
+      public void onSuccess(AlbumSearchResult albumSearchResult) {
+        List<Album> albums = albumSearchResult.getAlbumsList();
 
-    assertEquals(1, albums.size());
+        assertEquals(1, albums.size());
 
-    Album firstAlbum = albums.get(0);
-    assertEquals("2fOs6I0CgvaZj9agU8EAlH", firstAlbum.getId());
+        Album firstAlbum = albums.get(0);
+        assertEquals("2fOs6I0CgvaZj9agU8EAlH", firstAlbum.getId());
 
-    PagingInformation pagingInformation = searchResult.getPaging();
-    assertEquals("https://api.spotify.com/v1/search?query=Gatan&type=ALBUM&offset=1&limit=1", pagingInformation.getNext());
-    assertEquals("null", pagingInformation.getPrevious());
-    assertEquals(17, pagingInformation.getTotalResultCount());
+        PagingInformation pagingInformation = albumSearchResult.getPaging();
+        assertEquals("https://api.spotify.com/v1/search?query=Gatan&type=ALBUM&offset=1&limit=1", pagingInformation.getNext());
+        assertEquals("null", pagingInformation.getPrevious());
+        assertEquals(17, pagingInformation.getTotalResultCount());
+      }
+
+      @Override
+      public void onFailure(Throwable throwable) {
+        fail("Failed to resolve future");
+      }
+    });
+
   }
 
 }
