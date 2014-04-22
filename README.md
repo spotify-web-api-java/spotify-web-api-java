@@ -11,12 +11,22 @@ Api api = Api.DEFAULT_API;
 // Create a request object for the type of request you want to make
 AlbumRequest request = api.album().id("7e0ij2fpWaxOEHv5fUYZjd").build();
 
-// Send the request
-Album album = request.getAlbum();
+// Retrieve a future for an album
+ListenableFuture<Album> albumFuture = request.getAlbum();
 
-// Handle the response
-List<String> genres = album.getGenres(); 
-for (String genre : genres) {
-  System.out.println(genre);
-}
+// Create callbacks in case of success or failure
+Futures.addCallback(albumFuture, new FutureCallback<Album>() {
+
+  // Print the genres if the album call is successful
+  public void onSuccess(Album album) {
+    List<String> genres = album.getGenres(); 
+    for (String genre : genres) {
+      System.out.println(genre);
+    }
+  }
+  // In case of failure
+  public void onFailure(Throwable thrown) {
+    System.out.println("Could not get albums.");
+  }
+});
 ```
