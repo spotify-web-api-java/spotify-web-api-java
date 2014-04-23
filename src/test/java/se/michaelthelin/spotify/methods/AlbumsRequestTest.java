@@ -30,7 +30,7 @@ public class AlbumsRequestTest {
     AlbumsRequest spy = spy(request);
     when(spy.getJson()).thenReturn(albumResponseFixture);
 
-    ListenableFuture<List<Album>> albumsFuture = spy.getAlbums();
+    ListenableFuture<List<Album>> albumsFuture = spy.getAlbumsAsync();
     Futures.addCallback(albumsFuture, new FutureCallback<List<Album>>() {
 
       @Override
@@ -63,7 +63,7 @@ public class AlbumsRequestTest {
     AlbumsRequest spy = spy(request);
     when(spy.getJson()).thenReturn(albumResponseFixture);
 
-    ListenableFuture<List<Album>> albumsFuture = spy.getAlbums();
+    ListenableFuture<List<Album>> albumsFuture = spy.getAlbumsAsync();
 
     Futures.addCallback(albumsFuture, new FutureCallback<List<Album>>() {
       @Override

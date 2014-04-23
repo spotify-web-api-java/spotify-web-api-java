@@ -30,7 +30,7 @@ public class SearchRequestTest {
     SearchRequest spy = spy(request);
     when(spy.getJson()).thenReturn(responseFixture);
 
-    final ListenableFuture<ArtistSearchResult> searchResultFuture = spy.getArtists();
+    final ListenableFuture<ArtistSearchResult> searchResultFuture = spy.getArtistsAsync();
 
     Futures.addCallback(searchResultFuture, new FutureCallback<ArtistSearchResult>() {
       @Override
@@ -65,7 +65,7 @@ public class SearchRequestTest {
     SearchRequest spy = spy(request);
     when(spy.getJson()).thenReturn(responseFixture);
 
-    ListenableFuture<TrackSearchResult> searchResultFuture = spy.getTracks();
+    ListenableFuture<TrackSearchResult> searchResultFuture = spy.getTracksAsync();
 
     Futures.addCallback(searchResultFuture, new FutureCallback<TrackSearchResult>() {
       @Override
@@ -103,7 +103,7 @@ public class SearchRequestTest {
     SearchRequest spy = spy(request);
     when(spy.getJson()).thenReturn(responseFixture);
 
-    ListenableFuture<AlbumSearchResult> searchResultFuture = spy.getAlbums();
+    ListenableFuture<AlbumSearchResult> searchResultFuture = spy.getAlbumsAsync();
 
     Futures.addCallback(searchResultFuture, new FutureCallback<AlbumSearchResult>() {
       @Override

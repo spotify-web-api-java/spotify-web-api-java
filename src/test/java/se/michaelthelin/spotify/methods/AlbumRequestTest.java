@@ -29,7 +29,7 @@ public class AlbumRequestTest {
     AlbumRequest spy = spy(request);
     when(spy.getJson()).thenReturn(albumResponseFixture);
 
-    ListenableFuture<Album> albumFuture = spy.getAlbum();
+    ListenableFuture<Album> albumFuture = spy.getAlbumAsync();
     Futures.addCallback(albumFuture, new FutureCallback<Album>() {
       public void onSuccess(Album album) {
         assertNotNull(album);

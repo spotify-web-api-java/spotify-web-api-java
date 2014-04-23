@@ -19,7 +19,7 @@ public class ArtistRequest extends AbstractRequest {
     return new Builder();
   }
 
-  public ListenableFuture<Artist> getArtist() {
+  public ListenableFuture<Artist> getArtistAsync() {
     ListeningExecutorService service = MoreExecutors.listeningDecorator(Executors.newFixedThreadPool(10));
     ListenableFuture<Artist> artistFuture = service.submit(new Callable<Artist>() {
       @Override

@@ -12,7 +12,7 @@ Api api = Api.DEFAULT_API;
 AlbumRequest request = api.album().id("7e0ij2fpWaxOEHv5fUYZjd").build();
 
 // Retrieve a future for an album
-ListenableFuture<Album> albumFuture = request.getAlbum();
+ListenableFuture<Album> albumFuture = request.getAlbumAsync();
 
 // Create callbacks in case of success or failure
 Futures.addCallback(albumFuture, new FutureCallback<Album>() {

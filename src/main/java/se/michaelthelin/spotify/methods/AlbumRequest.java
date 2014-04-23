@@ -17,7 +17,7 @@ public class AlbumRequest extends AbstractRequest {
     super(builder);
   }
 
-  public ListenableFuture<Album> getAlbum() {
+  public ListenableFuture<Album> getAlbumAsync() {
     ListeningExecutorService service = MoreExecutors.listeningDecorator(Executors.newFixedThreadPool(10));
     ListenableFuture<Album> albumFuture = service.submit(new Callable<Album>() {
       public Album call() {

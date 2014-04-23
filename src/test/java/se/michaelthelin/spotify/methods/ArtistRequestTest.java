@@ -29,7 +29,7 @@ public class ArtistRequestTest {
     ArtistRequest spy = spy(request);
     when(spy.getJson()).thenReturn(responseFixture);
 
-    ListenableFuture<Artist> artistFuture = spy.getArtist();
+    ListenableFuture<Artist> artistFuture = spy.getArtistAsync();
 
     Futures.addCallback(artistFuture, new FutureCallback<Artist>() {
       @Override

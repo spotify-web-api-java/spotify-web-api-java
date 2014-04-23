@@ -15,7 +15,7 @@ public class TrackRequest extends AbstractRequest {
     super(builder);
   }
 
-  public ListenableFuture<Track> getTrack() {
+  public ListenableFuture<Track> getTrackAsync() {
     ListeningExecutorService service = MoreExecutors.listeningDecorator(Executors.newFixedThreadPool(10));
     ListenableFuture<Track> trackFuture = service.submit(new Callable<Track>() {
       public Track call() {

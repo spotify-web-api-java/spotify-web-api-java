@@ -30,7 +30,7 @@ public class TrackRequestTest {
     TrackRequest spy = spy(request);
     when(spy.getJson()).thenReturn(responseFixture);
 
-    ListenableFuture<Track> trackFuture = spy.getTrack();
+    ListenableFuture<Track> trackFuture = spy.getTrackAsync();
 
     Futures.addCallback(trackFuture, new FutureCallback<Track>() {
       @Override

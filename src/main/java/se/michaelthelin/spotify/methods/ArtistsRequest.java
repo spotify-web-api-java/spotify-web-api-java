@@ -21,7 +21,7 @@ public class ArtistsRequest extends AbstractRequest {
     return new Builder();
   }
 
-  public ListenableFuture<List<Artist>> getArtists() {
+  public ListenableFuture<List<Artist>> getArtistsAsync() {
     ListeningExecutorService service = MoreExecutors.listeningDecorator(Executors.newFixedThreadPool(10));
     ListenableFuture<List<Artist>> artistsFuture = service.submit(new Callable<List<Artist>>() {
       @Override

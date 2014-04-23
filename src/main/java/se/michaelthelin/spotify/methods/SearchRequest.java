@@ -17,7 +17,7 @@ public class SearchRequest extends AbstractRequest {
     super(builder);
   }
 
-  public ListenableFuture<AlbumSearchResult> getAlbums() {
+  public ListenableFuture<AlbumSearchResult> getAlbumsAsync() {
     ListeningExecutorService service = MoreExecutors.listeningDecorator(Executors.newFixedThreadPool(10));
     ListenableFuture<AlbumSearchResult> albumSearchResultFuture = service.submit(new Callable<AlbumSearchResult>() {
       public AlbumSearchResult call() {
@@ -27,7 +27,7 @@ public class SearchRequest extends AbstractRequest {
     return albumSearchResultFuture;
   }
 
-  public ListenableFuture<TrackSearchResult> getTracks() {
+  public ListenableFuture<TrackSearchResult> getTracksAsync() {
     ListeningExecutorService service = MoreExecutors.listeningDecorator(Executors.newFixedThreadPool(10));
     ListenableFuture<TrackSearchResult> trackSearchResultFuture = service.submit(new Callable<TrackSearchResult>() {
       public TrackSearchResult call() {
@@ -37,7 +37,7 @@ public class SearchRequest extends AbstractRequest {
     return trackSearchResultFuture;
   }
 
-  public ListenableFuture<ArtistSearchResult> getArtists() {
+  public ListenableFuture<ArtistSearchResult> getArtistsAsync() {
     ListeningExecutorService service = MoreExecutors.listeningDecorator(Executors.newFixedThreadPool(10));
     ListenableFuture<ArtistSearchResult> artistSearchResultFuture = service.submit(new Callable<ArtistSearchResult>() {
       public ArtistSearchResult call() {

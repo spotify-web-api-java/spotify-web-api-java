@@ -17,7 +17,7 @@ public class TracksRequest extends AbstractRequest {
     super(builder);
   }
 
-  public ListenableFuture<List<Track>> getTracks() {
+  public ListenableFuture<List<Track>> getTracksAsync() {
     ListeningExecutorService service = MoreExecutors.listeningDecorator(Executors.newFixedThreadPool(10));
     ListenableFuture<List<Track>> tracksFuture = service.submit(new Callable<List<Track>>() {
       @Override
