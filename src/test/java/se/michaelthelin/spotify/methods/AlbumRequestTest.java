@@ -20,7 +20,7 @@ import static org.mockito.Mockito.when;
 public class AlbumRequestTest {
 
   @Test
-  public void shouldGetAlbumResult() throws Exception {
+  public void shouldGetAlbumResult_async() throws Exception {
     final Api api = Api.DEFAULT_API;
     final AlbumRequest request = api.album().id("7e0ij2fpWaxOEHv5fUYZjd").build();
 
@@ -39,5 +39,20 @@ public class AlbumRequestTest {
         fail("Failed to resolve future");
       }
     });
+  }
+
+  @Test
+  public void shouldGetAlbumResult_sync() throws Exception {
+    final Api api = Api.DEFAULT_API;
+    final AlbumRequest request = api.album().id("7e0ij2fpWaxOEHv5fUYZjd").build();
+
+    // Mock response
+    final String albumResponseFixture = JsonUtilTest.readTestData("album.json");
+    AlbumRequest spy = spy(request);
+    when(spy.getJson()).thenReturn(albumResponseFixture);
+
+    Album album = spy.getAlbum();
+    assertNotNull(album);
+    assertEquals("0sNOF9WDwhWunNAHPD3Baj", album.getId());
   }
 }

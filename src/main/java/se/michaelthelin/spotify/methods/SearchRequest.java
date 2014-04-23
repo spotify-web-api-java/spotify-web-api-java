@@ -21,7 +21,7 @@ public class SearchRequest extends AbstractRequest {
     ListeningExecutorService service = MoreExecutors.listeningDecorator(Executors.newFixedThreadPool(10));
     ListenableFuture<AlbumSearchResult> albumSearchResultFuture = service.submit(new Callable<AlbumSearchResult>() {
       public AlbumSearchResult call() {
-        return JsonUtil.createAlbumSearchResult(getJson());
+      return JsonUtil.createAlbumSearchResult(getJson());
       }
     });
     return albumSearchResultFuture;
@@ -31,7 +31,7 @@ public class SearchRequest extends AbstractRequest {
     ListeningExecutorService service = MoreExecutors.listeningDecorator(Executors.newFixedThreadPool(10));
     ListenableFuture<TrackSearchResult> trackSearchResultFuture = service.submit(new Callable<TrackSearchResult>() {
       public TrackSearchResult call() {
-        return JsonUtil.createTrackSearchResult(getJson());
+      return JsonUtil.createTrackSearchResult(getJson());
       }
     });
     return trackSearchResultFuture;
@@ -41,15 +41,29 @@ public class SearchRequest extends AbstractRequest {
     ListeningExecutorService service = MoreExecutors.listeningDecorator(Executors.newFixedThreadPool(10));
     ListenableFuture<ArtistSearchResult> artistSearchResultFuture = service.submit(new Callable<ArtistSearchResult>() {
       public ArtistSearchResult call() {
-        return JsonUtil.createArtistSearchResult(getJson());
+      return JsonUtil.createArtistSearchResult(getJson());
       }
     });
     return artistSearchResultFuture;
   }
 
+  public AlbumSearchResult getAlbums() {
+    return JsonUtil.createAlbumSearchResult(getJson());
+  }
+
+  public TrackSearchResult getTracks() {
+    return JsonUtil.createTrackSearchResult(getJson());
+  }
+
+  public ArtistSearchResult getArtists() {
+    return JsonUtil.createArtistSearchResult(getJson());
+  }
+
+
   public static Builder builder() {
     return new Builder();
   }
+
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 

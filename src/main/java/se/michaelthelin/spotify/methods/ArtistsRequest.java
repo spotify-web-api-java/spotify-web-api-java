@@ -26,10 +26,14 @@ public class ArtistsRequest extends AbstractRequest {
     ListenableFuture<List<Artist>> artistsFuture = service.submit(new Callable<List<Artist>>() {
       @Override
       public List<Artist> call() throws Exception {
-        return JsonUtil.createArtists(getJson());
+      return JsonUtil.createArtists(getJson());
       }
     });
     return artistsFuture;
+  }
+
+  public List<Artist> getArtists() {
+    return JsonUtil.createArtists(getJson());
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {

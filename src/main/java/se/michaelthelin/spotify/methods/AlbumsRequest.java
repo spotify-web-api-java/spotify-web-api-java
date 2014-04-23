@@ -28,6 +28,10 @@ public class AlbumsRequest extends AbstractRequest {
     return albumsFuture;
   }
 
+  public List<Album> getAlbums() {
+    return JsonUtil.createAlbums(getJson());
+  }
+
   public static Builder builder() {
     return new Builder();
   }

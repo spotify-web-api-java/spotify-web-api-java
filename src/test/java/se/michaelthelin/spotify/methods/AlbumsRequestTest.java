@@ -21,7 +21,7 @@ import static org.mockito.Mockito.when;
 public class AlbumsRequestTest {
 
   @Test
-  public void shouldGetAlbumResultForIds() throws Exception {
+  public void shouldGetAlbumResultForIds_async() throws Exception {
     Api api = Api.DEFAULT_API;
     AlbumsRequest request = api.albums().id("41MnTivkwTO3UUJ8DrqEJJ", "6JWc4iAiJ9FjyK0B59ABb4").build();
 
@@ -49,12 +49,31 @@ public class AlbumsRequestTest {
         fail("Failed to resolve future");
       }
     });
-
-
   }
 
   @Test
-  public void shouldGetAlbumResultForArtistId() throws Exception {
+  public void shouldGetAlbumResultForIds_sync() throws Exception {
+    Api api = Api.DEFAULT_API;
+    AlbumsRequest request = api.albums().id("41MnTivkwTO3UUJ8DrqEJJ", "6JWc4iAiJ9FjyK0B59ABb4").build();
+
+    // Mock response
+    String albumResponseFixture = JsonUtilTest.readTestData("albums.json");
+    AlbumsRequest spy = spy(request);
+    when(spy.getJson()).thenReturn(albumResponseFixture);
+
+    List<Album> albums = spy.getAlbums();
+
+    assertEquals(2, albums.size());
+
+    Album firstAlbum = albums.get(0);
+    assertEquals("41MnTivkwTO3UUJ8DrqEJJ", firstAlbum.getId());
+
+    Album secondAlbum = albums.get(1);
+    assertEquals("6JWc4iAiJ9FjyK0B59ABb4", secondAlbum.getId());
+  }
+
+  @Test
+  public void shouldGetAlbumResultForArtistId_async() throws Exception {
     Api api = Api.DEFAULT_API;
     AlbumsRequest request = api.albums().forArtist("0oSGxfWSnnOXhD2fKuz2Gy").build();
 
@@ -82,6 +101,27 @@ public class AlbumsRequestTest {
         fail("Failed to resolve future");
       }
     });
+  }
+
+  @Test
+  public void shouldGetAlbumResultForArtistId_sync() throws Exception {
+    Api api = Api.DEFAULT_API;
+    AlbumsRequest request = api.albums().forArtist("0oSGxfWSnnOXhD2fKuz2Gy").build();
+
+    // Mock response
+    String albumResponseFixture = JsonUtilTest.readTestData("albums.json");
+    AlbumsRequest spy = spy(request);
+    when(spy.getJson()).thenReturn(albumResponseFixture);
+
+    List<Album> albums = spy.getAlbums();
+
+    assertEquals(2, albums.size());
+
+    Album firstAlbum = albums.get(0);
+    assertEquals("41MnTivkwTO3UUJ8DrqEJJ", firstAlbum.getId());
+
+    Album secondAlbum = albums.get(1);
+    assertEquals("6JWc4iAiJ9FjyK0B59ABb4", secondAlbum.getId());
   }
 
 }

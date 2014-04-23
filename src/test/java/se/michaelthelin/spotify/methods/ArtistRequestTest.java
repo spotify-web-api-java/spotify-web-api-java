@@ -20,7 +20,7 @@ import static org.mockito.Mockito.when;
 public class ArtistRequestTest {
 
   @Test
-  public void shouldGetArtistResult() throws Exception {
+  public void shouldGetArtistResult_async() throws Exception {
     Api api = Api.DEFAULT_API;
     ArtistRequest request = api.artist().id("0LcJLqbBmaGUft1e9Mm8HV").build();
 
@@ -43,6 +43,22 @@ public class ArtistRequestTest {
         fail("Failed to resolve future");
       }
     });
+  }
+
+  @Test
+  public void shouldGetArtistResult_sync() throws Exception {
+    Api api = Api.DEFAULT_API;
+    ArtistRequest request = api.artist().id("0LcJLqbBmaGUft1e9Mm8HV").build();
+
+    // Mock response
+    String responseFixture = JsonUtilTest.readTestData("artist.json");
+    ArtistRequest spy = spy(request);
+    when(spy.getJson()).thenReturn(responseFixture);
+
+    Artist artist = spy.getArtist();
+
+    assertNotNull(artist);
+    assertEquals("0LcJLqbBmaGUft1e9Mm8HV", artist.getId());
   }
 
 }

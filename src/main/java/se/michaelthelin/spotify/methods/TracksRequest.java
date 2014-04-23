@@ -22,10 +22,14 @@ public class TracksRequest extends AbstractRequest {
     ListenableFuture<List<Track>> tracksFuture = service.submit(new Callable<List<Track>>() {
       @Override
       public List<Track> call() throws Exception {
-        return JsonUtil.createTracks(getJson());
+      return JsonUtil.createTracks(getJson());
       }
     });
     return tracksFuture;
+  }
+
+  public List<Track> getTracks() {
+    return JsonUtil.createTracks(getJson());
   }
 
   public static Builder builder() {

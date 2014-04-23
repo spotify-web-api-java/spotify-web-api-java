@@ -19,15 +19,20 @@ public class TrackRequest extends AbstractRequest {
     ListeningExecutorService service = MoreExecutors.listeningDecorator(Executors.newFixedThreadPool(10));
     ListenableFuture<Track> trackFuture = service.submit(new Callable<Track>() {
       public Track call() {
-        return JsonUtil.createTrack(getJson());
+      return JsonUtil.createTrack(getJson());
       }
     });
     return trackFuture;
   }
 
+  public Track getTrack() {
+    return JsonUtil.createTrack(getJson());
+  }
+
   public static Builder builder() {
     return new Builder();
   }
+
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 

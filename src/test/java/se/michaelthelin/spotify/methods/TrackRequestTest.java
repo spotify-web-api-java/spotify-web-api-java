@@ -21,7 +21,7 @@ import static org.mockito.Mockito.when;
 public class TrackRequestTest {
 
   @Test
-  public void shouldGetTrackResult() throws Exception {
+  public void shouldGetTrackResult_async() throws Exception {
     Api api = Api.DEFAULT_API;
     TrackRequest request = api.track().id("0eGsygTp906u18L0Oimnem").build();
 
@@ -44,5 +44,21 @@ public class TrackRequestTest {
         fail("Failed to resolve future");
       }
     });
+  }
+
+  @Test
+  public void shouldGetTrackResult_sync() throws Exception {
+    Api api = Api.DEFAULT_API;
+    TrackRequest request = api.track().id("0eGsygTp906u18L0Oimnem").build();
+
+    // Mock response
+    String responseFixture = JsonUtilTest.readTestData("track.json");
+    TrackRequest spy = spy(request);
+    when(spy.getJson()).thenReturn(responseFixture);
+
+    Track track = spy.getTrack();
+
+    assertNotNull(track);
+    assertEquals("0eGsygTp906u18L0Oimnem", track.getId());
   }
 }

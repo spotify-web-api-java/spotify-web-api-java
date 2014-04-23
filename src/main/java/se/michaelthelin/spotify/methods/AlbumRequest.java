@@ -27,6 +27,11 @@ public class AlbumRequest extends AbstractRequest {
     return albumFuture;
   }
 
+
+  public Album getAlbum() {
+    return JsonUtil.createAlbum(getJson());
+  }
+
   public static Builder builder() {
     return new Builder();
   }

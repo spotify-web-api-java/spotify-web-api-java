@@ -21,7 +21,7 @@ import static org.mockito.Mockito.when;
 public class ArtistsRequestTest {
 
   @Test
-  public void shouldGetArtistsResult() throws Exception {
+  public void shouldGetArtistsResult_async() throws Exception {
     Api api = Api.DEFAULT_API;
     ArtistsRequest request = api.artists().id("0oSGxfWSnnOXhD2fKuz2Gy","3dBVyJ7JuOMt4GE9607Qin").build();
 
@@ -49,6 +49,27 @@ public class ArtistsRequestTest {
         fail("Failed to resolve future");
       }
     });
+  }
+
+  @Test
+  public void shouldGetArtistsResult_sync() throws Exception {
+    Api api = Api.DEFAULT_API;
+    ArtistsRequest request = api.artists().id("0oSGxfWSnnOXhD2fKuz2Gy","3dBVyJ7JuOMt4GE9607Qin").build();
+
+    // Mock response
+    String responseFixture = JsonUtilTest.readTestData("artists.json");
+    ArtistsRequest spy = spy(request);
+    when(spy.getJson()).thenReturn(responseFixture);
+
+    List<Artist> artists = spy.getArtists();
+
+    assertEquals(2, artists.size());
+
+    Artist firstArtist = artists.get(0);
+    Artist secondArtist = artists.get(1);
+
+    assertEquals("0oSGxfWSnnOXhD2fKuz2Gy", firstArtist.getId());
+    assertEquals("3dBVyJ7JuOMt4GE9607Qin", secondArtist.getId());
   }
 
 }
