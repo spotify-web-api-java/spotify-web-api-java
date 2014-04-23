@@ -4,6 +4,8 @@ This is a Java wrapper for the [Spotify Web API](https://developer.spotify.com/s
 
 ## Usage
 
+#### Asynchronous, using [Guava's listenable future API](https://code.google.com/p/guava-libraries/wiki/ListenableFutureExplained).
+
 ```java
 // Create an API instance. The default instance connects to https://api.spotify.com/.
 Api api = Api.DEFAULT_API; 
@@ -17,7 +19,7 @@ ListenableFuture<Album> albumFuture = request.getAlbumAsync();
 // Create callbacks in case of success or failure
 Futures.addCallback(albumFuture, new FutureCallback<Album>() {
 
-  // Print the genres if the album call is successful
+  // Print the genres of the album call is successful
   public void onSuccess(Album album) {
     List<String> genres = album.getGenres(); 
     for (String genre : genres) {
@@ -29,4 +31,22 @@ Futures.addCallback(albumFuture, new FutureCallback<Album>() {
     System.out.println("Could not get albums.");
   }
 });
+```
+
+#### Synchronous 
+```java
+// Create an API instance. The default instance connects to https://api.spotify.com/.
+Api api = Api.DEFAULT_API; 
+
+// Create a request object for the type of request you want to make
+AlbumRequest request = api.album().id("7e0ij2fpWaxOEHv5fUYZjd").build();
+
+// Retrieve an album
+Album album= request.getAlbum();
+
+// Print the genres of the album
+List<String> genres = album.getGenres(); 
+for (String genre : genres) {
+  System.out.println(genre);
+};
 ```
