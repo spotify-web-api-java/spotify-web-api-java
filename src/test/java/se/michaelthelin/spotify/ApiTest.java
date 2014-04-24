@@ -11,9 +11,6 @@ import static se.michaelthelin.spotify.SpotifyProtos.AlbumType.SINGLE;
 import static junit.framework.TestCase.assertEquals;
 import static org.junit.Assert.fail;
 
-/**
- * Unit tests for the API class.
- */
 public class ApiTest {
 
   @Test
