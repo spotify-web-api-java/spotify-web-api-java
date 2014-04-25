@@ -9,10 +9,13 @@ import org.mockito.runners.MockitoJUnitRunner;
 import se.michaelthelin.spotify.Api;
 import se.michaelthelin.spotify.JsonUtilTest;
 import se.michaelthelin.spotify.SpotifyProtos.Album;
+import se.michaelthelin.spotify.testutils.AsyncMethodHandler;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertNotNull;
 import static junit.framework.TestCase.fail;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.when;
@@ -30,25 +33,37 @@ public class AlbumsRequestTest {
     AlbumsRequest spy = spy(request);
     when(spy.getJson()).thenReturn(albumResponseFixture);
 
+    final AsyncMethodHandler asyncMethodHandler = new AsyncMethodHandler();
+
     ListenableFuture<List<Album>> albumsFuture = spy.getAlbumsAsync();
     Futures.addCallback(albumsFuture, new FutureCallback<List<Album>>() {
 
       @Override
       public void onSuccess(List<Album> albums) {
-        assertEquals(2, albums.size());
+        Throwable potentialThrowable = null;
+        try {
+          assertEquals(2, albums.size());
 
-        Album firstAlbum = albums.get(0);
-        assertEquals("41MnTivkwTO3UUJ8DrqEJJ", firstAlbum.getId());
+          Album firstAlbum = albums.get(0);
+          assertEquals("41MnTivkwTO3UUJ8DrqEJJ", firstAlbum.getId());
 
-        Album secondAlbum = albums.get(1);
-        assertEquals("6JWc4iAiJ9FjyK0B59ABb4", secondAlbum.getId());
+          Album secondAlbum = albums.get(1);
+          assertEquals("6JWc4iAiJ9FjyK0B59ABb4", secondAlbum.getId());
+        } catch (Throwable throwable) {
+          potentialThrowable = throwable;
+        } finally {
+          asyncMethodHandler.done(potentialThrowable);
+        }
       }
 
       @Override
       public void onFailure(Throwable throwable) {
-        fail("Failed to resolve future");
+        asyncMethodHandler.done(throwable);
       }
     });
+
+    asyncMethodHandler.wait(5, TimeUnit.SECONDS);
+    asyncMethodHandler.assertNoErrors();
   }
 
   @Test
