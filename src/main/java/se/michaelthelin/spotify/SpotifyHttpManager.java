@@ -49,28 +49,18 @@ public class SpotifyHttpManager implements HttpManager {
   }
 
   private String execute(HttpMethod method) {
-
     HttpClient httpClient = new HttpClient(connectionManager);
-
     try {
-      int statusCode = httpClient.executeMethod(method);
-      if (statusCode != HttpStatus.SC_OK) {
-        String error = String.format(
-                "Expected 200 OK. Received %d %s.  Response: %s.",
-                statusCode,
-                HttpStatus.getStatusText(statusCode),
-                method.getResponseBodyAsString());
-        throw new RuntimeException(error);
-      }
+      httpClient.executeMethod(method);
       String responseBody = method.getResponseBodyAsString();
       if (responseBody == null) {
-        throw new RuntimeException("Expected response body, got null");
+        throw new RuntimeException("Not implemented");
       }
       return responseBody;
     } catch (HttpException e) {
-      throw new RuntimeException(e);
+      throw new RuntimeException("Not implemented");
     } catch (IOException e) {
-      throw new RuntimeException(e);
+      throw new RuntimeException("Not implemented");
     } finally {
       method.releaseConnection();
     }
