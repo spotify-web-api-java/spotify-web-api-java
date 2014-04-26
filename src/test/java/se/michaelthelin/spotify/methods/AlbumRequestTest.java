@@ -9,6 +9,8 @@ import org.mockito.runners.MockitoJUnitRunner;
 import se.michaelthelin.spotify.Api;
 import se.michaelthelin.spotify.JsonUtilTest;
 import se.michaelthelin.spotify.SpotifyProtos.Album;
+import se.michaelthelin.spotify.exceptions.BadFieldException;
+import se.michaelthelin.spotify.exceptions.NotFoundException;
 import se.michaelthelin.spotify.testutils.AsyncMethodHandler;
 
 import java.util.concurrent.TimeUnit;
@@ -91,6 +93,7 @@ public class AlbumRequestTest {
 
     asyncMethodHandler.wait(5, TimeUnit.SECONDS);
     asyncMethodHandler.assertErrors();
+    asyncMethodHandler.assertErrorType(NotFoundException.class);
   }
 
   @Test
@@ -123,6 +126,7 @@ public class AlbumRequestTest {
 
     asyncMethodHandler.wait(5, TimeUnit.SECONDS);
     asyncMethodHandler.assertErrors();
+    asyncMethodHandler.assertErrorType(BadFieldException.class);
   }
 
   @Test

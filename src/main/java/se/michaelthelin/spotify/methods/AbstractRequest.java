@@ -1,9 +1,12 @@
 package se.michaelthelin.spotify.methods;
 
+import net.sf.json.JSONObject;
 import se.michaelthelin.spotify.Api;
 import se.michaelthelin.spotify.HttpManager;
 import se.michaelthelin.spotify.UrlUtil;
 import se.michaelthelin.spotify.UtilProtos.Url;
+import se.michaelthelin.spotify.exceptions.BadFieldException;
+import se.michaelthelin.spotify.exceptions.NotFoundException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +27,24 @@ public abstract class AbstractRequest implements Request {
 
   public String getJson() {
     return httpManager.get(url);
+  }
+
+  protected boolean errorInJson(JSONObject jsonObject) {
+    return (!jsonObject.isNullObject() && jsonObject.has("error"));
+  }
+
+  protected Exception getExceptionFromJson(JSONObject jsonObject) {
+    assert (jsonObject != null);
+    assert (errorInJson(jsonObject));
+
+    JSONObject error = jsonObject.getJSONObject("error");
+    if (error.getString("type").equals("bad_field")) {
+      return new BadFieldException();
+    }
+    if (error.getString("type").equals("not_found")) {
+      return new NotFoundException();
+    }
+    return new IllegalStateException("Should not get here");
   }
 
   public AbstractRequest(Builder<?> builder) {

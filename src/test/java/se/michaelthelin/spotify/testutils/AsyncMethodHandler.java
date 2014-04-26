@@ -1,5 +1,7 @@
 package se.michaelthelin.spotify.testutils;
 
+import se.michaelthelin.spotify.exceptions.BadFieldException;
+
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
@@ -35,5 +37,13 @@ public class AsyncMethodHandler {
     if (assertionError == null) {
       throw new AssertionError("No assertion errors occurred");
     }
+  }
+
+  public Throwable getThrowables() {
+    return assertionError;
+  }
+
+  public boolean assertErrorType(Class<? extends Exception> exceptionClass) {
+    return assertionError.getClass().equals(exceptionClass);
   }
 }
