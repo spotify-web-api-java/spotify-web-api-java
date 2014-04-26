@@ -11,12 +11,11 @@ import se.michaelthelin.spotify.JsonUtilTest;
 import se.michaelthelin.spotify.SpotifyProtos.Album;
 import se.michaelthelin.spotify.exceptions.BadFieldException;
 import se.michaelthelin.spotify.exceptions.NotFoundException;
-import se.michaelthelin.spotify.testutils.AsyncMethodHandler;
 
+import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
-import static junit.framework.TestCase.assertEquals;
-import static junit.framework.TestCase.assertNotNull;
+import static junit.framework.TestCase.*;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.when;
 
@@ -33,34 +32,26 @@ public class AlbumRequestTest {
     final AlbumRequest spy = spy(request);
     when(spy.getJson()).thenReturn(albumResponseFixture);
 
-    // Use so that the test doesnt finish without checking the results from the asynchronous method
-    final AsyncMethodHandler asyncMethodHandler = new AsyncMethodHandler();
+    final CountDownLatch latch = new CountDownLatch(1);
 
     final ListenableFuture<Album> albumFuture = spy.getAlbumAsync();
 
     Futures.addCallback(albumFuture, new FutureCallback<Album>() {
       @Override
       public void onSuccess(Album album) {
-        Throwable potentialError = null;
-        try {
-          assertNotNull(album);
-          assertEquals("0sNOF9WDwhWunNAHPD3Baj", album.getId());
-        } catch (Throwable throwable) {
-          potentialError = throwable;
-        } finally {
-          asyncMethodHandler.done(potentialError);
-        }
+        assertNotNull(album);
+        assertEquals("0sNOF9WDwhWunNAHPD3Baj", album.getId());
+        latch.countDown();
       }
 
       @Override
       public void onFailure(Throwable throwable) {
-        asyncMethodHandler.done(throwable);
+        fail("Call to get album failed");
       }
 
     });
 
-    asyncMethodHandler.wait(5, TimeUnit.SECONDS);
-    asyncMethodHandler.assertNoErrors();
+    latch.await(2, TimeUnit.SECONDS);
   }
 
   @Test
@@ -73,27 +64,25 @@ public class AlbumRequestTest {
     final AlbumRequest spy = spy(request);
     when(spy.getJson()).thenReturn(albumResponseFixture);
 
-    // Use so that the test doesnt finish without checking the results from the asynchronous method
-    final AsyncMethodHandler asyncMethodHandler = new AsyncMethodHandler();
+    final CountDownLatch latch = new CountDownLatch(1);
 
     final ListenableFuture<Album> albumFuture = spy.getAlbumAsync();
 
     Futures.addCallback(albumFuture, new FutureCallback<Album>() {
       @Override
       public void onSuccess(Album album) {
-        asyncMethodHandler.done();
+        fail("Expected call to get album to fail");
       }
 
       @Override
       public void onFailure(Throwable throwable) {
-        asyncMethodHandler.done(throwable);
+        assertEquals(throwable.getClass(), NotFoundException.class);
+        latch.countDown();
       }
 
     });
 
-    asyncMethodHandler.wait(5, TimeUnit.SECONDS);
-    asyncMethodHandler.assertErrors();
-    asyncMethodHandler.assertErrorType(NotFoundException.class);
+    latch.await(2, TimeUnit.SECONDS);
   }
 
   @Test
@@ -106,27 +95,25 @@ public class AlbumRequestTest {
     final AlbumRequest spy = spy(request);
     when(spy.getJson()).thenReturn(albumResponseFixture);
 
-    // Use so that the test doesnt finish without checking the results from the asynchronous method
-    final AsyncMethodHandler asyncMethodHandler = new AsyncMethodHandler();
+    final CountDownLatch latch = new CountDownLatch(1);
 
     final ListenableFuture<Album> albumFuture = spy.getAlbumAsync();
 
     Futures.addCallback(albumFuture, new FutureCallback<Album>() {
       @Override
       public void onSuccess(Album album) {
-        asyncMethodHandler.done();
+        fail();
       }
 
       @Override
       public void onFailure(Throwable throwable) {
-        asyncMethodHandler.done(throwable);
+        assertEquals(throwable.getClass(), BadFieldException.class);
+        latch.countDown();
       }
 
     });
 
-    asyncMethodHandler.wait(5, TimeUnit.SECONDS);
-    asyncMethodHandler.assertErrors();
-    asyncMethodHandler.assertErrorType(BadFieldException.class);
+    latch.await(2, TimeUnit.SECONDS);
   }
 
   @Test

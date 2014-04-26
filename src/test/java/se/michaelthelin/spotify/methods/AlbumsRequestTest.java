@@ -9,13 +9,12 @@ import org.mockito.runners.MockitoJUnitRunner;
 import se.michaelthelin.spotify.Api;
 import se.michaelthelin.spotify.JsonUtilTest;
 import se.michaelthelin.spotify.SpotifyProtos.Album;
-import se.michaelthelin.spotify.testutils.AsyncMethodHandler;
 
 import java.util.List;
+import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
 import static junit.framework.Assert.assertEquals;
-import static junit.framework.Assert.assertNotNull;
 import static junit.framework.TestCase.fail;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.when;
@@ -33,37 +32,31 @@ public class AlbumsRequestTest {
     AlbumsRequest spy = spy(request);
     when(spy.getJson()).thenReturn(albumResponseFixture);
 
-    final AsyncMethodHandler asyncMethodHandler = new AsyncMethodHandler();
+    final CountDownLatch latch = new CountDownLatch(1);
 
     ListenableFuture<List<Album>> albumsFuture = spy.getAlbumsAsync();
     Futures.addCallback(albumsFuture, new FutureCallback<List<Album>>() {
 
       @Override
       public void onSuccess(List<Album> albums) {
-        Throwable potentialThrowable = null;
-        try {
-          assertEquals(2, albums.size());
+        assertEquals(2, albums.size());
 
-          Album firstAlbum = albums.get(0);
-          assertEquals("41MnTivkwTO3UUJ8DrqEJJ", firstAlbum.getId());
+        Album firstAlbum = albums.get(0);
+        assertEquals("41MnTivkwTO3UUJ8DrqEJJ", firstAlbum.getId());
 
-          Album secondAlbum = albums.get(1);
-          assertEquals("6JWc4iAiJ9FjyK0B59ABb4", secondAlbum.getId());
-        } catch (Throwable throwable) {
-          potentialThrowable = throwable;
-        } finally {
-          asyncMethodHandler.done(potentialThrowable);
-        }
+        Album secondAlbum = albums.get(1);
+        assertEquals("6JWc4iAiJ9FjyK0B59ABb4", secondAlbum.getId());
+
+        latch.countDown();
       }
 
       @Override
       public void onFailure(Throwable throwable) {
-        asyncMethodHandler.done(throwable);
+        fail();
       }
     });
 
-    asyncMethodHandler.wait(5, TimeUnit.SECONDS);
-    asyncMethodHandler.assertNoErrors();
+    latch.await(5, TimeUnit.SECONDS);
   }
 
   @Test
