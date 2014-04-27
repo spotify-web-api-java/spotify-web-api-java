@@ -10,6 +10,8 @@ import se.michaelthelin.spotify.Api;
 import se.michaelthelin.spotify.JsonUtilTest;
 import se.michaelthelin.spotify.SpotifyProtos.Artist;
 
+import java.util.concurrent.CountDownLatch;
+
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertNotNull;
 import static junit.framework.TestCase.fail;
@@ -29,6 +31,8 @@ public class ArtistRequestTest {
     ArtistRequest spy = spy(request);
     when(spy.getJson()).thenReturn(responseFixture);
 
+    final CountDownLatch asyncCompleted = new CountDownLatch(1);
+
     ListenableFuture<Artist> artistFuture = spy.getArtistAsync();
 
     Futures.addCallback(artistFuture, new FutureCallback<Artist>() {
@@ -36,6 +40,7 @@ public class ArtistRequestTest {
       public void onSuccess(Artist artist) {
         assertNotNull(artist);
         assertEquals("0LcJLqbBmaGUft1e9Mm8HV", artist.getId());
+        asyncCompleted.countDown();
       }
 
       @Override

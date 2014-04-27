@@ -1,15 +1,14 @@
 package se.michaelthelin.spotify.methods;
 
-import com.google.common.util.concurrent.ListenableFuture;
-import com.google.common.util.concurrent.ListeningExecutorService;
-import com.google.common.util.concurrent.MoreExecutors;
+import com.google.common.util.concurrent.SettableFuture;
+import net.sf.json.JSONObject;
 import se.michaelthelin.spotify.JsonUtil;
 import se.michaelthelin.spotify.SpotifyProtos.AlbumSearchResult;
 import se.michaelthelin.spotify.SpotifyProtos.ArtistSearchResult;
 import se.michaelthelin.spotify.SpotifyProtos.TrackSearchResult;
+import se.michaelthelin.spotify.exceptions.UnexpectedResponseException;
 
-import java.util.concurrent.Callable;
-import java.util.concurrent.Executors;
+import java.io.IOException;
 
 public class SearchRequest extends AbstractRequest {
 
@@ -17,45 +16,63 @@ public class SearchRequest extends AbstractRequest {
     super(builder);
   }
 
-  public ListenableFuture<AlbumSearchResult> getAlbumsAsync() {
-    ListeningExecutorService service = MoreExecutors.listeningDecorator(Executors.newFixedThreadPool(10));
-    ListenableFuture<AlbumSearchResult> albumSearchResultFuture = service.submit(new Callable<AlbumSearchResult>() {
-      public AlbumSearchResult call() {
-      return JsonUtil.createAlbumSearchResult(getJson());
-      }
-    });
-    return albumSearchResultFuture;
+  public SettableFuture<AlbumSearchResult> getAlbumsAsync() {
+    SettableFuture<AlbumSearchResult> searchResultFuture = SettableFuture.create();
+
+    try {
+      String jsonString = getJson();
+      JSONObject jsonObject = JSONObject.fromObject(jsonString);
+      searchResultFuture.set(JsonUtil.createAlbumSearchResult(jsonObject));
+    } catch (IOException e) {
+      searchResultFuture.setException(e);
+    } catch (UnexpectedResponseException e) {
+      searchResultFuture.setException(e);
+    }
+
+    return searchResultFuture;
   }
 
-  public ListenableFuture<TrackSearchResult> getTracksAsync() {
-    ListeningExecutorService service = MoreExecutors.listeningDecorator(Executors.newFixedThreadPool(10));
-    ListenableFuture<TrackSearchResult> trackSearchResultFuture = service.submit(new Callable<TrackSearchResult>() {
-      public TrackSearchResult call() {
-      return JsonUtil.createTrackSearchResult(getJson());
-      }
-    });
-    return trackSearchResultFuture;
+  public SettableFuture<TrackSearchResult> getTracksAsync() {
+    SettableFuture<TrackSearchResult> searchResultFuture = SettableFuture.create();
+
+    try {
+      String jsonString = getJson();
+      JSONObject jsonObject = JSONObject.fromObject(jsonString);
+      searchResultFuture.set(JsonUtil.createTrackSearchResult(jsonObject));
+    } catch (IOException e) {
+      searchResultFuture.setException(e);
+    } catch (UnexpectedResponseException e) {
+      searchResultFuture.setException(e);
+    }
+
+    return searchResultFuture;
   }
 
-  public ListenableFuture<ArtistSearchResult> getArtistsAsync() {
-    ListeningExecutorService service = MoreExecutors.listeningDecorator(Executors.newFixedThreadPool(10));
-    ListenableFuture<ArtistSearchResult> artistSearchResultFuture = service.submit(new Callable<ArtistSearchResult>() {
-      public ArtistSearchResult call() {
-      return JsonUtil.createArtistSearchResult(getJson());
-      }
-    });
-    return artistSearchResultFuture;
+  public SettableFuture<ArtistSearchResult> getArtistsAsync() {
+    SettableFuture<ArtistSearchResult> searchResultFuture = SettableFuture.create();
+
+    try {
+      String jsonString = getJson();
+      JSONObject jsonObject = JSONObject.fromObject(jsonString);
+      searchResultFuture.set(JsonUtil.createArtistSearchResult(jsonObject));
+    } catch (IOException e) {
+      searchResultFuture.setException(e);
+    } catch (UnexpectedResponseException e) {
+      searchResultFuture.setException(e);
+    }
+
+    return searchResultFuture;
   }
 
-  public AlbumSearchResult getAlbums() {
+  public AlbumSearchResult getAlbums() throws IOException, UnexpectedResponseException {
     return JsonUtil.createAlbumSearchResult(getJson());
   }
 
-  public TrackSearchResult getTracks() {
+  public TrackSearchResult getTracks() throws IOException, UnexpectedResponseException {
     return JsonUtil.createTrackSearchResult(getJson());
   }
 
-  public ArtistSearchResult getArtists() {
+  public ArtistSearchResult getArtists() throws IOException, UnexpectedResponseException {
     return JsonUtil.createArtistSearchResult(getJson());
   }
 

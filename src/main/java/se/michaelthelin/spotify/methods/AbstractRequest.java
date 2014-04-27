@@ -7,7 +7,9 @@ import se.michaelthelin.spotify.UrlUtil;
 import se.michaelthelin.spotify.UtilProtos.Url;
 import se.michaelthelin.spotify.exceptions.BadFieldException;
 import se.michaelthelin.spotify.exceptions.NotFoundException;
+import se.michaelthelin.spotify.exceptions.UnexpectedResponseException;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +27,7 @@ public abstract class AbstractRequest implements Request {
     return UrlUtil.assemble(url);
   }
 
-  public String getJson() {
+  public String getJson() throws IOException, UnexpectedResponseException {
     return httpManager.get(url);
   }
 
@@ -45,6 +47,20 @@ public abstract class AbstractRequest implements Request {
       return new NotFoundException();
     }
     return new IllegalStateException("Should not get here");
+  }
+
+  protected void throwIfErrorsInResponse(JSONObject jsonObject) throws NotFoundException, BadFieldException {
+    assert (jsonObject != null);
+
+    if (errorInJson(jsonObject)) {
+      JSONObject error = jsonObject.getJSONObject("error");
+      if (error.getString("type").equals("bad_field")) {
+        throw new BadFieldException();
+      }
+      if (error.getString("type").equals("not_found")) {
+        throw new NotFoundException();
+      }
+    }
   }
 
   public AbstractRequest(Builder<?> builder) {

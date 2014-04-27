@@ -1,13 +1,12 @@
 package se.michaelthelin.spotify.methods;
 
-import com.google.common.util.concurrent.ListenableFuture;
-import com.google.common.util.concurrent.ListeningExecutorService;
-import com.google.common.util.concurrent.MoreExecutors;
+import com.google.common.util.concurrent.SettableFuture;
+import net.sf.json.JSONObject;
 import se.michaelthelin.spotify.JsonUtil;
 import se.michaelthelin.spotify.SpotifyProtos.Track;
+import se.michaelthelin.spotify.exceptions.UnexpectedResponseException;
 
-import java.util.concurrent.Callable;
-import java.util.concurrent.Executors;
+import java.io.IOException;
 
 public class TrackRequest extends AbstractRequest {
 
@@ -15,17 +14,28 @@ public class TrackRequest extends AbstractRequest {
     super(builder);
   }
 
-  public ListenableFuture<Track> getTrackAsync() {
-    ListeningExecutorService service = MoreExecutors.listeningDecorator(Executors.newFixedThreadPool(10));
-    ListenableFuture<Track> trackFuture = service.submit(new Callable<Track>() {
-      public Track call() {
-      return JsonUtil.createTrack(getJson());
+  public SettableFuture<Track> getTrackAsync() {
+    SettableFuture<Track> trackFuture = SettableFuture.create();
+
+    try {
+      String jsonString = getJson();
+      JSONObject jsonObject = JSONObject.fromObject(jsonString);
+      if (errorInJson(jsonObject)) {
+        Exception exception = getExceptionFromJson(jsonObject);
+        trackFuture.setException(exception);
+      } else {
+        trackFuture.set(JsonUtil.createTrack(getJson()));
       }
-    });
+    } catch (IOException e) {
+      trackFuture.setException(e);
+    } catch (UnexpectedResponseException e) {
+      trackFuture.setException(e);
+    }
+
     return trackFuture;
   }
 
-  public Track getTrack() {
+  public Track getTrack() throws IOException, UnexpectedResponseException {
     return JsonUtil.createTrack(getJson());
   }
 

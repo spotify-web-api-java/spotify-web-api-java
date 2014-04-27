@@ -6,6 +6,7 @@ import org.apache.commons.httpclient.methods.GetMethod;
 import org.apache.commons.httpclient.params.HttpMethodParams;
 
 import se.michaelthelin.spotify.UtilProtos.Url;
+import se.michaelthelin.spotify.exceptions.UnexpectedResponseException;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -27,7 +28,7 @@ public class SpotifyHttpManager implements HttpManager {
   }
 
   @Override
-  public String get(Url url) {
+  public String get(Url url) throws UnexpectedResponseException, IOException {
     assert (url != null);
     String uri = UrlUtil.assemble(url);
     GetMethod method = new GetMethod(uri);
@@ -48,19 +49,17 @@ public class SpotifyHttpManager implements HttpManager {
     return out.toArray(new NameValuePair[out.size()]);
   }
 
-  private String execute(HttpMethod method) {
+  private String execute(HttpMethod method) throws UnexpectedResponseException, IOException {
     HttpClient httpClient = new HttpClient(connectionManager);
     try {
       httpClient.executeMethod(method);
       String responseBody = method.getResponseBodyAsString();
       if (responseBody == null) {
-        throw new RuntimeException("Not implemented");
+        throw new UnexpectedResponseException();
       }
       return responseBody;
-    } catch (HttpException e) {
-      throw new RuntimeException("Not implemented");
     } catch (IOException e) {
-      throw new RuntimeException("Not implemented");
+      throw new IOException();
     } finally {
       method.releaseConnection();
     }

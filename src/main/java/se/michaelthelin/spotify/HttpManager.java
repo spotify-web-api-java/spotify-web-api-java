@@ -1,6 +1,9 @@
 package se.michaelthelin.spotify;
 
 import se.michaelthelin.spotify.UtilProtos.Url;
+import se.michaelthelin.spotify.exceptions.UnexpectedResponseException;
+
+import java.io.IOException;
 
 /**
  * A simple HTTP connection interface.
@@ -13,7 +16,7 @@ public interface HttpManager {
    * @param url the {@link Url} to HTTP GET.
    * @return a String containing the body of the HTTP GET response.
    */
-  String get(Url url);
+  String get(Url url) throws UnexpectedResponseException, IOException;
 
   /**
    * Perform an HTTP POST request to the specified URL.

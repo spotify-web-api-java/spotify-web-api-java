@@ -1,15 +1,14 @@
 package se.michaelthelin.spotify.methods;
 
 import com.google.common.base.Joiner;
-import com.google.common.util.concurrent.ListenableFuture;
-import com.google.common.util.concurrent.ListeningExecutorService;
-import com.google.common.util.concurrent.MoreExecutors;
+import com.google.common.util.concurrent.SettableFuture;
+import net.sf.json.JSONObject;
 import se.michaelthelin.spotify.JsonUtil;
 import se.michaelthelin.spotify.SpotifyProtos.Track;
+import se.michaelthelin.spotify.exceptions.UnexpectedResponseException;
 
+import java.io.IOException;
 import java.util.List;
-import java.util.concurrent.Callable;
-import java.util.concurrent.Executors;
 
 public class TracksRequest extends AbstractRequest {
 
@@ -17,18 +16,28 @@ public class TracksRequest extends AbstractRequest {
     super(builder);
   }
 
-  public ListenableFuture<List<Track>> getTracksAsync() {
-    ListeningExecutorService service = MoreExecutors.listeningDecorator(Executors.newFixedThreadPool(10));
-    ListenableFuture<List<Track>> tracksFuture = service.submit(new Callable<List<Track>>() {
-      @Override
-      public List<Track> call() throws Exception {
-      return JsonUtil.createTracks(getJson());
+  public SettableFuture<List<Track>> getTracksAsync() {
+    SettableFuture<List<Track>> tracksFuture = SettableFuture.create();
+
+    try {
+      String jsonString = getJson();
+      JSONObject jsonObject = JSONObject.fromObject(jsonString);
+      if (errorInJson(jsonObject)) {
+        Exception exception = getExceptionFromJson(jsonObject);
+        tracksFuture.setException(exception);
+      } else {
+        tracksFuture.set(JsonUtil.createTracks(getJson()));
       }
-    });
+    } catch (IOException e) {
+      tracksFuture.setException(e);
+    } catch (UnexpectedResponseException e) {
+      tracksFuture.setException(e);
+    }
+
     return tracksFuture;
   }
 
-  public List<Track> getTracks() {
+  public List<Track> getTracks() throws IOException, UnexpectedResponseException {
     return JsonUtil.createTracks(getJson());
   }
 
