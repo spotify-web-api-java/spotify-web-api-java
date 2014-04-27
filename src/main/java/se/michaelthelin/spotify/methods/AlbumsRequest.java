@@ -4,6 +4,8 @@ import com.google.common.base.Joiner;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.common.util.concurrent.ListeningExecutorService;
 import com.google.common.util.concurrent.MoreExecutors;
+import com.google.common.util.concurrent.SettableFuture;
+import net.sf.json.JSONObject;
 import se.michaelthelin.spotify.JsonUtil;
 import se.michaelthelin.spotify.SpotifyProtos;
 import se.michaelthelin.spotify.SpotifyProtos.Album;
@@ -18,13 +20,19 @@ public class AlbumsRequest extends AbstractRequest {
     super(builder);
   }
 
-  public ListenableFuture<List<Album>> getAlbumsAsync() {
-    ListeningExecutorService service = MoreExecutors.listeningDecorator(Executors.newFixedThreadPool(10));
-    ListenableFuture<List<Album>> albumsFuture = service.submit(new Callable<List<Album>>() {
-      public List<Album> call() {
-        return JsonUtil.createAlbums(getJson());
-      }
-    });
+  public SettableFuture<List<Album>> getAlbumsAsync() {
+    SettableFuture<List<Album>> albumsFuture = SettableFuture.create();
+
+    String jsonString = getJson();
+    JSONObject jsonObject = JSONObject.fromObject(jsonString);
+
+    if (errorInJson(jsonObject)) {
+      Exception exception = getExceptionFromJson(jsonObject);
+      albumsFuture.setException(exception);
+    } else {
+      albumsFuture.set(JsonUtil.createAlbums(getJson()));
+    }
+
     return albumsFuture;
   }
 

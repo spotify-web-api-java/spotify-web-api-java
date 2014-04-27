@@ -2,7 +2,7 @@ package se.michaelthelin.spotify.methods;
 
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
-import com.google.common.util.concurrent.ListenableFuture;
+import com.google.common.util.concurrent.SettableFuture;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -32,16 +32,16 @@ public class AlbumRequestTest {
     final AlbumRequest spy = spy(request);
     when(spy.getJson()).thenReturn(albumResponseFixture);
 
-    final CountDownLatch latch = new CountDownLatch(1);
+    final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
-    final ListenableFuture<Album> albumFuture = spy.getAlbumAsync();
+    final SettableFuture<Album> albumFuture = spy.getAlbumAsync();
 
     Futures.addCallback(albumFuture, new FutureCallback<Album>() {
       @Override
       public void onSuccess(Album album) {
         assertNotNull(album);
         assertEquals("0sNOF9WDwhWunNAHPD3Baj", album.getId());
-        latch.countDown();
+        asyncCompleted.countDown();
       }
 
       @Override
@@ -51,7 +51,7 @@ public class AlbumRequestTest {
 
     });
 
-    latch.await(2, TimeUnit.SECONDS);
+    asyncCompleted.await(1, TimeUnit.SECONDS);
   }
 
   @Test
@@ -64,9 +64,9 @@ public class AlbumRequestTest {
     final AlbumRequest spy = spy(request);
     when(spy.getJson()).thenReturn(albumResponseFixture);
 
-    final CountDownLatch latch = new CountDownLatch(1);
+    final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
-    final ListenableFuture<Album> albumFuture = spy.getAlbumAsync();
+    final SettableFuture<Album> albumFuture = spy.getAlbumAsync();
 
     Futures.addCallback(albumFuture, new FutureCallback<Album>() {
       @Override
@@ -77,12 +77,12 @@ public class AlbumRequestTest {
       @Override
       public void onFailure(Throwable throwable) {
         assertEquals(throwable.getClass(), NotFoundException.class);
-        latch.countDown();
+        asyncCompleted.countDown();
       }
 
     });
 
-    latch.await(2, TimeUnit.SECONDS);
+    asyncCompleted.await(1, TimeUnit.SECONDS);
   }
 
   @Test
@@ -95,9 +95,9 @@ public class AlbumRequestTest {
     final AlbumRequest spy = spy(request);
     when(spy.getJson()).thenReturn(albumResponseFixture);
 
-    final CountDownLatch latch = new CountDownLatch(1);
+    final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
-    final ListenableFuture<Album> albumFuture = spy.getAlbumAsync();
+    final SettableFuture<Album> albumFuture = spy.getAlbumAsync();
 
     Futures.addCallback(albumFuture, new FutureCallback<Album>() {
       @Override
@@ -108,12 +108,12 @@ public class AlbumRequestTest {
       @Override
       public void onFailure(Throwable throwable) {
         assertEquals(throwable.getClass(), BadFieldException.class);
-        latch.countDown();
+        asyncCompleted.countDown();
       }
 
     });
 
-    latch.await(2, TimeUnit.SECONDS);
+    asyncCompleted.await(1, TimeUnit.SECONDS);
   }
 
   @Test

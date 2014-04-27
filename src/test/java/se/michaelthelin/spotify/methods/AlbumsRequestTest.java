@@ -2,13 +2,16 @@ package se.michaelthelin.spotify.methods;
 
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
-import com.google.common.util.concurrent.ListenableFuture;
+import com.google.common.util.concurrent.SettableFuture;
+import junit.framework.TestCase;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 import se.michaelthelin.spotify.Api;
 import se.michaelthelin.spotify.JsonUtilTest;
 import se.michaelthelin.spotify.SpotifyProtos.Album;
+import se.michaelthelin.spotify.exceptions.BadFieldException;
+import se.michaelthelin.spotify.exceptions.NotFoundException;
 
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
@@ -32,9 +35,9 @@ public class AlbumsRequestTest {
     AlbumsRequest spy = spy(request);
     when(spy.getJson()).thenReturn(albumResponseFixture);
 
-    final CountDownLatch latch = new CountDownLatch(1);
+    final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
-    ListenableFuture<List<Album>> albumsFuture = spy.getAlbumsAsync();
+    SettableFuture<List<Album>> albumsFuture = spy.getAlbumsAsync();
     Futures.addCallback(albumsFuture, new FutureCallback<List<Album>>() {
 
       @Override
@@ -47,7 +50,7 @@ public class AlbumsRequestTest {
         Album secondAlbum = albums.get(1);
         assertEquals("6JWc4iAiJ9FjyK0B59ABb4", secondAlbum.getId());
 
-        latch.countDown();
+        asyncCompleted.countDown();
       }
 
       @Override
@@ -56,7 +59,7 @@ public class AlbumsRequestTest {
       }
     });
 
-    latch.await(5, TimeUnit.SECONDS);
+    asyncCompleted.await(1, TimeUnit.SECONDS);
   }
 
   @Test
@@ -90,7 +93,9 @@ public class AlbumsRequestTest {
     AlbumsRequest spy = spy(request);
     when(spy.getJson()).thenReturn(albumResponseFixture);
 
-    ListenableFuture<List<Album>> albumsFuture = spy.getAlbumsAsync();
+    final CountDownLatch asyncCompleted = new CountDownLatch(1);
+
+    SettableFuture<List<Album>> albumsFuture = spy.getAlbumsAsync();
 
     Futures.addCallback(albumsFuture, new FutureCallback<List<Album>>() {
       @Override
@@ -102,6 +107,8 @@ public class AlbumsRequestTest {
 
         Album secondAlbum = albums.get(1);
         assertEquals("6JWc4iAiJ9FjyK0B59ABb4", secondAlbum.getId());
+
+        asyncCompleted.countDown();
       }
 
       @Override
@@ -109,6 +116,8 @@ public class AlbumsRequestTest {
         fail("Failed to resolve future");
       }
     });
+
+    asyncCompleted.await(1, TimeUnit.SECONDS);
   }
 
   @Test
@@ -130,6 +139,68 @@ public class AlbumsRequestTest {
 
     Album secondAlbum = albums.get(1);
     assertEquals("6JWc4iAiJ9FjyK0B59ABb4", secondAlbum.getId());
+  }
+
+  @Test
+  public void shouldFailForBadField_async() throws Exception {
+    final Api api = Api.DEFAULT_API;
+    AlbumsRequest request = api.albums().id("41MnTivkwTO3UUJ8DrqEJJ", "6JWc4iAiJ9FjyK0zz").build();
+
+    // Mock response
+    final String badFieldResponseFixture = JsonUtilTest.readTestData("error_bad-field.json");
+    final AlbumsRequest spy = spy(request);
+    when(spy.getJson()).thenReturn(badFieldResponseFixture);
+
+    final CountDownLatch asyncCompleted = new CountDownLatch(1);
+
+    final SettableFuture<List<Album>> albumFuture = spy.getAlbumsAsync();
+
+    Futures.addCallback(albumFuture, new FutureCallback<List<Album>>() {
+      @Override
+      public void onSuccess(List<Album> album) {
+        fail();
+      }
+
+      @Override
+      public void onFailure(Throwable throwable) {
+        TestCase.assertEquals(throwable.getClass(), BadFieldException.class);
+        asyncCompleted.countDown();
+      }
+
+    });
+
+    asyncCompleted.await(1, TimeUnit.SECONDS);
+  }
+
+  @Test
+  public void shouldFailForNotFound_async() throws Exception {
+    final Api api = Api.DEFAULT_API;
+    AlbumsRequest request = api.albums().id("41MnTivkwTO3UUJ8DrqEJJ", "41MnTivkwTO3UUJ8DrqEJA").build();
+
+    // Mock response
+    final String badFieldResponseFixture = JsonUtilTest.readTestData("error_id-not-found.json");
+    final AlbumsRequest spy = spy(request);
+    when(spy.getJson()).thenReturn(badFieldResponseFixture);
+
+    final CountDownLatch asyncCompleted = new CountDownLatch(1);
+
+    final SettableFuture<List<Album>> albumFuture = spy.getAlbumsAsync();
+
+    Futures.addCallback(albumFuture, new FutureCallback<List<Album>>() {
+      @Override
+      public void onSuccess(List<Album> album) {
+        fail();
+      }
+
+      @Override
+      public void onFailure(Throwable throwable) {
+        TestCase.assertEquals(throwable.getClass(), NotFoundException.class);
+        asyncCompleted.countDown();
+      }
+
+    });
+
+    asyncCompleted.await(1, TimeUnit.SECONDS);
   }
 
 }
