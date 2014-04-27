@@ -2,35 +2,30 @@ package se.michaelthelin.spotify.methods;
 
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
-import com.google.common.util.concurrent.ListenableFuture;
+import com.google.common.util.concurrent.SettableFuture;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 import se.michaelthelin.spotify.Api;
-import se.michaelthelin.spotify.JsonUtilTest;
+import se.michaelthelin.spotify.HttpManager;
 import se.michaelthelin.spotify.SpotifyProtos.Track;
+import se.michaelthelin.spotify.TestUtil;
 
 import java.util.List;
 
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.TestCase.fail;
-import static org.mockito.Mockito.spy;
-import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class TracksRequestTest {
 
   @Test
   public void shouldGetTracksResult_async() throws Exception {
-    Api api = Api.DEFAULT_API;
-    TracksRequest request = api.tracks().id("0eGsygTp906u18L0Oimnem","1lDWb6b6ieDQ2xT7ewTC3G").build();
+    final Api api = Api.DEFAULT_API;
+    final HttpManager mockedHttpManager = TestUtil.MockedHttpManager.returningJson("tracks.json");
+    final TracksRequest request = api.tracks().id("0eGsygTp906u18L0Oimnem", "1lDWb6b6ieDQ2xT7ewTC3G").httpManager(mockedHttpManager).build();
 
-    // Mock response
-    String responseFixture = JsonUtilTest.readTestData("tracks.json");
-    TracksRequest spy = spy(request);
-    when(spy.getJson()).thenReturn(responseFixture);
-
-    ListenableFuture<List<Track>> tracksFuture = spy.getTracksAsync();
+    final SettableFuture<List<Track>> tracksFuture = request.getTracksAsync();
 
     Futures.addCallback(tracksFuture, new FutureCallback<List<Track>>() {
       @Override
@@ -53,22 +48,18 @@ public class TracksRequestTest {
 
   @Test
   public void shouldGetTracksResult_sync() throws Exception {
-    Api api = Api.DEFAULT_API;
-    TracksRequest request = api.tracks().id("0eGsygTp906u18L0Oimnem","1lDWb6b6ieDQ2xT7ewTC3G").build();
+    final Api api = Api.DEFAULT_API;
+    final HttpManager mockedHttpManager = TestUtil.MockedHttpManager.returningJson("tracks.json");
+    final TracksRequest request = api.tracks().id("0eGsygTp906u18L0Oimnem", "1lDWb6b6ieDQ2xT7ewTC3G").httpManager(mockedHttpManager).build();
 
-    // Mock response
-    String responseFixture = JsonUtilTest.readTestData("tracks.json");
-    TracksRequest spy = spy(request);
-    when(spy.getJson()).thenReturn(responseFixture);
-
-    List<Track> tracks = spy.getTracks();
+    final List<Track> tracks = request.getTracks();
 
     assertEquals(2, tracks.size());
 
-    Track firstTrack = tracks.get(0);
+    final Track firstTrack = tracks.get(0);
     assertEquals("0eGsygTp906u18L0Oimnem", firstTrack.getId());
 
-    Track secondTrack = tracks.get(1);
+    final Track secondTrack = tracks.get(1);
     assertEquals("1lDWb6b6ieDQ2xT7ewTC3G", secondTrack.getId());
   }
 }

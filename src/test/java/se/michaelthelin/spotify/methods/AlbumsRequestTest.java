@@ -8,8 +8,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 import se.michaelthelin.spotify.Api;
-import se.michaelthelin.spotify.JsonUtilTest;
+import se.michaelthelin.spotify.HttpManager;
 import se.michaelthelin.spotify.SpotifyProtos.Album;
+import se.michaelthelin.spotify.TestUtil;
 import se.michaelthelin.spotify.exceptions.BadFieldException;
 import se.michaelthelin.spotify.exceptions.NotFoundException;
 
@@ -19,25 +20,20 @@ import java.util.concurrent.TimeUnit;
 
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.TestCase.fail;
-import static org.mockito.Mockito.spy;
-import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class AlbumsRequestTest {
 
   @Test
   public void shouldGetAlbumResultForIds_async() throws Exception {
-    Api api = Api.DEFAULT_API;
-    AlbumsRequest request = api.albums().id("41MnTivkwTO3UUJ8DrqEJJ", "6JWc4iAiJ9FjyK0B59ABb4").build();
+    final Api api = Api.DEFAULT_API;
 
-    // Mock response
-    String albumResponseFixture = JsonUtilTest.readTestData("albums.json");
-    AlbumsRequest spy = spy(request);
-    when(spy.getJson()).thenReturn(albumResponseFixture);
+    final HttpManager mockedHttpManager = TestUtil.MockedHttpManager.returningJson("albums.json");
+    final AlbumsRequest request = api.albums().id("41MnTivkwTO3UUJ8DrqEJJ", "6JWc4iAiJ9FjyK0B59ABb4").httpManager(mockedHttpManager).build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
-    SettableFuture<List<Album>> albumsFuture = spy.getAlbumsAsync();
+    final SettableFuture<List<Album>> albumsFuture = request.getAlbumsAsync();
     Futures.addCallback(albumsFuture, new FutureCallback<List<Album>>() {
 
       @Override
@@ -64,15 +60,12 @@ public class AlbumsRequestTest {
 
   @Test
   public void shouldGetAlbumResultForIds_sync() throws Exception {
-    Api api = Api.DEFAULT_API;
-    AlbumsRequest request = api.albums().id("41MnTivkwTO3UUJ8DrqEJJ", "6JWc4iAiJ9FjyK0B59ABb4").build();
+    final Api api = Api.DEFAULT_API;
 
-    // Mock response
-    String albumResponseFixture = JsonUtilTest.readTestData("albums.json");
-    AlbumsRequest spy = spy(request);
-    when(spy.getJson()).thenReturn(albumResponseFixture);
+    final HttpManager mockedHttpManager = TestUtil.MockedHttpManager.returningJson("albums.json");
+    final AlbumsRequest request = api.albums().id("41MnTivkwTO3UUJ8DrqEJJ", "6JWc4iAiJ9FjyK0B59ABb4").httpManager(mockedHttpManager).build();
 
-    List<Album> albums = spy.getAlbums();
+    List<Album> albums = request.getAlbums();
 
     assertEquals(2, albums.size());
 
@@ -85,17 +78,14 @@ public class AlbumsRequestTest {
 
   @Test
   public void shouldGetAlbumResultForArtistId_async() throws Exception {
-    Api api = Api.DEFAULT_API;
-    AlbumsRequest request = api.albums().forArtist("0oSGxfWSnnOXhD2fKuz2Gy").build();
+    final Api api = Api.DEFAULT_API;
 
-    // Mock response
-    String albumResponseFixture = JsonUtilTest.readTestData("albums.json");
-    AlbumsRequest spy = spy(request);
-    when(spy.getJson()).thenReturn(albumResponseFixture);
+    final HttpManager mockedHttpManager = TestUtil.MockedHttpManager.returningJson("albums.json");
+    final AlbumsRequest request = api.albums().forArtist("0oSGxfWSnnOXhD2fKuz2Gy").httpManager(mockedHttpManager).build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
-    SettableFuture<List<Album>> albumsFuture = spy.getAlbumsAsync();
+    final SettableFuture<List<Album>> albumsFuture = request.getAlbumsAsync();
 
     Futures.addCallback(albumsFuture, new FutureCallback<List<Album>>() {
       @Override
@@ -122,38 +112,32 @@ public class AlbumsRequestTest {
 
   @Test
   public void shouldGetAlbumResultForArtistId_sync() throws Exception {
-    Api api = Api.DEFAULT_API;
-    AlbumsRequest request = api.albums().forArtist("0oSGxfWSnnOXhD2fKuz2Gy").build();
+    final Api api = Api.DEFAULT_API;
 
-    // Mock response
-    String albumResponseFixture = JsonUtilTest.readTestData("albums.json");
-    AlbumsRequest spy = spy(request);
-    when(spy.getJson()).thenReturn(albumResponseFixture);
+    final HttpManager mockedHttpManager = TestUtil.MockedHttpManager.returningJson("albums.json");
+    final AlbumsRequest request = api.albums().forArtist("0oSGxfWSnnOXhD2fKuz2Gy").httpManager(mockedHttpManager).build();
 
-    List<Album> albums = spy.getAlbums();
+    final List<Album> albums = request.getAlbums();
 
     assertEquals(2, albums.size());
 
-    Album firstAlbum = albums.get(0);
+    final Album firstAlbum = albums.get(0);
     assertEquals("41MnTivkwTO3UUJ8DrqEJJ", firstAlbum.getId());
 
-    Album secondAlbum = albums.get(1);
+    final Album secondAlbum = albums.get(1);
     assertEquals("6JWc4iAiJ9FjyK0B59ABb4", secondAlbum.getId());
   }
 
   @Test
   public void shouldFailForBadField_async() throws Exception {
     final Api api = Api.DEFAULT_API;
-    AlbumsRequest request = api.albums().id("41MnTivkwTO3UUJ8DrqEJJ", "6JWc4iAiJ9FjyK0zz").build();
 
-    // Mock response
-    final String badFieldResponseFixture = JsonUtilTest.readTestData("error_bad-field.json");
-    final AlbumsRequest spy = spy(request);
-    when(spy.getJson()).thenReturn(badFieldResponseFixture);
+    final HttpManager mockedHttpManager = TestUtil.MockedHttpManager.returningJson("error_bad-field.json");
+    final AlbumsRequest request = api.albums().id("41MnTivkwTO3UUJ8DrqEJJ", "6JWc4iAiJ9FjyK0zz").httpManager(mockedHttpManager).build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
-    final SettableFuture<List<Album>> albumFuture = spy.getAlbumsAsync();
+    final SettableFuture<List<Album>> albumFuture = request.getAlbumsAsync();
 
     Futures.addCallback(albumFuture, new FutureCallback<List<Album>>() {
       @Override
@@ -175,16 +159,13 @@ public class AlbumsRequestTest {
   @Test
   public void shouldFailForNotFound_async() throws Exception {
     final Api api = Api.DEFAULT_API;
-    AlbumsRequest request = api.albums().id("41MnTivkwTO3UUJ8DrqEJJ", "41MnTivkwTO3UUJ8DrqEJA").build();
 
-    // Mock response
-    final String badFieldResponseFixture = JsonUtilTest.readTestData("error_id-not-found.json");
-    final AlbumsRequest spy = spy(request);
-    when(spy.getJson()).thenReturn(badFieldResponseFixture);
+    final HttpManager mockedHttpManager = TestUtil.MockedHttpManager.returningJson("error_id-not-found.json");
+    final AlbumsRequest request = api.albums().id("41MnTivkwTO3UUJ8DrqEJJ", "41MnTivkwTO3UUJ8DrqEJA").httpManager(mockedHttpManager).build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
-    final SettableFuture<List<Album>> albumFuture = spy.getAlbumsAsync();
+    final SettableFuture<List<Album>> albumFuture = request.getAlbumsAsync();
 
     Futures.addCallback(albumFuture, new FutureCallback<List<Album>>() {
       @Override

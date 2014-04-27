@@ -1,16 +1,11 @@
 package se.michaelthelin.spotify;
 
 import org.junit.Test;
-import se.michaelthelin.spotify.SpotifyProtos.Artist;
 import se.michaelthelin.spotify.SpotifyProtos.Album;
+import se.michaelthelin.spotify.SpotifyProtos.Artist;
 import se.michaelthelin.spotify.SpotifyProtos.Image;
 import se.michaelthelin.spotify.SpotifyProtos.Track;
 
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.Reader;
-import java.nio.CharBuffer;
 import java.util.List;
 
 import static junit.framework.TestCase.assertTrue;
@@ -20,7 +15,7 @@ public class JsonUtilTest {
 
   @Test
   public void shouldCreateArtist() throws Exception {
-    String json = readTestData("artist.json");
+    String json = TestUtil.readTestData("artist.json");
     Artist artist = JsonUtil.createArtist(json);
 
     assertEquals("https://api.spotify.com/v1/artists/0LcJLqbBmaGUft1e9Mm8HV", artist.getApiLink());
@@ -51,7 +46,7 @@ public class JsonUtilTest {
 
   @Test
   public void shouldCreateSeveralArtists() throws Exception {
-    String json = readTestData("artists.json");
+    String json = TestUtil.readTestData("artists.json");
     List<Artist> artists = JsonUtil.createArtists(json);
     assertEquals(2, artists.size());
 
@@ -102,14 +97,14 @@ public class JsonUtilTest {
 
   @Test
   public void shouldCreateAlbum() throws Exception {
-    String json = readTestData("album.json");
+    String json = TestUtil.readTestData("album.json");
     Album album = JsonUtil.createAlbum(json);
     assertEquals("https://api.spotify.com/v1/albums/0sNOF9WDwhWunNAHPD3Baj", album.getApiLink());
   }
 
   @Test
   public void shouldCreateSeveralAlbums() throws Exception {
-    String json = readTestData("albums.json");
+    String json = TestUtil.readTestData("albums.json");
     List<Album> albums = JsonUtil.createAlbums(json);
 
     assertEquals(2, albums.size());
@@ -117,32 +112,16 @@ public class JsonUtilTest {
 
   @Test
   public void shouldCreateTrack() throws Exception {
-    String json = readTestData("track.json");
+    String json = TestUtil.readTestData("track.json");
     Track track = JsonUtil.createTrack(json);
     assertEquals("0eGsygTp906u18L0Oimnem", track.getId());
   }
 
   @Test
   public void shouldCreateSeveralTracks() throws Exception {
-    String json = readTestData("tracks.json");
+    String json = TestUtil.readTestData("tracks.json");
     List<Track> tracks = JsonUtil.createTracks(json);
     assertEquals(2, tracks.size());
-  }
-
-  private static final String TEST_DATA_DIR = "src/test/fixtures/";
-
-  private static final int MAX_TEST_DATA_FILE_SIZE = 65536;
-
-  public static String readTestData(String fileName) throws IOException {
-    return readFromFile(new File(TEST_DATA_DIR, fileName));
-  }
-
-  private static String readFromFile(File file) throws IOException {
-    Reader reader = new FileReader(file);
-    CharBuffer charBuffer = CharBuffer.allocate(MAX_TEST_DATA_FILE_SIZE);
-    reader.read(charBuffer);
-    charBuffer.position(0);
-    return charBuffer.toString();
   }
 
 }
