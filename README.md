@@ -4,7 +4,7 @@ This is a Java wrapper for the [Spotify Web API](https://developer.spotify.com/s
 
 ## Usage
 
-#### Asynchronous, using [Guava's listenable future API](https://code.google.com/p/guava-libraries/wiki/ListenableFutureExplained).
+#### Asynchronous, using [Guava's future API](https://code.google.com/p/guava-libraries/wiki/ListenableFutureExplained).
 
 ```java
 // Create an API instance. The default instance connects to https://api.spotify.com/.
@@ -14,7 +14,7 @@ Api api = Api.DEFAULT_API;
 AlbumRequest request = api.album().id("7e0ij2fpWaxOEHv5fUYZjd").build();
 
 // Retrieve a future for an album
-ListenableFuture<Album> albumFuture = request.getAlbumAsync();
+SettableFuture<Album> albumFuture = request.getAlbumAsync();
 
 // Create callbacks in case of success or failure
 Futures.addCallback(albumFuture, new FutureCallback<Album>() {
@@ -42,11 +42,16 @@ Api api = Api.DEFAULT_API;
 AlbumRequest request = api.album().id("7e0ij2fpWaxOEHv5fUYZjd").build();
 
 // Retrieve an album
-Album album= request.getAlbum();
-
-// Print the genres of the album
-List<String> genres = album.getGenres(); 
-for (String genre : genres) {
-  System.out.println(genre);
-};
+try {
+  Album album = request.getAlbum();
+  
+  // Print the genres of the album
+  List<String> genres = album.getGenres(); 
+  for (String genre : genres) {
+    System.out.println(genre);
+  };
+  
+} catch (Exception e) {
+  System.out.println("Could not get albums.");
+}
 ```
