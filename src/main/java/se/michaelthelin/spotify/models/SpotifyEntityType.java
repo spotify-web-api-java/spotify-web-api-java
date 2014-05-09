@@ -4,7 +4,8 @@ public enum SpotifyEntityType {
 
   ALBUM("album"),
   TRACK("track"),
-  ARTIST("artist");
+  ARTIST("artist"),
+  USER("user");
 
   public final String type;
 
