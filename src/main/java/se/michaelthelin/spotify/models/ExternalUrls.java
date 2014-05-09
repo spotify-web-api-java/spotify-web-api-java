@@ -11,7 +11,4 @@ public class ExternalUrls {
     return externalUrls;
   }
 
-  public void setExternalUrls(Map<String, String> externalUrls) {
-    this.externalUrls = externalUrls;
-  }
 }
