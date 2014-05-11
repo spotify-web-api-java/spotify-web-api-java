@@ -3,6 +3,15 @@ Spotify Web API Java [![Build Status](https://travis-ci.org/thelinmichael/spotif
 
 This is a Java wrapper for the [Spotify Web API](https://developer.spotify.com/spotify-web-api/). It includes helper functions for looking up as well as searching for albums, artists, and tracks. Functionality to make requests for playlists and user's information are still to be implemented.
 
+- [x] Album, artist and track lookup
+- [x] Album lookup for specific artist
+- [x] Top tracks for specific artist
+- [x] Album, artist and track search
+- [ ] Playlist lookup
+- [ ] User lookup
+- [ ] Playlists for specific user
+
+
 ## Usage
 
 #### Asynchronous, using [Guava's future API](https://code.google.com/p/guava-libraries/wiki/ListenableFutureExplained).
