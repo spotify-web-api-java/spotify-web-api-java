@@ -74,6 +74,13 @@ public class Api {
     return builder;
   }
 
+  public AlbumsForArtistRequest.Builder albumsForArtist(String artistId) {
+    AlbumsForArtistRequest.Builder builder = AlbumsForArtistRequest.builder();
+    setDefaults(builder);
+    builder.forArtist(artistId);
+    return builder;
+  }
+
   public ArtistRequest.Builder artist() {
     ArtistRequest.Builder builder = ArtistRequest.builder();
     setDefaults(builder);

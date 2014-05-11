@@ -8,13 +8,14 @@ import se.michaelthelin.spotify.exceptions.BadFieldException;
 import se.michaelthelin.spotify.exceptions.NotFoundException;
 import se.michaelthelin.spotify.exceptions.UnexpectedResponseException;
 import se.michaelthelin.spotify.models.Album;
+import se.michaelthelin.spotify.models.AlbumType;
 
 import java.io.IOException;
 import java.util.List;
 
-public class AlbumsRequest extends AbstractRequest {
+public class AlbumsForArtistRequest extends AbstractRequest {
 
-  public AlbumsRequest(Builder builder) {
+  public AlbumsForArtistRequest(Builder builder) {
     super(builder);
   }
 
@@ -52,22 +53,32 @@ public class AlbumsRequest extends AbstractRequest {
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
-    /**
-     * The albums with the given ids.
-     *
-     * @param ids The ids for the albums.
-     * @return AlbumRequest
-     */
-    public Builder id(String... ids) {
-      assert (ids != null);
-      String idsParameter = Joiner.on(",").join(ids).toString();
-      path("/v1/albums");
-      return parameter("ids", idsParameter);
+    public Builder forArtist(String id) {
+      assert (id != null);
+      return path(String.format("/v1/artists/%s/albums", id));
     }
 
-    public AlbumsRequest build() {
-      return new AlbumsRequest(this);
+    public Builder types(AlbumType... types) {
+      assert (types != null);
+      assert (types.length > 0);
+      String albumsParameter = Joiner.on(",").join(types).toString();
+      return parameter("album_type", albumsParameter);
+    }
+
+    public Builder limit(int limit) {
+      assert (limit > 0);
+      return parameter("limit", String.valueOf(limit));
+    }
+
+    public Builder offset(int offset) {
+      assert (offset >= 0);
+      return parameter("offset", String.valueOf(offset));
+    }
+
+    public AlbumsForArtistRequest build() {
+      return new AlbumsForArtistRequest(this);
     }
 
   }
+
 }
