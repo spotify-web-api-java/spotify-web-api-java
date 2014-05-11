@@ -147,6 +147,16 @@ public class Api {
     return builder;
   }
 
+
+  public TopTracksRequest.Builder getTopTracksForArtist(String artistId, String countryCode) {
+    TopTracksRequest.Builder builder = TopTracksRequest.builder();
+    setDefaults(builder);
+    builder.id(artistId);
+    builder.countryCode(countryCode);
+    return builder;
+  }
+
+
   void setDefaults(Request.Builder builder) {
     builder.httpManager(httpManager);
     builder.scheme(scheme);

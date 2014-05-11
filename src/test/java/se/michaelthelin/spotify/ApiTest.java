@@ -179,6 +179,15 @@ public class ApiTest {
     assertEquals("https://www.michaelthelin.se:443/v1/albums/5oEljuMoe9MXH6tBIPbd5e", request.toString());
   }
 
+  @Test
+  public void shouldCreateTopTracksUrl() {
+    Api api = Api.DEFAULT_API;
+    Request request = api.getTopTracksForArtist("0LcJLqbBmaGUft1e9Mm8HV", "GB").build();
+    assertEquals("https://api.spotify.com:443/v1/artists/0LcJLqbBmaGUft1e9Mm8HV/toptracks", request.toString());
+    assertHasParameter(request.toUrl(), "country", "GB");
+  }
+
+
   void assertHasParameter(Url url, String name, Object value) {
     Parameter expected = Parameter.newBuilder().setName(name).setValue(value.toString()).build();
     for (Parameter actual : url.getParametersList()) {
