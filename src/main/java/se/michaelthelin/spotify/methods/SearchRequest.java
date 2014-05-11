@@ -3,10 +3,11 @@ package se.michaelthelin.spotify.methods;
 import com.google.common.util.concurrent.SettableFuture;
 import net.sf.json.JSONObject;
 import se.michaelthelin.spotify.JsonUtil;
-import se.michaelthelin.spotify.SpotifyProtos.AlbumSearchResult;
-import se.michaelthelin.spotify.SpotifyProtos.ArtistSearchResult;
-import se.michaelthelin.spotify.SpotifyProtos.TrackSearchResult;
 import se.michaelthelin.spotify.exceptions.UnexpectedResponseException;
+import se.michaelthelin.spotify.models.Album;
+import se.michaelthelin.spotify.models.Artist;
+import se.michaelthelin.spotify.models.Page;
+import se.michaelthelin.spotify.models.Track;
 
 import java.io.IOException;
 
@@ -16,8 +17,8 @@ public class SearchRequest extends AbstractRequest {
     super(builder);
   }
 
-  public SettableFuture<AlbumSearchResult> getAlbumsAsync() {
-    SettableFuture<AlbumSearchResult> searchResultFuture = SettableFuture.create();
+  public SettableFuture<Page<Album>> getAlbumsAsync() {
+    SettableFuture<Page<Album>> searchResultFuture = SettableFuture.create();
 
     try {
       String jsonString = getJson();
@@ -32,13 +33,13 @@ public class SearchRequest extends AbstractRequest {
     return searchResultFuture;
   }
 
-  public SettableFuture<TrackSearchResult> getTracksAsync() {
-    SettableFuture<TrackSearchResult> searchResultFuture = SettableFuture.create();
+  public SettableFuture<Page<Track>> getTracksAsync() {
+    SettableFuture<Page<Track>> searchResultFuture = SettableFuture.create();
 
     try {
       String jsonString = getJson();
       JSONObject jsonObject = JSONObject.fromObject(jsonString);
-      searchResultFuture.set(JsonUtil.createTrackSearchResult(jsonObject));
+      searchResultFuture.set(JsonUtil.createTrackPage(jsonObject));
     } catch (IOException e) {
       searchResultFuture.setException(e);
     } catch (UnexpectedResponseException e) {
@@ -48,13 +49,13 @@ public class SearchRequest extends AbstractRequest {
     return searchResultFuture;
   }
 
-  public SettableFuture<ArtistSearchResult> getArtistsAsync() {
-    SettableFuture<ArtistSearchResult> searchResultFuture = SettableFuture.create();
+  public SettableFuture<Page<Artist>> getArtistsAsync() {
+    SettableFuture<Page<Artist>> searchResultFuture = SettableFuture.create();
 
     try {
       String jsonString = getJson();
       JSONObject jsonObject = JSONObject.fromObject(jsonString);
-      searchResultFuture.set(JsonUtil.createArtistSearchResult(jsonObject));
+      searchResultFuture.set(JsonUtil.createArtistPage(jsonObject));
     } catch (IOException e) {
       searchResultFuture.setException(e);
     } catch (UnexpectedResponseException e) {
@@ -64,18 +65,17 @@ public class SearchRequest extends AbstractRequest {
     return searchResultFuture;
   }
 
-  public AlbumSearchResult getAlbums() throws IOException, UnexpectedResponseException {
+  public Page<Album> getAlbumsPage() throws IOException, UnexpectedResponseException {
     return JsonUtil.createAlbumPage(getJson());
   }
 
-  public TrackSearchResult getTracks() throws IOException, UnexpectedResponseException {
-    return JsonUtil.createTrackSearchResult(getJson());
+  public Page<Track> getTracksPage() throws IOException, UnexpectedResponseException {
+    return JsonUtil.createTrackPage(getJson());
   }
 
-  public ArtistSearchResult getArtists() throws IOException, UnexpectedResponseException {
-    return JsonUtil.createArtistSearchResult(getJson());
+  public Page<Artist> getArtistsPage() throws IOException, UnexpectedResponseException {
+    return JsonUtil.createArtistPage(getJson());
   }
-
 
   public static Builder builder() {
     return new Builder();

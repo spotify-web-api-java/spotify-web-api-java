@@ -4,8 +4,8 @@ import com.google.common.base.Joiner;
 import com.google.common.util.concurrent.SettableFuture;
 import net.sf.json.JSONObject;
 import se.michaelthelin.spotify.JsonUtil;
-import se.michaelthelin.spotify.SpotifyProtos.Track;
 import se.michaelthelin.spotify.exceptions.UnexpectedResponseException;
+import se.michaelthelin.spotify.models.Track;
 
 import java.io.IOException;
 import java.util.List;

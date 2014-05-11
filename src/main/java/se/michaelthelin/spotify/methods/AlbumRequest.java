@@ -4,11 +4,11 @@ import com.google.common.base.Joiner;
 import com.google.common.util.concurrent.SettableFuture;
 import net.sf.json.JSONObject;
 import se.michaelthelin.spotify.JsonUtil;
-import se.michaelthelin.spotify.SpotifyProtos.Album;
-import se.michaelthelin.spotify.SpotifyProtos.AlbumType;
 import se.michaelthelin.spotify.exceptions.BadFieldException;
 import se.michaelthelin.spotify.exceptions.NotFoundException;
 import se.michaelthelin.spotify.exceptions.UnexpectedResponseException;
+import se.michaelthelin.spotify.models.Album;
+import se.michaelthelin.spotify.models.AlbumType;
 
 import java.io.IOException;
 

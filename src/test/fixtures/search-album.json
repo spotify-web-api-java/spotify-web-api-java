@@ -1,22 +1,27 @@
 {
-    "albums": [
+    "href": "https://api.spotify.com/v1/albums/search?query=Sawdust&offset=0&limit=20",
+    "items": [
         {
-            "album_type": "ALBUM",
-            "api_link": "https://api.spotify.com/v1/albums/2fOs6I0CgvaZj9agU8EAlH",
+            "album_type": "album",
             "artists": [
                 {
-                    "api_link": "https://api.spotify.com/v1/artists/2OIWxN9xUhgUHkeUCWCaNs",
-                    "id": "2OIWxN9xUhgUHkeUCWCaNs",
-                    "name": "Veronica Maggio",
-                    "spotify_uri": "spotify:artist:2OIWxN9xUhgUHkeUCWCaNs",
-                    "type": "artist"
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/artist/0C0XlULifJtAgn6ZNCW2eu"
+                    },
+                    "href": "https://api.spotify.com/v1/artists/0C0XlULifJtAgn6ZNCW2eu",
+                    "id": "0C0XlULifJtAgn6ZNCW2eu",
+                    "name": "The Killers",
+                    "type": "artist",
+                    "uri": "spotify:artist:0C0XlULifJtAgn6ZNCW2eu"
                 }
             ],
             "available_markets": [
+                "AD",
                 "AR",
                 "AT",
                 "AU",
                 "BE",
+                "BG",
                 "BO",
                 "BR",
                 "CH",
@@ -25,7 +30,6 @@
                 "CR",
                 "CY",
                 "CZ",
-                "DE",
                 "DK",
                 "DO",
                 "EC",
@@ -42,9 +46,10 @@
                 "IE",
                 "IS",
                 "IT",
+                "LI",
                 "LT",
-                "LU",
                 "LV",
+                "MC",
                 "MT",
                 "MY",
                 "NI",
@@ -66,296 +71,522 @@
                 "TR",
                 "TW"
             ],
-            "external_ids": [
-                {
-                    "id": "00602527693057",
-                    "type": "upc"
-                }
+            "external_ids": {
+                "upc": "00602517549326"
+            },
+            "external_urls": {
+                "spotify": "https://open.spotify.com/album/68NlXKRuJ1YqrhIbwe864y"
+            },
+            "genres": [
+                "Alternative Pop/Rock",
+                "Alternative/Indie Rock",
+                "New Wave/Post-Punk Revival",
+                "Pop/Rock"
             ],
-            "genres": [],
-            "id": "2fOs6I0CgvaZj9agU8EAlH",
-            "images": {
-                "MEDIUM": {
+            "href": "https://api.spotify.com/v1/albums/68NlXKRuJ1YqrhIbwe864y",
+            "id": "68NlXKRuJ1YqrhIbwe864y",
+            "images": [
+                {
+                    "height": 640,
+                    "url": "https://d3rt1990lpmkn.cloudfront.net/original/7977a9a7851eab9db2eb22bdc064c93153077c42",
+                    "width": 640
+                },
+                {
                     "height": 300,
-                    "image_url": "https://d3rt1990lpmkn.cloudfront.net/original/eefdfc1e9043005b0e5a662faafb7bd879ca4c5d",
+                    "url": "https://d3rt1990lpmkn.cloudfront.net/original/f5ca8e7c7c335651aa1e04d99f218994a71b9bf2",
                     "width": 300
                 },
-                "SMALL": {
+                {
                     "height": 64,
-                    "image_url": "https://d3rt1990lpmkn.cloudfront.net/original/863cea2cbe59afd1f5dedf1fc84cd48e40e3c363",
+                    "url": "https://d3rt1990lpmkn.cloudfront.net/original/22314e72bf196c285eff689140f36668cb1603c7",
                     "width": 64
-                },
-                "LARGE": {
-                    "height": 640,
-                    "image_url": "https://d3rt1990lpmkn.cloudfront.net/original/cad98ee963d47be0d1daad7038a1d783403d474c",
-                    "width": 640
-                }
-            },
-            "link": "https://open.spotify.com/album/2fOs6I0CgvaZj9agU8EAlH",
-            "name": "Satan i gatan (Bonus Version)",
-            "popularity": 78,
-            "release_year": 2011,
-            "spotify_uri": "spotify:album:2fOs6I0CgvaZj9agU8EAlH",
-            "tracks": [
-                {
-                    "api_link": "https://api.spotify.com/v1/tracks/3q8WojYJVZsGClFGFBYdTc",
-                    "artists": [
-                        {
-                            "api_link": "https://api.spotify.com/v1/artists/2OIWxN9xUhgUHkeUCWCaNs",
-                            "id": "2OIWxN9xUhgUHkeUCWCaNs",
-                            "name": "Veronica Maggio",
-                            "spotify_uri": "spotify:artist:2OIWxN9xUhgUHkeUCWCaNs",
-                            "type": "artist"
-                        }
-                    ],
-                    "disc_number": 1,
-                    "duration_ms": 195146,
-                    "explicit": false,
-                    "id": "3q8WojYJVZsGClFGFBYdTc",
-                    "name": "Satan i gatan",
-                    "preview_url": "http://d318706lgtcm8e.cloudfront.net/mp3-preview/e91ad6c6987da40df2c4b225759157f0416e66e5",
-                    "spotify_uri": "spotify:track:3q8WojYJVZsGClFGFBYdTc",
-                    "track_number": 1,
-                    "type": "track"
-                },
-                {
-                    "api_link": "https://api.spotify.com/v1/tracks/5MEuFY2DxrozPEgGpR8Fji",
-                    "artists": [
-                        {
-                            "api_link": "https://api.spotify.com/v1/artists/2OIWxN9xUhgUHkeUCWCaNs",
-                            "id": "2OIWxN9xUhgUHkeUCWCaNs",
-                            "name": "Veronica Maggio",
-                            "spotify_uri": "spotify:artist:2OIWxN9xUhgUHkeUCWCaNs",
-                            "type": "artist"
-                        }
-                    ],
-                    "disc_number": 1,
-                    "duration_ms": 212453,
-                    "explicit": false,
-                    "id": "5MEuFY2DxrozPEgGpR8Fji",
-                    "name": "Välkommen in",
-                    "preview_url": "http://d318706lgtcm8e.cloudfront.net/mp3-preview/586182522dfc38c24a528ab37ac33522d3685761",
-                    "spotify_uri": "spotify:track:5MEuFY2DxrozPEgGpR8Fji",
-                    "track_number": 2,
-                    "type": "track"
-                },
-                {
-                    "api_link": "https://api.spotify.com/v1/tracks/5M2y8QdDepGYMsWyxhoxQU",
-                    "artists": [
-                        {
-                            "api_link": "https://api.spotify.com/v1/artists/2OIWxN9xUhgUHkeUCWCaNs",
-                            "id": "2OIWxN9xUhgUHkeUCWCaNs",
-                            "name": "Veronica Maggio",
-                            "spotify_uri": "spotify:artist:2OIWxN9xUhgUHkeUCWCaNs",
-                            "type": "artist"
-                        }
-                    ],
-                    "disc_number": 1,
-                    "duration_ms": 202746,
-                    "explicit": false,
-                    "id": "5M2y8QdDepGYMsWyxhoxQU",
-                    "name": "Jag kommer",
-                    "preview_url": "http://d318706lgtcm8e.cloudfront.net/mp3-preview/39da3984022220bb8e996a419b909b8cbcabd385",
-                    "spotify_uri": "spotify:track:5M2y8QdDepGYMsWyxhoxQU",
-                    "track_number": 3,
-                    "type": "track"
-                },
-                {
-                    "api_link": "https://api.spotify.com/v1/tracks/6CtVEyME2La34RATPuJcnx",
-                    "artists": [
-                        {
-                            "api_link": "https://api.spotify.com/v1/artists/2OIWxN9xUhgUHkeUCWCaNs",
-                            "id": "2OIWxN9xUhgUHkeUCWCaNs",
-                            "name": "Veronica Maggio",
-                            "spotify_uri": "spotify:artist:2OIWxN9xUhgUHkeUCWCaNs",
-                            "type": "artist"
-                        }
-                    ],
-                    "disc_number": 1,
-                    "duration_ms": 201360,
-                    "explicit": false,
-                    "id": "6CtVEyME2La34RATPuJcnx",
-                    "name": "Mitt hjärta blöder",
-                    "preview_url": "http://d318706lgtcm8e.cloudfront.net/mp3-preview/971e932fcafc00abd5ee3ee2c1a6acc04a880251",
-                    "spotify_uri": "spotify:track:6CtVEyME2La34RATPuJcnx",
-                    "track_number": 4,
-                    "type": "track"
-                },
-                {
-                    "api_link": "https://api.spotify.com/v1/tracks/3woptHfuKkrFvTqmCS9Mn7",
-                    "artists": [
-                        {
-                            "api_link": "https://api.spotify.com/v1/artists/2OIWxN9xUhgUHkeUCWCaNs",
-                            "id": "2OIWxN9xUhgUHkeUCWCaNs",
-                            "name": "Veronica Maggio",
-                            "spotify_uri": "spotify:artist:2OIWxN9xUhgUHkeUCWCaNs",
-                            "type": "artist"
-                        }
-                    ],
-                    "disc_number": 1,
-                    "duration_ms": 156786,
-                    "explicit": false,
-                    "id": "3woptHfuKkrFvTqmCS9Mn7",
-                    "name": "Vi kommer alltid ha Paris",
-                    "preview_url": "http://d318706lgtcm8e.cloudfront.net/mp3-preview/586ce0383c3b046a710b555ca508280ea262e59b",
-                    "spotify_uri": "spotify:track:3woptHfuKkrFvTqmCS9Mn7",
-                    "track_number": 5,
-                    "type": "track"
-                },
-                {
-                    "api_link": "https://api.spotify.com/v1/tracks/2GbyU3ZuI1gDuSCQJCXwe1",
-                    "artists": [
-                        {
-                            "api_link": "https://api.spotify.com/v1/artists/2OIWxN9xUhgUHkeUCWCaNs",
-                            "id": "2OIWxN9xUhgUHkeUCWCaNs",
-                            "name": "Veronica Maggio",
-                            "spotify_uri": "spotify:artist:2OIWxN9xUhgUHkeUCWCaNs",
-                            "type": "artist"
-                        }
-                    ],
-                    "disc_number": 1,
-                    "duration_ms": 201466,
-                    "explicit": false,
-                    "id": "2GbyU3ZuI1gDuSCQJCXwe1",
-                    "name": "Inga kläder",
-                    "preview_url": "http://d318706lgtcm8e.cloudfront.net/mp3-preview/b5cb8fb1bdd6cf05b2426bd6a0f36ec00abf0b9e",
-                    "spotify_uri": "spotify:track:2GbyU3ZuI1gDuSCQJCXwe1",
-                    "track_number": 6,
-                    "type": "track"
-                },
-                {
-                    "api_link": "https://api.spotify.com/v1/tracks/5y5tGEVkCJ5kfhmmidqeOO",
-                    "artists": [
-                        {
-                            "api_link": "https://api.spotify.com/v1/artists/2OIWxN9xUhgUHkeUCWCaNs",
-                            "id": "2OIWxN9xUhgUHkeUCWCaNs",
-                            "name": "Veronica Maggio",
-                            "spotify_uri": "spotify:artist:2OIWxN9xUhgUHkeUCWCaNs",
-                            "type": "artist"
-                        }
-                    ],
-                    "disc_number": 1,
-                    "duration_ms": 209373,
-                    "explicit": false,
-                    "id": "5y5tGEVkCJ5kfhmmidqeOO",
-                    "name": "Alla mina låtar",
-                    "preview_url": "http://d318706lgtcm8e.cloudfront.net/mp3-preview/1a3b63eea60aeaa4f6849f7d8a3fdcc4c315c053",
-                    "spotify_uri": "spotify:track:5y5tGEVkCJ5kfhmmidqeOO",
-                    "track_number": 7,
-                    "type": "track"
-                },
-                {
-                    "api_link": "https://api.spotify.com/v1/tracks/2jEPQKvz7dh1pfpRyq6G1C",
-                    "artists": [
-                        {
-                            "api_link": "https://api.spotify.com/v1/artists/2OIWxN9xUhgUHkeUCWCaNs",
-                            "id": "2OIWxN9xUhgUHkeUCWCaNs",
-                            "name": "Veronica Maggio",
-                            "spotify_uri": "spotify:artist:2OIWxN9xUhgUHkeUCWCaNs",
-                            "type": "artist"
-                        }
-                    ],
-                    "disc_number": 1,
-                    "duration_ms": 159093,
-                    "explicit": false,
-                    "id": "2jEPQKvz7dh1pfpRyq6G1C",
-                    "name": "Snälla bli min",
-                    "preview_url": "http://d318706lgtcm8e.cloudfront.net/mp3-preview/7af74baccddd50b7860994d62907c3a107fdfc91",
-                    "spotify_uri": "spotify:track:2jEPQKvz7dh1pfpRyq6G1C",
-                    "track_number": 8,
-                    "type": "track"
-                },
-                {
-                    "api_link": "https://api.spotify.com/v1/tracks/3jB5trbr0kQqQRkYr3M3u5",
-                    "artists": [
-                        {
-                            "api_link": "https://api.spotify.com/v1/artists/2OIWxN9xUhgUHkeUCWCaNs",
-                            "id": "2OIWxN9xUhgUHkeUCWCaNs",
-                            "name": "Veronica Maggio",
-                            "spotify_uri": "spotify:artist:2OIWxN9xUhgUHkeUCWCaNs",
-                            "type": "artist"
-                        }
-                    ],
-                    "disc_number": 1,
-                    "duration_ms": 240826,
-                    "explicit": false,
-                    "id": "3jB5trbr0kQqQRkYr3M3u5",
-                    "name": "Sju sorger",
-                    "preview_url": "http://d318706lgtcm8e.cloudfront.net/mp3-preview/5f5bc4f234f0b0caa6bb3c70ee777494b3e1d05c",
-                    "spotify_uri": "spotify:track:3jB5trbr0kQqQRkYr3M3u5",
-                    "track_number": 9,
-                    "type": "track"
-                },
-                {
-                    "api_link": "https://api.spotify.com/v1/tracks/4AK85CoitZUXRKTCSw4xQE",
-                    "artists": [
-                        {
-                            "api_link": "https://api.spotify.com/v1/artists/2OIWxN9xUhgUHkeUCWCaNs",
-                            "id": "2OIWxN9xUhgUHkeUCWCaNs",
-                            "name": "Veronica Maggio",
-                            "spotify_uri": "spotify:artist:2OIWxN9xUhgUHkeUCWCaNs",
-                            "type": "artist"
-                        }
-                    ],
-                    "disc_number": 1,
-                    "duration_ms": 237320,
-                    "explicit": false,
-                    "id": "4AK85CoitZUXRKTCSw4xQE",
-                    "name": "Finns det en så finns det flera",
-                    "preview_url": "http://d318706lgtcm8e.cloudfront.net/mp3-preview/21c1289f5250ac555213ca3d0858c81e7a112a7a",
-                    "spotify_uri": "spotify:track:4AK85CoitZUXRKTCSw4xQE",
-                    "track_number": 10,
-                    "type": "track"
-                },
-                {
-                    "api_link": "https://api.spotify.com/v1/tracks/2M7n1hYkKiogvl5SSPx5Fp",
-                    "artists": [
-                        {
-                            "api_link": "https://api.spotify.com/v1/artists/2OIWxN9xUhgUHkeUCWCaNs",
-                            "id": "2OIWxN9xUhgUHkeUCWCaNs",
-                            "name": "Veronica Maggio",
-                            "spotify_uri": "spotify:artist:2OIWxN9xUhgUHkeUCWCaNs",
-                            "type": "artist"
-                        }
-                    ],
-                    "disc_number": 1,
-                    "duration_ms": 69546,
-                    "explicit": false,
-                    "id": "2M7n1hYkKiogvl5SSPx5Fp",
-                    "name": "Lördagen den femtonde mars",
-                    "preview_url": "http://d318706lgtcm8e.cloudfront.net/mp3-preview/6f42fc871e2de16cc516945330035865c54e3e3d",
-                    "spotify_uri": "spotify:track:2M7n1hYkKiogvl5SSPx5Fp",
-                    "track_number": 11,
-                    "type": "track"
-                },
-                {
-                    "api_link": "https://api.spotify.com/v1/tracks/10ZWJBj5Q1xqkMZw4hOeQj",
-                    "artists": [
-                        {
-                            "api_link": "https://api.spotify.com/v1/artists/2OIWxN9xUhgUHkeUCWCaNs",
-                            "id": "2OIWxN9xUhgUHkeUCWCaNs",
-                            "name": "Veronica Maggio",
-                            "spotify_uri": "spotify:artist:2OIWxN9xUhgUHkeUCWCaNs",
-                            "type": "artist"
-                        }
-                    ],
-                    "disc_number": 1,
-                    "duration_ms": 255133,
-                    "explicit": false,
-                    "id": "10ZWJBj5Q1xqkMZw4hOeQj",
-                    "name": "Vad gör vi ikväll",
-                    "preview_url": "http://d318706lgtcm8e.cloudfront.net/mp3-preview/5da28efde1fe034aba999b204f87d0df2b0056ee",
-                    "spotify_uri": "spotify:track:10ZWJBj5Q1xqkMZw4hOeQj",
-                    "track_number": 12,
-                    "type": "track"
                 }
             ],
-            "type": "album"
+            "name": "Sawdust",
+            "popularity": 62,
+            "release_date": {
+                "day": null,
+                "month": null,
+                "year": 2007
+            },
+            "tracks": [
+                {
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/0C0XlULifJtAgn6ZNCW2eu"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/0C0XlULifJtAgn6ZNCW2eu",
+                            "id": "0C0XlULifJtAgn6ZNCW2eu",
+                            "name": "The Killers",
+                            "type": "artist",
+                            "uri": "spotify:artist:0C0XlULifJtAgn6ZNCW2eu"
+                        },
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/42TFhl7WlMRXiNqzSrnzPL"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/42TFhl7WlMRXiNqzSrnzPL",
+                            "id": "42TFhl7WlMRXiNqzSrnzPL",
+                            "name": "Lou Reed",
+                            "type": "artist",
+                            "uri": "spotify:artist:42TFhl7WlMRXiNqzSrnzPL"
+                        }
+                    ],
+                    "disc_number": 1,
+                    "duration_ms": 225160,
+                    "explicit": false,
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/track/42b041CrWScCEr4HVI5Zrs"
+                    },
+                    "href": "https://api.spotify.com/v1/tracks/42b041CrWScCEr4HVI5Zrs",
+                    "id": "42b041CrWScCEr4HVI5Zrs",
+                    "name": "Tranquilize",
+                    "preview_url": "http://d318706lgtcm8e.cloudfront.net/mp3-preview/64980f438cc5913a664c3ff9b9fa3cd48437b419",
+                    "track_number": 1,
+                    "type": "track",
+                    "uri": "spotify:track:42b041CrWScCEr4HVI5Zrs"
+                },
+                {
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/0C0XlULifJtAgn6ZNCW2eu"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/0C0XlULifJtAgn6ZNCW2eu",
+                            "id": "0C0XlULifJtAgn6ZNCW2eu",
+                            "name": "The Killers",
+                            "type": "artist",
+                            "uri": "spotify:artist:0C0XlULifJtAgn6ZNCW2eu"
+                        }
+                    ],
+                    "disc_number": 1,
+                    "duration_ms": 247240,
+                    "explicit": false,
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/track/3CzP7ddFifTekunK8tRQNT"
+                    },
+                    "href": "https://api.spotify.com/v1/tracks/3CzP7ddFifTekunK8tRQNT",
+                    "id": "3CzP7ddFifTekunK8tRQNT",
+                    "name": "Shadowplay",
+                    "preview_url": "http://d318706lgtcm8e.cloudfront.net/mp3-preview/a6b313451b866dea8ebc80fbe99d1fd89b05a000",
+                    "track_number": 2,
+                    "type": "track",
+                    "uri": "spotify:track:3CzP7ddFifTekunK8tRQNT"
+                },
+                {
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/0C0XlULifJtAgn6ZNCW2eu"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/0C0XlULifJtAgn6ZNCW2eu",
+                            "id": "0C0XlULifJtAgn6ZNCW2eu",
+                            "name": "The Killers",
+                            "type": "artist",
+                            "uri": "spotify:artist:0C0XlULifJtAgn6ZNCW2eu"
+                        }
+                    ],
+                    "disc_number": 1,
+                    "duration_ms": 285800,
+                    "explicit": false,
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/track/4vbTCcHG2M73uueGL0osWX"
+                    },
+                    "href": "https://api.spotify.com/v1/tracks/4vbTCcHG2M73uueGL0osWX",
+                    "id": "4vbTCcHG2M73uueGL0osWX",
+                    "name": "All The Pretty Faces",
+                    "preview_url": "http://d318706lgtcm8e.cloudfront.net/mp3-preview/e9cffabcec4aa5154e5ced29151eeff95feb664b",
+                    "track_number": 3,
+                    "type": "track",
+                    "uri": "spotify:track:4vbTCcHG2M73uueGL0osWX"
+                },
+                {
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/0C0XlULifJtAgn6ZNCW2eu"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/0C0XlULifJtAgn6ZNCW2eu",
+                            "id": "0C0XlULifJtAgn6ZNCW2eu",
+                            "name": "The Killers",
+                            "type": "artist",
+                            "uri": "spotify:artist:0C0XlULifJtAgn6ZNCW2eu"
+                        }
+                    ],
+                    "disc_number": 1,
+                    "duration_ms": 218493,
+                    "explicit": false,
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/track/06OJkTnpSEXqLrpXW00AAE"
+                    },
+                    "href": "https://api.spotify.com/v1/tracks/06OJkTnpSEXqLrpXW00AAE",
+                    "id": "06OJkTnpSEXqLrpXW00AAE",
+                    "name": "Leave The Bourbon On The Shelf",
+                    "preview_url": "http://d318706lgtcm8e.cloudfront.net/mp3-preview/2de3baea62b7d0b1dcf6c0d6d2517bcd352e3a6c",
+                    "track_number": 4,
+                    "type": "track",
+                    "uri": "spotify:track:06OJkTnpSEXqLrpXW00AAE"
+                },
+                {
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/0C0XlULifJtAgn6ZNCW2eu"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/0C0XlULifJtAgn6ZNCW2eu",
+                            "id": "0C0XlULifJtAgn6ZNCW2eu",
+                            "name": "The Killers",
+                            "type": "artist",
+                            "uri": "spotify:artist:0C0XlULifJtAgn6ZNCW2eu"
+                        }
+                    ],
+                    "disc_number": 1,
+                    "duration_ms": 258866,
+                    "explicit": false,
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/track/5eK2mh8kBu9fznHwyWksDr"
+                    },
+                    "href": "https://api.spotify.com/v1/tracks/5eK2mh8kBu9fznHwyWksDr",
+                    "id": "5eK2mh8kBu9fznHwyWksDr",
+                    "name": "Sweet Talk",
+                    "preview_url": "http://d318706lgtcm8e.cloudfront.net/mp3-preview/819d5a7ea996099bca10cb5b697fab8abbe5681e",
+                    "track_number": 5,
+                    "type": "track",
+                    "uri": "spotify:track:5eK2mh8kBu9fznHwyWksDr"
+                },
+                {
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/0C0XlULifJtAgn6ZNCW2eu"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/0C0XlULifJtAgn6ZNCW2eu",
+                            "id": "0C0XlULifJtAgn6ZNCW2eu",
+                            "name": "The Killers",
+                            "type": "artist",
+                            "uri": "spotify:artist:0C0XlULifJtAgn6ZNCW2eu"
+                        }
+                    ],
+                    "disc_number": 1,
+                    "duration_ms": 153560,
+                    "explicit": false,
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/track/6ACSyAw0Vvss68sLS7ZknC"
+                    },
+                    "href": "https://api.spotify.com/v1/tracks/6ACSyAw0Vvss68sLS7ZknC",
+                    "id": "6ACSyAw0Vvss68sLS7ZknC",
+                    "name": "Under The Gun",
+                    "preview_url": "http://d318706lgtcm8e.cloudfront.net/mp3-preview/68ec1ac0f276eeea6b63045adfbaed523c62dc10",
+                    "track_number": 6,
+                    "type": "track",
+                    "uri": "spotify:track:6ACSyAw0Vvss68sLS7ZknC"
+                },
+                {
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/0C0XlULifJtAgn6ZNCW2eu"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/0C0XlULifJtAgn6ZNCW2eu",
+                            "id": "0C0XlULifJtAgn6ZNCW2eu",
+                            "name": "The Killers",
+                            "type": "artist",
+                            "uri": "spotify:artist:0C0XlULifJtAgn6ZNCW2eu"
+                        }
+                    ],
+                    "disc_number": 1,
+                    "duration_ms": 206200,
+                    "explicit": false,
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/track/4PLvKR0GhgUykQtxBlkVTP"
+                    },
+                    "href": "https://api.spotify.com/v1/tracks/4PLvKR0GhgUykQtxBlkVTP",
+                    "id": "4PLvKR0GhgUykQtxBlkVTP",
+                    "name": "Where The White Boys Dance",
+                    "preview_url": "http://d318706lgtcm8e.cloudfront.net/mp3-preview/ed6ae814f5e332185ef53d970e0118b5c92948cd",
+                    "track_number": 7,
+                    "type": "track",
+                    "uri": "spotify:track:4PLvKR0GhgUykQtxBlkVTP"
+                },
+                {
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/0C0XlULifJtAgn6ZNCW2eu"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/0C0XlULifJtAgn6ZNCW2eu",
+                            "id": "0C0XlULifJtAgn6ZNCW2eu",
+                            "name": "The Killers",
+                            "type": "artist",
+                            "uri": "spotify:artist:0C0XlULifJtAgn6ZNCW2eu"
+                        }
+                    ],
+                    "disc_number": 1,
+                    "duration_ms": 166240,
+                    "explicit": false,
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/track/4dLbHDp9q8Pa0Q09DGC9Hn"
+                    },
+                    "href": "https://api.spotify.com/v1/tracks/4dLbHDp9q8Pa0Q09DGC9Hn",
+                    "id": "4dLbHDp9q8Pa0Q09DGC9Hn",
+                    "name": "Show You How",
+                    "preview_url": "http://d318706lgtcm8e.cloudfront.net/mp3-preview/5518abbdfbd4bf3c1a226c3951e0865cefc68f7b",
+                    "track_number": 8,
+                    "type": "track",
+                    "uri": "spotify:track:4dLbHDp9q8Pa0Q09DGC9Hn"
+                },
+                {
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/0C0XlULifJtAgn6ZNCW2eu"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/0C0XlULifJtAgn6ZNCW2eu",
+                            "id": "0C0XlULifJtAgn6ZNCW2eu",
+                            "name": "The Killers",
+                            "type": "artist",
+                            "uri": "spotify:artist:0C0XlULifJtAgn6ZNCW2eu"
+                        }
+                    ],
+                    "disc_number": 1,
+                    "duration_ms": 229973,
+                    "explicit": false,
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/track/61QCxMSANbjmWcMtd9Xt0B"
+                    },
+                    "href": "https://api.spotify.com/v1/tracks/61QCxMSANbjmWcMtd9Xt0B",
+                    "id": "61QCxMSANbjmWcMtd9Xt0B",
+                    "name": "Move Away",
+                    "preview_url": "http://d318706lgtcm8e.cloudfront.net/mp3-preview/5403203ba35103b0986e80b1abf4643371b1367a",
+                    "track_number": 9,
+                    "type": "track",
+                    "uri": "spotify:track:61QCxMSANbjmWcMtd9Xt0B"
+                },
+                {
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/0C0XlULifJtAgn6ZNCW2eu"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/0C0XlULifJtAgn6ZNCW2eu",
+                            "id": "0C0XlULifJtAgn6ZNCW2eu",
+                            "name": "The Killers",
+                            "type": "artist",
+                            "uri": "spotify:artist:0C0XlULifJtAgn6ZNCW2eu"
+                        }
+                    ],
+                    "disc_number": 1,
+                    "duration_ms": 256546,
+                    "explicit": false,
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/track/2D6oFWSq1ToR8BSTChJYFU"
+                    },
+                    "href": "https://api.spotify.com/v1/tracks/2D6oFWSq1ToR8BSTChJYFU",
+                    "id": "2D6oFWSq1ToR8BSTChJYFU",
+                    "name": "Glamorous Indie Rock And Roll",
+                    "preview_url": "http://d318706lgtcm8e.cloudfront.net/mp3-preview/fc7a50fc1b1fc172ec5548bf26727b105e3cb9e1",
+                    "track_number": 10,
+                    "type": "track",
+                    "uri": "spotify:track:2D6oFWSq1ToR8BSTChJYFU"
+                },
+                {
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/0C0XlULifJtAgn6ZNCW2eu"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/0C0XlULifJtAgn6ZNCW2eu",
+                            "id": "0C0XlULifJtAgn6ZNCW2eu",
+                            "name": "The Killers",
+                            "type": "artist",
+                            "uri": "spotify:artist:0C0XlULifJtAgn6ZNCW2eu"
+                        }
+                    ],
+                    "disc_number": 1,
+                    "duration_ms": 222906,
+                    "explicit": false,
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/track/0eMEip7MhfSqqk1A7GQq5B"
+                    },
+                    "href": "https://api.spotify.com/v1/tracks/0eMEip7MhfSqqk1A7GQq5B",
+                    "id": "0eMEip7MhfSqqk1A7GQq5B",
+                    "name": "Who Let You Go?",
+                    "preview_url": "http://d318706lgtcm8e.cloudfront.net/mp3-preview/be30219fdfe78a781ce01d4321f021fa695d2565",
+                    "track_number": 11,
+                    "type": "track",
+                    "uri": "spotify:track:0eMEip7MhfSqqk1A7GQq5B"
+                },
+                {
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/0C0XlULifJtAgn6ZNCW2eu"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/0C0XlULifJtAgn6ZNCW2eu",
+                            "id": "0C0XlULifJtAgn6ZNCW2eu",
+                            "name": "The Killers",
+                            "type": "artist",
+                            "uri": "spotify:artist:0C0XlULifJtAgn6ZNCW2eu"
+                        }
+                    ],
+                    "disc_number": 1,
+                    "duration_ms": 230346,
+                    "explicit": false,
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/track/4Kyvgw5Dv5tSBQ1DiAeh6e"
+                    },
+                    "href": "https://api.spotify.com/v1/tracks/4Kyvgw5Dv5tSBQ1DiAeh6e",
+                    "id": "4Kyvgw5Dv5tSBQ1DiAeh6e",
+                    "name": "The Ballad of Michael Valentine",
+                    "preview_url": "http://d318706lgtcm8e.cloudfront.net/mp3-preview/ae27c13ccccb8c3e5068d4ee7334333474abf79f",
+                    "track_number": 12,
+                    "type": "track",
+                    "uri": "spotify:track:4Kyvgw5Dv5tSBQ1DiAeh6e"
+                },
+                {
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/0C0XlULifJtAgn6ZNCW2eu"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/0C0XlULifJtAgn6ZNCW2eu",
+                            "id": "0C0XlULifJtAgn6ZNCW2eu",
+                            "name": "The Killers",
+                            "type": "artist",
+                            "uri": "spotify:artist:0C0XlULifJtAgn6ZNCW2eu"
+                        }
+                    ],
+                    "disc_number": 1,
+                    "duration_ms": 185186,
+                    "explicit": false,
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/track/2RVzV8KSDE4hKjr1miE1qo"
+                    },
+                    "href": "https://api.spotify.com/v1/tracks/2RVzV8KSDE4hKjr1miE1qo",
+                    "id": "2RVzV8KSDE4hKjr1miE1qo",
+                    "name": "Ruby, Don't Take Your Love To Town",
+                    "preview_url": "http://d318706lgtcm8e.cloudfront.net/mp3-preview/6d9b466424826ced3489ba683be3fd636b1c76f9",
+                    "track_number": 13,
+                    "type": "track",
+                    "uri": "spotify:track:2RVzV8KSDE4hKjr1miE1qo"
+                },
+                {
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/0C0XlULifJtAgn6ZNCW2eu"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/0C0XlULifJtAgn6ZNCW2eu",
+                            "id": "0C0XlULifJtAgn6ZNCW2eu",
+                            "name": "The Killers",
+                            "type": "artist",
+                            "uri": "spotify:artist:0C0XlULifJtAgn6ZNCW2eu"
+                        }
+                    ],
+                    "disc_number": 1,
+                    "duration_ms": 254786,
+                    "explicit": false,
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/track/5wZgSOiKk6iWaPNqtQCDlk"
+                    },
+                    "href": "https://api.spotify.com/v1/tracks/5wZgSOiKk6iWaPNqtQCDlk",
+                    "id": "5wZgSOiKk6iWaPNqtQCDlk",
+                    "name": "Daddy's Eyes",
+                    "preview_url": "http://d318706lgtcm8e.cloudfront.net/mp3-preview/559caf0a8f80e4f00994803ee17d5644e734f896",
+                    "track_number": 14,
+                    "type": "track",
+                    "uri": "spotify:track:5wZgSOiKk6iWaPNqtQCDlk"
+                },
+                {
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/0C0XlULifJtAgn6ZNCW2eu"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/0C0XlULifJtAgn6ZNCW2eu",
+                            "id": "0C0XlULifJtAgn6ZNCW2eu",
+                            "name": "The Killers",
+                            "type": "artist",
+                            "uri": "spotify:artist:0C0XlULifJtAgn6ZNCW2eu"
+                        }
+                    ],
+                    "disc_number": 1,
+                    "duration_ms": 223720,
+                    "explicit": false,
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/track/3pmVE2clXTAJY9acQhJwRW"
+                    },
+                    "href": "https://api.spotify.com/v1/tracks/3pmVE2clXTAJY9acQhJwRW",
+                    "id": "3pmVE2clXTAJY9acQhJwRW",
+                    "name": "Sam's Town - Live from Abbey Road / 2006",
+                    "preview_url": "http://d318706lgtcm8e.cloudfront.net/mp3-preview/592c386e93ec9cc10bb654fbaa241477106a3bb6",
+                    "track_number": 15,
+                    "type": "track",
+                    "uri": "spotify:track:3pmVE2clXTAJY9acQhJwRW"
+                },
+                {
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/0C0XlULifJtAgn6ZNCW2eu"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/0C0XlULifJtAgn6ZNCW2eu",
+                            "id": "0C0XlULifJtAgn6ZNCW2eu",
+                            "name": "The Killers",
+                            "type": "artist",
+                            "uri": "spotify:artist:0C0XlULifJtAgn6ZNCW2eu"
+                        }
+                    ],
+                    "disc_number": 1,
+                    "duration_ms": 327866,
+                    "explicit": false,
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/track/15okJ22zpwpw5MU2Nn3BSI"
+                    },
+                    "href": "https://api.spotify.com/v1/tracks/15okJ22zpwpw5MU2Nn3BSI",
+                    "id": "15okJ22zpwpw5MU2Nn3BSI",
+                    "name": "Romeo And Juliet",
+                    "preview_url": "http://d318706lgtcm8e.cloudfront.net/mp3-preview/744ac7f69f4d6e2d820c886f6abff4902dc6889d",
+                    "track_number": 16,
+                    "type": "track",
+                    "uri": "spotify:track:15okJ22zpwpw5MU2Nn3BSI"
+                },
+                {
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/0C0XlULifJtAgn6ZNCW2eu"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/0C0XlULifJtAgn6ZNCW2eu",
+                            "id": "0C0XlULifJtAgn6ZNCW2eu",
+                            "name": "The Killers",
+                            "type": "artist",
+                            "uri": "spotify:artist:0C0XlULifJtAgn6ZNCW2eu"
+                        }
+                    ],
+                    "disc_number": 1,
+                    "duration_ms": 528026,
+                    "explicit": false,
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/track/2gt7oM6spRcAIzlfyt5Z9H"
+                    },
+                    "href": "https://api.spotify.com/v1/tracks/2gt7oM6spRcAIzlfyt5Z9H",
+                    "id": "2gt7oM6spRcAIzlfyt5Z9H",
+                    "name": "Mr. Brightside - Jacques Lu Cont's Thin White Duke Mix",
+                    "preview_url": "http://d318706lgtcm8e.cloudfront.net/mp3-preview/ac67dc847518713795b3cff856f31012c28fbce5",
+                    "track_number": 17,
+                    "type": "track",
+                    "uri": "spotify:track:2gt7oM6spRcAIzlfyt5Z9H"
+                }
+            ],
+            "type": "album",
+            "uri": "spotify:album:68NlXKRuJ1YqrhIbwe864y"
         }
     ],
-    "paging": {
-        "next": "https://api.spotify.com/v1/search?query=Gatan&type=ALBUM&offset=1&limit=1",
-        "previous": null,
-        "total_result_count": 17
-    }
+    "limit": 20,
+    "next": "https://api.spotify.com/v1/albums/search?query=Sawdust&offset=20&limit=9",
+    "offset": 0,
+    "previous": null,
+    "total": 29
 }

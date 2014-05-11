@@ -23,6 +23,14 @@ public class JsonUtil {
     return returnedArtists;
   }
 
+  private static List<Artist> createArtists(JSONArray artistsJsonArray) {
+    List<Artist> returnedArtists = new ArrayList<Artist>();
+    for (int i = 0; i < artistsJsonArray.size(); i++) {
+      returnedArtists.add(createArtist(artistsJsonArray.getJSONObject(i)));
+    }
+    return returnedArtists;
+  }
+
   public static Artist createArtist(String json) {
     return createArtist(JSONObject.fromObject(json));
   }
@@ -48,7 +56,7 @@ public class JsonUtil {
   }
 
   public static SpotifyEntityType createSpotifyEntityType(String type) {
-    return SpotifyEntityType.valueOf(type);
+    return SpotifyEntityType.valueOf(type.toUpperCase());
   }
 
   public static ExternalUrls createExternalUrls(JSONObject externalUrls) {
@@ -80,7 +88,7 @@ public class JsonUtil {
   public static List<String> createGenres(JSONArray genres) {
     List<String> returnedGenres = new ArrayList<String>();
     for (int i = 0; i < genres.size(); i++) {
-      genres.add(genres.getString(i));
+      returnedGenres.add(genres.getString(i));
     }
     return returnedGenres;
   }
@@ -128,7 +136,7 @@ public class JsonUtil {
 
     track.setArtists(createSimpleArtists(simpleTrackJson.getJSONArray("artists")));
     track.setDiscNumber(simpleTrackJson.getInt("disc_number"));
-    track.setDuration(simpleTrackJson.getInt("duration"));
+    track.setDuration(simpleTrackJson.getInt("duration_ms"));
     track.setExplicit(simpleTrackJson.getBoolean("explicit"));
     track.setExternalUrls(createExternalUrls(simpleTrackJson.getJSONObject("externalUrls")));
     track.setHref(simpleTrackJson.getString("href"));
@@ -146,8 +154,13 @@ public class JsonUtil {
     ReleaseDate releaseDate = new ReleaseDate();
 
     releaseDate.setYear(releaseDateJson.getInt("year"));
-    releaseDate.setMonth(releaseDateJson.getInt("month"));
-    releaseDate.setDate(releaseDateJson.getInt("date"));
+    if (!releaseDateJson.getJSONObject("month").isNullObject()) {
+      releaseDate.setMonth(releaseDateJson.getInt("month"));
+    }
+
+    if (!releaseDateJson.getJSONObject("date").isNullObject()) {
+      releaseDate.setDate(releaseDateJson.getInt("date"));
+    }
 
     return releaseDate;
   }
@@ -161,7 +174,7 @@ public class JsonUtil {
   }
 
   public static AlbumType createAlbumType(String albumType) {
-    return AlbumType.valueOf(albumType);
+    return AlbumType.valueOf(albumType.toUpperCase());
   }
 
   public  static SimpleAlbum createSimpleAlbum(JSONObject simpleAlbumJson) {
@@ -235,7 +248,7 @@ public class JsonUtil {
     track.setArtists(createSimpleArtists(trackJson.getJSONArray("artists")));
     track.setAvailableMarkets(createAvailableMarkets(trackJson.getJSONArray("available_markets")));
     track.setDiscNumber(trackJson.getInt("disc_number"));
-    track.setDuration(trackJson.getInt("duration"));
+    track.setDuration(trackJson.getInt("duration_ms"));
     track.setExplicit(trackJson.getBoolean("explicit"));
     track.setExternalIds(createExternalIds(trackJson.getJSONObject("external_ids")));
     track.setExternalUrls(createExternalUrls(trackJson.getJSONObject("external_urls")));
@@ -260,6 +273,15 @@ public class JsonUtil {
     JSONArray tracks = jsonObject.getJSONArray("tracks");
     for (int i = 0; i < tracks.size(); i++) {
       returnedTracks.add(createTrack(tracks.getJSONObject(i)));
+    }
+    return returnedTracks;
+  }
+
+
+  private static List<Track> createTracks(JSONArray tracksJson) {
+    List<Track> returnedTracks = new ArrayList<Track>();
+    for (int i = 0; i < tracksJson.size(); i++) {
+      returnedTracks.add(createTrack(tracksJson.getJSONObject(i)));
     }
     return returnedTracks;
   }
@@ -290,9 +312,13 @@ public class JsonUtil {
     Page page = new Page();
     page.setHref(pageJson.getString("href"));
     page.setLimit(pageJson.getInt("limit"));
-    page.setNext(pageJson.getString("next"));
+    if (pageJson.getString("next") != null) {
+      page.setNext(pageJson.getString("next"));
+    }
     page.setOffset(pageJson.getInt("offset"));
-    page.setPrevious(pageJson.getString("previous"));
+    if (pageJson.getString("previous") != null) {
+      page.setPrevious(pageJson.getString("previous"));
+    }
     page.setTotal(pageJson.getInt("total"));
     return page;
   }
@@ -303,7 +329,7 @@ public class JsonUtil {
 
   public static Page<Track> createTrackPage(JSONObject trackPageJson) {
     Page page = createItemlessPage(trackPageJson);
-    page.setItems(createTracks(trackPageJson));
+    page.setItems(createTracks(trackPageJson.getJSONArray("items")));
     return page;
   }
 
@@ -313,7 +339,7 @@ public class JsonUtil {
 
   public static Page<Artist> createArtistPage(JSONObject artistPageJson) {
     Page page = createItemlessPage(artistPageJson);
-    page.setItems(createArtists(artistPageJson));
+    page.setItems(createArtists(artistPageJson.getJSONArray("items")));
     return page;
   }
 

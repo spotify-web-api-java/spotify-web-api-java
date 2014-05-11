@@ -9,10 +9,10 @@ import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 import se.michaelthelin.spotify.Api;
 import se.michaelthelin.spotify.HttpManager;
-import se.michaelthelin.spotify.SpotifyProtos.Album;
 import se.michaelthelin.spotify.TestUtil;
 import se.michaelthelin.spotify.exceptions.BadFieldException;
 import se.michaelthelin.spotify.exceptions.NotFoundException;
+import se.michaelthelin.spotify.models.Album;
 
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
@@ -29,7 +29,7 @@ public class AlbumsRequestTest {
     final Api api = Api.DEFAULT_API;
 
     final HttpManager mockedHttpManager = TestUtil.MockedHttpManager.returningJson("albums.json");
-    final AlbumsRequest request = api.albums().id("41MnTivkwTO3UUJ8DrqEJJ", "6JWc4iAiJ9FjyK0B59ABb4").httpManager(mockedHttpManager).build();
+    final AlbumsRequest request = api.albums().id("41MnTivkwTO3UUJ8DrqEJJ").httpManager(mockedHttpManager).build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
@@ -38,13 +38,10 @@ public class AlbumsRequestTest {
 
       @Override
       public void onSuccess(List<Album> albums) {
-        assertEquals(2, albums.size());
+        assertEquals(1, albums.size());
 
         Album firstAlbum = albums.get(0);
         assertEquals("41MnTivkwTO3UUJ8DrqEJJ", firstAlbum.getId());
-
-        Album secondAlbum = albums.get(1);
-        assertEquals("6JWc4iAiJ9FjyK0B59ABb4", secondAlbum.getId());
 
         asyncCompleted.countDown();
       }
@@ -63,17 +60,14 @@ public class AlbumsRequestTest {
     final Api api = Api.DEFAULT_API;
 
     final HttpManager mockedHttpManager = TestUtil.MockedHttpManager.returningJson("albums.json");
-    final AlbumsRequest request = api.albums().id("41MnTivkwTO3UUJ8DrqEJJ", "6JWc4iAiJ9FjyK0B59ABb4").httpManager(mockedHttpManager).build();
+    final AlbumsRequest request = api.albums().id("41MnTivkwTO3UUJ8DrqEJJ").httpManager(mockedHttpManager).build();
 
     List<Album> albums = request.getAlbums();
 
-    assertEquals(2, albums.size());
+    assertEquals(1, albums.size());
 
     Album firstAlbum = albums.get(0);
     assertEquals("41MnTivkwTO3UUJ8DrqEJJ", firstAlbum.getId());
-
-    Album secondAlbum = albums.get(1);
-    assertEquals("6JWc4iAiJ9FjyK0B59ABb4", secondAlbum.getId());
   }
 
   @Test
@@ -81,7 +75,7 @@ public class AlbumsRequestTest {
     final Api api = Api.DEFAULT_API;
 
     final HttpManager mockedHttpManager = TestUtil.MockedHttpManager.returningJson("albums.json");
-    final AlbumsRequest request = api.albums().forArtist("0oSGxfWSnnOXhD2fKuz2Gy").httpManager(mockedHttpManager).build();
+    final AlbumsRequest request = api.albums().forArtist("53A0W3U0s8diEn9RhXQhVz").httpManager(mockedHttpManager).build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
@@ -90,13 +84,10 @@ public class AlbumsRequestTest {
     Futures.addCallback(albumsFuture, new FutureCallback<List<Album>>() {
       @Override
       public void onSuccess(List<Album> albums) {
-        assertEquals(2, albums.size());
+        assertEquals(1, albums.size());
 
         Album firstAlbum = albums.get(0);
         assertEquals("41MnTivkwTO3UUJ8DrqEJJ", firstAlbum.getId());
-
-        Album secondAlbum = albums.get(1);
-        assertEquals("6JWc4iAiJ9FjyK0B59ABb4", secondAlbum.getId());
 
         asyncCompleted.countDown();
       }
@@ -115,17 +106,14 @@ public class AlbumsRequestTest {
     final Api api = Api.DEFAULT_API;
 
     final HttpManager mockedHttpManager = TestUtil.MockedHttpManager.returningJson("albums.json");
-    final AlbumsRequest request = api.albums().forArtist("0oSGxfWSnnOXhD2fKuz2Gy").httpManager(mockedHttpManager).build();
+    final AlbumsRequest request = api.albums().forArtist("53A0W3U0s8diEn9RhXQhVz").httpManager(mockedHttpManager).build();
 
     final List<Album> albums = request.getAlbums();
 
-    assertEquals(2, albums.size());
+    assertEquals(1, albums.size());
 
     final Album firstAlbum = albums.get(0);
     assertEquals("41MnTivkwTO3UUJ8DrqEJJ", firstAlbum.getId());
-
-    final Album secondAlbum = albums.get(1);
-    assertEquals("6JWc4iAiJ9FjyK0B59ABb4", secondAlbum.getId());
   }
 
   @Test
@@ -133,7 +121,7 @@ public class AlbumsRequestTest {
     final Api api = Api.DEFAULT_API;
 
     final HttpManager mockedHttpManager = TestUtil.MockedHttpManager.returningJson("error_bad-field.json");
-    final AlbumsRequest request = api.albums().id("41MnTivkwTO3UUJ8DrqEJJ", "6JWc4iAiJ9FjyK0zz").httpManager(mockedHttpManager).build();
+    final AlbumsRequest request = api.albums().id("41MnTivkwTO3UUJ8DrqEJJ").httpManager(mockedHttpManager).build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
@@ -161,7 +149,7 @@ public class AlbumsRequestTest {
     final Api api = Api.DEFAULT_API;
 
     final HttpManager mockedHttpManager = TestUtil.MockedHttpManager.returningJson("error_id-not-found.json");
-    final AlbumsRequest request = api.albums().id("41MnTivkwTO3UUJ8DrqEJJ", "41MnTivkwTO3UUJ8DrqEJA").httpManager(mockedHttpManager).build();
+    final AlbumsRequest request = api.albums().id("41MnTivkwTO3UUJ8DrqEJJ").httpManager(mockedHttpManager).build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 

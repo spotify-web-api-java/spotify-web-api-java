@@ -9,6 +9,10 @@ import org.mockito.runners.MockitoJUnitRunner;
 import se.michaelthelin.spotify.Api;
 import se.michaelthelin.spotify.HttpManager;
 import se.michaelthelin.spotify.TestUtil;
+import se.michaelthelin.spotify.models.Album;
+import se.michaelthelin.spotify.models.Artist;
+import se.michaelthelin.spotify.models.Page;
+import se.michaelthelin.spotify.models.Track;
 
 import java.util.List;
 
@@ -24,22 +28,17 @@ public class SearchRequestTest {
     final HttpManager mockedHttpManager = TestUtil.MockedHttpManager.returningJson("search-artist.json");
     final SearchRequest request = api.search().query("David Bowie").type("artist").httpManager(mockedHttpManager).build();
 
-    final SettableFuture<ArtistSearchResult> searchResultFuture = request.getArtistsAsync();
+    final SettableFuture<Page<Artist>> searchResultFuture = request.getArtistsAsync();
 
-    Futures.addCallback(searchResultFuture, new FutureCallback<ArtistSearchResult>() {
+    Futures.addCallback(searchResultFuture, new FutureCallback<Page<Artist>>() {
       @Override
-      public void onSuccess(ArtistSearchResult artistSearchResult) {
-        List<Artist> artists = artistSearchResult.getArtistsList();
+      public void onSuccess(Page<Artist> artistSearchResult) {
+        List<Artist> artists = artistSearchResult.getItems();
         assertEquals(1, artists.size());
 
         Artist firstArtist = artists.get(0);
 
-        assertEquals("2Bw6FyyzgCc8OD7MX59TEQ", firstArtist.getId());
-
-        PagingInformation pagingInformation = artistSearchResult.getPaging();
-        assertEquals("null", pagingInformation.getNext());
-        assertEquals("null", pagingInformation.getPrevious());
-        assertEquals(1, pagingInformation.getTotalResultCount());
+        assertEquals("08td7MxkoHQkXnWAYD8d6Q", firstArtist.getId());
       }
 
       @Override
@@ -55,19 +54,14 @@ public class SearchRequestTest {
     final HttpManager mockedHttpManager = TestUtil.MockedHttpManager.returningJson("search-artist.json");
     final SearchRequest request = api.search().query("David Bowie").type("artist").httpManager(mockedHttpManager).build();
 
-    final ArtistSearchResult artistSearchResult = request.getArtists();
+    final Page<Artist> artistSearchResult = request.getArtistsPage();
 
-    final List<Artist> artists = artistSearchResult.getArtistsList();
+    final List<Artist> artists = artistSearchResult.getItems();
     assertEquals(1, artists.size());
 
     final Artist firstArtist = artists.get(0);
 
-    assertEquals("2Bw6FyyzgCc8OD7MX59TEQ", firstArtist.getId());
-
-    final PagingInformation pagingInformation = artistSearchResult.getPaging();
-    assertEquals("null", pagingInformation.getNext());
-    assertEquals("null", pagingInformation.getPrevious());
-    assertEquals(1, pagingInformation.getTotalResultCount());
+    assertEquals("08td7MxkoHQkXnWAYD8d6Q", firstArtist.getId());
   }
 
   @Test
@@ -76,25 +70,20 @@ public class SearchRequestTest {
     final HttpManager mockedHttpManager = TestUtil.MockedHttpManager.returningJson("search-track-page1.json");
     final SearchRequest request = api.search().query("Mr. Brightside").type("track").httpManager(mockedHttpManager).build();
 
-    SettableFuture<TrackSearchResult> searchResultFuture = request.getTracksAsync();
+    SettableFuture<Page<Track>> searchResultFuture = request.getTracksAsync();
 
-    Futures.addCallback(searchResultFuture, new FutureCallback<TrackSearchResult>() {
+    Futures.addCallback(searchResultFuture, new FutureCallback<Page<Track>>() {
       @Override
-      public void onSuccess(TrackSearchResult trackSearchResult) {
-        List<Track> tracks = trackSearchResult.getTracksList();
+      public void onSuccess(Page<Track> trackSearchResult) {
+        List<Track> tracks = trackSearchResult.getItems();
 
         assertEquals(20, tracks.size());
 
         Track firstTrack = tracks.get(0);
-        assertEquals("3q8WojYJVZsGClFGFBYdTc", firstTrack.getId());
+        assertEquals("0eGsygTp906u18L0Oimnem", firstTrack.getId());
 
         Track secondTrack = tracks.get(1);
-        assertEquals("2jEPQKvz7dh1pfpRyq6G1C", secondTrack.getId());
-
-        PagingInformation pagingInformation = trackSearchResult.getPaging();
-        assertEquals("https://api.spotify.com/v1/search?query=Gatan&type=TRACK&offset=20&limit=20", pagingInformation.getNext());
-        assertEquals("null", pagingInformation.getPrevious());
-        assertEquals(258, pagingInformation.getTotalResultCount());
+        assertEquals("5zvJ6DUahHHjeknQPn7iAH", secondTrack.getId());
       }
 
       @Override
@@ -110,22 +99,17 @@ public class SearchRequestTest {
     final HttpManager mockedHttpManager = TestUtil.MockedHttpManager.returningJson("search-track-page1.json");
     final SearchRequest request = api.search().query("Mr. Brightside").type("track").httpManager(mockedHttpManager).build();
 
-    final TrackSearchResult trackSearchResult = request.getTracks();
+    final Page<Track> trackSearchResult = request.getTracksPage();
 
-    final List<Track> tracks = trackSearchResult.getTracksList();
+    final List<Track> tracks = trackSearchResult.getItems();
 
     assertEquals(20, tracks.size());
 
     final Track firstTrack = tracks.get(0);
-    assertEquals("3q8WojYJVZsGClFGFBYdTc", firstTrack.getId());
+    assertEquals("0eGsygTp906u18L0Oimnem", firstTrack.getId());
 
     final Track secondTrack = tracks.get(1);
-    assertEquals("2jEPQKvz7dh1pfpRyq6G1C", secondTrack.getId());
-
-    final PagingInformation pagingInformation = trackSearchResult.getPaging();
-    assertEquals("https://api.spotify.com/v1/search?query=Gatan&type=TRACK&offset=20&limit=20", pagingInformation.getNext());
-    assertEquals("null", pagingInformation.getPrevious());
-    assertEquals(258, pagingInformation.getTotalResultCount());
+    assertEquals("5zvJ6DUahHHjeknQPn7iAH", secondTrack.getId());
   }
 
   @Test
@@ -134,22 +118,17 @@ public class SearchRequestTest {
     final HttpManager mockedHttpManager = TestUtil.MockedHttpManager.returningJson("search-album.json");
     final SearchRequest request = api.search().query("The Best Of Keane").type("album").httpManager(mockedHttpManager).build();
 
-    final SettableFuture<AlbumSearchResult> searchResultFuture = request.getAlbumsAsync();
+    final SettableFuture<Page<Album>> searchResultFuture = request.getAlbumsAsync();
 
-    Futures.addCallback(searchResultFuture, new FutureCallback<AlbumSearchResult>() {
+    Futures.addCallback(searchResultFuture, new FutureCallback<Page<Album>>() {
       @Override
-      public void onSuccess(AlbumSearchResult albumSearchResult) {
-        List<Album> albums = albumSearchResult.getAlbumsList();
+      public void onSuccess(Page<Album> albumSearchResult) {
+        List<Album> albums = albumSearchResult.getItems();
 
         assertEquals(1, albums.size());
 
         Album firstAlbum = albums.get(0);
-        assertEquals("2fOs6I0CgvaZj9agU8EAlH", firstAlbum.getId());
-
-        PagingInformation pagingInformation = albumSearchResult.getPaging();
-        assertEquals("https://api.spotify.com/v1/search?query=Gatan&type=ALBUM&offset=1&limit=1", pagingInformation.getNext());
-        assertEquals("null", pagingInformation.getPrevious());
-        assertEquals(17, pagingInformation.getTotalResultCount());
+        assertEquals("68NlXKRuJ1YqrhIbwe864y", firstAlbum.getId());
       }
 
       @Override
@@ -166,19 +145,14 @@ public class SearchRequestTest {
     final HttpManager mockedHttpManager = TestUtil.MockedHttpManager.returningJson("search-album.json");
     final SearchRequest request = api.search().query("The Best Of Keane").type("album").httpManager(mockedHttpManager).build();
 
-    final AlbumSearchResult albumSearchResult = request.getAlbums();
+    final Page<Album> albumSearchResult = request.getAlbumsPage();
 
-    final List<Album> albums = albumSearchResult.getAlbumsList();
+    final List<Album> albums = albumSearchResult.getItems();
 
     assertEquals(1, albums.size());
 
     final Album firstAlbum = albums.get(0);
-    assertEquals("2fOs6I0CgvaZj9agU8EAlH", firstAlbum.getId());
-
-    final PagingInformation pagingInformation = albumSearchResult.getPaging();
-    assertEquals("https://api.spotify.com/v1/search?query=Gatan&type=ALBUM&offset=1&limit=1", pagingInformation.getNext());
-    assertEquals("null", pagingInformation.getPrevious());
-    assertEquals(17, pagingInformation.getTotalResultCount());
+    assertEquals("68NlXKRuJ1YqrhIbwe864y", firstAlbum.getId());
   }
 
 }
