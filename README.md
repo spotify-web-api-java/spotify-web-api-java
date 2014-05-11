@@ -1,5 +1,6 @@
-Spotify Web API Java [![Build Status](https://travis-ci.org/thelinmichael/spotify-web-api-java.svg?token=8zHBtRMhPg5xwzh4iTuo&branch=master)](https://travis-ci.org/thelinmichael/spotify-web-api-java)
+Spotify Web API Java [![Build Status](https://travis-ci.org/thelinmichael/spotify-web-api-java.svg?branch=master)](https://travis-ci.org/thelinmichael/spotify-web-api-java)
 ==================
+
 This is a Java wrapper for the [Spotify Web API](https://developer.spotify.com/spotify-web-api/). It includes helper functions for looking up as well as searching for albums, artists, and tracks. Functionality to make requests for playlists and user's information are still to be implemented.
 
 ## Usage
