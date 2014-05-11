@@ -12,6 +12,8 @@ import se.michaelthelin.spotify.TestUtil;
 import se.michaelthelin.spotify.models.Artist;
 
 import java.util.List;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.TimeUnit;
 
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.TestCase.fail;
@@ -25,6 +27,8 @@ public class ArtistsRequestTest {
     final HttpManager mockedHttpManager = TestUtil.MockedHttpManager.returningJson("artists.json");
     final ArtistsRequest request = api.getArtists("0oSGxfWSnnOXhD2fKuz2Gy", "3dBVyJ7JuOMt4GE9607Qin").httpManager(mockedHttpManager).build();
 
+    final CountDownLatch asyncCompleted = new CountDownLatch(1);
+
     final SettableFuture<List<Artist>> artistsFuture = request.getAsync();
 
     Futures.addCallback(artistsFuture, new FutureCallback<List<Artist>>() {
@@ -37,6 +41,8 @@ public class ArtistsRequestTest {
 
         assertEquals("0oSGxfWSnnOXhD2fKuz2Gy", firstArtist.getId());
         assertEquals("3dBVyJ7JuOMt4GE9607Qin", secondArtist.getId());
+
+        asyncCompleted.countDown();
       }
 
       @Override
@@ -44,13 +50,15 @@ public class ArtistsRequestTest {
         fail("Failed to resolve future");
       }
     });
+
+    asyncCompleted.await(1, TimeUnit.SECONDS);
   }
 
   @Test
   public void shouldGetArtistsResult_sync() throws Exception {
     final Api api = Api.DEFAULT_API;
     final HttpManager mockedHttpManager = TestUtil.MockedHttpManager.returningJson("artists.json");
-    final ArtistsRequest request = api.getArtists("0oSGxfWSnnOXhD2fKuz2Gy","3dBVyJ7JuOMt4GE9607Qin").httpManager(mockedHttpManager).build();
+    final ArtistsRequest request = api.getArtists("0oSGxfWSnnOXhD2fKuz2Gy", "3dBVyJ7JuOMt4GE9607Qin").httpManager(mockedHttpManager).build();
 
     final List<Artist> artists = request.get();
 

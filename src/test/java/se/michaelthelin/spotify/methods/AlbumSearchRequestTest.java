@@ -13,6 +13,8 @@ import se.michaelthelin.spotify.models.Album;
 import se.michaelthelin.spotify.models.Page;
 
 import java.util.List;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.TimeUnit;
 
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.TestCase.fail;
@@ -26,6 +28,8 @@ public class AlbumSearchRequestTest {
     final HttpManager mockedHttpManager = TestUtil.MockedHttpManager.returningJson("search-album.json");
     final AlbumSearchRequest request = api.searchAlbums("The Best Of Keane").httpManager(mockedHttpManager).build();
 
+    final CountDownLatch asyncCompleted = new CountDownLatch(1);
+
     final SettableFuture<Page<Album>> searchResultFuture = request.getAlbumsPageAsync();
 
     Futures.addCallback(searchResultFuture, new FutureCallback<Page<Album>>() {
@@ -37,6 +41,8 @@ public class AlbumSearchRequestTest {
 
         Album firstAlbum = albums.get(0);
         assertEquals("68NlXKRuJ1YqrhIbwe864y", firstAlbum.getId());
+
+        asyncCompleted.countDown();
       }
 
       @Override
@@ -45,6 +51,7 @@ public class AlbumSearchRequestTest {
       }
     });
 
+    asyncCompleted.await(1, TimeUnit.SECONDS);
   }
 
   @Test

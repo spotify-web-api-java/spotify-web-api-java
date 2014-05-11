@@ -12,6 +12,8 @@ import se.michaelthelin.spotify.TestUtil;
 import se.michaelthelin.spotify.models.Track;
 
 import java.util.List;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.TimeUnit;
 
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.TestCase.fail;
@@ -25,6 +27,8 @@ public class TopTracksRequestTest {
     final HttpManager mockedHttpManager = TestUtil.MockedHttpManager.returningJson("tracks.json");
     final TopTracksRequest request = api.getTopTracksForArtist("43ZHCT0cAZBISjO8DG9PnE", "GB").httpManager(mockedHttpManager).build();
 
+    final CountDownLatch asyncCompleted = new CountDownLatch(1);
+
     final SettableFuture<List<Track>> tracksFuture = request.getAsync();
 
     Futures.addCallback(tracksFuture, new FutureCallback<List<Track>>() {
@@ -37,6 +41,8 @@ public class TopTracksRequestTest {
 
         Track secondTrack = tracks.get(1);
         assertEquals("1lDWb6b6ieDQ2xT7ewTC3G", secondTrack.getId());
+
+        asyncCompleted.countDown();
       }
 
       @Override
@@ -44,6 +50,8 @@ public class TopTracksRequestTest {
         fail("Failed to resolve future");
       }
     });
+
+    asyncCompleted.await(1, TimeUnit.SECONDS);
   }
 
   @Test

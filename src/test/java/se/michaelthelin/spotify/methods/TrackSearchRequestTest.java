@@ -13,6 +13,8 @@ import se.michaelthelin.spotify.models.Page;
 import se.michaelthelin.spotify.models.Track;
 
 import java.util.List;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.TimeUnit;
 
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.TestCase.fail;
@@ -25,6 +27,8 @@ public class TrackSearchRequestTest {
     final Api api = Api.DEFAULT_API;
     final HttpManager mockedHttpManager = TestUtil.MockedHttpManager.returningJson("search-track-page1.json");
     final TrackSearchRequest request = api.searchTracks("Mr. Brightside").httpManager(mockedHttpManager).build();
+
+    final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
     SettableFuture<Page<Track>> searchResultFuture = request.getAsync();
 
@@ -40,6 +44,8 @@ public class TrackSearchRequestTest {
 
         Track secondTrack = tracks.get(1);
         assertEquals("5zvJ6DUahHHjeknQPn7iAH", secondTrack.getId());
+
+        asyncCompleted.countDown();
       }
 
       @Override
@@ -47,6 +53,8 @@ public class TrackSearchRequestTest {
         fail("Failed to resolve future");
       }
     });
+
+    asyncCompleted.await(1, TimeUnit.SECONDS);
   }
 
   @Test

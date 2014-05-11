@@ -13,6 +13,8 @@ import se.michaelthelin.spotify.models.Artist;
 import se.michaelthelin.spotify.models.Page;
 
 import java.util.List;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.TimeUnit;
 
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.TestCase.fail;
@@ -26,6 +28,8 @@ public class ArtistSearchRequestTest {
     final HttpManager mockedHttpManager = TestUtil.MockedHttpManager.returningJson("search-artist.json");
     final ArtistSearchRequest request = api.searchArtists("David Bowie").httpManager(mockedHttpManager).build();
 
+    final CountDownLatch asyncCompleted = new CountDownLatch(1);
+
     final SettableFuture<Page<Artist>> searchResultFuture = request.getAsync();
 
     Futures.addCallback(searchResultFuture, new FutureCallback<Page<Artist>>() {
@@ -35,8 +39,9 @@ public class ArtistSearchRequestTest {
         assertEquals(1, artists.size());
 
         Artist firstArtist = artists.get(0);
-
         assertEquals("08td7MxkoHQkXnWAYD8d6Q", firstArtist.getId());
+
+        asyncCompleted.countDown();
       }
 
       @Override
@@ -44,6 +49,8 @@ public class ArtistSearchRequestTest {
         fail("Failed to resolve future");
       }
     });
+
+    asyncCompleted.await(1, TimeUnit.SECONDS);
   }
 
   @Test

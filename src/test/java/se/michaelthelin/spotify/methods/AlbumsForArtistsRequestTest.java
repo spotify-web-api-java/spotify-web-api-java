@@ -42,6 +42,7 @@ public class AlbumsForArtistsRequestTest {
 
         Album firstAlbum = albums.get(0);
         assertEquals("68NlXKRuJ1YqrhIbwe864y", firstAlbum.getId());
+        asyncCompleted.countDown();
       }
 
       @Override
