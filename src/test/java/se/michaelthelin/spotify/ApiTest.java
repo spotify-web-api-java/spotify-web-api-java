@@ -101,16 +101,32 @@ public class ApiTest {
   @Test
   public void shouldCreateSearchUrl() {
     Api api = Api.DEFAULT_API;
-    Request request = api.search().query("moulat swalf").build();
-    assertEquals("https://api.spotify.com:443/v1/search", request.toString());
+    Request request = api.searchTracks("moulat swalf").build();
+    assertEquals("https://api.spotify.com:443/v1/tracks/search", request.toString());
     assertHasParameter(request.toUrl(), "q", "moulat+swalf");
+  }
+
+  @Test
+  public void shouldCreateSearchUrlForAlbum() {
+    Api api = Api.DEFAULT_API;
+    Request request = api.searchAlbums("meeep").build();
+    assertEquals("https://api.spotify.com:443/v1/albums/search", request.toString());
+    assertHasParameter(request.toUrl(), "q", "meeep");
+  }
+
+  @Test
+  public void shouldCreateSearchUrlForArtist() {
+    Api api = Api.DEFAULT_API;
+    Request request = api.searchArtists("meeep").build();
+    assertEquals("https://api.spotify.com:443/v1/artists/search", request.toString());
+    assertHasParameter(request.toUrl(), "q", "meeep");
   }
 
   @Test
   public void shouldCreateSearchUrlWithLimitParameter() {
     Api api = Api.DEFAULT_API;
-    Request request = api.search().query("moulat swalf").limit(2).build();
-    assertEquals("https://api.spotify.com:443/v1/search", request.toString());
+    Request request = api.searchTracks("moulat swalf").limit(2).build();
+    assertEquals("https://api.spotify.com:443/v1/tracks/search", request.toString());
     assertHasParameter(request.toUrl(), "q", "moulat+swalf");
     assertHasParameter(request.toUrl(), "limit", "2");
   }
@@ -118,19 +134,10 @@ public class ApiTest {
   @Test
   public void shouldCreateSearchUrlWithOffsetParameter() {
     Api api = Api.DEFAULT_API;
-    Request request = api.search().query("moulat swalf").offset(2).build();
-    assertEquals("https://api.spotify.com:443/v1/search", request.toString());
+    Request request = api.searchTracks("moulat swalf").offset(2).build();
+    assertEquals("https://api.spotify.com:443/v1/tracks/search", request.toString());
     assertHasParameter(request.toUrl(), "q", "moulat+swalf");
     assertHasParameter(request.toUrl(), "offset", "2");
-  }
-
-  @Test
-  public void shouldCreateSearchUrlWithTypeParameter() {
-    Api api = Api.DEFAULT_API;
-    Request request = api.search().query("moulat swalf").type("album").build();
-    assertEquals("https://api.spotify.com:443/v1/search", request.toString());
-    assertHasParameter(request.toUrl(), "q", "moulat+swalf");
-    assertHasParameter(request.toUrl(), "type", "album");
   }
 
   @Test

@@ -98,9 +98,24 @@ public class Api {
     return builder;
   }
 
-  public SearchRequest.Builder search() {
-    SearchRequest.Builder builder = SearchRequest.builder();
+  public AlbumSearchRequest.Builder searchAlbums(String query) {
+    AlbumSearchRequest.Builder builder = AlbumSearchRequest.builder();
     setDefaults(builder);
+    builder.query(query);
+    return builder;
+  }
+
+  public TrackSearchRequest.Builder searchTracks(String query) {
+    TrackSearchRequest.Builder builder = TrackSearchRequest.builder();
+    setDefaults(builder);
+    builder.query(query);
+    return builder;
+  }
+
+  public ArtistSearchRequest.Builder searchArtists(String query) {
+    ArtistSearchRequest.Builder builder = ArtistSearchRequest.builder();
+    setDefaults(builder);
+    builder.query(query);
     return builder;
   }
 
