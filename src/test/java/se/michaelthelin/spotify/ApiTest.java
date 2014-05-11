@@ -187,6 +187,12 @@ public class ApiTest {
     assertHasParameter(request.toUrl(), "country", "GB");
   }
 
+  @Test
+  public void shouldCreateUserProfileUrl() {
+    Api api = Api.DEFAULT_API;
+    Request request = api.getUser("wizzler").build();
+    assertEquals("https://api.spotify.com:443/v1/users/wizzler", request.toString());
+  }
 
   void assertHasParameter(Url url, String name, Object value) {
     Parameter expected = Parameter.newBuilder().setName(name).setValue(value.toString()).build();

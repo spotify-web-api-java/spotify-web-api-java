@@ -8,7 +8,7 @@ This is a Java wrapper for the [Spotify Web API](https://developer.spotify.com/s
 - [x] Top tracks for specific artist
 - [x] Album, artist and track search
 - [ ] Playlist lookup
-- [ ] User lookup
+- [X] User lookup
 - [ ] Playlists for specific user
 
 

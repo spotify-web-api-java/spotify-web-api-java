@@ -1,5 +1,6 @@
 package se.michaelthelin.spotify;
 
+import com.google.protobuf.RepeatedFieldBuilder;
 import se.michaelthelin.spotify.UtilProtos.Url.Scheme;
 import se.michaelthelin.spotify.methods.*;
 
@@ -156,6 +157,12 @@ public class Api {
     return builder;
   }
 
+  public UserRequest.Builder getUser(String userId) {
+    UserRequest.Builder builder = UserRequest.builder();
+    setDefaults(builder);
+    builder.username(userId);
+    return builder;
+  }
 
   void setDefaults(Request.Builder builder) {
     builder.httpManager(httpManager);
@@ -163,6 +170,7 @@ public class Api {
     builder.host(host);
     builder.port(port);
   }
+
 
   public static class Builder {
 

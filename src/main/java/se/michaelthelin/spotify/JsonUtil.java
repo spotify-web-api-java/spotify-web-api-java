@@ -343,5 +343,37 @@ public class JsonUtil {
     return page;
   }
 
+  public static User createUser(String userJson) {
+    return createUser(JSONObject.fromObject(userJson));
+  }
 
+  public static User createUser(JSONObject userJson) {
+    User user = new User();
+
+    // Always in the user object
+    user.setExternalUrls(createExternalUrls(userJson.getJSONObject("external_urls")));
+    user.setHref(userJson.getString("href"));
+    user.setId(userJson.getString("id"));
+    user.setType(createSpotifyEntityType(userJson.getString("type")));
+    user.setUri(userJson.getString("uri"));
+
+    if (userJson.has("display_name")) {
+      user.setDisplayName(userJson.getString("display_name"));
+    }
+    if (userJson.has("email")) {
+      user.setEmail(userJson.getString("email"));
+    }
+    if (userJson.has("images")) {
+      user.setImages(createImages(userJson.getJSONArray("images")));
+    }
+    if (userJson.has("product")) {
+      user.setProduct(createProduct(userJson.getString("product")));
+    }
+
+    return user;
+  }
+
+  private static Product createProduct(String product) {
+    return Product.valueOf(product.toUpperCase());
+  }
 }
