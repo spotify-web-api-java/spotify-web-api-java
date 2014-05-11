@@ -26,7 +26,7 @@ public class ArtistSearchRequestTest {
     final HttpManager mockedHttpManager = TestUtil.MockedHttpManager.returningJson("search-artist.json");
     final ArtistSearchRequest request = api.searchArtists("David Bowie").httpManager(mockedHttpManager).build();
 
-    final SettableFuture<Page<Artist>> searchResultFuture = request.getArtistsPageAsync();
+    final SettableFuture<Page<Artist>> searchResultFuture = request.getAsync();
 
     Futures.addCallback(searchResultFuture, new FutureCallback<Page<Artist>>() {
       @Override
@@ -52,7 +52,7 @@ public class ArtistSearchRequestTest {
     final HttpManager mockedHttpManager = TestUtil.MockedHttpManager.returningJson("search-artist.json");
     final ArtistSearchRequest request = api.searchArtists("David Bowie").httpManager(mockedHttpManager).build();
 
-    final Page<Artist> artistSearchResult = request.getArtistsPage();
+    final Page<Artist> artistSearchResult = request.get();
 
     final List<Artist> artists = artistSearchResult.getItems();
     assertEquals(1, artists.size());

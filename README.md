@@ -12,10 +12,10 @@ This is a Java wrapper for the [Spotify Web API](https://developer.spotify.com/s
 Api api = Api.DEFAULT_API; 
 
 // Create a request object for the type of request you want to make
-AlbumRequest request = api.album().id("7e0ij2fpWaxOEHv5fUYZjd").build();
+AlbumRequest request = api.getAlbum("7e0ij2fpWaxOEHv5fUYZjd").build();
 
 // Retrieve a future for an album
-SettableFuture<Album> albumFuture = request.getAlbumAsync();
+SettableFuture<Album> albumFuture = request.getAsync();
 
 // Create callbacks in case of success or failure
 Futures.addCallback(albumFuture, new FutureCallback<Album>() {
@@ -40,11 +40,11 @@ Futures.addCallback(albumFuture, new FutureCallback<Album>() {
 Api api = Api.DEFAULT_API; 
 
 // Create a request object for the type of request you want to make
-AlbumRequest request = api.album().id("7e0ij2fpWaxOEHv5fUYZjd").build();
+AlbumRequest request = api.getAlbum("7e0ij2fpWaxOEHv5fUYZjd").build();
 
 // Retrieve an album
 try {
-  Album album = request.getAlbum();
+  Album album = request.get();
   
   // Print the genres of the album
   List<String> genres = album.getGenres(); 

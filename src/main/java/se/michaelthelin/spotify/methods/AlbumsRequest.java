@@ -52,12 +52,6 @@ public class AlbumsRequest extends AbstractRequest {
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
-    /**
-     * The albums with the given ids.
-     *
-     * @param ids The ids for the albums.
-     * @return AlbumRequest
-     */
     public Builder id(List<String> ids) {
       assert (ids != null);
       String idsParameter = Joiner.on(",").join(ids).toString();

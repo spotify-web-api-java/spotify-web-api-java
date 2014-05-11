@@ -23,9 +23,9 @@ public class TracksRequestTest {
   public void shouldGetTracksResult_async() throws Exception {
     final Api api = Api.DEFAULT_API;
     final HttpManager mockedHttpManager = TestUtil.MockedHttpManager.returningJson("tracks.json");
-    final TracksRequest request = api.tracks().id("0eGsygTp906u18L0Oimnem", "1lDWb6b6ieDQ2xT7ewTC3G").httpManager(mockedHttpManager).build();
+    final TracksRequest request = api.getTracks("0eGsygTp906u18L0Oimnem", "1lDWb6b6ieDQ2xT7ewTC3G").httpManager(mockedHttpManager).build();
 
-    final SettableFuture<List<Track>> tracksFuture = request.getTracksAsync();
+    final SettableFuture<List<Track>> tracksFuture = request.getAsync();
 
     Futures.addCallback(tracksFuture, new FutureCallback<List<Track>>() {
       @Override
@@ -50,9 +50,9 @@ public class TracksRequestTest {
   public void shouldGetTracksResult_sync() throws Exception {
     final Api api = Api.DEFAULT_API;
     final HttpManager mockedHttpManager = TestUtil.MockedHttpManager.returningJson("tracks.json");
-    final TracksRequest request = api.tracks().id("0eGsygTp906u18L0Oimnem", "1lDWb6b6ieDQ2xT7ewTC3G").httpManager(mockedHttpManager).build();
+    final TracksRequest request = api.getTracks("0eGsygTp906u18L0Oimnem", "1lDWb6b6ieDQ2xT7ewTC3G").httpManager(mockedHttpManager).build();
 
-    final List<Track> tracks = request.getTracks();
+    final List<Track> tracks = request.get();
 
     assertEquals(2, tracks.size());
 

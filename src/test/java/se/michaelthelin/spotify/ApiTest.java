@@ -24,14 +24,14 @@ public class ApiTest {
   @Test
   public void shouldCreateAGetArtistUrl() {
     Api api = Api.DEFAULT_API;
-    Request request = api.artist().id("5rSXSAkZ67PYJSvpUpkOr7").build();
+    Request request = api.getArtist("5rSXSAkZ67PYJSvpUpkOr7").build();
     assertEquals("https://api.spotify.com:443/v1/artists/5rSXSAkZ67PYJSvpUpkOr7", request.toString());
   }
 
   @Test
   public void shouldCreateAGetTrackUrl() {
     Api api = Api.DEFAULT_API;
-    Request request = api.track().id("6hDH3YWFdcUNQjubYztIsG").build();
+    Request request = api.getTrack("6hDH3YWFdcUNQjubYztIsG").build();
     assertEquals("https://api.spotify.com:443/v1/tracks/6hDH3YWFdcUNQjubYztIsG", request.toString());
   }
 
@@ -54,7 +54,15 @@ public class ApiTest {
   @Test
   public void shouldCreateAGetTracksUrl() {
     Api api = Api.DEFAULT_API;
-    Request request = api.tracks().id("6hDH3YWFdcUNQjubYztIsG","2IA4WEsWAYpV9eKkwR2UYv").build();
+    Request request = api.getTracks("6hDH3YWFdcUNQjubYztIsG","2IA4WEsWAYpV9eKkwR2UYv").build();
+    assertEquals("https://api.spotify.com:443/v1/tracks", request.toString());
+    assertHasParameter(request.toUrl(), "ids", "6hDH3YWFdcUNQjubYztIsG,2IA4WEsWAYpV9eKkwR2UYv");
+  }
+
+  @Test
+  public void shouldCreateAGetTracksUrlFromList() {
+    Api api = Api.DEFAULT_API;
+    Request request = api.getTracks(Arrays.asList("6hDH3YWFdcUNQjubYztIsG","2IA4WEsWAYpV9eKkwR2UYv")).build();
     assertEquals("https://api.spotify.com:443/v1/tracks", request.toString());
     assertHasParameter(request.toUrl(), "ids", "6hDH3YWFdcUNQjubYztIsG,2IA4WEsWAYpV9eKkwR2UYv");
   }
@@ -103,7 +111,7 @@ public class ApiTest {
   @Test
   public void shouldCreateAGetArtistsUrl() {
     Api api = Api.DEFAULT_API;
-    Request request = api.artists().id("4AK6F7OLvEQ5QYCBNiQWHq", "6rEzedK7cKWjeQWdAYvWVG").build();
+    Request request = api.getArtists("4AK6F7OLvEQ5QYCBNiQWHq", "6rEzedK7cKWjeQWdAYvWVG").build();
     assertEquals("https://api.spotify.com:443/v1/artists", request.toString());
     assertHasParameter(request.toUrl(), "ids", "4AK6F7OLvEQ5QYCBNiQWHq,6rEzedK7cKWjeQWdAYvWVG");
   }

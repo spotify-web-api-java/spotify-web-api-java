@@ -90,27 +90,39 @@ public class Api {
     return builder;
   }
 
-  public ArtistRequest.Builder artist() {
+  public ArtistRequest.Builder getArtist(String id) {
     ArtistRequest.Builder builder = ArtistRequest.builder();
     setDefaults(builder);
+    builder.id(id);
     return builder;
   }
 
-  public ArtistsRequest.Builder artists() {
+  public ArtistsRequest.Builder getArtists(String... ids) {
+    return getArtists(Arrays.asList(ids));
+  }
+
+  public ArtistsRequest.Builder getArtists(List<String> ids) {
     ArtistsRequest.Builder builder = ArtistsRequest.builder();
     setDefaults(builder);
+    builder.id(ids);
     return builder;
   }
 
-  public TrackRequest.Builder track() {
+  public TrackRequest.Builder getTrack(String id) {
     TrackRequest.Builder builder = TrackRequest.builder();
     setDefaults(builder);
+    builder.id(id);
     return builder;
   }
 
-  public TracksRequest.Builder tracks() {
+  public TracksRequest.Builder getTracks(String... ids) {
+    return getTracks(Arrays.asList(ids));
+  }
+
+  public TracksRequest.Builder getTracks(List<String> ids) {
     TracksRequest.Builder builder = TracksRequest.builder();
     setDefaults(builder);
+    builder.id(ids);
     return builder;
   }
 

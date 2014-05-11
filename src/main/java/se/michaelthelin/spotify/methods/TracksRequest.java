@@ -16,7 +16,7 @@ public class TracksRequest extends AbstractRequest {
     super(builder);
   }
 
-  public SettableFuture<List<Track>> getTracksAsync() {
+  public SettableFuture<List<Track>> getAsync() {
     SettableFuture<List<Track>> tracksFuture = SettableFuture.create();
 
     try {
@@ -37,7 +37,7 @@ public class TracksRequest extends AbstractRequest {
     return tracksFuture;
   }
 
-  public List<Track> getTracks() throws IOException, UnexpectedResponseException {
+  public List<Track> get() throws IOException, UnexpectedResponseException {
     return JsonUtil.createTracks(getJson());
   }
 
@@ -47,7 +47,7 @@ public class TracksRequest extends AbstractRequest {
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
-    public Builder id(String... ids) {
+    public Builder id(List<String> ids) {
       assert (ids != null);
       String idsParameter = Joiner.on(",").join(ids).toString();
       path("/v1/tracks");

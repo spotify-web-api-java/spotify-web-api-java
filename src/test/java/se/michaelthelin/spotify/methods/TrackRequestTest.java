@@ -23,9 +23,9 @@ public class TrackRequestTest {
   public void shouldGetTrackResult_async() throws Exception {
     final Api api = Api.DEFAULT_API;
     final HttpManager mockedHttpManager = TestUtil.MockedHttpManager.returningJson("track.json");
-    final TrackRequest request = api.track().id("0eGsygTp906u18L0Oimnem").httpManager(mockedHttpManager).build();
+    final TrackRequest request = api.getTrack("0eGsygTp906u18L0Oimnem").httpManager(mockedHttpManager).build();
 
-    final SettableFuture<Track> trackFuture = request.getTrackAsync();
+    final SettableFuture<Track> trackFuture = request.getAsync();
 
     Futures.addCallback(trackFuture, new FutureCallback<Track>() {
       @Override
@@ -45,9 +45,9 @@ public class TrackRequestTest {
   public void shouldGetTrackResult_sync() throws Exception {
     final Api api = Api.DEFAULT_API;
     final HttpManager mockedHttpManager = TestUtil.MockedHttpManager.returningJson("track.json");
-    final TrackRequest request = api.track().id("0eGsygTp906u18L0Oimnem").httpManager(mockedHttpManager).build();
+    final TrackRequest request = api.getTrack("0eGsygTp906u18L0Oimnem").httpManager(mockedHttpManager).build();
 
-    final Track track = request.getTrack();
+    final Track track = request.get();
 
     assertNotNull(track);
     assertEquals("0eGsygTp906u18L0Oimnem", track.getId());

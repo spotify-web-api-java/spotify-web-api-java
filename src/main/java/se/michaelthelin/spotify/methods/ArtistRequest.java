@@ -20,7 +20,7 @@ public class ArtistRequest extends AbstractRequest {
     return new Builder();
   }
 
-  public SettableFuture<Artist> getArtistAsync() {
+  public SettableFuture<Artist> getAsync() {
     SettableFuture<Artist> artistFuture = SettableFuture.create();
 
     try {
@@ -41,7 +41,7 @@ public class ArtistRequest extends AbstractRequest {
     return artistFuture;
   }
 
-  public Artist getArtist() throws IOException, UnexpectedResponseException, NotFoundException, BadFieldException {
+  public Artist get() throws IOException, UnexpectedResponseException, NotFoundException, BadFieldException {
     String jsonString = getJson();
     JSONObject jsonObject = JSONObject.fromObject(jsonString);
     throwIfErrorsInResponse(jsonObject);

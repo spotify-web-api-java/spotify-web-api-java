@@ -16,7 +16,7 @@ public class ArtistSearchRequest extends AbstractRequest {
     super(builder);
   }
 
-  public SettableFuture<Page<Artist>> getArtistsPageAsync() {
+  public SettableFuture<Page<Artist>> getAsync() {
     SettableFuture<Page<Artist>> searchResultFuture = SettableFuture.create();
 
     try {
@@ -32,7 +32,7 @@ public class ArtistSearchRequest extends AbstractRequest {
     return searchResultFuture;
   }
 
-  public Page<Artist> getArtistsPage() throws IOException, UnexpectedResponseException {
+  public Page<Artist> get() throws IOException, UnexpectedResponseException {
     return JsonUtil.createArtistPage(getJson());
   }
 

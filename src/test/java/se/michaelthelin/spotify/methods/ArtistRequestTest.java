@@ -25,11 +25,11 @@ public class ArtistRequestTest {
     final Api api = Api.DEFAULT_API;
 
     final HttpManager mockedHttpManager = TestUtil.MockedHttpManager.returningJson("artist.json");
-    final ArtistRequest request = api.artist().id("0LcJLqbBmaGUft1e9Mm8HV").httpManager(mockedHttpManager).build();
+    final ArtistRequest request = api.getArtist("0LcJLqbBmaGUft1e9Mm8HV").httpManager(mockedHttpManager).build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
-    final SettableFuture<Artist> artistFuture = request.getArtistAsync();
+    final SettableFuture<Artist> artistFuture = request.getAsync();
 
     Futures.addCallback(artistFuture, new FutureCallback<Artist>() {
       @Override
@@ -50,9 +50,9 @@ public class ArtistRequestTest {
   public void shouldGetArtistResult_sync() throws Exception {
     final Api api = Api.DEFAULT_API;
     final HttpManager mockedHttpManager = TestUtil.MockedHttpManager.returningJson("artist.json");
-    final ArtistRequest request = api.artist().id("0LcJLqbBmaGUft1e9Mm8HV").httpManager(mockedHttpManager).build();
+    final ArtistRequest request = api.getArtist("0LcJLqbBmaGUft1e9Mm8HV").httpManager(mockedHttpManager).build();
 
-    final Artist artist = request.getArtist();
+    final Artist artist = request.get();
 
     assertNotNull(artist);
     assertEquals("0LcJLqbBmaGUft1e9Mm8HV", artist.getId());

@@ -15,7 +15,7 @@ public class TrackSearchRequest extends AbstractRequest {
     super(builder);
   }
 
-  public SettableFuture<Page<Track>> getTracksPageAsync() {
+  public SettableFuture<Page<Track>> getAsync() {
     SettableFuture<Page<Track>> searchResultFuture = SettableFuture.create();
 
     try {
@@ -31,7 +31,7 @@ public class TrackSearchRequest extends AbstractRequest {
     return searchResultFuture;
   }
 
-  public Page<Track> getTracksPage() throws IOException, UnexpectedResponseException {
+  public Page<Track> get() throws IOException, UnexpectedResponseException {
     return JsonUtil.createTrackPage(getJson());
   }
 

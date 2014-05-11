@@ -14,7 +14,7 @@ public class TrackRequest extends AbstractRequest {
     super(builder);
   }
 
-  public SettableFuture<Track> getTrackAsync() {
+  public SettableFuture<Track> getAsync() {
     SettableFuture<Track> trackFuture = SettableFuture.create();
 
     try {
@@ -35,7 +35,7 @@ public class TrackRequest extends AbstractRequest {
     return trackFuture;
   }
 
-  public Track getTrack() throws IOException, UnexpectedResponseException {
+  public Track get() throws IOException, UnexpectedResponseException {
     return JsonUtil.createTrack(getJson());
   }
 

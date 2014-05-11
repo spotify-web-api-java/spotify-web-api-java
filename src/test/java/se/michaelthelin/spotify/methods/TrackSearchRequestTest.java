@@ -26,7 +26,7 @@ public class TrackSearchRequestTest {
     final HttpManager mockedHttpManager = TestUtil.MockedHttpManager.returningJson("search-track-page1.json");
     final TrackSearchRequest request = api.searchTracks("Mr. Brightside").httpManager(mockedHttpManager).build();
 
-    SettableFuture<Page<Track>> searchResultFuture = request.getTracksPageAsync();
+    SettableFuture<Page<Track>> searchResultFuture = request.getAsync();
 
     Futures.addCallback(searchResultFuture, new FutureCallback<Page<Track>>() {
       @Override
@@ -55,7 +55,7 @@ public class TrackSearchRequestTest {
     final HttpManager mockedHttpManager = TestUtil.MockedHttpManager.returningJson("search-track-page1.json");
     final TrackSearchRequest request = api.searchTracks("Mr. Brightside").httpManager(mockedHttpManager).build();
 
-    final Page<Track> trackSearchResult = request.getTracksPage();
+    final Page<Track> trackSearchResult = request.get();
 
     final List<Track> tracks = trackSearchResult.getItems();
 

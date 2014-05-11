@@ -22,7 +22,7 @@ public class ArtistsRequest extends AbstractRequest {
     return new Builder();
   }
 
-  public SettableFuture<List<Artist>> getArtistsAsync() {
+  public SettableFuture<List<Artist>> getAsync() {
     SettableFuture<List<Artist>> artistsFuture = SettableFuture.create();
 
     try {
@@ -43,7 +43,7 @@ public class ArtistsRequest extends AbstractRequest {
     return artistsFuture;
   }
 
-  public List<Artist> getArtists() throws IOException, UnexpectedResponseException, NotFoundException, BadFieldException {
+  public List<Artist> get() throws IOException, UnexpectedResponseException, NotFoundException, BadFieldException {
     String jsonString = getJson();
     JSONObject jsonObject = JSONObject.fromObject(jsonString);
     throwIfErrorsInResponse(jsonObject);
@@ -52,7 +52,7 @@ public class ArtistsRequest extends AbstractRequest {
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
-    public Builder id(String... ids) {
+    public Builder id(List<String> ids) {
       assert (ids != null);
       String idsParameter = Joiner.on(",").join(ids).toString();
       path("/v1/artists");
