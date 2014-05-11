@@ -10,6 +10,7 @@ import se.michaelthelin.spotify.Api;
 import se.michaelthelin.spotify.HttpManager;
 import se.michaelthelin.spotify.TestUtil;
 import se.michaelthelin.spotify.models.Album;
+import se.michaelthelin.spotify.models.Page;
 
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
@@ -25,22 +26,22 @@ public class AlbumsForArtistsRequestTest {
   public void shouldGetAlbumResultForArtistId_async() throws Exception {
     final Api api = Api.DEFAULT_API;
 
-    final HttpManager mockedHttpManager = TestUtil.MockedHttpManager.returningJson("albums.json");
-    final AlbumsForArtistRequest request = api.albumsForArtist("53A0W3U0s8diEn9RhXQhVz").httpManager(mockedHttpManager).build();
+    final HttpManager mockedHttpManager = TestUtil.MockedHttpManager.returningJson("search-album.json");
+    final AlbumsForArtistRequest request = api.getAlbumsForArtist("53A0W3U0s8diEn9RhXQhVz").httpManager(mockedHttpManager).build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
-    final SettableFuture<List<Album>> albumsFuture = request.getAlbumsAsync();
+    final SettableFuture<Page<Album>> albumsFuture = request.getAsync();
 
-    Futures.addCallback(albumsFuture, new FutureCallback<List<Album>>() {
+    Futures.addCallback(albumsFuture, new FutureCallback<Page<Album>>() {
       @Override
-      public void onSuccess(List<Album> albums) {
+      public void onSuccess(Page<Album> albumSearchResult) {
+        List<Album> albums = albumSearchResult.getItems();
+
         assertEquals(1, albums.size());
 
         Album firstAlbum = albums.get(0);
-        assertEquals("41MnTivkwTO3UUJ8DrqEJJ", firstAlbum.getId());
-
-        asyncCompleted.countDown();
+        assertEquals("68NlXKRuJ1YqrhIbwe864y", firstAlbum.getId());
       }
 
       @Override
@@ -56,15 +57,17 @@ public class AlbumsForArtistsRequestTest {
   public void shouldGetAlbumResultForArtistId_sync() throws Exception {
     final Api api = Api.DEFAULT_API;
 
-    final HttpManager mockedHttpManager = TestUtil.MockedHttpManager.returningJson("albums.json");
-    final AlbumsForArtistRequest request = api.albumsForArtist("53A0W3U0s8diEn9RhXQhVz").httpManager(mockedHttpManager).build();
+    final HttpManager mockedHttpManager = TestUtil.MockedHttpManager.returningJson("search-album.json");
+    final AlbumsForArtistRequest request = api.getAlbumsForArtist("53A0W3U0s8diEn9RhXQhVz").httpManager(mockedHttpManager).build();
 
-    final List<Album> albums = request.getAlbums();
+    final Page<Album> albumsPage = request.get();
+
+    final List<Album> albums = albumsPage.getItems();
 
     assertEquals(1, albums.size());
 
     final Album firstAlbum = albums.get(0);
-    assertEquals("41MnTivkwTO3UUJ8DrqEJJ", firstAlbum.getId());
+    assertEquals("68NlXKRuJ1YqrhIbwe864y", firstAlbum.getId());
   }
 
 }

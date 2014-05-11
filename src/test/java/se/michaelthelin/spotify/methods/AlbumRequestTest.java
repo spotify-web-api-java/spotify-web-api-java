@@ -26,9 +26,9 @@ public class AlbumRequestTest {
     final Api api = Api.DEFAULT_API;
 
     final HttpManager mockedHttpManager = TestUtil.MockedHttpManager.returningJson("album.json");
-    final AlbumRequest request = api.album().id("7e0ij2fpWaxOEHv5fUYZjd").httpManager(mockedHttpManager).build();
+    final AlbumRequest request = api.getAlbum("7e0ij2fpWaxOEHv5fUYZjd").httpManager(mockedHttpManager).build();
 
-    final SettableFuture<Album> albumFuture = request.getAlbumAsync();
+    final SettableFuture<Album> albumFuture = request.getAsync();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
@@ -55,9 +55,9 @@ public class AlbumRequestTest {
     final Api api = Api.DEFAULT_API;
 
     final HttpManager mockedHttpManager = TestUtil.MockedHttpManager.returningJson("error_id-not-found.json");
-    final AlbumRequest request = api.album().id("7e0ij2fpWaxOEHv5fUYZjd").httpManager(mockedHttpManager).build();
+    final AlbumRequest request = api.getAlbum("7e0ij2fpWaxOEHv5fUYZjd").httpManager(mockedHttpManager).build();
 
-    final SettableFuture<Album> albumFuture = request.getAlbumAsync();
+    final SettableFuture<Album> albumFuture = request.getAsync();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
@@ -83,9 +83,9 @@ public class AlbumRequestTest {
     final Api api = Api.DEFAULT_API;
 
     final HttpManager mockedHttpManager = TestUtil.MockedHttpManager.returningJson("error_bad-field.json");
-    final AlbumRequest request = api.album().id("7e0ij2fpWaxOEHv5fUYZjd").httpManager(mockedHttpManager).build();
+    final AlbumRequest request = api.getAlbum("7e0ij2fpWaxOEHv5fUYZjd").httpManager(mockedHttpManager).build();
 
-    final SettableFuture<Album> albumFuture = request.getAlbumAsync();
+    final SettableFuture<Album> albumFuture = request.getAsync();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
@@ -111,9 +111,9 @@ public class AlbumRequestTest {
     final Api api = Api.DEFAULT_API;
 
     final HttpManager mockedHttpManager = TestUtil.MockedHttpManager.returningJson("album.json");
-    final AlbumRequest request = api.album().id("7e0ij2fpWaxOEHv5fUYZjd").httpManager(mockedHttpManager).build();
+    final AlbumRequest request = api.getAlbum("7e0ij2fpWaxOEHv5fUYZjd").httpManager(mockedHttpManager).build();
 
-    Album album = request.getAlbum();
+    Album album = request.get();
     assertNotNull(album);
     assertEquals("0sNOF9WDwhWunNAHPD3Baj", album.getId());
   }

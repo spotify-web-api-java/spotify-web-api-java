@@ -29,11 +29,11 @@ public class AlbumsRequestTest {
     final Api api = Api.DEFAULT_API;
 
     final HttpManager mockedHttpManager = TestUtil.MockedHttpManager.returningJson("albums.json");
-    final AlbumsRequest request = api.albums().id("41MnTivkwTO3UUJ8DrqEJJ").httpManager(mockedHttpManager).build();
+    final AlbumsRequest request = api.getAlbums("41MnTivkwTO3UUJ8DrqEJJ").httpManager(mockedHttpManager).build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
-    final SettableFuture<List<Album>> albumsFuture = request.getAlbumsAsync();
+    final SettableFuture<List<Album>> albumsFuture = request.getAsync();
     Futures.addCallback(albumsFuture, new FutureCallback<List<Album>>() {
 
       @Override
@@ -60,9 +60,9 @@ public class AlbumsRequestTest {
     final Api api = Api.DEFAULT_API;
 
     final HttpManager mockedHttpManager = TestUtil.MockedHttpManager.returningJson("albums.json");
-    final AlbumsRequest request = api.albums().id("41MnTivkwTO3UUJ8DrqEJJ").httpManager(mockedHttpManager).build();
+    final AlbumsRequest request = api.getAlbums("41MnTivkwTO3UUJ8DrqEJJ").httpManager(mockedHttpManager).build();
 
-    List<Album> albums = request.getAlbums();
+    List<Album> albums = request.get();
 
     assertEquals(1, albums.size());
 
@@ -75,11 +75,11 @@ public class AlbumsRequestTest {
     final Api api = Api.DEFAULT_API;
 
     final HttpManager mockedHttpManager = TestUtil.MockedHttpManager.returningJson("error_bad-field.json");
-    final AlbumsRequest request = api.albums().id("41MnTivkwTO3UUJ8DrqEJJ").httpManager(mockedHttpManager).build();
+    final AlbumsRequest request = api.getAlbums("41MnTivkwTO3UUJ8DrqEJJ").httpManager(mockedHttpManager).build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
-    final SettableFuture<List<Album>> albumFuture = request.getAlbumsAsync();
+    final SettableFuture<List<Album>> albumFuture = request.getAsync();
 
     Futures.addCallback(albumFuture, new FutureCallback<List<Album>>() {
       @Override
@@ -103,11 +103,11 @@ public class AlbumsRequestTest {
     final Api api = Api.DEFAULT_API;
 
     final HttpManager mockedHttpManager = TestUtil.MockedHttpManager.returningJson("error_id-not-found.json");
-    final AlbumsRequest request = api.albums().id("41MnTivkwTO3UUJ8DrqEJJ").httpManager(mockedHttpManager).build();
+    final AlbumsRequest request = api.getAlbums("41MnTivkwTO3UUJ8DrqEJJ").httpManager(mockedHttpManager).build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
-    final SettableFuture<List<Album>> albumFuture = request.getAlbumsAsync();
+    final SettableFuture<List<Album>> albumFuture = request.getAsync();
 
     Futures.addCallback(albumFuture, new FutureCallback<List<Album>>() {
       @Override

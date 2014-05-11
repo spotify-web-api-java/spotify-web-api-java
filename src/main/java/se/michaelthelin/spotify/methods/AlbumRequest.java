@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.methods;
 
-import com.google.common.base.Joiner;
 import com.google.common.util.concurrent.SettableFuture;
 import net.sf.json.JSONObject;
 import se.michaelthelin.spotify.JsonUtil;
@@ -8,7 +7,6 @@ import se.michaelthelin.spotify.exceptions.BadFieldException;
 import se.michaelthelin.spotify.exceptions.NotFoundException;
 import se.michaelthelin.spotify.exceptions.UnexpectedResponseException;
 import se.michaelthelin.spotify.models.Album;
-import se.michaelthelin.spotify.models.AlbumType;
 
 import java.io.IOException;
 
@@ -18,7 +16,7 @@ public class AlbumRequest extends AbstractRequest {
     super(builder);
   }
 
-  public SettableFuture<Album> getAlbumAsync() {
+  public SettableFuture<Album> getAsync() {
     SettableFuture<Album> albumFuture = SettableFuture.create();
 
     try {
@@ -39,7 +37,7 @@ public class AlbumRequest extends AbstractRequest {
     return albumFuture;
   }
 
-  public Album getAlbum() throws IOException, UnexpectedResponseException, NotFoundException, BadFieldException {
+  public Album get() throws IOException, UnexpectedResponseException, NotFoundException, BadFieldException {
     String jsonString = getJson();
     JSONObject jsonObject = JSONObject.fromObject(jsonString);
     throwIfErrorsInResponse(jsonObject);
@@ -62,14 +60,6 @@ public class AlbumRequest extends AbstractRequest {
       assert (id != null);
       return path(String.format("/v1/albums/%s", id));
     }
-
-    public Builder types(AlbumType... types) {
-      assert (types != null);
-      assert (types.length > 0);
-      String albumsParameter = Joiner.on(",").join(types).toString();
-      return parameter("album_type", albumsParameter);
-    }
-
 
     public AlbumRequest build() {
       return new AlbumRequest(this);

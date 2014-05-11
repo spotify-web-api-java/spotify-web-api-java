@@ -3,6 +3,9 @@ package se.michaelthelin.spotify;
 import se.michaelthelin.spotify.UtilProtos.Url.Scheme;
 import se.michaelthelin.spotify.methods.*;
 
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * Instances of the Api class provide access to the Spotify Web API.
  */
@@ -62,19 +65,25 @@ public class Api {
    * @param id The base62 id of the album you're trying to retrieve.
    * @return An {AlbumRequest.Builder} instance.
    */
-  public AlbumRequest.Builder album() {
+  public AlbumRequest.Builder getAlbum(String id) {
     AlbumRequest.Builder builder = AlbumRequest.builder();
     setDefaults(builder);
+    builder.id(id);
     return builder;
   }
 
-  public AlbumsRequest.Builder albums() {
+  public AlbumsRequest.Builder getAlbums(String... ids) {
+    return getAlbums(Arrays.asList(ids));
+  }
+
+  public AlbumsRequest.Builder getAlbums(List<String> ids) {
     AlbumsRequest.Builder builder = AlbumsRequest.builder();
     setDefaults(builder);
+    builder.id(ids);
     return builder;
   }
 
-  public AlbumsForArtistRequest.Builder albumsForArtist(String artistId) {
+  public AlbumsForArtistRequest.Builder getAlbumsForArtist(String artistId) {
     AlbumsForArtistRequest.Builder builder = AlbumsForArtistRequest.builder();
     setDefaults(builder);
     builder.forArtist(artistId);

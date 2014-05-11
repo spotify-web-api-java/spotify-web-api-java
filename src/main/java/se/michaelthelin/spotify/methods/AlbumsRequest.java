@@ -18,7 +18,7 @@ public class AlbumsRequest extends AbstractRequest {
     super(builder);
   }
 
-  public SettableFuture<List<Album>> getAlbumsAsync() {
+  public SettableFuture<List<Album>> getAsync() {
     SettableFuture<List<Album>> albumsFuture = SettableFuture.create();
 
     try {
@@ -39,7 +39,7 @@ public class AlbumsRequest extends AbstractRequest {
     return albumsFuture;
   }
 
-  public List<Album> getAlbums() throws IOException, UnexpectedResponseException, NotFoundException, BadFieldException {
+  public List<Album> get() throws IOException, UnexpectedResponseException, NotFoundException, BadFieldException {
     String jsonString = getJson();
     JSONObject jsonObject = JSONObject.fromObject(jsonString);
     throwIfErrorsInResponse(jsonObject);
@@ -58,7 +58,7 @@ public class AlbumsRequest extends AbstractRequest {
      * @param ids The ids for the albums.
      * @return AlbumRequest
      */
-    public Builder id(String... ids) {
+    public Builder id(List<String> ids) {
       assert (ids != null);
       String idsParameter = Joiner.on(",").join(ids).toString();
       path("/v1/albums");
