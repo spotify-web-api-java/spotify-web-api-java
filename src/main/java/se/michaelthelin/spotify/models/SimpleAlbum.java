@@ -1,12 +1,14 @@
 package se.michaelthelin.spotify.models;
 
+import java.util.List;
+
 public class SimpleAlbum {
 
   private AlbumType albumType;
   private ExternalUrls externalUrls;
   private String href;
   private String id;
-  private Image images;
+  private List<Image> images;
   private String name;
   private SpotifyEntityType type = SpotifyEntityType.ALBUM;
   private String uri;
@@ -43,11 +45,11 @@ public class SimpleAlbum {
     this.id = id;
   }
 
-  public Image getImages() {
+  public List<Image> getImages() {
     return images;
   }
 
-  public void setImages(Image images) {
+  public void setImages(List<Image> images) {
     this.images = images;
   }
 

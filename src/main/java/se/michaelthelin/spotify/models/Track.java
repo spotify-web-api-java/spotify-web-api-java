@@ -116,4 +116,36 @@ public class Track {
   public void setPopularity(int popularity) {
     this.popularity = popularity;
   }
+
+  public String getPreviewUrl() {
+    return previewUrl;
+  }
+
+  public void setPreviewUrl(String previewUrl) {
+    this.previewUrl = previewUrl;
+  }
+
+  public int getTrackNumber() {
+    return trackNumber;
+  }
+
+  public void setTrackNumber(int trackNumber) {
+    this.trackNumber = trackNumber;
+  }
+
+  public SpotifyEntityType getType() {
+    return type;
+  }
+
+  public void setType(SpotifyEntityType type) {
+    this.type = type;
+  }
+
+  public String getUri() {
+    return uri;
+  }
+
+  public void setUri(String uri) {
+    this.uri = uri;
+  }
 }

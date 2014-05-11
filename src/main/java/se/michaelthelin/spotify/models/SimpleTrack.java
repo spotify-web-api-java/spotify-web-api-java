@@ -13,7 +13,7 @@ public class SimpleTrack {
   private String id;
   private String name;
   private String previewUrl;
-  private int track_number;
+  private int trackNumber;
   private SpotifyEntityType type = SpotifyEntityType.TRACK;
   private String uri;
 
@@ -89,12 +89,12 @@ public class SimpleTrack {
     this.previewUrl = previewUrl;
   }
 
-  public int getTrack_number() {
-    return track_number;
+  public int getTrackNumber() {
+    return trackNumber;
   }
 
-  public void setTrack_number(int track_number) {
-    this.track_number = track_number;
+  public void setTrackNumber(int trackNumber) {
+    this.trackNumber = trackNumber;
   }
 
   public SpotifyEntityType getType() {

@@ -5,8 +5,7 @@ import se.michaelthelin.spotify.methods.Request;
 import se.michaelthelin.spotify.UtilProtos.Url.Scheme;
 import se.michaelthelin.spotify.UtilProtos.Url.Parameter;
 import se.michaelthelin.spotify.UtilProtos.Url;
-import static se.michaelthelin.spotify.SpotifyProtos.AlbumType.ALBUM;
-import static se.michaelthelin.spotify.SpotifyProtos.AlbumType.SINGLE;
+import se.michaelthelin.spotify.models.AlbumType;
 
 import static junit.framework.TestCase.assertEquals;
 import static org.junit.Assert.fail;
@@ -60,7 +59,7 @@ public class ApiTest {
   @Test
   public void shouldHaveAlbumTypeParametersInArtistsAlbumUrl() {
     Api api = Api.DEFAULT_API;
-    Request request = api.albums().forArtist("4AK6F7OLvEQ5QYCBNiQWHq").types(ALBUM, SINGLE).build();
+    Request request = api.albums().forArtist("4AK6F7OLvEQ5QYCBNiQWHq").types(AlbumType.ALBUM, AlbumType.SINGLE).build();
     assertEquals("https://api.spotify.com:443/v1/artists/4AK6F7OLvEQ5QYCBNiQWHq/albums", request.toString());
     assertHasParameter(request.toUrl(), "album_type", "ALBUM,SINGLE");
   }
@@ -84,7 +83,7 @@ public class ApiTest {
   @Test
   public void shouldHaveSeveralQueryParametersAtTheSameTimeInArtistsAlbumUrl() {
     Api api = Api.DEFAULT_API;
-    Request request = api.albums().forArtist("4AK6F7OLvEQ5QYCBNiQWHq").types(SINGLE).limit(2).offset(5).build();
+    Request request = api.albums().forArtist("4AK6F7OLvEQ5QYCBNiQWHq").types(AlbumType.SINGLE).limit(2).offset(5).build();
     assertEquals("https://api.spotify.com:443/v1/artists/4AK6F7OLvEQ5QYCBNiQWHq/albums", request.toString());
     assertHasParameter(request.toUrl(), "offset", "5");
     assertHasParameter(request.toUrl(), "limit", "2");

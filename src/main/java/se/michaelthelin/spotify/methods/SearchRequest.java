@@ -22,7 +22,7 @@ public class SearchRequest extends AbstractRequest {
     try {
       String jsonString = getJson();
       JSONObject jsonObject = JSONObject.fromObject(jsonString);
-      searchResultFuture.set(JsonUtil.createAlbumSearchResult(jsonObject));
+      searchResultFuture.set(JsonUtil.createAlbumPage(jsonObject));
     } catch (IOException e) {
       searchResultFuture.setException(e);
     } catch (UnexpectedResponseException e) {
@@ -65,7 +65,7 @@ public class SearchRequest extends AbstractRequest {
   }
 
   public AlbumSearchResult getAlbums() throws IOException, UnexpectedResponseException {
-    return JsonUtil.createAlbumSearchResult(getJson());
+    return JsonUtil.createAlbumPage(getJson());
   }
 
   public TrackSearchResult getTracks() throws IOException, UnexpectedResponseException {

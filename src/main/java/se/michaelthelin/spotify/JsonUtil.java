@@ -2,32 +2,13 @@ package se.michaelthelin.spotify;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
-import se.michaelthelin.spotify.SpotifyProtos.Artist;
-import se.michaelthelin.spotify.SpotifyProtos.Album;
-import se.michaelthelin.spotify.SpotifyProtos.AlbumType;
-import se.michaelthelin.spotify.SpotifyProtos.Image;
-import se.michaelthelin.spotify.SpotifyProtos.SimpleArtist;
-import se.michaelthelin.spotify.SpotifyProtos.SimpleAlbum;
-import se.michaelthelin.spotify.SpotifyProtos.Track;
-import se.michaelthelin.spotify.SpotifyProtos.ExternalId;
-import se.michaelthelin.spotify.SpotifyProtos.AlbumSearchResult;
-import se.michaelthelin.spotify.SpotifyProtos.TrackSearchResult;
-import se.michaelthelin.spotify.SpotifyProtos.ArtistSearchResult;
-import se.michaelthelin.spotify.SpotifyProtos.PagingInformation;
-
+import se.michaelthelin.spotify.models.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class JsonUtil {
-
-  private static Image newImage(JSONObject jsonObject) {
-    Image.Builder builder = Image.newBuilder();
-    builder.setHeight(jsonObject.getInt("height"));
-    builder.setImageUrl(jsonObject.getString("image_url"));
-    builder.setWidth(jsonObject.getInt("width"));
-    return builder.build();
-  }
 
   public static List<Artist> createArtists(String json) {
     return createArtists(JSONObject.fromObject(json));
@@ -50,119 +31,188 @@ public class JsonUtil {
     if (jsonObject == null || jsonObject.isNullObject()) {
       return null;
     }
-    Artist.Builder artistBuilder = Artist.newBuilder();
 
-    artistBuilder.setApiLink(jsonObject.getString("api_link"));
+    Artist artist = new Artist();
 
-    JSONArray apiLinkArray = jsonObject.getJSONArray("genres");
-    for (int i = 0; i < apiLinkArray.size(); i++) {
-      artistBuilder.addGenres(apiLinkArray.getString(i));
+    artist.setExternalUrls(createExternalUrls(jsonObject.getJSONObject("external_urls")));
+    artist.setGenres(createGenres(jsonObject.getJSONArray("genres")));
+    artist.setHref(jsonObject.getString("href"));
+    artist.setId(jsonObject.getString("id"));
+    artist.setImages(createImages(jsonObject.getJSONArray("images")));
+    artist.setName(jsonObject.getString("name"));
+    artist.setPopularity(jsonObject.getInt("popularity"));
+    artist.setType(createSpotifyEntityType(jsonObject.getString("type")));
+    artist.setUri(jsonObject.getString("uri"));
+
+    return artist;
+  }
+
+  public static SpotifyEntityType createSpotifyEntityType(String type) {
+    return SpotifyEntityType.valueOf(type);
+  }
+
+  public static ExternalUrls createExternalUrls(JSONObject externalUrls) {
+    ExternalUrls returnedExternalUrls = new ExternalUrls();
+    Map<String,String> addedExternalUrls = returnedExternalUrls.getExternalUrls();
+    for (Object keyObject : externalUrls.keySet()) {
+      String key = (String) keyObject;
+      addedExternalUrls.put(key, externalUrls.getString(key));
     }
+    return returnedExternalUrls;
+  }
 
-    artistBuilder.setId(jsonObject.getString("id"));
-
-    Artist.Images.Builder artistImagesBuilder = Artist.Images.newBuilder();
-    JSONObject imagesJsonObject = jsonObject.getJSONObject("images");
-
-    JSONObject smallImageJsonObject = imagesJsonObject.getJSONObject("SMALL");
-    Image smallImage = newImage(smallImageJsonObject);
-    artistImagesBuilder.setSMALL(smallImage);
-
-    JSONObject mediumImageJsonObject = imagesJsonObject.getJSONObject("MEDIUM");
-    Image mediumImage = newImage(mediumImageJsonObject);
-    artistImagesBuilder.setMEDIUM(mediumImage);
-
-    JSONObject largeImageJsonObject = imagesJsonObject.getJSONObject("LARGE");
-    Image largeImage = newImage(largeImageJsonObject);
-    artistImagesBuilder.setLARGE(largeImage);
-
-    JSONObject xLargeImageJsonObject = imagesJsonObject.getJSONObject("XLARGE");
-    if (!xLargeImageJsonObject.isNullObject()) {
-      Image xLargeImage = newImage(xLargeImageJsonObject);
-      artistImagesBuilder.setXLARGE(xLargeImage);
+  public static List<Image> createImages(JSONArray images) {
+    List<Image> returnedImages = new ArrayList<Image>();
+    for (int i = 0; i < images.size(); i++) {
+      returnedImages.add(createImage(images.getJSONObject(i)));
     }
+    return returnedImages;
+  }
 
-    artistBuilder.setImages(artistImagesBuilder.build());
+  private static Image createImage(JSONObject image) {
+    Image returnedImage = new Image();
+    returnedImage.setHeight(image.getInt(("height")));
+    returnedImage.setWidth(image.getInt(("width")));
+    returnedImage.setUrl(image.getString("url"));
+    return returnedImage;
+  }
 
-    artistBuilder.setLink(jsonObject.getString("link"));
-    artistBuilder.setName(jsonObject.getString("name"));
-    artistBuilder.setPopularity(jsonObject.getInt("popularity"));
-    artistBuilder.setSpotifyUri(jsonObject.getString("spotify_uri"));
-    artistBuilder.setType(jsonObject.getString("type"));
-
-    return artistBuilder.build();
+  public static List<String> createGenres(JSONArray genres) {
+    List<String> returnedGenres = new ArrayList<String>();
+    for (int i = 0; i < genres.size(); i++) {
+      genres.add(genres.getString(i));
+    }
+    return returnedGenres;
   }
 
   public static Album createAlbum(String json) {
     return createAlbum(JSONObject.fromObject(json));
   }
 
-  private static Album createAlbum(JSONObject jsonObject) {
-    if (jsonObject == null || jsonObject.isNullObject()) {
+  private static Album createAlbum(JSONObject albumJson) {
+    if (albumJson == null || albumJson.isNullObject()) {
       return null;
     }
-    Album.Builder albumBuilder = Album.newBuilder();
 
-    albumBuilder.setAlbumType(AlbumType.valueOf(jsonObject.getString("album_type")));
-    albumBuilder.setApiLink(jsonObject.getString("api_link"));
+    Album album = new Album();
 
-    JSONArray artistsJsonArray = jsonObject.getJSONArray("artists");
-    for (int i = 0; i < artistsJsonArray.size(); i++) {
-      albumBuilder.addArtists(createSimpleArtist(artistsJsonArray.getJSONObject(i)));
-    }
+    album.setAlbumType(createAlbumType(albumJson.getString("album_type")));
+    album.setArtists(createSimpleArtists(albumJson.getJSONArray("artists")));
+    album.setAvailableMarkets(createAvailableMarkets(albumJson.getJSONArray("available_markets")));
+    album.setExternalIds(createExternalIds(albumJson.getJSONObject("external_ids")));
+    album.setExternalUrls(createExternalUrls(albumJson.getJSONObject("external_urls")));
+    album.setGenres(createGenres(albumJson.getJSONArray("genres")));
+    album.setHref(albumJson.getString("href"));
+    album.setId(albumJson.getString("id"));
+    album.setImages(createImages(albumJson.getJSONArray("images")));
+    album.setName(albumJson.getString("name"));
+    album.setPopularity(albumJson.getInt("popularity"));
+    album.setReleaseDate(createReleaseDate(albumJson.getJSONObject("release_date")));
+    album.setTracks(createSimpleTracks(albumJson.getJSONArray("tracks")));
+    album.setType(createSpotifyEntityType(albumJson.getString("type")));
+    album.setUri(albumJson.getString("uri"));
 
-    albumBuilder.setId(jsonObject.getString("id"));
-    albumBuilder.setLink(jsonObject.getString("link"));
-    albumBuilder.setName(jsonObject.getString("name"));
-    albumBuilder.setPopularity(jsonObject.getInt("popularity"));
-    albumBuilder.setReleaseYear(jsonObject.getInt("release_year"));
-    albumBuilder.setSpotifyUri(jsonObject.getString("spotify_uri"));
-    albumBuilder.setType(jsonObject.getString("type"));
-
-    return albumBuilder.build();
+    return album;
   }
 
-  private static SimpleAlbum createSimpleAlbum(JSONObject jsonObject) {
-    if (jsonObject == null || jsonObject.isNullObject()) {
+  public static List<SimpleTrack> createSimpleTracks(JSONArray tracksJson) {
+    List<SimpleTrack> tracks = new ArrayList<SimpleTrack>();
+    for (int i = 0; i < tracksJson.size(); i++) {
+      tracks.add(createSimpleTrack(tracksJson.getJSONObject(i)));
+    }
+    return tracks;
+  }
+
+  public static SimpleTrack createSimpleTrack(JSONObject simpleTrackJson) {
+    SimpleTrack track = new SimpleTrack();
+
+    track.setArtists(createSimpleArtists(simpleTrackJson.getJSONArray("artists")));
+    track.setDiscNumber(simpleTrackJson.getInt("disc_number"));
+    track.setDuration(simpleTrackJson.getInt("duration"));
+    track.setExplicit(simpleTrackJson.getBoolean("explicit"));
+    track.setExternalUrls(createExternalUrls(simpleTrackJson.getJSONObject("externalUrls")));
+    track.setHref(simpleTrackJson.getString("href"));
+    track.setId(simpleTrackJson.getString("id"));
+    track.setName(simpleTrackJson.getString("name"));
+    track.setPreviewUrl(simpleTrackJson.getString("preview_url"));
+    track.setTrackNumber(simpleTrackJson.getInt("track_number"));
+    track.setType(createSpotifyEntityType(simpleTrackJson.getString("type")));
+    track.setUri(simpleTrackJson.getString("uri"));
+
+    return track;
+  }
+
+  public static ReleaseDate createReleaseDate(JSONObject releaseDateJson) {
+    ReleaseDate releaseDate = new ReleaseDate();
+
+    releaseDate.setYear(releaseDateJson.getInt("year"));
+    releaseDate.setMonth(releaseDateJson.getInt("month"));
+    releaseDate.setDate(releaseDateJson.getInt("date"));
+
+    return releaseDate;
+  }
+
+  public static List<String> createAvailableMarkets(JSONArray availableMarketsJson) {
+    List<String> availableMarkets = new ArrayList<String>();
+    for (int i = 0; i < availableMarketsJson.size(); i++) {
+      availableMarkets.add(availableMarketsJson.getString(i));
+    }
+    return availableMarkets;
+  }
+
+  public static AlbumType createAlbumType(String albumType) {
+    return AlbumType.valueOf(albumType);
+  }
+
+  public  static SimpleAlbum createSimpleAlbum(JSONObject simpleAlbumJson) {
+    if (simpleAlbumJson == null || simpleAlbumJson.isNullObject()) {
       return null;
     }
-    SimpleAlbum.Builder albumBuilder = SimpleAlbum.newBuilder();
 
-    albumBuilder.setApiLink(jsonObject.getString("api_link"));
-    albumBuilder.setId(jsonObject.getString("id"));
-    albumBuilder.setName(jsonObject.getString("name"));
-    albumBuilder.setSpotifyUri("spotify_uri");
-    albumBuilder.setType("album");
+    SimpleAlbum simpleAlbum = new SimpleAlbum();
 
-    return albumBuilder.build();
+    simpleAlbum.setAlbumType(createAlbumType(simpleAlbumJson.getString("album_type")));
+    simpleAlbum.setExternalUrls(createExternalUrls(simpleAlbumJson.getJSONObject("external_urls")));
+    simpleAlbum.setHref(simpleAlbumJson.getString("href"));
+    simpleAlbum.setId(simpleAlbumJson.getString("id"));
+    simpleAlbum.setImages(createImages(simpleAlbumJson.getJSONArray("images")));
+    simpleAlbum.setName(simpleAlbumJson.getString("name"));
+    simpleAlbum.setType(createSpotifyEntityType(simpleAlbumJson.getString("type")));
+    simpleAlbum.setUri(simpleAlbumJson.getString("type"));
+
+    return simpleAlbum;
   }
 
   public static List<Album> createAlbums(String json) {
-    return createAlbums(JSONObject.fromObject(json));
+    JSONObject jsonObject = JSONObject.fromObject(json);
+    JSONArray albumsJsonArray = jsonObject.getJSONArray("albums");
+    return createAlbums(albumsJsonArray);
+
   }
 
-  private static List<Album> createAlbums(JSONObject jsonObject) {
+  public static List<Album> createAlbums(JSONArray jsonArray) {
     List<Album> returnedAlbums = new ArrayList<Album>();
-    JSONArray albumsJsonArray = jsonObject.getJSONArray("albums");
-    for (int i = 0; i < albumsJsonArray.size(); i++) {
-      returnedAlbums.add(createAlbum(albumsJsonArray.getJSONObject(i)));
+    for (int i = 0; i < jsonArray.size(); i++) {
+      returnedAlbums.add(createAlbum(jsonArray.getJSONObject(i)));
     }
     return returnedAlbums;
   }
 
-  private static SimpleArtist createSimpleArtist(JSONObject jsonObject) {
-    if (jsonObject == null || jsonObject.isNullObject()) {
+  public static SimpleArtist createSimpleArtist(JSONObject simpleArtistJson) {
+    if (simpleArtistJson == null || simpleArtistJson.isNullObject()) {
       return null;
     }
-    SimpleArtist.Builder artistBuilder = SimpleArtist.newBuilder();
 
-    artistBuilder.setApiLink(jsonObject.getString("api_link"));
-    artistBuilder.setId(jsonObject.getString("id"));
-    artistBuilder.setName(jsonObject.getString("name"));
-    artistBuilder.setSpotifyUri(jsonObject.getString("spotify_uri"));
-    artistBuilder.setType(jsonObject.getString("type"));
+    SimpleArtist simpleArtist = new SimpleArtist();
 
-    return artistBuilder.build();
+    simpleArtist.setExternalUrls(createExternalUrls(simpleArtistJson.getJSONObject("external_urls")));
+    simpleArtist.setHref(simpleArtistJson.getString("href"));
+    simpleArtist.setId(simpleArtistJson.getString("id"));
+    simpleArtist.setName(simpleArtistJson.getString("name"));
+    simpleArtist.setType(createSpotifyEntityType(simpleArtistJson.getString("type")));
+    simpleArtist.setUri(simpleArtistJson.getString("uri"));
+
+    return simpleArtist;
   }
 
   private static List<SimpleArtist> createSimpleArtists(JSONArray artists) {
@@ -173,44 +223,39 @@ public class JsonUtil {
     return returnedArtists;
   }
 
-  public static Track createTrack(String json) {
-    return createTrack(JSONObject.fromObject(json));
+  public static Track createTrack(String trackJson) {
+    return createTrack(JSONObject.fromObject(trackJson));
   }
 
-  private static Track createTrack(JSONObject jsonObject) {
-    Track.Builder trackBuilder = Track.newBuilder();
+  private static Track createTrack(JSONObject trackJson) {
 
-    SimpleAlbum album = createSimpleAlbum(jsonObject.getJSONObject("album"));
-    trackBuilder.setAlbum(album);
+    Track track = new Track();
 
-    trackBuilder.setApiLink(jsonObject.getString("api_link"));
+    track.setAlbum(createSimpleAlbum(trackJson.getJSONObject("album")));
+    track.setArtists(createSimpleArtists(trackJson.getJSONArray("artists")));
+    track.setAvailableMarkets(createAvailableMarkets(trackJson.getJSONArray("available_markets")));
+    track.setDiscNumber(trackJson.getInt("disc_number"));
+    track.setDuration(trackJson.getInt("duration"));
+    track.setExplicit(trackJson.getBoolean("explicit"));
+    track.setExternalIds(createExternalIds(trackJson.getJSONObject("external_ids")));
+    track.setExternalUrls(createExternalUrls(trackJson.getJSONObject("external_urls")));
+    track.setHref(trackJson.getString("href"));
+    track.setId(trackJson.getString("id"));
+    track.setName(trackJson.getString("name"));
+    track.setPopularity(trackJson.getInt("popularity"));
+    track.setPreviewUrl(trackJson.getString("preview_url"));
+    track.setTrackNumber(trackJson.getInt(("track_number")));
+    track.setType(createSpotifyEntityType(trackJson.getString("type")));
+    track.setUri(trackJson.getString("uri"));
 
-    List<SimpleArtist> simpleArtists = createSimpleArtists(jsonObject.getJSONArray("artists"));
-    trackBuilder.addAllArtists(simpleArtists);
-
-    trackBuilder.addAllAvailableMarkets(jsonObject.getJSONArray("available_markets"));
-
-    trackBuilder.setDiscNumber(jsonObject.getInt("disc_number"));
-    trackBuilder.setDurationMs(jsonObject.getInt("duration_ms"));
-    trackBuilder.setExplicit(jsonObject.getBoolean("explicit"));
-    trackBuilder.addAllExternalIds(createExternalIds(jsonObject.getJSONArray("external_ids")));
-    trackBuilder.setId(jsonObject.getString("id"));
-    trackBuilder.setLink(jsonObject.getString("link"));
-    trackBuilder.setName(jsonObject.getString("name"));
-    trackBuilder.setPopularity(jsonObject.getInt("popularity"));
-    trackBuilder.setPreviewUrl(jsonObject.getString("preview_url"));
-    trackBuilder.setSpotifyUrl(jsonObject.getString("spotify_uri"));
-    trackBuilder.setTrackNumber(jsonObject.getInt("track_number"));
-    trackBuilder.setType(jsonObject.getString("type"));
-
-    return trackBuilder.build();
+    return track;
   }
 
   public static List<Track> createTracks(String json) {
     return createTracks(JSONObject.fromObject(json));
   }
 
-  private static List<Track> createTracks(JSONObject jsonObject) {
+  public static List<Track> createTracks(JSONObject jsonObject) {
     List<Track> returnedTracks = new ArrayList<Track>();
     JSONArray tracks = jsonObject.getJSONArray("tracks");
     for (int i = 0; i < tracks.size(); i++) {
@@ -219,77 +264,58 @@ public class JsonUtil {
     return returnedTracks;
   }
 
-  private static List<ExternalId> createExternalIds(JSONArray externalIds) {
-    List<ExternalId> returnedExternalIds = new ArrayList<ExternalId>();
-    for (int i = 0; i < externalIds.size(); i++) {
-      returnedExternalIds.add(createExternalId(externalIds.getJSONObject(i)));
+  public static ExternalIds createExternalIds(JSONObject externalIds) {
+    ExternalIds returnedExternalIds = new ExternalIds();
+    Map<String,String> addedIds = returnedExternalIds.getExternalIds();
+
+    for (Object keyObject : externalIds.keySet()) {
+      String key = (String) keyObject;
+      addedIds.put(key, externalIds.getString(key));
     }
+
     return returnedExternalIds;
   }
 
-  private static ExternalId createExternalId(JSONObject externalId) {
-    ExternalId.Builder builder = ExternalId.newBuilder();
-    builder.setId(externalId.getString("id"));
-    builder.setType(externalId.getString("type"));
-    return builder.build();
+  public static Page<Album> createAlbumPage(String albumPageJson) {
+    return createAlbumPage(JSONObject.fromObject(albumPageJson));
   }
 
-  public static AlbumSearchResult createAlbumSearchResult(String json) {
-    return createAlbumSearchResult(JSONObject.fromObject(json));
+  public static Page<Album> createAlbumPage(JSONObject albumPageJson) {
+    Page page = createItemlessPage(albumPageJson);
+    page.setItems(createAlbums(albumPageJson.getJSONArray("items")));
+    return page;
   }
 
-  public static AlbumSearchResult createAlbumSearchResult(JSONObject jsonObject) {
-    AlbumSearchResult.Builder builder = AlbumSearchResult.newBuilder();
-
-    JSONArray albumsJsonArray = jsonObject.getJSONArray("albums");
-    for (int i = 0; i < albumsJsonArray.size(); i++) {
-      builder.addAlbums(createAlbum(albumsJsonArray.getJSONObject(i)));
-    }
-
-    builder.setPaging(createPagingInformation(jsonObject.getJSONObject("paging")));
-
-    return builder.build();
+  private static Page<Album> createItemlessPage(JSONObject pageJson) {
+    Page page = new Page();
+    page.setHref(pageJson.getString("href"));
+    page.setLimit(pageJson.getInt("limit"));
+    page.setNext(pageJson.getString("next"));
+    page.setOffset(pageJson.getInt("offset"));
+    page.setPrevious(pageJson.getString("previous"));
+    page.setTotal(pageJson.getInt("total"));
+    return page;
   }
 
-  public static TrackSearchResult createTrackSearchResult(String json) {
-    return createTrackSearchResult(JSONObject.fromObject(json));
+  public static Page<Track> createTrackPage(String trackPageJson) {
+    return createTrackPage(JSONObject.fromObject(trackPageJson));
   }
 
-  public static TrackSearchResult createTrackSearchResult(JSONObject jsonObject) {
-    TrackSearchResult.Builder builder = TrackSearchResult.newBuilder();
-
-    JSONArray trackJsonArray = jsonObject.getJSONArray("tracks");
-    for (int i = 0; i < trackJsonArray.size(); i++) {
-      builder.addTracks(createTrack(trackJsonArray.getJSONObject(i)));
-    }
-
-    builder.setPaging(createPagingInformation(jsonObject.getJSONObject("paging")));
-
-    return builder.build();
+  public static Page<Track> createTrackPage(JSONObject trackPageJson) {
+    Page page = createItemlessPage(trackPageJson);
+    page.setItems(createTracks(trackPageJson));
+    return page;
   }
 
-  public static ArtistSearchResult createArtistSearchResult(String json) {
-    return createArtistSearchResult(JSONObject.fromObject(json));
+  public static Page<Artist> createArtistPage(String artistPageJson) {
+    return createArtistPage(JSONObject.fromObject(artistPageJson));
   }
 
-  public static ArtistSearchResult createArtistSearchResult(JSONObject jsonObject) {
-    ArtistSearchResult.Builder builder = ArtistSearchResult.newBuilder();
-
-    JSONArray artistsJsonArray = jsonObject.getJSONArray("artists");
-    for (int i = 0; i < artistsJsonArray.size(); i++) {
-      builder.addArtists(createArtist(artistsJsonArray.getJSONObject(i)));
-    }
-
-    builder.setPaging(createPagingInformation(jsonObject.getJSONObject("paging")));
-
-    return builder.build();
+  public static Page<Artist> createArtistPage(JSONObject artistPageJson) {
+    Page page = createItemlessPage(artistPageJson);
+    page.setItems(createArtists(artistPageJson));
+    return page;
   }
 
-  public static PagingInformation createPagingInformation(JSONObject jsonObject) {
-    PagingInformation.Builder builder = PagingInformation.newBuilder();
-    builder.setNext(jsonObject.getString("next"));
-    builder.setPrevious(jsonObject.getString("previous"));
-    builder.setTotalResultCount(jsonObject.getInt("total_result_count"));
-    return builder.build();
-  }
+
 }
