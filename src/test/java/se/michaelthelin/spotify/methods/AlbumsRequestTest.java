@@ -9,16 +9,18 @@ import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 import se.michaelthelin.spotify.Api;
 import se.michaelthelin.spotify.HttpManager;
+import se.michaelthelin.spotify.TestConfiguration;
 import se.michaelthelin.spotify.TestUtil;
 import se.michaelthelin.spotify.exceptions.BadFieldException;
 import se.michaelthelin.spotify.exceptions.NotFoundException;
-import se.michaelthelin.spotify.models.Album;
+import se.michaelthelin.spotify.models.*;
 
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
 import static junit.framework.Assert.assertEquals;
+import static junit.framework.TestCase.assertTrue;
 import static junit.framework.TestCase.fail;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -28,8 +30,11 @@ public class AlbumsRequestTest {
   public void shouldGetAlbumResultForIds_async() throws Exception {
     final Api api = Api.DEFAULT_API;
 
-    final HttpManager mockedHttpManager = TestUtil.MockedHttpManager.returningJson("albums.json");
-    final AlbumsRequest request = api.getAlbums("41MnTivkwTO3UUJ8DrqEJJ").httpManager(mockedHttpManager).build();
+    final AlbumsRequest.Builder requestBuilder = api.getAlbums("41MnTivkwTO3UUJ8DrqEJJ");
+    if (TestConfiguration.USE_MOCK_RESPONSES) {
+      requestBuilder.httpManager(TestUtil.MockedHttpManager.returningJson("albums.json"));
+    }
+    final AlbumsRequest request = requestBuilder.build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
@@ -42,6 +47,22 @@ public class AlbumsRequestTest {
 
         Album firstAlbum = albums.get(0);
         assertEquals("41MnTivkwTO3UUJ8DrqEJJ", firstAlbum.getId());
+        assertEquals(AlbumType.ALBUM, firstAlbum.getAlbumType());
+        assertTrue(firstAlbum.getReleaseDate().getDate().equals(8));
+        assertTrue(firstAlbum.getReleaseDate().getMonth().equals(11));
+        assertEquals(2013, firstAlbum.getReleaseDate().getYear());
+
+        List<SimpleArtist> artists = firstAlbum.getArtists();
+        SimpleArtist firstArtist = artists.get(0);
+        assertEquals("https://api.spotify.com/v1/artists/53A0W3U0s8diEn9RhXQhVz", firstArtist.getHref());
+        assertEquals("53A0W3U0s8diEn9RhXQhVz", firstArtist.getId());
+
+        Page<SimpleTrack> tracksPage = firstAlbum.getTracks();
+        assertEquals("https://api.spotify.com/v1/albums/41MnTivkwTO3UUJ8DrqEJJ/tracks?offset=0&limit=50", tracksPage.getHref());
+        assertEquals(0, tracksPage.getOffset());
+        assertEquals(50, tracksPage.getLimit());
+        assertEquals(38, tracksPage.getTotal());
+        assertEquals("4r9PmSmbAOOWqaGWLf6M9Q", tracksPage.getItems().get(0).getId());
 
         asyncCompleted.countDown();
       }

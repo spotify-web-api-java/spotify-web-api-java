@@ -2,23 +2,23 @@ package se.michaelthelin.spotify.models;
 
 public class ReleaseDate {
 
-  private int date;
-  private int month;
+  private Integer date;
+  private Integer month;
   private int year;
 
-  public int getDate() {
+  public Integer getDate() {
     return date;
   }
 
-  public void setDate(int date) {
+  public void setDate(Integer date) {
     this.date = date;
   }
 
-  public int getMonth() {
+  public Integer getMonth() {
     return month;
   }
 
-  public void setMonth(int month) {
+  public void setMonth(Integer month) {
     this.month = month;
   }
 

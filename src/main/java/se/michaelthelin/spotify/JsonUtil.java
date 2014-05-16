@@ -156,10 +156,14 @@ public class JsonUtil {
     releaseDate.setYear(releaseDateJson.getInt("year"));
     if (releaseDateJson.has("month") && !releaseDateJson.get("month").equals("null")) {
       releaseDate.setMonth(releaseDateJson.getInt("month"));
+    } else {
+      releaseDate.setMonth(null);
     }
 
-    if (releaseDateJson.has("date") && !releaseDateJson.get("date").equals("null")) {
-      releaseDate.setDate(releaseDateJson.getInt("date"));
+    if (releaseDateJson.has("day") && !releaseDateJson.get("day").equals("null")) {
+      releaseDate.setDate(releaseDateJson.getInt("day"));
+    } else {
+      releaseDate.setDate(null);
     }
 
     return releaseDate;
