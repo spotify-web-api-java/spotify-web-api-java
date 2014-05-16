@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify;
 
-import com.google.protobuf.RepeatedFieldBuilder;
 import se.michaelthelin.spotify.UtilProtos.Url.Scheme;
 import se.michaelthelin.spotify.methods.*;
 

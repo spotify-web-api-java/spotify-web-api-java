@@ -44,8 +44,9 @@ public class ArtistSearchRequest extends AbstractRequest {
 
     public Builder query(String query) {
       assert (query != null);
-      path("/v1/artists/search");
+      path("/v1/search");
       String massagedQuery = query.replace(" ", "+");
+      parameter("type","artist");
       return parameter("q", massagedQuery);
     }
 

@@ -43,8 +43,9 @@ public class AlbumSearchRequest extends AbstractRequest {
 
     public Builder query(String query) {
       assert (query != null);
-      path("/v1/albums/search");
+      path("/v1/search");
       String massagedQuery = query.replace(" ", "+");
+      parameter("type","album");
       return parameter("q", massagedQuery);
     }
 

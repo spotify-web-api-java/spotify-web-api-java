@@ -75,11 +75,27 @@ public class ApiTest {
   }
 
   @Test
-  public void shouldHaveAlbumTypeParametersInArtistsAlbumUrl() {
+  public void shouldHaveMultipleAlbumTypeParametersInArtistsAlbumUrl() {
     Api api = Api.DEFAULT_API;
     Request request = api.getAlbumsForArtist("4AK6F7OLvEQ5QYCBNiQWHq").types(AlbumType.ALBUM, AlbumType.SINGLE).build();
     assertEquals("https://api.spotify.com:443/v1/artists/4AK6F7OLvEQ5QYCBNiQWHq/albums", request.toString());
     assertHasParameter(request.toUrl(), "album_type", "ALBUM,SINGLE");
+  }
+
+  @Test
+  public void shouldHaveSingleAlbumTypeParametersInArtistsAlbumUrl() {
+    Api api = Api.DEFAULT_API;
+    Request request = api.getAlbumsForArtist("4AK6F7OLvEQ5QYCBNiQWHq").types(AlbumType.SINGLE).build();
+    assertEquals("https://api.spotify.com:443/v1/artists/4AK6F7OLvEQ5QYCBNiQWHq/albums", request.toString());
+    assertHasParameter(request.toUrl(), "album_type", "SINGLE");
+  }
+
+  @Test
+  public void shouldFailIfAlbumTypeParametersIsInArtistsAlbumUrl() {
+    Api api = Api.DEFAULT_API;
+    Request request = api.getAlbumsForArtist("4AK6F7OLvEQ5QYCBNiQWHq").types(AlbumType.SINGLE).build();
+    assertEquals("https://api.spotify.com:443/v1/artists/4AK6F7OLvEQ5QYCBNiQWHq/albums", request.toString());
+    assertHasParameter(request.toUrl(), "album_type", "SINGLE");
   }
 
   @Test
@@ -120,42 +136,47 @@ public class ApiTest {
   public void shouldCreateSearchUrl() {
     Api api = Api.DEFAULT_API;
     Request request = api.searchTracks("moulat swalf").build();
-    assertEquals("https://api.spotify.com:443/v1/tracks/search", request.toString());
+    assertEquals("https://api.spotify.com:443/v1/search", request.toString());
     assertHasParameter(request.toUrl(), "q", "moulat+swalf");
+    assertHasParameter(request.toUrl(), "type", "track");
   }
 
   @Test
   public void shouldCreateSearchUrlForAlbum() {
     Api api = Api.DEFAULT_API;
     Request request = api.searchAlbums("meeep").build();
-    assertEquals("https://api.spotify.com:443/v1/albums/search", request.toString());
+    assertEquals("https://api.spotify.com:443/v1/search", request.toString());
     assertHasParameter(request.toUrl(), "q", "meeep");
+    assertHasParameter(request.toUrl(), "type", "album");
   }
 
   @Test
   public void shouldCreateSearchUrlForArtist() {
     Api api = Api.DEFAULT_API;
     Request request = api.searchArtists("meeep").build();
-    assertEquals("https://api.spotify.com:443/v1/artists/search", request.toString());
+    assertEquals("https://api.spotify.com:443/v1/search", request.toString());
     assertHasParameter(request.toUrl(), "q", "meeep");
+    assertHasParameter(request.toUrl(), "type", "artist");
   }
 
   @Test
   public void shouldCreateSearchUrlWithLimitParameter() {
     Api api = Api.DEFAULT_API;
     Request request = api.searchTracks("moulat swalf").limit(2).build();
-    assertEquals("https://api.spotify.com:443/v1/tracks/search", request.toString());
+    assertEquals("https://api.spotify.com:443/v1/search", request.toString());
     assertHasParameter(request.toUrl(), "q", "moulat+swalf");
     assertHasParameter(request.toUrl(), "limit", "2");
+    assertHasParameter(request.toUrl(), "type", "track");
   }
 
   @Test
   public void shouldCreateSearchUrlWithOffsetParameter() {
     Api api = Api.DEFAULT_API;
     Request request = api.searchTracks("moulat swalf").offset(2).build();
-    assertEquals("https://api.spotify.com:443/v1/tracks/search", request.toString());
+    assertEquals("https://api.spotify.com:443/v1/search", request.toString());
     assertHasParameter(request.toUrl(), "q", "moulat+swalf");
     assertHasParameter(request.toUrl(), "offset", "2");
+    assertHasParameter(request.toUrl(), "type", "track");
   }
 
   @Test
@@ -194,7 +215,7 @@ public class ApiTest {
     assertEquals("https://api.spotify.com:443/v1/users/wizzler", request.toString());
   }
 
-  void assertHasParameter(Url url, String name, Object value) {
+  private void assertHasParameter(Url url, String name, Object value) {
     Parameter expected = Parameter.newBuilder().setName(name).setValue(value.toString()).build();
     for (Parameter actual : url.getParametersList()) {
       if (actual.equals(expected)) {
@@ -202,6 +223,14 @@ public class ApiTest {
       }
     }
     fail(String.format("Actual URL %s does not contain parameter %s", url, expected));
+  }
+
+  private void assertNoParameter(Url url, String name) {
+    for (Parameter actual : url.getParametersList()) {
+      if (actual.getName().equals(name)) {
+        fail(String.format("Actual URL %s contains parameter %s", url, name));
+      }
+    }
   }
 
 }
