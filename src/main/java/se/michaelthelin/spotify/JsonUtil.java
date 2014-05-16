@@ -191,7 +191,7 @@ public class JsonUtil {
     simpleAlbum.setImages(createImages(simpleAlbumJson.getJSONArray("images")));
     simpleAlbum.setName(simpleAlbumJson.getString("name"));
     simpleAlbum.setType(createSpotifyEntityType(simpleAlbumJson.getString("type")));
-    simpleAlbum.setUri(simpleAlbumJson.getString("type"));
+    simpleAlbum.setUri(simpleAlbumJson.getString("uri"));
 
     return simpleAlbum;
   }

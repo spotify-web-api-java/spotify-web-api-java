@@ -32,7 +32,7 @@ public class AlbumSearchRequest extends AbstractRequest {
     return searchResultFuture;
   }
 
-  public Page<SimpleAlbum> getPage() throws IOException, UnexpectedResponseException {
+  public Page<SimpleAlbum> get() throws IOException, UnexpectedResponseException {
     return JsonUtil.createSimpleAlbumPage(getJson());
   }
 
@@ -45,9 +45,8 @@ public class AlbumSearchRequest extends AbstractRequest {
     public Builder query(String query) {
       assert (query != null);
       path("/v1/search");
-      String massagedQuery = query.replace(" ", "+");
       parameter("type","album");
-      return parameter("q", massagedQuery);
+      return parameter("q", query);
     }
 
     public Builder limit(int limit) {
