@@ -116,7 +116,7 @@ public class JsonUtil {
     album.setName(albumJson.getString("name"));
     album.setPopularity(albumJson.getInt("popularity"));
     album.setReleaseDate(createReleaseDate(albumJson.getJSONObject("release_date")));
-    album.setTracks(createSimpleTrackPage(albumJson));
+    album.setTracks(createSimpleTrackPage(albumJson.getJSONObject("tracks")));
     album.setType(createSpotifyEntityType(albumJson.getString("type")));
     album.setUri(albumJson.getString("uri"));
 
@@ -346,14 +346,14 @@ public class JsonUtil {
   }
 
   public static Page<Artist> createArtistPage(JSONObject artistPageJson) {
-    Page page = createItemlessPage(artistPageJson.getJSONObject("artists"));
-    page.setItems(createArtists(artistPageJson.getJSONObject("artists").getJSONArray("items")));
+    Page page = createItemlessPage(artistPageJson);
+    page.setItems(createArtists(artistPageJson.getJSONArray("items")));
     return page;
   }
 
   private static Page<SimpleTrack> createSimpleTrackPage(JSONObject simpleTrackPageJson) {
-    Page page = createItemlessPage(simpleTrackPageJson.getJSONObject("tracks"));
-    page.setItems(createSimpleTracks(simpleTrackPageJson.getJSONObject("tracks").getJSONArray("items")));
+    Page page = createItemlessPage(simpleTrackPageJson);
+    page.setItems(createSimpleTracks(simpleTrackPageJson.getJSONArray("items")));
     return page;
   }
 
@@ -362,8 +362,8 @@ public class JsonUtil {
   }
 
   public static Page<SimpleAlbum> createSimpleAlbumPage(JSONObject simpleAlbumPageJson) {
-    Page page = createItemlessPage(simpleAlbumPageJson.getJSONObject("albums"));
-    page.setItems(createSimpleAlbums(simpleAlbumPageJson.getJSONObject("albums").getJSONArray("items")));
+    Page page = createItemlessPage(simpleAlbumPageJson);
+    page.setItems(createSimpleAlbums(simpleAlbumPageJson.getJSONArray("items")));
     return page;
   }
 
