@@ -6,6 +6,7 @@ import se.michaelthelin.spotify.JsonUtil;
 import se.michaelthelin.spotify.exceptions.UnexpectedResponseException;
 import se.michaelthelin.spotify.models.Album;
 import se.michaelthelin.spotify.models.Page;
+import se.michaelthelin.spotify.models.SimpleAlbum;
 
 import java.io.IOException;
 
@@ -15,13 +16,13 @@ public class AlbumSearchRequest extends AbstractRequest {
     super(builder);
   }
 
-  public SettableFuture<Page<Album>> getAlbumsPageAsync() {
-    SettableFuture<Page<Album>> searchResultFuture = SettableFuture.create();
+  public SettableFuture<Page<SimpleAlbum>> getAsync() {
+    SettableFuture<Page<SimpleAlbum>> searchResultFuture = SettableFuture.create();
 
     try {
       String jsonString = getJson();
       JSONObject jsonObject = JSONObject.fromObject(jsonString);
-      searchResultFuture.set(JsonUtil.createAlbumPage(jsonObject));
+      searchResultFuture.set(JsonUtil.createSimpleAlbumPage(jsonObject));
     } catch (IOException e) {
       searchResultFuture.setException(e);
     } catch (UnexpectedResponseException e) {
@@ -31,8 +32,8 @@ public class AlbumSearchRequest extends AbstractRequest {
     return searchResultFuture;
   }
 
-  public Page<Album> getAlbumsPage() throws IOException, UnexpectedResponseException {
-    return JsonUtil.createAlbumPage(getJson());
+  public Page<SimpleAlbum> getPage() throws IOException, UnexpectedResponseException {
+    return JsonUtil.createSimpleAlbumPage(getJson());
   }
 
   public static Builder builder() {

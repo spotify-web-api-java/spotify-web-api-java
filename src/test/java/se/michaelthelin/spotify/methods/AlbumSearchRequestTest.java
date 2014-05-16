@@ -11,6 +11,7 @@ import se.michaelthelin.spotify.HttpManager;
 import se.michaelthelin.spotify.TestUtil;
 import se.michaelthelin.spotify.models.Album;
 import se.michaelthelin.spotify.models.Page;
+import se.michaelthelin.spotify.models.SimpleAlbum;
 
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
@@ -30,17 +31,17 @@ public class AlbumSearchRequestTest {
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
-    final SettableFuture<Page<Album>> searchResultFuture = request.getAlbumsPageAsync();
+    final SettableFuture<Page<SimpleAlbum>> searchResultFuture = request.getAsync();
 
-    Futures.addCallback(searchResultFuture, new FutureCallback<Page<Album>>() {
+    Futures.addCallback(searchResultFuture, new FutureCallback<Page<SimpleAlbum>>() {
       @Override
-      public void onSuccess(Page<Album> albumSearchResult) {
-        List<Album> albums = albumSearchResult.getItems();
+      public void onSuccess(Page<SimpleAlbum> albumSearchResult) {
+        List<SimpleAlbum> albums = albumSearchResult.getItems();
 
         assertEquals(1, albums.size());
 
-        Album firstAlbum = albums.get(0);
-        assertEquals("68NlXKRuJ1YqrhIbwe864y", firstAlbum.getId());
+        SimpleAlbum firstAlbum = albums.get(0);
+        assertEquals("6akEvsycLGftJxYudPjmqK", firstAlbum.getId());
 
         asyncCompleted.countDown();
       }
@@ -60,14 +61,14 @@ public class AlbumSearchRequestTest {
     final HttpManager mockedHttpManager = TestUtil.MockedHttpManager.returningJson("search-album.json");
     final AlbumSearchRequest request = api.searchAlbums("The Best Of Keane").httpManager(mockedHttpManager).build();
 
-    final Page<Album> albumSearchResult = request.getAlbumsPage();
+    final Page<SimpleAlbum> albumSearchResult = request.getPage();
 
-    final List<Album> albums = albumSearchResult.getItems();
+    final List<SimpleAlbum> albums = albumSearchResult.getItems();
 
     assertEquals(1, albums.size());
 
-    final Album firstAlbum = albums.get(0);
-    assertEquals("68NlXKRuJ1YqrhIbwe864y", firstAlbum.getId());
+    final SimpleAlbum firstAlbum = albums.get(0);
+    assertEquals("6akEvsycLGftJxYudPjmqK", firstAlbum.getId());
   }
 
 }

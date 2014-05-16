@@ -25,7 +25,7 @@ public class TrackSearchRequestTest {
   @Test
   public void shouldGetTracksResult_async() throws Exception {
     final Api api = Api.DEFAULT_API;
-    final HttpManager mockedHttpManager = TestUtil.MockedHttpManager.returningJson("search-track-page1.json");
+    final HttpManager mockedHttpManager = TestUtil.MockedHttpManager.returningJson("search-track.json");
     final TrackSearchRequest request = api.searchTracks("Mr. Brightside").httpManager(mockedHttpManager).build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
@@ -37,13 +37,13 @@ public class TrackSearchRequestTest {
       public void onSuccess(Page<Track> trackSearchResult) {
         List<Track> tracks = trackSearchResult.getItems();
 
-        assertEquals(20, tracks.size());
+        assertEquals(12, tracks.size());
 
         Track firstTrack = tracks.get(0);
-        assertEquals("0eGsygTp906u18L0Oimnem", firstTrack.getId());
+        assertEquals("2TpxZ7JUBn3uw46aR7qd6V", firstTrack.getId());
 
         Track secondTrack = tracks.get(1);
-        assertEquals("5zvJ6DUahHHjeknQPn7iAH", secondTrack.getId());
+        assertEquals("4PjcfyZZVE10TFd9EKA72r", secondTrack.getId());
 
         asyncCompleted.countDown();
       }
@@ -60,20 +60,20 @@ public class TrackSearchRequestTest {
   @Test
   public void shouldGetTracksResult_sync() throws Exception {
     final Api api = Api.DEFAULT_API;
-    final HttpManager mockedHttpManager = TestUtil.MockedHttpManager.returningJson("search-track-page1.json");
+    final HttpManager mockedHttpManager = TestUtil.MockedHttpManager.returningJson("search-track.json");
     final TrackSearchRequest request = api.searchTracks("Mr. Brightside").httpManager(mockedHttpManager).build();
 
     final Page<Track> trackSearchResult = request.get();
 
     final List<Track> tracks = trackSearchResult.getItems();
 
-    assertEquals(20, tracks.size());
+    assertEquals(12, tracks.size());
 
     final Track firstTrack = tracks.get(0);
-    assertEquals("0eGsygTp906u18L0Oimnem", firstTrack.getId());
+    assertEquals("2TpxZ7JUBn3uw46aR7qd6V", firstTrack.getId());
 
     final Track secondTrack = tracks.get(1);
-    assertEquals("5zvJ6DUahHHjeknQPn7iAH", secondTrack.getId());
+    assertEquals("4PjcfyZZVE10TFd9EKA72r", secondTrack.getId());
   }
 
 }

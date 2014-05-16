@@ -10,6 +10,7 @@ import se.michaelthelin.spotify.exceptions.UnexpectedResponseException;
 import se.michaelthelin.spotify.models.Album;
 import se.michaelthelin.spotify.models.AlbumType;
 import se.michaelthelin.spotify.models.Page;
+import se.michaelthelin.spotify.models.SimpleAlbum;
 
 import java.io.IOException;
 
@@ -19,13 +20,13 @@ public class AlbumsForArtistRequest extends AbstractRequest {
     super(builder);
   }
 
-  public SettableFuture<Page<Album>> getAsync() {
-    SettableFuture<Page<Album>> searchResultFuture = SettableFuture.create();
+  public SettableFuture<Page<SimpleAlbum>> getAsync() {
+    SettableFuture<Page<SimpleAlbum>> searchResultFuture = SettableFuture.create();
 
     try {
       String jsonString = getJson();
       JSONObject jsonObject = JSONObject.fromObject(jsonString);
-      searchResultFuture.set(JsonUtil.createAlbumPage(jsonObject));
+      searchResultFuture.set(JsonUtil.createSimpleAlbumPage(jsonObject));
     } catch (IOException e) {
       searchResultFuture.setException(e);
     } catch (UnexpectedResponseException e) {
@@ -35,8 +36,8 @@ public class AlbumsForArtistRequest extends AbstractRequest {
     return searchResultFuture;
   }
 
-  public Page<Album> get() throws IOException, UnexpectedResponseException, NotFoundException, BadFieldException {
-    return JsonUtil.createAlbumPage(getJson());
+  public Page<SimpleAlbum> get() throws IOException, UnexpectedResponseException, NotFoundException, BadFieldException {
+    return JsonUtil.createSimpleAlbumPage(getJson());
   }
 
   public static Builder builder() {

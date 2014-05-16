@@ -116,7 +116,7 @@ public class JsonUtil {
     album.setName(albumJson.getString("name"));
     album.setPopularity(albumJson.getInt("popularity"));
     album.setReleaseDate(createReleaseDate(albumJson.getJSONObject("release_date")));
-    album.setTracks(createSimpleTracks(albumJson.getJSONArray("tracks")));
+    album.setTracks(createSimpleTrackPage(albumJson));
     album.setType(createSpotifyEntityType(albumJson.getString("type")));
     album.setUri(albumJson.getString("uri"));
 
@@ -154,11 +154,11 @@ public class JsonUtil {
     ReleaseDate releaseDate = new ReleaseDate();
 
     releaseDate.setYear(releaseDateJson.getInt("year"));
-    if (!releaseDateJson.getJSONObject("month").isNullObject()) {
+    if (releaseDateJson.has("month") && !releaseDateJson.get("month").equals("null")) {
       releaseDate.setMonth(releaseDateJson.getInt("month"));
     }
 
-    if (!releaseDateJson.getJSONObject("date").isNullObject()) {
+    if (releaseDateJson.has("date") && !releaseDateJson.get("date").equals("null")) {
       releaseDate.setDate(releaseDateJson.getInt("date"));
     }
 
@@ -207,6 +207,14 @@ public class JsonUtil {
     List<Album> returnedAlbums = new ArrayList<Album>();
     for (int i = 0; i < jsonArray.size(); i++) {
       returnedAlbums.add(createAlbum(jsonArray.getJSONObject(i)));
+    }
+    return returnedAlbums;
+  }
+
+  public static List<SimpleAlbum> createSimpleAlbums(JSONArray jsonArray) {
+    List<SimpleAlbum> returnedAlbums = new ArrayList<SimpleAlbum>();
+    for (int i = 0; i < jsonArray.size(); i++) {
+      returnedAlbums.add(createSimpleAlbum(jsonArray.getJSONObject(i)));
     }
     return returnedAlbums;
   }
@@ -303,8 +311,8 @@ public class JsonUtil {
   }
 
   public static Page<Album> createAlbumPage(JSONObject albumPageJson) {
-    Page page = createItemlessPage(albumPageJson);
-    page.setItems(createAlbums(albumPageJson.getJSONArray("items")));
+    Page page = createItemlessPage(albumPageJson.getJSONObject("albums"));
+    page.setItems(createAlbums(albumPageJson.getJSONObject("albums").getJSONArray("items")));
     return page;
   }
 
@@ -328,8 +336,8 @@ public class JsonUtil {
   }
 
   public static Page<Track> createTrackPage(JSONObject trackPageJson) {
-    Page page = createItemlessPage(trackPageJson);
-    page.setItems(createTracks(trackPageJson.getJSONArray("items")));
+    Page page = createItemlessPage(trackPageJson.getJSONObject("tracks"));
+    page.setItems(createTracks(trackPageJson.getJSONObject("tracks").getJSONArray("items")));
     return page;
   }
 
@@ -338,8 +346,24 @@ public class JsonUtil {
   }
 
   public static Page<Artist> createArtistPage(JSONObject artistPageJson) {
-    Page page = createItemlessPage(artistPageJson);
-    page.setItems(createArtists(artistPageJson.getJSONArray("items")));
+    Page page = createItemlessPage(artistPageJson.getJSONObject("artists"));
+    page.setItems(createArtists(artistPageJson.getJSONObject("artists").getJSONArray("items")));
+    return page;
+  }
+
+  private static Page<SimpleTrack> createSimpleTrackPage(JSONObject simpleTrackPageJson) {
+    Page page = createItemlessPage(simpleTrackPageJson.getJSONObject("tracks"));
+    page.setItems(createSimpleTracks(simpleTrackPageJson.getJSONObject("tracks").getJSONArray("items")));
+    return page;
+  }
+
+  public static Page<SimpleAlbum> createSimpleAlbumPage(String simpleAlbumPageJson) {
+    return createSimpleAlbumPage(JSONObject.fromObject(simpleAlbumPageJson));
+  }
+
+  public static Page<SimpleAlbum> createSimpleAlbumPage(JSONObject simpleAlbumPageJson) {
+    Page page = createItemlessPage(simpleAlbumPageJson.getJSONObject("albums"));
+    page.setItems(createSimpleAlbums(simpleAlbumPageJson.getJSONObject("albums").getJSONArray("items")));
     return page;
   }
 
@@ -376,4 +400,5 @@ public class JsonUtil {
   private static Product createProduct(String product) {
     return Product.valueOf(product.toUpperCase());
   }
+
 }

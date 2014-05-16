@@ -16,7 +16,7 @@ public class Album {
   private String name;
   private int popularity;
   private ReleaseDate releaseDate;
-  private List<SimpleTrack> tracks;
+  private Page<SimpleTrack> tracks;
   private SpotifyEntityType type = SpotifyEntityType.ALBUM;
   private String uri;
 
@@ -116,11 +116,11 @@ public class Album {
     this.releaseDate = releaseDate;
   }
 
-  public List<SimpleTrack> getTracks() {
+  public Page<SimpleTrack> getTracks() {
     return tracks;
   }
 
-  public void setTracks(List<SimpleTrack> tracks) {
+  public void setTracks(Page<SimpleTrack> tracks) {
     this.tracks = tracks;
   }
 
