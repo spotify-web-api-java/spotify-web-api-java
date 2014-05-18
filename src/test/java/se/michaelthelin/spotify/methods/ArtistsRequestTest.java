@@ -7,7 +7,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 import se.michaelthelin.spotify.Api;
-import se.michaelthelin.spotify.HttpManager;
+import se.michaelthelin.spotify.TestConfiguration;
 import se.michaelthelin.spotify.TestUtil;
 import se.michaelthelin.spotify.models.Artist;
 
@@ -24,8 +24,12 @@ public class ArtistsRequestTest {
   @Test
   public void shouldGetArtistsResult_async() throws Exception {
     final Api api = Api.DEFAULT_API;
-    final HttpManager mockedHttpManager = TestUtil.MockedHttpManager.returningJson("artists.json");
-    final ArtistsRequest request = api.getArtists("0oSGxfWSnnOXhD2fKuz2Gy", "3dBVyJ7JuOMt4GE9607Qin").httpManager(mockedHttpManager).build();
+
+    final ArtistsRequest.Builder requestBuilder = api.getArtists("0oSGxfWSnnOXhD2fKuz2Gy", "3dBVyJ7JuOMt4GE9607Qin");
+    if (TestConfiguration.USE_MOCK_RESPONSES) {
+      requestBuilder.httpManager(TestUtil.MockedHttpManager.returningJson("artists.json"));
+    }
+    final ArtistsRequest request = requestBuilder.build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
@@ -36,8 +40,8 @@ public class ArtistsRequestTest {
       public void onSuccess(List<Artist> artists) {
         assertEquals(2, artists.size());
 
-        Artist firstArtist = artists.get(0);
-        Artist secondArtist = artists.get(1);
+        final Artist firstArtist = artists.get(0);
+        final Artist secondArtist = artists.get(1);
 
         assertEquals("0oSGxfWSnnOXhD2fKuz2Gy", firstArtist.getId());
         assertEquals("3dBVyJ7JuOMt4GE9607Qin", secondArtist.getId());
@@ -57,8 +61,12 @@ public class ArtistsRequestTest {
   @Test
   public void shouldGetArtistsResult_sync() throws Exception {
     final Api api = Api.DEFAULT_API;
-    final HttpManager mockedHttpManager = TestUtil.MockedHttpManager.returningJson("artists.json");
-    final ArtistsRequest request = api.getArtists("0oSGxfWSnnOXhD2fKuz2Gy", "3dBVyJ7JuOMt4GE9607Qin").httpManager(mockedHttpManager).build();
+
+    final ArtistsRequest.Builder requestBuilder = api.getArtists("0oSGxfWSnnOXhD2fKuz2Gy", "3dBVyJ7JuOMt4GE9607Qin");
+    if (TestConfiguration.USE_MOCK_RESPONSES) {
+      requestBuilder.httpManager(TestUtil.MockedHttpManager.returningJson("artists.json"));
+    }
+    final ArtistsRequest request = requestBuilder.build();
 
     final List<Artist> artists = request.get();
 

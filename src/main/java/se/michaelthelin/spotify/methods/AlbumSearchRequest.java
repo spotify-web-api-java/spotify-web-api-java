@@ -6,6 +6,7 @@ import se.michaelthelin.spotify.JsonUtil;
 import se.michaelthelin.spotify.exceptions.UnexpectedResponseException;
 import se.michaelthelin.spotify.models.Album;
 import se.michaelthelin.spotify.models.Page;
+import se.michaelthelin.spotify.models.SimpleAlbum;
 
 import java.io.IOException;
 
@@ -15,13 +16,13 @@ public class AlbumSearchRequest extends AbstractRequest {
     super(builder);
   }
 
-  public SettableFuture<Page<Album>> getAlbumsPageAsync() {
-    SettableFuture<Page<Album>> searchResultFuture = SettableFuture.create();
+  public SettableFuture<Page<SimpleAlbum>> getAsync() {
+    SettableFuture<Page<SimpleAlbum>> searchResultFuture = SettableFuture.create();
 
     try {
       String jsonString = getJson();
       JSONObject jsonObject = JSONObject.fromObject(jsonString);
-      searchResultFuture.set(JsonUtil.createAlbumPage(jsonObject));
+      searchResultFuture.set(JsonUtil.createSimpleAlbumPage(jsonObject.getJSONObject("albums")));
     } catch (IOException e) {
       searchResultFuture.setException(e);
     } catch (UnexpectedResponseException e) {
@@ -31,8 +32,8 @@ public class AlbumSearchRequest extends AbstractRequest {
     return searchResultFuture;
   }
 
-  public Page<Album> getAlbumsPage() throws IOException, UnexpectedResponseException {
-    return JsonUtil.createAlbumPage(getJson());
+  public Page<SimpleAlbum> get() throws IOException, UnexpectedResponseException {
+    return JsonUtil.createSimpleAlbumPage(JSONObject.fromObject(getJson()).getJSONObject("albums"));
   }
 
   public static Builder builder() {
@@ -43,9 +44,9 @@ public class AlbumSearchRequest extends AbstractRequest {
 
     public Builder query(String query) {
       assert (query != null);
-      path("/v1/albums/search");
-      String massagedQuery = query.replace(" ", "+");
-      return parameter("q", massagedQuery);
+      path("/v1/search");
+      parameter("type","album");
+      return parameter("q", query);
     }
 
     public Builder limit(int limit) {

@@ -43,9 +43,9 @@ public class TrackSearchRequest extends AbstractRequest {
 
     public Builder query(String query) {
       assert (query != null);
-      path("/v1/tracks/search");
-      String massagedQuery = query.replace(" ", "+");
-      return parameter("q", massagedQuery);
+      path("/v1/search");
+      parameter("type","track");
+      return parameter("q", query);
     }
 
     public Builder limit(int limit) {

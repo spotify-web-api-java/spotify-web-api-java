@@ -8,6 +8,7 @@ import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 import se.michaelthelin.spotify.Api;
 import se.michaelthelin.spotify.HttpManager;
+import se.michaelthelin.spotify.TestConfiguration;
 import se.michaelthelin.spotify.TestUtil;
 import se.michaelthelin.spotify.models.Page;
 import se.michaelthelin.spotify.models.Track;
@@ -17,7 +18,9 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
 import static junit.framework.Assert.assertEquals;
+import static junit.framework.TestCase.assertTrue;
 import static junit.framework.TestCase.fail;
+import static org.junit.Assert.assertNotNull;
 
 @RunWith(MockitoJUnitRunner.class)
 public class TrackSearchRequestTest {
@@ -25,8 +28,12 @@ public class TrackSearchRequestTest {
   @Test
   public void shouldGetTracksResult_async() throws Exception {
     final Api api = Api.DEFAULT_API;
-    final HttpManager mockedHttpManager = TestUtil.MockedHttpManager.returningJson("search-track-page1.json");
-    final TrackSearchRequest request = api.searchTracks("Mr. Brightside").httpManager(mockedHttpManager).build();
+
+    final TrackSearchRequest.Builder requestBuilder = api.searchTracks("tania bowra").offset(0).limit(20);
+    if (TestConfiguration.USE_MOCK_RESPONSES) {
+      requestBuilder.httpManager(TestUtil.MockedHttpManager.returningJson("search-track.json"));
+    }
+    final TrackSearchRequest request = requestBuilder.build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
@@ -35,15 +42,19 @@ public class TrackSearchRequestTest {
     Futures.addCallback(searchResultFuture, new FutureCallback<Page<Track>>() {
       @Override
       public void onSuccess(Page<Track> trackSearchResult) {
+        assertTrue(trackSearchResult.getTotal() > 0);
+        assertEquals(20, trackSearchResult.getLimit());
+        assertEquals(0, trackSearchResult.getOffset());
+
         List<Track> tracks = trackSearchResult.getItems();
 
-        assertEquals(20, tracks.size());
-
         Track firstTrack = tracks.get(0);
-        assertEquals("0eGsygTp906u18L0Oimnem", firstTrack.getId());
+        assertNotNull(firstTrack.getId());
 
-        Track secondTrack = tracks.get(1);
-        assertEquals("5zvJ6DUahHHjeknQPn7iAH", secondTrack.getId());
+        String id = firstTrack.getId();
+        assertNotNull(firstTrack.getAlbum());
+        assertNotNull(firstTrack.getArtists());
+        assertEquals("https://api.spotify.com/v1/tracks/" + id, firstTrack.getHref());
 
         asyncCompleted.countDown();
       }
@@ -60,20 +71,24 @@ public class TrackSearchRequestTest {
   @Test
   public void shouldGetTracksResult_sync() throws Exception {
     final Api api = Api.DEFAULT_API;
-    final HttpManager mockedHttpManager = TestUtil.MockedHttpManager.returningJson("search-track-page1.json");
+    final HttpManager mockedHttpManager = TestUtil.MockedHttpManager.returningJson("search-track.json");
     final TrackSearchRequest request = api.searchTracks("Mr. Brightside").httpManager(mockedHttpManager).build();
 
     final Page<Track> trackSearchResult = request.get();
 
-    final List<Track> tracks = trackSearchResult.getItems();
+    assertTrue(trackSearchResult.getTotal() > 0);
+    assertEquals(20, trackSearchResult.getLimit());
+    assertEquals(0, trackSearchResult.getOffset());
 
-    assertEquals(20, tracks.size());
+    List<Track> tracks = trackSearchResult.getItems();
 
-    final Track firstTrack = tracks.get(0);
-    assertEquals("0eGsygTp906u18L0Oimnem", firstTrack.getId());
+    Track firstTrack = tracks.get(0);
+    assertNotNull(firstTrack.getId());
 
-    final Track secondTrack = tracks.get(1);
-    assertEquals("5zvJ6DUahHHjeknQPn7iAH", secondTrack.getId());
+    String id = firstTrack.getId();
+    assertNotNull(firstTrack.getAlbum());
+    assertNotNull(firstTrack.getArtists());
+    assertEquals("https://api.spotify.com/v1/tracks/" + id, firstTrack.getHref());
   }
 
 }

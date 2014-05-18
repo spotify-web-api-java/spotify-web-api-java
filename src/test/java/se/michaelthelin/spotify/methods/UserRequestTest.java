@@ -8,6 +8,7 @@ import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 import se.michaelthelin.spotify.Api;
 import se.michaelthelin.spotify.HttpManager;
+import se.michaelthelin.spotify.TestConfiguration;
 import se.michaelthelin.spotify.TestUtil;
 import se.michaelthelin.spotify.models.User;
 
@@ -25,8 +26,12 @@ public class UserRequestTest {
   @Test
   public void shouldCreateUser_async() throws Exception {
     final Api api = Api.DEFAULT_API;
-    final HttpManager mockedHttpManager = TestUtil.MockedHttpManager.returningJson("user.json");
-    final UserRequest request = api.getUser("wizzler").httpManager(mockedHttpManager).build();
+
+    final UserRequest.Builder requestBuilder = api.getUser("wizzler");
+    if (TestConfiguration.USE_MOCK_RESPONSES) {
+      requestBuilder.httpManager(TestUtil.MockedHttpManager.returningJson("user.json"));
+    }
+    final UserRequest request = requestBuilder.build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
@@ -53,8 +58,12 @@ public class UserRequestTest {
   @Test
   public void shouldCreateUser_sync() throws Exception {
     final Api api = Api.DEFAULT_API;
-    final HttpManager mockedHttpManager = TestUtil.MockedHttpManager.returningJson("user.json");
-    final UserRequest request = api.getUser("wizzler").httpManager(mockedHttpManager).build();
+
+    final UserRequest.Builder requestBuilder = api.getUser("wizzler");
+    if (TestConfiguration.USE_MOCK_RESPONSES) {
+      requestBuilder.httpManager(TestUtil.MockedHttpManager.returningJson("user.json"));
+    }
+    final UserRequest request = requestBuilder.build();
 
     final User user = request.get();
     assertNull(user.getEmail());

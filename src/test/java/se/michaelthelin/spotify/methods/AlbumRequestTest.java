@@ -7,7 +7,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 import se.michaelthelin.spotify.Api;
-import se.michaelthelin.spotify.HttpManager;
+import se.michaelthelin.spotify.TestConfiguration;
 import se.michaelthelin.spotify.TestUtil;
 import se.michaelthelin.spotify.exceptions.BadFieldException;
 import se.michaelthelin.spotify.exceptions.NotFoundException;
@@ -25,8 +25,12 @@ public class AlbumRequestTest {
   public void shouldGetAlbumResult_async() throws Exception {
     final Api api = Api.DEFAULT_API;
 
-    final HttpManager mockedHttpManager = TestUtil.MockedHttpManager.returningJson("album.json");
-    final AlbumRequest request = api.getAlbum("7e0ij2fpWaxOEHv5fUYZjd").httpManager(mockedHttpManager).build();
+    final AlbumRequest.Builder requestBuilder = api.getAlbum("0sNOF9WDwhWunNAHPD3Baj");
+
+    if (TestConfiguration.USE_MOCK_RESPONSES) {
+      requestBuilder.httpManager(TestUtil.MockedHttpManager.returningJson("album.json"));
+    }
+    final AlbumRequest request = requestBuilder.build();
 
     final SettableFuture<Album> albumFuture = request.getAsync();
 
@@ -54,8 +58,12 @@ public class AlbumRequestTest {
   public void shouldFailForNonExistingAlbumId_async() throws Exception {
     final Api api = Api.DEFAULT_API;
 
-    final HttpManager mockedHttpManager = TestUtil.MockedHttpManager.returningJson("error_id-not-found.json");
-    final AlbumRequest request = api.getAlbum("7e0ij2fpWaxOEHv5fUYZjd").httpManager(mockedHttpManager).build();
+    final AlbumRequest.Builder requestBuilder = api.getAlbum("nonexistingid");
+    if (TestConfiguration.USE_MOCK_RESPONSES) {
+      requestBuilder.httpManager(TestUtil.MockedHttpManager.returningJson("error_id-not-found.json"));
+    }
+
+    final AlbumRequest request = requestBuilder.build();
 
     final SettableFuture<Album> albumFuture = request.getAsync();
 
@@ -82,8 +90,11 @@ public class AlbumRequestTest {
   public void shouldFailForBadField_async() throws Exception {
     final Api api = Api.DEFAULT_API;
 
-    final HttpManager mockedHttpManager = TestUtil.MockedHttpManager.returningJson("error_bad-field.json");
-    final AlbumRequest request = api.getAlbum("7e0ij2fpWaxOEHv5fUYZjd").httpManager(mockedHttpManager).build();
+    final AlbumRequest.Builder requestBuilder = api.getAlbum("你好");
+    if (TestConfiguration.USE_MOCK_RESPONSES) {
+      requestBuilder.httpManager(TestUtil.MockedHttpManager.returningJson("error_bad-field.json"));
+    }
+    final AlbumRequest request = requestBuilder.build();
 
     final SettableFuture<Album> albumFuture = request.getAsync();
 
@@ -110,10 +121,15 @@ public class AlbumRequestTest {
   public void shouldGetAlbumResult_sync() throws Exception {
     final Api api = Api.DEFAULT_API;
 
-    final HttpManager mockedHttpManager = TestUtil.MockedHttpManager.returningJson("album.json");
-    final AlbumRequest request = api.getAlbum("7e0ij2fpWaxOEHv5fUYZjd").httpManager(mockedHttpManager).build();
+    final AlbumRequest.Builder requestBuilder = api.getAlbum("0sNOF9WDwhWunNAHPD3Baj");
+
+    if (TestConfiguration.USE_MOCK_RESPONSES) {
+      requestBuilder.httpManager(TestUtil.MockedHttpManager.returningJson("album.json"));
+    }
+    AlbumRequest request = requestBuilder.build();
 
     Album album = request.get();
+
     assertNotNull(album);
     assertEquals("0sNOF9WDwhWunNAHPD3Baj", album.getId());
   }

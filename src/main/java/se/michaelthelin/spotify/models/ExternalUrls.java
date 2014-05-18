@@ -11,4 +11,8 @@ public class ExternalUrls {
     return externalUrls;
   }
 
+  public String get(String key) {
+    return externalUrls.get(key);
+  }
+
 }

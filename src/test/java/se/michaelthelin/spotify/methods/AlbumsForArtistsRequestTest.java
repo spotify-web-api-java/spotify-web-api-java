@@ -7,16 +7,18 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 import se.michaelthelin.spotify.Api;
-import se.michaelthelin.spotify.HttpManager;
+import se.michaelthelin.spotify.TestConfiguration;
 import se.michaelthelin.spotify.TestUtil;
-import se.michaelthelin.spotify.models.Album;
+import se.michaelthelin.spotify.models.AlbumType;
 import se.michaelthelin.spotify.models.Page;
+import se.michaelthelin.spotify.models.SimpleAlbum;
 
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
 import static junit.framework.Assert.assertEquals;
+import static junit.framework.TestCase.assertNotNull;
 import static junit.framework.TestCase.fail;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -26,22 +28,35 @@ public class AlbumsForArtistsRequestTest {
   public void shouldGetAlbumResultForArtistId_async() throws Exception {
     final Api api = Api.DEFAULT_API;
 
-    final HttpManager mockedHttpManager = TestUtil.MockedHttpManager.returningJson("search-album.json");
-    final AlbumsForArtistRequest request = api.getAlbumsForArtist("53A0W3U0s8diEn9RhXQhVz").httpManager(mockedHttpManager).build();
+    final AlbumsForArtistRequest.Builder requestBuilder = api.getAlbumsForArtist("1vCWHaC5f2uS3yhpwWbIA6").limit(2).types(AlbumType.SINGLE);
+    if (TestConfiguration.USE_MOCK_RESPONSES) {
+      requestBuilder.httpManager(TestUtil.MockedHttpManager.returningJson("artist-album.json"));
+    }
+    final AlbumsForArtistRequest request = requestBuilder.build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
-    final SettableFuture<Page<Album>> albumsFuture = request.getAsync();
+    final SettableFuture<Page<SimpleAlbum>> albumsFuture = request.getAsync();
 
-    Futures.addCallback(albumsFuture, new FutureCallback<Page<Album>>() {
+    Futures.addCallback(albumsFuture, new FutureCallback<Page<SimpleAlbum>>() {
       @Override
-      public void onSuccess(Page<Album> albumSearchResult) {
-        List<Album> albums = albumSearchResult.getItems();
+      public void onSuccess(Page<SimpleAlbum> albumSearchResult) {
+        assertEquals("https://api.spotify.com/v1/artists/1vCWHaC5f2uS3yhpwWbIA6/albums?offset=0&limit=2&album_type=single", albumSearchResult.getHref());
+        assertEquals(2, albumSearchResult.getLimit());
+        assertEquals(0, albumSearchResult.getOffset());
+        assertEquals(178, albumSearchResult.getTotal());
+        assertEquals("https://api.spotify.com/v1/artists/1vCWHaC5f2uS3yhpwWbIA6/albums?offset=2&limit=2&album_type=single", albumSearchResult.getNext());
+        assertEquals("null", albumSearchResult.getPrevious());
 
-        assertEquals(1, albums.size());
+        List<SimpleAlbum> albums = albumSearchResult.getItems();
+        assertEquals(2, albums.size());
 
-        Album firstAlbum = albums.get(0);
-        assertEquals("68NlXKRuJ1YqrhIbwe864y", firstAlbum.getId());
+        SimpleAlbum firstAlbum = albums.get(0);
+        assertEquals(AlbumType.SINGLE, firstAlbum.getAlbumType());
+        assertEquals("https://open.spotify.com/album/6HVPLh1TXzPnMqY7tAWLoL", firstAlbum.getExternalUrls().get("spotify"));
+        assertEquals("https://api.spotify.com/v1/albums/6HVPLh1TXzPnMqY7tAWLoL", firstAlbum.getHref());
+        assertEquals("6HVPLh1TXzPnMqY7tAWLoL", firstAlbum.getId());
+        assertNotNull(firstAlbum.getImages());
         asyncCompleted.countDown();
       }
 
@@ -58,17 +73,30 @@ public class AlbumsForArtistsRequestTest {
   public void shouldGetAlbumResultForArtistId_sync() throws Exception {
     final Api api = Api.DEFAULT_API;
 
-    final HttpManager mockedHttpManager = TestUtil.MockedHttpManager.returningJson("search-album.json");
-    final AlbumsForArtistRequest request = api.getAlbumsForArtist("53A0W3U0s8diEn9RhXQhVz").httpManager(mockedHttpManager).build();
+    final AlbumsForArtistRequest.Builder requestBuilder = api.getAlbumsForArtist("1vCWHaC5f2uS3yhpwWbIA6").limit(2).types(AlbumType.SINGLE);
+    if (TestConfiguration.USE_MOCK_RESPONSES) {
+      requestBuilder.httpManager(TestUtil.MockedHttpManager.returningJson("artist-album.json"));
+    }
+    final AlbumsForArtistRequest request = requestBuilder.build();
 
-    final Page<Album> albumsPage = request.get();
+    final Page<SimpleAlbum> albumSearchResult = request.get();
 
-    final List<Album> albums = albumsPage.getItems();
+    assertEquals("https://api.spotify.com/v1/artists/1vCWHaC5f2uS3yhpwWbIA6/albums?offset=0&limit=2&album_type=single", albumSearchResult.getHref());
+    assertEquals(2, albumSearchResult.getLimit());
+    assertEquals(0, albumSearchResult.getOffset());
+    assertEquals(178, albumSearchResult.getTotal());
+    assertEquals("https://api.spotify.com/v1/artists/1vCWHaC5f2uS3yhpwWbIA6/albums?offset=2&limit=2&album_type=single", albumSearchResult.getNext());
+    assertEquals("null", albumSearchResult.getPrevious());
 
-    assertEquals(1, albums.size());
+    final List<SimpleAlbum> albums = albumSearchResult.getItems();
+    assertEquals(2, albums.size());
 
-    final Album firstAlbum = albums.get(0);
-    assertEquals("68NlXKRuJ1YqrhIbwe864y", firstAlbum.getId());
+    SimpleAlbum firstAlbum = albums.get(0);
+    assertEquals(AlbumType.SINGLE, firstAlbum.getAlbumType());
+    assertEquals("https://open.spotify.com/album/6HVPLh1TXzPnMqY7tAWLoL", firstAlbum.getExternalUrls().get("spotify"));
+    assertEquals("https://api.spotify.com/v1/albums/6HVPLh1TXzPnMqY7tAWLoL", firstAlbum.getHref());
+    assertEquals("6HVPLh1TXzPnMqY7tAWLoL", firstAlbum.getId());
+    assertNotNull(firstAlbum.getImages());
   }
 
 }

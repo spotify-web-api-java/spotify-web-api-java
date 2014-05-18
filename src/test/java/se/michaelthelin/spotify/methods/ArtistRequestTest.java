@@ -7,7 +7,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 import se.michaelthelin.spotify.Api;
-import se.michaelthelin.spotify.HttpManager;
+import se.michaelthelin.spotify.TestConfiguration;
 import se.michaelthelin.spotify.TestUtil;
 import se.michaelthelin.spotify.models.Artist;
 
@@ -15,6 +15,7 @@ import java.util.concurrent.CountDownLatch;
 
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertNotNull;
+import static junit.framework.TestCase.assertTrue;
 import static junit.framework.TestCase.fail;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -24,8 +25,11 @@ public class ArtistRequestTest {
   public void shouldGetArtistResult_async() throws Exception {
     final Api api = Api.DEFAULT_API;
 
-    final HttpManager mockedHttpManager = TestUtil.MockedHttpManager.returningJson("artist.json");
-    final ArtistRequest request = api.getArtist("0LcJLqbBmaGUft1e9Mm8HV").httpManager(mockedHttpManager).build();
+    ArtistRequest.Builder requestBuilder = api.getArtist("0LcJLqbBmaGUft1e9Mm8HV");
+    if (TestConfiguration.USE_MOCK_RESPONSES) {
+      requestBuilder.httpManager(TestUtil.MockedHttpManager.returningJson("artist.json"));
+    }
+    ArtistRequest request = requestBuilder.build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
@@ -35,7 +39,14 @@ public class ArtistRequestTest {
       @Override
       public void onSuccess(Artist artist) {
         assertNotNull(artist);
+        assertEquals("https://open.spotify.com/artist/0LcJLqbBmaGUft1e9Mm8HV", artist.getExternalUrls().get("spotify"));
+        assertNotNull(artist.getGenres());
         assertEquals("0LcJLqbBmaGUft1e9Mm8HV", artist.getId());
+        assertNotNull(artist.getImages());
+        assertEquals("ABBA", artist.getName());
+        assertTrue(artist.getPopularity() >= 0 && artist.getPopularity() <= 100);
+        assertEquals("spotify:artist:0LcJLqbBmaGUft1e9Mm8HV", artist.getUri());
+
         asyncCompleted.countDown();
       }
 
@@ -49,13 +60,22 @@ public class ArtistRequestTest {
   @Test
   public void shouldGetArtistResult_sync() throws Exception {
     final Api api = Api.DEFAULT_API;
-    final HttpManager mockedHttpManager = TestUtil.MockedHttpManager.returningJson("artist.json");
-    final ArtistRequest request = api.getArtist("0LcJLqbBmaGUft1e9Mm8HV").httpManager(mockedHttpManager).build();
+    ArtistRequest.Builder requestBuilder = api.getArtist("0LcJLqbBmaGUft1e9Mm8HV");
+    if (TestConfiguration.USE_MOCK_RESPONSES) {
+      requestBuilder.httpManager(TestUtil.MockedHttpManager.returningJson("artist.json"));
+    }
+    ArtistRequest request = requestBuilder.build();
 
     final Artist artist = request.get();
 
     assertNotNull(artist);
+    assertEquals("https://open.spotify.com/artist/0LcJLqbBmaGUft1e9Mm8HV", artist.getExternalUrls().get("spotify"));
+    assertNotNull(artist.getGenres());
     assertEquals("0LcJLqbBmaGUft1e9Mm8HV", artist.getId());
+    assertNotNull(artist.getImages());
+    assertEquals("ABBA", artist.getName());
+    assertTrue(artist.getPopularity() >= 0 && artist.getPopularity() <= 100);
+    assertEquals("spotify:artist:0LcJLqbBmaGUft1e9Mm8HV", artist.getUri());
   }
 
 }

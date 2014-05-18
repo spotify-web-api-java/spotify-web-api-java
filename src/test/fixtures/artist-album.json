@@ -1,0 +1,55 @@
+{
+    "href" : "https://api.spotify.com/v1/artists/1vCWHaC5f2uS3yhpwWbIA6/albums?offset=0&limit=2&album_type=single",
+    "items" : [ {
+        "album_type" : "single",
+        "external_urls" : {
+            "spotify" : "https://open.spotify.com/album/6HVPLh1TXzPnMqY7tAWLoL"
+        },
+        "href" : "https://api.spotify.com/v1/albums/6HVPLh1TXzPnMqY7tAWLoL",
+        "id" : "6HVPLh1TXzPnMqY7tAWLoL",
+        "images" : [ {
+            "height" : 640,
+            "url" : "https://d3rt1990lpmkn.cloudfront.net/original/4c252ea56b0276df6043db10747f4daf89714a93",
+            "width" : 640
+        }, {
+            "height" : 300,
+            "url" : "https://d3rt1990lpmkn.cloudfront.net/original/cc3db8170a3833140800a2cb291ed51977c6696a",
+            "width" : 300
+        }, {
+            "height" : 64,
+            "url" : "https://d3rt1990lpmkn.cloudfront.net/original/12a32170ff25f0e825472d20161cd75db433ee58",
+            "width" : 64
+        } ],
+        "name" : "Addicted To You",
+        "type" : "album",
+        "uri" : "spotify:album:6HVPLh1TXzPnMqY7tAWLoL"
+    }, {
+        "album_type" : "single",
+        "external_urls" : {
+            "spotify" : "https://open.spotify.com/album/5jvbjb51hQQAIycnBFS4cG"
+        },
+        "href" : "https://api.spotify.com/v1/albums/5jvbjb51hQQAIycnBFS4cG",
+        "id" : "5jvbjb51hQQAIycnBFS4cG",
+        "images" : [ {
+            "height" : 640,
+            "url" : "https://d3rt1990lpmkn.cloudfront.net/original/96e309e8f306742de5e23b6235e963c0dcbcf7bc",
+            "width" : 640
+        }, {
+            "height" : 300,
+            "url" : "https://d3rt1990lpmkn.cloudfront.net/original/8b32f93877ad126a2cecee24484d2bc0ed434e83",
+            "width" : 300
+        }, {
+            "height" : 64,
+            "url" : "https://d3rt1990lpmkn.cloudfront.net/original/797051eca4556983cbe70e23844c484c5522d907",
+            "width" : 64
+        } ],
+        "name" : "Addicted To You (Remixes)",
+        "type" : "album",
+        "uri" : "spotify:album:5jvbjb51hQQAIycnBFS4cG"
+    } ],
+    "limit" : 2,
+    "next" : "https://api.spotify.com/v1/artists/1vCWHaC5f2uS3yhpwWbIA6/albums?offset=2&limit=2&album_type=single",
+    "offset" : 0,
+    "previous" : null,
+    "total" : 178
+}
