@@ -137,7 +137,7 @@ public class ApiTest {
     Api api = Api.DEFAULT_API;
     Request request = api.searchTracks("moulat swalf").build();
     assertEquals("https://api.spotify.com:443/v1/search", request.toString());
-    assertHasParameter(request.toUrl(), "q", "moulat+swalf");
+    assertHasParameter(request.toUrl(), "q", "moulat swalf");
     assertHasParameter(request.toUrl(), "type", "track");
   }
 
@@ -164,7 +164,7 @@ public class ApiTest {
     Api api = Api.DEFAULT_API;
     Request request = api.searchTracks("moulat swalf").limit(2).build();
     assertEquals("https://api.spotify.com:443/v1/search", request.toString());
-    assertHasParameter(request.toUrl(), "q", "moulat+swalf");
+    assertHasParameter(request.toUrl(), "q", "moulat swalf");
     assertHasParameter(request.toUrl(), "limit", "2");
     assertHasParameter(request.toUrl(), "type", "track");
   }
@@ -174,7 +174,7 @@ public class ApiTest {
     Api api = Api.DEFAULT_API;
     Request request = api.searchTracks("moulat swalf").offset(2).build();
     assertEquals("https://api.spotify.com:443/v1/search", request.toString());
-    assertHasParameter(request.toUrl(), "q", "moulat+swalf");
+    assertHasParameter(request.toUrl(), "q", "moulat swalf");
     assertHasParameter(request.toUrl(), "offset", "2");
     assertHasParameter(request.toUrl(), "type", "track");
   }

@@ -8,6 +8,7 @@ import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 import se.michaelthelin.spotify.Api;
 import se.michaelthelin.spotify.HttpManager;
+import se.michaelthelin.spotify.TestConfiguration;
 import se.michaelthelin.spotify.TestUtil;
 import se.michaelthelin.spotify.models.Track;
 
@@ -24,8 +25,12 @@ public class TracksRequestTest {
   @Test
   public void shouldGetTracksResult_async() throws Exception {
     final Api api = Api.DEFAULT_API;
-    final HttpManager mockedHttpManager = TestUtil.MockedHttpManager.returningJson("tracks.json");
-    final TracksRequest request = api.getTracks("0eGsygTp906u18L0Oimnem", "1lDWb6b6ieDQ2xT7ewTC3G").httpManager(mockedHttpManager).build();
+
+    final TracksRequest.Builder requestBuilder = api.getTracks("0eGsygTp906u18L0Oimnem", "1lDWb6b6ieDQ2xT7ewTC3G");
+    if (TestConfiguration.USE_MOCK_RESPONSES) {
+      requestBuilder.httpManager(TestUtil.MockedHttpManager.returningJson("tracks.json"));
+    }
+    final TracksRequest request = requestBuilder.build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
@@ -57,8 +62,12 @@ public class TracksRequestTest {
   @Test
   public void shouldGetTracksResult_sync() throws Exception {
     final Api api = Api.DEFAULT_API;
-    final HttpManager mockedHttpManager = TestUtil.MockedHttpManager.returningJson("tracks.json");
-    final TracksRequest request = api.getTracks("0eGsygTp906u18L0Oimnem", "1lDWb6b6ieDQ2xT7ewTC3G").httpManager(mockedHttpManager).build();
+
+    final TracksRequest.Builder requestBuilder = api.getTracks("0eGsygTp906u18L0Oimnem", "1lDWb6b6ieDQ2xT7ewTC3G");
+    if (TestConfiguration.USE_MOCK_RESPONSES) {
+      requestBuilder.httpManager(TestUtil.MockedHttpManager.returningJson("tracks.json"));
+    }
+    final TracksRequest request = requestBuilder.build();
 
     final List<Track> tracks = request.get();
 
