@@ -4,7 +4,6 @@ import com.google.common.util.concurrent.SettableFuture;
 import net.sf.json.JSONObject;
 import se.michaelthelin.spotify.JsonUtil;
 import se.michaelthelin.spotify.exceptions.UnexpectedResponseException;
-import se.michaelthelin.spotify.models.Album;
 import se.michaelthelin.spotify.models.Page;
 import se.michaelthelin.spotify.models.SimpleAlbum;
 

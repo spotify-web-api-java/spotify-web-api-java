@@ -10,7 +10,7 @@ public interface Request {
     Builder host(String host);
     Builder port(int port);
     Builder scheme(Url.Scheme scheme);
-    Request build();
+    AbstractRequest build();
   }
 
   Url toUrl();

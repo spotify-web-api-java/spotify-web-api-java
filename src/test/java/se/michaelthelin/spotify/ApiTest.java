@@ -1,16 +1,14 @@
 package se.michaelthelin.spotify;
 
 import org.junit.Test;
-import se.michaelthelin.spotify.methods.Request;
 import se.michaelthelin.spotify.UtilProtos.Url.Scheme;
-import se.michaelthelin.spotify.UtilProtos.Url.Parameter;
-import se.michaelthelin.spotify.UtilProtos.Url;
+import se.michaelthelin.spotify.methods.Request;
 import se.michaelthelin.spotify.models.AlbumType;
+import static se.michaelthelin.spotify.Assertions.assertHasParameter;
 
 import java.util.Arrays;
 
 import static junit.framework.TestCase.assertEquals;
-import static org.junit.Assert.fail;
 
 public class ApiTest {
 
@@ -213,24 +211,6 @@ public class ApiTest {
     Api api = Api.DEFAULT_API;
     Request request = api.getUser("wizzler").build();
     assertEquals("https://api.spotify.com:443/v1/users/wizzler", request.toString());
-  }
-
-  private void assertHasParameter(Url url, String name, Object value) {
-    Parameter expected = Parameter.newBuilder().setName(name).setValue(value.toString()).build();
-    for (Parameter actual : url.getParametersList()) {
-      if (actual.equals(expected)) {
-        return;
-      }
-    }
-    fail(String.format("Actual URL %s does not contain parameter %s", url, expected));
-  }
-
-  private void assertNoParameter(Url url, String name) {
-    for (Parameter actual : url.getParametersList()) {
-      if (actual.getName().equals(name)) {
-        fail(String.format("Actual URL %s contains parameter %s", url, name));
-      }
-    }
   }
 
 }

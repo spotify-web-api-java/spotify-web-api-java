@@ -70,6 +70,8 @@ public abstract class AbstractRequest implements Request {
     assert (builder.scheme != null);
     assert (builder.parameters != null);
     assert (builder.parts != null);
+    assert (builder.bodyParameters != null);
+    assert (builder.headerParameters != null);
 
     if (builder.httpManager == null) {
       httpManager = Api.DEFAULT_HTTP_MANAGER;
@@ -83,6 +85,8 @@ public abstract class AbstractRequest implements Request {
              .setPort(builder.port)
              .setPath(builder.path)
              .addAllParameters(builder.parameters)
+             .addAllBodyParameters(builder.bodyParameters)
+             .addAllHeaderParameters(builder.headerParameters)
              .addAllParts(builder.parts)
              .build();
   }
@@ -95,7 +99,9 @@ public abstract class AbstractRequest implements Request {
     protected String path = null;
     protected HttpManager httpManager;
     protected List<Url.Parameter> parameters = new ArrayList<Url.Parameter>();
+    protected List<Url.Parameter> headerParameters = new ArrayList<Url.Parameter>();
     protected List<Url.Part> parts = new ArrayList<Url.Part>();
+    protected List<Url.Parameter> bodyParameters = new ArrayList<Url.Parameter>();
 
     public BuilderType httpManager(HttpManager httpManager) {
       this.httpManager = httpManager;
@@ -128,6 +134,28 @@ public abstract class AbstractRequest implements Request {
       return (BuilderType) this;
     }
 
+    public BuilderType body(String name, String value) {
+      assert (name != null);
+      assert (name.length() > 0);
+      assert (value != null);
+
+      Url.Parameter parameter = Url.Parameter.newBuilder().setName(name).setValue(value).build();
+      bodyParameters.add(parameter);
+
+      return (BuilderType) this;
+    }
+
+    public BuilderType header(String name, String value) {
+      assert (name != null);
+      assert (name.length() > 0);
+      assert (value != null);
+
+      Url.Parameter parameter= Url.Parameter.newBuilder().setName(name).setValue(value).build();
+      headerParameters.add(parameter);
+
+      return (BuilderType) this;
+    }
+
     public BuilderType part(Url.Part part) {
       assert (part != null);
       parts.add(part);
@@ -137,10 +165,6 @@ public abstract class AbstractRequest implements Request {
     public BuilderType path(String path) {
       this.path = path;
       return (BuilderType) this;
-    }
-
-    public Request build() {
-      throw new RuntimeException("Not implemented!");
     }
 
   }

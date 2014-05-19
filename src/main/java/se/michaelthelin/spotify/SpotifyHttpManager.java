@@ -3,6 +3,7 @@ package se.michaelthelin.spotify;
 import org.apache.commons.httpclient.*;
 import org.apache.commons.httpclient.cookie.CookiePolicy;
 import org.apache.commons.httpclient.methods.GetMethod;
+import org.apache.commons.httpclient.methods.PostMethod;
 import org.apache.commons.httpclient.params.HttpMethodParams;
 
 import se.michaelthelin.spotify.UtilProtos.Url;
@@ -66,9 +67,30 @@ public class SpotifyHttpManager implements HttpManager {
   }
 
   @Override
-  public String post(UtilProtos.Url url) {
-    throw new RuntimeException("Not implemented");
+  public String post(UtilProtos.Url url) throws IOException, UnexpectedResponseException {
+    assert (url != null);
+    String uri = UrlUtil.assemble(url);
+    PostMethod method = new PostMethod(uri);
+    method.setQueryString(getParametersAsNamedValuePairArray(url));
+    method.setRequestBody(getBodyParametersAsNamedValuePairArray(url));
+    for (Url.Parameter header : url.getHeaderParametersList()) {
+      method.setRequestHeader(header.getName(), header.getValue());
+    }
+    method.getParams().setCookiePolicy(CookiePolicy.BROWSER_COMPATIBILITY);
+    method.getParams().setParameter(HttpMethodParams.HTTP_CONTENT_CHARSET, "UTF-8");
+    return execute(method);
   }
+
+  private NameValuePair[] getBodyParametersAsNamedValuePairArray(Url url) {
+    List<NameValuePair> out = new ArrayList<NameValuePair>();
+    for (Url.Parameter parameter : url.getBodyParametersList()) {
+      if (parameter.hasName() && parameter.hasValue()) {
+        out.add(new NameValuePair(parameter.getName(), parameter.getValue().toString()));
+      }
+    }
+    return out.toArray(new NameValuePair[out.size()]);
+  }
+
 
   @Override
   public String delete(UtilProtos.Url url) {

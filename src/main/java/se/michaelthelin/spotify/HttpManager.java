@@ -24,7 +24,7 @@ public interface HttpManager {
    * @param url the {@link Url} to HTTP POST.
    * @return a String containing the body of the HTTP POST response.
    */
-  String post(Url url);
+  String post(Url url) throws UnexpectedResponseException, IOException;
 
   /**
    * Perform an HTTP DELETE request to the specified URL.
