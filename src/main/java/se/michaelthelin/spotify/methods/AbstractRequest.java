@@ -31,6 +31,10 @@ public abstract class AbstractRequest implements Request {
     return httpManager.get(url);
   }
 
+  public String postJson() throws IOException, UnexpectedResponseException {
+    return httpManager.post(url);
+  }
+
   protected boolean errorInJson(JSONObject jsonObject) {
     return (!jsonObject.isNullObject() && jsonObject.has("error"));
   }

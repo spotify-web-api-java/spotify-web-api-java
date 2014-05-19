@@ -71,13 +71,13 @@ public class SpotifyHttpManager implements HttpManager {
     assert (url != null);
     String uri = UrlUtil.assemble(url);
     PostMethod method = new PostMethod(uri);
+    method.getParams().setCookiePolicy(CookiePolicy.BROWSER_COMPATIBILITY);
+    method.getParams().setParameter(HttpMethodParams.HTTP_CONTENT_CHARSET, "UTF-8");
     method.setQueryString(getParametersAsNamedValuePairArray(url));
     method.setRequestBody(getBodyParametersAsNamedValuePairArray(url));
     for (Url.Parameter header : url.getHeaderParametersList()) {
       method.setRequestHeader(header.getName(), header.getValue());
     }
-    method.getParams().setCookiePolicy(CookiePolicy.BROWSER_COMPATIBILITY);
-    method.getParams().setParameter(HttpMethodParams.HTTP_CONTENT_CHARSET, "UTF-8");
     return execute(method);
   }
 
