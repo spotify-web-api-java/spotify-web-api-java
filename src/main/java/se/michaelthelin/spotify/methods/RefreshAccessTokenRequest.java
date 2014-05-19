@@ -6,7 +6,6 @@ import se.michaelthelin.spotify.JsonUtil;
 import se.michaelthelin.spotify.exceptions.ErrorResponseException;
 import se.michaelthelin.spotify.exceptions.UnexpectedResponseException;
 import se.michaelthelin.spotify.models.RefreshAccessTokenResponse;
-import se.michaelthelin.spotify.models.TokenResponse;
 
 import java.io.IOException;
 

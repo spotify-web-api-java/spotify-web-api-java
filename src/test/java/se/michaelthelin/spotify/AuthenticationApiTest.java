@@ -29,4 +29,22 @@ public class AuthenticationApiTest {
     assertHasHeader(request.toUrl(), "Authorization", "Basic " + new String(Base64.encodeBase64(idSecret.getBytes())));
   }
 
+  @Test
+  public void shouldCreateRefreshAccessTokenUrl() {
+    final AuthenticationApi api = AuthenticationApi.DEFAULT_API;
+
+    final String clientId = "myClientId";
+    final String clientSecret = "myClientSecret";
+    final String refreshToken = "myRefreshToken";
+
+    final Request request = api.refreshAccessToken(clientId, clientSecret, refreshToken).build();
+
+    assertEquals("https://accounts.spotify.com:443/api/token", request.toString());
+    assertHasBodyParameter(request.toUrl(), "grant_type", "refresh_token");
+    assertHasBodyParameter(request.toUrl(), "refresh_token", refreshToken);
+
+    final String idSecret = clientId + ":" + clientSecret;
+    assertHasHeader(request.toUrl(), "Authorization", "Basic " + new String(Base64.encodeBase64(idSecret.getBytes())));
+  }
+
 }
