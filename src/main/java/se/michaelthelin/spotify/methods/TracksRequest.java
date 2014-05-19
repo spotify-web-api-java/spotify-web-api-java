@@ -26,7 +26,7 @@ public class TracksRequest extends AbstractRequest {
         Exception exception = getExceptionFromJson(jsonObject);
         tracksFuture.setException(exception);
       } else {
-        tracksFuture.set(JsonUtil.createTracks(getJson()));
+        tracksFuture.set(JsonUtil.createTracks(jsonObject));
       }
     } catch (IOException e) {
       tracksFuture.setException(e);

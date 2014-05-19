@@ -1,0 +1,185 @@
+{
+    "href": "https://api.spotify.com/v1/users/wizzler/playlists",
+    "items": [
+        {
+            "collaborative": false,
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/wizzler/playlists/00wHcTN0zQiun4xri9pmvX"
+            },
+            "href": "https://api.spotify.com/v1/users/wizzler/playlists/00wHcTN0zQiun4xri9pmvX",
+            "id": "00wHcTN0zQiun4xri9pmvX",
+            "name": "Movie Soundtrack Masterpieces",
+            "owner": {
+                "external_urls": {
+                    "spotify": "http://open.spotify.com/user/wizzler"
+                },
+                "href": "https://api.spotify.com/v1/users/wizzler",
+                "id": "wizzler",
+                "type": "user",
+                "uri": "spotify:user:wizzler"
+            },
+            "public": true,
+            "tracks": {
+                "href": "https://api.spotify.com/v1/users/wizzler/playlists/00wHcTN0zQiun4xri9pmvX/tracks",
+                "total": 50
+            },
+            "type": "playlist",
+            "uri": "spotify:user:wizzler:playlist:00wHcTN0zQiun4xri9pmvX"
+        },
+        {
+            "collaborative": false,
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/wizzler/playlists/3FJd21jWvCjGCLx7eKrext"
+            },
+            "href": "https://api.spotify.com/v1/users/wizzler/playlists/3FJd21jWvCjGCLx7eKrext",
+            "id": "3FJd21jWvCjGCLx7eKrext",
+            "name": "Video Game Masterpieces",
+            "owner": {
+                "external_urls": {
+                    "spotify": "http://open.spotify.com/user/wizzler"
+                },
+                "href": "https://api.spotify.com/v1/users/wizzler",
+                "id": "wizzler",
+                "type": "user",
+                "uri": "spotify:user:wizzler"
+            },
+            "public": true,
+            "tracks": {
+                "href": "https://api.spotify.com/v1/users/wizzler/playlists/3FJd21jWvCjGCLx7eKrext/tracks",
+                "total": 29
+            },
+            "type": "playlist",
+            "uri": "spotify:user:wizzler:playlist:3FJd21jWvCjGCLx7eKrext"
+        },
+        {
+            "collaborative": false,
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/wizzler/playlists/6JJndiJHFTLBoth7aUrvTt"
+            },
+            "href": "https://api.spotify.com/v1/users/wizzler/playlists/6JJndiJHFTLBoth7aUrvTt",
+            "id": "6JJndiJHFTLBoth7aUrvTt",
+            "name": "Blue Mountain State",
+            "owner": {
+                "external_urls": {
+                    "spotify": "http://open.spotify.com/user/wizzler"
+                },
+                "href": "https://api.spotify.com/v1/users/wizzler",
+                "id": "wizzler",
+                "type": "user",
+                "uri": "spotify:user:wizzler"
+            },
+            "public": true,
+            "tracks": {
+                "href": "https://api.spotify.com/v1/users/wizzler/playlists/6JJndiJHFTLBoth7aUrvTt/tracks",
+                "total": 67
+            },
+            "type": "playlist",
+            "uri": "spotify:user:wizzler:playlist:6JJndiJHFTLBoth7aUrvTt"
+        },
+        {
+            "collaborative": false,
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/wizzler/playlists/2LZYIzBoCXAdx8buWmUwQe"
+            },
+            "href": "https://api.spotify.com/v1/users/wizzler/playlists/2LZYIzBoCXAdx8buWmUwQe",
+            "id": "2LZYIzBoCXAdx8buWmUwQe",
+            "name": "Barney's Get Psyched Mix",
+            "owner": {
+                "external_urls": {
+                    "spotify": "http://open.spotify.com/user/wizzler"
+                },
+                "href": "https://api.spotify.com/v1/users/wizzler",
+                "id": "wizzler",
+                "type": "user",
+                "uri": "spotify:user:wizzler"
+            },
+            "public": true,
+            "tracks": {
+                "href": "https://api.spotify.com/v1/users/wizzler/playlists/2LZYIzBoCXAdx8buWmUwQe/tracks",
+                "total": 11
+            },
+            "type": "playlist",
+            "uri": "spotify:user:wizzler:playlist:2LZYIzBoCXAdx8buWmUwQe"
+        },
+        {
+            "collaborative": false,
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/wizzler/playlists/6cWcjjZlVb8UGW1ZiMKf3l"
+            },
+            "href": "https://api.spotify.com/v1/users/wizzler/playlists/6cWcjjZlVb8UGW1ZiMKf3l",
+            "id": "6cWcjjZlVb8UGW1ZiMKf3l",
+            "name": "Retro Made Modern",
+            "owner": {
+                "external_urls": {
+                    "spotify": "http://open.spotify.com/user/wizzler"
+                },
+                "href": "https://api.spotify.com/v1/users/wizzler",
+                "id": "wizzler",
+                "type": "user",
+                "uri": "spotify:user:wizzler"
+            },
+            "public": true,
+            "tracks": {
+                "href": "https://api.spotify.com/v1/users/wizzler/playlists/6cWcjjZlVb8UGW1ZiMKf3l/tracks",
+                "total": 40
+            },
+            "type": "playlist",
+            "uri": "spotify:user:wizzler:playlist:6cWcjjZlVb8UGW1ZiMKf3l"
+        },
+        {
+            "collaborative": false,
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/wizzler/starred/"
+            },
+            "href": "https://api.spotify.com/v1/users/wizzler/starred/",
+            "id": null,
+            "name": "Starred",
+            "owner": {
+                "external_urls": {
+                    "spotify": "http://open.spotify.com/user/wizzler"
+                },
+                "href": "https://api.spotify.com/v1/users/wizzler",
+                "id": "wizzler",
+                "type": "user",
+                "uri": "spotify:user:wizzler"
+            },
+            "public": true,
+            "tracks": {
+                "href": "https://api.spotify.com/v1/users/wizzler/starred/tracks",
+                "total": 57
+            },
+            "type": "playlist",
+            "uri": "spotify:user:wizzler:starred"
+        },
+        {
+            "collaborative": false,
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/martin.danielson/playlists/2HiFqdXD3KVfFS4GeOGS06"
+            },
+            "href": "https://api.spotify.com/v1/users/martin.danielson/playlists/2HiFqdXD3KVfFS4GeOGS06",
+            "id": "2HiFqdXD3KVfFS4GeOGS06",
+            "name": "Death Valley 2013",
+            "owner": {
+                "external_urls": {
+                    "spotify": "http://open.spotify.com/user/martin.danielson"
+                },
+                "href": "https://api.spotify.com/v1/users/martin.danielson",
+                "id": "martin.danielson",
+                "type": "user",
+                "uri": "spotify:user:martin.danielson"
+            },
+            "public": true,
+            "tracks": {
+                "href": "https://api.spotify.com/v1/users/martin.danielson/playlists/2HiFqdXD3KVfFS4GeOGS06/tracks",
+                "total": 27
+            },
+            "type": "playlist",
+            "uri": "spotify:user:martin.danielson:playlist:2HiFqdXD3KVfFS4GeOGS06"
+        }
+    ],
+    "limit": 7,
+    "next": null,
+    "offset": 0,
+    "previous": null,
+    "total": 7
+}

@@ -320,7 +320,7 @@ public class JsonUtil {
     return page;
   }
 
-  private static Page<Album> createItemlessPage(JSONObject pageJson) {
+  private static Page createItemlessPage(JSONObject pageJson) {
     Page page = new Page();
     page.setHref(pageJson.getString("href"));
     page.setLimit(pageJson.getInt("limit"));
@@ -424,6 +424,42 @@ public class JsonUtil {
     refreshAccessTokenResponse.setExpiresIn(jsonObject.getInt("expires_in"));
 
     return refreshAccessTokenResponse;
+  }
+
+  public static Page<SimplePlaylist> createSimplePlaylistsPage(JSONObject jsonObject) {
+    Page<SimplePlaylist> playlistsPage = createItemlessPage(jsonObject);
+    playlistsPage.setItems(createSimplePlaylists(jsonObject.getJSONArray("items")));
+    return playlistsPage;
+  }
+
+  public static List<SimplePlaylist> createSimplePlaylists(JSONArray playlistsJson) {
+    List<SimplePlaylist> returnedPlaylists = new ArrayList<SimplePlaylist>();
+    for (int i = 0; i < playlistsJson.size(); i++) {
+      returnedPlaylists.add(createSimplePlaylist(playlistsJson.getJSONObject(i)));
+    }
+    return returnedPlaylists;
+  }
+
+  public static SimplePlaylist createSimplePlaylist(JSONObject playlistJson) {
+    SimplePlaylist playlist = new SimplePlaylist();
+    playlist.setCollaborative(playlistJson.getBoolean("collaborative"));
+    playlist.setExternalUrls(createExternalUrls(playlistJson.getJSONObject("external_urls")));
+    playlist.setHref(playlistJson.getString("href"));
+    playlist.setId(playlistJson.getString("id"));
+    playlist.setName(playlistJson.getString("name"));
+    playlist.setOwner(createUser(playlistJson.getJSONObject("owner")));
+    playlist.setPublicAccess(playlistJson.getBoolean("public"));
+    playlist.setTracks(createPlaylistTracksInformation(playlistJson.getJSONObject("tracks")));
+    playlist.setType(createSpotifyEntityType(playlistJson.getString("type")));
+    playlist.setUri(playlistJson.getString("uri"));
+    return playlist;
+  }
+
+  private static PlaylistTracksInformation createPlaylistTracksInformation(JSONObject tracksInformationJson) {
+    PlaylistTracksInformation playlistTracksInformation = new PlaylistTracksInformation();
+    playlistTracksInformation.setHref(tracksInformationJson.getString("href"));
+    playlistTracksInformation.setTotal(tracksInformationJson.getInt("total"));
+    return playlistTracksInformation;
   }
 
 }

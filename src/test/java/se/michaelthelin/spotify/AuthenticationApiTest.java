@@ -26,7 +26,7 @@ public class AuthenticationApiTest {
     assertHasBodyParameter(request.toUrl(), "redirect_uri", redirectUri);
 
     final String idSecret = clientId + ":" + clientSecret;
-    assertHasHeader(request.toUrl(), "Authorization", "Authorization: Basic " + new String(Base64.encodeBase64(idSecret.getBytes())));
+    assertHasHeader(request.toUrl(), "Authorization", "Basic " + new String(Base64.encodeBase64(idSecret.getBytes())));
   }
 
 }

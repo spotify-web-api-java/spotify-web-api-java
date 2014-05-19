@@ -34,15 +34,43 @@ public class SpotifyHttpManager implements HttpManager {
     String uri = UrlUtil.assemble(url);
     GetMethod method = new GetMethod(uri);
     method.setQueryString(getParametersAsNamedValuePairArray(url));
+    for (Url.Parameter header : url.getHeaderParametersList()) {
+      method.setRequestHeader(header.getName(), header.getValue());
+    }
     method.getParams().setCookiePolicy(CookiePolicy.BROWSER_COMPATIBILITY);
     method.getParams().setParameter(
             HttpMethodParams.HTTP_CONTENT_CHARSET, "UTF-8");
     return execute(method);
   }
 
+  @Override
+  public String post(UtilProtos.Url url) throws IOException, UnexpectedResponseException {
+    assert (url != null);
+    String uri = UrlUtil.assemble(url);
+    PostMethod method = new PostMethod(uri);
+    method.getParams().setCookiePolicy(CookiePolicy.BROWSER_COMPATIBILITY);
+    method.getParams().setParameter(HttpMethodParams.HTTP_CONTENT_CHARSET, "UTF-8");
+    method.setQueryString(getParametersAsNamedValuePairArray(url));
+    method.setRequestBody(getBodyParametersAsNamedValuePairArray(url));
+    for (Url.Parameter header : url.getHeaderParametersList()) {
+      method.setRequestHeader(header.getName(), header.getValue());
+    }
+    return execute(method);
+  }
+
   private NameValuePair[] getParametersAsNamedValuePairArray(Url url) {
     List<NameValuePair> out = new ArrayList<NameValuePair>();
     for (Url.Parameter parameter : url.getParametersList()) {
+      if (parameter.hasName() && parameter.hasValue()) {
+        out.add(new NameValuePair(parameter.getName(), parameter.getValue().toString()));
+      }
+    }
+    return out.toArray(new NameValuePair[out.size()]);
+  }
+
+  private NameValuePair[] getBodyParametersAsNamedValuePairArray(Url url) {
+    List<NameValuePair> out = new ArrayList<NameValuePair>();
+    for (Url.Parameter parameter : url.getBodyParametersList()) {
       if (parameter.hasName() && parameter.hasValue()) {
         out.add(new NameValuePair(parameter.getName(), parameter.getValue().toString()));
       }
@@ -65,32 +93,6 @@ public class SpotifyHttpManager implements HttpManager {
       method.releaseConnection();
     }
   }
-
-  @Override
-  public String post(UtilProtos.Url url) throws IOException, UnexpectedResponseException {
-    assert (url != null);
-    String uri = UrlUtil.assemble(url);
-    PostMethod method = new PostMethod(uri);
-    method.getParams().setCookiePolicy(CookiePolicy.BROWSER_COMPATIBILITY);
-    method.getParams().setParameter(HttpMethodParams.HTTP_CONTENT_CHARSET, "UTF-8");
-    method.setQueryString(getParametersAsNamedValuePairArray(url));
-    method.setRequestBody(getBodyParametersAsNamedValuePairArray(url));
-    for (Url.Parameter header : url.getHeaderParametersList()) {
-      method.setRequestHeader(header.getName(), header.getValue());
-    }
-    return execute(method);
-  }
-
-  private NameValuePair[] getBodyParametersAsNamedValuePairArray(Url url) {
-    List<NameValuePair> out = new ArrayList<NameValuePair>();
-    for (Url.Parameter parameter : url.getBodyParametersList()) {
-      if (parameter.hasName() && parameter.hasValue()) {
-        out.add(new NameValuePair(parameter.getName(), parameter.getValue().toString()));
-      }
-    }
-    return out.toArray(new NameValuePair[out.size()]);
-  }
-
 
   @Override
   public String delete(UtilProtos.Url url) {

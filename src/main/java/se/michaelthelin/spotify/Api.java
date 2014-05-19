@@ -163,8 +163,8 @@ public class Api {
     return builder;
   }
 
-  public PlaylistRequest.Builder getPlaylistsForUser(String userId) {
-    PlaylistRequest.Builder builder = PlaylistRequest.builder();
+  public UserPlaylistsRequest.Builder getPlaylistsForUser(String userId) {
+    UserPlaylistsRequest.Builder builder = UserPlaylistsRequest.builder();
     setDefaults(builder);
     builder.username(userId);
     return builder;

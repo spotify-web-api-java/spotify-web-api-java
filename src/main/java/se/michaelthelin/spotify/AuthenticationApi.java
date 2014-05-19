@@ -43,13 +43,6 @@ public class AuthenticationApi {
     return builder;
   }
 
-  private void setDefaults(Request.Builder builder) {
-    builder.httpManager(httpManager);
-    builder.scheme(scheme);
-    builder.host(host);
-    builder.port(port);
-  }
-
   public RefreshAccessTokenRequest.Builder refreshAccessToken(String clientId, String clientSecret, String refreshToken) {
     RefreshAccessTokenRequest.Builder builder = RefreshAccessTokenRequest.builder();
     setDefaults(builder);
@@ -57,6 +50,13 @@ public class AuthenticationApi {
     builder.refreshToken(refreshToken);
     builder.authorizationHeader(clientId, clientSecret);
     return builder;
+  }
+
+  private void setDefaults(Request.Builder builder) {
+    builder.httpManager(httpManager);
+    builder.scheme(scheme);
+    builder.host(host);
+    builder.port(port);
   }
 
   public static class Builder {

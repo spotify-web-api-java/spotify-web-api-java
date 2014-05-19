@@ -4,6 +4,8 @@ import org.junit.Test;
 import se.michaelthelin.spotify.UtilProtos.Url.Scheme;
 import se.michaelthelin.spotify.methods.Request;
 import se.michaelthelin.spotify.models.AlbumType;
+
+import static se.michaelthelin.spotify.Assertions.assertHasHeader;
 import static se.michaelthelin.spotify.Assertions.assertHasParameter;
 
 import java.util.Arrays;
@@ -216,8 +218,9 @@ public class ApiTest {
   @Test
   public void shouldCreateUrlForListingAUsersPlaylists() {
     Api api = Api.DEFAULT_API;
-    Request request = api.getPlaylistsForUser("wizzler").build();
+    Request request = api.getPlaylistsForUser("wizzler").accessToken("myAccessToken").build();
     assertEquals("https://api.spotify.com:443/v1/users/wizzler/playlists", request.toString());
+    assertHasHeader(request.toUrl(), "Authorization", "Bearer myAccessToken");
   }
 
 }
