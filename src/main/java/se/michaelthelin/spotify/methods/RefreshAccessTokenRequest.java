@@ -5,13 +5,14 @@ import org.apache.commons.codec.binary.Base64;
 import se.michaelthelin.spotify.JsonUtil;
 import se.michaelthelin.spotify.exceptions.ErrorResponseException;
 import se.michaelthelin.spotify.exceptions.UnexpectedResponseException;
+import se.michaelthelin.spotify.models.RefreshAccessTokenResponse;
 import se.michaelthelin.spotify.models.TokenResponse;
 
 import java.io.IOException;
 
-public class TokenRequest extends AbstractRequest {
+public class RefreshAccessTokenRequest extends AbstractRequest {
 
-  protected TokenRequest(Builder builder) {
+  protected RefreshAccessTokenRequest(Builder builder) {
     super(builder);
   }
 
@@ -19,7 +20,7 @@ public class TokenRequest extends AbstractRequest {
     return new Builder();
   }
 
-  public TokenResponse post() throws IOException, UnexpectedResponseException, ErrorResponseException {
+  public RefreshAccessTokenResponse post() throws IOException, UnexpectedResponseException, ErrorResponseException {
     String json = postJson();
     JSONObject jsonObject = JSONObject.fromObject(json);
 
@@ -27,7 +28,7 @@ public class TokenRequest extends AbstractRequest {
       throw new ErrorResponseException(jsonObject.getString("error_description"));
     }
 
-    return JsonUtil.createTokenResponse(jsonObject);
+    return JsonUtil.createRefreshAccessTokenResponse(jsonObject);
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
@@ -46,19 +47,15 @@ public class TokenRequest extends AbstractRequest {
       return body("grant_type", grantType);
     }
 
-    public Builder code(String code) {
-      assert (code != null);
-      return body("code", code);
+    public Builder refreshToken(String refreshToken) {
+      assert (refreshToken != null);
+      return body("refresh_token", refreshToken);
     }
 
-    public Builder redirectUri(String redirectUri) {
-      assert (redirectUri != null);
-      return body("redirect_uri", redirectUri);
-    }
-
-    public TokenRequest build() {
+    public RefreshAccessTokenRequest build() {
       path("/api/token");
-      return new TokenRequest(this);
+      return new RefreshAccessTokenRequest(this);
     }
   }
+
 }

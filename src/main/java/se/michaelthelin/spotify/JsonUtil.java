@@ -405,10 +405,6 @@ public class JsonUtil {
     return Product.valueOf(product.toUpperCase());
   }
 
-  public static TokenResponse createTokenResponse(String tokenResponse) {
-    return createTokenResponse(JSONObject.fromObject(tokenResponse));
-  }
-
   public static TokenResponse createTokenResponse(JSONObject tokenResponse) {
     TokenResponse response = new TokenResponse();
 
@@ -419,4 +415,15 @@ public class JsonUtil {
 
     return response;
   }
+
+  public static RefreshAccessTokenResponse createRefreshAccessTokenResponse(JSONObject jsonObject) {
+    RefreshAccessTokenResponse refreshAccessTokenResponse = new RefreshAccessTokenResponse();
+
+    refreshAccessTokenResponse.setTokenType(jsonObject.getString("token_type"));
+    refreshAccessTokenResponse.setAccessToken(jsonObject.getString("access_token"));
+    refreshAccessTokenResponse.setExpiresIn(jsonObject.getInt("expires_in"));
+
+    return refreshAccessTokenResponse;
+  }
+
 }

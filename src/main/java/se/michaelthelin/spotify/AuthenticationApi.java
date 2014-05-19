@@ -1,6 +1,8 @@
 package se.michaelthelin.spotify;
 
 import se.michaelthelin.spotify.UtilProtos.Url.Scheme;
+import se.michaelthelin.spotify.methods.RefreshAccessTokenRequest;
+import se.michaelthelin.spotify.methods.Request;
 import se.michaelthelin.spotify.methods.TokenRequest;
 
 public class AuthenticationApi {
@@ -41,11 +43,20 @@ public class AuthenticationApi {
     return builder;
   }
 
-  private void setDefaults(TokenRequest.Builder builder) {
+  private void setDefaults(Request.Builder builder) {
     builder.httpManager(httpManager);
     builder.scheme(scheme);
     builder.host(host);
     builder.port(port);
+  }
+
+  public RefreshAccessTokenRequest.Builder refreshAccessToken(String clientId, String clientSecret, String refreshToken) {
+    RefreshAccessTokenRequest.Builder builder = RefreshAccessTokenRequest.builder();
+    setDefaults(builder);
+    builder.grantType("refresh_token");
+    builder.refreshToken(refreshToken);
+    builder.authorizationHeader(clientId, clientSecret);
+    return builder;
   }
 
   public static class Builder {
