@@ -213,4 +213,11 @@ public class ApiTest {
     assertEquals("https://api.spotify.com:443/v1/users/wizzler", request.toString());
   }
 
+  @Test
+  public void shouldCreateUrlForListingAUsersPlaylists() {
+    Api api = Api.DEFAULT_API;
+    Request request = api.getPlaylistsForUser("wizzler").build();
+    assertEquals("https://api.spotify.com:443/v1/users/wizzler/playlists", request.toString());
+  }
+
 }

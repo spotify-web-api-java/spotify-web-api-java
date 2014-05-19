@@ -163,13 +163,19 @@ public class Api {
     return builder;
   }
 
+  public PlaylistRequest.Builder getPlaylistsForUser(String userId) {
+    PlaylistRequest.Builder builder = PlaylistRequest.builder();
+    setDefaults(builder);
+    builder.username(userId);
+    return builder;
+  }
+
   void setDefaults(Request.Builder builder) {
     builder.httpManager(httpManager);
     builder.scheme(scheme);
     builder.host(host);
     builder.port(port);
   }
-
 
   public static class Builder {
 
