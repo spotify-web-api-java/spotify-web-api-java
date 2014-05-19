@@ -8,10 +8,8 @@ import se.michaelthelin.spotify.exceptions.NotFoundException;
 import se.michaelthelin.spotify.exceptions.UnexpectedResponseException;
 import se.michaelthelin.spotify.models.Page;
 import se.michaelthelin.spotify.models.SimplePlaylist;
-import se.michaelthelin.spotify.models.Track;
 
 import java.io.IOException;
-import java.util.List;
 
 public class UserPlaylistsRequest extends AbstractRequest {
 
@@ -50,7 +48,6 @@ public class UserPlaylistsRequest extends AbstractRequest {
   public static Builder builder() {
     return new Builder();
   }
-
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 

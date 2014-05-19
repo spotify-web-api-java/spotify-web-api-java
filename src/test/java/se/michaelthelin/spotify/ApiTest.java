@@ -2,12 +2,15 @@ package se.michaelthelin.spotify;
 
 import org.junit.Test;
 import se.michaelthelin.spotify.UtilProtos.Url.Scheme;
+import se.michaelthelin.spotify.exceptions.ErrorResponseException;
+import se.michaelthelin.spotify.exceptions.UnexpectedResponseException;
 import se.michaelthelin.spotify.methods.Request;
 import se.michaelthelin.spotify.models.AlbumType;
 
 import static se.michaelthelin.spotify.Assertions.assertHasHeader;
 import static se.michaelthelin.spotify.Assertions.assertHasParameter;
 
+import java.io.IOException;
 import java.util.Arrays;
 
 import static junit.framework.TestCase.assertEquals;
@@ -216,9 +219,11 @@ public class ApiTest {
   }
 
   @Test
-  public void shouldCreateUrlForListingAUsersPlaylists() {
-    Api api = Api.DEFAULT_API;
-    Request request = api.getPlaylistsForUser("wizzler").accessToken("myAccessToken").build();
+  public void shouldCreateUrlForListingAUsersPlaylists() throws UnexpectedResponseException, ErrorResponseException, IOException {
+    final String accessToken = "myVeryLongAccessToken";
+    final Api api = Api.builder().authenticationApi(AuthenticationApi.builder().accessToken(accessToken).build()).build();
+
+    Request request = api.getPlaylistsForUser("wizzler").build();
     assertEquals("https://api.spotify.com:443/v1/users/wizzler/playlists", request.toString());
     assertHasHeader(request.toUrl(), "Authorization", "Bearer myAccessToken");
   }

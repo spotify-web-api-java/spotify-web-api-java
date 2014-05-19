@@ -5,8 +5,10 @@ import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.SettableFuture;
 import org.junit.Test;
 import se.michaelthelin.spotify.Api;
+import se.michaelthelin.spotify.AuthenticationApi;
 import se.michaelthelin.spotify.TestUtil;
 import se.michaelthelin.spotify.exceptions.BadFieldException;
+import se.michaelthelin.spotify.exceptions.ErrorResponseException;
 import se.michaelthelin.spotify.exceptions.NotFoundException;
 import se.michaelthelin.spotify.exceptions.UnexpectedResponseException;
 import se.michaelthelin.spotify.models.Page;
@@ -22,14 +24,12 @@ import static junit.framework.TestCase.*;
 public class UserPlaylistsRequestTest {
 
   @Test
-  public void shouldGetPlaylistsForUser_async() throws UnexpectedResponseException, BadFieldException, NotFoundException, IOException, InterruptedException {
-    final Api api = Api.DEFAULT_API;
-
+  public void shouldGetPlaylistsForUser_async() throws UnexpectedResponseException, BadFieldException, NotFoundException, IOException, InterruptedException, ErrorResponseException {
     final String accessToken = "myVeryLongAccessToken";
+    final Api api = Api.builder().authenticationApi(AuthenticationApi.builder().accessToken(accessToken).build()).build();
 
     final UserPlaylistsRequest request = api
             .getPlaylistsForUser("wizzler")
-            .accessToken(accessToken)
             .httpManager(TestUtil.MockedHttpManager.returningJson("user-playlists.json"))
             .build();
 
@@ -75,14 +75,12 @@ public class UserPlaylistsRequestTest {
   }
 
   @Test
-  public void shouldGetPlaylistsForUser_sync() throws UnexpectedResponseException, BadFieldException, NotFoundException, IOException {
-    final Api api = Api.DEFAULT_API;
-
+  public void shouldGetPlaylistsForUser_sync() throws UnexpectedResponseException, BadFieldException, NotFoundException, IOException, ErrorResponseException {
     final String accessToken = "myVeryLongAccessToken";
+    final Api api = Api.builder().authenticationApi(AuthenticationApi.builder().accessToken(accessToken).build()).build();
 
     final UserPlaylistsRequest request = api
             .getPlaylistsForUser("wizzler")
-            .accessToken(accessToken)
             .httpManager(TestUtil.MockedHttpManager.returningJson("user-playlists.json"))
             .build();
 
