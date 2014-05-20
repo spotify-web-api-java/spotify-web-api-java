@@ -4,9 +4,7 @@ import com.google.common.base.Joiner;
 import com.google.common.util.concurrent.SettableFuture;
 import net.sf.json.JSONObject;
 import se.michaelthelin.spotify.JsonUtil;
-import se.michaelthelin.spotify.exceptions.BadFieldException;
-import se.michaelthelin.spotify.exceptions.NotFoundException;
-import se.michaelthelin.spotify.exceptions.UnexpectedResponseException;
+import se.michaelthelin.spotify.exceptions.*;
 import se.michaelthelin.spotify.models.AlbumType;
 import se.michaelthelin.spotify.models.Page;
 import se.michaelthelin.spotify.models.SimpleAlbum;
@@ -30,12 +28,16 @@ public class AlbumsForArtistRequest extends AbstractRequest {
       searchResultFuture.setException(e);
     } catch (UnexpectedResponseException e) {
       searchResultFuture.setException(e);
+    } catch (NoCredentialsException e) {
+      searchResultFuture.setException(e);
+    } catch (ErrorResponseException e) {
+      searchResultFuture.setException(e);
     }
 
     return searchResultFuture;
   }
 
-  public Page<SimpleAlbum> get() throws IOException, UnexpectedResponseException, NotFoundException, BadFieldException {
+  public Page<SimpleAlbum> get() throws IOException, UnexpectedResponseException, NotFoundException, BadFieldException, NoCredentialsException, ErrorResponseException {
     return JsonUtil.createSimpleAlbumPage(getJson());
   }
 

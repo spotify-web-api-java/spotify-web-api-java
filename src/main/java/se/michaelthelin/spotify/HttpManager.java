@@ -41,4 +41,22 @@ public interface HttpManager {
    * @return a String containing the body of the HTTP PUTresponse.
    */
   String put(Url url);
+
+  boolean hasAccessToken();
+
+  void setAccessToken(String accessToken);
+
+  boolean hasBaseCredentials();
+
+  String authenticatedGet(Url url) throws IOException, UnexpectedResponseException;
+
+  String authenticatedPost(Url url) throws IOException, UnexpectedResponseException;
+
+  String getClientId();
+
+  String getClientSecret();
+
+  String getCode();
+
+  String getRedirectUri();
 }

@@ -25,7 +25,7 @@ public class TokenRequestTest {
 
     final AuthenticationApi api = AuthenticationApi.DEFAULT_API;
 
-    final TokenRequest.Builder requestBuilder = api.getTokens(clientId, clientSecret, code, redirectUri);
+    final TokenRequest.Builder requestBuilder = api.getTokens();
     requestBuilder.httpManager(TestUtil.MockedHttpManager.returningJson("auth-tokens.json"));
     final TokenRequest request = requestBuilder.build();
 
@@ -36,7 +36,7 @@ public class TokenRequestTest {
       assertEquals("Bearer", tokens.getTokenType());
       assertEquals(3600, tokens.getExpiresIn());
       assertEquals("AQAZ54v-sV7LO_R64q76KtDMKeQcPkBIPAuKFqYr1kSAeaU8_S8ZxbnqcNizeQiSJr5DhMsJvCdgS7_KUrHd7rw1z7h_FJkL5OVOnthZrNFdO5NL7gUvNJRF6hdbIkAnEHM", tokens.getRefreshtoken());
-    } catch (ErrorResponseException e) {
+    } catch (Exception e) {
       fail(e.getMessage());
     }
   }

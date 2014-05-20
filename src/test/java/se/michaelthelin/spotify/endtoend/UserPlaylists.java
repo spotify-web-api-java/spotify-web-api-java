@@ -22,7 +22,11 @@ public class UserPlaylists {
             .build();
 
     try {
-      Page<SimplePlaylist> playlistsPage = api.getPlaylistsForUser("thelinmichael").build().get();
+      Page<SimplePlaylist> michaelsPlaylistsPage = api.getPlaylistsForUser("thelinmichael").build().get();
+      System.out.println("Michael has " + michaelsPlaylistsPage.getTotal() + " playlists.");
+
+      Page<SimplePlaylist> faruksPlaylistsPage = api.getPlaylistsForUser("faruksahin").build().get();
+      System.out.println("Faruk has " + faruksPlaylistsPage.getTotal() + " playlists.");
     } catch (Exception e) {
       fail(e.getMessage());
     }

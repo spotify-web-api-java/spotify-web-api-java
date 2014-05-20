@@ -3,9 +3,7 @@ package se.michaelthelin.spotify.methods;
 import com.google.common.util.concurrent.SettableFuture;
 import net.sf.json.JSONObject;
 import se.michaelthelin.spotify.JsonUtil;
-import se.michaelthelin.spotify.exceptions.BadFieldException;
-import se.michaelthelin.spotify.exceptions.NotFoundException;
-import se.michaelthelin.spotify.exceptions.UnexpectedResponseException;
+import se.michaelthelin.spotify.exceptions.*;
 import se.michaelthelin.spotify.models.Album;
 
 import java.io.IOException;
@@ -32,16 +30,20 @@ public class AlbumRequest extends AbstractRequest {
       albumFuture.setException(e);
     } catch (UnexpectedResponseException e) {
       albumFuture.setException(e);
+    } catch (NoCredentialsException e) {
+      albumFuture.setException(e);
+    } catch (ErrorResponseException e) {
+      albumFuture.setException(e);
     }
 
     return albumFuture;
   }
 
-  public Album get() throws IOException, UnexpectedResponseException, NotFoundException, BadFieldException {
+  public Album get() throws IOException, UnexpectedResponseException, NotFoundException, BadFieldException, NoCredentialsException, ErrorResponseException {
     String jsonString = getJson();
     JSONObject jsonObject = JSONObject.fromObject(jsonString);
     throwIfErrorsInResponse(jsonObject);
-    return JsonUtil.createAlbum(getJson());
+    return JsonUtil.createAlbum(jsonString);
   }
 
   public static Builder builder() {

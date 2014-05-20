@@ -2,8 +2,10 @@ package se.michaelthelin.spotify.methods;
 
 import net.sf.json.JSONObject;
 import org.apache.commons.codec.binary.Base64;
+import se.michaelthelin.spotify.Api;
 import se.michaelthelin.spotify.JsonUtil;
 import se.michaelthelin.spotify.exceptions.ErrorResponseException;
+import se.michaelthelin.spotify.exceptions.NoCredentialsException;
 import se.michaelthelin.spotify.exceptions.UnexpectedResponseException;
 import se.michaelthelin.spotify.models.TokenResponse;
 
@@ -19,11 +21,12 @@ public class TokenRequest extends AbstractRequest {
     return new Builder();
   }
 
-  public TokenResponse post() throws IOException, UnexpectedResponseException, ErrorResponseException {
+  public TokenResponse post() throws IOException, UnexpectedResponseException, ErrorResponseException, NoCredentialsException {
     String json = postJson();
     JSONObject jsonObject = JSONObject.fromObject(json);
 
     if (errorInJson(jsonObject)) {
+      // Todo: Create error exception from JsonUtil
       throw new ErrorResponseException(jsonObject.getString("error_description"));
     }
 
@@ -57,7 +60,13 @@ public class TokenRequest extends AbstractRequest {
     }
 
     public TokenRequest build() {
+
+      host(Api.DEFAULT_AUTHENTICATION_HOST);
+      port(Api.DEFAULT_AUTHENTICATION_PORT);
+      scheme(Api.DEFAULT_AUTHENTICATION_SCHEME);
+
       path("/api/token");
+
       return new TokenRequest(this);
     }
   }

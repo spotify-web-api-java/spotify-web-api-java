@@ -3,6 +3,8 @@ package se.michaelthelin.spotify.methods;
 import com.google.common.util.concurrent.SettableFuture;
 import net.sf.json.JSONObject;
 import se.michaelthelin.spotify.JsonUtil;
+import se.michaelthelin.spotify.exceptions.ErrorResponseException;
+import se.michaelthelin.spotify.exceptions.NoCredentialsException;
 import se.michaelthelin.spotify.exceptions.UnexpectedResponseException;
 import se.michaelthelin.spotify.models.Track;
 
@@ -25,18 +27,22 @@ public class TopTracksRequest extends AbstractRequest {
         Exception exception = getExceptionFromJson(jsonObject);
         tracksFuture.setException(exception);
       } else {
-        tracksFuture.set(JsonUtil.createTracks(getJson()));
+        tracksFuture.set(JsonUtil.createTracks(jsonString));
       }
     } catch (IOException e) {
       tracksFuture.setException(e);
     } catch (UnexpectedResponseException e) {
+      tracksFuture.setException(e);
+    } catch (NoCredentialsException e) {
+      tracksFuture.setException(e);
+    } catch (ErrorResponseException e) {
       tracksFuture.setException(e);
     }
 
     return tracksFuture;
   }
 
-  public List<Track> get() throws IOException, UnexpectedResponseException {
+  public List<Track> get() throws IOException, UnexpectedResponseException, NoCredentialsException, ErrorResponseException {
     return JsonUtil.createTracks(getJson());
   }
 

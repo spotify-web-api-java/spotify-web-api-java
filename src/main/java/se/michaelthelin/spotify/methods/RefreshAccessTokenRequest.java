@@ -2,8 +2,10 @@ package se.michaelthelin.spotify.methods;
 
 import net.sf.json.JSONObject;
 import org.apache.commons.codec.binary.Base64;
+import se.michaelthelin.spotify.Api;
 import se.michaelthelin.spotify.JsonUtil;
 import se.michaelthelin.spotify.exceptions.ErrorResponseException;
+import se.michaelthelin.spotify.exceptions.NoCredentialsException;
 import se.michaelthelin.spotify.exceptions.UnexpectedResponseException;
 import se.michaelthelin.spotify.models.RefreshAccessTokenResponse;
 
@@ -19,7 +21,7 @@ public class RefreshAccessTokenRequest extends AbstractRequest {
     return new Builder();
   }
 
-  public RefreshAccessTokenResponse post() throws IOException, UnexpectedResponseException, ErrorResponseException {
+  public RefreshAccessTokenResponse post() throws IOException, UnexpectedResponseException, ErrorResponseException, NoCredentialsException {
     String json = postJson();
     JSONObject jsonObject = JSONObject.fromObject(json);
 
@@ -52,6 +54,10 @@ public class RefreshAccessTokenRequest extends AbstractRequest {
     }
 
     public RefreshAccessTokenRequest build() {
+      host(Api.DEFAULT_AUTHENTICATION_HOST);
+      port(Api.DEFAULT_AUTHENTICATION_PORT);
+      scheme(Api.DEFAULT_AUTHENTICATION_SCHEME);
+
       path("/api/token");
       return new RefreshAccessTokenRequest(this);
     }

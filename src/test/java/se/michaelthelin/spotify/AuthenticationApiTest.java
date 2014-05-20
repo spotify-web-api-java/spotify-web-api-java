@@ -18,7 +18,7 @@ public class AuthenticationApiTest {
     final String redirectUri = "myRedirectUri";
 
     final AuthenticationApi api = AuthenticationApi.DEFAULT_API;
-    final Request request = api.getTokens(clientId, clientSecret, code, redirectUri).build();
+    final Request request = api.getTokens().build();
 
     assertEquals("https://accounts.spotify.com:443/api/token", request.toString());
     assertHasBodyParameter(request.toUrl(), "grant_type", "authorization_code");

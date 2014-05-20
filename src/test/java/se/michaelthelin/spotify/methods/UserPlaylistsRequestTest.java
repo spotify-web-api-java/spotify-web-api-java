@@ -5,12 +5,8 @@ import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.SettableFuture;
 import org.junit.Test;
 import se.michaelthelin.spotify.Api;
-import se.michaelthelin.spotify.AuthenticationApi;
 import se.michaelthelin.spotify.TestUtil;
-import se.michaelthelin.spotify.exceptions.BadFieldException;
-import se.michaelthelin.spotify.exceptions.ErrorResponseException;
-import se.michaelthelin.spotify.exceptions.NotFoundException;
-import se.michaelthelin.spotify.exceptions.UnexpectedResponseException;
+import se.michaelthelin.spotify.exceptions.*;
 import se.michaelthelin.spotify.models.Page;
 import se.michaelthelin.spotify.models.SimplePlaylist;
 import se.michaelthelin.spotify.models.SpotifyEntityType;
@@ -26,7 +22,7 @@ public class UserPlaylistsRequestTest {
   @Test
   public void shouldGetPlaylistsForUser_async() throws UnexpectedResponseException, BadFieldException, NotFoundException, IOException, InterruptedException, ErrorResponseException {
     final String accessToken = "myVeryLongAccessToken";
-    final Api api = Api.builder().authenticationApi(AuthenticationApi.builder().accessToken(accessToken).build()).build();
+    final Api api = Api.builder().accessToken(accessToken).build();
 
     final UserPlaylistsRequest request = api
             .getPlaylistsForUser("wizzler")
@@ -75,9 +71,9 @@ public class UserPlaylistsRequestTest {
   }
 
   @Test
-  public void shouldGetPlaylistsForUser_sync() throws UnexpectedResponseException, BadFieldException, NotFoundException, IOException, ErrorResponseException {
+  public void shouldGetPlaylistsForUser_sync() throws UnexpectedResponseException, BadFieldException, NotFoundException, IOException, ErrorResponseException, NoCredentialsException {
     final String accessToken = "myVeryLongAccessToken";
-    final Api api = Api.builder().authenticationApi(AuthenticationApi.builder().accessToken(accessToken).build()).build();
+    final Api api = Api.builder().accessToken(accessToken).build();
 
     final UserPlaylistsRequest request = api
             .getPlaylistsForUser("wizzler")

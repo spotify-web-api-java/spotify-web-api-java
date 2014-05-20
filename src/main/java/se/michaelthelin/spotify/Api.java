@@ -1,11 +1,8 @@
 package se.michaelthelin.spotify;
 
 import se.michaelthelin.spotify.UtilProtos.Url.Scheme;
-import se.michaelthelin.spotify.exceptions.ErrorResponseException;
-import se.michaelthelin.spotify.exceptions.UnexpectedResponseException;
 import se.michaelthelin.spotify.methods.*;
 
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -34,10 +31,11 @@ public class Api {
    */
   public static final Scheme DEFAULT_SCHEME = Scheme.HTTPS;
 
-  /**
-   * The default API for authentication calls.
-   */
-  public static final AuthenticationApi DEFAULT_AUTHENTICATION_API = AuthenticationApi.DEFAULT_API;
+  public static final String DEFAULT_AUTHENTICATION_HOST = "accounts.spotify.com";
+
+  public static final int DEFAULT_AUTHENTICATION_PORT = 443;
+
+  public static final Scheme DEFAULT_AUTHENTICATION_SCHEME = Scheme.HTTPS;
 
   /**
    * Api instance with the default settings.
@@ -54,30 +52,23 @@ public class Api {
     assert (builder.host != null);
     assert (builder.port > 0);
     assert (builder.scheme != null);
-    if (builder.httpManager != null) {
-      this.httpManager = builder.httpManager;
+
+
+    if (builder.httpManager == null) {
+      this.httpManager = SpotifyHttpManager
+              .builder()
+              .clientId(builder.clientId)
+              .clientSecret(builder.clientSecret)
+              .code(builder.code)
+              .redirectUri(builder.redirectUri)
+              .accessToken(builder.accessToken)
+              .build();
     } else {
-      this.httpManager = DEFAULT_HTTP_MANAGER;
+      this.httpManager = builder.httpManager;
     }
     scheme = builder.scheme;
     host = builder.host;
     port = builder.port;
-
-    if (builder.authenticationApi != null) {
-      authenticationApi = builder.authenticationApi;
-    } else if (builder.clientSecret != null &&
-               builder.clientId != null &&
-               builder.code != null) {
-      authenticationApi = AuthenticationApi.builder()
-              .clientSecret(builder.clientSecret)
-              .clientId(builder.clientId)
-              .code(builder.code)
-              .redirectUri(builder.redirectUri)
-              .build();
-    } else {
-      authenticationApi = DEFAULT_AUTHENTICATION_API;
-    }
-
   }
 
   public static Builder builder() {
@@ -187,11 +178,11 @@ public class Api {
     return builder;
   }
 
-  public UserPlaylistsRequest.Builder getPlaylistsForUser(String userId) throws UnexpectedResponseException, ErrorResponseException, IOException {
+  public UserPlaylistsRequest.Builder getPlaylistsForUser(String userId) {
     UserPlaylistsRequest.Builder builder = UserPlaylistsRequest.builder();
     setDefaults(builder);
     builder.username(userId);
-    builder.accessToken(authenticationApi.getAccessToken());
+    builder.authenticationRequired(true);
     return builder;
   }
 
@@ -213,6 +204,7 @@ public class Api {
     private String clientSecret;
     private String code;
     private String redirectUri;
+    private String accessToken;
 
     public Builder scheme(Scheme scheme) {
       this.scheme = scheme;
@@ -259,10 +251,16 @@ public class Api {
       return this;
     }
 
+    public Builder accessToken(String accessToken) {
+      this.accessToken = accessToken;
+      return this;
+    }
+
     public Api build() {
       assert (host != null);
       assert (port > 0);
       assert (scheme != null);
+
       return new Api(this);
     }
 

@@ -3,6 +3,8 @@ package se.michaelthelin.spotify.methods;
 import com.google.common.util.concurrent.SettableFuture;
 import net.sf.json.JSONObject;
 import se.michaelthelin.spotify.JsonUtil;
+import se.michaelthelin.spotify.exceptions.ErrorResponseException;
+import se.michaelthelin.spotify.exceptions.NoCredentialsException;
 import se.michaelthelin.spotify.exceptions.UnexpectedResponseException;
 import se.michaelthelin.spotify.models.Artist;
 import se.michaelthelin.spotify.models.Page;
@@ -27,12 +29,16 @@ public class ArtistSearchRequest extends AbstractRequest {
       searchResultFuture.setException(e);
     } catch (UnexpectedResponseException e) {
       searchResultFuture.setException(e);
+    } catch (NoCredentialsException e) {
+      searchResultFuture.setException(e);
+    } catch (ErrorResponseException e) {
+      searchResultFuture.setException(e);
     }
 
     return searchResultFuture;
   }
 
-  public Page<Artist> get() throws IOException, UnexpectedResponseException {
+  public Page<Artist> get() throws IOException, UnexpectedResponseException, NoCredentialsException, ErrorResponseException {
     return JsonUtil.createArtistPage(JSONObject.fromObject(getJson()).getJSONObject("artists"));
   }
 

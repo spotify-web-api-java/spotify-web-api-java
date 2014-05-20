@@ -3,9 +3,7 @@ package se.michaelthelin.spotify.methods;
 import com.google.common.util.concurrent.SettableFuture;
 import net.sf.json.JSONObject;
 import se.michaelthelin.spotify.JsonUtil;
-import se.michaelthelin.spotify.exceptions.BadFieldException;
-import se.michaelthelin.spotify.exceptions.NotFoundException;
-import se.michaelthelin.spotify.exceptions.UnexpectedResponseException;
+import se.michaelthelin.spotify.exceptions.*;
 import se.michaelthelin.spotify.models.Page;
 import se.michaelthelin.spotify.models.SimplePlaylist;
 
@@ -17,7 +15,7 @@ public class UserPlaylistsRequest extends AbstractRequest {
    super(builder);
   }
 
-  public Page<SimplePlaylist> get() throws IOException, UnexpectedResponseException, NotFoundException, BadFieldException {
+  public Page<SimplePlaylist> get() throws IOException, UnexpectedResponseException, NotFoundException, BadFieldException, NoCredentialsException, ErrorResponseException {
     String jsonString = getJson();
     JSONObject jsonObject = JSONObject.fromObject(jsonString);
     throwIfErrorsInResponse(jsonObject);
@@ -40,6 +38,10 @@ public class UserPlaylistsRequest extends AbstractRequest {
       simplePlaylistsPageFuture.setException(e);
     } catch (UnexpectedResponseException e) {
       simplePlaylistsPageFuture.setException(e);
+    } catch (NoCredentialsException e) {
+      simplePlaylistsPageFuture.setException(e);
+    } catch (ErrorResponseException e) {
+      simplePlaylistsPageFuture.setException(e);
     }
 
     return simplePlaylistsPageFuture;
@@ -56,12 +58,8 @@ public class UserPlaylistsRequest extends AbstractRequest {
       return path(String.format("/v1/users/%s/playlists", username));
     }
 
-    public Builder accessToken(String accessToken) {
-      assert (accessToken != null);
-      return header("Authorization", "Bearer " + accessToken);
-    }
-
     public UserPlaylistsRequest build() {
+      authenticationRequired(true);
       return new UserPlaylistsRequest(this);
     }
 
