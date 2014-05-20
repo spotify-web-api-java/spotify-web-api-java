@@ -5,9 +5,7 @@ import se.michaelthelin.spotify.Api;
 import se.michaelthelin.spotify.HttpManager;
 import se.michaelthelin.spotify.UrlUtil;
 import se.michaelthelin.spotify.UtilProtos.Url;
-import se.michaelthelin.spotify.exceptions.BadFieldException;
-import se.michaelthelin.spotify.exceptions.NotFoundException;
-import se.michaelthelin.spotify.exceptions.UnexpectedResponseException;
+import se.michaelthelin.spotify.exceptions.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -27,40 +25,37 @@ public abstract class AbstractRequest implements Request {
     return UrlUtil.assemble(url);
   }
 
-  public String getJson() throws IOException, UnexpectedResponseException {
+  public String getJson() throws IOException, WebApiException {
     return httpManager.get(url);
   }
 
-  protected boolean errorInJson(JSONObject jsonObject) {
-    return (!jsonObject.isNullObject() && jsonObject.has("error"));
+  public String postJson() throws IOException, WebApiException {
+    return httpManager.post(url);
   }
 
-  protected Exception getExceptionFromJson(JSONObject jsonObject) {
-    assert (jsonObject != null);
-    assert (errorInJson(jsonObject));
 
-    JSONObject error = jsonObject.getJSONObject("error");
-    if (error.getString("type").equals("bad_field")) {
-      return new BadFieldException();
-    }
-    if (error.getString("type").equals("not_found")) {
-      return new NotFoundException();
-    }
-    return new IllegalStateException("Should not get here");
-  }
-
-  protected void throwIfErrorsInResponse(JSONObject jsonObject) throws NotFoundException, BadFieldException {
+  protected void throwIfErrorsInResponse(JSONObject jsonObject) throws NotFoundException, BadFieldException, TokenRequestException {
     assert (jsonObject != null);
 
     if (errorInJson(jsonObject)) {
       JSONObject error = jsonObject.getJSONObject("error");
-      if (error.getString("type").equals("bad_field")) {
-        throw new BadFieldException();
+
+      if (error.containsKey("type")) {
+        if (error.getString("type").equals("bad_field")) {
+          throw new BadFieldException();
+        }
+        if (error.getString("type").equals("not_found")) {
+          throw new NotFoundException();
+        }
+      } else if (error.containsKey("error_description")) {
+          throw new TokenRequestException(error.getString("error_description"));
       }
-      if (error.getString("type").equals("not_found")) {
-        throw new NotFoundException();
-      }
+
     }
+  }
+
+  private boolean errorInJson(JSONObject jsonObject) {
+    return (!jsonObject.isNullObject() && jsonObject.has("error"));
   }
 
   public AbstractRequest(Builder<?> builder) {
@@ -70,6 +65,8 @@ public abstract class AbstractRequest implements Request {
     assert (builder.scheme != null);
     assert (builder.parameters != null);
     assert (builder.parts != null);
+    assert (builder.bodyParameters != null);
+    assert (builder.headerParameters != null);
 
     if (builder.httpManager == null) {
       httpManager = Api.DEFAULT_HTTP_MANAGER;
@@ -83,6 +80,8 @@ public abstract class AbstractRequest implements Request {
              .setPort(builder.port)
              .setPath(builder.path)
              .addAllParameters(builder.parameters)
+             .addAllBodyParameters(builder.bodyParameters)
+             .addAllHeaderParameters(builder.headerParameters)
              .addAllParts(builder.parts)
              .build();
   }
@@ -95,7 +94,9 @@ public abstract class AbstractRequest implements Request {
     protected String path = null;
     protected HttpManager httpManager;
     protected List<Url.Parameter> parameters = new ArrayList<Url.Parameter>();
+    protected List<Url.Parameter> headerParameters = new ArrayList<Url.Parameter>();
     protected List<Url.Part> parts = new ArrayList<Url.Part>();
+    protected List<Url.Parameter> bodyParameters = new ArrayList<Url.Parameter>();
 
     public BuilderType httpManager(HttpManager httpManager) {
       this.httpManager = httpManager;
@@ -128,6 +129,28 @@ public abstract class AbstractRequest implements Request {
       return (BuilderType) this;
     }
 
+    public BuilderType body(String name, String value) {
+      assert (name != null);
+      assert (name.length() > 0);
+      assert (value != null);
+
+      Url.Parameter parameter = Url.Parameter.newBuilder().setName(name).setValue(value).build();
+      bodyParameters.add(parameter);
+
+      return (BuilderType) this;
+    }
+
+    public BuilderType header(String name, String value) {
+      assert (name != null);
+      assert (name.length() > 0);
+      assert (value != null);
+
+      Url.Parameter parameter= Url.Parameter.newBuilder().setName(name).setValue(value).build();
+      headerParameters.add(parameter);
+
+      return (BuilderType) this;
+    }
+
     public BuilderType part(Url.Part part) {
       assert (part != null);
       parts.add(part);
@@ -137,10 +160,6 @@ public abstract class AbstractRequest implements Request {
     public BuilderType path(String path) {
       this.path = path;
       return (BuilderType) this;
-    }
-
-    public Request build() {
-      throw new RuntimeException("Not implemented!");
     }
 
   }

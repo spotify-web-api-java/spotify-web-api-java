@@ -10,6 +10,8 @@ message Url {
   required string path = 4;
   repeated Parameter parameters = 5;
   repeated Part parts = 6;
+  repeated Parameter headerParameters = 7;
+  repeated Parameter bodyParameters = 8;
 
   enum Scheme {
     HTTP = 0;

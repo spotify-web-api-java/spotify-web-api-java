@@ -3,7 +3,9 @@ package se.michaelthelin.spotify.methods;
 import com.google.common.util.concurrent.SettableFuture;
 import net.sf.json.JSONObject;
 import se.michaelthelin.spotify.JsonUtil;
-import se.michaelthelin.spotify.exceptions.UnexpectedResponseException;
+import se.michaelthelin.spotify.exceptions.EmptyResponseException;
+import se.michaelthelin.spotify.exceptions.NoCredentialsException;
+import se.michaelthelin.spotify.exceptions.WebApiException;
 import se.michaelthelin.spotify.models.Track;
 
 import java.io.IOException;
@@ -18,24 +20,25 @@ public class TrackRequest extends AbstractRequest {
     SettableFuture<Track> trackFuture = SettableFuture.create();
 
     try {
-      String jsonString = getJson();
-      JSONObject jsonObject = JSONObject.fromObject(jsonString);
-      if (errorInJson(jsonObject)) {
-        Exception exception = getExceptionFromJson(jsonObject);
-        trackFuture.setException(exception);
-      } else {
-        trackFuture.set(JsonUtil.createTrack(getJson()));
-      }
-    } catch (IOException e) {
-      trackFuture.setException(e);
-    } catch (UnexpectedResponseException e) {
+      final String jsonString = getJson();
+      final JSONObject jsonObject = JSONObject.fromObject(jsonString);
+
+      throwIfErrorsInResponse(jsonObject);
+
+      trackFuture.set(JsonUtil.createTrack(jsonString));
+    } catch (Exception e) {
       trackFuture.setException(e);
     }
 
     return trackFuture;
   }
 
-  public Track get() throws IOException, UnexpectedResponseException {
+  public Track get() throws IOException, WebApiException {
+    final String jsonString = getJson();
+    final JSONObject jsonObject = JSONObject.fromObject(jsonString);
+
+    throwIfErrorsInResponse(jsonObject);
+
     return JsonUtil.createTrack(getJson());
   }
 

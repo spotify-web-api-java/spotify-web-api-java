@@ -3,9 +3,7 @@ package se.michaelthelin.spotify.methods;
 import com.google.common.util.concurrent.SettableFuture;
 import net.sf.json.JSONObject;
 import se.michaelthelin.spotify.JsonUtil;
-import se.michaelthelin.spotify.exceptions.BadFieldException;
-import se.michaelthelin.spotify.exceptions.NotFoundException;
-import se.michaelthelin.spotify.exceptions.UnexpectedResponseException;
+import se.michaelthelin.spotify.exceptions.*;
 import se.michaelthelin.spotify.models.Artist;
 
 import java.io.IOException;
@@ -24,28 +22,26 @@ public class ArtistRequest extends AbstractRequest {
     SettableFuture<Artist> artistFuture = SettableFuture.create();
 
     try {
-      String jsonString = getJson();
-      JSONObject jsonObject = JSONObject.fromObject(jsonString);
-      if (errorInJson(jsonObject)) {
-        Exception exception = getExceptionFromJson(jsonObject);
-        artistFuture.setException(exception);
-      } else {
-        artistFuture.set(JsonUtil.createArtist(getJson()));
-      }
-    } catch (IOException e) {
-      artistFuture.setException(e);
-    } catch (UnexpectedResponseException e) {
+      final String jsonString = getJson();
+      final JSONObject jsonObject = JSONObject.fromObject(jsonString);
+
+      throwIfErrorsInResponse(jsonObject);
+
+      artistFuture.set(JsonUtil.createArtist(jsonString));
+    } catch (Exception e) {
       artistFuture.setException(e);
     }
 
     return artistFuture;
   }
 
-  public Artist get() throws IOException, UnexpectedResponseException, NotFoundException, BadFieldException {
-    String jsonString = getJson();
-    JSONObject jsonObject = JSONObject.fromObject(jsonString);
+  public Artist get() throws IOException, WebApiException {
+    final String jsonString = getJson();
+    final JSONObject jsonObject = JSONObject.fromObject(jsonString);
+
     throwIfErrorsInResponse(jsonObject);
-    return JsonUtil.createArtist(getJson());
+
+    return JsonUtil.createArtist(jsonString);
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {

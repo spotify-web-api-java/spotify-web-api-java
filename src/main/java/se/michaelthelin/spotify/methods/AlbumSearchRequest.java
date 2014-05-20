@@ -3,8 +3,9 @@ package se.michaelthelin.spotify.methods;
 import com.google.common.util.concurrent.SettableFuture;
 import net.sf.json.JSONObject;
 import se.michaelthelin.spotify.JsonUtil;
-import se.michaelthelin.spotify.exceptions.UnexpectedResponseException;
-import se.michaelthelin.spotify.models.Album;
+import se.michaelthelin.spotify.exceptions.EmptyResponseException;
+import se.michaelthelin.spotify.exceptions.NoCredentialsException;
+import se.michaelthelin.spotify.exceptions.WebApiException;
 import se.michaelthelin.spotify.models.Page;
 import se.michaelthelin.spotify.models.SimpleAlbum;
 
@@ -20,19 +21,25 @@ public class AlbumSearchRequest extends AbstractRequest {
     SettableFuture<Page<SimpleAlbum>> searchResultFuture = SettableFuture.create();
 
     try {
-      String jsonString = getJson();
-      JSONObject jsonObject = JSONObject.fromObject(jsonString);
+      final String jsonString = getJson();
+      final JSONObject jsonObject = JSONObject.fromObject(jsonString);
+
+      throwIfErrorsInResponse(jsonObject);
+
       searchResultFuture.set(JsonUtil.createSimpleAlbumPage(jsonObject.getJSONObject("albums")));
-    } catch (IOException e) {
-      searchResultFuture.setException(e);
-    } catch (UnexpectedResponseException e) {
+    } catch (Exception e) {
       searchResultFuture.setException(e);
     }
 
     return searchResultFuture;
   }
 
-  public Page<SimpleAlbum> get() throws IOException, UnexpectedResponseException {
+  public Page<SimpleAlbum> get() throws IOException, WebApiException {
+    final String jsonString = getJson();
+    final JSONObject jsonObject = JSONObject.fromObject(jsonString);
+
+    throwIfErrorsInResponse(jsonObject);
+
     return JsonUtil.createSimpleAlbumPage(JSONObject.fromObject(getJson()).getJSONObject("albums"));
   }
 

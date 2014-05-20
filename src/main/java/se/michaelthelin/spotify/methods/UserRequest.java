@@ -3,9 +3,7 @@ package se.michaelthelin.spotify.methods;
 import com.google.common.util.concurrent.SettableFuture;
 import net.sf.json.JSONObject;
 import se.michaelthelin.spotify.JsonUtil;
-import se.michaelthelin.spotify.exceptions.BadFieldException;
-import se.michaelthelin.spotify.exceptions.NotFoundException;
-import se.michaelthelin.spotify.exceptions.UnexpectedResponseException;
+import se.michaelthelin.spotify.exceptions.*;
 import se.michaelthelin.spotify.models.User;
 
 import java.io.IOException;
@@ -21,31 +19,29 @@ public class UserRequest extends AbstractRequest {
   }
 
   public SettableFuture<User> getAsync() {
-    SettableFuture<User> userFuture = SettableFuture.create();
+    final SettableFuture<User> userFuture = SettableFuture.create();
 
     try {
-      String jsonString = getJson();
-      JSONObject jsonObject = JSONObject.fromObject(jsonString);
-      if (errorInJson(jsonObject)) {
-        Exception exception = getExceptionFromJson(jsonObject);
-        userFuture.setException(exception);
-      } else {
-        userFuture.set(JsonUtil.createUser(getJson()));
-      }
-    } catch (IOException e) {
-      userFuture.setException(e);
-    } catch (UnexpectedResponseException e) {
+      final String jsonString = getJson();
+      final JSONObject jsonObject = JSONObject.fromObject(jsonString);
+
+      throwIfErrorsInResponse(jsonObject);
+
+      userFuture.set(JsonUtil.createUser(jsonString));
+    } catch (Exception e) {
       userFuture.setException(e);
     }
 
     return userFuture;
   }
 
-  public User get() throws IOException, UnexpectedResponseException, NotFoundException, BadFieldException {
-    String jsonString = getJson();
-    JSONObject jsonObject = JSONObject.fromObject(jsonString);
+  public User get() throws IOException, WebApiException {
+    final String jsonString = getJson();
+    final JSONObject jsonObject = JSONObject.fromObject(jsonString);
+
     throwIfErrorsInResponse(jsonObject);
-    return JsonUtil.createUser(getJson());
+
+    return JsonUtil.createUser(jsonString);
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {

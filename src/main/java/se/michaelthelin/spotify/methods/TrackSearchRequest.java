@@ -3,7 +3,7 @@ package se.michaelthelin.spotify.methods;
 import com.google.common.util.concurrent.SettableFuture;
 import net.sf.json.JSONObject;
 import se.michaelthelin.spotify.JsonUtil;
-import se.michaelthelin.spotify.exceptions.UnexpectedResponseException;
+import se.michaelthelin.spotify.exceptions.WebApiException;
 import se.michaelthelin.spotify.models.Page;
 import se.michaelthelin.spotify.models.Track;
 
@@ -19,20 +19,26 @@ public class TrackSearchRequest extends AbstractRequest {
     SettableFuture<Page<Track>> searchResultFuture = SettableFuture.create();
 
     try {
-      String jsonString = getJson();
-      JSONObject jsonObject = JSONObject.fromObject(jsonString);
+      final String jsonString = getJson();
+      final JSONObject jsonObject = JSONObject.fromObject(jsonString);
+
+      throwIfErrorsInResponse(jsonObject);
+
       searchResultFuture.set(JsonUtil.createTrackPage(jsonObject));
-    } catch (IOException e) {
-      searchResultFuture.setException(e);
-    } catch (UnexpectedResponseException e) {
+    } catch (Exception e) {
       searchResultFuture.setException(e);
     }
 
     return searchResultFuture;
   }
 
-  public Page<Track> get() throws IOException, UnexpectedResponseException {
-    return JsonUtil.createTrackPage(getJson());
+  public Page<Track> get() throws IOException, WebApiException {
+    final String jsonString = getJson();
+    final JSONObject jsonObject = JSONObject.fromObject(jsonString);
+
+    throwIfErrorsInResponse(jsonObject);
+
+    return JsonUtil.createTrackPage(jsonObject);
   }
 
   public static Builder builder() {

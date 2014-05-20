@@ -1,16 +1,20 @@
 package se.michaelthelin.spotify;
 
+import org.apache.commons.codec.binary.Base64;
 import org.junit.Test;
-import se.michaelthelin.spotify.methods.Request;
 import se.michaelthelin.spotify.UtilProtos.Url.Scheme;
-import se.michaelthelin.spotify.UtilProtos.Url.Parameter;
-import se.michaelthelin.spotify.UtilProtos.Url;
+import se.michaelthelin.spotify.exceptions.EmptyResponseException;
+import se.michaelthelin.spotify.methods.Request;
 import se.michaelthelin.spotify.models.AlbumType;
 
+import static se.michaelthelin.spotify.Assertions.assertHasBodyParameter;
+import static se.michaelthelin.spotify.Assertions.assertHasHeader;
+import static se.michaelthelin.spotify.Assertions.assertHasParameter;
+
+import java.io.IOException;
 import java.util.Arrays;
 
 import static junit.framework.TestCase.assertEquals;
-import static org.junit.Assert.fail;
 
 public class ApiTest {
 
@@ -215,22 +219,52 @@ public class ApiTest {
     assertEquals("https://api.spotify.com:443/v1/users/wizzler", request.toString());
   }
 
-  private void assertHasParameter(Url url, String name, Object value) {
-    Parameter expected = Parameter.newBuilder().setName(name).setValue(value.toString()).build();
-    for (Parameter actual : url.getParametersList()) {
-      if (actual.equals(expected)) {
-        return;
-      }
-    }
-    fail(String.format("Actual URL %s does not contain parameter %s", url, expected));
+  @Test
+  public void shouldCreateUrlForListingAUsersPlaylists() throws Exception {
+    final String accessToken = "myVeryLongAccessToken";
+    final Api api = Api.builder().build();
+
+    final Request request = api.getPlaylistsForUser("wizzler").accessToken(accessToken).build();
+
+    assertEquals("https://api.spotify.com:443/v1/users/wizzler/playlists", request.toString());
+    assertHasHeader(request.toUrl(), "Authorization", "Bearer " + accessToken);
   }
 
-  private void assertNoParameter(Url url, String name) {
-    for (Parameter actual : url.getParametersList()) {
-      if (actual.getName().equals(name)) {
-        fail(String.format("Actual URL %s contains parameter %s", url, name));
-      }
-    }
+  @Test
+  public void shouldCreateRequestForTokensUrl() {
+    final String clientId = "myClientId";
+    final String clientSecret = "myClientSecret";
+    final String code = "returnedCode";
+    final String redirectUri = "myRedirectUri";
+
+    final Api api = Api.DEFAULT_API;
+    final Request request = api.getTokens(clientId, clientSecret, code, redirectUri).build();
+
+    assertEquals("https://accounts.spotify.com:443/api/token", request.toString());
+    assertHasBodyParameter(request.toUrl(), "grant_type", "authorization_code");
+    assertHasBodyParameter(request.toUrl(), "code", code);
+    assertHasBodyParameter(request.toUrl(), "redirect_uri", redirectUri);
+
+    final String idSecret = clientId + ":" + clientSecret;
+    assertHasHeader(request.toUrl(), "Authorization", "Basic " + new String(Base64.encodeBase64(idSecret.getBytes())));
+  }
+
+  @Test
+  public void shouldCreateRefreshAccessTokenUrl() {
+    final Api api = Api.DEFAULT_API;
+
+    final String clientId = "myClientId";
+    final String clientSecret = "myClientSecret";
+    final String refreshToken = "myRefreshToken";
+
+    final Request request = api.refreshAccessToken(clientId, clientSecret, refreshToken).build();
+
+    assertEquals("https://accounts.spotify.com:443/api/token", request.toString());
+    assertHasBodyParameter(request.toUrl(), "grant_type", "refresh_token");
+    assertHasBodyParameter(request.toUrl(), "refresh_token", refreshToken);
+
+    final String idSecret = clientId + ":" + clientSecret;
+    assertHasHeader(request.toUrl(), "Authorization", "Basic " + new String(Base64.encodeBase64(idSecret.getBytes())));
   }
 
 }

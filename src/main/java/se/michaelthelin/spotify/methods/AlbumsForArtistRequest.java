@@ -4,10 +4,7 @@ import com.google.common.base.Joiner;
 import com.google.common.util.concurrent.SettableFuture;
 import net.sf.json.JSONObject;
 import se.michaelthelin.spotify.JsonUtil;
-import se.michaelthelin.spotify.exceptions.BadFieldException;
-import se.michaelthelin.spotify.exceptions.NotFoundException;
-import se.michaelthelin.spotify.exceptions.UnexpectedResponseException;
-import se.michaelthelin.spotify.models.Album;
+import se.michaelthelin.spotify.exceptions.*;
 import se.michaelthelin.spotify.models.AlbumType;
 import se.michaelthelin.spotify.models.Page;
 import se.michaelthelin.spotify.models.SimpleAlbum;
@@ -24,19 +21,25 @@ public class AlbumsForArtistRequest extends AbstractRequest {
     SettableFuture<Page<SimpleAlbum>> searchResultFuture = SettableFuture.create();
 
     try {
-      String jsonString = getJson();
-      JSONObject jsonObject = JSONObject.fromObject(jsonString);
+      final String jsonString = getJson();
+      final JSONObject jsonObject = JSONObject.fromObject(jsonString);
+
+      throwIfErrorsInResponse(jsonObject);
+
       searchResultFuture.set(JsonUtil.createSimpleAlbumPage(jsonObject));
-    } catch (IOException e) {
-      searchResultFuture.setException(e);
-    } catch (UnexpectedResponseException e) {
+    } catch (Exception e) {
       searchResultFuture.setException(e);
     }
 
     return searchResultFuture;
   }
 
-  public Page<SimpleAlbum> get() throws IOException, UnexpectedResponseException, NotFoundException, BadFieldException {
+  public Page<SimpleAlbum> get() throws IOException, WebApiException {
+    final String jsonString = getJson();
+    final JSONObject jsonObject = JSONObject.fromObject(jsonString);
+
+    throwIfErrorsInResponse(jsonObject);
+
     return JsonUtil.createSimpleAlbumPage(getJson());
   }
 

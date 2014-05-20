@@ -3,9 +3,7 @@ package se.michaelthelin.spotify.methods;
 import com.google.common.util.concurrent.SettableFuture;
 import net.sf.json.JSONObject;
 import se.michaelthelin.spotify.JsonUtil;
-import se.michaelthelin.spotify.exceptions.BadFieldException;
-import se.michaelthelin.spotify.exceptions.NotFoundException;
-import se.michaelthelin.spotify.exceptions.UnexpectedResponseException;
+import se.michaelthelin.spotify.exceptions.WebApiException;
 import se.michaelthelin.spotify.models.Album;
 
 import java.io.IOException;
@@ -22,26 +20,24 @@ public class AlbumRequest extends AbstractRequest {
     try {
       String jsonString = getJson();
       JSONObject jsonObject = JSONObject.fromObject(jsonString);
-      if (errorInJson(jsonObject)) {
-        Exception exception = getExceptionFromJson(jsonObject);
-        albumFuture.setException(exception);
-      } else {
-        albumFuture.set(JsonUtil.createAlbum(jsonString));
-      }
-    } catch (IOException e) {
-      albumFuture.setException(e);
-    } catch (UnexpectedResponseException e) {
+
+      throwIfErrorsInResponse(jsonObject);
+
+      albumFuture.set(JsonUtil.createAlbum(jsonString));
+    } catch (Exception e) {
       albumFuture.setException(e);
     }
 
     return albumFuture;
   }
 
-  public Album get() throws IOException, UnexpectedResponseException, NotFoundException, BadFieldException {
+  public Album get() throws IOException, WebApiException {
     String jsonString = getJson();
     JSONObject jsonObject = JSONObject.fromObject(jsonString);
+
     throwIfErrorsInResponse(jsonObject);
-    return JsonUtil.createAlbum(getJson());
+
+    return JsonUtil.createAlbum(jsonString);
   }
 
   public static Builder builder() {

@@ -110,6 +110,56 @@ public final class UtilProtos {
      */
     se.michaelthelin.spotify.UtilProtos.Url.PartOrBuilder getPartsOrBuilder(
         int index);
+
+    // repeated .spotify.Url.Parameter headerParameters = 7;
+    /**
+     * <code>repeated .spotify.Url.Parameter headerParameters = 7;</code>
+     */
+    java.util.List<se.michaelthelin.spotify.UtilProtos.Url.Parameter> 
+        getHeaderParametersList();
+    /**
+     * <code>repeated .spotify.Url.Parameter headerParameters = 7;</code>
+     */
+    se.michaelthelin.spotify.UtilProtos.Url.Parameter getHeaderParameters(int index);
+    /**
+     * <code>repeated .spotify.Url.Parameter headerParameters = 7;</code>
+     */
+    int getHeaderParametersCount();
+    /**
+     * <code>repeated .spotify.Url.Parameter headerParameters = 7;</code>
+     */
+    java.util.List<? extends se.michaelthelin.spotify.UtilProtos.Url.ParameterOrBuilder> 
+        getHeaderParametersOrBuilderList();
+    /**
+     * <code>repeated .spotify.Url.Parameter headerParameters = 7;</code>
+     */
+    se.michaelthelin.spotify.UtilProtos.Url.ParameterOrBuilder getHeaderParametersOrBuilder(
+        int index);
+
+    // repeated .spotify.Url.Parameter bodyParameters = 8;
+    /**
+     * <code>repeated .spotify.Url.Parameter bodyParameters = 8;</code>
+     */
+    java.util.List<se.michaelthelin.spotify.UtilProtos.Url.Parameter> 
+        getBodyParametersList();
+    /**
+     * <code>repeated .spotify.Url.Parameter bodyParameters = 8;</code>
+     */
+    se.michaelthelin.spotify.UtilProtos.Url.Parameter getBodyParameters(int index);
+    /**
+     * <code>repeated .spotify.Url.Parameter bodyParameters = 8;</code>
+     */
+    int getBodyParametersCount();
+    /**
+     * <code>repeated .spotify.Url.Parameter bodyParameters = 8;</code>
+     */
+    java.util.List<? extends se.michaelthelin.spotify.UtilProtos.Url.ParameterOrBuilder> 
+        getBodyParametersOrBuilderList();
+    /**
+     * <code>repeated .spotify.Url.Parameter bodyParameters = 8;</code>
+     */
+    se.michaelthelin.spotify.UtilProtos.Url.ParameterOrBuilder getBodyParametersOrBuilder(
+        int index);
   }
   /**
    * Protobuf type {@code spotify.Url}
@@ -204,6 +254,22 @@ public final class UtilProtos {
               parts_.add(input.readMessage(se.michaelthelin.spotify.UtilProtos.Url.Part.PARSER, extensionRegistry));
               break;
             }
+            case 58: {
+              if (!((mutable_bitField0_ & 0x00000040) == 0x00000040)) {
+                headerParameters_ = new java.util.ArrayList<se.michaelthelin.spotify.UtilProtos.Url.Parameter>();
+                mutable_bitField0_ |= 0x00000040;
+              }
+              headerParameters_.add(input.readMessage(se.michaelthelin.spotify.UtilProtos.Url.Parameter.PARSER, extensionRegistry));
+              break;
+            }
+            case 66: {
+              if (!((mutable_bitField0_ & 0x00000080) == 0x00000080)) {
+                bodyParameters_ = new java.util.ArrayList<se.michaelthelin.spotify.UtilProtos.Url.Parameter>();
+                mutable_bitField0_ |= 0x00000080;
+              }
+              bodyParameters_.add(input.readMessage(se.michaelthelin.spotify.UtilProtos.Url.Parameter.PARSER, extensionRegistry));
+              break;
+            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -217,6 +283,12 @@ public final class UtilProtos {
         }
         if (((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
           parts_ = java.util.Collections.unmodifiableList(parts_);
+        }
+        if (((mutable_bitField0_ & 0x00000040) == 0x00000040)) {
+          headerParameters_ = java.util.Collections.unmodifiableList(headerParameters_);
+        }
+        if (((mutable_bitField0_ & 0x00000080) == 0x00000080)) {
+          bodyParameters_ = java.util.Collections.unmodifiableList(bodyParameters_);
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -2172,6 +2244,78 @@ public final class UtilProtos {
       return parts_.get(index);
     }
 
+    // repeated .spotify.Url.Parameter headerParameters = 7;
+    public static final int HEADERPARAMETERS_FIELD_NUMBER = 7;
+    private java.util.List<se.michaelthelin.spotify.UtilProtos.Url.Parameter> headerParameters_;
+    /**
+     * <code>repeated .spotify.Url.Parameter headerParameters = 7;</code>
+     */
+    public java.util.List<se.michaelthelin.spotify.UtilProtos.Url.Parameter> getHeaderParametersList() {
+      return headerParameters_;
+    }
+    /**
+     * <code>repeated .spotify.Url.Parameter headerParameters = 7;</code>
+     */
+    public java.util.List<? extends se.michaelthelin.spotify.UtilProtos.Url.ParameterOrBuilder> 
+        getHeaderParametersOrBuilderList() {
+      return headerParameters_;
+    }
+    /**
+     * <code>repeated .spotify.Url.Parameter headerParameters = 7;</code>
+     */
+    public int getHeaderParametersCount() {
+      return headerParameters_.size();
+    }
+    /**
+     * <code>repeated .spotify.Url.Parameter headerParameters = 7;</code>
+     */
+    public se.michaelthelin.spotify.UtilProtos.Url.Parameter getHeaderParameters(int index) {
+      return headerParameters_.get(index);
+    }
+    /**
+     * <code>repeated .spotify.Url.Parameter headerParameters = 7;</code>
+     */
+    public se.michaelthelin.spotify.UtilProtos.Url.ParameterOrBuilder getHeaderParametersOrBuilder(
+        int index) {
+      return headerParameters_.get(index);
+    }
+
+    // repeated .spotify.Url.Parameter bodyParameters = 8;
+    public static final int BODYPARAMETERS_FIELD_NUMBER = 8;
+    private java.util.List<se.michaelthelin.spotify.UtilProtos.Url.Parameter> bodyParameters_;
+    /**
+     * <code>repeated .spotify.Url.Parameter bodyParameters = 8;</code>
+     */
+    public java.util.List<se.michaelthelin.spotify.UtilProtos.Url.Parameter> getBodyParametersList() {
+      return bodyParameters_;
+    }
+    /**
+     * <code>repeated .spotify.Url.Parameter bodyParameters = 8;</code>
+     */
+    public java.util.List<? extends se.michaelthelin.spotify.UtilProtos.Url.ParameterOrBuilder> 
+        getBodyParametersOrBuilderList() {
+      return bodyParameters_;
+    }
+    /**
+     * <code>repeated .spotify.Url.Parameter bodyParameters = 8;</code>
+     */
+    public int getBodyParametersCount() {
+      return bodyParameters_.size();
+    }
+    /**
+     * <code>repeated .spotify.Url.Parameter bodyParameters = 8;</code>
+     */
+    public se.michaelthelin.spotify.UtilProtos.Url.Parameter getBodyParameters(int index) {
+      return bodyParameters_.get(index);
+    }
+    /**
+     * <code>repeated .spotify.Url.Parameter bodyParameters = 8;</code>
+     */
+    public se.michaelthelin.spotify.UtilProtos.Url.ParameterOrBuilder getBodyParametersOrBuilder(
+        int index) {
+      return bodyParameters_.get(index);
+    }
+
     private void initFields() {
       scheme_ = se.michaelthelin.spotify.UtilProtos.Url.Scheme.HTTP;
       host_ = "";
@@ -2179,6 +2323,8 @@ public final class UtilProtos {
       path_ = "";
       parameters_ = java.util.Collections.emptyList();
       parts_ = java.util.Collections.emptyList();
+      headerParameters_ = java.util.Collections.emptyList();
+      bodyParameters_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -2226,6 +2372,12 @@ public final class UtilProtos {
       for (int i = 0; i < parts_.size(); i++) {
         output.writeMessage(6, parts_.get(i));
       }
+      for (int i = 0; i < headerParameters_.size(); i++) {
+        output.writeMessage(7, headerParameters_.get(i));
+      }
+      for (int i = 0; i < bodyParameters_.size(); i++) {
+        output.writeMessage(8, bodyParameters_.get(i));
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -2258,6 +2410,14 @@ public final class UtilProtos {
       for (int i = 0; i < parts_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(6, parts_.get(i));
+      }
+      for (int i = 0; i < headerParameters_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(7, headerParameters_.get(i));
+      }
+      for (int i = 0; i < bodyParameters_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(8, bodyParameters_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -2369,6 +2529,8 @@ public final class UtilProtos {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
           getParametersFieldBuilder();
           getPartsFieldBuilder();
+          getHeaderParametersFieldBuilder();
+          getBodyParametersFieldBuilder();
         }
       }
       private static Builder create() {
@@ -2396,6 +2558,18 @@ public final class UtilProtos {
           bitField0_ = (bitField0_ & ~0x00000020);
         } else {
           partsBuilder_.clear();
+        }
+        if (headerParametersBuilder_ == null) {
+          headerParameters_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000040);
+        } else {
+          headerParametersBuilder_.clear();
+        }
+        if (bodyParametersBuilder_ == null) {
+          bodyParameters_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000080);
+        } else {
+          bodyParametersBuilder_.clear();
         }
         return this;
       }
@@ -2458,6 +2632,24 @@ public final class UtilProtos {
           result.parts_ = parts_;
         } else {
           result.parts_ = partsBuilder_.build();
+        }
+        if (headerParametersBuilder_ == null) {
+          if (((bitField0_ & 0x00000040) == 0x00000040)) {
+            headerParameters_ = java.util.Collections.unmodifiableList(headerParameters_);
+            bitField0_ = (bitField0_ & ~0x00000040);
+          }
+          result.headerParameters_ = headerParameters_;
+        } else {
+          result.headerParameters_ = headerParametersBuilder_.build();
+        }
+        if (bodyParametersBuilder_ == null) {
+          if (((bitField0_ & 0x00000080) == 0x00000080)) {
+            bodyParameters_ = java.util.Collections.unmodifiableList(bodyParameters_);
+            bitField0_ = (bitField0_ & ~0x00000080);
+          }
+          result.bodyParameters_ = bodyParameters_;
+        } else {
+          result.bodyParameters_ = bodyParametersBuilder_.build();
         }
         result.bitField0_ = to_bitField0_;
         onBuilt();
@@ -2540,6 +2732,58 @@ public final class UtilProtos {
                    getPartsFieldBuilder() : null;
             } else {
               partsBuilder_.addAllMessages(other.parts_);
+            }
+          }
+        }
+        if (headerParametersBuilder_ == null) {
+          if (!other.headerParameters_.isEmpty()) {
+            if (headerParameters_.isEmpty()) {
+              headerParameters_ = other.headerParameters_;
+              bitField0_ = (bitField0_ & ~0x00000040);
+            } else {
+              ensureHeaderParametersIsMutable();
+              headerParameters_.addAll(other.headerParameters_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.headerParameters_.isEmpty()) {
+            if (headerParametersBuilder_.isEmpty()) {
+              headerParametersBuilder_.dispose();
+              headerParametersBuilder_ = null;
+              headerParameters_ = other.headerParameters_;
+              bitField0_ = (bitField0_ & ~0x00000040);
+              headerParametersBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getHeaderParametersFieldBuilder() : null;
+            } else {
+              headerParametersBuilder_.addAllMessages(other.headerParameters_);
+            }
+          }
+        }
+        if (bodyParametersBuilder_ == null) {
+          if (!other.bodyParameters_.isEmpty()) {
+            if (bodyParameters_.isEmpty()) {
+              bodyParameters_ = other.bodyParameters_;
+              bitField0_ = (bitField0_ & ~0x00000080);
+            } else {
+              ensureBodyParametersIsMutable();
+              bodyParameters_.addAll(other.bodyParameters_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.bodyParameters_.isEmpty()) {
+            if (bodyParametersBuilder_.isEmpty()) {
+              bodyParametersBuilder_.dispose();
+              bodyParametersBuilder_ = null;
+              bodyParameters_ = other.bodyParameters_;
+              bitField0_ = (bitField0_ & ~0x00000080);
+              bodyParametersBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getBodyParametersFieldBuilder() : null;
+            } else {
+              bodyParametersBuilder_.addAllMessages(other.bodyParameters_);
             }
           }
         }
@@ -3283,6 +3527,486 @@ public final class UtilProtos {
         return partsBuilder_;
       }
 
+      // repeated .spotify.Url.Parameter headerParameters = 7;
+      private java.util.List<se.michaelthelin.spotify.UtilProtos.Url.Parameter> headerParameters_ =
+        java.util.Collections.emptyList();
+      private void ensureHeaderParametersIsMutable() {
+        if (!((bitField0_ & 0x00000040) == 0x00000040)) {
+          headerParameters_ = new java.util.ArrayList<se.michaelthelin.spotify.UtilProtos.Url.Parameter>(headerParameters_);
+          bitField0_ |= 0x00000040;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          se.michaelthelin.spotify.UtilProtos.Url.Parameter, se.michaelthelin.spotify.UtilProtos.Url.Parameter.Builder, se.michaelthelin.spotify.UtilProtos.Url.ParameterOrBuilder> headerParametersBuilder_;
+
+      /**
+       * <code>repeated .spotify.Url.Parameter headerParameters = 7;</code>
+       */
+      public java.util.List<se.michaelthelin.spotify.UtilProtos.Url.Parameter> getHeaderParametersList() {
+        if (headerParametersBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(headerParameters_);
+        } else {
+          return headerParametersBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .spotify.Url.Parameter headerParameters = 7;</code>
+       */
+      public int getHeaderParametersCount() {
+        if (headerParametersBuilder_ == null) {
+          return headerParameters_.size();
+        } else {
+          return headerParametersBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .spotify.Url.Parameter headerParameters = 7;</code>
+       */
+      public se.michaelthelin.spotify.UtilProtos.Url.Parameter getHeaderParameters(int index) {
+        if (headerParametersBuilder_ == null) {
+          return headerParameters_.get(index);
+        } else {
+          return headerParametersBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .spotify.Url.Parameter headerParameters = 7;</code>
+       */
+      public Builder setHeaderParameters(
+          int index, se.michaelthelin.spotify.UtilProtos.Url.Parameter value) {
+        if (headerParametersBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureHeaderParametersIsMutable();
+          headerParameters_.set(index, value);
+          onChanged();
+        } else {
+          headerParametersBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .spotify.Url.Parameter headerParameters = 7;</code>
+       */
+      public Builder setHeaderParameters(
+          int index, se.michaelthelin.spotify.UtilProtos.Url.Parameter.Builder builderForValue) {
+        if (headerParametersBuilder_ == null) {
+          ensureHeaderParametersIsMutable();
+          headerParameters_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          headerParametersBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .spotify.Url.Parameter headerParameters = 7;</code>
+       */
+      public Builder addHeaderParameters(se.michaelthelin.spotify.UtilProtos.Url.Parameter value) {
+        if (headerParametersBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureHeaderParametersIsMutable();
+          headerParameters_.add(value);
+          onChanged();
+        } else {
+          headerParametersBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .spotify.Url.Parameter headerParameters = 7;</code>
+       */
+      public Builder addHeaderParameters(
+          int index, se.michaelthelin.spotify.UtilProtos.Url.Parameter value) {
+        if (headerParametersBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureHeaderParametersIsMutable();
+          headerParameters_.add(index, value);
+          onChanged();
+        } else {
+          headerParametersBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .spotify.Url.Parameter headerParameters = 7;</code>
+       */
+      public Builder addHeaderParameters(
+          se.michaelthelin.spotify.UtilProtos.Url.Parameter.Builder builderForValue) {
+        if (headerParametersBuilder_ == null) {
+          ensureHeaderParametersIsMutable();
+          headerParameters_.add(builderForValue.build());
+          onChanged();
+        } else {
+          headerParametersBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .spotify.Url.Parameter headerParameters = 7;</code>
+       */
+      public Builder addHeaderParameters(
+          int index, se.michaelthelin.spotify.UtilProtos.Url.Parameter.Builder builderForValue) {
+        if (headerParametersBuilder_ == null) {
+          ensureHeaderParametersIsMutable();
+          headerParameters_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          headerParametersBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .spotify.Url.Parameter headerParameters = 7;</code>
+       */
+      public Builder addAllHeaderParameters(
+          java.lang.Iterable<? extends se.michaelthelin.spotify.UtilProtos.Url.Parameter> values) {
+        if (headerParametersBuilder_ == null) {
+          ensureHeaderParametersIsMutable();
+          super.addAll(values, headerParameters_);
+          onChanged();
+        } else {
+          headerParametersBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .spotify.Url.Parameter headerParameters = 7;</code>
+       */
+      public Builder clearHeaderParameters() {
+        if (headerParametersBuilder_ == null) {
+          headerParameters_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000040);
+          onChanged();
+        } else {
+          headerParametersBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .spotify.Url.Parameter headerParameters = 7;</code>
+       */
+      public Builder removeHeaderParameters(int index) {
+        if (headerParametersBuilder_ == null) {
+          ensureHeaderParametersIsMutable();
+          headerParameters_.remove(index);
+          onChanged();
+        } else {
+          headerParametersBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .spotify.Url.Parameter headerParameters = 7;</code>
+       */
+      public se.michaelthelin.spotify.UtilProtos.Url.Parameter.Builder getHeaderParametersBuilder(
+          int index) {
+        return getHeaderParametersFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .spotify.Url.Parameter headerParameters = 7;</code>
+       */
+      public se.michaelthelin.spotify.UtilProtos.Url.ParameterOrBuilder getHeaderParametersOrBuilder(
+          int index) {
+        if (headerParametersBuilder_ == null) {
+          return headerParameters_.get(index);  } else {
+          return headerParametersBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .spotify.Url.Parameter headerParameters = 7;</code>
+       */
+      public java.util.List<? extends se.michaelthelin.spotify.UtilProtos.Url.ParameterOrBuilder> 
+           getHeaderParametersOrBuilderList() {
+        if (headerParametersBuilder_ != null) {
+          return headerParametersBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(headerParameters_);
+        }
+      }
+      /**
+       * <code>repeated .spotify.Url.Parameter headerParameters = 7;</code>
+       */
+      public se.michaelthelin.spotify.UtilProtos.Url.Parameter.Builder addHeaderParametersBuilder() {
+        return getHeaderParametersFieldBuilder().addBuilder(
+            se.michaelthelin.spotify.UtilProtos.Url.Parameter.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .spotify.Url.Parameter headerParameters = 7;</code>
+       */
+      public se.michaelthelin.spotify.UtilProtos.Url.Parameter.Builder addHeaderParametersBuilder(
+          int index) {
+        return getHeaderParametersFieldBuilder().addBuilder(
+            index, se.michaelthelin.spotify.UtilProtos.Url.Parameter.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .spotify.Url.Parameter headerParameters = 7;</code>
+       */
+      public java.util.List<se.michaelthelin.spotify.UtilProtos.Url.Parameter.Builder> 
+           getHeaderParametersBuilderList() {
+        return getHeaderParametersFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          se.michaelthelin.spotify.UtilProtos.Url.Parameter, se.michaelthelin.spotify.UtilProtos.Url.Parameter.Builder, se.michaelthelin.spotify.UtilProtos.Url.ParameterOrBuilder> 
+          getHeaderParametersFieldBuilder() {
+        if (headerParametersBuilder_ == null) {
+          headerParametersBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              se.michaelthelin.spotify.UtilProtos.Url.Parameter, se.michaelthelin.spotify.UtilProtos.Url.Parameter.Builder, se.michaelthelin.spotify.UtilProtos.Url.ParameterOrBuilder>(
+                  headerParameters_,
+                  ((bitField0_ & 0x00000040) == 0x00000040),
+                  getParentForChildren(),
+                  isClean());
+          headerParameters_ = null;
+        }
+        return headerParametersBuilder_;
+      }
+
+      // repeated .spotify.Url.Parameter bodyParameters = 8;
+      private java.util.List<se.michaelthelin.spotify.UtilProtos.Url.Parameter> bodyParameters_ =
+        java.util.Collections.emptyList();
+      private void ensureBodyParametersIsMutable() {
+        if (!((bitField0_ & 0x00000080) == 0x00000080)) {
+          bodyParameters_ = new java.util.ArrayList<se.michaelthelin.spotify.UtilProtos.Url.Parameter>(bodyParameters_);
+          bitField0_ |= 0x00000080;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          se.michaelthelin.spotify.UtilProtos.Url.Parameter, se.michaelthelin.spotify.UtilProtos.Url.Parameter.Builder, se.michaelthelin.spotify.UtilProtos.Url.ParameterOrBuilder> bodyParametersBuilder_;
+
+      /**
+       * <code>repeated .spotify.Url.Parameter bodyParameters = 8;</code>
+       */
+      public java.util.List<se.michaelthelin.spotify.UtilProtos.Url.Parameter> getBodyParametersList() {
+        if (bodyParametersBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(bodyParameters_);
+        } else {
+          return bodyParametersBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .spotify.Url.Parameter bodyParameters = 8;</code>
+       */
+      public int getBodyParametersCount() {
+        if (bodyParametersBuilder_ == null) {
+          return bodyParameters_.size();
+        } else {
+          return bodyParametersBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .spotify.Url.Parameter bodyParameters = 8;</code>
+       */
+      public se.michaelthelin.spotify.UtilProtos.Url.Parameter getBodyParameters(int index) {
+        if (bodyParametersBuilder_ == null) {
+          return bodyParameters_.get(index);
+        } else {
+          return bodyParametersBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .spotify.Url.Parameter bodyParameters = 8;</code>
+       */
+      public Builder setBodyParameters(
+          int index, se.michaelthelin.spotify.UtilProtos.Url.Parameter value) {
+        if (bodyParametersBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureBodyParametersIsMutable();
+          bodyParameters_.set(index, value);
+          onChanged();
+        } else {
+          bodyParametersBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .spotify.Url.Parameter bodyParameters = 8;</code>
+       */
+      public Builder setBodyParameters(
+          int index, se.michaelthelin.spotify.UtilProtos.Url.Parameter.Builder builderForValue) {
+        if (bodyParametersBuilder_ == null) {
+          ensureBodyParametersIsMutable();
+          bodyParameters_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          bodyParametersBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .spotify.Url.Parameter bodyParameters = 8;</code>
+       */
+      public Builder addBodyParameters(se.michaelthelin.spotify.UtilProtos.Url.Parameter value) {
+        if (bodyParametersBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureBodyParametersIsMutable();
+          bodyParameters_.add(value);
+          onChanged();
+        } else {
+          bodyParametersBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .spotify.Url.Parameter bodyParameters = 8;</code>
+       */
+      public Builder addBodyParameters(
+          int index, se.michaelthelin.spotify.UtilProtos.Url.Parameter value) {
+        if (bodyParametersBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureBodyParametersIsMutable();
+          bodyParameters_.add(index, value);
+          onChanged();
+        } else {
+          bodyParametersBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .spotify.Url.Parameter bodyParameters = 8;</code>
+       */
+      public Builder addBodyParameters(
+          se.michaelthelin.spotify.UtilProtos.Url.Parameter.Builder builderForValue) {
+        if (bodyParametersBuilder_ == null) {
+          ensureBodyParametersIsMutable();
+          bodyParameters_.add(builderForValue.build());
+          onChanged();
+        } else {
+          bodyParametersBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .spotify.Url.Parameter bodyParameters = 8;</code>
+       */
+      public Builder addBodyParameters(
+          int index, se.michaelthelin.spotify.UtilProtos.Url.Parameter.Builder builderForValue) {
+        if (bodyParametersBuilder_ == null) {
+          ensureBodyParametersIsMutable();
+          bodyParameters_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          bodyParametersBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .spotify.Url.Parameter bodyParameters = 8;</code>
+       */
+      public Builder addAllBodyParameters(
+          java.lang.Iterable<? extends se.michaelthelin.spotify.UtilProtos.Url.Parameter> values) {
+        if (bodyParametersBuilder_ == null) {
+          ensureBodyParametersIsMutable();
+          super.addAll(values, bodyParameters_);
+          onChanged();
+        } else {
+          bodyParametersBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .spotify.Url.Parameter bodyParameters = 8;</code>
+       */
+      public Builder clearBodyParameters() {
+        if (bodyParametersBuilder_ == null) {
+          bodyParameters_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000080);
+          onChanged();
+        } else {
+          bodyParametersBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .spotify.Url.Parameter bodyParameters = 8;</code>
+       */
+      public Builder removeBodyParameters(int index) {
+        if (bodyParametersBuilder_ == null) {
+          ensureBodyParametersIsMutable();
+          bodyParameters_.remove(index);
+          onChanged();
+        } else {
+          bodyParametersBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .spotify.Url.Parameter bodyParameters = 8;</code>
+       */
+      public se.michaelthelin.spotify.UtilProtos.Url.Parameter.Builder getBodyParametersBuilder(
+          int index) {
+        return getBodyParametersFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .spotify.Url.Parameter bodyParameters = 8;</code>
+       */
+      public se.michaelthelin.spotify.UtilProtos.Url.ParameterOrBuilder getBodyParametersOrBuilder(
+          int index) {
+        if (bodyParametersBuilder_ == null) {
+          return bodyParameters_.get(index);  } else {
+          return bodyParametersBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .spotify.Url.Parameter bodyParameters = 8;</code>
+       */
+      public java.util.List<? extends se.michaelthelin.spotify.UtilProtos.Url.ParameterOrBuilder> 
+           getBodyParametersOrBuilderList() {
+        if (bodyParametersBuilder_ != null) {
+          return bodyParametersBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(bodyParameters_);
+        }
+      }
+      /**
+       * <code>repeated .spotify.Url.Parameter bodyParameters = 8;</code>
+       */
+      public se.michaelthelin.spotify.UtilProtos.Url.Parameter.Builder addBodyParametersBuilder() {
+        return getBodyParametersFieldBuilder().addBuilder(
+            se.michaelthelin.spotify.UtilProtos.Url.Parameter.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .spotify.Url.Parameter bodyParameters = 8;</code>
+       */
+      public se.michaelthelin.spotify.UtilProtos.Url.Parameter.Builder addBodyParametersBuilder(
+          int index) {
+        return getBodyParametersFieldBuilder().addBuilder(
+            index, se.michaelthelin.spotify.UtilProtos.Url.Parameter.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .spotify.Url.Parameter bodyParameters = 8;</code>
+       */
+      public java.util.List<se.michaelthelin.spotify.UtilProtos.Url.Parameter.Builder> 
+           getBodyParametersBuilderList() {
+        return getBodyParametersFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          se.michaelthelin.spotify.UtilProtos.Url.Parameter, se.michaelthelin.spotify.UtilProtos.Url.Parameter.Builder, se.michaelthelin.spotify.UtilProtos.Url.ParameterOrBuilder> 
+          getBodyParametersFieldBuilder() {
+        if (bodyParametersBuilder_ == null) {
+          bodyParametersBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              se.michaelthelin.spotify.UtilProtos.Url.Parameter, se.michaelthelin.spotify.UtilProtos.Url.Parameter.Builder, se.michaelthelin.spotify.UtilProtos.Url.ParameterOrBuilder>(
+                  bodyParameters_,
+                  ((bitField0_ & 0x00000080) == 0x00000080),
+                  getParentForChildren(),
+                  isClean());
+          bodyParameters_ = null;
+        }
+        return bodyParametersBuilder_;
+      }
+
       // @@protoc_insertion_point(builder_scope:spotify.Url)
     }
 
@@ -3318,16 +4042,19 @@ public final class UtilProtos {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\nutil.proto\022\007spotify\"\311\002\n\003Url\022#\n\006scheme\030" +
+      "\n\nutil.proto\022\007spotify\"\253\003\n\003Url\022#\n\006scheme\030" +
       "\001 \002(\0162\023.spotify.Url.Scheme\022\014\n\004host\030\002 \002(\t" +
       "\022\014\n\004port\030\003 \002(\005\022\014\n\004path\030\004 \002(\t\022*\n\nparamete" +
       "rs\030\005 \003(\0132\026.spotify.Url.Parameter\022 \n\005part" +
-      "s\030\006 \003(\0132\021.spotify.Url.Part\032(\n\tParameter\022" +
-      "\014\n\004name\030\001 \001(\t\022\r\n\005value\030\002 \001(\t\032\\\n\004Part\022\014\n\004" +
-      "name\030\001 \001(\t\022\020\n\010filename\030\002 \001(\t\022\024\n\014content_" +
-      "type\030\003 \001(\t\022\017\n\007charset\030\004 \001(\t\022\r\n\005value\030\005 \001" +
-      "(\014\"\035\n\006Scheme\022\010\n\004HTTP\020\000\022\t\n\005HTTPS\020\001B&\n\030se." +
-      "michaelthelin.spotifyB\nUtilProtos"
+      "s\030\006 \003(\0132\021.spotify.Url.Part\0220\n\020headerPara" +
+      "meters\030\007 \003(\0132\026.spotify.Url.Parameter\022.\n\016" +
+      "bodyParameters\030\010 \003(\0132\026.spotify.Url.Param" +
+      "eter\032(\n\tParameter\022\014\n\004name\030\001 \001(\t\022\r\n\005value" +
+      "\030\002 \001(\t\032\\\n\004Part\022\014\n\004name\030\001 \001(\t\022\020\n\010filename" +
+      "\030\002 \001(\t\022\024\n\014content_type\030\003 \001(\t\022\017\n\007charset\030",
+      "\004 \001(\t\022\r\n\005value\030\005 \001(\014\"\035\n\006Scheme\022\010\n\004HTTP\020\000" +
+      "\022\t\n\005HTTPS\020\001B&\n\030se.michaelthelin.spotifyB" +
+      "\nUtilProtos"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -3339,7 +4066,7 @@ public final class UtilProtos {
           internal_static_spotify_Url_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_spotify_Url_descriptor,
-              new java.lang.String[] { "Scheme", "Host", "Port", "Path", "Parameters", "Parts", });
+              new java.lang.String[] { "Scheme", "Host", "Port", "Path", "Parameters", "Parts", "HeaderParameters", "BodyParameters", });
           internal_static_spotify_Url_Parameter_descriptor =
             internal_static_spotify_Url_descriptor.getNestedTypes().get(0);
           internal_static_spotify_Url_Parameter_fieldAccessorTable = new

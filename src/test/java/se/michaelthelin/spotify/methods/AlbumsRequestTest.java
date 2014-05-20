@@ -12,7 +12,6 @@ import se.michaelthelin.spotify.HttpManager;
 import se.michaelthelin.spotify.TestConfiguration;
 import se.michaelthelin.spotify.TestUtil;
 import se.michaelthelin.spotify.exceptions.BadFieldException;
-import se.michaelthelin.spotify.exceptions.NotFoundException;
 import se.michaelthelin.spotify.models.*;
 
 import java.util.List;

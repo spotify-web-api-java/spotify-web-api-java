@@ -2,6 +2,8 @@ package se.michaelthelin.spotify;
 
 import se.michaelthelin.spotify.UtilProtos.Url.Scheme;
 import se.michaelthelin.spotify.methods.*;
+import se.michaelthelin.spotify.methods.authentication.RefreshAccessTokenRequest;
+import se.michaelthelin.spotify.methods.authentication.TokenRequest;
 
 import java.util.Arrays;
 import java.util.List;
@@ -31,6 +33,12 @@ public class Api {
    */
   public static final Scheme DEFAULT_SCHEME = Scheme.HTTPS;
 
+  public static final String DEFAULT_AUTHENTICATION_HOST = "accounts.spotify.com";
+
+  public static final int DEFAULT_AUTHENTICATION_PORT = 443;
+
+  public static final Scheme DEFAULT_AUTHENTICATION_SCHEME = Scheme.HTTPS;
+
   /**
    * Api instance with the default settings.
    */
@@ -45,10 +53,14 @@ public class Api {
     assert (builder.host != null);
     assert (builder.port > 0);
     assert (builder.scheme != null);
-    if (builder.httpManager != null) {
-      this.httpManager = builder.httpManager;
+
+
+    if (builder.httpManager == null) {
+      this.httpManager = SpotifyHttpManager
+              .builder()
+              .build();
     } else {
-      this.httpManager = DEFAULT_HTTP_MANAGER;
+      this.httpManager = builder.httpManager;
     }
     scheme = builder.scheme;
     host = builder.host;
@@ -147,7 +159,6 @@ public class Api {
     return builder;
   }
 
-
   public TopTracksRequest.Builder getTopTracksForArtist(String artistId, String countryCode) {
     TopTracksRequest.Builder builder = TopTracksRequest.builder();
     setDefaults(builder);
@@ -163,6 +174,32 @@ public class Api {
     return builder;
   }
 
+  public UserPlaylistsRequest.Builder getPlaylistsForUser(String userId) {
+    UserPlaylistsRequest.Builder builder = UserPlaylistsRequest.builder();
+    setDefaults(builder);
+    builder.username(userId);
+    return builder;
+  }
+
+  public TokenRequest.Builder getTokens(String clientId, String clientSecret, String code, String redirectUri) {
+    TokenRequest.Builder builder = TokenRequest.builder();
+    builder.grantType("authorization_code");
+    builder.authorizationHeader(clientId, clientSecret);
+    builder.code(code);
+    builder.redirectUri(redirectUri);
+    setDefaults(builder);
+    return builder;
+  }
+
+  public RefreshAccessTokenRequest.Builder refreshAccessToken(String clientId, String clientSecret, String refreshToken) {
+    RefreshAccessTokenRequest.Builder builder = RefreshAccessTokenRequest.builder();
+    setDefaults(builder);
+    builder.grantType("refresh_token");
+    builder.refreshToken(refreshToken);
+    builder.authorizationHeader(clientId, clientSecret);
+    return builder;
+  }
+
   void setDefaults(Request.Builder builder) {
     builder.httpManager(httpManager);
     builder.scheme(scheme);
@@ -170,13 +207,12 @@ public class Api {
     builder.port(port);
   }
 
-
   public static class Builder {
 
-    String host = DEFAULT_HOST;
-    int port = DEFAULT_PORT;
-    HttpManager httpManager = null;
-    Scheme scheme = DEFAULT_SCHEME;
+    private String host = DEFAULT_HOST;
+    private int port = DEFAULT_PORT;
+    private HttpManager httpManager = null;
+    private Scheme scheme = DEFAULT_SCHEME;
 
     public Builder scheme(Scheme scheme) {
       this.scheme = scheme;
@@ -202,12 +238,11 @@ public class Api {
       assert (host != null);
       assert (port > 0);
       assert (scheme != null);
+
       return new Api(this);
     }
 
   }
-
-
 
 }
 
