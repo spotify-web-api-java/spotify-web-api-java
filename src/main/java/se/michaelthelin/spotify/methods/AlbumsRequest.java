@@ -4,7 +4,7 @@ import com.google.common.base.Joiner;
 import com.google.common.util.concurrent.SettableFuture;
 import net.sf.json.JSONObject;
 import se.michaelthelin.spotify.JsonUtil;
-import se.michaelthelin.spotify.exceptions.*;
+import se.michaelthelin.spotify.exceptions.WebApiException;
 import se.michaelthelin.spotify.models.Album;
 
 import java.io.IOException;
@@ -22,29 +22,23 @@ public class AlbumsRequest extends AbstractRequest {
     try {
       String jsonString = getJson();
       JSONObject jsonObject = JSONObject.fromObject(jsonString);
-      if (errorInJson(jsonObject)) {
-        Exception exception = getExceptionFromJson(jsonObject);
-        albumsFuture.setException(exception);
-      } else {
-        albumsFuture.set(JsonUtil.createAlbums(jsonString));
-      }
-    } catch (IOException e) {
-      albumsFuture.setException(e);
-    } catch (UnexpectedResponseException e) {
-      albumsFuture.setException(e);
-    } catch (NoCredentialsException e) {
-      albumsFuture.setException(e);
-    } catch (ErrorResponseException e) {
+
+      throwIfErrorsInResponse(jsonObject);
+
+      albumsFuture.set(JsonUtil.createAlbums(jsonString));
+    } catch (Exception e) {
       albumsFuture.setException(e);
     }
 
     return albumsFuture;
   }
 
-  public List<Album> get() throws IOException, UnexpectedResponseException, NotFoundException, BadFieldException, NoCredentialsException, ErrorResponseException {
+  public List<Album> get() throws IOException, WebApiException {
     String jsonString = getJson();
     JSONObject jsonObject = JSONObject.fromObject(jsonString);
+
     throwIfErrorsInResponse(jsonObject);
+
     return JsonUtil.createAlbums(jsonString);
   }
 

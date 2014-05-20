@@ -3,9 +3,7 @@ package se.michaelthelin.spotify.methods;
 import com.google.common.util.concurrent.SettableFuture;
 import net.sf.json.JSONObject;
 import se.michaelthelin.spotify.JsonUtil;
-import se.michaelthelin.spotify.exceptions.ErrorResponseException;
-import se.michaelthelin.spotify.exceptions.NoCredentialsException;
-import se.michaelthelin.spotify.exceptions.UnexpectedResponseException;
+import se.michaelthelin.spotify.exceptions.WebApiException;
 import se.michaelthelin.spotify.models.Artist;
 import se.michaelthelin.spotify.models.Page;
 
@@ -24,21 +22,23 @@ public class ArtistSearchRequest extends AbstractRequest {
     try {
       String jsonString = getJson();
       JSONObject jsonObject = JSONObject.fromObject(jsonString);
+
+      throwIfErrorsInResponse(jsonObject);
+
       searchResultFuture.set(JsonUtil.createArtistPage(jsonObject.getJSONObject("artists")));
-    } catch (IOException e) {
-      searchResultFuture.setException(e);
-    } catch (UnexpectedResponseException e) {
-      searchResultFuture.setException(e);
-    } catch (NoCredentialsException e) {
-      searchResultFuture.setException(e);
-    } catch (ErrorResponseException e) {
+    } catch (Exception e) {
       searchResultFuture.setException(e);
     }
 
     return searchResultFuture;
   }
 
-  public Page<Artist> get() throws IOException, UnexpectedResponseException, NoCredentialsException, ErrorResponseException {
+  public Page<Artist> get() throws IOException, WebApiException {
+    final String jsonString = getJson();
+    final JSONObject jsonObject = JSONObject.fromObject(jsonString);
+
+    throwIfErrorsInResponse(jsonObject);
+
     return JsonUtil.createArtistPage(JSONObject.fromObject(getJson()).getJSONObject("artists"));
   }
 

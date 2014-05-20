@@ -6,7 +6,6 @@ import se.michaelthelin.spotify.HttpManager;
 import se.michaelthelin.spotify.UrlUtil;
 import se.michaelthelin.spotify.UtilProtos.Url;
 import se.michaelthelin.spotify.exceptions.*;
-import se.michaelthelin.spotify.models.TokenResponse;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -26,44 +25,37 @@ public abstract class AbstractRequest implements Request {
     return UrlUtil.assemble(url);
   }
 
-  public String getJson() throws IOException, UnexpectedResponseException, ErrorResponseException, NoCredentialsException {
+  public String getJson() throws IOException, WebApiException {
     return httpManager.get(url);
   }
 
-  public String postJson() throws IOException, UnexpectedResponseException, ErrorResponseException, NoCredentialsException {
+  public String postJson() throws IOException, WebApiException {
     return httpManager.post(url);
   }
 
-  protected boolean errorInJson(JSONObject jsonObject) {
-    return (!jsonObject.isNullObject() && jsonObject.has("error"));
-  }
 
-  protected Exception getExceptionFromJson(JSONObject jsonObject) {
-    assert (jsonObject != null);
-    assert (errorInJson(jsonObject));
-
-    JSONObject error = jsonObject.getJSONObject("error");
-    if (error.getString("type").equals("bad_field")) {
-      return new BadFieldException();
-    }
-    if (error.getString("type").equals("not_found")) {
-      return new NotFoundException();
-    }
-    return new IllegalStateException("Should not get here");
-  }
-
-  protected void throwIfErrorsInResponse(JSONObject jsonObject) throws NotFoundException, BadFieldException {
+  protected void throwIfErrorsInResponse(JSONObject jsonObject) throws NotFoundException, BadFieldException, TokenRequestException {
     assert (jsonObject != null);
 
     if (errorInJson(jsonObject)) {
       JSONObject error = jsonObject.getJSONObject("error");
-      if (error.getString("type").equals("bad_field")) {
-        throw new BadFieldException();
+
+      if (error.containsKey("type")) {
+        if (error.getString("type").equals("bad_field")) {
+          throw new BadFieldException();
+        }
+        if (error.getString("type").equals("not_found")) {
+          throw new NotFoundException();
+        }
+      } else if (error.containsKey("error_description")) {
+          throw new TokenRequestException(error.getString("error_description"));
       }
-      if (error.getString("type").equals("not_found")) {
-        throw new NotFoundException();
-      }
+
     }
+  }
+
+  private boolean errorInJson(JSONObject jsonObject) {
+    return (!jsonObject.isNullObject() && jsonObject.has("error"));
   }
 
   public AbstractRequest(Builder<?> builder) {

@@ -4,9 +4,7 @@ import com.google.common.base.Joiner;
 import com.google.common.util.concurrent.SettableFuture;
 import net.sf.json.JSONObject;
 import se.michaelthelin.spotify.JsonUtil;
-import se.michaelthelin.spotify.exceptions.ErrorResponseException;
-import se.michaelthelin.spotify.exceptions.NoCredentialsException;
-import se.michaelthelin.spotify.exceptions.UnexpectedResponseException;
+import se.michaelthelin.spotify.exceptions.WebApiException;
 import se.michaelthelin.spotify.models.Track;
 
 import java.io.IOException;
@@ -22,29 +20,26 @@ public class TracksRequest extends AbstractRequest {
     SettableFuture<List<Track>> tracksFuture = SettableFuture.create();
 
     try {
-      String jsonString = getJson();
-      JSONObject jsonObject = JSONObject.fromObject(jsonString);
-      if (errorInJson(jsonObject)) {
-        Exception exception = getExceptionFromJson(jsonObject);
-        tracksFuture.setException(exception);
-      } else {
-        tracksFuture.set(JsonUtil.createTracks(jsonObject));
-      }
-    } catch (IOException e) {
-      tracksFuture.setException(e);
-    } catch (UnexpectedResponseException e) {
-      tracksFuture.setException(e);
-    } catch (NoCredentialsException e) {
-      tracksFuture.setException(e);
-    } catch (ErrorResponseException e) {
+      final String jsonString = getJson();
+      final JSONObject jsonObject = JSONObject.fromObject(jsonString);
+
+      throwIfErrorsInResponse(jsonObject);
+
+      tracksFuture.set(JsonUtil.createTracks(jsonObject));
+    } catch (Exception e) {
       tracksFuture.setException(e);
     }
 
     return tracksFuture;
   }
 
-  public List<Track> get() throws IOException, UnexpectedResponseException, NoCredentialsException, ErrorResponseException {
-    return JsonUtil.createTracks(getJson());
+  public List<Track> get() throws IOException, WebApiException {
+    final String jsonString = getJson();
+    final JSONObject jsonObject = JSONObject.fromObject(jsonString);
+
+    throwIfErrorsInResponse(jsonObject);
+
+    return JsonUtil.createTracks(jsonObject);
   }
 
   public static Builder builder() {

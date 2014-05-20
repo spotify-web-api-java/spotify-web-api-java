@@ -24,31 +24,25 @@ public class ArtistsRequest extends AbstractRequest {
     SettableFuture<List<Artist>> artistsFuture = SettableFuture.create();
 
     try {
-      String jsonString = getJson();
-      JSONObject jsonObject = JSONObject.fromObject(jsonString);
-      if (errorInJson(jsonObject)) {
-        Exception exception = getExceptionFromJson(jsonObject);
-        artistsFuture.setException(exception);
-      } else {
-        artistsFuture.set(JsonUtil.createArtists(getJson()));
-      }
-    } catch (IOException e) {
-      artistsFuture.setException(e);
-    } catch (UnexpectedResponseException e) {
-      artistsFuture.setException(e);
-    } catch (NoCredentialsException e) {
-      artistsFuture.setException(e);
-    } catch (ErrorResponseException e) {
+      final String jsonString = getJson();
+      final JSONObject jsonObject = JSONObject.fromObject(jsonString);
+
+      throwIfErrorsInResponse(jsonObject);
+
+      artistsFuture.set(JsonUtil.createArtists(getJson()));
+    } catch (Exception e) {
       artistsFuture.setException(e);
     }
 
     return artistsFuture;
   }
 
-  public List<Artist> get() throws IOException, UnexpectedResponseException, NotFoundException, BadFieldException, NoCredentialsException, ErrorResponseException {
-    String jsonString = getJson();
-    JSONObject jsonObject = JSONObject.fromObject(jsonString);
+  public List<Artist> get() throws IOException, WebApiException {
+    final String jsonString = getJson();
+    final JSONObject jsonObject = JSONObject.fromObject(jsonString);
+
     throwIfErrorsInResponse(jsonObject);
+
     return JsonUtil.createArtists(jsonString);
   }
 

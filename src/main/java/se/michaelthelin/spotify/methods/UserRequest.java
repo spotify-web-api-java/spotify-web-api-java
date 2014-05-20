@@ -19,34 +19,28 @@ public class UserRequest extends AbstractRequest {
   }
 
   public SettableFuture<User> getAsync() {
-    SettableFuture<User> userFuture = SettableFuture.create();
+    final SettableFuture<User> userFuture = SettableFuture.create();
 
     try {
-      String jsonString = getJson();
-      JSONObject jsonObject = JSONObject.fromObject(jsonString);
-      if (errorInJson(jsonObject)) {
-        Exception exception = getExceptionFromJson(jsonObject);
-        userFuture.setException(exception);
-      } else {
-        userFuture.set(JsonUtil.createUser(jsonString));
-      }
-    } catch (IOException e) {
-      userFuture.setException(e);
-    } catch (UnexpectedResponseException e) {
-      userFuture.setException(e);
-    } catch (NoCredentialsException e) {
-      userFuture.setException(e);
-    } catch (ErrorResponseException e) {
+      final String jsonString = getJson();
+      final JSONObject jsonObject = JSONObject.fromObject(jsonString);
+
+      throwIfErrorsInResponse(jsonObject);
+
+      userFuture.set(JsonUtil.createUser(jsonString));
+    } catch (Exception e) {
       userFuture.setException(e);
     }
 
     return userFuture;
   }
 
-  public User get() throws IOException, UnexpectedResponseException, NotFoundException, BadFieldException, NoCredentialsException, ErrorResponseException {
-    String jsonString = getJson();
-    JSONObject jsonObject = JSONObject.fromObject(jsonString);
+  public User get() throws IOException, WebApiException {
+    final String jsonString = getJson();
+    final JSONObject jsonObject = JSONObject.fromObject(jsonString);
+
     throwIfErrorsInResponse(jsonObject);
+
     return JsonUtil.createUser(jsonString);
   }
 

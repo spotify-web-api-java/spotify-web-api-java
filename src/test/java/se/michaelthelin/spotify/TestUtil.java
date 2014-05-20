@@ -1,6 +1,6 @@
 package se.michaelthelin.spotify;
 
-import se.michaelthelin.spotify.exceptions.UnexpectedResponseException;
+import se.michaelthelin.spotify.exceptions.EmptyResponseException;
 
 import java.io.File;
 import java.io.FileReader;
@@ -32,7 +32,7 @@ public class TestUtil {
 
   public static class MockedHttpManager {
 
-    public static HttpManager returningJson(String jsonFixture) throws IOException, UnexpectedResponseException {
+    public static HttpManager returningJson(String jsonFixture) throws IOException, EmptyResponseException {
       // Mocked HTTP Manager to get predictable responses
       final HttpManager mockedHttpManager = mock(HttpManager.class);
       final String fixture = readTestData(jsonFixture);

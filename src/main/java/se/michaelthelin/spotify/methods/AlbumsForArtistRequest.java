@@ -21,23 +21,25 @@ public class AlbumsForArtistRequest extends AbstractRequest {
     SettableFuture<Page<SimpleAlbum>> searchResultFuture = SettableFuture.create();
 
     try {
-      String jsonString = getJson();
-      JSONObject jsonObject = JSONObject.fromObject(jsonString);
+      final String jsonString = getJson();
+      final JSONObject jsonObject = JSONObject.fromObject(jsonString);
+
+      throwIfErrorsInResponse(jsonObject);
+
       searchResultFuture.set(JsonUtil.createSimpleAlbumPage(jsonObject));
-    } catch (IOException e) {
-      searchResultFuture.setException(e);
-    } catch (UnexpectedResponseException e) {
-      searchResultFuture.setException(e);
-    } catch (NoCredentialsException e) {
-      searchResultFuture.setException(e);
-    } catch (ErrorResponseException e) {
+    } catch (Exception e) {
       searchResultFuture.setException(e);
     }
 
     return searchResultFuture;
   }
 
-  public Page<SimpleAlbum> get() throws IOException, UnexpectedResponseException, NotFoundException, BadFieldException, NoCredentialsException, ErrorResponseException {
+  public Page<SimpleAlbum> get() throws IOException, WebApiException {
+    final String jsonString = getJson();
+    final JSONObject jsonObject = JSONObject.fromObject(jsonString);
+
+    throwIfErrorsInResponse(jsonObject);
+
     return JsonUtil.createSimpleAlbumPage(getJson());
   }
 

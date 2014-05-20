@@ -7,7 +7,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 import se.michaelthelin.spotify.Api;
-import se.michaelthelin.spotify.HttpManager;
 import se.michaelthelin.spotify.TestConfiguration;
 import se.michaelthelin.spotify.TestUtil;
 import se.michaelthelin.spotify.models.User;
@@ -66,6 +65,7 @@ public class UserRequestTest {
     final UserRequest request = requestBuilder.build();
 
     final User user = request.get();
+
     assertNull(user.getEmail());
     assertEquals("wizzler", user.getId());
     assertEquals("https://api.spotify.com/v1/users/wizzler", user.getHref());

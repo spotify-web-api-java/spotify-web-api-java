@@ -6,12 +6,10 @@ import com.google.common.util.concurrent.SettableFuture;
 import org.junit.Test;
 import se.michaelthelin.spotify.Api;
 import se.michaelthelin.spotify.TestUtil;
-import se.michaelthelin.spotify.exceptions.*;
 import se.michaelthelin.spotify.models.Page;
 import se.michaelthelin.spotify.models.SimplePlaylist;
 import se.michaelthelin.spotify.models.SpotifyEntityType;
 
-import java.io.IOException;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
@@ -20,7 +18,7 @@ import static junit.framework.TestCase.*;
 public class UserPlaylistsRequestTest {
 
   @Test
-  public void shouldGetPlaylistsForUser_async() throws UnexpectedResponseException, BadFieldException, NotFoundException, IOException, InterruptedException, ErrorResponseException {
+  public void shouldGetPlaylistsForUser_async() throws Exception {
     final String accessToken = "myVeryLongAccessToken";
     final Api api = Api.builder().build();
 
@@ -72,7 +70,7 @@ public class UserPlaylistsRequestTest {
   }
 
   @Test
-  public void shouldGetPlaylistsForUser_sync() throws UnexpectedResponseException, BadFieldException, NotFoundException, IOException, ErrorResponseException, NoCredentialsException {
+  public void shouldGetPlaylistsForUser_sync() throws Exception {
     final String accessToken = "myVeryLongAccessToken";
     final Api api = Api.builder().build();
 

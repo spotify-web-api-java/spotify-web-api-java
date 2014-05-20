@@ -1,12 +1,11 @@
 package se.michaelthelin.spotify.methods.authentication;
 
+import com.google.common.util.concurrent.SettableFuture;
 import net.sf.json.JSONObject;
 import org.apache.commons.codec.binary.Base64;
 import se.michaelthelin.spotify.Api;
 import se.michaelthelin.spotify.JsonUtil;
-import se.michaelthelin.spotify.exceptions.ErrorResponseException;
-import se.michaelthelin.spotify.exceptions.NoCredentialsException;
-import se.michaelthelin.spotify.exceptions.UnexpectedResponseException;
+import se.michaelthelin.spotify.exceptions.WebApiException;
 import se.michaelthelin.spotify.methods.AbstractRequest;
 import se.michaelthelin.spotify.models.TokenResponse;
 
@@ -22,14 +21,28 @@ public class TokenRequest extends AbstractRequest {
     return new Builder();
   }
 
-  public TokenResponse post() throws IOException, UnexpectedResponseException, ErrorResponseException, NoCredentialsException {
-    String json = postJson();
-    JSONObject jsonObject = JSONObject.fromObject(json);
+  public SettableFuture<TokenResponse> getAsync() {
+    final SettableFuture<TokenResponse> future = SettableFuture.create();
 
-    if (errorInJson(jsonObject)) {
-      // Todo: Create error exception from JsonUtil
-      throw new ErrorResponseException(jsonObject.getString("error_description"));
+    try {
+      final String jsonString = postJson();
+      final JSONObject jsonObject = JSONObject.fromObject(jsonString);
+
+      throwIfErrorsInResponse(jsonObject);
+
+      future.set(JsonUtil.createTokenResponse(jsonObject));
+    } catch (Exception e) {
+      future.setException(e);
     }
+
+    return future;
+  }
+
+  public TokenResponse get() throws IOException, WebApiException {
+    final String json = postJson();
+    final JSONObject jsonObject = JSONObject.fromObject(json);
+
+    throwIfErrorsInResponse(jsonObject);
 
     return JsonUtil.createTokenResponse(jsonObject);
   }

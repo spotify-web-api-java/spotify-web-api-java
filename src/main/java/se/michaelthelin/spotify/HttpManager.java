@@ -1,7 +1,7 @@
 package se.michaelthelin.spotify;
 
 import se.michaelthelin.spotify.UtilProtos.Url;
-import se.michaelthelin.spotify.exceptions.UnexpectedResponseException;
+import se.michaelthelin.spotify.exceptions.EmptyResponseException;
 
 import java.io.IOException;
 
@@ -16,7 +16,7 @@ public interface HttpManager {
    * @param url the {@link Url} to HTTP GET.
    * @return a String containing the body of the HTTP GET response.
    */
-  String get(Url url) throws UnexpectedResponseException, IOException;
+  String get(Url url) throws EmptyResponseException, IOException;
 
   /**
    * Perform an HTTP POST request to the specified URL.
@@ -24,7 +24,7 @@ public interface HttpManager {
    * @param url the {@link Url} to HTTP POST.
    * @return a String containing the body of the HTTP POST response.
    */
-  String post(Url url) throws UnexpectedResponseException, IOException;
+  String post(Url url) throws EmptyResponseException, IOException;
 
   /**
    * Perform an HTTP DELETE request to the specified URL.

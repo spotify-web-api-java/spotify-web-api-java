@@ -1,12 +1,11 @@
 package se.michaelthelin.spotify.methods.authentication;
 
+import com.google.common.util.concurrent.SettableFuture;
 import net.sf.json.JSONObject;
 import org.apache.commons.codec.binary.Base64;
 import se.michaelthelin.spotify.Api;
 import se.michaelthelin.spotify.JsonUtil;
-import se.michaelthelin.spotify.exceptions.ErrorResponseException;
-import se.michaelthelin.spotify.exceptions.NoCredentialsException;
-import se.michaelthelin.spotify.exceptions.UnexpectedResponseException;
+import se.michaelthelin.spotify.exceptions.*;
 import se.michaelthelin.spotify.methods.AbstractRequest;
 import se.michaelthelin.spotify.models.RefreshAccessTokenResponse;
 
@@ -22,13 +21,26 @@ public class RefreshAccessTokenRequest extends AbstractRequest {
     return new Builder();
   }
 
-  public RefreshAccessTokenResponse post() throws IOException, UnexpectedResponseException, ErrorResponseException, NoCredentialsException {
-    String json = postJson();
-    JSONObject jsonObject = JSONObject.fromObject(json);
+  public SettableFuture<RefreshAccessTokenResponse> getAsync() {
+    final SettableFuture<RefreshAccessTokenResponse> future = SettableFuture.create();
 
-    if (errorInJson(jsonObject)) {
-      throw new ErrorResponseException(jsonObject.getString("error_description"));
+    try {
+      JSONObject jsonObject = JSONObject.fromObject(postJson());
+
+      throwIfErrorsInResponse(jsonObject);
+
+      future.set(JsonUtil.createRefreshAccessTokenResponse(jsonObject));
+    } catch (Exception e) {
+      future.setException(e);
     }
+
+    return future;
+  }
+
+  public RefreshAccessTokenResponse get() throws IOException, WebApiException {
+    JSONObject jsonObject = JSONObject.fromObject(postJson());
+
+    throwIfErrorsInResponse(jsonObject);
 
     return JsonUtil.createRefreshAccessTokenResponse(jsonObject);
   }
@@ -38,6 +50,7 @@ public class RefreshAccessTokenRequest extends AbstractRequest {
     public Builder authorizationHeader(String clientId, String clientSecret) {
       assert (clientId != null);
       assert (clientSecret != null);
+
       String idSecret = clientId + ":" + clientSecret;
       String idSecretEncoded = new String(Base64.encodeBase64(idSecret.getBytes()));
 

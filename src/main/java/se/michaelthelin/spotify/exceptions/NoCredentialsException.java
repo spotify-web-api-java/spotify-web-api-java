@@ -1,8 +1,8 @@
 package se.michaelthelin.spotify.exceptions;
 
-public class NoCredentialsException extends Exception {
+public class NoCredentialsException extends WebApiException {
 
-  public NoCredentialsException(String message) {
-    super(message);
+  public NoCredentialsException() {
+    super();
   }
 }

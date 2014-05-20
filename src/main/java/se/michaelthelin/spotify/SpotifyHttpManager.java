@@ -6,7 +6,7 @@ import org.apache.commons.httpclient.methods.GetMethod;
 import org.apache.commons.httpclient.methods.PostMethod;
 import org.apache.commons.httpclient.params.HttpMethodParams;
 import se.michaelthelin.spotify.UtilProtos.Url;
-import se.michaelthelin.spotify.exceptions.UnexpectedResponseException;
+import se.michaelthelin.spotify.exceptions.EmptyResponseException;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -28,32 +28,37 @@ public class SpotifyHttpManager implements HttpManager {
   }
 
   @Override
-  public String get(Url url) throws UnexpectedResponseException, IOException {
+  public String get(Url url) throws EmptyResponseException, IOException {
     assert (url != null);
+
     final String uri = UrlUtil.assemble(url);
     final GetMethod method = new GetMethod(uri);
-    method.setQueryString(getParametersAsNamedValuePairArray(url));
+
     for (Url.Parameter header : url.getHeaderParametersList()) {
       method.setRequestHeader(header.getName(), header.getValue());
     }
+    method.setQueryString(getParametersAsNamedValuePairArray(url));
     method.getParams().setCookiePolicy(CookiePolicy.BROWSER_COMPATIBILITY);
-    method.getParams().setParameter(
-            HttpMethodParams.HTTP_CONTENT_CHARSET, "UTF-8");
+    method.getParams().setParameter(HttpMethodParams.HTTP_CONTENT_CHARSET, "UTF-8");
+
     return execute(method);
   }
 
   @Override
-  public String post(UtilProtos.Url url) throws IOException, UnexpectedResponseException {
+  public String post(UtilProtos.Url url) throws IOException, EmptyResponseException {
     assert (url != null);
-    String uri = UrlUtil.assemble(url);
-    PostMethod method = new PostMethod(uri);
-    method.getParams().setCookiePolicy(CookiePolicy.BROWSER_COMPATIBILITY);
-    method.getParams().setParameter(HttpMethodParams.HTTP_CONTENT_CHARSET, "UTF-8");
-    method.setQueryString(getParametersAsNamedValuePairArray(url));
-    method.setRequestBody(getBodyParametersAsNamedValuePairArray(url));
+
+    final String uri = UrlUtil.assemble(url);
+    final PostMethod method = new PostMethod(uri);
+
     for (Url.Parameter header : url.getHeaderParametersList()) {
       method.setRequestHeader(header.getName(), header.getValue());
     }
+    method.setQueryString(getParametersAsNamedValuePairArray(url));
+    method.setRequestBody(getBodyParametersAsNamedValuePairArray(url));
+    method.getParams().setCookiePolicy(CookiePolicy.BROWSER_COMPATIBILITY);
+    method.getParams().setParameter(HttpMethodParams.HTTP_CONTENT_CHARSET, "UTF-8");
+
     return execute(method);
   }
 
@@ -77,13 +82,13 @@ public class SpotifyHttpManager implements HttpManager {
     return out.toArray(new NameValuePair[out.size()]);
   }
 
-  private String execute(HttpMethod method) throws UnexpectedResponseException, IOException {
+  private String execute(HttpMethod method) throws EmptyResponseException, IOException {
     HttpClient httpClient = new HttpClient(connectionManager);
     try {
       httpClient.executeMethod(method);
       String responseBody = method.getResponseBodyAsString();
       if (responseBody == null) {
-        throw new UnexpectedResponseException();
+        throw new EmptyResponseException();
       }
       return responseBody;
     } catch (IOException e) {
@@ -112,7 +117,6 @@ public class SpotifyHttpManager implements HttpManager {
     private HttpConnectionManager connectionManager = null;
 
     public Builder() {}
-
 
     public SpotifyHttpManager build() {
       return new SpotifyHttpManager(this);

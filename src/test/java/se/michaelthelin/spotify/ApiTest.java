@@ -1,12 +1,13 @@
 package se.michaelthelin.spotify;
 
+import org.apache.commons.codec.binary.Base64;
 import org.junit.Test;
 import se.michaelthelin.spotify.UtilProtos.Url.Scheme;
-import se.michaelthelin.spotify.exceptions.ErrorResponseException;
-import se.michaelthelin.spotify.exceptions.UnexpectedResponseException;
+import se.michaelthelin.spotify.exceptions.EmptyResponseException;
 import se.michaelthelin.spotify.methods.Request;
 import se.michaelthelin.spotify.models.AlbumType;
 
+import static se.michaelthelin.spotify.Assertions.assertHasBodyParameter;
 import static se.michaelthelin.spotify.Assertions.assertHasHeader;
 import static se.michaelthelin.spotify.Assertions.assertHasParameter;
 
@@ -219,14 +220,51 @@ public class ApiTest {
   }
 
   @Test
-  public void shouldCreateUrlForListingAUsersPlaylists() throws UnexpectedResponseException, ErrorResponseException, IOException {
+  public void shouldCreateUrlForListingAUsersPlaylists() throws Exception {
     final String accessToken = "myVeryLongAccessToken";
     final Api api = Api.builder().build();
 
     final Request request = api.getPlaylistsForUser("wizzler").accessToken(accessToken).build();
 
     assertEquals("https://api.spotify.com:443/v1/users/wizzler/playlists", request.toString());
-    assertHasHeader(request.toUrl(), "Authorization", "Bearer myAccessToken");
+    assertHasHeader(request.toUrl(), "Authorization", "Bearer " + accessToken);
+  }
+
+  @Test
+  public void shouldCreateRequestForTokensUrl() {
+    final String clientId = "myClientId";
+    final String clientSecret = "myClientSecret";
+    final String code = "returnedCode";
+    final String redirectUri = "myRedirectUri";
+
+    final Api api = Api.DEFAULT_API;
+    final Request request = api.getTokens(clientId, clientSecret, code, redirectUri).build();
+
+    assertEquals("https://accounts.spotify.com:443/api/token", request.toString());
+    assertHasBodyParameter(request.toUrl(), "grant_type", "authorization_code");
+    assertHasBodyParameter(request.toUrl(), "code", code);
+    assertHasBodyParameter(request.toUrl(), "redirect_uri", redirectUri);
+
+    final String idSecret = clientId + ":" + clientSecret;
+    assertHasHeader(request.toUrl(), "Authorization", "Basic " + new String(Base64.encodeBase64(idSecret.getBytes())));
+  }
+
+  @Test
+  public void shouldCreateRefreshAccessTokenUrl() {
+    final Api api = Api.DEFAULT_API;
+
+    final String clientId = "myClientId";
+    final String clientSecret = "myClientSecret";
+    final String refreshToken = "myRefreshToken";
+
+    final Request request = api.refreshAccessToken(clientId, clientSecret, refreshToken).build();
+
+    assertEquals("https://accounts.spotify.com:443/api/token", request.toString());
+    assertHasBodyParameter(request.toUrl(), "grant_type", "refresh_token");
+    assertHasBodyParameter(request.toUrl(), "refresh_token", refreshToken);
+
+    final String idSecret = clientId + ":" + clientSecret;
+    assertHasHeader(request.toUrl(), "Authorization", "Basic " + new String(Base64.encodeBase64(idSecret.getBytes())));
   }
 
 }

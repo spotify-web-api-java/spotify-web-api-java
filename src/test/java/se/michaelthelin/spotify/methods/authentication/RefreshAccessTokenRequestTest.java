@@ -3,11 +3,9 @@ package se.michaelthelin.spotify.methods.authentication;
 import org.junit.Test;
 import se.michaelthelin.spotify.Api;
 import se.michaelthelin.spotify.TestUtil;
-import se.michaelthelin.spotify.exceptions.ErrorResponseException;
 import se.michaelthelin.spotify.models.RefreshAccessTokenResponse;
 
 import static junit.framework.Assert.assertNotNull;
-import static junit.framework.TestCase.fail;
 
 public class RefreshAccessTokenRequestTest {
 
@@ -24,13 +22,9 @@ public class RefreshAccessTokenRequestTest {
             .httpManager(TestUtil.MockedHttpManager.returningJson("auth-tokens.json"))
             .build();
 
-    try {
-      RefreshAccessTokenResponse refreshAccessTokenResponse = request.post();
-      assertNotNull(refreshAccessTokenResponse.getExpiresIn());
-      assertNotNull(refreshAccessTokenResponse.getAccessToken());
-      assertNotNull(refreshAccessTokenResponse.getTokenType());
-    } catch (ErrorResponseException e) {
-      fail(e.getMessage());
-    }
+    RefreshAccessTokenResponse refreshAccessTokenResponse = request.get();
+    assertNotNull(refreshAccessTokenResponse.getExpiresIn());
+    assertNotNull(refreshAccessTokenResponse.getAccessToken());
+    assertNotNull(refreshAccessTokenResponse.getTokenType());
   }
 }
