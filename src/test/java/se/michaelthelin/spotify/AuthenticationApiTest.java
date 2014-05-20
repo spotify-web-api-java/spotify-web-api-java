@@ -17,7 +17,7 @@ public class AuthenticationApiTest {
     final String code = "returnedCode";
     final String redirectUri = "myRedirectUri";
 
-    final AuthenticationApi api = AuthenticationApi.DEFAULT_API;
+    final Api api = Api.DEFAULT_API;
     final Request request = api.getTokens().build();
 
     assertEquals("https://accounts.spotify.com:443/api/token", request.toString());
@@ -31,7 +31,7 @@ public class AuthenticationApiTest {
 
   @Test
   public void shouldCreateRefreshAccessTokenUrl() {
-    final AuthenticationApi api = AuthenticationApi.DEFAULT_API;
+    final Api api = Api.DEFAULT_API;
 
     final String clientId = "myClientId";
     final String clientSecret = "myClientSecret";

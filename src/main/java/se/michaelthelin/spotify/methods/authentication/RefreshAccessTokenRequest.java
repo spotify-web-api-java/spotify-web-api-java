@@ -1,4 +1,4 @@
-package se.michaelthelin.spotify.methods;
+package se.michaelthelin.spotify.methods.authentication;
 
 import net.sf.json.JSONObject;
 import org.apache.commons.codec.binary.Base64;
@@ -7,6 +7,7 @@ import se.michaelthelin.spotify.JsonUtil;
 import se.michaelthelin.spotify.exceptions.ErrorResponseException;
 import se.michaelthelin.spotify.exceptions.NoCredentialsException;
 import se.michaelthelin.spotify.exceptions.UnexpectedResponseException;
+import se.michaelthelin.spotify.methods.AbstractRequest;
 import se.michaelthelin.spotify.models.RefreshAccessTokenResponse;
 
 import java.io.IOException;

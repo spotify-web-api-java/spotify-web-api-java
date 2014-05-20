@@ -22,10 +22,11 @@ public class UserPlaylistsRequestTest {
   @Test
   public void shouldGetPlaylistsForUser_async() throws UnexpectedResponseException, BadFieldException, NotFoundException, IOException, InterruptedException, ErrorResponseException {
     final String accessToken = "myVeryLongAccessToken";
-    final Api api = Api.builder().accessToken(accessToken).build();
+    final Api api = Api.builder().build();
 
     final UserPlaylistsRequest request = api
             .getPlaylistsForUser("wizzler")
+            .accessToken(accessToken)
             .httpManager(TestUtil.MockedHttpManager.returningJson("user-playlists.json"))
             .build();
 
@@ -73,10 +74,11 @@ public class UserPlaylistsRequestTest {
   @Test
   public void shouldGetPlaylistsForUser_sync() throws UnexpectedResponseException, BadFieldException, NotFoundException, IOException, ErrorResponseException, NoCredentialsException {
     final String accessToken = "myVeryLongAccessToken";
-    final Api api = Api.builder().accessToken(accessToken).build();
+    final Api api = Api.builder().build();
 
     final UserPlaylistsRequest request = api
             .getPlaylistsForUser("wizzler")
+            .accessToken(accessToken)
             .httpManager(TestUtil.MockedHttpManager.returningJson("user-playlists.json"))
             .build();
 

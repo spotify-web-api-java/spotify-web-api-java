@@ -58,8 +58,11 @@ public class UserPlaylistsRequest extends AbstractRequest {
       return path(String.format("/v1/users/%s/playlists", username));
     }
 
+    public Builder accessToken(String accessToken) {
+      return header("Authorization", "Bearer " + accessToken);
+    }
+
     public UserPlaylistsRequest build() {
-      authenticationRequired(true);
       return new UserPlaylistsRequest(this);
     }
 

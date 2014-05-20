@@ -2,6 +2,8 @@ package se.michaelthelin.spotify;
 
 import se.michaelthelin.spotify.UtilProtos.Url.Scheme;
 import se.michaelthelin.spotify.methods.*;
+import se.michaelthelin.spotify.methods.authentication.RefreshAccessTokenRequest;
+import se.michaelthelin.spotify.methods.authentication.TokenRequest;
 
 import java.util.Arrays;
 import java.util.List;
@@ -46,7 +48,6 @@ public class Api {
   private Scheme scheme;
   private int port;
   private String host;
-  private AuthenticationApi authenticationApi = null;
 
   private Api(Builder builder) {
     assert (builder.host != null);
@@ -57,11 +58,6 @@ public class Api {
     if (builder.httpManager == null) {
       this.httpManager = SpotifyHttpManager
               .builder()
-              .clientId(builder.clientId)
-              .clientSecret(builder.clientSecret)
-              .code(builder.code)
-              .redirectUri(builder.redirectUri)
-              .accessToken(builder.accessToken)
               .build();
     } else {
       this.httpManager = builder.httpManager;
@@ -182,7 +178,22 @@ public class Api {
     UserPlaylistsRequest.Builder builder = UserPlaylistsRequest.builder();
     setDefaults(builder);
     builder.username(userId);
-    builder.authenticationRequired(true);
+    return builder;
+  }
+
+  public TokenRequest.Builder getTokens() {
+    TokenRequest.Builder builder = TokenRequest.builder();
+    builder.grantType("authorization_code");
+    setDefaults(builder);
+    return builder;
+  }
+
+  public RefreshAccessTokenRequest.Builder refreshAccessToken(String clientId, String clientSecret, String refreshToken) {
+    RefreshAccessTokenRequest.Builder builder = RefreshAccessTokenRequest.builder();
+    setDefaults(builder);
+    builder.grantType("refresh_token");
+    builder.refreshToken(refreshToken);
+    builder.authorizationHeader(clientId, clientSecret);
     return builder;
   }
 
@@ -199,12 +210,6 @@ public class Api {
     private int port = DEFAULT_PORT;
     private HttpManager httpManager = null;
     private Scheme scheme = DEFAULT_SCHEME;
-    private AuthenticationApi authenticationApi = null;
-    private String clientId;
-    private String clientSecret;
-    private String code;
-    private String redirectUri;
-    private String accessToken;
 
     public Builder scheme(Scheme scheme) {
       this.scheme = scheme;
@@ -223,36 +228,6 @@ public class Api {
 
     public Builder httpManager(HttpManager httpManager) {
       this.httpManager = httpManager;
-      return this;
-    }
-
-    public Builder authenticationApi(AuthenticationApi authenticationApi) {
-      this.authenticationApi = authenticationApi;
-      return this;
-    }
-
-    public Builder clientId(String clientId) {
-      this.clientId = clientId;
-      return this;
-    }
-
-    public Builder clientSecret(String clientSecret) {
-      this.clientSecret = clientSecret;
-      return this;
-    }
-
-    public Builder code(String code) {
-      this.code = code;
-      return this;
-    }
-
-    public Builder redirectUri(String redirectUri) {
-      this.redirectUri = redirectUri;
-      return this;
-    }
-
-    public Builder accessToken(String accessToken) {
-      this.accessToken = accessToken;
       return this;
     }
 

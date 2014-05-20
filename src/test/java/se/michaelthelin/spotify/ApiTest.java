@@ -221,9 +221,10 @@ public class ApiTest {
   @Test
   public void shouldCreateUrlForListingAUsersPlaylists() throws UnexpectedResponseException, ErrorResponseException, IOException {
     final String accessToken = "myVeryLongAccessToken";
-    final Api api = Api.builder().accessToken(accessToken).build();
+    final Api api = Api.builder().build();
 
-    Request request = api.getPlaylistsForUser("wizzler").build();
+    final Request request = api.getPlaylistsForUser("wizzler").accessToken(accessToken).build();
+
     assertEquals("https://api.spotify.com:443/v1/users/wizzler/playlists", request.toString());
     assertHasHeader(request.toUrl(), "Authorization", "Bearer myAccessToken");
   }

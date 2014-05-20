@@ -1,4 +1,4 @@
-package se.michaelthelin.spotify.methods;
+package se.michaelthelin.spotify.methods.authentication;
 
 import net.sf.json.JSONObject;
 import org.apache.commons.codec.binary.Base64;
@@ -7,6 +7,7 @@ import se.michaelthelin.spotify.JsonUtil;
 import se.michaelthelin.spotify.exceptions.ErrorResponseException;
 import se.michaelthelin.spotify.exceptions.NoCredentialsException;
 import se.michaelthelin.spotify.exceptions.UnexpectedResponseException;
+import se.michaelthelin.spotify.methods.AbstractRequest;
 import se.michaelthelin.spotify.models.TokenResponse;
 
 import java.io.IOException;
@@ -38,29 +39,32 @@ public class TokenRequest extends AbstractRequest {
     public Builder authorizationHeader(String clientId, String clientSecret) {
       assert (clientId != null);
       assert (clientSecret != null);
-      String idSecret = clientId + ":" + clientSecret;
-      String idSecretEncoded = new String(Base64.encodeBase64(idSecret.getBytes()));
+
+      final String idSecret = clientId + ":" + clientSecret;
+      final String idSecretEncoded = new String(Base64.encodeBase64(idSecret.getBytes()));
 
       return header("Authorization", "Basic " + idSecretEncoded);
     }
 
     public Builder grantType(String grantType) {
       assert (grantType != null);
+
       return body("grant_type", grantType);
     }
 
     public Builder code(String code) {
       assert (code != null);
+
       return body("code", code);
     }
 
     public Builder redirectUri(String redirectUri) {
       assert (redirectUri != null);
+
       return body("redirect_uri", redirectUri);
     }
 
     public TokenRequest build() {
-
       host(Api.DEFAULT_AUTHENTICATION_HOST);
       port(Api.DEFAULT_AUTHENTICATION_PORT);
       scheme(Api.DEFAULT_AUTHENTICATION_SCHEME);

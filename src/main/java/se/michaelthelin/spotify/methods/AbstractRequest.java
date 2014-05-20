@@ -14,7 +14,6 @@ import java.util.List;
 
 public abstract class AbstractRequest implements Request {
 
-  private final boolean authenticationRequired;
   private Url url;
 
   private HttpManager httpManager;
@@ -28,53 +27,11 @@ public abstract class AbstractRequest implements Request {
   }
 
   public String getJson() throws IOException, UnexpectedResponseException, ErrorResponseException, NoCredentialsException {
-    if (authenticationRequired && !httpManager.hasAccessToken() && !httpManager.hasBaseCredentials()) {
-      throw new NoCredentialsException("Request requires authentication");
-    } else if (authenticationRequired && !httpManager.hasAccessToken()) {
-      String clientId = httpManager.getClientId();
-      String clientSecret = httpManager.getClientSecret();
-      String code = httpManager.getCode();
-      String redirectUri = httpManager.getRedirectUri();
-      TokenResponse response = TokenRequest
-              .builder()
-              .authorizationHeader(clientId, clientSecret)
-              .grantType("authorization_code")
-              .code(code)
-              .redirectUri(redirectUri)
-              .build()
-              .post();
-      httpManager.setAccessToken(response.getAccessToken());
-      return httpManager.authenticatedGet(url);
-    } else if (authenticationRequired) {
-      return httpManager.authenticatedGet(url);
-    } else {
-      return httpManager.get(url);
-    }
+    return httpManager.get(url);
   }
 
   public String postJson() throws IOException, UnexpectedResponseException, ErrorResponseException, NoCredentialsException {
-    if (authenticationRequired && !httpManager.hasAccessToken() && !httpManager.hasBaseCredentials()) {
-      throw new NoCredentialsException("Request requires authentication");
-    } else if (authenticationRequired && !httpManager.hasAccessToken()) {
-      String clientId = httpManager.getClientId();
-      String clientSecret = httpManager.getClientSecret();
-      String code = httpManager.getCode();
-      String redirectUri = httpManager.getRedirectUri();
-      TokenResponse response = TokenRequest
-              .builder()
-              .authorizationHeader(clientId, clientSecret)
-              .grantType("authorization_code")
-              .code(code)
-              .redirectUri(redirectUri)
-              .build()
-              .post();
-      httpManager.setAccessToken(response.getAccessToken());
-      return httpManager.authenticatedPost(url);
-    } else if (authenticationRequired) {
-      return httpManager.authenticatedPost(url);
-    } else {
-      return httpManager.post(url);
-    }
+    return httpManager.post(url);
   }
 
   protected boolean errorInJson(JSONObject jsonObject) {
@@ -125,8 +82,6 @@ public abstract class AbstractRequest implements Request {
       httpManager = builder.httpManager;
     }
 
-    authenticationRequired = builder.authenticationRequired;
-
     url = Url.newBuilder()
              .setScheme(builder.scheme)
              .setHost(builder.host)
@@ -150,8 +105,6 @@ public abstract class AbstractRequest implements Request {
     protected List<Url.Parameter> headerParameters = new ArrayList<Url.Parameter>();
     protected List<Url.Part> parts = new ArrayList<Url.Part>();
     protected List<Url.Parameter> bodyParameters = new ArrayList<Url.Parameter>();
-
-    private boolean authenticationRequired = false;
 
     public BuilderType httpManager(HttpManager httpManager) {
       this.httpManager = httpManager;
@@ -214,11 +167,6 @@ public abstract class AbstractRequest implements Request {
 
     public BuilderType path(String path) {
       this.path = path;
-      return (BuilderType) this;
-    }
-
-    public BuilderType authenticationRequired(boolean authenticationRequired) {
-      this.authenticationRequired = authenticationRequired;
       return (BuilderType) this;
     }
 
