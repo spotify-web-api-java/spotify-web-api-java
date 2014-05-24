@@ -11,7 +11,6 @@ This is a Java wrapper for the [Spotify Web API](https://developer.spotify.com/s
 - [x] Playlist lookup
 - [ ] Create a playlist
 - [ ] Add tracks to a playlist
-- [ ] Remove tracks from a playlist
 - [ ] Authenticated user lookup
 - [x] User lookup
 

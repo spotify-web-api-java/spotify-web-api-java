@@ -208,7 +208,13 @@ public class Api {
     return builder;
   }
 
-  void setDefaults(Request.Builder builder) {
+  public CurrentUserRequest.Builder getCurrentUser() {
+    final CurrentUserRequest.Builder builder = CurrentUserRequest.builder();
+    setDefaults(builder);
+    return builder;
+  }
+
+  private void setDefaults(Request.Builder builder) {
     builder.httpManager(httpManager);
     builder.scheme(scheme);
     builder.host(host);

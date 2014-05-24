@@ -282,5 +282,17 @@ public class ApiTest {
     assertEquals("https://api.spotify.com:443/v1/users/" + userId + "/playlists/" + playlistId, request.toString());
   }
 
+  @Test
+  public void shouldCreateCurrentUserLookupUrl() {
+    final Api api = Api.DEFAULT_API;
+
+    final String accessToken = "myVeryLongAccessToken";
+
+    final Request request = api.getCurrentUser()
+            .accessToken(accessToken)
+            .build();
+
+    assertEquals("https://api.spotify.com:443/v1/me", request.toString());
+  }
 
 }
