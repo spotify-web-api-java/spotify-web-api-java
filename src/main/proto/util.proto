@@ -1,6 +1,6 @@
 package spotify;
 
-option java_package = "se.michaelthelin.spotify";
+option java_package = "com.wrapper.spotify";
 option java_outer_classname = "UtilProtos";
 
 message Url {
