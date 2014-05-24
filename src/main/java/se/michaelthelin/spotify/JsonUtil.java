@@ -1,6 +1,7 @@
 package se.michaelthelin.spotify;
 
 import net.sf.json.JSONArray;
+import net.sf.json.JSONNull;
 import net.sf.json.JSONObject;
 import se.michaelthelin.spotify.models.*;
 
@@ -78,14 +79,16 @@ public class JsonUtil {
   }
 
   private static Image createImage(JSONObject image) {
-    Image returnedImage = new Image();
-    if (image.containsKey("height")) {
+    final Image returnedImage = new Image();
+    if (image.containsKey("height") && !image.get("height").equals(JSONNull.getInstance())) {
       returnedImage.setHeight(image.getInt(("height")));
     }
-    if (image.containsKey("width")) {
+    if (image.containsKey("width") && !image.get("width").equals(JSONNull.getInstance())) {
       returnedImage.setWidth(image.getInt(("width")));
     }
-    returnedImage.setUrl(image.getString("url"));
+    if (image.containsKey("url") && !image.get("url").equals(JSONNull.getInstance())) {
+      returnedImage.setUrl(image.getString("url"));
+    }
     return returnedImage;
   }
 
@@ -389,16 +392,16 @@ public class JsonUtil {
     user.setType(createSpotifyEntityType(userJson.getString("type")));
     user.setUri(userJson.getString("uri"));
 
-    if (userJson.has("display_name")) {
+    if (existsAndNotNull("display_name", userJson)) {
       user.setDisplayName(userJson.getString("display_name"));
     }
-    if (userJson.has("email")) {
+    if (existsAndNotNull("email", userJson)) {
       user.setEmail(userJson.getString("email"));
     }
-    if (userJson.has("images")) {
+    if (existsAndNotNull("images", userJson)) {
       user.setImages(createImages(userJson.getJSONArray("images")));
     }
-    if (userJson.has("product")) {
+    if (existsAndNotNull("product", userJson)) {
       user.setProduct(createProduct(userJson.getString("product")));
     }
 
@@ -535,4 +538,10 @@ public class JsonUtil {
     returnedFollowers.setTotal(followers.getInt("total"));
     return returnedFollowers;
   }
+
+  private static boolean existsAndNotNull(String key, JSONObject jsonObject) {
+    return jsonObject.containsKey(key) &&
+           !JSONNull.getInstance().equals(jsonObject.get(key));
+  }
+
 }

@@ -1,0 +1,19 @@
+{
+    "display_name": null,
+    "email": "thelinmichael@gmail.com",
+    "external_urls": {
+        "spotify": "https://open.spotify.com/user/thelinmichael"
+    },
+    "href": "https://api.spotify.com/v1/users/thelinmichael",
+    "id": "thelinmichael",
+    "images": [
+        {
+            "height": null,
+            "url": "http://media.giphy.com/media/Aab07O5PYOmQ/giphy.gif",
+            "width": null
+        }
+    ],
+    "product": "premium",
+    "type": "user",
+    "uri": "spotify:user:thelinmichael"
+}
