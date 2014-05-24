@@ -12,6 +12,7 @@ message Url {
   repeated Part parts = 6;
   repeated Parameter headerParameters = 7;
   repeated Parameter bodyParameters = 8;
+  optional string jsonBody = 9;
 
   enum Scheme {
     HTTP = 0;

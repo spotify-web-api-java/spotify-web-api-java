@@ -200,10 +200,10 @@ public class Api {
     return builder;
   }
 
-  public PlaylistRequest.Builder getPlaylist(String playlistId, String userId) {
+  public PlaylistRequest.Builder getPlaylist(String playlistId, String ownerId) {
     PlaylistRequest.Builder builder = PlaylistRequest.builder();
     setDefaults(builder);
-    builder.username(userId);
+    builder.owner(ownerId);
     builder.playlist(playlistId);
     return builder;
   }
@@ -225,6 +225,14 @@ public class Api {
     builder.scheme(scheme);
     builder.host(host);
     builder.port(port);
+  }
+
+  public AddTrackToPlaylistRequest.Builder addTracksToPlaylist(String playlistId, String ownerId) {
+    final AddTrackToPlaylistRequest.Builder builder = AddTrackToPlaylistRequest.builder();
+    setDefaults(builder);
+    builder.playlist(playlistId);
+    builder.owner(ownerId);
+    return builder;
   }
 
 

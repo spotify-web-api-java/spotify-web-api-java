@@ -54,7 +54,7 @@ public class PlaylistRequest extends AbstractRequest {
       return parameter("fields", fields);
     }
 
-    public Builder username(String username) {
+    public Builder owner(String username) {
       assert (username != null);
       this.username = username;
       return this;

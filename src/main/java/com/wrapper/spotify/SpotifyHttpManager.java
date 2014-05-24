@@ -4,6 +4,7 @@ import org.apache.commons.httpclient.*;
 import org.apache.commons.httpclient.cookie.CookiePolicy;
 import org.apache.commons.httpclient.methods.GetMethod;
 import org.apache.commons.httpclient.methods.PostMethod;
+import org.apache.commons.httpclient.methods.StringRequestEntity;
 import org.apache.commons.httpclient.params.HttpMethodParams;
 import com.wrapper.spotify.UtilProtos.Url;
 import com.wrapper.spotify.exceptions.EmptyResponseException;
@@ -54,8 +55,18 @@ public class SpotifyHttpManager implements HttpManager {
     for (Url.Parameter header : url.getHeaderParametersList()) {
       method.setRequestHeader(header.getName(), header.getValue());
     }
+
+    if (url.hasJsonBody()) {
+
+      StringRequestEntity requestEntity = new StringRequestEntity(
+              url.getJsonBody(),
+              "application/json",
+              "UTF-8");
+      method.setRequestEntity(requestEntity);
+    } else {
+      method.setRequestBody(getBodyParametersAsNamedValuePairArray(url));
+    }
     method.setQueryString(getParametersAsNamedValuePairArray(url));
-    method.setRequestBody(getBodyParametersAsNamedValuePairArray(url));
     method.getParams().setCookiePolicy(CookiePolicy.BROWSER_COMPATIBILITY);
     method.getParams().setParameter(HttpMethodParams.HTTP_CONTENT_CHARSET, "UTF-8");
 

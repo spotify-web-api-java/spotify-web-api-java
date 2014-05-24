@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
-import static junit.framework.Assert.assertEquals;
+import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.fail;
 
 @RunWith(MockitoJUnitRunner.class)

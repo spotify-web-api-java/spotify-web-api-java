@@ -1,5 +1,7 @@
 package com.wrapper.spotify;
 
+import com.wrapper.spotify.exceptions.EmptyResponseException;
+
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
@@ -36,6 +38,14 @@ public class TestUtil {
       final String fixture = readTestData(jsonFixture);
       when(mockedHttpManager.get((UtilProtos.Url) any())).thenReturn(fixture);
       when(mockedHttpManager.post((UtilProtos.Url) any())).thenReturn(fixture);
+
+      return mockedHttpManager;
+    }
+
+    public static HttpManager returningString(String returnedString) throws IOException, EmptyResponseException {
+      final HttpManager mockedHttpManager = mock(HttpManager.class);
+      when(mockedHttpManager.get((UtilProtos.Url) any())).thenReturn(returnedString);
+      when(mockedHttpManager.post((UtilProtos.Url) any())).thenReturn(returnedString);
 
       return mockedHttpManager;
     }

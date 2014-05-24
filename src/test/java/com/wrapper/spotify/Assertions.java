@@ -42,4 +42,11 @@ public class Assertions {
     }
     fail(String.format("Actual URL %s does not contain header %s", url, expected));
   }
+
+  public static void assertHasJsonBody(UtilProtos.Url url, String jsonBody) {
+    if (url.hasJsonBody() && url.getJsonBody().toString().equals(jsonBody)) {
+      return;
+    }
+    fail(String.format("Actual URL %s does not contain body %s", url, jsonBody));
+  }
 }

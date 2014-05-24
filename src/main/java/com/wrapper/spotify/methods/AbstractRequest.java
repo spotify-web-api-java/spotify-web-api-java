@@ -1,5 +1,7 @@
 package com.wrapper.spotify.methods;
 
+import net.sf.json.JSON;
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.HttpManager;
@@ -34,11 +36,11 @@ public abstract class AbstractRequest implements Request {
   }
 
 
-  protected void throwIfErrorsInResponse(JSONObject jsonObject) throws NotFoundException, BadFieldException, TokenRequestException {
+  protected void throwIfErrorsInResponse(JSONObject jsonObject) throws WebApiException {
     assert (jsonObject != null);
 
     if (errorInJson(jsonObject)) {
-      JSONObject error = jsonObject.getJSONObject("error");
+      final JSONObject error = jsonObject.getJSONObject("error");
 
       if (error.containsKey("type")) {
         if (error.getString("type").equals("bad_field")) {
@@ -47,6 +49,7 @@ public abstract class AbstractRequest implements Request {
         if (error.getString("type").equals("not_found")) {
           throw new NotFoundException();
         }
+        throw new WebApiException();
       } else if (error.containsKey("error_description")) {
           throw new TokenRequestException(error.getString("error_description"));
       }
@@ -74,7 +77,7 @@ public abstract class AbstractRequest implements Request {
       httpManager = builder.httpManager;
     }
 
-    url = Url.newBuilder()
+    Url.Builder urlBuilder = Url.newBuilder()
              .setScheme(builder.scheme)
              .setHost(builder.host)
              .setPort(builder.port)
@@ -82,8 +85,13 @@ public abstract class AbstractRequest implements Request {
              .addAllParameters(builder.parameters)
              .addAllBodyParameters(builder.bodyParameters)
              .addAllHeaderParameters(builder.headerParameters)
-             .addAllParts(builder.parts)
-             .build();
+             .addAllParts(builder.parts);
+
+    if (builder.jsonBody != null) {
+      urlBuilder.setJsonBody(builder.jsonBody.toString());
+    }
+
+    url = urlBuilder.build();
   }
 
   public static abstract class Builder<BuilderType extends Builder<?>> implements Request.Builder {
@@ -93,6 +101,7 @@ public abstract class AbstractRequest implements Request {
     protected int port = Api.DEFAULT_PORT;
     protected String path = null;
     protected HttpManager httpManager;
+    protected JSON jsonBody;
     protected List<Url.Parameter> parameters = new ArrayList<Url.Parameter>();
     protected List<Url.Parameter> headerParameters = new ArrayList<Url.Parameter>();
     protected List<Url.Part> parts = new ArrayList<Url.Part>();
@@ -136,6 +145,13 @@ public abstract class AbstractRequest implements Request {
 
       Url.Parameter parameter = Url.Parameter.newBuilder().setName(name).setValue(value).build();
       bodyParameters.add(parameter);
+
+      return (BuilderType) this;
+    }
+
+    public BuilderType body(JSON jsonBody) {
+      assert (jsonBody != null);
+      this.jsonBody = jsonBody;
 
       return (BuilderType) this;
     }

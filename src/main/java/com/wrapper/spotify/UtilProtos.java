@@ -160,6 +160,21 @@ public final class UtilProtos {
      */
     com.wrapper.spotify.UtilProtos.Url.ParameterOrBuilder getBodyParametersOrBuilder(
         int index);
+
+    // optional string jsonBody = 9;
+    /**
+     * <code>optional string jsonBody = 9;</code>
+     */
+    boolean hasJsonBody();
+    /**
+     * <code>optional string jsonBody = 9;</code>
+     */
+    java.lang.String getJsonBody();
+    /**
+     * <code>optional string jsonBody = 9;</code>
+     */
+    com.google.protobuf.ByteString
+        getJsonBodyBytes();
   }
   /**
    * Protobuf type {@code spotify.Url}
@@ -268,6 +283,11 @@ public final class UtilProtos {
                 mutable_bitField0_ |= 0x00000080;
               }
               bodyParameters_.add(input.readMessage(com.wrapper.spotify.UtilProtos.Url.Parameter.PARSER, extensionRegistry));
+              break;
+            }
+            case 74: {
+              bitField0_ |= 0x00000010;
+              jsonBody_ = input.readBytes();
               break;
             }
           }
@@ -2316,6 +2336,49 @@ public final class UtilProtos {
       return bodyParameters_.get(index);
     }
 
+    // optional string jsonBody = 9;
+    public static final int JSONBODY_FIELD_NUMBER = 9;
+    private java.lang.Object jsonBody_;
+    /**
+     * <code>optional string jsonBody = 9;</code>
+     */
+    public boolean hasJsonBody() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>optional string jsonBody = 9;</code>
+     */
+    public java.lang.String getJsonBody() {
+      java.lang.Object ref = jsonBody_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          jsonBody_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string jsonBody = 9;</code>
+     */
+    public com.google.protobuf.ByteString
+        getJsonBodyBytes() {
+      java.lang.Object ref = jsonBody_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        jsonBody_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private void initFields() {
       scheme_ = com.wrapper.spotify.UtilProtos.Url.Scheme.HTTP;
       host_ = "";
@@ -2325,6 +2388,7 @@ public final class UtilProtos {
       parts_ = java.util.Collections.emptyList();
       headerParameters_ = java.util.Collections.emptyList();
       bodyParameters_ = java.util.Collections.emptyList();
+      jsonBody_ = "";
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -2378,6 +2442,9 @@ public final class UtilProtos {
       for (int i = 0; i < bodyParameters_.size(); i++) {
         output.writeMessage(8, bodyParameters_.get(i));
       }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeBytes(9, getJsonBodyBytes());
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -2418,6 +2485,10 @@ public final class UtilProtos {
       for (int i = 0; i < bodyParameters_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(8, bodyParameters_.get(i));
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(9, getJsonBodyBytes());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -2571,6 +2642,8 @@ public final class UtilProtos {
         } else {
           bodyParametersBuilder_.clear();
         }
+        jsonBody_ = "";
+        bitField0_ = (bitField0_ & ~0x00000100);
         return this;
       }
 
@@ -2651,6 +2724,10 @@ public final class UtilProtos {
         } else {
           result.bodyParameters_ = bodyParametersBuilder_.build();
         }
+        if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        result.jsonBody_ = jsonBody_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -2786,6 +2863,11 @@ public final class UtilProtos {
               bodyParametersBuilder_.addAllMessages(other.bodyParameters_);
             }
           }
+        }
+        if (other.hasJsonBody()) {
+          bitField0_ |= 0x00000100;
+          jsonBody_ = other.jsonBody_;
+          onChanged();
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -4007,6 +4089,80 @@ public final class UtilProtos {
         return bodyParametersBuilder_;
       }
 
+      // optional string jsonBody = 9;
+      private java.lang.Object jsonBody_ = "";
+      /**
+       * <code>optional string jsonBody = 9;</code>
+       */
+      public boolean hasJsonBody() {
+        return ((bitField0_ & 0x00000100) == 0x00000100);
+      }
+      /**
+       * <code>optional string jsonBody = 9;</code>
+       */
+      public java.lang.String getJsonBody() {
+        java.lang.Object ref = jsonBody_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          jsonBody_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string jsonBody = 9;</code>
+       */
+      public com.google.protobuf.ByteString
+          getJsonBodyBytes() {
+        java.lang.Object ref = jsonBody_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          jsonBody_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string jsonBody = 9;</code>
+       */
+      public Builder setJsonBody(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000100;
+        jsonBody_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string jsonBody = 9;</code>
+       */
+      public Builder clearJsonBody() {
+        bitField0_ = (bitField0_ & ~0x00000100);
+        jsonBody_ = getDefaultInstance().getJsonBody();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string jsonBody = 9;</code>
+       */
+      public Builder setJsonBodyBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000100;
+        jsonBody_ = value;
+        onChanged();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:spotify.Url)
     }
 
@@ -4042,19 +4198,19 @@ public final class UtilProtos {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\nutil.proto\022\007spotify\"\253\003\n\003Url\022#\n\006scheme\030" +
+      "\n\nutil.proto\022\007spotify\"\275\003\n\003Url\022#\n\006scheme\030" +
       "\001 \002(\0162\023.spotify.Url.Scheme\022\014\n\004host\030\002 \002(\t" +
       "\022\014\n\004port\030\003 \002(\005\022\014\n\004path\030\004 \002(\t\022*\n\nparamete" +
       "rs\030\005 \003(\0132\026.spotify.Url.Parameter\022 \n\005part" +
       "s\030\006 \003(\0132\021.spotify.Url.Part\0220\n\020headerPara" +
       "meters\030\007 \003(\0132\026.spotify.Url.Parameter\022.\n\016" +
       "bodyParameters\030\010 \003(\0132\026.spotify.Url.Param" +
-      "eter\032(\n\tParameter\022\014\n\004name\030\001 \001(\t\022\r\n\005value" +
-      "\030\002 \001(\t\032\\\n\004Part\022\014\n\004name\030\001 \001(\t\022\020\n\010filename" +
-      "\030\002 \001(\t\022\024\n\014content_type\030\003 \001(\t\022\017\n\007charset\030",
-      "\004 \001(\t\022\r\n\005value\030\005 \001(\014\"\035\n\006Scheme\022\010\n\004HTTP\020\000" +
-      "\022\t\n\005HTTPS\020\001B!\n\023com.wrapper.spotifyB\nUtil" +
-      "Protos"
+      "eter\022\020\n\010jsonBody\030\t \001(\t\032(\n\tParameter\022\014\n\004n" +
+      "ame\030\001 \001(\t\022\r\n\005value\030\002 \001(\t\032\\\n\004Part\022\014\n\004name" +
+      "\030\001 \001(\t\022\020\n\010filename\030\002 \001(\t\022\024\n\014content_type",
+      "\030\003 \001(\t\022\017\n\007charset\030\004 \001(\t\022\r\n\005value\030\005 \001(\014\"\035" +
+      "\n\006Scheme\022\010\n\004HTTP\020\000\022\t\n\005HTTPS\020\001B!\n\023com.wra" +
+      "pper.spotifyB\nUtilProtos"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -4066,7 +4222,7 @@ public final class UtilProtos {
           internal_static_spotify_Url_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_spotify_Url_descriptor,
-              new java.lang.String[] { "Scheme", "Host", "Port", "Path", "Parameters", "Parts", "HeaderParameters", "BodyParameters", });
+              new java.lang.String[] { "Scheme", "Host", "Port", "Path", "Parameters", "Parts", "HeaderParameters", "BodyParameters", "JsonBody", });
           internal_static_spotify_Url_Parameter_descriptor =
             internal_static_spotify_Url_descriptor.getNestedTypes().get(0);
           internal_static_spotify_Url_Parameter_fieldAccessorTable = new
