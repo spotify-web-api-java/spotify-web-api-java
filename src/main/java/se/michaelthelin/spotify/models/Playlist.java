@@ -11,8 +11,8 @@ public class Playlist {
   private String href;
   private String id;
   private List<Image> images;
-  private User owner;
   private String name;
+  private User owner;
   private boolean publicAccess;
   private Page<PlaylistTrack> tracks;
   private SpotifyEntityType type = SpotifyEntityType.PLAYLIST;
@@ -112,5 +112,13 @@ public class Playlist {
 
   public void setPublicAccess(boolean publicAccess) {
     this.publicAccess = publicAccess;
+  }
+
+  public Page<PlaylistTrack> getTracks() {
+    return tracks;
+  }
+
+  public void setTracks(Page<PlaylistTrack> tracks) {
+    this.tracks = tracks;
   }
 }

@@ -6,7 +6,7 @@ public class PlaylistTrack {
 
   private Date addedAt;
   private User addedBy;
-  private SimpleTrack track;
+  private Track track;
 
   public Date getAddedAt() {
     return addedAt;
@@ -24,11 +24,11 @@ public class PlaylistTrack {
     this.addedBy = addedBy;
   }
 
-  public SimpleTrack getTrack() {
+  public Track getTrack() {
     return track;
   }
 
-  public void setTrack(SimpleTrack track) {
+  public void setTrack(Track track) {
     this.track = track;
   }
 }

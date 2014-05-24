@@ -200,6 +200,14 @@ public class Api {
     return builder;
   }
 
+  public PlaylistRequest.Builder getPlaylist(String playlistId, String userId) {
+    PlaylistRequest.Builder builder = PlaylistRequest.builder();
+    setDefaults(builder);
+    builder.username(userId);
+    builder.playlist(playlistId);
+    return builder;
+  }
+
   void setDefaults(Request.Builder builder) {
     builder.httpManager(httpManager);
     builder.scheme(scheme);

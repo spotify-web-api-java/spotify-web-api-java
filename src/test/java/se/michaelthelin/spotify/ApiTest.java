@@ -267,4 +267,20 @@ public class ApiTest {
     assertHasHeader(request.toUrl(), "Authorization", "Basic " + new String(Base64.encodeBase64(idSecret.getBytes())));
   }
 
+  @Test
+  public void shouldCreatePlaylistLookupUrl() {
+    final Api api = Api.DEFAULT_API;
+
+    final String accessToken = "myVeryLongAccessToken";
+    final String playlistId = "3ktAYNcRHpazJ9qecm3ptn";
+    final String userId = "thelinmichael";
+
+    final Request request = api.getPlaylist(playlistId, userId)
+            .accessToken(accessToken)
+            .build();
+
+    assertEquals("https://api.spotify.com:443/v1/users/" + userId + "/playlists/" + playlistId, request.toString());
+  }
+
+
 }

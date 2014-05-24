@@ -4,9 +4,9 @@ import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import se.michaelthelin.spotify.models.*;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 public class JsonUtil {
 
@@ -79,8 +79,12 @@ public class JsonUtil {
 
   private static Image createImage(JSONObject image) {
     Image returnedImage = new Image();
-    returnedImage.setHeight(image.getInt(("height")));
-    returnedImage.setWidth(image.getInt(("width")));
+    if (image.containsKey("height")) {
+      returnedImage.setHeight(image.getInt(("height")));
+    }
+    if (image.containsKey("width")) {
+      returnedImage.setWidth(image.getInt(("width")));
+    }
     returnedImage.setUrl(image.getString("url"));
     return returnedImage;
   }
@@ -441,7 +445,7 @@ public class JsonUtil {
   }
 
   public static SimplePlaylist createSimplePlaylist(JSONObject playlistJson) {
-    SimplePlaylist playlist = new SimplePlaylist();
+    final SimplePlaylist playlist = new SimplePlaylist();
     playlist.setCollaborative(playlistJson.getBoolean("collaborative"));
     playlist.setExternalUrls(createExternalUrls(playlistJson.getJSONObject("external_urls")));
     playlist.setHref(playlistJson.getString("href"));
@@ -462,4 +466,73 @@ public class JsonUtil {
     return playlistTracksInformation;
   }
 
+  public static Page<Playlist> createPlaylistPage(JSONObject jsonObject) {
+    final Page<Playlist> playlistPage = createItemlessPage(jsonObject);
+    playlistPage.setItems(createPlaylists(JSONArray.fromObject(jsonObject.getJSONArray("items"))));
+    return playlistPage;
+  }
+
+  private static List<Playlist> createPlaylists(JSONArray playlistsJson) {
+    final List<Playlist> returnedPlaylists = new ArrayList<Playlist>();
+    for (int i = 0; i < playlistsJson.size(); i++) {
+      returnedPlaylists.add(createPlaylist(playlistsJson.getJSONObject(i)));
+    }
+    return returnedPlaylists;
+  }
+
+  public static Playlist createPlaylist(JSONObject jsonObject) {
+    final Playlist returnedPlaylist = new Playlist();
+    returnedPlaylist.setCollaborative(jsonObject.getBoolean("collaborative"));
+    returnedPlaylist.setDescription(jsonObject.getString("description"));
+    returnedPlaylist.setExternalUrls(createExternalUrls(jsonObject.getJSONObject("external_urls")));
+    returnedPlaylist.setFollowers(createFollowers(jsonObject.getJSONObject("followers")));
+    returnedPlaylist.setHref(jsonObject.getString("href"));
+    returnedPlaylist.setId(jsonObject.getString("id"));
+    returnedPlaylist.setImages(createImages(jsonObject.getJSONArray("images")));
+    returnedPlaylist.setName(jsonObject.getString("name"));
+    returnedPlaylist.setOwner(createUser(jsonObject.getJSONObject("owner")));
+    returnedPlaylist.setPublicAccess(jsonObject.getBoolean("public"));
+    returnedPlaylist.setTracks(createPlaylistTrackPage(jsonObject.getJSONObject("tracks")));
+    returnedPlaylist.setType(createSpotifyEntityType(jsonObject.getString("type")));
+    returnedPlaylist.setUri(jsonObject.getString("uri"));
+    return returnedPlaylist;
+  }
+
+  public static Page<PlaylistTrack> createPlaylistTrackPage(JSONObject playlistTrackPageJson) {
+    final Page<PlaylistTrack> returnedPage = createItemlessPage(playlistTrackPageJson);
+    returnedPage.setItems(createPlaylistTracks(playlistTrackPageJson.getJSONArray("items")));
+    return returnedPage;
+  }
+
+  private static List<PlaylistTrack> createPlaylistTracks(JSONArray playlistTrackPageJson) {
+    final List<PlaylistTrack> returnedPlaylistTracks = new ArrayList<PlaylistTrack>();
+    for (int i = 0; i < playlistTrackPageJson.size(); i++) {
+      returnedPlaylistTracks.add(createPlaylistTrack(playlistTrackPageJson.getJSONObject(i)));
+    }
+    return returnedPlaylistTracks;
+  }
+
+  private static PlaylistTrack createPlaylistTrack(JSONObject playlistTrackJson) {
+    final PlaylistTrack returnedPlaylistTrack = new PlaylistTrack();
+    try {
+      returnedPlaylistTrack.setAddedAt(createDate(playlistTrackJson.getString("added_at")));
+    } catch (ParseException e) {
+      returnedPlaylistTrack.setAddedAt(null);
+    }
+    returnedPlaylistTrack.setAddedBy(createUser(playlistTrackJson.getJSONObject("added_by")));
+    returnedPlaylistTrack.setTrack(createTrack(playlistTrackJson.getJSONObject("track")));
+    return returnedPlaylistTrack;
+  }
+
+  private static Date createDate(String dateString) throws ParseException {
+    SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
+    return formatter.parse(dateString);
+  }
+
+  private static Followers createFollowers(JSONObject followers) {
+    final Followers returnedFollowers = new Followers();
+    returnedFollowers.setHref(followers.getString("href"));
+    returnedFollowers.setTotal(followers.getInt("total"));
+    return returnedFollowers;
+  }
 }
