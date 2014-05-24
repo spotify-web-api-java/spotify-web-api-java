@@ -79,6 +79,10 @@ public class JsonUtil {
   }
 
   private static Image createImage(JSONObject image) {
+    if (JSONNull.getInstance().equals(image)) {
+      return null;
+    }
+
     final Image returnedImage = new Image();
     if (image.containsKey("height") && !image.get("height").equals(JSONNull.getInstance())) {
       returnedImage.setHeight(image.getInt(("height")));
@@ -485,17 +489,32 @@ public class JsonUtil {
 
   public static Playlist createPlaylist(JSONObject jsonObject) {
     final Playlist returnedPlaylist = new Playlist();
+
     returnedPlaylist.setCollaborative(jsonObject.getBoolean("collaborative"));
-    returnedPlaylist.setDescription(jsonObject.getString("description"));
+
+    if (existsAndNotNull("description", jsonObject)) {
+      returnedPlaylist.setDescription(jsonObject.getString("description"));
+    }
     returnedPlaylist.setExternalUrls(createExternalUrls(jsonObject.getJSONObject("external_urls")));
-    returnedPlaylist.setFollowers(createFollowers(jsonObject.getJSONObject("followers")));
+
+    if (existsAndNotNull("followers", jsonObject)) {
+      returnedPlaylist.setFollowers(createFollowers(jsonObject.getJSONObject("followers")));
+    }
+
     returnedPlaylist.setHref(jsonObject.getString("href"));
     returnedPlaylist.setId(jsonObject.getString("id"));
-    returnedPlaylist.setImages(createImages(jsonObject.getJSONArray("images")));
+    if (existsAndNotNull("images", jsonObject)) {
+      returnedPlaylist.setImages(createImages(jsonObject.getJSONArray("images")));
+    }
+
     returnedPlaylist.setName(jsonObject.getString("name"));
     returnedPlaylist.setOwner(createUser(jsonObject.getJSONObject("owner")));
     returnedPlaylist.setPublicAccess(jsonObject.getBoolean("public"));
-    returnedPlaylist.setTracks(createPlaylistTrackPage(jsonObject.getJSONObject("tracks")));
+
+    if (existsAndNotNull("tracks", jsonObject)) {
+      returnedPlaylist.setTracks(createPlaylistTrackPage(jsonObject.getJSONObject("tracks")));
+    }
+
     returnedPlaylist.setType(createSpotifyEntityType(jsonObject.getString("type")));
     returnedPlaylist.setUri(jsonObject.getString("uri"));
     return returnedPlaylist;
@@ -534,8 +553,12 @@ public class JsonUtil {
 
   private static Followers createFollowers(JSONObject followers) {
     final Followers returnedFollowers = new Followers();
-    returnedFollowers.setHref(followers.getString("href"));
-    returnedFollowers.setTotal(followers.getInt("total"));
+    if (existsAndNotNull("href", followers)) {
+      returnedFollowers.setHref(followers.getString("href"));
+    }
+    if (existsAndNotNull("total", followers)) {
+      returnedFollowers.setTotal(followers.getInt("total"));
+    }
     return returnedFollowers;
   }
 

@@ -9,7 +9,7 @@ This is a Java wrapper for the [Spotify Web API](https://developer.spotify.com/s
 - [x] Album, artist and track search
 - [x] Playlists for specific user
 - [x] Playlist lookup
-- [ ] Create a playlist
+- [x] Create a playlist
 - [ ] Add tracks to a playlist
 - [x] Authenticated user lookup
 - [x] User lookup
