@@ -290,4 +290,27 @@ public class ApiTest {
     assertEquals("https://api.spotify.com:443/v1/me", request.toString());
   }
 
+  @Test
+  public void shouldCreateCreatePlaylistUrl() {
+    final Api api = Api.DEFAULT_API;
+
+    final String accessToken = "myVeryLongAccessToken";
+    final String myUsername = "thelinmichael";
+    final String title = "The greatest playlist ever";
+    final boolean publicAccess = true;
+
+    final Request request = api.createPlaylist()
+            .username(myUsername)
+            .title(title)
+            .publicAccess(publicAccess)
+            .accessToken(accessToken)
+            .build();
+
+    assertEquals("https://api.spotify.com:443/v1/users/thelinmichael/playlists", request.toString());
+    assertHasHeader(request.toUrl(), "Authorization", "Bearer " + accessToken);
+    assertHasHeader(request.toUrl(), "Content-Type", "application/json");
+    assertHasBodyParameter(request.toUrl(), "name", title);
+    assertHasBodyParameter(request.toUrl(), "public", String.valueOf(publicAccess));
+  }
+
 }

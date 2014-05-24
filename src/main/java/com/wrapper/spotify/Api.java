@@ -214,12 +214,19 @@ public class Api {
     return builder;
   }
 
+  public PlaylistCreationRequest.Builder createPlaylist() {
+    final PlaylistCreationRequest.Builder builder = PlaylistCreationRequest.builder();
+    setDefaults(builder);
+    return builder;
+  }
+
   private void setDefaults(Request.Builder builder) {
     builder.httpManager(httpManager);
     builder.scheme(scheme);
     builder.host(host);
     builder.port(port);
   }
+
 
   public static class Builder {
 

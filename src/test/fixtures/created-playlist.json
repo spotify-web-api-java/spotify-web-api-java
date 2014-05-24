@@ -1,0 +1,27 @@
+{
+    "collaborative": false,
+    "description": null,
+    "external_urls": {
+        "spotify": "http://open.spotify.com/user/thelinmichael/playlists/2LfixThJPNO9DAreghF2WK"
+    },
+    "followers": null,
+    "href": "https://api.spotify.com/v1/users/thelinmichael/playlists/2LfixThJPNO9DAreghF2WK",
+    "id": "2LfixThJPNO9DAreghF2WK",
+    "images": [
+        null
+    ],
+    "name": "Coolest Playlist",
+    "owner": {
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/thelinmichael"
+        },
+        "href": "https://api.spotify.com/v1/users/thelinmichael",
+        "id": "thelinmichael",
+        "type": "user",
+        "uri": "spotify:user:thelinmichael"
+    },
+    "public": true,
+    "tracks": null,
+    "type": "playlist",
+    "uri": "spotify:user:thelinmichael:playlist:2LfixThJPNO9DAreghF2WK"
+}
