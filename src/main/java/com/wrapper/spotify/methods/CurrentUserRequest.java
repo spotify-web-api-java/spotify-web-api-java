@@ -20,7 +20,7 @@ public class CurrentUserRequest extends AbstractRequest {
     try {
       final JSONObject jsonObject = JSONObject.fromObject(getJson());
 
-      throwIfErrorsInResponse(jsonObject);
+      JsonUtil.throwIfErrorsInResponse(jsonObject);
 
       userFuture.set(JsonUtil.createUser(jsonObject));
     } catch (Exception e) {
@@ -33,7 +33,7 @@ public class CurrentUserRequest extends AbstractRequest {
   public User get() throws IOException, WebApiException {
     JSONObject jsonObject = JSONObject.fromObject(getJson());
 
-    throwIfErrorsInResponse(jsonObject);
+    JsonUtil.throwIfErrorsInResponse(jsonObject);
 
     return JsonUtil.createUser(jsonObject);
   }

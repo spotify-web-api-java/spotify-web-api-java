@@ -25,7 +25,7 @@ public class UserRequest extends AbstractRequest {
       final String jsonString = getJson();
       final JSONObject jsonObject = JSONObject.fromObject(jsonString);
 
-      throwIfErrorsInResponse(jsonObject);
+      JsonUtil.throwIfErrorsInResponse(jsonObject);
 
       userFuture.set(JsonUtil.createUser(jsonString));
     } catch (Exception e) {
@@ -39,7 +39,7 @@ public class UserRequest extends AbstractRequest {
     final String jsonString = getJson();
     final JSONObject jsonObject = JSONObject.fromObject(jsonString);
 
-    throwIfErrorsInResponse(jsonObject);
+    JsonUtil.throwIfErrorsInResponse(jsonObject);
 
     return JsonUtil.createUser(jsonString);
   }

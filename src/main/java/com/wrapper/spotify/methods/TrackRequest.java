@@ -21,7 +21,7 @@ public class TrackRequest extends AbstractRequest {
       final String jsonString = getJson();
       final JSONObject jsonObject = JSONObject.fromObject(jsonString);
 
-      throwIfErrorsInResponse(jsonObject);
+      JsonUtil.throwIfErrorsInResponse(jsonObject);
 
       trackFuture.set(JsonUtil.createTrack(jsonString));
     } catch (Exception e) {
@@ -35,7 +35,7 @@ public class TrackRequest extends AbstractRequest {
     final String jsonString = getJson();
     final JSONObject jsonObject = JSONObject.fromObject(jsonString);
 
-    throwIfErrorsInResponse(jsonObject);
+    JsonUtil.throwIfErrorsInResponse(jsonObject);
 
     return JsonUtil.createTrack(getJson());
   }

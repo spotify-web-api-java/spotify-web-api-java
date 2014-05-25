@@ -1,5 +1,3 @@
-package com.wrapper.spotify.endtoend;
-
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.models.TokenResponse;
 import com.wrapper.spotify.models.User;
@@ -13,17 +11,18 @@ import com.wrapper.spotify.models.User;
  * https://developer.spotify.com/spotify-web-api/authorization-guide/#authorization_code_flow
  *
  * Details about requesting the current user's information is documented at
- * https://developer.spotify.com/spotify-web-api/get-users-profile/
+ * https://developer.spotify.com/spotify-web-api/get-users-profile/ in the
+ * "Authorization Code" section.
  */
 public class CurrentUser {
 
   public static void main(String[] args) {
 
     /* Application details necessary to get an access token */
-    final String clientId = "<insert clientId here>";
-    final String clientSecret = "<insert client secret here>";
-    final String code = "<insert code here>";
-    final String redirectUri = "<insert redirect URI here>";
+    final String clientId = "<insert client id>";
+    final String clientSecret = "<insert client secret";
+    final String code = "<insert code>";
+    final String redirectUri = "<insert redirect URI>";
 
     /* Create a default API instance that will be used to make requests to Spotify */
     final Api api = Api.DEFAULT_API;

@@ -22,7 +22,7 @@ public class TrackSearchRequest extends AbstractRequest {
       final String jsonString = getJson();
       final JSONObject jsonObject = JSONObject.fromObject(jsonString);
 
-      throwIfErrorsInResponse(jsonObject);
+      JsonUtil.throwIfErrorsInResponse(jsonObject);
 
       searchResultFuture.set(JsonUtil.createTrackPage(jsonObject));
     } catch (Exception e) {
@@ -36,7 +36,7 @@ public class TrackSearchRequest extends AbstractRequest {
     final String jsonString = getJson();
     final JSONObject jsonObject = JSONObject.fromObject(jsonString);
 
-    throwIfErrorsInResponse(jsonObject);
+    JsonUtil.throwIfErrorsInResponse(jsonObject);
 
     return JsonUtil.createTrackPage(jsonObject);
   }

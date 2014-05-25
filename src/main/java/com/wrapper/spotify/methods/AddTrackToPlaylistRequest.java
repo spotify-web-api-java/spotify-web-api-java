@@ -29,7 +29,7 @@ public class AddTrackToPlaylistRequest extends AbstractRequest {
         addTrackFuture.set("Created");
       } else {
         final JSONObject jsonObject = JSONObject.fromObject(postJson());
-        throwIfErrorsInResponse(jsonObject);
+        JsonUtil.throwIfErrorsInResponse(jsonObject);
         throw new IllegalStateException("Should not get here");
       }
     } catch (Exception e) {
@@ -43,7 +43,7 @@ public class AddTrackToPlaylistRequest extends AbstractRequest {
     final String jsonString = getJson();
     final JSONObject jsonObject = JSONObject.fromObject(jsonString);
 
-    throwIfErrorsInResponse(jsonObject);
+    JsonUtil.throwIfErrorsInResponse(jsonObject);
 
     return JsonUtil.createPlaylist(jsonObject);
   }

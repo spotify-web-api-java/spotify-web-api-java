@@ -28,7 +28,10 @@ public class TokenRequest extends AbstractRequest {
       final String jsonString = postJson();
       final JSONObject jsonObject = JSONObject.fromObject(jsonString);
 
-      throwIfErrorsInResponse(jsonObject);
+
+      if (JsonUtil.containsAuthenticationError(jsonObject)) {
+        JsonUtil.throwAuthenticationError(jsonObject);
+      }
 
       future.set(JsonUtil.createTokenResponse(jsonObject));
     } catch (Exception e) {
@@ -42,7 +45,9 @@ public class TokenRequest extends AbstractRequest {
     final String json = postJson();
     final JSONObject jsonObject = JSONObject.fromObject(json);
 
-    throwIfErrorsInResponse(jsonObject);
+    if (JsonUtil.containsAuthenticationError(jsonObject)) {
+      JsonUtil.throwAuthenticationError(jsonObject);
+    }
 
     return JsonUtil.createTokenResponse(jsonObject);
   }

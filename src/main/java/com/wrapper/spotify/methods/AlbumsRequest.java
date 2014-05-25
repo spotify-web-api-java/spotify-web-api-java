@@ -23,7 +23,7 @@ public class AlbumsRequest extends AbstractRequest {
       String jsonString = getJson();
       JSONObject jsonObject = JSONObject.fromObject(jsonString);
 
-      throwIfErrorsInResponse(jsonObject);
+      JsonUtil.throwIfErrorsInResponse(jsonObject);
 
       albumsFuture.set(JsonUtil.createAlbums(jsonString));
     } catch (Exception e) {
@@ -37,7 +37,7 @@ public class AlbumsRequest extends AbstractRequest {
     String jsonString = getJson();
     JSONObject jsonObject = JSONObject.fromObject(jsonString);
 
-    throwIfErrorsInResponse(jsonObject);
+    JsonUtil.throwIfErrorsInResponse(jsonObject);
 
     return JsonUtil.createAlbums(jsonString);
   }

@@ -1,13 +1,11 @@
 package com.wrapper.spotify.methods;
 
-import net.sf.json.JSON;
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.HttpManager;
 import com.wrapper.spotify.UrlUtil;
 import com.wrapper.spotify.UtilProtos.Url;
-import com.wrapper.spotify.exceptions.*;
+import com.wrapper.spotify.exceptions.WebApiException;
+import net.sf.json.JSON;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -35,31 +33,6 @@ public abstract class AbstractRequest implements Request {
     return httpManager.post(url);
   }
 
-
-  protected void throwIfErrorsInResponse(JSONObject jsonObject) throws WebApiException {
-    assert (jsonObject != null);
-
-    if (errorInJson(jsonObject)) {
-      final JSONObject error = jsonObject.getJSONObject("error");
-
-      if (error.containsKey("type")) {
-        if (error.getString("type").equals("bad_field")) {
-          throw new BadFieldException();
-        }
-        if (error.getString("type").equals("not_found")) {
-          throw new NotFoundException();
-        }
-        throw new WebApiException();
-      } else if (error.containsKey("error_description")) {
-          throw new TokenRequestException(error.getString("error_description"));
-      }
-
-    }
-  }
-
-  private boolean errorInJson(JSONObject jsonObject) {
-    return (!jsonObject.isNullObject() && jsonObject.has("error"));
-  }
 
   public AbstractRequest(Builder<?> builder) {
     assert (builder.path != null);

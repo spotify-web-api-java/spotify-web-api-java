@@ -24,7 +24,7 @@ public class AlbumsForArtistRequest extends AbstractRequest {
       final String jsonString = getJson();
       final JSONObject jsonObject = JSONObject.fromObject(jsonString);
 
-      throwIfErrorsInResponse(jsonObject);
+      JsonUtil.throwIfErrorsInResponse(jsonObject);
 
       searchResultFuture.set(JsonUtil.createSimpleAlbumPage(jsonObject));
     } catch (Exception e) {
@@ -38,7 +38,7 @@ public class AlbumsForArtistRequest extends AbstractRequest {
     final String jsonString = getJson();
     final JSONObject jsonObject = JSONObject.fromObject(jsonString);
 
-    throwIfErrorsInResponse(jsonObject);
+    JsonUtil.throwIfErrorsInResponse(jsonObject);
 
     return JsonUtil.createSimpleAlbumPage(getJson());
   }

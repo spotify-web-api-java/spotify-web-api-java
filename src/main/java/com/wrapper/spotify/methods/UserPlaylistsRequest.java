@@ -22,7 +22,7 @@ public class UserPlaylistsRequest extends AbstractRequest {
       final String jsonString = getJson();
       final JSONObject jsonObject = JSONObject.fromObject(jsonString);
 
-      throwIfErrorsInResponse(jsonObject);
+      JsonUtil.throwIfErrorsInResponse(jsonObject);
 
       simplePlaylistsPageFuture.set(JsonUtil.createSimplePlaylistsPage(jsonObject));
     } catch (Exception e) {
@@ -36,7 +36,7 @@ public class UserPlaylistsRequest extends AbstractRequest {
     final String jsonString = getJson();
     final JSONObject jsonObject = JSONObject.fromObject(jsonString);
 
-    throwIfErrorsInResponse(jsonObject);
+    JsonUtil.throwIfErrorsInResponse(jsonObject);
 
     return JsonUtil.createSimplePlaylistsPage(jsonObject);
   }

@@ -1,5 +1,6 @@
 package com.wrapper.spotify;
 
+import com.wrapper.spotify.exceptions.*;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONNull;
 import net.sf.json.JSONObject;
@@ -567,4 +568,42 @@ public class JsonUtil {
            !JSONNull.getInstance().equals(jsonObject.get(key));
   }
 
+  public static void throwIfErrorsInResponse(JSONObject jsonObject) throws WebApiException {
+    assert (jsonObject != null);
+
+    if (errorInJson(jsonObject)) {
+      final JSONObject error = jsonObject.getJSONObject("error");
+
+      if (error.containsKey("type")) {
+        if (error.getString("type").equals("bad_field")) {
+          throw new BadFieldException();
+        }
+        if (error.getString("type").equals("not_found")) {
+          throw new NotFoundException();
+        }
+        throw new WebApiException();
+      }
+    }
+  }
+
+  private static boolean errorInJson(JSONObject jsonObject) {
+    return (!jsonObject.isNullObject() && jsonObject.has("error"));
+  }
+
+  public static boolean containsAuthenticationError(JSONObject jsonObject) {
+    if (jsonObject == null) {
+      return false;
+    }
+    return jsonObject.containsKey("error");
+  }
+
+  public static void throwAuthenticationError(JSONObject jsonObject) throws WebApiAuthenticationException {
+    if (jsonObject == null) {
+      return;
+    }
+    if (!containsAuthenticationError(jsonObject)) {
+      return;
+    }
+    throw new WebApiAuthenticationException(jsonObject.getString("error_description"));
+  }
 }
