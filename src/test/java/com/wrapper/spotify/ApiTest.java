@@ -337,4 +337,29 @@ public class ApiTest {
     assertHasParameter(request.toUrl(), "position", String.valueOf(insertIndex));
   }
 
+  @Test
+  public void shouldUseSetAccessTokenIfNoneIsSupplied() {
+    final Api api = Api.DEFAULT_API;
+
+    final String accessToken = "myVeryLongAccessToken";
+
+    api.setAccessToken(accessToken);
+
+    final String myUsername = "thelinmichael";
+    final String myPlaylistId = "5ieJqeLJjjI8iJWaxeBLuK";
+    final List<String> tracksToAdd = Arrays.asList("spotify:track:4BYGxv4rxSNcTgT3DsFB9o","spotify:tracks:0BG2iE6McPhmAEKIhfqy1X");
+    final int insertIndex = 3;
+
+    final Request request = api.addTracksToPlaylist(myPlaylistId, myUsername)
+            .tracks(tracksToAdd)
+            .position(insertIndex)
+            .build();
+
+    assertEquals("https://api.spotify.com:443/v1/users/thelinmichael/playlists/" + myPlaylistId + "/tracks", request.toString());
+    assertHasHeader(request.toUrl(), "Authorization", "Bearer " + accessToken);
+    assertHasHeader(request.toUrl(), "Content-Type", "application/json");
+    assertHasJsonBody(request.toUrl(), "[\"spotify:track:4BYGxv4rxSNcTgT3DsFB9o\",\"spotify:tracks:0BG2iE6McPhmAEKIhfqy1X\"]");
+    assertHasParameter(request.toUrl(), "position", String.valueOf(insertIndex));
+  }
+
 }

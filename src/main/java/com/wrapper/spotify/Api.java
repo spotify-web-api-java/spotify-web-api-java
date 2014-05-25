@@ -48,6 +48,7 @@ public class Api {
   private Scheme scheme;
   private int port;
   private String host;
+  private String accessToken;
 
   private Api(Builder builder) {
     assert (builder.host != null);
@@ -62,6 +63,7 @@ public class Api {
     } else {
       this.httpManager = builder.httpManager;
     }
+    accessToken = builder.accessToken;
     scheme = builder.scheme;
     host = builder.host;
     port = builder.port;
@@ -230,11 +232,17 @@ public class Api {
   public AddTrackToPlaylistRequest.Builder addTracksToPlaylist(String playlistId, String ownerId) {
     final AddTrackToPlaylistRequest.Builder builder = AddTrackToPlaylistRequest.builder();
     setDefaults(builder);
+    if (accessToken != null) {
+      builder.accessToken(accessToken);
+    }
     builder.playlist(playlistId);
     builder.owner(ownerId);
     return builder;
   }
 
+  public void setAccessToken(String accessToken) {
+    this.accessToken = accessToken;
+  }
 
   public static class Builder {
 
@@ -242,6 +250,7 @@ public class Api {
     private int port = DEFAULT_PORT;
     private HttpManager httpManager = null;
     private Scheme scheme = DEFAULT_SCHEME;
+    private String accessToken;
 
     public Builder scheme(Scheme scheme) {
       this.scheme = scheme;
@@ -260,6 +269,11 @@ public class Api {
 
     public Builder httpManager(HttpManager httpManager) {
       this.httpManager = httpManager;
+      return this;
+    }
+
+    public Builder accessToken(String accessToken) {
+      this.accessToken = accessToken;
       return this;
     }
 

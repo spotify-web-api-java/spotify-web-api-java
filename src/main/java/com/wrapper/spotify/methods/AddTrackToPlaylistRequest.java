@@ -50,8 +50,8 @@ public class AddTrackToPlaylistRequest extends AbstractRequest {
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
-    String owner = "";
-    String playlist = "";
+    private String owner = "";
+    private String playlist = "";
 
     public Builder owner(String username) {
       assert (username != null);
@@ -82,7 +82,9 @@ public class AddTrackToPlaylistRequest extends AbstractRequest {
 
     public AddTrackToPlaylistRequest build() {
       path("/v1/users/" + owner + "/playlists/" + playlist + "/tracks");
+
       header("Content-Type", "application/json");
+
       return new AddTrackToPlaylistRequest(this);
     }
 
