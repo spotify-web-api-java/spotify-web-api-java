@@ -24,7 +24,7 @@ public class RefreshTokenAsync {
 
     /* Application details necessary to get an access token */
     final String clientId = "<insert client id>";
-    final String clientSecret = "<insert client secret>;
+    final String clientSecret = "<insert client secret>";
     final String code = "<insert code>";
     final String redirectUri = "<insert redirect URI>";
 
