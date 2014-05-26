@@ -151,8 +151,9 @@ public abstract class AbstractRequest implements Request {
       return (BuilderType) this;
     }
 
-    public Builder useAccessToken(String accessToken) {
-      return header("Authorization", "Bearer " + accessToken);
+    public BuilderType withAccessToken(String accessToken) {
+      header("Authorization", "Bearer " + accessToken);
+      return (BuilderType) this;
     }
 
   }

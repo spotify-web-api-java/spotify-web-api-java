@@ -274,7 +274,7 @@ public class ApiTest {
     final Request request = api.getPlaylist()
             .withId(playlistId)
             .withOwner(userId)
-            .useAccessToken(accessToken)
+            .withAccessToken(accessToken)
             .build();
 
     assertEquals("https://api.spotify.com:443/v1/users/" + userId + "/playlists/" + playlistId, request.toString());
@@ -326,10 +326,12 @@ public class ApiTest {
     final List<String> tracksToAdd = Arrays.asList("spotify:track:4BYGxv4rxSNcTgT3DsFB9o","spotify:tracks:0BG2iE6McPhmAEKIhfqy1X");
     final int insertIndex = 3;
 
-    final Request request = api.addTracksToPlaylist(myPlaylistId, myUsername)
-            .tracks(tracksToAdd)
-            .position(insertIndex)
-            .accessToken(accessToken)
+    final Request request = api.addTracksToPlaylist()
+            .withId(myPlaylistId)
+            .withOwner(myUsername)
+            .withTracks(tracksToAdd)
+            .withPosition(insertIndex)
+            .withAccessToken(accessToken)
             .build();
 
     assertEquals("https://api.spotify.com:443/v1/users/thelinmichael/playlists/" + myPlaylistId + "/tracks", request.toString());
@@ -352,9 +354,11 @@ public class ApiTest {
     final List<String> tracksToAdd = Arrays.asList("spotify:track:4BYGxv4rxSNcTgT3DsFB9o","spotify:tracks:0BG2iE6McPhmAEKIhfqy1X");
     final int insertIndex = 3;
 
-    final Request request = api.addTracksToPlaylist(myPlaylistId, myUsername)
-            .tracks(tracksToAdd)
-            .position(insertIndex)
+    final Request request = api.addTracksToPlaylist()
+            .withId(myPlaylistId)
+            .withOwner(myUsername)
+            .withTracks(tracksToAdd)
+            .withPosition(insertIndex)
             .build();
 
     assertEquals("https://api.spotify.com:443/v1/users/thelinmichael/playlists/" + myPlaylistId + "/tracks", request.toString());

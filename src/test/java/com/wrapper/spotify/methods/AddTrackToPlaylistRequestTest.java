@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 
 import static junit.framework.TestCase.fail;
 
-// Todo: Add negative test cases.
+// Todo: Add test cases.
 public class AddTrackToPlaylistRequestTest {
 
   @Test
@@ -27,11 +27,13 @@ public class AddTrackToPlaylistRequestTest {
     final List<String> tracksToAdd = Arrays.asList("spotify:track:4BYGxv4rxSNcTgT3DsFB9o","spotify:track:0BG2iE6McPhmAEKIhfqy1X");
     final int insertIndex = 3;
 
-    final AddTrackToPlaylistRequest request = api.addTracksToPlaylist(myPlaylistId, myUsername)
-            .tracks(tracksToAdd)
-            .position(insertIndex)
+    final AddTrackToPlaylistRequest request = api.addTracksToPlaylist()
+            .withOwner(myUsername)
+            .withId(myPlaylistId)
+            .withTracks(tracksToAdd)
+            .withPosition(insertIndex)
             .httpManager(TestUtil.MockedHttpManager.returningString(""))
-            .accessToken(accessToken)
+            .withAccessToken(accessToken)
             .build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);

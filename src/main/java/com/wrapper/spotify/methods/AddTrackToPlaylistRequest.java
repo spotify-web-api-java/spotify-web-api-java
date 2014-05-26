@@ -50,39 +50,46 @@ public class AddTrackToPlaylistRequest extends AbstractRequest {
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
-    private String owner = "";
-    private String playlist = "";
+    private String owner;
+    private String playlist;
+    private List<String> trackUris;
 
-    public Builder owner(String username) {
-      assert (username != null);
-      this.owner = username;
+    public Builder withOwner(String ownerUserId) {
+      assert (ownerUserId != null);
+
+      this.owner = ownerUserId;
       return this;
     }
 
-    public Builder playlist(String playlist) {
-      assert (playlist != null);
-      this.playlist = playlist;
+    public Builder withId(String playlistId) {
+      assert (playlistId != null);
+
+      this.playlist = playlistId;
       return this;
     }
 
-    public Builder position(int index) {
-      assert (index >= 0);
-      return parameter("position", String.valueOf(index));
+    public Builder withPosition(int position) {
+      assert (position >= 0);
+
+      return parameter("position", String.valueOf(position));
     }
 
-    public Builder tracks(List<String> trackUris) {
+    public Builder withTracks(List<String> trackUris) {
+      assert (trackUris != null);
+
+      this.trackUris = trackUris;
+
       final JSONArray jsonArrayUri = new JSONArray();
       jsonArrayUri.addAll(trackUris);
       return body(jsonArrayUri);
     }
 
-    public Builder accessToken(String accessToken) {
-      return header("Authorization", "Bearer " + accessToken);
-    }
-
     public AddTrackToPlaylistRequest build() {
-      path("/v1/users/" + owner + "/playlists/" + playlist + "/tracks");
+      assert (owner != null);
+      assert (playlist != null);
+      assert (trackUris != null);
 
+      path("/v1/users/" + owner + "/playlists/" + playlist + "/tracks");
       header("Content-Type", "application/json");
 
       return new AddTrackToPlaylistRequest(this);

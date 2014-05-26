@@ -236,14 +236,12 @@ public class Api {
     builder.port(port);
   }
 
-  public AddTrackToPlaylistRequest.Builder addTracksToPlaylist(String playlistId, String ownerId) {
+  public AddTrackToPlaylistRequest.Builder addTracksToPlaylist() {
     final AddTrackToPlaylistRequest.Builder builder = AddTrackToPlaylistRequest.builder();
     setDefaults(builder);
     if (accessToken != null) {
-      builder.accessToken(accessToken);
+      builder.withAccessToken(accessToken);
     }
-    builder.playlist(playlistId);
-    builder.owner(ownerId);
     return builder;
   }
 
