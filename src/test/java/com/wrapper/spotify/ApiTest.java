@@ -271,8 +271,10 @@ public class ApiTest {
     final String playlistId = "3ktAYNcRHpazJ9qecm3ptn";
     final String userId = "thelinmichael";
 
-    final Request request = api.getPlaylist(playlistId, userId)
-            .accessToken(accessToken)
+    final Request request = api.getPlaylist()
+            .withId(playlistId)
+            .withOwner(userId)
+            .useAccessToken(accessToken)
             .build();
 
     assertEquals("https://api.spotify.com:443/v1/users/" + userId + "/playlists/" + playlistId, request.toString());

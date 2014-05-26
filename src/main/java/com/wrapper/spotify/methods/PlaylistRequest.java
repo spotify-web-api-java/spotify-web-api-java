@@ -46,32 +46,31 @@ public class PlaylistRequest extends AbstractRequest {
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
-    String username = "";
-    String playlist = "";
+    private String username;
+    private String playlistId;
 
-    public Builder fields(String fields) {
-      assert (fields != null);
-      return parameter("fields", fields);
-    }
-
-    public Builder owner(String username) {
+    public Builder withOwner(String username) {
       assert (username != null);
       this.username = username;
       return this;
     }
 
-    public Builder playlist(String playlist) {
-      assert (playlist != null);
-      this.playlist = playlist;
+    public Builder withId(String playlistId) {
+      assert (playlistId != null);
+      this.playlistId = playlistId;
       return this;
     }
 
-    public Builder accessToken(String accessToken) {
-      return header("Authorization", "Bearer " + accessToken);
+    public Builder withFields(String fields) {
+      assert (fields != null);
+      return parameter("fields", fields);
     }
 
     public PlaylistRequest build() {
-      path("/v1/users/" + username + "/playlists/" + playlist);
+      assert (username != null);
+      assert (playlistId != null);
+
+      path("/v1/users/" + username + "/playlists/" + playlistId);
       return new PlaylistRequest(this);
     }
 

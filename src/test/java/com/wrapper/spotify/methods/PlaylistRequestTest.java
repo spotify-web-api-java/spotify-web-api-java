@@ -15,15 +15,18 @@ import java.util.concurrent.TimeUnit;
 import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.fail;
 
-// TODO: Create negative test cases.
+/*
+ * TODO: Add negative tests
+ */
 public class PlaylistRequestTest {
 
   @Test
   public void shouldCreatePlaylistPage_async() throws Exception {
     final Api api = Api.DEFAULT_API;
 
-    final PlaylistRequest request = api.
-            getPlaylist("thelinmichael", "3ktAYNcRHpazJ9qecm3ptn")
+    final PlaylistRequest request = api.getPlaylist()
+            .withOwner("thelinmichael")
+            .withId("3ktAYNcRHpazJ9qecm3ptn")
             .httpManager(TestUtil.MockedHttpManager.returningJson("playlist-response.json"))
             .build();
 
@@ -52,8 +55,9 @@ public class PlaylistRequestTest {
   public void shouldCreatePlaylistPage() throws Exception {
     final Api api = Api.DEFAULT_API;
 
-    final PlaylistRequest request = api.
-            getPlaylist("thelinmichael", "3ktAYNcRHpazJ9qecm3ptn")
+    final PlaylistRequest request = api.getPlaylist()
+            .withOwner("thelinmichael")
+            .withId("3ktAYNcRHpazJ9qecm3ptn")
             .httpManager(TestUtil.MockedHttpManager.returningJson("playlist-response.json"))
             .build();
 
@@ -62,14 +66,19 @@ public class PlaylistRequestTest {
     assertEquals("https://api.spotify.com/v1/users/thelinmichael/playlists/3ktAYNcRHpazJ9qecm3ptn", playlist.getHref());
   }
 
-  @Test
   @Ignore
+  @Test
   public void shouldFailFutureIfPlaylistIsNotFound() throws Exception {
   }
 
   @Test
   @Ignore
   public void shouldFailFutureIfNotAllowedAccess() throws Exception {
+  }
+
+  @Test
+  @Ignore
+  public void shouldFailFutureIfUserDoesNotExist() throws Exception {
   }
 
   @Test

@@ -211,11 +211,9 @@ public class Api {
     return builder;
   }
 
-  public PlaylistRequest.Builder getPlaylist(String playlistId, String ownerId) {
+  public PlaylistRequest.Builder getPlaylist() {
     PlaylistRequest.Builder builder = PlaylistRequest.builder();
     setDefaults(builder);
-    builder.owner(ownerId);
-    builder.playlist(playlistId);
     return builder;
   }
 
