@@ -2,6 +2,7 @@ package com.wrapper.spotify;
 
 import com.wrapper.spotify.UtilProtos.Url.Scheme;
 import com.wrapper.spotify.methods.*;
+import com.wrapper.spotify.methods.authentication.ApplicationAuthenticationRequest;
 import com.wrapper.spotify.methods.authentication.RefreshAccessTokenRequest;
 import com.wrapper.spotify.methods.authentication.TokenRequest;
 
@@ -198,6 +199,14 @@ public class Api {
     setDefaults(builder);
     builder.grantType("refresh_token");
     builder.refreshToken(refreshToken);
+    builder.authorizationHeader(clientId, clientSecret);
+    return builder;
+  }
+
+  public ApplicationAuthenticationRequest.Builder applicationAuthentication(String clientId, String clientSecret) {
+    ApplicationAuthenticationRequest.Builder builder = ApplicationAuthenticationRequest.builder();
+    setDefaults(builder);
+    builder.grantType("client_credentials");
     builder.authorizationHeader(clientId, clientSecret);
     return builder;
   }

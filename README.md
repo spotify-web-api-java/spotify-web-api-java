@@ -1,7 +1,9 @@
 Spotify Web API Java [![Build Status](https://travis-ci.org/thelinmichael/spotify-web-api-java.svg?branch=master)](https://travis-ci.org/thelinmichael/spotify-web-api-java)
 ==================
 
-This is a Java wrapper for the [Spotify Web API](https://developer.spotify.com/spotify-web-api/). It includes helper functions for looking up as well as searching for albums, artists, and tracks. Functionality to make requests for playlists and user's information are still to be implemented.
+This is a Java wrapper for the [Spotify Web API](https://developer.spotify.com/spotify-web-api/).
+
+It includes the following functionality:
 
 - [x] Album, artist and track lookup
 - [x] Album lookup for specific artist
@@ -14,6 +16,10 @@ This is a Java wrapper for the [Spotify Web API](https://developer.spotify.com/s
 - [x] Authenticated user lookup
 - [x] User lookup
 
+Authentication can be made using these flows:
+
+- [x] [Client credentials flow](http://tools.ietf.org/html/rfc6749#section-4.4) (Application-only authentication)
+- [x] [Authorization code grant](http://tools.ietf.org/html/rfc6749#section-4.1)
 
 ## Usage
 

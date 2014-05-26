@@ -362,4 +362,23 @@ public class ApiTest {
     assertHasParameter(request.toUrl(), "position", String.valueOf(insertIndex));
   }
 
+  @Test
+  public void shouldCreateClientCredentialsGrantUrl() {
+    final Api api = Api.DEFAULT_API;
+
+    final String clientId = "myClientId";
+    final String clientSecret = "myClientSecret";
+    final List<String> scopes = Arrays.asList("some-scope", "some-other-scope");
+
+    final Request request = api.applicationAuthentication(clientId, clientSecret).scopes(scopes).build();
+
+    assertEquals("https://accounts.spotify.com:443/api/token", request.toString());
+
+    assertHasBodyParameter(request.toUrl(), "grant_type", "client_credentials");
+    assertHasBodyParameter(request.toUrl(), "scope", "some-scope some-other-scope");
+
+    final String idSecret = clientId + ":" + clientSecret;
+    assertHasHeader(request.toUrl(), "Authorization", "Basic " + new String(Base64.encodeBase64(idSecret.getBytes())));
+  }
+
 }

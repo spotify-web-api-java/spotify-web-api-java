@@ -428,6 +428,17 @@ public class JsonUtil {
     return response;
   }
 
+
+  public static ApplicationAuthenticationToken createApplicationAuthenticationToken(JSONObject jsonObject) {
+    final ApplicationAuthenticationToken token = new ApplicationAuthenticationToken();
+
+    token.setAccessToken(jsonObject.getString("access_token"));
+    token.setExpiresIn(jsonObject.getInt("expires_in"));
+    token.setTokenType(jsonObject.getString("token_type"));
+
+    return token;
+  }
+
   public static RefreshAccessTokenResponse createRefreshAccessTokenResponse(JSONObject jsonObject) {
     RefreshAccessTokenResponse refreshAccessTokenResponse = new RefreshAccessTokenResponse();
 
@@ -606,4 +617,5 @@ public class JsonUtil {
     }
     throw new WebApiAuthenticationException(jsonObject.getString("error_description"));
   }
+
 }
