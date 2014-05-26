@@ -5,7 +5,7 @@ public class TokenResponse {
   private String accessToken;
   private String tokenType;
   private int expiresIn;
-  private String refreshtoken;
+  private String refreshToken;
 
   public String getAccessToken() {
     return accessToken;
@@ -31,11 +31,11 @@ public class TokenResponse {
     this.expiresIn = expiresIn;
   }
 
-  public String getRefreshtoken() {
-    return refreshtoken;
+  public String getRefreshToken() {
+    return refreshToken;
   }
 
-  public void setRefreshtoken(String refreshtoken) {
-    this.refreshtoken = refreshtoken;
+  public void setRefreshToken(String refreshToken) {
+    this.refreshToken = refreshToken;
   }
 }

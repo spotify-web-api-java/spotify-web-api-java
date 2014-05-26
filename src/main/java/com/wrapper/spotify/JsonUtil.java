@@ -422,7 +422,7 @@ public class JsonUtil {
 
     response.setAccessToken(tokenResponse.getString("access_token"));
     response.setExpiresIn(tokenResponse.getInt("expires_in"));
-    response.setRefreshtoken(tokenResponse.getString("refresh_token"));
+    response.setRefreshToken(tokenResponse.getString("refresh_token"));
     response.setTokenType(tokenResponse.getString("token_type"));
 
     return response;

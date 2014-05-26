@@ -4,9 +4,6 @@ import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.models.TokenResponse;
 
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.TimeUnit;
-
 import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.fail;
 
@@ -32,8 +29,7 @@ public class RefreshTokenAsync {
     final Api api = Api.DEFAULT_API;
 
     /* Make a token request. Asynchronous requests are made with the .getAsync method and synchronous requests
-     * are made with the .get method. This holds for all type of requests.
-     */
+     * are made with the .get method. This holds for all type of requests. */
     final SettableFuture<TokenResponse> tokenResponseFuture = api.getTokens(clientId, clientSecret, code, redirectUri).build().getAsync();
 
     /* Add callbacks to handle success and failure */
@@ -41,16 +37,15 @@ public class RefreshTokenAsync {
       @Override
       public void onSuccess(TokenResponse tokenResponse) {
         /* The tokens were retrieved successfully! */
-        System.out.println("Successfully retrieved an access token! " + tokenResponse.getRefreshtoken());
+        System.out.println("Successfully retrieved an access token! " + tokenResponse.getAccessToken());
         System.out.println("The access token expires in " + tokenResponse.getExpiresIn() + " seconds");
-        System.out.println("Luckily, I can refresh it using this refresh token! " + tokenResponse.getRefreshtoken());
+        System.out.println("Luckily, I can refresh it using this refresh token! " + tokenResponse.getRefreshToken());
       }
 
       @Override
       public void onFailure(Throwable throwable) {
         /* Let's say that the client id is invalid, or the code has been used more than once,
-         * the request will fail. Why it fails is written in the throwable's message.
-         */
+         * the request will fail. Why it fails is written in the throwable's message. */
         fail(throwable.getMessage());
       }
 
