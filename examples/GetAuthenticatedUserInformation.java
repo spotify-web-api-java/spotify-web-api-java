@@ -30,7 +30,13 @@ public class CurrentUser {
     try {
 
       /* Retrieve an access token */
-      final TokenResponse tokenResponse = api.getTokens(clientId, clientSecret, code, redirectUri).build().get();
+      final TokenResponse tokenResponse = api.getTokens()
+              .withClientId(clientId)
+              .withClientSecret(clientSecret)
+              .withCode(code)
+              .withRedirectUri(redirectUri)
+              .build()
+              .get();
 
       /* The token response contains a refresh token, an accesstoken, and some other things.
        * We only need the access token to retrieve the user's information.

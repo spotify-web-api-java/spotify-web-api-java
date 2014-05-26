@@ -24,8 +24,9 @@ public class ApplicationAuthenticationRequestTest {
 
     final Api api = Api.DEFAULT_API;
 
-    final ApplicationAuthenticationRequest request = api
-            .applicationAuthentication(clientId, clientSecret)
+    final ApplicationAuthenticationRequest request = api.applicationAuthentication()
+            .withClientId(clientId)
+            .withClientSecret(clientSecret)
             .httpManager(TestUtil.MockedHttpManager.returningJson("application-authentication-token.json"))
             .build();
 
@@ -42,12 +43,13 @@ public class ApplicationAuthenticationRequestTest {
 
     final Api api = Api.DEFAULT_API;
 
-    final ApplicationAuthenticationRequest request = api
-            .applicationAuthentication(clientId, clientSecret)
+    final ApplicationAuthenticationRequest request = api.applicationAuthentication()
+            .withClientId(clientId)
+            .withClientSecret(clientSecret)
             .httpManager(TestUtil.MockedHttpManager.returningJson("auth-invalid-client.json"))
             .build();
 
-    final ApplicationAuthenticationToken response = request.get();
+    request.get();
   }
 
   @Test
@@ -57,8 +59,9 @@ public class ApplicationAuthenticationRequestTest {
 
     final Api api = Api.DEFAULT_API;
 
-    final ApplicationAuthenticationRequest request = api
-            .applicationAuthentication(clientId, clientSecret)
+    final ApplicationAuthenticationRequest request = api.applicationAuthentication()
+            .withClientId(clientId)
+            .withClientSecret(clientSecret)
             .httpManager(TestUtil.MockedHttpManager.returningJson("application-authentication-token.json"))
             .build();
 
@@ -91,8 +94,9 @@ public class ApplicationAuthenticationRequestTest {
 
     final Api api = Api.DEFAULT_API;
 
-    final ApplicationAuthenticationRequest request = api
-            .applicationAuthentication(clientId, clientSecret)
+    final ApplicationAuthenticationRequest request = api.applicationAuthentication()
+            .withClientId(clientId)
+            .withClientSecret(clientSecret)
             .httpManager(TestUtil.MockedHttpManager.returningJson("auth-invalid-client.json"))
             .build();
 

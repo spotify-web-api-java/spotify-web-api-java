@@ -46,18 +46,24 @@ public class AlbumRequest extends AbstractRequest {
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
+    private String albumId;
+
     /**
      * The album with the given id.
      *
      * @param id The id for the album.
      * @return AlbumRequest
      */
-    public Builder id(String id) {
-      assert (id != null);
-      return path(String.format("/v1/albums/%s", id));
+    public Builder withId(String albumId) {
+      assert (albumId != null);
+
+      this.albumId = albumId;
+      return path(String.format("/v1/albums/%s", albumId));
     }
 
     public AlbumRequest build() {
+      assert (albumId != null);
+
       return new AlbumRequest(this);
     }
 

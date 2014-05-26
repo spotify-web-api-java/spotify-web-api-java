@@ -29,7 +29,10 @@ public class TrackSearchRequestTest {
   public void shouldGetTracksResult_async() throws Exception {
     final Api api = Api.DEFAULT_API;
 
-    final TrackSearchRequest.Builder requestBuilder = api.searchTracks("tania bowra").offset(0).limit(20);
+    final TrackSearchRequest.Builder requestBuilder = api.searchTracks()
+            .withQuery("tania bowra")
+            .withOffset(0)
+            .withLimit(20);
     if (TestConfiguration.USE_MOCK_RESPONSES) {
       requestBuilder.httpManager(TestUtil.MockedHttpManager.returningJson("search-track.json"));
     }
@@ -71,8 +74,12 @@ public class TrackSearchRequestTest {
   @Test
   public void shouldGetTracksResult_sync() throws Exception {
     final Api api = Api.DEFAULT_API;
-    final HttpManager mockedHttpManager = TestUtil.MockedHttpManager.returningJson("search-track.json");
-    final TrackSearchRequest request = api.searchTracks("Mr. Brightside").httpManager(mockedHttpManager).build();
+    final TrackSearchRequest.Builder requestBuilder = api.searchTracks().withQuery("Mr. Brightside");
+
+    if (TestConfiguration.USE_MOCK_RESPONSES) {
+      requestBuilder.httpManager(TestUtil.MockedHttpManager.returningJson("search-track.json"));
+    }
+    final TrackSearchRequest request = requestBuilder.build();
 
     final Page<Track> trackSearchResult = request.get();
 
@@ -80,12 +87,12 @@ public class TrackSearchRequestTest {
     assertEquals(20, trackSearchResult.getLimit());
     assertEquals(0, trackSearchResult.getOffset());
 
-    List<Track> tracks = trackSearchResult.getItems();
+    final List<Track> tracks = trackSearchResult.getItems();
 
-    Track firstTrack = tracks.get(0);
+    final Track firstTrack = tracks.get(0);
     assertNotNull(firstTrack.getId());
 
-    String id = firstTrack.getId();
+    final String id = firstTrack.getId();
     assertNotNull(firstTrack.getAlbum());
     assertNotNull(firstTrack.getArtists());
     assertEquals("https://api.spotify.com/v1/tracks/" + id, firstTrack.getHref());

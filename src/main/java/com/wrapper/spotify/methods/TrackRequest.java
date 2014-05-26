@@ -47,18 +47,24 @@ public class TrackRequest extends AbstractRequest {
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
+    private String trackId;
+
     /**
      * The track with the given id.
      *
-     * @param id The id for the track.
+     * @param trackId The id for the track.
      * @return Track Request
      */
-    public Builder id(String id) {
-      assert (id != null);
-      return path(String.format("/v1/tracks/%s", id));
+    public Builder withId(String trackId) {
+      assert (trackId != null);
+      this.trackId = trackId;
+
+      return path(String.format("/v1/tracks/%s", trackId));
     }
 
     public TrackRequest build() {
+      assert (trackId != null);
+
       return new TrackRequest(this);
     }
 

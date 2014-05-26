@@ -30,7 +30,7 @@ Authentication can be made using these flows:
 Api api = Api.DEFAULT_API; 
 
 // Create a request object for the type of request you want to make
-AlbumRequest request = api.getAlbum("7e0ij2fpWaxOEHv5fUYZjd").build();
+AlbumRequest request = api.getAlbum().withId("7e0ij2fpWaxOEHv5fUYZjd").build();
 
 // Retrieve a future for an album
 SettableFuture<Album> albumFuture = request.getAsync();
@@ -58,7 +58,7 @@ Futures.addCallback(albumFuture, new FutureCallback<Album>() {
 Api api = Api.DEFAULT_API; 
 
 // Create a request object for the type of request you want to make
-AlbumRequest request = api.getAlbum("7e0ij2fpWaxOEHv5fUYZjd").build();
+AlbumRequest request = api.getAlbum().withId("7e0ij2fpWaxOEHv5fUYZjd").build();
 
 // Retrieve an album
 try {

@@ -53,31 +53,40 @@ public class ApplicationAuthenticationRequest extends AbstractRequest {
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
-    public Builder authorizationHeader(String clientId, String clientSecret) {
+    private String clientId;
+    private String clientSecret;
+
+    public Builder withClientId(String clientId) {
       assert (clientId != null);
+      this.clientId = clientId;
+      return this;
+    }
+
+    public Builder withClientSecret(String clientSecret) {
       assert (clientSecret != null);
-
-      String idSecret = clientId + ":" + clientSecret;
-      String idSecretEncoded = new String(Base64.encodeBase64(idSecret.getBytes()));
-
-      return header("Authorization", "Basic " + idSecretEncoded);
+      this.clientSecret = clientSecret;
+      return this;
     }
 
-    public Builder grantType(String grantType) {
-      assert (grantType != null);
-      return body("grant_type", grantType);
-    }
-
-    public Builder scopes(List<String> scopes) {
+    public Builder withScopes(List<String> scopes) {
       return body("scope", Joiner.on(" ").join(scopes).toString());
     }
 
     public ApplicationAuthenticationRequest build() {
+      assert (clientId != null);
+      assert (clientSecret != null);
+
       host(Api.DEFAULT_AUTHENTICATION_HOST);
       port(Api.DEFAULT_AUTHENTICATION_PORT);
       scheme(Api.DEFAULT_AUTHENTICATION_SCHEME);
 
+      final String idSecret = clientId + ":" + clientSecret;
+      final String idSecretEncoded = new String(Base64.encodeBase64(idSecret.getBytes()));
+      header("Authorization", "Basic " + idSecretEncoded);
+
+      body("grant_type", "client_credentials");
       path("/api/token");
+
       return new ApplicationAuthenticationRequest(this);
     }
   }

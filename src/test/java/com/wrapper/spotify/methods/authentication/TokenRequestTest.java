@@ -19,7 +19,11 @@ public class TokenRequestTest {
 
     final Api api = Api.DEFAULT_API;
 
-    final TokenRequest request = api.getTokens(clientId, clientSecret, code, redirectUri)
+    final TokenRequest request = api.getTokens()
+            .withClientId(clientId)
+            .withClientSecret(clientSecret)
+            .withCode(code)
+            .withRedirectUri(redirectUri)
             .httpManager(TestUtil.MockedHttpManager.returningJson("auth-tokens.json"))
             .build();
     try {

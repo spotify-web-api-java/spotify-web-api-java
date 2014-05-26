@@ -27,7 +27,7 @@ public class AlbumSearchRequestTest {
   public void shouldGetAlbumsResult_async() throws Exception {
     final Api api = Api.DEFAULT_API;
 
-    final AlbumSearchRequest.Builder requestBuilder = api.searchAlbums("tania bowra");
+    final AlbumSearchRequest.Builder requestBuilder = api.searchAlbums().withQuery("tania bowra");
     if (TestConfiguration.USE_MOCK_RESPONSES) {
       requestBuilder.httpManager(TestUtil.MockedHttpManager.returningJson("search-album.json"));
     }
@@ -74,7 +74,7 @@ public class AlbumSearchRequestTest {
   public void shouldGetAlbumsResult_sync() throws Exception {
     final Api api = Api.DEFAULT_API;
 
-    final AlbumSearchRequest.Builder requestBuilder = api.searchAlbums("tania bowra");
+    final AlbumSearchRequest.Builder requestBuilder = api.searchAlbums().withQuery("tania bowra");
     if (TestConfiguration.USE_MOCK_RESPONSES) {
       requestBuilder.httpManager(TestUtil.MockedHttpManager.returningJson("search-album.json")).build();
     }

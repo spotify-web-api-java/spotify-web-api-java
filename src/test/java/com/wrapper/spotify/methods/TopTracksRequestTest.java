@@ -26,7 +26,7 @@ public class TopTracksRequestTest {
   public void shouldGetTracksResult_async() throws Exception {
     final Api api = Api.DEFAULT_API;
 
-    final TopTracksRequest.Builder requestBuilder = api.getTopTracksForArtist("43ZHCT0cAZBISjO8DG9PnE", "GB");
+    final TopTracksRequest.Builder requestBuilder = api.getTopTracksForArtist().withId("43ZHCT0cAZBISjO8DG9PnE").withCountryCode("GB");
     if (TestConfiguration.USE_MOCK_RESPONSES) {
       requestBuilder.httpManager(TestUtil.MockedHttpManager.returningJson("tracks-for-artist.json"));
     }
@@ -77,7 +77,7 @@ public class TopTracksRequestTest {
   public void shouldGetTracksResult_sync() throws Exception {
     final Api api = Api.DEFAULT_API;
 
-    final TopTracksRequest.Builder requestBuilder = api.getTopTracksForArtist("43ZHCT0cAZBISjO8DG9PnE", "GB");
+    final TopTracksRequest.Builder requestBuilder = api.getTopTracksForArtist().withId("43ZHCT0cAZBISjO8DG9PnE").withCountryCode("GB");
     if (TestConfiguration.USE_MOCK_RESPONSES) {
       requestBuilder.httpManager(TestUtil.MockedHttpManager.returningJson("tracks-for-artist.json"));
     }

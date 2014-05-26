@@ -46,18 +46,18 @@ public class ArtistRequest extends AbstractRequest {
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
-    /**
-     * The artist with the given id.
-     *
-     * @param id The id for the artist.
-     * @return ArtistRequest
-     */
-    public Builder id(String id) {
-      assert (id != null);
-      return path(String.format("/v1/artists/%s", id));
+    private String artistId;
+
+    public Builder withId(String artistId) {
+      assert (artistId != null);
+      this.artistId = artistId;
+      
+      return path(String.format("/v1/artists/%s", artistId));
     }
 
     public ArtistRequest build() {
+      assert (artistId != null);
+
       return new ArtistRequest(this);
     }
 

@@ -47,17 +47,27 @@ public class TopTracksRequest extends AbstractRequest {
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
-    public Builder id(String id) {
-      assert (id != null);
-      return path(String.format("/v1/artists/%s/toptracks", id));
+    private String artistId;
+    private String countryCode;
+
+    public Builder withId(String artistId) {
+      assert (artistId != null);
+      this.artistId = artistId;
+
+      return path(String.format("/v1/artists/%s/toptracks", artistId));
     }
 
-    public Builder countryCode(String countryCode) {
+    public Builder withCountryCode(String countryCode) {
       assert (countryCode != null);
+      this.countryCode = countryCode;
+
       return parameter("country", countryCode);
     }
 
     public TopTracksRequest build() {
+      assert (countryCode != null);
+      assert (artistId != null);
+
       return new TopTracksRequest(this);
     }
 

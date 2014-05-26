@@ -48,16 +48,16 @@ public class UserPlaylistsRequest extends AbstractRequest {
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
-    public Builder username(String username) {
-      assert (username != null);
-      return path(String.format("/v1/users/%s/playlists", username));
-    }
+    private String userId;
 
-    public Builder accessToken(String accessToken) {
-      return header("Authorization", "Bearer " + accessToken);
+    public Builder withId(String userId) {
+      assert (userId != null);
+      this.userId = userId;
+      return path(String.format("/v1/users/%s/playlists", userId));
     }
 
     public UserPlaylistsRequest build() {
+      assert (userId != null);
       return new UserPlaylistsRequest(this);
     }
 

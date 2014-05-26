@@ -47,24 +47,29 @@ public class TrackSearchRequest extends AbstractRequest {
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
-    public Builder query(String query) {
-      assert (query != null);
+    private String searchQuery;
+
+    public Builder withQuery(String searchQuery) {
+      assert (searchQuery != null);
+      this.searchQuery = searchQuery;
+
       path("/v1/search");
       parameter("type","track");
-      return parameter("q", query);
+      return parameter("q", searchQuery);
     }
 
-    public Builder limit(int limit) {
+    public Builder withLimit(int limit) {
       assert (limit > 0);
       return parameter("limit", String.valueOf(limit));
     }
 
-    public Builder offset(int offset) {
+    public Builder withOffset(int offset) {
       assert (offset >= 0);
       return parameter("offset", String.valueOf(offset));
     }
 
     public TrackSearchRequest build() {
+      assert (searchQuery != null);
       return new TrackSearchRequest(this);
     }
 

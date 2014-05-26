@@ -51,23 +51,25 @@ public class RefreshAccessTokenRequest extends AbstractRequest {
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
-    public Builder authorizationHeader(String clientId, String clientSecret) {
+    private String clientId;
+    private String clientSecret;
+    private String refreshToken;
+
+    public Builder withClientId(String clientId) {
       assert (clientId != null);
+      this.clientId = clientId;
+      return this;
+    }
+
+    public Builder withClientSecret(String clientSecret) {
       assert (clientSecret != null);
-
-      String idSecret = clientId + ":" + clientSecret;
-      String idSecretEncoded = new String(Base64.encodeBase64(idSecret.getBytes()));
-
-      return header("Authorization", "Basic " + idSecretEncoded);
+      this.clientSecret = clientSecret;
+      return this;
     }
 
-    public Builder grantType(String grantType) {
-      assert (grantType != null);
-      return body("grant_type", grantType);
-    }
-
-    public Builder refreshToken(String refreshToken) {
+    public Builder withRefreshToken(String refreshToken) {
       assert (refreshToken != null);
+      this.refreshToken = refreshToken;
       return body("refresh_token", refreshToken);
     }
 
@@ -76,7 +78,13 @@ public class RefreshAccessTokenRequest extends AbstractRequest {
       port(Api.DEFAULT_AUTHENTICATION_PORT);
       scheme(Api.DEFAULT_AUTHENTICATION_SCHEME);
 
+      String idSecret = clientId + ":" + clientSecret;
+      String idSecretEncoded = new String(Base64.encodeBase64(idSecret.getBytes()));
+      header("Authorization", "Basic " + idSecretEncoded);
+
+      body("grant_type", "refresh_token");
       path("/api/token");
+
       return new RefreshAccessTokenRequest(this);
     }
   }

@@ -26,7 +26,7 @@ public class UserRequestTest {
   public void shouldCreateUser_async() throws Exception {
     final Api api = Api.DEFAULT_API;
 
-    final UserRequest.Builder requestBuilder = api.getUser("wizzler");
+    final UserRequest.Builder requestBuilder = api.getUser().withId("wizzler");
     if (TestConfiguration.USE_MOCK_RESPONSES) {
       requestBuilder.httpManager(TestUtil.MockedHttpManager.returningJson("user.json"));
     }
@@ -58,7 +58,7 @@ public class UserRequestTest {
   public void shouldCreateUser_sync() throws Exception {
     final Api api = Api.DEFAULT_API;
 
-    final UserRequest.Builder requestBuilder = api.getUser("wizzler");
+    final UserRequest.Builder requestBuilder = api.getUser().withId("wizzler");
     if (TestConfiguration.USE_MOCK_RESPONSES) {
       requestBuilder.httpManager(TestUtil.MockedHttpManager.returningJson("user.json"));
     }

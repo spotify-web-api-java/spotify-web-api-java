@@ -25,7 +25,8 @@ public class ArtistsRequestTest {
   public void shouldGetArtistsResult_async() throws Exception {
     final Api api = Api.DEFAULT_API;
 
-    final ArtistsRequest.Builder requestBuilder = api.getArtists("0oSGxfWSnnOXhD2fKuz2Gy", "3dBVyJ7JuOMt4GE9607Qin");
+    final ArtistsRequest.Builder requestBuilder = api.getArtists()
+            .withIds("0oSGxfWSnnOXhD2fKuz2Gy", "3dBVyJ7JuOMt4GE9607Qin");
     if (TestConfiguration.USE_MOCK_RESPONSES) {
       requestBuilder.httpManager(TestUtil.MockedHttpManager.returningJson("artists.json"));
     }
@@ -62,7 +63,8 @@ public class ArtistsRequestTest {
   public void shouldGetArtistsResult_sync() throws Exception {
     final Api api = Api.DEFAULT_API;
 
-    final ArtistsRequest.Builder requestBuilder = api.getArtists("0oSGxfWSnnOXhD2fKuz2Gy", "3dBVyJ7JuOMt4GE9607Qin");
+    final ArtistsRequest.Builder requestBuilder = api.getArtists()
+            .withIds("0oSGxfWSnnOXhD2fKuz2Gy", "3dBVyJ7JuOMt4GE9607Qin");
     if (TestConfiguration.USE_MOCK_RESPONSES) {
       requestBuilder.httpManager(TestUtil.MockedHttpManager.returningJson("artists.json"));
     }

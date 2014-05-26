@@ -46,12 +46,16 @@ public class UserRequest extends AbstractRequest {
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
-    public Builder username(String username) {
-      assert (username!= null);
-      return path(String.format("/v1/users/%s", username));
+    private String userId;
+
+    public Builder withId(String userId) {
+      assert (userId != null);
+      this.userId = userId;
+      return path(String.format("/v1/users/%s", userId));
     }
 
     public UserRequest build() {
+      assert (userId != null);
       return new UserRequest(this);
     }
 
