@@ -22,7 +22,7 @@ public class CurrentUserRequestTest {
     final Api api = Api.DEFAULT_API;
 
     final CurrentUserRequest request = api.getCurrentUser()
-            .withAccessToken("myLongAccessToken")
+            .accessToken("myLongAccessToken")
             .httpManager(TestUtil.MockedHttpManager.returningJson("current-user.json"))
             .build();
 
@@ -62,7 +62,7 @@ public class CurrentUserRequestTest {
     final Api api = Api.DEFAULT_API;
 
     final CurrentUserRequest request = api.getCurrentUser()
-            .withAccessToken("myLongAccessToken")
+            .accessToken("myLongAccessToken")
             .httpManager(TestUtil.MockedHttpManager.returningJson("current-user.json"))
             .build();
 

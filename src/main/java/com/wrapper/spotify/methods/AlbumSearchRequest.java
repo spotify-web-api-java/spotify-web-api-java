@@ -47,16 +47,11 @@ public class AlbumSearchRequest extends AbstractRequest {
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
-    private String searchQuery;
-
-    public Builder withQuery(String searchQuery) {
-      assert (searchQuery != null);
-      this.searchQuery = searchQuery;
-
+    public Builder query(String query) {
+      assert (query != null);
       path("/v1/search");
       parameter("type","album");
-
-      return parameter("q", searchQuery);
+      return parameter("q", query);
     }
 
     public Builder limit(int limit) {
@@ -70,8 +65,6 @@ public class AlbumSearchRequest extends AbstractRequest {
     }
 
     public AlbumSearchRequest build() {
-      assert (searchQuery != null);
-
       return new AlbumSearchRequest(this);
     }
 

@@ -25,7 +25,7 @@ public class AlbumRequestTest {
   public void shouldGetAlbumResult_async() throws Exception {
     final Api api = Api.DEFAULT_API;
 
-    final AlbumRequest.Builder requestBuilder = api.getAlbum().withId("0sNOF9WDwhWunNAHPD3Baj");
+    final AlbumRequest.Builder requestBuilder = api.getAlbum("0sNOF9WDwhWunNAHPD3Baj");
 
     if (TestConfiguration.USE_MOCK_RESPONSES) {
       requestBuilder.httpManager(TestUtil.MockedHttpManager.returningJson("album.json"));
@@ -58,7 +58,7 @@ public class AlbumRequestTest {
   public void shouldFailForNonExistingAlbumId_async() throws Exception {
     final Api api = Api.DEFAULT_API;
 
-    final AlbumRequest.Builder requestBuilder = api.getAlbum().withId("nonexistingid");
+    final AlbumRequest.Builder requestBuilder = api.getAlbum("nonexistingid");
     if (TestConfiguration.USE_MOCK_RESPONSES) {
       requestBuilder.httpManager(TestUtil.MockedHttpManager.returningJson("error_id-not-found.json"));
     }
@@ -90,7 +90,7 @@ public class AlbumRequestTest {
   public void shouldFailForBadField_async() throws Exception {
     final Api api = Api.DEFAULT_API;
 
-    final AlbumRequest.Builder requestBuilder = api.getAlbum().withId("你好");
+    final AlbumRequest.Builder requestBuilder = api.getAlbum("你好");
     if (TestConfiguration.USE_MOCK_RESPONSES) {
       requestBuilder.httpManager(TestUtil.MockedHttpManager.returningJson("error_bad-field.json"));
     }
@@ -121,7 +121,7 @@ public class AlbumRequestTest {
   public void shouldGetAlbumResult_sync() throws Exception {
     final Api api = Api.DEFAULT_API;
 
-    final AlbumRequest.Builder requestBuilder = api.getAlbum().withId("0sNOF9WDwhWunNAHPD3Baj");
+    final AlbumRequest.Builder requestBuilder = api.getAlbum("0sNOF9WDwhWunNAHPD3Baj");
 
     if (TestConfiguration.USE_MOCK_RESPONSES) {
       requestBuilder.httpManager(TestUtil.MockedHttpManager.returningJson("album.json"));

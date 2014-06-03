@@ -30,13 +30,7 @@ public class RefreshTokenAsync {
 
     /* Make a token request. Asynchronous requests are made with the .getAsync method and synchronous requests
      * are made with the .get method. This holds for all type of requests. */
-    final SettableFuture<TokenResponse> tokenResponseFuture = api.getTokens()
-            .withClientId(clientId)
-            .withClientSecret(clientSecret)
-            .withCode(code)
-            .withRedirectUri(redirectUri)
-            .build()
-            .getAsync();
+    final SettableFuture<TokenResponse> tokenResponseFuture = api.getTokens(clientId, clientSecret, code, redirectUri).build().getAsync();
 
     /* Add callbacks to handle success and failure */
     Futures.addCallback(tokenResponseFuture, new FutureCallback<TokenResponse>() {

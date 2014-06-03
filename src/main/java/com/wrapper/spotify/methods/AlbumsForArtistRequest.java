@@ -49,30 +49,24 @@ public class AlbumsForArtistRequest extends AbstractRequest {
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
-    private String artistId;
-
-    public Builder withId(String artistId) {
-      assert (artistId  != null);
-      this.artistId = artistId;
-
-      return path(String.format("/v1/artists/%s/albums", artistId));
+    public Builder forArtist(String id) {
+      assert (id != null);
+      return path(String.format("/v1/artists/%s/albums", id));
     }
 
-    public Builder withTypes(AlbumType... types) {
+    public Builder types(AlbumType... types) {
       assert (types != null);
       assert (types.length > 0);
-
-      final String albumsParameter = Joiner.on(",").join(types).toString();
-
+      String albumsParameter = Joiner.on(",").join(types).toString();
       return parameter("album_type", albumsParameter);
     }
 
-    public Builder withLimit(int limit) {
+    public Builder limit(int limit) {
       assert (limit > 0);
       return parameter("limit", String.valueOf(limit));
     }
 
-    public Builder withOffset(int offset) {
+    public Builder offset(int offset) {
       assert (offset >= 0);
       return parameter("offset", String.valueOf(offset));
     }

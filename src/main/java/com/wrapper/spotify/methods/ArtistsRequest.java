@@ -8,7 +8,6 @@ import com.wrapper.spotify.exceptions.*;
 import com.wrapper.spotify.models.Artist;
 
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
 
 public class ArtistsRequest extends AbstractRequest {
@@ -49,24 +48,14 @@ public class ArtistsRequest extends AbstractRequest {
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
-    private String idsParameter;
-
-    public Builder withIds(String... ids) {
-      return withIds(Arrays.asList(ids));
-    }
-
-    public Builder withIds(List<String> ids) {
+    public Builder id(List<String> ids) {
       assert (ids != null);
-      final String idsParameter = Joiner.on(",").join(ids).toString();
-
-      this.idsParameter = idsParameter;
-
+      String idsParameter = Joiner.on(",").join(ids).toString();
       path("/v1/artists");
       return parameter("ids", idsParameter);
     }
 
     public ArtistsRequest build() {
-      assert (idsParameter != null);
       return new ArtistsRequest(this);
     }
 

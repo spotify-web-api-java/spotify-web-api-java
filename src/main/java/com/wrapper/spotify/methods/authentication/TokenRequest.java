@@ -54,50 +54,39 @@ public class TokenRequest extends AbstractRequest {
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
-    private String clientId;
-    private String clientSecret;
-    private String redirectUri;
-    private String code;
-
-    public Builder withClientId(String clientId) {
+    public Builder authorizationHeader(String clientId, String clientSecret) {
       assert (clientId != null);
-      this.clientId = clientId;
-      return this;
-    }
-
-    public Builder withClientSecret(String clientSecret) {
       assert (clientSecret != null);
-      this.clientSecret = clientSecret;
-      return this;
+
+      final String idSecret = clientId + ":" + clientSecret;
+      final String idSecretEncoded = new String(Base64.encodeBase64(idSecret.getBytes()));
+
+      return header("Authorization", "Basic " + idSecretEncoded);
     }
 
-    public Builder withCode(String code) {
+    public Builder grantType(String grantType) {
+      assert (grantType != null);
+
+      return body("grant_type", grantType);
+    }
+
+    public Builder code(String code) {
       assert (code != null);
-      this.code = code;
+
       return body("code", code);
     }
 
-    public Builder withRedirectUri(String redirectUri) {
+    public Builder redirectUri(String redirectUri) {
       assert (redirectUri != null);
-      this.redirectUri = redirectUri;
+
       return body("redirect_uri", redirectUri);
     }
 
     public TokenRequest build() {
-      assert (code != null);
-      assert (clientId != null);
-      assert (clientSecret != null);
-      assert (redirectUri != null);
-
       host(Api.DEFAULT_AUTHENTICATION_HOST);
       port(Api.DEFAULT_AUTHENTICATION_PORT);
       scheme(Api.DEFAULT_AUTHENTICATION_SCHEME);
 
-      final String idSecret = clientId + ":" + clientSecret;
-      final String idSecretEncoded = new String(Base64.encodeBase64(idSecret.getBytes()));
-      header("Authorization", "Basic " + idSecretEncoded);
-
-      body("grant_type", "authorization_code");
       path("/api/token");
 
       return new TokenRequest(this);

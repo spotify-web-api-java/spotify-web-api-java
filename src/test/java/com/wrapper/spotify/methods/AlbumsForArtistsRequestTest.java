@@ -28,10 +28,7 @@ public class AlbumsForArtistsRequestTest {
   public void shouldGetAlbumResultForArtistId_async() throws Exception {
     final Api api = Api.DEFAULT_API;
 
-    final AlbumsForArtistRequest.Builder requestBuilder = api.getAlbumsForArtist()
-            .withId("1vCWHaC5f2uS3yhpwWbIA6")
-            .withLimit(2)
-            .withTypes(AlbumType.SINGLE);
+    final AlbumsForArtistRequest.Builder requestBuilder = api.getAlbumsForArtist("1vCWHaC5f2uS3yhpwWbIA6").limit(2).types(AlbumType.SINGLE);
     if (TestConfiguration.USE_MOCK_RESPONSES) {
       requestBuilder.httpManager(TestUtil.MockedHttpManager.returningJson("artist-album.json"));
     }
@@ -76,10 +73,7 @@ public class AlbumsForArtistsRequestTest {
   public void shouldGetAlbumResultForArtistId_sync() throws Exception {
     final Api api = Api.DEFAULT_API;
 
-    final AlbumsForArtistRequest.Builder requestBuilder = api.getAlbumsForArtist()
-            .withId("1vCWHaC5f2uS3yhpwWbIA6")
-            .withLimit(2)
-            .withTypes(AlbumType.SINGLE);
+    final AlbumsForArtistRequest.Builder requestBuilder = api.getAlbumsForArtist("1vCWHaC5f2uS3yhpwWbIA6").limit(2).types(AlbumType.SINGLE);
     if (TestConfiguration.USE_MOCK_RESPONSES) {
       requestBuilder.httpManager(TestUtil.MockedHttpManager.returningJson("artist-album.json"));
     }

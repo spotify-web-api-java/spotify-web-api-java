@@ -74,99 +74,140 @@ public class Api {
     return new Builder();
   }
 
-  public AlbumRequest.Builder getAlbum() {
+  /**
+   * Returns a an album with the id given below.
+   *
+   * @param id The base62 id of the album you're trying to retrieve.
+   * @return An {AlbumRequest.Builder} instance.
+   */
+  public AlbumRequest.Builder getAlbum(String id) {
     AlbumRequest.Builder builder = AlbumRequest.builder();
     setDefaults(builder);
+    builder.id(id);
     return builder;
   }
 
-  public AlbumsRequest.Builder getAlbums() {
+  public AlbumsRequest.Builder getAlbums(String... ids) {
+    return getAlbums(Arrays.asList(ids));
+  }
+
+  public AlbumsRequest.Builder getAlbums(List<String> ids) {
     AlbumsRequest.Builder builder = AlbumsRequest.builder();
     setDefaults(builder);
+    builder.id(ids);
     return builder;
   }
 
-  public AlbumsForArtistRequest.Builder getAlbumsForArtist() {
+  public AlbumsForArtistRequest.Builder getAlbumsForArtist(String artistId) {
     AlbumsForArtistRequest.Builder builder = AlbumsForArtistRequest.builder();
     setDefaults(builder);
+    builder.forArtist(artistId);
     return builder;
   }
 
-  public ArtistRequest.Builder getArtist() {
+  public ArtistRequest.Builder getArtist(String id) {
     ArtistRequest.Builder builder = ArtistRequest.builder();
     setDefaults(builder);
+    builder.id(id);
     return builder;
   }
 
-  public ArtistsRequest.Builder getArtists() {
+  public ArtistsRequest.Builder getArtists(String... ids) {
+    return getArtists(Arrays.asList(ids));
+  }
+
+  public ArtistsRequest.Builder getArtists(List<String> ids) {
     ArtistsRequest.Builder builder = ArtistsRequest.builder();
     setDefaults(builder);
+    builder.id(ids);
     return builder;
   }
 
-  public TrackRequest.Builder getTrack() {
+  public TrackRequest.Builder getTrack(String id) {
     TrackRequest.Builder builder = TrackRequest.builder();
     setDefaults(builder);
+    builder.id(id);
     return builder;
   }
 
-  public TracksRequest.Builder getTracks() {
+  public TracksRequest.Builder getTracks(String... ids) {
+    return getTracks(Arrays.asList(ids));
+  }
+
+  public TracksRequest.Builder getTracks(List<String> ids) {
     TracksRequest.Builder builder = TracksRequest.builder();
     setDefaults(builder);
+    builder.id(ids);
     return builder;
   }
 
-  public AlbumSearchRequest.Builder searchAlbums() {
+  public AlbumSearchRequest.Builder searchAlbums(String query) {
     AlbumSearchRequest.Builder builder = AlbumSearchRequest.builder();
     setDefaults(builder);
+    builder.query(query);
     return builder;
   }
 
-  public TrackSearchRequest.Builder searchTracks() {
+  public TrackSearchRequest.Builder searchTracks(String query) {
     TrackSearchRequest.Builder builder = TrackSearchRequest.builder();
     setDefaults(builder);
+    builder.query(query);
     return builder;
   }
 
-  public ArtistSearchRequest.Builder searchArtists() {
+  public ArtistSearchRequest.Builder searchArtists(String query) {
     ArtistSearchRequest.Builder builder = ArtistSearchRequest.builder();
     setDefaults(builder);
+    builder.query(query);
     return builder;
   }
 
-  public TopTracksRequest.Builder getTopTracksForArtist() {
+  public TopTracksRequest.Builder getTopTracksForArtist(String artistId, String countryCode) {
     TopTracksRequest.Builder builder = TopTracksRequest.builder();
     setDefaults(builder);
+    builder.id(artistId);
+    builder.countryCode(countryCode);
     return builder;
   }
 
-  public UserRequest.Builder getUser() {
+  public UserRequest.Builder getUser(String userId) {
     UserRequest.Builder builder = UserRequest.builder();
     setDefaults(builder);
+    builder.username(userId);
     return builder;
   }
 
-  public UserPlaylistsRequest.Builder getPlaylistsForUser() {
+  public UserPlaylistsRequest.Builder getPlaylistsForUser(String userId) {
     UserPlaylistsRequest.Builder builder = UserPlaylistsRequest.builder();
     setDefaults(builder);
+    builder.username(userId);
     return builder;
   }
 
-  public TokenRequest.Builder getTokens() {
+  public TokenRequest.Builder getTokens(String clientId, String clientSecret, String code, String redirectUri) {
     TokenRequest.Builder builder = TokenRequest.builder();
+    builder.grantType("authorization_code");
+    builder.authorizationHeader(clientId, clientSecret);
+    builder.code(code);
+    builder.redirectUri(redirectUri);
     setDefaults(builder);
     return builder;
   }
 
-  public RefreshAccessTokenRequest.Builder refreshAccessToken() {
+  public RefreshAccessTokenRequest.Builder refreshAccessToken(String clientId, String clientSecret, String refreshToken) {
     RefreshAccessTokenRequest.Builder builder = RefreshAccessTokenRequest.builder();
     setDefaults(builder);
+    builder.grantType("refresh_token");
+    builder.refreshToken(refreshToken);
+    builder.authorizationHeader(clientId, clientSecret);
     return builder;
   }
 
-  public ApplicationAuthenticationRequest.Builder applicationAuthentication() {
+  public ApplicationAuthenticationRequest.Builder applicationAuthentication(String clientId, String clientSecret) {
     ApplicationAuthenticationRequest.Builder builder = ApplicationAuthenticationRequest.builder();
     setDefaults(builder);
+    builder.grantType("client_credentials");
+    builder.authorizationHeader(clientId, clientSecret);
     return builder;
   }
 
@@ -188,6 +229,13 @@ public class Api {
     return builder;
   }
 
+  private void setDefaults(Request.Builder builder) {
+    builder.httpManager(httpManager);
+    builder.scheme(scheme);
+    builder.host(host);
+    builder.port(port);
+  }
+
   public AddTrackToPlaylistRequest.Builder addTracksToPlaylist() {
     final AddTrackToPlaylistRequest.Builder builder = AddTrackToPlaylistRequest.builder();
     setDefaults(builder);
@@ -195,13 +243,6 @@ public class Api {
       builder.withAccessToken(accessToken);
     }
     return builder;
-  }
-
-  private void setDefaults(Request.Builder builder) {
-    builder.httpManager(httpManager);
-    builder.scheme(scheme);
-    builder.host(host);
-    builder.port(port);
   }
 
   public void setAccessToken(String accessToken) {

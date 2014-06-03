@@ -23,10 +23,10 @@ public class PlaylistCreationRequestTest {
     final Api api = Api.DEFAULT_API;
 
     final PlaylistCreationRequest request = api.createPlaylist()
-            .withPublicAccess(true)
-            .withTitle("Coolest playlist")
-            .withOwner("thelinmichael")
-            .withAccessToken("myLongAccessToken")
+            .accessToken("myLongAccessToken")
+            .publicAccess(true)
+            .title("Coolest playlist")
+            .username("thelinmichael")
             .httpManager(TestUtil.MockedHttpManager.returningJson("created-playlist.json"))
             .build();
 
@@ -70,10 +70,10 @@ public class PlaylistCreationRequestTest {
     final Api api = Api.DEFAULT_API;
 
     final PlaylistCreationRequest request = api.createPlaylist()
-            .withPublicAccess(true)
-            .withTitle("Coolest playlist")
-            .withOwner("thelinmichael")
-            .withAccessToken("myLongAccessToken")
+            .accessToken("myLongAccessToken")
+            .publicAccess(true)
+            .title("Coolest playlist")
+            .username("thelinmichael")
             .httpManager(TestUtil.MockedHttpManager.returningJson("created-playlist.json"))
             .build();
 

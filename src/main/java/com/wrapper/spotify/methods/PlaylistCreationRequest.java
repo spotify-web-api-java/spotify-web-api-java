@@ -44,31 +44,31 @@ public class PlaylistCreationRequest extends AbstractRequest {
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
-    private String userId;
-    private String title;
+    String username = "";
+    String title = "";
 
-    public Builder withOwner(String userId) {
-      assert (userId != null);
-      this.userId = userId;
+    public Builder username(String username) {
+      assert (username != null);
+      this.username = username;
       return this;
     }
 
-    public Builder withTitle(String title) {
+    public Builder title(String title) {
       assert (title != null);
-      this.title = title;
       return body("name", title);
     }
 
-    public Builder withPublicAccess(boolean publicAccess) {
+    public Builder publicAccess(boolean publicAccess) {
       return body("public", String.valueOf(publicAccess));
     }
 
-    public PlaylistCreationRequest build() {
-      assert (title != null);
-      assert (userId != null);
+    public Builder accessToken(String accessToken) {
+      return header("Authorization", "Bearer " + accessToken);
+    }
 
+    public PlaylistCreationRequest build() {
       header("Content-Type", "application/json");
-      path("/v1/users/" + userId + "/playlists");
+      path("/v1/users/" + username + "/playlists");
       return new PlaylistCreationRequest(this);
     }
 

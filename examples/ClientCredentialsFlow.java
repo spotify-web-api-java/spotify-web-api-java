@@ -25,10 +25,7 @@ public class ApplicationAuthentication {
     final Api api = Api.DEFAULT_API;
 
     /* Create a request object. */
-    final ApplicationAuthenticationRequest request = api.applicationAuthentication()
-            .withClientId(clientId)
-            .withClientSecret(clientSecret)
-            .build();
+    final ApplicationAuthenticationRequest request = api.applicationAuthentication(clientId, clientSecret).build();
 
     /* Use the request object to make the request, either asynchronously (getAsync) or synchronously (get) */
     final SettableFuture<ApplicationAuthenticationToken> responseFuture = request.getAsync();

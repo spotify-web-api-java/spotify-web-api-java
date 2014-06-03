@@ -26,7 +26,7 @@ public class TrackRequestTest {
   public void shouldGetTrackResult_async() throws Exception {
     final Api api = Api.DEFAULT_API;
 
-    final TrackRequest.Builder requestBuilder = api.getTrack().withId("0eGsygTp906u18L0Oimnem");
+    final TrackRequest.Builder requestBuilder = api.getTrack("0eGsygTp906u18L0Oimnem");
     if (TestConfiguration.USE_MOCK_RESPONSES) {
       requestBuilder.httpManager(TestUtil.MockedHttpManager.returningJson("track.json"));
     }
@@ -58,7 +58,7 @@ public class TrackRequestTest {
   public void shouldGetTrackResult_sync() throws Exception {
     final Api api = Api.DEFAULT_API;
 
-    final TrackRequest.Builder requestBuilder = api.getTrack().withId("0eGsygTp906u18L0Oimnem");
+    final TrackRequest.Builder requestBuilder = api.getTrack("0eGsygTp906u18L0Oimnem");
     if (TestConfiguration.USE_MOCK_RESPONSES) {
       requestBuilder.httpManager(TestUtil.MockedHttpManager.returningJson("track.json"));
     }

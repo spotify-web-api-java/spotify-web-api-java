@@ -27,7 +27,7 @@ public class ArtistSearchRequestTest {
   public void shouldGetArtistsResult_async() throws Exception {
     final Api api = Api.DEFAULT_API;
 
-    final ArtistSearchRequest.Builder requestBuilder = api.searchArtists().withQuery("tania bowra").withLimit(20).withOffset(0);
+    final ArtistSearchRequest.Builder requestBuilder = api.searchArtists("tania bowra").limit(20).offset(0);
     if (TestConfiguration.USE_MOCK_RESPONSES) {
       requestBuilder.httpManager(TestUtil.MockedHttpManager.returningJson("search-artist.json"));
     }
@@ -76,7 +76,7 @@ public class ArtistSearchRequestTest {
   public void shouldGetArtistsResult_sync() throws Exception {
     final Api api = Api.DEFAULT_API;
 
-    final ArtistSearchRequest.Builder requestBuilder = api.searchArtists().withQuery("tania bowra");
+    final ArtistSearchRequest.Builder requestBuilder = api.searchArtists("tania bowra");
     if (TestConfiguration.USE_MOCK_RESPONSES) {
       requestBuilder.httpManager(TestUtil.MockedHttpManager.returningJson("search-artist.json"));
     }

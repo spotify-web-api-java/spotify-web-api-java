@@ -23,9 +23,8 @@ public class UserPlaylistsRequestTest {
     final Api api = Api.builder().build();
 
     final UserPlaylistsRequest request = api
-            .getPlaylistsForUser()
-            .withId("wizzler")
-            .withAccessToken(accessToken)
+            .getPlaylistsForUser("wizzler")
+            .accessToken(accessToken)
             .httpManager(TestUtil.MockedHttpManager.returningJson("user-playlists.json"))
             .build();
 
@@ -76,11 +75,11 @@ public class UserPlaylistsRequestTest {
     final Api api = Api.builder().build();
 
     final UserPlaylistsRequest request = api
-            .getPlaylistsForUser()
-            .withId("wizzler")
-            .withAccessToken(accessToken)
+            .getPlaylistsForUser("wizzler")
+            .accessToken(accessToken)
             .httpManager(TestUtil.MockedHttpManager.returningJson("user-playlists.json"))
             .build();
+
 
     final Page<SimplePlaylist> playlistsPage = request.get();
 

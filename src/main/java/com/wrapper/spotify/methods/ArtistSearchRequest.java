@@ -48,30 +48,24 @@ public class ArtistSearchRequest extends AbstractRequest {
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
-    private String searchQuery;
-
-    public Builder withQuery(String searchQuery) {
-      assert (searchQuery != null);
-      this.searchQuery = searchQuery;
-
+    public Builder query(String query) {
+      assert (query != null);
       path("/v1/search");
       parameter("type","artist");
-      return parameter("q", searchQuery);
+      return parameter("q", query);
     }
 
-    public Builder withLimit(int limit) {
+    public Builder limit(int limit) {
       assert (limit > 0);
       return parameter("limit", String.valueOf(limit));
     }
 
-    public Builder withOffset(int offset) {
+    public Builder offset(int offset) {
       assert (offset >= 0);
       return parameter("offset", String.valueOf(offset));
     }
 
     public ArtistSearchRequest build() {
-      assert (searchQuery != null);
-
       return new ArtistSearchRequest(this);
     }
 
