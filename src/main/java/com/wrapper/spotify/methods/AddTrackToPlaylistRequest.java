@@ -50,48 +50,14 @@ public class AddTrackToPlaylistRequest extends AbstractRequest {
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
-    private String owner;
-    private String playlist;
-    private List<String> trackUris;
-
-    public Builder withOwner(String ownerUserId) {
-      assert (ownerUserId != null);
-
-      this.owner = ownerUserId;
-      return this;
-    }
-
-    public Builder withId(String playlistId) {
-      assert (playlistId != null);
-
-      this.playlist = playlistId;
-      return this;
-    }
-
-    public Builder withPosition(int position) {
+    public Builder position(int position) {
       assert (position >= 0);
 
       return parameter("position", String.valueOf(position));
     }
 
-    public Builder withTracks(List<String> trackUris) {
-      assert (trackUris != null);
-
-      this.trackUris = trackUris;
-
-      final JSONArray jsonArrayUri = new JSONArray();
-      jsonArrayUri.addAll(trackUris);
-      return body(jsonArrayUri);
-    }
-
     public AddTrackToPlaylistRequest build() {
-      assert (owner != null);
-      assert (playlist != null);
-      assert (trackUris != null);
-
-      path("/v1/users/" + owner + "/playlists/" + playlist + "/tracks");
       header("Content-Type", "application/json");
-
       return new AddTrackToPlaylistRequest(this);
     }
 

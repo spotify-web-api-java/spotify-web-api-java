@@ -22,11 +22,8 @@ public class PlaylistCreationRequestTest {
   public void shouldGetCurrentUser_async() throws Exception {
     final Api api = Api.DEFAULT_API;
 
-    final PlaylistCreationRequest request = api.createPlaylist()
-            .accessToken("myLongAccessToken")
+    final PlaylistCreationRequest request = api.createPlaylist("thelinmichael","Coolest playlist")
             .publicAccess(true)
-            .title("Coolest playlist")
-            .username("thelinmichael")
             .httpManager(TestUtil.MockedHttpManager.returningJson("created-playlist.json"))
             .build();
 
@@ -69,11 +66,8 @@ public class PlaylistCreationRequestTest {
   public void shouldGetCurrentUser_sync() throws Exception {
     final Api api = Api.DEFAULT_API;
 
-    final PlaylistCreationRequest request = api.createPlaylist()
-            .accessToken("myLongAccessToken")
+    final PlaylistCreationRequest request = api.createPlaylist("thelinmichael","title")
             .publicAccess(true)
-            .title("Coolest playlist")
-            .username("thelinmichael")
             .httpManager(TestUtil.MockedHttpManager.returningJson("created-playlist.json"))
             .build();
 

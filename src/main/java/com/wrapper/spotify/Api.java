@@ -5,6 +5,7 @@ import com.wrapper.spotify.methods.*;
 import com.wrapper.spotify.methods.authentication.ApplicationAuthenticationRequest;
 import com.wrapper.spotify.methods.authentication.RefreshAccessTokenRequest;
 import com.wrapper.spotify.methods.authentication.TokenRequest;
+import net.sf.json.JSONArray;
 
 import java.util.Arrays;
 import java.util.List;
@@ -108,7 +109,7 @@ public class Api {
   public ArtistRequest.Builder getArtist(String id) {
     ArtistRequest.Builder builder = ArtistRequest.builder();
     setDefaults(builder);
-    builder.id(id);
+    builder.path(String.format("/v1/artists/%s", id));
     return builder;
   }
 
@@ -211,8 +212,9 @@ public class Api {
     return builder;
   }
 
-  public PlaylistRequest.Builder getPlaylist() {
+  public PlaylistRequest.Builder getPlaylist(String playlistId, String userId) {
     PlaylistRequest.Builder builder = PlaylistRequest.builder();
+    builder.path("/v1/users/" + userId + "/playlists/" + playlistId);
     setDefaults(builder);
     return builder;
   }
@@ -223,25 +225,31 @@ public class Api {
     return builder;
   }
 
-  public PlaylistCreationRequest.Builder createPlaylist() {
+  public PlaylistCreationRequest.Builder createPlaylist(String userId, String title) {
     final PlaylistCreationRequest.Builder builder = PlaylistCreationRequest.builder();
     setDefaults(builder);
+    builder.body("name", title);
+    builder.path("/v1/users/" + userId + "/playlists");
     return builder;
   }
 
-  private void setDefaults(Request.Builder builder) {
+  private void setDefaults(AbstractRequest.Builder builder) {
     builder.httpManager(httpManager);
     builder.scheme(scheme);
     builder.host(host);
     builder.port(port);
+    if (accessToken != null) {
+      builder.header("Authorization", "Bearer " + accessToken);
+    }
   }
 
-  public AddTrackToPlaylistRequest.Builder addTracksToPlaylist() {
+  public AddTrackToPlaylistRequest.Builder addTracksToPlaylist(String userId, String playlistId, List<String> trackUris) {
     final AddTrackToPlaylistRequest.Builder builder = AddTrackToPlaylistRequest.builder();
     setDefaults(builder);
-    if (accessToken != null) {
-      builder.withAccessToken(accessToken);
-    }
+    final JSONArray jsonArrayUri = new JSONArray();
+    jsonArrayUri.addAll(trackUris);
+    builder.body(jsonArrayUri);
+    builder.path("/v1/users/" + userId+ "/playlists/" + playlistId + "/tracks");
     return builder;
   }
 

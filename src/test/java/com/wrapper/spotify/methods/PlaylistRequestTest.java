@@ -24,9 +24,7 @@ public class PlaylistRequestTest {
   public void shouldCreatePlaylistPage_async() throws Exception {
     final Api api = Api.DEFAULT_API;
 
-    final PlaylistRequest request = api.getPlaylist()
-            .withOwner("thelinmichael")
-            .withId("3ktAYNcRHpazJ9qecm3ptn")
+    final PlaylistRequest request = api.getPlaylist("thelinmichael", "3ktAYNcRHpazJ9qecm3ptn")
             .httpManager(TestUtil.MockedHttpManager.returningJson("playlist-response.json"))
             .build();
 
@@ -55,9 +53,7 @@ public class PlaylistRequestTest {
   public void shouldCreatePlaylistPage() throws Exception {
     final Api api = Api.DEFAULT_API;
 
-    final PlaylistRequest request = api.getPlaylist()
-            .withOwner("thelinmichael")
-            .withId("3ktAYNcRHpazJ9qecm3ptn")
+    final PlaylistRequest request = api.getPlaylist("thelinmichael", "3ktAYNcRHpazJ9qecm3ptn")
             .httpManager(TestUtil.MockedHttpManager.returningJson("playlist-response.json"))
             .build();
 

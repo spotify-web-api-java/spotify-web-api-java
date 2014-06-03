@@ -44,31 +44,12 @@ public class PlaylistCreationRequest extends AbstractRequest {
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
-    String username = "";
-    String title = "";
-
-    public Builder username(String username) {
-      assert (username != null);
-      this.username = username;
-      return this;
-    }
-
-    public Builder title(String title) {
-      assert (title != null);
-      return body("name", title);
-    }
-
     public Builder publicAccess(boolean publicAccess) {
       return body("public", String.valueOf(publicAccess));
     }
 
-    public Builder accessToken(String accessToken) {
-      return header("Authorization", "Bearer " + accessToken);
-    }
-
     public PlaylistCreationRequest build() {
       header("Content-Type", "application/json");
-      path("/v1/users/" + username + "/playlists");
       return new PlaylistCreationRequest(this);
     }
 

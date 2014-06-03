@@ -19,21 +19,18 @@ public class AddTrackToPlaylistRequestTest {
 
   @Test
   public void shouldAddTracksToPlaylist_async() throws Exception {
-    final Api api = Api.DEFAULT_API;
-
     final String accessToken = "myAccessToken";
+
+    final Api api = Api.builder().accessToken(accessToken).build();
+
     final String myUsername = "thelinmichael";
     final String myPlaylistId = "5ieJqeLJjjI8iJWaxeBLuK";
     final List<String> tracksToAdd = Arrays.asList("spotify:track:4BYGxv4rxSNcTgT3DsFB9o","spotify:track:0BG2iE6McPhmAEKIhfqy1X");
     final int insertIndex = 3;
 
-    final AddTrackToPlaylistRequest request = api.addTracksToPlaylist()
-            .withOwner(myUsername)
-            .withId(myPlaylistId)
-            .withTracks(tracksToAdd)
-            .withPosition(insertIndex)
+    final AddTrackToPlaylistRequest request = api.addTracksToPlaylist(myUsername, myPlaylistId, tracksToAdd)
+            .position(insertIndex)
             .httpManager(TestUtil.MockedHttpManager.returningString(""))
-            .withAccessToken(accessToken)
             .build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);

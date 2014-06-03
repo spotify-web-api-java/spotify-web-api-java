@@ -6,7 +6,7 @@
 
     <groupId>spotify-web-api-java</groupId>
     <artifactId>spotify-web-api-java</artifactId>
-    <packaging>pom</packaging>
+    <packaging>jar</packaging>
     <version>1.0-SNAPSHOT</version>
 
     <dependencies>
@@ -24,11 +24,6 @@
             <groupId>commons-httpclient</groupId>
             <artifactId>commons-httpclient</artifactId>
             <version>3.1</version>
-        </dependency>
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>r05</version>
         </dependency>
         <dependency>
             <groupId>net.sf.json-lib</groupId>
