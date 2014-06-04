@@ -2,6 +2,7 @@ package com.wrapper.spotify;
 
 import com.wrapper.spotify.UtilProtos.Url.Scheme;
 import com.wrapper.spotify.methods.*;
+import com.wrapper.spotify.methods.authentication.AuthorizationURLRequest;
 import com.wrapper.spotify.methods.authentication.ClientCredentialsGrantRequest;
 import com.wrapper.spotify.methods.authentication.AuthorizationCodeGrantRequest;
 import com.wrapper.spotify.methods.authentication.RefreshAccessTokenRequest;
@@ -276,6 +277,27 @@ public class Api {
     builder.body(jsonArrayUri);
     builder.path("/v1/users/" + userId + "/playlists/" + playlistId + "/tracks");
     return builder;
+  }
+
+  /**
+   * Retrieve a URL where the user can give the application permissions.
+   * @param scopes The scopes corresponding to the permissions the application needs
+   * @param state state A parameter that you can use to maintain a value between the request and the callback to redirect_uri.It is useful to prevent CSRF exploits.
+   * @returns The URL where the user can give application permissions.
+   */
+  public String createAuthorizeURL(List<String> scopes, String state) {
+    final AuthorizationURLRequest.Builder builder = AuthorizationURLRequest.builder();
+    setDefaults(builder);
+    builder.clientId(clientId);
+    builder.responseType("code");
+    builder.redirectURI(redirectURI);
+    if (scopes != null) {
+      builder.scopes(scopes);
+    }
+    if (state != null) {
+      builder.state(state);
+    }
+    return builder.build().toStringWithQueryParameters();
   }
 
   public void setAccessToken(String accessToken) {

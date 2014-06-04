@@ -338,7 +338,6 @@ public class ApiTest {
     assertHasHeader(request.toUrl(), "Authorization", "Bearer " + accessToken);
   }
 
-
   @Test
   public void shouldCreateClientCredentialsGrantUrl() {
     final String clientId = "myClientId";
@@ -360,6 +359,23 @@ public class ApiTest {
 
     final String idSecret = clientId + ":" + clientSecret;
     assertHasHeader(request.toUrl(), "Authorization", "Basic " + new String(Base64.encodeBase64(idSecret.getBytes())));
+  }
+
+  @Test
+  public void shouldCreateAuthorizeURL() {
+    final String redirectURI = "http://www.michaelthelin.se/test-callback";
+    final String clientId = "fcecfc79122e4cd299473677a17cbd4d";
+
+    final Api api = Api.builder()
+            .clientId(clientId)
+            .redirectURI(redirectURI)
+            .build();
+
+    final List<String> scopes = Arrays.asList("user-read-private", "user-read-email");
+    final String state = "someExpectedStateString";
+
+    String authorizeURL = api.createAuthorizeURL(scopes, state);
+    assertEquals("https://accounts.spotify.com:443/authorize?client_id=fcecfc79122e4cd299473677a17cbd4d&response_type=code&redirect_uri=http://www.michaelthelin.se/test-callback&scope=user-read-private%20user-read-email&state=someExpectedStateString", authorizeURL);
   }
 
 }

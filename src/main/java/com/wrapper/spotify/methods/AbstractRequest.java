@@ -25,6 +25,10 @@ public abstract class AbstractRequest implements Request {
     return UrlUtil.assemble(url);
   }
 
+  public String toStringWithQueryParameters() {
+    return UrlUtil.assembleWithQueryParameters(url);
+  }
+
   public String getJson() throws IOException, WebApiException {
     return httpManager.get(url);
   }
