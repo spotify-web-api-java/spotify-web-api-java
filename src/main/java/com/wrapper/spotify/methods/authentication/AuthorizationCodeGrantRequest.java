@@ -1,13 +1,12 @@
 package com.wrapper.spotify.methods.authentication;
 
 import com.google.common.util.concurrent.SettableFuture;
-import net.sf.json.JSONObject;
-import org.apache.commons.codec.binary.Base64;
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.JsonUtil;
 import com.wrapper.spotify.exceptions.WebApiException;
 import com.wrapper.spotify.methods.AbstractRequest;
 import com.wrapper.spotify.models.TokenResponse;
+import net.sf.json.JSONObject;
 
 import java.io.IOException;
 
@@ -54,32 +53,29 @@ public class AuthorizationCodeGrantRequest extends AbstractRequest {
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
-    public Builder authorizationHeader(String clientId, String clientSecret) {
-      assert (clientId != null);
-      assert (clientSecret != null);
-
-      final String idSecret = clientId + ":" + clientSecret;
-      final String idSecretEncoded = new String(Base64.encodeBase64(idSecret.getBytes()));
-
-      return header("Authorization", "Basic " + idSecretEncoded);
-    }
-
     public Builder grantType(String grantType) {
       assert (grantType != null);
-
       return body("grant_type", grantType);
     }
 
     public Builder code(String code) {
       assert (code != null);
-
       return body("code", code);
     }
 
     public Builder redirectUri(String redirectUri) {
       assert (redirectUri != null);
-
       return body("redirect_uri", redirectUri);
+    }
+
+    public Builder clientId(String clientId) {
+      assert (clientId != null);
+      return body("client_id", clientId);
+    }
+
+    public Builder clientSecret(String clientSecret) {
+      assert (clientSecret != null);
+      return body("client_secret", clientSecret);
     }
 
     public AuthorizationCodeGrantRequest build() {
@@ -91,5 +87,6 @@ public class AuthorizationCodeGrantRequest extends AbstractRequest {
 
       return new AuthorizationCodeGrantRequest(this);
     }
+
   }
 }

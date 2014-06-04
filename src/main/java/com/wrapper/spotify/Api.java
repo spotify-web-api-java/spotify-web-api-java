@@ -204,7 +204,8 @@ public class Api {
     AuthorizationCodeGrantRequest.Builder builder = AuthorizationCodeGrantRequest.builder();
     setDefaults(builder);
     builder.grantType("authorization_code");
-    builder.authorizationHeader(clientId, clientSecret);
+    builder.clientId(clientId);
+    builder.clientSecret(clientSecret);
     builder.code(code);
     builder.redirectUri(redirectURI);
     return builder;
