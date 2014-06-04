@@ -238,7 +238,7 @@ public class Api {
     return builder;
   }
 
-  public PlaylistRequest.Builder getPlaylist(String playlistId, String userId) {
+  public PlaylistRequest.Builder getPlaylist(String userId, String playlistId) {
     PlaylistRequest.Builder builder = PlaylistRequest.builder();
     builder.path("/v1/users/" + userId + "/playlists/" + playlistId);
     setDefaults(builder);
