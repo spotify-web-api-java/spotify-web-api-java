@@ -51,6 +51,10 @@ public class Api {
   private int port;
   private String host;
   private String accessToken;
+  private String refreshToken;
+  private final String clientId;
+  private final String clientSecret;
+  private final String redirectURI;
 
   private Api(Builder builder) {
     assert (builder.host != null);
@@ -65,10 +69,14 @@ public class Api {
     } else {
       this.httpManager = builder.httpManager;
     }
-    accessToken = builder.accessToken;
     scheme = builder.scheme;
     host = builder.host;
     port = builder.port;
+    accessToken = builder.accessToken;
+    refreshToken = builder.refreshToken;
+    clientId = builder.clientId;
+    clientSecret = builder.clientSecret;
+    redirectURI = builder.redirectURI;
   }
 
   public static Builder builder() {
@@ -249,12 +257,16 @@ public class Api {
     final JSONArray jsonArrayUri = new JSONArray();
     jsonArrayUri.addAll(trackUris);
     builder.body(jsonArrayUri);
-    builder.path("/v1/users/" + userId+ "/playlists/" + playlistId + "/tracks");
+    builder.path("/v1/users/" + userId + "/playlists/" + playlistId + "/tracks");
     return builder;
   }
 
   public void setAccessToken(String accessToken) {
     this.accessToken = accessToken;
+  }
+
+  public void setRefreshToken(String refreshToken) {
+    this.refreshToken = refreshToken;
   }
 
   public static class Builder {
@@ -264,6 +276,10 @@ public class Api {
     private HttpManager httpManager = null;
     private Scheme scheme = DEFAULT_SCHEME;
     private String accessToken;
+    private String redirectURI;
+    private String clientId;
+    private String clientSecret;
+    private String refreshToken;
 
     public Builder scheme(Scheme scheme) {
       this.scheme = scheme;
@@ -287,6 +303,26 @@ public class Api {
 
     public Builder accessToken(String accessToken) {
       this.accessToken = accessToken;
+      return this;
+    }
+
+    public Builder refreshToken(String refreshToken) {
+      this.refreshToken = refreshToken;
+      return this;
+    }
+
+    public Builder clientId(String clientId) {
+      this.clientId = clientId;
+      return this;
+    }
+
+    public Builder clientSecret(String clientSecret) {
+      this.clientSecret = clientSecret;
+      return this;
+    }
+
+    public Builder redirectURI(String redirectURI) {
+      this.redirectURI = redirectURI;
       return this;
     }
 
