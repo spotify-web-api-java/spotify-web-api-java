@@ -19,7 +19,7 @@ public class UserPlaylistsRequestTest {
 
   @Test
   public void shouldGetPlaylistsForUser_async() throws Exception {
-    final String accessToken = "myVeryLongAccessToken";
+    final String accessToken = "someAccessToken";
     final Api api = Api.builder().build();
 
     final UserPlaylistsRequest request = api
@@ -47,7 +47,7 @@ public class UserPlaylistsRequestTest {
         assertNotNull(playlistId);
         assertTrue(playlistId.length() > 0);
         assertEquals(false, simplePlaylist.isCollaborative());
-        assertEquals("http://open.spotify.com/user/wizzler/playlists/" + playlistId, simplePlaylist.getExternalUrls().get("spotify"));
+        assertEquals("http://open.spotify.com/user/wizzler/playlist/" + playlistId, simplePlaylist.getExternalUrls().get("spotify"));
         assertNotNull(simplePlaylist.getName());
         assertNotNull(simplePlaylist.getOwner());
         assertNotNull(simplePlaylist.isPublicAccess());
@@ -95,7 +95,7 @@ public class UserPlaylistsRequestTest {
     assertNotNull(playlistId);
     assertTrue(playlistId.length() > 0);
     assertEquals(false, simplePlaylist.isCollaborative());
-    assertEquals("http://open.spotify.com/user/wizzler/playlists/" + playlistId, simplePlaylist.getExternalUrls().get("spotify"));
+    assertEquals("http://open.spotify.com/user/wizzler/playlist/" + playlistId, simplePlaylist.getExternalUrls().get("spotify"));
     assertNotNull(simplePlaylist.getName());
     assertNotNull(simplePlaylist.getOwner());
     assertNotNull(simplePlaylist.isPublicAccess());
