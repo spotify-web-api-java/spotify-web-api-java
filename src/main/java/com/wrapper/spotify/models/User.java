@@ -9,6 +9,7 @@ public class User {
   private ExternalUrls externalUrls;
   private String href;
   private String id;
+  private String country;
   private List<Image> images;
   private Product product;
   private SpotifyEntityType type = SpotifyEntityType.USER;
@@ -84,5 +85,13 @@ public class User {
 
   public void setUri(String uri) {
     this.uri = uri;
+  }
+
+  public String getCountry() {
+    return country;
+  }
+
+  public void setCountry(String country) {
+    this.country = country;
   }
 }

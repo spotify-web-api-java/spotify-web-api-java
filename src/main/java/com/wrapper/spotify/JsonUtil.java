@@ -381,6 +381,9 @@ public class JsonUtil {
     if (existsAndNotNull("product", userJson)) {
       user.setProduct(createProduct(userJson.getString("product")));
     }
+    if (existsAndNotNull("country", userJson)) {
+      user.setCountry(userJson.getString("country"));
+    }
 
     return user;
   }
