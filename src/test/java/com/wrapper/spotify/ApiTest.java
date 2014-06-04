@@ -336,13 +336,17 @@ public class ApiTest {
 
   @Test
   public void shouldCreateClientCredentialsGrantUrl() {
-    final Api api = Api.DEFAULT_API;
-
     final String clientId = "myClientId";
     final String clientSecret = "myClientSecret";
+
+    final Api api = Api.builder()
+            .clientId(clientId)
+            .clientSecret(clientSecret)
+            .build();
+
     final List<String> scopes = Arrays.asList("some-scope", "some-other-scope");
 
-    final Request request = api.applicationAuthentication(clientId, clientSecret).scopes(scopes).build();
+    final Request request = api.applicationAuthentication().scopes(scopes).build();
 
     assertEquals("https://accounts.spotify.com:443/api/token", request.toString());
 

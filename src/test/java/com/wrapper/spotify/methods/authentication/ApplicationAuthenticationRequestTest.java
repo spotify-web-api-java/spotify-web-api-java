@@ -22,10 +22,13 @@ public class ApplicationAuthenticationRequestTest {
     final String clientId = "myClientId";
     final String clientSecret = "myClientSecret";
 
-    final Api api = Api.DEFAULT_API;
+    final Api api = Api.builder()
+            .clientId(clientId)
+            .clientSecret(clientSecret)
+            .build();
 
     final ApplicationAuthenticationRequest request = api
-            .applicationAuthentication(clientId, clientSecret)
+            .applicationAuthentication()
             .httpManager(TestUtil.MockedHttpManager.returningJson("application-authentication-token.json"))
             .build();
 
@@ -40,14 +43,17 @@ public class ApplicationAuthenticationRequestTest {
     final String clientId = "myClientId";
     final String clientSecret = "incorrectClientSecret";
 
-    final Api api = Api.DEFAULT_API;
+    final Api api = Api.builder()
+            .clientId(clientId)
+            .clientSecret(clientSecret)
+            .build();
 
     final ApplicationAuthenticationRequest request = api
-            .applicationAuthentication(clientId, clientSecret)
+            .applicationAuthentication()
             .httpManager(TestUtil.MockedHttpManager.returningJson("auth-invalid-client.json"))
             .build();
 
-    final ApplicationAuthenticationToken response = request.get();
+    request.get();
   }
 
   @Test
@@ -55,10 +61,13 @@ public class ApplicationAuthenticationRequestTest {
     final String clientId = "myClientId";
     final String clientSecret = "myClientSecret";
 
-    final Api api = Api.DEFAULT_API;
+    final Api api = Api.builder()
+            .clientId(clientId)
+            .clientSecret(clientSecret)
+            .build();
 
     final ApplicationAuthenticationRequest request = api
-            .applicationAuthentication(clientId, clientSecret)
+            .applicationAuthentication()
             .httpManager(TestUtil.MockedHttpManager.returningJson("application-authentication-token.json"))
             .build();
 
@@ -89,10 +98,13 @@ public class ApplicationAuthenticationRequestTest {
     final String clientId = "myClientId";
     final String clientSecret = "myClientSecret";
 
-    final Api api = Api.DEFAULT_API;
+    final Api api = Api.builder()
+            .clientId(clientId)
+            .clientSecret(clientSecret)
+            .build();
 
     final ApplicationAuthenticationRequest request = api
-            .applicationAuthentication(clientId, clientSecret)
+            .applicationAuthentication()
             .httpManager(TestUtil.MockedHttpManager.returningJson("auth-invalid-client.json"))
             .build();
 

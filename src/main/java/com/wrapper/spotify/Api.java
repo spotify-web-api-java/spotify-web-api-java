@@ -212,7 +212,7 @@ public class Api {
     return builder;
   }
 
-  public ApplicationAuthenticationRequest.Builder applicationAuthentication(String clientId, String clientSecret) {
+  public ApplicationAuthenticationRequest.Builder applicationAuthentication() {
     ApplicationAuthenticationRequest.Builder builder = ApplicationAuthenticationRequest.builder();
     setDefaults(builder);
     builder.grantType("client_credentials");
