@@ -245,7 +245,7 @@ public class Api {
     return builder;
   }
 
-  public CurrentUserRequest.Builder getCurrentUser() {
+  public CurrentUserRequest.Builder getMe() {
     final CurrentUserRequest.Builder builder = CurrentUserRequest.builder();
     setDefaults(builder);
     return builder;

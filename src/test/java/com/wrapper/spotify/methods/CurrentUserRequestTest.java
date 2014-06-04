@@ -21,7 +21,7 @@ public class CurrentUserRequestTest {
   public void shouldGetCurrentUser_Aasync() throws Exception {
     final Api api = Api.DEFAULT_API;
 
-    final CurrentUserRequest request = api.getCurrentUser()
+    final CurrentUserRequest request = api.getMe()
             .accessToken("myLongAccessToken")
             .httpManager(TestUtil.MockedHttpManager.returningJson("current-user.json"))
             .build();
@@ -61,7 +61,7 @@ public class CurrentUserRequestTest {
   public void shouldGetCurrentUser_sync() throws Exception {
     final Api api = Api.DEFAULT_API;
 
-    final CurrentUserRequest request = api.getCurrentUser()
+    final CurrentUserRequest request = api.getMe()
             .accessToken("myLongAccessToken")
             .httpManager(TestUtil.MockedHttpManager.returningJson("current-user.json"))
             .build();

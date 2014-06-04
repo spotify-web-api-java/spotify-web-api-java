@@ -4,7 +4,7 @@ import com.wrapper.spotify.models.User;
 
 /**
  * This example shows how to get information about the user that is 'connected' to the
- * access token. The methods used (api.authorizationCodeGrant and api.getCurrentUser) are synchronous, but are
+ * access token. The methods used (api.authorizationCodeGrant and api.getMe) are synchronous, but are
  * available asynchronously as well.
  *
  * The authorization flow used is documented in detail at
@@ -43,7 +43,7 @@ public class CurrentUser {
       * Read about which scopes that are available on
       * https://developer.spotify.com/spotify-web-api/get-users-profile/
       */
-      final User currentUser = api.getCurrentUser().accessToken(accessToken).build().get();
+      final User currentUser = api.getMe().accessToken(accessToken).build().get();
 
       /* Use the information about the user */
       System.out.println("URI to currently logged in user is: " + currentUser.getUri());

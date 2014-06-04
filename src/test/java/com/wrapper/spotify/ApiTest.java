@@ -293,7 +293,7 @@ public class ApiTest {
 
     final Api api = Api.builder().accessToken(accessToken).build();
 
-    final Request request = api.getCurrentUser().build();
+    final Request request = api.getMe().build();
 
     assertEquals("https://api.spotify.com:443/v1/me", request.toString());
     assertHasHeader(request.toUrl(), "Authorization", "Bearer " + accessToken);
