@@ -1,11 +1,10 @@
 package com.wrapper.spotify.models;
 
-public class ApplicationAuthenticationToken {
+public class RefreshAccessTokenCredentials {
 
   private String accessToken;
   private String tokenType;
   private int expiresIn;
-
 
   public String getAccessToken() {
     return accessToken;

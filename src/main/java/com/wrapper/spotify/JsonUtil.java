@@ -387,8 +387,8 @@ public class JsonUtil {
     return Product.valueOf(product.toUpperCase());
   }
 
-  public static TokenResponse createTokenResponse(JSONObject tokenResponse) {
-    TokenResponse response = new TokenResponse();
+  public static AuthorizationCodeCredentials createTokenResponse(JSONObject tokenResponse) {
+    AuthorizationCodeCredentials response = new AuthorizationCodeCredentials();
 
     response.setAccessToken(tokenResponse.getString("access_token"));
     response.setExpiresIn(tokenResponse.getInt("expires_in"));
@@ -399,8 +399,8 @@ public class JsonUtil {
   }
 
 
-  public static ApplicationAuthenticationToken createApplicationAuthenticationToken(JSONObject jsonObject) {
-    final ApplicationAuthenticationToken token = new ApplicationAuthenticationToken();
+  public static ClientCredentials createApplicationAuthenticationToken(JSONObject jsonObject) {
+    final ClientCredentials token = new ClientCredentials();
 
     token.setAccessToken(jsonObject.getString("access_token"));
     token.setExpiresIn(jsonObject.getInt("expires_in"));
@@ -409,8 +409,8 @@ public class JsonUtil {
     return token;
   }
 
-  public static RefreshAccessTokenResponse createRefreshAccessTokenResponse(JSONObject jsonObject) {
-    RefreshAccessTokenResponse refreshAccessTokenResponse = new RefreshAccessTokenResponse();
+  public static RefreshAccessTokenCredentials createRefreshAccessTokenResponse(JSONObject jsonObject) {
+    RefreshAccessTokenCredentials refreshAccessTokenResponse = new RefreshAccessTokenCredentials();
 
     refreshAccessTokenResponse.setTokenType(jsonObject.getString("token_type"));
     refreshAccessTokenResponse.setAccessToken(jsonObject.getString("access_token"));

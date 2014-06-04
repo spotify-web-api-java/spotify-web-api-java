@@ -1,5 +1,5 @@
 import com.wrapper.spotify.Api;
-import com.wrapper.spotify.models.TokenResponse;
+import com.wrapper.spotify.models.AuthorizationCodeCredentials;
 import com.wrapper.spotify.models.User;
 
 /**
@@ -30,12 +30,12 @@ public class CurrentUser {
     try {
 
       /* Retrieve an access token */
-      final TokenResponse tokenResponse = api.authorizationCodeGrant(clientId, clientSecret, code, redirectUri).build().get();
+      final AuthorizationCodeCredentials authorizationCodeCredentials = api.authorizationCodeGrant(clientId, clientSecret, code, redirectUri).build().get();
 
       /* The token response contains a refresh token, an accesstoken, and some other things.
        * We only need the access token to retrieve the user's information.
        */
-      final String accessToken = tokenResponse.getAccessToken();
+      final String accessToken = authorizationCodeCredentials.getAccessToken();
 
       /* Retrieve information about the user.
       * The amount of information that is set on the User object depends on the scopes that

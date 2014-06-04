@@ -6,7 +6,7 @@ import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.exceptions.WebApiAuthenticationException;
-import com.wrapper.spotify.models.ApplicationAuthenticationToken;
+import com.wrapper.spotify.models.ClientCredentials;
 import org.junit.Test;
 
 import java.util.concurrent.CountDownLatch;
@@ -32,7 +32,7 @@ public class ApplicationAuthenticationRequestTest {
             .httpManager(TestUtil.MockedHttpManager.returningJson("application-authentication-token.json"))
             .build();
 
-    final ApplicationAuthenticationToken response = request.get();
+    final ClientCredentials response = request.get();
     assertEquals(3600, response.getExpiresIn());
     assertEquals("BQAh_5C4JzOMLuF0W-UVTtaOhZaX0bjgJ5B8giFun_i7AJRKTpZ-VB1mFd3hWLLWRsZNihc_fG1xUlnW9sLBjQ", response.getAccessToken());
     assertEquals("Bearer", response.getTokenType());
@@ -73,11 +73,11 @@ public class ApplicationAuthenticationRequestTest {
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
-    final SettableFuture<ApplicationAuthenticationToken> responseFuture = request.getAsync();
+    final SettableFuture<ClientCredentials> responseFuture = request.getAsync();
 
-    Futures.addCallback(responseFuture, new FutureCallback<ApplicationAuthenticationToken>() {
+    Futures.addCallback(responseFuture, new FutureCallback<ClientCredentials>() {
       @Override
-      public void onSuccess(ApplicationAuthenticationToken response) {
+      public void onSuccess(ClientCredentials response) {
         assertEquals(3600, response.getExpiresIn());
         assertEquals("BQAh_5C4JzOMLuF0W-UVTtaOhZaX0bjgJ5B8giFun_i7AJRKTpZ-VB1mFd3hWLLWRsZNihc_fG1xUlnW9sLBjQ", response.getAccessToken());
         assertEquals("Bearer", response.getTokenType());
@@ -110,11 +110,11 @@ public class ApplicationAuthenticationRequestTest {
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
-    final SettableFuture<ApplicationAuthenticationToken> responseFuture = request.getAsync();
+    final SettableFuture<ClientCredentials> responseFuture = request.getAsync();
 
-    Futures.addCallback(responseFuture, new FutureCallback<ApplicationAuthenticationToken>() {
+    Futures.addCallback(responseFuture, new FutureCallback<ClientCredentials>() {
       @Override
-      public void onSuccess(ApplicationAuthenticationToken response) {
+      public void onSuccess(ClientCredentials response) {
         fail("Should have failed to resolve future");
       }
 

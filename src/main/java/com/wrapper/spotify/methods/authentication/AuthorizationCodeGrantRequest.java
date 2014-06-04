@@ -5,7 +5,7 @@ import com.wrapper.spotify.Api;
 import com.wrapper.spotify.JsonUtil;
 import com.wrapper.spotify.exceptions.WebApiException;
 import com.wrapper.spotify.methods.AbstractRequest;
-import com.wrapper.spotify.models.TokenResponse;
+import com.wrapper.spotify.models.AuthorizationCodeCredentials;
 import net.sf.json.JSONObject;
 import org.apache.commons.codec.binary.Base64;
 
@@ -21,8 +21,8 @@ public class AuthorizationCodeGrantRequest extends AbstractRequest {
     return new Builder();
   }
 
-  public SettableFuture<TokenResponse> getAsync() {
-    final SettableFuture<TokenResponse> future = SettableFuture.create();
+  public SettableFuture<AuthorizationCodeCredentials> getAsync() {
+    final SettableFuture<AuthorizationCodeCredentials> future = SettableFuture.create();
 
     try {
       final String jsonString = postJson();
@@ -41,7 +41,7 @@ public class AuthorizationCodeGrantRequest extends AbstractRequest {
     return future;
   }
 
-  public TokenResponse get() throws IOException, WebApiException {
+  public AuthorizationCodeCredentials get() throws IOException, WebApiException {
     final String json = postJson();
     final JSONObject jsonObject = JSONObject.fromObject(json);
 

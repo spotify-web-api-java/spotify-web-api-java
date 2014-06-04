@@ -3,7 +3,7 @@ import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.methods.authentication.ClientCredentialsGrantRequest;
-import com.wrapper.spotify.models.ApplicationAuthenticationToken;
+import com.wrapper.spotify.models.ClientCredentials;
 
 import static junit.framework.TestCase.fail;
 
@@ -28,15 +28,15 @@ public class ApplicationAuthentication {
     final ClientCredentialsGrantRequest request = api.clientCredentialsGrant(clientId, clientSecret).build();
 
     /* Use the request object to make the request, either asynchronously (getAsync) or synchronously (get) */
-    final SettableFuture<ApplicationAuthenticationToken> responseFuture = request.getAsync();
+    final SettableFuture<ClientCredentials> responseFuture = request.getAsync();
 
     /* Add callbacks to handle success and failure */
-    Futures.addCallback(responseFuture, new FutureCallback<ApplicationAuthenticationToken>() {
+    Futures.addCallback(responseFuture, new FutureCallback<ClientCredentials>() {
       @Override
-      public void onSuccess(ApplicationAuthenticationToken tokenResponse) {
+      public void onSuccess(ClientCredentials clientCredentials) {
         /* The tokens were retrieved successfully! */
-        System.out.println("Successfully retrieved an access token! " + tokenResponse.getAccessToken());
-        System.out.println("The access token expires in " + tokenResponse.getExpiresIn() + " seconds");
+        System.out.println("Successfully retrieved an access token! " + clientCredentials.getAccessToken());
+        System.out.println("The access token expires in " + clientCredentials.getExpiresIn() + " seconds");
 
         /* Please note that this flow does not return a refresh token.
          * That's only for the Authorization code flow */

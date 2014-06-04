@@ -2,7 +2,7 @@ package com.wrapper.spotify.methods.authentication;
 
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.TestUtil;
-import com.wrapper.spotify.models.RefreshAccessTokenResponse;
+import com.wrapper.spotify.models.RefreshAccessTokenCredentials;
 import org.junit.Test;
 import static junit.framework.Assert.assertNotNull;
 
@@ -26,7 +26,7 @@ public class RefreshAccessTokenRequestTest {
             .httpManager(TestUtil.MockedHttpManager.returningJson("auth-tokens.json"))
             .build();
 
-    RefreshAccessTokenResponse refreshAccessTokenResponse = request.get();
+    RefreshAccessTokenCredentials refreshAccessTokenResponse = request.get();
     assertNotNull(refreshAccessTokenResponse.getExpiresIn());
     assertNotNull(refreshAccessTokenResponse.getAccessToken());
     assertNotNull(refreshAccessTokenResponse.getTokenType());

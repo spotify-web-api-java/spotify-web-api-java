@@ -6,7 +6,7 @@ import com.wrapper.spotify.Api;
 import com.wrapper.spotify.JsonUtil;
 import com.wrapper.spotify.exceptions.WebApiException;
 import com.wrapper.spotify.methods.AbstractRequest;
-import com.wrapper.spotify.models.ApplicationAuthenticationToken;
+import com.wrapper.spotify.models.ClientCredentials;
 import net.sf.json.JSONObject;
 import org.apache.commons.codec.binary.Base64;
 
@@ -23,8 +23,8 @@ public class ClientCredentialsGrantRequest extends AbstractRequest {
     return new Builder();
   }
 
-  public SettableFuture<ApplicationAuthenticationToken> getAsync() {
-    final SettableFuture<ApplicationAuthenticationToken> future = SettableFuture.create();
+  public SettableFuture<ClientCredentials> getAsync() {
+    final SettableFuture<ClientCredentials> future = SettableFuture.create();
 
     try {
       JSONObject jsonObject = JSONObject.fromObject(postJson());
@@ -41,7 +41,7 @@ public class ClientCredentialsGrantRequest extends AbstractRequest {
     return future;
   }
 
-  public ApplicationAuthenticationToken get() throws IOException, WebApiException {
+  public ClientCredentials get() throws IOException, WebApiException {
     JSONObject jsonObject = JSONObject.fromObject(postJson());
 
     if (JsonUtil.containsAuthenticationError(jsonObject)) {

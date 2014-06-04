@@ -1,13 +1,13 @@
 package com.wrapper.spotify.methods.authentication;
 
 import com.google.common.util.concurrent.SettableFuture;
+import com.wrapper.spotify.models.RefreshAccessTokenCredentials;
 import net.sf.json.JSONObject;
 import org.apache.commons.codec.binary.Base64;
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.JsonUtil;
 import com.wrapper.spotify.exceptions.*;
 import com.wrapper.spotify.methods.AbstractRequest;
-import com.wrapper.spotify.models.RefreshAccessTokenResponse;
 
 import java.io.IOException;
 
@@ -21,8 +21,8 @@ public class RefreshAccessTokenRequest extends AbstractRequest {
     return new Builder();
   }
 
-  public SettableFuture<RefreshAccessTokenResponse> getAsync() {
-    final SettableFuture<RefreshAccessTokenResponse> future = SettableFuture.create();
+  public SettableFuture<RefreshAccessTokenCredentials> getAsync() {
+    final SettableFuture<RefreshAccessTokenCredentials> future = SettableFuture.create();
 
     try {
       JSONObject jsonObject = JSONObject.fromObject(postJson());
@@ -39,7 +39,7 @@ public class RefreshAccessTokenRequest extends AbstractRequest {
     return future;
   }
 
-  public RefreshAccessTokenResponse get() throws IOException, WebApiException {
+  public RefreshAccessTokenCredentials get() throws IOException, WebApiException {
     JSONObject jsonObject = JSONObject.fromObject(postJson());
 
     if (JsonUtil.containsAuthenticationError(jsonObject)) {

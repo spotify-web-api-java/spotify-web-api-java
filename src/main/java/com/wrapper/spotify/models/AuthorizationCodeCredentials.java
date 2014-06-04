@@ -1,10 +1,11 @@
 package com.wrapper.spotify.models;
 
-public class RefreshAccessTokenResponse {
+public class AuthorizationCodeCredentials {
 
   private String accessToken;
   private String tokenType;
   private int expiresIn;
+  private String refreshToken;
 
   public String getAccessToken() {
     return accessToken;
@@ -28,5 +29,13 @@ public class RefreshAccessTokenResponse {
 
   public void setExpiresIn(int expiresIn) {
     this.expiresIn = expiresIn;
+  }
+
+  public String getRefreshToken() {
+    return refreshToken;
+  }
+
+  public void setRefreshToken(String refreshToken) {
+    this.refreshToken = refreshToken;
   }
 }

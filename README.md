@@ -3,23 +3,22 @@ Spotify Web API Java [![Build Status](https://travis-ci.org/thelinmichael/spotif
 
 This is a Java wrapper for the [Spotify Web API](https://developer.spotify.com/spotify-web-api/).
 
-It includes the following functionality:
+It includes helper functions to do:
 
-- [x] Album, artist and track lookup
-- [x] Album lookup for specific artist
-- [x] Top tracks for specific artist
-- [x] Album, artist and track search
-- [x] Playlists for specific user
-- [x] Playlist lookup
-- [x] Create a playlist
-- [x] Add tracks to a playlist
-- [x] Authenticated user lookup
-- [x] User lookup
+- Album, artist, track, user, playlist lookup
+- Album lookup for a specific artist
+- Top tracks for a specific artist
+- Album, artist and track search
+- Retrieval of a user's playlists
+- Playlist creation
+- Adding tracks to a playlist
 
-Authentication can be made using these flows:
+Some methods require authentication, which can be done using these flows:
 
-- [x] [Client credentials flow](http://tools.ietf.org/html/rfc6749#section-4.4) (Application-only authentication)
-- [x] [Authorization code grant](http://tools.ietf.org/html/rfc6749#section-4.1)
+- [Client credentials flow](http://tools.ietf.org/html/rfc6749#section-4.4) (Application-only authentication)
+- [Authorization code grant](http://tools.ietf.org/html/rfc6749#section-4.1) (Signed by user)
+
+Even though authentication isn't always necessary, it always gives benefits such as an increased rate limit.
 
 ## Usage
 
