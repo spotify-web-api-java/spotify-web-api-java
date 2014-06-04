@@ -23,7 +23,7 @@ public class TokenRequestTest {
             .redirectURI(redirectUri)
             .build();
 
-    final TokenRequest request = api.getTokens(code)
+    final AuthorizationCodeGrantRequest request = api.authorizationCodeGrant(code)
             .httpManager(TestUtil.MockedHttpManager.returningJson("auth-tokens.json"))
             .build();
     try {

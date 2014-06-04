@@ -1,21 +1,19 @@
 package com.wrapper.spotify.methods.authentication;
 
-import com.google.common.base.Joiner;
 import com.google.common.util.concurrent.SettableFuture;
+import net.sf.json.JSONObject;
+import org.apache.commons.codec.binary.Base64;
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.JsonUtil;
 import com.wrapper.spotify.exceptions.WebApiException;
 import com.wrapper.spotify.methods.AbstractRequest;
-import com.wrapper.spotify.models.ApplicationAuthenticationToken;
-import net.sf.json.JSONObject;
-import org.apache.commons.codec.binary.Base64;
+import com.wrapper.spotify.models.TokenResponse;
 
 import java.io.IOException;
-import java.util.List;
 
-public class ApplicationAuthenticationRequest extends AbstractRequest {
+public class AuthorizationCodeGrantRequest extends AbstractRequest {
 
-  public ApplicationAuthenticationRequest(Builder builder) {
+  protected AuthorizationCodeGrantRequest(Builder builder) {
     super(builder);
   }
 
@@ -23,17 +21,19 @@ public class ApplicationAuthenticationRequest extends AbstractRequest {
     return new Builder();
   }
 
-  public SettableFuture<ApplicationAuthenticationToken> getAsync() {
-    final SettableFuture<ApplicationAuthenticationToken> future = SettableFuture.create();
+  public SettableFuture<TokenResponse> getAsync() {
+    final SettableFuture<TokenResponse> future = SettableFuture.create();
 
     try {
-      JSONObject jsonObject = JSONObject.fromObject(postJson());
+      final String jsonString = postJson();
+      final JSONObject jsonObject = JSONObject.fromObject(jsonString);
+
 
       if (JsonUtil.containsAuthenticationError(jsonObject)) {
         JsonUtil.throwAuthenticationError(jsonObject);
       }
 
-      future.set(JsonUtil.createApplicationAuthenticationToken(jsonObject));
+      future.set(JsonUtil.createTokenResponse(jsonObject));
     } catch (Exception e) {
       future.setException(e);
     }
@@ -41,14 +41,15 @@ public class ApplicationAuthenticationRequest extends AbstractRequest {
     return future;
   }
 
-  public ApplicationAuthenticationToken get() throws IOException, WebApiException {
-    JSONObject jsonObject = JSONObject.fromObject(postJson());
+  public TokenResponse get() throws IOException, WebApiException {
+    final String json = postJson();
+    final JSONObject jsonObject = JSONObject.fromObject(json);
 
     if (JsonUtil.containsAuthenticationError(jsonObject)) {
       JsonUtil.throwAuthenticationError(jsonObject);
     }
 
-    return JsonUtil.createApplicationAuthenticationToken(jsonObject);
+    return JsonUtil.createTokenResponse(jsonObject);
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
@@ -57,28 +58,38 @@ public class ApplicationAuthenticationRequest extends AbstractRequest {
       assert (clientId != null);
       assert (clientSecret != null);
 
-      String idSecret = clientId + ":" + clientSecret;
-      String idSecretEncoded = new String(Base64.encodeBase64(idSecret.getBytes()));
+      final String idSecret = clientId + ":" + clientSecret;
+      final String idSecretEncoded = new String(Base64.encodeBase64(idSecret.getBytes()));
 
       return header("Authorization", "Basic " + idSecretEncoded);
     }
 
     public Builder grantType(String grantType) {
       assert (grantType != null);
+
       return body("grant_type", grantType);
     }
 
-    public Builder scopes(List<String> scopes) {
-      return body("scope", Joiner.on(" ").join(scopes).toString());
+    public Builder code(String code) {
+      assert (code != null);
+
+      return body("code", code);
     }
 
-    public ApplicationAuthenticationRequest build() {
+    public Builder redirectUri(String redirectUri) {
+      assert (redirectUri != null);
+
+      return body("redirect_uri", redirectUri);
+    }
+
+    public AuthorizationCodeGrantRequest build() {
       host(Api.DEFAULT_AUTHENTICATION_HOST);
       port(Api.DEFAULT_AUTHENTICATION_PORT);
       scheme(Api.DEFAULT_AUTHENTICATION_SCHEME);
 
       path("/api/token");
-      return new ApplicationAuthenticationRequest(this);
+
+      return new AuthorizationCodeGrantRequest(this);
     }
   }
 }

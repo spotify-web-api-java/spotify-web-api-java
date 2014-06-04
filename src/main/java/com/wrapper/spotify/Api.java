@@ -2,9 +2,9 @@ package com.wrapper.spotify;
 
 import com.wrapper.spotify.UtilProtos.Url.Scheme;
 import com.wrapper.spotify.methods.*;
-import com.wrapper.spotify.methods.authentication.ApplicationAuthenticationRequest;
+import com.wrapper.spotify.methods.authentication.ClientCredentialsGrantRequest;
+import com.wrapper.spotify.methods.authentication.AuthorizationCodeGrantRequest;
 import com.wrapper.spotify.methods.authentication.RefreshAccessTokenRequest;
-import com.wrapper.spotify.methods.authentication.TokenRequest;
 import net.sf.json.JSONArray;
 
 import java.util.Arrays;
@@ -193,16 +193,28 @@ public class Api {
     return builder;
   }
 
-  public TokenRequest.Builder getTokens(String code) {
-    TokenRequest.Builder builder = TokenRequest.builder();
+  /**
+   * Returns a builder that can be used to build requests for authorization code
+   * grants.
+   * Requires client ID, client secret, and redirect URI to be set.
+   * @param code An authorization code.
+   * @return A builder that builds authorization code grant requests.
+   */
+  public AuthorizationCodeGrantRequest.Builder authorizationCodeGrant(String code) {
+    AuthorizationCodeGrantRequest.Builder builder = AuthorizationCodeGrantRequest.builder();
+    setDefaults(builder);
     builder.grantType("authorization_code");
     builder.authorizationHeader(clientId, clientSecret);
     builder.code(code);
     builder.redirectUri(redirectURI);
-    setDefaults(builder);
     return builder;
   }
 
+  /**
+   * Returns a builder that can be used to build requests to refresh an access token
+   * that has been retrieved using the authorization code grant flow.
+   * @return A builder that builds refresh access token requests.
+   */
   public RefreshAccessTokenRequest.Builder refreshAccessToken() {
     RefreshAccessTokenRequest.Builder builder = RefreshAccessTokenRequest.builder();
     setDefaults(builder);
@@ -212,8 +224,13 @@ public class Api {
     return builder;
   }
 
-  public ApplicationAuthenticationRequest.Builder applicationAuthentication() {
-    ApplicationAuthenticationRequest.Builder builder = ApplicationAuthenticationRequest.builder();
+  /**
+   * Returns a builder that can be used to build requests for client credential grants.
+   * Requires client ID and client secret to be set.
+   * @return A builder that builds client credential grant requests.
+   */
+  public ClientCredentialsGrantRequest.Builder clientCredentialsGrant() {
+    ClientCredentialsGrantRequest.Builder builder = ClientCredentialsGrantRequest.builder();
     setDefaults(builder);
     builder.grantType("client_credentials");
     builder.authorizationHeader(clientId, clientSecret);

@@ -27,8 +27,8 @@ public class ApplicationAuthenticationRequestTest {
             .clientSecret(clientSecret)
             .build();
 
-    final ApplicationAuthenticationRequest request = api
-            .applicationAuthentication()
+    final ClientCredentialsGrantRequest request = api
+            .clientCredentialsGrant()
             .httpManager(TestUtil.MockedHttpManager.returningJson("application-authentication-token.json"))
             .build();
 
@@ -48,8 +48,8 @@ public class ApplicationAuthenticationRequestTest {
             .clientSecret(clientSecret)
             .build();
 
-    final ApplicationAuthenticationRequest request = api
-            .applicationAuthentication()
+    final ClientCredentialsGrantRequest request = api
+            .clientCredentialsGrant()
             .httpManager(TestUtil.MockedHttpManager.returningJson("auth-invalid-client.json"))
             .build();
 
@@ -66,8 +66,8 @@ public class ApplicationAuthenticationRequestTest {
             .clientSecret(clientSecret)
             .build();
 
-    final ApplicationAuthenticationRequest request = api
-            .applicationAuthentication()
+    final ClientCredentialsGrantRequest request = api
+            .clientCredentialsGrant()
             .httpManager(TestUtil.MockedHttpManager.returningJson("application-authentication-token.json"))
             .build();
 
@@ -103,8 +103,8 @@ public class ApplicationAuthenticationRequestTest {
             .clientSecret(clientSecret)
             .build();
 
-    final ApplicationAuthenticationRequest request = api
-            .applicationAuthentication()
+    final ClientCredentialsGrantRequest request = api
+            .clientCredentialsGrant()
             .httpManager(TestUtil.MockedHttpManager.returningJson("auth-invalid-client.json"))
             .build();
 

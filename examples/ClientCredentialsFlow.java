@@ -2,7 +2,7 @@ import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.Api;
-import com.wrapper.spotify.methods.authentication.ApplicationAuthenticationRequest;
+import com.wrapper.spotify.methods.authentication.ClientCredentialsGrantRequest;
 import com.wrapper.spotify.models.ApplicationAuthenticationToken;
 
 import static junit.framework.TestCase.fail;
@@ -25,7 +25,7 @@ public class ApplicationAuthentication {
     final Api api = Api.DEFAULT_API;
 
     /* Create a request object. */
-    final ApplicationAuthenticationRequest request = api.applicationAuthentication(clientId, clientSecret).build();
+    final ClientCredentialsGrantRequest request = api.clientCredentialsGrant(clientId, clientSecret).build();
 
     /* Use the request object to make the request, either asynchronously (getAsync) or synchronously (get) */
     final SettableFuture<ApplicationAuthenticationToken> responseFuture = request.getAsync();

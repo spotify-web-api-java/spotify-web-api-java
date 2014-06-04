@@ -4,7 +4,7 @@ import com.wrapper.spotify.models.User;
 
 /**
  * This example shows how to get information about the user that is 'connected' to the
- * access token. The methods used (api.getTokens and api.getCurrentUser) are synchronous, but are
+ * access token. The methods used (api.authorizationCodeGrant and api.getCurrentUser) are synchronous, but are
  * available asynchronously as well.
  *
  * The authorization flow used is documented in detail at
@@ -30,7 +30,7 @@ public class CurrentUser {
     try {
 
       /* Retrieve an access token */
-      final TokenResponse tokenResponse = api.getTokens(clientId, clientSecret, code, redirectUri).build().get();
+      final TokenResponse tokenResponse = api.authorizationCodeGrant(clientId, clientSecret, code, redirectUri).build().get();
 
       /* The token response contains a refresh token, an accesstoken, and some other things.
        * We only need the access token to retrieve the user's information.
