@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit;
 import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.fail;
 
-public class ApplicationAuthenticationRequestTest {
+public class ClientCredentialsGrantRequestTest {
 
   @Test
   public void shouldGetAccessToken_sync() throws Exception {

@@ -18,7 +18,7 @@ import static junit.framework.TestCase.fail;
 public class CurrentUserRequestTest {
 
   @Test
-  public void shouldGetCurrentUser_Aasync() throws Exception {
+  public void shouldGetCurrentUser_async() throws Exception {
     final Api api = Api.DEFAULT_API;
 
     final CurrentUserRequest request = api.getMe()
