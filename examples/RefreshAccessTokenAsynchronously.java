@@ -26,11 +26,15 @@ public class RefreshTokenAsync {
     final String redirectUri = "<insert redirect URI>";
 
     /* Create a default API instance that will be used to make requests to Spotify */
-    final Api api = Api.DEFAULT_API;
+    final Api api = Api.builder()
+            .clientId(clientId)
+            .clientSecret(clientSecret)
+            .redirectURI(redirectUri)
+            .build();
 
     /* Make a token request. Asynchronous requests are made with the .getAsync method and synchronous requests
      * are made with the .get method. This holds for all type of requests. */
-    final SettableFuture<AuthorizationCodeCredentials> authorizationCodeCredentialsFuture = api.authorizationCodeGrant(clientId, clientSecret, code, redirectUri).build().getAsync();
+    final SettableFuture<AuthorizationCodeCredentials> authorizationCodeCredentialsFuture = api.authorizationCodeGrant(code).build().getAsync();
 
     /* Add callbacks to handle success and failure */
     Futures.addCallback(authorizationCodeCredentialsFuture, new FutureCallback<AuthorizationCodeCredentials>() {

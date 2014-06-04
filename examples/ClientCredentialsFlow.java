@@ -22,10 +22,13 @@ public class ApplicationAuthentication {
     final String clientId = "<insert client id>";
     final String clientSecret = "<insert client secret>";
 
-    final Api api = Api.DEFAULT_API;
+    final Api api = Api.builder()
+            .clientId(clientId)
+            .clientSecret(clientSecret)
+            .build();
 
     /* Create a request object. */
-    final ClientCredentialsGrantRequest request = api.clientCredentialsGrant(clientId, clientSecret).build();
+    final ClientCredentialsGrantRequest request = api.clientCredentialsGrant().build();
 
     /* Use the request object to make the request, either asynchronously (getAsync) or synchronously (get) */
     final SettableFuture<ClientCredentials> responseFuture = request.getAsync();
