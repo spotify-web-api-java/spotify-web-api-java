@@ -1,34 +1,34 @@
 {
-    "albums" : {
-        "href" : "https://api.spotify.com/v1/search?query=tania+bowra&offset=0&limit=20&type=album",
-        "items" : [ {
-            "album_type" : "album",
-            "external_urls" : {
-                "spotify" : "https://open.spotify.com/album/6akEvsycLGftJxYudPjmqK"
-            },
-            "href" : "https://api.spotify.com/v1/albums/6akEvsycLGftJxYudPjmqK",
-            "id" : "6akEvsycLGftJxYudPjmqK",
-            "images" : [ {
-                "height" : 640,
-                "url" : "https://d3rt1990lpmkn.cloudfront.net/original/f2798ddab0c7b76dc2d270b65c4f67ddef7f6718",
-                "width" : 640
-            }, {
-                "height" : 300,
-                "url" : "https://d3rt1990lpmkn.cloudfront.net/original/b414091165ea0f4172089c2fc67bb35aa37cfc55",
-                "width" : 300
-            }, {
-                "height" : 64,
-                "url" : "https://d3rt1990lpmkn.cloudfront.net/original/8522fc78be4bf4e83fea8e67bb742e7d3dfe21b4",
-                "width" : 64
-            } ],
-            "name" : "Place In The Sun",
-            "type" : "album",
-            "uri" : "spotify:album:6akEvsycLGftJxYudPjmqK"
-        } ],
-        "limit" : 20,
-        "next" : null,
-        "offset" : 0,
-        "previous" : null,
-        "total" : 1
-    }
+  "albums" : {
+    "href" : "https://api.spotify.com/v1/search?query=tania+bowra&offset=0&limit=20&type=album",
+    "items" : [ {
+      "album_type" : "album",
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/album/6akEvsycLGftJxYudPjmqK"
+      },
+      "href" : "https://api.spotify.com/v1/albums/6akEvsycLGftJxYudPjmqK",
+      "id" : "6akEvsycLGftJxYudPjmqK",
+      "images" : [ {
+        "height" : 640,
+        "url" : "https://d3rt1990lpmkn.cloudfront.net/original/f2798ddab0c7b76dc2d270b65c4f67ddef7f6718",
+        "width" : 640
+      }, {
+        "height" : 300,
+        "url" : "https://d3rt1990lpmkn.cloudfront.net/original/b414091165ea0f4172089c2fc67bb35aa37cfc55",
+        "width" : 300
+      }, {
+        "height" : 64,
+        "url" : "https://d3rt1990lpmkn.cloudfront.net/original/8522fc78be4bf4e83fea8e67bb742e7d3dfe21b4",
+        "width" : 64
+      } ],
+      "name" : "Place In The Sun",
+      "type" : "album",
+      "uri" : "spotify:album:6akEvsycLGftJxYudPjmqK"
+    } ],
+    "limit" : 20,
+    "next" : null,
+    "offset" : 0,
+    "previous" : null,
+    "total" : 1
+  }
 }
