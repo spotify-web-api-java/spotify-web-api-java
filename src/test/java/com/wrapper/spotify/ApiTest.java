@@ -247,13 +247,18 @@ public class ApiTest {
 
   @Test
   public void shouldCreateRefreshAccessTokenUrl() {
-    final Api api = Api.DEFAULT_API;
-
     final String clientId = "myClientId";
     final String clientSecret = "myClientSecret";
     final String refreshToken = "myRefreshToken";
 
-    final Request request = api.refreshAccessToken(clientId, clientSecret, refreshToken).build();
+    final Api api = Api
+            .builder()
+            .clientId(clientId)
+            .clientSecret(clientSecret)
+            .refreshToken(refreshToken)
+            .build();
+
+    final Request request = api.refreshAccessToken().build();
 
     assertEquals("https://accounts.spotify.com:443/api/token", request.toString());
     assertHasBodyParameter(request.toUrl(), "grant_type", "refresh_token");

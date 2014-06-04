@@ -203,7 +203,7 @@ public class Api {
     return builder;
   }
 
-  public RefreshAccessTokenRequest.Builder refreshAccessToken(String clientId, String clientSecret, String refreshToken) {
+  public RefreshAccessTokenRequest.Builder refreshAccessToken() {
     RefreshAccessTokenRequest.Builder builder = RefreshAccessTokenRequest.builder();
     setDefaults(builder);
     builder.grantType("refresh_token");

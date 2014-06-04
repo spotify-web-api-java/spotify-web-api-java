@@ -14,10 +14,15 @@ public class RefreshAccessTokenRequestTest {
     final String clientSecret = "myClientSecret";
     final String refreshToken = "myRefreshToken";
 
-    final Api api = Api.DEFAULT_API;
+    final Api api = Api
+            .builder()
+            .clientId(clientId)
+            .clientSecret(clientSecret)
+            .refreshToken(refreshToken)
+            .build();
 
     final RefreshAccessTokenRequest request = api
-            .refreshAccessToken(clientId, clientSecret, refreshToken)
+            .refreshAccessToken()
             .httpManager(TestUtil.MockedHttpManager.returningJson("auth-tokens.json"))
             .build();
 
