@@ -11,15 +11,19 @@ import static junit.framework.TestCase.fail;
 public class TokenRequestTest {
 
   @Test
-  public void shouldGetTokenResponse() throws Exception {
+  public void shouldGetTokenResponse_sync() throws Exception {
     final String clientId = "myClientId";
     final String clientSecret = "myClientSecret";
     final String redirectUri = "myRedirectUri";
     final String code = "myCode";
 
-    final Api api = Api.DEFAULT_API;
+    final Api api = Api.builder()
+            .clientId(clientId)
+            .clientSecret(clientSecret)
+            .redirectURI(redirectUri)
+            .build();
 
-    final TokenRequest request = api.getTokens(clientId, clientSecret, code, redirectUri)
+    final TokenRequest request = api.getTokens(code)
             .httpManager(TestUtil.MockedHttpManager.returningJson("auth-tokens.json"))
             .build();
     try {

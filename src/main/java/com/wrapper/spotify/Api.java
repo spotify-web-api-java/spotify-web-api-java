@@ -193,12 +193,12 @@ public class Api {
     return builder;
   }
 
-  public TokenRequest.Builder getTokens(String clientId, String clientSecret, String code, String redirectUri) {
+  public TokenRequest.Builder getTokens(String code) {
     TokenRequest.Builder builder = TokenRequest.builder();
     builder.grantType("authorization_code");
     builder.authorizationHeader(clientId, clientSecret);
     builder.code(code);
-    builder.redirectUri(redirectUri);
+    builder.redirectUri(redirectURI);
     setDefaults(builder);
     return builder;
   }

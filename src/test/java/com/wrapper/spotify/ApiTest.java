@@ -230,16 +230,21 @@ public class ApiTest {
   public void shouldCreateRequestForTokensUrl() {
     final String clientId = "myClientId";
     final String clientSecret = "myClientSecret";
+    final String redirectURI = "myRedirectUri";
     final String code = "returnedCode";
-    final String redirectUri = "myRedirectUri";
 
-    final Api api = Api.DEFAULT_API;
-    final Request request = api.getTokens(clientId, clientSecret, code, redirectUri).build();
+    final Api api = Api.builder()
+            .clientId(clientId)
+            .clientSecret(clientSecret)
+            .redirectURI(redirectURI)
+            .build();
+
+    final Request request = api.getTokens(code).build();
 
     assertEquals("https://accounts.spotify.com:443/api/token", request.toString());
     assertHasBodyParameter(request.toUrl(), "grant_type", "authorization_code");
     assertHasBodyParameter(request.toUrl(), "code", code);
-    assertHasBodyParameter(request.toUrl(), "redirect_uri", redirectUri);
+    assertHasBodyParameter(request.toUrl(), "redirect_uri", redirectURI);
 
     final String idSecret = clientId + ":" + clientSecret;
     assertHasHeader(request.toUrl(), "Authorization", "Basic " + new String(Base64.encodeBase64(idSecret.getBytes())));
