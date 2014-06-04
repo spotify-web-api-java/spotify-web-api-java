@@ -25,9 +25,7 @@ public class ArtistRequest extends AbstractRequest {
       final String jsonString = getJson();
       final JSONObject jsonObject = JSONObject.fromObject(jsonString);
 
-      JsonUtil.throwIfErrorsInResponse(jsonObject);
-
-      artistFuture.set(JsonUtil.createArtist(jsonString));
+      artistFuture.set(JsonUtil.createArtist(jsonObject));
     } catch (Exception e) {
       artistFuture.setException(e);
     }
@@ -37,11 +35,8 @@ public class ArtistRequest extends AbstractRequest {
 
   public Artist get() throws IOException, WebApiException {
     final String jsonString = getJson();
-    final JSONObject jsonObject = JSONObject.fromObject(jsonString);
 
-    JsonUtil.throwIfErrorsInResponse(jsonObject);
-
-    return JsonUtil.createArtist(jsonString);
+    return JsonUtil.createArtist(JSONObject.fromObject(jsonString));
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {

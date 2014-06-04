@@ -25,8 +25,6 @@ public class PlaylistRequest extends AbstractRequest {
       final String jsonString = getJson();
       final JSONObject jsonObject = JSONObject.fromObject(jsonString);
 
-      JsonUtil.throwIfErrorsInResponse(jsonObject);
-
       playlistFuture.set(JsonUtil.createPlaylist(jsonObject));
     } catch (Exception e) {
       playlistFuture.setException(e);
@@ -38,8 +36,6 @@ public class PlaylistRequest extends AbstractRequest {
   public Playlist get() throws IOException, WebApiException {
     final String jsonString = getJson();
     final JSONObject jsonObject = JSONObject.fromObject(jsonString);
-
-    JsonUtil.throwIfErrorsInResponse(jsonObject);
 
     return JsonUtil.createPlaylist(jsonObject);
   }

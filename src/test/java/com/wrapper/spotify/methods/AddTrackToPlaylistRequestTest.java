@@ -19,7 +19,7 @@ public class AddTrackToPlaylistRequestTest {
 
   @Test
   public void shouldAddTracksToPlaylist_async() throws Exception {
-    final String accessToken = "myAccessToken";
+    final String accessToken = "someAccessToken";
 
     final Api api = Api.builder().accessToken(accessToken).build();
 

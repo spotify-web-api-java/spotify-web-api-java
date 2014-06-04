@@ -23,8 +23,6 @@ public class ArtistSearchRequest extends AbstractRequest {
       String jsonString = getJson();
       JSONObject jsonObject = JSONObject.fromObject(jsonString);
 
-      JsonUtil.throwIfErrorsInResponse(jsonObject);
-
       searchResultFuture.set(JsonUtil.createArtistPage(jsonObject.getJSONObject("artists")));
     } catch (Exception e) {
       searchResultFuture.setException(e);
@@ -37,9 +35,7 @@ public class ArtistSearchRequest extends AbstractRequest {
     final String jsonString = getJson();
     final JSONObject jsonObject = JSONObject.fromObject(jsonString);
 
-    JsonUtil.throwIfErrorsInResponse(jsonObject);
-
-    return JsonUtil.createArtistPage(JSONObject.fromObject(getJson()).getJSONObject("artists"));
+    return JsonUtil.createArtistPage(jsonObject.getJSONObject("artists"));
   }
 
   public static Builder builder() {

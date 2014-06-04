@@ -7,6 +7,7 @@ import com.wrapper.spotify.methods.authentication.ClientCredentialsGrantRequest;
 import com.wrapper.spotify.methods.authentication.AuthorizationCodeGrantRequest;
 import com.wrapper.spotify.methods.authentication.RefreshAccessTokenRequest;
 import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 
 import java.util.Arrays;
 import java.util.List;
@@ -254,7 +255,7 @@ public class Api {
   public PlaylistCreationRequest.Builder createPlaylist(String userId, String title) {
     final PlaylistCreationRequest.Builder builder = PlaylistCreationRequest.builder();
     setDefaults(builder);
-    builder.body("name", title);
+    builder.title(title);
     builder.path("/v1/users/" + userId + "/playlists");
     return builder;
   }

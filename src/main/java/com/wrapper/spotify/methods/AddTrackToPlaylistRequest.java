@@ -4,11 +4,9 @@ import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.JsonUtil;
 import com.wrapper.spotify.exceptions.WebApiException;
 import com.wrapper.spotify.models.Playlist;
-import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 import java.io.IOException;
-import java.util.List;
 
 public class AddTrackToPlaylistRequest extends AbstractRequest {
 
@@ -29,8 +27,6 @@ public class AddTrackToPlaylistRequest extends AbstractRequest {
         addTrackFuture.set("Created");
       } else {
         final JSONObject jsonObject = JSONObject.fromObject(postJson());
-        JsonUtil.throwIfErrorsInResponse(jsonObject);
-        throw new IllegalStateException("Should not get here");
       }
     } catch (Exception e) {
       addTrackFuture.setException(e);
@@ -42,8 +38,6 @@ public class AddTrackToPlaylistRequest extends AbstractRequest {
   public Playlist get() throws IOException, WebApiException {
     final String jsonString = getJson();
     final JSONObject jsonObject = JSONObject.fromObject(jsonString);
-
-    JsonUtil.throwIfErrorsInResponse(jsonObject);
 
     return JsonUtil.createPlaylist(jsonObject);
   }

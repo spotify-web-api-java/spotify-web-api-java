@@ -19,8 +19,8 @@ import static junit.framework.TestCase.*;
 public class PlaylistCreationRequestTest {
 
   @Test
-  public void shouldGetCurrentUser_async() throws Exception {
-    final Api api = Api.DEFAULT_API;
+  public void shouldCreatePlaylist_async() throws Exception {
+    final Api api = Api.builder().accessToken("someAccessToken").build();
 
     final PlaylistCreationRequest request = api.createPlaylist("thelinmichael","Coolest playlist")
             .publicAccess(true)
@@ -37,7 +37,7 @@ public class PlaylistCreationRequestTest {
         assertNotNull(playlist);
         assertFalse(playlist.isCollaborative());
         assertNull(playlist.getDescription());
-        assertEquals("http://open.spotify.com/user/thelinmichael/playlists/2LfixThJPNO9DAreghF2WK", playlist.getExternalUrls().get("spotify"));
+        assertEquals("http://open.spotify.com/user/thelinmichael/playlist/2LfixThJPNO9DAreghF2WK", playlist.getExternalUrls().get("spotify"));
         assertNull(playlist.getFollowers());
         assertEquals("https://api.spotify.com/v1/users/thelinmichael/playlists/2LfixThJPNO9DAreghF2WK", playlist.getHref());
         assertEquals("2LfixThJPNO9DAreghF2WK", playlist.getId());
@@ -63,8 +63,8 @@ public class PlaylistCreationRequestTest {
   }
 
   @Test
-  public void shouldGetCurrentUser_sync() throws Exception {
-    final Api api = Api.DEFAULT_API;
+  public void shouldCreatePlaylist_sync() throws Exception {
+    final Api api = Api.builder().accessToken("someAccessToken").build();
 
     final PlaylistCreationRequest request = api.createPlaylist("thelinmichael","title")
             .publicAccess(true)
@@ -75,7 +75,7 @@ public class PlaylistCreationRequestTest {
 
     assertFalse(playlist.isCollaborative());
     assertNull(playlist.getDescription());
-    assertEquals("http://open.spotify.com/user/thelinmichael/playlists/2LfixThJPNO9DAreghF2WK", playlist.getExternalUrls().get("spotify"));
+    assertEquals("http://open.spotify.com/user/thelinmichael/playlist/2LfixThJPNO9DAreghF2WK", playlist.getExternalUrls().get("spotify"));
     assertNull(playlist.getFollowers());
     assertEquals("https://api.spotify.com/v1/users/thelinmichael/playlists/2LfixThJPNO9DAreghF2WK", playlist.getHref());
     assertEquals("2LfixThJPNO9DAreghF2WK", playlist.getId());

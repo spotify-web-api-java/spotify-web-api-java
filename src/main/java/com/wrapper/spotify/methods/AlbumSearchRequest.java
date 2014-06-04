@@ -22,8 +22,6 @@ public class AlbumSearchRequest extends AbstractRequest {
       final String jsonString = getJson();
       final JSONObject jsonObject = JSONObject.fromObject(jsonString);
 
-      JsonUtil.throwIfErrorsInResponse(jsonObject);
-
       searchResultFuture.set(JsonUtil.createSimpleAlbumPage(jsonObject.getJSONObject("albums")));
     } catch (Exception e) {
       searchResultFuture.setException(e);
@@ -36,9 +34,7 @@ public class AlbumSearchRequest extends AbstractRequest {
     final String jsonString = getJson();
     final JSONObject jsonObject = JSONObject.fromObject(jsonString);
 
-    JsonUtil.throwIfErrorsInResponse(jsonObject);
-
-    return JsonUtil.createSimpleAlbumPage(JSONObject.fromObject(getJson()).getJSONObject("albums"));
+    return JsonUtil.createSimpleAlbumPage(JSONObject.fromObject(jsonObject).getJSONObject("albums"));
   }
 
   public static Builder builder() {

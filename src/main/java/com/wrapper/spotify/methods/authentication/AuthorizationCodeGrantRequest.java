@@ -28,11 +28,6 @@ public class AuthorizationCodeGrantRequest extends AbstractRequest {
       final String jsonString = postJson();
       final JSONObject jsonObject = JSONObject.fromObject(jsonString);
 
-
-      if (JsonUtil.containsAuthenticationError(jsonObject)) {
-        JsonUtil.throwAuthenticationError(jsonObject);
-      }
-
       future.set(JsonUtil.createTokenResponse(jsonObject));
     } catch (Exception e) {
       future.setException(e);
@@ -44,10 +39,6 @@ public class AuthorizationCodeGrantRequest extends AbstractRequest {
   public AuthorizationCodeCredentials get() throws IOException, WebApiException {
     final String json = postJson();
     final JSONObject jsonObject = JSONObject.fromObject(json);
-
-    if (JsonUtil.containsAuthenticationError(jsonObject)) {
-      JsonUtil.throwAuthenticationError(jsonObject);
-    }
 
     return JsonUtil.createTokenResponse(jsonObject);
   }

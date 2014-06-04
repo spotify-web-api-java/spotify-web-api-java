@@ -1,11 +1,11 @@
 package com.wrapper.spotify.methods;
 
 import com.google.common.util.concurrent.SettableFuture;
-import net.sf.json.JSONObject;
 import com.wrapper.spotify.JsonUtil;
 import com.wrapper.spotify.exceptions.WebApiException;
 import com.wrapper.spotify.models.Page;
 import com.wrapper.spotify.models.Track;
+import net.sf.json.JSONObject;
 
 import java.io.IOException;
 
@@ -22,8 +22,6 @@ public class TrackSearchRequest extends AbstractRequest {
       final String jsonString = getJson();
       final JSONObject jsonObject = JSONObject.fromObject(jsonString);
 
-      JsonUtil.throwIfErrorsInResponse(jsonObject);
-
       searchResultFuture.set(JsonUtil.createTrackPage(jsonObject));
     } catch (Exception e) {
       searchResultFuture.setException(e);
@@ -35,8 +33,6 @@ public class TrackSearchRequest extends AbstractRequest {
   public Page<Track> get() throws IOException, WebApiException {
     final String jsonString = getJson();
     final JSONObject jsonObject = JSONObject.fromObject(jsonString);
-
-    JsonUtil.throwIfErrorsInResponse(jsonObject);
 
     return JsonUtil.createTrackPage(jsonObject);
   }

@@ -22,8 +22,6 @@ public class UserPlaylistsRequest extends AbstractRequest {
       final String jsonString = getJson();
       final JSONObject jsonObject = JSONObject.fromObject(jsonString);
 
-      JsonUtil.throwIfErrorsInResponse(jsonObject);
-
       simplePlaylistsPageFuture.set(JsonUtil.createSimplePlaylistsPage(jsonObject));
     } catch (Exception e) {
       simplePlaylistsPageFuture.setException(e);
@@ -35,8 +33,6 @@ public class UserPlaylistsRequest extends AbstractRequest {
   public Page<SimplePlaylist> get() throws IOException, WebApiException {
     final String jsonString = getJson();
     final JSONObject jsonObject = JSONObject.fromObject(jsonString);
-
-    JsonUtil.throwIfErrorsInResponse(jsonObject);
 
     return JsonUtil.createSimplePlaylistsPage(jsonObject);
   }

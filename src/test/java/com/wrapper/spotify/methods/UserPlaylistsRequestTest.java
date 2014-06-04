@@ -47,7 +47,7 @@ public class UserPlaylistsRequestTest {
         assertNotNull(playlistId);
         assertTrue(playlistId.length() > 0);
         assertEquals(false, simplePlaylist.isCollaborative());
-        assertEquals("http://open.spotify.com/user/wizzler/playlist/" + playlistId, simplePlaylist.getExternalUrls().get("spotify"));
+        assertEquals("http://open.spotify.com/user/wizzler/playlists/" + playlistId, simplePlaylist.getExternalUrls().get("spotify"));
         assertNotNull(simplePlaylist.getName());
         assertNotNull(simplePlaylist.getOwner());
         assertNotNull(simplePlaylist.isPublicAccess());
@@ -61,7 +61,7 @@ public class UserPlaylistsRequestTest {
 
       @Override
       public void onFailure(Throwable throwable) {
-        fail("Failed to resolve future");
+        fail("Failed to resolve future" + throwable.getMessage());
       }
 
     });
@@ -95,7 +95,7 @@ public class UserPlaylistsRequestTest {
     assertNotNull(playlistId);
     assertTrue(playlistId.length() > 0);
     assertEquals(false, simplePlaylist.isCollaborative());
-    assertEquals("http://open.spotify.com/user/wizzler/playlist/" + playlistId, simplePlaylist.getExternalUrls().get("spotify"));
+    assertEquals("http://open.spotify.com/user/wizzler/playlists/" + playlistId, simplePlaylist.getExternalUrls().get("spotify"));
     assertNotNull(simplePlaylist.getName());
     assertNotNull(simplePlaylist.getOwner());
     assertNotNull(simplePlaylist.isPublicAccess());

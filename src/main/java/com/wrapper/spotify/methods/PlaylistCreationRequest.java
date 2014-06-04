@@ -24,8 +24,6 @@ public class PlaylistCreationRequest extends AbstractRequest {
     try {
       final JSONObject jsonObject = JSONObject.fromObject(postJson());
 
-      JsonUtil.throwIfErrorsInResponse(jsonObject);
-
       playlistFuture.set(JsonUtil.createPlaylist(jsonObject));
     } catch (Exception e) {
       playlistFuture.setException(e);
@@ -37,15 +35,27 @@ public class PlaylistCreationRequest extends AbstractRequest {
   public Playlist get() throws IOException, WebApiException {
     final JSONObject jsonObject = JSONObject.fromObject(postJson());
 
-    JsonUtil.throwIfErrorsInResponse(jsonObject);
-
     return JsonUtil.createPlaylist(jsonObject);
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
+    private JSONObject jsonBody;
+
     public Builder publicAccess(boolean publicAccess) {
-      return body("public", String.valueOf(publicAccess));
+      if (jsonBody == null) {
+        jsonBody = new JSONObject();
+      }
+      jsonBody.put("public",String.valueOf(publicAccess));
+      return body(jsonBody);
+    }
+
+    public Builder title(String title) {
+      if (jsonBody == null) {
+        jsonBody = new JSONObject();
+      }
+      jsonBody.put("name",String.valueOf(title));
+      return body(jsonBody);
     }
 
     public PlaylistCreationRequest build() {

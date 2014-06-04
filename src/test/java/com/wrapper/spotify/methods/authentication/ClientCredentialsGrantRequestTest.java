@@ -38,24 +38,6 @@ public class ClientCredentialsGrantRequestTest {
     assertEquals("Bearer", response.getTokenType());
   }
 
-  @Test(expected=WebApiAuthenticationException.class)
-  public void shouldFailGettingAccessToken_incorrectClientId_sync() throws Exception {
-    final String clientId = "myClientId";
-    final String clientSecret = "incorrectClientSecret";
-
-    final Api api = Api.builder()
-            .clientId(clientId)
-            .clientSecret(clientSecret)
-            .build();
-
-    final ClientCredentialsGrantRequest request = api
-            .clientCredentialsGrant()
-            .httpManager(TestUtil.MockedHttpManager.returningJson("auth-invalid-client.json"))
-            .build();
-
-    request.get();
-  }
-
   @Test
   public void shouldGetAccessToken_async() throws Exception {
     final String clientId = "myClientId";
@@ -87,41 +69,6 @@ public class ClientCredentialsGrantRequestTest {
       @Override
       public void onFailure(Throwable throwable) {
         fail("Failed to resolve future: " + throwable.getMessage());
-      }
-    });
-
-    asyncCompleted.await(1, TimeUnit.SECONDS);
-  }
-
-  @Test
-  public void shouldFailGettingAccessToken_incorrectClientId_async() throws Exception {
-    final String clientId = "myClientId";
-    final String clientSecret = "myClientSecret";
-
-    final Api api = Api.builder()
-            .clientId(clientId)
-            .clientSecret(clientSecret)
-            .build();
-
-    final ClientCredentialsGrantRequest request = api
-            .clientCredentialsGrant()
-            .httpManager(TestUtil.MockedHttpManager.returningJson("auth-invalid-client.json"))
-            .build();
-
-    final CountDownLatch asyncCompleted = new CountDownLatch(1);
-
-    final SettableFuture<ClientCredentials> responseFuture = request.getAsync();
-
-    Futures.addCallback(responseFuture, new FutureCallback<ClientCredentials>() {
-      @Override
-      public void onSuccess(ClientCredentials response) {
-        fail("Should have failed to resolve future");
-      }
-
-      @Override
-      public void onFailure(Throwable throwable) {
-        assertEquals(throwable.getClass(), WebApiAuthenticationException.class);
-        asyncCompleted.countDown();
       }
     });
 

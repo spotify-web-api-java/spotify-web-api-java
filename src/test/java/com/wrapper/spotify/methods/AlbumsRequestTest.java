@@ -3,6 +3,7 @@ package com.wrapper.spotify.methods;
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.SettableFuture;
+import com.wrapper.spotify.exceptions.BadRequestException;
 import junit.framework.TestCase;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,7 +12,6 @@ import com.wrapper.spotify.Api;
 import com.wrapper.spotify.HttpManager;
 import com.wrapper.spotify.TestConfiguration;
 import com.wrapper.spotify.TestUtil;
-import com.wrapper.spotify.exceptions.BadFieldException;
 import com.wrapper.spotify.models.*;
 
 import java.util.List;
@@ -105,38 +105,6 @@ public class AlbumsRequestTest {
     assertEquals(50, tracksPage.getLimit());
     assertEquals(38, tracksPage.getTotal());
     assertEquals("4r9PmSmbAOOWqaGWLf6M9Q", tracksPage.getItems().get(0).getId());
-  }
-
-  @Test
-  public void shouldFailForBadField_async() throws Exception {
-    final Api api = Api.DEFAULT_API;
-
-    final HttpManager mockedHttpManager = TestUtil.MockedHttpManager.returningJson("error_bad-field.json");
-    final AlbumsRequest.Builder requestBuilder = api.getAlbums("41MnTivkwTO3UUJ8DrqEJJ,你好");
-    if (TestConfiguration.USE_MOCK_RESPONSES) {
-      requestBuilder.httpManager(mockedHttpManager).build();
-    }
-    final AlbumsRequest request = requestBuilder.build();
-
-    final CountDownLatch asyncCompleted = new CountDownLatch(1);
-
-    final SettableFuture<List<Album>> albumFuture = request.getAsync();
-
-    Futures.addCallback(albumFuture, new FutureCallback<List<Album>>() {
-      @Override
-      public void onSuccess(List<Album> album) {
-        fail();
-      }
-
-      @Override
-      public void onFailure(Throwable throwable) {
-        TestCase.assertEquals(throwable.getClass(), BadFieldException.class);
-        asyncCompleted.countDown();
-      }
-
-    });
-
-    asyncCompleted.await(1, TimeUnit.SECONDS);
   }
 
   @Test

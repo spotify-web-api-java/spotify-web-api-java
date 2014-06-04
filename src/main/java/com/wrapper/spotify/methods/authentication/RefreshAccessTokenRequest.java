@@ -27,10 +27,6 @@ public class RefreshAccessTokenRequest extends AbstractRequest {
     try {
       JSONObject jsonObject = JSONObject.fromObject(postJson());
 
-      if (JsonUtil.containsAuthenticationError(jsonObject)) {
-        JsonUtil.throwAuthenticationError(jsonObject);
-      }
-
       future.set(JsonUtil.createRefreshAccessTokenResponse(jsonObject));
     } catch (Exception e) {
       future.setException(e);
@@ -41,10 +37,6 @@ public class RefreshAccessTokenRequest extends AbstractRequest {
 
   public RefreshAccessTokenCredentials get() throws IOException, WebApiException {
     JSONObject jsonObject = JSONObject.fromObject(postJson());
-
-    if (JsonUtil.containsAuthenticationError(jsonObject)) {
-      JsonUtil.throwAuthenticationError(jsonObject);
-    }
 
     return JsonUtil.createRefreshAccessTokenResponse(jsonObject);
   }

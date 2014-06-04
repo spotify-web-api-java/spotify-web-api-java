@@ -1,6 +1,9 @@
 package com.wrapper.spotify;
 
+import com.wrapper.spotify.exceptions.BadRequestException;
 import com.wrapper.spotify.exceptions.EmptyResponseException;
+import com.wrapper.spotify.exceptions.ServerErrorException;
+import com.wrapper.spotify.exceptions.WebApiException;
 
 import java.io.File;
 import java.io.FileReader;
@@ -42,7 +45,7 @@ public class TestUtil {
       return mockedHttpManager;
     }
 
-    public static HttpManager returningString(String returnedString) throws IOException, EmptyResponseException {
+    public static HttpManager returningString(String returnedString) throws IOException, WebApiException {
       final HttpManager mockedHttpManager = mock(HttpManager.class);
       when(mockedHttpManager.get((UtilProtos.Url) any())).thenReturn(returnedString);
       when(mockedHttpManager.post((UtilProtos.Url) any())).thenReturn(returnedString);

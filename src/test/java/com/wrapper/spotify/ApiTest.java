@@ -281,7 +281,7 @@ public class ApiTest {
     final String playlistId = "3ktAYNcRHpazJ9qecm3ptn";
     final String userId = "thelinmichael";
 
-    final Request request = api.getPlaylist(playlistId, userId).build();
+    final Request request = api.getPlaylist(userId, playlistId).build();
 
     assertEquals("https://api.spotify.com:443/v1/users/" + userId + "/playlists/" + playlistId, request.toString());
     assertHasHeader(request.toUrl(), "Authorization", "Bearer " + accessToken);
@@ -313,8 +313,7 @@ public class ApiTest {
     assertEquals("https://api.spotify.com:443/v1/users/thelinmichael/playlists", request.toString());
     assertHasHeader(request.toUrl(), "Authorization", "Bearer " + accessToken);
     assertHasHeader(request.toUrl(), "Content-Type", "application/json");
-    assertHasBodyParameter(request.toUrl(), "name", title);
-    assertHasBodyParameter(request.toUrl(), "public", String.valueOf(publicAccess));
+    assertHasJsonBody(request.toUrl(), "{\"name\":\"The greatest playlist ever\",\"public\":\"true\"}");
     assertHasHeader(request.toUrl(), "Authorization", "Bearer " + accessToken);
   }
 

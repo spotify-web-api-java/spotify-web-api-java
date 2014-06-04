@@ -19,10 +19,6 @@ public class AlbumRequest extends AbstractRequest {
 
     try {
       String jsonString = getJson();
-      JSONObject jsonObject = JSONObject.fromObject(jsonString);
-
-      JsonUtil.throwIfErrorsInResponse(jsonObject);
-
       albumFuture.set(JsonUtil.createAlbum(jsonString));
     } catch (Exception e) {
       albumFuture.setException(e);
@@ -34,8 +30,6 @@ public class AlbumRequest extends AbstractRequest {
   public Album get() throws IOException, WebApiException {
     String jsonString = getJson();
     JSONObject jsonObject = JSONObject.fromObject(jsonString);
-
-    JsonUtil.throwIfErrorsInResponse(jsonObject);
 
     return JsonUtil.createAlbum(jsonString);
   }

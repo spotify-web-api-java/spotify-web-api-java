@@ -21,10 +21,7 @@ public class TopTracksRequest extends AbstractRequest {
     try {
       final String jsonString = getJson();
       final JSONObject jsonObject = JSONObject.fromObject(jsonString);
-
-      JsonUtil.throwIfErrorsInResponse(jsonObject);
-
-      tracksFuture.set(JsonUtil.createTracks(jsonString));
+      tracksFuture.set(JsonUtil.createTracks(jsonObject));
     } catch (Exception e) {
       tracksFuture.setException(e);
     }
@@ -35,10 +32,7 @@ public class TopTracksRequest extends AbstractRequest {
   public List<Track> get() throws IOException, WebApiException {
     final String jsonString = getJson();
     final JSONObject jsonObject = JSONObject.fromObject(jsonString);
-
-    JsonUtil.throwIfErrorsInResponse(jsonObject);
-
-    return JsonUtil.createTracks(getJson());
+    return JsonUtil.createTracks(jsonObject);
   }
 
   public static Builder builder() {

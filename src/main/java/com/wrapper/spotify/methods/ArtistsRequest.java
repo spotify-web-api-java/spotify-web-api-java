@@ -2,9 +2,8 @@ package com.wrapper.spotify.methods;
 
 import com.google.common.base.Joiner;
 import com.google.common.util.concurrent.SettableFuture;
-import net.sf.json.JSONObject;
 import com.wrapper.spotify.JsonUtil;
-import com.wrapper.spotify.exceptions.*;
+import com.wrapper.spotify.exceptions.WebApiException;
 import com.wrapper.spotify.models.Artist;
 
 import java.io.IOException;
@@ -25,11 +24,7 @@ public class ArtistsRequest extends AbstractRequest {
 
     try {
       final String jsonString = getJson();
-      final JSONObject jsonObject = JSONObject.fromObject(jsonString);
-
-      JsonUtil.throwIfErrorsInResponse(jsonObject);
-
-      artistsFuture.set(JsonUtil.createArtists(getJson()));
+      artistsFuture.set(JsonUtil.createArtists(jsonString));
     } catch (Exception e) {
       artistsFuture.setException(e);
     }
@@ -39,10 +34,6 @@ public class ArtistsRequest extends AbstractRequest {
 
   public List<Artist> get() throws IOException, WebApiException {
     final String jsonString = getJson();
-    final JSONObject jsonObject = JSONObject.fromObject(jsonString);
-
-    JsonUtil.throwIfErrorsInResponse(jsonObject);
-
     return JsonUtil.createArtists(jsonString);
   }
 

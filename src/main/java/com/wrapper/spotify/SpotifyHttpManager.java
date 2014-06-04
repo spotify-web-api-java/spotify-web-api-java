@@ -1,5 +1,9 @@
 package com.wrapper.spotify;
 
+import com.wrapper.spotify.exceptions.BadRequestException;
+import com.wrapper.spotify.exceptions.ServerErrorException;
+import com.wrapper.spotify.exceptions.WebApiException;
+import net.sf.json.JSONObject;
 import org.apache.commons.httpclient.*;
 import org.apache.commons.httpclient.cookie.CookiePolicy;
 import org.apache.commons.httpclient.methods.GetMethod;
@@ -29,7 +33,7 @@ public class SpotifyHttpManager implements HttpManager {
   }
 
   @Override
-  public String get(Url url) throws EmptyResponseException, IOException {
+  public String get(Url url) throws WebApiException, IOException {
     assert (url != null);
 
     final String uri = UrlUtil.assemble(url);
@@ -46,7 +50,7 @@ public class SpotifyHttpManager implements HttpManager {
   }
 
   @Override
-  public String post(UtilProtos.Url url) throws IOException, EmptyResponseException {
+  public String post(UtilProtos.Url url) throws IOException, WebApiException {
     assert (url != null);
 
     final String uri = UrlUtil.assemble(url);
@@ -93,19 +97,48 @@ public class SpotifyHttpManager implements HttpManager {
     return out.toArray(new NameValuePair[out.size()]);
   }
 
-  private String execute(HttpMethod method) throws EmptyResponseException, IOException {
-    HttpClient httpClient = new HttpClient(connectionManager);
+  private String execute(HttpMethod method) throws WebApiException, IOException {
+    final HttpClient httpClient = new HttpClient(connectionManager);
     try {
       httpClient.executeMethod(method);
+
+      handleErrorStatusCode(method);
       String responseBody = method.getResponseBodyAsString();
-      if (responseBody == null) {
-        throw new EmptyResponseException();
-      }
+
+      handleErrorResponseBody(responseBody);
       return responseBody;
+
     } catch (IOException e) {
       throw new IOException();
     } finally {
       method.releaseConnection();
+    }
+  }
+
+  /*
+   * Todo: Error handling could be more granular and throw a different exception depending on status code.
+   * It could also look into the JSON object to find an error message.
+   */
+  private void handleErrorStatusCode(HttpMethod method) throws BadRequestException, ServerErrorException {
+    int statusCode = method.getStatusCode();
+
+    if (statusCode >= 400 && statusCode < 500) {
+      throw new BadRequestException(String.valueOf(statusCode));
+    }
+    if (statusCode >= 500) {
+      throw new ServerErrorException(String.valueOf(statusCode));
+    }
+
+  }
+
+  private void handleErrorResponseBody(String responseBody) throws WebApiException {
+    if (responseBody == null) {
+      throw new EmptyResponseException("No response body");
+    }
+
+    final JSONObject jsonObject = JSONObject.fromObject(responseBody);
+    if (jsonObject.has("error")) {
+      throw new WebApiException(jsonObject.getString("error"));
     }
   }
 
