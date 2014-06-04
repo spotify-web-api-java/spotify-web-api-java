@@ -20,7 +20,6 @@ import java.util.concurrent.TimeUnit;
 
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertNull;
-import static junit.framework.TestCase.assertTrue;
 import static junit.framework.TestCase.fail;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -48,9 +47,8 @@ public class AlbumsRequestTest {
         Album firstAlbum = albums.get(0);
         assertEquals("41MnTivkwTO3UUJ8DrqEJJ", firstAlbum.getId());
         assertEquals(AlbumType.ALBUM, firstAlbum.getAlbumType());
-        assertTrue(firstAlbum.getReleaseDate().getDate().equals(8));
-        assertTrue(firstAlbum.getReleaseDate().getMonth().equals(11));
-        assertEquals(2013, firstAlbum.getReleaseDate().getYear());
+        assertEquals("2013-11-08", firstAlbum.getReleaseDate());
+        assertEquals("day", firstAlbum.getReleaseDatePrecision());
 
         List<SimpleArtist> artists = firstAlbum.getArtists();
         SimpleArtist firstArtist = artists.get(0);
@@ -93,9 +91,8 @@ public class AlbumsRequestTest {
     Album firstAlbum = albums.get(0);
     assertEquals("41MnTivkwTO3UUJ8DrqEJJ", firstAlbum.getId());
     assertEquals(AlbumType.ALBUM, firstAlbum.getAlbumType());
-    assertTrue(firstAlbum.getReleaseDate().getDate().equals(8));
-    assertTrue(firstAlbum.getReleaseDate().getMonth().equals(11));
-    assertEquals(2013, firstAlbum.getReleaseDate().getYear());
+    assertEquals("2013-11-08", firstAlbum.getReleaseDate());
+    assertEquals("day", firstAlbum.getReleaseDatePrecision());
 
     List<SimpleArtist> artists = firstAlbum.getArtists();
     SimpleArtist firstArtist = artists.get(0);

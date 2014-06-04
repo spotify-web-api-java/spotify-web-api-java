@@ -127,7 +127,8 @@ public class JsonUtil {
     album.setImages(createImages(albumJson.getJSONArray("images")));
     album.setName(albumJson.getString("name"));
     album.setPopularity(albumJson.getInt("popularity"));
-    album.setReleaseDate(createReleaseDate(albumJson.getJSONObject("release_date")));
+    album.setReleaseDate(albumJson.getString("release_date"));
+    album.setReleaseDatePrecision(albumJson.getString("release_date_precision"));
     album.setTracks(createSimpleTrackPage(albumJson.getJSONObject("tracks")));
     album.setType(createSpotifyEntityType(albumJson.getString("type")));
     album.setUri(albumJson.getString("uri"));
@@ -160,25 +161,6 @@ public class JsonUtil {
     track.setUri(simpleTrackJson.getString("uri"));
 
     return track;
-  }
-
-  public static ReleaseDate createReleaseDate(JSONObject releaseDateJson) {
-    ReleaseDate releaseDate = new ReleaseDate();
-
-    releaseDate.setYear(releaseDateJson.getInt("year"));
-    if (releaseDateJson.has("month") && !releaseDateJson.get("month").equals("null")) {
-      releaseDate.setMonth(releaseDateJson.getInt("month"));
-    } else {
-      releaseDate.setMonth(null);
-    }
-
-    if (releaseDateJson.has("day") && !releaseDateJson.get("day").equals("null")) {
-      releaseDate.setDate(releaseDateJson.getInt("day"));
-    } else {
-      releaseDate.setDate(null);
-    }
-
-    return releaseDate;
   }
 
   public static List<String> createAvailableMarkets(JSONArray availableMarketsJson) {
@@ -322,10 +304,6 @@ public class JsonUtil {
     return returnedExternalIds;
   }
 
-  public static Page<Album> createAlbumPage(String albumPageJson) {
-    return createAlbumPage(JSONObject.fromObject(albumPageJson));
-  }
-
   public static Page<Album> createAlbumPage(JSONObject albumPageJson) {
     Page page = createItemlessPage(albumPageJson.getJSONObject("albums"));
     page.setItems(createAlbums(albumPageJson.getJSONObject("albums").getJSONArray("items")));
@@ -347,18 +325,10 @@ public class JsonUtil {
     return page;
   }
 
-  public static Page<Track> createTrackPage(String trackPageJson) {
-    return createTrackPage(JSONObject.fromObject(trackPageJson));
-  }
-
   public static Page<Track> createTrackPage(JSONObject trackPageJson) {
     Page page = createItemlessPage(trackPageJson.getJSONObject("tracks"));
     page.setItems(createTracks(trackPageJson.getJSONObject("tracks").getJSONArray("items")));
     return page;
-  }
-
-  public static Page<Artist> createArtistPage(String artistPageJson) {
-    return createArtistPage(JSONObject.fromObject(artistPageJson));
   }
 
   public static Page<Artist> createArtistPage(JSONObject artistPageJson) {

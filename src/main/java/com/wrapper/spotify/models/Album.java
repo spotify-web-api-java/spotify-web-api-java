@@ -15,7 +15,8 @@ public class Album {
   private List<Image> images;
   private String name;
   private int popularity;
-  private ReleaseDate releaseDate;
+  private String releaseDate;
+  private String releaseDatePrecision;
   private Page<SimpleTrack> tracks;
   private SpotifyEntityType type = SpotifyEntityType.ALBUM;
   private String uri;
@@ -108,14 +109,6 @@ public class Album {
     this.popularity = popularity;
   }
 
-  public ReleaseDate getReleaseDate() {
-    return releaseDate;
-  }
-
-  public void setReleaseDate(ReleaseDate releaseDate) {
-    this.releaseDate = releaseDate;
-  }
-
   public Page<SimpleTrack> getTracks() {
     return tracks;
   }
@@ -138,5 +131,21 @@ public class Album {
 
   public void setUri(String uri) {
     this.uri = uri;
+  }
+
+  public String getReleaseDatePrecision() {
+    return releaseDatePrecision;
+  }
+
+  public void setReleaseDatePrecision(String releaseDatePrecision) {
+    this.releaseDatePrecision = releaseDatePrecision;
+  }
+
+  public String getReleaseDate() {
+    return releaseDate;
+  }
+
+  public void setReleaseDate(String releaseDate) {
+    this.releaseDate = releaseDate;
   }
 }

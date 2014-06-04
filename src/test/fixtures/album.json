@@ -35,11 +35,8 @@
   } ],
   "name" : "She's So Unusual",
   "popularity" : 38,
-  "release_date" : {
-    "day" : null,
-    "month" : null,
-    "year" : 1983
-  },
+  "release_date" : "1983",
+  "release_date_precision" : "year",
   "tracks" : {
     "href" : "https://api.spotify.com/v1/albums/0sNOF9WDwhWunNAHPD3Baj/tracks?offset=0&limit=50",
     "items" : [ {

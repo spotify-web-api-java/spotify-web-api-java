@@ -51,7 +51,7 @@ public class RefreshAccessTokenRequest extends AbstractRequest {
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
-    public Builder authorizationHeader(String clientId, String clientSecret) {
+    public Builder basicAuthorizationHeader(String clientId, String clientSecret) {
       assert (clientId != null);
       assert (clientSecret != null);
 

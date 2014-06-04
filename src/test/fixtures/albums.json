@@ -36,11 +36,8 @@
     } ],
     "name" : "The Best Of Keane (Deluxe Edition)",
     "popularity" : 72,
-    "release_date" : {
-      "day" : 8,
-      "month" : 11,
-      "year" : 2013
-    },
+    "release_date" : "2013-11-08",
+    "release_date_precision" : "day",
     "tracks" : {
       "href" : "https://api.spotify.com/v1/albums/41MnTivkwTO3UUJ8DrqEJJ/tracks?offset=0&limit=50",
       "items" : [ {

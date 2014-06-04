@@ -204,8 +204,7 @@ public class Api {
     AuthorizationCodeGrantRequest.Builder builder = AuthorizationCodeGrantRequest.builder();
     setDefaults(builder);
     builder.grantType("authorization_code");
-    builder.clientId(clientId);
-    builder.clientSecret(clientSecret);
+    builder.basicAuthorizationHeader(clientId, clientSecret);
     builder.code(code);
     builder.redirectUri(redirectURI);
     return builder;
@@ -221,7 +220,7 @@ public class Api {
     setDefaults(builder);
     builder.grantType("refresh_token");
     builder.refreshToken(refreshToken);
-    builder.authorizationHeader(clientId, clientSecret);
+    builder.basicAuthorizationHeader(clientId, clientSecret);
     return builder;
   }
 
@@ -234,7 +233,7 @@ public class Api {
     ClientCredentialsGrantRequest.Builder builder = ClientCredentialsGrantRequest.builder();
     setDefaults(builder);
     builder.grantType("client_credentials");
-    builder.authorizationHeader(clientId, clientSecret);
+    builder.basicAuthorizationHeader(clientId, clientSecret);
     return builder;
   }
 

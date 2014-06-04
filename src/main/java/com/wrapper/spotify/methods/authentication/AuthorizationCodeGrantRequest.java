@@ -7,6 +7,7 @@ import com.wrapper.spotify.exceptions.WebApiException;
 import com.wrapper.spotify.methods.AbstractRequest;
 import com.wrapper.spotify.models.TokenResponse;
 import net.sf.json.JSONObject;
+import org.apache.commons.codec.binary.Base64;
 
 import java.io.IOException;
 
@@ -68,14 +69,14 @@ public class AuthorizationCodeGrantRequest extends AbstractRequest {
       return body("redirect_uri", redirectUri);
     }
 
-    public Builder clientId(String clientId) {
+    public Builder basicAuthorizationHeader(String clientId, String clientSecret) {
       assert (clientId != null);
-      return body("client_id", clientId);
-    }
-
-    public Builder clientSecret(String clientSecret) {
       assert (clientSecret != null);
-      return body("client_secret", clientSecret);
+
+      String idSecret = clientId + ":" + clientSecret;
+      String idSecretEncoded = new String(Base64.encodeBase64(idSecret.getBytes()));
+
+      return header("Authorization", "Basic " + idSecretEncoded);
     }
 
     public AuthorizationCodeGrantRequest build() {
