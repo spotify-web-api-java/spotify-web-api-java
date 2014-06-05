@@ -36,8 +36,8 @@ public class UserPlaylistsRequestTest {
       @Override
       public void onSuccess(Page<SimplePlaylist> playlistsPage) {
         assertTrue(playlistsPage.getTotal() >= 0);
-        assertNotNull(playlistsPage.getNext());
-        assertNotNull(playlistsPage.getPrevious());
+        assertNull(playlistsPage.getNext());
+        assertNull(playlistsPage.getPrevious());
         assertTrue(playlistsPage.getLimit() >= 0);
         assertEquals(0, playlistsPage.getOffset());
         assertEquals("https://api.spotify.com/v1/users/wizzler/playlists", playlistsPage.getHref());
@@ -84,8 +84,8 @@ public class UserPlaylistsRequestTest {
     final Page<SimplePlaylist> playlistsPage = request.get();
 
     assertTrue(playlistsPage.getTotal() >= 0);
-    assertNotNull(playlistsPage.getNext());
-    assertNotNull(playlistsPage.getPrevious());
+    assertNull(playlistsPage.getNext());
+    assertNull(playlistsPage.getPrevious());
     assertTrue(playlistsPage.getLimit() >= 0);
     assertEquals(0, playlistsPage.getOffset());
     assertEquals("https://api.spotify.com/v1/users/wizzler/playlists", playlistsPage.getHref());

@@ -19,6 +19,7 @@ import java.util.concurrent.TimeUnit;
 
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.TestCase.assertNotNull;
+import static junit.framework.TestCase.assertNull;
 import static junit.framework.TestCase.fail;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -46,7 +47,7 @@ public class AlbumsForArtistsRequestTest {
         assertEquals(0, albumSearchResult.getOffset());
         assertEquals(178, albumSearchResult.getTotal());
         assertEquals("https://api.spotify.com/v1/artists/1vCWHaC5f2uS3yhpwWbIA6/albums?offset=2&limit=2&album_type=single", albumSearchResult.getNext());
-        assertEquals("null", albumSearchResult.getPrevious());
+        assertNull(albumSearchResult.getPrevious());
 
         List<SimpleAlbum> albums = albumSearchResult.getItems();
         assertEquals(2, albums.size());
@@ -86,7 +87,7 @@ public class AlbumsForArtistsRequestTest {
     assertEquals(0, albumSearchResult.getOffset());
     assertEquals(178, albumSearchResult.getTotal());
     assertEquals("https://api.spotify.com/v1/artists/1vCWHaC5f2uS3yhpwWbIA6/albums?offset=2&limit=2&album_type=single", albumSearchResult.getNext());
-    assertEquals("null", albumSearchResult.getPrevious());
+    assertNull(albumSearchResult.getPrevious());
 
     final List<SimpleAlbum> albums = albumSearchResult.getItems();
     assertEquals(2, albums.size());

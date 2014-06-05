@@ -7,10 +7,7 @@ import net.sf.json.JSONObject;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class JsonUtil {
 
@@ -316,11 +313,11 @@ public class JsonUtil {
     Page page = new Page();
     page.setHref(pageJson.getString("href"));
     page.setLimit(pageJson.getInt("limit"));
-    if (pageJson.getString("next") != null) {
+    if (existsAndNotNull("next", pageJson)) {
       page.setNext(pageJson.getString("next"));
     }
     page.setOffset(pageJson.getInt("offset"));
-    if (pageJson.getString("previous") != null) {
+    if (existsAndNotNull("previous", pageJson)) {
       page.setPrevious(pageJson.getString("previous"));
     }
     page.setTotal(pageJson.getInt("total"));
@@ -534,7 +531,8 @@ public class JsonUtil {
   }
 
   private static Date createDate(String dateString) throws ParseException {
-    SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
+    SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss");
+    formatter.setTimeZone(TimeZone.getTimeZone("GMT"));
     return formatter.parse(dateString);
   }
 

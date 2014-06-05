@@ -18,6 +18,7 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
 import static junit.framework.Assert.assertEquals;
+import static junit.framework.TestCase.assertNull;
 import static junit.framework.TestCase.fail;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -43,8 +44,8 @@ public class AlbumSearchRequestTest {
         assertEquals("https://api.spotify.com/v1/search?query=tania+bowra&offset=0&limit=20&type=album", albumSearchResult.getHref());
         assertEquals(20, albumSearchResult.getLimit());
         assertEquals(0, albumSearchResult.getOffset());
-        assertEquals("null", albumSearchResult.getNext());
-        assertEquals("null", albumSearchResult.getPrevious());
+        assertNull(albumSearchResult.getNext());
+        assertNull(albumSearchResult.getPrevious());
         assertEquals(1, albumSearchResult.getTotal());
 
         List<SimpleAlbum> albums = albumSearchResult.getItems();
@@ -84,8 +85,8 @@ public class AlbumSearchRequestTest {
     assertEquals("https://api.spotify.com/v1/search?query=tania+bowra&offset=0&limit=20&type=album", albumSearchResult.getHref());
     assertEquals(20, albumSearchResult.getLimit());
     assertEquals(0, albumSearchResult.getOffset());
-    assertEquals("null", albumSearchResult.getNext());
-    assertEquals("null", albumSearchResult.getPrevious());
+    assertNull(albumSearchResult.getNext());
+    assertNull(albumSearchResult.getPrevious());
     assertEquals(1, albumSearchResult.getTotal());
 
     final List<SimpleAlbum> albums = albumSearchResult.getItems();

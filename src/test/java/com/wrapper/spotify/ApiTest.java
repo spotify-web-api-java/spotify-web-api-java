@@ -361,6 +361,26 @@ public class ApiTest {
   }
 
   @Test
+  public void shouldCreateAGetPlaylistTracksURL() {
+    final String accessToken = "myAccessToken";
+    final String userId = "thelinmichael";
+    final String playlistId = "5ieJqeLJjjI8iJWaxeBLuK";
+
+    final Api api = Api.builder()
+            .accessToken(accessToken)
+            .build();
+
+    final Request request = api
+            .getPlaylistTracks(userId, playlistId)
+            .fields("items")
+            .build();
+
+    assertEquals("https://api.spotify.com:443/v1/users/" + userId + "/playlists/" + playlistId + "/tracks", request.toString());
+    assertHasParameter(request.toUrl(), "fields", "items");
+    assertHasHeader(request.toUrl(), "Authorization", "Bearer " + accessToken);
+  }
+
+  @Test
   public void shouldCreateAuthorizeURL() {
     final String redirectURI = "http://www.michaelthelin.se/test-callback";
     final String clientId = "fcecfc79122e4cd299473677a17cbd4d";
@@ -376,5 +396,6 @@ public class ApiTest {
     String authorizeURL = api.createAuthorizeURL(scopes, state);
     assertEquals("https://accounts.spotify.com:443/authorize?client_id=fcecfc79122e4cd299473677a17cbd4d&response_type=code&redirect_uri=http://www.michaelthelin.se/test-callback&scope=user-read-private%20user-read-email&state=someExpectedStateString", authorizeURL);
   }
+
 
 }

@@ -2,12 +2,11 @@ package com.wrapper.spotify;
 
 import com.wrapper.spotify.UtilProtos.Url.Scheme;
 import com.wrapper.spotify.methods.*;
+import com.wrapper.spotify.methods.authentication.AuthorizationCodeGrantRequest;
 import com.wrapper.spotify.methods.authentication.AuthorizationURLRequest;
 import com.wrapper.spotify.methods.authentication.ClientCredentialsGrantRequest;
-import com.wrapper.spotify.methods.authentication.AuthorizationCodeGrantRequest;
 import com.wrapper.spotify.methods.authentication.RefreshAccessTokenRequest;
 import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
 
 import java.util.Arrays;
 import java.util.List;
@@ -241,8 +240,8 @@ public class Api {
 
   public PlaylistRequest.Builder getPlaylist(String userId, String playlistId) {
     PlaylistRequest.Builder builder = PlaylistRequest.builder();
-    builder.path("/v1/users/" + userId + "/playlists/" + playlistId);
     setDefaults(builder);
+    builder.path("/v1/users/" + userId + "/playlists/" + playlistId);
     return builder;
   }
 
@@ -257,6 +256,13 @@ public class Api {
     setDefaults(builder);
     builder.title(title);
     builder.path("/v1/users/" + userId + "/playlists");
+    return builder;
+  }
+
+  public PlaylistTracksRequest.Builder getPlaylistTracks(String userId, String playlistId) {
+    final PlaylistTracksRequest.Builder builder = PlaylistTracksRequest.builder();
+    setDefaults(builder);
+    builder.path("/v1/users/" + userId + "/playlists/" + playlistId + "/tracks");
     return builder;
   }
 
