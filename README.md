@@ -211,14 +211,18 @@ Futures.addCallback(authorizationCodeCredentialsFuture, new FutureCallback<Autho
 
 ## More examples
 
-This section includes example requests for every helper function. Please note that the requests in the examples doesn't necessarily use all possible options when making the request.
+This section includes example requests for every helper function. Please note that the requests in the examples doesn't necessarily use all possible options when making the request. Since the requests use the builder pattern, optional parameters can be appended using the builder. Required parameters are parameters on the api method (e.g. searchTracks).
 
 The examples below use the synchronous version of the request (.get). In order to make asynchronous request, simply use the request's .getAsync() method instead.
+
+Please refer to the documentation linked in the headline of each example to read about potential authorization requirements.
+
+#### Searching tracks, artists and albums
 
 ##### [Searching for tracks](https://developer.spotify.com/spotify-web-api/search-item/)
 
 ```java
-final TrackSearchRequest request = api.searchTracks("Mr. Brightside").httpManager(mockedHttpManager).build();
+final TrackSearchRequest request = api.searchTracks("Mr. Brightside").build();
  
 try {
    final Page<Track> trackSearchResult = request.get();
@@ -228,4 +232,297 @@ try {
 }
 ```
 
-More examples coming.
+##### [Searching for artists](https://developer.spotify.com/spotify-web-api/search-item/)
+
+```java
+final TrackSearchRequest request = api.searchArtists("tania bowra").limit(10).build();
+ 
+try {
+   final Page<Artist> artistSearchResult = request.get();
+   final List<Artist> artists = artistSearchResult.getItems();
+   
+   System.out.println("I've found " + artistSearchResult.getTotal() + " artists!");
+   
+   for (Artist artist : artists) {
+     System.out.println(artist.getName());
+   }
+   
+} catch (Exception e) {
+   System.out.println("Something went wrong!" + e.getMessage());
+}
+```
+
+##### [Searching for albums](https://developer.spotify.com/spotify-web-api/search-item/)
+
+```java
+final AlbumSearchRequest request = api.searchAlbums("black album").offset(0).limit(3).build();
+ 
+try {
+   final Page<SimpleAlbum> albumSearchResult = request.get();
+   
+   System.out.println("Printing results..");
+   for (SimpleAlbum album : albumSearchResult.getItems)) {
+     System.out.println(album.getName());
+   }
+   
+} catch (Exception e) {
+   System.out.println("Something went wrong!" + e.getMessage());
+}
+```
+
+#### Lookup of albums, tracks, artists, playlists and users
+
+##### [Album lookup](https://developer.spotify.com/spotify-web-api/get-album/)
+
+```java
+final String albumId = "0sNOF9WDwhWunNAHPD3Baj";
+final AlbumRequest request = api.getAlbum(albumId).build();
+ 
+try {
+   final Album album = request.get();
+   System.out.println("Retrieved album " + album.getName());
+   System.out.println("Its popularity is " + album.getPopularity()); 
+} catch (Exception e) {
+   System.out.println("Something went wrong!" + e.getMessage());
+}
+```
+
+##### [Track lookup](https://developer.spotify.com/spotify-web-api/get-track/)
+
+```java
+final TrackRequest request = api.getTrack("0eGsygTp906u18L0Oimnem").build();
+
+try {
+   final Track track = request.get();
+   System.out.println("Retrieved track " + track.getName());
+   System.out.println("Its popularity is " + track.getPopularity());
+   
+   if (track.isExplicit()) {
+      System.out.println("This track is explicit!");
+   } else {
+      System.out.println("It's OK, this track isn't explicit.");
+   }
+} catch (Exception e) {
+   System.out.println("Something went wrong!" + e.getMessage());
+}
+```
+
+##### [Artist lookup](https://developer.spotify.com/spotify-web-api/get-artist/)
+
+```java
+final Artist request = api.getArtist("0LcJLqbBmaGUft1e9Mm8HV").build();
+
+try {
+   final Artist artist = request.get();
+   
+   System.out.println("This artist's name is " + artist.getName());
+   
+   // Print URLs to the artist's images
+   final List<Image> images = artist.getImages();
+   for (Image image : images) {
+      System.out.println(image.getUrl());
+   }
+   
+} catch (Exception e) {
+   System.out.println("Something went wrong!" + e.getMessage());
+}
+```
+
+##### [Playlist lookup](https://developer.spotify.com/spotify-web-api/get-playlist/)
+
+```java
+final PlaylistRequest request = api.getPlaylist("thelinmichael", "3ktAYNcRHpazJ9qecm3ptn").build();
+
+try {
+   final Playlist playlist = request.get();
+   
+   System.out.println("Retrieved playlist " + playlist.getName());
+   System.out.println(playlist.getDescription());
+   System.out.println("It contains " + playlist.getTracks().getTotal() + " tracks");
+   
+} catch (Exception e) {
+   System.out.println("Something went wrong!" + e.getMessage());
+}
+```
+
+##### [User lookup](https://developer.spotify.com/spotify-web-api/get-users-profile/)
+
+```java
+final UserRequest request = api.getUser("wizzler").build();
+
+try {
+   final User user = request.get();
+
+   System.out.println("This user's Spotify URI is " + user.getUri());   
+} catch (Exception e) {
+   System.out.println("Something went wrong!" + e.getMessage());
+}
+```
+
+#### Lookup of of several albums, tracks, and artists
+
+##### [Several albums lookup](https://developer.spotify.com/spotify-web-api/get-several-albums/)
+
+```java
+final AlbumsRequest = api.getAlbums("41MnTivkwTO3UUJ8DrqEJJ", "0ntmUPwjfE9iGGM9qHglCm").get();
+
+try {
+   final List<Album> albums = request.get();
+  
+   final Album firstAlbum = albums.get(0);
+   
+   System.out.println(firstAlbum.getName());
+   System.out.println("The artists on this albums are");
+   
+   for (SimpleArtist artist : firstAlbum.getArtists()) {
+      System.out.println(artist.getName());
+   }
+   
+   
+   final Album secondAlbum = albums.get(1);
+   
+   System.out.println(secondAlbum.getName());
+   System.out.println("The artists on this albums are");
+   
+   for (SimpleArtist artist : secondAlbum.getArtists()) {
+      System.out.println(artist.getName());
+   }
+
+} catch (Exception e) {
+   System.out.println("Something went wrong!" + e.getMessage());
+}
+```
+
+##### [Several tracks lookup](https://developer.spotify.com/spotify-web-api/get-several-tracks/)
+
+```java
+final TracksRequest request = api.getTracks("0eGsygTp906u18L0Oimnem", "1lDWb6b6ieDQ2xT7ewTC3G").build();
+
+try {
+   final List<Track> tracks = request.get();
+   
+   for (Track track : tracks) {
+      System.out.println(track.getName());
+   }
+   
+} catch (Exception e) {
+   System.out.println("Something went wrong!" + e.getMessage());
+}
+```
+
+##### [Several artists lookup](https://developer.spotify.com/spotify-web-api/get-several-artists/)
+
+```java
+final ArtistsRequest request = api.getArtists("0oSGxfWSnnOXhD2fKuz2Gy", "3dBVyJ7JuOMt4GE9607Qin").build();
+
+try {
+  
+   final List<Artist> artists = request.get();
+
+   for (Artist artist : artists) {
+      System.out.println(artist.getName() + " has popularity " + artist.getPopularity());
+   }
+   
+} catch (Exception e) {
+   System.out.println("Something went wrong!" + e.getMessage());
+}
+```
+
+#### Other lookup methods
+
+##### [Current user lookup](https://developer.spotify.com/spotify-web-api/get-current-users-profile/)
+
+The attributes that are loaded onto the User object depends on the permissions given by the user to the application.
+
+```java
+final CurrentUserRequest request = api.getMe().build();
+  
+try {
+   final User user = request.get();
+   
+   System.out.println("Display name: " + user.getDisplayName());
+   System.out.println("Email: " + user.getEmail());
+   
+   System.out.println("Images:");
+   for (Image image : user.getImages()) {
+      System.out.println(image.getUrl());
+   }
+   
+   System.out.println("This account is a " + user.getProduct() + " account");
+} catch (Exception e) {
+   System.out.println("Something went wrong!" + e.getMessage());
+}
+```
+
+##### [Playlist track lookup](https://developer.spotify.com/spotify-web-api/get-playlists-tracks/)
+
+```java
+final PlaylistTracksRequest request = api.getPlaylistTracks("thelinmichael", "3ktAYNcRHpazJ9qecm3ptn").build();
+
+try {
+   final Page<PlaylistTrack> page = request.get();
+   
+   final List<PlaylistTrack> playlistTracks = page.getItems();
+   
+   for (PlaylistTrack playlistTrack : playlistTracks) {
+      System.out.println(playlistTrack.getTrack().getName());
+   }
+   
+} catch (Exception e) {
+   System.out.println("Something went wrong!" + e.getMessage());
+}
+```
+
+##### [Users playlist lookup](https://developer.spotify.com/spotify-web-api/get-list-users-playlists/)
+
+```java
+final UserPlaylistsRequest request = api.getPlaylistsForUser("thelinmichael").build();
+
+try {
+   final Page<SimplePlaylist> playlistsPage = request.get();
+   
+   for (SimplePlaylist playlist : playlistsPage.getItems()) {
+      System.out.println(playlist.getName());
+   }
+} catch (Exception e) {
+   System.out.println("Something went wrong!" + e.getMessage());
+}
+```
+
+#### Playlist manipulation
+
+##### [Add tracks to a playlist](https://developer.spotify.com/spotify-web-api/add-tracks-to-playlist/)
+
+```java
+final List<String> tracksToAdd = Arrays.asList("spotify:track:4BYGxv4rxSNcTgT3DsFB9o","spotify:track:0BG2iE6McPhmAEKIhfqy1X");
+
+// Index starts at 0
+final int insertIndex = 3;
+
+final AddTrackToPlaylistRequest request = api.addTracksToPlaylist("thelinmichael", "5ieJqeLJjjI8iJWaxeBLuK", tracksToAdd)
+  .position(insertIndex)
+  .build();
+  
+try {
+  request.get(); // Empty response
+} catch (Exception e) {
+   System.out.println("Something went wrong!" + e.getMessage());
+}
+```
+
+##### [Create a playlist](https://developer.spotify.com/spotify-web-api/create-playlist/)
+
+```java
+final PlaylistCreationRequest request = api.createPlaylist("thelinmichael","title")
+  .publicAccess(true)
+  .build();
+
+try {
+  final Playlist playlist = request.get();
+  
+  System.out.println("You just created this playlist!");
+  System.out.println("Its title is " + playlist.getName());
+} catch (Exception e) {
+   System.out.println("Something went wrong!" + e.getMessage());
+}
+```
