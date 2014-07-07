@@ -15,7 +15,7 @@ public class JsonUtil {
     return createArtists(JSONObject.fromObject(json));
   }
 
-  private static List<Artist> createArtists(JSONObject jsonObject) {
+  public static List<Artist> createArtists(JSONObject jsonObject) {
     List<Artist> returnedArtists = new ArrayList<Artist>();
     JSONArray artistsObject = jsonObject.getJSONArray("artists");
     for (int i = 0; i < artistsObject.size(); i++) {

@@ -381,6 +381,17 @@ public class ApiTest {
   }
 
   @Test
+  public void shouldCreateRelatedArtistsURL() {
+    final Api api = Api.DEFAULT_API;
+
+    final String artistId = "0qeei9KQnptjwb8MgkqEoy";
+
+    final Request request = api.getArtistRelatedArtists(artistId).build();
+
+    assertEquals("https://api.spotify.com:443/v1/artists/" + artistId + "/related-artists", request.toString());
+  }
+
+  @Test
   public void shouldCreateAuthorizeURL() {
     final String redirectURI = "http://www.michaelthelin.se/test-callback";
     final String clientId = "fcecfc79122e4cd299473677a17cbd4d";

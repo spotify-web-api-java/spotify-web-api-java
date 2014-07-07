@@ -8,6 +8,7 @@ It includes helper functions to do:
 - Album, artist, track, user, playlist lookup
 - Album lookup for a specific artist
 - Top tracks for a specific artist
+- Artists related to a given artist
 - Album, artist and track search
 - Retrieval of a user's playlists
 - Playlist creation
@@ -430,6 +431,29 @@ try {
 
 #### Other lookup methods
 
+
+##### [Related artists](https://developer.spotify.com/web-api/get-related-artists/)
+
+```java
+final RelatedArtistsRequest request = api.getArtistRelatedArtists("0qeei9KQnptjwb8MgkqEoy").build();
+
+try {
+
+  final List<Artist> artists = request.get();
+
+  if (numbers.isEmpty()) {
+    System.out.println("Didn't find any similar artists!");
+  } else {
+    System.out.println("The related artists are:");
+    for (Artist artist : artists) {
+      System.out.println(artist.getName());
+    }
+  }
+} catch (Exception e) {
+  System.out.println("Something went wrong!" + e.getMessage());
+}
+```
+
 ##### [Current user lookup](https://developer.spotify.com/spotify-web-api/get-current-users-profile/)
 
 The attributes that are loaded onto the User object depends on the permissions given by the user to the application.
@@ -526,3 +550,9 @@ try {
    System.out.println("Something went wrong!" + e.getMessage());
 }
 ```
+
+#### Change log
+
+##### 1.2
+
+- Add [Related artists](https://developer.spotify.com/web-api/get-related-artists/) endpoint

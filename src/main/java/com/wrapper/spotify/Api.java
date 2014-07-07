@@ -259,6 +259,13 @@ public class Api {
     return builder;
   }
 
+  public RelatedArtistsRequest.Builder getArtistRelatedArtists(String artistId) {
+    final RelatedArtistsRequest.Builder builder = RelatedArtistsRequest.builder();
+    setDefaults(builder);
+    builder.path("/v1/artists/" + artistId + "/related-artists");
+    return builder;
+  }
+
   public PlaylistTracksRequest.Builder getPlaylistTracks(String userId, String playlistId) {
     final PlaylistTracksRequest.Builder builder = PlaylistTracksRequest.builder();
     setDefaults(builder);
