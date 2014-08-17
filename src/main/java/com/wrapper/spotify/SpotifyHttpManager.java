@@ -136,9 +136,11 @@ public class SpotifyHttpManager implements HttpManager {
       throw new EmptyResponseException("No response body");
     }
 
-    final JSONObject jsonObject = JSONObject.fromObject(responseBody);
-    if (jsonObject.has("error")) {
-      throw new WebApiException(jsonObject.getString("error"));
+    if (!responseBody.equals("")){
+      final JSONObject jsonObject = JSONObject.fromObject(responseBody);
+      if (jsonObject.has("error")) {
+        throw new WebApiException(jsonObject.getString("error"));
+      }
     }
   }
 
