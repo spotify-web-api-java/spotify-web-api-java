@@ -2,15 +2,20 @@ package com.wrapper.spotify.methods;
 
 import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.JsonUtil;
+import com.wrapper.spotify.exceptions.EmptyResponseException;
 import com.wrapper.spotify.exceptions.WebApiException;
 import com.wrapper.spotify.models.Playlist;
+import com.wrapper.spotify.models.SimplePlaylist;
 import net.sf.json.JSONObject;
 
 import java.io.IOException;
 
 public class AddTrackToPlaylistRequest extends AbstractRequest {
 
-  public AddTrackToPlaylistRequest(Builder builder) {
+    private String defaultSuccessStringResponse = "Added to playlist";
+    private String defaultFailureStringResponse = "Failed to add track to playlist";
+
+    public AddTrackToPlaylistRequest(Builder builder) {
     super(builder);
   }
 
@@ -24,7 +29,7 @@ public class AddTrackToPlaylistRequest extends AbstractRequest {
     try {
       final String jsonString = postJson();
       if ("".equals(jsonString)) {
-        addTrackFuture.set("Created");
+        addTrackFuture.set(defaultSuccessStringResponse);
       } else {
         final JSONObject jsonObject = JSONObject.fromObject(postJson());
       }
@@ -35,11 +40,13 @@ public class AddTrackToPlaylistRequest extends AbstractRequest {
     return addTrackFuture;
   }
 
-  public Playlist get() throws IOException, WebApiException {
-    final String jsonString = getJson();
-    final JSONObject jsonObject = JSONObject.fromObject(jsonString);
-
-    return JsonUtil.createPlaylist(jsonObject);
+  public String get() throws IOException, WebApiException {
+    final String jsonString = postJson();
+    if("".equals(jsonString)){
+      return defaultSuccessStringResponse;
+    }else{
+      return defaultFailureStringResponse;
+    }
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
