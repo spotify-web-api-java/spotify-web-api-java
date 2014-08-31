@@ -31,7 +31,7 @@ public class RelatedArtistsRequestTest {
       public void onSuccess(List<Artist> artists) {
         assertFalse(artists.isEmpty());
         final Artist firstArtist = artists.get(0);
-        final String id = "3GulSpXnCkqwVDg45tyly4";
+        final String id = "2DsNd8GBB1y1J0XMq0nT6s";
         assertEquals("https://api.spotify.com/v1/artists/" + id, firstArtist.getHref());
         assertEquals(id, firstArtist.getId());
         assertEquals("spotify:artist:" + id, firstArtist.getUri());
@@ -59,7 +59,7 @@ public class RelatedArtistsRequestTest {
 
     assertFalse(artists.isEmpty());
     final Artist firstArtist = artists.get(0);
-    final String id = "3GulSpXnCkqwVDg45tyly4";
+    final String id = "2DsNd8GBB1y1J0XMq0nT6s";
     assertEquals("https://api.spotify.com/v1/artists/" + id, firstArtist.getHref());
     assertEquals(id, firstArtist.getId());
     assertEquals("spotify:artist:" + id, firstArtist.getUri());
