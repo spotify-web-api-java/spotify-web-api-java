@@ -553,6 +553,10 @@ try {
 
 #### Change log
 
+##### 1.3
+
+- Bug fixes. (Thanks [danieldisu](https://www.github.com/danieldisu) and [Schweig](https://www.github.com/Schweig))
+
 ##### 1.2
 
 - Add [Related artists](https://developer.spotify.com/web-api/get-related-artists/) endpoint
