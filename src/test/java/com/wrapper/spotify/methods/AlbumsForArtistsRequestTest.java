@@ -45,7 +45,7 @@ public class AlbumsForArtistsRequestTest {
         assertEquals("https://api.spotify.com/v1/artists/1vCWHaC5f2uS3yhpwWbIA6/albums?offset=0&limit=2&album_type=single", albumSearchResult.getHref());
         assertEquals(2, albumSearchResult.getLimit());
         assertEquals(0, albumSearchResult.getOffset());
-        assertEquals(178, albumSearchResult.getTotal());
+        assertEquals(181, albumSearchResult.getTotal());
         assertEquals("https://api.spotify.com/v1/artists/1vCWHaC5f2uS3yhpwWbIA6/albums?offset=2&limit=2&album_type=single", albumSearchResult.getNext());
         assertNull(albumSearchResult.getPrevious());
 
@@ -54,9 +54,9 @@ public class AlbumsForArtistsRequestTest {
 
         SimpleAlbum firstAlbum = albums.get(0);
         assertEquals(AlbumType.SINGLE, firstAlbum.getAlbumType());
-        assertEquals("https://open.spotify.com/album/6HVPLh1TXzPnMqY7tAWLoL", firstAlbum.getExternalUrls().get("spotify"));
-        assertEquals("https://api.spotify.com/v1/albums/6HVPLh1TXzPnMqY7tAWLoL", firstAlbum.getHref());
-        assertEquals("6HVPLh1TXzPnMqY7tAWLoL", firstAlbum.getId());
+        assertEquals("https://open.spotify.com/album/1moqjcU7BoanAsSKRdHnP1", firstAlbum.getExternalUrls().get("spotify"));
+        assertEquals("https://api.spotify.com/v1/albums/1moqjcU7BoanAsSKRdHnP1", firstAlbum.getHref());
+        assertEquals("1moqjcU7BoanAsSKRdHnP1", firstAlbum.getId());
         assertNotNull(firstAlbum.getImages());
         asyncCompleted.countDown();
       }
@@ -85,7 +85,7 @@ public class AlbumsForArtistsRequestTest {
     assertEquals("https://api.spotify.com/v1/artists/1vCWHaC5f2uS3yhpwWbIA6/albums?offset=0&limit=2&album_type=single", albumSearchResult.getHref());
     assertEquals(2, albumSearchResult.getLimit());
     assertEquals(0, albumSearchResult.getOffset());
-    assertEquals(178, albumSearchResult.getTotal());
+    assertEquals(181, albumSearchResult.getTotal());
     assertEquals("https://api.spotify.com/v1/artists/1vCWHaC5f2uS3yhpwWbIA6/albums?offset=2&limit=2&album_type=single", albumSearchResult.getNext());
     assertNull(albumSearchResult.getPrevious());
 
@@ -94,9 +94,9 @@ public class AlbumsForArtistsRequestTest {
 
     SimpleAlbum firstAlbum = albums.get(0);
     assertEquals(AlbumType.SINGLE, firstAlbum.getAlbumType());
-    assertEquals("https://open.spotify.com/album/6HVPLh1TXzPnMqY7tAWLoL", firstAlbum.getExternalUrls().get("spotify"));
-    assertEquals("https://api.spotify.com/v1/albums/6HVPLh1TXzPnMqY7tAWLoL", firstAlbum.getHref());
-    assertEquals("6HVPLh1TXzPnMqY7tAWLoL", firstAlbum.getId());
+    assertEquals("https://open.spotify.com/album/1moqjcU7BoanAsSKRdHnP1", firstAlbum.getExternalUrls().get("spotify"));
+    assertEquals("https://api.spotify.com/v1/albums/1moqjcU7BoanAsSKRdHnP1", firstAlbum.getHref());
+    assertEquals("1moqjcU7BoanAsSKRdHnP1", firstAlbum.getId());
     assertNotNull(firstAlbum.getImages());
   }
 

@@ -18,6 +18,8 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
 import static junit.framework.Assert.assertEquals;
+import static junit.framework.TestCase.assertFalse;
+import static junit.framework.TestCase.assertNotNull;
 import static junit.framework.TestCase.assertNull;
 import static junit.framework.TestCase.fail;
 
@@ -41,7 +43,7 @@ public class AlbumSearchRequestTest {
     Futures.addCallback(searchResultFuture, new FutureCallback<Page<SimpleAlbum>>() {
       @Override
       public void onSuccess(Page<SimpleAlbum> albumSearchResult) {
-        assertEquals("https://api.spotify.com/v1/search?query=tania+bowra&offset=0&limit=20&type=album", albumSearchResult.getHref());
+        assertEquals("https://api.spotify.com/v1/search?query=tania%2Bbowra&offset=0&limit=20&type=album", albumSearchResult.getHref());
         assertEquals(20, albumSearchResult.getLimit());
         assertEquals(0, albumSearchResult.getOffset());
         assertNull(albumSearchResult.getNext());
@@ -58,6 +60,8 @@ public class AlbumSearchRequestTest {
         assertEquals("Place In The Sun", firstAlbum.getName());
         assertEquals(SpotifyEntityType.ALBUM, firstAlbum.getType());
         assertEquals("spotify:album:6akEvsycLGftJxYudPjmqK", firstAlbum.getUri());
+        assertNotNull(firstAlbum.getAvailableMarkets());
+        assertFalse(firstAlbum.getAvailableMarkets().isEmpty());
 
         asyncCompleted.countDown();
       }
@@ -82,7 +86,7 @@ public class AlbumSearchRequestTest {
     final AlbumSearchRequest request = requestBuilder.build();
 
     final Page<SimpleAlbum> albumSearchResult = request.get();
-    assertEquals("https://api.spotify.com/v1/search?query=tania+bowra&offset=0&limit=20&type=album", albumSearchResult.getHref());
+    assertEquals("https://api.spotify.com/v1/search?query=tania%2Bbowra&offset=0&limit=20&type=album", albumSearchResult.getHref());
     assertEquals(20, albumSearchResult.getLimit());
     assertEquals(0, albumSearchResult.getOffset());
     assertNull(albumSearchResult.getNext());
@@ -99,6 +103,8 @@ public class AlbumSearchRequestTest {
     assertEquals("Place In The Sun", firstAlbum.getName());
     assertEquals(SpotifyEntityType.ALBUM, firstAlbum.getType());
     assertEquals("spotify:album:6akEvsycLGftJxYudPjmqK", firstAlbum.getUri());
+    assertNotNull(firstAlbum.getAvailableMarkets());
+    assertFalse(firstAlbum.getAvailableMarkets().isEmpty());
   }
 
 }

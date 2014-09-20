@@ -12,6 +12,15 @@ public class SimpleAlbum {
   private String name;
   private SpotifyEntityType type = SpotifyEntityType.ALBUM;
   private String uri;
+  private List<String> availableMarkets;
+
+  public List<String> getAvailableMarkets() {
+    return availableMarkets;
+  }
+
+  public void setAvailableMarkets(List<String> availableMarkets) {
+    this.availableMarkets = availableMarkets;
+  }
 
   public AlbumType getAlbumType() {
     return albumType;
