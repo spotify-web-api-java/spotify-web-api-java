@@ -553,6 +553,10 @@ try {
 
 #### Change log
 
+##### 1.4.0
+
+- Enable setting limit and offset when requesting a user's playlists.
+
 ##### 1.3
 
 - Bug fixes. (Thanks [danieldisu](https://www.github.com/danieldisu) and [Schweig](https://www.github.com/Schweig))
