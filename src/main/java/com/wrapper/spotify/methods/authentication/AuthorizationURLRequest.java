@@ -38,6 +38,10 @@ public class AuthorizationURLRequest extends AbstractRequest {
       return parameter("redirect_uri", redirectURI);
     }
 
+    public Builder showDialog(boolean showDialog) {
+      return parameter("show_dialog", String.valueOf(showDialog));
+    }
+
     public AuthorizationURLRequest build() {
       host(Api.DEFAULT_AUTHENTICATION_HOST);
       port(Api.DEFAULT_AUTHENTICATION_PORT);

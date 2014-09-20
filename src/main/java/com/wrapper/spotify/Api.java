@@ -296,7 +296,8 @@ public class Api {
   /**
    * Retrieve a URL where the user can give the application permissions.
    * @param scopes The scopes corresponding to the permissions the application needs
-   * @param state state A parameter that you can use to maintain a value between the request and the callback to redirect_uri.It is useful to prevent CSRF exploits.
+   * @param state state A parameter that you can use to maintain a value between the request
+   *              and the callback to redirect_uri.It is useful to prevent CSRF exploits.
    * @returns The URL where the user can give application permissions.
    */
   public String createAuthorizeURL(List<String> scopes, String state) {
@@ -313,6 +314,26 @@ public class Api {
     }
     return builder.build().toStringWithQueryParameters();
   }
+
+  /**
+   * Retrieve a URL where the user can give the application permissions.
+   * This method returns a builder instead, so that any optional parameters can be added.
+   * @param scopes The scopes corresponding to the permissions the application needs.
+   * @return A builder that when built creates a URL where the user can give the application
+   * permissions.
+   */
+  public AuthorizationURLRequest.Builder createAuthorizeURL(List<String> scopes) {
+    final AuthorizationURLRequest.Builder builder = AuthorizationURLRequest.builder();
+    setDefaults(builder);
+    builder.clientId(clientId);
+    builder.responseType("code");
+    builder.redirectURI(redirectURI);
+    if (scopes != null) {
+      builder.scopes(scopes);
+    }
+    return builder;
+  }
+
 
   public void setAccessToken(String accessToken) {
     this.accessToken = accessToken;
