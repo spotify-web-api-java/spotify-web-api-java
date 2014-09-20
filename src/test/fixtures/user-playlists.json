@@ -177,9 +177,9 @@
             "uri": "spotify:user:martin.danielson:playlist:2HiFqdXD3KVfFS4GeOGS06"
         }
     ],
-    "limit": 7,
+    "limit": 10,
     "next": null,
-    "offset": 0,
+    "offset": 2,
     "previous": null,
     "total": 7
 }

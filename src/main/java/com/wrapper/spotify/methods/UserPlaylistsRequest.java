@@ -49,6 +49,16 @@ public class UserPlaylistsRequest extends AbstractRequest {
       return path(String.format("/v1/users/%s/playlists", username));
     }
 
+    public Builder limit(int limit) {
+      assert (limit > 0);
+      return parameter("limit", String.valueOf(limit));
+    }
+
+    public Builder offset(int offset) {
+      assert (offset >= 0);
+      return parameter("offset", String.valueOf(offset));
+    }
+
     public Builder accessToken(String accessToken) {
       return header("Authorization", "Bearer " + accessToken);
     }

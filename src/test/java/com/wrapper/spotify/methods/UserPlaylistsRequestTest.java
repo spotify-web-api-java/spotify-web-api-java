@@ -25,6 +25,8 @@ public class UserPlaylistsRequestTest {
     final UserPlaylistsRequest request = api
             .getPlaylistsForUser("wizzler")
             .accessToken(accessToken)
+            .limit(10)
+            .offset(2)
             .httpManager(TestUtil.MockedHttpManager.returningJson("user-playlists.json"))
             .build();
 
@@ -38,8 +40,8 @@ public class UserPlaylistsRequestTest {
         assertTrue(playlistsPage.getTotal() >= 0);
         assertNull(playlistsPage.getNext());
         assertNull(playlistsPage.getPrevious());
-        assertTrue(playlistsPage.getLimit() >= 0);
-        assertEquals(0, playlistsPage.getOffset());
+        assertEquals(10, playlistsPage.getLimit());
+        assertEquals(2, playlistsPage.getOffset());
         assertEquals("https://api.spotify.com/v1/users/wizzler/playlists", playlistsPage.getHref());
 
         final SimplePlaylist simplePlaylist = playlistsPage.getItems().get(0);
@@ -80,14 +82,13 @@ public class UserPlaylistsRequestTest {
             .httpManager(TestUtil.MockedHttpManager.returningJson("user-playlists.json"))
             .build();
 
-
     final Page<SimplePlaylist> playlistsPage = request.get();
 
     assertTrue(playlistsPage.getTotal() >= 0);
     assertNull(playlistsPage.getNext());
     assertNull(playlistsPage.getPrevious());
-    assertTrue(playlistsPage.getLimit() >= 0);
-    assertEquals(0, playlistsPage.getOffset());
+    assertEquals(10, playlistsPage.getLimit());
+    assertEquals(2, playlistsPage.getOffset());
     assertEquals("https://api.spotify.com/v1/users/wizzler/playlists", playlistsPage.getHref());
 
     final SimplePlaylist simplePlaylist = playlistsPage.getItems().get(0);
