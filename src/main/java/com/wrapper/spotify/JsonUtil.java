@@ -2,6 +2,7 @@ package com.wrapper.spotify;
 
 import com.wrapper.spotify.models.*;
 import net.sf.json.JSONArray;
+import net.sf.json.JSONException;
 import net.sf.json.JSONNull;
 import net.sf.json.JSONObject;
 
@@ -527,7 +528,11 @@ public class JsonUtil {
     } catch (ParseException e) {
       returnedPlaylistTrack.setAddedAt(null);
     }
-    returnedPlaylistTrack.setAddedBy(createUser(playlistTrackJson.getJSONObject("added_by")));
+    try {
+      returnedPlaylistTrack.setAddedBy(createUser(playlistTrackJson.getJSONObject("added_by")));
+    } catch (JSONException e) {
+        returnedPlaylistTrack.setAddedBy(null);
+    }
     returnedPlaylistTrack.setTrack(createTrack(playlistTrackJson.getJSONObject("track")));
     return returnedPlaylistTrack;
   }
