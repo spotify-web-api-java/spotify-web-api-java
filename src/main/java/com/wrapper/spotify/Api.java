@@ -306,7 +306,7 @@ public class Api {
    * @param scopes The scopes corresponding to the permissions the application needs
    * @param state state A parameter that you can use to maintain a value between the request
    *              and the callback to redirect_uri.It is useful to prevent CSRF exploits.
-   * @returns The URL where the user can give application permissions.
+   * @return The URL where the user can give application permissions.
    */
   public String createAuthorizeURL(List<String> scopes, String state) {
     final AuthorizationURLRequest.Builder builder = AuthorizationURLRequest.builder();
