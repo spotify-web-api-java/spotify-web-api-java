@@ -273,7 +273,15 @@ public class Api {
     return builder;
   }
 
-  private void setDefaults(AbstractRequest.Builder builder) {
+   public PlaylistTracksRequest.Builder getStarred(String userId) {
+    final PlaylistTracksRequest.Builder builder = PlaylistTracksRequest.builder();
+    setDefaults(builder);
+    builder.path("/v1/users/" + userId + "/starred/tracks");
+    return builder;
+   }
+
+
+    private void setDefaults(AbstractRequest.Builder builder) {
     builder.httpManager(httpManager);
     builder.scheme(scheme);
     builder.host(host);
