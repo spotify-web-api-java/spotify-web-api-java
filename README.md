@@ -553,6 +553,11 @@ try {
 
 #### Change log
 
+##### 1.4.1
+
+- Add available_markets to SimpleAlbum
+- Add show dialog parameter to authorization URL
+
 ##### 1.4.0
 
 - Enable setting limit and offset when requesting a user's playlists.
