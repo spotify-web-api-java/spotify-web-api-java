@@ -1,15 +1,10 @@
 package com.wrapper.spotify;
 
 import com.google.common.collect.ImmutableMap;
-import com.sun.deploy.net.HttpUtils;
 import org.apache.commons.httpclient.URI;
 import org.apache.commons.httpclient.URIException;
 import com.wrapper.spotify.UtilProtos.Url.Scheme;
-import org.apache.commons.httpclient.util.EncodingUtil;
-import org.apache.commons.lang.StringUtils;
 
-import java.net.URLDecoder;
-import java.net.URLEncoder;
 import java.util.List;
 import java.util.Map;
 
