@@ -6,6 +6,7 @@ import com.wrapper.spotify.methods.authentication.AuthorizationCodeGrantRequest;
 import com.wrapper.spotify.methods.authentication.AuthorizationURLRequest;
 import com.wrapper.spotify.methods.authentication.ClientCredentialsGrantRequest;
 import com.wrapper.spotify.methods.authentication.RefreshAccessTokenRequest;
+import com.wrapper.spotify.models.Page;
 import net.sf.json.JSONArray;
 
 import java.util.Arrays;
@@ -280,6 +281,14 @@ public class Api {
     return builder;
    }
 
+    public PlaylistTracksRequest.Builder getUrlPlaylistTracks(String url) {
+        final PlaylistTracksRequest.Builder builder = PlaylistTracksRequest.builder();
+        setDefaults(builder);
+        builder.path(UrlUtil.getPath(url));
+        builder.parameter("offset",UrlUtil.getParameter(url,"offset"));
+        builder.parameter("limit",UrlUtil.getParameter(url,"limit"));
+        return builder;
+    }
 
     private void setDefaults(AbstractRequest.Builder builder) {
     builder.httpManager(httpManager);
