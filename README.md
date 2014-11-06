@@ -27,12 +27,20 @@ As of version 1.4.5 the artifact is available through Maven Central.
 
 Get the latest version:
 
+#### Maven users
+
 ```
 <dependency>
   <groupId>se.michaelthelin.spotify</groupId>
   <artifactId>spotify-web-api-java</artifactId>
-  <version>1.4.7</version>
+  <version>1.4.8</version>
 </dependency>
+```
+
+#### Gradle users
+
+```
+compile 'se.michaelthelin:spotify-web-api-java:1.4.8'
 ```
 
 Links to javadocs coming.
@@ -568,6 +576,10 @@ try {
 ```
 
 #### Change log
+
+##### 1.4.8
+
+- Enable limit and offset parameters when retrieving a playlist's tracks.
 
 ##### 1.4.7
 
