@@ -1,0 +1,75 @@
+{
+  "href" : "https://api.spotify.com/v1/users/thelinmichael/starred/tracks?offset=0&limit=100",
+  "items" : [ {
+    "added_at" : "2014-04-23T11:35:10Z",
+    "added_by" : {
+      "external_urls" : {
+        "spotify" : "http://open.spotify.com/user/thelinmichael"
+      },
+      "href" : "https://api.spotify.com/v1/users/thelinmichael",
+      "id" : "thelinmichael",
+      "type" : "user",
+      "uri" : "spotify:user:thelinmichael"
+    },
+    "track" : {
+      "album" : {
+        "album_type" : "album",
+        "available_markets" : [ "AD", "AR", "AT", "AU", "BE", "BG", "BO", "BR", "CA", "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "EC", "EE", "ES", "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HU", "IE", "IS", "IT", "LI", "LT", "LU", "LV", "MC", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "PA", "PE", "PH", "PL", "PT", "PY", "RO", "SE", "SG", "SI", "SK", "SV", "TR", "TW", "US", "UY" ],
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/album/6HbFB05IstZQq2xazWK9O4"
+        },
+        "href" : "https://api.spotify.com/v1/albums/6HbFB05IstZQq2xazWK9O4",
+        "id" : "6HbFB05IstZQq2xazWK9O4",
+        "images" : [ {
+          "height" : 640,
+          "url" : "https://i.scdn.co/image/430ef23d5a6c54d224601cdf3aa0076aef79ae30",
+          "width" : 640
+        }, {
+          "height" : 300,
+          "url" : "https://i.scdn.co/image/b6c7ae6ccf1efeed581a48084223ace5556af2dc",
+          "width" : 300
+        }, {
+          "height" : 64,
+          "url" : "https://i.scdn.co/image/c658ad700fa85966befa1b3cf8d8ef809b2a0588",
+          "width" : 64
+        } ],
+        "name" : "Chip Ahoy!",
+        "type" : "album",
+        "uri" : "spotify:album:6HbFB05IstZQq2xazWK9O4"
+      },
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/0vsupnhAx7nze8k9gTwxrq"
+        },
+        "href" : "https://api.spotify.com/v1/artists/0vsupnhAx7nze8k9gTwxrq",
+        "id" : "0vsupnhAx7nze8k9gTwxrq",
+        "name" : "Robinerd",
+        "type" : "artist",
+        "uri" : "spotify:artist:0vsupnhAx7nze8k9gTwxrq"
+      } ],
+      "available_markets" : [ "AD", "AR", "AT", "AU", "BE", "BG", "BO", "BR", "CA", "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "EC", "EE", "ES", "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HU", "IE", "IS", "IT", "LI", "LT", "LU", "LV", "MC", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "PA", "PE", "PH", "PL", "PT", "PY", "RO", "SE", "SG", "SI", "SK", "SV", "TR", "TW", "US", "UY" ],
+      "disc_number" : 1,
+      "duration_ms" : 111620,
+      "explicit" : false,
+      "external_ids" : {
+        "isrc" : "GBLFP1038047"
+      },
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/track/5u3Vaf4Lrzr7eQymndzZZq"
+      },
+      "href" : "https://api.spotify.com/v1/tracks/5u3Vaf4Lrzr7eQymndzZZq",
+      "id" : "5u3Vaf4Lrzr7eQymndzZZq",
+      "name" : "Amazing Horse Chill Cover",
+      "popularity" : 24,
+      "preview_url" : "https://p.scdn.co/mp3-preview/3341b030fe2c6a17ed44418b3a97f58cf690a17d",
+      "track_number" : 8,
+      "type" : "track",
+      "uri" : "spotify:track:5u3Vaf4Lrzr7eQymndzZZq"
+    }
+  } ],
+  "limit" : 100,
+  "next" : null,
+  "offset" : 0,
+  "previous" : null,
+  "total" : 1
+}

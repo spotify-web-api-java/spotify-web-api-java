@@ -38,7 +38,6 @@ public class PlaylistTracksRequest extends AbstractRequest {
     final String jsonString = getJson();
     final JSONObject jsonObject = JSONObject.fromObject(jsonString);
 
-
     return JsonUtil.createPlaylistTrackPage(jsonObject);
   }
 

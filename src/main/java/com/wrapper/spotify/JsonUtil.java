@@ -531,7 +531,7 @@ public class JsonUtil {
     try {
       returnedPlaylistTrack.setAddedBy(createUser(playlistTrackJson.getJSONObject("added_by")));
     } catch (JSONException e) {
-        returnedPlaylistTrack.setAddedBy(null);
+      returnedPlaylistTrack.setAddedBy(null);
     }
     returnedPlaylistTrack.setTrack(createTrack(playlistTrackJson.getJSONObject("track")));
     return returnedPlaylistTrack;

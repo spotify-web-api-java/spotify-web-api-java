@@ -259,6 +259,11 @@ public class Api {
     return builder;
   }
 
+  /**
+   * Get artists related/similar to an artist.
+   * @param artistId The artist's id.
+   * @return A builder object that can be used to build a request to retrieve similar artists.
+   */
   public RelatedArtistsRequest.Builder getArtistRelatedArtists(String artistId) {
     final RelatedArtistsRequest.Builder builder = RelatedArtistsRequest.builder();
     setDefaults(builder);
@@ -266,6 +271,12 @@ public class Api {
     return builder;
   }
 
+  /**
+   * Get a playlist's tracks.
+   * @param userId The playlist's owner's username.
+   * @param playlistId The playlist's id.
+   * @return A builder object that can be used to build a request to retrieve playlist tracks.
+   */
   public PlaylistTracksRequest.Builder getPlaylistTracks(String userId, String playlistId) {
     final PlaylistTracksRequest.Builder builder = PlaylistTracksRequest.builder();
     setDefaults(builder);
@@ -273,15 +284,20 @@ public class Api {
     return builder;
   }
 
-   public PlaylistTracksRequest.Builder getStarred(String userId) {
+  /**
+   * Get a user's starred tracks.
+   * @param userId The starred playlist's owner's username.
+   * @return A builder object that can be used to build a request to retrieve a user's starred
+   * tracks.
+   */
+  public PlaylistTracksRequest.Builder getStarred(String userId) {
     final PlaylistTracksRequest.Builder builder = PlaylistTracksRequest.builder();
     setDefaults(builder);
     builder.path("/v1/users/" + userId + "/starred/tracks");
     return builder;
-   }
+  }
 
-
-    private void setDefaults(AbstractRequest.Builder builder) {
+  private void setDefaults(AbstractRequest.Builder builder) {
     builder.httpManager(httpManager);
     builder.scheme(scheme);
     builder.host(host);
