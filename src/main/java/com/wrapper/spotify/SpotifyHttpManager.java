@@ -23,6 +23,7 @@ public class SpotifyHttpManager implements HttpManager {
 
   /**
    * Construct a new SpotifyHttpManager instance.
+   * @param builder The builder.
    */
   public SpotifyHttpManager(Builder builder) {
     if (builder.connectionManager != null) {
