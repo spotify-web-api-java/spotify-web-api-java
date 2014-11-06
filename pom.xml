@@ -96,9 +96,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <sourceFileExcludes>
-                        <exclude>com/wrapper/spotify/UtilProtos.java</exclude>
-                    </sourceFileExcludes>
+                    <failOnError>false</failOnError>
                 </configuration>
                 <version>2.9.1</version>
             </plugin>
