@@ -3,6 +3,9 @@
 
 package com.wrapper.spotify;
 
+/**
+ * @ExcludeFromJavadoc
+ */
 public final class UtilProtos {
   private UtilProtos() {}
   public static void registerAllExtensions(

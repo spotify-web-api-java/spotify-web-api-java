@@ -18,6 +18,8 @@ public interface HttpManager {
    *
    * @param url the {@link Url} to HTTP GET.
    * @return a String containing the body of the HTTP GET response.
+   * @throws WebApiException In case of error replies from the Web API.
+   * @throws IOException In case of networking issues.
    */
   String get(Url url) throws WebApiException, IOException;
 
@@ -26,6 +28,8 @@ public interface HttpManager {
    *
    * @param url the {@link Url} to HTTP POST.
    * @return a String containing the body of the HTTP POST response.
+   * @throws WebApiException In case of error replies from the Web API.
+   * @throws IOException In case of networking issues.
    */
   String post(Url url) throws WebApiException, IOException;
 
