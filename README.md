@@ -21,6 +21,18 @@ Some methods require authentication, which can be done using these flows:
 
 Even though authentication isn't always necessary, it always gives benefits such as an increased rate limit.
 
+## Install
+
+As of version 1.4.5 the artifact is available through Maven Central.
+
+```
+<dependency>
+  <groupId>se.michaelthelin.spotify</groupId>
+  <artifactId>spotify-web-api-java</artifactId>
+  <version>1.4.5</version>
+</dependency>
+```
+
 ## Usage
 
 ### Asynchronous, using [Guava's future API](https://code.google.com/p/guava-libraries/wiki/ListenableFutureExplained).
@@ -552,6 +564,11 @@ try {
 ```
 
 #### Change log
+
+##### 1.4.5
+
+- Distribute via Maven Central.
+- Use query parameter to add tracks.
 
 ##### 1.4.1
 
