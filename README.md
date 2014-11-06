@@ -25,13 +25,17 @@ Even though authentication isn't always necessary, it always gives benefits such
 
 As of version 1.4.5 the artifact is available through Maven Central.
 
+Get the latest version:
+
 ```
 <dependency>
   <groupId>se.michaelthelin.spotify</groupId>
   <artifactId>spotify-web-api-java</artifactId>
-  <version>1.4.5</version>
+  <version>1.4.7</version>
 </dependency>
 ```
+
+Links to javadocs coming.
 
 ## Usage
 
@@ -564,6 +568,10 @@ try {
 ```
 
 #### Change log
+
+##### 1.4.7
+
+- Get a user's starred tracks. (Thanks [felx](https://github.com/felx))
 
 ##### 1.4.5
 
