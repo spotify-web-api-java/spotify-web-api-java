@@ -373,10 +373,14 @@ public class ApiTest {
     final Request request = api
             .getPlaylistTracks(userId, playlistId)
             .fields("items")
+            .limit(20)
+            .offset(1)
             .build();
 
     assertEquals("https://api.spotify.com:443/v1/users/" + userId + "/playlists/" + playlistId + "/tracks", request.toString());
     assertHasParameter(request.toUrl(), "fields", "items");
+    assertHasParameter(request.toUrl(), "limit", "20");
+    assertHasParameter(request.toUrl(), "offset", "1");
     assertHasHeader(request.toUrl(), "Authorization", "Bearer " + accessToken);
   }
 

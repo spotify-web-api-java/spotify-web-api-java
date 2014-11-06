@@ -1,5 +1,6 @@
 package com.wrapper.spotify.methods;
 
+import com.google.common.primitives.Ints;
 import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.JsonUtil;
 import com.wrapper.spotify.exceptions.WebApiException;
@@ -46,6 +47,16 @@ public class PlaylistTracksRequest extends AbstractRequest {
     public Builder fields(String fields) {
       assert (fields != null);
       return parameter("fields", fields);
+    }
+
+    public Builder limit(int limit) {
+      assert (limit > 0);
+      return parameter("limit", String.valueOf(limit));
+    }
+
+    public Builder offset(int offset) {
+      assert (offset >= 0);
+      return parameter("offset", String.valueOf(offset));
     }
 
     public PlaylistTracksRequest build() {
