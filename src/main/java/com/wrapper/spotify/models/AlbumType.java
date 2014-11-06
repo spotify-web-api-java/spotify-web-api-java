@@ -2,6 +2,7 @@ package com.wrapper.spotify.models;
 
 public enum AlbumType {
 
+  NULL("null"),
   ALBUM("album"),
   SINGLE("single"),
   COMPILATION("compilation");
