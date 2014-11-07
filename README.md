@@ -40,7 +40,7 @@ Get the latest version:
 #### Gradle users
 
 ```
-compile 'se.michaelthelin:spotify-web-api-java:1.4.8'
+compile 'se.michaelthelin.spotify:spotify-web-api-java:1.4.8'
 ```
 
 Links to javadocs coming.
