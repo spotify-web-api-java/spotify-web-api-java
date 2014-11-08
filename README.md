@@ -33,14 +33,14 @@ Get the latest version:
 <dependency>
   <groupId>se.michaelthelin.spotify</groupId>
   <artifactId>spotify-web-api-java</artifactId>
-  <version>1.4.8</version>
+  <version>1.4.9</version>
 </dependency>
 ```
 
 #### Gradle users
 
 ```
-compile 'se.michaelthelin.spotify:spotify-web-api-java:1.4.8'
+compile 'se.michaelthelin.spotify:spotify-web-api-java:1.4.9'
 ```
 
 Links to javadocs coming.
@@ -576,6 +576,11 @@ try {
 ```
 
 #### Change log
+
+##### 1.4.9
+
+- Add available_markets to SimpleTrack object.
+- Add market parameter to Search requests.
 
 ##### 1.4.8
 
