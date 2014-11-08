@@ -1,8 +1,5 @@
 package com.wrapper.spotify;
 
-import com.wrapper.spotify.exceptions.BadRequestException;
-import com.wrapper.spotify.exceptions.EmptyResponseException;
-import com.wrapper.spotify.exceptions.ServerErrorException;
 import com.wrapper.spotify.exceptions.WebApiException;
 
 import java.io.File;

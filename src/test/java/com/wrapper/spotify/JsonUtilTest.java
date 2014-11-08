@@ -1,9 +1,10 @@
 package com.wrapper.spotify;
 
-import org.junit.Test;
 import com.wrapper.spotify.models.Album;
 import com.wrapper.spotify.models.Artist;
 import com.wrapper.spotify.models.Track;
+
+import org.junit.Test;
 
 import java.util.List;
 

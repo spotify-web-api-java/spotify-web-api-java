@@ -148,6 +148,7 @@ public class JsonUtil {
     SimpleTrack track = new SimpleTrack();
 
     track.setArtists(createSimpleArtists(simpleTrackJson.getJSONArray("artists")));
+    track.setAvailableMarkets(createAvailableMarkets(simpleTrackJson.getJSONArray("available_markets")));
     track.setDiscNumber(simpleTrackJson.getInt("disc_number"));
     track.setDuration(simpleTrackJson.getInt("duration_ms"));
     track.setExplicit(simpleTrackJson.getBoolean("explicit"));
