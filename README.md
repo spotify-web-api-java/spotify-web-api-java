@@ -247,7 +247,7 @@ Please refer to the documentation linked in the headline of each example to read
 ##### [Searching for tracks](https://developer.spotify.com/spotify-web-api/search-item/)
 
 ```java
-final TrackSearchRequest request = api.searchTracks("Mr. Brightside").build();
+final TrackSearchRequest request = api.searchTracks("Mr. Brightside").market("US").build();
  
 try {
    final Page<Track> trackSearchResult = request.get();
@@ -260,7 +260,7 @@ try {
 ##### [Searching for artists](https://developer.spotify.com/spotify-web-api/search-item/)
 
 ```java
-final TrackSearchRequest request = api.searchArtists("tania bowra").limit(10).build();
+final TrackSearchRequest request = api.searchArtists("tania bowra").market("SE").limit(10).build();
  
 try {
    final Page<Artist> artistSearchResult = request.get();

@@ -144,29 +144,32 @@ public class ApiTest {
   @Test
   public void shouldCreateSearchUrlForAlbum() {
     Api api = Api.DEFAULT_API;
-    Request request = api.searchAlbums("meeep").build();
+    Request request = api.searchAlbums("meeep").market("from_token").build();
     assertEquals("https://api.spotify.com:443/v1/search", request.toString());
     assertHasParameter(request.toUrl(), "q", "meeep");
     assertHasParameter(request.toUrl(), "type", "album");
+    assertHasParameter(request.toUrl(), "market", "from_token");
   }
 
   @Test
   public void shouldCreateSearchUrlForArtist() {
     Api api = Api.DEFAULT_API;
-    Request request = api.searchArtists("meeep").build();
+    Request request = api.searchArtists("meeep").market("GB").build();
     assertEquals("https://api.spotify.com:443/v1/search", request.toString());
     assertHasParameter(request.toUrl(), "q", "meeep");
     assertHasParameter(request.toUrl(), "type", "artist");
+    assertHasParameter(request.toUrl(), "market", "GB");
   }
 
   @Test
   public void shouldCreateSearchUrlWithLimitParameter() {
     Api api = Api.DEFAULT_API;
-    Request request = api.searchTracks("moulat swalf").limit(2).build();
+    Request request = api.searchTracks("moulat swalf").limit(2).market("SE").build();
     assertEquals("https://api.spotify.com:443/v1/search", request.toString());
     assertHasParameter(request.toUrl(), "q", "moulat swalf");
     assertHasParameter(request.toUrl(), "limit", "2");
     assertHasParameter(request.toUrl(), "type", "track");
+    assertHasParameter(request.toUrl(), "market", "SE");
   }
 
   @Test

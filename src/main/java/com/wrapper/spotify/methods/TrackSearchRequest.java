@@ -50,6 +50,11 @@ public class TrackSearchRequest extends AbstractRequest {
       return parameter("q", query);
     }
 
+    public Builder market(String market) {
+      assert (market != null);
+      return parameter("market", market);
+    }
+
     public Builder limit(int limit) {
       assert (limit > 0);
       return parameter("limit", String.valueOf(limit));
