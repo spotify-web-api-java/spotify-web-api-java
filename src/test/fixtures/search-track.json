@@ -1,886 +1,803 @@
 {
-    "tracks": {
-        "href": "https://api.spotify.com/v1/search?query=tania%2Bbowra&offset=0&limit=20&type=track",
-        "items": [
-            {
-                "album": {
-                    "album_type": "album",
-                    "available_markets": [ "AD", "AR", "AT", "AU", "BE", "BG", "BO", "BR", "CA",
-                                           "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO",
-                                           "EC", "EE", "ES", "FI", "FR", "GB", "GR", "GT", "HK",
-                                           "HN", "HU", "IE", "IS", "IT", "LI", "LT", "LU", "LV",
-                                           "MC", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "PA",
-                                           "PE", "PH", "PL", "PT", "PY", "RO", "SE", "SG", "SI",
-                                           "SK", "SV", "TR", "TW", "US", "UY" ],
-                    "external_urls": {
-                        "spotify": "https://open.spotify.com/album/6akEvsycLGftJxYudPjmqK"
-                    },
-                    "href": "https://api.spotify.com/v1/albums/6akEvsycLGftJxYudPjmqK",
-                    "id": "6akEvsycLGftJxYudPjmqK",
-                    "images": [
-                        {
-                            "height": 640,
-                            "url": "https://i.scdn.co/image/f2798ddab0c7b76dc2d270b65c4f67ddef7f6718",
-                            "width": 640
-                        },
-                        {
-                            "height": 300,
-                            "url": "https://i.scdn.co/image/b414091165ea0f4172089c2fc67bb35aa37cfc55",
-                            "width": 300
-                        },
-                        {
-                            "height": 64,
-                            "url": "https://i.scdn.co/image/8522fc78be4bf4e83fea8e67bb742e7d3dfe21b4",
-                            "width": 64
-                        }
-                    ],
-                    "name": "Place In The Sun",
-                    "type": "album",
-                    "uri": "spotify:album:6akEvsycLGftJxYudPjmqK"
-                },
-                "artists": [
-                    {
-                        "external_urls": {
-                            "spotify": "https://open.spotify.com/artist/08td7MxkoHQkXnWAYD8d6Q"
-                        },
-                        "href": "https://api.spotify.com/v1/artists/08td7MxkoHQkXnWAYD8d6Q",
-                        "id": "08td7MxkoHQkXnWAYD8d6Q",
-                        "name": "Tania Bowra",
-                        "type": "artist",
-                        "uri": "spotify:artist:08td7MxkoHQkXnWAYD8d6Q"
-                    }
-                ],
-                "available_markets": [ "AD", "AR", "AT", "AU", "BE", "BG", "BO", "BR", "CA", "CH",
-                                       "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "EC", "EE",
-                                       "ES", "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HU", "IE",
-                                       "IS", "IT", "LI", "LT", "LU", "LV", "MC", "MT", "MX", "MY",
-                                       "NI", "NL", "NO", "NZ", "PA", "PE", "PH", "PL", "PT", "PY",
-                                       "RO", "SE", "SG", "SI", "SK", "SV", "TR", "TW", "US", "UY" ],
-                "disc_number": 1,
-                "duration_ms": 276773,
-                "explicit": false,
-                "external_ids": {
-                    "isrc": "AUCR10410001"
-                },
-                "external_urls": {
-                    "spotify": "https://open.spotify.com/track/2TpxZ7JUBn3uw46aR7qd6V"
-                },
-                "href": "https://api.spotify.com/v1/tracks/2TpxZ7JUBn3uw46aR7qd6V",
-                "id": "2TpxZ7JUBn3uw46aR7qd6V",
-                "name": "All I Want",
-                "popularity": 6,
-                "preview_url": "https://p.scdn.co/mp3-preview/6d00206e32194d15df329d4770e4fa1f2ced3f57",
-                "track_number": 1,
-                "type": "track",
-                "uri": "spotify:track:2TpxZ7JUBn3uw46aR7qd6V"
-            },
-            {
-                "album": {
-                    "album_type": "album",
-                    "available_markets": [ "AD", "AR", "AT", "AU", "BE", "BG", "BO", "BR", "CA",
-                                           "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO",
-                                           "EC", "EE", "ES", "FI", "FR", "GB", "GR", "GT", "HK",
-                                           "HN", "HU", "IE", "IS", "IT", "LI", "LT", "LU", "LV",
-                                           "MC", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "PA",
-                                           "PE", "PH", "PL", "PT", "PY", "RO", "SE", "SG", "SI",
-                                           "SK", "SV", "TR", "TW", "US", "UY" ],
-                    "external_urls": {
-                        "spotify": "https://open.spotify.com/album/6akEvsycLGftJxYudPjmqK"
-                    },
-                    "href": "https://api.spotify.com/v1/albums/6akEvsycLGftJxYudPjmqK",
-                    "id": "6akEvsycLGftJxYudPjmqK",
-                    "images": [
-                        {
-                            "height": 640,
-                            "url": "https://i.scdn.co/image/f2798ddab0c7b76dc2d270b65c4f67ddef7f6718",
-                            "width": 640
-                        },
-                        {
-                            "height": 300,
-                            "url": "https://i.scdn.co/image/b414091165ea0f4172089c2fc67bb35aa37cfc55",
-                            "width": 300
-                        },
-                        {
-                            "height": 64,
-                            "url": "https://i.scdn.co/image/8522fc78be4bf4e83fea8e67bb742e7d3dfe21b4",
-                            "width": 64
-                        }
-                    ],
-                    "name": "Place In The Sun",
-                    "type": "album",
-                    "uri": "spotify:album:6akEvsycLGftJxYudPjmqK"
-                },
-                "artists": [
-                    {
-                        "external_urls": {
-                            "spotify": "https://open.spotify.com/artist/08td7MxkoHQkXnWAYD8d6Q"
-                        },
-                        "href": "https://api.spotify.com/v1/artists/08td7MxkoHQkXnWAYD8d6Q",
-                        "id": "08td7MxkoHQkXnWAYD8d6Q",
-                        "name": "Tania Bowra",
-                        "type": "artist",
-                        "uri": "spotify:artist:08td7MxkoHQkXnWAYD8d6Q"
-                    }
-                ],
-                "available_markets": [ "AD", "AR", "AT", "AU", "BE", "BG", "BO", "BR", "CA", "CH",
-                                       "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "EC", "EE",
-                                       "ES", "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HU", "IE",
-                                       "IS", "IT", "LI", "LT", "LU", "LV", "MC", "MT", "MX", "MY",
-                                       "NI", "NL", "NO", "NZ", "PA", "PE", "PH", "PL", "PT", "PY",
-                                       "RO", "SE", "SG", "SI", "SK", "SV", "TR", "TW", "US", "UY" ],
-                "disc_number": 1,
-                "duration_ms": 247680,
-                "explicit": false,
-                "external_ids": {
-                    "isrc": "AUCR10410002"
-                },
-                "external_urls": {
-                    "spotify": "https://open.spotify.com/track/4PjcfyZZVE10TFd9EKA72r"
-                },
-                "href": "https://api.spotify.com/v1/tracks/4PjcfyZZVE10TFd9EKA72r",
-                "id": "4PjcfyZZVE10TFd9EKA72r",
-                "name": "Someday",
-                "popularity": 2,
-                "preview_url": "https://p.scdn.co/mp3-preview/2b15de922bf4f4b8cfe09c8448079b8ff7a45a5f",
-                "track_number": 2,
-                "type": "track",
-                "uri": "spotify:track:4PjcfyZZVE10TFd9EKA72r"
-            },
-            {
-                "album": {
-                    "album_type": "album",
-                    "available_markets": [ "AD", "AR", "AT", "AU", "BE", "BG", "BO", "BR", "CA",
-                                           "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO",
-                                           "EC", "EE", "ES", "FI", "FR", "GB", "GR", "GT", "HK",
-                                           "HN", "HU", "IE", "IS", "IT", "LI", "LT", "LU", "LV",
-                                           "MC", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "PA",
-                                           "PE", "PH", "PL", "PT", "PY", "RO", "SE", "SG", "SI",
-                                           "SK", "SV", "TR", "TW", "US", "UY" ],
-                    "external_urls": {
-                        "spotify": "https://open.spotify.com/album/6akEvsycLGftJxYudPjmqK"
-                    },
-                    "href": "https://api.spotify.com/v1/albums/6akEvsycLGftJxYudPjmqK",
-                    "id": "6akEvsycLGftJxYudPjmqK",
-                    "images": [
-                        {
-                            "height": 640,
-                            "url": "https://i.scdn.co/image/f2798ddab0c7b76dc2d270b65c4f67ddef7f6718",
-                            "width": 640
-                        },
-                        {
-                            "height": 300,
-                            "url": "https://i.scdn.co/image/b414091165ea0f4172089c2fc67bb35aa37cfc55",
-                            "width": 300
-                        },
-                        {
-                            "height": 64,
-                            "url": "https://i.scdn.co/image/8522fc78be4bf4e83fea8e67bb742e7d3dfe21b4",
-                            "width": 64
-                        }
-                    ],
-                    "name": "Place In The Sun",
-                    "type": "album",
-                    "uri": "spotify:album:6akEvsycLGftJxYudPjmqK"
-                },
-                "artists": [
-                    {
-                        "external_urls": {
-                            "spotify": "https://open.spotify.com/artist/08td7MxkoHQkXnWAYD8d6Q"
-                        },
-                        "href": "https://api.spotify.com/v1/artists/08td7MxkoHQkXnWAYD8d6Q",
-                        "id": "08td7MxkoHQkXnWAYD8d6Q",
-                        "name": "Tania Bowra",
-                        "type": "artist",
-                        "uri": "spotify:artist:08td7MxkoHQkXnWAYD8d6Q"
-                    }
-                ],
-                "available_markets": [ "AD", "AR", "AT", "AU", "BE", "BG", "BO", "BR", "CA", "CH",
-                                       "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "EC", "EE",
-                                       "ES", "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HU", "IE",
-                                       "IS", "IT", "LI", "LT", "LU", "LV", "MC", "MT", "MX", "MY",
-                                       "NI", "NL", "NO", "NZ", "PA", "PE", "PH", "PL", "PT", "PY",
-                                       "RO", "SE", "SG", "SI", "SK", "SV", "TR", "TW", "US", "UY" ],
-                "disc_number": 1,
-                "duration_ms": 204093,
-                "explicit": false,
-                "external_ids": {
-                    "isrc": "AUCR10410003"
-                },
-                "external_urls": {
-                    "spotify": "https://open.spotify.com/track/2tniUNfN0hmqavFuJ2NodO"
-                },
-                "href": "https://api.spotify.com/v1/tracks/2tniUNfN0hmqavFuJ2NodO",
-                "id": "2tniUNfN0hmqavFuJ2NodO",
-                "name": "Wet Wood",
-                "popularity": 1,
-                "preview_url": "https://p.scdn.co/mp3-preview/330aa73c34f81c164f00f7cf4e3de1368e59ff20",
-                "track_number": 3,
-                "type": "track",
-                "uri": "spotify:track:2tniUNfN0hmqavFuJ2NodO"
-            },
-            {
-                "album": {
-                    "album_type": "album",
-                    "available_markets": [ "AD", "AR", "AT", "AU", "BE", "BG", "BO", "BR", "CA",
-                                           "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO",
-                                           "EC", "EE", "ES", "FI", "FR", "GB", "GR", "GT", "HK",
-                                           "HN", "HU", "IE", "IS", "IT", "LI", "LT", "LU", "LV",
-                                           "MC", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "PA",
-                                           "PE", "PH", "PL", "PT", "PY", "RO", "SE", "SG", "SI",
-                                           "SK", "SV", "TR", "TW", "US", "UY" ],
-                    "external_urls": {
-                        "spotify": "https://open.spotify.com/album/6akEvsycLGftJxYudPjmqK"
-                    },
-                    "href": "https://api.spotify.com/v1/albums/6akEvsycLGftJxYudPjmqK",
-                    "id": "6akEvsycLGftJxYudPjmqK",
-                    "images": [
-                        {
-                            "height": 640,
-                            "url": "https://i.scdn.co/image/f2798ddab0c7b76dc2d270b65c4f67ddef7f6718",
-                            "width": 640
-                        },
-                        {
-                            "height": 300,
-                            "url": "https://i.scdn.co/image/b414091165ea0f4172089c2fc67bb35aa37cfc55",
-                            "width": 300
-                        },
-                        {
-                            "height": 64,
-                            "url": "https://i.scdn.co/image/8522fc78be4bf4e83fea8e67bb742e7d3dfe21b4",
-                            "width": 64
-                        }
-                    ],
-                    "name": "Place In The Sun",
-                    "type": "album",
-                    "uri": "spotify:album:6akEvsycLGftJxYudPjmqK"
-                },
-                "artists": [
-                    {
-                        "external_urls": {
-                            "spotify": "https://open.spotify.com/artist/08td7MxkoHQkXnWAYD8d6Q"
-                        },
-                        "href": "https://api.spotify.com/v1/artists/08td7MxkoHQkXnWAYD8d6Q",
-                        "id": "08td7MxkoHQkXnWAYD8d6Q",
-                        "name": "Tania Bowra",
-                        "type": "artist",
-                        "uri": "spotify:artist:08td7MxkoHQkXnWAYD8d6Q"
-                    }
-                ],
-                "available_markets": [ "AD", "AR", "AT", "AU", "BE", "BG", "BO", "BR", "CA", "CH",
-                                       "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "EC", "EE",
-                                       "ES", "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HU", "IE",
-                                       "IS", "IT", "LI", "LT", "LU", "LV", "MC", "MT", "MX", "MY",
-                                       "NI", "NL", "NO", "NZ", "PA", "PE", "PH", "PL", "PT", "PY",
-                                       "RO", "SE", "SG", "SI", "SK", "SV", "TR", "TW", "US", "UY" ],
-                "disc_number": 1,
-                "duration_ms": 240253,
-                "explicit": false,
-                "external_ids": {
-                    "isrc": "AUCR10410004"
-                },
-                "external_urls": {
-                    "spotify": "https://open.spotify.com/track/1irrhbi54Uwsrky0s3SrPz"
-                },
-                "href": "https://api.spotify.com/v1/tracks/1irrhbi54Uwsrky0s3SrPz",
-                "id": "1irrhbi54Uwsrky0s3SrPz",
-                "name": "Give It 2 Me",
-                "popularity": 0,
-                "preview_url": "https://p.scdn.co/mp3-preview/2f0bd7efcd2addda3330990366b81df3fdc37c8c",
-                "track_number": 4,
-                "type": "track",
-                "uri": "spotify:track:1irrhbi54Uwsrky0s3SrPz"
-            },
-            {
-                "album": {
-                    "album_type": "album",
-                    "available_markets": [ "AD", "AR", "AT", "AU", "BE", "BG", "BO", "BR", "CA",
-                                           "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO",
-                                           "EC", "EE", "ES", "FI", "FR", "GB", "GR", "GT", "HK",
-                                           "HN", "HU", "IE", "IS", "IT", "LI", "LT", "LU", "LV",
-                                           "MC", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "PA",
-                                           "PE", "PH", "PL", "PT", "PY", "RO", "SE", "SG", "SI",
-                                           "SK", "SV", "TR", "TW", "US", "UY" ],
-                    "external_urls": {
-                        "spotify": "https://open.spotify.com/album/6akEvsycLGftJxYudPjmqK"
-                    },
-                    "href": "https://api.spotify.com/v1/albums/6akEvsycLGftJxYudPjmqK",
-                    "id": "6akEvsycLGftJxYudPjmqK",
-                    "images": [
-                        {
-                            "height": 640,
-                            "url": "https://i.scdn.co/image/f2798ddab0c7b76dc2d270b65c4f67ddef7f6718",
-                            "width": 640
-                        },
-                        {
-                            "height": 300,
-                            "url": "https://i.scdn.co/image/b414091165ea0f4172089c2fc67bb35aa37cfc55",
-                            "width": 300
-                        },
-                        {
-                            "height": 64,
-                            "url": "https://i.scdn.co/image/8522fc78be4bf4e83fea8e67bb742e7d3dfe21b4",
-                            "width": 64
-                        }
-                    ],
-                    "name": "Place In The Sun",
-                    "type": "album",
-                    "uri": "spotify:album:6akEvsycLGftJxYudPjmqK"
-                },
-                "artists": [
-                    {
-                        "external_urls": {
-                            "spotify": "https://open.spotify.com/artist/08td7MxkoHQkXnWAYD8d6Q"
-                        },
-                        "href": "https://api.spotify.com/v1/artists/08td7MxkoHQkXnWAYD8d6Q",
-                        "id": "08td7MxkoHQkXnWAYD8d6Q",
-                        "name": "Tania Bowra",
-                        "type": "artist",
-                        "uri": "spotify:artist:08td7MxkoHQkXnWAYD8d6Q"
-                    }
-                ],
-                "available_markets": [ "AD", "AR", "AT", "AU", "BE", "BG", "BO", "BR", "CA", "CH",
-                                       "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "EC", "EE",
-                                       "ES", "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HU", "IE",
-                                       "IS", "IT", "LI", "LT", "LU", "LV", "MC", "MT", "MX", "MY",
-                                       "NI", "NL", "NO", "NZ", "PA", "PE", "PH", "PL", "PT", "PY",
-                                       "RO", "SE", "SG", "SI", "SK", "SV", "TR", "TW", "US", "UY" ],
-                "disc_number": 1,
-                "duration_ms": 220173,
-                "explicit": false,
-                "external_ids": {
-                    "isrc": "AUCR10410005"
-                },
-                "external_urls": {
-                    "spotify": "https://open.spotify.com/track/4JAJ6ujlF593H31kA4UhjR"
-                },
-                "href": "https://api.spotify.com/v1/tracks/4JAJ6ujlF593H31kA4UhjR",
-                "id": "4JAJ6ujlF593H31kA4UhjR",
-                "name": "Be Mine",
-                "popularity": 1,
-                "preview_url": "https://p.scdn.co/mp3-preview/271590224d1b24af07b777ffc744191cda49c9b4",
-                "track_number": 5,
-                "type": "track",
-                "uri": "spotify:track:4JAJ6ujlF593H31kA4UhjR"
-            },
-            {
-                "album": {
-                    "album_type": "album",
-                    "available_markets": [ "AD", "AR", "AT", "AU", "BE", "BG", "BO", "BR", "CA",
-                                           "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO",
-                                           "EC", "EE", "ES", "FI", "FR", "GB", "GR", "GT", "HK",
-                                           "HN", "HU", "IE", "IS", "IT", "LI", "LT", "LU", "LV",
-                                           "MC", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "PA",
-                                           "PE", "PH", "PL", "PT", "PY", "RO", "SE", "SG", "SI",
-                                           "SK", "SV", "TR", "TW", "US", "UY" ],
-                    "external_urls": {
-                        "spotify": "https://open.spotify.com/album/6akEvsycLGftJxYudPjmqK"
-                    },
-                    "href": "https://api.spotify.com/v1/albums/6akEvsycLGftJxYudPjmqK",
-                    "id": "6akEvsycLGftJxYudPjmqK",
-                    "images": [
-                        {
-                            "height": 640,
-                            "url": "https://i.scdn.co/image/f2798ddab0c7b76dc2d270b65c4f67ddef7f6718",
-                            "width": 640
-                        },
-                        {
-                            "height": 300,
-                            "url": "https://i.scdn.co/image/b414091165ea0f4172089c2fc67bb35aa37cfc55",
-                            "width": 300
-                        },
-                        {
-                            "height": 64,
-                            "url": "https://i.scdn.co/image/8522fc78be4bf4e83fea8e67bb742e7d3dfe21b4",
-                            "width": 64
-                        }
-                    ],
-                    "name": "Place In The Sun",
-                    "type": "album",
-                    "uri": "spotify:album:6akEvsycLGftJxYudPjmqK"
-                },
-                "artists": [
-                    {
-                        "external_urls": {
-                            "spotify": "https://open.spotify.com/artist/08td7MxkoHQkXnWAYD8d6Q"
-                        },
-                        "href": "https://api.spotify.com/v1/artists/08td7MxkoHQkXnWAYD8d6Q",
-                        "id": "08td7MxkoHQkXnWAYD8d6Q",
-                        "name": "Tania Bowra",
-                        "type": "artist",
-                        "uri": "spotify:artist:08td7MxkoHQkXnWAYD8d6Q"
-                    }
-                ],
-                "available_markets": [ "AD", "AR", "AT", "AU", "BE", "BG", "BO", "BR", "CA", "CH",
-                                       "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "EC", "EE",
-                                       "ES", "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HU", "IE",
-                                       "IS", "IT", "LI", "LT", "LU", "LV", "MC", "MT", "MX", "MY",
-                                       "NI", "NL", "NO", "NZ", "PA", "PE", "PH", "PL", "PT", "PY",
-                                       "RO", "SE", "SG", "SI", "SK", "SV", "TR", "TW", "US", "UY" ],
-                "disc_number": 1,
-                "duration_ms": 281946,
-                "explicit": false,
-                "external_ids": {
-                    "isrc": "AUCR10410006"
-                },
-                "external_urls": {
-                    "spotify": "https://open.spotify.com/track/6UbiYwgZJrwqB5ILDVk1e5"
-                },
-                "href": "https://api.spotify.com/v1/tracks/6UbiYwgZJrwqB5ILDVk1e5",
-                "id": "6UbiYwgZJrwqB5ILDVk1e5",
-                "name": "Desire",
-                "popularity": 1,
-                "preview_url": "https://p.scdn.co/mp3-preview/22ae385689d8ac4f3919ad26057edf215a70e912",
-                "track_number": 6,
-                "type": "track",
-                "uri": "spotify:track:6UbiYwgZJrwqB5ILDVk1e5"
-            },
-            {
-                "album": {
-                    "album_type": "album",
-                    "available_markets": [ "AD", "AR", "AT", "AU", "BE", "BG", "BO", "BR", "CA",
-                                           "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO",
-                                           "EC", "EE", "ES", "FI", "FR", "GB", "GR", "GT", "HK",
-                                           "HN", "HU", "IE", "IS", "IT", "LI", "LT", "LU", "LV",
-                                           "MC", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "PA",
-                                           "PE", "PH", "PL", "PT", "PY", "RO", "SE", "SG", "SI",
-                                           "SK", "SV", "TR", "TW", "US", "UY" ],
-                    "external_urls": {
-                        "spotify": "https://open.spotify.com/album/6akEvsycLGftJxYudPjmqK"
-                    },
-                    "href": "https://api.spotify.com/v1/albums/6akEvsycLGftJxYudPjmqK",
-                    "id": "6akEvsycLGftJxYudPjmqK",
-                    "images": [
-                        {
-                            "height": 640,
-                            "url": "https://i.scdn.co/image/f2798ddab0c7b76dc2d270b65c4f67ddef7f6718",
-                            "width": 640
-                        },
-                        {
-                            "height": 300,
-                            "url": "https://i.scdn.co/image/b414091165ea0f4172089c2fc67bb35aa37cfc55",
-                            "width": 300
-                        },
-                        {
-                            "height": 64,
-                            "url": "https://i.scdn.co/image/8522fc78be4bf4e83fea8e67bb742e7d3dfe21b4",
-                            "width": 64
-                        }
-                    ],
-                    "name": "Place In The Sun",
-                    "type": "album",
-                    "uri": "spotify:album:6akEvsycLGftJxYudPjmqK"
-                },
-                "artists": [
-                    {
-                        "external_urls": {
-                            "spotify": "https://open.spotify.com/artist/08td7MxkoHQkXnWAYD8d6Q"
-                        },
-                        "href": "https://api.spotify.com/v1/artists/08td7MxkoHQkXnWAYD8d6Q",
-                        "id": "08td7MxkoHQkXnWAYD8d6Q",
-                        "name": "Tania Bowra",
-                        "type": "artist",
-                        "uri": "spotify:artist:08td7MxkoHQkXnWAYD8d6Q"
-                    }
-                ],
-                "available_markets": [ "AD", "AR", "AT", "AU", "BE", "BG", "BO", "BR", "CA", "CH",
-                                       "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "EC", "EE",
-                                       "ES", "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HU", "IE",
-                                       "IS", "IT", "LI", "LT", "LU", "LV", "MC", "MT", "MX", "MY",
-                                       "NI", "NL", "NO", "NZ", "PA", "PE", "PH", "PL", "PT", "PY",
-                                       "RO", "SE", "SG", "SI", "SK", "SV", "TR", "TW", "US", "UY" ],
-                "disc_number": 1,
-                "duration_ms": 189240,
-                "explicit": false,
-                "external_ids": {
-                    "isrc": "AUCR10410007"
-                },
-                "external_urls": {
-                    "spotify": "https://open.spotify.com/track/0WIfmQdGqTbZQjjoSxM8hB"
-                },
-                "href": "https://api.spotify.com/v1/tracks/0WIfmQdGqTbZQjjoSxM8hB",
-                "id": "0WIfmQdGqTbZQjjoSxM8hB",
-                "name": "Eastside",
-                "popularity": 0,
-                "preview_url": "https://p.scdn.co/mp3-preview/46b2b6e73675680a136a640fad9b96adb4db37ae",
-                "track_number": 7,
-                "type": "track",
-                "uri": "spotify:track:0WIfmQdGqTbZQjjoSxM8hB"
-            },
-            {
-                "album": {
-                    "album_type": "album",
-                    "available_markets": [ "AD", "AR", "AT", "AU", "BE", "BG", "BO", "BR", "CA",
-                                           "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO",
-                                           "EC", "EE", "ES", "FI", "FR", "GB", "GR", "GT", "HK",
-                                           "HN", "HU", "IE", "IS", "IT", "LI", "LT", "LU", "LV",
-                                           "MC", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "PA",
-                                           "PE", "PH", "PL", "PT", "PY", "RO", "SE", "SG", "SI",
-                                           "SK", "SV", "TR", "TW", "US", "UY" ],
-                    "external_urls": {
-                        "spotify": "https://open.spotify.com/album/6akEvsycLGftJxYudPjmqK"
-                    },
-                    "href": "https://api.spotify.com/v1/albums/6akEvsycLGftJxYudPjmqK",
-                    "id": "6akEvsycLGftJxYudPjmqK",
-                    "images": [
-                        {
-                            "height": 640,
-                            "url": "https://i.scdn.co/image/f2798ddab0c7b76dc2d270b65c4f67ddef7f6718",
-                            "width": 640
-                        },
-                        {
-                            "height": 300,
-                            "url": "https://i.scdn.co/image/b414091165ea0f4172089c2fc67bb35aa37cfc55",
-                            "width": 300
-                        },
-                        {
-                            "height": 64,
-                            "url": "https://i.scdn.co/image/8522fc78be4bf4e83fea8e67bb742e7d3dfe21b4",
-                            "width": 64
-                        }
-                    ],
-                    "name": "Place In The Sun",
-                    "type": "album",
-                    "uri": "spotify:album:6akEvsycLGftJxYudPjmqK"
-                },
-                "artists": [
-                    {
-                        "external_urls": {
-                            "spotify": "https://open.spotify.com/artist/08td7MxkoHQkXnWAYD8d6Q"
-                        },
-                        "href": "https://api.spotify.com/v1/artists/08td7MxkoHQkXnWAYD8d6Q",
-                        "id": "08td7MxkoHQkXnWAYD8d6Q",
-                        "name": "Tania Bowra",
-                        "type": "artist",
-                        "uri": "spotify:artist:08td7MxkoHQkXnWAYD8d6Q"
-                    }
-                ],
-                "available_markets": [ "AD", "AR", "AT", "AU", "BE", "BG", "BO", "BR", "CA", "CH",
-                                       "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "EC", "EE",
-                                       "ES", "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HU", "IE",
-                                       "IS", "IT", "LI", "LT", "LU", "LV", "MC", "MT", "MX", "MY",
-                                       "NI", "NL", "NO", "NZ", "PA", "PE", "PH", "PL", "PT", "PY",
-                                       "RO", "SE", "SG", "SI", "SK", "SV", "TR", "TW", "US", "UY" ],
-                "disc_number": 1,
-                "duration_ms": 230440,
-                "explicit": false,
-                "external_ids": {
-                    "isrc": "AUCR10410008"
-                },
-                "external_urls": {
-                    "spotify": "https://open.spotify.com/track/1Xan3mf1E173v2n4wbQFeO"
-                },
-                "href": "https://api.spotify.com/v1/tracks/1Xan3mf1E173v2n4wbQFeO",
-                "id": "1Xan3mf1E173v2n4wbQFeO",
-                "name": "Easy Way",
-                "popularity": 1,
-                "preview_url": "https://p.scdn.co/mp3-preview/1926686f64b709f529d94b8af39398a7d5551fc8",
-                "track_number": 8,
-                "type": "track",
-                "uri": "spotify:track:1Xan3mf1E173v2n4wbQFeO"
-            },
-            {
-                "album": {
-                    "album_type": "album",
-                    "available_markets": [ "AD", "AR", "AT", "AU", "BE", "BG", "BO", "BR", "CA",
-                                           "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO",
-                                           "EC", "EE", "ES", "FI", "FR", "GB", "GR", "GT", "HK",
-                                           "HN", "HU", "IE", "IS", "IT", "LI", "LT", "LU", "LV",
-                                           "MC", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "PA",
-                                           "PE", "PH", "PL", "PT", "PY", "RO", "SE", "SG", "SI",
-                                           "SK", "SV", "TR", "TW", "US", "UY" ],
-                    "external_urls": {
-                        "spotify": "https://open.spotify.com/album/6akEvsycLGftJxYudPjmqK"
-                    },
-                    "href": "https://api.spotify.com/v1/albums/6akEvsycLGftJxYudPjmqK",
-                    "id": "6akEvsycLGftJxYudPjmqK",
-                    "images": [
-                        {
-                            "height": 640,
-                            "url": "https://i.scdn.co/image/f2798ddab0c7b76dc2d270b65c4f67ddef7f6718",
-                            "width": 640
-                        },
-                        {
-                            "height": 300,
-                            "url": "https://i.scdn.co/image/b414091165ea0f4172089c2fc67bb35aa37cfc55",
-                            "width": 300
-                        },
-                        {
-                            "height": 64,
-                            "url": "https://i.scdn.co/image/8522fc78be4bf4e83fea8e67bb742e7d3dfe21b4",
-                            "width": 64
-                        }
-                    ],
-                    "name": "Place In The Sun",
-                    "type": "album",
-                    "uri": "spotify:album:6akEvsycLGftJxYudPjmqK"
-                },
-                "artists": [
-                    {
-                        "external_urls": {
-                            "spotify": "https://open.spotify.com/artist/08td7MxkoHQkXnWAYD8d6Q"
-                        },
-                        "href": "https://api.spotify.com/v1/artists/08td7MxkoHQkXnWAYD8d6Q",
-                        "id": "08td7MxkoHQkXnWAYD8d6Q",
-                        "name": "Tania Bowra",
-                        "type": "artist",
-                        "uri": "spotify:artist:08td7MxkoHQkXnWAYD8d6Q"
-                    }
-                ],
-                "available_markets": [ "AD", "AR", "AT", "AU", "BE", "BG", "BO", "BR", "CA", "CH",
-                                       "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "EC", "EE",
-                                       "ES", "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HU", "IE",
-                                       "IS", "IT", "LI", "LT", "LU", "LV", "MC", "MT", "MX", "MY",
-                                       "NI", "NL", "NO", "NZ", "PA", "PE", "PH", "PL", "PT", "PY",
-                                       "RO", "SE", "SG", "SI", "SK", "SV", "TR", "TW", "US", "UY" ],
-                "disc_number": 1,
-                "duration_ms": 281320,
-                "explicit": false,
-                "external_ids": {
-                    "isrc": "AUCR10410009"
-                },
-                "external_urls": {
-                    "spotify": "https://open.spotify.com/track/5cBLGuA6AFlZISzkRiE7IT"
-                },
-                "href": "https://api.spotify.com/v1/tracks/5cBLGuA6AFlZISzkRiE7IT",
-                "id": "5cBLGuA6AFlZISzkRiE7IT",
-                "name": "Sympathy",
-                "popularity": 0,
-                "preview_url": "https://p.scdn.co/mp3-preview/b55ab54cf457eb8a178fefbbbf32c52f64be9d5d",
-                "track_number": 9,
-                "type": "track",
-                "uri": "spotify:track:5cBLGuA6AFlZISzkRiE7IT"
-            },
-            {
-                "album": {
-                    "album_type": "album",
-                    "available_markets": [ "AD", "AR", "AT", "AU", "BE", "BG", "BO", "BR", "CA",
-                                           "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO",
-                                           "EC", "EE", "ES", "FI", "FR", "GB", "GR", "GT", "HK",
-                                           "HN", "HU", "IE", "IS", "IT", "LI", "LT", "LU", "LV",
-                                           "MC", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "PA",
-                                           "PE", "PH", "PL", "PT", "PY", "RO", "SE", "SG", "SI",
-                                           "SK", "SV", "TR", "TW", "US", "UY" ],
-                    "external_urls": {
-                        "spotify": "https://open.spotify.com/album/6akEvsycLGftJxYudPjmqK"
-                    },
-                    "href": "https://api.spotify.com/v1/albums/6akEvsycLGftJxYudPjmqK",
-                    "id": "6akEvsycLGftJxYudPjmqK",
-                    "images": [
-                        {
-                            "height": 640,
-                            "url": "https://i.scdn.co/image/f2798ddab0c7b76dc2d270b65c4f67ddef7f6718",
-                            "width": 640
-                        },
-                        {
-                            "height": 300,
-                            "url": "https://i.scdn.co/image/b414091165ea0f4172089c2fc67bb35aa37cfc55",
-                            "width": 300
-                        },
-                        {
-                            "height": 64,
-                            "url": "https://i.scdn.co/image/8522fc78be4bf4e83fea8e67bb742e7d3dfe21b4",
-                            "width": 64
-                        }
-                    ],
-                    "name": "Place In The Sun",
-                    "type": "album",
-                    "uri": "spotify:album:6akEvsycLGftJxYudPjmqK"
-                },
-                "artists": [
-                    {
-                        "external_urls": {
-                            "spotify": "https://open.spotify.com/artist/08td7MxkoHQkXnWAYD8d6Q"
-                        },
-                        "href": "https://api.spotify.com/v1/artists/08td7MxkoHQkXnWAYD8d6Q",
-                        "id": "08td7MxkoHQkXnWAYD8d6Q",
-                        "name": "Tania Bowra",
-                        "type": "artist",
-                        "uri": "spotify:artist:08td7MxkoHQkXnWAYD8d6Q"
-                    }
-                ],
-                "available_markets": [ "AD", "AR", "AT", "AU", "BE", "BG", "BO", "BR", "CA", "CH",
-                                       "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "EC", "EE",
-                                       "ES", "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HU", "IE",
-                                       "IS", "IT", "LI", "LT", "LU", "LV", "MC", "MT", "MX", "MY",
-                                       "NI", "NL", "NO", "NZ", "PA", "PE", "PH", "PL", "PT", "PY",
-                                       "RO", "SE", "SG", "SI", "SK", "SV", "TR", "TW", "US", "UY" ],
-                "disc_number": 1,
-                "duration_ms": 262400,
-                "explicit": false,
-                "external_ids": {
-                    "isrc": "AUCR10410010"
-                },
-                "external_urls": {
-                    "spotify": "https://open.spotify.com/track/3Wlw9nfntmKxVxLMzZeYLB"
-                },
-                "href": "https://api.spotify.com/v1/tracks/3Wlw9nfntmKxVxLMzZeYLB",
-                "id": "3Wlw9nfntmKxVxLMzZeYLB",
-                "name": "Pleasure And Pain",
-                "popularity": 0,
-                "preview_url": "https://p.scdn.co/mp3-preview/df9af685d4481ca17218b351263562f4b774adea",
-                "track_number": 10,
-                "type": "track",
-                "uri": "spotify:track:3Wlw9nfntmKxVxLMzZeYLB"
-            },
-            {
-                "album": {
-                    "album_type": "album",
-                    "available_markets": [ "AD", "AR", "AT", "AU", "BE", "BG", "BO", "BR", "CA",
-                                           "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO",
-                                           "EC", "EE", "ES", "FI", "FR", "GB", "GR", "GT", "HK",
-                                           "HN", "HU", "IE", "IS", "IT", "LI", "LT", "LU", "LV",
-                                           "MC", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "PA",
-                                           "PE", "PH", "PL", "PT", "PY", "RO", "SE", "SG", "SI",
-                                           "SK", "SV", "TR", "TW", "US", "UY" ],
-                    "external_urls": {
-                        "spotify": "https://open.spotify.com/album/6akEvsycLGftJxYudPjmqK"
-                    },
-                    "href": "https://api.spotify.com/v1/albums/6akEvsycLGftJxYudPjmqK",
-                    "id": "6akEvsycLGftJxYudPjmqK",
-                    "images": [
-                        {
-                            "height": 640,
-                            "url": "https://i.scdn.co/image/f2798ddab0c7b76dc2d270b65c4f67ddef7f6718",
-                            "width": 640
-                        },
-                        {
-                            "height": 300,
-                            "url": "https://i.scdn.co/image/b414091165ea0f4172089c2fc67bb35aa37cfc55",
-                            "width": 300
-                        },
-                        {
-                            "height": 64,
-                            "url": "https://i.scdn.co/image/8522fc78be4bf4e83fea8e67bb742e7d3dfe21b4",
-                            "width": 64
-                        }
-                    ],
-                    "name": "Place In The Sun",
-                    "type": "album",
-                    "uri": "spotify:album:6akEvsycLGftJxYudPjmqK"
-                },
-                "artists": [
-                    {
-                        "external_urls": {
-                            "spotify": "https://open.spotify.com/artist/08td7MxkoHQkXnWAYD8d6Q"
-                        },
-                        "href": "https://api.spotify.com/v1/artists/08td7MxkoHQkXnWAYD8d6Q",
-                        "id": "08td7MxkoHQkXnWAYD8d6Q",
-                        "name": "Tania Bowra",
-                        "type": "artist",
-                        "uri": "spotify:artist:08td7MxkoHQkXnWAYD8d6Q"
-                    }
-                ],
-                "available_markets": [ "AD", "AR", "AT", "AU", "BE", "BG", "BO", "BR", "CA", "CH",
-                                       "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "EC", "EE",
-                                       "ES", "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HU", "IE",
-                                       "IS", "IT", "LI", "LT", "LU", "LV", "MC", "MT", "MX", "MY",
-                                       "NI", "NL", "NO", "NZ", "PA", "PE", "PH", "PL", "PT", "PY",
-                                       "RO", "SE", "SG", "SI", "SK", "SV", "TR", "TW", "US", "UY" ],
-                "disc_number": 1,
-                "duration_ms": 240973,
-                "explicit": false,
-                "external_ids": {
-                    "isrc": "AUCR10410011"
-                },
-                "external_urls": {
-                    "spotify": "https://open.spotify.com/track/6DonRyqagGQGdbjMKRy5f7"
-                },
-                "href": "https://api.spotify.com/v1/tracks/6DonRyqagGQGdbjMKRy5f7",
-                "id": "6DonRyqagGQGdbjMKRy5f7",
-                "name": "Peace Like A Summer Breeze",
-                "popularity": 0,
-                "preview_url": "https://p.scdn.co/mp3-preview/77823e8af90501f950c324eb96ac600af8004a36",
-                "track_number": 11,
-                "type": "track",
-                "uri": "spotify:track:6DonRyqagGQGdbjMKRy5f7"
-            },
-            {
-                "album": {
-                    "album_type": "album",
-                    "available_markets": [ "AD", "AR", "AT", "AU", "BE", "BG", "BO", "BR", "CA",
-                                           "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO",
-                                           "EC", "EE", "ES", "FI", "FR", "GB", "GR", "GT", "HK",
-                                           "HN", "HU", "IE", "IS", "IT", "LI", "LT", "LU", "LV",
-                                           "MC", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "PA",
-                                           "PE", "PH", "PL", "PT", "PY", "RO", "SE", "SG", "SI",
-                                           "SK", "SV", "TR", "TW", "US", "UY" ],
-                    "external_urls": {
-                        "spotify": "https://open.spotify.com/album/1FrhRifX9s3sjpkoYG9N81"
-                    },
-                    "href": "https://api.spotify.com/v1/albums/1FrhRifX9s3sjpkoYG9N81",
-                    "id": "1FrhRifX9s3sjpkoYG9N81",
-                    "images": [
-                        {
-                            "height": 640,
-                            "url": "https://i.scdn.co/image/5382502ee28643a22e9082cb680eafde0e45fde8",
-                            "width": 640
-                        },
-                        {
-                            "height": 300,
-                            "url": "https://i.scdn.co/image/407efbd7bb47d6631c8336f8a9f22c6430166d7b",
-                            "width": 300
-                        },
-                        {
-                            "height": 64,
-                            "url": "https://i.scdn.co/image/921622d03631fc53ad93bbd9edf0b11c1597ab41",
-                            "width": 64
-                        }
-                    ],
-                    "name": "The Reverent Jorfy",
-                    "type": "album",
-                    "uri": "spotify:album:1FrhRifX9s3sjpkoYG9N81"
-                },
-                "artists": [
-                    {
-                        "external_urls": {
-                            "spotify": "https://open.spotify.com/artist/0aXuMYPvjBGthmsiknR0DY"
-                        },
-                        "href": "https://api.spotify.com/v1/artists/0aXuMYPvjBGthmsiknR0DY",
-                        "id": "0aXuMYPvjBGthmsiknR0DY",
-                        "name": "Andy Gordon",
-                        "type": "artist",
-                        "uri": "spotify:artist:0aXuMYPvjBGthmsiknR0DY"
-                    },
-                    {
-                        "external_urls": {
-                            "spotify": "https://open.spotify.com/artist/08td7MxkoHQkXnWAYD8d6Q"
-                        },
-                        "href": "https://api.spotify.com/v1/artists/08td7MxkoHQkXnWAYD8d6Q",
-                        "id": "08td7MxkoHQkXnWAYD8d6Q",
-                        "name": "Tania Bowra",
-                        "type": "artist",
-                        "uri": "spotify:artist:08td7MxkoHQkXnWAYD8d6Q"
-                    }
-                ],
-                "available_markets": [ "AD", "AR", "AT", "AU", "BE", "BG", "BO", "BR", "CA", "CH",
-                                       "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "EC", "EE",
-                                       "ES", "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HU", "IE",
-                                       "IS", "IT", "LI", "LT", "LU", "LV", "MC", "MT", "MX", "MY",
-                                       "NI", "NL", "NO", "NZ", "PA", "PE", "PH", "PL", "PT", "PY",
-                                       "RO", "SE", "SG", "SI", "SK", "SV", "TR", "TW", "US", "UY" ],
-                "disc_number": 1,
-                "duration_ms": 282493,
-                "explicit": false,
-                "external_ids": {
-                    "isrc": "GBKPL1373490"
-                },
-                "external_urls": {
-                    "spotify": "https://open.spotify.com/track/2mlNUVIHh7zm66aMx3U2Nv"
-                },
-                "href": "https://api.spotify.com/v1/tracks/2mlNUVIHh7zm66aMx3U2Nv",
-                "id": "2mlNUVIHh7zm66aMx3U2Nv",
-                "name": "Waiting in Vain - Live",
-                "popularity": 0,
-                "preview_url": "https://p.scdn.co/mp3-preview/a49336c90d63698ee372242d11b66e64568458f8",
-                "track_number": 3,
-                "type": "track",
-                "uri": "spotify:track:2mlNUVIHh7zm66aMx3U2Nv"
-            }
-        ],
-        "limit": 20,
-        "next": null,
-        "offset": 0,
-        "previous": null,
-        "total": 12
-    }
+  "tracks" : {
+    "href" : "https://api.spotify.com/v1/search?query=tania+bowra&offset=0&limit=20&type=track",
+    "items" : [ {
+      "album" : {
+        "album_type" : "album",
+        "available_markets" : [ "AD", "AR", "AT", "AU", "BE", "BG", "BO", "BR", "CA", "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "EC", "EE", "ES", "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HU", "IE", "IS", "IT", "LI", "LT", "LU", "LV", "MC", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "PA", "PE", "PH", "PL", "PT", "PY", "RO", "SE", "SG", "SI", "SK", "SV", "TR", "TW", "US", "UY" ],
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/album/6akEvsycLGftJxYudPjmqK"
+        },
+        "href" : "https://api.spotify.com/v1/albums/6akEvsycLGftJxYudPjmqK",
+        "id" : "6akEvsycLGftJxYudPjmqK",
+        "images" : [ {
+          "height" : 640,
+          "url" : "https://i.scdn.co/image/f2798ddab0c7b76dc2d270b65c4f67ddef7f6718",
+          "width" : 640
+        }, {
+          "height" : 300,
+          "url" : "https://i.scdn.co/image/b414091165ea0f4172089c2fc67bb35aa37cfc55",
+          "width" : 300
+        }, {
+          "height" : 64,
+          "url" : "https://i.scdn.co/image/8522fc78be4bf4e83fea8e67bb742e7d3dfe21b4",
+          "width" : 64
+        } ],
+        "name" : "Place In The Sun",
+        "type" : "album",
+        "uri" : "spotify:album:6akEvsycLGftJxYudPjmqK"
+      },
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/08td7MxkoHQkXnWAYD8d6Q"
+        },
+        "href" : "https://api.spotify.com/v1/artists/08td7MxkoHQkXnWAYD8d6Q",
+        "id" : "08td7MxkoHQkXnWAYD8d6Q",
+        "name" : "Tania Bowra",
+        "type" : "artist",
+        "uri" : "spotify:artist:08td7MxkoHQkXnWAYD8d6Q"
+      } ],
+      "available_markets" : [ "AD", "AR", "AT", "AU", "BE", "BG", "BO", "BR", "CA", "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "EC", "EE", "ES", "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HU", "IE", "IS", "IT", "LI", "LT", "LU", "LV", "MC", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "PA", "PE", "PH", "PL", "PT", "PY", "RO", "SE", "SG", "SI", "SK", "SV", "TR", "TW", "US", "UY" ],
+      "disc_number" : 1,
+      "duration_ms" : 276773,
+      "explicit" : false,
+      "external_ids" : {
+        "isrc" : "AUCR10410001"
+      },
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/track/2TpxZ7JUBn3uw46aR7qd6V"
+      },
+      "href" : "https://api.spotify.com/v1/tracks/2TpxZ7JUBn3uw46aR7qd6V",
+      "id" : "2TpxZ7JUBn3uw46aR7qd6V",
+      "name" : "All I Want",
+      "popularity" : 6,
+      "preview_url" : "https://p.scdn.co/mp3-preview/6d00206e32194d15df329d4770e4fa1f2ced3f57",
+      "track_number" : 1,
+      "type" : "track",
+      "uri" : "spotify:track:2TpxZ7JUBn3uw46aR7qd6V"
+    }, {
+      "album" : {
+        "album_type" : "album",
+        "available_markets" : [ "AD", "AR", "AT", "AU", "BE", "BG", "BO", "BR", "CA", "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "EC", "EE", "ES", "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HU", "IE", "IS", "IT", "LI", "LT", "LU", "LV", "MC", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "PA", "PE", "PH", "PL", "PT", "PY", "RO", "SE", "SG", "SI", "SK", "SV", "TR", "TW", "US", "UY" ],
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/album/6akEvsycLGftJxYudPjmqK"
+        },
+        "href" : "https://api.spotify.com/v1/albums/6akEvsycLGftJxYudPjmqK",
+        "id" : "6akEvsycLGftJxYudPjmqK",
+        "images" : [ {
+          "height" : 640,
+          "url" : "https://i.scdn.co/image/f2798ddab0c7b76dc2d270b65c4f67ddef7f6718",
+          "width" : 640
+        }, {
+          "height" : 300,
+          "url" : "https://i.scdn.co/image/b414091165ea0f4172089c2fc67bb35aa37cfc55",
+          "width" : 300
+        }, {
+          "height" : 64,
+          "url" : "https://i.scdn.co/image/8522fc78be4bf4e83fea8e67bb742e7d3dfe21b4",
+          "width" : 64
+        } ],
+        "name" : "Place In The Sun",
+        "type" : "album",
+        "uri" : "spotify:album:6akEvsycLGftJxYudPjmqK"
+      },
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/08td7MxkoHQkXnWAYD8d6Q"
+        },
+        "href" : "https://api.spotify.com/v1/artists/08td7MxkoHQkXnWAYD8d6Q",
+        "id" : "08td7MxkoHQkXnWAYD8d6Q",
+        "name" : "Tania Bowra",
+        "type" : "artist",
+        "uri" : "spotify:artist:08td7MxkoHQkXnWAYD8d6Q"
+      } ],
+      "available_markets" : [ "AD", "AR", "AT", "AU", "BE", "BG", "BO", "BR", "CA", "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "EC", "EE", "ES", "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HU", "IE", "IS", "IT", "LI", "LT", "LU", "LV", "MC", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "PA", "PE", "PH", "PL", "PT", "PY", "RO", "SE", "SG", "SI", "SK", "SV", "TR", "TW", "US", "UY" ],
+      "disc_number" : 1,
+      "duration_ms" : 247680,
+      "explicit" : false,
+      "external_ids" : {
+        "isrc" : "AUCR10410002"
+      },
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/track/4PjcfyZZVE10TFd9EKA72r"
+      },
+      "href" : "https://api.spotify.com/v1/tracks/4PjcfyZZVE10TFd9EKA72r",
+      "id" : "4PjcfyZZVE10TFd9EKA72r",
+      "name" : "Someday",
+      "popularity" : 1,
+      "preview_url" : "https://p.scdn.co/mp3-preview/2b15de922bf4f4b8cfe09c8448079b8ff7a45a5f",
+      "track_number" : 2,
+      "type" : "track",
+      "uri" : "spotify:track:4PjcfyZZVE10TFd9EKA72r"
+    }, {
+      "album" : {
+        "album_type" : "album",
+        "available_markets" : [ "AD", "AR", "AT", "AU", "BE", "BG", "BO", "BR", "CA", "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "EC", "EE", "ES", "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HU", "IE", "IS", "IT", "LI", "LT", "LU", "LV", "MC", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "PA", "PE", "PH", "PL", "PT", "PY", "RO", "SE", "SG", "SI", "SK", "SV", "TR", "TW", "US", "UY" ],
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/album/6akEvsycLGftJxYudPjmqK"
+        },
+        "href" : "https://api.spotify.com/v1/albums/6akEvsycLGftJxYudPjmqK",
+        "id" : "6akEvsycLGftJxYudPjmqK",
+        "images" : [ {
+          "height" : 640,
+          "url" : "https://i.scdn.co/image/f2798ddab0c7b76dc2d270b65c4f67ddef7f6718",
+          "width" : 640
+        }, {
+          "height" : 300,
+          "url" : "https://i.scdn.co/image/b414091165ea0f4172089c2fc67bb35aa37cfc55",
+          "width" : 300
+        }, {
+          "height" : 64,
+          "url" : "https://i.scdn.co/image/8522fc78be4bf4e83fea8e67bb742e7d3dfe21b4",
+          "width" : 64
+        } ],
+        "name" : "Place In The Sun",
+        "type" : "album",
+        "uri" : "spotify:album:6akEvsycLGftJxYudPjmqK"
+      },
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/08td7MxkoHQkXnWAYD8d6Q"
+        },
+        "href" : "https://api.spotify.com/v1/artists/08td7MxkoHQkXnWAYD8d6Q",
+        "id" : "08td7MxkoHQkXnWAYD8d6Q",
+        "name" : "Tania Bowra",
+        "type" : "artist",
+        "uri" : "spotify:artist:08td7MxkoHQkXnWAYD8d6Q"
+      } ],
+      "available_markets" : [ "AD", "AR", "AT", "AU", "BE", "BG", "BO", "BR", "CA", "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "EC", "EE", "ES", "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HU", "IE", "IS", "IT", "LI", "LT", "LU", "LV", "MC", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "PA", "PE", "PH", "PL", "PT", "PY", "RO", "SE", "SG", "SI", "SK", "SV", "TR", "TW", "US", "UY" ],
+      "disc_number" : 1,
+      "duration_ms" : 204093,
+      "explicit" : false,
+      "external_ids" : {
+        "isrc" : "AUCR10410003"
+      },
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/track/2tniUNfN0hmqavFuJ2NodO"
+      },
+      "href" : "https://api.spotify.com/v1/tracks/2tniUNfN0hmqavFuJ2NodO",
+      "id" : "2tniUNfN0hmqavFuJ2NodO",
+      "name" : "Wet Wood",
+      "popularity" : 0,
+      "preview_url" : "https://p.scdn.co/mp3-preview/330aa73c34f81c164f00f7cf4e3de1368e59ff20",
+      "track_number" : 3,
+      "type" : "track",
+      "uri" : "spotify:track:2tniUNfN0hmqavFuJ2NodO"
+    }, {
+      "album" : {
+        "album_type" : "album",
+        "available_markets" : [ "AD", "AR", "AT", "AU", "BE", "BG", "BO", "BR", "CA", "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "EC", "EE", "ES", "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HU", "IE", "IS", "IT", "LI", "LT", "LU", "LV", "MC", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "PA", "PE", "PH", "PL", "PT", "PY", "RO", "SE", "SG", "SI", "SK", "SV", "TR", "TW", "US", "UY" ],
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/album/6akEvsycLGftJxYudPjmqK"
+        },
+        "href" : "https://api.spotify.com/v1/albums/6akEvsycLGftJxYudPjmqK",
+        "id" : "6akEvsycLGftJxYudPjmqK",
+        "images" : [ {
+          "height" : 640,
+          "url" : "https://i.scdn.co/image/f2798ddab0c7b76dc2d270b65c4f67ddef7f6718",
+          "width" : 640
+        }, {
+          "height" : 300,
+          "url" : "https://i.scdn.co/image/b414091165ea0f4172089c2fc67bb35aa37cfc55",
+          "width" : 300
+        }, {
+          "height" : 64,
+          "url" : "https://i.scdn.co/image/8522fc78be4bf4e83fea8e67bb742e7d3dfe21b4",
+          "width" : 64
+        } ],
+        "name" : "Place In The Sun",
+        "type" : "album",
+        "uri" : "spotify:album:6akEvsycLGftJxYudPjmqK"
+      },
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/08td7MxkoHQkXnWAYD8d6Q"
+        },
+        "href" : "https://api.spotify.com/v1/artists/08td7MxkoHQkXnWAYD8d6Q",
+        "id" : "08td7MxkoHQkXnWAYD8d6Q",
+        "name" : "Tania Bowra",
+        "type" : "artist",
+        "uri" : "spotify:artist:08td7MxkoHQkXnWAYD8d6Q"
+      } ],
+      "available_markets" : [ "AD", "AR", "AT", "AU", "BE", "BG", "BO", "BR", "CA", "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "EC", "EE", "ES", "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HU", "IE", "IS", "IT", "LI", "LT", "LU", "LV", "MC", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "PA", "PE", "PH", "PL", "PT", "PY", "RO", "SE", "SG", "SI", "SK", "SV", "TR", "TW", "US", "UY" ],
+      "disc_number" : 1,
+      "duration_ms" : 240253,
+      "explicit" : false,
+      "external_ids" : {
+        "isrc" : "AUCR10410004"
+      },
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/track/1irrhbi54Uwsrky0s3SrPz"
+      },
+      "href" : "https://api.spotify.com/v1/tracks/1irrhbi54Uwsrky0s3SrPz",
+      "id" : "1irrhbi54Uwsrky0s3SrPz",
+      "name" : "Give It 2 Me",
+      "popularity" : 0,
+      "preview_url" : "https://p.scdn.co/mp3-preview/2f0bd7efcd2addda3330990366b81df3fdc37c8c",
+      "track_number" : 4,
+      "type" : "track",
+      "uri" : "spotify:track:1irrhbi54Uwsrky0s3SrPz"
+    }, {
+      "album" : {
+        "album_type" : "album",
+        "available_markets" : [ "AD", "AR", "AT", "AU", "BE", "BG", "BO", "BR", "CA", "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "EC", "EE", "ES", "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HU", "IE", "IS", "IT", "LI", "LT", "LU", "LV", "MC", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "PA", "PE", "PH", "PL", "PT", "PY", "RO", "SE", "SG", "SI", "SK", "SV", "TR", "TW", "US", "UY" ],
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/album/6akEvsycLGftJxYudPjmqK"
+        },
+        "href" : "https://api.spotify.com/v1/albums/6akEvsycLGftJxYudPjmqK",
+        "id" : "6akEvsycLGftJxYudPjmqK",
+        "images" : [ {
+          "height" : 640,
+          "url" : "https://i.scdn.co/image/f2798ddab0c7b76dc2d270b65c4f67ddef7f6718",
+          "width" : 640
+        }, {
+          "height" : 300,
+          "url" : "https://i.scdn.co/image/b414091165ea0f4172089c2fc67bb35aa37cfc55",
+          "width" : 300
+        }, {
+          "height" : 64,
+          "url" : "https://i.scdn.co/image/8522fc78be4bf4e83fea8e67bb742e7d3dfe21b4",
+          "width" : 64
+        } ],
+        "name" : "Place In The Sun",
+        "type" : "album",
+        "uri" : "spotify:album:6akEvsycLGftJxYudPjmqK"
+      },
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/08td7MxkoHQkXnWAYD8d6Q"
+        },
+        "href" : "https://api.spotify.com/v1/artists/08td7MxkoHQkXnWAYD8d6Q",
+        "id" : "08td7MxkoHQkXnWAYD8d6Q",
+        "name" : "Tania Bowra",
+        "type" : "artist",
+        "uri" : "spotify:artist:08td7MxkoHQkXnWAYD8d6Q"
+      } ],
+      "available_markets" : [ "AD", "AR", "AT", "AU", "BE", "BG", "BO", "BR", "CA", "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "EC", "EE", "ES", "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HU", "IE", "IS", "IT", "LI", "LT", "LU", "LV", "MC", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "PA", "PE", "PH", "PL", "PT", "PY", "RO", "SE", "SG", "SI", "SK", "SV", "TR", "TW", "US", "UY" ],
+      "disc_number" : 1,
+      "duration_ms" : 220173,
+      "explicit" : false,
+      "external_ids" : {
+        "isrc" : "AUCR10410005"
+      },
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/track/4JAJ6ujlF593H31kA4UhjR"
+      },
+      "href" : "https://api.spotify.com/v1/tracks/4JAJ6ujlF593H31kA4UhjR",
+      "id" : "4JAJ6ujlF593H31kA4UhjR",
+      "name" : "Be Mine",
+      "popularity" : 0,
+      "preview_url" : "https://p.scdn.co/mp3-preview/271590224d1b24af07b777ffc744191cda49c9b4",
+      "track_number" : 5,
+      "type" : "track",
+      "uri" : "spotify:track:4JAJ6ujlF593H31kA4UhjR"
+    }, {
+      "album" : {
+        "album_type" : "album",
+        "available_markets" : [ "AD", "AR", "AT", "AU", "BE", "BG", "BO", "BR", "CA", "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "EC", "EE", "ES", "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HU", "IE", "IS", "IT", "LI", "LT", "LU", "LV", "MC", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "PA", "PE", "PH", "PL", "PT", "PY", "RO", "SE", "SG", "SI", "SK", "SV", "TR", "TW", "US", "UY" ],
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/album/6akEvsycLGftJxYudPjmqK"
+        },
+        "href" : "https://api.spotify.com/v1/albums/6akEvsycLGftJxYudPjmqK",
+        "id" : "6akEvsycLGftJxYudPjmqK",
+        "images" : [ {
+          "height" : 640,
+          "url" : "https://i.scdn.co/image/f2798ddab0c7b76dc2d270b65c4f67ddef7f6718",
+          "width" : 640
+        }, {
+          "height" : 300,
+          "url" : "https://i.scdn.co/image/b414091165ea0f4172089c2fc67bb35aa37cfc55",
+          "width" : 300
+        }, {
+          "height" : 64,
+          "url" : "https://i.scdn.co/image/8522fc78be4bf4e83fea8e67bb742e7d3dfe21b4",
+          "width" : 64
+        } ],
+        "name" : "Place In The Sun",
+        "type" : "album",
+        "uri" : "spotify:album:6akEvsycLGftJxYudPjmqK"
+      },
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/08td7MxkoHQkXnWAYD8d6Q"
+        },
+        "href" : "https://api.spotify.com/v1/artists/08td7MxkoHQkXnWAYD8d6Q",
+        "id" : "08td7MxkoHQkXnWAYD8d6Q",
+        "name" : "Tania Bowra",
+        "type" : "artist",
+        "uri" : "spotify:artist:08td7MxkoHQkXnWAYD8d6Q"
+      } ],
+      "available_markets" : [ "AD", "AR", "AT", "AU", "BE", "BG", "BO", "BR", "CA", "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "EC", "EE", "ES", "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HU", "IE", "IS", "IT", "LI", "LT", "LU", "LV", "MC", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "PA", "PE", "PH", "PL", "PT", "PY", "RO", "SE", "SG", "SI", "SK", "SV", "TR", "TW", "US", "UY" ],
+      "disc_number" : 1,
+      "duration_ms" : 281946,
+      "explicit" : false,
+      "external_ids" : {
+        "isrc" : "AUCR10410006"
+      },
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/track/6UbiYwgZJrwqB5ILDVk1e5"
+      },
+      "href" : "https://api.spotify.com/v1/tracks/6UbiYwgZJrwqB5ILDVk1e5",
+      "id" : "6UbiYwgZJrwqB5ILDVk1e5",
+      "name" : "Desire",
+      "popularity" : 0,
+      "preview_url" : "https://p.scdn.co/mp3-preview/22ae385689d8ac4f3919ad26057edf215a70e912",
+      "track_number" : 6,
+      "type" : "track",
+      "uri" : "spotify:track:6UbiYwgZJrwqB5ILDVk1e5"
+    }, {
+      "album" : {
+        "album_type" : "album",
+        "available_markets" : [ "AD", "AR", "AT", "AU", "BE", "BG", "BO", "BR", "CA", "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "EC", "EE", "ES", "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HU", "IE", "IS", "IT", "LI", "LT", "LU", "LV", "MC", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "PA", "PE", "PH", "PL", "PT", "PY", "RO", "SE", "SG", "SI", "SK", "SV", "TR", "TW", "US", "UY" ],
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/album/6akEvsycLGftJxYudPjmqK"
+        },
+        "href" : "https://api.spotify.com/v1/albums/6akEvsycLGftJxYudPjmqK",
+        "id" : "6akEvsycLGftJxYudPjmqK",
+        "images" : [ {
+          "height" : 640,
+          "url" : "https://i.scdn.co/image/f2798ddab0c7b76dc2d270b65c4f67ddef7f6718",
+          "width" : 640
+        }, {
+          "height" : 300,
+          "url" : "https://i.scdn.co/image/b414091165ea0f4172089c2fc67bb35aa37cfc55",
+          "width" : 300
+        }, {
+          "height" : 64,
+          "url" : "https://i.scdn.co/image/8522fc78be4bf4e83fea8e67bb742e7d3dfe21b4",
+          "width" : 64
+        } ],
+        "name" : "Place In The Sun",
+        "type" : "album",
+        "uri" : "spotify:album:6akEvsycLGftJxYudPjmqK"
+      },
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/08td7MxkoHQkXnWAYD8d6Q"
+        },
+        "href" : "https://api.spotify.com/v1/artists/08td7MxkoHQkXnWAYD8d6Q",
+        "id" : "08td7MxkoHQkXnWAYD8d6Q",
+        "name" : "Tania Bowra",
+        "type" : "artist",
+        "uri" : "spotify:artist:08td7MxkoHQkXnWAYD8d6Q"
+      } ],
+      "available_markets" : [ "AD", "AR", "AT", "AU", "BE", "BG", "BO", "BR", "CA", "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "EC", "EE", "ES", "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HU", "IE", "IS", "IT", "LI", "LT", "LU", "LV", "MC", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "PA", "PE", "PH", "PL", "PT", "PY", "RO", "SE", "SG", "SI", "SK", "SV", "TR", "TW", "US", "UY" ],
+      "disc_number" : 1,
+      "duration_ms" : 189240,
+      "explicit" : false,
+      "external_ids" : {
+        "isrc" : "AUCR10410007"
+      },
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/track/0WIfmQdGqTbZQjjoSxM8hB"
+      },
+      "href" : "https://api.spotify.com/v1/tracks/0WIfmQdGqTbZQjjoSxM8hB",
+      "id" : "0WIfmQdGqTbZQjjoSxM8hB",
+      "name" : "Eastside",
+      "popularity" : 0,
+      "preview_url" : "https://p.scdn.co/mp3-preview/46b2b6e73675680a136a640fad9b96adb4db37ae",
+      "track_number" : 7,
+      "type" : "track",
+      "uri" : "spotify:track:0WIfmQdGqTbZQjjoSxM8hB"
+    }, {
+      "album" : {
+        "album_type" : "album",
+        "available_markets" : [ "AD", "AR", "AT", "AU", "BE", "BG", "BO", "BR", "CA", "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "EC", "EE", "ES", "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HU", "IE", "IS", "IT", "LI", "LT", "LU", "LV", "MC", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "PA", "PE", "PH", "PL", "PT", "PY", "RO", "SE", "SG", "SI", "SK", "SV", "TR", "TW", "US", "UY" ],
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/album/6akEvsycLGftJxYudPjmqK"
+        },
+        "href" : "https://api.spotify.com/v1/albums/6akEvsycLGftJxYudPjmqK",
+        "id" : "6akEvsycLGftJxYudPjmqK",
+        "images" : [ {
+          "height" : 640,
+          "url" : "https://i.scdn.co/image/f2798ddab0c7b76dc2d270b65c4f67ddef7f6718",
+          "width" : 640
+        }, {
+          "height" : 300,
+          "url" : "https://i.scdn.co/image/b414091165ea0f4172089c2fc67bb35aa37cfc55",
+          "width" : 300
+        }, {
+          "height" : 64,
+          "url" : "https://i.scdn.co/image/8522fc78be4bf4e83fea8e67bb742e7d3dfe21b4",
+          "width" : 64
+        } ],
+        "name" : "Place In The Sun",
+        "type" : "album",
+        "uri" : "spotify:album:6akEvsycLGftJxYudPjmqK"
+      },
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/08td7MxkoHQkXnWAYD8d6Q"
+        },
+        "href" : "https://api.spotify.com/v1/artists/08td7MxkoHQkXnWAYD8d6Q",
+        "id" : "08td7MxkoHQkXnWAYD8d6Q",
+        "name" : "Tania Bowra",
+        "type" : "artist",
+        "uri" : "spotify:artist:08td7MxkoHQkXnWAYD8d6Q"
+      } ],
+      "available_markets" : [ "AD", "AR", "AT", "AU", "BE", "BG", "BO", "BR", "CA", "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "EC", "EE", "ES", "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HU", "IE", "IS", "IT", "LI", "LT", "LU", "LV", "MC", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "PA", "PE", "PH", "PL", "PT", "PY", "RO", "SE", "SG", "SI", "SK", "SV", "TR", "TW", "US", "UY" ],
+      "disc_number" : 1,
+      "duration_ms" : 230440,
+      "explicit" : false,
+      "external_ids" : {
+        "isrc" : "AUCR10410008"
+      },
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/track/1Xan3mf1E173v2n4wbQFeO"
+      },
+      "href" : "https://api.spotify.com/v1/tracks/1Xan3mf1E173v2n4wbQFeO",
+      "id" : "1Xan3mf1E173v2n4wbQFeO",
+      "name" : "Easy Way",
+      "popularity" : 0,
+      "preview_url" : "https://p.scdn.co/mp3-preview/1926686f64b709f529d94b8af39398a7d5551fc8",
+      "track_number" : 8,
+      "type" : "track",
+      "uri" : "spotify:track:1Xan3mf1E173v2n4wbQFeO"
+    }, {
+      "album" : {
+        "album_type" : "album",
+        "available_markets" : [ "AD", "AR", "AT", "AU", "BE", "BG", "BO", "BR", "CA", "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "EC", "EE", "ES", "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HU", "IE", "IS", "IT", "LI", "LT", "LU", "LV", "MC", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "PA", "PE", "PH", "PL", "PT", "PY", "RO", "SE", "SG", "SI", "SK", "SV", "TR", "TW", "US", "UY" ],
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/album/6akEvsycLGftJxYudPjmqK"
+        },
+        "href" : "https://api.spotify.com/v1/albums/6akEvsycLGftJxYudPjmqK",
+        "id" : "6akEvsycLGftJxYudPjmqK",
+        "images" : [ {
+          "height" : 640,
+          "url" : "https://i.scdn.co/image/f2798ddab0c7b76dc2d270b65c4f67ddef7f6718",
+          "width" : 640
+        }, {
+          "height" : 300,
+          "url" : "https://i.scdn.co/image/b414091165ea0f4172089c2fc67bb35aa37cfc55",
+          "width" : 300
+        }, {
+          "height" : 64,
+          "url" : "https://i.scdn.co/image/8522fc78be4bf4e83fea8e67bb742e7d3dfe21b4",
+          "width" : 64
+        } ],
+        "name" : "Place In The Sun",
+        "type" : "album",
+        "uri" : "spotify:album:6akEvsycLGftJxYudPjmqK"
+      },
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/08td7MxkoHQkXnWAYD8d6Q"
+        },
+        "href" : "https://api.spotify.com/v1/artists/08td7MxkoHQkXnWAYD8d6Q",
+        "id" : "08td7MxkoHQkXnWAYD8d6Q",
+        "name" : "Tania Bowra",
+        "type" : "artist",
+        "uri" : "spotify:artist:08td7MxkoHQkXnWAYD8d6Q"
+      } ],
+      "available_markets" : [ "AD", "AR", "AT", "AU", "BE", "BG", "BO", "BR", "CA", "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "EC", "EE", "ES", "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HU", "IE", "IS", "IT", "LI", "LT", "LU", "LV", "MC", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "PA", "PE", "PH", "PL", "PT", "PY", "RO", "SE", "SG", "SI", "SK", "SV", "TR", "TW", "US", "UY" ],
+      "disc_number" : 1,
+      "duration_ms" : 281320,
+      "explicit" : false,
+      "external_ids" : {
+        "isrc" : "AUCR10410009"
+      },
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/track/5cBLGuA6AFlZISzkRiE7IT"
+      },
+      "href" : "https://api.spotify.com/v1/tracks/5cBLGuA6AFlZISzkRiE7IT",
+      "id" : "5cBLGuA6AFlZISzkRiE7IT",
+      "name" : "Sympathy",
+      "popularity" : 0,
+      "preview_url" : "https://p.scdn.co/mp3-preview/b55ab54cf457eb8a178fefbbbf32c52f64be9d5d",
+      "track_number" : 9,
+      "type" : "track",
+      "uri" : "spotify:track:5cBLGuA6AFlZISzkRiE7IT"
+    }, {
+      "album" : {
+        "album_type" : "album",
+        "available_markets" : [ "AD", "AR", "AT", "AU", "BE", "BG", "BO", "BR", "CA", "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "EC", "EE", "ES", "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HU", "IE", "IS", "IT", "LI", "LT", "LU", "LV", "MC", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "PA", "PE", "PH", "PL", "PT", "PY", "RO", "SE", "SG", "SI", "SK", "SV", "TR", "TW", "US", "UY" ],
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/album/6akEvsycLGftJxYudPjmqK"
+        },
+        "href" : "https://api.spotify.com/v1/albums/6akEvsycLGftJxYudPjmqK",
+        "id" : "6akEvsycLGftJxYudPjmqK",
+        "images" : [ {
+          "height" : 640,
+          "url" : "https://i.scdn.co/image/f2798ddab0c7b76dc2d270b65c4f67ddef7f6718",
+          "width" : 640
+        }, {
+          "height" : 300,
+          "url" : "https://i.scdn.co/image/b414091165ea0f4172089c2fc67bb35aa37cfc55",
+          "width" : 300
+        }, {
+          "height" : 64,
+          "url" : "https://i.scdn.co/image/8522fc78be4bf4e83fea8e67bb742e7d3dfe21b4",
+          "width" : 64
+        } ],
+        "name" : "Place In The Sun",
+        "type" : "album",
+        "uri" : "spotify:album:6akEvsycLGftJxYudPjmqK"
+      },
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/08td7MxkoHQkXnWAYD8d6Q"
+        },
+        "href" : "https://api.spotify.com/v1/artists/08td7MxkoHQkXnWAYD8d6Q",
+        "id" : "08td7MxkoHQkXnWAYD8d6Q",
+        "name" : "Tania Bowra",
+        "type" : "artist",
+        "uri" : "spotify:artist:08td7MxkoHQkXnWAYD8d6Q"
+      } ],
+      "available_markets" : [ "AD", "AR", "AT", "AU", "BE", "BG", "BO", "BR", "CA", "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "EC", "EE", "ES", "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HU", "IE", "IS", "IT", "LI", "LT", "LU", "LV", "MC", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "PA", "PE", "PH", "PL", "PT", "PY", "RO", "SE", "SG", "SI", "SK", "SV", "TR", "TW", "US", "UY" ],
+      "disc_number" : 1,
+      "duration_ms" : 262400,
+      "explicit" : false,
+      "external_ids" : {
+        "isrc" : "AUCR10410010"
+      },
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/track/3Wlw9nfntmKxVxLMzZeYLB"
+      },
+      "href" : "https://api.spotify.com/v1/tracks/3Wlw9nfntmKxVxLMzZeYLB",
+      "id" : "3Wlw9nfntmKxVxLMzZeYLB",
+      "name" : "Pleasure And Pain",
+      "popularity" : 0,
+      "preview_url" : "https://p.scdn.co/mp3-preview/df9af685d4481ca17218b351263562f4b774adea",
+      "track_number" : 10,
+      "type" : "track",
+      "uri" : "spotify:track:3Wlw9nfntmKxVxLMzZeYLB"
+    }, {
+      "album" : {
+        "album_type" : "album",
+        "available_markets" : [ "AD", "AR", "AT", "AU", "BE", "BG", "BO", "BR", "CA", "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "EC", "EE", "ES", "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HU", "IE", "IS", "IT", "LI", "LT", "LU", "LV", "MC", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "PA", "PE", "PH", "PL", "PT", "PY", "RO", "SE", "SG", "SI", "SK", "SV", "TR", "TW", "US", "UY" ],
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/album/6akEvsycLGftJxYudPjmqK"
+        },
+        "href" : "https://api.spotify.com/v1/albums/6akEvsycLGftJxYudPjmqK",
+        "id" : "6akEvsycLGftJxYudPjmqK",
+        "images" : [ {
+          "height" : 640,
+          "url" : "https://i.scdn.co/image/f2798ddab0c7b76dc2d270b65c4f67ddef7f6718",
+          "width" : 640
+        }, {
+          "height" : 300,
+          "url" : "https://i.scdn.co/image/b414091165ea0f4172089c2fc67bb35aa37cfc55",
+          "width" : 300
+        }, {
+          "height" : 64,
+          "url" : "https://i.scdn.co/image/8522fc78be4bf4e83fea8e67bb742e7d3dfe21b4",
+          "width" : 64
+        } ],
+        "name" : "Place In The Sun",
+        "type" : "album",
+        "uri" : "spotify:album:6akEvsycLGftJxYudPjmqK"
+      },
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/08td7MxkoHQkXnWAYD8d6Q"
+        },
+        "href" : "https://api.spotify.com/v1/artists/08td7MxkoHQkXnWAYD8d6Q",
+        "id" : "08td7MxkoHQkXnWAYD8d6Q",
+        "name" : "Tania Bowra",
+        "type" : "artist",
+        "uri" : "spotify:artist:08td7MxkoHQkXnWAYD8d6Q"
+      } ],
+      "available_markets" : [ "AD", "AR", "AT", "AU", "BE", "BG", "BO", "BR", "CA", "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "EC", "EE", "ES", "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HU", "IE", "IS", "IT", "LI", "LT", "LU", "LV", "MC", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "PA", "PE", "PH", "PL", "PT", "PY", "RO", "SE", "SG", "SI", "SK", "SV", "TR", "TW", "US", "UY" ],
+      "disc_number" : 1,
+      "duration_ms" : 240973,
+      "explicit" : false,
+      "external_ids" : {
+        "isrc" : "AUCR10410011"
+      },
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/track/6DonRyqagGQGdbjMKRy5f7"
+      },
+      "href" : "https://api.spotify.com/v1/tracks/6DonRyqagGQGdbjMKRy5f7",
+      "id" : "6DonRyqagGQGdbjMKRy5f7",
+      "name" : "Peace Like A Summer Breeze",
+      "popularity" : 0,
+      "preview_url" : "https://p.scdn.co/mp3-preview/77823e8af90501f950c324eb96ac600af8004a36",
+      "track_number" : 11,
+      "type" : "track",
+      "uri" : "spotify:track:6DonRyqagGQGdbjMKRy5f7"
+    }, {
+      "album" : {
+        "album_type" : "album",
+        "available_markets" : [ "AD", "AR", "AT", "AU", "BE", "BG", "BO", "BR", "CA", "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "EC", "EE", "ES", "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HU", "IE", "IS", "IT", "LI", "LT", "LU", "LV", "MC", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "PA", "PE", "PH", "PL", "PT", "PY", "RO", "SE", "SG", "SI", "SK", "SV", "TR", "TW", "US", "UY" ],
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/album/1FrhRifX9s3sjpkoYG9N81"
+        },
+        "href" : "https://api.spotify.com/v1/albums/1FrhRifX9s3sjpkoYG9N81",
+        "id" : "1FrhRifX9s3sjpkoYG9N81",
+        "images" : [ {
+          "height" : 640,
+          "url" : "https://i.scdn.co/image/5382502ee28643a22e9082cb680eafde0e45fde8",
+          "width" : 640
+        }, {
+          "height" : 300,
+          "url" : "https://i.scdn.co/image/407efbd7bb47d6631c8336f8a9f22c6430166d7b",
+          "width" : 300
+        }, {
+          "height" : 64,
+          "url" : "https://i.scdn.co/image/921622d03631fc53ad93bbd9edf0b11c1597ab41",
+          "width" : 64
+        } ],
+        "name" : "The Reverent Jorfy",
+        "type" : "album",
+        "uri" : "spotify:album:1FrhRifX9s3sjpkoYG9N81"
+      },
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/0aXuMYPvjBGthmsiknR0DY"
+        },
+        "href" : "https://api.spotify.com/v1/artists/0aXuMYPvjBGthmsiknR0DY",
+        "id" : "0aXuMYPvjBGthmsiknR0DY",
+        "name" : "Andy Gordon",
+        "type" : "artist",
+        "uri" : "spotify:artist:0aXuMYPvjBGthmsiknR0DY"
+      }, {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/08td7MxkoHQkXnWAYD8d6Q"
+        },
+        "href" : "https://api.spotify.com/v1/artists/08td7MxkoHQkXnWAYD8d6Q",
+        "id" : "08td7MxkoHQkXnWAYD8d6Q",
+        "name" : "Tania Bowra",
+        "type" : "artist",
+        "uri" : "spotify:artist:08td7MxkoHQkXnWAYD8d6Q"
+      } ],
+      "available_markets" : [ "AD", "AR", "AT", "AU", "BE", "BG", "BO", "BR", "CA", "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "EC", "EE", "ES", "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HU", "IE", "IS", "IT", "LI", "LT", "LU", "LV", "MC", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "PA", "PE", "PH", "PL", "PT", "PY", "RO", "SE", "SG", "SI", "SK", "SV", "TR", "TW", "US", "UY" ],
+      "disc_number" : 1,
+      "duration_ms" : 282493,
+      "explicit" : false,
+      "external_ids" : {
+        "isrc" : "GBKPL1373490"
+      },
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/track/2mlNUVIHh7zm66aMx3U2Nv"
+      },
+      "href" : "https://api.spotify.com/v1/tracks/2mlNUVIHh7zm66aMx3U2Nv",
+      "id" : "2mlNUVIHh7zm66aMx3U2Nv",
+      "name" : "Waiting in Vain - Live",
+      "popularity" : 0,
+      "preview_url" : "https://p.scdn.co/mp3-preview/a49336c90d63698ee372242d11b66e64568458f8",
+      "track_number" : 3,
+      "type" : "track",
+      "uri" : "spotify:track:2mlNUVIHh7zm66aMx3U2Nv"
+    }, {
+      "album" : {
+        "album_type" : "album",
+        "available_markets" : [ "AD", "AR", "AT", "AU", "BE", "BG", "BO", "BR", "CA", "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "EC", "EE", "ES", "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HU", "IE", "IS", "IT", "LI", "LT", "LU", "LV", "MC", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "PA", "PE", "PH", "PL", "PT", "PY", "RO", "SE", "SG", "SI", "SK", "SV", "TR", "TW", "US", "UY" ],
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/album/0Aug1oiC3OCRB36i5vb9cF"
+        },
+        "href" : "https://api.spotify.com/v1/albums/0Aug1oiC3OCRB36i5vb9cF",
+        "id" : "0Aug1oiC3OCRB36i5vb9cF",
+        "images" : [ {
+          "height" : 640,
+          "url" : "https://i.scdn.co/image/b0beefc4814a037a66f559b6c109012445366b07",
+          "width" : 640
+        }, {
+          "height" : 300,
+          "url" : "https://i.scdn.co/image/03aadb6928cfb25111062905326e49a257382009",
+          "width" : 300
+        }, {
+          "height" : 64,
+          "url" : "https://i.scdn.co/image/05550407b2aae271df7458f4b68e5833cc8b2e8f",
+          "width" : 64
+        } ],
+        "name" : "Classic ABC TV and Radio Themes from the 1940s to the 2000s",
+        "type" : "album",
+        "uri" : "spotify:album:0Aug1oiC3OCRB36i5vb9cF"
+      },
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/0e3dS02nLZKQtt4VLZeftW"
+        },
+        "href" : "https://api.spotify.com/v1/artists/0e3dS02nLZKQtt4VLZeftW",
+        "id" : "0e3dS02nLZKQtt4VLZeftW",
+        "name" : "Jo Dikkenberg",
+        "type" : "artist",
+        "uri" : "spotify:artist:0e3dS02nLZKQtt4VLZeftW"
+      }, {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/3MmeWog4K7bcbBDtH9pRMZ"
+        },
+        "href" : "https://api.spotify.com/v1/artists/3MmeWog4K7bcbBDtH9pRMZ",
+        "id" : "3MmeWog4K7bcbBDtH9pRMZ",
+        "name" : "Simon Dikkenberg",
+        "type" : "artist",
+        "uri" : "spotify:artist:3MmeWog4K7bcbBDtH9pRMZ"
+      }, {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/6hBzar1iVmDFTdPJVK7nHi"
+        },
+        "href" : "https://api.spotify.com/v1/artists/6hBzar1iVmDFTdPJVK7nHi",
+        "id" : "6hBzar1iVmDFTdPJVK7nHi",
+        "name" : "Angus Evans",
+        "type" : "artist",
+        "uri" : "spotify:artist:6hBzar1iVmDFTdPJVK7nHi"
+      }, {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/14Jrs9wiIqc8CLwanlnzAE"
+        },
+        "href" : "https://api.spotify.com/v1/artists/14Jrs9wiIqc8CLwanlnzAE",
+        "id" : "14Jrs9wiIqc8CLwanlnzAE",
+        "name" : "Jessie Evans",
+        "type" : "artist",
+        "uri" : "spotify:artist:14Jrs9wiIqc8CLwanlnzAE"
+      }, {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/5m9ncNzHo2G0pSO9Ig7VDR"
+        },
+        "href" : "https://api.spotify.com/v1/artists/5m9ncNzHo2G0pSO9Ig7VDR",
+        "id" : "5m9ncNzHo2G0pSO9Ig7VDR",
+        "name" : "Elise Robertson",
+        "type" : "artist",
+        "uri" : "spotify:artist:5m9ncNzHo2G0pSO9Ig7VDR"
+      }, {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/2qrqYFxMVx3ldfHU7sPqq6"
+        },
+        "href" : "https://api.spotify.com/v1/artists/2qrqYFxMVx3ldfHU7sPqq6",
+        "id" : "2qrqYFxMVx3ldfHU7sPqq6",
+        "name" : "Abby Robertson",
+        "type" : "artist",
+        "uri" : "spotify:artist:2qrqYFxMVx3ldfHU7sPqq6"
+      }, {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/3RDDaoYlGYwVWb1Urj3R2W"
+        },
+        "href" : "https://api.spotify.com/v1/artists/3RDDaoYlGYwVWb1Urj3R2W",
+        "id" : "3RDDaoYlGYwVWb1Urj3R2W",
+        "name" : "Ian Bloxsom",
+        "type" : "artist",
+        "uri" : "spotify:artist:3RDDaoYlGYwVWb1Urj3R2W"
+      }, {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/08td7MxkoHQkXnWAYD8d6Q"
+        },
+        "href" : "https://api.spotify.com/v1/artists/08td7MxkoHQkXnWAYD8d6Q",
+        "id" : "08td7MxkoHQkXnWAYD8d6Q",
+        "name" : "Tania Bowra",
+        "type" : "artist",
+        "uri" : "spotify:artist:08td7MxkoHQkXnWAYD8d6Q"
+      }, {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/5710lCMFlwg9OQsZMS60Gu"
+        },
+        "href" : "https://api.spotify.com/v1/artists/5710lCMFlwg9OQsZMS60Gu",
+        "id" : "5710lCMFlwg9OQsZMS60Gu",
+        "name" : "Floyd Vincent",
+        "type" : "artist",
+        "uri" : "spotify:artist:5710lCMFlwg9OQsZMS60Gu"
+      }, {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/3KPvekDiqvi9LAIek6TsAW"
+        },
+        "href" : "https://api.spotify.com/v1/artists/3KPvekDiqvi9LAIek6TsAW",
+        "id" : "3KPvekDiqvi9LAIek6TsAW",
+        "name" : "Mark Gray",
+        "type" : "artist",
+        "uri" : "spotify:artist:3KPvekDiqvi9LAIek6TsAW"
+      } ],
+      "available_markets" : [ "AD", "AR", "AT", "AU", "BE", "BG", "BO", "BR", "CA", "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "EC", "EE", "ES", "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HU", "IE", "IS", "IT", "LI", "LT", "LU", "LV", "MC", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "PA", "PE", "PH", "PL", "PT", "PY", "RO", "SE", "SG", "SI", "SK", "SV", "TR", "TW", "US", "UY" ],
+      "disc_number" : 1,
+      "duration_ms" : 63000,
+      "explicit" : false,
+      "external_ids" : {
+        "isrc" : "AUAB01450416"
+      },
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/track/1RxLnc8Df8fmIDqdfOiel2"
+      },
+      "href" : "https://api.spotify.com/v1/tracks/1RxLnc8Df8fmIDqdfOiel2",
+      "id" : "1RxLnc8Df8fmIDqdfOiel2",
+      "name" : "Mr Squiggle Theme",
+      "popularity" : 2,
+      "preview_url" : "https://p.scdn.co/mp3-preview/d61833a20ede68fa72071614aa53ce10effdfda2",
+      "track_number" : 40,
+      "type" : "track",
+      "uri" : "spotify:track:1RxLnc8Df8fmIDqdfOiel2"
+    } ],
+    "limit" : 20,
+    "next" : null,
+    "offset" : 0,
+    "previous" : null,
+    "total" : 13
+  }
 }

@@ -3,8 +3,9 @@ package com.wrapper.spotify.models;
 import java.util.List;
 
 public class SimpleTrack {
-
   private List<SimpleArtist> artists;
+
+  private List<String> availableMarkets;
   private int discNumber;
   private int duration;
   private boolean explicit;
@@ -16,6 +17,14 @@ public class SimpleTrack {
   private int trackNumber;
   private SpotifyEntityType type = SpotifyEntityType.TRACK;
   private String uri;
+
+  public List<String> getAvailableMarkets() {
+    return availableMarkets;
+  }
+
+  public void setAvailableMarkets(List<String> availableMarkets) {
+    this.availableMarkets = availableMarkets;
+  }
 
   public List<SimpleArtist> getArtists() {
     return artists;
