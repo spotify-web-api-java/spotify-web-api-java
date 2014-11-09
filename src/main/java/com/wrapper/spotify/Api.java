@@ -238,6 +238,12 @@ public class Api {
     return builder;
   }
 
+  /**
+   * Get a playlist.
+   * @param userId The playlist's owner's username.
+   * @param playlistId The playlist's ID.
+   * @return A builder object that can be used to build a request to retrieve a playlist.
+   */
   public PlaylistRequest.Builder getPlaylist(String userId, String playlistId) {
     PlaylistRequest.Builder builder = PlaylistRequest.builder();
     setDefaults(builder);
@@ -245,12 +251,23 @@ public class Api {
     return builder;
   }
 
+  /**
+   * Get information about the user that has given authorization to the application.
+   * @return A builder object that can be used to build a request to retrieve information
+   * about the current user.
+   */
   public CurrentUserRequest.Builder getMe() {
     final CurrentUserRequest.Builder builder = CurrentUserRequest.builder();
     setDefaults(builder);
     return builder;
   }
 
+  /**
+   * Create a playlist.
+   * @param userId The playlist's owner.
+   * @param title The name of the playlist.
+   * @return A builder object that can be used to build a request to create a playlist.
+   */
   public PlaylistCreationRequest.Builder createPlaylist(String userId, String title) {
     final PlaylistCreationRequest.Builder builder = PlaylistCreationRequest.builder();
     setDefaults(builder);
