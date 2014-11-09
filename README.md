@@ -33,14 +33,14 @@ Get the latest version:
 <dependency>
   <groupId>se.michaelthelin.spotify</groupId>
   <artifactId>spotify-web-api-java</artifactId>
-  <version>1.4.9</version>
+  <version>1.4.10</version>
 </dependency>
 ```
 
 #### Gradle users
 
 ```
-compile 'se.michaelthelin.spotify:spotify-web-api-java:1.4.9'
+compile 'se.michaelthelin.spotify:spotify-web-api-java:1.4.10'
 ```
 
 Links to javadocs coming.
@@ -576,6 +576,10 @@ try {
 ```
 
 #### Change log
+
+##### 1.4.10
+
+- Add images to SimplePlaylist object. (Currently only returned from the Get User's Playlists endpoint)
 
 ##### 1.4.9
 
