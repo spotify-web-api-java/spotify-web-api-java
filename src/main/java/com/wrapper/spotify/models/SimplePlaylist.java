@@ -1,11 +1,14 @@
 package com.wrapper.spotify.models;
 
+import java.util.List;
+
 public class SimplePlaylist {
 
   private boolean collaborative;
   private ExternalUrls externalUrls;
   private String href;
   private String id;
+  private List<Image> images;
   private User owner;
   private String name;
   private boolean publicAccess;
@@ -91,5 +94,13 @@ public class SimplePlaylist {
 
   public void setUri(String uri) {
     this.uri = uri;
+  }
+
+  public List<Image> getImages() {
+    return images;
+  }
+
+  public void setImages(List<Image> images) {
+    this.images = images;
   }
 }

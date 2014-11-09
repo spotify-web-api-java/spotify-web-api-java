@@ -445,6 +445,7 @@ public class JsonUtil {
     playlist.setExternalUrls(createExternalUrls(playlistJson.getJSONObject("external_urls")));
     playlist.setHref(playlistJson.getString("href"));
     playlist.setId(playlistJson.getString("id"));
+    playlist.setImages(createImages(playlistJson.getJSONArray("images")));
     playlist.setName(playlistJson.getString("name"));
     playlist.setOwner(createUser(playlistJson.getJSONObject("owner")));
     playlist.setPublicAccess(playlistJson.getBoolean("public"));

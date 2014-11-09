@@ -3,17 +3,23 @@ package com.wrapper.spotify.methods;
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.SettableFuture;
-import org.junit.Test;
+
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.models.Page;
 import com.wrapper.spotify.models.SimplePlaylist;
 import com.wrapper.spotify.models.SpotifyEntityType;
 
+import org.junit.Test;
+
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
-import static junit.framework.TestCase.*;
+import static junit.framework.TestCase.assertEquals;
+import static junit.framework.TestCase.assertNotNull;
+import static junit.framework.TestCase.assertNull;
+import static junit.framework.TestCase.assertTrue;
+import static junit.framework.TestCase.fail;
 
 public class UserPlaylistsRequestTest {
 
@@ -39,17 +45,17 @@ public class UserPlaylistsRequestTest {
       public void onSuccess(Page<SimplePlaylist> playlistsPage) {
         assertTrue(playlistsPage.getTotal() >= 0);
         assertNull(playlistsPage.getNext());
-        assertNull(playlistsPage.getPrevious());
+        assertEquals("https://api.spotify.com/v1/users/wizzler/playlists?offset=0&limit=10", playlistsPage.getPrevious());
         assertEquals(10, playlistsPage.getLimit());
         assertEquals(2, playlistsPage.getOffset());
-        assertEquals("https://api.spotify.com/v1/users/wizzler/playlists", playlistsPage.getHref());
+        assertEquals("https://api.spotify.com/v1/users/wizzler/playlists?offset=2&limit=10", playlistsPage.getHref());
 
         final SimplePlaylist simplePlaylist = playlistsPage.getItems().get(0);
         final String playlistId = simplePlaylist.getId();
         assertNotNull(playlistId);
         assertTrue(playlistId.length() > 0);
         assertEquals(false, simplePlaylist.isCollaborative());
-        assertEquals("http://open.spotify.com/user/wizzler/playlists/" + playlistId, simplePlaylist.getExternalUrls().get("spotify"));
+        assertEquals("http://open.spotify.com/user/wizzler/playlist/" + playlistId, simplePlaylist.getExternalUrls().get("spotify"));
         assertNotNull(simplePlaylist.getName());
         assertNotNull(simplePlaylist.getOwner());
         assertNotNull(simplePlaylist.isPublicAccess());
@@ -57,6 +63,10 @@ public class UserPlaylistsRequestTest {
         assertNotNull(simplePlaylist.getTracks().getTotal());
         assertEquals(SpotifyEntityType.PLAYLIST, simplePlaylist.getType());
         assertEquals("spotify:user:wizzler:playlist:" + playlistId, simplePlaylist.getUri());
+        assertEquals(1, simplePlaylist.getImages().size());
+        assertEquals("https://i.scdn.co/image/418ce596327dc3a0f4d377db80421bffb3b94a9a", simplePlaylist.getImages().get(0).getUrl());
+        assertNull(simplePlaylist.getImages().get(0).getWidth());
+        assertNull(simplePlaylist.getImages().get(0).getHeight());
 
         asyncCompleted.countDown();
       }
@@ -86,17 +96,17 @@ public class UserPlaylistsRequestTest {
 
     assertTrue(playlistsPage.getTotal() >= 0);
     assertNull(playlistsPage.getNext());
-    assertNull(playlistsPage.getPrevious());
+    assertEquals("https://api.spotify.com/v1/users/wizzler/playlists?offset=0&limit=10", playlistsPage.getPrevious());
     assertEquals(10, playlistsPage.getLimit());
     assertEquals(2, playlistsPage.getOffset());
-    assertEquals("https://api.spotify.com/v1/users/wizzler/playlists", playlistsPage.getHref());
+    assertEquals("https://api.spotify.com/v1/users/wizzler/playlists?offset=2&limit=10", playlistsPage.getHref());
 
     final SimplePlaylist simplePlaylist = playlistsPage.getItems().get(0);
     final String playlistId = simplePlaylist.getId();
     assertNotNull(playlistId);
     assertTrue(playlistId.length() > 0);
     assertEquals(false, simplePlaylist.isCollaborative());
-    assertEquals("http://open.spotify.com/user/wizzler/playlists/" + playlistId, simplePlaylist.getExternalUrls().get("spotify"));
+    assertEquals("http://open.spotify.com/user/wizzler/playlist/" + playlistId, simplePlaylist.getExternalUrls().get("spotify"));
     assertNotNull(simplePlaylist.getName());
     assertNotNull(simplePlaylist.getOwner());
     assertNotNull(simplePlaylist.isPublicAccess());
@@ -104,6 +114,10 @@ public class UserPlaylistsRequestTest {
     assertNotNull(simplePlaylist.getTracks().getTotal());
     assertEquals(SpotifyEntityType.PLAYLIST, simplePlaylist.getType());
     assertEquals("spotify:user:wizzler:playlist:" + playlistId, simplePlaylist.getUri());
+    assertEquals(1, simplePlaylist.getImages().size());
+    assertEquals("https://i.scdn.co/image/418ce596327dc3a0f4d377db80421bffb3b94a9a", simplePlaylist.getImages().get(0).getUrl());
+    assertNull(simplePlaylist.getImages().get(0).getWidth());
+    assertNull(simplePlaylist.getImages().get(0).getHeight());
   }
 
 }
