@@ -3,13 +3,14 @@ package com.wrapper.spotify.methods;
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.SettableFuture;
+
+import com.wrapper.spotify.Api;
+import com.wrapper.spotify.TestUtil;
+import com.wrapper.spotify.models.Track;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
-import com.wrapper.spotify.Api;
-import com.wrapper.spotify.TestConfiguration;
-import com.wrapper.spotify.TestUtil;
-import com.wrapper.spotify.models.Track;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
@@ -26,11 +27,9 @@ public class TrackRequestTest {
   public void shouldGetTrackResult_async() throws Exception {
     final Api api = Api.DEFAULT_API;
 
-    final TrackRequest.Builder requestBuilder = api.getTrack("0eGsygTp906u18L0Oimnem");
-    if (TestConfiguration.USE_MOCK_RESPONSES) {
-      requestBuilder.httpManager(TestUtil.MockedHttpManager.returningJson("track.json"));
-    }
-    final TrackRequest request = requestBuilder.build();
+    final TrackRequest request = api.getTrack("0eGsygTp906u18L0Oimnem")
+        .httpManager(TestUtil.MockedHttpManager.returningJson("track.json"))
+        .build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
@@ -58,11 +57,9 @@ public class TrackRequestTest {
   public void shouldGetTrackResult_sync() throws Exception {
     final Api api = Api.DEFAULT_API;
 
-    final TrackRequest.Builder requestBuilder = api.getTrack("0eGsygTp906u18L0Oimnem");
-    if (TestConfiguration.USE_MOCK_RESPONSES) {
-      requestBuilder.httpManager(TestUtil.MockedHttpManager.returningJson("track.json"));
-    }
-    final TrackRequest request = requestBuilder.build();
+    final TrackRequest request = api.getTrack("0eGsygTp906u18L0Oimnem")
+        .httpManager(TestUtil.MockedHttpManager.returningJson("track.json"))
+        .build();
 
     final Track track = request.get();
 

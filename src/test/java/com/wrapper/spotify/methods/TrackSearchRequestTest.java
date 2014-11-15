@@ -3,15 +3,16 @@ package com.wrapper.spotify.methods;
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.SettableFuture;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.runners.MockitoJUnitRunner;
+
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.HttpManager;
-import com.wrapper.spotify.TestConfiguration;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.models.Page;
 import com.wrapper.spotify.models.Track;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.runners.MockitoJUnitRunner;
 
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
@@ -29,11 +30,11 @@ public class TrackSearchRequestTest {
   public void shouldGetTracksResult_async() throws Exception {
     final Api api = Api.DEFAULT_API;
 
-    final TrackSearchRequest.Builder requestBuilder = api.searchTracks("tania bowra").offset(0).limit(20);
-    if (TestConfiguration.USE_MOCK_RESPONSES) {
-      requestBuilder.httpManager(TestUtil.MockedHttpManager.returningJson("search-track.json"));
-    }
-    final TrackSearchRequest request = requestBuilder.build();
+    final TrackSearchRequest request = api.searchTracks("tania bowra")
+        .offset(0)
+        .limit(20)
+        .httpManager(TestUtil.MockedHttpManager.returningJson("search-track.json"))
+        .build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 

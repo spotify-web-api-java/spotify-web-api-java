@@ -5,7 +5,6 @@ import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.SettableFuture;
 
 import com.wrapper.spotify.Api;
-import com.wrapper.spotify.TestConfiguration;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.models.AlbumType;
 import com.wrapper.spotify.models.Page;
@@ -31,17 +30,12 @@ public class AlbumsForArtistsRequestTest {
   public void shouldGetAlbumResultForArtistId_async() throws Exception {
     final Api api = Api.DEFAULT_API;
 
-    final AlbumsForArtistRequest.Builder requestBuilder = api
-        .getAlbumsForArtist("1vCWHaC5f2uS3yhpwWbIA6")
+    final AlbumsForArtistRequest request = api.getAlbumsForArtist("1vCWHaC5f2uS3yhpwWbIA6")
         .limit(2)
         .types(AlbumType.SINGLE)
-        .market("US");
-
-    if (TestConfiguration.USE_MOCK_RESPONSES) {
-      requestBuilder.httpManager(TestUtil.MockedHttpManager.returningJson("artist-album.json"));
-    }
-
-    final AlbumsForArtistRequest request = requestBuilder.build();
+        .market("US")
+        .httpManager(TestUtil.MockedHttpManager.returningJson("artist-album.json"))
+        .build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
@@ -82,16 +76,12 @@ public class AlbumsForArtistsRequestTest {
   public void shouldGetAlbumResultForArtistId_sync() throws Exception {
     final Api api = Api.DEFAULT_API;
 
-    final AlbumsForArtistRequest.Builder requestBuilder = api
-        .getAlbumsForArtist("1vCWHaC5f2uS3yhpwWbIA6")
+    final AlbumsForArtistRequest request = api.getAlbumsForArtist("1vCWHaC5f2uS3yhpwWbIA6")
         .limit(2)
         .types(AlbumType.SINGLE)
-        .market("US");
-
-    if (TestConfiguration.USE_MOCK_RESPONSES) {
-      requestBuilder.httpManager(TestUtil.MockedHttpManager.returningJson("artist-album.json"));
-    }
-    final AlbumsForArtistRequest request = requestBuilder.build();
+        .market("US")
+        .httpManager(TestUtil.MockedHttpManager.returningJson("artist-album.json"))
+        .build();
 
     final Page<SimpleAlbum> albumSearchResult = request.get();
 
