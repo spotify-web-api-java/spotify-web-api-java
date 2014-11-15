@@ -3,13 +3,14 @@ package com.wrapper.spotify.methods;
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.SettableFuture;
+
+import com.wrapper.spotify.Api;
+import com.wrapper.spotify.TestUtil;
+import com.wrapper.spotify.models.User;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
-import com.wrapper.spotify.Api;
-import com.wrapper.spotify.TestConfiguration;
-import com.wrapper.spotify.TestUtil;
-import com.wrapper.spotify.models.User;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
@@ -26,11 +27,9 @@ public class UserRequestTest {
   public void shouldCreateUser_async() throws Exception {
     final Api api = Api.DEFAULT_API;
 
-    final UserRequest.Builder requestBuilder = api.getUser("wizzler");
-    if (TestConfiguration.USE_MOCK_RESPONSES) {
-      requestBuilder.httpManager(TestUtil.MockedHttpManager.returningJson("user.json"));
-    }
-    final UserRequest request = requestBuilder.build();
+    final UserRequest request = api.getUser("wizzler")
+        .httpManager(TestUtil.MockedHttpManager.returningJson("user.json"))
+        .build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
@@ -58,11 +57,9 @@ public class UserRequestTest {
   public void shouldCreateUser_sync() throws Exception {
     final Api api = Api.DEFAULT_API;
 
-    final UserRequest.Builder requestBuilder = api.getUser("wizzler");
-    if (TestConfiguration.USE_MOCK_RESPONSES) {
-      requestBuilder.httpManager(TestUtil.MockedHttpManager.returningJson("user.json"));
-    }
-    final UserRequest request = requestBuilder.build();
+    final UserRequest request = api.getUser("wizzler")
+        .httpManager(TestUtil.MockedHttpManager.returningJson("user.json"))
+        .build();
 
     final User user = request.get();
 

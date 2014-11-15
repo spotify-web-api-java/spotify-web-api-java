@@ -3,16 +3,18 @@ package com.wrapper.spotify.methods;
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.SettableFuture;
-import com.wrapper.spotify.exceptions.BadRequestException;
-import junit.framework.TestCase;
+
+import com.wrapper.spotify.Api;
+import com.wrapper.spotify.TestUtil;
+import com.wrapper.spotify.models.Album;
+import com.wrapper.spotify.models.AlbumType;
+import com.wrapper.spotify.models.Page;
+import com.wrapper.spotify.models.SimpleArtist;
+import com.wrapper.spotify.models.SimpleTrack;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
-import com.wrapper.spotify.Api;
-import com.wrapper.spotify.HttpManager;
-import com.wrapper.spotify.TestConfiguration;
-import com.wrapper.spotify.TestUtil;
-import com.wrapper.spotify.models.*;
 
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
@@ -29,11 +31,9 @@ public class AlbumsRequestTest {
   public void shouldGetAlbumResultForIds_async() throws Exception {
     final Api api = Api.DEFAULT_API;
 
-    final AlbumsRequest.Builder requestBuilder = api.getAlbums("41MnTivkwTO3UUJ8DrqEJJ");
-    if (TestConfiguration.USE_MOCK_RESPONSES) {
-      requestBuilder.httpManager(TestUtil.MockedHttpManager.returningJson("albums.json"));
-    }
-    final AlbumsRequest request = requestBuilder.build();
+    final AlbumsRequest request = api.getAlbums("41MnTivkwTO3UUJ8DrqEJJ")
+        .httpManager(TestUtil.MockedHttpManager.returningJson("albums.json"))
+        .build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
@@ -78,11 +78,9 @@ public class AlbumsRequestTest {
   public void shouldGetAlbumResultForIds_sync() throws Exception {
     final Api api = Api.DEFAULT_API;
 
-    final AlbumsRequest.Builder requestBuilder = api.getAlbums("41MnTivkwTO3UUJ8DrqEJJ");
-    if (TestConfiguration.USE_MOCK_RESPONSES) {
-      requestBuilder.httpManager(TestUtil.MockedHttpManager.returningJson("albums.json"));
-    }
-    final AlbumsRequest request = requestBuilder.build();
+    final AlbumsRequest request = api.getAlbums("41MnTivkwTO3UUJ8DrqEJJ")
+        .httpManager(TestUtil.MockedHttpManager.returningJson("albums.json"))
+        .build();
 
     List<Album> albums = request.get();
 
@@ -111,11 +109,9 @@ public class AlbumsRequestTest {
   public void shouldFailForNotFound_async() throws Exception {
     final Api api = Api.DEFAULT_API;
 
-    final AlbumsRequest.Builder requestBuilder = api.getAlbums("idontexist");
-    if (TestConfiguration.USE_MOCK_RESPONSES) {
-      requestBuilder.httpManager(TestUtil.MockedHttpManager.returningJson("albums-none-found.json"));
-    }
-    final AlbumsRequest request = requestBuilder.build();
+    final AlbumsRequest request = api.getAlbums("idontexist")
+        .httpManager(TestUtil.MockedHttpManager.returningJson("albums-none-found.json"))
+        .build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 

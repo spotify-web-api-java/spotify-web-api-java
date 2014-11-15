@@ -5,7 +5,6 @@ import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.SettableFuture;
 
 import com.wrapper.spotify.Api;
-import com.wrapper.spotify.TestConfiguration;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.models.Page;
 import com.wrapper.spotify.models.PlaylistTrack;
@@ -16,9 +15,11 @@ import org.junit.Test;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
-import static junit.framework.TestCase.*;
 import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertNotNull;
+import static junit.framework.TestCase.assertNull;
+import static junit.framework.TestCase.assertTrue;
+import static junit.framework.TestCase.fail;
 
 public class PlaylistTracksRequestTest {
 
@@ -28,14 +29,10 @@ public class PlaylistTracksRequestTest {
     final Api api = Api.builder().accessToken(accessToken)
             .build();
 
-    final PlaylistTracksRequest.Builder requestBuilder = api
-        .getPlaylistTracks("thelinmichael", "3ktAYNcRHpazJ9qecm3ptn");
-
-    if (TestConfiguration.USE_MOCK_RESPONSES) {
-      requestBuilder.httpManager(TestUtil.MockedHttpManager.returningJson("playlist-tracks.json"));
-    }
-
-    final PlaylistTracksRequest request = requestBuilder.build();
+    final PlaylistTracksRequest request = api
+        .getPlaylistTracks("thelinmichael", "3ktAYNcRHpazJ9qecm3ptn")
+        .httpManager(TestUtil.MockedHttpManager.returningJson("playlist-tracks.json"))
+        .build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
@@ -80,14 +77,10 @@ public class PlaylistTracksRequestTest {
     final Api api = Api.builder().accessToken(accessToken)
             .build();
 
-    final PlaylistTracksRequest.Builder requestBuilder = api
-        .getStarred("thelinmichael");
-
-    if (TestConfiguration.USE_MOCK_RESPONSES) {
-      requestBuilder.httpManager(TestUtil.MockedHttpManager.returningJson("starred-tracks.json"));
-    }
-
-    final PlaylistTracksRequest request = requestBuilder.build();
+    final PlaylistTracksRequest request = api
+        .getStarred("thelinmichael")
+        .httpManager(TestUtil.MockedHttpManager.returningJson("starred-tracks.json"))
+        .build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
@@ -131,13 +124,10 @@ public class PlaylistTracksRequestTest {
     String accessToken = "someToken";
     final Api api = Api.builder().accessToken(accessToken).build();
 
-    final PlaylistTracksRequest.Builder requestBuilder = api
-        .getPlaylistTracks("thelinmichael", "3ktAYNcRHpazJ9qecm3ptn");
-
-    if (TestConfiguration.USE_MOCK_RESPONSES) {
-      requestBuilder.httpManager(TestUtil.MockedHttpManager.returningJson("playlist-tracks.json"));
-    }
-    final PlaylistTracksRequest request = requestBuilder.build();
+    final PlaylistTracksRequest request = api
+        .getPlaylistTracks("thelinmichael", "3ktAYNcRHpazJ9qecm3ptn")
+        .httpManager(TestUtil.MockedHttpManager.returningJson("playlist-tracks.json"))
+        .build();
 
     final Page<PlaylistTrack> page = request.get();
 
@@ -164,12 +154,9 @@ public class PlaylistTracksRequestTest {
     String accessToken = "someToken";
     final Api api = Api.builder().accessToken(accessToken).build();
 
-    final PlaylistTracksRequest.Builder requestBuilder = api.getStarred("thelinmichael");
-
-    if (TestConfiguration.USE_MOCK_RESPONSES) {
-      requestBuilder.httpManager(TestUtil.MockedHttpManager.returningJson("starred-tracks.json"));
-    }
-    final PlaylistTracksRequest request = requestBuilder.build();
+    final PlaylistTracksRequest request = api.getStarred("thelinmichael")
+        .httpManager(TestUtil.MockedHttpManager.returningJson("starred-tracks.json"))
+        .build();
 
     final Page<PlaylistTrack> page = request.get();
 

@@ -3,22 +3,26 @@ package com.wrapper.spotify.methods;
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.SettableFuture;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.runners.MockitoJUnitRunner;
+
 import com.wrapper.spotify.Api;
-import com.wrapper.spotify.TestConfiguration;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.models.Artist;
 import com.wrapper.spotify.models.Page;
 import com.wrapper.spotify.models.SpotifyEntityType;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.runners.MockitoJUnitRunner;
 
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
 import static junit.framework.Assert.assertEquals;
-import static junit.framework.TestCase.*;
+import static junit.framework.TestCase.assertNotNull;
+import static junit.framework.TestCase.assertNull;
+import static junit.framework.TestCase.assertTrue;
+import static junit.framework.TestCase.fail;
 
 @RunWith(MockitoJUnitRunner.class)
 public class ArtistSearchRequestTest {
@@ -27,11 +31,11 @@ public class ArtistSearchRequestTest {
   public void shouldGetArtistsResult_async() throws Exception {
     final Api api = Api.DEFAULT_API;
 
-    final ArtistSearchRequest.Builder requestBuilder = api.searchArtists("tania bowra").limit(20).offset(0);
-    if (TestConfiguration.USE_MOCK_RESPONSES) {
-      requestBuilder.httpManager(TestUtil.MockedHttpManager.returningJson("search-artist.json"));
-    }
-    final ArtistSearchRequest request = requestBuilder.build();
+    final ArtistSearchRequest request = api.searchArtists("tania bowra")
+        .limit(20)
+        .offset(0)
+        .httpManager(TestUtil.MockedHttpManager.returningJson("search-artist.json"))
+        .build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
@@ -76,11 +80,11 @@ public class ArtistSearchRequestTest {
   public void shouldGetArtistsResult_sync() throws Exception {
     final Api api = Api.DEFAULT_API;
 
-    final ArtistSearchRequest.Builder requestBuilder = api.searchArtists("tania bowra");
-    if (TestConfiguration.USE_MOCK_RESPONSES) {
-      requestBuilder.httpManager(TestUtil.MockedHttpManager.returningJson("search-artist.json"));
-    }
-    final ArtistSearchRequest request = requestBuilder.build();
+    final ArtistSearchRequest request = api.searchArtists("tania bowra")
+        .limit(20)
+        .offset(0)
+        .httpManager(TestUtil.MockedHttpManager.returningJson("search-artist.json"))
+        .build();
 
     final Page<Artist> artistSearchResult = request.get();
 
