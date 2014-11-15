@@ -77,9 +77,14 @@ public class ApiTest {
   @Test
   public void shouldHaveMultipleAlbumTypeParametersInArtistsAlbumUrl() {
     Api api = Api.DEFAULT_API;
-    Request request = api.getAlbumsForArtist("4AK6F7OLvEQ5QYCBNiQWHq").types(AlbumType.ALBUM, AlbumType.SINGLE).build();
+    Request request = api.getAlbumsForArtist("4AK6F7OLvEQ5QYCBNiQWHq")
+        .types(AlbumType.ALBUM, AlbumType.SINGLE)
+        .market("SE")
+        .build();
+
     assertEquals("https://api.spotify.com:443/v1/artists/4AK6F7OLvEQ5QYCBNiQWHq/albums", request.toString());
     assertHasParameter(request.toUrl(), "album_type", "ALBUM,SINGLE");
+    assertHasParameter(request.toUrl(), "market", "SE");
   }
 
   @Test
