@@ -36,7 +36,7 @@ public class AlbumsForArtistRequest extends AbstractRequest {
     final String jsonString = getJson();
     final JSONObject jsonObject = JSONObject.fromObject(jsonString);
 
-    return JsonUtil.createSimpleAlbumPage(getJson());
+    return JsonUtil.createSimpleAlbumPage(jsonObject);
   }
 
   public static Builder builder() {
@@ -55,6 +55,11 @@ public class AlbumsForArtistRequest extends AbstractRequest {
       assert (types.length > 0);
       String albumsParameter = Joiner.on(",").join(types).toString();
       return parameter("album_type", albumsParameter);
+    }
+
+    public Builder market(String market) {
+      assert (market != null);
+      return parameter("market", market);
     }
 
     public Builder limit(int limit) {
