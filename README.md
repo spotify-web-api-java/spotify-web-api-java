@@ -33,14 +33,14 @@ Get the latest version:
 <dependency>
   <groupId>se.michaelthelin.spotify</groupId>
   <artifactId>spotify-web-api-java</artifactId>
-  <version>1.4.10</version>
+  <version>1.4.11</version>
 </dependency>
 ```
 
 #### Gradle users
 
 ```
-compile 'se.michaelthelin.spotify:spotify-web-api-java:1.4.10'
+compile 'se.michaelthelin.spotify:spotify-web-api-java:1.4.11'
 ```
 
 Links to javadocs coming.
@@ -576,6 +576,10 @@ try {
 ```
 
 #### Change log
+
+##### 1.4.11
+
+- Add market parameter to [Get Artist's Albums endpoint](https://developer.spotify.com/web-api/get-artists-albums/).
 
 ##### 1.4.10
 
