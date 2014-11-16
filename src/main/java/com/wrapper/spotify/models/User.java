@@ -7,6 +7,7 @@ public class User {
   private String displayName;
   private String email;
   private ExternalUrls externalUrls;
+  private Followers followers;
   private String href;
   private String id;
   private String country;
@@ -93,5 +94,13 @@ public class User {
 
   public void setCountry(String country) {
     this.country = country;
+  }
+
+  public Followers getFollowers() {
+    return followers;
+  }
+
+  public void setFollowers(Followers followers) {
+    this.followers = followers;
   }
 }

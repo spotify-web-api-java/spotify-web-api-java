@@ -13,6 +13,7 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
 import static junit.framework.Assert.*;
+import static junit.framework.TestCase.assertNotNull;
 import static junit.framework.TestCase.fail;
 
 public class CurrentUserRequestTest {
@@ -34,11 +35,14 @@ public class CurrentUserRequestTest {
       @Override
       public void onSuccess(User user) {
         assertNotNull(user);
-        assertNull(user.getDisplayName());
-        assertEquals("thelinmichael@gmail.com", user.getEmail());
-        assertEquals("https://open.spotify.com/user/thelinmichael", user.getExternalUrls().get("spotify"));
+        assertEquals("Michael", user.getDisplayName());
+        assertEquals("thelinmichael+test@gmail.com", user.getEmail());
+        assertEquals("https://open.spotify.com/user/thelinmichael", user.getExternalUrls().get(
+            "spotify"));
         assertEquals("https://api.spotify.com/v1/users/thelinmichael", user.getHref());
         assertEquals("thelinmichael", user.getId());
+        assertEquals("SE", user.getCountry());
+        assertNotNull(user.getFollowers());
         assertNull(user.getImages().get(0).getHeight());
         assertNull(user.getImages().get(0).getWidth());
         assertEquals("http://media.giphy.com/media/Aab07O5PYOmQ/giphy.gif", user.getImages().get(0).getUrl());
@@ -69,11 +73,14 @@ public class CurrentUserRequestTest {
     final User user = request.get();
 
     assertNotNull(user);
-    assertNull(user.getDisplayName());
-    assertEquals("thelinmichael@gmail.com", user.getEmail());
-    assertEquals("https://open.spotify.com/user/thelinmichael", user.getExternalUrls().get("spotify"));
+    assertEquals("Michael", user.getDisplayName());
+    assertEquals("thelinmichael+test@gmail.com", user.getEmail());
+    assertEquals("https://open.spotify.com/user/thelinmichael", user.getExternalUrls().get(
+        "spotify"));
     assertEquals("https://api.spotify.com/v1/users/thelinmichael", user.getHref());
     assertEquals("thelinmichael", user.getId());
+    assertEquals("SE", user.getCountry());
+    assertNotNull(user.getFollowers());
     assertNull(user.getImages().get(0).getHeight());
     assertNull(user.getImages().get(0).getWidth());
     assertEquals("http://media.giphy.com/media/Aab07O5PYOmQ/giphy.gif", user.getImages().get(0).getUrl());
