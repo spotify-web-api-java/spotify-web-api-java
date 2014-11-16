@@ -16,12 +16,13 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
 import static junit.framework.Assert.assertEquals;
+import static junit.framework.TestCase.assertNotNull;
 import static junit.framework.TestCase.assertNull;
+import static junit.framework.TestCase.assertTrue;
 import static junit.framework.TestCase.fail;
 
 @RunWith(MockitoJUnitRunner.class)
 public class UserRequestTest {
-
 
   @Test
   public void shouldCreateUser_async() throws Exception {
@@ -40,6 +41,10 @@ public class UserRequestTest {
       public void onSuccess(User userResult) {
         assertNull(userResult.getEmail());
         assertEquals("wizzler", userResult.getId());
+        assertEquals("https://open.spotify.com/user/wizzler", userResult.getExternalUrls().get("spotify"));
+        assertNotNull(userResult.getFollowers());
+        assertNotNull(userResult.getImages());
+        assertTrue(userResult.getFollowers().getTotal() > 0);
         assertEquals("https://api.spotify.com/v1/users/wizzler", userResult.getHref());
         asyncCompleted.countDown();
       }
@@ -65,6 +70,10 @@ public class UserRequestTest {
 
     assertNull(user.getEmail());
     assertEquals("wizzler", user.getId());
+    assertEquals("https://open.spotify.com/user/wizzler", user.getExternalUrls().get("spotify"));
+    assertNotNull(user.getFollowers());
+    assertNotNull(user.getImages());
+    assertTrue(user.getFollowers().getTotal() > 0);
     assertEquals("https://api.spotify.com/v1/users/wizzler", user.getHref());
   }
 

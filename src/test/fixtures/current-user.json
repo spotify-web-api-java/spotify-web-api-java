@@ -1,8 +1,13 @@
 {
-    "display_name": null,
-    "email": "thelinmichael@gmail.com",
+    "country": "SE",
+    "display_name": "Michael",
+    "email": "thelinmichael+test@gmail.com",
     "external_urls": {
         "spotify": "https://open.spotify.com/user/thelinmichael"
+    },
+    "followers": {
+        "href": null,
+        "total": 17
     },
     "href": "https://api.spotify.com/v1/users/thelinmichael",
     "id": "thelinmichael",

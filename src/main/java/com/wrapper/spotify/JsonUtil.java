@@ -370,6 +370,7 @@ public class JsonUtil {
     user.setId(userJson.getString("id"));
     user.setType(createSpotifyEntityType(userJson.getString("type")));
     user.setUri(userJson.getString("uri"));
+    user.setFollowers(createFollowers(userJson.getJSONObject("followers")));
 
     if (existsAndNotNull("display_name", userJson)) {
       user.setDisplayName(userJson.getString("display_name"));
