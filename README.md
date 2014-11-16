@@ -33,14 +33,14 @@ Get the latest version:
 <dependency>
   <groupId>se.michaelthelin.spotify</groupId>
   <artifactId>spotify-web-api-java</artifactId>
-  <version>1.4.11</version>
+  <version>1.4.12</version>
 </dependency>
 ```
 
 #### Gradle users
 
 ```
-compile 'se.michaelthelin.spotify:spotify-web-api-java:1.4.11'
+compile 'se.michaelthelin.spotify:spotify-web-api-java:1.4.12'
 ```
 
 Links to javadocs coming.
@@ -576,6 +576,10 @@ try {
 ```
 
 #### Change log
+
+##### 1.4.12
+
+- Add [followers](https://developer.spotify.com/web-api/object-model/#followers-object) to [Artist](https://developer.spotify.com/web-api/object-model/#artist-object-full) and [User](https://developer.spotify.com/web-api/object-model/#user-object-private) responses.
 
 ##### 1.4.11
 
