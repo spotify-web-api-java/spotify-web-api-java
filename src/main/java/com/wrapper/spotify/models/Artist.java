@@ -14,6 +14,16 @@ public class Artist {
   private SpotifyEntityType type = SpotifyEntityType.ARTIST;
   private String uri;
 
+  public Followers getFollowers() {
+    return followers;
+  }
+
+  public void setFollowers(Followers followers) {
+    this.followers = followers;
+  }
+
+  private Followers followers;
+
   public ExternalUrls getExternalUrls() {
     return externalUrls;
   }
@@ -85,4 +95,5 @@ public class Artist {
   public void setUri(String uri) {
     this.uri = uri;
   }
+
 }

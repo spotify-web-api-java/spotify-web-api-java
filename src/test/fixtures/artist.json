@@ -1,33 +1,38 @@
 {
-  "external_urls" : {
-    "spotify" : "https://open.spotify.com/artist/0LcJLqbBmaGUft1e9Mm8HV"
-  },
-  "followers" : {
-    "href" : null,
-    "total" : 351416
-  },
-  "genres" : [ ],
-  "href" : "https://api.spotify.com/v1/artists/0LcJLqbBmaGUft1e9Mm8HV",
-  "id" : "0LcJLqbBmaGUft1e9Mm8HV",
-  "images" : [ {
-    "height" : 934,
-    "url" : "https://i.scdn.co/image/1ace43eddbf6010d417d53ce77b584bd6aa11428",
-    "width" : 936
-  }, {
-    "height" : 639,
-    "url" : "https://i.scdn.co/image/c8bf08f8ffc0402b930154368258369612b67e88",
-    "width" : 640
-  }, {
-    "height" : 200,
-    "url" : "https://i.scdn.co/image/2e4302151e258b731a731d909f148c99606a0e3c",
-    "width" : 200
-  }, {
-    "height" : 64,
-    "url" : "https://i.scdn.co/image/7cccb8fe572f8d76e7d3e11e249688ed3c028aed",
-    "width" : 64
-  } ],
-  "name" : "ABBA",
-  "popularity" : 64,
-  "type" : "artist",
-  "uri" : "spotify:artist:0LcJLqbBmaGUft1e9Mm8HV"
+    "external_urls": {
+        "spotify": "https://open.spotify.com/artist/2BTZIqw0ntH9MvilQ3ewNY"
+    },
+    "followers": {
+        "href": null,
+        "total": 87836
+    },
+    "genres": [ "new wave pop", "pop christmas" ],
+    "href": "https://api.spotify.com/v1/artists/2BTZIqw0ntH9MvilQ3ewNY",
+    "id": "2BTZIqw0ntH9MvilQ3ewNY",
+    "images": [
+        {
+            "height": 1242,
+            "url": "https://i.scdn.co/image/dbe7680dd55d8d8ef4f6b55e29cdb69920d2a5d8",
+            "width": 1000
+        },
+        {
+            "height": 795,
+            "url": "https://i.scdn.co/image/ce5b341957ad280c9ef8e9b4f2a206f300463f1b",
+            "width": 640
+        },
+        {
+            "height": 248,
+            "url": "https://i.scdn.co/image/b9bba0707b9e4d942e931860aecbc48ede7626b2",
+            "width": 200
+        },
+        {
+            "height": 79,
+            "url": "https://i.scdn.co/image/a75ca2fb7ea65a02629239d2319812be14b607e5",
+            "width": 64
+        }
+    ],
+    "name": "Cyndi Lauper",
+    "popularity": 64,
+    "type": "artist",
+    "uri": "spotify:artist:2BTZIqw0ntH9MvilQ3ewNY"
 }
