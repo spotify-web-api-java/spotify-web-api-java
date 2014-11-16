@@ -16,7 +16,7 @@ public class JsonUtilTest {
   public void shouldCreateArtist() throws Exception {
     String json = TestUtil.readTestData("artist.json");
     Artist artist = JsonUtil.createArtist(json);
-    assertEquals("https://api.spotify.com/v1/artists/0LcJLqbBmaGUft1e9Mm8HV", artist.getHref());
+    assertEquals("https://api.spotify.com/v1/artists/2BTZIqw0ntH9MvilQ3ewNY", artist.getHref());
   }
 
   @Test

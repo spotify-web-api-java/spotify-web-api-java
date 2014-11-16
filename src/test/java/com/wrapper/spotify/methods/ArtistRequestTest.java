@@ -26,7 +26,7 @@ public class ArtistRequestTest {
   public void shouldGetArtistResult_async() throws Exception {
     final Api api = Api.DEFAULT_API;
 
-    ArtistRequest request = api.getArtist("0LcJLqbBmaGUft1e9Mm8HV")
+    ArtistRequest request = api.getArtist("2BTZIqw0ntH9MvilQ3ewNY")
         .httpManager(TestUtil.MockedHttpManager.returningJson("artist.json"))
         .build();
 
@@ -38,13 +38,15 @@ public class ArtistRequestTest {
       @Override
       public void onSuccess(Artist artist) {
         assertNotNull(artist);
-        assertEquals("https://open.spotify.com/artist/0LcJLqbBmaGUft1e9Mm8HV", artist.getExternalUrls().get("spotify"));
+        assertEquals("https://open.spotify.com/artist/2BTZIqw0ntH9MvilQ3ewNY", artist.getExternalUrls().get("spotify"));
         assertNotNull(artist.getGenres());
-        assertEquals("0LcJLqbBmaGUft1e9Mm8HV", artist.getId());
+        assertEquals("2BTZIqw0ntH9MvilQ3ewNY", artist.getId());
         assertNotNull(artist.getImages());
-        assertEquals("ABBA", artist.getName());
+        assertNotNull(artist.getFollowers());
+        assertTrue(artist.getFollowers().getTotal() >= 0);
+        assertEquals("Cyndi Lauper", artist.getName());
         assertTrue(artist.getPopularity() >= 0 && artist.getPopularity() <= 100);
-        assertEquals("spotify:artist:0LcJLqbBmaGUft1e9Mm8HV", artist.getUri());
+        assertEquals("spotify:artist:2BTZIqw0ntH9MvilQ3ewNY", artist.getUri());
 
         asyncCompleted.countDown();
       }
@@ -59,20 +61,20 @@ public class ArtistRequestTest {
   @Test
   public void shouldGetArtistResult_sync() throws Exception {
     final Api api = Api.DEFAULT_API;
-    ArtistRequest request = api.getArtist("0LcJLqbBmaGUft1e9Mm8HV")
+    ArtistRequest request = api.getArtist("2BTZIqw0ntH9MvilQ3ewNY")
         .httpManager(TestUtil.MockedHttpManager.returningJson("artist.json"))
         .build();
 
     final Artist artist = request.get();
 
     assertNotNull(artist);
-    assertEquals("https://open.spotify.com/artist/0LcJLqbBmaGUft1e9Mm8HV", artist.getExternalUrls().get("spotify"));
+    assertEquals("https://open.spotify.com/artist/2BTZIqw0ntH9MvilQ3ewNY", artist.getExternalUrls().get("spotify"));
     assertNotNull(artist.getGenres());
-    assertEquals("0LcJLqbBmaGUft1e9Mm8HV", artist.getId());
+    assertEquals("2BTZIqw0ntH9MvilQ3ewNY", artist.getId());
     assertNotNull(artist.getImages());
-    assertEquals("ABBA", artist.getName());
+    assertEquals("Cyndi Lauper", artist.getName());
     assertTrue(artist.getPopularity() >= 0 && artist.getPopularity() <= 100);
-    assertEquals("spotify:artist:0LcJLqbBmaGUft1e9Mm8HV", artist.getUri());
+    assertEquals("spotify:artist:2BTZIqw0ntH9MvilQ3ewNY", artist.getUri());
   }
 
 }

@@ -47,6 +47,7 @@ public class JsonUtil {
     artist.setExternalUrls(createExternalUrls(jsonObject.getJSONObject("external_urls")));
     artist.setGenres(createGenres(jsonObject.getJSONArray("genres")));
     artist.setHref(jsonObject.getString("href"));
+    artist.setFollowers(createFollowers(jsonObject.getJSONObject("followers")));
     artist.setId(jsonObject.getString("id"));
     artist.setImages(createImages(jsonObject.getJSONArray("images")));
     artist.setName(jsonObject.getString("name"));
