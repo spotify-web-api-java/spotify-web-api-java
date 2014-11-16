@@ -4,6 +4,7 @@ import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.Api;
+import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.models.Artist;
 import org.junit.Test;
 
@@ -19,8 +20,11 @@ public class RelatedArtistsRequestTest {
   public void shouldGetRelatedArtists_async() throws Exception {
     final Api api = Api.DEFAULT_API;
 
-    final RelatedArtistsRequest.Builder requestBuilder = api.getArtistRelatedArtists("0qeei9KQnptjwb8MgkqEoy");
-    final RelatedArtistsRequest request = requestBuilder.build();
+    final RelatedArtistsRequest request = api
+        .getArtistRelatedArtists("0qeei9KQnptjwb8MgkqEoy")
+        .httpManager(TestUtil.MockedHttpManager.returningJson("related-artists.json"))
+        .build();
+
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
     final SettableFuture<List<Artist>> artistFuture = request.getAsync();
@@ -51,8 +55,10 @@ public class RelatedArtistsRequestTest {
   public void shouldGetRelatedArtists_sync() throws Exception {
     final Api api = Api.DEFAULT_API;
 
-    final RelatedArtistsRequest.Builder requestBuilder = api.getArtistRelatedArtists("0qeei9KQnptjwb8MgkqEoy");
-    final RelatedArtistsRequest request = requestBuilder.build();
+    final RelatedArtistsRequest request = api
+        .getArtistRelatedArtists("0qeei9KQnptjwb8MgkqEoy")
+        .httpManager(TestUtil.MockedHttpManager.returningJson("related-artists.json"))
+        .build();
 
     final List<Artist> artists = request.get();
 

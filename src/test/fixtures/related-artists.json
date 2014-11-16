@@ -1,0 +1,679 @@
+{
+    "artists": [
+        {
+            "external_urls": {
+                "spotify": "https://open.spotify.com/artist/2DsNd8GBB1y1J0XMq0nT6s"
+            },
+            "followers": {
+                "href": null,
+                "total": 4236
+            },
+            "genres": [ ],
+            "href": "https://api.spotify.com/v1/artists/2DsNd8GBB1y1J0XMq0nT6s",
+            "id": "2DsNd8GBB1y1J0XMq0nT6s",
+            "images": [
+                {
+                    "height": 640,
+                    "url": "https://i.scdn.co/image/29b0eb64d281f8f8b86c65e521426a9402768304",
+                    "width": 640
+                },
+                {
+                    "height": 300,
+                    "url": "https://i.scdn.co/image/ae0c5e082c36b688f9f40e1f659243e37047a662",
+                    "width": 300
+                },
+                {
+                    "height": 64,
+                    "url": "https://i.scdn.co/image/2e9a0ed2053b96b1daee60cadbf8829e0f825b88",
+                    "width": 64
+                }
+            ],
+            "name": "Lilla Namo",
+            "popularity": 30,
+            "type": "artist",
+            "uri": "spotify:artist:2DsNd8GBB1y1J0XMq0nT6s"
+        },
+        {
+            "external_urls": {
+                "spotify": "https://open.spotify.com/artist/7iXy0wugsZgVfKxl4amtad"
+            },
+            "followers": {
+                "href": null,
+                "total": 1512
+            },
+            "genres": [ ],
+            "href": "https://api.spotify.com/v1/artists/7iXy0wugsZgVfKxl4amtad",
+            "id": "7iXy0wugsZgVfKxl4amtad",
+            "images": [
+                {
+                    "height": 640,
+                    "url": "https://i.scdn.co/image/395a7f8a6738246248aa88667ed21257de5663f8",
+                    "width": 640
+                },
+                {
+                    "height": 300,
+                    "url": "https://i.scdn.co/image/93768804984a58b7c2cb47c4e7a4079df6017f97",
+                    "width": 300
+                },
+                {
+                    "height": 64,
+                    "url": "https://i.scdn.co/image/27efb5254fd7bdde1f031ad7edc569527baaa4c3",
+                    "width": 64
+                }
+            ],
+            "name": "Adam Kanyama",
+            "popularity": 30,
+            "type": "artist",
+            "uri": "spotify:artist:7iXy0wugsZgVfKxl4amtad"
+        },
+        {
+            "external_urls": {
+                "spotify": "https://open.spotify.com/artist/1fhvwCr1HKEZgZYOrfsHyk"
+            },
+            "followers": {
+                "href": null,
+                "total": 41492
+            },
+            "genres": [ "swedish hip hop" ],
+            "href": "https://api.spotify.com/v1/artists/1fhvwCr1HKEZgZYOrfsHyk",
+            "id": "1fhvwCr1HKEZgZYOrfsHyk",
+            "images": [
+                {
+                    "height": 640,
+                    "url": "https://i.scdn.co/image/c25e328b8cf01767fd4ef651dd3eacd95ffc02b8",
+                    "width": 640
+                },
+                {
+                    "height": 300,
+                    "url": "https://i.scdn.co/image/ed5083a3c5b6d5a7afbfe7b170b7814fa071dc32",
+                    "width": 300
+                },
+                {
+                    "height": 64,
+                    "url": "https://i.scdn.co/image/c25463da2ccbf717b39228f59cde69bbd240be60",
+                    "width": 64
+                }
+            ],
+            "name": "Ison & Fille",
+            "popularity": 42,
+            "type": "artist",
+            "uri": "spotify:artist:1fhvwCr1HKEZgZYOrfsHyk"
+        },
+        {
+            "external_urls": {
+                "spotify": "https://open.spotify.com/artist/4XLISC9SzRTcR34fosyMtw"
+            },
+            "followers": {
+                "href": null,
+                "total": 12555
+            },
+            "genres": [ ],
+            "href": "https://api.spotify.com/v1/artists/4XLISC9SzRTcR34fosyMtw",
+            "id": "4XLISC9SzRTcR34fosyMtw",
+            "images": [
+                {
+                    "height": 640,
+                    "url": "https://i.scdn.co/image/02409d320e2b3f07f2c8e6c649e36d130cf27485",
+                    "width": 640
+                },
+                {
+                    "height": 300,
+                    "url": "https://i.scdn.co/image/07363f367e609db2a74a67b6501c160595f2c1d2",
+                    "width": 300
+                },
+                {
+                    "height": 64,
+                    "url": "https://i.scdn.co/image/0d305b23861bf5916e6facfc76ea25f47067132c",
+                    "width": 64
+                }
+            ],
+            "name": "Stor",
+            "popularity": 48,
+            "type": "artist",
+            "uri": "spotify:artist:4XLISC9SzRTcR34fosyMtw"
+        },
+        {
+            "external_urls": {
+                "spotify": "https://open.spotify.com/artist/3GulSpXnCkqwVDg45tyly4"
+            },
+            "followers": {
+                "href": null,
+                "total": 1126
+            },
+            "genres": [ ],
+            "href": "https://api.spotify.com/v1/artists/3GulSpXnCkqwVDg45tyly4",
+            "id": "3GulSpXnCkqwVDg45tyly4",
+            "images": [
+                {
+                    "height": 640,
+                    "url": "https://i.scdn.co/image/bf735e40e537d8ccc2b9b4a4a3154255eeaaa9b3",
+                    "width": 640
+                },
+                {
+                    "height": 300,
+                    "url": "https://i.scdn.co/image/933c86538d62c0220577f9dbed4b55083a8533eb",
+                    "width": 300
+                },
+                {
+                    "height": 64,
+                    "url": "https://i.scdn.co/image/1e3cba88a95bfbc466099407c09c98bbc6964fe7",
+                    "width": 64
+                }
+            ],
+            "name": "Mack Beats",
+            "popularity": 12,
+            "type": "artist",
+            "uri": "spotify:artist:3GulSpXnCkqwVDg45tyly4"
+        },
+        {
+            "external_urls": {
+                "spotify": "https://open.spotify.com/artist/1SwDFc5jX708XR3XtzLrRs"
+            },
+            "followers": {
+                "href": null,
+                "total": 1877
+            },
+            "genres": [ ],
+            "href": "https://api.spotify.com/v1/artists/1SwDFc5jX708XR3XtzLrRs",
+            "id": "1SwDFc5jX708XR3XtzLrRs",
+            "images": [
+                {
+                    "height": 600,
+                    "url": "https://i.scdn.co/image/54cc6c06d512b779a6bf053e3a5d67280e12e8af",
+                    "width": 600
+                },
+                {
+                    "height": 300,
+                    "url": "https://i.scdn.co/image/4b76cc57847dd2c9614862a26e3ce4b5adb0669c",
+                    "width": 300
+                },
+                {
+                    "height": 64,
+                    "url": "https://i.scdn.co/image/5b2abdece2d8ab73e9408b8d582a93d8c932a88c",
+                    "width": 64
+                }
+            ],
+            "name": "Cleo",
+            "popularity": 45,
+            "type": "artist",
+            "uri": "spotify:artist:1SwDFc5jX708XR3XtzLrRs"
+        },
+        {
+            "external_urls": {
+                "spotify": "https://open.spotify.com/artist/2vJo3bWY09MoK1QrRZD1wf"
+            },
+            "followers": {
+                "href": null,
+                "total": 25539
+            },
+            "genres": [ ],
+            "href": "https://api.spotify.com/v1/artists/2vJo3bWY09MoK1QrRZD1wf",
+            "id": "2vJo3bWY09MoK1QrRZD1wf",
+            "images": [
+                {
+                    "height": 800,
+                    "url": "https://i.scdn.co/image/46df4969dfe928c6f87b0898e1343f0fb45caa75",
+                    "width": 800
+                },
+                {
+                    "height": 640,
+                    "url": "https://i.scdn.co/image/41d8685e9676491b1c1127370d39433f44f0272d",
+                    "width": 640
+                },
+                {
+                    "height": 200,
+                    "url": "https://i.scdn.co/image/e8d63b102360510e473bdf5ffebcd90066ab9425",
+                    "width": 200
+                },
+                {
+                    "height": 64,
+                    "url": "https://i.scdn.co/image/a20ed515c5aeffff541704173e5838a3ec3e52e6",
+                    "width": 64
+                }
+            ],
+            "name": "Stress",
+            "popularity": 31,
+            "type": "artist",
+            "uri": "spotify:artist:2vJo3bWY09MoK1QrRZD1wf"
+        },
+        {
+            "external_urls": {
+                "spotify": "https://open.spotify.com/artist/0PwLAFedFpxos2G2tlZ2ES"
+            },
+            "followers": {
+                "href": null,
+                "total": 8483
+            },
+            "genres": [ ],
+            "href": "https://api.spotify.com/v1/artists/0PwLAFedFpxos2G2tlZ2ES",
+            "id": "0PwLAFedFpxos2G2tlZ2ES",
+            "images": [
+                {
+                    "height": 640,
+                    "url": "https://i.scdn.co/image/6b2977fc135c89f56fd2ff7b97e8203267aa0972",
+                    "width": 640
+                },
+                {
+                    "height": 300,
+                    "url": "https://i.scdn.co/image/326ae4df279438d546175dee1cd1672c9018f88e",
+                    "width": 300
+                },
+                {
+                    "height": 64,
+                    "url": "https://i.scdn.co/image/0c9a60941c5d7e1ae05878df6896d069d4e6788c",
+                    "width": 64
+                }
+            ],
+            "name": "Mohammed Ali",
+            "popularity": 42,
+            "type": "artist",
+            "uri": "spotify:artist:0PwLAFedFpxos2G2tlZ2ES"
+        },
+        {
+            "external_urls": {
+                "spotify": "https://open.spotify.com/artist/2EBLZoR071bKhHfe4TNKPi"
+            },
+            "followers": {
+                "href": null,
+                "total": 5717
+            },
+            "genres": [ ],
+            "href": "https://api.spotify.com/v1/artists/2EBLZoR071bKhHfe4TNKPi",
+            "id": "2EBLZoR071bKhHfe4TNKPi",
+            "images": [
+                {
+                    "height": 640,
+                    "url": "https://i.scdn.co/image/4eff1115c470962ca42195ef0b7b227386c7d51f",
+                    "width": 640
+                },
+                {
+                    "height": 300,
+                    "url": "https://i.scdn.co/image/9ce81b1b3eb80609617b4786ea26915cdcb65dea",
+                    "width": 300
+                },
+                {
+                    "height": 64,
+                    "url": "https://i.scdn.co/image/af5322e4596050d9e7dae8439a2eb9e001c14540",
+                    "width": 64
+                }
+            ],
+            "name": "Nimo",
+            "popularity": 40,
+            "type": "artist",
+            "uri": "spotify:artist:2EBLZoR071bKhHfe4TNKPi"
+        },
+        {
+            "external_urls": {
+                "spotify": "https://open.spotify.com/artist/0zKX6nlK1A4ZmztnFPOKGs"
+            },
+            "followers": {
+                "href": null,
+                "total": 14237
+            },
+            "genres": [ ],
+            "href": "https://api.spotify.com/v1/artists/0zKX6nlK1A4ZmztnFPOKGs",
+            "id": "0zKX6nlK1A4ZmztnFPOKGs",
+            "images": [
+                {
+                    "height": 640,
+                    "url": "https://i.scdn.co/image/b1d3c376d40a75f327e5d85e27383ae945736531",
+                    "width": 640
+                },
+                {
+                    "height": 300,
+                    "url": "https://i.scdn.co/image/070196f575ee5953793a0c00027c7a2418204169",
+                    "width": 300
+                },
+                {
+                    "height": 64,
+                    "url": "https://i.scdn.co/image/d18dab8fad5a42b5f9a1a14b81d8374589de546d",
+                    "width": 64
+                }
+            ],
+            "name": "Aleks",
+            "popularity": 47,
+            "type": "artist",
+            "uri": "spotify:artist:0zKX6nlK1A4ZmztnFPOKGs"
+        },
+        {
+            "external_urls": {
+                "spotify": "https://open.spotify.com/artist/4bPYBBm0Wog0otoKLayjtA"
+            },
+            "followers": {
+                "href": null,
+                "total": 2676
+            },
+            "genres": [ ],
+            "href": "https://api.spotify.com/v1/artists/4bPYBBm0Wog0otoKLayjtA",
+            "id": "4bPYBBm0Wog0otoKLayjtA",
+            "images": [
+                {
+                    "height": 640,
+                    "url": "https://i.scdn.co/image/1a8e87afbefeba1d4f90bc6b0e5eccd0e23dc076",
+                    "width": 640
+                },
+                {
+                    "height": 300,
+                    "url": "https://i.scdn.co/image/e5e971786e156ed14db352fee2700bce83088a0d",
+                    "width": 300
+                },
+                {
+                    "height": 64,
+                    "url": "https://i.scdn.co/image/77739368cf7302dc530ec573f4de08bc27baaf77",
+                    "width": 64
+                }
+            ],
+            "name": "Sjukstugan",
+            "popularity": 16,
+            "type": "artist",
+            "uri": "spotify:artist:4bPYBBm0Wog0otoKLayjtA"
+        },
+        {
+            "external_urls": {
+                "spotify": "https://open.spotify.com/artist/0RLWJI1UwVofxre5k3py4a"
+            },
+            "followers": {
+                "href": null,
+                "total": 23107
+            },
+            "genres": [ ],
+            "href": "https://api.spotify.com/v1/artists/0RLWJI1UwVofxre5k3py4a",
+            "id": "0RLWJI1UwVofxre5k3py4a",
+            "images": [
+                {
+                    "height": 640,
+                    "url": "https://i.scdn.co/image/93591fd4c123a42dbdba589a7b62f7ba40ee350a",
+                    "width": 640
+                },
+                {
+                    "height": 300,
+                    "url": "https://i.scdn.co/image/35cef2997b341ff3fb86bd5038108a330be56d59",
+                    "width": 300
+                },
+                {
+                    "height": 64,
+                    "url": "https://i.scdn.co/image/98d7d910670c93281c5218a581ee45c5a59f951f",
+                    "width": 64
+                }
+            ],
+            "name": "Malcolm B",
+            "popularity": 29,
+            "type": "artist",
+            "uri": "spotify:artist:0RLWJI1UwVofxre5k3py4a"
+        },
+        {
+            "external_urls": {
+                "spotify": "https://open.spotify.com/artist/35d3Aul9hFSE78GafjvzSc"
+            },
+            "followers": {
+                "href": null,
+                "total": 1147
+            },
+            "genres": [ ],
+            "href": "https://api.spotify.com/v1/artists/35d3Aul9hFSE78GafjvzSc",
+            "id": "35d3Aul9hFSE78GafjvzSc",
+            "images": [
+                {
+                    "height": 600,
+                    "url": "https://i.scdn.co/image/65ede9731294d4734164eb3f03b1ad6501485e00",
+                    "width": 600
+                },
+                {
+                    "height": 300,
+                    "url": "https://i.scdn.co/image/8b2d0f111f9d014a11a98c74585f6583c27b1879",
+                    "width": 300
+                },
+                {
+                    "height": 64,
+                    "url": "https://i.scdn.co/image/a2fe34d24f161e57c68e60d16b145e95a233fa81",
+                    "width": 64
+                }
+            ],
+            "name": "Carlito",
+            "popularity": 29,
+            "type": "artist",
+            "uri": "spotify:artist:35d3Aul9hFSE78GafjvzSc"
+        },
+        {
+            "external_urls": {
+                "spotify": "https://open.spotify.com/artist/7iL5mYnDruJbcp1eSq961R"
+            },
+            "followers": {
+                "href": null,
+                "total": 5338
+            },
+            "genres": [ ],
+            "href": "https://api.spotify.com/v1/artists/7iL5mYnDruJbcp1eSq961R",
+            "id": "7iL5mYnDruJbcp1eSq961R",
+            "images": [
+                {
+                    "height": 640,
+                    "url": "https://i.scdn.co/image/5cd129e898736c19f0cd58ef58d8349b25eda646",
+                    "width": 640
+                },
+                {
+                    "height": 300,
+                    "url": "https://i.scdn.co/image/62ddf6852031b9d13bd960116862db359a15decf",
+                    "width": 300
+                },
+                {
+                    "height": 64,
+                    "url": "https://i.scdn.co/image/3a1e6bb71936c114cc905a8a0609c55c2b8660f5",
+                    "width": 64
+                }
+            ],
+            "name": "Grillat & Grändy",
+            "popularity": 19,
+            "type": "artist",
+            "uri": "spotify:artist:7iL5mYnDruJbcp1eSq961R"
+        },
+        {
+            "external_urls": {
+                "spotify": "https://open.spotify.com/artist/58RMTlPJKbmpmVk1AmRK3h"
+            },
+            "followers": {
+                "href": null,
+                "total": 3688
+            },
+            "genres": [ ],
+            "href": "https://api.spotify.com/v1/artists/58RMTlPJKbmpmVk1AmRK3h",
+            "id": "58RMTlPJKbmpmVk1AmRK3h",
+            "images": [
+                {
+                    "height": 640,
+                    "url": "https://i.scdn.co/image/ccbb1e3bea2461e69783895e880965b171e29f4c",
+                    "width": 640
+                },
+                {
+                    "height": 300,
+                    "url": "https://i.scdn.co/image/2210b7d23f320a2cab2736bd3b3b948415dd21d8",
+                    "width": 300
+                },
+                {
+                    "height": 64,
+                    "url": "https://i.scdn.co/image/609153aca7f4760136d97fbaccdb4ec0757e4c9e",
+                    "width": 64
+                }
+            ],
+            "name": "Abidaz",
+            "popularity": 40,
+            "type": "artist",
+            "uri": "spotify:artist:58RMTlPJKbmpmVk1AmRK3h"
+        },
+        {
+            "external_urls": {
+                "spotify": "https://open.spotify.com/artist/5s77Nldm0GrOQkMIElogdo"
+            },
+            "followers": {
+                "href": null,
+                "total": 75595
+            },
+            "genres": [ ],
+            "href": "https://api.spotify.com/v1/artists/5s77Nldm0GrOQkMIElogdo",
+            "id": "5s77Nldm0GrOQkMIElogdo",
+            "images": [
+                {
+                    "height": 563,
+                    "url": "https://i.scdn.co/image/a7c597d712bf7b1fad8eb479818b53d4878c06b1",
+                    "width": 1000
+                },
+                {
+                    "height": 360,
+                    "url": "https://i.scdn.co/image/70dedd6a9b74dc54167426835649362706d69d55",
+                    "width": 640
+                },
+                {
+                    "height": 113,
+                    "url": "https://i.scdn.co/image/d8cdec2dde5e3b3c3ef98627986077747a5ead75",
+                    "width": 200
+                },
+                {
+                    "height": 36,
+                    "url": "https://i.scdn.co/image/1b85a2c358e190571c756b6c285f408ee17f74a1",
+                    "width": 64
+                }
+            ],
+            "name": "Labyrint",
+            "popularity": 45,
+            "type": "artist",
+            "uri": "spotify:artist:5s77Nldm0GrOQkMIElogdo"
+        },
+        {
+            "external_urls": {
+                "spotify": "https://open.spotify.com/artist/0Z1nKfR8WO3qdRBlIF2cY4"
+            },
+            "followers": {
+                "href": null,
+                "total": 4651
+            },
+            "genres": [ ],
+            "href": "https://api.spotify.com/v1/artists/0Z1nKfR8WO3qdRBlIF2cY4",
+            "id": "0Z1nKfR8WO3qdRBlIF2cY4",
+            "images": [
+                {
+                    "height": 563,
+                    "url": "https://i.scdn.co/image/c90cc1a57e0428a3817bbc04bf21fdb354d72cfc",
+                    "width": 1000
+                },
+                {
+                    "height": 360,
+                    "url": "https://i.scdn.co/image/2fd35c8f7582a2939f67c36d0f34c23987fc49ba",
+                    "width": 640
+                },
+                {
+                    "height": 113,
+                    "url": "https://i.scdn.co/image/3df12a421e20fb71e6ba4279e2a1c45819546642",
+                    "width": 200
+                },
+                {
+                    "height": 36,
+                    "url": "https://i.scdn.co/image/1d0e6cd9284f15601be1fef5d4adae94c553810b",
+                    "width": 64
+                }
+            ],
+            "name": "SödraSidan",
+            "popularity": 31,
+            "type": "artist",
+            "uri": "spotify:artist:0Z1nKfR8WO3qdRBlIF2cY4"
+        },
+        {
+            "external_urls": {
+                "spotify": "https://open.spotify.com/artist/3ujXkgub3lQl8BkDrehTPM"
+            },
+            "followers": {
+                "href": null,
+                "total": 1992
+            },
+            "genres": [ ],
+            "href": "https://api.spotify.com/v1/artists/3ujXkgub3lQl8BkDrehTPM",
+            "id": "3ujXkgub3lQl8BkDrehTPM",
+            "images": [
+                {
+                    "height": 640,
+                    "url": "https://i.scdn.co/image/b4254dc995cfc8b3190394db3c4b7a4cf870b94b",
+                    "width": 640
+                },
+                {
+                    "height": 300,
+                    "url": "https://i.scdn.co/image/9f858629ec65a826377b7b83464861244c373029",
+                    "width": 300
+                },
+                {
+                    "height": 64,
+                    "url": "https://i.scdn.co/image/f85e432d30e62f2aa28b5c43b75ba48f7319fdfd",
+                    "width": 64
+                }
+            ],
+            "name": "Mash Up International",
+            "popularity": 17,
+            "type": "artist",
+            "uri": "spotify:artist:3ujXkgub3lQl8BkDrehTPM"
+        },
+        {
+            "external_urls": {
+                "spotify": "https://open.spotify.com/artist/76ViH9hMBGfdwkmp1wYay5"
+            },
+            "followers": {
+                "href": null,
+                "total": 28219
+            },
+            "genres": [ ],
+            "href": "https://api.spotify.com/v1/artists/76ViH9hMBGfdwkmp1wYay5",
+            "id": "76ViH9hMBGfdwkmp1wYay5",
+            "images": [
+                {
+                    "height": 640,
+                    "url": "https://i.scdn.co/image/bd6028b72cfd219efca5853751b284070739e521",
+                    "width": 640
+                },
+                {
+                    "height": 300,
+                    "url": "https://i.scdn.co/image/c162a96b1657507d98497bd2b3f839bc9a535fd7",
+                    "width": 300
+                },
+                {
+                    "height": 64,
+                    "url": "https://i.scdn.co/image/bcc904628a3a13516ae5ca7a916707b09a2fa651",
+                    "width": 64
+                }
+            ],
+            "name": "Syster Sol",
+            "popularity": 43,
+            "type": "artist",
+            "uri": "spotify:artist:76ViH9hMBGfdwkmp1wYay5"
+        },
+        {
+            "external_urls": {
+                "spotify": "https://open.spotify.com/artist/5ILMkt5lW4KAyTXMNYWaGF"
+            },
+            "followers": {
+                "href": null,
+                "total": 14276
+            },
+            "genres": [ ],
+            "href": "https://api.spotify.com/v1/artists/5ILMkt5lW4KAyTXMNYWaGF",
+            "id": "5ILMkt5lW4KAyTXMNYWaGF",
+            "images": [
+                {
+                    "height": 640,
+                    "url": "https://i.scdn.co/image/6ad26f5cd12afb532db2e4ea4adbf6e8460c1a03",
+                    "width": 640
+                },
+                {
+                    "height": 300,
+                    "url": "https://i.scdn.co/image/7b81ec9aab0247c6f9abde75f36210d2aebdb2e3",
+                    "width": 300
+                },
+                {
+                    "height": 64,
+                    "url": "https://i.scdn.co/image/006b9009c42323491d229fb0d104aeaa4b8efa94",
+                    "width": 64
+                }
+            ],
+            "name": "Dani M",
+            "popularity": 56,
+            "type": "artist",
+            "uri": "spotify:artist:5ILMkt5lW4KAyTXMNYWaGF"
+        }
+    ]
+}
