@@ -13,6 +13,7 @@ It includes helper functions to do:
 - Retrieval of a user's playlists
 - Playlist creation
 - Adding tracks to a playlist
+- Change a playlist's details
 
 Some methods require authentication, which can be done using these flows:
 
@@ -561,7 +562,7 @@ try {
 ##### [Create a playlist](https://developer.spotify.com/spotify-web-api/create-playlist/)
 
 ```java
-final PlaylistCreationRequest request = api.createPlaylist("thelinmichael","title")
+final PlaylistCreationRequest request = api.createPlaylist("thelinmichael", "title")
   .publicAccess(true)
   .build();
 
@@ -575,7 +576,28 @@ try {
 }
 ```
 
+##### [Change a Playlist's details](https://developer.spotify.com/web-api/change-playlist-details/)
+```java
+final Api api = Api.builder().accessToken(accessToken).build();
+
+ChangePlaylistDetailsRequest request = api
+  .changePlaylistDetails("thelinmichael", "3ktAYNcRHpazJ9qecm3ptn")
+  .publicAccess(true)
+  .name("Testing playlist name change")
+  .build();
+
+try {
+  String response = request.get();
+} catch (Exception e) {
+  System.out.println("Something went wrong!" + e.getMessage());
+}
+```
+
 #### Change log
+
+##### 1.4.13
+
+- Add [Change a Playlist's Details](https://developer.spotify.com/web-api/change-playlist-details/) endpoint.
 
 ##### 1.4.12
 

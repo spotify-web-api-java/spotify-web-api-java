@@ -7,6 +7,7 @@ import com.wrapper.spotify.exceptions.ServerErrorException;
 import com.wrapper.spotify.exceptions.WebApiException;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 
 /**
  * A simple HTTP connection interface.
@@ -35,8 +36,8 @@ public interface HttpManager {
 
   /**
    * Perform an HTTP DELETE request to the specified URL.
-   *
-   * @param url the {@link Url} to HTTP DELEte.
+   * TODO: Not implemented.
+   * @param url the {@link Url} to HTTP DELETE.
    * @return a String containing the body of the HTTP DELETE response.
    */
   String delete(Url url);
@@ -46,7 +47,9 @@ public interface HttpManager {
    *
    * @param url the {@link Url} to HTTP PUT.
    * @return a String containing the body of the HTTP PUTresponse.
+   * @throws WebApiException In case of error replies from the Web API.
+   * @throws IOException In case of networking issues.
    */
-  String put(Url url);
+  String put(Url url) throws IOException, WebApiException;
 
 }

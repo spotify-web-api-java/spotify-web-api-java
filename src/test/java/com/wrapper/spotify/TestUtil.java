@@ -46,6 +46,7 @@ public class TestUtil {
       final HttpManager mockedHttpManager = mock(HttpManager.class);
       when(mockedHttpManager.get((UtilProtos.Url) any())).thenReturn(returnedString);
       when(mockedHttpManager.post((UtilProtos.Url) any())).thenReturn(returnedString);
+      when(mockedHttpManager.put((UtilProtos.Url) any())).thenReturn(returnedString);
 
       return mockedHttpManager;
     }

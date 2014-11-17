@@ -1,11 +1,9 @@
 package com.wrapper.spotify.methods;
 
 import com.google.common.util.concurrent.SettableFuture;
-import com.wrapper.spotify.JsonUtil;
-import com.wrapper.spotify.exceptions.EmptyResponseException;
+
 import com.wrapper.spotify.exceptions.WebApiException;
-import com.wrapper.spotify.models.Playlist;
-import com.wrapper.spotify.models.SimplePlaylist;
+
 import net.sf.json.JSONObject;
 
 import java.io.IOException;
@@ -26,6 +24,7 @@ public class AddTrackToPlaylistRequest extends AbstractRequest {
   public SettableFuture<String> getAsync() {
     final SettableFuture<String> addTrackFuture = SettableFuture.create();
 
+    // TODO(michael): Clean up!
     try {
       final String jsonString = postJson();
       if ("".equals(jsonString)) {
@@ -42,9 +41,9 @@ public class AddTrackToPlaylistRequest extends AbstractRequest {
 
   public String get() throws IOException, WebApiException {
     final String jsonString = postJson();
-    if("".equals(jsonString)){
+    if ("".equals(jsonString)) {
       return defaultSuccessStringResponse;
-    }else{
+    } else {
       return defaultFailureStringResponse;
     }
   }
