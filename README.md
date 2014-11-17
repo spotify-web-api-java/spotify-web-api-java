@@ -34,14 +34,14 @@ Get the latest version:
 <dependency>
   <groupId>se.michaelthelin.spotify</groupId>
   <artifactId>spotify-web-api-java</artifactId>
-  <version>1.4.12</version>
+  <version>1.4.13</version>
 </dependency>
 ```
 
 #### Gradle users
 
 ```
-compile 'se.michaelthelin.spotify:spotify-web-api-java:1.4.12'
+compile 'se.michaelthelin.spotify:spotify-web-api-java:1.4.13'
 ```
 
 Links to javadocs coming.
