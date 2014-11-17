@@ -324,6 +324,13 @@ public class Api {
     }
   }
 
+  /**
+   * Add tracks to a playlist.
+   * @param userId The owner's username.
+   * @param playlistId The playlist's ID.
+   * @param trackUris URIs of the tracks to add.
+   * @return A builder object that can e used to buidl a request to add tracks to a playlist.
+   */
   public AddTrackToPlaylistRequest.Builder addTracksToPlaylist(String userId, String playlistId, List<String> trackUris) {
     final AddTrackToPlaylistRequest.Builder builder = AddTrackToPlaylistRequest.builder();
     setDefaults(builder);
@@ -331,6 +338,17 @@ public class Api {
     jsonArrayUri.addAll(trackUris);
     builder.body(jsonArrayUri);
     builder.path("/v1/users/" + userId + "/playlists/" + playlistId + "/tracks");
+    return builder;
+  }
+
+  /**
+   * Update a playlist's properties.
+   *
+   */
+  public ChangePlaylistDetailsRequest.Builder changePlaylistDetails(String userId, String playlistId) {
+    final ChangePlaylistDetailsRequest.Builder builder = ChangePlaylistDetailsRequest.builder();
+    setDefaults(builder);
+    builder.path("/v1/users/" + userId + "/playlists/" + playlistId);
     return builder;
   }
 

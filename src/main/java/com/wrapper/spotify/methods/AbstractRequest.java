@@ -37,6 +37,9 @@ public abstract class AbstractRequest implements Request {
     return httpManager.post(url);
   }
 
+  public String putJson() throws IOException, WebApiException {
+    return httpManager.put(url);
+  }
 
   public AbstractRequest(Builder<?> builder) {
     assert (builder.path != null);

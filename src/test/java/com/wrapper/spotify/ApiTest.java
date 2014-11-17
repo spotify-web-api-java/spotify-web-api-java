@@ -3,6 +3,12 @@ package com.wrapper.spotify;
 import com.wrapper.spotify.UtilProtos.Url.Scheme;
 import com.wrapper.spotify.methods.Request;
 import com.wrapper.spotify.models.AlbumType;
+
+import junit.framework.Assert;
+
+import net.sf.json.JSON;
+import net.sf.json.JSONObject;
+
 import org.apache.commons.codec.binary.Base64;
 import org.junit.Test;
 
@@ -342,6 +348,34 @@ public class ApiTest {
     assertHasHeader(request.toUrl(), "Content-Type", "application/json");
     assertHasJsonBody(request.toUrl(), "[\"spotify:track:4BYGxv4rxSNcTgT3DsFB9o\",\"spotify:tracks:0BG2iE6McPhmAEKIhfqy1X\"]");
     assertHasParameter(request.toUrl(), "position", String.valueOf(insertIndex));
+    assertHasHeader(request.toUrl(), "Authorization", "Bearer " + accessToken);
+  }
+
+  @Test
+  public void shouldCreateChangePlaylistDetailsUrl() {
+    final String accessToken = "myVeryLongAccessToken";
+    final Api api = Api.builder().accessToken(accessToken).build();
+
+    final String myUsername = "thelinmichael";
+    final String myPlaylistId = "5ieJqeLJjjI8iJWaxeBLuK";
+
+    final boolean isPublic = false;
+    final String name = "Testing name change";
+
+    final Request request = api.changePlaylistDetails(myUsername, myPlaylistId)
+        .publicAccess(isPublic)
+        .name(name)
+        .build();
+
+    assertEquals("https://api.spotify.com:443/v1/users/thelinmichael/playlists/" + myPlaylistId,
+                 request.toString());
+    assertHasHeader(request.toUrl(), "Authorization", "Bearer " + accessToken);
+    assertHasHeader(request.toUrl(), "Content-Type", "application/json");
+
+    JSONObject jsonBody = JSONObject.fromObject(request.toUrl().getJsonBody().toString());
+    assertEquals(name, jsonBody.getString("name"));
+    assertEquals(isPublic, jsonBody.getBoolean("public"));
+
     assertHasHeader(request.toUrl(), "Authorization", "Bearer " + accessToken);
   }
 

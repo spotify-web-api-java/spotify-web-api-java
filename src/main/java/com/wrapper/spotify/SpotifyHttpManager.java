@@ -8,12 +8,14 @@ import org.apache.commons.httpclient.*;
 import org.apache.commons.httpclient.cookie.CookiePolicy;
 import org.apache.commons.httpclient.methods.GetMethod;
 import org.apache.commons.httpclient.methods.PostMethod;
+import org.apache.commons.httpclient.methods.PutMethod;
 import org.apache.commons.httpclient.methods.StringRequestEntity;
 import org.apache.commons.httpclient.params.HttpMethodParams;
 import com.wrapper.spotify.UtilProtos.Url;
 import com.wrapper.spotify.exceptions.EmptyResponseException;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -70,6 +72,34 @@ public class SpotifyHttpManager implements HttpManager {
       method.setRequestEntity(requestEntity);
     } else {
       method.setRequestBody(getBodyParametersAsNamedValuePairArray(url));
+    }
+    method.setQueryString(getParametersAsNamedValuePairArray(url));
+    method.getParams().setCookiePolicy(CookiePolicy.BROWSER_COMPATIBILITY);
+    method.getParams().setParameter(HttpMethodParams.HTTP_CONTENT_CHARSET, "UTF-8");
+
+    return execute(method);
+  }
+
+  @Override
+  public String put(UtilProtos.Url url) throws IOException, WebApiException {
+    assert (url != null);
+
+    final String uri = UrlUtil.assemble(url);
+    final PutMethod method = new PutMethod(uri);
+
+    for (Url.Parameter header : url.getHeaderParametersList()) {
+      method.setRequestHeader(header.getName(), header.getValue());
+    }
+
+    if (url.hasJsonBody()) {
+
+      StringRequestEntity requestEntity = new StringRequestEntity(
+          url.getJsonBody(),
+          "application/json",
+          "UTF-8");
+      method.setRequestEntity(requestEntity);
+    } else {
+      method.setRequestBody(String.valueOf(getBodyParametersAsNamedValuePairArray(url)));
     }
     method.setQueryString(getParametersAsNamedValuePairArray(url));
     method.getParams().setCookiePolicy(CookiePolicy.BROWSER_COMPATIBILITY);
@@ -147,11 +177,6 @@ public class SpotifyHttpManager implements HttpManager {
 
   @Override
   public String delete(UtilProtos.Url url) {
-    throw new RuntimeException("Not implemented");
-  }
-
-  @Override
-  public String put(UtilProtos.Url url) {
     throw new RuntimeException("Not implemented");
   }
 
