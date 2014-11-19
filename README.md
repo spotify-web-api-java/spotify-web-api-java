@@ -609,16 +609,15 @@ try {
 
 ##### [Get User's Saved Tracks](https://developer.spotify.com/web-api/get-users-saved-tracks/)
 ```java
-final Api api = Api.builder().accessToken("someAccessToken").build();
+Api api = Api.builder().accessToken(accessToken).build();
 
-final GetMySavedTracksRequest request = api.getMySavedTracks()
+GetMySavedTracksRequest request = api.getMySavedTracks()
     .limit(5)
     .offset(1)
-    .httpManager(TestUtil.MockedHttpManager.returningJson("saved-tracks.json"))
     .build();
 
 try {
-  final Page<LibraryTrack> libraryTracks = request.get();
+  Page<LibraryTrack> libraryTracks = request.get();
 } catch (Exception e) {
   System.out.println("Something went wrong!" + e.getMessage());
 }
