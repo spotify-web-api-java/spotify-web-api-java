@@ -476,5 +476,23 @@ public class ApiTest {
     assertEquals("https://accounts.spotify.com:443/authorize?client_id=fcecfc79122e4cd299473677a17cbd4d&response_type=code&redirect_uri=http://www.michaelthelin.se/test-callback&scope=user-read-private%20user-read-email&state=someExpectedStateString&show_dialog=false", authorizeURL);
   }
 
+  @Test
+  public void shouldCreateGetMyTracksURL() {
+    final String accessToken = "myAccessToken";
 
+    final Api api = Api.builder()
+        .accessToken(accessToken)
+        .build();
+
+    final Request request = api
+        .getMySavedTracks()
+        .limit(5)
+        .offset(1)
+        .build();
+
+    assertEquals("https://api.spotify.com:443/v1/me/tracks", request.toString());
+    assertHasParameter(request.toUrl(), "limit", "5");
+    assertHasParameter(request.toUrl(), "offset", "1");
+    assertHasHeader(request.toUrl(), "Authorization", "Bearer " + accessToken);
+  }
 }

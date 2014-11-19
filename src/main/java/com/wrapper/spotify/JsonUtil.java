@@ -1,6 +1,29 @@
 package com.wrapper.spotify;
 
-import com.wrapper.spotify.models.*;
+import com.wrapper.spotify.models.Album;
+import com.wrapper.spotify.models.AlbumType;
+import com.wrapper.spotify.models.Artist;
+import com.wrapper.spotify.models.AuthorizationCodeCredentials;
+import com.wrapper.spotify.models.ClientCredentials;
+import com.wrapper.spotify.models.ExternalIds;
+import com.wrapper.spotify.models.ExternalUrls;
+import com.wrapper.spotify.models.Followers;
+import com.wrapper.spotify.models.Image;
+import com.wrapper.spotify.models.LibraryTrack;
+import com.wrapper.spotify.models.Page;
+import com.wrapper.spotify.models.Playlist;
+import com.wrapper.spotify.models.PlaylistTrack;
+import com.wrapper.spotify.models.PlaylistTracksInformation;
+import com.wrapper.spotify.models.Product;
+import com.wrapper.spotify.models.RefreshAccessTokenCredentials;
+import com.wrapper.spotify.models.SimpleAlbum;
+import com.wrapper.spotify.models.SimpleArtist;
+import com.wrapper.spotify.models.SimplePlaylist;
+import com.wrapper.spotify.models.SimpleTrack;
+import com.wrapper.spotify.models.SpotifyEntityType;
+import com.wrapper.spotify.models.Track;
+import com.wrapper.spotify.models.User;
+
 import net.sf.json.JSONArray;
 import net.sf.json.JSONException;
 import net.sf.json.JSONNull;
@@ -8,7 +31,11 @@ import net.sf.json.JSONObject;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
+import java.util.TimeZone;
 
 public class JsonUtil {
 
@@ -561,6 +588,33 @@ public class JsonUtil {
   private static boolean existsAndNotNull(String key, JSONObject jsonObject) {
     return jsonObject.containsKey(key) &&
            !JSONNull.getInstance().equals(jsonObject.get(key));
+  }
+
+  public static Page<LibraryTrack> createLibraryTracksPage(JSONObject jsonObject) {
+    final Page<LibraryTrack> libraryTracksPage = createItemlessPage(jsonObject);
+    libraryTracksPage.setItems(createLibraryTracks(
+        JSONArray.fromObject(jsonObject.getJSONArray("items"))));
+
+    return libraryTracksPage;
+  }
+
+  private static List<LibraryTrack> createLibraryTracks(JSONArray items) {
+    final List<LibraryTrack> returnedLibraryTracks = new ArrayList<LibraryTrack>();
+    for (int i = 0; i < items.size(); i++) {
+      returnedLibraryTracks.add(createLibraryTrack(items.getJSONObject(i)));
+    }
+    return returnedLibraryTracks;
+  }
+
+  private static LibraryTrack createLibraryTrack(JSONObject item) {
+    final LibraryTrack returnedLibraryTrack = new LibraryTrack();
+    try {
+      returnedLibraryTrack.setAddedAt(createDate(item.getString("added_at")));
+    } catch (ParseException e) {
+      returnedLibraryTrack.setAddedAt(null);
+    }
+    returnedLibraryTrack.setTrack(createTrack(item.getJSONObject("track")));
+    return returnedLibraryTrack;
   }
 
 }
