@@ -329,7 +329,7 @@ public class Api {
    * @param userId The owner's username.
    * @param playlistId The playlist's ID.
    * @param trackUris URIs of the tracks to add.
-   * @return A builder object that can e used to buidl a request to add tracks to a playlist.
+   * @return A builder object that can e used to build a request to add tracks to a playlist.
    */
   public AddTrackToPlaylistRequest.Builder addTracksToPlaylist(String userId, String playlistId, List<String> trackUris) {
     final AddTrackToPlaylistRequest.Builder builder = AddTrackToPlaylistRequest.builder();
@@ -343,12 +343,26 @@ public class Api {
 
   /**
    * Update a playlist's properties.
-   *
+   * @param userId The owner's username.
+   * @param playlistId The playlist's ID.
+   * @return A builder object that can be used to build a request to change a playlist's details.
    */
   public ChangePlaylistDetailsRequest.Builder changePlaylistDetails(String userId, String playlistId) {
     final ChangePlaylistDetailsRequest.Builder builder = ChangePlaylistDetailsRequest.builder();
     setDefaults(builder);
     builder.path("/v1/users/" + userId + "/playlists/" + playlistId);
+    return builder;
+  }
+
+  /**
+   * Get a users Your Music tracks.
+   * @param userId The owner of the Your Music library to retrieve.
+   * @return A builder object that can be used to build a request to get the user's Your Music library.
+   */
+  public GetMySavedTracksRequest.Builder getMySavedTracks() {
+    final GetMySavedTracksRequest.Builder builder = GetMySavedTracksRequest.builder();
+    setDefaults(builder);
+    builder.path("/v1/me/tracks");
     return builder;
   }
 
