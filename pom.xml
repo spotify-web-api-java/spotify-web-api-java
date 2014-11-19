@@ -7,7 +7,7 @@
 
     <groupId>se.michaelthelin.spotify</groupId>
     <artifactId>spotify-web-api-java</artifactId>
-    <version>1.4.14</version>
+    <version>1.4.15-SNAPSHOT</version>
 
     <packaging>jar</packaging>
 
