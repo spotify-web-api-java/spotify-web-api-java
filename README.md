@@ -1,19 +1,31 @@
 Spotify Web API Java [![Build Status](https://travis-ci.org/thelinmichael/spotify-web-api-java.svg?branch=master)](https://travis-ci.org/thelinmichael/spotify-web-api-java)
 ==================
 
-This is a Java wrapper for the [Spotify Web API](https://developer.spotify.com/spotify-web-api/).
+This is a Java wrapper/client for the [Spotify Web API](https://developer.spotify.com/spotify-web-api/).
 
 It includes helper functions to do:
 
-- Album, artist, track, user, playlist lookup
-- Album lookup for a specific artist
+#### Music metadata
+- Albums, artists, and tracks
+- Albums for a specific artist
 - Top tracks for a specific artist
-- Artists related to a given artist
-- Album, artist and track search
-- Retrieval of a user's playlists
-- Playlist creation
-- Adding tracks to a playlist
-- Change a playlist's details
+- Artists similar to a specific artist
+
+#### Profiles
+- User's emails, product type, follower count, display name, image
+
+#### Search
+- Albums, artists, and tracks
+
+#### Playlists
+- Get a user's playlists
+- Get a specific playlist
+- Create playlists
+- Change playlist details
+- Add tracks to a playlist
+
+#### Your Music library
+- Get tracks that are in the signed in user's Your Music library
 
 Some methods require authentication, which can be done using these flows:
 
@@ -34,14 +46,14 @@ Get the latest version:
 <dependency>
   <groupId>se.michaelthelin.spotify</groupId>
   <artifactId>spotify-web-api-java</artifactId>
-  <version>1.4.13</version>
+  <version>1.4.14</version>
 </dependency>
 ```
 
 #### Gradle users
 
 ```
-compile 'se.michaelthelin.spotify:spotify-web-api-java:1.4.13'
+compile 'se.michaelthelin.spotify:spotify-web-api-java:1.4.14'
 ```
 
 Links to javadocs coming.
@@ -593,7 +605,31 @@ try {
 }
 ```
 
+#### Your Music library
+
+##### [Get User's Saved Tracks](https://developer.spotify.com/web-api/get-users-saved-tracks/)
+```java
+final Api api = Api.builder().accessToken("someAccessToken").build();
+
+final GetMySavedTracksRequest request = api.getMySavedTracks()
+    .limit(5)
+    .offset(1)
+    .httpManager(TestUtil.MockedHttpManager.returningJson("saved-tracks.json"))
+    .build();
+
+try {
+  final Page<LibraryTrack> libraryTracks = request.get();
+} catch (Exception e) {
+  System.out.println("Something went wrong!" + e.getMessage());
+}
+
+```
+
 #### Change log
+
+##### 1.4.14
+
+- Add [Get User's Saved Tracks](https://developer.spotify.com/web-api/get-users-saved-tracks/) endpoint.
 
 ##### 1.4.13
 
