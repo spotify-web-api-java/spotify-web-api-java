@@ -46,14 +46,14 @@ Get the latest version:
 <dependency>
   <groupId>se.michaelthelin.spotify</groupId>
   <artifactId>spotify-web-api-java</artifactId>
-  <version>1.4.15</version>
+  <version>1.4.16</version>
 </dependency>
 ```
 
 #### Gradle users
 
 ```
-compile 'se.michaelthelin.spotify:spotify-web-api-java:1.4.15'
+compile 'se.michaelthelin.spotify:spotify-web-api-java:1.4.16'
 ```
 
 Links to javadocs coming.
@@ -626,7 +626,7 @@ try {
 
 #### Change log
 
-##### 1.4.15
+##### 1.4.16
 
 - [bradnussbaum](https://github.com/bradnussbaum) bumped Guava version and sorted out test dependencies. Cheers!
 
