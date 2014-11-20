@@ -133,7 +133,7 @@
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>17.0-rc2</version>
+            <version>18.0</version>
         </dependency>
     </dependencies>
 
