@@ -46,14 +46,14 @@ Get the latest version:
 <dependency>
   <groupId>se.michaelthelin.spotify</groupId>
   <artifactId>spotify-web-api-java</artifactId>
-  <version>1.4.16</version>
+  <version>1.4.17</version>
 </dependency>
 ```
 
 #### Gradle users
 
 ```
-compile 'se.michaelthelin.spotify:spotify-web-api-java:1.4.16'
+compile 'se.michaelthelin.spotify:spotify-web-api-java:1.4.17'
 ```
 
 Links to javadocs coming.
@@ -621,10 +621,30 @@ try {
 } catch (Exception e) {
   System.out.println("Something went wrong!" + e.getMessage());
 }
+```
 
+##### [Check User's Saved Tracks](https://developer.spotify.com/web-api/check-users-saved-tracks/)
+```java
+Api api = Api.builder().accessToken(accessToken).build();
+
+ContainsMySavedTracksRequest request = api.containsMySavedTracks(
+    Arrays.asList("0udZHhCi7p1YzMlvI4fXoK", "1e1VmyiAuPyM4SHhySP1oU"))
+    .build();
+
+try {
+    List<Boolean> containedTracks = request.get();
+    System.out.println("0udZHhCi7p1YzMlvI4fXoK is in the library: " + containedTracks.get(0));
+    System.out.println("1e1VmyiAuPyM4SHhySP1oU is in the library: " + containedTracks.get(1));
+} catch (Exception e) {
+    System.out.println("Something went wrong!" + e.getMessage());
+}
 ```
 
 #### Change log
+
+##### 1.4.17
+
+- Add [Check User's Saved Tracks](https://developer.spotify.com/web-api/check-users-saved-tracks/) endpoint.
 
 ##### 1.4.16
 
