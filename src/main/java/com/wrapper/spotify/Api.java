@@ -356,13 +356,25 @@ public class Api {
 
   /**
    * Get a users Your Music tracks.
-   * @param userId The owner of the Your Music library to retrieve.
    * @return A builder object that can be used to build a request to get the user's Your Music library.
    */
   public GetMySavedTracksRequest.Builder getMySavedTracks() {
     final GetMySavedTracksRequest.Builder builder = GetMySavedTracksRequest.builder();
     setDefaults(builder);
     builder.path("/v1/me/tracks");
+    return builder;
+  }
+
+  /**
+   * Check if a track is saved in the user's Your Music library.
+   * @trackIds The tracks ids to check for in the user's Your Music library.
+   * @return A builder object that can be used to check if a user has saved a track.
+   */
+  public ContainsMySavedTracksRequest.Builder containsMySavedTracks(List<String> trackIds) {
+    final ContainsMySavedTracksRequest.Builder builder = ContainsMySavedTracksRequest.builder();
+    setDefaults(builder);
+    builder.tracks(trackIds);
+    builder.path("/v1/me/tracks/contains");
     return builder;
   }
 
