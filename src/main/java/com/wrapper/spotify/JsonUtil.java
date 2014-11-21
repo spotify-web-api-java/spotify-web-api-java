@@ -617,4 +617,16 @@ public class JsonUtil {
     return returnedLibraryTrack;
   }
 
+  public static List<Boolean> createBooleans(String response) {
+    List<Boolean> returnedArray = new ArrayList();
+    JSONArray tracksContainedArray = JSONArray.fromObject(response);
+    for (Object tracksContainedString : tracksContainedArray) {
+      if (String.valueOf(tracksContainedString).equals("false")) {
+        returnedArray.add(false);
+      } else {
+        returnedArray.add(true);
+      }
+    }
+    return returnedArray;
+  }
 }
