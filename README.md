@@ -646,7 +646,7 @@ try {
 
 ##### 1.4.18
 
-- Add |Save Tracks for User](https://developer.spotify.com/web-api/save-tracks-user/) endpoint.
+- Add [Save Tracks for User](https://developer.spotify.com/web-api/save-tracks-user/) endpoint.
 
 ##### 1.4.17
 
