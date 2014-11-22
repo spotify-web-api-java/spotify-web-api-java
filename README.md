@@ -26,6 +26,8 @@ It includes helper functions to do:
 
 #### Your Music library
 - Get tracks that are in the signed in user's Your Music library
+- Add tracks to the user's Your Music library
+- Check if a track is in the user's Your Music library
 
 Some methods require authentication, which can be done using these flows:
 
@@ -46,14 +48,14 @@ Get the latest version:
 <dependency>
   <groupId>se.michaelthelin.spotify</groupId>
   <artifactId>spotify-web-api-java</artifactId>
-  <version>1.4.17</version>
+  <version>1.4.18</version>
 </dependency>
 ```
 
 #### Gradle users
 
 ```
-compile 'se.michaelthelin.spotify:spotify-web-api-java:1.4.17'
+compile 'se.michaelthelin.spotify:spotify-web-api-java:1.4.18'
 ```
 
 Links to javadocs coming.
@@ -641,6 +643,10 @@ try {
 ```
 
 #### Change log
+
+##### 1.4.18
+
+- Add |Save Tracks for User](https://developer.spotify.com/web-api/save-tracks-user/) endpoint.
 
 ##### 1.4.17
 
