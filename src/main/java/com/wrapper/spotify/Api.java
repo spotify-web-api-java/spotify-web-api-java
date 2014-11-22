@@ -379,6 +379,19 @@ public class Api {
   }
 
   /**
+   * Save tracks in the user's Your Music library.
+   * @trackIds The track ids to add to the user's library.
+   * @return A builder object that can be used to add tracks to the user's library.
+   */
+  public AddToMySavedTracksRequest.Builder addToMySavedTracks(List<String> trackIds) {
+    final AddToMySavedTracksRequest.Builder builder = AddToMySavedTracksRequest.builder();
+    setDefaults(builder);
+    builder.tracks(trackIds);
+    builder.path("/v1/me/tracks");
+    return builder;
+  }
+
+  /**
    * Retrieve a URL where the user can give the application permissions.
    * @param scopes The scopes corresponding to the permissions the application needs
    * @param state state A parameter that you can use to maintain a value between the request
