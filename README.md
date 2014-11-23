@@ -658,8 +658,9 @@ try {
 } catch (Exception e) {
     System.out.println("Something went wrong!" + e.getMessage());
 }
+```
 
-##### [Remove User’s Saved Tracks] https://developer.spotify.com/web-api/remove-tracks-user/
+##### [Remove User’s Saved Tracks](https://developer.spotify.com/web-api/remove-tracks-user/)
 
 ```java
 Api api = Api.builder().accessToken(accessToken).build();
@@ -675,6 +676,7 @@ try {
 } catch (Exception e) {
     System.out.println("Something went wrong!" + e.getMessage());
 }
+```
 
 #### Change log
 
