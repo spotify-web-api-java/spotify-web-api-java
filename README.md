@@ -642,6 +642,21 @@ try {
 }
 ```
 
+```java
+Api api = Api.builder().accessToken(accessToken).build();
+
+List<String> tracksToAdd = Arrays.asList("4BYGxv4rxSNcTgT3DsFB9o", "0BG2iE6McPhmAEKIhfqy1X");
+
+AddToMySavedTracksRequest request = api.addToMySavedTracks(tracksToAdd).build();
+
+try {
+    // Add tracks
+    request.get();
+    System.out.println("Added tracks to the user's Your Music library!');
+} catch (Exception e) {
+    System.out.println("Something went wrong!" + e.getMessage());
+}
+
 #### Change log
 
 ##### 1.4.18
