@@ -511,4 +511,21 @@ public class ApiTest {
     assertEquals("https://api.spotify.com:443/v1/me/tracks", request.toString());
     assertHasHeader(request.toUrl(), "Authorization", "Bearer " + accessToken);
   }
+
+  @Test
+  public void shouldCreateRemoveTracksURL() {
+    final String accessToken = "myAccessToken";
+
+    final Api api = Api.builder()
+        .accessToken(accessToken)
+        .build();
+
+    final Request request = api
+        .removeFromMySavedTracks(Arrays.asList("test", "test2"))
+        .build();
+
+    assertEquals("https://api.spotify.com:443/v1/me/tracks", request.toString());
+    assertHasHeader(request.toUrl(), "Authorization", "Bearer " + accessToken);
+  }
+
 }

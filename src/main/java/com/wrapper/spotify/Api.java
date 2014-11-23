@@ -1,11 +1,36 @@
 package com.wrapper.spotify;
 
 import com.wrapper.spotify.UtilProtos.Url.Scheme;
-import com.wrapper.spotify.methods.*;
+import com.wrapper.spotify.methods.AbstractRequest;
+import com.wrapper.spotify.methods.AddToMySavedTracksRequest;
+import com.wrapper.spotify.methods.AddTrackToPlaylistRequest;
+import com.wrapper.spotify.methods.AlbumRequest;
+import com.wrapper.spotify.methods.AlbumSearchRequest;
+import com.wrapper.spotify.methods.AlbumsForArtistRequest;
+import com.wrapper.spotify.methods.AlbumsRequest;
+import com.wrapper.spotify.methods.ArtistRequest;
+import com.wrapper.spotify.methods.ArtistSearchRequest;
+import com.wrapper.spotify.methods.ArtistsRequest;
+import com.wrapper.spotify.methods.ChangePlaylistDetailsRequest;
+import com.wrapper.spotify.methods.ContainsMySavedTracksRequest;
+import com.wrapper.spotify.methods.CurrentUserRequest;
+import com.wrapper.spotify.methods.GetMySavedTracksRequest;
+import com.wrapper.spotify.methods.PlaylistCreationRequest;
+import com.wrapper.spotify.methods.PlaylistRequest;
+import com.wrapper.spotify.methods.PlaylistTracksRequest;
+import com.wrapper.spotify.methods.RelatedArtistsRequest;
+import com.wrapper.spotify.methods.RemoveFromMySavedTracksRequest;
+import com.wrapper.spotify.methods.TopTracksRequest;
+import com.wrapper.spotify.methods.TrackRequest;
+import com.wrapper.spotify.methods.TrackSearchRequest;
+import com.wrapper.spotify.methods.TracksRequest;
+import com.wrapper.spotify.methods.UserPlaylistsRequest;
+import com.wrapper.spotify.methods.UserRequest;
 import com.wrapper.spotify.methods.authentication.AuthorizationCodeGrantRequest;
 import com.wrapper.spotify.methods.authentication.AuthorizationURLRequest;
 import com.wrapper.spotify.methods.authentication.ClientCredentialsGrantRequest;
 import com.wrapper.spotify.methods.authentication.RefreshAccessTokenRequest;
+
 import net.sf.json.JSONArray;
 
 import java.util.Arrays;
@@ -367,7 +392,7 @@ public class Api {
 
   /**
    * Check if a track is saved in the user's Your Music library.
-   * @trackIds The tracks ids to check for in the user's Your Music library.
+   * @param trackIds The tracks ids to check for in the user's Your Music library.
    * @return A builder object that can be used to check if a user has saved a track.
    */
   public ContainsMySavedTracksRequest.Builder containsMySavedTracks(List<String> trackIds) {
@@ -375,6 +400,19 @@ public class Api {
     setDefaults(builder);
     builder.tracks(trackIds);
     builder.path("/v1/me/tracks/contains");
+    return builder;
+  }
+
+  /**
+   * Remove a track if saved to the user's Your Music library.
+   * @param trackIds The track ids to remove from the user's Your Music library.
+   * @return A builder object that can be used to remove tracks from the user's library.
+   */
+  public RemoveFromMySavedTracksRequest.Builder removeFromMySavedTracks(List<String> trackIds) {
+    final RemoveFromMySavedTracksRequest.Builder builder = RemoveFromMySavedTracksRequest.builder();
+    setDefaults(builder);
+    builder.tracks(trackIds);
+    builder.path("/v1/me/tracks");
     return builder;
   }
 

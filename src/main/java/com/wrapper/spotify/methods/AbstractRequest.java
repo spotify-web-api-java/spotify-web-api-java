@@ -5,6 +5,7 @@ import com.wrapper.spotify.HttpManager;
 import com.wrapper.spotify.UrlUtil;
 import com.wrapper.spotify.UtilProtos.Url;
 import com.wrapper.spotify.exceptions.WebApiException;
+
 import net.sf.json.JSON;
 
 import java.io.IOException;
@@ -39,6 +40,10 @@ public abstract class AbstractRequest implements Request {
 
   public String putJson() throws IOException, WebApiException {
     return httpManager.put(url);
+  }
+
+  public String deleteJson() throws IOException, WebApiException {
+    return httpManager.delete(url);
   }
 
   public AbstractRequest(Builder<?> builder) {
