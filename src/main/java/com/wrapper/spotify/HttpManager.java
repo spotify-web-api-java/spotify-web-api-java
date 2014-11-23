@@ -36,11 +36,10 @@ public interface HttpManager {
 
   /**
    * Perform an HTTP DELETE request to the specified URL.
-   * TODO: Not implemented.
    * @param url the {@link Url} to HTTP DELETE.
    * @return a String containing the body of the HTTP DELETE response.
    */
-  String delete(Url url);
+  String delete(Url url) throws WebApiException, IOException;
 
   /**
    * Perform an HTTP PUT request to the specified URL.

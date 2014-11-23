@@ -6,6 +6,7 @@ import com.wrapper.spotify.exceptions.WebApiException;
 import net.sf.json.JSONObject;
 import org.apache.commons.httpclient.*;
 import org.apache.commons.httpclient.cookie.CookiePolicy;
+import org.apache.commons.httpclient.methods.DeleteMethod;
 import org.apache.commons.httpclient.methods.GetMethod;
 import org.apache.commons.httpclient.methods.PostMethod;
 import org.apache.commons.httpclient.methods.PutMethod;
@@ -108,6 +109,26 @@ public class SpotifyHttpManager implements HttpManager {
     return execute(method);
   }
 
+
+  // TODO(michael): Allow JSON body to be sent.
+  @Override
+  public String delete(UtilProtos.Url url) throws IOException, WebApiException {
+    assert (url != null);
+
+    final String uri = UrlUtil.assemble(url);
+    final DeleteMethod method = new DeleteMethod(uri);
+
+    for (Url.Parameter header : url.getHeaderParametersList()) {
+      method.setRequestHeader(header.getName(), header.getValue());
+    }
+
+    method.setQueryString(getParametersAsNamedValuePairArray(url));
+    method.getParams().setCookiePolicy(CookiePolicy.BROWSER_COMPATIBILITY);
+    method.getParams().setParameter(HttpMethodParams.HTTP_CONTENT_CHARSET, "UTF-8");
+
+    return execute(method);
+  }
+
   private NameValuePair[] getParametersAsNamedValuePairArray(Url url) {
     List<NameValuePair> out = new ArrayList<NameValuePair>();
     for (Url.Parameter parameter : url.getParametersList()) {
@@ -173,11 +194,6 @@ public class SpotifyHttpManager implements HttpManager {
         throw new WebApiException(jsonObject.getString("error"));
       }
     }
-  }
-
-  @Override
-  public String delete(UtilProtos.Url url) {
-    throw new RuntimeException("Not implemented");
   }
 
   public static Builder builder() {

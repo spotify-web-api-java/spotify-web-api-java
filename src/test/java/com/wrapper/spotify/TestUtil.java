@@ -38,6 +38,8 @@ public class TestUtil {
       final String fixture = readTestData(jsonFixture);
       when(mockedHttpManager.get((UtilProtos.Url) any())).thenReturn(fixture);
       when(mockedHttpManager.post((UtilProtos.Url) any())).thenReturn(fixture);
+      when(mockedHttpManager.put((UtilProtos.Url) any())).thenReturn(fixture);
+      when(mockedHttpManager.delete((UtilProtos.Url) any())).thenReturn(fixture);
 
       return mockedHttpManager;
     }
@@ -47,6 +49,7 @@ public class TestUtil {
       when(mockedHttpManager.get((UtilProtos.Url) any())).thenReturn(returnedString);
       when(mockedHttpManager.post((UtilProtos.Url) any())).thenReturn(returnedString);
       when(mockedHttpManager.put((UtilProtos.Url) any())).thenReturn(returnedString);
+      when(mockedHttpManager.delete((UtilProtos.Url) any())).thenReturn(returnedString);
 
       return mockedHttpManager;
     }
