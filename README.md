@@ -26,7 +26,7 @@ It includes helper functions to do:
 
 #### Your Music library
 - Get tracks that are in the signed in user's Your Music library
-- Add tracks to the user's Your Music library
+- Add/remove tracks to/from the user's Your Music library
 - Check if a track is in the user's Your Music library
 
 Some methods require authentication, which can be done using these flows:
