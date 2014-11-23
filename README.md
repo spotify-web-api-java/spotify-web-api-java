@@ -48,14 +48,14 @@ Get the latest version:
 <dependency>
   <groupId>se.michaelthelin.spotify</groupId>
   <artifactId>spotify-web-api-java</artifactId>
-  <version>1.4.18</version>
+  <version>1.4.19</version>
 </dependency>
 ```
 
 #### Gradle users
 
 ```
-compile 'se.michaelthelin.spotify:spotify-web-api-java:1.4.18'
+compile 'se.michaelthelin.spotify:spotify-web-api-java:1.4.19'
 ```
 
 Links to javadocs coming.
@@ -642,6 +642,8 @@ try {
 }
 ```
 
+##### [Save Tracks for User](https://developer.spotify.com/web-api/save-tracks-user/)
+
 ```java
 Api api = Api.builder().accessToken(accessToken).build();
 
@@ -650,14 +652,35 @@ List<String> tracksToAdd = Arrays.asList("4BYGxv4rxSNcTgT3DsFB9o", "0BG2iE6McPhm
 AddToMySavedTracksRequest request = api.addToMySavedTracks(tracksToAdd).build();
 
 try {
-    // Add tracks
+    // Add tracks synchronously
     request.get();
     System.out.println("Added tracks to the user's Your Music library!');
 } catch (Exception e) {
     System.out.println("Something went wrong!" + e.getMessage());
 }
 
+##### [Remove User’s Saved Tracks] https://developer.spotify.com/web-api/remove-tracks-user/
+
+```java
+Api api = Api.builder().accessToken(accessToken).build();
+
+List<String> tracksToRemove = Arrays.asList("4BYGxv4rxSNcTgT3DsFB9o", "0BG2iE6McPhmAEKIhfqy1X");
+
+RemoveFromMySavedTracksRequest request = api.removeFromMySavedTracks(tracksToAdd).build();
+
+try {
+    // Remove tracks synchronously
+    request.get();
+    System.out.println("Removed tracks from the user's Your Music library!');
+} catch (Exception e) {
+    System.out.println("Something went wrong!" + e.getMessage());
+}
+
 #### Change log
+
+##### 1.4.19
+
+- Add [Remove Tracks for User](https://developer.spotify.com/web-api/remove-tracks-user/) endpoint.
 
 ##### 1.4.18
 
