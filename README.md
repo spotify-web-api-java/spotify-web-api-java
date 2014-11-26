@@ -678,6 +678,22 @@ try {
 }
 ```
 
+#### Development
+
+Any additions to this project will be happily received. Make sure that your code is covered by a test and send a pull request! Please work on a branch that isn't master as that'll make it easier for me to merge pull requests in case there has been commits made between the time you forked and the time you send the pull request.
+
+Requirements: Java, Maven.
+
+##### Build
+
+```mvn clean install```
+
+##### Tests
+
+There's a known issue in that tests cannot be run from an IDE as it doesn't pick up the mocked response files.
+
+```mvn clean test```
+
 #### Change log
 
 ##### 1.4.19
