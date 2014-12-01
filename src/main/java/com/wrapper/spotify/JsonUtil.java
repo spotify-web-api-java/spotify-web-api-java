@@ -1,28 +1,6 @@
 package com.wrapper.spotify;
 
-import com.wrapper.spotify.models.Album;
-import com.wrapper.spotify.models.AlbumType;
-import com.wrapper.spotify.models.Artist;
-import com.wrapper.spotify.models.AuthorizationCodeCredentials;
-import com.wrapper.spotify.models.ClientCredentials;
-import com.wrapper.spotify.models.ExternalIds;
-import com.wrapper.spotify.models.ExternalUrls;
-import com.wrapper.spotify.models.Followers;
-import com.wrapper.spotify.models.Image;
-import com.wrapper.spotify.models.LibraryTrack;
-import com.wrapper.spotify.models.Page;
-import com.wrapper.spotify.models.Playlist;
-import com.wrapper.spotify.models.PlaylistTrack;
-import com.wrapper.spotify.models.PlaylistTracksInformation;
-import com.wrapper.spotify.models.Product;
-import com.wrapper.spotify.models.RefreshAccessTokenCredentials;
-import com.wrapper.spotify.models.SimpleAlbum;
-import com.wrapper.spotify.models.SimpleArtist;
-import com.wrapper.spotify.models.SimplePlaylist;
-import com.wrapper.spotify.models.SimpleTrack;
-import com.wrapper.spotify.models.SpotifyEntityType;
-import com.wrapper.spotify.models.Track;
-import com.wrapper.spotify.models.User;
+import com.wrapper.spotify.models.*;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONException;
@@ -628,5 +606,24 @@ public class JsonUtil {
       }
     }
     return returnedArray;
+  }
+
+  public static NewReleases createNewReleases(JSONObject newReleasesJson)
+  {
+    if (newReleasesJson == null)
+    {
+      return null;
+    }
+    NewReleases newReleases = new NewReleases();
+    JSONObject albums = newReleasesJson.getJSONObject("albums");
+    newReleases.setHref(albums.getString("href"));
+    newReleases.setOffset(albums.getInt("offset"));
+    newReleases.setLimit(albums.getInt("limit"));
+    newReleases.setNext(albums.getString("next"));
+    newReleases.setPrevious(albums.getString("previous"));
+    newReleases.setTotal(albums.getInt("total"));
+    JSONArray items = albums.getJSONArray("items");
+    newReleases.setSimpleAlbums(createSimpleAlbums(items));
+    return newReleases;
   }
 }
