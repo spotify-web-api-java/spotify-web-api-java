@@ -538,7 +538,7 @@ public class ApiTest {
               .accessToken(accessToken)
               .build();
 
-      final Request request = api.getNewReleases(0, 50).build();
+      final Request request = api.getNewReleases().build();
       assertEquals("https://api.spotify.com:443/v1/browse/new-releases", request.toString());
   }
 

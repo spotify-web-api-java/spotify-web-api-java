@@ -608,22 +608,9 @@ public class JsonUtil {
     return returnedArray;
   }
 
-  public static NewReleases createNewReleases(JSONObject newReleasesJson)
-  {
-    if (newReleasesJson == null)
-    {
-      return null;
-    }
-    NewReleases newReleases = new NewReleases();
-    JSONObject albums = newReleasesJson.getJSONObject("albums");
-    newReleases.setHref(albums.getString("href"));
-    newReleases.setOffset(albums.getInt("offset"));
-    newReleases.setLimit(albums.getInt("limit"));
-    newReleases.setNext(albums.getString("next"));
-    newReleases.setPrevious(albums.getString("previous"));
-    newReleases.setTotal(albums.getInt("total"));
-    JSONArray items = albums.getJSONArray("items");
-    newReleases.setSimpleAlbums(createSimpleAlbums(items));
+  public static NewReleases createNewReleases(JSONObject newReleasesJson) {
+    final NewReleases newReleases = new NewReleases();
+    newReleases.setAlbums(createSimpleAlbumPage(newReleasesJson.getJSONObject("albums")));
     return newReleases;
   }
 }
