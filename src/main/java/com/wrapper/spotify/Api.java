@@ -173,12 +173,10 @@ public class Api {
     return builder;
   }
 
-  public NewReleasesRequest.Builder getNewReleases(int offset, int limit)
-  {
-      NewReleasesRequest.Builder builder = NewReleasesRequest.builder();
-      setDefaults(builder);
-      builder.id(offset, limit);
-      return builder;
+  public NewReleasesRequest.Builder getNewReleases() {
+    NewReleasesRequest.Builder builder = NewReleasesRequest.builder();
+    setDefaults(builder);
+    return builder;
   }
 
   public TopTracksRequest.Builder getTopTracksForArtist(String artistId, String countryCode) {
