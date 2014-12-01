@@ -1,31 +1,7 @@
 package com.wrapper.spotify;
 
 import com.wrapper.spotify.UtilProtos.Url.Scheme;
-import com.wrapper.spotify.methods.AbstractRequest;
-import com.wrapper.spotify.methods.AddToMySavedTracksRequest;
-import com.wrapper.spotify.methods.AddTrackToPlaylistRequest;
-import com.wrapper.spotify.methods.AlbumRequest;
-import com.wrapper.spotify.methods.AlbumSearchRequest;
-import com.wrapper.spotify.methods.AlbumsForArtistRequest;
-import com.wrapper.spotify.methods.AlbumsRequest;
-import com.wrapper.spotify.methods.ArtistRequest;
-import com.wrapper.spotify.methods.ArtistSearchRequest;
-import com.wrapper.spotify.methods.ArtistsRequest;
-import com.wrapper.spotify.methods.ChangePlaylistDetailsRequest;
-import com.wrapper.spotify.methods.ContainsMySavedTracksRequest;
-import com.wrapper.spotify.methods.CurrentUserRequest;
-import com.wrapper.spotify.methods.GetMySavedTracksRequest;
-import com.wrapper.spotify.methods.PlaylistCreationRequest;
-import com.wrapper.spotify.methods.PlaylistRequest;
-import com.wrapper.spotify.methods.PlaylistTracksRequest;
-import com.wrapper.spotify.methods.RelatedArtistsRequest;
-import com.wrapper.spotify.methods.RemoveFromMySavedTracksRequest;
-import com.wrapper.spotify.methods.TopTracksRequest;
-import com.wrapper.spotify.methods.TrackRequest;
-import com.wrapper.spotify.methods.TrackSearchRequest;
-import com.wrapper.spotify.methods.TracksRequest;
-import com.wrapper.spotify.methods.UserPlaylistsRequest;
-import com.wrapper.spotify.methods.UserRequest;
+import com.wrapper.spotify.methods.*;
 import com.wrapper.spotify.methods.authentication.AuthorizationCodeGrantRequest;
 import com.wrapper.spotify.methods.authentication.AuthorizationURLRequest;
 import com.wrapper.spotify.methods.authentication.ClientCredentialsGrantRequest;
@@ -195,6 +171,14 @@ public class Api {
     setDefaults(builder);
     builder.query(query);
     return builder;
+  }
+
+  public NewReleasesRequest.Builder getNewReleases(int offset, int limit)
+  {
+      NewReleasesRequest.Builder builder = NewReleasesRequest.builder();
+      setDefaults(builder);
+      builder.id(offset, limit);
+      return builder;
   }
 
   public TopTracksRequest.Builder getTopTracksForArtist(String artistId, String countryCode) {
