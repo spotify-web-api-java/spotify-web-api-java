@@ -1,9 +1,11 @@
 package com.wrapper.spotify;
 
 import com.wrapper.spotify.UtilProtos.Url.Scheme;
+import com.wrapper.spotify.methods.NewReleasesRequest;
 import com.wrapper.spotify.methods.Request;
 import com.wrapper.spotify.models.AlbumType;
 
+import com.wrapper.spotify.models.NewReleases;
 import junit.framework.Assert;
 
 import net.sf.json.JSON;
@@ -526,6 +528,18 @@ public class ApiTest {
 
     assertEquals("https://api.spotify.com:443/v1/me/tracks", request.toString());
     assertHasHeader(request.toUrl(), "Authorization", "Bearer " + accessToken);
+  }
+
+  @Test
+  public void shouldCreateGetNewReleasesRequest() {
+      final String accessToken = "myAccessToken";
+
+      final Api api = Api.builder()
+              .accessToken(accessToken)
+              .build();
+
+      final Request request = api.getNewReleases(0, 50).build();
+      assertEquals("https://api.spotify.com:443/v1/browse/new-releases", request.toString());
   }
 
 }
