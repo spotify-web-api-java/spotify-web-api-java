@@ -1,3 +1,7 @@
+| Android developers   |
+| ------------------------------------- |
+| You can use this library in your Android app. However, you should have a look at the [Android Client](https://www.github.com/kaaes/spotify-web-api-android) project built by [kaaes](https://www.github.com/kaaes) as it's made specifically for Android. |
+
 Spotify Web API Java [![Build Status](https://travis-ci.org/thelinmichael/spotify-web-api-java.svg?branch=master)](https://travis-ci.org/thelinmichael/spotify-web-api-java)
 ==================
 
