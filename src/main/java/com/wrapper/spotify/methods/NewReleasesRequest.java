@@ -48,6 +48,11 @@ public class NewReleasesRequest extends AbstractRequest {
       return parameter("offset", String.valueOf(offset));
     }
 
+    public Builder country(String countryCode) {
+      assert (countryCode != null);
+      return parameter("country", countryCode);
+    }
+
     public NewReleasesRequest build() {
       path("/v1/browse/new-releases");
       return new NewReleasesRequest(this);

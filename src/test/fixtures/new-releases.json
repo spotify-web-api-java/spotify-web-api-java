@@ -1,0 +1,109 @@
+{
+    "albums": {
+        "href": "https://api.spotify.com/v1/browse/new-releases?country=SE&offset=1&limit=3",
+        "items": [
+            {
+                "album_type": "single",
+                "available_markets": [ "SE" ],
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/album/5McUiSC2VSw2ToVHR8tnzZ"
+                },
+                "href": "https://api.spotify.com/v1/albums/5McUiSC2VSw2ToVHR8tnzZ",
+                "id": "5McUiSC2VSw2ToVHR8tnzZ",
+                "images": [
+                    {
+                        "height": 640,
+                        "url": "https://i.scdn.co/image/c7b23349f48d778261ef2f80996888d42d0d0382",
+                        "width": 640
+                    },
+                    {
+                        "height": 300,
+                        "url": "https://i.scdn.co/image/1affc729a0cbabea94c606ae6378b27f603e1b17",
+                        "width": 300
+                    },
+                    {
+                        "height": 64,
+                        "url": "https://i.scdn.co/image/2d2832be36fa0641a4515590a8224ba662962a04",
+                        "width": 64
+                    }
+                ],
+                "name": "Never Gonna Say I'm Sorry",
+                "type": "album",
+                "uri": "spotify:album:5McUiSC2VSw2ToVHR8tnzZ"
+            },
+            {
+                "album_type": "single",
+                "available_markets": [ "AD", "AR", "AT", "AU", "BE", "BG", "BO", "BR", "CA", "CH",
+                                       "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "EC", "EE",
+                                       "ES", "FI", "FR", "GR", "GT", "HK", "HN", "HU", "IS", "IT",
+                                       "LT", "LU", "LV", "MC", "MT", "MX", "MY", "NI", "NL", "NO",
+                                       "NZ", "PA", "PE", "PH", "PL", "PT", "PY", "RO", "SE", "SG",
+                                       "SI", "SK", "SV", "TR", "TW", "US", "UY" ],
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/album/4Dg6r2i58ftPdj3229uDrl"
+                },
+                "href": "https://api.spotify.com/v1/albums/4Dg6r2i58ftPdj3229uDrl",
+                "id": "4Dg6r2i58ftPdj3229uDrl",
+                "images": [
+                    {
+                        "height": 640,
+                        "url": "https://i.scdn.co/image/1a16be5e965277122b1767e01c37873d94e35b34",
+                        "width": 640
+                    },
+                    {
+                        "height": 300,
+                        "url": "https://i.scdn.co/image/8a229963bc22524fc9e21fee2712af317eb46e52",
+                        "width": 300
+                    },
+                    {
+                        "height": 64,
+                        "url": "https://i.scdn.co/image/a7b23a3bb9b879952b4d4ed33fff8c77659ae952",
+                        "width": 64
+                    }
+                ],
+                "name": "Post To Be (feat. Chris Brown & Jhene Aiko)",
+                "type": "album",
+                "uri": "spotify:album:4Dg6r2i58ftPdj3229uDrl"
+            },
+            {
+                "album_type": "single",
+                "available_markets": [ "AD", "AR", "AT", "AU", "BE", "BG", "BO", "BR", "CH", "CL",
+                                       "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "EC", "EE", "ES",
+                                       "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HU", "IE", "IS",
+                                       "IT", "LI", "LT", "LU", "LV", "MC", "MT", "MY", "NI", "NL",
+                                       "NO", "NZ", "PA", "PE", "PH", "PL", "PT", "PY", "RO", "SE",
+                                       "SG", "SI", "SK", "SV", "TR", "TW", "UY" ],
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/album/3dW0fNYAWknQ0xpkzwmreZ"
+                },
+                "href": "https://api.spotify.com/v1/albums/3dW0fNYAWknQ0xpkzwmreZ",
+                "id": "3dW0fNYAWknQ0xpkzwmreZ",
+                "images": [
+                    {
+                        "height": 640,
+                        "url": "https://i.scdn.co/image/c262b304e9e8e8ae0b79c89479b9faeb08321227",
+                        "width": 640
+                    },
+                    {
+                        "height": 300,
+                        "url": "https://i.scdn.co/image/ec36ab35cbbbac95cccfe1cfec19a80be7faa8db",
+                        "width": 300
+                    },
+                    {
+                        "height": 64,
+                        "url": "https://i.scdn.co/image/0014d3ca561731017e0e460eeb414eb82756fe4d",
+                        "width": 64
+                    }
+                ],
+                "name": "Home To Mama",
+                "type": "album",
+                "uri": "spotify:album:3dW0fNYAWknQ0xpkzwmreZ"
+            }
+        ],
+        "limit": 3,
+        "next": "https://api.spotify.com/v1/browse/new-releases?country=SE&offset=4&limit=3",
+        "offset": 1,
+        "previous": "https://api.spotify.com/v1/browse/new-releases?country=SE&offset=0&limit=3",
+        "total": 500
+    }
+}

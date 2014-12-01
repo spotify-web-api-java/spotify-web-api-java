@@ -532,14 +532,19 @@ public class ApiTest {
 
   @Test
   public void shouldCreateGetNewReleasesRequest() {
-      final String accessToken = "myAccessToken";
+    final String accessToken = "myAccessToken";
 
-      final Api api = Api.builder()
-              .accessToken(accessToken)
-              .build();
+    final Api api = Api.builder()
+            .accessToken(accessToken)
+            .build();
 
-      final Request request = api.getNewReleases().build();
-      assertEquals("https://api.spotify.com:443/v1/browse/new-releases", request.toString());
+    final Request request = api.getNewReleases().limit(4).offset(1).country("SE").build();
+
+    assertEquals("https://api.spotify.com:443/v1/browse/new-releases", request.toString());
+    assertHasHeader(request.toUrl(), "Authorization", "Bearer " + accessToken);
+    assertHasParameter(request.toUrl(), "limit", "4");
+    assertHasParameter(request.toUrl(), "offset", "1");
+    assertHasParameter(request.toUrl(), "country", "SE");
   }
 
 }
