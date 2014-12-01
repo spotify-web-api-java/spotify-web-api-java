@@ -33,6 +33,11 @@ It includes helper functions to do:
 - Add/remove tracks to/from the user's Your Music library
 - Check if a track is in the user's Your Music library
 
+#### Browse
+- Get new releases
+
+#### Authentication
+
 Some methods require authentication, which can be done using these flows:
 
 - [Client credentials flow](http://tools.ietf.org/html/rfc6749#section-4.4) (Application-only authentication)
@@ -52,14 +57,14 @@ Get the latest version:
 <dependency>
   <groupId>se.michaelthelin.spotify</groupId>
   <artifactId>spotify-web-api-java</artifactId>
-  <version>1.4.19</version>
+  <version>1.4.20</version>
 </dependency>
 ```
 
 #### Gradle users
 
 ```
-compile 'se.michaelthelin.spotify:spotify-web-api-java:1.4.19'
+compile 'se.michaelthelin.spotify:spotify-web-api-java:1.4.20'
 ```
 
 Links to javadocs coming.
@@ -678,8 +683,36 @@ try {
     request.get();
     System.out.println("Removed tracks from the user's Your Music library!');
 } catch (Exception e) {
-    System.out.println("Something went wrong!" + e.getMessage());
+    System.out.println("Something went wrong! " + e.getMessage());
 }
+```
+
+#### Browse
+
+##### [Get New Releases](https://developer.spotify.com/web-api/get-list-new-releases/)
+
+```java
+Api api = Api.builder().accessToken(accessToken).build();
+
+// Create a request to get five new releases in Sweden
+final NewReleasesRequest request = api.getNewReleases()
+    .limit(5)
+    .offset(0)
+    .country("SE")
+    .build();
+
+try {
+    NewReleases newReleases = request.get();
+    Page<SimpleAlbum> albums = newReleases.getAlbums();
+
+    // Print the name of the albums
+    System.out.println(albums.get(0).getName());
+    System.out.println(albums.get(1).getName());
+    System.out.println(albums.get(2).getName());
+} catch(Exception e) {
+    System.out.println("Something went wrong! " + e.getMessage());
+}
+
 ```
 
 #### Development
@@ -699,6 +732,10 @@ There's a known issue in that tests cannot be run from an IDE as it doesn't pick
 ```mvn clean test```
 
 #### Change log
+
+##### 1.4.20
+
+- Add [New Releases](https://developer.spotify.com/web-api/get-list-new-releases/) endpoint. Thanks [Jirakon](https://github.com/Jirakon)!
 
 ##### 1.4.19
 
