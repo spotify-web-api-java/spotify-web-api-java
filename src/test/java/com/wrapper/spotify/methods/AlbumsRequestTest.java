@@ -12,6 +12,8 @@ import com.wrapper.spotify.models.Page;
 import com.wrapper.spotify.models.SimpleArtist;
 import com.wrapper.spotify.models.SimpleTrack;
 
+import junit.framework.TestCase;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -31,7 +33,7 @@ public class AlbumsRequestTest {
   public void shouldGetAlbumResultForIds_async() throws Exception {
     final Api api = Api.DEFAULT_API;
 
-    final AlbumsRequest request = api.getAlbums("41MnTivkwTO3UUJ8DrqEJJ")
+    final AlbumsRequest request = api.getAlbums("2hYe61Nd2oOoM6RYCwIma1")
         .httpManager(TestUtil.MockedHttpManager.returningJson("albums.json"))
         .build();
 
@@ -45,10 +47,11 @@ public class AlbumsRequestTest {
         assertEquals(1, albums.size());
 
         Album firstAlbum = albums.get(0);
-        assertEquals("41MnTivkwTO3UUJ8DrqEJJ", firstAlbum.getId());
+        assertEquals("2hYe61Nd2oOoM6RYCwIma1", firstAlbum.getId());
         assertEquals(AlbumType.ALBUM, firstAlbum.getAlbumType());
         assertEquals("2013-11-08", firstAlbum.getReleaseDate());
         assertEquals("day", firstAlbum.getReleaseDatePrecision());
+        assertEquals(2, firstAlbum.getCopyrights().size());
 
         List<SimpleArtist> artists = firstAlbum.getArtists();
         SimpleArtist firstArtist = artists.get(0);
@@ -56,11 +59,11 @@ public class AlbumsRequestTest {
         assertEquals("53A0W3U0s8diEn9RhXQhVz", firstArtist.getId());
 
         Page<SimpleTrack> tracksPage = firstAlbum.getTracks();
-        assertEquals("https://api.spotify.com/v1/albums/41MnTivkwTO3UUJ8DrqEJJ/tracks?offset=0&limit=50", tracksPage.getHref());
+        assertEquals("https://api.spotify.com/v1/albums/2hYe61Nd2oOoM6RYCwIma1/tracks?offset=0&limit=50", tracksPage.getHref());
         assertEquals(0, tracksPage.getOffset());
         assertEquals(50, tracksPage.getLimit());
-        assertEquals(38, tracksPage.getTotal());
-        assertEquals("4r9PmSmbAOOWqaGWLf6M9Q", tracksPage.getItems().get(0).getId());
+        assertEquals(20, tracksPage.getTotal());
+        assertEquals("52J94k3JBYbHlFyg7zAABB", tracksPage.getItems().get(0).getId());
 
         asyncCompleted.countDown();
       }
@@ -78,7 +81,7 @@ public class AlbumsRequestTest {
   public void shouldGetAlbumResultForIds_sync() throws Exception {
     final Api api = Api.DEFAULT_API;
 
-    final AlbumsRequest request = api.getAlbums("41MnTivkwTO3UUJ8DrqEJJ")
+    final AlbumsRequest request = api.getAlbums("2hYe61Nd2oOoM6RYCwIma1")
         .httpManager(TestUtil.MockedHttpManager.returningJson("albums.json"))
         .build();
 
@@ -87,7 +90,7 @@ public class AlbumsRequestTest {
     assertEquals(1, albums.size());
 
     Album firstAlbum = albums.get(0);
-    assertEquals("41MnTivkwTO3UUJ8DrqEJJ", firstAlbum.getId());
+    assertEquals("2hYe61Nd2oOoM6RYCwIma1", firstAlbum.getId());
     assertEquals(AlbumType.ALBUM, firstAlbum.getAlbumType());
     assertEquals("2013-11-08", firstAlbum.getReleaseDate());
     assertEquals("day", firstAlbum.getReleaseDatePrecision());
@@ -98,11 +101,11 @@ public class AlbumsRequestTest {
     assertEquals("53A0W3U0s8diEn9RhXQhVz", firstArtist.getId());
 
     Page<SimpleTrack> tracksPage = firstAlbum.getTracks();
-    assertEquals("https://api.spotify.com/v1/albums/41MnTivkwTO3UUJ8DrqEJJ/tracks?offset=0&limit=50", tracksPage.getHref());
+    assertEquals("https://api.spotify.com/v1/albums/2hYe61Nd2oOoM6RYCwIma1/tracks?offset=0&limit=50", tracksPage.getHref());
     assertEquals(0, tracksPage.getOffset());
     assertEquals(50, tracksPage.getLimit());
-    assertEquals(38, tracksPage.getTotal());
-    assertEquals("4r9PmSmbAOOWqaGWLf6M9Q", tracksPage.getItems().get(0).getId());
+    assertEquals(20, tracksPage.getTotal());
+    assertEquals("52J94k3JBYbHlFyg7zAABB", tracksPage.getItems().get(0).getId());
   }
 
   @Test

@@ -15,6 +15,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
+import static junit.framework.Assert.assertFalse;
 import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertNotNull;
 import static junit.framework.TestCase.fail;
@@ -26,7 +27,7 @@ public class AlbumRequestTest {
   public void shouldGetAlbumResult_async() throws Exception {
     final Api api = Api.DEFAULT_API;
 
-    final AlbumRequest request = api.getAlbum("0sNOF9WDwhWunNAHPD3Baj")
+    final AlbumRequest request = api.getAlbum("4pox3k0CGuwwAknR9GtcoX")
         .httpManager(TestUtil.MockedHttpManager.returningJson("album.json"))
         .build();
 
@@ -38,8 +39,11 @@ public class AlbumRequestTest {
       @Override
       public void onSuccess(Album album) {
         assertNotNull(album);
-        assertEquals("0sNOF9WDwhWunNAHPD3Baj", album.getId());
-        asyncCompleted.countDown();
+        assertEquals("4pox3k0CGuwwAknR9GtcoX", album.getId());
+        assertNotNull(album.getCopyrights());
+        assertFalse(album.getCopyrights().isEmpty());
+
+          asyncCompleted.countDown();
       }
 
       @Override
@@ -56,13 +60,15 @@ public class AlbumRequestTest {
   public void shouldGetAlbumResult_sync() throws Exception {
     final Api api = Api.DEFAULT_API;
 
-    final AlbumRequest request = api.getAlbum("0sNOF9WDwhWunNAHPD3Baj")
+    final AlbumRequest request = api.getAlbum("4pox3k0CGuwwAknR9GtcoX")
         .httpManager(TestUtil.MockedHttpManager.returningJson("album.json"))
         .build();
 
     Album album = request.get();
 
     assertNotNull(album);
-    assertEquals("0sNOF9WDwhWunNAHPD3Baj", album.getId());
+    assertEquals("4pox3k0CGuwwAknR9GtcoX", album.getId());
+    assertNotNull(album.getCopyrights());
+    assertFalse(album.getCopyrights().isEmpty());
   }
 }

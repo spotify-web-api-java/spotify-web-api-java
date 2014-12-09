@@ -125,6 +125,7 @@ public class JsonUtil {
     album.setAlbumType(createAlbumType(albumJson.getString("album_type")));
     album.setArtists(createSimpleArtists(albumJson.getJSONArray("artists")));
     album.setAvailableMarkets(createAvailableMarkets(albumJson.getJSONArray("available_markets")));
+    album.setCopyrights(createCopyrights(albumJson.getJSONArray("copyrights")));
     album.setExternalIds(createExternalIds(albumJson.getJSONObject("external_ids")));
     album.setExternalUrls(createExternalUrls(albumJson.getJSONObject("external_urls")));
     album.setGenres(createGenres(albumJson.getJSONArray("genres")));
@@ -176,6 +177,17 @@ public class JsonUtil {
       availableMarkets.add(availableMarketsJson.getString(i));
     }
     return availableMarkets;
+  }
+
+  public static List<Copyright> createCopyrights(JSONArray copyrightsJson) {
+    List<Copyright> copyrights = new ArrayList<Copyright>();
+    for (int i = 0; i < copyrightsJson.size(); i++) {
+        Copyright copyright = new Copyright();
+        copyright.setText(copyrightsJson.getJSONObject(i).getString("text"));
+        copyright.setType(copyrightsJson.getJSONObject(i).getString("type"));
+        copyrights.add(copyright);
+    }
+    return copyrights;
   }
 
   public static AlbumType createAlbumType(String albumType) {
