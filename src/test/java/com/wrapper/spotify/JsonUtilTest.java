@@ -30,7 +30,7 @@ public class JsonUtilTest {
   public void shouldCreateAlbum() throws Exception {
     String json = TestUtil.readTestData("album.json");
     Album album = JsonUtil.createAlbum(json);
-    assertEquals("https://api.spotify.com/v1/albums/0sNOF9WDwhWunNAHPD3Baj", album.getHref());
+    assertEquals("https://api.spotify.com/v1/albums/4pox3k0CGuwwAknR9GtcoX", album.getHref());
   }
 
   @Test
