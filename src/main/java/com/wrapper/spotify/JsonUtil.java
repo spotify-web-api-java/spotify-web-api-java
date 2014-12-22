@@ -635,4 +635,16 @@ public class JsonUtil {
     newReleases.setAlbums(createSimpleAlbumPage(newReleasesJson.getJSONObject("albums")));
     return newReleases;
   }
+
+  /**
+   * Create a Featured Playlist object
+   * @param jsonObject The JSON object containing the featured playlists.
+   * @return A Featured Playlists object.
+   */
+  public static FeaturedPlaylists createFeaturedPlaylist(JSONObject jsonObject) {
+    FeaturedPlaylists featuredPlaylists = new FeaturedPlaylists();
+    featuredPlaylists.setMessage(jsonObject.getString("message"));
+    featuredPlaylists.setPlaylists(JsonUtil.createPlaylistPage(jsonObject.getJSONObject("playlists")));
+    return featuredPlaylists;
+  }
 }

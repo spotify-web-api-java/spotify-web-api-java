@@ -1,74 +1,91 @@
 package com.wrapper.spotify.methods;
 
+import com.google.common.util.concurrent.ListenableFuture;
 import com.google.common.util.concurrent.SettableFuture;
+
 import com.wrapper.spotify.JsonUtil;
 import com.wrapper.spotify.exceptions.WebApiException;
 import com.wrapper.spotify.models.FeaturedPlaylists;
-import com.wrapper.spotify.models.Page;
-import com.wrapper.spotify.models.Playlist;
-import com.wrapper.spotify.models.SimplePlaylist;
+
 import net.sf.json.JSONObject;
 
 import java.io.IOException;
 
 public class FeaturedPlaylistsRequest extends AbstractRequest {
 
-    public FeaturedPlaylistsRequest(Builder builder) {
-        super(builder);
+  public FeaturedPlaylistsRequest(Builder builder) {
+    super(builder);
+  }
+
+  /**
+   * Get Featured Playlists synchronously.
+   * @return Featured playlists.
+   * @throws IOException
+   * @throws WebApiException
+   */
+  public FeaturedPlaylists get() throws IOException, WebApiException {
+    final String jsonString = getJson();
+    final JSONObject jsonObject = JSONObject.fromObject(jsonString);
+    return JsonUtil.createFeaturedPlaylist(jsonObject);
+  }
+
+  /**
+   * Get Featured Playlists asynchronously.
+   * @return A future that resolves to featured playlists.
+   */
+  public ListenableFuture<FeaturedPlaylists> getAsync() {
+    final SettableFuture<FeaturedPlaylists> future = SettableFuture.create();
+
+    try {
+      final String jsonString = getJson();
+      future.set(JsonUtil.createFeaturedPlaylist(JSONObject.fromObject(jsonString)));
+    } catch (Exception e) {
+      future.setException(e);
     }
 
-    public FeaturedPlaylists get() throws IOException, WebApiException {
-        final String jsonString = getJson();
-        final JSONObject jsonObject = JSONObject.fromObject(jsonString);
+    return future;
+  }
 
-        FeaturedPlaylists featuredPlaylists = new FeaturedPlaylists();
-        featuredPlaylists.setMessage(jsonObject.getString("message"));
-        featuredPlaylists.setPlaylists(JsonUtil.createPlaylistPage(jsonObject.getJSONObject("playlists")));
+  public static Builder builder() {
+    return new Builder();
+  }
 
-        return featuredPlaylists;
+  public static final class Builder extends AbstractRequest.Builder<Builder> {
+
+    public Builder limit(int limit) {
+      assert (limit > 0);
+      return parameter("limit", String.valueOf(limit));
     }
 
-
-    public static Builder builder() {
-        return new Builder();
+    public Builder offset(int offset) {
+      assert (offset >= 0);
+      return parameter("offset", String.valueOf(offset));
     }
 
-    public static final class Builder extends AbstractRequest.Builder<Builder> {
-
-        public Builder limit(int limit) {
-            assert (limit > 0);
-            return parameter("limit", String.valueOf(limit));
-        }
-
-        public Builder offset(int offset) {
-            assert (offset >= 0);
-            return parameter("offset", String.valueOf(offset));
-        }
-
-        public Builder countryCode(String countryCode) {
-            assert (countryCode != null);
-            return parameter("country", countryCode);
-        }
-
-        public Builder locale(String locale) {
-            assert (locale != null);
-            return parameter("locale", locale);
-        }
-
-        /* todo: should probably be a date object */
-        public Builder timestamp(String timestamp) {
-            assert (timestamp != null);
-            return parameter("timestamp", timestamp);
-        }
-
-        public Builder accessToken(String accessToken) {
-            return header("Authorization", "Bearer " + accessToken);
-        }
-
-        public FeaturedPlaylistsRequest build() {
-            path("/v1/browse/featured-playlists");
-            return new FeaturedPlaylistsRequest(this);
-        }
-
+    public Builder countryCode(String countryCode) {
+      assert (countryCode != null);
+      return parameter("country", countryCode);
     }
+
+    public Builder locale(String locale) {
+      assert (locale != null);
+      return parameter("locale", locale);
+    }
+
+    /* todo: should probably be a date object */
+    public Builder timestamp(String timestamp) {
+      assert (timestamp != null);
+      return parameter("timestamp", timestamp);
+    }
+
+    public Builder accessToken(String accessToken) {
+      return header("Authorization", "Bearer " + accessToken);
+    }
+
+    public FeaturedPlaylistsRequest build() {
+      path("/v1/browse/featured-playlists");
+      return new FeaturedPlaylistsRequest(this);
+    }
+
+  }
 }
