@@ -1,6 +1,32 @@
 package com.wrapper.spotify;
 
-import com.wrapper.spotify.models.*;
+import com.wrapper.spotify.models.Album;
+import com.wrapper.spotify.models.AlbumType;
+import com.wrapper.spotify.models.Artist;
+import com.wrapper.spotify.models.AuthorizationCodeCredentials;
+import com.wrapper.spotify.models.ClientCredentials;
+import com.wrapper.spotify.models.Copyright;
+import com.wrapper.spotify.models.ExternalIds;
+import com.wrapper.spotify.models.ExternalUrls;
+import com.wrapper.spotify.models.FeaturedPlaylists;
+import com.wrapper.spotify.models.Followers;
+import com.wrapper.spotify.models.Image;
+import com.wrapper.spotify.models.LibraryTrack;
+import com.wrapper.spotify.models.NewReleases;
+import com.wrapper.spotify.models.Page;
+import com.wrapper.spotify.models.Playlist;
+import com.wrapper.spotify.models.PlaylistTrack;
+import com.wrapper.spotify.models.PlaylistTracksInformation;
+import com.wrapper.spotify.models.Product;
+import com.wrapper.spotify.models.RefreshAccessTokenCredentials;
+import com.wrapper.spotify.models.SimpleAlbum;
+import com.wrapper.spotify.models.SimpleArtist;
+import com.wrapper.spotify.models.SimplePlaylist;
+import com.wrapper.spotify.models.SimpleTrack;
+import com.wrapper.spotify.models.SnapshotResult;
+import com.wrapper.spotify.models.SpotifyEntityType;
+import com.wrapper.spotify.models.Track;
+import com.wrapper.spotify.models.User;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONException;
@@ -648,5 +674,12 @@ public class JsonUtil {
     featuredPlaylists.setMessage(jsonObject.getString("message"));
     featuredPlaylists.setPlaylists(JsonUtil.createSimplePlaylistsPage(jsonObject.getJSONObject("playlists")));
     return featuredPlaylists;
+  }
+
+  public static SnapshotResult createSnapshotResponse(String jsonString) {
+    JSONObject jsonObject = JSONObject.fromObject(jsonString);
+    SnapshotResult result = new SnapshotResult();
+    result.setSnapshotId(jsonObject.getString("snapshot_id"));
+    return result;
   }
 }

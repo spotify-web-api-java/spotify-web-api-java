@@ -5,6 +5,8 @@ import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.TestUtil;
+import com.wrapper.spotify.models.SnapshotResult;
+
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -12,9 +14,9 @@ import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
+import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.fail;
 
-// Todo: Add test cases.
 public class AddTrackToPlaylistRequestTest {
 
   @Test
@@ -30,16 +32,17 @@ public class AddTrackToPlaylistRequestTest {
 
     final AddTrackToPlaylistRequest request = api.addTracksToPlaylist(myUsername, myPlaylistId, tracksToAdd)
             .position(insertIndex)
-            .httpManager(TestUtil.MockedHttpManager.returningString(""))
+            .httpManager(TestUtil.MockedHttpManager.returningJson("add-tracks.json"))
             .build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
-    final SettableFuture<String> addTrackFuture = request.getAsync();
+    final SettableFuture<SnapshotResult> addTrackFuture = request.getAsync();
 
-    Futures.addCallback(addTrackFuture, new FutureCallback<String>() {
+    Futures.addCallback(addTrackFuture, new FutureCallback<SnapshotResult>() {
       @Override
-      public void onSuccess(String response) {
+      public void onSuccess(SnapshotResult response) {
+        assertEquals("JbtmHBDBAYu3/bt8BOXKjzKx3i0b6LCa/wVjyl6qQ2Yf6nFXkbmzuEa+ZI/U1yF+", response.getSnapshotId());
         asyncCompleted.countDown();
       }
 

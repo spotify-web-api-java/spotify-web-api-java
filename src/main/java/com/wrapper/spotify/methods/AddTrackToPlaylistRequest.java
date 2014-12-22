@@ -2,18 +2,15 @@ package com.wrapper.spotify.methods;
 
 import com.google.common.util.concurrent.SettableFuture;
 
+import com.wrapper.spotify.JsonUtil;
 import com.wrapper.spotify.exceptions.WebApiException;
-
-import net.sf.json.JSONObject;
+import com.wrapper.spotify.models.SnapshotResult;
 
 import java.io.IOException;
 
 public class AddTrackToPlaylistRequest extends AbstractRequest {
 
-    private String defaultSuccessStringResponse = "Added to playlist";
-    private String defaultFailureStringResponse = "Failed to add track to playlist";
-
-    public AddTrackToPlaylistRequest(Builder builder) {
+  public AddTrackToPlaylistRequest(Builder builder) {
     super(builder);
   }
 
@@ -21,17 +18,12 @@ public class AddTrackToPlaylistRequest extends AbstractRequest {
     return new Builder();
   }
 
-  public SettableFuture<String> getAsync() {
-    final SettableFuture<String> addTrackFuture = SettableFuture.create();
+  public SettableFuture<SnapshotResult> getAsync() {
+    final SettableFuture<SnapshotResult> addTrackFuture = SettableFuture.create();
 
-    // TODO(michael): Clean up!
     try {
       final String jsonString = postJson();
-      if ("".equals(jsonString)) {
-        addTrackFuture.set(defaultSuccessStringResponse);
-      } else {
-        final JSONObject jsonObject = JSONObject.fromObject(postJson());
-      }
+      addTrackFuture.set(JsonUtil.createSnapshotResponse(jsonString));
     } catch (Exception e) {
       addTrackFuture.setException(e);
     }
@@ -39,13 +31,9 @@ public class AddTrackToPlaylistRequest extends AbstractRequest {
     return addTrackFuture;
   }
 
-  public String get() throws IOException, WebApiException {
+  public SnapshotResult get() throws IOException, WebApiException {
     final String jsonString = postJson();
-    if ("".equals(jsonString)) {
-      return defaultSuccessStringResponse;
-    } else {
-      return defaultFailureStringResponse;
-    }
+    return JsonUtil.createSnapshotResponse(jsonString);
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
