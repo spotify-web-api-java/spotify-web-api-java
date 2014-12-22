@@ -7,6 +7,7 @@ public class Album {
   private AlbumType albumType;
   private List<SimpleArtist> artists;
   private List<String> availableMarkets;
+  private List<Copyright> copyrights;
   private ExternalIds externalIds;
   private ExternalUrls externalUrls;
   private List<String> genres;
@@ -43,6 +44,14 @@ public class Album {
 
   public void setAvailableMarkets(List<String> availableMarkets) {
     this.availableMarkets = availableMarkets;
+  }
+
+  public List<Copyright> getCopyrights() {
+    return copyrights;
+  }
+
+  public void setCopyrights(List<Copyright> copyrights) {
+    this.copyrights = copyrights;
   }
 
   public ExternalIds getExternalIds() {
