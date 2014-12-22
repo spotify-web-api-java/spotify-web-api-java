@@ -1,0 +1,43 @@
+{
+  "message": "Behöver du hjälp att komma igång idag?",
+  "playlists": {
+    "href": "https://api.spotify.com/v1/browse/featured-playlists?country=SE&locale=sv_SE&timestamp=2014-10-23T09:00:00&offset=1&limit=1",
+    "items": [
+      {
+        "collaborative": false,
+        "external_urls": {
+          "spotify": "http://open.spotify.com/user/spotify/playlist/2BgVZaiDigaqxTbZEI2TpE"
+        },
+        "href": "https://api.spotify.com/v1/users/spotify/playlists/2BgVZaiDigaqxTbZEI2TpE",
+        "id": "2BgVZaiDigaqxTbZEI2TpE",
+        "images": [
+          {
+            "url": "https://i.scdn.co/image/1ea73dc4a640537a4647079c4b623838f7573049"
+          }
+        ],
+        "name": "Träning",
+        "owner": {
+          "external_urls": {
+            "spotify": "http://open.spotify.com/user/spotify"
+          },
+          "href": "https://api.spotify.com/v1/users/spotify",
+          "id": "spotify",
+          "type": "user",
+          "uri": "spotify:user:spotify"
+        },
+        "public": null,
+        "tracks": {
+          "href": "https://api.spotify.com/v1/users/spotify/playlists/2BgVZaiDigaqxTbZEI2TpE/tracks",
+          "total": 46
+        },
+        "type": "playlist",
+        "uri": "spotify:user:spotify:playlist:2BgVZaiDigaqxTbZEI2TpE"
+      }
+    ],
+    "limit": 1,
+    "next": "https://api.spotify.com/v1/browse/featured-playlists?country=SE&locale=sv_SE&timestamp=2014-10-23T09:00:00&offset=2&limit=1",
+    "offset": 1,
+    "previous": "https://api.spotify.com/v1/browse/featured-playlists?country=SE&locale=sv_SE&timestamp=2014-10-23T09:00:00&offset=0&limit=1",
+    "total": 12
+  }
+}

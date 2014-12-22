@@ -564,7 +564,7 @@ public class ApiTest {
 
     final Request request = api
         .getFeaturedPlaylists()
-        .countryCode("SE")
+        .country("SE")
         .locale("es_MX")
         .limit(5)
         .offset(1)

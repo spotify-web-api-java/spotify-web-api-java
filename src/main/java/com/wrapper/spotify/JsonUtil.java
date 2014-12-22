@@ -477,7 +477,9 @@ public class JsonUtil {
     playlist.setImages(createImages(playlistJson.getJSONArray("images")));
     playlist.setName(playlistJson.getString("name"));
     playlist.setOwner(createUser(playlistJson.getJSONObject("owner")));
-    playlist.setPublicAccess(playlistJson.getBoolean("public"));
+    if (existsAndNotNull("public", playlistJson)) {
+      playlist.setPublicAccess(playlistJson.getBoolean("public"));
+    }
     playlist.setTracks(createPlaylistTracksInformation(playlistJson.getJSONObject("tracks")));
     playlist.setType(createSpotifyEntityType(playlistJson.getString("type")));
     playlist.setUri(playlistJson.getString("uri"));
@@ -644,7 +646,7 @@ public class JsonUtil {
   public static FeaturedPlaylists createFeaturedPlaylist(JSONObject jsonObject) {
     FeaturedPlaylists featuredPlaylists = new FeaturedPlaylists();
     featuredPlaylists.setMessage(jsonObject.getString("message"));
-    featuredPlaylists.setPlaylists(JsonUtil.createPlaylistPage(jsonObject.getJSONObject("playlists")));
+    featuredPlaylists.setPlaylists(JsonUtil.createSimplePlaylistsPage(jsonObject.getJSONObject("playlists")));
     return featuredPlaylists;
   }
 }

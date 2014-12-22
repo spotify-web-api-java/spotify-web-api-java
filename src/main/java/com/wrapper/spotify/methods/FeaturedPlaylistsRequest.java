@@ -1,6 +1,5 @@
 package com.wrapper.spotify.methods;
 
-import com.google.common.util.concurrent.ListenableFuture;
 import com.google.common.util.concurrent.SettableFuture;
 
 import com.wrapper.spotify.JsonUtil;
@@ -36,7 +35,7 @@ public class FeaturedPlaylistsRequest extends AbstractRequest {
    * Get Featured Playlists asynchronously.
    * @return A future that resolves to featured playlists.
    */
-  public ListenableFuture<FeaturedPlaylists> getAsync() {
+  public SettableFuture<FeaturedPlaylists> getAsync() {
     final SettableFuture<FeaturedPlaylists> future = SettableFuture.create();
 
     try {
@@ -65,7 +64,7 @@ public class FeaturedPlaylistsRequest extends AbstractRequest {
       return parameter("offset", String.valueOf(offset));
     }
 
-    public Builder countryCode(String countryCode) {
+    public Builder country(String countryCode) {
       assert (countryCode != null);
       return parameter("country", countryCode);
     }
