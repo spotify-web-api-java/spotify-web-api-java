@@ -179,13 +179,23 @@ public class JsonUtil {
     return availableMarkets;
   }
 
+  /**
+   * Create a list of Copyright object.
+   * @param copyrightsJson A JSON array containing copyright information retrieved from the Web API.
+   * @return A list of Copyright objects.
+   */
   public static List<Copyright> createCopyrights(JSONArray copyrightsJson) {
     List<Copyright> copyrights = new ArrayList<Copyright>();
     for (int i = 0; i < copyrightsJson.size(); i++) {
         Copyright copyright = new Copyright();
-        copyright.setText(copyrightsJson.getJSONObject(i).getString("text"));
-        copyright.setType(copyrightsJson.getJSONObject(i).getString("type"));
-        copyrights.add(copyright);
+        JSONObject copyrightJson = copyrightsJson.getJSONObject(i);
+        if (existsAndNotNull("text", copyrightJson)) {
+          copyright.setText(copyrightJson.getString("text"));
+        }
+      if (existsAndNotNull("type", copyrightJson)) {
+        copyright.setType(copyrightJson.getString("type"));
+      }
+      copyrights.add(copyright);
     }
     return copyrights;
   }
