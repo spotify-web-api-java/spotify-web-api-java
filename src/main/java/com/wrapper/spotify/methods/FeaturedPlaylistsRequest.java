@@ -10,6 +10,9 @@ import com.wrapper.spotify.models.FeaturedPlaylists;
 import net.sf.json.JSONObject;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class FeaturedPlaylistsRequest extends AbstractRequest {
 
@@ -72,10 +75,10 @@ public class FeaturedPlaylistsRequest extends AbstractRequest {
       return parameter("locale", locale);
     }
 
-    /* todo: should probably be a date object */
-    public Builder timestamp(String timestamp) {
+    public Builder timestamp(Date timestamp) {
       assert (timestamp != null);
-      return parameter("timestamp", timestamp);
+      final DateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+      return parameter("timestamp", format.format(timestamp));
     }
 
     public Builder accessToken(String accessToken) {

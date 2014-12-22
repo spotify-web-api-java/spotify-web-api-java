@@ -179,6 +179,16 @@ public class Api {
     return builder;
   }
 
+  /**
+   * Used to get Featured Playlists.
+   * @return A builder that can be used to build requests to get featured playlists.
+   */
+  public FeaturedPlaylistsRequest.Builder getFeaturedPlaylists() {
+    FeaturedPlaylistsRequest.Builder builder = FeaturedPlaylistsRequest.builder();
+    setDefaults(builder);
+    return builder;
+  }
+
   public TopTracksRequest.Builder getTopTracksForArtist(String artistId, String countryCode) {
     TopTracksRequest.Builder builder = TopTracksRequest.builder();
     setDefaults(builder);

@@ -1,23 +1,25 @@
 package com.wrapper.spotify;
 
 import com.wrapper.spotify.UtilProtos.Url.Scheme;
-import com.wrapper.spotify.methods.NewReleasesRequest;
 import com.wrapper.spotify.methods.Request;
 import com.wrapper.spotify.models.AlbumType;
 
-import com.wrapper.spotify.models.NewReleases;
-import junit.framework.Assert;
-
-import net.sf.json.JSON;
 import net.sf.json.JSONObject;
 
 import org.apache.commons.codec.binary.Base64;
 import org.junit.Test;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
-import static com.wrapper.spotify.Assertions.*;
+import static com.wrapper.spotify.Assertions.assertHasBodyParameter;
+import static com.wrapper.spotify.Assertions.assertHasHeader;
+import static com.wrapper.spotify.Assertions.assertHasJsonBody;
+import static com.wrapper.spotify.Assertions.assertHasParameter;
 import static junit.framework.TestCase.assertEquals;
 
 public class ApiTest {
@@ -545,6 +547,39 @@ public class ApiTest {
     assertHasParameter(request.toUrl(), "limit", "4");
     assertHasParameter(request.toUrl(), "offset", "1");
     assertHasParameter(request.toUrl(), "country", "SE");
+  }
+
+  @Test
+  public void shouldCreateFeaturedPlaylistsRequest() {
+    final String accessToken = "myAccessToken";
+
+    final Api api = Api.builder()
+        .accessToken(accessToken)
+        .build();
+
+
+    Calendar calendar = Calendar.getInstance();
+    calendar.set(2014, 11, 22, 13, 59, 30);
+    Date timestamp = calendar.getTime();
+
+    final Request request = api
+        .getFeaturedPlaylists()
+        .countryCode("SE")
+        .locale("es_MX")
+        .limit(5)
+        .offset(1)
+        .timestamp(timestamp)
+        .build();
+
+    DateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+
+    assertEquals("https://api.spotify.com:443/v1/browse/featured-playlists", request.toString());
+    assertHasHeader(request.toUrl(), "Authorization", "Bearer " + accessToken);
+    assertHasParameter(request.toUrl(), "limit", "5");
+    assertHasParameter(request.toUrl(), "offset", "1");
+    assertHasParameter(request.toUrl(), "country", "SE");
+    assertHasParameter(request.toUrl(), "locale", "es_MX");
+    assertHasParameter(request.toUrl(), "timestamp", format.format(timestamp));
   }
 
 }
