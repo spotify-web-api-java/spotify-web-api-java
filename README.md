@@ -58,7 +58,7 @@ Get the latest version:
 <dependency>
   <groupId>se.michaelthelin.spotify</groupId>
   <artifactId>spotify-web-api-java</artifactId>
-  <version>1.4.21</version>
+  <version>1.5.0</version>
 </dependency>
 ```
 
@@ -66,7 +66,7 @@ Get the latest version:
 
 This project uses net.sf.json-lib for marshalling, which may cause your Android build to fail if you're using Android Studio 1.0 ([relevant Stack Overflow post](http://stackoverflow.com/questions/27458227/org-apache-commons-collections-arraystack-has-already-been-added-to-output-plea)). It may therefore necessary to make an exclusion of common-beanutils when setting up this library as a dependency.
 ```
-compile('se.michaelthelin.spotify:spotify-web-api-java:1.4.21') {
+compile('se.michaelthelin.spotify:spotify-web-api-java:1.5.0') {
         exclude group: "commons-beanutils", module: "commons-beanutils"
 
     }
@@ -582,7 +582,7 @@ final AddTrackToPlaylistRequest request = api.addTracksToPlaylist("thelinmichael
   .build();
   
 try {
-  request.get(); // Empty response
+  request.get();
 } catch (Exception e) {
    System.out.println("Something went wrong!" + e.getMessage());
 }
@@ -762,6 +762,10 @@ There's a known issue in that tests cannot be run from an IDE as it doesn't pick
 ```mvn clean test```
 
 #### Change log
+
+##### 1.5.0
+
+- Change response type for Add Tracks to Playlist to SnapshotResult since it now includes a `snapshot_id`. **Code using Add Tracks to Playlist will break with this change.**
 
 ##### 1.4.21
 
