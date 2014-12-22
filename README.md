@@ -35,6 +35,7 @@ It includes helper functions to do:
 
 #### Browse
 - Get new releases
+- Get featured playlists
 
 #### Authentication
 
@@ -57,7 +58,7 @@ Get the latest version:
 <dependency>
   <groupId>se.michaelthelin.spotify</groupId>
   <artifactId>spotify-web-api-java</artifactId>
-  <version>1.4.20</version>
+  <version>1.4.21</version>
 </dependency>
 ```
 
@@ -65,7 +66,7 @@ Get the latest version:
 
 This project uses net.sf.json-lib for marshalling, which may cause your Android build to fail if you're using Android Studio 1.0 ([relevant Stack Overflow post](http://stackoverflow.com/questions/27458227/org-apache-commons-collections-arraystack-has-already-been-added-to-output-plea)). It may therefore necessary to make an exclusion of common-beanutils when setting up this library as a dependency.
 ```
-compile('se.michaelthelin.spotify:spotify-web-api-java:1.4.20') {
+compile('se.michaelthelin.spotify:spotify-web-api-java:1.4.21') {
         exclude group: "commons-beanutils", module: "commons-beanutils"
 
     }
@@ -720,6 +721,30 @@ try {
 
 ```
 
+##### [Get Featured Playlists](https://developer.spotify.com/web-api/get-list-featured-playlists/)
+
+```java
+Api api = Api.builder().accessToken(accessToken).build();
+
+Calendar calendar = Calendar.getInstance();
+calendar.set(2014, 9, 23, 9, 0, 0);
+Date timestamp = calendar.getTime();
+
+final FeaturedPlaylistsRequest request = api.getFeaturedPlaylists()
+    .limit(1)
+    .offset(1)
+    .country("SE")
+    .timestamp(timestamp)
+    .build();
+
+try {
+    FeaturedPlaylists featuredPlaylists = request.get();
+    System.out.println("Message for this set of playlists: " + featuredPlaylists.getMessage());
+} catch (Exception e) {
+    System.out.println("Something went wrong! " + e.getMessage());
+}
+```
+
 #### Development
 
 Any additions to this project will be happily received. Make sure that your code is covered by a test and send a pull request! Please work on a branch that isn't master as that'll make it easier for me to merge pull requests in case there has been commits made between the time you forked and the time you send the pull request.
@@ -737,6 +762,10 @@ There's a known issue in that tests cannot be run from an IDE as it doesn't pick
 ```mvn clean test```
 
 #### Change log
+
+##### 1.4.21
+
+- Add [Featured Playlists](https://developer.spotify.com/web-api/get-list-featured-playlists/) endpoint. Thanks [JMPerez](https://github.com/JMPerez)!
 
 ##### 1.4.20
 
