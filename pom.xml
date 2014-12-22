@@ -7,7 +7,7 @@
 
     <groupId>se.michaelthelin.spotify</groupId>
     <artifactId>spotify-web-api-java</artifactId>
-    <version>1.4.21</version>
+    <version>1.4.22-SNAPSHOT</version>
 
     <packaging>jar</packaging>
 
@@ -62,9 +62,9 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-gpg-plugin</artifactId>
                 <version>1.5</version>
-		<configuration>
-			<skip>true</skip>
-		</configuration>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
                 <executions>
                     <execution>
                         <id>sign-artifacts</id>
