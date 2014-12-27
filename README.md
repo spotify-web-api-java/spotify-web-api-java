@@ -216,7 +216,7 @@ final Api api = Api.builder()
   .redirectURI(redirectURI)
   .build();
 
-/* Set the necessary scopes that the applicaiton will need from the user */
+/* Set the necessary scopes that the application will need from the user */
 final List<String> scopes = Arrays.asList("user-read-private", "user-read-email");
 
 /* Set a state. This is used to prevent cross site request forgeries. */
@@ -290,7 +290,7 @@ try {
 ##### [Searching for artists](https://developer.spotify.com/spotify-web-api/search-item/)
 
 ```java
-final TrackSearchRequest request = api.searchArtists("tania bowra").market("SE").limit(10).build();
+final ArtistSearchRequest request = api.searchArtists("tania bowra").market("SE").limit(10).build();
  
 try {
    final Page<Artist> artistSearchResult = request.get();
