@@ -48,7 +48,7 @@ Even though authentication isn't always necessary, it always gives benefits such
 
 ## Install
 
-As of version 1.4.5 the artifact is available through Maven Central.
+As of version 1.4.5 the artifact is available through Maven Central. (All artifacts are available at https://oss.sonatype.org/#nexus-search;quick~spotify-web-api-java.)
 
 Get the latest version:
 
