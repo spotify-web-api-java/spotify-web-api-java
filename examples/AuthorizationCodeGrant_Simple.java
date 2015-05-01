@@ -27,7 +27,7 @@ public class YouFmToSpotifyPlaylist {
 	    	String refreshToken = "";
 	    	
 	    	/* Set the necessary scopes that the application will need from the user */
-	    	final List<String> scopes = Arrays.asList("user-read-private", "user-read-email");
+	    	final List<String> scopes = Arrays.asList("user-read-private", "user-read-email", "playlist-read-private", "playlist-modify-public", "playlist-modify-private");
 
 	    	/* Set a state. This is used to prevent cross site request forgeries. */
 	    	final String state = "someExpectedStateString";
@@ -77,6 +77,11 @@ public class YouFmToSpotifyPlaylist {
 	    	 * https://developer.spotify.com/spotify-web-api/get-users-profile/
 	    	 */
 	    	final User currentUser = api.getMe().build().get();
+            
+            //Delete track 0 from Playlist x
+            //List<Integer> positions = new ArrayList<Integer>();
+	    	//positions.add(0);
+	    	//api.removeFromPlaylist(currentUser.getId(), playlist.getId(), playlist.getSnapshotId(), positions).build().get(); 
 	    	
 	    	/* Use the information about the user */
 	    	System.out.println("URI to currently logged in user is: " + currentUser.getUri());
