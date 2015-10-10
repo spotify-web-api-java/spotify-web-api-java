@@ -1,0 +1,84 @@
+{
+  "collaborative" : false,
+  "description" : null,
+  "external_urls" : {
+    "spotify" : "http://open.spotify.com/user/1160451974/playlist/07XddQ4dIOBluElasP5hjH"
+  },
+  "followers" : {
+    "href" : null,
+    "total" : 0
+  },
+  "href" : "https://api.spotify.com/v1/users/1160451974/playlists/07XddQ4dIOBluElasP5hjH",
+  "id" : "07XddQ4dIOBluElasP5hjH",
+  "images" : [ ],
+  "name" : "Lokale Playlisten",
+  "owner" : {
+    "external_urls" : {
+      "spotify" : "http://open.spotify.com/user/1160451974"
+    },
+    "href" : "https://api.spotify.com/v1/users/1160451974",
+    "id" : "1160451974",
+    "type" : "user",
+    "uri" : "spotify:user:1160451974"
+  },
+  "public" : false,
+  "snapshot_id" : "S5YVoffZ+0fIafN+WRREou2ayfrU5VNtUJRfuN5J1xU6VgtTpLAL68GTJbmDRgU2",
+  "tracks" : {
+    "href" : "https://api.spotify.com/v1/users/1160451974/playlists/07XddQ4dIOBluElasP5hjH/tracks?offset=0&limit=100",
+    "items" : [ {
+      "added_at" : "2015-07-30T05:31:52Z",
+      "added_by" : {
+        "external_urls" : {
+          "spotify" : "http://open.spotify.com/user/1160451974"
+        },
+        "href" : "https://api.spotify.com/v1/users/1160451974",
+        "id" : "1160451974",
+        "type" : "user",
+        "uri" : "spotify:user:1160451974"
+      },
+      "is_local" : true,
+      "track" : {
+        "album" : {
+          "album_type" : null,
+          "available_markets" : [ ],
+          "external_urls" : { },
+          "href" : null,
+          "id" : null,
+          "images" : [ ],
+          "name" : "The Golden Age",
+          "type" : "album",
+          "uri" : null
+        },
+        "artists" : [ {
+          "external_urls" : { },
+          "href" : null,
+          "id" : null,
+          "name" : "Woodkid",
+          "type" : "artist",
+          "uri" : null
+        } ],
+        "available_markets" : [ ],
+        "disc_number" : 0,
+        "duration_ms" : 215000,
+        "explicit" : false,
+        "external_ids" : { },
+        "external_urls" : { },
+        "href" : null,
+        "id" : null,
+        "name" : "Run Boy Run",
+        "popularity" : 0,
+        "preview_url" : null,
+        "track_number" : 0,
+        "type" : "track",
+        "uri" : "spotify:local:Woodkid:The+Golden+Age:Run+Boy+Run:215"
+      }
+    } ],
+    "limit" : 100,
+    "next" : null,
+    "offset" : 0,
+    "previous" : null,
+    "total" : 1
+  },
+  "type" : "playlist",
+  "uri" : "spotify:user:1160451974:playlist:07XddQ4dIOBluElasP5hjH"
+}

@@ -227,6 +227,9 @@ public class JsonUtil {
   }
 
   public static AlbumType createAlbumType(String albumType) {
+    if ("null".equalsIgnoreCase(albumType)) {
+    	return null;
+    }
     return AlbumType.valueOf(albumType.toUpperCase());
   }
 
