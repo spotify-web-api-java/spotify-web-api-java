@@ -501,6 +501,26 @@ public class ApiTest {
   }
 
   @Test
+  public void shouldCreateGetMyAlbumsURL() {
+    final String accessToken = "myAccessToken";
+
+    final Api api = Api.builder()
+            .accessToken(accessToken)
+            .build();
+
+    final Request request = api
+            .getMySavedAlbums()
+            .limit(5)
+            .offset(1)
+            .build();
+
+    assertEquals("https://api.spotify.com:443/v1/me/albums", request.toString());
+    assertHasParameter(request.toUrl(), "limit", "5");
+    assertHasParameter(request.toUrl(), "offset", "1");
+    assertHasHeader(request.toUrl(), "Authorization", "Bearer " + accessToken);
+  }
+
+  @Test
   public void shouldCreatePutTracksURL() {
     final String accessToken = "myAccessToken";
 

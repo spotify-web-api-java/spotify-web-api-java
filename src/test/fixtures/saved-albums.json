@@ -1,0 +1,682 @@
+{
+    "href" : "https://api.spotify.com/v1/me/albums?offset=1&limit=5",
+    "items" : [
+        {
+            "added_at" : "2014-05-10T07:30:23Z",
+            "album" : {
+                "album_type" : "album",
+                "artists" : [
+                    {
+                        "external_urls" : {
+                            "spotify" : "https://open.spotify.com/artist/1YStXHRj5phGb2LGCudZ6N"
+                        },
+                        "href" : "https://api.spotify.com/v1/artists/1YStXHRj5phGb2LGCudZ6N",
+                        "id" : "1YStXHRj5phGb2LGCudZ6N",
+                        "name" : "Above The Law",
+                        "type" : "artist",
+                        "uri" : "spotify:artist:1YStXHRj5phGb2LGCudZ6N"
+                    }
+                ],
+                "available_markets" : [ "AD", "AR", "AT", "AU", "BE", "BG", "BO", "BR", "CA",
+                                        "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO",
+                                        "EC", "EE", "ES", "FI", "FR", "GB", "GR", "GT", "HK",
+                                        "HN", "HU", "IE", "IS", "IT", "LI", "LT", "LU", "LV",
+                                        "MC", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "PA",
+                                        "PE", "PH", "PL", "PT", "PY", "RO", "SE", "SG", "SI",
+                                        "SK", "SV", "TR", "TW", "US", "UY" ],
+                "copyrights" : [
+                    {
+                        "text" : "1990 CBS Records Inc.",
+                        "type" : "P"
+                    }
+                ],
+                "external_ids" : {
+                    "upc" : "074644604122"
+                },
+                "external_urls" : {
+                    "spotify" : "https://open.spotify.com/album/1IeZPlTQ4xjVJPXi0jj4qB"
+                },
+                "genres" : [ ],
+                "href" : "https://api.spotify.com/v1/albums/1IeZPlTQ4xjVJPXi0jj4qB",
+                "id" : "1IeZPlTQ4xjVJPXi0jj4qB",
+                "images" : [
+                    {
+                        "height" : 640,
+                        "url" : "https://i.scdn.co/image/a77459c9b12f0e3f8ca46ad6dbb38a87b31ff136",
+                        "width" : 640
+                    }, {
+                        "height" : 300,
+                        "url" : "https://i.scdn.co/image/df6e5e784e1b12cbd8fd27298250986f82ddb65e",
+                        "width" : 300
+                    }, {
+                        "height" : 64,
+                        "url" : "https://i.scdn.co/image/1f34ea916990c3e4ba825f69341ef1a4c6358380",
+                        "width" : 64
+                    }
+                ],
+                "name" : "Livin' Like Hustlers",
+                "popularity" : 35,
+                "release_date" : "1990-03-27",
+                "release_date_precision" : "day",
+                "tracks" : {
+                    "href" : "https://api.spotify.com/v1/albums/1IeZPlTQ4xjVJPXi0jj4qB/tracks?offset=0&limit=50",
+                    "items" : [
+                        {
+                            "artists" : [
+                                {
+                                    "external_urls" : {
+                                        "spotify" : "https://open.spotify.com/artist/1YStXHRj5phGb2LGCudZ6N"
+                                    },
+                                    "href" : "https://api.spotify.com/v1/artists/1YStXHRj5phGb2LGCudZ6N",
+                                    "id" : "1YStXHRj5phGb2LGCudZ6N",
+                                    "name" : "Above The Law",
+                                    "type" : "artist",
+                                    "uri" : "spotify:artist:1YStXHRj5phGb2LGCudZ6N"
+                                }
+                            ],
+                            "available_markets" : [ "AD", "AR", "AT", "AU", "BE", "BG", "BO", "BR", "CA",
+                                                    "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO",
+                                                    "EC", "EE", "ES", "FI", "FR", "GB", "GR", "GT", "HK",
+                                                    "HN", "HU", "IE", "IS", "IT", "LI", "LT", "LU", "LV",
+                                                    "MC", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "PA",
+                                                    "PE", "PH", "PL", "PT", "PY", "RO", "SE", "SG", "SI",
+                                                    "SK", "SV", "TR", "TW", "US", "UY" ],
+                            "disc_number" : 1,
+                            "duration_ms" : 253293,
+                            "explicit" : false,
+                            "external_urls" : {
+                                "spotify" : "https://open.spotify.com/track/0tVSehz9YkXjtlMjtmQwLz"
+                            },
+                            "href" : "https://api.spotify.com/v1/tracks/0tVSehz9YkXjtlMjtmQwLz",
+                            "id" : "0tVSehz9YkXjtlMjtmQwLz",
+                            "name" : "Murder Rap",
+                            "preview_url" : "https://p.scdn.co/mp3-preview/43f4a42207cef340cff3a31e2b3d647a0ae8a5d0",
+                            "track_number" : 1,
+                            "type" : "track",
+                            "uri" : "spotify:track:0tVSehz9YkXjtlMjtmQwLz"
+                        },
+                        {
+                            "artists" : [
+                                {
+                                    "external_urls" : {
+                                        "spotify" : "https://open.spotify.com/artist/1YStXHRj5phGb2LGCudZ6N"
+                                    },
+                                    "href" : "https://api.spotify.com/v1/artists/1YStXHRj5phGb2LGCudZ6N",
+                                    "id" : "1YStXHRj5phGb2LGCudZ6N",
+                                    "name" : "Above The Law",
+                                    "type" : "artist",
+                                    "uri" : "spotify:artist:1YStXHRj5phGb2LGCudZ6N"
+                                }
+                            ],
+                            "available_markets" : [ "AD", "AR", "AT", "AU", "BE", "BG", "BO", "BR", "CA",
+                                                    "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO",
+                                                    "EC", "EE", "ES", "FI", "FR", "GB", "GR", "GT", "HK",
+                                                    "HN", "HU", "IE", "IS", "IT", "LI", "LT", "LU", "LV",
+                                                    "MC", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "PA",
+                                                    "PE", "PH", "PL", "PT", "PY", "RO", "SE", "SG", "SI",
+                                                    "SK", "SV", "TR", "TW", "US", "UY" ],
+                            "disc_number" : 1,
+                            "duration_ms" : 223533,
+                            "explicit" : false,
+                            "external_urls" : {
+                                "spotify" : "https://open.spotify.com/track/586KkZcNdYAkORj1SkBC4A"
+                            },
+                            "href" : "https://api.spotify.com/v1/tracks/586KkZcNdYAkORj1SkBC4A",
+                            "id" : "586KkZcNdYAkORj1SkBC4A",
+                            "name" : "Untouchable",
+                            "preview_url" : "https://p.scdn.co/mp3-preview/e84b35f87bfe18cb4a689aa9e6a53fb168f68d5d",
+                            "track_number" : 2,
+                            "type" : "track",
+                            "uri" : "spotify:track:586KkZcNdYAkORj1SkBC4A"
+                        }
+                    ],
+                    "limit" : 50,
+                    "next" : null,
+                    "offset" : 0,
+                    "previous" : null,
+                    "total" : 10
+                },
+                "type" : "album",
+                "uri" : "spotify:album:1IeZPlTQ4xjVJPXi0jj4qB"
+            }
+        },
+        {
+            "added_at" : "2014-05-10T21:50:09Z",
+            "album" : {
+                "album_type" : "album",
+                "artists" : [
+                    {
+                        "external_urls" : {
+                            "spotify" : "https://open.spotify.com/artist/1P6U1dCeHxPui5pIrGmndZ"
+                        },
+                        "href" : "https://api.spotify.com/v1/artists/1P6U1dCeHxPui5pIrGmndZ",
+                        "id" : "1P6U1dCeHxPui5pIrGmndZ",
+                        "name" : "Air",
+                        "type" : "artist",
+                        "uri" : "spotify:artist:1P6U1dCeHxPui5pIrGmndZ"
+                    }
+                ],
+                "available_markets" : [ "AD", "AR", "AT", "AU", "BE", "BG", "BO", "BR", "CA",
+                                        "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO",
+                                        "EC", "EE", "ES", "FI", "FR", "GB", "GR", "GT", "HK",
+                                        "HN", "HU", "IE", "IS", "IT", "LI", "LT", "LU", "LV",
+                                        "MC", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "PA",
+                                        "PE", "PH", "PL", "PT", "PY", "RO", "SE", "SG", "SI",
+                                        "SK", "SV", "TR", "TW", "US", "UY" ],
+                "copyrights" : [
+                    {
+                        "text" : "2001 - Source, une division de Parlophone Music France",
+                        "type" : "C"
+                    },
+                    {
+                        "text" : "2001- Source, une division de Parlophone Music France",
+                        "type" : "P"
+                    }
+                ],
+                "external_ids" : {
+                    "upc" : "0724381033258"
+                },
+                "external_urls" : {
+                    "spotify" : "https://open.spotify.com/album/2WNI378JH55k63eXBHbjbI"
+                },
+                "genres" : [ ],
+                "href" : "https://api.spotify.com/v1/albums/2WNI378JH55k63eXBHbjbI",
+                "id" : "2WNI378JH55k63eXBHbjbI",
+                "images" : [
+                    {
+                        "height" : 640,
+                        "url" : "https://i.scdn.co/image/e4d1c1a73e71d970939e9488c6163376fe1b4940",
+                        "width" : 640
+                    }, {
+                        "height" : 300,
+                        "url" : "https://i.scdn.co/image/e5d2e2bf3b10fce6ba078a9f9724219c70081659",
+                        "width" : 300
+                    }, {
+                        "height" : 64,
+                        "url" : "https://i.scdn.co/image/c00c1afcfb36425c0cc1eb5e81dc1918fcc01797",
+                        "width" : 64
+                    }
+                ],
+                "name" : "10 000 Hz Legend",
+                "popularity" : 40,
+                "release_date" : "2001-05-28",
+                "release_date_precision" : "day",
+                "tracks" : {
+                    "href" : "https://api.spotify.com/v1/albums/2WNI378JH55k63eXBHbjbI/tracks?offset=0&limit=50",
+                    "items" : [
+                        {
+                            "artists" : [
+                                {
+                                    "external_urls" : {
+                                        "spotify" : "https://open.spotify.com/artist/1P6U1dCeHxPui5pIrGmndZ"
+                                    },
+                                    "href" : "https://api.spotify.com/v1/artists/1P6U1dCeHxPui5pIrGmndZ",
+                                    "id" : "1P6U1dCeHxPui5pIrGmndZ",
+                                    "name" : "Air",
+                                    "type" : "artist",
+                                    "uri" : "spotify:artist:1P6U1dCeHxPui5pIrGmndZ"
+                                }
+                            ],
+                            "available_markets" : [ "AD", "AR", "AT", "AU", "BE", "BG", "BO", "BR", "CA",
+                                                    "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO",
+                                                    "EC", "EE", "ES", "FI", "FR", "GB", "GR", "GT", "HK",
+                                                    "HN", "HU", "IE", "IS", "IT", "LI", "LT", "LU", "LV",
+                                                    "MC", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "PA",
+                                                    "PE", "PH", "PL", "PT", "PY", "RO", "SE", "SG", "SI",
+                                                    "SK", "SV", "TR", "TW", "US", "UY" ],
+                            "disc_number" : 1,
+                            "duration_ms" : 336360,
+                            "explicit" : false,
+                            "external_urls" : {
+                                "spotify" : "https://open.spotify.com/track/0C3vrVa4c8R2ZlTAn2WiMt"
+                            },
+                            "href" : "https://api.spotify.com/v1/tracks/0C3vrVa4c8R2ZlTAn2WiMt",
+                            "id" : "0C3vrVa4c8R2ZlTAn2WiMt",
+                            "name" : "Electronic Performer",
+                            "preview_url" : "https://p.scdn.co/mp3-preview/31499f266cc0e864205fcb3d054721c66c14d79e",
+                            "track_number" : 1,
+                            "type" : "track",
+                            "uri" : "spotify:track:0C3vrVa4c8R2ZlTAn2WiMt"
+                        },
+                        {
+                            "artists" : [
+                                {
+                                    "external_urls" : {
+                                        "spotify" : "https://open.spotify.com/artist/1P6U1dCeHxPui5pIrGmndZ"
+                                    },
+                                    "href" : "https://api.spotify.com/v1/artists/1P6U1dCeHxPui5pIrGmndZ",
+                                    "id" : "1P6U1dCeHxPui5pIrGmndZ",
+                                    "name" : "Air",
+                                    "type" : "artist",
+                                    "uri" : "spotify:artist:1P6U1dCeHxPui5pIrGmndZ"
+                                }
+                            ],
+                            "available_markets" : [ "AD", "AR", "AT", "AU", "BE", "BG", "BO", "BR", "CA",
+                                                    "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO",
+                                                    "EC", "EE", "ES", "FI", "FR", "GB", "GR", "GT", "HK",
+                                                    "HN", "HU", "IE", "IS", "IT", "LI", "LT", "LU", "LV",
+                                                    "MC", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "PA",
+                                                    "PE", "PH", "PL", "PT", "PY", "RO", "SE", "SG", "SI",
+                                                    "SK", "SV", "TR", "TW", "US", "UY" ],
+                            "disc_number" : 1,
+                            "duration_ms" : 277653,
+                            "explicit" : false,
+                            "external_urls" : {
+                                "spotify" : "https://open.spotify.com/track/4IoqGTH2D6zMrGzg9gW0DL"
+                            },
+                            "href" : "https://api.spotify.com/v1/tracks/4IoqGTH2D6zMrGzg9gW0DL",
+                            "id" : "4IoqGTH2D6zMrGzg9gW0DL",
+                            "name" : "How Does It Make You Feel",
+                            "preview_url" : "https://p.scdn.co/mp3-preview/5d29b8c65c35c45639a91564fe7a4ef56e96e224",
+                            "track_number" : 2,
+                            "type" : "track",
+                            "uri" : "spotify:track:4IoqGTH2D6zMrGzg9gW0DL"
+                        }
+                    ],
+                    "limit" : 50,
+                    "next" : null,
+                    "offset" : 0,
+                    "previous" : null,
+                    "total" : 11
+                },
+                "type" : "album",
+                "uri" : "spotify:album:2WNI378JH55k63eXBHbjbI"
+            }
+        },
+        {
+            "added_at" : "2014-05-10T21:49:52Z",
+            "album" : {
+                "album_type" : "album",
+                "artists" : [
+                    {
+                        "external_urls" : {
+                            "spotify" : "https://open.spotify.com/artist/1P6U1dCeHxPui5pIrGmndZ"
+                        },
+                        "href" : "https://api.spotify.com/v1/artists/1P6U1dCeHxPui5pIrGmndZ",
+                        "id" : "1P6U1dCeHxPui5pIrGmndZ",
+                        "name" : "Air",
+                        "type" : "artist",
+                        "uri" : "spotify:artist:1P6U1dCeHxPui5pIrGmndZ"
+                    }
+                ],
+                "available_markets" : [ ],
+                "copyrights" : [
+                    {
+                        "text" : "1998 Parlophone / Warner Music France, a Warner Music Group Company.",
+                        "type" : "C"
+                    }, {
+                        "text" : "1998 Parlophone / Warner Music France, a Warner Music Group Company.",
+                        "type" : "P"
+                    }
+                ],
+                "external_ids" : {
+                    "upc" : "0724384782153"
+                },
+                "external_urls" : {
+                    "spotify" : "https://open.spotify.com/album/1R8a7ohoJBlzknp0fPRRO0"
+                },
+                "genres" : [ ],
+                "href" : "https://api.spotify.com/v1/albums/1R8a7ohoJBlzknp0fPRRO0",
+                "id" : "1R8a7ohoJBlzknp0fPRRO0",
+                "images" : [
+                    {
+                        "height" : 640,
+                        "url" : "https://i.scdn.co/image/ac950dc0fc92d1b80a79dfed26bdf7d80b073b4c",
+                        "width" : 640
+                    }, {
+                        "height" : 300,
+                        "url" : "https://i.scdn.co/image/e69255c833c27149062eb03ffe1da4f0ad5a81c3",
+                        "width" : 300
+                    }, {
+                        "height" : 64,
+                        "url" : "https://i.scdn.co/image/79d9ed6ba3c8bb2d9cf92f0c0389653373f23b00",
+                        "width" : 64
+                    }
+                ],
+                "name" : "Moon Safari",
+                "popularity" : 13,
+                "release_date" : "1998",
+                "release_date_precision" : "year",
+                "tracks" : {
+                    "href" : "https://api.spotify.com/v1/albums/1R8a7ohoJBlzknp0fPRRO0/tracks?offset=0&limit=50",
+                    "items" : [
+                        {
+                            "artists" : [
+                                {
+                                    "external_urls" : {
+                                        "spotify" : "https://open.spotify.com/artist/1P6U1dCeHxPui5pIrGmndZ"
+                                    },
+                                    "href" : "https://api.spotify.com/v1/artists/1P6U1dCeHxPui5pIrGmndZ",
+                                    "id" : "1P6U1dCeHxPui5pIrGmndZ",
+                                    "name" : "Air",
+                                    "type" : "artist",
+                                    "uri" : "spotify:artist:1P6U1dCeHxPui5pIrGmndZ"
+                                }
+                            ],
+                            "available_markets" : [ ],
+                            "disc_number" : 1,
+                            "duration_ms" : 431293,
+                            "explicit" : false,
+                            "external_urls" : {
+                                "spotify" : "https://open.spotify.com/track/4fFJB1zjHVSvGtwMN8cv5J"
+                            },
+                            "href" : "https://api.spotify.com/v1/tracks/4fFJB1zjHVSvGtwMN8cv5J",
+                            "id" : "4fFJB1zjHVSvGtwMN8cv5J",
+                            "name" : "Femme D'Argent, La",
+                            "preview_url" : null,
+                            "track_number" : 1,
+                            "type" : "track",
+                            "uri" : "spotify:track:4fFJB1zjHVSvGtwMN8cv5J"
+                        },
+                        {
+                            "artists" : [
+                                {
+                                    "external_urls" : {
+                                        "spotify" : "https://open.spotify.com/artist/1P6U1dCeHxPui5pIrGmndZ"
+                                    },
+                                    "href" : "https://api.spotify.com/v1/artists/1P6U1dCeHxPui5pIrGmndZ",
+                                    "id" : "1P6U1dCeHxPui5pIrGmndZ",
+                                    "name" : "Air",
+                                    "type" : "artist",
+                                    "uri" : "spotify:artist:1P6U1dCeHxPui5pIrGmndZ"
+                                }
+                            ],
+                            "available_markets" : [ ],
+                            "disc_number" : 1,
+                            "duration_ms" : 298466,
+                            "explicit" : false,
+                            "external_urls" : {
+                                "spotify" : "https://open.spotify.com/track/4X4WSs1gTF7UnUA3H99cQX"
+                            },
+                            "href" : "https://api.spotify.com/v1/tracks/4X4WSs1gTF7UnUA3H99cQX",
+                            "id" : "4X4WSs1gTF7UnUA3H99cQX",
+                            "name" : "Sexy Boy",
+                            "preview_url" : null,
+                            "track_number" : 2,
+                            "type" : "track",
+                            "uri" : "spotify:track:4X4WSs1gTF7UnUA3H99cQX"
+                        }
+                    ],
+                    "limit" : 50,
+                    "next" : null,
+                    "offset" : 0,
+                    "previous" : null,
+                    "total" : 11
+                },
+                "type" : "album",
+                "uri" : "spotify:album:1R8a7ohoJBlzknp0fPRRO0"
+            }
+        },
+        {
+            "added_at" : "2014-05-10T21:49:22Z",
+            "album" : {
+                "album_type" : "album",
+                "artists" : [
+                    {
+                        "external_urls" : {
+                            "spotify" : "https://open.spotify.com/artist/1P6U1dCeHxPui5pIrGmndZ"
+                        },
+                        "href" : "https://api.spotify.com/v1/artists/1P6U1dCeHxPui5pIrGmndZ",
+                        "id" : "1P6U1dCeHxPui5pIrGmndZ",
+                        "name" : "Air",
+                        "type" : "artist",
+                        "uri" : "spotify:artist:1P6U1dCeHxPui5pIrGmndZ"
+                    }
+                ],
+                "available_markets" : [ ],
+                "copyrights" : [
+                    {
+                        "text" : "1999 Parlophone Music, une division de Parlophone Music France.",
+                        "type" : "C"
+                    }, {
+                        "text" : "1999 Parlophone Music, une division de Parlophone Music France.",
+                        "type" : "P"
+                    }
+                ],
+                "external_ids" : {
+                    "upc" : "0724384724559"
+                },
+                "external_urls" : {
+                    "spotify" : "https://open.spotify.com/album/6V1KivtRrIrBVb74dVCIKT"
+                },
+                "genres" : [ ],
+                "href" : "https://api.spotify.com/v1/albums/6V1KivtRrIrBVb74dVCIKT",
+                "id" : "6V1KivtRrIrBVb74dVCIKT",
+                "images" : [
+                    {
+                        "height" : 640,
+                        "url" : "https://i.scdn.co/image/3535d9f7b780d536e006694152b4258a6432b4a8",
+                        "width" : 640
+                    }, {
+                        "height" : 300,
+                        "url" : "https://i.scdn.co/image/2654c3f2b1f7ed57fc0e3a0d8b93bd3174e8467f",
+                        "width" : 300
+                    }, {
+                        "height" : 64,
+                        "url" : "https://i.scdn.co/image/6daca8c1cf1a9dfa3fec99264b8d529bf03f456e",
+                        "width" : 64
+                    }
+                ],
+                "name" : "Premiers Symptômes",
+                "popularity" : 6,
+                "release_date" : "1999-09-06",
+                "release_date_precision" : "day",
+                "tracks" : {
+                    "href" : "https://api.spotify.com/v1/albums/6V1KivtRrIrBVb74dVCIKT/tracks?offset=0&limit=50",
+                    "items" : [
+                        {
+                            "artists" : [
+                                {
+                                    "external_urls" : {
+                                        "spotify" : "https://open.spotify.com/artist/1P6U1dCeHxPui5pIrGmndZ"
+                                    },
+                                    "href" : "https://api.spotify.com/v1/artists/1P6U1dCeHxPui5pIrGmndZ",
+                                    "id" : "1P6U1dCeHxPui5pIrGmndZ",
+                                    "name" : "Air",
+                                    "type" : "artist",
+                                    "uri" : "spotify:artist:1P6U1dCeHxPui5pIrGmndZ"
+                                }
+                            ],
+                            "available_markets" : [ ],
+                            "disc_number" : 1,
+                            "duration_ms" : 359600,
+                            "explicit" : false,
+                            "external_urls" : {
+                                "spotify" : "https://open.spotify.com/track/200TxobHsx4EQhqX4M4pxy"
+                            },
+                            "href" : "https://api.spotify.com/v1/tracks/200TxobHsx4EQhqX4M4pxy",
+                            "id" : "200TxobHsx4EQhqX4M4pxy",
+                            "name" : "Modulor mix",
+                            "preview_url" : null,
+                            "track_number" : 1,
+                            "type" : "track",
+                            "uri" : "spotify:track:200TxobHsx4EQhqX4M4pxy"
+                        },
+                        {
+                            "artists" : [
+                                {
+                                    "external_urls" : {
+                                        "spotify" : "https://open.spotify.com/artist/1P6U1dCeHxPui5pIrGmndZ"
+                                    },
+                                    "href" : "https://api.spotify.com/v1/artists/1P6U1dCeHxPui5pIrGmndZ",
+                                    "id" : "1P6U1dCeHxPui5pIrGmndZ",
+                                    "name" : "Air",
+                                    "type" : "artist",
+                                    "uri" : "spotify:artist:1P6U1dCeHxPui5pIrGmndZ"
+                                }
+                            ],
+                            "available_markets" : [ ],
+                            "disc_number" : 1,
+                            "duration_ms" : 353600,
+                            "explicit" : false,
+                            "external_urls" : {
+                                "spotify" : "https://open.spotify.com/track/6bhfobbRiaTkItUoNgIYBd"
+                            },
+                            "href" : "https://api.spotify.com/v1/tracks/6bhfobbRiaTkItUoNgIYBd",
+                            "id" : "6bhfobbRiaTkItUoNgIYBd",
+                            "name" : "Casanova 70",
+                            "preview_url" : null,
+                            "track_number" : 2,
+                            "type" : "track",
+                            "uri" : "spotify:track:6bhfobbRiaTkItUoNgIYBd"
+                        }
+                    ],
+                    "limit" : 50,
+                    "next" : null,
+                    "offset" : 0,
+                    "previous" : null,
+                    "total" : 7
+                },
+                "type" : "album",
+                "uri" : "spotify:album:6V1KivtRrIrBVb74dVCIKT"
+            }
+        },
+        {
+            "added_at" : "2014-05-10T21:50:01Z",
+            "album" : {
+                "album_type" : "album",
+                "artists" : [
+                    {
+                        "external_urls" : {
+                            "spotify" : "https://open.spotify.com/artist/1P6U1dCeHxPui5pIrGmndZ"
+                        },
+                        "href" : "https://api.spotify.com/v1/artists/1P6U1dCeHxPui5pIrGmndZ",
+                        "id" : "1P6U1dCeHxPui5pIrGmndZ",
+                        "name" : "Air",
+                        "type" : "artist",
+                        "uri" : "spotify:artist:1P6U1dCeHxPui5pIrGmndZ"
+                    }
+                ],
+                "available_markets" : [ "AD", "AR", "AT", "AU", "BE", "BG", "BO", "BR", "CA",
+                                        "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO",
+                                        "EC", "EE", "ES", "FI", "FR", "GB", "GR", "GT", "HK",
+                                        "HN", "HU", "IE", "IS", "IT", "LI", "LT", "LU", "LV",
+                                        "MC", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "PA",
+                                        "PE", "PH", "PL", "PT", "PY", "RO", "SE", "SG", "SI",
+                                        "SK", "SV", "TR", "TW", "US", "UY" ],
+                "copyrights" : [
+                    {
+                        "text" : "2004 Source, a division of Parlophone Music France",
+                        "type" : "C"
+                    }, {
+                        "text" : "2004 Source, a division of Parlophone Music France",
+                        "type" : "P"
+                    }
+                ],
+                "external_ids" : {
+                    "upc" : "0724359663258"
+                },
+                "external_urls" : {
+                    "spotify" : "https://open.spotify.com/album/0hQOqvZv1nQvPiBjzyn363"
+                },
+                "genres" : [ ],
+                "href" : "https://api.spotify.com/v1/albums/0hQOqvZv1nQvPiBjzyn363",
+                "id" : "0hQOqvZv1nQvPiBjzyn363",
+                "images" : [
+                    {
+                        "height" : 640,
+                        "url" : "https://i.scdn.co/image/671f5bc32e02cbca2568054b0f578e63b9e2fe31",
+                        "width" : 640
+                    }, {
+                        "height" : 300,
+                        "url" : "https://i.scdn.co/image/bd2dea47f593ee81f3d6b277d0f3e35340da5e37",
+                        "width" : 300
+                    }, {
+                        "height" : 64,
+                        "url" : "https://i.scdn.co/image/2ebdecde4d4876f1b05252509b22829163275eb1",
+                        "width" : 64
+                    }
+                ],
+                "name" : "Talkie Walkie",
+                "popularity" : 58,
+                "release_date" : "2004-01-26",
+                "release_date_precision" : "day",
+                "tracks" : {
+                    "href" : "https://api.spotify.com/v1/albums/0hQOqvZv1nQvPiBjzyn363/tracks?offset=0&limit=50",
+                    "items" : [
+                        {
+                            "artists" : [
+                                {
+                                    "external_urls" : {
+                                        "spotify" : "https://open.spotify.com/artist/1P6U1dCeHxPui5pIrGmndZ"
+                                    },
+                                    "href" : "https://api.spotify.com/v1/artists/1P6U1dCeHxPui5pIrGmndZ",
+                                    "id" : "1P6U1dCeHxPui5pIrGmndZ",
+                                    "name" : "Air",
+                                    "type" : "artist",
+                                    "uri" : "spotify:artist:1P6U1dCeHxPui5pIrGmndZ"
+                                }
+                            ],
+                            "available_markets" : [ "AD", "AR", "AT", "AU", "BE", "BG", "BO", "BR", "CA",
+                                                    "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO",
+                                                    "EC", "EE", "ES", "FI", "FR", "GB", "GR", "GT", "HK",
+                                                    "HN", "HU", "IE", "IS", "IT", "LI", "LT", "LU", "LV",
+                                                    "MC", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "PA",
+                                                    "PE", "PH", "PL", "PT", "PY", "RO", "SE", "SG", "SI",
+                                                    "SK", "SV", "TR", "TW", "US", "UY" ],
+                            "disc_number" : 1,
+                            "duration_ms" : 244560,
+                            "explicit" : false,
+                            "external_urls" : {
+                                "spotify" : "https://open.spotify.com/track/14EMkYvQQ3E7gI8MFc9bFd"
+                            },
+                            "href" : "https://api.spotify.com/v1/tracks/14EMkYvQQ3E7gI8MFc9bFd",
+                            "id" : "14EMkYvQQ3E7gI8MFc9bFd",
+                            "name" : "Venus",
+                            "preview_url" : "https://p.scdn.co/mp3-preview/52de7991a4a5bd2080cea12344d08cad849ed778",
+                            "track_number" : 1,
+                            "type" : "track",
+                            "uri" : "spotify:track:14EMkYvQQ3E7gI8MFc9bFd"
+                        },
+                        {
+                            "artists" : [
+                                {
+                                    "external_urls" : {
+                                        "spotify" : "https://open.spotify.com/artist/1P6U1dCeHxPui5pIrGmndZ"
+                                    },
+                                    "href" : "https://api.spotify.com/v1/artists/1P6U1dCeHxPui5pIrGmndZ",
+                                    "id" : "1P6U1dCeHxPui5pIrGmndZ",
+                                    "name" : "Air",
+                                    "type" : "artist",
+                                    "uri" : "spotify:artist:1P6U1dCeHxPui5pIrGmndZ"
+                                }
+                            ],
+                            "available_markets" : [ "AD", "AR", "AT", "AU", "BE", "BG", "BO", "BR", "CA",
+                                                    "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO",
+                                                    "EC", "EE", "ES", "FI", "FR", "GB", "GR", "GT", "HK",
+                                                    "HN", "HU", "IE", "IS", "IT", "LI", "LT", "LU", "LV",
+                                                    "MC", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "PA",
+                                                    "PE", "PH", "PL", "PT", "PY", "RO", "SE", "SG", "SI",
+                                                    "SK", "SV", "TR", "TW", "US", "UY" ],
+                            "disc_number" : 1,
+                            "duration_ms" : 219760,
+                            "explicit" : false,
+                            "external_urls" : {
+                                "spotify" : "https://open.spotify.com/track/4m8ttWM8IKXyhpv89E867J"
+                            },
+                            "href" : "https://api.spotify.com/v1/tracks/4m8ttWM8IKXyhpv89E867J",
+                            "id" : "4m8ttWM8IKXyhpv89E867J",
+                            "name" : "Cherry Blossom Girl",
+                            "preview_url" : "https://p.scdn.co/mp3-preview/8440450f9a132e8c525850acf26f4582ddd9cef4",
+                            "track_number" : 2,
+                            "type" : "track",
+                            "uri" : "spotify:track:4m8ttWM8IKXyhpv89E867J"
+                        }
+                    ],
+                    "limit" : 50,
+                    "next" : null,
+                    "offset" : 0,
+                    "previous" : null,
+                    "total" : 10
+                },
+                "type" : "album",
+                "uri" : "spotify:album:0hQOqvZv1nQvPiBjzyn363"
+            }
+        }
+    ],
+    "limit" : 5,
+    "next" : "https://api.spotify.com/v1/me/albums?offset=6&limit=5",
+    "offset" : 1,
+    "previous" : "https://api.spotify.com/v1/me/albums?offset=0&limit=5",
+    "total" : 716
+}
