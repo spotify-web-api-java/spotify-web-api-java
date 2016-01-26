@@ -1,22 +1,17 @@
 package com.wrapper.spotify;
 
+import com.wrapper.spotify.UtilProtos.Url;
 import com.wrapper.spotify.exceptions.BadRequestException;
+import com.wrapper.spotify.exceptions.EmptyResponseException;
 import com.wrapper.spotify.exceptions.ServerErrorException;
 import com.wrapper.spotify.exceptions.WebApiException;
 import net.sf.json.JSONObject;
 import org.apache.commons.httpclient.*;
 import org.apache.commons.httpclient.cookie.CookiePolicy;
-import org.apache.commons.httpclient.methods.DeleteMethod;
-import org.apache.commons.httpclient.methods.GetMethod;
-import org.apache.commons.httpclient.methods.PostMethod;
-import org.apache.commons.httpclient.methods.PutMethod;
-import org.apache.commons.httpclient.methods.StringRequestEntity;
+import org.apache.commons.httpclient.methods.*;
 import org.apache.commons.httpclient.params.HttpMethodParams;
-import com.wrapper.spotify.UtilProtos.Url;
-import com.wrapper.spotify.exceptions.EmptyResponseException;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -109,19 +104,33 @@ public class SpotifyHttpManager implements HttpManager {
     return execute(method);
   }
 
-
-  // TODO(michael): Allow JSON body to be sent.
   @Override
   public String delete(UtilProtos.Url url) throws IOException, WebApiException {
     assert (url != null);
 
     final String uri = UrlUtil.assemble(url);
-    final DeleteMethod method = new DeleteMethod(uri);
+    //We can not use the DeleteMethod object here because it does not allow a body
+    final EntityEnclosingMethod method = new EntityEnclosingMethod(uri)
+    {
+      public String getName() {
+        return "DELETE";
+      }
+    };
 
     for (Url.Parameter header : url.getHeaderParametersList()) {
       method.setRequestHeader(header.getName(), header.getValue());
     }
 
+    if (url.hasJsonBody()) {
+
+      StringRequestEntity requestEntity = new StringRequestEntity(
+          url.getJsonBody(),
+          "application/json",
+          "UTF-8");
+      method.setRequestEntity(requestEntity);
+    } else {
+      method.setRequestBody(String.valueOf(getBodyParametersAsNamedValuePairArray(url)));
+    }
     method.setQueryString(getParametersAsNamedValuePairArray(url));
     method.getParams().setCookiePolicy(CookiePolicy.BROWSER_COMPATIBILITY);
     method.getParams().setParameter(HttpMethodParams.HTTP_CONTENT_CHARSET, "UTF-8");
