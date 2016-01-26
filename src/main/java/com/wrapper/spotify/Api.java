@@ -7,6 +7,7 @@ import com.wrapper.spotify.methods.authentication.AuthorizationURLRequest;
 import com.wrapper.spotify.methods.authentication.ClientCredentialsGrantRequest;
 import com.wrapper.spotify.methods.authentication.RefreshAccessTokenRequest;
 
+import com.wrapper.spotify.models.PlaylistTrackPosition;
 import net.sf.json.JSONArray;
 
 import java.util.Arrays;
@@ -383,6 +384,15 @@ public class Api {
     setDefaults(builder);
     userId = UrlUtil.userToUri(userId);
     builder.path("/v1/users/" + userId + "/playlists/" + playlistId);
+    return builder;
+  }
+
+  public RemoveTrackFromPlaylistRequest.Builder removeTrackFromPlaylist(String userId, String playlistId, List<PlaylistTrackPosition> trackUris)
+  {
+    final RemoveTrackFromPlaylistRequest.Builder builder = RemoveTrackFromPlaylistRequest.builder();
+    setDefaults(builder);
+    builder.tracks(trackUris);
+    builder.path("/v1/users/" + userId + "/playlists/" + playlistId + "/tracks");
     return builder;
   }
 
