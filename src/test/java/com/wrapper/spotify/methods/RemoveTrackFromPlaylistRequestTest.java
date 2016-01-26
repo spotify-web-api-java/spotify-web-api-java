@@ -57,4 +57,26 @@ public class RemoveTrackFromPlaylistRequestTest
 
         asyncCompleted.await(1, TimeUnit.SECONDS);
     }
+
+    @Test
+    public void shouldAddTracksToPlaylist_sync() throws Exception {
+        final String accessToken = "someAccessToken";
+
+        final Api api = Api.builder().accessToken(accessToken).build();
+
+        final String myUsername = "thelinmichael";
+        final String myPlaylistId = "5ieJqeLJjjI8iJWaxeBLuK";
+        final String snapshotId = "JbtmHBDBAYu3/bt8BOXKjzKx3i0b6LCa/wVjyl6qQ2Yf6nFXkbmzuEa+ZI/U1yF+";
+        PlaylistTrackPosition playlistTrackPosition1 = new PlaylistTrackPosition("spotify:track:4BYGxv4rxSNcTgT3DsFB9o");
+        PlaylistTrackPosition playlistTrackPosition2 = new PlaylistTrackPosition("spotify:track:0BG2iE6McPhmAEKIhfqy1X", new int[]{5});
+        final List<PlaylistTrackPosition> tracksToRemove = Arrays.asList(playlistTrackPosition1, playlistTrackPosition2);
+
+        final RemoveTrackFromPlaylistRequest request = api.removeTrackFromPlaylist(myUsername, myPlaylistId, tracksToRemove)
+            .snapshotId(snapshotId)
+            .httpManager(TestUtil.MockedHttpManager.returningJson("remove-tracks.json"))
+            .build();
+
+        final SnapshotResult snapshotResult = request.get();
+        assertEquals(snapshotId, snapshotResult.getSnapshotId());
+    }
 }
