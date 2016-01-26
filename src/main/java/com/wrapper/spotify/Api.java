@@ -396,6 +396,16 @@ public class Api {
     return builder;
   }
 
+  public ReorderTracksInPlaylistRequest.Builder reorderTracksInPlaylist(String userId, String playlistId, int rangeStart, int insertBefore)
+  {
+    final ReorderTracksInPlaylistRequest.Builder builder = ReorderTracksInPlaylistRequest.builder();
+    setDefaults(builder);
+    builder.rangeStart(rangeStart);
+    builder.insertBefore(insertBefore);
+    builder.path("/v1/users/" + userId + "/playlists/" + playlistId + "/tracks");
+    return builder;
+  }
+
   /**
    * Get a users Your Music tracks.
    * @return A builder object that can be used to build a request to get the user's Your Music library.
