@@ -9,6 +9,7 @@ import com.wrapper.spotify.methods.authentication.RefreshAccessTokenRequest;
 
 import com.wrapper.spotify.models.PlaylistTrackPosition;
 import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 
 import java.util.Arrays;
 import java.util.List;
@@ -387,6 +388,19 @@ public class Api {
     setDefaults(builder);
     builder.rangeStart(rangeStart);
     builder.insertBefore(insertBefore);
+    builder.path("/v1/users/" + userId + "/playlists/" + playlistId + "/tracks");
+    return builder;
+  }
+
+  public ReplaceTracksInPlaylistRequest.Builder replaceTracksInPlaylist(String userId, String playlistId, List<String> trackUris)
+  {
+    final ReplaceTracksInPlaylistRequest.Builder builder = ReplaceTracksInPlaylistRequest.builder();
+    setDefaults(builder);
+    final JSONArray jsonArrayUri = new JSONArray();
+    jsonArrayUri.addAll(trackUris);
+    final JSONObject jsonObjectUris = new JSONObject();
+    jsonObjectUris.put("uris", jsonArrayUri);
+    builder.body(jsonObjectUris);
     builder.path("/v1/users/" + userId + "/playlists/" + playlistId + "/tracks");
     return builder;
   }
