@@ -45,7 +45,7 @@ public class RemoveTrackFromPlaylistRequestTest
         Futures.addCallback(addTrackFuture, new FutureCallback<SnapshotResult>() {
             @Override
             public void onSuccess(SnapshotResult response) {
-                assertEquals("JbtmHBDBAYu3/bt8BOXKjzKx3i0b6LCa/wVjyl6qQ2Yf6nFXkbmzuEa+ZI/U1yF+", response.getSnapshotId());
+                assertEquals(snapshotId, response.getSnapshotId());
                 asyncCompleted.countDown();
             }
 
