@@ -173,6 +173,13 @@ public class Api {
     return builder;
   }
 
+  public PlaylistSearchRequest.Builder searchPlaylists(String query) {
+	PlaylistSearchRequest.Builder builder = PlaylistSearchRequest.builder();
+    setDefaults(builder);
+    builder.query(query);
+    return builder;
+  }
+  
   public NewReleasesRequest.Builder getNewReleases() {
     NewReleasesRequest.Builder builder = NewReleasesRequest.builder();
     setDefaults(builder);
