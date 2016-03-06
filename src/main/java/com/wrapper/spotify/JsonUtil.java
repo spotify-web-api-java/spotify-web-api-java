@@ -276,6 +276,14 @@ public class JsonUtil {
     }
     return returnedAlbums;
   }
+  
+  public static List<SimplePlaylist> createSimplePlaylist(JSONArray jsonArray) {
+    List<SimplePlaylist> returnedAlbums = new ArrayList<SimplePlaylist>();
+    for (int i = 0; i < jsonArray.size(); i++) {
+      returnedAlbums.add(createSimplePlaylist(jsonArray.getJSONObject(i)));
+    }
+    return returnedAlbums;
+  }
 
   public static SimpleArtist createSimpleArtist(JSONObject simpleArtistJson) {
     if (simpleArtistJson == null || simpleArtistJson.isNullObject()) {
@@ -410,6 +418,16 @@ public class JsonUtil {
   public static Page<SimpleAlbum> createSimpleAlbumPage(JSONObject simpleAlbumPageJson) {
     Page page = createItemlessPage(simpleAlbumPageJson);
     page.setItems(createSimpleAlbums(simpleAlbumPageJson.getJSONArray("items")));
+    return page;
+  }
+  
+  public static Page<SimplePlaylist> createSimplePlaylistPage(String simplePlaylistPageJson) {
+    return createSimplePlaylistPage(JSONObject.fromObject(simplePlaylistPageJson));
+  }
+
+  public static Page<SimplePlaylist> createSimplePlaylistPage(JSONObject simplePlaylistPageJson) {
+    Page page = createItemlessPage(simplePlaylistPageJson);
+    page.setItems(createSimplePlaylist(simplePlaylistPageJson.getJSONArray("items")));
     return page;
   }
 
