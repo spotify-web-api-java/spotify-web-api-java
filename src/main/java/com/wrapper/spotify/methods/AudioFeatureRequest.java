@@ -41,9 +41,9 @@ public class AudioFeatureRequest extends AbstractRequest {
     public static final class Builder extends AbstractRequest.Builder<Builder> {
 
         /**
-         * The album with the given id.
+         * The audio request with the given song id.
          *
-         * @param id The id for the album.
+         * @param id The id for the song.
          * @return AlbumRequest
          */
         public Builder id(String id) {
