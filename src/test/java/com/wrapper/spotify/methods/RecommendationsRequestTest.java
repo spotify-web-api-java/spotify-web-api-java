@@ -24,7 +24,7 @@ public class RecommendationsRequestTest {
     public void shouldGetRecommendationsResult_async() throws Exception {
         final Api api = Api.DEFAULT_API;
 
-        final RecommendationsRequest request = api.getRecommendations("0eGsygTp906u18L0Oimnem", "1lDWb6b6ieDQ2xT7ewTC3G")
+        final RecommendationsRequest request = api.getRecommendations()
                 .httpManager(TestUtil.MockedHttpManager.returningJson("tracks.json"))
                 .build();
 
@@ -59,7 +59,7 @@ public class RecommendationsRequestTest {
     public void shouldGetRecommendationsResult_sync() throws Exception {
         final Api api = Api.DEFAULT_API;
 
-        final RecommendationsRequest request = api.getRecommendations("0eGsygTp906u18L0Oimnem", "1lDWb6b6ieDQ2xT7ewTC3G")
+        final RecommendationsRequest request = api.getRecommendations()
                 .httpManager(TestUtil.MockedHttpManager.returningJson("recommendations.json"))
                 .build();
 
