@@ -84,7 +84,7 @@ public class PlaylistSearchRequestTest {
 		assertEquals("https://api.spotify.com/v1/users/theodorduf/playlists/5W11lXKiV9B5RZluPrxmCS",
 				firstPlaylist.getHref());
 		assertEquals("5W11lXKiV9B5RZluPrxmCS", firstPlaylist.getId());
-		assertEquals("Tdog✌🏿️", firstPlaylist.getName());
+		assertEquals("Tdog", firstPlaylist.getName());
 		assertNotNull(firstPlaylist.getImages());
 		assertNotNull(firstPlaylist.getOwner());
 		assertEquals(SpotifyEntityType.PLAYLIST, firstPlaylist.getType());
