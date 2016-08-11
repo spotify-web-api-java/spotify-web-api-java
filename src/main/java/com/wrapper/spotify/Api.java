@@ -179,6 +179,13 @@ public class Api {
     return builder;
   }
 
+  public AudioFeatureRequest.Builder getAudioFeature(String id) {
+    AudioFeatureRequest.Builder builder = AudioFeatureRequest.builder();
+    setDefaults(builder);
+    builder.id(id);
+    return builder;
+  }
+
   /**
    * Used to get Featured Playlists.
    * @return A builder that can be used to build requests to get featured playlists.

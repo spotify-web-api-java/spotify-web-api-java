@@ -3,9 +3,7 @@ package com.wrapper.spotify;
 import com.wrapper.spotify.UtilProtos.Url.Scheme;
 import com.wrapper.spotify.methods.Request;
 import com.wrapper.spotify.models.AlbumType;
-
 import net.sf.json.JSONObject;
-
 import org.apache.commons.codec.binary.Base64;
 import org.junit.Test;
 
@@ -16,10 +14,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-import static com.wrapper.spotify.Assertions.assertHasBodyParameter;
-import static com.wrapper.spotify.Assertions.assertHasHeader;
-import static com.wrapper.spotify.Assertions.assertHasJsonBody;
-import static com.wrapper.spotify.Assertions.assertHasParameter;
+import static com.wrapper.spotify.Assertions.*;
 import static junit.framework.TestCase.assertEquals;
 
 public class ApiTest {
@@ -29,6 +24,13 @@ public class ApiTest {
     Api api = Api.DEFAULT_API;
     Request request = api.getAlbum("5oEljuMoe9MXH6tBIPbd5e").build();
     assertEquals("https://api.spotify.com:443/v1/albums/5oEljuMoe9MXH6tBIPbd5e", request.toString());
+  }
+
+  @Test
+  public void shouldCreateGetAudioFeaturesUrl(){
+    Api api = Api.DEFAULT_API;
+    Request request = api.getAudioFeature("1hmNbafW4sAPNaGc7LeXAZ").build();
+    assertEquals("https://api.spotify.com:443/v1/audio-features/1hmNbafW4sAPNaGc7LeXAZ", request.toString());
   }
 
   @Test
