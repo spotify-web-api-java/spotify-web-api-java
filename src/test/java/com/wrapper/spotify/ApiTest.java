@@ -481,6 +481,24 @@ public class ApiTest {
 
     assertEquals("https://accounts.spotify.com:443/authorize?client_id=fcecfc79122e4cd299473677a17cbd4d&response_type=code&redirect_uri=http://www.michaelthelin.se/test-callback&scope=user-read-private%20user-read-email&state=someExpectedStateString&show_dialog=false", authorizeURL);
   }
+  
+  @Test
+  public void shouldCreateAuthorizeUrlWithShowDialogAndOptionalParameters() {
+    final String redirectURI = "http://www.michaelthelin.se/test-callback";
+    final String clientId = "fcecfc79122e4cd299473677a17cbd4d";
+
+    final Api api = Api.builder()
+        .clientId(clientId)
+        .redirectURI(redirectURI)
+        .build();
+
+    final List<String> scopes = Arrays.asList("user-read-private", "user-read-email");
+    final String state = "someExpectedStateString";
+
+    String authorizeURL = api.createAuthorizeURL(scopes, state, true);
+
+    assertEquals("https://accounts.spotify.com:443/authorize?client_id=fcecfc79122e4cd299473677a17cbd4d&response_type=code&redirect_uri=http://www.michaelthelin.se/test-callback&scope=user-read-private%20user-read-email&state=someExpectedStateString&show_dialog=true", authorizeURL);
+  }
 
   @Test
   public void shouldCreateGetMyTracksURL() {
