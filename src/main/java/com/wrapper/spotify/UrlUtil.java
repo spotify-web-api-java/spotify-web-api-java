@@ -42,30 +42,27 @@ public abstract class UrlUtil {
   public static String userToUri(String userName){
     String uriString = "";
     try {
-      uriString = URIUtil.encodeQuery(userName, "UTF-8");
-      System.out.println(uriString);
+       uriString = URIUtil.encodeQuery(userName, "UTF-8");
     } catch (URIException e) {
-      e.printStackTrace();
+       e.printStackTrace();
     }
-
     uriString = uriString.replaceAll("!", toHex("!"));
     uriString = uriString.replaceAll("\\?", toHex("?"));
-    uriString = uriString.replaceAll("\\+",toHex("+"));
+    uriString = uriString.replaceAll("\\+", toHex("+"));
     uriString = uriString.replaceAll("=", toHex("="));
-
     return uriString;
   }
 
-  private static String  toHex(String s) {
-    StringBuffer buf = null;
+  private static String toHex(String s) {
+    StringBuffer buf;
     try {
        buf = new StringBuffer(s.getBytes("UTF-8").length);
-      for (byte x : s.getBytes("UTF-8")) {
-        buf.append("%");
-        buf.append(Integer.toHexString(x & 0xFF));
+       for (byte x : s.getBytes("UTF-8")) {
+         buf.append("%");
+         buf.append(Integer.toHexString(x & 0xFF));
       }
     } catch (UnsupportedEncodingException e) {
-      e.printStackTrace();
+       throw new IllegalStateException(e);
     }
     return buf.toString().toUpperCase();
   }
