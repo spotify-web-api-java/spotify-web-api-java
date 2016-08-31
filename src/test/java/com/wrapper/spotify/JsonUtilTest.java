@@ -6,9 +6,11 @@ import com.wrapper.spotify.models.Track;
 
 import org.junit.Test;
 
+import java.net.URI;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class JsonUtilTest {
 
@@ -52,6 +54,14 @@ public class JsonUtilTest {
     String json = TestUtil.readTestData("tracks.json");
     List<Track> tracks = JsonUtil.createTracks(json);
     assertEquals(2, tracks.size());
+  }
+
+  @Test
+  public void shouldCreateProperUri() throws Exception {
+    String user = "ta_!#¤%=?+☃3";
+    String userUri = UrlUtil.userToUri(user);
+    URI uri = new URI("ta_%21%23%C2%A4%25%3D%3F%2B%E2%98%833");
+    assertEquals(userUri, uri.toString());
   }
 
 }

@@ -4,9 +4,14 @@ import com.google.common.collect.ImmutableMap;
 import org.apache.commons.httpclient.URI;
 import org.apache.commons.httpclient.URIException;
 import com.wrapper.spotify.UtilProtos.Url.Scheme;
+import org.apache.commons.httpclient.util.URIUtil;
+import org.apache.commons.lang.StringEscapeUtils;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public abstract class UrlUtil {
 
@@ -32,6 +37,37 @@ public abstract class UrlUtil {
     } catch (URIException e) {
       throw new IllegalStateException(e);
     }
+  }
+
+  public static String userToUri(String userName){
+    String uriString = "";
+    try {
+      uriString = URIUtil.encodeQuery(userName, "UTF-8");
+      System.out.println(uriString);
+    } catch (URIException e) {
+      e.printStackTrace();
+    }
+
+    uriString = uriString.replaceAll("!", toHex("!"));
+    uriString = uriString.replaceAll("\\?", toHex("?"));
+    uriString = uriString.replaceAll("\\+",toHex("+"));
+    uriString = uriString.replaceAll("=", toHex("="));
+
+    return uriString;
+  }
+
+  private static String  toHex(String s) {
+    StringBuffer buf = null;
+    try {
+       buf = new StringBuffer(s.getBytes("UTF-8").length);
+      for (byte x : s.getBytes("UTF-8")) {
+        buf.append("%");
+        buf.append(Integer.toHexString(x & 0xFF));
+      }
+    } catch (UnsupportedEncodingException e) {
+      e.printStackTrace();
+    }
+    return buf.toString().toUpperCase();
   }
 
   private static String getParametersListAsString(UtilProtos.Url url) {
