@@ -271,6 +271,7 @@ public class Api {
   public PlaylistRequest.Builder getPlaylist(String userId, String playlistId) {
     PlaylistRequest.Builder builder = PlaylistRequest.builder();
     setDefaults(builder);
+    userId = UrlUtil.userToUri(userId);
     builder.path("/v1/users/" + userId + "/playlists/" + playlistId);
     return builder;
   }
@@ -296,6 +297,7 @@ public class Api {
     final PlaylistCreationRequest.Builder builder = PlaylistCreationRequest.builder();
     setDefaults(builder);
     builder.title(title);
+    userId = UrlUtil.userToUri(userId);
     builder.path("/v1/users/" + userId + "/playlists");
     return builder;
   }
@@ -321,6 +323,7 @@ public class Api {
   public PlaylistTracksRequest.Builder getPlaylistTracks(String userId, String playlistId) {
     final PlaylistTracksRequest.Builder builder = PlaylistTracksRequest.builder();
     setDefaults(builder);
+    userId = UrlUtil.userToUri(userId);
     builder.path("/v1/users/" + userId + "/playlists/" + playlistId + "/tracks");
     return builder;
   }
@@ -334,6 +337,7 @@ public class Api {
   public PlaylistTracksRequest.Builder getStarred(String userId) {
     final PlaylistTracksRequest.Builder builder = PlaylistTracksRequest.builder();
     setDefaults(builder);
+    userId = UrlUtil.userToUri(userId);
     builder.path("/v1/users/" + userId + "/starred/tracks");
     return builder;
   }
@@ -361,6 +365,7 @@ public class Api {
     final JSONArray jsonArrayUri = new JSONArray();
     jsonArrayUri.addAll(trackUris);
     builder.body(jsonArrayUri);
+    userId = UrlUtil.userToUri(userId);
     builder.path("/v1/users/" + userId + "/playlists/" + playlistId + "/tracks");
     return builder;
   }
@@ -374,6 +379,7 @@ public class Api {
   public ChangePlaylistDetailsRequest.Builder changePlaylistDetails(String userId, String playlistId) {
     final ChangePlaylistDetailsRequest.Builder builder = ChangePlaylistDetailsRequest.builder();
     setDefaults(builder);
+    userId = UrlUtil.userToUri(userId);
     builder.path("/v1/users/" + userId + "/playlists/" + playlistId);
     return builder;
   }
