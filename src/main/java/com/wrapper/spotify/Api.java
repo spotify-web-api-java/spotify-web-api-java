@@ -207,6 +207,7 @@ public class Api {
   public UserRequest.Builder getUser(String userId) {
     UserRequest.Builder builder = UserRequest.builder();
     setDefaults(builder);
+    userId = UrlUtil.userToUri(userId);
     builder.username(userId);
     return builder;
   }
@@ -214,6 +215,7 @@ public class Api {
   public UserPlaylistsRequest.Builder getPlaylistsForUser(String userId) {
     UserPlaylistsRequest.Builder builder = UserPlaylistsRequest.builder();
     setDefaults(builder);
+    userId = UrlUtil.userToUri(userId);
     builder.username(userId);
     return builder;
   }
