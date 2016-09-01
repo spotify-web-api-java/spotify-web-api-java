@@ -23,13 +23,18 @@ public abstract class UrlUtil {
 
   public static String assemble(UtilProtos.Url url)  {
     try {
-      final URI uri = new URI(SCHEME_NAMES.get(url.getScheme()), null, url.getHost(), url.getPort(), url.getPath());
-      return uri.toString();
+      if (!url.getPath().contains("users")) {
+        final URI uri = new URI(SCHEME_NAMES.get(url.getScheme()), null, url.getHost(), url.getPort(), url.getPath());
+        return uri.toString();
+      } else {
+        final URI uri = new URI(SCHEME_NAMES.get(url.getScheme()), null, url.getHost(), url.getPort());
+        return uri.toString() + url.getPath();
+      }
     } catch (URIException e) {
       throw new IllegalStateException(e);
     }
   }
-
+  
   public static String assembleWithQueryParameters(UtilProtos.Url url) {
     try {
       final URI uri = new URI(SCHEME_NAMES.get(url.getScheme()), null, url.getHost(), url.getPort(), url.getPath(), getParametersListAsString(url));
