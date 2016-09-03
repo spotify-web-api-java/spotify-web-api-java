@@ -1,33 +1,6 @@
 package com.wrapper.spotify;
 
-import com.wrapper.spotify.models.Album;
-import com.wrapper.spotify.models.AlbumType;
-import com.wrapper.spotify.models.Artist;
-import com.wrapper.spotify.models.AuthorizationCodeCredentials;
-import com.wrapper.spotify.models.ClientCredentials;
-import com.wrapper.spotify.models.Copyright;
-import com.wrapper.spotify.models.ExternalIds;
-import com.wrapper.spotify.models.ExternalUrls;
-import com.wrapper.spotify.models.FeaturedPlaylists;
-import com.wrapper.spotify.models.Followers;
-import com.wrapper.spotify.models.Image;
-import com.wrapper.spotify.models.LibraryTrack;
-import com.wrapper.spotify.models.NewReleases;
-import com.wrapper.spotify.models.Page;
-import com.wrapper.spotify.models.Playlist;
-import com.wrapper.spotify.models.PlaylistTrack;
-import com.wrapper.spotify.models.PlaylistTracksInformation;
-import com.wrapper.spotify.models.Product;
-import com.wrapper.spotify.models.RefreshAccessTokenCredentials;
-import com.wrapper.spotify.models.SimpleAlbum;
-import com.wrapper.spotify.models.SimpleArtist;
-import com.wrapper.spotify.models.SimplePlaylist;
-import com.wrapper.spotify.models.SimpleTrack;
-import com.wrapper.spotify.models.SnapshotResult;
-import com.wrapper.spotify.models.SpotifyEntityType;
-import com.wrapper.spotify.models.Track;
-import com.wrapper.spotify.models.User;
-
+import com.wrapper.spotify.models.*;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONException;
 import net.sf.json.JSONNull;
@@ -35,11 +8,7 @@ import net.sf.json.JSONObject;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
-import java.util.TimeZone;
+import java.util.*;
 
 public class JsonUtil {
 
@@ -684,5 +653,14 @@ public class JsonUtil {
     SnapshotResult result = new SnapshotResult();
     result.setSnapshotId(jsonObject.getString("snapshot_id"));
     return result;
+  }
+
+  public static List<String> createGenres(JSONObject jsonObject) {
+    List<String> returnedGenres = new ArrayList<String>();
+    JSONArray genresObject = jsonObject.getJSONArray("genres");
+    for (int i = 0; i < genresObject.size(); i++) {
+      returnedGenres.add(genresObject.get(i).toString());
+    }
+    return returnedGenres;
   }
 }

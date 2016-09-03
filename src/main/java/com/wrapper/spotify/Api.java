@@ -6,7 +6,6 @@ import com.wrapper.spotify.methods.authentication.AuthorizationCodeGrantRequest;
 import com.wrapper.spotify.methods.authentication.AuthorizationURLRequest;
 import com.wrapper.spotify.methods.authentication.ClientCredentialsGrantRequest;
 import com.wrapper.spotify.methods.authentication.RefreshAccessTokenRequest;
-
 import net.sf.json.JSONArray;
 
 import java.util.Arrays;
@@ -207,7 +206,6 @@ public class Api {
   public UserRequest.Builder getUser(String userId) {
     UserRequest.Builder builder = UserRequest.builder();
     setDefaults(builder);
-    userId = UrlUtil.userToUri(userId);
     builder.username(userId);
     return builder;
   }
@@ -215,7 +213,6 @@ public class Api {
   public UserPlaylistsRequest.Builder getPlaylistsForUser(String userId) {
     UserPlaylistsRequest.Builder builder = UserPlaylistsRequest.builder();
     setDefaults(builder);
-    userId = UrlUtil.userToUri(userId);
     builder.username(userId);
     return builder;
   }
@@ -273,7 +270,6 @@ public class Api {
   public PlaylistRequest.Builder getPlaylist(String userId, String playlistId) {
     PlaylistRequest.Builder builder = PlaylistRequest.builder();
     setDefaults(builder);
-    userId = UrlUtil.userToUri(userId);
     builder.path("/v1/users/" + userId + "/playlists/" + playlistId);
     return builder;
   }
@@ -299,7 +295,6 @@ public class Api {
     final PlaylistCreationRequest.Builder builder = PlaylistCreationRequest.builder();
     setDefaults(builder);
     builder.title(title);
-    userId = UrlUtil.userToUri(userId);
     builder.path("/v1/users/" + userId + "/playlists");
     return builder;
   }
@@ -325,7 +320,6 @@ public class Api {
   public PlaylistTracksRequest.Builder getPlaylistTracks(String userId, String playlistId) {
     final PlaylistTracksRequest.Builder builder = PlaylistTracksRequest.builder();
     setDefaults(builder);
-    userId = UrlUtil.userToUri(userId);
     builder.path("/v1/users/" + userId + "/playlists/" + playlistId + "/tracks");
     return builder;
   }
@@ -339,7 +333,6 @@ public class Api {
   public PlaylistTracksRequest.Builder getStarred(String userId) {
     final PlaylistTracksRequest.Builder builder = PlaylistTracksRequest.builder();
     setDefaults(builder);
-    userId = UrlUtil.userToUri(userId);
     builder.path("/v1/users/" + userId + "/starred/tracks");
     return builder;
   }
@@ -367,7 +360,6 @@ public class Api {
     final JSONArray jsonArrayUri = new JSONArray();
     jsonArrayUri.addAll(trackUris);
     builder.body(jsonArrayUri);
-    userId = UrlUtil.userToUri(userId);
     builder.path("/v1/users/" + userId + "/playlists/" + playlistId + "/tracks");
     return builder;
   }
@@ -381,7 +373,6 @@ public class Api {
   public ChangePlaylistDetailsRequest.Builder changePlaylistDetails(String userId, String playlistId) {
     final ChangePlaylistDetailsRequest.Builder builder = ChangePlaylistDetailsRequest.builder();
     setDefaults(builder);
-    userId = UrlUtil.userToUri(userId);
     builder.path("/v1/users/" + userId + "/playlists/" + playlistId);
     return builder;
   }
@@ -477,6 +468,22 @@ public class Api {
     return builder;
   }
 
+  public RecommendationsRequest.Builder getRecommendations(String... ids) {
+    return getRecommendations(Arrays.asList(ids));
+  }
+
+  public RecommendationsRequest.Builder getRecommendations(List<String> ids) {
+    RecommendationsRequest.Builder builder = RecommendationsRequest.builder();
+    setDefaults(builder);
+    builder.genres(ids);
+    return builder;
+  }
+
+  public AvailableGenreSeedsRequest.Builder getAvailableGenreSeedsRequest() {
+    AvailableGenreSeedsRequest.Builder builder = new AvailableGenreSeedsRequest.Builder();
+    setDefaults(builder);
+    return builder;
+  }
 
   public void setAccessToken(String accessToken) {
     this.accessToken = accessToken;
