@@ -479,8 +479,20 @@ public class Api {
     return builder;
   }
 
-  public AvailableGenreSeedsRequest.Builder getAvailableGenreSeedsRequest() {
+  public AvailableGenreSeedsRequest.Builder getAvailableGenreSeeds() {
     AvailableGenreSeedsRequest.Builder builder = new AvailableGenreSeedsRequest.Builder();
+    setDefaults(builder);
+    return builder;
+  }
+
+  public CategoriesRequest.Builder getCategories() {
+    CategoriesRequest.Builder builder = new CategoriesRequest.Builder();
+    setDefaults(builder);
+    return builder;
+  }
+
+  public CategoryRequest.Builder getCategory(String categoryId) {
+    CategoryRequest.Builder builder = new CategoryRequest.Builder().forCategory(categoryId);
     setDefaults(builder);
     return builder;
   }

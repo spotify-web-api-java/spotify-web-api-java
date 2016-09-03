@@ -663,4 +663,33 @@ public class JsonUtil {
     }
     return returnedGenres;
   }
+
+  public static Category createCategory(JSONObject jsonObject) {
+    if (jsonObject == null || jsonObject.isNullObject()) {
+      return null;
+    }
+
+    Category category = new Category();
+
+    category.setHref(jsonObject.getString("href"));
+    category.setId(jsonObject.getString("id"));
+    category.setIcons(createImages(jsonObject.getJSONArray("icons")));
+    category.setName(jsonObject.getString("name"));
+
+    return category;
+  }
+
+  public static Page<Category> createCategoryPage(JSONObject jsonObject) {
+    Page page = createItemlessPage(jsonObject.getJSONObject("categories"));
+    page.setItems(createCategories(jsonObject.getJSONObject("categories").getJSONArray("items")));
+    return page;
+  }
+
+  private static List createCategories(JSONArray jsonArray) {
+    final List<Category> returnedCategories = new ArrayList<Category>();
+    for (int i = 0; i < jsonArray.size(); i++) {
+      returnedCategories.add(createCategory(jsonArray.getJSONObject(i)));
+    }
+    return returnedCategories;
+  }
 }
