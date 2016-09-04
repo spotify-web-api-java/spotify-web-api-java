@@ -78,7 +78,6 @@ public class CategoryRequest extends AbstractRequest {
         }
 
         public CategoryRequest build() {
-            path("/v1/recommendations/available-genre-seeds");
             return new CategoryRequest(this);
         }
 
