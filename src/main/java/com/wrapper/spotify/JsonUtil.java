@@ -11,6 +11,7 @@ import com.wrapper.spotify.models.ExternalUrls;
 import com.wrapper.spotify.models.FeaturedPlaylists;
 import com.wrapper.spotify.models.Followers;
 import com.wrapper.spotify.models.Image;
+import com.wrapper.spotify.models.LibraryAlbum;
 import com.wrapper.spotify.models.LibraryTrack;
 import com.wrapper.spotify.models.NewReleases;
 import com.wrapper.spotify.models.Page;
@@ -646,6 +647,33 @@ public class JsonUtil {
     }
     returnedLibraryTrack.setTrack(createTrack(item.getJSONObject("track")));
     return returnedLibraryTrack;
+  }
+
+  public static Page<LibraryAlbum> createLibraryAlbumsPage(JSONObject jsonObject) {
+    final Page<LibraryAlbum> libraryAlbumPage = createItemlessPage(jsonObject);
+    libraryAlbumPage.setItems(createLibraryAlbums(
+            JSONArray.fromObject(jsonObject.getJSONArray("items"))));
+
+    return libraryAlbumPage;
+  }
+
+  private static List<LibraryAlbum> createLibraryAlbums(JSONArray items) {
+    final List<LibraryAlbum> returnedLibraryAlbums = new ArrayList<LibraryAlbum>();
+    for (int i = 0; i < items.size(); i++) {
+      returnedLibraryAlbums.add(createLibraryAlbum(items.getJSONObject(i)));
+    }
+    return returnedLibraryAlbums;
+  }
+
+  private static LibraryAlbum createLibraryAlbum(JSONObject item) {
+    final LibraryAlbum returnedLibraryAlbum = new LibraryAlbum();
+    try {
+      returnedLibraryAlbum.setAddedAt(createDate(item.getString("added_at")));
+    } catch (ParseException e) {
+      returnedLibraryAlbum.setAddedAt(null);
+    }
+    returnedLibraryAlbum.setAlbum(createAlbum(item.getJSONObject("album")));
+    return returnedLibraryAlbum;
   }
 
   public static List<Boolean> createBooleans(String response) {
