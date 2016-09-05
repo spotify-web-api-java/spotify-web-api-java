@@ -497,6 +497,13 @@ public class Api {
     return builder;
   }
 
+  public CategoryPlaylistsRequest.Builder getPlaylistsForCategory(String categoryId) {
+    CategoryPlaylistsRequest.Builder builder = CategoryPlaylistsRequest.builder();
+    setDefaults(builder);
+    builder.category(categoryId);
+    return builder;
+  }
+  
   public void setAccessToken(String accessToken) {
     this.accessToken = accessToken;
   }
