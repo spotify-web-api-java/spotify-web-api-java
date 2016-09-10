@@ -159,9 +159,6 @@ public class SpotifyHttpManager implements HttpManager {
 
       handleErrorResponseBody(responseBody);
       return responseBody;
-
-    } catch (IOException e) {
-      throw new IOException();
     } finally {
       method.releaseConnection();
     }
