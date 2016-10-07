@@ -48,6 +48,7 @@ public class CurrentUserRequestTest {
         assertEquals("http://media.giphy.com/media/Aab07O5PYOmQ/giphy.gif", user.getImages().get(0).getUrl());
         assertEquals(Product.PREMIUM, user.getProduct());
         assertEquals("spotify:user:thelinmichael", user.getUri());
+        assertEquals("1989-07-04", user.getBirthdate());
 
         asyncCompleted.countDown();
       }
@@ -86,5 +87,6 @@ public class CurrentUserRequestTest {
     assertEquals("http://media.giphy.com/media/Aab07O5PYOmQ/giphy.gif", user.getImages().get(0).getUrl());
     assertEquals(Product.PREMIUM, user.getProduct());
     assertEquals("spotify:user:thelinmichael", user.getUri());
+    assertEquals("1989-07-04", user.getBirthdate());
   }
 }
