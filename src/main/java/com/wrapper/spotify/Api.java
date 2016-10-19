@@ -371,6 +371,20 @@ public class Api {
     builder.path("/v1/users/" + userId + "/playlists/" + playlistId + "/tracks");
     return builder;
   }
+  
+  /**
+   * Reorder Playlist's Tracks.
+   * @param userId The owner's username.
+   * @param playlistId The playlist's ID.
+   * @return A builder object that can e used to build a request to change a playlist's track order.
+   */
+  public ReorderPlaylistTracksRequest.Builder reorderPlaylistTracks(String userId, String playlistId) {
+    final ReorderPlaylistTracksRequest.Builder builder = ReorderPlaylistTracksRequest.builder();
+    setDefaults(builder);
+    userId = UrlUtil.userToUri(userId);
+    builder.path("/v1/users/" + userId + "/playlists/" + playlistId + "/tracks");
+    return builder;
+  }
 
   /**
    * Update a playlist's properties.
