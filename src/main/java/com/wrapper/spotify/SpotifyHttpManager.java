@@ -109,17 +109,26 @@ public class SpotifyHttpManager implements HttpManager {
     return execute(method);
   }
 
-
-  // TODO(michael): Allow JSON body to be sent.
   @Override
   public String delete(UtilProtos.Url url) throws IOException, WebApiException {
     assert (url != null);
 
     final String uri = UrlUtil.assemble(url);
-    final DeleteMethod method = new DeleteMethod(uri);
+    final MyDeleteMethod method = new MyDeleteMethod(uri);
 
     for (Url.Parameter header : url.getHeaderParametersList()) {
       method.setRequestHeader(header.getName(), header.getValue());
+    }
+    
+    if (url.hasJsonBody()) {
+
+      StringRequestEntity requestEntity = new StringRequestEntity(
+                url.getJsonBody(),
+                "application/json",
+                "UTF-8");
+      method.setRequestEntity(requestEntity);
+    } else {
+      method.setRequestBody(getBodyParametersAsNamedValuePairArray(url));
     }
 
     method.setQueryString(getParametersAsNamedValuePairArray(url));
@@ -170,15 +179,18 @@ public class SpotifyHttpManager implements HttpManager {
   /*
    * Todo: Error handling could be more granular and throw a different exception depending on status code.
    * It could also look into the JSON object to find an error message.
+   * Edit: 2015.04.30 Ich-Eben:
+   * Added the responseBody to the exception. Better than nothing.
    */
-  private void handleErrorStatusCode(HttpMethod method) throws BadRequestException, ServerErrorException {
+  private void handleErrorStatusCode(HttpMethod method) throws BadRequestException, ServerErrorException, IOException {
     int statusCode = method.getStatusCode();
 
     if (statusCode >= 400 && statusCode < 500) {
-      throw new BadRequestException(String.valueOf(statusCode));
+      String response = method.getResponseBodyAsString();
+      throw new BadRequestException("HTTPStatusCode: " + String.valueOf(statusCode) + " ResponseBody: " + response);
     }
     if (statusCode >= 500) {
-      throw new ServerErrorException(String.valueOf(statusCode));
+      throw new ServerErrorException("HTTPStatusCode: " + String.valueOf(statusCode));
     }
 
   }

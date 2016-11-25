@@ -422,6 +422,22 @@ public class Api {
     builder.path("/v1/me/tracks");
     return builder;
   }
+  
+  /**
+   * Remove tracks from users playlist.
+   * @param userId The playlist's owner's username.
+   * @param playlistId The playlist's ID.
+   * @param snapshotId The playlist's last snapshotId.
+   * @param positions A list of positions you want to delete from the playlist (maximum 100 tracks at once!).
+   * @return A builder object that can be used to remove tracks from a user's playlist.
+   */
+  public RemoveFromPlaylistRequest.Builder removeFromPlaylist(String userId, String playlistId, String snapshotId, List<Integer> positions) {
+    final RemoveFromPlaylistRequest.Builder builder = RemoveFromPlaylistRequest.builder();
+    setDefaults(builder);
+    builder.tracks(snapshotId, positions);
+    builder.path("/v1/users/" + userId + "/playlists/" + playlistId + "/tracks");
+    return builder;
+  }
 
   /**
    * Save tracks in the user's Your Music library.

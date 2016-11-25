@@ -566,6 +566,9 @@ public class JsonUtil {
 
     returnedPlaylist.setType(createSpotifyEntityType(jsonObject.getString("type")));
     returnedPlaylist.setUri(jsonObject.getString("uri"));
+    
+    returnedPlaylist.setSnapshotId(jsonObject.getString("snapshot_id"));
+    
     return returnedPlaylist;
   }
 
