@@ -5,6 +5,7 @@ import com.wrapper.spotify.models.AlbumType;
 import com.wrapper.spotify.models.Artist;
 import com.wrapper.spotify.models.AuthorizationCodeCredentials;
 import com.wrapper.spotify.models.ClientCredentials;
+import com.wrapper.spotify.models.Context;
 import com.wrapper.spotify.models.Copyright;
 import com.wrapper.spotify.models.ExternalIds;
 import com.wrapper.spotify.models.ExternalUrls;
@@ -18,6 +19,7 @@ import com.wrapper.spotify.models.Playlist;
 import com.wrapper.spotify.models.PlaylistTrack;
 import com.wrapper.spotify.models.PlaylistTracksInformation;
 import com.wrapper.spotify.models.Product;
+import com.wrapper.spotify.models.RecentTrack;
 import com.wrapper.spotify.models.RefreshAccessTokenCredentials;
 import com.wrapper.spotify.models.SimpleAlbum;
 import com.wrapper.spotify.models.SimpleArtist;
@@ -685,4 +687,34 @@ public class JsonUtil {
     result.setSnapshotId(jsonObject.getString("snapshot_id"));
     return result;
   }
+
+	public static List<RecentTrack> createRecentTracks(JSONObject jsonObject) {
+		JSONArray recentTracksJson = JSONArray.fromObject(jsonObject.getJSONArray("items"));
+		final List<RecentTrack> returnedRecentTracks = new ArrayList<RecentTrack>();
+		for (int i = 0; i < recentTracksJson.size(); i++) {
+			returnedRecentTracks.add(createRecentTrack(recentTracksJson.getJSONObject(i)));
+		}
+		return returnedRecentTracks;
+	}
+
+	private static RecentTrack createRecentTrack(JSONObject jsonObject) {
+		final RecentTrack returnedRecentTrack = new RecentTrack();
+		returnedRecentTrack.setTrack(createSimpleTrack(jsonObject.getJSONObject("track")));
+	    try {
+	    	returnedRecentTrack.setPlayedAt(createDate(jsonObject.getString("played_at")));
+	    } catch (ParseException e) {
+	    	returnedRecentTrack.setPlayedAt(null);
+	    }
+		returnedRecentTrack.setContext(createContext(jsonObject.getJSONObject("context")));
+		return returnedRecentTrack;
+	}
+	
+	private static Context createContext(JSONObject jsonObject) {
+		final Context returnedContext = new Context();
+		returnedContext.setUri(jsonObject.getString("uri"));
+		returnedContext.setExternalUrls(createExternalUrls(jsonObject.getJSONObject("external_urls")));
+		returnedContext.setHref(jsonObject.getString("href"));
+		returnedContext.setType(jsonObject.getString("type"));
+		return returnedContext;
+	}
 }

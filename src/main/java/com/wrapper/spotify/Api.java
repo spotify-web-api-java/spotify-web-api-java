@@ -419,6 +419,12 @@ public class Api {
     builder.path("/v1/users/" + userId + "/playlists/" + playlistId + "/tracks");
     return builder;
   }
+  
+  public UserRecentTracksRequest.Builder getUserRecentTracks() {
+	  final UserRecentTracksRequest.Builder builder = UserRecentTracksRequest.builder();
+	  setDefaults(builder);
+	  return builder;
+  }
 
   /**
    * Get a users Your Music tracks.
