@@ -397,7 +397,7 @@ public class JsonUtil {
     return page;
   }
 
-  private static Page<SimpleTrack> createSimpleTrackPage(JSONObject simpleTrackPageJson) {
+  public static Page<SimpleTrack> createSimpleTrackPage(JSONObject simpleTrackPageJson) {
     Page page = createItemlessPage(simpleTrackPageJson);
     page.setItems(createSimpleTracks(simpleTrackPageJson.getJSONArray("items")));
     return page;
