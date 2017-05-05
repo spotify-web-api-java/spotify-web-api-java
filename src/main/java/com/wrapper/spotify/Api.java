@@ -1,16 +1,45 @@
 package com.wrapper.spotify;
 
+import java.util.Arrays;
+import java.util.List;
 import com.wrapper.spotify.UtilProtos.Url.Scheme;
-import com.wrapper.spotify.methods.*;
+import com.wrapper.spotify.methods.AbstractRequest;
+import com.wrapper.spotify.methods.AddToMySavedTracksRequest;
+import com.wrapper.spotify.methods.AddTrackToPlaylistRequest;
+import com.wrapper.spotify.methods.AlbumRequest;
+import com.wrapper.spotify.methods.AlbumSearchRequest;
+import com.wrapper.spotify.methods.AlbumsForArtistRequest;
+import com.wrapper.spotify.methods.AlbumsRequest;
+import com.wrapper.spotify.methods.ArtistRequest;
+import com.wrapper.spotify.methods.ArtistSearchRequest;
+import com.wrapper.spotify.methods.ArtistsRequest;
+import com.wrapper.spotify.methods.AudioFeatureRequest;
+import com.wrapper.spotify.methods.ChangePlaylistDetailsRequest;
+import com.wrapper.spotify.methods.ContainsMySavedTracksRequest;
+import com.wrapper.spotify.methods.CurrentUserRequest;
+import com.wrapper.spotify.methods.FeaturedPlaylistsRequest;
+import com.wrapper.spotify.methods.GetMySavedTracksRequest;
+import com.wrapper.spotify.methods.NewReleasesRequest;
+import com.wrapper.spotify.methods.PlaylistCreationRequest;
+import com.wrapper.spotify.methods.PlaylistRequest;
+import com.wrapper.spotify.methods.PlaylistTracksRequest;
+import com.wrapper.spotify.methods.PlaylistUnfollowRequest;
+import com.wrapper.spotify.methods.RelatedArtistsRequest;
+import com.wrapper.spotify.methods.RemoveFromMySavedTracksRequest;
+import com.wrapper.spotify.methods.ReplacePlaylistTracksRequest;
+import com.wrapper.spotify.methods.TopTracksRequest;
+import com.wrapper.spotify.methods.TrackRequest;
+import com.wrapper.spotify.methods.TrackSearchRequest;
+import com.wrapper.spotify.methods.TracksForAlbumRequest;
+import com.wrapper.spotify.methods.TracksRequest;
+import com.wrapper.spotify.methods.UserPlaylistsRequest;
+import com.wrapper.spotify.methods.UserRequest;
 import com.wrapper.spotify.methods.authentication.AuthorizationCodeGrantRequest;
 import com.wrapper.spotify.methods.authentication.AuthorizationURLRequest;
 import com.wrapper.spotify.methods.authentication.ClientCredentialsGrantRequest;
 import com.wrapper.spotify.methods.authentication.RefreshAccessTokenRequest;
-
 import net.sf.json.JSONArray;
-
-import java.util.Arrays;
-import java.util.List;
+import net.sf.json.JSONObject;
 
 /**
  * Instances of the Api class provide access to the Spotify Web API.
@@ -113,6 +142,15 @@ public class Api {
     AlbumsForArtistRequest.Builder builder = AlbumsForArtistRequest.builder();
     setDefaults(builder);
     builder.forArtist(artistId);
+    return builder;
+  }
+
+  public TracksForAlbumRequest.Builder getTracksForAlbum(
+      String albumId
+  ) {
+    TracksForAlbumRequest.Builder builder = TracksForAlbumRequest.builder();
+    setDefaults(builder);
+    builder.forAlbum(albumId);
     return builder;
   }
 
@@ -373,6 +411,27 @@ public class Api {
   }
 
   /**
+   * Replace tracks in a playlist.
+   * @param userId The owner's username.
+   * @param playlistId The playlist's ID.
+   * @param trackUris URIs of the tracks to add.
+   * @return A builder object that can e used to build a request to add tracks to a playlist.
+   */
+  public ReplacePlaylistTracksRequest.Builder replacePlaylistsTracks(
+      String userId, String playlistId, List<String> trackUris
+  ) {
+    final ReplacePlaylistTracksRequest.Builder builder = ReplacePlaylistTracksRequest.builder();
+    setDefaults(builder);
+    final JSONObject urisObject = new JSONObject();
+    final JSONArray jsonArrayUri = new JSONArray();
+    jsonArrayUri.addAll(trackUris);
+    urisObject.put("uris", jsonArrayUri);
+    builder.body(urisObject);
+    builder.path("/v1/users/" + userId + "/playlists/" + playlistId + "/tracks");
+    return builder;
+  }
+
+  /**
    * Update a playlist's properties.
    * @param userId The owner's username.
    * @param playlistId The playlist's ID.
@@ -383,6 +442,20 @@ public class Api {
     setDefaults(builder);
     userId = UrlUtil.userToUri(userId);
     builder.path("/v1/users/" + userId + "/playlists/" + playlistId);
+    return builder;
+  }
+
+  /**
+   * Remove the current user as a follower of a playlist.
+   * @param userId The owner's username.
+   * @param playlistId The playlist's ID.
+   * @return A builder object that can be used to build a request
+   * to remove the current user as a follower of a playlist.
+   */
+  public PlaylistUnfollowRequest.Builder unfollowPlaylist(String userId, String playlistId) {
+    final PlaylistUnfollowRequest.Builder builder = PlaylistUnfollowRequest.builder();
+    setDefaults(builder);
+    builder.path("/v1/users/" + userId + "/playlists/" + playlistId + "/followers");
     return builder;
   }
 

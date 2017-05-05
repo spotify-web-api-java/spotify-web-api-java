@@ -1,5 +1,7 @@
 package com.wrapper.spotify.methods;
 
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.TimeUnit;
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.SettableFuture;
@@ -9,12 +11,12 @@ import com.wrapper.spotify.models.Playlist;
 import com.wrapper.spotify.models.SpotifyEntityType;
 import org.junit.Test;
 
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.TimeUnit;
-
 import static junit.framework.Assert.assertNotNull;
 import static junit.framework.Assert.assertNull;
-import static junit.framework.TestCase.*;
+import static junit.framework.TestCase.assertEquals;
+import static junit.framework.TestCase.assertFalse;
+import static junit.framework.TestCase.assertTrue;
+import static junit.framework.TestCase.fail;
 
 public class PlaylistCreationRequestTest {
 
@@ -46,6 +48,7 @@ public class PlaylistCreationRequestTest {
         assertEquals("Coolest Playlist", playlist.getName());
         assertNotNull(playlist.getOwner());
         assertTrue(playlist.isPublicAccess());
+        assertEquals("version", playlist.getSnapshotId());
         assertNull(playlist.getTracks());
         assertEquals(SpotifyEntityType.PLAYLIST, playlist.getType());
         assertEquals("spotify:user:thelinmichael:playlist:2LfixThJPNO9DAreghF2WK", playlist.getUri());
@@ -84,6 +87,7 @@ public class PlaylistCreationRequestTest {
     assertEquals("Coolest Playlist", playlist.getName());
     assertNotNull(playlist.getOwner());
     assertTrue(playlist.isPublicAccess());
+    assertEquals("version", playlist.getSnapshotId());
     assertNull(playlist.getTracks());
     assertEquals(SpotifyEntityType.PLAYLIST, playlist.getType());
     assertEquals("spotify:user:thelinmichael:playlist:2LfixThJPNO9DAreghF2WK", playlist.getUri());

@@ -1,10 +1,21 @@
 package com.wrapper.spotify;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import com.google.common.net.HttpHeaders;
+import com.wrapper.spotify.UtilProtos.Url;
 import com.wrapper.spotify.exceptions.BadRequestException;
+import com.wrapper.spotify.exceptions.EmptyResponseException;
+import com.wrapper.spotify.exceptions.RateLimitException;
 import com.wrapper.spotify.exceptions.ServerErrorException;
 import com.wrapper.spotify.exceptions.WebApiException;
 import net.sf.json.JSONObject;
-import org.apache.commons.httpclient.*;
+import org.apache.commons.httpclient.HttpClient;
+import org.apache.commons.httpclient.HttpConnectionManager;
+import org.apache.commons.httpclient.HttpMethod;
+import org.apache.commons.httpclient.MultiThreadedHttpConnectionManager;
+import org.apache.commons.httpclient.NameValuePair;
 import org.apache.commons.httpclient.cookie.CookiePolicy;
 import org.apache.commons.httpclient.methods.DeleteMethod;
 import org.apache.commons.httpclient.methods.GetMethod;
@@ -12,13 +23,6 @@ import org.apache.commons.httpclient.methods.PostMethod;
 import org.apache.commons.httpclient.methods.PutMethod;
 import org.apache.commons.httpclient.methods.StringRequestEntity;
 import org.apache.commons.httpclient.params.HttpMethodParams;
-import com.wrapper.spotify.UtilProtos.Url;
-import com.wrapper.spotify.exceptions.EmptyResponseException;
-
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class SpotifyHttpManager implements HttpManager {
 
@@ -171,10 +175,16 @@ public class SpotifyHttpManager implements HttpManager {
    * Todo: Error handling could be more granular and throw a different exception depending on status code.
    * It could also look into the JSON object to find an error message.
    */
-  private void handleErrorStatusCode(HttpMethod method) throws BadRequestException, ServerErrorException {
+  private void handleErrorStatusCode(HttpMethod method) throws BadRequestException,
+      ServerErrorException, RateLimitException {
     int statusCode = method.getStatusCode();
 
     if (statusCode >= 400 && statusCode < 500) {
+      if(statusCode == 429) {
+        String value = method.getResponseHeader(HttpHeaders.RETRY_AFTER).getValue();
+        int secondsForWaiting = (value == null ? 2000 : Integer.parseInt(value));
+        throw new RateLimitException(String.valueOf(statusCode), secondsForWaiting);
+      }
       throw new BadRequestException(String.valueOf(statusCode));
     }
     if (statusCode >= 500) {

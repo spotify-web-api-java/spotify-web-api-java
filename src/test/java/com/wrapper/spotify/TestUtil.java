@@ -1,12 +1,11 @@
 package com.wrapper.spotify;
 
-import com.wrapper.spotify.exceptions.WebApiException;
-
+import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
+import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.Reader;
-import java.nio.CharBuffer;
+import java.io.InputStreamReader;
+import com.wrapper.spotify.exceptions.WebApiException;
 
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.mock;
@@ -23,11 +22,15 @@ public class TestUtil {
   }
 
   private static String readFromFile(File file) throws IOException {
-    Reader reader = new FileReader(file);
-    CharBuffer charBuffer = CharBuffer.allocate(MAX_TEST_DATA_FILE_SIZE);
-    reader.read(charBuffer);
-    charBuffer.position(0);
-    return charBuffer.toString();
+    String currentLine;
+    StringBuilder result = new StringBuilder();
+    InputStreamReader reader = new InputStreamReader(
+        new FileInputStream(file), "UTF-8");
+    BufferedReader bufReader = new BufferedReader(reader);
+    while ((currentLine = bufReader.readLine()) != null) {
+      result.append(currentLine);
+    }
+    return result.toString();
   }
 
   public static class MockedHttpManager {

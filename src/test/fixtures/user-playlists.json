@@ -28,6 +28,7 @@
                 "href": "https://api.spotify.com/v1/users/wizzler/playlists/00wHcTN0zQiun4xri9pmvX/tracks",
                 "total": 51
             },
+            "snapshot_id": "1",
             "type": "playlist",
             "uri": "spotify:user:wizzler:playlist:00wHcTN0zQiun4xri9pmvX"
         },
@@ -58,6 +59,7 @@
                 "href": "https://api.spotify.com/v1/users/wizzler/playlists/6JJndiJHFTLBoth7aUrvTt/tracks",
                 "total": 67
             },
+            "snapshot_id": "1",
             "type": "playlist",
             "uri": "spotify:user:wizzler:playlist:6JJndiJHFTLBoth7aUrvTt"
         },
@@ -88,6 +90,7 @@
                 "href": "https://api.spotify.com/v1/users/wizzler/playlists/2LZYIzBoCXAdx8buWmUwQe/tracks",
                 "total": 11
             },
+            "snapshot_id": "1",
             "type": "playlist",
             "uri": "spotify:user:wizzler:playlist:2LZYIzBoCXAdx8buWmUwQe"
         },
@@ -118,6 +121,7 @@
                 "href": "https://api.spotify.com/v1/users/martin.danielson/playlists/2HiFqdXD3KVfFS4GeOGS06/tracks",
                 "total": 27
             },
+            "snapshot_id": "1",
             "type": "playlist",
             "uri": "spotify:user:martin.danielson:playlist:2HiFqdXD3KVfFS4GeOGS06"
         }

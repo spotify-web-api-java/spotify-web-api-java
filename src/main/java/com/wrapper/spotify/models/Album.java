@@ -13,6 +13,7 @@ public class Album {
   private List<String> genres;
   private String href;
   private String id;
+  private String label;
   private List<Image> images;
   private String name;
   private int popularity;
@@ -156,5 +157,13 @@ public class Album {
 
   public void setReleaseDate(String releaseDate) {
     this.releaseDate = releaseDate;
+  }
+
+  public String getLabel() {
+    return label;
+  }
+
+  public void setLabel(String label) {
+    this.label = label;
   }
 }

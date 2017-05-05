@@ -17,6 +17,7 @@ public class Playlist {
   private Page<PlaylistTrack> tracks;
   private SpotifyEntityType type = SpotifyEntityType.PLAYLIST;
   private String uri;
+  private String snapshotId;
 
   public boolean isCollaborative() {
     return collaborative;
@@ -120,5 +121,13 @@ public class Playlist {
 
   public void setTracks(Page<PlaylistTrack> tracks) {
     this.tracks = tracks;
+  }
+
+  public String getSnapshotId() {
+    return snapshotId;
+  }
+
+  public void setSnapshotId(String snapshotId) {
+    this.snapshotId = snapshotId;
   }
 }

@@ -1,5 +1,6 @@
 {
   "albums" : [ {
+    "label": "label",
     "album_type" : "album",
     "artists" : [ {
       "external_urls" : {

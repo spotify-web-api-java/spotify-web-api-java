@@ -30,6 +30,7 @@
           "href": "https://api.spotify.com/v1/users/spotify/playlists/2BgVZaiDigaqxTbZEI2TpE/tracks",
           "total": 46
         },
+        "snapshot_id": "1",
         "type": "playlist",
         "uri": "spotify:user:spotify:playlist:2BgVZaiDigaqxTbZEI2TpE"
       }

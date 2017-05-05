@@ -1,5 +1,12 @@
 package com.wrapper.spotify;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
+import java.util.TimeZone;
 import com.wrapper.spotify.models.Album;
 import com.wrapper.spotify.models.AlbumType;
 import com.wrapper.spotify.models.Artist;
@@ -27,19 +34,10 @@ import com.wrapper.spotify.models.SnapshotResult;
 import com.wrapper.spotify.models.SpotifyEntityType;
 import com.wrapper.spotify.models.Track;
 import com.wrapper.spotify.models.User;
-
 import net.sf.json.JSONArray;
 import net.sf.json.JSONException;
 import net.sf.json.JSONNull;
 import net.sf.json.JSONObject;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
-import java.util.TimeZone;
 
 public class JsonUtil {
 
@@ -159,6 +157,7 @@ public class JsonUtil {
     album.setId(albumJson.getString("id"));
     album.setImages(createImages(albumJson.getJSONArray("images")));
     album.setName(albumJson.getString("name"));
+    album.setLabel(albumJson.getString("label"));
     album.setPopularity(albumJson.getInt("popularity"));
     album.setReleaseDate(albumJson.getString("release_date"));
     album.setReleaseDatePrecision(albumJson.getString("release_date_precision"));
@@ -178,6 +177,10 @@ public class JsonUtil {
   }
 
   public static SimpleTrack createSimpleTrack(JSONObject simpleTrackJson) {
+    if (simpleTrackJson == null || simpleTrackJson.isNullObject()) {
+      return null;
+    }
+
     SimpleTrack track = new SimpleTrack();
 
     track.setArtists(createSimpleArtists(simpleTrackJson.getJSONArray("artists")));
@@ -185,7 +188,7 @@ public class JsonUtil {
     track.setDiscNumber(simpleTrackJson.getInt("disc_number"));
     track.setDuration(simpleTrackJson.getInt("duration_ms"));
     track.setExplicit(simpleTrackJson.getBoolean("explicit"));
-    track.setExternalUrls(createExternalUrls(simpleTrackJson.getJSONObject("externalUrls")));
+    track.setExternalUrls(createExternalUrls(simpleTrackJson.getJSONObject("external_urls")));
     track.setHref(simpleTrackJson.getString("href"));
     track.setId(simpleTrackJson.getString("id"));
     track.setName(simpleTrackJson.getString("name"));
@@ -307,6 +310,9 @@ public class JsonUtil {
   }
 
   private static Track createTrack(JSONObject trackJson) {
+    if (trackJson == null || trackJson.isNullObject()) {
+      return null;
+    }
 
     Track track = new Track();
 
@@ -397,7 +403,7 @@ public class JsonUtil {
     return page;
   }
 
-  private static Page<SimpleTrack> createSimpleTrackPage(JSONObject simpleTrackPageJson) {
+  public static Page<SimpleTrack> createSimpleTrackPage(JSONObject simpleTrackPageJson) {
     Page page = createItemlessPage(simpleTrackPageJson);
     page.setItems(createSimpleTracks(simpleTrackPageJson.getJSONArray("items")));
     return page;
@@ -512,6 +518,7 @@ public class JsonUtil {
     playlist.setTracks(createPlaylistTracksInformation(playlistJson.getJSONObject("tracks")));
     playlist.setType(createSpotifyEntityType(playlistJson.getString("type")));
     playlist.setUri(playlistJson.getString("uri"));
+    playlist.setSnapshotId(playlistJson.getString("snapshot_id"));
     return playlist;
   }
 
@@ -565,6 +572,7 @@ public class JsonUtil {
     }
 
     returnedPlaylist.setType(createSpotifyEntityType(jsonObject.getString("type")));
+    returnedPlaylist.setSnapshotId(jsonObject.getString("snapshot_id"));
     returnedPlaylist.setUri(jsonObject.getString("uri"));
     return returnedPlaylist;
   }
