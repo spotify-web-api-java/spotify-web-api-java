@@ -185,6 +185,12 @@ public class Api {
     return builder;
   }
 
+  public RecentlyPlayedTracksRequest.Builder getRecentlyPlayedTracks() {
+    RecentlyPlayedTracksRequest.Builder builder = RecentlyPlayedTracksRequest.builder();
+    setDefaults(builder);
+    return builder;
+  }
+
   /**
    * Used to get Featured Playlists.
    *

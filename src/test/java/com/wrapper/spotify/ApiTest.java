@@ -33,6 +33,13 @@ public class ApiTest {
   }
 
   @Test
+  public void shouldCreateGetRecentlyPlayedTracksUrl() {
+    Api api = Api.DEFAULT_API;
+    Request request = api.getRecentlyPlayedTracks().build();
+    assertEquals("https://api.spotify.com:443/v1/me/player/recently-played", request.toString());
+  }
+
+  @Test
   public void shouldCreateAGetArtistUrl() {
     Api api = Api.DEFAULT_API;
     Request request = api.getArtist("5rSXSAkZ67PYJSvpUpkOr7").build();
