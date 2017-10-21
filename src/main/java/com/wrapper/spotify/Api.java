@@ -186,6 +186,12 @@ public class Api {
     return builder;
   }
 
+  public RecentlyPlayedTracksRequest.Builder getRecentlyPlayedTracks() {
+    RecentlyPlayedTracksRequest.Builder builder = RecentlyPlayedTracksRequest.builder();
+    setDefaults(builder);
+    return builder;
+  }
+
   /**
    * Used to get Featured Playlists.
    * @return A builder that can be used to build requests to get featured playlists.
