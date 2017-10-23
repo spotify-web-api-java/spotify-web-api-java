@@ -61,7 +61,8 @@ public class RecentlyPlayedTracksRequest extends AbstractRequest {
         }
 
         public RecentlyPlayedTracksRequest build(String after) {
-            path("/v1/me/player/recently-played?after=" + after);
+            path("/v1/me/player/recently-played");
+            parameter("after", after);
             return new RecentlyPlayedTracksRequest(this);
         }
     }
