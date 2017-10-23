@@ -4,6 +4,7 @@ import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.JsonUtil;
 import com.wrapper.spotify.exceptions.WebApiException;
 import com.wrapper.spotify.models.Page;
+import com.wrapper.spotify.models.RecentlyPlayedTrack;
 import com.wrapper.spotify.models.Track;
 
 import net.sf.json.JSONObject;
@@ -38,10 +39,10 @@ public class RecentlyPlayedTracksRequest extends AbstractRequest {
         return trackPageFuture;
     }
 
-    public Page<Track> get() throws IOException, WebApiException {
+    public Page<RecentlyPlayedTrack> get() throws IOException, WebApiException {
         JSONObject jsonObject = JSONObject.fromObject(getJson());
 
-        return JsonUtil.createTrackPage(jsonObject);
+        return JsonUtil.createRecentlyPlayedTrackPage(jsonObject);
     }
 
     public static Builder builder() {
@@ -56,6 +57,11 @@ public class RecentlyPlayedTracksRequest extends AbstractRequest {
 
         public RecentlyPlayedTracksRequest build() {
             path("/v1/me/player/recently-played");
+            return new RecentlyPlayedTracksRequest(this);
+        }
+
+        public RecentlyPlayedTracksRequest build(String after) {
+            path("/v1/me/player/recently-played?after=" + after);
             return new RecentlyPlayedTracksRequest(this);
         }
     }
