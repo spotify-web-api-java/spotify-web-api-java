@@ -367,7 +367,12 @@ public class JsonUtil {
         track.setPlayedAt(null);
       }
       track.setTrack(createTrack(recentlyPlayedTrackJSON.getJSONObject("track")));
-      track.setContext(createPlaylist(recentlyPlayedTrackJSON.getJSONObject("context")));
+      if (track.getContext() != null) {
+        track.setContext(createPlaylist(recentlyPlayedTrackJSON.getJSONObject("context")));
+      }
+      else {
+        track.setContext(null);
+      }
       returnedTracks.add(track);
     }
     return returnedTracks;
