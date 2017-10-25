@@ -192,6 +192,12 @@ public class Api {
     return builder;
   }
 
+  public CurrentlyPlayingTrackRequest.Builder getCurrentlyPlayingTrack() {
+    CurrentlyPlayingTrackRequest.Builder builder = CurrentlyPlayingTrackRequest.builder();
+    setDefaults(builder);
+    return builder;
+  }
+
   /**
    * Used to get Featured Playlists.
    * @return A builder that can be used to build requests to get featured playlists.

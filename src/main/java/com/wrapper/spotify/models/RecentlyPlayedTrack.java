@@ -6,7 +6,7 @@ public class RecentlyPlayedTrack {
 
     private Track track;
     private Date playedAt;
-    private Playlist context;
+    private Context context;
 
 
     public Track getTrack() {
@@ -25,11 +25,11 @@ public class RecentlyPlayedTrack {
         this.playedAt = playedAt;
     }
 
-    public Playlist getContext() {
+    public Context getContext() {
         return context;
     }
 
-    public void setContext(Playlist context) {
+    public void setContext(Context context) {
         this.context = context;
     }
 

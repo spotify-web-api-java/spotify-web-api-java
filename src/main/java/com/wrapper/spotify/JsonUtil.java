@@ -5,7 +5,9 @@ import com.wrapper.spotify.models.AlbumType;
 import com.wrapper.spotify.models.Artist;
 import com.wrapper.spotify.models.AuthorizationCodeCredentials;
 import com.wrapper.spotify.models.ClientCredentials;
+import com.wrapper.spotify.models.Context;
 import com.wrapper.spotify.models.Copyright;
+import com.wrapper.spotify.models.CurrentlyPlayingTrack;
 import com.wrapper.spotify.models.ExternalIds;
 import com.wrapper.spotify.models.ExternalUrls;
 import com.wrapper.spotify.models.FeaturedPlaylists;
@@ -368,7 +370,7 @@ public class JsonUtil {
       }
       track.setTrack(createTrack(recentlyPlayedTrackJSON.getJSONObject("track")));
       if (track.getContext() != null) {
-        track.setContext(createPlaylist(recentlyPlayedTrackJSON.getJSONObject("context")));
+        track.setContext(createContext(recentlyPlayedTrackJSON.getJSONObject("context")));
       }
       else {
         track.setContext(null);
@@ -376,6 +378,28 @@ public class JsonUtil {
       returnedTracks.add(track);
     }
     return returnedTracks;
+  }
+
+  public static CurrentlyPlayingTrack createCurrentlyPlayingTrack(JSONObject jsonObject) {
+    CurrentlyPlayingTrack currentlyPlayingTrack = new CurrentlyPlayingTrack();
+
+    if (existsAndNotNull("item", jsonObject)) {
+      currentlyPlayingTrack.setItem(createTrack(jsonObject.getJSONObject("item")));
+    }
+    if (existsAndNotNull("context", jsonObject)) {
+      currentlyPlayingTrack.setContext(createContext(jsonObject.getJSONObject("context")));
+    }
+    if (existsAndNotNull("is_playing", jsonObject)) {
+      currentlyPlayingTrack.setIs_playing(jsonObject.getBoolean("is_playing"));
+    }
+    if (existsAndNotNull("progress_ms", jsonObject)) {
+      currentlyPlayingTrack.setProgress_ms(jsonObject.getLong("progress_ms"));
+    }
+    if (existsAndNotNull("timestamp", jsonObject)) {
+        currentlyPlayingTrack.setTimestamp(jsonObject.getLong("timestamp"));
+    }
+
+    return currentlyPlayingTrack;
   }
 
 
@@ -571,6 +595,25 @@ public class JsonUtil {
       returnedPlaylists.add(createPlaylist(playlistsJson.getJSONObject(i)));
     }
     return returnedPlaylists;
+  }
+
+  public static Context createContext(JSONObject jsonObject) {
+    final Context returnedContext = new Context();
+
+    if (existsAndNotNull("uri", jsonObject)) {
+      returnedContext.setUri(jsonObject.getString("uri"));
+    }
+    if (existsAndNotNull("href", jsonObject)) {
+      returnedContext.setHref(jsonObject.getString("href"));
+    }
+    if (existsAndNotNull("external_urls", jsonObject)) {
+      returnedContext.setExternalUrls(createExternalUrls(jsonObject.getJSONObject("external_urls")));
+    }
+    if (existsAndNotNull("type", jsonObject)) {
+      returnedContext.setType(createSpotifyEntityType(jsonObject.getString("type")));
+    }
+
+    return returnedContext;
   }
 
   public static Playlist createPlaylist(JSONObject jsonObject) {
