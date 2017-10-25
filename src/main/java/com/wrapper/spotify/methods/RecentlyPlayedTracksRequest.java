@@ -25,13 +25,13 @@ public class RecentlyPlayedTracksRequest extends AbstractRequest {
         super(builder);
     }
 
-    public SettableFuture<Page<Track>> getAsync() {
-        final SettableFuture<Page<Track>> trackPageFuture = SettableFuture.create();
+    public SettableFuture<Page<RecentlyPlayedTrack>> getAsync() {
+        final SettableFuture<Page<RecentlyPlayedTrack>> trackPageFuture = SettableFuture.create();
 
         try {
             final JSONObject jsonObject = JSONObject.fromObject(getJson());
 
-            trackPageFuture.set(JsonUtil.createTrackPage(jsonObject));
+            trackPageFuture.set(JsonUtil.createRecentlyPlayedTrackPage(jsonObject));
         } catch (Exception e) {
             trackPageFuture.setException(e);
         }
