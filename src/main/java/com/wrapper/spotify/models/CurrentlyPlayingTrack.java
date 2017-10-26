@@ -64,12 +64,15 @@ public class CurrentlyPlayingTrack {
             return false;
 
         CurrentlyPlayingTrack other = (CurrentlyPlayingTrack) obj;
-        if (this.getItem() == null) {
-            if (other.getItem() != null)
-                return false;
-        } else if (!this.getItem().getUri().equals(other.getItem().getUri()))
+
+        if (this.getItem() == null || other.getItem() == null) {
             return false;
-        return true;
+        }
+        if (this.getItem().getUri() == null || other.getItem().getUri() == null) {
+            return false;
+        }
+
+        return this.getItem().getUri().equals(other.getItem().getUri());
     }
 
 
