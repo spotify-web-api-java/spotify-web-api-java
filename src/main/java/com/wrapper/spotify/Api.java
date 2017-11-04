@@ -383,6 +383,34 @@ public class Api {
   }
 
   /**
+   * delete tracks from a playlist
+   * @param userId The owner's username.
+   * @param playlistId The playlist's ID.
+   * @param trackUris URIs of the tracks to remove.
+   * @return  A builder object that can e used to build a request to remove tracks from a playlist.
+   */
+  public RemoveTrackFromPlaylistRequest.Builder removeTrackFromPlaylist(String userId, String playlistId, List<String> trackUris) {
+    final RemoveTrackFromPlaylistRequest.Builder builder = RemoveTrackFromPlaylistRequest.builder();
+    setDefaults(builder);
+    final JSONArray jsonArrayUri = new JSONArray();
+
+    for(String trackUri : trackUris) {
+      JSONObject singleUriJson = new JSONObject();
+      singleUriJson.put("uri", trackUri);
+
+      jsonArrayUri.add(singleUriJson);
+    }
+
+    JSONObject finalObject = new JSONObject();
+    finalObject.put("tracks", jsonArrayUri);
+
+    builder.body(finalObject);
+    userId = UrlUtil.userToUri(userId);
+    builder.path("/v1/users/" + userId + "/playlists/" + playlistId + "/tracks");
+    return builder;
+  }
+
+  /**
    * Update a playlist's properties.
    *
    * @param userId     The owner's username.
