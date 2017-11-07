@@ -35,6 +35,20 @@
             <email>thelinmichael@gmail.com</email>
             <organization>Michael Thelin</organization>
             <organizationUrl>https://github.com/thelinmichael</organizationUrl>
+            <roles>
+                <role>developer</role>
+            </roles>
+            <timezone>Europe/Stockholm</timezone>
+        </developer>
+        <developer>
+            <name>Jonas Thelemann</name>
+            <email>e-mail@jonas-thelemann.de</email>
+            <organization>Jonas Thelemann</organization>
+            <organizationUrl>https://github.com/dargmuesli</organizationUrl>
+            <roles>
+                <role>maintainer</role>
+            </roles>
+            <timezone>Europe/Berlin</timezone>
         </developer>
     </developers>
 
