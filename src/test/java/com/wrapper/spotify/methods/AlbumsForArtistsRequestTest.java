@@ -3,13 +3,11 @@ package com.wrapper.spotify.methods;
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.SettableFuture;
-
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.models.AlbumType;
 import com.wrapper.spotify.models.Page;
 import com.wrapper.spotify.models.SimpleAlbum;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -19,9 +17,7 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
 import static junit.framework.Assert.assertEquals;
-import static junit.framework.TestCase.assertNotNull;
-import static junit.framework.TestCase.assertNull;
-import static junit.framework.TestCase.fail;
+import static junit.framework.TestCase.*;
 
 @RunWith(MockitoJUnitRunner.class)
 public class AlbumsForArtistsRequestTest {

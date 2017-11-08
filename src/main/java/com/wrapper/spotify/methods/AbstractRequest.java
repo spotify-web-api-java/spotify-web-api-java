@@ -5,7 +5,6 @@ import com.wrapper.spotify.HttpManager;
 import com.wrapper.spotify.UrlUtil;
 import com.wrapper.spotify.UtilProtos.Url;
 import com.wrapper.spotify.exceptions.WebApiException;
-
 import net.sf.json.JSON;
 
 import java.io.IOException;

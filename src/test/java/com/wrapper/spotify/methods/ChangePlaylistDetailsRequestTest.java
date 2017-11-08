@@ -6,10 +6,8 @@ package com.wrapper.spotify.methods;
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
-
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.TestUtil;
-
 import org.junit.Test;
 
 import java.util.concurrent.CountDownLatch;

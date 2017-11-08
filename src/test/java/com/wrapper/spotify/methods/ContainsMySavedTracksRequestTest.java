@@ -6,10 +6,8 @@ package com.wrapper.spotify.methods;
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.SettableFuture;
-
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.TestUtil;
-
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -17,9 +15,7 @@ import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
-import static junit.framework.TestCase.assertFalse;
-import static junit.framework.TestCase.assertTrue;
-import static junit.framework.TestCase.fail;
+import static junit.framework.TestCase.*;
 
 public class ContainsMySavedTracksRequestTest {
 

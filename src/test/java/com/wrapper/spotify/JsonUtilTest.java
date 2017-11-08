@@ -3,14 +3,12 @@ package com.wrapper.spotify;
 import com.wrapper.spotify.models.Album;
 import com.wrapper.spotify.models.Artist;
 import com.wrapper.spotify.models.Track;
-
 import org.junit.Test;
 
 import java.net.URI;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 public class JsonUtilTest {
 

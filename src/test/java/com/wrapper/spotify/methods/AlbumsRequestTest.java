@@ -3,17 +3,9 @@ package com.wrapper.spotify.methods;
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.SettableFuture;
-
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.TestUtil;
-import com.wrapper.spotify.models.Album;
-import com.wrapper.spotify.models.AlbumType;
-import com.wrapper.spotify.models.Page;
-import com.wrapper.spotify.models.SimpleArtist;
-import com.wrapper.spotify.models.SimpleTrack;
-
-import junit.framework.TestCase;
-
+import com.wrapper.spotify.models.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;

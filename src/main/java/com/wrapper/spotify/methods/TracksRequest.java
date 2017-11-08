@@ -2,10 +2,10 @@ package com.wrapper.spotify.methods;
 
 import com.google.common.base.Joiner;
 import com.google.common.util.concurrent.SettableFuture;
-import net.sf.json.JSONObject;
 import com.wrapper.spotify.JsonUtil;
 import com.wrapper.spotify.exceptions.WebApiException;
 import com.wrapper.spotify.models.Track;
+import net.sf.json.JSONObject;
 
 import java.io.IOException;
 import java.util.List;

@@ -5,7 +5,6 @@ package com.wrapper.spotify.methods;
 
 import com.google.common.base.Joiner;
 import com.google.common.util.concurrent.SettableFuture;
-
 import com.wrapper.spotify.JsonUtil;
 import com.wrapper.spotify.exceptions.WebApiException;
 
