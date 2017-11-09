@@ -5,7 +5,9 @@ import com.wrapper.spotify.models.AlbumType;
 import com.wrapper.spotify.models.Artist;
 import com.wrapper.spotify.models.AuthorizationCodeCredentials;
 import com.wrapper.spotify.models.ClientCredentials;
+import com.wrapper.spotify.models.Context;
 import com.wrapper.spotify.models.Copyright;
+import com.wrapper.spotify.models.CurrentlyPlayingTrack;
 import com.wrapper.spotify.models.ExternalIds;
 import com.wrapper.spotify.models.ExternalUrls;
 import com.wrapper.spotify.models.FeaturedPlaylists;
@@ -18,6 +20,7 @@ import com.wrapper.spotify.models.Playlist;
 import com.wrapper.spotify.models.PlaylistTrack;
 import com.wrapper.spotify.models.PlaylistTracksInformation;
 import com.wrapper.spotify.models.Product;
+import com.wrapper.spotify.models.RecentlyPlayedTrack;
 import com.wrapper.spotify.models.RefreshAccessTokenCredentials;
 import com.wrapper.spotify.models.SimpleAlbum;
 import com.wrapper.spotify.models.SimpleArtist;
@@ -352,6 +355,54 @@ public class JsonUtil {
     return returnedTracks;
   }
 
+
+  private static List<RecentlyPlayedTrack> createRecentlyPlayedTracks(JSONArray tracksJson) {
+    List<RecentlyPlayedTrack> returnedTracks = new ArrayList<RecentlyPlayedTrack>();
+    for (int i = 0; i < tracksJson.size(); i++) {
+      RecentlyPlayedTrack track = new RecentlyPlayedTrack();
+      JSONObject recentlyPlayedTrackJSON = tracksJson.getJSONObject(i);
+
+      try {
+        track.setPlayedAt(createDate(recentlyPlayedTrackJSON.getString("played_at")));
+      }
+      catch(ParseException e) {
+        track.setPlayedAt(null);
+      }
+      track.setTrack(createTrack(recentlyPlayedTrackJSON.getJSONObject("track")));
+      if (track.getContext() != null) {
+        track.setContext(createContext(recentlyPlayedTrackJSON.getJSONObject("context")));
+      }
+      else {
+        track.setContext(null);
+      }
+      returnedTracks.add(track);
+    }
+    return returnedTracks;
+  }
+
+  public static CurrentlyPlayingTrack createCurrentlyPlayingTrack(JSONObject jsonObject) {
+    CurrentlyPlayingTrack currentlyPlayingTrack = new CurrentlyPlayingTrack();
+
+    if (existsAndNotNull("item", jsonObject)) {
+      currentlyPlayingTrack.setItem(createTrack(jsonObject.getJSONObject("item")));
+    }
+    if (existsAndNotNull("context", jsonObject)) {
+      currentlyPlayingTrack.setContext(createContext(jsonObject.getJSONObject("context")));
+    }
+    if (existsAndNotNull("is_playing", jsonObject)) {
+      currentlyPlayingTrack.setIs_playing(jsonObject.getBoolean("is_playing"));
+    }
+    if (existsAndNotNull("progress_ms", jsonObject)) {
+      currentlyPlayingTrack.setProgress_ms(jsonObject.getLong("progress_ms"));
+    }
+    if (existsAndNotNull("timestamp", jsonObject)) {
+        currentlyPlayingTrack.setTimestamp(jsonObject.getLong("timestamp"));
+    }
+
+    return currentlyPlayingTrack;
+  }
+
+
   public static ExternalIds createExternalIds(JSONObject externalIds) {
     ExternalIds returnedExternalIds = new ExternalIds();
     Map<String,String> addedIds = returnedExternalIds.getExternalIds();
@@ -377,17 +428,27 @@ public class JsonUtil {
     if (existsAndNotNull("next", pageJson)) {
       page.setNext(pageJson.getString("next"));
     }
-    page.setOffset(pageJson.getInt("offset"));
+    if (existsAndNotNull("offset", pageJson)) {
+      page.setOffset(pageJson.getInt("offset"));
+    }
     if (existsAndNotNull("previous", pageJson)) {
       page.setPrevious(pageJson.getString("previous"));
     }
-    page.setTotal(pageJson.getInt("total"));
+    if (existsAndNotNull("total", pageJson)) {
+      page.setTotal(pageJson.getInt("total"));
+    }
     return page;
   }
 
   public static Page<Track> createTrackPage(JSONObject trackPageJson) {
     Page page = createItemlessPage(trackPageJson.getJSONObject("tracks"));
     page.setItems(createTracks(trackPageJson.getJSONObject("tracks").getJSONArray("items")));
+    return page;
+  }
+
+  public static Page<RecentlyPlayedTrack> createRecentlyPlayedTrackPage(JSONObject trackPageJson) {
+    Page page = createItemlessPage(trackPageJson);
+    page.setItems(createRecentlyPlayedTracks(trackPageJson.getJSONArray("items")));
     return page;
   }
 
@@ -539,10 +600,31 @@ public class JsonUtil {
     return returnedPlaylists;
   }
 
+  public static Context createContext(JSONObject jsonObject) {
+    final Context returnedContext = new Context();
+
+    if (existsAndNotNull("uri", jsonObject)) {
+      returnedContext.setUri(jsonObject.getString("uri"));
+    }
+    if (existsAndNotNull("href", jsonObject)) {
+      returnedContext.setHref(jsonObject.getString("href"));
+    }
+    if (existsAndNotNull("external_urls", jsonObject)) {
+      returnedContext.setExternalUrls(createExternalUrls(jsonObject.getJSONObject("external_urls")));
+    }
+    if (existsAndNotNull("type", jsonObject)) {
+      returnedContext.setType(createSpotifyEntityType(jsonObject.getString("type")));
+    }
+
+    return returnedContext;
+  }
+
   public static Playlist createPlaylist(JSONObject jsonObject) {
     final Playlist returnedPlaylist = new Playlist();
 
-    returnedPlaylist.setCollaborative(jsonObject.getBoolean("collaborative"));
+    if (existsAndNotNull("collaborative", jsonObject)) {
+        returnedPlaylist.setCollaborative(jsonObject.getBoolean("collaborative"));
+    }
 
     if (existsAndNotNull("description", jsonObject)) {
       returnedPlaylist.setDescription(jsonObject.getString("description"));
@@ -554,14 +636,22 @@ public class JsonUtil {
     }
 
     returnedPlaylist.setHref(jsonObject.getString("href"));
-    returnedPlaylist.setId(jsonObject.getString("id"));
+    if( existsAndNotNull("id", jsonObject)) {
+        returnedPlaylist.setId(jsonObject.getString("id"));
+    }
     if (existsAndNotNull("images", jsonObject)) {
       returnedPlaylist.setImages(createImages(jsonObject.getJSONArray("images")));
     }
 
-    returnedPlaylist.setName(jsonObject.getString("name"));
-    returnedPlaylist.setOwner(createUser(jsonObject.getJSONObject("owner")));
-    returnedPlaylist.setPublicAccess(jsonObject.getBoolean("public"));
+    if (existsAndNotNull("name", jsonObject)) {
+          returnedPlaylist.setName(jsonObject.getString("name"));
+    }
+    if (existsAndNotNull("owner", jsonObject)) {
+        returnedPlaylist.setOwner(createUser(jsonObject.getJSONObject("owner")));
+    }
+    if (existsAndNotNull("public", jsonObject)) {
+        returnedPlaylist.setPublicAccess(jsonObject.getBoolean("public"));
+    }
 
     if (existsAndNotNull("tracks", jsonObject)) {
       returnedPlaylist.setTracks(createPlaylistTrackPage(jsonObject.getJSONObject("tracks")));
