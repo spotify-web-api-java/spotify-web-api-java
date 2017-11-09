@@ -5,7 +5,7 @@ import com.wrapper.spotify.UtilProtos.Url;
 
 public interface Request {
 
-  public static interface Builder {
+  interface Builder {
     Builder httpManager(HttpManager httpManager);
     Builder host(String host);
     Builder port(int port);
