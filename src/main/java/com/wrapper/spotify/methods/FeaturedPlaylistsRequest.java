@@ -20,8 +20,8 @@ public class FeaturedPlaylistsRequest extends AbstractRequest {
   /**
    * Get Featured Playlists synchronously.
    * @return Featured playlists.
-   * @throws IOException
-   * @throws WebApiException
+   * @throws IOException In case of networking issues.
+   * @throws WebApiException In case of error replies from the Web API.
    */
   public FeaturedPlaylists get() throws IOException, WebApiException {
     final String jsonString = getJson();
