@@ -43,7 +43,7 @@ public class RemoveFromMySavedTracksRequest extends AbstractRequest {
   public static class Builder extends AbstractRequest.Builder<Builder> {
 
     public Builder tracks(List<String> trackIds) {
-      String idsParameter = Joiner.on(",").join(trackIds).toString();
+      String idsParameter = Joiner.on(",").join(trackIds);
       return parameter("ids", idsParameter);
     }
 

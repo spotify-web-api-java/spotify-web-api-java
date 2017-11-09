@@ -45,7 +45,7 @@ public class ContainsMySavedTracksRequest extends AbstractRequest {
   public static final class Builder extends AbstractRequest.Builder<Builder>  {
 
     public Builder tracks(List<String> trackIds) {
-      String idsParameter = Joiner.on(",").join(trackIds).toString();
+      String idsParameter = Joiner.on(",").join(trackIds);
       parameter("ids", idsParameter);
       return this;
     }

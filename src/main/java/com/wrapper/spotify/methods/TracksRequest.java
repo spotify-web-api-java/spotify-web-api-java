@@ -46,7 +46,7 @@ public class TracksRequest extends AbstractRequest {
 
     public Builder id(List<String> ids) {
       assert (ids != null);
-      String idsParameter = Joiner.on(",").join(ids).toString();
+      String idsParameter = Joiner.on(",").join(ids);
       path("/v1/tracks");
       return parameter("ids", idsParameter);
     }

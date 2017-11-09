@@ -19,7 +19,7 @@ public class AuthorizationURLRequest extends AbstractRequest {
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
     public Builder scopes(List<String> scopes) {
-      return parameter("scope", Joiner.on(" ").join(scopes).toString());
+      return parameter("scope", Joiner.on(" ").join(scopes));
     }
 
     public Builder state(String state) {

@@ -5,7 +5,7 @@ import static org.junit.Assert.fail;
 public class Assertions {
 
   public static void assertHasParameter(UtilProtos.Url url, String name, String value) {
-    UtilProtos.Url.Parameter expected = UtilProtos.Url.Parameter.newBuilder().setName(name).setValue(value.toString()).build();
+    UtilProtos.Url.Parameter expected = UtilProtos.Url.Parameter.newBuilder().setName(name).setValue(value).build();
     for (UtilProtos.Url.Parameter actual : url.getParametersList()) {
       if (actual.equals(expected)) {
         return;
@@ -23,7 +23,7 @@ public class Assertions {
   }
 
   public static void assertHasBodyParameter(UtilProtos.Url url, String name, String value) {
-    UtilProtos.Url.Parameter expected = UtilProtos.Url.Parameter.newBuilder().setName(name).setValue(value.toString()).build();
+    UtilProtos.Url.Parameter expected = UtilProtos.Url.Parameter.newBuilder().setName(name).setValue(value).build();
     for (UtilProtos.Url.Parameter actual : url.getBodyParametersList()) {
       if (actual.equals(expected)) {
         return;
@@ -34,7 +34,7 @@ public class Assertions {
 
 
   public static void assertHasHeader(UtilProtos.Url url, String name, String value) {
-    UtilProtos.Url.Parameter expected = UtilProtos.Url.Parameter.newBuilder().setName(name).setValue(value.toString()).build();
+    UtilProtos.Url.Parameter expected = UtilProtos.Url.Parameter.newBuilder().setName(name).setValue(value).build();
     for (UtilProtos.Url.Parameter actual : url.getHeaderParametersList()) {
       if (actual.equals(expected)) {
         return;
@@ -44,7 +44,7 @@ public class Assertions {
   }
 
   public static void assertHasJsonBody(UtilProtos.Url url, String jsonBody) {
-    if (url.hasJsonBody() && url.getJsonBody().toString().equals(jsonBody)) {
+    if (url.hasJsonBody() && url.getJsonBody().equals(jsonBody)) {
       return;
     }
     fail(String.format("Actual URL %s does not contain body %s", url, jsonBody));

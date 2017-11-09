@@ -128,7 +128,7 @@ public class SpotifyHttpManager implements HttpManager {
     List<NameValuePair> out = new ArrayList<NameValuePair>();
     for (Url.Parameter parameter : url.getParametersList()) {
       if (parameter.hasName() && parameter.hasValue()) {
-        out.add(new NameValuePair(parameter.getName(), parameter.getValue().toString()));
+        out.add(new NameValuePair(parameter.getName(), parameter.getValue()));
       }
     }
     return out.toArray(new NameValuePair[out.size()]);
@@ -138,7 +138,7 @@ public class SpotifyHttpManager implements HttpManager {
     List<NameValuePair> out = new ArrayList<NameValuePair>();
     for (Url.Parameter parameter : url.getBodyParametersList()) {
       if (parameter.hasName() && parameter.hasValue()) {
-        out.add(new NameValuePair(parameter.getName(), parameter.getValue().toString()));
+        out.add(new NameValuePair(parameter.getName(), parameter.getValue()));
       }
     }
     return out.toArray(new NameValuePair[out.size()]);

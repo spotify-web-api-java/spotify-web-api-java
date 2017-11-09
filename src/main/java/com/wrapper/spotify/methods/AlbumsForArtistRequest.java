@@ -53,7 +53,7 @@ public class AlbumsForArtistRequest extends AbstractRequest {
     public Builder types(AlbumType... types) {
       assert (types != null);
       assert (types.length > 0);
-      String albumsParameter = Joiner.on(",").join(types).toString();
+      String albumsParameter = Joiner.on(",").join(types);
       return parameter("album_type", albumsParameter);
     }
 
