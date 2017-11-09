@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2014 Spotify AB
+ * Copyright (C) 2017 Spotify AB
  */
 package com.wrapper.spotify.methods;
 
