@@ -5,9 +5,7 @@ package com.wrapper.spotify.methods;
 
 import com.google.common.collect.Maps;
 import com.google.common.util.concurrent.SettableFuture;
-
 import com.wrapper.spotify.exceptions.WebApiException;
-
 import net.sf.json.JSONObject;
 
 import java.io.IOException;

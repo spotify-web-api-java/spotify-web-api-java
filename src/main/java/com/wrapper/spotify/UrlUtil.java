@@ -73,16 +73,17 @@ public abstract class UrlUtil {
   }
 
   private static String getParametersListAsString(UtilProtos.Url url) {
-    final StringBuilder stringBuilder = new StringBuilder();
+    String out = "";
     final List<UtilProtos.Url.Parameter> parameters = url.getParametersList();
     boolean first = true;
     for (UtilProtos.Url.Parameter parameter : parameters) {
       if (!first) {
-        stringBuilder.append("&");
+        out += "&";
+      } else {
+        first = false;
       }
-      first = false;
-      stringBuilder.append(parameter.getName() + "=" + parameter.getValue());
+      out += parameter.getName() + "=" + parameter.getValue();
     }
-    return stringBuilder.toString();
+    return out;
   }
 }

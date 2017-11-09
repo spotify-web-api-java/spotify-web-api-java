@@ -1,11 +1,9 @@
 package com.wrapper.spotify.methods;
 
 import com.google.common.util.concurrent.SettableFuture;
-
 import com.wrapper.spotify.JsonUtil;
 import com.wrapper.spotify.exceptions.WebApiException;
 import com.wrapper.spotify.models.FeaturedPlaylists;
-
 import net.sf.json.JSONObject;
 
 import java.io.IOException;
@@ -22,8 +20,8 @@ public class FeaturedPlaylistsRequest extends AbstractRequest {
   /**
    * Get Featured Playlists synchronously.
    * @return Featured playlists.
-   * @throws IOException
-   * @throws WebApiException
+   * @throws IOException In case of networking issues.
+   * @throws WebApiException In case of error replies from the Web API.
    */
   public FeaturedPlaylists get() throws IOException, WebApiException {
     final String jsonString = getJson();

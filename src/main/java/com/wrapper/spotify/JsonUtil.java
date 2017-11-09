@@ -1,33 +1,6 @@
 package com.wrapper.spotify;
 
-import com.wrapper.spotify.models.Album;
-import com.wrapper.spotify.models.AlbumType;
-import com.wrapper.spotify.models.Artist;
-import com.wrapper.spotify.models.AuthorizationCodeCredentials;
-import com.wrapper.spotify.models.ClientCredentials;
-import com.wrapper.spotify.models.Copyright;
-import com.wrapper.spotify.models.ExternalIds;
-import com.wrapper.spotify.models.ExternalUrls;
-import com.wrapper.spotify.models.FeaturedPlaylists;
-import com.wrapper.spotify.models.Followers;
-import com.wrapper.spotify.models.Image;
-import com.wrapper.spotify.models.LibraryTrack;
-import com.wrapper.spotify.models.NewReleases;
-import com.wrapper.spotify.models.Page;
-import com.wrapper.spotify.models.Playlist;
-import com.wrapper.spotify.models.PlaylistTrack;
-import com.wrapper.spotify.models.PlaylistTracksInformation;
-import com.wrapper.spotify.models.Product;
-import com.wrapper.spotify.models.RefreshAccessTokenCredentials;
-import com.wrapper.spotify.models.SimpleAlbum;
-import com.wrapper.spotify.models.SimpleArtist;
-import com.wrapper.spotify.models.SimplePlaylist;
-import com.wrapper.spotify.models.SimpleTrack;
-import com.wrapper.spotify.models.SnapshotResult;
-import com.wrapper.spotify.models.SpotifyEntityType;
-import com.wrapper.spotify.models.Track;
-import com.wrapper.spotify.models.User;
-
+import com.wrapper.spotify.models.*;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONException;
 import net.sf.json.JSONNull;
@@ -35,11 +8,7 @@ import net.sf.json.JSONObject;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
-import java.util.TimeZone;
+import java.util.*;
 
 public class JsonUtil {
 
@@ -364,14 +333,29 @@ public class JsonUtil {
     return returnedExternalIds;
   }
 
+  private static Page<Album> createItemlessAlbumPage(JSONObject pageJson) {
+    Page<Album> page = new Page<Album>();
+    page.setHref(pageJson.getString("href"));
+    page.setLimit(pageJson.getInt("limit"));
+    if (existsAndNotNull("next", pageJson)) {
+      page.setNext(pageJson.getString("next"));
+    }
+    page.setOffset(pageJson.getInt("offset"));
+    if (existsAndNotNull("previous", pageJson)) {
+      page.setPrevious(pageJson.getString("previous"));
+    }
+    page.setTotal(pageJson.getInt("total"));
+    return page;
+  }
+
   public static Page<Album> createAlbumPage(JSONObject albumPageJson) {
-    Page page = createItemlessPage(albumPageJson.getJSONObject("albums"));
+    Page<Album> page = createItemlessAlbumPage(albumPageJson.getJSONObject("albums"));
     page.setItems(createAlbums(albumPageJson.getJSONObject("albums").getJSONArray("items")));
     return page;
   }
 
-  private static Page createItemlessPage(JSONObject pageJson) {
-    Page page = new Page();
+  private static Page<Track> createItemlessTrackPage(JSONObject pageJson) {
+    Page<Track> page = new Page<Track>();
     page.setHref(pageJson.getString("href"));
     page.setLimit(pageJson.getInt("limit"));
     if (existsAndNotNull("next", pageJson)) {
@@ -386,19 +370,49 @@ public class JsonUtil {
   }
 
   public static Page<Track> createTrackPage(JSONObject trackPageJson) {
-    Page page = createItemlessPage(trackPageJson.getJSONObject("tracks"));
+    Page<Track> page = createItemlessTrackPage(trackPageJson.getJSONObject("tracks"));
     page.setItems(createTracks(trackPageJson.getJSONObject("tracks").getJSONArray("items")));
     return page;
   }
 
+  private static Page<Artist> createItemlessArtistPage(JSONObject pageJson) {
+    Page<Artist> page = new Page<Artist>();
+    page.setHref(pageJson.getString("href"));
+    page.setLimit(pageJson.getInt("limit"));
+    if (existsAndNotNull("next", pageJson)) {
+      page.setNext(pageJson.getString("next"));
+    }
+    page.setOffset(pageJson.getInt("offset"));
+    if (existsAndNotNull("previous", pageJson)) {
+      page.setPrevious(pageJson.getString("previous"));
+    }
+    page.setTotal(pageJson.getInt("total"));
+    return page;
+  }
+
   public static Page<Artist> createArtistPage(JSONObject artistPageJson) {
-    Page page = createItemlessPage(artistPageJson);
+    Page<Artist> page = createItemlessArtistPage(artistPageJson);
     page.setItems(createArtists(artistPageJson.getJSONArray("items")));
     return page;
   }
 
+  private static Page<SimpleTrack> createItemlessSimpleTrackPage(JSONObject pageJson) {
+    Page<SimpleTrack> page = new Page<SimpleTrack>();
+    page.setHref(pageJson.getString("href"));
+    page.setLimit(pageJson.getInt("limit"));
+    if (existsAndNotNull("next", pageJson)) {
+      page.setNext(pageJson.getString("next"));
+    }
+    page.setOffset(pageJson.getInt("offset"));
+    if (existsAndNotNull("previous", pageJson)) {
+      page.setPrevious(pageJson.getString("previous"));
+    }
+    page.setTotal(pageJson.getInt("total"));
+    return page;
+  }
+
   private static Page<SimpleTrack> createSimpleTrackPage(JSONObject simpleTrackPageJson) {
-    Page page = createItemlessPage(simpleTrackPageJson);
+    Page<SimpleTrack> page = createItemlessSimpleTrackPage(simpleTrackPageJson);
     page.setItems(createSimpleTracks(simpleTrackPageJson.getJSONArray("items")));
     return page;
   }
@@ -407,8 +421,23 @@ public class JsonUtil {
     return createSimpleAlbumPage(JSONObject.fromObject(simpleAlbumPageJson));
   }
 
+  private static Page<SimpleAlbum> createItemlessSimpleAlbumPage(JSONObject pageJson) {
+    Page<SimpleAlbum> page = new Page<SimpleAlbum>();
+    page.setHref(pageJson.getString("href"));
+    page.setLimit(pageJson.getInt("limit"));
+    if (existsAndNotNull("next", pageJson)) {
+      page.setNext(pageJson.getString("next"));
+    }
+    page.setOffset(pageJson.getInt("offset"));
+    if (existsAndNotNull("previous", pageJson)) {
+      page.setPrevious(pageJson.getString("previous"));
+    }
+    page.setTotal(pageJson.getInt("total"));
+    return page;
+  }
+
   public static Page<SimpleAlbum> createSimpleAlbumPage(JSONObject simpleAlbumPageJson) {
-    Page page = createItemlessPage(simpleAlbumPageJson);
+    Page<SimpleAlbum> page = createItemlessSimpleAlbumPage(simpleAlbumPageJson);
     page.setItems(createSimpleAlbums(simpleAlbumPageJson.getJSONArray("items")));
     return page;
   }
@@ -652,7 +681,7 @@ public class JsonUtil {
   }
 
   public static List<Boolean> createBooleans(String response) {
-    List<Boolean> returnedArray = new ArrayList();
+    List<Boolean> returnedArray = new ArrayList<Boolean>();
     JSONArray tracksContainedArray = JSONArray.fromObject(response);
     for (Object tracksContainedString : tracksContainedArray) {
       if (String.valueOf(tracksContainedString).equals("false")) {

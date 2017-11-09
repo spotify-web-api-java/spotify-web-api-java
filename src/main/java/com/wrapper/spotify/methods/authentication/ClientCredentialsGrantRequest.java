@@ -61,7 +61,7 @@ public class ClientCredentialsGrantRequest extends AbstractRequest {
     }
 
     public Builder scopes(List<String> scopes) {
-      return body("scope", Joiner.on(" ").join(scopes).toString());
+      return body("scope", Joiner.on(" ").join(scopes));
     }
 
     public ClientCredentialsGrantRequest build() {

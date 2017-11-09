@@ -378,7 +378,7 @@ public class ApiTest {
     assertHasHeader(request.toUrl(), "Authorization", "Bearer " + accessToken);
     assertHasHeader(request.toUrl(), "Content-Type", "application/json");
 
-    JSONObject jsonBody = JSONObject.fromObject(request.toUrl().getJsonBody().toString());
+    JSONObject jsonBody = JSONObject.fromObject(request.toUrl().getJsonBody());
     assertEquals(name, jsonBody.getString("name"));
     assertEquals(isPublic, jsonBody.getBoolean("public"));
 

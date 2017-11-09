@@ -5,7 +5,6 @@ package com.wrapper.spotify.methods;
 
 import com.google.common.base.Joiner;
 import com.google.common.util.concurrent.SettableFuture;
-
 import com.wrapper.spotify.exceptions.WebApiException;
 
 import java.io.IOException;
@@ -44,7 +43,7 @@ public class RemoveFromMySavedTracksRequest extends AbstractRequest {
   public static class Builder extends AbstractRequest.Builder<Builder> {
 
     public Builder tracks(List<String> trackIds) {
-      String idsParameter = Joiner.on(",").join(trackIds).toString();
+      String idsParameter = Joiner.on(",").join(trackIds);
       return parameter("ids", idsParameter);
     }
 

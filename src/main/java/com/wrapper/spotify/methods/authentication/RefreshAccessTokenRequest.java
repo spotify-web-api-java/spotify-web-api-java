@@ -1,13 +1,13 @@
 package com.wrapper.spotify.methods.authentication;
 
 import com.google.common.util.concurrent.SettableFuture;
+import com.wrapper.spotify.Api;
+import com.wrapper.spotify.JsonUtil;
+import com.wrapper.spotify.exceptions.WebApiException;
+import com.wrapper.spotify.methods.AbstractRequest;
 import com.wrapper.spotify.models.RefreshAccessTokenCredentials;
 import net.sf.json.JSONObject;
 import org.apache.commons.codec.binary.Base64;
-import com.wrapper.spotify.Api;
-import com.wrapper.spotify.JsonUtil;
-import com.wrapper.spotify.exceptions.*;
-import com.wrapper.spotify.methods.AbstractRequest;
 
 import java.io.IOException;
 

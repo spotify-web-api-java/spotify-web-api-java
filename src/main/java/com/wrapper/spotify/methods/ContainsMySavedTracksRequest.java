@@ -5,7 +5,6 @@ package com.wrapper.spotify.methods;
 
 import com.google.common.base.Joiner;
 import com.google.common.util.concurrent.SettableFuture;
-
 import com.wrapper.spotify.JsonUtil;
 import com.wrapper.spotify.exceptions.WebApiException;
 
@@ -46,7 +45,7 @@ public class ContainsMySavedTracksRequest extends AbstractRequest {
   public static final class Builder extends AbstractRequest.Builder<Builder>  {
 
     public Builder tracks(List<String> trackIds) {
-      String idsParameter = Joiner.on(",").join(trackIds).toString();
+      String idsParameter = Joiner.on(",").join(trackIds);
       parameter("ids", idsParameter);
       return this;
     }
