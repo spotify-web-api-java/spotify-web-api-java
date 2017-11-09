@@ -15,6 +15,7 @@ public class User {
   private Product product;
   private SpotifyEntityType type = SpotifyEntityType.USER;
   private String uri;
+  private String birthdate;
 
   public String getDisplayName() {
     return displayName;
@@ -102,5 +103,13 @@ public class User {
 
   public void setFollowers(Followers followers) {
     this.followers = followers;
+  }
+
+  public String getBirthdate() {
+    return birthdate;
+  }
+
+  public void setBirthdate(String birthdate) {
+    this.birthdate = birthdate;
   }
 }

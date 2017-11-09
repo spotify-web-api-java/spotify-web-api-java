@@ -443,6 +443,9 @@ public class JsonUtil {
     if (existsAndNotNull("country", userJson)) {
       user.setCountry(userJson.getString("country"));
     }
+    if (existsAndNotNull("birthdate", userJson)) {
+      user.setBirthdate(userJson.getString("birthdate"));
+    }
 
     return user;
   }
