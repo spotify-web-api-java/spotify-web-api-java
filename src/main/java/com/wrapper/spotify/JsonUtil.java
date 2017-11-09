@@ -334,7 +334,7 @@ public class JsonUtil {
   }
 
   private static Page<Album> createItemlessAlbumPage(JSONObject pageJson) {
-    Page<Album> page = new Page<Album>();
+    Page<Album> page = new Page<>();
     page.setHref(pageJson.getString("href"));
     page.setLimit(pageJson.getInt("limit"));
     if (existsAndNotNull("next", pageJson)) {
@@ -355,7 +355,7 @@ public class JsonUtil {
   }
 
   private static Page<Track> createItemlessTrackPage(JSONObject pageJson) {
-    Page<Track> page = new Page<Track>();
+    Page<Track> page = new Page<>();
     page.setHref(pageJson.getString("href"));
     page.setLimit(pageJson.getInt("limit"));
     if (existsAndNotNull("next", pageJson)) {
@@ -376,7 +376,7 @@ public class JsonUtil {
   }
 
   private static Page<Artist> createItemlessArtistPage(JSONObject pageJson) {
-    Page<Artist> page = new Page<Artist>();
+    Page<Artist> page = new Page<>();
     page.setHref(pageJson.getString("href"));
     page.setLimit(pageJson.getInt("limit"));
     if (existsAndNotNull("next", pageJson)) {
@@ -397,7 +397,7 @@ public class JsonUtil {
   }
 
   private static Page<SimpleTrack> createItemlessSimpleTrackPage(JSONObject pageJson) {
-    Page<SimpleTrack> page = new Page<SimpleTrack>();
+    Page<SimpleTrack> page = new Page<>();
     page.setHref(pageJson.getString("href"));
     page.setLimit(pageJson.getInt("limit"));
     if (existsAndNotNull("next", pageJson)) {
@@ -422,7 +422,7 @@ public class JsonUtil {
   }
 
   private static Page<SimpleAlbum> createItemlessSimpleAlbumPage(JSONObject pageJson) {
-    Page<SimpleAlbum> page = new Page<SimpleAlbum>();
+    Page<SimpleAlbum> page = new Page<>();
     page.setHref(pageJson.getString("href"));
     page.setLimit(pageJson.getInt("limit"));
     if (existsAndNotNull("next", pageJson)) {
@@ -515,8 +515,23 @@ public class JsonUtil {
     return refreshAccessTokenResponse;
   }
 
+  private static Page<SimplePlaylist> createItemlessSimplePlaylistPage(JSONObject pageJson) {
+    Page<SimplePlaylist> page = new Page<>();
+    page.setHref(pageJson.getString("href"));
+    page.setLimit(pageJson.getInt("limit"));
+    if (existsAndNotNull("next", pageJson)) {
+      page.setNext(pageJson.getString("next"));
+    }
+    page.setOffset(pageJson.getInt("offset"));
+    if (existsAndNotNull("previous", pageJson)) {
+      page.setPrevious(pageJson.getString("previous"));
+    }
+    page.setTotal(pageJson.getInt("total"));
+    return page;
+  }
+
   public static Page<SimplePlaylist> createSimplePlaylistsPage(JSONObject jsonObject) {
-    Page<SimplePlaylist> playlistsPage = createItemlessPage(jsonObject);
+    Page<SimplePlaylist> playlistsPage = createItemlessSimplePlaylistPage(jsonObject);
     playlistsPage.setItems(createSimplePlaylists(jsonObject.getJSONArray("items")));
     return playlistsPage;
   }
@@ -554,8 +569,23 @@ public class JsonUtil {
     return playlistTracksInformation;
   }
 
+  private static Page<Playlist> createItemlessPlaylistPage(JSONObject pageJson) {
+    Page<Playlist> page = new Page<>();
+    page.setHref(pageJson.getString("href"));
+    page.setLimit(pageJson.getInt("limit"));
+    if (existsAndNotNull("next", pageJson)) {
+      page.setNext(pageJson.getString("next"));
+    }
+    page.setOffset(pageJson.getInt("offset"));
+    if (existsAndNotNull("previous", pageJson)) {
+      page.setPrevious(pageJson.getString("previous"));
+    }
+    page.setTotal(pageJson.getInt("total"));
+    return page;
+  }
+
   public static Page<Playlist> createPlaylistPage(JSONObject jsonObject) {
-    final Page<Playlist> playlistPage = createItemlessPage(jsonObject);
+    final Page<Playlist> playlistPage = createItemlessPlaylistPage(jsonObject);
     playlistPage.setItems(createPlaylists(JSONArray.fromObject(jsonObject.getJSONArray("items"))));
     return playlistPage;
   }
@@ -601,8 +631,23 @@ public class JsonUtil {
     return returnedPlaylist;
   }
 
+  private static Page<PlaylistTrack> createItemlessPlaylistTrackPage(JSONObject pageJson) {
+    Page<PlaylistTrack> page = new Page<>();
+    page.setHref(pageJson.getString("href"));
+    page.setLimit(pageJson.getInt("limit"));
+    if (existsAndNotNull("next", pageJson)) {
+      page.setNext(pageJson.getString("next"));
+    }
+    page.setOffset(pageJson.getInt("offset"));
+    if (existsAndNotNull("previous", pageJson)) {
+      page.setPrevious(pageJson.getString("previous"));
+    }
+    page.setTotal(pageJson.getInt("total"));
+    return page;
+  }
+
   public static Page<PlaylistTrack> createPlaylistTrackPage(JSONObject playlistTrackPageJson) {
-    final Page<PlaylistTrack> returnedPage = createItemlessPage(playlistTrackPageJson);
+    final Page<PlaylistTrack> returnedPage = createItemlessPlaylistTrackPage(playlistTrackPageJson);
     returnedPage.setItems(createPlaylistTracks(playlistTrackPageJson.getJSONArray("items")));
     return returnedPage;
   }
@@ -653,8 +698,23 @@ public class JsonUtil {
            !JSONNull.getInstance().equals(jsonObject.get(key));
   }
 
+  private static Page<LibraryTrack> createItemlessLibraryTrackPage(JSONObject pageJson) {
+    Page<LibraryTrack> page = new Page<>();
+    page.setHref(pageJson.getString("href"));
+    page.setLimit(pageJson.getInt("limit"));
+    if (existsAndNotNull("next", pageJson)) {
+      page.setNext(pageJson.getString("next"));
+    }
+    page.setOffset(pageJson.getInt("offset"));
+    if (existsAndNotNull("previous", pageJson)) {
+      page.setPrevious(pageJson.getString("previous"));
+    }
+    page.setTotal(pageJson.getInt("total"));
+    return page;
+  }
+
   public static Page<LibraryTrack> createLibraryTracksPage(JSONObject jsonObject) {
-    final Page<LibraryTrack> libraryTracksPage = createItemlessPage(jsonObject);
+    final Page<LibraryTrack> libraryTracksPage = createItemlessLibraryTrackPage(jsonObject);
     libraryTracksPage.setItems(createLibraryTracks(
         JSONArray.fromObject(jsonObject.getJSONArray("items"))));
 
