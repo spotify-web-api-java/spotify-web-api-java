@@ -1,28 +1,34 @@
 package com.wrapper.spotify;
 
+import com.wrapper.spotify.UtilProtos.Url;
 import com.wrapper.spotify.exceptions.BadRequestException;
+import com.wrapper.spotify.exceptions.EmptyResponseException;
 import com.wrapper.spotify.exceptions.ServerErrorException;
 import com.wrapper.spotify.exceptions.WebApiException;
 import net.sf.json.JSONObject;
-import org.apache.commons.httpclient.*;
-import org.apache.commons.httpclient.cookie.CookiePolicy;
-import org.apache.commons.httpclient.methods.DeleteMethod;
-import org.apache.commons.httpclient.methods.GetMethod;
-import org.apache.commons.httpclient.methods.PostMethod;
-import org.apache.commons.httpclient.methods.PutMethod;
-import org.apache.commons.httpclient.methods.StringRequestEntity;
-import org.apache.commons.httpclient.params.HttpMethodParams;
-import com.wrapper.spotify.UtilProtos.Url;
-import com.wrapper.spotify.exceptions.EmptyResponseException;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.config.CookieSpecs;
+import org.apache.http.client.config.RequestConfig;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.*;
+import org.apache.http.config.ConnectionConfig;
+import org.apache.http.conn.HttpClientConnectionManager;
+import org.apache.http.entity.ContentType;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
+import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
 public class SpotifyHttpManager implements HttpManager {
 
-  private HttpConnectionManager connectionManager = null;
+  private HttpClientConnectionManager connectionManager = null;
 
   /**
    * Construct a new SpotifyHttpManager instance.
@@ -32,7 +38,7 @@ public class SpotifyHttpManager implements HttpManager {
     if (builder.connectionManager != null) {
       connectionManager = builder.connectionManager;
     } else {
-      connectionManager = new MultiThreadedHttpConnectionManager();
+      connectionManager = new PoolingHttpClientConnectionManager();
     }
   }
 
@@ -41,14 +47,11 @@ public class SpotifyHttpManager implements HttpManager {
     assert (url != null);
 
     final String uri = UrlUtil.assemble(url);
-    final GetMethod method = new GetMethod(uri);
+    final HttpGet method = new HttpGet(uri);
 
     for (Url.Parameter header : url.getHeaderParametersList()) {
-      method.setRequestHeader(header.getName(), header.getValue());
+      method.setHeader(header.getName(), header.getValue());
     }
-    method.setQueryString(getParametersAsNamedValuePairArray(url));
-    method.getParams().setCookiePolicy(CookiePolicy.BROWSER_COMPATIBILITY);
-    method.getParams().setParameter(HttpMethodParams.HTTP_CONTENT_CHARSET, "UTF-8");
 
     return execute(method);
   }
@@ -58,25 +61,20 @@ public class SpotifyHttpManager implements HttpManager {
     assert (url != null);
 
     final String uri = UrlUtil.assemble(url);
-    final PostMethod method = new PostMethod(uri);
+    final HttpPost method = new HttpPost(uri);
 
     for (Url.Parameter header : url.getHeaderParametersList()) {
-      method.setRequestHeader(header.getName(), header.getValue());
+      method.setHeader(header.getName(), header.getValue());
     }
 
     if (url.hasJsonBody()) {
-
-      StringRequestEntity requestEntity = new StringRequestEntity(
+      StringEntity stringEntity = new StringEntity(
               url.getJsonBody(),
-              "application/json",
-              "UTF-8");
-      method.setRequestEntity(requestEntity);
+              ContentType.APPLICATION_JSON);
+      method.setEntity(stringEntity);
     } else {
-      method.setRequestBody(getBodyParametersAsNamedValuePairArray(url));
+      method.setEntity(new UrlEncodedFormEntity(getBodyParametersAsNamedValuePairArray(url)));
     }
-    method.setQueryString(getParametersAsNamedValuePairArray(url));
-    method.getParams().setCookiePolicy(CookiePolicy.BROWSER_COMPATIBILITY);
-    method.getParams().setParameter(HttpMethodParams.HTTP_CONTENT_CHARSET, "UTF-8");
 
     return execute(method);
   }
@@ -86,25 +84,20 @@ public class SpotifyHttpManager implements HttpManager {
     assert (url != null);
 
     final String uri = UrlUtil.assemble(url);
-    final PutMethod method = new PutMethod(uri);
+    final HttpPut method = new HttpPut(uri);
 
     for (Url.Parameter header : url.getHeaderParametersList()) {
-      method.setRequestHeader(header.getName(), header.getValue());
+      method.setHeader(header.getName(), header.getValue());
     }
 
     if (url.hasJsonBody()) {
-
-      StringRequestEntity requestEntity = new StringRequestEntity(
-          url.getJsonBody(),
-          "application/json",
-          "UTF-8");
-      method.setRequestEntity(requestEntity);
+      StringEntity stringEntity = new StringEntity(
+              url.getJsonBody(),
+              ContentType.APPLICATION_JSON);
+      method.setEntity(stringEntity);
     } else {
-      method.setRequestBody(String.valueOf(getBodyParametersAsNamedValuePairArray(url)));
+      method.setEntity(new UrlEncodedFormEntity(getBodyParametersAsNamedValuePairArray(url)));
     }
-    method.setQueryString(getParametersAsNamedValuePairArray(url));
-    method.getParams().setCookiePolicy(CookiePolicy.BROWSER_COMPATIBILITY);
-    method.getParams().setParameter(HttpMethodParams.HTTP_CONTENT_CHARSET, "UTF-8");
 
     return execute(method);
   }
@@ -116,50 +109,52 @@ public class SpotifyHttpManager implements HttpManager {
     assert (url != null);
 
     final String uri = UrlUtil.assemble(url);
-    final DeleteMethod method = new DeleteMethod(uri);
+    final HttpDelete method = new HttpDelete(uri);
 
     for (Url.Parameter header : url.getHeaderParametersList()) {
-      method.setRequestHeader(header.getName(), header.getValue());
+      method.setHeader(header.getName(), header.getValue());
     }
-
-    method.setQueryString(getParametersAsNamedValuePairArray(url));
-    method.getParams().setCookiePolicy(CookiePolicy.BROWSER_COMPATIBILITY);
-    method.getParams().setParameter(HttpMethodParams.HTTP_CONTENT_CHARSET, "UTF-8");
 
     return execute(method);
   }
 
-  private NameValuePair[] getParametersAsNamedValuePairArray(Url url) {
-    List<NameValuePair> out = new ArrayList<NameValuePair>();
-    for (Url.Parameter parameter : url.getParametersList()) {
-      if (parameter.hasName() && parameter.hasValue()) {
-        out.add(new NameValuePair(parameter.getName(), parameter.getValue().toString()));
-      }
-    }
-    return out.toArray(new NameValuePair[out.size()]);
-  }
+  private List<NameValuePair> getBodyParametersAsNamedValuePairArray(Url url) {
+    List<NameValuePair> out = new ArrayList<>();
 
-  private NameValuePair[] getBodyParametersAsNamedValuePairArray(Url url) {
-    List<NameValuePair> out = new ArrayList<NameValuePair>();
     for (Url.Parameter parameter : url.getBodyParametersList()) {
       if (parameter.hasName() && parameter.hasValue()) {
-        out.add(new NameValuePair(parameter.getName(), parameter.getValue().toString()));
+        out.add(new BasicNameValuePair(parameter.getName(), parameter.getValue().toString()));
       }
     }
-    return out.toArray(new NameValuePair[out.size()]);
+
+    return out;
   }
 
-  private String execute(HttpMethod method) throws WebApiException, IOException {
-    final HttpClient httpClient = new HttpClient(connectionManager);
-    try {
-      httpClient.executeMethod(method);
+  private String execute(HttpRequestBase method) throws WebApiException, IOException {
+    final ConnectionConfig connectionConfig = ConnectionConfig
+            .custom()
+            .setCharset(Charset.forName("UTF-8"))
+            .build();
+    final RequestConfig requestConfig = RequestConfig
+            .custom()
+            .setCookieSpec(CookieSpecs.DEFAULT)
+            .build();
+    final CloseableHttpClient httpClient = HttpClients.custom()
+            .setConnectionManager(connectionManager)
+            .setDefaultConnectionConfig(connectionConfig)
+            .setDefaultRequestConfig(requestConfig)
+            .build();
 
-      handleErrorStatusCode(method);
-      String responseBody = method.getResponseBodyAsString();
+    try {
+      CloseableHttpResponse httpResponse = httpClient.execute(method);
+
+      handleErrorStatusCode(httpResponse);
+
+      String responseBody = EntityUtils.toString(httpResponse.getEntity(), "UTF-8");
 
       handleErrorResponseBody(responseBody);
-      return responseBody;
 
+      return responseBody;
     } catch (IOException e) {
       throw new IOException();
     } finally {
@@ -168,11 +163,11 @@ public class SpotifyHttpManager implements HttpManager {
   }
 
   /*
-   * Todo: Error handling could be more granular and throw a different exception depending on status code.
+   * TODO: Error handling could be more granular and throw a different exception depending on status code.
    * It could also look into the JSON object to find an error message.
    */
-  private void handleErrorStatusCode(HttpMethod method) throws BadRequestException, ServerErrorException {
-    int statusCode = method.getStatusCode();
+  private void handleErrorStatusCode(CloseableHttpResponse httpResponse) throws BadRequestException, ServerErrorException {
+    int statusCode = httpResponse.getStatusLine().getStatusCode();
 
     if (statusCode >= 400 && statusCode < 500) {
       throw new BadRequestException(String.valueOf(statusCode));
@@ -190,6 +185,7 @@ public class SpotifyHttpManager implements HttpManager {
 
     if (!responseBody.equals("") && responseBody.startsWith("{")) {
       final JSONObject jsonObject = JSONObject.fromObject(responseBody);
+
       if (jsonObject.has("error")) {
         throw new WebApiException(jsonObject.getString("error"));
       }
@@ -201,15 +197,10 @@ public class SpotifyHttpManager implements HttpManager {
   }
 
   public static class Builder {
-
-    private HttpConnectionManager connectionManager = null;
-
+    private PoolingHttpClientConnectionManager connectionManager = null;
     public Builder() {}
-
     public SpotifyHttpManager build() {
       return new SpotifyHttpManager(this);
     }
-
   }
-
 }
