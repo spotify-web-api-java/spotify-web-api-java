@@ -343,16 +343,6 @@ public class Api {
     return builder;
   }
 
-  private void setDefaults(AbstractRequest.Builder builder) {
-    builder.httpManager(httpManager);
-    builder.scheme(scheme);
-    builder.host(host);
-    builder.port(port);
-    if (accessToken != null) {
-      builder.header("Authorization", "Bearer " + accessToken);
-    }
-  }
-
   /**
    * Add tracks to a playlist.
    * @param userId The owner's username.
@@ -476,6 +466,15 @@ public class Api {
     return builder;
   }
 
+  private void setDefaults(AbstractRequest.Builder builder) {
+    builder.httpManager(httpManager);
+    builder.scheme(scheme);
+    builder.host(host);
+    builder.port(port);
+    if (accessToken != null) {
+      builder.header("Authorization", "Bearer " + accessToken);
+    }
+  }
 
   public void setAccessToken(String accessToken) {
     this.accessToken = accessToken;
