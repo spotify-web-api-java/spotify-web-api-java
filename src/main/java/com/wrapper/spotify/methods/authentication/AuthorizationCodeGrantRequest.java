@@ -25,9 +25,7 @@ public class AuthorizationCodeGrantRequest extends AbstractRequest {
     final SettableFuture<AuthorizationCodeCredentials> future = SettableFuture.create();
 
     try {
-      final String jsonString = postJson();
-      final JSONObject jsonObject = JSONObject.fromObject(jsonString);
-
+      final JSONObject jsonObject = JSONObject.fromObject(postJson());
       future.set(JsonUtil.createTokenResponse(jsonObject));
     } catch (Exception e) {
       future.setException(e);
@@ -37,9 +35,7 @@ public class AuthorizationCodeGrantRequest extends AbstractRequest {
   }
 
   public AuthorizationCodeCredentials get() throws IOException, WebApiException {
-    final String json = postJson();
-    final JSONObject jsonObject = JSONObject.fromObject(json);
-
+    final JSONObject jsonObject = JSONObject.fromObject(postJson());
     return JsonUtil.createTokenResponse(jsonObject);
   }
 
@@ -74,7 +70,6 @@ public class AuthorizationCodeGrantRequest extends AbstractRequest {
       host(Api.DEFAULT_AUTHENTICATION_HOST);
       port(Api.DEFAULT_AUTHENTICATION_PORT);
       scheme(Api.DEFAULT_AUTHENTICATION_SCHEME);
-
       path("/api/token");
 
       return new AuthorizationCodeGrantRequest(this);

@@ -20,9 +20,7 @@ public class ArtistSearchRequest extends AbstractRequest {
     SettableFuture<Page<Artist>> searchResultFuture = SettableFuture.create();
 
     try {
-      String jsonString = getJson();
-      JSONObject jsonObject = JSONObject.fromObject(jsonString);
-
+      JSONObject jsonObject = JSONObject.fromObject(getJson());
       searchResultFuture.set(JsonUtil.createArtistPage(jsonObject.getJSONObject("artists")));
     } catch (Exception e) {
       searchResultFuture.setException(e);
@@ -32,9 +30,7 @@ public class ArtistSearchRequest extends AbstractRequest {
   }
 
   public Page<Artist> get() throws IOException, WebApiException {
-    final String jsonString = getJson();
-    final JSONObject jsonObject = JSONObject.fromObject(jsonString);
-
+    final JSONObject jsonObject = JSONObject.fromObject(getJson());
     return JsonUtil.createArtistPage(jsonObject.getJSONObject("artists"));
   }
 

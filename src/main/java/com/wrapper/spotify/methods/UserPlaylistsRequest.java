@@ -19,9 +19,7 @@ public class UserPlaylistsRequest extends AbstractRequest {
     SettableFuture<Page<SimplePlaylist>> simplePlaylistsPageFuture = SettableFuture.create();
 
     try {
-      final String jsonString = getJson();
-      final JSONObject jsonObject = JSONObject.fromObject(jsonString);
-
+      final JSONObject jsonObject = JSONObject.fromObject(getJson());
       simplePlaylistsPageFuture.set(JsonUtil.createSimplePlaylistsPage(jsonObject));
     } catch (Exception e) {
       simplePlaylistsPageFuture.setException(e);
@@ -31,9 +29,7 @@ public class UserPlaylistsRequest extends AbstractRequest {
   }
 
   public Page<SimplePlaylist> get() throws IOException, WebApiException {
-    final String jsonString = getJson();
-    final JSONObject jsonObject = JSONObject.fromObject(jsonString);
-
+    final JSONObject jsonObject = JSONObject.fromObject(getJson());
     return JsonUtil.createSimplePlaylistsPage(jsonObject);
   }
 

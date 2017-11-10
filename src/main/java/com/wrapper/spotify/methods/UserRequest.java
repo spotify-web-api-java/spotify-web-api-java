@@ -4,7 +4,6 @@ import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.JsonUtil;
 import com.wrapper.spotify.exceptions.WebApiException;
 import com.wrapper.spotify.models.User;
-import net.sf.json.JSONObject;
 
 import java.io.IOException;
 
@@ -22,10 +21,7 @@ public class UserRequest extends AbstractRequest {
     final SettableFuture<User> userFuture = SettableFuture.create();
 
     try {
-      final String jsonString = getJson();
-      final JSONObject jsonObject = JSONObject.fromObject(jsonString);
-
-      userFuture.set(JsonUtil.createUser(jsonString));
+      userFuture.set(JsonUtil.createUser(getJson()));
     } catch (Exception e) {
       userFuture.setException(e);
     }
@@ -34,10 +30,7 @@ public class UserRequest extends AbstractRequest {
   }
 
   public User get() throws IOException, WebApiException {
-    final String jsonString = getJson();
-    final JSONObject jsonObject = JSONObject.fromObject(jsonString);
-
-    return JsonUtil.createUser(jsonString);
+    return JsonUtil.createUser(getJson());
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {

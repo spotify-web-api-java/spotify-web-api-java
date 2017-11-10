@@ -22,9 +22,7 @@ public class ArtistRequest extends AbstractRequest {
     SettableFuture<Artist> artistFuture = SettableFuture.create();
 
     try {
-      final String jsonString = getJson();
-      final JSONObject jsonObject = JSONObject.fromObject(jsonString);
-
+      final JSONObject jsonObject = JSONObject.fromObject(getJson());
       artistFuture.set(JsonUtil.createArtist(jsonObject));
     } catch (Exception e) {
       artistFuture.setException(e);
@@ -34,9 +32,7 @@ public class ArtistRequest extends AbstractRequest {
   }
 
   public Artist get() throws IOException, WebApiException {
-    final String jsonString = getJson();
-
-    return JsonUtil.createArtist(JSONObject.fromObject(jsonString));
+    return JsonUtil.createArtist(JSONObject.fromObject(getJson()));
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {

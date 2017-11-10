@@ -17,8 +17,7 @@ public class TrackRequest extends AbstractRequest {
     SettableFuture<Track> trackFuture = SettableFuture.create();
 
     try {
-      final String jsonString = getJson();
-      trackFuture.set(JsonUtil.createTrack(jsonString));
+      trackFuture.set(JsonUtil.createTrack(getJson()));
     } catch (Exception e) {
       trackFuture.setException(e);
     }
@@ -27,8 +26,7 @@ public class TrackRequest extends AbstractRequest {
   }
 
   public Track get() throws IOException, WebApiException {
-    final String jsonString = getJson();
-    return JsonUtil.createTrack(jsonString);
+    return JsonUtil.createTrack(getJson());
   }
 
   public static Builder builder() {

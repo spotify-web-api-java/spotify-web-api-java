@@ -24,8 +24,7 @@ public class FeaturedPlaylistsRequest extends AbstractRequest {
    * @throws WebApiException In case of error replies from the Web API.
    */
   public FeaturedPlaylists get() throws IOException, WebApiException {
-    final String jsonString = getJson();
-    final JSONObject jsonObject = JSONObject.fromObject(jsonString);
+    final JSONObject jsonObject = JSONObject.fromObject(getJson());
     return JsonUtil.createFeaturedPlaylist(jsonObject);
   }
 
@@ -37,8 +36,7 @@ public class FeaturedPlaylistsRequest extends AbstractRequest {
     final SettableFuture<FeaturedPlaylists> future = SettableFuture.create();
 
     try {
-      final String jsonString = getJson();
-      future.set(JsonUtil.createFeaturedPlaylist(JSONObject.fromObject(jsonString)));
+      future.set(JsonUtil.createFeaturedPlaylist(JSONObject.fromObject(getJson())));
     } catch (Exception e) {
       future.setException(e);
     }

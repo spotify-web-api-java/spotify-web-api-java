@@ -20,8 +20,7 @@ public class TracksRequest extends AbstractRequest {
     SettableFuture<List<Track>> tracksFuture = SettableFuture.create();
 
     try {
-      final String jsonString = getJson();
-      final JSONObject jsonObject = JSONObject.fromObject(jsonString);
+      final JSONObject jsonObject = JSONObject.fromObject(getJson());
 
       tracksFuture.set(JsonUtil.createTracks(jsonObject));
     } catch (Exception e) {
@@ -32,9 +31,7 @@ public class TracksRequest extends AbstractRequest {
   }
 
   public List<Track> get() throws IOException, WebApiException {
-    final String jsonString = getJson();
-    final JSONObject jsonObject = JSONObject.fromObject(jsonString);
-
+    final JSONObject jsonObject = JSONObject.fromObject(getJson());
     return JsonUtil.createTracks(jsonObject);
   }
 

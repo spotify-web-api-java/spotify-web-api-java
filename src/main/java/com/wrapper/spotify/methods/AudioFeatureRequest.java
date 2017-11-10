@@ -18,8 +18,7 @@ public class AudioFeatureRequest extends AbstractRequest {
         SettableFuture<AudioFeature> audioFeatureFuture = SettableFuture.create();
 
         try {
-            String jsonString = getJson();
-            audioFeatureFuture.set(createAudioFeature(JSONObject.fromObject(jsonString)));
+            audioFeatureFuture.set(createAudioFeature(JSONObject.fromObject(getJson())));
         } catch (Exception e) {
             audioFeatureFuture.setException(e);
         }
@@ -28,9 +27,7 @@ public class AudioFeatureRequest extends AbstractRequest {
     }
 
     public AudioFeature get() throws IOException, WebApiException {
-        String jsonString = getJson();
-        JSONObject jsonObject = JSONObject.fromObject(jsonString);
-
+        JSONObject jsonObject = JSONObject.fromObject(getJson());
         return createAudioFeature(jsonObject);
     }
 

@@ -46,8 +46,8 @@ public class AuthorizationURLRequest extends AbstractRequest {
       host(Api.DEFAULT_AUTHENTICATION_HOST);
       port(Api.DEFAULT_AUTHENTICATION_PORT);
       scheme(Api.DEFAULT_AUTHENTICATION_SCHEME);
-
       path("/authorize");
+
       return new AuthorizationURLRequest(this);
     }
   }

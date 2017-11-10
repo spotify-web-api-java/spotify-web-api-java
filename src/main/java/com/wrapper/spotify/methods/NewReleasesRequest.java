@@ -20,8 +20,7 @@ public class NewReleasesRequest extends AbstractRequest {
     final SettableFuture<NewReleases> newReleasesFuture = SettableFuture.create();
 
     try {
-      final String jsonString = getJson();
-      newReleasesFuture.set(JsonUtil.createNewReleases(JSONObject.fromObject(jsonString)));
+      newReleasesFuture.set(JsonUtil.createNewReleases(JSONObject.fromObject(getJson())));
     } catch (Exception e) {
       newReleasesFuture.setException(e);
     }
@@ -30,8 +29,7 @@ public class NewReleasesRequest extends AbstractRequest {
   }
 
   public NewReleases get() throws IOException, WebApiException {
-    final String jsonString = getJson();
-    return JsonUtil.createNewReleases(JSONObject.fromObject(jsonString));
+    return JsonUtil.createNewReleases(JSONObject.fromObject(getJson()));
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {

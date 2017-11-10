@@ -21,9 +21,7 @@ public class AlbumsForArtistRequest extends AbstractRequest {
     SettableFuture<Page<SimpleAlbum>> searchResultFuture = SettableFuture.create();
 
     try {
-      final String jsonString = getJson();
-      final JSONObject jsonObject = JSONObject.fromObject(jsonString);
-
+      final JSONObject jsonObject = JSONObject.fromObject(getJson());
       searchResultFuture.set(JsonUtil.createSimpleAlbumPage(jsonObject));
     } catch (Exception e) {
       searchResultFuture.setException(e);
@@ -33,9 +31,7 @@ public class AlbumsForArtistRequest extends AbstractRequest {
   }
 
   public Page<SimpleAlbum> get() throws IOException, WebApiException {
-    final String jsonString = getJson();
-    final JSONObject jsonObject = JSONObject.fromObject(jsonString);
-
+    final JSONObject jsonObject = JSONObject.fromObject(getJson());
     return JsonUtil.createSimpleAlbumPage(jsonObject);
   }
 

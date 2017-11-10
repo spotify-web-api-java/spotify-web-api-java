@@ -224,10 +224,8 @@ public class JsonUtil {
   }
 
   public static List<Album> createAlbums(String json) {
-    JSONObject jsonObject = JSONObject.fromObject(json);
-    JSONArray albumsJsonArray = jsonObject.getJSONArray("albums");
+    JSONArray albumsJsonArray = JSONObject.fromObject(json).getJSONArray("albums");
     return createAlbums(albumsJsonArray);
-
   }
 
   public static List<Album> createAlbums(JSONArray jsonArray) {

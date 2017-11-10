@@ -22,9 +22,7 @@ public class PlaylistRequest extends AbstractRequest {
     SettableFuture<Playlist> playlistFuture = SettableFuture.create();
 
     try {
-      final String jsonString = getJson();
-      final JSONObject jsonObject = JSONObject.fromObject(jsonString);
-
+      final JSONObject jsonObject = JSONObject.fromObject(getJson());
       playlistFuture.set(JsonUtil.createPlaylist(jsonObject));
     } catch (Exception e) {
       playlistFuture.setException(e);
@@ -34,9 +32,7 @@ public class PlaylistRequest extends AbstractRequest {
   }
 
   public Playlist get() throws IOException, WebApiException {
-    final String jsonString = getJson();
-    final JSONObject jsonObject = JSONObject.fromObject(jsonString);
-
+    final JSONObject jsonObject = JSONObject.fromObject(getJson());
     return JsonUtil.createPlaylist(jsonObject);
   }
 

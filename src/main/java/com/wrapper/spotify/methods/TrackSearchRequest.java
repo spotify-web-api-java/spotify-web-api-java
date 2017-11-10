@@ -19,9 +19,7 @@ public class TrackSearchRequest extends AbstractRequest {
     SettableFuture<Page<Track>> searchResultFuture = SettableFuture.create();
 
     try {
-      final String jsonString = getJson();
-      final JSONObject jsonObject = JSONObject.fromObject(jsonString);
-
+      final JSONObject jsonObject = JSONObject.fromObject(getJson());
       searchResultFuture.set(JsonUtil.createTrackPage(jsonObject));
     } catch (Exception e) {
       searchResultFuture.setException(e);
@@ -31,9 +29,7 @@ public class TrackSearchRequest extends AbstractRequest {
   }
 
   public Page<Track> get() throws IOException, WebApiException {
-    final String jsonString = getJson();
-    final JSONObject jsonObject = JSONObject.fromObject(jsonString);
-
+    final JSONObject jsonObject = JSONObject.fromObject(getJson());
     return JsonUtil.createTrackPage(jsonObject);
   }
 

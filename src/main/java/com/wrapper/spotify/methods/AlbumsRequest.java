@@ -5,7 +5,6 @@ import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.JsonUtil;
 import com.wrapper.spotify.exceptions.WebApiException;
 import com.wrapper.spotify.models.Album;
-import net.sf.json.JSONObject;
 
 import java.io.IOException;
 import java.util.List;
@@ -20,10 +19,7 @@ public class AlbumsRequest extends AbstractRequest {
     SettableFuture<List<Album>> albumsFuture = SettableFuture.create();
 
     try {
-      String jsonString = getJson();
-      JSONObject jsonObject = JSONObject.fromObject(jsonString);
-
-      albumsFuture.set(JsonUtil.createAlbums(jsonString));
+      albumsFuture.set(JsonUtil.createAlbums(getJson()));
     } catch (Exception e) {
       albumsFuture.setException(e);
     }
@@ -32,10 +28,7 @@ public class AlbumsRequest extends AbstractRequest {
   }
 
   public List<Album> get() throws IOException, WebApiException {
-    String jsonString = getJson();
-    JSONObject jsonObject = JSONObject.fromObject(jsonString);
-
-    return JsonUtil.createAlbums(jsonString);
+    return JsonUtil.createAlbums(getJson());
   }
 
   public static Builder builder() {

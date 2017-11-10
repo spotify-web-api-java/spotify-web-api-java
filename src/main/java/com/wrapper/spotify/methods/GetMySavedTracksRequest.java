@@ -22,8 +22,7 @@ public class GetMySavedTracksRequest extends AbstractRequest {
     SettableFuture<Page<LibraryTrack>> libraryTracksFuture = SettableFuture.create();
 
     try {
-      final String jsonString = getJson();
-      final JSONObject jsonObject = JSONObject.fromObject(jsonString);
+      final JSONObject jsonObject = JSONObject.fromObject(getJson());
 
       libraryTracksFuture.set(JsonUtil.createLibraryTracksPage(jsonObject));
     } catch (Exception e) {
@@ -34,8 +33,7 @@ public class GetMySavedTracksRequest extends AbstractRequest {
   }
 
   public Page<LibraryTrack> get() throws IOException, WebApiException {
-    final String jsonString = getJson();
-    final JSONObject jsonObject = JSONObject.fromObject(jsonString);
+    final JSONObject jsonObject = JSONObject.fromObject(getJson());
 
     return JsonUtil.createLibraryTracksPage(jsonObject);
   }

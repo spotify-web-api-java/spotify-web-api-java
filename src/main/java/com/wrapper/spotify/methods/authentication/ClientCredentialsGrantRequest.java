@@ -28,7 +28,6 @@ public class ClientCredentialsGrantRequest extends AbstractRequest {
 
     try {
       JSONObject jsonObject = JSONObject.fromObject(postJson());
-
       future.set(JsonUtil.createApplicationAuthenticationToken(jsonObject));
     } catch (Exception e) {
       future.setException(e);
@@ -39,7 +38,6 @@ public class ClientCredentialsGrantRequest extends AbstractRequest {
 
   public ClientCredentials get() throws IOException, WebApiException {
     JSONObject jsonObject = JSONObject.fromObject(postJson());
-
     return JsonUtil.createApplicationAuthenticationToken(jsonObject);
   }
 
@@ -68,8 +66,8 @@ public class ClientCredentialsGrantRequest extends AbstractRequest {
       host(Api.DEFAULT_AUTHENTICATION_HOST);
       port(Api.DEFAULT_AUTHENTICATION_PORT);
       scheme(Api.DEFAULT_AUTHENTICATION_SCHEME);
-
       path("/api/token");
+
       return new ClientCredentialsGrantRequest(this);
     }
   }
