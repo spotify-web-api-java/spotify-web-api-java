@@ -35,7 +35,7 @@ public class PlaylistCreationRequestTest {
       @Override
       public void onSuccess(Playlist playlist) {
         assertNotNull(playlist);
-        assertFalse(playlist.isCollaborative());
+        assertFalse(playlist.getIsCollaborative());
         assertNull(playlist.getDescription());
         assertEquals("http://open.spotify.com/user/thelinmichael/playlist/2LfixThJPNO9DAreghF2WK", playlist.getExternalUrls().get("spotify"));
         assertNull(playlist.getFollowers());
@@ -45,7 +45,7 @@ public class PlaylistCreationRequestTest {
         assertNull(playlist.getImages().get(0));
         assertEquals("Coolest Playlist", playlist.getName());
         assertNotNull(playlist.getOwner());
-        assertTrue(playlist.isPublicAccess());
+        assertTrue(playlist.getIsPublicAccess());
         assertNull(playlist.getTracks());
         assertEquals(ObjectType.PLAYLIST, playlist.getType());
         assertEquals("spotify:user:thelinmichael:playlist:2LfixThJPNO9DAreghF2WK", playlist.getUri());
@@ -73,7 +73,7 @@ public class PlaylistCreationRequestTest {
 
     final Playlist playlist = request.get();
 
-    assertFalse(playlist.isCollaborative());
+    assertFalse(playlist.getIsCollaborative());
     assertNull(playlist.getDescription());
     assertEquals("http://open.spotify.com/user/thelinmichael/playlist/2LfixThJPNO9DAreghF2WK", playlist.getExternalUrls().get("spotify"));
     assertNull(playlist.getFollowers());
@@ -83,7 +83,7 @@ public class PlaylistCreationRequestTest {
     assertNull(playlist.getImages().get(0));
     assertEquals("Coolest Playlist", playlist.getName());
     assertNotNull(playlist.getOwner());
-    assertTrue(playlist.isPublicAccess());
+    assertTrue(playlist.getIsPublicAccess());
     assertNull(playlist.getTracks());
     assertEquals(ObjectType.PLAYLIST, playlist.getType());
     assertEquals("spotify:user:thelinmichael:playlist:2LfixThJPNO9DAreghF2WK", playlist.getUri());

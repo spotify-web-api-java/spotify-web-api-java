@@ -48,11 +48,11 @@ public class UserPlaylistsRequestTest {
         final String playlistId = simplePlaylist.getId();
         assertNotNull(playlistId);
         assertTrue(playlistId.length() > 0);
-        assertEquals(false, simplePlaylist.isCollaborative());
+        assertEquals(false, simplePlaylist.getIsCollaborative());
         assertEquals("http://open.spotify.com/user/wizzler/playlist/" + playlistId, simplePlaylist.getExternalUrls().get("spotify"));
         assertNotNull(simplePlaylist.getName());
         assertNotNull(simplePlaylist.getOwner());
-        assertNotNull(simplePlaylist.isPublicAccess());
+        assertNotNull(simplePlaylist.getIsPublicAccess());
         assertNotNull(simplePlaylist.getTracks().getHref());
         assertNotNull(simplePlaylist.getTracks().getTotal());
         assertEquals(ObjectType.PLAYLIST, simplePlaylist.getType());
@@ -99,11 +99,11 @@ public class UserPlaylistsRequestTest {
     final String playlistId = simplePlaylist.getId();
     assertNotNull(playlistId);
     assertTrue(playlistId.length() > 0);
-    assertEquals(false, simplePlaylist.isCollaborative());
+    assertEquals(false, simplePlaylist.getIsCollaborative());
     assertEquals("http://open.spotify.com/user/wizzler/playlist/" + playlistId, simplePlaylist.getExternalUrls().get("spotify"));
     assertNotNull(simplePlaylist.getName());
     assertNotNull(simplePlaylist.getOwner());
-    assertNotNull(simplePlaylist.isPublicAccess());
+    assertNotNull(simplePlaylist.getIsPublicAccess());
     assertNotNull(simplePlaylist.getTracks().getHref());
     assertNotNull(simplePlaylist.getTracks().getTotal());
     assertEquals(ObjectType.PLAYLIST, simplePlaylist.getType());

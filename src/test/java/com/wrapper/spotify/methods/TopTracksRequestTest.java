@@ -44,8 +44,8 @@ public class TopTracksRequestTest {
         assertNotNull(firstTrack.getArtists());
         assertNotNull(firstTrack.getAvailableMarkets());
         assertTrue(firstTrack.getDiscNumber() > 0);
-        assertTrue(firstTrack.getDuration() > 0);
-        assertNotNull(firstTrack.isExplicit());
+        assertTrue(firstTrack.getDurationMs() > 0);
+        assertNotNull(firstTrack.getIsExplicit());
         assertNotNull(firstTrack.getExternalIds());
 
         String id = firstTrack.getId();
@@ -88,8 +88,8 @@ public class TopTracksRequestTest {
     assertNotNull(firstTrack.getArtists());
     assertNotNull(firstTrack.getAvailableMarkets());
     assertTrue(firstTrack.getDiscNumber() > 0);
-    assertTrue(firstTrack.getDuration() > 0);
-    assertNotNull(firstTrack.isExplicit());
+    assertTrue(firstTrack.getDurationMs() > 0);
+    assertNotNull(firstTrack.getIsExplicit());
     assertNotNull(firstTrack.getExternalIds());
 
     String id = firstTrack.getId();
