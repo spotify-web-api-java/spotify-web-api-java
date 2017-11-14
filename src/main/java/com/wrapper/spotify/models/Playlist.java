@@ -19,7 +19,7 @@ public class Playlist {
   private ObjectType type = ObjectType.PLAYLIST;
   private String uri;
 
-  public boolean isCollaborative() {
+  public boolean getIsCollaborative() {
     return collaborative;
   }
 

@@ -10,7 +10,7 @@ public class Track {
   private List<ArtistSimplified> artists;
   private List<CountryCode> availableMarkets;
   private int discNumber;
-  private int duration;
+  private int durationMs;
   private boolean explicit;
   private ExternalIds externalIds;
   private ExternalUrls externalUrls;
@@ -58,15 +58,15 @@ public class Track {
     this.discNumber = discNumber;
   }
 
-  public int getDuration() {
-    return duration;
+  public int getDurationMs() {
+    return durationMs;
   }
 
-  public void setDuration(int duration) {
-    this.duration = duration;
+  public void setDurationMs(int durationMs) {
+    this.durationMs = durationMs;
   }
 
-  public boolean isExplicit() {
+  public boolean getIsExplicit() {
     return explicit;
   }
 
