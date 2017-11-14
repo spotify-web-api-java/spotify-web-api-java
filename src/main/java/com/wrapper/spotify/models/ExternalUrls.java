@@ -5,9 +5,9 @@ import java.util.Map;
 
 public class ExternalUrls {
 
-  private Map<String,String> externalUrls = new HashMap<String, String>();
+  private final Map<String,String> externalUrls = new HashMap<>();
 
-  public Map<String, String> getExternalUrls() {
+  public Map<String,String> getExternalUrls() {
     return externalUrls;
   }
 
