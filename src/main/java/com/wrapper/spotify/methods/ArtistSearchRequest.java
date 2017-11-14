@@ -4,7 +4,7 @@ import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.JsonUtil;
 import com.wrapper.spotify.exceptions.WebApiException;
 import com.wrapper.spotify.models.Artist;
-import com.wrapper.spotify.models.Page;
+import com.wrapper.spotify.models.Paging;
 import net.sf.json.JSONObject;
 
 import java.io.IOException;
@@ -16,8 +16,8 @@ public class ArtistSearchRequest extends AbstractRequest {
     super(builder);
   }
 
-  public SettableFuture<Page<Artist>> getAsync() {
-    SettableFuture<Page<Artist>> searchResultFuture = SettableFuture.create();
+  public SettableFuture<Paging<Artist>> getAsync() {
+    SettableFuture<Paging<Artist>> searchResultFuture = SettableFuture.create();
 
     try {
       JSONObject jsonObject = JSONObject.fromObject(getJson());

@@ -14,8 +14,8 @@ public class Playlist {
   private String name;
   private User owner;
   private boolean publicAccess;
-  private Page<PlaylistTrack> tracks;
-  private SpotifyEntityType type = SpotifyEntityType.PLAYLIST;
+  private Paging<PlaylistTrack> tracks;
+  private ObjectType type = ObjectType.PLAYLIST;
   private String uri;
 
   public boolean isCollaborative() {
@@ -90,35 +90,35 @@ public class Playlist {
     this.name = name;
   }
 
-  public SpotifyEntityType getType() {
-    return type;
   }
 
-  public void setType(SpotifyEntityType type) {
-    this.type = type;
   }
 
   public String getUri() {
     return uri;
+  public Paging<PlaylistTrack> getTracks() {
+    return tracks;
   }
 
   public void setUri(String uri) {
     this.uri = uri;
+  public void setTracks(Paging<PlaylistTrack> tracks) {
+    this.tracks = tracks;
   }
 
   public boolean isPublicAccess() {
     return publicAccess;
+  public ObjectType getType() {
+    return type;
   }
 
   public void setPublicAccess(boolean publicAccess) {
     this.publicAccess = publicAccess;
+  public void setType(ObjectType type) {
+    this.type = type;
   }
 
-  public Page<PlaylistTrack> getTracks() {
-    return tracks;
   }
 
-  public void setTracks(Page<PlaylistTrack> tracks) {
-    this.tracks = tracks;
   }
 }

@@ -9,8 +9,8 @@ import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.models.FeaturedPlaylists;
-import com.wrapper.spotify.models.Page;
-import com.wrapper.spotify.models.SimplePlaylist;
+import com.wrapper.spotify.models.Paging;
+import com.wrapper.spotify.models.PlaylistSimplified;
 import org.junit.Test;
 
 import java.util.Calendar;
@@ -49,7 +49,7 @@ public class FeaturedPlaylistsRequestTest {
       public void onSuccess(FeaturedPlaylists featuredPlaylists) {
         assertEquals("Behöver du hjälp att komma igång idag?", featuredPlaylists.getMessage());
 
-        Page<SimplePlaylist> playlistPage = featuredPlaylists.getPlaylists();
+        Paging<PlaylistSimplified> playlistPage = featuredPlaylists.getPlaylists();
 
         assertEquals(12, playlistPage.getTotal());
         assertEquals(1, playlistPage.getOffset());
@@ -61,10 +61,10 @@ public class FeaturedPlaylistsRequestTest {
                      "locale=sv_SE&timestamp=2014-10-23T09:00:00&offset=0&limit=1",
                      playlistPage.getPrevious());
 
-        List<SimplePlaylist> items = playlistPage.getItems();
+        List<PlaylistSimplified> items = playlistPage.getItems();
         assertEquals(1, items.size());
 
-        SimplePlaylist playlist = items.get(0);
+        PlaylistSimplified playlist = items.get(0);
         assertEquals("2BgVZaiDigaqxTbZEI2TpE", playlist.getId());
         assertEquals("Träning", playlist.getName());
         asyncCompleted.countDown();
@@ -99,7 +99,7 @@ public class FeaturedPlaylistsRequestTest {
 
     assertEquals("Behöver du hjälp att komma igång idag?", featuredPlaylists.getMessage());
 
-    Page<SimplePlaylist> playlistPage = featuredPlaylists.getPlaylists();
+    Paging<PlaylistSimplified> playlistPage = featuredPlaylists.getPlaylists();
 
     assertEquals(12, playlistPage.getTotal());
     assertEquals(1, playlistPage.getOffset());
@@ -111,10 +111,10 @@ public class FeaturedPlaylistsRequestTest {
                  "locale=sv_SE&timestamp=2014-10-23T09:00:00&offset=0&limit=1",
                  playlistPage.getPrevious());
 
-    List<SimplePlaylist> items = playlistPage.getItems();
+    List<PlaylistSimplified> items = playlistPage.getItems();
     assertEquals(1, items.size());
 
-    SimplePlaylist playlist = items.get(0);
+    PlaylistSimplified playlist = items.get(0);
     assertEquals("2BgVZaiDigaqxTbZEI2TpE", playlist.getId());
     assertEquals("Träning", playlist.getName());
 

@@ -9,7 +9,7 @@ import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.models.LibraryTrack;
-import com.wrapper.spotify.models.Page;
+import com.wrapper.spotify.models.Paging;
 import org.junit.Test;
 
 import java.util.List;
@@ -34,12 +34,12 @@ public class GetMySavedTracksRequestTest {
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
-    final SettableFuture<Page<LibraryTrack>> libraryTracksFuture = request.getAsync();
+    final SettableFuture<Paging<LibraryTrack>> libraryTracksFuture = request.getAsync();
 
-    Futures.addCallback(libraryTracksFuture, new FutureCallback<Page<LibraryTrack>>() {
+    Futures.addCallback(libraryTracksFuture, new FutureCallback<Paging<LibraryTrack>>() {
 
       @Override
-      public void onSuccess(Page<LibraryTrack> libraryTracks) {
+      public void onSuccess(Paging<LibraryTrack> libraryTracks) {
         assertNotNull(libraryTracks);
 
         assertEquals("https://api.spotify.com/v1/me/tracks?offset=1&limit=5",
@@ -75,7 +75,7 @@ public class GetMySavedTracksRequestTest {
         .httpManager(TestUtil.MockedHttpManager.returningJson("saved-tracks.json"))
         .build();
 
-    final Page<LibraryTrack> libraryTracks = request.get();
+    final Paging<LibraryTrack> libraryTracks = request.get();
 
     assertNotNull(libraryTracks);
 

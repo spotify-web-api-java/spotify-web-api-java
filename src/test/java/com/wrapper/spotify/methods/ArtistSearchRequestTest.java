@@ -6,8 +6,8 @@ import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.models.Artist;
-import com.wrapper.spotify.models.Page;
-import com.wrapper.spotify.models.SpotifyEntityType;
+import com.wrapper.spotify.models.Paging;
+import com.wrapper.spotify.models.ObjectType;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -34,11 +34,11 @@ public class ArtistSearchRequestTest {
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
-    final SettableFuture<Page<Artist>> searchResultFuture = request.getAsync();
+    final SettableFuture<Paging<Artist>> searchResultFuture = request.getAsync();
 
-    Futures.addCallback(searchResultFuture, new FutureCallback<Page<Artist>>() {
+    Futures.addCallback(searchResultFuture, new FutureCallback<Paging<Artist>>() {
       @Override
-      public void onSuccess(Page<Artist> artistSearchResult) {
+      public void onSuccess(Paging<Artist> artistSearchResult) {
         assertEquals(20, artistSearchResult.getLimit());
         assertEquals(0, artistSearchResult.getOffset());
         assertTrue(artistSearchResult.getTotal() > 0);
@@ -56,7 +56,7 @@ public class ArtistSearchRequestTest {
         assertNotNull(firstArtist.getImages());
         assertEquals("Tania Bowra", firstArtist.getName());
         assertTrue(firstArtist.getPopularity() >= 0 && firstArtist.getPopularity() <= 100);
-        assertEquals(SpotifyEntityType.ARTIST, firstArtist.getType());
+        assertEquals(ObjectType.ARTIST, firstArtist.getType());
         assertEquals("spotify:artist:08td7MxkoHQkXnWAYD8d6Q", firstArtist.getUri());
 
         asyncCompleted.countDown();
@@ -81,7 +81,7 @@ public class ArtistSearchRequestTest {
         .httpManager(TestUtil.MockedHttpManager.returningJson("search-artist.json"))
         .build();
 
-    final Page<Artist> artistSearchResult = request.get();
+    final Paging<Artist> artistSearchResult = request.get();
 
     assertEquals(20, artistSearchResult.getLimit());
     assertEquals(0, artistSearchResult.getOffset());
@@ -100,7 +100,7 @@ public class ArtistSearchRequestTest {
     assertNotNull(firstArtist.getImages());
     assertEquals("Tania Bowra", firstArtist.getName());
     assertTrue(firstArtist.getPopularity() >= 0 && firstArtist.getPopularity() <= 100);
-    assertEquals(SpotifyEntityType.ARTIST, firstArtist.getType());
+    assertEquals(ObjectType.ARTIST, firstArtist.getType());
     assertEquals("spotify:artist:08td7MxkoHQkXnWAYD8d6Q", firstArtist.getUri());
   }
 

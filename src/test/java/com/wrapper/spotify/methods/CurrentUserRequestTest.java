@@ -5,7 +5,7 @@ import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.TestUtil;
-import com.wrapper.spotify.models.Product;
+import com.wrapper.spotify.models.ProductType;
 import com.wrapper.spotify.models.User;
 import org.junit.Test;
 
@@ -47,7 +47,7 @@ public class CurrentUserRequestTest {
         assertNull(user.getImages().get(0).getHeight());
         assertNull(user.getImages().get(0).getWidth());
         assertEquals("http://media.giphy.com/media/Aab07O5PYOmQ/giphy.gif", user.getImages().get(0).getUrl());
-        assertEquals(Product.PREMIUM, user.getProduct());
+        assertEquals(ProductType.PREMIUM, user.getProduct());
         assertEquals("spotify:user:thelinmichael", user.getUri());
         assertEquals("1989-07-04", user.getBirthdate());
 
@@ -86,7 +86,7 @@ public class CurrentUserRequestTest {
     assertNull(user.getImages().get(0).getHeight());
     assertNull(user.getImages().get(0).getWidth());
     assertEquals("http://media.giphy.com/media/Aab07O5PYOmQ/giphy.gif", user.getImages().get(0).getUrl());
-    assertEquals(Product.PREMIUM, user.getProduct());
+    assertEquals(ProductType.PREMIUM, user.getProduct());
     assertEquals("spotify:user:thelinmichael", user.getUri());
     assertEquals("1989-07-04", user.getBirthdate());
   }

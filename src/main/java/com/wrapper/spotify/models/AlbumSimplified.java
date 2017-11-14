@@ -1,26 +1,21 @@
 package com.wrapper.spotify.models;
 
+import com.neovisionaries.i18n.CountryCode;
+
 import java.util.List;
 
-public class SimpleAlbum {
+public class AlbumSimplified {
 
   private AlbumType albumType;
+  private List<ArtistSimplified> artists;
+  private List<CountryCode> availableMarkets;
   private ExternalUrls externalUrls;
   private String href;
   private String id;
   private List<Image> images;
   private String name;
-  private SpotifyEntityType type = SpotifyEntityType.ALBUM;
+  private ObjectType type = ObjectType.ALBUM;
   private String uri;
-  private List<String> availableMarkets;
-
-  public List<String> getAvailableMarkets() {
-    return availableMarkets;
-  }
-
-  public void setAvailableMarkets(List<String> availableMarkets) {
-    this.availableMarkets = availableMarkets;
-  }
 
   public AlbumType getAlbumType() {
     return albumType;
@@ -28,6 +23,22 @@ public class SimpleAlbum {
 
   public void setAlbumType(AlbumType albumType) {
     this.albumType = albumType;
+  }
+
+  public List<ArtistSimplified> getArtists() {
+    return artists;
+  }
+
+  public void setArtists(List<ArtistSimplified> artists) {
+    this.artists = artists;
+  }
+
+  public List<CountryCode> getAvailableMarkets() {
+    return availableMarkets;
+  }
+
+  public void setAvailableMarkets(List<CountryCode> availableMarkets) {
+    this.availableMarkets = availableMarkets;
   }
 
   public ExternalUrls getExternalUrls() {
@@ -70,11 +81,11 @@ public class SimpleAlbum {
     this.name = name;
   }
 
-  public SpotifyEntityType getType() {
+  public ObjectType getType() {
     return type;
   }
 
-  public void setType(SpotifyEntityType type) {
+  public void setType(ObjectType type) {
     this.type = type;
   }
 

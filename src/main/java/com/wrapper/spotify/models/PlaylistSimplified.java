@@ -2,21 +2,22 @@ package com.wrapper.spotify.models;
 
 import java.util.List;
 
-public class SimplePlaylist {
+public class PlaylistSimplified {
 
   private boolean collaborative;
   private ExternalUrls externalUrls;
   private String href;
   private String id;
   private List<Image> images;
-  private User owner;
   private String name;
+  private User owner;
   private boolean publicAccess;
+  private String snapshotId;
   private PlaylistTracksInformation tracks;
-  private SpotifyEntityType type = SpotifyEntityType.PLAYLIST;
+  private ObjectType type = ObjectType.PLAYLIST;
   private String uri;
 
-  public boolean isCollaborative() {
+  public boolean getIsCollaborative() {
     return collaborative;
   }
 
@@ -48,12 +49,12 @@ public class SimplePlaylist {
     this.id = id;
   }
 
-  public User getOwner() {
-    return owner;
+  public List<Image> getImages() {
+    return images;
   }
 
-  public void setOwner(User owner) {
-    this.owner = owner;
+  public void setImages(List<Image> images) {
+    this.images = images;
   }
 
   public String getName() {
@@ -64,12 +65,28 @@ public class SimplePlaylist {
     this.name = name;
   }
 
-  public boolean isPublicAccess() {
+  public User getOwner() {
+    return owner;
+  }
+
+  public void setOwner(User owner) {
+    this.owner = owner;
+  }
+
+  public boolean getIsPublicAccess() {
     return publicAccess;
   }
 
   public void setPublicAccess(boolean publicAccess) {
     this.publicAccess = publicAccess;
+  }
+
+  public String getSnapshotId() {
+    return snapshotId;
+  }
+
+  public void setSnapshotId(String snapshotId) {
+    this.snapshotId = snapshotId;
   }
 
   public PlaylistTracksInformation getTracks() {
@@ -80,11 +97,11 @@ public class SimplePlaylist {
     this.tracks = tracks;
   }
 
-  public SpotifyEntityType getType() {
+  public ObjectType getType() {
     return type;
   }
 
-  public void setType(SpotifyEntityType type) {
+  public void setType(ObjectType type) {
     this.type = type;
   }
 
@@ -94,13 +111,5 @@ public class SimplePlaylist {
 
   public void setUri(String uri) {
     this.uri = uri;
-  }
-
-  public List<Image> getImages() {
-    return images;
-  }
-
-  public void setImages(List<Image> images) {
-    this.images = images;
   }
 }

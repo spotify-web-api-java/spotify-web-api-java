@@ -5,8 +5,8 @@ import java.util.List;
 public class Album {
 
   private AlbumType albumType;
-  private List<SimpleArtist> artists;
   private List<String> availableMarkets;
+  private List<ArtistSimplified> artists;
   private List<Copyright> copyrights;
   private ExternalIds externalIds;
   private ExternalUrls externalUrls;
@@ -18,8 +18,8 @@ public class Album {
   private int popularity;
   private String releaseDate;
   private String releaseDatePrecision;
-  private Page<SimpleTrack> tracks;
-  private SpotifyEntityType type = SpotifyEntityType.ALBUM;
+  private Paging<TrackSimplified> tracks;
+  private ObjectType type = ObjectType.ALBUM;
   private String uri;
 
   public AlbumType getAlbumType() {
@@ -30,11 +30,11 @@ public class Album {
     this.albumType = albumType;
   }
 
-  public List<SimpleArtist> getArtists() {
+  public List<ArtistSimplified> getArtists() {
     return artists;
   }
 
-  public void setArtists(List<SimpleArtist> artists) {
+  public void setArtists(List<ArtistSimplified> artists) {
     this.artists = artists;
   }
 
@@ -118,36 +118,36 @@ public class Album {
     this.popularity = popularity;
   }
 
-  public Page<SimpleTrack> getTracks() {
-    return tracks;
   }
 
-  public void setTracks(Page<SimpleTrack> tracks) {
-    this.tracks = tracks;
   }
 
-  public SpotifyEntityType getType() {
-    return type;
   }
 
-  public void setType(SpotifyEntityType type) {
-    this.type = type;
   }
 
   public String getUri() {
     return uri;
+  public Paging<TrackSimplified> getTracks() {
+    return tracks;
   }
 
   public void setUri(String uri) {
     this.uri = uri;
+  public void setTracks(Paging<TrackSimplified> tracks) {
+    this.tracks = tracks;
   }
 
   public String getReleaseDatePrecision() {
     return releaseDatePrecision;
+  public ObjectType getType() {
+    return type;
   }
 
   public void setReleaseDatePrecision(String releaseDatePrecision) {
     this.releaseDatePrecision = releaseDatePrecision;
+  public void setType(ObjectType type) {
+    this.type = type;
   }
 
   public String getReleaseDate() {

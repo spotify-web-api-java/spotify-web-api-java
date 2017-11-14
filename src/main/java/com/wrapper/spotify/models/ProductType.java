@@ -1,6 +1,7 @@
 package com.wrapper.spotify.models;
 
-public enum Product {
+public enum ProductType {
+
   PREMIUM("premium"),
   FREE("free"),
   OPEN("open"),
@@ -8,7 +9,7 @@ public enum Product {
 
   public final String type;
 
-  Product(String type) {
+  ProductType(String type) {
     this.type = type;
   }
 

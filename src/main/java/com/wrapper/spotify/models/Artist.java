@@ -11,7 +11,7 @@ public class Artist {
   private List<Image> images;
   private String name;
   private int popularity;
-  private SpotifyEntityType type = SpotifyEntityType.ARTIST;
+  private ObjectType type = ObjectType.ARTIST;
   private String uri;
 
   public Followers getFollowers() {
@@ -80,11 +80,11 @@ public class Artist {
     this.popularity = popularity;
   }
 
-  public SpotifyEntityType getType() {
+  public ObjectType getType() {
     return type;
   }
 
-  public void setType(SpotifyEntityType type) {
+  public void setType(ObjectType type) {
     this.type = type;
   }
 

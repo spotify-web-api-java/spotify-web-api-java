@@ -3,10 +3,10 @@ package com.wrapper.spotify.models;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Page<T> {
+public class Paging<T> {
 
   private String href;
-  private List<T> items = new ArrayList<T>();
+  private List<T> items = new ArrayList<>();
   private int limit;
   private String next;
   private int offset;

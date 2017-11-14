@@ -45,12 +45,12 @@ public class AlbumsRequestTest {
         assertEquals("day", firstAlbum.getReleaseDatePrecision());
         assertEquals(2, firstAlbum.getCopyrights().size());
 
-        List<SimpleArtist> artists = firstAlbum.getArtists();
-        SimpleArtist firstArtist = artists.get(0);
+        List<ArtistSimplified> artists = firstAlbum.getArtists();
+        ArtistSimplified firstArtist = artists.get(0);
         assertEquals("https://api.spotify.com/v1/artists/53A0W3U0s8diEn9RhXQhVz", firstArtist.getHref());
         assertEquals("53A0W3U0s8diEn9RhXQhVz", firstArtist.getId());
 
-        Page<SimpleTrack> tracksPage = firstAlbum.getTracks();
+        Paging<TrackSimplified> tracksPage = firstAlbum.getTracks();
         assertEquals("https://api.spotify.com/v1/albums/2hYe61Nd2oOoM6RYCwIma1/tracks?offset=0&limit=50", tracksPage.getHref());
         assertEquals(0, tracksPage.getOffset());
         assertEquals(50, tracksPage.getLimit());
@@ -87,12 +87,12 @@ public class AlbumsRequestTest {
     assertEquals("2013-11-08", firstAlbum.getReleaseDate());
     assertEquals("day", firstAlbum.getReleaseDatePrecision());
 
-    List<SimpleArtist> artists = firstAlbum.getArtists();
-    SimpleArtist firstArtist = artists.get(0);
+    List<ArtistSimplified> artists = firstAlbum.getArtists();
+    ArtistSimplified firstArtist = artists.get(0);
     assertEquals("https://api.spotify.com/v1/artists/53A0W3U0s8diEn9RhXQhVz", firstArtist.getHref());
     assertEquals("53A0W3U0s8diEn9RhXQhVz", firstArtist.getId());
 
-    Page<SimpleTrack> tracksPage = firstAlbum.getTracks();
+    Paging<TrackSimplified> tracksPage = firstAlbum.getTracks();
     assertEquals("https://api.spotify.com/v1/albums/2hYe61Nd2oOoM6RYCwIma1/tracks?offset=0&limit=50", tracksPage.getHref());
     assertEquals(0, tracksPage.getOffset());
     assertEquals(50, tracksPage.getLimit());

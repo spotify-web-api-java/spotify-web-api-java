@@ -3,7 +3,7 @@ package com.wrapper.spotify.methods;
 import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.JsonUtil;
 import com.wrapper.spotify.exceptions.WebApiException;
-import com.wrapper.spotify.models.Page;
+import com.wrapper.spotify.models.Paging;
 import com.wrapper.spotify.models.Track;
 import net.sf.json.JSONObject;
 
@@ -15,8 +15,8 @@ public class TrackSearchRequest extends AbstractRequest {
     super(builder);
   }
 
-  public SettableFuture<Page<Track>> getAsync() {
-    SettableFuture<Page<Track>> searchResultFuture = SettableFuture.create();
+  public SettableFuture<Paging<Track>> getAsync() {
+    SettableFuture<Paging<Track>> searchResultFuture = SettableFuture.create();
 
     try {
       final JSONObject jsonObject = JSONObject.fromObject(getJson());

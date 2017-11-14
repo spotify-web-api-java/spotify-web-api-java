@@ -5,7 +5,7 @@ import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.TestUtil;
-import com.wrapper.spotify.models.Page;
+import com.wrapper.spotify.models.Paging;
 import com.wrapper.spotify.models.PlaylistTrack;
 import com.wrapper.spotify.models.Track;
 import org.junit.Test;
@@ -30,12 +30,12 @@ public class PlaylistTracksRequestTest {
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
-    final SettableFuture<Page<PlaylistTrack>> playlistTracksPageFuture = request.getAsync();
+    final SettableFuture<Paging<PlaylistTrack>> playlistTracksPageFuture = request.getAsync();
 
-    Futures.addCallback(playlistTracksPageFuture, new FutureCallback<Page<PlaylistTrack>>() {
+    Futures.addCallback(playlistTracksPageFuture, new FutureCallback<Paging<PlaylistTrack>>() {
 
       @Override
-      public void onSuccess(Page<PlaylistTrack> page) {
+      public void onSuccess(Paging<PlaylistTrack> page) {
         assertNotNull(page);
         assertEquals(
             "https://api.spotify.com/v1/users/thelinmichael/playlists/3ktAYNcRHpazJ9qecm3ptn/tracks",
@@ -78,12 +78,12 @@ public class PlaylistTracksRequestTest {
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
-    final SettableFuture<Page<PlaylistTrack>> playlistTracksPageFuture = request.getAsync();
+    final SettableFuture<Paging<PlaylistTrack>> playlistTracksPageFuture = request.getAsync();
 
-    Futures.addCallback(playlistTracksPageFuture, new FutureCallback<Page<PlaylistTrack>>() {
+    Futures.addCallback(playlistTracksPageFuture, new FutureCallback<Paging<PlaylistTrack>>() {
 
       @Override
-      public void onSuccess(Page<PlaylistTrack> page) {
+      public void onSuccess(Paging<PlaylistTrack> page) {
         assertNotNull(page);
         assertEquals(
             "https://api.spotify.com/v1/users/thelinmichael/starred/tracks?offset=0&limit=100",
@@ -123,7 +123,7 @@ public class PlaylistTracksRequestTest {
         .httpManager(TestUtil.MockedHttpManager.returningJson("playlist-tracks.json"))
         .build();
 
-    final Page<PlaylistTrack> page = request.get();
+    final Paging<PlaylistTrack> page = request.get();
 
     assertNotNull(page);
     assertEquals(
@@ -152,7 +152,7 @@ public class PlaylistTracksRequestTest {
         .httpManager(TestUtil.MockedHttpManager.returningJson("starred-tracks.json"))
         .build();
 
-    final Page<PlaylistTrack> page = request.get();
+    final Paging<PlaylistTrack> page = request.get();
 
     assertNotNull(page);
     assertEquals(

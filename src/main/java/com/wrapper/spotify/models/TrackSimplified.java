@@ -1,37 +1,40 @@
 package com.wrapper.spotify.models;
 
+import com.neovisionaries.i18n.CountryCode;
+
 import java.util.List;
 
-public class SimpleTrack {
-  private List<SimpleArtist> artists;
-
-  private List<String> availableMarkets;
+public class TrackSimplified {
+  private List<ArtistSimplified> artists;
+  private List<CountryCode> availableMarkets;
   private int discNumber;
-  private int duration;
+  private int durationMs;
   private boolean explicit;
   private ExternalUrls externalUrls;
   private String href;
   private String id;
+  private boolean isPlayable;
+  private TrackLink linkedFrom;
   private String name;
   private String previewUrl;
   private int trackNumber;
-  private SpotifyEntityType type = SpotifyEntityType.TRACK;
+  private ObjectType type = ObjectType.TRACK;
   private String uri;
 
-  public List<String> getAvailableMarkets() {
-    return availableMarkets;
-  }
-
-  public void setAvailableMarkets(List<String> availableMarkets) {
-    this.availableMarkets = availableMarkets;
-  }
-
-  public List<SimpleArtist> getArtists() {
+  public List<ArtistSimplified> getArtists() {
     return artists;
   }
 
-  public void setArtists(List<SimpleArtist> artists) {
+  public void setArtists(List<ArtistSimplified> artists) {
     this.artists = artists;
+  }
+
+  public List<CountryCode> getAvailableMarkets() {
+    return availableMarkets;
+  }
+
+  public void setAvailableMarkets(List<CountryCode> availableMarkets) {
+    this.availableMarkets = availableMarkets;
   }
 
   public int getDiscNumber() {
@@ -42,15 +45,15 @@ public class SimpleTrack {
     this.discNumber = discNumber;
   }
 
-  public int getDuration() {
-    return duration;
+  public int getDurationMs() {
+    return durationMs;
   }
 
-  public void setDuration(int duration) {
-    this.duration = duration;
+  public void setDurationMs(int durationMs) {
+    this.durationMs = durationMs;
   }
 
-  public boolean isExplicit() {
+  public boolean getIsExplicit() {
     return explicit;
   }
 
@@ -82,6 +85,22 @@ public class SimpleTrack {
     this.id = id;
   }
 
+  public boolean getIsPlayable() {
+    return isPlayable;
+  }
+
+  public void setIsPlayable(boolean isPlayable) {
+    this.isPlayable = isPlayable;
+  }
+
+  public TrackLink getLinkedFrom() {
+    return linkedFrom;
+  }
+
+  public void setLinkedFrom(TrackLink linkedFrom) {
+    this.linkedFrom = linkedFrom;
+  }
+
   public String getName() {
     return name;
   }
@@ -106,11 +125,11 @@ public class SimpleTrack {
     this.trackNumber = trackNumber;
   }
 
-  public SpotifyEntityType getType() {
+  public ObjectType getType() {
     return type;
   }
 
-  public void setType(SpotifyEntityType type) {
+  public void setType(ObjectType type) {
     this.type = type;
   }
 

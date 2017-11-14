@@ -1,13 +1,13 @@
 package com.wrapper.spotify.models;
 
 public class NewReleases {
-  private Page<SimpleAlbum> albums;
+  private Paging<AlbumSimplified> albums;
 
-  public Page<SimpleAlbum> getAlbums() {
+  public Paging<AlbumSimplified> getAlbums() {
     return albums;
   }
 
-  public void setAlbums(Page<SimpleAlbum> albums) {
+  public void setAlbums(Paging<AlbumSimplified> albums) {
     this.albums = albums;
   }
 }

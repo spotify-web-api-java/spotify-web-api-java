@@ -3,8 +3,8 @@ package com.wrapper.spotify.methods;
 import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.JsonUtil;
 import com.wrapper.spotify.exceptions.WebApiException;
-import com.wrapper.spotify.models.Page;
-import com.wrapper.spotify.models.SimpleAlbum;
+import com.wrapper.spotify.models.Paging;
+import com.wrapper.spotify.models.AlbumSimplified;
 import net.sf.json.JSONObject;
 
 import java.io.IOException;
@@ -15,8 +15,8 @@ public class AlbumSearchRequest extends AbstractRequest {
     super(builder);
   }
 
-  public SettableFuture<Page<SimpleAlbum>> getAsync() {
-    SettableFuture<Page<SimpleAlbum>> searchResultFuture = SettableFuture.create();
+  public SettableFuture<Paging<AlbumSimplified>> getAsync() {
+    SettableFuture<Paging<AlbumSimplified>> searchResultFuture = SettableFuture.create();
 
     try {
       final JSONObject jsonObject = JSONObject.fromObject(getJson());

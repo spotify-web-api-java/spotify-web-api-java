@@ -10,8 +10,8 @@ import com.wrapper.spotify.Api;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.models.AlbumType;
 import com.wrapper.spotify.models.NewReleases;
-import com.wrapper.spotify.models.Page;
-import com.wrapper.spotify.models.SimpleAlbum;
+import com.wrapper.spotify.models.Paging;
+import com.wrapper.spotify.models.AlbumSimplified;
 import org.junit.Test;
 
 import java.util.concurrent.CountDownLatch;
@@ -43,7 +43,7 @@ public class NewReleasesRequestTest {
       public void onSuccess(NewReleases newReleases) {
         assertNotNull(newReleases.getAlbums());
 
-        Page<SimpleAlbum> albums = newReleases.getAlbums();
+        Paging<AlbumSimplified> albums = newReleases.getAlbums();
 
         assertEquals("https://api.spotify.com/v1/browse/new-releases?country=SE&offset=1&limit=3",
                      albums.getHref());
@@ -56,7 +56,7 @@ public class NewReleasesRequestTest {
                      albums.getPrevious());
         assertEquals(500, albums.getTotal());
 
-        SimpleAlbum firstItem = albums.getItems().get(0);
+        AlbumSimplified firstItem = albums.getItems().get(0);
         assertEquals(AlbumType.SINGLE, firstItem.getAlbumType());
         assertEquals(1, firstItem.getAvailableMarkets().size());
         assertEquals("SE", firstItem.getAvailableMarkets().get(0));
@@ -90,7 +90,7 @@ public class NewReleasesRequestTest {
 
     assertNotNull(newReleases.getAlbums());
 
-    Page<SimpleAlbum> albums = newReleases.getAlbums();
+    Paging<AlbumSimplified> albums = newReleases.getAlbums();
 
     assertEquals("https://api.spotify.com/v1/browse/new-releases?country=SE&offset=1&limit=3",
                  albums.getHref());
@@ -103,7 +103,7 @@ public class NewReleasesRequestTest {
                  albums.getPrevious());
     assertEquals(500, albums.getTotal());
 
-    SimpleAlbum firstItem = albums.getItems().get(0);
+    AlbumSimplified firstItem = albums.getItems().get(0);
     assertEquals(AlbumType.SINGLE, firstItem.getAlbumType());
     assertEquals(1, firstItem.getAvailableMarkets().size());
     assertEquals("SE", firstItem.getAvailableMarkets().get(0));

@@ -1,16 +1,17 @@
 package com.wrapper.spotify.models;
 
-public enum SpotifyEntityType {
+public enum ObjectType {
 
   ALBUM("album"),
-  TRACK("track"),
   ARTIST("artist"),
-  USER("user"),
-  PLAYLIST("playlist");
+  AUDIO_FEATURES("audio_features"),
+  PLAYLIST("playlist"),
+  TRACK("track"),
+  USER("user");
 
   public final String type;
 
-  SpotifyEntityType(String type) {
+  ObjectType(String type) {
    this.type = type;
   }
 

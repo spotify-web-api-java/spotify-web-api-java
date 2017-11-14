@@ -3,7 +3,7 @@ package com.wrapper.spotify.models;
 public class FeaturedPlaylists {
 
     private String message;
-    private Page<SimplePlaylist> playlists;
+    private Paging<PlaylistSimplified> playlists;
 
     public String getMessage() {
         return message;
@@ -13,11 +13,11 @@ public class FeaturedPlaylists {
         this.message = message;
     }
 
-    public Page<SimplePlaylist> getPlaylists() {
+    public Paging<PlaylistSimplified> getPlaylists() {
         return playlists;
     }
 
-    public void setPlaylists(Page<SimplePlaylist> playlists) {
+    public void setPlaylists(Paging<PlaylistSimplified> playlists) {
         this.playlists = playlists;
     }
 }

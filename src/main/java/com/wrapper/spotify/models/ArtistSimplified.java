@@ -1,12 +1,12 @@
 package com.wrapper.spotify.models;
 
-public class SimpleArtist {
+public class ArtistSimplified {
 
   private ExternalUrls externalUrls;
   private String href;
   private String id;
   private String name;
-  private SpotifyEntityType type = SpotifyEntityType.ARTIST;
+  private ObjectType type = ObjectType.ARTIST;
   private String uri;
 
   public ExternalUrls getExternalUrls() {
@@ -41,11 +41,11 @@ public class SimpleArtist {
     this.name = name;
   }
 
-  public SpotifyEntityType getType() {
+  public ObjectType getType() {
     return type;
   }
 
-  public void setType(SpotifyEntityType type) {
+  public void setType(ObjectType type) {
     this.type = type;
   }
 

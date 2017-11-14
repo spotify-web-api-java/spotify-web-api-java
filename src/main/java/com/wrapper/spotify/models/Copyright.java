@@ -3,7 +3,7 @@ package com.wrapper.spotify.models;
 public class Copyright {
 
     private String text;
-    private String type;
+    private CopyrightType type;
 
     public String getText() {
         return text;
@@ -13,11 +13,11 @@ public class Copyright {
         this.text = text;
     }
 
-    public String getType() {
+    public CopyrightType getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(CopyrightType type) {
         this.type = type;
     }
 }

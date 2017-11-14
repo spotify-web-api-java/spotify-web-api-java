@@ -4,9 +4,9 @@ import java.util.List;
 
 public class Track {
 
-  private SimpleAlbum album;
-  private List<SimpleArtist> artists;
   private List<String> availableMarkets;
+  private AlbumSimplified album;
+  private List<ArtistSimplified> artists;
   private int discNumber;
   private int duration;
   private boolean explicit;
@@ -18,22 +18,22 @@ public class Track {
   private int popularity;
   private String previewUrl;
   private int trackNumber;
-  private SpotifyEntityType type = SpotifyEntityType.TRACK;
+  private ObjectType type = ObjectType.TRACK;
   private String uri;
 
-  public SimpleAlbum getAlbum() {
+  public AlbumSimplified getAlbum() {
     return album;
   }
 
-  public void setAlbum(SimpleAlbum album) {
+  public void setAlbum(AlbumSimplified album) {
     this.album = album;
   }
 
-  public List<SimpleArtist> getArtists() {
+  public List<ArtistSimplified> getArtists() {
     return artists;
   }
 
-  public void setArtists(List<SimpleArtist> artists) {
+  public void setArtists(List<ArtistSimplified> artists) {
     this.artists = artists;
   }
 
@@ -133,11 +133,11 @@ public class Track {
     this.trackNumber = trackNumber;
   }
 
-  public SpotifyEntityType getType() {
+  public ObjectType getType() {
     return type;
   }
 
-  public void setType(SpotifyEntityType type) {
+  public void setType(ObjectType type) {
     this.type = type;
   }
 

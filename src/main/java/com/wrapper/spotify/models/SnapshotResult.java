@@ -1,6 +1,3 @@
-/**
- * Copyright (C) 2017 Spotify AB
- */
 package com.wrapper.spotify.models;
 
 public class SnapshotResult {

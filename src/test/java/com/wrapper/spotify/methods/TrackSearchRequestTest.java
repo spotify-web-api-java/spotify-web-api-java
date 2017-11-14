@@ -6,7 +6,7 @@ import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.HttpManager;
 import com.wrapper.spotify.TestUtil;
-import com.wrapper.spotify.models.Page;
+import com.wrapper.spotify.models.Paging;
 import com.wrapper.spotify.models.Track;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -36,11 +36,11 @@ public class TrackSearchRequestTest {
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
-    SettableFuture<Page<Track>> searchResultFuture = request.getAsync();
+    SettableFuture<Paging<Track>> searchResultFuture = request.getAsync();
 
-    Futures.addCallback(searchResultFuture, new FutureCallback<Page<Track>>() {
+    Futures.addCallback(searchResultFuture, new FutureCallback<Paging<Track>>() {
       @Override
-      public void onSuccess(Page<Track> trackSearchResult) {
+      public void onSuccess(Paging<Track> trackSearchResult) {
         assertTrue(trackSearchResult.getTotal() > 0);
         assertEquals(20, trackSearchResult.getLimit());
         assertEquals(0, trackSearchResult.getOffset());
@@ -73,7 +73,7 @@ public class TrackSearchRequestTest {
     final HttpManager mockedHttpManager = TestUtil.MockedHttpManager.returningJson("search-track.json");
     final TrackSearchRequest request = api.searchTracks("Mr. Brightside").httpManager(mockedHttpManager).build();
 
-    final Page<Track> trackSearchResult = request.get();
+    final Paging<Track> trackSearchResult = request.get();
 
     assertTrue(trackSearchResult.getTotal() > 0);
     assertEquals(20, trackSearchResult.getLimit());

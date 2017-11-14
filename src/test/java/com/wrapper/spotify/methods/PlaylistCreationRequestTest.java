@@ -6,7 +6,7 @@ import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.models.Playlist;
-import com.wrapper.spotify.models.SpotifyEntityType;
+import com.wrapper.spotify.models.ObjectType;
 import org.junit.Test;
 
 import java.util.concurrent.CountDownLatch;
@@ -47,7 +47,7 @@ public class PlaylistCreationRequestTest {
         assertNotNull(playlist.getOwner());
         assertTrue(playlist.isPublicAccess());
         assertNull(playlist.getTracks());
-        assertEquals(SpotifyEntityType.PLAYLIST, playlist.getType());
+        assertEquals(ObjectType.PLAYLIST, playlist.getType());
         assertEquals("spotify:user:thelinmichael:playlist:2LfixThJPNO9DAreghF2WK", playlist.getUri());
 
         asyncCompleted.countDown();
@@ -85,7 +85,7 @@ public class PlaylistCreationRequestTest {
     assertNotNull(playlist.getOwner());
     assertTrue(playlist.isPublicAccess());
     assertNull(playlist.getTracks());
-    assertEquals(SpotifyEntityType.PLAYLIST, playlist.getType());
+    assertEquals(ObjectType.PLAYLIST, playlist.getType());
     assertEquals("spotify:user:thelinmichael:playlist:2LfixThJPNO9DAreghF2WK", playlist.getUri());
   }
 

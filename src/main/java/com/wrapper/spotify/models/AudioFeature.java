@@ -1,6 +1,5 @@
 package com.wrapper.spotify.models;
 
-
 public class AudioFeature {
     private double danceability;
     private double energy;
@@ -13,13 +12,13 @@ public class AudioFeature {
     private double liveness;
     private double valence;
     private double tempo;
-    private String type;
     private String id;
     private String uri;
     private String trackHref;
     private String analysisUrl;
     private int durationMs;
     private int timeSignature;
+    private ObjectType type = ObjectType.AUDIO_FEATURES;
 
     public double getDanceability() {
         return danceability;
@@ -109,12 +108,8 @@ public class AudioFeature {
         this.tempo = tempo;
     }
 
-    public String getType() {
-        return type;
     }
 
-    public void setType(String type) {
-        this.type = type;
     }
 
     public String getId() {
@@ -143,10 +138,14 @@ public class AudioFeature {
 
     public String getAnalysisUrl() {
         return analysisUrl;
+    public ObjectType getType() {
+        return type;
     }
 
     public void setAnalysisUrl(String analysisUrl) {
         this.analysisUrl = analysisUrl;
+    public void setType(ObjectType type) {
+        this.type = type;
     }
 
     public int getDurationMs() {

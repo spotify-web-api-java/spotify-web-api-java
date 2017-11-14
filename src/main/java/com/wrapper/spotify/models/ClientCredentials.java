@@ -6,7 +6,6 @@ public class ClientCredentials {
   private String tokenType;
   private int expiresIn;
 
-
   public String getAccessToken() {
     return accessToken;
   }

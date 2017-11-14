@@ -7,7 +7,7 @@ import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.JsonUtil;
 import com.wrapper.spotify.exceptions.WebApiException;
 import com.wrapper.spotify.models.LibraryTrack;
-import com.wrapper.spotify.models.Page;
+import com.wrapper.spotify.models.Paging;
 import net.sf.json.JSONObject;
 
 import java.io.IOException;
@@ -18,8 +18,8 @@ public class GetMySavedTracksRequest extends AbstractRequest {
     super(builder);
   }
 
-  public SettableFuture<Page<LibraryTrack>> getAsync() {
-    SettableFuture<Page<LibraryTrack>> libraryTracksFuture = SettableFuture.create();
+  public SettableFuture<Paging<LibraryTrack>> getAsync() {
+    SettableFuture<Paging<LibraryTrack>> libraryTracksFuture = SettableFuture.create();
 
     try {
       final JSONObject jsonObject = JSONObject.fromObject(getJson());

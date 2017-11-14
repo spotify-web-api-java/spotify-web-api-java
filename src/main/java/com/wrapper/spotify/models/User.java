@@ -12,8 +12,8 @@ public class User {
   private String id;
   private String country;
   private List<Image> images;
-  private Product product;
-  private SpotifyEntityType type = SpotifyEntityType.USER;
+  private ProductType product;
+  private ObjectType type = ObjectType.USER;
   private String uri;
   private String birthdate;
 
@@ -65,19 +65,19 @@ public class User {
     this.images = images;
   }
 
-  public Product getProduct() {
+  public ProductType getProduct() {
     return product;
   }
 
-  public void setProduct(Product product) {
+  public void setProduct(ProductType product) {
     this.product = product;
   }
 
-  public SpotifyEntityType getType() {
+  public ObjectType getType() {
     return type;
   }
 
-  public void setType(SpotifyEntityType type) {
+  public void setType(ObjectType type) {
     this.type = type;
   }
 
