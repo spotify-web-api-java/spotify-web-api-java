@@ -1,21 +1,31 @@
 package com.wrapper.spotify.models;
 
+import com.neovisionaries.i18n.CountryCode;
+
 import java.util.List;
 
 public class User {
 
+  private CountryCode country;
   private String displayName;
   private String email;
   private ExternalUrls externalUrls;
   private Followers followers;
   private String href;
   private String id;
-  private String country;
   private List<Image> images;
   private ProductType product;
   private ObjectType type = ObjectType.USER;
   private String uri;
   private String birthdate;
+
+  public CountryCode getCountry() {
+    return country;
+  }
+
+  public void setCountry(CountryCode country) {
+    this.country = country;
+  }
 
   public String getDisplayName() {
     return displayName;

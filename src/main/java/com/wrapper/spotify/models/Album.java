@@ -1,12 +1,14 @@
 package com.wrapper.spotify.models;
 
+import com.neovisionaries.i18n.CountryCode;
+
 import java.util.List;
 
 public class Album {
 
   private AlbumType albumType;
-  private List<String> availableMarkets;
   private List<ArtistSimplified> artists;
+  private List<CountryCode> availableMarkets;
   private List<Copyright> copyrights;
   private ExternalIds externalIds;
   private ExternalUrls externalUrls;
@@ -38,11 +40,11 @@ public class Album {
     this.artists = artists;
   }
 
-  public List<String> getAvailableMarkets() {
+  public List<CountryCode> getAvailableMarkets() {
     return availableMarkets;
   }
 
-  public void setAvailableMarkets(List<String> availableMarkets) {
+  public void setAvailableMarkets(List<CountryCode> availableMarkets) {
     this.availableMarkets = availableMarkets;
   }
 
