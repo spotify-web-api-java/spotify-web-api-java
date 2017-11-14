@@ -19,7 +19,7 @@ public class Album {
   private String name;
   private int popularity;
   private String releaseDate;
-  private String releaseDatePrecision;
+  private ReleaseDatePrecision releaseDatePrecision;
   private Paging<TrackSimplified> tracks;
   private ObjectType type = ObjectType.ALBUM;
   private String uri;
@@ -124,8 +124,12 @@ public class Album {
 
   }
 
+  public ReleaseDatePrecision getReleaseDatePrecision() {
+    return releaseDatePrecision;
   }
 
+  public void setReleaseDatePrecision(ReleaseDatePrecision releaseDatePrecision) {
+    this.releaseDatePrecision = releaseDatePrecision;
   }
 
   public String getUri() {
@@ -140,14 +144,10 @@ public class Album {
     this.tracks = tracks;
   }
 
-  public String getReleaseDatePrecision() {
-    return releaseDatePrecision;
   public ObjectType getType() {
     return type;
   }
 
-  public void setReleaseDatePrecision(String releaseDatePrecision) {
-    this.releaseDatePrecision = releaseDatePrecision;
   public void setType(ObjectType type) {
     this.type = type;
   }
