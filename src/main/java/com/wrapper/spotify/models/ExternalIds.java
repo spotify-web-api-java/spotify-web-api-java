@@ -11,4 +11,8 @@ public class ExternalIds {
     return externalIds;
   }
 
+  public String get(String key) {
+    return externalIds.get(key);
+  }
+
 }
