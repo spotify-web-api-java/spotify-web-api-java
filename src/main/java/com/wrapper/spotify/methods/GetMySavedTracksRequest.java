@@ -32,7 +32,7 @@ public class GetMySavedTracksRequest extends AbstractRequest {
     return libraryTracksFuture;
   }
 
-  public Page<LibraryTrack> get() throws IOException, WebApiException {
+  public Paging<LibraryTrack> get() throws IOException, WebApiException {
     final JSONObject jsonObject = JSONObject.fromObject(getJson());
 
     return JsonUtil.createLibraryTracksPage(jsonObject);

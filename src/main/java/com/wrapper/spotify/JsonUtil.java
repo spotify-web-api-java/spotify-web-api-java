@@ -1,5 +1,6 @@
 package com.wrapper.spotify;
 
+import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.models.*;
 import com.wrapper.spotify.models.AuthorizationCodeCredentials;
 import com.wrapper.spotify.models.ClientCredentials;
@@ -39,7 +40,7 @@ public class JsonUtil {
     album.setName(albumJson.getString("name"));
     album.setPopularity(albumJson.getInt("popularity"));
     album.setReleaseDate(albumJson.getString("release_date"));
-    album.setReleaseDatePrecision(albumJson.getString("release_date_precision"));
+    album.setReleaseDatePrecision(ReleaseDatePrecision.valueOf(albumJson.getString("release_date_precision")));
     album.setTracks(createSimpleTrackPage(albumJson.getJSONObject("tracks")));
     album.setType(createObjectType(albumJson.getString("type")));
     album.setUri(albumJson.getString("uri"));
@@ -105,13 +106,13 @@ public class JsonUtil {
     return simpleAlbum;
   }
 
-  public static List<Album> createAlbums(String json) {
+  public static List<AlbumSimplified> createAlbumsSimplified(String json) {
     JSONArray albumsJsonArray = JSONObject.fromObject(json).getJSONArray("albums");
-    return createAlbums(albumsJsonArray);
+    return createAlbumsSimplified(albumsJsonArray);
   }
 
-  public static List<Album> createAlbums(JSONArray jsonArray) {
-    List<Album> returnedAlbums = new ArrayList<Album>();
+  public static List<AlbumSimplified> createAlbumsSimplified(JSONArray jsonArray) {
+    List<AlbumSimplified> returnedAlbums = new ArrayList<>();
     for (int i = 0; i < jsonArray.size(); i++) {
       returnedAlbums.add(createSimpleAlbum(jsonArray.getJSONObject(i)));
     }
@@ -139,7 +140,7 @@ public class JsonUtil {
 
   public static Paging<AlbumSimplified> createSimpleAlbumPage(JSONObject simpleAlbumPageJson) {
     Paging<AlbumSimplified> page = createItemlessSimpleAlbumPage(simpleAlbumPageJson);
-    page.setItems(createSimpleAlbums(simpleAlbumPageJson.getJSONArray("items")));
+    page.setItems(createAlbumsSimplified(simpleAlbumPageJson.getJSONArray("items")));
     return page;
   }
 
@@ -283,7 +284,7 @@ public class JsonUtil {
         copyright.setText(copyrightJson.getString("text"));
       }
       if (existsAndNotNull("type", copyrightJson)) {
-        copyright.setType(copyrightJson.getString("type"));
+        copyright.setType(CopyrightType.valueOf(copyrightJson.getString("type")));
       }
       copyrights.add(copyright);
     }
@@ -560,7 +561,7 @@ public class JsonUtil {
     track.setArtists(createSimpleArtists(trackJson.getJSONArray("artists")));
     track.setAvailableMarkets(createAvailableMarkets(trackJson.getJSONArray("available_markets")));
     track.setDiscNumber(trackJson.getInt("disc_number"));
-    track.setDuration(trackJson.getInt("duration_ms"));
+    track.setDurationMs(trackJson.getInt("duration_ms"));
     track.setExplicit(trackJson.getBoolean("explicit"));
     track.setExternalIds(createExternalIds(trackJson.getJSONObject("external_ids")));
     track.setExternalUrls(createExternalUrls(trackJson.getJSONObject("external_urls")));
@@ -625,7 +626,7 @@ public class JsonUtil {
     track.setArtists(createSimpleArtists(simpleTrackJson.getJSONArray("artists")));
     track.setAvailableMarkets(createAvailableMarkets(simpleTrackJson.getJSONArray("available_markets")));
     track.setDiscNumber(simpleTrackJson.getInt("disc_number"));
-    track.setDuration(simpleTrackJson.getInt("duration_ms"));
+    track.setDurationMs(simpleTrackJson.getInt("duration_ms"));
     track.setExplicit(simpleTrackJson.getBoolean("explicit"));
     track.setExternalUrls(createExternalUrls(simpleTrackJson.getJSONObject("externalUrls")));
     track.setHref(simpleTrackJson.getString("href"));
@@ -697,7 +698,7 @@ public class JsonUtil {
       user.setProduct(createProductType(userJson.getString("product")));
     }
     if (existsAndNotNull("country", userJson)) {
-      user.setCountry(userJson.getString("country"));
+      user.setCountry(CountryCode.getByCode(userJson.getString("country")));
     }
     if (existsAndNotNull("birthdate", userJson)) {
       user.setBirthdate(userJson.getString("birthdate"));
@@ -709,14 +710,14 @@ public class JsonUtil {
 
 
   public static List<String> createGenres(JSONArray genres) {
-    List<String> returnedGenres = new ArrayList<String>();
+    List<String> returnedGenres = new ArrayList<>();
     for (int i = 0; i < genres.size(); i++) {
       returnedGenres.add(genres.getString(i));
     }
     return returnedGenres;
   }
   public static List<Boolean> createBooleans(String response) {
-    List<Boolean> returnedArray = new ArrayList<Boolean>();
+    List<Boolean> returnedArray = new ArrayList<>();
     JSONArray tracksContainedArray = JSONArray.fromObject(response);
     for (Object tracksContainedString : tracksContainedArray) {
       if (String.valueOf(tracksContainedString).equals("false")) {
@@ -727,10 +728,10 @@ public class JsonUtil {
     }
     return returnedArray;
   }
-  public static List<String> createAvailableMarkets(JSONArray availableMarketsJson) {
-    List<String> availableMarkets = new ArrayList<String>();
+  public static List<CountryCode> createAvailableMarkets(JSONArray availableMarketsJson) {
+    List<CountryCode> availableMarkets = new ArrayList<>();
     for (int i = 0; i < availableMarketsJson.size(); i++) {
-      availableMarkets.add(availableMarketsJson.getString(i));
+      availableMarkets.add(CountryCode.getByCode(availableMarketsJson.getString(i)));
     }
     return availableMarkets;
   }

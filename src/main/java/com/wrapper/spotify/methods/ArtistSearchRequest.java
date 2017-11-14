@@ -29,7 +29,7 @@ public class ArtistSearchRequest extends AbstractRequest {
     return searchResultFuture;
   }
 
-  public Page<Artist> get() throws IOException, WebApiException {
+  public Paging<Artist> get() throws IOException, WebApiException {
     final JSONObject jsonObject = JSONObject.fromObject(getJson());
     return JsonUtil.createArtistPage(jsonObject.getJSONObject("artists"));
   }

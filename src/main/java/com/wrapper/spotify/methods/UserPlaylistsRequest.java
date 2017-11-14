@@ -28,7 +28,7 @@ public class UserPlaylistsRequest extends AbstractRequest {
     return simplePlaylistsPageFuture;
   }
 
-  public Page<SimplePlaylist> get() throws IOException, WebApiException {
+  public Paging<PlaylistSimplified> get() throws IOException, WebApiException {
     final JSONObject jsonObject = JSONObject.fromObject(getJson());
     return JsonUtil.createSimplePlaylistsPage(jsonObject);
   }

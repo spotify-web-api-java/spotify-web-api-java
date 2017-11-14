@@ -32,7 +32,7 @@ public class PlaylistTracksRequest extends AbstractRequest {
     return playlistFuture;
   }
 
-  public Page<PlaylistTrack> get() throws IOException, WebApiException {
+  public Paging<PlaylistTrack> get() throws IOException, WebApiException {
     final JSONObject jsonObject = JSONObject.fromObject(getJson());
 
     return JsonUtil.createPlaylistTrackPage(jsonObject);

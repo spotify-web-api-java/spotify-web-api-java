@@ -28,7 +28,7 @@ public class TrackSearchRequest extends AbstractRequest {
     return searchResultFuture;
   }
 
-  public Page<Track> get() throws IOException, WebApiException {
+  public Paging<Track> get() throws IOException, WebApiException {
     final JSONObject jsonObject = JSONObject.fromObject(getJson());
     return JsonUtil.createTrackPage(jsonObject);
   }

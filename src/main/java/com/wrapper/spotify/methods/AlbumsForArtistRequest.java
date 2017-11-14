@@ -30,7 +30,7 @@ public class AlbumsForArtistRequest extends AbstractRequest {
     return searchResultFuture;
   }
 
-  public Page<SimpleAlbum> get() throws IOException, WebApiException {
+  public Paging<AlbumSimplified> get() throws IOException, WebApiException {
     final JSONObject jsonObject = JSONObject.fromObject(getJson());
     return JsonUtil.createSimpleAlbumPage(jsonObject);
   }

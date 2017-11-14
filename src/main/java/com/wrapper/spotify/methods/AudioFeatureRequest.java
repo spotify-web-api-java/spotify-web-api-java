@@ -3,6 +3,8 @@ package com.wrapper.spotify.methods;
 import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.exceptions.WebApiException;
 import com.wrapper.spotify.models.AudioFeature;
+import com.wrapper.spotify.models.Modality;
+import com.wrapper.spotify.models.ObjectType;
 import net.sf.json.JSONObject;
 
 import java.io.IOException;
@@ -65,14 +67,14 @@ public class AudioFeatureRequest extends AbstractRequest {
         audioFeature.setEnergy(audioFeatureJson.getDouble("energy"));
         audioFeature.setKey(audioFeatureJson.getInt("key"));
         audioFeature.setLoudness(audioFeatureJson.getDouble("loudness"));
-        audioFeature.setMode(audioFeatureJson.getInt("mode"));
+        audioFeature.setMode(Modality.valueOf(audioFeatureJson.getString("mode")));
         audioFeature.setSpeechiness(audioFeatureJson.getDouble("speechiness"));
         audioFeature.setAcousticness(audioFeatureJson.getDouble("acousticness"));
         audioFeature.setInstrumentalness(audioFeatureJson.getDouble("instrumentalness"));
         audioFeature.setLiveness(audioFeatureJson.getDouble("liveness"));
         audioFeature.setValence(audioFeatureJson.getDouble("valence"));
         audioFeature.setTempo(audioFeatureJson.getDouble("tempo"));
-        audioFeature.setType(audioFeatureJson.getString("type"));
+        audioFeature.setType(ObjectType.valueOf(audioFeatureJson.getString("type")));
         audioFeature.setId(audioFeatureJson.getString("id"));
         audioFeature.setUri(audioFeatureJson.getString("uri"));
         audioFeature.setTrackHref(audioFeatureJson.getString("track_href"));

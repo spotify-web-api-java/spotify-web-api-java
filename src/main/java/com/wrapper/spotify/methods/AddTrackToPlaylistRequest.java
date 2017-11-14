@@ -21,7 +21,7 @@ public class AddTrackToPlaylistRequest extends AbstractRequest {
     final SettableFuture<SnapshotResult> addTrackFuture = SettableFuture.create();
 
     try {
-      addTrackFuture.set(JsonUtil.createSnapshotResponse(postJson()));
+      addTrackFuture.set(JsonUtil.createSnapshotResult(postJson()));
     } catch (Exception e) {
       addTrackFuture.setException(e);
     }
@@ -30,7 +30,7 @@ public class AddTrackToPlaylistRequest extends AbstractRequest {
   }
 
   public SnapshotResult get() throws IOException, WebApiException {
-    return JsonUtil.createSnapshotResponse(postJson());
+    return JsonUtil.createSnapshotResult(postJson());
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
