@@ -6,6 +6,7 @@ public class PlaylistTrack {
 
   private Date addedAt;
   private User addedBy;
+  private boolean isLocal;
   private Track track;
 
   public Date getAddedAt() {
@@ -22,6 +23,14 @@ public class PlaylistTrack {
 
   public void setAddedBy(User addedBy) {
     this.addedBy = addedBy;
+  }
+
+  public boolean getIsLocal() {
+    return isLocal;
+  }
+
+  public void setIsLocal(boolean isLocal) {
+    this.isLocal = isLocal;
   }
 
   public Track getTrack() {

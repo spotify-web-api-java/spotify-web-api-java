@@ -6,6 +6,7 @@ import java.util.List;
 
 public class User {
 
+  private String birthdate;
   private CountryCode country;
   private String displayName;
   private String email;
@@ -17,7 +18,14 @@ public class User {
   private ProductType product;
   private ObjectType type = ObjectType.USER;
   private String uri;
-  private String birthdate;
+
+  public String getBirthdate() {
+    return birthdate;
+  }
+
+  public void setBirthdate(String birthdate) {
+    this.birthdate = birthdate;
+  }
 
   public CountryCode getCountry() {
     return country;
@@ -49,6 +57,14 @@ public class User {
 
   public void setExternalUrls(ExternalUrls externalUrls) {
     this.externalUrls = externalUrls;
+  }
+
+  public Followers getFollowers() {
+    return followers;
+  }
+
+  public void setFollowers(Followers followers) {
+    this.followers = followers;
   }
 
   public String getHref() {
@@ -97,29 +113,5 @@ public class User {
 
   public void setUri(String uri) {
     this.uri = uri;
-  }
-
-  public String getCountry() {
-    return country;
-  }
-
-  public void setCountry(String country) {
-    this.country = country;
-  }
-
-  public Followers getFollowers() {
-    return followers;
-  }
-
-  public void setFollowers(Followers followers) {
-    this.followers = followers;
-  }
-
-  public String getBirthdate() {
-    return birthdate;
-  }
-
-  public void setBirthdate(String birthdate) {
-    this.birthdate = birthdate;
   }
 }

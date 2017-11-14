@@ -16,6 +16,9 @@ public class Track {
   private ExternalUrls externalUrls;
   private String href;
   private String id;
+  private boolean isPlayable;
+  private TrackLink linkedFrom;
+  private Restrictions restrictions;
   private String name;
   private int popularity;
   private String previewUrl;
@@ -101,6 +104,30 @@ public class Track {
 
   public void setId(String id) {
     this.id = id;
+  }
+
+  public boolean getIsPlayable() {
+    return isPlayable;
+  }
+
+  public void setIsPlayable(boolean isPlayable) {
+    this.isPlayable = isPlayable;
+  }
+
+  public TrackLink getLinkedFrom() {
+    return linkedFrom;
+  }
+
+  public void setLinkedFrom(TrackLink linkedFrom) {
+    this.linkedFrom = linkedFrom;
+  }
+
+  public Restrictions getRestrictions() {
+    return restrictions;
+  }
+
+  public void setRestrictions(Restrictions restrictions) {
+    this.restrictions = restrictions;
   }
 
   public String getName() {

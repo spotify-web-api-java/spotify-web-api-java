@@ -1,24 +1,40 @@
 package com.wrapper.spotify.models;
 
 public class AudioFeature {
-    private double danceability;
-    private double energy;
-    private int key;
-    private double loudness;
-    private int mode;
-    private double speechiness;
     private double acousticness;
-    private double instrumentalness;
-    private double liveness;
-    private double valence;
-    private double tempo;
-    private String id;
-    private String uri;
-    private String trackHref;
     private String analysisUrl;
+    private double danceability;
     private int durationMs;
+    private double energy;
+    private String id;
+    private double instrumentalness;
+    private int key;
+    private double liveness;
+    private double loudness;
+    private Modality mode;
+    private double speechiness;
+    private double tempo;
     private int timeSignature;
+    private String trackHref;
     private ObjectType type = ObjectType.AUDIO_FEATURES;
+    private String uri;
+    private double valence;
+
+    public double getAcousticness() {
+        return acousticness;
+    }
+
+    public void setAcousticness(double acousticness) {
+        this.acousticness = acousticness;
+    }
+
+    public String getAnalysisUrl() {
+        return analysisUrl;
+    }
+
+    public void setAnalysisUrl(String analysisUrl) {
+        this.analysisUrl = analysisUrl;
+    }
 
     public double getDanceability() {
         return danceability;
@@ -26,6 +42,14 @@ public class AudioFeature {
 
     public void setDanceability(double danceability) {
         this.danceability = danceability;
+    }
+
+    public int getDurationMs() {
+        return durationMs;
+    }
+
+    public void setDurationMs(int durationMs) {
+        this.durationMs = durationMs;
     }
 
     public double getEnergy() {
@@ -36,12 +60,36 @@ public class AudioFeature {
         this.energy = energy;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public double getInstrumentalness() {
+        return instrumentalness;
+    }
+
+    public void setInstrumentalness(double instrumentalness) {
+        this.instrumentalness = instrumentalness;
+    }
+
     public int getKey() {
         return key;
     }
 
     public void setKey(int key) {
         this.key = key;
+    }
+
+    public double getLiveness() {
+        return liveness;
+    }
+
+    public void setLiveness(double liveness) {
+        this.liveness = liveness;
     }
 
     public double getLoudness() {
@@ -52,11 +100,11 @@ public class AudioFeature {
         this.loudness = loudness;
     }
 
-    public int getMode() {
+    public Modality getMode() {
         return mode;
     }
 
-    public void setMode(int mode) {
+    public void setMode(Modality mode) {
         this.mode = mode;
     }
 
@@ -68,38 +116,6 @@ public class AudioFeature {
         this.speechiness = speechiness;
     }
 
-    public double getAcousticness() {
-        return acousticness;
-    }
-
-    public void setAcousticness(double acousticness) {
-        this.acousticness = acousticness;
-    }
-
-    public double getInstrumentalness() {
-        return instrumentalness;
-    }
-
-    public void setInstrumentalness(double instrumentalness) {
-        this.instrumentalness = instrumentalness;
-    }
-
-    public double getLiveness() {
-        return liveness;
-    }
-
-    public void setLiveness(double liveness) {
-        this.liveness = liveness;
-    }
-
-    public double getValence() {
-        return valence;
-    }
-
-    public void setValence(double valence) {
-        this.valence = valence;
-    }
-
     public double getTempo() {
         return tempo;
     }
@@ -108,24 +124,12 @@ public class AudioFeature {
         this.tempo = tempo;
     }
 
+    public int getTimeSignature() {
+        return timeSignature;
     }
 
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getUri() {
-        return uri;
-    }
-
-    public void setUri(String uri) {
-        this.uri = uri;
+    public void setTimeSignature(int timeSignature) {
+        this.timeSignature = timeSignature;
     }
 
     public String getTrackHref() {
@@ -136,31 +140,27 @@ public class AudioFeature {
         this.trackHref = trackHref;
     }
 
-    public String getAnalysisUrl() {
-        return analysisUrl;
     public ObjectType getType() {
         return type;
     }
 
-    public void setAnalysisUrl(String analysisUrl) {
-        this.analysisUrl = analysisUrl;
     public void setType(ObjectType type) {
         this.type = type;
     }
 
-    public int getDurationMs() {
-        return durationMs;
+    public String getUri() {
+        return uri;
     }
 
-    public void setDurationMs(int durationMs) {
-        this.durationMs = durationMs;
+    public void setUri(String uri) {
+        this.uri = uri;
     }
 
-    public int getTimeSignature() {
-        return timeSignature;
+    public double getValence() {
+        return valence;
     }
 
-    public void setTimeSignature(int timeSignature) {
-        this.timeSignature = timeSignature;
+    public void setValence(double valence) {
+        this.valence = valence;
     }
 }

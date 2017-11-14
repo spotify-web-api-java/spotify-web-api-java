@@ -14,6 +14,7 @@ public class Playlist {
   private String name;
   private User owner;
   private boolean publicAccess;
+  private String snapshotId;
   private Paging<PlaylistTrack> tracks;
   private ObjectType type = ObjectType.PLAYLIST;
   private String uri;
@@ -74,14 +75,6 @@ public class Playlist {
     this.images = images;
   }
 
-  public User getOwner() {
-    return owner;
-  }
-
-  public void setOwner(User owner) {
-    this.owner = owner;
-  }
-
   public String getName() {
     return name;
   }
@@ -90,35 +83,51 @@ public class Playlist {
     this.name = name;
   }
 
+  public User getOwner() {
+    return owner;
   }
 
+  public void setOwner(User owner) {
+    this.owner = owner;
   }
 
-  public String getUri() {
-    return uri;
-  public Paging<PlaylistTrack> getTracks() {
-    return tracks;
-  }
-
-  public void setUri(String uri) {
-    this.uri = uri;
-  public void setTracks(Paging<PlaylistTrack> tracks) {
-    this.tracks = tracks;
-  }
-
-  public boolean isPublicAccess() {
+  public boolean getIsPublicAccess() {
     return publicAccess;
-  public ObjectType getType() {
-    return type;
   }
 
   public void setPublicAccess(boolean publicAccess) {
     this.publicAccess = publicAccess;
+  }
+
+  public String getSnapshotId() {
+    return snapshotId;
+  }
+
+  public void setSnapshotId(String snapshotId) {
+    this.snapshotId = snapshotId;
+  }
+
+  public Paging<PlaylistTrack> getTracks() {
+    return tracks;
+  }
+
+  public void setTracks(Paging<PlaylistTrack> tracks) {
+    this.tracks = tracks;
+  }
+
+  public ObjectType getType() {
+    return type;
+  }
+
   public void setType(ObjectType type) {
     this.type = type;
   }
 
+  public String getUri() {
+    return uri;
   }
 
+  public void setUri(String uri) {
+    this.uri = uri;
   }
 }

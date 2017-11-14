@@ -2,16 +2,16 @@ package com.wrapper.spotify.models;
 
 public class Image {
 
-  private Integer height;
+  private int height;
   private String url;
-  private Integer width;
+  private int width;
 
-  public Integer getWidth() {
-    return width;
+  public int getHeight() {
+    return height;
   }
 
-  public void setWidth(Integer width) {
-    this.width = width;
+  public void setHeight(int height) {
+    this.height = height;
   }
 
   public String getUrl() {
@@ -22,11 +22,11 @@ public class Image {
     this.url = url;
   }
 
-  public Integer getHeight() {
-    return height;
+  public int getWidth() {
+    return width;
   }
 
-  public void setHeight(Integer height) {
-    this.height = height;
+  public void setWidth(int width) {
+    this.width = width;
   }
 }

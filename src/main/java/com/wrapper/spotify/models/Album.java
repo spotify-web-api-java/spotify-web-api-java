@@ -16,6 +16,7 @@ public class Album {
   private String href;
   private String id;
   private List<Image> images;
+  private String label;
   private String name;
   private int popularity;
   private String releaseDate;
@@ -104,6 +105,14 @@ public class Album {
     this.images = images;
   }
 
+  public String getLabel() {
+    return label;
+  }
+
+  public void setLabel(String label) {
+    this.label = label;
+  }
+
   public String getName() {
     return name;
   }
@@ -120,8 +129,12 @@ public class Album {
     this.popularity = popularity;
   }
 
+  public String getReleaseDate() {
+    return releaseDate;
   }
 
+  public void setReleaseDate(String releaseDate) {
+    this.releaseDate = releaseDate;
   }
 
   public ReleaseDatePrecision getReleaseDatePrecision() {
@@ -132,14 +145,10 @@ public class Album {
     this.releaseDatePrecision = releaseDatePrecision;
   }
 
-  public String getUri() {
-    return uri;
   public Paging<TrackSimplified> getTracks() {
     return tracks;
   }
 
-  public void setUri(String uri) {
-    this.uri = uri;
   public void setTracks(Paging<TrackSimplified> tracks) {
     this.tracks = tracks;
   }
@@ -152,11 +161,11 @@ public class Album {
     this.type = type;
   }
 
-  public String getReleaseDate() {
-    return releaseDate;
+  public String getUri() {
+    return uri;
   }
 
-  public void setReleaseDate(String releaseDate) {
-    this.releaseDate = releaseDate;
+  public void setUri(String uri) {
+    this.uri = uri;
   }
 }

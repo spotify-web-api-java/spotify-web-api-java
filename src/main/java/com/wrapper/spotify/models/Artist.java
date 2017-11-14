@@ -5,6 +5,7 @@ import java.util.List;
 public class Artist {
 
   private ExternalUrls externalUrls;
+  private Followers followers;
   private List<String> genres;
   private String href;
   private String id;
@@ -14,22 +15,20 @@ public class Artist {
   private ObjectType type = ObjectType.ARTIST;
   private String uri;
 
-  public Followers getFollowers() {
-    return followers;
-  }
-
-  public void setFollowers(Followers followers) {
-    this.followers = followers;
-  }
-
-  private Followers followers;
-
   public ExternalUrls getExternalUrls() {
     return externalUrls;
   }
 
   public void setExternalUrls(ExternalUrls externalUrls) {
     this.externalUrls = externalUrls;
+  }
+
+  public Followers getFollowers() {
+    return followers;
+  }
+
+  public void setFollowers(Followers followers) {
+    this.followers = followers;
   }
 
   public List<String> getGenres() {

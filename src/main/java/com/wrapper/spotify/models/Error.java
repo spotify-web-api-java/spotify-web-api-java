@@ -2,22 +2,22 @@ package com.wrapper.spotify.models;
 
 public class Error {
 
-  private String description;
-  private String type;
+  private int status;
+  private String message;
 
-  public String getDescription() {
-    return description;
+  public int getStatus() {
+    return status;
   }
 
-  public void setDescription(String description) {
-    this.description = description;
+  public void setStatus(int status) {
+    this.status = status;
   }
 
-  public String getType() {
-    return type;
+  public String getMessage() {
+    return message;
   }
 
-  public void setType(String type) {
-    this.type = type;
+  public void setMessage(String message) {
+    this.message = message;
   }
 }
