@@ -59,8 +59,8 @@ public class UserPlaylistsRequestTest {
         assertEquals("spotify:user:wizzler:playlist:" + playlistId, simplePlaylist.getUri());
         assertEquals(1, simplePlaylist.getImages().size());
         assertEquals("https://i.scdn.co/image/418ce596327dc3a0f4d377db80421bffb3b94a9a", simplePlaylist.getImages().get(0).getUrl());
-        assertNull(simplePlaylist.getImages().get(0).getWidth());
-        assertNull(simplePlaylist.getImages().get(0).getHeight());
+        assertEquals(0, simplePlaylist.getImages().get(0).getWidth());
+        assertEquals(0, simplePlaylist.getImages().get(0).getHeight());
 
         asyncCompleted.countDown();
       }
@@ -110,8 +110,8 @@ public class UserPlaylistsRequestTest {
     assertEquals("spotify:user:wizzler:playlist:" + playlistId, simplePlaylist.getUri());
     assertEquals(1, simplePlaylist.getImages().size());
     assertEquals("https://i.scdn.co/image/418ce596327dc3a0f4d377db80421bffb3b94a9a", simplePlaylist.getImages().get(0).getUrl());
-    assertNull(simplePlaylist.getImages().get(0).getWidth());
-    assertNull(simplePlaylist.getImages().get(0).getHeight());
+    assertEquals(0, simplePlaylist.getImages().get(0).getWidth());
+    assertEquals(0, simplePlaylist.getImages().get(0).getHeight());
   }
 
 }

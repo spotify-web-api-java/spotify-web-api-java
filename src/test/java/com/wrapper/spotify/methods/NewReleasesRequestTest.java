@@ -6,6 +6,7 @@ package com.wrapper.spotify.methods;
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.SettableFuture;
+import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.models.AlbumType;
@@ -59,7 +60,7 @@ public class NewReleasesRequestTest {
         AlbumSimplified firstItem = albums.getItems().get(0);
         assertEquals(AlbumType.SINGLE, firstItem.getAlbumType());
         assertEquals(1, firstItem.getAvailableMarkets().size());
-        assertEquals("SE", firstItem.getAvailableMarkets().get(0));
+        assertEquals(CountryCode.SE, firstItem.getAvailableMarkets().get(0));
         assertNotNull(firstItem.getExternalUrls());
         assertEquals("spotify:album:5McUiSC2VSw2ToVHR8tnzZ", firstItem.getUri());
 
@@ -106,7 +107,7 @@ public class NewReleasesRequestTest {
     AlbumSimplified firstItem = albums.getItems().get(0);
     assertEquals(AlbumType.SINGLE, firstItem.getAlbumType());
     assertEquals(1, firstItem.getAvailableMarkets().size());
-    assertEquals("SE", firstItem.getAvailableMarkets().get(0));
+    assertEquals(CountryCode.SE, firstItem.getAvailableMarkets().get(0));
     assertNotNull(firstItem.getExternalUrls());
     assertEquals("spotify:album:5McUiSC2VSw2ToVHR8tnzZ", firstItem.getUri());
 

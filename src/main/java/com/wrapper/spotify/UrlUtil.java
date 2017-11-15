@@ -21,10 +21,14 @@ public abstract class UrlUtil {
   public static String assemble(UtilProtos.Url url)  {
     try {
       if (!url.getPath().contains("users")) {
-        final URIBuilder uriBuilder = new URIBuilder();
+        final URI uri = new URIBuilder()
+                .setScheme(SCHEME_NAMES.get(url.getScheme()))
+                .setPath(url.getPath())
+                .setHost(url.getHost())
+                .setPort(url.getPort())
+                .build();
 
-        URI uri = uriBuilder.build();
-        // final URI uri = new URI(SCHEME_NAMES.get(url.getScheme()), null, url.getHost(), url.getPort(), url.getPath());
+//        final URI uri = new URI(SCHEME_NAMES.get(url.getScheme()), null, url.getHost(), url.getPort(), url.getPath());
         return uri.toString();
       } else {
         final URI uri = new URI(SCHEME_NAMES.get(url.getScheme()), null, url.getHost(), url.getPort(), null, null, null);

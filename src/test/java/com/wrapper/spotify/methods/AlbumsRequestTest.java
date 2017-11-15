@@ -42,7 +42,7 @@ public class AlbumsRequestTest {
         assertEquals("2hYe61Nd2oOoM6RYCwIma1", firstAlbum.getId());
         assertEquals(AlbumType.ALBUM, firstAlbum.getAlbumType());
         assertEquals("2013-11-08", firstAlbum.getReleaseDate());
-        assertEquals("day", firstAlbum.getReleaseDatePrecision());
+        assertEquals(ReleaseDatePrecision.day, firstAlbum.getReleaseDatePrecision());
         assertEquals(2, firstAlbum.getCopyrights().size());
 
         List<ArtistSimplified> artists = firstAlbum.getArtists();
@@ -85,7 +85,7 @@ public class AlbumsRequestTest {
     assertEquals("2hYe61Nd2oOoM6RYCwIma1", firstAlbum.getId());
     assertEquals(AlbumType.ALBUM, firstAlbum.getAlbumType());
     assertEquals("2013-11-08", firstAlbum.getReleaseDate());
-    assertEquals("day", firstAlbum.getReleaseDatePrecision());
+    assertEquals(ReleaseDatePrecision.day, firstAlbum.getReleaseDatePrecision());
 
     List<ArtistSimplified> artists = firstAlbum.getArtists();
     ArtistSimplified firstArtist = artists.get(0);
