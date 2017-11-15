@@ -5,3 +5,7 @@ jdk:
   - oraclejdk9
   - openjdk7
   - openjdk8
+notifications:
+  email:
+    on_success: never
+    on_failure: always
