@@ -27,8 +27,6 @@ public abstract class UrlUtil {
                 .setHost(url.getHost())
                 .setPort(url.getPort())
                 .build();
-
-//        final URI uri = new URI(SCHEME_NAMES.get(url.getScheme()), null, url.getHost(), url.getPort(), url.getPath());
         return uri.toString();
       } else {
         final URI uri = new URI(SCHEME_NAMES.get(url.getScheme()), null, url.getHost(), url.getPort(), null, null, null);
@@ -77,17 +75,19 @@ public abstract class UrlUtil {
   }
 
   private static String getParametersListAsString(UtilProtos.Url url) {
-    String out = "";
     final List<UtilProtos.Url.Parameter> parameters = url.getParametersList();
+    StringBuilder stringBuilder = new StringBuilder();
     boolean first = true;
     for (UtilProtos.Url.Parameter parameter : parameters) {
       if (!first) {
-        out += "&";
+        stringBuilder.append("&");
       } else {
         first = false;
       }
-      out += parameter.getName() + "=" + parameter.getValue();
+      stringBuilder.append(parameter.getName());
+      stringBuilder.append("=");
+      stringBuilder.append(parameter.getValue());
     }
-    return out;
+    return stringBuilder.toString();
   }
 }

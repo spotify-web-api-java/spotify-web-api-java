@@ -327,7 +327,7 @@ public class JsonUtil {
 
   // Image
   private static Image createImage(JSONObject image) {
-    if (JSONNull.getInstance().equals(image)) {
+    if (image.isNullObject()) {
       return null;
     }
 
