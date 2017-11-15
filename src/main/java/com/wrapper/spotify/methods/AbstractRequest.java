@@ -86,10 +86,10 @@ public abstract class AbstractRequest implements Request {
     protected String path = null;
     protected HttpManager httpManager;
     protected JSON jsonBody;
-    protected List<Url.Parameter> parameters = new ArrayList<Url.Parameter>();
-    protected List<Url.Parameter> headerParameters = new ArrayList<Url.Parameter>();
-    protected List<Url.Part> parts = new ArrayList<Url.Part>();
-    protected List<Url.Parameter> bodyParameters = new ArrayList<Url.Parameter>();
+    protected List<Url.Parameter> parameters = new ArrayList<>();
+    protected List<Url.Parameter> headerParameters = new ArrayList<>();
+    protected List<Url.Part> parts = new ArrayList<>();
+    protected List<Url.Parameter> bodyParameters = new ArrayList<>();
 
     public BuilderType httpManager(HttpManager httpManager) {
       this.httpManager = httpManager;

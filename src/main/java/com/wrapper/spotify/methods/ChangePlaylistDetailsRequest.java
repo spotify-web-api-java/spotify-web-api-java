@@ -24,9 +24,7 @@ public class ChangePlaylistDetailsRequest extends AbstractRequest {
     try {
       response = putJson();
       changeDetailsFuture.set(response);
-    } catch (IOException e) {
-      changeDetailsFuture.setException(e);
-    } catch (WebApiException e) {
+    } catch (IOException|WebApiException e) {
       changeDetailsFuture.setException(e);
     }
 

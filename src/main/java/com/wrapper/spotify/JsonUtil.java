@@ -54,7 +54,7 @@ public class JsonUtil {
   }
 
   public static List<Album> createAlbums(JSONArray jsonArray) {
-    List<Album> returnedAlbums = new ArrayList<Album>();
+    List<Album> returnedAlbums = new ArrayList<>();
     for (int i = 0; i < jsonArray.size(); i++) {
       returnedAlbums.add(createAlbum(jsonArray.getJSONObject(i)));
     }
@@ -181,7 +181,7 @@ public class JsonUtil {
   }
 
   public static List<Artist> createArtists(JSONObject jsonObject) {
-    List<Artist> returnedArtists = new ArrayList<Artist>();
+    List<Artist> returnedArtists = new ArrayList<>();
     JSONArray artistsObject = jsonObject.getJSONArray("artists");
     for (int i = 0; i < artistsObject.size(); i++) {
       returnedArtists.add(createArtist(artistsObject.getJSONObject(i)));
@@ -190,7 +190,7 @@ public class JsonUtil {
   }
 
   private static List<Artist> createArtists(JSONArray artistsJsonArray) {
-    List<Artist> returnedArtists = new ArrayList<Artist>();
+    List<Artist> returnedArtists = new ArrayList<>();
     for (int i = 0; i < artistsJsonArray.size(); i++) {
       returnedArtists.add(createArtist(artistsJsonArray.getJSONObject(i)));
     }
@@ -237,7 +237,7 @@ public class JsonUtil {
   }
 
   private static List<ArtistSimplified> createSimpleArtists(JSONArray artists) {
-    List<ArtistSimplified> returnedArtists = new ArrayList<ArtistSimplified>();
+    List<ArtistSimplified> returnedArtists = new ArrayList<>();
     for (int i = 0; i < artists.size(); i++) {
       returnedArtists.add(createSimpleArtist(artists.getJSONObject(i)));
     }
@@ -274,7 +274,7 @@ public class JsonUtil {
    * @return A list of Copyright objects.
    */
   public static List<Copyright> createCopyrights(JSONArray copyrightsJson) {
-    List<Copyright> copyrights = new ArrayList<Copyright>();
+    List<Copyright> copyrights = new ArrayList<>();
     for (int i = 0; i < copyrightsJson.size(); i++) {
       Copyright copyright = new Copyright();
       JSONObject copyrightJson = copyrightsJson.getJSONObject(i);
@@ -345,7 +345,7 @@ public class JsonUtil {
   }
 
   public static List<Image> createImages(JSONArray images) {
-    List<Image> returnedImages = new ArrayList<Image>();
+    List<Image> returnedImages = new ArrayList<>();
     for (int i = 0; i < images.size(); i++) {
       returnedImages.add(createImage(images.getJSONObject(i)));
     }
@@ -392,7 +392,7 @@ public class JsonUtil {
   }
 
   private static List<Playlist> createPlaylists(JSONArray playlistsJson) {
-    final List<Playlist> returnedPlaylists = new ArrayList<Playlist>();
+    final List<Playlist> returnedPlaylists = new ArrayList<>();
     for (int i = 0; i < playlistsJson.size(); i++) {
       returnedPlaylists.add(createPlaylist(playlistsJson.getJSONObject(i)));
     }
@@ -440,7 +440,7 @@ public class JsonUtil {
   }
 
   public static List<PlaylistSimplified> createSimplePlaylists(JSONArray playlistsJson) {
-    List<PlaylistSimplified> returnedPlaylists = new ArrayList<PlaylistSimplified>();
+    List<PlaylistSimplified> returnedPlaylists = new ArrayList<>();
     for (int i = 0; i < playlistsJson.size(); i++) {
       returnedPlaylists.add(createSimplePlaylist(playlistsJson.getJSONObject(i)));
     }
@@ -486,7 +486,7 @@ public class JsonUtil {
   }
 
   private static List<PlaylistTrack> createPlaylistTracksInformation(JSONArray playlistTrackPageJson) {
-    final List<PlaylistTrack> returnedPlaylistTracks = new ArrayList<PlaylistTrack>();
+    final List<PlaylistTrack> returnedPlaylistTracks = new ArrayList<>();
     for (int i = 0; i < playlistTrackPageJson.size(); i++) {
       returnedPlaylistTracks.add(createPlaylistTrack(playlistTrackPageJson.getJSONObject(i)));
     }
@@ -580,7 +580,7 @@ public class JsonUtil {
   }
 
   public static List<Track> createTracks(JSONObject jsonObject) {
-    List<Track> returnedTracks = new ArrayList<Track>();
+    List<Track> returnedTracks = new ArrayList<>();
     JSONArray tracks = jsonObject.getJSONArray("tracks");
     for (int i = 0; i < tracks.size(); i++) {
       returnedTracks.add(createTrack(tracks.getJSONObject(i)));
@@ -589,7 +589,7 @@ public class JsonUtil {
   }
 
   private static List<Track> createTracks(JSONArray tracksJson) {
-    List<Track> returnedTracks = new ArrayList<Track>();
+    List<Track> returnedTracks = new ArrayList<>();
     for (int i = 0; i < tracksJson.size(); i++) {
       returnedTracks.add(createTrack(tracksJson.getJSONObject(i)));
     }
@@ -639,7 +639,7 @@ public class JsonUtil {
   }
 
   public static List<TrackSimplified> createTracksSimplified(JSONArray tracksJson) {
-    List<TrackSimplified> tracks = new ArrayList<TrackSimplified>();
+    List<TrackSimplified> tracks = new ArrayList<>();
     for (int i = 0; i < tracksJson.size(); i++) {
       tracks.add(createSimpleTrack(tracksJson.getJSONObject(i)));
     }
@@ -780,7 +780,7 @@ public class JsonUtil {
     return libraryTracksPage;
   }
   private static List<LibraryTrack> createLibraryTracks(JSONArray items) {
-    final List<LibraryTrack> returnedLibraryTracks = new ArrayList<LibraryTrack>();
+    final List<LibraryTrack> returnedLibraryTracks = new ArrayList<>();
     for (int i = 0; i < items.size(); i++) {
       returnedLibraryTracks.add(createLibraryTrack(items.getJSONObject(i)));
     }

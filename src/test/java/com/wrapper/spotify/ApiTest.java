@@ -561,7 +561,7 @@ public class ApiTest {
 
 
     Calendar calendar = Calendar.getInstance();
-    calendar.set(2014, 11, 22, 13, 59, 30);
+    calendar.set(2014, Calendar.DECEMBER, 22, 13, 59, 30);
     Date timestamp = calendar.getTime();
 
     final Request request = api

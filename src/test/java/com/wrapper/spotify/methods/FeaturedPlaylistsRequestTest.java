@@ -29,7 +29,7 @@ public class FeaturedPlaylistsRequestTest {
     final Api api = Api.DEFAULT_API;
 
     Calendar calendar = Calendar.getInstance();
-    calendar.set(2014, 9, 23, 9, 0, 0);
+    calendar.set(2014, Calendar.OCTOBER, 23, 9, 0, 0);
     Date timestamp = calendar.getTime();
 
     final FeaturedPlaylistsRequest request = api.getFeaturedPlaylists()
@@ -84,7 +84,7 @@ public class FeaturedPlaylistsRequestTest {
     final Api api = Api.DEFAULT_API;
 
     Calendar calendar = Calendar.getInstance();
-    calendar.set(2014, 9, 23, 9, 0, 0);
+    calendar.set(2014, Calendar.OCTOBER, 23, 9, 0, 0);
     Date timestamp = calendar.getTime();
 
     final FeaturedPlaylistsRequest request = api.getFeaturedPlaylists()

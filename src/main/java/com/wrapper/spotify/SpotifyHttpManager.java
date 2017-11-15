@@ -123,7 +123,7 @@ public class SpotifyHttpManager implements HttpManager {
 
     for (Url.Parameter parameter : url.getBodyParametersList()) {
       if (parameter.hasName() && parameter.hasValue()) {
-        out.add(new BasicNameValuePair(parameter.getName(), parameter.getValue().toString()));
+        out.add(new BasicNameValuePair(parameter.getName(), parameter.getValue()));
       }
     }
 

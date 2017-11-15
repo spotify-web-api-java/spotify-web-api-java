@@ -25,9 +25,7 @@ public class ContainsMySavedTracksRequest extends AbstractRequest {
       response = getJson();
       List<Boolean> containedTracks = JsonUtil.createBooleans(response);
       containsTracksFuture.set(containedTracks);
-    } catch (IOException e) {
-      containsTracksFuture.setException(e);
-    } catch (WebApiException e) {
+    } catch (IOException|WebApiException e) {
       containsTracksFuture.setException(e);
     }
 
