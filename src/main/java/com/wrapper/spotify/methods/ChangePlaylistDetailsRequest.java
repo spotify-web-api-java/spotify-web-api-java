@@ -1,6 +1,3 @@
-/**
- * Copyright (C) 2017 Spotify AB
- */
 package com.wrapper.spotify.methods;
 
 import com.google.common.collect.Maps;
