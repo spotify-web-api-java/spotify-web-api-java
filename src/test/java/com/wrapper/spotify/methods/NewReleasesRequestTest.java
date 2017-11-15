@@ -9,10 +9,10 @@ import com.google.common.util.concurrent.SettableFuture;
 import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.TestUtil;
+import com.wrapper.spotify.models.AlbumSimplified;
 import com.wrapper.spotify.models.AlbumType;
 import com.wrapper.spotify.models.NewReleases;
 import com.wrapper.spotify.models.Paging;
-import com.wrapper.spotify.models.AlbumSimplified;
 import org.junit.Test;
 
 import java.util.concurrent.CountDownLatch;

@@ -2,8 +2,6 @@ package com.wrapper.spotify;
 
 import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.models.*;
-import com.wrapper.spotify.models.AuthorizationCodeCredentials;
-import com.wrapper.spotify.models.ClientCredentials;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONException;
 import net.sf.json.JSONNull;
