@@ -22,9 +22,12 @@ public abstract class UrlUtil {
     try {
       if (!url.getPath().contains("users")) {
         final URIBuilder uriBuilder = new URIBuilder();
-
-        URI uri = uriBuilder.build();
-        // final URI uri = new URI(SCHEME_NAMES.get(url.getScheme()), null, url.getHost(), url.getPort(), url.getPath());
+        final URI uri = new URIBuilder()
+                .setScheme(SCHEME_NAMES.get(url.getScheme()))
+                .setPath(url.getPath())
+                .setHost(url.getHost())
+                .setPort(url.getPort())
+                .build();
         return uri.toString();
       } else {
         final URI uri = new URI(SCHEME_NAMES.get(url.getScheme()), null, url.getHost(), url.getPort(), null, null, null);
