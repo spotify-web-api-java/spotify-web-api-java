@@ -51,12 +51,12 @@ public class ContainsMySavedTracksRequest extends AbstractRequest {
 
     public Builder tracks(List<String> trackIds) {
       String idsParameter = Joiner.on(",").join(trackIds);
-      parameter("ids", idsParameter);
+      setParameter("ids", idsParameter);
       return this;
     }
 
     public ContainsMySavedTracksRequest build() {
-      header("Content-Type", "application/json");
+      setHeaderParameter("Content-Type", "application/json");
       return new ContainsMySavedTracksRequest(this);
     }
 

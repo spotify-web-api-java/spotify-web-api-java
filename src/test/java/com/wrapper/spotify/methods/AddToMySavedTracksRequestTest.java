@@ -27,7 +27,7 @@ public class AddToMySavedTracksRequestTest {
         tracksToAdd = Arrays.asList("4BYGxv4rxSNcTgT3DsFB9o", "0BG2iE6McPhmAEKIhfqy1X");
 
     final AddToMySavedTracksRequest request = api.addToMySavedTracks(tracksToAdd)
-      .httpManager(TestUtil.MockedHttpManager.returningString(""))
+      .setHttpManager(TestUtil.MockedHttpManager.returningString(""))
       .build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
@@ -63,7 +63,7 @@ public class AddToMySavedTracksRequestTest {
         tracksToAdd = Arrays.asList("4BYGxv4rxSNcTgT3DsFB9o", "0BG2iE6McPhmAEKIhfqy1X");
 
     final AddToMySavedTracksRequest request = api.addToMySavedTracks(tracksToAdd)
-        .httpManager(TestUtil.MockedHttpManager.returningString(""))
+        .setHttpManager(TestUtil.MockedHttpManager.returningString(""))
         .build();
 
     final String addTrackResponse = request.get();

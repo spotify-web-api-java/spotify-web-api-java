@@ -24,7 +24,7 @@ public class AuthorizationCodeGrantRequestTest {
             .build();
 
     final AuthorizationCodeGrantRequest request = api.authorizationCodeGrant(code)
-            .httpManager(TestUtil.MockedHttpManager.returningJson("auth-tokens.json"))
+            .setHttpManager(TestUtil.MockedHttpManager.returningJson("auth-tokens.json"))
             .build();
     try {
       final AuthorizationCodeCredentials tokens = request.get();

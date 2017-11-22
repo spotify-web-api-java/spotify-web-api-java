@@ -50,7 +50,7 @@ public class PlaylistRequest extends AbstractRequest {
 
     public Builder fields(String fields) {
       assert (fields != null);
-      return parameter("fields", fields);
+      return setParameter("fields", fields);
     }
 
     public PlaylistRequest build() {

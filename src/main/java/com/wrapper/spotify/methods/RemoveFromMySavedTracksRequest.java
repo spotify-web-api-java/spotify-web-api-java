@@ -47,7 +47,7 @@ public class RemoveFromMySavedTracksRequest extends AbstractRequest {
 
     public Builder tracks(List<String> trackIds) {
       String idsParameter = Joiner.on(",").join(trackIds);
-      return parameter("ids", idsParameter);
+      return setParameter("ids", idsParameter);
     }
 
     @Override

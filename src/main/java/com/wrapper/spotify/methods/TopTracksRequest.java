@@ -51,12 +51,12 @@ public class TopTracksRequest extends AbstractRequest {
 
     public Builder id(String id) {
       assert (id != null);
-      return path(String.format("/v1/artists/%s/toptracks", id));
+      return setPath(String.format("/v1/artists/%s/toptracks", id));
     }
 
     public Builder countryCode(String countryCode) {
       assert (countryCode != null);
-      return parameter("country", countryCode);
+      return setParameter("country", countryCode);
     }
 
     public TopTracksRequest build() {

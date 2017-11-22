@@ -24,7 +24,7 @@ public class ContainsMySavedTracksRequestTest {
 
     ContainsMySavedTracksRequest request = api.containsMySavedTracks(
         Arrays.asList("0udZHhCi7p1YzMlvI4fXoK", "1e1VmyiAuPyM4SHhySP1oU"))
-        .httpManager(TestUtil.MockedHttpManager.returningJson("yourmusic-contains.json"))
+        .setHttpManager(TestUtil.MockedHttpManager.returningJson("yourmusic-contains.json"))
         .build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
@@ -58,7 +58,7 @@ public class ContainsMySavedTracksRequestTest {
 
     ContainsMySavedTracksRequest request = api.containsMySavedTracks(
         Arrays.asList("0udZHhCi7p1YzMlvI4fXoK", "1e1VmyiAuPyM4SHhySP1oU"))
-        .httpManager(TestUtil.MockedHttpManager.returningJson("yourmusic-contains.json"))
+        .setHttpManager(TestUtil.MockedHttpManager.returningJson("yourmusic-contains.json"))
         .build();
 
     List<Boolean> response = request.get();

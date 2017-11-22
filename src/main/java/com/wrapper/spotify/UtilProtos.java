@@ -19,47 +19,47 @@ public final class UtilProtos {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>required .spotify.Url.Scheme scheme = 1;</code>
+     * <code>required .spotify.Url.Scheme setScheme = 1;</code>
      */
     boolean hasScheme();
     /**
-     * <code>required .spotify.Url.Scheme scheme = 1;</code>
+     * <code>required .spotify.Url.Scheme setScheme = 1;</code>
      */
     com.wrapper.spotify.UtilProtos.Url.Scheme getScheme();
 
     /**
-     * <code>required string host = 2;</code>
+     * <code>required string setHost = 2;</code>
      */
     boolean hasHost();
     /**
-     * <code>required string host = 2;</code>
+     * <code>required string setHost = 2;</code>
      */
     java.lang.String getHost();
     /**
-     * <code>required string host = 2;</code>
+     * <code>required string setHost = 2;</code>
      */
     com.google.protobuf.ByteString
         getHostBytes();
 
     /**
-     * <code>required int32 port = 3;</code>
+     * <code>required int32 setPort = 3;</code>
      */
     boolean hasPort();
     /**
-     * <code>required int32 port = 3;</code>
+     * <code>required int32 setPort = 3;</code>
      */
     int getPort();
 
     /**
-     * <code>required string path = 4;</code>
+     * <code>required string setPath = 4;</code>
      */
     boolean hasPath();
     /**
-     * <code>required string path = 4;</code>
+     * <code>required string setPath = 4;</code>
      */
     java.lang.String getPath();
     /**
-     * <code>required string path = 4;</code>
+     * <code>required string setPath = 4;</code>
      */
     com.google.protobuf.ByteString
         getPathBytes();
@@ -2286,13 +2286,13 @@ public final class UtilProtos {
     public static final int SCHEME_FIELD_NUMBER = 1;
     private int scheme_;
     /**
-     * <code>required .spotify.Url.Scheme scheme = 1;</code>
+     * <code>required .spotify.Url.Scheme setScheme = 1;</code>
      */
     public boolean hasScheme() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>required .spotify.Url.Scheme scheme = 1;</code>
+     * <code>required .spotify.Url.Scheme setScheme = 1;</code>
      */
     public com.wrapper.spotify.UtilProtos.Url.Scheme getScheme() {
       com.wrapper.spotify.UtilProtos.Url.Scheme result = com.wrapper.spotify.UtilProtos.Url.Scheme.valueOf(scheme_);
@@ -2302,13 +2302,13 @@ public final class UtilProtos {
     public static final int HOST_FIELD_NUMBER = 2;
     private volatile java.lang.Object host_;
     /**
-     * <code>required string host = 2;</code>
+     * <code>required string setHost = 2;</code>
      */
     public boolean hasHost() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>required string host = 2;</code>
+     * <code>required string setHost = 2;</code>
      */
     public java.lang.String getHost() {
       java.lang.Object ref = host_;
@@ -2325,7 +2325,7 @@ public final class UtilProtos {
       }
     }
     /**
-     * <code>required string host = 2;</code>
+     * <code>required string setHost = 2;</code>
      */
     public com.google.protobuf.ByteString
         getHostBytes() {
@@ -2344,13 +2344,13 @@ public final class UtilProtos {
     public static final int PORT_FIELD_NUMBER = 3;
     private int port_;
     /**
-     * <code>required int32 port = 3;</code>
+     * <code>required int32 setPort = 3;</code>
      */
     public boolean hasPort() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
-     * <code>required int32 port = 3;</code>
+     * <code>required int32 setPort = 3;</code>
      */
     public int getPort() {
       return port_;
@@ -2359,13 +2359,13 @@ public final class UtilProtos {
     public static final int PATH_FIELD_NUMBER = 4;
     private volatile java.lang.Object path_;
     /**
-     * <code>required string path = 4;</code>
+     * <code>required string setPath = 4;</code>
      */
     public boolean hasPath() {
       return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
-     * <code>required string path = 4;</code>
+     * <code>required string setPath = 4;</code>
      */
     public java.lang.String getPath() {
       java.lang.Object ref = path_;
@@ -2382,7 +2382,7 @@ public final class UtilProtos {
       }
     }
     /**
-     * <code>required string path = 4;</code>
+     * <code>required string setPath = 4;</code>
      */
     public com.google.protobuf.ByteString
         getPathBytes() {
@@ -3227,20 +3227,20 @@ public final class UtilProtos {
 
       private int scheme_ = 0;
       /**
-       * <code>required .spotify.Url.Scheme scheme = 1;</code>
+       * <code>required .spotify.Url.Scheme setScheme = 1;</code>
        */
       public boolean hasScheme() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>required .spotify.Url.Scheme scheme = 1;</code>
+       * <code>required .spotify.Url.Scheme setScheme = 1;</code>
        */
       public com.wrapper.spotify.UtilProtos.Url.Scheme getScheme() {
         com.wrapper.spotify.UtilProtos.Url.Scheme result = com.wrapper.spotify.UtilProtos.Url.Scheme.valueOf(scheme_);
         return result == null ? com.wrapper.spotify.UtilProtos.Url.Scheme.HTTP : result;
       }
       /**
-       * <code>required .spotify.Url.Scheme scheme = 1;</code>
+       * <code>required .spotify.Url.Scheme setScheme = 1;</code>
        */
       public Builder setScheme(com.wrapper.spotify.UtilProtos.Url.Scheme value) {
         if (value == null) {
@@ -3252,7 +3252,7 @@ public final class UtilProtos {
         return this;
       }
       /**
-       * <code>required .spotify.Url.Scheme scheme = 1;</code>
+       * <code>required .spotify.Url.Scheme setScheme = 1;</code>
        */
       public Builder clearScheme() {
         bitField0_ = (bitField0_ & ~0x00000001);
@@ -3263,13 +3263,13 @@ public final class UtilProtos {
 
       private java.lang.Object host_ = "";
       /**
-       * <code>required string host = 2;</code>
+       * <code>required string setHost = 2;</code>
        */
       public boolean hasHost() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>required string host = 2;</code>
+       * <code>required string setHost = 2;</code>
        */
       public java.lang.String getHost() {
         java.lang.Object ref = host_;
@@ -3286,7 +3286,7 @@ public final class UtilProtos {
         }
       }
       /**
-       * <code>required string host = 2;</code>
+       * <code>required string setHost = 2;</code>
        */
       public com.google.protobuf.ByteString
           getHostBytes() {
@@ -3302,7 +3302,7 @@ public final class UtilProtos {
         }
       }
       /**
-       * <code>required string host = 2;</code>
+       * <code>required string setHost = 2;</code>
        */
       public Builder setHost(
           java.lang.String value) {
@@ -3315,7 +3315,7 @@ public final class UtilProtos {
         return this;
       }
       /**
-       * <code>required string host = 2;</code>
+       * <code>required string setHost = 2;</code>
        */
       public Builder clearHost() {
         bitField0_ = (bitField0_ & ~0x00000002);
@@ -3324,7 +3324,7 @@ public final class UtilProtos {
         return this;
       }
       /**
-       * <code>required string host = 2;</code>
+       * <code>required string setHost = 2;</code>
        */
       public Builder setHostBytes(
           com.google.protobuf.ByteString value) {
@@ -3339,19 +3339,19 @@ public final class UtilProtos {
 
       private int port_ ;
       /**
-       * <code>required int32 port = 3;</code>
+       * <code>required int32 setPort = 3;</code>
        */
       public boolean hasPort() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
-       * <code>required int32 port = 3;</code>
+       * <code>required int32 setPort = 3;</code>
        */
       public int getPort() {
         return port_;
       }
       /**
-       * <code>required int32 port = 3;</code>
+       * <code>required int32 setPort = 3;</code>
        */
       public Builder setPort(int value) {
         bitField0_ |= 0x00000004;
@@ -3360,7 +3360,7 @@ public final class UtilProtos {
         return this;
       }
       /**
-       * <code>required int32 port = 3;</code>
+       * <code>required int32 setPort = 3;</code>
        */
       public Builder clearPort() {
         bitField0_ = (bitField0_ & ~0x00000004);
@@ -3371,13 +3371,13 @@ public final class UtilProtos {
 
       private java.lang.Object path_ = "";
       /**
-       * <code>required string path = 4;</code>
+       * <code>required string setPath = 4;</code>
        */
       public boolean hasPath() {
         return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
-       * <code>required string path = 4;</code>
+       * <code>required string setPath = 4;</code>
        */
       public java.lang.String getPath() {
         java.lang.Object ref = path_;
@@ -3394,7 +3394,7 @@ public final class UtilProtos {
         }
       }
       /**
-       * <code>required string path = 4;</code>
+       * <code>required string setPath = 4;</code>
        */
       public com.google.protobuf.ByteString
           getPathBytes() {
@@ -3410,7 +3410,7 @@ public final class UtilProtos {
         }
       }
       /**
-       * <code>required string path = 4;</code>
+       * <code>required string setPath = 4;</code>
        */
       public Builder setPath(
           java.lang.String value) {
@@ -3423,7 +3423,7 @@ public final class UtilProtos {
         return this;
       }
       /**
-       * <code>required string path = 4;</code>
+       * <code>required string setPath = 4;</code>
        */
       public Builder clearPath() {
         bitField0_ = (bitField0_ & ~0x00000008);
@@ -3432,7 +3432,7 @@ public final class UtilProtos {
         return this;
       }
       /**
-       * <code>required string path = 4;</code>
+       * <code>required string setPath = 4;</code>
        */
       public Builder setPathBytes(
           com.google.protobuf.ByteString value) {

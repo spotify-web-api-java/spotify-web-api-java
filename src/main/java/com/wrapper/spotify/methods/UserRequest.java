@@ -47,7 +47,7 @@ public class UserRequest extends AbstractRequest {
 
     public Builder username(String username) {
       assert (username!= null);
-      return path(String.format("/v1/users/%s", username));
+      return setPath(String.format("/v1/users/%s", username));
     }
 
     public UserRequest build() {

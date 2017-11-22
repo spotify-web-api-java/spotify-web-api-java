@@ -62,8 +62,8 @@ public class ChangePlaylistDetailsRequest extends AbstractRequest {
     }
 
     public ChangePlaylistDetailsRequest build() {
-      header("Content-Type", "application/json");
-      body(JSONObject.fromObject(properties));
+      setHeaderParameter("Content-Type", "application/json");
+      setBodyParameter(JSONObject.fromObject(properties));
       return new ChangePlaylistDetailsRequest(this);
     }
 

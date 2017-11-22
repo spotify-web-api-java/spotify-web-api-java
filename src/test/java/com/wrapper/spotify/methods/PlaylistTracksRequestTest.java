@@ -25,7 +25,7 @@ public class PlaylistTracksRequestTest {
 
     final PlaylistTracksRequest request = api
         .getPlaylistTracks("thelinmichael", "3ktAYNcRHpazJ9qecm3ptn")
-        .httpManager(TestUtil.MockedHttpManager.returningJson("playlist-tracks.json"))
+        .setHttpManager(TestUtil.MockedHttpManager.returningJson("playlist-tracks.json"))
         .build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
@@ -73,7 +73,7 @@ public class PlaylistTracksRequestTest {
 
     final PlaylistTracksRequest request = api
         .getStarred("thelinmichael")
-        .httpManager(TestUtil.MockedHttpManager.returningJson("starred-tracks.json"))
+        .setHttpManager(TestUtil.MockedHttpManager.returningJson("starred-tracks.json"))
         .build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
@@ -120,7 +120,7 @@ public class PlaylistTracksRequestTest {
 
     final PlaylistTracksRequest request = api
         .getPlaylistTracks("thelinmichael", "3ktAYNcRHpazJ9qecm3ptn")
-        .httpManager(TestUtil.MockedHttpManager.returningJson("playlist-tracks.json"))
+        .setHttpManager(TestUtil.MockedHttpManager.returningJson("playlist-tracks.json"))
         .build();
 
     final Paging<PlaylistTrack> page = request.get();
@@ -149,7 +149,7 @@ public class PlaylistTracksRequestTest {
     final Api api = Api.builder().accessToken(accessToken).build();
 
     final PlaylistTracksRequest request = api.getStarred("thelinmichael")
-        .httpManager(TestUtil.MockedHttpManager.returningJson("starred-tracks.json"))
+        .setHttpManager(TestUtil.MockedHttpManager.returningJson("starred-tracks.json"))
         .build();
 
     final Paging<PlaylistTrack> page = request.get();

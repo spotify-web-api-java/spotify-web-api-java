@@ -29,7 +29,7 @@ public class NewReleasesRequestTest {
         .limit(3)
         .offset(1)
         .country("SE")
-        .httpManager(TestUtil.MockedHttpManager.returningJson("new-releases.json"))
+        .setHttpManager(TestUtil.MockedHttpManager.returningJson("new-releases.json"))
         .build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
@@ -81,7 +81,7 @@ public class NewReleasesRequestTest {
         .limit(3)
         .offset(1)
         .country("SE")
-        .httpManager(TestUtil.MockedHttpManager.returningJson("new-releases.json"))
+        .setHttpManager(TestUtil.MockedHttpManager.returningJson("new-releases.json"))
         .build();
 
     NewReleases newReleases = request.get();

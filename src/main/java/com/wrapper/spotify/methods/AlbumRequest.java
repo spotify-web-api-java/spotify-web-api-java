@@ -53,7 +53,7 @@ public class AlbumRequest extends AbstractRequest {
      */
     public Builder id(String id) {
       assert (id != null);
-      return path(String.format("/v1/albums/%s", id));
+      return setPath(String.format("/v1/albums/%s", id));
     }
 
     public AlbumRequest build() {

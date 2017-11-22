@@ -24,7 +24,7 @@ public class RefreshAccessTokenRequestTest {
 
     final RefreshAccessTokenRequest request = api
             .refreshAccessToken()
-            .httpManager(TestUtil.MockedHttpManager.returningJson("auth-tokens.json"))
+            .setHttpManager(TestUtil.MockedHttpManager.returningJson("auth-tokens.json"))
             .build();
 
     RefreshAccessTokenCredentials refreshAccessTokenResponse = request.get();

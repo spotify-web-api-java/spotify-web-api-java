@@ -19,34 +19,34 @@ public class AuthorizationURLRequest extends AbstractRequest {
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
     public Builder scopes(List<String> scopes) {
-      return parameter("scope", Joiner.on(" ").join(scopes));
+      return setParameter("scope", Joiner.on(" ").join(scopes));
     }
 
     public Builder state(String state) {
-      return parameter("state", state);
+      return setParameter("state", state);
     }
 
     public Builder responseType(String responseType) {
-      return parameter("response_type", responseType);
+      return setParameter("response_type", responseType);
     }
 
     public Builder clientId(String clientId) {
-      return parameter("client_id", clientId);
+      return setParameter("client_id", clientId);
     }
 
     public Builder redirectURI(String redirectURI) {
-      return parameter("redirect_uri", redirectURI);
+      return setParameter("redirect_uri", redirectURI);
     }
 
     public Builder showDialog(boolean showDialog) {
-      return parameter("show_dialog", String.valueOf(showDialog));
+      return setParameter("show_dialog", String.valueOf(showDialog));
     }
 
     public AuthorizationURLRequest build() {
-      host(Api.DEFAULT_AUTHENTICATION_HOST);
-      port(Api.DEFAULT_AUTHENTICATION_PORT);
-      scheme(Api.DEFAULT_AUTHENTICATION_SCHEME);
-      path("/authorize");
+      setHost(Api.DEFAULT_AUTHENTICATION_HOST);
+      setPort(Api.DEFAULT_AUTHENTICATION_PORT);
+      setScheme(Api.DEFAULT_AUTHENTICATION_SCHEME);
+      setPath("/authorize");
 
       return new AuthorizationURLRequest(this);
     }

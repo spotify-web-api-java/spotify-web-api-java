@@ -53,17 +53,17 @@ public class AuthorizationCodeGrantRequest extends AbstractRequest {
 
     public Builder grantType(String grantType) {
       assert (grantType != null);
-      return body("grant_type", grantType);
+      return setBodyParameter("grant_type", grantType);
     }
 
     public Builder code(String code) {
       assert (code != null);
-      return body("code", code);
+      return setBodyParameter("code", code);
     }
 
     public Builder redirectUri(String redirectUri) {
       assert (redirectUri != null);
-      return body("redirect_uri", redirectUri);
+      return setBodyParameter("redirect_uri", redirectUri);
     }
 
     public Builder basicAuthorizationHeader(String clientId, String clientSecret) {
@@ -73,14 +73,14 @@ public class AuthorizationCodeGrantRequest extends AbstractRequest {
       String idSecret = clientId + ":" + clientSecret;
       String idSecretEncoded = new String(Base64.encodeBase64(idSecret.getBytes()));
 
-      return header("Authorization", "Basic " + idSecretEncoded);
+      return setHeaderParameter("Authorization", "Basic " + idSecretEncoded);
     }
 
     public AuthorizationCodeGrantRequest build() {
-      host(Api.DEFAULT_AUTHENTICATION_HOST);
-      port(Api.DEFAULT_AUTHENTICATION_PORT);
-      scheme(Api.DEFAULT_AUTHENTICATION_SCHEME);
-      path("/api/token");
+      setHost(Api.DEFAULT_AUTHENTICATION_HOST);
+      setPort(Api.DEFAULT_AUTHENTICATION_PORT);
+      setScheme(Api.DEFAULT_AUTHENTICATION_SCHEME);
+      setPath("/api/token");
 
       return new AuthorizationCodeGrantRequest(this);
     }

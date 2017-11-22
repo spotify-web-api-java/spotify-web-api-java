@@ -48,7 +48,7 @@ public class AddToMySavedTracksRequest extends AbstractRequest {
   public static class Builder extends AbstractRequest.Builder<Builder> {
 
     public Builder tracks(List<String> trackIds) {
-      body(JSONArray.fromObject(trackIds));
+      setBodyParameter(JSONArray.fromObject(trackIds));
       return this;
     }
 

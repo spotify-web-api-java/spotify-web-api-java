@@ -58,24 +58,24 @@ public class RefreshAccessTokenRequest extends AbstractRequest {
       String idSecret = clientId + ":" + clientSecret;
       String idSecretEncoded = new String(Base64.encodeBase64(idSecret.getBytes()));
 
-      return header("Authorization", "Basic " + idSecretEncoded);
+      return setHeaderParameter("Authorization", "Basic " + idSecretEncoded);
     }
 
     public Builder grantType(String grantType) {
       assert (grantType != null);
-      return body("grant_type", grantType);
+      return setBodyParameter("grant_type", grantType);
     }
 
     public Builder refreshToken(String refreshToken) {
       assert (refreshToken != null);
-      return body("refresh_token", refreshToken);
+      return setBodyParameter("refresh_token", refreshToken);
     }
 
     public RefreshAccessTokenRequest build() {
-      host(Api.DEFAULT_AUTHENTICATION_HOST);
-      port(Api.DEFAULT_AUTHENTICATION_PORT);
-      scheme(Api.DEFAULT_AUTHENTICATION_SCHEME);
-      path("/api/token");
+      setHost(Api.DEFAULT_AUTHENTICATION_HOST);
+      setPort(Api.DEFAULT_AUTHENTICATION_PORT);
+      setScheme(Api.DEFAULT_AUTHENTICATION_SCHEME);
+      setPath("/api/token");
 
       return new RefreshAccessTokenRequest(this);
     }

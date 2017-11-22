@@ -118,7 +118,7 @@ public class Api {
   public ArtistRequest.Builder getArtist(String id) {
     ArtistRequest.Builder builder = ArtistRequest.builder();
     setDefaults(builder);
-    builder.path(String.format("/v1/artists/%s", id));
+    builder.setPath(String.format("/v1/artists/%s", id));
     return builder;
   }
 
@@ -273,7 +273,7 @@ public class Api {
     PlaylistRequest.Builder builder = PlaylistRequest.builder();
     setDefaults(builder);
     userId = UrlUtil.escapeUsername(userId);
-    builder.path("/v1/users/" + userId + "/playlists/" + playlistId);
+    builder.setPath("/v1/users/" + userId + "/playlists/" + playlistId);
     return builder;
   }
 
@@ -299,7 +299,7 @@ public class Api {
     setDefaults(builder);
     builder.title(title);
     userId = UrlUtil.escapeUsername(userId);
-    builder.path("/v1/users/" + userId + "/playlists");
+    builder.setPath("/v1/users/" + userId + "/playlists");
     return builder;
   }
 
@@ -311,7 +311,7 @@ public class Api {
   public RelatedArtistsRequest.Builder getArtistRelatedArtists(String artistId) {
     final RelatedArtistsRequest.Builder builder = RelatedArtistsRequest.builder();
     setDefaults(builder);
-    builder.path("/v1/artists/" + artistId + "/related-artists");
+    builder.setPath("/v1/artists/" + artistId + "/related-artists");
     return builder;
   }
 
@@ -325,7 +325,7 @@ public class Api {
     final PlaylistTracksRequest.Builder builder = PlaylistTracksRequest.builder();
     setDefaults(builder);
     userId = UrlUtil.escapeUsername(userId);
-    builder.path("/v1/users/" + userId + "/playlists/" + playlistId + "/tracks");
+    builder.setPath("/v1/users/" + userId + "/playlists/" + playlistId + "/tracks");
     return builder;
   }
 
@@ -339,7 +339,7 @@ public class Api {
     final PlaylistTracksRequest.Builder builder = PlaylistTracksRequest.builder();
     setDefaults(builder);
     userId = UrlUtil.escapeUsername(userId);
-    builder.path("/v1/users/" + userId + "/starred/tracks");
+    builder.setPath("/v1/users/" + userId + "/starred/tracks");
     return builder;
   }
 
@@ -355,9 +355,9 @@ public class Api {
     setDefaults(builder);
     final JSONArray jsonArrayUri = new JSONArray();
     jsonArrayUri.addAll(trackUris);
-    builder.body(jsonArrayUri);
+    builder.setBodyParameter(jsonArrayUri);
     userId = UrlUtil.escapeUsername(userId);
-    builder.path("/v1/users/" + userId + "/playlists/" + playlistId + "/tracks");
+    builder.setPath("/v1/users/" + userId + "/playlists/" + playlistId + "/tracks");
     return builder;
   }
 
@@ -371,7 +371,7 @@ public class Api {
     final ChangePlaylistDetailsRequest.Builder builder = ChangePlaylistDetailsRequest.builder();
     setDefaults(builder);
     userId = UrlUtil.escapeUsername(userId);
-    builder.path("/v1/users/" + userId + "/playlists/" + playlistId);
+    builder.setPath("/v1/users/" + userId + "/playlists/" + playlistId);
     return builder;
   }
 
@@ -382,7 +382,7 @@ public class Api {
   public GetMySavedTracksRequest.Builder getMySavedTracks() {
     final GetMySavedTracksRequest.Builder builder = GetMySavedTracksRequest.builder();
     setDefaults(builder);
-    builder.path("/v1/me/tracks");
+    builder.setPath("/v1/me/tracks");
     return builder;
   }
 
@@ -395,7 +395,7 @@ public class Api {
     final ContainsMySavedTracksRequest.Builder builder = ContainsMySavedTracksRequest.builder();
     setDefaults(builder);
     builder.tracks(trackIds);
-    builder.path("/v1/me/tracks/contains");
+    builder.setPath("/v1/me/tracks/contains");
     return builder;
   }
 
@@ -408,7 +408,7 @@ public class Api {
     final RemoveFromMySavedTracksRequest.Builder builder = RemoveFromMySavedTracksRequest.builder();
     setDefaults(builder);
     builder.tracks(trackIds);
-    builder.path("/v1/me/tracks");
+    builder.setPath("/v1/me/tracks");
     return builder;
   }
 
@@ -421,7 +421,7 @@ public class Api {
     final AddToMySavedTracksRequest.Builder builder = AddToMySavedTracksRequest.builder();
     setDefaults(builder);
     builder.tracks(trackIds);
-    builder.path("/v1/me/tracks");
+    builder.setPath("/v1/me/tracks");
     return builder;
   }
 
@@ -467,12 +467,12 @@ public class Api {
   }
 
   private void setDefaults(AbstractRequest.Builder builder) {
-    builder.httpManager(httpManager);
-    builder.scheme(scheme);
-    builder.host(host);
-    builder.port(port);
+    builder.setHttpManager(httpManager);
+    builder.setScheme(scheme);
+    builder.setHost(host);
+    builder.setPort(port);
     if (accessToken != null) {
-      builder.header("Authorization", "Bearer " + accessToken);
+      builder.setHeaderParameter("Authorization", "Bearer " + accessToken);
     }
   }
 

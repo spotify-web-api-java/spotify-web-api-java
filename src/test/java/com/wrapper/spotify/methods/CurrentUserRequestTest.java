@@ -25,7 +25,7 @@ public class CurrentUserRequestTest {
 
     final CurrentUserRequest request = api.getMe()
             .accessToken("myLongAccessToken")
-            .httpManager(TestUtil.MockedHttpManager.returningJson("current-user.json"))
+            .setHttpManager(TestUtil.MockedHttpManager.returningJson("current-user.json"))
             .build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
@@ -69,7 +69,7 @@ public class CurrentUserRequestTest {
 
     final CurrentUserRequest request = api.getMe()
             .accessToken("myLongAccessToken")
-            .httpManager(TestUtil.MockedHttpManager.returningJson("current-user.json"))
+            .setHttpManager(TestUtil.MockedHttpManager.returningJson("current-user.json"))
             .build();
 
     final User user = request.get();

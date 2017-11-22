@@ -46,21 +46,21 @@ public class NewReleasesRequest extends AbstractRequest {
 
     public Builder limit(int limit) {
       assert (limit > 0);
-      return parameter("limit", String.valueOf(limit));
+      return setParameter("limit", String.valueOf(limit));
     }
 
     public Builder offset(int offset) {
       assert (offset >= 0);
-      return parameter("offset", String.valueOf(offset));
+      return setParameter("offset", String.valueOf(offset));
     }
 
     public Builder country(String countryCode) {
       assert (countryCode != null);
-      return parameter("country", countryCode);
+      return setParameter("country", countryCode);
     }
 
     public NewReleasesRequest build() {
-      path("/v1/browse/new-releases");
+      setPath("/v1/browse/new-releases");
       return new NewReleasesRequest(this);
     }
 

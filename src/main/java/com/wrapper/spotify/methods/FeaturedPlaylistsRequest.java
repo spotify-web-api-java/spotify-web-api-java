@@ -62,36 +62,36 @@ public class FeaturedPlaylistsRequest extends AbstractRequest {
 
     public Builder limit(int limit) {
       assert (limit > 0);
-      return parameter("limit", String.valueOf(limit));
+      return setParameter("limit", String.valueOf(limit));
     }
 
     public Builder offset(int offset) {
       assert (offset >= 0);
-      return parameter("offset", String.valueOf(offset));
+      return setParameter("offset", String.valueOf(offset));
     }
 
     public Builder country(String countryCode) {
       assert (countryCode != null);
-      return parameter("country", countryCode);
+      return setParameter("country", countryCode);
     }
 
     public Builder locale(String locale) {
       assert (locale != null);
-      return parameter("locale", locale);
+      return setParameter("locale", locale);
     }
 
     public Builder timestamp(Date timestamp) {
       assert (timestamp != null);
       final DateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
-      return parameter("timestamp", format.format(timestamp));
+      return setParameter("timestamp", format.format(timestamp));
     }
 
     public Builder accessToken(String accessToken) {
-      return header("Authorization", "Bearer " + accessToken);
+      return setHeaderParameter("Authorization", "Bearer " + accessToken);
     }
 
     public FeaturedPlaylistsRequest build() {
-      path("/v1/browse/featured-playlists");
+      setPath("/v1/browse/featured-playlists");
       return new FeaturedPlaylistsRequest(this);
     }
 

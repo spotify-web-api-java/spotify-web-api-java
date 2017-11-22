@@ -25,7 +25,7 @@ public class ChangePlaylistDetailsRequestTest {
         .changePlaylistDetails("thelinmichael", "3ktAYNcRHpazJ9qecm3ptn")
         .publicAccess(true)
         .name("Testing playlist name change")
-        .httpManager(TestUtil.MockedHttpManager.returningString(""))
+        .setHttpManager(TestUtil.MockedHttpManager.returningString(""))
         .build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
@@ -60,7 +60,7 @@ public class ChangePlaylistDetailsRequestTest {
         .changePlaylistDetails("thelinmichael", "3ktAYNcRHpazJ9qecm3ptn")
         .publicAccess(true)
         .name("Testing playlist name change")
-        .httpManager(TestUtil.MockedHttpManager.returningString(""))
+        .setHttpManager(TestUtil.MockedHttpManager.returningString(""))
         .build();
 
     String response = request.get();

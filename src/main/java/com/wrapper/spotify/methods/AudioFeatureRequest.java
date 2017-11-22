@@ -57,7 +57,7 @@ public class AudioFeatureRequest extends AbstractRequest {
          */
         public Builder id(String id) {
             assert (id != null);
-            return path(String.format("/v1/audio-features/%s", id));
+            return setPath(String.format("/v1/audio-features/%s", id));
         }
 
         public AudioFeatureRequest build() {

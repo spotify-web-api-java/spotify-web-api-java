@@ -50,8 +50,8 @@ public class AlbumsRequest extends AbstractRequest {
     public Builder id(List<String> ids) {
       assert (ids != null);
       String idsParameter = Joiner.on(",").join(ids);
-      path("/v1/albums");
-      return parameter("ids", idsParameter);
+      setPath("/v1/albums");
+      return setParameter("ids", idsParameter);
     }
 
     public AlbumsRequest build() {

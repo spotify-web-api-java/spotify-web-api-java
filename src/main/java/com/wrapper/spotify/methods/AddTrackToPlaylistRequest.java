@@ -48,11 +48,11 @@ public class AddTrackToPlaylistRequest extends AbstractRequest {
     public Builder position(int position) {
       assert (position >= 0);
 
-      return parameter("position", String.valueOf(position));
+      return setParameter("position", String.valueOf(position));
     }
 
     public AddTrackToPlaylistRequest build() {
-      header("Content-Type", "application/json");
+      setHeaderParameter("Content-Type", "application/json");
       return new AddTrackToPlaylistRequest(this);
     }
 

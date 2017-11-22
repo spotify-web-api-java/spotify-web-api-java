@@ -57,7 +57,7 @@ public class PlaylistCreationRequest extends AbstractRequest {
         jsonBody = new JSONObject();
       }
       jsonBody.put("public",String.valueOf(publicAccess));
-      return body(jsonBody);
+      return setBodyParameter(jsonBody);
     }
 
     public Builder title(String title) {
@@ -65,11 +65,11 @@ public class PlaylistCreationRequest extends AbstractRequest {
         jsonBody = new JSONObject();
       }
       jsonBody.put("name",String.valueOf(title));
-      return body(jsonBody);
+      return setBodyParameter(jsonBody);
     }
 
     public PlaylistCreationRequest build() {
-      header("Content-Type", "application/json");
+      setHeaderParameter("Content-Type", "application/json");
       return new PlaylistCreationRequest(this);
     }
 

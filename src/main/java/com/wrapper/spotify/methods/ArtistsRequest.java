@@ -50,8 +50,8 @@ public class ArtistsRequest extends AbstractRequest {
     public Builder id(List<String> ids) {
       assert (ids != null);
       String idsParameter = Joiner.on(",").join(ids);
-      path("/v1/artists");
-      return parameter("ids", idsParameter);
+      setPath("/v1/artists");
+      return setParameter("ids", idsParameter);
     }
 
     public ArtistsRequest build() {

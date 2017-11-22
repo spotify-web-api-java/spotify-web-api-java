@@ -54,7 +54,7 @@ public class TrackRequest extends AbstractRequest {
      */
     public Builder id(String id) {
       assert (id != null);
-      return path(String.format("/v1/tracks/%s", id));
+      return setPath(String.format("/v1/tracks/%s", id));
     }
 
     public TrackRequest build() {

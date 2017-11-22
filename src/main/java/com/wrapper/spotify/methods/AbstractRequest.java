@@ -130,47 +130,47 @@ public abstract class AbstractRequest implements Request {
     protected List<Url.Part> parts = new ArrayList<>();
     protected JSON jsonBody;
 
-    public BuilderType httpManager(HttpManager httpManager) {
+    public BuilderType setHttpManager(HttpManager httpManager) {
       assert (httpManager != null);
       this.httpManager = httpManager;
       return (BuilderType) this;
     }
 
-    public BuilderType scheme(Url.Scheme scheme) {
+    public BuilderType setScheme(Url.Scheme scheme) {
       assert (scheme != null);
       this.scheme = scheme;
       return (BuilderType) this;
     }
 
-    public BuilderType host(String host) {
+    public BuilderType setHost(String host) {
       assert (host != null);
       this.host = host;
       return (BuilderType) this;
     }
 
-    public BuilderType port(int port) {
+    public BuilderType setPort(int port) {
       assert (port > -1);
       this.port = port;
       return (BuilderType) this;
     }
 
-    public BuilderType path(String path) {
+    public BuilderType setPath(String path) {
       assert (path != null);
       this.path = path;
       return (BuilderType) this;
     }
 
-    public BuilderType parameter(String name, String value) {
+    public BuilderType setParameter(String name, String value) {
       addParameter(Url.Parameter.newBuilder(), parameters, name, value);
       return (BuilderType) this;
     }
 
-    public BuilderType header(String name, String value) {
+    public BuilderType setHeaderParameter(String name, String value) {
       addParameter(Url.Parameter.newBuilder(), headerParameters, name, value);
       return (BuilderType) this;
     }
 
-    public BuilderType body(String name, String value) {
+    public BuilderType setBodyParameter(String name, String value) {
       addParameter(Url.Parameter.newBuilder(), bodyParameters, name, value);
       return (BuilderType) this;
     }
@@ -181,10 +181,9 @@ public abstract class AbstractRequest implements Request {
       return (BuilderType) this;
     }
 
-    public BuilderType body(JSON jsonBody) {
+    public BuilderType setBodyParameter(JSON jsonBody) {
       assert (jsonBody != null);
       this.jsonBody = jsonBody;
-
       return (BuilderType) this;
     }
 

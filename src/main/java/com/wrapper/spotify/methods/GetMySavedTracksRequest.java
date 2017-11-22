@@ -52,7 +52,7 @@ public class GetMySavedTracksRequest extends AbstractRequest {
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
     public Builder accessToken(String accessToken) {
-      return header("Authorization", "Bearer " + accessToken);
+      return setHeaderParameter("Authorization", "Bearer " + accessToken);
     }
 
     public GetMySavedTracksRequest build() {
@@ -61,12 +61,12 @@ public class GetMySavedTracksRequest extends AbstractRequest {
 
     public Builder limit(int limit) {
       assert (limit > 0);
-      return parameter("limit", String.valueOf(limit));
+      return setParameter("limit", String.valueOf(limit));
     }
 
     public Builder offset(int offset) {
       assert (offset >= 0);
-      return parameter("offset", String.valueOf(offset));
+      return setParameter("offset", String.valueOf(offset));
     }
   }
 

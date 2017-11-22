@@ -25,7 +25,7 @@ public class TracksRequestTest {
     final Api api = Api.DEFAULT_API;
 
     final TracksRequest request = api.getTracks("0eGsygTp906u18L0Oimnem", "1lDWb6b6ieDQ2xT7ewTC3G")
-        .httpManager(TestUtil.MockedHttpManager.returningJson("tracks.json"))
+        .setHttpManager(TestUtil.MockedHttpManager.returningJson("tracks.json"))
         .build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
@@ -60,7 +60,7 @@ public class TracksRequestTest {
     final Api api = Api.DEFAULT_API;
 
     final TracksRequest request = api.getTracks("0eGsygTp906u18L0Oimnem", "1lDWb6b6ieDQ2xT7ewTC3G")
-        .httpManager(TestUtil.MockedHttpManager.returningJson("tracks.json"))
+        .setHttpManager(TestUtil.MockedHttpManager.returningJson("tracks.json"))
         .build();
 
     final List<Track> tracks = request.get();

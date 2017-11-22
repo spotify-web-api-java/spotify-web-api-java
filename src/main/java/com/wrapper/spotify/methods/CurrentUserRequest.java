@@ -49,11 +49,11 @@ public class CurrentUserRequest extends AbstractRequest {
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
     public Builder accessToken(String accessToken) {
-      return header("Authorization", "Bearer " + accessToken);
+      return setHeaderParameter("Authorization", "Bearer " + accessToken);
     }
 
     public CurrentUserRequest build() {
-      path("/v1/me");
+      setPath("/v1/me");
       return new CurrentUserRequest(this);
     }
   }
