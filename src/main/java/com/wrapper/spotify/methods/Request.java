@@ -15,4 +15,8 @@ public interface Request {
 
   Url toUrl();
 
+  String toString();
+
+  String toString(final boolean withQueryParameters);
+
 }

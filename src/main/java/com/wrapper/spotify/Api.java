@@ -432,7 +432,7 @@ public class Api {
    *              and the callback to redirect_uri.It is useful to prevent CSRF exploits.
    * @return The URL where the user can give application permissions.
    */
-  public String createAuthorizeURL(List<String> scopes, String state) {
+  public UtilProtos.Url createAuthorizeURL(List<String> scopes, String state) {
     final AuthorizationURLRequest.Builder builder = AuthorizationURLRequest.builder();
     setDefaults(builder);
     builder.clientId(clientId);
@@ -444,7 +444,7 @@ public class Api {
     if (state != null) {
       builder.state(state);
     }
-    return builder.build().toString(true);
+    return builder.build().toUrl();
   }
 
   /**

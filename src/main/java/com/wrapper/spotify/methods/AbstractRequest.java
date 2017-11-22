@@ -14,46 +14,17 @@ import java.util.List;
 public abstract class AbstractRequest implements Request {
 
   private Url url;
-
   private HttpManager httpManager;
 
-  public Url toUrl() {
-    return url;
-  }
-
-  public String toString() {
-    return this.toString(false);
-  }
-
-  public String toString(final boolean withQueryParameters) {
-    return UrlUtil.assemble(url, withQueryParameters);
-  }
-
-  public String getJson() throws IOException, WebApiException {
-    return httpManager.get(url);
-  }
-
-  public String postJson() throws IOException, WebApiException {
-    return httpManager.post(url);
-  }
-
-  public String putJson() throws IOException, WebApiException {
-    return httpManager.put(url);
-  }
-
-  public String deleteJson() throws IOException, WebApiException {
-    return httpManager.delete(url);
-  }
-
   public AbstractRequest(Builder<?> builder) {
-    assert (builder.path != null);
+    assert (builder.scheme != null);
     assert (builder.host != null);
     assert (builder.port > 0);
-    assert (builder.scheme != null);
+    assert (builder.path != null);
     assert (builder.parameters != null);
-    assert (builder.parts != null);
     assert (builder.bodyParameters != null);
     assert (builder.headerParameters != null);
+    assert (builder.parts != null);
 
     if (builder.httpManager == null) {
       httpManager = Api.DEFAULT_HTTP_MANAGER;
@@ -62,14 +33,14 @@ public abstract class AbstractRequest implements Request {
     }
 
     Url.Builder urlBuilder = Url.newBuilder()
-             .setScheme(builder.scheme)
-             .setHost(builder.host)
-             .setPort(builder.port)
-             .setPath(builder.path)
-             .addAllParameters(builder.parameters)
-             .addAllBodyParameters(builder.bodyParameters)
-             .addAllHeaderParameters(builder.headerParameters)
-             .addAllParts(builder.parts);
+            .setScheme(builder.scheme)
+            .setHost(builder.host)
+            .setPort(builder.port)
+            .setPath(builder.path)
+            .addAllParameters(builder.parameters)
+            .addAllBodyParameters(builder.bodyParameters)
+            .addAllHeaderParameters(builder.headerParameters)
+            .addAllParts(builder.parts);
 
     if (builder.jsonBody != null) {
       urlBuilder.setJsonBody(builder.jsonBody.toString());
@@ -78,21 +49,94 @@ public abstract class AbstractRequest implements Request {
     url = urlBuilder.build();
   }
 
+  public Url toUrl() {
+    return url;
+  }
+
+  public String toString() {
+    return this.toString(true);
+  }
+
+  public String toString(final boolean withQueryParameters) {
+    return UrlUtil.toUri(url, withQueryParameters).toString();
+  }
+
+  public String getJson() throws
+          IOException,
+          NoContentException,
+          BadRequestException,
+          UnauthorizedException,
+          ForbiddenException,
+          NotFoundException,
+          TooManyRequestsException,
+          InternalServerErrorException,
+          BadGatewayException,
+          ServiceUnavailableException {
+    return httpManager.get(url);
+  }
+
+  public String postJson() throws
+          IOException,
+          NoContentException,
+          BadRequestException,
+          UnauthorizedException,
+          ForbiddenException,
+          NotFoundException,
+          TooManyRequestsException,
+          InternalServerErrorException,
+          BadGatewayException,
+          ServiceUnavailableException {
+    return httpManager.post(url);
+  }
+
+  public String putJson() throws
+          IOException,
+          NoContentException,
+          BadRequestException,
+          UnauthorizedException,
+          ForbiddenException,
+          NotFoundException,
+          TooManyRequestsException,
+          InternalServerErrorException,
+          BadGatewayException,
+          ServiceUnavailableException {
+    return httpManager.put(url);
+  }
+
+  public String deleteJson() throws
+          IOException,
+          NoContentException,
+          BadRequestException,
+          UnauthorizedException,
+          ForbiddenException,
+          NotFoundException,
+          TooManyRequestsException,
+          InternalServerErrorException,
+          BadGatewayException,
+          ServiceUnavailableException {
+    return httpManager.delete(url);
+  }
+
   public static abstract class Builder<BuilderType extends Builder<?>> implements Request.Builder {
 
+    protected HttpManager httpManager;
     protected Url.Scheme scheme = Api.DEFAULT_SCHEME;
     protected String host = Api.DEFAULT_HOST;
     protected int port = Api.DEFAULT_PORT;
     protected String path = null;
-    protected HttpManager httpManager;
-    protected JSON jsonBody;
     protected List<Url.Parameter> parameters = new ArrayList<>();
     protected List<Url.Parameter> headerParameters = new ArrayList<>();
-    protected List<Url.Part> parts = new ArrayList<>();
     protected List<Url.Parameter> bodyParameters = new ArrayList<>();
+    protected List<Url.Part> parts = new ArrayList<>();
+    protected JSON jsonBody;
 
     public BuilderType httpManager(HttpManager httpManager) {
       this.httpManager = httpManager;
+      return (BuilderType) this;
+    }
+
+    public BuilderType scheme(Url.Scheme scheme) {
+      this.scheme = scheme;
       return (BuilderType) this;
     }
 
@@ -106,8 +150,8 @@ public abstract class AbstractRequest implements Request {
       return (BuilderType) this;
     }
 
-    public BuilderType scheme(Url.Scheme scheme) {
-      this.scheme = scheme;
+    public BuilderType path(String path) {
+      this.path = path;
       return (BuilderType) this;
     }
 
@@ -118,6 +162,17 @@ public abstract class AbstractRequest implements Request {
 
       Url.Parameter parameter = Url.Parameter.newBuilder().setName(name).setValue(value).build();
       parameters.add(parameter);
+
+      return (BuilderType) this;
+    }
+
+    public BuilderType header(String name, String value) {
+      assert (name != null);
+      assert (name.length() > 0);
+      assert (value != null);
+
+      Url.Parameter parameter = Url.Parameter.newBuilder().setName(name).setValue(value).build();
+      headerParameters.add(parameter);
 
       return (BuilderType) this;
     }
@@ -133,32 +188,16 @@ public abstract class AbstractRequest implements Request {
       return (BuilderType) this;
     }
 
-    public BuilderType body(JSON jsonBody) {
-      assert (jsonBody != null);
-      this.jsonBody = jsonBody;
-
-      return (BuilderType) this;
-    }
-
-    public BuilderType header(String name, String value) {
-      assert (name != null);
-      assert (name.length() > 0);
-      assert (value != null);
-
-      Url.Parameter parameter= Url.Parameter.newBuilder().setName(name).setValue(value).build();
-      headerParameters.add(parameter);
-
-      return (BuilderType) this;
-    }
-
     public BuilderType part(Url.Part part) {
       assert (part != null);
       parts.add(part);
       return (BuilderType) this;
     }
 
-    public BuilderType path(String path) {
-      this.path = path;
+    public BuilderType body(JSON jsonBody) {
+      assert (jsonBody != null);
+      this.jsonBody = jsonBody;
+
       return (BuilderType) this;
     }
 

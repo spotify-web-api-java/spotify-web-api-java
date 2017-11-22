@@ -1,5 +1,6 @@
 package com.wrapper.spotify;
 
+import org.apache.http.Header;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.utils.URIBuilder;
 
@@ -23,6 +24,10 @@ public abstract class UrlUtil {
     }
   }
 
+  public static URI toUri(final UtilProtos.Url url) {
+    return toUri(url, true);
+  }
+
   public static URI toUri(final UtilProtos.Url url, final boolean withQueryParameters) {
     final URIBuilder builder = new URIBuilder()
             .setScheme(getSchemeName(url))
@@ -39,8 +44,17 @@ public abstract class UrlUtil {
     }
   }
 
-  public static String assemble(UtilProtos.Url url, final boolean withQueryParameters)  {
+  public static String toString(final UtilProtos.Url url) {
+    return toUri(url, true).toString();
+  }
+
+  public static String toString(final UtilProtos.Url url, final boolean withQueryParameters) {
     return toUri(url, withQueryParameters).toString();
+  }
+
+  public static Header[] getHeaders(final UtilProtos.Url url) {
+    final Header[] headers = new Header[url.getHeaderParametersCount()];
+    return url.getHeaderParametersList().toArray(headers);
   }
 
   public static String usernameToUri(String username){
@@ -57,7 +71,7 @@ public abstract class UrlUtil {
             .replaceAll("=", "%3D");
   }
 
-  private static List<NameValuePair> getParametersList(UtilProtos.Url url) {
+  public static List<NameValuePair> getParametersList(UtilProtos.Url url) {
     final List<UtilProtos.Url.Parameter> parameters = url.getParametersList();
     List<NameValuePair> result = new ArrayList<>();
     for (final UtilProtos.Url.Parameter p : parameters) {
@@ -73,7 +87,6 @@ public abstract class UrlUtil {
         }
       });
     }
-
     return result;
   }
 }

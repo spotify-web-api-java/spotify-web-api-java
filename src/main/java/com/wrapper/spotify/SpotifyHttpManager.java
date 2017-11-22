@@ -3,7 +3,8 @@ package com.wrapper.spotify;
 import com.wrapper.spotify.UtilProtos.Url;
 import com.wrapper.spotify.exceptions.*;
 import net.sf.json.JSONObject;
-import org.apache.http.NameValuePair;
+import org.apache.http.HttpStatus;
+import org.apache.http.StatusLine;
 import org.apache.http.client.config.CookieSpecs;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
@@ -15,14 +16,12 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
-import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
-import java.net.URI;
 import java.nio.charset.Charset;
-import java.util.ArrayList;
-import java.util.List;
+
+import static com.wrapper.spotify.UrlUtil.getParametersList;
 
 public class SpotifyHttpManager implements HttpManager {
 
@@ -54,14 +53,13 @@ public class SpotifyHttpManager implements HttpManager {
           ServiceUnavailableException {
     assert (url != null);
 
-    final String uri = UrlUtil.assemble(url, false);
-    final HttpGet method = new HttpGet(uri);
+    final HttpGet method = new HttpGet(UrlUtil.toUri(url));
+    method.setHeaders(UrlUtil.getHeaders(url));
 
-    for (Url.Parameter header : url.getHeaderParametersList()) {
-      method.setHeader(header.getName(), header.getValue());
-    }
+    String responseBody = getResponseBody(execute(method));
+    method.releaseConnection();
 
-    return execute(method);
+    return responseBody;
   }
 
   @Override
@@ -78,23 +76,19 @@ public class SpotifyHttpManager implements HttpManager {
           ServiceUnavailableException {
     assert (url != null);
 
-    final String uri = UrlUtil.assemble(url, false);
-    final HttpPost method = new HttpPost(uri);
-
-    for (Url.Parameter header : url.getHeaderParametersList()) {
-      method.setHeader(header.getName(), header.getValue());
-    }
+    final HttpPost method = new HttpPost(UrlUtil.toUri(url));
+    method.setHeaders(UrlUtil.getHeaders(url));
 
     if (url.hasJsonBody()) {
-      StringEntity stringEntity = new StringEntity(
-              url.getJsonBody(),
-              ContentType.APPLICATION_JSON);
-      method.setEntity(stringEntity);
+      method.setEntity(new StringEntity(url.getJsonBody(), ContentType.APPLICATION_JSON));
     } else {
-      method.setEntity(new UrlEncodedFormEntity(getBodyParametersAsNamedValuePairArray(url)));
+      method.setEntity(new UrlEncodedFormEntity(getParametersList(url)));
     }
 
-    return execute(method);
+    String responseBody = getResponseBody(execute(method));
+    method.releaseConnection();
+
+    return responseBody;
   }
 
   @Override
@@ -111,27 +105,21 @@ public class SpotifyHttpManager implements HttpManager {
           ServiceUnavailableException {
     assert (url != null);
 
-    final String uri = UrlUtil.assemble(url, false);
-    final HttpPut method = new HttpPut(uri);
-
-    for (Url.Parameter header : url.getHeaderParametersList()) {
-      method.setHeader(header.getName(), header.getValue());
-    }
+    final HttpPut method = new HttpPut(UrlUtil.toUri(url));
+    method.setHeaders(UrlUtil.getHeaders(url));
 
     if (url.hasJsonBody()) {
-      StringEntity stringEntity = new StringEntity(
-              url.getJsonBody(),
-              ContentType.APPLICATION_JSON);
-      method.setEntity(stringEntity);
+      method.setEntity(new StringEntity(url.getJsonBody(), ContentType.APPLICATION_JSON));
     } else {
-      method.setEntity(new UrlEncodedFormEntity(getBodyParametersAsNamedValuePairArray(url)));
+      method.setEntity(new UrlEncodedFormEntity(getParametersList(url)));
     }
 
-    return execute(method);
+    String responseBody = getResponseBody(execute(method));
+    method.releaseConnection();
+
+    return responseBody;
   }
 
-
-  // TODO(michael): Allow JSON body to be sent.
   @Override
   public String delete(UtilProtos.Url url) throws
           IOException,
@@ -146,26 +134,13 @@ public class SpotifyHttpManager implements HttpManager {
           ServiceUnavailableException {
     assert (url != null);
 
-    final String uri = UrlUtil.assemble(url, false);
-    final HttpDelete method = new HttpDelete(uri);
+    final HttpDelete method = new HttpDelete(UrlUtil.toUri(url));
+    method.setHeaders(UrlUtil.getHeaders(url));
 
-    for (Url.Parameter header : url.getHeaderParametersList()) {
-      method.setHeader(header.getName(), header.getValue());
-    }
+    String responseBody = getResponseBody(execute(method));
+    method.releaseConnection();
 
-    return execute(method);
-  }
-
-  private List<NameValuePair> getBodyParametersAsNamedValuePairArray(Url url) {
-    List<NameValuePair> out = new ArrayList<>();
-
-    for (Url.Parameter parameter : url.getBodyParametersList()) {
-      if (parameter.hasName() && parameter.hasValue()) {
-        out.add(new BasicNameValuePair(parameter.getName(), parameter.getValue()));
-      }
-    }
-
-    return out;
+    return responseBody;
   }
 
   private CloseableHttpResponse execute(HttpRequestBase method) throws
@@ -187,36 +162,14 @@ public class SpotifyHttpManager implements HttpManager {
             .custom()
             .setCookieSpec(CookieSpecs.DEFAULT)
             .build();
-    final CloseableHttpClient httpClient = HttpClients.custom()
+    final CloseableHttpClient httpClient = HttpClients
+            .custom()
             .setConnectionManager(connectionManager)
             .setDefaultConnectionConfig(connectionConfig)
             .setDefaultRequestConfig(requestConfig)
             .build();
 
-    try {
-      CloseableHttpResponse httpResponse = httpClient.execute(method);
-
-      handleErrorStatusCode(httpResponse);
-
-      String responseBody = EntityUtils.toString(httpResponse.getEntity(), "UTF-8");
-
-      handleErrorResponseBody(responseBody);
-
-      return responseBody;
-    } catch (IOException e) {
-      throw new IOException();
-    } finally {
-      method.releaseConnection();
-    }
-  }
-
-    if (statusCode >= 400 && statusCode < 500) {
-      throw new BadRequestException(String.valueOf(statusCode));
-    }
-    if (statusCode >= 500) {
-      throw new ServerErrorException(String.valueOf(statusCode));
-    }
-
+    return httpClient.execute(method);
   }
 
   private String getResponseBody(CloseableHttpResponse httpResponse) throws
