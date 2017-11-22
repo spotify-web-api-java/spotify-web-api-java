@@ -131,60 +131,47 @@ public abstract class AbstractRequest implements Request {
     protected JSON jsonBody;
 
     public BuilderType httpManager(HttpManager httpManager) {
+      assert (httpManager != null);
       this.httpManager = httpManager;
       return (BuilderType) this;
     }
 
     public BuilderType scheme(Url.Scheme scheme) {
+      assert (scheme != null);
       this.scheme = scheme;
       return (BuilderType) this;
     }
 
     public BuilderType host(String host) {
+      assert (host != null);
       this.host = host;
       return (BuilderType) this;
     }
 
     public BuilderType port(int port) {
+      assert (port > -1);
       this.port = port;
       return (BuilderType) this;
     }
 
     public BuilderType path(String path) {
+      assert (path != null);
       this.path = path;
       return (BuilderType) this;
     }
 
     public BuilderType parameter(String name, String value) {
-      assert (name != null);
-      assert (name.length() > 0);
-      assert (value != null);
-
-      Url.Parameter parameter = Url.Parameter.newBuilder().setName(name).setValue(value).build();
-      parameters.add(parameter);
-
+      addParameter(Url.Parameter.newBuilder(), parameters, name, value);
       return (BuilderType) this;
     }
 
     public BuilderType header(String name, String value) {
-      assert (name != null);
-      assert (name.length() > 0);
-      assert (value != null);
-
-      Url.Parameter parameter = Url.Parameter.newBuilder().setName(name).setValue(value).build();
-      headerParameters.add(parameter);
-
+      addParameter(Url.Parameter.newBuilder(), headerParameters, name, value);
       return (BuilderType) this;
     }
 
     public BuilderType body(String name, String value) {
-      assert (name != null);
-      assert (name.length() > 0);
-      assert (value != null);
-
-      Url.Parameter parameter = Url.Parameter.newBuilder().setName(name).setValue(value).build();
-      bodyParameters.add(parameter);
-
+      addParameter(Url.Parameter.newBuilder(), bodyParameters, name, value);
       return (BuilderType) this;
     }
 
@@ -199,6 +186,14 @@ public abstract class AbstractRequest implements Request {
       this.jsonBody = jsonBody;
 
       return (BuilderType) this;
+    }
+
+    private void addParameter(Url.Parameter.Builder builder, List<Url.Parameter> parameters, String  name, String value) {
+      assert (name != null);
+      assert (name.length() > 0);
+      assert (value != null);
+
+      parameters.add(builder.setName(name).setValue(value).build());
     }
 
   }
