@@ -456,7 +456,7 @@ public class ApiTest {
     final List<String> scopes = Arrays.asList("user-read-private", "user-read-email");
     final String state = "someExpectedStateString";
 
-    String authorizeUrlString = UrlUtil.toString(api.createAuthorizeURL(scopes, state));
+    String authorizeUrlString = UrlUtil.urlToString(api.createAuthorizeURL(scopes, state));
     assertEquals("https://accounts.spotify.com:443/authorize?client_id=fcecfc79122e4cd299473677a17cbd4d&response_type=code&redirect_uri=http%3A%2F%2Fwww.michaelthelin.se%2Ftest-callback&scope=user-read-private+user-read-email&state=someExpectedStateString", authorizeUrlString);
   }
 

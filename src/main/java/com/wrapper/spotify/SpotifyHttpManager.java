@@ -53,7 +53,7 @@ public class SpotifyHttpManager implements HttpManager {
           ServiceUnavailableException {
     assert (url != null);
 
-    final HttpGet method = new HttpGet(UrlUtil.toUri(url));
+    final HttpGet method = new HttpGet(UrlUtil.urlToUri(url));
     method.setHeaders(UrlUtil.getHeaders(url));
 
     String responseBody = getResponseBody(execute(method));
@@ -76,7 +76,7 @@ public class SpotifyHttpManager implements HttpManager {
           ServiceUnavailableException {
     assert (url != null);
 
-    final HttpPost method = new HttpPost(UrlUtil.toUri(url));
+    final HttpPost method = new HttpPost(UrlUtil.urlToUri(url));
     method.setHeaders(UrlUtil.getHeaders(url));
 
     if (url.hasJsonBody()) {
@@ -105,7 +105,7 @@ public class SpotifyHttpManager implements HttpManager {
           ServiceUnavailableException {
     assert (url != null);
 
-    final HttpPut method = new HttpPut(UrlUtil.toUri(url));
+    final HttpPut method = new HttpPut(UrlUtil.urlToUri(url));
     method.setHeaders(UrlUtil.getHeaders(url));
 
     if (url.hasJsonBody()) {
@@ -134,7 +134,7 @@ public class SpotifyHttpManager implements HttpManager {
           ServiceUnavailableException {
     assert (url != null);
 
-    final HttpDelete method = new HttpDelete(UrlUtil.toUri(url));
+    final HttpDelete method = new HttpDelete(UrlUtil.urlToUri(url));
     method.setHeaders(UrlUtil.getHeaders(url));
 
     String responseBody = getResponseBody(execute(method));

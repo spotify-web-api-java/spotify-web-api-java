@@ -58,7 +58,7 @@ public abstract class AbstractRequest implements Request {
   }
 
   public String toString(final boolean withQueryParameters) {
-    return UrlUtil.toUri(url, withQueryParameters).toString();
+    return UrlUtil.urlToUri(url, withQueryParameters).toString();
   }
 
   public String getJson() throws
