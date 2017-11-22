@@ -175,7 +175,7 @@ public abstract class AbstractRequest implements Request {
       return (BuilderType) this;
     }
 
-    public BuilderType part(Url.Part part) {
+    public BuilderType setPart(Url.Part part) {
       assert (part != null);
       parts.add(part);
       return (BuilderType) this;
