@@ -2,7 +2,7 @@ package com.wrapper.spotify.methods;
 
 import com.google.common.base.Joiner;
 import com.google.common.util.concurrent.SettableFuture;
-import com.wrapper.spotify.exceptions.WebApiException;
+import com.wrapper.spotify.exceptions.*;
 
 import java.io.IOException;
 import java.util.List;
@@ -16,18 +16,26 @@ public class RemoveFromMySavedTracksRequest extends AbstractRequest {
   public SettableFuture<String> getAsync() {
     final SettableFuture<String> removeFromMyTracksFuture = SettableFuture.create();
 
-    final String response;
     try {
-      response = deleteJson();
-      removeFromMyTracksFuture.set(response);
-    } catch (IOException|WebApiException e) {
+      removeFromMyTracksFuture.set(deleteJson());
+    } catch (Throwable e) {
       removeFromMyTracksFuture.setException(e);
     }
 
     return removeFromMyTracksFuture;
   }
 
-  public String get() throws IOException, WebApiException {
+  public String get() throws
+          IOException,
+          NoContentException,
+          BadRequestException,
+          UnauthorizedException,
+          ForbiddenException,
+          NotFoundException,
+          TooManyRequestsException,
+          InternalServerErrorException,
+          BadGatewayException,
+          ServiceUnavailableException {
     return deleteJson();
   }
 

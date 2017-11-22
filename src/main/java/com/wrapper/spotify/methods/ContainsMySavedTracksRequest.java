@@ -3,7 +3,7 @@ package com.wrapper.spotify.methods;
 import com.google.common.base.Joiner;
 import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.JsonUtil;
-import com.wrapper.spotify.exceptions.WebApiException;
+import com.wrapper.spotify.exceptions.*;
 
 import java.io.IOException;
 import java.util.List;
@@ -22,14 +22,24 @@ public class ContainsMySavedTracksRequest extends AbstractRequest {
       response = getJson();
       List<Boolean> containedTracks = JsonUtil.createBooleans(response);
       containsTracksFuture.set(containedTracks);
-    } catch (IOException|WebApiException e) {
+    } catch (Throwable e) {
       containsTracksFuture.setException(e);
     }
 
     return containsTracksFuture;
   }
 
-  public List<Boolean> get() throws IOException, WebApiException {
+  public List<Boolean> get() throws
+          IOException,
+          NoContentException,
+          BadRequestException,
+          UnauthorizedException,
+          ForbiddenException,
+          NotFoundException,
+          TooManyRequestsException,
+          InternalServerErrorException,
+          BadGatewayException,
+          ServiceUnavailableException {
     return JsonUtil.createBooleans(getJson());
   }
 

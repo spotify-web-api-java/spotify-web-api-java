@@ -2,7 +2,7 @@ package com.wrapper.spotify.methods;
 
 import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.JsonUtil;
-import com.wrapper.spotify.exceptions.WebApiException;
+import com.wrapper.spotify.exceptions.*;
 import com.wrapper.spotify.models.Album;
 
 import java.io.IOException;
@@ -25,7 +25,17 @@ public class AlbumRequest extends AbstractRequest {
     return albumFuture;
   }
 
-  public Album get() throws IOException, WebApiException {
+  public Album get() throws
+          IOException,
+          NoContentException,
+          BadRequestException,
+          UnauthorizedException,
+          ForbiddenException,
+          NotFoundException,
+          TooManyRequestsException,
+          InternalServerErrorException,
+          BadGatewayException,
+          ServiceUnavailableException {
     return JsonUtil.createAlbum(getJson());
   }
 

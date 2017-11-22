@@ -2,7 +2,7 @@ package com.wrapper.spotify.methods;
 
 import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.JsonUtil;
-import com.wrapper.spotify.exceptions.WebApiException;
+import com.wrapper.spotify.exceptions.*;
 import com.wrapper.spotify.models.Paging;
 import com.wrapper.spotify.models.PlaylistTrack;
 import net.sf.json.JSONObject;
@@ -32,7 +32,17 @@ public class PlaylistTracksRequest extends AbstractRequest {
     return playlistFuture;
   }
 
-  public Paging<PlaylistTrack> get() throws IOException, WebApiException {
+  public Paging<PlaylistTrack> get() throws
+          IOException,
+          NoContentException,
+          BadRequestException,
+          UnauthorizedException,
+          ForbiddenException,
+          NotFoundException,
+          TooManyRequestsException,
+          InternalServerErrorException,
+          BadGatewayException,
+          ServiceUnavailableException {
     final JSONObject jsonObject = JSONObject.fromObject(getJson());
 
     return JsonUtil.createPlaylistTrackPage(jsonObject);

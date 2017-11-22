@@ -1,10 +1,7 @@
 package com.wrapper.spotify;
 
 import com.wrapper.spotify.UtilProtos.Url;
-import com.wrapper.spotify.exceptions.BadRequestException;
-import com.wrapper.spotify.exceptions.EmptyResponseException;
-import com.wrapper.spotify.exceptions.ServerErrorException;
-import com.wrapper.spotify.exceptions.WebApiException;
+import com.wrapper.spotify.exceptions.*;
 import net.sf.json.JSONObject;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.config.CookieSpecs;
@@ -44,7 +41,17 @@ public class SpotifyHttpManager implements HttpManager {
   }
 
   @Override
-  public String get(Url url) throws WebApiException, IOException {
+  public String get(Url url) throws
+          IOException,
+          NoContentException,
+          BadRequestException,
+          UnauthorizedException,
+          ForbiddenException,
+          NotFoundException,
+          TooManyRequestsException,
+          InternalServerErrorException,
+          BadGatewayException,
+          ServiceUnavailableException {
     assert (url != null);
 
     final String uri = UrlUtil.assemble(url, false);
@@ -58,7 +65,17 @@ public class SpotifyHttpManager implements HttpManager {
   }
 
   @Override
-  public String post(UtilProtos.Url url) throws IOException, WebApiException {
+  public String post(UtilProtos.Url url) throws
+          IOException,
+          NoContentException,
+          BadRequestException,
+          UnauthorizedException,
+          ForbiddenException,
+          NotFoundException,
+          TooManyRequestsException,
+          InternalServerErrorException,
+          BadGatewayException,
+          ServiceUnavailableException {
     assert (url != null);
 
     final String uri = UrlUtil.assemble(url, false);
@@ -81,7 +98,17 @@ public class SpotifyHttpManager implements HttpManager {
   }
 
   @Override
-  public String put(UtilProtos.Url url) throws IOException, WebApiException {
+  public String put(UtilProtos.Url url) throws
+          IOException,
+          NoContentException,
+          BadRequestException,
+          UnauthorizedException,
+          ForbiddenException,
+          NotFoundException,
+          TooManyRequestsException,
+          InternalServerErrorException,
+          BadGatewayException,
+          ServiceUnavailableException {
     assert (url != null);
 
     final String uri = UrlUtil.assemble(url, false);
@@ -106,7 +133,17 @@ public class SpotifyHttpManager implements HttpManager {
 
   // TODO(michael): Allow JSON body to be sent.
   @Override
-  public String delete(UtilProtos.Url url) throws IOException, WebApiException {
+  public String delete(UtilProtos.Url url) throws
+          IOException,
+          NoContentException,
+          BadRequestException,
+          UnauthorizedException,
+          ForbiddenException,
+          NotFoundException,
+          TooManyRequestsException,
+          InternalServerErrorException,
+          BadGatewayException,
+          ServiceUnavailableException {
     assert (url != null);
 
     final String uri = UrlUtil.assemble(url, false);
@@ -131,7 +168,17 @@ public class SpotifyHttpManager implements HttpManager {
     return out;
   }
 
-  private String execute(HttpRequestBase method) throws WebApiException, IOException {
+  private CloseableHttpResponse execute(HttpRequestBase method) throws
+          IOException,
+          NoContentException,
+          BadRequestException,
+          UnauthorizedException,
+          ForbiddenException,
+          NotFoundException,
+          TooManyRequestsException,
+          InternalServerErrorException,
+          BadGatewayException,
+          ServiceUnavailableException {
     final ConnectionConfig connectionConfig = ConnectionConfig
             .custom()
             .setCharset(Charset.forName("UTF-8"))
@@ -163,13 +210,6 @@ public class SpotifyHttpManager implements HttpManager {
     }
   }
 
-  /*
-   * TODO: Error handling could be more granular and throw a different exception depending on status code.
-   * It could also look into the JSON object to find an error message.
-   */
-  private void handleErrorStatusCode(CloseableHttpResponse httpResponse) throws BadRequestException, ServerErrorException {
-    int statusCode = httpResponse.getStatusLine().getStatusCode();
-
     if (statusCode >= 400 && statusCode < 500) {
       throw new BadRequestException(String.valueOf(statusCode));
     }
@@ -179,17 +219,53 @@ public class SpotifyHttpManager implements HttpManager {
 
   }
 
-  private void handleErrorResponseBody(String responseBody) throws WebApiException {
-    if (responseBody == null) {
-      throw new EmptyResponseException("No response body");
-    }
+  private String getResponseBody(CloseableHttpResponse httpResponse) throws
+          IOException,
+          NoContentException,
+          BadRequestException,
+          UnauthorizedException,
+          ForbiddenException,
+          NotFoundException,
+          TooManyRequestsException,
+          InternalServerErrorException,
+          BadGatewayException,
+          ServiceUnavailableException {
+    StatusLine statusLine = httpResponse.getStatusLine();
+    String responseBody = EntityUtils.toString(httpResponse.getEntity(), "UTF-8");
 
-    if (!responseBody.equals("") && responseBody.startsWith("{")) {
-      final JSONObject jsonObject = JSONObject.fromObject(responseBody);
+    final JSONObject jsonObject = JSONObject.fromObject(responseBody);
 
-      if (jsonObject.has("error")) {
-        throw new WebApiException(jsonObject.getString("error"));
-      }
+    switch (statusLine.getStatusCode()) {
+      case HttpStatus.SC_OK:
+        return responseBody;
+      case HttpStatus.SC_CREATED:
+        return responseBody;
+      case HttpStatus.SC_ACCEPTED:
+        return responseBody;
+      case HttpStatus.SC_NO_CONTENT:
+        throw new NoContentException(statusLine.getReasonPhrase());
+      case HttpStatus.SC_NOT_MODIFIED:
+        return responseBody;
+      case HttpStatus.SC_BAD_REQUEST:
+        if (jsonObject.has("error")) {
+          throw new BadRequestException(jsonObject.getString("error"));
+        }
+      case HttpStatus.SC_UNAUTHORIZED:
+        throw new UnauthorizedException(statusLine.getReasonPhrase());
+      case HttpStatus.SC_FORBIDDEN:
+        throw new ForbiddenException(statusLine.getReasonPhrase());
+      case HttpStatus.SC_NOT_FOUND:
+        throw new NotFoundException(statusLine.getReasonPhrase());
+      case 429: // TOO_MANY_REQUESTS (additional status code, RFC 6585)
+        throw new TooManyRequestsException(statusLine.getReasonPhrase());
+      case HttpStatus.SC_INTERNAL_SERVER_ERROR:
+        throw new InternalServerErrorException(statusLine.getReasonPhrase());
+      case HttpStatus.SC_BAD_GATEWAY:
+        throw new BadGatewayException(statusLine.getReasonPhrase());
+      case HttpStatus.SC_SERVICE_UNAVAILABLE:
+        throw new ServiceUnavailableException(statusLine.getReasonPhrase());
+      default:
+        return responseBody;
     }
   }
 

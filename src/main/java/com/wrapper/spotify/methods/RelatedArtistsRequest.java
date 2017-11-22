@@ -2,7 +2,7 @@ package com.wrapper.spotify.methods;
 
 import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.JsonUtil;
-import com.wrapper.spotify.exceptions.WebApiException;
+import com.wrapper.spotify.exceptions.*;
 import com.wrapper.spotify.models.Artist;
 import net.sf.json.JSONObject;
 
@@ -32,7 +32,17 @@ public class RelatedArtistsRequest extends AbstractRequest {
     return artistsFuture;
   }
 
-  public List<Artist> get() throws IOException, WebApiException {
+  public List<Artist> get() throws
+          IOException,
+          NoContentException,
+          BadRequestException,
+          UnauthorizedException,
+          ForbiddenException,
+          NotFoundException,
+          TooManyRequestsException,
+          InternalServerErrorException,
+          BadGatewayException,
+          ServiceUnavailableException {
     final JSONObject jsonObject = JSONObject.fromObject(getJson());
     return JsonUtil.createArtists(jsonObject);
   }

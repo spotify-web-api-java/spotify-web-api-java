@@ -1,6 +1,6 @@
 package com.wrapper.spotify;
 
-import com.wrapper.spotify.exceptions.WebApiException;
+import com.wrapper.spotify.exceptions.*;
 
 import java.io.*;
 
@@ -43,7 +43,17 @@ public class TestUtil {
       return mockedHttpManager;
     }
 
-    public static HttpManager returningString(String returnedString) throws IOException, WebApiException {
+    public static HttpManager returningString(String returnedString) throws
+            IOException,
+            NoContentException,
+            BadRequestException,
+            UnauthorizedException,
+            ForbiddenException,
+            NotFoundException,
+            TooManyRequestsException,
+            InternalServerErrorException,
+            BadGatewayException,
+            ServiceUnavailableException {
       final HttpManager mockedHttpManager = mock(HttpManager.class);
       when(mockedHttpManager.get((UtilProtos.Url) any())).thenReturn(returnedString);
       when(mockedHttpManager.post((UtilProtos.Url) any())).thenReturn(returnedString);

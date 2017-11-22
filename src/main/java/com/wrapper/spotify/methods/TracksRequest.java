@@ -3,7 +3,7 @@ package com.wrapper.spotify.methods;
 import com.google.common.base.Joiner;
 import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.JsonUtil;
-import com.wrapper.spotify.exceptions.WebApiException;
+import com.wrapper.spotify.exceptions.*;
 import com.wrapper.spotify.models.Track;
 import net.sf.json.JSONObject;
 
@@ -30,7 +30,17 @@ public class TracksRequest extends AbstractRequest {
     return tracksFuture;
   }
 
-  public List<Track> get() throws IOException, WebApiException {
+  public List<Track> get() throws
+          IOException,
+          NoContentException,
+          BadRequestException,
+          UnauthorizedException,
+          ForbiddenException,
+          NotFoundException,
+          TooManyRequestsException,
+          InternalServerErrorException,
+          BadGatewayException,
+          ServiceUnavailableException {
     final JSONObject jsonObject = JSONObject.fromObject(getJson());
     return JsonUtil.createTracks(jsonObject);
   }

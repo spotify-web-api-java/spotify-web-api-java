@@ -1,7 +1,7 @@
 package com.wrapper.spotify.methods;
 
 import com.google.common.util.concurrent.SettableFuture;
-import com.wrapper.spotify.exceptions.WebApiException;
+import com.wrapper.spotify.exceptions.*;
 import com.wrapper.spotify.models.AudioFeature;
 import com.wrapper.spotify.models.Modality;
 import com.wrapper.spotify.models.ObjectType;
@@ -28,7 +28,17 @@ public class AudioFeatureRequest extends AbstractRequest {
         return audioFeatureFuture;
     }
 
-    public AudioFeature get() throws IOException, WebApiException {
+    public AudioFeature get() throws
+            IOException,
+            NoContentException,
+            BadRequestException,
+            UnauthorizedException,
+            ForbiddenException,
+            NotFoundException,
+            TooManyRequestsException,
+            InternalServerErrorException,
+            BadGatewayException,
+            ServiceUnavailableException {
         JSONObject jsonObject = JSONObject.fromObject(getJson());
         return createAudioFeature(jsonObject);
     }

@@ -4,7 +4,7 @@ import com.google.common.base.Joiner;
 import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.JsonUtil;
-import com.wrapper.spotify.exceptions.WebApiException;
+import com.wrapper.spotify.exceptions.*;
 import com.wrapper.spotify.methods.AbstractRequest;
 import com.wrapper.spotify.models.ClientCredentials;
 import net.sf.json.JSONObject;
@@ -36,7 +36,17 @@ public class ClientCredentialsGrantRequest extends AbstractRequest {
     return future;
   }
 
-  public ClientCredentials get() throws IOException, WebApiException {
+  public ClientCredentials get() throws
+          IOException,
+          NoContentException,
+          BadRequestException,
+          UnauthorizedException,
+          ForbiddenException,
+          NotFoundException,
+          TooManyRequestsException,
+          InternalServerErrorException,
+          BadGatewayException,
+          ServiceUnavailableException {
     JSONObject jsonObject = JSONObject.fromObject(postJson());
     return JsonUtil.createApplicationAuthenticationToken(jsonObject);
   }

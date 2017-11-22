@@ -2,7 +2,7 @@ package com.wrapper.spotify.methods;
 
 import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.JsonUtil;
-import com.wrapper.spotify.exceptions.WebApiException;
+import com.wrapper.spotify.exceptions.*;
 import com.wrapper.spotify.models.User;
 import net.sf.json.JSONObject;
 
@@ -27,7 +27,17 @@ public class CurrentUserRequest extends AbstractRequest {
     return userFuture;
   }
 
-  public User get() throws IOException, WebApiException {
+  public User get() throws
+          IOException,
+          NoContentException,
+          BadRequestException,
+          UnauthorizedException,
+          ForbiddenException,
+          NotFoundException,
+          TooManyRequestsException,
+          InternalServerErrorException,
+          BadGatewayException,
+          ServiceUnavailableException {
     JSONObject jsonObject = JSONObject.fromObject(getJson());
     return JsonUtil.createUser(jsonObject);
   }

@@ -2,7 +2,7 @@ package com.wrapper.spotify.methods;
 
 import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.JsonUtil;
-import com.wrapper.spotify.exceptions.WebApiException;
+import com.wrapper.spotify.exceptions.*;
 import com.wrapper.spotify.models.FeaturedPlaylists;
 import net.sf.json.JSONObject;
 
@@ -23,7 +23,17 @@ public class FeaturedPlaylistsRequest extends AbstractRequest {
    * @throws IOException In case of networking issues.
    * @throws WebApiException In case of error replies from the Web API.
    */
-  public FeaturedPlaylists get() throws IOException, WebApiException {
+  public FeaturedPlaylists get() throws
+          IOException,
+          NoContentException,
+          BadRequestException,
+          UnauthorizedException,
+          ForbiddenException,
+          NotFoundException,
+          TooManyRequestsException,
+          InternalServerErrorException,
+          BadGatewayException,
+          ServiceUnavailableException {
     final JSONObject jsonObject = JSONObject.fromObject(getJson());
     return JsonUtil.createFeaturedPlaylist(jsonObject);
   }

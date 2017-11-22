@@ -1,7 +1,7 @@
 package com.wrapper.spotify.methods;
 
 import com.google.common.util.concurrent.SettableFuture;
-import com.wrapper.spotify.exceptions.WebApiException;
+import com.wrapper.spotify.exceptions.*;
 import net.sf.json.JSONArray;
 
 import java.io.IOException;
@@ -20,14 +20,24 @@ public class AddToMySavedTracksRequest extends AbstractRequest {
     try {
       response = putJson();
       addToSavedTracksFuture.set(response);
-    } catch (IOException|WebApiException e) {
+    } catch (Throwable e) {
       addToSavedTracksFuture.setException(e);
     }
 
     return addToSavedTracksFuture;
   }
 
-  public String get() throws IOException, WebApiException {
+  public String get() throws
+          IOException,
+          NoContentException,
+          BadRequestException,
+          UnauthorizedException,
+          ForbiddenException,
+          NotFoundException,
+          TooManyRequestsException,
+          InternalServerErrorException,
+          BadGatewayException,
+          ServiceUnavailableException {
     return putJson();
   }
 

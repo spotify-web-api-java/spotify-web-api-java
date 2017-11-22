@@ -3,7 +3,7 @@ package com.wrapper.spotify.methods.authentication;
 import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.JsonUtil;
-import com.wrapper.spotify.exceptions.WebApiException;
+import com.wrapper.spotify.exceptions.*;
 import com.wrapper.spotify.methods.AbstractRequest;
 import com.wrapper.spotify.models.RefreshAccessTokenCredentials;
 import net.sf.json.JSONObject;
@@ -34,7 +34,17 @@ public class RefreshAccessTokenRequest extends AbstractRequest {
     return future;
   }
 
-  public RefreshAccessTokenCredentials get() throws IOException, WebApiException {
+  public RefreshAccessTokenCredentials get() throws
+          IOException,
+          NoContentException,
+          BadRequestException,
+          UnauthorizedException,
+          ForbiddenException,
+          NotFoundException,
+          TooManyRequestsException,
+          InternalServerErrorException,
+          BadGatewayException,
+          ServiceUnavailableException {
     JSONObject jsonObject = JSONObject.fromObject(postJson());
     return JsonUtil.createRefreshAccessTokenResponse(jsonObject);
   }

@@ -3,7 +3,7 @@ package com.wrapper.spotify.methods;
 import com.google.common.base.Joiner;
 import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.JsonUtil;
-import com.wrapper.spotify.exceptions.WebApiException;
+import com.wrapper.spotify.exceptions.*;
 import com.wrapper.spotify.models.AlbumSimplified;
 import com.wrapper.spotify.models.AlbumType;
 import com.wrapper.spotify.models.Paging;
@@ -30,7 +30,17 @@ public class AlbumsForArtistRequest extends AbstractRequest {
     return searchResultFuture;
   }
 
-  public Paging<AlbumSimplified> get() throws IOException, WebApiException {
+  public Paging<AlbumSimplified> get() throws
+          IOException,
+          NoContentException,
+          BadRequestException,
+          UnauthorizedException,
+          ForbiddenException,
+          NotFoundException,
+          TooManyRequestsException,
+          InternalServerErrorException,
+          BadGatewayException,
+          ServiceUnavailableException {
     final JSONObject jsonObject = JSONObject.fromObject(getJson());
     return JsonUtil.createSimpleAlbumPage(jsonObject);
   }

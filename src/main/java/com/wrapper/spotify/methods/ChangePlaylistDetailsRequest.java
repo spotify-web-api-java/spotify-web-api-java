@@ -2,7 +2,7 @@ package com.wrapper.spotify.methods;
 
 import com.google.common.collect.Maps;
 import com.google.common.util.concurrent.SettableFuture;
-import com.wrapper.spotify.exceptions.WebApiException;
+import com.wrapper.spotify.exceptions.*;
 import net.sf.json.JSONObject;
 
 import java.io.IOException;
@@ -21,14 +21,24 @@ public class ChangePlaylistDetailsRequest extends AbstractRequest {
     try {
       response = putJson();
       changeDetailsFuture.set(response);
-    } catch (IOException|WebApiException e) {
+    } catch (Throwable e) {
       changeDetailsFuture.setException(e);
     }
 
     return changeDetailsFuture;
   }
 
-  public String get() throws IOException, WebApiException {
+  public String get() throws
+          IOException,
+          NoContentException,
+          BadRequestException,
+          UnauthorizedException,
+          ForbiddenException,
+          NotFoundException,
+          TooManyRequestsException,
+          InternalServerErrorException,
+          BadGatewayException,
+          ServiceUnavailableException {
     return putJson();
   }
 

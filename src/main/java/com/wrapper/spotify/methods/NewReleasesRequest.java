@@ -2,7 +2,7 @@ package com.wrapper.spotify.methods;
 
 import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.JsonUtil;
-import com.wrapper.spotify.exceptions.WebApiException;
+import com.wrapper.spotify.exceptions.*;
 import com.wrapper.spotify.models.NewReleases;
 import net.sf.json.JSONObject;
 
@@ -28,7 +28,17 @@ public class NewReleasesRequest extends AbstractRequest {
     return newReleasesFuture;
   }
 
-  public NewReleases get() throws IOException, WebApiException {
+  public NewReleases get() throws
+          IOException,
+          NoContentException,
+          BadRequestException,
+          UnauthorizedException,
+          ForbiddenException,
+          NotFoundException,
+          TooManyRequestsException,
+          InternalServerErrorException,
+          BadGatewayException,
+          ServiceUnavailableException {
     return JsonUtil.createNewReleases(JSONObject.fromObject(getJson()));
   }
 

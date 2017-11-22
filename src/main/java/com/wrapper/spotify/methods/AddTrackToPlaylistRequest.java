@@ -2,7 +2,7 @@ package com.wrapper.spotify.methods;
 
 import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.JsonUtil;
-import com.wrapper.spotify.exceptions.WebApiException;
+import com.wrapper.spotify.exceptions.*;
 import com.wrapper.spotify.models.SnapshotResult;
 
 import java.io.IOException;
@@ -29,7 +29,17 @@ public class AddTrackToPlaylistRequest extends AbstractRequest {
     return addTrackFuture;
   }
 
-  public SnapshotResult get() throws IOException, WebApiException {
+  public SnapshotResult get() throws
+          IOException,
+          NoContentException,
+          BadRequestException,
+          UnauthorizedException,
+          ForbiddenException,
+          NotFoundException,
+          TooManyRequestsException,
+          InternalServerErrorException,
+          BadGatewayException,
+          ServiceUnavailableException {
     return JsonUtil.createSnapshotResult(postJson());
   }
 
