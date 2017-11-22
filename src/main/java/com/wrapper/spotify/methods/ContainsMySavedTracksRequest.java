@@ -22,7 +22,7 @@ public class ContainsMySavedTracksRequest extends AbstractRequest {
       response = getJson();
       List<Boolean> containedTracks = JsonUtil.createBooleans(response);
       containsTracksFuture.set(containedTracks);
-    } catch (Throwable e) {
+    } catch (Exception e) {
       containsTracksFuture.setException(e);
     }
 

@@ -20,7 +20,7 @@ public class AddToMySavedTracksRequest extends AbstractRequest {
     try {
       response = putJson();
       addToSavedTracksFuture.set(response);
-    } catch (Throwable e) {
+    } catch (Exception e) {
       addToSavedTracksFuture.setException(e);
     }
 

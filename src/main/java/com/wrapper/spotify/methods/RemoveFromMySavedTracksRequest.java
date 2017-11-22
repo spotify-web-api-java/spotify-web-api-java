@@ -18,7 +18,7 @@ public class RemoveFromMySavedTracksRequest extends AbstractRequest {
 
     try {
       removeFromMyTracksFuture.set(deleteJson());
-    } catch (Throwable e) {
+    } catch (Exception e) {
       removeFromMyTracksFuture.setException(e);
     }
 
