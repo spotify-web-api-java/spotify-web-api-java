@@ -46,32 +46,20 @@ public abstract class UrlUtil {
     }
   }
 
-  public static String userToUri(String userName){
-    String uriString = "";
-    try {
-       uriString = URLEncoder.encode(userName, "UTF-8");
-    } catch (Throwable e) {
-       e.printStackTrace();
-    }
-    uriString = uriString.replaceAll("!", toHex("!"));
-    uriString = uriString.replaceAll("\\?", toHex("?"));
-    uriString = uriString.replaceAll("\\+", toHex("+"));
-    uriString = uriString.replaceAll("=", toHex("="));
-    return uriString;
   }
 
-  private static String toHex(String s) {
-    StringBuffer buf;
+  public static String usernameToUri(String username){
+    String uriString = "";
     try {
-       buf = new StringBuffer(s.getBytes("UTF-8").length);
-       for (byte x : s.getBytes("UTF-8")) {
-         buf.append("%");
-         buf.append(Integer.toHexString(x & 0xFF));
-      }
+       uriString = URLEncoder.encode(username, "UTF-8");
     } catch (UnsupportedEncodingException e) {
-       throw new IllegalStateException(e);
+      e.printStackTrace();
     }
-    return buf.toString().toUpperCase();
+    return uriString
+            .replaceAll("!", "%21")
+            .replaceAll("\\?", "%3F")
+            .replaceAll("\\+", "%2B")
+            .replaceAll("=", "%3D");
   }
 
   private static String getParametersListAsString(UtilProtos.Url url) {
