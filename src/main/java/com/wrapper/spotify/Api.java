@@ -444,7 +444,7 @@ public class Api {
     if (state != null) {
       builder.state(state);
     }
-    return builder.build().toStringWithQueryParameters();
+    return builder.build().toString(true);
   }
 
   /**

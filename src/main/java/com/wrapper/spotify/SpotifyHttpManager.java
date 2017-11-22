@@ -22,6 +22,7 @@ import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
+import java.net.URI;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
@@ -46,7 +47,7 @@ public class SpotifyHttpManager implements HttpManager {
   public String get(Url url) throws WebApiException, IOException {
     assert (url != null);
 
-    final String uri = UrlUtil.assemble(url);
+    final String uri = UrlUtil.assemble(url, false);
     final HttpGet method = new HttpGet(uri);
 
     for (Url.Parameter header : url.getHeaderParametersList()) {
@@ -60,7 +61,7 @@ public class SpotifyHttpManager implements HttpManager {
   public String post(UtilProtos.Url url) throws IOException, WebApiException {
     assert (url != null);
 
-    final String uri = UrlUtil.assemble(url);
+    final String uri = UrlUtil.assemble(url, false);
     final HttpPost method = new HttpPost(uri);
 
     for (Url.Parameter header : url.getHeaderParametersList()) {
@@ -83,7 +84,7 @@ public class SpotifyHttpManager implements HttpManager {
   public String put(UtilProtos.Url url) throws IOException, WebApiException {
     assert (url != null);
 
-    final String uri = UrlUtil.assemble(url);
+    final String uri = UrlUtil.assemble(url, false);
     final HttpPut method = new HttpPut(uri);
 
     for (Url.Parameter header : url.getHeaderParametersList()) {
@@ -108,7 +109,7 @@ public class SpotifyHttpManager implements HttpManager {
   public String delete(UtilProtos.Url url) throws IOException, WebApiException {
     assert (url != null);
 
-    final String uri = UrlUtil.assemble(url);
+    final String uri = UrlUtil.assemble(url, false);
     final HttpDelete method = new HttpDelete(uri);
 
     for (Url.Parameter header : url.getHeaderParametersList()) {

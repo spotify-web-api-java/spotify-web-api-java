@@ -22,11 +22,11 @@ public abstract class AbstractRequest implements Request {
   }
 
   public String toString() {
-    return UrlUtil.assemble(url);
+    return this.toString(false);
   }
 
-  public String toStringWithQueryParameters() {
-    return UrlUtil.assembleWithQueryParameters(url);
+  public String toString(final boolean withQueryParameters) {
+    return UrlUtil.assemble(url, withQueryParameters);
   }
 
   public String getJson() throws IOException, WebApiException {
