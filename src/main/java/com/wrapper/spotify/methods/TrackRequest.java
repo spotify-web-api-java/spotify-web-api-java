@@ -13,6 +13,10 @@ public class TrackRequest extends AbstractRequest {
     super(builder);
   }
 
+  public static Builder builder() {
+    return new Builder();
+  }
+
   public SettableFuture<Track> getAsync() {
     SettableFuture<Track> trackFuture = SettableFuture.create();
 
@@ -38,11 +42,6 @@ public class TrackRequest extends AbstractRequest {
           ServiceUnavailableException {
     return JsonUtil.createTrack(getJson());
   }
-
-  public static Builder builder() {
-    return new Builder();
-  }
-
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 

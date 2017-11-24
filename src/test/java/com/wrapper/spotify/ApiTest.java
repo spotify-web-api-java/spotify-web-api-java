@@ -27,7 +27,7 @@ public class ApiTest {
   }
 
   @Test
-  public void shouldCreateGetAudioFeaturesUrl(){
+  public void shouldCreateGetAudioFeaturesUrl() {
     Api api = Api.DEFAULT_API;
     Request request = api.getAudioFeature("1hmNbafW4sAPNaGc7LeXAZ").build();
     assertEquals("https://api.spotify.com:443/v1/audio-features/1hmNbafW4sAPNaGc7LeXAZ", request.toString(false));
@@ -90,9 +90,9 @@ public class ApiTest {
   public void shouldHaveMultipleAlbumTypeParametersInArtistsAlbumUrl() {
     Api api = Api.DEFAULT_API;
     Request request = api.getAlbumsForArtist("4AK6F7OLvEQ5QYCBNiQWHq")
-        .types(AlbumType.ALBUM, AlbumType.SINGLE)
-        .market("SE")
-        .build();
+            .types(AlbumType.ALBUM, AlbumType.SINGLE)
+            .market("SE")
+            .build();
 
     assertEquals("https://api.spotify.com:443/v1/artists/4AK6F7OLvEQ5QYCBNiQWHq/albums", request.toString(false));
     assertHasParameter(request.toUrl(), "album_type", "ALBUM,SINGLE");
@@ -344,7 +344,7 @@ public class ApiTest {
 
     final String myUsername = "thelinmichael";
     final String myPlaylistId = "5ieJqeLJjjI8iJWaxeBLuK";
-    final List<String> tracksToAdd = Arrays.asList("spotify:track:4BYGxv4rxSNcTgT3DsFB9o","spotify:tracks:0BG2iE6McPhmAEKIhfqy1X");
+    final List<String> tracksToAdd = Arrays.asList("spotify:track:4BYGxv4rxSNcTgT3DsFB9o", "spotify:tracks:0BG2iE6McPhmAEKIhfqy1X");
     final int insertIndex = 3;
 
     final Request request = api.addTracksToPlaylist(myUsername, myPlaylistId, tracksToAdd).position(insertIndex).build();
@@ -369,12 +369,12 @@ public class ApiTest {
     final String name = "Testing name change";
 
     final Request request = api.changePlaylistDetails(myUsername, myPlaylistId)
-        .publicAccess(isPublic)
-        .name(name)
-        .build();
+            .publicAccess(isPublic)
+            .name(name)
+            .build();
 
     assertEquals("https://api.spotify.com:443/v1/users/thelinmichael/playlists/" + myPlaylistId,
-                 request.toString(false));
+            request.toString(false));
     assertHasHeader(request.toUrl(), "Authorization", "Bearer " + accessToken);
     assertHasHeader(request.toUrl(), "Content-Type", "application/json");
 
@@ -466,9 +466,9 @@ public class ApiTest {
     final String clientId = "fcecfc79122e4cd299473677a17cbd4d";
 
     final Api api = Api.builder()
-        .clientId(clientId)
-        .redirectURI(redirectURI)
-        .build();
+            .clientId(clientId)
+            .redirectURI(redirectURI)
+            .build();
 
     final List<String> scopes = Arrays.asList("user-read-private", "user-read-email");
     final String state = "someExpectedStateString";
@@ -487,14 +487,14 @@ public class ApiTest {
     final String accessToken = "myAccessToken";
 
     final Api api = Api.builder()
-        .accessToken(accessToken)
-        .build();
+            .accessToken(accessToken)
+            .build();
 
     final Request request = api
-        .getMySavedTracks()
-        .limit(5)
-        .offset(1)
-        .build();
+            .getMySavedTracks()
+            .limit(5)
+            .offset(1)
+            .build();
 
     assertEquals("https://api.spotify.com:443/v1/me/tracks", request.toString(false));
     assertHasParameter(request.toUrl(), "limit", "5");
@@ -507,12 +507,12 @@ public class ApiTest {
     final String accessToken = "myAccessToken";
 
     final Api api = Api.builder()
-        .accessToken(accessToken)
-        .build();
+            .accessToken(accessToken)
+            .build();
 
     final Request request = api
-        .addToMySavedTracks(Arrays.asList("test", "test2"))
-        .build();
+            .addToMySavedTracks(Arrays.asList("test", "test2"))
+            .build();
 
     assertEquals("https://api.spotify.com:443/v1/me/tracks", request.toString(false));
     assertHasHeader(request.toUrl(), "Authorization", "Bearer " + accessToken);
@@ -523,12 +523,12 @@ public class ApiTest {
     final String accessToken = "myAccessToken";
 
     final Api api = Api.builder()
-        .accessToken(accessToken)
-        .build();
+            .accessToken(accessToken)
+            .build();
 
     final Request request = api
-        .removeFromMySavedTracks(Arrays.asList("test", "test2"))
-        .build();
+            .removeFromMySavedTracks(Arrays.asList("test", "test2"))
+            .build();
 
     assertEquals("https://api.spotify.com:443/v1/me/tracks", request.toString(false));
     assertHasHeader(request.toUrl(), "Authorization", "Bearer " + accessToken);
@@ -556,8 +556,8 @@ public class ApiTest {
     final String accessToken = "myAccessToken";
 
     final Api api = Api.builder()
-        .accessToken(accessToken)
-        .build();
+            .accessToken(accessToken)
+            .build();
 
 
     Calendar calendar = Calendar.getInstance();
@@ -565,13 +565,13 @@ public class ApiTest {
     Date timestamp = calendar.getTime();
 
     final Request request = api
-        .getFeaturedPlaylists()
-        .country("SE")
-        .locale("es_MX")
-        .limit(5)
-        .offset(1)
-        .timestamp(timestamp)
-        .build();
+            .getFeaturedPlaylists()
+            .country("SE")
+            .locale("es_MX")
+            .limit(5)
+            .offset(1)
+            .timestamp(timestamp)
+            .build();
 
     DateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
 

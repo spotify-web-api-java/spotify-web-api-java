@@ -1,46 +1,102 @@
 {
-    "albums": {
-        "href": "https://api.spotify.com/v1/search?query=tania%2Bbowra&offset=0&limit=20&type=album",
-        "items": [
-            {
-                "album_type": "album",
-                "available_markets": [ "AD", "AR", "AT", "AU", "BE", "BG", "BO", "BR", "CA", "CH",
-                                       "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "EC", "EE",
-                                       "ES", "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HU", "IE",
-                                       "IS", "IT", "LI", "LT", "LU", "LV", "MC", "MT", "MX", "MY",
-                                       "NI", "NL", "NO", "NZ", "PA", "PE", "PH", "PL", "PT", "PY",
-                                       "RO", "SE", "SG", "SI", "SK", "SV", "TR", "TW", "US", "UY" ],
-                "external_urls": {
-                    "spotify": "https://open.spotify.com/album/6akEvsycLGftJxYudPjmqK"
-                },
-                "href": "https://api.spotify.com/v1/albums/6akEvsycLGftJxYudPjmqK",
-                "id": "6akEvsycLGftJxYudPjmqK",
-                "images": [
-                    {
-                        "height": 640,
-                        "url": "https://i.scdn.co/image/f2798ddab0c7b76dc2d270b65c4f67ddef7f6718",
-                        "width": 640
-                    },
-                    {
-                        "height": 300,
-                        "url": "https://i.scdn.co/image/b414091165ea0f4172089c2fc67bb35aa37cfc55",
-                        "width": 300
-                    },
-                    {
-                        "height": 64,
-                        "url": "https://i.scdn.co/image/8522fc78be4bf4e83fea8e67bb742e7d3dfe21b4",
-                        "width": 64
-                    }
-                ],
-                "name": "Place In The Sun",
-                "type": "album",
-                "uri": "spotify:album:6akEvsycLGftJxYudPjmqK"
-            }
+  "albums": {
+    "href": "https://api.spotify.com/v1/search?query=tania%2Bbowra&offset=0&limit=20&type=album",
+    "items": [
+      {
+        "album_type": "album",
+        "available_markets": [
+          "AD",
+          "AR",
+          "AT",
+          "AU",
+          "BE",
+          "BG",
+          "BO",
+          "BR",
+          "CA",
+          "CH",
+          "CL",
+          "CO",
+          "CR",
+          "CY",
+          "CZ",
+          "DE",
+          "DK",
+          "DO",
+          "EC",
+          "EE",
+          "ES",
+          "FI",
+          "FR",
+          "GB",
+          "GR",
+          "GT",
+          "HK",
+          "HN",
+          "HU",
+          "IE",
+          "IS",
+          "IT",
+          "LI",
+          "LT",
+          "LU",
+          "LV",
+          "MC",
+          "MT",
+          "MX",
+          "MY",
+          "NI",
+          "NL",
+          "NO",
+          "NZ",
+          "PA",
+          "PE",
+          "PH",
+          "PL",
+          "PT",
+          "PY",
+          "RO",
+          "SE",
+          "SG",
+          "SI",
+          "SK",
+          "SV",
+          "TR",
+          "TW",
+          "US",
+          "UY"
         ],
-        "limit": 20,
-        "next": null,
-        "offset": 0,
-        "previous": null,
-        "total": 1
-    }
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/6akEvsycLGftJxYudPjmqK"
+        },
+        "href": "https://api.spotify.com/v1/albums/6akEvsycLGftJxYudPjmqK",
+        "id": "6akEvsycLGftJxYudPjmqK",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/f2798ddab0c7b76dc2d270b65c4f67ddef7f6718",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/b414091165ea0f4172089c2fc67bb35aa37cfc55",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/8522fc78be4bf4e83fea8e67bb742e7d3dfe21b4",
+            "width": 64
+          }
+        ],
+        "name": "Place In The Sun",
+        "type": "album",
+        "uri": "spotify:album:6akEvsycLGftJxYudPjmqK"
+      }
+    ],
+    "limit": 20,
+    "next": null,
+    "offset": 0,
+    "previous": null,
+    "total": 1
+  }
 }

@@ -12,88 +12,87 @@ import java.io.IOException;
 public class AudioFeatureRequest extends AbstractRequest {
 
 
-    public AudioFeatureRequest(Builder builder) {
-        super(builder);
+  public AudioFeatureRequest(Builder builder) {
+    super(builder);
+  }
+
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  private static AudioFeature createAudioFeature(JSONObject audioFeatureJson) {
+    if (audioFeatureJson == null || audioFeatureJson.isNullObject()) {
+      return null;
     }
 
-    public SettableFuture<AudioFeature> getAsync() {
-        SettableFuture<AudioFeature> audioFeatureFuture = SettableFuture.create();
+    AudioFeature audioFeature = new AudioFeature();
+    audioFeature.setDanceability(audioFeatureJson.getDouble("danceability"));
+    audioFeature.setEnergy(audioFeatureJson.getDouble("energy"));
+    audioFeature.setKey(audioFeatureJson.getInt("key"));
+    audioFeature.setLoudness(audioFeatureJson.getDouble("loudness"));
+    audioFeature.setMode(Modality.valueOf(audioFeatureJson.getString("mode")));
+    audioFeature.setSpeechiness(audioFeatureJson.getDouble("speechiness"));
+    audioFeature.setAcousticness(audioFeatureJson.getDouble("acousticness"));
+    audioFeature.setInstrumentalness(audioFeatureJson.getDouble("instrumentalness"));
+    audioFeature.setLiveness(audioFeatureJson.getDouble("liveness"));
+    audioFeature.setValence(audioFeatureJson.getDouble("valence"));
+    audioFeature.setTempo(audioFeatureJson.getDouble("tempo"));
+    audioFeature.setType(ObjectType.valueOf(audioFeatureJson.getString("type")));
+    audioFeature.setId(audioFeatureJson.getString("id"));
+    audioFeature.setUri(audioFeatureJson.getString("uri"));
+    audioFeature.setTrackHref(audioFeatureJson.getString("track_href"));
+    audioFeature.setAnalysisUrl(audioFeatureJson.getString("analysis_url"));
+    audioFeature.setDurationMs(audioFeatureJson.getInt("duration_ms"));
+    audioFeature.setTimeSignature(audioFeatureJson.getInt("time_signature"));
 
-        try {
-            audioFeatureFuture.set(createAudioFeature(JSONObject.fromObject(getJson())));
-        } catch (Exception e) {
-            audioFeatureFuture.setException(e);
-        }
 
-        return audioFeatureFuture;
+    return audioFeature;
+  }
+
+  public SettableFuture<AudioFeature> getAsync() {
+    SettableFuture<AudioFeature> audioFeatureFuture = SettableFuture.create();
+
+    try {
+      audioFeatureFuture.set(createAudioFeature(JSONObject.fromObject(getJson())));
+    } catch (Exception e) {
+      audioFeatureFuture.setException(e);
     }
 
-    public AudioFeature get() throws
-            IOException,
-            NoContentException,
-            BadRequestException,
-            UnauthorizedException,
-            ForbiddenException,
-            NotFoundException,
-            TooManyRequestsException,
-            InternalServerErrorException,
-            BadGatewayException,
-            ServiceUnavailableException {
-        JSONObject jsonObject = JSONObject.fromObject(getJson());
-        return createAudioFeature(jsonObject);
+    return audioFeatureFuture;
+  }
+
+  public AudioFeature get() throws
+          IOException,
+          NoContentException,
+          BadRequestException,
+          UnauthorizedException,
+          ForbiddenException,
+          NotFoundException,
+          TooManyRequestsException,
+          InternalServerErrorException,
+          BadGatewayException,
+          ServiceUnavailableException {
+    JSONObject jsonObject = JSONObject.fromObject(getJson());
+    return createAudioFeature(jsonObject);
+  }
+
+  public static final class Builder extends AbstractRequest.Builder<Builder> {
+
+    /**
+     * The audio request with the given song id.
+     *
+     * @param id The id for the song.
+     * @return AlbumRequest
+     */
+    public Builder id(String id) {
+      assert (id != null);
+      return setPath(String.format("/v1/audio-features/%s", id));
     }
 
-    public static Builder builder() {
-        return new Builder();
+    public AudioFeatureRequest build() {
+      return new AudioFeatureRequest(this);
     }
 
-    public static final class Builder extends AbstractRequest.Builder<Builder> {
-
-        /**
-         * The audio request with the given song id.
-         *
-         * @param id The id for the song.
-         * @return AlbumRequest
-         */
-        public Builder id(String id) {
-            assert (id != null);
-            return setPath(String.format("/v1/audio-features/%s", id));
-        }
-
-        public AudioFeatureRequest build() {
-            return new AudioFeatureRequest(this);
-        }
-
-    }
-
-
-    private static AudioFeature createAudioFeature(JSONObject audioFeatureJson) {
-        if (audioFeatureJson == null || audioFeatureJson.isNullObject()) {
-            return null;
-        }
-
-        AudioFeature audioFeature = new AudioFeature();
-        audioFeature.setDanceability(audioFeatureJson.getDouble("danceability"));
-        audioFeature.setEnergy(audioFeatureJson.getDouble("energy"));
-        audioFeature.setKey(audioFeatureJson.getInt("key"));
-        audioFeature.setLoudness(audioFeatureJson.getDouble("loudness"));
-        audioFeature.setMode(Modality.valueOf(audioFeatureJson.getString("mode")));
-        audioFeature.setSpeechiness(audioFeatureJson.getDouble("speechiness"));
-        audioFeature.setAcousticness(audioFeatureJson.getDouble("acousticness"));
-        audioFeature.setInstrumentalness(audioFeatureJson.getDouble("instrumentalness"));
-        audioFeature.setLiveness(audioFeatureJson.getDouble("liveness"));
-        audioFeature.setValence(audioFeatureJson.getDouble("valence"));
-        audioFeature.setTempo(audioFeatureJson.getDouble("tempo"));
-        audioFeature.setType(ObjectType.valueOf(audioFeatureJson.getString("type")));
-        audioFeature.setId(audioFeatureJson.getString("id"));
-        audioFeature.setUri(audioFeatureJson.getString("uri"));
-        audioFeature.setTrackHref(audioFeatureJson.getString("track_href"));
-        audioFeature.setAnalysisUrl(audioFeatureJson.getString("analysis_url"));
-        audioFeature.setDurationMs(audioFeatureJson.getInt("duration_ms"));
-        audioFeature.setTimeSignature(audioFeatureJson.getInt("time_signature"));
-
-
-        return audioFeature;
-    }
+  }
 
 }

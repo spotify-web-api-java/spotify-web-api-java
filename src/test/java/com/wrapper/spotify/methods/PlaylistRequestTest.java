@@ -66,16 +66,16 @@ public class PlaylistRequestTest {
     final Api api = Api.DEFAULT_API;
 
     final PlaylistRequest request = api.getPlaylist("thelinmichael", "3ktAYNcRHpazJ9qecm3ptn")
-        .setHttpManager(TestUtil.MockedHttpManager.returningJson("playlist-localfiles-response.json"))
-        .build();
+            .setHttpManager(TestUtil.MockedHttpManager.returningJson("playlist-localfiles-response.json"))
+            .build();
 
     Playlist playlist = request.get();
-    
+
     assertTrue(playlist.getTracks().getItems().get(0).getTrack().getAlbum().getAlbumType() == null);
 
     assertNotNull(playlist);
   }
-  
+
   @Ignore
   @Test
   public void shouldFailFutureIfPlaylistIsNotFound() throws Exception {

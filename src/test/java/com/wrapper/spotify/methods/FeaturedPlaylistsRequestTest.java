@@ -30,12 +30,12 @@ public class FeaturedPlaylistsRequestTest {
     Date timestamp = calendar.getTime();
 
     final FeaturedPlaylistsRequest request = api.getFeaturedPlaylists()
-        .limit(1)
-        .offset(1)
-        .country("SE")
-        .timestamp(timestamp)
-        .setHttpManager(TestUtil.MockedHttpManager.returningJson("featured-playlists.json"))
-        .build();
+            .limit(1)
+            .offset(1)
+            .country("SE")
+            .timestamp(timestamp)
+            .setHttpManager(TestUtil.MockedHttpManager.returningJson("featured-playlists.json"))
+            .build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
@@ -52,11 +52,11 @@ public class FeaturedPlaylistsRequestTest {
         assertEquals(1, playlistPage.getOffset());
         assertEquals(1, playlistPage.getLimit());
         assertEquals("https://api.spotify.com/v1/browse/featured-playlists?country=SE&" +
-                     "locale=sv_SE&timestamp=2014-10-23T09:00:00&offset=2&limit=1",
-                     playlistPage.getNext());
+                        "locale=sv_SE&timestamp=2014-10-23T09:00:00&offset=2&limit=1",
+                playlistPage.getNext());
         assertEquals("https://api.spotify.com/v1/browse/featured-playlists?country=SE&" +
-                     "locale=sv_SE&timestamp=2014-10-23T09:00:00&offset=0&limit=1",
-                     playlistPage.getPrevious());
+                        "locale=sv_SE&timestamp=2014-10-23T09:00:00&offset=0&limit=1",
+                playlistPage.getPrevious());
 
         List<PlaylistSimplified> items = playlistPage.getItems();
         assertEquals(1, items.size());
@@ -85,12 +85,12 @@ public class FeaturedPlaylistsRequestTest {
     Date timestamp = calendar.getTime();
 
     final FeaturedPlaylistsRequest request = api.getFeaturedPlaylists()
-        .limit(1)
-        .offset(1)
-        .country("SE")
-        .timestamp(timestamp)
-        .setHttpManager(TestUtil.MockedHttpManager.returningJson("featured-playlists.json"))
-        .build();
+            .limit(1)
+            .offset(1)
+            .country("SE")
+            .timestamp(timestamp)
+            .setHttpManager(TestUtil.MockedHttpManager.returningJson("featured-playlists.json"))
+            .build();
 
     FeaturedPlaylists featuredPlaylists = request.get();
 
@@ -102,11 +102,11 @@ public class FeaturedPlaylistsRequestTest {
     assertEquals(1, playlistPage.getOffset());
     assertEquals(1, playlistPage.getLimit());
     assertEquals("https://api.spotify.com/v1/browse/featured-playlists?country=SE&" +
-                 "locale=sv_SE&timestamp=2014-10-23T09:00:00&offset=2&limit=1",
-                 playlistPage.getNext());
+                    "locale=sv_SE&timestamp=2014-10-23T09:00:00&offset=2&limit=1",
+            playlistPage.getNext());
     assertEquals("https://api.spotify.com/v1/browse/featured-playlists?country=SE&" +
-                 "locale=sv_SE&timestamp=2014-10-23T09:00:00&offset=0&limit=1",
-                 playlistPage.getPrevious());
+                    "locale=sv_SE&timestamp=2014-10-23T09:00:00&offset=0&limit=1",
+            playlistPage.getPrevious());
 
     List<PlaylistSimplified> items = playlistPage.getItems();
     assertEquals(1, items.size());

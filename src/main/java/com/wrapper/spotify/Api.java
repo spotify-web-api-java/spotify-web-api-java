@@ -46,16 +46,15 @@ public class Api {
    * Api instance with the default settings.
    */
   public static final Api DEFAULT_API = Api.builder().build();
-
+  private final String clientId;
+  private final String clientSecret;
+  private final String redirectURI;
   private HttpManager httpManager = null;
   private Scheme scheme;
   private int port;
   private String host;
   private String accessToken;
   private String refreshToken;
-  private final String clientId;
-  private final String clientSecret;
-  private final String redirectURI;
 
   private Api(Builder builder) {
     assert (builder.host != null);
@@ -187,6 +186,7 @@ public class Api {
 
   /**
    * Used to get Featured Playlists.
+   *
    * @return A builder that can be used to build requests to get featured playlists.
    */
   public FeaturedPlaylistsRequest.Builder getFeaturedPlaylists() {
@@ -223,6 +223,7 @@ public class Api {
    * Returns a builder that can be used to build requests for authorization code
    * grants.
    * Requires client ID, client secret, and redirect URI to be set.
+   *
    * @param code An authorization code.
    * @return A builder that builds authorization code grant requests.
    */
@@ -239,6 +240,7 @@ public class Api {
   /**
    * Returns a builder that can be used to build requests to refresh an access token
    * that has been retrieved using the authorization code grant flow.
+   *
    * @return A builder that builds refresh access token requests.
    */
   public RefreshAccessTokenRequest.Builder refreshAccessToken() {
@@ -253,6 +255,7 @@ public class Api {
   /**
    * Returns a builder that can be used to build requests for client credential grants.
    * Requires client ID and client secret to be set.
+   *
    * @return A builder that builds client credential grant requests.
    */
   public ClientCredentialsGrantRequest.Builder clientCredentialsGrant() {
@@ -265,7 +268,8 @@ public class Api {
 
   /**
    * Get a playlist.
-   * @param userId The playlist's owner's username.
+   *
+   * @param userId     The playlist's owner's username.
    * @param playlistId The playlist's ID.
    * @return A builder object that can be used to build a request to retrieve a playlist.
    */
@@ -279,6 +283,7 @@ public class Api {
 
   /**
    * Get information about the user that has given authorization to the application.
+   *
    * @return A builder object that can be used to build a request to retrieve information
    * about the current user.
    */
@@ -290,8 +295,9 @@ public class Api {
 
   /**
    * Create a playlist.
+   *
    * @param userId The playlist's owner.
-   * @param title The name of the playlist.
+   * @param title  The name of the playlist.
    * @return A builder object that can be used to build a request to create a playlist.
    */
   public PlaylistCreationRequest.Builder createPlaylist(String userId, String title) {
@@ -305,6 +311,7 @@ public class Api {
 
   /**
    * Get artists related/similar to an artist.
+   *
    * @param artistId The artist's id.
    * @return A builder object that can be used to build a request to retrieve similar artists.
    */
@@ -317,7 +324,8 @@ public class Api {
 
   /**
    * Get a playlist's tracks.
-   * @param userId The playlist's owner's username.
+   *
+   * @param userId     The playlist's owner's username.
    * @param playlistId The playlist's id.
    * @return A builder object that can be used to build a request to retrieve playlist tracks.
    */
@@ -331,6 +339,7 @@ public class Api {
 
   /**
    * Get a user's starred tracks.
+   *
    * @param userId The starred playlist's owner's username.
    * @return A builder object that can be used to build a request to retrieve a user's starred
    * tracks.
@@ -345,9 +354,10 @@ public class Api {
 
   /**
    * Add tracks to a playlist.
-   * @param userId The owner's username.
+   *
+   * @param userId     The owner's username.
    * @param playlistId The playlist's ID.
-   * @param trackUris URIs of the tracks to add.
+   * @param trackUris  URIs of the tracks to add.
    * @return A builder object that can e used to build a request to add tracks to a playlist.
    */
   public AddTrackToPlaylistRequest.Builder addTracksToPlaylist(String userId, String playlistId, List<String> trackUris) {
@@ -363,7 +373,8 @@ public class Api {
 
   /**
    * Update a playlist's properties.
-   * @param userId The owner's username.
+   *
+   * @param userId     The owner's username.
    * @param playlistId The playlist's ID.
    * @return A builder object that can be used to build a request to change a playlist's details.
    */
@@ -377,6 +388,7 @@ public class Api {
 
   /**
    * Get a users Your Music tracks.
+   *
    * @return A builder object that can be used to build a request to get the user's Your Music library.
    */
   public GetMySavedTracksRequest.Builder getMySavedTracks() {
@@ -388,6 +400,7 @@ public class Api {
 
   /**
    * Check if a track is saved in the user's Your Music library.
+   *
    * @param trackIds The tracks ids to check for in the user's Your Music library.
    * @return A builder object that can be used to check if a user has saved a track.
    */
@@ -401,6 +414,7 @@ public class Api {
 
   /**
    * Remove a track if saved to the user's Your Music library.
+   *
    * @param trackIds The track ids to remove from the user's Your Music library.
    * @return A builder object that can be used to remove tracks from the user's library.
    */
@@ -414,6 +428,7 @@ public class Api {
 
   /**
    * Save tracks in the user's Your Music library.
+   *
    * @param trackIds The track ids to add to the user's library.
    * @return A builder object that can be used to add tracks to the user's library.
    */
@@ -427,9 +442,10 @@ public class Api {
 
   /**
    * Retrieve a URL where the user can give the application permissions.
+   *
    * @param scopes The scopes corresponding to the permissions the application needs
-   * @param state state A parameter that you can use to maintain a value between the request
-   *              and the callback to redirect_uri.It is useful to prevent CSRF exploits.
+   * @param state  state A parameter that you can use to maintain a value between the request
+   *               and the callback to redirect_uri.It is useful to prevent CSRF exploits.
    * @return The URL where the user can give application permissions.
    */
   public UtilProtos.Url createAuthorizeURL(List<String> scopes, String state) {
@@ -450,6 +466,7 @@ public class Api {
   /**
    * Retrieve a URL where the user can give the application permissions.
    * This method returns a builder instead, so that any optional parameters can be added.
+   *
    * @param scopes The scopes corresponding to the permissions the application needs.
    * @return A builder that when built creates a URL where the user can give the application
    * permissions.

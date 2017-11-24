@@ -15,6 +15,10 @@ public class AlbumSearchRequest extends AbstractRequest {
     super(builder);
   }
 
+  public static Builder builder() {
+    return new Builder();
+  }
+
   public SettableFuture<Paging<AlbumSimplified>> getAsync() {
     SettableFuture<Paging<AlbumSimplified>> searchResultFuture = SettableFuture.create();
 
@@ -43,16 +47,12 @@ public class AlbumSearchRequest extends AbstractRequest {
     return JsonUtil.createSimpleAlbumPage(JSONObject.fromObject(jsonObject).getJSONObject("albums"));
   }
 
-  public static Builder builder() {
-    return new Builder();
-  }
-
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
     public Builder query(String query) {
       assert (query != null);
       setPath("/v1/search");
-      setParameter("type","album");
+      setParameter("type", "album");
       return setParameter("q", query);
     }
 

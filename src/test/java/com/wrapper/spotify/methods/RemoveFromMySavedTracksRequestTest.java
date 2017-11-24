@@ -22,8 +22,8 @@ public class RemoveFromMySavedTracksRequestTest {
     final String accessToken = "accessToken";
 
     final Api api = Api.builder().accessToken(accessToken)
-        .httpManager(TestUtil.MockedHttpManager.returningString(""))
-        .build();
+            .httpManager(TestUtil.MockedHttpManager.returningString(""))
+            .build();
 
     final List<String> tracksToAdd = Arrays.asList("5xFF6wNcoRwx7N3cDTgVWP", "13zm8XhfM4RBtQpjdqY44e");
 
@@ -57,8 +57,8 @@ public class RemoveFromMySavedTracksRequestTest {
     final String accessToken = "accessToken";
 
     final Api api = Api.builder().accessToken(accessToken)
-        .httpManager(TestUtil.MockedHttpManager.returningString(""))
-        .build();
+            .httpManager(TestUtil.MockedHttpManager.returningString(""))
+            .build();
 
     final List<String> tracksToAdd = Arrays.asList("5xFF6wNcoRwx7N3cDTgVWP", "13zm8XhfM4RBtQpjdqY44e");
 

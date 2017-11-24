@@ -26,8 +26,8 @@ public class AlbumsRequestTest {
     final Api api = Api.DEFAULT_API;
 
     final AlbumsRequest request = api.getAlbums("2hYe61Nd2oOoM6RYCwIma1")
-        .setHttpManager(TestUtil.MockedHttpManager.returningJson("albums.json"))
-        .build();
+            .setHttpManager(TestUtil.MockedHttpManager.returningJson("albums.json"))
+            .build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
@@ -74,8 +74,8 @@ public class AlbumsRequestTest {
     final Api api = Api.DEFAULT_API;
 
     final AlbumsRequest request = api.getAlbums("2hYe61Nd2oOoM6RYCwIma1")
-        .setHttpManager(TestUtil.MockedHttpManager.returningJson("albums.json"))
-        .build();
+            .setHttpManager(TestUtil.MockedHttpManager.returningJson("albums.json"))
+            .build();
 
     List<Album> albums = request.get();
 
@@ -105,8 +105,8 @@ public class AlbumsRequestTest {
     final Api api = Api.DEFAULT_API;
 
     final AlbumsRequest request = api.getAlbums("idontexist")
-        .setHttpManager(TestUtil.MockedHttpManager.returningJson("albums-none-found.json"))
-        .build();
+            .setHttpManager(TestUtil.MockedHttpManager.returningJson("albums-none-found.json"))
+            .build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 

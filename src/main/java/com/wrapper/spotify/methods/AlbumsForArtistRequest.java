@@ -17,6 +17,10 @@ public class AlbumsForArtistRequest extends AbstractRequest {
     super(builder);
   }
 
+  public static Builder builder() {
+    return new Builder();
+  }
+
   public SettableFuture<Paging<AlbumSimplified>> getAsync() {
     SettableFuture<Paging<AlbumSimplified>> searchResultFuture = SettableFuture.create();
 
@@ -43,10 +47,6 @@ public class AlbumsForArtistRequest extends AbstractRequest {
           ServiceUnavailableException {
     final JSONObject jsonObject = JSONObject.fromObject(getJson());
     return JsonUtil.createSimpleAlbumPage(jsonObject);
-  }
-
-  public static Builder builder() {
-    return new Builder();
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {

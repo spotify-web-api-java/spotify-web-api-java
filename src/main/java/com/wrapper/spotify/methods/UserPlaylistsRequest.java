@@ -12,7 +12,11 @@ import java.io.IOException;
 public class UserPlaylistsRequest extends AbstractRequest {
 
   public UserPlaylistsRequest(Builder builder) {
-   super(builder);
+    super(builder);
+  }
+
+  public static Builder builder() {
+    return new Builder();
   }
 
   public SettableFuture<Paging<PlaylistSimplified>> getAsync() {
@@ -41,11 +45,6 @@ public class UserPlaylistsRequest extends AbstractRequest {
           ServiceUnavailableException {
     final JSONObject jsonObject = JSONObject.fromObject(getJson());
     return JsonUtil.createSimplePlaylistsPage(jsonObject);
-  }
-
-
-  public static Builder builder() {
-    return new Builder();
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {

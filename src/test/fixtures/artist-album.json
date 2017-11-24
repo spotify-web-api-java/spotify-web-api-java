@@ -1,68 +1,76 @@
 {
-    "href": "https://api.spotify.com/v1/artists/1vCWHaC5f2uS3yhpwWbIA6/albums?offset=0&limit=2&album_type=single&market=US",
-    "items": [
+  "href": "https://api.spotify.com/v1/artists/1vCWHaC5f2uS3yhpwWbIA6/albums?offset=0&limit=2&album_type=single&market=US",
+  "items": [
+    {
+      "album_type": "single",
+      "available_markets": [
+        "CA",
+        "MX",
+        "US"
+      ],
+      "external_urls": {
+        "spotify": "https://open.spotify.com/album/6RcscDLgp8v0mSRxvRhfG0"
+      },
+      "href": "https://api.spotify.com/v1/albums/6RcscDLgp8v0mSRxvRhfG0",
+      "id": "6RcscDLgp8v0mSRxvRhfG0",
+      "images": [
         {
-            "album_type": "single",
-            "available_markets": [ "CA", "MX", "US" ],
-            "external_urls": {
-                "spotify": "https://open.spotify.com/album/6RcscDLgp8v0mSRxvRhfG0"
-            },
-            "href": "https://api.spotify.com/v1/albums/6RcscDLgp8v0mSRxvRhfG0",
-            "id": "6RcscDLgp8v0mSRxvRhfG0",
-            "images": [
-                {
-                    "height": 640,
-                    "url": "https://i.scdn.co/image/9a8686f673072b38fee12b742d4460907ebc6f08",
-                    "width": 640
-                },
-                {
-                    "height": 300,
-                    "url": "https://i.scdn.co/image/013c07463a4861a5d2af436d81c470abc2bd78f8",
-                    "width": 300
-                },
-                {
-                    "height": 64,
-                    "url": "https://i.scdn.co/image/9d6d3d26080271d68f9b44f5967e0732dc8e5eb4",
-                    "width": 64
-                }
-            ],
-            "name": "The Days",
-            "type": "album",
-            "uri": "spotify:album:6RcscDLgp8v0mSRxvRhfG0"
+          "height": 640,
+          "url": "https://i.scdn.co/image/9a8686f673072b38fee12b742d4460907ebc6f08",
+          "width": 640
         },
         {
-            "album_type": "single",
-            "available_markets": [ "CA", "MX", "US" ],
-            "external_urls": {
-                "spotify": "https://open.spotify.com/album/5jvbjb51hQQAIycnBFS4cG"
-            },
-            "href": "https://api.spotify.com/v1/albums/5jvbjb51hQQAIycnBFS4cG",
-            "id": "5jvbjb51hQQAIycnBFS4cG",
-            "images": [
-                {
-                    "height": 640,
-                    "url": "https://i.scdn.co/image/96e309e8f306742de5e23b6235e963c0dcbcf7bc",
-                    "width": 640
-                },
-                {
-                    "height": 300,
-                    "url": "https://i.scdn.co/image/8b32f93877ad126a2cecee24484d2bc0ed434e83",
-                    "width": 300
-                },
-                {
-                    "height": 64,
-                    "url": "https://i.scdn.co/image/797051eca4556983cbe70e23844c484c5522d907",
-                    "width": 64
-                }
-            ],
-            "name": "Addicted To You (Remixes)",
-            "type": "album",
-            "uri": "spotify:album:5jvbjb51hQQAIycnBFS4cG"
+          "height": 300,
+          "url": "https://i.scdn.co/image/013c07463a4861a5d2af436d81c470abc2bd78f8",
+          "width": 300
+        },
+        {
+          "height": 64,
+          "url": "https://i.scdn.co/image/9d6d3d26080271d68f9b44f5967e0732dc8e5eb4",
+          "width": 64
         }
-    ],
-    "limit": 2,
-    "next": "https://api.spotify.com/v1/artists/1vCWHaC5f2uS3yhpwWbIA6/albums?offset=2&limit=2&album_type=single&market=US",
-    "offset": 0,
-    "previous": null,
-    "total": 34
+      ],
+      "name": "The Days",
+      "type": "album",
+      "uri": "spotify:album:6RcscDLgp8v0mSRxvRhfG0"
+    },
+    {
+      "album_type": "single",
+      "available_markets": [
+        "CA",
+        "MX",
+        "US"
+      ],
+      "external_urls": {
+        "spotify": "https://open.spotify.com/album/5jvbjb51hQQAIycnBFS4cG"
+      },
+      "href": "https://api.spotify.com/v1/albums/5jvbjb51hQQAIycnBFS4cG",
+      "id": "5jvbjb51hQQAIycnBFS4cG",
+      "images": [
+        {
+          "height": 640,
+          "url": "https://i.scdn.co/image/96e309e8f306742de5e23b6235e963c0dcbcf7bc",
+          "width": 640
+        },
+        {
+          "height": 300,
+          "url": "https://i.scdn.co/image/8b32f93877ad126a2cecee24484d2bc0ed434e83",
+          "width": 300
+        },
+        {
+          "height": 64,
+          "url": "https://i.scdn.co/image/797051eca4556983cbe70e23844c484c5522d907",
+          "width": 64
+        }
+      ],
+      "name": "Addicted To You (Remixes)",
+      "type": "album",
+      "uri": "spotify:album:5jvbjb51hQQAIycnBFS4cG"
+    }
+  ],
+  "limit": 2,
+  "next": "https://api.spotify.com/v1/artists/1vCWHaC5f2uS3yhpwWbIA6/albums?offset=2&limit=2&album_type=single&market=US",
+  "offset": 0,
+  "previous": null,
+  "total": 34
 }

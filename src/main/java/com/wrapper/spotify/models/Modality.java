@@ -8,7 +8,7 @@ public enum Modality {
   public final int mode;
 
   Modality(int mode) {
-   this.mode = mode;
+    this.mode = mode;
   }
 
   public int getType() {

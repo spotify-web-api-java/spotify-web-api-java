@@ -12,7 +12,7 @@ public enum ObjectType {
   public final String type;
 
   ObjectType(String type) {
-   this.type = type;
+    this.type = type;
   }
 
   public String getType() {

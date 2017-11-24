@@ -268,8 +268,10 @@ public class JsonUtil {
   }
 
   // Copyright
+
   /**
    * Create a list of Copyright object.
+   *
    * @param copyrightsJson A JSON array containing copyright information retrieved from the Web API.
    * @return A list of Copyright objects.
    */
@@ -292,7 +294,7 @@ public class JsonUtil {
   // ExternalIds
   public static ExternalIds createExternalIds(JSONObject externalIds) {
     ExternalIds returnedExternalIds = new ExternalIds();
-    Map<String,String> addedIds = returnedExternalIds.getExternalIds();
+    Map<String, String> addedIds = returnedExternalIds.getExternalIds();
 
     for (Object keyObject : externalIds.keySet()) {
       String key = (String) keyObject;
@@ -305,7 +307,7 @@ public class JsonUtil {
   // ExternalUrl
   public static ExternalUrls createExternalUrls(JSONObject externalUrls) {
     ExternalUrls returnedExternalUrls = new ExternalUrls();
-    Map<String,String> addedExternalUrls = returnedExternalUrls.getExternalUrls();
+    Map<String, String> addedExternalUrls = returnedExternalUrls.getExternalUrls();
     for (Object keyObject : externalUrls.keySet()) {
       String key = (String) keyObject;
       addedExternalUrls.put(key, externalUrls.getString(key));
@@ -706,7 +708,6 @@ public class JsonUtil {
   }
 
 
-
   public static List<String> createGenres(JSONArray genres) {
     List<String> returnedGenres = new ArrayList<>();
     for (int i = 0; i < genres.size(); i++) {
@@ -714,6 +715,7 @@ public class JsonUtil {
     }
     return returnedGenres;
   }
+
   public static List<Boolean> createBooleans(String response) {
     List<Boolean> returnedArray = new ArrayList<>();
     JSONArray tracksContainedArray = JSONArray.fromObject(response);
@@ -726,6 +728,7 @@ public class JsonUtil {
     }
     return returnedArray;
   }
+
   public static List<CountryCode> createAvailableMarkets(JSONArray availableMarketsJson) {
     List<CountryCode> availableMarkets = new ArrayList<>();
     for (int i = 0; i < availableMarketsJson.size(); i++) {
@@ -733,12 +736,15 @@ public class JsonUtil {
     }
     return availableMarkets;
   }
+
   private static boolean existsAndNotNull(String key, JSONObject jsonObject) {
     return jsonObject.containsKey(key) &&
             !JSONNull.getInstance().equals(jsonObject.get(key));
   }
+
   /**
    * Create a Featured Playlist object
+   *
    * @param jsonObject The JSON object containing the featured playlists.
    * @return A Featured Playlists object.
    */
@@ -748,16 +754,19 @@ public class JsonUtil {
     featuredPlaylists.setPlaylists(JsonUtil.createSimplePlaylistsPage(jsonObject.getJSONObject("playlists")));
     return featuredPlaylists;
   }
+
   public static NewReleases createNewReleases(JSONObject newReleasesJson) {
     final NewReleases newReleases = new NewReleases();
     newReleases.setAlbums(createSimpleAlbumPage(newReleasesJson.getJSONObject("albums")));
     return newReleases;
   }
+
   private static Date createDate(String dateString) throws ParseException {
     SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss");
     formatter.setTimeZone(TimeZone.getTimeZone("GMT"));
     return formatter.parse(dateString);
   }
+
   private static Paging<LibraryTrack> createItemlessLibraryTrackPage(JSONObject pageJson) {
     Paging<LibraryTrack> page = new Paging<>();
     page.setHref(pageJson.getString("href"));
@@ -772,6 +781,7 @@ public class JsonUtil {
     page.setTotal(pageJson.getInt("total"));
     return page;
   }
+
   public static Paging<LibraryTrack> createLibraryTracksPage(JSONObject jsonObject) {
     final Paging<LibraryTrack> libraryTracksPage = createItemlessLibraryTrackPage(jsonObject);
     libraryTracksPage.setItems(createLibraryTracks(
@@ -779,6 +789,7 @@ public class JsonUtil {
 
     return libraryTracksPage;
   }
+
   private static List<LibraryTrack> createLibraryTracks(JSONArray items) {
     final List<LibraryTrack> returnedLibraryTracks = new ArrayList<>();
     for (int i = 0; i < items.size(); i++) {
@@ -786,6 +797,7 @@ public class JsonUtil {
     }
     return returnedLibraryTracks;
   }
+
   private static LibraryTrack createLibraryTrack(JSONObject item) {
     final LibraryTrack returnedLibraryTrack = new LibraryTrack();
     try {

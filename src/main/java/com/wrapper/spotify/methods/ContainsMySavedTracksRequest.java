@@ -14,6 +14,10 @@ public class ContainsMySavedTracksRequest extends AbstractRequest {
     super(builder);
   }
 
+  public static ContainsMySavedTracksRequest.Builder builder() {
+    return new Builder();
+  }
+
   public SettableFuture<List<Boolean>> getAsync() {
     final SettableFuture<List<Boolean>> containsTracksFuture = SettableFuture.create();
 
@@ -43,11 +47,7 @@ public class ContainsMySavedTracksRequest extends AbstractRequest {
     return JsonUtil.createBooleans(getJson());
   }
 
-  public static ContainsMySavedTracksRequest.Builder builder() {
-    return new Builder();
-  }
-
-  public static final class Builder extends AbstractRequest.Builder<Builder>  {
+  public static final class Builder extends AbstractRequest.Builder<Builder> {
 
     public Builder tracks(List<String> trackIds) {
       String idsParameter = Joiner.on(",").join(trackIds);

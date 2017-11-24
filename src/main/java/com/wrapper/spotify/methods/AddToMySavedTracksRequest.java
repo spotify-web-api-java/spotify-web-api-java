@@ -13,6 +13,10 @@ public class AddToMySavedTracksRequest extends AbstractRequest {
     super(builder);
   }
 
+  public static AddToMySavedTracksRequest.Builder builder() {
+    return new Builder();
+  }
+
   public SettableFuture<String> getAsync() {
     final SettableFuture<String> addToSavedTracksFuture = SettableFuture.create();
 
@@ -39,10 +43,6 @@ public class AddToMySavedTracksRequest extends AbstractRequest {
           BadGatewayException,
           ServiceUnavailableException {
     return putJson();
-  }
-
-  public static AddToMySavedTracksRequest.Builder builder() {
-    return new Builder();
   }
 
   public static class Builder extends AbstractRequest.Builder<Builder> {

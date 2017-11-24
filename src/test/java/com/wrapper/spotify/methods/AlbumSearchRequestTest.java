@@ -27,8 +27,8 @@ public class AlbumSearchRequestTest {
     final Api api = Api.DEFAULT_API;
 
     final AlbumSearchRequest request = api.searchAlbums("tania bowra")
-        .setHttpManager(TestUtil.MockedHttpManager.returningJson("search-album.json"))
-        .build();
+            .setHttpManager(TestUtil.MockedHttpManager.returningJson("search-album.json"))
+            .build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
@@ -74,8 +74,8 @@ public class AlbumSearchRequestTest {
     final Api api = Api.DEFAULT_API;
 
     final AlbumSearchRequest request = api.searchAlbums("tania bowra")
-        .setHttpManager(TestUtil.MockedHttpManager.returningJson("search-album.json"))
-        .build();
+            .setHttpManager(TestUtil.MockedHttpManager.returningJson("search-album.json"))
+            .build();
 
     final Paging<AlbumSimplified> albumSearchResult = request.get();
     assertEquals("https://api.spotify.com/v1/search?query=tania%2Bbowra&offset=0&limit=20&type=album", albumSearchResult.getHref());

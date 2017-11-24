@@ -29,6 +29,7 @@ public class SpotifyHttpManager implements HttpManager {
 
   /**
    * Construct a new SpotifyHttpManager instance.
+   *
    * @param builder The builder.
    */
   public SpotifyHttpManager(Builder builder) {
@@ -37,6 +38,10 @@ public class SpotifyHttpManager implements HttpManager {
     } else {
       connectionManager = new PoolingHttpClientConnectionManager();
     }
+  }
+
+  public static Builder builder() {
+    return new Builder();
   }
 
   @Override
@@ -222,13 +227,12 @@ public class SpotifyHttpManager implements HttpManager {
     }
   }
 
-  public static Builder builder() {
-    return new Builder();
-  }
-
   public static class Builder {
     private PoolingHttpClientConnectionManager connectionManager = null;
-    public Builder() {}
+
+    public Builder() {
+    }
+
     public SpotifyHttpManager build() {
       return new SpotifyHttpManager(this);
     }

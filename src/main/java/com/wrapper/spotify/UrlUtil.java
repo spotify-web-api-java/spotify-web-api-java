@@ -13,7 +13,7 @@ import java.util.List;
 
 public abstract class UrlUtil {
 
-  public static String escapeUsername(String username){
+  public static String escapeUsername(String username) {
     String escapedUsername = "";
     try {
       escapedUsername = URLEncoder.encode(username, "UTF-8");

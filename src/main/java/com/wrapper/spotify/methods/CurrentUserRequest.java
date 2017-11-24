@@ -14,6 +14,10 @@ public class CurrentUserRequest extends AbstractRequest {
     super(builder);
   }
 
+  public static Builder builder() {
+    return new Builder();
+  }
+
   public SettableFuture<User> getAsync() {
     final SettableFuture<User> userFuture = SettableFuture.create();
 
@@ -40,10 +44,6 @@ public class CurrentUserRequest extends AbstractRequest {
           ServiceUnavailableException {
     JSONObject jsonObject = JSONObject.fromObject(getJson());
     return JsonUtil.createUser(jsonObject);
-  }
-
-  public static Builder builder() {
-    return new Builder();
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {

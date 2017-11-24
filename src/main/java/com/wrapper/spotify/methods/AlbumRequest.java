@@ -13,6 +13,10 @@ public class AlbumRequest extends AbstractRequest {
     super(builder);
   }
 
+  public static Builder builder() {
+    return new Builder();
+  }
+
   public SettableFuture<Album> getAsync() {
     SettableFuture<Album> albumFuture = SettableFuture.create();
 
@@ -37,10 +41,6 @@ public class AlbumRequest extends AbstractRequest {
           BadGatewayException,
           ServiceUnavailableException {
     return JsonUtil.createAlbum(getJson());
-  }
-
-  public static Builder builder() {
-    return new Builder();
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {

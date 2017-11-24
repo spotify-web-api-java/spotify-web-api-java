@@ -24,10 +24,10 @@ public class GetMySavedTracksRequestTest {
     final Api api = Api.builder().accessToken("someAccessToken").build();
 
     final GetMySavedTracksRequest request = api.getMySavedTracks()
-        .limit(5)
-        .offset(1)
-        .setHttpManager(TestUtil.MockedHttpManager.returningJson("saved-tracks.json"))
-        .build();
+            .limit(5)
+            .offset(1)
+            .setHttpManager(TestUtil.MockedHttpManager.returningJson("saved-tracks.json"))
+            .build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
@@ -40,7 +40,7 @@ public class GetMySavedTracksRequestTest {
         assertNotNull(libraryTracks);
 
         assertEquals("https://api.spotify.com/v1/me/tracks?offset=1&limit=5",
-                     libraryTracks.getHref());
+                libraryTracks.getHref());
 
         List<LibraryTrack> items = libraryTracks.getItems();
         assertEquals(5, items.size());
@@ -67,10 +67,10 @@ public class GetMySavedTracksRequestTest {
     final Api api = Api.builder().accessToken("someAccessToken").build();
 
     final GetMySavedTracksRequest request = api.getMySavedTracks()
-        .limit(5)
-        .offset(1)
-        .setHttpManager(TestUtil.MockedHttpManager.returningJson("saved-tracks.json"))
-        .build();
+            .limit(5)
+            .offset(1)
+            .setHttpManager(TestUtil.MockedHttpManager.returningJson("saved-tracks.json"))
+            .build();
 
     final Paging<LibraryTrack> libraryTracks = request.get();
 

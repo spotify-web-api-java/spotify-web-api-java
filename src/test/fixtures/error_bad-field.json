@@ -1,1 +1,6 @@
-{"error":{"type":"bad_field","description":"wrong id: 2KrxsD86ARO5beq7Q0Drfqx"}}
+{
+  "error": {
+    "type": "bad_field",
+    "description": "wrong id: 2KrxsD86ARO5beq7Q0Drfqx"
+  }
+}

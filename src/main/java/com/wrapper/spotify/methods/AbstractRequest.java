@@ -187,7 +187,7 @@ public abstract class AbstractRequest implements Request {
       return (BuilderType) this;
     }
 
-    private void addParameter(Url.Parameter.Builder builder, List<Url.Parameter> parameters, String  name, String value) {
+    private void addParameter(Url.Parameter.Builder builder, List<Url.Parameter> parameters, String name, String value) {
       assert (name != null);
       assert (name.length() > 0);
       assert (value != null);
