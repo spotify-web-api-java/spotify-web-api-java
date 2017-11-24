@@ -16,7 +16,7 @@ public abstract class AbstractRequest implements Request {
   private Url url;
   private HttpManager httpManager;
 
-  public AbstractRequest(Builder<?> builder) {
+  protected AbstractRequest(Builder<?> builder) {
     assert (builder.scheme != null);
     assert (builder.host != null);
     assert (builder.port > 0);
@@ -119,16 +119,16 @@ public abstract class AbstractRequest implements Request {
 
   public static abstract class Builder<BuilderType extends Builder<?>> implements Request.Builder {
 
-    protected HttpManager httpManager;
-    protected Url.Scheme scheme = Api.DEFAULT_SCHEME;
-    protected String host = Api.DEFAULT_HOST;
-    protected int port = Api.DEFAULT_PORT;
-    protected String path = null;
-    protected List<Url.Parameter> parameters = new ArrayList<>();
-    protected List<Url.Parameter> headerParameters = new ArrayList<>();
-    protected List<Url.Parameter> bodyParameters = new ArrayList<>();
-    protected List<Url.Part> parts = new ArrayList<>();
-    protected JSON jsonBody;
+    private HttpManager httpManager;
+    private Url.Scheme scheme = Api.DEFAULT_SCHEME;
+    private String host = Api.DEFAULT_HOST;
+    private int port = Api.DEFAULT_PORT;
+    private String path = null;
+    private List<Url.Parameter> parameters = new ArrayList<>();
+    private List<Url.Parameter> headerParameters = new ArrayList<>();
+    private List<Url.Parameter> bodyParameters = new ArrayList<>();
+    private List<Url.Part> parts = new ArrayList<>();
+    private JSON jsonBody;
 
     public BuilderType setHttpManager(HttpManager httpManager) {
       assert (httpManager != null);
@@ -161,23 +161,23 @@ public abstract class AbstractRequest implements Request {
     }
 
     public BuilderType setParameter(String name, String value) {
-      addParameter(Url.Parameter.newBuilder(), parameters, name, value);
+      addParameter(Url.Parameter.newBuilder(), this.parameters, name, value);
       return (BuilderType) this;
     }
 
     public BuilderType setHeaderParameter(String name, String value) {
-      addParameter(Url.Parameter.newBuilder(), headerParameters, name, value);
+      addParameter(Url.Parameter.newBuilder(), this.headerParameters, name, value);
       return (BuilderType) this;
     }
 
     public BuilderType setBodyParameter(String name, String value) {
-      addParameter(Url.Parameter.newBuilder(), bodyParameters, name, value);
+      addParameter(Url.Parameter.newBuilder(), this.bodyParameters, name, value);
       return (BuilderType) this;
     }
 
     public BuilderType setPart(Url.Part part) {
       assert (part != null);
-      parts.add(part);
+      this.parts.add(part);
       return (BuilderType) this;
     }
 
