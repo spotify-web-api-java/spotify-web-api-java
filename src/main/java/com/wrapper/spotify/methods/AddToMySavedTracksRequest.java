@@ -13,17 +13,15 @@ public class AddToMySavedTracksRequest extends AbstractRequest {
     super(builder);
   }
 
-  public static AddToMySavedTracksRequest.Builder builder() {
+  public static Builder builder() {
     return new Builder();
   }
 
   public SettableFuture<String> getAsync() {
     final SettableFuture<String> addToSavedTracksFuture = SettableFuture.create();
 
-    final String response;
     try {
-      response = putJson();
-      addToSavedTracksFuture.set(response);
+      addToSavedTracksFuture.set(putJson());
     } catch (Exception e) {
       addToSavedTracksFuture.setException(e);
     }
@@ -45,14 +43,13 @@ public class AddToMySavedTracksRequest extends AbstractRequest {
     return putJson();
   }
 
-  public static class Builder extends AbstractRequest.Builder<Builder> {
+  public static final class Builder extends AbstractRequest.Builder<Builder> {
 
     public Builder tracks(List<String> trackIds) {
       setBodyParameter(JSONArray.fromObject(trackIds));
       return this;
     }
 
-    @Override
     public AddToMySavedTracksRequest build() {
       return new AddToMySavedTracksRequest(this);
     }

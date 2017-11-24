@@ -47,7 +47,6 @@ public class AddTrackToPlaylistRequest extends AbstractRequest {
 
     public Builder position(int position) {
       assert (position >= 0);
-
       return setParameter("position", String.valueOf(position));
     }
 

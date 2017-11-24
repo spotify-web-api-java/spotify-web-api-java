@@ -21,10 +21,8 @@ public class ContainsMySavedTracksRequest extends AbstractRequest {
   public SettableFuture<List<Boolean>> getAsync() {
     final SettableFuture<List<Boolean>> containsTracksFuture = SettableFuture.create();
 
-    final String response;
     try {
-      response = getJson();
-      List<Boolean> containedTracks = JsonUtil.createBooleans(response);
+      List<Boolean> containedTracks = JsonUtil.createBooleans(getJson());
       containsTracksFuture.set(containedTracks);
     } catch (Exception e) {
       containsTracksFuture.setException(e);

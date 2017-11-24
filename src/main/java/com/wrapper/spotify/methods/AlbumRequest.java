@@ -18,7 +18,7 @@ public class AlbumRequest extends AbstractRequest {
   }
 
   public SettableFuture<Album> getAsync() {
-    SettableFuture<Album> albumFuture = SettableFuture.create();
+    final SettableFuture<Album> albumFuture = SettableFuture.create();
 
     try {
       albumFuture.set(JsonUtil.createAlbum(getJson()));

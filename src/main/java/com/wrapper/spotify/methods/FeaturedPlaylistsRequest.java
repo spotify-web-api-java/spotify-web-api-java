@@ -22,6 +22,23 @@ public class FeaturedPlaylistsRequest extends AbstractRequest {
   }
 
   /**
+   * Get Featured Playlists asynchronously.
+   *
+   * @return A future that resolves to featured playlists.
+   */
+  public SettableFuture<FeaturedPlaylists> getAsync() {
+    final SettableFuture<FeaturedPlaylists> future = SettableFuture.create();
+
+    try {
+      future.set(JsonUtil.createFeaturedPlaylist(JSONObject.fromObject(getJson())));
+    } catch (Exception e) {
+      future.setException(e);
+    }
+
+    return future;
+  }
+
+  /**
    * Get Featured Playlists synchronously.
    *
    * @return Featured playlists.
@@ -49,23 +66,6 @@ public class FeaturedPlaylistsRequest extends AbstractRequest {
           ServiceUnavailableException {
     final JSONObject jsonObject = JSONObject.fromObject(getJson());
     return JsonUtil.createFeaturedPlaylist(jsonObject);
-  }
-
-  /**
-   * Get Featured Playlists asynchronously.
-   *
-   * @return A future that resolves to featured playlists.
-   */
-  public SettableFuture<FeaturedPlaylists> getAsync() {
-    final SettableFuture<FeaturedPlaylists> future = SettableFuture.create();
-
-    try {
-      future.set(JsonUtil.createFeaturedPlaylist(JSONObject.fromObject(getJson())));
-    } catch (Exception e) {
-      future.setException(e);
-    }
-
-    return future;
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {

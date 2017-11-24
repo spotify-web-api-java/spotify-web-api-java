@@ -20,7 +20,7 @@ public class AlbumsRequest extends AbstractRequest {
   }
 
   public SettableFuture<List<Album>> getAsync() {
-    SettableFuture<List<Album>> albumsFuture = SettableFuture.create();
+    final SettableFuture<List<Album>> albumsFuture = SettableFuture.create();
 
     try {
       albumsFuture.set(JsonUtil.createAlbums(getJson()));

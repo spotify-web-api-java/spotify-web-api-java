@@ -21,11 +21,10 @@ public class TracksRequest extends AbstractRequest {
   }
 
   public SettableFuture<List<Track>> getAsync() {
-    SettableFuture<List<Track>> tracksFuture = SettableFuture.create();
+    final SettableFuture<List<Track>> tracksFuture = SettableFuture.create();
 
     try {
       final JSONObject jsonObject = JSONObject.fromObject(getJson());
-
       tracksFuture.set(JsonUtil.createTracks(jsonObject));
     } catch (Exception e) {
       tracksFuture.setException(e);

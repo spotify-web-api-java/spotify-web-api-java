@@ -20,7 +20,7 @@ public class ArtistsRequest extends AbstractRequest {
   }
 
   public SettableFuture<List<Artist>> getAsync() {
-    SettableFuture<List<Artist>> artistsFuture = SettableFuture.create();
+    final SettableFuture<List<Artist>> artistsFuture = SettableFuture.create();
 
     try {
       artistsFuture.set(JsonUtil.createArtists(getJson()));

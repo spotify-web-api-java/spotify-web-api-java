@@ -19,7 +19,7 @@ public class PlaylistRequest extends AbstractRequest {
   }
 
   public SettableFuture<Playlist> getAsync() {
-    SettableFuture<Playlist> playlistFuture = SettableFuture.create();
+    final SettableFuture<Playlist> playlistFuture = SettableFuture.create();
 
     try {
       final JSONObject jsonObject = JSONObject.fromObject(getJson());

@@ -20,7 +20,7 @@ public class UserPlaylistsRequest extends AbstractRequest {
   }
 
   public SettableFuture<Paging<PlaylistSimplified>> getAsync() {
-    SettableFuture<Paging<PlaylistSimplified>> simplePlaylistsPageFuture = SettableFuture.create();
+    final SettableFuture<Paging<PlaylistSimplified>> simplePlaylistsPageFuture = SettableFuture.create();
 
     try {
       final JSONObject jsonObject = JSONObject.fromObject(getJson());

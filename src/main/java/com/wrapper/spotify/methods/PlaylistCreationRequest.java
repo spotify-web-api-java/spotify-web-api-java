@@ -19,11 +19,10 @@ public class PlaylistCreationRequest extends AbstractRequest {
   }
 
   public SettableFuture<Playlist> getAsync() {
-    SettableFuture<Playlist> playlistFuture = SettableFuture.create();
+    final SettableFuture<Playlist> playlistFuture = SettableFuture.create();
 
     try {
       final JSONObject jsonObject = JSONObject.fromObject(postJson());
-
       playlistFuture.set(JsonUtil.createPlaylist(jsonObject));
     } catch (Exception e) {
       playlistFuture.setException(e);
@@ -44,7 +43,6 @@ public class PlaylistCreationRequest extends AbstractRequest {
           BadGatewayException,
           ServiceUnavailableException {
     final JSONObject jsonObject = JSONObject.fromObject(postJson());
-
     return JsonUtil.createPlaylist(jsonObject);
   }
 

@@ -20,7 +20,7 @@ public class TopTracksRequest extends AbstractRequest {
   }
 
   public SettableFuture<List<Track>> getAsync() {
-    SettableFuture<List<Track>> tracksFuture = SettableFuture.create();
+    final SettableFuture<List<Track>> tracksFuture = SettableFuture.create();
 
     try {
       final JSONObject jsonObject = JSONObject.fromObject(getJson());

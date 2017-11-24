@@ -20,7 +20,7 @@ public class AlbumSearchRequest extends AbstractRequest {
   }
 
   public SettableFuture<Paging<AlbumSimplified>> getAsync() {
-    SettableFuture<Paging<AlbumSimplified>> searchResultFuture = SettableFuture.create();
+    final SettableFuture<Paging<AlbumSimplified>> searchResultFuture = SettableFuture.create();
 
     try {
       final JSONObject jsonObject = JSONObject.fromObject(getJson());

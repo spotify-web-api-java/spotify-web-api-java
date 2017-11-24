@@ -11,7 +11,6 @@ import java.io.IOException;
 
 public class ArtistSearchRequest extends AbstractRequest {
 
-
   public ArtistSearchRequest(Builder builder) {
     super(builder);
   }
@@ -21,10 +20,10 @@ public class ArtistSearchRequest extends AbstractRequest {
   }
 
   public SettableFuture<Paging<Artist>> getAsync() {
-    SettableFuture<Paging<Artist>> searchResultFuture = SettableFuture.create();
+    final SettableFuture<Paging<Artist>> searchResultFuture = SettableFuture.create();
 
     try {
-      JSONObject jsonObject = JSONObject.fromObject(getJson());
+      final JSONObject jsonObject = JSONObject.fromObject(getJson());
       searchResultFuture.set(JsonUtil.createArtistPage(jsonObject.getJSONObject("artists")));
     } catch (Exception e) {
       searchResultFuture.setException(e);

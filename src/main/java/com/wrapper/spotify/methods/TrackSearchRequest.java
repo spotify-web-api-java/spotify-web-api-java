@@ -20,7 +20,7 @@ public class TrackSearchRequest extends AbstractRequest {
   }
 
   public SettableFuture<Paging<Track>> getAsync() {
-    SettableFuture<Paging<Track>> searchResultFuture = SettableFuture.create();
+    final SettableFuture<Paging<Track>> searchResultFuture = SettableFuture.create();
 
     try {
       final JSONObject jsonObject = JSONObject.fromObject(getJson());

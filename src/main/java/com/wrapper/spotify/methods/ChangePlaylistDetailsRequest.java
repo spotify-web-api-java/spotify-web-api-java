@@ -21,10 +21,8 @@ public class ChangePlaylistDetailsRequest extends AbstractRequest {
   public SettableFuture<String> getAsync() {
     final SettableFuture<String> changeDetailsFuture = SettableFuture.create();
 
-    final String response;
     try {
-      response = putJson();
-      changeDetailsFuture.set(response);
+      changeDetailsFuture.set(putJson());
     } catch (Exception e) {
       changeDetailsFuture.setException(e);
     }

@@ -20,11 +20,10 @@ public class GetMySavedTracksRequest extends AbstractRequest {
   }
 
   public SettableFuture<Paging<LibraryTrack>> getAsync() {
-    SettableFuture<Paging<LibraryTrack>> libraryTracksFuture = SettableFuture.create();
+    final SettableFuture<Paging<LibraryTrack>> libraryTracksFuture = SettableFuture.create();
 
     try {
       final JSONObject jsonObject = JSONObject.fromObject(getJson());
-
       libraryTracksFuture.set(JsonUtil.createLibraryTracksPage(jsonObject));
     } catch (Exception e) {
       libraryTracksFuture.setException(e);
@@ -45,7 +44,6 @@ public class GetMySavedTracksRequest extends AbstractRequest {
           BadGatewayException,
           ServiceUnavailableException {
     final JSONObject jsonObject = JSONObject.fromObject(getJson());
-
     return JsonUtil.createLibraryTracksPage(jsonObject);
   }
 

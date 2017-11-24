@@ -1,16 +1,17 @@
 package com.wrapper.spotify.methods;
 
 import com.google.common.util.concurrent.SettableFuture;
+import com.wrapper.spotify.JsonUtil;
 import com.wrapper.spotify.exceptions.*;
 import com.wrapper.spotify.models.AudioFeature;
 import com.wrapper.spotify.models.Modality;
 import com.wrapper.spotify.models.ObjectType;
 import net.sf.json.JSONObject;
+import net.sf.json.util.JSONUtils;
 
 import java.io.IOException;
 
 public class AudioFeatureRequest extends AbstractRequest {
-
 
   public AudioFeatureRequest(Builder builder) {
     super(builder);
@@ -20,40 +21,12 @@ public class AudioFeatureRequest extends AbstractRequest {
     return new Builder();
   }
 
-  private static AudioFeature createAudioFeature(JSONObject audioFeatureJson) {
-    if (audioFeatureJson == null || audioFeatureJson.isNullObject()) {
-      return null;
-    }
-
-    AudioFeature audioFeature = new AudioFeature();
-    audioFeature.setDanceability(audioFeatureJson.getDouble("danceability"));
-    audioFeature.setEnergy(audioFeatureJson.getDouble("energy"));
-    audioFeature.setKey(audioFeatureJson.getInt("key"));
-    audioFeature.setLoudness(audioFeatureJson.getDouble("loudness"));
-    audioFeature.setMode(Modality.valueOf(audioFeatureJson.getString("mode")));
-    audioFeature.setSpeechiness(audioFeatureJson.getDouble("speechiness"));
-    audioFeature.setAcousticness(audioFeatureJson.getDouble("acousticness"));
-    audioFeature.setInstrumentalness(audioFeatureJson.getDouble("instrumentalness"));
-    audioFeature.setLiveness(audioFeatureJson.getDouble("liveness"));
-    audioFeature.setValence(audioFeatureJson.getDouble("valence"));
-    audioFeature.setTempo(audioFeatureJson.getDouble("tempo"));
-    audioFeature.setType(ObjectType.valueOf(audioFeatureJson.getString("type")));
-    audioFeature.setId(audioFeatureJson.getString("id"));
-    audioFeature.setUri(audioFeatureJson.getString("uri"));
-    audioFeature.setTrackHref(audioFeatureJson.getString("track_href"));
-    audioFeature.setAnalysisUrl(audioFeatureJson.getString("analysis_url"));
-    audioFeature.setDurationMs(audioFeatureJson.getInt("duration_ms"));
-    audioFeature.setTimeSignature(audioFeatureJson.getInt("time_signature"));
-
-
-    return audioFeature;
-  }
-
   public SettableFuture<AudioFeature> getAsync() {
-    SettableFuture<AudioFeature> audioFeatureFuture = SettableFuture.create();
+    final SettableFuture<AudioFeature> audioFeatureFuture = SettableFuture.create();
 
     try {
-      audioFeatureFuture.set(createAudioFeature(JSONObject.fromObject(getJson())));
+      JSONObject jsonObject = JSONObject.fromObject(getJson());
+      audioFeatureFuture.set(JsonUtil.createAudioFeature(jsonObject));
     } catch (Exception e) {
       audioFeatureFuture.setException(e);
     }
@@ -73,7 +46,7 @@ public class AudioFeatureRequest extends AbstractRequest {
           BadGatewayException,
           ServiceUnavailableException {
     JSONObject jsonObject = JSONObject.fromObject(getJson());
-    return createAudioFeature(jsonObject);
+    return JsonUtil.createAudioFeature(jsonObject);
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {

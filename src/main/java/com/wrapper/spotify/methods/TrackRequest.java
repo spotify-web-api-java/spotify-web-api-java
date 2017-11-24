@@ -18,7 +18,7 @@ public class TrackRequest extends AbstractRequest {
   }
 
   public SettableFuture<Track> getAsync() {
-    SettableFuture<Track> trackFuture = SettableFuture.create();
+    final SettableFuture<Track> trackFuture = SettableFuture.create();
 
     try {
       trackFuture.set(JsonUtil.createTrack(getJson()));
