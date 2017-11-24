@@ -11,25 +11,12 @@ import java.io.IOException;
 
 public class TrackSearchRequest extends AbstractRequest {
 
-  public TrackSearchRequest(Builder builder) {
+  private TrackSearchRequest(final Builder builder) {
     super(builder);
   }
 
   public static Builder builder() {
     return new Builder();
-  }
-
-  public SettableFuture<Paging<Track>> getAsync() {
-    final SettableFuture<Paging<Track>> searchResultFuture = SettableFuture.create();
-
-    try {
-      final JSONObject jsonObject = JSONObject.fromObject(getJson());
-      searchResultFuture.set(JsonUtil.createTrackPage(jsonObject));
-    } catch (Exception e) {
-      searchResultFuture.setException(e);
-    }
-
-    return searchResultFuture;
   }
 
   public Paging<Track> get() throws
@@ -43,34 +30,48 @@ public class TrackSearchRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    final JSONObject jsonObject = JSONObject.fromObject(getJson());
-    return JsonUtil.createTrackPage(jsonObject);
+    return JsonUtil.createTrackPage(getJson());
+  }
+
+  public SettableFuture<Paging<Track>> getAsync() throws
+          IOException,
+          NoContentException,
+          BadRequestException,
+          UnauthorizedException,
+          ForbiddenException,
+          NotFoundException,
+          TooManyRequestsException,
+          InternalServerErrorException,
+          BadGatewayException,
+          ServiceUnavailableException {
+    return getAsync(JsonUtil.createTrackPage(getJson()));
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
-    public Builder query(String query) {
+    public Builder query(final String query) {
       assert (query != null);
       setPath("/v1/search");
       setParameter("type", "track");
       return setParameter("q", query);
     }
 
-    public Builder market(String market) {
+    public Builder market(final String market) {
       assert (market != null);
       return setParameter("market", market);
     }
 
-    public Builder limit(int limit) {
+    public Builder limit(final int limit) {
       assert (limit > 0);
       return setParameter("limit", String.valueOf(limit));
     }
 
-    public Builder offset(int offset) {
+    public Builder offset(final int offset) {
       assert (offset >= 0);
       return setParameter("offset", String.valueOf(offset));
     }
 
+    @Override
     public TrackSearchRequest build() {
       return new TrackSearchRequest(this);
     }

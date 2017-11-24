@@ -11,25 +11,12 @@ import java.io.IOException;
 
 public class PlaylistTracksRequest extends AbstractRequest {
 
-  public PlaylistTracksRequest(Builder builder) {
+  private PlaylistTracksRequest(final Builder builder) {
     super(builder);
   }
 
   public static Builder builder() {
     return new Builder();
-  }
-
-  public SettableFuture<Paging<PlaylistTrack>> getAsync() {
-    final SettableFuture<Paging<PlaylistTrack>> playlistFuture = SettableFuture.create();
-
-    try {
-      final JSONObject jsonObject = JSONObject.fromObject(getJson());
-      playlistFuture.set(JsonUtil.createPlaylistTrackPage(jsonObject));
-    } catch (Exception e) {
-      playlistFuture.setException(e);
-    }
-
-    return playlistFuture;
   }
 
   public Paging<PlaylistTrack> get() throws
@@ -43,28 +30,41 @@ public class PlaylistTracksRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    final JSONObject jsonObject = JSONObject.fromObject(getJson());
+    return JsonUtil.createPlaylistTrackPage(getJson());
+  }
 
-    return JsonUtil.createPlaylistTrackPage(jsonObject);
+  public SettableFuture<Paging<PlaylistTrack>> getAsync() throws
+          IOException,
+          NoContentException,
+          BadRequestException,
+          UnauthorizedException,
+          ForbiddenException,
+          NotFoundException,
+          TooManyRequestsException,
+          InternalServerErrorException,
+          BadGatewayException,
+          ServiceUnavailableException {
+    return getAsync(JsonUtil.createPlaylistTrackPage(getJson()));
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
-    public Builder fields(String fields) {
+    public Builder fields(final String fields) {
       assert (fields != null);
       return setParameter("fields", fields);
     }
 
-    public Builder limit(int limit) {
+    public Builder limit(final int limit) {
       assert (limit > 0);
       return setParameter("limit", String.valueOf(limit));
     }
 
-    public Builder offset(int offset) {
+    public Builder offset(final int offset) {
       assert (offset >= 0);
       return setParameter("offset", String.valueOf(offset));
     }
 
+    @Override
     public PlaylistTracksRequest build() {
       return new PlaylistTracksRequest(this);
     }

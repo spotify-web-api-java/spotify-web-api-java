@@ -13,25 +13,12 @@ import java.io.IOException;
 
 public class AudioFeatureRequest extends AbstractRequest {
 
-  public AudioFeatureRequest(Builder builder) {
+  private AudioFeatureRequest(final Builder builder) {
     super(builder);
   }
 
   public static Builder builder() {
     return new Builder();
-  }
-
-  public SettableFuture<AudioFeature> getAsync() {
-    final SettableFuture<AudioFeature> audioFeatureFuture = SettableFuture.create();
-
-    try {
-      JSONObject jsonObject = JSONObject.fromObject(getJson());
-      audioFeatureFuture.set(JsonUtil.createAudioFeature(jsonObject));
-    } catch (Exception e) {
-      audioFeatureFuture.setException(e);
-    }
-
-    return audioFeatureFuture;
   }
 
   public AudioFeature get() throws
@@ -45,8 +32,21 @@ public class AudioFeatureRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    JSONObject jsonObject = JSONObject.fromObject(getJson());
-    return JsonUtil.createAudioFeature(jsonObject);
+    return JsonUtil.createAudioFeature(getJson());
+  }
+
+  public SettableFuture<AudioFeature> getAsync() throws
+          IOException,
+          NoContentException,
+          BadRequestException,
+          UnauthorizedException,
+          ForbiddenException,
+          NotFoundException,
+          TooManyRequestsException,
+          InternalServerErrorException,
+          BadGatewayException,
+          ServiceUnavailableException {
+    return getAsync(JsonUtil.createAudioFeature(getJson()));
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
@@ -57,11 +57,12 @@ public class AudioFeatureRequest extends AbstractRequest {
      * @param id The id for the song.
      * @return AlbumRequest
      */
-    public Builder id(String id) {
+    public Builder id(final String id) {
       assert (id != null);
       return setPath(String.format("/v1/audio-features/%s", id));
     }
 
+    @Override
     public AudioFeatureRequest build() {
       return new AudioFeatureRequest(this);
     }

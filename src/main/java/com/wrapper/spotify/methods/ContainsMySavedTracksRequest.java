@@ -10,25 +10,12 @@ import java.util.List;
 
 public class ContainsMySavedTracksRequest extends AbstractRequest {
 
-  public ContainsMySavedTracksRequest(Builder builder) {
+  private ContainsMySavedTracksRequest(final Builder builder) {
     super(builder);
   }
 
   public static ContainsMySavedTracksRequest.Builder builder() {
     return new Builder();
-  }
-
-  public SettableFuture<List<Boolean>> getAsync() {
-    final SettableFuture<List<Boolean>> containsTracksFuture = SettableFuture.create();
-
-    try {
-      List<Boolean> containedTracks = JsonUtil.createBooleans(getJson());
-      containsTracksFuture.set(containedTracks);
-    } catch (Exception e) {
-      containsTracksFuture.setException(e);
-    }
-
-    return containsTracksFuture;
   }
 
   public List<Boolean> get() throws
@@ -45,14 +32,29 @@ public class ContainsMySavedTracksRequest extends AbstractRequest {
     return JsonUtil.createBooleans(getJson());
   }
 
+  public SettableFuture<List<Boolean>> getAsync() throws
+          IOException,
+          NoContentException,
+          BadRequestException,
+          UnauthorizedException,
+          ForbiddenException,
+          NotFoundException,
+          TooManyRequestsException,
+          InternalServerErrorException,
+          BadGatewayException,
+          ServiceUnavailableException {
+    return getAsync(JsonUtil.createBooleans(getJson()));
+  }
+
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
-    public Builder tracks(List<String> trackIds) {
+    public Builder tracks(final List<String> trackIds) {
       String idsParameter = Joiner.on(",").join(trackIds);
       setParameter("ids", idsParameter);
       return this;
     }
 
+    @Override
     public ContainsMySavedTracksRequest build() {
       setHeaderParameter("Content-Type", "application/json");
       return new ContainsMySavedTracksRequest(this);

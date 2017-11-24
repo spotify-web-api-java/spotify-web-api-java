@@ -9,24 +9,12 @@ import java.io.IOException;
 
 public class UserRequest extends AbstractRequest {
 
-  public UserRequest(Builder builder) {
+  private UserRequest(final Builder builder) {
     super(builder);
   }
 
   public static Builder builder() {
     return new Builder();
-  }
-
-  public SettableFuture<User> getAsync() {
-    final SettableFuture<User> userFuture = SettableFuture.create();
-
-    try {
-      userFuture.set(JsonUtil.createUser(getJson()));
-    } catch (Exception e) {
-      userFuture.setException(e);
-    }
-
-    return userFuture;
   }
 
   public User get() throws
@@ -43,13 +31,28 @@ public class UserRequest extends AbstractRequest {
     return JsonUtil.createUser(getJson());
   }
 
+  public SettableFuture<User> getAsync() throws
+          IOException,
+          NoContentException,
+          BadRequestException,
+          UnauthorizedException,
+          ForbiddenException,
+          NotFoundException,
+          TooManyRequestsException,
+          InternalServerErrorException,
+          BadGatewayException,
+          ServiceUnavailableException {
+    return getAsync(JsonUtil.createUser(getJson()));
+  }
+
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
-    public Builder username(String username) {
+    public Builder username(final String username) {
       assert (username != null);
       return setPath(String.format("/v1/users/%s", username));
     }
 
+    @Override
     public UserRequest build() {
       return new UserRequest(this);
     }

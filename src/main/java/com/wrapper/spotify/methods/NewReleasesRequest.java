@@ -10,24 +10,12 @@ import java.io.IOException;
 
 public class NewReleasesRequest extends AbstractRequest {
 
-  protected NewReleasesRequest(Builder builder) {
+  private NewReleasesRequest(final Builder builder) {
     super(builder);
   }
 
   public static Builder builder() {
     return new Builder();
-  }
-
-  public SettableFuture<NewReleases> getAsync() {
-    final SettableFuture<NewReleases> newReleasesFuture = SettableFuture.create();
-
-    try {
-      newReleasesFuture.set(JsonUtil.createNewReleases(JSONObject.fromObject(getJson())));
-    } catch (Exception e) {
-      newReleasesFuture.setException(e);
-    }
-
-    return newReleasesFuture;
   }
 
   public NewReleases get() throws
@@ -44,23 +32,38 @@ public class NewReleasesRequest extends AbstractRequest {
     return JsonUtil.createNewReleases(JSONObject.fromObject(getJson()));
   }
 
+  public SettableFuture<NewReleases> getAsync() throws
+          IOException,
+          NoContentException,
+          BadRequestException,
+          UnauthorizedException,
+          ForbiddenException,
+          NotFoundException,
+          TooManyRequestsException,
+          InternalServerErrorException,
+          BadGatewayException,
+          ServiceUnavailableException {
+    return getAsync(JsonUtil.createNewReleases(getJson()));
+  }
+
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
-    public Builder limit(int limit) {
+    public Builder limit(final int limit) {
       assert (limit > 0);
       return setParameter("limit", String.valueOf(limit));
     }
 
-    public Builder offset(int offset) {
+    public Builder offset(final int offset) {
       assert (offset >= 0);
       return setParameter("offset", String.valueOf(offset));
     }
 
-    public Builder country(String countryCode) {
+    public Builder country(final String countryCode) {
       assert (countryCode != null);
       return setParameter("country", countryCode);
     }
 
+    @Override
     public NewReleasesRequest build() {
       setPath("/v1/browse/new-releases");
       return new NewReleasesRequest(this);

@@ -1,5 +1,6 @@
 package com.wrapper.spotify.methods;
 
+import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.HttpManager;
 import com.wrapper.spotify.UrlUtil;
@@ -47,18 +48,6 @@ public abstract class AbstractRequest implements Request {
     }
 
     url = urlBuilder.build();
-  }
-
-  public Url toUrl() {
-    return url;
-  }
-
-  public String toString() {
-    return this.toString(true);
-  }
-
-  public String toString(final boolean withQueryParameters) {
-    return UrlUtil.urlToUri(url, withQueryParameters).toString();
   }
 
   public String getJson() throws
@@ -117,6 +106,30 @@ public abstract class AbstractRequest implements Request {
     return httpManager.delete(url);
   }
 
+  public <T> SettableFuture getAsync(T value) {
+    final SettableFuture<T> settableFuture = SettableFuture.create();
+
+    try {
+      settableFuture.set(value);
+    } catch (Exception e) {
+      settableFuture.setException(e);
+    }
+
+    return settableFuture;
+  }
+
+  public String toString() {
+    return this.toString(true);
+  }
+
+  public String toString(final boolean withQueryParameters) {
+    return UrlUtil.urlToUri(url, withQueryParameters).toString();
+  }
+
+  public Url toUrl() {
+    return url;
+  }
+
   public static abstract class Builder<BuilderType extends Builder<?>> implements Request.Builder {
 
     private HttpManager httpManager;
@@ -162,6 +175,11 @@ public abstract class AbstractRequest implements Request {
 
     public BuilderType setParameter(String name, String value) {
       addParameter(Url.Parameter.newBuilder(), this.parameters, name, value);
+      return (BuilderType) this;
+    }
+
+    public BuilderType setParameter(String name, int value) {
+      addParameter(Url.Parameter.newBuilder(), this.parameters, name, String.valueOf(value));
       return (BuilderType) this;
     }
 

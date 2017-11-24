@@ -11,25 +11,12 @@ import java.util.List;
 
 public class TopTracksRequest extends AbstractRequest {
 
-  public TopTracksRequest(Builder builder) {
+  private TopTracksRequest(final Builder builder) {
     super(builder);
   }
 
   public static Builder builder() {
     return new Builder();
-  }
-
-  public SettableFuture<List<Track>> getAsync() {
-    final SettableFuture<List<Track>> tracksFuture = SettableFuture.create();
-
-    try {
-      final JSONObject jsonObject = JSONObject.fromObject(getJson());
-      tracksFuture.set(JsonUtil.createTracks(jsonObject));
-    } catch (Exception e) {
-      tracksFuture.setException(e);
-    }
-
-    return tracksFuture;
   }
 
   public List<Track> get() throws
@@ -43,22 +30,36 @@ public class TopTracksRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    final JSONObject jsonObject = JSONObject.fromObject(getJson());
-    return JsonUtil.createTracks(jsonObject);
+    return JsonUtil.createTracks(getJson());
+  }
+
+  public SettableFuture<List<Track>> getAsync() throws
+          IOException,
+          NoContentException,
+          BadRequestException,
+          UnauthorizedException,
+          ForbiddenException,
+          NotFoundException,
+          TooManyRequestsException,
+          InternalServerErrorException,
+          BadGatewayException,
+          ServiceUnavailableException {
+    return getAsync(JsonUtil.createTracks(getJson()));
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
-    public Builder id(String id) {
+    public Builder id(final String id) {
       assert (id != null);
       return setPath(String.format("/v1/artists/%s/toptracks", id));
     }
 
-    public Builder countryCode(String countryCode) {
+    public Builder countryCode(final String countryCode) {
       assert (countryCode != null);
       return setParameter("country", countryCode);
     }
 
+    @Override
     public TopTracksRequest build() {
       return new TopTracksRequest(this);
     }

@@ -12,25 +12,12 @@ import java.util.List;
 
 public class TracksRequest extends AbstractRequest {
 
-  public TracksRequest(Builder builder) {
+  private TracksRequest(final Builder builder) {
     super(builder);
   }
 
   public static Builder builder() {
     return new Builder();
-  }
-
-  public SettableFuture<List<Track>> getAsync() {
-    final SettableFuture<List<Track>> tracksFuture = SettableFuture.create();
-
-    try {
-      final JSONObject jsonObject = JSONObject.fromObject(getJson());
-      tracksFuture.set(JsonUtil.createTracks(jsonObject));
-    } catch (Exception e) {
-      tracksFuture.setException(e);
-    }
-
-    return tracksFuture;
   }
 
   public List<Track> get() throws
@@ -44,19 +31,33 @@ public class TracksRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    final JSONObject jsonObject = JSONObject.fromObject(getJson());
-    return JsonUtil.createTracks(jsonObject);
+    return JsonUtil.createTracks(getJson());
+  }
+
+  public SettableFuture<List<Track>> getAsync() throws
+          IOException,
+          NoContentException,
+          BadRequestException,
+          UnauthorizedException,
+          ForbiddenException,
+          NotFoundException,
+          TooManyRequestsException,
+          InternalServerErrorException,
+          BadGatewayException,
+          ServiceUnavailableException {
+    return getAsync(JsonUtil.createTracks(getJson()));
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
-    public Builder id(List<String> ids) {
+    public Builder id(final List<String> ids) {
       assert (ids != null);
       String idsParameter = Joiner.on(",").join(ids);
       setPath("/v1/tracks");
       return setParameter("ids", idsParameter);
     }
 
+    @Override
     public TracksRequest build() {
       return new TracksRequest(this);
     }

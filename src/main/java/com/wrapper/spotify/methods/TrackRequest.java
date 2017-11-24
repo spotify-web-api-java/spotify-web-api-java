@@ -9,24 +9,12 @@ import java.io.IOException;
 
 public class TrackRequest extends AbstractRequest {
 
-  public TrackRequest(Builder builder) {
+  private TrackRequest(final Builder builder) {
     super(builder);
   }
 
   public static Builder builder() {
     return new Builder();
-  }
-
-  public SettableFuture<Track> getAsync() {
-    final SettableFuture<Track> trackFuture = SettableFuture.create();
-
-    try {
-      trackFuture.set(JsonUtil.createTrack(getJson()));
-    } catch (Exception e) {
-      trackFuture.setException(e);
-    }
-
-    return trackFuture;
   }
 
   public Track get() throws
@@ -43,6 +31,20 @@ public class TrackRequest extends AbstractRequest {
     return JsonUtil.createTrack(getJson());
   }
 
+  public SettableFuture<Track> getAsync() throws
+          IOException,
+          NoContentException,
+          BadRequestException,
+          UnauthorizedException,
+          ForbiddenException,
+          NotFoundException,
+          TooManyRequestsException,
+          InternalServerErrorException,
+          BadGatewayException,
+          ServiceUnavailableException {
+    return getAsync(JsonUtil.createTrack(getJson()));
+  }
+
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
     /**
@@ -51,11 +53,12 @@ public class TrackRequest extends AbstractRequest {
      * @param id The id for the track.
      * @return Track Request
      */
-    public Builder id(String id) {
+    public Builder id(final String id) {
       assert (id != null);
       return setPath(String.format("/v1/tracks/%s", id));
     }
 
+    @Override
     public TrackRequest build() {
       return new TrackRequest(this);
     }

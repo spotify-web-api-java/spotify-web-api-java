@@ -117,10 +117,6 @@ public class JsonUtil {
     return returnedAlbums;
   }
 
-  public static Paging<AlbumSimplified> createSimpleAlbumPage(String simpleAlbumPageJson) {
-    return createSimpleAlbumPage(JSONObject.fromObject(simpleAlbumPageJson));
-  }
-
   private static Paging<AlbumSimplified> createItemlessSimpleAlbumPage(JSONObject pageJson) {
     Paging<AlbumSimplified> page = new Paging<>();
     page.setHref(pageJson.getString("href"));
@@ -136,9 +132,26 @@ public class JsonUtil {
     return page;
   }
 
+  public static Paging<AlbumSimplified> createSimpleAlbumPage(String simpleAlbumPageJson) {
+    JSONObject jsonObject = JSONObject.fromObject(simpleAlbumPageJson);
+    return createSimpleAlbumPage(jsonObject);
+  }
+
   public static Paging<AlbumSimplified> createSimpleAlbumPage(JSONObject simpleAlbumPageJson) {
     Paging<AlbumSimplified> page = createItemlessSimpleAlbumPage(simpleAlbumPageJson);
     page.setItems(createAlbumsSimplified(simpleAlbumPageJson.getJSONArray("items")));
+    return page;
+  }
+
+  // SimpleAlbumSearchRequest
+  public static Paging<AlbumSimplified> createSimpleAlbumSearchRequestPage(String simpleAlbumSearchRequestPageJson) {
+    JSONObject jsonObject = JSONObject.fromObject(simpleAlbumSearchRequestPageJson).getJSONObject("albums");
+    return createSimpleAlbumSearchRequestPage(jsonObject);
+  }
+
+  public static Paging<AlbumSimplified> createSimpleAlbumSearchRequestPage(JSONObject simpleAlbumSearchRequestPageJson) {
+    Paging<AlbumSimplified> page = createItemlessSimpleAlbumPage(simpleAlbumSearchRequestPageJson);
+    page.setItems(createAlbumsSimplified(simpleAlbumSearchRequestPageJson.getJSONArray("items")));
     return page;
   }
 
@@ -195,6 +208,11 @@ public class JsonUtil {
       returnedArtists.add(createArtist(artistsJsonArray.getJSONObject(i)));
     }
     return returnedArtists;
+  }
+
+  public static Paging<Artist> createArtistPage(String artistPageJson) {
+    final JSONObject jsonObject = JSONObject.fromObject(artistPageJson).getJSONObject("artists");
+    return createArtistPage(jsonObject);
   }
 
   public static Paging<Artist> createArtistPage(JSONObject artistPageJson) {
@@ -360,6 +378,11 @@ public class JsonUtil {
   }
 
   // Playlist
+  public static Playlist createPlaylist(String createPlaylistJson) {
+    JSONObject jsonObject = JSONObject.fromObject(createPlaylistJson);
+    return createPlaylist(jsonObject);
+  }
+
   public static Playlist createPlaylist(JSONObject jsonObject) {
     final Playlist returnedPlaylist = new Playlist();
 
@@ -464,6 +487,11 @@ public class JsonUtil {
     return page;
   }
 
+  public static Paging<PlaylistSimplified> createSimplePlaylistsPage(String createSimplePlaylistsPageJson) {
+    JSONObject jsonObject = JSONObject.fromObject(createSimplePlaylistsPageJson);
+    return createSimplePlaylistsPage(jsonObject);
+  }
+
   public static Paging<PlaylistSimplified> createSimplePlaylistsPage(JSONObject jsonObject) {
     Paging<PlaylistSimplified> playlistsPage = createItemlessSimplePlaylistPage(jsonObject);
     playlistsPage.setItems(createSimplePlaylists(jsonObject.getJSONArray("items")));
@@ -508,6 +536,11 @@ public class JsonUtil {
     }
     page.setTotal(pageJson.getInt("total"));
     return page;
+  }
+
+  public static Paging<PlaylistTrack> createPlaylistTrackPage(String playlistTrackPageJson) {
+    JSONObject jsonObject = JSONObject.fromObject(playlistTrackPageJson);
+    return createPlaylistTrackPage(jsonObject);
   }
 
   public static Paging<PlaylistTrack> createPlaylistTrackPage(JSONObject playlistTrackPageJson) {
@@ -596,6 +629,11 @@ public class JsonUtil {
       returnedTracks.add(createTrack(tracksJson.getJSONObject(i)));
     }
     return returnedTracks;
+  }
+
+  public static Paging<Track> createTrackPage(String trackPageJson) {
+    JSONObject jsonObject = JSONObject.fromObject(trackPageJson);
+    return createTrackPage(jsonObject);
   }
 
   public static Paging<Track> createTrackPage(JSONObject trackPageJson) {
@@ -742,6 +780,11 @@ public class JsonUtil {
             !JSONNull.getInstance().equals(jsonObject.get(key));
   }
 
+  public static FeaturedPlaylists createFeaturedPlaylist(String featuredPlaylistsJson) {
+    JSONObject jsonObject = JSONObject.fromObject(featuredPlaylistsJson);
+    return createFeaturedPlaylist(jsonObject);
+  }
+
   /**
    * Create a Featured Playlist object
    *
@@ -753,6 +796,11 @@ public class JsonUtil {
     featuredPlaylists.setMessage(jsonObject.getString("message"));
     featuredPlaylists.setPlaylists(JsonUtil.createSimplePlaylistsPage(jsonObject.getJSONObject("playlists")));
     return featuredPlaylists;
+  }
+
+  public static NewReleases createNewReleases(String newReleasesJson) {
+    JSONObject jsonObject = JSONObject.fromObject(newReleasesJson);
+    return createNewReleases(jsonObject);
   }
 
   public static NewReleases createNewReleases(JSONObject newReleasesJson) {
@@ -782,11 +830,15 @@ public class JsonUtil {
     return page;
   }
 
+  public static Paging<LibraryTrack> createLibraryTracksPage(String createLibraryTracksPageJson) {
+    JSONObject jsonObject = JSONObject.fromObject(createLibraryTracksPageJson);
+    return createLibraryTracksPage(jsonObject);
+  }
+
   public static Paging<LibraryTrack> createLibraryTracksPage(JSONObject jsonObject) {
     final Paging<LibraryTrack> libraryTracksPage = createItemlessLibraryTrackPage(jsonObject);
     libraryTracksPage.setItems(createLibraryTracks(
             JSONArray.fromObject(jsonObject.getJSONArray("items"))));
-
     return libraryTracksPage;
   }
 
@@ -807,6 +859,11 @@ public class JsonUtil {
     }
     returnedLibraryTrack.setTrack(createTrack(item.getJSONObject("track")));
     return returnedLibraryTrack;
+  }
+
+  public static AudioFeature createAudioFeature(String audioFeatureJson) {
+    JSONObject jsonObject = JSONObject.fromObject(audioFeatureJson);
+    return createAudioFeature(jsonObject);
   }
 
   public static AudioFeature createAudioFeature(JSONObject audioFeatureJson) {

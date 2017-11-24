@@ -9,24 +9,12 @@ import java.util.List;
 
 public class RemoveFromMySavedTracksRequest extends AbstractRequest {
 
-  public RemoveFromMySavedTracksRequest(Builder builder) {
+  private RemoveFromMySavedTracksRequest(final Builder builder) {
     super(builder);
   }
 
   public static Builder builder() {
     return new Builder();
-  }
-
-  public SettableFuture<String> getAsync() {
-    final SettableFuture<String> removeFromMyTracksFuture = SettableFuture.create();
-
-    try {
-      removeFromMyTracksFuture.set(deleteJson());
-    } catch (Exception e) {
-      removeFromMyTracksFuture.setException(e);
-    }
-
-    return removeFromMyTracksFuture;
   }
 
   public String get() throws
@@ -43,9 +31,23 @@ public class RemoveFromMySavedTracksRequest extends AbstractRequest {
     return deleteJson();
   }
 
+  public SettableFuture<String> getAsync() throws
+          IOException,
+          NoContentException,
+          BadRequestException,
+          UnauthorizedException,
+          ForbiddenException,
+          NotFoundException,
+          TooManyRequestsException,
+          InternalServerErrorException,
+          BadGatewayException,
+          ServiceUnavailableException {
+    return getAsync(deleteJson());
+  }
+
   public static class Builder extends AbstractRequest.Builder<Builder> {
 
-    public Builder tracks(List<String> trackIds) {
+    public Builder tracks(final List<String> trackIds) {
       String idsParameter = Joiner.on(",").join(trackIds);
       return setParameter("ids", idsParameter);
     }

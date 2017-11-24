@@ -11,24 +11,12 @@ import java.util.List;
 
 public class AlbumsRequest extends AbstractRequest {
 
-  public AlbumsRequest(Builder builder) {
+  private AlbumsRequest(final Builder builder) {
     super(builder);
   }
 
   public static Builder builder() {
     return new Builder();
-  }
-
-  public SettableFuture<List<Album>> getAsync() {
-    final SettableFuture<List<Album>> albumsFuture = SettableFuture.create();
-
-    try {
-      albumsFuture.set(JsonUtil.createAlbums(getJson()));
-    } catch (Exception e) {
-      albumsFuture.setException(e);
-    }
-
-    return albumsFuture;
   }
 
   public List<Album> get() throws
@@ -45,15 +33,30 @@ public class AlbumsRequest extends AbstractRequest {
     return JsonUtil.createAlbums(getJson());
   }
 
+  public SettableFuture<List<Album>> getAsync() throws
+          IOException,
+          NoContentException,
+          BadRequestException,
+          UnauthorizedException,
+          ForbiddenException,
+          NotFoundException,
+          TooManyRequestsException,
+          InternalServerErrorException,
+          BadGatewayException,
+          ServiceUnavailableException {
+    return getAsync(JsonUtil.createAlbums(getJson()));
+  }
+
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
-    public Builder id(List<String> ids) {
+    public Builder id(final List<String> ids) {
       assert (ids != null);
       String idsParameter = Joiner.on(",").join(ids);
       setPath("/v1/albums");
       return setParameter("ids", idsParameter);
     }
 
+    @Override
     public AlbumsRequest build() {
       return new AlbumsRequest(this);
     }

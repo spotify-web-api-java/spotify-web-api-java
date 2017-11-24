@@ -9,24 +9,12 @@ import java.util.List;
 
 public class AddToMySavedTracksRequest extends AbstractRequest {
 
-  public AddToMySavedTracksRequest(Builder builder) {
+  private AddToMySavedTracksRequest(final Builder builder) {
     super(builder);
   }
 
   public static Builder builder() {
     return new Builder();
-  }
-
-  public SettableFuture<String> getAsync() {
-    final SettableFuture<String> addToSavedTracksFuture = SettableFuture.create();
-
-    try {
-      addToSavedTracksFuture.set(putJson());
-    } catch (Exception e) {
-      addToSavedTracksFuture.setException(e);
-    }
-
-    return addToSavedTracksFuture;
   }
 
   public String get() throws
@@ -43,13 +31,28 @@ public class AddToMySavedTracksRequest extends AbstractRequest {
     return putJson();
   }
 
+  public SettableFuture<String> getAsync() throws
+          IOException,
+          NoContentException,
+          BadRequestException,
+          UnauthorizedException,
+          ForbiddenException,
+          NotFoundException,
+          TooManyRequestsException,
+          InternalServerErrorException,
+          BadGatewayException,
+          ServiceUnavailableException {
+    return getAsync(putJson());
+  }
+
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
-    public Builder tracks(List<String> trackIds) {
+    public Builder tracks(final List<String> trackIds) {
       setBodyParameter(JSONArray.fromObject(trackIds));
       return this;
     }
 
+    @Override
     public AddToMySavedTracksRequest build() {
       return new AddToMySavedTracksRequest(this);
     }

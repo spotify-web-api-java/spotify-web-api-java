@@ -10,25 +10,12 @@ import java.io.IOException;
 
 public class CurrentUserRequest extends AbstractRequest {
 
-  public CurrentUserRequest(Builder builder) {
+  private CurrentUserRequest(final Builder builder) {
     super(builder);
   }
 
   public static Builder builder() {
     return new Builder();
-  }
-
-  public SettableFuture<User> getAsync() {
-    final SettableFuture<User> userFuture = SettableFuture.create();
-
-    try {
-      final JSONObject jsonObject = JSONObject.fromObject(getJson());
-      userFuture.set(JsonUtil.createUser(jsonObject));
-    } catch (Exception e) {
-      userFuture.setException(e);
-    }
-
-    return userFuture;
   }
 
   public User get() throws
@@ -42,16 +29,30 @@ public class CurrentUserRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    JSONObject jsonObject = JSONObject.fromObject(getJson());
-    return JsonUtil.createUser(jsonObject);
+    return JsonUtil.createUser(getJson());
+  }
+
+  public SettableFuture<User> getAsync() throws
+          IOException,
+          NoContentException,
+          BadRequestException,
+          UnauthorizedException,
+          ForbiddenException,
+          NotFoundException,
+          TooManyRequestsException,
+          InternalServerErrorException,
+          BadGatewayException,
+          ServiceUnavailableException {
+    return getAsync(JsonUtil.createUser(getJson()));
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
-    public Builder accessToken(String accessToken) {
+    public Builder accessToken(final String accessToken) {
       return setHeaderParameter("Authorization", "Bearer " + accessToken);
     }
 
+    @Override
     public CurrentUserRequest build() {
       setPath("/v1/me");
       return new CurrentUserRequest(this);

@@ -11,25 +11,12 @@ import java.io.IOException;
 
 public class GetMySavedTracksRequest extends AbstractRequest {
 
-  public GetMySavedTracksRequest(AbstractRequest.Builder builder) {
+  private GetMySavedTracksRequest(final Builder builder) {
     super(builder);
   }
 
   public static Builder builder() {
     return new Builder();
-  }
-
-  public SettableFuture<Paging<LibraryTrack>> getAsync() {
-    final SettableFuture<Paging<LibraryTrack>> libraryTracksFuture = SettableFuture.create();
-
-    try {
-      final JSONObject jsonObject = JSONObject.fromObject(getJson());
-      libraryTracksFuture.set(JsonUtil.createLibraryTracksPage(jsonObject));
-    } catch (Exception e) {
-      libraryTracksFuture.setException(e);
-    }
-
-    return libraryTracksFuture;
   }
 
   public Paging<LibraryTrack> get() throws
@@ -43,28 +30,42 @@ public class GetMySavedTracksRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    final JSONObject jsonObject = JSONObject.fromObject(getJson());
-    return JsonUtil.createLibraryTracksPage(jsonObject);
+    return JsonUtil.createLibraryTracksPage(getJson());
+  }
+
+  public SettableFuture<Paging<LibraryTrack>> getAsync() throws
+          IOException,
+          NoContentException,
+          BadRequestException,
+          UnauthorizedException,
+          ForbiddenException,
+          NotFoundException,
+          TooManyRequestsException,
+          InternalServerErrorException,
+          BadGatewayException,
+          ServiceUnavailableException {
+    return getAsync(JsonUtil.createLibraryTracksPage(getJson()));
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
-    public Builder accessToken(String accessToken) {
+    public Builder accessToken(final String accessToken) {
       return setHeaderParameter("Authorization", "Bearer " + accessToken);
     }
 
-    public GetMySavedTracksRequest build() {
-      return new GetMySavedTracksRequest(this);
-    }
-
-    public Builder limit(int limit) {
+    public Builder limit(final int limit) {
       assert (limit > 0);
       return setParameter("limit", String.valueOf(limit));
     }
 
-    public Builder offset(int offset) {
+    public Builder offset(final int offset) {
       assert (offset >= 0);
       return setParameter("offset", String.valueOf(offset));
+    }
+
+    @Override
+    public GetMySavedTracksRequest build() {
+      return new GetMySavedTracksRequest(this);
     }
   }
 

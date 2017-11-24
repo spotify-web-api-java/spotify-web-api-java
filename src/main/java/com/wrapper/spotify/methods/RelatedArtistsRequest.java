@@ -11,25 +11,12 @@ import java.util.List;
 
 public class RelatedArtistsRequest extends AbstractRequest {
 
-  public RelatedArtistsRequest(Builder builder) {
+  private RelatedArtistsRequest(final Builder builder) {
     super(builder);
   }
 
   public static Builder builder() {
     return new Builder();
-  }
-
-  public SettableFuture<List<Artist>> getAsync() {
-    final SettableFuture<List<Artist>> artistsFuture = SettableFuture.create();
-
-    try {
-      final JSONObject jsonObject = JSONObject.fromObject(getJson());
-      artistsFuture.set(JsonUtil.createArtists(jsonObject));
-    } catch (Exception e) {
-      artistsFuture.setException(e);
-    }
-
-    return artistsFuture;
   }
 
   public List<Artist> get() throws
@@ -43,12 +30,26 @@ public class RelatedArtistsRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    final JSONObject jsonObject = JSONObject.fromObject(getJson());
-    return JsonUtil.createArtists(jsonObject);
+    return JsonUtil.createArtists(getJson());
+  }
+
+  public SettableFuture<List<Artist>> getAsync() throws
+          IOException,
+          NoContentException,
+          BadRequestException,
+          UnauthorizedException,
+          ForbiddenException,
+          NotFoundException,
+          TooManyRequestsException,
+          InternalServerErrorException,
+          BadGatewayException,
+          ServiceUnavailableException {
+    return getAsync(JsonUtil.createArtists(getJson()));
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
+    @Override
     public RelatedArtistsRequest build() {
       return new RelatedArtistsRequest(this);
     }

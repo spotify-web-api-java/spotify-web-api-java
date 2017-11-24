@@ -10,24 +10,12 @@ import java.util.Map;
 
 public class ChangePlaylistDetailsRequest extends AbstractRequest {
 
-  public ChangePlaylistDetailsRequest(Builder builder) {
+  private ChangePlaylistDetailsRequest(final Builder builder) {
     super(builder);
   }
 
   public static Builder builder() {
     return new Builder();
-  }
-
-  public SettableFuture<String> getAsync() {
-    final SettableFuture<String> changeDetailsFuture = SettableFuture.create();
-
-    try {
-      changeDetailsFuture.set(putJson());
-    } catch (Exception e) {
-      changeDetailsFuture.setException(e);
-    }
-
-    return changeDetailsFuture;
   }
 
   public String get() throws
@@ -44,21 +32,36 @@ public class ChangePlaylistDetailsRequest extends AbstractRequest {
     return putJson();
   }
 
+  public SettableFuture<String> getAsync() throws
+          IOException,
+          NoContentException,
+          BadRequestException,
+          UnauthorizedException,
+          ForbiddenException,
+          NotFoundException,
+          TooManyRequestsException,
+          InternalServerErrorException,
+          BadGatewayException,
+          ServiceUnavailableException {
+    return getAsync(putJson());
+  }
+
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
     final private Map<String, Object> properties = Maps.newHashMap();
 
-    public Builder name(String name) {
+    public Builder name(final String name) {
       assert (name != null);
       properties.put("name", name);
       return this;
     }
 
-    public Builder publicAccess(boolean isPublic) {
+    public Builder publicAccess(final boolean isPublic) {
       properties.put("public", isPublic);
       return this;
     }
 
+    @Override
     public ChangePlaylistDetailsRequest build() {
       setHeaderParameter("Content-Type", "application/json");
       setBodyParameter(JSONObject.fromObject(properties));

@@ -10,25 +10,12 @@ import java.io.IOException;
 
 public class PlaylistRequest extends AbstractRequest {
 
-  public PlaylistRequest(Builder builder) {
+  private PlaylistRequest(final Builder builder) {
     super(builder);
   }
 
   public static Builder builder() {
     return new Builder();
-  }
-
-  public SettableFuture<Playlist> getAsync() {
-    final SettableFuture<Playlist> playlistFuture = SettableFuture.create();
-
-    try {
-      final JSONObject jsonObject = JSONObject.fromObject(getJson());
-      playlistFuture.set(JsonUtil.createPlaylist(jsonObject));
-    } catch (Exception e) {
-      playlistFuture.setException(e);
-    }
-
-    return playlistFuture;
   }
 
   public Playlist get() throws
@@ -42,19 +29,32 @@ public class PlaylistRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    final JSONObject jsonObject = JSONObject.fromObject(getJson());
-    return JsonUtil.createPlaylist(jsonObject);
+    return JsonUtil.createPlaylist(getJson());
+  }
+
+  public SettableFuture<Playlist> getAsync() throws
+          IOException,
+          NoContentException,
+          BadRequestException,
+          UnauthorizedException,
+          ForbiddenException,
+          NotFoundException,
+          TooManyRequestsException,
+          InternalServerErrorException,
+          BadGatewayException,
+          ServiceUnavailableException {
+    return getAsync(JsonUtil.createPlaylist(getJson()));
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
-    public Builder fields(String fields) {
+    public Builder fields(final String fields) {
       assert (fields != null);
       return setParameter("fields", fields);
     }
 
+    @Override
     public PlaylistRequest build() {
-
       return new PlaylistRequest(this);
     }
 

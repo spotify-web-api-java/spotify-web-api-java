@@ -13,25 +13,12 @@ import java.io.IOException;
 
 public class AlbumsForArtistRequest extends AbstractRequest {
 
-  public AlbumsForArtistRequest(Builder builder) {
+  private AlbumsForArtistRequest(final Builder builder) {
     super(builder);
   }
 
   public static Builder builder() {
     return new Builder();
-  }
-
-  public SettableFuture<Paging<AlbumSimplified>> getAsync() {
-    final SettableFuture<Paging<AlbumSimplified>> searchResultFuture = SettableFuture.create();
-
-    try {
-      final JSONObject jsonObject = JSONObject.fromObject(getJson());
-      searchResultFuture.set(JsonUtil.createSimpleAlbumPage(jsonObject));
-    } catch (Exception e) {
-      searchResultFuture.setException(e);
-    }
-
-    return searchResultFuture;
   }
 
   public Paging<AlbumSimplified> get() throws
@@ -45,39 +32,53 @@ public class AlbumsForArtistRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    final JSONObject jsonObject = JSONObject.fromObject(getJson());
-    return JsonUtil.createSimpleAlbumPage(jsonObject);
+    return JsonUtil.createSimpleAlbumPage(getJson());
+  }
+
+  public SettableFuture<Paging<AlbumSimplified>> getAsync() throws
+          IOException,
+          NoContentException,
+          BadRequestException,
+          UnauthorizedException,
+          ForbiddenException,
+          NotFoundException,
+          TooManyRequestsException,
+          InternalServerErrorException,
+          BadGatewayException,
+          ServiceUnavailableException {
+    return getAsync(JsonUtil.createSimpleAlbumPage(getJson()));
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
-    public Builder forArtist(String id) {
+    public Builder forArtist(final String id) {
       assert (id != null);
       return setPath(String.format("/v1/artists/%s/albums", id));
     }
 
-    public Builder types(AlbumType... types) {
+    public Builder types(final AlbumType... types) {
       assert (types != null);
       assert (types.length > 0);
       String albumsParameter = Joiner.on(",").join(types);
       return setParameter("album_type", albumsParameter);
     }
 
-    public Builder market(String market) {
+    public Builder market(final String market) {
       assert (market != null);
       return setParameter("market", market);
     }
 
-    public Builder limit(int limit) {
+    public Builder limit(final int limit) {
       assert (limit > 0);
       return setParameter("limit", String.valueOf(limit));
     }
 
-    public Builder offset(int offset) {
+    public Builder offset(final int offset) {
       assert (offset >= 0);
       return setParameter("offset", String.valueOf(offset));
     }
 
+    @Override
     public AlbumsForArtistRequest build() {
       return new AlbumsForArtistRequest(this);
     }

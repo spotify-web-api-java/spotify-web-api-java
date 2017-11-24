@@ -13,6 +13,8 @@ public interface Request {
   String toString(final boolean withQueryParameters);
 
   interface Builder {
+    AbstractRequest build();
+
     Builder setHttpManager(HttpManager httpManager);
 
     Builder setScheme(Url.Scheme scheme);
@@ -32,8 +34,6 @@ public interface Request {
     Builder setPart(Url.Part part);
 
     Builder setBodyParameter(JSON jsonBody);
-
-    AbstractRequest build();
   }
 
 }

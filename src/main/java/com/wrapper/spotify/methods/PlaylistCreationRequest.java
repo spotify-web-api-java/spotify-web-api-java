@@ -10,25 +10,12 @@ import java.io.IOException;
 
 public class PlaylistCreationRequest extends AbstractRequest {
 
-  public PlaylistCreationRequest(Builder builder) {
+  private PlaylistCreationRequest(final Builder builder) {
     super(builder);
   }
 
   public static Builder builder() {
     return new Builder();
-  }
-
-  public SettableFuture<Playlist> getAsync() {
-    final SettableFuture<Playlist> playlistFuture = SettableFuture.create();
-
-    try {
-      final JSONObject jsonObject = JSONObject.fromObject(postJson());
-      playlistFuture.set(JsonUtil.createPlaylist(jsonObject));
-    } catch (Exception e) {
-      playlistFuture.setException(e);
-    }
-
-    return playlistFuture;
   }
 
   public Playlist get() throws
@@ -42,15 +29,28 @@ public class PlaylistCreationRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    final JSONObject jsonObject = JSONObject.fromObject(postJson());
-    return JsonUtil.createPlaylist(jsonObject);
+    return JsonUtil.createPlaylist(postJson());
+  }
+
+  public SettableFuture<Playlist> getAsync() throws
+          IOException,
+          NoContentException,
+          BadRequestException,
+          UnauthorizedException,
+          ForbiddenException,
+          NotFoundException,
+          TooManyRequestsException,
+          InternalServerErrorException,
+          BadGatewayException,
+          ServiceUnavailableException {
+    return getAsync(JsonUtil.createPlaylist(postJson()));
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
     private JSONObject jsonBody;
 
-    public Builder publicAccess(boolean publicAccess) {
+    public Builder publicAccess(final boolean publicAccess) {
       if (jsonBody == null) {
         jsonBody = new JSONObject();
       }
@@ -58,7 +58,7 @@ public class PlaylistCreationRequest extends AbstractRequest {
       return setBodyParameter(jsonBody);
     }
 
-    public Builder title(String title) {
+    public Builder title(final String title) {
       if (jsonBody == null) {
         jsonBody = new JSONObject();
       }
@@ -66,6 +66,7 @@ public class PlaylistCreationRequest extends AbstractRequest {
       return setBodyParameter(jsonBody);
     }
 
+    @Override
     public PlaylistCreationRequest build() {
       setHeaderParameter("Content-Type", "application/json");
       return new PlaylistCreationRequest(this);

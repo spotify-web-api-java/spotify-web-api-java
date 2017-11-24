@@ -9,24 +9,12 @@ import java.io.IOException;
 
 public class AddTrackToPlaylistRequest extends AbstractRequest {
 
-  public AddTrackToPlaylistRequest(Builder builder) {
+  private AddTrackToPlaylistRequest(final Builder builder) {
     super(builder);
   }
 
   public static Builder builder() {
     return new Builder();
-  }
-
-  public SettableFuture<SnapshotResult> getAsync() {
-    final SettableFuture<SnapshotResult> addTrackFuture = SettableFuture.create();
-
-    try {
-      addTrackFuture.set(JsonUtil.createSnapshotResult(postJson()));
-    } catch (Exception e) {
-      addTrackFuture.setException(e);
-    }
-
-    return addTrackFuture;
   }
 
   public SnapshotResult get() throws
@@ -43,13 +31,28 @@ public class AddTrackToPlaylistRequest extends AbstractRequest {
     return JsonUtil.createSnapshotResult(postJson());
   }
 
+  public SettableFuture<SnapshotResult> getAsync() throws
+          IOException,
+          NoContentException,
+          BadRequestException,
+          UnauthorizedException,
+          ForbiddenException,
+          NotFoundException,
+          TooManyRequestsException,
+          InternalServerErrorException,
+          BadGatewayException,
+          ServiceUnavailableException {
+    return getAsync(JsonUtil.createSnapshotResult(postJson()));
+  }
+
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
-    public Builder position(int position) {
+    public Builder position(final int position) {
       assert (position >= 0);
-      return setParameter("position", String.valueOf(position));
+      return setParameter("position", position);
     }
 
+    @Override
     public AddTrackToPlaylistRequest build() {
       setHeaderParameter("Content-Type", "application/json");
       return new AddTrackToPlaylistRequest(this);

@@ -9,24 +9,12 @@ import java.io.IOException;
 
 public class AlbumRequest extends AbstractRequest {
 
-  public AlbumRequest(Builder builder) {
+  private AlbumRequest(final Builder builder) {
     super(builder);
   }
 
   public static Builder builder() {
     return new Builder();
-  }
-
-  public SettableFuture<Album> getAsync() {
-    final SettableFuture<Album> albumFuture = SettableFuture.create();
-
-    try {
-      albumFuture.set(JsonUtil.createAlbum(getJson()));
-    } catch (Exception e) {
-      albumFuture.setException(e);
-    }
-
-    return albumFuture;
   }
 
   public Album get() throws
@@ -43,6 +31,20 @@ public class AlbumRequest extends AbstractRequest {
     return JsonUtil.createAlbum(getJson());
   }
 
+  public SettableFuture<Album> getAsync() throws
+          IOException,
+          NoContentException,
+          BadRequestException,
+          UnauthorizedException,
+          ForbiddenException,
+          NotFoundException,
+          TooManyRequestsException,
+          InternalServerErrorException,
+          BadGatewayException,
+          ServiceUnavailableException {
+    return getAsync(JsonUtil.createAlbum(getJson()));
+  }
+
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
     /**
@@ -51,11 +53,12 @@ public class AlbumRequest extends AbstractRequest {
      * @param id The id for the album.
      * @return AlbumRequest
      */
-    public Builder id(String id) {
+    public Builder id(final String id) {
       assert (id != null);
       return setPath(String.format("/v1/albums/%s", id));
     }
 
+    @Override
     public AlbumRequest build() {
       return new AlbumRequest(this);
     }
