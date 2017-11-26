@@ -1,171 +1,243 @@
 package com.wrapper.spotify.objects;
 
 import com.neovisionaries.i18n.CountryCode;
+import com.wrapper.spotify.requests.AbstractRequest;
+import com.wrapper.spotify.requests.AlbumRequest;
+import com.wrapper.spotify.requests.Request;
 
 import java.util.List;
 
-public class Album {
+public class Album extends AbstractObject {
 
-  private AlbumType albumType;
-  private List<ArtistSimplified> artists;
-  private List<CountryCode> availableMarkets;
-  private List<Copyright> copyrights;
-  private ExternalIds externalIds;
-  private ExternalUrls externalUrls;
-  private List<String> genres;
-  private String href;
-  private String id;
-  private List<Image> images;
-  private String label;
-  private String name;
-  private int popularity;
-  private String releaseDate;
-  private ReleaseDatePrecision releaseDatePrecision;
-  private Paging<TrackSimplified> tracks;
-  private ObjectType type = ObjectType.ALBUM;
-  private String uri;
+  private final AlbumType albumType;
+  private final List<ArtistSimplified> artists;
+  private final List<CountryCode> availableMarkets;
+  private final List<Copyright> copyrights;
+  private final ExternalIds externalIds;
+  private final ExternalUrls externalUrls;
+  private final List<String> genres;
+  private final String href;
+  private final String id;
+  private final List<Image> images;
+  private final String label;
+  private final String name;
+  private final int popularity;
+  private final String releaseDate;
+  private final ReleaseDatePrecision releaseDatePrecision;
+  private final Paging<TrackSimplified> tracks;
+  private final ObjectType type = ObjectType.ALBUM;
+  private final String uri;
 
-  public AlbumType getAlbumType() {
-    return albumType;
+  private Album(final Album.Builder builder) {
+    super(builder);
+
+    this.albumType = builder.albumType;
+    this.artists = builder.artists;
+    this.availableMarkets = builder.availableMarkets;
+    this.copyrights = builder.copyrights;
+    this.externalIds = builder.externalIds;
+    this.externalUrls = builder.externalUrls;
+    this.genres = builder.genres;
+    this.href = builder.href;
+    this.id = builder.id;
+    this.images = builder.images;
+    this.label = builder.label;
+    this.name = builder.name;
+    this.popularity = builder.popularity;
+    this.releaseDate = builder.releaseDate;
+    this.releaseDatePrecision = builder.releaseDatePrecision;
+    this.tracks = builder.tracks;
+//    this.type = builder.type;
+    this.uri = builder.uri;
   }
 
-  public void setAlbumType(AlbumType albumType) {
-    this.albumType = albumType;
+  public static Builder builder() {
+    return new Builder();
   }
 
-  public List<ArtistSimplified> getArtists() {
-    return artists;
-  }
+    public AlbumType getAlbumType() {
+      return albumType;
+    }
 
-  public void setArtists(List<ArtistSimplified> artists) {
-    this.artists = artists;
-  }
+    public List<ArtistSimplified> getArtists() {
+      return artists;
+    }
 
-  public List<CountryCode> getAvailableMarkets() {
-    return availableMarkets;
-  }
+    public List<CountryCode> getAvailableMarkets() {
+      return availableMarkets;
+    }
 
-  public void setAvailableMarkets(List<CountryCode> availableMarkets) {
-    this.availableMarkets = availableMarkets;
-  }
+    public List<Copyright> getCopyrights() {
+      return copyrights;
+    }
 
-  public List<Copyright> getCopyrights() {
-    return copyrights;
-  }
+    public ExternalIds getExternalIds() {
+      return externalIds;
+    }
 
-  public void setCopyrights(List<Copyright> copyrights) {
-    this.copyrights = copyrights;
-  }
+    public ExternalUrls getExternalUrls() {
+      return externalUrls;
+    }
 
-  public ExternalIds getExternalIds() {
-    return externalIds;
-  }
+    public List<String> getGenres() {
+      return genres;
+    }
 
-  public void setExternalIds(ExternalIds externalIds) {
-    this.externalIds = externalIds;
-  }
+    public String getHref() {
+      return href;
+    }
 
-  public ExternalUrls getExternalUrls() {
-    return externalUrls;
-  }
+    public String getId() {
+      return id;
+    }
 
-  public void setExternalUrls(ExternalUrls externalUrls) {
-    this.externalUrls = externalUrls;
-  }
+    public List<Image> getImages() {
+      return images;
+    }
 
-  public List<String> getGenres() {
-    return genres;
-  }
+    public String getName() {
+      return name;
+    }
 
-  public void setGenres(List<String> genres) {
-    this.genres = genres;
-  }
+    public int getPopularity() {
+      return popularity;
+    }
 
-  public String getHref() {
-    return href;
-  }
+    public String getReleaseDate() {
+      return releaseDate;
+    }
 
-  public void setHref(String href) {
-    this.href = href;
-  }
+    public ReleaseDatePrecision getReleaseDatePrecision() {
+      return releaseDatePrecision;
+    }
 
-  public String getId() {
-    return id;
-  }
+    public Paging<TrackSimplified> getTracks() {
+      return tracks;
+    }
 
-  public void setId(String id) {
-    this.id = id;
-  }
+    public ObjectType getType() {
+      return type;
+    }
 
-  public List<Image> getImages() {
-    return images;
-  }
+    public String getUri() {
+      return uri;
+    }
 
-  public void setImages(List<Image> images) {
-    this.images = images;
-  }
+  public static final class Builder extends AbstractObject.Builder<Album.Builder> {
 
-  public String getLabel() {
-    return label;
-  }
+    private AlbumType albumType;
+    private List<ArtistSimplified> artists;
+    private List<CountryCode> availableMarkets;
+    private List<Copyright> copyrights;
+    private ExternalIds externalIds;
+    private ExternalUrls externalUrls;
+    private List<String> genres;
+    private String href;
+    private String id;
+    private List<Image> images;
+    private String label;
+    private String name;
+    private int popularity;
+    private String releaseDate;
+    private ReleaseDatePrecision releaseDatePrecision;
+    private Paging<TrackSimplified> tracks;
+//    private ObjectType type = ObjectType.ALBUM;
+    private String uri;
 
-  public void setLabel(String label) {
-    this.label = label;
-  }
+    public Builder setAlbumType(AlbumType albumType) {
+      this.albumType = albumType;
+      return this;
+    }
 
-  public String getName() {
-    return name;
-  }
+    public Builder setArtists(List<ArtistSimplified> artists) {
+      this.artists = artists;
+      return this;
+    }
 
-  public void setName(String name) {
-    this.name = name;
-  }
+    public Builder setAvailableMarkets(List<CountryCode> availableMarkets) {
+      this.availableMarkets = availableMarkets;
+      return this;
+    }
 
-  public int getPopularity() {
-    return popularity;
-  }
+    public Builder setCopyrights(List<Copyright> copyrights) {
+      this.copyrights = copyrights;
+      return this;
+    }
 
-  public void setPopularity(int popularity) {
-    this.popularity = popularity;
-  }
+    public Builder setExternalIds(ExternalIds externalIds) {
+      this.externalIds = externalIds;
+      return this;
+    }
 
-  public String getReleaseDate() {
-    return releaseDate;
-  }
+    public Builder setExternalUrls(ExternalUrls externalUrls) {
+      this.externalUrls = externalUrls;
+      return this;
+    }
 
-  public void setReleaseDate(String releaseDate) {
-    this.releaseDate = releaseDate;
-  }
+    public Builder setGenres(List<String> genres) {
+      this.genres = genres;
+      return this;
+    }
 
-  public ReleaseDatePrecision getReleaseDatePrecision() {
-    return releaseDatePrecision;
-  }
+    public Builder setHref(String href) {
+      this.href = href;
+      return this;
+    }
 
-  public void setReleaseDatePrecision(ReleaseDatePrecision releaseDatePrecision) {
-    this.releaseDatePrecision = releaseDatePrecision;
-  }
+    public Builder setId(String id) {
+      this.id = id;
+      return this;
+    }
 
-  public Paging<TrackSimplified> getTracks() {
-    return tracks;
-  }
+    public Builder setImages(List<Image> images) {
+      this.images = images;
+      return this;
+    }
 
-  public void setTracks(Paging<TrackSimplified> tracks) {
-    this.tracks = tracks;
-  }
+    public Builder setLabel(String label) {
+      this.label = label;
+      return this;
+    }
 
-  public ObjectType getType() {
-    return type;
-  }
+    public Builder setName(String name) {
+      this.name = name;
+      return this;
+    }
 
-  public void setType(ObjectType type) {
-    this.type = type;
-  }
+    public Builder setPopularity(int popularity) {
+      this.popularity = popularity;
+      return this;
+    }
 
-  public String getUri() {
-    return uri;
-  }
+    public Builder setReleaseDate(String releaseDate) {
+      this.releaseDate = releaseDate;
+      return this;
+    }
 
-  public void setUri(String uri) {
-    this.uri = uri;
+    public Builder setReleaseDatePrecision(ReleaseDatePrecision releaseDatePrecision) {
+      this.releaseDatePrecision = releaseDatePrecision;
+      return this;
+    }
+
+    public Builder setTracks(Paging<TrackSimplified> tracks) {
+      this.tracks = tracks;
+      return this;
+    }
+
+//    public Builder setType(ObjectType type) {
+//      this.type = type;
+//      return this;
+//    }
+
+    public Builder setUri(String uri) {
+      this.uri = uri;
+      return this;
+    }
+
+    @Override
+    public Album build() {
+      return new Album(this);
+    }
+
   }
 }

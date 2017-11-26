@@ -7,6 +7,7 @@ import net.sf.json.JSONException;
 import net.sf.json.JSONNull;
 import net.sf.json.JSONObject;
 
+import java.lang.Object;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -23,25 +24,25 @@ public class JsonUtil {
       return null;
     }
 
-    Album album = new Album();
-
-    album.setAlbumType(createAlbumType(albumJson.getString("album_type")));
-    album.setArtists(createSimpleArtists(albumJson.getJSONArray("artists")));
-    album.setAvailableMarkets(createAvailableMarkets(albumJson.getJSONArray("available_markets")));
-    album.setCopyrights(createCopyrights(albumJson.getJSONArray("copyrights")));
-    album.setExternalIds(createExternalIds(albumJson.getJSONObject("external_ids")));
-    album.setExternalUrls(createExternalUrls(albumJson.getJSONObject("external_urls")));
-    album.setGenres(createGenres(albumJson.getJSONArray("genres")));
-    album.setHref(albumJson.getString("href"));
-    album.setId(albumJson.getString("id"));
-    album.setImages(createImages(albumJson.getJSONArray("images")));
-    album.setName(albumJson.getString("name"));
-    album.setPopularity(albumJson.getInt("popularity"));
-    album.setReleaseDate(albumJson.getString("release_date"));
-    album.setReleaseDatePrecision(ReleaseDatePrecision.valueOf(albumJson.getString("release_date_precision")));
-    album.setTracks(createSimpleTrackPage(albumJson.getJSONObject("tracks")));
-    album.setType(createObjectType(albumJson.getString("type")));
-    album.setUri(albumJson.getString("uri"));
+    Album album = new Album.Builder()
+            .setAlbumType(createAlbumType(albumJson.getString("album_type")))
+            .setArtists(createSimpleArtists(albumJson.getJSONArray("artists")))
+            .setAvailableMarkets(createAvailableMarkets(albumJson.getJSONArray("available_markets")))
+            .setCopyrights(createCopyrights(albumJson.getJSONArray("copyrights")))
+            .setExternalIds(createExternalIds(albumJson.getJSONObject("external_ids")))
+            .setExternalUrls(createExternalUrls(albumJson.getJSONObject("external_urls")))
+            .setGenres(createGenres(albumJson.getJSONArray("genres")))
+            .setHref(albumJson.getString("href"))
+            .setId(albumJson.getString("id"))
+            .setImages(createImages(albumJson.getJSONArray("images")))
+            .setName(albumJson.getString("name"))
+            .setPopularity(albumJson.getInt("popularity"))
+            .setReleaseDate(albumJson.getString("release_date"))
+            .setReleaseDatePrecision(ReleaseDatePrecision.valueOf(albumJson.getString("release_date_precision")))
+            .setTracks(createSimpleTrackPage(albumJson.getJSONObject("tracks")))
+//            .setType(createObjectType(albumJson.getString("type")))
+            .setUri(albumJson.getString("uri"))
+            .build();
 
     return album;
   }
