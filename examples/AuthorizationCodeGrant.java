@@ -2,7 +2,7 @@ import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.Api;
-import com.wrapper.spotify.models.AuthorizationCodeCredentials;
+import com.wrapper.spotify.objects.AuthorizationCodeCredentials;
 
 import static junit.framework.TestCase.fail;
 

@@ -2,7 +2,7 @@ package com.wrapper.spotify.requests.authentication;
 
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.TestUtil;
-import com.wrapper.spotify.models.AuthorizationCodeCredentials;
+import com.wrapper.spotify.objects.AuthorizationCodeCredentials;
 import org.junit.Test;
 
 import static junit.framework.TestCase.assertEquals;

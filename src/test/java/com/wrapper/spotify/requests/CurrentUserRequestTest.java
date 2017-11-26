@@ -6,8 +6,8 @@ import com.google.common.util.concurrent.SettableFuture;
 import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.TestUtil;
-import com.wrapper.spotify.models.ProductType;
-import com.wrapper.spotify.models.User;
+import com.wrapper.spotify.objects.ProductType;
+import com.wrapper.spotify.objects.User;
 import org.junit.Test;
 
 import java.util.concurrent.CountDownLatch;

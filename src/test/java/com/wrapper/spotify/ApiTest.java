@@ -2,7 +2,7 @@ package com.wrapper.spotify;
 
 import com.wrapper.spotify.UtilProtos.Url.Scheme;
 import com.wrapper.spotify.requests.Request;
-import com.wrapper.spotify.models.AlbumType;
+import com.wrapper.spotify.objects.AlbumType;
 import net.sf.json.JSONObject;
 import org.apache.commons.codec.binary.Base64;
 import org.junit.Test;

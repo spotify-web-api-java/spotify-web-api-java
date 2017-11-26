@@ -3,7 +3,7 @@ import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.requests.authentication.ClientCredentialsGrantRequest;
-import com.wrapper.spotify.models.ClientCredentials;
+import com.wrapper.spotify.objects.ClientCredentials;
 
 import static junit.framework.TestCase.fail;
 
