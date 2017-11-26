@@ -4,7 +4,7 @@ import com.wrapper.spotify.models.User;
 
 /**
  * This example shows how to get information about the user that is 'connected' to the
- * access token. The methods used (api.authorizationCodeGrant and api.getMe) are synchronous, but are
+ * access token. The requests used (api.authorizationCodeGrant and api.getMe) are synchronous, but are
  * available asynchronously as well. The scopes necessary for this example are 'user-read-private'
  * and 'user-read-email'.
  *

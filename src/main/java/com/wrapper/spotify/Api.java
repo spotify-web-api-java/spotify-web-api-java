@@ -1,11 +1,11 @@
 package com.wrapper.spotify;
 
 import com.wrapper.spotify.UtilProtos.Url.Scheme;
-import com.wrapper.spotify.methods.*;
-import com.wrapper.spotify.methods.authentication.AuthorizationCodeGrantRequest;
-import com.wrapper.spotify.methods.authentication.AuthorizationURLRequest;
-import com.wrapper.spotify.methods.authentication.ClientCredentialsGrantRequest;
-import com.wrapper.spotify.methods.authentication.RefreshAccessTokenRequest;
+import com.wrapper.spotify.requests.*;
+import com.wrapper.spotify.requests.authentication.AuthorizationCodeGrantRequest;
+import com.wrapper.spotify.requests.authentication.AuthorizationURLRequest;
+import com.wrapper.spotify.requests.authentication.ClientCredentialsGrantRequest;
+import com.wrapper.spotify.requests.authentication.RefreshAccessTokenRequest;
 import net.sf.json.JSONArray;
 
 import java.util.Arrays;
