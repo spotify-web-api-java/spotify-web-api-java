@@ -55,73 +55,73 @@ public class Album extends AbstractObject {
     return new Builder();
   }
 
-    public AlbumType getAlbumType() {
-      return albumType;
-    }
+  public AlbumType getAlbumType() {
+    return albumType;
+  }
 
-    public List<ArtistSimplified> getArtists() {
-      return artists;
-    }
+  public List<ArtistSimplified> getArtists() {
+    return artists;
+  }
 
-    public List<CountryCode> getAvailableMarkets() {
-      return availableMarkets;
-    }
+  public List<CountryCode> getAvailableMarkets() {
+    return availableMarkets;
+  }
 
-    public List<Copyright> getCopyrights() {
-      return copyrights;
-    }
+  public List<Copyright> getCopyrights() {
+    return copyrights;
+  }
 
-    public ExternalIds getExternalIds() {
-      return externalIds;
-    }
+  public ExternalIds getExternalIds() {
+    return externalIds;
+  }
 
-    public ExternalUrls getExternalUrls() {
-      return externalUrls;
-    }
+  public ExternalUrls getExternalUrls() {
+    return externalUrls;
+  }
 
-    public List<String> getGenres() {
-      return genres;
-    }
+  public List<String> getGenres() {
+    return genres;
+  }
 
-    public String getHref() {
-      return href;
-    }
+  public String getHref() {
+    return href;
+  }
 
-    public String getId() {
-      return id;
-    }
+  public String getId() {
+    return id;
+  }
 
-    public List<Image> getImages() {
-      return images;
-    }
+  public List<Image> getImages() {
+    return images;
+  }
 
-    public String getName() {
-      return name;
-    }
+  public String getName() {
+    return name;
+  }
 
-    public int getPopularity() {
-      return popularity;
-    }
+  public int getPopularity() {
+    return popularity;
+  }
 
-    public String getReleaseDate() {
-      return releaseDate;
-    }
+  public String getReleaseDate() {
+    return releaseDate;
+  }
 
-    public ReleaseDatePrecision getReleaseDatePrecision() {
-      return releaseDatePrecision;
-    }
+  public ReleaseDatePrecision getReleaseDatePrecision() {
+    return releaseDatePrecision;
+  }
 
-    public Paging<TrackSimplified> getTracks() {
-      return tracks;
-    }
+  public Paging<TrackSimplified> getTracks() {
+    return tracks;
+  }
 
-    public ObjectType getType() {
-      return type;
-    }
+  public ObjectType getType() {
+    return type;
+  }
 
-    public String getUri() {
-      return uri;
-    }
+  public String getUri() {
+    return uri;
+  }
 
   public static final class Builder extends AbstractObject.Builder<Album.Builder> {
 

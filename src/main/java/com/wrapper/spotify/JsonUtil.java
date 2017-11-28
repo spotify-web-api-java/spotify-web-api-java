@@ -89,18 +89,14 @@ public class JsonUtil {
       return null;
     }
 
-    AlbumSimplified simpleAlbum = new AlbumSimplified();
-
-    simpleAlbum.setAlbumType(createAlbumType(simpleAlbumJson.getString("album_type")));
-    simpleAlbum.setExternalUrls(createExternalUrls(simpleAlbumJson.getJSONObject("external_urls")));
-    simpleAlbum.setHref(simpleAlbumJson.getString("href"));
-    simpleAlbum.setId(simpleAlbumJson.getString("id"));
-    simpleAlbum.setImages(createImages(simpleAlbumJson.getJSONArray("images")));
-    simpleAlbum.setName(simpleAlbumJson.getString("name"));
-    simpleAlbum.setType(createObjectType(simpleAlbumJson.getString("type")));
-    simpleAlbum.setUri(simpleAlbumJson.getString("uri"));
-    simpleAlbum.setAvailableMarkets(
-            createAvailableMarkets(simpleAlbumJson.getJSONArray("available_markets")));
+    AlbumSimplified simpleAlbum = new AlbumSimplified.Builder()
+            .setAlbumType(createAlbumType(simpleAlbumJson.getString("album_type")))
+            .setExternalUrls(createExternalUrls(simpleAlbumJson.getJSONObject("external_urls")))
+            .setHref(simpleAlbumJson.getString("href")).setId(simpleAlbumJson.getString("id"))
+            .setImages(createImages(simpleAlbumJson.getJSONArray("images"))).setName(simpleAlbumJson.getString("name"))
+            .setType(createObjectType(simpleAlbumJson.getString("type"))).setUri(simpleAlbumJson.getString("uri"))
+            .setAvailableMarkets(createAvailableMarkets(simpleAlbumJson.getJSONArray("available_markets")))
+            .build();
 
     return simpleAlbum;
   }
@@ -745,7 +741,6 @@ public class JsonUtil {
 
     return user;
   }
-
 
   public static List<String> createGenres(JSONArray genres) {
     List<String> returnedGenres = new ArrayList<>();
