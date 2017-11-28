@@ -1,6 +1,6 @@
 import com.wrapper.spotify.Api;
-import com.wrapper.spotify.objects.AuthorizationCodeCredentials;
-import com.wrapper.spotify.objects.User;
+import com.wrapper.spotify.model_objects.AuthorizationCodeCredentials;
+import com.wrapper.spotify.model_objects.User;
 
 /**
  * This example shows how to get information about the user that is 'connected' to the

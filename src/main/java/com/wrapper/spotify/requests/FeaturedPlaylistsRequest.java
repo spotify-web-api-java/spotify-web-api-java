@@ -3,7 +3,7 @@ package com.wrapper.spotify.requests;
 import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.JsonUtil;
 import com.wrapper.spotify.exceptions.*;
-import com.wrapper.spotify.objects.FeaturedPlaylists;
+import com.wrapper.spotify.model_objects.FeaturedPlaylists;
 
 import java.io.IOException;
 import java.text.DateFormat;

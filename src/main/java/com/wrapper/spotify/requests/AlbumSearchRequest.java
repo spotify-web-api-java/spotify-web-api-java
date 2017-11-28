@@ -3,8 +3,8 @@ package com.wrapper.spotify.requests;
 import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.JsonUtil;
 import com.wrapper.spotify.exceptions.*;
-import com.wrapper.spotify.objects.AlbumSimplified;
-import com.wrapper.spotify.objects.Paging;
+import com.wrapper.spotify.model_objects.AlbumSimplified;
+import com.wrapper.spotify.model_objects.Paging;
 
 import java.io.IOException;
 

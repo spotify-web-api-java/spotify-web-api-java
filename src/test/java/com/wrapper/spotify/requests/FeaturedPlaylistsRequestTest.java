@@ -5,9 +5,9 @@ import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.TestUtil;
-import com.wrapper.spotify.objects.FeaturedPlaylists;
-import com.wrapper.spotify.objects.Paging;
-import com.wrapper.spotify.objects.PlaylistSimplified;
+import com.wrapper.spotify.model_objects.FeaturedPlaylists;
+import com.wrapper.spotify.model_objects.Paging;
+import com.wrapper.spotify.model_objects.PlaylistSimplified;
 import org.junit.Test;
 
 import java.util.Calendar;

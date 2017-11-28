@@ -4,7 +4,7 @@ import com.google.common.base.Joiner;
 import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.JsonUtil;
 import com.wrapper.spotify.exceptions.*;
-import com.wrapper.spotify.objects.Track;
+import com.wrapper.spotify.model_objects.Track;
 
 import java.io.IOException;
 import java.util.List;

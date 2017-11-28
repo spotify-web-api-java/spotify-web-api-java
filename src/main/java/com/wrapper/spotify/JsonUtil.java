@@ -1,7 +1,7 @@
 package com.wrapper.spotify;
 
 import com.neovisionaries.i18n.CountryCode;
-import com.wrapper.spotify.objects.*;
+import com.wrapper.spotify.model_objects.*;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONException;
 import net.sf.json.JSONNull;
@@ -291,7 +291,7 @@ public class JsonUtil {
    * Create a list of Copyright object.
    *
    * @param copyrightsJson A JSON array containing copyright information retrieved from the Web API.
-   * @return A list of Copyright objects.
+   * @return A list of Copyright model_objects.
    */
   public static List<Copyright> createCopyrights(JSONArray copyrightsJson) {
     List<Copyright> copyrights = new ArrayList<>();
