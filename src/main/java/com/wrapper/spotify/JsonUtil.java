@@ -170,18 +170,18 @@ public class JsonUtil {
       return null;
     }
 
-    Artist artist = new Artist();
-
-    artist.setExternalUrls(createExternalUrls(jsonObject.getJSONObject("external_urls")));
-    artist.setGenres(createGenres(jsonObject.getJSONArray("genres")));
-    artist.setHref(jsonObject.getString("href"));
-    artist.setFollowers(createFollowers(jsonObject.getJSONObject("followers")));
-    artist.setId(jsonObject.getString("id"));
-    artist.setImages(createImages(jsonObject.getJSONArray("images")));
-    artist.setName(jsonObject.getString("name"));
-    artist.setPopularity(jsonObject.getInt("popularity"));
-    artist.setType(createObjectType(jsonObject.getString("type")));
-    artist.setUri(jsonObject.getString("uri"));
+    Artist artist = new Artist.Builder()
+            .setExternalUrls(createExternalUrls(jsonObject.getJSONObject("external_urls")))
+            .setGenres(createGenres(jsonObject.getJSONArray("genres")))
+            .setHref(jsonObject.getString("href"))
+            .setFollowers(createFollowers(jsonObject.getJSONObject("followers")))
+            .setId(jsonObject.getString("id"))
+            .setImages(createImages(jsonObject.getJSONArray("images")))
+            .setName(jsonObject.getString("name"))
+            .setPopularity(jsonObject.getInt("popularity"))
+            .setType(createObjectType(jsonObject.getString("type")))
+            .setUri(jsonObject.getString("uri"))
+            .build();
 
     return artist;
   }
