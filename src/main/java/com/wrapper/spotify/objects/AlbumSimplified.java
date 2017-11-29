@@ -32,10 +32,6 @@ public class AlbumSimplified extends AbstractModelObject {
     this.uri = builder.uri;
   }
 
-  public static Builder builder() {
-    return new Builder();
-  }
-
   public AlbumType getAlbumType() {
     return albumType;
   }
@@ -74,6 +70,11 @@ public class AlbumSimplified extends AbstractModelObject {
 
   public String getUri() {
     return uri;
+  }
+
+  @Override
+  public Builder builder() {
+    return new Builder();
   }
 
   public static final class Builder extends AbstractModelObject.Builder<AlbumSimplified.Builder> {

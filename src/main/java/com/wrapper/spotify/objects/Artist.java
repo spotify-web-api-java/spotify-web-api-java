@@ -30,10 +30,6 @@ public class Artist extends AbstractModelObject {
     this.uri = builder.uri;
   }
 
-  public static Builder builder() {
-    return new Builder();
-  }
-
   public ExternalUrls getExternalUrls() {
     return externalUrls;
   }
@@ -72,6 +68,11 @@ public class Artist extends AbstractModelObject {
 
   public String getUri() {
     return uri;
+  }
+
+  @Override
+  public Builder builder() {
+    return new Builder();
   }
 
   public static final class Builder extends AbstractModelObject.Builder<Artist.Builder> {
