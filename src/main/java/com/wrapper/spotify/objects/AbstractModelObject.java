@@ -8,4 +8,7 @@ public abstract class AbstractModelObject implements IModelObject {
   public static abstract class Builder<BuilderType extends Builder<?>> implements IModelObject.Builder {
   }
 
+  public static abstract class JsonUtil implements IModelObject.IJsonUtil {
+  }
+
 }
