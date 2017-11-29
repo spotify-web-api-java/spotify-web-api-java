@@ -261,12 +261,12 @@ public class JsonUtil {
 
   // AuthorizationCodeCredentials
   public static AuthorizationCodeCredentials createTokenResponse(JSONObject tokenResponse) {
-    AuthorizationCodeCredentials response = new AuthorizationCodeCredentials();
-
-    response.setAccessToken(tokenResponse.getString("access_token"));
-    response.setExpiresIn(tokenResponse.getInt("expires_in"));
-    response.setRefreshToken(tokenResponse.getString("refresh_token"));
-    response.setTokenType(tokenResponse.getString("token_type"));
+    AuthorizationCodeCredentials response = new AuthorizationCodeCredentials.Builder()
+            .setAccessToken(tokenResponse.getString("access_token"))
+            .setExpiresIn(tokenResponse.getInt("expires_in"))
+            .setRefreshToken(tokenResponse.getString("refresh_token"))
+            .setTokenType(tokenResponse.getString("token_type"))
+            .build();
 
     return response;
   }
