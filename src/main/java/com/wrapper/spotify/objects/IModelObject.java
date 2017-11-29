@@ -1,9 +1,9 @@
 package com.wrapper.spotify.objects;
 
-public interface Object {
+public interface IModelObject {
 
   interface Builder {
-    AbstractObject build();
+    AbstractModelObject build();
   }
 
 }

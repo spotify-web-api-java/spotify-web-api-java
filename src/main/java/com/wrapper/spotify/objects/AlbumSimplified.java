@@ -4,7 +4,7 @@ import com.neovisionaries.i18n.CountryCode;
 
 import java.util.List;
 
-public class AlbumSimplified extends AbstractObject {
+public class AlbumSimplified extends AbstractModelObject {
 
   private final AlbumType albumType;
   private final List<ArtistSimplified> artists;
@@ -76,7 +76,7 @@ public class AlbumSimplified extends AbstractObject {
     return uri;
   }
 
-  public static final class Builder extends AbstractObject.Builder<AlbumSimplified.Builder> {
+  public static final class Builder extends AbstractModelObject.Builder<AlbumSimplified.Builder> {
 
     private AlbumType albumType;
     private List<ArtistSimplified> artists;

@@ -2,7 +2,7 @@ package com.wrapper.spotify.objects;
 
 import java.util.List;
 
-public class Artist extends AbstractObject {
+public class Artist extends AbstractModelObject {
 
   private final ExternalUrls externalUrls;
   private final Followers followers;
@@ -74,7 +74,7 @@ public class Artist extends AbstractObject {
     return uri;
   }
 
-  public static final class Builder extends AbstractObject.Builder<Artist.Builder> {
+  public static final class Builder extends AbstractModelObject.Builder<Artist.Builder> {
 
     private ExternalUrls externalUrls;
     private Followers followers;

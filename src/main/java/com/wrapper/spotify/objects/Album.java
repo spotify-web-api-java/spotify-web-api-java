@@ -1,13 +1,10 @@
 package com.wrapper.spotify.objects;
 
 import com.neovisionaries.i18n.CountryCode;
-import com.wrapper.spotify.requests.AbstractRequest;
-import com.wrapper.spotify.requests.AlbumRequest;
-import com.wrapper.spotify.requests.Request;
 
 import java.util.List;
 
-public class Album extends AbstractObject {
+public class Album extends AbstractModelObject {
 
   private final AlbumType albumType;
   private final List<ArtistSimplified> artists;
@@ -123,7 +120,7 @@ public class Album extends AbstractObject {
     return uri;
   }
 
-  public static final class Builder extends AbstractObject.Builder<Album.Builder> {
+  public static final class Builder extends AbstractModelObject.Builder<Album.Builder> {
 
     private AlbumType albumType;
     private List<ArtistSimplified> artists;
