@@ -22,7 +22,7 @@ public class Album extends AbstractModelObject {
   private final String releaseDate;
   private final ReleaseDatePrecision releaseDatePrecision;
   private final Paging<TrackSimplified> tracks;
-  private final ObjectType type = ObjectType.ALBUM;
+  private final ObjectType type;
   private final String uri;
 
   private Album(final Album.Builder builder) {
@@ -44,7 +44,7 @@ public class Album extends AbstractModelObject {
     this.releaseDate = builder.releaseDate;
     this.releaseDatePrecision = builder.releaseDatePrecision;
     this.tracks = builder.tracks;
-//    this.type = builder.type;
+    this.type = builder.type;
     this.uri = builder.uri;
   }
 
@@ -139,7 +139,7 @@ public class Album extends AbstractModelObject {
     private String releaseDate;
     private ReleaseDatePrecision releaseDatePrecision;
     private Paging<TrackSimplified> tracks;
-//    private ObjectType type = ObjectType.ALBUM;
+    private ObjectType type;
     private String uri;
 
     public Builder setAlbumType(AlbumType albumType) {
@@ -222,10 +222,10 @@ public class Album extends AbstractModelObject {
       return this;
     }
 
-//    public Builder setType(ObjectType type) {
-//      this.type = type;
-//      return this;
-//    }
+    public Builder setType(ObjectType type) {
+      this.type = type;
+      return this;
+    }
 
     public Builder setUri(String uri) {
       this.uri = uri;

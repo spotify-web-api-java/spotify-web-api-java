@@ -16,7 +16,7 @@ public class User {
   private String id;
   private List<Image> images;
   private ProductType product;
-  private ObjectType type = ObjectType.USER;
+  private ObjectType type;
   private String uri;
 
   public String getBirthdate() {

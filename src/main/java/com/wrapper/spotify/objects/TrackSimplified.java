@@ -18,7 +18,7 @@ public class TrackSimplified {
   private String name;
   private String previewUrl;
   private int trackNumber;
-  private ObjectType type = ObjectType.TRACK;
+  private ObjectType type;
   private String uri;
 
   public List<ArtistSimplified> getArtists() {

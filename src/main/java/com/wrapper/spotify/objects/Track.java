@@ -23,7 +23,7 @@ public class Track {
   private int popularity;
   private String previewUrl;
   private int trackNumber;
-  private ObjectType type = ObjectType.TRACK;
+  private ObjectType type;
   private String uri;
 
   public AlbumSimplified getAlbum() {

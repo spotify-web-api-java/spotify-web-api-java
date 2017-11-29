@@ -14,7 +14,7 @@ public class AlbumSimplified extends AbstractModelObject {
   private final String id;
   private final List<Image> images;
   private final String name;
-  private final ObjectType type = ObjectType.ALBUM;
+  private final ObjectType type;
   private final String uri;
 
   private AlbumSimplified(final AlbumSimplified.Builder builder) {
@@ -28,7 +28,7 @@ public class AlbumSimplified extends AbstractModelObject {
     this.id = builder.id;
     this.images = builder.images;
     this.name = builder.name;
-    // this.type = builder.type;
+    this.type = builder.type;
     this.uri = builder.uri;
   }
 
@@ -87,7 +87,7 @@ public class AlbumSimplified extends AbstractModelObject {
     private String id;
     private List<Image> images;
     private String name;
-    private ObjectType type = ObjectType.ALBUM;
+    private ObjectType type;
     private String uri;
 
     public Builder setAlbumType(AlbumType albumType) {

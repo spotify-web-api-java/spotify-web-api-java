@@ -5,7 +5,7 @@ public class TrackLink {
   private ExternalUrls externalUrls;
   private String href;
   private String id;
-  private ObjectType type = ObjectType.TRACK;
+  private ObjectType type;
   private String uri;
 
   public ExternalUrls getExternalUrls() {

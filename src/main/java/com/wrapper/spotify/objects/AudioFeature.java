@@ -16,7 +16,7 @@ public class AudioFeature {
   private double tempo;
   private int timeSignature;
   private String trackHref;
-  private ObjectType type = ObjectType.AUDIO_FEATURES;
+  private ObjectType type;
   private String uri;
   private double valence;
 

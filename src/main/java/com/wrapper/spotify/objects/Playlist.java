@@ -16,7 +16,7 @@ public class Playlist {
   private boolean publicAccess;
   private String snapshotId;
   private Paging<PlaylistTrack> tracks;
-  private ObjectType type = ObjectType.PLAYLIST;
+  private ObjectType type;
   private String uri;
 
   public boolean getIsCollaborative() {

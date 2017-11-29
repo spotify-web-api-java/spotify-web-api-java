@@ -12,7 +12,7 @@ public class Artist extends AbstractModelObject {
   private final List<Image> images;
   private final String name;
   private final int popularity;
-  private final ObjectType type = ObjectType.ARTIST;
+  private final ObjectType type;
   private final String uri;
 
   private Artist(final Artist.Builder builder) {
@@ -26,7 +26,7 @@ public class Artist extends AbstractModelObject {
     this.images = builder.images;
     this.name = builder.name;
     this.popularity = builder.popularity;
-//    this.type = ObjectType.ARTIST;
+    this.type = builder.type;
     this.uri = builder.uri;
   }
 
@@ -85,7 +85,7 @@ public class Artist extends AbstractModelObject {
     private List<Image> images;
     private String name;
     private int popularity;
-    private ObjectType type = ObjectType.ARTIST;
+    private ObjectType type;
     private String uri;
 
     public Builder setExternalUrls(ExternalUrls externalUrls) {

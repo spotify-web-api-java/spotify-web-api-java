@@ -6,7 +6,7 @@ public class ArtistSimplified {
   private String href;
   private String id;
   private String name;
-  private ObjectType type = ObjectType.ARTIST;
+  private ObjectType type;
   private String uri;
 
   public ExternalUrls getExternalUrls() {

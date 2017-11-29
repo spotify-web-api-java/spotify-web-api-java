@@ -14,7 +14,7 @@ public class PlaylistSimplified {
   private boolean publicAccess;
   private String snapshotId;
   private PlaylistTracksInformation tracks;
-  private ObjectType type = ObjectType.PLAYLIST;
+  private ObjectType type;
   private String uri;
 
   public boolean getIsCollaborative() {
