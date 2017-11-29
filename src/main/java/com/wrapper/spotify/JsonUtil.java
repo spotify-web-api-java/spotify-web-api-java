@@ -293,13 +293,13 @@ public class JsonUtil {
   public static List<Copyright> createCopyrights(JSONArray copyrightsJson) {
     List<Copyright> copyrights = new ArrayList<>();
     for (int i = 0; i < copyrightsJson.size(); i++) {
-      Copyright copyright = new Copyright();
+      Copyright copyright = null;
       JSONObject copyrightJson = copyrightsJson.getJSONObject(i);
       if (existsAndNotNull("text", copyrightJson)) {
-        copyright.setText(copyrightJson.getString("text"));
+        copyright = new Copyright.Builder().setText(copyrightJson.getString("text")).build();
       }
       if (existsAndNotNull("type", copyrightJson)) {
-        copyright.setType(CopyrightType.valueOf(copyrightJson.getString("type")));
+        copyright = new Copyright.Builder().setType(CopyrightType.valueOf(copyrightJson.getString("type"))).build();
       }
       copyrights.add(copyright);
     }
