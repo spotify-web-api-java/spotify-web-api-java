@@ -1,166 +1,237 @@
 package com.wrapper.spotify.objects;
 
-public class AudioFeature {
-  private double acousticness;
-  private String analysisUrl;
-  private double danceability;
-  private int durationMs;
-  private double energy;
-  private String id;
-  private double instrumentalness;
-  private int key;
-  private double liveness;
-  private double loudness;
-  private Modality mode;
-  private double speechiness;
-  private double tempo;
-  private int timeSignature;
-  private String trackHref;
-  private ObjectType type;
-  private String uri;
-  private double valence;
+public class AudioFeature extends AbstractModelObject {
+  private final double acousticness;
+  private final String analysisUrl;
+  private final double danceability;
+  private final int durationMs;
+  private final double energy;
+  private final String id;
+  private final double instrumentalness;
+  private final int key;
+  private final double liveness;
+  private final double loudness;
+  private final Modality mode;
+  private final double speechiness;
+  private final double tempo;
+  private final int timeSignature;
+  private final String trackHref;
+  private final ObjectType type;
+  private final String uri;
+  private final double valence;
 
+  private AudioFeature(final AudioFeature.Builder builder) {
+    super(builder);
+
+    this.acousticness = builder.acousticness;
+    this.analysisUrl = builder.analysisUrl;
+    this.danceability = builder.danceability;
+    this.durationMs = builder.durationMs;
+    this.energy = builder.energy;
+    this.id = builder.id;
+    this.instrumentalness = builder.instrumentalness;
+    this.key = builder.key;
+    this.liveness = builder.liveness;
+    this.loudness = builder.loudness;
+    this.mode = builder.mode;
+    this.speechiness = builder.speechiness;
+    this.tempo = builder.tempo;
+    this.timeSignature = builder.timeSignature;
+    this.trackHref = builder.trackHref;
+    this.type = builder.type;
+    this.uri = builder.uri;
+    this.valence = builder.valence;
+  }
   public double getAcousticness() {
     return acousticness;
-  }
-
-  public void setAcousticness(double acousticness) {
-    this.acousticness = acousticness;
   }
 
   public String getAnalysisUrl() {
     return analysisUrl;
   }
 
-  public void setAnalysisUrl(String analysisUrl) {
-    this.analysisUrl = analysisUrl;
-  }
-
   public double getDanceability() {
     return danceability;
-  }
-
-  public void setDanceability(double danceability) {
-    this.danceability = danceability;
   }
 
   public int getDurationMs() {
     return durationMs;
   }
 
-  public void setDurationMs(int durationMs) {
-    this.durationMs = durationMs;
-  }
-
   public double getEnergy() {
     return energy;
-  }
-
-  public void setEnergy(double energy) {
-    this.energy = energy;
   }
 
   public String getId() {
     return id;
   }
 
-  public void setId(String id) {
-    this.id = id;
-  }
-
   public double getInstrumentalness() {
     return instrumentalness;
-  }
-
-  public void setInstrumentalness(double instrumentalness) {
-    this.instrumentalness = instrumentalness;
   }
 
   public int getKey() {
     return key;
   }
 
-  public void setKey(int key) {
-    this.key = key;
-  }
-
   public double getLiveness() {
     return liveness;
-  }
-
-  public void setLiveness(double liveness) {
-    this.liveness = liveness;
   }
 
   public double getLoudness() {
     return loudness;
   }
 
-  public void setLoudness(double loudness) {
-    this.loudness = loudness;
-  }
-
   public Modality getMode() {
     return mode;
-  }
-
-  public void setMode(Modality mode) {
-    this.mode = mode;
   }
 
   public double getSpeechiness() {
     return speechiness;
   }
 
-  public void setSpeechiness(double speechiness) {
-    this.speechiness = speechiness;
-  }
-
   public double getTempo() {
     return tempo;
-  }
-
-  public void setTempo(double tempo) {
-    this.tempo = tempo;
   }
 
   public int getTimeSignature() {
     return timeSignature;
   }
 
-  public void setTimeSignature(int timeSignature) {
-    this.timeSignature = timeSignature;
-  }
-
   public String getTrackHref() {
     return trackHref;
-  }
-
-  public void setTrackHref(String trackHref) {
-    this.trackHref = trackHref;
   }
 
   public ObjectType getType() {
     return type;
   }
 
-  public void setType(ObjectType type) {
-    this.type = type;
-  }
-
   public String getUri() {
     return uri;
-  }
-
-  public void setUri(String uri) {
-    this.uri = uri;
   }
 
   public double getValence() {
     return valence;
   }
 
-  public void setValence(double valence) {
-    this.valence = valence;
+  @Override
+  public Builder builder() {
+    return new Builder();
+  }
+
+  public static final class Builder extends AbstractModelObject.Builder<AudioFeature.Builder> {
+    private double acousticness;
+    private String analysisUrl;
+    private double danceability;
+    private int durationMs;
+    private double energy;
+    private String id;
+    private double instrumentalness;
+    private int key;
+    private double liveness;
+    private double loudness;
+    private Modality mode;
+    private double speechiness;
+    private double tempo;
+    private int timeSignature;
+    private String trackHref;
+    private ObjectType type;
+    private String uri;
+    private double valence;
+
+    public Builder setAcousticness(double acousticness) {
+      this.acousticness = acousticness;
+      return this;
+    }
+
+    public Builder setAnalysisUrl(String analysisUrl) {
+      this.analysisUrl = analysisUrl;
+      return this;
+    }
+
+    public Builder setDanceability(double danceability) {
+      this.danceability = danceability;
+      return this;
+    }
+
+    public Builder setDurationMs(int durationMs) {
+      this.durationMs = durationMs;
+      return this;
+    }
+
+    public Builder setEnergy(double energy) {
+      this.energy = energy;
+      return this;
+    }
+
+    public Builder setId(String id) {
+      this.id = id;
+      return this;
+    }
+
+    public Builder setInstrumentalness(double instrumentalness) {
+      this.instrumentalness = instrumentalness;
+      return this;
+    }
+
+    public Builder setKey(int key) {
+      this.key = key;
+      return this;
+    }
+
+    public Builder setLiveness(double liveness) {
+      this.liveness = liveness;
+      return this;
+    }
+
+    public Builder setLoudness(double loudness) {
+      this.loudness = loudness;
+      return this;
+    }
+
+    public Builder setMode(Modality mode) {
+      this.mode = mode;
+      return this;
+    }
+
+    public Builder setSpeechiness(double speechiness) {
+      this.speechiness = speechiness;
+      return this;
+    }
+
+    public Builder setTempo(double tempo) {
+      this.tempo = tempo;
+      return this;
+    }
+
+    public Builder setTimeSignature(int timeSignature) {
+      this.timeSignature = timeSignature;
+      return this;
+    }
+
+    public Builder setTrackHref(String trackHref) {
+      this.trackHref = trackHref;
+      return this;
+    }
+
+    public Builder setType(ObjectType type) {
+      this.type = type;
+      return this;
+    }
+
+    public Builder setUri(String uri) {
+      this.uri = uri;
+      return this;
+    }
+
+    public Builder setValence(double valence) {
+      this.valence = valence;
+      return this;
+    }
+
+    @Override
+    public AudioFeature build() {
+      return new AudioFeature(this);
+    }
   }
 }
