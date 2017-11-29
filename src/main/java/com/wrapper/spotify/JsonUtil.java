@@ -273,11 +273,11 @@ public class JsonUtil {
 
   // ClientCredentials
   public static ClientCredentials createApplicationAuthenticationToken(JSONObject jsonObject) {
-    final ClientCredentials token = new ClientCredentials();
-
-    token.setAccessToken(jsonObject.getString("access_token"));
-    token.setExpiresIn(jsonObject.getInt("expires_in"));
-    token.setTokenType(jsonObject.getString("token_type"));
+    final ClientCredentials token = new ClientCredentials.Builder()
+            .setAccessToken(jsonObject.getString("access_token"))
+            .setExpiresIn(jsonObject.getInt("expires_in"))
+            .setTokenType(jsonObject.getString("token_type"))
+            .build();
 
     return token;
   }
