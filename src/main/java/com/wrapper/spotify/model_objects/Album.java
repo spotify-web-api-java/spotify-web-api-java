@@ -22,7 +22,7 @@ public class Album {
   private String releaseDate;
   private ReleaseDatePrecision releaseDatePrecision;
   private Paging<TrackSimplified> tracks;
-  private ObjectType type = ObjectType.ALBUM;
+  private ModelObjectType type = ModelObjectType.ALBUM;
   private String uri;
 
   public AlbumType getAlbumType() {
@@ -153,11 +153,11 @@ public class Album {
     this.tracks = tracks;
   }
 
-  public ObjectType getType() {
+  public ModelObjectType getType() {
     return type;
   }
 
-  public void setType(ObjectType type) {
+  public void setType(ModelObjectType type) {
     this.type = type;
   }
 

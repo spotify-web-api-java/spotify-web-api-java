@@ -1,6 +1,6 @@
 package com.wrapper.spotify.model_objects;
 
-public enum ObjectType {
+public enum ModelObjectType {
 
   ALBUM("album"),
   ARTIST("artist"),
@@ -11,7 +11,7 @@ public enum ObjectType {
 
   public final String type;
 
-  ObjectType(String type) {
+  ModelObjectType(String type) {
     this.type = type;
   }
 

@@ -14,7 +14,7 @@ public class AlbumSimplified {
   private String id;
   private List<Image> images;
   private String name;
-  private ObjectType type = ObjectType.ALBUM;
+  private ModelObjectType type = ModelObjectType.ALBUM;
   private String uri;
 
   public AlbumType getAlbumType() {
@@ -81,11 +81,11 @@ public class AlbumSimplified {
     this.name = name;
   }
 
-  public ObjectType getType() {
+  public ModelObjectType getType() {
     return type;
   }
 
-  public void setType(ObjectType type) {
+  public void setType(ModelObjectType type) {
     this.type = type;
   }
 

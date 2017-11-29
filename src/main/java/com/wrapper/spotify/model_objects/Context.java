@@ -2,16 +2,16 @@ package com.wrapper.spotify.model_objects;
 
 public class Context {
 
-  private ObjectType type;
+  private ModelObjectType type;
   private String href;
   private ExternalUrls externalUrls;
   private String uri;
 
-  public ObjectType getType() {
+  public ModelObjectType getType() {
     return type;
   }
 
-  public void setType(ObjectType type) {
+  public void setType(ModelObjectType type) {
     this.type = type;
   }
 

@@ -12,7 +12,7 @@ public class Artist {
   private List<Image> images;
   private String name;
   private int popularity;
-  private ObjectType type = ObjectType.ARTIST;
+  private ModelObjectType type = ModelObjectType.ARTIST;
   private String uri;
 
   public ExternalUrls getExternalUrls() {
@@ -79,11 +79,11 @@ public class Artist {
     this.popularity = popularity;
   }
 
-  public ObjectType getType() {
+  public ModelObjectType getType() {
     return type;
   }
 
-  public void setType(ObjectType type) {
+  public void setType(ModelObjectType type) {
     this.type = type;
   }
 

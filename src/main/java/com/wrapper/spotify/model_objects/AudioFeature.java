@@ -16,7 +16,7 @@ public class AudioFeature {
   private double tempo;
   private int timeSignature;
   private String trackHref;
-  private ObjectType type = ObjectType.AUDIO_FEATURES;
+  private ModelObjectType type = ModelObjectType.AUDIO_FEATURES;
   private String uri;
   private double valence;
 
@@ -140,11 +140,11 @@ public class AudioFeature {
     this.trackHref = trackHref;
   }
 
-  public ObjectType getType() {
+  public ModelObjectType getType() {
     return type;
   }
 
-  public void setType(ObjectType type) {
+  public void setType(ModelObjectType type) {
     this.type = type;
   }
 

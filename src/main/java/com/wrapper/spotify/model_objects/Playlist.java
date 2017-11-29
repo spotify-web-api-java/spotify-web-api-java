@@ -16,7 +16,7 @@ public class Playlist {
   private boolean publicAccess;
   private String snapshotId;
   private Paging<PlaylistTrack> tracks;
-  private ObjectType type = ObjectType.PLAYLIST;
+  private ModelObjectType type = ModelObjectType.PLAYLIST;
   private String uri;
 
   public boolean getIsCollaborative() {
@@ -115,11 +115,11 @@ public class Playlist {
     this.tracks = tracks;
   }
 
-  public ObjectType getType() {
+  public ModelObjectType getType() {
     return type;
   }
 
-  public void setType(ObjectType type) {
+  public void setType(ModelObjectType type) {
     this.type = type;
   }
 

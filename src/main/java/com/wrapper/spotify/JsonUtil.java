@@ -372,9 +372,9 @@ public class JsonUtil {
     return returnedImages;
   }
 
-  // ObjectType
-  public static ObjectType createObjectType(String type) {
-    return ObjectType.valueOf(type.toUpperCase());
+  // ModelObjectType
+  public static ModelObjectType createObjectType(String type) {
+    return ModelObjectType.valueOf(type.toUpperCase());
   }
 
   // Playlist
@@ -883,7 +883,7 @@ public class JsonUtil {
     audioFeature.setLiveness(audioFeatureJson.getDouble("liveness"));
     audioFeature.setValence(audioFeatureJson.getDouble("valence"));
     audioFeature.setTempo(audioFeatureJson.getDouble("tempo"));
-    audioFeature.setType(ObjectType.valueOf(audioFeatureJson.getString("type")));
+    audioFeature.setType(ModelObjectType.valueOf(audioFeatureJson.getString("type")));
     audioFeature.setId(audioFeatureJson.getString("id"));
     audioFeature.setUri(audioFeatureJson.getString("uri"));
     audioFeature.setTrackHref(audioFeatureJson.getString("track_href"));

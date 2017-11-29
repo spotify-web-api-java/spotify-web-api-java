@@ -6,7 +6,7 @@ import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.model_objects.Artist;
-import com.wrapper.spotify.model_objects.ObjectType;
+import com.wrapper.spotify.model_objects.ModelObjectType;
 import com.wrapper.spotify.model_objects.Paging;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -56,7 +56,7 @@ public class ArtistSearchRequestTest {
         assertNotNull(firstArtist.getImages());
         assertEquals("Tania Bowra", firstArtist.getName());
         assertTrue(firstArtist.getPopularity() >= 0 && firstArtist.getPopularity() <= 100);
-        assertEquals(ObjectType.ARTIST, firstArtist.getType());
+        assertEquals(ModelObjectType.ARTIST, firstArtist.getType());
         assertEquals("spotify:artist:08td7MxkoHQkXnWAYD8d6Q", firstArtist.getUri());
 
         asyncCompleted.countDown();
@@ -100,7 +100,7 @@ public class ArtistSearchRequestTest {
     assertNotNull(firstArtist.getImages());
     assertEquals("Tania Bowra", firstArtist.getName());
     assertTrue(firstArtist.getPopularity() >= 0 && firstArtist.getPopularity() <= 100);
-    assertEquals(ObjectType.ARTIST, firstArtist.getType());
+    assertEquals(ModelObjectType.ARTIST, firstArtist.getType());
     assertEquals("spotify:artist:08td7MxkoHQkXnWAYD8d6Q", firstArtist.getUri());
   }
 

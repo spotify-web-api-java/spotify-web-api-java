@@ -16,7 +16,7 @@ public class User {
   private String id;
   private List<Image> images;
   private ProductType product;
-  private ObjectType type = ObjectType.USER;
+  private ModelObjectType type = ModelObjectType.USER;
   private String uri;
 
   public String getBirthdate() {
@@ -99,11 +99,11 @@ public class User {
     this.product = product;
   }
 
-  public ObjectType getType() {
+  public ModelObjectType getType() {
     return type;
   }
 
-  public void setType(ObjectType type) {
+  public void setType(ModelObjectType type) {
     this.type = type;
   }
 

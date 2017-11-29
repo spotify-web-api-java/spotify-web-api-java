@@ -23,7 +23,7 @@ public class Track {
   private int popularity;
   private String previewUrl;
   private int trackNumber;
-  private ObjectType type = ObjectType.TRACK;
+  private ModelObjectType type = ModelObjectType.TRACK;
   private String uri;
 
   public AlbumSimplified getAlbum() {
@@ -162,11 +162,11 @@ public class Track {
     this.trackNumber = trackNumber;
   }
 
-  public ObjectType getType() {
+  public ModelObjectType getType() {
     return type;
   }
 
-  public void setType(ObjectType type) {
+  public void setType(ModelObjectType type) {
     this.type = type;
   }
 

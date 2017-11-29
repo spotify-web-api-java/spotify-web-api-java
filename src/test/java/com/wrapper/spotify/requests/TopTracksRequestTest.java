@@ -5,7 +5,7 @@ import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.TestUtil;
-import com.wrapper.spotify.model_objects.ObjectType;
+import com.wrapper.spotify.model_objects.ModelObjectType;
 import com.wrapper.spotify.model_objects.Track;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -55,7 +55,7 @@ public class TopTracksRequestTest {
         assertTrue(firstTrack.getPopularity() >= 0 && firstTrack.getPopularity() <= 100);
         assertNotNull(firstTrack.getPreviewUrl());
         assertTrue(firstTrack.getTrackNumber() >= 0);
-        assertEquals(ObjectType.TRACK, firstTrack.getType());
+        assertEquals(ModelObjectType.TRACK, firstTrack.getType());
         assertEquals("spotify:track:" + id, firstTrack.getUri());
 
         asyncCompleted.countDown();
@@ -99,7 +99,7 @@ public class TopTracksRequestTest {
     assertTrue(firstTrack.getPopularity() >= 0 && firstTrack.getPopularity() <= 100);
     assertNotNull(firstTrack.getPreviewUrl());
     assertTrue(firstTrack.getTrackNumber() >= 0);
-    assertEquals(ObjectType.TRACK, firstTrack.getType());
+    assertEquals(ModelObjectType.TRACK, firstTrack.getType());
     assertEquals("spotify:track:" + id, firstTrack.getUri());
   }
 

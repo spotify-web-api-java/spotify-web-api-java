@@ -6,7 +6,7 @@ import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.model_objects.AlbumSimplified;
-import com.wrapper.spotify.model_objects.ObjectType;
+import com.wrapper.spotify.model_objects.ModelObjectType;
 import com.wrapper.spotify.model_objects.Paging;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -52,7 +52,7 @@ public class AlbumSearchRequestTest {
         assertEquals("https://api.spotify.com/v1/albums/6akEvsycLGftJxYudPjmqK", firstAlbum.getHref());
         assertEquals("6akEvsycLGftJxYudPjmqK", firstAlbum.getId());
         assertEquals("Place In The Sun", firstAlbum.getName());
-        assertEquals(ObjectType.ALBUM, firstAlbum.getType());
+        assertEquals(ModelObjectType.ALBUM, firstAlbum.getType());
         assertEquals("spotify:album:6akEvsycLGftJxYudPjmqK", firstAlbum.getUri());
         assertNotNull(firstAlbum.getAvailableMarkets());
         assertFalse(firstAlbum.getAvailableMarkets().isEmpty());
@@ -93,7 +93,7 @@ public class AlbumSearchRequestTest {
     assertEquals("https://api.spotify.com/v1/albums/6akEvsycLGftJxYudPjmqK", firstAlbum.getHref());
     assertEquals("6akEvsycLGftJxYudPjmqK", firstAlbum.getId());
     assertEquals("Place In The Sun", firstAlbum.getName());
-    assertEquals(ObjectType.ALBUM, firstAlbum.getType());
+    assertEquals(ModelObjectType.ALBUM, firstAlbum.getType());
     assertEquals("spotify:album:6akEvsycLGftJxYudPjmqK", firstAlbum.getUri());
     assertNotNull(firstAlbum.getAvailableMarkets());
     assertFalse(firstAlbum.getAvailableMarkets().isEmpty());

@@ -6,7 +6,7 @@ public class ArtistSimplified {
   private String href;
   private String id;
   private String name;
-  private ObjectType type = ObjectType.ARTIST;
+  private ModelObjectType type = ModelObjectType.ARTIST;
   private String uri;
 
   public ExternalUrls getExternalUrls() {
@@ -41,11 +41,11 @@ public class ArtistSimplified {
     this.name = name;
   }
 
-  public ObjectType getType() {
+  public ModelObjectType getType() {
     return type;
   }
 
-  public void setType(ObjectType type) {
+  public void setType(ModelObjectType type) {
     this.type = type;
   }
 

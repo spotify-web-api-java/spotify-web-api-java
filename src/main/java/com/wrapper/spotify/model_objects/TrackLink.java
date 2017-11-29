@@ -5,7 +5,7 @@ public class TrackLink {
   private ExternalUrls externalUrls;
   private String href;
   private String id;
-  private ObjectType type = ObjectType.TRACK;
+  private ModelObjectType type = ModelObjectType.TRACK;
   private String uri;
 
   public ExternalUrls getExternalUrls() {
@@ -32,11 +32,11 @@ public class TrackLink {
     this.id = id;
   }
 
-  public ObjectType getType() {
+  public ModelObjectType getType() {
     return type;
   }
 
-  public void setType(ObjectType type) {
+  public void setType(ModelObjectType type) {
     this.type = type;
   }
 

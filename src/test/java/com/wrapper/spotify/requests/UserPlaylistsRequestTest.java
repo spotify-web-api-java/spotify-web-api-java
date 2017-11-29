@@ -5,7 +5,7 @@ import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.TestUtil;
-import com.wrapper.spotify.model_objects.ObjectType;
+import com.wrapper.spotify.model_objects.ModelObjectType;
 import com.wrapper.spotify.model_objects.Paging;
 import com.wrapper.spotify.model_objects.PlaylistSimplified;
 import org.junit.Test;
@@ -55,7 +55,7 @@ public class UserPlaylistsRequestTest {
         assertNotNull(simplePlaylist.getIsPublicAccess());
         assertNotNull(simplePlaylist.getTracks().getHref());
         assertNotNull(simplePlaylist.getTracks().getTotal());
-        assertEquals(ObjectType.PLAYLIST, simplePlaylist.getType());
+        assertEquals(ModelObjectType.PLAYLIST, simplePlaylist.getType());
         assertEquals("spotify:user:wizzler:playlist:" + playlistId, simplePlaylist.getUri());
         assertEquals(1, simplePlaylist.getImages().size());
         assertEquals("https://i.scdn.co/image/418ce596327dc3a0f4d377db80421bffb3b94a9a", simplePlaylist.getImages().get(0).getUrl());
@@ -106,7 +106,7 @@ public class UserPlaylistsRequestTest {
     assertNotNull(simplePlaylist.getIsPublicAccess());
     assertNotNull(simplePlaylist.getTracks().getHref());
     assertNotNull(simplePlaylist.getTracks().getTotal());
-    assertEquals(ObjectType.PLAYLIST, simplePlaylist.getType());
+    assertEquals(ModelObjectType.PLAYLIST, simplePlaylist.getType());
     assertEquals("spotify:user:wizzler:playlist:" + playlistId, simplePlaylist.getUri());
     assertEquals(1, simplePlaylist.getImages().size());
     assertEquals("https://i.scdn.co/image/418ce596327dc3a0f4d377db80421bffb3b94a9a", simplePlaylist.getImages().get(0).getUrl());
