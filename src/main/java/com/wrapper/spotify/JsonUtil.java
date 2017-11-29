@@ -239,14 +239,14 @@ public class JsonUtil {
       return null;
     }
 
-    ArtistSimplified simpleArtist = new ArtistSimplified();
-
-    simpleArtist.setExternalUrls(createExternalUrls(simpleArtistJson.getJSONObject("external_urls")));
-    simpleArtist.setHref(simpleArtistJson.getString("href"));
-    simpleArtist.setId(simpleArtistJson.getString("id"));
-    simpleArtist.setName(simpleArtistJson.getString("name"));
-    simpleArtist.setType(createObjectType(simpleArtistJson.getString("type")));
-    simpleArtist.setUri(simpleArtistJson.getString("uri"));
+    ArtistSimplified simpleArtist = new ArtistSimplified.Builder()
+            .setExternalUrls(createExternalUrls(simpleArtistJson.getJSONObject("external_urls")))
+            .setHref(simpleArtistJson.getString("href"))
+            .setId(simpleArtistJson.getString("id"))
+            .setName(simpleArtistJson.getString("name"))
+            .setType(createObjectType(simpleArtistJson.getString("type")))
+            .setUri(simpleArtistJson.getString("uri"))
+            .build();
 
     return simpleArtist;
   }
