@@ -332,17 +332,11 @@ public class JsonUtil {
       return null;
     }
 
-    final Image returnedImage = new Image();
-    if (image.containsKey("height") && !image.get("height").equals(JSONNull.getInstance())) {
-      returnedImage.setHeight(image.getInt(("height")));
-    }
-    if (image.containsKey("width") && !image.get("width").equals(JSONNull.getInstance())) {
-      returnedImage.setWidth(image.getInt(("width")));
-    }
-    if (image.containsKey("url") && !image.get("url").equals(JSONNull.getInstance())) {
-      returnedImage.setUrl(image.getString("url"));
-    }
-    return returnedImage;
+    return new Image.Builder()
+            .setHeight(image.getInt(("height")))
+            .setWidth(image.getInt(("width")))
+            .setUrl(image.getString("url"))
+            .build();
   }
 
   public static List<Image> createImages(JSONArray images) {
