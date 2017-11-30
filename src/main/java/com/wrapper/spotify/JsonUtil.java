@@ -296,7 +296,7 @@ public class JsonUtil {
 
   // ExternalIds
   public static ExternalIds createExternalIds(JSONObject externalIds) {
-    ExternalIds returnedExternalIds = new ExternalIds();
+    ExternalIds returnedExternalIds = new ExternalIds.Builder().build();
     Map<String, String> addedIds = returnedExternalIds.getExternalIds();
 
     for (Object keyObject : externalIds.keySet()) {
