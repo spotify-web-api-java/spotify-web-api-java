@@ -359,36 +359,21 @@ public class JsonUtil {
   }
 
   public static Playlist createPlaylist(JSONObject jsonObject) {
-    final Playlist returnedPlaylist = new Playlist();
-
-    returnedPlaylist.setCollaborative(jsonObject.getBoolean("collaborative"));
-
-    if (existsAndNotNull("description", jsonObject)) {
-      returnedPlaylist.setDescription(jsonObject.getString("description"));
-    }
-    returnedPlaylist.setExternalUrls(createExternalUrls(jsonObject.getJSONObject("external_urls")));
-
-    if (existsAndNotNull("followers", jsonObject)) {
-      returnedPlaylist.setFollowers(createFollowers(jsonObject.getJSONObject("followers")));
-    }
-
-    returnedPlaylist.setHref(jsonObject.getString("href"));
-    returnedPlaylist.setId(jsonObject.getString("id"));
-    if (existsAndNotNull("images", jsonObject)) {
-      returnedPlaylist.setImages(createImages(jsonObject.getJSONArray("images")));
-    }
-
-    returnedPlaylist.setName(jsonObject.getString("name"));
-    returnedPlaylist.setOwner(createUser(jsonObject.getJSONObject("owner")));
-    returnedPlaylist.setPublicAccess(jsonObject.getBoolean("public"));
-
-    if (existsAndNotNull("tracks", jsonObject)) {
-      returnedPlaylist.setTracks(createPlaylistTrackPage(jsonObject.getJSONObject("tracks")));
-    }
-
-    returnedPlaylist.setType(createObjectType(jsonObject.getString("type")));
-    returnedPlaylist.setUri(jsonObject.getString("uri"));
-    return returnedPlaylist;
+    return new Playlist.Builder()
+            .setCollaborative(jsonObject.getBoolean("collaborative"))
+            .setDescription(jsonObject.getString("description"))
+            .setExternalUrls(createExternalUrls(jsonObject.getJSONObject("external_urls")))
+            .setFollowers(createFollowers(jsonObject.getJSONObject("followers")))
+            .setHref(jsonObject.getString("href"))
+            .setId(jsonObject.getString("id"))
+            .setImages(createImages(jsonObject.getJSONArray("images")))
+            .setName(jsonObject.getString("name"))
+            .setOwner(createUser(jsonObject.getJSONObject("owner")))
+            .setPublicAccess(jsonObject.getBoolean("public"))
+            .setTracks(createPlaylistTrackPage(jsonObject.getJSONObject("tracks")))
+            .setType(createObjectType(jsonObject.getString("type")))
+            .setUri(jsonObject.getString("uri"))
+            .build();
   }
 
   private static List<Playlist> createPlaylists(JSONArray playlistsJson) {
