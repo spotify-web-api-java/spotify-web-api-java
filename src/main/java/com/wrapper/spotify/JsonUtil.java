@@ -786,14 +786,16 @@ public class JsonUtil {
   }
 
   private static LibraryTrack createLibraryTrack(JSONObject item) {
-    final LibraryTrack returnedLibraryTrack = new LibraryTrack();
     try {
-      returnedLibraryTrack.setAddedAt(createDate(item.getString("added_at")));
+      return new LibraryTrack.Builder()
+              .setAddedAt(createDate(item.getString("added_at")))
+              .setAddedAt(null)
+              .setTrack(createTrack(item.getJSONObject("track")))
+              .build();
     } catch (ParseException e) {
-      returnedLibraryTrack.setAddedAt(null);
+      e.printStackTrace();
+      return null;
     }
-    returnedLibraryTrack.setTrack(createTrack(item.getJSONObject("track")));
-    return returnedLibraryTrack;
   }
 
   public static AudioFeature createAudioFeature(String audioFeatureJson) {
