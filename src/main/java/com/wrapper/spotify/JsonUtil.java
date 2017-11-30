@@ -320,14 +320,10 @@ public class JsonUtil {
 
   // Followers
   private static Followers createFollowers(JSONObject followers) {
-    final Followers returnedFollowers = new Followers();
-    if (existsAndNotNull("href", followers)) {
-      returnedFollowers.setHref(followers.getString("href"));
-    }
-    if (existsAndNotNull("total", followers)) {
-      returnedFollowers.setTotal(followers.getInt("total"));
-    }
-    return returnedFollowers;
+    return new Followers.Builder()
+            .setHref(followers.getString("href"))
+            .setTotal(followers.getInt("total"))
+            .build();
   }
 
   // Image
