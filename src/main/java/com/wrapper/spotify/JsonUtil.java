@@ -407,21 +407,19 @@ public class JsonUtil {
 
   // PlaylistSimplified
   public static PlaylistSimplified createSimplePlaylist(JSONObject playlistJson) {
-    final PlaylistSimplified playlist = new PlaylistSimplified();
-    playlist.setCollaborative(playlistJson.getBoolean("collaborative"));
-    playlist.setExternalUrls(createExternalUrls(playlistJson.getJSONObject("external_urls")));
-    playlist.setHref(playlistJson.getString("href"));
-    playlist.setId(playlistJson.getString("id"));
-    playlist.setImages(createImages(playlistJson.getJSONArray("images")));
-    playlist.setName(playlistJson.getString("name"));
-    playlist.setOwner(createUser(playlistJson.getJSONObject("owner")));
-    if (existsAndNotNull("public", playlistJson)) {
-      playlist.setPublicAccess(playlistJson.getBoolean("public"));
-    }
-    playlist.setTracks(createPlaylistTracksInformation(playlistJson.getJSONObject("tracks")));
-    playlist.setType(createObjectType(playlistJson.getString("type")));
-    playlist.setUri(playlistJson.getString("uri"));
-    return playlist;
+    return new PlaylistSimplified.Builder()
+            .setCollaborative(playlistJson.getBoolean("collaborative"))
+            .setExternalUrls(createExternalUrls(playlistJson.getJSONObject("external_urls")))
+            .setHref(playlistJson.getString("href"))
+            .setId(playlistJson.getString("id"))
+            .setImages(createImages(playlistJson.getJSONArray("images")))
+            .setName(playlistJson.getString("name"))
+            .setOwner(createUser(playlistJson.getJSONObject("owner")))
+            .setPublicAccess(playlistJson.getBoolean("public"))
+            .setTracks(createPlaylistTracksInformation(playlistJson.getJSONObject("tracks")))
+            .setType(createObjectType(playlistJson.getString("type")))
+            .setUri(playlistJson.getString("uri"))
+            .build();
   }
 
   public static List<PlaylistSimplified> createSimplePlaylists(JSONArray playlistsJson) {
