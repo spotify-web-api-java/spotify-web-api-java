@@ -522,13 +522,11 @@ public class JsonUtil {
 
   // RefreshAccessTokenCredentials
   public static RefreshAccessTokenCredentials createRefreshAccessTokenResponse(JSONObject jsonObject) {
-    RefreshAccessTokenCredentials refreshAccessTokenResponse = new RefreshAccessTokenCredentials();
-
-    refreshAccessTokenResponse.setTokenType(jsonObject.getString("token_type"));
-    refreshAccessTokenResponse.setAccessToken(jsonObject.getString("access_token"));
-    refreshAccessTokenResponse.setExpiresIn(jsonObject.getInt("expires_in"));
-
-    return refreshAccessTokenResponse;
+    return new RefreshAccessTokenCredentials.Builder()
+            .setTokenType(jsonObject.getString("token_type"))
+            .setAccessToken(jsonObject.getString("access_token"))
+            .setExpiresIn(jsonObject.getInt("expires_in"))
+            .build();
   }
 
   // SnapshotResult
