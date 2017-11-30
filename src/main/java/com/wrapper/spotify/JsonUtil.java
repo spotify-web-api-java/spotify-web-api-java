@@ -612,23 +612,21 @@ public class JsonUtil {
 
   // TrackSimplified
   public static TrackSimplified createSimpleTrack(JSONObject simpleTrackJson) {
-    TrackSimplified track = new TrackSimplified();
-
-    track.setArtists(createSimpleArtists(simpleTrackJson.getJSONArray("artists")));
-    track.setAvailableMarkets(createAvailableMarkets(simpleTrackJson.getJSONArray("available_markets")));
-    track.setDiscNumber(simpleTrackJson.getInt("disc_number"));
-    track.setDurationMs(simpleTrackJson.getInt("duration_ms"));
-    track.setExplicit(simpleTrackJson.getBoolean("explicit"));
-    track.setExternalUrls(createExternalUrls(simpleTrackJson.getJSONObject("externalUrls")));
-    track.setHref(simpleTrackJson.getString("href"));
-    track.setId(simpleTrackJson.getString("id"));
-    track.setName(simpleTrackJson.getString("name"));
-    track.setPreviewUrl(simpleTrackJson.getString("preview_url"));
-    track.setTrackNumber(simpleTrackJson.getInt("track_number"));
-    track.setType(createObjectType(simpleTrackJson.getString("type")));
-    track.setUri(simpleTrackJson.getString("uri"));
-
-    return track;
+    return new TrackSimplified.Builder()
+            .setArtists(createSimpleArtists(simpleTrackJson.getJSONArray("artists")))
+            .setAvailableMarkets(createAvailableMarkets(simpleTrackJson.getJSONArray("available_markets")))
+            .setDiscNumber(simpleTrackJson.getInt("disc_number"))
+            .setDurationMs(simpleTrackJson.getInt("duration_ms"))
+            .setExplicit(simpleTrackJson.getBoolean("explicit"))
+            .setExternalUrls(createExternalUrls(simpleTrackJson.getJSONObject("externalUrls")))
+            .setHref(simpleTrackJson.getString("href"))
+            .setId(simpleTrackJson.getString("id"))
+            .setName(simpleTrackJson.getString("name"))
+            .setPreviewUrl(simpleTrackJson.getString("preview_url"))
+            .setTrackNumber(simpleTrackJson.getInt("track_number"))
+            .setType(createObjectType(simpleTrackJson.getString("type")))
+            .setUri(simpleTrackJson.getString("uri"))
+            .build();
   }
 
   public static List<TrackSimplified> createTracksSimplified(JSONArray tracksJson) {
