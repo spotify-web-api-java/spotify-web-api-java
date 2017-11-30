@@ -309,7 +309,7 @@ public class JsonUtil {
 
   // ExternalUrl
   public static ExternalUrls createExternalUrls(JSONObject externalUrls) {
-    ExternalUrls returnedExternalUrls = new ExternalUrls();
+    ExternalUrls returnedExternalUrls = new ExternalUrls.Builder().build();
     Map<String, String> addedExternalUrls = returnedExternalUrls.getExternalUrls();
     for (Object keyObject : externalUrls.keySet()) {
       String key = (String) keyObject;

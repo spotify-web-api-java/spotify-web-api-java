@@ -1,18 +1,37 @@
 package com.wrapper.spotify.objects;
 
-import java.util.HashMap;
 import java.util.Map;
 
-public class ExternalUrls {
+public class ExternalUrls extends AbstractModelObject {
+  private final Map<String, String> externalUrls;
 
-  private final Map<String, String> externalUrls = new HashMap<>();
+  private ExternalUrls(final ExternalUrls.Builder builder) {
+    super(builder);
+
+    this.externalUrls = builder.externalUrls;
+  }
 
   public Map<String, String> getExternalUrls() {
     return externalUrls;
   }
 
-  public String get(String key) {
-    return externalUrls.get(key);
+  @Override
+  public Builder builder() {
+    return new Builder();
+  }
+
+  public static final class Builder extends AbstractModelObject.Builder<Cursor.Builder> {
+    private Map<String, String> externalUrls;
+
+    public Builder setExternalUrls(Map<String, String> externalUrls) {
+      this.externalUrls = externalUrls;
+      return this;
+    }
+
+    @Override
+    public ExternalUrls build() {
+      return new ExternalUrls(this);
+    }
   }
 
 }
