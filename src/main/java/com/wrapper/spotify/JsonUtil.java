@@ -24,7 +24,7 @@ public class JsonUtil {
       return null;
     }
 
-    Album album = new Album.Builder()
+    return new Album.Builder()
             .setAlbumType(createAlbumType(albumJson.getString("album_type")))
             .setArtists(createSimpleArtists(albumJson.getJSONArray("artists")))
             .setAvailableMarkets(createAvailableMarkets(albumJson.getJSONArray("available_markets")))
@@ -40,11 +40,9 @@ public class JsonUtil {
             .setReleaseDate(albumJson.getString("release_date"))
             .setReleaseDatePrecision(ReleaseDatePrecision.valueOf(albumJson.getString("release_date_precision")))
             .setTracks(createSimpleTrackPage(albumJson.getJSONObject("tracks")))
-//            .setType(createObjectType(albumJson.getString("type")))
+            .setType(createObjectType(albumJson.getString("type")))
             .setUri(albumJson.getString("uri"))
             .build();
-
-    return album;
   }
 
   public static List<Album> createAlbums(String json) {
@@ -89,7 +87,7 @@ public class JsonUtil {
       return null;
     }
 
-    AlbumSimplified simpleAlbum = new AlbumSimplified.Builder()
+    return new AlbumSimplified.Builder()
             .setAlbumType(createAlbumType(simpleAlbumJson.getString("album_type")))
             .setExternalUrls(createExternalUrls(simpleAlbumJson.getJSONObject("external_urls")))
             .setHref(simpleAlbumJson.getString("href")).setId(simpleAlbumJson.getString("id"))
@@ -97,8 +95,6 @@ public class JsonUtil {
             .setType(createObjectType(simpleAlbumJson.getString("type"))).setUri(simpleAlbumJson.getString("uri"))
             .setAvailableMarkets(createAvailableMarkets(simpleAlbumJson.getJSONArray("available_markets")))
             .build();
-
-    return simpleAlbum;
   }
 
   public static List<AlbumSimplified> createAlbumsSimplified(String json) {
@@ -170,7 +166,7 @@ public class JsonUtil {
       return null;
     }
 
-    Artist artist = new Artist.Builder()
+    return new Artist.Builder()
             .setExternalUrls(createExternalUrls(jsonObject.getJSONObject("external_urls")))
             .setGenres(createGenres(jsonObject.getJSONArray("genres")))
             .setHref(jsonObject.getString("href"))
@@ -182,8 +178,6 @@ public class JsonUtil {
             .setType(createObjectType(jsonObject.getString("type")))
             .setUri(jsonObject.getString("uri"))
             .build();
-
-    return artist;
   }
 
   public static List<Artist> createArtists(String json) {
@@ -239,7 +233,7 @@ public class JsonUtil {
       return null;
     }
 
-    ArtistSimplified simpleArtist = new ArtistSimplified.Builder()
+    return new ArtistSimplified.Builder()
             .setExternalUrls(createExternalUrls(simpleArtistJson.getJSONObject("external_urls")))
             .setHref(simpleArtistJson.getString("href"))
             .setId(simpleArtistJson.getString("id"))
@@ -247,8 +241,6 @@ public class JsonUtil {
             .setType(createObjectType(simpleArtistJson.getString("type")))
             .setUri(simpleArtistJson.getString("uri"))
             .build();
-
-    return simpleArtist;
   }
 
   private static List<ArtistSimplified> createSimpleArtists(JSONArray artists) {
@@ -261,25 +253,21 @@ public class JsonUtil {
 
   // AuthorizationCodeCredentials
   public static AuthorizationCodeCredentials createTokenResponse(JSONObject tokenResponse) {
-    AuthorizationCodeCredentials response = new AuthorizationCodeCredentials.Builder()
+    return new AuthorizationCodeCredentials.Builder()
             .setAccessToken(tokenResponse.getString("access_token"))
             .setExpiresIn(tokenResponse.getInt("expires_in"))
             .setRefreshToken(tokenResponse.getString("refresh_token"))
             .setTokenType(tokenResponse.getString("token_type"))
             .build();
-
-    return response;
   }
 
   // ClientCredentials
   public static ClientCredentials createApplicationAuthenticationToken(JSONObject jsonObject) {
-    final ClientCredentials token = new ClientCredentials.Builder()
+    return new ClientCredentials.Builder()
             .setAccessToken(jsonObject.getString("access_token"))
             .setExpiresIn(jsonObject.getInt("expires_in"))
             .setTokenType(jsonObject.getString("token_type"))
             .build();
-
-    return token;
   }
 
   // Copyright
@@ -867,7 +855,7 @@ public class JsonUtil {
       return null;
     }
 
-    AudioFeature audioFeature = new AudioFeature.Builder()
+    return new AudioFeature.Builder()
             .setDanceability(audioFeatureJson.getDouble("danceability"))
             .setEnergy(audioFeatureJson.getDouble("energy"))
             .setKey(audioFeatureJson.getInt("key"))
@@ -887,7 +875,5 @@ public class JsonUtil {
             .setDurationMs(audioFeatureJson.getInt("duration_ms"))
             .setTimeSignature(audioFeatureJson.getInt("time_signature"))
             .build();
-
-    return audioFeature;
   }
 }
