@@ -543,27 +543,24 @@ public class JsonUtil {
   }
 
   private static Track createTrack(JSONObject trackJson) {
-
-    Track track = new Track();
-
-    track.setAlbum(createSimpleAlbum(trackJson.getJSONObject("album")));
-    track.setArtists(createSimpleArtists(trackJson.getJSONArray("artists")));
-    track.setAvailableMarkets(createAvailableMarkets(trackJson.getJSONArray("available_markets")));
-    track.setDiscNumber(trackJson.getInt("disc_number"));
-    track.setDurationMs(trackJson.getInt("duration_ms"));
-    track.setExplicit(trackJson.getBoolean("explicit"));
-    track.setExternalIds(createExternalIds(trackJson.getJSONObject("external_ids")));
-    track.setExternalUrls(createExternalUrls(trackJson.getJSONObject("external_urls")));
-    track.setHref(trackJson.getString("href"));
-    track.setId(trackJson.getString("id"));
-    track.setName(trackJson.getString("name"));
-    track.setPopularity(trackJson.getInt("popularity"));
-    track.setPreviewUrl(trackJson.getString("preview_url"));
-    track.setTrackNumber(trackJson.getInt(("track_number")));
-    track.setType(createObjectType(trackJson.getString("type")));
-    track.setUri(trackJson.getString("uri"));
-
-    return track;
+    return new Track.Builder()
+            .setAlbum(createSimpleAlbum(trackJson.getJSONObject("album")))
+            .setArtists(createSimpleArtists(trackJson.getJSONArray("artists")))
+            .setAvailableMarkets(createAvailableMarkets(trackJson.getJSONArray("available_markets")))
+            .setDiscNumber(trackJson.getInt("disc_number"))
+            .setDurationMs(trackJson.getInt("duration_ms"))
+            .setExplicit(trackJson.getBoolean("explicit"))
+            .setExternalIds(createExternalIds(trackJson.getJSONObject("external_ids")))
+            .setExternalUrls(createExternalUrls(trackJson.getJSONObject("external_urls")))
+            .setHref(trackJson.getString("href"))
+            .setId(trackJson.getString("id"))
+            .setName(trackJson.getString("name"))
+            .setPopularity(trackJson.getInt("popularity"))
+            .setPreviewUrl(trackJson.getString("preview_url"))
+            .setTrackNumber(trackJson.getInt(("track_number")))
+            .setType(createObjectType(trackJson.getString("type")))
+            .setUri(trackJson.getString("uri"))
+            .build();
   }
 
   public static List<Track> createTracks(String json) {
