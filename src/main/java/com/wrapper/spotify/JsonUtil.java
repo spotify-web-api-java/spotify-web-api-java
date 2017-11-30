@@ -509,10 +509,10 @@ public class JsonUtil {
 
   // PlaylistTracksInformation
   private static PlaylistTracksInformation createPlaylistTracksInformation(JSONObject tracksInformationJson) {
-    PlaylistTracksInformation playlistTracksInformation = new PlaylistTracksInformation();
-    playlistTracksInformation.setHref(tracksInformationJson.getString("href"));
-    playlistTracksInformation.setTotal(tracksInformationJson.getInt("total"));
-    return playlistTracksInformation;
+    return new PlaylistTracksInformation.Builder()
+            .setHref(tracksInformationJson.getString("href"))
+            .setTotal(tracksInformationJson.getInt("total"))
+            .build();
   }
 
   // ProductType
