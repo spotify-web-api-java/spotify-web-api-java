@@ -739,9 +739,9 @@ public class JsonUtil {
   }
 
   public static NewReleases createNewReleases(JSONObject newReleasesJson) {
-    final NewReleases newReleases = new NewReleases();
-    newReleases.setAlbums(createSimpleAlbumPage(newReleasesJson.getJSONObject("albums")));
-    return newReleases;
+    return new NewReleases.Builder()
+            .setAlbums(createSimpleAlbumPage(newReleasesJson.getJSONObject("albums")))
+            .build();
   }
 
   private static Date createDate(String dateString) throws ParseException {
