@@ -438,19 +438,16 @@ public class JsonUtil {
 
   // PlaylistTrack
   private static PlaylistTrack createPlaylistTrack(JSONObject playlistTrackJson) {
-    final PlaylistTrack returnedPlaylistTrack = new PlaylistTrack();
     try {
-      returnedPlaylistTrack.setAddedAt(createDate(playlistTrackJson.getString("added_at")));
+      return new PlaylistTrack.Builder()
+              .setAddedAt(createDate(playlistTrackJson.getString("added_at")))
+              .setAddedBy(createUser(playlistTrackJson.getJSONObject("added_by")))
+              .setTrack(createTrack(playlistTrackJson.getJSONObject("track")))
+              .build();
     } catch (ParseException e) {
-      returnedPlaylistTrack.setAddedAt(null);
+      e.printStackTrace();
+      return null;
     }
-    try {
-      returnedPlaylistTrack.setAddedBy(createUser(playlistTrackJson.getJSONObject("added_by")));
-    } catch (JSONException e) {
-      returnedPlaylistTrack.setAddedBy(null);
-    }
-    returnedPlaylistTrack.setTrack(createTrack(playlistTrackJson.getJSONObject("track")));
-    return returnedPlaylistTrack;
   }
 
   private static List<PlaylistTrack> createPlaylistTracksInformation(JSONArray playlistTrackPageJson) {
