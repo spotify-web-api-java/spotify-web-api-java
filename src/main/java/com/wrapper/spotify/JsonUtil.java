@@ -726,10 +726,11 @@ public class JsonUtil {
    * @return A Featured Playlists object.
    */
   public static FeaturedPlaylists createFeaturedPlaylist(JSONObject jsonObject) {
-    FeaturedPlaylists featuredPlaylists = new FeaturedPlaylists();
-    featuredPlaylists.setMessage(jsonObject.getString("message"));
-    featuredPlaylists.setPlaylists(JsonUtil.createSimplePlaylistsPage(jsonObject.getJSONObject("playlists")));
-    return featuredPlaylists;
+    return new FeaturedPlaylists.Builder()
+            .setMessage(jsonObject.getString("message"))
+            .setPlaylists(JsonUtil.createSimplePlaylistsPage(jsonObject.getJSONObject("playlists")))
+            .build();
+    ;
   }
 
   public static NewReleases createNewReleases(String newReleasesJson) {
