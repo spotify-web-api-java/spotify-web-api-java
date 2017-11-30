@@ -532,9 +532,9 @@ public class JsonUtil {
   // SnapshotResult
   public static SnapshotResult createSnapshotResult(String jsonString) {
     JSONObject jsonObject = JSONObject.fromObject(jsonString);
-    SnapshotResult result = new SnapshotResult();
-    result.setSnapshotId(jsonObject.getString("snapshot_id"));
-    return result;
+    return new SnapshotResult.Builder()
+            .setSnapshotId(jsonObject.getString("snapshot_id"))
+            .build();
   }
 
   // Track
