@@ -664,36 +664,20 @@ public class JsonUtil {
   }
 
   public static User createUser(JSONObject userJson) {
-    User user = new User();
-
-    // Always in the user object
-    user.setExternalUrls(createExternalUrls(userJson.getJSONObject("external_urls")));
-    user.setHref(userJson.getString("href"));
-    user.setId(userJson.getString("id"));
-    user.setType(createObjectType(userJson.getString("type")));
-    user.setUri(userJson.getString("uri"));
-    user.setFollowers(createFollowers(userJson.getJSONObject("followers")));
-
-    if (existsAndNotNull("display_name", userJson)) {
-      user.setDisplayName(userJson.getString("display_name"));
-    }
-    if (existsAndNotNull("email", userJson)) {
-      user.setEmail(userJson.getString("email"));
-    }
-    if (existsAndNotNull("images", userJson)) {
-      user.setImages(createImages(userJson.getJSONArray("images")));
-    }
-    if (existsAndNotNull("product", userJson)) {
-      user.setProduct(createProductType(userJson.getString("product")));
-    }
-    if (existsAndNotNull("country", userJson)) {
-      user.setCountry(CountryCode.getByCode(userJson.getString("country")));
-    }
-    if (existsAndNotNull("birthdate", userJson)) {
-      user.setBirthdate(userJson.getString("birthdate"));
-    }
-
-    return user;
+    return new User.Builder()
+            .setExternalUrls(createExternalUrls(userJson.getJSONObject("external_urls")))
+            .setHref(userJson.getString("href"))
+            .setId(userJson.getString("id"))
+            .setType(createObjectType(userJson.getString("type")))
+            .setUri(userJson.getString("uri"))
+            .setFollowers(createFollowers(userJson.getJSONObject("followers")))
+            .setDisplayName(userJson.getString("display_name"))
+            .setEmail(userJson.getString("email"))
+            .setImages(createImages(userJson.getJSONArray("images")))
+            .setProduct(createProductType(userJson.getString("product")))
+            .setCountry(CountryCode.getByCode(userJson.getString("country")))
+            .setBirthdate(userJson.getString("birthdate"))
+            .build();
   }
 
   public static List<String> createGenres(JSONArray genres) {

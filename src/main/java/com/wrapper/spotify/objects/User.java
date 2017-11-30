@@ -4,114 +4,167 @@ import com.neovisionaries.i18n.CountryCode;
 
 import java.util.List;
 
-public class User {
+public class User extends AbstractModelObject {
+  private final String birthdate;
+  private final CountryCode country;
+  private final String displayName;
+  private final String email;
+  private final ExternalUrls externalUrls;
+  private final Followers followers;
+  private final String href;
+  private final String id;
+  private final List<Image> images;
+  private final ProductType product;
+  private final ObjectType type;
+  private final String uri;
 
-  private String birthdate;
-  private CountryCode country;
-  private String displayName;
-  private String email;
-  private ExternalUrls externalUrls;
-  private Followers followers;
-  private String href;
-  private String id;
-  private List<Image> images;
-  private ProductType product;
-  private ObjectType type;
-  private String uri;
+  private User(final User.Builder builder) {
+    super(builder);
+
+    this.birthdate = builder.birthdate;
+    this.country = builder.country;
+    this.displayName = builder.displayName;
+    this.email = builder.email;
+    this.externalUrls = builder.externalUrls;
+    this.followers = builder.followers;
+    this.href = builder.href;
+    this.id = builder.id;
+    this.images = builder.images;
+    this.product = builder.product;
+    this.type = builder.type;
+    this.uri = builder.uri;
+  }
 
   public String getBirthdate() {
     return birthdate;
-  }
-
-  public void setBirthdate(String birthdate) {
-    this.birthdate = birthdate;
   }
 
   public CountryCode getCountry() {
     return country;
   }
 
-  public void setCountry(CountryCode country) {
-    this.country = country;
-  }
-
   public String getDisplayName() {
     return displayName;
-  }
-
-  public void setDisplayName(String displayName) {
-    this.displayName = displayName;
   }
 
   public String getEmail() {
     return email;
   }
 
-  public void setEmail(String email) {
-    this.email = email;
-  }
-
   public ExternalUrls getExternalUrls() {
     return externalUrls;
-  }
-
-  public void setExternalUrls(ExternalUrls externalUrls) {
-    this.externalUrls = externalUrls;
   }
 
   public Followers getFollowers() {
     return followers;
   }
 
-  public void setFollowers(Followers followers) {
-    this.followers = followers;
-  }
-
   public String getHref() {
     return href;
-  }
-
-  public void setHref(String href) {
-    this.href = href;
   }
 
   public String getId() {
     return id;
   }
 
-  public void setId(String id) {
-    this.id = id;
-  }
-
   public List<Image> getImages() {
     return images;
-  }
-
-  public void setImages(List<Image> images) {
-    this.images = images;
   }
 
   public ProductType getProduct() {
     return product;
   }
 
-  public void setProduct(ProductType product) {
-    this.product = product;
-  }
-
   public ObjectType getType() {
     return type;
-  }
-
-  public void setType(ObjectType type) {
-    this.type = type;
   }
 
   public String getUri() {
     return uri;
   }
 
-  public void setUri(String uri) {
-    this.uri = uri;
+  @Override
+  public Builder builder() {
+    return new Builder();
+  }
+
+  public static final class Builder extends AbstractModelObject.Builder<User.Builder> {
+    private String birthdate;
+    private CountryCode country;
+    private String displayName;
+    private String email;
+    private ExternalUrls externalUrls;
+    private Followers followers;
+    private String href;
+    private String id;
+    private List<Image> images;
+    private ProductType product;
+    private ObjectType type;
+    private String uri;
+
+    public Builder setBirthdate(String birthdate) {
+      this.birthdate = birthdate;
+      return this;
+    }
+
+    public Builder setCountry(CountryCode country) {
+      this.country = country;
+      return this;
+    }
+
+    public Builder setDisplayName(String displayName) {
+      this.displayName = displayName;
+      return this;
+    }
+
+    public Builder setEmail(String email) {
+      this.email = email;
+      return this;
+    }
+
+    public Builder setExternalUrls(ExternalUrls externalUrls) {
+      this.externalUrls = externalUrls;
+      return this;
+    }
+
+    public Builder setFollowers(Followers followers) {
+      this.followers = followers;
+      return this;
+    }
+
+    public Builder setHref(String href) {
+      this.href = href;
+      return this;
+    }
+
+    public Builder setId(String id) {
+      this.id = id;
+      return this;
+    }
+
+    public Builder setImages(List<Image> images) {
+      this.images = images;
+      return this;
+    }
+
+    public Builder setProduct(ProductType product) {
+      this.product = product;
+      return this;
+    }
+
+    public Builder setType(ObjectType type) {
+      this.type = type;
+      return this;
+    }
+
+    public Builder setUri(String uri) {
+      this.uri = uri;
+      return this;
+    }
+
+    @Override
+    public User build() {
+      return new User(this);
+    }
   }
 }
