@@ -71,7 +71,7 @@ public class PlaylistRequestTest {
 
     Playlist playlist = request.get();
 
-    assertTrue(playlist.getTracks().getItems().get(0).getTrack().getAlbum().getAlbumType() == null);
+    assertTrue(playlist.getTracks().getItems()[0].getTrack().getAlbum().getAlbumType() == null);
 
     assertNotNull(playlist);
   }

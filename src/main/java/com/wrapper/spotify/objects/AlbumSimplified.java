@@ -1,20 +1,17 @@
 package com.wrapper.spotify.objects;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import com.neovisionaries.i18n.CountryCode;
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
-import net.sf.json.JsonConfig;
-
-import java.util.List;
 
 public class AlbumSimplified extends AbstractModelObject {
   private final AlbumType albumType;
-  private final List<ArtistSimplified> artists;
-  private final List<CountryCode> availableMarkets;
+  private final ArtistSimplified[] artists;
+  private final CountryCode[] availableMarkets;
   private final ExternalUrls externalUrls;
   private final String href;
   private final String id;
-  private final List<Image> images;
+  private final Image[] images;
   private final String name;
   private final ObjectType type;
   private final String uri;
@@ -38,11 +35,11 @@ public class AlbumSimplified extends AbstractModelObject {
     return albumType;
   }
 
-  public List<ArtistSimplified> getArtists() {
+  public ArtistSimplified[] getArtists() {;
     return artists;
   }
 
-  public List<CountryCode> getAvailableMarkets() {
+  public CountryCode[] getAvailableMarkets() {
     return availableMarkets;
   }
 
@@ -58,7 +55,7 @@ public class AlbumSimplified extends AbstractModelObject {
     return id;
   }
 
-  public List<Image> getImages() {
+  public Image[] getImages() {;
     return images;
   }
 
@@ -82,12 +79,12 @@ public class AlbumSimplified extends AbstractModelObject {
   public static final class Builder extends AbstractModelObject.Builder {
 
     private AlbumType albumType;
-    private List<ArtistSimplified> artists;
-    private List<CountryCode> availableMarkets;
+    private ArtistSimplified[] artists;
+    private CountryCode[] availableMarkets;
     private ExternalUrls externalUrls;
     private String href;
     private String id;
-    private List<Image> images;
+    private Image[] images;
     private String name;
     private ObjectType type;
     private String uri;
@@ -97,12 +94,12 @@ public class AlbumSimplified extends AbstractModelObject {
       return this;
     }
 
-    public Builder setArtists(List<ArtistSimplified> artists) {
+    public Builder setArtists(ArtistSimplified[] artists) {
       this.artists = artists;
       return this;
     }
 
-    public Builder setAvailableMarkets(List<CountryCode> availableMarkets) {
+    public Builder setAvailableMarkets(CountryCode[] availableMarkets) {
       this.availableMarkets = availableMarkets;
       return this;
     }
@@ -122,7 +119,7 @@ public class AlbumSimplified extends AbstractModelObject {
       return this;
     }
 
-    public Builder setImages(List<Image> images) {
+    public Builder setImages(Image[] images) {
       this.images = images;
       return this;
     }
@@ -149,22 +146,22 @@ public class AlbumSimplified extends AbstractModelObject {
   }
 
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<AlbumSimplified> {
-    public AlbumSimplified createModelObject(JSONObject jsonObject) {
-      if (jsonObject == null || jsonObject.isNullObject()) {
+    public AlbumSimplified createModelObject(JsonObject jsonObject) {
+      if (jsonObject == null || jsonObject.isJsonNull()) {
         return null;
       }
 
       return new AlbumSimplified.Builder()
-              .setAlbumType(AlbumType.valueOf(jsonObject.getString("album_type")))
-              .setArtists(new ArtistSimplified.JsonUtil().createModelObjectList(jsonObject.getJSONArray("artists")))
-              .setAvailableMarkets(JSONArray.toList(jsonObject.getJSONArray("available_markets"), new Object(), new JsonConfig()))
-              .setExternalUrls(new ExternalUrls.JsonUtil().createModelObject(jsonObject.getJSONObject("external_urls")))
-              .setHref(jsonObject.getString("href")).setId(jsonObject.getString("id"))
-              .setId(jsonObject.getString("id"))
-              .setImages(new Image.JsonUtil().createModelObjectList(jsonObject.getJSONArray("images")))
-              .setName(jsonObject.getString("name"))
-              .setType(ObjectType.valueOf(jsonObject.getString("type")))
-              .setUri(jsonObject.getString("uri"))
+              .setAlbumType(AlbumType.valueOf(jsonObject.get("album_type").getAsString()))
+              .setArtists(new ArtistSimplified.JsonUtil().createModelObjectArray(jsonObject.getAsJsonArray("artists")))
+              .setAvailableMarkets(new Gson().fromJson(jsonObject.get("available_markets"), CountryCode[].class))
+              .setExternalUrls(new ExternalUrls.JsonUtil().createModelObject(jsonObject.getAsJsonObject("external_urls")))
+              .setHref(jsonObject.get("href").getAsString())
+              .setId(jsonObject.get("id").getAsString())
+              .setImages(new Image.JsonUtil().createModelObjectArray(jsonObject.getAsJsonArray("images")))
+              .setName(jsonObject.get("name").getAsString())
+              .setType(ObjectType.valueOf(jsonObject.get("type").getAsString()))
+              .setUri(jsonObject.get("uri").getAsString())
               .build();
     }
   }

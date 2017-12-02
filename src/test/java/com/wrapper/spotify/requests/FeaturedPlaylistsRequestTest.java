@@ -12,7 +12,6 @@ import org.junit.Test;
 
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
@@ -58,10 +57,10 @@ public class FeaturedPlaylistsRequestTest {
                         "locale=sv_SE&timestamp=2014-10-23T09:00:00&offset=0&limit=1",
                 playlistPage.getPrevious());
 
-        List<PlaylistSimplified> items = playlistPage.getItems();
-        assertEquals(1, items.size());
+        PlaylistSimplified[] items = playlistPage.getItems();
+        assertEquals(1, items.length);
 
-        PlaylistSimplified playlist = items.get(0);
+        PlaylistSimplified playlist = items[0];
         assertEquals("2BgVZaiDigaqxTbZEI2TpE", playlist.getId());
         assertEquals("Träning", playlist.getName());
         asyncCompleted.countDown();
@@ -108,10 +107,10 @@ public class FeaturedPlaylistsRequestTest {
                     "locale=sv_SE&timestamp=2014-10-23T09:00:00&offset=0&limit=1",
             playlistPage.getPrevious());
 
-    List<PlaylistSimplified> items = playlistPage.getItems();
-    assertEquals(1, items.size());
+    PlaylistSimplified[] items = playlistPage.getItems();
+    assertEquals(1, items.length);
 
-    PlaylistSimplified playlist = items.get(0);
+    PlaylistSimplified playlist = items[0];
     assertEquals("2BgVZaiDigaqxTbZEI2TpE", playlist.getId());
     assertEquals("Träning", playlist.getName());
 

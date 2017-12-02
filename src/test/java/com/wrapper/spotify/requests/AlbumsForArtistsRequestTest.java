@@ -12,7 +12,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
@@ -47,10 +46,10 @@ public class AlbumsForArtistsRequestTest {
         assertEquals("https://api.spotify.com/v1/artists/1vCWHaC5f2uS3yhpwWbIA6/albums?offset=2&limit=2&album_type=single&market=US", albumSearchResult.getNext());
         assertNull(albumSearchResult.getPrevious());
 
-        List<AlbumSimplified> albums = albumSearchResult.getItems();
-        assertEquals(2, albums.size());
+        AlbumSimplified[] albums = albumSearchResult.getItems();
+        assertEquals(2, albums.length);
 
-        AlbumSimplified firstAlbum = albums.get(0);
+        AlbumSimplified firstAlbum = albums[0];
         assertEquals(AlbumType.SINGLE, firstAlbum.getAlbumType());
         assertEquals("https://open.spotify.com/album/6RcscDLgp8v0mSRxvRhfG0", firstAlbum.getExternalUrls().get("spotify"));
         assertEquals("https://api.spotify.com/v1/albums/6RcscDLgp8v0mSRxvRhfG0", firstAlbum.getHref());
@@ -88,10 +87,10 @@ public class AlbumsForArtistsRequestTest {
     assertEquals("https://api.spotify.com/v1/artists/1vCWHaC5f2uS3yhpwWbIA6/albums?offset=2&limit=2&album_type=single&market=US", albumSearchResult.getNext());
     assertNull(albumSearchResult.getPrevious());
 
-    final List<AlbumSimplified> albums = albumSearchResult.getItems();
-    assertEquals(2, albums.size());
+    final AlbumSimplified[] albums = albumSearchResult.getItems();
+    assertEquals(2, albums.length);
 
-    AlbumSimplified firstAlbum = albums.get(0);
+    AlbumSimplified firstAlbum = albums[0];
     assertEquals(AlbumType.SINGLE, firstAlbum.getAlbumType());
     assertEquals("https://open.spotify.com/album/6RcscDLgp8v0mSRxvRhfG0", firstAlbum.getExternalUrls().get("spotify"));
     assertEquals("https://api.spotify.com/v1/albums/6RcscDLgp8v0mSRxvRhfG0", firstAlbum.getHref());

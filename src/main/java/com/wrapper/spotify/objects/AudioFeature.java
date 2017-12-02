@@ -1,6 +1,6 @@
 package com.wrapper.spotify.objects;
 
-import net.sf.json.JSONObject;
+import com.google.gson.JsonObject;
 
 public class AudioFeature extends AbstractModelObject {
   private final double acousticness;
@@ -239,30 +239,30 @@ public class AudioFeature extends AbstractModelObject {
   }
 
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<AudioFeature> {
-    public AudioFeature createModelObject(JSONObject jsonObject) {
-      if (jsonObject == null || jsonObject.isNullObject()) {
+    public AudioFeature createModelObject(JsonObject jsonObject) {
+      if (jsonObject == null || jsonObject.isJsonNull()) {
         return null;
       }
 
       return new AudioFeature.Builder()
-              .setAcousticness(jsonObject.getDouble("acousticness"))
-              .setAnalysisUrl(jsonObject.getString("analysis_url"))
-              .setDanceability(jsonObject.getDouble("danceability"))
-              .setDurationMs(jsonObject.getInt("duration_ms"))
-              .setEnergy(jsonObject.getDouble("energy"))
-              .setId(jsonObject.getString("id"))
-              .setInstrumentalness(jsonObject.getDouble("instrumentalness"))
-              .setKey(jsonObject.getInt("key"))
-              .setLiveness(jsonObject.getDouble("liveness"))
-              .setLoudness(jsonObject.getDouble("loudness"))
-              .setMode(Modality.valueOf(jsonObject.getString("mode")))
-              .setSpeechiness(jsonObject.getDouble("speechiness"))
-              .setTempo(jsonObject.getDouble("tempo"))
-              .setTimeSignature(jsonObject.getInt("time_signature"))
-              .setTrackHref(jsonObject.getString("track_href"))
-              .setType(ObjectType.valueOf(jsonObject.getString("type")))
-              .setUri(jsonObject.getString("uri"))
-              .setValence(jsonObject.getDouble("valence"))
+              .setAcousticness(jsonObject.get("acousticness").getAsDouble())
+              .setAnalysisUrl(jsonObject.get("analysis_url").getAsString())
+              .setDanceability(jsonObject.get("danceability").getAsDouble())
+              .setDurationMs(jsonObject.get("duration_ms").getAsInt())
+              .setEnergy(jsonObject.get("energy").getAsDouble())
+              .setId(jsonObject.get("id").getAsString())
+              .setInstrumentalness(jsonObject.get("instrumentalness").getAsDouble())
+              .setKey(jsonObject.get("key").getAsInt())
+              .setLiveness(jsonObject.get("liveness").getAsDouble())
+              .setLoudness(jsonObject.get("loudness").getAsDouble())
+              .setMode(Modality.valueOf(jsonObject.get("mode").getAsString()))
+              .setSpeechiness(jsonObject.get("speechiness").getAsDouble())
+              .setTempo(jsonObject.get("tempo").getAsDouble())
+              .setTimeSignature(jsonObject.get("time_signature").getAsInt())
+              .setTrackHref(jsonObject.get("track_href").getAsString())
+              .setType(ObjectType.valueOf(jsonObject.get("type").getAsString()))
+              .setUri(jsonObject.get("uri").getAsString())
+              .setValence(jsonObject.get("valence").getAsDouble())
               .build();
     }
   }

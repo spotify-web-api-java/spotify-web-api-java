@@ -1,7 +1,6 @@
 package com.wrapper.spotify.objects;
 
-import com.google.common.reflect.TypeToken;
-import net.sf.json.JSONObject;
+import com.google.gson.JsonObject;
 
 import java.text.SimpleDateFormat;
 
@@ -15,10 +14,10 @@ public interface IModelObject {
   }
 
   interface IJsonUtil<T> {
-    T createModelObject(JSONObject jsonObject);
+    T createModelObject(JsonObject jsonObject);
   }
 
-  interface IJsonUtilPaging {
-    <X> Paging<X> createModelObject(JSONObject jsonObject, TypeToken<X> typeToken);
-  }
+//  interface IJsonUtilPaging {
+//    <X> Paging<X> createModelObject(JsonObject jsonObject, TypeToken<X> typeToken);
+//  }
 }

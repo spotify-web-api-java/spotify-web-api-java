@@ -1,13 +1,11 @@
 package com.wrapper.spotify.objects;
 
 import com.google.common.reflect.TypeToken;
-import net.sf.json.JSONObject;
-
-import java.util.List;
+import com.google.gson.JsonObject;
 
 public class Paging<T> extends AbstractModelObject {
   private final String href;
-  private final List<?> items;
+  private final T[] items;
   private final int limit;
   private final String next;
   private final int offset;
@@ -30,7 +28,7 @@ public class Paging<T> extends AbstractModelObject {
     return href;
   }
 
-  public List<?> getItems() {
+  public T[] getItems() {
     return items;
   }
 
@@ -61,7 +59,7 @@ public class Paging<T> extends AbstractModelObject {
 
   public static final class Builder<T> extends AbstractModelObject.Builder {
     private String href;
-    private List<?> items;
+    private T[] items;
     private int limit;
     private String next;
     private int offset;
@@ -73,7 +71,7 @@ public class Paging<T> extends AbstractModelObject {
       return this;
     }
 
-    public Builder<T> setItems(List<?> items) {
+    public Builder<T> setItems(T[] items) {
       this.items = items;
       return this;
     }
@@ -109,20 +107,20 @@ public class Paging<T> extends AbstractModelObject {
     }
   }
 
-  public static final class JsonUtilPaging extends AbstractModelObject.JsonUtilPaging {
-    public <X> Paging<X> createModelObject(JSONObject jsonObject, TypeToken<X> type) {
-      if (jsonObject == null || jsonObject.isNullObject()) {
+  public static final class JsonUtil<X> extends AbstractModelObject.JsonUtil<Paging<X>> {
+    public Paging<X> createModelObject(JsonObject jsonObject) {
+      if (jsonObject == null || jsonObject.isJsonNull()) {
         return null;
       }
 
       return new Paging.Builder<X>()
-              .setHref(jsonObject.getString("href"))
-              .setItems(createModelObjectList(jsonObject.getJSONArray("items"), type))
-              .setLimit(jsonObject.getInt("limit"))
-              .setNext(jsonObject.getString("next"))
-              .setOffset(jsonObject.getInt("offset"))
-              .setPrevious(jsonObject.getString("previous"))
-              .setTotal(jsonObject.getInt("total"))
+              .setHref(jsonObject.get("href").getAsString())
+              .setItems(createModelObjectArray(jsonObject.getAsJsonArray("items"), new TypeToken<X>(){}))
+              .setLimit(jsonObject.get("limit").getAsInt())
+              .setNext(jsonObject.get("next").getAsString())
+              .setOffset(jsonObject.get("offset").getAsInt())
+              .setPrevious(jsonObject.get("previous").getAsString())
+              .setTotal(jsonObject.get("total").getAsInt())
               .build();
     }
   }

@@ -2,15 +2,15 @@ package com.wrapper.spotify.requests.authentication;
 
 import com.google.common.base.Joiner;
 import com.google.common.util.concurrent.SettableFuture;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.exceptions.*;
-import com.wrapper.spotify.requests.AbstractRequest;
 import com.wrapper.spotify.objects.ClientCredentials;
-import net.sf.json.JSONObject;
+import com.wrapper.spotify.requests.AbstractRequest;
 import org.apache.commons.codec.binary.Base64;
 
 import java.io.IOException;
-import java.util.List;
 
 public class ClientCredentialsGrantRequest extends AbstractRequest {
 
@@ -26,7 +26,7 @@ public class ClientCredentialsGrantRequest extends AbstractRequest {
     final SettableFuture<ClientCredentials> future = SettableFuture.create();
 
     try {
-      JSONObject jsonObject = JSONObject.fromObject(postJson());
+      JsonObject jsonObject = new JsonParser().parse(postJson()).getAsJsonObject();
       future.set(new ClientCredentials.JsonUtil().createModelObject(jsonObject));
     } catch (Exception e) {
       future.setException(e);
@@ -46,7 +46,7 @@ public class ClientCredentialsGrantRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    JSONObject jsonObject = JSONObject.fromObject(postJson());
+    JsonObject jsonObject = new JsonParser().parse(postJson()).getAsJsonObject();
     return new ClientCredentials.JsonUtil().createModelObject(jsonObject);
   }
 
@@ -67,7 +67,7 @@ public class ClientCredentialsGrantRequest extends AbstractRequest {
       return setBodyParameter("grant_type", grantType);
     }
 
-    public Builder scopes(List<String> scopes) {
+    public Builder scopes(String[] scopes) {
       return setBodyParameter("scope", Joiner.on(" ").join(scopes));
     }
 

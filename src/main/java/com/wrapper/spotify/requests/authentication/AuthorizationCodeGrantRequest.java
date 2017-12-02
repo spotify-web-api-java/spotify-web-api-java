@@ -1,11 +1,12 @@
 package com.wrapper.spotify.requests.authentication;
 
 import com.google.common.util.concurrent.SettableFuture;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.exceptions.*;
-import com.wrapper.spotify.requests.AbstractRequest;
 import com.wrapper.spotify.objects.AuthorizationCodeCredentials;
-import net.sf.json.JSONObject;
+import com.wrapper.spotify.requests.AbstractRequest;
 import org.apache.commons.codec.binary.Base64;
 
 import java.io.IOException;
@@ -24,7 +25,7 @@ public class AuthorizationCodeGrantRequest extends AbstractRequest {
     final SettableFuture<AuthorizationCodeCredentials> future = SettableFuture.create();
 
     try {
-      final JSONObject jsonObject = JSONObject.fromObject(postJson());
+      final JsonObject jsonObject = new JsonParser().parse(postJson()).getAsJsonObject();
       future.set(new AuthorizationCodeCredentials.JsonUtil().createModelObject(jsonObject));
     } catch (Exception e) {
       future.setException(e);
@@ -44,7 +45,7 @@ public class AuthorizationCodeGrantRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    final JSONObject jsonObject = JSONObject.fromObject(postJson());
+    final JsonObject jsonObject = new JsonParser().parse(postJson()).getAsJsonObject();
     return new AuthorizationCodeCredentials.JsonUtil().createModelObject(jsonObject);
   }
 

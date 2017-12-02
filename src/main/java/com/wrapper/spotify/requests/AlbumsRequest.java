@@ -18,7 +18,7 @@ public class AlbumsRequest extends AbstractRequest {
     return new Builder();
   }
 
-  public List<Album> get() throws
+  public Album[] get() throws
           IOException,
           NoContentException,
           BadRequestException,
@@ -29,10 +29,10 @@ public class AlbumsRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return new Album.JsonUtil().createModelObjectList(getJson());
+    return new Album.JsonUtil().createModelObjectArray(getJson());
   }
 
-  public SettableFuture<List<Album>> getAsync() throws
+  public SettableFuture<Album[]> getAsync() throws
           IOException,
           NoContentException,
           BadRequestException,
@@ -43,7 +43,7 @@ public class AlbumsRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return getAsync(new Album.JsonUtil().createModelObjectList(getJson()));
+    return getAsync(new Album.JsonUtil().createModelObjectArray(getJson()));
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {

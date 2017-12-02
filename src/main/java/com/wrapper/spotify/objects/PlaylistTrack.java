@@ -1,6 +1,6 @@
 package com.wrapper.spotify.objects;
 
-import net.sf.json.JSONObject;
+import com.google.gson.JsonObject;
 
 import java.text.ParseException;
 import java.util.Date;
@@ -74,17 +74,17 @@ public class PlaylistTrack extends AbstractModelObject {
   }
 
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<PlaylistTrack> {
-    public PlaylistTrack createModelObject(JSONObject jsonObject) {
-      if (jsonObject == null || jsonObject.isNullObject()) {
+    public PlaylistTrack createModelObject(JsonObject jsonObject) {
+      if (jsonObject == null || jsonObject.isJsonNull()) {
         return null;
       }
 
       try {
         return new Builder()
-                .setAddedAt(simpleDateFormat.parse(jsonObject.getString("added_at")))
-                .setAddedBy(new User.JsonUtil().createModelObject(jsonObject.getJSONObject("added_by")))
-                .setIsLocal(jsonObject.getBoolean("is_local"))
-                .setTrack(new Track.JsonUtil().createModelObject(jsonObject.getJSONObject("track")))
+                .setAddedAt(simpleDateFormat.parse(jsonObject.get("added_at").getAsString()))
+                .setAddedBy(new User.JsonUtil().createModelObject(jsonObject.getAsJsonObject("added_by")))
+                .setIsLocal(jsonObject.get("is_local").getAsBoolean())
+                .setTrack(new Track.JsonUtil().createModelObject(jsonObject.getAsJsonObject("track")))
                 .build();
       } catch (ParseException e) {
         e.printStackTrace();

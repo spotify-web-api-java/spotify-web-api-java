@@ -17,7 +17,7 @@ public class RelatedArtistsRequest extends AbstractRequest {
     return new Builder();
   }
 
-  public List<Artist> get() throws
+  public Artist[] get() throws
           IOException,
           NoContentException,
           BadRequestException,
@@ -28,10 +28,10 @@ public class RelatedArtistsRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return new Artist.JsonUtil().createModelObjectList(getJson());
+    return new Artist.JsonUtil().createModelObjectArray(getJson());
   }
 
-  public SettableFuture<List<Artist>> getAsync() throws
+  public SettableFuture<Artist[]> getAsync() throws
           IOException,
           NoContentException,
           BadRequestException,
@@ -42,7 +42,7 @@ public class RelatedArtistsRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return getAsync(new Artist.JsonUtil().createModelObjectList(getJson()));
+    return getAsync(new Artist.JsonUtil().createModelObjectArray(getJson()));
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {

@@ -54,10 +54,10 @@ public class NewReleasesRequestTest {
                 albums.getPrevious());
         assertEquals(500, albums.getTotal());
 
-        AlbumSimplified firstItem = albums.getItems().get(0);
+        AlbumSimplified firstItem = albums.getItems()[0];
         assertEquals(AlbumType.SINGLE, firstItem.getAlbumType());
-        assertEquals(1, firstItem.getAvailableMarkets().size());
-        assertEquals(CountryCode.SE, firstItem.getAvailableMarkets().get(0));
+        assertEquals(1, firstItem.getAvailableMarkets().length);
+        assertEquals(CountryCode.SE, firstItem.getAvailableMarkets()[0]);
         assertNotNull(firstItem.getExternalUrls());
         assertEquals("spotify:album:5McUiSC2VSw2ToVHR8tnzZ", firstItem.getUri());
 
@@ -101,10 +101,10 @@ public class NewReleasesRequestTest {
             albums.getPrevious());
     assertEquals(500, albums.getTotal());
 
-    AlbumSimplified firstItem = albums.getItems().get(0);
+    AlbumSimplified firstItem = albums.getItems()[0];
     assertEquals(AlbumType.SINGLE, firstItem.getAlbumType());
-    assertEquals(1, firstItem.getAvailableMarkets().size());
-    assertEquals(CountryCode.SE, firstItem.getAvailableMarkets().get(0));
+    assertEquals(1, firstItem.getAvailableMarkets().length);
+    assertEquals(CountryCode.SE, firstItem.getAvailableMarkets()[0]);
     assertNotNull(firstItem.getExternalUrls());
     assertEquals("spotify:album:5McUiSC2VSw2ToVHR8tnzZ", firstItem.getUri());
 

@@ -11,7 +11,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
@@ -31,14 +30,14 @@ public class TopTracksRequestTest {
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
-    final SettableFuture<List<Track>> tracksFuture = request.getAsync();
+    final SettableFuture<Track[]> tracksFuture = request.getAsync();
 
-    Futures.addCallback(tracksFuture, new FutureCallback<List<Track>>() {
+    Futures.addCallback(tracksFuture, new FutureCallback<Track[]>() {
       @Override
-      public void onSuccess(List<Track> tracks) {
-        assertTrue(tracks.size() > 0);
+      public void onSuccess(Track[] tracks) {
+        assertTrue(tracks.length > 0);
 
-        Track firstTrack = tracks.get(0);
+        Track firstTrack = tracks[0];
 
         assertNotNull(firstTrack.getAlbum());
         assertNotNull(firstTrack.getArtists());
@@ -78,11 +77,11 @@ public class TopTracksRequestTest {
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("tracks-for-artist.json"))
             .build();
 
-    final List<Track> tracks = request.get();
+    final Track[] tracks = request.get();
 
-    assertTrue(tracks.size() > 0);
+    assertTrue(tracks.length > 0);
 
-    Track firstTrack = tracks.get(0);
+    Track firstTrack = tracks[0];
 
     assertNotNull(firstTrack.getAlbum());
     assertNotNull(firstTrack.getArtists());

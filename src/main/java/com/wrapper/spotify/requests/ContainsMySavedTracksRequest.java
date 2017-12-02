@@ -2,12 +2,11 @@ package com.wrapper.spotify.requests;
 
 import com.google.common.base.Joiner;
 import com.google.common.util.concurrent.SettableFuture;
+import com.google.gson.Gson;
+import com.google.gson.JsonParser;
 import com.wrapper.spotify.exceptions.*;
-import net.sf.json.JSONArray;
-import net.sf.json.JsonConfig;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class ContainsMySavedTracksRequest extends AbstractRequest {
@@ -20,7 +19,7 @@ public class ContainsMySavedTracksRequest extends AbstractRequest {
     return new Builder();
   }
 
-  public List<Boolean> get() throws
+  public Boolean[] get() throws
           IOException,
           NoContentException,
           BadRequestException,
@@ -31,10 +30,10 @@ public class ContainsMySavedTracksRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return new ArrayList<Boolean>(JSONArray.toList(JSONArray.fromObject(getJson()), new Object(), new JsonConfig()));
+    return new Gson().fromJson(new JsonParser().parse(getJson()).getAsJsonArray(), Boolean[].class);
   }
 
-  public SettableFuture<List<Boolean>> getAsync() throws
+  public SettableFuture<Boolean[]> getAsync() throws
           IOException,
           NoContentException,
           BadRequestException,
@@ -45,12 +44,12 @@ public class ContainsMySavedTracksRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return getAsync(new ArrayList<Boolean>(JSONArray.toList(JSONArray.fromObject(getJson()), new Object(), new JsonConfig())));
+    return getAsync(new Gson().fromJson(new JsonParser().parse(getJson()).getAsJsonArray(), Boolean[].class));
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
-    public Builder tracks(final List<String> trackIds) {
+    public Builder tracks(final String[] trackIds) {
       String idsParameter = Joiner.on(",").join(trackIds);
       setParameter("ids", idsParameter);
       return this;

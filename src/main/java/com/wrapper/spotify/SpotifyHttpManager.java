@@ -1,8 +1,9 @@
 package com.wrapper.spotify;
 
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.wrapper.spotify.UtilProtos.Url;
 import com.wrapper.spotify.exceptions.*;
-import net.sf.json.JSONObject;
 import org.apache.http.HttpStatus;
 import org.apache.http.StatusLine;
 import org.apache.http.client.config.CookieSpecs;
@@ -191,7 +192,7 @@ public class SpotifyHttpManager implements HttpManager {
     StatusLine statusLine = httpResponse.getStatusLine();
     String responseBody = EntityUtils.toString(httpResponse.getEntity(), "UTF-8");
 
-    final JSONObject jsonObject = JSONObject.fromObject(responseBody);
+    final JsonObject jsonObject = new JsonParser().parse(responseBody).getAsJsonObject();
 
     switch (statusLine.getStatusCode()) {
       case HttpStatus.SC_OK:
@@ -206,7 +207,7 @@ public class SpotifyHttpManager implements HttpManager {
         return responseBody;
       case HttpStatus.SC_BAD_REQUEST:
         if (jsonObject.has("error")) {
-          throw new BadRequestException(jsonObject.getString("error"));
+          throw new BadRequestException(jsonObject.get("error").getAsString());
         }
       case HttpStatus.SC_UNAUTHORIZED:
         throw new UnauthorizedException(statusLine.getReasonPhrase());

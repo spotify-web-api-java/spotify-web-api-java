@@ -1,6 +1,6 @@
 package com.wrapper.spotify.objects;
 
-import net.sf.json.JSONObject;
+import com.google.gson.JsonObject;
 
 public class Copyright extends AbstractModelObject {
   private final String text;
@@ -47,14 +47,14 @@ public class Copyright extends AbstractModelObject {
   }
 
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<Copyright> {
-    public Copyright createModelObject(JSONObject jsonObject) {
-      if (jsonObject == null || jsonObject.isNullObject()) {
+    public Copyright createModelObject(JsonObject jsonObject) {
+      if (jsonObject == null || jsonObject.isJsonNull()) {
         return null;
       }
 
       return new Copyright.Builder()
-              .setText(jsonObject.getString("text"))
-              .setType(CopyrightType.valueOf(jsonObject.getString("type")))
+              .setText(jsonObject.get("text").getAsString())
+              .setType(CopyrightType.valueOf(jsonObject.get("type").getAsString()))
               .build();
     }
   }

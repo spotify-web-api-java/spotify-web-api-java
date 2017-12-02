@@ -1,6 +1,6 @@
 package com.wrapper.spotify.objects;
 
-import net.sf.json.JSONObject;
+import com.google.gson.JsonObject;
 
 public class ArtistSimplified extends AbstractModelObject {
   private final ExternalUrls externalUrls;
@@ -95,18 +95,18 @@ public class ArtistSimplified extends AbstractModelObject {
   }
 
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<ArtistSimplified> {
-    public ArtistSimplified createModelObject(JSONObject jsonObject) {
-      if (jsonObject == null || jsonObject.isNullObject()) {
+    public ArtistSimplified createModelObject(JsonObject jsonObject) {
+      if (jsonObject == null || jsonObject.isJsonNull()) {
         return null;
       }
 
       return new ArtistSimplified.Builder()
-              .setExternalUrls(new ExternalUrls.JsonUtil().createModelObject(jsonObject.getJSONObject("external_urls")))
-              .setHref(jsonObject.getString("href"))
-              .setId(jsonObject.getString("id"))
-              .setName(jsonObject.getString("name"))
-              .setType(ObjectType.valueOf(jsonObject.getString("type")))
-              .setUri(jsonObject.getString("uri"))
+              .setExternalUrls(new ExternalUrls.JsonUtil().createModelObject(jsonObject.getAsJsonObject("external_urls")))
+              .setHref(jsonObject.get("href").getAsString())
+              .setId(jsonObject.get("id").getAsString())
+              .setName(jsonObject.get("name").getAsString())
+              .setType(ObjectType.valueOf(jsonObject.get("type").getAsString()))
+              .setUri(jsonObject.get("uri").getAsString())
               .build();
     }
   }

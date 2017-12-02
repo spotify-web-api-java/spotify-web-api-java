@@ -11,13 +11,13 @@ public class Assertions {
         return;
       }
     }
-    fail(String.format("Actual URL %s does not contain setParameter %s", url, expected));
+    fail(String.format("Actual URL %s does not contain setParameters %s", url, expected));
   }
 
   public static void assertNoParameter(UtilProtos.Url url, String name) {
     for (UtilProtos.Url.Parameter actual : url.getParametersList()) {
       if (actual.getName().equals(name)) {
-        fail(String.format("Actual URL %s contains setParameter %s", url, name));
+        fail(String.format("Actual URL %s contains setParameters %s", url, name));
       }
     }
   }
@@ -29,7 +29,7 @@ public class Assertions {
         return;
       }
     }
-    fail(String.format("Actual URL %s does not contain setBodyParameter setParameter %s", url, expected));
+    fail(String.format("Actual URL %s does not contain setBodyParameters setParameters %s", url, expected));
   }
 
 
@@ -40,13 +40,13 @@ public class Assertions {
         return;
       }
     }
-    fail(String.format("Actual URL %s does not contain setHeaderParameter %s", url, expected));
+    fail(String.format("Actual URL %s does not contain setHeaderParameters %s", url, expected));
   }
 
   public static void assertHasJsonBody(UtilProtos.Url url, String jsonBody) {
     if (url.hasJsonBody() && url.getJsonBody().equals(jsonBody)) {
       return;
     }
-    fail(String.format("Actual URL %s does not contain setBodyParameter %s", url, jsonBody));
+    fail(String.format("Actual URL %s does not contain setBodyParameters %s", url, jsonBody));
   }
 }

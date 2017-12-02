@@ -1,6 +1,6 @@
 package com.wrapper.spotify.objects;
 
-import net.sf.json.JSONObject;
+import com.google.gson.JsonObject;
 
 public class Error extends AbstractModelObject {
   private final int status;
@@ -47,14 +47,14 @@ public class Error extends AbstractModelObject {
   }
 
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<Error> {
-    public Error createModelObject(JSONObject jsonObject) {
-      if (jsonObject == null || jsonObject.isNullObject()) {
+    public Error createModelObject(JsonObject jsonObject) {
+      if (jsonObject == null || jsonObject.isJsonNull()) {
         return null;
       }
 
       return new Error.Builder()
-              .setStatus(jsonObject.getInt("status"))
-              .setMessage(jsonObject.getString("message"))
+              .setStatus(jsonObject.get("status").getAsInt())
+              .setMessage(jsonObject.get("message").getAsString())
               .build();
     }
   }

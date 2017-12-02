@@ -1,6 +1,6 @@
 package com.wrapper.spotify.objects;
 
-import net.sf.json.JSONObject;
+import com.google.gson.JsonObject;
 
 public class NewReleases extends AbstractModelObject {
   private final Paging<AlbumSimplified> albums;
@@ -35,13 +35,13 @@ public class NewReleases extends AbstractModelObject {
   }
 
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<NewReleases> {
-    public NewReleases createModelObject(JSONObject jsonObject) {
-      if (jsonObject == null || jsonObject.isNullObject()) {
+    public NewReleases createModelObject(JsonObject jsonObject) {
+      if (jsonObject == null || jsonObject.isJsonNull()) {
         return null;
       }
 
       return new NewReleases.Builder()
-              .setAlbums(new AlbumSimplified.JsonUtil().createModelObjectPaging(jsonObject.getJSONObject("albums")))
+              .setAlbums(new AlbumSimplified.JsonUtil().createModelObjectPaging(jsonObject.getAsJsonObject("albums")))
               .build();
     }
   }

@@ -1,15 +1,12 @@
 package com.wrapper.spotify.objects;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import com.neovisionaries.i18n.CountryCode;
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
-import net.sf.json.JsonConfig;
-
-import java.util.List;
 
 public class TrackSimplified extends AbstractModelObject {
-  private final List<ArtistSimplified> artists;
-  private final List<CountryCode> availableMarkets;
+  private final ArtistSimplified[] artists;
+  private final CountryCode[] availableMarkets;
   private final int discNumber;
   private final int durationMs;
   private final boolean explicit;
@@ -44,11 +41,11 @@ public class TrackSimplified extends AbstractModelObject {
     this.uri = builder.uri;
   }
 
-  public List<ArtistSimplified> getArtists() {
+  public ArtistSimplified[] getArtists() {;
     return artists;
   }
 
-  public List<CountryCode> getAvailableMarkets() {
+  public CountryCode[] getAvailableMarkets() {;
     return availableMarkets;
   }
 
@@ -110,8 +107,8 @@ public class TrackSimplified extends AbstractModelObject {
   }
 
   public static final class Builder extends AbstractModelObject.Builder {
-    private List<ArtistSimplified> artists;
-    private List<CountryCode> availableMarkets;
+    private ArtistSimplified[] artists;
+    private CountryCode[] availableMarkets;
     private int discNumber;
     private int durationMs;
     private boolean explicit;
@@ -126,12 +123,12 @@ public class TrackSimplified extends AbstractModelObject {
     private ObjectType type;
     private String uri;
 
-    public Builder setArtists(List<ArtistSimplified> artists) {
+    public Builder setArtists(ArtistSimplified[] artists) {
       this.artists = artists;
       return this;
     }
 
-    public Builder setAvailableMarkets(List<CountryCode> availableMarkets) {
+    public Builder setAvailableMarkets(CountryCode[] availableMarkets) {
       this.availableMarkets = availableMarkets;
       return this;
     }
@@ -208,27 +205,27 @@ public class TrackSimplified extends AbstractModelObject {
   }
 
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<TrackSimplified> {
-    public TrackSimplified createModelObject(JSONObject jsonObject) {
-      if (jsonObject == null || jsonObject.isNullObject()) {
+    public TrackSimplified createModelObject(JsonObject jsonObject) {
+      if (jsonObject == null || jsonObject.isJsonNull()) {
         return null;
       }
 
       return new TrackSimplified.Builder()
-              .setArtists(new ArtistSimplified.JsonUtil().createModelObjectList(jsonObject.getJSONArray("artists")))
-              .setAvailableMarkets(JSONArray.toList(jsonObject.getJSONArray("available_markets"), new Object(), new JsonConfig()))
-              .setDiscNumber(jsonObject.getInt("disc_number"))
-              .setDurationMs(jsonObject.getInt("duration_ms"))
-              .setExplicit(jsonObject.getBoolean("explicit"))
-              .setExternalUrls(new ExternalUrls.JsonUtil().createModelObject(jsonObject.getJSONObject("external_urls")))
-              .setHref(jsonObject.getString("href"))
-              .setId(jsonObject.getString("id"))
-              .setIsPlayable(jsonObject.getBoolean("is_playable"))
-              .setLinkedFrom(new TrackLink.JsonUtil().createModelObject(jsonObject.getJSONObject("linked_from")))
-              .setName(jsonObject.getString("name"))
-              .setPreviewUrl(jsonObject.getString("preview_url"))
-              .setTrackNumber(jsonObject.getInt(("track_number")))
-              .setType(ObjectType.valueOf(jsonObject.getString("type")))
-              .setUri(jsonObject.getString("uri"))
+              .setArtists(new ArtistSimplified.JsonUtil().createModelObjectArray(jsonObject.getAsJsonArray("artists")))
+              .setAvailableMarkets(new Gson().fromJson(jsonObject.getAsJsonArray("available_markets"), CountryCode[].class))
+              .setDiscNumber(jsonObject.get("disc_number").getAsInt())
+              .setDurationMs(jsonObject.get("duration_ms").getAsInt())
+              .setExplicit(jsonObject.get("explicit").getAsBoolean())
+              .setExternalUrls(new ExternalUrls.JsonUtil().createModelObject(jsonObject.getAsJsonObject("external_urls")))
+              .setHref(jsonObject.get("href").getAsString())
+              .setId(jsonObject.get("id").getAsString())
+              .setIsPlayable(jsonObject.get("is_playable").getAsBoolean())
+              .setLinkedFrom(new TrackLink.JsonUtil().createModelObject(jsonObject.getAsJsonObject("linked_from")))
+              .setName(jsonObject.get("name").getAsString())
+              .setPreviewUrl(jsonObject.get("preview_url").getAsString())
+              .setTrackNumber(jsonObject.get("track_number").getAsInt())
+              .setType(ObjectType.valueOf(jsonObject.get("type").getAsString()))
+              .setUri(jsonObject.get("uri").getAsString())
               .build();
     }
   }

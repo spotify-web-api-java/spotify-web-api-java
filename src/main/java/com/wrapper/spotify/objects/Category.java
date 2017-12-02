@@ -1,12 +1,10 @@
 package com.wrapper.spotify.objects;
 
-import net.sf.json.JSONObject;
-
-import java.util.List;
+import com.google.gson.JsonObject;
 
 public class Category extends AbstractModelObject {
   private final String href;
-  private final List<Image> icons;
+  private final Image[] icons;
   private final String id;
   private final String name;
 
@@ -23,7 +21,7 @@ public class Category extends AbstractModelObject {
     return href;
   }
 
-  public List<Image> getIcons() {
+  public Image[] getIcons() {;
     return icons;
   }
 
@@ -42,7 +40,7 @@ public class Category extends AbstractModelObject {
 
   public static final class Builder extends AbstractModelObject.Builder {
     private String href;
-    private List<Image> icons;
+    private Image[] icons;
     private String id;
     private String name;
 
@@ -51,7 +49,7 @@ public class Category extends AbstractModelObject {
       return this;
     }
 
-    public Builder setIcons(List<Image> icons) {
+    public Builder setIcons(Image[] icons) {
       this.icons = icons;
       return this;
     }
@@ -73,16 +71,16 @@ public class Category extends AbstractModelObject {
   }
 
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<Category> {
-    public Category createModelObject(JSONObject jsonObject) {
-      if (jsonObject == null || jsonObject.isNullObject()) {
+    public Category createModelObject(JsonObject jsonObject) {
+      if (jsonObject == null || jsonObject.isJsonNull()) {
         return null;
       }
 
       return new Category.Builder()
-              .setHref(jsonObject.getString("href"))
-              .setIcons(new Image.JsonUtil().createModelObjectList(jsonObject.getJSONArray("images")))
-              .setId(jsonObject.getString("id"))
-              .setName(jsonObject.getString("name"))
+              .setHref(jsonObject.get("href").getAsString())
+              .setIcons(new Image.JsonUtil().createModelObjectArray(jsonObject.getAsJsonArray("images")))
+              .setId(jsonObject.get("id").getAsString())
+              .setName(jsonObject.get("name").getAsString())
               .build();
     }
   }

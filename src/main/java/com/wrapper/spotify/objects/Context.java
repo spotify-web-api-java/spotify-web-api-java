@@ -1,6 +1,6 @@
 package com.wrapper.spotify.objects;
 
-import net.sf.json.JSONObject;
+import com.google.gson.JsonObject;
 
 public class Context extends AbstractModelObject {
   private final ObjectType type;
@@ -71,16 +71,16 @@ public class Context extends AbstractModelObject {
   }
 
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<Context> {
-    public Context createModelObject(JSONObject jsonObject) {
-      if (jsonObject == null || jsonObject.isNullObject()) {
+    public Context createModelObject(JsonObject jsonObject) {
+      if (jsonObject == null || jsonObject.isJsonNull()) {
         return null;
       }
 
       return new Context.Builder()
-              .setType(ObjectType.valueOf(jsonObject.getString("type")))
-              .setHref(jsonObject.getString("href"))
-              .setExternalUrls(new ExternalUrls.JsonUtil().createModelObject(jsonObject.getJSONObject("external_urls")))
-              .setUri(jsonObject.getString("uri"))
+              .setType(ObjectType.valueOf(jsonObject.get("type").getAsString()))
+              .setHref(jsonObject.get("href").getAsString())
+              .setExternalUrls(new ExternalUrls.JsonUtil().createModelObject(jsonObject.getAsJsonObject("external_urls")))
+              .setUri(jsonObject.get("uri").getAsString())
               .build();
     }
   }

@@ -8,7 +8,6 @@ import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.objects.Artist;
 import org.junit.Test;
 
-import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
@@ -27,14 +26,14 @@ public class RelatedArtistsRequestTest {
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
-    final SettableFuture<List<Artist>> artistFuture = request.getAsync();
+    final SettableFuture<Artist[]> artistFuture = request.getAsync();
 
-    Futures.addCallback(artistFuture, new FutureCallback<List<Artist>>() {
+    Futures.addCallback(artistFuture, new FutureCallback<Artist[]>() {
 
       @Override
-      public void onSuccess(List<Artist> artists) {
-        assertFalse(artists.isEmpty());
-        final Artist firstArtist = artists.get(0);
+      public void onSuccess(Artist[] artists) {
+        assertFalse(artists.length == 0);
+        final Artist firstArtist = artists[0];
         final String id = firstArtist.getId();
         assertEquals("https://api.spotify.com/v1/artists/" + id, firstArtist.getHref());
         assertEquals(id, firstArtist.getId());
@@ -60,11 +59,11 @@ public class RelatedArtistsRequestTest {
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("related-artists.json"))
             .build();
 
-    final List<Artist> artists = request.get();
+    final Artist[] artists = request.get();
 
 
-    assertFalse(artists.isEmpty());
-    final Artist firstArtist = artists.get(0);
+    assertFalse(artists.length == 0);
+    final Artist firstArtist = artists[0];
     final String id = firstArtist.getId();
     assertEquals("https://api.spotify.com/v1/artists/" + id, firstArtist.getHref());
     assertEquals(id, firstArtist.getId());

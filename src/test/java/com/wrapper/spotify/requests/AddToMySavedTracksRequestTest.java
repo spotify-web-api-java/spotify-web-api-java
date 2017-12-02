@@ -7,8 +7,6 @@ import com.wrapper.spotify.Api;
 import com.wrapper.spotify.TestUtil;
 import org.junit.Test;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
@@ -23,8 +21,8 @@ public class AddToMySavedTracksRequestTest {
 
     final Api api = Api.builder().accessToken(accessToken).build();
 
-    final List<String>
-            tracksToAdd = Arrays.asList("4BYGxv4rxSNcTgT3DsFB9o", "0BG2iE6McPhmAEKIhfqy1X");
+    final String[]
+            tracksToAdd = {"4BYGxv4rxSNcTgT3DsFB9o", "0BG2iE6McPhmAEKIhfqy1X"};
 
     final AddToMySavedTracksRequest request = api.addToMySavedTracks(tracksToAdd)
             .setHttpManager(TestUtil.MockedHttpManager.returningString(""))
@@ -59,8 +57,8 @@ public class AddToMySavedTracksRequestTest {
 
     final Api api = Api.builder().accessToken(accessToken).build();
 
-    final List<String>
-            tracksToAdd = Arrays.asList("4BYGxv4rxSNcTgT3DsFB9o", "0BG2iE6McPhmAEKIhfqy1X");
+    final String[]
+            tracksToAdd = {"4BYGxv4rxSNcTgT3DsFB9o", "0BG2iE6McPhmAEKIhfqy1X"};
 
     final AddToMySavedTracksRequest request = api.addToMySavedTracks(tracksToAdd)
             .setHttpManager(TestUtil.MockedHttpManager.returningString(""))

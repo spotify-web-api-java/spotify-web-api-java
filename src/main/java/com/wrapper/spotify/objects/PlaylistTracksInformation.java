@@ -1,6 +1,6 @@
 package com.wrapper.spotify.objects;
 
-import net.sf.json.JSONObject;
+import com.google.gson.JsonObject;
 
 public class PlaylistTracksInformation extends AbstractModelObject {
   private final String href;
@@ -47,14 +47,14 @@ public class PlaylistTracksInformation extends AbstractModelObject {
   }
 
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<PlaylistTracksInformation> {
-    public PlaylistTracksInformation createModelObject(JSONObject jsonObject) {
-      if (jsonObject == null || jsonObject.isNullObject()) {
+    public PlaylistTracksInformation createModelObject(JsonObject jsonObject) {
+      if (jsonObject == null || jsonObject.isJsonNull()) {
         return null;
       }
 
       return new PlaylistTracksInformation.Builder()
-              .setHref(jsonObject.getString("href"))
-              .setTotal(jsonObject.getInt("total"))
+              .setHref(jsonObject.get("href").getAsString())
+              .setTotal(jsonObject.get("total").getAsInt())
               .build();
     }
   }

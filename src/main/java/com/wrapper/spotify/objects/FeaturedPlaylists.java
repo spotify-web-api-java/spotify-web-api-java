@@ -1,6 +1,6 @@
 package com.wrapper.spotify.objects;
 
-import net.sf.json.JSONObject;
+import com.google.gson.JsonObject;
 
 public class FeaturedPlaylists extends AbstractModelObject {
   private final String message;
@@ -47,14 +47,14 @@ public class FeaturedPlaylists extends AbstractModelObject {
   }
 
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<FeaturedPlaylists> {
-    public FeaturedPlaylists createModelObject(JSONObject jsonObject) {
-      if (jsonObject == null || jsonObject.isNullObject()) {
+    public FeaturedPlaylists createModelObject(JsonObject jsonObject) {
+      if (jsonObject == null || jsonObject.isJsonNull()) {
         return null;
       }
 
       return new FeaturedPlaylists.Builder()
-              .setMessage(jsonObject.getString("message"))
-              .setPlaylists(new PlaylistSimplified.JsonUtil().createModelObjectPaging(jsonObject.getJSONObject("playlists")))
+              .setMessage(jsonObject.get("message").getAsString())
+              .setPlaylists(new PlaylistSimplified.JsonUtil().createModelObjectPaging(jsonObject.getAsJsonObject("playlists")))
               .build();
     }
   }

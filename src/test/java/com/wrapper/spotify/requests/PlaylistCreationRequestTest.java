@@ -41,8 +41,8 @@ public class PlaylistCreationRequestTest {
         assertNull(playlist.getFollowers());
         assertEquals("https://api.spotify.com/v1/users/thelinmichael/playlists/2LfixThJPNO9DAreghF2WK", playlist.getHref());
         assertEquals("2LfixThJPNO9DAreghF2WK", playlist.getId());
-        assertEquals(1, playlist.getImages().size());
-        assertNull(playlist.getImages().get(0));
+        assertEquals(1, playlist.getImages().length);
+        assertNull(playlist.getImages()[0]);
         assertEquals("Coolest Playlist", playlist.getName());
         assertNotNull(playlist.getOwner());
         assertTrue(playlist.getIsPublicAccess());
@@ -79,8 +79,8 @@ public class PlaylistCreationRequestTest {
     assertNull(playlist.getFollowers());
     assertEquals("https://api.spotify.com/v1/users/thelinmichael/playlists/2LfixThJPNO9DAreghF2WK", playlist.getHref());
     assertEquals("2LfixThJPNO9DAreghF2WK", playlist.getId());
-    assertEquals(1, playlist.getImages().size());
-    assertNull(playlist.getImages().get(0));
+    assertEquals(1, playlist.getImages().length);
+    assertNull(playlist.getImages()[0]);
     assertEquals("Coolest Playlist", playlist.getName());
     assertNotNull(playlist.getOwner());
     assertTrue(playlist.getIsPublicAccess());

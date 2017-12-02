@@ -1,18 +1,15 @@
 package com.wrapper.spotify.objects;
 
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
-import net.sf.json.JsonConfig;
-
-import java.util.List;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 
 public class Artist extends AbstractModelObject {
   private final ExternalUrls externalUrls;
   private final Followers followers;
-  private final List<String> genres;
+  private final String[] genres;
   private final String href;
   private final String id;
-  private final List<Image> images;
+  private final Image[] images;
   private final String name;
   private final int popularity;
   private final ObjectType type;
@@ -41,7 +38,7 @@ public class Artist extends AbstractModelObject {
     return followers;
   }
 
-  public List<String> getGenres() {
+  public String[] getGenres() {;
     return genres;
   }
 
@@ -53,7 +50,7 @@ public class Artist extends AbstractModelObject {
     return id;
   }
 
-  public List<Image> getImages() {
+  public Image[] getImages() {;
     return images;
   }
 
@@ -81,10 +78,10 @@ public class Artist extends AbstractModelObject {
   public static final class Builder extends AbstractModelObject.Builder {
     private ExternalUrls externalUrls;
     private Followers followers;
-    private List<String> genres;
+    private String[] genres;
     private String href;
     private String id;
-    private List<Image> images;
+    private Image[] images;
     private String name;
     private int popularity;
     private ObjectType type;
@@ -100,7 +97,7 @@ public class Artist extends AbstractModelObject {
       return this;
     }
 
-    public Builder setGenres(List<String> genres) {
+    public Builder setGenres(String[] genres) {
       this.genres = genres;
       return this;
     }
@@ -115,7 +112,7 @@ public class Artist extends AbstractModelObject {
       return this;
     }
 
-    public Builder setImages(List<Image> images) {
+    public Builder setImages(Image[] images) {
       this.images = images;
       return this;
     }
@@ -147,22 +144,22 @@ public class Artist extends AbstractModelObject {
   }
 
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<Artist> {
-    public Artist createModelObject(JSONObject jsonObject) {
-      if (jsonObject == null || jsonObject.isNullObject()) {
+    public Artist createModelObject(JsonObject jsonObject) {
+      if (jsonObject == null || jsonObject.isJsonNull()) {
         return null;
       }
 
       return new Artist.Builder()
-              .setExternalUrls(new ExternalUrls.JsonUtil().createModelObject(jsonObject.getJSONObject("external_urls")))
-              .setFollowers(new Followers.JsonUtil().createModelObject(jsonObject.getJSONObject("followers")))
-              .setGenres(JSONArray.toList(jsonObject.getJSONArray("genres"), new Object(), new JsonConfig()))
-              .setHref(jsonObject.getString("href"))
-              .setId(jsonObject.getString("id"))
-              .setImages(new Image.JsonUtil().createModelObjectList(jsonObject.getJSONArray("images")))
-              .setName(jsonObject.getString("name"))
-              .setPopularity(jsonObject.getInt("popularity"))
-              .setType(ObjectType.valueOf(jsonObject.getString("type")))
-              .setUri(jsonObject.getString("uri"))
+              .setExternalUrls(new ExternalUrls.JsonUtil().createModelObject(jsonObject.getAsJsonObject("external_urls")))
+              .setFollowers(new Followers.JsonUtil().createModelObject(jsonObject.getAsJsonObject("followers")))
+              .setGenres(new Gson().fromJson(jsonObject.getAsJsonArray("genres"), String[].class))
+              .setHref(jsonObject.get("href").getAsString())
+              .setId(jsonObject.get("id").getAsString())
+              .setImages(new Image.JsonUtil().createModelObjectArray(jsonObject.getAsJsonArray("images")))
+              .setName(jsonObject.get("name").getAsString())
+              .setPopularity(jsonObject.get("popularity").getAsInt())
+              .setType(ObjectType.valueOf(jsonObject.get("type").getAsString()))
+              .setUri(jsonObject.get("uri").getAsString())
               .build();
     }
   }

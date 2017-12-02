@@ -1,6 +1,6 @@
 package com.wrapper.spotify.objects;
 
-import net.sf.json.JSONObject;
+import com.google.gson.JsonObject;
 
 public class AuthorizationCodeCredentials extends AbstractModelObject {
   private final String accessToken;
@@ -71,16 +71,16 @@ public class AuthorizationCodeCredentials extends AbstractModelObject {
   }
 
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<AuthorizationCodeCredentials> {
-    public AuthorizationCodeCredentials createModelObject(JSONObject jsonObject) {
-      if (jsonObject == null || jsonObject.isNullObject()) {
+    public AuthorizationCodeCredentials createModelObject(JsonObject jsonObject) {
+      if (jsonObject == null || jsonObject.isJsonNull()) {
         return null;
       }
 
       return new AuthorizationCodeCredentials.Builder()
-              .setAccessToken(jsonObject.getString("access_token"))
-              .setTokenType(jsonObject.getString("token_type"))
-              .setExpiresIn(jsonObject.getInt("expires_in"))
-              .setRefreshToken(jsonObject.getString("refresh_token"))
+              .setAccessToken(jsonObject.get("access_token").getAsString())
+              .setTokenType(jsonObject.get("token_type").getAsString())
+              .setExpiresIn(jsonObject.get("expires_in").getAsInt())
+              .setRefreshToken(jsonObject.get("refresh_token").getAsString())
               .build();
     }
   }

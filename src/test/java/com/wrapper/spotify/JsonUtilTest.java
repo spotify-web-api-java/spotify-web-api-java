@@ -6,7 +6,6 @@ import com.wrapper.spotify.objects.Track;
 import org.junit.Test;
 
 import java.net.URI;
-import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
@@ -22,7 +21,7 @@ public class JsonUtilTest {
   @Test
   public void shouldCreateSeveralArtists() throws Exception {
     String json = TestUtil.readTestData("artists.json");
-    List<Artist> artists = JsonUtil.createArtists(json);
+    Artist[] artists = JsonUtil.createArtists(json);
     assertEquals(2, artists.size());
   }
 
@@ -36,7 +35,7 @@ public class JsonUtilTest {
   @Test
   public void shouldCreateSeveralAlbums() throws Exception {
     String json = TestUtil.readTestData("albums.json");
-    List<Album> albums = JsonUtil.createAlbums(json);
+    Album[] albums = JsonUtil.createAlbums(json);
     assertEquals(1, albums.size());
   }
 
@@ -50,7 +49,7 @@ public class JsonUtilTest {
   @Test
   public void shouldCreateSeveralTracks() throws Exception {
     String json = TestUtil.readTestData("tracks.json");
-    List<Track> tracks = JsonUtil.createTracks(json);
+    Track[] tracks = JsonUtil.createTracks(json);
     assertEquals(2, tracks.size());
   }
 

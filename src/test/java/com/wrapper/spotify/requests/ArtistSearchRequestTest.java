@@ -12,7 +12,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
@@ -46,9 +45,9 @@ public class ArtistSearchRequestTest {
         assertNull(artistSearchResult.getPrevious());
         assertEquals("https://api.spotify.com/v1/search?query=tania+bowra&offset=0&limit=20&type=artist", artistSearchResult.getHref());
 
-        List<Artist> artists = artistSearchResult.getItems();
+        Artist[] artists = artistSearchResult.getItems();
 
-        Artist firstArtist = artists.get(0);
+        Artist firstArtist = artists[0];
         assertEquals("08td7MxkoHQkXnWAYD8d6Q", firstArtist.getId());
         assertEquals("https://open.spotify.com/artist/08td7MxkoHQkXnWAYD8d6Q", firstArtist.getExternalUrls().get("spotify"));
         assertNotNull(firstArtist.getGenres());
@@ -90,9 +89,9 @@ public class ArtistSearchRequestTest {
     assertNull(artistSearchResult.getPrevious());
     assertEquals("https://api.spotify.com/v1/search?query=tania+bowra&offset=0&limit=20&type=artist", artistSearchResult.getHref());
 
-    List<Artist> artists = artistSearchResult.getItems();
+    Artist[] artists = artistSearchResult.getItems();
 
-    Artist firstArtist = artists.get(0);
+    Artist firstArtist = artists[0];
     assertEquals("08td7MxkoHQkXnWAYD8d6Q", firstArtist.getId());
     assertEquals("https://open.spotify.com/artist/08td7MxkoHQkXnWAYD8d6Q", firstArtist.getExternalUrls().get("spotify"));
     assertNotNull(firstArtist.getGenres());

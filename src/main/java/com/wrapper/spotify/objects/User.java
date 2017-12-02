@@ -1,9 +1,7 @@
 package com.wrapper.spotify.objects;
 
+import com.google.gson.JsonObject;
 import com.neovisionaries.i18n.CountryCode;
-import net.sf.json.JSONObject;
-
-import java.util.List;
 
 public class User extends AbstractModelObject {
   private final String birthdate;
@@ -14,7 +12,7 @@ public class User extends AbstractModelObject {
   private final Followers followers;
   private final String href;
   private final String id;
-  private final List<Image> images;
+  private final Image[] images;
   private final ProductType product;
   private final ObjectType type;
   private final String uri;
@@ -68,7 +66,7 @@ public class User extends AbstractModelObject {
     return id;
   }
 
-  public List<Image> getImages() {
+  public Image[] getImages() {;
     return images;
   }
 
@@ -98,7 +96,7 @@ public class User extends AbstractModelObject {
     private Followers followers;
     private String href;
     private String id;
-    private List<Image> images;
+    private Image[] images;
     private ProductType product;
     private ObjectType type;
     private String uri;
@@ -143,7 +141,7 @@ public class User extends AbstractModelObject {
       return this;
     }
 
-    public Builder setImages(List<Image> images) {
+    public Builder setImages(Image[] images) {
       this.images = images;
       return this;
     }
@@ -170,24 +168,24 @@ public class User extends AbstractModelObject {
   }
 
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<User> {
-    public User createModelObject(JSONObject jsonObject) {
-      if (jsonObject == null || jsonObject.isNullObject()) {
+    public User createModelObject(JsonObject jsonObject) {
+      if (jsonObject == null || jsonObject.isJsonNull()) {
         return null;
       }
 
       return new User.Builder()
-              .setBirthdate(jsonObject.getString("birthdate"))
-              .setCountry(CountryCode.getByCode(jsonObject.getString("country")))
-              .setDisplayName(jsonObject.getString("display_name"))
-              .setEmail(jsonObject.getString("email"))
-              .setExternalUrls(new ExternalUrls.JsonUtil().createModelObject(jsonObject.getJSONObject("external_urls")))
-              .setFollowers(new Followers.JsonUtil().createModelObject(jsonObject.getJSONObject("followers")))
-              .setHref(jsonObject.getString("href"))
-              .setId(jsonObject.getString("id"))
-              .setImages(new Image.JsonUtil().createModelObjectList(jsonObject.getJSONArray("images")))
-              .setProduct(ProductType.valueOf(jsonObject.getString("product")))
-              .setType(ObjectType.valueOf(jsonObject.getString("type")))
-              .setUri(jsonObject.getString("uri"))
+              .setBirthdate(jsonObject.get("birthdate").getAsString())
+              .setCountry(CountryCode.getByCode(jsonObject.get("country").getAsString()))
+              .setDisplayName(jsonObject.get("display_name").getAsString())
+              .setEmail(jsonObject.get("email").getAsString())
+              .setExternalUrls(new ExternalUrls.JsonUtil().createModelObject(jsonObject.getAsJsonObject("external_urls")))
+              .setFollowers(new Followers.JsonUtil().createModelObject(jsonObject.getAsJsonObject("followers")))
+              .setHref(jsonObject.get("href").getAsString())
+              .setId(jsonObject.get("id").getAsString())
+              .setImages(new Image.JsonUtil().createModelObjectArray(jsonObject.getAsJsonArray("images")))
+              .setProduct(ProductType.valueOf(jsonObject.get("product").getAsString()))
+              .setType(ObjectType.valueOf(jsonObject.get("type").getAsString()))
+              .setUri(jsonObject.get("uri").getAsString())
               .build();
     }
   }

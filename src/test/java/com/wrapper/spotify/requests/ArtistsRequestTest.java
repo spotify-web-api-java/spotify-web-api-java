@@ -10,7 +10,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
@@ -30,15 +29,15 @@ public class ArtistsRequestTest {
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
-    final SettableFuture<List<Artist>> artistsFuture = request.getAsync();
+    final SettableFuture<Artist[]> artistsFuture = request.getAsync();
 
-    Futures.addCallback(artistsFuture, new FutureCallback<List<Artist>>() {
+    Futures.addCallback(artistsFuture, new FutureCallback<Artist[]>() {
       @Override
-      public void onSuccess(List<Artist> artists) {
-        assertEquals(2, artists.size());
+      public void onSuccess(Artist[] artists) {
+        assertEquals(2, artists.length);
 
-        final Artist firstArtist = artists.get(0);
-        final Artist secondArtist = artists.get(1);
+        final Artist firstArtist = artists[0];
+        final Artist secondArtist = artists[1];
 
         assertEquals("0oSGxfWSnnOXhD2fKuz2Gy", firstArtist.getId());
         assertEquals("3dBVyJ7JuOMt4GE9607Qin", secondArtist.getId());
@@ -63,12 +62,12 @@ public class ArtistsRequestTest {
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("artists.json"))
             .build();
 
-    final List<Artist> artists = request.get();
+    final Artist[] artists = request.get();
 
-    assertEquals(2, artists.size());
+    assertEquals(2, artists.length);
 
-    final Artist firstArtist = artists.get(0);
-    final Artist secondArtist = artists.get(1);
+    final Artist firstArtist = artists[0];
+    final Artist secondArtist = artists[1];
 
     assertEquals("0oSGxfWSnnOXhD2fKuz2Gy", firstArtist.getId());
     assertEquals("3dBVyJ7JuOMt4GE9607Qin", secondArtist.getId());

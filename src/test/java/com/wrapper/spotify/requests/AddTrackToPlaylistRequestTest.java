@@ -9,7 +9,6 @@ import com.wrapper.spotify.objects.SnapshotResult;
 import org.junit.Test;
 
 import java.util.Arrays;
-import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
@@ -26,7 +25,7 @@ public class AddTrackToPlaylistRequestTest {
 
     final String myUsername = "thelinmichael";
     final String myPlaylistId = "5ieJqeLJjjI8iJWaxeBLuK";
-    final List<String> tracksToAdd = Arrays.asList("spotify:track:4BYGxv4rxSNcTgT3DsFB9o", "spotify:track:0BG2iE6McPhmAEKIhfqy1X");
+    final String[] tracksToAdd = new String[] {"spotify:track:4BYGxv4rxSNcTgT3DsFB9o", "spotify:track:0BG2iE6McPhmAEKIhfqy1X"};
     final int insertIndex = 3;
 
     final AddTrackToPlaylistRequest request = api.addTracksToPlaylist(myUsername, myPlaylistId, tracksToAdd)

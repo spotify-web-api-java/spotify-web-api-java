@@ -18,7 +18,7 @@ public class TracksRequest extends AbstractRequest {
     return new Builder();
   }
 
-  public List<Track> get() throws
+  public Track[] get() throws
           IOException,
           NoContentException,
           BadRequestException,
@@ -29,10 +29,10 @@ public class TracksRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return new Track.JsonUtil().createModelObjectList(getJson());
+    return new Track.JsonUtil().createModelObjectArray(getJson());
   }
 
-  public SettableFuture<List<Track>> getAsync() throws
+  public SettableFuture<Track[]> getAsync() throws
           IOException,
           NoContentException,
           BadRequestException,
@@ -43,7 +43,7 @@ public class TracksRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return getAsync(new Track.JsonUtil().createModelObjectList(getJson()));
+    return getAsync(new Track.JsonUtil().createModelObjectArray(getJson()));
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {

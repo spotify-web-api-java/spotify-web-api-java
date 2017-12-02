@@ -1,12 +1,12 @@
 package com.wrapper.spotify;
 
+import com.google.gson.JsonParser;
 import com.wrapper.spotify.UtilProtos.Url.Scheme;
 import com.wrapper.spotify.requests.*;
 import com.wrapper.spotify.requests.authentication.AuthorizationCodeGrantRequest;
 import com.wrapper.spotify.requests.authentication.AuthorizationURLRequest;
 import com.wrapper.spotify.requests.authentication.ClientCredentialsGrantRequest;
 import com.wrapper.spotify.requests.authentication.RefreshAccessTokenRequest;
-import net.sf.json.JSONArray;
 
 import java.util.Arrays;
 import java.util.List;
@@ -360,12 +360,10 @@ public class Api {
    * @param trackUris  URIs of the tracks to add.
    * @return A builder object that can e used to build a request to add tracks to a playlist.
    */
-  public AddTrackToPlaylistRequest.Builder addTracksToPlaylist(String userId, String playlistId, List<String> trackUris) {
+  public AddTrackToPlaylistRequest.Builder addTracksToPlaylist(String userId, String playlistId, String[] trackUris) {
     final AddTrackToPlaylistRequest.Builder builder = AddTrackToPlaylistRequest.builder();
     setDefaults(builder);
-    final JSONArray jsonArrayUri = new JSONArray();
-    jsonArrayUri.addAll(trackUris);
-    builder.setBodyParameter(jsonArrayUri);
+    builder.setBodyParameter(new JsonParser().parse(trackUris.toString()).getAsJsonArray());
     userId = UrlUtil.escapeUsername(userId);
     builder.setPath("/v1/users/" + userId + "/playlists/" + playlistId + "/tracks");
     return builder;
@@ -404,7 +402,7 @@ public class Api {
    * @param trackIds The tracks ids to check for in the user's Your Music library.
    * @return A builder object that can be used to check if a user has saved a track.
    */
-  public ContainsMySavedTracksRequest.Builder containsMySavedTracks(List<String> trackIds) {
+  public ContainsMySavedTracksRequest.Builder containsMySavedTracks(String[] trackIds) {
     final ContainsMySavedTracksRequest.Builder builder = ContainsMySavedTracksRequest.builder();
     setDefaults(builder);
     builder.tracks(trackIds);
@@ -418,7 +416,7 @@ public class Api {
    * @param trackIds The track ids to remove from the user's Your Music library.
    * @return A builder object that can be used to remove tracks from the user's library.
    */
-  public RemoveFromMySavedTracksRequest.Builder removeFromMySavedTracks(List<String> trackIds) {
+  public RemoveFromMySavedTracksRequest.Builder removeFromMySavedTracks(String[] trackIds) {
     final RemoveFromMySavedTracksRequest.Builder builder = RemoveFromMySavedTracksRequest.builder();
     setDefaults(builder);
     builder.tracks(trackIds);
@@ -432,7 +430,7 @@ public class Api {
    * @param trackIds The track ids to add to the user's library.
    * @return A builder object that can be used to add tracks to the user's library.
    */
-  public AddToMySavedTracksRequest.Builder addToMySavedTracks(List<String> trackIds) {
+  public AddToMySavedTracksRequest.Builder addToMySavedTracks(String[] trackIds) {
     final AddToMySavedTracksRequest.Builder builder = AddToMySavedTracksRequest.builder();
     setDefaults(builder);
     builder.tracks(trackIds);
@@ -448,7 +446,7 @@ public class Api {
    *               and the callback to redirect_uri.It is useful to prevent CSRF exploits.
    * @return The URL where the user can give application permissions.
    */
-  public UtilProtos.Url createAuthorizeURL(List<String> scopes, String state) {
+  public UtilProtos.Url createAuthorizeURL(String[] scopes, String state) {
     final AuthorizationURLRequest.Builder builder = AuthorizationURLRequest.builder();
     setDefaults(builder);
     builder.clientId(clientId);
@@ -471,7 +469,7 @@ public class Api {
    * @return A builder that when built creates a URL where the user can give the application
    * permissions.
    */
-  public AuthorizationURLRequest.Builder createAuthorizeURL(List<String> scopes) {
+  public AuthorizationURLRequest.Builder createAuthorizeURL(String[] scopes) {
     final AuthorizationURLRequest.Builder builder = AuthorizationURLRequest.builder();
     setDefaults(builder);
     builder.clientId(clientId);

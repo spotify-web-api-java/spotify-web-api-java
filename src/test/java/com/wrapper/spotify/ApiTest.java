@@ -1,18 +1,17 @@
 package com.wrapper.spotify;
 
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.wrapper.spotify.UtilProtos.Url.Scheme;
-import com.wrapper.spotify.requests.Request;
 import com.wrapper.spotify.objects.AlbumType;
-import net.sf.json.JSONObject;
+import com.wrapper.spotify.requests.Request;
 import org.apache.commons.codec.binary.Base64;
 import org.junit.Test;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 
 import static com.wrapper.spotify.Assertions.*;
 import static junit.framework.TestCase.assertEquals;
@@ -58,7 +57,7 @@ public class ApiTest {
   @Test
   public void shouldCreateAGetAlbumsUrlFromAList() {
     Api api = Api.DEFAULT_API;
-    Request request = api.getAlbums(Arrays.asList("6hDH3YWFdcUNQjubYztIsG", "2IA4WEsWAYpV9eKkwR2UYv")).build();
+    Request request = api.getAlbums(new String[] {"6hDH3YWFdcUNQjubYztIsG", "2IA4WEsWAYpV9eKkwR2UYv"}).build();
     assertEquals("https://api.spotify.com:443/v1/albums", request.toString(false));
     assertHasParameter(request.toUrl(), "ids", "6hDH3YWFdcUNQjubYztIsG,2IA4WEsWAYpV9eKkwR2UYv");
   }
@@ -74,7 +73,7 @@ public class ApiTest {
   @Test
   public void shouldCreateAGetTracksUrlFromList() {
     Api api = Api.DEFAULT_API;
-    Request request = api.getTracks(Arrays.asList("6hDH3YWFdcUNQjubYztIsG", "2IA4WEsWAYpV9eKkwR2UYv")).build();
+    Request request = api.getTracks(new String[] {"6hDH3YWFdcUNQjubYztIsG", "2IA4WEsWAYpV9eKkwR2UYv"}).build();
     assertEquals("https://api.spotify.com:443/v1/tracks", request.toString(false));
     assertHasParameter(request.toUrl(), "ids", "6hDH3YWFdcUNQjubYztIsG,2IA4WEsWAYpV9eKkwR2UYv");
   }
@@ -344,7 +343,7 @@ public class ApiTest {
 
     final String myUsername = "thelinmichael";
     final String myPlaylistId = "5ieJqeLJjjI8iJWaxeBLuK";
-    final List<String> tracksToAdd = Arrays.asList("spotify:track:4BYGxv4rxSNcTgT3DsFB9o", "spotify:tracks:0BG2iE6McPhmAEKIhfqy1X");
+    final String[] tracksToAdd = {"spotify:track:4BYGxv4rxSNcTgT3DsFB9o", "spotify:tracks:0BG2iE6McPhmAEKIhfqy1X"};
     final int insertIndex = 3;
 
     final Request request = api.addTracksToPlaylist(myUsername, myPlaylistId, tracksToAdd).position(insertIndex).build();
@@ -378,9 +377,9 @@ public class ApiTest {
     assertHasHeader(request.toUrl(), "Authorization", "Bearer " + accessToken);
     assertHasHeader(request.toUrl(), "Content-Type", "application/json");
 
-    JSONObject jsonBody = JSONObject.fromObject(request.toUrl().getJsonBody());
-    assertEquals(name, jsonBody.getString("name"));
-    assertEquals(isPublic, jsonBody.getBoolean("public"));
+    JsonObject jsonBody = new JsonParser().parse(request.toUrl().getJsonBody()).getAsJsonObject();
+    assertEquals(name, jsonBody.get("name").getAsString());
+    assertEquals(isPublic, jsonBody.get("public").getAsBoolean());
 
     assertHasHeader(request.toUrl(), "Authorization", "Bearer " + accessToken);
   }
@@ -395,7 +394,7 @@ public class ApiTest {
             .clientSecret(clientSecret)
             .build();
 
-    final List<String> scopes = Arrays.asList("some-scope", "some-other-scope");
+    final String[] scopes = {"some-scope", "some-other-scope"};
 
     final Request request = api.clientCredentialsGrant().scopes(scopes).build();
 
@@ -453,7 +452,7 @@ public class ApiTest {
             .redirectURI(redirectURI)
             .build();
 
-    final List<String> scopes = Arrays.asList("user-read-private", "user-read-email");
+    final String[] scopes = {"user-read-private", "user-read-email"};
     final String state = "someExpectedStateString";
 
     String authorizeUrlString = UrlUtil.urlToString(api.createAuthorizeURL(scopes, state));
@@ -470,7 +469,7 @@ public class ApiTest {
             .redirectURI(redirectURI)
             .build();
 
-    final List<String> scopes = Arrays.asList("user-read-private", "user-read-email");
+    final String[] scopes = {"user-read-private", "user-read-email"};
     final String state = "someExpectedStateString";
 
     String authorizeUrlString = api.createAuthorizeURL(scopes)
@@ -511,7 +510,7 @@ public class ApiTest {
             .build();
 
     final Request request = api
-            .addToMySavedTracks(Arrays.asList("test", "test2"))
+            .addToMySavedTracks(new String[] {"test", "test2"})
             .build();
 
     assertEquals("https://api.spotify.com:443/v1/me/tracks", request.toString(false));
@@ -527,7 +526,7 @@ public class ApiTest {
             .build();
 
     final Request request = api
-            .removeFromMySavedTracks(Arrays.asList("test", "test2"))
+            .removeFromMySavedTracks(new String[] {"test", "test2"})
             .build();
 
     assertEquals("https://api.spotify.com:443/v1/me/tracks", request.toString(false));

@@ -1,6 +1,6 @@
 package com.wrapper.spotify.objects;
 
-import net.sf.json.JSONObject;
+import com.google.gson.JsonObject;
 
 import java.text.ParseException;
 import java.util.Date;
@@ -62,16 +62,16 @@ public class PlayHistory extends AbstractModelObject {
   }
 
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<PlayHistory> {
-    public PlayHistory createModelObject(JSONObject jsonObject) {
-      if (jsonObject == null || jsonObject.isNullObject()) {
+    public PlayHistory createModelObject(JsonObject jsonObject) {
+      if (jsonObject == null || jsonObject.isJsonNull()) {
         return null;
       }
 
       try {
         return new Builder()
-                .setTrack(new TrackSimplified.JsonUtil().createModelObject(jsonObject.getJSONObject("track")))
-                .setPlayedAt(simpleDateFormat.parse(jsonObject.getString("played_at")))
-                .setContext(new Context.JsonUtil().createModelObject(jsonObject.getJSONObject("context")))
+                .setTrack(new TrackSimplified.JsonUtil().createModelObject(jsonObject.getAsJsonObject("track")))
+                .setPlayedAt(simpleDateFormat.parse(jsonObject.get("played_at").getAsString()))
+                .setContext(new Context.JsonUtil().createModelObject(jsonObject.getAsJsonObject("context")))
                 .build();
       } catch (ParseException e) {
         e.printStackTrace();

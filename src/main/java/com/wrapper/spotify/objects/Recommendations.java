@@ -1,12 +1,10 @@
 package com.wrapper.spotify.objects;
 
-import net.sf.json.JSONObject;
-
-import java.util.List;
+import com.google.gson.JsonObject;
 
 public class Recommendations extends AbstractModelObject {
   private final RecommendationsSeed seeds;
-  private final List<TrackSimplified> tracks;
+  private final TrackSimplified[] tracks;
 
   private Recommendations(final Recommendations.Builder builder) {
     super(builder);
@@ -19,7 +17,7 @@ public class Recommendations extends AbstractModelObject {
     return seeds;
   }
 
-  public List<TrackSimplified> getTracks() {
+  public TrackSimplified[] getTracks() {;
     return tracks;
   }
 
@@ -30,14 +28,14 @@ public class Recommendations extends AbstractModelObject {
 
   public static final class Builder extends AbstractModelObject.Builder {
     private RecommendationsSeed seeds;
-    private List<TrackSimplified> tracks;
+    private TrackSimplified[] tracks;
 
     public Builder setSeeds(RecommendationsSeed seeds) {
       this.seeds = seeds;
       return this;
     }
 
-    public Builder setTracks(List<TrackSimplified> tracks) {
+    public Builder setTracks(TrackSimplified[] tracks) {
       this.tracks = tracks;
       return this;
     }
@@ -49,14 +47,14 @@ public class Recommendations extends AbstractModelObject {
   }
 
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<Recommendations> {
-    public Recommendations createModelObject(JSONObject jsonObject) {
-      if (jsonObject == null || jsonObject.isNullObject()) {
+    public Recommendations createModelObject(JsonObject jsonObject) {
+      if (jsonObject == null || jsonObject.isJsonNull()) {
         return null;
       }
 
       return new Recommendations.Builder()
-              .setSeeds(new RecommendationsSeed.JsonUtil().createModelObject(jsonObject.getJSONObject("seeds")))
-              .setTracks(new TrackSimplified.JsonUtil().createModelObjectList(jsonObject.getJSONArray("tracks")))
+              .setSeeds(new RecommendationsSeed.JsonUtil().createModelObject(jsonObject.getAsJsonObject("seeds")))
+              .setTracks(new TrackSimplified.JsonUtil().createModelObjectArray(jsonObject.getAsJsonArray("tracks")))
               .build();
     }
   }

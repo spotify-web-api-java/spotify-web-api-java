@@ -1,11 +1,10 @@
 package com.wrapper.spotify.requests;
 
 import com.google.common.util.concurrent.SettableFuture;
+import com.google.gson.JsonParser;
 import com.wrapper.spotify.exceptions.*;
-import net.sf.json.JSONArray;
 
 import java.io.IOException;
-import java.util.List;
 
 public class AddToMySavedTracksRequest extends AbstractRequest {
 
@@ -47,8 +46,8 @@ public class AddToMySavedTracksRequest extends AbstractRequest {
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
-    public Builder tracks(final List<String> trackIds) {
-      setBodyParameter(JSONArray.fromObject(trackIds));
+    public Builder tracks(final String[] trackIds) {
+      setBodyParameter(new JsonParser().parse(trackIds.toString()).getAsJsonArray());
       return this;
     }
 

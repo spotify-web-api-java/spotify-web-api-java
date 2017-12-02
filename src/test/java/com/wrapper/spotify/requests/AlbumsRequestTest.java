@@ -10,7 +10,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
@@ -31,22 +30,22 @@ public class AlbumsRequestTest {
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
-    final SettableFuture<List<Album>> albumsFuture = request.getAsync();
-    Futures.addCallback(albumsFuture, new FutureCallback<List<Album>>() {
+    final SettableFuture<Album[]> albumsFuture = request.getAsync();
+    Futures.addCallback(albumsFuture, new FutureCallback<Album[]>() {
 
       @Override
-      public void onSuccess(List<Album> albums) {
-        assertEquals(1, albums.size());
+      public void onSuccess(Album[] albums) {
+        assertEquals(1, albums.length);
 
-        Album firstAlbum = albums.get(0);
+        Album firstAlbum = albums[0];
         assertEquals("2hYe61Nd2oOoM6RYCwIma1", firstAlbum.getId());
         assertEquals(AlbumType.ALBUM, firstAlbum.getAlbumType());
         assertEquals("2013-11-08", firstAlbum.getReleaseDate());
         assertEquals(ReleaseDatePrecision.day, firstAlbum.getReleaseDatePrecision());
-        assertEquals(2, firstAlbum.getCopyrights().size());
+        assertEquals(2, firstAlbum.getCopyrights().length);
 
-        List<ArtistSimplified> artists = firstAlbum.getArtists();
-        ArtistSimplified firstArtist = artists.get(0);
+        ArtistSimplified[] artists = firstAlbum.getArtists();
+        ArtistSimplified firstArtist = artists[0];
         assertEquals("https://api.spotify.com/v1/artists/53A0W3U0s8diEn9RhXQhVz", firstArtist.getHref());
         assertEquals("53A0W3U0s8diEn9RhXQhVz", firstArtist.getId());
 
@@ -55,7 +54,7 @@ public class AlbumsRequestTest {
         assertEquals(0, tracksPage.getOffset());
         assertEquals(50, tracksPage.getLimit());
         assertEquals(20, tracksPage.getTotal());
-        assertEquals("52J94k3JBYbHlFyg7zAABB", tracksPage.getItems().get(0).getId());
+        assertEquals("52J94k3JBYbHlFyg7zAABB", tracksPage.getItems()[0].getId());
 
         asyncCompleted.countDown();
       }
@@ -77,18 +76,18 @@ public class AlbumsRequestTest {
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("albums.json"))
             .build();
 
-    List<Album> albums = request.get();
+    Album[] albums = request.get();
 
-    assertEquals(1, albums.size());
+    assertEquals(1, albums.length);
 
-    Album firstAlbum = albums.get(0);
+    Album firstAlbum = albums[0];
     assertEquals("2hYe61Nd2oOoM6RYCwIma1", firstAlbum.getId());
     assertEquals(AlbumType.ALBUM, firstAlbum.getAlbumType());
     assertEquals("2013-11-08", firstAlbum.getReleaseDate());
     assertEquals(ReleaseDatePrecision.day, firstAlbum.getReleaseDatePrecision());
 
-    List<ArtistSimplified> artists = firstAlbum.getArtists();
-    ArtistSimplified firstArtist = artists.get(0);
+    ArtistSimplified[] artists = firstAlbum.getArtists();
+    ArtistSimplified firstArtist = artists[0];
     assertEquals("https://api.spotify.com/v1/artists/53A0W3U0s8diEn9RhXQhVz", firstArtist.getHref());
     assertEquals("53A0W3U0s8diEn9RhXQhVz", firstArtist.getId());
 
@@ -97,7 +96,7 @@ public class AlbumsRequestTest {
     assertEquals(0, tracksPage.getOffset());
     assertEquals(50, tracksPage.getLimit());
     assertEquals(20, tracksPage.getTotal());
-    assertEquals("52J94k3JBYbHlFyg7zAABB", tracksPage.getItems().get(0).getId());
+    assertEquals("52J94k3JBYbHlFyg7zAABB", tracksPage.getItems()[0].getId());
   }
 
   @Test
@@ -110,13 +109,13 @@ public class AlbumsRequestTest {
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
-    final SettableFuture<List<Album>> albumFuture = request.getAsync();
+    final SettableFuture<Album[]> albumFuture = request.getAsync();
 
-    Futures.addCallback(albumFuture, new FutureCallback<List<Album>>() {
+    Futures.addCallback(albumFuture, new FutureCallback<Album[]>() {
       @Override
-      public void onSuccess(List<Album> albums) {
-        assertEquals(1, albums.size());
-        assertNull(albums.get(0));
+      public void onSuccess(Album[] albums) {
+        assertEquals(1, albums.length);
+        assertNull(albums[0]);
         asyncCompleted.countDown();
       }
 

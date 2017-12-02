@@ -10,7 +10,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
@@ -30,17 +29,17 @@ public class TracksRequestTest {
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
-    final SettableFuture<List<Track>> tracksFuture = request.getAsync();
+    final SettableFuture<Track[]> tracksFuture = request.getAsync();
 
-    Futures.addCallback(tracksFuture, new FutureCallback<List<Track>>() {
+    Futures.addCallback(tracksFuture, new FutureCallback<Track[]>() {
       @Override
-      public void onSuccess(List<Track> tracks) {
-        assertEquals(2, tracks.size());
+      public void onSuccess(Track[] tracks) {
+        assertEquals(2, tracks.length);
 
-        Track firstTrack = tracks.get(0);
+        Track firstTrack = tracks[0];
         assertEquals("0eGsygTp906u18L0Oimnem", firstTrack.getId());
 
-        Track secondTrack = tracks.get(1);
+        Track secondTrack = tracks[1];
         assertEquals("1lDWb6b6ieDQ2xT7ewTC3G", secondTrack.getId());
 
         asyncCompleted.countDown();
@@ -63,14 +62,14 @@ public class TracksRequestTest {
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("tracks.json"))
             .build();
 
-    final List<Track> tracks = request.get();
+    final Track[] tracks = request.get();
 
-    assertEquals(2, tracks.size());
+    assertEquals(2, tracks.length);
 
-    final Track firstTrack = tracks.get(0);
+    final Track firstTrack = tracks[0];
     assertEquals("0eGsygTp906u18L0Oimnem", firstTrack.getId());
 
-    final Track secondTrack = tracks.get(1);
+    final Track secondTrack = tracks[1];
     assertEquals("1lDWb6b6ieDQ2xT7ewTC3G", secondTrack.getId());
   }
 }

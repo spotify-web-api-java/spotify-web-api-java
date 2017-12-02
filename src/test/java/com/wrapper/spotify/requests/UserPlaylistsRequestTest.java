@@ -44,7 +44,7 @@ public class UserPlaylistsRequestTest {
         assertEquals(2, playlistsPage.getOffset());
         assertEquals("https://api.spotify.com/v1/users/wizzler/playlists?offset=2&limit=10", playlistsPage.getHref());
 
-        final PlaylistSimplified simplePlaylist = playlistsPage.getItems().get(0);
+        final PlaylistSimplified simplePlaylist = playlistsPage.getItems()[0];
         final String playlistId = simplePlaylist.getId();
         assertNotNull(playlistId);
         assertTrue(playlistId.length() > 0);
@@ -57,10 +57,10 @@ public class UserPlaylistsRequestTest {
         assertNotNull(simplePlaylist.getTracks().getTotal());
         assertEquals(ObjectType.PLAYLIST, simplePlaylist.getType());
         assertEquals("spotify:user:wizzler:playlist:" + playlistId, simplePlaylist.getUri());
-        assertEquals(1, simplePlaylist.getImages().size());
-        assertEquals("https://i.scdn.co/image/418ce596327dc3a0f4d377db80421bffb3b94a9a", simplePlaylist.getImages().get(0).getUrl());
-        assertEquals(0, simplePlaylist.getImages().get(0).getWidth());
-        assertEquals(0, simplePlaylist.getImages().get(0).getHeight());
+        assertEquals(1, simplePlaylist.getImages().length);
+        assertEquals("https://i.scdn.co/image/418ce596327dc3a0f4d377db80421bffb3b94a9a", simplePlaylist.getImages()[0].getUrl());
+        assertEquals(0, simplePlaylist.getImages()[0].getWidth());
+        assertEquals(0, simplePlaylist.getImages()[0].getHeight());
 
         asyncCompleted.countDown();
       }
@@ -95,7 +95,7 @@ public class UserPlaylistsRequestTest {
     assertEquals(2, playlistsPage.getOffset());
     assertEquals("https://api.spotify.com/v1/users/wizzler/playlists?offset=2&limit=10", playlistsPage.getHref());
 
-    final PlaylistSimplified simplePlaylist = playlistsPage.getItems().get(0);
+    final PlaylistSimplified simplePlaylist = playlistsPage.getItems()[0];
     final String playlistId = simplePlaylist.getId();
     assertNotNull(playlistId);
     assertTrue(playlistId.length() > 0);
@@ -108,10 +108,10 @@ public class UserPlaylistsRequestTest {
     assertNotNull(simplePlaylist.getTracks().getTotal());
     assertEquals(ObjectType.PLAYLIST, simplePlaylist.getType());
     assertEquals("spotify:user:wizzler:playlist:" + playlistId, simplePlaylist.getUri());
-    assertEquals(1, simplePlaylist.getImages().size());
-    assertEquals("https://i.scdn.co/image/418ce596327dc3a0f4d377db80421bffb3b94a9a", simplePlaylist.getImages().get(0).getUrl());
-    assertEquals(0, simplePlaylist.getImages().get(0).getWidth());
-    assertEquals(0, simplePlaylist.getImages().get(0).getHeight());
+    assertEquals(1, simplePlaylist.getImages().length);
+    assertEquals("https://i.scdn.co/image/418ce596327dc3a0f4d377db80421bffb3b94a9a", simplePlaylist.getImages()[0].getUrl());
+    assertEquals(0, simplePlaylist.getImages()[0].getWidth());
+    assertEquals(0, simplePlaylist.getImages()[0].getHeight());
   }
 
 }

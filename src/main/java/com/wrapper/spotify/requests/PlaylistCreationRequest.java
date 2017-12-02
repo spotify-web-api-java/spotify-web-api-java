@@ -1,9 +1,9 @@
 package com.wrapper.spotify.requests;
 
 import com.google.common.util.concurrent.SettableFuture;
+import com.google.gson.JsonObject;
 import com.wrapper.spotify.exceptions.*;
 import com.wrapper.spotify.objects.Playlist;
-import net.sf.json.JSONObject;
 
 import java.io.IOException;
 
@@ -47,21 +47,21 @@ public class PlaylistCreationRequest extends AbstractRequest {
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
-    private JSONObject jsonBody;
+    private JsonObject jsonBody;
 
     public Builder publicAccess(final boolean publicAccess) {
       if (jsonBody == null) {
-        jsonBody = new JSONObject();
+        jsonBody = new JsonObject();
       }
-      jsonBody.put("public", String.valueOf(publicAccess));
+      jsonBody.addProperty("public", String.valueOf(publicAccess));
       return setBodyParameter(jsonBody);
     }
 
     public Builder title(final String title) {
       if (jsonBody == null) {
-        jsonBody = new JSONObject();
+        jsonBody = new JsonObject();
       }
-      jsonBody.put("name", String.valueOf(title));
+      jsonBody.addProperty("name", String.valueOf(title));
       return setBodyParameter(jsonBody);
     }
 

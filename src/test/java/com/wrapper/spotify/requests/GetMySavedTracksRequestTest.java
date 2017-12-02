@@ -9,7 +9,6 @@ import com.wrapper.spotify.objects.LibraryTrack;
 import com.wrapper.spotify.objects.Paging;
 import org.junit.Test;
 
-import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
@@ -42,10 +41,10 @@ public class GetMySavedTracksRequestTest {
         assertEquals("https://api.spotify.com/v1/me/tracks?offset=1&limit=5",
                 libraryTracks.getHref());
 
-        List<LibraryTrack> items = libraryTracks.getItems();
-        assertEquals(5, items.size());
+        LibraryTrack[] items = libraryTracks.getItems();
+        assertEquals(5, items.length);
 
-        LibraryTrack firstItem = libraryTracks.getItems().get(0);
+        LibraryTrack firstItem = libraryTracks.getItems()[0];
         assertNotNull(firstItem.getAddedAt());
         assertNotNull(firstItem.getTrack());
         assertEquals("13zm8XhfM4RBtQpjdqY44e", firstItem.getTrack().getId());
@@ -78,10 +77,10 @@ public class GetMySavedTracksRequestTest {
 
     assertEquals("https://api.spotify.com/v1/me/tracks?offset=1&limit=5", libraryTracks.getHref());
 
-    List<LibraryTrack> items = libraryTracks.getItems();
-    assertEquals(5, items.size());
+    LibraryTrack[] items = libraryTracks.getItems();
+    assertEquals(5, items.length);
 
-    LibraryTrack firstItem = libraryTracks.getItems().get(0);
+    LibraryTrack firstItem = libraryTracks.getItems()[0];
     assertNotNull(firstItem.getAddedAt());
     assertNotNull(firstItem.getTrack());
     assertEquals("13zm8XhfM4RBtQpjdqY44e", firstItem.getTrack().getId());

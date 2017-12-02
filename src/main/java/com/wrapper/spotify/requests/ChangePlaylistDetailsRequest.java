@@ -2,8 +2,8 @@ package com.wrapper.spotify.requests;
 
 import com.google.common.collect.Maps;
 import com.google.common.util.concurrent.SettableFuture;
+import com.google.gson.JsonParser;
 import com.wrapper.spotify.exceptions.*;
-import net.sf.json.JSONObject;
 
 import java.io.IOException;
 import java.util.Map;
@@ -64,7 +64,7 @@ public class ChangePlaylistDetailsRequest extends AbstractRequest {
     @Override
     public ChangePlaylistDetailsRequest build() {
       setHeaderParameter("Content-Type", "application/json");
-      setBodyParameter(JSONObject.fromObject(properties));
+      setBodyParameter(new JsonParser().parse(properties.toString()).getAsJsonObject());
       return new ChangePlaylistDetailsRequest(this);
     }
 

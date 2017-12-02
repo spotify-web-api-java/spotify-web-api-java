@@ -46,7 +46,7 @@ public class PlaylistTracksRequestTest {
         assertNull(page.getPrevious());
         assertTrue(page.getTotal() > 0);
 
-        final PlaylistTrack playlistTrack = page.getItems().get(0);
+        final PlaylistTrack playlistTrack = page.getItems()[0];
         assertNotNull(playlistTrack.getAddedAt());
         assertNotNull(playlistTrack.getAddedBy());
 
@@ -94,7 +94,7 @@ public class PlaylistTracksRequestTest {
         assertNull(page.getPrevious());
         assertTrue(page.getTotal() > 0);
 
-        final PlaylistTrack playlistTrack = page.getItems().get(0);
+        final PlaylistTrack playlistTrack = page.getItems()[0];
         assertNotNull(playlistTrack.getAddedAt());
         assertNotNull(playlistTrack.getAddedBy());
 
@@ -135,7 +135,7 @@ public class PlaylistTracksRequestTest {
     assertNull(page.getPrevious());
     assertTrue(page.getTotal() > 0);
 
-    final PlaylistTrack playlistTrack = page.getItems().get(0);
+    final PlaylistTrack playlistTrack = page.getItems()[0];
     assertNotNull(playlistTrack.getAddedAt());
     assertNotNull(playlistTrack.getAddedBy());
 
@@ -164,7 +164,7 @@ public class PlaylistTracksRequestTest {
     assertNull(page.getPrevious());
     assertTrue(page.getTotal() > 0);
 
-    final PlaylistTrack playlistTrack = page.getItems().get(0);
+    final PlaylistTrack playlistTrack = page.getItems()[0];
     assertNotNull(playlistTrack.getAddedAt());
     assertNotNull(playlistTrack.getAddedBy());
 

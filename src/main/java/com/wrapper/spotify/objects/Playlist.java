@@ -1,8 +1,6 @@
 package com.wrapper.spotify.objects;
 
-import net.sf.json.JSONObject;
-
-import java.util.List;
+import com.google.gson.JsonObject;
 
 public class Playlist extends AbstractModelObject {
   private final boolean collaborative;
@@ -11,7 +9,7 @@ public class Playlist extends AbstractModelObject {
   private final Followers followers;
   private final String href;
   private final String id;
-  private final List<Image> images;
+  private final Image[] images;
   private final String name;
   private final User owner;
   private final boolean publicAccess;
@@ -63,7 +61,7 @@ public class Playlist extends AbstractModelObject {
     return id;
   }
 
-  public List<Image> getImages() {
+  public Image[] getImages() {;
     return images;
   }
 
@@ -107,7 +105,7 @@ public class Playlist extends AbstractModelObject {
     private Followers followers;
     private String href;
     private String id;
-    private List<Image> images;
+    private Image[] images;
     private String name;
     private User owner;
     private boolean publicAccess;
@@ -146,7 +144,7 @@ public class Playlist extends AbstractModelObject {
       return this;
     }
 
-    public Builder setImages(List<Image> images) {
+    public Builder setImages(Image[] images) {
       this.images = images;
       return this;
     }
@@ -193,26 +191,26 @@ public class Playlist extends AbstractModelObject {
   }
 
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<Playlist> {
-    public Playlist createModelObject(JSONObject jsonObject) {
-      if (jsonObject == null || jsonObject.isNullObject()) {
+    public Playlist createModelObject(JsonObject jsonObject) {
+      if (jsonObject == null || jsonObject.isJsonNull()) {
         return null;
       }
 
       return new Playlist.Builder()
-              .setCollaborative(jsonObject.getBoolean("collaborative"))
-              .setDescription(jsonObject.getString("description"))
-              .setExternalUrls(new ExternalUrls.JsonUtil().createModelObject(jsonObject.getJSONObject("external_urls")))
-              .setFollowers(new Followers.JsonUtil().createModelObject(jsonObject.getJSONObject("followers")))
-              .setHref(jsonObject.getString("href"))
-              .setId(jsonObject.getString("id"))
-              .setImages(new Image.JsonUtil().createModelObjectList(jsonObject.getJSONArray("images")))
-              .setName(jsonObject.getString("name"))
-              .setOwner(new User.JsonUtil().createModelObject(jsonObject.getJSONObject("owner")))
-              .setPublicAccess(jsonObject.getBoolean("public"))
-              .setSnapshotId(jsonObject.getString("snapshot_id"))
-              .setTracks(new PlaylistTrack.JsonUtil().createModelObjectPaging(jsonObject.getJSONObject("tracks")))
-              .setType(ObjectType.valueOf(jsonObject.getString("type")))
-              .setUri(jsonObject.getString("uri"))
+              .setCollaborative(jsonObject.get("collaborative").getAsBoolean())
+              .setDescription(jsonObject.get("description").getAsString())
+              .setExternalUrls(new ExternalUrls.JsonUtil().createModelObject(jsonObject.getAsJsonObject("external_urls")))
+              .setFollowers(new Followers.JsonUtil().createModelObject(jsonObject.getAsJsonObject("followers")))
+              .setHref(jsonObject.get("href").getAsString())
+              .setId(jsonObject.get("id").getAsString())
+              .setImages(new Image.JsonUtil().createModelObjectArray(jsonObject.getAsJsonArray("images")))
+              .setName(jsonObject.get("name").getAsString())
+              .setOwner(new User.JsonUtil().createModelObject(jsonObject.getAsJsonObject("owner")))
+              .setPublicAccess(jsonObject.get("public").getAsBoolean())
+              .setSnapshotId(jsonObject.get("snapshot_id").getAsString())
+              .setTracks(new PlaylistTrack.JsonUtil().createModelObjectPaging(jsonObject.getAsJsonObject("tracks")))
+              .setType(ObjectType.valueOf(jsonObject.get("type").getAsString()))
+              .setUri(jsonObject.get("uri").getAsString())
               .build();
     }
   }

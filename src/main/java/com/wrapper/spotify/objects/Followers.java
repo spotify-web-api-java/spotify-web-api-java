@@ -1,6 +1,6 @@
 package com.wrapper.spotify.objects;
 
-import net.sf.json.JSONObject;
+import com.google.gson.JsonObject;
 
 public class Followers extends AbstractModelObject {
   private final String href;
@@ -47,14 +47,14 @@ public class Followers extends AbstractModelObject {
   }
 
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<Followers> {
-    public Followers createModelObject(JSONObject jsonObject) {
-      if (jsonObject == null || jsonObject.isNullObject()) {
+    public Followers createModelObject(JsonObject jsonObject) {
+      if (jsonObject == null || jsonObject.isJsonNull()) {
         return null;
       }
 
       return new Followers.Builder()
-              .setHref(jsonObject.getString("href"))
-              .setTotal(jsonObject.getInt("total"))
+              .setHref(jsonObject.get("href").getAsString())
+              .setTotal(jsonObject.get("total").getAsInt())
               .build();
     }
   }

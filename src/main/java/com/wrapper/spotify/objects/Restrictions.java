@@ -1,6 +1,6 @@
 package com.wrapper.spotify.objects;
 
-import net.sf.json.JSONObject;
+import com.google.gson.JsonObject;
 
 public class Restrictions extends AbstractModelObject {
   private final String reason;
@@ -35,13 +35,13 @@ public class Restrictions extends AbstractModelObject {
   }
 
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<Restrictions> {
-    public Restrictions createModelObject(JSONObject jsonObject) {
-      if (jsonObject == null || jsonObject.isNullObject()) {
+    public Restrictions createModelObject(JsonObject jsonObject) {
+      if (jsonObject == null || jsonObject.isJsonNull()) {
         return null;
       }
 
       return new Restrictions.Builder()
-              .setReason(jsonObject.getString("reason"))
+              .setReason(jsonObject.get("reason").getAsString())
               .build();
     }
   }

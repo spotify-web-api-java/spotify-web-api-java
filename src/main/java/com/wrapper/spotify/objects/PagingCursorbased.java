@@ -1,15 +1,14 @@
 package com.wrapper.spotify.objects;
 
-import net.sf.json.JSONObject;
-
-import java.util.List;
+import com.google.common.reflect.TypeToken;
+import com.google.gson.JsonObject;
 
 public class PagingCursorbased<T> extends AbstractModelObject {
   private final String href;
-  private final List<T> items;
+  private final T[] items;
   private final int limit;
   private final String next;
-  private final List<Cursor> cursors;
+  private final Cursor[] cursors;
   private final int total;
 
   private PagingCursorbased(final PagingCursorbased.Builder<T> builder) {
@@ -27,7 +26,7 @@ public class PagingCursorbased<T> extends AbstractModelObject {
     return href;
   }
 
-  public List<T> getItems() {
+  public T[] getItems() {;
     return items;
   }
 
@@ -39,7 +38,7 @@ public class PagingCursorbased<T> extends AbstractModelObject {
     return next;
   }
 
-  public List<Cursor> getCursors() {
+  public Cursor[] getCursors() {;
     return cursors;
   }
 
@@ -54,10 +53,10 @@ public class PagingCursorbased<T> extends AbstractModelObject {
 
   public static final class Builder<T> extends AbstractModelObject.Builder {
     private String href;
-    private List<T> items;
+    private T[] items;
     private int limit;
     private String next;
-    private List<Cursor> cursors;
+    private Cursor[] cursors;
     private int total;
 
     public Builder<T> setHref(String href) {
@@ -65,7 +64,7 @@ public class PagingCursorbased<T> extends AbstractModelObject {
       return this;
     }
 
-    public Builder<T> setItems(List items) {
+    public Builder<T> setItems(T[] items) {
       this.items = items;
       return this;
     }
@@ -80,7 +79,7 @@ public class PagingCursorbased<T> extends AbstractModelObject {
       return this;
     }
 
-    public Builder<T> setCursors(List<Cursor> cursors) {
+    public Builder<T> setCursors(Cursor[] cursors) {
       this.cursors = cursors;
       return this;
     }
@@ -96,19 +95,19 @@ public class PagingCursorbased<T> extends AbstractModelObject {
     }
   }
 
-  public static final class JsonUtil<T> extends AbstractModelObject.JsonUtil<PagingCursorbased> {
-    public PagingCursorbased<T> createModelObject(JSONObject jsonObject) {
-      if (jsonObject == null || jsonObject.isNullObject()) {
+  public static final class JsonUtil<X> extends AbstractModelObject.JsonUtil<PagingCursorbased<X>> {
+    public PagingCursorbased<X> createModelObject(JsonObject jsonObject) {
+      if (jsonObject == null || jsonObject.isJsonNull()) {
         return null;
       }
 
-      return new PagingCursorbased.Builder<T>()
-              .setHref(jsonObject.getString("href"))
-              .setItems(createModelObjectList(jsonObject.getJSONArray("items")))
-              .setLimit(jsonObject.getInt("limit"))
-              .setNext(jsonObject.getString("next"))
-              .setCursors(new Cursor.JsonUtil().createModelObjectList(jsonObject.getJSONArray("cursors")))
-              .setTotal(jsonObject.getInt("total"))
+      return new Builder<X>()
+              .setHref(jsonObject.get("href").getAsString())
+              .setItems(createModelObjectArray(jsonObject.getAsJsonArray("items"), new TypeToken<X>(){}))
+              .setLimit(jsonObject.get("limit").getAsInt())
+              .setNext(jsonObject.get("next").getAsString())
+              .setCursors(new Cursor.JsonUtil().createModelObjectArray(jsonObject.getAsJsonArray("cursors")))
+              .setTotal(jsonObject.get("total").getAsInt())
               .build();
     }
   }
