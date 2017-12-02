@@ -1,11 +1,13 @@
 package com.wrapper.spotify.objects;
 
 import com.neovisionaries.i18n.CountryCode;
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+import net.sf.json.JsonConfig;
 
 import java.util.List;
 
 public class Album extends AbstractModelObject {
-
   private final AlbumType albumType;
   private final List<ArtistSimplified> artists;
   private final List<CountryCode> availableMarkets;
@@ -121,7 +123,7 @@ public class Album extends AbstractModelObject {
     return new Builder();
   }
 
-  public static final class Builder extends AbstractModelObject.Builder<Album.Builder> {
+  public static final class Builder extends AbstractModelObject.Builder {
 
     private AlbumType albumType;
     private List<ArtistSimplified> artists;
@@ -236,6 +238,34 @@ public class Album extends AbstractModelObject {
     public Album build() {
       return new Album(this);
     }
+  }
 
+  public static final class JsonUtil extends AbstractModelObject.JsonUtil<Album> {
+    public Album createModelObject(JSONObject jsonObject) {
+      if (jsonObject == null || jsonObject.isNullObject()) {
+        return null;
+      }
+
+      return new Album.Builder()
+              .setAlbumType(AlbumType.valueOf(jsonObject.getString("album_type")))
+              .setArtists(new ArtistSimplified.JsonUtil().createModelObjectList(jsonObject.getJSONArray("artists")))
+              .setAvailableMarkets(JSONArray.toList(jsonObject.getJSONArray("available_markets"), new Object(), new JsonConfig()))
+              .setCopyrights(new Copyright.JsonUtil().createModelObjectList(jsonObject.getJSONArray("copyrights")))
+              .setExternalIds(new ExternalIds.JsonUtil().createModelObject(jsonObject.getJSONObject("external_ids")))
+              .setExternalUrls(new ExternalUrls.JsonUtil().createModelObject(jsonObject.getJSONObject("external_urls")))
+              .setGenres(JSONArray.toList(jsonObject.getJSONArray("genres"), new Object(), new JsonConfig()))
+              .setHref(jsonObject.getString("href"))
+              .setId(jsonObject.getString("id"))
+              .setImages(new Image.JsonUtil().createModelObjectList(jsonObject.getJSONArray("images")))
+              .setLabel(jsonObject.getString("label"))
+              .setName(jsonObject.getString("name"))
+              .setPopularity(jsonObject.getInt("popularity"))
+              .setReleaseDate(jsonObject.getString("release_date"))
+              .setReleaseDatePrecision(ReleaseDatePrecision.valueOf(jsonObject.getString("release_date_precision")))
+              .setTracks(new TrackSimplified.JsonUtil().createModelObjectPaging(jsonObject.getJSONObject("tracks")))
+              .setType(ObjectType.valueOf(jsonObject.getString("type")))
+              .setUri(jsonObject.getString("uri"))
+              .build();
+    }
   }
 }

@@ -1,5 +1,7 @@
 package com.wrapper.spotify.objects;
 
+import net.sf.json.JSONObject;
+
 public class AudioFeature extends AbstractModelObject {
   private final double acousticness;
   private final String analysisUrl;
@@ -42,6 +44,7 @@ public class AudioFeature extends AbstractModelObject {
     this.uri = builder.uri;
     this.valence = builder.valence;
   }
+
   public double getAcousticness() {
     return acousticness;
   }
@@ -119,7 +122,7 @@ public class AudioFeature extends AbstractModelObject {
     return new Builder();
   }
 
-  public static final class Builder extends AbstractModelObject.Builder<AudioFeature.Builder> {
+  public static final class Builder extends AbstractModelObject.Builder {
     private double acousticness;
     private String analysisUrl;
     private double danceability;
@@ -232,6 +235,35 @@ public class AudioFeature extends AbstractModelObject {
     @Override
     public AudioFeature build() {
       return new AudioFeature(this);
+    }
+  }
+
+  public static final class JsonUtil extends AbstractModelObject.JsonUtil<AudioFeature> {
+    public AudioFeature createModelObject(JSONObject jsonObject) {
+      if (jsonObject == null || jsonObject.isNullObject()) {
+        return null;
+      }
+
+      return new AudioFeature.Builder()
+              .setAcousticness(jsonObject.getDouble("acousticness"))
+              .setAnalysisUrl(jsonObject.getString("analysis_url"))
+              .setDanceability(jsonObject.getDouble("danceability"))
+              .setDurationMs(jsonObject.getInt("duration_ms"))
+              .setEnergy(jsonObject.getDouble("energy"))
+              .setId(jsonObject.getString("id"))
+              .setInstrumentalness(jsonObject.getDouble("instrumentalness"))
+              .setKey(jsonObject.getInt("key"))
+              .setLiveness(jsonObject.getDouble("liveness"))
+              .setLoudness(jsonObject.getDouble("loudness"))
+              .setMode(Modality.valueOf(jsonObject.getString("mode")))
+              .setSpeechiness(jsonObject.getDouble("speechiness"))
+              .setTempo(jsonObject.getDouble("tempo"))
+              .setTimeSignature(jsonObject.getInt("time_signature"))
+              .setTrackHref(jsonObject.getString("track_href"))
+              .setType(ObjectType.valueOf(jsonObject.getString("type")))
+              .setUri(jsonObject.getString("uri"))
+              .setValence(jsonObject.getDouble("valence"))
+              .build();
     }
   }
 }

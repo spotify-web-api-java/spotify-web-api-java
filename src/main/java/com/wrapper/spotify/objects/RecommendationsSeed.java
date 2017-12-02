@@ -1,12 +1,14 @@
 package com.wrapper.spotify.objects;
 
+import net.sf.json.JSONObject;
+
 public class RecommendationsSeed extends AbstractModelObject {
   private final int afterFilteringSize;
   private final int afterRelinkingSize;
   private final String href;
   private final String id;
   private final int initialPoolSize;
-  private final String type;
+  private final ObjectType type;
 
   private RecommendationsSeed(final RecommendationsSeed.Builder builder) {
     super(builder);
@@ -39,7 +41,7 @@ public class RecommendationsSeed extends AbstractModelObject {
     return initialPoolSize;
   }
 
-  public String getType() {
+  public ObjectType getType() {
     return type;
   }
 
@@ -48,13 +50,13 @@ public class RecommendationsSeed extends AbstractModelObject {
     return new Builder();
   }
 
-  public static final class Builder extends AbstractModelObject.Builder<RecommendationsSeed.Builder> {
+  public static final class Builder extends AbstractModelObject.Builder {
     private int afterFilteringSize;
     private int afterRelinkingSize;
     private String href;
     private String id;
     private int initialPoolSize;
-    private String type;
+    private ObjectType type;
 
     public Builder setAfterFilteringSize(int afterFilteringSize) {
       this.afterFilteringSize = afterFilteringSize;
@@ -81,7 +83,7 @@ public class RecommendationsSeed extends AbstractModelObject {
       return this;
     }
 
-    public Builder setType(String type) {
+    public Builder setType(ObjectType type) {
       this.type = type;
       return this;
     }
@@ -89,6 +91,23 @@ public class RecommendationsSeed extends AbstractModelObject {
     @Override
     public RecommendationsSeed build() {
       return new RecommendationsSeed(this);
+    }
+  }
+
+  public static final class JsonUtil extends AbstractModelObject.JsonUtil<RecommendationsSeed> {
+    public RecommendationsSeed createModelObject(JSONObject jsonObject) {
+      if (jsonObject == null || jsonObject.isNullObject()) {
+        return null;
+      }
+
+      return new RecommendationsSeed.Builder()
+              .setAfterFilteringSize(jsonObject.getInt("afterFilteringSize"))
+              .setAfterRelinkingSize(jsonObject.getInt("afterRelinkingSize"))
+              .setHref(jsonObject.getString("href"))
+              .setId(jsonObject.getString("id"))
+              .setInitialPoolSize(jsonObject.getInt("initialPoolSize"))
+              .setType(ObjectType.valueOf(jsonObject.getString("type")))
+              .build();
     }
   }
 }

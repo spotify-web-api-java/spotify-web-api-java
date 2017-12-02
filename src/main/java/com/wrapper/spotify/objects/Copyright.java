@@ -1,5 +1,7 @@
 package com.wrapper.spotify.objects;
 
+import net.sf.json.JSONObject;
+
 public class Copyright extends AbstractModelObject {
   private final String text;
   private final CopyrightType type;
@@ -24,7 +26,7 @@ public class Copyright extends AbstractModelObject {
     return new Builder();
   }
 
-  public static final class Builder extends AbstractModelObject.Builder<ArtistSimplified.Builder> {
+  public static final class Builder extends AbstractModelObject.Builder {
     private String text;
     private CopyrightType type;
 
@@ -41,6 +43,19 @@ public class Copyright extends AbstractModelObject {
     @Override
     public Copyright build() {
       return new Copyright(this);
+    }
+  }
+
+  public static final class JsonUtil extends AbstractModelObject.JsonUtil<Copyright> {
+    public Copyright createModelObject(JSONObject jsonObject) {
+      if (jsonObject == null || jsonObject.isNullObject()) {
+        return null;
+      }
+
+      return new Copyright.Builder()
+              .setText(jsonObject.getString("text"))
+              .setType(CopyrightType.valueOf(jsonObject.getString("type")))
+              .build();
     }
   }
 }

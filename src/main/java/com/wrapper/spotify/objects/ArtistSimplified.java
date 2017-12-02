@@ -1,5 +1,7 @@
 package com.wrapper.spotify.objects;
 
+import net.sf.json.JSONObject;
+
 public class ArtistSimplified extends AbstractModelObject {
   private final ExternalUrls externalUrls;
   private final String href;
@@ -48,7 +50,7 @@ public class ArtistSimplified extends AbstractModelObject {
     return new Builder();
   }
 
-  public static final class Builder extends AbstractModelObject.Builder<ArtistSimplified.Builder> {
+  public static final class Builder extends AbstractModelObject.Builder {
     private ExternalUrls externalUrls;
     private String href;
     private String id;
@@ -89,6 +91,23 @@ public class ArtistSimplified extends AbstractModelObject {
     @Override
     public ArtistSimplified build() {
       return new ArtistSimplified(this);
+    }
+  }
+
+  public static final class JsonUtil extends AbstractModelObject.JsonUtil<ArtistSimplified> {
+    public ArtistSimplified createModelObject(JSONObject jsonObject) {
+      if (jsonObject == null || jsonObject.isNullObject()) {
+        return null;
+      }
+
+      return new ArtistSimplified.Builder()
+              .setExternalUrls(new ExternalUrls.JsonUtil().createModelObject(jsonObject.getJSONObject("external_urls")))
+              .setHref(jsonObject.getString("href"))
+              .setId(jsonObject.getString("id"))
+              .setName(jsonObject.getString("name"))
+              .setType(ObjectType.valueOf(jsonObject.getString("type")))
+              .setUri(jsonObject.getString("uri"))
+              .build();
     }
   }
 }

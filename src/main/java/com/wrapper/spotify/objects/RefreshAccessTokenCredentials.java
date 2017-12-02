@@ -1,5 +1,7 @@
 package com.wrapper.spotify.objects;
 
+import net.sf.json.JSONObject;
+
 public class RefreshAccessTokenCredentials extends AbstractModelObject {
   private final String accessToken;
   private final String tokenType;
@@ -30,7 +32,7 @@ public class RefreshAccessTokenCredentials extends AbstractModelObject {
     return new Builder();
   }
 
-  public static final class Builder extends AbstractModelObject.Builder<RefreshAccessTokenCredentials.Builder> {
+  public static final class Builder extends AbstractModelObject.Builder {
     private String accessToken;
     private String tokenType;
     private int expiresIn;
@@ -53,6 +55,20 @@ public class RefreshAccessTokenCredentials extends AbstractModelObject {
     @Override
     public RefreshAccessTokenCredentials build() {
       return new RefreshAccessTokenCredentials(this);
+    }
+  }
+
+  public static final class JsonUtil extends AbstractModelObject.JsonUtil<RefreshAccessTokenCredentials> {
+    public RefreshAccessTokenCredentials createModelObject(JSONObject jsonObject) {
+      if (jsonObject == null || jsonObject.isNullObject()) {
+        return null;
+      }
+
+      return new RefreshAccessTokenCredentials.Builder()
+              .setAccessToken(jsonObject.getString("access_token"))
+              .setTokenType(jsonObject.getString("token_type"))
+              .setExpiresIn(jsonObject.getInt("expires_in"))
+              .build();
     }
   }
 }

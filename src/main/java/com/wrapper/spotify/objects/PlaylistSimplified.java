@@ -1,5 +1,7 @@
 package com.wrapper.spotify.objects;
 
+import net.sf.json.JSONObject;
+
 import java.util.List;
 
 public class PlaylistSimplified extends AbstractModelObject {
@@ -86,7 +88,7 @@ public class PlaylistSimplified extends AbstractModelObject {
     return new Builder();
   }
 
-  public static final class Builder extends AbstractModelObject.Builder<PlaylistSimplified.Builder> {
+  public static final class Builder extends AbstractModelObject.Builder {
     private boolean collaborative;
     private ExternalUrls externalUrls;
     private String href;
@@ -163,6 +165,29 @@ public class PlaylistSimplified extends AbstractModelObject {
     @Override
     public PlaylistSimplified build() {
       return new PlaylistSimplified(this);
+    }
+  }
+
+  public static final class JsonUtil extends AbstractModelObject.JsonUtil<PlaylistSimplified> {
+    public PlaylistSimplified createModelObject(JSONObject jsonObject) {
+      if (jsonObject == null || jsonObject.isNullObject()) {
+        return null;
+      }
+
+      return new PlaylistSimplified.Builder()
+              .setCollaborative(jsonObject.getBoolean("collaborative"))
+              .setExternalUrls(new ExternalUrls.JsonUtil().createModelObject(jsonObject.getJSONObject("external_urls")))
+              .setHref(jsonObject.getString("href"))
+              .setId(jsonObject.getString("id"))
+              .setImages(new Image.JsonUtil().createModelObjectList(jsonObject.getJSONArray("images")))
+              .setName(jsonObject.getString("name"))
+              .setOwner(new User.JsonUtil().createModelObject(jsonObject.getJSONObject("owner")))
+              .setPublicAccess(jsonObject.getBoolean("public"))
+              .setSnapshotId(jsonObject.getString("snapshot_id"))
+              .setTracks(new PlaylistTracksInformation.JsonUtil().createModelObject(jsonObject.getJSONObject("tracks")))
+              .setType(ObjectType.valueOf(jsonObject.getString("type")))
+              .setUri(jsonObject.getString("uri"))
+              .build();
     }
   }
 }

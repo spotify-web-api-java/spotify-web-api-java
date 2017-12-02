@@ -1,5 +1,7 @@
 package com.wrapper.spotify.objects;
 
+import net.sf.json.JSONObject;
+
 public class Cursor extends AbstractModelObject {
   private final String after;
 
@@ -18,7 +20,7 @@ public class Cursor extends AbstractModelObject {
     return new Builder();
   }
 
-  public static final class Builder extends AbstractModelObject.Builder<Cursor.Builder> {
+  public static final class Builder extends AbstractModelObject.Builder {
     private String after;
 
     public Builder setAfter(String after) {
@@ -29,6 +31,18 @@ public class Cursor extends AbstractModelObject {
     @Override
     public Cursor build() {
       return new Cursor(this);
+    }
+  }
+
+  public static final class JsonUtil extends AbstractModelObject.JsonUtil<Cursor> {
+    public Cursor createModelObject(JSONObject jsonObject) {
+      if (jsonObject == null || jsonObject.isNullObject()) {
+        return null;
+      }
+
+      return new Cursor.Builder()
+              .setAfter(jsonObject.getString("after"))
+              .build();
     }
   }
 }

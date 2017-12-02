@@ -2,7 +2,6 @@ package com.wrapper.spotify.requests.authentication;
 
 import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.Api;
-import com.wrapper.spotify.JsonUtil;
 import com.wrapper.spotify.exceptions.*;
 import com.wrapper.spotify.requests.AbstractRequest;
 import com.wrapper.spotify.objects.RefreshAccessTokenCredentials;
@@ -26,7 +25,7 @@ public class RefreshAccessTokenRequest extends AbstractRequest {
 
     try {
       JSONObject jsonObject = JSONObject.fromObject(postJson());
-      future.set(JsonUtil.createRefreshAccessTokenResponse(jsonObject));
+      future.set(new RefreshAccessTokenCredentials.JsonUtil().createModelObject(jsonObject));
     } catch (Exception e) {
       future.setException(e);
     }
@@ -46,7 +45,7 @@ public class RefreshAccessTokenRequest extends AbstractRequest {
           BadGatewayException,
           ServiceUnavailableException {
     JSONObject jsonObject = JSONObject.fromObject(postJson());
-    return JsonUtil.createRefreshAccessTokenResponse(jsonObject);
+    return new RefreshAccessTokenCredentials.JsonUtil().createModelObject(jsonObject);
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {

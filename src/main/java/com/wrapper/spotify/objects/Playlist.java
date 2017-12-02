@@ -1,5 +1,7 @@
 package com.wrapper.spotify.objects;
 
+import net.sf.json.JSONObject;
+
 import java.util.List;
 
 public class Playlist extends AbstractModelObject {
@@ -98,7 +100,7 @@ public class Playlist extends AbstractModelObject {
     return new Builder();
   }
 
-  public static final class Builder extends AbstractModelObject.Builder<Playlist.Builder> {
+  public static final class Builder extends AbstractModelObject.Builder {
     private boolean collaborative;
     private String description;
     private ExternalUrls externalUrls;
@@ -187,6 +189,31 @@ public class Playlist extends AbstractModelObject {
     @Override
     public Playlist build() {
       return new Playlist(this);
+    }
+  }
+
+  public static final class JsonUtil extends AbstractModelObject.JsonUtil<Playlist> {
+    public Playlist createModelObject(JSONObject jsonObject) {
+      if (jsonObject == null || jsonObject.isNullObject()) {
+        return null;
+      }
+
+      return new Playlist.Builder()
+              .setCollaborative(jsonObject.getBoolean("collaborative"))
+              .setDescription(jsonObject.getString("description"))
+              .setExternalUrls(new ExternalUrls.JsonUtil().createModelObject(jsonObject.getJSONObject("external_urls")))
+              .setFollowers(new Followers.JsonUtil().createModelObject(jsonObject.getJSONObject("followers")))
+              .setHref(jsonObject.getString("href"))
+              .setId(jsonObject.getString("id"))
+              .setImages(new Image.JsonUtil().createModelObjectList(jsonObject.getJSONArray("images")))
+              .setName(jsonObject.getString("name"))
+              .setOwner(new User.JsonUtil().createModelObject(jsonObject.getJSONObject("owner")))
+              .setPublicAccess(jsonObject.getBoolean("public"))
+              .setSnapshotId(jsonObject.getString("snapshot_id"))
+              .setTracks(new PlaylistTrack.JsonUtil().createModelObjectPaging(jsonObject.getJSONObject("tracks")))
+              .setType(ObjectType.valueOf(jsonObject.getString("type")))
+              .setUri(jsonObject.getString("uri"))
+              .build();
     }
   }
 }

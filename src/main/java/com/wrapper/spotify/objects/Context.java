@@ -1,5 +1,7 @@
 package com.wrapper.spotify.objects;
 
+import net.sf.json.JSONObject;
+
 public class Context extends AbstractModelObject {
   private final ObjectType type;
   private final String href;
@@ -36,31 +38,50 @@ public class Context extends AbstractModelObject {
     return new Builder();
   }
 
-  public static final class Builder extends AbstractModelObject.Builder<Context.Builder> {
+  public static final class Builder extends AbstractModelObject.Builder {
     private ObjectType type;
     private String href;
     private ExternalUrls externalUrls;
     private String uri;
 
-    public void setType(ObjectType type) {
+    public Builder setType(ObjectType type) {
       this.type = type;
+      return this;
     }
 
-    public void setHref(String href) {
+    public Builder setHref(String href) {
       this.href = href;
+      return this;
     }
 
-    public void setExternalUrls(ExternalUrls externalUrls) {
+    public Builder setExternalUrls(ExternalUrls externalUrls) {
       this.externalUrls = externalUrls;
+      return this;
     }
 
-    public void setUri(String uri) {
+    public Builder setUri(String uri) {
       this.uri = uri;
+      return this;
     }
 
     @Override
     public Context build() {
       return new Context(this);
+    }
+  }
+
+  public static final class JsonUtil extends AbstractModelObject.JsonUtil<Context> {
+    public Context createModelObject(JSONObject jsonObject) {
+      if (jsonObject == null || jsonObject.isNullObject()) {
+        return null;
+      }
+
+      return new Context.Builder()
+              .setType(ObjectType.valueOf(jsonObject.getString("type")))
+              .setHref(jsonObject.getString("href"))
+              .setExternalUrls(new ExternalUrls.JsonUtil().createModelObject(jsonObject.getJSONObject("external_urls")))
+              .setUri(jsonObject.getString("uri"))
+              .build();
     }
   }
 }

@@ -1,5 +1,7 @@
 package com.wrapper.spotify.objects;
 
+import net.sf.json.JSONObject;
+
 import java.util.List;
 
 public class Category extends AbstractModelObject {
@@ -38,7 +40,7 @@ public class Category extends AbstractModelObject {
     return new Builder();
   }
 
-  public static final class Builder extends AbstractModelObject.Builder<ArtistSimplified.Builder> {
+  public static final class Builder extends AbstractModelObject.Builder {
     private String href;
     private List<Image> icons;
     private String id;
@@ -67,6 +69,21 @@ public class Category extends AbstractModelObject {
     @Override
     public Category build() {
       return new Category(this);
+    }
+  }
+
+  public static final class JsonUtil extends AbstractModelObject.JsonUtil<Category> {
+    public Category createModelObject(JSONObject jsonObject) {
+      if (jsonObject == null || jsonObject.isNullObject()) {
+        return null;
+      }
+
+      return new Category.Builder()
+              .setHref(jsonObject.getString("href"))
+              .setIcons(new Image.JsonUtil().createModelObjectList(jsonObject.getJSONArray("images")))
+              .setId(jsonObject.getString("id"))
+              .setName(jsonObject.getString("name"))
+              .build();
     }
   }
 }

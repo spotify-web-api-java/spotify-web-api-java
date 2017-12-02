@@ -2,10 +2,12 @@ package com.wrapper.spotify.requests;
 
 import com.google.common.base.Joiner;
 import com.google.common.util.concurrent.SettableFuture;
-import com.wrapper.spotify.JsonUtil;
 import com.wrapper.spotify.exceptions.*;
+import net.sf.json.JSONArray;
+import net.sf.json.JsonConfig;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ContainsMySavedTracksRequest extends AbstractRequest {
@@ -29,7 +31,7 @@ public class ContainsMySavedTracksRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return JsonUtil.createBooleans(getJson());
+    return new ArrayList<Boolean>(JSONArray.toList(JSONArray.fromObject(getJson()), new Object(), new JsonConfig()));
   }
 
   public SettableFuture<List<Boolean>> getAsync() throws
@@ -43,7 +45,7 @@ public class ContainsMySavedTracksRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return getAsync(JsonUtil.createBooleans(getJson()));
+    return getAsync(new ArrayList<Boolean>(JSONArray.toList(JSONArray.fromObject(getJson()), new Object(), new JsonConfig())));
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {

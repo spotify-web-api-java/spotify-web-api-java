@@ -1,7 +1,6 @@
 package com.wrapper.spotify.requests;
 
 import com.google.common.util.concurrent.SettableFuture;
-import com.wrapper.spotify.JsonUtil;
 import com.wrapper.spotify.exceptions.*;
 import com.wrapper.spotify.objects.AudioFeature;
 
@@ -28,7 +27,7 @@ public class AudioFeatureRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return JsonUtil.createAudioFeature(getJson());
+    return new AudioFeature.JsonUtil().createModelObject(getJson());
   }
 
   public SettableFuture<AudioFeature> getAsync() throws
@@ -42,7 +41,7 @@ public class AudioFeatureRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return getAsync(JsonUtil.createAudioFeature(getJson()));
+    return getAsync(new AudioFeature.JsonUtil().createModelObject(getJson()));
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {

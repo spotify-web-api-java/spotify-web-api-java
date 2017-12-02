@@ -1,11 +1,13 @@
 package com.wrapper.spotify.objects;
 
 import com.neovisionaries.i18n.CountryCode;
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+import net.sf.json.JsonConfig;
 
 import java.util.List;
 
 public class AlbumSimplified extends AbstractModelObject {
-
   private final AlbumType albumType;
   private final List<ArtistSimplified> artists;
   private final List<CountryCode> availableMarkets;
@@ -77,7 +79,7 @@ public class AlbumSimplified extends AbstractModelObject {
     return new Builder();
   }
 
-  public static final class Builder extends AbstractModelObject.Builder<AlbumSimplified.Builder> {
+  public static final class Builder extends AbstractModelObject.Builder {
 
     private AlbumType albumType;
     private List<ArtistSimplified> artists;
@@ -144,6 +146,26 @@ public class AlbumSimplified extends AbstractModelObject {
     public AlbumSimplified build() {
       return new AlbumSimplified(this);
     }
+  }
 
+  public static final class JsonUtil extends AbstractModelObject.JsonUtil<AlbumSimplified> {
+    public AlbumSimplified createModelObject(JSONObject jsonObject) {
+      if (jsonObject == null || jsonObject.isNullObject()) {
+        return null;
+      }
+
+      return new AlbumSimplified.Builder()
+              .setAlbumType(AlbumType.valueOf(jsonObject.getString("album_type")))
+              .setArtists(new ArtistSimplified.JsonUtil().createModelObjectList(jsonObject.getJSONArray("artists")))
+              .setAvailableMarkets(JSONArray.toList(jsonObject.getJSONArray("available_markets"), new Object(), new JsonConfig()))
+              .setExternalUrls(new ExternalUrls.JsonUtil().createModelObject(jsonObject.getJSONObject("external_urls")))
+              .setHref(jsonObject.getString("href")).setId(jsonObject.getString("id"))
+              .setId(jsonObject.getString("id"))
+              .setImages(new Image.JsonUtil().createModelObjectList(jsonObject.getJSONArray("images")))
+              .setName(jsonObject.getString("name"))
+              .setType(ObjectType.valueOf(jsonObject.getString("type")))
+              .setUri(jsonObject.getString("uri"))
+              .build();
+    }
   }
 }

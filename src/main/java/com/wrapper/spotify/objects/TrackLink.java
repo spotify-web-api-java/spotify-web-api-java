@@ -1,5 +1,7 @@
 package com.wrapper.spotify.objects;
 
+import net.sf.json.JSONObject;
+
 public class TrackLink extends AbstractModelObject {
   private final ExternalUrls externalUrls;
   private final String href;
@@ -42,7 +44,7 @@ public class TrackLink extends AbstractModelObject {
     return new Builder();
   }
 
-  public static final class Builder extends AbstractModelObject.Builder<TrackLink.Builder> {
+  public static final class Builder extends AbstractModelObject.Builder {
     private ExternalUrls externalUrls;
     private String href;
     private String id;
@@ -77,6 +79,22 @@ public class TrackLink extends AbstractModelObject {
     @Override
     public TrackLink build() {
       return new TrackLink(this);
+    }
+  }
+
+  public static final class JsonUtil extends AbstractModelObject.JsonUtil<TrackLink> {
+    public TrackLink createModelObject(JSONObject jsonObject) {
+      if (jsonObject == null || jsonObject.isNullObject()) {
+        return null;
+      }
+
+      return new TrackLink.Builder()
+              .setExternalUrls(new ExternalUrls.JsonUtil().createModelObject(jsonObject.getJSONObject("external_urls")))
+              .setHref(jsonObject.getString("href"))
+              .setId(jsonObject.getString("id"))
+              .setType(ObjectType.valueOf(jsonObject.getString("type")))
+              .setUri(jsonObject.getString("uri"))
+              .build();
     }
   }
 }

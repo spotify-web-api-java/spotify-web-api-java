@@ -1,6 +1,7 @@
 package com.wrapper.spotify.objects;
 
 import com.neovisionaries.i18n.CountryCode;
+import net.sf.json.JSONObject;
 
 import java.util.List;
 
@@ -88,7 +89,7 @@ public class User extends AbstractModelObject {
     return new Builder();
   }
 
-  public static final class Builder extends AbstractModelObject.Builder<User.Builder> {
+  public static final class Builder extends AbstractModelObject.Builder {
     private String birthdate;
     private CountryCode country;
     private String displayName;
@@ -165,6 +166,29 @@ public class User extends AbstractModelObject {
     @Override
     public User build() {
       return new User(this);
+    }
+  }
+
+  public static final class JsonUtil extends AbstractModelObject.JsonUtil<User> {
+    public User createModelObject(JSONObject jsonObject) {
+      if (jsonObject == null || jsonObject.isNullObject()) {
+        return null;
+      }
+
+      return new User.Builder()
+              .setBirthdate(jsonObject.getString("birthdate"))
+              .setCountry(CountryCode.getByCode(jsonObject.getString("country")))
+              .setDisplayName(jsonObject.getString("display_name"))
+              .setEmail(jsonObject.getString("email"))
+              .setExternalUrls(new ExternalUrls.JsonUtil().createModelObject(jsonObject.getJSONObject("external_urls")))
+              .setFollowers(new Followers.JsonUtil().createModelObject(jsonObject.getJSONObject("followers")))
+              .setHref(jsonObject.getString("href"))
+              .setId(jsonObject.getString("id"))
+              .setImages(new Image.JsonUtil().createModelObjectList(jsonObject.getJSONArray("images")))
+              .setProduct(ProductType.valueOf(jsonObject.getString("product")))
+              .setType(ObjectType.valueOf(jsonObject.getString("type")))
+              .setUri(jsonObject.getString("uri"))
+              .build();
     }
   }
 }

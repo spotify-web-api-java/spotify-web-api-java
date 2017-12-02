@@ -1,17 +1,20 @@
 package com.wrapper.spotify.objects;
 
+import com.google.common.reflect.TypeToken;
+import net.sf.json.JSONObject;
+
 import java.util.List;
 
 public class Paging<T> extends AbstractModelObject {
   private final String href;
-  private final List<T> items;
+  private final List<?> items;
   private final int limit;
   private final String next;
   private final int offset;
   private final String previous;
   private final int total;
 
-  private Paging(final Paging.Builder builder) {
+  private Paging(final Paging.Builder<T> builder) {
     super(builder);
 
     this.href = builder.href;
@@ -27,7 +30,7 @@ public class Paging<T> extends AbstractModelObject {
     return href;
   }
 
-  public List<T> getItems() {
+  public List<?> getItems() {
     return items;
   }
 
@@ -52,57 +55,75 @@ public class Paging<T> extends AbstractModelObject {
   }
 
   @Override
-  public Builder builder() {
-    return new Builder();
+  public Builder<T> builder() {
+    return new Builder<>();
   }
 
-  public static final class Builder extends AbstractModelObject.Builder<Paging.Builder> {
+  public static final class Builder<T> extends AbstractModelObject.Builder {
     private String href;
-    private List items;
+    private List<?> items;
     private int limit;
     private String next;
     private int offset;
     private String previous;
     private int total;
 
-    public Builder setHref(String href) {
+    public Builder<T> setHref(String href) {
       this.href = href;
       return this;
     }
 
-    public Builder setItems(List items) {
+    public Builder<T> setItems(List<?> items) {
       this.items = items;
       return this;
     }
 
-    public Builder setLimit(int limit) {
+    public Builder<T> setLimit(int limit) {
       this.limit = limit;
       return this;
     }
 
-    public Builder setNext(String next) {
+    public Builder<T> setNext(String next) {
       this.next = next;
       return this;
     }
 
-    public Builder setOffset(int offset) {
+    public Builder<T> setOffset(int offset) {
       this.offset = offset;
       return this;
     }
 
-    public Builder setPrevious(String previous) {
+    public Builder<T> setPrevious(String previous) {
       this.previous = previous;
       return this;
     }
 
-    public Builder setTotal(int total) {
+    public Builder<T> setTotal(int total) {
       this.total = total;
       return this;
     }
 
     @Override
-    public Paging build() {
-      return new Paging(this);
+    public Paging<T> build() {
+      return new Paging<>(this);
+    }
+  }
+
+  public static final class JsonUtilPaging extends AbstractModelObject.JsonUtilPaging {
+    public <X> Paging<X> createModelObject(JSONObject jsonObject, TypeToken<X> type) {
+      if (jsonObject == null || jsonObject.isNullObject()) {
+        return null;
+      }
+
+      return new Paging.Builder<X>()
+              .setHref(jsonObject.getString("href"))
+              .setItems(createModelObjectList(jsonObject.getJSONArray("items"), type))
+              .setLimit(jsonObject.getInt("limit"))
+              .setNext(jsonObject.getString("next"))
+              .setOffset(jsonObject.getInt("offset"))
+              .setPrevious(jsonObject.getString("previous"))
+              .setTotal(jsonObject.getInt("total"))
+              .build();
     }
   }
 }

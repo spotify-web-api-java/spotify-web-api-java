@@ -1,6 +1,9 @@
 package com.wrapper.spotify.objects;
 
 import com.neovisionaries.i18n.CountryCode;
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+import net.sf.json.JsonConfig;
 
 import java.util.List;
 
@@ -106,7 +109,7 @@ public class TrackSimplified extends AbstractModelObject {
     return new Builder();
   }
 
-  public static final class Builder extends AbstractModelObject.Builder<TrackSimplified.Builder> {
+  public static final class Builder extends AbstractModelObject.Builder {
     private List<ArtistSimplified> artists;
     private List<CountryCode> availableMarkets;
     private int discNumber;
@@ -201,6 +204,32 @@ public class TrackSimplified extends AbstractModelObject {
     @Override
     public TrackSimplified build() {
       return new TrackSimplified(this);
+    }
+  }
+
+  public static final class JsonUtil extends AbstractModelObject.JsonUtil<TrackSimplified> {
+    public TrackSimplified createModelObject(JSONObject jsonObject) {
+      if (jsonObject == null || jsonObject.isNullObject()) {
+        return null;
+      }
+
+      return new TrackSimplified.Builder()
+              .setArtists(new ArtistSimplified.JsonUtil().createModelObjectList(jsonObject.getJSONArray("artists")))
+              .setAvailableMarkets(JSONArray.toList(jsonObject.getJSONArray("available_markets"), new Object(), new JsonConfig()))
+              .setDiscNumber(jsonObject.getInt("disc_number"))
+              .setDurationMs(jsonObject.getInt("duration_ms"))
+              .setExplicit(jsonObject.getBoolean("explicit"))
+              .setExternalUrls(new ExternalUrls.JsonUtil().createModelObject(jsonObject.getJSONObject("external_urls")))
+              .setHref(jsonObject.getString("href"))
+              .setId(jsonObject.getString("id"))
+              .setIsPlayable(jsonObject.getBoolean("is_playable"))
+              .setLinkedFrom(new TrackLink.JsonUtil().createModelObject(jsonObject.getJSONObject("linked_from")))
+              .setName(jsonObject.getString("name"))
+              .setPreviewUrl(jsonObject.getString("preview_url"))
+              .setTrackNumber(jsonObject.getInt(("track_number")))
+              .setType(ObjectType.valueOf(jsonObject.getString("type")))
+              .setUri(jsonObject.getString("uri"))
+              .build();
     }
   }
 }

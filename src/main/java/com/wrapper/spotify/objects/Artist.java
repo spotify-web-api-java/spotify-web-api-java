@@ -1,9 +1,12 @@
 package com.wrapper.spotify.objects;
 
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+import net.sf.json.JsonConfig;
+
 import java.util.List;
 
 public class Artist extends AbstractModelObject {
-
   private final ExternalUrls externalUrls;
   private final Followers followers;
   private final List<String> genres;
@@ -75,8 +78,7 @@ public class Artist extends AbstractModelObject {
     return new Builder();
   }
 
-  public static final class Builder extends AbstractModelObject.Builder<Artist.Builder> {
-
+  public static final class Builder extends AbstractModelObject.Builder {
     private ExternalUrls externalUrls;
     private Followers followers;
     private List<String> genres;
@@ -141,6 +143,27 @@ public class Artist extends AbstractModelObject {
     @Override
     public Artist build() {
       return new Artist(this);
+    }
+  }
+
+  public static final class JsonUtil extends AbstractModelObject.JsonUtil<Artist> {
+    public Artist createModelObject(JSONObject jsonObject) {
+      if (jsonObject == null || jsonObject.isNullObject()) {
+        return null;
+      }
+
+      return new Artist.Builder()
+              .setExternalUrls(new ExternalUrls.JsonUtil().createModelObject(jsonObject.getJSONObject("external_urls")))
+              .setFollowers(new Followers.JsonUtil().createModelObject(jsonObject.getJSONObject("followers")))
+              .setGenres(JSONArray.toList(jsonObject.getJSONArray("genres"), new Object(), new JsonConfig()))
+              .setHref(jsonObject.getString("href"))
+              .setId(jsonObject.getString("id"))
+              .setImages(new Image.JsonUtil().createModelObjectList(jsonObject.getJSONArray("images")))
+              .setName(jsonObject.getString("name"))
+              .setPopularity(jsonObject.getInt("popularity"))
+              .setType(ObjectType.valueOf(jsonObject.getString("type")))
+              .setUri(jsonObject.getString("uri"))
+              .build();
     }
   }
 

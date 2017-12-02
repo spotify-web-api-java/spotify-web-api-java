@@ -1,5 +1,7 @@
 package com.wrapper.spotify.objects;
 
+import net.sf.json.JSONObject;
+
 public class SnapshotResult extends AbstractModelObject {
   public final String snapshotId;
 
@@ -18,7 +20,7 @@ public class SnapshotResult extends AbstractModelObject {
     return new Builder();
   }
 
-  public static final class Builder extends AbstractModelObject.Builder<SnapshotResult.Builder> {
+  public static final class Builder extends AbstractModelObject.Builder {
     public String snapshotId;
 
     public Builder setSnapshotId(String snapshotId) {
@@ -29,6 +31,18 @@ public class SnapshotResult extends AbstractModelObject {
     @Override
     public SnapshotResult build() {
       return new SnapshotResult(this);
+    }
+  }
+
+  public static final class JsonUtil extends AbstractModelObject.JsonUtil<SnapshotResult> {
+    public SnapshotResult createModelObject(JSONObject jsonObject) {
+      if (jsonObject == null || jsonObject.isNullObject()) {
+        return null;
+      }
+
+      return new SnapshotResult.Builder()
+              .setSnapshotId(jsonObject.getString("snapshot_id"))
+              .build();
     }
   }
 }

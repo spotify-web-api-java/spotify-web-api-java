@@ -3,7 +3,6 @@ package com.wrapper.spotify.requests.authentication;
 import com.google.common.base.Joiner;
 import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.Api;
-import com.wrapper.spotify.JsonUtil;
 import com.wrapper.spotify.exceptions.*;
 import com.wrapper.spotify.requests.AbstractRequest;
 import com.wrapper.spotify.objects.ClientCredentials;
@@ -28,7 +27,7 @@ public class ClientCredentialsGrantRequest extends AbstractRequest {
 
     try {
       JSONObject jsonObject = JSONObject.fromObject(postJson());
-      future.set(JsonUtil.createApplicationAuthenticationToken(jsonObject));
+      future.set(new ClientCredentials.JsonUtil().createModelObject(jsonObject));
     } catch (Exception e) {
       future.setException(e);
     }
@@ -48,7 +47,7 @@ public class ClientCredentialsGrantRequest extends AbstractRequest {
           BadGatewayException,
           ServiceUnavailableException {
     JSONObject jsonObject = JSONObject.fromObject(postJson());
-    return JsonUtil.createApplicationAuthenticationToken(jsonObject);
+    return new ClientCredentials.JsonUtil().createModelObject(jsonObject);
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {

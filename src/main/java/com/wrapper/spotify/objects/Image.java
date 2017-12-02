@@ -1,5 +1,7 @@
 package com.wrapper.spotify.objects;
 
+import net.sf.json.JSONObject;
+
 public class Image extends AbstractModelObject {
   private final int height;
   private final String url;
@@ -30,7 +32,7 @@ public class Image extends AbstractModelObject {
     return new Builder();
   }
 
-  public static final class Builder extends AbstractModelObject.Builder<Image.Builder> {
+  public static final class Builder extends AbstractModelObject.Builder {
     private int height;
     private String url;
     private int width;
@@ -53,6 +55,20 @@ public class Image extends AbstractModelObject {
     @Override
     public Image build() {
       return new Image(this);
+    }
+  }
+
+  public static final class JsonUtil extends AbstractModelObject.JsonUtil<Image> {
+    public Image createModelObject(JSONObject jsonObject) {
+      if (jsonObject == null || jsonObject.isNullObject()) {
+        return null;
+      }
+
+      return new Image.Builder()
+              .setHeight(jsonObject.getInt(("height")))
+              .setUrl(jsonObject.getString("url"))
+              .setWidth(jsonObject.getInt(("width")))
+              .build();
     }
   }
 }
