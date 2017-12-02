@@ -106,7 +106,7 @@ public abstract class AbstractRequest implements Request {
     return httpManager.delete(url);
   }
 
-  public <T> SettableFuture getAsync(T value) {
+  public <T> SettableFuture<T> getAsync(T value) {
     final SettableFuture<T> settableFuture = SettableFuture.create();
 
     try {
