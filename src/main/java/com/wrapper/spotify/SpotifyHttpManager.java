@@ -46,7 +46,12 @@ public class SpotifyHttpManager implements HttpManager {
   public String get(Url url) throws WebApiException, IOException {
     assert (url != null);
 
-    final String uri = UrlUtil.assemble(url);
+    String uri = UrlUtil.assemble(url);
+
+    if (url.getParametersList() != null && url.getParametersList().size() > 0) {
+      uri = uri + parseQueryStringFromParameters(url.getParametersList());
+    }
+
     final HttpGet method = new HttpGet(uri);
 
     for (Url.Parameter header : url.getHeaderParametersList()) {
@@ -116,6 +121,26 @@ public class SpotifyHttpManager implements HttpManager {
     }
 
     return execute(method);
+  }
+
+  private String parseQueryStringFromParameters(List<Url.Parameter> parameterList) {
+    StringBuilder queryStrBuilder = new StringBuilder();
+    String queryStr;
+
+    queryStrBuilder.append("?");
+
+    for (Url.Parameter param : parameterList)
+    {
+      queryStrBuilder.append(param.getName())
+                     .append("=")
+                     .append(param.getValue())
+                     .append("&");
+    }
+
+    queryStr = queryStrBuilder.toString()
+                              .substring(0, queryStrBuilder.length() - 1);
+
+    return queryStr;
   }
 
   private List<NameValuePair> getBodyParametersAsNamedValuePairArray(Url url) {
