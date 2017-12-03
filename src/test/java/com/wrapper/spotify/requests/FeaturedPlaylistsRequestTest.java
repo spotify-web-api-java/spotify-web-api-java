@@ -16,6 +16,7 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
 import static junit.framework.Assert.assertEquals;
+import static junit.framework.TestCase.assertNull;
 import static junit.framework.TestCase.fail;
 
 public class FeaturedPlaylistsRequestTest {
@@ -43,26 +44,23 @@ public class FeaturedPlaylistsRequestTest {
     Futures.addCallback(future, new FutureCallback<FeaturedPlaylists>() {
       @Override
       public void onSuccess(FeaturedPlaylists featuredPlaylists) {
-        assertEquals("Behöver du hjälp att komma igång idag?", featuredPlaylists.getMessage());
+        assertEquals("Sleepy?", featuredPlaylists.getMessage());
 
         Paging<PlaylistSimplified> playlistPage = featuredPlaylists.getPlaylists();
 
-        assertEquals(12, playlistPage.getTotal());
-        assertEquals(1, playlistPage.getOffset());
+        assertEquals(23, playlistPage.getTotal());
+        assertEquals(0, playlistPage.getOffset());
         assertEquals(1, playlistPage.getLimit());
-        assertEquals("https://api.spotify.com/v1/browse/featured-playlists?country=SE&" +
-                        "locale=sv_SE&timestamp=2014-10-23T09:00:00&offset=2&limit=1",
+        assertEquals("https://api.spotify.com/v1/browse/featured-playlists?timestamp=2017-12-03T01%3A40%3A49&offset=1&limit=1",
                 playlistPage.getNext());
-        assertEquals("https://api.spotify.com/v1/browse/featured-playlists?country=SE&" +
-                        "locale=sv_SE&timestamp=2014-10-23T09:00:00&offset=0&limit=1",
-                playlistPage.getPrevious());
+        assertNull(playlistPage.getPrevious());
 
         PlaylistSimplified[] items = playlistPage.getItems();
         assertEquals(1, items.length);
 
         PlaylistSimplified playlist = items[0];
-        assertEquals("2BgVZaiDigaqxTbZEI2TpE", playlist.getId());
-        assertEquals("Träning", playlist.getName());
+        assertEquals("37i9dQZF1DWStLt4f1zJ6I", playlist.getId());
+        assertEquals("Songs For Sleeping", playlist.getName());
         asyncCompleted.countDown();
       }
 
@@ -93,26 +91,23 @@ public class FeaturedPlaylistsRequestTest {
 
     FeaturedPlaylists featuredPlaylists = request.get();
 
-    assertEquals("Behöver du hjälp att komma igång idag?", featuredPlaylists.getMessage());
+    assertEquals("Sleepy?", featuredPlaylists.getMessage());
 
     Paging<PlaylistSimplified> playlistPage = featuredPlaylists.getPlaylists();
 
-    assertEquals(12, playlistPage.getTotal());
-    assertEquals(1, playlistPage.getOffset());
+    assertEquals(23, playlistPage.getTotal());
+    assertEquals(0, playlistPage.getOffset());
     assertEquals(1, playlistPage.getLimit());
-    assertEquals("https://api.spotify.com/v1/browse/featured-playlists?country=SE&" +
-                    "locale=sv_SE&timestamp=2014-10-23T09:00:00&offset=2&limit=1",
+    assertEquals("https://api.spotify.com/v1/browse/featured-playlists?timestamp=2017-12-03T01%3A40%3A49&offset=1&limit=1",
             playlistPage.getNext());
-    assertEquals("https://api.spotify.com/v1/browse/featured-playlists?country=SE&" +
-                    "locale=sv_SE&timestamp=2014-10-23T09:00:00&offset=0&limit=1",
-            playlistPage.getPrevious());
+    assertNull(playlistPage.getPrevious());
 
     PlaylistSimplified[] items = playlistPage.getItems();
     assertEquals(1, items.length);
 
     PlaylistSimplified playlist = items[0];
-    assertEquals("2BgVZaiDigaqxTbZEI2TpE", playlist.getId());
-    assertEquals("Träning", playlist.getName());
+    assertEquals("37i9dQZF1DWStLt4f1zJ6I", playlist.getId());
+    assertEquals("Songs For Sleeping", playlist.getName());
 
   }
 

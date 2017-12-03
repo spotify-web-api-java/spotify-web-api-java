@@ -38,55 +38,7 @@ public class PlaylistTracksRequestTest {
       public void onSuccess(Paging<PlaylistTrack> page) {
         assertNotNull(page);
         assertEquals(
-                "https://api.spotify.com/v1/users/thelinmichael/playlists/3ktAYNcRHpazJ9qecm3ptn/tracks",
-                page.getHref());
-        assertEquals(100, page.getLimit());
-        assertNull(page.getNext());
-        assertEquals(0, page.getOffset());
-        assertNull(page.getPrevious());
-        assertTrue(page.getTotal() > 0);
-
-        final PlaylistTrack playlistTrack = page.getItems()[0];
-        assertNotNull(playlistTrack.getAddedAt());
-        assertNotNull(playlistTrack.getAddedBy());
-
-        final Track track = playlistTrack.getTrack();
-        assertTrue(track.getPopularity() >= 0);
-
-        asyncCompleted.countDown();
-      }
-
-      @Override
-      public void onFailure(Throwable throwable) {
-        fail("Failed to resolve future");
-      }
-    });
-
-    asyncCompleted.await(1, TimeUnit.SECONDS);
-  }
-
-  @Test
-  public void shouldGetStarredResult_async() throws Exception {
-    String accessToken = "someToken";
-    final Api api = Api.builder().accessToken(accessToken)
-            .build();
-
-    final PlaylistTracksRequest request = api
-            .getStarred("thelinmichael")
-            .setHttpManager(TestUtil.MockedHttpManager.returningJson("starred-tracks.json"))
-            .build();
-
-    final CountDownLatch asyncCompleted = new CountDownLatch(1);
-
-    final SettableFuture<Paging<PlaylistTrack>> playlistTracksPageFuture = request.getAsync();
-
-    Futures.addCallback(playlistTracksPageFuture, new FutureCallback<Paging<PlaylistTrack>>() {
-
-      @Override
-      public void onSuccess(Paging<PlaylistTrack> page) {
-        assertNotNull(page);
-        assertEquals(
-                "https://api.spotify.com/v1/users/thelinmichael/starred/tracks?offset=0&limit=100",
+                "https://api.spotify.com/v1/users/thelinmichael/playlists/3ktAYNcRHpazJ9qecm3ptn/tracks?offset=0&limit=100",
                 page.getHref());
         assertEquals(100, page.getLimit());
         assertNull(page.getNext());
@@ -127,7 +79,7 @@ public class PlaylistTracksRequestTest {
 
     assertNotNull(page);
     assertEquals(
-            "https://api.spotify.com/v1/users/thelinmichael/playlists/3ktAYNcRHpazJ9qecm3ptn/tracks",
+            "https://api.spotify.com/v1/users/thelinmichael/playlists/3ktAYNcRHpazJ9qecm3ptn/tracks?offset=0&limit=100",
             page.getHref());
     assertEquals(100, page.getLimit());
     assertNull(page.getNext());
@@ -142,34 +94,4 @@ public class PlaylistTracksRequestTest {
     final Track track = playlistTrack.getTrack();
     assertTrue(track.getPopularity() >= 0);
   }
-
-  @Test
-  public void shouldGetStarredResult_sync() throws Exception {
-    String accessToken = "someToken";
-    final Api api = Api.builder().accessToken(accessToken).build();
-
-    final PlaylistTracksRequest request = api.getStarred("thelinmichael")
-            .setHttpManager(TestUtil.MockedHttpManager.returningJson("starred-tracks.json"))
-            .build();
-
-    final Paging<PlaylistTrack> page = request.get();
-
-    assertNotNull(page);
-    assertEquals(
-            "https://api.spotify.com/v1/users/thelinmichael/starred/tracks?offset=0&limit=100",
-            page.getHref());
-    assertEquals(100, page.getLimit());
-    assertNull(page.getNext());
-    assertEquals(0, page.getOffset());
-    assertNull(page.getPrevious());
-    assertTrue(page.getTotal() > 0);
-
-    final PlaylistTrack playlistTrack = page.getItems()[0];
-    assertNotNull(playlistTrack.getAddedAt());
-    assertNotNull(playlistTrack.getAddedBy());
-
-    final Track track = playlistTrack.getTrack();
-    assertTrue(track.getPopularity() >= 0);
-  }
-
 }

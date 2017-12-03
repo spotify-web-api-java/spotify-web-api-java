@@ -7,7 +7,6 @@ import com.wrapper.spotify.Api;
 import com.wrapper.spotify.TestUtil;
 import org.junit.Test;
 
-import java.util.Arrays;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
@@ -22,7 +21,7 @@ public class ContainsMySavedTracksRequestTest {
     final Api api = Api.builder().accessToken(accessToken).build();
 
     ContainsMySavedTracksRequest request = api.containsMySavedTracks(
-            new String[] {"0udZHhCi7p1YzMlvI4fXoK", "1e1VmyiAuPyM4SHhySP1oU"})
+            new String[]{"0udZHhCi7p1YzMlvI4fXoK", "1e1VmyiAuPyM4SHhySP1oU"})
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("yourmusic-contains.json"))
             .build();
 
@@ -56,7 +55,7 @@ public class ContainsMySavedTracksRequestTest {
     final Api api = Api.builder().accessToken(accessToken).build();
 
     ContainsMySavedTracksRequest request = api.containsMySavedTracks(
-            new String[] {"0udZHhCi7p1YzMlvI4fXoK", "1e1VmyiAuPyM4SHhySP1oU"})
+            new String[]{"0udZHhCi7p1YzMlvI4fXoK", "1e1VmyiAuPyM4SHhySP1oU"})
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("yourmusic-contains.json"))
             .build();
 

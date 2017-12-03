@@ -57,7 +57,7 @@ public class ApiTest {
   @Test
   public void shouldCreateAGetAlbumsUrlFromAList() {
     Api api = Api.DEFAULT_API;
-    Request request = api.getAlbums(new String[] {"6hDH3YWFdcUNQjubYztIsG", "2IA4WEsWAYpV9eKkwR2UYv"}).build();
+    Request request = api.getAlbums(new String[]{"6hDH3YWFdcUNQjubYztIsG", "2IA4WEsWAYpV9eKkwR2UYv"}).build();
     assertEquals("https://api.spotify.com:443/v1/albums", request.toString(false));
     assertHasParameter(request.toUrl(), "ids", "6hDH3YWFdcUNQjubYztIsG,2IA4WEsWAYpV9eKkwR2UYv");
   }
@@ -73,7 +73,7 @@ public class ApiTest {
   @Test
   public void shouldCreateAGetTracksUrlFromList() {
     Api api = Api.DEFAULT_API;
-    Request request = api.getTracks(new String[] {"6hDH3YWFdcUNQjubYztIsG", "2IA4WEsWAYpV9eKkwR2UYv"}).build();
+    Request request = api.getTracks(new String[]{"6hDH3YWFdcUNQjubYztIsG", "2IA4WEsWAYpV9eKkwR2UYv"}).build();
     assertEquals("https://api.spotify.com:443/v1/tracks", request.toString(false));
     assertHasParameter(request.toUrl(), "ids", "6hDH3YWFdcUNQjubYztIsG,2IA4WEsWAYpV9eKkwR2UYv");
   }
@@ -510,7 +510,7 @@ public class ApiTest {
             .build();
 
     final Request request = api
-            .addToMySavedTracks(new String[] {"test", "test2"})
+            .addToMySavedTracks(new String[]{"test", "test2"})
             .build();
 
     assertEquals("https://api.spotify.com:443/v1/me/tracks", request.toString(false));
@@ -526,7 +526,7 @@ public class ApiTest {
             .build();
 
     final Request request = api
-            .removeFromMySavedTracks(new String[] {"test", "test2"})
+            .removeFromMySavedTracks(new String[]{"test", "test2"})
             .build();
 
     assertEquals("https://api.spotify.com:443/v1/me/tracks", request.toString(false));

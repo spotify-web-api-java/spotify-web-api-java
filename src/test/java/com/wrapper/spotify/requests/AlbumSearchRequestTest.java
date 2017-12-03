@@ -36,7 +36,7 @@ public class AlbumSearchRequestTest {
     Futures.addCallback(searchResultFuture, new FutureCallback<Paging<AlbumSimplified>>() {
       @Override
       public void onSuccess(Paging<AlbumSimplified> albumSearchResult) {
-        assertEquals("https://api.spotify.com/v1/search?query=tania%2Bbowra&offset=0&limit=20&type=album", albumSearchResult.getHref());
+        assertEquals("https://api.spotify.com/v1/search?query=tania+bowra&type=album&market=DE&offset=0&limit=20", albumSearchResult.getHref());
         assertEquals(20, albumSearchResult.getLimit());
         assertEquals(0, albumSearchResult.getOffset());
         assertNull(albumSearchResult.getNext());
@@ -77,7 +77,7 @@ public class AlbumSearchRequestTest {
             .build();
 
     final Paging<AlbumSimplified> albumSearchResult = request.get();
-    assertEquals("https://api.spotify.com/v1/search?query=tania%2Bbowra&offset=0&limit=20&type=album", albumSearchResult.getHref());
+    assertEquals("https://api.spotify.com/v1/search?query=tania+bowra&type=album&market=DE&offset=0&limit=20", albumSearchResult.getHref());
     assertEquals(20, albumSearchResult.getLimit());
     assertEquals(0, albumSearchResult.getOffset());
     assertNull(albumSearchResult.getNext());

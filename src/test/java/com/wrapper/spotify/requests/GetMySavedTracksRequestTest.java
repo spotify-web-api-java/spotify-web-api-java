@@ -38,16 +38,15 @@ public class GetMySavedTracksRequestTest {
       public void onSuccess(Paging<LibraryTrack> libraryTracks) {
         assertNotNull(libraryTracks);
 
-        assertEquals("https://api.spotify.com/v1/me/tracks?offset=1&limit=5",
-                libraryTracks.getHref());
+        assertEquals("https://api.spotify.com/v1/me/tracks?offset=1&limit=1", libraryTracks.getHref());
 
         LibraryTrack[] items = libraryTracks.getItems();
-        assertEquals(5, items.length);
+        assertEquals(1, items.length);
 
         LibraryTrack firstItem = libraryTracks.getItems()[0];
         assertNotNull(firstItem.getAddedAt());
         assertNotNull(firstItem.getTrack());
-        assertEquals("13zm8XhfM4RBtQpjdqY44e", firstItem.getTrack().getId());
+        assertEquals("1bhUWB0zJMIKr9yVPrkEuI", firstItem.getTrack().getId());
 
         asyncCompleted.countDown();
       }
@@ -75,15 +74,15 @@ public class GetMySavedTracksRequestTest {
 
     assertNotNull(libraryTracks);
 
-    assertEquals("https://api.spotify.com/v1/me/tracks?offset=1&limit=5", libraryTracks.getHref());
+    assertEquals("https://api.spotify.com/v1/me/tracks?offset=1&limit=1", libraryTracks.getHref());
 
     LibraryTrack[] items = libraryTracks.getItems();
-    assertEquals(5, items.length);
+    assertEquals(1, items.length);
 
     LibraryTrack firstItem = libraryTracks.getItems()[0];
     assertNotNull(firstItem.getAddedAt());
     assertNotNull(firstItem.getTrack());
-    assertEquals("13zm8XhfM4RBtQpjdqY44e", firstItem.getTrack().getId());
+    assertEquals("1bhUWB0zJMIKr9yVPrkEuI", firstItem.getTrack().getId());
   }
 
 }

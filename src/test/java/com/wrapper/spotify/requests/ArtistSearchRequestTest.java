@@ -43,7 +43,7 @@ public class ArtistSearchRequestTest {
         assertTrue(artistSearchResult.getTotal() > 0);
         assertNull(artistSearchResult.getNext());
         assertNull(artistSearchResult.getPrevious());
-        assertEquals("https://api.spotify.com/v1/search?query=tania+bowra&offset=0&limit=20&type=artist", artistSearchResult.getHref());
+        assertEquals("https://api.spotify.com/v1/search?query=tania+bowra&type=artist&market=DE&offset=0&limit=20", artistSearchResult.getHref());
 
         Artist[] artists = artistSearchResult.getItems();
 
@@ -87,7 +87,7 @@ public class ArtistSearchRequestTest {
     assertTrue(artistSearchResult.getTotal() > 0);
     assertNull(artistSearchResult.getNext());
     assertNull(artistSearchResult.getPrevious());
-    assertEquals("https://api.spotify.com/v1/search?query=tania+bowra&offset=0&limit=20&type=artist", artistSearchResult.getHref());
+    assertEquals("https://api.spotify.com/v1/search?query=tania+bowra&type=artist&market=DE&offset=0&limit=20", artistSearchResult.getHref());
 
     Artist[] artists = artistSearchResult.getItems();
 
