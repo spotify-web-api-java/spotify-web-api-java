@@ -1,50 +1,100 @@
 package com.wrapper.spotify.model_objects;
 
-public class TrackLink {
+import com.google.gson.JsonObject;
 
-  private ExternalUrls externalUrls;
-  private String href;
-  private String id;
-  private ModelObjectType type = ModelObjectType.TRACK;
-  private String uri;
+public class TrackLink extends AbstractModelObject {
+  private final ExternalUrls externalUrls;
+  private final String href;
+  private final String id;
+  private final ModelObjectType type;
+  private final String uri;
+
+  private TrackLink(final TrackLink.Builder builder) {
+    super(builder);
+
+    this.externalUrls = builder.externalUrls;
+    this.href = builder.href;
+    this.id = builder.id;
+    this.type = builder.type;
+    this.uri = builder.uri;
+  }
 
   public ExternalUrls getExternalUrls() {
     return externalUrls;
-  }
-
-  public void setExternalUrls(ExternalUrls externalUrls) {
-    this.externalUrls = externalUrls;
   }
 
   public String getHref() {
     return href;
   }
 
-  public void setHref(String href) {
-    this.href = href;
-  }
-
   public String getId() {
     return id;
-  }
-
-  public void setId(String id) {
-    this.id = id;
   }
 
   public ModelObjectType getType() {
     return type;
   }
 
-  public void setType(ModelObjectType type) {
-    this.type = type;
-  }
-
   public String getUri() {
     return uri;
   }
 
-  public void setUri(String uri) {
-    this.uri = uri;
+  @Override
+  public Builder builder() {
+    return new Builder();
+  }
+
+  public static final class Builder extends AbstractModelObject.Builder {
+    private ExternalUrls externalUrls;
+    private String href;
+    private String id;
+    private ModelObjectType type;
+    private String uri;
+
+    public Builder setExternalUrls(ExternalUrls externalUrls) {
+      this.externalUrls = externalUrls;
+      return this;
+    }
+
+    public Builder setHref(String href) {
+      this.href = href;
+      return this;
+    }
+
+    public Builder setId(String id) {
+      this.id = id;
+      return this;
+    }
+
+    public Builder setType(ModelObjectType type) {
+      this.type = type;
+      return this;
+    }
+
+    public Builder setUri(String uri) {
+      this.uri = uri;
+      return this;
+    }
+
+    @Override
+    public TrackLink build() {
+      return new TrackLink(this);
+    }
+  }
+
+  public static final class JsonUtil extends AbstractModelObject.JsonUtil<TrackLink> {
+    public TrackLink createModelObject(JsonObject jsonObject) {
+      if (jsonObject == null || jsonObject.isJsonNull()) {
+        return null;
+      }
+
+      return new TrackLink.Builder()
+              .setExternalUrls(new ExternalUrls.JsonUtil().createModelObject(jsonObject.getAsJsonObject("external_urls")))
+              .setHref(jsonObject.get("href").getAsString())
+              .setId(jsonObject.get("id").getAsString())
+              .setType(ModelObjectType.valueOf(jsonObject.get("type").getAsString().toUpperCase()))
+              .setUri(jsonObject.get("uri").getAsString())
+              .build();
+    }
   }
 }

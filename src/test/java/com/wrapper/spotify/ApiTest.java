@@ -3,7 +3,7 @@ package com.wrapper.spotify;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.wrapper.spotify.UtilProtos.Url.Scheme;
-import com.wrapper.spotify.objects.AlbumType;
+import com.wrapper.spotify.model_objects.AlbumType;
 import com.wrapper.spotify.requests.Request;
 import org.apache.commons.codec.binary.Base64;
 import org.junit.Test;

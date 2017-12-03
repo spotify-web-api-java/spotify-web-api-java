@@ -9,7 +9,7 @@ public class RecommendationsSeed extends AbstractModelObject {
   private final String href;
   private final String id;
   private final int initialPoolSize;
-  private final ObjectType type;
+  private final ModelObjectType type;
 
   private RecommendationsSeed(final RecommendationsSeed.Builder builder) {
     super(builder);
@@ -42,7 +42,7 @@ public class RecommendationsSeed extends AbstractModelObject {
     return initialPoolSize;
   }
 
-  public ObjectType getType() {
+  public ModelObjectType getType() {
     return type;
   }
 
@@ -57,7 +57,7 @@ public class RecommendationsSeed extends AbstractModelObject {
     private String href;
     private String id;
     private int initialPoolSize;
-    private ObjectType type;
+    private ModelObjectType type;
 
     public Builder setAfterFilteringSize(int afterFilteringSize) {
       this.afterFilteringSize = afterFilteringSize;
@@ -84,7 +84,7 @@ public class RecommendationsSeed extends AbstractModelObject {
       return this;
     }
 
-    public Builder setType(ObjectType type) {
+    public Builder setType(ModelObjectType type) {
       this.type = type;
       return this;
     }
@@ -107,7 +107,7 @@ public class RecommendationsSeed extends AbstractModelObject {
               .setHref((jsonObject.get("href") instanceof JsonNull) ? null : jsonObject.get("href").getAsString())
               .setId(jsonObject.get("id").getAsString())
               .setInitialPoolSize(jsonObject.get("initialPoolSize").getAsInt())
-              .setType(ObjectType.valueOf(jsonObject.get("type").getAsString().toUpperCase()))
+              .setType(ModelObjectType.valueOf(jsonObject.get("type").getAsString().toUpperCase()))
               .build();
     }
   }

@@ -45,7 +45,7 @@ public class PlaylistCreationRequestTest {
         assertNotNull(playlist.getOwner());
         assertFalse(playlist.getIsPublicAccess());
         assertEquals(0, playlist.getTracks().getTotal());
-        assertEquals(ObjectType.PLAYLIST, playlist.getType());
+        assertEquals(ModelObjectType.PLAYLIST, playlist.getType());
         assertEquals("spotify:user:1153065250:playlist:2oo3exZoJwBXwdYJDoe0Ru", playlist.getUri());
 
         asyncCompleted.countDown();
@@ -83,7 +83,7 @@ public class PlaylistCreationRequestTest {
     assertNotNull(playlist.getOwner());
     assertFalse(playlist.getIsPublicAccess());
     assertEquals(0, playlist.getTracks().getTotal());
-    assertEquals(ObjectType.PLAYLIST, playlist.getType());
+    assertEquals(ModelObjectType.PLAYLIST, playlist.getType());
     assertEquals("spotify:user:1153065250:playlist:2oo3exZoJwBXwdYJDoe0Ru", playlist.getUri());
   }
 

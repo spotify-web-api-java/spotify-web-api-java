@@ -1,4 +1,4 @@
-package com.wrapper.spotify.objects;
+package com.wrapper.spotify.model_objects;
 
 import com.wrapper.spotify.TestUtil;
 import org.junit.Test;

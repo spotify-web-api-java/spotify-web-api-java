@@ -2,7 +2,7 @@ package com.wrapper.spotify.requests;
 
 import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.exceptions.*;
-import com.wrapper.spotify.objects.NewReleases;
+import com.wrapper.spotify.model_objects.NewReleases;
 
 import java.io.IOException;
 
