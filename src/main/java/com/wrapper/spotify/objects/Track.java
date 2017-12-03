@@ -1,6 +1,7 @@
 package com.wrapper.spotify.objects;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonNull;
 import com.google.gson.JsonObject;
 import com.neovisionaries.i18n.CountryCode;
 
@@ -258,27 +259,49 @@ public class Track extends AbstractModelObject {
         return null;
       }
 
-      return new Track.Builder()
-              .setAlbum(new AlbumSimplified.JsonUtil().createModelObject(jsonObject.getAsJsonObject("album")))
-              .setArtists(new ArtistSimplified.JsonUtil().createModelObjectArray(jsonObject.getAsJsonArray("artists")))
-              .setAvailableMarkets(new Gson().fromJson(jsonObject.getAsJsonArray("available_markets"), CountryCode[].class))
-              .setDiscNumber(jsonObject.get("disc_number").getAsInt())
-              .setDurationMs(jsonObject.get("duration_ms").getAsInt())
-              .setExplicit(jsonObject.get("explicit").getAsBoolean())
-              .setExternalIds(new ExternalIds.JsonUtil().createModelObject(jsonObject.getAsJsonObject("external_ids")))
-              .setExternalUrls(new ExternalUrls.JsonUtil().createModelObject(jsonObject.getAsJsonObject("external_urls")))
-              .setHref(jsonObject.get("href").getAsString())
-              .setId(jsonObject.get("id").getAsString())
-              .setIsPlayable(jsonObject.get("is_playable").getAsBoolean())
-              .setLinkedFrom(new TrackLink.JsonUtil().createModelObject(jsonObject.getAsJsonObject("linked_from")))
-              .setRestrictions(new Restrictions.JsonUtil().createModelObject(jsonObject.getAsJsonObject("restrictions")))
-              .setName(jsonObject.get("name").getAsString())
-              .setPopularity(jsonObject.get("popularity").getAsInt())
-              .setPreviewUrl(jsonObject.get("preview_url").getAsString())
-              .setTrackNumber(jsonObject.get("track_number").getAsInt())
-              .setType(ObjectType.valueOf(jsonObject.get("type").getAsString()))
-              .setUri(jsonObject.get("uri").getAsString())
-              .build();
+      if (jsonObject.has("available_markets")) {
+        return new Track.Builder()
+                .setAlbum(new AlbumSimplified.JsonUtil().createModelObject(jsonObject.getAsJsonObject("album")))
+                .setArtists(new ArtistSimplified.JsonUtil().createModelObjectArray(jsonObject.getAsJsonArray("artists")))
+                .setAvailableMarkets(new Gson().fromJson(jsonObject.getAsJsonArray("available_markets"), CountryCode[].class))
+                .setDiscNumber(jsonObject.get("disc_number").getAsInt())
+                .setDurationMs(jsonObject.get("duration_ms").getAsInt())
+                .setExplicit(jsonObject.get("explicit").getAsBoolean())
+                .setExternalIds(new ExternalIds.JsonUtil().createModelObject(jsonObject.getAsJsonObject("external_ids")))
+                .setExternalUrls(new ExternalUrls.JsonUtil().createModelObject(jsonObject.getAsJsonObject("external_urls")))
+                .setHref((jsonObject.get("href") instanceof JsonNull) ? null : jsonObject.get("href").getAsString())
+                .setId((jsonObject.get("id") instanceof JsonNull) ? null : jsonObject.get("id").getAsString())
+                .setName(jsonObject.get("name").getAsString())
+                .setPopularity(jsonObject.get("popularity").getAsInt())
+                .setPreviewUrl((jsonObject.get("preview_url") instanceof JsonNull) ? null : jsonObject.get("preview_url").getAsString())
+                .setTrackNumber(jsonObject.get("track_number").getAsInt())
+                .setType(ObjectType.valueOf(jsonObject.get("type").getAsString().toUpperCase()))
+                .setUri(jsonObject.get("uri").getAsString())
+                .build();
+      } else if (jsonObject.has("is_playable")) {
+        return new Track.Builder()
+                .setAlbum(new AlbumSimplified.JsonUtil().createModelObject(jsonObject.getAsJsonObject("album")))
+                .setArtists(new ArtistSimplified.JsonUtil().createModelObjectArray(jsonObject.getAsJsonArray("artists")))
+                .setDiscNumber(jsonObject.get("disc_number").getAsInt())
+                .setDurationMs(jsonObject.get("duration_ms").getAsInt())
+                .setExplicit(jsonObject.get("explicit").getAsBoolean())
+                .setExternalIds(new ExternalIds.JsonUtil().createModelObject(jsonObject.getAsJsonObject("external_ids")))
+                .setExternalUrls(new ExternalUrls.JsonUtil().createModelObject(jsonObject.getAsJsonObject("external_urls")))
+                .setHref(jsonObject.get("href").getAsString())
+                .setId(jsonObject.get("id").getAsString())
+                .setIsPlayable(jsonObject.get("is_playable").getAsBoolean())
+                .setLinkedFrom(new TrackLink.JsonUtil().createModelObject(jsonObject.get("linked_from").getAsJsonObject()))
+                .setRestrictions(new Restrictions.JsonUtil().createModelObject(jsonObject.get("restrictions").getAsJsonObject()))
+                .setName(jsonObject.get("name").getAsString())
+                .setPopularity(jsonObject.get("popularity").getAsInt())
+                .setPreviewUrl((jsonObject.get("preview_url") instanceof JsonNull) ? null : jsonObject.get("preview_url").getAsString())
+                .setTrackNumber(jsonObject.get("track_number").getAsInt())
+                .setType(ObjectType.valueOf(jsonObject.get("type").getAsString().toUpperCase()))
+                .setUri(jsonObject.get("uri").getAsString())
+                .build();
+      } else {
+        return null;
+      }
     }
   }
 }

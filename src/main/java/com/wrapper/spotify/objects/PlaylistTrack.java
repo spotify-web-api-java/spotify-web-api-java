@@ -1,5 +1,6 @@
 package com.wrapper.spotify.objects;
 
+import com.google.gson.JsonNull;
 import com.google.gson.JsonObject;
 
 import java.text.ParseException;
@@ -81,8 +82,8 @@ public class PlaylistTrack extends AbstractModelObject {
 
       try {
         return new Builder()
-                .setAddedAt(simpleDateFormat.parse(jsonObject.get("added_at").getAsString()))
-                .setAddedBy(new User.JsonUtil().createModelObject(jsonObject.getAsJsonObject("added_by")))
+                .setAddedAt(simpleDateFormat.parse((jsonObject.get("added_at") instanceof JsonNull) ? null : jsonObject.get("added_at").getAsString()))
+                .setAddedBy(new User.JsonUtil().createModelObject((jsonObject.get("added_by") instanceof JsonNull) ? null : jsonObject.get("added_by").getAsJsonObject()))
                 .setIsLocal(jsonObject.get("is_local").getAsBoolean())
                 .setTrack(new Track.JsonUtil().createModelObject(jsonObject.getAsJsonObject("track")))
                 .build();

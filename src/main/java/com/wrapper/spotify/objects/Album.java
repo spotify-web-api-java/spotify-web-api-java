@@ -244,7 +244,7 @@ public class Album extends AbstractModelObject {
       }
 
       return new Album.Builder()
-              .setAlbumType(AlbumType.valueOf(jsonObject.get("album_type").getAsString()))
+              .setAlbumType(AlbumType.valueOf(jsonObject.get("album_type").getAsString().toUpperCase()))
               .setArtists(new ArtistSimplified.JsonUtil().createModelObjectArray(jsonObject.getAsJsonArray("artists")))
               .setAvailableMarkets(new Gson().fromJson(jsonObject.getAsJsonArray("available_markets"), CountryCode[].class))
               .setCopyrights(new Copyright.JsonUtil().createModelObjectArray(jsonObject.getAsJsonArray("copyrights")))
@@ -258,9 +258,9 @@ public class Album extends AbstractModelObject {
               .setName(jsonObject.get("name").getAsString())
               .setPopularity(jsonObject.get("popularity").getAsInt())
               .setReleaseDate(jsonObject.get("release_date").getAsString())
-              .setReleaseDatePrecision(ReleaseDatePrecision.valueOf(jsonObject.get("release_date_precision").getAsString()))
+              .setReleaseDatePrecision(ReleaseDatePrecision.valueOf(jsonObject.get("release_date_precision").getAsString().toUpperCase()))
               .setTracks(new TrackSimplified.JsonUtil().createModelObjectPaging(jsonObject.getAsJsonObject("tracks")))
-              .setType(ObjectType.valueOf(jsonObject.get("type").getAsString()))
+              .setType(ObjectType.valueOf(jsonObject.get("type").getAsString().toUpperCase()))
               .setUri(jsonObject.get("uri").getAsString())
               .build();
     }

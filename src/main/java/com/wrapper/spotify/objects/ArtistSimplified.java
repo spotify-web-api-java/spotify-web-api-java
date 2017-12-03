@@ -1,5 +1,6 @@
 package com.wrapper.spotify.objects;
 
+import com.google.gson.JsonNull;
 import com.google.gson.JsonObject;
 
 public class ArtistSimplified extends AbstractModelObject {
@@ -102,11 +103,11 @@ public class ArtistSimplified extends AbstractModelObject {
 
       return new ArtistSimplified.Builder()
               .setExternalUrls(new ExternalUrls.JsonUtil().createModelObject(jsonObject.getAsJsonObject("external_urls")))
-              .setHref(jsonObject.get("href").getAsString())
-              .setId(jsonObject.get("id").getAsString())
+              .setHref((jsonObject.get("href") instanceof JsonNull) ? null : jsonObject.get("href").getAsString())
+              .setId((jsonObject.get("id") instanceof JsonNull) ? null : jsonObject.get("id").getAsString())
               .setName(jsonObject.get("name").getAsString())
-              .setType(ObjectType.valueOf(jsonObject.get("type").getAsString()))
-              .setUri(jsonObject.get("uri").getAsString())
+              .setType(ObjectType.valueOf(jsonObject.get("type").getAsString().toUpperCase()))
+              .setUri((jsonObject.get("uri") instanceof JsonNull) ? null : jsonObject.get("uri").getAsString())
               .build();
     }
   }

@@ -77,7 +77,7 @@ public class Context extends AbstractModelObject {
       }
 
       return new Context.Builder()
-              .setType(ObjectType.valueOf(jsonObject.get("type").getAsString()))
+              .setType(ObjectType.valueOf(jsonObject.get("type").getAsString().toUpperCase()))
               .setHref(jsonObject.get("href").getAsString())
               .setExternalUrls(new ExternalUrls.JsonUtil().createModelObject(jsonObject.getAsJsonObject("external_urls")))
               .setUri(jsonObject.get("uri").getAsString())

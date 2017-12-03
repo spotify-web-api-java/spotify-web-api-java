@@ -48,7 +48,8 @@ public class ExternalUrls extends AbstractModelObject {
         return null;
       }
 
-      Map<String, String> map = new Gson().fromJson(jsonObject, new TypeToken<Map<String, String>>(){}.getType());
+      Map<String, String> map = new Gson().fromJson(jsonObject, new TypeToken<Map<String, String>>() {
+      }.getType());
 
       return new ExternalUrls.Builder()
               .setExternalUrls(map)

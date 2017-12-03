@@ -1,6 +1,7 @@
 package com.wrapper.spotify.objects;
 
 import com.google.common.reflect.TypeToken;
+import com.google.gson.JsonNull;
 import com.google.gson.JsonObject;
 
 public class Paging<T> extends AbstractModelObject {
@@ -115,11 +116,12 @@ public class Paging<T> extends AbstractModelObject {
 
       return new Paging.Builder<X>()
               .setHref(jsonObject.get("href").getAsString())
-              .setItems(createModelObjectArray(jsonObject.getAsJsonArray("items"), new TypeToken<X>(){}))
+              .setItems(createModelObjectArray(jsonObject.getAsJsonArray("items"), new TypeToken<X>(getClass()) {
+              }))
               .setLimit(jsonObject.get("limit").getAsInt())
-              .setNext(jsonObject.get("next").getAsString())
+              .setNext((jsonObject.get("next") instanceof JsonNull) ? null : jsonObject.get("next").getAsString())
               .setOffset(jsonObject.get("offset").getAsInt())
-              .setPrevious(jsonObject.get("previous").getAsString())
+              .setPrevious((jsonObject.get("previous") instanceof JsonNull) ? null : jsonObject.get("previous").getAsString())
               .setTotal(jsonObject.get("total").getAsInt())
               .build();
     }

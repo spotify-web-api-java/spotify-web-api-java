@@ -92,7 +92,7 @@ public class TrackLink extends AbstractModelObject {
               .setExternalUrls(new ExternalUrls.JsonUtil().createModelObject(jsonObject.getAsJsonObject("external_urls")))
               .setHref(jsonObject.get("href").getAsString())
               .setId(jsonObject.get("id").getAsString())
-              .setType(ObjectType.valueOf(jsonObject.get("type").getAsString()))
+              .setType(ObjectType.valueOf(jsonObject.get("type").getAsString().toUpperCase()))
               .setUri(jsonObject.get("uri").getAsString())
               .build();
     }

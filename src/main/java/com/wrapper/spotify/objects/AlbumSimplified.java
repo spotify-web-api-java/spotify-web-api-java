@@ -1,6 +1,7 @@
 package com.wrapper.spotify.objects;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonNull;
 import com.google.gson.JsonObject;
 import com.neovisionaries.i18n.CountryCode;
 
@@ -152,16 +153,16 @@ public class AlbumSimplified extends AbstractModelObject {
       }
 
       return new AlbumSimplified.Builder()
-              .setAlbumType(AlbumType.valueOf(jsonObject.get("album_type").getAsString()))
+              .setAlbumType((jsonObject.get("album_type") instanceof JsonNull) ? null : AlbumType.valueOf(jsonObject.get("album_type").getAsString().toUpperCase()))
               .setArtists(new ArtistSimplified.JsonUtil().createModelObjectArray(jsonObject.getAsJsonArray("artists")))
               .setAvailableMarkets(new Gson().fromJson(jsonObject.get("available_markets"), CountryCode[].class))
               .setExternalUrls(new ExternalUrls.JsonUtil().createModelObject(jsonObject.getAsJsonObject("external_urls")))
-              .setHref(jsonObject.get("href").getAsString())
-              .setId(jsonObject.get("id").getAsString())
+              .setHref((jsonObject.get("href") instanceof JsonNull) ? null : jsonObject.get("href").getAsString())
+              .setId((jsonObject.get("id") instanceof JsonNull) ? null : jsonObject.get("id").getAsString())
               .setImages(new Image.JsonUtil().createModelObjectArray(jsonObject.getAsJsonArray("images")))
               .setName(jsonObject.get("name").getAsString())
-              .setType(ObjectType.valueOf(jsonObject.get("type").getAsString()))
-              .setUri(jsonObject.get("uri").getAsString())
+              .setType(ObjectType.valueOf(jsonObject.get("type").getAsString().toUpperCase()))
+              .setUri((jsonObject.get("uri") instanceof JsonNull) ? null : jsonObject.get("uri").getAsString())
               .build();
     }
   }

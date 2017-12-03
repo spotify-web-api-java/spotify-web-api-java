@@ -1,5 +1,6 @@
 package com.wrapper.spotify.objects;
 
+import com.google.gson.JsonNull;
 import com.google.gson.JsonObject;
 
 public class Playlist extends AbstractModelObject {
@@ -198,7 +199,7 @@ public class Playlist extends AbstractModelObject {
 
       return new Playlist.Builder()
               .setCollaborative(jsonObject.get("collaborative").getAsBoolean())
-              .setDescription(jsonObject.get("description").getAsString())
+              .setDescription((jsonObject.get("description") instanceof JsonNull) ? null : jsonObject.get("description").getAsString())
               .setExternalUrls(new ExternalUrls.JsonUtil().createModelObject(jsonObject.getAsJsonObject("external_urls")))
               .setFollowers(new Followers.JsonUtil().createModelObject(jsonObject.getAsJsonObject("followers")))
               .setHref(jsonObject.get("href").getAsString())
@@ -206,10 +207,10 @@ public class Playlist extends AbstractModelObject {
               .setImages(new Image.JsonUtil().createModelObjectArray(jsonObject.getAsJsonArray("images")))
               .setName(jsonObject.get("name").getAsString())
               .setOwner(new User.JsonUtil().createModelObject(jsonObject.getAsJsonObject("owner")))
-              .setPublicAccess(jsonObject.get("public").getAsBoolean())
+              .setPublicAccess((jsonObject.get("public") instanceof JsonNull) ? null : jsonObject.get("public").getAsBoolean())
               .setSnapshotId(jsonObject.get("snapshot_id").getAsString())
               .setTracks(new PlaylistTrack.JsonUtil().createModelObjectPaging(jsonObject.getAsJsonObject("tracks")))
-              .setType(ObjectType.valueOf(jsonObject.get("type").getAsString()))
+              .setType(ObjectType.valueOf(jsonObject.get("type").getAsString().toUpperCase()))
               .setUri(jsonObject.get("uri").getAsString())
               .build();
     }

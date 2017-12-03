@@ -158,7 +158,7 @@ public class Artist extends AbstractModelObject {
               .setImages(new Image.JsonUtil().createModelObjectArray(jsonObject.getAsJsonArray("images")))
               .setName(jsonObject.get("name").getAsString())
               .setPopularity(jsonObject.get("popularity").getAsInt())
-              .setType(ObjectType.valueOf(jsonObject.get("type").getAsString()))
+              .setType(ObjectType.valueOf(jsonObject.get("type").getAsString().toUpperCase()))
               .setUri(jsonObject.get("uri").getAsString())
               .build();
     }

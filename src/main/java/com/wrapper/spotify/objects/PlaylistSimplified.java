@@ -1,5 +1,6 @@
 package com.wrapper.spotify.objects;
 
+import com.google.gson.JsonNull;
 import com.google.gson.JsonObject;
 
 public class PlaylistSimplified extends AbstractModelObject {
@@ -180,10 +181,10 @@ public class PlaylistSimplified extends AbstractModelObject {
               .setImages(new Image.JsonUtil().createModelObjectArray(jsonObject.getAsJsonArray("images")))
               .setName(jsonObject.get("name").getAsString())
               .setOwner(new User.JsonUtil().createModelObject(jsonObject.getAsJsonObject("owner")))
-              .setPublicAccess(jsonObject.get("public").getAsBoolean())
+              .setPublicAccess((jsonObject.get("public") instanceof JsonNull) ? null : jsonObject.get("public").getAsBoolean())
               .setSnapshotId(jsonObject.get("snapshot_id").getAsString())
               .setTracks(new PlaylistTracksInformation.JsonUtil().createModelObject(jsonObject.getAsJsonObject("tracks")))
-              .setType(ObjectType.valueOf(jsonObject.get("type").getAsString()))
+              .setType(ObjectType.valueOf(jsonObject.get("type").getAsString().toUpperCase()))
               .setUri(jsonObject.get("uri").getAsString())
               .build();
     }

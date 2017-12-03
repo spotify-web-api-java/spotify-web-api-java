@@ -1,5 +1,6 @@
 package com.wrapper.spotify.objects;
 
+import com.google.gson.JsonNull;
 import com.google.gson.JsonObject;
 
 public class RecommendationsSeed extends AbstractModelObject {
@@ -103,10 +104,10 @@ public class RecommendationsSeed extends AbstractModelObject {
       return new RecommendationsSeed.Builder()
               .setAfterFilteringSize(jsonObject.get("afterFilteringSize").getAsInt())
               .setAfterRelinkingSize(jsonObject.get("afterRelinkingSize").getAsInt())
-              .setHref(jsonObject.get("href").getAsString())
+              .setHref((jsonObject.get("href") instanceof JsonNull) ? null : jsonObject.get("href").getAsString())
               .setId(jsonObject.get("id").getAsString())
               .setInitialPoolSize(jsonObject.get("initialPoolSize").getAsInt())
-              .setType(ObjectType.valueOf(jsonObject.get("type").getAsString()))
+              .setType(ObjectType.valueOf(jsonObject.get("type").getAsString().toUpperCase()))
               .build();
     }
   }

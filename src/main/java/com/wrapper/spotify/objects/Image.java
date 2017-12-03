@@ -1,5 +1,6 @@
 package com.wrapper.spotify.objects;
 
+import com.google.gson.JsonNull;
 import com.google.gson.JsonObject;
 
 public class Image extends AbstractModelObject {
@@ -65,9 +66,9 @@ public class Image extends AbstractModelObject {
       }
 
       return new Image.Builder()
-              .setHeight(jsonObject.get("height").getAsInt())
+              .setHeight((jsonObject.get("height") instanceof JsonNull) ? 0 : jsonObject.get("height").getAsInt())
               .setUrl(jsonObject.get("url").getAsString())
-              .setWidth(jsonObject.get("width").getAsInt())
+              .setWidth((jsonObject.get("width") instanceof JsonNull) ? 0 : jsonObject.get("width").getAsInt())
               .build();
     }
   }

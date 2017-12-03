@@ -1,6 +1,7 @@
 package com.wrapper.spotify.objects;
 
 import com.google.common.reflect.TypeToken;
+import com.google.gson.JsonNull;
 import com.google.gson.JsonObject;
 
 public class PagingCursorbased<T> extends AbstractModelObject {
@@ -103,9 +104,10 @@ public class PagingCursorbased<T> extends AbstractModelObject {
 
       return new Builder<X>()
               .setHref(jsonObject.get("href").getAsString())
-              .setItems(createModelObjectArray(jsonObject.getAsJsonArray("items"), new TypeToken<X>(){}))
+              .setItems(createModelObjectArray(jsonObject.getAsJsonArray("items"), new TypeToken<X>() {
+              }))
               .setLimit(jsonObject.get("limit").getAsInt())
-              .setNext(jsonObject.get("next").getAsString())
+              .setNext((jsonObject.get("next") instanceof JsonNull) ? null : jsonObject.get("next").getAsString())
               .setCursors(new Cursor.JsonUtil().createModelObjectArray(jsonObject.getAsJsonArray("cursors")))
               .setTotal(jsonObject.get("total").getAsInt())
               .build();

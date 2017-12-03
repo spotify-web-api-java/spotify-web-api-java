@@ -44,7 +44,8 @@ public class ExternalIds extends AbstractModelObject {
         return null;
       }
 
-      Map<String, String> map = new Gson().fromJson(jsonObject, new TypeToken<Map<String, String>>(){}.getType());
+      Map<String, String> map = new Gson().fromJson(jsonObject, new TypeToken<Map<String, String>>() {
+      }.getType());
 
       return new ExternalIds.Builder()
               .setExternalIds(map)
