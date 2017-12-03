@@ -21,7 +21,7 @@ public class Category extends AbstractModelObject {
     return href;
   }
 
-  public Image[] getIcons() {;
+  public Image[] getIcons() {
     return icons;
   }
 

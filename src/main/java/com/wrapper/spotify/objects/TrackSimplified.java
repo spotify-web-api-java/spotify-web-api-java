@@ -41,11 +41,11 @@ public class TrackSimplified extends AbstractModelObject {
     this.uri = builder.uri;
   }
 
-  public ArtistSimplified[] getArtists() {;
+  public ArtistSimplified[] getArtists() {
     return artists;
   }
 
-  public CountryCode[] getAvailableMarkets() {;
+  public CountryCode[] getAvailableMarkets() {
     return availableMarkets;
   }
 

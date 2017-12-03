@@ -62,7 +62,7 @@ public class Playlist extends AbstractModelObject {
     return id;
   }
 
-  public Image[] getImages() {;
+  public Image[] getImages() {
     return images;
   }
 

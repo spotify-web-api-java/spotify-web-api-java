@@ -51,15 +51,15 @@ public class Album extends AbstractModelObject {
     return albumType;
   }
 
-  public ArtistSimplified[] getArtists() {;
+  public ArtistSimplified[] getArtists() {
     return artists;
   }
 
-  public CountryCode[] getAvailableMarkets() {;
+  public CountryCode[] getAvailableMarkets() {
     return availableMarkets;
   }
 
-  public Copyright[] getCopyrights() {;
+  public Copyright[] getCopyrights() {
     return copyrights;
   }
 
@@ -71,7 +71,7 @@ public class Album extends AbstractModelObject {
     return externalUrls;
   }
 
-  public String[] getGenres() {;
+  public String[] getGenres() {
     return genres;
   }
 
@@ -83,7 +83,7 @@ public class Album extends AbstractModelObject {
     return id;
   }
 
-  public Image[] getImages() {;
+  public Image[] getImages() {
     return images;
   }
 

@@ -27,7 +27,7 @@ public class PagingCursorbased<T> extends AbstractModelObject {
     return href;
   }
 
-  public T[] getItems() {;
+  public T[] getItems() {
     return items;
   }
 
@@ -39,7 +39,7 @@ public class PagingCursorbased<T> extends AbstractModelObject {
     return next;
   }
 
-  public Cursor[] getCursors() {;
+  public Cursor[] getCursors() {
     return cursors;
   }
 

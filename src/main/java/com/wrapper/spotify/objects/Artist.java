@@ -38,7 +38,7 @@ public class Artist extends AbstractModelObject {
     return followers;
   }
 
-  public String[] getGenres() {;
+  public String[] getGenres() {
     return genres;
   }
 
@@ -50,7 +50,7 @@ public class Artist extends AbstractModelObject {
     return id;
   }
 
-  public Image[] getImages() {;
+  public Image[] getImages() {
     return images;
   }
 

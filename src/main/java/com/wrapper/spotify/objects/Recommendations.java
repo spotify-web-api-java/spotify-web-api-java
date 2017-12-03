@@ -17,7 +17,7 @@ public class Recommendations extends AbstractModelObject {
     return seeds;
   }
 
-  public TrackSimplified[] getTracks() {;
+  public TrackSimplified[] getTracks() {
     return tracks;
   }
 

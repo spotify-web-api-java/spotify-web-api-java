@@ -36,7 +36,7 @@ public class AlbumSimplified extends AbstractModelObject {
     return albumType;
   }
 
-  public ArtistSimplified[] getArtists() {;
+  public ArtistSimplified[] getArtists() {
     return artists;
   }
 
@@ -56,7 +56,7 @@ public class AlbumSimplified extends AbstractModelObject {
     return id;
   }
 
-  public Image[] getImages() {;
+  public Image[] getImages() {
     return images;
   }
 

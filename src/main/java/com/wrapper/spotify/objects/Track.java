@@ -54,11 +54,11 @@ public class Track extends AbstractModelObject {
     return album;
   }
 
-  public ArtistSimplified[] getArtists() {;
+  public ArtistSimplified[] getArtists() {
     return artists;
   }
 
-  public CountryCode[] getAvailableMarkets() {;
+  public CountryCode[] getAvailableMarkets() {
     return availableMarkets;
   }
 
