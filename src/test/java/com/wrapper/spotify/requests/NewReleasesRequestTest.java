@@ -3,7 +3,6 @@ package com.wrapper.spotify.requests;
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.SettableFuture;
-import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.model_objects.AlbumSimplified;
@@ -16,8 +15,7 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
 import static junit.framework.Assert.assertEquals;
-import static junit.framework.TestCase.assertNotNull;
-import static junit.framework.TestCase.fail;
+import static junit.framework.TestCase.*;
 
 public class NewReleasesRequestTest {
 
@@ -26,9 +24,7 @@ public class NewReleasesRequestTest {
     final Api api = Api.DEFAULT_API;
 
     final NewReleasesRequest request = api.getNewReleases()
-            .limit(3)
-            .offset(1)
-            .country("SE")
+            .limit(1)
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("new-releases.json"))
             .build();
 
@@ -43,23 +39,21 @@ public class NewReleasesRequestTest {
 
         Paging<AlbumSimplified> albums = newReleases.getAlbums();
 
-        assertEquals("https://api.spotify.com/v1/browse/new-releases?country=SE&offset=1&limit=3",
+        assertEquals("https://api.spotify.com/v1/browse/new-releases?offset=0&limit=1",
                 albums.getHref());
 
-        assertEquals(3, albums.getLimit());
-        assertEquals(1, albums.getOffset());
-        assertEquals("https://api.spotify.com/v1/browse/new-releases?country=SE&offset=4&limit=3",
+        assertEquals(1, albums.getLimit());
+        assertEquals(0, albums.getOffset());
+        assertEquals("https://api.spotify.com/v1/browse/new-releases?offset=1&limit=1",
                 albums.getNext());
-        assertEquals("https://api.spotify.com/v1/browse/new-releases?country=SE&offset=0&limit=3",
-                albums.getPrevious());
+        assertNull(albums.getPrevious());
         assertEquals(500, albums.getTotal());
 
-        AlbumSimplified firstItem = albums.getItems().get(0);
+        AlbumSimplified firstItem = albums.getItems()[0];
         assertEquals(AlbumType.SINGLE, firstItem.getAlbumType());
-        assertEquals(1, firstItem.getAvailableMarkets().size());
-        assertEquals(CountryCode.SE, firstItem.getAvailableMarkets().get(0));
+        assertEquals(62, firstItem.getAvailableMarkets().length);
         assertNotNull(firstItem.getExternalUrls());
-        assertEquals("spotify:album:5McUiSC2VSw2ToVHR8tnzZ", firstItem.getUri());
+        assertEquals("spotify:album:52kvZcbEDm0v2kWZQXjuuA", firstItem.getUri());
 
         asyncCompleted.countDown();
       }
@@ -78,9 +72,7 @@ public class NewReleasesRequestTest {
     final Api api = Api.DEFAULT_API;
 
     final NewReleasesRequest request = api.getNewReleases()
-            .limit(3)
-            .offset(1)
-            .country("SE")
+            .limit(1)
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("new-releases.json"))
             .build();
 
@@ -90,23 +82,21 @@ public class NewReleasesRequestTest {
 
     Paging<AlbumSimplified> albums = newReleases.getAlbums();
 
-    assertEquals("https://api.spotify.com/v1/browse/new-releases?country=SE&offset=1&limit=3",
+    assertEquals("https://api.spotify.com/v1/browse/new-releases?offset=0&limit=1",
             albums.getHref());
 
-    assertEquals(3, albums.getLimit());
-    assertEquals(1, albums.getOffset());
-    assertEquals("https://api.spotify.com/v1/browse/new-releases?country=SE&offset=4&limit=3",
+    assertEquals(1, albums.getLimit());
+    assertEquals(0, albums.getOffset());
+    assertEquals("https://api.spotify.com/v1/browse/new-releases?offset=1&limit=1",
             albums.getNext());
-    assertEquals("https://api.spotify.com/v1/browse/new-releases?country=SE&offset=0&limit=3",
-            albums.getPrevious());
+    assertNull(albums.getPrevious());
     assertEquals(500, albums.getTotal());
 
-    AlbumSimplified firstItem = albums.getItems().get(0);
+    AlbumSimplified firstItem = albums.getItems()[0];
     assertEquals(AlbumType.SINGLE, firstItem.getAlbumType());
-    assertEquals(1, firstItem.getAvailableMarkets().size());
-    assertEquals(CountryCode.SE, firstItem.getAvailableMarkets().get(0));
+    assertEquals(62, firstItem.getAvailableMarkets().length);
     assertNotNull(firstItem.getExternalUrls());
-    assertEquals("spotify:album:5McUiSC2VSw2ToVHR8tnzZ", firstItem.getUri());
+    assertEquals("spotify:album:52kvZcbEDm0v2kWZQXjuuA", firstItem.getUri());
 
   }
 }

@@ -37,7 +37,7 @@ public class AlbumRequestTest {
         assertNotNull(album);
         assertEquals("4pox3k0CGuwwAknR9GtcoX", album.getId());
         assertNotNull(album.getCopyrights());
-        assertFalse(album.getCopyrights().isEmpty());
+        assertFalse(album.getCopyrights().length == 0);
 
         asyncCompleted.countDown();
       }
@@ -65,6 +65,6 @@ public class AlbumRequestTest {
     assertNotNull(album);
     assertEquals("4pox3k0CGuwwAknR9GtcoX", album.getId());
     assertNotNull(album.getCopyrights());
-    assertFalse(album.getCopyrights().isEmpty());
+    assertFalse(album.getCopyrights().length == 0);
   }
 }

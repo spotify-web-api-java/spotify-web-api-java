@@ -7,8 +7,6 @@ import com.wrapper.spotify.Api;
 import com.wrapper.spotify.TestUtil;
 import org.junit.Test;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
@@ -25,7 +23,7 @@ public class RemoveFromMySavedTracksRequestTest {
             .httpManager(TestUtil.MockedHttpManager.returningString(""))
             .build();
 
-    final List<String> tracksToAdd = Arrays.asList("5xFF6wNcoRwx7N3cDTgVWP", "13zm8XhfM4RBtQpjdqY44e");
+    final String[] tracksToAdd = new String[]{"5xFF6wNcoRwx7N3cDTgVWP", "13zm8XhfM4RBtQpjdqY44e"};
 
     final RemoveFromMySavedTracksRequest request = api.removeFromMySavedTracks(tracksToAdd).build();
 
@@ -60,7 +58,7 @@ public class RemoveFromMySavedTracksRequestTest {
             .httpManager(TestUtil.MockedHttpManager.returningString(""))
             .build();
 
-    final List<String> tracksToAdd = Arrays.asList("5xFF6wNcoRwx7N3cDTgVWP", "13zm8XhfM4RBtQpjdqY44e");
+    final String[] tracksToAdd = new String[]{"5xFF6wNcoRwx7N3cDTgVWP", "13zm8XhfM4RBtQpjdqY44e"};
 
     final RemoveFromMySavedTracksRequest request = api.removeFromMySavedTracks(tracksToAdd).build();
 

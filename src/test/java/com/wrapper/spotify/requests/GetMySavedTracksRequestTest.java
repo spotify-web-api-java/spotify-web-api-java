@@ -9,7 +9,6 @@ import com.wrapper.spotify.model_objects.LibraryTrack;
 import com.wrapper.spotify.model_objects.Paging;
 import org.junit.Test;
 
-import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
@@ -39,16 +38,15 @@ public class GetMySavedTracksRequestTest {
       public void onSuccess(Paging<LibraryTrack> libraryTracks) {
         assertNotNull(libraryTracks);
 
-        assertEquals("https://api.spotify.com/v1/me/tracks?offset=1&limit=5",
-                libraryTracks.getHref());
+        assertEquals("https://api.spotify.com/v1/me/tracks?offset=1&limit=1", libraryTracks.getHref());
 
-        List<LibraryTrack> items = libraryTracks.getItems();
-        assertEquals(5, items.size());
+        LibraryTrack[] items = libraryTracks.getItems();
+        assertEquals(1, items.length);
 
-        LibraryTrack firstItem = libraryTracks.getItems().get(0);
+        LibraryTrack firstItem = libraryTracks.getItems()[0];
         assertNotNull(firstItem.getAddedAt());
         assertNotNull(firstItem.getTrack());
-        assertEquals("13zm8XhfM4RBtQpjdqY44e", firstItem.getTrack().getId());
+        assertEquals("1bhUWB0zJMIKr9yVPrkEuI", firstItem.getTrack().getId());
 
         asyncCompleted.countDown();
       }
@@ -76,15 +74,15 @@ public class GetMySavedTracksRequestTest {
 
     assertNotNull(libraryTracks);
 
-    assertEquals("https://api.spotify.com/v1/me/tracks?offset=1&limit=5", libraryTracks.getHref());
+    assertEquals("https://api.spotify.com/v1/me/tracks?offset=1&limit=1", libraryTracks.getHref());
 
-    List<LibraryTrack> items = libraryTracks.getItems();
-    assertEquals(5, items.size());
+    LibraryTrack[] items = libraryTracks.getItems();
+    assertEquals(1, items.length);
 
-    LibraryTrack firstItem = libraryTracks.getItems().get(0);
+    LibraryTrack firstItem = libraryTracks.getItems()[0];
     assertNotNull(firstItem.getAddedAt());
     assertNotNull(firstItem.getTrack());
-    assertEquals("13zm8XhfM4RBtQpjdqY44e", firstItem.getTrack().getId());
+    assertEquals("1bhUWB0zJMIKr9yVPrkEuI", firstItem.getTrack().getId());
   }
 
 }

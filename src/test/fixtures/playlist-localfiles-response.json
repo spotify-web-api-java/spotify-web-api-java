@@ -13,6 +13,7 @@
   "images": [],
   "name": "Lokale Playlisten",
   "owner": {
+    "display_name": "Clemens Sum",
     "external_urls": {
       "spotify": "http://open.spotify.com/user/1160451974"
     },
@@ -41,6 +42,7 @@
         "track": {
           "album": {
             "album_type": null,
+            "artists": [],
             "available_markets": [],
             "external_urls": {},
             "href": null,

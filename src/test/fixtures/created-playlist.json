@@ -1,27 +1,38 @@
 {
   "collaborative": false,
-  "description": null,
+  "description": "New playlist description",
   "external_urls": {
-    "spotify": "http://open.spotify.com/user/thelinmichael/playlist/2LfixThJPNO9DAreghF2WK"
+    "spotify": "http://open.spotify.com/user/1153065250/playlist/2oo3exZoJwBXwdYJDoe0Ru"
   },
-  "followers": null,
-  "href": "https://api.spotify.com/v1/users/thelinmichael/playlists/2LfixThJPNO9DAreghF2WK",
-  "id": "2LfixThJPNO9DAreghF2WK",
-  "images": [
-    null
-  ],
-  "name": "Coolest Playlist",
+  "followers": {
+    "href": null,
+    "total": 0
+  },
+  "href": "https://api.spotify.com/v1/users/1153065250/playlists/2oo3exZoJwBXwdYJDoe0Ru",
+  "id": "2oo3exZoJwBXwdYJDoe0Ru",
+  "images": [],
+  "name": "New Playlist",
   "owner": {
+    "display_name": "Jonas Thelemann",
     "external_urls": {
-      "spotify": "http://open.spotify.com/user/thelinmichael"
+      "spotify": "http://open.spotify.com/user/1153065250"
     },
-    "href": "https://api.spotify.com/v1/users/thelinmichael",
-    "id": "thelinmichael",
+    "href": "https://api.spotify.com/v1/users/1153065250",
+    "id": "1153065250",
     "type": "user",
-    "uri": "spotify:user:thelinmichael"
+    "uri": "spotify:user:1153065250"
   },
-  "public": true,
-  "tracks": null,
+  "public": false,
+  "snapshot_id": "KNvpo7qvvjWCjo3WabUtcBIDdNWG/LcgSobl0s7ST4QUec5SylzuOwl0ETUaKtuh",
+  "tracks": {
+    "href": "https://api.spotify.com/v1/users/1153065250/playlists/2oo3exZoJwBXwdYJDoe0Ru/tracks",
+    "items": [],
+    "limit": 100,
+    "next": null,
+    "offset": 0,
+    "previous": null,
+    "total": 0
+  },
   "type": "playlist",
-  "uri": "spotify:user:thelinmichael:playlist:2LfixThJPNO9DAreghF2WK"
+  "uri": "spotify:user:1153065250:playlist:2oo3exZoJwBXwdYJDoe0Ru"
 }

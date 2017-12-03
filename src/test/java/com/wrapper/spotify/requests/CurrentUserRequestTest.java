@@ -44,9 +44,9 @@ public class CurrentUserRequestTest {
         assertEquals("thelinmichael", user.getId());
         assertEquals(CountryCode.SE, user.getCountry());
         assertNotNull(user.getFollowers());
-        assertEquals(0, user.getImages().get(0).getHeight());
-        assertEquals(0, user.getImages().get(0).getWidth());
-        assertEquals("http://media.giphy.com/media/Aab07O5PYOmQ/giphy.gif", user.getImages().get(0).getUrl());
+        assertEquals(0, user.getImages()[0].getHeight());
+        assertEquals(0, user.getImages()[0].getWidth());
+        assertEquals("http://media.giphy.com/media/Aab07O5PYOmQ/giphy.gif", user.getImages()[0].getUrl());
         assertEquals(ProductType.PREMIUM, user.getProduct());
         assertEquals("spotify:user:thelinmichael", user.getUri());
         assertEquals("1989-07-04", user.getBirthdate());
@@ -83,9 +83,9 @@ public class CurrentUserRequestTest {
     assertEquals("thelinmichael", user.getId());
     assertEquals(CountryCode.SE, user.getCountry());
     assertNotNull(user.getFollowers());
-    assertEquals(0, user.getImages().get(0).getHeight());
-    assertEquals(0, user.getImages().get(0).getWidth());
-    assertEquals("http://media.giphy.com/media/Aab07O5PYOmQ/giphy.gif", user.getImages().get(0).getUrl());
+    assertEquals(0, user.getImages()[0].getHeight());
+    assertEquals(0, user.getImages()[0].getWidth());
+    assertEquals("http://media.giphy.com/media/Aab07O5PYOmQ/giphy.gif", user.getImages()[0].getUrl());
     assertEquals(ProductType.PREMIUM, user.getProduct());
     assertEquals("spotify:user:thelinmichael", user.getUri());
     assertEquals("1989-07-04", user.getBirthdate());

@@ -2,7 +2,7 @@ package com.wrapper.spotify.requests;
 
 import com.google.common.base.Joiner;
 import com.google.common.util.concurrent.SettableFuture;
-import com.wrapper.spotify.JsonUtil;
+import com.google.gson.JsonParser;
 import com.wrapper.spotify.exceptions.*;
 import com.wrapper.spotify.model_objects.AlbumSimplified;
 import com.wrapper.spotify.model_objects.AlbumType;
@@ -31,7 +31,7 @@ public class AlbumsForArtistRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return JsonUtil.createSimpleAlbumPage(getJson());
+    return new AlbumSimplified.JsonUtil().createModelObjectPaging(new JsonParser().parse(getJson()).getAsJsonObject());
   }
 
   public SettableFuture<Paging<AlbumSimplified>> getAsync() throws
@@ -45,7 +45,7 @@ public class AlbumsForArtistRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return getAsync(JsonUtil.createSimpleAlbumPage(getJson()));
+    return getAsync(new AlbumSimplified.JsonUtil().createModelObjectPaging(new JsonParser().parse(getJson()).getAsJsonObject()));
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {

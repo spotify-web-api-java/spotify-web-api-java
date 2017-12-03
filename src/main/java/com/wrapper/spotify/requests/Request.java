@@ -1,8 +1,8 @@
 package com.wrapper.spotify.requests;
 
+import com.google.gson.JsonElement;
 import com.wrapper.spotify.HttpManager;
 import com.wrapper.spotify.UtilProtos.Url;
-import net.sf.json.JSON;
 
 public interface Request {
 
@@ -33,7 +33,7 @@ public interface Request {
 
     Builder setPart(Url.Part part);
 
-    Builder setBodyParameter(JSON jsonBody);
+    Builder setBodyParameter(JsonElement jsonBody);
   }
 
 }

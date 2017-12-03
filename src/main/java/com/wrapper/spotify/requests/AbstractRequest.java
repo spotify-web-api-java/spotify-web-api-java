@@ -1,12 +1,12 @@
 package com.wrapper.spotify.requests;
 
 import com.google.common.util.concurrent.SettableFuture;
+import com.google.gson.JsonElement;
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.HttpManager;
 import com.wrapper.spotify.UrlUtil;
 import com.wrapper.spotify.UtilProtos.Url;
 import com.wrapper.spotify.exceptions.*;
-import net.sf.json.JSON;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -106,7 +106,7 @@ public abstract class AbstractRequest implements Request {
     return httpManager.delete(url);
   }
 
-  public <T> SettableFuture getAsync(T value) {
+  public <T> SettableFuture<T> getAsync(T value) {
     final SettableFuture<T> settableFuture = SettableFuture.create();
 
     try {
@@ -141,7 +141,7 @@ public abstract class AbstractRequest implements Request {
     private List<Url.Parameter> headerParameters = new ArrayList<>();
     private List<Url.Parameter> bodyParameters = new ArrayList<>();
     private List<Url.Part> parts = new ArrayList<>();
-    private JSON jsonBody;
+    private JsonElement jsonBody;
 
     public BuilderType setHttpManager(HttpManager httpManager) {
       assert (httpManager != null);
@@ -199,7 +199,7 @@ public abstract class AbstractRequest implements Request {
       return (BuilderType) this;
     }
 
-    public BuilderType setBodyParameter(JSON jsonBody) {
+    public BuilderType setBodyParameter(JsonElement jsonBody) {
       assert (jsonBody != null);
       this.jsonBody = jsonBody;
       return (BuilderType) this;
@@ -212,7 +212,5 @@ public abstract class AbstractRequest implements Request {
 
       parameters.add(builder.setName(name).setValue(value).build());
     }
-
   }
-
 }

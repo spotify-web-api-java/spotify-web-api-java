@@ -2,7 +2,7 @@ package com.wrapper.spotify.requests;
 
 import com.google.common.base.Joiner;
 import com.google.common.util.concurrent.SettableFuture;
-import com.wrapper.spotify.JsonUtil;
+import com.google.gson.JsonParser;
 import com.wrapper.spotify.exceptions.*;
 import com.wrapper.spotify.model_objects.Album;
 
@@ -19,7 +19,7 @@ public class AlbumsRequest extends AbstractRequest {
     return new Builder();
   }
 
-  public List<Album> get() throws
+  public Album[] get() throws
           IOException,
           NoContentException,
           BadRequestException,
@@ -30,10 +30,10 @@ public class AlbumsRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return JsonUtil.createAlbums(getJson());
+    return new Album.JsonUtil().createModelObjectArray(new JsonParser().parse(getJson()).getAsJsonObject().get("albums").getAsJsonArray());
   }
 
-  public SettableFuture<List<Album>> getAsync() throws
+  public SettableFuture<Album[]> getAsync() throws
           IOException,
           NoContentException,
           BadRequestException,
@@ -44,7 +44,7 @@ public class AlbumsRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return getAsync(JsonUtil.createAlbums(getJson()));
+    return getAsync(new Album.JsonUtil().createModelObjectArray(new JsonParser().parse(getJson()).getAsJsonObject().get("albums").getAsJsonArray()));
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {

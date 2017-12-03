@@ -5,7 +5,6 @@ import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.exceptions.*;
 
 import java.io.IOException;
-import java.util.List;
 
 public class RemoveFromMySavedTracksRequest extends AbstractRequest {
 
@@ -47,7 +46,7 @@ public class RemoveFromMySavedTracksRequest extends AbstractRequest {
 
   public static class Builder extends AbstractRequest.Builder<Builder> {
 
-    public Builder tracks(final List<String> trackIds) {
+    public Builder tracks(final String[] trackIds) {
       String idsParameter = Joiner.on(",").join(trackIds);
       return setParameter("ids", idsParameter);
     }

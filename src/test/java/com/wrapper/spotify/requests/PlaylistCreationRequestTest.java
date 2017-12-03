@@ -13,7 +13,6 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
 import static junit.framework.Assert.assertNotNull;
-import static junit.framework.Assert.assertNull;
 import static junit.framework.TestCase.*;
 
 public class PlaylistCreationRequestTest {
@@ -36,19 +35,18 @@ public class PlaylistCreationRequestTest {
       public void onSuccess(Playlist playlist) {
         assertNotNull(playlist);
         assertFalse(playlist.getIsCollaborative());
-        assertNull(playlist.getDescription());
-        assertEquals("http://open.spotify.com/user/thelinmichael/playlist/2LfixThJPNO9DAreghF2WK", playlist.getExternalUrls().get("spotify"));
-        assertNull(playlist.getFollowers());
-        assertEquals("https://api.spotify.com/v1/users/thelinmichael/playlists/2LfixThJPNO9DAreghF2WK", playlist.getHref());
-        assertEquals("2LfixThJPNO9DAreghF2WK", playlist.getId());
-        assertEquals(1, playlist.getImages().size());
-        assertNull(playlist.getImages().get(0));
-        assertEquals("Coolest Playlist", playlist.getName());
+        assertEquals("New playlist description", playlist.getDescription());
+        assertEquals("http://open.spotify.com/user/1153065250/playlist/2oo3exZoJwBXwdYJDoe0Ru", playlist.getExternalUrls().get("spotify"));
+        assertEquals(0, playlist.getFollowers().getTotal());
+        assertEquals("https://api.spotify.com/v1/users/1153065250/playlists/2oo3exZoJwBXwdYJDoe0Ru", playlist.getHref());
+        assertEquals("2oo3exZoJwBXwdYJDoe0Ru", playlist.getId());
+        assertEquals(0, playlist.getImages().length);
+        assertEquals("New Playlist", playlist.getName());
         assertNotNull(playlist.getOwner());
-        assertTrue(playlist.getIsPublicAccess());
-        assertNull(playlist.getTracks());
-        assertEquals(ModelObjectType.PLAYLIST, playlist.getType());
-        assertEquals("spotify:user:thelinmichael:playlist:2LfixThJPNO9DAreghF2WK", playlist.getUri());
+        assertFalse(playlist.getIsPublicAccess());
+        assertEquals(0, playlist.getTracks().getTotal());
+        assertEquals(ObjectType.PLAYLIST, playlist.getType());
+        assertEquals("spotify:user:1153065250:playlist:2oo3exZoJwBXwdYJDoe0Ru", playlist.getUri());
 
         asyncCompleted.countDown();
       }
@@ -73,20 +71,20 @@ public class PlaylistCreationRequestTest {
 
     final Playlist playlist = request.get();
 
+    assertNotNull(playlist);
     assertFalse(playlist.getIsCollaborative());
-    assertNull(playlist.getDescription());
-    assertEquals("http://open.spotify.com/user/thelinmichael/playlist/2LfixThJPNO9DAreghF2WK", playlist.getExternalUrls().get("spotify"));
-    assertNull(playlist.getFollowers());
-    assertEquals("https://api.spotify.com/v1/users/thelinmichael/playlists/2LfixThJPNO9DAreghF2WK", playlist.getHref());
-    assertEquals("2LfixThJPNO9DAreghF2WK", playlist.getId());
-    assertEquals(1, playlist.getImages().size());
-    assertNull(playlist.getImages().get(0));
-    assertEquals("Coolest Playlist", playlist.getName());
+    assertEquals("New playlist description", playlist.getDescription());
+    assertEquals("http://open.spotify.com/user/1153065250/playlist/2oo3exZoJwBXwdYJDoe0Ru", playlist.getExternalUrls().get("spotify"));
+    assertEquals(0, playlist.getFollowers().getTotal());
+    assertEquals("https://api.spotify.com/v1/users/1153065250/playlists/2oo3exZoJwBXwdYJDoe0Ru", playlist.getHref());
+    assertEquals("2oo3exZoJwBXwdYJDoe0Ru", playlist.getId());
+    assertEquals(0, playlist.getImages().length);
+    assertEquals("New Playlist", playlist.getName());
     assertNotNull(playlist.getOwner());
-    assertTrue(playlist.getIsPublicAccess());
-    assertNull(playlist.getTracks());
-    assertEquals(ModelObjectType.PLAYLIST, playlist.getType());
-    assertEquals("spotify:user:thelinmichael:playlist:2LfixThJPNO9DAreghF2WK", playlist.getUri());
+    assertFalse(playlist.getIsPublicAccess());
+    assertEquals(0, playlist.getTracks().getTotal());
+    assertEquals(ObjectType.PLAYLIST, playlist.getType());
+    assertEquals("spotify:user:1153065250:playlist:2oo3exZoJwBXwdYJDoe0Ru", playlist.getUri());
   }
 
 }

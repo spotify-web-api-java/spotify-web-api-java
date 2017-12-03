@@ -1,25 +1,69 @@
 package com.wrapper.spotify.model_objects;
 
+import com.google.gson.JsonObject;
+
+import java.text.ParseException;
 import java.util.Date;
 
-public class SavedTrack {
+public class SavedTrack extends AbstractModelObject {
+  private final Date addedAt;
+  private final Track track;
 
-  private Date addedAt;
-  private Track track;
+  private SavedTrack(final SavedTrack.Builder builder) {
+    super(builder);
+
+    this.addedAt = builder.addedAt;
+    this.track = builder.track;
+  }
 
   public Date getAddedAt() {
     return addedAt;
-  }
-
-  public void setAddedAt(Date addedAt) {
-    this.addedAt = addedAt;
   }
 
   public Track getTrack() {
     return track;
   }
 
-  public void setTrack(Track track) {
-    this.track = track;
+  @Override
+  public Builder builder() {
+    return new Builder();
+  }
+
+  public static final class Builder extends AbstractModelObject.Builder {
+    private Date addedAt;
+    private Track track;
+
+    public Builder setAddedAt(Date addedAt) {
+      this.addedAt = addedAt;
+      return this;
+    }
+
+    public Builder setTrack(Track track) {
+      this.track = track;
+      return this;
+    }
+
+    @Override
+    public SavedTrack build() {
+      return new SavedTrack(this);
+    }
+  }
+
+  public static final class JsonUtil extends AbstractModelObject.JsonUtil<SavedTrack> {
+    public SavedTrack createModelObject(JsonObject jsonObject) {
+      if (jsonObject == null || jsonObject.isJsonNull()) {
+        return null;
+      }
+
+      try {
+        return new Builder()
+                .setAddedAt(simpleDateFormat.parse(jsonObject.get("added_at").getAsString()))
+                .setTrack(new Track.JsonUtil().createModelObject(jsonObject.getAsJsonObject("track")))
+                .build();
+      } catch (ParseException e) {
+        e.printStackTrace();
+        return null;
+      }
+    }
   }
 }

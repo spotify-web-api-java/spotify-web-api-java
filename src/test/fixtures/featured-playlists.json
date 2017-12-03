@@ -1,24 +1,27 @@
 {
-  "message": "Behöver du hjälp att komma igång idag?",
+  "message": "Sleepy?",
   "playlists": {
-    "href": "https://api.spotify.com/v1/browse/featured-playlists?country=SE&locale=sv_SE&timestamp=2014-10-23T09:00:00&offset=1&limit=1",
+    "href": "https://api.spotify.com/v1/browse/featured-playlists?timestamp=2017-12-03T01%3A40%3A49&offset=0&limit=1",
     "items": [
       {
         "collaborative": false,
         "external_urls": {
-          "spotify": "http://open.spotify.com/user/spotify/playlist/2BgVZaiDigaqxTbZEI2TpE"
+          "spotify": "https://open.spotify.com/user/spotify/playlist/37i9dQZF1DWStLt4f1zJ6I"
         },
-        "href": "https://api.spotify.com/v1/users/spotify/playlists/2BgVZaiDigaqxTbZEI2TpE",
-        "id": "2BgVZaiDigaqxTbZEI2TpE",
+        "href": "https://api.spotify.com/v1/users/spotify/playlists/37i9dQZF1DWStLt4f1zJ6I",
+        "id": "37i9dQZF1DWStLt4f1zJ6I",
         "images": [
           {
-            "url": "https://i.scdn.co/image/1ea73dc4a640537a4647079c4b623838f7573049"
+            "height": 300,
+            "url": "https://i.scdn.co/image/2b04d25c35b6219179d22a4749db45b93de1727d",
+            "width": 300
           }
         ],
-        "name": "Träning",
+        "name": "Songs For Sleeping",
         "owner": {
+          "display_name": "Spotify",
           "external_urls": {
-            "spotify": "http://open.spotify.com/user/spotify"
+            "spotify": "https://open.spotify.com/user/spotify"
           },
           "href": "https://api.spotify.com/v1/users/spotify",
           "id": "spotify",
@@ -26,18 +29,19 @@
           "uri": "spotify:user:spotify"
         },
         "public": null,
+        "snapshot_id": "Z+O+dsjiDG8E5TTVLTLQhS0HpWc1jmAQuN5++E8gxPiJCWCnxSLEeMdvs9/zt68RRIqTV08DFSE=",
         "tracks": {
-          "href": "https://api.spotify.com/v1/users/spotify/playlists/2BgVZaiDigaqxTbZEI2TpE/tracks",
-          "total": 46
+          "href": "https://api.spotify.com/v1/users/spotify/playlists/37i9dQZF1DWStLt4f1zJ6I/tracks",
+          "total": 99
         },
         "type": "playlist",
-        "uri": "spotify:user:spotify:playlist:2BgVZaiDigaqxTbZEI2TpE"
+        "uri": "spotify:user:spotify:playlist:37i9dQZF1DWStLt4f1zJ6I"
       }
     ],
     "limit": 1,
-    "next": "https://api.spotify.com/v1/browse/featured-playlists?country=SE&locale=sv_SE&timestamp=2014-10-23T09:00:00&offset=2&limit=1",
-    "offset": 1,
-    "previous": "https://api.spotify.com/v1/browse/featured-playlists?country=SE&locale=sv_SE&timestamp=2014-10-23T09:00:00&offset=0&limit=1",
-    "total": 12
+    "next": "https://api.spotify.com/v1/browse/featured-playlists?timestamp=2017-12-03T01%3A40%3A49&offset=1&limit=1",
+    "offset": 0,
+    "previous": null,
+    "total": 23
   }
 }

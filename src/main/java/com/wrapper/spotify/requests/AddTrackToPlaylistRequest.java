@@ -1,7 +1,6 @@
 package com.wrapper.spotify.requests;
 
 import com.google.common.util.concurrent.SettableFuture;
-import com.wrapper.spotify.JsonUtil;
 import com.wrapper.spotify.exceptions.*;
 import com.wrapper.spotify.model_objects.SnapshotResult;
 
@@ -28,7 +27,7 @@ public class AddTrackToPlaylistRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return JsonUtil.createSnapshotResult(postJson());
+    return new SnapshotResult.JsonUtil().createModelObject(postJson());
   }
 
   public SettableFuture<SnapshotResult> getAsync() throws
@@ -42,7 +41,7 @@ public class AddTrackToPlaylistRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return getAsync(JsonUtil.createSnapshotResult(postJson()));
+    return getAsync(new SnapshotResult.JsonUtil().createModelObject(postJson()));
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {

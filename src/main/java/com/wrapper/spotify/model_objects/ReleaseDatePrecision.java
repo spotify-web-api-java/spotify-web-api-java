@@ -2,9 +2,9 @@ package com.wrapper.spotify.model_objects;
 
 public enum ReleaseDatePrecision {
 
-  year("year"),
-  month("month"),
-  day("day");
+  YEAR("year"),
+  MONTH("month"),
+  DAY("day");
 
   public final String precision;
 

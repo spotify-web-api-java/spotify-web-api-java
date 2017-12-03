@@ -3,74 +3,90 @@
   "items": [
     {
       "album_type": "single",
-      "available_markets": [
-        "CA",
-        "MX",
-        "US"
+      "artists": [
+        {
+          "external_urls": {
+            "spotify": "https://open.spotify.com/artist/1vCWHaC5f2uS3yhpwWbIA6"
+          },
+          "href": "https://api.spotify.com/v1/artists/1vCWHaC5f2uS3yhpwWbIA6",
+          "id": "1vCWHaC5f2uS3yhpwWbIA6",
+          "name": "Avicii",
+          "type": "artist",
+          "uri": "spotify:artist:1vCWHaC5f2uS3yhpwWbIA6"
+        }
       ],
+      "available_markets": [],
       "external_urls": {
-        "spotify": "https://open.spotify.com/album/6RcscDLgp8v0mSRxvRhfG0"
+        "spotify": "https://open.spotify.com/album/31gLK2SKwtqNogrwMRIyQ0"
       },
-      "href": "https://api.spotify.com/v1/albums/6RcscDLgp8v0mSRxvRhfG0",
-      "id": "6RcscDLgp8v0mSRxvRhfG0",
+      "href": "https://api.spotify.com/v1/albums/31gLK2SKwtqNogrwMRIyQ0",
+      "id": "31gLK2SKwtqNogrwMRIyQ0",
       "images": [
         {
           "height": 640,
-          "url": "https://i.scdn.co/image/9a8686f673072b38fee12b742d4460907ebc6f08",
+          "url": "https://i.scdn.co/image/748bd48cd36fef691914fec4bbed02b2050a3fec",
           "width": 640
         },
         {
           "height": 300,
-          "url": "https://i.scdn.co/image/013c07463a4861a5d2af436d81c470abc2bd78f8",
+          "url": "https://i.scdn.co/image/bba7aa084785434a49611480b9d1f34d3235d1c3",
           "width": 300
         },
         {
           "height": 64,
-          "url": "https://i.scdn.co/image/9d6d3d26080271d68f9b44f5967e0732dc8e5eb4",
+          "url": "https://i.scdn.co/image/4b6c10740d42f84fb518807b01ff26d7af0045d3",
           "width": 64
         }
       ],
-      "name": "The Days",
+      "name": "Lonely Together (Remixes)",
       "type": "album",
-      "uri": "spotify:album:6RcscDLgp8v0mSRxvRhfG0"
+      "uri": "spotify:album:31gLK2SKwtqNogrwMRIyQ0"
     },
     {
       "album_type": "single",
-      "available_markets": [
-        "CA",
-        "MX",
-        "US"
+      "artists": [
+        {
+          "external_urls": {
+            "spotify": "https://open.spotify.com/artist/1vCWHaC5f2uS3yhpwWbIA6"
+          },
+          "href": "https://api.spotify.com/v1/artists/1vCWHaC5f2uS3yhpwWbIA6",
+          "id": "1vCWHaC5f2uS3yhpwWbIA6",
+          "name": "Avicii",
+          "type": "artist",
+          "uri": "spotify:artist:1vCWHaC5f2uS3yhpwWbIA6"
+        }
       ],
+      "available_markets": [],
       "external_urls": {
-        "spotify": "https://open.spotify.com/album/5jvbjb51hQQAIycnBFS4cG"
+        "spotify": "https://open.spotify.com/album/3IPBaA3vOQN7aGCQoZU40K"
       },
-      "href": "https://api.spotify.com/v1/albums/5jvbjb51hQQAIycnBFS4cG",
-      "id": "5jvbjb51hQQAIycnBFS4cG",
+      "href": "https://api.spotify.com/v1/albums/3IPBaA3vOQN7aGCQoZU40K",
+      "id": "3IPBaA3vOQN7aGCQoZU40K",
       "images": [
         {
           "height": 640,
-          "url": "https://i.scdn.co/image/96e309e8f306742de5e23b6235e963c0dcbcf7bc",
+          "url": "https://i.scdn.co/image/05b4171a8ad713f09ee378f1f0baceb95e1d219e",
           "width": 640
         },
         {
           "height": 300,
-          "url": "https://i.scdn.co/image/8b32f93877ad126a2cecee24484d2bc0ed434e83",
+          "url": "https://i.scdn.co/image/820f50675ae1163eafded092c013975a0bf31842",
           "width": 300
         },
         {
           "height": 64,
-          "url": "https://i.scdn.co/image/797051eca4556983cbe70e23844c484c5522d907",
+          "url": "https://i.scdn.co/image/e2f8035dc13761879177c3601044aa16fcde8365",
           "width": 64
         }
       ],
-      "name": "Addicted To You (Remixes)",
+      "name": "Lonely Together (Acoustic)",
       "type": "album",
-      "uri": "spotify:album:5jvbjb51hQQAIycnBFS4cG"
+      "uri": "spotify:album:3IPBaA3vOQN7aGCQoZU40K"
     }
   ],
   "limit": 2,
   "next": "https://api.spotify.com/v1/artists/1vCWHaC5f2uS3yhpwWbIA6/albums?offset=2&limit=2&album_type=single&market=US",
   "offset": 0,
   "previous": null,
-  "total": 34
+  "total": 46
 }

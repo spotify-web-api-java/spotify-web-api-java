@@ -1,10 +1,9 @@
 package com.wrapper.spotify.requests;
 
 import com.google.common.util.concurrent.SettableFuture;
-import com.wrapper.spotify.JsonUtil;
+import com.google.gson.JsonObject;
 import com.wrapper.spotify.exceptions.*;
-import com.wrapper.spotify.model_objects.Playlist;
-import net.sf.json.JSONObject;
+import com.wrapper.spotify.objects.Playlist;
 
 import java.io.IOException;
 
@@ -29,7 +28,7 @@ public class PlaylistCreationRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return JsonUtil.createPlaylist(postJson());
+    return new Playlist.JsonUtil().createModelObject(postJson());
   }
 
   public SettableFuture<Playlist> getAsync() throws
@@ -43,26 +42,26 @@ public class PlaylistCreationRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return getAsync(JsonUtil.createPlaylist(postJson()));
+    return getAsync(new Playlist.JsonUtil().createModelObject(postJson()));
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
-    private JSONObject jsonBody;
+    private JsonObject jsonBody;
 
     public Builder publicAccess(final boolean publicAccess) {
       if (jsonBody == null) {
-        jsonBody = new JSONObject();
+        jsonBody = new JsonObject();
       }
-      jsonBody.put("public", String.valueOf(publicAccess));
+      jsonBody.addProperty("public", String.valueOf(publicAccess));
       return setBodyParameter(jsonBody);
     }
 
     public Builder title(final String title) {
       if (jsonBody == null) {
-        jsonBody = new JSONObject();
+        jsonBody = new JsonObject();
       }
-      jsonBody.put("name", String.valueOf(title));
+      jsonBody.addProperty("name", String.valueOf(title));
       return setBodyParameter(jsonBody);
     }
 

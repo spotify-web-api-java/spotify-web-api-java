@@ -12,7 +12,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
@@ -45,9 +44,9 @@ public class TrackSearchRequestTest {
         assertEquals(20, trackSearchResult.getLimit());
         assertEquals(0, trackSearchResult.getOffset());
 
-        List<Track> tracks = trackSearchResult.getItems();
+        Track[] tracks = trackSearchResult.getItems();
 
-        Track firstTrack = tracks.get(0);
+        Track firstTrack = tracks[0];
         assertNotNull(firstTrack.getId());
 
         String id = firstTrack.getId();
@@ -79,9 +78,9 @@ public class TrackSearchRequestTest {
     assertEquals(20, trackSearchResult.getLimit());
     assertEquals(0, trackSearchResult.getOffset());
 
-    List<Track> tracks = trackSearchResult.getItems();
+    Track[] tracks = trackSearchResult.getItems();
 
-    Track firstTrack = tracks.get(0);
+    Track firstTrack = tracks[0];
     assertNotNull(firstTrack.getId());
 
     String id = firstTrack.getId();

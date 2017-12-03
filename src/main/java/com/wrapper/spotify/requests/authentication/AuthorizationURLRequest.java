@@ -4,8 +4,6 @@ import com.google.common.base.Joiner;
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.requests.AbstractRequest;
 
-import java.util.List;
-
 public class AuthorizationURLRequest extends AbstractRequest {
 
   public AuthorizationURLRequest(Builder builder) {
@@ -18,7 +16,7 @@ public class AuthorizationURLRequest extends AbstractRequest {
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
-    public Builder scopes(List<String> scopes) {
+    public Builder scopes(String[] scopes) {
       return setParameter("scope", Joiner.on(" ").join(scopes));
     }
 

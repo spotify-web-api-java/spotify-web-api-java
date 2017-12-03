@@ -12,7 +12,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
@@ -37,17 +36,17 @@ public class AlbumSearchRequestTest {
     Futures.addCallback(searchResultFuture, new FutureCallback<Paging<AlbumSimplified>>() {
       @Override
       public void onSuccess(Paging<AlbumSimplified> albumSearchResult) {
-        assertEquals("https://api.spotify.com/v1/search?query=tania%2Bbowra&offset=0&limit=20&type=album", albumSearchResult.getHref());
+        assertEquals("https://api.spotify.com/v1/search?query=tania+bowra&type=album&market=DE&offset=0&limit=20", albumSearchResult.getHref());
         assertEquals(20, albumSearchResult.getLimit());
         assertEquals(0, albumSearchResult.getOffset());
         assertNull(albumSearchResult.getNext());
         assertNull(albumSearchResult.getPrevious());
         assertEquals(1, albumSearchResult.getTotal());
 
-        List<AlbumSimplified> albums = albumSearchResult.getItems();
-        assertEquals(1, albums.size());
+        AlbumSimplified[] albums = albumSearchResult.getItems();
+        assertEquals(1, albums.length);
 
-        AlbumSimplified firstAlbum = albums.get(0);
+        AlbumSimplified firstAlbum = albums[0];
         assertEquals("https://open.spotify.com/album/6akEvsycLGftJxYudPjmqK", firstAlbum.getExternalUrls().get("spotify"));
         assertEquals("https://api.spotify.com/v1/albums/6akEvsycLGftJxYudPjmqK", firstAlbum.getHref());
         assertEquals("6akEvsycLGftJxYudPjmqK", firstAlbum.getId());
@@ -55,7 +54,7 @@ public class AlbumSearchRequestTest {
         assertEquals(ModelObjectType.ALBUM, firstAlbum.getType());
         assertEquals("spotify:album:6akEvsycLGftJxYudPjmqK", firstAlbum.getUri());
         assertNotNull(firstAlbum.getAvailableMarkets());
-        assertFalse(firstAlbum.getAvailableMarkets().isEmpty());
+        assertFalse(firstAlbum.getAvailableMarkets().length == 0);
 
         asyncCompleted.countDown();
       }
@@ -78,17 +77,17 @@ public class AlbumSearchRequestTest {
             .build();
 
     final Paging<AlbumSimplified> albumSearchResult = request.get();
-    assertEquals("https://api.spotify.com/v1/search?query=tania%2Bbowra&offset=0&limit=20&type=album", albumSearchResult.getHref());
+    assertEquals("https://api.spotify.com/v1/search?query=tania+bowra&type=album&market=DE&offset=0&limit=20", albumSearchResult.getHref());
     assertEquals(20, albumSearchResult.getLimit());
     assertEquals(0, albumSearchResult.getOffset());
     assertNull(albumSearchResult.getNext());
     assertNull(albumSearchResult.getPrevious());
     assertEquals(1, albumSearchResult.getTotal());
 
-    final List<AlbumSimplified> albums = albumSearchResult.getItems();
-    assertEquals(1, albums.size());
+    final AlbumSimplified[] albums = albumSearchResult.getItems();
+    assertEquals(1, albums.length);
 
-    AlbumSimplified firstAlbum = albums.get(0);
+    AlbumSimplified firstAlbum = albums[0];
     assertEquals("https://open.spotify.com/album/6akEvsycLGftJxYudPjmqK", firstAlbum.getExternalUrls().get("spotify"));
     assertEquals("https://api.spotify.com/v1/albums/6akEvsycLGftJxYudPjmqK", firstAlbum.getHref());
     assertEquals("6akEvsycLGftJxYudPjmqK", firstAlbum.getId());
@@ -96,7 +95,7 @@ public class AlbumSearchRequestTest {
     assertEquals(ModelObjectType.ALBUM, firstAlbum.getType());
     assertEquals("spotify:album:6akEvsycLGftJxYudPjmqK", firstAlbum.getUri());
     assertNotNull(firstAlbum.getAvailableMarkets());
-    assertFalse(firstAlbum.getAvailableMarkets().isEmpty());
+    assertFalse(firstAlbum.getAvailableMarkets().length == 0);
   }
 
 }
