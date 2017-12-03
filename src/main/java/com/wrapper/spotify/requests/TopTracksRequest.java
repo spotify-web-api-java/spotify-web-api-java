@@ -1,11 +1,11 @@
 package com.wrapper.spotify.requests;
 
 import com.google.common.util.concurrent.SettableFuture;
+import com.google.gson.JsonParser;
 import com.wrapper.spotify.exceptions.*;
 import com.wrapper.spotify.objects.Track;
 
 import java.io.IOException;
-import java.util.List;
 
 public class TopTracksRequest extends AbstractRequest {
 
@@ -28,7 +28,7 @@ public class TopTracksRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return new Track.JsonUtil().createModelObjectArray(getJson());
+    return new Track.JsonUtil().createModelObjectArray(new JsonParser().parse(getJson()).getAsJsonObject().get("tracks").getAsJsonArray());
   }
 
   public SettableFuture<Track[]> getAsync() throws
@@ -42,7 +42,7 @@ public class TopTracksRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return getAsync(new Track.JsonUtil().createModelObjectArray(getJson()));
+    return getAsync(new Track.JsonUtil().createModelObjectArray(new JsonParser().parse(getJson()).getAsJsonObject().get("tracks").getAsJsonArray()));
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
