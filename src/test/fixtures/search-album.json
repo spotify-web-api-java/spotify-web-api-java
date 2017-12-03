@@ -1,9 +1,21 @@
 {
   "albums": {
-    "href": "https://api.spotify.com/v1/search?query=tania%2Bbowra&offset=0&limit=20&type=album",
+    "href": "https://api.spotify.com/v1/search?query=tania+bowra&type=album&market=DE&offset=0&limit=20",
     "items": [
       {
         "album_type": "album",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/08td7MxkoHQkXnWAYD8d6Q"
+            },
+            "href": "https://api.spotify.com/v1/artists/08td7MxkoHQkXnWAYD8d6Q",
+            "id": "08td7MxkoHQkXnWAYD8d6Q",
+            "name": "Tania Bowra",
+            "type": "artist",
+            "uri": "spotify:artist:08td7MxkoHQkXnWAYD8d6Q"
+          }
+        ],
         "available_markets": [
           "AD",
           "AR",
@@ -34,9 +46,11 @@
           "HK",
           "HN",
           "HU",
+          "ID",
           "IE",
           "IS",
           "IT",
+          "JP",
           "LI",
           "LT",
           "LU",
@@ -55,16 +69,16 @@
           "PL",
           "PT",
           "PY",
-          "RO",
           "SE",
           "SG",
-          "SI",
           "SK",
           "SV",
+          "TH",
           "TR",
           "TW",
           "US",
-          "UY"
+          "UY",
+          "VN"
         ],
         "external_urls": {
           "spotify": "https://open.spotify.com/album/6akEvsycLGftJxYudPjmqK"
@@ -74,17 +88,17 @@
         "images": [
           {
             "height": 640,
-            "url": "https://i.scdn.co/image/f2798ddab0c7b76dc2d270b65c4f67ddef7f6718",
+            "url": "https://i.scdn.co/image/a529b65b4bd322b16bee34672ce45278e890e176",
             "width": 640
           },
           {
             "height": 300,
-            "url": "https://i.scdn.co/image/b414091165ea0f4172089c2fc67bb35aa37cfc55",
+            "url": "https://i.scdn.co/image/985cc10acdbbedb6a16d7c74f9e23553e2b28dbc",
             "width": 300
           },
           {
             "height": 64,
-            "url": "https://i.scdn.co/image/8522fc78be4bf4e83fea8e67bb742e7d3dfe21b4",
+            "url": "https://i.scdn.co/image/37b46a2662c09502885d1804c1c865b199cc3d67",
             "width": 64
           }
         ],
