@@ -13,7 +13,7 @@ public class Playlist extends AbstractModelObject {
   private final Image[] images;
   private final String name;
   private final User owner;
-  private final boolean publicAccess;
+  private final Boolean publicAccess;
   private final String snapshotId;
   private final Paging<PlaylistTrack> tracks;
   private final ObjectType type;
@@ -74,7 +74,7 @@ public class Playlist extends AbstractModelObject {
     return owner;
   }
 
-  public boolean getIsPublicAccess() {
+  public Boolean getIsPublicAccess() {
     return publicAccess;
   }
 
@@ -109,7 +109,7 @@ public class Playlist extends AbstractModelObject {
     private Image[] images;
     private String name;
     private User owner;
-    private boolean publicAccess;
+    private Boolean publicAccess;
     private String snapshotId;
     private Paging<PlaylistTrack> tracks;
     private ObjectType type;
@@ -160,7 +160,7 @@ public class Playlist extends AbstractModelObject {
       return this;
     }
 
-    public Builder setPublicAccess(boolean publicAccess) {
+    public Builder setPublicAccess(Boolean publicAccess) {
       this.publicAccess = publicAccess;
       return this;
     }
