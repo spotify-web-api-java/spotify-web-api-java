@@ -212,7 +212,5 @@ public abstract class AbstractRequest implements Request {
 
       parameters.add(builder.setName(name).setValue(value).build());
     }
-
   }
-
 }

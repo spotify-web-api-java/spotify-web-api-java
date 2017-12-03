@@ -7,7 +7,6 @@ import com.google.gson.JsonParser;
 import com.wrapper.spotify.exceptions.*;
 
 import java.io.IOException;
-import java.util.List;
 
 public class ContainsMySavedTracksRequest extends AbstractRequest {
 

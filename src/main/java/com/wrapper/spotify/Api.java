@@ -1,5 +1,6 @@
 package com.wrapper.spotify;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonParser;
 import com.wrapper.spotify.UtilProtos.Url.Scheme;
 import com.wrapper.spotify.requests.*;
@@ -363,7 +364,7 @@ public class Api {
   public AddTrackToPlaylistRequest.Builder addTracksToPlaylist(String userId, String playlistId, String[] trackUris) {
     final AddTrackToPlaylistRequest.Builder builder = AddTrackToPlaylistRequest.builder();
     setDefaults(builder);
-    builder.setBodyParameter(new JsonParser().parse(trackUris.toString()).getAsJsonArray());
+    builder.setBodyParameter(new JsonParser().parse(new Gson().toJson(trackUris)).getAsJsonArray());
     userId = UrlUtil.escapeUsername(userId);
     builder.setPath("/v1/users/" + userId + "/playlists/" + playlistId + "/tracks");
     return builder;

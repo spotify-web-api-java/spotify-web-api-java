@@ -69,6 +69,7 @@ public final class UtilProtos {
             internal_static_spotify_Url_Part_descriptor,
             new java.lang.String[]{"Name", "Filename", "ContentType", "Charset", "Value",});
   }
+
   private UtilProtos() {
   }
 
