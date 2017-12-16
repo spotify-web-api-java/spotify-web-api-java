@@ -5,7 +5,7 @@ import com.wrapper.spotify.Api;
 import com.wrapper.spotify.model_objects.ClientCredentials;
 import com.wrapper.spotify.requests.authentication.ClientCredentialsGrantRequest;
 
-import static junit.framework.TestCase.fail;
+import static org.junit.Assert.fail;
 
 /**
  * This example shows how to get refresh an access token asynchronously. There's a

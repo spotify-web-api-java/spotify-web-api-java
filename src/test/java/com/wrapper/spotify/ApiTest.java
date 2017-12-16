@@ -14,7 +14,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 import static com.wrapper.spotify.Assertions.*;
-import static junit.framework.TestCase.assertEquals;
+import static org.junit.Assert.assertEquals;
 
 public class ApiTest {
 

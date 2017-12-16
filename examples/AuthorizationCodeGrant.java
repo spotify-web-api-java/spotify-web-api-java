@@ -4,7 +4,7 @@ import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.model_objects.AuthorizationCodeCredentials;
 
-import static junit.framework.TestCase.fail;
+import static org.junit.Assert.fail;
 
 /**
  * This example shows how to get refresh an access token asynchronously. There's a
