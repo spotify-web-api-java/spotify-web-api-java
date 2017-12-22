@@ -185,6 +185,18 @@ public class Api {
     return builder;
   }
 
+  public RecentlyPlayedTracksRequest.Builder getRecentlyPlayedTracks() {
+    RecentlyPlayedTracksRequest.Builder builder = RecentlyPlayedTracksRequest.builder();
+    setDefaults(builder);
+    return builder;
+  }
+
+  public CurrentlyPlayingTrackRequest.Builder getCurrentlyPlayingTrack() {
+    CurrentlyPlayingTrackRequest.Builder builder = CurrentlyPlayingTrackRequest.builder();
+    setDefaults(builder);
+    return builder;
+  }
+
   /**
    * Used to get Featured Playlists.
    *
@@ -367,6 +379,34 @@ public class Api {
     builder.setBodyParameter(new JsonParser().parse(new Gson().toJson(trackUris)).getAsJsonArray());
     userId = UrlUtil.escapeUsername(userId);
     builder.setPath("/v1/users/" + userId + "/playlists/" + playlistId + "/tracks");
+    return builder;
+  }
+
+  /**
+   * delete tracks from a playlist
+   * @param userId The owner's username.
+   * @param playlistId The playlist's ID.
+   * @param trackUris URIs of the tracks to remove.
+   * @return  A builder object that can e used to build a request to remove tracks from a playlist.
+   */
+  public RemoveTrackFromPlaylistRequest.Builder removeTrackFromPlaylist(String userId, String playlistId, List<String> trackUris) {
+    final RemoveTrackFromPlaylistRequest.Builder builder = RemoveTrackFromPlaylistRequest.builder();
+    setDefaults(builder);
+    final JSONArray jsonArrayUri = new JSONArray();
+
+    for(String trackUri : trackUris) {
+      JSONObject singleUriJson = new JSONObject();
+      singleUriJson.put("uri", trackUri);
+
+      jsonArrayUri.add(singleUriJson);
+    }
+
+    JSONObject finalObject = new JSONObject();
+    finalObject.put("tracks", jsonArrayUri);
+
+    builder.body(finalObject);
+    userId = UrlUtil.userToUri(userId);
+    builder.path("/v1/users/" + userId + "/playlists/" + playlistId + "/tracks");
     return builder;
   }
 
