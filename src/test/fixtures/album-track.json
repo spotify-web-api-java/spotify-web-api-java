@@ -1,0 +1,126 @@
+{
+  "href" : "https://api.spotify.com/v1/albums/6TJmQnO44YE5BtTxH8pop1/tracks?offset=0&limit=2",
+  "items" : [
+    {
+    "artists" : [
+      {
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/artist/1Uff91EOsvd99rtAupatMP"
+      },
+      "href" : "https://api.spotify.com/v1/artists/1Uff91EOsvd99rtAupatMP",
+      "id" : "1Uff91EOsvd99rtAupatMP",
+      "name" : "Claude Debussy",
+      "type" : "artist",
+      "uri" : "spotify:artist:1Uff91EOsvd99rtAupatMP"
+    },
+      {
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/artist/0K23lQ2hSQAlxSEeZ05bjI"
+      },
+      "href" : "https://api.spotify.com/v1/artists/0K23lQ2hSQAlxSEeZ05bjI",
+      "id" : "0K23lQ2hSQAlxSEeZ05bjI",
+      "name" : "Boston Symphony Orchestra",
+      "type" : "artist",
+      "uri" : "spotify:artist:0K23lQ2hSQAlxSEeZ05bjI"
+    },
+      {
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/artist/2RKnompMfdeZsyis6Gs4ce"
+      },
+      "href" : "https://api.spotify.com/v1/artists/2RKnompMfdeZsyis6Gs4ce",
+      "id" : "2RKnompMfdeZsyis6Gs4ce",
+      "name" : "Charles Münch",
+      "type" : "artist",
+      "uri" : "spotify:artist:2RKnompMfdeZsyis6Gs4ce"
+    }
+    ],
+    "available_markets" : [ "AR", "AU", "AT", "BE", "BO", "BR", "BG", "CA", "CL", "CO", "CR", "CY", "CZ", "DK", "DO", "DE", "EC", "EE", "SV", "FI", "FR", "GR", "GT", "HN", "HK", "HU", "IS", "IE", "IT", "LV", "LT", "LU", "MY", "MT", "MX", "NL", "NZ", "NI", "NO", "PA", "PY", "PE", "PH", "PL", "PT", "SG", "SK", "ES", "SE", "CH", "TW", "TR", "UY", "US", "GB", "AD", "LI", "MC", "ID" ],
+    "disc_number" : 1,
+    "duration_ms" : 212066,
+    "explicit" : false,
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/track/6dAGqW4jLTtUN1zGpfT7df"
+    },
+    "href" : "https://api.spotify.com/v1/tracks/6dAGqW4jLTtUN1zGpfT7df",
+    "id" : "6dAGqW4jLTtUN1zGpfT7df",
+    "name" : "La damoiselle élue, L. 62: Debut",
+    "preview_url" : "https://p.scdn.co/mp3-preview/a20e759311b47e2359712fcfda5d7fa180ae7a8d",
+    "track_number" : 1,
+    "type" : "track",
+    "uri" : "spotify:track:6dAGqW4jLTtUN1zGpfT7df"
+  },
+    {
+    "artists" : [
+      {
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/artist/1Uff91EOsvd99rtAupatMP"
+      },
+      "href" : "https://api.spotify.com/v1/artists/1Uff91EOsvd99rtAupatMP",
+      "id" : "1Uff91EOsvd99rtAupatMP",
+      "name" : "Claude Debussy",
+      "type" : "artist",
+      "uri" : "spotify:artist:1Uff91EOsvd99rtAupatMP"
+    },
+      {
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/artist/2mjYUXIj32wSpgoZqlc2lP"
+      },
+      "href" : "https://api.spotify.com/v1/artists/2mjYUXIj32wSpgoZqlc2lP",
+      "id" : "2mjYUXIj32wSpgoZqlc2lP",
+      "name" : "Victoria De Los Angeles",
+      "type" : "artist",
+      "uri" : "spotify:artist:2mjYUXIj32wSpgoZqlc2lP"
+    },
+      {
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/artist/4eUthgMVI0TQwcdCqB6hbY"
+      },
+      "href" : "https://api.spotify.com/v1/artists/4eUthgMVI0TQwcdCqB6hbY",
+      "id" : "4eUthgMVI0TQwcdCqB6hbY",
+      "name" : "Radcliffe Choral Society",
+      "type" : "artist",
+      "uri" : "spotify:artist:4eUthgMVI0TQwcdCqB6hbY"
+    },
+      {
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/artist/0K23lQ2hSQAlxSEeZ05bjI"
+      },
+      "href" : "https://api.spotify.com/v1/artists/0K23lQ2hSQAlxSEeZ05bjI",
+      "id" : "0K23lQ2hSQAlxSEeZ05bjI",
+      "name" : "Boston Symphony Orchestra",
+      "type" : "artist",
+      "uri" : "spotify:artist:0K23lQ2hSQAlxSEeZ05bjI"
+    },
+      {
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/artist/2RKnompMfdeZsyis6Gs4ce"
+      },
+      "href" : "https://api.spotify.com/v1/artists/2RKnompMfdeZsyis6Gs4ce",
+      "id" : "2RKnompMfdeZsyis6Gs4ce",
+      "name" : "Charles Münch",
+      "type" : "artist",
+      "uri" : "spotify:artist:2RKnompMfdeZsyis6Gs4ce"
+    }
+    ],
+    "available_markets" : [ "AR", "AU", "AT", "BE", "BO", "BR", "BG", "CA", "CL", "CO", "CR", "CY", "CZ", "DK", "DO", "DE", "EC", "EE", "SV", "FI", "FR", "GR", "GT", "HN", "HK", "HU", "IS", "IE", "IT", "LV", "LT", "LU", "MY", "MT", "MX", "NL", "NZ", "NI", "NO", "PA", "PY", "PE", "PH", "PL", "PT", "SG", "SK", "ES", "SE", "CH", "TW", "TR", "UY", "US", "GB", "AD", "LI", "MC", "ID" ],
+    "disc_number" : 1,
+    "duration_ms" : 309533,
+    "explicit" : false,
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/track/0p1HOqUSclLkkTQwpIzCFp"
+    },
+    "href" : "https://api.spotify.com/v1/tracks/0p1HOqUSclLkkTQwpIzCFp",
+    "id" : "0p1HOqUSclLkkTQwpIzCFp",
+    "name" : "La damoiselle élue, L. 62: La Damoiselle Elue s'appuyait",
+    "preview_url" : "https://p.scdn.co/mp3-preview/a777fe92c2cfd497a9d19e17100678a4418296ef",
+    "track_number" : 2,
+    "type" : "track",
+    "uri" : "spotify:track:0p1HOqUSclLkkTQwpIzCFp"
+  }
+  ],
+  "limit" : 2,
+  "next" : "https://api.spotify.com/v1/albums/6TJmQnO44YE5BtTxH8pop1/tracks?offset=2&limit=2",
+  "offset" : 0,
+  "previous" : null,
+  "total" : 14
+}

@@ -33,6 +33,40 @@ public class ApiTest {
   }
 
   @Test
+  public void shouldCreateAGetTracksForAlbumUrl() {
+    Api api = Api.DEFAULT_API;
+    Request request = api.getTracksForAlbum("5oEljuMoe9MXH6tBIPbd5e").build();
+    assertEquals(
+        "https://api.spotify.com:443/v1/albums/5oEljuMoe9MXH6tBIPbd5e/tracks",
+        request.toString()
+    );
+  }
+
+  @Test
+  public void shouldReplacePlaylistsTracks() {
+    Api api = Api.DEFAULT_API;
+    Request request = api.replacePlaylistsTracks(
+        "userId","5oEljuMoe9MXH6tBIPbd5e", Collections.<String>emptyList()
+    ).build();
+    assertEquals(
+        "https://api.spotify.com:443/v1/users/userId/playlists/5oEljuMoe9MXH6tBIPbd5e/tracks",
+        request.toString()
+    );
+  }
+
+  @Test
+  public void shouldUnfollowPlaylist() {
+    Api api = Api.DEFAULT_API;
+    Request request = api.unfollowPlaylist(
+        "userId","5oEljuMoe9MXH6tBIPbd5e"
+    ).build();
+    assertEquals(
+        "https://api.spotify.com:443/v1/users/userId/playlists/5oEljuMoe9MXH6tBIPbd5e/followers",
+        request.toString()
+    );
+  }
+
+  @Test
   public void shouldCreateAGetRecentlyPlayedTracksUrl() {
     Api api = Api.DEFAULT_API;
     Request request = api.getRecentlyPlayedTracks().build();

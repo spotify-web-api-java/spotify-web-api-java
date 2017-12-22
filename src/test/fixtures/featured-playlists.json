@@ -34,6 +34,7 @@
           "href": "https://api.spotify.com/v1/users/spotify/playlists/37i9dQZF1DWStLt4f1zJ6I/tracks",
           "total": 99
         },
+        "snapshot_id": "1",
         "type": "playlist",
         "uri": "spotify:user:spotify:playlist:37i9dQZF1DWStLt4f1zJ6I"
       }

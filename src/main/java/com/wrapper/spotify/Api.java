@@ -117,6 +117,15 @@ public class Api {
     return builder;
   }
 
+  public TracksForAlbumRequest.Builder getTracksForAlbum(
+      String albumId
+  ) {
+    TracksForAlbumRequest.Builder builder = TracksForAlbumRequest.builder();
+    setDefaults(builder);
+    builder.forAlbum(albumId);
+    return builder;
+  }
+
   public ArtistRequest.Builder getArtist(String id) {
     ArtistRequest.Builder builder = ArtistRequest.builder();
     setDefaults(builder);
@@ -388,6 +397,27 @@ public class Api {
   }
 
   /**
+   * Replace tracks in a playlist.
+   * @param userId The owner's username.
+   * @param playlistId The playlist's ID.
+   * @param trackUris URIs of the tracks to add.
+   * @return A builder object that can e used to build a request to add tracks to a playlist.
+   */
+  public ReplacePlaylistTracksRequest.Builder replacePlaylistsTracks(
+      String userId, String playlistId, List<String> trackUris
+  ) {
+    final ReplacePlaylistTracksRequest.Builder builder = ReplacePlaylistTracksRequest.builder();
+    setDefaults(builder);
+    final JSONObject urisObject = new JSONObject();
+    final JSONArray jsonArrayUri = new JSONArray();
+    jsonArrayUri.addAll(trackUris);
+    urisObject.put("uris", jsonArrayUri);
+    builder.body(urisObject);
+    builder.path("/v1/users/" + userId + "/playlists/" + playlistId + "/tracks");
+    return builder;
+  }
+
+  /**
    * delete tracks from a playlist
    * @param userId The owner's username.
    * @param playlistId The playlist's ID.
@@ -418,6 +448,20 @@ public class Api {
     setDefaults(builder);
     userId = UrlUtil.escapeUsername(userId);
     builder.setPath("/v1/users/" + userId + "/playlists/" + playlistId);
+    return builder;
+  }
+
+  /**
+   * Remove the current user as a follower of a playlist.
+   * @param userId The owner's username.
+   * @param playlistId The playlist's ID.
+   * @return A builder object that can be used to build a request
+   * to remove the current user as a follower of a playlist.
+   */
+  public PlaylistUnfollowRequest.Builder unfollowPlaylist(String userId, String playlistId) {
+    final PlaylistUnfollowRequest.Builder builder = PlaylistUnfollowRequest.builder();
+    setDefaults(builder);
+    builder.path("/v1/users/" + userId + "/playlists/" + playlistId + "/followers");
     return builder;
   }
 
