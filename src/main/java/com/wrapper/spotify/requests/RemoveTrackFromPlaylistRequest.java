@@ -1,15 +1,15 @@
-package com.wrapper.spotify.methods;
+package com.wrapper.spotify.requests;
 
 import com.google.common.util.concurrent.SettableFuture;
-import com.wrapper.spotify.JsonUtil;
-import com.wrapper.spotify.exceptions.WebApiException;
-import com.wrapper.spotify.models.SnapshotResult;
+import com.wrapper.spotify.exceptions.*;
+import com.wrapper.spotify.model_objects.CurrentlyPlayingTrack;
+import com.wrapper.spotify.model_objects.SnapshotResult;
 
 import java.io.IOException;
 
 public class RemoveTrackFromPlaylistRequest extends AbstractRequest {
 
-  public RemoveTrackFromPlaylistRequest(Builder builder) {
+  private RemoveTrackFromPlaylistRequest(final Builder builder) {
     super(builder);
   }
 
@@ -17,31 +17,40 @@ public class RemoveTrackFromPlaylistRequest extends AbstractRequest {
     return new Builder();
   }
 
-  public SettableFuture<SnapshotResult> deleteAsync() {
-    final SettableFuture<SnapshotResult> removeTrackFuture = SettableFuture.create();
-
-    try {
-      final String jsonString = deleteJson();
-      removeTrackFuture.set(JsonUtil.createSnapshotResponse(jsonString));
-    } catch (Exception e) {
-      removeTrackFuture.setException(e);
-    }
-
-    return removeTrackFuture;
+  public SnapshotResult get() throws
+          IOException,
+          NoContentException,
+          BadRequestException,
+          UnauthorizedException,
+          ForbiddenException,
+          NotFoundException,
+          TooManyRequestsException,
+          InternalServerErrorException,
+          BadGatewayException,
+          ServiceUnavailableException {
+    return new SnapshotResult.JsonUtil().createModelObject(getJson());
   }
 
-  public SnapshotResult delete() throws IOException, WebApiException {
-    final String jsonString = deleteJson();
-    return JsonUtil.createSnapshotResponse(jsonString);
+  public SettableFuture<SnapshotResult> getAsync() throws
+          IOException,
+          NoContentException,
+          BadRequestException,
+          UnauthorizedException,
+          ForbiddenException,
+          NotFoundException,
+          TooManyRequestsException,
+          InternalServerErrorException,
+          BadGatewayException,
+          ServiceUnavailableException {
+    return getAsync(new SnapshotResult.JsonUtil().createModelObject(getJson()));
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
+    @Override
     public RemoveTrackFromPlaylistRequest build() {
-      header("Content-Type", "application/json");
       return new RemoveTrackFromPlaylistRequest(this);
     }
 
   }
-
 }

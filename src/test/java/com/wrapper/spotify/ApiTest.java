@@ -26,17 +26,17 @@ public class ApiTest {
   }
 
   @Test
-  public void shouldCreateGetAudioFeaturesUrl() {
+  public void shouldCreateAGetAudioFeaturesUrl() {
     Api api = Api.DEFAULT_API;
     Request request = api.getAudioFeature("1hmNbafW4sAPNaGc7LeXAZ").build();
     assertEquals("https://api.spotify.com:443/v1/audio-features/1hmNbafW4sAPNaGc7LeXAZ", request.toString(false));
   }
 
   @Test
-  public void shouldCreateGetRecentlyPlayedTracksUrl() {
+  public void shouldCreateAGetRecentlyPlayedTracksUrl() {
     Api api = Api.DEFAULT_API;
     Request request = api.getRecentlyPlayedTracks().build();
-    assertEquals("https://api.spotify.com:443/v1/me/player/recently-played", request.toString());
+    assertEquals("https://api.spotify.com:443/v1/me/player/recently-played", request.toString(false));
   }
 
   @Test

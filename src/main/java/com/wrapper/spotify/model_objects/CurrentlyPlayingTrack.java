@@ -1,57 +1,101 @@
-package com.wrapper.spotify.models;
+package com.wrapper.spotify.model_objects;
 
-import java.util.Date;
+import com.google.gson.JsonObject;
 
-/**
- * @see <a href=https://developer.spotify.com/web-api/get-the-users-currently-playing-track/>Spotify docs</a>
- */
-public class CurrentlyPlayingTrack {
+public class CurrentlyPlayingTrack extends AbstractModelObject {
+    private final Context context;
+    private final Integer timestamp;
+    private final Integer progress_ms;
+    private final Boolean is_playing;
+    private final Track item;
 
-    private Track item;
-    private Context context;
-    private Long timestamp;
-    private Long progress_ms;
-    private Boolean is_playing;
+    private CurrentlyPlayingTrack(final CurrentlyPlayingTrack.Builder builder) {
+        super(builder);
 
-
-    public Track getItem() {
-        return item;
-    }
-
-    public void setItem(Track item) {
-        this.item = item;
+        this.context = builder.context;
+        this.timestamp = builder.timestamp;
+        this.progress_ms = builder.progress_ms;
+        this.is_playing = builder.is_playing;
+        this.item = builder.item;
     }
 
     public Context getContext() {
         return context;
     }
 
-    public void setContext(Context context) {
-        this.context = context;
-    }
-
-    public Long getTimestamp() {
+    public Integer getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(Long timestamp) {
-        this.timestamp = timestamp;
-    }
-
-    public Long getProgress_ms() {
+    public Integer getProgress_ms() {
         return progress_ms;
-    }
-
-    public void setProgress_ms(Long progress_ms) {
-        this.progress_ms = progress_ms;
     }
 
     public Boolean getIs_playing() {
         return is_playing;
     }
 
-    public void setIs_playing(Boolean is_playing) {
-        this.is_playing = is_playing;
+    public Track getItem() {
+        return item;
+    }
+
+    @Override
+    public Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder extends AbstractModelObject.Builder {
+        private Context context;
+        private Integer timestamp;
+        private Integer progress_ms;
+        private Boolean is_playing;
+        private Track item;
+
+        public Builder setContext(Context context) {
+            this.context = context;
+            return this;
+        }
+
+        public Builder setTimestamp(Integer timestamp) {
+            this.timestamp = timestamp;
+            return this;
+        }
+
+        public Builder setProgress_ms(Integer progress_ms) {
+            this.progress_ms = progress_ms;
+            return this;
+        }
+
+        public Builder setIs_playing(Boolean is_playing) {
+            this.is_playing = is_playing;
+            return this;
+        }
+
+        public Builder setItem(Track item) {
+            this.item = item;
+            return this;
+        }
+
+        @Override
+        public CurrentlyPlayingTrack build() {
+            return new CurrentlyPlayingTrack(this);
+        }
+    }
+
+    public static final class JsonUtil extends AbstractModelObject.JsonUtil<CurrentlyPlayingTrack> {
+        public CurrentlyPlayingTrack createModelObject(JsonObject jsonObject) {
+            if (jsonObject == null || jsonObject.isJsonNull()) {
+                return null;
+            }
+
+            return new CurrentlyPlayingTrack.Builder()
+                    .setContext(new Context.JsonUtil().createModelObject(jsonObject.getAsJsonObject("context")))
+                    .setTimestamp(jsonObject.get("timestamp").getAsInt())
+                    .setProgress_ms(jsonObject.get("progress_ms").getAsInt())
+                    .setIs_playing(jsonObject.get("is_playing").getAsBoolean())
+                    .setItem(new Track.JsonUtil().createModelObject(jsonObject.getAsJsonObject("item")))
+                    .build();
+        }
     }
 
     @Override
@@ -74,6 +118,4 @@ public class CurrentlyPlayingTrack {
 
         return this.getItem().getUri().equals(other.getItem().getUri());
     }
-
-
 }

@@ -1,6 +1,8 @@
 package com.wrapper.spotify;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.wrapper.spotify.UtilProtos.Url.Scheme;
 import com.wrapper.spotify.requests.*;
@@ -375,10 +377,13 @@ public class Api {
    */
   public AddTrackToPlaylistRequest.Builder addTracksToPlaylist(String userId, String playlistId, String[] trackUris) {
     final AddTrackToPlaylistRequest.Builder builder = AddTrackToPlaylistRequest.builder();
+
+    userId = UrlUtil.escapeUsername(userId);
+
     setDefaults(builder);
     builder.setBodyParameter(new JsonParser().parse(new Gson().toJson(trackUris)).getAsJsonArray());
-    userId = UrlUtil.escapeUsername(userId);
     builder.setPath("/v1/users/" + userId + "/playlists/" + playlistId + "/tracks");
+
     return builder;
   }
 
@@ -387,26 +392,17 @@ public class Api {
    * @param userId The owner's username.
    * @param playlistId The playlist's ID.
    * @param trackUris URIs of the tracks to remove.
-   * @return  A builder object that can e used to build a request to remove tracks from a playlist.
+   * @return  A builder object that can be used to build a request to remove tracks from a playlist.
    */
-  public RemoveTrackFromPlaylistRequest.Builder removeTrackFromPlaylist(String userId, String playlistId, List<String> trackUris) {
+  public RemoveTrackFromPlaylistRequest.Builder removeTrackFromPlaylist(String userId, String playlistId, String[] trackUris) {
     final RemoveTrackFromPlaylistRequest.Builder builder = RemoveTrackFromPlaylistRequest.builder();
+
+    userId = UrlUtil.escapeUsername(userId);
+
     setDefaults(builder);
-    final JSONArray jsonArrayUri = new JSONArray();
+    builder.setBodyParameter(new JsonParser().parse(new Gson().toJson(trackUris)).getAsJsonArray());
+    builder.setPath("/v1/users/" + userId + "/playlists/" + playlistId + "/tracks");
 
-    for(String trackUri : trackUris) {
-      JSONObject singleUriJson = new JSONObject();
-      singleUriJson.put("uri", trackUri);
-
-      jsonArrayUri.add(singleUriJson);
-    }
-
-    JSONObject finalObject = new JSONObject();
-    finalObject.put("tracks", jsonArrayUri);
-
-    builder.body(finalObject);
-    userId = UrlUtil.userToUri(userId);
-    builder.path("/v1/users/" + userId + "/playlists/" + playlistId + "/tracks");
     return builder;
   }
 
