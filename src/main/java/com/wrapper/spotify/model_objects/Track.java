@@ -5,6 +5,9 @@ import com.google.gson.JsonNull;
 import com.google.gson.JsonObject;
 import com.neovisionaries.i18n.CountryCode;
 
+/**
+ * Retrieve information about tracks by building instances from this class.
+ */
 public class Track extends AbstractModelObject {
   private final AlbumSimplified album;
   private final ArtistSimplified[] artists;
@@ -50,78 +53,180 @@ public class Track extends AbstractModelObject {
     this.uri = builder.uri;
   }
 
+  /**
+   * Get the album of a track.
+   *
+   * @return A simplified album.
+   */
   public AlbumSimplified getAlbum() {
     return album;
   }
 
+  /**
+   * Get the artists of a track.
+   *
+   * @return An array of simplified artists.
+   */
   public ArtistSimplified[] getArtists() {
     return artists;
   }
 
+  /**
+   * Get the country codes of all countries, in which a track is available.
+   *
+   * @return An array of ISO 3166-1 alpha-2 country codes.
+   */
   public CountryCode[] getAvailableMarkets() {
     return availableMarkets;
   }
 
+  /**
+   * Get the disc number of a track in it's album.
+   *
+   * @return A disc number.
+   */
   public int getDiscNumber() {
     return discNumber;
   }
 
+  /**
+   * Get the duration of a track in milliseconds.
+   *
+   * @return Duration of track in milliseconds.
+   */
   public int getDurationMs() {
     return durationMs;
   }
 
+  /**
+   * Check whether a track is explicit or not.
+   *
+   * @return Returns "true" for explicit, "false" for not explicit.
+   */
   public boolean getIsExplicit() {
     return explicit;
   }
 
+  /**
+   * Get the external ids of a track.<br>
+   * Example: isrc -&gt; "International Standard Recording Code"
+   *
+   * @return All external ids of the track.
+   */
   public ExternalIds getExternalIds() {
     return externalIds;
   }
 
+  /**
+   * Get the external urls of a track.<br>
+   * Example: Spotify-URL
+   *
+   * @return The external urls of the track.
+   */
   public ExternalUrls getExternalUrls() {
     return externalUrls;
   }
 
+  /**
+   * Get the full Spotify API endpoint url of a track.
+   *
+   * @return A Spotify API endpoint url.
+   */
   public String getHref() {
     return href;
   }
 
+  /**
+   * Get the Spotify id of a track.
+   *
+   * @return A Spotify track id.
+   */
   public String getId() {
     return id;
   }
 
+  /**
+   * Check whether a track is playable in the market, which may has been specified
+   * somewhere before requesting it.
+   *
+   * @return Return "true" if the track is playable in specified market,
+   */
   public boolean getIsPlayable() {
     return isPlayable;
   }
 
+  /**
+   * Get the track link of a track if the given track has been relinked.<br>
+   * This happens mostly when a specific track is not available in a specific market.
+   *
+   * @return The original Spotify url of the track
+   */
   public TrackLink getLinkedFrom() {
     return linkedFrom;
   }
 
+  /**
+   * Get the restrictions of a track.<br>
+   * Example: The reason why a track may not be available.
+   *
+   * @return The restrictions of the track
+   */
   public Restrictions getRestrictions() {
     return restrictions;
   }
 
+  /**
+   * Get the name of a track.
+   *
+   * @return Track name.
+   */
   public String getName() {
     return name;
   }
 
+  /**
+   * Get the popularity of a track in a range between 0 and 100. (higher = more popular)<br>
+   * The popularity of a track is based on how often a track has been played recently.
+   *
+   * @return The popularity of the track.
+   */
   public int getPopularity() {
     return popularity;
   }
 
+  /**
+   * Get an url to a 30 seconds long track preview in MP3 format.<br>
+   * If there is no track preview available, null will be returned.
+   *
+   * @return A track preview url if available, null if not available.
+   */
   public String getPreviewUrl() {
     return previewUrl;
   }
 
+  /**
+   * Get the track number of a track.
+   *
+   * @return A track number.
+   */
   public int getTrackNumber() {
     return trackNumber;
   }
 
+  /**
+   * Get the model object type, which should be a "track" in this case.
+   *
+   * @return A model object type.
+   */
   public ModelObjectType getType() {
     return type;
   }
 
+  /**
+   * Get a Spotify track uri.
+   *
+   * @return A Spotify track uri.
+   */
   public String getUri() {
     return uri;
   }
@@ -131,6 +236,9 @@ public class Track extends AbstractModelObject {
     return new Builder();
   }
 
+  /**
+   * Builder class for building track instances.
+   */
   public static final class Builder extends AbstractModelObject.Builder {
     private AlbumSimplified album;
     private ArtistSimplified[] artists;
