@@ -37,10 +37,19 @@ public class Api {
    */
   public static final Scheme DEFAULT_SCHEME = Scheme.HTTPS;
 
+  /**
+   * The default authentification host of Spotify API calls.
+   */
   public static final String DEFAULT_AUTHENTICATION_HOST = "accounts.spotify.com";
 
+  /**
+   * The default authetification port of Spotify API calls.
+   */
   public static final int DEFAULT_AUTHENTICATION_PORT = 443;
 
+  /**
+   * The default http authentification scheme for Spotify API calls.
+   */
   public static final Scheme DEFAULT_AUTHENTICATION_SCHEME = Scheme.HTTPS;
 
   /**
@@ -80,15 +89,20 @@ public class Api {
     redirectURI = builder.redirectURI;
   }
 
+  /**
+   * Create a builder for building a new Spotify API instance.
+   *
+   * @return A builder object.
+   */
   public static Builder builder() {
     return new Builder();
   }
 
   /**
-   * Returns a an album with the id given below.
+   * Get an album.
    *
    * @param id The base62 id of the album you're trying to retrieve.
-   * @return An {AlbumRequest.Builder} instance.
+   * @return A builder that builds a request to retrieve an album.
    */
   public AlbumRequest.Builder getAlbum(String id) {
     AlbumRequest.Builder builder = AlbumRequest.builder();
@@ -97,10 +111,22 @@ public class Api {
     return builder;
   }
 
+  /**
+   * Get multiple albums.
+   *
+   * @param ids The base62 ids of all albums you're trying to retrieve.
+   * @return A builder that builds a request to retrieve multiple albums
+   */
   public AlbumsRequest.Builder getAlbums(String... ids) {
     return getAlbums(Arrays.asList(ids));
   }
 
+  /**
+   * Get multiple albums.
+   *
+   * @param ids A {List&lt;String&gt;} instance with base62 ids of all albums you're trying to retrieve.
+   * @return A builder that builds a request to retrieve multiple albums.
+   */
   public AlbumsRequest.Builder getAlbums(List<String> ids) {
     AlbumsRequest.Builder builder = AlbumsRequest.builder();
     setDefaults(builder);
@@ -108,6 +134,12 @@ public class Api {
     return builder;
   }
 
+  /**
+   * Get albums of a specific artist.
+   *
+   * @param artistId The base62 id of the artist.
+   * @return A builder that builds a request to retrieve the albums of an artist.
+   */
   public AlbumsForArtistRequest.Builder getAlbumsForArtist(String artistId) {
     AlbumsForArtistRequest.Builder builder = AlbumsForArtistRequest.builder();
     setDefaults(builder);
@@ -115,6 +147,12 @@ public class Api {
     return builder;
   }
 
+  /**
+   * Get an artist.
+   *
+   * @param id The base62 id of the artist.
+   * @return A builder that builds a request to retrieve an artist.
+   */
   public ArtistRequest.Builder getArtist(String id) {
     ArtistRequest.Builder builder = ArtistRequest.builder();
     setDefaults(builder);
@@ -122,10 +160,22 @@ public class Api {
     return builder;
   }
 
+  /**
+   * Get multiple artists.
+   *
+   * @param ids The base62 ids of all artists you're trying to retrieve.
+   * @return A builder that builds a request to retrieve multiple artists.
+   */
   public ArtistsRequest.Builder getArtists(String... ids) {
     return getArtists(Arrays.asList(ids));
   }
 
+  /**
+   * Get multiple artists.
+   *
+   * @param ids A {List&lt;String&gt;} instance with base62 ids of all artists you're trying to retrieve.
+   * @return A builder that builds a request to retrieve multiple artists.
+   */
   public ArtistsRequest.Builder getArtists(List<String> ids) {
     ArtistsRequest.Builder builder = ArtistsRequest.builder();
     setDefaults(builder);
@@ -133,6 +183,12 @@ public class Api {
     return builder;
   }
 
+  /**
+   * Get a track.
+   *
+   * @param id The base62 id of the track.
+   * @return A builder that builds a request to retrieve a track.
+   */
   public TrackRequest.Builder getTrack(String id) {
     TrackRequest.Builder builder = TrackRequest.builder();
     setDefaults(builder);
@@ -140,10 +196,22 @@ public class Api {
     return builder;
   }
 
+  /**
+   * Get multiple tracks.
+   *
+   * @param ids The base62 ids of all tracks you're trying to retrieve.
+   * @return A builder that builds a request to retrieve multiple tracks.
+   */
   public TracksRequest.Builder getTracks(String... ids) {
     return getTracks(Arrays.asList(ids));
   }
 
+  /**
+   * Get multiple tracks.
+   *
+   * @param ids A {List&lt;String&gt;} instance with base62 ids of all tracks you're trying to retrieve.
+   * @return A builder that builds a request to retrieve multiple tracks.
+   */
   public TracksRequest.Builder getTracks(List<String> ids) {
     TracksRequest.Builder builder = TracksRequest.builder();
     setDefaults(builder);
@@ -151,6 +219,12 @@ public class Api {
     return builder;
   }
 
+  /**
+   * Search for an album.
+   *
+   * @param query A search query string.
+   * @return A builder that builds a request to search for an album.
+   */
   public AlbumSearchRequest.Builder searchAlbums(String query) {
     AlbumSearchRequest.Builder builder = AlbumSearchRequest.builder();
     setDefaults(builder);
@@ -158,6 +232,12 @@ public class Api {
     return builder;
   }
 
+  /**
+   * Search for a track.
+   *
+   * @param query A search query string.
+   * @return A builder that builds a request to search for a track.
+   */
   public TrackSearchRequest.Builder searchTracks(String query) {
     TrackSearchRequest.Builder builder = TrackSearchRequest.builder();
     setDefaults(builder);
@@ -165,6 +245,12 @@ public class Api {
     return builder;
   }
 
+  /**
+   * Search for an artist.
+   *
+   * @param query A search query string.
+   * @return A builder that builds a request to search for an artist.
+   */
   public ArtistSearchRequest.Builder searchArtists(String query) {
     ArtistSearchRequest.Builder builder = ArtistSearchRequest.builder();
     setDefaults(builder);
@@ -172,12 +258,24 @@ public class Api {
     return builder;
   }
 
+  /**
+   * Get the newest releases from a specific country.
+   *
+   * @return A builder that builds a request to retrieve the newest releases.
+   */
   public NewReleasesRequest.Builder getNewReleases() {
     NewReleasesRequest.Builder builder = NewReleasesRequest.builder();
     setDefaults(builder);
     return builder;
   }
 
+  /**
+   * Get audio features from a track.<br>
+   * Examples: Tempo, danceability, accousticness...
+   *
+   * @param id The base62 id of the track.
+   * @return A builder that builds a request to retrieve the audio features from a track.
+   */
   public AudioFeatureRequest.Builder getAudioFeature(String id) {
     AudioFeatureRequest.Builder builder = AudioFeatureRequest.builder();
     setDefaults(builder);
@@ -186,9 +284,9 @@ public class Api {
   }
 
   /**
-   * Used to get Featured Playlists.
+   * Get "Featured Playlists" of different countries which may match a specific language.
    *
-   * @return A builder that can be used to build requests to get featured playlists.
+   * @return A builder that builds a request to retrieve featured playlists.
    */
   public FeaturedPlaylistsRequest.Builder getFeaturedPlaylists() {
     FeaturedPlaylistsRequest.Builder builder = FeaturedPlaylistsRequest.builder();
@@ -196,6 +294,13 @@ public class Api {
     return builder;
   }
 
+  /**
+   * Get the top tracks of an artist in a specific country.
+   *
+   * @param artistId A base62 id of the artist.
+   * @param countryCode The ISO 3166-1 alpha-2 country code of the specific country.
+   * @return A builder that builds a request to retrieve the top tracks of an artist.
+   */
   public TopTracksRequest.Builder getTopTracksForArtist(String artistId, String countryCode) {
     TopTracksRequest.Builder builder = TopTracksRequest.builder();
     setDefaults(builder);
@@ -204,6 +309,13 @@ public class Api {
     return builder;
   }
 
+  /**
+   * Get information of an user.<br>
+   * Examples: Birthdate, country, followers...
+   *
+   * @param userId A base62 id of the user.
+   * @return A builder that builds a request to retrieve an user.
+   */
   public UserRequest.Builder getUser(String userId) {
     UserRequest.Builder builder = UserRequest.builder();
     setDefaults(builder);
@@ -212,6 +324,12 @@ public class Api {
     return builder;
   }
 
+  /**
+   * Get a user's playlists.
+   *
+   * @param userId A base62 id of the user.
+   * @return A builder that builds a request to retrieve the playlists of an user.
+   */
   public UserPlaylistsRequest.Builder getPlaylistsForUser(String userId) {
     UserPlaylistsRequest.Builder builder = UserPlaylistsRequest.builder();
     setDefaults(builder);
@@ -359,7 +477,7 @@ public class Api {
    * @param userId     The owner's username.
    * @param playlistId The playlist's ID.
    * @param trackUris  URIs of the tracks to add.
-   * @return A builder object that can e used to build a request to add tracks to a playlist.
+   * @return A builder object that can be used to build a request to add tracks to a playlist.
    */
   public AddTrackToPlaylistRequest.Builder addTracksToPlaylist(String userId, String playlistId, String[] trackUris) {
     final AddTrackToPlaylistRequest.Builder builder = AddTrackToPlaylistRequest.builder();
@@ -492,14 +610,28 @@ public class Api {
     }
   }
 
+  /**
+   * Set an access token, which may become invalid after a specific amount of time.
+   *
+   * @param accessToken A valid access token.
+   */
   public void setAccessToken(String accessToken) {
     this.accessToken = accessToken;
   }
 
+  /**
+   * Set a refresh token, to retrieve a new access token, if the saved access token
+   * becomes invalid.
+   *
+   * @param refreshToken A valid refresh token.
+   */
   public void setRefreshToken(String refreshToken) {
     this.refreshToken = refreshToken;
   }
 
+  /**
+   * Builder class for building a Spotify API instance.
+   */
   public static class Builder {
 
     private String host = DEFAULT_HOST;
@@ -512,51 +644,110 @@ public class Api {
     private String clientSecret;
     private String refreshToken;
 
+    /**
+     * Set the scheme in a builder object.
+     *
+     * @param scheme A HTTP-scheme.
+     * @return A builder object.
+     */
     public Builder scheme(Scheme scheme) {
       this.scheme = scheme;
       return this;
     }
 
+    /**
+     * Set the Spotify API host in a builder object.
+     *
+     * @param host A Spotify API host.
+     * @return A builder object.
+     */
     public Builder host(String host) {
       this.host = host;
       return this;
     }
 
+    /**
+     * Set the port in a builder object.
+     *
+     * @param port A Spotify API port.
+     * @return A builder object.
+     */
     public Builder port(int port) {
       this.port = port;
       return this;
     }
 
+    /**
+     * Set the HttpManager in a builder object.
+     *
+     * @param httpManager A Spotify HttpManager.
+     * @return A builder object.
+     */
     public Builder httpManager(HttpManager httpManager) {
       this.httpManager = httpManager;
       return this;
     }
 
+    /**
+     * Set the acces token in a builder object.
+     *
+     * @param accessToken A Spotify API access token.
+     * @return A builder object.
+     */
     public Builder accessToken(String accessToken) {
       this.accessToken = accessToken;
       return this;
     }
 
+    /**
+     * Set the refresh token in a builder object.
+     *
+     * @param refreshToken A Spotify API refresh token.
+     * @return A builder object.
+     */
     public Builder refreshToken(String refreshToken) {
       this.refreshToken = refreshToken;
       return this;
     }
 
+    /**
+     * Set the client id in a builder object.
+     *
+     * @param clientId A client id of your application.
+     * @return A builder object.
+     */
     public Builder clientId(String clientId) {
       this.clientId = clientId;
       return this;
     }
 
+    /**
+     * Set the client secret in a builder object.
+     *
+     * @param clientSecret A client secret of your application.
+     * @return A builder object.
+     */
     public Builder clientSecret(String clientSecret) {
       this.clientSecret = clientSecret;
       return this;
     }
 
+    /**
+     * Set the redirect uri in a builder object.
+     *
+     * @param redirectURI A redirect URI of your application.
+     * @return A builder object.
+     */
     public Builder redirectURI(String redirectURI) {
       this.redirectURI = redirectURI;
       return this;
     }
 
+    /**
+     * Build a Spotify API instance with the information given to the builder.
+     *
+     * @return A Spotify API instance.
+     */
     public Api build() {
       assert (host != null);
       assert (port > 0);
@@ -568,4 +759,3 @@ public class Api {
   }
 
 }
-
