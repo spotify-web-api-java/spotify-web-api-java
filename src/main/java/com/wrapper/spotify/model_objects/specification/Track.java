@@ -114,7 +114,7 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
 
   /**
    * Get the external ids of a track.<br>
-   * Example: isrc -&gt; "International Standard Recording Code"
+   * Example: isrc -&gt; "International Standard Recording Code".
    *
    * @return All external ids of the track.
    */
@@ -124,7 +124,7 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
 
   /**
    * Get the external urls of a track.<br>
-   * Example: Spotify-URL
+   * Example: Spotify-URL.
    *
    * @return The external urls of the track.
    */
@@ -154,7 +154,7 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
    * Check whether a track is playable in the market, which may has been specified
    * somewhere before requesting it.
    *
-   * @return Return "true" if the track is playable in specified market,
+   * @return Return "true" if the track is playable in specified market, "false" if not.
    */
   public boolean getIsPlayable() {
     return isPlayable;
@@ -164,7 +164,7 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
    * Get the track link of a track if the given track has been relinked.<br>
    * This happens mostly when a specific track is not available in a specific market.
    *
-   * @return The original Spotify url of the track
+   * @return The original Spotify url of the track.
    */
   public TrackLink getLinkedFrom() {
     return linkedFrom;
@@ -174,7 +174,7 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
    * Get the restrictions of a track.<br>
    * Example: The reason why a track may not be available.
    *
-   * @return The restrictions of the track
+   * @return The restrictions of the track.
    */
   public Restrictions getRestrictions() {
     return restrictions;
