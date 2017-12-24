@@ -119,6 +119,20 @@ public class ApiTest {
   }
 
   @Test
+  public void shouldCreateAGetRecommendationsUrl() {
+    Api api = Api.DEFAULT_API;
+    Request request = api.getRecommendations().build();
+    assertEquals("https://api.spotify.com:443/v1/recommendations", request.toString());
+  }
+
+  @Test
+  public void shouldCreateAGetRecommendationsUrlFromList() {
+    Api api = Api.DEFAULT_API;
+    Request request = api.getRecommendations().build();
+    assertEquals("https://api.spotify.com:443/v1/recommendations", request.toString());
+  }
+
+  @Test
   public void shouldCreateAUrlForArtistsAlbum() {
     Api api = Api.DEFAULT_API;
     Request request = api.getAlbumsForArtist("4AK6F7OLvEQ5QYCBNiQWHq").build();

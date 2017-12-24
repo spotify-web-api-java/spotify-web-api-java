@@ -162,6 +162,12 @@ public class Api {
     return builder;
   }
 
+  public RecommendationsRequest.Builder getRecommendations() {
+    RecommendationsRequest.Builder builder = RecommendationsRequest.builder();
+    setDefaults(builder);
+    return builder;
+  }
+
   public AlbumSearchRequest.Builder searchAlbums(String query) {
     AlbumSearchRequest.Builder builder = AlbumSearchRequest.builder();
     setDefaults(builder);
@@ -650,6 +656,7 @@ public class Api {
   public void setRefreshToken(String refreshToken) {
     this.refreshToken = refreshToken;
   }
+
 
   public static class Builder {
 
