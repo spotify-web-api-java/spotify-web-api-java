@@ -161,13 +161,6 @@ public class Api {
     builder.id(ids);
     return builder;
   }
-  
-  public TracksForAlbumRequest.Builder getTracksForAlbum(String albumName) {
-	TracksForAlbumRequest.Builder builder = TracksForAlbumRequest.builder();
-	setDefaults(builder);
-	builder.forAlbum(albumName);
-	return builder;
-  }
 
   public AlbumSearchRequest.Builder searchAlbums(String query) {
     AlbumSearchRequest.Builder builder = AlbumSearchRequest.builder();

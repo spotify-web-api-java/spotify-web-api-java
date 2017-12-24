@@ -53,6 +53,11 @@ public class TracksForAlbumRequest extends AbstractRequest {
             return setPath(String.format("/v1/albums/%s/tracks", id));
         }
 
+        public Builder market(String market) {
+            assert (market != null);
+            return setParameter("market", market);
+        }
+
         public Builder limit(int limit) {
             assert (limit > 0);
             return setParameter("limit", String.valueOf(limit));
