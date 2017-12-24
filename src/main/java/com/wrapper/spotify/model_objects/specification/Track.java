@@ -265,96 +265,210 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
     private ModelObjectType type;
     private String uri;
 
+    /**
+     * Set the album of the track to be built.
+     *
+     * @param album The simplified album the track belongs to.
+     * @return A builder object.
+     */
     public Builder setAlbum(AlbumSimplified album) {
       this.album = album;
       return this;
     }
 
+    /**
+     * Set the artists of the track to be built.
+     *
+     * @param artists An array of simplified artists.
+     * @return A builder object.
+     */
     public Builder setArtists(ArtistSimplified... artists) {
       this.artists = artists;
       return this;
     }
 
+    /**
+     * Set the available markets of the track to be built.
+     *
+     * @param availableMarkets An array of ISO 3166-1 alpha-2 country codes.
+     * @return A builder object.
+     */
     public Builder setAvailableMarkets(CountryCode... availableMarkets) {
       this.availableMarkets = availableMarkets;
       return this;
     }
 
+    /**
+     * Set the disc numer of the track to be built.
+     *
+     * @param discNumber The disc number.
+     * @return A builder object.
+     */
     public Builder setDiscNumber(int discNumber) {
       this.discNumber = discNumber;
       return this;
     }
 
+    /**
+     * Set the duration in milliseconds of the track to be built.
+     *
+     * @param durationMs Duration in milliseconds.
+     * @return A builder object.
+     */
     public Builder setDurationMs(int durationMs) {
       this.durationMs = durationMs;
       return this;
     }
 
+    /**
+     * Set whether the track to be built is explicit or not.
+     *
+     * @param explicit Set "true" for explicit, "false" for not explicit.
+     * @return A builder object.
+     */
     public Builder setExplicit(boolean explicit) {
       this.explicit = explicit;
       return this;
     }
 
+    /**
+     * Set the external ids of the track to be built.
+     *
+     * @param externalIds External ids of the track.
+     * @return A builder object.
+     */
     public Builder setExternalIds(ExternalId externalIds) {
       this.externalIds = externalIds;
       return this;
     }
 
+    /**
+     * Set external urls of the track to be built.
+     *
+     * @param externalUrls External urls object.
+     * @return A builder object.
+     */
     public Builder setExternalUrls(ExternalUrl externalUrls) {
       this.externalUrls = externalUrls;
       return this;
     }
 
+    /**
+     * Set href of Spotify api endpoint of the track to be built.
+     *
+     * @param href Spotify api endpoint url
+     * @return A builder object.
+     */
     public Builder setHref(String href) {
       this.href = href;
       return this;
     }
 
+    /**
+     * Set track id of the track to be built.
+     *
+     * @param id Track id.
+     * @return A builder object.
+     */
     public Builder setId(String id) {
       this.id = id;
       return this;
     }
 
+    /**
+     * Set whether the track to be built is playable in your market region or not.
+     *
+     * @param isPlayable Playable or not playable.
+     * @return A builder object.
+     */
     public Builder setIsPlayable(boolean isPlayable) {
       this.isPlayable = isPlayable;
       return this;
     }
 
+    /**
+     * Set the track link of the track to be built.
+     *
+     * @param linkedFrom Track link object.
+     * @return A builder object.
+     */
     public Builder setLinkedFrom(TrackLink linkedFrom) {
       this.linkedFrom = linkedFrom;
       return this;
     }
 
+    /**
+     * Set the restrictions of the track to be built.
+     *
+     * @param restrictions Restrictions object.
+     * @return A builder object.
+     */
     public Builder setRestrictions(Restrictions restrictions) {
       this.restrictions = restrictions;
       return this;
     }
 
+    /**
+     * Set the name of the track to be built.
+     *
+     * @param name The name.
+     * @return A builder object.
+     */
     public Builder setName(String name) {
       this.name = name;
       return this;
     }
 
+    /**
+     * Set the popularity of the track to be built.
+     *
+     * @param popularity The popularity in a range between 0 and 100.
+     * @return A builder object.
+     */
     public Builder setPopularity(int popularity) {
       this.popularity = popularity;
       return this;
     }
 
+    /**
+     * Set the preview url of the track to be built.
+     *
+     * @param previewUrl The url of a track preview.
+     * @return A builder object.
+     */
     public Builder setPreviewUrl(String previewUrl) {
       this.previewUrl = previewUrl;
       return this;
     }
 
+    /**
+     * Set the track numer of the track to be built.
+     *
+     * @param trackNumber The track number.
+     * @return A builder object.
+     */
     public Builder setTrackNumber(int trackNumber) {
       this.trackNumber = trackNumber;
       return this;
     }
 
+    /**
+     * Set the type of the model object. In this case "track".
+     *
+     * @param type Type of the model object.
+     * @return A builder object.
+     */
     public Builder setType(ModelObjectType type) {
       this.type = type;
       return this;
     }
 
+    /**
+     * Set Spotify uri of the track to be built.
+     *
+     * @param uri The Spotify track uri.
+     * @return A builder object.
+     */
     public Builder setUri(String uri) {
       this.uri = uri;
       return this;
@@ -366,6 +480,9 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
     }
   }
 
+  /**
+   * JsonUtil class for building track instances.
+   */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<Track> {
     public Track createModelObject(JsonObject jsonObject) {
       if (jsonObject == null || jsonObject.isJsonNull()) {
