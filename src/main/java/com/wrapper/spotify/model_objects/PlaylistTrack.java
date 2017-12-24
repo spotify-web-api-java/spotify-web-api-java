@@ -6,6 +6,9 @@ import com.google.gson.JsonObject;
 import java.text.ParseException;
 import java.util.Date;
 
+/**
+ * Retrieve information about playlist tracks by building instances from this class.
+ */
 public class PlaylistTrack extends AbstractModelObject {
   private final Date addedAt;
   private final User addedBy;
@@ -21,18 +24,39 @@ public class PlaylistTrack extends AbstractModelObject {
     this.track = builder.track;
   }
 
+  /**
+   * Get the date, when a track has been added to its playlist.
+   *
+   * @return A date object.
+   */
   public Date getAddedAt() {
     return addedAt;
   }
 
+  /**
+   * Get the user, who added a track to its playlist.
+   *
+   * @return A user object.
+   */
   public User getAddedBy() {
     return addedBy;
   }
 
+  /**
+   * Check whether a playlist track is a local track or not.<br>
+   * Local tracks can only be played on devices, where the track files are present.
+   *
+   * @return "true" if the track is local, "false" if not.
+   */
   public boolean getIsLocal() {
     return isLocal;
   }
 
+  /**
+   * Get a full track object from this playlist track object.
+   *
+   * @return A track object.
+   */
   public Track getTrack() {
     return track;
   }
@@ -42,27 +66,54 @@ public class PlaylistTrack extends AbstractModelObject {
     return new Builder();
   }
 
+  /**
+   * Builder class for building playlist track instances.
+   */
   public static final class Builder extends AbstractModelObject.Builder {
     private Date addedAt;
     private User addedBy;
     private boolean isLocal;
     private Track track;
 
+    /**
+     * Set the "added at" date of the playlist track to be built.
+     *
+     * @param addedAt A date object.
+     * @return A builder object.
+     */
     public Builder setAddedAt(Date addedAt) {
       this.addedAt = addedAt;
       return this;
     }
 
+    /**
+     * Set the user who added the track to the playlist.
+     *
+     * @param addedBy A user object.
+     * @return A builder object.
+     */
     public Builder setAddedBy(User addedBy) {
       this.addedBy = addedBy;
       return this;
     }
 
+    /**
+     * Set whether the track to be built is local or not.
+     *
+     * @param isLocal "true" if the track is local, "false" if not.
+     * @return A builder object.
+     */
     public Builder setIsLocal(boolean isLocal) {
       this.isLocal = isLocal;
       return this;
     }
 
+    /**
+     * Set the main track object of the playlist track to be built.
+     *
+     * @param track A track object.
+     * @return A builder object.
+     */
     public Builder setTrack(Track track) {
       this.track = track;
       return this;
@@ -74,6 +125,9 @@ public class PlaylistTrack extends AbstractModelObject {
     }
   }
 
+  /**
+   * JsonUtil class for building playlist track instances.
+   */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<PlaylistTrack> {
     public PlaylistTrack createModelObject(JsonObject jsonObject) {
       if (jsonObject == null || jsonObject.isJsonNull()) {
