@@ -1,7 +1,6 @@
 package com.wrapper.spotify.requests;
 
 import com.google.common.util.concurrent.SettableFuture;
-import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.wrapper.spotify.exceptions.*;
 import com.wrapper.spotify.model_objects.Paging;
@@ -11,49 +10,49 @@ import java.io.IOException;
 
 public class RecentlyPlayedTracksRequest extends AbstractRequest {
 
-    private RecentlyPlayedTracksRequest(final Builder builder) {
-        super(builder);
+  private RecentlyPlayedTracksRequest(final Builder builder) {
+    super(builder);
+  }
+
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  public Paging<PlayHistory> get() throws
+          IOException,
+          NoContentException,
+          BadRequestException,
+          UnauthorizedException,
+          ForbiddenException,
+          NotFoundException,
+          TooManyRequestsException,
+          InternalServerErrorException,
+          BadGatewayException,
+          ServiceUnavailableException {
+    return new PlayHistory.JsonUtil().createModelObjectPaging(new JsonParser().parse(getJson()).getAsJsonObject().get("items").getAsJsonObject());
+  }
+
+  public SettableFuture<Paging<PlayHistory>> getAsync() throws
+          IOException,
+          NoContentException,
+          BadRequestException,
+          UnauthorizedException,
+          ForbiddenException,
+          NotFoundException,
+          TooManyRequestsException,
+          InternalServerErrorException,
+          BadGatewayException,
+          ServiceUnavailableException {
+    return getAsync(new PlayHistory.JsonUtil().createModelObjectPaging(new JsonParser().parse(getJson()).getAsJsonObject().get("items").getAsJsonObject()));
+  }
+
+  public static final class Builder extends AbstractRequest.Builder<Builder> {
+
+    @Override
+    public RecentlyPlayedTracksRequest build() {
+      this.setPath("v1/me/player/recently-played");
+
+      return new RecentlyPlayedTracksRequest(this);
     }
-
-    public static Builder builder() {
-        return new Builder();
-    }
-
-    public Paging<PlayHistory> get() throws
-            IOException,
-            NoContentException,
-            BadRequestException,
-            UnauthorizedException,
-            ForbiddenException,
-            NotFoundException,
-            TooManyRequestsException,
-            InternalServerErrorException,
-            BadGatewayException,
-            ServiceUnavailableException {
-        return new PlayHistory.JsonUtil().createModelObjectPaging(new JsonParser().parse(getJson()).getAsJsonObject().get("items").getAsJsonObject());
-    }
-
-    public SettableFuture<Paging<PlayHistory>> getAsync() throws
-            IOException,
-            NoContentException,
-            BadRequestException,
-            UnauthorizedException,
-            ForbiddenException,
-            NotFoundException,
-            TooManyRequestsException,
-            InternalServerErrorException,
-            BadGatewayException,
-            ServiceUnavailableException {
-        return getAsync(new PlayHistory.JsonUtil().createModelObjectPaging(new JsonParser().parse(getJson()).getAsJsonObject().get("items").getAsJsonObject()));
-    }
-
-    public static final class Builder extends AbstractRequest.Builder<Builder> {
-
-        @Override
-        public RecentlyPlayedTracksRequest build() {
-            this.setPath("v1/me/player/recently-played");
-
-            return new RecentlyPlayedTracksRequest(this);
-        }
-    }
+  }
 }

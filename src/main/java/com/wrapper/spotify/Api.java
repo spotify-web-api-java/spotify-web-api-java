@@ -119,7 +119,7 @@ public class Api {
   }
 
   public TracksForAlbumRequest.Builder getTracksForAlbum(
-      String albumId
+          String albumId
   ) {
     TracksForAlbumRequest.Builder builder = TracksForAlbumRequest.builder();
     setDefaults(builder);
@@ -191,12 +191,12 @@ public class Api {
   }
 
   public PlaylistSearchRequest.Builder searchPlaylists(String query) {
-	PlaylistSearchRequest.Builder builder = PlaylistSearchRequest.builder();
+    PlaylistSearchRequest.Builder builder = PlaylistSearchRequest.builder();
     setDefaults(builder);
     builder.query(query);
     return builder;
   }
-  
+
   public NewReleasesRequest.Builder getNewReleases() {
     NewReleasesRequest.Builder builder = NewReleasesRequest.builder();
     setDefaults(builder);
@@ -412,13 +412,14 @@ public class Api {
 
   /**
    * Replace tracks in a playlist.
-   * @param userId The owner's username.
+   *
+   * @param userId     The owner's username.
    * @param playlistId The playlist's ID.
-   * @param trackUris URIs of the tracks to add.
+   * @param trackUris  URIs of the tracks to add.
    * @return A builder object that can e used to build a request to add tracks to a playlist.
    */
   public ReplacePlaylistTracksRequest.Builder replacePlaylistsTracks(
-      String userId, String playlistId, String[] trackUris
+          String userId, String playlistId, String[] trackUris
   ) {
     final ReplacePlaylistTracksRequest.Builder builder = ReplacePlaylistTracksRequest.builder();
     setDefaults(builder);
@@ -433,10 +434,11 @@ public class Api {
 
   /**
    * delete tracks from a playlist
-   * @param userId The owner's username.
+   *
+   * @param userId     The owner's username.
    * @param playlistId The playlist's ID.
-   * @param trackUris URIs of the tracks to remove.
-   * @return  A builder object that can be used to build a request to remove tracks from a playlist.
+   * @param trackUris  URIs of the tracks to remove.
+   * @return A builder object that can be used to build a request to remove tracks from a playlist.
    */
   public RemoveTrackFromPlaylistRequest.Builder removeTrackFromPlaylist(String userId, String playlistId, String[] trackUris) {
     final RemoveTrackFromPlaylistRequest.Builder builder = RemoveTrackFromPlaylistRequest.builder();
@@ -465,8 +467,7 @@ public class Api {
     return builder;
   }
 
-  public RemoveTrackFromPlaylistRequest.Builder removeTrackFromPlaylist(String userId, String playlistId, PlaylistTrackPosition[] trackUris)
-  {
+  public RemoveTrackFromPlaylistRequest.Builder removeTrackFromPlaylist(String userId, String playlistId, PlaylistTrackPosition[] trackUris) {
     final RemoveTrackFromPlaylistRequest.Builder builder = RemoveTrackFromPlaylistRequest.builder();
     setDefaults(builder);
     builder.tracks(trackUris);
@@ -474,8 +475,7 @@ public class Api {
     return builder;
   }
 
-  public ReorderTracksInPlaylistRequest.Builder reorderTracksInPlaylist(String userId, String playlistId, int rangeStart, int insertBefore)
-  {
+  public ReorderTracksInPlaylistRequest.Builder reorderTracksInPlaylist(String userId, String playlistId, int rangeStart, int insertBefore) {
     final ReorderTracksInPlaylistRequest.Builder builder = ReorderTracksInPlaylistRequest.builder();
     setDefaults(builder);
     builder.rangeStart(rangeStart);
@@ -484,8 +484,7 @@ public class Api {
     return builder;
   }
 
-  public ReplaceTracksInPlaylistRequest.Builder replaceTracksInPlaylist(String userId, String playlistId, String[] trackUris)
-  {
+  public ReplaceTracksInPlaylistRequest.Builder replaceTracksInPlaylist(String userId, String playlistId, String[] trackUris) {
     final ReplaceTracksInPlaylistRequest.Builder builder = ReplaceTracksInPlaylistRequest.builder();
     setDefaults(builder);
 
@@ -497,7 +496,8 @@ public class Api {
 
   /**
    * Remove the current user as a follower of a playlist.
-   * @param userId The owner's username.
+   *
+   * @param userId     The owner's username.
    * @param playlistId The playlist's ID.
    * @return A builder object that can be used to build a request
    * to remove the current user as a follower of a playlist.
@@ -566,9 +566,9 @@ public class Api {
   /**
    * Retrieve a URL where the user can give the application permissions.
    *
-   * @param scopes The scopes corresponding to the permissions the application needs
-   * @param state state A parameter that you can use to maintain a value between the request
-   *              and the callback to redirect_uri.It is useful to prevent CSRF exploits.
+   * @param scopes     The scopes corresponding to the permissions the application needs
+   * @param state      state A parameter that you can use to maintain a value between the request
+   *                   and the callback to redirect_uri.It is useful to prevent CSRF exploits.
    * @param showDialog - (optional) whether or not to force the user to login
    * @return The URL where the user can give application permissions.
    */
@@ -590,15 +590,16 @@ public class Api {
     }
 
     builder.showDialog(showDialog);
-    
+
     return builder.build().toUrl();
   }
-  
+
   /**
    * Retrieve a URL where the user can give the application permissions.
+   *
    * @param scopes The scopes corresponding to the permissions the application needs
-   * @param state state A parameter that you can use to maintain a value between the request
-   *              and the callback to redirect_uri.It is useful to prevent CSRF exploits.
+   * @param state  state A parameter that you can use to maintain a value between the request
+   *               and the callback to redirect_uri.It is useful to prevent CSRF exploits.
    * @return The URL where the user can give application permissions.
    */
   public UtilProtos.Url createAuthorizeURL(String[] scopes, String state) {
@@ -686,7 +687,7 @@ public class Api {
     builder.category(categoryId);
     return builder;
   }
-  
+
   public void setAccessToken(String accessToken) {
     this.accessToken = accessToken;
   }

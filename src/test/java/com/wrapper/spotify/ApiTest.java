@@ -39,18 +39,18 @@ public class ApiTest {
     Request request = api.getTracksForAlbum("5oEljuMoe9MXH6tBIPbd5e").build();
     String test = request.toString();
     assertEquals(
-        "https://api.spotify.com:443/v1/albums/5oEljuMoe9MXH6tBIPbd5e/tracks",
-        request.toString(false)
+            "https://api.spotify.com:443/v1/albums/5oEljuMoe9MXH6tBIPbd5e/tracks",
+            request.toString(false)
     );
   }
 
   @Test
   public void shouldReplacePlaylistsTracks() {
     Api api = Api.DEFAULT_API;
-    Request request = api.replacePlaylistsTracks("userId","5oEljuMoe9MXH6tBIPbd5e", new String[]{}).build();
+    Request request = api.replacePlaylistsTracks("userId", "5oEljuMoe9MXH6tBIPbd5e", new String[]{}).build();
     assertEquals(
-        "https://api.spotify.com:443/v1/users/userId/playlists/5oEljuMoe9MXH6tBIPbd5e/tracks",
-        request.toString(false)
+            "https://api.spotify.com:443/v1/users/userId/playlists/5oEljuMoe9MXH6tBIPbd5e/tracks",
+            request.toString(false)
     );
   }
 
@@ -58,11 +58,11 @@ public class ApiTest {
   public void shouldUnfollowPlaylist() {
     Api api = Api.DEFAULT_API;
     Request request = api.unfollowPlaylist(
-        "userId","5oEljuMoe9MXH6tBIPbd5e"
+            "userId", "5oEljuMoe9MXH6tBIPbd5e"
     ).build();
     assertEquals(
-        "https://api.spotify.com:443/v1/users/userId/playlists/5oEljuMoe9MXH6tBIPbd5e/followers",
-        request.toString(false)
+            "https://api.spotify.com:443/v1/users/userId/playlists/5oEljuMoe9MXH6tBIPbd5e/followers",
+            request.toString(false)
     );
   }
 
@@ -427,7 +427,7 @@ public class ApiTest {
     final PlaylistTrackPosition[] tracksToRemove = {playlistTrackPosition1, playlistTrackPosition2};
 
     final String expectedJsonBody = String.format("{\"tracks\":[{\"uri\":\"%s\"},{\"uri\":\"%s\",\"positions\":[%s]}],\"snapshot_id\":\"%s\"}",
-        track1Uri, track2Uri, String.valueOf(track2Position), snapshotId);
+            track1Uri, track2Uri, String.valueOf(track2Position), snapshotId);
 
     final Request request = api.removeTrackFromPlaylist(myUsername, myPlaylistId, tracksToRemove).snapshotId(snapshotId).build();
 
@@ -437,8 +437,7 @@ public class ApiTest {
   }
 
   @Test
-  public void shouldCreateReorderTracksInPlaylistUrl()
-  {
+  public void shouldCreateReorderTracksInPlaylistUrl() {
     final String accessToken = "myVeryLongAccessToken";
     final Api api = Api.builder().accessToken(accessToken).build();
 
@@ -450,7 +449,7 @@ public class ApiTest {
     final int insertBefore = 5;
 
     final String expectedJsonBody = String.format("{\"range_start\":%s,\"insert_before\":%s,\"range_length\":%s,\"snapshot_id\":\"%s\"}",
-        String.valueOf(rangeStart), String.valueOf(insertBefore), String.valueOf(rangeLength), snapshotId);
+            String.valueOf(rangeStart), String.valueOf(insertBefore), String.valueOf(rangeLength), snapshotId);
 
     final Request request = api.reorderTracksInPlaylist(myUsername, myPlaylistId, rangeStart, insertBefore).rangeLength(rangeLength).snapshotId(snapshotId).build();
 
@@ -466,7 +465,7 @@ public class ApiTest {
 
     final String myUsername = "thelinmichael";
     final String myPlaylistId = "5ieJqeLJjjI8iJWaxeBLuK";
-    final String[] tracksToAdd = {"spotify:track:4BYGxv4rxSNcTgT3DsFB9o","spotify:tracks:0BG2iE6McPhmAEKIhfqy1X"};
+    final String[] tracksToAdd = {"spotify:track:4BYGxv4rxSNcTgT3DsFB9o", "spotify:tracks:0BG2iE6McPhmAEKIhfqy1X"};
 
     final Request request = api.replaceTracksInPlaylist(myUsername, myPlaylistId, tracksToAdd).build();
 
@@ -599,16 +598,16 @@ public class ApiTest {
 
     assertEquals("https://accounts.spotify.com:443/authorize?client_id=fcecfc79122e4cd299473677a17cbd4d&response_type=code&redirect_uri=http%3A%2F%2Fwww.michaelthelin.se%2Ftest-callback&scope=user-read-private+user-read-email&state=someExpectedStateString", authorizeUrlString);
   }
-  
+
   @Test
   public void shouldCreateAuthorizeUrlWithShowDialog() {
     final String redirectURI = "http://www.michaelthelin.se/test-callback";
     final String clientId = "fcecfc79122e4cd299473677a17cbd4d";
 
     final Api api = Api.builder()
-        .clientId(clientId)
-        .redirectURI(redirectURI)
-        .build();
+            .clientId(clientId)
+            .redirectURI(redirectURI)
+            .build();
 
     final String[] scopes = {"user-read-private", "user-read-email"};
     final String state = "someExpectedStateString";

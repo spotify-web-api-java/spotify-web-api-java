@@ -3,119 +3,119 @@ package com.wrapper.spotify.model_objects;
 import com.google.gson.JsonObject;
 
 public class CurrentlyPlayingTrack extends AbstractModelObject {
-    private final Context context;
-    private final Integer timestamp;
-    private final Integer progress_ms;
-    private final Boolean is_playing;
-    private final Track item;
+  private final Context context;
+  private final Integer timestamp;
+  private final Integer progress_ms;
+  private final Boolean is_playing;
+  private final Track item;
 
-    private CurrentlyPlayingTrack(final CurrentlyPlayingTrack.Builder builder) {
-        super(builder);
+  private CurrentlyPlayingTrack(final CurrentlyPlayingTrack.Builder builder) {
+    super(builder);
 
-        this.context = builder.context;
-        this.timestamp = builder.timestamp;
-        this.progress_ms = builder.progress_ms;
-        this.is_playing = builder.is_playing;
-        this.item = builder.item;
+    this.context = builder.context;
+    this.timestamp = builder.timestamp;
+    this.progress_ms = builder.progress_ms;
+    this.is_playing = builder.is_playing;
+    this.item = builder.item;
+  }
+
+  public Context getContext() {
+    return context;
+  }
+
+  public Integer getTimestamp() {
+    return timestamp;
+  }
+
+  public Integer getProgress_ms() {
+    return progress_ms;
+  }
+
+  public Boolean getIs_playing() {
+    return is_playing;
+  }
+
+  public Track getItem() {
+    return item;
+  }
+
+  @Override
+  public Builder builder() {
+    return new Builder();
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj)
+      return true;
+    if (obj == null)
+      return false;
+    if (!(obj instanceof CurrentlyPlayingTrack))
+      return false;
+
+    CurrentlyPlayingTrack other = (CurrentlyPlayingTrack) obj;
+
+    if (this.getItem() == null || other.getItem() == null) {
+      return false;
+    }
+    if (this.getItem().getUri() == null || other.getItem().getUri() == null) {
+      return false;
     }
 
-    public Context getContext() {
-        return context;
+    return this.getItem().getUri().equals(other.getItem().getUri());
+  }
+
+  public static final class Builder extends AbstractModelObject.Builder {
+    private Context context;
+    private Integer timestamp;
+    private Integer progress_ms;
+    private Boolean is_playing;
+    private Track item;
+
+    public Builder setContext(Context context) {
+      this.context = context;
+      return this;
     }
 
-    public Integer getTimestamp() {
-        return timestamp;
+    public Builder setTimestamp(Integer timestamp) {
+      this.timestamp = timestamp;
+      return this;
     }
 
-    public Integer getProgress_ms() {
-        return progress_ms;
+    public Builder setProgress_ms(Integer progress_ms) {
+      this.progress_ms = progress_ms;
+      return this;
     }
 
-    public Boolean getIs_playing() {
-        return is_playing;
+    public Builder setIs_playing(Boolean is_playing) {
+      this.is_playing = is_playing;
+      return this;
     }
 
-    public Track getItem() {
-        return item;
+    public Builder setItem(Track item) {
+      this.item = item;
+      return this;
     }
 
     @Override
-    public Builder builder() {
-        return new Builder();
+    public CurrentlyPlayingTrack build() {
+      return new CurrentlyPlayingTrack(this);
     }
+  }
 
-    public static final class Builder extends AbstractModelObject.Builder {
-        private Context context;
-        private Integer timestamp;
-        private Integer progress_ms;
-        private Boolean is_playing;
-        private Track item;
+  public static final class JsonUtil extends AbstractModelObject.JsonUtil<CurrentlyPlayingTrack> {
+    public CurrentlyPlayingTrack createModelObject(JsonObject jsonObject) {
+      if (jsonObject == null || jsonObject.isJsonNull()) {
+        return null;
+      }
 
-        public Builder setContext(Context context) {
-            this.context = context;
-            return this;
-        }
-
-        public Builder setTimestamp(Integer timestamp) {
-            this.timestamp = timestamp;
-            return this;
-        }
-
-        public Builder setProgress_ms(Integer progress_ms) {
-            this.progress_ms = progress_ms;
-            return this;
-        }
-
-        public Builder setIs_playing(Boolean is_playing) {
-            this.is_playing = is_playing;
-            return this;
-        }
-
-        public Builder setItem(Track item) {
-            this.item = item;
-            return this;
-        }
-
-        @Override
-        public CurrentlyPlayingTrack build() {
-            return new CurrentlyPlayingTrack(this);
-        }
+      return new CurrentlyPlayingTrack.Builder()
+              .setContext(new Context.JsonUtil().createModelObject(jsonObject.getAsJsonObject("context")))
+              .setTimestamp(jsonObject.get("timestamp").getAsInt())
+              .setProgress_ms(jsonObject.get("progress_ms").getAsInt())
+              .setIs_playing(jsonObject.get("is_playing").getAsBoolean())
+              .setItem(new Track.JsonUtil().createModelObject(jsonObject.getAsJsonObject("item")))
+              .build();
     }
-
-    public static final class JsonUtil extends AbstractModelObject.JsonUtil<CurrentlyPlayingTrack> {
-        public CurrentlyPlayingTrack createModelObject(JsonObject jsonObject) {
-            if (jsonObject == null || jsonObject.isJsonNull()) {
-                return null;
-            }
-
-            return new CurrentlyPlayingTrack.Builder()
-                    .setContext(new Context.JsonUtil().createModelObject(jsonObject.getAsJsonObject("context")))
-                    .setTimestamp(jsonObject.get("timestamp").getAsInt())
-                    .setProgress_ms(jsonObject.get("progress_ms").getAsInt())
-                    .setIs_playing(jsonObject.get("is_playing").getAsBoolean())
-                    .setItem(new Track.JsonUtil().createModelObject(jsonObject.getAsJsonObject("item")))
-                    .build();
-        }
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (!(obj instanceof CurrentlyPlayingTrack))
-            return false;
-
-        CurrentlyPlayingTrack other = (CurrentlyPlayingTrack) obj;
-
-        if (this.getItem() == null || other.getItem() == null) {
-            return false;
-        }
-        if (this.getItem().getUri() == null || other.getItem().getUri() == null) {
-            return false;
-        }
-
-        return this.getItem().getUri().equals(other.getItem().getUri());
-    }
+  }
 }

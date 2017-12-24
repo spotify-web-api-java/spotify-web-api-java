@@ -4,7 +4,6 @@ import com.google.common.util.concurrent.SettableFuture;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.wrapper.spotify.exceptions.*;
-import com.wrapper.spotify.model_objects.CurrentlyPlayingTrack;
 import com.wrapper.spotify.model_objects.PlaylistTrackPosition;
 import com.wrapper.spotify.model_objects.SnapshotResult;
 
@@ -18,6 +17,19 @@ public class RemoveTrackFromPlaylistRequest extends AbstractRequest {
 
   public static Builder builder() {
     return new Builder();
+  }
+
+  private static JsonObject getJsonFromPlaylistTrackPosition(PlaylistTrackPosition playlistTrackPosition) {
+    JsonObject jsonObject = new JsonObject();
+    jsonObject.addProperty("uri", playlistTrackPosition.getUri());
+    if (playlistTrackPosition.getPositions() != null && playlistTrackPosition.getPositions().length != 0) {
+      JsonArray positionArray = new JsonArray();
+      for (int pos : playlistTrackPosition.getPositions()) {
+        positionArray.add(pos);
+      }
+      jsonObject.add("positions", positionArray);
+    }
+    return jsonObject;
   }
 
   public SnapshotResult get() throws
@@ -57,8 +69,7 @@ public class RemoveTrackFromPlaylistRequest extends AbstractRequest {
       }
 
       final JsonArray jsonArrayTrackUri = new JsonArray();
-      for (PlaylistTrackPosition playlistTrackPosition : playlistTrackPositions)
-      {
+      for (PlaylistTrackPosition playlistTrackPosition : playlistTrackPositions) {
         jsonArrayTrackUri.add(getJsonFromPlaylistTrackPosition(playlistTrackPosition));
       }
       jsonBody.add("tracks", jsonArrayTrackUri);
@@ -69,7 +80,7 @@ public class RemoveTrackFromPlaylistRequest extends AbstractRequest {
       if (jsonBody == null) {
         jsonBody = new JsonObject();
       }
-      jsonBody.addProperty("snapshot_id",String.valueOf(snapshotId));
+      jsonBody.addProperty("snapshot_id", String.valueOf(snapshotId));
       return setBodyParameter(jsonBody);
     }
 
@@ -78,21 +89,5 @@ public class RemoveTrackFromPlaylistRequest extends AbstractRequest {
       return new RemoveTrackFromPlaylistRequest(this);
     }
 
-  }
-
-  private static JsonObject getJsonFromPlaylistTrackPosition(PlaylistTrackPosition playlistTrackPosition)
-  {
-    JsonObject jsonObject = new JsonObject();
-    jsonObject.addProperty("uri", playlistTrackPosition.getUri());
-    if (playlistTrackPosition.getPositions() != null && playlistTrackPosition.getPositions().length != 0)
-    {
-      JsonArray positionArray = new JsonArray();
-      for (int pos : playlistTrackPosition.getPositions())
-      {
-        positionArray.add(pos);
-      }
-      jsonObject.add("positions", positionArray);
-    }
-    return jsonObject;
   }
 }

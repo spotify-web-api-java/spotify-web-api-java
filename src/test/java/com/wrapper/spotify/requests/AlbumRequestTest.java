@@ -13,10 +13,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
+import static org.junit.Assert.*;
 
 @RunWith(MockitoJUnitRunner.class)
 public class AlbumRequestTest {
