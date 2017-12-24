@@ -411,6 +411,76 @@ public class ApiTest {
   }
 
   @Test
+  public void shouldCreateRemoveTrackFromPlaylistUrl() {
+    final String accessToken = "myVeryLongAccessToken";
+    final Api api = Api.builder().accessToken(accessToken).build();
+
+    final String myUsername = "thelinmichael";
+    final String myPlaylistId = "5ieJqeLJjjI8iJWaxeBLuK";
+    final String snapshotId = "JbtmHBDBAYu3/bt8BOXKjzKx3i0b6LCa/wVjyl6qQ2Yf6nFXkbmzuEa+ZI/U1yF+";
+    final String track1Uri = "spotify:track:4BYGxv4rxSNcTgT3DsFB9o";
+    final String track2Uri = "spotify:track:0BG2iE6McPhmAEKIhfqy1X";
+    final int track2Position = 5;
+    PlaylistTrackPosition playlistTrackPosition1 = new PlaylistTrackPosition(track1Uri);
+    PlaylistTrackPosition playlistTrackPosition2 = new PlaylistTrackPosition(track2Uri, new int[]{track2Position});
+    final List<PlaylistTrackPosition> tracksToRemove = Arrays.asList(playlistTrackPosition1, playlistTrackPosition2);
+
+    final String expectedJsonBody = String.format("{\"tracks\":[{\"uri\":\"%s\"},{\"uri\":\"%s\",\"positions\":[%s]}],\"snapshot_id\":\"%s\"}",
+        track1Uri, track2Uri, String.valueOf(track2Position), snapshotId);
+
+    final Request request = api.removeTrackFromPlaylist(myUsername, myPlaylistId, tracksToRemove).snapshotId(snapshotId).build();
+
+    assertEquals("https://api.spotify.com:443/v1/users/thelinmichael/playlists/" + myPlaylistId + "/tracks", request.toString());
+    assertHasHeader(request.toUrl(), "Authorization", "Bearer " + accessToken);
+    assertHasHeader(request.toUrl(), "Content-Type", "application/json");
+    assertHasJsonBody(request.toUrl(), expectedJsonBody);
+    assertHasHeader(request.toUrl(), "Authorization", "Bearer " + accessToken);
+  }
+
+  @Test
+  public void shouldCreateReorderTracksInPlaylistUrl()
+  {
+    final String accessToken = "myVeryLongAccessToken";
+    final Api api = Api.builder().accessToken(accessToken).build();
+
+    final String myUsername = "thelinmichael";
+    final String myPlaylistId = "5ieJqeLJjjI8iJWaxeBLuK";
+    final String snapshotId = "JbtmHBDBAYu3/bt8BOXKjzKx3i0b6LCa/wVjyl6qQ2Yf6nFXkbmzuEa+ZI/U1yF+";
+    final int rangeStart = 10;
+    final int rangeLength = 2;
+    final int insertBefore = 5;
+
+    final String expectedJsonBody = String.format("{\"range_start\":%s,\"insert_before\":%s,\"range_length\":%s,\"snapshot_id\":\"%s\"}",
+        String.valueOf(rangeStart), String.valueOf(insertBefore), String.valueOf(rangeLength), snapshotId);
+
+    final Request request = api.reorderTracksInPlaylist(myUsername, myPlaylistId, rangeStart, insertBefore).rangeLength(rangeLength).snapshotId(snapshotId).build();
+
+    assertEquals("https://api.spotify.com:443/v1/users/thelinmichael/playlists/" + myPlaylistId + "/tracks", request.toString());
+    assertHasHeader(request.toUrl(), "Authorization", "Bearer " + accessToken);
+    assertHasHeader(request.toUrl(), "Content-Type", "application/json");
+    assertHasJsonBody(request.toUrl(), expectedJsonBody);
+    assertHasHeader(request.toUrl(), "Authorization", "Bearer " + accessToken);
+  }
+
+  @Test
+  public void shouldCreateReplaceTracksInPlaylistUrl() {
+    final String accessToken = "myVeryLongAccessToken";
+    final Api api = Api.builder().accessToken(accessToken).build();
+
+    final String myUsername = "thelinmichael";
+    final String myPlaylistId = "5ieJqeLJjjI8iJWaxeBLuK";
+    final List<String> tracksToAdd = Arrays.asList("spotify:track:4BYGxv4rxSNcTgT3DsFB9o","spotify:tracks:0BG2iE6McPhmAEKIhfqy1X");
+
+    final Request request = api.replaceTracksInPlaylist(myUsername, myPlaylistId, tracksToAdd).build();
+
+    assertEquals("https://api.spotify.com:443/v1/users/thelinmichael/playlists/" + myPlaylistId + "/tracks", request.toString());
+    assertHasHeader(request.toUrl(), "Authorization", "Bearer " + accessToken);
+    assertHasHeader(request.toUrl(), "Content-Type", "application/json");
+    assertHasJsonBody(request.toUrl(), "{\"uris\":[\"spotify:track:4BYGxv4rxSNcTgT3DsFB9o\",\"spotify:tracks:0BG2iE6McPhmAEKIhfqy1X\"]}");
+    assertHasHeader(request.toUrl(), "Authorization", "Bearer " + accessToken);
+  }
+
+  @Test
   public void shouldCreateChangePlaylistDetailsUrl() {
     final String accessToken = "myVeryLongAccessToken";
     final Api api = Api.builder().accessToken(accessToken).build();
