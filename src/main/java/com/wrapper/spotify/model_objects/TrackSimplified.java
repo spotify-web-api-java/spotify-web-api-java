@@ -221,7 +221,7 @@ public class TrackSimplified extends AbstractModelObject {
                 .setHref(jsonObject.get("href").getAsString())
                 .setId(jsonObject.get("id").getAsString())
                 .setName(jsonObject.get("name").getAsString())
-                .setPreviewUrl(jsonObject.get("preview_url").getAsString())
+                .setPreviewUrl(jsonObject.get("preview_url").isJsonNull() ? null : jsonObject.get("preview_url").getAsString())
                 .setTrackNumber(jsonObject.get("track_number").getAsInt())
                 .setType(ModelObjectType.valueOf(jsonObject.get("type").getAsString().toUpperCase()))
                 .setUri(jsonObject.get("uri").getAsString())
