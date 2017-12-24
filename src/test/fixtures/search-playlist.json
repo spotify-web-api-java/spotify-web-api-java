@@ -1,0 +1,277 @@
+{
+  "playlists" : {
+    "href" : "https://api.spotify.com/v1/search?query=tdog&offset=0&limit=20&type=playlist",
+    "items" : [ {
+      "collaborative" : false,
+      "external_urls" : {
+        "spotify" : "http://open.spotify.com/user/theodorduf/playlist/5W11lXKiV9B5RZluPrxmCS"
+      },
+      "href" : "https://api.spotify.com/v1/users/theodorduf/playlists/5W11lXKiV9B5RZluPrxmCS",
+      "id" : "5W11lXKiV9B5RZluPrxmCS",
+      "images" : [ {
+        "height" : 640,
+        "url" : "https://mosaic.scdn.co/640/52fc1b3b08807194b87cd7e4fd68f5118d991e44dc4cfaabcc3536208762a48d24a29877e1fbedad253f2041305189e6ba285ae3f2794256763677aff046d0f22f8b8f888f173758da202b54b309c3cb",
+        "width" : 640
+      }, {
+        "height" : 300,
+        "url" : "https://mosaic.scdn.co/300/52fc1b3b08807194b87cd7e4fd68f5118d991e44dc4cfaabcc3536208762a48d24a29877e1fbedad253f2041305189e6ba285ae3f2794256763677aff046d0f22f8b8f888f173758da202b54b309c3cb",
+        "width" : 300
+      }, {
+        "height" : 60,
+        "url" : "https://mosaic.scdn.co/60/52fc1b3b08807194b87cd7e4fd68f5118d991e44dc4cfaabcc3536208762a48d24a29877e1fbedad253f2041305189e6ba285ae3f2794256763677aff046d0f22f8b8f888f173758da202b54b309c3cb",
+        "width" : 60
+      } ],
+      "name" : "Tdog",
+      "owner" : {
+        "external_urls" : {
+          "spotify" : "http://open.spotify.com/user/theodorduf"
+        },
+        "href" : "https://api.spotify.com/v1/users/theodorduf",
+        "id" : "theodorduf",
+        "type" : "user",
+        "uri" : "spotify:user:theodorduf"
+      },
+      "public" : null,
+      "snapshot_id" : "oAH6DfCgJmqjRAx+nh4HnINkp/60P7OXHrLChVcGzMH2GG/ggrjS0SqaW3cCcS0a",
+      "tracks" : {
+        "href" : "https://api.spotify.com/v1/users/theodorduf/playlists/5W11lXKiV9B5RZluPrxmCS/tracks",
+        "total" : 25
+      },
+      "type" : "playlist",
+      "uri" : "spotify:user:theodorduf:playlist:5W11lXKiV9B5RZluPrxmCS"
+    }, {
+      "collaborative" : false,
+      "external_urls" : {
+        "spotify" : "http://open.spotify.com/user/celblok1462/playlist/1xVkj5vYP48iqSADfA6pBu"
+      },
+      "href" : "https://api.spotify.com/v1/users/celblok1462/playlists/1xVkj5vYP48iqSADfA6pBu",
+      "id" : "1xVkj5vYP48iqSADfA6pBu",
+      "images" : [ {
+        "height" : 640,
+        "url" : "https://mosaic.scdn.co/640/f5f52dc816489e731eedfc3e551041fa6a94d9081e212b3fc71585630fba6ceec4df2342016ae5fb3b5628c37c61ed130481b2cc51778a6b16c5c2ebc83308db761d7b1bdadd91e71dbaaf78a4a1b0c3",
+        "width" : 640
+      }, {
+        "height" : 300,
+        "url" : "https://mosaic.scdn.co/300/f5f52dc816489e731eedfc3e551041fa6a94d9081e212b3fc71585630fba6ceec4df2342016ae5fb3b5628c37c61ed130481b2cc51778a6b16c5c2ebc83308db761d7b1bdadd91e71dbaaf78a4a1b0c3",
+        "width" : 300
+      }, {
+        "height" : 60,
+        "url" : "https://mosaic.scdn.co/60/f5f52dc816489e731eedfc3e551041fa6a94d9081e212b3fc71585630fba6ceec4df2342016ae5fb3b5628c37c61ed130481b2cc51778a6b16c5c2ebc83308db761d7b1bdadd91e71dbaaf78a4a1b0c3",
+        "width" : 60
+      } ],
+      "name" : "tdog",
+      "owner" : {
+        "external_urls" : {
+          "spotify" : "http://open.spotify.com/user/celblok1462"
+        },
+        "href" : "https://api.spotify.com/v1/users/celblok1462",
+        "id" : "celblok1462",
+        "type" : "user",
+        "uri" : "spotify:user:celblok1462"
+      },
+      "public" : null,
+      "snapshot_id" : "0XGv1A9GVCJ4y9O8ZWuc8IUzXvsn+3qUSfvt+Ia3P7LMo1NlyXQ42WY43eqheAEK",
+      "tracks" : {
+        "href" : "https://api.spotify.com/v1/users/celblok1462/playlists/1xVkj5vYP48iqSADfA6pBu/tracks",
+        "total" : 372
+      },
+      "type" : "playlist",
+      "uri" : "spotify:user:celblok1462:playlist:1xVkj5vYP48iqSADfA6pBu"
+    }, {
+      "collaborative" : false,
+      "external_urls" : {
+        "spotify" : "http://open.spotify.com/user/1281167171/playlist/02jPr3tlH3cj5WkAFTK95n"
+      },
+      "href" : "https://api.spotify.com/v1/users/1281167171/playlists/02jPr3tlH3cj5WkAFTK95n",
+      "id" : "02jPr3tlH3cj5WkAFTK95n",
+      "images" : [ {
+        "height" : 640,
+        "url" : "https://mosaic.scdn.co/640/29378d42e9f107cb590eb3a6692b04556ba1f916dc2ecb7974b90b427a6d0da310cbc582e9dd9f72d233f4e0220e497d13817a438f898a417c3dc3cffee739280c9eaf0f100819d9d29546872b0d64fa",
+        "width" : 640
+      }, {
+        "height" : 300,
+        "url" : "https://mosaic.scdn.co/300/29378d42e9f107cb590eb3a6692b04556ba1f916dc2ecb7974b90b427a6d0da310cbc582e9dd9f72d233f4e0220e497d13817a438f898a417c3dc3cffee739280c9eaf0f100819d9d29546872b0d64fa",
+        "width" : 300
+      }, {
+        "height" : 60,
+        "url" : "https://mosaic.scdn.co/60/29378d42e9f107cb590eb3a6692b04556ba1f916dc2ecb7974b90b427a6d0da310cbc582e9dd9f72d233f4e0220e497d13817a438f898a417c3dc3cffee739280c9eaf0f100819d9d29546872b0d64fa",
+        "width" : 60
+      } ],
+      "name" : "tdog",
+      "owner" : {
+        "external_urls" : {
+          "spotify" : "http://open.spotify.com/user/1281167171"
+        },
+        "href" : "https://api.spotify.com/v1/users/1281167171",
+        "id" : "1281167171",
+        "type" : "user",
+        "uri" : "spotify:user:1281167171"
+      },
+      "public" : null,
+      "snapshot_id" : "sxmY60WQsjcTshfSQ+1EZQHWoS7V78O10BYDeOiVnSBFym72YiLojtnXs/J/8dSA",
+      "tracks" : {
+        "href" : "https://api.spotify.com/v1/users/1281167171/playlists/02jPr3tlH3cj5WkAFTK95n/tracks",
+        "total" : 122
+      },
+      "type" : "playlist",
+      "uri" : "spotify:user:1281167171:playlist:02jPr3tlH3cj5WkAFTK95n"
+    }, {
+      "collaborative" : false,
+      "external_urls" : {
+        "spotify" : "http://open.spotify.com/user/stevenr12345/playlist/7Jsu2688yjkvF3jGeWSfHH"
+      },
+      "href" : "https://api.spotify.com/v1/users/stevenr12345/playlists/7Jsu2688yjkvF3jGeWSfHH",
+      "id" : "7Jsu2688yjkvF3jGeWSfHH",
+      "images" : [ {
+        "height" : 640,
+        "url" : "https://mosaic.scdn.co/640/9d30e50b756398fbe5c657bd275ae20a2a873f994d26ef97cbfe370350770332fdd45e1152425b4e753638bd20b08ca8a0f11e54e75239d6d7ac97a8205b6692b6b710a322919c7ca9cece2997ac1869",
+        "width" : 640
+      }, {
+        "height" : 300,
+        "url" : "https://mosaic.scdn.co/300/9d30e50b756398fbe5c657bd275ae20a2a873f994d26ef97cbfe370350770332fdd45e1152425b4e753638bd20b08ca8a0f11e54e75239d6d7ac97a8205b6692b6b710a322919c7ca9cece2997ac1869",
+        "width" : 300
+      }, {
+        "height" : 60,
+        "url" : "https://mosaic.scdn.co/60/9d30e50b756398fbe5c657bd275ae20a2a873f994d26ef97cbfe370350770332fdd45e1152425b4e753638bd20b08ca8a0f11e54e75239d6d7ac97a8205b6692b6b710a322919c7ca9cece2997ac1869",
+        "width" : 60
+      } ],
+      "name" : "tdog",
+      "owner" : {
+        "external_urls" : {
+          "spotify" : "http://open.spotify.com/user/stevenr12345"
+        },
+        "href" : "https://api.spotify.com/v1/users/stevenr12345",
+        "id" : "stevenr12345",
+        "type" : "user",
+        "uri" : "spotify:user:stevenr12345"
+      },
+      "public" : null,
+      "snapshot_id" : "Y7WJrvt21KRv2x/m7sdRF26+p95GfB7bvi65VT3MvNFANnSFElxyVeBxNss3tImh",
+      "tracks" : {
+        "href" : "https://api.spotify.com/v1/users/stevenr12345/playlists/7Jsu2688yjkvF3jGeWSfHH/tracks",
+        "total" : 59
+      },
+      "type" : "playlist",
+      "uri" : "spotify:user:stevenr12345:playlist:7Jsu2688yjkvF3jGeWSfHH"
+    }, {
+      "collaborative" : false,
+      "external_urls" : {
+        "spotify" : "http://open.spotify.com/user/teresalynbenz/playlist/4wuAurVyRAX8RMrkUo4s9t"
+      },
+      "href" : "https://api.spotify.com/v1/users/teresalynbenz/playlists/4wuAurVyRAX8RMrkUo4s9t",
+      "id" : "4wuAurVyRAX8RMrkUo4s9t",
+      "images" : [ {
+        "height" : 640,
+        "url" : "https://mosaic.scdn.co/640/c3c226ca1b710078b9f2d9b01c9fdd0c7823c80d98ed970f655d68c145d2ea38337142a6012e9b413feefd0c85953760f02ef151ed7a7150bd86d4e0fab9896046e7ea7d3fd33d67e4662d14c3657549",
+        "width" : 640
+      }, {
+        "height" : 300,
+        "url" : "https://mosaic.scdn.co/300/c3c226ca1b710078b9f2d9b01c9fdd0c7823c80d98ed970f655d68c145d2ea38337142a6012e9b413feefd0c85953760f02ef151ed7a7150bd86d4e0fab9896046e7ea7d3fd33d67e4662d14c3657549",
+        "width" : 300
+      }, {
+        "height" : 60,
+        "url" : "https://mosaic.scdn.co/60/c3c226ca1b710078b9f2d9b01c9fdd0c7823c80d98ed970f655d68c145d2ea38337142a6012e9b413feefd0c85953760f02ef151ed7a7150bd86d4e0fab9896046e7ea7d3fd33d67e4662d14c3657549",
+        "width" : 60
+      } ],
+      "name" : "tdog",
+      "owner" : {
+        "external_urls" : {
+          "spotify" : "http://open.spotify.com/user/teresalynbenz"
+        },
+        "href" : "https://api.spotify.com/v1/users/teresalynbenz",
+        "id" : "teresalynbenz",
+        "type" : "user",
+        "uri" : "spotify:user:teresalynbenz"
+      },
+      "public" : null,
+      "snapshot_id" : "4IP2wcC2wkJ8vFy8rfgtEMTH2tdwWssIh+Zw7DKC3Da7TlwMW6mBtyFY0YZ8cEWL",
+      "tracks" : {
+        "href" : "https://api.spotify.com/v1/users/teresalynbenz/playlists/4wuAurVyRAX8RMrkUo4s9t/tracks",
+        "total" : 176
+      },
+      "type" : "playlist",
+      "uri" : "spotify:user:teresalynbenz:playlist:4wuAurVyRAX8RMrkUo4s9t"
+    }, {
+      "collaborative" : false,
+      "external_urls" : {
+        "spotify" : "http://open.spotify.com/user/tyson1517/playlist/3iWeb2c8fjaTNXGGdWzo6n"
+      },
+      "href" : "https://api.spotify.com/v1/users/tyson1517/playlists/3iWeb2c8fjaTNXGGdWzo6n",
+      "id" : "3iWeb2c8fjaTNXGGdWzo6n",
+      "images" : [ {
+        "height" : 640,
+        "url" : "https://mosaic.scdn.co/640/85b132a587e78678a53436dce76567a9a372f76cb1e66fa736581e4666ee12aaeb5e102d1c1e55d75905db7fc4375b7ff391839279f60bc81c3b334e395ec95d84be3b8f03acb0e2e5d45038a56c79c2",
+        "width" : 640
+      }, {
+        "height" : 300,
+        "url" : "https://mosaic.scdn.co/300/85b132a587e78678a53436dce76567a9a372f76cb1e66fa736581e4666ee12aaeb5e102d1c1e55d75905db7fc4375b7ff391839279f60bc81c3b334e395ec95d84be3b8f03acb0e2e5d45038a56c79c2",
+        "width" : 300
+      }, {
+        "height" : 60,
+        "url" : "https://mosaic.scdn.co/60/85b132a587e78678a53436dce76567a9a372f76cb1e66fa736581e4666ee12aaeb5e102d1c1e55d75905db7fc4375b7ff391839279f60bc81c3b334e395ec95d84be3b8f03acb0e2e5d45038a56c79c2",
+        "width" : 60
+      } ],
+      "name" : "tdog hits ",
+      "owner" : {
+        "external_urls" : {
+          "spotify" : "http://open.spotify.com/user/tyson1517"
+        },
+        "href" : "https://api.spotify.com/v1/users/tyson1517",
+        "id" : "tyson1517",
+        "type" : "user",
+        "uri" : "spotify:user:tyson1517"
+      },
+      "public" : null,
+      "snapshot_id" : "lTLPwr5ig4bEfgrXftAXjdKzbfoQtghHCbTujFxfCQ71PVqcmOT9RehTE65O+ksy",
+      "tracks" : {
+        "href" : "https://api.spotify.com/v1/users/tyson1517/playlists/3iWeb2c8fjaTNXGGdWzo6n/tracks",
+        "total" : 304
+      },
+      "type" : "playlist",
+      "uri" : "spotify:user:tyson1517:playlist:3iWeb2c8fjaTNXGGdWzo6n"
+    }, {
+      "collaborative" : false,
+      "external_urls" : {
+        "spotify" : "http://open.spotify.com/user/xpaaaul/playlist/6JVLHJ0dKKXhG94dBRYtVw"
+      },
+      "href" : "https://api.spotify.com/v1/users/xpaaaul/playlists/6JVLHJ0dKKXhG94dBRYtVw",
+      "id" : "6JVLHJ0dKKXhG94dBRYtVw",
+      "images" : [ {
+        "height" : 640,
+        "url" : "https://mosaic.scdn.co/640/a9ad66d83eb9bf690d07381ffb7c0af3c42306b0fee260619504983d9a3a54338ee45f0a55d8fc5913c6daeb49d70c804351bd7a3e4d9b1fb1abd4415bb82f505c8d774326c531d964ce2006995da361",
+        "width" : 640
+      }, {
+        "height" : 300,
+        "url" : "https://mosaic.scdn.co/300/a9ad66d83eb9bf690d07381ffb7c0af3c42306b0fee260619504983d9a3a54338ee45f0a55d8fc5913c6daeb49d70c804351bd7a3e4d9b1fb1abd4415bb82f505c8d774326c531d964ce2006995da361",
+        "width" : 300
+      }, {
+        "height" : 60,
+        "url" : "https://mosaic.scdn.co/60/a9ad66d83eb9bf690d07381ffb7c0af3c42306b0fee260619504983d9a3a54338ee45f0a55d8fc5913c6daeb49d70c804351bd7a3e4d9b1fb1abd4415bb82f505c8d774326c531d964ce2006995da361",
+        "width" : 60
+      } ],
+      "name" : "TDOG's Playlist",
+      "owner" : {
+        "external_urls" : {
+          "spotify" : "http://open.spotify.com/user/xpaaaul"
+        },
+        "href" : "https://api.spotify.com/v1/users/xpaaaul",
+        "id" : "xpaaaul",
+        "type" : "user",
+        "uri" : "spotify:user:xpaaaul"
+      },
+      "public" : null,
+      "snapshot_id" : "7yUag28CxF7kAHyuG2ZdoebOGWuL+XfCKl7EfYVuO9WZY+kCaI32DK4ZnKmPWBNT",
+      "tracks" : {
+        "href" : "https://api.spotify.com/v1/users/xpaaaul/playlists/6JVLHJ0dKKXhG94dBRYtVw/tracks",
+        "total" : 511
+      },
+      "type" : "playlist",
+      "uri" : "spotify:user:xpaaaul:playlist:6JVLHJ0dKKXhG94dBRYtVw"
+    } ],
+    "limit" : 20,
+    "next" : null,
+    "offset" : 0,
+    "previous" : null,
+    "total" : 7
+  }
+}
