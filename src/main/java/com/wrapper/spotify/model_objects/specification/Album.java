@@ -311,7 +311,7 @@ public class Album extends AbstractModelObject {
     /**
      * Set the genres of the album to be built.
      *
-     * @param genres A array of genres.
+     * @param genres An array of genres.
      * @return A builder object.
      */
     public Builder setGenres(String... genres) {
