@@ -7,6 +7,7 @@ import com.wrapper.spotify.exceptions.*;
 import com.wrapper.spotify.model_objects.AlbumSimplified;
 import com.wrapper.spotify.model_objects.Paging;
 import com.wrapper.spotify.model_objects.Track;
+import com.wrapper.spotify.model_objects.TrackSimplified;
 
 import java.io.IOException;
 
@@ -20,7 +21,7 @@ public class RecommendationsRequest extends AbstractRequest {
         return new Builder();
     }
 
-    public Track[] get() throws
+    public TrackSimplified[] get() throws
             IOException,
             NoContentException,
             BadRequestException,
@@ -31,10 +32,10 @@ public class RecommendationsRequest extends AbstractRequest {
             InternalServerErrorException,
             BadGatewayException,
             ServiceUnavailableException {
-        return new Track.JsonUtil().createModelObjectArray(new JsonParser().parse(getJson()).getAsJsonObject().get("albums").getAsJsonArray());
+        return new TrackSimplified.JsonUtil().createModelObjectArray(new JsonParser().parse(getJson()).getAsJsonObject().get("tracks").getAsJsonArray());
     }
 
-    public SettableFuture<Track[]> getAsync() throws
+    public SettableFuture<TrackSimplified[]> getAsync() throws
             IOException,
             NoContentException,
             BadRequestException,
@@ -45,7 +46,7 @@ public class RecommendationsRequest extends AbstractRequest {
             InternalServerErrorException,
             BadGatewayException,
             ServiceUnavailableException {
-        return getAsync(new Track.JsonUtil().createModelObjectArray(new JsonParser().parse(getJson()).getAsJsonObject().get("albums").getAsJsonArray()));
+        return getAsync(new TrackSimplified.JsonUtil().createModelObjectArray(new JsonParser().parse(getJson()).getAsJsonObject().get("tracks").getAsJsonArray()));
     }
 
     public static final class Builder extends AbstractRequest.Builder<Builder> {

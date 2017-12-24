@@ -122,14 +122,14 @@ public class ApiTest {
   public void shouldCreateAGetRecommendationsUrl() {
     Api api = Api.DEFAULT_API;
     Request request = api.getRecommendations().build();
-    assertEquals("https://api.spotify.com:443/v1/recommendations", request.toString());
+    assertEquals("https://api.spotify.com:443/v1/recommendations", request.toString(false));
   }
 
   @Test
   public void shouldCreateAGetRecommendationsUrlFromList() {
     Api api = Api.DEFAULT_API;
     Request request = api.getRecommendations().build();
-    assertEquals("https://api.spotify.com:443/v1/recommendations", request.toString());
+    assertEquals("https://api.spotify.com:443/v1/recommendations", request.toString(false));
   }
 
   @Test

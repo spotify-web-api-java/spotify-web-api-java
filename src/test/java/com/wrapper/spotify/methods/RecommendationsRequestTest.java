@@ -5,10 +5,11 @@ import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.TestUtil;
-import com.wrapper.spotify.models.Track;
+import com.wrapper.spotify.model_objects.Track;
+import com.wrapper.spotify.model_objects.TrackSimplified;
+import com.wrapper.spotify.requests.RecommendationsRequest;
 import org.junit.Test;
 
-import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
@@ -25,23 +26,23 @@ public class RecommendationsRequestTest {
         final Api api = Api.DEFAULT_API;
 
         final RecommendationsRequest request = api.getRecommendations()
-                .httpManager(TestUtil.MockedHttpManager.returningJson("tracks.json"))
+                .setHttpManager(TestUtil.MockedHttpManager.returningJson("tracks.json"))
                 .build();
 
         final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
-        final SettableFuture<List<Track>> tracksFuture = request.getAsync();
+        final SettableFuture<TrackSimplified[]> tracksFuture = request.getAsync();
 
-        Futures.addCallback(tracksFuture, new FutureCallback<List<Track>>() {
+        Futures.addCallback(tracksFuture, new FutureCallback<TrackSimplified[]>() {
             @Override
-            public void onSuccess(List<Track> tracks) {
-                assertEquals(2, tracks.size());
+            public void onSuccess(TrackSimplified[] tracks) {
+                assertEquals(10, tracks.length);
 
-                Track firstTrack = tracks.get(0);
-                assertEquals("0eGsygTp906u18L0Oimnem", firstTrack.getId());
+                TrackSimplified firstTrack = tracks[0];
+                assertEquals("7IXU0WXqnktR0ntaEqzmwR", firstTrack.getId());
 
-                Track secondTrack = tracks.get(1);
-                assertEquals("1lDWb6b6ieDQ2xT7ewTC3G", secondTrack.getId());
+                TrackSimplified secondTrack = tracks[1];
+                assertEquals("5gWtkdgdyt5bZt9i6n3Kqd", secondTrack.getId());
 
                 asyncCompleted.countDown();
             }
@@ -60,17 +61,17 @@ public class RecommendationsRequestTest {
         final Api api = Api.DEFAULT_API;
 
         final RecommendationsRequest request = api.getRecommendations()
-                .httpManager(TestUtil.MockedHttpManager.returningJson("recommendations.json"))
+                .setHttpManager(TestUtil.MockedHttpManager.returningJson("recommendations.json"))
                 .build();
 
-        final List<Track> tracks = request.get();
+        final TrackSimplified[] tracks = request.get();
 
-        assertEquals(2, tracks.size());
+        assertEquals(10, tracks.length);
 
-        final Track firstTrack = tracks.get(0);
-        assertEquals("0eGsygTp906u18L0Oimnem", firstTrack.getId());
+        final TrackSimplified firstTrack = tracks[0];
+        assertEquals("7IXU0WXqnktR0ntaEqzmwR", firstTrack.getId());
 
-        final Track secondTrack = tracks.get(1);
-        assertEquals("1lDWb6b6ieDQ2xT7ewTC3G", secondTrack.getId());
+        final TrackSimplified secondTrack = tracks[1];
+        assertEquals("5gWtkdgdyt5bZt9i6n3Kqd", secondTrack.getId());
     }
 }
