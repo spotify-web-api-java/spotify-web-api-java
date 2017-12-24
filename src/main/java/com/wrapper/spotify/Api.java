@@ -523,8 +523,34 @@ public class Api {
    * Retrieve a URL where the user can give the application permissions.
    *
    * @param scopes The scopes corresponding to the permissions the application needs
-   * @param state  state A parameter that you can use to maintain a value between the request
-   *               and the callback to redirect_uri.It is useful to prevent CSRF exploits.
+   * @param state state A parameter that you can use to maintain a value between the request
+   *              and the callback to redirect_uri.It is useful to prevent CSRF exploits.
+   * @param showDialog - (optional) whether or not to force the user to login
+   * @return The URL where the user can give application permissions.
+   */
+  public String createAuthorizeURL(List<String> scopes, String state, boolean showDialog) {
+    final AuthorizationURLRequest.Builder builder = AuthorizationURLRequest.builder();
+    setDefaults(builder);
+    builder.clientId(clientId);
+    builder.responseType("code");
+    builder.redirectURI(redirectURI);
+    if (scopes != null) {
+      builder.scopes(scopes);
+    }
+    if (state != null) {
+      builder.state(state);
+    }
+
+    builder.showDialog(showDialog);
+    
+    return builder.build().toStringWithQueryParameters();
+  }
+  
+  /**
+   * Retrieve a URL where the user can give the application permissions.
+   * @param scopes The scopes corresponding to the permissions the application needs
+   * @param state state A parameter that you can use to maintain a value between the request
+   *              and the callback to redirect_uri.It is useful to prevent CSRF exploits.
    * @return The URL where the user can give application permissions.
    */
   public UtilProtos.Url createAuthorizeURL(String[] scopes, String state) {
