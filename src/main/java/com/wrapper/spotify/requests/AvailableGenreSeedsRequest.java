@@ -1,61 +1,61 @@
-package com.wrapper.spotify.methods;
+package com.wrapper.spotify.requests;
 
 import com.google.common.util.concurrent.SettableFuture;
-import com.wrapper.spotify.JsonUtil;
-import com.wrapper.spotify.exceptions.WebApiException;
-import net.sf.json.JSONObject;
+import com.wrapper.spotify.exceptions.*;
+import com.wrapper.spotify.model_objects.Album;
 
 import java.io.IOException;
-import java.util.List;
 
-/**
- * @author jonas on 03/09/16.
- */
 public class AvailableGenreSeedsRequest extends AbstractRequest {
 
-    public AvailableGenreSeedsRequest(AvailableGenreSeedsRequest.Builder builder) {
+    private AvailableGenreSeedsRequest(final Builder builder) {
         super(builder);
     }
 
-    public static AvailableGenreSeedsRequest.Builder builder() {
-        return new AvailableGenreSeedsRequest.Builder();
+    public static Builder builder() {
+        return new Builder();
     }
 
-    public SettableFuture<List<String>> getAsync() {
-        SettableFuture<List<String>> genresFuture = SettableFuture.create();
-
-        try {
-            final String jsonString = getJson();
-            final JSONObject jsonObject = JSONObject.fromObject(jsonString);
-
-            genresFuture.set(JsonUtil.createGenres(jsonObject));
-        } catch (Exception e) {
-            genresFuture.setException(e);
-        }
-
-        return genresFuture;
+    public String get() throws
+            IOException,
+            NoContentException,
+            BadRequestException,
+            UnauthorizedException,
+            ForbiddenException,
+            NotFoundException,
+            TooManyRequestsException,
+            InternalServerErrorException,
+            BadGatewayException,
+            ServiceUnavailableException {
+        return getJson();
     }
 
-    public List<String> get() throws IOException, WebApiException {
-        final String jsonString = getJson();
-        final JSONObject jsonObject = JSONObject.fromObject(jsonString);
-
-        return JsonUtil.createGenres(jsonObject);
+    public SettableFuture<String> getAsync() throws
+            IOException,
+            NoContentException,
+            BadRequestException,
+            UnauthorizedException,
+            ForbiddenException,
+            NotFoundException,
+            TooManyRequestsException,
+            InternalServerErrorException,
+            BadGatewayException,
+            ServiceUnavailableException {
+        return getAsync(getJson());
     }
 
-    public static final class Builder extends AbstractRequest.Builder<AvailableGenreSeedsRequest.Builder> {
-
+    public static final class Builder extends AbstractRequest.Builder<Builder> {
         /**
          * Required. A valid access token from the Spotify Accounts service
          */
         public Builder accessToken(String accessToken) {
-            return header("Authorization", "Bearer " + accessToken);
+            return setHeaderParameter("Authorization", "Bearer " + accessToken);
         }
 
+        @Override
         public AvailableGenreSeedsRequest build() {
-            path("/v1/recommendations/available-genre-seeds");
+            setPath("/v1/recommendations/available-genre-seeds");
             return new AvailableGenreSeedsRequest(this);
         }
-
     }
 }

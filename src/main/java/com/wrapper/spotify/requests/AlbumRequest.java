@@ -45,7 +45,6 @@ public class AlbumRequest extends AbstractRequest {
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
-
     /**
      * The album with the given id.
      *
@@ -61,7 +60,5 @@ public class AlbumRequest extends AbstractRequest {
     public AlbumRequest build() {
       return new AlbumRequest(this);
     }
-
   }
-
 }

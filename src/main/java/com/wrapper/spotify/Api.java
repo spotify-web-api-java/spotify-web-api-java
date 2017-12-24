@@ -610,11 +610,8 @@ public class Api {
       builder.setHeaderParameter("Authorization", "Bearer " + accessToken);
     }
   }
-  public RecommendationsRequest.Builder getRecommendations(String... ids) {
-    return getRecommendations(Arrays.asList(ids));
-  }
 
-  public RecommendationsRequest.Builder getRecommendations(List<String> ids) {
+  public RecommendationsRequest.Builder getRecommendations(String[] ids) {
     RecommendationsRequest.Builder builder = RecommendationsRequest.builder();
     setDefaults(builder);
     builder.genres(ids);
