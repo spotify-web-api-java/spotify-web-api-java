@@ -1,5 +1,8 @@
 package com.wrapper.spotify.model_objects;
 
+/**
+ * An enumeration of all possible album types.
+ */
 public enum AlbumType {
 
   ALBUM("album"),
@@ -12,6 +15,11 @@ public enum AlbumType {
     this.type = type;
   }
 
+  /**
+   * Get the album type as a string.
+   *
+   * @return Album type as string.
+   */
   public String getType() {
     return type;
   }
