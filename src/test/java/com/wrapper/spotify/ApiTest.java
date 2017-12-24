@@ -514,15 +514,14 @@ public class ApiTest {
 
     String authorizeUrlString = api.createAuthorizeURL(scopes)
             .state(state)
-            .showDialog(false)
             .build()
             .toString();
 
-    assertEquals("https://accounts.spotify.com:443/authorize?client_id=fcecfc79122e4cd299473677a17cbd4d&response_type=code&redirect_uri=http%3A%2F%2Fwww.michaelthelin.se%2Ftest-callback&scope=user-read-private+user-read-email&state=someExpectedStateString&show_dialog=false", authorizeUrlString);
+    assertEquals("https://accounts.spotify.com:443/authorize?client_id=fcecfc79122e4cd299473677a17cbd4d&response_type=code&redirect_uri=http%3A%2F%2Fwww.michaelthelin.se%2Ftest-callback&scope=user-read-private+user-read-email&state=someExpectedStateString", authorizeUrlString);
   }
   
   @Test
-  public void shouldCreateAuthorizeUrlWithShowDialogAndOptionalParameters() {
+  public void shouldCreateAuthorizeUrlWithShowDialog() {
     final String redirectURI = "http://www.michaelthelin.se/test-callback";
     final String clientId = "fcecfc79122e4cd299473677a17cbd4d";
 
@@ -531,12 +530,11 @@ public class ApiTest {
         .redirectURI(redirectURI)
         .build();
 
-    final List<String> scopes = Arrays.asList("user-read-private", "user-read-email");
+    final String[] scopes = {"user-read-private", "user-read-email"};
     final String state = "someExpectedStateString";
 
-    String authorizeURL = api.createAuthorizeURL(scopes, state, true);
-
-    assertEquals("https://accounts.spotify.com:443/authorize?client_id=fcecfc79122e4cd299473677a17cbd4d&response_type=code&redirect_uri=http://www.michaelthelin.se/test-callback&scope=user-read-private%20user-read-email&state=someExpectedStateString&show_dialog=true", authorizeURL);
+    String authorizeURLString = UrlUtil.urlToString(api.createAuthorizeURL(scopes, state, true));
+    assertEquals("https://accounts.spotify.com:443/authorize?client_id=fcecfc79122e4cd299473677a17cbd4d&response_type=code&redirect_uri=http%3A%2F%2Fwww.michaelthelin.se%2Ftest-callback&scope=user-read-private+user-read-email&state=someExpectedStateString&show_dialog=true", authorizeURLString);
   }
 
   @Test

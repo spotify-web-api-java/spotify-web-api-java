@@ -528,22 +528,26 @@ public class Api {
    * @param showDialog - (optional) whether or not to force the user to login
    * @return The URL where the user can give application permissions.
    */
-  public String createAuthorizeURL(List<String> scopes, String state, boolean showDialog) {
+  public UtilProtos.Url createAuthorizeURL(String[] scopes, String state, boolean showDialog) {
     final AuthorizationURLRequest.Builder builder = AuthorizationURLRequest.builder();
+
     setDefaults(builder);
+
     builder.clientId(clientId);
     builder.responseType("code");
     builder.redirectURI(redirectURI);
+
     if (scopes != null) {
       builder.scopes(scopes);
     }
+
     if (state != null) {
       builder.state(state);
     }
 
     builder.showDialog(showDialog);
     
-    return builder.build().toStringWithQueryParameters();
+    return builder.build().toUrl();
   }
   
   /**
@@ -555,16 +559,21 @@ public class Api {
    */
   public UtilProtos.Url createAuthorizeURL(String[] scopes, String state) {
     final AuthorizationURLRequest.Builder builder = AuthorizationURLRequest.builder();
+
     setDefaults(builder);
+
     builder.clientId(clientId);
     builder.responseType("code");
     builder.redirectURI(redirectURI);
+
     if (scopes != null) {
       builder.scopes(scopes);
     }
+
     if (state != null) {
       builder.state(state);
     }
+
     return builder.build().toUrl();
   }
 
@@ -578,13 +587,17 @@ public class Api {
    */
   public AuthorizationURLRequest.Builder createAuthorizeURL(String[] scopes) {
     final AuthorizationURLRequest.Builder builder = AuthorizationURLRequest.builder();
+
     setDefaults(builder);
+
     builder.clientId(clientId);
     builder.responseType("code");
     builder.redirectURI(redirectURI);
+
     if (scopes != null) {
       builder.scopes(scopes);
     }
+
     return builder;
   }
 
