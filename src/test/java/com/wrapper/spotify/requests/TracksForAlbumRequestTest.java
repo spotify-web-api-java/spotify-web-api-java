@@ -1,4 +1,4 @@
-package com.wrapper.spotify.methods;
+package com.wrapper.spotify.requests;
 
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
