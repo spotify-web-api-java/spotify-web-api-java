@@ -610,7 +610,42 @@ public class Api {
       builder.setHeaderParameter("Authorization", "Bearer " + accessToken);
     }
   }
+  public RecommendationsRequest.Builder getRecommendations(String... ids) {
+    return getRecommendations(Arrays.asList(ids));
+  }
 
+  public RecommendationsRequest.Builder getRecommendations(List<String> ids) {
+    RecommendationsRequest.Builder builder = RecommendationsRequest.builder();
+    setDefaults(builder);
+    builder.genres(ids);
+    return builder;
+  }
+
+  public AvailableGenreSeedsRequest.Builder getAvailableGenreSeeds() {
+    AvailableGenreSeedsRequest.Builder builder = new AvailableGenreSeedsRequest.Builder();
+    setDefaults(builder);
+    return builder;
+  }
+
+  public CategoriesRequest.Builder getCategories() {
+    CategoriesRequest.Builder builder = new CategoriesRequest.Builder();
+    setDefaults(builder);
+    return builder;
+  }
+
+  public CategoryRequest.Builder getCategory(String categoryId) {
+    CategoryRequest.Builder builder = new CategoryRequest.Builder().forCategory(categoryId);
+    setDefaults(builder);
+    return builder;
+  }
+
+  public CategoryPlaylistsRequest.Builder getPlaylistsForCategory(String categoryId) {
+    CategoryPlaylistsRequest.Builder builder = CategoryPlaylistsRequest.builder();
+    setDefaults(builder);
+    builder.category(categoryId);
+    return builder;
+  }
+  
   public void setAccessToken(String accessToken) {
     this.accessToken = accessToken;
   }
