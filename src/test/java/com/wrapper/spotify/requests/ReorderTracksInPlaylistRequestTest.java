@@ -1,18 +1,18 @@
-package com.wrapper.spotify.methods;
+package com.wrapper.spotify.requests;
 
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.TestUtil;
-import com.wrapper.spotify.models.SnapshotResult;
+import com.wrapper.spotify.model_objects.SnapshotResult;
 import org.junit.Test;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
-import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.fail;
+import static org.junit.Assert.assertEquals;
 
 public class ReorderTracksInPlaylistRequestTest
 {
@@ -32,7 +32,7 @@ public class ReorderTracksInPlaylistRequestTest
         final ReorderTracksInPlaylistRequest request = api.reorderTracksInPlaylist(myUsername, myPlaylistId, rangeStart, insertBefore)
             .rangeLength(rangeLength)
             .snapshotId(snapshotId)
-            .httpManager(TestUtil.MockedHttpManager.returningJson("reorder-tracks.json"))
+            .setHttpManager(TestUtil.MockedHttpManager.returningJson("reorder-tracks.json"))
             .build();
 
         final CountDownLatch asyncCompleted = new CountDownLatch(1);
@@ -71,7 +71,7 @@ public class ReorderTracksInPlaylistRequestTest
         final ReorderTracksInPlaylistRequest request = api.reorderTracksInPlaylist(myUsername, myPlaylistId, rangeStart, insertBefore)
             .rangeLength(rangeLength)
             .snapshotId(snapshotId)
-            .httpManager(TestUtil.MockedHttpManager.returningJson("reorder-tracks.json"))
+            .setHttpManager(TestUtil.MockedHttpManager.returningJson("reorder-tracks.json"))
             .build();
 
         final SnapshotResult snapshotResult = request.get();

@@ -1,4 +1,4 @@
-package com.wrapper.spotify.methods;
+package com.wrapper.spotify.requests;
 
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
@@ -14,6 +14,8 @@ import java.util.concurrent.TimeUnit;
 
 import static junit.framework.Assert.assertTrue;
 import static junit.framework.TestCase.fail;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 public class ReplaceTracksInPlaylistRequestTest
 {
@@ -25,10 +27,10 @@ public class ReplaceTracksInPlaylistRequestTest
 
         final String myUsername = "thelinmichael";
         final String myPlaylistId = "5ieJqeLJjjI8iJWaxeBLuK";
-        final List<String> tracksToAdd = Arrays.asList("spotify:track:4BYGxv4rxSNcTgT3DsFB9o","spotify:track:0BG2iE6McPhmAEKIhfqy1X");
+        final String[] tracksToAdd = {"spotify:track:4BYGxv4rxSNcTgT3DsFB9o","spotify:track:0BG2iE6McPhmAEKIhfqy1X"};
 
         final ReplaceTracksInPlaylistRequest request = api.replaceTracksInPlaylist(myUsername, myPlaylistId, tracksToAdd)
-            .httpManager(TestUtil.MockedHttpManager.returningString(""))
+            .setHttpManager(TestUtil.MockedHttpManager.returningString(""))
             .build();
 
         final CountDownLatch asyncCompleted = new CountDownLatch(1);
@@ -38,7 +40,7 @@ public class ReplaceTracksInPlaylistRequestTest
         Futures.addCallback(addTrackFuture, new FutureCallback<Boolean>() {
             @Override
             public void onSuccess(Boolean response) {
-                assertTrue(response);
+                assertFalse(response);
                 asyncCompleted.countDown();
             }
 
@@ -59,12 +61,12 @@ public class ReplaceTracksInPlaylistRequestTest
 
         final String myUsername = "thelinmichael";
         final String myPlaylistId = "5ieJqeLJjjI8iJWaxeBLuK";
-        final List<String> tracksToAdd = Arrays.asList("spotify:track:4BYGxv4rxSNcTgT3DsFB9o","spotify:track:0BG2iE6McPhmAEKIhfqy1X");
+        final String[] tracksToAdd = {"spotify:track:4BYGxv4rxSNcTgT3DsFB9o","spotify:track:0BG2iE6McPhmAEKIhfqy1X"};
 
         final ReplaceTracksInPlaylistRequest request = api.replaceTracksInPlaylist(myUsername, myPlaylistId, tracksToAdd)
-            .httpManager(TestUtil.MockedHttpManager.returningString(""))
+            .setHttpManager(TestUtil.MockedHttpManager.returningString(""))
             .build();
 
-        assertTrue("", request.get());
+        assertFalse(request.get());
     }
 }

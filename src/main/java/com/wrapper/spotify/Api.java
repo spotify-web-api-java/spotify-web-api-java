@@ -5,6 +5,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.wrapper.spotify.UtilProtos.Url.Scheme;
+import com.wrapper.spotify.model_objects.PlaylistTrackPosition;
 import com.wrapper.spotify.requests.*;
 import com.wrapper.spotify.requests.authentication.AuthorizationCodeGrantRequest;
 import com.wrapper.spotify.requests.authentication.AuthorizationURLRequest;
@@ -464,12 +465,12 @@ public class Api {
     return builder;
   }
 
-  public RemoveTrackFromPlaylistRequest.Builder removeTrackFromPlaylist(String userId, String playlistId, List<PlaylistTrackPosition> trackUris)
+  public RemoveTrackFromPlaylistRequest.Builder removeTrackFromPlaylist(String userId, String playlistId, PlaylistTrackPosition[] trackUris)
   {
     final RemoveTrackFromPlaylistRequest.Builder builder = RemoveTrackFromPlaylistRequest.builder();
     setDefaults(builder);
     builder.tracks(trackUris);
-    builder.path("/v1/users/" + userId + "/playlists/" + playlistId + "/tracks");
+    builder.setPath("/v1/users/" + userId + "/playlists/" + playlistId + "/tracks");
     return builder;
   }
 
@@ -479,20 +480,18 @@ public class Api {
     setDefaults(builder);
     builder.rangeStart(rangeStart);
     builder.insertBefore(insertBefore);
-    builder.path("/v1/users/" + userId + "/playlists/" + playlistId + "/tracks");
+    builder.setPath("/v1/users/" + userId + "/playlists/" + playlistId + "/tracks");
     return builder;
   }
 
-  public ReplaceTracksInPlaylistRequest.Builder replaceTracksInPlaylist(String userId, String playlistId, List<String> trackUris)
+  public ReplaceTracksInPlaylistRequest.Builder replaceTracksInPlaylist(String userId, String playlistId, String[] trackUris)
   {
     final ReplaceTracksInPlaylistRequest.Builder builder = ReplaceTracksInPlaylistRequest.builder();
     setDefaults(builder);
-    final JSONArray jsonArrayUri = new JSONArray();
-    jsonArrayUri.addAll(trackUris);
-    final JSONObject jsonObjectUris = new JSONObject();
-    jsonObjectUris.put("uris", jsonArrayUri);
-    builder.body(jsonObjectUris);
-    builder.path("/v1/users/" + userId + "/playlists/" + playlistId + "/tracks");
+
+    builder.setBodyParameter(new JsonParser().parse(new Gson().toJson(trackUris)).getAsJsonArray());
+    builder.setPath("/v1/users/" + userId + "/playlists/" + playlistId + "/tracks");
+
     return builder;
   }
 

@@ -4,6 +4,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.wrapper.spotify.UtilProtos.Url.Scheme;
 import com.wrapper.spotify.model_objects.AlbumType;
+import com.wrapper.spotify.model_objects.PlaylistTrackPosition;
 import com.wrapper.spotify.requests.Request;
 import org.apache.commons.codec.binary.Base64;
 import org.junit.Test;
@@ -423,18 +424,16 @@ public class ApiTest {
     final int track2Position = 5;
     PlaylistTrackPosition playlistTrackPosition1 = new PlaylistTrackPosition(track1Uri);
     PlaylistTrackPosition playlistTrackPosition2 = new PlaylistTrackPosition(track2Uri, new int[]{track2Position});
-    final List<PlaylistTrackPosition> tracksToRemove = Arrays.asList(playlistTrackPosition1, playlistTrackPosition2);
+    final PlaylistTrackPosition[] tracksToRemove = {playlistTrackPosition1, playlistTrackPosition2};
 
     final String expectedJsonBody = String.format("{\"tracks\":[{\"uri\":\"%s\"},{\"uri\":\"%s\",\"positions\":[%s]}],\"snapshot_id\":\"%s\"}",
         track1Uri, track2Uri, String.valueOf(track2Position), snapshotId);
 
     final Request request = api.removeTrackFromPlaylist(myUsername, myPlaylistId, tracksToRemove).snapshotId(snapshotId).build();
 
-    assertEquals("https://api.spotify.com:443/v1/users/thelinmichael/playlists/" + myPlaylistId + "/tracks", request.toString());
+    assertEquals("https://api.spotify.com:443/v1/users/thelinmichael/playlists/" + myPlaylistId + "/tracks", request.toString(false));
     assertHasHeader(request.toUrl(), "Authorization", "Bearer " + accessToken);
-    assertHasHeader(request.toUrl(), "Content-Type", "application/json");
     assertHasJsonBody(request.toUrl(), expectedJsonBody);
-    assertHasHeader(request.toUrl(), "Authorization", "Bearer " + accessToken);
   }
 
   @Test
@@ -455,11 +454,9 @@ public class ApiTest {
 
     final Request request = api.reorderTracksInPlaylist(myUsername, myPlaylistId, rangeStart, insertBefore).rangeLength(rangeLength).snapshotId(snapshotId).build();
 
-    assertEquals("https://api.spotify.com:443/v1/users/thelinmichael/playlists/" + myPlaylistId + "/tracks", request.toString());
+    assertEquals("https://api.spotify.com:443/v1/users/thelinmichael/playlists/" + myPlaylistId + "/tracks", request.toString(false));
     assertHasHeader(request.toUrl(), "Authorization", "Bearer " + accessToken);
-    assertHasHeader(request.toUrl(), "Content-Type", "application/json");
     assertHasJsonBody(request.toUrl(), expectedJsonBody);
-    assertHasHeader(request.toUrl(), "Authorization", "Bearer " + accessToken);
   }
 
   @Test
@@ -469,14 +466,13 @@ public class ApiTest {
 
     final String myUsername = "thelinmichael";
     final String myPlaylistId = "5ieJqeLJjjI8iJWaxeBLuK";
-    final List<String> tracksToAdd = Arrays.asList("spotify:track:4BYGxv4rxSNcTgT3DsFB9o","spotify:tracks:0BG2iE6McPhmAEKIhfqy1X");
+    final String[] tracksToAdd = {"spotify:track:4BYGxv4rxSNcTgT3DsFB9o","spotify:tracks:0BG2iE6McPhmAEKIhfqy1X"};
 
     final Request request = api.replaceTracksInPlaylist(myUsername, myPlaylistId, tracksToAdd).build();
 
-    assertEquals("https://api.spotify.com:443/v1/users/thelinmichael/playlists/" + myPlaylistId + "/tracks", request.toString());
+    assertEquals("https://api.spotify.com:443/v1/users/thelinmichael/playlists/" + myPlaylistId + "/tracks", request.toString(false));
     assertHasHeader(request.toUrl(), "Authorization", "Bearer " + accessToken);
     assertHasHeader(request.toUrl(), "Content-Type", "application/json");
-    assertHasJsonBody(request.toUrl(), "{\"uris\":[\"spotify:track:4BYGxv4rxSNcTgT3DsFB9o\",\"spotify:tracks:0BG2iE6McPhmAEKIhfqy1X\"]}");
     assertHasHeader(request.toUrl(), "Authorization", "Bearer " + accessToken);
   }
 
