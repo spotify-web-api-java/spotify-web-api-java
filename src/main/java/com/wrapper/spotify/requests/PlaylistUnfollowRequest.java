@@ -1,13 +1,14 @@
-package com.wrapper.spotify.methods;
+package com.wrapper.spotify.requests;
+
+import com.google.common.util.concurrent.SettableFuture;
+import com.wrapper.spotify.exceptions.*;
+import com.wrapper.spotify.model_objects.Artist;
 
 import java.io.IOException;
-import com.google.common.util.concurrent.SettableFuture;
-import com.wrapper.spotify.exceptions.WebApiException;
 
+public class PlaylistUnfollowRequest extends AbstractRequest {
 
-public class PlaylistUnfollowRequest  extends AbstractRequest {
-
-    public PlaylistUnfollowRequest(Builder builder) {
+    private PlaylistUnfollowRequest(final Builder builder) {
         super(builder);
     }
 
@@ -15,29 +16,40 @@ public class PlaylistUnfollowRequest  extends AbstractRequest {
         return new Builder();
     }
 
-    public SettableFuture<String> getAsync() {
-        final SettableFuture<String> removeFromMyTracksFuture = SettableFuture.create();
-
-        final String response;
-        try {
-            response = deleteJson();
-            removeFromMyTracksFuture.set(response);
-        } catch (IOException e) {
-            removeFromMyTracksFuture.setException(e);
-        } catch (WebApiException e) {
-            removeFromMyTracksFuture.setException(e);
-        }
-
-        return removeFromMyTracksFuture;
+    public String get() throws
+            IOException,
+            NoContentException,
+            BadRequestException,
+            UnauthorizedException,
+            ForbiddenException,
+            NotFoundException,
+            TooManyRequestsException,
+            InternalServerErrorException,
+            BadGatewayException,
+            ServiceUnavailableException {
+        return getJson();
     }
 
-    public String get() throws IOException, WebApiException {
-        return deleteJson();
+    public SettableFuture<String> getAsync() throws
+            IOException,
+            NoContentException,
+            BadRequestException,
+            UnauthorizedException,
+            ForbiddenException,
+            NotFoundException,
+            TooManyRequestsException,
+            InternalServerErrorException,
+            BadGatewayException,
+            ServiceUnavailableException {
+        return getAsync(getJson());
     }
 
     public static final class Builder extends AbstractRequest.Builder<Builder> {
+
+        @Override
         public PlaylistUnfollowRequest build() {
             return new PlaylistUnfollowRequest(this);
         }
+
     }
 }

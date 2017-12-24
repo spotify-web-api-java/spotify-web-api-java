@@ -404,16 +404,16 @@ public class Api {
    * @return A builder object that can e used to build a request to add tracks to a playlist.
    */
   public ReplacePlaylistTracksRequest.Builder replacePlaylistsTracks(
-      String userId, String playlistId, List<String> trackUris
+      String userId, String playlistId, String[] trackUris
   ) {
     final ReplacePlaylistTracksRequest.Builder builder = ReplacePlaylistTracksRequest.builder();
     setDefaults(builder);
-    final JSONObject urisObject = new JSONObject();
-    final JSONArray jsonArrayUri = new JSONArray();
-    jsonArrayUri.addAll(trackUris);
-    urisObject.put("uris", jsonArrayUri);
-    builder.body(urisObject);
-    builder.path("/v1/users/" + userId + "/playlists/" + playlistId + "/tracks");
+    final JsonObject urisObject = new JsonObject();
+    final JsonArray jsonArrayUri = new JsonArray();
+    jsonArrayUri.addAll(new JsonParser().parse(new Gson().toJson(trackUris)).getAsJsonArray());
+    urisObject.add("uris", jsonArrayUri);
+    builder.setBodyParameter(urisObject);
+    builder.setPath("/v1/users/" + userId + "/playlists/" + playlistId + "/tracks");
     return builder;
   }
 
@@ -461,7 +461,7 @@ public class Api {
   public PlaylistUnfollowRequest.Builder unfollowPlaylist(String userId, String playlistId) {
     final PlaylistUnfollowRequest.Builder builder = PlaylistUnfollowRequest.builder();
     setDefaults(builder);
-    builder.path("/v1/users/" + userId + "/playlists/" + playlistId + "/followers");
+    builder.setPath("/v1/users/" + userId + "/playlists/" + playlistId + "/followers");
     return builder;
   }
 

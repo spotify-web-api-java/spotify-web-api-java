@@ -36,21 +36,20 @@ public class ApiTest {
   public void shouldCreateAGetTracksForAlbumUrl() {
     Api api = Api.DEFAULT_API;
     Request request = api.getTracksForAlbum("5oEljuMoe9MXH6tBIPbd5e").build();
+    String test = request.toString();
     assertEquals(
         "https://api.spotify.com:443/v1/albums/5oEljuMoe9MXH6tBIPbd5e/tracks",
-        request.toString()
+        request.toString(false)
     );
   }
 
   @Test
   public void shouldReplacePlaylistsTracks() {
     Api api = Api.DEFAULT_API;
-    Request request = api.replacePlaylistsTracks(
-        "userId","5oEljuMoe9MXH6tBIPbd5e", Collections.<String>emptyList()
-    ).build();
+    Request request = api.replacePlaylistsTracks("userId","5oEljuMoe9MXH6tBIPbd5e", new String[]{}).build();
     assertEquals(
         "https://api.spotify.com:443/v1/users/userId/playlists/5oEljuMoe9MXH6tBIPbd5e/tracks",
-        request.toString()
+        request.toString(false)
     );
   }
 
@@ -62,7 +61,7 @@ public class ApiTest {
     ).build();
     assertEquals(
         "https://api.spotify.com:443/v1/users/userId/playlists/5oEljuMoe9MXH6tBIPbd5e/followers",
-        request.toString()
+        request.toString(false)
     );
   }
 

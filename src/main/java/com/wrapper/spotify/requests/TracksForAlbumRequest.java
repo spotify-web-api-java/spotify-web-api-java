@@ -1,63 +1,69 @@
-package com.wrapper.spotify.methods;
+package com.wrapper.spotify.requests;
+
+import com.google.common.util.concurrent.SettableFuture;
+import com.wrapper.spotify.exceptions.*;
+import com.wrapper.spotify.model_objects.Artist;
+import com.wrapper.spotify.model_objects.Paging;
+import com.wrapper.spotify.model_objects.TrackSimplified;
 
 import java.io.IOException;
-import com.google.common.util.concurrent.SettableFuture;
-import com.wrapper.spotify.JsonUtil;
-import com.wrapper.spotify.exceptions.WebApiException;
-import com.wrapper.spotify.models.Page;
-import com.wrapper.spotify.models.SimpleTrack;
-import net.sf.json.JSONObject;
-
 
 public class TracksForAlbumRequest extends AbstractRequest {
 
-    public TracksForAlbumRequest(TracksForAlbumRequest.Builder builder) {
+    private TracksForAlbumRequest(final Builder builder) {
         super(builder);
     }
 
-    public SettableFuture<Page<SimpleTrack>> getAsync() {
-        SettableFuture<Page<SimpleTrack>> searchResultFuture = SettableFuture.create();
-
-        try {
-            final String jsonString = getJson();
-            final JSONObject jsonObject = JSONObject.fromObject(jsonString);
-
-            searchResultFuture.set(JsonUtil.createSimpleTrackPage(jsonObject));
-        } catch (Exception e) {
-            searchResultFuture.setException(e);
-        }
-
-        return searchResultFuture;
+    public static Builder builder() {
+        return new Builder();
     }
 
-    public Page<SimpleTrack> get() throws IOException, WebApiException {
-        final String jsonString = getJson();
-        final JSONObject jsonObject = JSONObject.fromObject(jsonString);
-
-        return JsonUtil.createSimpleTrackPage(jsonObject);
+    public Paging<TrackSimplified> get() throws
+            IOException,
+            NoContentException,
+            BadRequestException,
+            UnauthorizedException,
+            ForbiddenException,
+            NotFoundException,
+            TooManyRequestsException,
+            InternalServerErrorException,
+            BadGatewayException,
+            ServiceUnavailableException {
+        return new TrackSimplified.JsonUtil().createModelObjectPaging(getJson());
     }
 
-    public static TracksForAlbumRequest.Builder builder() {
-        return new TracksForAlbumRequest.Builder();
+    public SettableFuture<Paging<TrackSimplified>> getAsync() throws
+            IOException,
+            NoContentException,
+            BadRequestException,
+            UnauthorizedException,
+            ForbiddenException,
+            NotFoundException,
+            TooManyRequestsException,
+            InternalServerErrorException,
+            BadGatewayException,
+            ServiceUnavailableException {
+        return getAsync(new TrackSimplified.JsonUtil().createModelObjectPaging(getJson()));
     }
 
-    public static final class Builder extends AbstractRequest.Builder<TracksForAlbumRequest.Builder> {
+    public static final class Builder extends AbstractRequest.Builder<Builder> {
 
-        public TracksForAlbumRequest.Builder forAlbum(String id) {
+        public Builder forAlbum(String id) {
             assert (id != null);
-            return path(String.format("/v1/albums/%s/tracks", id));
+            return setPath(String.format("/v1/albums/%s/tracks", id));
         }
 
-        public TracksForAlbumRequest.Builder limit(int limit) {
+        public Builder limit(int limit) {
             assert (limit > 0);
-            return parameter("limit", String.valueOf(limit));
+            return setParameter("limit", String.valueOf(limit));
         }
 
-        public TracksForAlbumRequest.Builder offset(int offset) {
+        public Builder offset(int offset) {
             assert (offset >= 0);
-            return parameter("offset", String.valueOf(offset));
+            return setParameter("offset", String.valueOf(offset));
         }
 
+        @Override
         public TracksForAlbumRequest build() {
             return new TracksForAlbumRequest(this);
         }
