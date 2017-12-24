@@ -1,93 +1,90 @@
-package com.wrapper.spotify.methods;
-
-import static junit.framework.Assert.assertEquals;
-import static junit.framework.TestCase.assertNotNull;
-import static junit.framework.TestCase.assertNull;
-import static junit.framework.TestCase.fail;
-
-import java.util.List;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.TimeUnit;
-
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.runners.MockitoJUnitRunner;
+package com.wrapper.spotify.requests;
 
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.TestUtil;
-import com.wrapper.spotify.models.Page;
-import com.wrapper.spotify.models.SimpleAlbum;
-import com.wrapper.spotify.models.SimplePlaylist;
-import com.wrapper.spotify.models.SpotifyEntityType;
+import com.wrapper.spotify.model_objects.ModelObjectType;
+import com.wrapper.spotify.model_objects.Paging;
+import com.wrapper.spotify.model_objects.PlaylistSimplified;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.runners.MockitoJUnitRunner;
+
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.TimeUnit;
+
+import static junit.framework.Assert.assertEquals;
+import static junit.framework.TestCase.fail;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 @RunWith(MockitoJUnitRunner.class)
 public class PlaylistSearchRequestTest {
 
-	@Test
-	public void shouldGetPlaylistsResult_async() throws Exception {
-		final Api api = Api.DEFAULT_API;
+  @Test
+  public void shouldGetPlaylistsResult_async() throws Exception {
+    final Api api = Api.DEFAULT_API;
 
-		final PlaylistSearchRequest request = api.searchPlaylists("dog")
-				.httpManager(TestUtil.MockedHttpManager.returningJson("search-playlist.json")).build();
+    final PlaylistSearchRequest request = api.searchPlaylists("dog")
+            .setHttpManager(TestUtil.MockedHttpManager.returningJson("search-playlist.json")).build();
 
-		final CountDownLatch asyncCompleted = new CountDownLatch(1);
+    final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
-		final SettableFuture<Page<SimplePlaylist>> searchResultFuture = request.getAsync();
+    final SettableFuture<Paging<PlaylistSimplified>> searchResultFuture = request.getAsync();
 
-		Futures.addCallback(searchResultFuture, new FutureCallback<Page<SimplePlaylist>>() {
-			@Override
-			public void onSuccess(Page<SimplePlaylist> playlistSearchResult) {
-				
-				validatePlayists(playlistSearchResult);
-				asyncCompleted.countDown();
-			}
+    Futures.addCallback(searchResultFuture, new FutureCallback<Paging<PlaylistSimplified>>() {
+      @Override
+      public void onSuccess(Paging<PlaylistSimplified> playlistSearchResult) {
 
-			@Override
-			public void onFailure(Throwable throwable) {
-				fail("Failed to resolve future");
-			}
-		});
+        validatePlayists(playlistSearchResult);
+        asyncCompleted.countDown();
+      }
 
-		asyncCompleted.await(1, TimeUnit.SECONDS);
-	}
+      @Override
+      public void onFailure(Throwable throwable) {
+        fail("Failed to resolve future");
+      }
+    });
 
-	@Test
-	public void shouldGetAlbumsResult_sync() throws Exception {
-		final Api api = Api.DEFAULT_API;
+    asyncCompleted.await(1, TimeUnit.SECONDS);
+  }
 
-		final PlaylistSearchRequest request = api.searchPlaylists("dog")
-				.httpManager(TestUtil.MockedHttpManager.returningJson("search-playlist.json")).build();
+  @Test
+  public void shouldGetAlbumsResult_sync() throws Exception {
+    final Api api = Api.DEFAULT_API;
 
-		final Page<SimplePlaylist> playlistSearchResult = request.get();
-		validatePlayists(playlistSearchResult);
-	}
+    final PlaylistSearchRequest request = api.searchPlaylists("dog")
+            .setHttpManager(TestUtil.MockedHttpManager.returningJson("search-playlist.json")).build();
 
-	private void validatePlayists(final Page<SimplePlaylist> playlistSearchResult) {
+    final Paging<PlaylistSimplified> playlistSearchResult = request.get();
+    validatePlayists(playlistSearchResult);
+  }
 
-		assertEquals("https://api.spotify.com/v1/search?query=tdog&offset=0&limit=20&type=playlist",
-				playlistSearchResult.getHref());
-		assertEquals(20, playlistSearchResult.getLimit());
-		assertEquals(0, playlistSearchResult.getOffset());
-		assertNull(playlistSearchResult.getNext());
-		assertNull(playlistSearchResult.getPrevious());
-		assertEquals(7, playlistSearchResult.getTotal());
+  private void validatePlayists(final Paging<PlaylistSimplified> playlistSearchResult) {
 
-		List<SimplePlaylist> playlists = playlistSearchResult.getItems();
-		assertEquals(7, playlists.size());
+    assertEquals("https://api.spotify.com/v1/search?query=%22doom+metal%22&type=playlist&market=DE&offset=0&limit=20",
+            playlistSearchResult.getHref());
+    assertEquals(20, playlistSearchResult.getLimit());
+    assertEquals(0, playlistSearchResult.getOffset());
+    assertEquals("https://api.spotify.com/v1/search?query=%22doom+metal%22&type=playlist&market=DE&offset=20&limit=20", playlistSearchResult.getNext());
+    assertNull(playlistSearchResult.getPrevious());
+    assertEquals(575, playlistSearchResult.getTotal());
 
-		SimplePlaylist firstPlaylist = playlists.get(0);
-		assertEquals("http://open.spotify.com/user/theodorduf/playlist/5W11lXKiV9B5RZluPrxmCS",
-				firstPlaylist.getExternalUrls().get("spotify"));
-		assertEquals("https://api.spotify.com/v1/users/theodorduf/playlists/5W11lXKiV9B5RZluPrxmCS",
-				firstPlaylist.getHref());
-		assertEquals("5W11lXKiV9B5RZluPrxmCS", firstPlaylist.getId());
-		assertEquals("Tdog", firstPlaylist.getName());
-		assertNotNull(firstPlaylist.getImages());
-		assertNotNull(firstPlaylist.getOwner());
-		assertEquals(SpotifyEntityType.PLAYLIST, firstPlaylist.getType());
-		assertEquals("spotify:user:theodorduf:playlist:5W11lXKiV9B5RZluPrxmCS", firstPlaylist.getUri());
-	}
+    PlaylistSimplified[] playlists = playlistSearchResult.getItems();
+    assertEquals(20, playlists.length);
+
+    PlaylistSimplified firstPlaylist = playlists[0];
+    assertEquals("https://open.spotify.com/user/holgar_the_red/playlist/5Lzif2bIMW8RiRLtbYJHU0",
+            firstPlaylist.getExternalUrls().get("spotify"));
+    assertEquals("https://api.spotify.com/v1/users/holgar_the_red/playlists/5Lzif2bIMW8RiRLtbYJHU0",
+            firstPlaylist.getHref());
+    assertEquals("5Lzif2bIMW8RiRLtbYJHU0", firstPlaylist.getId());
+    assertEquals("Doom Metal", firstPlaylist.getName());
+    assertNotNull(firstPlaylist.getImages());
+    assertNotNull(firstPlaylist.getOwner());
+    assertEquals(ModelObjectType.PLAYLIST, firstPlaylist.getType());
+    assertEquals("spotify:user:holgar_the_red:playlist:5Lzif2bIMW8RiRLtbYJHU0", firstPlaylist.getUri());
+  }
 }

@@ -1,74 +1,79 @@
-package com.wrapper.spotify.methods;
+package com.wrapper.spotify.requests;
+
+import com.google.common.util.concurrent.SettableFuture;
+import com.google.gson.JsonParser;
+import com.wrapper.spotify.exceptions.*;
+import com.wrapper.spotify.model_objects.Album;
+import com.wrapper.spotify.model_objects.Paging;
+import com.wrapper.spotify.model_objects.PlaylistSimplified;
 
 import java.io.IOException;
 
-import com.google.common.util.concurrent.SettableFuture;
-import com.wrapper.spotify.JsonUtil;
-import com.wrapper.spotify.exceptions.WebApiException;
-import com.wrapper.spotify.models.Page;
-import com.wrapper.spotify.models.SimplePlaylist;
-
-import net.sf.json.JSONObject;
-
 public class PlaylistSearchRequest extends AbstractRequest {
 
-	protected PlaylistSearchRequest(Builder builder) {
-		super(builder);
-	}
+  private PlaylistSearchRequest(final Builder builder) {
+    super(builder);
+  }
 
-	public SettableFuture<Page<SimplePlaylist>> getAsync() {
-		SettableFuture<Page<SimplePlaylist>> searchResultFuture = SettableFuture.create();
+  public static Builder builder() {
+    return new Builder();
+  }
 
-		try {
-			final String jsonString = getJson();
-			final JSONObject jsonObject = JSONObject.fromObject(jsonString);
+  public Paging<PlaylistSimplified> get() throws
+          IOException,
+          NoContentException,
+          BadRequestException,
+          UnauthorizedException,
+          ForbiddenException,
+          NotFoundException,
+          TooManyRequestsException,
+          InternalServerErrorException,
+          BadGatewayException,
+          ServiceUnavailableException {
+    return new PlaylistSimplified.JsonUtil().createModelObjectPaging(new JsonParser().parse(getJson()).getAsJsonObject().get("playlists").getAsJsonObject());
+  }
 
-			searchResultFuture.set(JsonUtil.createSimplePlaylistPage(jsonObject.getJSONObject("playlists")));
-		} catch (Exception e) {
-			searchResultFuture.setException(e);
-		}
+  public SettableFuture<Paging<PlaylistSimplified>> getAsync() throws
+          IOException,
+          NoContentException,
+          BadRequestException,
+          UnauthorizedException,
+          ForbiddenException,
+          NotFoundException,
+          TooManyRequestsException,
+          InternalServerErrorException,
+          BadGatewayException,
+          ServiceUnavailableException {
+    return getAsync(new PlaylistSimplified.JsonUtil().createModelObjectPaging(new JsonParser().parse(getJson()).getAsJsonObject().get("playlists").getAsJsonObject()));
+  }
 
-		return searchResultFuture;
-	}
+  public static final class Builder extends AbstractRequest.Builder<Builder> {
 
-	public Page<SimplePlaylist> get() throws IOException, WebApiException {
-		final String jsonString = getJson();
-		final JSONObject jsonObject = JSONObject.fromObject(jsonString);
+    public Builder query(String query) {
+      assert (query != null);
+      setPath("/v1/search");
+      setParameter("type", "playlist");
+      return setParameter("q", query);
+    }
 
-		return JsonUtil.createSimplePlaylistPage(JSONObject.fromObject(jsonObject).getJSONObject("playlists"));
-	}
+    public Builder market(String market) {
+      assert (market != null);
+      return setParameter("market", market);
+    }
 
-	public static Builder builder() {
-		return new Builder();
-	}
+    public Builder limit(int limit) {
+      assert (limit > 0);
+      return setParameter("limit", String.valueOf(limit));
+    }
 
-	public static final class Builder extends AbstractRequest.Builder<Builder> {
+    public Builder offset(int offset) {
+      assert (offset >= 0);
+      return setParameter("offset", String.valueOf(offset));
+    }
 
-		public Builder query(String query) {
-			assert(query != null);
-			path("/v1/search");
-			parameter("type", "playlist");
-			return parameter("q", query);
-		}
-
-		public Builder market(String market) {
-			assert(market != null);
-			return parameter("market", market);
-		}
-
-		public Builder limit(int limit) {
-			assert(limit > 0);
-			return parameter("limit", String.valueOf(limit));
-		}
-
-		public Builder offset(int offset) {
-			assert(offset >= 0);
-			return parameter("offset", String.valueOf(offset));
-		}
-
-		public PlaylistSearchRequest build() {
-			return new PlaylistSearchRequest(this);
-		}
-
-	}
+    @Override
+    public PlaylistSearchRequest build() {
+      return new PlaylistSearchRequest(this);
+    }
+  }
 }
