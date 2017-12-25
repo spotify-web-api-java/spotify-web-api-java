@@ -1,6 +1,9 @@
 package com.wrapper.spotify.model_objects;
 
 import com.google.gson.JsonObject;
+import com.wrapper.spotify.objects.model_objects.AbstractModelObject;
+import com.wrapper.spotify.objects.model_objects.AlbumSimplified;
+import com.wrapper.spotify.objects.model_objects.Paging;
 
 public class NewReleases extends AbstractModelObject {
   private final Paging<AlbumSimplified> albums;

@@ -1,6 +1,8 @@
 package com.wrapper.spotify.model_objects;
 
 import com.google.gson.JsonObject;
+import com.wrapper.spotify.objects.model_objects.AbstractModelObject;
+import com.wrapper.spotify.objects.model_objects.Track;
 
 import java.text.ParseException;
 import java.util.Date;

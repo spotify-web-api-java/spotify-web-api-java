@@ -5,9 +5,9 @@ import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.TestUtil;
-import com.wrapper.spotify.model_objects.Paging;
-import com.wrapper.spotify.model_objects.PlaylistTrack;
-import com.wrapper.spotify.model_objects.Track;
+import com.wrapper.spotify.objects.model_objects.Paging;
+import com.wrapper.spotify.objects.model_objects.PlaylistTrack;
+import com.wrapper.spotify.objects.model_objects.Track;
 import org.junit.Test;
 
 import java.util.concurrent.CountDownLatch;

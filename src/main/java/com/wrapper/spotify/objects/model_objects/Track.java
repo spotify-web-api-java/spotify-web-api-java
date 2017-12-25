@@ -1,9 +1,11 @@
-package com.wrapper.spotify.model_objects;
+package com.wrapper.spotify.objects.model_objects;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonNull;
 import com.google.gson.JsonObject;
 import com.neovisionaries.i18n.CountryCode;
+import com.wrapper.spotify.model_objects.ModelObjectType;
+import com.wrapper.spotify.model_objects.Restrictions;
 
 public class Track extends AbstractModelObject {
   private final AlbumSimplified album;

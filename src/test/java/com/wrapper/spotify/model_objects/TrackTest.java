@@ -1,6 +1,7 @@
 package com.wrapper.spotify.model_objects;
 
 import com.wrapper.spotify.TestUtil;
+import com.wrapper.spotify.objects.model_objects.Track;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
