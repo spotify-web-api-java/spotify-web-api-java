@@ -7,7 +7,6 @@ import com.wrapper.spotify.Api;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.objects.model_objects.AlbumSimplified;
 import com.wrapper.spotify.objects.model_objects.enums.AlbumType;
-import com.wrapper.spotify.model_objects.NewReleases;
 import com.wrapper.spotify.objects.model_objects.Paging;
 import org.junit.Test;
 
@@ -32,26 +31,24 @@ public class NewReleasesRequestTest {
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
-    final SettableFuture<NewReleases> future = request.getAsync();
+    final SettableFuture<Paging<AlbumSimplified>> future = request.getAsync();
 
-    Futures.addCallback(future, new FutureCallback<NewReleases>() {
+    Futures.addCallback(future, new FutureCallback<Paging<AlbumSimplified>>() {
       @Override
-      public void onSuccess(NewReleases newReleases) {
-        assertNotNull(newReleases.getAlbums());
-
-        Paging<AlbumSimplified> albums = newReleases.getAlbums();
+      public void onSuccess(Paging<AlbumSimplified> newReleases) {
+        assertNotNull(newReleases.getItems());
 
         assertEquals("https://api.spotify.com/v1/browse/new-releases?offset=0&limit=1",
-                albums.getHref());
+                newReleases.getHref());
 
-        assertEquals(1, albums.getLimit());
-        assertEquals(0, albums.getOffset());
+        assertEquals(1, newReleases.getLimit());
+        assertEquals(0, newReleases.getOffset());
         assertEquals("https://api.spotify.com/v1/browse/new-releases?offset=1&limit=1",
-                albums.getNext());
-        assertNull(albums.getPrevious());
-        assertEquals(500, albums.getTotal());
+                newReleases.getNext());
+        assertNull(newReleases.getPrevious());
+        assertEquals(500, newReleases.getTotal());
 
-        AlbumSimplified firstItem = albums.getItems()[0];
+        AlbumSimplified firstItem = newReleases.getItems()[0];
         assertEquals(AlbumType.SINGLE, firstItem.getAlbumType());
         assertEquals(62, firstItem.getAvailableMarkets().length);
         assertNotNull(firstItem.getExternalUrls());
@@ -78,23 +75,21 @@ public class NewReleasesRequestTest {
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("new-releases.json"))
             .build();
 
-    NewReleases newReleases = request.get();
+    Paging<AlbumSimplified> newReleases = request.get();
 
-    assertNotNull(newReleases.getAlbums());
-
-    Paging<AlbumSimplified> albums = newReleases.getAlbums();
+    assertNotNull(newReleases.getItems());
 
     assertEquals("https://api.spotify.com/v1/browse/new-releases?offset=0&limit=1",
-            albums.getHref());
+            newReleases.getHref());
 
-    assertEquals(1, albums.getLimit());
-    assertEquals(0, albums.getOffset());
+    assertEquals(1, newReleases.getLimit());
+    assertEquals(0, newReleases.getOffset());
     assertEquals("https://api.spotify.com/v1/browse/new-releases?offset=1&limit=1",
-            albums.getNext());
-    assertNull(albums.getPrevious());
-    assertEquals(500, albums.getTotal());
+            newReleases.getNext());
+    assertNull(newReleases.getPrevious());
+    assertEquals(500, newReleases.getTotal());
 
-    AlbumSimplified firstItem = albums.getItems()[0];
+    AlbumSimplified firstItem = newReleases.getItems()[0];
     assertEquals(AlbumType.SINGLE, firstItem.getAlbumType());
     assertEquals(62, firstItem.getAvailableMarkets().length);
     assertNotNull(firstItem.getExternalUrls());

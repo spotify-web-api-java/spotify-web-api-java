@@ -1,8 +1,10 @@
 package com.wrapper.spotify.requests;
 
 import com.google.common.util.concurrent.SettableFuture;
+import com.google.gson.JsonParser;
 import com.wrapper.spotify.exceptions.*;
-import com.wrapper.spotify.model_objects.NewReleases;
+import com.wrapper.spotify.objects.model_objects.AlbumSimplified;
+import com.wrapper.spotify.objects.model_objects.Paging;
 
 import java.io.IOException;
 
@@ -16,7 +18,7 @@ public class NewReleasesRequest extends AbstractRequest {
     return new Builder();
   }
 
-  public NewReleases get() throws
+  public Paging<AlbumSimplified> get() throws
           IOException,
           NoContentException,
           BadRequestException,
@@ -27,10 +29,10 @@ public class NewReleasesRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return new NewReleases.JsonUtil().createModelObject(getJson());
+    return new AlbumSimplified.JsonUtil().createModelObjectPaging(new JsonParser().parse(getJson()).getAsJsonObject().get("albums").getAsJsonObject());
   }
 
-  public SettableFuture<NewReleases> getAsync() throws
+  public SettableFuture<Paging<AlbumSimplified>> getAsync() throws
           IOException,
           NoContentException,
           BadRequestException,
@@ -41,7 +43,7 @@ public class NewReleasesRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return getAsync(new NewReleases.JsonUtil().createModelObject(getJson()));
+    return getAsync(new AlbumSimplified.JsonUtil().createModelObjectPaging(new JsonParser().parse(getJson()).getAsJsonObject().get("albums").getAsJsonObject()));
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
