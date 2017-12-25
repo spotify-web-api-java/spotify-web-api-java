@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class AbstractRequest implements Request {
+public abstract class AbstractRequest implements IRequest {
 
   private Url url;
   private HttpManager httpManager;
@@ -130,7 +130,7 @@ public abstract class AbstractRequest implements Request {
     return url;
   }
 
-  public static abstract class Builder<BuilderType extends Builder<?>> implements Request.Builder {
+  public static abstract class Builder<BuilderType extends Builder<?>> implements IRequest.Builder {
 
     private HttpManager httpManager;
     private Url.Scheme scheme = Api.DEFAULT_SCHEME;

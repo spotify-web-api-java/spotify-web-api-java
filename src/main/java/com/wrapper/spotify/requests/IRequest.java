@@ -4,7 +4,7 @@ import com.google.gson.JsonElement;
 import com.wrapper.spotify.HttpManager;
 import com.wrapper.spotify.UtilProtos.Url;
 
-public interface Request {
+public interface IRequest {
 
   Url toUrl();
 
