@@ -7,6 +7,7 @@ import com.wrapper.spotify.Api;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.model_objects.Paging;
 import com.wrapper.spotify.model_objects.TrackSimplified;
+import com.wrapper.spotify.requests.data.albums.TracksForAlbumRequest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;

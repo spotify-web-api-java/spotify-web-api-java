@@ -7,6 +7,7 @@ import com.wrapper.spotify.Api;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.model_objects.LibraryTrack;
 import com.wrapper.spotify.model_objects.Paging;
+import com.wrapper.spotify.requests.data.library.GetMySavedTracksRequest;
 import org.junit.Test;
 
 import java.util.concurrent.CountDownLatch;

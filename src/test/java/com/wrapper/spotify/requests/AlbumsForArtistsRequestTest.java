@@ -8,6 +8,7 @@ import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.model_objects.AlbumSimplified;
 import com.wrapper.spotify.model_objects.AlbumType;
 import com.wrapper.spotify.model_objects.Paging;
+import com.wrapper.spotify.requests.data.artists.AlbumsForArtistRequest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;

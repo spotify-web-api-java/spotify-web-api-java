@@ -1,7 +1,8 @@
-package com.wrapper.spotify.requests;
+package com.wrapper.spotify.requests.data.playlists;
 
 import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.exceptions.*;
+import com.wrapper.spotify.requests.AbstractRequest;
 
 import java.io.IOException;
 

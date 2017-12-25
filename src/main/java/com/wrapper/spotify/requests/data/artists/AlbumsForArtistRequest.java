@@ -1,4 +1,4 @@
-package com.wrapper.spotify.requests;
+package com.wrapper.spotify.requests.data.artists;
 
 import com.google.common.base.Joiner;
 import com.google.common.util.concurrent.SettableFuture;
@@ -7,6 +7,7 @@ import com.wrapper.spotify.exceptions.*;
 import com.wrapper.spotify.model_objects.AlbumSimplified;
 import com.wrapper.spotify.model_objects.AlbumType;
 import com.wrapper.spotify.model_objects.Paging;
+import com.wrapper.spotify.requests.AbstractRequest;
 
 import java.io.IOException;
 

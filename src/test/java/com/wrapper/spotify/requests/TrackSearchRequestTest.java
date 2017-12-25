@@ -8,6 +8,7 @@ import com.wrapper.spotify.HttpManager;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.model_objects.Paging;
 import com.wrapper.spotify.model_objects.Track;
+import com.wrapper.spotify.requests.data.search.TrackSearchRequest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;

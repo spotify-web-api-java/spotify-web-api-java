@@ -8,6 +8,7 @@ import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.model_objects.ModelObjectType;
 import com.wrapper.spotify.model_objects.Paging;
 import com.wrapper.spotify.model_objects.PlaylistSimplified;
+import com.wrapper.spotify.requests.data.playlists.UserPlaylistsRequest;
 import org.junit.Test;
 
 import java.util.concurrent.CountDownLatch;

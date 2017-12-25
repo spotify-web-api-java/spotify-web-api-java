@@ -8,6 +8,7 @@ import com.wrapper.spotify.Api;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.model_objects.PlaylistTrackPosition;
 import com.wrapper.spotify.model_objects.SnapshotResult;
+import com.wrapper.spotify.requests.data.playlists.RemoveTrackFromPlaylistRequest;
 import org.junit.Test;
 
 import java.util.concurrent.CountDownLatch;

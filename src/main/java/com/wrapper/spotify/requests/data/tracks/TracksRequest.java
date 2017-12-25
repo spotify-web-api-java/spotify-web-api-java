@@ -1,10 +1,11 @@
-package com.wrapper.spotify.requests;
+package com.wrapper.spotify.requests.data.tracks;
 
 import com.google.common.base.Joiner;
 import com.google.common.util.concurrent.SettableFuture;
 import com.google.gson.JsonParser;
 import com.wrapper.spotify.exceptions.*;
 import com.wrapper.spotify.model_objects.Track;
+import com.wrapper.spotify.requests.AbstractRequest;
 
 import java.io.IOException;
 import java.util.List;

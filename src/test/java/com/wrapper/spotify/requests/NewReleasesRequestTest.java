@@ -9,6 +9,7 @@ import com.wrapper.spotify.model_objects.AlbumSimplified;
 import com.wrapper.spotify.model_objects.AlbumType;
 import com.wrapper.spotify.model_objects.NewReleases;
 import com.wrapper.spotify.model_objects.Paging;
+import com.wrapper.spotify.requests.data.browse.NewReleasesRequest;
 import org.junit.Test;
 
 import java.util.concurrent.CountDownLatch;

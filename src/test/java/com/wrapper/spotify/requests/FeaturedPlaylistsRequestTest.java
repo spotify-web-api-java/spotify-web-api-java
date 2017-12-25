@@ -8,6 +8,7 @@ import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.model_objects.FeaturedPlaylists;
 import com.wrapper.spotify.model_objects.Paging;
 import com.wrapper.spotify.model_objects.PlaylistSimplified;
+import com.wrapper.spotify.requests.data.browse.FeaturedPlaylistsRequest;
 import org.junit.Test;
 
 import java.util.Calendar;
