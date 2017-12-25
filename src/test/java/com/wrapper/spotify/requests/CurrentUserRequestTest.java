@@ -7,7 +7,7 @@ import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.enums.ProductType;
-import com.wrapper.spotify.objects.model_objects.User;
+import com.wrapper.spotify.model_objects.User;
 import org.junit.Test;
 
 import java.util.concurrent.CountDownLatch;

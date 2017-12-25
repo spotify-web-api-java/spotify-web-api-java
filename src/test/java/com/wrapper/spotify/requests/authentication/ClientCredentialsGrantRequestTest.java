@@ -5,7 +5,7 @@ import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.TestUtil;
-import com.wrapper.spotify.objects.model_objects.credentials.ClientCredentials;
+import com.wrapper.spotify.model_objects.credentials.ClientCredentials;
 import org.junit.Test;
 
 import java.util.concurrent.CountDownLatch;

@@ -1,4 +1,4 @@
-package com.wrapper.spotify.objects.model_objects;
+package com.wrapper.spotify.model_objects;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;

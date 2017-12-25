@@ -1,7 +1,7 @@
-package com.wrapper.spotify.objects.model_objects.miscellaneous;
+package com.wrapper.spotify.model_objects.miscellaneous;
 
 import com.google.gson.JsonObject;
-import com.wrapper.spotify.objects.model_objects.AbstractModelObject;
+import com.wrapper.spotify.model_objects.AbstractModelObject;
 
 public class Restrictions extends AbstractModelObject {
   private final String reason;

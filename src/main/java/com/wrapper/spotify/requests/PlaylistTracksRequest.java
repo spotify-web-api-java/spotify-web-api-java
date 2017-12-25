@@ -2,8 +2,8 @@ package com.wrapper.spotify.requests;
 
 import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.exceptions.*;
-import com.wrapper.spotify.objects.model_objects.Paging;
-import com.wrapper.spotify.objects.model_objects.PlaylistTrack;
+import com.wrapper.spotify.model_objects.Paging;
+import com.wrapper.spotify.model_objects.PlaylistTrack;
 
 import java.io.IOException;
 

@@ -1,7 +1,7 @@
-package com.wrapper.spotify.objects.model_objects.special;
+package com.wrapper.spotify.model_objects.special;
 
 import com.google.gson.JsonObject;
-import com.wrapper.spotify.objects.model_objects.AbstractModelObject;
+import com.wrapper.spotify.model_objects.AbstractModelObject;
 
 public class SnapshotResult extends AbstractModelObject {
   public final String snapshotId;

@@ -6,7 +6,7 @@ import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.enums.ModelObjectType;
-import com.wrapper.spotify.objects.model_objects.Track;
+import com.wrapper.spotify.model_objects.Track;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;

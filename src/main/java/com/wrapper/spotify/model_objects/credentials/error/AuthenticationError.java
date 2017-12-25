@@ -1,7 +1,7 @@
-package com.wrapper.spotify.objects.model_objects.credentials.error;
+package com.wrapper.spotify.model_objects.credentials.error;
 
 import com.google.gson.JsonObject;
-import com.wrapper.spotify.objects.model_objects.AbstractModelObject;
+import com.wrapper.spotify.model_objects.AbstractModelObject;
 
 public class AuthenticationError extends AbstractModelObject {
   private final String error;

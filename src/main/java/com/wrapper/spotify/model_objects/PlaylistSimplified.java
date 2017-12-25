@@ -1,9 +1,9 @@
-package com.wrapper.spotify.objects.model_objects;
+package com.wrapper.spotify.model_objects;
 
 import com.google.gson.JsonNull;
 import com.google.gson.JsonObject;
 import com.wrapper.spotify.enums.ModelObjectType;
-import com.wrapper.spotify.objects.model_objects.miscellaneous.PlaylistTracksInformation;
+import com.wrapper.spotify.model_objects.miscellaneous.PlaylistTracksInformation;
 
 public class PlaylistSimplified extends AbstractModelObject {
   private final boolean collaborative;
