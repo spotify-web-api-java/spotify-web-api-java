@@ -1,4 +1,4 @@
-package com.wrapper.spotify.objects;
+package com.wrapper.spotify.objects.model_objects.credentials.error;
 
 import com.google.gson.JsonObject;
 import com.wrapper.spotify.objects.model_objects.AbstractModelObject;
