@@ -2,8 +2,8 @@ package com.wrapper.spotify.objects.model_objects;
 
 import com.google.gson.JsonObject;
 import com.neovisionaries.i18n.CountryCode;
-import com.wrapper.spotify.objects.model_objects.enums.ModelObjectType;
-import com.wrapper.spotify.objects.model_objects.enums.ProductType;
+import com.wrapper.spotify.enums.ModelObjectType;
+import com.wrapper.spotify.enums.ProductType;
 
 public class User extends AbstractModelObject {
   private final String birthdate;

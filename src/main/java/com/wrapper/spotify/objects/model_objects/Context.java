@@ -1,7 +1,7 @@
 package com.wrapper.spotify.objects.model_objects;
 
 import com.google.gson.JsonObject;
-import com.wrapper.spotify.objects.model_objects.enums.ModelObjectType;
+import com.wrapper.spotify.enums.ModelObjectType;
 
 public class Context extends AbstractModelObject {
   private final ModelObjectType type;

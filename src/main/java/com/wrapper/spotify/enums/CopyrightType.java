@@ -1,4 +1,4 @@
-package com.wrapper.spotify.objects.model_objects.enums;
+package com.wrapper.spotify.enums;
 
 public enum CopyrightType {
 
