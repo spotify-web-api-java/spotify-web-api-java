@@ -5,7 +5,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.exceptions.*;
-import com.wrapper.spotify.model_objects.AuthorizationCodeCredentials;
+import com.wrapper.spotify.objects.model_objects.credentials.AuthorizationCodeCredentials;
 import com.wrapper.spotify.requests.AbstractRequest;
 import org.apache.commons.codec.binary.Base64;
 
