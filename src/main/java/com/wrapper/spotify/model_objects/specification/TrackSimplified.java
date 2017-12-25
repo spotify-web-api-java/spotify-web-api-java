@@ -65,7 +65,7 @@ public class TrackSimplified extends AbstractModelObject {
   }
 
   /**
-   * Get the disc number of a track in it's album.
+   * Get the disc number of a track in its album.
    *
    * @return A disc number.
    */
@@ -123,17 +123,17 @@ public class TrackSimplified extends AbstractModelObject {
    * Check whether a track is playable in the market, which may has been specified
    * somewhere before requesting it.
    *
-   * @return Return "true" if the track is playable in specified market, "false" if not.
+   * @return "true" if the track is playable in specified market, "false" if not.
    */
   public boolean getIsPlayable() {
     return isPlayable;
   }
 
   /**
-   * Get the track link of a track if the given track has been relinked.<br>
+   * Get the track link object of a track if the given track has been relinked.<br>
    * This happens mostly when a specific track is not available in a specific market.
    *
-   * @return The original Spotify url of the track.
+   * @return A track link object.
    */
   public TrackLink getLinkedFrom() {
     return linkedFrom;
@@ -214,7 +214,7 @@ public class TrackSimplified extends AbstractModelObject {
      * Set the artists of the track to be built.
      *
      * @param artists An array of simplified artists.
-     * @return A builder object.
+     * @return        A builder object.
      */
     public Builder setArtists(ArtistSimplified... artists) {
       this.artists = artists;
@@ -224,8 +224,8 @@ public class TrackSimplified extends AbstractModelObject {
     /**
      * Set the available markets of the track to be built.
      *
-     * @param availableMarkets An array of ISO 3166-1 alpha-2 country codes.
-     * @return A builder object.
+     * @param availableMarkets  An array of ISO 3166-1 alpha-2 country codes.
+     * @return                  A builder object.
      */
     public Builder setAvailableMarkets(CountryCode... availableMarkets) {
       this.availableMarkets = availableMarkets;
@@ -235,8 +235,8 @@ public class TrackSimplified extends AbstractModelObject {
     /**
      * Set the disc numer of the track to be built.
      *
-     * @param discNumber The disc number.
-     * @return A builder object.
+     * @param discNumber  The disc number.
+     * @return            A builder object.
      */
     public Builder setDiscNumber(int discNumber) {
       this.discNumber = discNumber;
@@ -246,8 +246,8 @@ public class TrackSimplified extends AbstractModelObject {
     /**
      * Set the duration in milliseconds of the track to be built.
      *
-     * @param durationMs Duration in milliseconds.
-     * @return A builder object.
+     * @param durationMs  Duration in milliseconds.
+     * @return            A builder object.
      */
     public Builder setDurationMs(int durationMs) {
       this.durationMs = durationMs;
@@ -257,8 +257,8 @@ public class TrackSimplified extends AbstractModelObject {
     /**
      * Set whether the track to be built is explicit or not.
      *
-     * @param explicit Set "true" for explicit, "false" for not explicit.
-     * @return A builder object.
+     * @param explicit  "true" for explicit, "false" for not explicit.
+     * @return          A builder object.
      */
     public Builder setExplicit(boolean explicit) {
       this.explicit = explicit;
@@ -268,8 +268,8 @@ public class TrackSimplified extends AbstractModelObject {
     /**
      * Set external urls of the track to be built.
      *
-     * @param externalUrls External urls object.
-     * @return A builder object.
+     * @param externalUrls  External urls object.
+     * @return              A builder object.
      */
     public Builder setExternalUrls(ExternalUrl externalUrls) {
       this.externalUrls = externalUrls;
@@ -279,8 +279,8 @@ public class TrackSimplified extends AbstractModelObject {
     /**
      * Set href of Spotify api endpoint of the track to be built.
      *
-     * @param href Spotify api endpoint url
-     * @return A builder object.
+     * @param href  Spotify api endpoint url.
+     * @return      A builder object.
      */
     public Builder setHref(String href) {
       this.href = href;
@@ -288,10 +288,10 @@ public class TrackSimplified extends AbstractModelObject {
     }
 
     /**
-     * Set track id of the track to be built.
+     * Set the Spotify id of the track to be built.
      *
-     * @param id Track id.
-     * @return A builder object.
+     * @param id  Spotify track id.
+     * @return    A builder object.
      */
     public Builder setId(String id) {
       this.id = id;
@@ -301,8 +301,8 @@ public class TrackSimplified extends AbstractModelObject {
     /**
      * Set whether the track to be built is playable in your market region or not.
      *
-     * @param isPlayable Playable or not playable.
-     * @return A builder object.
+     * @param isPlayable  "true" for playable, "false" for not playable.
+     * @return            A builder object.
      */
     public Builder setIsPlayable(boolean isPlayable) {
       this.isPlayable = isPlayable;
@@ -310,10 +310,10 @@ public class TrackSimplified extends AbstractModelObject {
     }
 
     /**
-     * Set the track link of the track to be built.
+     * Set the track link object of the track to be built.
      *
      * @param linkedFrom Track link object.
-     * @return A builder object.
+     * @return           A builder object.
      */
     public Builder setLinkedFrom(TrackLink linkedFrom) {
       this.linkedFrom = linkedFrom;
@@ -323,8 +323,8 @@ public class TrackSimplified extends AbstractModelObject {
     /**
      * Set the name of the track to be built.
      *
-     * @param name The name.
-     * @return A builder object.
+     * @param name  Track name.
+     * @return      A builder object.
      */
     public Builder setName(String name) {
       this.name = name;
@@ -334,8 +334,8 @@ public class TrackSimplified extends AbstractModelObject {
     /**
      * Set the preview url of the track to be built.
      *
-     * @param previewUrl The url of a track preview.
-     * @return A builder object.
+     * @param previewUrl  The url of a track preview.
+     * @return            A builder object.
      */
     public Builder setPreviewUrl(String previewUrl) {
       this.previewUrl = previewUrl;
@@ -346,7 +346,7 @@ public class TrackSimplified extends AbstractModelObject {
      * Set the track numer of the track to be built.
      *
      * @param trackNumber The track number.
-     * @return A builder object.
+     * @return            A builder object.
      */
     public Builder setTrackNumber(int trackNumber) {
       this.trackNumber = trackNumber;
@@ -356,8 +356,8 @@ public class TrackSimplified extends AbstractModelObject {
     /**
      * Set the type of the model object. In this case "track".
      *
-     * @param type Type of the model object.
-     * @return A builder object.
+     * @param type  Type of the model object.
+     * @return      A builder object.
      */
     public Builder setType(ModelObjectType type) {
       this.type = type;
@@ -368,7 +368,7 @@ public class TrackSimplified extends AbstractModelObject {
      * Set Spotify uri of the track to be built.
      *
      * @param uri The Spotify track uri.
-     * @return A builder object.
+     * @return    A builder object.
      */
     public Builder setUri(String uri) {
       this.uri = uri;

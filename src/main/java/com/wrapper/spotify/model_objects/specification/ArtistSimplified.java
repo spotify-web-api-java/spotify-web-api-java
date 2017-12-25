@@ -123,9 +123,9 @@ public class ArtistSimplified extends AbstractModelObject {
     }
 
     /**
-     * Set album id of the artist to be built.
+     * Set the Spotify id of the artist to be built.
      *
-     * @param id Artist id.
+     * @param id Spotify artist id.
      * @return A builder object.
      */
     public Builder setId(String id) {
