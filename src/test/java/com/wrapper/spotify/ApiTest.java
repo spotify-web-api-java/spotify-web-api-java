@@ -282,7 +282,7 @@ public class ApiTest {
             .refreshToken(refreshToken)
             .build();
 
-    final Request request = api.refreshAccessToken().build();
+    final Request request = api.clientCredentialsGrant().build();
 
     assertEquals("https://accounts.spotify.com:443/api/token", request.toString(false));
     assertHasBodyParameter(request.toUrl(), "grant_type", "refresh_token");

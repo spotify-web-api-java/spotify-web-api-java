@@ -7,7 +7,6 @@ import com.wrapper.spotify.requests.*;
 import com.wrapper.spotify.requests.authentication.AuthorizationCodeGrantRequest;
 import com.wrapper.spotify.requests.authentication.AuthorizationURLRequest;
 import com.wrapper.spotify.requests.authentication.ClientCredentialsGrantRequest;
-import com.wrapper.spotify.requests.authentication.RefreshAccessTokenRequest;
 
 import java.util.Arrays;
 import java.util.List;
@@ -235,21 +234,6 @@ public class Api {
     builder.basicAuthorizationHeader(clientId, clientSecret);
     builder.code(code);
     builder.redirectUri(redirectURI);
-    return builder;
-  }
-
-  /**
-   * Returns a builder that can be used to build requests to refresh an access token
-   * that has been retrieved using the authorization code grant flow.
-   *
-   * @return A builder that builds refresh access token requests.
-   */
-  public RefreshAccessTokenRequest.Builder refreshAccessToken() {
-    RefreshAccessTokenRequest.Builder builder = RefreshAccessTokenRequest.builder();
-    setDefaults(builder);
-    builder.grantType("refresh_token");
-    builder.refreshToken(refreshToken);
-    builder.basicAuthorizationHeader(clientId, clientSecret);
     return builder;
   }
 
