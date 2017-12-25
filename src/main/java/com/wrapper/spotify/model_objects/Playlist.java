@@ -63,7 +63,7 @@ public class Playlist extends AbstractModelObject {
    * Get the external urls of a playlist.<br>
    * Example: Spotify-URL.
    *
-   * @return The external urls of a playlist..
+   * @return The external urls of a playlist.
    */
   public ExternalUrls getExternalUrls() {
     return externalUrls;
@@ -125,7 +125,7 @@ public class Playlist extends AbstractModelObject {
   }
 
   /**
-   * Check whether a playlist is available in public or private.
+   * Check whether a playlist is available in public or is private.
    *
    * @return "true" if the playlist is public, "false" if not.
    */
@@ -145,7 +145,7 @@ public class Playlist extends AbstractModelObject {
   /**
    * Get a page of playlist tracks of a playlist.
    *
-   * @return A page of tracks.
+   * @return A page of playlist tracks.
    */
   public Paging<PlaylistTrack> getTracks() {
     return tracks;
@@ -197,7 +197,7 @@ public class Playlist extends AbstractModelObject {
      * Set whether the playlist to be built is collaborative or not.
      *
      * @param collaborative "true" for collaborative", false if not.
-     * @return A builder object.
+     * @return              A builder object.
      */
     public Builder setCollaborative(boolean collaborative) {
       this.collaborative = collaborative;
@@ -208,7 +208,7 @@ public class Playlist extends AbstractModelObject {
      * Set the description of the playlist to be built.
      *
      * @param description Playlist description.
-     * @return A builder object.
+     * @return            A builder object.
      */
     public Builder setDescription(String description) {
       this.description = description;
@@ -218,8 +218,8 @@ public class Playlist extends AbstractModelObject {
     /**
      * Set external urls of the playlist to be built.
      *
-     * @param externalUrls External urls object.
-     * @return A builder object.
+     * @param externalUrls  External urls object.
+     * @return              A builder object.
      */
     public Builder setExternalUrls(ExternalUrls externalUrls) {
       this.externalUrls = externalUrls;
@@ -230,7 +230,7 @@ public class Playlist extends AbstractModelObject {
      * Set the followers object of the playlist to be built.
      *
      * @param followers A followers object.
-     * @return A builder object.
+     * @return          A builder object.
      */
     public Builder setFollowers(Followers followers) {
       this.followers = followers;
@@ -240,8 +240,8 @@ public class Playlist extends AbstractModelObject {
     /**
      * Set href of Spotify api endpoint of the playlist to be built.
      *
-     * @param href Spotify api endpoint url.
-     * @return A builder object.
+     * @param href  Spotify api endpoint url.
+     * @return      A builder object.
      */
     public Builder setHref(String href) {
       this.href = href;
@@ -249,10 +249,10 @@ public class Playlist extends AbstractModelObject {
     }
 
     /**
-     * Set album id of the playlist to be built.
+     * Set Spotify id of the playlist to be built.
      *
-     * @param id Playlist id.
-     * @return A builder object.
+     * @param id  Spotify playlist id.
+     * @return    A builder object.
      */
     public Builder setId(String id) {
       this.id = id;
@@ -262,8 +262,8 @@ public class Playlist extends AbstractModelObject {
     /**
      * Set the cover image of the playlist to be built.
      *
-     * @param images An array of image objects.
-     * @return A builder object.
+     * @param images  An array of image objects.
+     * @return        A builder object.
      */
     public Builder setImages(Image[] images) {
       this.images = images;
@@ -273,8 +273,8 @@ public class Playlist extends AbstractModelObject {
     /**
      * Set the name of the playlist to be built.
      *
-     * @param name The playlist name.
-     * @return A builder object.
+     * @param name  The playlist name.
+     * @return      A builder object.
      */
     public Builder setName(String name) {
       this.name = name;
@@ -285,7 +285,7 @@ public class Playlist extends AbstractModelObject {
      * Set the owner of the playlist to be built.
      *
      * @param owner A user object.
-     * @return A builder object.
+     * @return      A builder object.
      */
     public Builder setOwner(User owner) {
       this.owner = owner;
@@ -295,8 +295,8 @@ public class Playlist extends AbstractModelObject {
     /**
      * Set whether the playlist to be built is available in public or not.
      *
-     * @param publicAccess "true" if public, "false" if not.
-     * @return A builder object.
+     * @param publicAccess  "true" if public, "false" if not.
+     * @return              A builder object.
      */
     public Builder setPublicAccess(Boolean publicAccess) {
       this.publicAccess = publicAccess;
@@ -306,8 +306,8 @@ public class Playlist extends AbstractModelObject {
     /**
      * Set the snapshot id of the playlist to be built.
      *
-     * @param snapshotId Snapshot id.
-     * @return A builder object.
+     * @param snapshotId  Snapshot id.
+     * @return            A builder object.
      */
     public Builder setSnapshotId(String snapshotId) {
       this.snapshotId = snapshotId;
@@ -315,7 +315,7 @@ public class Playlist extends AbstractModelObject {
     }
 
     /**
-     * Set a page of tracks of the playlist to be built.
+     * Set a page of playlist tracks of the playlist to be built.
      *
      * @param tracks A page of playlist tracks.
      * @return A builder object.
@@ -328,8 +328,8 @@ public class Playlist extends AbstractModelObject {
     /**
      * Set the type of the model object. In this case "playlist".
      *
-     * @param type The model object type.
-     * @return A builder object.
+     * @param type  The model object type.
+     * @return      A builder object.
      */
     public Builder setType(ModelObjectType type) {
       this.type = type;
@@ -339,8 +339,8 @@ public class Playlist extends AbstractModelObject {
     /**
      * Set the Spotify uri of the playlist to be built.
      *
-     * @param uri The Spotify playlist uri.
-     * @return A builder object.
+     * @param uri   The Spotify playlist uri.
+     * @return      A builder object.
      */
     public Builder setUri(String uri) {
       this.uri = uri;

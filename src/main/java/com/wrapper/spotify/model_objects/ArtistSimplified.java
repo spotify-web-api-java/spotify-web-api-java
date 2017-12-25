@@ -99,8 +99,8 @@ public class ArtistSimplified extends AbstractModelObject {
     /**
      * Set external urls of the artist to be built.
      *
-     * @param externalUrls External urls object.
-     * @return A builder object.
+     * @param externalUrls  External urls object.
+     * @return              A builder object.
      */
     public Builder setExternalUrls(ExternalUrls externalUrls) {
       this.externalUrls = externalUrls;
@@ -110,8 +110,8 @@ public class ArtistSimplified extends AbstractModelObject {
     /**
      * Set href of Spotify api endpoint of the artist to be built.
      *
-     * @param href Spotify api endpoint url.
-     * @return A builder object.
+     * @param href  Spotify api endpoint url.
+     * @return      A builder object.
      */
     public Builder setHref(String href) {
       this.href = href;
@@ -119,10 +119,10 @@ public class ArtistSimplified extends AbstractModelObject {
     }
 
     /**
-     * Set album id of the artist to be built.
+     * Set the Spotify id of the artist to be built.
      *
-     * @param id Artist id.
-     * @return A builder object.
+     * @param id  Spotify artist id.
+     * @return    A builder object.
      */
     public Builder setId(String id) {
       this.id = id;
@@ -132,8 +132,8 @@ public class ArtistSimplified extends AbstractModelObject {
     /**
      * Set the name of the artist to be built.
      *
-     * @param name The artist name.
-     * @return A builder object.
+     * @param name  The artist name.
+     * @return      A builder object.
      */
     public Builder setName(String name) {
       this.name = name;
@@ -143,8 +143,8 @@ public class ArtistSimplified extends AbstractModelObject {
     /**
      * Set the type of the model object. In this case "artist".
      *
-     * @param type The model object type.
-     * @return A builder object.
+     * @param type  The model object type.
+     * @return      A builder object.
      */
     public Builder setType(ModelObjectType type) {
       this.type = type;
@@ -155,7 +155,7 @@ public class ArtistSimplified extends AbstractModelObject {
      * Set the Spotify uri of the artist to be built.
      *
      * @param uri The Spotify artist uri.
-     * @return A builder object.
+     * @return    A builder object.
      */
     public Builder setUri(String uri) {
       this.uri = uri;

@@ -29,7 +29,7 @@ public class SavedAlbum extends AbstractModelObject {
   }
 
   /**
-   * Get a full album object from this saved album object.
+   * Get a full album object from a saved album object.
    *
    * @return An album object.
    */
@@ -53,7 +53,7 @@ public class SavedAlbum extends AbstractModelObject {
      * Set the "added at" date of the saved album to be built.
      *
      * @param addedAt A date object.
-     * @return A builder object.
+     * @return        A builder object.
      */
     public Builder setAddedAt(Date addedAt) {
       this.addedAt = addedAt;
@@ -61,10 +61,10 @@ public class SavedAlbum extends AbstractModelObject {
     }
 
     /**
-     * Set the main album object of the saved album to be built.
+     * Set the full album object of the saved album to be built.
      *
      * @param album An album object.
-     * @return A builder object.
+     * @return      A builder object.
      */
     public Builder setAlbum(Album album) {
       this.album = album;

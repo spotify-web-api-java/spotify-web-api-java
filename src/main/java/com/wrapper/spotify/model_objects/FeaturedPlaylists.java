@@ -63,7 +63,7 @@ public class FeaturedPlaylists extends AbstractModelObject {
     /**
      * Set a page of playlists contained in the featured playlists object to be built.
      *
-     * @param playlists A page of playlists.
+     * @param playlists A page of simplified playlists.
      * @return          A builder object.
      */
     public Builder setPlaylists(Paging<PlaylistSimplified> playlists) {

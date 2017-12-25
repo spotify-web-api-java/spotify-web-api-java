@@ -151,7 +151,7 @@ public class AlbumSimplified extends AbstractModelObject {
      * Set the type of the album to be built.
      *
      * @param albumType Type of the album.
-     * @return A builder object.
+     * @return          A builder object.
      */
     public Builder setAlbumType(AlbumType albumType) {
       this.albumType = albumType;
@@ -162,7 +162,7 @@ public class AlbumSimplified extends AbstractModelObject {
      * Set the artists of the album to be built.
      *
      * @param artists An array of simplified artists.
-     * @return A builder object.
+     * @return        A builder object.
      */
     public Builder setArtists(ArtistSimplified[] artists) {
       this.artists = artists;
@@ -172,8 +172,8 @@ public class AlbumSimplified extends AbstractModelObject {
     /**
      * Set the available markets of the album to be built.
      *
-     * @param availableMarkets An array of ISO 3166-1 alpha-2 country codes.
-     * @return A builder object.
+     * @param availableMarkets  An array of ISO 3166-1 alpha-2 country codes.
+     * @return                  A builder object.
      */
     public Builder setAvailableMarkets(CountryCode[] availableMarkets) {
       this.availableMarkets = availableMarkets;
@@ -183,8 +183,8 @@ public class AlbumSimplified extends AbstractModelObject {
     /**
      * Set external urls of the album to be built.
      *
-     * @param externalUrls External urls object.
-     * @return A builder object.
+     * @param externalUrls  External urls object.
+     * @return              A builder object.
      */
     public Builder setExternalUrls(ExternalUrls externalUrls) {
       this.externalUrls = externalUrls;
@@ -194,8 +194,8 @@ public class AlbumSimplified extends AbstractModelObject {
     /**
      * Set href of Spotify api endpoint of the album to be built.
      *
-     * @param href Spotify api endpoint url.
-     * @return A builder object.
+     * @param href  Spotify api endpoint url.
+     * @return      A builder object.
      */
     public Builder setHref(String href) {
       this.href = href;
@@ -205,8 +205,8 @@ public class AlbumSimplified extends AbstractModelObject {
     /**
      * Set album id of the album to be built.
      *
-     * @param id Album id.
-     * @return A builder object.
+     * @param id  Album id.
+     * @return    A builder object.
      */
     public Builder setId(String id) {
       this.id = id;
@@ -216,8 +216,8 @@ public class AlbumSimplified extends AbstractModelObject {
     /**
      * Set the cover art in different sizes of the album to be built.
      *
-     * @param images An array of image objects.
-     * @return A builder object.
+     * @param images  An array of image objects.
+     * @return        A builder object.
      */
     public Builder setImages(Image[] images) {
       this.images = images;
@@ -227,8 +227,8 @@ public class AlbumSimplified extends AbstractModelObject {
     /**
      * Set the name of the album to be built.
      *
-     * @param name The album name.
-     * @return A builder object.
+     * @param name  The album name.
+     * @return      A builder object.
      */
     public Builder setName(String name) {
       this.name = name;
@@ -238,8 +238,8 @@ public class AlbumSimplified extends AbstractModelObject {
     /**
      * Set the type of the model object. In this case "album".
      *
-     * @param type The model object type.
-     * @return A builder object.
+     * @param type  The model object type.
+     * @return      A builder object.
      */
     public Builder setType(ModelObjectType type) {
       this.type = type;
@@ -250,7 +250,7 @@ public class AlbumSimplified extends AbstractModelObject {
      * Set the Spotify uri of the album to be built.
      *
      * @param uri The Spotify album uri.
-     * @return A builder object.
+     * @return    A builder object.
      */
     public Builder setUri(String uri) {
       this.uri = uri;
