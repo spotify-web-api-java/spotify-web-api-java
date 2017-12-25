@@ -4,8 +4,8 @@ import com.google.gson.Gson;
 import com.google.gson.JsonNull;
 import com.google.gson.JsonObject;
 import com.neovisionaries.i18n.CountryCode;
-import com.wrapper.spotify.model_objects.AlbumType;
-import com.wrapper.spotify.model_objects.ModelObjectType;
+import com.wrapper.spotify.objects.model_objects.enums.AlbumType;
+import com.wrapper.spotify.objects.model_objects.enums.ModelObjectType;
 
 public class AlbumSimplified extends AbstractModelObject {
   private final AlbumType albumType;

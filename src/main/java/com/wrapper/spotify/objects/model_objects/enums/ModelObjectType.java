@@ -1,4 +1,4 @@
-package com.wrapper.spotify.model_objects;
+package com.wrapper.spotify.objects.model_objects.enums;
 
 public enum ModelObjectType {
 

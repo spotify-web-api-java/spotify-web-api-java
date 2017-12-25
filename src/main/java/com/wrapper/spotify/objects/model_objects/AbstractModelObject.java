@@ -2,7 +2,6 @@ package com.wrapper.spotify.objects.model_objects;
 
 import com.google.common.reflect.TypeToken;
 import com.google.gson.*;
-import com.wrapper.spotify.model_objects.IModelObject;
 
 import java.lang.reflect.Array;
 import java.lang.reflect.Type;
