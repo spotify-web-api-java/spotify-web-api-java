@@ -5,8 +5,8 @@ import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.TestUtil;
-import com.wrapper.spotify.model_objects.LibraryTrack;
 import com.wrapper.spotify.objects.model_objects.Paging;
+import com.wrapper.spotify.objects.model_objects.SavedTrack;
 import org.junit.Test;
 
 import java.util.concurrent.CountDownLatch;
@@ -30,20 +30,20 @@ public class GetMySavedTracksRequestTest {
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
-    final SettableFuture<Paging<LibraryTrack>> libraryTracksFuture = request.getAsync();
+    final SettableFuture<Paging<SavedTrack>> libraryTracksFuture = request.getAsync();
 
-    Futures.addCallback(libraryTracksFuture, new FutureCallback<Paging<LibraryTrack>>() {
+    Futures.addCallback(libraryTracksFuture, new FutureCallback<Paging<SavedTrack>>() {
 
       @Override
-      public void onSuccess(Paging<LibraryTrack> libraryTracks) {
+      public void onSuccess(Paging<SavedTrack> libraryTracks) {
         assertNotNull(libraryTracks);
 
         assertEquals("https://api.spotify.com/v1/me/tracks?offset=1&limit=1", libraryTracks.getHref());
 
-        LibraryTrack[] items = libraryTracks.getItems();
+        SavedTrack[] items = libraryTracks.getItems();
         assertEquals(1, items.length);
 
-        LibraryTrack firstItem = libraryTracks.getItems()[0];
+        SavedTrack firstItem = libraryTracks.getItems()[0];
         assertNotNull(firstItem.getAddedAt());
         assertNotNull(firstItem.getTrack());
         assertEquals("1bhUWB0zJMIKr9yVPrkEuI", firstItem.getTrack().getId());
@@ -70,16 +70,16 @@ public class GetMySavedTracksRequestTest {
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("saved-tracks.json"))
             .build();
 
-    final Paging<LibraryTrack> libraryTracks = request.get();
+    final Paging<SavedTrack> libraryTracks = request.get();
 
     assertNotNull(libraryTracks);
 
     assertEquals("https://api.spotify.com/v1/me/tracks?offset=1&limit=1", libraryTracks.getHref());
 
-    LibraryTrack[] items = libraryTracks.getItems();
+    SavedTrack[] items = libraryTracks.getItems();
     assertEquals(1, items.length);
 
-    LibraryTrack firstItem = libraryTracks.getItems()[0];
+    SavedTrack firstItem = libraryTracks.getItems()[0];
     assertNotNull(firstItem.getAddedAt());
     assertNotNull(firstItem.getTrack());
     assertEquals("1bhUWB0zJMIKr9yVPrkEuI", firstItem.getTrack().getId());

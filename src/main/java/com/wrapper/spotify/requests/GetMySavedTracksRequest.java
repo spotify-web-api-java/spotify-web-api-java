@@ -2,8 +2,8 @@ package com.wrapper.spotify.requests;
 
 import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.exceptions.*;
-import com.wrapper.spotify.model_objects.LibraryTrack;
 import com.wrapper.spotify.objects.model_objects.Paging;
+import com.wrapper.spotify.objects.model_objects.SavedTrack;
 
 import java.io.IOException;
 
@@ -17,7 +17,7 @@ public class GetMySavedTracksRequest extends AbstractRequest {
     return new Builder();
   }
 
-  public Paging<LibraryTrack> get() throws
+  public Paging<SavedTrack> get() throws
           IOException,
           NoContentException,
           BadRequestException,
@@ -28,10 +28,10 @@ public class GetMySavedTracksRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return new LibraryTrack.JsonUtil().createModelObjectPaging(getJson());
+    return new SavedTrack.JsonUtil().createModelObjectPaging(getJson());
   }
 
-  public SettableFuture<Paging<LibraryTrack>> getAsync() throws
+  public SettableFuture<Paging<SavedTrack>> getAsync() throws
           IOException,
           NoContentException,
           BadRequestException,
@@ -42,7 +42,7 @@ public class GetMySavedTracksRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return getAsync(new LibraryTrack.JsonUtil().createModelObjectPaging(getJson()));
+    return getAsync(new SavedTrack.JsonUtil().createModelObjectPaging(getJson()));
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
