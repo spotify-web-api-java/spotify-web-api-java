@@ -270,29 +270,6 @@ public class ApiTest {
   }
 
   @Test
-  public void shouldCreateRefreshAccessTokenUrl() {
-    final String clientId = "myClientId";
-    final String clientSecret = "myClientSecret";
-    final String refreshToken = "myRefreshToken";
-
-    final Api api = Api
-            .builder()
-            .clientId(clientId)
-            .clientSecret(clientSecret)
-            .refreshToken(refreshToken)
-            .build();
-
-    final IRequest request = api.clientCredentialsGrant().build();
-
-    assertEquals("https://accounts.spotify.com:443/api/token", request.toString(false));
-    assertHasBodyParameter(request.toUrl(), "grant_type", "refresh_token");
-    assertHasBodyParameter(request.toUrl(), "refresh_token", refreshToken);
-
-    final String idSecret = clientId + ":" + clientSecret;
-    assertHasHeader(request.toUrl(), "Authorization", "Basic " + new String(Base64.encodeBase64(idSecret.getBytes())));
-  }
-
-  @Test
   public void shouldCreatePlaylistLookupUrl() {
     final String accessToken = "myVeryLongAccessToken";
     final Api api = Api.builder().accessToken(accessToken).build();
