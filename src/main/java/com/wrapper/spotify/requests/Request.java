@@ -19,25 +19,25 @@ public interface Request {
   interface Builder {
     AbstractRequest build();
 
-    Builder setHttpManager(HttpManager httpManager);
+    Builder setHttpManager(final HttpManager httpManager);
 
-    Builder setScheme(Url.Scheme scheme);
+    Builder setScheme(final Url.Scheme scheme);
 
-    Builder setHost(String host);
+    Builder setHost(final String host);
 
-    Builder setPort(int port);
+    Builder setPort(final Integer port);
 
-    Builder setPath(String path);
+    Builder setPath(final String path);
 
-    Builder setParameter(String name, String value);
+    Builder setParameter(final String name, final String value);
 
-    Builder setHeaderParameter(String name, String value);
+    Builder setHeaderParameter(final String name, final String value);
 
-    Builder setBodyParameter(String name, String value);
+    Builder setBodyParameter(final String name, final String value);
 
-    Builder setPart(Url.Part part);
+    Builder setPart(final Url.Part part);
 
-    Builder setBodyParameter(JsonElement jsonBody);
+    Builder setBodyParameter(final JsonElement jsonBody);
   }
 
 }
