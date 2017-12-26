@@ -10,7 +10,9 @@ import com.wrapper.spotify.exceptions.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public abstract class AbstractRequest implements Request {
 
@@ -22,6 +24,7 @@ public abstract class AbstractRequest implements Request {
     assert (builder.host != null);
     assert (builder.port > 0);
     assert (builder.path != null);
+    assert (builder.pathParameters != null);
     assert (builder.parameters != null);
     assert (builder.bodyParameters != null);
     assert (builder.headerParameters != null);
@@ -135,82 +138,96 @@ public abstract class AbstractRequest implements Request {
     private HttpManager httpManager;
     private Url.Scheme scheme = Api.DEFAULT_SCHEME;
     private String host = Api.DEFAULT_HOST;
-    private int port = Api.DEFAULT_PORT;
+    private Integer port = Api.DEFAULT_PORT;
     private String path = null;
+    private HashMap<String, String> pathParameters = new HashMap<>();
     private List<Url.Parameter> parameters = new ArrayList<>();
     private List<Url.Parameter> headerParameters = new ArrayList<>();
     private List<Url.Parameter> bodyParameters = new ArrayList<>();
     private List<Url.Part> parts = new ArrayList<>();
     private JsonElement jsonBody;
 
-    public BuilderType setHttpManager(HttpManager httpManager) {
+    public BuilderType setHttpManager(final HttpManager httpManager) {
       assert (httpManager != null);
       this.httpManager = httpManager;
       return (BuilderType) this;
     }
 
-    public BuilderType setScheme(Url.Scheme scheme) {
+    public BuilderType setScheme(final Url.Scheme scheme) {
       assert (scheme != null);
       this.scheme = scheme;
       return (BuilderType) this;
     }
 
-    public BuilderType setHost(String host) {
+    public BuilderType setHost(final String host) {
       assert (host != null);
       this.host = host;
       return (BuilderType) this;
     }
 
-    public BuilderType setPort(int port) {
+    public BuilderType setPort(final Integer port) {
       assert (port > -1);
       this.port = port;
       return (BuilderType) this;
     }
 
-    public BuilderType setPath(String path) {
+    public BuilderType setPath(final String path) {
       assert (path != null);
-      this.path = path;
+      String builtPath = path;
+
+      for (Map.Entry<String, String> entry : pathParameters.entrySet()) {
+        builtPath = builtPath.replaceAll("\\{" + entry.getKey() + "\\}", entry.getValue());
+      }
+
+      this.path = builtPath;
       return (BuilderType) this;
     }
 
-    public BuilderType setParameter(String name, String value) {
+    public BuilderType setPathParameter(final String key, final String value) {
+      assert (key != null);
+      assert (value != null);
+      this.pathParameters.put(key, value);
+      return (BuilderType) this;
+    }
+
+    public BuilderType setParameter(final String name, final String value) {
       addParameter(Url.Parameter.newBuilder(), this.parameters, name, value);
       return (BuilderType) this;
     }
 
-    public BuilderType setParameter(String name, Integer value) {
+    public BuilderType setParameter(final String name, final Integer value) {
       addParameter(Url.Parameter.newBuilder(), this.parameters, name, String.valueOf(value));
       return (BuilderType) this;
     }
 
-    public BuilderType setParameter(String name, Float value) {
+    public BuilderType setParameter(final String name, final Float value) {
       addParameter(Url.Parameter.newBuilder(), this.parameters, name, String.valueOf(value));
       return (BuilderType) this;
     }
 
-    public BuilderType setHeaderParameter(String name, String value) {
+    public BuilderType setHeaderParameter(final String name, final String value) {
       addParameter(Url.Parameter.newBuilder(), this.headerParameters, name, value);
       return (BuilderType) this;
     }
 
-    public BuilderType setBodyParameter(String name, String value) {
+    public BuilderType setBodyParameter(final String name, final String value) {
       addParameter(Url.Parameter.newBuilder(), this.bodyParameters, name, value);
       return (BuilderType) this;
     }
 
-    public BuilderType setPart(Url.Part part) {
-      assert (part != null);
-      this.parts.add(part);
-      return (BuilderType) this;
-    }
-
-    public BuilderType setBodyParameter(JsonElement jsonBody) {
+    public BuilderType setBodyParameter(final JsonElement jsonBody) {
       assert (jsonBody != null);
       this.jsonBody = jsonBody;
       return (BuilderType) this;
     }
 
-    private void addParameter(Url.Parameter.Builder builder, List<Url.Parameter> parameters, String name, String value) {
+    public BuilderType setPart(final Url.Part part) {
+      assert (part != null);
+      this.parts.add(part);
+      return (BuilderType) this;
+    }
+
+    private void addParameter(final Url.Parameter.Builder builder, final List<Url.Parameter> parameters, final String name, final String value) {
       assert (name != null);
       assert (name.length() > 0);
       assert (value != null);

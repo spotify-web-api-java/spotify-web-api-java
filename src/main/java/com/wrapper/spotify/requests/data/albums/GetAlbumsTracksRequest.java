@@ -59,7 +59,7 @@ public class GetAlbumsTracksRequest extends AbstractRequest {
      */
     public Builder id(final String id) {
       assert (id != null);
-      return setPath(String.format("/v1/albums/%s/tracks", id));
+      return setPathParameter("id", id);
     }
 
     /**
@@ -97,6 +97,7 @@ public class GetAlbumsTracksRequest extends AbstractRequest {
 
     @Override
     public GetAlbumsTracksRequest build() {
+      setPath("/v1/albums/{id}/tracks");
       return new GetAlbumsTracksRequest(this);
     }
   }

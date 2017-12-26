@@ -50,7 +50,7 @@ public class GetArtistsTopTracksRequest extends AbstractRequest {
 
     public Builder id(final String id) {
       assert (id != null);
-      return setPath(String.format("/v1/artists/%s/toptracks", id));
+      return setPathParameter("id", id);
     }
 
     public Builder country(final CountryCode country) {
@@ -60,6 +60,7 @@ public class GetArtistsTopTracksRequest extends AbstractRequest {
 
     @Override
     public GetArtistsTopTracksRequest build() {
+      setPath("/v1/artists/{id}/top-tracks");
       return new GetArtistsTopTracksRequest(this);
     }
   }

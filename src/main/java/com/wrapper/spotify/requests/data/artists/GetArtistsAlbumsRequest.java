@@ -53,7 +53,7 @@ public class GetArtistsAlbumsRequest extends AbstractRequest {
 
     public Builder id(final String id) {
       assert (id != null);
-      return setPath(String.format("/v1/artists/%s/albums", id));
+      return setPathParameter("id", id);
     }
 
     public Builder album_type(final AlbumType... album_type) {
@@ -79,6 +79,7 @@ public class GetArtistsAlbumsRequest extends AbstractRequest {
 
     @Override
     public GetArtistsAlbumsRequest build() {
+      setPath("/v1/artists/{id}/albums");
       return new GetArtistsAlbumsRequest(this);
     }
 

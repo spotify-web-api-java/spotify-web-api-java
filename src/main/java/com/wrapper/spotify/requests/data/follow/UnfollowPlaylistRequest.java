@@ -46,8 +46,19 @@ public class UnfollowPlaylistRequest extends AbstractRequest {
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
+    public Builder owner_id(final String owner_id) {
+      assert (owner_id != null);
+      return setPathParameter("owner_id", owner_id);
+    }
+
+    public Builder playlist_id(final String playlist_id) {
+      assert (playlist_id != null);
+      return setPathParameter("playlist_id", playlist_id);
+    }
+
     @Override
     public UnfollowPlaylistRequest build() {
+      setPath("/v1/users/{owner_id}/playlists/{playlist_id}/followers");
       return new UnfollowPlaylistRequest(this);
     }
   }

@@ -49,7 +49,7 @@ public class GetCategoryRequest extends AbstractRequest {
   public static final class Builder extends AbstractRequest.Builder<Builder> {
     public Builder category_id(final String category_id) {
       assert (category_id != null);
-      return setPath(String.format("/v1/browse/categories/%s", category_id));
+      return setPathParameter("category_id", category_id);
     }
 
     /**
@@ -79,6 +79,7 @@ public class GetCategoryRequest extends AbstractRequest {
 
     @Override
     public GetCategoryRequest build() {
+      setPath("/v1/browse/categories/{category_id}");
       return new GetCategoryRequest(this);
     }
   }

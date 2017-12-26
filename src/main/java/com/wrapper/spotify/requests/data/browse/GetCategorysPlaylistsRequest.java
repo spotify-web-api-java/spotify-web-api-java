@@ -50,7 +50,7 @@ public class GetCategorysPlaylistsRequest extends AbstractRequest {
   public static final class Builder extends AbstractRequest.Builder<Builder> {
     public Builder category_id(final String category_id) {
       assert (category_id != null);
-      return setPath(String.format("/v1/browse/categories/%s/playlists", category_id));
+      return setPathParameter("category_id", category_id);
     }
 
     /*
@@ -75,6 +75,7 @@ public class GetCategorysPlaylistsRequest extends AbstractRequest {
 
     @Override
     public GetCategorysPlaylistsRequest build() {
+      setPath("/v1/browse/categories/{category_id}/playlists");
       return new GetCategorysPlaylistsRequest(this);
     }
   }

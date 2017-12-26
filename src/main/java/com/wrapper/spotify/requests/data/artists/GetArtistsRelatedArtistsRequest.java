@@ -49,13 +49,13 @@ public class GetArtistsRelatedArtistsRequest extends AbstractRequest {
 
     public Builder id(final String id) {
       assert (id != null);
-      return setPath(String.format("/v1/artists/%s/related-artists", id));
+      return setPathParameter("id", id);
     }
 
     @Override
     public GetArtistsRelatedArtistsRequest build() {
+      setPath("/v1/artists/{id}/related-artists");
       return new GetArtistsRelatedArtistsRequest(this);
     }
-
   }
 }
