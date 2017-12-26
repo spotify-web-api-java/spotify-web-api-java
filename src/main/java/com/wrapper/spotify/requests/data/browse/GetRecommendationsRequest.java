@@ -4,6 +4,7 @@ import com.google.common.base.Joiner;
 import com.google.common.util.concurrent.SettableFuture;
 import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.exceptions.*;
+import com.wrapper.spotify.model_objects.Recommendations;
 import com.wrapper.spotify.model_objects.TrackSimplified;
 import com.wrapper.spotify.requests.AbstractRequest;
 
@@ -19,7 +20,7 @@ public class GetRecommendationsRequest extends AbstractRequest {
     return new Builder();
   }
 
-  public TrackSimplified[] get() throws
+  public Recommendations get() throws
           IOException,
           NoContentException,
           BadRequestException,
@@ -30,10 +31,10 @@ public class GetRecommendationsRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return new TrackSimplified.JsonUtil().createModelObjectArray(getJson(), "tracks");
+    return new Recommendations.JsonUtil().createModelObject(getJson());
   }
 
-  public SettableFuture<TrackSimplified[]> getAsync() throws
+  public SettableFuture<Recommendations> getAsync() throws
           IOException,
           NoContentException,
           BadRequestException,
@@ -44,7 +45,7 @@ public class GetRecommendationsRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return getAsync(new TrackSimplified.JsonUtil().createModelObjectArray(getJson(), "tracks"));
+    return getAsync(new Recommendations.JsonUtil().createModelObject(getJson()));
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {

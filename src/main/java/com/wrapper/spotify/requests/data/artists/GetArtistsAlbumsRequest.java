@@ -82,7 +82,5 @@ public class GetArtistsAlbumsRequest extends AbstractRequest {
       setPath("/v1/artists/{id}/albums");
       return new GetArtistsAlbumsRequest(this);
     }
-
   }
-
 }

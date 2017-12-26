@@ -5,6 +5,7 @@ import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.TestUtil;
+import com.wrapper.spotify.model_objects.Recommendations;
 import com.wrapper.spotify.model_objects.TrackSimplified;
 import org.junit.Test;
 
@@ -29,11 +30,12 @@ public class GetRecommendationsRequestTest {
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
-    final SettableFuture<TrackSimplified[]> tracksFuture = request.getAsync();
+    final SettableFuture<Recommendations> tracksFuture = request.getAsync();
 
-    Futures.addCallback(tracksFuture, new FutureCallback<TrackSimplified[]>() {
+    Futures.addCallback(tracksFuture, new FutureCallback<Recommendations>() {
       @Override
-      public void onSuccess(TrackSimplified[] tracks) {
+      public void onSuccess(Recommendations recommendations) {
+        final TrackSimplified[] tracks = recommendations.getTracks();
         assertEquals(10, tracks.length);
 
         TrackSimplified firstTrack = tracks[0];
@@ -62,7 +64,7 @@ public class GetRecommendationsRequestTest {
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("recommendations.json"))
             .build();
 
-    final TrackSimplified[] tracks = request.get();
+    final TrackSimplified[] tracks = request.get().getTracks();
 
     assertEquals(10, tracks.length);
 

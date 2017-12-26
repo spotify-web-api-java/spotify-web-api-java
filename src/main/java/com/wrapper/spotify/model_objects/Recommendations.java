@@ -3,7 +3,7 @@ package com.wrapper.spotify.model_objects;
 import com.google.gson.JsonObject;
 
 public class Recommendations extends AbstractModelObject {
-  private final RecommendationsSeed seeds;
+  private final RecommendationsSeed[] seeds;
   private final TrackSimplified[] tracks;
 
   private Recommendations(final Recommendations.Builder builder) {
@@ -13,7 +13,7 @@ public class Recommendations extends AbstractModelObject {
     this.tracks = builder.tracks;
   }
 
-  public RecommendationsSeed getSeeds() {
+  public RecommendationsSeed[] getSeeds() {
     return seeds;
   }
 
@@ -27,10 +27,10 @@ public class Recommendations extends AbstractModelObject {
   }
 
   public static final class Builder extends AbstractModelObject.Builder {
-    private RecommendationsSeed seeds;
+    private RecommendationsSeed[] seeds;
     private TrackSimplified[] tracks;
 
-    public Builder setSeeds(RecommendationsSeed seeds) {
+    public Builder setSeeds(RecommendationsSeed[] seeds) {
       this.seeds = seeds;
       return this;
     }
@@ -53,7 +53,7 @@ public class Recommendations extends AbstractModelObject {
       }
 
       return new Recommendations.Builder()
-              .setSeeds(new RecommendationsSeed.JsonUtil().createModelObject(jsonObject.getAsJsonObject("seeds")))
+              .setSeeds(new RecommendationsSeed.JsonUtil().createModelObjectArray(jsonObject.getAsJsonArray("seeds")))
               .setTracks(new TrackSimplified.JsonUtil().createModelObjectArray(jsonObject.getAsJsonArray("tracks")))
               .build();
     }

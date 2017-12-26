@@ -57,6 +57,5 @@ public class GetArtistRequest extends AbstractRequest {
       setPath("/v1/artists/{id}");
       return new GetArtistRequest(this);
     }
-
   }
 }
