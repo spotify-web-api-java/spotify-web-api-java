@@ -43,6 +43,10 @@ public abstract class AbstractModelObject implements IModelObject {
       return createModelObjectArray(new JsonParser().parse(json).getAsJsonArray());
     }
 
+    public T[] createModelObjectArray(String json, String key) {
+      return createModelObjectArray(new JsonParser().parse(json).getAsJsonObject().get(key).getAsJsonArray());
+    }
+
     public <X> X[] createModelObjectArray(JsonArray jsonArray, TypeToken<X> typeToken) {
       @SuppressWarnings("unchecked")
       X[] array = (X[]) Array.newInstance(typeToken.getRawType(), jsonArray.size());
