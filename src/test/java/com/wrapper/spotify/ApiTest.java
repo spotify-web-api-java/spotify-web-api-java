@@ -282,7 +282,7 @@ public class ApiTest {
   public void shouldCreateTopTracksUrl() {
     Api api = Api.DEFAULT_API;
     Request request = api.getTopTracksForArtist("0LcJLqbBmaGUft1e9Mm8HV", CountryCode.GB).build();
-    assertEquals("https://api.spotify.com:443/v1/artists/0LcJLqbBmaGUft1e9Mm8HV/toptracks", request.toString(false));
+    assertEquals("https://api.spotify.com:443/v1/artists/0LcJLqbBmaGUft1e9Mm8HV/top-tracks", request.toString(false));
     assertHasParameter(request.toUrl(), "country", "GB");
   }
 
