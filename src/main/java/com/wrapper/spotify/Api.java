@@ -687,8 +687,8 @@ public class Api {
     return builder;
   }
 
-  public GetCategoriesPlaylistsRequest.Builder getPlaylistsForCategory(String categoryId) {
-    GetCategoriesPlaylistsRequest.Builder builder = GetCategoriesPlaylistsRequest.builder();
+  public GetCategorysPlaylistsRequest.Builder getPlaylistsForCategory(String categoryId) {
+    GetCategorysPlaylistsRequest.Builder builder = GetCategorysPlaylistsRequest.builder();
     setDefaults(builder);
     builder.category(categoryId);
     return builder;
