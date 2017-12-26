@@ -1,6 +1,7 @@
 package com.wrapper.spotify.requests.data.albums;
 
 import com.google.common.util.concurrent.SettableFuture;
+import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.exceptions.*;
 import com.wrapper.spotify.model_objects.Album;
 import com.wrapper.spotify.requests.AbstractRequest;
@@ -66,9 +67,9 @@ public class GetAlbumRequest extends AbstractRequest {
      * @param market Optional. An ISO 3166-1 alpha-2 country code. Provide this parameter if you want to apply Track Relinking.
      * @return A GetAlbumRequest builder.
      */
-    public Builder market(final String market) {
+    public Builder market(final CountryCode market) {
       assert (market != null);
-      return setParameter("market", market);
+      return setParameter("market", market.toString());
     }
 
     @Override

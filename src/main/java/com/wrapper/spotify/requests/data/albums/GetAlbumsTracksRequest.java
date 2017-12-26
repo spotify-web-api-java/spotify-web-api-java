@@ -57,7 +57,7 @@ public class GetAlbumsTracksRequest extends AbstractRequest {
      * @param id The Spotify ID for the album.
      * @return A GetAlbumsTracksRequest builder.
      */
-    public Builder id(String id) {
+    public Builder id(final String id) {
       assert (id != null);
       return setPath(String.format("/v1/albums/%s/tracks", id));
     }
@@ -68,9 +68,9 @@ public class GetAlbumsTracksRequest extends AbstractRequest {
      * @param limit Optional. The maximum number of tracks to return. Default: 20. Minimum: 1. Maximum: 50.
      * @return A GetAlbumsTracksRequest builder.
      */
-    public Builder limit(int limit) {
+    public Builder limit(final Integer limit) {
       assert (limit > 0);
-      return setParameter("limit", String.valueOf(limit));
+      return setParameter("limit", limit);
     }
 
     /**
@@ -79,9 +79,9 @@ public class GetAlbumsTracksRequest extends AbstractRequest {
      * @param offset Optional. The index of the first track to return. Default: 0 (the first object). Use with limit to get the next set of tracks.
      * @return A GetAlbumsTracksRequest builder.
      */
-    public Builder offset(int offset) {
+    public Builder offset(final Integer offset) {
       assert (offset >= 0);
-      return setParameter("offset", String.valueOf(offset));
+      return setParameter("offset", offset);
     }
 
     /**
@@ -90,7 +90,7 @@ public class GetAlbumsTracksRequest extends AbstractRequest {
      * @param market Optional. An ISO 3166-1 alpha-2 country code. Provide this parameter if you want to apply Track Relinking.
      * @return A GetAlbumsTracksRequest builder.
      */
-    public Builder market(CountryCode market) {
+    public Builder market(final CountryCode market) {
       assert (market != null);
       return setParameter("market", market.toString());
     }
