@@ -5,7 +5,6 @@ import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.TestUtil;
-import com.wrapper.spotify.requests.data.follow.PlaylistUnfollowRequest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -24,7 +23,7 @@ public class UnfollowPlaylistRequestTest {
   public void shouldCreatePlaylist_async() throws Exception {
     final Api api = Api.builder().accessToken("someAccessToken").build();
 
-    final PlaylistUnfollowRequest request = api.unfollowPlaylist(
+    final UnfollowPlaylistRequest request = api.unfollowPlaylist(
             "userId", "5oEljuMoe9MXH6tBIPbd5e"
     ).setHttpManager(TestUtil.MockedHttpManager.returningString("")).build();
 
@@ -53,7 +52,7 @@ public class UnfollowPlaylistRequestTest {
   public void shouldCreatePlaylist_sync() throws Exception {
     final Api api = Api.builder().accessToken("someAccessToken").build();
 
-    final PlaylistUnfollowRequest request = api.unfollowPlaylist(
+    final UnfollowPlaylistRequest request = api.unfollowPlaylist(
             "userId", "5oEljuMoe9MXH6tBIPbd5e"
     ).setHttpManager(TestUtil.MockedHttpManager.returningString("")).build();
     final String response = request.get();

@@ -6,7 +6,6 @@ import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.model_objects.Playlist;
-import com.wrapper.spotify.requests.data.playlists.PlaylistRequest;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -24,7 +23,7 @@ public class PlaylistRequestTest {
   public void shouldCreatePlaylistPage_async() throws Exception {
     final Api api = Api.DEFAULT_API;
 
-    final PlaylistRequest request = api.getPlaylist("thelinmichael", "3ktAYNcRHpazJ9qecm3ptn")
+    final GetPlaylistRequest request = api.getPlaylist("thelinmichael", "3ktAYNcRHpazJ9qecm3ptn")
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("playlist-response.json"))
             .build();
 
@@ -53,7 +52,7 @@ public class PlaylistRequestTest {
   public void shouldCreatePlaylistPage() throws Exception {
     final Api api = Api.DEFAULT_API;
 
-    final PlaylistRequest request = api.getPlaylist("thelinmichael", "3ktAYNcRHpazJ9qecm3ptn")
+    final GetPlaylistRequest request = api.getPlaylist("thelinmichael", "3ktAYNcRHpazJ9qecm3ptn")
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("playlist-response.json"))
             .build();
 
@@ -66,7 +65,7 @@ public class PlaylistRequestTest {
   public void shouldBeAbleToHandlePlaylistsWithLocalFiles() throws Exception {
     final Api api = Api.DEFAULT_API;
 
-    final PlaylistRequest request = api.getPlaylist("thelinmichael", "3ktAYNcRHpazJ9qecm3ptn")
+    final GetPlaylistRequest request = api.getPlaylist("thelinmichael", "3ktAYNcRHpazJ9qecm3ptn")
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("playlist-localfiles-response.json"))
             .build();
 

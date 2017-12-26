@@ -9,9 +9,9 @@ import com.wrapper.spotify.requests.AbstractRequest;
 
 import java.io.IOException;
 
-public class CategoriesRequest extends AbstractRequest {
+public class GetListOfCategoriesRequest extends AbstractRequest {
 
-  private CategoriesRequest(final Builder builder) {
+  private GetListOfCategoriesRequest(final Builder builder) {
     super(builder);
   }
 
@@ -58,7 +58,7 @@ public class CategoriesRequest extends AbstractRequest {
     /*
      * Optional. A country: an ISO 3166-1 alpha-2 country code. Provide this parameter if you want to narrow the list of returned categories to those relevant to a particular country. If omitted, the returned items will be globally relevant.
      */
-    public CategoriesRequest.Builder country(String country) {
+    public GetListOfCategoriesRequest.Builder country(String country) {
       assert (country != null);
       return setParameter("country", country);
     }
@@ -75,7 +75,7 @@ public class CategoriesRequest extends AbstractRequest {
      * For example country=SE&locale=de_DE will return a list of categories relevant to Sweden but as German
      * language strings.
      */
-    public CategoriesRequest.Builder locale(String locale) {
+    public GetListOfCategoriesRequest.Builder locale(String locale) {
       assert (locale != null);
       return setParameter("locale", locale);
     }
@@ -86,7 +86,7 @@ public class CategoriesRequest extends AbstractRequest {
      * @param limit Default: 20. Minimum: 1. Maximum: 50
      * @return
      */
-    public CategoriesRequest.Builder limit(int limit) {
+    public GetListOfCategoriesRequest.Builder limit(int limit) {
       assert (limit > 0 && limit <= 50);
       return setParameter("limit", String.valueOf(limit));
     }
@@ -95,15 +95,15 @@ public class CategoriesRequest extends AbstractRequest {
      * Optional. The index of the first item to return.
      * Default: 0 (the first object). Use with limit to get the next set of categories.
      */
-    public CategoriesRequest.Builder offset(int offset) {
+    public GetListOfCategoriesRequest.Builder offset(int offset) {
       assert (offset >= 0);
       return setParameter("offset", String.valueOf(offset));
     }
 
     @Override
-    public CategoriesRequest build() {
+    public GetListOfCategoriesRequest build() {
       setPath("/v1/browse/categories");
-      return new CategoriesRequest(this);
+      return new GetListOfCategoriesRequest(this);
     }
   }
 }

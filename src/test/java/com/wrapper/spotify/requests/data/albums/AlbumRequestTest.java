@@ -6,7 +6,6 @@ import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.model_objects.Album;
-import com.wrapper.spotify.requests.data.albums.AlbumRequest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -23,7 +22,7 @@ public class AlbumRequestTest {
   public void shouldGetAlbumResult_async() throws Exception {
     final Api api = Api.DEFAULT_API;
 
-    final AlbumRequest request = api.getAlbum("4pox3k0CGuwwAknR9GtcoX")
+    final GetAlbumRequest request = api.getAlbum("4pox3k0CGuwwAknR9GtcoX")
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("album.json"))
             .build();
 
@@ -56,7 +55,7 @@ public class AlbumRequestTest {
   public void shouldGetAlbumResult_sync() throws Exception {
     final Api api = Api.DEFAULT_API;
 
-    final AlbumRequest request = api.getAlbum("4pox3k0CGuwwAknR9GtcoX")
+    final GetAlbumRequest request = api.getAlbum("4pox3k0CGuwwAknR9GtcoX")
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("album.json"))
             .build();
 

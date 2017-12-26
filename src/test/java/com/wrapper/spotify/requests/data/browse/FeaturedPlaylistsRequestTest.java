@@ -8,7 +8,6 @@ import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.model_objects.FeaturedPlaylists;
 import com.wrapper.spotify.model_objects.Paging;
 import com.wrapper.spotify.model_objects.PlaylistSimplified;
-import com.wrapper.spotify.requests.data.browse.FeaturedPlaylistsRequest;
 import org.junit.Test;
 
 import java.util.Calendar;
@@ -28,7 +27,7 @@ public class FeaturedPlaylistsRequestTest {
     calendar.set(2014, Calendar.OCTOBER, 23, 9, 0, 0);
     Date timestamp = calendar.getTime();
 
-    final FeaturedPlaylistsRequest request = api.getFeaturedPlaylists()
+    final GetListOfFeaturedPlaylistsRequest request = api.getFeaturedPlaylists()
             .limit(1)
             .offset(1)
             .country("SE")
@@ -80,7 +79,7 @@ public class FeaturedPlaylistsRequestTest {
     calendar.set(2014, Calendar.OCTOBER, 23, 9, 0, 0);
     Date timestamp = calendar.getTime();
 
-    final FeaturedPlaylistsRequest request = api.getFeaturedPlaylists()
+    final GetListOfFeaturedPlaylistsRequest request = api.getFeaturedPlaylists()
             .limit(1)
             .offset(1)
             .country("SE")

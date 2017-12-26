@@ -5,7 +5,6 @@ import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.TestUtil;
-import com.wrapper.spotify.requests.data.playlists.ReplacePlaylistTracksRequest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -24,7 +23,7 @@ public class ReplacePlaylistTracksRequestTest {
   public void shouldCreatePlaylist_async() throws Exception {
     final Api api = Api.builder().accessToken("someAccessToken").build();
 
-    final ReplacePlaylistTracksRequest request = api.replacePlaylistsTracks(
+    final ReplacePlaylistsTracksRequest request = api.replacePlaylistsTracks(
             "userId", "5oEljuMoe9MXH6tBIPbd5e", new String[]{}
     ).setHttpManager(TestUtil.MockedHttpManager.returningString("")).build();
 
@@ -53,7 +52,7 @@ public class ReplacePlaylistTracksRequestTest {
   public void shouldCreatePlaylist_sync() throws Exception {
     final Api api = Api.builder().accessToken("someAccessToken").build();
 
-    final ReplacePlaylistTracksRequest request = api.replacePlaylistsTracks(
+    final ReplacePlaylistsTracksRequest request = api.replacePlaylistsTracks(
             "userId", "5oEljuMoe9MXH6tBIPbd5e", new String[]{}
     ).setHttpManager(TestUtil.MockedHttpManager.returningString("")).build();
     final String response = request.get();

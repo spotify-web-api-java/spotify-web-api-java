@@ -8,7 +8,6 @@ import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.model_objects.AlbumSimplified;
 import com.wrapper.spotify.model_objects.AlbumType;
 import com.wrapper.spotify.model_objects.Paging;
-import com.wrapper.spotify.requests.data.artists.AlbumsForArtistRequest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -25,7 +24,7 @@ public class AlbumsForArtistsRequestTest {
   public void shouldGetAlbumResultForArtistId_async() throws Exception {
     final Api api = Api.DEFAULT_API;
 
-    final AlbumsForArtistRequest request = api.getAlbumsForArtist("1vCWHaC5f2uS3yhpwWbIA6")
+    final GetArtistsAlbumsRequest request = api.getAlbumsForArtist("1vCWHaC5f2uS3yhpwWbIA6")
             .limit(2)
             .types(AlbumType.SINGLE)
             .market("US")
@@ -71,7 +70,7 @@ public class AlbumsForArtistsRequestTest {
   public void shouldGetAlbumResultForArtistId_sync() throws Exception {
     final Api api = Api.DEFAULT_API;
 
-    final AlbumsForArtistRequest request = api.getAlbumsForArtist("1vCWHaC5f2uS3yhpwWbIA6")
+    final GetArtistsAlbumsRequest request = api.getAlbumsForArtist("1vCWHaC5f2uS3yhpwWbIA6")
             .limit(2)
             .types(AlbumType.SINGLE)
             .market("US")

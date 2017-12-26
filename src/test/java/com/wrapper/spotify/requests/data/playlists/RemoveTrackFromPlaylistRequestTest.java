@@ -8,7 +8,6 @@ import com.wrapper.spotify.Api;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.model_objects.PlaylistTrackPosition;
 import com.wrapper.spotify.model_objects.SnapshotResult;
-import com.wrapper.spotify.requests.data.playlists.RemoveTrackFromPlaylistRequest;
 import org.junit.Test;
 
 import java.util.concurrent.CountDownLatch;
@@ -31,7 +30,7 @@ public class RemoveTrackFromPlaylistRequestTest {
     PlaylistTrackPosition playlistTrackPosition2 = new PlaylistTrackPosition("spotify:track:0BG2iE6McPhmAEKIhfqy1X", new int[]{5});
     final PlaylistTrackPosition[] tracksToRemove = {playlistTrackPosition1, playlistTrackPosition2};
 
-    final RemoveTrackFromPlaylistRequest request = api.removeTrackFromPlaylist(myUsername, myPlaylistId, tracksToRemove)
+    final RemoveTracksFromPlaylistRequest request = api.removeTrackFromPlaylist(myUsername, myPlaylistId, tracksToRemove)
             .snapshotId(snapshotId)
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("remove-tracks.json"))
             .build();
@@ -69,7 +68,7 @@ public class RemoveTrackFromPlaylistRequestTest {
     PlaylistTrackPosition playlistTrackPosition2 = new PlaylistTrackPosition("spotify:track:0BG2iE6McPhmAEKIhfqy1X", new int[]{5});
     final PlaylistTrackPosition[] tracksToRemove = {playlistTrackPosition1, playlistTrackPosition2};
 
-    final RemoveTrackFromPlaylistRequest request = api.removeTrackFromPlaylist(myUsername, myPlaylistId, tracksToRemove)
+    final RemoveTracksFromPlaylistRequest request = api.removeTrackFromPlaylist(myUsername, myPlaylistId, tracksToRemove)
             .snapshotId(snapshotId)
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("remove-tracks.json"))
             .build();

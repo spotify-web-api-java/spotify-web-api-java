@@ -6,7 +6,6 @@ import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.model_objects.Track;
-import com.wrapper.spotify.requests.data.tracks.TrackRequest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -24,7 +23,7 @@ public class TrackRequestTest {
   public void shouldGetTrackResult_async() throws Exception {
     final Api api = Api.DEFAULT_API;
 
-    final TrackRequest request = api.getTrack("0eGsygTp906u18L0Oimnem")
+    final GetTrackRequest request = api.getTrack("0eGsygTp906u18L0Oimnem")
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("track.json"))
             .build();
 
@@ -54,7 +53,7 @@ public class TrackRequestTest {
   public void shouldGetTrackResult_sync() throws Exception {
     final Api api = Api.DEFAULT_API;
 
-    final TrackRequest request = api.getTrack("0eGsygTp906u18L0Oimnem")
+    final GetTrackRequest request = api.getTrack("0eGsygTp906u18L0Oimnem")
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("track.json"))
             .build();
 

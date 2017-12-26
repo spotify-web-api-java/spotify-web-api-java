@@ -10,9 +10,9 @@ import com.wrapper.spotify.requests.AbstractRequest;
 import java.io.IOException;
 import java.util.List;
 
-public class ArtistsRequest extends AbstractRequest {
+public class GetSeveralArtistsRequest extends AbstractRequest {
 
-  private ArtistsRequest(final Builder builder) {
+  private GetSeveralArtistsRequest(final Builder builder) {
     super(builder);
   }
 
@@ -58,8 +58,8 @@ public class ArtistsRequest extends AbstractRequest {
     }
 
     @Override
-    public ArtistsRequest build() {
-      return new ArtistsRequest(this);
+    public GetSeveralArtistsRequest build() {
+      return new GetSeveralArtistsRequest(this);
     }
 
   }

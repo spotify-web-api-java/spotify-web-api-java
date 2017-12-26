@@ -7,9 +7,9 @@ import com.wrapper.spotify.requests.AbstractRequest;
 
 import java.io.IOException;
 
-public class CurrentUserRequest extends AbstractRequest {
+public class GetCurrentUsersProfileRequest extends AbstractRequest {
 
-  private CurrentUserRequest(final Builder builder) {
+  private GetCurrentUsersProfileRequest(final Builder builder) {
     super(builder);
   }
 
@@ -52,9 +52,9 @@ public class CurrentUserRequest extends AbstractRequest {
     }
 
     @Override
-    public CurrentUserRequest build() {
+    public GetCurrentUsersProfileRequest build() {
       setPath("/v1/me");
-      return new CurrentUserRequest(this);
+      return new GetCurrentUsersProfileRequest(this);
     }
   }
 

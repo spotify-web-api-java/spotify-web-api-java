@@ -7,9 +7,9 @@ import com.wrapper.spotify.requests.AbstractRequest;
 
 import java.io.IOException;
 
-public class AudioFeatureRequest extends AbstractRequest {
+public class GetAudioFeaturesForTrackRequest extends AbstractRequest {
 
-  private AudioFeatureRequest(final Builder builder) {
+  private GetAudioFeaturesForTrackRequest(final Builder builder) {
     super(builder);
   }
 
@@ -59,8 +59,8 @@ public class AudioFeatureRequest extends AbstractRequest {
     }
 
     @Override
-    public AudioFeatureRequest build() {
-      return new AudioFeatureRequest(this);
+    public GetAudioFeaturesForTrackRequest build() {
+      return new GetAudioFeaturesForTrackRequest(this);
     }
 
   }

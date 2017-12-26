@@ -6,7 +6,6 @@ import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.model_objects.*;
-import com.wrapper.spotify.requests.data.albums.AlbumsRequest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -23,7 +22,7 @@ public class AlbumsRequestTest {
   public void shouldGetAlbumResultForIds_async() throws Exception {
     final Api api = Api.DEFAULT_API;
 
-    final AlbumsRequest request = api.getAlbums("2hYe61Nd2oOoM6RYCwIma1")
+    final GetSeveralAlbumsRequest request = api.getAlbums("2hYe61Nd2oOoM6RYCwIma1")
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("albums.json"))
             .build();
 
@@ -71,7 +70,7 @@ public class AlbumsRequestTest {
   public void shouldGetAlbumResultForIds_sync() throws Exception {
     final Api api = Api.DEFAULT_API;
 
-    final AlbumsRequest request = api.getAlbums("2hYe61Nd2oOoM6RYCwIma1")
+    final GetSeveralAlbumsRequest request = api.getAlbums("2hYe61Nd2oOoM6RYCwIma1")
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("albums.json"))
             .build();
 
@@ -102,7 +101,7 @@ public class AlbumsRequestTest {
   public void shouldFailForNotFound_async() throws Exception {
     final Api api = Api.DEFAULT_API;
 
-    final AlbumsRequest request = api.getAlbums("idontexist")
+    final GetSeveralAlbumsRequest request = api.getAlbums("idontexist")
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("albums-none-found.json"))
             .build();
 

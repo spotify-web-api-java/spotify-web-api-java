@@ -8,9 +8,9 @@ import com.wrapper.spotify.requests.AbstractRequest;
 
 import java.io.IOException;
 
-public class PlaylistCreationRequest extends AbstractRequest {
+public class CreatePlaylistRequest extends AbstractRequest {
 
-  private PlaylistCreationRequest(final Builder builder) {
+  private CreatePlaylistRequest(final Builder builder) {
     super(builder);
   }
 
@@ -67,9 +67,9 @@ public class PlaylistCreationRequest extends AbstractRequest {
     }
 
     @Override
-    public PlaylistCreationRequest build() {
+    public CreatePlaylistRequest build() {
       setHeaderParameter("Content-Type", "application/json");
-      return new PlaylistCreationRequest(this);
+      return new CreatePlaylistRequest(this);
     }
 
   }

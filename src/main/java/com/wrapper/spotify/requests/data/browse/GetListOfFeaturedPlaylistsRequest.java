@@ -10,9 +10,9 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class FeaturedPlaylistsRequest extends AbstractRequest {
+public class GetListOfFeaturedPlaylistsRequest extends AbstractRequest {
 
-  private FeaturedPlaylistsRequest(final Builder builder) {
+  private GetListOfFeaturedPlaylistsRequest(final Builder builder) {
     super(builder);
   }
 
@@ -111,9 +111,9 @@ public class FeaturedPlaylistsRequest extends AbstractRequest {
     }
 
     @Override
-    public FeaturedPlaylistsRequest build() {
+    public GetListOfFeaturedPlaylistsRequest build() {
       setPath("/v1/browse/featured-playlists");
-      return new FeaturedPlaylistsRequest(this);
+      return new GetListOfFeaturedPlaylistsRequest(this);
     }
 
   }

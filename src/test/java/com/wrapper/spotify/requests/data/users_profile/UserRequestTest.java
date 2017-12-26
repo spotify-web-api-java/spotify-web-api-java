@@ -6,7 +6,6 @@ import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.model_objects.User;
-import com.wrapper.spotify.requests.data.users_profile.UserRequest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -23,7 +22,7 @@ public class UserRequestTest {
   public void shouldCreateUser_async() throws Exception {
     final Api api = Api.DEFAULT_API;
 
-    final UserRequest request = api.getUser("wizzler")
+    final GetUsersProfileRequest request = api.getUser("wizzler")
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("user.json"))
             .build();
 
@@ -57,7 +56,7 @@ public class UserRequestTest {
   public void shouldCreateUser_sync() throws Exception {
     final Api api = Api.DEFAULT_API;
 
-    final UserRequest request = api.getUser("wizzler")
+    final GetUsersProfileRequest request = api.getUser("wizzler")
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("user.json"))
             .build();
 

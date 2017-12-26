@@ -5,7 +5,6 @@ import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.TestUtil;
-import com.wrapper.spotify.requests.data.library.RemoveFromMySavedTracksRequest;
 import org.junit.Test;
 
 import java.util.concurrent.CountDownLatch;
@@ -26,7 +25,7 @@ public class RemoveFromMySavedTracksRequestTest {
 
     final String[] tracksToAdd = new String[]{"5xFF6wNcoRwx7N3cDTgVWP", "13zm8XhfM4RBtQpjdqY44e"};
 
-    final RemoveFromMySavedTracksRequest request = api.removeFromMySavedTracks(tracksToAdd).build();
+    final RemoveUsersSavedTracksRequest request = api.removeFromMySavedTracks(tracksToAdd).build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
@@ -61,7 +60,7 @@ public class RemoveFromMySavedTracksRequestTest {
 
     final String[] tracksToAdd = new String[]{"5xFF6wNcoRwx7N3cDTgVWP", "13zm8XhfM4RBtQpjdqY44e"};
 
-    final RemoveFromMySavedTracksRequest request = api.removeFromMySavedTracks(tracksToAdd).build();
+    final RemoveUsersSavedTracksRequest request = api.removeFromMySavedTracks(tracksToAdd).build();
 
     String response = request.get();
     assertEquals("", response);

@@ -7,7 +7,6 @@ import com.wrapper.spotify.Api;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.model_objects.ModelObjectType;
 import com.wrapper.spotify.model_objects.Playlist;
-import com.wrapper.spotify.requests.data.playlists.PlaylistCreationRequest;
 import org.junit.Test;
 
 import java.util.concurrent.CountDownLatch;
@@ -21,7 +20,7 @@ public class PlaylistCreationRequestTest {
   public void shouldCreatePlaylist_async() throws Exception {
     final Api api = Api.builder().accessToken("someAccessToken").build();
 
-    final PlaylistCreationRequest request = api.createPlaylist("thelinmichael", "Coolest playlist")
+    final CreatePlaylistRequest request = api.createPlaylist("thelinmichael", "Coolest playlist")
             .publicAccess(true)
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("created-playlist.json"))
             .build();
@@ -64,7 +63,7 @@ public class PlaylistCreationRequestTest {
   public void shouldCreatePlaylist_sync() throws Exception {
     final Api api = Api.builder().accessToken("someAccessToken").build();
 
-    final PlaylistCreationRequest request = api.createPlaylist("thelinmichael", "title")
+    final CreatePlaylistRequest request = api.createPlaylist("thelinmichael", "title")
             .publicAccess(true)
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("created-playlist.json"))
             .build();

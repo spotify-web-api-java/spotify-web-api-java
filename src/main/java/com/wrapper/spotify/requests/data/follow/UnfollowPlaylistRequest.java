@@ -6,9 +6,9 @@ import com.wrapper.spotify.requests.AbstractRequest;
 
 import java.io.IOException;
 
-public class PlaylistUnfollowRequest extends AbstractRequest {
+public class UnfollowPlaylistRequest extends AbstractRequest {
 
-  private PlaylistUnfollowRequest(final Builder builder) {
+  private UnfollowPlaylistRequest(final Builder builder) {
     super(builder);
   }
 
@@ -47,8 +47,8 @@ public class PlaylistUnfollowRequest extends AbstractRequest {
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
     @Override
-    public PlaylistUnfollowRequest build() {
-      return new PlaylistUnfollowRequest(this);
+    public UnfollowPlaylistRequest build() {
+      return new UnfollowPlaylistRequest(this);
     }
 
   }

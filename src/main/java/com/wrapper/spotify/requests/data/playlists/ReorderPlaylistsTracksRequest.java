@@ -8,9 +8,9 @@ import com.wrapper.spotify.requests.AbstractRequest;
 
 import java.io.IOException;
 
-public class ReorderTracksInPlaylistRequest extends AbstractRequest {
+public class ReorderPlaylistsTracksRequest extends AbstractRequest {
 
-  private ReorderTracksInPlaylistRequest(final Builder builder) {
+  private ReorderPlaylistsTracksRequest(final Builder builder) {
     super(builder);
   }
 
@@ -85,9 +85,9 @@ public class ReorderTracksInPlaylistRequest extends AbstractRequest {
     }
 
     @Override
-    public ReorderTracksInPlaylistRequest build() {
+    public ReorderPlaylistsTracksRequest build() {
       setHeaderParameter("Content-Type", "application/json");
-      return new ReorderTracksInPlaylistRequest(this);
+      return new ReorderPlaylistsTracksRequest(this);
     }
 
   }

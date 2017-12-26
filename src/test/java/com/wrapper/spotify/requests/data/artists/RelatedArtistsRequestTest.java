@@ -6,7 +6,6 @@ import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.model_objects.Artist;
-import com.wrapper.spotify.requests.data.artists.RelatedArtistsRequest;
 import org.junit.Test;
 
 import java.util.concurrent.CountDownLatch;
@@ -20,7 +19,7 @@ public class RelatedArtistsRequestTest {
   public void shouldGetRelatedArtists_async() throws Exception {
     final Api api = Api.DEFAULT_API;
 
-    final RelatedArtistsRequest request = api
+    final GetArtistsRelatedArtistsRequest request = api
             .getArtistRelatedArtists("0qeei9KQnptjwb8MgkqEoy")
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("related-artists.json"))
             .build();
@@ -55,7 +54,7 @@ public class RelatedArtistsRequestTest {
   public void shouldGetRelatedArtists_sync() throws Exception {
     final Api api = Api.DEFAULT_API;
 
-    final RelatedArtistsRequest request = api
+    final GetArtistsRelatedArtistsRequest request = api
             .getArtistRelatedArtists("0qeei9KQnptjwb8MgkqEoy")
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("related-artists.json"))
             .build();

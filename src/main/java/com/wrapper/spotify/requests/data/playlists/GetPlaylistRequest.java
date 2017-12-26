@@ -7,9 +7,9 @@ import com.wrapper.spotify.requests.AbstractRequest;
 
 import java.io.IOException;
 
-public class PlaylistRequest extends AbstractRequest {
+public class GetPlaylistRequest extends AbstractRequest {
 
-  private PlaylistRequest(final Builder builder) {
+  private GetPlaylistRequest(final Builder builder) {
     super(builder);
   }
 
@@ -53,8 +53,8 @@ public class PlaylistRequest extends AbstractRequest {
     }
 
     @Override
-    public PlaylistRequest build() {
-      return new PlaylistRequest(this);
+    public GetPlaylistRequest build() {
+      return new GetPlaylistRequest(this);
     }
 
   }

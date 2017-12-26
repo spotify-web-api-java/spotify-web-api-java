@@ -8,9 +8,9 @@ import com.wrapper.spotify.requests.AbstractRequest;
 
 import java.io.IOException;
 
-public class TopTracksRequest extends AbstractRequest {
+public class GetArtistsTopTracksRequest extends AbstractRequest {
 
-  private TopTracksRequest(final Builder builder) {
+  private GetArtistsTopTracksRequest(final Builder builder) {
     super(builder);
   }
 
@@ -59,8 +59,8 @@ public class TopTracksRequest extends AbstractRequest {
     }
 
     @Override
-    public TopTracksRequest build() {
-      return new TopTracksRequest(this);
+    public GetArtistsTopTracksRequest build() {
+      return new GetArtistsTopTracksRequest(this);
     }
 
   }

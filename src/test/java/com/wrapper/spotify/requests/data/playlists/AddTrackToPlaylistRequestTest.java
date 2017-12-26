@@ -6,7 +6,6 @@ import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.model_objects.SnapshotResult;
-import com.wrapper.spotify.requests.data.playlists.AddTrackToPlaylistRequest;
 import org.junit.Test;
 
 import java.util.concurrent.CountDownLatch;
@@ -28,7 +27,7 @@ public class AddTrackToPlaylistRequestTest {
     final String[] tracksToAdd = new String[]{"spotify:track:4BYGxv4rxSNcTgT3DsFB9o", "spotify:track:0BG2iE6McPhmAEKIhfqy1X"};
     final int insertIndex = 3;
 
-    final AddTrackToPlaylistRequest request = api.addTracksToPlaylist(myUsername, myPlaylistId, tracksToAdd)
+    final AddTracksToPlaylistRequest request = api.addTracksToPlaylist(myUsername, myPlaylistId, tracksToAdd)
             .position(insertIndex)
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("add-tracks.json"))
             .build();

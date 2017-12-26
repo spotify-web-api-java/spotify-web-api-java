@@ -6,9 +6,9 @@ import com.wrapper.spotify.requests.AbstractRequest;
 
 import java.io.IOException;
 
-public class AvailableGenreSeedsRequest extends AbstractRequest {
+public class GetAvailableGenreSeedsRequest extends AbstractRequest {
 
-  private AvailableGenreSeedsRequest(final Builder builder) {
+  private GetAvailableGenreSeedsRequest(final Builder builder) {
     super(builder);
   }
 
@@ -53,9 +53,9 @@ public class AvailableGenreSeedsRequest extends AbstractRequest {
     }
 
     @Override
-    public AvailableGenreSeedsRequest build() {
+    public GetAvailableGenreSeedsRequest build() {
       setPath("/v1/recommendations/available-genre-seeds");
-      return new AvailableGenreSeedsRequest(this);
+      return new GetAvailableGenreSeedsRequest(this);
     }
   }
 }

@@ -7,9 +7,9 @@ import com.wrapper.spotify.requests.AbstractRequest;
 
 import java.io.IOException;
 
-public class CategoryRequest extends AbstractRequest {
+public class GetCategoryRequest extends AbstractRequest {
 
-  private CategoryRequest(final Builder builder) {
+  private GetCategoryRequest(final Builder builder) {
     super(builder);
   }
 
@@ -84,8 +84,8 @@ public class CategoryRequest extends AbstractRequest {
     }
 
     @Override
-    public CategoryRequest build() {
-      return new CategoryRequest(this);
+    public GetCategoryRequest build() {
+      return new GetCategoryRequest(this);
     }
   }
 }

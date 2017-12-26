@@ -11,29 +11,29 @@ import com.wrapper.spotify.requests.authentication.AuthorizationCodeGrantRequest
 import com.wrapper.spotify.requests.authentication.AuthorizationURLRequest;
 import com.wrapper.spotify.requests.authentication.ClientCredentialsGrantRequest;
 import com.wrapper.spotify.requests.authentication.RefreshAccessTokenRequest;
-import com.wrapper.spotify.requests.data.albums.AlbumRequest;
-import com.wrapper.spotify.requests.data.albums.AlbumsRequest;
-import com.wrapper.spotify.requests.data.albums.TracksForAlbumRequest;
+import com.wrapper.spotify.requests.data.albums.GetAlbumRequest;
+import com.wrapper.spotify.requests.data.albums.GetSeveralAlbumsRequest;
+import com.wrapper.spotify.requests.data.albums.GetAlbumsTracksRequest;
 import com.wrapper.spotify.requests.data.artists.*;
 import com.wrapper.spotify.requests.data.browse.*;
-import com.wrapper.spotify.requests.data.browse.miscellaneous.AvailableGenreSeedsRequest;
-import com.wrapper.spotify.requests.data.follow.PlaylistUnfollowRequest;
-import com.wrapper.spotify.requests.data.library.AddToMySavedTracksRequest;
-import com.wrapper.spotify.requests.data.library.ContainsMySavedTracksRequest;
-import com.wrapper.spotify.requests.data.library.GetMySavedTracksRequest;
-import com.wrapper.spotify.requests.data.library.RemoveFromMySavedTracksRequest;
-import com.wrapper.spotify.requests.data.player.CurrentlyPlayingTrackRequest;
-import com.wrapper.spotify.requests.data.player.RecentlyPlayedTracksRequest;
+import com.wrapper.spotify.requests.data.browse.miscellaneous.GetAvailableGenreSeedsRequest;
+import com.wrapper.spotify.requests.data.follow.UnfollowPlaylistRequest;
+import com.wrapper.spotify.requests.data.library.SaveTracksForUserRequest;
+import com.wrapper.spotify.requests.data.library.CheckUsersSavedTracksRequest;
+import com.wrapper.spotify.requests.data.library.GetUsersSavedTracksRequest;
+import com.wrapper.spotify.requests.data.library.RemoveUsersSavedTracksRequest;
+import com.wrapper.spotify.requests.data.player.GetUsersCurrentlyPlayingTrackRequest;
+import com.wrapper.spotify.requests.data.player.GetUsersRecentlyPlayedTracksRequest;
 import com.wrapper.spotify.requests.data.playlists.*;
 import com.wrapper.spotify.requests.data.search.AlbumSearchRequest;
 import com.wrapper.spotify.requests.data.search.ArtistSearchRequest;
 import com.wrapper.spotify.requests.data.search.PlaylistSearchRequest;
 import com.wrapper.spotify.requests.data.search.TrackSearchRequest;
-import com.wrapper.spotify.requests.data.tracks.AudioFeatureRequest;
-import com.wrapper.spotify.requests.data.tracks.TrackRequest;
-import com.wrapper.spotify.requests.data.tracks.TracksRequest;
-import com.wrapper.spotify.requests.data.users_profile.CurrentUserRequest;
-import com.wrapper.spotify.requests.data.users_profile.UserRequest;
+import com.wrapper.spotify.requests.data.tracks.GetAudioFeaturesForTrackRequest;
+import com.wrapper.spotify.requests.data.tracks.GetTrackRequest;
+import com.wrapper.spotify.requests.data.tracks.GetSeveralTracksRequest;
+import com.wrapper.spotify.requests.data.users_profile.GetCurrentUsersProfileRequest;
+import com.wrapper.spotify.requests.data.users_profile.GetUsersProfileRequest;
 
 import java.util.Arrays;
 import java.util.List;
@@ -116,78 +116,78 @@ public class Api {
    * @param id The base62 id of the album you're trying to retrieve.
    * @return An {AlbumRequest.Builder} instance.
    */
-  public AlbumRequest.Builder getAlbum(String id) {
-    AlbumRequest.Builder builder = AlbumRequest.builder();
+  public GetAlbumRequest.Builder getAlbum(String id) {
+    GetAlbumRequest.Builder builder = GetAlbumRequest.builder();
     setDefaults(builder);
     builder.id(id);
     return builder;
   }
 
-  public AlbumsRequest.Builder getAlbums(String... ids) {
+  public GetSeveralAlbumsRequest.Builder getAlbums(String... ids) {
     return getAlbums(Arrays.asList(ids));
   }
 
-  public AlbumsRequest.Builder getAlbums(List<String> ids) {
-    AlbumsRequest.Builder builder = AlbumsRequest.builder();
+  public GetSeveralAlbumsRequest.Builder getAlbums(List<String> ids) {
+    GetSeveralAlbumsRequest.Builder builder = GetSeveralAlbumsRequest.builder();
     setDefaults(builder);
     builder.id(ids);
     return builder;
   }
 
-  public AlbumsForArtistRequest.Builder getAlbumsForArtist(String artistId) {
-    AlbumsForArtistRequest.Builder builder = AlbumsForArtistRequest.builder();
+  public GetArtistsAlbumsRequest.Builder getAlbumsForArtist(String artistId) {
+    GetArtistsAlbumsRequest.Builder builder = GetArtistsAlbumsRequest.builder();
     setDefaults(builder);
     builder.forArtist(artistId);
     return builder;
   }
 
-  public TracksForAlbumRequest.Builder getTracksForAlbum(
+  public GetAlbumsTracksRequest.Builder getTracksForAlbum(
           String albumId
   ) {
-    TracksForAlbumRequest.Builder builder = TracksForAlbumRequest.builder();
+    GetAlbumsTracksRequest.Builder builder = GetAlbumsTracksRequest.builder();
     setDefaults(builder);
     builder.forAlbum(albumId);
     return builder;
   }
 
-  public ArtistRequest.Builder getArtist(String id) {
-    ArtistRequest.Builder builder = ArtistRequest.builder();
+  public GetArtistRequest.Builder getArtist(String id) {
+    GetArtistRequest.Builder builder = GetArtistRequest.builder();
     setDefaults(builder);
     builder.setPath(String.format("/v1/artists/%s", id));
     return builder;
   }
 
-  public ArtistsRequest.Builder getArtists(String... ids) {
+  public GetSeveralArtistsRequest.Builder getArtists(String... ids) {
     return getArtists(Arrays.asList(ids));
   }
 
-  public ArtistsRequest.Builder getArtists(List<String> ids) {
-    ArtistsRequest.Builder builder = ArtistsRequest.builder();
+  public GetSeveralArtistsRequest.Builder getArtists(List<String> ids) {
+    GetSeveralArtistsRequest.Builder builder = GetSeveralArtistsRequest.builder();
     setDefaults(builder);
     builder.id(ids);
     return builder;
   }
 
-  public TrackRequest.Builder getTrack(String id) {
-    TrackRequest.Builder builder = TrackRequest.builder();
+  public GetTrackRequest.Builder getTrack(String id) {
+    GetTrackRequest.Builder builder = GetTrackRequest.builder();
     setDefaults(builder);
     builder.id(id);
     return builder;
   }
 
-  public TracksRequest.Builder getTracks(String... ids) {
+  public GetSeveralTracksRequest.Builder getTracks(String... ids) {
     return getTracks(Arrays.asList(ids));
   }
 
-  public TracksRequest.Builder getTracks(List<String> ids) {
-    TracksRequest.Builder builder = TracksRequest.builder();
+  public GetSeveralTracksRequest.Builder getTracks(List<String> ids) {
+    GetSeveralTracksRequest.Builder builder = GetSeveralTracksRequest.builder();
     setDefaults(builder);
     builder.id(ids);
     return builder;
   }
 
-  public RecommendationsRequest.Builder getRecommendations() {
-    RecommendationsRequest.Builder builder = RecommendationsRequest.builder();
+  public GetRecommendationsRequest.Builder getRecommendations() {
+    GetRecommendationsRequest.Builder builder = GetRecommendationsRequest.builder();
     setDefaults(builder);
     return builder;
   }
@@ -220,27 +220,27 @@ public class Api {
     return builder;
   }
 
-  public NewReleasesRequest.Builder getNewReleases() {
-    NewReleasesRequest.Builder builder = NewReleasesRequest.builder();
+  public GetListOfNewReleasesRequest.Builder getNewReleases() {
+    GetListOfNewReleasesRequest.Builder builder = GetListOfNewReleasesRequest.builder();
     setDefaults(builder);
     return builder;
   }
 
-  public AudioFeatureRequest.Builder getAudioFeature(String id) {
-    AudioFeatureRequest.Builder builder = AudioFeatureRequest.builder();
+  public GetAudioFeaturesForTrackRequest.Builder getAudioFeature(String id) {
+    GetAudioFeaturesForTrackRequest.Builder builder = GetAudioFeaturesForTrackRequest.builder();
     setDefaults(builder);
     builder.id(id);
     return builder;
   }
 
-  public RecentlyPlayedTracksRequest.Builder getRecentlyPlayedTracks() {
-    RecentlyPlayedTracksRequest.Builder builder = RecentlyPlayedTracksRequest.builder();
+  public GetUsersRecentlyPlayedTracksRequest.Builder getRecentlyPlayedTracks() {
+    GetUsersRecentlyPlayedTracksRequest.Builder builder = GetUsersRecentlyPlayedTracksRequest.builder();
     setDefaults(builder);
     return builder;
   }
 
-  public CurrentlyPlayingTrackRequest.Builder getCurrentlyPlayingTrack() {
-    CurrentlyPlayingTrackRequest.Builder builder = CurrentlyPlayingTrackRequest.builder();
+  public GetUsersCurrentlyPlayingTrackRequest.Builder getCurrentlyPlayingTrack() {
+    GetUsersCurrentlyPlayingTrackRequest.Builder builder = GetUsersCurrentlyPlayingTrackRequest.builder();
     setDefaults(builder);
     return builder;
   }
@@ -250,30 +250,30 @@ public class Api {
    *
    * @return A builder that can be used to build requests to get featured playlists.
    */
-  public FeaturedPlaylistsRequest.Builder getFeaturedPlaylists() {
-    FeaturedPlaylistsRequest.Builder builder = FeaturedPlaylistsRequest.builder();
+  public GetListOfFeaturedPlaylistsRequest.Builder getFeaturedPlaylists() {
+    GetListOfFeaturedPlaylistsRequest.Builder builder = GetListOfFeaturedPlaylistsRequest.builder();
     setDefaults(builder);
     return builder;
   }
 
-  public TopTracksRequest.Builder getTopTracksForArtist(String artistId, String countryCode) {
-    TopTracksRequest.Builder builder = TopTracksRequest.builder();
+  public GetArtistsTopTracksRequest.Builder getTopTracksForArtist(String artistId, String countryCode) {
+    GetArtistsTopTracksRequest.Builder builder = GetArtistsTopTracksRequest.builder();
     setDefaults(builder);
     builder.id(artistId);
     builder.countryCode(countryCode);
     return builder;
   }
 
-  public UserRequest.Builder getUser(String userId) {
-    UserRequest.Builder builder = UserRequest.builder();
+  public GetUsersProfileRequest.Builder getUser(String userId) {
+    GetUsersProfileRequest.Builder builder = GetUsersProfileRequest.builder();
     setDefaults(builder);
     userId = UrlUtil.escapeUsername(userId);
     builder.username(userId);
     return builder;
   }
 
-  public UserPlaylistsRequest.Builder getPlaylistsForUser(String userId) {
-    UserPlaylistsRequest.Builder builder = UserPlaylistsRequest.builder();
+  public GetListOfUsersPlaylistsRequest.Builder getPlaylistsForUser(String userId) {
+    GetListOfUsersPlaylistsRequest.Builder builder = GetListOfUsersPlaylistsRequest.builder();
     setDefaults(builder);
     userId = UrlUtil.escapeUsername(userId);
     builder.username(userId);
@@ -334,8 +334,8 @@ public class Api {
    * @param playlistId The playlist's ID.
    * @return A builder object that can be used to build a request to retrieve a playlist.
    */
-  public PlaylistRequest.Builder getPlaylist(String userId, String playlistId) {
-    PlaylistRequest.Builder builder = PlaylistRequest.builder();
+  public GetPlaylistRequest.Builder getPlaylist(String userId, String playlistId) {
+    GetPlaylistRequest.Builder builder = GetPlaylistRequest.builder();
     setDefaults(builder);
     userId = UrlUtil.escapeUsername(userId);
     builder.setPath("/v1/users/" + userId + "/playlists/" + playlistId);
@@ -348,8 +348,8 @@ public class Api {
    * @return A builder object that can be used to build a request to retrieve information
    * about the current user.
    */
-  public CurrentUserRequest.Builder getMe() {
-    final CurrentUserRequest.Builder builder = CurrentUserRequest.builder();
+  public GetCurrentUsersProfileRequest.Builder getMe() {
+    final GetCurrentUsersProfileRequest.Builder builder = GetCurrentUsersProfileRequest.builder();
     setDefaults(builder);
     return builder;
   }
@@ -361,8 +361,8 @@ public class Api {
    * @param title  The name of the playlist.
    * @return A builder object that can be used to build a request to create a playlist.
    */
-  public PlaylistCreationRequest.Builder createPlaylist(String userId, String title) {
-    final PlaylistCreationRequest.Builder builder = PlaylistCreationRequest.builder();
+  public CreatePlaylistRequest.Builder createPlaylist(String userId, String title) {
+    final CreatePlaylistRequest.Builder builder = CreatePlaylistRequest.builder();
     setDefaults(builder);
     builder.title(title);
     userId = UrlUtil.escapeUsername(userId);
@@ -376,8 +376,8 @@ public class Api {
    * @param artistId The artist's id.
    * @return A builder object that can be used to build a request to retrieve similar artists.
    */
-  public RelatedArtistsRequest.Builder getArtistRelatedArtists(String artistId) {
-    final RelatedArtistsRequest.Builder builder = RelatedArtistsRequest.builder();
+  public GetArtistsRelatedArtistsRequest.Builder getArtistRelatedArtists(String artistId) {
+    final GetArtistsRelatedArtistsRequest.Builder builder = GetArtistsRelatedArtistsRequest.builder();
     setDefaults(builder);
     builder.setPath("/v1/artists/" + artistId + "/related-artists");
     return builder;
@@ -390,8 +390,8 @@ public class Api {
    * @param playlistId The playlist's id.
    * @return A builder object that can be used to build a request to retrieve playlist tracks.
    */
-  public PlaylistTracksRequest.Builder getPlaylistTracks(String userId, String playlistId) {
-    final PlaylistTracksRequest.Builder builder = PlaylistTracksRequest.builder();
+  public GetPlaylistsTracksRequest.Builder getPlaylistTracks(String userId, String playlistId) {
+    final GetPlaylistsTracksRequest.Builder builder = GetPlaylistsTracksRequest.builder();
     setDefaults(builder);
     userId = UrlUtil.escapeUsername(userId);
     builder.setPath("/v1/users/" + userId + "/playlists/" + playlistId + "/tracks");
@@ -405,8 +405,8 @@ public class Api {
    * @return A builder object that can be used to build a request to retrieve a user's starred
    * tracks.
    */
-  public PlaylistTracksRequest.Builder getStarred(String userId) {
-    final PlaylistTracksRequest.Builder builder = PlaylistTracksRequest.builder();
+  public GetPlaylistsTracksRequest.Builder getStarred(String userId) {
+    final GetPlaylistsTracksRequest.Builder builder = GetPlaylistsTracksRequest.builder();
     setDefaults(builder);
     userId = UrlUtil.escapeUsername(userId);
     builder.setPath("/v1/users/" + userId + "/starred/tracks");
@@ -421,8 +421,8 @@ public class Api {
    * @param trackUris  URIs of the tracks to add.
    * @return A builder object that can e used to build a request to add tracks to a playlist.
    */
-  public AddTrackToPlaylistRequest.Builder addTracksToPlaylist(String userId, String playlistId, String[] trackUris) {
-    final AddTrackToPlaylistRequest.Builder builder = AddTrackToPlaylistRequest.builder();
+  public AddTracksToPlaylistRequest.Builder addTracksToPlaylist(String userId, String playlistId, String[] trackUris) {
+    final AddTracksToPlaylistRequest.Builder builder = AddTracksToPlaylistRequest.builder();
 
     userId = UrlUtil.escapeUsername(userId);
 
@@ -441,10 +441,10 @@ public class Api {
    * @param trackUris  URIs of the tracks to add.
    * @return A builder object that can e used to build a request to add tracks to a playlist.
    */
-  public ReplacePlaylistTracksRequest.Builder replacePlaylistsTracks(
+  public ReplacePlaylistsTracksRequest.Builder replacePlaylistsTracks(
           String userId, String playlistId, String[] trackUris
   ) {
-    final ReplacePlaylistTracksRequest.Builder builder = ReplacePlaylistTracksRequest.builder();
+    final ReplacePlaylistsTracksRequest.Builder builder = ReplacePlaylistsTracksRequest.builder();
     setDefaults(builder);
     final JsonObject urisObject = new JsonObject();
     final JsonArray jsonArrayUri = new JsonArray();
@@ -463,8 +463,8 @@ public class Api {
    * @param trackUris  URIs of the tracks to remove.
    * @return A builder object that can be used to build a request to remove tracks from a playlist.
    */
-  public RemoveTrackFromPlaylistRequest.Builder removeTrackFromPlaylist(String userId, String playlistId, String[] trackUris) {
-    final RemoveTrackFromPlaylistRequest.Builder builder = RemoveTrackFromPlaylistRequest.builder();
+  public RemoveTracksFromPlaylistRequest.Builder removeTrackFromPlaylist(String userId, String playlistId, String[] trackUris) {
+    final RemoveTracksFromPlaylistRequest.Builder builder = RemoveTracksFromPlaylistRequest.builder();
 
     userId = UrlUtil.escapeUsername(userId);
 
@@ -482,24 +482,24 @@ public class Api {
    * @param playlistId The playlist's ID.
    * @return A builder object that can be used to build a request to change a playlist's details.
    */
-  public ChangePlaylistDetailsRequest.Builder changePlaylistDetails(String userId, String playlistId) {
-    final ChangePlaylistDetailsRequest.Builder builder = ChangePlaylistDetailsRequest.builder();
+  public ChangePlaylistsDetailsRequest.Builder changePlaylistDetails(String userId, String playlistId) {
+    final ChangePlaylistsDetailsRequest.Builder builder = ChangePlaylistsDetailsRequest.builder();
     setDefaults(builder);
     userId = UrlUtil.escapeUsername(userId);
     builder.setPath("/v1/users/" + userId + "/playlists/" + playlistId);
     return builder;
   }
 
-  public RemoveTrackFromPlaylistRequest.Builder removeTrackFromPlaylist(String userId, String playlistId, PlaylistTrackPosition[] trackUris) {
-    final RemoveTrackFromPlaylistRequest.Builder builder = RemoveTrackFromPlaylistRequest.builder();
+  public RemoveTracksFromPlaylistRequest.Builder removeTrackFromPlaylist(String userId, String playlistId, PlaylistTrackPosition[] trackUris) {
+    final RemoveTracksFromPlaylistRequest.Builder builder = RemoveTracksFromPlaylistRequest.builder();
     setDefaults(builder);
     builder.tracks(trackUris);
     builder.setPath("/v1/users/" + userId + "/playlists/" + playlistId + "/tracks");
     return builder;
   }
 
-  public ReorderTracksInPlaylistRequest.Builder reorderTracksInPlaylist(String userId, String playlistId, int rangeStart, int insertBefore) {
-    final ReorderTracksInPlaylistRequest.Builder builder = ReorderTracksInPlaylistRequest.builder();
+  public ReorderPlaylistsTracksRequest.Builder reorderTracksInPlaylist(String userId, String playlistId, int rangeStart, int insertBefore) {
+    final ReorderPlaylistsTracksRequest.Builder builder = ReorderPlaylistsTracksRequest.builder();
     setDefaults(builder);
     builder.rangeStart(rangeStart);
     builder.insertBefore(insertBefore);
@@ -525,8 +525,8 @@ public class Api {
    * @return A builder object that can be used to build a request
    * to remove the current user as a follower of a playlist.
    */
-  public PlaylistUnfollowRequest.Builder unfollowPlaylist(String userId, String playlistId) {
-    final PlaylistUnfollowRequest.Builder builder = PlaylistUnfollowRequest.builder();
+  public UnfollowPlaylistRequest.Builder unfollowPlaylist(String userId, String playlistId) {
+    final UnfollowPlaylistRequest.Builder builder = UnfollowPlaylistRequest.builder();
     setDefaults(builder);
     builder.setPath("/v1/users/" + userId + "/playlists/" + playlistId + "/followers");
     return builder;
@@ -537,8 +537,8 @@ public class Api {
    *
    * @return A builder object that can be used to build a request to get the user's Your Music library.
    */
-  public GetMySavedTracksRequest.Builder getMySavedTracks() {
-    final GetMySavedTracksRequest.Builder builder = GetMySavedTracksRequest.builder();
+  public GetUsersSavedTracksRequest.Builder getMySavedTracks() {
+    final GetUsersSavedTracksRequest.Builder builder = GetUsersSavedTracksRequest.builder();
     setDefaults(builder);
     builder.setPath("/v1/me/tracks");
     return builder;
@@ -550,8 +550,8 @@ public class Api {
    * @param trackIds The tracks ids to check for in the user's Your Music library.
    * @return A builder object that can be used to check if a user has saved a track.
    */
-  public ContainsMySavedTracksRequest.Builder containsMySavedTracks(String[] trackIds) {
-    final ContainsMySavedTracksRequest.Builder builder = ContainsMySavedTracksRequest.builder();
+  public CheckUsersSavedTracksRequest.Builder containsMySavedTracks(String[] trackIds) {
+    final CheckUsersSavedTracksRequest.Builder builder = CheckUsersSavedTracksRequest.builder();
     setDefaults(builder);
     builder.tracks(trackIds);
     builder.setPath("/v1/me/tracks/contains");
@@ -564,8 +564,8 @@ public class Api {
    * @param trackIds The track ids to remove from the user's Your Music library.
    * @return A builder object that can be used to remove tracks from the user's library.
    */
-  public RemoveFromMySavedTracksRequest.Builder removeFromMySavedTracks(String[] trackIds) {
-    final RemoveFromMySavedTracksRequest.Builder builder = RemoveFromMySavedTracksRequest.builder();
+  public RemoveUsersSavedTracksRequest.Builder removeFromMySavedTracks(String[] trackIds) {
+    final RemoveUsersSavedTracksRequest.Builder builder = RemoveUsersSavedTracksRequest.builder();
     setDefaults(builder);
     builder.tracks(trackIds);
     builder.setPath("/v1/me/tracks");
@@ -578,8 +578,8 @@ public class Api {
    * @param trackIds The track ids to add to the user's library.
    * @return A builder object that can be used to add tracks to the user's library.
    */
-  public AddToMySavedTracksRequest.Builder addToMySavedTracks(String[] trackIds) {
-    final AddToMySavedTracksRequest.Builder builder = AddToMySavedTracksRequest.builder();
+  public SaveTracksForUserRequest.Builder addToMySavedTracks(String[] trackIds) {
+    final SaveTracksForUserRequest.Builder builder = SaveTracksForUserRequest.builder();
     setDefaults(builder);
     builder.tracks(trackIds);
     builder.setPath("/v1/me/tracks");
@@ -679,33 +679,33 @@ public class Api {
     }
   }
 
-  public RecommendationsRequest.Builder getRecommendations(String[] ids) {
-    RecommendationsRequest.Builder builder = RecommendationsRequest.builder();
+  public GetRecommendationsRequest.Builder getRecommendations(String[] ids) {
+    GetRecommendationsRequest.Builder builder = GetRecommendationsRequest.builder();
     setDefaults(builder);
     builder.genres(ids);
     return builder;
   }
 
-  public AvailableGenreSeedsRequest.Builder getAvailableGenreSeeds() {
-    AvailableGenreSeedsRequest.Builder builder = new AvailableGenreSeedsRequest.Builder();
+  public GetAvailableGenreSeedsRequest.Builder getAvailableGenreSeeds() {
+    GetAvailableGenreSeedsRequest.Builder builder = new GetAvailableGenreSeedsRequest.Builder();
     setDefaults(builder);
     return builder;
   }
 
-  public CategoriesRequest.Builder getCategories() {
-    CategoriesRequest.Builder builder = new CategoriesRequest.Builder();
+  public GetListOfCategoriesRequest.Builder getCategories() {
+    GetListOfCategoriesRequest.Builder builder = new GetListOfCategoriesRequest.Builder();
     setDefaults(builder);
     return builder;
   }
 
-  public CategoryRequest.Builder getCategory(String categoryId) {
-    CategoryRequest.Builder builder = new CategoryRequest.Builder().forCategory(categoryId);
+  public GetCategoryRequest.Builder getCategory(String categoryId) {
+    GetCategoryRequest.Builder builder = new GetCategoryRequest.Builder().forCategory(categoryId);
     setDefaults(builder);
     return builder;
   }
 
-  public CategoryPlaylistsRequest.Builder getPlaylistsForCategory(String categoryId) {
-    CategoryPlaylistsRequest.Builder builder = CategoryPlaylistsRequest.builder();
+  public GetCategoriesPlaylistsRequest.Builder getPlaylistsForCategory(String categoryId) {
+    GetCategoriesPlaylistsRequest.Builder builder = GetCategoriesPlaylistsRequest.builder();
     setDefaults(builder);
     builder.category(categoryId);
     return builder;

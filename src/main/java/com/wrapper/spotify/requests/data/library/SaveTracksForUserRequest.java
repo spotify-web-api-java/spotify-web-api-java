@@ -8,9 +8,9 @@ import com.wrapper.spotify.requests.AbstractRequest;
 
 import java.io.IOException;
 
-public class AddToMySavedTracksRequest extends AbstractRequest {
+public class SaveTracksForUserRequest extends AbstractRequest {
 
-  private AddToMySavedTracksRequest(final Builder builder) {
+  private SaveTracksForUserRequest(final Builder builder) {
     super(builder);
   }
 
@@ -54,8 +54,8 @@ public class AddToMySavedTracksRequest extends AbstractRequest {
     }
 
     @Override
-    public AddToMySavedTracksRequest build() {
-      return new AddToMySavedTracksRequest(this);
+    public SaveTracksForUserRequest build() {
+      return new SaveTracksForUserRequest(this);
     }
   }
 }

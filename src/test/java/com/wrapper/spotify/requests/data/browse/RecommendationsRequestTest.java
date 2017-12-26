@@ -6,7 +6,6 @@ import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.model_objects.TrackSimplified;
-import com.wrapper.spotify.requests.data.browse.RecommendationsRequest;
 import org.junit.Test;
 
 import java.util.concurrent.CountDownLatch;
@@ -24,7 +23,7 @@ public class RecommendationsRequestTest {
   public void shouldGetRecommendationsResult_async() throws Exception {
     final Api api = Api.DEFAULT_API;
 
-    final RecommendationsRequest request = api.getRecommendations()
+    final GetRecommendationsRequest request = api.getRecommendations()
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("recommendations.json"))
             .build();
 
@@ -59,7 +58,7 @@ public class RecommendationsRequestTest {
   public void shouldGetRecommendationsResult_sync() throws Exception {
     final Api api = Api.DEFAULT_API;
 
-    final RecommendationsRequest request = api.getRecommendations()
+    final GetRecommendationsRequest request = api.getRecommendations()
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("recommendations.json"))
             .build();
 

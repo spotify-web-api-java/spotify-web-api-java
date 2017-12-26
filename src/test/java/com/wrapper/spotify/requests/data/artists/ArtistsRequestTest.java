@@ -6,7 +6,6 @@ import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.model_objects.Artist;
-import com.wrapper.spotify.requests.data.artists.ArtistsRequest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -24,7 +23,7 @@ public class ArtistsRequestTest {
   public void shouldGetArtistsResult_async() throws Exception {
     final Api api = Api.DEFAULT_API;
 
-    final ArtistsRequest request = api.getArtists("0oSGxfWSnnOXhD2fKuz2Gy", "3dBVyJ7JuOMt4GE9607Qin")
+    final GetSeveralArtistsRequest request = api.getArtists("0oSGxfWSnnOXhD2fKuz2Gy", "3dBVyJ7JuOMt4GE9607Qin")
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("artists.json"))
             .build();
 
@@ -59,7 +58,7 @@ public class ArtistsRequestTest {
   public void shouldGetArtistsResult_sync() throws Exception {
     final Api api = Api.DEFAULT_API;
 
-    final ArtistsRequest request = api.getArtists("0oSGxfWSnnOXhD2fKuz2Gy", "3dBVyJ7JuOMt4GE9607Qin")
+    final GetSeveralArtistsRequest request = api.getArtists("0oSGxfWSnnOXhD2fKuz2Gy", "3dBVyJ7JuOMt4GE9607Qin")
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("artists.json"))
             .build();
 

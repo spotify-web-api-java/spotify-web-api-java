@@ -5,7 +5,6 @@ import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.TestUtil;
-import com.wrapper.spotify.requests.data.playlists.ChangePlaylistDetailsRequest;
 import org.junit.Test;
 
 import java.util.concurrent.CountDownLatch;
@@ -22,7 +21,7 @@ public class ChangePlaylistDetailsRequestTest {
 
     final Api api = Api.builder().accessToken(accessToken).build();
 
-    ChangePlaylistDetailsRequest request = api
+    ChangePlaylistsDetailsRequest request = api
             .changePlaylistDetails("thelinmichael", "3ktAYNcRHpazJ9qecm3ptn")
             .publicAccess(true)
             .name("Testing playlist name change")
@@ -57,7 +56,7 @@ public class ChangePlaylistDetailsRequestTest {
 
     final Api api = Api.builder().accessToken(accessToken).build();
 
-    ChangePlaylistDetailsRequest request = api
+    ChangePlaylistsDetailsRequest request = api
             .changePlaylistDetails("thelinmichael", "3ktAYNcRHpazJ9qecm3ptn")
             .publicAccess(true)
             .name("Testing playlist name change")

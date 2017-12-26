@@ -9,9 +9,9 @@ import com.wrapper.spotify.requests.AbstractRequest;
 
 import java.io.IOException;
 
-public class RecentlyPlayedTracksRequest extends AbstractRequest {
+public class GetUsersRecentlyPlayedTracksRequest extends AbstractRequest {
 
-  private RecentlyPlayedTracksRequest(final Builder builder) {
+  private GetUsersRecentlyPlayedTracksRequest(final Builder builder) {
     super(builder);
   }
 
@@ -50,10 +50,10 @@ public class RecentlyPlayedTracksRequest extends AbstractRequest {
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
     @Override
-    public RecentlyPlayedTracksRequest build() {
+    public GetUsersRecentlyPlayedTracksRequest build() {
       this.setPath("v1/me/player/recently-played");
 
-      return new RecentlyPlayedTracksRequest(this);
+      return new GetUsersRecentlyPlayedTracksRequest(this);
     }
   }
 }

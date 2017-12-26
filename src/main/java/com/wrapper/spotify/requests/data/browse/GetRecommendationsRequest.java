@@ -9,9 +9,9 @@ import com.wrapper.spotify.requests.AbstractRequest;
 
 import java.io.IOException;
 
-public class RecommendationsRequest extends AbstractRequest {
+public class GetRecommendationsRequest extends AbstractRequest {
 
-  private RecommendationsRequest(final Builder builder) {
+  private GetRecommendationsRequest(final Builder builder) {
     super(builder);
   }
 
@@ -459,9 +459,9 @@ public class RecommendationsRequest extends AbstractRequest {
     }
 
     @Override
-    public RecommendationsRequest build() {
+    public GetRecommendationsRequest build() {
       setPath("/v1/recommendations");
-      return new RecommendationsRequest(this);
+      return new GetRecommendationsRequest(this);
     }
   }
 }

@@ -6,7 +6,6 @@ import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.model_objects.Track;
-import com.wrapper.spotify.requests.data.tracks.TracksRequest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -24,7 +23,7 @@ public class TracksRequestTest {
   public void shouldGetTracksResult_async() throws Exception {
     final Api api = Api.DEFAULT_API;
 
-    final TracksRequest request = api.getTracks("0eGsygTp906u18L0Oimnem", "1lDWb6b6ieDQ2xT7ewTC3G")
+    final GetSeveralTracksRequest request = api.getTracks("0eGsygTp906u18L0Oimnem", "1lDWb6b6ieDQ2xT7ewTC3G")
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("tracks.json"))
             .build();
 
@@ -59,7 +58,7 @@ public class TracksRequestTest {
   public void shouldGetTracksResult_sync() throws Exception {
     final Api api = Api.DEFAULT_API;
 
-    final TracksRequest request = api.getTracks("0eGsygTp906u18L0Oimnem", "1lDWb6b6ieDQ2xT7ewTC3G")
+    final GetSeveralTracksRequest request = api.getTracks("0eGsygTp906u18L0Oimnem", "1lDWb6b6ieDQ2xT7ewTC3G")
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("tracks.json"))
             .build();
 

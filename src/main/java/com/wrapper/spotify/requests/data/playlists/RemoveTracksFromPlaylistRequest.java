@@ -10,9 +10,9 @@ import com.wrapper.spotify.requests.AbstractRequest;
 
 import java.io.IOException;
 
-public class RemoveTrackFromPlaylistRequest extends AbstractRequest {
+public class RemoveTracksFromPlaylistRequest extends AbstractRequest {
 
-  private RemoveTrackFromPlaylistRequest(final Builder builder) {
+  private RemoveTracksFromPlaylistRequest(final Builder builder) {
     super(builder);
   }
 
@@ -86,8 +86,8 @@ public class RemoveTrackFromPlaylistRequest extends AbstractRequest {
     }
 
     @Override
-    public RemoveTrackFromPlaylistRequest build() {
-      return new RemoveTrackFromPlaylistRequest(this);
+    public RemoveTracksFromPlaylistRequest build() {
+      return new RemoveTracksFromPlaylistRequest(this);
     }
 
   }

@@ -7,9 +7,9 @@ import com.wrapper.spotify.requests.AbstractRequest;
 
 import java.io.IOException;
 
-public class NewReleasesRequest extends AbstractRequest {
+public class GetListOfNewReleasesRequest extends AbstractRequest {
 
-  private NewReleasesRequest(final Builder builder) {
+  private GetListOfNewReleasesRequest(final Builder builder) {
     super(builder);
   }
 
@@ -63,9 +63,9 @@ public class NewReleasesRequest extends AbstractRequest {
     }
 
     @Override
-    public NewReleasesRequest build() {
+    public GetListOfNewReleasesRequest build() {
       setPath("/v1/browse/new-releases");
-      return new NewReleasesRequest(this);
+      return new GetListOfNewReleasesRequest(this);
     }
 
   }

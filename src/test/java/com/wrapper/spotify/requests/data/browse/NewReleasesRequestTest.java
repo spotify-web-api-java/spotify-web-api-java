@@ -9,7 +9,6 @@ import com.wrapper.spotify.model_objects.AlbumSimplified;
 import com.wrapper.spotify.model_objects.AlbumType;
 import com.wrapper.spotify.model_objects.NewReleases;
 import com.wrapper.spotify.model_objects.Paging;
-import com.wrapper.spotify.requests.data.browse.NewReleasesRequest;
 import org.junit.Test;
 
 import java.util.concurrent.CountDownLatch;
@@ -23,7 +22,7 @@ public class NewReleasesRequestTest {
   public void shouldGetNewReleases_async() throws Exception {
     final Api api = Api.DEFAULT_API;
 
-    final NewReleasesRequest request = api.getNewReleases()
+    final GetListOfNewReleasesRequest request = api.getNewReleases()
             .limit(1)
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("new-releases.json"))
             .build();
@@ -71,7 +70,7 @@ public class NewReleasesRequestTest {
   public void shouldGetArtistsResult_sync() throws Exception {
     final Api api = Api.DEFAULT_API;
 
-    final NewReleasesRequest request = api.getNewReleases()
+    final GetListOfNewReleasesRequest request = api.getNewReleases()
             .limit(1)
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("new-releases.json"))
             .build();

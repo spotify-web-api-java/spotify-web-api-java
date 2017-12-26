@@ -8,7 +8,6 @@ import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.model_objects.ModelObjectType;
 import com.wrapper.spotify.model_objects.Paging;
 import com.wrapper.spotify.model_objects.PlaylistSimplified;
-import com.wrapper.spotify.requests.data.playlists.UserPlaylistsRequest;
 import org.junit.Test;
 
 import java.util.concurrent.CountDownLatch;
@@ -23,7 +22,7 @@ public class UserPlaylistsRequestTest {
     final String accessToken = "someAccessToken";
     final Api api = Api.builder().build();
 
-    final UserPlaylistsRequest request = api
+    final GetListOfUsersPlaylistsRequest request = api
             .getPlaylistsForUser("wizzler")
             .accessToken(accessToken)
             .limit(10)
@@ -81,7 +80,7 @@ public class UserPlaylistsRequestTest {
     final String accessToken = "myVeryLongAccessToken";
     final Api api = Api.builder().build();
 
-    final UserPlaylistsRequest request = api
+    final GetListOfUsersPlaylistsRequest request = api
             .getPlaylistsForUser("wizzler")
             .accessToken(accessToken)
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("user-playlists.json"))

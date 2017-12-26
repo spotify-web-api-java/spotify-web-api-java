@@ -7,7 +7,6 @@ import com.wrapper.spotify.Api;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.model_objects.LibraryTrack;
 import com.wrapper.spotify.model_objects.Paging;
-import com.wrapper.spotify.requests.data.library.GetMySavedTracksRequest;
 import org.junit.Test;
 
 import java.util.concurrent.CountDownLatch;
@@ -21,7 +20,7 @@ public class GetMySavedTracksRequestTest {
   public void shouldGetSavedTracks_async() throws Exception {
     final Api api = Api.builder().accessToken("someAccessToken").build();
 
-    final GetMySavedTracksRequest request = api.getMySavedTracks()
+    final GetUsersSavedTracksRequest request = api.getMySavedTracks()
             .limit(5)
             .offset(1)
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("saved-tracks.json"))
@@ -63,7 +62,7 @@ public class GetMySavedTracksRequestTest {
   public void shouldGetSavedTracks_sync() throws Exception {
     final Api api = Api.builder().accessToken("someAccessToken").build();
 
-    final GetMySavedTracksRequest request = api.getMySavedTracks()
+    final GetUsersSavedTracksRequest request = api.getMySavedTracks()
             .limit(5)
             .offset(1)
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("saved-tracks.json"))

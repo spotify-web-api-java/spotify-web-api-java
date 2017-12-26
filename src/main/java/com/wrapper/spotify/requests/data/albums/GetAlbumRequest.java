@@ -7,9 +7,9 @@ import com.wrapper.spotify.requests.AbstractRequest;
 
 import java.io.IOException;
 
-public class AlbumRequest extends AbstractRequest {
+public class GetAlbumRequest extends AbstractRequest {
 
-  private AlbumRequest(final Builder builder) {
+  private GetAlbumRequest(final Builder builder) {
     super(builder);
   }
 
@@ -58,8 +58,8 @@ public class AlbumRequest extends AbstractRequest {
     }
 
     @Override
-    public AlbumRequest build() {
-      return new AlbumRequest(this);
+    public GetAlbumRequest build() {
+      return new GetAlbumRequest(this);
     }
   }
 }

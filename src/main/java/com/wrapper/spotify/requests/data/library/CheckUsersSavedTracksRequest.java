@@ -9,13 +9,13 @@ import com.wrapper.spotify.requests.AbstractRequest;
 
 import java.io.IOException;
 
-public class ContainsMySavedTracksRequest extends AbstractRequest {
+public class CheckUsersSavedTracksRequest extends AbstractRequest {
 
-  private ContainsMySavedTracksRequest(final Builder builder) {
+  private CheckUsersSavedTracksRequest(final Builder builder) {
     super(builder);
   }
 
-  public static ContainsMySavedTracksRequest.Builder builder() {
+  public static CheckUsersSavedTracksRequest.Builder builder() {
     return new Builder();
   }
 
@@ -56,9 +56,9 @@ public class ContainsMySavedTracksRequest extends AbstractRequest {
     }
 
     @Override
-    public ContainsMySavedTracksRequest build() {
+    public CheckUsersSavedTracksRequest build() {
       setHeaderParameter("Content-Type", "application/json");
-      return new ContainsMySavedTracksRequest(this);
+      return new CheckUsersSavedTracksRequest(this);
     }
 
   }

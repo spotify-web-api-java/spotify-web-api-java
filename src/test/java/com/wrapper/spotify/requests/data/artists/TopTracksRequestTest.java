@@ -7,7 +7,6 @@ import com.wrapper.spotify.Api;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.model_objects.ModelObjectType;
 import com.wrapper.spotify.model_objects.Track;
-import com.wrapper.spotify.requests.data.artists.TopTracksRequest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -24,7 +23,7 @@ public class TopTracksRequestTest {
   public void shouldGetTracksResult_async() throws Exception {
     final Api api = Api.DEFAULT_API;
 
-    final TopTracksRequest request = api.getTopTracksForArtist("43ZHCT0cAZBISjO8DG9PnE", "GB")
+    final GetArtistsTopTracksRequest request = api.getTopTracksForArtist("43ZHCT0cAZBISjO8DG9PnE", "GB")
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("tracks-for-artist.json"))
             .build();
 
@@ -73,7 +72,7 @@ public class TopTracksRequestTest {
   public void shouldGetTracksResult_sync() throws Exception {
     final Api api = Api.DEFAULT_API;
 
-    final TopTracksRequest request = api.getTopTracksForArtist("43ZHCT0cAZBISjO8DG9PnE", "GB")
+    final GetArtistsTopTracksRequest request = api.getTopTracksForArtist("43ZHCT0cAZBISjO8DG9PnE", "GB")
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("tracks-for-artist.json"))
             .build();
 

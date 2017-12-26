@@ -10,9 +10,9 @@ import com.wrapper.spotify.requests.AbstractRequest;
 import java.io.IOException;
 import java.util.Map;
 
-public class ChangePlaylistDetailsRequest extends AbstractRequest {
+public class ChangePlaylistsDetailsRequest extends AbstractRequest {
 
-  private ChangePlaylistDetailsRequest(final Builder builder) {
+  private ChangePlaylistsDetailsRequest(final Builder builder) {
     super(builder);
   }
 
@@ -64,10 +64,10 @@ public class ChangePlaylistDetailsRequest extends AbstractRequest {
     }
 
     @Override
-    public ChangePlaylistDetailsRequest build() {
+    public ChangePlaylistsDetailsRequest build() {
       setHeaderParameter("Content-Type", "application/json");
       setBodyParameter(new JsonParser().parse(new Gson().toJson(properties)).getAsJsonObject());
-      return new ChangePlaylistDetailsRequest(this);
+      return new ChangePlaylistsDetailsRequest(this);
     }
 
   }
