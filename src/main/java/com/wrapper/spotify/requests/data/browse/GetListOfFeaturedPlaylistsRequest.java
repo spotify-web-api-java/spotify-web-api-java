@@ -8,8 +8,6 @@ import com.wrapper.spotify.model_objects.FeaturedPlaylists;
 import com.wrapper.spotify.requests.AbstractRequest;
 
 import java.io.IOException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class GetListOfFeaturedPlaylistsRequest extends AbstractRequest {

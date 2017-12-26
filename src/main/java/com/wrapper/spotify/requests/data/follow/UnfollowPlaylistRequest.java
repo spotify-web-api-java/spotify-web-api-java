@@ -50,6 +50,5 @@ public class UnfollowPlaylistRequest extends AbstractRequest {
     public UnfollowPlaylistRequest build() {
       return new UnfollowPlaylistRequest(this);
     }
-
   }
 }

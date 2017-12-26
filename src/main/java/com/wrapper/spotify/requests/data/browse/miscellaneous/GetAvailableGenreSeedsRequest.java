@@ -8,8 +8,6 @@ import com.wrapper.spotify.exceptions.*;
 import com.wrapper.spotify.requests.AbstractRequest;
 
 import java.io.IOException;
-import java.lang.reflect.Type;
-import java.util.Collection;
 import java.util.List;
 
 public class GetAvailableGenreSeedsRequest extends AbstractRequest {
@@ -39,7 +37,8 @@ public class GetAvailableGenreSeedsRequest extends AbstractRequest {
                     .getAsJsonObject()
                     .get("seed_genres")
                     .getAsJsonArray(),
-            new TypeToken<List<String>>(){}.getType()
+            new TypeToken<List<String>>() {
+            }.getType()
     );
 
     return genres.toArray(new String[0]);
@@ -62,7 +61,8 @@ public class GetAvailableGenreSeedsRequest extends AbstractRequest {
                     .getAsJsonObject()
                     .get("seed_genres")
                     .getAsJsonArray(),
-            new TypeToken<List<String>>(){}.getType()
+            new TypeToken<List<String>>() {
+            }.getType()
     );
 
     return getAsync(genres.toArray(new String[0]));
