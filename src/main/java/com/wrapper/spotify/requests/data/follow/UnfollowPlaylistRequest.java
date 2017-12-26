@@ -16,7 +16,7 @@ public class UnfollowPlaylistRequest extends AbstractRequest {
     return new Builder();
   }
 
-  public String get() throws
+  public void get() throws
           IOException,
           NoContentException,
           BadRequestException,
@@ -27,10 +27,10 @@ public class UnfollowPlaylistRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return getJson();
+    getJson();
   }
 
-  public SettableFuture<String> getAsync() throws
+  public void getAsync() throws
           IOException,
           NoContentException,
           BadRequestException,
@@ -41,7 +41,7 @@ public class UnfollowPlaylistRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return getAsync(getJson());
+    getAsync(getJson());
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
