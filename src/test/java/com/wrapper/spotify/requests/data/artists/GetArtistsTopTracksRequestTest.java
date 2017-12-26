@@ -3,6 +3,7 @@ package com.wrapper.spotify.requests.data.artists;
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.SettableFuture;
+import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.model_objects.ModelObjectType;
@@ -23,7 +24,7 @@ public class GetArtistsTopTracksRequestTest {
   public void shouldGetTracksResult_async() throws Exception {
     final Api api = Api.DEFAULT_API;
 
-    final GetArtistsTopTracksRequest request = api.getTopTracksForArtist("43ZHCT0cAZBISjO8DG9PnE", "GB")
+    final GetArtistsTopTracksRequest request = api.getTopTracksForArtist("43ZHCT0cAZBISjO8DG9PnE", CountryCode.GB)
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("tracks-for-artist.json"))
             .build();
 
@@ -72,7 +73,7 @@ public class GetArtistsTopTracksRequestTest {
   public void shouldGetTracksResult_sync() throws Exception {
     final Api api = Api.DEFAULT_API;
 
-    final GetArtistsTopTracksRequest request = api.getTopTracksForArtist("43ZHCT0cAZBISjO8DG9PnE", "GB")
+    final GetArtistsTopTracksRequest request = api.getTopTracksForArtist("43ZHCT0cAZBISjO8DG9PnE", CountryCode.GB)
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("tracks-for-artist.json"))
             .build();
 

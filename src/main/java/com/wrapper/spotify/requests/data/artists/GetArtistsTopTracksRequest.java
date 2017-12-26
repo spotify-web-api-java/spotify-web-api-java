@@ -2,6 +2,7 @@ package com.wrapper.spotify.requests.data.artists;
 
 import com.google.common.util.concurrent.SettableFuture;
 import com.google.gson.JsonParser;
+import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.exceptions.*;
 import com.wrapper.spotify.model_objects.Track;
 import com.wrapper.spotify.requests.AbstractRequest;
@@ -29,7 +30,7 @@ public class GetArtistsTopTracksRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return new Track.JsonUtil().createModelObjectArray(new JsonParser().parse(getJson()).getAsJsonObject().get("tracks").getAsJsonArray());
+    return new Track.JsonUtil().createModelObjectArray(getJson(), "tracks");
   }
 
   public SettableFuture<Track[]> getAsync() throws
@@ -43,7 +44,7 @@ public class GetArtistsTopTracksRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return getAsync(new Track.JsonUtil().createModelObjectArray(new JsonParser().parse(getJson()).getAsJsonObject().get("tracks").getAsJsonArray()));
+    return getAsync(new Track.JsonUtil().createModelObjectArray(getJson(), "tracks"));
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
@@ -53,16 +54,14 @@ public class GetArtistsTopTracksRequest extends AbstractRequest {
       return setPath(String.format("/v1/artists/%s/toptracks", id));
     }
 
-    public Builder countryCode(final String countryCode) {
-      assert (countryCode != null);
-      return setParameter("country", countryCode);
+    public Builder country(final CountryCode country) {
+      assert (country != null);
+      return setParameter("country", country.toString());
     }
 
     @Override
     public GetArtistsTopTracksRequest build() {
       return new GetArtistsTopTracksRequest(this);
     }
-
   }
-
 }

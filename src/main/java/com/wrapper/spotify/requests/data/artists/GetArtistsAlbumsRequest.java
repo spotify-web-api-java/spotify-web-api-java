@@ -3,6 +3,7 @@ package com.wrapper.spotify.requests.data.artists;
 import com.google.common.base.Joiner;
 import com.google.common.util.concurrent.SettableFuture;
 import com.google.gson.JsonParser;
+import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.exceptions.*;
 import com.wrapper.spotify.model_objects.AlbumSimplified;
 import com.wrapper.spotify.model_objects.AlbumType;
@@ -32,7 +33,7 @@ public class GetArtistsAlbumsRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return new AlbumSimplified.JsonUtil().createModelObjectPaging(new JsonParser().parse(getJson()).getAsJsonObject());
+    return new AlbumSimplified.JsonUtil().createModelObjectPaging(getJson());
   }
 
   public SettableFuture<Paging<AlbumSimplified>> getAsync() throws
@@ -46,36 +47,35 @@ public class GetArtistsAlbumsRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return getAsync(new AlbumSimplified.JsonUtil().createModelObjectPaging(new JsonParser().parse(getJson()).getAsJsonObject()));
+    return getAsync(new AlbumSimplified.JsonUtil().createModelObjectPaging(getJson()));
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
-    public Builder forArtist(final String id) {
+    public Builder id(final String id) {
       assert (id != null);
       return setPath(String.format("/v1/artists/%s/albums", id));
     }
 
-    public Builder types(final AlbumType... types) {
-      assert (types != null);
-      assert (types.length > 0);
-      String albumsParameter = Joiner.on(",").join(types);
-      return setParameter("album_type", albumsParameter);
+    public Builder album_type(final AlbumType... album_type) {
+      assert (album_type != null);
+      assert (album_type.length > 0);
+      return setParameter("album_type", Joiner.on(",").join(album_type));
     }
 
-    public Builder market(final String market) {
+    public Builder market(final CountryCode market) {
       assert (market != null);
-      return setParameter("market", market);
+      return setParameter("market", market.toString());
     }
 
-    public Builder limit(final int limit) {
+    public Builder limit(final Integer limit) {
       assert (limit > 0);
-      return setParameter("limit", String.valueOf(limit));
+      return setParameter("limit", limit);
     }
 
-    public Builder offset(final int offset) {
+    public Builder offset(final Integer offset) {
       assert (offset >= 0);
-      return setParameter("offset", String.valueOf(offset));
+      return setParameter("offset", offset);
     }
 
     @Override

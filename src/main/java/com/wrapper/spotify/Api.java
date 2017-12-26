@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.UtilProtos.Url.Scheme;
 import com.wrapper.spotify.model_objects.PlaylistTrackPosition;
 import com.wrapper.spotify.requests.*;
@@ -133,7 +134,7 @@ public class Api {
   public GetArtistsAlbumsRequest.Builder getAlbumsForArtist(String artistId) {
     GetArtistsAlbumsRequest.Builder builder = GetArtistsAlbumsRequest.builder();
     setDefaults(builder);
-    builder.forArtist(artistId);
+    builder.id(artistId);
     return builder;
   }
 
@@ -154,13 +155,9 @@ public class Api {
   }
 
   public GetSeveralArtistsRequest.Builder getArtists(String... ids) {
-    return getArtists(Arrays.asList(ids));
-  }
-
-  public GetSeveralArtistsRequest.Builder getArtists(List<String> ids) {
     GetSeveralArtistsRequest.Builder builder = GetSeveralArtistsRequest.builder();
     setDefaults(builder);
-    builder.id(ids);
+    builder.ids(ids);
     return builder;
   }
 
@@ -252,11 +249,11 @@ public class Api {
     return builder;
   }
 
-  public GetArtistsTopTracksRequest.Builder getTopTracksForArtist(String artistId, String countryCode) {
+  public GetArtistsTopTracksRequest.Builder getTopTracksForArtist(String artistId, CountryCode countryCode) {
     GetArtistsTopTracksRequest.Builder builder = GetArtistsTopTracksRequest.builder();
     setDefaults(builder);
     builder.id(artistId);
-    builder.countryCode(countryCode);
+    builder.country(countryCode);
     return builder;
   }
 

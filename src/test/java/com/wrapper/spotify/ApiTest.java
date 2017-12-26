@@ -2,6 +2,7 @@ package com.wrapper.spotify;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.UtilProtos.Url.Scheme;
 import com.wrapper.spotify.model_objects.AlbumType;
 import com.wrapper.spotify.model_objects.PlaylistTrackPosition;
@@ -144,8 +145,8 @@ public class ApiTest {
   public void shouldHaveMultipleAlbumTypeParametersInArtistsAlbumUrl() {
     Api api = Api.DEFAULT_API;
     Request request = api.getAlbumsForArtist("4AK6F7OLvEQ5QYCBNiQWHq")
-            .types(AlbumType.ALBUM, AlbumType.SINGLE)
-            .market("SE")
+            .album_type(AlbumType.ALBUM, AlbumType.SINGLE)
+            .market(CountryCode.SE)
             .build();
 
     assertEquals("https://api.spotify.com:443/v1/artists/4AK6F7OLvEQ5QYCBNiQWHq/albums", request.toString(false));
@@ -156,7 +157,7 @@ public class ApiTest {
   @Test
   public void shouldHaveSingleAlbumTypeParametersInArtistsAlbumUrl() {
     Api api = Api.DEFAULT_API;
-    Request request = api.getAlbumsForArtist("4AK6F7OLvEQ5QYCBNiQWHq").types(AlbumType.SINGLE).build();
+    Request request = api.getAlbumsForArtist("4AK6F7OLvEQ5QYCBNiQWHq").album_type(AlbumType.SINGLE).build();
     assertEquals("https://api.spotify.com:443/v1/artists/4AK6F7OLvEQ5QYCBNiQWHq/albums", request.toString(false));
     assertHasParameter(request.toUrl(), "album_type", "SINGLE");
   }
@@ -164,7 +165,7 @@ public class ApiTest {
   @Test
   public void shouldFailIfAlbumTypeParametersIsInArtistsAlbumUrl() {
     Api api = Api.DEFAULT_API;
-    Request request = api.getAlbumsForArtist("4AK6F7OLvEQ5QYCBNiQWHq").types(AlbumType.SINGLE).build();
+    Request request = api.getAlbumsForArtist("4AK6F7OLvEQ5QYCBNiQWHq").album_type(AlbumType.SINGLE).build();
     assertEquals("https://api.spotify.com:443/v1/artists/4AK6F7OLvEQ5QYCBNiQWHq/albums", request.toString(false));
     assertHasParameter(request.toUrl(), "album_type", "SINGLE");
   }
@@ -188,7 +189,7 @@ public class ApiTest {
   @Test
   public void shouldHaveSeveralQueryParametersAtTheSameTimeInArtistsAlbumUrl() {
     Api api = Api.DEFAULT_API;
-    Request request = api.getAlbumsForArtist("4AK6F7OLvEQ5QYCBNiQWHq").types(AlbumType.SINGLE).limit(2).offset(5).build();
+    Request request = api.getAlbumsForArtist("4AK6F7OLvEQ5QYCBNiQWHq").album_type(AlbumType.SINGLE).limit(2).offset(5).build();
     assertEquals("https://api.spotify.com:443/v1/artists/4AK6F7OLvEQ5QYCBNiQWHq/albums", request.toString(false));
     assertHasParameter(request.toUrl(), "offset", "5");
     assertHasParameter(request.toUrl(), "limit", "2");
@@ -277,7 +278,7 @@ public class ApiTest {
   @Test
   public void shouldCreateTopTracksUrl() {
     Api api = Api.DEFAULT_API;
-    Request request = api.getTopTracksForArtist("0LcJLqbBmaGUft1e9Mm8HV", "GB").build();
+    Request request = api.getTopTracksForArtist("0LcJLqbBmaGUft1e9Mm8HV", CountryCode.GB).build();
     assertEquals("https://api.spotify.com:443/v1/artists/0LcJLqbBmaGUft1e9Mm8HV/toptracks", request.toString(false));
     assertHasParameter(request.toUrl(), "country", "GB");
   }

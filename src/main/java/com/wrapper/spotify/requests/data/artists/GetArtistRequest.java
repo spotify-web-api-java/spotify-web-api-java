@@ -47,6 +47,11 @@ public class GetArtistRequest extends AbstractRequest {
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
+    public Builder id(final String id) {
+      assert (id != null);
+      return setPath(String.format("/v1/artists/%s", id));
+    }
+
     @Override
     public GetArtistRequest build() {
       return new GetArtistRequest(this);

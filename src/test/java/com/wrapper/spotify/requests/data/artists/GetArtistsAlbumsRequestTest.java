@@ -3,6 +3,7 @@ package com.wrapper.spotify.requests.data.artists;
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.SettableFuture;
+import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.model_objects.AlbumSimplified;
@@ -26,8 +27,8 @@ public class GetArtistsAlbumsRequestTest {
 
     final GetArtistsAlbumsRequest request = api.getAlbumsForArtist("1vCWHaC5f2uS3yhpwWbIA6")
             .limit(2)
-            .types(AlbumType.SINGLE)
-            .market("US")
+            .album_type(AlbumType.SINGLE)
+            .market(CountryCode.US)
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("artist-album.json"))
             .build();
 
@@ -72,8 +73,8 @@ public class GetArtistsAlbumsRequestTest {
 
     final GetArtistsAlbumsRequest request = api.getAlbumsForArtist("1vCWHaC5f2uS3yhpwWbIA6")
             .limit(2)
-            .types(AlbumType.SINGLE)
-            .market("US")
+            .album_type(AlbumType.SINGLE)
+            .market(CountryCode.US)
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("artist-album.json"))
             .build();
 

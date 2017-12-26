@@ -31,7 +31,7 @@ public class GetSeveralArtistsRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return new Artist.JsonUtil().createModelObjectArray(new JsonParser().parse(getJson()).getAsJsonObject().get("artists").getAsJsonArray());
+    return new Artist.JsonUtil().createModelObjectArray(getJson(), "artists");
   }
 
   public SettableFuture<Artist[]> getAsync() throws
@@ -45,20 +45,19 @@ public class GetSeveralArtistsRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return getAsync(new Artist.JsonUtil().createModelObjectArray(new JsonParser().parse(getJson()).getAsJsonObject().get("artists").getAsJsonArray()));
+    return getAsync(new Artist.JsonUtil().createModelObjectArray(getJson(), "artists"));
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
-    public Builder id(final List<String> ids) {
+    public Builder ids(final String[] ids) {
       assert (ids != null);
-      String idsParameter = Joiner.on(",").join(ids);
-      setPath("/v1/artists");
-      return setParameter("ids", idsParameter);
+      return setParameter("ids", Joiner.on(",").join(ids));
     }
 
     @Override
     public GetSeveralArtistsRequest build() {
+      setPath("/v1/artists");
       return new GetSeveralArtistsRequest(this);
     }
 

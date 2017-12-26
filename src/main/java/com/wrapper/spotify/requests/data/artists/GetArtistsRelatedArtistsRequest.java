@@ -29,7 +29,7 @@ public class GetArtistsRelatedArtistsRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return new Artist.JsonUtil().createModelObjectArray(new JsonParser().parse(getJson()).getAsJsonObject().get("artists").getAsJsonArray());
+    return new Artist.JsonUtil().createModelObjectArray(getJson(), "artists");
   }
 
   public SettableFuture<Artist[]> getAsync() throws
@@ -43,11 +43,15 @@ public class GetArtistsRelatedArtistsRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    String t = getJson();
-    return getAsync(new Artist.JsonUtil().createModelObjectArray(new JsonParser().parse(getJson()).getAsJsonObject().get("artists").getAsJsonArray()));
+    return getAsync(new Artist.JsonUtil().createModelObjectArray(getJson(), "artists"));
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
+
+    public Builder id(final String id) {
+      assert (id != null);
+      return setPath(String.format("/v1/artists/%s/related-artists", id));
+    }
 
     @Override
     public GetArtistsRelatedArtistsRequest build() {
@@ -55,5 +59,4 @@ public class GetArtistsRelatedArtistsRequest extends AbstractRequest {
     }
 
   }
-
 }
