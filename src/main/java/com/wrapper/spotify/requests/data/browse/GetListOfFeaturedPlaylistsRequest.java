@@ -1,6 +1,8 @@
 package com.wrapper.spotify.requests.data.browse;
 
 import com.google.common.util.concurrent.SettableFuture;
+import com.neovisionaries.i18n.CountryCode;
+import com.neovisionaries.i18n.LanguageCode;
 import com.wrapper.spotify.exceptions.*;
 import com.wrapper.spotify.model_objects.FeaturedPlaylists;
 import com.wrapper.spotify.requests.AbstractRequest;
@@ -80,34 +82,30 @@ public class GetListOfFeaturedPlaylistsRequest extends AbstractRequest {
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
-    public Builder limit(final int limit) {
-      assert (limit > 0);
-      return setParameter("limit", String.valueOf(limit));
-    }
-
-    public Builder offset(final int offset) {
-      assert (offset >= 0);
-      return setParameter("offset", String.valueOf(offset));
-    }
-
-    public Builder country(final String countryCode) {
+    public Builder locale(final LanguageCode languageCode, final CountryCode countryCode) {
+      assert (languageCode != null);
       assert (countryCode != null);
-      return setParameter("country", countryCode);
+      return setParameter("locale", languageCode + "_" + countryCode);
     }
 
-    public Builder locale(final String locale) {
-      assert (locale != null);
-      return setParameter("locale", locale);
+    public Builder country(final CountryCode countryCode) {
+      assert (countryCode != null);
+      return setParameter("country", countryCode.toString());
     }
 
     public Builder timestamp(final Date timestamp) {
       assert (timestamp != null);
-      final DateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
-      return setParameter("timestamp", format.format(timestamp));
+      return setParameter("timestamp", simpleDateFormat.format(timestamp));
     }
 
-    public Builder accessToken(final String accessToken) {
-      return setHeaderParameter("Authorization", "Bearer " + accessToken);
+    public Builder limit(final Integer limit) {
+      assert (limit > 0);
+      return setParameter("limit", String.valueOf(limit));
+    }
+
+    public Builder offset(final Integer offset) {
+      assert (offset >= 0);
+      return setParameter("offset", String.valueOf(offset));
     }
 
     @Override

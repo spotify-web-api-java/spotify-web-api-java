@@ -2,6 +2,7 @@ package com.wrapper.spotify.requests.data.browse;
 
 import com.google.common.util.concurrent.SettableFuture;
 import com.google.gson.JsonParser;
+import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.exceptions.*;
 import com.wrapper.spotify.model_objects.Paging;
 import com.wrapper.spotify.model_objects.PlaylistSimplified;
@@ -30,7 +31,7 @@ public class GetCategorysPlaylistsRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return new PlaylistSimplified.JsonUtil().createModelObjectPaging(new JsonParser().parse(getJson()).getAsJsonObject().get("playlists").getAsJsonObject());
+    return new PlaylistSimplified.JsonUtil().createModelObjectPaging(getJson(), "playlists");
   }
 
   public SettableFuture<Paging<PlaylistSimplified>> getAsync() throws
@@ -44,13 +45,13 @@ public class GetCategorysPlaylistsRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return getAsync(new PlaylistSimplified.JsonUtil().createModelObjectPaging(new JsonParser().parse(getJson()).getAsJsonObject().get("playlists").getAsJsonObject()));
+    return getAsync(new PlaylistSimplified.JsonUtil().createModelObjectPaging(getJson(), "playlists"));
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
-    public Builder category(String category) {
-      assert (category != null);
-      return setPath(String.format("/v1/browse/categories/%s/playlists", category));
+    public Builder category_id(final String category_id) {
+      assert (category_id != null);
+      return setPath(String.format("/v1/browse/categories/%s/playlists", category_id));
     }
 
     /*
@@ -58,23 +59,19 @@ public class GetCategorysPlaylistsRequest extends AbstractRequest {
      * list of returned categories to those relevant to a particular country. If omitted, the returned items will
      * be globally relevant.
      */
-    public Builder country(String country) {
+    public Builder country(final CountryCode country) {
       assert (country != null);
-      return setParameter("country", country);
+      return setParameter("country", country.toString());
     }
 
-    public Builder limit(int limit) {
+    public Builder limit(final Integer limit) {
       assert (limit > 0);
-      return setParameter("limit", String.valueOf(limit));
+      return setParameter("limit", limit);
     }
 
-    public Builder offset(int offset) {
+    public Builder offset(final Integer offset) {
       assert (offset >= 0);
-      return setParameter("offset", String.valueOf(offset));
-    }
-
-    public Builder accessToken(String accessToken) {
-      return setHeaderParameter("Authorization", "Bearer " + accessToken);
+      return setParameter("offset", offset);
     }
 
     @Override

@@ -665,7 +665,7 @@ public class Api {
   public GetRecommendationsRequest.Builder getRecommendations(String[] ids) {
     GetRecommendationsRequest.Builder builder = GetRecommendationsRequest.builder();
     setDefaults(builder);
-    builder.genres(ids);
+    builder.seed_genres(ids);
     return builder;
   }
 
@@ -682,7 +682,7 @@ public class Api {
   }
 
   public GetCategoryRequest.Builder getCategory(String categoryId) {
-    GetCategoryRequest.Builder builder = new GetCategoryRequest.Builder().forCategory(categoryId);
+    GetCategoryRequest.Builder builder = new GetCategoryRequest.Builder().category_id(categoryId);
     setDefaults(builder);
     return builder;
   }
@@ -690,7 +690,7 @@ public class Api {
   public GetCategorysPlaylistsRequest.Builder getPlaylistsForCategory(String categoryId) {
     GetCategorysPlaylistsRequest.Builder builder = GetCategorysPlaylistsRequest.builder();
     setDefaults(builder);
-    builder.category(categoryId);
+    builder.category_id(categoryId);
     return builder;
   }
 

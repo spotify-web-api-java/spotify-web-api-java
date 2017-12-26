@@ -1,6 +1,7 @@
 package com.wrapper.spotify.requests.data.browse;
 
 import com.google.common.util.concurrent.SettableFuture;
+import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.exceptions.*;
 import com.wrapper.spotify.model_objects.Category;
 import com.wrapper.spotify.requests.AbstractRequest;
@@ -46,24 +47,17 @@ public class GetCategoryRequest extends AbstractRequest {
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
-    public Builder forCategory(String categoryId) {
-      assert (categoryId != null);
-      return setPath(String.format("/v1/browse/categories/%s", categoryId));
-    }
-
-    /**
-     * Required. A valid access token from the Spotify Accounts service
-     */
-    public Builder accessToken(String accessToken) {
-      return setHeaderParameter("Authorization", "Bearer " + accessToken);
+    public Builder category_id(final String category_id) {
+      assert (category_id != null);
+      return setPath(String.format("/v1/browse/categories/%s", category_id));
     }
 
     /**
      * Optional. A country: an ISO 3166-1 alpha-2 country code. Provide this parameter if you want to narrow the list of returned categories to those relevant to a particular country. If omitted, the returned items will be globally relevant.
      */
-    public Builder country(String country) {
+    public Builder country(final CountryCode country) {
       assert (country != null);
-      return setParameter("country", country);
+      return setParameter("country", country.toString());
     }
 
     /**
@@ -78,7 +72,7 @@ public class GetCategoryRequest extends AbstractRequest {
      * For example country=SE&locale=de_DE will return a list of categories relevant to Sweden but as German
      * language strings.
      */
-    public Builder locale(String locale) {
+    public Builder locale(final String locale) {
       assert (locale != null);
       return setParameter("locale", locale);
     }

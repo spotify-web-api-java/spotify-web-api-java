@@ -1,6 +1,7 @@
 package com.wrapper.spotify.requests.data.browse;
 
 import com.google.common.util.concurrent.SettableFuture;
+import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.exceptions.*;
 import com.wrapper.spotify.model_objects.NewReleases;
 import com.wrapper.spotify.requests.AbstractRequest;
@@ -47,19 +48,19 @@ public class GetListOfNewReleasesRequest extends AbstractRequest {
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
-    public Builder limit(final int limit) {
+    public Builder country(final CountryCode countryCode) {
+      assert (countryCode != null);
+      return setParameter("country", countryCode.toString());
+    }
+
+    public Builder limit(final Integer limit) {
       assert (limit > 0);
       return setParameter("limit", String.valueOf(limit));
     }
 
-    public Builder offset(final int offset) {
+    public Builder offset(final Integer offset) {
       assert (offset >= 0);
       return setParameter("offset", String.valueOf(offset));
-    }
-
-    public Builder country(final String countryCode) {
-      assert (countryCode != null);
-      return setParameter("country", countryCode);
     }
 
     @Override
@@ -67,6 +68,5 @@ public class GetListOfNewReleasesRequest extends AbstractRequest {
       setPath("/v1/browse/new-releases");
       return new GetListOfNewReleasesRequest(this);
     }
-
   }
 }

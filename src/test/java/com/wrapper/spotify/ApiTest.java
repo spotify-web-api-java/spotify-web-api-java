@@ -660,7 +660,7 @@ public class ApiTest {
             .accessToken(accessToken)
             .build();
 
-    final Request request = api.getNewReleases().limit(4).offset(1).country("SE").build();
+    final Request request = api.getNewReleases().limit(4).offset(1).country(CountryCode.SE).build();
 
     assertEquals("https://api.spotify.com:443/v1/browse/new-releases", request.toString(false));
     assertHasHeader(request.toUrl(), "Authorization", "Bearer " + accessToken);
@@ -684,8 +684,8 @@ public class ApiTest {
 
     final Request request = api
             .getFeaturedPlaylists()
-            .country("SE")
-            .locale("es_MX")
+            .country(CountryCode.SE)
+            .locale(LanguageCode.es, CountryCode.MX)
             .limit(5)
             .offset(1)
             .timestamp(timestamp)

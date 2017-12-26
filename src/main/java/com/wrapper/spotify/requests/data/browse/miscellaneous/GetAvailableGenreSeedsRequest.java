@@ -1,10 +1,16 @@
 package com.wrapper.spotify.requests.data.browse.miscellaneous;
 
 import com.google.common.util.concurrent.SettableFuture;
+import com.google.gson.Gson;
+import com.google.gson.JsonParser;
+import com.google.gson.reflect.TypeToken;
 import com.wrapper.spotify.exceptions.*;
 import com.wrapper.spotify.requests.AbstractRequest;
 
 import java.io.IOException;
+import java.lang.reflect.Type;
+import java.util.Collection;
+import java.util.List;
 
 public class GetAvailableGenreSeedsRequest extends AbstractRequest {
 
@@ -16,7 +22,7 @@ public class GetAvailableGenreSeedsRequest extends AbstractRequest {
     return new Builder();
   }
 
-  public String get() throws
+  public String[] get() throws
           IOException,
           NoContentException,
           BadRequestException,
@@ -27,10 +33,19 @@ public class GetAvailableGenreSeedsRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return getJson();
+    List<String> genres = new Gson().fromJson(
+            new JsonParser()
+                    .parse(getJson())
+                    .getAsJsonObject()
+                    .get("seed_genres")
+                    .getAsJsonArray(),
+            new TypeToken<List<String>>(){}.getType()
+    );
+
+    return genres.toArray(new String[0]);
   }
 
-  public SettableFuture<String> getAsync() throws
+  public SettableFuture<String[]> getAsync() throws
           IOException,
           NoContentException,
           BadRequestException,
@@ -41,16 +56,19 @@ public class GetAvailableGenreSeedsRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return getAsync(getJson());
+    List<String> genres = new Gson().fromJson(
+            new JsonParser()
+                    .parse(getJson())
+                    .getAsJsonObject()
+                    .get("seed_genres")
+                    .getAsJsonArray(),
+            new TypeToken<List<String>>(){}.getType()
+    );
+
+    return getAsync(genres.toArray(new String[0]));
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
-    /**
-     * Required. A valid access token from the Spotify Accounts service
-     */
-    public Builder accessToken(String accessToken) {
-      return setHeaderParameter("Authorization", "Bearer " + accessToken);
-    }
 
     @Override
     public GetAvailableGenreSeedsRequest build() {

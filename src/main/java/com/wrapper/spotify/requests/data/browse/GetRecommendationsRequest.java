@@ -3,6 +3,7 @@ package com.wrapper.spotify.requests.data.browse;
 import com.google.common.base.Joiner;
 import com.google.common.util.concurrent.SettableFuture;
 import com.google.gson.JsonParser;
+import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.exceptions.*;
 import com.wrapper.spotify.model_objects.TrackSimplified;
 import com.wrapper.spotify.requests.AbstractRequest;
@@ -30,7 +31,7 @@ public class GetRecommendationsRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return new TrackSimplified.JsonUtil().createModelObjectArray(new JsonParser().parse(getJson()).getAsJsonObject().get("tracks").getAsJsonArray());
+    return new TrackSimplified.JsonUtil().createModelObjectArray(getJson(), "tracks");
   }
 
   public SettableFuture<TrackSimplified[]> getAsync() throws
@@ -44,418 +45,458 @@ public class GetRecommendationsRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return getAsync(new TrackSimplified.JsonUtil().createModelObjectArray(new JsonParser().parse(getJson()).getAsJsonObject().get("tracks").getAsJsonArray()));
+    return getAsync(new TrackSimplified.JsonUtil().createModelObjectArray(getJson(), "tracks"));
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
-    private Builder addList(String parameterName, String[] list) {
-      assert (list != null);
-      String listParameter = Joiner.on(",").join(list);
-      return setParameter(parameterName, listParameter);
-    }
-
     /**
-     * Optional. The target size of the list of recommended tracks.
-     * For seeds with unusually small pools or when highly restrictive filtering is applied, it may be impossible
-     * to generate the requested number of recommended tracks. Debugging information for such cases is available
-     * in the response. Default: 20. Minimum: 1. Maximum: 100.
+     * Optional. The target size of the list of recommended tracks. For seeds with unusually small pools or when highly
+     * restrictive filtering is applied, it may be impossible to generate the requested number of recommended tracks.
+     * Debugging information for such cases is available in the response. Default: 20. Minimum: 1. Maximum: 100.
      */
-    public Builder limit(int limit) {
+    public Builder limit(final Integer limit) {
       assert (limit > 0 && limit <= 100);
-      return setParameter("limit", String.valueOf(limit));
+      return setParameter("limit", limit);
     }
 
     /**
      * Optional. An ISO 3166-1 alpha-2 country code. Provide this parameter if you want to apply Track Relinking.
-     * Because min_*, max_* and target_* are applied to pools before relinking, the generated results may not
-     * precisely match the filters applied. Original, non-relinked tracks are available via the linked_from
-     * attribute of the relinked track response.
+     * Because min_*, max_* and target_* are applied to pools before relinking, the generated results may not precisely
+     * match the filters applied. Original, non-relinked tracks are available via the linked_from attribute of the
+     * relinked track response.
      */
-    public Builder market(String market) {
+    public Builder market(final CountryCode market) {
       assert (market != null);
-      return setParameter("market", market);
+      return setParameter("market", market.toString());
     }
 
     /**
-     * A comma separated list of Spotify IDs for seed artists.
-     * Up to 5 seed values may be provided in any combination of seed_artists, seed_tracks and seed_genres.
+     * A confidence measure from 0.0 to 1.0 of whether the track is acoustic. 1.0 represents high confidence the track
+     * is acoustic.
      */
-    public Builder artists(String[] artists) {
-      return addList("seed_artists", artists);
+    public Builder maxAcousticness(final Float maxAcousticness) {
+      assert (maxAcousticness >= 0 && maxAcousticness <= 1);
+      return setParameter("max_acousticness", maxAcousticness);
     }
 
     /**
-     * A comma separated list of Spotify IDs for a seed track.
-     * Up to 5 seed values may be provided in any combination of seed_artists, seed_tracks and seed_genres.
+     * Danceability describes how suitable a track is for dancing based on a combination of musical elements including
+     * tempo, rhythm stability, beat strength, and overall regularity. A value of 0.0 is least danceable and 1.0 is most
+     * danceable.
      */
-    public Builder tracks(String[] tracks) {
-      return addList("seed_tracks", tracks);
-    }
-
-    /**
-     * A comma separated list of any genres in the set of available genre seeds.
-     * Up to 5 seed values may be provided in any combination of seed_artists, seed_tracks and seed_genres.
-     */
-    public Builder genres(String[] genres) {
-      return addList("seed_genres", genres);
-    }
-
-    /**
-     * Required. A valid access token from the Spotify Accounts service
-     */
-    public Builder accessToken(String accessToken) {
-      return setHeaderParameter("Authorization", "Bearer " + accessToken);
-    }
-
-
-    /**
-     * The key the track is in. Integers map to pitches using standard Pitch Class notation.
-     * E.g. 0 = C, 1 = C♯/D♭, 2 = D, and so on.
-     * <a href="https://en.wikipedia.org/wiki/Pitch_class">Pitch class</a>
-     *
-     * @param key 0 to 11
-     */
-    public Builder maxKey(int key) {
-      assert (key >= 0 && key <= 11);
-      return setParameter("max_key", Integer.toString(key));
-    }
-
-    /**
-     * The key the track is in. Integers map to pitches using standard Pitch Class notation.
-     * E.g. 0 = C, 1 = C♯/D♭, 2 = D, and so on.
-     * <a href="https://en.wikipedia.org/wiki/Pitch_class">Pitch class</a>
-     *
-     * @param key 0 to 11
-     */
-    public Builder minKey(int key) {
-      assert (key >= 0 && key <= 11);
-      return setParameter("min_key", Integer.toString(key));
-    }
-
-    /**
-     * The key the track is in. Integers map to pitches using standard Pitch Class notation.
-     * E.g. 0 = C, 1 = C♯/D♭, 2 = D, and so on.
-     * <a href="https://en.wikipedia.org/wiki/Pitch_class">Pitch class</a>
-     *
-     * @param key 0 to 11
-     */
-    public Builder targetKey(int key) {
-      assert (key >= 0 && key <= 11);
-      return setParameter("target_key", Integer.toString(key));
-    }
-
-    /**
-     * Mode indicates the modality (major or minor) of a track, the type of scale from which its melodic content is derived.
-     * Major is represented by 1 and minor is 0.
-     */
-    public Builder maxMode(int mode) {
-      assert (mode == 0 || mode <= 1);
-      return setParameter("max_mode", Integer.toString(mode));
-    }
-
-    /**
-     * Mode indicates the modality (major or minor) of a track, the type of scale from which its melodic content is derived.
-     * Major is represented by 1 and minor is 0.
-     */
-    public Builder minMode(int mode) {
-      assert (mode == 0 || mode <= 1);
-      return setParameter("min_mode", Integer.toString(mode));
-    }
-
-    /**
-     * Mode indicates the modality (major or minor) of a track, the type of scale from which its melodic content is derived.
-     * Major is represented by 1 and minor is 0.
-     */
-    public Builder targetMode(int mode) {
-      assert (mode == 0 || mode <= 1);
-      return setParameter("target_mode", Integer.toString(mode));
-    }
-
-    /**
-     * The popularity of the track. The value will be between 0 and 100, with 100 being the most popular.
-     * The popularity is calculated by algorithm and is based, in the most part, on the total number of plays the
-     * track has had and how recent those plays are.
-     */
-    public Builder maxPopularity(int popularity) {
-      assert (popularity >= 0 && popularity <= 100);
-      return setParameter("max_popularity", Integer.toString(popularity));
-    }
-
-    /**
-     * The popularity of the track. The value will be between 0 and 100, with 100 being the most popular.
-     * The popularity is calculated by algorithm and is based, in the most part, on the total number of plays the
-     * track has had and how recent those plays are.
-     */
-    public Builder minPopularity(int popularity) {
-      assert (popularity >= 0 && popularity <= 100);
-      return setParameter("min_popularity", Integer.toString(popularity));
-    }
-
-    /**
-     * The popularity of the track. The value will be between 0 and 100, with 100 being the most popular.
-     * The popularity is calculated by algorithm and is based, in the most part, on the total number of plays the
-     * track has had and how recent those plays are.
-     */
-    public Builder targetPopularity(int popularity) {
-      assert (popularity >= 0 && popularity <= 100);
-      return setParameter("target_popularity", Integer.toString(popularity));
-    }
-
-    /**
-     * An estimated overall time signature of a track. The time signature (meter) is a notational convention to specify how many beats are in each bar (or measure).
-     */
-    public Builder maxTimeSignature(int time_signature) {
-      return setParameter("max_time_signature", Integer.toString(time_signature));
-    }
-
-    /**
-     * An estimated overall time signature of a track. The time signature (meter) is a notational convention to specify how many beats are in each bar (or measure).
-     */
-    public Builder minTimeSignature(int time_signature) {
-      return setParameter("min_time_signature", Integer.toString(time_signature));
-    }
-
-    /**
-     * An estimated overall time signature of a track. The time signature (meter) is a notational convention to specify how many beats are in each bar (or measure).
-     */
-    public Builder targetTimeSignature(int time_signature) {
-      return setParameter("target_time_signature", Integer.toString(time_signature));
+    public Builder maxDanceability(final Float maxDanceability) {
+      assert (maxDanceability >= 0 && maxDanceability <= 1);
+      return setParameter("max_danceability", maxDanceability);
     }
 
     /**
      * The duration of the track in milliseconds.
      */
-    public Builder maxDuration(int duration_ms) {
-      return setParameter("max_duration_ms", Integer.toString(duration_ms));
+    public Builder maxDuration_ms(final Integer maxDuration_ms) {
+      return setParameter("max_duration_ms", maxDuration_ms);
+    }
+
+    /**
+     * Energy is a measure from 0.0 to 1.0 and represents a perceptual measure of intensity and activity. Typically,
+     * energetic seed_tracks feel fast, loud, and noisy. For example, death metal has high energy, while a Bach prelude
+     * scores low on the scale. Perceptual features contributing to this attribute include dynamic range, perceived
+     * loudness, timbre, onset rate, and general entropy.
+     */
+    public Builder maxEnergy(final Float maxEnergy) {
+      assert (maxEnergy >= 0 && maxEnergy <= 1);
+      return setParameter("max_energy", maxEnergy);
+    }
+
+    /**
+     * Predicts whether a track contains no vocals. "Ooh" and "aah" sounds are treated as instrumental in this context.
+     * Rap or spoken word seed_tracks are clearly "vocal". The closer the instrumentalness value is to 1.0, the greater
+     * likelihood the track contains no vocal content. Values above 0.5 are intended to represent instrumental
+     * seed_tracks, but confidence is higher as the value approaches 1.0.
+     */
+    public Builder maxInstrumentalness(final Float maxInstrumentalness) {
+      assert (maxInstrumentalness >= 0 && maxInstrumentalness <= 1);
+      return setParameter("max_instrumentalness", maxInstrumentalness);
+    }
+
+    /**
+     * The key the track is in. Integers map to pitches using standard
+     * <a href="https://en.wikipedia.org/wiki/Pitch_class">Pitch Class notation</a>. E.g. 0 = C, 1 = C♯/D♭, 2 = D, and
+     * so on.
+     */
+    public Builder maxKey(final Integer maxKey) {
+      assert (maxKey >= 0 && maxKey <= 11);
+      return setParameter("max_key", maxKey);
+    }
+
+    /**
+     * Detects the presence of an audience in the recording. Higher liveness values represent an increased probability
+     * that the track was performed live. A value above 0.8 provides strong likelihood that the track is live.
+     */
+    public Builder maxLiveness(final Float maxLiveness) {
+      assert (maxLiveness >= 0 && maxLiveness <= 1);
+      return setParameter("max_liveness", maxLiveness);
+    }
+
+    /**
+     * The overall loudness of a track in decibels (dB). Loudness values are averaged across the entire track and are
+     * useful for comparing relative loudness of seed_tracks. Loudness is the quality of a sound that is the primary
+     * psychological correlate of physical strength (amplitude). Values typical range between -60 and 0 db.
+     */
+    public Builder maxLoudness(final Float maxLoudness) {
+      return setParameter("max_loudness", maxLoudness);
+    }
+
+    /**
+     * Mode indicates the modality (major or minor) of a track, the type of scale from which its melodic content is
+     * derived.
+     * Major is represented by 1 and minor is 0.
+     */
+    public Builder maxMode(final Integer maxMode) {
+      assert (maxMode == 0 || maxMode <= 1);
+      return setParameter("max_mode", maxMode);
+    }
+
+    /**
+     * The popularity of the track. The value will be between 0 and 100, with 100 being the most popular. The popularity
+     * is calculated by algorithm and is based, in the most part, on the total number of plays the track has had and how
+     * recent those plays are.
+     */
+    public Builder maxPopularity(final Integer maxPopularity) {
+      assert (maxPopularity >= 0 && maxPopularity <= 100);
+      return setParameter("max_popularity", maxPopularity);
+    }
+
+    /**
+     * Speechiness detects the presence of spoken words in a track. The more exclusively speech-like the recording (e.g.
+     * talk show, audio book, poetry), the closer to 1.0 the attribute value. Values above 0.66 describe seed_tracks
+     * that are probably made entirely of spoken words. Values between 0.33 and 0.66 describe seed_tracks that may
+     * contain both music and speech, either in sections or layered, including such cases as rap music. Values below
+     * 0.33 most likely represent music and other non-speech-like seed_tracks.
+     */
+    public Builder maxSpeechiness(final Float maxSpeechiness) {
+      assert (maxSpeechiness >= 0 && maxSpeechiness <= 1);
+      return setParameter("max_speechiness", maxSpeechiness);
+    }
+
+    /**
+     * The overall estimated tempo of a track in beats per minute (BPM). In musical terminology, tempo is the speed or
+     * pace of a given piece and derives directly from the average beat duration.
+     */
+    public Builder maxTempo(final Float maxTempo) {
+      assert (maxTempo >= 0);
+      return setParameter("max_tempo", maxTempo);
+    }
+
+    /**
+     * An estimated overall time signature of a track. The time signature (meter) is a notational convention to specify
+     * how many beats are in each bar (or measure).
+     */
+    public Builder maxTime_signature(final Integer maxTime_signature) {
+      return setParameter("max_time_signature", maxTime_signature);
+    }
+
+    /**
+     * A measure from 0.0 to 1.0 describing the musical positiveness conveyed by a track. Tracks with high valence sound
+     * more positive (e.g. happy, cheerful, euphoric), while seed_tracks with low valence sound more negative (e.g. sad, depressed, angry).
+     */
+    public Builder maxValence(final Float maxValence) {
+      assert (maxValence >= 0 && maxValence <= 1);
+      return setParameter("max_valence", maxValence);
+    }
+
+    /**
+     * A confidence measure from 0.0 to 1.0 of whether the track is acoustic. 1.0 represents high confidence the track
+     * is acoustic.
+     */
+    public Builder minAcousticness(final Float minAcousticness) {
+      assert (minAcousticness >= 0 && minAcousticness <= 1);
+      return setParameter("min_acousticness", minAcousticness);
+    }
+
+    /**
+     * Danceability describes how suitable a track is for dancing based on a combination of musical elements including
+     * tempo, rhythm stability, beat strength, and overall regularity. A value of 0.0 is least danceable and 1.0 is most
+     * danceable.
+     */
+    public Builder minDanceability(final Float minDanceability) {
+      assert (minDanceability >= 0 && minDanceability <= 1);
+      return setParameter("min_danceability", minDanceability);
     }
 
     /**
      * The duration of the track in milliseconds.
      */
-    public Builder minDuration(int duration_ms) {
-      return setParameter("min_duration_ms", Integer.toString(duration_ms));
+    public Builder minDuration_ms(final Integer minDuration_ms) {
+      return setParameter("min_duration_ms", minDuration_ms);
+    }
+
+    /**
+     * Energy is a measure from 0.0 to 1.0 and represents a perceptual measure of intensity and activity. Typically,
+     * energetic seed_tracks feel fast, loud, and noisy. For example, death metal has high energy, while a Bach prelude
+     * scores low on the scale. Perceptual features contributing to this attribute include dynamic range, perceived
+     * loudness, timbre, onset rate, and general entropy.
+     */
+    public Builder minEnergy(final Float minEnergy) {
+      assert (minEnergy >= 0 && minEnergy <= 1);
+      return setParameter("min_energy", minEnergy);
+    }
+
+    /**
+     * Predicts whether a track contains no vocals. "Ooh" and "aah" sounds are treated as instrumental in this context.
+     * Rap or spoken word seed_tracks are clearly "vocal". The closer the instrumentalness value is to 1.0, the greater
+     * likelihood the track contains no vocal content. Values above 0.5 are intended to represent instrumental
+     * seed_tracks, but confidence is higher as the value approaches 1.0.
+     */
+    public Builder minInstrumentalness(final Float minInstrumentalness) {
+      assert (minInstrumentalness >= 0 && minInstrumentalness <= 1);
+      return setParameter("min_instrumentalness", minInstrumentalness);
+    }
+
+    /**
+     * The key the track is in. Integers map to pitches using standard
+     * <a href="https://en.wikipedia.org/wiki/Pitch_class">Pitch Class notation</a>. E.g. 0 = C, 1 = C♯/D♭, 2 = D, and
+     * so on.
+     */
+    public Builder minKey(final Integer minKey) {
+      assert (minKey >= 0 && minKey <= 11);
+      return setParameter("min_key", minKey);
+    }
+
+    /**
+     * Detects the presence of an audience in the recording. Higher liveness values represent an increased probability
+     * that the track was performed live. A value above 0.8 provides strong likelihood that the track is live.
+     */
+    public Builder minLiveness(final Float minLiveness) {
+      assert (minLiveness >= 0 && minLiveness <= 1);
+      return setParameter("min_liveness", minLiveness);
+    }
+
+    /**
+     * The overall loudness of a track in decibels (dB). Loudness values are averaged across the entire track and are
+     * useful for comparing relative loudness of seed_tracks. Loudness is the quality of a sound that is the primary
+     * psychological correlate of physical strength (amplitude). Values typical range between -60 and 0 db.
+     */
+    public Builder minLoudness(final Float minLoudness) {
+      return setParameter("min_loudness", minLoudness);
+    }
+
+    /**
+     * Mode indicates the modality (major or minor) of a track, the type of scale from which its melodic content is
+     * derived.
+     * Major is represented by 1 and minor is 0.
+     */
+    public Builder minMode(final Integer minMode) {
+      assert (minMode == 0 || minMode <= 1);
+      return setParameter("min_mode", minMode);
+    }
+
+    /**
+     * The popularity of the track. The value will be between 0 and 100, with 100 being the most popular. The popularity
+     * is calculated by algorithm and is based, in the most part, on the total number of plays the track has had and how
+     * recent those plays are.
+     */
+    public Builder minPopularity(final Integer minPopularity) {
+      assert (minPopularity >= 0 && minPopularity <= 100);
+      return setParameter("min_popularity", minPopularity);
+    }
+
+    /**
+     * Speechiness detects the presence of spoken words in a track. The more exclusively speech-like the recording (e.g.
+     * talk show, audio book, poetry), the closer to 1.0 the attribute value. Values above 0.66 describe seed_tracks
+     * that are probably made entirely of spoken words. Values between 0.33 and 0.66 describe seed_tracks that may
+     * contain both music and speech, either in sections or layered, including such cases as rap music. Values below
+     * 0.33 most likely represent music and other non-speech-like seed_tracks.
+     */
+    public Builder minSpeechiness(final Float minSpeechiness) {
+      assert (minSpeechiness >= 0 && minSpeechiness <= 1);
+      return setParameter("min_speechiness", minSpeechiness);
+    }
+
+    /**
+     * The overall estimated tempo of a track in beats per minute (BPM). In musical terminology, tempo is the speed or
+     * pace of a given piece and derives directly from the average beat duration.
+     */
+    public Builder minTempo(final Float minTempo) {
+      assert (minTempo >= 0);
+      return setParameter("min_tempo", minTempo);
+    }
+
+    /**
+     * An estimated overall time signature of a track. The time signature (meter) is a notational convention to specify
+     * how many beats are in each bar (or measure).
+     */
+    public Builder minTime_signature(final Integer minTime_signature) {
+      return setParameter("min_time_signature", minTime_signature);
+    }
+
+    /**
+     * A measure from 0.0 to 1.0 describing the musical positiveness conveyed by a track. Tracks with high valence sound
+     * more positive (e.g. happy, cheerful, euphoric), while seed_tracks with low valence sound more negative (e.g. sad,
+     * depressed, angry).
+     */
+    public Builder minValence(final Float minValence) {
+      assert (minValence >= 0 && minValence <= 1);
+      return setParameter("min_valence", minValence);
+    }
+
+    /**
+     * A comma separated list of Spotify IDs for seed seed_artists. Up to 5 seed values may be provided in any
+     * combination of seed_artists, seed_tracks and seed_genres.
+     */
+    public Builder seed_artists(String[] artists) {
+      return setParameter("seed_artists", Joiner.on(",").join(artists));
+    }
+
+    /**
+     * A comma separated list of any seed_genres in the set of available genre seeds. Up to 5 seed values may be
+     * provided in any combination of seed_artists, seed_tracks and seed_genres.
+     */
+    public Builder seed_genres(String[] seed_genres) {
+      return setParameter("seed_genres", Joiner.on(",").join(seed_genres));
+    }
+
+    /**
+     * A comma separated list of Spotify IDs for a seed track. Up to 5 seed values may be provided in any combination of
+     * seed_artists, seed_tracks and seed_genres.
+     */
+    public Builder seed_tracks(String[] seed_tracks) {
+      return setParameter("seed_tracks", Joiner.on(",").join(seed_tracks));
+    }
+
+    /**
+     * A confidence measure from 0.0 to 1.0 of whether the track is acoustic. 1.0 represents high confidence the track
+     * is acoustic.
+     */
+    public Builder targetAcousticness(final Float targetAcousticness) {
+      assert (targetAcousticness >= 0 && targetAcousticness <= 1);
+      return setParameter("target_acousticness", targetAcousticness);
+    }
+
+    /**
+     * Danceability describes how suitable a track is for dancing based on a combination of musical elements including
+     * tempo, rhythm stability, beat strength, and overall regularity. A value of 0.0 is least danceable and 1.0 is most
+     * danceable.
+     */
+    public Builder targetDanceability(final Float targetDanceability) {
+      assert (targetDanceability >= 0 && targetDanceability <= 1);
+      return setParameter("target_danceability", targetDanceability);
     }
 
     /**
      * The duration of the track in milliseconds.
      */
-    public Builder targetDuration(int duration_ms) {
-      return setParameter("target_duration_ms", Integer.toString(duration_ms));
+    public Builder targetDuration_ms(final Integer targetDuration_ms) {
+      return setParameter("target_duration_ms", targetDuration_ms);
     }
 
     /**
-     * Detects the presence of an audience in the recording. Higher liveness values represent an increased probability that the track was performed live. A value above 0.8 provides strong likelihood that the track is live.
+     * Energy is a measure from 0.0 to 1.0 and represents a perceptual measure of intensity and activity. Typically,
+     * energetic seed_tracks feel fast, loud, and noisy. For example, death metal has high energy, while a Bach prelude
+     * scores low on the scale. Perceptual features contributing to this attribute include dynamic range, perceived
+     * loudness, timbre, onset rate, and general entropy.
      */
-    public Builder maxLiveness(float liveness) {
-      assert (liveness >= 0 && liveness <= 1);
-      return setParameter("max_liveness", Float.toString(liveness));
+    public Builder targetEnergy(final Float targetEnergy) {
+      assert (targetEnergy >= 0 && targetEnergy <= 1);
+      return setParameter("target_energy", targetEnergy);
     }
 
     /**
-     * Detects the presence of an audience in the recording. Higher liveness values represent an increased probability that the track was performed live. A value above 0.8 provides strong likelihood that the track is live.
+     * Predicts whether a track contains no vocals. "Ooh" and "aah" sounds are treated as instrumental in this context.
+     * Rap or spoken word seed_tracks are clearly "vocal". The closer the instrumentalness value is to 1.0, the greater
+     * likelihood the track contains no vocal content. Values above 0.5 are intended to represent instrumental
+     * seed_tracks, but confidence is higher as the value approaches 1.0.
      */
-    public Builder minLiveness(float liveness) {
-      assert (liveness >= 0 && liveness <= 1);
-      return setParameter("min_liveness", Float.toString(liveness));
+    public Builder targetInstrumentalness(final Float targetInstrumentalness) {
+      assert (targetInstrumentalness >= 0 && targetInstrumentalness <= 1);
+      return setParameter("target_instrumentalness", targetInstrumentalness);
     }
 
     /**
-     * Detects the presence of an audience in the recording. Higher liveness values represent an increased probability that the track was performed live. A value above 0.8 provides strong likelihood that the track is live.
+     * The key the track is in. Integers map to pitches using standard
+     * <a href="https://en.wikipedia.org/wiki/Pitch_class">Pitch Class notation</a>. E.g. 0 = C, 1 = C♯/D♭, 2 = D, and
+     * so on.
      */
-    public Builder targetLiveness(float liveness) {
-      assert (liveness >= 0 && liveness <= 1);
-      return setParameter("target_liveness", Float.toString(liveness));
+    public Builder targetKey(final Integer targetKey) {
+      assert (targetKey >= 0 && targetKey <= 11);
+      return setParameter("target_key", targetKey);
     }
 
     /**
-     * A confidence measure from 0.0 to 1.0 of whether the track is acoustic. 1.0 represents high confidence the track is acoustic.
+     * Detects the presence of an audience in the recording. Higher liveness values represent an increased probability
+     * that the track was performed live. A value above 0.8 provides strong likelihood that the track is live.
      */
-    public Builder maxAcousticness(float acousticness) {
-      assert (acousticness >= 0 && acousticness <= 1);
-      return setParameter("max_acousticness", Float.toString(acousticness));
+    public Builder targetLiveness(final Float targetLiveness) {
+      assert (targetLiveness >= 0 && targetLiveness <= 1);
+      return setParameter("target_liveness", targetLiveness);
     }
 
     /**
-     * A confidence measure from 0.0 to 1.0 of whether the track is acoustic. 1.0 represents high confidence the track is acoustic.
+     * The overall loudness of a track in decibels (dB). Loudness values are averaged across the entire track and are
+     * useful for comparing relative loudness of seed_tracks. Loudness is the quality of a sound that is the primary
+     * psychological correlate of physical strength (amplitude). Values typical range between -60 and 0 db.
      */
-    public Builder minAcousticness(float acousticness) {
-      assert (acousticness >= 0 && acousticness <= 1);
-      return setParameter("min_acousticness", Float.toString(acousticness));
+    public Builder targetLoudness(final Float targetLoudness) {
+      return setParameter("target_loudness", targetLoudness);
     }
 
     /**
-     * A confidence measure from 0.0 to 1.0 of whether the track is acoustic. 1.0 represents high confidence the track is acoustic.
+     * Mode indicates the modality (major or minor) of a track, the type of scale from which its melodic content is
+     * derived.
+     * Major is represented by 1 and minor is 0.
      */
-    public Builder targetAcousticness(float acousticness) {
-      assert (acousticness >= 0 && acousticness <= 1);
-      return setParameter("target_acousticness", Float.toString(acousticness));
+    public Builder targetMode(final Integer targetMode) {
+      assert (targetMode == 0 || targetMode <= 1);
+      return setParameter("target_mode", targetMode);
     }
 
     /**
-     * Danceability describes how suitable a track is for dancing based on a combination of musical elements including tempo, rhythm stability, beat strength, and overall regularity. A value of 0.0 is least danceable and 1.0 is most danceable.
+     * The popularity of the track. The value will be between 0 and 100, with 100 being the most popular. The popularity
+     * is calculated by algorithm and is based, in the most part, on the total number of plays the track has had and how
+     * recent those plays are.
      */
-    public Builder maxDanceability(float danceability) {
-      assert (danceability >= 0 && danceability <= 1);
-      return setParameter("max_danceability", Float.toString(danceability));
+    public Builder targetPopularity(final Integer targetPopularity) {
+      assert (targetPopularity >= 0 && targetPopularity <= 100);
+      return setParameter("target_popularity", targetPopularity);
     }
 
     /**
-     * Danceability describes how suitable a track is for dancing based on a combination of musical elements including tempo, rhythm stability, beat strength, and overall regularity. A value of 0.0 is least danceable and 1.0 is most danceable.
+     * Speechiness detects the presence of spoken words in a track. The more exclusively speech-like the recording (e.g.
+     * talk show, audio book, poetry), the closer to 1.0 the attribute value. Values above 0.66 describe seed_tracks
+     * that are probably made entirely of spoken words. Values between 0.33 and 0.66 describe seed_tracks that may
+     * contain both music and speech, either in sections or layered, including such cases as rap music. Values below
+     * 0.33 most likely represent music and other non-speech-like seed_tracks.
      */
-    public Builder minDanceability(float danceability) {
-      assert (danceability >= 0 && danceability <= 1);
-      return setParameter("min_danceability", Float.toString(danceability));
+    public Builder targetSpeechiness(final Float targetSpeechiness) {
+      assert (targetSpeechiness >= 0 && targetSpeechiness <= 1);
+      return setParameter("target_speechiness", targetSpeechiness);
     }
 
     /**
-     * Danceability describes how suitable a track is for dancing based on a combination of musical elements including tempo, rhythm stability, beat strength, and overall regularity. A value of 0.0 is least danceable and 1.0 is most danceable.
+     * The overall estimated tempo of a track in beats per minute (BPM). In musical terminology, tempo is the speed or
+     * pace of a given piece and derives directly from the average beat duration.
      */
-    public Builder targetDanceability(float danceability) {
-      assert (danceability >= 0 && danceability <= 1);
-      return setParameter("target_danceability", Float.toString(danceability));
+    public Builder targetTempo(final Float targetTempo) {
+      assert (targetTempo >= 0);
+      return setParameter("target_tempo", targetTempo);
     }
 
     /**
-     * Energy is a measure from 0.0 to 1.0 and represents a perceptual measure of intensity and activity. Typically, energetic tracks feel fast, loud, and noisy. For example, death metal has high energy, while a Bach prelude scores low on the scale. Perceptual features contributing to this attribute include dynamic range, perceived loudness, timbre, onset rate, and general entropy.
+     * An estimated overall time signature of a track. The time signature (meter) is a notational convention to specify
+     * how many beats are in each bar (or measure).
      */
-    public Builder maxEnergy(float energy) {
-      assert (energy >= 0 && energy <= 1);
-      return setParameter("max_energy", Float.toString(energy));
+    public Builder targetTime_signature(final Integer targetTime_signature) {
+      return setParameter("target_time_signature", targetTime_signature);
     }
 
     /**
-     * Energy is a measure from 0.0 to 1.0 and represents a perceptual measure of intensity and activity. Typically, energetic tracks feel fast, loud, and noisy. For example, death metal has high energy, while a Bach prelude scores low on the scale. Perceptual features contributing to this attribute include dynamic range, perceived loudness, timbre, onset rate, and general entropy.
+     * A measure from 0.0 to 1.0 describing the musical positiveness conveyed by a track. Tracks with high valence sound
+     * more positive (e.g. happy, cheerful, euphoric), while seed_tracks with low valence sound more negative (e.g. sad,
+     * depressed, angry).
      */
-    public Builder minEnergy(float energy) {
-      assert (energy >= 0 && energy <= 1);
-      return setParameter("min_energy", Float.toString(energy));
-    }
-
-    /**
-     * Energy is a measure from 0.0 to 1.0 and represents a perceptual measure of intensity and activity. Typically, energetic tracks feel fast, loud, and noisy. For example, death metal has high energy, while a Bach prelude scores low on the scale. Perceptual features contributing to this attribute include dynamic range, perceived loudness, timbre, onset rate, and general entropy.
-     */
-    public Builder targetEnergy(float energy) {
-      assert (energy >= 0 && energy <= 1);
-      return setParameter("target_energy", Float.toString(energy));
-    }
-
-    /**
-     * Predicts whether a track contains no vocals. "Ooh" and "aah" sounds are treated as instrumental in this context. Rap or spoken word tracks are clearly "vocal". The closer the instrumentalness value is to 1.0, the greater likelihood the track contains no vocal content. Values above 0.5 are intended to represent instrumental tracks, but confidence is higher as the value approaches 1.0.
-     */
-    public Builder maxInstrumentalness(float instrumentalness) {
-      assert (instrumentalness >= 0 && instrumentalness <= 1);
-      return setParameter("max_instrumentalness", Float.toString(instrumentalness));
-    }
-
-    /**
-     * Predicts whether a track contains no vocals. "Ooh" and "aah" sounds are treated as instrumental in this context. Rap or spoken word tracks are clearly "vocal". The closer the instrumentalness value is to 1.0, the greater likelihood the track contains no vocal content. Values above 0.5 are intended to represent instrumental tracks, but confidence is higher as the value approaches 1.0.
-     */
-    public Builder minInstrumentalness(float instrumentalness) {
-      assert (instrumentalness >= 0 && instrumentalness <= 1);
-      return setParameter("min_instrumentalness", Float.toString(instrumentalness));
-    }
-
-    /**
-     * Predicts whether a track contains no vocals. "Ooh" and "aah" sounds are treated as instrumental in this context. Rap or spoken word tracks are clearly "vocal". The closer the instrumentalness value is to 1.0, the greater likelihood the track contains no vocal content. Values above 0.5 are intended to represent instrumental tracks, but confidence is higher as the value approaches 1.0.
-     */
-    public Builder targetInstrumentalness(float instrumentalness) {
-      assert (instrumentalness >= 0 && instrumentalness <= 1);
-      return setParameter("target_instrumentalness", Float.toString(instrumentalness));
-    }
-
-    /**
-     * Speechiness detects the presence of spoken words in a track. The more exclusively speech-like the recording (e.g. talk show, audio book, poetry), the closer to 1.0 the attribute value. Values above 0.66 describe tracks that are probably made entirely of spoken words. Values between 0.33 and 0.66 describe tracks that may contain both music and speech, either in sections or layered, including such cases as rap music. Values below 0.33 most likely represent music and other non-speech-like tracks.
-     */
-    public Builder maxSpeechiness(float speechiness) {
-      assert (speechiness >= 0 && speechiness <= 1);
-      return setParameter("max_speechiness", Float.toString(speechiness));
-    }
-
-    /**
-     * Speechiness detects the presence of spoken words in a track. The more exclusively speech-like the recording (e.g. talk show, audio book, poetry), the closer to 1.0 the attribute value. Values above 0.66 describe tracks that are probably made entirely of spoken words. Values between 0.33 and 0.66 describe tracks that may contain both music and speech, either in sections or layered, including such cases as rap music. Values below 0.33 most likely represent music and other non-speech-like tracks.
-     */
-    public Builder minSpeechiness(float speechiness) {
-      assert (speechiness >= 0 && speechiness <= 1);
-      return setParameter("min_speechiness", Float.toString(speechiness));
-    }
-
-    /**
-     * Speechiness detects the presence of spoken words in a track. The more exclusively speech-like the recording (e.g. talk show, audio book, poetry), the closer to 1.0 the attribute value. Values above 0.66 describe tracks that are probably made entirely of spoken words. Values between 0.33 and 0.66 describe tracks that may contain both music and speech, either in sections or layered, including such cases as rap music. Values below 0.33 most likely represent music and other non-speech-like tracks.
-     */
-    public Builder targetSpeechiness(float speechiness) {
-      assert (speechiness >= 0 && speechiness <= 1);
-      return setParameter("target_speechiness", Float.toString(speechiness));
-    }
-
-
-    /**
-     * The overall loudness of a track in decibels (dB). Loudness values are averaged across the entire track and are useful for comparing relative loudness of tracks. Loudness is the quality of a sound that is the primary psychological correlate of physical strength (amplitude). Values typical range between -60 and 0 db.
-     */
-    public Builder maxLoudness(float loudness) {
-      return setParameter("max_loudness", Float.toString(loudness));
-    }
-
-    /**
-     * The overall loudness of a track in decibels (dB). Loudness values are averaged across the entire track and are useful for comparing relative loudness of tracks. Loudness is the quality of a sound that is the primary psychological correlate of physical strength (amplitude). Values typical range between -60 and 0 db.
-     */
-    public Builder minLoudness(float loudness) {
-      return setParameter("min_loudness", Float.toString(loudness));
-    }
-
-    /**
-     * The overall loudness of a track in decibels (dB). Loudness values are averaged across the entire track and are useful for comparing relative loudness of tracks. Loudness is the quality of a sound that is the primary psychological correlate of physical strength (amplitude). Values typical range between -60 and 0 db.
-     */
-    public Builder targetLoudness(float loudness) {
-      return setParameter("target_loudness", Float.toString(loudness));
-    }
-
-    /**
-     * A measure from 0.0 to 1.0 describing the musical positiveness conveyed by a track. Tracks with high valence sound more positive (e.g. happy, cheerful, euphoric), while tracks with low valence sound more negative (e.g. sad, depressed, angry).
-     */
-    public Builder maxValence(float valence) {
-      assert (valence >= 0 && valence <= 1);
-      return setParameter("max_valence", Float.toString(valence));
-    }
-
-    /**
-     * A measure from 0.0 to 1.0 describing the musical positiveness conveyed by a track. Tracks with high valence sound more positive (e.g. happy, cheerful, euphoric), while tracks with low valence sound more negative (e.g. sad, depressed, angry).
-     */
-    public Builder minValence(float valence) {
-      assert (valence >= 0 && valence <= 1);
-      return setParameter("min_valence", Float.toString(valence));
-    }
-
-    /**
-     * A measure from 0.0 to 1.0 describing the musical positiveness conveyed by a track. Tracks with high valence sound more positive (e.g. happy, cheerful, euphoric), while tracks with low valence sound more negative (e.g. sad, depressed, angry).
-     */
-    public Builder targetValence(float valence) {
-      assert (valence >= 0 && valence <= 1);
-      return setParameter("target_valence", Float.toString(valence));
-    }
-
-    /**
-     * The overall estimated tempo of a track in beats per minute (BPM). In musical terminology, tempo is the speed or pace of a given piece and derives directly from the average beat duration.
-     */
-    public Builder maxTempo(float tempo) {
-      assert (tempo >= 0);
-      return setParameter("max_tempo", Float.toString(tempo));
-    }
-
-    /**
-     * The overall estimated tempo of a track in beats per minute (BPM). In musical terminology, tempo is the speed or pace of a given piece and derives directly from the average beat duration.
-     */
-    public Builder minTempo(float tempo) {
-      assert (tempo >= 0);
-      return setParameter("min_tempo", Float.toString(tempo));
-    }
-
-    /**
-     * The overall estimated tempo of a track in beats per minute (BPM). In musical terminology, tempo is the speed or pace of a given piece and derives directly from the average beat duration.
-     */
-    public Builder targetTempo(float tempo) {
-      assert (tempo >= 0);
-      return setParameter("target_tempo", Float.toString(tempo));
+    public Builder targetValence(final Float targetValence) {
+      assert (targetValence >= 0 && targetValence <= 1);
+      return setParameter("target_valence", targetValence);
     }
 
     @Override

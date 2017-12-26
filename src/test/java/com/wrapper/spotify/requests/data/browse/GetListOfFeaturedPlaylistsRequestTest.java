@@ -3,6 +3,7 @@ package com.wrapper.spotify.requests.data.browse;
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.SettableFuture;
+import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.model_objects.FeaturedPlaylists;
@@ -30,7 +31,7 @@ public class GetListOfFeaturedPlaylistsRequestTest {
     final GetListOfFeaturedPlaylistsRequest request = api.getFeaturedPlaylists()
             .limit(1)
             .offset(1)
-            .country("SE")
+            .country(CountryCode.SE)
             .timestamp(timestamp)
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("featured-playlists.json"))
             .build();
@@ -82,7 +83,7 @@ public class GetListOfFeaturedPlaylistsRequestTest {
     final GetListOfFeaturedPlaylistsRequest request = api.getFeaturedPlaylists()
             .limit(1)
             .offset(1)
-            .country("SE")
+            .country(CountryCode.SE)
             .timestamp(timestamp)
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("featured-playlists.json"))
             .build();
