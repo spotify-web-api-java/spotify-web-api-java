@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.*;
 
-public class ContainsMySavedTracksRequestTest {
+public class CheckUsersSavedTracksRequestTest {
 
   @Test
   public void shouldCheckContains_Async() throws Exception {

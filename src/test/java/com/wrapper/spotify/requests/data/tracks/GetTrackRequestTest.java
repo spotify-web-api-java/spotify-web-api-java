@@ -17,7 +17,7 @@ import static org.junit.Assert.*;
 
 
 @RunWith(MockitoJUnitRunner.class)
-public class TrackRequestTest {
+public class GetTrackRequestTest {
 
   @Test
   public void shouldGetTrackResult_async() throws Exception {

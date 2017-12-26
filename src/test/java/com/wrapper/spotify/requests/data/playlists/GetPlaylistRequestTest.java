@@ -17,7 +17,7 @@ import static org.junit.Assert.*;
 /*
  * TODO: Add negative tests
  */
-public class PlaylistRequestTest {
+public class GetPlaylistRequestTest {
 
   @Test
   public void shouldCreatePlaylistPage_async() throws Exception {

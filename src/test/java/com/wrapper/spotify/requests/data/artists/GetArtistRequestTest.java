@@ -15,7 +15,7 @@ import java.util.concurrent.CountDownLatch;
 import static org.junit.Assert.*;
 
 @RunWith(MockitoJUnitRunner.class)
-public class ArtistRequestTest {
+public class GetArtistRequestTest {
 
   @Test
   public void shouldGetArtistResult_async() throws Exception {

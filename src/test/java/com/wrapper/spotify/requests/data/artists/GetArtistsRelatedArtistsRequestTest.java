@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.*;
 
-public class RelatedArtistsRequestTest {
+public class GetArtistsRelatedArtistsRequestTest {
 
   @Test
   public void shouldGetRelatedArtists_async() throws Exception {

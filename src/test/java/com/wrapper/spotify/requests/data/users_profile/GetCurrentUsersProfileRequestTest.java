@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.*;
 
-public class CurrentUserRequestTest {
+public class GetCurrentUsersProfileRequestTest {
 
   @Test
   public void shouldGetCurrentUser_async() throws Exception {

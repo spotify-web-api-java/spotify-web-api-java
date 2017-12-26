@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
-public class ChangePlaylistDetailsRequestTest {
+public class ChangePlaylistsDetailsRequestTest {
 
   @Test
   public void shouldChangeNameAndPublishedStatus_async() throws Exception {

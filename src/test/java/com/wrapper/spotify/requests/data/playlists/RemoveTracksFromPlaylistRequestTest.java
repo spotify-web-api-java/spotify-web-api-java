@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit;
 import static junit.framework.TestCase.fail;
 import static org.junit.Assert.assertEquals;
 
-public class RemoveTrackFromPlaylistRequestTest {
+public class RemoveTracksFromPlaylistRequestTest {
   @Test
   public void shouldAddTracksToPlaylist_async() throws Exception {
     final String accessToken = "someAccessToken";

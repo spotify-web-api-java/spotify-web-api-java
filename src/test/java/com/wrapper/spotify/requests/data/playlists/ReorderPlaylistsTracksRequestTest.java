@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 import static junit.framework.TestCase.fail;
 import static org.junit.Assert.assertEquals;
 
-public class ReorderTracksInPlaylistRequestTest {
+public class ReorderPlaylistsTracksRequestTest {
   @Test
   public void shouldReorderTracksInPlaylist_async() throws Exception {
     final String accessToken = "someAccessToken";

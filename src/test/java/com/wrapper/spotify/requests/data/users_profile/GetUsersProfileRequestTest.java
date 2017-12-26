@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit;
 import static org.junit.Assert.*;
 
 @RunWith(MockitoJUnitRunner.class)
-public class UserRequestTest {
+public class GetUsersProfileRequestTest {
 
   @Test
   public void shouldCreateUser_async() throws Exception {

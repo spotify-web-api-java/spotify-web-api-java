@@ -17,7 +17,7 @@ import java.util.concurrent.TimeUnit;
 import static org.junit.Assert.*;
 
 @RunWith(MockitoJUnitRunner.class)
-public class TopTracksRequestTest {
+public class GetArtistsTopTracksRequestTest {
 
   @Test
   public void shouldGetTracksResult_async() throws Exception {

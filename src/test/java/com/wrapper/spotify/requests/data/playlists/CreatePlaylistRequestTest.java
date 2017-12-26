@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.*;
 
-public class PlaylistCreationRequestTest {
+public class CreatePlaylistRequestTest {
 
   @Test
   public void shouldCreatePlaylist_async() throws Exception {

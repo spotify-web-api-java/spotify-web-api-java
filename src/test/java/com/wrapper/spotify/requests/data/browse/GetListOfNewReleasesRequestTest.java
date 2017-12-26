@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.*;
 
-public class NewReleasesRequestTest {
+public class GetListOfNewReleasesRequestTest {
 
   @Test
   public void shouldGetNewReleases_async() throws Exception {

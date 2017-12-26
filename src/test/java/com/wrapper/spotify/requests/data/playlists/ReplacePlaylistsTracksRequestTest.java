@@ -17,7 +17,7 @@ import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.fail;
 
 @RunWith(MockitoJUnitRunner.class)
-public class ReplacePlaylistTracksRequestTest {
+public class ReplacePlaylistsTracksRequestTest {
 
   @Test
   public void shouldCreatePlaylist_async() throws Exception {

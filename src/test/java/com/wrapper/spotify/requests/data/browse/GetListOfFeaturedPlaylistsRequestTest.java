@@ -17,7 +17,7 @@ import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.*;
 
-public class FeaturedPlaylistsRequestTest {
+public class GetListOfFeaturedPlaylistsRequestTest {
 
   @Test
   public void shouldGetNewReleases_async() throws Exception {

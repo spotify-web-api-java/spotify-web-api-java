@@ -17,7 +17,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
 @RunWith(MockitoJUnitRunner.class)
-public class TracksRequestTest {
+public class GetSeveralTracksRequestTest {
 
   @Test
   public void shouldGetTracksResult_async() throws Exception {

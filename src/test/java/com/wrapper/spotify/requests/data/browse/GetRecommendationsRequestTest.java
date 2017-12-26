@@ -17,7 +17,7 @@ import static junit.framework.TestCase.fail;
 /**
  * Created by doug on 6/16/16.
  */
-public class RecommendationsRequestTest {
+public class GetRecommendationsRequestTest {
 
   @Test
   public void shouldGetRecommendationsResult_async() throws Exception {

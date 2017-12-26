@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit;
 import static org.junit.Assert.*;
 
 @RunWith(MockitoJUnitRunner.class)
-public class AlbumRequestTest {
+public class GetAlbumRequestTest {
 
   @Test
   public void shouldGetAlbumResult_async() throws Exception {

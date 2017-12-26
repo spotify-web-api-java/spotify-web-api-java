@@ -17,7 +17,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
 @RunWith(MockitoJUnitRunner.class)
-public class ArtistsRequestTest {
+public class GetSeveralArtistsRequestTest {
 
   @Test
   public void shouldGetArtistsResult_async() throws Exception {

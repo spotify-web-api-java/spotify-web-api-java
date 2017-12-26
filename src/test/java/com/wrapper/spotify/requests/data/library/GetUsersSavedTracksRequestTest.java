@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.*;
 
-public class GetMySavedTracksRequestTest {
+public class GetUsersSavedTracksRequestTest {
 
   @Test
   public void shouldGetSavedTracks_async() throws Exception {
