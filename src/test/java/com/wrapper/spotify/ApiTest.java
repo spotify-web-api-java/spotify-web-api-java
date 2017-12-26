@@ -3,6 +3,7 @@ package com.wrapper.spotify;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.neovisionaries.i18n.CountryCode;
+import com.neovisionaries.i18n.LanguageCode;
 import com.wrapper.spotify.UtilProtos.Url.Scheme;
 import com.wrapper.spotify.model_objects.AlbumType;
 import com.wrapper.spotify.model_objects.PlaylistTrackPosition;
@@ -19,6 +20,8 @@ import static com.wrapper.spotify.Assertions.*;
 import static org.junit.Assert.assertEquals;
 
 public class ApiTest {
+
+  SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss");
 
   @Test
   public void shouldCreateAGetAlbumUrl() {
@@ -699,7 +702,7 @@ public class ApiTest {
     assertHasParameter(request.toUrl(), "offset", "1");
     assertHasParameter(request.toUrl(), "country", "SE");
     assertHasParameter(request.toUrl(), "locale", "es_MX");
-    assertHasParameter(request.toUrl(), "timestamp", format.format(timestamp));
+    assertHasParameter(request.toUrl(), "timestamp", simpleDateFormat.format(timestamp));
   }
 
 }

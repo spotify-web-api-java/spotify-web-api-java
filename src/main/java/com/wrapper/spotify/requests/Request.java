@@ -4,7 +4,11 @@ import com.google.gson.JsonElement;
 import com.wrapper.spotify.HttpManager;
 import com.wrapper.spotify.UtilProtos.Url;
 
+import java.text.SimpleDateFormat;
+
 public interface Request {
+  
+  SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss");
 
   Url toUrl();
 
