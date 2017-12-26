@@ -82,5 +82,27 @@ public abstract class AbstractModelObject implements IModelObject {
     public Paging<T> createModelObjectPaging(String json, String key) {
       return createModelObjectPaging(new JsonParser().parse(json).getAsJsonObject().get(key).getAsJsonObject());
     }
+
+    public PagingCursorbased<T> createModelObjectPagingCursorbased(JsonObject jsonObject) {
+      Type type = new TypeToken<T>(getClass()) {
+      }.getType();
+
+      return new PagingCursorbased.Builder<T>()
+              .setHref(jsonObject.get("href").getAsString())
+              .setItems(createModelObjectArray(jsonObject.getAsJsonArray("items")))
+              .setLimit(jsonObject.get("limit").getAsInt())
+              .setNext((jsonObject.get("next") instanceof JsonNull) ? null : jsonObject.get("next").getAsString())
+              .setCursors(new Cursor.JsonUtil().createModelObjectArray(jsonObject.get("cursors").getAsJsonArray()))
+              .setTotal(jsonObject.get("total").getAsInt())
+              .build();
+    }
+
+    public PagingCursorbased<T> createModelObjectPagingCursorbased(String json) {
+      return createModelObjectPagingCursorbased(new JsonParser().parse(json).getAsJsonObject());
+    }
+
+    public PagingCursorbased<T> createModelObjectPagingCursorbased(String json, String key) {
+      return createModelObjectPagingCursorbased(new JsonParser().parse(json).getAsJsonObject().get(key).getAsJsonObject());
+    }
   }
 }
