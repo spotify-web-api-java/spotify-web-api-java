@@ -10,6 +10,9 @@ import com.wrapper.spotify.requests.AbstractRequest;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * Get Spotify catalog information for multiple albums identified by their Spotify IDs.
+ */
 public class GetSeveralAlbumsRequest extends AbstractRequest {
 
   private GetSeveralAlbumsRequest(final Builder builder) {
@@ -31,7 +34,7 @@ public class GetSeveralAlbumsRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return new Album.JsonUtil().createModelObjectArray(new JsonParser().parse(getJson()).getAsJsonObject().get("albums").getAsJsonArray());
+    return new Album.JsonUtil().createModelObjectArray(getJson(), "albums");
   }
 
   public SettableFuture<Album[]> getAsync() throws
@@ -45,22 +48,36 @@ public class GetSeveralAlbumsRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return getAsync(new Album.JsonUtil().createModelObjectArray(new JsonParser().parse(getJson()).getAsJsonObject().get("albums").getAsJsonArray()));
+    return getAsync(new Album.JsonUtil().createModelObjectArray(getJson(), "albums"));
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
-
-    public Builder id(final List<String> ids) {
+    /**
+     * The ids query parameter setter.
+     *
+     * @param ids Required. A comma-separated list of the Spotify IDs for the albums. Maximum: 20 IDs.
+     * @return A GetSeveralAlbumsRequest builder.
+     */
+    public Builder ids(final String[] ids) {
       assert (ids != null);
-      String idsParameter = Joiner.on(",").join(ids);
-      setPath("/v1/albums");
-      return setParameter("ids", idsParameter);
+      return setParameter("ids", Joiner.on(",").join(ids));
+    }
+
+    /**
+     * The market query parameter setter.
+     *
+     * @param market Optional. An ISO 3166-1 alpha-2 country code. Provide this parameter if you want to apply Track Relinking.
+     * @return A GetSeveralAlbumsRequest builder.
+     */
+    public Builder market(final String market) {
+      assert (market != null);
+      return setParameter("market", market);
     }
 
     @Override
     public GetSeveralAlbumsRequest build() {
+      setPath("/v1/albums");
       return new GetSeveralAlbumsRequest(this);
     }
-
   }
 }

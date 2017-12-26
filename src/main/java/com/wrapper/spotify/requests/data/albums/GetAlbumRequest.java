@@ -7,6 +7,9 @@ import com.wrapper.spotify.requests.AbstractRequest;
 
 import java.io.IOException;
 
+/**
+ * Get Spotify catalog information for a single album.
+ */
 public class GetAlbumRequest extends AbstractRequest {
 
   private GetAlbumRequest(final Builder builder) {
@@ -47,14 +50,25 @@ public class GetAlbumRequest extends AbstractRequest {
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
     /**
-     * The album with the given id.
+     * The id path parameter setter.
      *
-     * @param id The id for the album.
-     * @return AlbumRequest
+     * @param id The Spotify ID for the album.
+     * @return A GetAlbumRequest builder.
      */
     public Builder id(final String id) {
       assert (id != null);
       return setPath(String.format("/v1/albums/%s", id));
+    }
+
+    /**
+     * The market query parameter setter.
+     *
+     * @param market Optional. An ISO 3166-1 alpha-2 country code. Provide this parameter if you want to apply Track Relinking.
+     * @return A GetAlbumRequest builder.
+     */
+    public Builder market(final String market) {
+      assert (market != null);
+      return setParameter("market", market);
     }
 
     @Override

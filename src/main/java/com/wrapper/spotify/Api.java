@@ -124,13 +124,9 @@ public class Api {
   }
 
   public GetSeveralAlbumsRequest.Builder getAlbums(String... ids) {
-    return getAlbums(Arrays.asList(ids));
-  }
-
-  public GetSeveralAlbumsRequest.Builder getAlbums(List<String> ids) {
     GetSeveralAlbumsRequest.Builder builder = GetSeveralAlbumsRequest.builder();
     setDefaults(builder);
-    builder.id(ids);
+    builder.ids(ids);
     return builder;
   }
 
@@ -146,7 +142,7 @@ public class Api {
   ) {
     GetAlbumsTracksRequest.Builder builder = GetAlbumsTracksRequest.builder();
     setDefaults(builder);
-    builder.forAlbum(albumId);
+    builder.id(albumId);
     return builder;
   }
 
