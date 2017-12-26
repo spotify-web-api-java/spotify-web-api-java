@@ -4,6 +4,7 @@ public enum AlbumType {
 
   ALBUM("album"),
   SINGLE("single"),
+  APPEARS_ON("appears_on"),
   COMPILATION("compilation");
 
   public final String type;
