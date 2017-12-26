@@ -5,6 +5,7 @@ public enum ModelObjectType {
   ALBUM("album"),
   ARTIST("artist"),
   AUDIO_FEATURES("audio_features"),
+  GENRE("genre"),
   PLAYLIST("playlist"),
   TRACK("track"),
   USER("user");
