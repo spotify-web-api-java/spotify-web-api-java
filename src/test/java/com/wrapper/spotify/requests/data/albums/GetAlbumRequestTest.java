@@ -23,7 +23,7 @@ public class GetAlbumRequestTest {
     final Api api = Api.DEFAULT_API;
 
     final GetAlbumRequest request = api.getAlbum("4pox3k0CGuwwAknR9GtcoX")
-            .setHttpManager(TestUtil.MockedHttpManager.returningJson("GetAlbumRequest.json"))
+            .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/albums/GetAlbumRequest.json"))
             .build();
 
     final SettableFuture<Album> albumFuture = request.getAsync();
@@ -56,7 +56,7 @@ public class GetAlbumRequestTest {
     final Api api = Api.DEFAULT_API;
 
     final GetAlbumRequest request = api.getAlbum("4pox3k0CGuwwAknR9GtcoX")
-            .setHttpManager(TestUtil.MockedHttpManager.returningJson("GetAlbumRequest.json"))
+            .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/albums/GetAlbumRequest.json"))
             .build();
 
     Album album = request.get();

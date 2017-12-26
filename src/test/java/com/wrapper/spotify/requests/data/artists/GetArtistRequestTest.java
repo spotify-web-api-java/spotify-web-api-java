@@ -22,7 +22,7 @@ public class GetArtistRequestTest {
     final Api api = Api.DEFAULT_API;
 
     GetArtistRequest request = api.getArtist("2BTZIqw0ntH9MvilQ3ewNY")
-            .setHttpManager(TestUtil.MockedHttpManager.returningJson("GetArtistRequest.json"))
+            .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/artists/GetArtistRequest.json"))
             .build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
@@ -57,7 +57,7 @@ public class GetArtistRequestTest {
   public void shouldGetArtistResult_sync() throws Exception {
     final Api api = Api.DEFAULT_API;
     GetArtistRequest request = api.getArtist("2BTZIqw0ntH9MvilQ3ewNY")
-            .setHttpManager(TestUtil.MockedHttpManager.returningJson("GetArtistRequest.json"))
+            .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/artists/GetArtistRequest.json"))
             .build();
 
     final Artist artist = request.get();

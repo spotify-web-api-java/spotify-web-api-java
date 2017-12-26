@@ -8,7 +8,7 @@ import static org.junit.Assert.assertEquals;
 public class TrackTest {
   @Test
   public void shouldCreateTrack() throws Exception {
-    Track track = new Track.JsonUtil().createModelObject(TestUtil.readTestData("GetTrackRequest.json"));
+    Track track = new Track.JsonUtil().createModelObject(TestUtil.readTestData("requests/data/tracks/GetTrackRequest.json"));
     assertEquals("0eGsygTp906u18L0Oimnem", track.getId());
   }
 

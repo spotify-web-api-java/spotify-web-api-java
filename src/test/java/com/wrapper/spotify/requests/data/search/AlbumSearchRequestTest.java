@@ -25,7 +25,7 @@ public class AlbumSearchRequestTest {
     final Api api = Api.DEFAULT_API;
 
     final AlbumSearchRequest request = api.searchAlbums("tania bowra")
-            .setHttpManager(TestUtil.MockedHttpManager.returningJson("AlbumSearchRequest.json"))
+            .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/search/AlbumSearchRequest.json"))
             .build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
@@ -72,7 +72,7 @@ public class AlbumSearchRequestTest {
     final Api api = Api.DEFAULT_API;
 
     final AlbumSearchRequest request = api.searchAlbums("tania bowra")
-            .setHttpManager(TestUtil.MockedHttpManager.returningJson("AlbumSearchRequest.json"))
+            .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/search/AlbumSearchRequest.json"))
             .build();
 
     final Paging<AlbumSimplified> albumSearchResult = request.get();

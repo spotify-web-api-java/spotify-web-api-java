@@ -24,7 +24,7 @@ public class GetTrackRequestTest {
     final Api api = Api.DEFAULT_API;
 
     final GetTrackRequest request = api.getTrack("0eGsygTp906u18L0Oimnem")
-            .setHttpManager(TestUtil.MockedHttpManager.returningJson("GetTrackRequest.json"))
+            .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/tracks/GetTrackRequest.json"))
             .build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
@@ -54,7 +54,7 @@ public class GetTrackRequestTest {
     final Api api = Api.DEFAULT_API;
 
     final GetTrackRequest request = api.getTrack("0eGsygTp906u18L0Oimnem")
-            .setHttpManager(TestUtil.MockedHttpManager.returningJson("GetTrackRequest.json"))
+            .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/tracks/GetTrackRequest.json"))
             .build();
 
     final Track track = request.get();

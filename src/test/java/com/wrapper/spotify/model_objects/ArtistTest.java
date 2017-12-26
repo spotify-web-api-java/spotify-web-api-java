@@ -8,7 +8,7 @@ import static org.junit.Assert.assertEquals;
 public class ArtistTest {
   @Test
   public void shouldCreateArtist() throws Exception {
-    Artist artist = new Artist.JsonUtil().createModelObject(TestUtil.readTestData("GetArtistRequest.json"));
+    Artist artist = new Artist.JsonUtil().createModelObject(TestUtil.readTestData("requests/data/artists/GetArtistRequest.json"));
     assertEquals("https://api.spotify.com/v1/artists/2BTZIqw0ntH9MvilQ3ewNY", artist.getHref());
   }
 

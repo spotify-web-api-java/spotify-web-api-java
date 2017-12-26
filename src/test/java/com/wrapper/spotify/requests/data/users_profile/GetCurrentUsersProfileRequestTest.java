@@ -23,7 +23,7 @@ public class GetCurrentUsersProfileRequestTest {
 
     final GetCurrentUsersProfileRequest request = api.getMe()
             .accessToken("myLongAccessToken")
-            .setHttpManager(TestUtil.MockedHttpManager.returningJson("GetCurrentUsersProfileRequest.json"))
+            .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/users_profile/GetCurrentUsersProfileRequest.json"))
             .build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
@@ -67,7 +67,7 @@ public class GetCurrentUsersProfileRequestTest {
 
     final GetCurrentUsersProfileRequest request = api.getMe()
             .accessToken("myLongAccessToken")
-            .setHttpManager(TestUtil.MockedHttpManager.returningJson("GetCurrentUsersProfileRequest.json"))
+            .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/users_profile/GetCurrentUsersProfileRequest.json"))
             .build();
 
     final User user = request.get();

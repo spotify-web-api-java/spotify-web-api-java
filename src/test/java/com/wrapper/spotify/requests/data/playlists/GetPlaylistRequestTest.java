@@ -24,7 +24,7 @@ public class GetPlaylistRequestTest {
     final Api api = Api.DEFAULT_API;
 
     final GetPlaylistRequest request = api.getPlaylist("thelinmichael", "3ktAYNcRHpazJ9qecm3ptn")
-            .setHttpManager(TestUtil.MockedHttpManager.returningJson("GetPlaylistRequest.json"))
+            .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/playlists/GetPlaylistRequest.json"))
             .build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
@@ -53,7 +53,7 @@ public class GetPlaylistRequestTest {
     final Api api = Api.DEFAULT_API;
 
     final GetPlaylistRequest request = api.getPlaylist("thelinmichael", "3ktAYNcRHpazJ9qecm3ptn")
-            .setHttpManager(TestUtil.MockedHttpManager.returningJson("GetPlaylistRequest.json"))
+            .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/playlists/GetPlaylistRequest.json"))
             .build();
 
     final Playlist playlist = request.get();
@@ -66,7 +66,7 @@ public class GetPlaylistRequestTest {
     final Api api = Api.DEFAULT_API;
 
     final GetPlaylistRequest request = api.getPlaylist("thelinmichael", "3ktAYNcRHpazJ9qecm3ptn")
-            .setHttpManager(TestUtil.MockedHttpManager.returningJson("GetPlaylistRequest_Local.json"))
+            .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/playlists/GetPlaylistRequest_Local.json"))
             .build();
 
     Playlist playlist = request.get();

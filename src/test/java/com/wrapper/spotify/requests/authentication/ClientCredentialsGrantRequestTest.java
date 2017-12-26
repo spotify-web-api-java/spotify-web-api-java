@@ -28,7 +28,7 @@ public class ClientCredentialsGrantRequestTest {
 
     final ClientCredentialsGrantRequest request = api
             .clientCredentialsGrant()
-            .setHttpManager(TestUtil.MockedHttpManager.returningJson("application-authentication-token.json"))
+            .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/authentication/application-authentication-token.json"))
             .build();
 
     final ClientCredentials response = request.get();
@@ -49,7 +49,7 @@ public class ClientCredentialsGrantRequestTest {
 
     final ClientCredentialsGrantRequest request = api
             .clientCredentialsGrant()
-            .setHttpManager(TestUtil.MockedHttpManager.returningJson("application-authentication-token.json"))
+            .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/authentication/application-authentication-token.json"))
             .build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);

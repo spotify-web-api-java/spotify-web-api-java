@@ -25,7 +25,7 @@ public class GetAlbumsTracksRequestTest {
 
     final GetAlbumsTracksRequest request = api.getTracksForAlbum("6TJmQnO44YE5BtTxH8pop1")
             .limit(2)
-            .setHttpManager(TestUtil.MockedHttpManager.returningJson("GetAlbumsTracksRequest.json"))
+            .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/albums/GetAlbumsTracksRequest.json"))
             .build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
@@ -68,7 +68,7 @@ public class GetAlbumsTracksRequestTest {
 
     final GetAlbumsTracksRequest request = api.getTracksForAlbum("6TJmQnO44YE5BtTxH8pop1")
             .limit(2)
-            .setHttpManager(TestUtil.MockedHttpManager.returningJson("GetAlbumsTracksRequest.json"))
+            .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/albums/GetAlbumsTracksRequest.json"))
             .build();
     Paging<TrackSimplified> trackSearchResult = request.get();
     assertNotNull(trackSearchResult);

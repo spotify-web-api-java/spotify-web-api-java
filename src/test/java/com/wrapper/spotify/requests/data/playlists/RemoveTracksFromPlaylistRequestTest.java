@@ -32,7 +32,7 @@ public class RemoveTracksFromPlaylistRequestTest {
 
     final RemoveTracksFromPlaylistRequest request = api.removeTrackFromPlaylist(myUsername, myPlaylistId, tracksToRemove)
             .snapshotId(snapshotId)
-            .setHttpManager(TestUtil.MockedHttpManager.returningJson("RemoveTracksFromPlaylistRequest.json"))
+            .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/playlists/RemoveTracksFromPlaylistRequest.json"))
             .build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
@@ -70,7 +70,7 @@ public class RemoveTracksFromPlaylistRequestTest {
 
     final RemoveTracksFromPlaylistRequest request = api.removeTrackFromPlaylist(myUsername, myPlaylistId, tracksToRemove)
             .snapshotId(snapshotId)
-            .setHttpManager(TestUtil.MockedHttpManager.returningJson("RemoveTracksFromPlaylistRequest.json"))
+            .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/playlists/RemoveTracksFromPlaylistRequest.json"))
             .build();
 
     final SnapshotResult snapshotResult = request.get();

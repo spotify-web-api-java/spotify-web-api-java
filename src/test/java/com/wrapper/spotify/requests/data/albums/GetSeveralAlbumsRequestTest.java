@@ -23,7 +23,7 @@ public class GetSeveralAlbumsRequestTest {
     final Api api = Api.DEFAULT_API;
 
     final GetSeveralAlbumsRequest request = api.getAlbums("2hYe61Nd2oOoM6RYCwIma1")
-            .setHttpManager(TestUtil.MockedHttpManager.returningJson("GetSeveralAlbumsRequest.json"))
+            .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/albums/GetSeveralAlbumsRequest.json"))
             .build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
@@ -71,7 +71,7 @@ public class GetSeveralAlbumsRequestTest {
     final Api api = Api.DEFAULT_API;
 
     final GetSeveralAlbumsRequest request = api.getAlbums("2hYe61Nd2oOoM6RYCwIma1")
-            .setHttpManager(TestUtil.MockedHttpManager.returningJson("GetSeveralAlbumsRequest.json"))
+            .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/albums/GetSeveralAlbumsRequest.json"))
             .build();
 
     Album[] albums = request.get();
@@ -102,7 +102,7 @@ public class GetSeveralAlbumsRequestTest {
     final Api api = Api.DEFAULT_API;
 
     final GetSeveralAlbumsRequest request = api.getAlbums("idontexist")
-            .setHttpManager(TestUtil.MockedHttpManager.returningJson("GetSeveralAlbumsRequest_None.json"))
+            .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/albums/GetSeveralAlbumsRequest_None.json"))
             .build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);

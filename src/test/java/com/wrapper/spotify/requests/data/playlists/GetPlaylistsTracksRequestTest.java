@@ -25,7 +25,7 @@ public class GetPlaylistsTracksRequestTest {
 
     final GetPlaylistsTracksRequest request = api
             .getPlaylistTracks("thelinmichael", "3ktAYNcRHpazJ9qecm3ptn")
-            .setHttpManager(TestUtil.MockedHttpManager.returningJson("GetPlaylistsTracksRequest.json"))
+            .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/playlists/GetPlaylistsTracksRequest.json"))
             .build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
@@ -72,7 +72,7 @@ public class GetPlaylistsTracksRequestTest {
 
     final GetPlaylistsTracksRequest request = api
             .getPlaylistTracks("thelinmichael", "3ktAYNcRHpazJ9qecm3ptn")
-            .setHttpManager(TestUtil.MockedHttpManager.returningJson("GetPlaylistsTracksRequest.json"))
+            .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/playlists/GetPlaylistsTracksRequest.json"))
             .build();
 
     final Paging<PlaylistTrack> page = request.get();
