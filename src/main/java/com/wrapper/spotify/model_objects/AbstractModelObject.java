@@ -78,5 +78,9 @@ public abstract class AbstractModelObject implements IModelObject {
     public Paging<T> createModelObjectPaging(String json) {
       return createModelObjectPaging(new JsonParser().parse(json).getAsJsonObject());
     }
+
+    public Paging<T> createModelObjectPaging(String json, String key) {
+      return createModelObjectPaging(new JsonParser().parse(json).getAsJsonObject().get(key).getAsJsonObject());
+    }
   }
 }

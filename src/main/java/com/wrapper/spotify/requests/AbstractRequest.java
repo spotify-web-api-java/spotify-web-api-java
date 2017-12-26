@@ -178,7 +178,12 @@ public abstract class AbstractRequest implements Request {
       return (BuilderType) this;
     }
 
-    public BuilderType setParameter(String name, int value) {
+    public BuilderType setParameter(String name, Integer value) {
+      addParameter(Url.Parameter.newBuilder(), this.parameters, name, String.valueOf(value));
+      return (BuilderType) this;
+    }
+
+    public BuilderType setParameter(String name, Float value) {
       addParameter(Url.Parameter.newBuilder(), this.parameters, name, String.valueOf(value));
       return (BuilderType) this;
     }
