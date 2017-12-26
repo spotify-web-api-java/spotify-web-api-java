@@ -1,14 +1,13 @@
 package com.wrapper.spotify.requests.data.follow;
 
-import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.exceptions.*;
 import com.wrapper.spotify.requests.AbstractRequest;
 
 import java.io.IOException;
 
-public class UnfollowPlaylistRequest extends AbstractRequest {
+public class FollowPlaylistRequest extends AbstractRequest {
 
-  private UnfollowPlaylistRequest(final Builder builder) {
+  private FollowPlaylistRequest(final Builder builder) {
     super(builder);
   }
 
@@ -27,7 +26,7 @@ public class UnfollowPlaylistRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    deleteJson();
+    putJson();
   }
 
   public void getAsync() throws
@@ -41,7 +40,7 @@ public class UnfollowPlaylistRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    getAsync(deleteJson());
+    getAsync(putJson());
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
@@ -57,9 +56,9 @@ public class UnfollowPlaylistRequest extends AbstractRequest {
     }
 
     @Override
-    public UnfollowPlaylistRequest build() {
+    public FollowPlaylistRequest build() {
       setPath("/v1/users/{owner_id}/playlists/{playlist_id}/followers");
-      return new UnfollowPlaylistRequest(this);
+      return new FollowPlaylistRequest(this);
     }
   }
 }

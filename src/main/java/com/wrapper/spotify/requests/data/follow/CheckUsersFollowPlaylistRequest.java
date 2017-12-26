@@ -1,14 +1,17 @@
 package com.wrapper.spotify.requests.data.follow;
 
+import com.google.common.base.Joiner;
 import com.google.common.util.concurrent.SettableFuture;
+import com.google.gson.Gson;
+import com.google.gson.JsonParser;
 import com.wrapper.spotify.exceptions.*;
 import com.wrapper.spotify.requests.AbstractRequest;
 
 import java.io.IOException;
 
-public class UnfollowPlaylistRequest extends AbstractRequest {
+public class CheckUsersFollowPlaylistRequest extends AbstractRequest {
 
-  private UnfollowPlaylistRequest(final Builder builder) {
+  private CheckUsersFollowPlaylistRequest(final Builder builder) {
     super(builder);
   }
 
@@ -16,7 +19,7 @@ public class UnfollowPlaylistRequest extends AbstractRequest {
     return new Builder();
   }
 
-  public void get() throws
+  public Boolean[] get() throws
           IOException,
           NoContentException,
           BadRequestException,
@@ -27,10 +30,10 @@ public class UnfollowPlaylistRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    deleteJson();
+    return new Gson().fromJson(new JsonParser().parse(getJson()).getAsJsonArray(), Boolean[].class);
   }
 
-  public void getAsync() throws
+  public SettableFuture<Boolean[]> getAsync() throws
           IOException,
           NoContentException,
           BadRequestException,
@@ -41,7 +44,7 @@ public class UnfollowPlaylistRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    getAsync(deleteJson());
+    return getAsync(new Gson().fromJson(new JsonParser().parse(getJson()).getAsJsonArray(), Boolean[].class));
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
@@ -56,10 +59,15 @@ public class UnfollowPlaylistRequest extends AbstractRequest {
       return setPathParameter("playlist_id", playlist_id);
     }
 
+    public Builder ids(final String... ids) {
+      assert (ids != null);
+      return setParameter("ids", Joiner.on(",").join(ids));
+    }
+
     @Override
-    public UnfollowPlaylistRequest build() {
-      setPath("/v1/users/{owner_id}/playlists/{playlist_id}/followers");
-      return new UnfollowPlaylistRequest(this);
+    public CheckUsersFollowPlaylistRequest build() {
+      setPath("/v1/users/{owner_id}/playlists/{playlist_id}/followers/contains");
+      return new CheckUsersFollowPlaylistRequest(this);
     }
   }
 }
