@@ -507,16 +507,6 @@ public class Api {
     return builder;
   }
 
-  public ReplaceTracksInPlaylistRequest.Builder replaceTracksInPlaylist(String userId, String playlistId, String[] trackUris) {
-    final ReplaceTracksInPlaylistRequest.Builder builder = ReplaceTracksInPlaylistRequest.builder();
-    setDefaults(builder);
-
-    builder.setBodyParameter(new JsonParser().parse(new Gson().toJson(trackUris)).getAsJsonArray());
-    builder.setPath("/v1/users/" + userId + "/playlists/" + playlistId + "/tracks");
-
-    return builder;
-  }
-
   /**
    * Remove the current user as a follower of a playlist.
    *

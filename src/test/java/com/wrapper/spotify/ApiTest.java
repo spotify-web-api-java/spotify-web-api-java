@@ -459,23 +459,6 @@ public class ApiTest {
   }
 
   @Test
-  public void shouldCreateReplaceTracksInPlaylistUrl() {
-    final String accessToken = "myVeryLongAccessToken";
-    final Api api = Api.builder().accessToken(accessToken).build();
-
-    final String myUsername = "thelinmichael";
-    final String myPlaylistId = "5ieJqeLJjjI8iJWaxeBLuK";
-    final String[] tracksToAdd = {"spotify:track:4BYGxv4rxSNcTgT3DsFB9o", "spotify:tracks:0BG2iE6McPhmAEKIhfqy1X"};
-
-    final Request request = api.replaceTracksInPlaylist(myUsername, myPlaylistId, tracksToAdd).build();
-
-    assertEquals("https://api.spotify.com:443/v1/users/thelinmichael/playlists/" + myPlaylistId + "/tracks", request.toString(false));
-    assertHasHeader(request.toUrl(), "Authorization", "Bearer " + accessToken);
-    assertHasHeader(request.toUrl(), "Content-Type", "application/json");
-    assertHasHeader(request.toUrl(), "Authorization", "Bearer " + accessToken);
-  }
-
-  @Test
   public void shouldCreateChangePlaylistDetailsUrl() {
     final String accessToken = "myVeryLongAccessToken";
     final Api api = Api.builder().accessToken(accessToken).build();
