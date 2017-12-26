@@ -21,7 +21,7 @@ public class GetArtistsRelatedArtistsRequestTest {
 
     final GetArtistsRelatedArtistsRequest request = api
             .getArtistRelatedArtists("0qeei9KQnptjwb8MgkqEoy")
-            .setHttpManager(TestUtil.MockedHttpManager.returningJson("related-artists.json"))
+            .setHttpManager(TestUtil.MockedHttpManager.returningJson("GetArtistsRelatedArtistsRequest.json"))
             .build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
@@ -56,7 +56,7 @@ public class GetArtistsRelatedArtistsRequestTest {
 
     final GetArtistsRelatedArtistsRequest request = api
             .getArtistRelatedArtists("0qeei9KQnptjwb8MgkqEoy")
-            .setHttpManager(TestUtil.MockedHttpManager.returningJson("related-artists.json"))
+            .setHttpManager(TestUtil.MockedHttpManager.returningJson("GetArtistsRelatedArtistsRequest.json"))
             .build();
 
     final Artist[] artists = request.get();

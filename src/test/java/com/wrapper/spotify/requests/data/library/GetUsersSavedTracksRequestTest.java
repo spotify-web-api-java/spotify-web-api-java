@@ -23,7 +23,7 @@ public class GetUsersSavedTracksRequestTest {
     final GetUsersSavedTracksRequest request = api.getMySavedTracks()
             .limit(5)
             .offset(1)
-            .setHttpManager(TestUtil.MockedHttpManager.returningJson("saved-tracks.json"))
+            .setHttpManager(TestUtil.MockedHttpManager.returningJson("GetUsersSavedTracksRequest.json"))
             .build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
@@ -65,7 +65,7 @@ public class GetUsersSavedTracksRequestTest {
     final GetUsersSavedTracksRequest request = api.getMySavedTracks()
             .limit(5)
             .offset(1)
-            .setHttpManager(TestUtil.MockedHttpManager.returningJson("saved-tracks.json"))
+            .setHttpManager(TestUtil.MockedHttpManager.returningJson("GetUsersSavedTracksRequest.json"))
             .build();
 
     final Paging<LibraryTrack> libraryTracks = request.get();

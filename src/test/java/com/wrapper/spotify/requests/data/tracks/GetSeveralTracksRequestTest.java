@@ -24,7 +24,7 @@ public class GetSeveralTracksRequestTest {
     final Api api = Api.DEFAULT_API;
 
     final GetSeveralTracksRequest request = api.getTracks("0eGsygTp906u18L0Oimnem", "1lDWb6b6ieDQ2xT7ewTC3G")
-            .setHttpManager(TestUtil.MockedHttpManager.returningJson("tracks.json"))
+            .setHttpManager(TestUtil.MockedHttpManager.returningJson("GetSeveralTracksRequest.json"))
             .build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
@@ -59,7 +59,7 @@ public class GetSeveralTracksRequestTest {
     final Api api = Api.DEFAULT_API;
 
     final GetSeveralTracksRequest request = api.getTracks("0eGsygTp906u18L0Oimnem", "1lDWb6b6ieDQ2xT7ewTC3G")
-            .setHttpManager(TestUtil.MockedHttpManager.returningJson("tracks.json"))
+            .setHttpManager(TestUtil.MockedHttpManager.returningJson("GetSeveralTracksRequest.json"))
             .build();
 
     final Track[] tracks = request.get();

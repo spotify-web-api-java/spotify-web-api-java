@@ -29,7 +29,7 @@ public class AddTracksToPlaylistRequestTest {
 
     final AddTracksToPlaylistRequest request = api.addTracksToPlaylist(myUsername, myPlaylistId, tracksToAdd)
             .position(insertIndex)
-            .setHttpManager(TestUtil.MockedHttpManager.returningJson("add-tracks.json"))
+            .setHttpManager(TestUtil.MockedHttpManager.returningJson("AddTracksToPlaylistRequest.json"))
             .build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);

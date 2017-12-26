@@ -25,7 +25,7 @@ public class GetArtistsTopTracksRequestTest {
     final Api api = Api.DEFAULT_API;
 
     final GetArtistsTopTracksRequest request = api.getTopTracksForArtist("43ZHCT0cAZBISjO8DG9PnE", CountryCode.GB)
-            .setHttpManager(TestUtil.MockedHttpManager.returningJson("tracks-for-artist.json"))
+            .setHttpManager(TestUtil.MockedHttpManager.returningJson("GetArtistsTopTracksRequest.json"))
             .build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
@@ -74,7 +74,7 @@ public class GetArtistsTopTracksRequestTest {
     final Api api = Api.DEFAULT_API;
 
     final GetArtistsTopTracksRequest request = api.getTopTracksForArtist("43ZHCT0cAZBISjO8DG9PnE", CountryCode.GB)
-            .setHttpManager(TestUtil.MockedHttpManager.returningJson("tracks-for-artist.json"))
+            .setHttpManager(TestUtil.MockedHttpManager.returningJson("GetArtistsTopTracksRequest.json"))
             .build();
 
     final Track[] tracks = request.get();

@@ -22,7 +22,7 @@ public class CreatePlaylistRequestTest {
 
     final CreatePlaylistRequest request = api.createPlaylist("thelinmichael", "Coolest playlist")
             .publicAccess(true)
-            .setHttpManager(TestUtil.MockedHttpManager.returningJson("created-playlist.json"))
+            .setHttpManager(TestUtil.MockedHttpManager.returningJson("CreatePlaylistRequest.json"))
             .build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
@@ -65,7 +65,7 @@ public class CreatePlaylistRequestTest {
 
     final CreatePlaylistRequest request = api.createPlaylist("thelinmichael", "title")
             .publicAccess(true)
-            .setHttpManager(TestUtil.MockedHttpManager.returningJson("created-playlist.json"))
+            .setHttpManager(TestUtil.MockedHttpManager.returningJson("CreatePlaylistRequest.json"))
             .build();
 
     final Playlist playlist = request.get();

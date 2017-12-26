@@ -23,7 +23,7 @@ public class GetUsersProfileRequestTest {
     final Api api = Api.DEFAULT_API;
 
     final GetUsersProfileRequest request = api.getUser("wizzler")
-            .setHttpManager(TestUtil.MockedHttpManager.returningJson("user.json"))
+            .setHttpManager(TestUtil.MockedHttpManager.returningJson("GetUsersProfileRequest.json"))
             .build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
@@ -57,7 +57,7 @@ public class GetUsersProfileRequestTest {
     final Api api = Api.DEFAULT_API;
 
     final GetUsersProfileRequest request = api.getUser("wizzler")
-            .setHttpManager(TestUtil.MockedHttpManager.returningJson("user.json"))
+            .setHttpManager(TestUtil.MockedHttpManager.returningJson("GetUsersProfileRequest.json"))
             .build();
 
     final User user = request.get();

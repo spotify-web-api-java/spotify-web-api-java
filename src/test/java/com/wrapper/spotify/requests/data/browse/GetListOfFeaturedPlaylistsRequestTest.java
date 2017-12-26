@@ -33,7 +33,7 @@ public class GetListOfFeaturedPlaylistsRequestTest {
             .offset(1)
             .country(CountryCode.SE)
             .timestamp(timestamp)
-            .setHttpManager(TestUtil.MockedHttpManager.returningJson("featured-playlists.json"))
+            .setHttpManager(TestUtil.MockedHttpManager.returningJson("GetListOfFeaturedPlaylistsRequest.json"))
             .build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
@@ -85,7 +85,7 @@ public class GetListOfFeaturedPlaylistsRequestTest {
             .offset(1)
             .country(CountryCode.SE)
             .timestamp(timestamp)
-            .setHttpManager(TestUtil.MockedHttpManager.returningJson("featured-playlists.json"))
+            .setHttpManager(TestUtil.MockedHttpManager.returningJson("GetListOfFeaturedPlaylistsRequest.json"))
             .build();
 
     FeaturedPlaylists featuredPlaylists = request.get();

@@ -27,7 +27,7 @@ public class GetListOfUsersPlaylistsRequestTest {
             .accessToken(accessToken)
             .limit(10)
             .offset(2)
-            .setHttpManager(TestUtil.MockedHttpManager.returningJson("user-playlists.json"))
+            .setHttpManager(TestUtil.MockedHttpManager.returningJson("GetListOfUsersPlaylistsRequest.json"))
             .build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
@@ -83,7 +83,7 @@ public class GetListOfUsersPlaylistsRequestTest {
     final GetListOfUsersPlaylistsRequest request = api
             .getPlaylistsForUser("wizzler")
             .accessToken(accessToken)
-            .setHttpManager(TestUtil.MockedHttpManager.returningJson("user-playlists.json"))
+            .setHttpManager(TestUtil.MockedHttpManager.returningJson("GetListOfUsersPlaylistsRequest.json"))
             .build();
 
     final Paging<PlaylistSimplified> playlistsPage = request.get();

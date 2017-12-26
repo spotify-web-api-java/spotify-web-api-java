@@ -28,7 +28,7 @@ public class PlaylistSearchRequestTest {
     final Api api = Api.DEFAULT_API;
 
     final PlaylistSearchRequest request = api.searchPlaylists("dog")
-            .setHttpManager(TestUtil.MockedHttpManager.returningJson("search-playlist.json")).build();
+            .setHttpManager(TestUtil.MockedHttpManager.returningJson("PlaylistSearchRequest.json")).build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
@@ -56,7 +56,7 @@ public class PlaylistSearchRequestTest {
     final Api api = Api.DEFAULT_API;
 
     final PlaylistSearchRequest request = api.searchPlaylists("dog")
-            .setHttpManager(TestUtil.MockedHttpManager.returningJson("search-playlist.json")).build();
+            .setHttpManager(TestUtil.MockedHttpManager.returningJson("PlaylistSearchRequest.json")).build();
 
     final Paging<PlaylistSimplified> playlistSearchResult = request.get();
     validatePlayists(playlistSearchResult);

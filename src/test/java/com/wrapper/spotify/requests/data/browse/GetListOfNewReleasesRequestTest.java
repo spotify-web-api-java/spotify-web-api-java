@@ -24,7 +24,7 @@ public class GetListOfNewReleasesRequestTest {
 
     final GetListOfNewReleasesRequest request = api.getNewReleases()
             .limit(1)
-            .setHttpManager(TestUtil.MockedHttpManager.returningJson("new-releases.json"))
+            .setHttpManager(TestUtil.MockedHttpManager.returningJson("GetListOfNewReleasesRequest.json"))
             .build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
@@ -72,7 +72,7 @@ public class GetListOfNewReleasesRequestTest {
 
     final GetListOfNewReleasesRequest request = api.getNewReleases()
             .limit(1)
-            .setHttpManager(TestUtil.MockedHttpManager.returningJson("new-releases.json"))
+            .setHttpManager(TestUtil.MockedHttpManager.returningJson("GetListOfNewReleasesRequest.json"))
             .build();
 
     NewReleases newReleases = request.get();

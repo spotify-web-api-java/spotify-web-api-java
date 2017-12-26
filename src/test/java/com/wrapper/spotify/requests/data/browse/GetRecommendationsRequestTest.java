@@ -25,7 +25,7 @@ public class GetRecommendationsRequestTest {
     final Api api = Api.DEFAULT_API;
 
     final GetRecommendationsRequest request = api.getRecommendations()
-            .setHttpManager(TestUtil.MockedHttpManager.returningJson("recommendations.json"))
+            .setHttpManager(TestUtil.MockedHttpManager.returningJson("GetRecommendationsRequest.json"))
             .build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
@@ -61,7 +61,7 @@ public class GetRecommendationsRequestTest {
     final Api api = Api.DEFAULT_API;
 
     final GetRecommendationsRequest request = api.getRecommendations()
-            .setHttpManager(TestUtil.MockedHttpManager.returningJson("recommendations.json"))
+            .setHttpManager(TestUtil.MockedHttpManager.returningJson("GetRecommendationsRequest.json"))
             .build();
 
     final TrackSimplified[] tracks = request.get().getTracks();

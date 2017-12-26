@@ -27,7 +27,7 @@ public class TrackSearchRequestTest {
     final TrackSearchRequest request = api.searchTracks("tania bowra")
             .offset(0)
             .limit(20)
-            .setHttpManager(TestUtil.MockedHttpManager.returningJson("search-track.json"))
+            .setHttpManager(TestUtil.MockedHttpManager.returningJson("TrackSearchRequest.json"))
             .build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
@@ -66,7 +66,7 @@ public class TrackSearchRequestTest {
   @Test
   public void shouldGetTracksResult_sync() throws Exception {
     final Api api = Api.DEFAULT_API;
-    final HttpManager mockedHttpManager = TestUtil.MockedHttpManager.returningJson("search-track.json");
+    final HttpManager mockedHttpManager = TestUtil.MockedHttpManager.returningJson("TrackSearchRequest.json");
     final TrackSearchRequest request = api.searchTracks("Mr. Brightside").setHttpManager(mockedHttpManager).build();
 
     final Paging<Track> trackSearchResult = request.get();

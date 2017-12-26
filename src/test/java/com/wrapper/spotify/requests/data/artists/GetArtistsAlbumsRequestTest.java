@@ -29,7 +29,7 @@ public class GetArtistsAlbumsRequestTest {
             .limit(2)
             .album_type(AlbumType.SINGLE)
             .market(CountryCode.US)
-            .setHttpManager(TestUtil.MockedHttpManager.returningJson("artist-album.json"))
+            .setHttpManager(TestUtil.MockedHttpManager.returningJson("GetArtistsAlbumsRequest.json"))
             .build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
@@ -75,7 +75,7 @@ public class GetArtistsAlbumsRequestTest {
             .limit(2)
             .album_type(AlbumType.SINGLE)
             .market(CountryCode.US)
-            .setHttpManager(TestUtil.MockedHttpManager.returningJson("artist-album.json"))
+            .setHttpManager(TestUtil.MockedHttpManager.returningJson("GetArtistsAlbumsRequest.json"))
             .build();
 
     final Paging<AlbumSimplified> albumSearchResult = request.get();

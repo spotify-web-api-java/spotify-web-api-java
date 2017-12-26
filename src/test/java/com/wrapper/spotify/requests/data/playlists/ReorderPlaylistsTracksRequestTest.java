@@ -31,7 +31,7 @@ public class ReorderPlaylistsTracksRequestTest {
     final ReorderPlaylistsTracksRequest request = api.reorderTracksInPlaylist(myUsername, myPlaylistId, rangeStart, insertBefore)
             .rangeLength(rangeLength)
             .snapshotId(snapshotId)
-            .setHttpManager(TestUtil.MockedHttpManager.returningJson("reorder-tracks.json"))
+            .setHttpManager(TestUtil.MockedHttpManager.returningJson("ReorderPlaylistsTracksRequest.json"))
             .build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
@@ -70,7 +70,7 @@ public class ReorderPlaylistsTracksRequestTest {
     final ReorderPlaylistsTracksRequest request = api.reorderTracksInPlaylist(myUsername, myPlaylistId, rangeStart, insertBefore)
             .rangeLength(rangeLength)
             .snapshotId(snapshotId)
-            .setHttpManager(TestUtil.MockedHttpManager.returningJson("reorder-tracks.json"))
+            .setHttpManager(TestUtil.MockedHttpManager.returningJson("ReorderPlaylistsTracksRequest.json"))
             .build();
 
     final SnapshotResult snapshotResult = request.get();
