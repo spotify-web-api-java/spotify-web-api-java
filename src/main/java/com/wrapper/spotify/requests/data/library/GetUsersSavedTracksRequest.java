@@ -48,10 +48,6 @@ public class GetUsersSavedTracksRequest extends AbstractRequest {
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
-    public Builder accessToken(final String accessToken) {
-      return setHeader("Authorization", "Bearer " + accessToken);
-    }
-
     public Builder limit(final int limit) {
       assert (limit > 0);
       return setFormParameter("limit", String.valueOf(limit));

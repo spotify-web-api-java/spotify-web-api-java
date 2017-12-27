@@ -27,6 +27,8 @@ public interface Request {
 
   interface Builder {
 
+    Builder accessToken(final String accessToken);
+
     Builder setHttpManager(final HttpManager httpManager);
 
     Builder setScheme(final String scheme);

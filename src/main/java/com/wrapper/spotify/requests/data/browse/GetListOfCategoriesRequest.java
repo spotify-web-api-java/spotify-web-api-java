@@ -48,12 +48,6 @@ public class GetListOfCategoriesRequest extends AbstractRequest {
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
-    /*
-     * Required. A valid access token from the Spotify Accounts service
-     */
-    public Builder accessToken(String accessToken) {
-      return setHeader("Authorization", "Bearer " + accessToken);
-    }
 
     /*
      * Optional. A country: an ISO 3166-1 alpha-2 country code. Provide this parameter if you want to narrow the list of returned categories to those relevant to a particular country. If omitted, the returned items will be globally relevant.

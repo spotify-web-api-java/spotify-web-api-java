@@ -47,10 +47,6 @@ public class GetCurrentUsersProfileRequest extends AbstractRequest {
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
-    public Builder accessToken(final String accessToken) {
-      return setHeader("Authorization", "Bearer " + accessToken);
-    }
-
     @Override
     public GetCurrentUsersProfileRequest build() {
       setPath("/v1/me");

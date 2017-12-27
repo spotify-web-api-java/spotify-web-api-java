@@ -63,10 +63,6 @@ public class GetListOfUsersPlaylistsRequest extends AbstractRequest {
       return setFormParameter("offset", String.valueOf(offset));
     }
 
-    public Builder accessToken(final String accessToken) {
-      return setHeader("Authorization", "Bearer " + accessToken);
-    }
-
     @Override
     public GetListOfUsersPlaylistsRequest build() {
       return new GetListOfUsersPlaylistsRequest(this);
