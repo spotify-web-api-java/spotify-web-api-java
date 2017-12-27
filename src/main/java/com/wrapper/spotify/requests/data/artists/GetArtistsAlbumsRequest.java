@@ -46,7 +46,7 @@ public class GetArtistsAlbumsRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return getAsync(new AlbumSimplified.JsonUtil().createModelObjectPaging(getJson()));
+    return executeAsync(new AlbumSimplified.JsonUtil().createModelObjectPaging(getJson()));
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
@@ -59,22 +59,22 @@ public class GetArtistsAlbumsRequest extends AbstractRequest {
     public Builder album_type(final AlbumType... album_type) {
       assert (album_type != null);
       assert (album_type.length > 0);
-      return setParameter("album_type", Joiner.on(",").join(album_type));
+      return setFormParameter("album_type", Joiner.on(",").join(album_type));
     }
 
     public Builder market(final CountryCode market) {
       assert (market != null);
-      return setParameter("market", market.toString());
+      return setFormParameter("market", market.toString());
     }
 
     public Builder limit(final Integer limit) {
       assert (limit > 0);
-      return setParameter("limit", limit);
+      return setFormParameter("limit", limit);
     }
 
     public Builder offset(final Integer offset) {
       assert (offset >= 0);
-      return setParameter("offset", offset);
+      return setFormParameter("offset", offset);
     }
 
     @Override

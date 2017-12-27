@@ -44,7 +44,7 @@ public class GetCategorysPlaylistsRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return getAsync(new PlaylistSimplified.JsonUtil().createModelObjectPaging(getJson(), "playlists"));
+    return executeAsync(new PlaylistSimplified.JsonUtil().createModelObjectPaging(getJson(), "playlists"));
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
@@ -60,17 +60,17 @@ public class GetCategorysPlaylistsRequest extends AbstractRequest {
      */
     public Builder country(final CountryCode country) {
       assert (country != null);
-      return setParameter("country", country.toString());
+      return setFormParameter("country", country.toString());
     }
 
     public Builder limit(final Integer limit) {
       assert (limit > 0);
-      return setParameter("limit", limit);
+      return setFormParameter("limit", limit);
     }
 
     public Builder offset(final Integer offset) {
       assert (offset >= 0);
-      return setParameter("offset", offset);
+      return setFormParameter("offset", offset);
     }
 
     @Override

@@ -41,7 +41,7 @@ public class ReplacePlaylistsTracksRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return getAsync(getJson());
+    return executeAsync(getJson());
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {

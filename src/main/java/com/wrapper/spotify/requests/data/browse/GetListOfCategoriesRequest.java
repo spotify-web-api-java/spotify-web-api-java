@@ -30,7 +30,7 @@ public class GetListOfCategoriesRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return new Category.JsonUtil().createModelObjectPaging(new JsonParser().parse(getJson()).getAsJsonObject().get("categories").getAsJsonObject());
+    return new Category.JsonUtil().createModelObjectPaging(getJson(), "categories");
   }
 
   public SettableFuture<Paging<Category>> getAsync() throws
@@ -44,7 +44,7 @@ public class GetListOfCategoriesRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return getAsync(new Category.JsonUtil().createModelObjectPaging(new JsonParser().parse(getJson()).getAsJsonObject().get("categories").getAsJsonObject()));
+    return executeAsync(new Category.JsonUtil().createModelObjectPaging(getJson(), "categories"));
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
@@ -52,7 +52,7 @@ public class GetListOfCategoriesRequest extends AbstractRequest {
      * Required. A valid access token from the Spotify Accounts service
      */
     public Builder accessToken(String accessToken) {
-      return setHeaderParameter("Authorization", "Bearer " + accessToken);
+      return setHeader("Authorization", "Bearer " + accessToken);
     }
 
     /*
@@ -60,7 +60,7 @@ public class GetListOfCategoriesRequest extends AbstractRequest {
      */
     public GetListOfCategoriesRequest.Builder country(String country) {
       assert (country != null);
-      return setParameter("country", country);
+      return setFormParameter("country", country);
     }
 
     /*
@@ -77,7 +77,7 @@ public class GetListOfCategoriesRequest extends AbstractRequest {
      */
     public GetListOfCategoriesRequest.Builder locale(String locale) {
       assert (locale != null);
-      return setParameter("locale", locale);
+      return setFormParameter("locale", locale);
     }
 
     /**
@@ -88,7 +88,7 @@ public class GetListOfCategoriesRequest extends AbstractRequest {
      */
     public GetListOfCategoriesRequest.Builder limit(int limit) {
       assert (limit > 0 && limit <= 50);
-      return setParameter("limit", String.valueOf(limit));
+      return setFormParameter("limit", String.valueOf(limit));
     }
 
     /*
@@ -97,7 +97,7 @@ public class GetListOfCategoriesRequest extends AbstractRequest {
      */
     public GetListOfCategoriesRequest.Builder offset(int offset) {
       assert (offset >= 0);
-      return setParameter("offset", String.valueOf(offset));
+      return setFormParameter("offset", String.valueOf(offset));
     }
 
     @Override

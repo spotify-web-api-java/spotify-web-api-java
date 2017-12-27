@@ -30,7 +30,7 @@ public class TrackSearchRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return new Track.JsonUtil().createModelObjectPaging(new JsonParser().parse(getJson()).getAsJsonObject().get("tracks").getAsJsonObject());
+    return new Track.JsonUtil().createModelObjectPaging(getJson(), "tracks");
   }
 
   public SettableFuture<Paging<Track>> getAsync() throws
@@ -44,7 +44,7 @@ public class TrackSearchRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return getAsync(new Track.JsonUtil().createModelObjectPaging(new JsonParser().parse(getJson()).getAsJsonObject().get("tracks").getAsJsonObject()));
+    return executeAsync(new Track.JsonUtil().createModelObjectPaging(getJson(), "tracks"));
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
@@ -52,23 +52,23 @@ public class TrackSearchRequest extends AbstractRequest {
     public Builder query(final String query) {
       assert (query != null);
       setPath("/v1/search");
-      setParameter("type", "track");
-      return setParameter("q", query);
+      setFormParameter("type", "track");
+      return setFormParameter("q", query);
     }
 
     public Builder market(final String market) {
       assert (market != null);
-      return setParameter("market", market);
+      return setFormParameter("market", market);
     }
 
     public Builder limit(final int limit) {
       assert (limit > 0);
-      return setParameter("limit", String.valueOf(limit));
+      return setFormParameter("limit", String.valueOf(limit));
     }
 
     public Builder offset(final int offset) {
       assert (offset >= 0);
-      return setParameter("offset", String.valueOf(offset));
+      return setFormParameter("offset", String.valueOf(offset));
     }
 
     @Override

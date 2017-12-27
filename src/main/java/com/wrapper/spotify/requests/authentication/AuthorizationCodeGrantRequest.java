@@ -21,7 +21,7 @@ public class AuthorizationCodeGrantRequest extends AbstractRequest {
     return new Builder();
   }
 
-  public SettableFuture<AuthorizationCodeCredentials> getAsync() {
+  public SettableFuture<AuthorizationCodeCredentials> postAsync() {
     final SettableFuture<AuthorizationCodeCredentials> future = SettableFuture.create();
 
     try {
@@ -53,17 +53,17 @@ public class AuthorizationCodeGrantRequest extends AbstractRequest {
 
     public Builder grantType(String grantType) {
       assert (grantType != null);
-      return setBodyParameter("grant_type", grantType);
+      return setQueryParameter("grant_type", grantType);
     }
 
     public Builder code(String code) {
       assert (code != null);
-      return setBodyParameter("code", code);
+      return setQueryParameter("code", code);
     }
 
     public Builder redirectUri(String redirectUri) {
       assert (redirectUri != null);
-      return setBodyParameter("redirect_uri", redirectUri);
+      return setQueryParameter("redirect_uri", redirectUri);
     }
 
     public Builder basicAuthorizationHeader(String clientId, String clientSecret) {
@@ -73,7 +73,7 @@ public class AuthorizationCodeGrantRequest extends AbstractRequest {
       String idSecret = clientId + ":" + clientSecret;
       String idSecretEncoded = new String(Base64.encodeBase64(idSecret.getBytes()));
 
-      return setHeaderParameter("Authorization", "Basic " + idSecretEncoded);
+      return setHeader("Authorization", "Basic " + idSecretEncoded);
     }
 
     public AuthorizationCodeGrantRequest build() {

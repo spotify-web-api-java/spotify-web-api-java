@@ -43,7 +43,7 @@ public class GetCategoryRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return getAsync(new Category.JsonUtil().createModelObject(getJson()));
+    return executeAsync(new Category.JsonUtil().createModelObject(getJson()));
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
@@ -57,7 +57,7 @@ public class GetCategoryRequest extends AbstractRequest {
      */
     public Builder country(final CountryCode country) {
       assert (country != null);
-      return setParameter("country", country.toString());
+      return setFormParameter("country", country.toString());
     }
 
     /**
@@ -74,7 +74,7 @@ public class GetCategoryRequest extends AbstractRequest {
      */
     public Builder locale(final String locale) {
       assert (locale != null);
-      return setParameter("locale", locale);
+      return setFormParameter("locale", locale);
     }
 
     @Override

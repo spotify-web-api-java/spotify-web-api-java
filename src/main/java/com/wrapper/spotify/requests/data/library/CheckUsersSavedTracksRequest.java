@@ -44,20 +44,20 @@ public class CheckUsersSavedTracksRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return getAsync(new Gson().fromJson(new JsonParser().parse(getJson()).getAsJsonArray(), Boolean[].class));
+    return executeAsync(new Gson().fromJson(new JsonParser().parse(getJson()).getAsJsonArray(), Boolean[].class));
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
     public Builder tracks(final String[] trackIds) {
       String idsParameter = Joiner.on(",").join(trackIds);
-      setParameter("ids", idsParameter);
+      setFormParameter("ids", idsParameter);
       return this;
     }
 
     @Override
     public CheckUsersSavedTracksRequest build() {
-      setHeaderParameter("Content-Type", "application/json");
+      setHeader("Content-Type", "application/json");
       return new CheckUsersSavedTracksRequest(this);
     }
 

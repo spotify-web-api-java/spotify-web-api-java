@@ -42,7 +42,7 @@ public class GetUsersProfileRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return getAsync(new User.JsonUtil().createModelObject(getJson()));
+    return executeAsync(new User.JsonUtil().createModelObject(getJson()));
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {

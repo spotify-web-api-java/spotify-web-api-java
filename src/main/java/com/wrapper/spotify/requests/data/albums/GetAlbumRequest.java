@@ -46,7 +46,7 @@ public class GetAlbumRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return getAsync(new Album.JsonUtil().createModelObject(getJson()));
+    return executeAsync(new Album.JsonUtil().createModelObject(getJson()));
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
@@ -69,7 +69,7 @@ public class GetAlbumRequest extends AbstractRequest {
      */
     public Builder market(final CountryCode market) {
       assert (market != null);
-      return setParameter("market", market.toString());
+      return setFormParameter("market", market.toString());
     }
 
     @Override

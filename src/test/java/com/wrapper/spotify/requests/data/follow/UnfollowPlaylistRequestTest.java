@@ -29,7 +29,7 @@
 //
 //    final CountDownLatch asyncCompleted = new CountDownLatch(1);
 //
-//    final SettableFuture<String> result = request.getAsync();
+//    final SettableFuture<String> result = request.executeAsync();
 //
 //    Futures.addCallback(result, new FutureCallback<String>() {
 //      @Override

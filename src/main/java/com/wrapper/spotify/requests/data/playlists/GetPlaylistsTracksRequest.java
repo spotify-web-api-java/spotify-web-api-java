@@ -43,24 +43,24 @@ public class GetPlaylistsTracksRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return getAsync(new PlaylistTrack.JsonUtil().createModelObjectPaging(getJson()));
+    return executeAsync(new PlaylistTrack.JsonUtil().createModelObjectPaging(getJson()));
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
     public Builder fields(final String fields) {
       assert (fields != null);
-      return setParameter("fields", fields);
+      return setFormParameter("fields", fields);
     }
 
     public Builder limit(final int limit) {
       assert (limit > 0);
-      return setParameter("limit", String.valueOf(limit));
+      return setFormParameter("limit", String.valueOf(limit));
     }
 
     public Builder offset(final int offset) {
       assert (offset >= 0);
-      return setParameter("offset", String.valueOf(offset));
+      return setFormParameter("offset", String.valueOf(offset));
     }
 
     @Override

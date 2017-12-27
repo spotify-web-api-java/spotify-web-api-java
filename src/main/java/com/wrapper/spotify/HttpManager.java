@@ -1,9 +1,12 @@
 package com.wrapper.spotify;
 
-import com.wrapper.spotify.UtilProtos.Url;
 import com.wrapper.spotify.exceptions.*;
+import org.apache.http.Header;
+import org.apache.http.NameValuePair;
 
 import java.io.IOException;
+import java.net.URI;
+import java.util.List;
 
 /**
  * A simple HTTP connection interface.
@@ -13,7 +16,7 @@ public interface HttpManager {
   /**
    * Perform an HTTP GET request to the specified URL.
    *
-   * @param url the {@link Url} to HTTP GET.
+   * @param uri the {@link URI} to HTTP GET.
    * @return a String containing the body of the HTTP GET response.
    * @throws IOException                  In case of networking issues.
    * @throws NoContentException           The request has succeeded but returns no message body.
@@ -26,7 +29,7 @@ public interface HttpManager {
    * @throws UnauthorizedException        The request requires user authentication or, if the request included authorization credentials, authorization has been refused for those credentials.
    * @throws ServiceUnavailableException  The server is currently unable to handle the request due to a temporary condition which will be alleviated after some delay. You can choose to resend the request again.
    */
-  String get(Url url) throws
+  String get(URI uri, Header[] headers) throws
           IOException,
           NoContentException,
           BadRequestException,
@@ -41,7 +44,7 @@ public interface HttpManager {
   /**
    * Perform an HTTP POST request to the specified URL.
    *
-   * @param url the {@link Url} to HTTP POST.
+   * @param uri the {@link URI} to HTTP POST.
    * @return a String containing the body of the HTTP POST response.
    * @throws IOException                  In case of networking issues.
    * @throws NoContentException           The request has succeeded but returns no message body.
@@ -54,7 +57,7 @@ public interface HttpManager {
    * @throws UnauthorizedException        The request requires user authentication or, if the request included authorization credentials, authorization has been refused for those credentials.
    * @throws ServiceUnavailableException  The server is currently unable to handle the request due to a temporary condition which will be alleviated after some delay. You can choose to resend the request again.
    */
-  String post(Url url) throws
+  String post(URI uri, Header[] headers, List<NameValuePair> postParameters) throws
           IOException,
           NoContentException,
           BadRequestException,
@@ -69,7 +72,7 @@ public interface HttpManager {
   /**
    * Perform an HTTP PUT request to the specified URL.
    *
-   * @param url the {@link Url} to HTTP PUT.
+   * @param uri the {@link URI} to HTTP PUT.
    * @return a String containing the body of the HTTP PUTresponse.
    * @throws IOException                  In case of networking issues.
    * @throws NoContentException           The request has succeeded but returns no message body.
@@ -82,7 +85,7 @@ public interface HttpManager {
    * @throws UnauthorizedException        The request requires user authentication or, if the request included authorization credentials, authorization has been refused for those credentials.
    * @throws ServiceUnavailableException  The server is currently unable to handle the request due to a temporary condition which will be alleviated after some delay. You can choose to resend the request again.
    */
-  String put(Url url) throws
+  String put(URI uri, Header[] headers, List<NameValuePair> putParameters) throws
           IOException,
           NoContentException,
           BadRequestException,
@@ -97,7 +100,7 @@ public interface HttpManager {
   /**
    * Perform an HTTP DELETE request to the specified URL.
    *
-   * @param url the {@link Url} to HTTP DELETE.
+   * @param uri the {@link URI} to HTTP DELETE.
    * @return a String containing the body of the HTTP DELETE response.
    * @throws IOException                  In case of networking issues.
    * @throws NoContentException           The request has succeeded but returns no message body.
@@ -110,7 +113,7 @@ public interface HttpManager {
    * @throws UnauthorizedException        The request requires user authentication or, if the request included authorization credentials, authorization has been refused for those credentials.
    * @throws ServiceUnavailableException  The server is currently unable to handle the request due to a temporary condition which will be alleviated after some delay. You can choose to resend the request again.
    */
-  String delete(Url url) throws
+  String delete(URI uri, Header[] headers) throws
           IOException,
           NoContentException,
           BadRequestException,

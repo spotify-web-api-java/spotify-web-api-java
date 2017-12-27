@@ -58,31 +58,23 @@ public class RemoveTracksFromPlaylistRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return getAsync(new SnapshotResult.JsonUtil().createModelObject(getJson()));
+    return executeAsync(new SnapshotResult.JsonUtil().createModelObject(getJson()));
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
-    private JsonObject jsonBody;
 
     public Builder tracks(PlaylistTrackPosition[] playlistTrackPositions) {
-      if (jsonBody == null) {
-        jsonBody = new JsonObject();
+      final JsonArray tracks = new JsonArray();
+
+      for (PlaylistTrackPosition playlistTrackPosition : playlistTrackPositions) {
+        tracks.add(getJsonFromPlaylistTrackPosition(playlistTrackPosition));
       }
 
-      final JsonArray jsonArrayTrackUri = new JsonArray();
-      for (PlaylistTrackPosition playlistTrackPosition : playlistTrackPositions) {
-        jsonArrayTrackUri.add(getJsonFromPlaylistTrackPosition(playlistTrackPosition));
-      }
-      jsonBody.add("tracks", jsonArrayTrackUri);
-      return setBodyParameter(jsonBody);
+      return setBodyParameter("tracks", tracks);
     }
 
     public Builder snapshotId(String snapshotId) {
-      if (jsonBody == null) {
-        jsonBody = new JsonObject();
-      }
-      jsonBody.addProperty("snapshot_id", String.valueOf(snapshotId));
-      return setBodyParameter(jsonBody);
+      return setBodyParameter("snapshot_id", snapshotId);
     }
 
     @Override

@@ -1,15 +1,13 @@
 package com.wrapper.spotify;
 
-import com.google.gson.Gson;
+import com.google.common.base.Joiner;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import com.neovisionaries.i18n.CountryCode;
-import com.wrapper.spotify.UtilProtos.Url.Scheme;
 import com.wrapper.spotify.model_objects.PlaylistTrackPosition;
 import com.wrapper.spotify.requests.AbstractRequest;
 import com.wrapper.spotify.requests.authentication.AuthorizationCodeGrantRequest;
-import com.wrapper.spotify.requests.authentication.AuthorizationURLRequest;
+import com.wrapper.spotify.requests.authentication.AuthorizationUriRequest;
 import com.wrapper.spotify.requests.authentication.ClientCredentialsGrantRequest;
 import com.wrapper.spotify.requests.authentication.RefreshAccessTokenRequest;
 import com.wrapper.spotify.requests.data.albums.GetAlbumRequest;
@@ -36,6 +34,7 @@ import com.wrapper.spotify.requests.data.tracks.GetTrackRequest;
 import com.wrapper.spotify.requests.data.users_profile.GetCurrentUsersProfileRequest;
 import com.wrapper.spotify.requests.data.users_profile.GetUsersProfileRequest;
 
+import java.net.URI;
 import java.util.Arrays;
 import java.util.List;
 
@@ -62,13 +61,13 @@ public class Api {
   /**
    * The default http scheme of Spotify API calls.
    */
-  public static final Scheme DEFAULT_SCHEME = Scheme.HTTPS;
+  public static final String DEFAULT_SCHEME = "https";
 
   public static final String DEFAULT_AUTHENTICATION_HOST = "accounts.spotify.com";
 
   public static final int DEFAULT_AUTHENTICATION_PORT = 443;
 
-  public static final Scheme DEFAULT_AUTHENTICATION_SCHEME = Scheme.HTTPS;
+  public static final String DEFAULT_AUTHENTICATION_SCHEME = "https";
 
   /**
    * Api instance with the default settings.
@@ -78,7 +77,7 @@ public class Api {
   private final String clientSecret;
   private final String redirectURI;
   private HttpManager httpManager = null;
-  private Scheme scheme;
+  private String scheme;
   private int port;
   private String host;
   private String accessToken;
@@ -260,7 +259,7 @@ public class Api {
   public GetUsersProfileRequest.Builder getUser(String userId) {
     GetUsersProfileRequest.Builder builder = GetUsersProfileRequest.builder();
     setDefaults(builder);
-    userId = UrlUtil.escapeUsername(userId);
+    userId = UriUtil.escapeUsername(userId);
     builder.username(userId);
     return builder;
   }
@@ -268,7 +267,7 @@ public class Api {
   public GetListOfUsersPlaylistsRequest.Builder getPlaylistsForUser(String userId) {
     GetListOfUsersPlaylistsRequest.Builder builder = GetListOfUsersPlaylistsRequest.builder();
     setDefaults(builder);
-    userId = UrlUtil.escapeUsername(userId);
+    userId = UriUtil.escapeUsername(userId);
     builder.username(userId);
     return builder;
   }
@@ -330,7 +329,7 @@ public class Api {
   public GetPlaylistRequest.Builder getPlaylist(String userId, String playlistId) {
     GetPlaylistRequest.Builder builder = GetPlaylistRequest.builder();
     setDefaults(builder);
-    userId = UrlUtil.escapeUsername(userId);
+    userId = UriUtil.escapeUsername(userId);
     builder.setPath("/v1/users/" + userId + "/playlists/" + playlistId);
     return builder;
   }
@@ -351,14 +350,14 @@ public class Api {
    * Create a playlist.
    *
    * @param userId The playlist's owner.
-   * @param title  The name of the playlist.
+   * @param name  The name of the playlist.
    * @return A builder object that can be used to build a request to create a playlist.
    */
-  public CreatePlaylistRequest.Builder createPlaylist(String userId, String title) {
+  public CreatePlaylistRequest.Builder createPlaylist(String userId, String name) {
     final CreatePlaylistRequest.Builder builder = CreatePlaylistRequest.builder();
     setDefaults(builder);
-    builder.title(title);
-    userId = UrlUtil.escapeUsername(userId);
+    builder.name(name);
+    userId = UriUtil.escapeUsername(userId);
     builder.setPath("/v1/users/" + userId + "/playlists");
     return builder;
   }
@@ -386,7 +385,7 @@ public class Api {
   public GetPlaylistsTracksRequest.Builder getPlaylistTracks(String userId, String playlistId) {
     final GetPlaylistsTracksRequest.Builder builder = GetPlaylistsTracksRequest.builder();
     setDefaults(builder);
-    userId = UrlUtil.escapeUsername(userId);
+    userId = UriUtil.escapeUsername(userId);
     builder.setPath("/v1/users/" + userId + "/playlists/" + playlistId + "/tracks");
     return builder;
   }
@@ -401,7 +400,7 @@ public class Api {
   public GetPlaylistsTracksRequest.Builder getStarred(String userId) {
     final GetPlaylistsTracksRequest.Builder builder = GetPlaylistsTracksRequest.builder();
     setDefaults(builder);
-    userId = UrlUtil.escapeUsername(userId);
+    userId = UriUtil.escapeUsername(userId);
     builder.setPath("/v1/users/" + userId + "/starred/tracks");
     return builder;
   }
@@ -417,10 +416,10 @@ public class Api {
   public AddTracksToPlaylistRequest.Builder addTracksToPlaylist(String userId, String playlistId, String[] trackUris) {
     final AddTracksToPlaylistRequest.Builder builder = AddTracksToPlaylistRequest.builder();
 
-    userId = UrlUtil.escapeUsername(userId);
+    userId = UriUtil.escapeUsername(userId);
 
     setDefaults(builder);
-    builder.setBodyParameter(new JsonParser().parse(new Gson().toJson(trackUris)).getAsJsonArray());
+    builder.setQueryParameter("uris", Joiner.on(",").join(trackUris));
     builder.setPath("/v1/users/" + userId + "/playlists/" + playlistId + "/tracks");
 
     return builder;
@@ -434,16 +433,10 @@ public class Api {
    * @param trackUris  URIs of the tracks to add.
    * @return A builder object that can e used to build a request to add tracks to a playlist.
    */
-  public ReplacePlaylistsTracksRequest.Builder replacePlaylistsTracks(
-          String userId, String playlistId, String[] trackUris
-  ) {
+  public ReplacePlaylistsTracksRequest.Builder replacePlaylistsTracks(String userId, String playlistId, String[] trackUris) {
     final ReplacePlaylistsTracksRequest.Builder builder = ReplacePlaylistsTracksRequest.builder();
     setDefaults(builder);
-    final JsonObject urisObject = new JsonObject();
-    final JsonArray jsonArrayUri = new JsonArray();
-    jsonArrayUri.addAll(new JsonParser().parse(new Gson().toJson(trackUris)).getAsJsonArray());
-    urisObject.add("uris", jsonArrayUri);
-    builder.setBodyParameter(urisObject);
+    builder.setQueryParameter("uris", Joiner.on(",").join(trackUris));
     builder.setPath("/v1/users/" + userId + "/playlists/" + playlistId + "/tracks");
     return builder;
   }
@@ -459,10 +452,10 @@ public class Api {
   public RemoveTracksFromPlaylistRequest.Builder removeTrackFromPlaylist(String userId, String playlistId, String[] trackUris) {
     final RemoveTracksFromPlaylistRequest.Builder builder = RemoveTracksFromPlaylistRequest.builder();
 
-    userId = UrlUtil.escapeUsername(userId);
+    userId = UriUtil.escapeUsername(userId);
 
     setDefaults(builder);
-    builder.setBodyParameter(new JsonParser().parse(new Gson().toJson(trackUris)).getAsJsonArray());
+    builder.setQueryParameter("uris", Joiner.on(",").join(trackUris));
     builder.setPath("/v1/users/" + userId + "/playlists/" + playlistId + "/tracks");
 
     return builder;
@@ -478,15 +471,40 @@ public class Api {
   public ChangePlaylistsDetailsRequest.Builder changePlaylistDetails(String userId, String playlistId) {
     final ChangePlaylistsDetailsRequest.Builder builder = ChangePlaylistsDetailsRequest.builder();
     setDefaults(builder);
-    userId = UrlUtil.escapeUsername(userId);
+    userId = UriUtil.escapeUsername(userId);
     builder.setPath("/v1/users/" + userId + "/playlists/" + playlistId);
     return builder;
   }
 
-  public RemoveTracksFromPlaylistRequest.Builder removeTrackFromPlaylist(String userId, String playlistId, PlaylistTrackPosition[] trackUris) {
+  public RemoveTracksFromPlaylistRequest.Builder removeTrackFromPlaylist(String userId, String playlistId, PlaylistTrackPosition[] playlistTrackPositions) {
     final RemoveTracksFromPlaylistRequest.Builder builder = RemoveTracksFromPlaylistRequest.builder();
+
     setDefaults(builder);
-    builder.tracks(trackUris);
+
+    JsonArray playlistTrackPositionJsonArray = new JsonArray();
+
+    for (PlaylistTrackPosition playlistTrackPosition : playlistTrackPositions) {
+      JsonObject playlistTrackPositionJsonObject = new JsonObject();
+
+      playlistTrackPositionJsonObject.addProperty("uri", playlistTrackPosition.getUri());
+
+      if (playlistTrackPosition.getPositions() != null) {
+        JsonArray positionArray = new JsonArray();
+
+        for (int position : playlistTrackPosition.getPositions()) {
+          positionArray.add(position);
+        }
+
+        playlistTrackPositionJsonObject.add("positions", positionArray);
+      }
+
+      playlistTrackPositionJsonArray.add(playlistTrackPositionJsonObject);
+    }
+
+    JsonObject tracks = new JsonObject();
+    tracks.add("tracks", playlistTrackPositionJsonArray);
+
+    builder.setFormParameter("tracks", tracks.toString());
     builder.setPath("/v1/users/" + userId + "/playlists/" + playlistId + "/tracks");
     return builder;
   }
@@ -550,7 +568,7 @@ public class Api {
   public RemoveUsersSavedTracksRequest.Builder removeFromMySavedTracks(String[] trackIds) {
     final RemoveUsersSavedTracksRequest.Builder builder = RemoveUsersSavedTracksRequest.builder();
     setDefaults(builder);
-    builder.tracks(trackIds);
+    builder.ids(trackIds);
     builder.setPath("/v1/me/tracks");
     return builder;
   }
@@ -561,10 +579,10 @@ public class Api {
    * @param trackIds The track ids to add to the user's library.
    * @return A builder object that can be used to add tracks to the user's library.
    */
-  public SaveTracksForUserRequest.Builder addToMySavedTracks(String[] trackIds) {
+  public SaveTracksForUserRequest.Builder addToMySavedTracks(String... trackIds) {
     final SaveTracksForUserRequest.Builder builder = SaveTracksForUserRequest.builder();
     setDefaults(builder);
-    builder.tracks(trackIds);
+    builder.ids(trackIds);
     builder.setPath("/v1/me/tracks");
     return builder;
   }
@@ -578,8 +596,8 @@ public class Api {
    * @param showDialog - (optional) whether or not to force the user to login
    * @return The URL where the user can give application permissions.
    */
-  public UtilProtos.Url createAuthorizeURL(String[] scopes, String state, boolean showDialog) {
-    final AuthorizationURLRequest.Builder builder = AuthorizationURLRequest.builder();
+  public URI createAuthorizeUri(String[] scopes, String state, boolean showDialog) {
+    final AuthorizationUriRequest.Builder builder = AuthorizationUriRequest.builder();
 
     setDefaults(builder);
 
@@ -597,7 +615,7 @@ public class Api {
 
     builder.showDialog(showDialog);
 
-    return builder.build().toUrl();
+    return builder.build().getUri();
   }
 
   /**
@@ -608,8 +626,8 @@ public class Api {
    *               and the callback to redirect_uri.It is useful to prevent CSRF exploits.
    * @return The URL where the user can give application permissions.
    */
-  public UtilProtos.Url createAuthorizeURL(String[] scopes, String state) {
-    final AuthorizationURLRequest.Builder builder = AuthorizationURLRequest.builder();
+  public URI createAuthorizeUri(String[] scopes, String state) {
+    final AuthorizationUriRequest.Builder builder = AuthorizationUriRequest.builder();
 
     setDefaults(builder);
 
@@ -625,7 +643,7 @@ public class Api {
       builder.state(state);
     }
 
-    return builder.build().toUrl();
+    return builder.build().getUri();
   }
 
   /**
@@ -633,11 +651,10 @@ public class Api {
    * This method returns a builder instead, so that any optional parameters can be added.
    *
    * @param scopes The scopes corresponding to the permissions the application needs.
-   * @return A builder that when built creates a URL where the user can give the application
-   * permissions.
+   * @return The URL where the user can give application permissions.
    */
-  public AuthorizationURLRequest.Builder createAuthorizeURL(String[] scopes) {
-    final AuthorizationURLRequest.Builder builder = AuthorizationURLRequest.builder();
+  public URI createAuthorizeUri(String[] scopes) {
+    final AuthorizationUriRequest.Builder builder = AuthorizationUriRequest.builder();
 
     setDefaults(builder);
 
@@ -649,7 +666,7 @@ public class Api {
       builder.scopes(scopes);
     }
 
-    return builder;
+    return builder.build().getUri();
   }
 
   private void setDefaults(AbstractRequest.Builder builder) {
@@ -658,7 +675,7 @@ public class Api {
     builder.setHost(host);
     builder.setPort(port);
     if (accessToken != null) {
-      builder.setHeaderParameter("Authorization", "Bearer " + accessToken);
+      builder.setHeader("Authorization", "Bearer " + accessToken);
     }
   }
 
@@ -708,14 +725,14 @@ public class Api {
     private String host = DEFAULT_HOST;
     private int port = DEFAULT_PORT;
     private HttpManager httpManager = null;
-    private Scheme scheme = DEFAULT_SCHEME;
+    private String scheme = DEFAULT_SCHEME;
     private String accessToken;
     private String redirectURI;
     private String clientId;
     private String clientSecret;
     private String refreshToken;
 
-    public Builder scheme(Scheme scheme) {
+    public Builder scheme(String scheme) {
       this.scheme = scheme;
       return this;
     }

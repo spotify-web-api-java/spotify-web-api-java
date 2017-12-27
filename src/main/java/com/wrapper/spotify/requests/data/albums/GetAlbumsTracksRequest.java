@@ -47,7 +47,7 @@ public class GetAlbumsTracksRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return getAsync(new TrackSimplified.JsonUtil().createModelObjectPaging(getJson()));
+    return executeAsync(new TrackSimplified.JsonUtil().createModelObjectPaging(getJson()));
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
@@ -70,7 +70,7 @@ public class GetAlbumsTracksRequest extends AbstractRequest {
      */
     public Builder limit(final Integer limit) {
       assert (limit > 0);
-      return setParameter("limit", limit);
+      return setFormParameter("limit", limit);
     }
 
     /**
@@ -81,7 +81,7 @@ public class GetAlbumsTracksRequest extends AbstractRequest {
      */
     public Builder offset(final Integer offset) {
       assert (offset >= 0);
-      return setParameter("offset", offset);
+      return setFormParameter("offset", offset);
     }
 
     /**
@@ -92,7 +92,7 @@ public class GetAlbumsTracksRequest extends AbstractRequest {
      */
     public Builder market(final CountryCode market) {
       assert (market != null);
-      return setParameter("market", market.toString());
+      return setFormParameter("market", market.toString());
     }
 
     @Override

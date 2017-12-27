@@ -17,7 +17,7 @@ public class AddTracksToPlaylistRequest extends AbstractRequest {
     return new Builder();
   }
 
-  public SnapshotResult get() throws
+  public SnapshotResult post() throws
           IOException,
           NoContentException,
           BadRequestException,
@@ -31,7 +31,7 @@ public class AddTracksToPlaylistRequest extends AbstractRequest {
     return new SnapshotResult.JsonUtil().createModelObject(postJson());
   }
 
-  public SettableFuture<SnapshotResult> getAsync() throws
+  public SettableFuture<SnapshotResult> postAsync() throws
           IOException,
           NoContentException,
           BadRequestException,
@@ -42,19 +42,19 @@ public class AddTracksToPlaylistRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return getAsync(new SnapshotResult.JsonUtil().createModelObject(postJson()));
+    return executeAsync(new SnapshotResult.JsonUtil().createModelObject(postJson()));
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
     public Builder position(final int position) {
       assert (position >= 0);
-      return setParameter("position", position);
+      return setFormParameter("position", position);
     }
 
     @Override
     public AddTracksToPlaylistRequest build() {
-      setHeaderParameter("Content-Type", "application/json");
+      setHeader("Content-Type", "application/json");
       return new AddTracksToPlaylistRequest(this);
     }
 

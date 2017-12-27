@@ -1,10 +1,15 @@
 package com.wrapper.spotify;
 
 import com.wrapper.spotify.exceptions.*;
+import org.apache.http.Header;
+import org.apache.http.NameValuePair;
 
 import java.io.*;
+import java.net.URI;
+import java.util.List;
 
 import static org.mockito.Matchers.any;
+import static org.mockito.Matchers.anyListOf;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -35,10 +40,10 @@ public class TestUtil {
       // Mocked HTTP Manager to get predictable responses
       final HttpManager mockedHttpManager = mock(HttpManager.class);
       final String fixture = readTestData(jsonFixture);
-      when(mockedHttpManager.get((UtilProtos.Url) any())).thenReturn(fixture);
-      when(mockedHttpManager.post((UtilProtos.Url) any())).thenReturn(fixture);
-      when(mockedHttpManager.put((UtilProtos.Url) any())).thenReturn(fixture);
-      when(mockedHttpManager.delete((UtilProtos.Url) any())).thenReturn(fixture);
+      when(mockedHttpManager.get(any(URI.class), any(Header[].class))).thenReturn(fixture);
+      when(mockedHttpManager.post(any(URI.class), any(Header[].class), anyListOf(NameValuePair.class))).thenReturn(fixture);
+      when(mockedHttpManager.put(any(URI.class), any(Header[].class), anyListOf(NameValuePair.class))).thenReturn(fixture);
+      when(mockedHttpManager.delete(any(URI.class), any(Header[].class))).thenReturn(fixture);
 
       return mockedHttpManager;
     }
@@ -55,13 +60,12 @@ public class TestUtil {
             BadGatewayException,
             ServiceUnavailableException {
       final HttpManager mockedHttpManager = mock(HttpManager.class);
-      when(mockedHttpManager.get((UtilProtos.Url) any())).thenReturn(returnedString);
-      when(mockedHttpManager.post((UtilProtos.Url) any())).thenReturn(returnedString);
-      when(mockedHttpManager.put((UtilProtos.Url) any())).thenReturn(returnedString);
-      when(mockedHttpManager.delete((UtilProtos.Url) any())).thenReturn(returnedString);
+      when(mockedHttpManager.get(any(URI.class), any(Header[].class))).thenReturn(returnedString);
+      when(mockedHttpManager.post(any(URI.class), any(Header[].class), anyListOf(NameValuePair.class))).thenReturn(returnedString);
+      when(mockedHttpManager.put(any(URI.class), any(Header[].class), anyListOf(NameValuePair.class))).thenReturn(returnedString);
+      when(mockedHttpManager.delete(any(URI.class), any(Header[].class))).thenReturn(returnedString);
 
       return mockedHttpManager;
     }
   }
-
 }

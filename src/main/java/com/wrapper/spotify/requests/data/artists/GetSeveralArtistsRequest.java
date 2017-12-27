@@ -43,14 +43,14 @@ public class GetSeveralArtistsRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return getAsync(new Artist.JsonUtil().createModelObjectArray(getJson(), "artists"));
+    return executeAsync(new Artist.JsonUtil().createModelObjectArray(getJson(), "artists"));
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
     public Builder ids(final String[] ids) {
       assert (ids != null);
-      return setParameter("ids", Joiner.on(",").join(ids));
+      return setFormParameter("ids", Joiner.on(",").join(ids));
     }
 
     @Override

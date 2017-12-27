@@ -47,7 +47,7 @@ public class GetSeveralAlbumsRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return getAsync(new Album.JsonUtil().createModelObjectArray(getJson(), "albums"));
+    return executeAsync(new Album.JsonUtil().createModelObjectArray(getJson(), "albums"));
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
@@ -59,7 +59,7 @@ public class GetSeveralAlbumsRequest extends AbstractRequest {
      */
     public Builder ids(final String[] ids) {
       assert (ids != null);
-      return setParameter("ids", Joiner.on(",").join(ids));
+      return setFormParameter("ids", Joiner.on(",").join(ids));
     }
 
     /**
@@ -70,7 +70,7 @@ public class GetSeveralAlbumsRequest extends AbstractRequest {
      */
     public Builder market(final CountryCode market) {
       assert (market != null);
-      return setParameter("market", market.toString());
+      return setFormParameter("market", market.toString());
     }
 
     @Override

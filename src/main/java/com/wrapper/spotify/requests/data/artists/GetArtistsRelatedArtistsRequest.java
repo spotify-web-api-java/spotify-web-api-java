@@ -42,7 +42,7 @@ public class GetArtistsRelatedArtistsRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return getAsync(new Artist.JsonUtil().createModelObjectArray(getJson(), "artists"));
+    return executeAsync(new Artist.JsonUtil().createModelObjectArray(getJson(), "artists"));
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {

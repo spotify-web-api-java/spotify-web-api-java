@@ -75,7 +75,7 @@ public class GetListOfFeaturedPlaylistsRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return getAsync(new FeaturedPlaylists.JsonUtil().createModelObject(getJson()));
+    return executeAsync(new FeaturedPlaylists.JsonUtil().createModelObject(getJson()));
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
@@ -83,27 +83,27 @@ public class GetListOfFeaturedPlaylistsRequest extends AbstractRequest {
     public Builder locale(final LanguageCode languageCode, final CountryCode countryCode) {
       assert (languageCode != null);
       assert (countryCode != null);
-      return setParameter("locale", languageCode + "_" + countryCode);
+      return setFormParameter("locale", languageCode + "_" + countryCode);
     }
 
     public Builder country(final CountryCode countryCode) {
       assert (countryCode != null);
-      return setParameter("country", countryCode.toString());
+      return setFormParameter("country", countryCode.toString());
     }
 
     public Builder timestamp(final Date timestamp) {
       assert (timestamp != null);
-      return setParameter("timestamp", simpleDateFormat.format(timestamp));
+      return setFormParameter("timestamp", simpleDateFormat.format(timestamp));
     }
 
     public Builder limit(final Integer limit) {
       assert (limit > 0);
-      return setParameter("limit", String.valueOf(limit));
+      return setFormParameter("limit", String.valueOf(limit));
     }
 
     public Builder offset(final Integer offset) {
       assert (offset >= 0);
-      return setParameter("offset", String.valueOf(offset));
+      return setFormParameter("offset", String.valueOf(offset));
     }
 
     @Override

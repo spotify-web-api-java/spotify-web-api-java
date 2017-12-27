@@ -17,7 +17,7 @@ public class RemoveUsersSavedTracksRequest extends AbstractRequest {
     return new Builder();
   }
 
-  public String get() throws
+  public String delete() throws
           IOException,
           NoContentException,
           BadRequestException,
@@ -31,7 +31,7 @@ public class RemoveUsersSavedTracksRequest extends AbstractRequest {
     return deleteJson();
   }
 
-  public SettableFuture<String> getAsync() throws
+  public SettableFuture<String> deleteAsync() throws
           IOException,
           NoContentException,
           BadRequestException,
@@ -42,14 +42,14 @@ public class RemoveUsersSavedTracksRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return getAsync(deleteJson());
+    return executeAsync(deleteJson());
   }
 
   public static class Builder extends AbstractRequest.Builder<Builder> {
 
-    public Builder tracks(final String[] trackIds) {
+    public Builder ids(final String[] trackIds) {
       String idsParameter = Joiner.on(",").join(trackIds);
-      return setParameter("ids", idsParameter);
+      return setQueryParameter("ids", idsParameter);
     }
 
     @Override

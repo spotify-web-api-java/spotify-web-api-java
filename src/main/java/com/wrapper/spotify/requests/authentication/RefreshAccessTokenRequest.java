@@ -21,7 +21,7 @@ public class RefreshAccessTokenRequest extends AbstractRequest {
     return new Builder();
   }
 
-  public SettableFuture<RefreshAccessTokenCredentials> getAsync() {
+  public SettableFuture<RefreshAccessTokenCredentials> executeAsync() {
     final SettableFuture<RefreshAccessTokenCredentials> future = SettableFuture.create();
 
     try {
@@ -58,17 +58,17 @@ public class RefreshAccessTokenRequest extends AbstractRequest {
       String idSecret = clientId + ":" + clientSecret;
       String idSecretEncoded = new String(Base64.encodeBase64(idSecret.getBytes()));
 
-      return setHeaderParameter("Authorization", "Basic " + idSecretEncoded);
+      return setHeader("Authorization", "Basic " + idSecretEncoded);
     }
 
     public Builder grantType(String grantType) {
       assert (grantType != null);
-      return setBodyParameter("grant_type", grantType);
+      return setQueryParameter("grant_type", grantType);
     }
 
     public Builder refreshToken(String refreshToken) {
       assert (refreshToken != null);
-      return setBodyParameter("refresh_token", refreshToken);
+      return setQueryParameter("refresh_token", refreshToken);
     }
 
     public RefreshAccessTokenRequest build() {

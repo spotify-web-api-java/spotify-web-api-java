@@ -15,7 +15,7 @@ public class FollowPlaylistRequest extends AbstractRequest {
     return new Builder();
   }
 
-  public void get() throws
+  public void put() throws
           IOException,
           NoContentException,
           BadRequestException,
@@ -29,7 +29,7 @@ public class FollowPlaylistRequest extends AbstractRequest {
     putJson();
   }
 
-  public void getAsync() throws
+  public void putAsync() throws
           IOException,
           NoContentException,
           BadRequestException,
@@ -40,7 +40,7 @@ public class FollowPlaylistRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    getAsync(putJson());
+    executeAsync(putJson());
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {

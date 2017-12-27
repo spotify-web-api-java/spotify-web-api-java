@@ -4,50 +4,49 @@ import com.google.common.base.Joiner;
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.requests.AbstractRequest;
 
-public class AuthorizationURLRequest extends AbstractRequest {
+public class AuthorizationUriRequest extends AbstractRequest {
 
-  public AuthorizationURLRequest(Builder builder) {
+  public AuthorizationUriRequest(Builder builder) {
     super(builder);
   }
 
-  public static AuthorizationURLRequest.Builder builder() {
+  public static AuthorizationUriRequest.Builder builder() {
     return new Builder();
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
     public Builder scopes(String[] scopes) {
-      return setParameter("scope", Joiner.on(" ").join(scopes));
+      return setQueryParameter("scope", Joiner.on(" ").join(scopes));
     }
 
     public Builder state(String state) {
-      return setParameter("state", state);
+      return setQueryParameter("state", state);
     }
 
     public Builder responseType(String responseType) {
-      return setParameter("response_type", responseType);
+      return setQueryParameter("response_type", responseType);
     }
 
     public Builder clientId(String clientId) {
-      return setParameter("client_id", clientId);
+      return setQueryParameter("client_id", clientId);
     }
 
     public Builder redirectURI(String redirectURI) {
-      return setParameter("redirect_uri", redirectURI);
+      return setQueryParameter("redirect_uri", redirectURI);
     }
 
     public Builder showDialog(boolean showDialog) {
-      return setParameter("show_dialog", String.valueOf(showDialog));
+      return setQueryParameter("show_dialog", String.valueOf(showDialog));
     }
 
-    public AuthorizationURLRequest build() {
+    public AuthorizationUriRequest build() {
       setHost(Api.DEFAULT_AUTHENTICATION_HOST);
       setPort(Api.DEFAULT_AUTHENTICATION_PORT);
       setScheme(Api.DEFAULT_AUTHENTICATION_SCHEME);
       setPath("/authorize");
 
-      return new AuthorizationURLRequest(this);
+      return new AuthorizationUriRequest(this);
     }
   }
-
 }

@@ -43,50 +43,30 @@ public class ReorderPlaylistsTracksRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return getAsync(new SnapshotResult.JsonUtil().createModelObject(getJson()));
+    return executeAsync(new SnapshotResult.JsonUtil().createModelObject(getJson()));
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
-    private JsonObject jsonBody;
 
     public Builder rangeStart(int rangeStart) {
-      if (jsonBody == null) {
-        jsonBody = new JsonObject();
-      }
-
-      jsonBody.addProperty("range_start", rangeStart);
-      return setBodyParameter(jsonBody);
+      return setBodyParameter("range_start", rangeStart);
     }
 
     public Builder insertBefore(int insertBefore) {
-      if (jsonBody == null) {
-        jsonBody = new JsonObject();
-      }
-
-      jsonBody.addProperty("insert_before", insertBefore);
-      return setBodyParameter(jsonBody);
+      return setBodyParameter("insert_before", insertBefore);
     }
 
     public Builder rangeLength(int rangeLength) {
-      if (jsonBody == null) {
-        jsonBody = new JsonObject();
-      }
-
-      jsonBody.addProperty("range_length", rangeLength);
-      return setBodyParameter(jsonBody);
+      return setBodyParameter("range_length", rangeLength);
     }
 
     public Builder snapshotId(String snapshotId) {
-      if (jsonBody == null) {
-        jsonBody = new JsonObject();
-      }
-      jsonBody.addProperty("snapshot_id", String.valueOf(snapshotId));
-      return setBodyParameter(jsonBody);
+      assert(snapshotId != null);
+      return setBodyParameter("snapshot_id", snapshotId);
     }
 
     @Override
     public ReorderPlaylistsTracksRequest build() {
-      setHeaderParameter("Content-Type", "application/json");
       return new ReorderPlaylistsTracksRequest(this);
     }
 

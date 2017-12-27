@@ -17,7 +17,7 @@ public class FollowArtistsOrUsersRequest extends AbstractRequest {
     return new Builder();
   }
 
-  public void get() throws
+  public void put() throws
           IOException,
           NoContentException,
           BadRequestException,
@@ -31,7 +31,7 @@ public class FollowArtistsOrUsersRequest extends AbstractRequest {
     putJson();
   }
 
-  public void getAsync() throws
+  public void putAsync() throws
           IOException,
           NoContentException,
           BadRequestException,
@@ -42,19 +42,19 @@ public class FollowArtistsOrUsersRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    getAsync(putJson());
+    executeAsync(putJson());
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
     public Builder type(final ModelObjectType type) {
       assert (type != null);
-      return setParameter("type", type.toString());
+      return setFormParameter("type", type.toString());
     }
 
     public Builder ids(final String... ids) {
       assert (ids != null);
-      return setParameter("ids", Joiner.on(",").join(ids));
+      return setFormParameter("ids", Joiner.on(",").join(ids));
     }
 
     @Override

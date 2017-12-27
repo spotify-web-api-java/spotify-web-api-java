@@ -1,6 +1,5 @@
 package com.wrapper.spotify.requests.data.follow;
 
-import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.exceptions.*;
 import com.wrapper.spotify.requests.AbstractRequest;
 
@@ -16,7 +15,7 @@ public class UnfollowPlaylistRequest extends AbstractRequest {
     return new Builder();
   }
 
-  public void get() throws
+  public void delete() throws
           IOException,
           NoContentException,
           BadRequestException,
@@ -30,7 +29,7 @@ public class UnfollowPlaylistRequest extends AbstractRequest {
     deleteJson();
   }
 
-  public void getAsync() throws
+  public void deleteAsync() throws
           IOException,
           NoContentException,
           BadRequestException,
@@ -41,7 +40,7 @@ public class UnfollowPlaylistRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    getAsync(deleteJson());
+    executeAsync(deleteJson());
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {

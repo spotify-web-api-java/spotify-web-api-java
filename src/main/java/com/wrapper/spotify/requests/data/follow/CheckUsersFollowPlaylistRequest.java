@@ -44,7 +44,7 @@ public class CheckUsersFollowPlaylistRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return getAsync(new Gson().fromJson(new JsonParser().parse(getJson()).getAsJsonArray(), Boolean[].class));
+    return executeAsync(new Gson().fromJson(new JsonParser().parse(getJson()).getAsJsonArray(), Boolean[].class));
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
@@ -61,7 +61,7 @@ public class CheckUsersFollowPlaylistRequest extends AbstractRequest {
 
     public Builder ids(final String... ids) {
       assert (ids != null);
-      return setParameter("ids", Joiner.on(",").join(ids));
+      return setFormParameter("ids", Joiner.on(",").join(ids));
     }
 
     @Override

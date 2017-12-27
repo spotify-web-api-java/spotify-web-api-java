@@ -30,7 +30,7 @@ public class PlaylistSearchRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return new PlaylistSimplified.JsonUtil().createModelObjectPaging(new JsonParser().parse(getJson()).getAsJsonObject().get("playlists").getAsJsonObject());
+    return new PlaylistSimplified.JsonUtil().createModelObjectPaging(getJson(), "playlists");
   }
 
   public SettableFuture<Paging<PlaylistSimplified>> getAsync() throws
@@ -44,7 +44,7 @@ public class PlaylistSearchRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return getAsync(new PlaylistSimplified.JsonUtil().createModelObjectPaging(new JsonParser().parse(getJson()).getAsJsonObject().get("playlists").getAsJsonObject()));
+    return executeAsync(new PlaylistSimplified.JsonUtil().createModelObjectPaging(getJson(), "playlists"));
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
@@ -52,23 +52,23 @@ public class PlaylistSearchRequest extends AbstractRequest {
     public Builder query(String query) {
       assert (query != null);
       setPath("/v1/search");
-      setParameter("type", "playlist");
-      return setParameter("q", query);
+      setFormParameter("type", "playlist");
+      return setFormParameter("q", query);
     }
 
     public Builder market(String market) {
       assert (market != null);
-      return setParameter("market", market);
+      return setFormParameter("market", market);
     }
 
     public Builder limit(int limit) {
       assert (limit > 0);
-      return setParameter("limit", String.valueOf(limit));
+      return setFormParameter("limit", String.valueOf(limit));
     }
 
     public Builder offset(int offset) {
       assert (offset >= 0);
-      return setParameter("offset", String.valueOf(offset));
+      return setFormParameter("offset", String.valueOf(offset));
     }
 
     @Override

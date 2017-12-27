@@ -44,24 +44,24 @@ public class GetUsersFollowedArtistsRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return getAsync(new Artist.JsonUtil().createModelObjectPagingCursorbased(getJson()));
+    return executeAsync(new Artist.JsonUtil().createModelObjectPagingCursorbased(getJson()));
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
     public Builder type(final ModelObjectType type) {
       assert (type != null);
-      return setParameter("type", type.toString());
+      return setFormParameter("type", type.toString());
     }
 
     public Builder limit(final Integer limit) {
       assert (limit != null);
-      return setParameter("type", limit);
+      return setFormParameter("type", limit);
     }
 
     public Builder after(final String after) {
       assert (after != null);
-      return setParameter("type", after);
+      return setFormParameter("type", after);
     }
 
     @Override

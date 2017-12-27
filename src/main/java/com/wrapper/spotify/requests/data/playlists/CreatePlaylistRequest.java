@@ -18,7 +18,7 @@ public class CreatePlaylistRequest extends AbstractRequest {
     return new Builder();
   }
 
-  public Playlist get() throws
+  public Playlist post() throws
           IOException,
           NoContentException,
           BadRequestException,
@@ -32,7 +32,7 @@ public class CreatePlaylistRequest extends AbstractRequest {
     return new Playlist.JsonUtil().createModelObject(postJson());
   }
 
-  public SettableFuture<Playlist> getAsync() throws
+  public SettableFuture<Playlist> postAsync() throws
           IOException,
           NoContentException,
           BadRequestException,
@@ -43,35 +43,23 @@ public class CreatePlaylistRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return getAsync(new Playlist.JsonUtil().createModelObject(postJson()));
+    return executeAsync(new Playlist.JsonUtil().createModelObject(postJson()));
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
-    private JsonObject jsonBody;
-
     public Builder publicAccess(final boolean publicAccess) {
-      if (jsonBody == null) {
-        jsonBody = new JsonObject();
-      }
-      jsonBody.addProperty("public", String.valueOf(publicAccess));
-      return setBodyParameter(jsonBody);
+      return setQueryParameter("public", publicAccess);
     }
 
-    public Builder title(final String title) {
-      if (jsonBody == null) {
-        jsonBody = new JsonObject();
-      }
-      jsonBody.addProperty("name", String.valueOf(title));
-      return setBodyParameter(jsonBody);
+    public Builder name(final String name) {
+      assert(name != null);
+      return setQueryParameter("name", name);
     }
 
     @Override
     public CreatePlaylistRequest build() {
-      setHeaderParameter("Content-Type", "application/json");
       return new CreatePlaylistRequest(this);
     }
-
   }
-
 }

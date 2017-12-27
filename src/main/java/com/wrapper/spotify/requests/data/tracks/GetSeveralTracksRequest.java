@@ -31,7 +31,7 @@ public class GetSeveralTracksRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return new Track.JsonUtil().createModelObjectArray(new JsonParser().parse(getJson()).getAsJsonObject().get("tracks").getAsJsonArray());
+    return new Track.JsonUtil().createModelObjectArray(getJson(), "tracks");
   }
 
   public SettableFuture<Track[]> getAsync() throws
@@ -45,7 +45,7 @@ public class GetSeveralTracksRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return getAsync(new Track.JsonUtil().createModelObjectArray(new JsonParser().parse(getJson()).getAsJsonObject().get("tracks").getAsJsonArray()));
+    return executeAsync(new Track.JsonUtil().createModelObjectArray(getJson(), "tracks"));
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
@@ -54,7 +54,7 @@ public class GetSeveralTracksRequest extends AbstractRequest {
       assert (ids != null);
       String idsParameter = Joiner.on(",").join(ids);
       setPath("/v1/tracks");
-      return setParameter("ids", idsParameter);
+      return setFormParameter("ids", idsParameter);
     }
 
     @Override

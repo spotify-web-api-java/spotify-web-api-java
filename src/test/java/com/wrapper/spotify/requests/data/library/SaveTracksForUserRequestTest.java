@@ -30,7 +30,7 @@ public class SaveTracksForUserRequestTest {
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
-    final SettableFuture<String> addTrackFuture = request.getAsync();
+    final SettableFuture<String> addTrackFuture = request.putAsync();
 
     Futures.addCallback(addTrackFuture, new FutureCallback<String>() {
 
@@ -64,7 +64,7 @@ public class SaveTracksForUserRequestTest {
             .setHttpManager(TestUtil.MockedHttpManager.returningString(""))
             .build();
 
-    final String addTrackResponse = request.get();
+    final String addTrackResponse = request.put();
 
     assertEquals("", addTrackResponse);
   }

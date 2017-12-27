@@ -30,7 +30,7 @@ public class GetUsersRecentlyPlayedTracksRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return new PlayHistory.JsonUtil().createModelObjectPaging(new JsonParser().parse(getJson()).getAsJsonObject().get("items").getAsJsonObject());
+    return new PlayHistory.JsonUtil().createModelObjectPaging(getJson(), "items");
   }
 
   public SettableFuture<Paging<PlayHistory>> getAsync() throws
@@ -44,7 +44,7 @@ public class GetUsersRecentlyPlayedTracksRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return getAsync(new PlayHistory.JsonUtil().createModelObjectPaging(new JsonParser().parse(getJson()).getAsJsonObject().get("items").getAsJsonObject()));
+    return executeAsync(new PlayHistory.JsonUtil().createModelObjectPaging(getJson(), "items"));
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {

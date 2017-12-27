@@ -43,23 +43,23 @@ public class GetUsersSavedTracksRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return getAsync(new LibraryTrack.JsonUtil().createModelObjectPaging(getJson()));
+    return executeAsync(new LibraryTrack.JsonUtil().createModelObjectPaging(getJson()));
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
     public Builder accessToken(final String accessToken) {
-      return setHeaderParameter("Authorization", "Bearer " + accessToken);
+      return setHeader("Authorization", "Bearer " + accessToken);
     }
 
     public Builder limit(final int limit) {
       assert (limit > 0);
-      return setParameter("limit", String.valueOf(limit));
+      return setFormParameter("limit", String.valueOf(limit));
     }
 
     public Builder offset(final int offset) {
       assert (offset >= 0);
-      return setParameter("offset", String.valueOf(offset));
+      return setFormParameter("offset", String.valueOf(offset));
     }
 
     @Override

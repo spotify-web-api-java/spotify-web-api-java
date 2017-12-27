@@ -65,7 +65,7 @@ public class GetAvailableGenreSeedsRequest extends AbstractRequest {
             }.getType()
     );
 
-    return getAsync(genres.toArray(new String[0]));
+    return executeAsync(genres.toArray(new String[0]));
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {

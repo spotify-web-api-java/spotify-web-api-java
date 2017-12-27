@@ -42,7 +42,7 @@ public class GetTrackRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return getAsync(new Track.JsonUtil().createModelObject(getJson()));
+    return executeAsync(new Track.JsonUtil().createModelObject(getJson()));
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {

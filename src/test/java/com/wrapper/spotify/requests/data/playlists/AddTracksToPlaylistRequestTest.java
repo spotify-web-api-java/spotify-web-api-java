@@ -34,7 +34,7 @@ public class AddTracksToPlaylistRequestTest {
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
-    final SettableFuture<SnapshotResult> addTrackFuture = request.getAsync();
+    final SettableFuture<SnapshotResult> addTrackFuture = request.postAsync();
 
     Futures.addCallback(addTrackFuture, new FutureCallback<SnapshotResult>() {
       @Override

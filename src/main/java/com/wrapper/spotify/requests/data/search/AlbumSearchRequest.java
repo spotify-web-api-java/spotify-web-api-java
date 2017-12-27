@@ -30,7 +30,7 @@ public class AlbumSearchRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return new AlbumSimplified.JsonUtil().createModelObjectPaging(new JsonParser().parse(getJson()).getAsJsonObject().get("albums").getAsJsonObject());
+    return new AlbumSimplified.JsonUtil().createModelObjectPaging(getJson(), "albums");
   }
 
   public SettableFuture<Paging<AlbumSimplified>> getAsync() throws
@@ -44,7 +44,7 @@ public class AlbumSearchRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return getAsync(new AlbumSimplified.JsonUtil().createModelObjectPaging(new JsonParser().parse(getJson()).getAsJsonObject().get("albums").getAsJsonObject()));
+    return executeAsync(new AlbumSimplified.JsonUtil().createModelObjectPaging(getJson(), "albums"));
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
@@ -52,23 +52,23 @@ public class AlbumSearchRequest extends AbstractRequest {
     public Builder query(final String query) {
       assert (query != null);
       setPath("/v1/search");
-      setParameter("type", "album");
-      return setParameter("q", query);
+      setFormParameter("type", "album");
+      return setFormParameter("q", query);
     }
 
     public Builder market(final String market) {
       assert (market != null);
-      return setParameter("market", market);
+      return setFormParameter("market", market);
     }
 
     public Builder limit(final int limit) {
       assert (limit > 0);
-      return setParameter("limit", String.valueOf(limit));
+      return setFormParameter("limit", String.valueOf(limit));
     }
 
     public Builder offset(final int offset) {
       assert (offset >= 0);
-      return setParameter("offset", String.valueOf(offset));
+      return setFormParameter("offset", String.valueOf(offset));
     }
 
     @Override

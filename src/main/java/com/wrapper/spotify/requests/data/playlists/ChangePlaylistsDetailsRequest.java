@@ -20,7 +20,7 @@ public class ChangePlaylistsDetailsRequest extends AbstractRequest {
     return new Builder();
   }
 
-  public String get() throws
+  public String put() throws
           IOException,
           NoContentException,
           BadRequestException,
@@ -34,7 +34,7 @@ public class ChangePlaylistsDetailsRequest extends AbstractRequest {
     return putJson();
   }
 
-  public SettableFuture<String> getAsync() throws
+  public SettableFuture<String> putAsync() throws
           IOException,
           NoContentException,
           BadRequestException,
@@ -45,28 +45,24 @@ public class ChangePlaylistsDetailsRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return getAsync(putJson());
+    return executeAsync(putJson());
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
-    final private Map<String, Object> properties = Maps.newHashMap();
-
     public Builder name(final String name) {
       assert (name != null);
-      properties.put("name", name);
+      setBodyParameter("name", name);
       return this;
     }
 
-    public Builder publicAccess(final boolean isPublic) {
-      properties.put("public", isPublic);
+    public Builder publicAccess(final boolean publicAccess) {
+      setBodyParameter("public", publicAccess);
       return this;
     }
 
     @Override
     public ChangePlaylistsDetailsRequest build() {
-      setHeaderParameter("Content-Type", "application/json");
-      setBodyParameter(new JsonParser().parse(new Gson().toJson(properties)).getAsJsonObject());
       return new ChangePlaylistsDetailsRequest(this);
     }
 

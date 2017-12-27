@@ -54,7 +54,7 @@ public class ClientCredentialsGrantRequestTest {
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
-    final SettableFuture<ClientCredentials> responseFuture = request.getAsync();
+    final SettableFuture<ClientCredentials> responseFuture = request.executeAsync();
 
     Futures.addCallback(responseFuture, new FutureCallback<ClientCredentials>() {
       @Override

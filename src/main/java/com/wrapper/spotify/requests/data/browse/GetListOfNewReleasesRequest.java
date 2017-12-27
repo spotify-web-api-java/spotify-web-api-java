@@ -43,24 +43,24 @@ public class GetListOfNewReleasesRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return getAsync(new NewReleases.JsonUtil().createModelObject(getJson()));
+    return executeAsync(new NewReleases.JsonUtil().createModelObject(getJson()));
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
     public Builder country(final CountryCode countryCode) {
       assert (countryCode != null);
-      return setParameter("country", countryCode.toString());
+      return setFormParameter("country", countryCode.toString());
     }
 
     public Builder limit(final Integer limit) {
       assert (limit > 0);
-      return setParameter("limit", String.valueOf(limit));
+      return setFormParameter("limit", String.valueOf(limit));
     }
 
     public Builder offset(final Integer offset) {
       assert (offset >= 0);
-      return setParameter("offset", String.valueOf(offset));
+      return setFormParameter("offset", String.valueOf(offset));
     }
 
     @Override

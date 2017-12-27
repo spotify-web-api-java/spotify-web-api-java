@@ -42,7 +42,7 @@ public class GetAudioFeaturesForTrackRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return getAsync(new AudioFeature.JsonUtil().createModelObject(getJson()));
+    return executeAsync(new AudioFeature.JsonUtil().createModelObject(getJson()));
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {

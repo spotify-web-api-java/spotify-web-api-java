@@ -42,14 +42,14 @@ public class GetPlaylistRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return getAsync(new Playlist.JsonUtil().createModelObject(getJson()));
+    return executeAsync(new Playlist.JsonUtil().createModelObject(getJson()));
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
     public Builder fields(final String fields) {
       assert (fields != null);
-      return setParameter("fields", fields);
+      return setFormParameter("fields", fields);
     }
 
     @Override

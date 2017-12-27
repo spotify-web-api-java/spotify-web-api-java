@@ -1,27 +1,37 @@
 package com.wrapper.spotify.requests;
 
-import com.google.gson.JsonElement;
+import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.HttpManager;
-import com.wrapper.spotify.UtilProtos.Url;
+import com.wrapper.spotify.exceptions.*;
+import org.apache.http.Header;
+import org.apache.http.NameValuePair;
 
+import java.io.IOException;
+import java.net.URI;
 import java.text.SimpleDateFormat;
+import java.util.List;
 
 public interface Request {
 
   SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss");
 
-  Url toUrl();
+  <T> SettableFuture<T> executeAsync(T value);
 
-  String toString();
+  HttpManager getHttpManager();
 
-  String toString(final boolean withQueryParameters);
+  URI getUri();
+
+  List<Header> getHeaders();
+
+  List<NameValuePair> getFormParameters();
+
+  List<NameValuePair> getBodyParameters();
 
   interface Builder {
-    AbstractRequest build();
 
     Builder setHttpManager(final HttpManager httpManager);
 
-    Builder setScheme(final Url.Scheme scheme);
+    Builder setScheme(final String scheme);
 
     Builder setHost(final String host);
 
@@ -29,15 +39,16 @@ public interface Request {
 
     Builder setPath(final String path);
 
-    Builder setParameter(final String name, final String value);
+    Builder setPathParameter(final String name, final String value);
 
-    Builder setHeaderParameter(final String name, final String value);
+    <T> Builder setQueryParameter(final String name, final T value);
 
-    Builder setBodyParameter(final String name, final String value);
+    <T> Builder setHeader(final String name, final T value);
 
-    Builder setPart(final Url.Part part);
+    <T> Builder setFormParameter(final String name, final T value);
 
-    Builder setBodyParameter(final JsonElement jsonBody);
+    <T> Builder setBodyParameter(final String name, final T value);
+
+    AbstractRequest build();
   }
-
 }

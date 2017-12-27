@@ -42,7 +42,7 @@ public class GetUsersCurrentlyPlayingTrackRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return getAsync(new CurrentlyPlayingTrack.JsonUtil().createModelObject(getJson()));
+    return executeAsync(new CurrentlyPlayingTrack.JsonUtil().createModelObject(getJson()));
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {

@@ -1,5 +1,6 @@
 package com.wrapper.spotify.requests.data.library;
 
+import com.google.common.base.Joiner;
 import com.google.common.util.concurrent.SettableFuture;
 import com.google.gson.Gson;
 import com.google.gson.JsonParser;
@@ -18,7 +19,7 @@ public class SaveTracksForUserRequest extends AbstractRequest {
     return new Builder();
   }
 
-  public String get() throws
+  public String put() throws
           IOException,
           NoContentException,
           BadRequestException,
@@ -32,7 +33,7 @@ public class SaveTracksForUserRequest extends AbstractRequest {
     return putJson();
   }
 
-  public SettableFuture<String> getAsync() throws
+  public SettableFuture<String> putAsync() throws
           IOException,
           NoContentException,
           BadRequestException,
@@ -43,13 +44,13 @@ public class SaveTracksForUserRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return getAsync(putJson());
+    return executeAsync(putJson());
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
-    public Builder tracks(final String[] trackIds) {
-      setBodyParameter(new JsonParser().parse(new Gson().toJson(trackIds)).getAsJsonArray());
+    public Builder ids(final String... trackIds) {
+      setQueryParameter("ids", Joiner.on(",").join(trackIds));
       return this;
     }
 

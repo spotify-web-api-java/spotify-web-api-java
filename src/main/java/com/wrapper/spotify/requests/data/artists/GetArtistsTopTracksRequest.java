@@ -43,7 +43,7 @@ public class GetArtistsTopTracksRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return getAsync(new Track.JsonUtil().createModelObjectArray(getJson(), "tracks"));
+    return executeAsync(new Track.JsonUtil().createModelObjectArray(getJson(), "tracks"));
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
@@ -55,7 +55,7 @@ public class GetArtistsTopTracksRequest extends AbstractRequest {
 
     public Builder country(final CountryCode country) {
       assert (country != null);
-      return setParameter("country", country.toString());
+      return setFormParameter("country", country.toString());
     }
 
     @Override

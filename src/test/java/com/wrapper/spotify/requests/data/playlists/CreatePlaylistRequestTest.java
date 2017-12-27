@@ -27,7 +27,7 @@ public class CreatePlaylistRequestTest {
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
-    final SettableFuture<Playlist> playlistFuture = request.getAsync();
+    final SettableFuture<Playlist> playlistFuture = request.postAsync();
 
     Futures.addCallback(playlistFuture, new FutureCallback<Playlist>() {
       @Override
@@ -68,7 +68,7 @@ public class CreatePlaylistRequestTest {
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/playlists/CreatePlaylistRequest.json"))
             .build();
 
-    final Playlist playlist = request.get();
+    final Playlist playlist = request.post();
 
     assertNotNull(playlist);
     assertFalse(playlist.getIsCollaborative());

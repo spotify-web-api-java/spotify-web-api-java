@@ -17,7 +17,7 @@ public class UnfollowArtistsOrUsersRequest extends AbstractRequest {
     return new Builder();
   }
 
-  public void get() throws
+  public void delete() throws
           IOException,
           NoContentException,
           BadRequestException,
@@ -31,7 +31,7 @@ public class UnfollowArtistsOrUsersRequest extends AbstractRequest {
     deleteJson();
   }
 
-  public void getAsync() throws
+  public void deleteAsync() throws
           IOException,
           NoContentException,
           BadRequestException,
@@ -42,19 +42,19 @@ public class UnfollowArtistsOrUsersRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    getAsync(deleteJson());
+    executeAsync(deleteJson());
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
     public Builder type(final ModelObjectType type) {
       assert (type != null);
-      return setParameter("type", type.toString());
+      return setFormParameter("type", type.toString());
     }
 
     public Builder ids(final String... ids) {
       assert (ids != null);
-      return setParameter("ids", Joiner.on(",").join(ids));
+      return setFormParameter("ids", Joiner.on(",").join(ids));
     }
 
     @Override

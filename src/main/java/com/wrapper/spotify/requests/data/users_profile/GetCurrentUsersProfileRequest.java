@@ -42,13 +42,13 @@ public class GetCurrentUsersProfileRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return getAsync(new User.JsonUtil().createModelObject(getJson()));
+    return executeAsync(new User.JsonUtil().createModelObject(getJson()));
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
     public Builder accessToken(final String accessToken) {
-      return setHeaderParameter("Authorization", "Bearer " + accessToken);
+      return setHeader("Authorization", "Bearer " + accessToken);
     }
 
     @Override

@@ -4,7 +4,6 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.neovisionaries.i18n.CountryCode;
 import com.neovisionaries.i18n.LanguageCode;
-import com.wrapper.spotify.UtilProtos.Url.Scheme;
 import com.wrapper.spotify.model_objects.AlbumType;
 import com.wrapper.spotify.model_objects.PlaylistTrackPosition;
 import com.wrapper.spotify.requests.Request;
@@ -27,14 +26,14 @@ public class ApiTest {
   public void shouldCreateAGetAlbumUrl() {
     Api api = Api.DEFAULT_API;
     Request request = api.getAlbum("5oEljuMoe9MXH6tBIPbd5e").build();
-    assertEquals("https://api.spotify.com:443/v1/albums/5oEljuMoe9MXH6tBIPbd5e", request.toString(false));
+    assertEquals("https://api.spotify.com:443/v1/albums/5oEljuMoe9MXH6tBIPbd5e", request.getUri().toString());
   }
 
   @Test
   public void shouldCreateAGetAudioFeaturesUrl() {
     Api api = Api.DEFAULT_API;
     Request request = api.getAudioFeature("1hmNbafW4sAPNaGc7LeXAZ").build();
-    assertEquals("https://api.spotify.com:443/v1/audio-features/1hmNbafW4sAPNaGc7LeXAZ", request.toString(false));
+    assertEquals("https://api.spotify.com:443/v1/audio-features/1hmNbafW4sAPNaGc7LeXAZ", request.getUri().toString());
   }
 
   @Test
@@ -44,7 +43,7 @@ public class ApiTest {
     String test = request.toString();
     assertEquals(
             "https://api.spotify.com:443/v1/albums/5oEljuMoe9MXH6tBIPbd5e/tracks",
-            request.toString(false)
+            request.getUri().toString()
     );
   }
 
@@ -53,8 +52,8 @@ public class ApiTest {
     Api api = Api.DEFAULT_API;
     Request request = api.replacePlaylistsTracks("userId", "5oEljuMoe9MXH6tBIPbd5e", new String[]{}).build();
     assertEquals(
-            "https://api.spotify.com:443/v1/users/userId/playlists/5oEljuMoe9MXH6tBIPbd5e/tracks",
-            request.toString(false)
+            "https://api.spotify.com:443/v1/users/userId/playlists/5oEljuMoe9MXH6tBIPbd5e/tracks?uris=",
+            request.getUri().toString()
     );
   }
 
@@ -66,7 +65,7 @@ public class ApiTest {
     ).build();
     assertEquals(
             "https://api.spotify.com:443/v1/users/userId/playlists/5oEljuMoe9MXH6tBIPbd5e/followers",
-            request.toString(false)
+            request.getUri().toString()
     );
   }
 
@@ -74,74 +73,74 @@ public class ApiTest {
   public void shouldCreateAGetRecentlyPlayedTracksUrl() {
     Api api = Api.DEFAULT_API;
     Request request = api.getRecentlyPlayedTracks().build();
-    assertEquals("https://api.spotify.com:443/v1/me/player/recently-played", request.toString(false));
+    assertEquals("https://api.spotify.com:443/v1/me/player/recently-played", request.getUri().toString());
   }
 
   @Test
   public void shouldCreateAGetArtistUrl() {
     Api api = Api.DEFAULT_API;
     Request request = api.getArtist("5rSXSAkZ67PYJSvpUpkOr7").build();
-    assertEquals("https://api.spotify.com:443/v1/artists/5rSXSAkZ67PYJSvpUpkOr7", request.toString(false));
+    assertEquals("https://api.spotify.com:443/v1/artists/5rSXSAkZ67PYJSvpUpkOr7", request.getUri().toString());
   }
 
   @Test
   public void shouldCreateAGetTrackUrl() {
     Api api = Api.DEFAULT_API;
     Request request = api.getTrack("6hDH3YWFdcUNQjubYztIsG").build();
-    assertEquals("https://api.spotify.com:443/v1/tracks/6hDH3YWFdcUNQjubYztIsG", request.toString(false));
+    assertEquals("https://api.spotify.com:443/v1/tracks/6hDH3YWFdcUNQjubYztIsG", request.getUri().toString());
   }
 
   @Test
   public void shouldCreateAGetAlbumsUrl() {
     Api api = Api.DEFAULT_API;
     Request request = api.getAlbums("6hDH3YWFdcUNQjubYztIsG", "2IA4WEsWAYpV9eKkwR2UYv").build();
-    assertEquals("https://api.spotify.com:443/v1/albums", request.toString(false));
-    assertHasParameter(request.toUrl(), "ids", "6hDH3YWFdcUNQjubYztIsG,2IA4WEsWAYpV9eKkwR2UYv");
+    assertEquals("https://api.spotify.com:443/v1/albums", request.getUri().toString());
+    assertHasFormParameter(request, "ids", "6hDH3YWFdcUNQjubYztIsG,2IA4WEsWAYpV9eKkwR2UYv");
   }
 
   @Test
   public void shouldCreateAGetAlbumsUrlFromAList() {
     Api api = Api.DEFAULT_API;
     Request request = api.getAlbums(new String[]{"6hDH3YWFdcUNQjubYztIsG", "2IA4WEsWAYpV9eKkwR2UYv"}).build();
-    assertEquals("https://api.spotify.com:443/v1/albums", request.toString(false));
-    assertHasParameter(request.toUrl(), "ids", "6hDH3YWFdcUNQjubYztIsG,2IA4WEsWAYpV9eKkwR2UYv");
+    assertEquals("https://api.spotify.com:443/v1/albums", request.getUri().toString());
+    assertHasFormParameter(request, "ids", "6hDH3YWFdcUNQjubYztIsG,2IA4WEsWAYpV9eKkwR2UYv");
   }
 
   @Test
   public void shouldCreateAGetTracksUrl() {
     Api api = Api.DEFAULT_API;
     Request request = api.getTracks("6hDH3YWFdcUNQjubYztIsG", "2IA4WEsWAYpV9eKkwR2UYv").build();
-    assertEquals("https://api.spotify.com:443/v1/tracks", request.toString(false));
-    assertHasParameter(request.toUrl(), "ids", "6hDH3YWFdcUNQjubYztIsG,2IA4WEsWAYpV9eKkwR2UYv");
+    assertEquals("https://api.spotify.com:443/v1/tracks", request.getUri().toString());
+    assertHasFormParameter(request, "ids", "6hDH3YWFdcUNQjubYztIsG,2IA4WEsWAYpV9eKkwR2UYv");
   }
 
   @Test
   public void shouldCreateAGetTracksUrlFromList() {
     Api api = Api.DEFAULT_API;
     Request request = api.getTracks(new String[]{"6hDH3YWFdcUNQjubYztIsG", "2IA4WEsWAYpV9eKkwR2UYv"}).build();
-    assertEquals("https://api.spotify.com:443/v1/tracks", request.toString(false));
-    assertHasParameter(request.toUrl(), "ids", "6hDH3YWFdcUNQjubYztIsG,2IA4WEsWAYpV9eKkwR2UYv");
+    assertEquals("https://api.spotify.com:443/v1/tracks", request.getUri().toString());
+    assertHasFormParameter(request, "ids", "6hDH3YWFdcUNQjubYztIsG,2IA4WEsWAYpV9eKkwR2UYv");
   }
 
   @Test
   public void shouldCreateAGetRecommendationsUrl() {
     Api api = Api.DEFAULT_API;
     Request request = api.getRecommendations().build();
-    assertEquals("https://api.spotify.com:443/v1/recommendations", request.toString(false));
+    assertEquals("https://api.spotify.com:443/v1/recommendations", request.getUri().toString());
   }
 
   @Test
   public void shouldCreateAGetRecommendationsUrlFromList() {
     Api api = Api.DEFAULT_API;
     Request request = api.getRecommendations().build();
-    assertEquals("https://api.spotify.com:443/v1/recommendations", request.toString(false));
+    assertEquals("https://api.spotify.com:443/v1/recommendations", request.getUri().toString());
   }
 
   @Test
   public void shouldCreateAUrlForArtistsAlbum() {
     Api api = Api.DEFAULT_API;
     Request request = api.getAlbumsForArtist("4AK6F7OLvEQ5QYCBNiQWHq").build();
-    assertEquals("https://api.spotify.com:443/v1/artists/4AK6F7OLvEQ5QYCBNiQWHq/albums", request.toString(false));
+    assertEquals("https://api.spotify.com:443/v1/artists/4AK6F7OLvEQ5QYCBNiQWHq/albums", request.getUri().toString());
   }
 
   @Test
@@ -152,145 +151,145 @@ public class ApiTest {
             .market(CountryCode.SE)
             .build();
 
-    assertEquals("https://api.spotify.com:443/v1/artists/4AK6F7OLvEQ5QYCBNiQWHq/albums", request.toString(false));
-    assertHasParameter(request.toUrl(), "album_type", "ALBUM,SINGLE");
-    assertHasParameter(request.toUrl(), "market", "SE");
+    assertEquals("https://api.spotify.com:443/v1/artists/4AK6F7OLvEQ5QYCBNiQWHq/albums", request.getUri().toString());
+    assertHasFormParameter(request, "album_type", "ALBUM,SINGLE");
+    assertHasFormParameter(request, "market", "SE");
   }
 
   @Test
   public void shouldHaveSingleAlbumTypeParametersInArtistsAlbumUrl() {
     Api api = Api.DEFAULT_API;
     Request request = api.getAlbumsForArtist("4AK6F7OLvEQ5QYCBNiQWHq").album_type(AlbumType.SINGLE).build();
-    assertEquals("https://api.spotify.com:443/v1/artists/4AK6F7OLvEQ5QYCBNiQWHq/albums", request.toString(false));
-    assertHasParameter(request.toUrl(), "album_type", "SINGLE");
+    assertEquals("https://api.spotify.com:443/v1/artists/4AK6F7OLvEQ5QYCBNiQWHq/albums", request.getUri().toString());
+    assertHasFormParameter(request, "album_type", "SINGLE");
   }
 
   @Test
   public void shouldFailIfAlbumTypeParametersIsInArtistsAlbumUrl() {
     Api api = Api.DEFAULT_API;
     Request request = api.getAlbumsForArtist("4AK6F7OLvEQ5QYCBNiQWHq").album_type(AlbumType.SINGLE).build();
-    assertEquals("https://api.spotify.com:443/v1/artists/4AK6F7OLvEQ5QYCBNiQWHq/albums", request.toString(false));
-    assertHasParameter(request.toUrl(), "album_type", "SINGLE");
+    assertEquals("https://api.spotify.com:443/v1/artists/4AK6F7OLvEQ5QYCBNiQWHq/albums", request.getUri().toString());
+    assertHasFormParameter(request, "album_type", "SINGLE");
   }
 
   @Test
   public void shouldHaveLimitParameterInArtistsAlbumUrl() {
     Api api = Api.DEFAULT_API;
     Request request = api.getAlbumsForArtist("4AK6F7OLvEQ5QYCBNiQWHq").limit(2).build();
-    assertEquals("https://api.spotify.com:443/v1/artists/4AK6F7OLvEQ5QYCBNiQWHq/albums", request.toString(false));
-    assertHasParameter(request.toUrl(), "limit", "2");
+    assertEquals("https://api.spotify.com:443/v1/artists/4AK6F7OLvEQ5QYCBNiQWHq/albums", request.getUri().toString());
+    assertHasFormParameter(request, "limit", "2");
   }
 
   @Test
   public void shouldHaveOffsetParameterInArtistsAlbumUrl() {
     Api api = Api.DEFAULT_API;
     Request request = api.getAlbumsForArtist("4AK6F7OLvEQ5QYCBNiQWHq").offset(5).build();
-    assertEquals("https://api.spotify.com:443/v1/artists/4AK6F7OLvEQ5QYCBNiQWHq/albums", request.toString(false));
-    assertHasParameter(request.toUrl(), "offset", "5");
+    assertEquals("https://api.spotify.com:443/v1/artists/4AK6F7OLvEQ5QYCBNiQWHq/albums", request.getUri().toString());
+    assertHasFormParameter(request, "offset", "5");
   }
 
   @Test
   public void shouldHaveSeveralQueryParametersAtTheSameTimeInArtistsAlbumUrl() {
     Api api = Api.DEFAULT_API;
     Request request = api.getAlbumsForArtist("4AK6F7OLvEQ5QYCBNiQWHq").album_type(AlbumType.SINGLE).limit(2).offset(5).build();
-    assertEquals("https://api.spotify.com:443/v1/artists/4AK6F7OLvEQ5QYCBNiQWHq/albums", request.toString(false));
-    assertHasParameter(request.toUrl(), "offset", "5");
-    assertHasParameter(request.toUrl(), "limit", "2");
-    assertHasParameter(request.toUrl(), "album_type", "SINGLE");
+    assertEquals("https://api.spotify.com:443/v1/artists/4AK6F7OLvEQ5QYCBNiQWHq/albums", request.getUri().toString());
+    assertHasFormParameter(request, "offset", "5");
+    assertHasFormParameter(request, "limit", "2");
+    assertHasFormParameter(request, "album_type", "SINGLE");
   }
 
   @Test
   public void shouldCreateAGetArtistsUrl() {
     Api api = Api.DEFAULT_API;
     Request request = api.getArtists("4AK6F7OLvEQ5QYCBNiQWHq", "6rEzedK7cKWjeQWdAYvWVG").build();
-    assertEquals("https://api.spotify.com:443/v1/artists", request.toString(false));
-    assertHasParameter(request.toUrl(), "ids", "4AK6F7OLvEQ5QYCBNiQWHq,6rEzedK7cKWjeQWdAYvWVG");
+    assertEquals("https://api.spotify.com:443/v1/artists", request.getUri().toString());
+    assertHasFormParameter(request, "ids", "4AK6F7OLvEQ5QYCBNiQWHq,6rEzedK7cKWjeQWdAYvWVG");
   }
 
   @Test
   public void shouldCreateSearchUrl() {
     Api api = Api.DEFAULT_API;
     Request request = api.searchTracks("moulat swalf").build();
-    assertEquals("https://api.spotify.com:443/v1/search", request.toString(false));
-    assertHasParameter(request.toUrl(), "q", "moulat swalf");
-    assertHasParameter(request.toUrl(), "type", "track");
+    assertEquals("https://api.spotify.com:443/v1/search", request.getUri().toString());
+    assertHasFormParameter(request, "q", "moulat swalf");
+    assertHasFormParameter(request, "type", "track");
   }
 
   @Test
   public void shouldCreateSearchUrlForAlbum() {
     Api api = Api.DEFAULT_API;
     Request request = api.searchAlbums("meeep").market("from_token").build();
-    assertEquals("https://api.spotify.com:443/v1/search", request.toString(false));
-    assertHasParameter(request.toUrl(), "q", "meeep");
-    assertHasParameter(request.toUrl(), "type", "album");
-    assertHasParameter(request.toUrl(), "market", "from_token");
+    assertEquals("https://api.spotify.com:443/v1/search", request.getUri().toString());
+    assertHasFormParameter(request, "q", "meeep");
+    assertHasFormParameter(request, "type", "album");
+    assertHasFormParameter(request, "market", "from_token");
   }
 
   @Test
   public void shouldCreateSearchUrlForArtist() {
     Api api = Api.DEFAULT_API;
     Request request = api.searchArtists("meeep").market("GB").build();
-    assertEquals("https://api.spotify.com:443/v1/search", request.toString(false));
-    assertHasParameter(request.toUrl(), "q", "meeep");
-    assertHasParameter(request.toUrl(), "type", "artist");
-    assertHasParameter(request.toUrl(), "market", "GB");
+    assertEquals("https://api.spotify.com:443/v1/search", request.getUri().toString());
+    assertHasFormParameter(request, "q", "meeep");
+    assertHasFormParameter(request, "type", "artist");
+    assertHasFormParameter(request, "market", "GB");
   }
 
   @Test
   public void shouldCreateSearchUrlWithLimitParameter() {
     Api api = Api.DEFAULT_API;
     Request request = api.searchTracks("moulat swalf").limit(2).market("SE").build();
-    assertEquals("https://api.spotify.com:443/v1/search", request.toString(false));
-    assertHasParameter(request.toUrl(), "q", "moulat swalf");
-    assertHasParameter(request.toUrl(), "limit", "2");
-    assertHasParameter(request.toUrl(), "type", "track");
-    assertHasParameter(request.toUrl(), "market", "SE");
+    assertEquals("https://api.spotify.com:443/v1/search", request.getUri().toString());
+    assertHasFormParameter(request, "q", "moulat swalf");
+    assertHasFormParameter(request, "limit", "2");
+    assertHasFormParameter(request, "type", "track");
+    assertHasFormParameter(request, "market", "SE");
   }
 
   @Test
   public void shouldCreateSearchUrlWithOffsetParameter() {
     Api api = Api.DEFAULT_API;
     Request request = api.searchTracks("moulat swalf").offset(2).build();
-    assertEquals("https://api.spotify.com:443/v1/search", request.toString(false));
-    assertHasParameter(request.toUrl(), "q", "moulat swalf");
-    assertHasParameter(request.toUrl(), "offset", "2");
-    assertHasParameter(request.toUrl(), "type", "track");
+    assertEquals("https://api.spotify.com:443/v1/search", request.getUri().toString());
+    assertHasFormParameter(request, "q", "moulat swalf");
+    assertHasFormParameter(request, "offset", "2");
+    assertHasFormParameter(request, "type", "track");
   }
 
   @Test
   public void shouldModifySchemeInUrl() {
-    Api api = Api.builder().scheme(Scheme.HTTP).build();
+    Api api = Api.builder().scheme("http").build();
     Request request = api.getAlbum("5oEljuMoe9MXH6tBIPbd5e").build();
-    assertEquals("http://api.spotify.com:443/v1/albums/5oEljuMoe9MXH6tBIPbd5e", request.toString(false));
+    assertEquals("http://api.spotify.com:443/v1/albums/5oEljuMoe9MXH6tBIPbd5e", request.getUri().toString());
   }
 
   @Test
   public void shouldModifyPortInUrl() {
     Api api = Api.builder().port(8080).build();
     Request request = api.getAlbum("5oEljuMoe9MXH6tBIPbd5e").build();
-    assertEquals("https://api.spotify.com:8080/v1/albums/5oEljuMoe9MXH6tBIPbd5e", request.toString(false));
+    assertEquals("https://api.spotify.com:8080/v1/albums/5oEljuMoe9MXH6tBIPbd5e", request.getUri().toString());
   }
 
   @Test
   public void shouldModifyHostInUrl() {
     Api api = Api.builder().host("www.wrapper.se").build();
     Request request = api.getAlbum("5oEljuMoe9MXH6tBIPbd5e").build();
-    assertEquals("https://www.wrapper.se:443/v1/albums/5oEljuMoe9MXH6tBIPbd5e", request.toString(false));
+    assertEquals("https://www.wrapper.se:443/v1/albums/5oEljuMoe9MXH6tBIPbd5e", request.getUri().toString());
   }
 
   @Test
   public void shouldCreateTopTracksUrl() {
     Api api = Api.DEFAULT_API;
     Request request = api.getTopTracksForArtist("0LcJLqbBmaGUft1e9Mm8HV", CountryCode.GB).build();
-    assertEquals("https://api.spotify.com:443/v1/artists/0LcJLqbBmaGUft1e9Mm8HV/top-tracks", request.toString(false));
-    assertHasParameter(request.toUrl(), "country", "GB");
+    assertEquals("https://api.spotify.com:443/v1/artists/0LcJLqbBmaGUft1e9Mm8HV/top-tracks", request.getUri().toString());
+    assertHasFormParameter(request, "country", "GB");
   }
 
   @Test
   public void shouldCreateUserProfileUrl() {
     Api api = Api.DEFAULT_API;
     Request request = api.getUser("wizzler").build();
-    assertEquals("https://api.spotify.com:443/v1/users/wizzler", request.toString(false));
+    assertEquals("https://api.spotify.com:443/v1/users/wizzler", request.getUri().toString());
   }
 
   @Test
@@ -300,8 +299,8 @@ public class ApiTest {
 
     final Request request = api.getPlaylistsForUser("wizzler").build();
 
-    assertEquals("https://api.spotify.com:443/v1/users/wizzler/playlists", request.toString(false));
-    assertHasHeader(request.toUrl(), "Authorization", "Bearer " + accessToken);
+    assertEquals("https://api.spotify.com:443/v1/users/wizzler/playlists", request.getUri().toString());
+    assertHasHeader(request, "Authorization", "Bearer " + accessToken);
   }
 
   @Test
@@ -319,13 +318,10 @@ public class ApiTest {
 
     final Request request = api.authorizationCodeGrant(code).build();
 
-    assertEquals("https://accounts.spotify.com:443/api/token", request.toString(false));
-    assertHasBodyParameter(request.toUrl(), "grant_type", "authorization_code");
-    assertHasBodyParameter(request.toUrl(), "code", code);
-    assertHasBodyParameter(request.toUrl(), "redirect_uri", redirectURI);
+    assertEquals("https://accounts.spotify.com:443/api/token?grant_type=authorization_code&code=returnedCode&redirect_uri=myRedirectUri", request.getUri().toString());
 
     final String idSecret = clientId + ":" + clientSecret;
-    assertHasHeader(request.toUrl(), "Authorization", "Basic " + new String(Base64.encodeBase64(idSecret.getBytes())));
+    assertHasHeader(request, "Authorization", "Basic " + new String(Base64.encodeBase64(idSecret.getBytes())));
   }
 
   @Test
@@ -343,12 +339,10 @@ public class ApiTest {
 
     final Request request = api.refreshAccessToken().build();
 
-    assertEquals("https://accounts.spotify.com:443/api/token", request.toString(false));
-    assertHasBodyParameter(request.toUrl(), "grant_type", "refresh_token");
-    assertHasBodyParameter(request.toUrl(), "refresh_token", refreshToken);
+    assertEquals("https://accounts.spotify.com:443/api/token?grant_type=refresh_token&refresh_token=myRefreshToken", request.getUri().toString());
 
     final String idSecret = clientId + ":" + clientSecret;
-    assertHasHeader(request.toUrl(), "Authorization", "Basic " + new String(Base64.encodeBase64(idSecret.getBytes())));
+    assertHasHeader(request, "Authorization", "Basic " + new String(Base64.encodeBase64(idSecret.getBytes())));
   }
 
   @Test
@@ -361,8 +355,8 @@ public class ApiTest {
 
     final Request request = api.getPlaylist(userId, playlistId).build();
 
-    assertEquals("https://api.spotify.com:443/v1/users/" + userId + "/playlists/" + playlistId, request.toString(false));
-    assertHasHeader(request.toUrl(), "Authorization", "Bearer " + accessToken);
+    assertEquals("https://api.spotify.com:443/v1/users/" + userId + "/playlists/" + playlistId, request.getUri().toString());
+    assertHasHeader(request, "Authorization", "Bearer " + accessToken);
   }
 
   @Test
@@ -373,8 +367,8 @@ public class ApiTest {
 
     final Request request = api.getMe().build();
 
-    assertEquals("https://api.spotify.com:443/v1/me", request.toString(false));
-    assertHasHeader(request.toUrl(), "Authorization", "Bearer " + accessToken);
+    assertEquals("https://api.spotify.com:443/v1/me", request.getUri().toString());
+    assertHasHeader(request, "Authorization", "Bearer " + accessToken);
   }
 
   @Test
@@ -388,11 +382,9 @@ public class ApiTest {
 
     final Request request = api.createPlaylist(myUsername, title).publicAccess(publicAccess).build();
 
-    assertEquals("https://api.spotify.com:443/v1/users/thelinmichael/playlists", request.toString(false));
-    assertHasHeader(request.toUrl(), "Authorization", "Bearer " + accessToken);
-    assertHasHeader(request.toUrl(), "Content-Type", "application/json");
-    assertHasJsonBody(request.toUrl(), "{\"name\":\"The greatest playlist ever\",\"public\":\"true\"}");
-    assertHasHeader(request.toUrl(), "Authorization", "Bearer " + accessToken);
+    assertEquals("https://api.spotify.com:443/v1/users/thelinmichael/playlists?name=The+greatest+playlist+ever&public=true", request.getUri().toString());
+    assertHasHeader(request, "Authorization", "Bearer " + accessToken);
+    assertHasHeader(request, "Authorization", "Bearer " + accessToken);
   }
 
   @Test
@@ -407,12 +399,12 @@ public class ApiTest {
 
     final Request request = api.addTracksToPlaylist(myUsername, myPlaylistId, tracksToAdd).position(insertIndex).build();
 
-    assertEquals("https://api.spotify.com:443/v1/users/thelinmichael/playlists/" + myPlaylistId + "/tracks", request.toString(false));
-    assertHasHeader(request.toUrl(), "Authorization", "Bearer " + accessToken);
-    assertHasHeader(request.toUrl(), "Content-Type", "application/json");
-    assertHasJsonBody(request.toUrl(), "[\"spotify:track:4BYGxv4rxSNcTgT3DsFB9o\",\"spotify:tracks:0BG2iE6McPhmAEKIhfqy1X\"]");
-    assertHasParameter(request.toUrl(), "position", String.valueOf(insertIndex));
-    assertHasHeader(request.toUrl(), "Authorization", "Bearer " + accessToken);
+    assertEquals("https://api.spotify.com:443/v1/users/thelinmichael/playlists/" + myPlaylistId + "/tracks?uris=spotify%3Atrack%3A4BYGxv4rxSNcTgT3DsFB9o%2Cspotify%3Atracks%3A0BG2iE6McPhmAEKIhfqy1X", request.getUri().toString());
+    assertHasHeader(request, "Authorization", "Bearer " + accessToken);
+    assertHasHeader(request, "Content-Type", "application/json");
+    assertHasQueryParameter(request, "uris", "spotify:track:4BYGxv4rxSNcTgT3DsFB9o,spotify:tracks:0BG2iE6McPhmAEKIhfqy1X");
+    assertHasFormParameter(request, "position", String.valueOf(insertIndex));
+    assertHasHeader(request, "Authorization", "Bearer " + accessToken);
   }
 
   @Test
@@ -430,14 +422,18 @@ public class ApiTest {
     PlaylistTrackPosition playlistTrackPosition2 = new PlaylistTrackPosition(track2Uri, new int[]{track2Position});
     final PlaylistTrackPosition[] tracksToRemove = {playlistTrackPosition1, playlistTrackPosition2};
 
-    final String expectedJsonBody = String.format("{\"tracks\":[{\"uri\":\"%s\"},{\"uri\":\"%s\",\"positions\":[%s]}],\"snapshot_id\":\"%s\"}",
-            track1Uri, track2Uri, String.valueOf(track2Position), snapshotId);
+    final String expectedJsonBodyTracks = String.format("[{\"uri\":\"%s\"},{\"uri\":\"%s\",\"positions\":[%s]}]",
+            track1Uri, track2Uri, String.valueOf(track2Position));
 
-    final Request request = api.removeTrackFromPlaylist(myUsername, myPlaylistId, tracksToRemove).snapshotId(snapshotId).build();
+    final Request request = api.removeTrackFromPlaylist(myUsername, myPlaylistId, tracksToRemove)
+            .snapshotId(snapshotId)
+            .tracks(tracksToRemove)
+            .build();
 
-    assertEquals("https://api.spotify.com:443/v1/users/thelinmichael/playlists/" + myPlaylistId + "/tracks", request.toString(false));
-    assertHasHeader(request.toUrl(), "Authorization", "Bearer " + accessToken);
-    assertHasJsonBody(request.toUrl(), expectedJsonBody);
+    assertEquals("https://api.spotify.com:443/v1/users/thelinmichael/playlists/" + myPlaylistId + "/tracks", request.getUri().toString());
+    assertHasHeader(request, "Authorization", "Bearer " + accessToken);
+    assertHasBodyParameter(request, "tracks", expectedJsonBodyTracks);
+    assertHasBodyParameter(request, "snapshot_id", snapshotId);
   }
 
   @Test
@@ -457,9 +453,12 @@ public class ApiTest {
 
     final Request request = api.reorderTracksInPlaylist(myUsername, myPlaylistId, rangeStart, insertBefore).rangeLength(rangeLength).snapshotId(snapshotId).build();
 
-    assertEquals("https://api.spotify.com:443/v1/users/thelinmichael/playlists/" + myPlaylistId + "/tracks", request.toString(false));
-    assertHasHeader(request.toUrl(), "Authorization", "Bearer " + accessToken);
-    assertHasJsonBody(request.toUrl(), expectedJsonBody);
+    assertEquals("https://api.spotify.com:443/v1/users/thelinmichael/playlists/" + myPlaylistId + "/tracks", request.getUri().toString());
+    assertHasHeader(request, "Authorization", "Bearer " + accessToken);
+    assertHasBodyParameter(request, "range_start", rangeStart);
+    assertHasBodyParameter(request, "insert_before", insertBefore);
+    assertHasBodyParameter(request, "range_length", rangeLength);
+    assertHasBodyParameter(request, "snapshot_id", snapshotId);
   }
 
   @Test
@@ -479,15 +478,13 @@ public class ApiTest {
             .build();
 
     assertEquals("https://api.spotify.com:443/v1/users/thelinmichael/playlists/" + myPlaylistId,
-            request.toString(false));
-    assertHasHeader(request.toUrl(), "Authorization", "Bearer " + accessToken);
-    assertHasHeader(request.toUrl(), "Content-Type", "application/json");
+            request.getUri().toString());
+    assertHasHeader(request, "Authorization", "Bearer " + accessToken);
 
-    JsonObject jsonBody = new JsonParser().parse(request.toUrl().getJsonBody()).getAsJsonObject();
-    assertEquals(name, jsonBody.get("name").getAsString());
-    assertEquals(isPublic, jsonBody.get("public").getAsBoolean());
+    assertHasBodyParameter(request, "name", name);
+    assertHasBodyParameter(request, "public", isPublic);
 
-    assertHasHeader(request.toUrl(), "Authorization", "Bearer " + accessToken);
+    assertHasHeader(request, "Authorization", "Bearer " + accessToken);
   }
 
   @Test
@@ -504,13 +501,10 @@ public class ApiTest {
 
     final Request request = api.clientCredentialsGrant().scopes(scopes).build();
 
-    assertEquals("https://accounts.spotify.com:443/api/token", request.toString(false));
-
-    assertHasBodyParameter(request.toUrl(), "grant_type", "client_credentials");
-    assertHasBodyParameter(request.toUrl(), "scope", "some-scope some-other-scope");
+    assertEquals("https://accounts.spotify.com:443/api/token?grant_type=client_credentials&scope=some-scope+some-other-scope", request.getUri().toString());
 
     final String idSecret = clientId + ":" + clientSecret;
-    assertHasHeader(request.toUrl(), "Authorization", "Basic " + new String(Base64.encodeBase64(idSecret.getBytes())));
+    assertHasHeader(request, "Authorization", "Basic " + new String(Base64.encodeBase64(idSecret.getBytes())));
   }
 
   @Test
@@ -530,11 +524,11 @@ public class ApiTest {
             .offset(1)
             .build();
 
-    assertEquals("https://api.spotify.com:443/v1/users/" + userId + "/playlists/" + playlistId + "/tracks", request.toString(false));
-    assertHasParameter(request.toUrl(), "fields", "items");
-    assertHasParameter(request.toUrl(), "limit", "20");
-    assertHasParameter(request.toUrl(), "offset", "1");
-    assertHasHeader(request.toUrl(), "Authorization", "Bearer " + accessToken);
+    assertEquals("https://api.spotify.com:443/v1/users/" + userId + "/playlists/" + playlistId + "/tracks", request.getUri().toString());
+    assertHasFormParameter(request, "fields", "items");
+    assertHasFormParameter(request, "limit", "20");
+    assertHasFormParameter(request, "offset", "1");
+    assertHasHeader(request, "Authorization", "Bearer " + accessToken);
   }
 
   @Test
@@ -545,7 +539,7 @@ public class ApiTest {
 
     final Request request = api.getArtistRelatedArtists(artistId).build();
 
-    assertEquals("https://api.spotify.com:443/v1/artists/" + artistId + "/related-artists", request.toString(false));
+    assertEquals("https://api.spotify.com:443/v1/artists/" + artistId + "/related-artists", request.getUri().toString());
   }
 
   @Test
@@ -561,7 +555,7 @@ public class ApiTest {
     final String[] scopes = {"user-read-private", "user-read-email"};
     final String state = "someExpectedStateString";
 
-    String authorizeUrlString = UrlUtil.urlToString(api.createAuthorizeURL(scopes, state));
+    String authorizeUrlString = api.createAuthorizeUri(scopes, state).toString();
     assertEquals("https://accounts.spotify.com:443/authorize?client_id=fcecfc79122e4cd299473677a17cbd4d&response_type=code&redirect_uri=http%3A%2F%2Fwww.michaelthelin.se%2Ftest-callback&scope=user-read-private+user-read-email&state=someExpectedStateString", authorizeUrlString);
   }
 
@@ -578,12 +572,9 @@ public class ApiTest {
     final String[] scopes = {"user-read-private", "user-read-email"};
     final String state = "someExpectedStateString";
 
-    String authorizeUrlString = api.createAuthorizeURL(scopes)
-            .state(state)
-            .build()
-            .toString();
+    String authorizeUrlString = api.createAuthorizeUri(scopes).toString();
 
-    assertEquals("https://accounts.spotify.com:443/authorize?client_id=fcecfc79122e4cd299473677a17cbd4d&response_type=code&redirect_uri=http%3A%2F%2Fwww.michaelthelin.se%2Ftest-callback&scope=user-read-private+user-read-email&state=someExpectedStateString", authorizeUrlString);
+    assertEquals("https://accounts.spotify.com:443/authorize?client_id=fcecfc79122e4cd299473677a17cbd4d&response_type=code&redirect_uri=http%3A%2F%2Fwww.michaelthelin.se%2Ftest-callback&scope=user-read-private+user-read-email", authorizeUrlString);
   }
 
   @Test
@@ -599,7 +590,7 @@ public class ApiTest {
     final String[] scopes = {"user-read-private", "user-read-email"};
     final String state = "someExpectedStateString";
 
-    String authorizeURLString = UrlUtil.urlToString(api.createAuthorizeURL(scopes, state, true));
+    String authorizeURLString = api.createAuthorizeUri(scopes, state, true).toString();
     assertEquals("https://accounts.spotify.com:443/authorize?client_id=fcecfc79122e4cd299473677a17cbd4d&response_type=code&redirect_uri=http%3A%2F%2Fwww.michaelthelin.se%2Ftest-callback&scope=user-read-private+user-read-email&state=someExpectedStateString&show_dialog=true", authorizeURLString);
   }
 
@@ -617,10 +608,10 @@ public class ApiTest {
             .offset(1)
             .build();
 
-    assertEquals("https://api.spotify.com:443/v1/me/tracks", request.toString(false));
-    assertHasParameter(request.toUrl(), "limit", "5");
-    assertHasParameter(request.toUrl(), "offset", "1");
-    assertHasHeader(request.toUrl(), "Authorization", "Bearer " + accessToken);
+    assertEquals("https://api.spotify.com:443/v1/me/tracks", request.getUri().toString());
+    assertHasFormParameter(request, "limit", "5");
+    assertHasFormParameter(request, "offset", "1");
+    assertHasHeader(request, "Authorization", "Bearer " + accessToken);
   }
 
   @Test
@@ -632,11 +623,11 @@ public class ApiTest {
             .build();
 
     final Request request = api
-            .addToMySavedTracks(new String[]{"test", "test2"})
+            .addToMySavedTracks("test", "test2")
             .build();
 
-    assertEquals("https://api.spotify.com:443/v1/me/tracks", request.toString(false));
-    assertHasHeader(request.toUrl(), "Authorization", "Bearer " + accessToken);
+    assertEquals("https://api.spotify.com:443/v1/me/tracks?ids=test%2Ctest2", request.getUri().toString());
+    assertHasHeader(request, "Authorization", "Bearer " + accessToken);
   }
 
   @Test
@@ -651,8 +642,7 @@ public class ApiTest {
             .removeFromMySavedTracks(new String[]{"test", "test2"})
             .build();
 
-    assertEquals("https://api.spotify.com:443/v1/me/tracks", request.toString(false));
-    assertHasHeader(request.toUrl(), "Authorization", "Bearer " + accessToken);
+    assertEquals("https://api.spotify.com:443/v1/me/tracks?ids=test%2Ctest2", request.getUri().toString());
   }
 
   @Test
@@ -665,11 +655,11 @@ public class ApiTest {
 
     final Request request = api.getNewReleases().limit(4).offset(1).country(CountryCode.SE).build();
 
-    assertEquals("https://api.spotify.com:443/v1/browse/new-releases", request.toString(false));
-    assertHasHeader(request.toUrl(), "Authorization", "Bearer " + accessToken);
-    assertHasParameter(request.toUrl(), "limit", "4");
-    assertHasParameter(request.toUrl(), "offset", "1");
-    assertHasParameter(request.toUrl(), "country", "SE");
+    assertEquals("https://api.spotify.com:443/v1/browse/new-releases", request.getUri().toString());
+    assertHasHeader(request, "Authorization", "Bearer " + accessToken);
+    assertHasFormParameter(request, "limit", "4");
+    assertHasFormParameter(request, "offset", "1");
+    assertHasFormParameter(request, "country", "SE");
   }
 
   @Test
@@ -696,13 +686,13 @@ public class ApiTest {
 
     DateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
 
-    assertEquals("https://api.spotify.com:443/v1/browse/featured-playlists", request.toString(false));
-    assertHasHeader(request.toUrl(), "Authorization", "Bearer " + accessToken);
-    assertHasParameter(request.toUrl(), "limit", "5");
-    assertHasParameter(request.toUrl(), "offset", "1");
-    assertHasParameter(request.toUrl(), "country", "SE");
-    assertHasParameter(request.toUrl(), "locale", "es_MX");
-    assertHasParameter(request.toUrl(), "timestamp", simpleDateFormat.format(timestamp));
+    assertEquals("https://api.spotify.com:443/v1/browse/featured-playlists", request.getUri().toString());
+    assertHasHeader(request, "Authorization", "Bearer " + accessToken);
+    assertHasFormParameter(request, "limit", "5");
+    assertHasFormParameter(request, "offset", "1");
+    assertHasFormParameter(request, "country", "SE");
+    assertHasFormParameter(request, "locale", "es_MX");
+    assertHasFormParameter(request, "timestamp", simpleDateFormat.format(timestamp));
   }
 
 }

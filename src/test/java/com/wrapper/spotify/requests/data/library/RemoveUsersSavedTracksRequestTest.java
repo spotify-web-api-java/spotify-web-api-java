@@ -29,7 +29,7 @@ public class RemoveUsersSavedTracksRequestTest {
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
-    final SettableFuture<String> removeTrackFuture = request.getAsync();
+    final SettableFuture<String> removeTrackFuture = request.deleteAsync();
 
     Futures.addCallback(removeTrackFuture, new FutureCallback<String>() {
 
@@ -62,7 +62,7 @@ public class RemoveUsersSavedTracksRequestTest {
 
     final RemoveUsersSavedTracksRequest request = api.removeFromMySavedTracks(tracksToAdd).build();
 
-    String response = request.get();
+    String response = request.delete();
     assertEquals("", response);
   }
 

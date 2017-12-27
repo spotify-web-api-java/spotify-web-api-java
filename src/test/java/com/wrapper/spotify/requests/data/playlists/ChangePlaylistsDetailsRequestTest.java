@@ -30,7 +30,7 @@ public class ChangePlaylistsDetailsRequestTest {
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
-    ListenableFuture<String> future = request.getAsync();
+    ListenableFuture<String> future = request.putAsync();
 
     Futures.addCallback(future, new FutureCallback<String>() {
 
@@ -63,7 +63,7 @@ public class ChangePlaylistsDetailsRequestTest {
             .setHttpManager(TestUtil.MockedHttpManager.returningString(""))
             .build();
 
-    String response = request.get();
+    String response = request.put();
     assertEquals("", response);
   }
 
