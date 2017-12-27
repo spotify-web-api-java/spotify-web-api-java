@@ -52,7 +52,7 @@ public class CheckCurrentUserFollowsArtistsOrUsersRequest extends AbstractReques
 
     public Builder type(final ModelObjectType type) {
       assert (type != null);
-      return setFormParameter("type", type.toString());
+      return setFormParameter("type", type);
     }
 
     public Builder ids(final String... ids) {

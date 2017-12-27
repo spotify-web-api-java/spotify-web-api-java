@@ -2,6 +2,7 @@ package com.wrapper.spotify.requests.data.browse;
 
 import com.google.common.util.concurrent.SettableFuture;
 import com.neovisionaries.i18n.CountryCode;
+import com.neovisionaries.i18n.LanguageCode;
 import com.wrapper.spotify.exceptions.*;
 import com.wrapper.spotify.model_objects.Category;
 import com.wrapper.spotify.requests.AbstractRequest;
@@ -57,7 +58,7 @@ public class GetCategoryRequest extends AbstractRequest {
      */
     public Builder country(final CountryCode country) {
       assert (country != null);
-      return setFormParameter("country", country.toString());
+      return setQueryParameter("country", country);
     }
 
     /**
@@ -72,9 +73,10 @@ public class GetCategoryRequest extends AbstractRequest {
      * For example country=SE&locale=de_DE will return a list of categories relevant to Sweden but as German
      * language strings.
      */
-    public Builder locale(final String locale) {
-      assert (locale != null);
-      return setFormParameter("locale", locale);
+    public Builder locale(final LanguageCode languageCode, final CountryCode countryCode) {
+      assert (languageCode != null);
+      assert (countryCode != null);
+      return setQueryParameter("locale", languageCode + "_" + countryCode);
     }
 
     @Override

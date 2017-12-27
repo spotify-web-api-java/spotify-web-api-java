@@ -60,14 +60,14 @@ public class PlaylistSearchRequest extends AbstractRequest {
       return setFormParameter("market", market);
     }
 
-    public Builder limit(int limit) {
+    public Builder limit(Integer limit) {
       assert (limit > 0);
-      return setFormParameter("limit", String.valueOf(limit));
+      return setFormParameter("limit", limit);
     }
 
-    public Builder offset(int offset) {
+    public Builder offset(Integer offset) {
       assert (offset >= 0);
-      return setFormParameter("offset", String.valueOf(offset));
+      return setFormParameter("offset", offset);
     }
 
     @Override

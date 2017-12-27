@@ -51,7 +51,7 @@ public class GetUsersFollowedArtistsRequest extends AbstractRequest {
 
     public Builder type(final ModelObjectType type) {
       assert (type != null);
-      return setFormParameter("type", type.toString());
+      return setFormParameter("type", type);
     }
 
     public Builder limit(final Integer limit) {

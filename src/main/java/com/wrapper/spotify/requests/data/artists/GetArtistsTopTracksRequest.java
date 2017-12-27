@@ -55,7 +55,7 @@ public class GetArtistsTopTracksRequest extends AbstractRequest {
 
     public Builder country(final CountryCode country) {
       assert (country != null);
-      return setFormParameter("country", country.toString());
+      return setQueryParameter("country", country);
     }
 
     @Override

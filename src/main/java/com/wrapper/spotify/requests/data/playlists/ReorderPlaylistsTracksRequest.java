@@ -47,20 +47,20 @@ public class ReorderPlaylistsTracksRequest extends AbstractRequest {
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
-    public Builder rangeStart(int rangeStart) {
+    public Builder rangeStart(Integer rangeStart) {
       return setBodyParameter("range_start", rangeStart);
     }
 
-    public Builder insertBefore(int insertBefore) {
+    public Builder insertBefore(Integer insertBefore) {
       return setBodyParameter("insert_before", insertBefore);
     }
 
-    public Builder rangeLength(int rangeLength) {
+    public Builder rangeLength(Integer rangeLength) {
       return setBodyParameter("range_length", rangeLength);
     }
 
     public Builder snapshotId(String snapshotId) {
-      assert(snapshotId != null);
+      assert (snapshotId != null);
       return setBodyParameter("snapshot_id", snapshotId);
     }
 

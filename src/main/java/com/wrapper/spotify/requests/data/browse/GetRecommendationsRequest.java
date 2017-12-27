@@ -56,7 +56,7 @@ public class GetRecommendationsRequest extends AbstractRequest {
      */
     public Builder limit(final Integer limit) {
       assert (limit > 0 && limit <= 100);
-      return setFormParameter("limit", limit);
+      return setQueryParameter("limit", limit);
     }
 
     /**
@@ -67,7 +67,7 @@ public class GetRecommendationsRequest extends AbstractRequest {
      */
     public Builder market(final CountryCode market) {
       assert (market != null);
-      return setFormParameter("market", market.toString());
+      return setQueryParameter("market", market);
     }
 
     /**
@@ -76,7 +76,7 @@ public class GetRecommendationsRequest extends AbstractRequest {
      */
     public Builder maxAcousticness(final Float maxAcousticness) {
       assert (maxAcousticness >= 0 && maxAcousticness <= 1);
-      return setFormParameter("max_acousticness", maxAcousticness);
+      return setQueryParameter("max_acousticness", maxAcousticness);
     }
 
     /**
@@ -86,14 +86,14 @@ public class GetRecommendationsRequest extends AbstractRequest {
      */
     public Builder maxDanceability(final Float maxDanceability) {
       assert (maxDanceability >= 0 && maxDanceability <= 1);
-      return setFormParameter("max_danceability", maxDanceability);
+      return setQueryParameter("max_danceability", maxDanceability);
     }
 
     /**
      * The duration of the track in milliseconds.
      */
     public Builder maxDuration_ms(final Integer maxDuration_ms) {
-      return setFormParameter("max_duration_ms", maxDuration_ms);
+      return setQueryParameter("max_duration_ms", maxDuration_ms);
     }
 
     /**
@@ -104,7 +104,7 @@ public class GetRecommendationsRequest extends AbstractRequest {
      */
     public Builder maxEnergy(final Float maxEnergy) {
       assert (maxEnergy >= 0 && maxEnergy <= 1);
-      return setFormParameter("max_energy", maxEnergy);
+      return setQueryParameter("max_energy", maxEnergy);
     }
 
     /**
@@ -115,7 +115,7 @@ public class GetRecommendationsRequest extends AbstractRequest {
      */
     public Builder maxInstrumentalness(final Float maxInstrumentalness) {
       assert (maxInstrumentalness >= 0 && maxInstrumentalness <= 1);
-      return setFormParameter("max_instrumentalness", maxInstrumentalness);
+      return setQueryParameter("max_instrumentalness", maxInstrumentalness);
     }
 
     /**
@@ -125,7 +125,7 @@ public class GetRecommendationsRequest extends AbstractRequest {
      */
     public Builder maxKey(final Integer maxKey) {
       assert (maxKey >= 0 && maxKey <= 11);
-      return setFormParameter("max_key", maxKey);
+      return setQueryParameter("max_key", maxKey);
     }
 
     /**
@@ -134,7 +134,7 @@ public class GetRecommendationsRequest extends AbstractRequest {
      */
     public Builder maxLiveness(final Float maxLiveness) {
       assert (maxLiveness >= 0 && maxLiveness <= 1);
-      return setFormParameter("max_liveness", maxLiveness);
+      return setQueryParameter("max_liveness", maxLiveness);
     }
 
     /**
@@ -143,7 +143,7 @@ public class GetRecommendationsRequest extends AbstractRequest {
      * psychological correlate of physical strength (amplitude). Values typical range between -60 and 0 db.
      */
     public Builder maxLoudness(final Float maxLoudness) {
-      return setFormParameter("max_loudness", maxLoudness);
+      return setQueryParameter("max_loudness", maxLoudness);
     }
 
     /**
@@ -153,7 +153,7 @@ public class GetRecommendationsRequest extends AbstractRequest {
      */
     public Builder maxMode(final Integer maxMode) {
       assert (maxMode == 0 || maxMode <= 1);
-      return setFormParameter("max_mode", maxMode);
+      return setQueryParameter("max_mode", maxMode);
     }
 
     /**
@@ -163,7 +163,7 @@ public class GetRecommendationsRequest extends AbstractRequest {
      */
     public Builder maxPopularity(final Integer maxPopularity) {
       assert (maxPopularity >= 0 && maxPopularity <= 100);
-      return setFormParameter("max_popularity", maxPopularity);
+      return setQueryParameter("max_popularity", maxPopularity);
     }
 
     /**
@@ -175,7 +175,7 @@ public class GetRecommendationsRequest extends AbstractRequest {
      */
     public Builder maxSpeechiness(final Float maxSpeechiness) {
       assert (maxSpeechiness >= 0 && maxSpeechiness <= 1);
-      return setFormParameter("max_speechiness", maxSpeechiness);
+      return setQueryParameter("max_speechiness", maxSpeechiness);
     }
 
     /**
@@ -184,7 +184,7 @@ public class GetRecommendationsRequest extends AbstractRequest {
      */
     public Builder maxTempo(final Float maxTempo) {
       assert (maxTempo >= 0);
-      return setFormParameter("max_tempo", maxTempo);
+      return setQueryParameter("max_tempo", maxTempo);
     }
 
     /**
@@ -192,7 +192,7 @@ public class GetRecommendationsRequest extends AbstractRequest {
      * how many beats are in each bar (or measure).
      */
     public Builder maxTime_signature(final Integer maxTime_signature) {
-      return setFormParameter("max_time_signature", maxTime_signature);
+      return setQueryParameter("max_time_signature", maxTime_signature);
     }
 
     /**
@@ -201,7 +201,7 @@ public class GetRecommendationsRequest extends AbstractRequest {
      */
     public Builder maxValence(final Float maxValence) {
       assert (maxValence >= 0 && maxValence <= 1);
-      return setFormParameter("max_valence", maxValence);
+      return setQueryParameter("max_valence", maxValence);
     }
 
     /**
@@ -210,7 +210,7 @@ public class GetRecommendationsRequest extends AbstractRequest {
      */
     public Builder minAcousticness(final Float minAcousticness) {
       assert (minAcousticness >= 0 && minAcousticness <= 1);
-      return setFormParameter("min_acousticness", minAcousticness);
+      return setQueryParameter("min_acousticness", minAcousticness);
     }
 
     /**
@@ -220,14 +220,14 @@ public class GetRecommendationsRequest extends AbstractRequest {
      */
     public Builder minDanceability(final Float minDanceability) {
       assert (minDanceability >= 0 && minDanceability <= 1);
-      return setFormParameter("min_danceability", minDanceability);
+      return setQueryParameter("min_danceability", minDanceability);
     }
 
     /**
      * The duration of the track in milliseconds.
      */
     public Builder minDuration_ms(final Integer minDuration_ms) {
-      return setFormParameter("min_duration_ms", minDuration_ms);
+      return setQueryParameter("min_duration_ms", minDuration_ms);
     }
 
     /**
@@ -238,7 +238,7 @@ public class GetRecommendationsRequest extends AbstractRequest {
      */
     public Builder minEnergy(final Float minEnergy) {
       assert (minEnergy >= 0 && minEnergy <= 1);
-      return setFormParameter("min_energy", minEnergy);
+      return setQueryParameter("min_energy", minEnergy);
     }
 
     /**
@@ -249,7 +249,7 @@ public class GetRecommendationsRequest extends AbstractRequest {
      */
     public Builder minInstrumentalness(final Float minInstrumentalness) {
       assert (minInstrumentalness >= 0 && minInstrumentalness <= 1);
-      return setFormParameter("min_instrumentalness", minInstrumentalness);
+      return setQueryParameter("min_instrumentalness", minInstrumentalness);
     }
 
     /**
@@ -259,7 +259,7 @@ public class GetRecommendationsRequest extends AbstractRequest {
      */
     public Builder minKey(final Integer minKey) {
       assert (minKey >= 0 && minKey <= 11);
-      return setFormParameter("min_key", minKey);
+      return setQueryParameter("min_key", minKey);
     }
 
     /**
@@ -268,7 +268,7 @@ public class GetRecommendationsRequest extends AbstractRequest {
      */
     public Builder minLiveness(final Float minLiveness) {
       assert (minLiveness >= 0 && minLiveness <= 1);
-      return setFormParameter("min_liveness", minLiveness);
+      return setQueryParameter("min_liveness", minLiveness);
     }
 
     /**
@@ -277,7 +277,7 @@ public class GetRecommendationsRequest extends AbstractRequest {
      * psychological correlate of physical strength (amplitude). Values typical range between -60 and 0 db.
      */
     public Builder minLoudness(final Float minLoudness) {
-      return setFormParameter("min_loudness", minLoudness);
+      return setQueryParameter("min_loudness", minLoudness);
     }
 
     /**
@@ -287,7 +287,7 @@ public class GetRecommendationsRequest extends AbstractRequest {
      */
     public Builder minMode(final Integer minMode) {
       assert (minMode == 0 || minMode <= 1);
-      return setFormParameter("min_mode", minMode);
+      return setQueryParameter("min_mode", minMode);
     }
 
     /**
@@ -297,7 +297,7 @@ public class GetRecommendationsRequest extends AbstractRequest {
      */
     public Builder minPopularity(final Integer minPopularity) {
       assert (minPopularity >= 0 && minPopularity <= 100);
-      return setFormParameter("min_popularity", minPopularity);
+      return setQueryParameter("min_popularity", minPopularity);
     }
 
     /**
@@ -309,7 +309,7 @@ public class GetRecommendationsRequest extends AbstractRequest {
      */
     public Builder minSpeechiness(final Float minSpeechiness) {
       assert (minSpeechiness >= 0 && minSpeechiness <= 1);
-      return setFormParameter("min_speechiness", minSpeechiness);
+      return setQueryParameter("min_speechiness", minSpeechiness);
     }
 
     /**
@@ -318,7 +318,7 @@ public class GetRecommendationsRequest extends AbstractRequest {
      */
     public Builder minTempo(final Float minTempo) {
       assert (minTempo >= 0);
-      return setFormParameter("min_tempo", minTempo);
+      return setQueryParameter("min_tempo", minTempo);
     }
 
     /**
@@ -326,7 +326,7 @@ public class GetRecommendationsRequest extends AbstractRequest {
      * how many beats are in each bar (or measure).
      */
     public Builder minTime_signature(final Integer minTime_signature) {
-      return setFormParameter("min_time_signature", minTime_signature);
+      return setQueryParameter("min_time_signature", minTime_signature);
     }
 
     /**
@@ -336,31 +336,31 @@ public class GetRecommendationsRequest extends AbstractRequest {
      */
     public Builder minValence(final Float minValence) {
       assert (minValence >= 0 && minValence <= 1);
-      return setFormParameter("min_valence", minValence);
+      return setQueryParameter("min_valence", minValence);
     }
 
     /**
      * A comma separated list of Spotify IDs for seed seed_artists. Up to 5 seed values may be provided in any
      * combination of seed_artists, seed_tracks and seed_genres.
      */
-      return setFormParameter("seed_artists", Joiner.on(",").join(artists));
     public Builder seed_artists(String... artists) {
+      return setQueryParameter("seed_artists", Joiner.on(",").join(artists));
     }
 
     /**
      * A comma separated list of any seed_genres in the set of available genre seeds. Up to 5 seed values may be
      * provided in any combination of seed_artists, seed_tracks and seed_genres.
      */
-      return setFormParameter("seed_genres", Joiner.on(",").join(seed_genres));
     public Builder seed_genres(String... seed_genres) {
+      return setQueryParameter("seed_genres", Joiner.on(",").join(seed_genres));
     }
 
     /**
      * A comma separated list of Spotify IDs for a seed track. Up to 5 seed values may be provided in any combination of
      * seed_artists, seed_tracks and seed_genres.
      */
-      return setFormParameter("seed_tracks", Joiner.on(",").join(seed_tracks));
     public Builder seed_tracks(String... seed_tracks) {
+      return setQueryParameter("seed_tracks", Joiner.on(",").join(seed_tracks));
     }
 
     /**
@@ -369,7 +369,7 @@ public class GetRecommendationsRequest extends AbstractRequest {
      */
     public Builder targetAcousticness(final Float targetAcousticness) {
       assert (targetAcousticness >= 0 && targetAcousticness <= 1);
-      return setFormParameter("target_acousticness", targetAcousticness);
+      return setQueryParameter("target_acousticness", targetAcousticness);
     }
 
     /**
@@ -379,14 +379,14 @@ public class GetRecommendationsRequest extends AbstractRequest {
      */
     public Builder targetDanceability(final Float targetDanceability) {
       assert (targetDanceability >= 0 && targetDanceability <= 1);
-      return setFormParameter("target_danceability", targetDanceability);
+      return setQueryParameter("target_danceability", targetDanceability);
     }
 
     /**
      * The duration of the track in milliseconds.
      */
     public Builder targetDuration_ms(final Integer targetDuration_ms) {
-      return setFormParameter("target_duration_ms", targetDuration_ms);
+      return setQueryParameter("target_duration_ms", targetDuration_ms);
     }
 
     /**
@@ -397,7 +397,7 @@ public class GetRecommendationsRequest extends AbstractRequest {
      */
     public Builder targetEnergy(final Float targetEnergy) {
       assert (targetEnergy >= 0 && targetEnergy <= 1);
-      return setFormParameter("target_energy", targetEnergy);
+      return setQueryParameter("target_energy", targetEnergy);
     }
 
     /**
@@ -408,7 +408,7 @@ public class GetRecommendationsRequest extends AbstractRequest {
      */
     public Builder targetInstrumentalness(final Float targetInstrumentalness) {
       assert (targetInstrumentalness >= 0 && targetInstrumentalness <= 1);
-      return setFormParameter("target_instrumentalness", targetInstrumentalness);
+      return setQueryParameter("target_instrumentalness", targetInstrumentalness);
     }
 
     /**
@@ -418,7 +418,7 @@ public class GetRecommendationsRequest extends AbstractRequest {
      */
     public Builder targetKey(final Integer targetKey) {
       assert (targetKey >= 0 && targetKey <= 11);
-      return setFormParameter("target_key", targetKey);
+      return setQueryParameter("target_key", targetKey);
     }
 
     /**
@@ -427,7 +427,7 @@ public class GetRecommendationsRequest extends AbstractRequest {
      */
     public Builder targetLiveness(final Float targetLiveness) {
       assert (targetLiveness >= 0 && targetLiveness <= 1);
-      return setFormParameter("target_liveness", targetLiveness);
+      return setQueryParameter("target_liveness", targetLiveness);
     }
 
     /**
@@ -436,7 +436,7 @@ public class GetRecommendationsRequest extends AbstractRequest {
      * psychological correlate of physical strength (amplitude). Values typical range between -60 and 0 db.
      */
     public Builder targetLoudness(final Float targetLoudness) {
-      return setFormParameter("target_loudness", targetLoudness);
+      return setQueryParameter("target_loudness", targetLoudness);
     }
 
     /**
@@ -446,7 +446,7 @@ public class GetRecommendationsRequest extends AbstractRequest {
      */
     public Builder targetMode(final Integer targetMode) {
       assert (targetMode == 0 || targetMode <= 1);
-      return setFormParameter("target_mode", targetMode);
+      return setQueryParameter("target_mode", targetMode);
     }
 
     /**
@@ -456,7 +456,7 @@ public class GetRecommendationsRequest extends AbstractRequest {
      */
     public Builder targetPopularity(final Integer targetPopularity) {
       assert (targetPopularity >= 0 && targetPopularity <= 100);
-      return setFormParameter("target_popularity", targetPopularity);
+      return setQueryParameter("target_popularity", targetPopularity);
     }
 
     /**
@@ -468,7 +468,7 @@ public class GetRecommendationsRequest extends AbstractRequest {
      */
     public Builder targetSpeechiness(final Float targetSpeechiness) {
       assert (targetSpeechiness >= 0 && targetSpeechiness <= 1);
-      return setFormParameter("target_speechiness", targetSpeechiness);
+      return setQueryParameter("target_speechiness", targetSpeechiness);
     }
 
     /**
@@ -477,7 +477,7 @@ public class GetRecommendationsRequest extends AbstractRequest {
      */
     public Builder targetTempo(final Float targetTempo) {
       assert (targetTempo >= 0);
-      return setFormParameter("target_tempo", targetTempo);
+      return setQueryParameter("target_tempo", targetTempo);
     }
 
     /**
@@ -485,7 +485,7 @@ public class GetRecommendationsRequest extends AbstractRequest {
      * how many beats are in each bar (or measure).
      */
     public Builder targetTime_signature(final Integer targetTime_signature) {
-      return setFormParameter("target_time_signature", targetTime_signature);
+      return setQueryParameter("target_time_signature", targetTime_signature);
     }
 
     /**
@@ -495,7 +495,7 @@ public class GetRecommendationsRequest extends AbstractRequest {
      */
     public Builder targetValence(final Float targetValence) {
       assert (targetValence >= 0 && targetValence <= 1);
-      return setFormParameter("target_valence", targetValence);
+      return setQueryParameter("target_valence", targetValence);
     }
 
     @Override

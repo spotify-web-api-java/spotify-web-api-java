@@ -37,7 +37,7 @@ public class AuthorizationUriRequest extends AbstractRequest {
     }
 
     public Builder showDialog(boolean showDialog) {
-      return setQueryParameter("show_dialog", String.valueOf(showDialog));
+      return setQueryParameter("show_dialog", showDialog);
     }
 
     public AuthorizationUriRequest build() {

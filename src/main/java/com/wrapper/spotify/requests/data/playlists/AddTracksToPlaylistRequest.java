@@ -47,7 +47,7 @@ public class AddTracksToPlaylistRequest extends AbstractRequest {
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
-    public Builder position(final int position) {
+    public Builder position(final Integer position) {
       assert (position >= 0);
       return setFormParameter("position", position);
     }

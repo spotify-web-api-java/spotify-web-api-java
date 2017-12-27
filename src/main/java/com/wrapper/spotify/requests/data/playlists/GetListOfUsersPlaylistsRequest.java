@@ -53,14 +53,14 @@ public class GetListOfUsersPlaylistsRequest extends AbstractRequest {
       return setPath(String.format("/v1/users/%s/playlists", username));
     }
 
-    public Builder limit(final int limit) {
+    public Builder limit(final Integer limit) {
       assert (limit > 0);
-      return setFormParameter("limit", String.valueOf(limit));
+      return setFormParameter("limit", limit);
     }
 
-    public Builder offset(final int offset) {
+    public Builder offset(final Integer offset) {
       assert (offset >= 0);
-      return setFormParameter("offset", String.valueOf(offset));
+      return setFormParameter("offset", offset);
     }
 
     @Override

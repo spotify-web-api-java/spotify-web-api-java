@@ -59,7 +59,7 @@ public class GetSeveralAlbumsRequest extends AbstractRequest {
      */
     public Builder ids(final String... ids) {
       assert (ids != null);
-      return setFormParameter("ids", Joiner.on(",").join(ids));
+      return setQueryParameter("ids", Joiner.on(",").join(ids));
     }
 
     /**
@@ -70,7 +70,7 @@ public class GetSeveralAlbumsRequest extends AbstractRequest {
      */
     public Builder market(final CountryCode market) {
       assert (market != null);
-      return setFormParameter("market", market.toString());
+      return setQueryParameter("market", market);
     }
 
     @Override

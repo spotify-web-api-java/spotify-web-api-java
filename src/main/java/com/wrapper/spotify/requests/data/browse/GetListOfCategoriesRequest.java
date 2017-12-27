@@ -1,7 +1,8 @@
 package com.wrapper.spotify.requests.data.browse;
 
 import com.google.common.util.concurrent.SettableFuture;
-import com.google.gson.JsonParser;
+import com.neovisionaries.i18n.CountryCode;
+import com.neovisionaries.i18n.LanguageCode;
 import com.wrapper.spotify.exceptions.*;
 import com.wrapper.spotify.model_objects.Category;
 import com.wrapper.spotify.model_objects.Paging;
@@ -52,9 +53,9 @@ public class GetListOfCategoriesRequest extends AbstractRequest {
     /*
      * Optional. A country: an ISO 3166-1 alpha-2 country code. Provide this parameter if you want to narrow the list of returned categories to those relevant to a particular country. If omitted, the returned items will be globally relevant.
      */
-    public GetListOfCategoriesRequest.Builder country(String country) {
+    public Builder country(CountryCode country) {
       assert (country != null);
-      return setFormParameter("country", country);
+      return setQueryParameter("country", country);
     }
 
     /*
@@ -69,9 +70,10 @@ public class GetListOfCategoriesRequest extends AbstractRequest {
      * For example country=SE&locale=de_DE will return a list of categories relevant to Sweden but as German
      * language strings.
      */
-    public GetListOfCategoriesRequest.Builder locale(String locale) {
-      assert (locale != null);
-      return setFormParameter("locale", locale);
+    public Builder locale(final LanguageCode languageCode, final CountryCode countryCode) {
+      assert (languageCode != null);
+      assert (countryCode != null);
+      return setQueryParameter("locale", languageCode + "_" + countryCode);
     }
 
     /**
@@ -80,18 +82,18 @@ public class GetListOfCategoriesRequest extends AbstractRequest {
      * @param limit Default: 20. Minimum: 1. Maximum: 50
      * @return
      */
-    public GetListOfCategoriesRequest.Builder limit(int limit) {
+    public Builder limit(Integer limit) {
       assert (limit > 0 && limit <= 50);
-      return setFormParameter("limit", String.valueOf(limit));
+      return setQueryParameter("limit", limit);
     }
 
     /*
      * Optional. The index of the first item to return.
      * Default: 0 (the first object). Use with limit to get the next set of categories.
      */
-    public GetListOfCategoriesRequest.Builder offset(int offset) {
+    public Builder offset(Integer offset) {
       assert (offset >= 0);
-      return setFormParameter("offset", String.valueOf(offset));
+      return setQueryParameter("offset", offset);
     }
 
     @Override

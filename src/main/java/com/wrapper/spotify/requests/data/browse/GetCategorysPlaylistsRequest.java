@@ -60,17 +60,17 @@ public class GetCategorysPlaylistsRequest extends AbstractRequest {
      */
     public Builder country(final CountryCode country) {
       assert (country != null);
-      return setFormParameter("country", country.toString());
+      return setQueryParameter("country", country);
     }
 
     public Builder limit(final Integer limit) {
       assert (limit > 0);
-      return setFormParameter("limit", limit);
+      return setQueryParameter("limit", limit);
     }
 
     public Builder offset(final Integer offset) {
       assert (offset >= 0);
-      return setFormParameter("offset", offset);
+      return setQueryParameter("offset", offset);
     }
 
     @Override

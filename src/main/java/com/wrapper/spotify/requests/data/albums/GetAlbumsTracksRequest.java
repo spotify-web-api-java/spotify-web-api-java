@@ -70,7 +70,7 @@ public class GetAlbumsTracksRequest extends AbstractRequest {
      */
     public Builder limit(final Integer limit) {
       assert (limit > 0);
-      return setFormParameter("limit", limit);
+      return setQueryParameter("limit", limit);
     }
 
     /**
@@ -81,7 +81,7 @@ public class GetAlbumsTracksRequest extends AbstractRequest {
      */
     public Builder offset(final Integer offset) {
       assert (offset >= 0);
-      return setFormParameter("offset", offset);
+      return setQueryParameter("offset", offset);
     }
 
     /**
@@ -92,7 +92,7 @@ public class GetAlbumsTracksRequest extends AbstractRequest {
      */
     public Builder market(final CountryCode market) {
       assert (market != null);
-      return setFormParameter("market", market.toString());
+      return setQueryParameter("market", market);
     }
 
     @Override

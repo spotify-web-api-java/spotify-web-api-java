@@ -69,7 +69,7 @@ public class GetAlbumRequest extends AbstractRequest {
      */
     public Builder market(final CountryCode market) {
       assert (market != null);
-      return setFormParameter("market", market.toString());
+      return setQueryParameter("market", market);
     }
 
     @Override

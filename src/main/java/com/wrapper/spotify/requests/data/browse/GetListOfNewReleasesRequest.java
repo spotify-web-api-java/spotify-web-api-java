@@ -50,17 +50,17 @@ public class GetListOfNewReleasesRequest extends AbstractRequest {
 
     public Builder country(final CountryCode countryCode) {
       assert (countryCode != null);
-      return setFormParameter("country", countryCode.toString());
+      return setQueryParameter("country", countryCode);
     }
 
     public Builder limit(final Integer limit) {
       assert (limit > 0);
-      return setFormParameter("limit", String.valueOf(limit));
+      return setQueryParameter("limit", limit);
     }
 
     public Builder offset(final Integer offset) {
       assert (offset >= 0);
-      return setFormParameter("offset", String.valueOf(offset));
+      return setQueryParameter("offset", offset);
     }
 
     @Override

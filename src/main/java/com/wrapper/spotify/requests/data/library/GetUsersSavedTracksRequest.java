@@ -48,14 +48,14 @@ public class GetUsersSavedTracksRequest extends AbstractRequest {
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
-    public Builder limit(final int limit) {
+    public Builder limit(final Integer limit) {
       assert (limit > 0);
-      return setFormParameter("limit", String.valueOf(limit));
+      return setFormParameter("limit", limit);
     }
 
-    public Builder offset(final int offset) {
+    public Builder offset(final Integer offset) {
       assert (offset >= 0);
-      return setFormParameter("offset", String.valueOf(offset));
+      return setFormParameter("offset", offset);
     }
 
     @Override

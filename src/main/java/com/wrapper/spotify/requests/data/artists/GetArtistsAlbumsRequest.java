@@ -59,22 +59,22 @@ public class GetArtistsAlbumsRequest extends AbstractRequest {
     public Builder album_type(final AlbumType... album_type) {
       assert (album_type != null);
       assert (album_type.length > 0);
-      return setFormParameter("album_type", Joiner.on(",").join(album_type));
+      return setQueryParameter("album_type", Joiner.on(",").join(album_type));
     }
 
     public Builder market(final CountryCode market) {
       assert (market != null);
-      return setFormParameter("market", market.toString());
+      return setQueryParameter("market", market);
     }
 
     public Builder limit(final Integer limit) {
       assert (limit > 0);
-      return setFormParameter("limit", limit);
+      return setQueryParameter("limit", limit);
     }
 
     public Builder offset(final Integer offset) {
       assert (offset >= 0);
-      return setFormParameter("offset", offset);
+      return setQueryParameter("offset", offset);
     }
 
     @Override

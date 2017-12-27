@@ -83,27 +83,27 @@ public class GetListOfFeaturedPlaylistsRequest extends AbstractRequest {
     public Builder locale(final LanguageCode languageCode, final CountryCode countryCode) {
       assert (languageCode != null);
       assert (countryCode != null);
-      return setFormParameter("locale", languageCode + "_" + countryCode);
+      return setQueryParameter("locale", languageCode + "_" + countryCode);
     }
 
     public Builder country(final CountryCode countryCode) {
       assert (countryCode != null);
-      return setFormParameter("country", countryCode.toString());
+      return setQueryParameter("country", countryCode);
     }
 
     public Builder timestamp(final Date timestamp) {
       assert (timestamp != null);
-      return setFormParameter("timestamp", simpleDateFormat.format(timestamp));
+      return setQueryParameter("timestamp", simpleDateFormat.format(timestamp));
     }
 
     public Builder limit(final Integer limit) {
       assert (limit > 0);
-      return setFormParameter("limit", String.valueOf(limit));
+      return setQueryParameter("limit", limit);
     }
 
     public Builder offset(final Integer offset) {
       assert (offset >= 0);
-      return setFormParameter("offset", String.valueOf(offset));
+      return setQueryParameter("offset", offset);
     }
 
     @Override
