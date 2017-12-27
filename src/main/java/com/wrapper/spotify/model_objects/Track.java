@@ -157,12 +157,12 @@ public class Track extends AbstractModelObject {
       return this;
     }
 
-    public Builder setArtists(ArtistSimplified[] artists) {
+    public Builder setArtists(ArtistSimplified... artists) {
       this.artists = artists;
       return this;
     }
 
-    public Builder setAvailableMarkets(CountryCode[] availableMarkets) {
+    public Builder setAvailableMarkets(CountryCode... availableMarkets) {
       this.availableMarkets = availableMarkets;
       return this;
     }

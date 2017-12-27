@@ -33,7 +33,7 @@ public class GetSeveralArtistsRequestTest {
 
     Futures.addCallback(artistsFuture, new FutureCallback<Artist[]>() {
       @Override
-      public void onSuccess(Artist[] artists) {
+      public void onSuccess(Artist... artists) {
         assertEquals(2, artists.length);
 
         final Artist firstArtist = artists[0];

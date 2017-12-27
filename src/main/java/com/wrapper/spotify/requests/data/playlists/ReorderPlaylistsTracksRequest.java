@@ -1,7 +1,6 @@
 package com.wrapper.spotify.requests.data.playlists;
 
 import com.google.common.util.concurrent.SettableFuture;
-import com.google.gson.JsonObject;
 import com.wrapper.spotify.exceptions.*;
 import com.wrapper.spotify.model_objects.SnapshotResult;
 import com.wrapper.spotify.requests.AbstractRequest;

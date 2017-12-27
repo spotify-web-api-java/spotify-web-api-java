@@ -33,7 +33,7 @@ public class SpotifyHttpManager implements HttpManager {
    * @param builder The builder.
    */
   public SpotifyHttpManager(Builder builder) {
-      connectionManager = builder.connectionManager;
+    connectionManager = builder.connectionManager;
   }
 
   public static Builder builder() {

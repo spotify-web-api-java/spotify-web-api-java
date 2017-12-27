@@ -111,6 +111,5 @@ public class GetListOfFeaturedPlaylistsRequest extends AbstractRequest {
       setPath("/v1/browse/featured-playlists");
       return new GetListOfFeaturedPlaylistsRequest(this);
     }
-
   }
 }

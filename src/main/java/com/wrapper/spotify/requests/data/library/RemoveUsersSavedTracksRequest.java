@@ -47,7 +47,7 @@ public class RemoveUsersSavedTracksRequest extends AbstractRequest {
 
   public static class Builder extends AbstractRequest.Builder<Builder> {
 
-    public Builder ids(final String[] trackIds) {
+    public Builder ids(final String... trackIds) {
       String idsParameter = Joiner.on(",").join(trackIds);
       return setQueryParameter("ids", idsParameter);
     }

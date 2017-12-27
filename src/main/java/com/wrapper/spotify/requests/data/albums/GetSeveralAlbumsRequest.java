@@ -57,7 +57,7 @@ public class GetSeveralAlbumsRequest extends AbstractRequest {
      * @param ids Required. A comma-separated list of the Spotify IDs for the albums. Maximum: 20 IDs.
      * @return A GetSeveralAlbumsRequest builder.
      */
-    public Builder ids(final String[] ids) {
+    public Builder ids(final String... ids) {
       assert (ids != null);
       return setFormParameter("ids", Joiner.on(",").join(ids));
     }

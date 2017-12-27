@@ -63,7 +63,7 @@ public class RemoveTracksFromPlaylistRequest extends AbstractRequest {
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
-    public Builder tracks(PlaylistTrackPosition[] playlistTrackPositions) {
+    public Builder tracks(PlaylistTrackPosition... playlistTrackPositions) {
       final JsonArray tracks = new JsonArray();
 
       for (PlaylistTrackPosition playlistTrackPosition : playlistTrackPositions) {

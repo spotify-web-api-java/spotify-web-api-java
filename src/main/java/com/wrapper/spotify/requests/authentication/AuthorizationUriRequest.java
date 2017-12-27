@@ -16,7 +16,7 @@ public class AuthorizationUriRequest extends AbstractRequest {
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
-    public Builder scopes(String[] scopes) {
+    public Builder scopes(String... scopes) {
       return setQueryParameter("scope", Joiner.on(" ").join(scopes));
     }
 

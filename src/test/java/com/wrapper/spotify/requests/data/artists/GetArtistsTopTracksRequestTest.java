@@ -34,7 +34,7 @@ public class GetArtistsTopTracksRequestTest {
 
     Futures.addCallback(tracksFuture, new FutureCallback<Track[]>() {
       @Override
-      public void onSuccess(Track[] tracks) {
+      public void onSuccess(Track... tracks) {
         assertTrue(tracks.length > 0);
 
         Track firstTrack = tracks[0];

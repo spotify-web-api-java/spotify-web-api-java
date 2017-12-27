@@ -97,7 +97,7 @@ public class Artist extends AbstractModelObject {
       return this;
     }
 
-    public Builder setGenres(String[] genres) {
+    public Builder setGenres(String... genres) {
       this.genres = genres;
       return this;
     }
@@ -112,7 +112,7 @@ public class Artist extends AbstractModelObject {
       return this;
     }
 
-    public Builder setImages(Image[] images) {
+    public Builder setImages(Image... images) {
       this.images = images;
       return this;
     }

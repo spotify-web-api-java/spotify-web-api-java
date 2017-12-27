@@ -31,7 +31,7 @@ public class CheckUsersSavedTracksRequestTest {
 
     Futures.addCallback(searchResultFuture, new FutureCallback<Boolean[]>() {
       @Override
-      public void onSuccess(Boolean[] containsResult) {
+      public void onSuccess(Boolean... containsResult) {
         assertFalse(containsResult[0]);
         assertTrue(containsResult[1]);
 

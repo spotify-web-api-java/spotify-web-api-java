@@ -123,12 +123,12 @@ public class TrackSimplified extends AbstractModelObject {
     private ModelObjectType type;
     private String uri;
 
-    public Builder setArtists(ArtistSimplified[] artists) {
+    public Builder setArtists(ArtistSimplified... artists) {
       this.artists = artists;
       return this;
     }
 
-    public Builder setAvailableMarkets(CountryCode[] availableMarkets) {
+    public Builder setAvailableMarkets(CountryCode... availableMarkets) {
       this.availableMarkets = availableMarkets;
       return this;
     }

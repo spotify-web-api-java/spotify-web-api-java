@@ -145,7 +145,7 @@ public class Playlist extends AbstractModelObject {
       return this;
     }
 
-    public Builder setImages(Image[] images) {
+    public Builder setImages(Image... images) {
       this.images = images;
       return this;
     }

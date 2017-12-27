@@ -31,7 +31,7 @@ public class GetArtistsRelatedArtistsRequestTest {
     Futures.addCallback(artistFuture, new FutureCallback<Artist[]>() {
 
       @Override
-      public void onSuccess(Artist[] artists) {
+      public void onSuccess(Artist... artists) {
         assertFalse(artists.length == 0);
         final Artist firstArtist = artists[0];
         final String id = firstArtist.getId();

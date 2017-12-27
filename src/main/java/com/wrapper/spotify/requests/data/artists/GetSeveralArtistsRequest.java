@@ -48,7 +48,7 @@ public class GetSeveralArtistsRequest extends AbstractRequest {
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
-    public Builder ids(final String[] ids) {
+    public Builder ids(final String... ids) {
       assert (ids != null);
       return setFormParameter("ids", Joiner.on(",").join(ids));
     }

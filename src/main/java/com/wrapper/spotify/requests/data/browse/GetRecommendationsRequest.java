@@ -343,24 +343,24 @@ public class GetRecommendationsRequest extends AbstractRequest {
      * A comma separated list of Spotify IDs for seed seed_artists. Up to 5 seed values may be provided in any
      * combination of seed_artists, seed_tracks and seed_genres.
      */
-    public Builder seed_artists(String[] artists) {
       return setFormParameter("seed_artists", Joiner.on(",").join(artists));
+    public Builder seed_artists(String... artists) {
     }
 
     /**
      * A comma separated list of any seed_genres in the set of available genre seeds. Up to 5 seed values may be
      * provided in any combination of seed_artists, seed_tracks and seed_genres.
      */
-    public Builder seed_genres(String[] seed_genres) {
       return setFormParameter("seed_genres", Joiner.on(",").join(seed_genres));
+    public Builder seed_genres(String... seed_genres) {
     }
 
     /**
      * A comma separated list of Spotify IDs for a seed track. Up to 5 seed values may be provided in any combination of
      * seed_artists, seed_tracks and seed_genres.
      */
-    public Builder seed_tracks(String[] seed_tracks) {
       return setFormParameter("seed_tracks", Joiner.on(",").join(seed_tracks));
+    public Builder seed_tracks(String... seed_tracks) {
     }
 
     /**

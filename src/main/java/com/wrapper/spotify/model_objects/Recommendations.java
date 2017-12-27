@@ -30,12 +30,12 @@ public class Recommendations extends AbstractModelObject {
     private RecommendationsSeed[] seeds;
     private TrackSimplified[] tracks;
 
-    public Builder setSeeds(RecommendationsSeed[] seeds) {
+    public Builder setSeeds(RecommendationsSeed... seeds) {
       this.seeds = seeds;
       return this;
     }
 
-    public Builder setTracks(TrackSimplified[] tracks) {
+    public Builder setTracks(TrackSimplified... tracks) {
       this.tracks = tracks;
       return this;
     }

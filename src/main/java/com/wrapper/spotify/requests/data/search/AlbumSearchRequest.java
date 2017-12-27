@@ -1,7 +1,6 @@
 package com.wrapper.spotify.requests.data.search;
 
 import com.google.common.util.concurrent.SettableFuture;
-import com.google.gson.JsonParser;
 import com.wrapper.spotify.exceptions.*;
 import com.wrapper.spotify.model_objects.AlbumSimplified;
 import com.wrapper.spotify.model_objects.Paging;

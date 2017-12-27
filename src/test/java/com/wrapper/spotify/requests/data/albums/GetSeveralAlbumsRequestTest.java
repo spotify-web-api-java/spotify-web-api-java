@@ -32,7 +32,7 @@ public class GetSeveralAlbumsRequestTest {
     Futures.addCallback(albumsFuture, new FutureCallback<Album[]>() {
 
       @Override
-      public void onSuccess(Album[] albums) {
+      public void onSuccess(Album... albums) {
         assertEquals(1, albums.length);
 
         Album firstAlbum = albums[0];
@@ -111,7 +111,7 @@ public class GetSeveralAlbumsRequestTest {
 
     Futures.addCallback(albumFuture, new FutureCallback<Album[]>() {
       @Override
-      public void onSuccess(Album[] albums) {
+      public void onSuccess(Album... albums) {
         assertEquals(1, albums.length);
         assertNull(albums[0]);
         asyncCompleted.countDown();

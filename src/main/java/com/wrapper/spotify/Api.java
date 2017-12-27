@@ -350,7 +350,7 @@ public class Api {
    * Create a playlist.
    *
    * @param userId The playlist's owner.
-   * @param name  The name of the playlist.
+   * @param name   The name of the playlist.
    * @return A builder object that can be used to build a request to create a playlist.
    */
   public CreatePlaylistRequest.Builder createPlaylist(String userId, String name) {
@@ -551,7 +551,7 @@ public class Api {
    * @param trackIds The tracks ids to check for in the user's Your Music library.
    * @return A builder object that can be used to check if a user has saved a track.
    */
-  public CheckUsersSavedTracksRequest.Builder containsMySavedTracks(String[] trackIds) {
+  public CheckUsersSavedTracksRequest.Builder containsMySavedTracks(String... trackIds) {
     final CheckUsersSavedTracksRequest.Builder builder = CheckUsersSavedTracksRequest.builder();
     setDefaults(builder);
     builder.tracks(trackIds);
@@ -565,7 +565,7 @@ public class Api {
    * @param trackIds The track ids to remove from the user's Your Music library.
    * @return A builder object that can be used to remove tracks from the user's library.
    */
-  public RemoveUsersSavedTracksRequest.Builder removeFromMySavedTracks(String[] trackIds) {
+  public RemoveUsersSavedTracksRequest.Builder removeFromMySavedTracks(String... trackIds) {
     final RemoveUsersSavedTracksRequest.Builder builder = RemoveUsersSavedTracksRequest.builder();
     setDefaults(builder);
     builder.ids(trackIds);
@@ -653,7 +653,7 @@ public class Api {
    * @param scopes The scopes corresponding to the permissions the application needs.
    * @return The URL where the user can give application permissions.
    */
-  public URI createAuthorizeUri(String[] scopes) {
+  public URI createAuthorizeUri(String... scopes) {
     final AuthorizationUriRequest.Builder builder = AuthorizationUriRequest.builder();
 
     setDefaults(builder);
@@ -679,7 +679,7 @@ public class Api {
     }
   }
 
-  public GetRecommendationsRequest.Builder getRecommendations(String[] ids) {
+  public GetRecommendationsRequest.Builder getRecommendations(String... ids) {
     GetRecommendationsRequest.Builder builder = GetRecommendationsRequest.builder();
     setDefaults(builder);
     builder.seed_genres(ids);

@@ -2,11 +2,9 @@ package com.wrapper.spotify.requests;
 
 import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.HttpManager;
-import com.wrapper.spotify.exceptions.*;
 import org.apache.http.Header;
 import org.apache.http.NameValuePair;
 
-import java.io.IOException;
 import java.net.URI;
 import java.text.SimpleDateFormat;
 import java.util.List;

@@ -1,7 +1,5 @@
 package com.wrapper.spotify;
 
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import com.neovisionaries.i18n.CountryCode;
 import com.neovisionaries.i18n.LanguageCode;
 import com.wrapper.spotify.model_objects.AlbumType;

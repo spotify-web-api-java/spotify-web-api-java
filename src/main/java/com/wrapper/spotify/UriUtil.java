@@ -1,7 +1,6 @@
 package com.wrapper.spotify;
 
 import java.io.UnsupportedEncodingException;
-import java.net.URI;
 import java.net.URLEncoder;
 
 public abstract class UriUtil {

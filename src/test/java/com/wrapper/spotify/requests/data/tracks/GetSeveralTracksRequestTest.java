@@ -33,7 +33,7 @@ public class GetSeveralTracksRequestTest {
 
     Futures.addCallback(tracksFuture, new FutureCallback<Track[]>() {
       @Override
-      public void onSuccess(Track[] tracks) {
+      public void onSuccess(Track... tracks) {
         assertEquals(2, tracks.length);
 
         Track firstTrack = tracks[0];

@@ -146,17 +146,17 @@ public class Album extends AbstractModelObject {
       return this;
     }
 
-    public Builder setArtists(ArtistSimplified[] artists) {
+    public Builder setArtists(ArtistSimplified... artists) {
       this.artists = artists;
       return this;
     }
 
-    public Builder setAvailableMarkets(CountryCode[] availableMarkets) {
+    public Builder setAvailableMarkets(CountryCode... availableMarkets) {
       this.availableMarkets = availableMarkets;
       return this;
     }
 
-    public Builder setCopyrights(Copyright[] copyrights) {
+    public Builder setCopyrights(Copyright... copyrights) {
       this.copyrights = copyrights;
       return this;
     }
@@ -171,7 +171,7 @@ public class Album extends AbstractModelObject {
       return this;
     }
 
-    public Builder setGenres(String[] genres) {
+    public Builder setGenres(String... genres) {
       this.genres = genres;
       return this;
     }
@@ -186,7 +186,7 @@ public class Album extends AbstractModelObject {
       return this;
     }
 
-    public Builder setImages(Image[] images) {
+    public Builder setImages(Image... images) {
       this.images = images;
       return this;
     }

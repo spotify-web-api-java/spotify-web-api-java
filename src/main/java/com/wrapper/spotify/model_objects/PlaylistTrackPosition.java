@@ -17,7 +17,7 @@ public class PlaylistTrackPosition {
     return positions;
   }
 
-  public void setPositions(int[] positions) {
+  public void setPositions(int... positions) {
     this.positions = positions;
   }
 

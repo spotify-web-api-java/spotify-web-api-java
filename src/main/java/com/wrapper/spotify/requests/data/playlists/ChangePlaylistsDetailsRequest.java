@@ -1,14 +1,10 @@
 package com.wrapper.spotify.requests.data.playlists;
 
-import com.google.common.collect.Maps;
 import com.google.common.util.concurrent.SettableFuture;
-import com.google.gson.Gson;
-import com.google.gson.JsonParser;
 import com.wrapper.spotify.exceptions.*;
 import com.wrapper.spotify.requests.AbstractRequest;
 
 import java.io.IOException;
-import java.util.Map;
 
 public class ChangePlaylistsDetailsRequest extends AbstractRequest {
 

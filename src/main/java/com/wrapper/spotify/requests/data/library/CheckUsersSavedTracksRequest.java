@@ -49,7 +49,7 @@ public class CheckUsersSavedTracksRequest extends AbstractRequest {
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
-    public Builder tracks(final String[] trackIds) {
+    public Builder tracks(final String... trackIds) {
       String idsParameter = Joiner.on(",").join(trackIds);
       setFormParameter("ids", idsParameter);
       return this;

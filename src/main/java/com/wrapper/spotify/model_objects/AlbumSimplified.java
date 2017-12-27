@@ -95,12 +95,12 @@ public class AlbumSimplified extends AbstractModelObject {
       return this;
     }
 
-    public Builder setArtists(ArtistSimplified[] artists) {
+    public Builder setArtists(ArtistSimplified... artists) {
       this.artists = artists;
       return this;
     }
 
-    public Builder setAvailableMarkets(CountryCode[] availableMarkets) {
+    public Builder setAvailableMarkets(CountryCode... availableMarkets) {
       this.availableMarkets = availableMarkets;
       return this;
     }
@@ -120,7 +120,7 @@ public class AlbumSimplified extends AbstractModelObject {
       return this;
     }
 
-    public Builder setImages(Image[] images) {
+    public Builder setImages(Image... images) {
       this.images = images;
       return this;
     }

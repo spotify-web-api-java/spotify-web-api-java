@@ -72,7 +72,7 @@ public class Paging<T> extends AbstractModelObject {
       return this;
     }
 
-    public Builder<T> setItems(T[] items) {
+    public Builder<T> setItems(T... items) {
       this.items = items;
       return this;
     }

@@ -6,7 +6,6 @@ import org.apache.http.NameValuePair;
 
 import java.io.*;
 import java.net.URI;
-import java.util.List;
 
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyListOf;
