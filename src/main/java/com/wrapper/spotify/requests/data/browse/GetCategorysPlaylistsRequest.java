@@ -51,6 +51,7 @@ public class GetCategorysPlaylistsRequest extends AbstractDataRequest {
 
     public Builder category_id(final String category_id) {
       assert (category_id != null);
+      assert (category_id.matches("^[a-z]+$"));
       return setPathParameter("category_id", category_id);
     }
 
@@ -65,7 +66,7 @@ public class GetCategorysPlaylistsRequest extends AbstractDataRequest {
     }
 
     public Builder limit(final Integer limit) {
-      assert (limit > 0);
+      assert (1 <= limit && limit <= 50);
       return setQueryParameter("limit", limit);
     }
 

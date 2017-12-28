@@ -59,9 +59,11 @@ public class CheckUsersFollowPlaylistRequest extends AbstractDataRequest {
       return setPathParameter("playlist_id", playlist_id);
     }
 
-    public Builder ids(final String... ids) {
+    // TODO Joiner.on(",").join()
+    public Builder ids(final String ids) {
       assert (ids != null);
-      return setFormParameter("ids", Joiner.on(",").join(ids));
+      assert (ids.split(",").length <= 5);
+      return setQueryParameter("ids", ids);
     }
 
     @Override

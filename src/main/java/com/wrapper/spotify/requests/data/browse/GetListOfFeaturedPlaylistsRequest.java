@@ -81,15 +81,19 @@ public class GetListOfFeaturedPlaylistsRequest extends AbstractDataRequest {
     }
 
 
-    public Builder locale(final LanguageCode languageCode, final CountryCode countryCode) {
-      assert (languageCode != null);
-      assert (countryCode != null);
-      return setQueryParameter("locale", languageCode + "_" + countryCode);
+    public Builder locale(final String locale) {
+      assert (locale != null);
+      assert (locale.contains("_"));
+      String[] localeParts = locale.split("_");
+      assert (localeParts.length == 2);
+      assert (LanguageCode.getByCode(localeParts[0]) != null);
+      assert (CountryCode.getByCode(localeParts[1]) != null);
+      return setQueryParameter("locale", locale);
     }
 
-    public Builder country(final CountryCode countryCode) {
-      assert (countryCode != null);
-      return setQueryParameter("country", countryCode);
+    public Builder country(final CountryCode country) {
+      assert (country != null);
+      return setQueryParameter("country", country);
     }
 
     public Builder timestamp(final Date timestamp) {
@@ -98,7 +102,7 @@ public class GetListOfFeaturedPlaylistsRequest extends AbstractDataRequest {
     }
 
     public Builder limit(final Integer limit) {
-      assert (limit > 0);
+      assert (1 <= limit && limit <= 50);
       return setQueryParameter("limit", limit);
     }
 

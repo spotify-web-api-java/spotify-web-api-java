@@ -54,7 +54,7 @@ public class GetListOfCategoriesRequest extends AbstractDataRequest {
     /*
      * Optional. A country: an ISO 3166-1 alpha-2 country code. Provide this parameter if you want to narrow the list of returned categories to those relevant to a particular country. If omitted, the returned items will be globally relevant.
      */
-    public Builder country(CountryCode country) {
+    public Builder country(final CountryCode country) {
       assert (country != null);
       return setQueryParameter("country", country);
     }
@@ -71,10 +71,14 @@ public class GetListOfCategoriesRequest extends AbstractDataRequest {
      * For example country=SE&locale=de_DE will return a list of categories relevant to Sweden but as German
      * language strings.
      */
-    public Builder locale(final LanguageCode languageCode, final CountryCode countryCode) {
-      assert (languageCode != null);
-      assert (countryCode != null);
-      return setQueryParameter("locale", languageCode + "_" + countryCode);
+    public Builder locale(final String locale) {
+      assert (locale != null);
+      assert (locale.contains("_"));
+      String[] localeParts = locale.split("_");
+      assert (localeParts.length == 2);
+      assert (LanguageCode.getByCode(localeParts[0]) != null);
+      assert (CountryCode.getByCode(localeParts[1]) != null);
+      return setQueryParameter("locale", locale);
     }
 
     /**
@@ -84,7 +88,7 @@ public class GetListOfCategoriesRequest extends AbstractDataRequest {
      * @return {@link GetListOfCategoriesRequest.Builder}
      */
     public Builder limit(Integer limit) {
-      assert (limit > 0 && limit <= 50);
+      assert (1 <= limit && limit <= 50);
       return setQueryParameter("limit", limit);
     }
 

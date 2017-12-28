@@ -123,9 +123,10 @@ public class Api {
   }
 
   public GetSeveralAlbumsRequest.Builder getAlbums(String... ids) {
-    builder.ids(ids);
+    assert (ids.length <= 20);
     GetSeveralAlbumsRequest.Builder builder = new GetSeveralAlbumsRequest.Builder(accessToken);
     builder.setDefaults(httpManager, scheme, host, port);
+    builder.ids(Joiner.on(",").join(ids));
     return builder;
   }
 
@@ -153,9 +154,9 @@ public class Api {
   }
 
   public GetSeveralArtistsRequest.Builder getArtists(String... ids) {
-    builder.ids(ids);
     GetSeveralArtistsRequest.Builder builder = new GetSeveralArtistsRequest.Builder(accessToken);
     builder.setDefaults(httpManager, scheme, host, port);
+    builder.ids(Joiner.on(",").join(ids));
     return builder;
   }
 
@@ -669,9 +670,9 @@ public class Api {
   }
 
   public GetRecommendationsRequest.Builder getRecommendations(String... ids) {
-    builder.seed_genres(ids);
     GetRecommendationsRequest.Builder builder = new GetRecommendationsRequest.Builder(accessToken);
     builder.setDefaults(httpManager, scheme, host, port);
+    builder.seed_genres(Joiner.on(",").join(ids));
     return builder;
   }
 
@@ -694,10 +695,10 @@ public class Api {
   }
 
   public GetCategorysPlaylistsRequest.Builder getPlaylistsForCategory(String categoryId) {
-    builder.category_id(categoryId);
-    return builder;
     GetCategorysPlaylistsRequest.Builder builder = new GetCategorysPlaylistsRequest.Builder(accessToken);
     builder.setDefaults(httpManager, scheme, host, port);
+    return builder
+            .category_id(categoryId);
   }
 
   public void setAccessToken(String accessToken) {

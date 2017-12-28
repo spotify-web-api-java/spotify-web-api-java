@@ -184,24 +184,29 @@ public abstract class AbstractRequest implements Request {
 
     public BuilderType setScheme(final String scheme) {
       assert (scheme != null);
+      assert (!scheme.equals(""));
       this.scheme = scheme;
       return (BuilderType) this;
     }
 
     public BuilderType setHost(final String host) {
       assert (host != null);
+      assert (!scheme.equals(""));
       this.host = host;
       return (BuilderType) this;
     }
 
     public BuilderType setPort(final Integer port) {
-      assert (port > -1);
+      assert (port != null);
+      assert (port >= 0);
       this.port = port;
       return (BuilderType) this;
     }
 
     public BuilderType setPath(final String path) {
       assert (path != null);
+      assert (!path.equals(""));
+
       String builtPath = path;
 
       for (NameValuePair nameValuePair : pathParameters) {
@@ -213,8 +218,8 @@ public abstract class AbstractRequest implements Request {
     }
 
     public BuilderType setPathParameter(final String name, final String value) {
-      assert (name != null);
-      assert (value != null);
+      assert (name != null && value != null);
+      assert (!name.equals("") && !value.equals(""));
       this.pathParameters.add(new BasicNameValuePair(name, value));
       return (BuilderType) this;
     }

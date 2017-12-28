@@ -27,7 +27,7 @@ public class GetArtistsAlbumsRequestTest {
 
     final GetArtistsAlbumsRequest request = api.getAlbumsForArtist("1vCWHaC5f2uS3yhpwWbIA6")
             .limit(2)
-            .album_type(AlbumType.SINGLE)
+            .album_type(AlbumType.SINGLE.getType())
             .market(CountryCode.US)
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/artists/GetArtistsAlbumsRequest.json"))
             .build();
@@ -73,7 +73,7 @@ public class GetArtistsAlbumsRequestTest {
 
     final GetArtistsAlbumsRequest request = api.getAlbumsForArtist("1vCWHaC5f2uS3yhpwWbIA6")
             .limit(2)
-            .album_type(AlbumType.SINGLE)
+            .album_type(AlbumType.SINGLE.getType())
             .market(CountryCode.US)
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/artists/GetArtistsAlbumsRequest.json"))
             .build();

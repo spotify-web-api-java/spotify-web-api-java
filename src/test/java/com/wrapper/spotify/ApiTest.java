@@ -18,7 +18,7 @@ import static org.junit.Assert.assertEquals;
 
 public class ApiTest {
 
-  SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss");
+  private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss");
   private String accessToken = "AccessToken";
 
   @Test
@@ -176,34 +176,35 @@ public class ApiTest {
     final Api api = Api.builder().accessToken(accessToken).build();
     Request request = api
             .getAlbumsForArtist("4AK6F7OLvEQ5QYCBNiQWHq")
+            .album_type(AlbumType.ALBUM.getType() + "," + AlbumType.SINGLE.getType())
             .market(CountryCode.SE)
             .build();
 
-    assertEquals("https://api.spotify.com:443/v1/artists/4AK6F7OLvEQ5QYCBNiQWHq/albums?album_type=ALBUM%2CSINGLE&market=SE", request.getUri().toString());
-    assertHasQueryParameter(request, "album_type", "ALBUM,SINGLE");
+    assertEquals("https://api.spotify.com:443/v1/artists/4AK6F7OLvEQ5QYCBNiQWHq/albums?album_type=album%2Csingle&market=SE", request.getUri().toString());
+    assertHasQueryParameter(request, "album_type", "album,single");
     assertHasQueryParameter(request, "market", "SE");
   }
 
   @Test
   public void shouldHaveSingleAlbumTypeParametersInArtistsAlbumUrl() {
-    assertEquals("https://api.spotify.com:443/v1/artists/4AK6F7OLvEQ5QYCBNiQWHq/albums?album_type=SINGLE", request.getUri().toString());
-    assertHasQueryParameter(request, "album_type", "SINGLE");
     final Api api = Api.builder().accessToken(accessToken).build();
     Request request = api
             .getAlbumsForArtist("4AK6F7OLvEQ5QYCBNiQWHq")
             .album_type(AlbumType.SINGLE.getType())
             .build();
+    assertEquals("https://api.spotify.com:443/v1/artists/4AK6F7OLvEQ5QYCBNiQWHq/albums?album_type=single", request.getUri().toString());
+    assertHasQueryParameter(request, "album_type", "single");
   }
 
   @Test
   public void shouldFailIfAlbumTypeParametersIsInArtistsAlbumUrl() {
-    assertEquals("https://api.spotify.com:443/v1/artists/4AK6F7OLvEQ5QYCBNiQWHq/albums?album_type=SINGLE", request.getUri().toString());
-    assertHasQueryParameter(request, "album_type", "SINGLE");
     final Api api = Api.builder().accessToken(accessToken).build();
     Request request = api
             .getAlbumsForArtist("4AK6F7OLvEQ5QYCBNiQWHq")
             .album_type(AlbumType.SINGLE.getType())
             .build();
+    assertEquals("https://api.spotify.com:443/v1/artists/4AK6F7OLvEQ5QYCBNiQWHq/albums?album_type=single", request.getUri().toString());
+    assertHasQueryParameter(request, "album_type", "single");
   }
 
   @Test
@@ -237,9 +238,10 @@ public class ApiTest {
             .limit(2)
             .offset(5)
             .build();
+    assertEquals("https://api.spotify.com:443/v1/artists/4AK6F7OLvEQ5QYCBNiQWHq/albums?album_type=single&limit=2&offset=5", request.getUri().toString());
     assertHasQueryParameter(request, "offset", "5");
     assertHasQueryParameter(request, "limit", "2");
-    assertHasQueryParameter(request, "album_type", "SINGLE");
+    assertHasQueryParameter(request, "album_type", "single");
   }
 
   @Test
@@ -365,7 +367,6 @@ public class ApiTest {
 
   @Test
   public void shouldCreateUrlForListingAUsersPlaylists() throws Exception {
-    final String accessToken = "myVeryLongAccessToken";
     final Api api = Api.builder().accessToken(accessToken).build();
 
     final Request request = api
@@ -424,7 +425,6 @@ public class ApiTest {
 
   @Test
   public void shouldCreatePlaylistLookupUrl() {
-    final String accessToken = "myVeryLongAccessToken";
     final Api api = Api.builder().accessToken(accessToken).build();
 
     final String playlistId = "3ktAYNcRHpazJ9qecm3ptn";
@@ -440,7 +440,6 @@ public class ApiTest {
 
   @Test
   public void shouldCreateCurrentUserLookupUrl() {
-    final String accessToken = "myVeryLongAccessToken";
 
     final Api api = Api.builder().accessToken(accessToken).build();
 
@@ -454,7 +453,6 @@ public class ApiTest {
 
   @Test
   public void shouldCreateCreatePlaylistUrl() {
-    final String accessToken = "myVeryLongAccessToken";
     final Api api = Api.builder().accessToken(accessToken).build();
 
     final String myUsername = "thelinmichael";
@@ -473,7 +471,6 @@ public class ApiTest {
 
   @Test
   public void shouldCreateAddTrackToPlaylistUrl() {
-    final String accessToken = "myVeryLongAccessToken";
     final Api api = Api.builder().accessToken(accessToken).build();
 
     final String myUsername = "thelinmichael";
@@ -495,7 +492,6 @@ public class ApiTest {
 
   @Test
   public void shouldCreateRemoveTrackFromPlaylistUrl() {
-    final String accessToken = "myVeryLongAccessToken";
     final Api api = Api.builder().accessToken(accessToken).build();
 
     final String myUsername = "thelinmichael";
@@ -525,7 +521,6 @@ public class ApiTest {
 
   @Test
   public void shouldCreateReorderTracksInPlaylistUrl() {
-    final String accessToken = "myVeryLongAccessToken";
     final Api api = Api.builder().accessToken(accessToken).build();
 
     final String myUsername = "thelinmichael";
@@ -554,7 +549,6 @@ public class ApiTest {
 
   @Test
   public void shouldCreateChangePlaylistDetailsUrl() {
-    final String accessToken = "myVeryLongAccessToken";
     final Api api = Api.builder().accessToken(accessToken).build();
 
     final String myUsername = "thelinmichael";
@@ -741,7 +735,7 @@ public class ApiTest {
             .build();
 
     final Request request = api
-            .removeFromMySavedTracks(new String[]{"test", "test2"})
+            .removeFromMySavedTracks("test", "test2")
             .build();
 
     assertEquals("https://api.spotify.com:443/v1/me/tracks?ids=test%2Ctest2", request.getUri().toString());
@@ -785,7 +779,7 @@ public class ApiTest {
     final Request request = api
             .getFeaturedPlaylists()
             .country(CountryCode.SE)
-            .locale(LanguageCode.es, CountryCode.MX)
+            .locale(LanguageCode.es + "_" + CountryCode.MX)
             .limit(5)
             .offset(1)
             .timestamp(timestamp)

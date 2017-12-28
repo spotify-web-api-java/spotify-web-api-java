@@ -52,13 +52,15 @@ public class GetArtistsAlbumsRequest extends AbstractDataRequest {
 
     public Builder id(final String id) {
       assert (id != null);
+      assert (!id.equals(""));
       return setPathParameter("id", id);
     }
 
-    public Builder album_type(final AlbumType... album_type) {
+    // TODO Joiner.on(",").join()
+    public Builder album_type(final String album_type) {
       assert (album_type != null);
-      assert (album_type.length > 0);
-      return setQueryParameter("album_type", Joiner.on(",").join(album_type));
+      assert (album_type.matches("((^|,)(single|album|appears_on|compilation))+$"));
+      return setQueryParameter("album_type", album_type);
     }
 
     public Builder market(final CountryCode market) {
@@ -67,7 +69,7 @@ public class GetArtistsAlbumsRequest extends AbstractDataRequest {
     }
 
     public Builder limit(final Integer limit) {
-      assert (limit > 0);
+      assert (1 <= limit && limit <= 50);
       return setQueryParameter("limit", limit);
     }
 

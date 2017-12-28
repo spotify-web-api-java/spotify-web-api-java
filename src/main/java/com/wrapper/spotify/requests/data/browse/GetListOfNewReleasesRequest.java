@@ -48,13 +48,13 @@ public class GetListOfNewReleasesRequest extends AbstractDataRequest {
       super(accessToken);
     }
 
-    public Builder country(final CountryCode countryCode) {
-      assert (countryCode != null);
-      return setQueryParameter("country", countryCode);
+    public Builder country(final CountryCode country) {
+      assert (country != null);
+      return setQueryParameter("country", country);
     }
 
     public Builder limit(final Integer limit) {
-      assert (limit > 0);
+      assert (1 <= limit && limit <= 50);
       return setQueryParameter("limit", limit);
     }
 

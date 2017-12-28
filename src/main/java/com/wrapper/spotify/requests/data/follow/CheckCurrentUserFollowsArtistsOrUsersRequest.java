@@ -52,12 +52,15 @@ public class CheckCurrentUserFollowsArtistsOrUsersRequest extends AbstractDataRe
 
     public Builder type(final ModelObjectType type) {
       assert (type != null);
-      return setFormParameter("type", type);
+      assert (type.getType().equals("artist") || type.getType().equals("user"));
+      return setQueryParameter("type", type);
     }
 
-    public Builder ids(final String... ids) {
+    // TODO Joiner.on(",").join()
+    public Builder ids(final String ids) {
       assert (ids != null);
-      return setFormParameter("ids", Joiner.on(",").join(ids));
+      assert (ids.split(",").length <= 50);
+      return setQueryParameter("ids", ids);
     }
 
     @Override

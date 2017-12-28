@@ -50,6 +50,7 @@ public class GetArtistsRelatedArtistsRequest extends AbstractDataRequest {
 
     public Builder id(final String id) {
       assert (id != null);
+      assert (!id.equals(""));
       return setPathParameter("id", id);
     }
 

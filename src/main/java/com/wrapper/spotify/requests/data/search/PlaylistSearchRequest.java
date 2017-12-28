@@ -62,7 +62,7 @@ public class PlaylistSearchRequest extends AbstractDataRequest {
     }
 
     public Builder limit(Integer limit) {
-      assert (limit > 0);
+      assert (1 <= limit && limit <= 50);
       return setFormParameter("limit", limit);
     }
 
