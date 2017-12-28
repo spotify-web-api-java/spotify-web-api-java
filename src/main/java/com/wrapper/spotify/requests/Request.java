@@ -41,6 +41,11 @@ public interface Request {
 
     Builder setPathParameter(final String name, final String value);
 
+    Builder setDefaults(final HttpManager httpManager,
+                        final String scheme,
+                        final String host,
+                        final Integer port);
+
     <T> Builder setQueryParameter(final String name, final T value);
 
     <T> Builder setHeader(final String name, final T value);

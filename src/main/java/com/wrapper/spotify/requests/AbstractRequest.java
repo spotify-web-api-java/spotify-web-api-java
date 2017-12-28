@@ -220,6 +220,18 @@ public abstract class AbstractRequest implements Request {
       return (BuilderType) this;
     }
 
+    public BuilderType setDefaults(final HttpManager httpManager,
+                                   final String scheme,
+                                   final String host,
+                                   final Integer port) {
+      setHttpManager(httpManager);
+      setScheme(scheme);
+      setHost(host);
+      setPort(port);
+
+      return (BuilderType) this;
+    }
+
     public <T> BuilderType setQueryParameter(final String name, final T value) {
       assert (name != null);
       assert (value != null);

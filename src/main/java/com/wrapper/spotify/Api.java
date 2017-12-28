@@ -118,21 +118,21 @@ public class Api {
    */
   public GetAlbumRequest.Builder getAlbum(String id) {
     GetAlbumRequest.Builder builder = GetAlbumRequest.builder();
-    setDefaults(builder);
+    builder.setDefaults(httpManager, scheme, host, port);
     builder.id(id);
     return builder;
   }
 
   public GetSeveralAlbumsRequest.Builder getAlbums(String... ids) {
     GetSeveralAlbumsRequest.Builder builder = GetSeveralAlbumsRequest.builder();
-    setDefaults(builder);
     builder.ids(ids);
+    builder.setDefaults(httpManager, scheme, host, port);
     return builder;
   }
 
   public GetArtistsAlbumsRequest.Builder getAlbumsForArtist(String artistId) {
     GetArtistsAlbumsRequest.Builder builder = GetArtistsAlbumsRequest.builder();
-    setDefaults(builder);
+    builder.setDefaults(httpManager, scheme, host, port);
     builder.id(artistId);
     return builder;
   }
@@ -141,28 +141,28 @@ public class Api {
           String albumId
   ) {
     GetAlbumsTracksRequest.Builder builder = GetAlbumsTracksRequest.builder();
-    setDefaults(builder);
+    builder.setDefaults(httpManager, scheme, host, port);
     builder.id(albumId);
     return builder;
   }
 
   public GetArtistRequest.Builder getArtist(String id) {
     GetArtistRequest.Builder builder = GetArtistRequest.builder();
-    setDefaults(builder);
+    builder.setDefaults(httpManager, scheme, host, port);
     builder.id(id);
     return builder;
   }
 
   public GetSeveralArtistsRequest.Builder getArtists(String... ids) {
     GetSeveralArtistsRequest.Builder builder = GetSeveralArtistsRequest.builder();
-    setDefaults(builder);
     builder.ids(ids);
+    builder.setDefaults(httpManager, scheme, host, port);
     return builder;
   }
 
   public GetTrackRequest.Builder getTrack(String id) {
     GetTrackRequest.Builder builder = GetTrackRequest.builder();
-    setDefaults(builder);
+    builder.setDefaults(httpManager, scheme, host, port);
     builder.id(id);
     return builder;
   }
@@ -173,67 +173,67 @@ public class Api {
 
   public GetSeveralTracksRequest.Builder getTracks(List<String> ids) {
     GetSeveralTracksRequest.Builder builder = GetSeveralTracksRequest.builder();
-    setDefaults(builder);
+    builder.setDefaults(httpManager, scheme, host, port);
     builder.id(ids);
     return builder;
   }
 
   public GetRecommendationsRequest.Builder getRecommendations() {
     GetRecommendationsRequest.Builder builder = GetRecommendationsRequest.builder();
-    setDefaults(builder);
+    builder.setDefaults(httpManager, scheme, host, port);
     return builder;
   }
 
   public AlbumSearchRequest.Builder searchAlbums(String query) {
     AlbumSearchRequest.Builder builder = AlbumSearchRequest.builder();
-    setDefaults(builder);
+    builder.setDefaults(httpManager, scheme, host, port);
     builder.query(query);
     return builder;
   }
 
   public TrackSearchRequest.Builder searchTracks(String query) {
     TrackSearchRequest.Builder builder = TrackSearchRequest.builder();
-    setDefaults(builder);
+    builder.setDefaults(httpManager, scheme, host, port);
     builder.query(query);
     return builder;
   }
 
   public ArtistSearchRequest.Builder searchArtists(String query) {
     ArtistSearchRequest.Builder builder = ArtistSearchRequest.builder();
-    setDefaults(builder);
+    builder.setDefaults(httpManager, scheme, host, port);
     builder.query(query);
     return builder;
   }
 
   public PlaylistSearchRequest.Builder searchPlaylists(String query) {
     PlaylistSearchRequest.Builder builder = PlaylistSearchRequest.builder();
-    setDefaults(builder);
+    builder.setDefaults(httpManager, scheme, host, port);
     builder.query(query);
     return builder;
   }
 
   public GetListOfNewReleasesRequest.Builder getNewReleases() {
     GetListOfNewReleasesRequest.Builder builder = GetListOfNewReleasesRequest.builder();
-    setDefaults(builder);
+    builder.setDefaults(httpManager, scheme, host, port);
     return builder;
   }
 
   public GetAudioFeaturesForTrackRequest.Builder getAudioFeature(String id) {
     GetAudioFeaturesForTrackRequest.Builder builder = GetAudioFeaturesForTrackRequest.builder();
-    setDefaults(builder);
+    builder.setDefaults(httpManager, scheme, host, port);
     builder.id(id);
     return builder;
   }
 
   public GetUsersRecentlyPlayedTracksRequest.Builder getRecentlyPlayedTracks() {
     GetUsersRecentlyPlayedTracksRequest.Builder builder = GetUsersRecentlyPlayedTracksRequest.builder();
-    setDefaults(builder);
+    builder.setDefaults(httpManager, scheme, host, port);
     return builder;
   }
 
   public GetUsersCurrentlyPlayingTrackRequest.Builder getCurrentlyPlayingTrack() {
     GetUsersCurrentlyPlayingTrackRequest.Builder builder = GetUsersCurrentlyPlayingTrackRequest.builder();
-    setDefaults(builder);
+    builder.setDefaults(httpManager, scheme, host, port);
     return builder;
   }
 
@@ -244,13 +244,13 @@ public class Api {
    */
   public GetListOfFeaturedPlaylistsRequest.Builder getFeaturedPlaylists() {
     GetListOfFeaturedPlaylistsRequest.Builder builder = GetListOfFeaturedPlaylistsRequest.builder();
-    setDefaults(builder);
+    builder.setDefaults(httpManager, scheme, host, port);
     return builder;
   }
 
   public GetArtistsTopTracksRequest.Builder getTopTracksForArtist(String id, CountryCode country) {
     GetArtistsTopTracksRequest.Builder builder = GetArtistsTopTracksRequest.builder();
-    setDefaults(builder);
+    builder.setDefaults(httpManager, scheme, host, port);
     builder.id(id);
     builder.country(country);
     return builder;
@@ -258,7 +258,7 @@ public class Api {
 
   public GetUsersProfileRequest.Builder getUser(String userId) {
     GetUsersProfileRequest.Builder builder = GetUsersProfileRequest.builder();
-    setDefaults(builder);
+    builder.setDefaults(httpManager, scheme, host, port);
     userId = UriUtil.escapeUsername(userId);
     builder.username(userId);
     return builder;
@@ -266,7 +266,7 @@ public class Api {
 
   public GetListOfUsersPlaylistsRequest.Builder getPlaylistsForUser(String userId) {
     GetListOfUsersPlaylistsRequest.Builder builder = GetListOfUsersPlaylistsRequest.builder();
-    setDefaults(builder);
+    builder.setDefaults(httpManager, scheme, host, port);
     userId = UriUtil.escapeUsername(userId);
     builder.username(userId);
     return builder;
@@ -282,7 +282,7 @@ public class Api {
    */
   public AuthorizationCodeGrantRequest.Builder authorizationCodeGrant(String code) {
     AuthorizationCodeGrantRequest.Builder builder = AuthorizationCodeGrantRequest.builder();
-    setDefaults(builder);
+    builder.setDefaults(httpManager, scheme, host, port);
     builder.grantType("authorization_code");
     builder.basicAuthorizationHeader(clientId, clientSecret);
     builder.code(code);
@@ -298,7 +298,7 @@ public class Api {
    */
   public RefreshAccessTokenRequest.Builder refreshAccessToken() {
     RefreshAccessTokenRequest.Builder builder = RefreshAccessTokenRequest.builder();
-    setDefaults(builder);
+    builder.setDefaults(httpManager, scheme, host, port);
     builder.grantType("refresh_token");
     builder.refreshToken(refreshToken);
     builder.basicAuthorizationHeader(clientId, clientSecret);
@@ -313,7 +313,7 @@ public class Api {
    */
   public ClientCredentialsGrantRequest.Builder clientCredentialsGrant() {
     ClientCredentialsGrantRequest.Builder builder = ClientCredentialsGrantRequest.builder();
-    setDefaults(builder);
+    builder.setDefaults(httpManager, scheme, host, port);
     builder.grantType("client_credentials");
     builder.basicAuthorizationHeader(clientId, clientSecret);
     return builder;
@@ -328,7 +328,7 @@ public class Api {
    */
   public GetPlaylistRequest.Builder getPlaylist(String userId, String playlistId) {
     GetPlaylistRequest.Builder builder = GetPlaylistRequest.builder();
-    setDefaults(builder);
+    builder.setDefaults(httpManager, scheme, host, port);
     userId = UriUtil.escapeUsername(userId);
     builder.setPath("/v1/users/" + userId + "/playlists/" + playlistId);
     return builder;
@@ -342,7 +342,7 @@ public class Api {
    */
   public GetCurrentUsersProfileRequest.Builder getMe() {
     final GetCurrentUsersProfileRequest.Builder builder = GetCurrentUsersProfileRequest.builder();
-    setDefaults(builder);
+    builder.setDefaults(httpManager, scheme, host, port);
     return builder;
   }
 
@@ -355,7 +355,7 @@ public class Api {
    */
   public CreatePlaylistRequest.Builder createPlaylist(String userId, String name) {
     final CreatePlaylistRequest.Builder builder = CreatePlaylistRequest.builder();
-    setDefaults(builder);
+    builder.setDefaults(httpManager, scheme, host, port);
     builder.name(name);
     userId = UriUtil.escapeUsername(userId);
     builder.setPath("/v1/users/" + userId + "/playlists");
@@ -370,7 +370,7 @@ public class Api {
    */
   public GetArtistsRelatedArtistsRequest.Builder getArtistRelatedArtists(String id) {
     final GetArtistsRelatedArtistsRequest.Builder builder = GetArtistsRelatedArtistsRequest.builder();
-    setDefaults(builder);
+    builder.setDefaults(httpManager, scheme, host, port);
     builder.id(id);
     return builder;
   }
@@ -384,7 +384,7 @@ public class Api {
    */
   public GetPlaylistsTracksRequest.Builder getPlaylistTracks(String userId, String playlistId) {
     final GetPlaylistsTracksRequest.Builder builder = GetPlaylistsTracksRequest.builder();
-    setDefaults(builder);
+    builder.setDefaults(httpManager, scheme, host, port);
     userId = UriUtil.escapeUsername(userId);
     builder.setPath("/v1/users/" + userId + "/playlists/" + playlistId + "/tracks");
     return builder;
@@ -399,7 +399,7 @@ public class Api {
    */
   public GetPlaylistsTracksRequest.Builder getStarred(String userId) {
     final GetPlaylistsTracksRequest.Builder builder = GetPlaylistsTracksRequest.builder();
-    setDefaults(builder);
+    builder.setDefaults(httpManager, scheme, host, port);
     userId = UriUtil.escapeUsername(userId);
     builder.setPath("/v1/users/" + userId + "/starred/tracks");
     return builder;
@@ -435,7 +435,7 @@ public class Api {
    */
   public ReplacePlaylistsTracksRequest.Builder replacePlaylistsTracks(String userId, String playlistId, String[] trackUris) {
     final ReplacePlaylistsTracksRequest.Builder builder = ReplacePlaylistsTracksRequest.builder();
-    setDefaults(builder);
+    builder.setDefaults(httpManager, scheme, host, port);
     builder.setQueryParameter("uris", Joiner.on(",").join(trackUris));
     builder.setPath("/v1/users/" + userId + "/playlists/" + playlistId + "/tracks");
     return builder;
@@ -470,7 +470,7 @@ public class Api {
    */
   public ChangePlaylistsDetailsRequest.Builder changePlaylistDetails(String userId, String playlistId) {
     final ChangePlaylistsDetailsRequest.Builder builder = ChangePlaylistsDetailsRequest.builder();
-    setDefaults(builder);
+    builder.setDefaults(httpManager, scheme, host, port);
     userId = UriUtil.escapeUsername(userId);
     builder.setPath("/v1/users/" + userId + "/playlists/" + playlistId);
     return builder;
@@ -479,7 +479,7 @@ public class Api {
   public RemoveTracksFromPlaylistRequest.Builder removeTrackFromPlaylist(String userId, String playlistId, PlaylistTrackPosition[] playlistTrackPositions) {
     final RemoveTracksFromPlaylistRequest.Builder builder = RemoveTracksFromPlaylistRequest.builder();
 
-    setDefaults(builder);
+    builder.setDefaults(httpManager, scheme, host, port);
 
     JsonArray playlistTrackPositionJsonArray = new JsonArray();
 
@@ -511,7 +511,7 @@ public class Api {
 
   public ReorderPlaylistsTracksRequest.Builder reorderTracksInPlaylist(String userId, String playlistId, int rangeStart, int insertBefore) {
     final ReorderPlaylistsTracksRequest.Builder builder = ReorderPlaylistsTracksRequest.builder();
-    setDefaults(builder);
+    builder.setDefaults(httpManager, scheme, host, port);
     builder.rangeStart(rangeStart);
     builder.insertBefore(insertBefore);
     builder.setPath("/v1/users/" + userId + "/playlists/" + playlistId + "/tracks");
@@ -528,7 +528,7 @@ public class Api {
    */
   public UnfollowPlaylistRequest.Builder unfollowPlaylist(String owner_id, String playlist_id) {
     final UnfollowPlaylistRequest.Builder builder = UnfollowPlaylistRequest.builder();
-    setDefaults(builder);
+    builder.setDefaults(httpManager, scheme, host, port);
     builder.owner_id(owner_id).playlist_id(playlist_id);
     return builder;
   }
@@ -540,7 +540,7 @@ public class Api {
    */
   public GetUsersSavedTracksRequest.Builder getMySavedTracks() {
     final GetUsersSavedTracksRequest.Builder builder = GetUsersSavedTracksRequest.builder();
-    setDefaults(builder);
+    builder.setDefaults(httpManager, scheme, host, port);
     builder.setPath("/v1/me/tracks");
     return builder;
   }
@@ -553,7 +553,7 @@ public class Api {
    */
   public CheckUsersSavedTracksRequest.Builder containsMySavedTracks(String... trackIds) {
     final CheckUsersSavedTracksRequest.Builder builder = CheckUsersSavedTracksRequest.builder();
-    setDefaults(builder);
+    builder.setDefaults(httpManager, scheme, host, port);
     builder.tracks(trackIds);
     builder.setPath("/v1/me/tracks/contains");
     return builder;
@@ -567,7 +567,7 @@ public class Api {
    */
   public RemoveUsersSavedTracksRequest.Builder removeFromMySavedTracks(String... trackIds) {
     final RemoveUsersSavedTracksRequest.Builder builder = RemoveUsersSavedTracksRequest.builder();
-    setDefaults(builder);
+    builder.setDefaults(httpManager, scheme, host, port);
     builder.ids(trackIds);
     builder.setPath("/v1/me/tracks");
     return builder;
@@ -581,7 +581,7 @@ public class Api {
    */
   public SaveTracksForUserRequest.Builder addToMySavedTracks(String... trackIds) {
     final SaveTracksForUserRequest.Builder builder = SaveTracksForUserRequest.builder();
-    setDefaults(builder);
+    builder.setDefaults(httpManager, scheme, host, port);
     builder.ids(trackIds);
     builder.setPath("/v1/me/tracks");
     return builder;
@@ -669,46 +669,36 @@ public class Api {
     return builder.build().getUri();
   }
 
-  private void setDefaults(AbstractRequest.Builder builder) {
-    builder.setHttpManager(httpManager);
-    builder.setScheme(scheme);
-    builder.setHost(host);
-    builder.setPort(port);
-    if (accessToken != null) {
-      builder.setHeader("Authorization", "Bearer " + accessToken);
-    }
-  }
-
   public GetRecommendationsRequest.Builder getRecommendations(String... ids) {
     GetRecommendationsRequest.Builder builder = GetRecommendationsRequest.builder();
-    setDefaults(builder);
     builder.seed_genres(ids);
+    builder.setDefaults(httpManager, scheme, host, port);
     return builder;
   }
 
   public GetAvailableGenreSeedsRequest.Builder getAvailableGenreSeeds() {
     GetAvailableGenreSeedsRequest.Builder builder = new GetAvailableGenreSeedsRequest.Builder();
-    setDefaults(builder);
+    builder.setDefaults(httpManager, scheme, host, port);
     return builder;
   }
 
   public GetListOfCategoriesRequest.Builder getCategories() {
     GetListOfCategoriesRequest.Builder builder = new GetListOfCategoriesRequest.Builder();
-    setDefaults(builder);
+    builder.setDefaults(httpManager, scheme, host, port);
     return builder;
   }
 
   public GetCategoryRequest.Builder getCategory(String categoryId) {
     GetCategoryRequest.Builder builder = new GetCategoryRequest.Builder().category_id(categoryId);
-    setDefaults(builder);
+    builder.setDefaults(httpManager, scheme, host, port);
     return builder;
   }
 
   public GetCategorysPlaylistsRequest.Builder getPlaylistsForCategory(String categoryId) {
     GetCategorysPlaylistsRequest.Builder builder = GetCategorysPlaylistsRequest.builder();
-    setDefaults(builder);
     builder.category_id(categoryId);
     return builder;
+    builder.setDefaults(httpManager, scheme, host, port);
   }
 
   public void setAccessToken(String accessToken) {
