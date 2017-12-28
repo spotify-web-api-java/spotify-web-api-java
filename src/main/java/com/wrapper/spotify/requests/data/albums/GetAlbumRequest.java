@@ -106,8 +106,8 @@ public class GetAlbumRequest extends AbstractDataRequest {
     /**
      * The id path parameter setter.
      *
-     * @param id The <a href="https://beta.developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify ID
-     *           </a> for the album.
+     * @param id The <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify ID</a> for
+     *           the album.
      * @return A {@link GetAlbumRequest.Builder}.
      */
     public Builder id(final String id) {
@@ -121,8 +121,7 @@ public class GetAlbumRequest extends AbstractDataRequest {
      *
      * @param market Optional. An <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2 country
      *               code</a>. Provide this parameter if you want to apply
-     *               <a href="https://beta.developer.spotify.com/documentation/general/guides/track-relinking-guide/">
-     *               Track Relinking</a>.
+     *               <a href="https://developer.spotify.com/web-api/track-relinking-guide/">Track Relinking</a>.
      * @return A {@link GetAlbumRequest.Builder}.
      */
     public Builder market(final CountryCode market) {
