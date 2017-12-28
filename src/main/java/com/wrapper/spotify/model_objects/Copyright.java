@@ -2,6 +2,11 @@ package com.wrapper.spotify.model_objects;
 
 import com.google.gson.JsonObject;
 
+/**
+ * Retrieve information about
+ *     <a href="https://beta.developer.spotify.com/documentation/web-api/reference/object-model/#copyright-object">
+ *     Copyright objects</a> by building instances from this class.
+ */
 public class Copyright extends AbstractModelObject {
   private final String text;
   private final CopyrightType type;
@@ -13,10 +18,20 @@ public class Copyright extends AbstractModelObject {
     this.type = builder.type;
   }
 
+  /**
+   * Get the copyright text of the {@link Album}.
+   *
+   * @return The copyright text for this {@link Album}.
+   */
   public String getText() {
     return text;
   }
 
+  /**
+   * Get the {@link CopyrightType} of this {@link Copyright} object.
+   *
+   * @return The type of copyright: C = the copyright, P = the sound recording (performance) copyright.
+   */
   public CopyrightType getType() {
     return type;
   }
@@ -26,15 +41,30 @@ public class Copyright extends AbstractModelObject {
     return new Builder();
   }
 
+  /**
+   * Builder class for building {@link Copyright} instances.
+   */
   public static final class Builder extends AbstractModelObject.Builder {
     private String text;
     private CopyrightType type;
 
+    /**
+     * The copyright text setter.
+     *
+     * @param text The copyright text for this album.
+     * @return A {@link Copyright.Builder}
+     */
     public Builder setText(String text) {
       this.text = text;
       return this;
     }
 
+    /**
+     * The copyright type setter.
+     *
+     * @param type The type of copyright: C = the copyright, P = the sound recording (performance) copyright.
+     * @return A {@link Copyright.Builder}
+     */
     public Builder setType(CopyrightType type) {
       this.type = type;
       return this;
@@ -46,6 +76,9 @@ public class Copyright extends AbstractModelObject {
     }
   }
 
+  /**
+   * JsonUtil class for building {@link Copyright} instances.
+   */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<Copyright> {
     public Copyright createModelObject(JsonObject jsonObject) {
       if (jsonObject == null || jsonObject.isJsonNull()) {
