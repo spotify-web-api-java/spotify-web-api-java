@@ -69,7 +69,7 @@ public class GetAlbumsTracksRequest extends AbstractRequest {
      * @return A GetAlbumsTracksRequest builder.
      */
     public Builder limit(final Integer limit) {
-      assert (limit > 0);
+      assert (1 <= limit && limit <= 50);
       return setQueryParameter("limit", limit);
     }
 

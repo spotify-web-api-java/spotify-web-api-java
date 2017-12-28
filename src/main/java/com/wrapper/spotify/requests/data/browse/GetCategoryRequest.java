@@ -54,7 +54,10 @@ public class GetCategoryRequest extends AbstractRequest {
     }
 
     /**
-     * Optional. A country: an ISO 3166-1 alpha-2 country code. Provide this parameter if you want to narrow the list of returned categories to those relevant to a particular country. If omitted, the returned items will be globally relevant.
+     * @param country Optional. A country: an ISO 3166-1 alpha-2 country code. Provide this parameter if you want to
+     *                narrow the list of returned categories to those relevant to a particular country. If omitted, the
+     *                returned items will be globally relevant.
+     * @return {@link GetCategoryRequest.Builder}
      */
     public Builder country(final CountryCode country) {
       assert (country != null);
@@ -62,21 +65,23 @@ public class GetCategoryRequest extends AbstractRequest {
     }
 
     /**
-     * Optional. The desired language, consisting of an ISO 639 language code and an ISO 3166-1 alpha-2 country
-     * code, joined by an underscore. For example: es_MX, meaning "Spanish (Mexico)". Provide this parameter if
-     * you want the category metadata returned in a particular language.
-     * <p>
-     * Note that, if locale is not supplied, or if the specified language is not available, all strings will be
-     * returned in the Spotify default language (American English).
-     * <p>
-     * The locale parameter, combined with the country parameter, may give odd results if not carefully matched.
-     * For example country=SE&locale=de_DE will return a list of categories relevant to Sweden but as German
-     * language strings.
+     * @param locale Optional. The desired language, consisting of an ISO 639 language code and an ISO 3166-1 alpha-2
+     *               country code, joined by an underscore. For example: es_MX, meaning "Spanish (Mexico)". Provide this
+     *               parameter if you want the category metadata returned in a particular language. Note that, if locale
+     *               is not supplied, or if the specified language is not available, all strings will be returned in the
+     *               Spotify default language (American English). The locale parameter, combined with the country
+     *               parameter, may give odd results if not carefully matched. For example country=SE&amp;locale=de_DE
+     *               will return a list of categories relevant to Sweden but as German language strings.
+     * @return {@link GetCategoryRequest.Builder}
      */
-    public Builder locale(final LanguageCode languageCode, final CountryCode countryCode) {
-      assert (languageCode != null);
-      assert (countryCode != null);
-      return setQueryParameter("locale", languageCode + "_" + countryCode);
+    public Builder locale(final String locale) {
+      assert (locale != null);
+      assert (locale.contains("_"));
+      String[] localeParts = locale.split("_");
+      assert (localeParts.length == 2);
+      assert (LanguageCode.getByCode(localeParts[0]) != null);
+      assert (CountryCode.getByCode(localeParts[1]) != null);
+      return setQueryParameter("locale", locale);
     }
 
     @Override

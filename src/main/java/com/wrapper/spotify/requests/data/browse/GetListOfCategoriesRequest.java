@@ -80,7 +80,7 @@ public class GetListOfCategoriesRequest extends AbstractRequest {
      * Optional. The maximum number of categories to return.
      *
      * @param limit Default: 20. Minimum: 1. Maximum: 50
-     * @return
+     * @return {@link GetListOfCategoriesRequest.Builder}
      */
     public Builder limit(Integer limit) {
       assert (limit > 0 && limit <= 50);

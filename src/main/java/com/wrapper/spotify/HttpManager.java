@@ -16,8 +16,9 @@ public interface HttpManager {
   /**
    * Perform an HTTP GET request to the specified URL.
    *
-   * @param uri the {@link URI} to HTTP GET.
-   * @return a String containing the body of the HTTP GET response.
+   * @param uri     The GET request's {@link URI}.
+   * @param headers The GET request's {@link Header}s.
+   * @return A string containing the GET request's response body.
    * @throws IOException                  In case of networking issues.
    * @throws NoContentException           The request has succeeded but returns no message body.
    * @throws BadRequestException          The request could not be understood by the server due to malformed syntax.
@@ -44,8 +45,10 @@ public interface HttpManager {
   /**
    * Perform an HTTP POST request to the specified URL.
    *
-   * @param uri the {@link URI} to HTTP POST.
-   * @return a String containing the body of the HTTP POST response.
+   * @param uri            The POST request's {@link URI}.
+   * @param headers        The POST request's {@link Header}s.
+   * @param postParameters The POST request's form parameters as a {@link List} of {@link NameValuePair}s.
+   * @return A string containing the POST request's response body.
    * @throws IOException                  In case of networking issues.
    * @throws NoContentException           The request has succeeded but returns no message body.
    * @throws BadRequestException          The request could not be understood by the server due to malformed syntax.
@@ -72,8 +75,10 @@ public interface HttpManager {
   /**
    * Perform an HTTP PUT request to the specified URL.
    *
-   * @param uri the {@link URI} to HTTP PUT.
-   * @return a String containing the body of the HTTP PUTresponse.
+   * @param uri           The PUT request's {@link URI}.
+   * @param headers       The PUT request's {@link Header}s.
+   * @param putParameters The PUT request's form parameters as a {@link List} of {@link NameValuePair}s.
+   * @return A string containing the PUT request's response body.
    * @throws IOException                  In case of networking issues.
    * @throws NoContentException           The request has succeeded but returns no message body.
    * @throws BadRequestException          The request could not be understood by the server due to malformed syntax.
@@ -100,8 +105,9 @@ public interface HttpManager {
   /**
    * Perform an HTTP DELETE request to the specified URL.
    *
-   * @param uri the {@link URI} to HTTP DELETE.
-   * @return a String containing the body of the HTTP DELETE response.
+   * @param uri     The DELETE request's {@link URI}.
+   * @param headers The DELETE request's {@link Header}s.
+   * @return A string containing the DELETE request's response body.
    * @throws IOException                  In case of networking issues.
    * @throws NoContentException           The request has succeeded but returns no message body.
    * @throws BadRequestException          The request could not be understood by the server due to malformed syntax.

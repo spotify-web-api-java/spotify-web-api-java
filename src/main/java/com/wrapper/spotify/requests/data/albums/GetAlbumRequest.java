@@ -13,14 +13,46 @@ import java.io.IOException;
  */
 public class GetAlbumRequest extends AbstractRequest {
 
+  /**
+   * The private {@link GetAlbumRequest} constructor.
+   *
+   * @param builder A {@link GetAlbumRequest} builder.
+   */
   private GetAlbumRequest(final Builder builder) {
     super(builder);
   }
 
+  /**
+   * The public {@link GetAlbumRequest.Builder} constructor.
+   *
+   * @return A {@link GetAlbumRequest.Builder}.
+   */
   public static Builder builder() {
     return new Builder();
   }
 
+  /**
+   * Get an {@link Album} synchronously.
+   *
+   * @return An {@link Album}.
+   * @throws IOException                  In case of networking issues.
+   * @throws NoContentException           The request has succeeded but returns no message body.
+   * @throws BadRequestException          The request could not be understood by the server due to malformed syntax.
+   * @throws BadGatewayException          The server was acting as a gateway or proxy and received an invalid response
+   *                                      from the upstream server.
+   * @throws ForbiddenException           The server understood the request, but is refusing to fulfill it.
+   * @throws TooManyRequestsException     Rate limiting has been applied.
+   * @throws InternalServerErrorException You should never receive this error because our clever coders catch them all
+   *                                      ... but if you are unlucky enough to get one, please report it to us.
+   * @throws NotFoundException            The requested resource could not be found. This error can be due to a
+   *                                      temporary or permanent condition.
+   * @throws UnauthorizedException        The request requires user authentication or, if the request included
+   *                                      authorization credentials, authorization has been refused for those
+   *                                      credentials.
+   * @throws ServiceUnavailableException  The server is currently unable to handle the request due to a temporary
+   *                                      condition which will be alleviated after some delay. You can choose to resend
+   *                                      the request again.
+   */
   public Album get() throws
           IOException,
           NoContentException,
@@ -35,6 +67,28 @@ public class GetAlbumRequest extends AbstractRequest {
     return new Album.JsonUtil().createModelObject(getJson());
   }
 
+  /**
+   * Get an {@link Album} asynchronously.
+   *
+   * @return A {@link SettableFuture} for an {@link Album}.
+   * @throws IOException                  In case of networking issues.
+   * @throws NoContentException           The request has succeeded but returns no message body.
+   * @throws BadRequestException          The request could not be understood by the server due to malformed syntax.
+   * @throws BadGatewayException          The server was acting as a gateway or proxy and received an invalid response
+   *                                      from the upstream server.
+   * @throws ForbiddenException           The server understood the request, but is refusing to fulfill it.
+   * @throws TooManyRequestsException     Rate limiting has been applied.
+   * @throws InternalServerErrorException You should never receive this error because our clever coders catch them all
+   *                                      ... but if you are unlucky enough to get one, please report it to us.
+   * @throws NotFoundException            The requested resource could not be found. This error can be due to a
+   *                                      temporary or permanent condition.
+   * @throws UnauthorizedException        The request requires user authentication or, if the request included
+   *                                      authorization credentials, authorization has been refused for those
+   *                                      credentials.
+   * @throws ServiceUnavailableException  The server is currently unable to handle the request due to a temporary
+   *                                      condition which will be alleviated after some delay. You can choose to resend
+   *                                      the request again.
+   */
   public SettableFuture<Album> getAsync() throws
           IOException,
           NoContentException,
@@ -49,29 +103,40 @@ public class GetAlbumRequest extends AbstractRequest {
     return executeAsync(new Album.JsonUtil().createModelObject(getJson()));
   }
 
+  /**
+   * A builder class for a {@link GetAlbumRequest}.
+   */
   public static final class Builder extends AbstractRequest.Builder<Builder> {
     /**
      * The id path parameter setter.
      *
-     * @param id The Spotify ID for the album.
-     * @return A GetAlbumRequest builder.
+     * @param id The <a href="https://beta.developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">Spotify ID
+     *           </a> for the album.
+     * @return A {@link GetAlbumRequest.Builder}.
      */
     public Builder id(final String id) {
       assert (id != null);
+      assert (!id.equals(""));
       return setPathParameter("id", id);
     }
 
     /**
      * The market query parameter setter.
      *
-     * @param market Optional. An ISO 3166-1 alpha-2 country code. Provide this parameter if you want to apply Track Relinking.
-     * @return A GetAlbumRequest builder.
+     * @param market Optional. An ISO 3166-1 alpha-2 country code. Provide this parameter if you want to apply Track
+     *               Relinking.
+     * @return A {@link GetAlbumRequest.Builder}.
      */
     public Builder market(final CountryCode market) {
       assert (market != null);
       return setQueryParameter("market", market);
     }
 
+    /**
+     * The request build method.
+     *
+     * @return A custom {@link GetAlbumRequest}.
+     */
     @Override
     public GetAlbumRequest build() {
       setPath("/v1/albums/{id}");
