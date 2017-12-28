@@ -3,18 +3,14 @@ package com.wrapper.spotify.requests.data.library;
 import com.google.common.base.Joiner;
 import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.exceptions.*;
-import com.wrapper.spotify.requests.AbstractRequest;
+import com.wrapper.spotify.requests.data.AbstractDataRequest;
 
 import java.io.IOException;
 
-public class RemoveUsersSavedTracksRequest extends AbstractRequest {
+public class RemoveUsersSavedTracksRequest extends AbstractDataRequest {
 
   private RemoveUsersSavedTracksRequest(final Builder builder) {
     super(builder);
-  }
-
-  public static Builder builder() {
-    return new Builder();
   }
 
   public String delete() throws
@@ -45,7 +41,12 @@ public class RemoveUsersSavedTracksRequest extends AbstractRequest {
     return executeAsync(deleteJson());
   }
 
-  public static class Builder extends AbstractRequest.Builder<Builder> {
+  public static class Builder extends AbstractDataRequest.Builder<Builder> {
+
+    public Builder(final String accessToken) {
+      super(accessToken);
+    }
+
 
     public Builder ids(final String... trackIds) {
       String idsParameter = Joiner.on(",").join(trackIds);

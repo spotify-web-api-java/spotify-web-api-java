@@ -1,18 +1,14 @@
 package com.wrapper.spotify.requests.data.follow;
 
 import com.wrapper.spotify.exceptions.*;
-import com.wrapper.spotify.requests.AbstractRequest;
+import com.wrapper.spotify.requests.data.AbstractDataRequest;
 
 import java.io.IOException;
 
-public class FollowPlaylistRequest extends AbstractRequest {
+public class FollowPlaylistRequest extends AbstractDataRequest {
 
   private FollowPlaylistRequest(final Builder builder) {
     super(builder);
-  }
-
-  public static Builder builder() {
-    return new Builder();
   }
 
   public void put() throws
@@ -43,7 +39,12 @@ public class FollowPlaylistRequest extends AbstractRequest {
     executeAsync(putJson());
   }
 
-  public static final class Builder extends AbstractRequest.Builder<Builder> {
+  public static final class Builder extends AbstractDataRequest.Builder<Builder> {
+
+    public Builder(final String accessToken) {
+      super(accessToken);
+    }
+
 
     public Builder owner_id(final String owner_id) {
       assert (owner_id != null);

@@ -1,21 +1,16 @@
 package com.wrapper.spotify.requests.data.artists;
 
-import com.google.common.base.Joiner;
 import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.exceptions.*;
 import com.wrapper.spotify.model_objects.Artist;
-import com.wrapper.spotify.requests.AbstractRequest;
+import com.wrapper.spotify.requests.data.AbstractDataRequest;
 
 import java.io.IOException;
 
-public class GetSeveralArtistsRequest extends AbstractRequest {
+public class GetSeveralArtistsRequest extends AbstractDataRequest {
 
   private GetSeveralArtistsRequest(final Builder builder) {
     super(builder);
-  }
-
-  public static Builder builder() {
-    return new Builder();
   }
 
   public Artist[] get() throws
@@ -46,7 +41,12 @@ public class GetSeveralArtistsRequest extends AbstractRequest {
     return executeAsync(new Artist.JsonUtil().createModelObjectArray(getJson(), "artists"));
   }
 
-  public static final class Builder extends AbstractRequest.Builder<Builder> {
+  public static final class Builder extends AbstractDataRequest.Builder<Builder> {
+
+    public Builder(final String accessToken) {
+      super(accessToken);
+    }
+
 
     public Builder ids(final String... ids) {
       assert (ids != null);

@@ -3,18 +3,14 @@ package com.wrapper.spotify.requests.data.follow;
 import com.google.common.base.Joiner;
 import com.wrapper.spotify.exceptions.*;
 import com.wrapper.spotify.model_objects.ModelObjectType;
-import com.wrapper.spotify.requests.AbstractRequest;
+import com.wrapper.spotify.requests.data.AbstractDataRequest;
 
 import java.io.IOException;
 
-public class UnfollowArtistsOrUsersRequest extends AbstractRequest {
+public class UnfollowArtistsOrUsersRequest extends AbstractDataRequest {
 
   private UnfollowArtistsOrUsersRequest(final Builder builder) {
     super(builder);
-  }
-
-  public static Builder builder() {
-    return new Builder();
   }
 
   public void delete() throws
@@ -45,7 +41,12 @@ public class UnfollowArtistsOrUsersRequest extends AbstractRequest {
     executeAsync(deleteJson());
   }
 
-  public static final class Builder extends AbstractRequest.Builder<Builder> {
+  public static final class Builder extends AbstractDataRequest.Builder<Builder> {
+
+    public Builder(final String accessToken) {
+      super(accessToken);
+    }
+
 
     public Builder type(final ModelObjectType type) {
       assert (type != null);

@@ -10,11 +10,12 @@ public class AuthorizationUriRequest extends AbstractRequest {
     super(builder);
   }
 
-  public static AuthorizationUriRequest.Builder builder() {
-    return new Builder();
-  }
-
   public static final class Builder extends AbstractRequest.Builder<Builder> {
+
+    public Builder(final String accessToken) {
+      super();
+    }
+
 
     public Builder scopes(String... scopes) {
       return setQueryParameter("scope", Joiner.on(" ").join(scopes));

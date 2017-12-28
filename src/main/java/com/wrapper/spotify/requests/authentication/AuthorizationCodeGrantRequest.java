@@ -17,10 +17,6 @@ public class AuthorizationCodeGrantRequest extends AbstractRequest {
     super(builder);
   }
 
-  public static Builder builder() {
-    return new Builder();
-  }
-
   public SettableFuture<AuthorizationCodeCredentials> postAsync() {
     final SettableFuture<AuthorizationCodeCredentials> future = SettableFuture.create();
 
@@ -50,6 +46,11 @@ public class AuthorizationCodeGrantRequest extends AbstractRequest {
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
+
+    public Builder(final String accessToken) {
+      super();
+    }
+
 
     public Builder grantType(String grantType) {
       assert (grantType != null);

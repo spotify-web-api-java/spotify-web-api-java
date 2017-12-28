@@ -4,18 +4,14 @@ import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.exceptions.*;
 import com.wrapper.spotify.model_objects.Paging;
 import com.wrapper.spotify.model_objects.Track;
-import com.wrapper.spotify.requests.AbstractRequest;
+import com.wrapper.spotify.requests.data.AbstractDataRequest;
 
 import java.io.IOException;
 
-public class TrackSearchRequest extends AbstractRequest {
+public class TrackSearchRequest extends AbstractDataRequest {
 
   private TrackSearchRequest(final Builder builder) {
     super(builder);
-  }
-
-  public static Builder builder() {
-    return new Builder();
   }
 
   public Paging<Track> get() throws
@@ -46,7 +42,12 @@ public class TrackSearchRequest extends AbstractRequest {
     return executeAsync(new Track.JsonUtil().createModelObjectPaging(getJson(), "tracks"));
   }
 
-  public static final class Builder extends AbstractRequest.Builder<Builder> {
+  public static final class Builder extends AbstractDataRequest.Builder<Builder> {
+
+    public Builder(final String accessToken) {
+      super(accessToken);
+    }
+
 
     public Builder query(final String query) {
       assert (query != null);

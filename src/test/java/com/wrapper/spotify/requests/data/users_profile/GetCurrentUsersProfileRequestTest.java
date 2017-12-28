@@ -19,10 +19,9 @@ public class GetCurrentUsersProfileRequestTest {
 
   @Test
   public void shouldGetCurrentUser_async() throws Exception {
-    final Api api = Api.DEFAULT_API;
+    final Api api = Api.builder().accessToken("AccessToken").build();
 
     final GetCurrentUsersProfileRequest request = api.getMe()
-            .accessToken("myLongAccessToken")
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/users_profile/GetCurrentUsersProfileRequest.json"))
             .build();
 
@@ -63,10 +62,9 @@ public class GetCurrentUsersProfileRequestTest {
 
   @Test
   public void shouldGetCurrentUser_sync() throws Exception {
-    final Api api = Api.DEFAULT_API;
+    final Api api = Api.builder().accessToken("AccessToken").build();
 
     final GetCurrentUsersProfileRequest request = api.getMe()
-            .accessToken("myLongAccessToken")
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/users_profile/GetCurrentUsersProfileRequest.json"))
             .build();
 

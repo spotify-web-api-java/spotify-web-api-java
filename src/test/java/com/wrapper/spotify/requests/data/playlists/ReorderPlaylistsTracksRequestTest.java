@@ -19,7 +19,7 @@ public class ReorderPlaylistsTracksRequestTest {
   public void shouldReorderTracksInPlaylist_async() throws Exception {
     final String accessToken = "someAccessToken";
 
-    final Api api = Api.builder().accessToken(accessToken).build();
+    final Api api = Api.builder().accessToken("AccessToken").build();
 
     final String myUsername = "thelinmichael";
     final String myPlaylistId = "5ieJqeLJjjI8iJWaxeBLuK";
@@ -58,7 +58,7 @@ public class ReorderPlaylistsTracksRequestTest {
   public void shouldReorderTracksInPlaylist_sync() throws Exception {
     final String accessToken = "someAccessToken";
 
-    final Api api = Api.builder().accessToken(accessToken).build();
+    final Api api = Api.builder().accessToken("AccessToken").build();
 
     final String myUsername = "thelinmichael";
     final String myPlaylistId = "5ieJqeLJjjI8iJWaxeBLuK";

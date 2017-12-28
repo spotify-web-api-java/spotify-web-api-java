@@ -1,22 +1,17 @@
 package com.wrapper.spotify.requests.data.follow;
 
-import com.google.common.base.Joiner;
 import com.google.common.util.concurrent.SettableFuture;
 import com.google.gson.Gson;
 import com.google.gson.JsonParser;
 import com.wrapper.spotify.exceptions.*;
-import com.wrapper.spotify.requests.AbstractRequest;
+import com.wrapper.spotify.requests.data.AbstractDataRequest;
 
 import java.io.IOException;
 
-public class CheckUsersFollowPlaylistRequest extends AbstractRequest {
+public class CheckUsersFollowPlaylistRequest extends AbstractDataRequest {
 
   private CheckUsersFollowPlaylistRequest(final Builder builder) {
     super(builder);
-  }
-
-  public static Builder builder() {
-    return new Builder();
   }
 
   public Boolean[] get() throws
@@ -47,7 +42,12 @@ public class CheckUsersFollowPlaylistRequest extends AbstractRequest {
     return executeAsync(new Gson().fromJson(new JsonParser().parse(getJson()).getAsJsonArray(), Boolean[].class));
   }
 
-  public static final class Builder extends AbstractRequest.Builder<Builder> {
+  public static final class Builder extends AbstractDataRequest.Builder<Builder> {
+
+    public Builder(final String accessToken) {
+      super(accessToken);
+    }
+
 
     public Builder owner_id(final String owner_id) {
       assert (owner_id != null);

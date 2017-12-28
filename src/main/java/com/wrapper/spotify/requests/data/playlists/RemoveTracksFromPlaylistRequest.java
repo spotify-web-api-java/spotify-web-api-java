@@ -6,18 +6,14 @@ import com.google.gson.JsonObject;
 import com.wrapper.spotify.exceptions.*;
 import com.wrapper.spotify.model_objects.PlaylistTrackPosition;
 import com.wrapper.spotify.model_objects.SnapshotResult;
-import com.wrapper.spotify.requests.AbstractRequest;
+import com.wrapper.spotify.requests.data.AbstractDataRequest;
 
 import java.io.IOException;
 
-public class RemoveTracksFromPlaylistRequest extends AbstractRequest {
+public class RemoveTracksFromPlaylistRequest extends AbstractDataRequest {
 
   private RemoveTracksFromPlaylistRequest(final Builder builder) {
     super(builder);
-  }
-
-  public static Builder builder() {
-    return new Builder();
   }
 
   private static JsonObject getJsonFromPlaylistTrackPosition(PlaylistTrackPosition playlistTrackPosition) {
@@ -61,7 +57,12 @@ public class RemoveTracksFromPlaylistRequest extends AbstractRequest {
     return executeAsync(new SnapshotResult.JsonUtil().createModelObject(getJson()));
   }
 
-  public static final class Builder extends AbstractRequest.Builder<Builder> {
+  public static final class Builder extends AbstractDataRequest.Builder<Builder> {
+
+    public Builder(final String accessToken) {
+      super(accessToken);
+    }
+
 
     public Builder tracks(PlaylistTrackPosition... playlistTrackPositions) {
       final JsonArray tracks = new JsonArray();

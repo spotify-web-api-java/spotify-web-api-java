@@ -25,7 +25,7 @@ public class PlaylistSearchRequestTest {
 
   @Test
   public void shouldGetPlaylistsResult_async() throws Exception {
-    final Api api = Api.DEFAULT_API;
+    final Api api = Api.builder().accessToken("AccessToken").build();
 
     final PlaylistSearchRequest request = api.searchPlaylists("dog")
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/search/PlaylistSearchRequest.json")).build();
@@ -53,7 +53,7 @@ public class PlaylistSearchRequestTest {
 
   @Test
   public void shouldGetAlbumsResult_sync() throws Exception {
-    final Api api = Api.DEFAULT_API;
+    final Api api = Api.builder().accessToken("AccessToken").build();
 
     final PlaylistSearchRequest request = api.searchPlaylists("dog")
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/search/PlaylistSearchRequest.json")).build();

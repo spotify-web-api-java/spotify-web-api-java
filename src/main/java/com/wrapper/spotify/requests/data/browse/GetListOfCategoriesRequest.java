@@ -6,18 +6,14 @@ import com.neovisionaries.i18n.LanguageCode;
 import com.wrapper.spotify.exceptions.*;
 import com.wrapper.spotify.model_objects.Category;
 import com.wrapper.spotify.model_objects.Paging;
-import com.wrapper.spotify.requests.AbstractRequest;
+import com.wrapper.spotify.requests.data.AbstractDataRequest;
 
 import java.io.IOException;
 
-public class GetListOfCategoriesRequest extends AbstractRequest {
+public class GetListOfCategoriesRequest extends AbstractDataRequest {
 
   private GetListOfCategoriesRequest(final Builder builder) {
     super(builder);
-  }
-
-  public static Builder builder() {
-    return new Builder();
   }
 
   public Paging<Category> get() throws
@@ -48,7 +44,12 @@ public class GetListOfCategoriesRequest extends AbstractRequest {
     return executeAsync(new Category.JsonUtil().createModelObjectPaging(getJson(), "categories"));
   }
 
-  public static final class Builder extends AbstractRequest.Builder<Builder> {
+  public static final class Builder extends AbstractDataRequest.Builder<Builder> {
+
+    public Builder(final String accessToken) {
+      super(accessToken);
+    }
+
 
     /*
      * Optional. A country: an ISO 3166-1 alpha-2 country code. Provide this parameter if you want to narrow the list of returned categories to those relevant to a particular country. If omitted, the returned items will be globally relevant.

@@ -21,7 +21,7 @@ public class GetTrackRequestTest {
 
   @Test
   public void shouldGetTrackResult_async() throws Exception {
-    final Api api = Api.DEFAULT_API;
+    final Api api = Api.builder().accessToken("AccessToken").build();
 
     final GetTrackRequest request = api.getTrack("0eGsygTp906u18L0Oimnem")
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/tracks/GetTrackRequest.json"))
@@ -51,7 +51,7 @@ public class GetTrackRequestTest {
 
   @Test
   public void shouldGetTrackResult_sync() throws Exception {
-    final Api api = Api.DEFAULT_API;
+    final Api api = Api.builder().accessToken("AccessToken").build();
 
     final GetTrackRequest request = api.getTrack("0eGsygTp906u18L0Oimnem")
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/tracks/GetTrackRequest.json"))

@@ -1,22 +1,17 @@
 package com.wrapper.spotify.requests.data.browse;
 
-import com.google.common.base.Joiner;
 import com.google.common.util.concurrent.SettableFuture;
 import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.exceptions.*;
 import com.wrapper.spotify.model_objects.Recommendations;
-import com.wrapper.spotify.requests.AbstractRequest;
+import com.wrapper.spotify.requests.data.AbstractDataRequest;
 
 import java.io.IOException;
 
-public class GetRecommendationsRequest extends AbstractRequest {
+public class GetRecommendationsRequest extends AbstractDataRequest {
 
   private GetRecommendationsRequest(final Builder builder) {
     super(builder);
-  }
-
-  public static Builder builder() {
-    return new Builder();
   }
 
   public Recommendations get() throws
@@ -47,7 +42,12 @@ public class GetRecommendationsRequest extends AbstractRequest {
     return executeAsync(new Recommendations.JsonUtil().createModelObject(getJson()));
   }
 
-  public static final class Builder extends AbstractRequest.Builder<Builder> {
+  public static final class Builder extends AbstractDataRequest.Builder<Builder> {
+
+    public Builder(final String accessToken) {
+      super(accessToken);
+    }
+
 
     /**
      * @param limit Optional. The target size of the list of recommended tracks. For seeds with unusually small pools or

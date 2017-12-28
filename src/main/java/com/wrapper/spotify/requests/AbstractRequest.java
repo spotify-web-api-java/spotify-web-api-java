@@ -173,8 +173,7 @@ public abstract class AbstractRequest implements Request {
     private List<NameValuePair> formParameters = new ArrayList<>();
     private List<NameValuePair> bodyParameters = new ArrayList<>();
 
-    public BuilderType accessToken(final String accessToken) {
-      return setHeader("Authorization", "Bearer " + accessToken);
+    protected Builder() {
     }
 
     public BuilderType setHttpManager(final HttpManager httpManager) {

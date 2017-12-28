@@ -3,18 +3,14 @@ package com.wrapper.spotify.requests.data.tracks;
 import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.exceptions.*;
 import com.wrapper.spotify.model_objects.Track;
-import com.wrapper.spotify.requests.AbstractRequest;
+import com.wrapper.spotify.requests.data.AbstractDataRequest;
 
 import java.io.IOException;
 
-public class GetTrackRequest extends AbstractRequest {
+public class GetTrackRequest extends AbstractDataRequest {
 
   private GetTrackRequest(final Builder builder) {
     super(builder);
-  }
-
-  public static Builder builder() {
-    return new Builder();
   }
 
   public Track get() throws
@@ -45,7 +41,12 @@ public class GetTrackRequest extends AbstractRequest {
     return executeAsync(new Track.JsonUtil().createModelObject(getJson()));
   }
 
-  public static final class Builder extends AbstractRequest.Builder<Builder> {
+  public static final class Builder extends AbstractDataRequest.Builder<Builder> {
+
+    public Builder(final String accessToken) {
+      super(accessToken);
+    }
+
 
     /**
      * The track with the given id.

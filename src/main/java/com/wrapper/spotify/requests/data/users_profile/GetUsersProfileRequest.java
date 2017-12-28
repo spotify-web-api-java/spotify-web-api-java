@@ -3,18 +3,14 @@ package com.wrapper.spotify.requests.data.users_profile;
 import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.exceptions.*;
 import com.wrapper.spotify.model_objects.User;
-import com.wrapper.spotify.requests.AbstractRequest;
+import com.wrapper.spotify.requests.data.AbstractDataRequest;
 
 import java.io.IOException;
 
-public class GetUsersProfileRequest extends AbstractRequest {
+public class GetUsersProfileRequest extends AbstractDataRequest {
 
   private GetUsersProfileRequest(final Builder builder) {
     super(builder);
-  }
-
-  public static Builder builder() {
-    return new Builder();
   }
 
   public User get() throws
@@ -45,7 +41,12 @@ public class GetUsersProfileRequest extends AbstractRequest {
     return executeAsync(new User.JsonUtil().createModelObject(getJson()));
   }
 
-  public static final class Builder extends AbstractRequest.Builder<Builder> {
+  public static final class Builder extends AbstractDataRequest.Builder<Builder> {
+
+    public Builder(final String accessToken) {
+      super(accessToken);
+    }
+
 
     public Builder username(final String username) {
       assert (username != null);

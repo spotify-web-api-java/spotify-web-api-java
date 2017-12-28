@@ -3,18 +3,14 @@ package com.wrapper.spotify.requests.data.playlists;
 import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.exceptions.*;
 import com.wrapper.spotify.model_objects.SnapshotResult;
-import com.wrapper.spotify.requests.AbstractRequest;
+import com.wrapper.spotify.requests.data.AbstractDataRequest;
 
 import java.io.IOException;
 
-public class AddTracksToPlaylistRequest extends AbstractRequest {
+public class AddTracksToPlaylistRequest extends AbstractDataRequest {
 
   private AddTracksToPlaylistRequest(final Builder builder) {
     super(builder);
-  }
-
-  public static Builder builder() {
-    return new Builder();
   }
 
   public SnapshotResult post() throws
@@ -45,7 +41,12 @@ public class AddTracksToPlaylistRequest extends AbstractRequest {
     return executeAsync(new SnapshotResult.JsonUtil().createModelObject(postJson()));
   }
 
-  public static final class Builder extends AbstractRequest.Builder<Builder> {
+  public static final class Builder extends AbstractDataRequest.Builder<Builder> {
+
+    public Builder(final String accessToken) {
+      super(accessToken);
+    }
+
 
     public Builder position(final Integer position) {
       assert (position >= 0);

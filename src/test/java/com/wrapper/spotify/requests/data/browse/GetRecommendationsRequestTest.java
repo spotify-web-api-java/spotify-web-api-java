@@ -22,7 +22,7 @@ public class GetRecommendationsRequestTest {
 
   @Test
   public void shouldGetRecommendationsResult_async() throws Exception {
-    final Api api = Api.DEFAULT_API;
+    final Api api = Api.builder().accessToken("AccessToken").build();
 
     final GetRecommendationsRequest request = api.getRecommendations()
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/browse/GetRecommendationsRequest.json"))
@@ -58,7 +58,7 @@ public class GetRecommendationsRequestTest {
 
   @Test
   public void shouldGetRecommendationsResult_sync() throws Exception {
-    final Api api = Api.DEFAULT_API;
+    final Api api = Api.builder().accessToken("AccessToken").build();
 
     final GetRecommendationsRequest request = api.getRecommendations()
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/browse/GetRecommendationsRequest.json"))

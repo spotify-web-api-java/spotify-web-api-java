@@ -1,24 +1,18 @@
 package com.wrapper.spotify.requests.data.artists;
 
-import com.google.common.base.Joiner;
 import com.google.common.util.concurrent.SettableFuture;
 import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.exceptions.*;
 import com.wrapper.spotify.model_objects.AlbumSimplified;
-import com.wrapper.spotify.model_objects.AlbumType;
 import com.wrapper.spotify.model_objects.Paging;
-import com.wrapper.spotify.requests.AbstractRequest;
+import com.wrapper.spotify.requests.data.AbstractDataRequest;
 
 import java.io.IOException;
 
-public class GetArtistsAlbumsRequest extends AbstractRequest {
+public class GetArtistsAlbumsRequest extends AbstractDataRequest {
 
   private GetArtistsAlbumsRequest(final Builder builder) {
     super(builder);
-  }
-
-  public static Builder builder() {
-    return new Builder();
   }
 
   public Paging<AlbumSimplified> get() throws
@@ -49,7 +43,12 @@ public class GetArtistsAlbumsRequest extends AbstractRequest {
     return executeAsync(new AlbumSimplified.JsonUtil().createModelObjectPaging(getJson()));
   }
 
-  public static final class Builder extends AbstractRequest.Builder<Builder> {
+  public static final class Builder extends AbstractDataRequest.Builder<Builder> {
+
+    public Builder(final String accessToken) {
+      super(accessToken);
+    }
+
 
     public Builder id(final String id) {
       assert (id != null);

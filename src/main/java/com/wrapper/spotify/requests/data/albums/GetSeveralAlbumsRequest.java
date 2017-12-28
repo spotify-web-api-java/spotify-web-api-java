@@ -1,25 +1,20 @@
 package com.wrapper.spotify.requests.data.albums;
 
-import com.google.common.base.Joiner;
 import com.google.common.util.concurrent.SettableFuture;
 import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.exceptions.*;
 import com.wrapper.spotify.model_objects.Album;
-import com.wrapper.spotify.requests.AbstractRequest;
+import com.wrapper.spotify.requests.data.AbstractDataRequest;
 
 import java.io.IOException;
 
 /**
  * Get Spotify catalog information for multiple albums identified by their Spotify IDs.
  */
-public class GetSeveralAlbumsRequest extends AbstractRequest {
+public class GetSeveralAlbumsRequest extends AbstractDataRequest {
 
   private GetSeveralAlbumsRequest(final Builder builder) {
     super(builder);
-  }
-
-  public static Builder builder() {
-    return new Builder();
   }
 
   public Album[] get() throws
@@ -50,7 +45,12 @@ public class GetSeveralAlbumsRequest extends AbstractRequest {
     return executeAsync(new Album.JsonUtil().createModelObjectArray(getJson(), "albums"));
   }
 
-  public static final class Builder extends AbstractRequest.Builder<Builder> {
+  public static final class Builder extends AbstractDataRequest.Builder<Builder> {
+
+    public Builder(final String accessToken) {
+      super(accessToken);
+    }
+
     /**
      * The ids query parameter setter.
      *

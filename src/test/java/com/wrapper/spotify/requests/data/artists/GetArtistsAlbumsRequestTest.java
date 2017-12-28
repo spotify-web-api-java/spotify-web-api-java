@@ -23,7 +23,7 @@ public class GetArtistsAlbumsRequestTest {
 
   @Test
   public void shouldGetAlbumResultForArtistId_async() throws Exception {
-    final Api api = Api.DEFAULT_API;
+    final Api api = Api.builder().accessToken("AccessToken").build();
 
     final GetArtistsAlbumsRequest request = api.getAlbumsForArtist("1vCWHaC5f2uS3yhpwWbIA6")
             .limit(2)
@@ -69,7 +69,7 @@ public class GetArtistsAlbumsRequestTest {
 
   @Test
   public void shouldGetAlbumResultForArtistId_sync() throws Exception {
-    final Api api = Api.DEFAULT_API;
+    final Api api = Api.builder().accessToken("AccessToken").build();
 
     final GetArtistsAlbumsRequest request = api.getAlbumsForArtist("1vCWHaC5f2uS3yhpwWbIA6")
             .limit(2)

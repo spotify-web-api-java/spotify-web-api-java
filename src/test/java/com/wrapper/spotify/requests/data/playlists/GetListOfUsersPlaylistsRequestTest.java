@@ -20,11 +20,10 @@ public class GetListOfUsersPlaylistsRequestTest {
   @Test
   public void shouldGetPlaylistsForUser_async() throws Exception {
     final String accessToken = "someAccessToken";
-    final Api api = Api.builder().build();
+    final Api api = Api.builder().accessToken("AccessToken").build();
 
     final GetListOfUsersPlaylistsRequest request = api
             .getPlaylistsForUser("wizzler")
-            .accessToken(accessToken)
             .limit(10)
             .offset(2)
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/playlists/GetListOfUsersPlaylistsRequest.json"))
@@ -78,11 +77,10 @@ public class GetListOfUsersPlaylistsRequestTest {
   @Test
   public void shouldGetPlaylistsForUser_sync() throws Exception {
     final String accessToken = "myVeryLongAccessToken";
-    final Api api = Api.builder().build();
+    final Api api = Api.builder().accessToken("AccessToken").build();
 
     final GetListOfUsersPlaylistsRequest request = api
             .getPlaylistsForUser("wizzler")
-            .accessToken(accessToken)
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/playlists/GetListOfUsersPlaylistsRequest.json"))
             .build();
 

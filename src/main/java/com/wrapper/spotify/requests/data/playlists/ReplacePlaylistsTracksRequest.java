@@ -2,18 +2,14 @@ package com.wrapper.spotify.requests.data.playlists;
 
 import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.exceptions.*;
-import com.wrapper.spotify.requests.AbstractRequest;
+import com.wrapper.spotify.requests.data.AbstractDataRequest;
 
 import java.io.IOException;
 
-public class ReplacePlaylistsTracksRequest extends AbstractRequest {
+public class ReplacePlaylistsTracksRequest extends AbstractDataRequest {
 
   private ReplacePlaylistsTracksRequest(final Builder builder) {
     super(builder);
-  }
-
-  public static Builder builder() {
-    return new Builder();
   }
 
   public String get() throws
@@ -44,7 +40,12 @@ public class ReplacePlaylistsTracksRequest extends AbstractRequest {
     return executeAsync(getJson());
   }
 
-  public static final class Builder extends AbstractRequest.Builder<Builder> {
+  public static final class Builder extends AbstractDataRequest.Builder<Builder> {
+
+    public Builder(final String accessToken) {
+      super(accessToken);
+    }
+
 
     @Override
     public ReplacePlaylistsTracksRequest build() {

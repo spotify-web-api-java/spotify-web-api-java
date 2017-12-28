@@ -68,7 +68,7 @@ public class GetPlaylistsTracksRequestTest {
   @Test
   public void shouldGetTracksResult_sync() throws Exception {
     String accessToken = "someToken";
-    final Api api = Api.builder().accessToken(accessToken).build();
+    final Api api = Api.builder().accessToken("AccessToken").build();
 
     final GetPlaylistsTracksRequest request = api
             .getPlaylistTracks("thelinmichael", "3ktAYNcRHpazJ9qecm3ptn")

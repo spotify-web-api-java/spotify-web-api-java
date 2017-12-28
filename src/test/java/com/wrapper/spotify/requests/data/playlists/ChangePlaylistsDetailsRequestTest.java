@@ -19,7 +19,7 @@ public class ChangePlaylistsDetailsRequestTest {
   public void shouldChangeNameAndPublishedStatus_async() throws Exception {
     final String accessToken = "someAccessToken";
 
-    final Api api = Api.builder().accessToken(accessToken).build();
+    final Api api = Api.builder().accessToken("AccessToken").build();
 
     ChangePlaylistsDetailsRequest request = api
             .changePlaylistDetails("thelinmichael", "3ktAYNcRHpazJ9qecm3ptn")
@@ -54,7 +54,7 @@ public class ChangePlaylistsDetailsRequestTest {
   public void shouldChangeNameAndPublishedStatus_sync() throws Exception {
     final String accessToken = "someAccessToken";
 
-    final Api api = Api.builder().accessToken(accessToken).build();
+    final Api api = Api.builder().accessToken("AccessToken").build();
 
     ChangePlaylistsDetailsRequest request = api
             .changePlaylistDetails("thelinmichael", "3ktAYNcRHpazJ9qecm3ptn")

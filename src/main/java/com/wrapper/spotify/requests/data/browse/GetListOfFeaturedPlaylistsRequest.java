@@ -5,19 +5,15 @@ import com.neovisionaries.i18n.CountryCode;
 import com.neovisionaries.i18n.LanguageCode;
 import com.wrapper.spotify.exceptions.*;
 import com.wrapper.spotify.model_objects.FeaturedPlaylists;
-import com.wrapper.spotify.requests.AbstractRequest;
+import com.wrapper.spotify.requests.data.AbstractDataRequest;
 
 import java.io.IOException;
 import java.util.Date;
 
-public class GetListOfFeaturedPlaylistsRequest extends AbstractRequest {
+public class GetListOfFeaturedPlaylistsRequest extends AbstractDataRequest {
 
   private GetListOfFeaturedPlaylistsRequest(final Builder builder) {
     super(builder);
-  }
-
-  public static Builder builder() {
-    return new Builder();
   }
 
   /**
@@ -78,7 +74,12 @@ public class GetListOfFeaturedPlaylistsRequest extends AbstractRequest {
     return executeAsync(new FeaturedPlaylists.JsonUtil().createModelObject(getJson()));
   }
 
-  public static final class Builder extends AbstractRequest.Builder<Builder> {
+  public static final class Builder extends AbstractDataRequest.Builder<Builder> {
+
+    public Builder(final String accessToken) {
+      super(accessToken);
+    }
+
 
     public Builder locale(final LanguageCode languageCode, final CountryCode countryCode) {
       assert (languageCode != null);

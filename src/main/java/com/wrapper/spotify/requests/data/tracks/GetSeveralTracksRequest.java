@@ -4,19 +4,15 @@ import com.google.common.base.Joiner;
 import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.exceptions.*;
 import com.wrapper.spotify.model_objects.Track;
-import com.wrapper.spotify.requests.AbstractRequest;
+import com.wrapper.spotify.requests.data.AbstractDataRequest;
 
 import java.io.IOException;
 import java.util.List;
 
-public class GetSeveralTracksRequest extends AbstractRequest {
+public class GetSeveralTracksRequest extends AbstractDataRequest {
 
   private GetSeveralTracksRequest(final Builder builder) {
     super(builder);
-  }
-
-  public static Builder builder() {
-    return new Builder();
   }
 
   public Track[] get() throws
@@ -47,7 +43,12 @@ public class GetSeveralTracksRequest extends AbstractRequest {
     return executeAsync(new Track.JsonUtil().createModelObjectArray(getJson(), "tracks"));
   }
 
-  public static final class Builder extends AbstractRequest.Builder<Builder> {
+  public static final class Builder extends AbstractDataRequest.Builder<Builder> {
+
+    public Builder(final String accessToken) {
+      super(accessToken);
+    }
+
 
     public Builder id(final List<String> ids) {
       assert (ids != null);

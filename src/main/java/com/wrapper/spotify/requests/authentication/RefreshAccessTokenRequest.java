@@ -17,10 +17,6 @@ public class RefreshAccessTokenRequest extends AbstractRequest {
     super(builder);
   }
 
-  public static Builder builder() {
-    return new Builder();
-  }
-
   public SettableFuture<RefreshAccessTokenCredentials> executeAsync() {
     final SettableFuture<RefreshAccessTokenCredentials> future = SettableFuture.create();
 
@@ -50,6 +46,11 @@ public class RefreshAccessTokenRequest extends AbstractRequest {
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
+
+    public Builder(final String accessToken) {
+      super();
+    }
+
 
     public Builder basicAuthorizationHeader(String clientId, String clientSecret) {
       assert (clientId != null);

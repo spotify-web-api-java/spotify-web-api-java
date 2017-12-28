@@ -19,7 +19,7 @@ public class SaveTracksForUserRequestTest {
   public void shouldAddToMySavedTracks_async() throws Exception {
     final String accessToken = "someAccessToken";
 
-    final Api api = Api.builder().accessToken(accessToken).build();
+    final Api api = Api.builder().accessToken("AccessToken").build();
 
     final String[]
             tracksToAdd = {"4BYGxv4rxSNcTgT3DsFB9o", "0BG2iE6McPhmAEKIhfqy1X"};
@@ -55,7 +55,7 @@ public class SaveTracksForUserRequestTest {
   public void shouldAddToMySavedTracks_sync() throws Exception {
     final String accessToken = "someAccessToken";
 
-    final Api api = Api.builder().accessToken(accessToken).build();
+    final Api api = Api.builder().accessToken("AccessToken").build();
 
     final String[]
             tracksToAdd = {"4BYGxv4rxSNcTgT3DsFB9o", "0BG2iE6McPhmAEKIhfqy1X"};

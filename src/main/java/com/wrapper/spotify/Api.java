@@ -5,7 +5,6 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.model_objects.PlaylistTrackPosition;
-import com.wrapper.spotify.requests.AbstractRequest;
 import com.wrapper.spotify.requests.authentication.AuthorizationCodeGrantRequest;
 import com.wrapper.spotify.requests.authentication.AuthorizationUriRequest;
 import com.wrapper.spotify.requests.authentication.ClientCredentialsGrantRequest;
@@ -117,21 +116,21 @@ public class Api {
    * @return An {AlbumRequest.Builder} instance.
    */
   public GetAlbumRequest.Builder getAlbum(String id) {
-    GetAlbumRequest.Builder builder = GetAlbumRequest.builder();
+    GetAlbumRequest.Builder builder = new GetAlbumRequest.Builder(accessToken);
     builder.setDefaults(httpManager, scheme, host, port);
     builder.id(id);
     return builder;
   }
 
   public GetSeveralAlbumsRequest.Builder getAlbums(String... ids) {
-    GetSeveralAlbumsRequest.Builder builder = GetSeveralAlbumsRequest.builder();
     builder.ids(ids);
+    GetSeveralAlbumsRequest.Builder builder = new GetSeveralAlbumsRequest.Builder(accessToken);
     builder.setDefaults(httpManager, scheme, host, port);
     return builder;
   }
 
   public GetArtistsAlbumsRequest.Builder getAlbumsForArtist(String artistId) {
-    GetArtistsAlbumsRequest.Builder builder = GetArtistsAlbumsRequest.builder();
+    GetArtistsAlbumsRequest.Builder builder = new GetArtistsAlbumsRequest.Builder(accessToken);
     builder.setDefaults(httpManager, scheme, host, port);
     builder.id(artistId);
     return builder;
@@ -140,28 +139,28 @@ public class Api {
   public GetAlbumsTracksRequest.Builder getTracksForAlbum(
           String albumId
   ) {
-    GetAlbumsTracksRequest.Builder builder = GetAlbumsTracksRequest.builder();
+    GetAlbumsTracksRequest.Builder builder = new GetAlbumsTracksRequest.Builder(accessToken);
     builder.setDefaults(httpManager, scheme, host, port);
     builder.id(albumId);
     return builder;
   }
 
   public GetArtistRequest.Builder getArtist(String id) {
-    GetArtistRequest.Builder builder = GetArtistRequest.builder();
+    GetArtistRequest.Builder builder = new GetArtistRequest.Builder(accessToken);
     builder.setDefaults(httpManager, scheme, host, port);
     builder.id(id);
     return builder;
   }
 
   public GetSeveralArtistsRequest.Builder getArtists(String... ids) {
-    GetSeveralArtistsRequest.Builder builder = GetSeveralArtistsRequest.builder();
     builder.ids(ids);
+    GetSeveralArtistsRequest.Builder builder = new GetSeveralArtistsRequest.Builder(accessToken);
     builder.setDefaults(httpManager, scheme, host, port);
     return builder;
   }
 
   public GetTrackRequest.Builder getTrack(String id) {
-    GetTrackRequest.Builder builder = GetTrackRequest.builder();
+    GetTrackRequest.Builder builder = new GetTrackRequest.Builder(accessToken);
     builder.setDefaults(httpManager, scheme, host, port);
     builder.id(id);
     return builder;
@@ -172,67 +171,67 @@ public class Api {
   }
 
   public GetSeveralTracksRequest.Builder getTracks(List<String> ids) {
-    GetSeveralTracksRequest.Builder builder = GetSeveralTracksRequest.builder();
+    GetSeveralTracksRequest.Builder builder = new GetSeveralTracksRequest.Builder(accessToken);
     builder.setDefaults(httpManager, scheme, host, port);
     builder.id(ids);
     return builder;
   }
 
   public GetRecommendationsRequest.Builder getRecommendations() {
-    GetRecommendationsRequest.Builder builder = GetRecommendationsRequest.builder();
+    GetRecommendationsRequest.Builder builder = new GetRecommendationsRequest.Builder(accessToken);
     builder.setDefaults(httpManager, scheme, host, port);
     return builder;
   }
 
   public AlbumSearchRequest.Builder searchAlbums(String query) {
-    AlbumSearchRequest.Builder builder = AlbumSearchRequest.builder();
+    AlbumSearchRequest.Builder builder = new AlbumSearchRequest.Builder(accessToken);
     builder.setDefaults(httpManager, scheme, host, port);
     builder.query(query);
     return builder;
   }
 
   public TrackSearchRequest.Builder searchTracks(String query) {
-    TrackSearchRequest.Builder builder = TrackSearchRequest.builder();
+    TrackSearchRequest.Builder builder = new TrackSearchRequest.Builder(accessToken);
     builder.setDefaults(httpManager, scheme, host, port);
     builder.query(query);
     return builder;
   }
 
   public ArtistSearchRequest.Builder searchArtists(String query) {
-    ArtistSearchRequest.Builder builder = ArtistSearchRequest.builder();
+    ArtistSearchRequest.Builder builder = new ArtistSearchRequest.Builder(accessToken);
     builder.setDefaults(httpManager, scheme, host, port);
     builder.query(query);
     return builder;
   }
 
   public PlaylistSearchRequest.Builder searchPlaylists(String query) {
-    PlaylistSearchRequest.Builder builder = PlaylistSearchRequest.builder();
+    PlaylistSearchRequest.Builder builder = new PlaylistSearchRequest.Builder(accessToken);
     builder.setDefaults(httpManager, scheme, host, port);
     builder.query(query);
     return builder;
   }
 
   public GetListOfNewReleasesRequest.Builder getNewReleases() {
-    GetListOfNewReleasesRequest.Builder builder = GetListOfNewReleasesRequest.builder();
+    GetListOfNewReleasesRequest.Builder builder = new GetListOfNewReleasesRequest.Builder(accessToken);
     builder.setDefaults(httpManager, scheme, host, port);
     return builder;
   }
 
   public GetAudioFeaturesForTrackRequest.Builder getAudioFeature(String id) {
-    GetAudioFeaturesForTrackRequest.Builder builder = GetAudioFeaturesForTrackRequest.builder();
+    GetAudioFeaturesForTrackRequest.Builder builder = new GetAudioFeaturesForTrackRequest.Builder(accessToken);
     builder.setDefaults(httpManager, scheme, host, port);
     builder.id(id);
     return builder;
   }
 
   public GetUsersRecentlyPlayedTracksRequest.Builder getRecentlyPlayedTracks() {
-    GetUsersRecentlyPlayedTracksRequest.Builder builder = GetUsersRecentlyPlayedTracksRequest.builder();
+    GetUsersRecentlyPlayedTracksRequest.Builder builder = new GetUsersRecentlyPlayedTracksRequest.Builder(accessToken);
     builder.setDefaults(httpManager, scheme, host, port);
     return builder;
   }
 
   public GetUsersCurrentlyPlayingTrackRequest.Builder getCurrentlyPlayingTrack() {
-    GetUsersCurrentlyPlayingTrackRequest.Builder builder = GetUsersCurrentlyPlayingTrackRequest.builder();
+    GetUsersCurrentlyPlayingTrackRequest.Builder builder = new GetUsersCurrentlyPlayingTrackRequest.Builder(accessToken);
     builder.setDefaults(httpManager, scheme, host, port);
     return builder;
   }
@@ -243,13 +242,13 @@ public class Api {
    * @return A builder that can be used to build requests to get featured playlists.
    */
   public GetListOfFeaturedPlaylistsRequest.Builder getFeaturedPlaylists() {
-    GetListOfFeaturedPlaylistsRequest.Builder builder = GetListOfFeaturedPlaylistsRequest.builder();
+    GetListOfFeaturedPlaylistsRequest.Builder builder = new GetListOfFeaturedPlaylistsRequest.Builder(accessToken);
     builder.setDefaults(httpManager, scheme, host, port);
     return builder;
   }
 
   public GetArtistsTopTracksRequest.Builder getTopTracksForArtist(String id, CountryCode country) {
-    GetArtistsTopTracksRequest.Builder builder = GetArtistsTopTracksRequest.builder();
+    GetArtistsTopTracksRequest.Builder builder = new GetArtistsTopTracksRequest.Builder(accessToken);
     builder.setDefaults(httpManager, scheme, host, port);
     builder.id(id);
     builder.country(country);
@@ -257,7 +256,7 @@ public class Api {
   }
 
   public GetUsersProfileRequest.Builder getUser(String userId) {
-    GetUsersProfileRequest.Builder builder = GetUsersProfileRequest.builder();
+    GetUsersProfileRequest.Builder builder = new GetUsersProfileRequest.Builder(accessToken);
     builder.setDefaults(httpManager, scheme, host, port);
     userId = UriUtil.escapeUsername(userId);
     builder.username(userId);
@@ -265,7 +264,7 @@ public class Api {
   }
 
   public GetListOfUsersPlaylistsRequest.Builder getPlaylistsForUser(String userId) {
-    GetListOfUsersPlaylistsRequest.Builder builder = GetListOfUsersPlaylistsRequest.builder();
+    GetListOfUsersPlaylistsRequest.Builder builder = new GetListOfUsersPlaylistsRequest.Builder(accessToken);
     builder.setDefaults(httpManager, scheme, host, port);
     userId = UriUtil.escapeUsername(userId);
     builder.username(userId);
@@ -281,7 +280,7 @@ public class Api {
    * @return A builder that builds authorization code grant requests.
    */
   public AuthorizationCodeGrantRequest.Builder authorizationCodeGrant(String code) {
-    AuthorizationCodeGrantRequest.Builder builder = AuthorizationCodeGrantRequest.builder();
+    AuthorizationCodeGrantRequest.Builder builder = new AuthorizationCodeGrantRequest.Builder(accessToken);
     builder.setDefaults(httpManager, scheme, host, port);
     builder.grantType("authorization_code");
     builder.basicAuthorizationHeader(clientId, clientSecret);
@@ -297,7 +296,7 @@ public class Api {
    * @return A builder that builds refresh access token requests.
    */
   public RefreshAccessTokenRequest.Builder refreshAccessToken() {
-    RefreshAccessTokenRequest.Builder builder = RefreshAccessTokenRequest.builder();
+    RefreshAccessTokenRequest.Builder builder = new RefreshAccessTokenRequest.Builder(accessToken);
     builder.setDefaults(httpManager, scheme, host, port);
     builder.grantType("refresh_token");
     builder.refreshToken(refreshToken);
@@ -312,7 +311,7 @@ public class Api {
    * @return A builder that builds client credential grant requests.
    */
   public ClientCredentialsGrantRequest.Builder clientCredentialsGrant() {
-    ClientCredentialsGrantRequest.Builder builder = ClientCredentialsGrantRequest.builder();
+    ClientCredentialsGrantRequest.Builder builder = new ClientCredentialsGrantRequest.Builder(accessToken);
     builder.setDefaults(httpManager, scheme, host, port);
     builder.grantType("client_credentials");
     builder.basicAuthorizationHeader(clientId, clientSecret);
@@ -327,7 +326,7 @@ public class Api {
    * @return A builder object that can be used to build a request to retrieve a playlist.
    */
   public GetPlaylistRequest.Builder getPlaylist(String userId, String playlistId) {
-    GetPlaylistRequest.Builder builder = GetPlaylistRequest.builder();
+    GetPlaylistRequest.Builder builder = new GetPlaylistRequest.Builder(accessToken);
     builder.setDefaults(httpManager, scheme, host, port);
     userId = UriUtil.escapeUsername(userId);
     builder.setPath("/v1/users/" + userId + "/playlists/" + playlistId);
@@ -341,7 +340,7 @@ public class Api {
    * about the current user.
    */
   public GetCurrentUsersProfileRequest.Builder getMe() {
-    final GetCurrentUsersProfileRequest.Builder builder = GetCurrentUsersProfileRequest.builder();
+    final GetCurrentUsersProfileRequest.Builder builder = new GetCurrentUsersProfileRequest.Builder(accessToken);
     builder.setDefaults(httpManager, scheme, host, port);
     return builder;
   }
@@ -354,7 +353,7 @@ public class Api {
    * @return A builder object that can be used to build a request to create a playlist.
    */
   public CreatePlaylistRequest.Builder createPlaylist(String userId, String name) {
-    final CreatePlaylistRequest.Builder builder = CreatePlaylistRequest.builder();
+    final CreatePlaylistRequest.Builder builder = new CreatePlaylistRequest.Builder(accessToken);
     builder.setDefaults(httpManager, scheme, host, port);
     builder.name(name);
     userId = UriUtil.escapeUsername(userId);
@@ -369,7 +368,7 @@ public class Api {
    * @return A builder object that can be used to build a request to retrieve similar artists.
    */
   public GetArtistsRelatedArtistsRequest.Builder getArtistRelatedArtists(String id) {
-    final GetArtistsRelatedArtistsRequest.Builder builder = GetArtistsRelatedArtistsRequest.builder();
+    final GetArtistsRelatedArtistsRequest.Builder builder = new GetArtistsRelatedArtistsRequest.Builder(accessToken);
     builder.setDefaults(httpManager, scheme, host, port);
     builder.id(id);
     return builder;
@@ -383,7 +382,7 @@ public class Api {
    * @return A builder object that can be used to build a request to retrieve playlist tracks.
    */
   public GetPlaylistsTracksRequest.Builder getPlaylistTracks(String userId, String playlistId) {
-    final GetPlaylistsTracksRequest.Builder builder = GetPlaylistsTracksRequest.builder();
+    final GetPlaylistsTracksRequest.Builder builder = new GetPlaylistsTracksRequest.Builder(accessToken);
     builder.setDefaults(httpManager, scheme, host, port);
     userId = UriUtil.escapeUsername(userId);
     builder.setPath("/v1/users/" + userId + "/playlists/" + playlistId + "/tracks");
@@ -398,7 +397,7 @@ public class Api {
    * tracks.
    */
   public GetPlaylistsTracksRequest.Builder getStarred(String userId) {
-    final GetPlaylistsTracksRequest.Builder builder = GetPlaylistsTracksRequest.builder();
+    final GetPlaylistsTracksRequest.Builder builder = new GetPlaylistsTracksRequest.Builder(accessToken);
     builder.setDefaults(httpManager, scheme, host, port);
     userId = UriUtil.escapeUsername(userId);
     builder.setPath("/v1/users/" + userId + "/starred/tracks");
@@ -414,11 +413,11 @@ public class Api {
    * @return A builder object that can e used to build a request to add tracks to a playlist.
    */
   public AddTracksToPlaylistRequest.Builder addTracksToPlaylist(String userId, String playlistId, String[] trackUris) {
-    final AddTracksToPlaylistRequest.Builder builder = AddTracksToPlaylistRequest.builder();
+    final AddTracksToPlaylistRequest.Builder builder = new AddTracksToPlaylistRequest.Builder(accessToken);
 
     userId = UriUtil.escapeUsername(userId);
 
-    setDefaults(builder);
+    builder.setDefaults(httpManager, scheme, host, port);
     builder.setQueryParameter("uris", Joiner.on(",").join(trackUris));
     builder.setPath("/v1/users/" + userId + "/playlists/" + playlistId + "/tracks");
 
@@ -434,7 +433,7 @@ public class Api {
    * @return A builder object that can e used to build a request to add tracks to a playlist.
    */
   public ReplacePlaylistsTracksRequest.Builder replacePlaylistsTracks(String userId, String playlistId, String[] trackUris) {
-    final ReplacePlaylistsTracksRequest.Builder builder = ReplacePlaylistsTracksRequest.builder();
+    final ReplacePlaylistsTracksRequest.Builder builder = new ReplacePlaylistsTracksRequest.Builder(accessToken);
     builder.setDefaults(httpManager, scheme, host, port);
     builder.setQueryParameter("uris", Joiner.on(",").join(trackUris));
     builder.setPath("/v1/users/" + userId + "/playlists/" + playlistId + "/tracks");
@@ -450,11 +449,11 @@ public class Api {
    * @return A builder object that can be used to build a request to remove tracks from a playlist.
    */
   public RemoveTracksFromPlaylistRequest.Builder removeTrackFromPlaylist(String userId, String playlistId, String[] trackUris) {
-    final RemoveTracksFromPlaylistRequest.Builder builder = RemoveTracksFromPlaylistRequest.builder();
+    final RemoveTracksFromPlaylistRequest.Builder builder = new RemoveTracksFromPlaylistRequest.Builder(accessToken);
 
     userId = UriUtil.escapeUsername(userId);
 
-    setDefaults(builder);
+    builder.setDefaults(httpManager, scheme, host, port);
     builder.setQueryParameter("uris", Joiner.on(",").join(trackUris));
     builder.setPath("/v1/users/" + userId + "/playlists/" + playlistId + "/tracks");
 
@@ -469,7 +468,7 @@ public class Api {
    * @return A builder object that can be used to build a request to change a playlist's details.
    */
   public ChangePlaylistsDetailsRequest.Builder changePlaylistDetails(String userId, String playlistId) {
-    final ChangePlaylistsDetailsRequest.Builder builder = ChangePlaylistsDetailsRequest.builder();
+    final ChangePlaylistsDetailsRequest.Builder builder = new ChangePlaylistsDetailsRequest.Builder(accessToken);
     builder.setDefaults(httpManager, scheme, host, port);
     userId = UriUtil.escapeUsername(userId);
     builder.setPath("/v1/users/" + userId + "/playlists/" + playlistId);
@@ -477,7 +476,7 @@ public class Api {
   }
 
   public RemoveTracksFromPlaylistRequest.Builder removeTrackFromPlaylist(String userId, String playlistId, PlaylistTrackPosition[] playlistTrackPositions) {
-    final RemoveTracksFromPlaylistRequest.Builder builder = RemoveTracksFromPlaylistRequest.builder();
+    final RemoveTracksFromPlaylistRequest.Builder builder = new RemoveTracksFromPlaylistRequest.Builder(accessToken);
 
     builder.setDefaults(httpManager, scheme, host, port);
 
@@ -510,7 +509,7 @@ public class Api {
   }
 
   public ReorderPlaylistsTracksRequest.Builder reorderTracksInPlaylist(String userId, String playlistId, int rangeStart, int insertBefore) {
-    final ReorderPlaylistsTracksRequest.Builder builder = ReorderPlaylistsTracksRequest.builder();
+    final ReorderPlaylistsTracksRequest.Builder builder = new ReorderPlaylistsTracksRequest.Builder(accessToken);
     builder.setDefaults(httpManager, scheme, host, port);
     builder.rangeStart(rangeStart);
     builder.insertBefore(insertBefore);
@@ -527,7 +526,7 @@ public class Api {
    * to remove the current user as a follower of a playlist.
    */
   public UnfollowPlaylistRequest.Builder unfollowPlaylist(String owner_id, String playlist_id) {
-    final UnfollowPlaylistRequest.Builder builder = UnfollowPlaylistRequest.builder();
+    final UnfollowPlaylistRequest.Builder builder = new UnfollowPlaylistRequest.Builder(accessToken);
     builder.setDefaults(httpManager, scheme, host, port);
     builder.owner_id(owner_id).playlist_id(playlist_id);
     return builder;
@@ -539,7 +538,7 @@ public class Api {
    * @return A builder object that can be used to build a request to get the user's Your Music library.
    */
   public GetUsersSavedTracksRequest.Builder getMySavedTracks() {
-    final GetUsersSavedTracksRequest.Builder builder = GetUsersSavedTracksRequest.builder();
+    final GetUsersSavedTracksRequest.Builder builder = new GetUsersSavedTracksRequest.Builder(accessToken);
     builder.setDefaults(httpManager, scheme, host, port);
     builder.setPath("/v1/me/tracks");
     return builder;
@@ -552,7 +551,7 @@ public class Api {
    * @return A builder object that can be used to check if a user has saved a track.
    */
   public CheckUsersSavedTracksRequest.Builder containsMySavedTracks(String... trackIds) {
-    final CheckUsersSavedTracksRequest.Builder builder = CheckUsersSavedTracksRequest.builder();
+    final CheckUsersSavedTracksRequest.Builder builder = new CheckUsersSavedTracksRequest.Builder(accessToken);
     builder.setDefaults(httpManager, scheme, host, port);
     builder.tracks(trackIds);
     builder.setPath("/v1/me/tracks/contains");
@@ -566,7 +565,7 @@ public class Api {
    * @return A builder object that can be used to remove tracks from the user's library.
    */
   public RemoveUsersSavedTracksRequest.Builder removeFromMySavedTracks(String... trackIds) {
-    final RemoveUsersSavedTracksRequest.Builder builder = RemoveUsersSavedTracksRequest.builder();
+    final RemoveUsersSavedTracksRequest.Builder builder = new RemoveUsersSavedTracksRequest.Builder(accessToken);
     builder.setDefaults(httpManager, scheme, host, port);
     builder.ids(trackIds);
     builder.setPath("/v1/me/tracks");
@@ -580,7 +579,7 @@ public class Api {
    * @return A builder object that can be used to add tracks to the user's library.
    */
   public SaveTracksForUserRequest.Builder addToMySavedTracks(String... trackIds) {
-    final SaveTracksForUserRequest.Builder builder = SaveTracksForUserRequest.builder();
+    final SaveTracksForUserRequest.Builder builder = new SaveTracksForUserRequest.Builder(accessToken);
     builder.setDefaults(httpManager, scheme, host, port);
     builder.ids(trackIds);
     builder.setPath("/v1/me/tracks");
@@ -597,9 +596,9 @@ public class Api {
    * @return The URL where the user can give application permissions.
    */
   public URI createAuthorizeUri(String[] scopes, String state, boolean showDialog) {
-    final AuthorizationUriRequest.Builder builder = AuthorizationUriRequest.builder();
+    final AuthorizationUriRequest.Builder builder = new AuthorizationUriRequest.Builder(accessToken);
 
-    setDefaults(builder);
+    builder.setDefaults(httpManager, scheme, host, port);
 
     builder.clientId(clientId);
     builder.responseType("code");
@@ -627,9 +626,9 @@ public class Api {
    * @return The URL where the user can give application permissions.
    */
   public URI createAuthorizeUri(String[] scopes, String state) {
-    final AuthorizationUriRequest.Builder builder = AuthorizationUriRequest.builder();
+    final AuthorizationUriRequest.Builder builder = new AuthorizationUriRequest.Builder(accessToken);
 
-    setDefaults(builder);
+    builder.setDefaults(httpManager, scheme, host, port);
 
     builder.clientId(clientId);
     builder.responseType("code");
@@ -654,9 +653,9 @@ public class Api {
    * @return The URL where the user can give application permissions.
    */
   public URI createAuthorizeUri(String... scopes) {
-    final AuthorizationUriRequest.Builder builder = AuthorizationUriRequest.builder();
+    final AuthorizationUriRequest.Builder builder = new AuthorizationUriRequest.Builder(accessToken);
 
-    setDefaults(builder);
+    builder.setDefaults(httpManager, scheme, host, port);
 
     builder.clientId(clientId);
     builder.responseType("code");
@@ -670,34 +669,34 @@ public class Api {
   }
 
   public GetRecommendationsRequest.Builder getRecommendations(String... ids) {
-    GetRecommendationsRequest.Builder builder = GetRecommendationsRequest.builder();
     builder.seed_genres(ids);
+    GetRecommendationsRequest.Builder builder = new GetRecommendationsRequest.Builder(accessToken);
     builder.setDefaults(httpManager, scheme, host, port);
     return builder;
   }
 
   public GetAvailableGenreSeedsRequest.Builder getAvailableGenreSeeds() {
-    GetAvailableGenreSeedsRequest.Builder builder = new GetAvailableGenreSeedsRequest.Builder();
+    GetAvailableGenreSeedsRequest.Builder builder = new GetAvailableGenreSeedsRequest.Builder(accessToken);
     builder.setDefaults(httpManager, scheme, host, port);
     return builder;
   }
 
   public GetListOfCategoriesRequest.Builder getCategories() {
-    GetListOfCategoriesRequest.Builder builder = new GetListOfCategoriesRequest.Builder();
+    GetListOfCategoriesRequest.Builder builder = new GetListOfCategoriesRequest.Builder(accessToken);
     builder.setDefaults(httpManager, scheme, host, port);
     return builder;
   }
 
   public GetCategoryRequest.Builder getCategory(String categoryId) {
-    GetCategoryRequest.Builder builder = new GetCategoryRequest.Builder().category_id(categoryId);
+    GetCategoryRequest.Builder builder = new GetCategoryRequest.Builder(accessToken).category_id(categoryId);
     builder.setDefaults(httpManager, scheme, host, port);
     return builder;
   }
 
   public GetCategorysPlaylistsRequest.Builder getPlaylistsForCategory(String categoryId) {
-    GetCategorysPlaylistsRequest.Builder builder = GetCategorysPlaylistsRequest.builder();
     builder.category_id(categoryId);
     return builder;
+    GetCategorysPlaylistsRequest.Builder builder = new GetCategorysPlaylistsRequest.Builder(accessToken);
     builder.setDefaults(httpManager, scheme, host, port);
   }
 

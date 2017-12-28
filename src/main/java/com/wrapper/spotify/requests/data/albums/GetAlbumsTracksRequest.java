@@ -5,7 +5,7 @@ import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.exceptions.*;
 import com.wrapper.spotify.model_objects.Paging;
 import com.wrapper.spotify.model_objects.TrackSimplified;
-import com.wrapper.spotify.requests.AbstractRequest;
+import com.wrapper.spotify.requests.data.AbstractDataRequest;
 
 import java.io.IOException;
 
@@ -13,14 +13,10 @@ import java.io.IOException;
  * Get Spotify catalog information about an album's tracks. Optional parameters can be used to limit the number of
  * tracks returned.
  */
-public class GetAlbumsTracksRequest extends AbstractRequest {
+public class GetAlbumsTracksRequest extends AbstractDataRequest {
 
   private GetAlbumsTracksRequest(final Builder builder) {
     super(builder);
-  }
-
-  public static Builder builder() {
-    return new Builder();
   }
 
   public Paging<TrackSimplified> get() throws
@@ -51,7 +47,12 @@ public class GetAlbumsTracksRequest extends AbstractRequest {
     return executeAsync(new TrackSimplified.JsonUtil().createModelObjectPaging(getJson()));
   }
 
-  public static final class Builder extends AbstractRequest.Builder<Builder> {
+  public static final class Builder extends AbstractDataRequest.Builder<Builder> {
+
+    public Builder(final String accessToken) {
+      super(accessToken);
+    }
+
     /**
      * The id path parameter setter.
      *

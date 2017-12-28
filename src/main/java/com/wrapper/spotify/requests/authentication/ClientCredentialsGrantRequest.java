@@ -18,10 +18,6 @@ public class ClientCredentialsGrantRequest extends AbstractRequest {
     super(builder);
   }
 
-  public static Builder builder() {
-    return new Builder();
-  }
-
   public SettableFuture<ClientCredentials> executeAsync() {
     final SettableFuture<ClientCredentials> future = SettableFuture.create();
 
@@ -51,6 +47,11 @@ public class ClientCredentialsGrantRequest extends AbstractRequest {
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
+
+    public Builder(final String accessToken) {
+      super();
+    }
+
 
     public Builder basicAuthorizationHeader(String clientId, String clientSecret) {
       assert (clientId != null);

@@ -20,7 +20,7 @@ public class GetListOfNewReleasesRequestTest {
 
   @Test
   public void shouldGetNewReleases_async() throws Exception {
-    final Api api = Api.DEFAULT_API;
+    final Api api = Api.builder().accessToken("AccessToken").build();
 
     final GetListOfNewReleasesRequest request = api.getNewReleases()
             .limit(1)
@@ -68,7 +68,7 @@ public class GetListOfNewReleasesRequestTest {
 
   @Test
   public void shouldGetArtistsResult_sync() throws Exception {
-    final Api api = Api.DEFAULT_API;
+    final Api api = Api.builder().accessToken("AccessToken").build();
 
     final GetListOfNewReleasesRequest request = api.getNewReleases()
             .limit(1)

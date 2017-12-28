@@ -4,14 +4,14 @@ import com.google.common.util.concurrent.SettableFuture;
 import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.exceptions.*;
 import com.wrapper.spotify.model_objects.Album;
-import com.wrapper.spotify.requests.AbstractRequest;
+import com.wrapper.spotify.requests.data.AbstractDataRequest;
 
 import java.io.IOException;
 
 /**
  * Get Spotify catalog information for a single album.
  */
-public class GetAlbumRequest extends AbstractRequest {
+public class GetAlbumRequest extends AbstractDataRequest {
 
   /**
    * The private {@link GetAlbumRequest} constructor.
@@ -20,15 +20,6 @@ public class GetAlbumRequest extends AbstractRequest {
    */
   private GetAlbumRequest(final Builder builder) {
     super(builder);
-  }
-
-  /**
-   * The public {@link GetAlbumRequest.Builder} constructor.
-   *
-   * @return A {@link GetAlbumRequest.Builder}.
-   */
-  public static Builder builder() {
-    return new Builder();
   }
 
   /**
@@ -106,7 +97,12 @@ public class GetAlbumRequest extends AbstractRequest {
   /**
    * A builder class for a {@link GetAlbumRequest}.
    */
-  public static final class Builder extends AbstractRequest.Builder<Builder> {
+  public static final class Builder extends AbstractDataRequest.Builder<Builder> {
+
+    public Builder(final String accessToken) {
+      super(accessToken);
+    }
+
     /**
      * The id path parameter setter.
      *

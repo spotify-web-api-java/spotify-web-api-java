@@ -5,18 +5,14 @@ import com.google.common.util.concurrent.SettableFuture;
 import com.google.gson.Gson;
 import com.google.gson.JsonParser;
 import com.wrapper.spotify.exceptions.*;
-import com.wrapper.spotify.requests.AbstractRequest;
+import com.wrapper.spotify.requests.data.AbstractDataRequest;
 
 import java.io.IOException;
 
-public class CheckUsersSavedTracksRequest extends AbstractRequest {
+public class CheckUsersSavedTracksRequest extends AbstractDataRequest {
 
   private CheckUsersSavedTracksRequest(final Builder builder) {
     super(builder);
-  }
-
-  public static CheckUsersSavedTracksRequest.Builder builder() {
-    return new Builder();
   }
 
   public Boolean[] get() throws
@@ -47,7 +43,12 @@ public class CheckUsersSavedTracksRequest extends AbstractRequest {
     return executeAsync(new Gson().fromJson(new JsonParser().parse(getJson()).getAsJsonArray(), Boolean[].class));
   }
 
-  public static final class Builder extends AbstractRequest.Builder<Builder> {
+  public static final class Builder extends AbstractDataRequest.Builder<Builder> {
+
+    public Builder(final String accessToken) {
+      super(accessToken);
+    }
+
 
     public Builder tracks(final String... trackIds) {
       String idsParameter = Joiner.on(",").join(trackIds);

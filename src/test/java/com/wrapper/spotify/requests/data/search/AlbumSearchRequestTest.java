@@ -22,7 +22,7 @@ public class AlbumSearchRequestTest {
 
   @Test
   public void shouldGetAlbumsResult_async() throws Exception {
-    final Api api = Api.DEFAULT_API;
+    final Api api = Api.builder().accessToken("AccessToken").build();
 
     final AlbumSearchRequest request = api.searchAlbums("tania bowra")
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/search/AlbumSearchRequest.json"))
@@ -69,7 +69,7 @@ public class AlbumSearchRequestTest {
 
   @Test
   public void shouldGetAlbumsResult_sync() throws Exception {
-    final Api api = Api.DEFAULT_API;
+    final Api api = Api.builder().accessToken("AccessToken").build();
 
     final AlbumSearchRequest request = api.searchAlbums("tania bowra")
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/search/AlbumSearchRequest.json"))
