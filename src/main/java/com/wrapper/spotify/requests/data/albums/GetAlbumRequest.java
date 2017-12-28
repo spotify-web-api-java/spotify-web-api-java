@@ -123,8 +123,10 @@ public class GetAlbumRequest extends AbstractRequest {
     /**
      * The market query parameter setter.
      *
-     * @param market Optional. An ISO 3166-1 alpha-2 country code. Provide this parameter if you want to apply Track
-     *               Relinking.
+     * @param market Optional. An <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2 country
+     *               code</a>. Provide this parameter if you want to apply
+     *               <a href="https://beta.developer.spotify.com/documentation/general/guides/track-relinking-guide/">
+     *               Track Relinking</a>.
      * @return A {@link GetAlbumRequest.Builder}.
      */
     public Builder market(final CountryCode market) {

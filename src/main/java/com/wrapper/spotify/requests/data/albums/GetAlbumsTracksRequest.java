@@ -10,7 +10,8 @@ import com.wrapper.spotify.requests.AbstractRequest;
 import java.io.IOException;
 
 /**
- * Get Spotify catalog information about an album's tracks. Optional parameters can be used to limit the number of tracks returned.
+ * Get Spotify catalog information about an album's tracks. Optional parameters can be used to limit the number of
+ * tracks returned.
  */
 public class GetAlbumsTracksRequest extends AbstractRequest {
 
@@ -76,7 +77,8 @@ public class GetAlbumsTracksRequest extends AbstractRequest {
     /**
      * The offset query parameter setter.
      *
-     * @param offset Optional. The index of the first track to return. Default: 0 (the first object). Use with limit to get the next set of tracks.
+     * @param offset Optional. The index of the first track to return. Default: 0 (the first object). Use with limit to
+     *               get the next set of tracks.
      * @return A GetAlbumsTracksRequest builder.
      */
     public Builder offset(final Integer offset) {
@@ -87,7 +89,8 @@ public class GetAlbumsTracksRequest extends AbstractRequest {
     /**
      * The market query parameter setter.
      *
-     * @param market Optional. An ISO 3166-1 alpha-2 country code. Provide this parameter if you want to apply Track Relinking.
+     * @param market Optional. An ISO 3166-1 alpha-2 country code. Provide this parameter if you want to apply Track
+     *               Relinking.
      * @return A GetAlbumsTracksRequest builder.
      */
     public Builder market(final CountryCode market) {

@@ -65,7 +65,8 @@ public class GetSeveralAlbumsRequest extends AbstractRequest {
     /**
      * The market query parameter setter.
      *
-     * @param market Optional. An ISO 3166-1 alpha-2 country code. Provide this parameter if you want to apply Track Relinking.
+     * @param market Optional. An ISO 3166-1 alpha-2 country code. Provide this parameter if you want to apply Track
+     *               Relinking.
      * @return A GetSeveralAlbumsRequest builder.
      */
     public Builder market(final CountryCode market) {
