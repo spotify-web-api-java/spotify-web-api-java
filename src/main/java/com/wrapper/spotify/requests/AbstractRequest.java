@@ -174,6 +174,7 @@ public abstract class AbstractRequest implements Request {
     private List<NameValuePair> bodyParameters = new ArrayList<>();
 
     protected Builder() {
+      setHeader("Content-Type", "application/json");
     }
 
     public BuilderType setHttpManager(final HttpManager httpManager) {
