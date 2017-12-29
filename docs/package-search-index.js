@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"com.wrapper.spotify"},{"l":"com.wrapper.spotify.exceptions"},{"l":"com.wrapper.spotify.model_objects"},{"l":"com.wrapper.spotify.requests"},{"l":"com.wrapper.spotify.requests.authentication"}]
