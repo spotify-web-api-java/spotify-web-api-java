@@ -50,11 +50,13 @@ public class CheckUsersFollowPlaylistRequest extends AbstractDataRequest {
 
     public Builder owner_id(final String owner_id) {
       assert (owner_id != null);
+      assert (!owner_id.equals(""));
       return setPathParameter("owner_id", owner_id);
     }
 
     public Builder playlist_id(final String playlist_id) {
       assert (playlist_id != null);
+      assert (!playlist_id.equals(""));
       return setPathParameter("playlist_id", playlist_id);
     }
 

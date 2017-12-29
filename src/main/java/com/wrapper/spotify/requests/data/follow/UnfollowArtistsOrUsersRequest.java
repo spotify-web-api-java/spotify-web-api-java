@@ -1,6 +1,7 @@
 package com.wrapper.spotify.requests.data.follow;
 
 import com.google.common.base.Joiner;
+import com.google.gson.JsonArray;
 import com.wrapper.spotify.exceptions.*;
 import com.wrapper.spotify.model_objects.ModelObjectType;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
@@ -49,12 +50,21 @@ public class UnfollowArtistsOrUsersRequest extends AbstractDataRequest {
 
     public Builder type(final ModelObjectType type) {
       assert (type != null);
-      return setFormParameter("type", type);
+      assert (type.getType().equals("artist") || type.getType().equals("user"));
+      return setQueryParameter("type", type);
     }
 
-    public Builder ids(final String... ids) {
+    // TODO: Joiner.on(",").join()
+    public Builder ids(final String ids) {
       assert (ids != null);
-      return setFormParameter("ids", Joiner.on(",").join(ids));
+      assert (ids.split(",").length <= 50);
+      return setQueryParameter("ids", ids);
+    }
+
+    public Builder ids(final JsonArray ids) {
+      assert (ids != null);
+      assert (!ids.isJsonNull());
+      return setBodyParameter("ids", ids);
     }
 
     @Override

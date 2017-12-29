@@ -26,7 +26,7 @@ public class GetUsersFollowedArtistsRequest extends AbstractDataRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return new Artist.JsonUtil().createModelObjectPagingCursorbased(getJson());
+    return new Artist.JsonUtil().createModelObjectPagingCursorbased(getJson(), "artists");
   }
 
   public SettableFuture<PagingCursorbased<Artist>> getAsync() throws
@@ -40,7 +40,7 @@ public class GetUsersFollowedArtistsRequest extends AbstractDataRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return executeAsync(new Artist.JsonUtil().createModelObjectPagingCursorbased(getJson()));
+    return executeAsync(new Artist.JsonUtil().createModelObjectPagingCursorbased(getJson(), "artists"));
   }
 
   public static final class Builder extends AbstractDataRequest.Builder<Builder> {
@@ -51,22 +51,24 @@ public class GetUsersFollowedArtistsRequest extends AbstractDataRequest {
 
     public Builder type(final ModelObjectType type) {
       assert (type != null);
-      return setFormParameter("type", type);
+      assert (type.getType().equals("artist"));
+      return setQueryParameter("type", type);
     }
 
     public Builder limit(final Integer limit) {
       assert (limit != null);
-      return setFormParameter("type", limit);
+      assert (1 <= limit && limit <= 50);
+      return setQueryParameter("limit", limit);
     }
 
     public Builder after(final String after) {
       assert (after != null);
-      return setFormParameter("type", after);
+      return setQueryParameter("after", after);
     }
 
     @Override
     public GetUsersFollowedArtistsRequest build() {
-      setPath("/v1/me/following?type=artist");
+      setPath("/v1/me/following");
       return new GetUsersFollowedArtistsRequest(this);
     }
   }
