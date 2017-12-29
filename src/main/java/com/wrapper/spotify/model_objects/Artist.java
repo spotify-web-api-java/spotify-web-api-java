@@ -2,8 +2,9 @@ package com.wrapper.spotify.model_objects;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import com.wrapper.spotify.requests.data.personalization.interfaces.IArtistTrackModelObject;
 
-public class Artist extends AbstractModelObject {
+public class Artist extends AbstractModelObject implements IArtistTrackModelObject {
   private final ExternalUrls externalUrls;
   private final Followers followers;
   private final String[] genres;

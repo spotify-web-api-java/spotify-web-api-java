@@ -4,8 +4,9 @@ import com.google.gson.Gson;
 import com.google.gson.JsonNull;
 import com.google.gson.JsonObject;
 import com.neovisionaries.i18n.CountryCode;
+import com.wrapper.spotify.requests.data.personalization.interfaces.IArtistTrackModelObject;
 
-public class Track extends AbstractModelObject {
+public class Track extends AbstractModelObject implements IArtistTrackModelObject {
   private final AlbumSimplified album;
   private final ArtistSimplified[] artists;
   private final CountryCode[] availableMarkets;
