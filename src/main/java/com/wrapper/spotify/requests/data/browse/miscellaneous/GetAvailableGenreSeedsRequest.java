@@ -70,7 +70,6 @@ public class GetAvailableGenreSeedsRequest extends AbstractDataRequest {
       super(accessToken);
     }
 
-
     @Override
     public GetAvailableGenreSeedsRequest build() {
       setPath("/v1/recommendations/available-genre-seeds");

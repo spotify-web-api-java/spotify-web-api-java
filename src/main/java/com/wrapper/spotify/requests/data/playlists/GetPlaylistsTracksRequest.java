@@ -48,7 +48,6 @@ public class GetPlaylistsTracksRequest extends AbstractDataRequest {
       super(accessToken);
     }
 
-
     public Builder fields(final String fields) {
       assert (fields != null);
       return setFormParameter("fields", fields);

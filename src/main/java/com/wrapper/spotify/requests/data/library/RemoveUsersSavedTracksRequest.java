@@ -47,7 +47,6 @@ public class RemoveUsersSavedTracksRequest extends AbstractDataRequest {
       super(accessToken);
     }
 
-
     public Builder ids(final String... trackIds) {
       String idsParameter = Joiner.on(",").join(trackIds);
       return setQueryParameter("ids", idsParameter);

@@ -50,7 +50,6 @@ public class GetListOfCategoriesRequest extends AbstractDataRequest {
       super(accessToken);
     }
 
-
     /*
      * Optional. A country: an ISO 3166-1 alpha-2 country code. Provide this parameter if you want to narrow the list of returned categories to those relevant to a particular country. If omitted, the returned items will be globally relevant.
      */

@@ -48,7 +48,6 @@ public class PlaylistSearchRequest extends AbstractDataRequest {
       super(accessToken);
     }
 
-
     public Builder query(String query) {
       assert (query != null);
       setPath("/v1/search");

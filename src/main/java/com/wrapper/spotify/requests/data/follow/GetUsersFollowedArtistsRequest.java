@@ -49,7 +49,6 @@ public class GetUsersFollowedArtistsRequest extends AbstractDataRequest {
       super(accessToken);
     }
 
-
     public Builder type(final ModelObjectType type) {
       assert (type != null);
       return setFormParameter("type", type);

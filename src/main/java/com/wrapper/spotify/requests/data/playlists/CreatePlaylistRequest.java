@@ -47,7 +47,6 @@ public class CreatePlaylistRequest extends AbstractDataRequest {
       super(accessToken);
     }
 
-
     public Builder publicAccess(final boolean publicAccess) {
       return setQueryParameter("public", publicAccess);
     }

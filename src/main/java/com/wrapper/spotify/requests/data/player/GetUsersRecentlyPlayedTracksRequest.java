@@ -48,7 +48,6 @@ public class GetUsersRecentlyPlayedTracksRequest extends AbstractDataRequest {
       super(accessToken);
     }
 
-
     @Override
     public GetUsersRecentlyPlayedTracksRequest build() {
       this.setPath("v1/me/player/recently-played");

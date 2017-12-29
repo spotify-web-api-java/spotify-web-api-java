@@ -47,7 +47,6 @@ public class GetUsersCurrentlyPlayingTrackRequest extends AbstractDataRequest {
       super(accessToken);
     }
 
-
     @Override
     public GetUsersCurrentlyPlayingTrackRequest build() {
       return new GetUsersCurrentlyPlayingTrackRequest(this);

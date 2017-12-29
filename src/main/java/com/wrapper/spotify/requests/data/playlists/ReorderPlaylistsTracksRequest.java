@@ -47,7 +47,6 @@ public class ReorderPlaylistsTracksRequest extends AbstractDataRequest {
       super(accessToken);
     }
 
-
     public Builder rangeStart(Integer rangeStart) {
       return setBodyParameter("range_start", rangeStart);
     }

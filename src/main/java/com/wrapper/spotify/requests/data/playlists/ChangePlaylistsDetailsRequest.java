@@ -46,7 +46,6 @@ public class ChangePlaylistsDetailsRequest extends AbstractDataRequest {
       super(accessToken);
     }
 
-
     public Builder name(final String name) {
       assert (name != null);
       setBodyParameter("name", name);

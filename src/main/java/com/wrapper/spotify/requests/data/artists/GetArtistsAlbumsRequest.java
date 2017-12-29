@@ -49,7 +49,6 @@ public class GetArtistsAlbumsRequest extends AbstractDataRequest {
       super(accessToken);
     }
 
-
     public Builder id(final String id) {
       assert (id != null);
       assert (!id.equals(""));

@@ -48,7 +48,6 @@ public class GetListOfUsersPlaylistsRequest extends AbstractDataRequest {
       super(accessToken);
     }
 
-
     public Builder username(final String username) {
       assert (username != null);
       return setPath(String.format("/v1/users/%s/playlists", username));

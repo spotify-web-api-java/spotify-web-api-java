@@ -46,7 +46,6 @@ public class ReplacePlaylistsTracksRequest extends AbstractDataRequest {
       super(accessToken);
     }
 
-
     @Override
     public ReplacePlaylistsTracksRequest build() {
       return new ReplacePlaylistsTracksRequest(this);

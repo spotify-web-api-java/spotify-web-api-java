@@ -47,7 +47,6 @@ public class GetAudioFeaturesForTrackRequest extends AbstractDataRequest {
       super(accessToken);
     }
 
-
     /**
      * The audio request with the given song id.
      *

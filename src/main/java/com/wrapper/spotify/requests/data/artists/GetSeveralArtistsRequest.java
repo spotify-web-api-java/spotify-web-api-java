@@ -47,7 +47,6 @@ public class GetSeveralArtistsRequest extends AbstractDataRequest {
       super(accessToken);
     }
 
-
     public Builder ids(final String ids) {
       assert (ids != null);
       assert (ids.split(",").length <= 50);

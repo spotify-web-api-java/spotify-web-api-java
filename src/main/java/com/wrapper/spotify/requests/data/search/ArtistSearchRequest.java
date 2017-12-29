@@ -48,7 +48,6 @@ public class ArtistSearchRequest extends AbstractDataRequest {
       super(accessToken);
     }
 
-
     public Builder query(final String query) {
       assert (query != null);
       setPath("/v1/search");

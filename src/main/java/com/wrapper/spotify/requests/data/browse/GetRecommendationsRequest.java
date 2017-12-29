@@ -48,7 +48,6 @@ public class GetRecommendationsRequest extends AbstractDataRequest {
       super(accessToken);
     }
 
-
     /**
      * @param limit Optional. The target size of the list of recommended tracks. For seeds with unusually small pools or
      *              when highly restrictive filtering is applied, it may be impossible to generate the requested number

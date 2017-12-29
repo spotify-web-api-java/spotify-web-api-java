@@ -48,7 +48,6 @@ public class GetUsersSavedTracksRequest extends AbstractDataRequest {
       super(accessToken);
     }
 
-
     public Builder limit(final Integer limit) {
       assert (1 <= limit && limit <= 50);
       return setFormParameter("limit", limit);

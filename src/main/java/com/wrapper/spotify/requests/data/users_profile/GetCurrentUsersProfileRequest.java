@@ -47,7 +47,6 @@ public class GetCurrentUsersProfileRequest extends AbstractDataRequest {
       super(accessToken);
     }
 
-
     @Override
     public GetCurrentUsersProfileRequest build() {
       setPath("/v1/me");

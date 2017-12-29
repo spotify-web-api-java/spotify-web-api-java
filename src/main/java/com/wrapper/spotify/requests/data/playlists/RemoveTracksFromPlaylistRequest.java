@@ -63,7 +63,6 @@ public class RemoveTracksFromPlaylistRequest extends AbstractDataRequest {
       super(accessToken);
     }
 
-
     public Builder tracks(PlaylistTrackPosition... playlistTrackPositions) {
       final JsonArray tracks = new JsonArray();
 

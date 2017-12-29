@@ -47,7 +47,6 @@ public class AddTracksToPlaylistRequest extends AbstractDataRequest {
       super(accessToken);
     }
 
-
     public Builder position(final Integer position) {
       assert (position >= 0);
       return setFormParameter("position", position);

@@ -49,7 +49,6 @@ public class CheckCurrentUserFollowsArtistsOrUsersRequest extends AbstractDataRe
       super(accessToken);
     }
 
-
     public Builder type(final ModelObjectType type) {
       assert (type != null);
       assert (type.getType().equals("artist") || type.getType().equals("user"));

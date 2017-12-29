@@ -49,7 +49,6 @@ public class GetSeveralTracksRequest extends AbstractDataRequest {
       super(accessToken);
     }
 
-
     public Builder id(final List<String> ids) {
       assert (ids != null);
       String idsParameter = Joiner.on(",").join(ids);

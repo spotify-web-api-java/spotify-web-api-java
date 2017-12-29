@@ -47,7 +47,6 @@ public class GetTrackRequest extends AbstractDataRequest {
       super(accessToken);
     }
 
-
     /**
      * The track with the given id.
      *

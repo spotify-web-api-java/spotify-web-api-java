@@ -80,7 +80,6 @@ public class GetListOfFeaturedPlaylistsRequest extends AbstractDataRequest {
       super(accessToken);
     }
 
-
     public Builder locale(final String locale) {
       assert (locale != null);
       assert (locale.contains("_"));

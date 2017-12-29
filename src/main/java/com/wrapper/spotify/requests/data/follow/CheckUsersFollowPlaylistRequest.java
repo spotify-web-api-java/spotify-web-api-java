@@ -48,7 +48,6 @@ public class CheckUsersFollowPlaylistRequest extends AbstractDataRequest {
       super(accessToken);
     }
 
-
     public Builder owner_id(final String owner_id) {
       assert (owner_id != null);
       return setPathParameter("owner_id", owner_id);

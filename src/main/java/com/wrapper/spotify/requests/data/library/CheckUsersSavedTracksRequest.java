@@ -49,7 +49,6 @@ public class CheckUsersSavedTracksRequest extends AbstractDataRequest {
       super(accessToken);
     }
 
-
     public Builder tracks(final String... trackIds) {
       String idsParameter = Joiner.on(",").join(trackIds);
       setFormParameter("ids", idsParameter);

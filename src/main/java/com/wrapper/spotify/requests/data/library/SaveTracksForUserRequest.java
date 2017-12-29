@@ -47,7 +47,6 @@ public class SaveTracksForUserRequest extends AbstractDataRequest {
       super(accessToken);
     }
 
-
     public Builder ids(final String... trackIds) {
       setQueryParameter("ids", Joiner.on(",").join(trackIds));
       return this;
