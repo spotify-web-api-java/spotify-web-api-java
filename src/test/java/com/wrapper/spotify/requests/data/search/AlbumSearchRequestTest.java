@@ -8,7 +8,7 @@ import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.model_objects.AlbumSimplified;
 import com.wrapper.spotify.model_objects.ModelObjectType;
 import com.wrapper.spotify.model_objects.Paging;
-import com.wrapper.spotify.requests.data.search.simplified.AlbumSearchRequest;
+import com.wrapper.spotify.requests.data.search.simplified.SearchAlbumRequest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -25,7 +25,7 @@ public class AlbumSearchRequestTest {
   public void shouldGetAlbumsResult_async() throws Exception {
     final Api api = Api.builder().accessToken("AccessToken").build();
 
-    final AlbumSearchRequest request = api.searchAlbums("tania bowra")
+    final SearchAlbumRequest request = api.searchAlbums("tania bowra")
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/search/AlbumSearchRequest.json"))
             .build();
 
@@ -72,7 +72,7 @@ public class AlbumSearchRequestTest {
   public void shouldGetAlbumsResult_sync() throws Exception {
     final Api api = Api.builder().accessToken("AccessToken").build();
 
-    final AlbumSearchRequest request = api.searchAlbums("tania bowra")
+    final SearchAlbumRequest request = api.searchAlbums("tania bowra")
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/search/AlbumSearchRequest.json"))
             .build();
 

@@ -23,10 +23,10 @@ import com.wrapper.spotify.requests.data.library.SaveTracksForUserRequest;
 import com.wrapper.spotify.requests.data.player.GetCurrentUsersRecentlyPlayedTracksRequest;
 import com.wrapper.spotify.requests.data.player.GetUsersCurrentlyPlayingTrackRequest;
 import com.wrapper.spotify.requests.data.playlists.*;
-import com.wrapper.spotify.requests.data.search.simplified.AlbumSearchRequest;
-import com.wrapper.spotify.requests.data.search.simplified.ArtistSearchRequest;
-import com.wrapper.spotify.requests.data.search.simplified.PlaylistSearchRequest;
-import com.wrapper.spotify.requests.data.search.simplified.TrackSearchRequest;
+import com.wrapper.spotify.requests.data.search.simplified.SearchAlbumRequest;
+import com.wrapper.spotify.requests.data.search.simplified.SearchArtistRequest;
+import com.wrapper.spotify.requests.data.search.simplified.SearchPlaylistRequest;
+import com.wrapper.spotify.requests.data.search.simplified.SearchTrackRequest;
 import com.wrapper.spotify.requests.data.tracks.GetAudioFeaturesForTrackRequest;
 import com.wrapper.spotify.requests.data.tracks.GetSeveralTracksRequest;
 import com.wrapper.spotify.requests.data.tracks.GetTrackRequest;
@@ -184,29 +184,29 @@ public class Api {
     return builder;
   }
 
-  public AlbumSearchRequest.Builder searchAlbums(String query) {
-    AlbumSearchRequest.Builder builder = new AlbumSearchRequest.Builder(accessToken);
+  public SearchAlbumRequest.Builder searchAlbums(String query) {
+    SearchAlbumRequest.Builder builder = new SearchAlbumRequest.Builder(accessToken);
     builder.setDefaults(httpManager, scheme, host, port);
     builder.query(query);
     return builder;
   }
 
-  public TrackSearchRequest.Builder searchTracks(String query) {
-    TrackSearchRequest.Builder builder = new TrackSearchRequest.Builder(accessToken);
+  public SearchTrackRequest.Builder searchTracks(String query) {
+    SearchTrackRequest.Builder builder = new SearchTrackRequest.Builder(accessToken);
     builder.setDefaults(httpManager, scheme, host, port);
     builder.query(query);
     return builder;
   }
 
-  public ArtistSearchRequest.Builder searchArtists(String query) {
-    ArtistSearchRequest.Builder builder = new ArtistSearchRequest.Builder(accessToken);
+  public SearchArtistRequest.Builder searchArtists(String query) {
+    SearchArtistRequest.Builder builder = new SearchArtistRequest.Builder(accessToken);
     builder.setDefaults(httpManager, scheme, host, port);
     builder.query(query);
     return builder;
   }
 
-  public PlaylistSearchRequest.Builder searchPlaylists(String query) {
-    PlaylistSearchRequest.Builder builder = new PlaylistSearchRequest.Builder(accessToken);
+  public SearchPlaylistRequest.Builder searchPlaylists(String query) {
+    SearchPlaylistRequest.Builder builder = new SearchPlaylistRequest.Builder(accessToken);
     builder.setDefaults(httpManager, scheme, host, port);
     builder.query(query);
     return builder;

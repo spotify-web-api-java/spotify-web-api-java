@@ -8,7 +8,7 @@ import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.model_objects.ModelObjectType;
 import com.wrapper.spotify.model_objects.Paging;
 import com.wrapper.spotify.model_objects.PlaylistSimplified;
-import com.wrapper.spotify.requests.data.search.simplified.PlaylistSearchRequest;
+import com.wrapper.spotify.requests.data.search.simplified.SearchPlaylistRequest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -28,7 +28,7 @@ public class PlaylistSearchRequestTest {
   public void shouldGetPlaylistsResult_async() throws Exception {
     final Api api = Api.builder().accessToken("AccessToken").build();
 
-    final PlaylistSearchRequest request = api.searchPlaylists("dog")
+    final SearchPlaylistRequest request = api.searchPlaylists("dog")
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/search/PlaylistSearchRequest.json")).build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
@@ -56,7 +56,7 @@ public class PlaylistSearchRequestTest {
   public void shouldGetAlbumsResult_sync() throws Exception {
     final Api api = Api.builder().accessToken("AccessToken").build();
 
-    final PlaylistSearchRequest request = api.searchPlaylists("dog")
+    final SearchPlaylistRequest request = api.searchPlaylists("dog")
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/search/PlaylistSearchRequest.json")).build();
 
     final Paging<PlaylistSimplified> playlistSearchResult = request.get();
