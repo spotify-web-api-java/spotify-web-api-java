@@ -89,7 +89,6 @@ public class GetUsersTopArtistsAndTracksRequest<T extends IArtistTrackModelObjec
     @Override
     public GetUsersTopArtistsAndTracksRequest<T> build() {
       setPath("/v1/me/top/{type}");
-
       return new GetUsersTopArtistsAndTracksRequest<>(this, tClass);
     }
   }

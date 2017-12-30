@@ -2,8 +2,9 @@ package com.wrapper.spotify.model_objects;
 
 import com.google.gson.JsonNull;
 import com.google.gson.JsonObject;
+import com.wrapper.spotify.requests.data.search.interfaces.ISearchModelObject;
 
-public class PlaylistSimplified extends AbstractModelObject {
+public class PlaylistSimplified extends AbstractModelObject implements ISearchModelObject {
   private final boolean collaborative;
   private final ExternalUrls externalUrls;
   private final String href;

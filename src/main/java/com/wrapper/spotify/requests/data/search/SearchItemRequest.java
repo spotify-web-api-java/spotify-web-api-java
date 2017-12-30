@@ -1,18 +1,19 @@
-package com.wrapper.spotify.requests.data.personalization;
+package com.wrapper.spotify.requests.data.search;
 
 import com.google.common.util.concurrent.SettableFuture;
+import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.exceptions.*;
 import com.wrapper.spotify.model_objects.*;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
-import com.wrapper.spotify.requests.data.personalization.interfaces.IArtistTrackModelObject;
+import com.wrapper.spotify.requests.data.search.interfaces.ISearchModelObject;
 
 import java.io.IOException;
 
-public class GetUsersTopArtistsAndTracksRequest<T extends IArtistTrackModelObject> extends AbstractDataRequest {
+public class SearchItemRequest<T extends ISearchModelObject> extends AbstractDataRequest {
 
   private AbstractModelObject.JsonUtil<T> tClass;
 
-  private GetUsersTopArtistsAndTracksRequest(final Builder builder, final AbstractModelObject.JsonUtil<T> tClass) {
+  private SearchItemRequest(final Builder builder, final AbstractModelObject.JsonUtil<T> tClass) {
     super(builder);
     this.tClass = tClass;
   }
@@ -45,7 +46,7 @@ public class GetUsersTopArtistsAndTracksRequest<T extends IArtistTrackModelObjec
     return executeAsync(tClass.createModelObjectPaging(getJson()));
   }
 
-  public static final class Builder<T extends IArtistTrackModelObject> extends AbstractDataRequest.Builder<Builder<T>> {
+  public static final class Builder<T extends ISearchModelObject> extends AbstractDataRequest.Builder<Builder<T>> {
 
     private AbstractModelObject.JsonUtil<T> tClass;
 
@@ -53,20 +54,37 @@ public class GetUsersTopArtistsAndTracksRequest<T extends IArtistTrackModelObjec
       super(accessToken);
     }
 
-    public Builder type(final ModelObjectType type) {
-      assert (type != null);
-      assert (type.getType().equals("artists") || type.getType().equals("tracks"));
+    public Builder q(final String q) {
+      assert (q != null);
+      assert (!q.equals(""));
+      return setQueryParameter("q", q);
+    }
 
-      switch (type.getType()) {
-        case "artists":
+    public Builder type(final String type) {
+      assert (type != null);
+      assert (type.matches("((^|,)(album|artist|playlist|track))+$"));
+
+      switch (type) {
+        case "album":
+          tClass = (AbstractModelObject.JsonUtil<T>) new AlbumSimplified.JsonUtil();
+          break;
+        case "artist":
           tClass = (AbstractModelObject.JsonUtil<T>) new Artist.JsonUtil();
           break;
-        case "tracks":
+        case "playlist":
+          tClass = (AbstractModelObject.JsonUtil<T>) new PlaylistSimplified.JsonUtil();
+          break;
+        case "track":
           tClass = (AbstractModelObject.JsonUtil<T>) new Track.JsonUtil();
           break;
       }
 
-      return setPathParameter("type", type.getType());
+      return setQueryParameter("type", type);
+    }
+
+    public Builder market(final CountryCode market) {
+      assert (market != null);
+      return setQueryParameter("market", market);
     }
 
     public Builder limit(final Integer limit) {
@@ -76,21 +94,15 @@ public class GetUsersTopArtistsAndTracksRequest<T extends IArtistTrackModelObjec
     }
 
     public Builder offset(final Integer offset) {
-      assert (offset >= 0);
+      assert (offset != null);
+      assert (0 <= offset && offset <= 100000);
       return setQueryParameter("offset", offset);
     }
 
-    public Builder time_range(final String time_range) {
-      assert (time_range != null);
-      assert (time_range.equals("long_term") || time_range.equals("medium_term") || time_range.equals("short_term"));
-      return setQueryParameter("time_range", time_range);
-    }
-
     @Override
-    public GetUsersTopArtistsAndTracksRequest<T> build() {
-      setPath("/v1/me/top/{type}");
-
-      return new GetUsersTopArtistsAndTracksRequest<>(this, tClass);
+    public SearchItemRequest<T> build() {
+      setPath("/v1/search");
+      return new SearchItemRequest<>(this, tClass);
     }
   }
 }

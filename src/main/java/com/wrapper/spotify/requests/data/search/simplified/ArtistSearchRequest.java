@@ -1,4 +1,4 @@
-package com.wrapper.spotify.requests.data.search;
+package com.wrapper.spotify.requests.data.search.simplified;
 
 import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.exceptions.*;
