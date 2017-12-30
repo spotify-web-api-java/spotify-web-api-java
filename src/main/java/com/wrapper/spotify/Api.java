@@ -20,8 +20,8 @@ import com.wrapper.spotify.requests.data.library.CheckUsersSavedTracksRequest;
 import com.wrapper.spotify.requests.data.library.GetUsersSavedTracksRequest;
 import com.wrapper.spotify.requests.data.library.RemoveUsersSavedTracksRequest;
 import com.wrapper.spotify.requests.data.library.SaveTracksForUserRequest;
+import com.wrapper.spotify.requests.data.player.GetCurrentUsersRecentlyPlayedTracksRequest;
 import com.wrapper.spotify.requests.data.player.GetUsersCurrentlyPlayingTrackRequest;
-import com.wrapper.spotify.requests.data.player.GetUsersRecentlyPlayedTracksRequest;
 import com.wrapper.spotify.requests.data.playlists.*;
 import com.wrapper.spotify.requests.data.search.AlbumSearchRequest;
 import com.wrapper.spotify.requests.data.search.ArtistSearchRequest;
@@ -225,8 +225,8 @@ public class Api {
     return builder;
   }
 
-  public GetUsersRecentlyPlayedTracksRequest.Builder getRecentlyPlayedTracks() {
-    GetUsersRecentlyPlayedTracksRequest.Builder builder = new GetUsersRecentlyPlayedTracksRequest.Builder(accessToken);
+  public GetCurrentUsersRecentlyPlayedTracksRequest.Builder getRecentlyPlayedTracks() {
+    GetCurrentUsersRecentlyPlayedTracksRequest.Builder builder = new GetCurrentUsersRecentlyPlayedTracksRequest.Builder(accessToken);
     builder.setDefaults(httpManager, scheme, host, port);
     return builder;
   }

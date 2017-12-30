@@ -2,14 +2,14 @@ package com.wrapper.spotify.model_objects;
 
 import com.google.gson.JsonObject;
 
-public class CurrentlyPlayingTrack extends AbstractModelObject {
+public class CurrentlyPlaying extends AbstractModelObject {
   private final Context context;
   private final Integer timestamp;
   private final Integer progress_ms;
   private final Boolean is_playing;
   private final Track item;
 
-  private CurrentlyPlayingTrack(final CurrentlyPlayingTrack.Builder builder) {
+  private CurrentlyPlaying(final CurrentlyPlaying.Builder builder) {
     super(builder);
 
     this.context = builder.context;
@@ -50,10 +50,10 @@ public class CurrentlyPlayingTrack extends AbstractModelObject {
       return true;
     if (obj == null)
       return false;
-    if (!(obj instanceof CurrentlyPlayingTrack))
+    if (!(obj instanceof CurrentlyPlaying))
       return false;
 
-    CurrentlyPlayingTrack other = (CurrentlyPlayingTrack) obj;
+    CurrentlyPlaying other = (CurrentlyPlaying) obj;
 
     if (this.getItem() == null || other.getItem() == null) {
       return false;
@@ -98,18 +98,18 @@ public class CurrentlyPlayingTrack extends AbstractModelObject {
     }
 
     @Override
-    public CurrentlyPlayingTrack build() {
-      return new CurrentlyPlayingTrack(this);
+    public CurrentlyPlaying build() {
+      return new CurrentlyPlaying(this);
     }
   }
 
-  public static final class JsonUtil extends AbstractModelObject.JsonUtil<CurrentlyPlayingTrack> {
-    public CurrentlyPlayingTrack createModelObject(JsonObject jsonObject) {
+  public static final class JsonUtil extends AbstractModelObject.JsonUtil<CurrentlyPlaying> {
+    public CurrentlyPlaying createModelObject(JsonObject jsonObject) {
       if (jsonObject == null || jsonObject.isJsonNull()) {
         return null;
       }
 
-      return new CurrentlyPlayingTrack.Builder()
+      return new CurrentlyPlaying.Builder()
               .setContext(new Context.JsonUtil().createModelObject(jsonObject.getAsJsonObject("context")))
               .setTimestamp(jsonObject.get("timestamp").getAsInt())
               .setProgress_ms(jsonObject.get("progress_ms").getAsInt())

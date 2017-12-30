@@ -1,20 +1,19 @@
 package com.wrapper.spotify.requests.data.player;
 
 import com.google.common.util.concurrent.SettableFuture;
+import com.google.gson.JsonArray;
 import com.wrapper.spotify.exceptions.*;
-import com.wrapper.spotify.model_objects.Paging;
-import com.wrapper.spotify.model_objects.PlayHistory;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
 
 import java.io.IOException;
 
-public class GetUsersRecentlyPlayedTracksRequest extends AbstractDataRequest {
+public class TransferUsersPlaybackRequest extends AbstractDataRequest {
 
-  private GetUsersRecentlyPlayedTracksRequest(final Builder builder) {
+  private TransferUsersPlaybackRequest(final Builder builder) {
     super(builder);
   }
 
-  public Paging<PlayHistory> get() throws
+  public void put() throws
           IOException,
           NoContentException,
           BadRequestException,
@@ -25,10 +24,10 @@ public class GetUsersRecentlyPlayedTracksRequest extends AbstractDataRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return new PlayHistory.JsonUtil().createModelObjectPaging(getJson(), "items");
+    putJson();
   }
 
-  public SettableFuture<Paging<PlayHistory>> getAsync() throws
+  public SettableFuture putAsync() throws
           IOException,
           NoContentException,
           BadRequestException,
@@ -39,7 +38,7 @@ public class GetUsersRecentlyPlayedTracksRequest extends AbstractDataRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return executeAsync(new PlayHistory.JsonUtil().createModelObjectPaging(getJson(), "items"));
+    return executeAsync(putJson());
   }
 
   public static final class Builder extends AbstractDataRequest.Builder<Builder> {
@@ -48,11 +47,20 @@ public class GetUsersRecentlyPlayedTracksRequest extends AbstractDataRequest {
       super(accessToken);
     }
 
-    @Override
-    public GetUsersRecentlyPlayedTracksRequest build() {
-      this.setPath("v1/me/player/recently-played");
+    public Builder device_ids(final JsonArray device_ids) {
+      assert (device_ids != null);
+      assert (!device_ids.isJsonNull());
+      return setBodyParameter("device_ids", device_ids);
+    }
 
-      return new GetUsersRecentlyPlayedTracksRequest(this);
+    public Builder play(final boolean play) {
+      return setBodyParameter("play", play);
+    }
+
+    @Override
+    public TransferUsersPlaybackRequest build() {
+      setPath("/v1/me/player");
+      return new TransferUsersPlaybackRequest(this);
     }
   }
 }

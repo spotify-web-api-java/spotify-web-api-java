@@ -1,20 +1,18 @@
 package com.wrapper.spotify.requests.data.player;
 
 import com.google.common.util.concurrent.SettableFuture;
-import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.exceptions.*;
-import com.wrapper.spotify.model_objects.CurrentlyPlaying;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
 
 import java.io.IOException;
 
-public class GetUsersCurrentlyPlayingTrackRequest extends AbstractDataRequest {
+public class SkipUsersPlaybackToPreviousTrackRequest extends AbstractDataRequest {
 
-  private GetUsersCurrentlyPlayingTrackRequest(final Builder builder) {
+  private SkipUsersPlaybackToPreviousTrackRequest(final Builder builder) {
     super(builder);
   }
 
-  public CurrentlyPlaying get() throws
+  public void post() throws
           IOException,
           NoContentException,
           BadRequestException,
@@ -25,10 +23,10 @@ public class GetUsersCurrentlyPlayingTrackRequest extends AbstractDataRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return new CurrentlyPlaying.JsonUtil().createModelObject(getJson());
+    postJson();
   }
 
-  public SettableFuture<CurrentlyPlaying> getAsync() throws
+  public SettableFuture postAsync() throws
           IOException,
           NoContentException,
           BadRequestException,
@@ -39,7 +37,7 @@ public class GetUsersCurrentlyPlayingTrackRequest extends AbstractDataRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return executeAsync(new CurrentlyPlaying.JsonUtil().createModelObject(getJson()));
+    return executeAsync(postJson());
   }
 
   public static final class Builder extends AbstractDataRequest.Builder<Builder> {
@@ -48,15 +46,16 @@ public class GetUsersCurrentlyPlayingTrackRequest extends AbstractDataRequest {
       super(accessToken);
     }
 
-    public Builder market(final CountryCode market) {
-      assert (market != null);
-      return setQueryParameter("market", market);
+    public Builder device_id(final String device_id) {
+      assert (device_id != null);
+      assert (!device_id.equals(""));
+      return setQueryParameter("device_id", device_id);
     }
 
     @Override
-    public GetUsersCurrentlyPlayingTrackRequest build() {
-      setPath("/v1/me/player/currently-playing");
-      return new GetUsersCurrentlyPlayingTrackRequest(this);
+    public SkipUsersPlaybackToPreviousTrackRequest build() {
+      setPath("/v1/me/player/previous");
+      return new SkipUsersPlaybackToPreviousTrackRequest(this);
     }
   }
 }
