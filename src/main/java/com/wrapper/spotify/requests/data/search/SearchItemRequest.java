@@ -9,16 +9,13 @@ import com.wrapper.spotify.requests.data.search.interfaces.ISearchModelObject;
 
 import java.io.IOException;
 
-public class SearchItemRequest<T extends ISearchModelObject> extends AbstractDataRequest {
+public class SearchItemRequest extends AbstractDataRequest {
 
-  private AbstractModelObject.JsonUtil<T> tClass;
-
-  private SearchItemRequest(final Builder builder, final AbstractModelObject.JsonUtil<T> tClass) {
+  private SearchItemRequest(final Builder builder) {
     super(builder);
-    this.tClass = tClass;
   }
 
-  public Paging<T> get() throws
+  public SearchResult get() throws
           IOException,
           NoContentException,
           BadRequestException,
@@ -29,10 +26,10 @@ public class SearchItemRequest<T extends ISearchModelObject> extends AbstractDat
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return tClass.createModelObjectPaging(getJson());
+    return new SearchResult.JsonUtil().createModelObject(getJson());
   }
 
-  public SettableFuture<Paging<T>> getAsync() throws
+  public SettableFuture<SearchResult> getAsync() throws
           IOException,
           NoContentException,
           BadRequestException,
@@ -43,12 +40,10 @@ public class SearchItemRequest<T extends ISearchModelObject> extends AbstractDat
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return executeAsync(tClass.createModelObjectPaging(getJson()));
+    return executeAsync(new SearchResult.JsonUtil().createModelObject(getJson()));
   }
 
-  public static final class Builder<T extends ISearchModelObject> extends AbstractDataRequest.Builder<Builder<T>> {
-
-    private AbstractModelObject.JsonUtil<T> tClass;
+  public static final class Builder extends AbstractDataRequest.Builder<Builder> {
 
     public Builder(final String accessToken) {
       super(accessToken);
@@ -63,22 +58,6 @@ public class SearchItemRequest<T extends ISearchModelObject> extends AbstractDat
     public Builder type(final String type) {
       assert (type != null);
       assert (type.matches("((^|,)(album|artist|playlist|track))+$"));
-
-      switch (type) {
-        case "album":
-          tClass = (AbstractModelObject.JsonUtil<T>) new AlbumSimplified.JsonUtil();
-          break;
-        case "artist":
-          tClass = (AbstractModelObject.JsonUtil<T>) new Artist.JsonUtil();
-          break;
-        case "playlist":
-          tClass = (AbstractModelObject.JsonUtil<T>) new PlaylistSimplified.JsonUtil();
-          break;
-        case "track":
-          tClass = (AbstractModelObject.JsonUtil<T>) new Track.JsonUtil();
-          break;
-      }
-
       return setQueryParameter("type", type);
     }
 
@@ -100,9 +79,9 @@ public class SearchItemRequest<T extends ISearchModelObject> extends AbstractDat
     }
 
     @Override
-    public SearchItemRequest<T> build() {
+    public SearchItemRequest build() {
       setPath("/v1/search");
-      return new SearchItemRequest<>(this, tClass);
+      return new SearchItemRequest(this);
     }
   }
 }
