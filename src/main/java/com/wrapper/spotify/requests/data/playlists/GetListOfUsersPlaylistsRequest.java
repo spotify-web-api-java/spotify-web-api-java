@@ -48,25 +48,26 @@ public class GetListOfUsersPlaylistsRequest extends AbstractDataRequest {
       super(accessToken);
     }
 
-    public Builder username(final String username) {
-      assert (username != null);
-      return setPath(String.format("/v1/users/%s/playlists", username));
+    public Builder user_id(final String user_id) {
+      assert (user_id != null);
+      assert (!user_id.equals(""));
+      return setPathParameter("user_id", user_id);
     }
 
     public Builder limit(final Integer limit) {
       assert (1 <= limit && limit <= 50);
-      return setFormParameter("limit", limit);
+      return setQueryParameter("limit", limit);
     }
 
     public Builder offset(final Integer offset) {
-      assert (offset >= 0);
-      return setFormParameter("offset", offset);
+      assert (0 <= offset && offset <= 100000);
+      return setQueryParameter("offset", offset);
     }
 
     @Override
     public GetListOfUsersPlaylistsRequest build() {
+      setPath("/v1/users/{user_id}/playlists");
       return new GetListOfUsersPlaylistsRequest(this);
     }
-
   }
 }

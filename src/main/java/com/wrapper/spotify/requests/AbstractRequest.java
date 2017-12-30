@@ -23,6 +23,7 @@ public abstract class AbstractRequest implements Request {
   private List<Header> headers;
   private List<NameValuePair> formParameters;
   private List<NameValuePair> bodyParameters;
+  private String body;
 
   protected AbstractRequest(Builder<?> builder) {
     assert (builder.httpManager != null);
@@ -35,6 +36,7 @@ public abstract class AbstractRequest implements Request {
     assert (builder.headers != null);
     assert (builder.formParameters != null);
     assert (builder.bodyParameters != null);
+    assert (builder.body != null);
 
     this.httpManager = builder.httpManager;
 
@@ -58,6 +60,7 @@ public abstract class AbstractRequest implements Request {
     this.headers = builder.headers;
     this.formParameters = builder.formParameters;
     this.bodyParameters = builder.bodyParameters;
+    this.body = builder.body;
   }
 
   public String getJson() throws
@@ -160,6 +163,10 @@ public abstract class AbstractRequest implements Request {
     return bodyParameters;
   }
 
+  public String getBody() {
+    return body;
+  }
+
   public static abstract class Builder<BuilderType extends Builder<?>> implements Request.Builder {
 
     private HttpManager httpManager = Api.DEFAULT_HTTP_MANAGER;
@@ -172,6 +179,7 @@ public abstract class AbstractRequest implements Request {
     private List<Header> headers = new ArrayList<>();
     private List<NameValuePair> formParameters = new ArrayList<>();
     private List<NameValuePair> bodyParameters = new ArrayList<>();
+    private String body = "";
 
     protected Builder() {
       setHeader("Content-Type", "application/json");
@@ -256,6 +264,11 @@ public abstract class AbstractRequest implements Request {
 
     public <T> BuilderType setBodyParameter(final String name, final T value) {
       this.bodyParameters.add(new BasicNameValuePair(name, String.valueOf(value)));
+      return (BuilderType) this;
+    }
+
+    public BuilderType setBody(final String value) {
+      this.body = value;
       return (BuilderType) this;
     }
   }

@@ -21,7 +21,7 @@ public class CreatePlaylistRequestTest {
     final Api api = Api.builder().accessToken("someAccessToken").build();
 
     final CreatePlaylistRequest request = api.createPlaylist("thelinmichael", "Coolest playlist")
-            .publicAccess(true)
+            .public_(true)
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/playlists/CreatePlaylistRequest.json"))
             .build();
 
@@ -64,7 +64,7 @@ public class CreatePlaylistRequestTest {
     final Api api = Api.builder().accessToken("someAccessToken").build();
 
     final CreatePlaylistRequest request = api.createPlaylist("thelinmichael", "title")
-            .publicAccess(true)
+            .public_(true)
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/playlists/CreatePlaylistRequest.json"))
             .build();
 

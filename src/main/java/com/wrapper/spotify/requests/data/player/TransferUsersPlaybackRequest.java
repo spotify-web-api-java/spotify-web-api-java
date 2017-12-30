@@ -53,7 +53,7 @@ public class TransferUsersPlaybackRequest extends AbstractDataRequest {
       return setBodyParameter("device_ids", device_ids);
     }
 
-    public Builder play(final boolean play) {
+    public Builder play(final Boolean play) {
       return setBodyParameter("play", play);
     }
 

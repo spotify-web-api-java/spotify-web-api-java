@@ -12,7 +12,7 @@ public class ChangePlaylistsDetailsRequest extends AbstractDataRequest {
     super(builder);
   }
 
-  public String put() throws
+  public void put() throws
           IOException,
           NoContentException,
           BadRequestException,
@@ -23,10 +23,10 @@ public class ChangePlaylistsDetailsRequest extends AbstractDataRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return putJson();
+    putJson();
   }
 
-  public SettableFuture<String> putAsync() throws
+  public SettableFuture putAsync() throws
           IOException,
           NoContentException,
           BadRequestException,
@@ -46,22 +46,42 @@ public class ChangePlaylistsDetailsRequest extends AbstractDataRequest {
       super(accessToken);
     }
 
-    public Builder name(final String name) {
-      assert (name != null);
-      setBodyParameter("name", name);
-      return this;
+    public Builder user_id(final String user_id) {
+      assert (user_id != null);
+      assert (!user_id.equals(""));
+      return setPathParameter("user_id", user_id);
     }
 
-    public Builder publicAccess(final boolean publicAccess) {
-      setBodyParameter("public", publicAccess);
-      return this;
+    public Builder playlist_id(final String playlist_id) {
+      assert (playlist_id != null);
+      assert (!playlist_id.equals(""));
+      return setPathParameter("playlist_id", playlist_id);
+    }
+
+    public Builder name(final String name) {
+      assert (name != null);
+      assert (!name.equals(""));
+      return setBodyParameter("name", name);
+    }
+
+    public Builder public_(final Boolean public_) {
+      return setBodyParameter("public", public_);
+    }
+
+    public Builder collaborative(final Boolean collaborative) {
+      return setBodyParameter("collaborative", collaborative);
+    }
+
+    public Builder description(final String description) {
+      assert (description != null);
+      assert (!description.equals(""));
+      return setBodyParameter("name", description);
     }
 
     @Override
     public ChangePlaylistsDetailsRequest build() {
+      setPath("/v1/users/{user_id}/playlists/{playlist_id}");
       return new ChangePlaylistsDetailsRequest(this);
     }
-
   }
-
 }

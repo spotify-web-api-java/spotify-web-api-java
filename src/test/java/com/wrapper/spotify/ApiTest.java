@@ -1,5 +1,7 @@
 package com.wrapper.spotify;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import com.neovisionaries.i18n.CountryCode;
 import com.neovisionaries.i18n.LanguageCode;
 import com.wrapper.spotify.model_objects.AlbumType;
@@ -56,10 +58,10 @@ public class ApiTest {
   public void shouldReplacePlaylistsTracks() {
     final Api api = Api.builder().accessToken(accessToken).build();
     Request request = api
-            .replacePlaylistsTracks("userId", "5oEljuMoe9MXH6tBIPbd5e", new String[]{})
+            .replacePlaylistsTracks("userId", "5oEljuMoe9MXH6tBIPbd5e", new String[]{"spotify:track:4iV5W9uYEdYUVa79Axb7Rh"})
             .build();
     assertEquals(
-            "https://api.spotify.com:443/v1/users/userId/playlists/5oEljuMoe9MXH6tBIPbd5e/tracks?uris=",
+            "https://api.spotify.com:443/v1/users/userId/playlists/5oEljuMoe9MXH6tBIPbd5e/tracks?uris=spotify%3Atrack%3A4iV5W9uYEdYUVa79Axb7Rh",
             request.getUri().toString()
     );
   }
@@ -461,11 +463,10 @@ public class ApiTest {
 
     final Request request = api
             .createPlaylist(myUsername, title)
-            .publicAccess(publicAccess)
+            .public_(publicAccess)
             .build();
 
-    assertEquals("https://api.spotify.com:443/v1/users/thelinmichael/playlists?name=The+greatest+playlist+ever&public=true", request.getUri().toString());
-    assertHasHeader(request, "Authorization", "Bearer " + accessToken);
+    assertEquals("https://api.spotify.com:443/v1/users/thelinmichael/playlists", request.getUri().toString());
     assertHasHeader(request, "Authorization", "Bearer " + accessToken);
   }
 
@@ -480,13 +481,14 @@ public class ApiTest {
 
     final Request request = api
             .addTracksToPlaylist(myUsername, myPlaylistId, tracksToAdd)
-            .position(insertIndex).build();
+            .position(insertIndex)
+            .build();
 
-    assertEquals("https://api.spotify.com:443/v1/users/thelinmichael/playlists/" + myPlaylistId + "/tracks?uris=spotify%3Atrack%3A4BYGxv4rxSNcTgT3DsFB9o%2Cspotify%3Atracks%3A0BG2iE6McPhmAEKIhfqy1X", request.getUri().toString());
+    assertEquals("https://api.spotify.com:443/v1/users/thelinmichael/playlists/" + myPlaylistId + "/tracks?uris=spotify%3Atrack%3A4BYGxv4rxSNcTgT3DsFB9o%2Cspotify%3Atracks%3A0BG2iE6McPhmAEKIhfqy1X&position=3", request.getUri().toString());
     assertHasHeader(request, "Authorization", "Bearer " + accessToken);
     assertHasHeader(request, "Content-Type", "application/json");
     assertHasQueryParameter(request, "uris", "spotify:track:4BYGxv4rxSNcTgT3DsFB9o,spotify:tracks:0BG2iE6McPhmAEKIhfqy1X");
-    assertHasFormParameter(request, "position", String.valueOf(insertIndex));
+    assertHasQueryParameter(request, "position", String.valueOf(insertIndex));
     assertHasHeader(request, "Authorization", "Bearer " + accessToken);
   }
 
@@ -504,19 +506,38 @@ public class ApiTest {
     PlaylistTrackPosition playlistTrackPosition2 = new PlaylistTrackPosition(track2Uri, new int[]{track2Position});
     final PlaylistTrackPosition[] tracksToRemove = {playlistTrackPosition1, playlistTrackPosition2};
 
+    final JsonArray tracks = new JsonArray();
+
+    for (PlaylistTrackPosition playlistTrackPosition : tracksToRemove) {
+      tracks.add(getJsonFromPlaylistTrackPosition(playlistTrackPosition));
+    }
+
     final String expectedJsonBodyTracks = String.format("[{\"uri\":\"%s\"},{\"uri\":\"%s\",\"positions\":[%s]}]",
             track1Uri, track2Uri, String.valueOf(track2Position));
 
     final Request request = api
             .removeTrackFromPlaylist(myUsername, myPlaylistId, tracksToRemove)
             .snapshotId(snapshotId)
-            .tracks(tracksToRemove)
+            .tracks(tracks)
             .build();
 
     assertEquals("https://api.spotify.com:443/v1/users/thelinmichael/playlists/" + myPlaylistId + "/tracks", request.getUri().toString());
     assertHasHeader(request, "Authorization", "Bearer " + accessToken);
     assertHasBodyParameter(request, "tracks", expectedJsonBodyTracks);
     assertHasBodyParameter(request, "snapshot_id", snapshotId);
+  }
+
+  private static JsonObject getJsonFromPlaylistTrackPosition(PlaylistTrackPosition playlistTrackPosition) {
+    JsonObject jsonObject = new JsonObject();
+    jsonObject.addProperty("uri", playlistTrackPosition.getUri());
+    if (playlistTrackPosition.getPositions() != null && playlistTrackPosition.getPositions().length != 0) {
+      JsonArray positionArray = new JsonArray();
+      for (int pos : playlistTrackPosition.getPositions()) {
+        positionArray.add(pos);
+      }
+      jsonObject.add("positions", positionArray);
+    }
+    return jsonObject;
   }
 
   @Test
@@ -535,8 +556,8 @@ public class ApiTest {
 
     final Request request = api
             .reorderTracksInPlaylist(myUsername, myPlaylistId, rangeStart, insertBefore)
-            .rangeLength(rangeLength)
-            .snapshotId(snapshotId)
+            .range_length(rangeLength)
+            .snapshot_id(snapshotId)
             .build();
 
     assertEquals("https://api.spotify.com:443/v1/users/thelinmichael/playlists/" + myPlaylistId + "/tracks", request.getUri().toString());
@@ -559,7 +580,7 @@ public class ApiTest {
 
     final Request request = api
             .changePlaylistDetails(myUsername, myPlaylistId)
-            .publicAccess(isPublic)
+            .public_(isPublic)
             .name(name)
             .build();
 
@@ -612,10 +633,10 @@ public class ApiTest {
             .offset(1)
             .build();
 
-    assertEquals("https://api.spotify.com:443/v1/users/" + userId + "/playlists/" + playlistId + "/tracks", request.getUri().toString());
-    assertHasFormParameter(request, "fields", "items");
-    assertHasFormParameter(request, "limit", "20");
-    assertHasFormParameter(request, "offset", "1");
+    assertEquals("https://api.spotify.com:443/v1/users/" + userId + "/playlists/" + playlistId + "/tracks?fields=items&limit=20&offset=1", request.getUri().toString());
+    assertHasQueryParameter(request, "fields", "items");
+    assertHasQueryParameter(request, "limit", "20");
+    assertHasQueryParameter(request, "offset", "1");
     assertHasHeader(request, "Authorization", "Bearer " + accessToken);
   }
 

@@ -1,18 +1,20 @@
-package com.wrapper.spotify.requests.data.player;
+package com.wrapper.spotify.requests.data.playlists;
 
 import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.exceptions.*;
+import com.wrapper.spotify.model_objects.Paging;
+import com.wrapper.spotify.model_objects.PlaylistSimplified;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
 
 import java.io.IOException;
 
-public class ToggleShuffleForUsersPlaybackRequest extends AbstractDataRequest {
+public class GetListOfCurrentUsersPlaylistsRequest extends AbstractDataRequest {
 
-  private ToggleShuffleForUsersPlaybackRequest(final Builder builder) {
+  private GetListOfCurrentUsersPlaylistsRequest(final Builder builder) {
     super(builder);
   }
 
-  public void put() throws
+  public Paging<PlaylistSimplified> get() throws
           IOException,
           NoContentException,
           BadRequestException,
@@ -23,10 +25,10 @@ public class ToggleShuffleForUsersPlaybackRequest extends AbstractDataRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    putJson();
+    return new PlaylistSimplified.JsonUtil().createModelObjectPaging(getJson());
   }
 
-  public SettableFuture putAsync() throws
+  public SettableFuture<Paging<PlaylistSimplified>> getAsync() throws
           IOException,
           NoContentException,
           BadRequestException,
@@ -37,7 +39,7 @@ public class ToggleShuffleForUsersPlaybackRequest extends AbstractDataRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return executeAsync(putJson());
+    return executeAsync(new PlaylistSimplified.JsonUtil().createModelObjectPaging(getJson()));
   }
 
   public static final class Builder extends AbstractDataRequest.Builder<Builder> {
@@ -46,20 +48,20 @@ public class ToggleShuffleForUsersPlaybackRequest extends AbstractDataRequest {
       super(accessToken);
     }
 
-    public Builder state(final Boolean state) {
-      return setQueryParameter("state", state);
+    public Builder limit(final Integer limit) {
+      assert (1 <= limit && limit <= 50);
+      return setQueryParameter("limit", limit);
     }
 
-    public Builder device_id(final String device_id) {
-      assert (device_id != null);
-      assert (!device_id.equals(""));
-      return setQueryParameter("device_id", device_id);
+    public Builder offset(final Integer offset) {
+      assert (0 <= offset && offset >= 100000);
+      return setQueryParameter("offset", offset);
     }
 
     @Override
-    public ToggleShuffleForUsersPlaybackRequest build() {
-      setPath("/v1/me/player/shuffle");
-      return new ToggleShuffleForUsersPlaybackRequest(this);
+    public GetListOfCurrentUsersPlaylistsRequest build() {
+      setPath("/v1/me/playlists");
+      return new GetListOfCurrentUsersPlaylistsRequest(this);
     }
   }
 }

@@ -16,20 +16,7 @@ public class RemoveTracksFromPlaylistRequest extends AbstractDataRequest {
     super(builder);
   }
 
-  private static JsonObject getJsonFromPlaylistTrackPosition(PlaylistTrackPosition playlistTrackPosition) {
-    JsonObject jsonObject = new JsonObject();
-    jsonObject.addProperty("uri", playlistTrackPosition.getUri());
-    if (playlistTrackPosition.getPositions() != null && playlistTrackPosition.getPositions().length != 0) {
-      JsonArray positionArray = new JsonArray();
-      for (int pos : playlistTrackPosition.getPositions()) {
-        positionArray.add(pos);
-      }
-      jsonObject.add("positions", positionArray);
-    }
-    return jsonObject;
-  }
-
-  public SnapshotResult get() throws
+  public SnapshotResult delete() throws
           IOException,
           NoContentException,
           BadRequestException,
@@ -43,7 +30,7 @@ public class RemoveTracksFromPlaylistRequest extends AbstractDataRequest {
     return new SnapshotResult.JsonUtil().createModelObject(getJson());
   }
 
-  public SettableFuture<SnapshotResult> getAsync() throws
+  public SettableFuture<SnapshotResult> deleteAsync() throws
           IOException,
           NoContentException,
           BadRequestException,
@@ -63,24 +50,34 @@ public class RemoveTracksFromPlaylistRequest extends AbstractDataRequest {
       super(accessToken);
     }
 
-    public Builder tracks(PlaylistTrackPosition... playlistTrackPositions) {
-      final JsonArray tracks = new JsonArray();
+    public Builder user_id(final String user_id) {
+      assert (user_id != null);
+      assert (!user_id.equals(""));
+      return setPathParameter("user_id", user_id);
+    }
 
-      for (PlaylistTrackPosition playlistTrackPosition : playlistTrackPositions) {
-        tracks.add(getJsonFromPlaylistTrackPosition(playlistTrackPosition));
-      }
+    public Builder playlist_id(final String playlist_id) {
+      assert (playlist_id != null);
+      assert (!playlist_id.equals(""));
+      return setPathParameter("playlist_id", playlist_id);
+    }
 
+    public Builder tracks(final JsonArray tracks) {
+      assert (tracks != null);
+      assert (!tracks.isJsonNull());
       return setBodyParameter("tracks", tracks);
     }
 
-    public Builder snapshotId(String snapshotId) {
+    public Builder snapshotId(final String snapshotId) {
+      assert (snapshotId != null);
+      assert (!snapshotId.equals(""));
       return setBodyParameter("snapshot_id", snapshotId);
     }
 
     @Override
     public RemoveTracksFromPlaylistRequest build() {
+      setPath("/v1/users/{user_id}/playlists/{playlist_id}/tracks");
       return new RemoveTracksFromPlaylistRequest(this);
     }
-
   }
 }

@@ -29,14 +29,14 @@ public class ReorderPlaylistsTracksRequestTest {
     final int insertBefore = 5;
 
     final ReorderPlaylistsTracksRequest request = api.reorderTracksInPlaylist(myUsername, myPlaylistId, rangeStart, insertBefore)
-            .rangeLength(rangeLength)
-            .snapshotId(snapshotId)
+            .range_length(rangeLength)
+            .snapshot_id(snapshotId)
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/playlists/ReorderPlaylistsTracksRequest.json"))
             .build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
-    final SettableFuture<SnapshotResult> addTrackFuture = request.getAsync();
+    final SettableFuture<SnapshotResult> addTrackFuture = request.putAsync();
 
     Futures.addCallback(addTrackFuture, new FutureCallback<SnapshotResult>() {
       @Override
@@ -68,12 +68,12 @@ public class ReorderPlaylistsTracksRequestTest {
     final int insertBefore = 5;
 
     final ReorderPlaylistsTracksRequest request = api.reorderTracksInPlaylist(myUsername, myPlaylistId, rangeStart, insertBefore)
-            .rangeLength(rangeLength)
-            .snapshotId(snapshotId)
+            .range_length(rangeLength)
+            .snapshot_id(snapshotId)
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/playlists/ReorderPlaylistsTracksRequest.json"))
             .build();
 
-    final SnapshotResult snapshotResult = request.get();
+    final SnapshotResult snapshotResult = request.put();
     assertEquals(snapshotId, snapshotResult.getSnapshotId());
   }
 }

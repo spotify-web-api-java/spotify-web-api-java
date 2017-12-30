@@ -13,7 +13,7 @@ public class ReorderPlaylistsTracksRequest extends AbstractDataRequest {
     super(builder);
   }
 
-  public SnapshotResult get() throws
+  public SnapshotResult put() throws
           IOException,
           NoContentException,
           BadRequestException,
@@ -24,10 +24,10 @@ public class ReorderPlaylistsTracksRequest extends AbstractDataRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return new SnapshotResult.JsonUtil().createModelObject(getJson());
+    return new SnapshotResult.JsonUtil().createModelObject(putJson());
   }
 
-  public SettableFuture<SnapshotResult> getAsync() throws
+  public SettableFuture<SnapshotResult> putAsync() throws
           IOException,
           NoContentException,
           BadRequestException,
@@ -38,7 +38,7 @@ public class ReorderPlaylistsTracksRequest extends AbstractDataRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return executeAsync(new SnapshotResult.JsonUtil().createModelObject(getJson()));
+    return executeAsync(new SnapshotResult.JsonUtil().createModelObject(putJson()));
   }
 
   public static final class Builder extends AbstractDataRequest.Builder<Builder> {
@@ -47,27 +47,46 @@ public class ReorderPlaylistsTracksRequest extends AbstractDataRequest {
       super(accessToken);
     }
 
-    public Builder rangeStart(Integer rangeStart) {
-      return setBodyParameter("range_start", rangeStart);
+    public Builder user_id(final String user_id) {
+      assert (user_id != null);
+      assert (!user_id.equals(""));
+      return setPathParameter("user_id", user_id);
     }
 
-    public Builder insertBefore(Integer insertBefore) {
-      return setBodyParameter("insert_before", insertBefore);
+    public Builder playlist_id(final String playlist_id) {
+      assert (playlist_id != null);
+      assert (!playlist_id.equals(""));
+      return setPathParameter("playlist_id", playlist_id);
     }
 
-    public Builder rangeLength(Integer rangeLength) {
-      return setBodyParameter("range_length", rangeLength);
+    public Builder range_start(final Integer range_start) {
+      assert (range_start != null);
+      assert (range_start >= 0);
+      return setBodyParameter("range_start", range_start);
     }
 
-    public Builder snapshotId(String snapshotId) {
-      assert (snapshotId != null);
-      return setBodyParameter("snapshot_id", snapshotId);
+    public Builder range_length(final Integer range_length) {
+      assert (range_length != null);
+      assert (range_length >= 1);
+      return setBodyParameter("range_length", range_length);
+    }
+
+    public Builder insert_before(final Integer insert_before) {
+      assert (insert_before != null);
+      assert (insert_before >= 0);
+      return setBodyParameter("insert_before", insert_before);
+    }
+
+    public Builder snapshot_id(final String snapshot_id) {
+      assert (snapshot_id != null);
+      assert (!snapshot_id.equals(""));
+      return setBodyParameter("snapshot_id", snapshot_id);
     }
 
     @Override
     public ReorderPlaylistsTracksRequest build() {
+      setPath("/v1/users/{user_id}/playlists/{playlist_id}/tracks");
       return new ReorderPlaylistsTracksRequest(this);
     }
-
   }
 }

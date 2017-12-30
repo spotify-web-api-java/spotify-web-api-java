@@ -24,12 +24,12 @@ public class ReplacePlaylistsTracksRequestTest {
     final Api api = Api.builder().accessToken("someAccessToken").build();
 
     final ReplacePlaylistsTracksRequest request = api.replacePlaylistsTracks(
-            "userId", "5oEljuMoe9MXH6tBIPbd5e", new String[]{}
+            "userId", "5oEljuMoe9MXH6tBIPbd5e", new String[]{"spotify:track:4iV5W9uYEdYUVa79Axb7Rh"}
     ).setHttpManager(TestUtil.MockedHttpManager.returningString("")).build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
-    final SettableFuture<String> result = request.getAsync();
+    final SettableFuture<String> result = request.putAsync();
 
     Futures.addCallback(result, new FutureCallback<String>() {
       @Override
@@ -53,11 +53,8 @@ public class ReplacePlaylistsTracksRequestTest {
     final Api api = Api.builder().accessToken("someAccessToken").build();
 
     final ReplacePlaylistsTracksRequest request = api.replacePlaylistsTracks(
-            "userId", "5oEljuMoe9MXH6tBIPbd5e", new String[]{}
+            "userId", "5oEljuMoe9MXH6tBIPbd5e", new String[]{"spotify:track:4iV5W9uYEdYUVa79Axb7Rh"}
     ).setHttpManager(TestUtil.MockedHttpManager.returningString("")).build();
-    final String response = request.get();
-    assertNotNull(response);
-    assertEquals("", response);
+    request.put();
   }
-
 }

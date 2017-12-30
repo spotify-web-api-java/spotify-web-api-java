@@ -268,7 +268,7 @@ public class Api {
     GetListOfUsersPlaylistsRequest.Builder builder = new GetListOfUsersPlaylistsRequest.Builder(accessToken);
     builder.setDefaults(httpManager, scheme, host, port);
     userId = UriUtil.escapeUsername(userId);
-    builder.username(userId);
+    builder.user_id(userId);
     return builder;
   }
 
@@ -329,8 +329,8 @@ public class Api {
   public GetPlaylistRequest.Builder getPlaylist(String userId, String playlistId) {
     GetPlaylistRequest.Builder builder = new GetPlaylistRequest.Builder(accessToken);
     builder.setDefaults(httpManager, scheme, host, port);
-    userId = UriUtil.escapeUsername(userId);
-    builder.setPath("/v1/users/" + userId + "/playlists/" + playlistId);
+    builder.user_id(UriUtil.escapeUsername(userId));
+    builder.playlist_id(playlistId);
     return builder;
   }
 
@@ -356,9 +356,8 @@ public class Api {
   public CreatePlaylistRequest.Builder createPlaylist(String userId, String name) {
     final CreatePlaylistRequest.Builder builder = new CreatePlaylistRequest.Builder(accessToken);
     builder.setDefaults(httpManager, scheme, host, port);
+    builder.user_id(UriUtil.escapeUsername(userId));
     builder.name(name);
-    userId = UriUtil.escapeUsername(userId);
-    builder.setPath("/v1/users/" + userId + "/playlists");
     return builder;
   }
 
@@ -385,8 +384,8 @@ public class Api {
   public GetPlaylistsTracksRequest.Builder getPlaylistTracks(String userId, String playlistId) {
     final GetPlaylistsTracksRequest.Builder builder = new GetPlaylistsTracksRequest.Builder(accessToken);
     builder.setDefaults(httpManager, scheme, host, port);
-    userId = UriUtil.escapeUsername(userId);
-    builder.setPath("/v1/users/" + userId + "/playlists/" + playlistId + "/tracks");
+    builder.user_id(UriUtil.escapeUsername(userId));
+    builder.playlist_id(playlistId);
     return builder;
   }
 
@@ -419,9 +418,9 @@ public class Api {
     userId = UriUtil.escapeUsername(userId);
 
     builder.setDefaults(httpManager, scheme, host, port);
-    builder.setQueryParameter("uris", Joiner.on(",").join(trackUris));
-    builder.setPath("/v1/users/" + userId + "/playlists/" + playlistId + "/tracks");
-
+    builder.user_id(userId);
+    builder.playlist_id(playlistId);
+    builder.uris(Joiner.on(",").join(trackUris));
     return builder;
   }
 
@@ -436,8 +435,9 @@ public class Api {
   public ReplacePlaylistsTracksRequest.Builder replacePlaylistsTracks(String userId, String playlistId, String[] trackUris) {
     final ReplacePlaylistsTracksRequest.Builder builder = new ReplacePlaylistsTracksRequest.Builder(accessToken);
     builder.setDefaults(httpManager, scheme, host, port);
-    builder.setQueryParameter("uris", Joiner.on(",").join(trackUris));
-    builder.setPath("/v1/users/" + userId + "/playlists/" + playlistId + "/tracks");
+    builder.user_id(userId);
+    builder.playlist_id(playlistId);
+    builder.uris(Joiner.on(",").join(trackUris));
     return builder;
   }
 
@@ -471,8 +471,8 @@ public class Api {
   public ChangePlaylistsDetailsRequest.Builder changePlaylistDetails(String userId, String playlistId) {
     final ChangePlaylistsDetailsRequest.Builder builder = new ChangePlaylistsDetailsRequest.Builder(accessToken);
     builder.setDefaults(httpManager, scheme, host, port);
-    userId = UriUtil.escapeUsername(userId);
-    builder.setPath("/v1/users/" + userId + "/playlists/" + playlistId);
+    builder.user_id(UriUtil.escapeUsername(userId));
+    builder.playlist_id(playlistId);
     return builder;
   }
 
@@ -505,16 +505,18 @@ public class Api {
     tracks.add("tracks", playlistTrackPositionJsonArray);
 
     builder.setFormParameter("tracks", tracks.toString());
-    builder.setPath("/v1/users/" + userId + "/playlists/" + playlistId + "/tracks");
+    builder.user_id(userId);
+    builder.playlist_id(playlistId);
     return builder;
   }
 
   public ReorderPlaylistsTracksRequest.Builder reorderTracksInPlaylist(String userId, String playlistId, int rangeStart, int insertBefore) {
     final ReorderPlaylistsTracksRequest.Builder builder = new ReorderPlaylistsTracksRequest.Builder(accessToken);
     builder.setDefaults(httpManager, scheme, host, port);
-    builder.rangeStart(rangeStart);
-    builder.insertBefore(insertBefore);
-    builder.setPath("/v1/users/" + userId + "/playlists/" + playlistId + "/tracks");
+    builder.range_start(rangeStart);
+    builder.insert_before(insertBefore);
+    builder.user_id(userId);
+    builder.playlist_id(playlistId);
     return builder;
   }
 

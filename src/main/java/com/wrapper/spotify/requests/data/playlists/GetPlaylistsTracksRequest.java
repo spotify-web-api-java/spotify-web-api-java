@@ -1,6 +1,7 @@
 package com.wrapper.spotify.requests.data.playlists;
 
 import com.google.common.util.concurrent.SettableFuture;
+import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.exceptions.*;
 import com.wrapper.spotify.model_objects.Paging;
 import com.wrapper.spotify.model_objects.PlaylistTrack;
@@ -48,25 +49,43 @@ public class GetPlaylistsTracksRequest extends AbstractDataRequest {
       super(accessToken);
     }
 
+    public Builder user_id(final String user_id) {
+      assert (user_id != null);
+      assert (!user_id.equals(""));
+      return setPathParameter("user_id", user_id);
+    }
+
+    public Builder playlist_id(final String playlist_id) {
+      assert (playlist_id != null);
+      assert (!playlist_id.equals(""));
+      return setPathParameter("playlist_id", playlist_id);
+    }
+
     public Builder fields(final String fields) {
       assert (fields != null);
-      return setFormParameter("fields", fields);
+      assert (!fields.equals(""));
+      return setQueryParameter("fields", fields);
     }
 
     public Builder limit(final Integer limit) {
-      assert (1 <= limit && limit <= 50);
-      return setFormParameter("limit", limit);
+      assert (1 <= limit && limit <= 100);
+      return setQueryParameter("limit", limit);
     }
 
     public Builder offset(final Integer offset) {
       assert (offset >= 0);
-      return setFormParameter("offset", offset);
+      return setQueryParameter("offset", offset);
+    }
+
+    public Builder market(final CountryCode market) {
+      assert (market != null);
+      return setQueryParameter("market", market);
     }
 
     @Override
     public GetPlaylistsTracksRequest build() {
+      setPath("/v1/users/{user_id}/playlists/{playlist_id}/tracks");
       return new GetPlaylistsTracksRequest(this);
     }
-
   }
 }

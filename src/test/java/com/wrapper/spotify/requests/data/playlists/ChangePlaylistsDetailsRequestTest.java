@@ -23,7 +23,7 @@ public class ChangePlaylistsDetailsRequestTest {
 
     ChangePlaylistsDetailsRequest request = api
             .changePlaylistDetails("thelinmichael", "3ktAYNcRHpazJ9qecm3ptn")
-            .publicAccess(true)
+            .public_(true)
             .name("Testing playlist name change")
             .setHttpManager(TestUtil.MockedHttpManager.returningString(""))
             .build();
@@ -58,13 +58,11 @@ public class ChangePlaylistsDetailsRequestTest {
 
     ChangePlaylistsDetailsRequest request = api
             .changePlaylistDetails("thelinmichael", "3ktAYNcRHpazJ9qecm3ptn")
-            .publicAccess(true)
+            .public_(true)
             .name("Testing playlist name change")
             .setHttpManager(TestUtil.MockedHttpManager.returningString(""))
             .build();
 
-    String response = request.put();
-    assertEquals("", response);
+    request.put();
   }
-
 }

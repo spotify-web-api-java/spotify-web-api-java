@@ -1,14 +1,15 @@
-package com.wrapper.spotify.requests.data.player;
+package com.wrapper.spotify.requests.data.playlists;
 
 import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.exceptions.*;
+import com.wrapper.spotify.model_objects.Playlist;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
 
 import java.io.IOException;
 
-public class ToggleShuffleForUsersPlaybackRequest extends AbstractDataRequest {
+public class UploadCustomPlaylistCoverImageRequest extends AbstractDataRequest {
 
-  private ToggleShuffleForUsersPlaybackRequest(final Builder builder) {
+  private UploadCustomPlaylistCoverImageRequest(final Builder builder) {
     super(builder);
   }
 
@@ -46,20 +47,29 @@ public class ToggleShuffleForUsersPlaybackRequest extends AbstractDataRequest {
       super(accessToken);
     }
 
-    public Builder state(final Boolean state) {
-      return setQueryParameter("state", state);
+    public Builder user_id(final String user_id) {
+      assert (user_id != null);
+      assert (!user_id.equals(""));
+      return setPathParameter("user_id", user_id);
     }
 
-    public Builder device_id(final String device_id) {
-      assert (device_id != null);
-      assert (!device_id.equals(""));
-      return setQueryParameter("device_id", device_id);
+    public Builder playlist_id(final String playlist_id) {
+      assert (playlist_id != null);
+      assert (!playlist_id.equals(""));
+      return setPathParameter("playlist_id", playlist_id);
+    }
+
+    public Builder image_data(final String image_data) {
+      assert (image_data != null);
+      assert (!image_data.equals(""));
+      assert (image_data.getBytes().length <= 256000);
+      return setBody(image_data);
     }
 
     @Override
-    public ToggleShuffleForUsersPlaybackRequest build() {
-      setPath("/v1/me/player/shuffle");
-      return new ToggleShuffleForUsersPlaybackRequest(this);
+    public UploadCustomPlaylistCoverImageRequest build() {
+      setPath("/v1/users/{user_id}/playlists/{playlist_id}/images");
+      return new UploadCustomPlaylistCoverImageRequest(this);
     }
   }
 }

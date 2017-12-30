@@ -1,6 +1,7 @@
 package com.wrapper.spotify.requests.data.playlists;
 
 import com.google.common.util.concurrent.SettableFuture;
+import com.google.gson.JsonArray;
 import com.wrapper.spotify.exceptions.*;
 import com.wrapper.spotify.model_objects.SnapshotResult;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
@@ -47,17 +48,49 @@ public class AddTracksToPlaylistRequest extends AbstractDataRequest {
       super(accessToken);
     }
 
+    public Builder user_id(final String user_id) {
+      assert (user_id != null);
+      assert (!user_id.equals(""));
+      return setPathParameter("user_id", user_id);
+    }
+
+    public Builder playlist_id(final String playlist_id) {
+      assert (playlist_id != null);
+      assert (!playlist_id.equals(""));
+      return setPathParameter("playlist_id", playlist_id);
+    }
+
+    public Builder uris(final String uris) {
+      assert (uris != null);
+      assert (!uris.equals(""));
+      return setQueryParameter("uris", uris);
+    }
+
     public Builder position(final Integer position) {
+      return position(position, false);
+    }
+
+    public Builder uris(final JsonArray uris) {
+      assert (uris != null);
+      assert (!uris.isJsonNull());
+      assert (uris.size() <= 100);
+      return setBodyParameter("uris", uris);
+    }
+
+    public Builder position(final Integer position, final Boolean use_body) {
       assert (position >= 0);
-      return setFormParameter("position", position);
+
+      if (use_body) {
+        return setBodyParameter("position", position);
+      } else {
+        return setQueryParameter("position", position);
+      }
     }
 
     @Override
     public AddTracksToPlaylistRequest build() {
-      setHeader("Content-Type", "application/json");
+      setPath("/v1/users/{user_id}/playlists/{playlist_id}/tracks");
       return new AddTracksToPlaylistRequest(this);
     }
-
   }
-
 }

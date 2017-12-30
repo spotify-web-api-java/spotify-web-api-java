@@ -25,6 +25,8 @@ public interface Request {
 
   List<NameValuePair> getBodyParameters();
 
+  String getBody();
+
   interface Builder {
 
     Builder setHttpManager(final HttpManager httpManager);
@@ -51,6 +53,8 @@ public interface Request {
     <T> Builder setFormParameter(final String name, final T value);
 
     <T> Builder setBodyParameter(final String name, final T value);
+
+    Builder setBody(final String value);
 
     AbstractRequest build();
   }

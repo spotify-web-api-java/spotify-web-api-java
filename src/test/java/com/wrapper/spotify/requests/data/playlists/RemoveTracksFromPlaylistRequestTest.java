@@ -37,7 +37,7 @@ public class RemoveTracksFromPlaylistRequestTest {
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
-    final SettableFuture<SnapshotResult> addTrackFuture = request.getAsync();
+    final SettableFuture<SnapshotResult> addTrackFuture = request.deleteAsync();
 
     Futures.addCallback(addTrackFuture, new FutureCallback<SnapshotResult>() {
       @Override
@@ -73,7 +73,7 @@ public class RemoveTracksFromPlaylistRequestTest {
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/playlists/RemoveTracksFromPlaylistRequest.json"))
             .build();
 
-    final SnapshotResult snapshotResult = request.get();
+    final SnapshotResult snapshotResult = request.delete();
     assertEquals(snapshotId, snapshotResult.getSnapshotId());
   }
 }
