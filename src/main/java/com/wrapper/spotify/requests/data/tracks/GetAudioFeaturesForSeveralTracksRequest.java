@@ -1,20 +1,19 @@
 package com.wrapper.spotify.requests.data.tracks;
 
 import com.google.common.util.concurrent.SettableFuture;
-import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.exceptions.*;
-import com.wrapper.spotify.model_objects.Track;
+import com.wrapper.spotify.model_objects.AudioFeature;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
 
 import java.io.IOException;
 
-public class GetSeveralTracksRequest extends AbstractDataRequest {
+public class GetAudioFeaturesForSeveralTracksRequest extends AbstractDataRequest {
 
-  private GetSeveralTracksRequest(final Builder builder) {
+  private GetAudioFeaturesForSeveralTracksRequest(final Builder builder) {
     super(builder);
   }
 
-  public Track[] get() throws
+  public AudioFeature[] get() throws
           IOException,
           NoContentException,
           BadRequestException,
@@ -25,10 +24,10 @@ public class GetSeveralTracksRequest extends AbstractDataRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return new Track.JsonUtil().createModelObjectArray(getJson(), "tracks");
+    return new AudioFeature.JsonUtil().createModelObjectArray(getJson(), "audio_features");
   }
 
-  public SettableFuture<Track[]> getAsync() throws
+  public SettableFuture<AudioFeature[]> getAsync() throws
           IOException,
           NoContentException,
           BadRequestException,
@@ -39,7 +38,7 @@ public class GetSeveralTracksRequest extends AbstractDataRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return executeAsync(new Track.JsonUtil().createModelObjectArray(getJson(), "tracks"));
+    return executeAsync(new AudioFeature.JsonUtil().createModelObjectArray(getJson(), "audio_features"));
   }
 
   public static final class Builder extends AbstractDataRequest.Builder<Builder> {
@@ -54,15 +53,10 @@ public class GetSeveralTracksRequest extends AbstractDataRequest {
       return setQueryParameter("ids", ids);
     }
 
-    public Builder market(final CountryCode market) {
-      assert (market != null);
-      return setQueryParameter("market", market);
-    }
-
     @Override
-    public GetSeveralTracksRequest build() {
-      setPath("/v1/tracks");
-      return new GetSeveralTracksRequest(this);
+    public GetAudioFeaturesForSeveralTracksRequest build() {
+      setPath("/v1/audio-features");
+      return new GetAudioFeaturesForSeveralTracksRequest(this);
     }
   }
 }

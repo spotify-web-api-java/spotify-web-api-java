@@ -174,7 +174,7 @@ public class Api {
   public GetSeveralTracksRequest.Builder getTracks(List<String> ids) {
     GetSeveralTracksRequest.Builder builder = new GetSeveralTracksRequest.Builder(accessToken);
     builder.setDefaults(httpManager, scheme, host, port);
-    builder.id(ids);
+    builder.ids(Joiner.on(",").join(ids));
     return builder;
   }
 

@@ -23,6 +23,19 @@ public class ApiTest {
   private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss");
   private String accessToken = "AccessToken";
 
+  private static JsonObject getJsonFromPlaylistTrackPosition(PlaylistTrackPosition playlistTrackPosition) {
+    JsonObject jsonObject = new JsonObject();
+    jsonObject.addProperty("uri", playlistTrackPosition.getUri());
+    if (playlistTrackPosition.getPositions() != null && playlistTrackPosition.getPositions().length != 0) {
+      JsonArray positionArray = new JsonArray();
+      for (int pos : playlistTrackPosition.getPositions()) {
+        positionArray.add(pos);
+      }
+      jsonObject.add("positions", positionArray);
+    }
+    return jsonObject;
+  }
+
   @Test
   public void shouldCreateAGetAlbumUrl() {
     final Api api = Api.builder().accessToken(accessToken).build();
@@ -131,8 +144,8 @@ public class ApiTest {
     Request request = api
             .getTracks("6hDH3YWFdcUNQjubYztIsG", "2IA4WEsWAYpV9eKkwR2UYv")
             .build();
-    assertEquals("https://api.spotify.com:443/v1/tracks", request.getUri().toString());
-    assertHasFormParameter(request, "ids", "6hDH3YWFdcUNQjubYztIsG,2IA4WEsWAYpV9eKkwR2UYv");
+    assertEquals("https://api.spotify.com:443/v1/tracks?ids=6hDH3YWFdcUNQjubYztIsG%2C2IA4WEsWAYpV9eKkwR2UYv", request.getUri().toString());
+    assertHasQueryParameter(request, "ids", "6hDH3YWFdcUNQjubYztIsG,2IA4WEsWAYpV9eKkwR2UYv");
   }
 
   @Test
@@ -141,8 +154,8 @@ public class ApiTest {
     Request request = api
             .getTracks("6hDH3YWFdcUNQjubYztIsG", "2IA4WEsWAYpV9eKkwR2UYv")
             .build();
-    assertEquals("https://api.spotify.com:443/v1/tracks", request.getUri().toString());
-    assertHasFormParameter(request, "ids", "6hDH3YWFdcUNQjubYztIsG,2IA4WEsWAYpV9eKkwR2UYv");
+    assertEquals("https://api.spotify.com:443/v1/tracks?ids=6hDH3YWFdcUNQjubYztIsG%2C2IA4WEsWAYpV9eKkwR2UYv", request.getUri().toString());
+    assertHasQueryParameter(request, "ids", "6hDH3YWFdcUNQjubYztIsG,2IA4WEsWAYpV9eKkwR2UYv");
   }
 
   @Test
@@ -525,19 +538,6 @@ public class ApiTest {
     assertHasHeader(request, "Authorization", "Bearer " + accessToken);
     assertHasBodyParameter(request, "tracks", expectedJsonBodyTracks);
     assertHasBodyParameter(request, "snapshot_id", snapshotId);
-  }
-
-  private static JsonObject getJsonFromPlaylistTrackPosition(PlaylistTrackPosition playlistTrackPosition) {
-    JsonObject jsonObject = new JsonObject();
-    jsonObject.addProperty("uri", playlistTrackPosition.getUri());
-    if (playlistTrackPosition.getPositions() != null && playlistTrackPosition.getPositions().length != 0) {
-      JsonArray positionArray = new JsonArray();
-      for (int pos : playlistTrackPosition.getPositions()) {
-        positionArray.add(pos);
-      }
-      jsonObject.add("positions", positionArray);
-    }
-    return jsonObject;
   }
 
   @Test

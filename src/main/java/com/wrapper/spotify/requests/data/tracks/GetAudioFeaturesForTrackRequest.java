@@ -47,22 +47,16 @@ public class GetAudioFeaturesForTrackRequest extends AbstractDataRequest {
       super(accessToken);
     }
 
-    /**
-     * The audio request with the given song id.
-     *
-     * @param id The id for the song.
-     * @return AlbumRequest
-     */
     public Builder id(final String id) {
       assert (id != null);
-      return setPath(String.format("/v1/audio-features/%s", id));
+      assert (!id.equals(""));
+      return setPathParameter("id", id);
     }
 
     @Override
     public GetAudioFeaturesForTrackRequest build() {
+      setPath("/v1/audio-features/{id}");
       return new GetAudioFeaturesForTrackRequest(this);
     }
-
   }
-
 }

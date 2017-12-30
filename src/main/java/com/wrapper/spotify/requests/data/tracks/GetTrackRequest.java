@@ -1,6 +1,7 @@
 package com.wrapper.spotify.requests.data.tracks;
 
 import com.google.common.util.concurrent.SettableFuture;
+import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.exceptions.*;
 import com.wrapper.spotify.model_objects.Track;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
@@ -47,22 +48,21 @@ public class GetTrackRequest extends AbstractDataRequest {
       super(accessToken);
     }
 
-    /**
-     * The track with the given id.
-     *
-     * @param id The id for the track.
-     * @return Track Request
-     */
     public Builder id(final String id) {
       assert (id != null);
-      return setPath(String.format("/v1/tracks/%s", id));
+      assert (!id.equals(""));
+      return setPathParameter("id", id);
+    }
+
+    public Builder market(final CountryCode market) {
+      assert (market != null);
+      return setQueryParameter("market", market);
     }
 
     @Override
     public GetTrackRequest build() {
+      setPath("/v1/tracks/{id}");
       return new GetTrackRequest(this);
     }
-
   }
-
 }
