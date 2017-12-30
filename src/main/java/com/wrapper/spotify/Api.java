@@ -8,7 +8,6 @@ import com.wrapper.spotify.model_objects.PlaylistTrackPosition;
 import com.wrapper.spotify.requests.authentication.AuthorizationCodeGrantRequest;
 import com.wrapper.spotify.requests.authentication.AuthorizationUriRequest;
 import com.wrapper.spotify.requests.authentication.ClientCredentialsGrantRequest;
-import com.wrapper.spotify.requests.authentication.RefreshAccessTokenRequest;
 import com.wrapper.spotify.requests.data.albums.GetAlbumRequest;
 import com.wrapper.spotify.requests.data.albums.GetAlbumsTracksRequest;
 import com.wrapper.spotify.requests.data.albums.GetSeveralAlbumsRequest;

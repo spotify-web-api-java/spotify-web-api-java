@@ -1,21 +1,21 @@
-package com.wrapper.spotify.requests.data.follow;
+package com.wrapper.spotify.requests.data.browse;
 
 import com.google.common.util.concurrent.SettableFuture;
-import com.wrapper.spotify.enums.ModelObjectType;
+import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.exceptions.*;
-import com.wrapper.spotify.model_objects.Artist;
-import com.wrapper.spotify.model_objects.PagingCursorbased;
+import com.wrapper.spotify.model_objects.AlbumSimplified;
+import com.wrapper.spotify.model_objects.Paging;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
 
 import java.io.IOException;
 
-public class GetUsersFollowedArtistsRequest extends AbstractDataRequest {
+public class GetListOfNewReleasesRequest extends AbstractDataRequest {
 
-  private GetUsersFollowedArtistsRequest(final Builder builder) {
+  private GetListOfNewReleasesRequest(final Builder builder) {
     super(builder);
   }
 
-  public PagingCursorbased<Artist> get() throws
+  public Paging<AlbumSimplified> get() throws
           IOException,
           NoContentException,
           BadRequestException,
@@ -26,10 +26,10 @@ public class GetUsersFollowedArtistsRequest extends AbstractDataRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return new Artist.JsonUtil().createModelObjectPagingCursorbased(getJson(), "artists");
+    return new AlbumSimplified.JsonUtil().createModelObjectPaging(getJson(), "albums");
   }
 
-  public SettableFuture<PagingCursorbased<Artist>> getAsync() throws
+  public SettableFuture<Paging<AlbumSimplified>> getAsync() throws
           IOException,
           NoContentException,
           BadRequestException,
@@ -40,7 +40,7 @@ public class GetUsersFollowedArtistsRequest extends AbstractDataRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return executeAsync(new Artist.JsonUtil().createModelObjectPagingCursorbased(getJson(), "artists"));
+    return executeAsync(new AlbumSimplified.JsonUtil().createModelObjectPaging(getJson(), "albums"));
   }
 
   public static final class Builder extends AbstractDataRequest.Builder<Builder> {
@@ -49,27 +49,25 @@ public class GetUsersFollowedArtistsRequest extends AbstractDataRequest {
       super(accessToken);
     }
 
-    public Builder type(final ModelObjectType type) {
-      assert (type != null);
-      assert (type.getType().equals("artist"));
-      return setQueryParameter("type", type);
+    public Builder country(final CountryCode country) {
+      assert (country != null);
+      return setQueryParameter("country", country);
     }
 
     public Builder limit(final Integer limit) {
-      assert (limit != null);
       assert (1 <= limit && limit <= 50);
       return setQueryParameter("limit", limit);
     }
 
-    public Builder after(final String after) {
-      assert (after != null);
-      return setQueryParameter("after", after);
+    public Builder offset(final Integer offset) {
+      assert (offset >= 0);
+      return setQueryParameter("offset", offset);
     }
 
     @Override
-    public GetUsersFollowedArtistsRequest build() {
-      setPath("/v1/me/following");
-      return new GetUsersFollowedArtistsRequest(this);
+    public GetListOfNewReleasesRequest build() {
+      setPath("/v1/browse/new-releases");
+      return new GetListOfNewReleasesRequest(this);
     }
   }
 }

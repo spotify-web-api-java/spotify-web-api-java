@@ -2,8 +2,8 @@ package com.wrapper.spotify.requests.data.follow;
 
 import com.google.common.util.concurrent.SettableFuture;
 import com.google.gson.JsonArray;
+import com.wrapper.spotify.enums.ModelObjectType;
 import com.wrapper.spotify.exceptions.*;
-import com.wrapper.spotify.model_objects.ModelObjectType;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
 
 import java.io.IOException;

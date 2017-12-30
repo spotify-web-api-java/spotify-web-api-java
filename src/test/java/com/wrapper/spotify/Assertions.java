@@ -1,6 +1,6 @@
 package com.wrapper.spotify;
 
-import com.wrapper.spotify.requests.Request;
+import com.wrapper.spotify.requests.IRequest;
 import org.apache.http.Header;
 import org.apache.http.NameValuePair;
 
@@ -10,7 +10,7 @@ import static org.junit.Assert.fail;
 
 public class Assertions {
 
-  public static void assertHasQueryParameter(Request request, String name) {
+  public static void assertHasQueryParameter(IRequest request, String name) {
     String[] queryParameters = request.getUri().getQuery().split("&");
 
     for (String queryParameter : queryParameters) {
@@ -24,7 +24,7 @@ public class Assertions {
     fail(String.format("Request %s does not contain form parameter %s", request, name));
   }
 
-  public static <T> void assertHasQueryParameter(Request request, String name, T value) {
+  public static <T> void assertHasQueryParameter(IRequest request, String name, T value) {
     String[] queryParameters = request.getUri().getQuery().split("&");
 
     for (String queryParameter : queryParameters) {
@@ -38,7 +38,7 @@ public class Assertions {
     fail(String.format("Request %s does not contain form parameter %s with value %s", request, name, String.valueOf(value)));
   }
 
-  public static void assertHasHeader(Request request, String name) {
+  public static void assertHasHeader(IRequest request, String name) {
     List<Header> headers = request.getHeaders();
 
     for (Header header : headers) {
@@ -50,7 +50,7 @@ public class Assertions {
     fail(String.format("Request %s does not contain form parameter %s", request, name));
   }
 
-  public static <T> void assertHasHeader(Request request, String name, T value) {
+  public static <T> void assertHasHeader(IRequest request, String name, T value) {
     List<Header> headers = request.getHeaders();
 
     for (Header header : headers) {
@@ -62,7 +62,7 @@ public class Assertions {
     fail(String.format("Request %s does not contain form parameter %s with value %s", request, name, String.valueOf(value)));
   }
 
-  public static void assertHasFormParameter(Request request, String name) {
+  public static void assertHasFormParameter(IRequest request, String name) {
     List<NameValuePair> formParameters = request.getFormParameters();
 
     for (NameValuePair formParameter : formParameters) {
@@ -74,7 +74,7 @@ public class Assertions {
     fail(String.format("Request %s does not contain form parameter %s", request, name));
   }
 
-  public static <T> void assertHasFormParameter(Request request, String name, T value) {
+  public static <T> void assertHasFormParameter(IRequest request, String name, T value) {
     List<NameValuePair> formParameters = request.getFormParameters();
 
     for (NameValuePair formParameter : formParameters) {
@@ -86,7 +86,7 @@ public class Assertions {
     fail(String.format("Request %s does not contain form parameter %s with value %s", request, name, String.valueOf(value)));
   }
 
-  public static void assertHasBodyParameter(Request request, String name) {
+  public static void assertHasBodyParameter(IRequest request, String name) {
     List<NameValuePair> bodyParameters = request.getBodyParameters();
 
     for (NameValuePair bodyParameter : bodyParameters) {
@@ -98,7 +98,7 @@ public class Assertions {
     fail(String.format("Request %s does not contain form parameter %s", request, name));
   }
 
-  public static <T> void assertHasBodyParameter(Request request, String name, T value) {
+  public static <T> void assertHasBodyParameter(IRequest request, String name, T value) {
     List<NameValuePair> bodyParameters = request.getBodyParameters();
 
     for (NameValuePair bodyParameter : bodyParameters) {
