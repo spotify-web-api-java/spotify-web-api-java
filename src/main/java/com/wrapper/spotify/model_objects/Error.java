@@ -3,9 +3,8 @@ package com.wrapper.spotify.model_objects;
 import com.google.gson.JsonObject;
 
 /**
- * Retrieve information about
- *     <a href="https://beta.developer.spotify.com/documentation/web-api/reference/object-model/#error-object">
- *     Error objects</a> by building instances from this class.
+ * Retrieve information about <a href="https://developer.spotify.com/web-api/object-model/#error-object">
+ *     Error objects</a>by building instances from this class.
  */
 public class Error extends AbstractModelObject {
   private final int status;
@@ -19,12 +18,11 @@ public class Error extends AbstractModelObject {
   }
 
   /**
-   * Get the <a href="https://beta.developer.spotify.com/documentation/web-api/#response-status-codes">HTTP status code
-   * </a> of the {@link Error} object.
+   * Get the <a href="https://developer.spotify.com/web-api/user-guide/#response-status-codes">HTTP status code</a>
+   *     of the {@link Error} object.
    *
    *
-   * @return The <a href="https://beta.developer.spotify.com/documentation/web-api/#response-status-codes">
-   *     HTTP status code</a>.
+   * @return The <a href="https://developer.spotify.com/web-api/user-guide/#response-status-codes">HTTP status code</a>.
    */
   public int getStatus() {
     return status;
@@ -52,10 +50,10 @@ public class Error extends AbstractModelObject {
     private String message;
 
     /**
-     * The error <a href="https://beta.developer.spotify.com/documentation/web-api/#response-status-codes">HTTP status
+     * The error <a href="https://developer.spotify.com/web-api/user-guide/#response-status-codes">HTTP status
      *     code</a> setter.
      *
-     * @param status The <a href="https://beta.developer.spotify.com/documentation/web-api/#response-status-codes">
+     * @param status The <a href="https://developer.spotify.com/web-api/user-guide/#response-status-codes">
      *     HTTP status code</a>.
      * @return A {@link Error.Builder}.
      */

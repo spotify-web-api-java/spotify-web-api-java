@@ -4,8 +4,8 @@ import com.google.gson.JsonObject;
 
 /**
  * Retrieve information about
- *     <a href="https://beta.developer.spotify.com/documentation/web-api/reference/object-model/#cursor-object">
- *     Cursor objects</a> by building instances from this class.
+ *     <a href="https://developer.spotify.com/web-api/object-model/#cursor-object">Cursor objects</a>
+ *     by building instances from this class.
  */
 public class Cursor extends AbstractModelObject {
   private final String after;
@@ -18,7 +18,7 @@ public class Cursor extends AbstractModelObject {
 
   /**
    * Get the key of this {@link Cursor} to find the next set of items in a
-   *     <a href="https://beta.developer.spotify.com/documentation/web-api/reference/object-model/#cursor-based-paging-object">
+   *     <a href="https://developer.spotify.com/web-api/object-model/#cursor-based-paging-object">
    *     cursor-based paging object</a>.
    *
    * @see PagingCursorbased

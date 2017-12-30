@@ -24,7 +24,7 @@ public class Context extends AbstractModelObject {
   /**
    * Get the model object type of the context.
    *
-   * @return The object type, e.g. “artist”, “playlist”, “album”.
+   * @return The object type, e.g. &quot;artist&quot;, &quot;playlist&quot;, &quot;album&quot;.
    */
   public ModelObjectType getType() {
     return type;
@@ -74,7 +74,7 @@ public class Context extends AbstractModelObject {
     /**
      * The model object type setter.
      *
-     * @param type The object type, e.g. “artist”, “playlist”, “album”.
+     * @param type The object type, e.g. &quot;artist&quot;, &quot;playlist&quot;, &quot;album&quot;.
      * @return A Context builder.
      */
     public Builder setType(ModelObjectType type) {
