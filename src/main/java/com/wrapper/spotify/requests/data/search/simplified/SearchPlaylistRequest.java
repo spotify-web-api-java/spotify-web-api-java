@@ -1,6 +1,7 @@
 package com.wrapper.spotify.requests.data.search.simplified;
 
 import com.google.common.util.concurrent.SettableFuture;
+import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.exceptions.*;
 import com.wrapper.spotify.model_objects.Paging;
 import com.wrapper.spotify.model_objects.PlaylistSimplified;
@@ -48,30 +49,33 @@ public class SearchPlaylistRequest extends AbstractDataRequest {
       super(accessToken);
     }
 
-    public Builder query(String query) {
-      assert (query != null);
-      setPath("/v1/search");
-      setFormParameter("type", "playlist");
-      return setFormParameter("q", query);
+    public Builder q(final String q) {
+      assert (q != null);
+      assert (!q.equals(""));
+      return setQueryParameter("q", q);
     }
 
-    public Builder market(String market) {
+    public Builder market(final CountryCode market) {
       assert (market != null);
-      return setFormParameter("market", market);
+      return setQueryParameter("market", market);
     }
 
-    public Builder limit(Integer limit) {
+    public Builder limit(final Integer limit) {
+      assert (limit != null);
       assert (1 <= limit && limit <= 50);
-      return setFormParameter("limit", limit);
+      return setQueryParameter("limit", limit);
     }
 
-    public Builder offset(Integer offset) {
-      assert (offset >= 0);
-      return setFormParameter("offset", offset);
+    public Builder offset(final Integer offset) {
+      assert (offset != null);
+      assert (0 <= offset && offset <= 100000);
+      return setQueryParameter("offset", offset);
     }
 
     @Override
     public SearchPlaylistRequest build() {
+      setPath("/v1/search");
+      setQueryParameter("type", "playlist");
       return new SearchPlaylistRequest(this);
     }
   }

@@ -262,9 +262,9 @@ public class ApiTest {
     Request request = api
             .searchTracks("moulat swalf")
             .build();
-    assertEquals("https://api.spotify.com:443/v1/search", request.getUri().toString());
-    assertHasFormParameter(request, "q", "moulat swalf");
-    assertHasFormParameter(request, "type", "track");
+    assertEquals("https://api.spotify.com:443/v1/search?q=moulat+swalf&type=track", request.getUri().toString());
+    assertHasQueryParameter(request, "q", "moulat+swalf");
+    assertHasQueryParameter(request, "type", "track");
   }
 
   @Test
@@ -272,12 +272,12 @@ public class ApiTest {
     final Api api = Api.builder().accessToken(accessToken).build();
     Request request = api
             .searchAlbums("meeep")
-            .market("from_token")
+            .market(CountryCode.GB)
             .build();
-    assertEquals("https://api.spotify.com:443/v1/search", request.getUri().toString());
-    assertHasFormParameter(request, "q", "meeep");
-    assertHasFormParameter(request, "type", "album");
-    assertHasFormParameter(request, "market", "from_token");
+    assertEquals("https://api.spotify.com:443/v1/search?q=meeep&market=GB&type=album", request.getUri().toString());
+    assertHasQueryParameter(request, "q", "meeep");
+    assertHasQueryParameter(request, "type", "album");
+    assertHasQueryParameter(request, "market", "GB");
   }
 
   @Test
@@ -285,12 +285,12 @@ public class ApiTest {
     final Api api = Api.builder().accessToken(accessToken).build();
     Request request = api
             .searchArtists("meeep")
-            .market("GB")
+            .market(CountryCode.GB)
             .build();
-    assertEquals("https://api.spotify.com:443/v1/search", request.getUri().toString());
-    assertHasFormParameter(request, "q", "meeep");
-    assertHasFormParameter(request, "type", "artist");
-    assertHasFormParameter(request, "market", "GB");
+    assertEquals("https://api.spotify.com:443/v1/search?q=meeep&market=GB&type=artist", request.getUri().toString());
+    assertHasQueryParameter(request, "q", "meeep");
+    assertHasQueryParameter(request, "type", "artist");
+    assertHasQueryParameter(request, "market", "GB");
   }
 
   @Test
@@ -299,13 +299,13 @@ public class ApiTest {
     Request request = api
             .searchTracks("moulat swalf")
             .limit(2)
-            .market("SE")
+            .market(CountryCode.SE)
             .build();
-    assertEquals("https://api.spotify.com:443/v1/search", request.getUri().toString());
-    assertHasFormParameter(request, "q", "moulat swalf");
-    assertHasFormParameter(request, "limit", "2");
-    assertHasFormParameter(request, "type", "track");
-    assertHasFormParameter(request, "market", "SE");
+    assertEquals("https://api.spotify.com:443/v1/search?q=moulat+swalf&limit=2&market=SE&type=track", request.getUri().toString());
+    assertHasQueryParameter(request, "q", "moulat+swalf");
+    assertHasQueryParameter(request, "limit", "2");
+    assertHasQueryParameter(request, "type", "track");
+    assertHasQueryParameter(request, "market", "SE");
   }
 
   @Test
@@ -315,10 +315,10 @@ public class ApiTest {
             .searchTracks("moulat swalf")
             .offset(2)
             .build();
-    assertEquals("https://api.spotify.com:443/v1/search", request.getUri().toString());
-    assertHasFormParameter(request, "q", "moulat swalf");
-    assertHasFormParameter(request, "offset", "2");
-    assertHasFormParameter(request, "type", "track");
+    assertEquals("https://api.spotify.com:443/v1/search?q=moulat+swalf&offset=2&type=track", request.getUri().toString());
+    assertHasQueryParameter(request, "q", "moulat+swalf");
+    assertHasQueryParameter(request, "offset", "2");
+    assertHasQueryParameter(request, "type", "track");
   }
 
   @Test

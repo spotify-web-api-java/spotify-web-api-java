@@ -187,28 +187,28 @@ public class Api {
   public SearchAlbumRequest.Builder searchAlbums(String query) {
     SearchAlbumRequest.Builder builder = new SearchAlbumRequest.Builder(accessToken);
     builder.setDefaults(httpManager, scheme, host, port);
-    builder.query(query);
+    builder.q(query);
     return builder;
   }
 
   public SearchTrackRequest.Builder searchTracks(String query) {
     SearchTrackRequest.Builder builder = new SearchTrackRequest.Builder(accessToken);
     builder.setDefaults(httpManager, scheme, host, port);
-    builder.query(query);
+    builder.q(query);
     return builder;
   }
 
   public SearchArtistRequest.Builder searchArtists(String query) {
     SearchArtistRequest.Builder builder = new SearchArtistRequest.Builder(accessToken);
     builder.setDefaults(httpManager, scheme, host, port);
-    builder.query(query);
+    builder.q(query);
     return builder;
   }
 
   public SearchPlaylistRequest.Builder searchPlaylists(String query) {
     SearchPlaylistRequest.Builder builder = new SearchPlaylistRequest.Builder(accessToken);
     builder.setDefaults(httpManager, scheme, host, port);
-    builder.query(query);
+    builder.q(query);
     return builder;
   }
 
