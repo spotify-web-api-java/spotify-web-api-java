@@ -7,13 +7,13 @@ import com.wrapper.spotify.requests.data.AbstractDataRequest;
 
 import java.io.IOException;
 
-public class SaveTracksForUserRequest extends AbstractDataRequest {
+public class RemoveAlbumsForCurrentUserRequest extends AbstractDataRequest {
 
-  private SaveTracksForUserRequest(final Builder builder) {
+  private RemoveAlbumsForCurrentUserRequest(final Builder builder) {
     super(builder);
   }
 
-  public void put() throws
+  public void delete() throws
           IOException,
           NoContentException,
           BadRequestException,
@@ -24,10 +24,10 @@ public class SaveTracksForUserRequest extends AbstractDataRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    putJson();
+    deleteJson();
   }
 
-  public SettableFuture putAsync() throws
+  public SettableFuture deleteAsync() throws
           IOException,
           NoContentException,
           BadRequestException,
@@ -38,10 +38,10 @@ public class SaveTracksForUserRequest extends AbstractDataRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return executeAsync(putJson());
+    return executeAsync(deleteJson());
   }
 
-  public static final class Builder extends AbstractDataRequest.Builder<Builder> {
+  public static class Builder extends AbstractDataRequest.Builder<Builder> {
 
     public Builder(final String accessToken) {
       super(accessToken);
@@ -60,9 +60,9 @@ public class SaveTracksForUserRequest extends AbstractDataRequest {
     }
 
     @Override
-    public SaveTracksForUserRequest build() {
-      setPath("/v1/me/tracks");
-      return new SaveTracksForUserRequest(this);
+    public RemoveAlbumsForCurrentUserRequest build() {
+      setPath("/v1/me/albums");
+      return new RemoveAlbumsForCurrentUserRequest(this);
     }
   }
 }

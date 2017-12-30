@@ -1,7 +1,7 @@
 package com.wrapper.spotify.requests.data.library;
 
-import com.google.common.base.Joiner;
 import com.google.common.util.concurrent.SettableFuture;
+import com.google.gson.JsonArray;
 import com.wrapper.spotify.exceptions.*;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
 
@@ -13,7 +13,7 @@ public class RemoveUsersSavedTracksRequest extends AbstractDataRequest {
     super(builder);
   }
 
-  public String delete() throws
+  public void delete() throws
           IOException,
           NoContentException,
           BadRequestException,
@@ -24,10 +24,10 @@ public class RemoveUsersSavedTracksRequest extends AbstractDataRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return deleteJson();
+    deleteJson();
   }
 
-  public SettableFuture<String> deleteAsync() throws
+  public SettableFuture deleteAsync() throws
           IOException,
           NoContentException,
           BadRequestException,
@@ -47,15 +47,22 @@ public class RemoveUsersSavedTracksRequest extends AbstractDataRequest {
       super(accessToken);
     }
 
-    public Builder ids(final String... trackIds) {
-      String idsParameter = Joiner.on(",").join(trackIds);
-      return setQueryParameter("ids", idsParameter);
+    public Builder ids(final String ids) {
+      assert (ids != null);
+      assert (ids.split(",").length <= 50);
+      return setQueryParameter("ids", ids);
+    }
+
+    public Builder ids(final JsonArray ids) {
+      assert (ids != null);
+      assert (!ids.isJsonNull());
+      return setBodyParameter("ids", ids);
     }
 
     @Override
     public RemoveUsersSavedTracksRequest build() {
+      setPath("/v1/me/tracks");
       return new RemoveUsersSavedTracksRequest(this);
     }
   }
-
 }

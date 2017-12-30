@@ -1,6 +1,5 @@
 package com.wrapper.spotify.requests.data.library;
 
-import com.google.common.base.Joiner;
 import com.google.common.util.concurrent.SettableFuture;
 import com.google.gson.Gson;
 import com.google.gson.JsonParser;
@@ -49,17 +48,16 @@ public class CheckUsersSavedTracksRequest extends AbstractDataRequest {
       super(accessToken);
     }
 
-    public Builder tracks(final String... trackIds) {
-      String idsParameter = Joiner.on(",").join(trackIds);
-      setFormParameter("ids", idsParameter);
-      return this;
+    public Builder ids(final String ids) {
+      assert (ids != null);
+      assert (ids.split(",").length <= 50);
+      return setFormParameter("ids", ids);
     }
 
     @Override
     public CheckUsersSavedTracksRequest build() {
-      setHeader("Content-Type", "application/json");
+      setPath("/v1/me/tracks/contains");
       return new CheckUsersSavedTracksRequest(this);
     }
-
   }
 }

@@ -4,18 +4,18 @@ import com.google.common.util.concurrent.SettableFuture;
 import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.exceptions.*;
 import com.wrapper.spotify.model_objects.Paging;
-import com.wrapper.spotify.model_objects.SavedTrack;
+import com.wrapper.spotify.model_objects.SavedAlbum;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
 
 import java.io.IOException;
 
-public class GetUsersSavedTracksRequest extends AbstractDataRequest {
+public class GetCurrentUsersSavedAlbumsRequest extends AbstractDataRequest {
 
-  private GetUsersSavedTracksRequest(final Builder builder) {
+  private GetCurrentUsersSavedAlbumsRequest(final Builder builder) {
     super(builder);
   }
 
-  public Paging<SavedTrack> get() throws
+  public Paging<SavedAlbum> get() throws
           IOException,
           NoContentException,
           BadRequestException,
@@ -26,10 +26,10 @@ public class GetUsersSavedTracksRequest extends AbstractDataRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return new SavedTrack.JsonUtil().createModelObjectPaging(getJson());
+    return new SavedAlbum.JsonUtil().createModelObjectPaging(getJson());
   }
 
-  public SettableFuture<Paging<SavedTrack>> getAsync() throws
+  public SettableFuture<Paging<SavedAlbum>> getAsync() throws
           IOException,
           NoContentException,
           BadRequestException,
@@ -40,7 +40,7 @@ public class GetUsersSavedTracksRequest extends AbstractDataRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return executeAsync(new SavedTrack.JsonUtil().createModelObjectPaging(getJson()));
+    return executeAsync(new SavedAlbum.JsonUtil().createModelObjectPaging(getJson()));
   }
 
   public static final class Builder extends AbstractDataRequest.Builder<Builder> {
@@ -65,9 +65,9 @@ public class GetUsersSavedTracksRequest extends AbstractDataRequest {
     }
 
     @Override
-    public GetUsersSavedTracksRequest build() {
-      setPath("/v1/me/tracks");
-      return new GetUsersSavedTracksRequest(this);
+    public GetCurrentUsersSavedAlbumsRequest build() {
+      setPath("/v1/me/albums");
+      return new GetCurrentUsersSavedAlbumsRequest(this);
     }
   }
 }

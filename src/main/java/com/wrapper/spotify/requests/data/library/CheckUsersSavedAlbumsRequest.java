@@ -1,21 +1,20 @@
 package com.wrapper.spotify.requests.data.library;
 
 import com.google.common.util.concurrent.SettableFuture;
-import com.neovisionaries.i18n.CountryCode;
+import com.google.gson.Gson;
+import com.google.gson.JsonParser;
 import com.wrapper.spotify.exceptions.*;
-import com.wrapper.spotify.model_objects.Paging;
-import com.wrapper.spotify.model_objects.SavedTrack;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
 
 import java.io.IOException;
 
-public class GetUsersSavedTracksRequest extends AbstractDataRequest {
+public class CheckUsersSavedAlbumsRequest extends AbstractDataRequest {
 
-  private GetUsersSavedTracksRequest(final Builder builder) {
+  private CheckUsersSavedAlbumsRequest(final Builder builder) {
     super(builder);
   }
 
-  public Paging<SavedTrack> get() throws
+  public Boolean[] get() throws
           IOException,
           NoContentException,
           BadRequestException,
@@ -26,10 +25,10 @@ public class GetUsersSavedTracksRequest extends AbstractDataRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return new SavedTrack.JsonUtil().createModelObjectPaging(getJson());
+    return new Gson().fromJson(new JsonParser().parse(getJson()).getAsJsonArray(), Boolean[].class);
   }
 
-  public SettableFuture<Paging<SavedTrack>> getAsync() throws
+  public SettableFuture<Boolean[]> getAsync() throws
           IOException,
           NoContentException,
           BadRequestException,
@@ -40,7 +39,7 @@ public class GetUsersSavedTracksRequest extends AbstractDataRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return executeAsync(new SavedTrack.JsonUtil().createModelObjectPaging(getJson()));
+    return executeAsync(new Gson().fromJson(new JsonParser().parse(getJson()).getAsJsonArray(), Boolean[].class));
   }
 
   public static final class Builder extends AbstractDataRequest.Builder<Builder> {
@@ -49,25 +48,16 @@ public class GetUsersSavedTracksRequest extends AbstractDataRequest {
       super(accessToken);
     }
 
-    public Builder limit(final Integer limit) {
-      assert (1 <= limit && limit <= 50);
-      return setQueryParameter("limit", limit);
-    }
-
-    public Builder offset(final Integer offset) {
-      assert (offset >= 0);
-      return setQueryParameter("offset", offset);
-    }
-
-    public Builder market(final CountryCode market) {
-      assert (market != null);
-      return setQueryParameter("market", market);
+    public Builder ids(final String ids) {
+      assert (ids != null);
+      assert (ids.split(",").length <= 50);
+      return setFormParameter("ids", ids);
     }
 
     @Override
-    public GetUsersSavedTracksRequest build() {
-      setPath("/v1/me/tracks");
-      return new GetUsersSavedTracksRequest(this);
+    public CheckUsersSavedAlbumsRequest build() {
+      setPath("/v1/me/albums/contains");
+      return new CheckUsersSavedAlbumsRequest(this);
     }
   }
 }

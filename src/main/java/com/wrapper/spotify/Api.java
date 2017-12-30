@@ -554,7 +554,7 @@ public class Api {
   public CheckUsersSavedTracksRequest.Builder containsMySavedTracks(String... trackIds) {
     final CheckUsersSavedTracksRequest.Builder builder = new CheckUsersSavedTracksRequest.Builder(accessToken);
     builder.setDefaults(httpManager, scheme, host, port);
-    builder.tracks(trackIds);
+    builder.ids(Joiner.on(",").join(trackIds));
     builder.setPath("/v1/me/tracks/contains");
     return builder;
   }
@@ -568,7 +568,7 @@ public class Api {
   public RemoveUsersSavedTracksRequest.Builder removeFromMySavedTracks(String... trackIds) {
     final RemoveUsersSavedTracksRequest.Builder builder = new RemoveUsersSavedTracksRequest.Builder(accessToken);
     builder.setDefaults(httpManager, scheme, host, port);
-    builder.ids(trackIds);
+    builder.ids(Joiner.on(",").join(trackIds));
     builder.setPath("/v1/me/tracks");
     return builder;
   }
@@ -582,7 +582,7 @@ public class Api {
   public SaveTracksForUserRequest.Builder addToMySavedTracks(String... trackIds) {
     final SaveTracksForUserRequest.Builder builder = new SaveTracksForUserRequest.Builder(accessToken);
     builder.setDefaults(httpManager, scheme, host, port);
-    builder.ids(trackIds);
+    builder.ids(Joiner.on(",").join(trackIds));
     builder.setPath("/v1/me/tracks");
     return builder;
   }
