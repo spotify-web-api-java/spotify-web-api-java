@@ -6,8 +6,10 @@ import com.google.gson.JsonObject;
 import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.enums.ModelObjectType;
 import com.wrapper.spotify.model_objects.miscellaneous.Restrictions;
+import com.wrapper.spotify.requests.data.personalization.interfaces.IArtistTrackModelObject;
+import com.wrapper.spotify.requests.data.search.interfaces.ISearchModelObject;
 
-public class Track extends AbstractModelObject {
+public class Track extends AbstractModelObject implements IArtistTrackModelObject, ISearchModelObject {
   private final AlbumSimplified album;
   private final ArtistSimplified[] artists;
   private final CountryCode[] availableMarkets;
@@ -159,12 +161,12 @@ public class Track extends AbstractModelObject {
       return this;
     }
 
-    public Builder setArtists(ArtistSimplified[] artists) {
+    public Builder setArtists(ArtistSimplified... artists) {
       this.artists = artists;
       return this;
     }
 
-    public Builder setAvailableMarkets(CountryCode[] availableMarkets) {
+    public Builder setAvailableMarkets(CountryCode... availableMarkets) {
       this.availableMarkets = availableMarkets;
       return this;
     }

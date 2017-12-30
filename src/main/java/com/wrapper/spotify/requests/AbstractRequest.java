@@ -1,53 +1,66 @@
 package com.wrapper.spotify.requests;
 
 import com.google.common.util.concurrent.SettableFuture;
-import com.google.gson.JsonElement;
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.HttpManager;
-import com.wrapper.spotify.UrlUtil;
-import com.wrapper.spotify.UtilProtos.Url;
 import com.wrapper.spotify.exceptions.*;
+import org.apache.http.Header;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.utils.URIBuilder;
+import org.apache.http.message.BasicHeader;
+import org.apache.http.message.BasicNameValuePair;
 
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
 public abstract class AbstractRequest implements IRequest {
 
-  private Url url;
   private HttpManager httpManager;
+  private URI uri;
+  private List<Header> headers;
+  private List<NameValuePair> formParameters;
+  private List<NameValuePair> bodyParameters;
+  private String body;
 
   protected AbstractRequest(Builder<?> builder) {
+    assert (builder.httpManager != null);
     assert (builder.scheme != null);
     assert (builder.host != null);
     assert (builder.port > 0);
     assert (builder.path != null);
-    assert (builder.parameters != null);
+    assert (builder.pathParameters != null);
+    assert (builder.queryParameters != null);
+    assert (builder.headers != null);
+    assert (builder.formParameters != null);
     assert (builder.bodyParameters != null);
-    assert (builder.headerParameters != null);
-    assert (builder.parts != null);
+    assert (builder.body != null);
 
-    if (builder.httpManager == null) {
-      httpManager = Api.DEFAULT_HTTP_MANAGER;
-    } else {
-      httpManager = builder.httpManager;
-    }
+    this.httpManager = builder.httpManager;
 
-    Url.Builder urlBuilder = Url.newBuilder()
+    URIBuilder uriBuilder = new URIBuilder();
+    uriBuilder
             .setScheme(builder.scheme)
             .setHost(builder.host)
             .setPort(builder.port)
-            .setPath(builder.path)
-            .addAllParameters(builder.parameters)
-            .addAllBodyParameters(builder.bodyParameters)
-            .addAllHeaderParameters(builder.headerParameters)
-            .addAllParts(builder.parts);
-
-    if (builder.jsonBody != null) {
-      urlBuilder.setJsonBody(builder.jsonBody.toString());
+            .setPath(builder.path);
+    if (builder.queryParameters.size() > 0) {
+      uriBuilder
+              .setParameters(builder.queryParameters);
     }
 
-    url = urlBuilder.build();
+    try {
+      this.uri = uriBuilder.build();
+    } catch (URISyntaxException e) {
+      e.printStackTrace();
+    }
+
+    this.headers = builder.headers;
+    this.formParameters = builder.formParameters;
+    this.bodyParameters = builder.bodyParameters;
+    this.body = builder.body;
   }
 
   public String getJson() throws
@@ -61,7 +74,10 @@ public abstract class AbstractRequest implements IRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return httpManager.get(url);
+    Header[] headerArray = new Header[]{};
+    headers.toArray(headerArray);
+
+    return httpManager.get(uri, headerArray);
   }
 
   public String postJson() throws
@@ -75,7 +91,10 @@ public abstract class AbstractRequest implements IRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return httpManager.post(url);
+    Header[] headerArray = new Header[]{};
+    headers.toArray(headerArray);
+
+    return httpManager.post(uri, headerArray, formParameters);
   }
 
   public String putJson() throws
@@ -89,7 +108,10 @@ public abstract class AbstractRequest implements IRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return httpManager.put(url);
+    Header[] headerArray = new Header[]{};
+    headers.toArray(headerArray);
+
+    return httpManager.put(uri, headerArray, formParameters);
   }
 
   public String deleteJson() throws
@@ -103,10 +125,13 @@ public abstract class AbstractRequest implements IRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return httpManager.delete(url);
+    Header[] headerArray = new Header[]{};
+    headers.toArray(headerArray);
+
+    return httpManager.delete(uri, headerArray);
   }
 
-  public <T> SettableFuture<T> getAsync(T value) {
+  public <T> SettableFuture<T> executeAsync(T value) {
     final SettableFuture<T> settableFuture = SettableFuture.create();
 
     try {
@@ -118,99 +143,133 @@ public abstract class AbstractRequest implements IRequest {
     return settableFuture;
   }
 
-  public String toString() {
-    return this.toString(true);
+  public HttpManager getHttpManager() {
+    return httpManager;
   }
 
-  public String toString(final boolean withQueryParameters) {
-    return UrlUtil.urlToUri(url, withQueryParameters).toString();
+  public URI getUri() {
+    return uri;
   }
 
-  public Url toUrl() {
-    return url;
+  public List<Header> getHeaders() {
+    return headers;
+  }
+
+  public List<NameValuePair> getFormParameters() {
+    return formParameters;
+  }
+
+  public List<NameValuePair> getBodyParameters() {
+    return bodyParameters;
+  }
+
+  public String getBody() {
+    return body;
   }
 
   public static abstract class Builder<BuilderType extends Builder<?>> implements IRequest.Builder {
 
-    private HttpManager httpManager;
-    private Url.Scheme scheme = Api.DEFAULT_SCHEME;
+    private HttpManager httpManager = Api.DEFAULT_HTTP_MANAGER;
+    private String scheme = Api.DEFAULT_SCHEME;
     private String host = Api.DEFAULT_HOST;
-    private int port = Api.DEFAULT_PORT;
+    private Integer port = Api.DEFAULT_PORT;
     private String path = null;
-    private List<Url.Parameter> parameters = new ArrayList<>();
-    private List<Url.Parameter> headerParameters = new ArrayList<>();
-    private List<Url.Parameter> bodyParameters = new ArrayList<>();
-    private List<Url.Part> parts = new ArrayList<>();
-    private JsonElement jsonBody;
+    private List<NameValuePair> pathParameters = new ArrayList<>();
+    private List<NameValuePair> queryParameters = new ArrayList<>();
+    private List<Header> headers = new ArrayList<>();
+    private List<NameValuePair> formParameters = new ArrayList<>();
+    private List<NameValuePair> bodyParameters = new ArrayList<>();
+    private String body = "";
 
-    public BuilderType setHttpManager(HttpManager httpManager) {
+    protected Builder() {
+      setHeader("Content-Type", "application/json");
+    }
+
+    public BuilderType setHttpManager(final HttpManager httpManager) {
       assert (httpManager != null);
       this.httpManager = httpManager;
       return (BuilderType) this;
     }
 
-    public BuilderType setScheme(Url.Scheme scheme) {
+    public BuilderType setScheme(final String scheme) {
       assert (scheme != null);
+      assert (!scheme.equals(""));
       this.scheme = scheme;
       return (BuilderType) this;
     }
 
-    public BuilderType setHost(String host) {
+    public BuilderType setHost(final String host) {
       assert (host != null);
+      assert (!scheme.equals(""));
       this.host = host;
       return (BuilderType) this;
     }
 
-    public BuilderType setPort(int port) {
-      assert (port > -1);
+    public BuilderType setPort(final Integer port) {
+      assert (port != null);
+      assert (port >= 0);
       this.port = port;
       return (BuilderType) this;
     }
 
-    public BuilderType setPath(String path) {
+    public BuilderType setPath(final String path) {
       assert (path != null);
-      this.path = path;
+      assert (!path.equals(""));
+
+      String builtPath = path;
+
+      for (NameValuePair nameValuePair : pathParameters) {
+        builtPath = builtPath.replaceAll("\\{" + nameValuePair.getName() + "\\}", nameValuePair.getValue());
+      }
+
+      this.path = builtPath;
       return (BuilderType) this;
     }
 
-    public BuilderType setParameter(String name, String value) {
-      addParameter(Url.Parameter.newBuilder(), this.parameters, name, value);
+    public BuilderType setPathParameter(final String name, final String value) {
+      assert (name != null && value != null);
+      assert (!name.equals("") && !value.equals(""));
+      this.pathParameters.add(new BasicNameValuePair(name, value));
       return (BuilderType) this;
     }
 
-    public BuilderType setParameter(String name, int value) {
-      addParameter(Url.Parameter.newBuilder(), this.parameters, name, String.valueOf(value));
+    public BuilderType setDefaults(final HttpManager httpManager,
+                                   final String scheme,
+                                   final String host,
+                                   final Integer port) {
+      setHttpManager(httpManager);
+      setScheme(scheme);
+      setHost(host);
+      setPort(port);
+
       return (BuilderType) this;
     }
 
-    public BuilderType setHeaderParameter(String name, String value) {
-      addParameter(Url.Parameter.newBuilder(), this.headerParameters, name, value);
-      return (BuilderType) this;
-    }
-
-    public BuilderType setBodyParameter(String name, String value) {
-      addParameter(Url.Parameter.newBuilder(), this.bodyParameters, name, value);
-      return (BuilderType) this;
-    }
-
-    public BuilderType setPart(Url.Part part) {
-      assert (part != null);
-      this.parts.add(part);
-      return (BuilderType) this;
-    }
-
-    public BuilderType setBodyParameter(JsonElement jsonBody) {
-      assert (jsonBody != null);
-      this.jsonBody = jsonBody;
-      return (BuilderType) this;
-    }
-
-    private void addParameter(Url.Parameter.Builder builder, List<Url.Parameter> parameters, String name, String value) {
+    public <T> BuilderType setQueryParameter(final String name, final T value) {
       assert (name != null);
-      assert (name.length() > 0);
       assert (value != null);
+      this.queryParameters.add(new BasicNameValuePair(name, String.valueOf(value)));
+      return (BuilderType) this;
+    }
 
-      parameters.add(builder.setName(name).setValue(value).build());
+    public <T> BuilderType setHeader(final String name, final T value) {
+      this.headers.add(new BasicHeader(name, String.valueOf(value)));
+      return (BuilderType) this;
+    }
+
+    public <T> BuilderType setFormParameter(final String name, final T value) {
+      this.formParameters.add(new BasicNameValuePair(name, String.valueOf(value)));
+      return (BuilderType) this;
+    }
+
+    public <T> BuilderType setBodyParameter(final String name, final T value) {
+      this.bodyParameters.add(new BasicNameValuePair(name, String.valueOf(value)));
+      return (BuilderType) this;
+    }
+
+    public BuilderType setBody(final String value) {
+      this.body = value;
+      return (BuilderType) this;
     }
   }
 }

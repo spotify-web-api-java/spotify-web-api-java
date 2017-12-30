@@ -65,7 +65,7 @@ public class PagingCursorbased<T> extends AbstractModelObject {
       return this;
     }
 
-    public Builder<T> setItems(T[] items) {
+    public Builder<T> setItems(T... items) {
       this.items = items;
       return this;
     }
@@ -80,7 +80,7 @@ public class PagingCursorbased<T> extends AbstractModelObject {
       return this;
     }
 
-    public Builder<T> setCursors(Cursor[] cursors) {
+    public Builder<T> setCursors(Cursor... cursors) {
       this.cursors = cursors;
       return this;
     }

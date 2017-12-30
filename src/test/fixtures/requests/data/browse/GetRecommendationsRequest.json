@@ -1,0 +1,897 @@
+{
+  "tracks": [
+    {
+      "album": {
+        "album_type": "ALBUM",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/4NHQUGzhtTLFvgF5SZesLK"
+            },
+            "href": "https://api.spotify.com/v1/artists/4NHQUGzhtTLFvgF5SZesLK",
+            "id": "4NHQUGzhtTLFvgF5SZesLK",
+            "name": "Tove Lo",
+            "type": "artist",
+            "uri": "spotify:artist:4NHQUGzhtTLFvgF5SZesLK"
+          }
+        ],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/3nB6kz45Z9N6MU8uYghdev"
+        },
+        "href": "https://api.spotify.com/v1/albums/3nB6kz45Z9N6MU8uYghdev",
+        "id": "3nB6kz45Z9N6MU8uYghdev",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/cab751fc7cfae0e0bad083eb0b10970567705f04",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/c1acf1a438e9ea41b477029dfa2b10ddb4675bee",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/7d095306893a92b6ae9dedc310a410c04a3c903c",
+            "width": 64
+          }
+        ],
+        "name": "BLUE LIPS (lady wood phase II)",
+        "type": "album",
+        "uri": "spotify:album:3nB6kz45Z9N6MU8uYghdev"
+      },
+      "artists": [
+        {
+          "external_urls": {
+            "spotify": "https://open.spotify.com/artist/4NHQUGzhtTLFvgF5SZesLK"
+          },
+          "href": "https://api.spotify.com/v1/artists/4NHQUGzhtTLFvgF5SZesLK",
+          "id": "4NHQUGzhtTLFvgF5SZesLK",
+          "name": "Tove Lo",
+          "type": "artist",
+          "uri": "spotify:artist:4NHQUGzhtTLFvgF5SZesLK"
+        }
+      ],
+      "disc_number": 1,
+      "duration_ms": 226495,
+      "explicit": true,
+      "external_ids": {
+        "isrc": "SEUM71700918"
+      },
+      "external_urls": {
+        "spotify": "https://open.spotify.com/track/7IXU0WXqnktR0ntaEqzmwR"
+      },
+      "href": "https://api.spotify.com/v1/tracks/7IXU0WXqnktR0ntaEqzmwR",
+      "id": "7IXU0WXqnktR0ntaEqzmwR",
+      "is_playable": true,
+      "name": "struggle",
+      "popularity": 57,
+      "preview_url": null,
+      "track_number": 11,
+      "type": "track",
+      "uri": "spotify:track:7IXU0WXqnktR0ntaEqzmwR"
+    },
+    {
+      "album": {
+        "album_type": "ALBUM",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/63yrD80RY3RNEM2YDpUpO8"
+            },
+            "href": "https://api.spotify.com/v1/artists/63yrD80RY3RNEM2YDpUpO8",
+            "id": "63yrD80RY3RNEM2YDpUpO8",
+            "name": "Melanie Martinez",
+            "type": "artist",
+            "uri": "spotify:artist:63yrD80RY3RNEM2YDpUpO8"
+          }
+        ],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/5JpH5T1sCYnUyZD6TM0QaY"
+        },
+        "href": "https://api.spotify.com/v1/albums/5JpH5T1sCYnUyZD6TM0QaY",
+        "id": "5JpH5T1sCYnUyZD6TM0QaY",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/60f9d89a9b005acf036bef08d3a80eea7bfda942",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/e4cf0994fa4502926ec16282c653f7278e67c206",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/3d088c57b96a8cc86bbeb8bb67066a3f5f8ed401",
+            "width": 64
+          }
+        ],
+        "name": "Cry Baby (Deluxe)",
+        "type": "album",
+        "uri": "spotify:album:5JpH5T1sCYnUyZD6TM0QaY"
+      },
+      "artists": [
+        {
+          "external_urls": {
+            "spotify": "https://open.spotify.com/artist/63yrD80RY3RNEM2YDpUpO8"
+          },
+          "href": "https://api.spotify.com/v1/artists/63yrD80RY3RNEM2YDpUpO8",
+          "id": "63yrD80RY3RNEM2YDpUpO8",
+          "name": "Melanie Martinez",
+          "type": "artist",
+          "uri": "spotify:artist:63yrD80RY3RNEM2YDpUpO8"
+        }
+      ],
+      "disc_number": 1,
+      "duration_ms": 201520,
+      "explicit": false,
+      "external_ids": {
+        "isrc": "USAT21501943"
+      },
+      "external_urls": {
+        "spotify": "https://open.spotify.com/track/5gWtkdgdyt5bZt9i6n3Kqd"
+      },
+      "href": "https://api.spotify.com/v1/tracks/5gWtkdgdyt5bZt9i6n3Kqd",
+      "id": "5gWtkdgdyt5bZt9i6n3Kqd",
+      "is_playable": true,
+      "name": "Mad Hatter",
+      "popularity": 70,
+      "preview_url": "https://p.scdn.co/mp3-preview/5a160cc329c8b231c8fd6832aab3e7385927b08b?cid=774b29d4f13844c495f206cafdad9c86",
+      "track_number": 13,
+      "type": "track",
+      "uri": "spotify:track:5gWtkdgdyt5bZt9i6n3Kqd"
+    },
+    {
+      "album": {
+        "album_type": "ALBUM",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/0WbqAlM1WvfUD6dF7omThd"
+            },
+            "href": "https://api.spotify.com/v1/artists/0WbqAlM1WvfUD6dF7omThd",
+            "id": "0WbqAlM1WvfUD6dF7omThd",
+            "name": "Yelle",
+            "type": "artist",
+            "uri": "spotify:artist:0WbqAlM1WvfUD6dF7omThd"
+          }
+        ],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/54SCpxOV9jimjafayIuEEs"
+        },
+        "href": "https://api.spotify.com/v1/albums/54SCpxOV9jimjafayIuEEs",
+        "id": "54SCpxOV9jimjafayIuEEs",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/397d1cd21724f5dca07ccc1a45f3086e13d6af5a",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/2579fc24b3b4d4e19fd6d8fdef7f01ab0ed48485",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/5d09c351771a0d673a9bfde810fcc064810f635d",
+            "width": 64
+          }
+        ],
+        "name": "Ici & Maintenant (Here & Now) - Single",
+        "type": "album",
+        "uri": "spotify:album:54SCpxOV9jimjafayIuEEs"
+      },
+      "artists": [
+        {
+          "external_urls": {
+            "spotify": "https://open.spotify.com/artist/0WbqAlM1WvfUD6dF7omThd"
+          },
+          "href": "https://api.spotify.com/v1/artists/0WbqAlM1WvfUD6dF7omThd",
+          "id": "0WbqAlM1WvfUD6dF7omThd",
+          "name": "Yelle",
+          "type": "artist",
+          "uri": "spotify:artist:0WbqAlM1WvfUD6dF7omThd"
+        }
+      ],
+      "disc_number": 1,
+      "duration_ms": 230000,
+      "explicit": false,
+      "external_ids": {
+        "isrc": "FR9W11623198"
+      },
+      "external_urls": {
+        "spotify": "https://open.spotify.com/track/4RGtbLNiQtyRv7ZuLUowJQ"
+      },
+      "href": "https://api.spotify.com/v1/tracks/4RGtbLNiQtyRv7ZuLUowJQ",
+      "id": "4RGtbLNiQtyRv7ZuLUowJQ",
+      "is_playable": true,
+      "name": "Ici & Maintenant (Here & Now)",
+      "popularity": 41,
+      "preview_url": "https://p.scdn.co/mp3-preview/0f0c807a1c10cd6513e7136e3292dedbe3a48b30?cid=774b29d4f13844c495f206cafdad9c86",
+      "track_number": 1,
+      "type": "track",
+      "uri": "spotify:track:4RGtbLNiQtyRv7ZuLUowJQ"
+    },
+    {
+      "album": {
+        "album_type": "ALBUM",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/4BYxqVkZyFjtik7crYLg5Q"
+            },
+            "href": "https://api.spotify.com/v1/artists/4BYxqVkZyFjtik7crYLg5Q",
+            "id": "4BYxqVkZyFjtik7crYLg5Q",
+            "name": "Chris Young",
+            "type": "artist",
+            "uri": "spotify:artist:4BYxqVkZyFjtik7crYLg5Q"
+          }
+        ],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/7IOSachS7KZNuqRZrPcdD0"
+        },
+        "href": "https://api.spotify.com/v1/albums/7IOSachS7KZNuqRZrPcdD0",
+        "id": "7IOSachS7KZNuqRZrPcdD0",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/ac6808fc41613068e054f5f86bdf1dcc710670d6",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/b148a952ff38e421f9c9c1c66df2dd1f1f02cd2e",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/fccefae19623cbb365dfb2dad271d4e10088722e",
+            "width": 64
+          }
+        ],
+        "name": "I'm Comin' Over",
+        "type": "album",
+        "uri": "spotify:album:7IOSachS7KZNuqRZrPcdD0"
+      },
+      "artists": [
+        {
+          "external_urls": {
+            "spotify": "https://open.spotify.com/artist/4BYxqVkZyFjtik7crYLg5Q"
+          },
+          "href": "https://api.spotify.com/v1/artists/4BYxqVkZyFjtik7crYLg5Q",
+          "id": "4BYxqVkZyFjtik7crYLg5Q",
+          "name": "Chris Young",
+          "type": "artist",
+          "uri": "spotify:artist:4BYxqVkZyFjtik7crYLg5Q"
+        },
+        {
+          "external_urls": {
+            "spotify": "https://open.spotify.com/artist/7ahuvq1mbb4idwG1iJbSFG"
+          },
+          "href": "https://api.spotify.com/v1/artists/7ahuvq1mbb4idwG1iJbSFG",
+          "id": "7ahuvq1mbb4idwG1iJbSFG",
+          "name": "Cassadee Pope",
+          "type": "artist",
+          "uri": "spotify:artist:7ahuvq1mbb4idwG1iJbSFG"
+        }
+      ],
+      "disc_number": 1,
+      "duration_ms": 218946,
+      "explicit": false,
+      "external_ids": {
+        "isrc": "USRN11400705"
+      },
+      "external_urls": {
+        "spotify": "https://open.spotify.com/track/6W9W8dSswA8KNegvl3W97V"
+      },
+      "href": "https://api.spotify.com/v1/tracks/6W9W8dSswA8KNegvl3W97V",
+      "id": "6W9W8dSswA8KNegvl3W97V",
+      "is_playable": true,
+      "name": "Think of You",
+      "popularity": 69,
+      "preview_url": "https://p.scdn.co/mp3-preview/b9cfa6cff52b23397c3def85f99709f0d652fc82?cid=774b29d4f13844c495f206cafdad9c86",
+      "track_number": 3,
+      "type": "track",
+      "uri": "spotify:track:6W9W8dSswA8KNegvl3W97V"
+    },
+    {
+      "album": {
+        "album_type": "ALBUM",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/6eKWqnckwdIlSnjaYgIyxv"
+            },
+            "href": "https://api.spotify.com/v1/artists/6eKWqnckwdIlSnjaYgIyxv",
+            "id": "6eKWqnckwdIlSnjaYgIyxv",
+            "name": "Eli Young Band",
+            "type": "artist",
+            "uri": "spotify:artist:6eKWqnckwdIlSnjaYgIyxv"
+          }
+        ],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/198SMbdWrB1HgNpOxyFrwo"
+        },
+        "href": "https://api.spotify.com/v1/albums/198SMbdWrB1HgNpOxyFrwo",
+        "id": "198SMbdWrB1HgNpOxyFrwo",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/f18d0165ea401befc7a257068bef8ce1eafd58b0",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/b37b6f16e2857a09d13b253ecd8f751e2d4d5db7",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/9294bbb41dcb1392d362c3bb8d4089592922feca",
+            "width": 64
+          }
+        ],
+        "name": "Fingerprints",
+        "type": "album",
+        "uri": "spotify:album:198SMbdWrB1HgNpOxyFrwo"
+      },
+      "artists": [
+        {
+          "external_urls": {
+            "spotify": "https://open.spotify.com/artist/6eKWqnckwdIlSnjaYgIyxv"
+          },
+          "href": "https://api.spotify.com/v1/artists/6eKWqnckwdIlSnjaYgIyxv",
+          "id": "6eKWqnckwdIlSnjaYgIyxv",
+          "name": "Eli Young Band",
+          "type": "artist",
+          "uri": "spotify:artist:6eKWqnckwdIlSnjaYgIyxv"
+        }
+      ],
+      "disc_number": 1,
+      "duration_ms": 203400,
+      "explicit": false,
+      "external_ids": {
+        "isrc": "USLXJ1611586"
+      },
+      "external_urls": {
+        "spotify": "https://open.spotify.com/track/6Y2RXi03v5nVYn4NZTy1FH"
+      },
+      "href": "https://api.spotify.com/v1/tracks/6Y2RXi03v5nVYn4NZTy1FH",
+      "id": "6Y2RXi03v5nVYn4NZTy1FH",
+      "is_playable": true,
+      "linked_from": {
+        "external_urls": {
+          "spotify": "https://open.spotify.com/track/1JFAQD37vxGz7509895bWl"
+        },
+        "href": "https://api.spotify.com/v1/tracks/1JFAQD37vxGz7509895bWl",
+        "id": "1JFAQD37vxGz7509895bWl",
+        "type": "track",
+        "uri": "spotify:track:1JFAQD37vxGz7509895bWl"
+      },
+      "name": "Never Land",
+      "popularity": 43,
+      "preview_url": null,
+      "track_number": 9,
+      "type": "track",
+      "uri": "spotify:track:6Y2RXi03v5nVYn4NZTy1FH"
+    },
+    {
+      "album": {
+        "album_type": "ALBUM",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/3Wn5yNX8MOiIP3ln3oVp97"
+            },
+            "href": "https://api.spotify.com/v1/artists/3Wn5yNX8MOiIP3ln3oVp97",
+            "id": "3Wn5yNX8MOiIP3ln3oVp97",
+            "name": "Nadia Sirota",
+            "type": "artist",
+            "uri": "spotify:artist:3Wn5yNX8MOiIP3ln3oVp97"
+          }
+        ],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/3GLUltc6jKzHxMHemXnYRw"
+        },
+        "href": "https://api.spotify.com/v1/albums/3GLUltc6jKzHxMHemXnYRw",
+        "id": "3GLUltc6jKzHxMHemXnYRw",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/a6ebf5fb58063a43f74b4560f31f4674b3aa159f",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/e6ba4ac06bb2132f7377ac37225de101cbfba38a",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/d25106bd8ab9bd90a1f89a3bc97743090802596b",
+            "width": 64
+          }
+        ],
+        "name": "Nadia Sirota: Baroque",
+        "type": "album",
+        "uri": "spotify:album:3GLUltc6jKzHxMHemXnYRw"
+      },
+      "artists": [
+        {
+          "external_urls": {
+            "spotify": "https://open.spotify.com/artist/2vObsQCPsbVfkqHlQOu2zc"
+          },
+          "href": "https://api.spotify.com/v1/artists/2vObsQCPsbVfkqHlQOu2zc",
+          "id": "2vObsQCPsbVfkqHlQOu2zc",
+          "name": "Nico Muhly",
+          "type": "artist",
+          "uri": "spotify:artist:2vObsQCPsbVfkqHlQOu2zc"
+        },
+        {
+          "external_urls": {
+            "spotify": "https://open.spotify.com/artist/3Wn5yNX8MOiIP3ln3oVp97"
+          },
+          "href": "https://api.spotify.com/v1/artists/3Wn5yNX8MOiIP3ln3oVp97",
+          "id": "3Wn5yNX8MOiIP3ln3oVp97",
+          "name": "Nadia Sirota",
+          "type": "artist",
+          "uri": "spotify:artist:3Wn5yNX8MOiIP3ln3oVp97"
+        },
+        {
+          "external_urls": {
+            "spotify": "https://open.spotify.com/artist/4aFXwGxCEd4fSBcXE7N3V5"
+          },
+          "href": "https://api.spotify.com/v1/artists/4aFXwGxCEd4fSBcXE7N3V5",
+          "id": "4aFXwGxCEd4fSBcXE7N3V5",
+          "name": "James McVinnie",
+          "type": "artist",
+          "uri": "spotify:artist:4aFXwGxCEd4fSBcXE7N3V5"
+        },
+        {
+          "external_urls": {
+            "spotify": "https://open.spotify.com/artist/5kUBSTaVz7OFpuyHDSbQon"
+          },
+          "href": "https://api.spotify.com/v1/artists/5kUBSTaVz7OFpuyHDSbQon",
+          "id": "5kUBSTaVz7OFpuyHDSbQon",
+          "name": "Daníel Bjarnason",
+          "type": "artist",
+          "uri": "spotify:artist:5kUBSTaVz7OFpuyHDSbQon"
+        },
+        {
+          "external_urls": {
+            "spotify": "https://open.spotify.com/artist/3BBAL4FJKn99P0MC65nIB7"
+          },
+          "href": "https://api.spotify.com/v1/artists/3BBAL4FJKn99P0MC65nIB7",
+          "id": "3BBAL4FJKn99P0MC65nIB7",
+          "name": "Frank Aarnink",
+          "type": "artist",
+          "uri": "spotify:artist:3BBAL4FJKn99P0MC65nIB7"
+        },
+        {
+          "external_urls": {
+            "spotify": "https://open.spotify.com/artist/5AVGx9Dhw7OLeJ5at3Y19f"
+          },
+          "href": "https://api.spotify.com/v1/artists/5AVGx9Dhw7OLeJ5at3Y19f",
+          "id": "5AVGx9Dhw7OLeJ5at3Y19f",
+          "name": "Valgeir Sigurðsson",
+          "type": "artist",
+          "uri": "spotify:artist:5AVGx9Dhw7OLeJ5at3Y19f"
+        },
+        {
+          "external_urls": {
+            "spotify": "https://open.spotify.com/artist/1VCjlBPsXgs5YMMFDWw6nA"
+          },
+          "href": "https://api.spotify.com/v1/artists/1VCjlBPsXgs5YMMFDWw6nA",
+          "id": "1VCjlBPsXgs5YMMFDWw6nA",
+          "name": "Paul Evans",
+          "type": "artist",
+          "uri": "spotify:artist:1VCjlBPsXgs5YMMFDWw6nA"
+        },
+        {
+          "external_urls": {
+            "spotify": "https://open.spotify.com/artist/61O7PTMoyars8V5kcaYov4"
+          },
+          "href": "https://api.spotify.com/v1/artists/61O7PTMoyars8V5kcaYov4",
+          "id": "61O7PTMoyars8V5kcaYov4",
+          "name": "Missy Mazzoli",
+          "type": "artist",
+          "uri": "spotify:artist:61O7PTMoyars8V5kcaYov4"
+        },
+        {
+          "external_urls": {
+            "spotify": "https://open.spotify.com/artist/2UWEYphdFL39QM1jhXA527"
+          },
+          "href": "https://api.spotify.com/v1/artists/2UWEYphdFL39QM1jhXA527",
+          "id": "2UWEYphdFL39QM1jhXA527",
+          "name": "Paul Corley",
+          "type": "artist",
+          "uri": "spotify:artist:2UWEYphdFL39QM1jhXA527"
+        }
+      ],
+      "disc_number": 1,
+      "duration_ms": 303388,
+      "explicit": false,
+      "external_ids": {
+        "isrc": "ISW211300104"
+      },
+      "external_urls": {
+        "spotify": "https://open.spotify.com/track/2LhRrWfxTV6ZW1XAOb2OGa"
+      },
+      "href": "https://api.spotify.com/v1/tracks/2LhRrWfxTV6ZW1XAOb2OGa",
+      "id": "2LhRrWfxTV6ZW1XAOb2OGa",
+      "is_playable": true,
+      "name": "Etude No. 3: Etude 3",
+      "popularity": 35,
+      "preview_url": "https://p.scdn.co/mp3-preview/d4d115070b5fe9f80d17edf73e8c925cdacafad7?cid=774b29d4f13844c495f206cafdad9c86",
+      "track_number": 4,
+      "type": "track",
+      "uri": "spotify:track:2LhRrWfxTV6ZW1XAOb2OGa"
+    },
+    {
+      "album": {
+        "album_type": "ALBUM",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/4NHQUGzhtTLFvgF5SZesLK"
+            },
+            "href": "https://api.spotify.com/v1/artists/4NHQUGzhtTLFvgF5SZesLK",
+            "id": "4NHQUGzhtTLFvgF5SZesLK",
+            "name": "Tove Lo",
+            "type": "artist",
+            "uri": "spotify:artist:4NHQUGzhtTLFvgF5SZesLK"
+          }
+        ],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/5Z5O36p7BivXzkucc0PAfw"
+        },
+        "href": "https://api.spotify.com/v1/albums/5Z5O36p7BivXzkucc0PAfw",
+        "id": "5Z5O36p7BivXzkucc0PAfw",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/6d18d4e8dcc3c8b617af00af9de35e332287648a",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/aeed8868b665a019c2d992a6b7b42aae29185e6a",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/5e4799a2753d3eec44e55f949454af37eef7567f",
+            "width": 64
+          }
+        ],
+        "name": "Queen Of The Clouds",
+        "type": "album",
+        "uri": "spotify:album:5Z5O36p7BivXzkucc0PAfw"
+      },
+      "artists": [
+        {
+          "external_urls": {
+            "spotify": "https://open.spotify.com/artist/4NHQUGzhtTLFvgF5SZesLK"
+          },
+          "href": "https://api.spotify.com/v1/artists/4NHQUGzhtTLFvgF5SZesLK",
+          "id": "4NHQUGzhtTLFvgF5SZesLK",
+          "name": "Tove Lo",
+          "type": "artist",
+          "uri": "spotify:artist:4NHQUGzhtTLFvgF5SZesLK"
+        }
+      ],
+      "disc_number": 1,
+      "duration_ms": 182346,
+      "explicit": false,
+      "external_ids": {
+        "isrc": "SEUM71400059"
+      },
+      "external_urls": {
+        "spotify": "https://open.spotify.com/track/3zK3kzz1U8KEa8v9Kj8hu8"
+      },
+      "href": "https://api.spotify.com/v1/tracks/3zK3kzz1U8KEa8v9Kj8hu8",
+      "id": "3zK3kzz1U8KEa8v9Kj8hu8",
+      "is_playable": true,
+      "name": "Not On Drugs",
+      "popularity": 52,
+      "preview_url": null,
+      "track_number": 10,
+      "type": "track",
+      "uri": "spotify:track:3zK3kzz1U8KEa8v9Kj8hu8"
+    },
+    {
+      "album": {
+        "album_type": "ALBUM",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/2nuKjZLgc7II6FO4Rxjt5e"
+            },
+            "href": "https://api.spotify.com/v1/artists/2nuKjZLgc7II6FO4Rxjt5e",
+            "id": "2nuKjZLgc7II6FO4Rxjt5e",
+            "name": "Blonde",
+            "type": "artist",
+            "uri": "spotify:artist:2nuKjZLgc7II6FO4Rxjt5e"
+          },
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/2JyWXPbkqI5ZJa3gwqVa0c"
+            },
+            "href": "https://api.spotify.com/v1/artists/2JyWXPbkqI5ZJa3gwqVa0c",
+            "id": "2JyWXPbkqI5ZJa3gwqVa0c",
+            "name": "Craig David",
+            "type": "artist",
+            "uri": "spotify:artist:2JyWXPbkqI5ZJa3gwqVa0c"
+          }
+        ],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/4gjgWkaWRxPJc4TSflYAOr"
+        },
+        "href": "https://api.spotify.com/v1/albums/4gjgWkaWRxPJc4TSflYAOr",
+        "id": "4gjgWkaWRxPJc4TSflYAOr",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/98b87f3272f6be42363849bb8c0bac89b5ea2cf5",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/4216a9acecb3ad752c044e74292c0d07017cfee6",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/5a36e9d1be509bd4c5f8ae9594d43302b803b2ad",
+            "width": 64
+          }
+        ],
+        "name": "Nothing Like This",
+        "type": "album",
+        "uri": "spotify:album:4gjgWkaWRxPJc4TSflYAOr"
+      },
+      "artists": [
+        {
+          "external_urls": {
+            "spotify": "https://open.spotify.com/artist/2nuKjZLgc7II6FO4Rxjt5e"
+          },
+          "href": "https://api.spotify.com/v1/artists/2nuKjZLgc7II6FO4Rxjt5e",
+          "id": "2nuKjZLgc7II6FO4Rxjt5e",
+          "name": "Blonde",
+          "type": "artist",
+          "uri": "spotify:artist:2nuKjZLgc7II6FO4Rxjt5e"
+        },
+        {
+          "external_urls": {
+            "spotify": "https://open.spotify.com/artist/2JyWXPbkqI5ZJa3gwqVa0c"
+          },
+          "href": "https://api.spotify.com/v1/artists/2JyWXPbkqI5ZJa3gwqVa0c",
+          "id": "2JyWXPbkqI5ZJa3gwqVa0c",
+          "name": "Craig David",
+          "type": "artist",
+          "uri": "spotify:artist:2JyWXPbkqI5ZJa3gwqVa0c"
+        }
+      ],
+      "disc_number": 1,
+      "duration_ms": 183645,
+      "explicit": false,
+      "external_ids": {
+        "isrc": "GBAYE1600002"
+      },
+      "external_urls": {
+        "spotify": "https://open.spotify.com/track/4PFQ4EQBtJUp2jQjpmYkVA"
+      },
+      "href": "https://api.spotify.com/v1/tracks/4PFQ4EQBtJUp2jQjpmYkVA",
+      "id": "4PFQ4EQBtJUp2jQjpmYkVA",
+      "is_playable": true,
+      "name": "Nothing Like This",
+      "popularity": 58,
+      "preview_url": "https://p.scdn.co/mp3-preview/a2ee8fc1b2d3fdd43cbdf375e93695e9459e8fa8?cid=774b29d4f13844c495f206cafdad9c86",
+      "track_number": 1,
+      "type": "track",
+      "uri": "spotify:track:4PFQ4EQBtJUp2jQjpmYkVA"
+    },
+    {
+      "album": {
+        "album_type": "ALBUM",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/5aIqB5nVVvmFsvSdExz408"
+            },
+            "href": "https://api.spotify.com/v1/artists/5aIqB5nVVvmFsvSdExz408",
+            "id": "5aIqB5nVVvmFsvSdExz408",
+            "name": "Johann Sebastian Bach",
+            "type": "artist",
+            "uri": "spotify:artist:5aIqB5nVVvmFsvSdExz408"
+          },
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/1R1hwKrqqLqYiD53NtXEBJ"
+            },
+            "href": "https://api.spotify.com/v1/artists/1R1hwKrqqLqYiD53NtXEBJ",
+            "id": "1R1hwKrqqLqYiD53NtXEBJ",
+            "name": "Akademie für Alte Musik Berlin",
+            "type": "artist",
+            "uri": "spotify:artist:1R1hwKrqqLqYiD53NtXEBJ"
+          }
+        ],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/6zSjmnzufDkqbw49729FWK"
+        },
+        "href": "https://api.spotify.com/v1/albums/6zSjmnzufDkqbw49729FWK",
+        "id": "6zSjmnzufDkqbw49729FWK",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/f203b1a60c95dcefd2ea783e2db74d85019dcd14",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/64e8525f3b8d131d37b738fbeeece8ff1a026368",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/c5f34c98c32561683c07e412f7b1f638bd6e85ff",
+            "width": 64
+          }
+        ],
+        "name": "Bach: Brandenburgische Konzerte",
+        "type": "album",
+        "uri": "spotify:album:6zSjmnzufDkqbw49729FWK"
+      },
+      "artists": [
+        {
+          "external_urls": {
+            "spotify": "https://open.spotify.com/artist/5aIqB5nVVvmFsvSdExz408"
+          },
+          "href": "https://api.spotify.com/v1/artists/5aIqB5nVVvmFsvSdExz408",
+          "id": "5aIqB5nVVvmFsvSdExz408",
+          "name": "Johann Sebastian Bach",
+          "type": "artist",
+          "uri": "spotify:artist:5aIqB5nVVvmFsvSdExz408"
+        },
+        {
+          "external_urls": {
+            "spotify": "https://open.spotify.com/artist/1R1hwKrqqLqYiD53NtXEBJ"
+          },
+          "href": "https://api.spotify.com/v1/artists/1R1hwKrqqLqYiD53NtXEBJ",
+          "id": "1R1hwKrqqLqYiD53NtXEBJ",
+          "name": "Akademie für Alte Musik Berlin",
+          "type": "artist",
+          "uri": "spotify:artist:1R1hwKrqqLqYiD53NtXEBJ"
+        }
+      ],
+      "disc_number": 1,
+      "duration_ms": 286026,
+      "explicit": false,
+      "external_ids": {
+        "isrc": "FRZ149769090"
+      },
+      "external_urls": {
+        "spotify": "https://open.spotify.com/track/1rnI1rsLsAxitG1OkAFkaY"
+      },
+      "href": "https://api.spotify.com/v1/tracks/1rnI1rsLsAxitG1OkAFkaY",
+      "id": "1rnI1rsLsAxitG1OkAFkaY",
+      "is_playable": true,
+      "name": "Concerto n°5 en Ré majeur BWV 1050: II. Affettuoso",
+      "popularity": 48,
+      "preview_url": "https://p.scdn.co/mp3-preview/25feb1a7723afd32ba72f091c9cf0db1e4bac32c?cid=774b29d4f13844c495f206cafdad9c86",
+      "track_number": 9,
+      "type": "track",
+      "uri": "spotify:track:1rnI1rsLsAxitG1OkAFkaY"
+    },
+    {
+      "album": {
+        "album_type": "ALBUM",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/35OhI7DSls022v9Bz9r0VZ"
+            },
+            "href": "https://api.spotify.com/v1/artists/35OhI7DSls022v9Bz9r0VZ",
+            "id": "35OhI7DSls022v9Bz9r0VZ",
+            "name": "John Adams",
+            "type": "artist",
+            "uri": "spotify:artist:35OhI7DSls022v9Bz9r0VZ"
+          }
+        ],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/0GeEcfKoJNsSCZMFz3DlZ8"
+        },
+        "href": "https://api.spotify.com/v1/albums/0GeEcfKoJNsSCZMFz3DlZ8",
+        "id": "0GeEcfKoJNsSCZMFz3DlZ8",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/6ddd621785a67473b7721f92bca7e7aaf2e7fd97",
+            "width": 635
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/b2916b4f944904651a4794d46c1b208777e8f522",
+            "width": 298
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/a43943cac7105d0a1115ed684bfa26d5a4541a1c",
+            "width": 64
+          }
+        ],
+        "name": "The Chairman Dances",
+        "type": "album",
+        "uri": "spotify:album:0GeEcfKoJNsSCZMFz3DlZ8"
+      },
+      "artists": [
+        {
+          "external_urls": {
+            "spotify": "https://open.spotify.com/artist/35OhI7DSls022v9Bz9r0VZ"
+          },
+          "href": "https://api.spotify.com/v1/artists/35OhI7DSls022v9Bz9r0VZ",
+          "id": "35OhI7DSls022v9Bz9r0VZ",
+          "name": "John Adams",
+          "type": "artist",
+          "uri": "spotify:artist:35OhI7DSls022v9Bz9r0VZ"
+        }
+      ],
+      "disc_number": 1,
+      "duration_ms": 745933,
+      "explicit": false,
+      "external_ids": {
+        "isrc": "USNO18714401"
+      },
+      "external_urls": {
+        "spotify": "https://open.spotify.com/track/4HBMnZFquWVTATSjTABueZ"
+      },
+      "href": "https://api.spotify.com/v1/tracks/4HBMnZFquWVTATSjTABueZ",
+      "id": "4HBMnZFquWVTATSjTABueZ",
+      "is_playable": true,
+      "name": "The Chairman Dances (Foxtrot for Orchestra)",
+      "popularity": 33,
+      "preview_url": "https://p.scdn.co/mp3-preview/faa0436feda2425dc3716375cecb28901365a946?cid=774b29d4f13844c495f206cafdad9c86",
+      "track_number": 1,
+      "type": "track",
+      "uri": "spotify:track:4HBMnZFquWVTATSjTABueZ"
+    }
+  ],
+  "seeds": [
+    {
+      "initialPoolSize": 250,
+      "afterFilteringSize": 250,
+      "afterRelinkingSize": 249,
+      "id": "4NHQUGzhtTLFvgF5SZesLK",
+      "type": "ARTIST",
+      "href": "https://api.spotify.com/v1/artists/4NHQUGzhtTLFvgF5SZesLK"
+    },
+    {
+      "initialPoolSize": 250,
+      "afterFilteringSize": 250,
+      "afterRelinkingSize": 239,
+      "id": "0c6xIDDpzE81m2q797ordA",
+      "type": "TRACK",
+      "href": "https://api.spotify.com/v1/tracks/0c6xIDDpzE81m2q797ordA"
+    },
+    {
+      "initialPoolSize": 517,
+      "afterFilteringSize": 313,
+      "afterRelinkingSize": 311,
+      "id": "classical",
+      "type": "GENRE",
+      "href": null
+    },
+    {
+      "initialPoolSize": 999,
+      "afterFilteringSize": 313,
+      "afterRelinkingSize": 312,
+      "id": "country",
+      "type": "GENRE",
+      "href": null
+    }
+  ]
+}

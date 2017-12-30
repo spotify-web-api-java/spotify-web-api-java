@@ -124,12 +124,12 @@ public class TrackSimplified extends AbstractModelObject {
     private ModelObjectType type;
     private String uri;
 
-    public Builder setArtists(ArtistSimplified[] artists) {
+    public Builder setArtists(ArtistSimplified... artists) {
       this.artists = artists;
       return this;
     }
 
-    public Builder setAvailableMarkets(CountryCode[] availableMarkets) {
+    public Builder setAvailableMarkets(CountryCode... availableMarkets) {
       this.availableMarkets = availableMarkets;
       return this;
     }
@@ -222,7 +222,7 @@ public class TrackSimplified extends AbstractModelObject {
                 .setHref(jsonObject.get("href").getAsString())
                 .setId(jsonObject.get("id").getAsString())
                 .setName(jsonObject.get("name").getAsString())
-                .setPreviewUrl(jsonObject.get("preview_url").getAsString())
+                .setPreviewUrl(jsonObject.get("preview_url").isJsonNull() ? null : jsonObject.get("preview_url").getAsString())
                 .setTrackNumber(jsonObject.get("track_number").getAsInt())
                 .setType(ModelObjectType.valueOf(jsonObject.get("type").getAsString().toUpperCase()))
                 .setUri(jsonObject.get("uri").getAsString())
@@ -236,10 +236,10 @@ public class TrackSimplified extends AbstractModelObject {
                 .setExternalUrls(new ExternalUrls.JsonUtil().createModelObject(jsonObject.getAsJsonObject("external_urls")))
                 .setHref(jsonObject.get("href").getAsString())
                 .setId(jsonObject.get("id").getAsString())
-                .setIsPlayable(jsonObject.get("next").getAsBoolean())
-                .setLinkedFrom(new TrackLink.JsonUtil().createModelObject(jsonObject.get("linked_from").getAsJsonObject()))
+                .setIsPlayable(jsonObject.get("is_playable").getAsBoolean())
+                .setLinkedFrom(jsonObject.has("linked_from") ? new TrackLink.JsonUtil().createModelObject(jsonObject.get("linked_from").getAsJsonObject()) : null)
                 .setName(jsonObject.get("name").getAsString())
-                .setPreviewUrl(jsonObject.get("preview_url").getAsString())
+                .setPreviewUrl(jsonObject.get("preview_url").isJsonNull() ? null : jsonObject.get("preview_url").getAsString())
                 .setTrackNumber(jsonObject.get("track_number").getAsInt())
                 .setType(ModelObjectType.valueOf(jsonObject.get("type").getAsString().toUpperCase()))
                 .setUri(jsonObject.get("uri").getAsString())

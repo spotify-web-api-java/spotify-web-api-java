@@ -3,8 +3,10 @@ package com.wrapper.spotify.model_objects;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.wrapper.spotify.enums.ModelObjectType;
+import com.wrapper.spotify.requests.data.personalization.interfaces.IArtistTrackModelObject;
+import com.wrapper.spotify.requests.data.search.interfaces.ISearchModelObject;
 
-public class Artist extends AbstractModelObject {
+public class Artist extends AbstractModelObject implements IArtistTrackModelObject, ISearchModelObject {
   private final ExternalUrls externalUrls;
   private final Followers followers;
   private final String[] genres;
@@ -98,7 +100,7 @@ public class Artist extends AbstractModelObject {
       return this;
     }
 
-    public Builder setGenres(String[] genres) {
+    public Builder setGenres(String... genres) {
       this.genres = genres;
       return this;
     }
@@ -113,7 +115,7 @@ public class Artist extends AbstractModelObject {
       return this;
     }
 
-    public Builder setImages(Image[] images) {
+    public Builder setImages(Image... images) {
       this.images = images;
       return this;
     }

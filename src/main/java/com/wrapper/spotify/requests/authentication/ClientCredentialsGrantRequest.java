@@ -18,11 +18,7 @@ public class ClientCredentialsGrantRequest extends AbstractRequest {
     super(builder);
   }
 
-  public static Builder builder() {
-    return new Builder();
-  }
-
-  public SettableFuture<ClientCredentials> getAsync() {
+  public SettableFuture<ClientCredentials> executeAsync() {
     final SettableFuture<ClientCredentials> future = SettableFuture.create();
 
     try {
@@ -52,6 +48,11 @@ public class ClientCredentialsGrantRequest extends AbstractRequest {
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
+    public Builder(final String accessToken) {
+      super();
+    }
+
+
     public Builder basicAuthorizationHeader(String clientId, String clientSecret) {
       assert (clientId != null);
       assert (clientSecret != null);
@@ -59,16 +60,17 @@ public class ClientCredentialsGrantRequest extends AbstractRequest {
       String idSecret = clientId + ":" + clientSecret;
       String idSecretEncoded = new String(Base64.encodeBase64(idSecret.getBytes()));
 
-      return setHeaderParameter("Authorization", "Basic " + idSecretEncoded);
+      return setHeader("Authorization", "Basic " + idSecretEncoded);
     }
 
     public Builder grantType(String grantType) {
       assert (grantType != null);
-      return setBodyParameter("grant_type", grantType);
+      return setQueryParameter("grant_type", grantType);
     }
 
-    public Builder scopes(String[] scopes) {
-      return setBodyParameter("scope", Joiner.on(" ").join(scopes));
+    public Builder scopes(String... scopes) {
+      assert (scopes != null);
+      return setQueryParameter("scope", Joiner.on(" ").join(scopes));
     }
 
     public ClientCredentialsGrantRequest build() {

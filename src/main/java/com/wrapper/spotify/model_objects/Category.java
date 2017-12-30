@@ -49,7 +49,7 @@ public class Category extends AbstractModelObject {
       return this;
     }
 
-    public Builder setIcons(Image[] icons) {
+    public Builder setIcons(Image... icons) {
       this.icons = icons;
       return this;
     }

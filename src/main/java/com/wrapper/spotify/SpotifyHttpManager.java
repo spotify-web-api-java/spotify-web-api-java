@@ -2,9 +2,10 @@ package com.wrapper.spotify;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.wrapper.spotify.UtilProtos.Url;
 import com.wrapper.spotify.exceptions.*;
+import org.apache.http.Header;
 import org.apache.http.HttpStatus;
+import org.apache.http.NameValuePair;
 import org.apache.http.StatusLine;
 import org.apache.http.client.config.CookieSpecs;
 import org.apache.http.client.config.RequestConfig;
@@ -12,21 +13,19 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.*;
 import org.apache.http.config.ConnectionConfig;
 import org.apache.http.conn.HttpClientConnectionManager;
-import org.apache.http.entity.ContentType;
-import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
+import java.net.URI;
 import java.nio.charset.Charset;
-
-import static com.wrapper.spotify.UrlUtil.getParametersList;
+import java.util.List;
 
 public class SpotifyHttpManager implements HttpManager {
 
-  private HttpClientConnectionManager connectionManager = null;
+  private HttpClientConnectionManager connectionManager;
 
   /**
    * Construct a new SpotifyHttpManager instance.
@@ -34,11 +33,7 @@ public class SpotifyHttpManager implements HttpManager {
    * @param builder The builder.
    */
   public SpotifyHttpManager(Builder builder) {
-    if (builder.connectionManager != null) {
-      connectionManager = builder.connectionManager;
-    } else {
-      connectionManager = new PoolingHttpClientConnectionManager();
-    }
+    connectionManager = builder.connectionManager;
   }
 
   public static Builder builder() {
@@ -46,7 +41,7 @@ public class SpotifyHttpManager implements HttpManager {
   }
 
   @Override
-  public String get(Url url) throws
+  public String get(URI uri, Header[] headers) throws
           IOException,
           NoContentException,
           BadRequestException,
@@ -57,19 +52,23 @@ public class SpotifyHttpManager implements HttpManager {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    assert (url != null);
+    assert (uri != null);
+    assert (headers != null);
 
-    final HttpGet method = new HttpGet(UrlUtil.urlToUri(url));
-    method.setHeaders(UrlUtil.getHeaders(url));
+    final HttpGet httpGet = new HttpGet();
 
-    String responseBody = getResponseBody(execute(method));
-    method.releaseConnection();
+    httpGet.setURI(uri);
+    httpGet.setHeaders(headers);
+
+    String responseBody = getResponseBody(execute(httpGet));
+
+    httpGet.releaseConnection();
 
     return responseBody;
   }
 
   @Override
-  public String post(UtilProtos.Url url) throws
+  public String post(URI uri, Header[] headers, List<NameValuePair> postParameters) throws
           IOException,
           NoContentException,
           BadRequestException,
@@ -80,25 +79,25 @@ public class SpotifyHttpManager implements HttpManager {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    assert (url != null);
+    assert (uri != null);
+    assert (headers != null);
+    assert (postParameters != null);
 
-    final HttpPost method = new HttpPost(UrlUtil.urlToUri(url));
-    method.setHeaders(UrlUtil.getHeaders(url));
+    final HttpPost httpPost = new HttpPost();
 
-    if (url.hasJsonBody()) {
-      method.setEntity(new StringEntity(url.getJsonBody(), ContentType.APPLICATION_JSON));
-    } else {
-      method.setEntity(new UrlEncodedFormEntity(getParametersList(url)));
-    }
+    httpPost.setURI(uri);
+    httpPost.setHeaders(headers);
+    httpPost.setEntity(new UrlEncodedFormEntity(postParameters));
 
-    String responseBody = getResponseBody(execute(method));
-    method.releaseConnection();
+    String responseBody = getResponseBody(execute(httpPost));
+
+    httpPost.releaseConnection();
 
     return responseBody;
   }
 
   @Override
-  public String put(UtilProtos.Url url) throws
+  public String put(URI uri, Header[] headers, List<NameValuePair> putParameters) throws
           IOException,
           NoContentException,
           BadRequestException,
@@ -109,25 +108,24 @@ public class SpotifyHttpManager implements HttpManager {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    assert (url != null);
+    assert (uri != null);
+    assert (headers != null);
+    assert (putParameters != null);
 
-    final HttpPut method = new HttpPut(UrlUtil.urlToUri(url));
-    method.setHeaders(UrlUtil.getHeaders(url));
+    final HttpPut httpPut = new HttpPut();
 
-    if (url.hasJsonBody()) {
-      method.setEntity(new StringEntity(url.getJsonBody(), ContentType.APPLICATION_JSON));
-    } else {
-      method.setEntity(new UrlEncodedFormEntity(getParametersList(url)));
-    }
+    httpPut.setURI(uri);
+    httpPut.setHeaders(headers);
+    httpPut.setEntity(new UrlEncodedFormEntity(putParameters));
 
-    String responseBody = getResponseBody(execute(method));
-    method.releaseConnection();
+    String responseBody = getResponseBody(execute(httpPut));
+    httpPut.releaseConnection();
 
     return responseBody;
   }
 
   @Override
-  public String delete(UtilProtos.Url url) throws
+  public String delete(URI uri, Header[] headers) throws
           IOException,
           NoContentException,
           BadRequestException,
@@ -138,28 +136,23 @@ public class SpotifyHttpManager implements HttpManager {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    assert (url != null);
+    assert (uri != null);
+    assert (headers != null);
 
-    final HttpDelete method = new HttpDelete(UrlUtil.urlToUri(url));
-    method.setHeaders(UrlUtil.getHeaders(url));
+    final HttpDelete httpDelete = new HttpDelete();
 
-    String responseBody = getResponseBody(execute(method));
-    method.releaseConnection();
+    httpDelete.setURI(uri);
+    httpDelete.setHeaders(headers);
+
+    String responseBody = getResponseBody(execute(httpDelete));
+
+    httpDelete.releaseConnection();
 
     return responseBody;
   }
 
   private CloseableHttpResponse execute(HttpRequestBase method) throws
-          IOException,
-          NoContentException,
-          BadRequestException,
-          UnauthorizedException,
-          ForbiddenException,
-          NotFoundException,
-          TooManyRequestsException,
-          InternalServerErrorException,
-          BadGatewayException,
-          ServiceUnavailableException {
+          IOException {
     final ConnectionConfig connectionConfig = ConnectionConfig
             .custom()
             .setCharset(Charset.forName("UTF-8"))
@@ -229,7 +222,7 @@ public class SpotifyHttpManager implements HttpManager {
   }
 
   public static class Builder {
-    private PoolingHttpClientConnectionManager connectionManager = null;
+    private PoolingHttpClientConnectionManager connectionManager = new PoolingHttpClientConnectionManager();
 
     public Builder() {
     }

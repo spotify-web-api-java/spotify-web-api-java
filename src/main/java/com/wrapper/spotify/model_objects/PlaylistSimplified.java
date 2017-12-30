@@ -4,8 +4,9 @@ import com.google.gson.JsonNull;
 import com.google.gson.JsonObject;
 import com.wrapper.spotify.enums.ModelObjectType;
 import com.wrapper.spotify.model_objects.miscellaneous.PlaylistTracksInformation;
+import com.wrapper.spotify.requests.data.search.interfaces.ISearchModelObject;
 
-public class PlaylistSimplified extends AbstractModelObject {
+public class PlaylistSimplified extends AbstractModelObject implements ISearchModelObject {
   private final boolean collaborative;
   private final ExternalUrls externalUrls;
   private final String href;
@@ -123,7 +124,7 @@ public class PlaylistSimplified extends AbstractModelObject {
       return this;
     }
 
-    public Builder setImages(Image[] images) {
+    public Builder setImages(Image... images) {
       this.images = images;
       return this;
     }
