@@ -1,16 +1,12 @@
 package com.wrapper.spotify.requests.data.personalization;
 
 import com.google.common.util.concurrent.SettableFuture;
-import com.google.gson.Gson;
-import com.google.gson.JsonParser;
 import com.wrapper.spotify.exceptions.*;
 import com.wrapper.spotify.model_objects.*;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
 import com.wrapper.spotify.requests.data.personalization.interfaces.IArtistTrackModelObject;
 
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.ParameterizedType;
 
 public class GetUsersTopArtistsAndTracksRequest<T extends IArtistTrackModelObject> extends AbstractDataRequest {
 
@@ -32,7 +28,7 @@ public class GetUsersTopArtistsAndTracksRequest<T extends IArtistTrackModelObjec
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-      return tClass.createModelObjectPaging(getJson());
+    return tClass.createModelObjectPaging(getJson());
   }
 
   public SettableFuture<Paging<T>> getAsync() throws

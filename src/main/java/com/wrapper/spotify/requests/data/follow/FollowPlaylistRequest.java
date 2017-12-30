@@ -1,5 +1,6 @@
 package com.wrapper.spotify.requests.data.follow;
 
+import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.exceptions.*;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
 
@@ -25,7 +26,7 @@ public class FollowPlaylistRequest extends AbstractDataRequest {
     putJson();
   }
 
-  public void putAsync() throws
+  public SettableFuture putAsync() throws
           IOException,
           NoContentException,
           BadRequestException,
@@ -36,7 +37,7 @@ public class FollowPlaylistRequest extends AbstractDataRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    executeAsync(putJson());
+    return executeAsync(putJson());
   }
 
   public static final class Builder extends AbstractDataRequest.Builder<Builder> {

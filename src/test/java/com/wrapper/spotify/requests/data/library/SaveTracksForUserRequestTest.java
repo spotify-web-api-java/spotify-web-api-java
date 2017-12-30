@@ -64,9 +64,6 @@ public class SaveTracksForUserRequestTest {
             .setHttpManager(TestUtil.MockedHttpManager.returningString(""))
             .build();
 
-    final String addTrackResponse = request.put();
-
-    assertEquals("", addTrackResponse);
+    request.put();
   }
-
 }

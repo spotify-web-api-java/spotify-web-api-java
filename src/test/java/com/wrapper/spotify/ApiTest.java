@@ -704,9 +704,9 @@ public class ApiTest {
             .offset(1)
             .build();
 
-    assertEquals("https://api.spotify.com:443/v1/me/tracks", request.getUri().toString());
-    assertHasFormParameter(request, "limit", "5");
-    assertHasFormParameter(request, "offset", "1");
+    assertEquals("https://api.spotify.com:443/v1/me/tracks?limit=5&offset=1", request.getUri().toString());
+    assertHasQueryParameter(request, "limit", "5");
+    assertHasQueryParameter(request, "offset", "1");
     assertHasHeader(request, "Authorization", "Bearer " + accessToken);
   }
 

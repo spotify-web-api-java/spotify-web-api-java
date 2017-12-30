@@ -1,6 +1,6 @@
 package com.wrapper.spotify.requests.data.follow;
 
-import com.google.common.base.Joiner;
+import com.google.common.util.concurrent.SettableFuture;
 import com.google.gson.JsonArray;
 import com.wrapper.spotify.exceptions.*;
 import com.wrapper.spotify.model_objects.ModelObjectType;
@@ -28,7 +28,7 @@ public class UnfollowArtistsOrUsersRequest extends AbstractDataRequest {
     deleteJson();
   }
 
-  public void deleteAsync() throws
+  public SettableFuture deleteAsync() throws
           IOException,
           NoContentException,
           BadRequestException,
@@ -39,7 +39,7 @@ public class UnfollowArtistsOrUsersRequest extends AbstractDataRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    executeAsync(deleteJson());
+    return executeAsync(deleteJson());
   }
 
   public static final class Builder extends AbstractDataRequest.Builder<Builder> {
