@@ -47,15 +47,16 @@ public class GetUsersProfileRequest extends AbstractDataRequest {
       super(accessToken);
     }
 
-    public Builder username(final String username) {
-      assert (username != null);
-      return setPath(String.format("/v1/users/%s", username));
+    public Builder user_id(final String user_id) {
+      assert (user_id != null);
+      assert (!user_id.equals(""));
+      return setPathParameter("user_id", user_id);
     }
 
     @Override
     public GetUsersProfileRequest build() {
+      setPath("/v1/users/{user_id}");
       return new GetUsersProfileRequest(this);
     }
-
   }
 }

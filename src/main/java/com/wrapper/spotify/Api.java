@@ -259,8 +259,7 @@ public class Api {
   public GetUsersProfileRequest.Builder getUser(String userId) {
     GetUsersProfileRequest.Builder builder = new GetUsersProfileRequest.Builder(accessToken);
     builder.setDefaults(httpManager, scheme, host, port);
-    userId = UriUtil.escapeUsername(userId);
-    builder.username(userId);
+    builder.user_id(UriUtil.escapeUsername(userId));
     return builder;
   }
 

@@ -53,5 +53,4 @@ public class GetCurrentUsersProfileRequest extends AbstractDataRequest {
       return new GetCurrentUsersProfileRequest(this);
     }
   }
-
 }
