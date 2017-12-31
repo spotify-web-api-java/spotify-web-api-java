@@ -3,7 +3,7 @@ package com.wrapper.spotify.requests.authorization.authorization_code;
 import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.exceptions.*;
-import com.wrapper.spotify.model_objects.credentials.AuthorizationCodeCredentials;
+import com.wrapper.spotify.model_objects.credentials.ClientCredentials;
 import com.wrapper.spotify.requests.authorization.AbstractAthorizationRequest;
 
 import java.io.IOException;
@@ -14,7 +14,7 @@ public class AuthorizationCodeRefreshRequest extends AbstractAthorizationRequest
     super(builder);
   }
 
-  public AuthorizationCodeCredentials post() throws
+  public ClientCredentials post() throws
           IOException,
           NoContentException,
           BadRequestException,
@@ -25,10 +25,10 @@ public class AuthorizationCodeRefreshRequest extends AbstractAthorizationRequest
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return new AuthorizationCodeCredentials.JsonUtil().createModelObject(postJson());
+    return new ClientCredentials.JsonUtil().createModelObject(postJson());
   }
 
-  public SettableFuture<AuthorizationCodeCredentials> postAsync() throws
+  public SettableFuture<ClientCredentials> postAsync() throws
           IOException,
           NoContentException,
           BadRequestException,
@@ -39,7 +39,7 @@ public class AuthorizationCodeRefreshRequest extends AbstractAthorizationRequest
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return executeAsync(new AuthorizationCodeCredentials.JsonUtil().createModelObject(postJson()));
+    return executeAsync(new ClientCredentials.JsonUtil().createModelObject(postJson()));
   }
 
   public static final class Builder extends AbstractAthorizationRequest.Builder<Builder> {

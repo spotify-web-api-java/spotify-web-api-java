@@ -18,6 +18,7 @@ public abstract class AbstractAthorizationRequest extends AbstractRequest {
       assert (!clientSecret.equals(""));
 
       setHeader("Authorization", "Basic " + Base64.encodeBase64String((clientId + ":" + clientSecret).getBytes()));
+      setHeader(CONTENT_TYPE_HEADER, "application/x-www-form-urlencoded");
     }
   }
 }

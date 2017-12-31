@@ -171,6 +171,8 @@ public abstract class AbstractRequest implements IRequest {
 
   public static abstract class Builder<BuilderType extends Builder<?>> implements IRequest.Builder {
 
+    public static final String CONTENT_TYPE_HEADER=  "Content-Type";
+
     private IHttpManager httpManager = Api.DEFAULT_HTTP_MANAGER;
     private String scheme = Api.DEFAULT_SCHEME;
     private String host = Api.DEFAULT_HOST;
@@ -184,7 +186,7 @@ public abstract class AbstractRequest implements IRequest {
     private String body = "";
 
     protected Builder() {
-      setHeader("Content-Type", "application/json");
+      setHeader(CONTENT_TYPE_HEADER, "application/json");
     }
 
     public BuilderType setHttpManager(final IHttpManager httpManager) {
