@@ -1,4 +1,4 @@
-package com.wrapper.spotify.requests.authentication.client_credentials;
+package com.wrapper.spotify.requests.authorization.client_credentials;
 
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
@@ -6,7 +6,6 @@ import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.model_objects.credentials.ClientCredentials;
-import com.wrapper.spotify.requests.authentication.client_credentials.ClientCredentialsRequest;
 import org.junit.Test;
 
 import java.util.concurrent.CountDownLatch;
@@ -29,7 +28,7 @@ public class ClientCredentialsRequestTest {
 
     final ClientCredentialsRequest request = api
             .clientCredentialsGrant()
-            .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/authentication/client_credentials/ClientCredentials.json"))
+            .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/authorization/client_credentials/ClientCredentials.json"))
             .build();
 
     final ClientCredentials response = request.post();
@@ -50,7 +49,7 @@ public class ClientCredentialsRequestTest {
 
     final ClientCredentialsRequest request = api
             .clientCredentialsGrant()
-            .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/authentication/client_credentials/ClientCredentials.json"))
+            .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/authorization/client_credentials/ClientCredentials.json"))
             .build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);

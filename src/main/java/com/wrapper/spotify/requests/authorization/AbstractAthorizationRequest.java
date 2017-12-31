@@ -1,4 +1,4 @@
-package com.wrapper.spotify.requests.authentication;
+package com.wrapper.spotify.requests.authorization;
 
 import com.wrapper.spotify.requests.AbstractRequest;
 import org.apache.commons.codec.binary.Base64;

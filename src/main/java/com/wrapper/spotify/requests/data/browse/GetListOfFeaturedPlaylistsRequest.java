@@ -28,7 +28,7 @@ public class GetListOfFeaturedPlaylistsRequest extends AbstractDataRequest {
    * @throws TooManyRequestsException     Rate limiting has been applied.
    * @throws InternalServerErrorException You should never receive this error because our clever coders catch them all ... but if you are unlucky enough to get one, please report it to us.
    * @throws NotFoundException            The requested resource could not be found. This error can be due to a temporary or permanent condition.
-   * @throws UnauthorizedException        The request requires user authentication or, if the request included authorization credentials, authorization has been refused for those credentials.
+   * @throws UnauthorizedException        The request requires user authorization or, if the request included authorization credentials, authorization has been refused for those credentials.
    * @throws ServiceUnavailableException  The server is currently unable to handle the request due to a temporary condition which will be alleviated after some delay. You can choose to resend the request again.
    */
   public FeaturedPlaylists get() throws
@@ -57,7 +57,7 @@ public class GetListOfFeaturedPlaylistsRequest extends AbstractDataRequest {
    * @throws TooManyRequestsException     Rate limiting has been applied.
    * @throws InternalServerErrorException You should never receive this error because our clever coders catch them all ... but if you are unlucky enough to get one, please report it to us.
    * @throws NotFoundException            The requested resource could not be found. This error can be due to a temporary or permanent condition.
-   * @throws UnauthorizedException        The request requires user authentication or, if the request included authorization credentials, authorization has been refused for those credentials.
+   * @throws UnauthorizedException        The request requires user authorization or, if the request included authorization credentials, authorization has been refused for those credentials.
    * @throws ServiceUnavailableException  The server is currently unable to handle the request due to a temporary condition which will be alleviated after some delay. You can choose to resend the request again.
    */
   public SettableFuture<FeaturedPlaylists> getAsync() throws

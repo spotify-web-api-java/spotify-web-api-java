@@ -37,7 +37,7 @@ public class GetAlbumRequest extends AbstractDataRequest {
    *                                      ... but if you are unlucky enough to get one, please report it to us.
    * @throws NotFoundException            The requested resource could not be found. This error can be due to a
    *                                      temporary or permanent condition.
-   * @throws UnauthorizedException        The request requires user authentication or, if the request included
+   * @throws UnauthorizedException        The request requires user authorization or, if the request included
    *                                      authorization credentials, authorization has been refused for those
    *                                      credentials.
    * @throws ServiceUnavailableException  The server is currently unable to handle the request due to a temporary
@@ -73,7 +73,7 @@ public class GetAlbumRequest extends AbstractDataRequest {
    *                                      ... but if you are unlucky enough to get one, please report it to us.
    * @throws NotFoundException            The requested resource could not be found. This error can be due to a
    *                                      temporary or permanent condition.
-   * @throws UnauthorizedException        The request requires user authentication or, if the request included
+   * @throws UnauthorizedException        The request requires user authorization or, if the request included
    *                                      authorization credentials, authorization has been refused for those
    *                                      credentials.
    * @throws ServiceUnavailableException  The server is currently unable to handle the request due to a temporary

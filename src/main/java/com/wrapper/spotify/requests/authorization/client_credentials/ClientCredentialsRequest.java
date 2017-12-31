@@ -1,10 +1,10 @@
-package com.wrapper.spotify.requests.authentication.client_credentials;
+package com.wrapper.spotify.requests.authorization.client_credentials;
 
 import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.exceptions.*;
 import com.wrapper.spotify.model_objects.credentials.ClientCredentials;
-import com.wrapper.spotify.requests.authentication.AbstractAthorizationRequest;
+import com.wrapper.spotify.requests.authorization.AbstractAthorizationRequest;
 
 import java.io.IOException;
 
