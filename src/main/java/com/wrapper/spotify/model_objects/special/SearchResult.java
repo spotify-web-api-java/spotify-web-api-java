@@ -1,6 +1,7 @@
-package com.wrapper.spotify.model_objects;
+package com.wrapper.spotify.model_objects.special;
 
 import com.google.gson.JsonObject;
+import com.wrapper.spotify.model_objects.AbstractModelObject;
 import com.wrapper.spotify.model_objects.specification.*;
 import com.wrapper.spotify.requests.data.personalization.interfaces.IArtistTrackModelObject;
 import com.wrapper.spotify.requests.data.search.interfaces.ISearchModelObject;

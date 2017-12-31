@@ -1,6 +1,7 @@
-package com.wrapper.spotify.model_objects;
+package com.wrapper.spotify.model_objects.miscellaneous;
 
 import com.google.gson.JsonObject;
+import com.wrapper.spotify.model_objects.AbstractModelObject;
 
 public class AudioAnalysis extends AbstractModelObject {
   private final AudioAnalysisMeasure[] bars;

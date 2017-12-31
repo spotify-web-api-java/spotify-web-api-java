@@ -5,7 +5,7 @@ import com.google.gson.JsonObject;
 import com.neovisionaries.i18n.CountryCode;
 import com.neovisionaries.i18n.LanguageCode;
 import com.wrapper.spotify.enums.AlbumType;
-import com.wrapper.spotify.model_objects.PlaylistTrackPosition;
+import com.wrapper.spotify.model_objects.special.PlaylistTrackPosition;
 import com.wrapper.spotify.requests.IRequest;
 import org.apache.commons.codec.binary.Base64;
 import org.junit.Test;

@@ -1,4 +1,4 @@
-package com.wrapper.spotify.model_objects;
+package com.wrapper.spotify.model_objects.special;
 
 public class PlaylistTrackPosition {
   private String uri;

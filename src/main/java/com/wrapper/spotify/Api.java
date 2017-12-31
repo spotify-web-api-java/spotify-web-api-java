@@ -4,7 +4,7 @@ import com.google.common.base.Joiner;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.neovisionaries.i18n.CountryCode;
-import com.wrapper.spotify.model_objects.PlaylistTrackPosition;
+import com.wrapper.spotify.model_objects.special.PlaylistTrackPosition;
 import com.wrapper.spotify.requests.authentication.AuthorizationCodeGrantRequest;
 import com.wrapper.spotify.requests.authentication.AuthorizationUriRequest;
 import com.wrapper.spotify.requests.authentication.ClientCredentialsGrantRequest;
