@@ -8,7 +8,7 @@ import com.wrapper.spotify.model_objects.AbstractModelObject;
 public class Playlist extends AbstractModelObject {
   private final boolean collaborative;
   private final String description;
-  private final ExternalUrls externalUrls;
+  private final ExternalUrl externalUrls;
   private final Followers followers;
   private final String href;
   private final String id;
@@ -48,7 +48,7 @@ public class Playlist extends AbstractModelObject {
     return description;
   }
 
-  public ExternalUrls getExternalUrls() {
+  public ExternalUrl getExternalUrls() {
     return externalUrls;
   }
 
@@ -104,7 +104,7 @@ public class Playlist extends AbstractModelObject {
   public static final class Builder extends AbstractModelObject.Builder {
     private boolean collaborative;
     private String description;
-    private ExternalUrls externalUrls;
+    private ExternalUrl externalUrls;
     private Followers followers;
     private String href;
     private String id;
@@ -127,7 +127,7 @@ public class Playlist extends AbstractModelObject {
       return this;
     }
 
-    public Builder setExternalUrls(ExternalUrls externalUrls) {
+    public Builder setExternalUrls(ExternalUrl externalUrls) {
       this.externalUrls = externalUrls;
       return this;
     }
@@ -202,7 +202,7 @@ public class Playlist extends AbstractModelObject {
       return new Playlist.Builder()
               .setCollaborative(jsonObject.get("collaborative").getAsBoolean())
               .setDescription((jsonObject.get("description") instanceof JsonNull) ? null : jsonObject.get("description").getAsString())
-              .setExternalUrls(new ExternalUrls.JsonUtil().createModelObject(jsonObject.getAsJsonObject("external_urls")))
+              .setExternalUrls(new ExternalUrl.JsonUtil().createModelObject(jsonObject.getAsJsonObject("external_urls")))
               .setFollowers(new Followers.JsonUtil().createModelObject(jsonObject.getAsJsonObject("followers")))
               .setHref(jsonObject.get("href").getAsString())
               .setId(jsonObject.get("id").getAsString())

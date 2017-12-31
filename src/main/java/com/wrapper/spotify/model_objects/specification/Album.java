@@ -13,8 +13,8 @@ public class Album extends AbstractModelObject {
   private final ArtistSimplified[] artists;
   private final CountryCode[] availableMarkets;
   private final Copyright[] copyrights;
-  private final ExternalIds externalIds;
-  private final ExternalUrls externalUrls;
+  private final ExternalId externalIds;
+  private final ExternalUrl externalUrls;
   private final String[] genres;
   private final String href;
   private final String id;
@@ -67,11 +67,11 @@ public class Album extends AbstractModelObject {
     return copyrights;
   }
 
-  public ExternalIds getExternalIds() {
+  public ExternalId getExternalIds() {
     return externalIds;
   }
 
-  public ExternalUrls getExternalUrls() {
+  public ExternalUrl getExternalUrls() {
     return externalUrls;
   }
 
@@ -130,8 +130,8 @@ public class Album extends AbstractModelObject {
     private ArtistSimplified[] artists;
     private CountryCode[] availableMarkets;
     private Copyright[] copyrights;
-    private ExternalIds externalIds;
-    private ExternalUrls externalUrls;
+    private ExternalId externalIds;
+    private ExternalUrl externalUrls;
     private String[] genres;
     private String href;
     private String id;
@@ -165,12 +165,12 @@ public class Album extends AbstractModelObject {
       return this;
     }
 
-    public Builder setExternalIds(ExternalIds externalIds) {
+    public Builder setExternalIds(ExternalId externalIds) {
       this.externalIds = externalIds;
       return this;
     }
 
-    public Builder setExternalUrls(ExternalUrls externalUrls) {
+    public Builder setExternalUrls(ExternalUrl externalUrls) {
       this.externalUrls = externalUrls;
       return this;
     }
@@ -252,8 +252,8 @@ public class Album extends AbstractModelObject {
               .setArtists(new ArtistSimplified.JsonUtil().createModelObjectArray(jsonObject.getAsJsonArray("artists")))
               .setAvailableMarkets(new Gson().fromJson(jsonObject.getAsJsonArray("available_markets"), CountryCode[].class))
               .setCopyrights(new Copyright.JsonUtil().createModelObjectArray(jsonObject.getAsJsonArray("copyrights")))
-              .setExternalIds(new ExternalIds.JsonUtil().createModelObject(jsonObject.getAsJsonObject("external_ids")))
-              .setExternalUrls(new ExternalUrls.JsonUtil().createModelObject(jsonObject.getAsJsonObject("external_urls")))
+              .setExternalIds(new ExternalId.JsonUtil().createModelObject(jsonObject.getAsJsonObject("external_ids")))
+              .setExternalUrls(new ExternalUrl.JsonUtil().createModelObject(jsonObject.getAsJsonObject("external_urls")))
               .setGenres(new Gson().fromJson(jsonObject.getAsJsonArray("genres"), String[].class))
               .setHref(jsonObject.get("href").getAsString())
               .setId(jsonObject.get("id").getAsString())

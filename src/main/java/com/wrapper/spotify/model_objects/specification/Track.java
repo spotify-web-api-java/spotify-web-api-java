@@ -17,8 +17,8 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
   private final int discNumber;
   private final int durationMs;
   private final boolean explicit;
-  private final ExternalIds externalIds;
-  private final ExternalUrls externalUrls;
+  private final ExternalId externalIds;
+  private final ExternalUrl externalUrls;
   private final String href;
   private final String id;
   private final boolean isPlayable;
@@ -79,11 +79,11 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
     return explicit;
   }
 
-  public ExternalIds getExternalIds() {
+  public ExternalId getExternalIds() {
     return externalIds;
   }
 
-  public ExternalUrls getExternalUrls() {
+  public ExternalUrl getExternalUrls() {
     return externalUrls;
   }
 
@@ -143,8 +143,8 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
     private int discNumber;
     private int durationMs;
     private boolean explicit;
-    private ExternalIds externalIds;
-    private ExternalUrls externalUrls;
+    private ExternalId externalIds;
+    private ExternalUrl externalUrls;
     private String href;
     private String id;
     private boolean isPlayable;
@@ -187,12 +187,12 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
       return this;
     }
 
-    public Builder setExternalIds(ExternalIds externalIds) {
+    public Builder setExternalIds(ExternalId externalIds) {
       this.externalIds = externalIds;
       return this;
     }
 
-    public Builder setExternalUrls(ExternalUrls externalUrls) {
+    public Builder setExternalUrls(ExternalUrl externalUrls) {
       this.externalUrls = externalUrls;
       return this;
     }
@@ -272,8 +272,8 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
                 .setDiscNumber(jsonObject.get("disc_number").getAsInt())
                 .setDurationMs(jsonObject.get("duration_ms").getAsInt())
                 .setExplicit(jsonObject.get("explicit").getAsBoolean())
-                .setExternalIds(new ExternalIds.JsonUtil().createModelObject(jsonObject.getAsJsonObject("external_ids")))
-                .setExternalUrls(new ExternalUrls.JsonUtil().createModelObject(jsonObject.getAsJsonObject("external_urls")))
+                .setExternalIds(new ExternalId.JsonUtil().createModelObject(jsonObject.getAsJsonObject("external_ids")))
+                .setExternalUrls(new ExternalUrl.JsonUtil().createModelObject(jsonObject.getAsJsonObject("external_urls")))
                 .setHref((jsonObject.get("href") instanceof JsonNull) ? null : jsonObject.get("href").getAsString())
                 .setId((jsonObject.get("id") instanceof JsonNull) ? null : jsonObject.get("id").getAsString())
                 .setName(jsonObject.get("name").getAsString())
@@ -290,8 +290,8 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
                 .setDiscNumber(jsonObject.get("disc_number").getAsInt())
                 .setDurationMs(jsonObject.get("duration_ms").getAsInt())
                 .setExplicit(jsonObject.get("explicit").getAsBoolean())
-                .setExternalIds(new ExternalIds.JsonUtil().createModelObject(jsonObject.getAsJsonObject("external_ids")))
-                .setExternalUrls(new ExternalUrls.JsonUtil().createModelObject(jsonObject.getAsJsonObject("external_urls")))
+                .setExternalIds(new ExternalId.JsonUtil().createModelObject(jsonObject.getAsJsonObject("external_ids")))
+                .setExternalUrls(new ExternalUrl.JsonUtil().createModelObject(jsonObject.getAsJsonObject("external_urls")))
                 .setHref(jsonObject.get("href").getAsString())
                 .setId(jsonObject.get("id").getAsString())
                 .setIsPlayable(jsonObject.get("is_playable").getAsBoolean())

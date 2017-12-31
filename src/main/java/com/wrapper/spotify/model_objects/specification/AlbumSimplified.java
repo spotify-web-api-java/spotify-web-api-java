@@ -13,7 +13,7 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
   private final AlbumType albumType;
   private final ArtistSimplified[] artists;
   private final CountryCode[] availableMarkets;
-  private final ExternalUrls externalUrls;
+  private final ExternalUrl externalUrls;
   private final String href;
   private final String id;
   private final Image[] images;
@@ -48,7 +48,7 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
     return availableMarkets;
   }
 
-  public ExternalUrls getExternalUrls() {
+  public ExternalUrl getExternalUrls() {
     return externalUrls;
   }
 
@@ -86,7 +86,7 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
     private AlbumType albumType;
     private ArtistSimplified[] artists;
     private CountryCode[] availableMarkets;
-    private ExternalUrls externalUrls;
+    private ExternalUrl externalUrls;
     private String href;
     private String id;
     private Image[] images;
@@ -109,7 +109,7 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
       return this;
     }
 
-    public Builder setExternalUrls(ExternalUrls externalUrls) {
+    public Builder setExternalUrls(ExternalUrl externalUrls) {
       this.externalUrls = externalUrls;
       return this;
     }
@@ -160,7 +160,7 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
               .setAlbumType((jsonObject.get("album_type") instanceof JsonNull) ? null : AlbumType.valueOf(jsonObject.get("album_type").getAsString().toUpperCase()))
               .setArtists(new ArtistSimplified.JsonUtil().createModelObjectArray(jsonObject.getAsJsonArray("artists")))
               .setAvailableMarkets(new Gson().fromJson(jsonObject.get("available_markets"), CountryCode[].class))
-              .setExternalUrls(new ExternalUrls.JsonUtil().createModelObject(jsonObject.getAsJsonObject("external_urls")))
+              .setExternalUrls(new ExternalUrl.JsonUtil().createModelObject(jsonObject.getAsJsonObject("external_urls")))
               .setHref((jsonObject.get("href") instanceof JsonNull) ? null : jsonObject.get("href").getAsString())
               .setId((jsonObject.get("id") instanceof JsonNull) ? null : jsonObject.get("id").getAsString())
               .setImages(new Image.JsonUtil().createModelObjectArray(jsonObject.getAsJsonArray("images")))

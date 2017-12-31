@@ -7,10 +7,10 @@ import com.wrapper.spotify.model_objects.AbstractModelObject;
 
 import java.util.Map;
 
-public class ExternalIds extends AbstractModelObject {
+public class ExternalId extends AbstractModelObject {
   private final Map<String, String> externalIds;
 
-  private ExternalIds(final ExternalIds.Builder builder) {
+  private ExternalId(final ExternalId.Builder builder) {
     super(builder);
 
     this.externalIds = builder.externalIds;
@@ -34,13 +34,13 @@ public class ExternalIds extends AbstractModelObject {
     }
 
     @Override
-    public ExternalIds build() {
-      return new ExternalIds(this);
+    public ExternalId build() {
+      return new ExternalId(this);
     }
   }
 
-  public static final class JsonUtil extends AbstractModelObject.JsonUtil<ExternalIds> {
-    public ExternalIds createModelObject(JsonObject jsonObject) {
+  public static final class JsonUtil extends AbstractModelObject.JsonUtil<ExternalId> {
+    public ExternalId createModelObject(JsonObject jsonObject) {
       if (jsonObject == null || jsonObject.isJsonNull()) {
         return null;
       }
@@ -48,7 +48,7 @@ public class ExternalIds extends AbstractModelObject {
       Map<String, String> map = new Gson().fromJson(jsonObject, new TypeToken<Map<String, String>>() {
       }.getType());
 
-      return new ExternalIds.Builder()
+      return new ExternalId.Builder()
               .setExternalIds(map)
               .build();
     }

@@ -5,7 +5,7 @@ import com.wrapper.spotify.enums.ModelObjectType;
 import com.wrapper.spotify.model_objects.AbstractModelObject;
 
 public class TrackLink extends AbstractModelObject {
-  private final ExternalUrls externalUrls;
+  private final ExternalUrl externalUrls;
   private final String href;
   private final String id;
   private final ModelObjectType type;
@@ -21,7 +21,7 @@ public class TrackLink extends AbstractModelObject {
     this.uri = builder.uri;
   }
 
-  public ExternalUrls getExternalUrls() {
+  public ExternalUrl getExternalUrls() {
     return externalUrls;
   }
 
@@ -47,13 +47,13 @@ public class TrackLink extends AbstractModelObject {
   }
 
   public static final class Builder extends AbstractModelObject.Builder {
-    private ExternalUrls externalUrls;
+    private ExternalUrl externalUrls;
     private String href;
     private String id;
     private ModelObjectType type;
     private String uri;
 
-    public Builder setExternalUrls(ExternalUrls externalUrls) {
+    public Builder setExternalUrls(ExternalUrl externalUrls) {
       this.externalUrls = externalUrls;
       return this;
     }
@@ -91,7 +91,7 @@ public class TrackLink extends AbstractModelObject {
       }
 
       return new TrackLink.Builder()
-              .setExternalUrls(new ExternalUrls.JsonUtil().createModelObject(jsonObject.getAsJsonObject("external_urls")))
+              .setExternalUrls(new ExternalUrl.JsonUtil().createModelObject(jsonObject.getAsJsonObject("external_urls")))
               .setHref(jsonObject.get("href").getAsString())
               .setId(jsonObject.get("id").getAsString())
               .setType(ModelObjectType.valueOf(jsonObject.get("type").getAsString().toUpperCase()))

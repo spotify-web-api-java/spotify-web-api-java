@@ -12,7 +12,7 @@ public class TrackSimplified extends AbstractModelObject {
   private final int discNumber;
   private final int durationMs;
   private final boolean explicit;
-  private final ExternalUrls externalUrls;
+  private final ExternalUrl externalUrls;
   private final String href;
   private final String id;
   private final boolean isPlayable;
@@ -63,7 +63,7 @@ public class TrackSimplified extends AbstractModelObject {
     return explicit;
   }
 
-  public ExternalUrls getExternalUrls() {
+  public ExternalUrl getExternalUrls() {
     return externalUrls;
   }
 
@@ -114,7 +114,7 @@ public class TrackSimplified extends AbstractModelObject {
     private int discNumber;
     private int durationMs;
     private boolean explicit;
-    private ExternalUrls externalUrls;
+    private ExternalUrl externalUrls;
     private String href;
     private String id;
     private boolean isPlayable;
@@ -150,7 +150,7 @@ public class TrackSimplified extends AbstractModelObject {
       return this;
     }
 
-    public Builder setExternalUrls(ExternalUrls externalUrls) {
+    public Builder setExternalUrls(ExternalUrl externalUrls) {
       this.externalUrls = externalUrls;
       return this;
     }
@@ -219,7 +219,7 @@ public class TrackSimplified extends AbstractModelObject {
                 .setDiscNumber(jsonObject.get("disc_number").getAsInt())
                 .setDurationMs(jsonObject.get("duration_ms").getAsInt())
                 .setExplicit(jsonObject.get("explicit").getAsBoolean())
-                .setExternalUrls(new ExternalUrls.JsonUtil().createModelObject(jsonObject.getAsJsonObject("external_urls")))
+                .setExternalUrls(new ExternalUrl.JsonUtil().createModelObject(jsonObject.getAsJsonObject("external_urls")))
                 .setHref(jsonObject.get("href").getAsString())
                 .setId(jsonObject.get("id").getAsString())
                 .setName(jsonObject.get("name").getAsString())
@@ -234,7 +234,7 @@ public class TrackSimplified extends AbstractModelObject {
                 .setDiscNumber(jsonObject.get("disc_number").getAsInt())
                 .setDurationMs(jsonObject.get("duration_ms").getAsInt())
                 .setExplicit(jsonObject.get("explicit").getAsBoolean())
-                .setExternalUrls(new ExternalUrls.JsonUtil().createModelObject(jsonObject.getAsJsonObject("external_urls")))
+                .setExternalUrls(new ExternalUrl.JsonUtil().createModelObject(jsonObject.getAsJsonObject("external_urls")))
                 .setHref(jsonObject.get("href").getAsString())
                 .setId(jsonObject.get("id").getAsString())
                 .setIsPlayable(jsonObject.get("is_playable").getAsBoolean())

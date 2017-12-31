@@ -8,7 +8,7 @@ import com.wrapper.spotify.model_objects.miscellaneous.PlaylistTracksInformation
 import com.wrapper.spotify.requests.data.search.interfaces.ISearchModelObject;
 
 public class ArtistSimplified extends AbstractModelObject {
-  private final ExternalUrls externalUrls;
+  private final ExternalUrl externalUrls;
   private final String href;
   private final String id;
   private final String name;
@@ -26,7 +26,7 @@ public class ArtistSimplified extends AbstractModelObject {
     this.uri = builder.uri;
   }
 
-  public ExternalUrls getExternalUrls() {
+  public ExternalUrl getExternalUrls() {
     return externalUrls;
   }
 
@@ -56,14 +56,14 @@ public class ArtistSimplified extends AbstractModelObject {
   }
 
   public static final class Builder extends AbstractModelObject.Builder {
-    private ExternalUrls externalUrls;
+    private ExternalUrl externalUrls;
     private String href;
     private String id;
     private String name;
     private ModelObjectType type;
     private String uri;
 
-    public Builder setExternalUrls(ExternalUrls externalUrls) {
+    public Builder setExternalUrls(ExternalUrl externalUrls) {
       this.externalUrls = externalUrls;
       return this;
     }
@@ -106,7 +106,7 @@ public class ArtistSimplified extends AbstractModelObject {
       }
 
       return new ArtistSimplified.Builder()
-              .setExternalUrls(new ExternalUrls.JsonUtil().createModelObject(jsonObject.getAsJsonObject("external_urls")))
+              .setExternalUrls(new ExternalUrl.JsonUtil().createModelObject(jsonObject.getAsJsonObject("external_urls")))
               .setHref((jsonObject.get("href") instanceof JsonNull) ? null : jsonObject.get("href").getAsString())
               .setId((jsonObject.get("id") instanceof JsonNull) ? null : jsonObject.get("id").getAsString())
               .setName(jsonObject.get("name").getAsString())
@@ -118,7 +118,7 @@ public class ArtistSimplified extends AbstractModelObject {
 
   public static class PlaylistSimplified extends AbstractModelObject implements ISearchModelObject {
     private final boolean collaborative;
-    private final ExternalUrls externalUrls;
+    private final ExternalUrl externalUrls;
     private final String href;
     private final String id;
     private final Image[] images;
@@ -151,7 +151,7 @@ public class ArtistSimplified extends AbstractModelObject {
       return collaborative;
     }
 
-    public ExternalUrls getExternalUrls() {
+    public ExternalUrl getExternalUrls() {
       return externalUrls;
     }
 
@@ -202,7 +202,7 @@ public class ArtistSimplified extends AbstractModelObject {
 
     public static final class Builder extends AbstractModelObject.Builder {
       private boolean collaborative;
-      private ExternalUrls externalUrls;
+      private ExternalUrl externalUrls;
       private String href;
       private String id;
       private Image[] images;
@@ -219,7 +219,7 @@ public class ArtistSimplified extends AbstractModelObject {
         return this;
       }
 
-      public Builder setExternalUrls(ExternalUrls externalUrls) {
+      public Builder setExternalUrls(ExternalUrl externalUrls) {
         this.externalUrls = externalUrls;
         return this;
       }
@@ -288,7 +288,7 @@ public class ArtistSimplified extends AbstractModelObject {
 
         return new Builder()
                 .setCollaborative(jsonObject.get("collaborative").getAsBoolean())
-                .setExternalUrls(new ExternalUrls.JsonUtil().createModelObject(jsonObject.getAsJsonObject("external_urls")))
+                .setExternalUrls(new ExternalUrl.JsonUtil().createModelObject(jsonObject.getAsJsonObject("external_urls")))
                 .setHref(jsonObject.get("href").getAsString())
                 .setId(jsonObject.get("id").getAsString())
                 .setImages(new Image.JsonUtil().createModelObjectArray(jsonObject.getAsJsonArray("images")))

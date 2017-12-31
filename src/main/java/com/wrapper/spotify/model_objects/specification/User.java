@@ -11,7 +11,7 @@ public class User extends AbstractModelObject {
   private final CountryCode country;
   private final String displayName;
   private final String email;
-  private final ExternalUrls externalUrls;
+  private final ExternalUrl externalUrls;
   private final Followers followers;
   private final String href;
   private final String id;
@@ -53,7 +53,7 @@ public class User extends AbstractModelObject {
     return email;
   }
 
-  public ExternalUrls getExternalUrls() {
+  public ExternalUrl getExternalUrls() {
     return externalUrls;
   }
 
@@ -95,7 +95,7 @@ public class User extends AbstractModelObject {
     private CountryCode country;
     private String displayName;
     private String email;
-    private ExternalUrls externalUrls;
+    private ExternalUrl externalUrls;
     private Followers followers;
     private String href;
     private String id;
@@ -124,7 +124,7 @@ public class User extends AbstractModelObject {
       return this;
     }
 
-    public Builder setExternalUrls(ExternalUrls externalUrls) {
+    public Builder setExternalUrls(ExternalUrl externalUrls) {
       this.externalUrls = externalUrls;
       return this;
     }
@@ -182,7 +182,7 @@ public class User extends AbstractModelObject {
                 .setCountry(CountryCode.getByCode(jsonObject.get("country").getAsString()))
                 .setDisplayName(jsonObject.has("display_name") ? jsonObject.get("display_name").getAsString() : null)
                 .setEmail(jsonObject.get("email").getAsString())
-                .setExternalUrls(new ExternalUrls.JsonUtil().createModelObject(jsonObject.getAsJsonObject("external_urls")))
+                .setExternalUrls(new ExternalUrl.JsonUtil().createModelObject(jsonObject.getAsJsonObject("external_urls")))
                 .setFollowers(new Followers.JsonUtil().createModelObject(jsonObject.getAsJsonObject("followers")))
                 .setHref(jsonObject.get("href").getAsString())
                 .setId(jsonObject.get("id").getAsString())
@@ -194,7 +194,7 @@ public class User extends AbstractModelObject {
       } else {
         return new Builder()
                 .setDisplayName(jsonObject.has("display_name") ? jsonObject.get("display_name").getAsString() : null)
-                .setExternalUrls(new ExternalUrls.JsonUtil().createModelObject(jsonObject.getAsJsonObject("external_urls")))
+                .setExternalUrls(new ExternalUrl.JsonUtil().createModelObject(jsonObject.getAsJsonObject("external_urls")))
                 .setFollowers(new Followers.JsonUtil().createModelObject(jsonObject.getAsJsonObject("followers")))
                 .setHref(jsonObject.get("href").getAsString())
                 .setId(jsonObject.get("id").getAsString())

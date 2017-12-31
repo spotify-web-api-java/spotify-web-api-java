@@ -7,10 +7,10 @@ import com.wrapper.spotify.model_objects.AbstractModelObject;
 
 import java.util.Map;
 
-public class ExternalUrls extends AbstractModelObject {
+public class ExternalUrl extends AbstractModelObject {
   private final Map<String, String> externalUrls;
 
-  private ExternalUrls(final ExternalUrls.Builder builder) {
+  private ExternalUrl(final ExternalUrl.Builder builder) {
     super(builder);
 
     this.externalUrls = builder.externalUrls;
@@ -38,13 +38,13 @@ public class ExternalUrls extends AbstractModelObject {
     }
 
     @Override
-    public ExternalUrls build() {
-      return new ExternalUrls(this);
+    public ExternalUrl build() {
+      return new ExternalUrl(this);
     }
   }
 
-  public static final class JsonUtil extends AbstractModelObject.JsonUtil<ExternalUrls> {
-    public ExternalUrls createModelObject(JsonObject jsonObject) {
+  public static final class JsonUtil extends AbstractModelObject.JsonUtil<ExternalUrl> {
+    public ExternalUrl createModelObject(JsonObject jsonObject) {
       if (jsonObject == null || jsonObject.isJsonNull()) {
         return null;
       }
@@ -52,7 +52,7 @@ public class ExternalUrls extends AbstractModelObject {
       Map<String, String> map = new Gson().fromJson(jsonObject, new TypeToken<Map<String, String>>() {
       }.getType());
 
-      return new ExternalUrls.Builder()
+      return new ExternalUrl.Builder()
               .setExternalUrls(map)
               .build();
     }

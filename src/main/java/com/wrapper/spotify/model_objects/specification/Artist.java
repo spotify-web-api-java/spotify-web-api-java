@@ -8,7 +8,7 @@ import com.wrapper.spotify.requests.data.personalization.interfaces.IArtistTrack
 import com.wrapper.spotify.requests.data.search.interfaces.ISearchModelObject;
 
 public class Artist extends AbstractModelObject implements IArtistTrackModelObject, ISearchModelObject {
-  private final ExternalUrls externalUrls;
+  private final ExternalUrl externalUrls;
   private final Followers followers;
   private final String[] genres;
   private final String href;
@@ -34,7 +34,7 @@ public class Artist extends AbstractModelObject implements IArtistTrackModelObje
     this.uri = builder.uri;
   }
 
-  public ExternalUrls getExternalUrls() {
+  public ExternalUrl getExternalUrls() {
     return externalUrls;
   }
 
@@ -80,7 +80,7 @@ public class Artist extends AbstractModelObject implements IArtistTrackModelObje
   }
 
   public static final class Builder extends AbstractModelObject.Builder {
-    private ExternalUrls externalUrls;
+    private ExternalUrl externalUrls;
     private Followers followers;
     private String[] genres;
     private String href;
@@ -91,7 +91,7 @@ public class Artist extends AbstractModelObject implements IArtistTrackModelObje
     private ModelObjectType type;
     private String uri;
 
-    public Builder setExternalUrls(ExternalUrls externalUrls) {
+    public Builder setExternalUrls(ExternalUrl externalUrls) {
       this.externalUrls = externalUrls;
       return this;
     }
@@ -154,7 +154,7 @@ public class Artist extends AbstractModelObject implements IArtistTrackModelObje
       }
 
       return new Artist.Builder()
-              .setExternalUrls(new ExternalUrls.JsonUtil().createModelObject(jsonObject.getAsJsonObject("external_urls")))
+              .setExternalUrls(new ExternalUrl.JsonUtil().createModelObject(jsonObject.getAsJsonObject("external_urls")))
               .setFollowers(new Followers.JsonUtil().createModelObject(jsonObject.getAsJsonObject("followers")))
               .setGenres(new Gson().fromJson(jsonObject.getAsJsonArray("genres"), String[].class))
               .setHref(jsonObject.get("href").getAsString())

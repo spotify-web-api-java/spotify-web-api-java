@@ -9,7 +9,7 @@ import com.wrapper.spotify.requests.data.search.interfaces.ISearchModelObject;
 
 public class PlaylistSimplified extends AbstractModelObject implements ISearchModelObject {
   private final boolean collaborative;
-  private final ExternalUrls externalUrls;
+  private final ExternalUrl externalUrls;
   private final String href;
   private final String id;
   private final Image[] images;
@@ -42,7 +42,7 @@ public class PlaylistSimplified extends AbstractModelObject implements ISearchMo
     return collaborative;
   }
 
-  public ExternalUrls getExternalUrls() {
+  public ExternalUrl getExternalUrls() {
     return externalUrls;
   }
 
@@ -93,7 +93,7 @@ public class PlaylistSimplified extends AbstractModelObject implements ISearchMo
 
   public static final class Builder extends AbstractModelObject.Builder {
     private boolean collaborative;
-    private ExternalUrls externalUrls;
+    private ExternalUrl externalUrls;
     private String href;
     private String id;
     private Image[] images;
@@ -110,7 +110,7 @@ public class PlaylistSimplified extends AbstractModelObject implements ISearchMo
       return this;
     }
 
-    public Builder setExternalUrls(ExternalUrls externalUrls) {
+    public Builder setExternalUrls(ExternalUrl externalUrls) {
       this.externalUrls = externalUrls;
       return this;
     }
@@ -179,7 +179,7 @@ public class PlaylistSimplified extends AbstractModelObject implements ISearchMo
 
       return new PlaylistSimplified.Builder()
               .setCollaborative(jsonObject.get("collaborative").getAsBoolean())
-              .setExternalUrls(new ExternalUrls.JsonUtil().createModelObject(jsonObject.getAsJsonObject("external_urls")))
+              .setExternalUrls(new ExternalUrl.JsonUtil().createModelObject(jsonObject.getAsJsonObject("external_urls")))
               .setHref(jsonObject.get("href").getAsString())
               .setId(jsonObject.get("id").getAsString())
               .setImages(new Image.JsonUtil().createModelObjectArray(jsonObject.getAsJsonArray("images")))

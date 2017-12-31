@@ -2,7 +2,7 @@ package com.wrapper.spotify.requests.data.tracks;
 
 import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.exceptions.*;
-import com.wrapper.spotify.model_objects.specification.AudioFeature;
+import com.wrapper.spotify.model_objects.specification.AudioFeatures;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
 
 import java.io.IOException;
@@ -13,7 +13,7 @@ public class GetAudioFeaturesForTrackRequest extends AbstractDataRequest {
     super(builder);
   }
 
-  public AudioFeature get() throws
+  public AudioFeatures get() throws
           IOException,
           NoContentException,
           BadRequestException,
@@ -24,10 +24,10 @@ public class GetAudioFeaturesForTrackRequest extends AbstractDataRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return new AudioFeature.JsonUtil().createModelObject(getJson());
+    return new AudioFeatures.JsonUtil().createModelObject(getJson());
   }
 
-  public SettableFuture<AudioFeature> getAsync() throws
+  public SettableFuture<AudioFeatures> getAsync() throws
           IOException,
           NoContentException,
           BadRequestException,
@@ -38,7 +38,7 @@ public class GetAudioFeaturesForTrackRequest extends AbstractDataRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return executeAsync(new AudioFeature.JsonUtil().createModelObject(getJson()));
+    return executeAsync(new AudioFeatures.JsonUtil().createModelObject(getJson()));
   }
 
   public static final class Builder extends AbstractDataRequest.Builder<Builder> {

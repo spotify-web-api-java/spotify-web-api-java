@@ -7,7 +7,7 @@ import com.wrapper.spotify.model_objects.AbstractModelObject;
 public class Context extends AbstractModelObject {
   private final ModelObjectType type;
   private final String href;
-  private final ExternalUrls externalUrls;
+  private final ExternalUrl externalUrls;
   private final String uri;
 
   private Context(final Context.Builder builder) {
@@ -27,7 +27,7 @@ public class Context extends AbstractModelObject {
     return href;
   }
 
-  public ExternalUrls getExternalUrls() {
+  public ExternalUrl getExternalUrls() {
     return externalUrls;
   }
 
@@ -43,7 +43,7 @@ public class Context extends AbstractModelObject {
   public static final class Builder extends AbstractModelObject.Builder {
     private ModelObjectType type;
     private String href;
-    private ExternalUrls externalUrls;
+    private ExternalUrl externalUrls;
     private String uri;
 
     public Builder setType(ModelObjectType type) {
@@ -56,7 +56,7 @@ public class Context extends AbstractModelObject {
       return this;
     }
 
-    public Builder setExternalUrls(ExternalUrls externalUrls) {
+    public Builder setExternalUrls(ExternalUrl externalUrls) {
       this.externalUrls = externalUrls;
       return this;
     }
@@ -81,7 +81,7 @@ public class Context extends AbstractModelObject {
       return new Context.Builder()
               .setType(ModelObjectType.valueOf(jsonObject.get("type").getAsString().toUpperCase()))
               .setHref(jsonObject.get("href").getAsString())
-              .setExternalUrls(new ExternalUrls.JsonUtil().createModelObject(jsonObject.getAsJsonObject("external_urls")))
+              .setExternalUrls(new ExternalUrl.JsonUtil().createModelObject(jsonObject.getAsJsonObject("external_urls")))
               .setUri(jsonObject.get("uri").getAsString())
               .build();
     }

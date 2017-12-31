@@ -5,7 +5,7 @@ import com.wrapper.spotify.enums.Modality;
 import com.wrapper.spotify.enums.ModelObjectType;
 import com.wrapper.spotify.model_objects.AbstractModelObject;
 
-public class AudioFeature extends AbstractModelObject {
+public class AudioFeatures extends AbstractModelObject {
   private final double acousticness;
   private final String analysisUrl;
   private final double danceability;
@@ -25,7 +25,7 @@ public class AudioFeature extends AbstractModelObject {
   private final String uri;
   private final double valence;
 
-  private AudioFeature(final AudioFeature.Builder builder) {
+  private AudioFeatures(final AudioFeatures.Builder builder) {
     super(builder);
 
     this.acousticness = builder.acousticness;
@@ -236,18 +236,18 @@ public class AudioFeature extends AbstractModelObject {
     }
 
     @Override
-    public AudioFeature build() {
-      return new AudioFeature(this);
+    public AudioFeatures build() {
+      return new AudioFeatures(this);
     }
   }
 
-  public static final class JsonUtil extends AbstractModelObject.JsonUtil<AudioFeature> {
-    public AudioFeature createModelObject(JsonObject jsonObject) {
+  public static final class JsonUtil extends AbstractModelObject.JsonUtil<AudioFeatures> {
+    public AudioFeatures createModelObject(JsonObject jsonObject) {
       if (jsonObject == null || jsonObject.isJsonNull()) {
         return null;
       }
 
-      return new AudioFeature.Builder()
+      return new AudioFeatures.Builder()
               .setAcousticness(jsonObject.get("acousticness").getAsDouble())
               .setAnalysisUrl(jsonObject.get("analysis_url").getAsString())
               .setDanceability(jsonObject.get("danceability").getAsDouble())
