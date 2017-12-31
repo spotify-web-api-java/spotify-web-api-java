@@ -5,6 +5,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.model_objects.special.PlaylistTrackPosition;
+import com.wrapper.spotify.requests.authorization.authorization_code.AuthorizationCodeRefreshRequest;
 import com.wrapper.spotify.requests.authorization.authorization_code.AuthorizationCodeRequest;
 import com.wrapper.spotify.requests.authorization.authorization_code.AuthorizationCodeUriRequest;
 import com.wrapper.spotify.requests.authorization.client_credentials.ClientCredentialsRequest;
@@ -21,6 +22,7 @@ import com.wrapper.spotify.requests.data.library.RemoveUsersSavedTracksRequest;
 import com.wrapper.spotify.requests.data.library.SaveTracksForUserRequest;
 import com.wrapper.spotify.requests.data.player.GetCurrentUsersRecentlyPlayedTracksRequest;
 import com.wrapper.spotify.requests.data.player.GetUsersCurrentlyPlayingTrackRequest;
+import com.wrapper.spotify.requests.data.player.SkipUsersPlaybackToPreviousTrackRequest;
 import com.wrapper.spotify.requests.data.playlists.*;
 import com.wrapper.spotify.requests.data.search.simplified.SearchAlbumRequest;
 import com.wrapper.spotify.requests.data.search.simplified.SearchArtistRequest;
@@ -343,6 +345,19 @@ public class Api {
     ClientCredentialsRequest.Builder builder = new ClientCredentialsRequest.Builder(clientId, clientSecret);
     builder.setDefaults(httpManager, scheme, host, port);
     builder.setGrantType("client_credentials");
+    return builder;
+  }
+
+  /**
+   * Returns a builder that can be used to build requests to refresh an access token
+   * that has been retrieved using the authorization code grant flow.
+   * @return A builder that builds refresh access token requests.
+   */
+  public AuthorizationCodeRefreshRequest.Builder refreshAccessToken() {
+    AuthorizationCodeRefreshRequest.Builder builder = new AuthorizationCodeRefreshRequest.Builder(clientId, clientSecret);
+    builder.setDefaults(httpManager, scheme, host, port);
+    builder.setGrantType("refresh_token");
+    builder.setRefreshToken(refreshToken);
     return builder;
   }
 
