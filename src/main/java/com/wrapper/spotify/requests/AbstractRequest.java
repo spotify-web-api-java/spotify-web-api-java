@@ -11,8 +11,10 @@ import org.apache.http.message.BasicHeader;
 import org.apache.http.message.BasicNameValuePair;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -229,7 +231,16 @@ public abstract class AbstractRequest implements IRequest {
     public BuilderType setPathParameter(final String name, final String value) {
       assert (name != null && value != null);
       assert (!name.equals("") && !value.equals(""));
-      this.pathParameters.add(new BasicNameValuePair(name, value));
+
+      String encodedValue = null;
+
+      try {
+        encodedValue = URLEncoder.encode(value, "UTF-8");
+      } catch (UnsupportedEncodingException e) {
+        e.printStackTrace();
+      }
+
+      this.pathParameters.add(new BasicNameValuePair(name, encodedValue));
       return (BuilderType) this;
     }
 
