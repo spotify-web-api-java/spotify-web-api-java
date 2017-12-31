@@ -3,7 +3,7 @@ package com.wrapper.spotify.requests.data.personalization.simplified;
 import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.exceptions.*;
 import com.wrapper.spotify.model_objects.specification.Paging;
-import com.wrapper.spotify.model_objects.Track;
+import com.wrapper.spotify.model_objects.specification.Track;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
 
 import java.io.IOException;

@@ -1,8 +1,8 @@
-package com.wrapper.spotify.model_objects;
+package com.wrapper.spotify.model_objects.specification;
 
 import com.google.gson.JsonObject;
 import com.wrapper.spotify.enums.ModelObjectType;
-import com.wrapper.spotify.model_objects.specification.ExternalUrls;
+import com.wrapper.spotify.model_objects.AbstractModelObject;
 
 public class TrackLink extends AbstractModelObject {
   private final ExternalUrls externalUrls;

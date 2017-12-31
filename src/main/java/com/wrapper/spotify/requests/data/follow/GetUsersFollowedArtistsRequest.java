@@ -4,7 +4,7 @@ import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.enums.ModelObjectType;
 import com.wrapper.spotify.exceptions.*;
 import com.wrapper.spotify.model_objects.specification.Artist;
-import com.wrapper.spotify.model_objects.PagingCursorbased;
+import com.wrapper.spotify.model_objects.specification.PagingCursorbased;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
 
 import java.io.IOException;

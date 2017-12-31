@@ -3,8 +3,8 @@ package com.wrapper.spotify.requests.data.browse;
 import com.google.common.util.concurrent.SettableFuture;
 import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.exceptions.*;
+import com.wrapper.spotify.model_objects.specification.ArtistSimplified;
 import com.wrapper.spotify.model_objects.specification.Paging;
-import com.wrapper.spotify.model_objects.PlaylistSimplified;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
 
 import java.io.IOException;
@@ -15,7 +15,7 @@ public class GetCategorysPlaylistsRequest extends AbstractDataRequest {
     super(builder);
   }
 
-  public Paging<PlaylistSimplified> get() throws
+  public Paging<ArtistSimplified.PlaylistSimplified> get() throws
           IOException,
           NoContentException,
           BadRequestException,
@@ -26,10 +26,10 @@ public class GetCategorysPlaylistsRequest extends AbstractDataRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return new PlaylistSimplified.JsonUtil().createModelObjectPaging(getJson(), "playlists");
+    return new ArtistSimplified.PlaylistSimplified.JsonUtil().createModelObjectPaging(getJson(), "playlists");
   }
 
-  public SettableFuture<Paging<PlaylistSimplified>> getAsync() throws
+  public SettableFuture<Paging<ArtistSimplified.PlaylistSimplified>> getAsync() throws
           IOException,
           NoContentException,
           BadRequestException,
@@ -40,7 +40,7 @@ public class GetCategorysPlaylistsRequest extends AbstractDataRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return executeAsync(new PlaylistSimplified.JsonUtil().createModelObjectPaging(getJson(), "playlists"));
+    return executeAsync(new ArtistSimplified.PlaylistSimplified.JsonUtil().createModelObjectPaging(getJson(), "playlists"));
   }
 
   public static final class Builder extends AbstractDataRequest.Builder<Builder> {

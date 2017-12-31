@@ -3,7 +3,7 @@ package com.wrapper.spotify.requests.data.browse;
 import com.google.common.util.concurrent.SettableFuture;
 import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.exceptions.*;
-import com.wrapper.spotify.model_objects.Recommendations;
+import com.wrapper.spotify.model_objects.specification.Recommendations;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
 
 import java.io.IOException;

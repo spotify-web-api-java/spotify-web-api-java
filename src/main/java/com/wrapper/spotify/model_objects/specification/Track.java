@@ -1,15 +1,12 @@
-package com.wrapper.spotify.model_objects;
+package com.wrapper.spotify.model_objects.specification;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonNull;
 import com.google.gson.JsonObject;
 import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.enums.ModelObjectType;
+import com.wrapper.spotify.model_objects.AbstractModelObject;
 import com.wrapper.spotify.model_objects.miscellaneous.Restrictions;
-import com.wrapper.spotify.model_objects.specification.AlbumSimplified;
-import com.wrapper.spotify.model_objects.specification.ArtistSimplified;
-import com.wrapper.spotify.model_objects.specification.ExternalIds;
-import com.wrapper.spotify.model_objects.specification.ExternalUrls;
 import com.wrapper.spotify.requests.data.personalization.interfaces.IArtistTrackModelObject;
 import com.wrapper.spotify.requests.data.search.interfaces.ISearchModelObject;
 

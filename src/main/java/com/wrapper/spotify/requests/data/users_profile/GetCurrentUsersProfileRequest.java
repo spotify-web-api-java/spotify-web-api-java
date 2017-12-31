@@ -2,7 +2,7 @@ package com.wrapper.spotify.requests.data.users_profile;
 
 import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.exceptions.*;
-import com.wrapper.spotify.model_objects.User;
+import com.wrapper.spotify.model_objects.specification.User;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
 
 import java.io.IOException;

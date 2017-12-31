@@ -1,11 +1,10 @@
-package com.wrapper.spotify.model_objects;
+package com.wrapper.spotify.model_objects.specification;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.enums.ModelObjectType;
-import com.wrapper.spotify.model_objects.specification.ArtistSimplified;
-import com.wrapper.spotify.model_objects.specification.ExternalUrls;
+import com.wrapper.spotify.model_objects.AbstractModelObject;
 
 public class TrackSimplified extends AbstractModelObject {
   private final ArtistSimplified[] artists;

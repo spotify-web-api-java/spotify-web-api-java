@@ -2,12 +2,12 @@ package com.wrapper.spotify.model_objects.special;
 
 import com.google.gson.JsonObject;
 import com.wrapper.spotify.model_objects.AbstractModelObject;
+import com.wrapper.spotify.model_objects.specification.ArtistSimplified;
 import com.wrapper.spotify.model_objects.specification.Paging;
-import com.wrapper.spotify.model_objects.PlaylistSimplified;
 
 public class FeaturedPlaylists extends AbstractModelObject {
   private final String message;
-  private final Paging<PlaylistSimplified> playlists;
+  private final Paging<ArtistSimplified.PlaylistSimplified> playlists;
 
   private FeaturedPlaylists(final FeaturedPlaylists.Builder builder) {
     super(builder);
@@ -20,7 +20,7 @@ public class FeaturedPlaylists extends AbstractModelObject {
     return message;
   }
 
-  public Paging<PlaylistSimplified> getPlaylists() {
+  public Paging<ArtistSimplified.PlaylistSimplified> getPlaylists() {
     return playlists;
   }
 
@@ -31,14 +31,14 @@ public class FeaturedPlaylists extends AbstractModelObject {
 
   public static final class Builder extends AbstractModelObject.Builder {
     private String message;
-    private Paging<PlaylistSimplified> playlists;
+    private Paging<ArtistSimplified.PlaylistSimplified> playlists;
 
     public Builder setMessage(String message) {
       this.message = message;
       return this;
     }
 
-    public Builder setPlaylists(Paging<PlaylistSimplified> playlists) {
+    public Builder setPlaylists(Paging<ArtistSimplified.PlaylistSimplified> playlists) {
       this.playlists = playlists;
       return this;
     }
@@ -57,7 +57,7 @@ public class FeaturedPlaylists extends AbstractModelObject {
 
       return new FeaturedPlaylists.Builder()
               .setMessage(jsonObject.get("message").getAsString())
-              .setPlaylists(new PlaylistSimplified.JsonUtil().createModelObjectPaging(jsonObject.getAsJsonObject("playlists")))
+              .setPlaylists(new ArtistSimplified.PlaylistSimplified.JsonUtil().createModelObjectPaging(jsonObject.getAsJsonObject("playlists")))
               .build();
     }
   }

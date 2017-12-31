@@ -7,7 +7,6 @@ import com.wrapper.spotify.enums.AlbumType;
 import com.wrapper.spotify.enums.ModelObjectType;
 import com.wrapper.spotify.enums.ReleaseDatePrecision;
 import com.wrapper.spotify.model_objects.AbstractModelObject;
-import com.wrapper.spotify.model_objects.TrackSimplified;
 
 public class Album extends AbstractModelObject {
   private final AlbumType albumType;
