@@ -930,7 +930,7 @@ public class Api {
     /**
      * Set the redirect uri in a builder object.
      *
-     * @param redirectURI A redirect URI of your application.
+     * @param redirectUri A redirect URI of your application.
      * @return A builder object.
      */
     public Builder setRedirectUri(String redirectUri) {
