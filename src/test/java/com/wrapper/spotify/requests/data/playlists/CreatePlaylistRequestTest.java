@@ -18,7 +18,7 @@ public class CreatePlaylistRequestTest {
 
   @Test
   public void shouldCreatePlaylist_async() throws Exception {
-    final Api api = Api.builder().accessToken("someAccessToken").build();
+    final Api api = new Api.Builder().setAccessToken("someAccessToken").build();
 
     final CreatePlaylistRequest request = api.createPlaylist("thelinmichael", "Coolest playlist")
             .public_(true)
@@ -61,7 +61,7 @@ public class CreatePlaylistRequestTest {
 
   @Test
   public void shouldCreatePlaylist_sync() throws Exception {
-    final Api api = Api.builder().accessToken("someAccessToken").build();
+    final Api api = new Api.Builder().setAccessToken("someAccessToken").build();
 
     final CreatePlaylistRequest request = api.createPlaylist("thelinmichael", "title")
             .public_(true)

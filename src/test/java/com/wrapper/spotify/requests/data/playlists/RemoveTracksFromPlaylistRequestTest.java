@@ -21,7 +21,7 @@ public class RemoveTracksFromPlaylistRequestTest {
   public void shouldAddTracksToPlaylist_async() throws Exception {
     final String accessToken = "someAccessToken";
 
-    final Api api = Api.builder().accessToken("AccessToken").build();
+    final Api api = new Api.Builder().setAccessToken("AccessToken").build();
 
     final String myUsername = "thelinmichael";
     final String myPlaylistId = "5ieJqeLJjjI8iJWaxeBLuK";
@@ -59,7 +59,7 @@ public class RemoveTracksFromPlaylistRequestTest {
   public void shouldAddTracksToPlaylist_sync() throws Exception {
     final String accessToken = "someAccessToken";
 
-    final Api api = Api.builder().accessToken("AccessToken").build();
+    final Api api = new Api.Builder().setAccessToken("AccessToken").build();
 
     final String myUsername = "thelinmichael";
     final String myPlaylistId = "5ieJqeLJjjI8iJWaxeBLuK";

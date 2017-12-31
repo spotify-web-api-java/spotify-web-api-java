@@ -41,26 +41,6 @@ import java.util.List;
  */
 public class Api {
 
-  /**
-   * The default host of Spotify API calls.
-   */
-  public static final String DEFAULT_HOST = "api.spotify.com";
-
-  /**
-   * The default port of Spotify API calls.
-   */
-  public static final int DEFAULT_PORT = 443;
-
-  /**
-   * A HttpManager configured with default settings.
-   */
-  public static final IHttpManager DEFAULT_HTTP_MANAGER = SpotifyHttpManager.builder().build();
-
-  /**
-   * The default http scheme of Spotify API calls.
-   */
-  public static final String DEFAULT_SCHEME = "https";
-
   public static final String DEFAULT_AUTHENTICATION_HOST = "accounts.spotify.com";
 
   public static final int DEFAULT_AUTHENTICATION_PORT = 443;
@@ -68,40 +48,107 @@ public class Api {
   public static final String DEFAULT_AUTHENTICATION_SCHEME = "https";
 
   /**
-   * Api instance with the default settings.
+   * The default host of Spotify API calls.
    */
-  public static final Api DEFAULT_API = Api.builder().build();
+  public static final String DEFAULT_HOST = "api.spotify.com";
+
+  /**
+   * A HttpManager configured with default settings.
+   */
+  public static final IHttpManager DEFAULT_HTTP_MANAGER = new SpotifyHttpManager.Builder().build();
+
+  /**
+   * The default port of Spotify API calls.
+   */
+  public static final int DEFAULT_PORT = 443;
+
+  /**
+   * The default http scheme of Spotify API calls.
+   */
+  public static final String DEFAULT_SCHEME = "https";
+
+  private final IHttpManager httpManager;
+  private final String scheme;
+  private final String host;
+  private final int port;
+  private final String proxyUrl;
+  private final int proxyPort;
+  private final int proxyUsername;
+  private final int proxyPassword;
   private final String clientId;
   private final String clientSecret;
-  private final String redirectURI;
-  private IHttpManager httpManager = null;
-  private String scheme;
-  private int port;
-  private String host;
-  private String accessToken;
-  private String refreshToken;
+  private final String redirectUri;
+  private final String accessToken;
+  private final String refreshToken;
 
   private Api(Builder builder) {
-    assert (builder.host != null);
-    assert (builder.port > 0);
-    assert (builder.scheme != null);
+    assert (builder.httpManager != null);
 
+    this.httpManager = builder.httpManager;
+    this.scheme = builder.scheme;
+    this.host = builder.host;
+    this.port = builder.port;
+    this.proxyUrl = builder.proxyUrl;
+    this.proxyPort = builder.proxyPort;
+    this.proxyUsername = builder.proxyUsername;
+    this.proxyPassword = builder.proxyPassword;
+    this.clientId = builder.clientId;
+    this.clientSecret = builder.clientSecret;
+    this.redirectUri = builder.redirectUri;
+    this.accessToken = builder.accessToken;
+    this.refreshToken = builder.refreshToken;
+  }
 
-    if (builder.httpManager == null) {
-      this.httpManager = SpotifyHttpManager
-              .builder()
-              .build();
-    } else {
-      this.httpManager = builder.httpManager;
-    }
-    scheme = builder.scheme;
-    host = builder.host;
-    port = builder.port;
-    accessToken = builder.accessToken;
-    refreshToken = builder.refreshToken;
-    clientId = builder.clientId;
-    clientSecret = builder.clientSecret;
-    redirectURI = builder.redirectURI;
+  public IHttpManager getHttpManager() {
+    return httpManager;
+  }
+
+  public String getScheme() {
+    return scheme;
+  }
+
+  public String getHost() {
+    return host;
+  }
+
+  public int getPort() {
+    return port;
+  }
+
+  public String getProxyUrl() {
+    return proxyUrl;
+  }
+
+  public int getProxyPort() {
+    return proxyPort;
+  }
+
+  public int getProxyUsername() {
+    return proxyUsername;
+  }
+
+  public int getProxyPassword() {
+    return proxyPassword;
+  }
+
+  public String getClientId() {
+    return clientId;
+  }
+
+  public String getClientSecret() {
+    return clientSecret;
+  }
+
+  public String getRedirectURI() {
+    return redirectUri;
+  }
+
+  public String getAccessToken() {
+    return accessToken;
+  }
+
+  public String getRefreshToken() {
+    return refreshToken;
   }
 
   public static Builder builder() {
@@ -284,7 +331,7 @@ public class Api {
     builder.grantType("authorization_code");
     builder.basicAuthorizationHeader(clientId, clientSecret);
     builder.code(code);
-    builder.redirectUri(redirectURI);
+    builder.redirectUri(redirectUri);
     return builder;
   }
 
@@ -588,7 +635,7 @@ public class Api {
 
     builder.clientId(clientId);
     builder.responseType("code");
-    builder.redirectURI(redirectURI);
+    builder.redirectUri(redirectUri);
 
     if (scopes != null) {
       builder.scopes(scopes);
@@ -618,7 +665,7 @@ public class Api {
 
     builder.clientId(clientId);
     builder.responseType("code");
-    builder.redirectURI(redirectURI);
+    builder.redirectUri(redirectUri);
 
     if (scopes != null) {
       builder.scopes(scopes);
@@ -645,7 +692,7 @@ public class Api {
 
     builder.clientId(clientId);
     builder.responseType("code");
-    builder.redirectURI(redirectURI);
+    builder.redirectUri(redirectUri);
 
     if (scopes != null) {
       builder.scopes(scopes);
@@ -686,81 +733,90 @@ public class Api {
             .category_id(categoryId);
   }
 
-  public void setAccessToken(String accessToken) {
-    this.accessToken = accessToken;
-  }
-
-  public void setRefreshToken(String refreshToken) {
-    this.refreshToken = refreshToken;
-  }
-
-
   public static class Builder {
 
+    private IHttpManager httpManager = DEFAULT_HTTP_MANAGER;
+    private String scheme = DEFAULT_SCHEME;
     private String host = DEFAULT_HOST;
     private int port = DEFAULT_PORT;
-    private IHttpManager httpManager = null;
-    private String scheme = DEFAULT_SCHEME;
-    private String accessToken;
-    private String redirectURI;
+    private String proxyUrl;
+    private int proxyPort;
+    private int proxyUsername;
+    private int proxyPassword;
     private String clientId;
     private String clientSecret;
+    private String redirectUri;
+    private String accessToken;
     private String refreshToken;
 
-    public Builder scheme(String scheme) {
-      this.scheme = scheme;
-      return this;
-    }
-
-    public Builder host(String host) {
-      this.host = host;
-      return this;
-    }
-
-    public Builder port(int port) {
-      this.port = port;
-      return this;
-    }
-
-    public Builder httpManager(IHttpManager httpManager) {
+    public Builder setHttpManager(IHttpManager httpManager) {
       this.httpManager = httpManager;
       return this;
     }
 
-    public Builder accessToken(String accessToken) {
-      this.accessToken = accessToken;
+    public Builder setScheme(String scheme) {
+      this.scheme = scheme;
       return this;
     }
 
-    public Builder refreshToken(String refreshToken) {
-      this.refreshToken = refreshToken;
+    public Builder setHost(String host) {
+      this.host = host;
       return this;
     }
 
-    public Builder clientId(String clientId) {
+    public Builder setPort(int port) {
+      this.port = port;
+      return this;
+    }
+
+    public Builder setProxyUrl(String proxyUrl) {
+      this.proxyUrl = proxyUrl;
+      return this;
+    }
+
+    public Builder setProxyPort(int proxyPort) {
+      this.proxyPort = proxyPort;
+      return this;
+    }
+
+    public Builder setProxyUsername(int proxyUsername) {
+      this.proxyUsername = proxyUsername;
+      return this;
+    }
+
+    public Builder setProxyPassword(int proxyPassword) {
+      this.proxyPassword = proxyPassword;
+      return this;
+    }
+
+    public Builder setClientId(String clientId) {
       this.clientId = clientId;
       return this;
     }
 
-    public Builder clientSecret(String clientSecret) {
+    public Builder setClientSecret(String clientSecret) {
       this.clientSecret = clientSecret;
       return this;
     }
 
-    public Builder redirectURI(String redirectURI) {
-      this.redirectURI = redirectURI;
+    public Builder setRedirectUri(String redirectUri) {
+      this.redirectUri = redirectUri;
+      return this;
+    }
+
+    public Builder setAccessToken(String accessToken) {
+      this.accessToken = accessToken;
+      return this;
+    }
+
+    public Builder setRefreshToken(String refreshToken) {
+      this.refreshToken = refreshToken;
       return this;
     }
 
     public Api build() {
-      assert (host != null);
-      assert (port > 0);
-      assert (scheme != null);
-
       return new Api(this);
     }
-
   }
-
 }
 

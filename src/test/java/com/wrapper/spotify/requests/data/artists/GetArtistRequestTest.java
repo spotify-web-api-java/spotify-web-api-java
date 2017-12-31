@@ -19,7 +19,7 @@ public class GetArtistRequestTest {
 
   @Test
   public void shouldGetArtistResult_async() throws Exception {
-    final Api api = Api.builder().accessToken("AccessToken").build();
+    final Api api = new Api.Builder().setAccessToken("AccessToken").build();
 
     GetArtistRequest request = api.getArtist("2BTZIqw0ntH9MvilQ3ewNY")
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/artists/GetArtistRequest.json"))
@@ -55,7 +55,7 @@ public class GetArtistRequestTest {
 
   @Test
   public void shouldGetArtistResult_sync() throws Exception {
-    final Api api = Api.builder().accessToken("AccessToken").build();
+    final Api api = new Api.Builder().setAccessToken("AccessToken").build();
     GetArtistRequest request = api.getArtist("2BTZIqw0ntH9MvilQ3ewNY")
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/artists/GetArtistRequest.json"))
             .build();

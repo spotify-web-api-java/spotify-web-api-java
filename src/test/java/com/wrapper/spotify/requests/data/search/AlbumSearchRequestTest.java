@@ -23,7 +23,7 @@ public class AlbumSearchRequestTest {
 
   @Test
   public void shouldGetAlbumsResult_async() throws Exception {
-    final Api api = Api.builder().accessToken("AccessToken").build();
+    final Api api = new Api.Builder().setAccessToken("AccessToken").build();
 
     final SearchAlbumRequest request = api.searchAlbums("tania bowra")
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/search/AlbumSearchRequest.json"))
@@ -70,7 +70,7 @@ public class AlbumSearchRequestTest {
 
   @Test
   public void shouldGetAlbumsResult_sync() throws Exception {
-    final Api api = Api.builder().accessToken("AccessToken").build();
+    final Api api = new Api.Builder().setAccessToken("AccessToken").build();
 
     final SearchAlbumRequest request = api.searchAlbums("tania bowra")
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/search/AlbumSearchRequest.json"))

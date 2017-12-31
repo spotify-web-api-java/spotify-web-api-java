@@ -25,7 +25,7 @@ public class GetSeveralAlbumsRequestTest {
 
   @Test
   public void shouldGetAlbumResultForIds_async() throws Exception {
-    final Api api = Api.builder().accessToken("AccessToken").build();
+    final Api api = new Api.Builder().setAccessToken("AccessToken").build();
 
     final GetSeveralAlbumsRequest request = api.getAlbums("2hYe61Nd2oOoM6RYCwIma1")
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/albums/GetSeveralAlbumsRequest.json"))
@@ -73,7 +73,7 @@ public class GetSeveralAlbumsRequestTest {
 
   @Test
   public void shouldGetAlbumResultForIds_sync() throws Exception {
-    final Api api = Api.builder().accessToken("AccessToken").build();
+    final Api api = new Api.Builder().setAccessToken("AccessToken").build();
 
     final GetSeveralAlbumsRequest request = api.getAlbums("2hYe61Nd2oOoM6RYCwIma1")
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/albums/GetSeveralAlbumsRequest.json"))
@@ -104,7 +104,7 @@ public class GetSeveralAlbumsRequestTest {
 
   @Test
   public void shouldFailForNotFound_async() throws Exception {
-    final Api api = Api.builder().accessToken("AccessToken").build();
+    final Api api = new Api.Builder().setAccessToken("AccessToken").build();
 
     final GetSeveralAlbumsRequest request = api.getAlbums("idontexist")
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/albums/GetSeveralAlbumsRequest_None.json"))

@@ -20,7 +20,7 @@ public class GetPlaylistsTracksRequestTest {
   @Test
   public void shouldGetTracksResult_async() throws Exception {
     String accessToken = "someToken";
-    final Api api = Api.builder().accessToken(accessToken)
+    final Api api = new Api.Builder().setAccessToken(accessToken)
             .build();
 
     final GetPlaylistsTracksRequest request = api
@@ -68,7 +68,7 @@ public class GetPlaylistsTracksRequestTest {
   @Test
   public void shouldGetTracksResult_sync() throws Exception {
     String accessToken = "someToken";
-    final Api api = Api.builder().accessToken("AccessToken").build();
+    final Api api = new Api.Builder().setAccessToken("AccessToken").build();
 
     final GetPlaylistsTracksRequest request = api
             .getPlaylistTracks("thelinmichael", "3ktAYNcRHpazJ9qecm3ptn")

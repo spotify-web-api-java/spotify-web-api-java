@@ -20,7 +20,7 @@ public class GetListOfUsersPlaylistsRequestTest {
   @Test
   public void shouldGetPlaylistsForUser_async() throws Exception {
     final String accessToken = "someAccessToken";
-    final Api api = Api.builder().accessToken("AccessToken").build();
+    final Api api = new Api.Builder().setAccessToken("AccessToken").build();
 
     final GetListOfUsersPlaylistsRequest request = api
             .getPlaylistsForUser("wizzler")
@@ -77,7 +77,7 @@ public class GetListOfUsersPlaylistsRequestTest {
   @Test
   public void shouldGetPlaylistsForUser_sync() throws Exception {
     final String accessToken = "myVeryLongAccessToken";
-    final Api api = Api.builder().accessToken("AccessToken").build();
+    final Api api = new Api.Builder().setAccessToken("AccessToken").build();
 
     final GetListOfUsersPlaylistsRequest request = api
             .getPlaylistsForUser("wizzler")

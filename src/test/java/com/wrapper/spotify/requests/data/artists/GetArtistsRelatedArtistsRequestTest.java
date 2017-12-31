@@ -17,7 +17,7 @@ public class GetArtistsRelatedArtistsRequestTest {
 
   @Test
   public void shouldGetRelatedArtists_async() throws Exception {
-    final Api api = Api.builder().accessToken("AccessToken").build();
+    final Api api = new Api.Builder().setAccessToken("AccessToken").build();
 
     final GetArtistsRelatedArtistsRequest request = api
             .getArtistRelatedArtists("0qeei9KQnptjwb8MgkqEoy")
@@ -52,7 +52,7 @@ public class GetArtistsRelatedArtistsRequestTest {
 
   @Test
   public void shouldGetRelatedArtists_sync() throws Exception {
-    final Api api = Api.builder().accessToken("AccessToken").build();
+    final Api api = new Api.Builder().setAccessToken("AccessToken").build();
 
     final GetArtistsRelatedArtistsRequest request = api
             .getArtistRelatedArtists("0qeei9KQnptjwb8MgkqEoy")

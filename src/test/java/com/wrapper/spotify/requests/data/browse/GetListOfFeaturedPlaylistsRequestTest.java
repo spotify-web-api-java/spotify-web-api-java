@@ -22,7 +22,7 @@ public class GetListOfFeaturedPlaylistsRequestTest {
 
   @Test
   public void shouldGetNewReleases_async() throws Exception {
-    final Api api = Api.builder().accessToken("AccessToken").build();
+    final Api api = new Api.Builder().setAccessToken("AccessToken").build();
 
     Calendar calendar = Calendar.getInstance();
     calendar.set(2014, Calendar.OCTOBER, 23, 9, 0, 0);
@@ -74,7 +74,7 @@ public class GetListOfFeaturedPlaylistsRequestTest {
 
   @Test
   public void shouldGetArtistsResult_sync() throws Exception {
-    final Api api = Api.builder().accessToken("AccessToken").build();
+    final Api api = new Api.Builder().setAccessToken("AccessToken").build();
 
     Calendar calendar = Calendar.getInstance();
     calendar.set(2014, Calendar.OCTOBER, 23, 9, 0, 0);

@@ -20,7 +20,7 @@ public class GetAlbumRequestTest {
 
   @Test
   public void shouldGetAlbumResult_async() throws Exception {
-    final Api api = Api.builder().accessToken("AccessToken").build();
+    final Api api = new Api.Builder().setAccessToken("AccessToken").build();
 
     final GetAlbumRequest request = api.getAlbum("4pox3k0CGuwwAknR9GtcoX")
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/albums/GetAlbumRequest.json"))
@@ -53,7 +53,7 @@ public class GetAlbumRequestTest {
 
   @Test
   public void shouldGetAlbumResult_sync() throws Exception {
-    final Api api = Api.builder().accessToken("AccessToken").build();
+    final Api api = new Api.Builder().setAccessToken("AccessToken").build();
 
     final GetAlbumRequest request = api.getAlbum("4pox3k0CGuwwAknR9GtcoX")
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/albums/GetAlbumRequest.json"))

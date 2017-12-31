@@ -33,7 +33,7 @@ public class AuthorizationUriRequest extends AbstractRequest {
       return setQueryParameter("client_id", clientId);
     }
 
-    public Builder redirectURI(String redirectURI) {
+    public Builder redirectUri(String redirectURI) {
       return setQueryParameter("redirect_uri", redirectURI);
     }
 

@@ -22,8 +22,8 @@ public class ClientCredentialsGrantRequestTest {
     final String clientSecret = "myClientSecret";
 
     final Api api = Api.builder()
-            .clientId(clientId)
-            .clientSecret(clientSecret)
+            .setClientId(clientId)
+            .setClientSecret(clientSecret)
             .build();
 
     final ClientCredentialsGrantRequest request = api
@@ -43,8 +43,8 @@ public class ClientCredentialsGrantRequestTest {
     final String clientSecret = "myClientSecret";
 
     final Api api = Api.builder()
-            .clientId(clientId)
-            .clientSecret(clientSecret)
+            .setClientId(clientId)
+            .setClientSecret(clientSecret)
             .build();
 
     final ClientCredentialsGrantRequest request = api

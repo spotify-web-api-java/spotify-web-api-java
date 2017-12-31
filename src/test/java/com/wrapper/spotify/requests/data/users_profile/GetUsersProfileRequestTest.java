@@ -20,7 +20,7 @@ public class GetUsersProfileRequestTest {
 
   @Test
   public void shouldCreateUser_async() throws Exception {
-    final Api api = Api.builder().accessToken("AccessToken").build();
+    final Api api = new Api.Builder().setAccessToken("AccessToken").build();
 
     final GetUsersProfileRequest request = api.getUser("wizzler")
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/users_profile/GetUsersProfileRequest.json"))
@@ -54,7 +54,7 @@ public class GetUsersProfileRequestTest {
 
   @Test
   public void shouldCreateUser_sync() throws Exception {
-    final Api api = Api.builder().accessToken("AccessToken").build();
+    final Api api = new Api.Builder().setAccessToken("AccessToken").build();
 
     final GetUsersProfileRequest request = api.getUser("wizzler")
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/users_profile/GetUsersProfileRequest.json"))

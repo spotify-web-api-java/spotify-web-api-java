@@ -19,8 +19,8 @@ public class RemoveUsersSavedTracksRequestTest {
   public void removeFromMySavedTracks_async() throws Exception {
     final String accessToken = "accessToken";
 
-    final Api api = Api.builder().accessToken(accessToken)
-            .httpManager(TestUtil.MockedHttpManager.returningString(""))
+    final Api api = new Api.Builder().setAccessToken(accessToken)
+            .setHttpManager(TestUtil.MockedHttpManager.returningString(""))
             .build();
 
     final String[] tracksToAdd = new String[]{"5xFF6wNcoRwx7N3cDTgVWP", "13zm8XhfM4RBtQpjdqY44e"};
@@ -54,8 +54,8 @@ public class RemoveUsersSavedTracksRequestTest {
   public void removeFromMySavedTracks_sync() throws Exception {
     final String accessToken = "accessToken";
 
-    final Api api = Api.builder().accessToken(accessToken)
-            .httpManager(TestUtil.MockedHttpManager.returningString(""))
+    final Api api = new Api.Builder().setAccessToken(accessToken)
+            .setHttpManager(TestUtil.MockedHttpManager.returningString(""))
             .build();
 
     final String[] tracksToAdd = new String[]{"5xFF6wNcoRwx7N3cDTgVWP", "13zm8XhfM4RBtQpjdqY44e"};

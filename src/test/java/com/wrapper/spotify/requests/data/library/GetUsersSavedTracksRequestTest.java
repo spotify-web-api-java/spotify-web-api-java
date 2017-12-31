@@ -18,7 +18,7 @@ public class GetUsersSavedTracksRequestTest {
 
   @Test
   public void shouldGetSavedTracks_async() throws Exception {
-    final Api api = Api.builder().accessToken("someAccessToken").build();
+    final Api api = new Api.Builder().setAccessToken("someAccessToken").build();
 
     final GetUsersSavedTracksRequest request = api.getMySavedTracks()
             .limit(5)
@@ -60,7 +60,7 @@ public class GetUsersSavedTracksRequestTest {
 
   @Test
   public void shouldGetSavedTracks_sync() throws Exception {
-    final Api api = Api.builder().accessToken("someAccessToken").build();
+    final Api api = new Api.Builder().setAccessToken("someAccessToken").build();
 
     final GetUsersSavedTracksRequest request = api.getMySavedTracks()
             .limit(5)

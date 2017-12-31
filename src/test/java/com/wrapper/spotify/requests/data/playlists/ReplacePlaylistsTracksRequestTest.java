@@ -21,7 +21,7 @@ public class ReplacePlaylistsTracksRequestTest {
 
   @Test
   public void shouldCreatePlaylist_async() throws Exception {
-    final Api api = Api.builder().accessToken("someAccessToken").build();
+    final Api api = new Api.Builder().setAccessToken("someAccessToken").build();
 
     final ReplacePlaylistsTracksRequest request = api.replacePlaylistsTracks(
             "userId", "5oEljuMoe9MXH6tBIPbd5e", new String[]{"spotify:track:4iV5W9uYEdYUVa79Axb7Rh"}
@@ -50,7 +50,7 @@ public class ReplacePlaylistsTracksRequestTest {
 
   @Test
   public void shouldCreatePlaylist_sync() throws Exception {
-    final Api api = Api.builder().accessToken("someAccessToken").build();
+    final Api api = new Api.Builder().setAccessToken("someAccessToken").build();
 
     final ReplacePlaylistsTracksRequest request = api.replacePlaylistsTracks(
             "userId", "5oEljuMoe9MXH6tBIPbd5e", new String[]{"spotify:track:4iV5W9uYEdYUVa79Axb7Rh"}

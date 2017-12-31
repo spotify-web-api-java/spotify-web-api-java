@@ -3,16 +3,17 @@ package com.wrapper.spotify;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.wrapper.spotify.exceptions.*;
-import org.apache.http.Header;
-import org.apache.http.HttpStatus;
-import org.apache.http.NameValuePair;
-import org.apache.http.StatusLine;
+import org.apache.http.*;
+import org.apache.http.auth.AuthScope;
+import org.apache.http.auth.UsernamePasswordCredentials;
+import org.apache.http.client.CredentialsProvider;
 import org.apache.http.client.config.CookieSpecs;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.*;
 import org.apache.http.config.ConnectionConfig;
 import org.apache.http.conn.HttpClientConnectionManager;
+import org.apache.http.impl.client.BasicCredentialsProvider;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
@@ -25,7 +26,8 @@ import java.util.List;
 
 public class SpotifyHttpManager implements IHttpManager {
 
-  private HttpClientConnectionManager connectionManager;
+  private final HttpHost proxy;
+  private final UsernamePasswordCredentials proxyCredentials;
 
   /**
    * Construct a new SpotifyHttpManager instance.
@@ -33,11 +35,16 @@ public class SpotifyHttpManager implements IHttpManager {
    * @param builder The builder.
    */
   public SpotifyHttpManager(Builder builder) {
-    connectionManager = builder.connectionManager;
+    this.proxy = builder.proxy;
+    this.proxyCredentials = builder.proxyCredentials;
   }
 
-  public static Builder builder() {
-    return new Builder();
+  public HttpHost getProxy() {
+    return proxy;
+  }
+
+  public UsernamePasswordCredentials getProxyCredentials() {
+    return proxyCredentials;
   }
 
   @Override
@@ -153,6 +160,11 @@ public class SpotifyHttpManager implements IHttpManager {
 
   private CloseableHttpResponse execute(HttpRequestBase method) throws
           IOException {
+    final CredentialsProvider credentialsProvider = new BasicCredentialsProvider();
+    credentialsProvider.setCredentials(
+            new AuthScope(proxy.getHostName(), proxy.getPort(), null, proxy.getSchemeName()),
+            proxyCredentials
+    );
     final ConnectionConfig connectionConfig = ConnectionConfig
             .custom()
             .setCharset(Charset.forName("UTF-8"))
@@ -160,11 +172,12 @@ public class SpotifyHttpManager implements IHttpManager {
     final RequestConfig requestConfig = RequestConfig
             .custom()
             .setCookieSpec(CookieSpecs.DEFAULT)
+            .setProxy(proxy)
             .build();
     final CloseableHttpClient httpClient = HttpClients
             .custom()
-            .setConnectionManager(connectionManager)
             .setDefaultConnectionConfig(connectionConfig)
+            .setDefaultCredentialsProvider(credentialsProvider)
             .setDefaultRequestConfig(requestConfig)
             .build();
 
@@ -222,9 +235,17 @@ public class SpotifyHttpManager implements IHttpManager {
   }
 
   public static class Builder {
-    private PoolingHttpClientConnectionManager connectionManager = new PoolingHttpClientConnectionManager();
+    private HttpHost proxy;
+    private UsernamePasswordCredentials proxyCredentials;
 
-    public Builder() {
+    public Builder setProxy(HttpHost proxy) {
+      this.proxy = proxy;
+      return this;
+    }
+
+    public Builder setProxyCredentials(UsernamePasswordCredentials proxyCredentials) {
+      this.proxyCredentials = proxyCredentials;
+      return this;
     }
 
     public SpotifyHttpManager build() {

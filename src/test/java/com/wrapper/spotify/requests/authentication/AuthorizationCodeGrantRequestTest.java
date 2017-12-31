@@ -18,9 +18,9 @@ public class AuthorizationCodeGrantRequestTest {
     final String code = "myCode";
 
     final Api api = Api.builder()
-            .clientId(clientId)
-            .clientSecret(clientSecret)
-            .redirectURI(redirectUri)
+            .setClientId(clientId)
+            .setClientSecret(clientSecret)
+            .setRedirectUri(redirectUri)
             .build();
 
     final AuthorizationCodeGrantRequest request = api.authorizationCodeGrant(code)

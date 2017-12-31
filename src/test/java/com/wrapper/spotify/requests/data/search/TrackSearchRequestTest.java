@@ -23,7 +23,7 @@ public class TrackSearchRequestTest {
 
   @Test
   public void shouldGetTracksResult_async() throws Exception {
-    final Api api = Api.builder().accessToken("AccessToken").build();
+    final Api api = new Api.Builder().setAccessToken("AccessToken").build();
 
     final SearchTrackRequest request = api.searchTracks("tania bowra")
             .offset(0)
@@ -66,7 +66,7 @@ public class TrackSearchRequestTest {
 
   @Test
   public void shouldGetTracksResult_sync() throws Exception {
-    final Api api = Api.builder().accessToken("AccessToken").build();
+    final Api api = new Api.Builder().setAccessToken("AccessToken").build();
     final IHttpManager mockedHttpManager = TestUtil.MockedHttpManager.returningJson("requests/data/search/TrackSearchRequest.json");
     final SearchTrackRequest request = api.searchTracks("Mr. Brightside").setHttpManager(mockedHttpManager).build();
 

@@ -23,7 +23,7 @@ public class ArtistSearchRequestTest {
 
   @Test
   public void shouldGetArtistsResult_async() throws Exception {
-    final Api api = Api.builder().accessToken("AccessToken").build();
+    final Api api = new Api.Builder().setAccessToken("AccessToken").build();
 
     final SearchArtistRequest request = api.searchArtists("tania bowra")
             .limit(20)
@@ -72,7 +72,7 @@ public class ArtistSearchRequestTest {
 
   @Test
   public void shouldGetArtistsResult_sync() throws Exception {
-    final Api api = Api.builder().accessToken("AccessToken").build();
+    final Api api = new Api.Builder().setAccessToken("AccessToken").build();
 
     final SearchArtistRequest request = api.searchArtists("tania bowra")
             .limit(20)

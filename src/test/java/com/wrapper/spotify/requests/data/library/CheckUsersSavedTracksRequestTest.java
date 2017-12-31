@@ -18,7 +18,7 @@ public class CheckUsersSavedTracksRequestTest {
   public void shouldCheckContains_Async() throws Exception {
     final String accessToken = "someAccessToken";
 
-    final Api api = Api.builder().accessToken("AccessToken").build();
+    final Api api = new Api.Builder().setAccessToken("AccessToken").build();
 
     CheckUsersSavedTracksRequest request = api.containsMySavedTracks(
             new String[]{"0udZHhCi7p1YzMlvI4fXoK", "1e1VmyiAuPyM4SHhySP1oU"})
@@ -52,7 +52,7 @@ public class CheckUsersSavedTracksRequestTest {
   public void shouldCheckContains_sync() throws Exception {
     final String accessToken = "someAccessToken";
 
-    final Api api = Api.builder().accessToken("AccessToken").build();
+    final Api api = new Api.Builder().setAccessToken("AccessToken").build();
 
     CheckUsersSavedTracksRequest request = api.containsMySavedTracks(
             new String[]{"0udZHhCi7p1YzMlvI4fXoK", "1e1VmyiAuPyM4SHhySP1oU"})

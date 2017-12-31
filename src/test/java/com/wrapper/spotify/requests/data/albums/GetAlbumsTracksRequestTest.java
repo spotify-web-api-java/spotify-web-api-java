@@ -21,7 +21,7 @@ public class GetAlbumsTracksRequestTest {
 
   @Test
   public void shouldTracksForAlbumId_async() throws Exception {
-    final Api api = Api.builder().accessToken("AccessToken").build();
+    final Api api = new Api.Builder().setAccessToken("AccessToken").build();
 
     final GetAlbumsTracksRequest request = api.getTracksForAlbum("6TJmQnO44YE5BtTxH8pop1")
             .limit(2)
@@ -64,7 +64,7 @@ public class GetAlbumsTracksRequestTest {
 
   @Test
   public void shouldTracksForAlbumId_sync() throws Exception {
-    final Api api = Api.builder().accessToken("AccessToken").build();
+    final Api api = new Api.Builder().setAccessToken("AccessToken").build();
 
     final GetAlbumsTracksRequest request = api.getTracksForAlbum("6TJmQnO44YE5BtTxH8pop1")
             .limit(2)

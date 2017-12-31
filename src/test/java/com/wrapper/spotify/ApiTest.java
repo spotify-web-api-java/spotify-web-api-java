@@ -38,7 +38,7 @@ public class ApiTest {
 
   @Test
   public void shouldCreateAGetAlbumUrl() {
-    final Api api = Api.builder().accessToken(accessToken).build();
+    final Api api = new Api.Builder().setAccessToken(accessToken).build();
     IRequest request = api
             .getAlbum("5oEljuMoe9MXH6tBIPbd5e")
             .build();
@@ -47,7 +47,7 @@ public class ApiTest {
 
   @Test
   public void shouldCreateAGetAudioFeaturesUrl() {
-    final Api api = Api.builder().accessToken(accessToken).build();
+    final Api api = new Api.Builder().setAccessToken(accessToken).build();
     IRequest request = api
             .getAudioFeature("1hmNbafW4sAPNaGc7LeXAZ")
             .build();
@@ -56,7 +56,7 @@ public class ApiTest {
 
   @Test
   public void shouldCreateAGetTracksForAlbumUrl() {
-    final Api api = Api.builder().accessToken(accessToken).build();
+    final Api api = new Api.Builder().setAccessToken(accessToken).build();
     IRequest request = api
             .getTracksForAlbum("5oEljuMoe9MXH6tBIPbd5e")
             .build();
@@ -69,7 +69,7 @@ public class ApiTest {
 
   @Test
   public void shouldReplacePlaylistsTracks() {
-    final Api api = Api.builder().accessToken(accessToken).build();
+    final Api api = new Api.Builder().setAccessToken(accessToken).build();
     IRequest request = api
             .replacePlaylistsTracks("userId", "5oEljuMoe9MXH6tBIPbd5e", new String[]{"spotify:track:4iV5W9uYEdYUVa79Axb7Rh"})
             .build();
@@ -81,7 +81,7 @@ public class ApiTest {
 
   @Test
   public void shouldUnfollowPlaylist() {
-    final Api api = Api.builder().accessToken(accessToken).build();
+    final Api api = new Api.Builder().setAccessToken(accessToken).build();
     IRequest request = api
             .unfollowPlaylist("userId", "5oEljuMoe9MXH6tBIPbd5e")
             .build();
@@ -93,7 +93,7 @@ public class ApiTest {
 
   @Test
   public void shouldCreateAGetRecentlyPlayedTracksUrl() {
-    final Api api = Api.builder().accessToken(accessToken).build();
+    final Api api = new Api.Builder().setAccessToken(accessToken).build();
     IRequest request = api
             .getRecentlyPlayedTracks()
             .build();
@@ -102,7 +102,7 @@ public class ApiTest {
 
   @Test
   public void shouldCreateAGetArtistUrl() {
-    final Api api = Api.builder().accessToken(accessToken).build();
+    final Api api = new Api.Builder().setAccessToken(accessToken).build();
     IRequest request = api
             .getArtist("5rSXSAkZ67PYJSvpUpkOr7")
             .build();
@@ -111,7 +111,7 @@ public class ApiTest {
 
   @Test
   public void shouldCreateAGetTrackUrl() {
-    final Api api = Api.builder().accessToken(accessToken).build();
+    final Api api = new Api.Builder().setAccessToken(accessToken).build();
     IRequest request = api
             .getTrack("6hDH3YWFdcUNQjubYztIsG")
             .build();
@@ -120,7 +120,7 @@ public class ApiTest {
 
   @Test
   public void shouldCreateAGetAlbumsUrl() {
-    final Api api = Api.builder().accessToken(accessToken).build();
+    final Api api = new Api.Builder().setAccessToken(accessToken).build();
     IRequest request = api
             .getAlbums("6hDH3YWFdcUNQjubYztIsG", "2IA4WEsWAYpV9eKkwR2UYv")
             .build();
@@ -130,7 +130,7 @@ public class ApiTest {
 
   @Test
   public void shouldCreateAGetAlbumsUrlFromAList() {
-    final Api api = Api.builder().accessToken(accessToken).build();
+    final Api api = new Api.Builder().setAccessToken(accessToken).build();
     IRequest request = api
             .getAlbums("6hDH3YWFdcUNQjubYztIsG", "2IA4WEsWAYpV9eKkwR2UYv")
             .build();
@@ -140,7 +140,7 @@ public class ApiTest {
 
   @Test
   public void shouldCreateAGetTracksUrl() {
-    final Api api = Api.builder().accessToken(accessToken).build();
+    final Api api = new Api.Builder().setAccessToken(accessToken).build();
     IRequest request = api
             .getTracks("6hDH3YWFdcUNQjubYztIsG", "2IA4WEsWAYpV9eKkwR2UYv")
             .build();
@@ -150,7 +150,7 @@ public class ApiTest {
 
   @Test
   public void shouldCreateAGetTracksUrlFromList() {
-    final Api api = Api.builder().accessToken(accessToken).build();
+    final Api api = new Api.Builder().setAccessToken(accessToken).build();
     IRequest request = api
             .getTracks("6hDH3YWFdcUNQjubYztIsG", "2IA4WEsWAYpV9eKkwR2UYv")
             .build();
@@ -160,8 +160,7 @@ public class ApiTest {
 
   @Test
   public void shouldCreateAGetRecommendationsUrl() {
-    final Api api = Api.builder().accessToken(accessToken).build();
-    api.setAccessToken("AccessToken");
+    final Api api = new Api.Builder().setAccessToken(accessToken).build();
     IRequest request = api
             .getRecommendations()
             .build();
@@ -170,7 +169,7 @@ public class ApiTest {
 
   @Test
   public void shouldCreateAGetRecommendationsUrlFromList() {
-    final Api api = Api.builder().accessToken(accessToken).build();
+    final Api api = new Api.Builder().setAccessToken(accessToken).build();
     IRequest request = api
             .getRecommendations()
             .build();
@@ -179,7 +178,7 @@ public class ApiTest {
 
   @Test
   public void shouldCreateAUrlForArtistsAlbum() {
-    final Api api = Api.builder().accessToken(accessToken).build();
+    final Api api = new Api.Builder().setAccessToken(accessToken).build();
     IRequest request = api
             .getAlbumsForArtist("4AK6F7OLvEQ5QYCBNiQWHq")
             .build();
@@ -188,7 +187,7 @@ public class ApiTest {
 
   @Test
   public void shouldHaveMultipleAlbumTypeParametersInArtistsAlbumUrl() {
-    final Api api = Api.builder().accessToken(accessToken).build();
+    final Api api = new Api.Builder().setAccessToken(accessToken).build();
     IRequest request = api
             .getAlbumsForArtist("4AK6F7OLvEQ5QYCBNiQWHq")
             .album_type(AlbumType.ALBUM.getType() + "," + AlbumType.SINGLE.getType())
@@ -202,7 +201,7 @@ public class ApiTest {
 
   @Test
   public void shouldHaveSingleAlbumTypeParametersInArtistsAlbumUrl() {
-    final Api api = Api.builder().accessToken(accessToken).build();
+    final Api api = new Api.Builder().setAccessToken(accessToken).build();
     IRequest request = api
             .getAlbumsForArtist("4AK6F7OLvEQ5QYCBNiQWHq")
             .album_type(AlbumType.SINGLE.getType())
@@ -213,7 +212,7 @@ public class ApiTest {
 
   @Test
   public void shouldFailIfAlbumTypeParametersIsInArtistsAlbumUrl() {
-    final Api api = Api.builder().accessToken(accessToken).build();
+    final Api api = new Api.Builder().setAccessToken(accessToken).build();
     IRequest request = api
             .getAlbumsForArtist("4AK6F7OLvEQ5QYCBNiQWHq")
             .album_type(AlbumType.SINGLE.getType())
@@ -224,7 +223,7 @@ public class ApiTest {
 
   @Test
   public void shouldHaveLimitParameterInArtistsAlbumUrl() {
-    final Api api = Api.builder().accessToken(accessToken).build();
+    final Api api = new Api.Builder().setAccessToken(accessToken).build();
     IRequest request = api
             .getAlbumsForArtist("4AK6F7OLvEQ5QYCBNiQWHq")
             .limit(2)
@@ -235,7 +234,7 @@ public class ApiTest {
 
   @Test
   public void shouldHaveOffsetParameterInArtistsAlbumUrl() {
-    final Api api = Api.builder().accessToken(accessToken).build();
+    final Api api = new Api.Builder().setAccessToken(accessToken).build();
     IRequest request = api
             .getAlbumsForArtist("4AK6F7OLvEQ5QYCBNiQWHq")
             .offset(5)
@@ -246,7 +245,7 @@ public class ApiTest {
 
   @Test
   public void shouldHaveSeveralQueryParametersAtTheSameTimeInArtistsAlbumUrl() {
-    final Api api = Api.builder().accessToken(accessToken).build();
+    final Api api = new Api.Builder().setAccessToken(accessToken).build();
     IRequest request = api
             .getAlbumsForArtist("4AK6F7OLvEQ5QYCBNiQWHq")
             .album_type(AlbumType.SINGLE.getType())
@@ -261,7 +260,7 @@ public class ApiTest {
 
   @Test
   public void shouldCreateAGetArtistsUrl() {
-    final Api api = Api.builder().accessToken(accessToken).build();
+    final Api api = new Api.Builder().setAccessToken(accessToken).build();
     IRequest request = api
             .getArtists("4AK6F7OLvEQ5QYCBNiQWHq", "6rEzedK7cKWjeQWdAYvWVG")
             .build();
@@ -271,7 +270,7 @@ public class ApiTest {
 
   @Test
   public void shouldCreateSearchUrl() {
-    final Api api = Api.builder().accessToken(accessToken).build();
+    final Api api = new Api.Builder().setAccessToken(accessToken).build();
     IRequest request = api
             .searchTracks("moulat swalf")
             .build();
@@ -282,7 +281,7 @@ public class ApiTest {
 
   @Test
   public void shouldCreateSearchUrlForAlbum() {
-    final Api api = Api.builder().accessToken(accessToken).build();
+    final Api api = new Api.Builder().setAccessToken(accessToken).build();
     IRequest request = api
             .searchAlbums("meeep")
             .market(CountryCode.GB)
@@ -295,7 +294,7 @@ public class ApiTest {
 
   @Test
   public void shouldCreateSearchUrlForArtist() {
-    final Api api = Api.builder().accessToken(accessToken).build();
+    final Api api = new Api.Builder().setAccessToken(accessToken).build();
     IRequest request = api
             .searchArtists("meeep")
             .market(CountryCode.GB)
@@ -308,7 +307,7 @@ public class ApiTest {
 
   @Test
   public void shouldCreateSearchUrlWithLimitParameter() {
-    final Api api = Api.builder().accessToken(accessToken).build();
+    final Api api = new Api.Builder().setAccessToken(accessToken).build();
     IRequest request = api
             .searchTracks("moulat swalf")
             .limit(2)
@@ -323,7 +322,7 @@ public class ApiTest {
 
   @Test
   public void shouldCreateSearchUrlWithOffsetParameter() {
-    final Api api = Api.builder().accessToken(accessToken).build();
+    final Api api = new Api.Builder().setAccessToken(accessToken).build();
     IRequest request = api
             .searchTracks("moulat swalf")
             .offset(2)
@@ -336,7 +335,7 @@ public class ApiTest {
 
   @Test
   public void shouldModifySchemeInUrl() {
-    Api api = Api.builder().accessToken(accessToken).scheme("http").build();
+    Api api = new Api.Builder().setAccessToken(accessToken).setScheme("http").build();
     IRequest request = api
             .getAlbum("5oEljuMoe9MXH6tBIPbd5e")
             .build();
@@ -345,7 +344,7 @@ public class ApiTest {
 
   @Test
   public void shouldModifyPortInUrl() {
-    Api api = Api.builder().accessToken(accessToken).port(8080).build();
+    Api api = new Api.Builder().setAccessToken(accessToken).setPort(8080).build();
     IRequest request = api
             .getAlbum("5oEljuMoe9MXH6tBIPbd5e")
             .build();
@@ -354,7 +353,7 @@ public class ApiTest {
 
   @Test
   public void shouldModifyHostInUrl() {
-    Api api = Api.builder().accessToken(accessToken).host("www.wrapper.se").build();
+    Api api = new Api.Builder().setAccessToken(accessToken).setHost("www.wrapper.se").build();
     IRequest request = api
             .getAlbum("5oEljuMoe9MXH6tBIPbd5e")
             .build();
@@ -363,7 +362,7 @@ public class ApiTest {
 
   @Test
   public void shouldCreateTopTracksUrl() {
-    final Api api = Api.builder().accessToken(accessToken).build();
+    final Api api = new Api.Builder().setAccessToken(accessToken).build();
     IRequest request = api
             .getTopTracksForArtist("0LcJLqbBmaGUft1e9Mm8HV", CountryCode.GB)
             .build();
@@ -373,7 +372,7 @@ public class ApiTest {
 
   @Test
   public void shouldCreateUserProfileUrl() {
-    final Api api = Api.builder().accessToken(accessToken).build();
+    final Api api = new Api.Builder().setAccessToken(accessToken).build();
     IRequest request = api
             .getUser("wizzler")
             .build();
@@ -382,7 +381,7 @@ public class ApiTest {
 
   @Test
   public void shouldCreateUrlForListingAUsersPlaylists() throws Exception {
-    final Api api = Api.builder().accessToken(accessToken).build();
+    final Api api = new Api.Builder().setAccessToken(accessToken).build();
 
     final IRequest request = api
             .getPlaylistsForUser("wizzler")
@@ -400,9 +399,9 @@ public class ApiTest {
     final String code = "returnedCode";
 
     final Api api = Api.builder()
-            .clientId(clientId)
-            .clientSecret(clientSecret)
-            .redirectURI(redirectURI)
+            .setClientId(clientId)
+            .setClientSecret(clientSecret)
+            .setRedirectUri(redirectURI)
             .build();
 
     final IRequest request = api
@@ -417,7 +416,7 @@ public class ApiTest {
 
   @Test
   public void shouldCreatePlaylistLookupUrl() {
-    final Api api = Api.builder().accessToken(accessToken).build();
+    final Api api = new Api.Builder().setAccessToken(accessToken).build();
 
     final String playlistId = "3ktAYNcRHpazJ9qecm3ptn";
     final String userId = "thelinmichael";
@@ -433,7 +432,7 @@ public class ApiTest {
   @Test
   public void shouldCreateCurrentUserLookupUrl() {
 
-    final Api api = Api.builder().accessToken(accessToken).build();
+    final Api api = new Api.Builder().setAccessToken(accessToken).build();
 
     final IRequest request = api
             .getMe()
@@ -445,7 +444,7 @@ public class ApiTest {
 
   @Test
   public void shouldCreateCreatePlaylistUrl() {
-    final Api api = Api.builder().accessToken(accessToken).build();
+    final Api api = new Api.Builder().setAccessToken(accessToken).build();
 
     final String myUsername = "thelinmichael";
     final String title = "The greatest playlist ever";
@@ -462,7 +461,7 @@ public class ApiTest {
 
   @Test
   public void shouldCreateAddTrackToPlaylistUrl() {
-    final Api api = Api.builder().accessToken(accessToken).build();
+    final Api api = new Api.Builder().setAccessToken(accessToken).build();
 
     final String myUsername = "thelinmichael";
     final String myPlaylistId = "5ieJqeLJjjI8iJWaxeBLuK";
@@ -484,7 +483,7 @@ public class ApiTest {
 
   @Test
   public void shouldCreateRemoveTrackFromPlaylistUrl() {
-    final Api api = Api.builder().accessToken(accessToken).build();
+    final Api api = new Api.Builder().setAccessToken(accessToken).build();
 
     final String myUsername = "thelinmichael";
     final String myPlaylistId = "5ieJqeLJjjI8iJWaxeBLuK";
@@ -519,7 +518,7 @@ public class ApiTest {
 
   @Test
   public void shouldCreateReorderTracksInPlaylistUrl() {
-    final Api api = Api.builder().accessToken(accessToken).build();
+    final Api api = new Api.Builder().setAccessToken(accessToken).build();
 
     final String myUsername = "thelinmichael";
     final String myPlaylistId = "5ieJqeLJjjI8iJWaxeBLuK";
@@ -547,7 +546,7 @@ public class ApiTest {
 
   @Test
   public void shouldCreateChangePlaylistDetailsUrl() {
-    final Api api = Api.builder().accessToken(accessToken).build();
+    final Api api = new Api.Builder().setAccessToken(accessToken).build();
 
     final String myUsername = "thelinmichael";
     final String myPlaylistId = "5ieJqeLJjjI8iJWaxeBLuK";
@@ -577,8 +576,8 @@ public class ApiTest {
     final String clientSecret = "myClientSecret";
 
     final Api api = Api.builder()
-            .clientId(clientId)
-            .clientSecret(clientSecret)
+            .setClientId(clientId)
+            .setClientSecret(clientSecret)
             .build();
 
     final String[] scopes = {"some-scope", "some-other-scope"};
@@ -600,7 +599,7 @@ public class ApiTest {
     final String playlistId = "5ieJqeLJjjI8iJWaxeBLuK";
 
     final Api api = Api.builder()
-            .accessToken(accessToken)
+            .setAccessToken(accessToken)
             .build();
 
     final IRequest request = api
@@ -619,7 +618,7 @@ public class ApiTest {
 
   @Test
   public void shouldCreateRelatedArtistsURL() {
-    final Api api = Api.builder().accessToken(accessToken).build();
+    final Api api = new Api.Builder().setAccessToken(accessToken).build();
 
     final String artistId = "0qeei9KQnptjwb8MgkqEoy";
 
@@ -636,8 +635,8 @@ public class ApiTest {
     final String clientId = "fcecfc79122e4cd299473677a17cbd4d";
 
     final Api api = Api.builder()
-            .clientId(clientId)
-            .redirectURI(redirectURI)
+            .setClientId(clientId)
+            .setRedirectUri(redirectURI)
             .build();
 
     final String[] scopes = {"user-read-private", "user-read-email"};
@@ -655,8 +654,8 @@ public class ApiTest {
     final String clientId = "fcecfc79122e4cd299473677a17cbd4d";
 
     final Api api = Api.builder()
-            .clientId(clientId)
-            .redirectURI(redirectURI)
+            .setClientId(clientId)
+            .setRedirectUri(redirectURI)
             .build();
 
     final String[] scopes = {"user-read-private", "user-read-email"};
@@ -675,8 +674,8 @@ public class ApiTest {
     final String clientId = "fcecfc79122e4cd299473677a17cbd4d";
 
     final Api api = Api.builder()
-            .clientId(clientId)
-            .redirectURI(redirectURI)
+            .setClientId(clientId)
+            .setRedirectUri(redirectURI)
             .build();
 
     final String[] scopes = {"user-read-private", "user-read-email"};
@@ -693,7 +692,7 @@ public class ApiTest {
     final String accessToken = "myAccessToken";
 
     final Api api = Api.builder()
-            .accessToken(accessToken)
+            .setAccessToken(accessToken)
             .build();
 
     final IRequest request = api
@@ -713,7 +712,7 @@ public class ApiTest {
     final String accessToken = "myAccessToken";
 
     final Api api = Api.builder()
-            .accessToken(accessToken)
+            .setAccessToken(accessToken)
             .build();
 
     final IRequest request = api
@@ -729,7 +728,7 @@ public class ApiTest {
     final String accessToken = "myAccessToken";
 
     final Api api = Api.builder()
-            .accessToken(accessToken)
+            .setAccessToken(accessToken)
             .build();
 
     final IRequest request = api
@@ -744,7 +743,7 @@ public class ApiTest {
     final String accessToken = "myAccessToken";
 
     final Api api = Api.builder()
-            .accessToken(accessToken)
+            .setAccessToken(accessToken)
             .build();
 
     final IRequest request = api
@@ -766,7 +765,7 @@ public class ApiTest {
     final String accessToken = "myAccessToken";
 
     final Api api = Api.builder()
-            .accessToken(accessToken)
+            .setAccessToken(accessToken)
             .build();
 
 
