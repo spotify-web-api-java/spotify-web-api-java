@@ -15,16 +15,15 @@ import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URLEncoder;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public abstract class AbstractRequest implements IRequest {
 
   private IHttpManager httpManager;
   private URI uri;
-  private List<Header> headers;
-  private List<NameValuePair> formParameters;
-  private List<NameValuePair> bodyParameters;
+  private Map<String, String> headers;
+  private Map<String, String> formParameters;
+  private Map<String, String> bodyParameters;
   private String body;
 
   protected AbstractRequest(Builder<?> builder) {
@@ -49,8 +48,9 @@ public abstract class AbstractRequest implements IRequest {
             .setPort(builder.port)
             .setPath(builder.path);
     if (builder.queryParameters.size() > 0) {
-      uriBuilder
-              .setParameters(builder.queryParameters);
+      for (Map.Entry<String, String> parameterMap : builder.queryParameters.entrySet()) {
+        uriBuilder.addParameter(parameterMap.getKey(), parameterMap.getValue());
+      }
     }
 
     try {
@@ -76,10 +76,26 @@ public abstract class AbstractRequest implements IRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    Header[] headerArray = new Header[]{};
-    headers.toArray(headerArray);
 
-    return httpManager.get(uri, headerArray);
+    return httpManager.get(uri, toHeaderArray(headers));
+  }
+
+  protected final Header[] toHeaderArray(Map<String, String> headerMap) {
+    Header[] headers = new Header[headerMap.size()];
+    int i = 0;
+    for (Map.Entry<String, String> entry : headerMap.entrySet()) {
+      headers[i++] = new BasicHeader(entry.getKey(), entry.getValue());
+    }
+    return headers;
+  }
+
+
+  protected final List<NameValuePair> toNameValuePairList(Map<String, String> map) {
+    List<NameValuePair> nameValuePairList = new ArrayList<>();
+    for (Map.Entry<String, String> entry : map.entrySet()) {
+      nameValuePairList.add(new BasicNameValuePair(entry.getKey(), entry.getValue()));
+    }
+    return nameValuePairList;
   }
 
   public String postJson() throws
@@ -93,10 +109,9 @@ public abstract class AbstractRequest implements IRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    Header[] headerArray = new Header[]{};
-    headers.toArray(headerArray);
-
-    return httpManager.post(uri, headerArray, formParameters);
+//    TODO this is a hack
+    formParameters.putAll(bodyParameters);
+    return httpManager.post(uri, toHeaderArray(headers), toNameValuePairList(formParameters));
   }
 
   public String putJson() throws
@@ -110,10 +125,8 @@ public abstract class AbstractRequest implements IRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    Header[] headerArray = new Header[]{};
-    headers.toArray(headerArray);
 
-    return httpManager.put(uri, headerArray, formParameters);
+    return httpManager.put(uri, toHeaderArray(headers), toNameValuePairList(formParameters));
   }
 
   public String deleteJson() throws
@@ -127,10 +140,7 @@ public abstract class AbstractRequest implements IRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    Header[] headerArray = new Header[]{};
-    headers.toArray(headerArray);
-
-    return httpManager.delete(uri, headerArray);
+    return httpManager.delete(uri, toHeaderArray(headers));
   }
 
   public <T> SettableFuture<T> executeAsync(T value) {
@@ -153,15 +163,15 @@ public abstract class AbstractRequest implements IRequest {
     return uri;
   }
 
-  public List<Header> getHeaders() {
+  public Map<String, String> getHeaders() {
     return headers;
   }
 
-  public List<NameValuePair> getFormParameters() {
+  public Map<String, String> getFormParameters() {
     return formParameters;
   }
 
-  public List<NameValuePair> getBodyParameters() {
+  public Map<String, String> getBodyParameters() {
     return bodyParameters;
   }
 
@@ -178,11 +188,11 @@ public abstract class AbstractRequest implements IRequest {
     private String host = Api.DEFAULT_HOST;
     private Integer port = Api.DEFAULT_PORT;
     private String path = null;
-    private List<NameValuePair> pathParameters = new ArrayList<>();
-    private List<NameValuePair> queryParameters = new ArrayList<>();
-    private List<Header> headers = new ArrayList<>();
-    private List<NameValuePair> formParameters = new ArrayList<>();
-    private List<NameValuePair> bodyParameters = new ArrayList<>();
+    private Map<String, String> pathParameters = new LinkedHashMap<>();
+    private Map<String, String> queryParameters = new LinkedHashMap<>();
+    private Map<String, String> headers = new LinkedHashMap<>();
+    private Map<String, String> formParameters = new LinkedHashMap<>();
+    private Map<String, String> bodyParameters = new LinkedHashMap<>();
     private String body = "";
 
     protected Builder() {
@@ -222,8 +232,8 @@ public abstract class AbstractRequest implements IRequest {
 
       String builtPath = path;
 
-      for (NameValuePair nameValuePair : pathParameters) {
-        builtPath = builtPath.replaceAll("\\{" + nameValuePair.getName() + "\\}", nameValuePair.getValue());
+      for (Map.Entry<String, String> nameValuePair : pathParameters.entrySet()) {
+        builtPath = builtPath.replaceAll("\\{" + nameValuePair.getKey() + "\\}", nameValuePair.getValue());
       }
 
       this.path = builtPath;
@@ -242,7 +252,7 @@ public abstract class AbstractRequest implements IRequest {
         e.printStackTrace();
       }
 
-      this.pathParameters.add(new BasicNameValuePair(name, encodedValue));
+      this.pathParameters.put(name, encodedValue);
       return (BuilderType) this;
     }
 
@@ -261,22 +271,22 @@ public abstract class AbstractRequest implements IRequest {
     public <T> BuilderType setQueryParameter(final String name, final T value) {
       assert (name != null);
       assert (value != null);
-      this.queryParameters.add(new BasicNameValuePair(name, String.valueOf(value)));
+      this.queryParameters.put(name, String.valueOf(value));
       return (BuilderType) this;
     }
 
     public <T> BuilderType setHeader(final String name, final T value) {
-      this.headers.add(new BasicHeader(name, String.valueOf(value)));
+      this.headers.put(name, String.valueOf(value));
       return (BuilderType) this;
     }
 
     public <T> BuilderType setFormParameter(final String name, final T value) {
-      this.formParameters.add(new BasicNameValuePair(name, String.valueOf(value)));
+      this.formParameters.put(name, String.valueOf(value));
       return (BuilderType) this;
     }
 
     public <T> BuilderType setBodyParameter(final String name, final T value) {
-      this.bodyParameters.add(new BasicNameValuePair(name, String.valueOf(value)));
+      this.bodyParameters.put(name, String.valueOf(value));
       return (BuilderType) this;
     }
 

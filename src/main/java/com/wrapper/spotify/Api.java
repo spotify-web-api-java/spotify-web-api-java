@@ -22,6 +22,7 @@ import com.wrapper.spotify.requests.data.library.RemoveUsersSavedTracksRequest;
 import com.wrapper.spotify.requests.data.library.SaveTracksForUserRequest;
 import com.wrapper.spotify.requests.data.player.GetCurrentUsersRecentlyPlayedTracksRequest;
 import com.wrapper.spotify.requests.data.player.GetUsersCurrentlyPlayingTrackRequest;
+import com.wrapper.spotify.requests.data.player.SkipUsersPlaybackToPreviousTrackRequest;
 import com.wrapper.spotify.requests.data.playlists.*;
 import com.wrapper.spotify.requests.data.search.simplified.SearchAlbumRequest;
 import com.wrapper.spotify.requests.data.search.simplified.SearchArtistRequest;

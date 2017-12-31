@@ -8,6 +8,7 @@ import org.apache.http.NameValuePair;
 import java.net.URI;
 import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Map;
 
 public interface IRequest {
 
@@ -19,11 +20,11 @@ public interface IRequest {
 
   URI getUri();
 
-  List<Header> getHeaders();
+  Map<String, String> getHeaders();
 
-  List<NameValuePair> getFormParameters();
+  Map<String, String> getFormParameters();
 
-  List<NameValuePair> getBodyParameters();
+  Map<String, String> getBodyParameters();
 
   String getBody();
 

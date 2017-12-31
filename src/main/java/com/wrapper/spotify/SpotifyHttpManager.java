@@ -3,6 +3,7 @@ package com.wrapper.spotify;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.wrapper.spotify.exceptions.*;
+import com.wrapper.spotify.requests.AbstractRequest;
 import org.apache.http.*;
 import org.apache.http.auth.AuthScope;
 import org.apache.http.auth.UsernamePasswordCredentials;
@@ -12,17 +13,18 @@ import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.*;
 import org.apache.http.config.ConnectionConfig;
-import org.apache.http.conn.HttpClientConnectionManager;
+import org.apache.http.entity.ContentType;
 import org.apache.http.impl.client.BasicCredentialsProvider;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
-import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
 import java.net.URI;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
+import java.util.Objects;
 
 public class SpotifyHttpManager implements IHttpManager {
 
@@ -94,7 +96,10 @@ public class SpotifyHttpManager implements IHttpManager {
 
     httpPost.setURI(uri);
     httpPost.setHeaders(headers);
-    httpPost.setEntity(new UrlEncodedFormEntity(postParameters));
+
+    assert (Objects.equals(ContentType.APPLICATION_FORM_URLENCODED.getMimeType(),
+            httpPost.getFirstHeader(AbstractRequest.Builder.CONTENT_TYPE_HEADER).getValue()));
+      httpPost.setEntity(new UrlEncodedFormEntity(postParameters));
 
     String responseBody = getResponseBody(execute(httpPost));
 
@@ -160,11 +165,15 @@ public class SpotifyHttpManager implements IHttpManager {
 
   private CloseableHttpResponse execute(HttpRequestBase method) throws
           IOException {
-    final CredentialsProvider credentialsProvider = new BasicCredentialsProvider();
-    credentialsProvider.setCredentials(
-            new AuthScope(proxy.getHostName(), proxy.getPort(), null, proxy.getSchemeName()),
-            proxyCredentials
-    );
+    final CredentialsProvider proxyCredentialsProvider;
+    if (proxy != null) {
+      proxyCredentialsProvider = new BasicCredentialsProvider();
+      proxyCredentialsProvider.setCredentials(
+              new AuthScope(proxy.getHostName(), proxy.getPort(), null, proxy.getSchemeName()), proxyCredentials
+      );
+    } else {
+      proxyCredentialsProvider = null;
+    }
     final ConnectionConfig connectionConfig = ConnectionConfig
             .custom()
             .setCharset(Charset.forName("UTF-8"))
@@ -177,7 +186,7 @@ public class SpotifyHttpManager implements IHttpManager {
     final CloseableHttpClient httpClient = HttpClients
             .custom()
             .setDefaultConnectionConfig(connectionConfig)
-            .setDefaultCredentialsProvider(credentialsProvider)
+            .setDefaultCredentialsProvider(proxyCredentialsProvider)
             .setDefaultRequestConfig(requestConfig)
             .build();
 
@@ -196,9 +205,12 @@ public class SpotifyHttpManager implements IHttpManager {
           BadGatewayException,
           ServiceUnavailableException {
     StatusLine statusLine = httpResponse.getStatusLine();
-    String responseBody = EntityUtils.toString(httpResponse.getEntity(), "UTF-8");
-
-    final JsonObject jsonObject = new JsonParser().parse(responseBody).getAsJsonObject();
+    final String responseBody;
+    if (httpResponse.getEntity() != null) {
+      responseBody = EntityUtils.toString(httpResponse.getEntity(), StandardCharsets.UTF_8);
+    } else {
+      responseBody = null;
+    }
 
     switch (statusLine.getStatusCode()) {
       case HttpStatus.SC_OK:
@@ -212,8 +224,13 @@ public class SpotifyHttpManager implements IHttpManager {
       case HttpStatus.SC_NOT_MODIFIED:
         return responseBody;
       case HttpStatus.SC_BAD_REQUEST:
-        if (jsonObject.has("error")) {
-          throw new BadRequestException(jsonObject.get("error").getAsString());
+        if (responseBody != null) {
+          final JsonObject jsonObject = new JsonParser().parse(responseBody).getAsJsonObject();
+          if (jsonObject.has("error")) {
+            throw new BadRequestException(jsonObject.get("error").getAsString());
+          }
+        } else {
+          throw new BadRequestException(statusLine.getReasonPhrase());
         }
       case HttpStatus.SC_UNAUTHORIZED:
         throw new UnauthorizedException(statusLine.getReasonPhrase());
