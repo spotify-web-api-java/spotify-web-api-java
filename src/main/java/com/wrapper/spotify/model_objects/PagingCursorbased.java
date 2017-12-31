@@ -3,6 +3,7 @@ package com.wrapper.spotify.model_objects;
 import com.google.common.reflect.TypeToken;
 import com.google.gson.JsonNull;
 import com.google.gson.JsonObject;
+import com.wrapper.spotify.model_objects.specification.Cursor;
 
 public class PagingCursorbased<T> extends AbstractModelObject {
   private final String href;

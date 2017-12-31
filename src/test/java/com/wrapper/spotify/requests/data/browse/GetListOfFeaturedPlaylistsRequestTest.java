@@ -6,7 +6,7 @@ import com.google.common.util.concurrent.SettableFuture;
 import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.TestUtil;
-import com.wrapper.spotify.model_objects.Paging;
+import com.wrapper.spotify.model_objects.specification.Paging;
 import com.wrapper.spotify.model_objects.PlaylistSimplified;
 import com.wrapper.spotify.model_objects.special.FeaturedPlaylists;
 import org.junit.Test;

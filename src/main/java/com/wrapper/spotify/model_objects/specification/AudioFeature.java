@@ -1,8 +1,9 @@
-package com.wrapper.spotify.model_objects;
+package com.wrapper.spotify.model_objects.specification;
 
 import com.google.gson.JsonObject;
 import com.wrapper.spotify.enums.Modality;
 import com.wrapper.spotify.enums.ModelObjectType;
+import com.wrapper.spotify.model_objects.AbstractModelObject;
 
 public class AudioFeature extends AbstractModelObject {
   private final double acousticness;

@@ -3,7 +3,7 @@ package com.wrapper.spotify.requests.data.playlists;
 import com.google.common.util.concurrent.SettableFuture;
 import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.exceptions.*;
-import com.wrapper.spotify.model_objects.Paging;
+import com.wrapper.spotify.model_objects.specification.Paging;
 import com.wrapper.spotify.model_objects.PlaylistTrack;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
 

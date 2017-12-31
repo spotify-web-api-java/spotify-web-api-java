@@ -3,6 +3,10 @@ package com.wrapper.spotify.model_objects;
 import com.google.gson.JsonNull;
 import com.google.gson.JsonObject;
 import com.wrapper.spotify.enums.ModelObjectType;
+import com.wrapper.spotify.model_objects.specification.ExternalUrls;
+import com.wrapper.spotify.model_objects.specification.Followers;
+import com.wrapper.spotify.model_objects.specification.Image;
+import com.wrapper.spotify.model_objects.specification.Paging;
 
 public class Playlist extends AbstractModelObject {
   private final boolean collaborative;

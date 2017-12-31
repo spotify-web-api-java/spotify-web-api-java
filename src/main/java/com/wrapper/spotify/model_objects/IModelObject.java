@@ -3,6 +3,7 @@ package com.wrapper.spotify.model_objects;
 import com.google.common.reflect.TypeToken;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import com.wrapper.spotify.model_objects.specification.Paging;
 
 import java.text.SimpleDateFormat;
 

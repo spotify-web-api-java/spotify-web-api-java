@@ -2,7 +2,7 @@ package com.wrapper.spotify.model_objects.special;
 
 import com.google.gson.JsonObject;
 import com.wrapper.spotify.model_objects.AbstractModelObject;
-import com.wrapper.spotify.model_objects.Paging;
+import com.wrapper.spotify.model_objects.specification.Paging;
 import com.wrapper.spotify.model_objects.PlaylistSimplified;
 
 public class FeaturedPlaylists extends AbstractModelObject {

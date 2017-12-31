@@ -1,7 +1,8 @@
-package com.wrapper.spotify.model_objects;
+package com.wrapper.spotify.model_objects.specification;
 
 import com.google.gson.JsonObject;
 import com.wrapper.spotify.enums.CopyrightType;
+import com.wrapper.spotify.model_objects.AbstractModelObject;
 
 public class Copyright extends AbstractModelObject {
   private final String text;

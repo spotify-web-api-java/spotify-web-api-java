@@ -4,6 +4,9 @@ import com.google.gson.JsonObject;
 import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.enums.ModelObjectType;
 import com.wrapper.spotify.enums.ProductType;
+import com.wrapper.spotify.model_objects.specification.ExternalUrls;
+import com.wrapper.spotify.model_objects.specification.Followers;
+import com.wrapper.spotify.model_objects.specification.Image;
 
 public class User extends AbstractModelObject {
   private final String birthdate;

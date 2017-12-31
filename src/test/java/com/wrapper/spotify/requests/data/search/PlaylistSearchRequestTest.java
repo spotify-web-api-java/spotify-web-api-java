@@ -6,7 +6,7 @@ import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.enums.ModelObjectType;
-import com.wrapper.spotify.model_objects.Paging;
+import com.wrapper.spotify.model_objects.specification.Paging;
 import com.wrapper.spotify.model_objects.PlaylistSimplified;
 import com.wrapper.spotify.requests.data.search.simplified.SearchPlaylistRequest;
 import org.junit.Test;

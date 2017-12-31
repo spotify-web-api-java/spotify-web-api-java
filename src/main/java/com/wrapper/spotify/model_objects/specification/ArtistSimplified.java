@@ -1,8 +1,9 @@
-package com.wrapper.spotify.model_objects;
+package com.wrapper.spotify.model_objects.specification;
 
 import com.google.gson.JsonNull;
 import com.google.gson.JsonObject;
 import com.wrapper.spotify.enums.ModelObjectType;
+import com.wrapper.spotify.model_objects.AbstractModelObject;
 
 public class ArtistSimplified extends AbstractModelObject {
   private final ExternalUrls externalUrls;
