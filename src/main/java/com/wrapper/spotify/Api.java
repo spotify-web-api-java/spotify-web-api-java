@@ -417,20 +417,6 @@ public class Api {
   }
 
   /**
-   * Get a user's starred tracks.
-   *
-   * @param userId The starred playlist's owner's username.
-   * @return A builder object that can be used to build a request to retrieve a user's starred
-   * tracks.
-   */
-  public GetPlaylistsTracksRequest.Builder getStarred(String userId) {
-    final GetPlaylistsTracksRequest.Builder builder = new GetPlaylistsTracksRequest.Builder(accessToken);
-    builder.setDefaults(httpManager, scheme, host, port);
-    builder.setPath("/v1/users/" + userId + "/starred/tracks");
-    return builder;
-  }
-
-  /**
    * Add tracks to a playlist.
    *
    * @param userId     The owner's username.
