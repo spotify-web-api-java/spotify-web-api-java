@@ -11,26 +11,13 @@ import org.apache.commons.codec.binary.Base64;
 
 import java.io.IOException;
 
-public class AuthorizationCodeGrantRequest extends AbstractRequest {
+public class AuthorizationCodeGrantRequest extends AbstractAthenticationRequest {
 
-  protected AuthorizationCodeGrantRequest(Builder builder) {
+  private AuthorizationCodeGrantRequest(Builder builder) {
     super(builder);
   }
 
-  public SettableFuture<AuthorizationCodeCredentials> postAsync() {
-    final SettableFuture<AuthorizationCodeCredentials> future = SettableFuture.create();
-
-    try {
-      final JsonObject jsonObject = new JsonParser().parse(postJson()).getAsJsonObject();
-      future.set(new AuthorizationCodeCredentials.JsonUtil().createModelObject(jsonObject));
-    } catch (Exception e) {
-      future.setException(e);
-    }
-
-    return future;
-  }
-
-  public AuthorizationCodeCredentials get() throws
+  public AuthorizationCodeCredentials post() throws
           IOException,
           NoContentException,
           BadRequestException,
@@ -41,40 +28,45 @@ public class AuthorizationCodeGrantRequest extends AbstractRequest {
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    final JsonObject jsonObject = new JsonParser().parse(postJson()).getAsJsonObject();
-    return new AuthorizationCodeCredentials.JsonUtil().createModelObject(jsonObject);
+    return new AuthorizationCodeCredentials.JsonUtil().createModelObject(postJson());
   }
 
-  public static final class Builder extends AbstractRequest.Builder<Builder> {
+  public SettableFuture<AuthorizationCodeCredentials> postAsync() throws
+          IOException,
+          NoContentException,
+          BadRequestException,
+          UnauthorizedException,
+          ForbiddenException,
+          NotFoundException,
+          TooManyRequestsException,
+          InternalServerErrorException,
+          BadGatewayException,
+          ServiceUnavailableException {
+    return executeAsync(new AuthorizationCodeCredentials.JsonUtil().createModelObject(postJson()));
+  }
 
-    public Builder(final String accessToken) {
-      super();
+  public static final class Builder extends AbstractAthenticationRequest.Builder<Builder> {
+
+    public Builder(final String clientId, final String clientSecret) {
+      super(clientId, clientSecret);
     }
 
-
-    public Builder grantType(String grantType) {
-      assert (grantType != null);
-      return setQueryParameter("grant_type", grantType);
+    public Builder setGrantType(final String grant_type) {
+      assert (grant_type != null);
+      assert (grant_type.equals("authorization_code"));
+      return setBodyParameter("grant_type", grant_type);
     }
 
-    public Builder code(String code) {
+    public Builder setCode(final String code) {
       assert (code != null);
-      return setQueryParameter("code", code);
+      assert (!code.equals(""));
+      return setBodyParameter("code", code);
     }
 
-    public Builder redirectUri(String redirectUri) {
-      assert (redirectUri != null);
-      return setQueryParameter("redirect_uri", redirectUri);
-    }
-
-    public Builder basicAuthorizationHeader(String clientId, String clientSecret) {
-      assert (clientId != null);
-      assert (clientSecret != null);
-
-      String idSecret = clientId + ":" + clientSecret;
-      String idSecretEncoded = new String(Base64.encodeBase64(idSecret.getBytes()));
-
-      return setHeader("Authorization", "Basic " + idSecretEncoded);
+    public Builder setRedirectUri(final String redirect_uri) {
+      assert (redirect_uri != null);
+      assert (!redirect_uri.equals(""));
+      return setBodyParameter("redirect_uri", redirect_uri);
     }
 
     public AuthorizationCodeGrantRequest build() {
@@ -85,6 +77,5 @@ public class AuthorizationCodeGrantRequest extends AbstractRequest {
 
       return new AuthorizationCodeGrantRequest(this);
     }
-
   }
 }

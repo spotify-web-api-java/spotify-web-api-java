@@ -6,6 +6,7 @@ import com.wrapper.spotify.model_objects.AbstractModelObject;
 public class AuthorizationCodeCredentials extends AbstractModelObject {
   private final String accessToken;
   private final String tokenType;
+  private final String scope;
   private final int expiresIn;
   private final String refreshToken;
 
@@ -14,6 +15,7 @@ public class AuthorizationCodeCredentials extends AbstractModelObject {
 
     this.accessToken = builder.accessToken;
     this.tokenType = builder.tokenType;
+    this.scope = builder.scope;
     this.expiresIn = builder.expiresIn;
     this.refreshToken = builder.refreshToken;
   }
@@ -24,6 +26,10 @@ public class AuthorizationCodeCredentials extends AbstractModelObject {
 
   public String getTokenType() {
     return tokenType;
+  }
+
+  public String getScope() {
+    return scope;
   }
 
   public int getExpiresIn() {
@@ -42,6 +48,7 @@ public class AuthorizationCodeCredentials extends AbstractModelObject {
   public static final class Builder extends AbstractModelObject.Builder {
     private String accessToken;
     private String tokenType;
+    private String scope;
     private int expiresIn;
     private String refreshToken;
 
@@ -52,6 +59,11 @@ public class AuthorizationCodeCredentials extends AbstractModelObject {
 
     public Builder setTokenType(String tokenType) {
       this.tokenType = tokenType;
+      return this;
+    }
+
+    public Builder setScope(String scope) {
+      this.scope = scope;
       return this;
     }
 
@@ -80,6 +92,7 @@ public class AuthorizationCodeCredentials extends AbstractModelObject {
       return new AuthorizationCodeCredentials.Builder()
               .setAccessToken(jsonObject.get("access_token").getAsString())
               .setTokenType(jsonObject.get("token_type").getAsString())
+              .setScope(jsonObject.get("scope").getAsString())
               .setExpiresIn(jsonObject.get("expires_in").getAsInt())
               .setRefreshToken(jsonObject.get("refresh_token").getAsString())
               .build();

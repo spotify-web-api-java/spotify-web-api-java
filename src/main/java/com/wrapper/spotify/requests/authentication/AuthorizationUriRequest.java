@@ -1,44 +1,55 @@
 package com.wrapper.spotify.requests.authentication;
 
-import com.google.common.base.Joiner;
 import com.wrapper.spotify.Api;
+import com.wrapper.spotify.exceptions.*;
 import com.wrapper.spotify.requests.AbstractRequest;
+
+import java.io.IOException;
 
 public class AuthorizationUriRequest extends AbstractRequest {
 
-  public AuthorizationUriRequest(Builder builder) {
+  private AuthorizationUriRequest(Builder builder) {
     super(builder);
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
-    public Builder(final String accessToken) {
+    public Builder() {
       super();
     }
 
-
-    public Builder scopes(String... scopes) {
-      return setQueryParameter("scope", Joiner.on(" ").join(scopes));
+    public Builder setClientId(final String client_id) {
+      assert (client_id != null);
+      assert (!client_id.equals(""));
+      return setQueryParameter("client_id", client_id);
     }
 
-    public Builder state(String state) {
+    public Builder setResponseType(final String response_type) {
+      assert (response_type != null);
+      assert (!response_type.equals(""));
+      return setQueryParameter("response_type", response_type);
+    }
+
+    public Builder setRedirectUri(final String redirect_uri) {
+      assert (redirect_uri != null);
+      assert (!redirect_uri.equals(""));
+      return setQueryParameter("redirect_uri", redirect_uri);
+    }
+
+    public Builder setState(final String state) {
+      assert (state != null);
+      assert (!state.equals(""));
       return setQueryParameter("state", state);
     }
 
-    public Builder responseType(String responseType) {
-      return setQueryParameter("response_type", responseType);
+    public Builder setScope(final String scope) {
+      assert (scope != null);
+      assert (!scope.equals(""));
+      return setQueryParameter("scope", scope);
     }
 
-    public Builder clientId(String clientId) {
-      return setQueryParameter("client_id", clientId);
-    }
-
-    public Builder redirectUri(String redirectURI) {
-      return setQueryParameter("redirect_uri", redirectURI);
-    }
-
-    public Builder showDialog(boolean showDialog) {
-      return setQueryParameter("show_dialog", showDialog);
+    public Builder setShowDialog(final boolean show_dialog) {
+      return setQueryParameter("show_dialog", show_dialog);
     }
 
     public AuthorizationUriRequest build() {

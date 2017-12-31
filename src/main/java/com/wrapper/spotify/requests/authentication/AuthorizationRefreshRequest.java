@@ -3,18 +3,18 @@ package com.wrapper.spotify.requests.authentication;
 import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.exceptions.*;
-import com.wrapper.spotify.model_objects.credentials.ClientCredentials;
+import com.wrapper.spotify.model_objects.credentials.AuthorizationCodeCredentials;
 import com.wrapper.spotify.requests.AbstractRequest;
 
 import java.io.IOException;
 
-public class ClientCredentialsGrantRequest extends AbstractAthenticationRequest {
+public class AuthorizationRefreshRequest extends AbstractAthenticationRequest {
 
-  public ClientCredentialsGrantRequest(Builder builder) {
+  private AuthorizationRefreshRequest(Builder builder) {
     super(builder);
   }
 
-  public ClientCredentials post() throws
+  public AuthorizationCodeCredentials post() throws
           IOException,
           NoContentException,
           BadRequestException,
@@ -25,10 +25,10 @@ public class ClientCredentialsGrantRequest extends AbstractAthenticationRequest 
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return new ClientCredentials.JsonUtil().createModelObject(postJson());
+    return new AuthorizationCodeCredentials.JsonUtil().createModelObject(postJson());
   }
 
-  public SettableFuture<ClientCredentials> postAsync() throws
+  public SettableFuture<AuthorizationCodeCredentials> postAsync() throws
           IOException,
           NoContentException,
           BadRequestException,
@@ -39,7 +39,7 @@ public class ClientCredentialsGrantRequest extends AbstractAthenticationRequest 
           InternalServerErrorException,
           BadGatewayException,
           ServiceUnavailableException {
-    return executeAsync(new ClientCredentials.JsonUtil().createModelObject(postJson()));
+    return executeAsync(new AuthorizationCodeCredentials.JsonUtil().createModelObject(postJson()));
   }
 
   public static final class Builder extends AbstractAthenticationRequest.Builder<Builder> {
@@ -50,17 +50,23 @@ public class ClientCredentialsGrantRequest extends AbstractAthenticationRequest 
 
     public Builder setGrantType(final String grant_type) {
       assert (grant_type != null);
-      assert (grant_type.equals("client_credentials"));
+      assert (grant_type.equals("refresh_token"));
       return setBodyParameter("grant_type", grant_type);
     }
 
-    public ClientCredentialsGrantRequest build() {
+    public Builder setRefreshToken(final String refresh_token) {
+      assert (refresh_token != null);
+      assert (!refresh_token.equals(""));
+      return setBodyParameter("refresh_token", refresh_token);
+    }
+
+    public AuthorizationRefreshRequest build() {
       setHost(Api.DEFAULT_AUTHENTICATION_HOST);
       setPort(Api.DEFAULT_AUTHENTICATION_PORT);
       setScheme(Api.DEFAULT_AUTHENTICATION_SCHEME);
       setPath("/api/token");
 
-      return new ClientCredentialsGrantRequest(this);
+      return new AuthorizationRefreshRequest(this);
     }
   }
 }

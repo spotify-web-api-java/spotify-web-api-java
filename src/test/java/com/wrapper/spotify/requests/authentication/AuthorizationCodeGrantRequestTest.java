@@ -27,7 +27,7 @@ public class AuthorizationCodeGrantRequestTest {
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/authentication/auth-tokens.json"))
             .build();
     try {
-      final AuthorizationCodeCredentials tokens = request.get();
+      final AuthorizationCodeCredentials tokens = request.post();
       assertEquals("BQBY2M94xNVE_7p7x1MhNd2I1UNs62cv-CVDXkDwh5YqSiKJceKRXwJfUrLmJFKO7GfiCZKTh8oEEj3b84bZx1Qy52qwGYCVhX6yHPJY4VDday-hC1YMPOWyIt9Bp05UuJb673btr6T1YOd0DliheWDyqQ", tokens.getAccessToken());
       assertEquals("Bearer", tokens.getTokenType());
       assertEquals(3600, tokens.getExpiresIn());
@@ -36,5 +36,4 @@ public class AuthorizationCodeGrantRequestTest {
       fail(e.getMessage());
     }
   }
-
 }

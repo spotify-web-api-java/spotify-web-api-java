@@ -408,7 +408,7 @@ public class ApiTest {
             .authorizationCodeGrant(code)
             .build();
 
-    assertEquals("https://accounts.spotify.com:443/api/token?grant_type=authorization_code&code=returnedCode&redirect_uri=myRedirectUri", request.getUri().toString());
+    assertEquals("https://accounts.spotify.com:443/api/token", request.getUri().toString());
 
     final String idSecret = clientId + ":" + clientSecret;
     assertHasHeader(request, "Authorization", "Basic " + new String(Base64.encodeBase64(idSecret.getBytes())));
@@ -584,9 +584,9 @@ public class ApiTest {
 
     final IRequest request = api
             .clientCredentialsGrant()
-            .scopes(scopes).build();
+            .build();
 
-    assertEquals("https://accounts.spotify.com:443/api/token?grant_type=client_credentials&scope=some-scope+some-other-scope", request.getUri().toString());
+    assertEquals("https://accounts.spotify.com:443/api/token", request.getUri().toString());
 
     final String idSecret = clientId + ":" + clientSecret;
     assertHasHeader(request, "Authorization", "Basic " + new String(Base64.encodeBase64(idSecret.getBytes())));

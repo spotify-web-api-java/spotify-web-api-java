@@ -28,10 +28,10 @@ public class ClientCredentialsGrantRequestTest {
 
     final ClientCredentialsGrantRequest request = api
             .clientCredentialsGrant()
-            .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/authentication/application-authentication-token.json"))
+            .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/authentication/ClientCredentials.json"))
             .build();
 
-    final ClientCredentials response = request.get();
+    final ClientCredentials response = request.post();
     assertEquals(3600, response.getExpiresIn());
     assertEquals("BQAh_5C4JzOMLuF0W-UVTtaOhZaX0bjgJ5B8giFun_i7AJRKTpZ-VB1mFd3hWLLWRsZNihc_fG1xUlnW9sLBjQ", response.getAccessToken());
     assertEquals("Bearer", response.getTokenType());
@@ -49,12 +49,12 @@ public class ClientCredentialsGrantRequestTest {
 
     final ClientCredentialsGrantRequest request = api
             .clientCredentialsGrant()
-            .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/authentication/application-authentication-token.json"))
+            .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/authentication/ClientCredentials.json"))
             .build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
-    final SettableFuture<ClientCredentials> responseFuture = request.executeAsync();
+    final SettableFuture<ClientCredentials> responseFuture = request.postAsync();
 
     Futures.addCallback(responseFuture, new FutureCallback<ClientCredentials>() {
       @Override

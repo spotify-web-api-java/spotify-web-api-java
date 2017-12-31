@@ -325,12 +325,11 @@ public class Api {
    * @return A builder that builds authorization code grant requests.
    */
   public AuthorizationCodeGrantRequest.Builder authorizationCodeGrant(String code) {
-    AuthorizationCodeGrantRequest.Builder builder = new AuthorizationCodeGrantRequest.Builder(accessToken);
+    AuthorizationCodeGrantRequest.Builder builder = new AuthorizationCodeGrantRequest.Builder(clientId, clientSecret);
     builder.setDefaults(httpManager, scheme, host, port);
-    builder.grantType("authorization_code");
-    builder.basicAuthorizationHeader(clientId, clientSecret);
-    builder.code(code);
-    builder.redirectUri(redirectUri);
+    builder.setGrantType("authorization_code");
+    builder.setCode(code);
+    builder.setRedirectUri(redirectUri);
     return builder;
   }
 
@@ -341,10 +340,9 @@ public class Api {
    * @return A builder that builds client credential grant requests.
    */
   public ClientCredentialsGrantRequest.Builder clientCredentialsGrant() {
-    ClientCredentialsGrantRequest.Builder builder = new ClientCredentialsGrantRequest.Builder(accessToken);
+    ClientCredentialsGrantRequest.Builder builder = new ClientCredentialsGrantRequest.Builder(clientId, clientSecret);
     builder.setDefaults(httpManager, scheme, host, port);
-    builder.grantType("client_credentials");
-    builder.basicAuthorizationHeader(clientId, clientSecret);
+    builder.setGrantType("client_credentials");
     return builder;
   }
 
@@ -623,23 +621,23 @@ public class Api {
    * @return The URL where the user can give application permissions.
    */
   public URI createAuthorizeUri(String[] scopes, String state, boolean showDialog) {
-    final AuthorizationUriRequest.Builder builder = new AuthorizationUriRequest.Builder(accessToken);
+    final AuthorizationUriRequest.Builder builder = new AuthorizationUriRequest.Builder();
 
     builder.setDefaults(httpManager, scheme, host, port);
 
-    builder.clientId(clientId);
-    builder.responseType("code");
-    builder.redirectUri(redirectUri);
+    builder.setClientId(clientId);
+    builder.setResponseType("code");
+    builder.setRedirectUri(redirectUri);
 
     if (scopes != null) {
-      builder.scopes(scopes);
+      builder.setScope(Joiner.on(" ").join(scopes));
     }
 
     if (state != null) {
-      builder.state(state);
+      builder.setState(state);
     }
 
-    builder.showDialog(showDialog);
+    builder.setShowDialog(showDialog);
 
     return builder.build().getUri();
   }
@@ -653,20 +651,20 @@ public class Api {
    * @return The URL where the user can give application permissions.
    */
   public URI createAuthorizeUri(String[] scopes, String state) {
-    final AuthorizationUriRequest.Builder builder = new AuthorizationUriRequest.Builder(accessToken);
+    final AuthorizationUriRequest.Builder builder = new AuthorizationUriRequest.Builder();
 
     builder.setDefaults(httpManager, scheme, host, port);
 
-    builder.clientId(clientId);
-    builder.responseType("code");
-    builder.redirectUri(redirectUri);
+    builder.setClientId(clientId);
+    builder.setResponseType("code");
+    builder.setRedirectUri(redirectUri);
 
     if (scopes != null) {
-      builder.scopes(scopes);
+      builder.setScope(Joiner.on(" ").join(scopes));
     }
 
     if (state != null) {
-      builder.state(state);
+      builder.setState(state);
     }
 
     return builder.build().getUri();
@@ -680,16 +678,16 @@ public class Api {
    * @return The URL where the user can give application permissions.
    */
   public URI createAuthorizeUri(String... scopes) {
-    final AuthorizationUriRequest.Builder builder = new AuthorizationUriRequest.Builder(accessToken);
+    final AuthorizationUriRequest.Builder builder = new AuthorizationUriRequest.Builder();
 
     builder.setDefaults(httpManager, scheme, host, port);
 
-    builder.clientId(clientId);
-    builder.responseType("code");
-    builder.redirectUri(redirectUri);
+    builder.setClientId(clientId);
+    builder.setResponseType("code");
+    builder.setRedirectUri(redirectUri);
 
     if (scopes != null) {
-      builder.scopes(scopes);
+      builder.setScope(Joiner.on(" ").join(scopes));
     }
 
     return builder.build().getUri();
