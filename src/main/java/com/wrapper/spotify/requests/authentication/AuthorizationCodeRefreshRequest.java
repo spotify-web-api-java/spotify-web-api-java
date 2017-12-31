@@ -4,13 +4,12 @@ import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.exceptions.*;
 import com.wrapper.spotify.model_objects.credentials.AuthorizationCodeCredentials;
-import com.wrapper.spotify.requests.AbstractRequest;
 
 import java.io.IOException;
 
-public class AuthorizationRefreshRequest extends AbstractAthenticationRequest {
+public class AuthorizationCodeRefreshRequest extends AbstractAthenticationRequest {
 
-  private AuthorizationRefreshRequest(Builder builder) {
+  private AuthorizationCodeRefreshRequest(Builder builder) {
     super(builder);
   }
 
@@ -60,13 +59,13 @@ public class AuthorizationRefreshRequest extends AbstractAthenticationRequest {
       return setBodyParameter("refresh_token", refresh_token);
     }
 
-    public AuthorizationRefreshRequest build() {
+    public AuthorizationCodeRefreshRequest build() {
       setHost(Api.DEFAULT_AUTHENTICATION_HOST);
       setPort(Api.DEFAULT_AUTHENTICATION_PORT);
       setScheme(Api.DEFAULT_AUTHENTICATION_SCHEME);
       setPath("/api/token");
 
-      return new AuthorizationRefreshRequest(this);
+      return new AuthorizationCodeRefreshRequest(this);
     }
   }
 }

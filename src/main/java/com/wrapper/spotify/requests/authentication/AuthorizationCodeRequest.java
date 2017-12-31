@@ -1,19 +1,15 @@
 package com.wrapper.spotify.requests.authentication;
 
 import com.google.common.util.concurrent.SettableFuture;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.exceptions.*;
 import com.wrapper.spotify.model_objects.credentials.AuthorizationCodeCredentials;
-import com.wrapper.spotify.requests.AbstractRequest;
-import org.apache.commons.codec.binary.Base64;
 
 import java.io.IOException;
 
-public class AuthorizationCodeGrantRequest extends AbstractAthenticationRequest {
+public class AuthorizationCodeRequest extends AbstractAthenticationRequest {
 
-  private AuthorizationCodeGrantRequest(Builder builder) {
+  private AuthorizationCodeRequest(Builder builder) {
     super(builder);
   }
 
@@ -69,13 +65,13 @@ public class AuthorizationCodeGrantRequest extends AbstractAthenticationRequest 
       return setBodyParameter("redirect_uri", redirect_uri);
     }
 
-    public AuthorizationCodeGrantRequest build() {
+    public AuthorizationCodeRequest build() {
       setHost(Api.DEFAULT_AUTHENTICATION_HOST);
       setPort(Api.DEFAULT_AUTHENTICATION_PORT);
       setScheme(Api.DEFAULT_AUTHENTICATION_SCHEME);
       setPath("/api/token");
 
-      return new AuthorizationCodeGrantRequest(this);
+      return new AuthorizationCodeRequest(this);
     }
   }
 }

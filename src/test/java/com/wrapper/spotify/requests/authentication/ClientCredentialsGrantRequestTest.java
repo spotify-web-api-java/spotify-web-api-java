@@ -26,7 +26,7 @@ public class ClientCredentialsGrantRequestTest {
             .setClientSecret(clientSecret)
             .build();
 
-    final ClientCredentialsGrantRequest request = api
+    final ClientCredentialsRequest request = api
             .clientCredentialsGrant()
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/authentication/ClientCredentials.json"))
             .build();
@@ -47,7 +47,7 @@ public class ClientCredentialsGrantRequestTest {
             .setClientSecret(clientSecret)
             .build();
 
-    final ClientCredentialsGrantRequest request = api
+    final ClientCredentialsRequest request = api
             .clientCredentialsGrant()
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/authentication/ClientCredentials.json"))
             .build();

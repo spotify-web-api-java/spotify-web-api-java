@@ -5,9 +5,9 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.model_objects.special.PlaylistTrackPosition;
-import com.wrapper.spotify.requests.authentication.AuthorizationCodeGrantRequest;
-import com.wrapper.spotify.requests.authentication.AuthorizationUriRequest;
-import com.wrapper.spotify.requests.authentication.ClientCredentialsGrantRequest;
+import com.wrapper.spotify.requests.authentication.AuthorizationCodeRequest;
+import com.wrapper.spotify.requests.authentication.AuthorizationCodeUriRequest;
+import com.wrapper.spotify.requests.authentication.ClientCredentialsRequest;
 import com.wrapper.spotify.requests.data.albums.GetAlbumRequest;
 import com.wrapper.spotify.requests.data.albums.GetAlbumsTracksRequest;
 import com.wrapper.spotify.requests.data.albums.GetSeveralAlbumsRequest;
@@ -324,8 +324,8 @@ public class Api {
    * @param code An authorization code.
    * @return A builder that builds authorization code grant requests.
    */
-  public AuthorizationCodeGrantRequest.Builder authorizationCodeGrant(String code) {
-    AuthorizationCodeGrantRequest.Builder builder = new AuthorizationCodeGrantRequest.Builder(clientId, clientSecret);
+  public AuthorizationCodeRequest.Builder authorizationCodeGrant(String code) {
+    AuthorizationCodeRequest.Builder builder = new AuthorizationCodeRequest.Builder(clientId, clientSecret);
     builder.setDefaults(httpManager, scheme, host, port);
     builder.setGrantType("authorization_code");
     builder.setCode(code);
@@ -339,8 +339,8 @@ public class Api {
    *
    * @return A builder that builds client credential grant requests.
    */
-  public ClientCredentialsGrantRequest.Builder clientCredentialsGrant() {
-    ClientCredentialsGrantRequest.Builder builder = new ClientCredentialsGrantRequest.Builder(clientId, clientSecret);
+  public ClientCredentialsRequest.Builder clientCredentialsGrant() {
+    ClientCredentialsRequest.Builder builder = new ClientCredentialsRequest.Builder(clientId, clientSecret);
     builder.setDefaults(httpManager, scheme, host, port);
     builder.setGrantType("client_credentials");
     return builder;
@@ -621,7 +621,7 @@ public class Api {
    * @return The URL where the user can give application permissions.
    */
   public URI createAuthorizeUri(String[] scopes, String state, boolean showDialog) {
-    final AuthorizationUriRequest.Builder builder = new AuthorizationUriRequest.Builder();
+    final AuthorizationCodeUriRequest.Builder builder = new AuthorizationCodeUriRequest.Builder();
 
     builder.setDefaults(httpManager, scheme, host, port);
 
@@ -651,7 +651,7 @@ public class Api {
    * @return The URL where the user can give application permissions.
    */
   public URI createAuthorizeUri(String[] scopes, String state) {
-    final AuthorizationUriRequest.Builder builder = new AuthorizationUriRequest.Builder();
+    final AuthorizationCodeUriRequest.Builder builder = new AuthorizationCodeUriRequest.Builder();
 
     builder.setDefaults(httpManager, scheme, host, port);
 
@@ -678,7 +678,7 @@ public class Api {
    * @return The URL where the user can give application permissions.
    */
   public URI createAuthorizeUri(String... scopes) {
-    final AuthorizationUriRequest.Builder builder = new AuthorizationUriRequest.Builder();
+    final AuthorizationCodeUriRequest.Builder builder = new AuthorizationCodeUriRequest.Builder();
 
     builder.setDefaults(httpManager, scheme, host, port);
 

@@ -4,13 +4,12 @@ import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.exceptions.*;
 import com.wrapper.spotify.model_objects.credentials.ClientCredentials;
-import com.wrapper.spotify.requests.AbstractRequest;
 
 import java.io.IOException;
 
-public class ClientCredentialsGrantRequest extends AbstractAthenticationRequest {
+public class ClientCredentialsRequest extends AbstractAthenticationRequest {
 
-  public ClientCredentialsGrantRequest(Builder builder) {
+  public ClientCredentialsRequest(Builder builder) {
     super(builder);
   }
 
@@ -54,13 +53,13 @@ public class ClientCredentialsGrantRequest extends AbstractAthenticationRequest 
       return setBodyParameter("grant_type", grant_type);
     }
 
-    public ClientCredentialsGrantRequest build() {
+    public ClientCredentialsRequest build() {
       setHost(Api.DEFAULT_AUTHENTICATION_HOST);
       setPort(Api.DEFAULT_AUTHENTICATION_PORT);
       setScheme(Api.DEFAULT_AUTHENTICATION_SCHEME);
       setPath("/api/token");
 
-      return new ClientCredentialsGrantRequest(this);
+      return new ClientCredentialsRequest(this);
     }
   }
 }

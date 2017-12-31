@@ -1,14 +1,11 @@
 package com.wrapper.spotify.requests.authentication;
 
 import com.wrapper.spotify.Api;
-import com.wrapper.spotify.exceptions.*;
 import com.wrapper.spotify.requests.AbstractRequest;
 
-import java.io.IOException;
+public class AuthorizationCodeUriRequest extends AbstractRequest {
 
-public class AuthorizationUriRequest extends AbstractRequest {
-
-  private AuthorizationUriRequest(Builder builder) {
+  private AuthorizationCodeUriRequest(Builder builder) {
     super(builder);
   }
 
@@ -52,13 +49,13 @@ public class AuthorizationUriRequest extends AbstractRequest {
       return setQueryParameter("show_dialog", show_dialog);
     }
 
-    public AuthorizationUriRequest build() {
+    public AuthorizationCodeUriRequest build() {
       setHost(Api.DEFAULT_AUTHENTICATION_HOST);
       setPort(Api.DEFAULT_AUTHENTICATION_PORT);
       setScheme(Api.DEFAULT_AUTHENTICATION_SCHEME);
       setPath("/authorize");
 
-      return new AuthorizationUriRequest(this);
+      return new AuthorizationCodeUriRequest(this);
     }
   }
 }
