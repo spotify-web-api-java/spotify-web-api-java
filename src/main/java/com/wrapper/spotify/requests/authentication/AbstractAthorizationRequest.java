@@ -3,8 +3,8 @@ package com.wrapper.spotify.requests.authentication;
 import com.wrapper.spotify.requests.AbstractRequest;
 import org.apache.commons.codec.binary.Base64;
 
-public abstract class AbstractAthenticationRequest extends AbstractRequest {
-  protected AbstractAthenticationRequest(final Builder builder) {
+public abstract class AbstractAthorizationRequest extends AbstractRequest {
+  protected AbstractAthorizationRequest(final Builder builder) {
     super(builder);
   }
 

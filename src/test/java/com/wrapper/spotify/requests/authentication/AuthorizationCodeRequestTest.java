@@ -9,7 +9,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
-public class AuthorizationCodeGrantRequestTest {
+public class AuthorizationCodeRequestTest {
 
   @Test
   public void shouldGetTokenResponse_sync() throws Exception {

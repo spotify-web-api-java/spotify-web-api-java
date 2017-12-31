@@ -4,11 +4,11 @@ import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.exceptions.*;
 import com.wrapper.spotify.model_objects.credentials.ClientCredentials;
-import com.wrapper.spotify.requests.authentication.AbstractAthenticationRequest;
+import com.wrapper.spotify.requests.authentication.AbstractAthorizationRequest;
 
 import java.io.IOException;
 
-public class ClientCredentialsRequest extends AbstractAthenticationRequest {
+public class ClientCredentialsRequest extends AbstractAthorizationRequest {
 
   public ClientCredentialsRequest(Builder builder) {
     super(builder);
@@ -42,7 +42,7 @@ public class ClientCredentialsRequest extends AbstractAthenticationRequest {
     return executeAsync(new ClientCredentials.JsonUtil().createModelObject(postJson()));
   }
 
-  public static final class Builder extends AbstractAthenticationRequest.Builder<Builder> {
+  public static final class Builder extends AbstractAthorizationRequest.Builder<Builder> {
 
     public Builder(final String clientId, final String clientSecret) {
       super(clientId, clientSecret);
