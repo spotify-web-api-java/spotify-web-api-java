@@ -1,4 +1,4 @@
-package com.wrapper.spotify.requests.authentication;
+package com.wrapper.spotify.requests.authentication.authorization_code;
 
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.requests.AbstractRequest;

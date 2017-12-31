@@ -6,6 +6,7 @@ import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.model_objects.credentials.ClientCredentials;
+import com.wrapper.spotify.requests.authentication.client_credentials.ClientCredentialsRequest;
 import org.junit.Test;
 
 import java.util.concurrent.CountDownLatch;
@@ -28,7 +29,7 @@ public class ClientCredentialsGrantRequestTest {
 
     final ClientCredentialsRequest request = api
             .clientCredentialsGrant()
-            .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/authentication/ClientCredentials.json"))
+            .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/authentication/client_credentials/ClientCredentials.json"))
             .build();
 
     final ClientCredentials response = request.post();
@@ -49,7 +50,7 @@ public class ClientCredentialsGrantRequestTest {
 
     final ClientCredentialsRequest request = api
             .clientCredentialsGrant()
-            .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/authentication/ClientCredentials.json"))
+            .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/authentication/client_credentials/ClientCredentials.json"))
             .build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);

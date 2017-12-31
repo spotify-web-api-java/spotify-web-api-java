@@ -3,6 +3,7 @@ package com.wrapper.spotify.requests.authentication;
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.model_objects.credentials.AuthorizationCodeCredentials;
+import com.wrapper.spotify.requests.authentication.authorization_code.AuthorizationCodeRequest;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -24,7 +25,7 @@ public class AuthorizationCodeGrantRequestTest {
             .build();
 
     final AuthorizationCodeRequest request = api.authorizationCodeGrant(code)
-            .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/authentication/AuthorizationCode.json"))
+            .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/authentication/authorization_code/AuthorizationCode.json"))
             .build();
     try {
       final AuthorizationCodeCredentials tokens = request.post();
