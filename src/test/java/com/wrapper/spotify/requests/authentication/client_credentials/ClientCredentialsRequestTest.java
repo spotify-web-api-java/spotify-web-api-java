@@ -1,4 +1,4 @@
-package com.wrapper.spotify.requests.authentication;
+package com.wrapper.spotify.requests.authentication.client_credentials;
 
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
