@@ -1,7 +1,7 @@
 package com.wrapper.spotify.requests;
 
 import com.google.common.util.concurrent.SettableFuture;
-import com.wrapper.spotify.HttpManager;
+import com.wrapper.spotify.IHttpManager;
 import org.apache.http.Header;
 import org.apache.http.NameValuePair;
 
@@ -15,7 +15,7 @@ public interface IRequest {
 
   <T> SettableFuture<T> executeAsync(T value);
 
-  HttpManager getHttpManager();
+  IHttpManager getHttpManager();
 
   URI getUri();
 
@@ -29,7 +29,7 @@ public interface IRequest {
 
   interface Builder {
 
-    Builder setHttpManager(final HttpManager httpManager);
+    Builder setHttpManager(final IHttpManager httpManager);
 
     Builder setScheme(final String scheme);
 
@@ -41,7 +41,7 @@ public interface IRequest {
 
     Builder setPathParameter(final String name, final String value);
 
-    Builder setDefaults(final HttpManager httpManager,
+    Builder setDefaults(final IHttpManager httpManager,
                         final String scheme,
                         final String host,
                         final Integer port);

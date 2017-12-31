@@ -23,7 +23,7 @@ import java.net.URI;
 import java.nio.charset.Charset;
 import java.util.List;
 
-public class SpotifyHttpManager implements HttpManager {
+public class SpotifyHttpManager implements IHttpManager {
 
   private HttpClientConnectionManager connectionManager;
 

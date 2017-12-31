@@ -2,7 +2,7 @@ package com.wrapper.spotify.requests;
 
 import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.Api;
-import com.wrapper.spotify.HttpManager;
+import com.wrapper.spotify.IHttpManager;
 import com.wrapper.spotify.exceptions.*;
 import org.apache.http.Header;
 import org.apache.http.NameValuePair;
@@ -18,7 +18,7 @@ import java.util.List;
 
 public abstract class AbstractRequest implements IRequest {
 
-  private HttpManager httpManager;
+  private IHttpManager httpManager;
   private URI uri;
   private List<Header> headers;
   private List<NameValuePair> formParameters;
@@ -143,7 +143,7 @@ public abstract class AbstractRequest implements IRequest {
     return settableFuture;
   }
 
-  public HttpManager getHttpManager() {
+  public IHttpManager getHttpManager() {
     return httpManager;
   }
 
@@ -169,7 +169,7 @@ public abstract class AbstractRequest implements IRequest {
 
   public static abstract class Builder<BuilderType extends Builder<?>> implements IRequest.Builder {
 
-    private HttpManager httpManager = Api.DEFAULT_HTTP_MANAGER;
+    private IHttpManager httpManager = Api.DEFAULT_HTTP_MANAGER;
     private String scheme = Api.DEFAULT_SCHEME;
     private String host = Api.DEFAULT_HOST;
     private Integer port = Api.DEFAULT_PORT;
@@ -185,7 +185,7 @@ public abstract class AbstractRequest implements IRequest {
       setHeader("Content-Type", "application/json");
     }
 
-    public BuilderType setHttpManager(final HttpManager httpManager) {
+    public BuilderType setHttpManager(final IHttpManager httpManager) {
       assert (httpManager != null);
       this.httpManager = httpManager;
       return (BuilderType) this;
@@ -233,7 +233,7 @@ public abstract class AbstractRequest implements IRequest {
       return (BuilderType) this;
     }
 
-    public BuilderType setDefaults(final HttpManager httpManager,
+    public BuilderType setDefaults(final IHttpManager httpManager,
                                    final String scheme,
                                    final String host,
                                    final Integer port) {

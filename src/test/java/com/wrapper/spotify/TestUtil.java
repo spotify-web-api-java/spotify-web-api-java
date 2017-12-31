@@ -35,9 +35,9 @@ public class TestUtil {
 
   public static class MockedHttpManager {
 
-    public static HttpManager returningJson(String jsonFixture) throws Exception {
+    public static IHttpManager returningJson(String jsonFixture) throws Exception {
       // Mocked HTTP Manager to get predictable responses
-      final HttpManager mockedHttpManager = mock(HttpManager.class);
+      final IHttpManager mockedHttpManager = mock(IHttpManager.class);
       final String fixture = readTestData(jsonFixture);
       when(mockedHttpManager.get(any(URI.class), any(Header[].class))).thenReturn(fixture);
       when(mockedHttpManager.post(any(URI.class), any(Header[].class), anyListOf(NameValuePair.class))).thenReturn(fixture);
@@ -47,7 +47,7 @@ public class TestUtil {
       return mockedHttpManager;
     }
 
-    public static HttpManager returningString(String returnedString) throws
+    public static IHttpManager returningString(String returnedString) throws
             IOException,
             NoContentException,
             BadRequestException,
@@ -58,7 +58,7 @@ public class TestUtil {
             InternalServerErrorException,
             BadGatewayException,
             ServiceUnavailableException {
-      final HttpManager mockedHttpManager = mock(HttpManager.class);
+      final IHttpManager mockedHttpManager = mock(IHttpManager.class);
       when(mockedHttpManager.get(any(URI.class), any(Header[].class))).thenReturn(returnedString);
       when(mockedHttpManager.post(any(URI.class), any(Header[].class), anyListOf(NameValuePair.class))).thenReturn(returnedString);
       when(mockedHttpManager.put(any(URI.class), any(Header[].class), anyListOf(NameValuePair.class))).thenReturn(returnedString);

@@ -54,7 +54,7 @@ public class Api {
   /**
    * A HttpManager configured with default settings.
    */
-  public static final HttpManager DEFAULT_HTTP_MANAGER = SpotifyHttpManager.builder().build();
+  public static final IHttpManager DEFAULT_HTTP_MANAGER = SpotifyHttpManager.builder().build();
 
   /**
    * The default http scheme of Spotify API calls.
@@ -74,7 +74,7 @@ public class Api {
   private final String clientId;
   private final String clientSecret;
   private final String redirectURI;
-  private HttpManager httpManager = null;
+  private IHttpManager httpManager = null;
   private String scheme;
   private int port;
   private String host;
@@ -699,7 +699,7 @@ public class Api {
 
     private String host = DEFAULT_HOST;
     private int port = DEFAULT_PORT;
-    private HttpManager httpManager = null;
+    private IHttpManager httpManager = null;
     private String scheme = DEFAULT_SCHEME;
     private String accessToken;
     private String redirectURI;
@@ -722,7 +722,7 @@ public class Api {
       return this;
     }
 
-    public Builder httpManager(HttpManager httpManager) {
+    public Builder httpManager(IHttpManager httpManager) {
       this.httpManager = httpManager;
       return this;
     }

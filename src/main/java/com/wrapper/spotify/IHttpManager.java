@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * A simple HTTP connection interface.
  */
-public interface HttpManager {
+public interface IHttpManager {
 
   /**
    * Perform an HTTP GET request to the specified URL.

@@ -4,7 +4,7 @@ import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.Api;
-import com.wrapper.spotify.HttpManager;
+import com.wrapper.spotify.IHttpManager;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.model_objects.Paging;
 import com.wrapper.spotify.model_objects.Track;
@@ -67,7 +67,7 @@ public class TrackSearchRequestTest {
   @Test
   public void shouldGetTracksResult_sync() throws Exception {
     final Api api = Api.builder().accessToken("AccessToken").build();
-    final HttpManager mockedHttpManager = TestUtil.MockedHttpManager.returningJson("requests/data/search/TrackSearchRequest.json");
+    final IHttpManager mockedHttpManager = TestUtil.MockedHttpManager.returningJson("requests/data/search/TrackSearchRequest.json");
     final SearchTrackRequest request = api.searchTracks("Mr. Brightside").setHttpManager(mockedHttpManager).build();
 
     final Paging<Track> trackSearchResult = request.get();
