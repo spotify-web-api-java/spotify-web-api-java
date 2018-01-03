@@ -8,7 +8,7 @@ import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.enums.ModelObjectType;
 import com.wrapper.spotify.model_objects.specification.Artist;
 import com.wrapper.spotify.model_objects.specification.Paging;
-import com.wrapper.spotify.requests.data.search.simplified.SearchArtistRequest;
+import com.wrapper.spotify.requests.data.search.simplified.SearchArtistsRequest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -25,7 +25,7 @@ public class ArtistSearchRequestTest {
   public void shouldGetArtistsResult_async() throws Exception {
     final SpotifyApi api = new SpotifyApi.Builder().setAccessToken("AccessToken").build();
 
-    final SearchArtistRequest request = api.searchArtists("tania bowra")
+    final SearchArtistsRequest request = api.searchArtists("tania bowra")
             .limit(20)
             .offset(0)
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/search/ArtistSearchRequest.json"))
@@ -74,7 +74,7 @@ public class ArtistSearchRequestTest {
   public void shouldGetArtistsResult_sync() throws Exception {
     final SpotifyApi api = new SpotifyApi.Builder().setAccessToken("AccessToken").build();
 
-    final SearchArtistRequest request = api.searchArtists("tania bowra")
+    final SearchArtistsRequest request = api.searchArtists("tania bowra")
             .limit(20)
             .offset(0)
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/search/ArtistSearchRequest.json"))
