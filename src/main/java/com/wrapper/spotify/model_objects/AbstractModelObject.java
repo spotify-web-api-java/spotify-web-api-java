@@ -10,19 +10,42 @@ import java.lang.reflect.Array;
 import java.lang.reflect.Type;
 import java.util.TimeZone;
 
+/**
+ * This abstract class (and its wrapping classes) is used as a sort of template for
+ * other model object classes and includes multiple generic methods.
+ */
 public abstract class AbstractModelObject implements IModelObject {
+  /**
+   * This constructor initializes the time zone.
+   *
+   * @param builder The builder object of the corresponding model object.
+   */
   protected AbstractModelObject(Builder builder) {
     simpleDateFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
   }
 
+  /**
+   * Each model object needs to implement its own builder class.
+   */
   public static abstract class Builder implements IModelObject.Builder {
   }
 
+  /**
+   * Each model object needs to implement its own JsonUtil class.<br>
+   *
+   * @param <T> The model object type of the corresponding JsonUtil.
+   */
   public static abstract class JsonUtil<T> implements IModelObject.IJsonUtil<T> {
     public T createModelObject(String json) {
       return createModelObject(new JsonParser().parse(json).getAsJsonObject());
     }
 
+    /**
+     * Create an array of model objects out of a json array object.
+     *
+     * @param jsonArray A json array object.
+     * @return          A model object array.
+     */
     public T[] createModelObjectArray(JsonArray jsonArray) {
       @SuppressWarnings("unchecked")
       T[] array = (T[]) Array.newInstance(new TypeToken<T>(getClass()) {
@@ -42,6 +65,12 @@ public abstract class AbstractModelObject implements IModelObject {
       return array;
     }
 
+    /**
+     * Create an array of model objects out of a json string.
+     *
+     * @param json  A json string.
+     * @return      A model object array.
+     */
     public T[] createModelObjectArray(String json) {
       return createModelObjectArray(new JsonParser().parse(json).getAsJsonArray());
     }
@@ -50,6 +79,14 @@ public abstract class AbstractModelObject implements IModelObject {
       return createModelObjectArray(new JsonParser().parse(json).getAsJsonObject().get(key).getAsJsonArray());
     }
 
+    /**
+     * Create an array of model objects out of a json array object and type token.
+     *
+     * @param jsonArray A json array object.
+     * @param typeToken A type token.
+     * @param <X>       The model object type of the array and type token.
+     * @return          A model object array.
+     */
     public <X> X[] createModelObjectArray(JsonArray jsonArray, TypeToken<X> typeToken) {
       @SuppressWarnings("unchecked")
       X[] array = (X[]) Array.newInstance(typeToken.getRawType(), jsonArray.size());
@@ -63,6 +100,12 @@ public abstract class AbstractModelObject implements IModelObject {
       return array;
     }
 
+    /**
+     * Create a paging object out of a json array.
+     *
+     * @param jsonObject  A json object.
+     * @return            A model object paging.
+     */
     public Paging<T> createModelObjectPaging(JsonObject jsonObject) {
       Type type = new TypeToken<T>(getClass()) {
       }.getType();
@@ -78,6 +121,12 @@ public abstract class AbstractModelObject implements IModelObject {
               .build();
     }
 
+    /**
+     * Create a paging object out of a json string.
+     *
+     * @param json  A json string.
+     * @return      A model object paging.
+     */
     public Paging<T> createModelObjectPaging(String json) {
       return createModelObjectPaging(new JsonParser().parse(json).getAsJsonObject());
     }
