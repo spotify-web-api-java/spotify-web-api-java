@@ -5,7 +5,7 @@ import com.wrapper.spotify.model_objects.AbstractModelObject;
 
 /**
  * Retrieve information about <a href="https://developer.spotify.com/web-api/object-model/#error-object">
- *     Error objects</a>by building instances from this class.
+ * Error objects</a>by building instances from this class.
  */
 public class Error extends AbstractModelObject {
   private final int status;
@@ -20,8 +20,7 @@ public class Error extends AbstractModelObject {
 
   /**
    * Get the <a href="https://developer.spotify.com/web-api/user-guide/#response-status-codes">HTTP status code</a>
-   *     of the {@link Error} object.
-   *
+   * of the {@link Error} object.
    *
    * @return The <a href="https://developer.spotify.com/web-api/user-guide/#response-status-codes">HTTP status code</a>.
    */
@@ -52,10 +51,10 @@ public class Error extends AbstractModelObject {
 
     /**
      * The error <a href="https://developer.spotify.com/web-api/user-guide/#response-status-codes">HTTP status
-     *     code</a> setter.
+     * code</a> setter.
      *
      * @param status The <a href="https://developer.spotify.com/web-api/user-guide/#response-status-codes">
-     *     HTTP status code</a>.
+     *               HTTP status code</a>.
      * @return A {@link Error.Builder}.
      */
     public Builder setStatus(int status) {

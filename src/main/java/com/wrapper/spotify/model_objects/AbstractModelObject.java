@@ -44,7 +44,7 @@ public abstract class AbstractModelObject implements IModelObject {
      * Create an array of model objects out of a json array object.
      *
      * @param jsonArray A json array object.
-     * @return          A model object array.
+     * @return A model object array.
      */
     public T[] createModelObjectArray(JsonArray jsonArray) {
       @SuppressWarnings("unchecked")
@@ -68,8 +68,8 @@ public abstract class AbstractModelObject implements IModelObject {
     /**
      * Create an array of model objects out of a json string.
      *
-     * @param json  A json string.
-     * @return      A model object array.
+     * @param json A json string.
+     * @return A model object array.
      */
     public T[] createModelObjectArray(String json) {
       return createModelObjectArray(new JsonParser().parse(json).getAsJsonArray());
@@ -85,7 +85,7 @@ public abstract class AbstractModelObject implements IModelObject {
      * @param jsonArray A json array object.
      * @param typeToken A type token.
      * @param <X>       The model object type of the array and type token.
-     * @return          A model object array.
+     * @return A model object array.
      */
     public <X> X[] createModelObjectArray(JsonArray jsonArray, TypeToken<X> typeToken) {
       @SuppressWarnings("unchecked")
@@ -103,8 +103,8 @@ public abstract class AbstractModelObject implements IModelObject {
     /**
      * Create a paging object out of a json array.
      *
-     * @param jsonObject  A json object.
-     * @return            A model object paging.
+     * @param jsonObject A json object.
+     * @return A model object paging.
      */
     public Paging<T> createModelObjectPaging(JsonObject jsonObject) {
       Type type = new TypeToken<T>(getClass()) {
@@ -124,8 +124,8 @@ public abstract class AbstractModelObject implements IModelObject {
     /**
      * Create a paging object out of a json string.
      *
-     * @param json  A json string.
-     * @return      A model object paging.
+     * @param json A json string.
+     * @return A model object paging.
      */
     public Paging<T> createModelObjectPaging(String json) {
       return createModelObjectPaging(new JsonParser().parse(json).getAsJsonObject());

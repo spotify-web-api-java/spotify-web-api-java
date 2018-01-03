@@ -50,8 +50,8 @@ public class PlaylistTracksInformation extends AbstractModelObject {
     /**
      * Set href of Spotify api endpoint of the playlist tracks information object to be built.
      *
-     * @param href  Spotify api endpoint url.
-     * @return      A builder object.
+     * @param href Spotify api endpoint url.
+     * @return A builder object.
      */
     public Builder setHref(String href) {
       this.href = href;
@@ -62,7 +62,7 @@ public class PlaylistTracksInformation extends AbstractModelObject {
      * Set the total amount of tracks in the playlist.
      *
      * @param total Total amount of tracks.
-     * @return      A builder object.
+     * @return A builder object.
      */
     public Builder setTotal(int total) {
       this.total = total;

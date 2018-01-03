@@ -1,7 +1,7 @@
 package com.wrapper.spotify.requests.data.tracks;
 
 import com.google.common.util.concurrent.SettableFuture;
-import com.wrapper.spotify.exceptions.*;
+import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.AudioFeatures;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
 

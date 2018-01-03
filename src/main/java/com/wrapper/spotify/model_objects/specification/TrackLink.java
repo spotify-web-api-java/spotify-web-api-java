@@ -90,8 +90,8 @@ public class TrackLink extends AbstractModelObject {
     /**
      * Set external urls of the track to be built.
      *
-     * @param externalUrls  External urls object.
-     * @return              A builder object.
+     * @param externalUrls External urls object.
+     * @return A builder object.
      */
     public Builder setExternalUrls(ExternalUrl externalUrls) {
       this.externalUrls = externalUrls;
@@ -101,8 +101,8 @@ public class TrackLink extends AbstractModelObject {
     /**
      * Set href of Spotify api endpoint of the track to be built.
      *
-     * @param href  Spotify api endpoint url
-     * @return      A builder object.
+     * @param href Spotify api endpoint url
+     * @return A builder object.
      */
     public Builder setHref(String href) {
       this.href = href;
@@ -112,8 +112,8 @@ public class TrackLink extends AbstractModelObject {
     /**
      * Set the Spotify id of the track to be built.
      *
-     * @param id  Spotify track id.
-     * @return    A builder object.
+     * @param id Spotify track id.
+     * @return A builder object.
      */
     public Builder setId(String id) {
       this.id = id;
@@ -123,8 +123,8 @@ public class TrackLink extends AbstractModelObject {
     /**
      * Set the type of the model object. In this case "track".
      *
-     * @param type  Type of the model object.
-     * @return      A builder object.
+     * @param type Type of the model object.
+     * @return A builder object.
      */
     public Builder setType(ModelObjectType type) {
       this.type = type;

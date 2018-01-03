@@ -1,6 +1,6 @@
 package com.wrapper.spotify;
 
-import com.wrapper.spotify.exceptions.*;
+import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import org.apache.http.Header;
 import org.apache.http.NameValuePair;
 

@@ -114,8 +114,8 @@ public class AudioFeatures extends AbstractModelObject {
    * Get the instrumentalness of a track as a value between 0.0 and 1.0.<br>
    * The higher the value, the higher the chance a track contains no vocals.
    *
-   * @see #getSpeechiness()
    * @return Instrumentalness value.
+   * @see #getSpeechiness()
    * @see #getSpeechiness()
    */
   public double getInstrumentalness() {
@@ -125,8 +125,8 @@ public class AudioFeatures extends AbstractModelObject {
   /**
    * Get the main key of the track.
    *
-   * @see <a href="https://en.wikipedia.org/wiki/Pitch_class">Wikipedia: Pitch class notation</a>
    * @return Main key.
+   * @see <a href="https://en.wikipedia.org/wiki/Pitch_class">Wikipedia: Pitch class notation</a>
    * @see <a href="https://en.wikipedia.org/wiki/Pitch_class">Wikipedia: Pitch class notation</a>
    */
   public int getKey() {
@@ -157,8 +157,8 @@ public class AudioFeatures extends AbstractModelObject {
   /**
    * Get the modality of a track. (either "major" or "minor")
    *
-   * @see <a href="https://en.wikipedia.org/wiki/Mode_(music)">Wikipedia: Mode (music)</a>
    * @return Modality type.
+   * @see <a href="https://en.wikipedia.org/wiki/Mode_(music)">Wikipedia: Mode (music)</a>
    * @see <a href="https://en.wikipedia.org/wiki/Mode_(music)">Wikipedia: Mode (music)</a>
    */
   public Modality getMode() {
@@ -169,8 +169,8 @@ public class AudioFeatures extends AbstractModelObject {
    * Get the speechiness of a track as a value between 0.0 and 1.0.<br>
    * The higher the value, the higher the chance a track only consists of spoken words.
    *
-   * @see #getInstrumentalness() 
    * @return Speechiness value.
+   * @see #getInstrumentalness()
    * @see #getInstrumentalness()
    */
   public double getSpeechiness() {
@@ -322,8 +322,8 @@ public class AudioFeatures extends AbstractModelObject {
     /**
      * Set the Spotify track id of the audio features object to be built.
      *
-     * @param id  Spotify track id.
-     * @return    A builder object.
+     * @param id Spotify track id.
+     * @return A builder object.
      */
     public Builder setId(String id) {
       this.id = id;
@@ -333,8 +333,8 @@ public class AudioFeatures extends AbstractModelObject {
     /**
      * Set the instrumentalness of the audio features object to be built.
      *
-     * @param instrumentalness  Instrumentalness value between 0.0 and 1.0.
-     * @return                  A builder object.
+     * @param instrumentalness Instrumentalness value between 0.0 and 1.0.
+     * @return A builder object.
      */
     public Builder setInstrumentalness(double instrumentalness) {
       this.instrumentalness = instrumentalness;
@@ -345,7 +345,7 @@ public class AudioFeatures extends AbstractModelObject {
      * Set the key of the audio features object to be built.
      *
      * @param key Track key.
-     * @return    A builder object.
+     * @return A builder object.
      */
     public Builder setKey(int key) {
       this.key = key;

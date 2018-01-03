@@ -246,7 +246,7 @@ public class Album extends AbstractModelObject {
      * Set the type of the album to be built.
      *
      * @param albumType Type of the album.
-     * @return          A builder object.
+     * @return A builder object.
      */
     public Builder setAlbumType(AlbumType albumType) {
       this.albumType = albumType;
@@ -257,7 +257,7 @@ public class Album extends AbstractModelObject {
      * Set the artists of the album to be built.
      *
      * @param artists An array of simplified artists.
-     * @return        A builder object.
+     * @return A builder object.
      */
     public Builder setArtists(ArtistSimplified... artists) {
       this.artists = artists;
@@ -267,8 +267,8 @@ public class Album extends AbstractModelObject {
     /**
      * Set the available markets of the album to be built.
      *
-     * @param availableMarkets  An array of ISO 3166-1 alpha-2 country codes.
-     * @return                  A builder object.
+     * @param availableMarkets An array of ISO 3166-1 alpha-2 country codes.
+     * @return A builder object.
      */
     public Builder setAvailableMarkets(CountryCode... availableMarkets) {
       this.availableMarkets = availableMarkets;
@@ -278,8 +278,8 @@ public class Album extends AbstractModelObject {
     /**
      * Set the copyrights of the album to be built.
      *
-     * @param copyrights  Copyright objects.
-     * @return            A builder object.
+     * @param copyrights Copyright objects.
+     * @return A builder object.
      */
     public Builder setCopyrights(Copyright... copyrights) {
       this.copyrights = copyrights;
@@ -290,7 +290,7 @@ public class Album extends AbstractModelObject {
      * Set the external ids of the album to be built.
      *
      * @param externalIds External ids of the album.
-     * @return            A builder object.
+     * @return A builder object.
      */
     public Builder setExternalIds(ExternalId externalIds) {
       this.externalIds = externalIds;
@@ -300,8 +300,8 @@ public class Album extends AbstractModelObject {
     /**
      * Set external urls of the album to be built.
      *
-     * @param externalUrls  External urls object.
-     * @return              A builder object.
+     * @param externalUrls External urls object.
+     * @return A builder object.
      */
     public Builder setExternalUrls(ExternalUrl externalUrls) {
       this.externalUrls = externalUrls;
@@ -311,8 +311,8 @@ public class Album extends AbstractModelObject {
     /**
      * Set the genres of the album to be built.
      *
-     * @param genres  An array of genres.
-     * @return        A builder object.
+     * @param genres An array of genres.
+     * @return A builder object.
      */
     public Builder setGenres(String... genres) {
       this.genres = genres;
@@ -322,8 +322,8 @@ public class Album extends AbstractModelObject {
     /**
      * Set href of Spotify api endpoint of the album to be built.
      *
-     * @param href  Spotify api endpoint url.
-     * @return      A builder object.
+     * @param href Spotify api endpoint url.
+     * @return A builder object.
      */
     public Builder setHref(String href) {
       this.href = href;
@@ -333,8 +333,8 @@ public class Album extends AbstractModelObject {
     /**
      * Set album id of the album to be built.
      *
-     * @param id  Album id.
-     * @return    A builder object.
+     * @param id Album id.
+     * @return A builder object.
      */
     public Builder setId(String id) {
       this.id = id;
@@ -344,8 +344,8 @@ public class Album extends AbstractModelObject {
     /**
      * Set the cover art in different sizes of the album to be built.
      *
-     * @param images  An array of image objects.
-     * @return        A builder object.
+     * @param images An array of image objects.
+     * @return A builder object.
      */
     public Builder setImages(Image... images) {
       this.images = images;
@@ -356,7 +356,7 @@ public class Album extends AbstractModelObject {
      * Set the label of the album to be built.
      *
      * @param label The album label.
-     * @return      A builder object.
+     * @return A builder object.
      */
     public Builder setLabel(String label) {
       this.label = label;
@@ -366,8 +366,8 @@ public class Album extends AbstractModelObject {
     /**
      * Set the name of the album to be built.
      *
-     * @param name  The album name.
-     * @return      A builder object.
+     * @param name The album name.
+     * @return A builder object.
      */
     public Builder setName(String name) {
       this.name = name;
@@ -377,8 +377,8 @@ public class Album extends AbstractModelObject {
     /**
      * Set the popularity of the album to be built.
      *
-     * @param popularity  The popularity of the album between 0 and 100.
-     * @return            A builder object.
+     * @param popularity The popularity of the album between 0 and 100.
+     * @return A builder object.
      */
     public Builder setPopularity(int popularity) {
       this.popularity = popularity;
@@ -389,7 +389,7 @@ public class Album extends AbstractModelObject {
      * Set the release date of the album to be built.
      *
      * @param releaseDate The release date of the album.
-     * @return            A builder object.
+     * @return A builder object.
      */
     public Builder setReleaseDate(String releaseDate) {
       this.releaseDate = releaseDate;
@@ -399,8 +399,8 @@ public class Album extends AbstractModelObject {
     /**
      * Set the release date precision of the album to be built.
      *
-     * @param releaseDatePrecision  The release date precision of the album.
-     * @return                      A builder object.
+     * @param releaseDatePrecision The release date precision of the album.
+     * @return A builder object.
      */
     public Builder setReleaseDatePrecision(ReleaseDatePrecision releaseDatePrecision) {
       this.releaseDatePrecision = releaseDatePrecision;
@@ -410,8 +410,8 @@ public class Album extends AbstractModelObject {
     /**
      * Set a page of tracks of the album to be built.
      *
-     * @param tracks  A page of tracks.
-     * @return        A builder object.
+     * @param tracks A page of tracks.
+     * @return A builder object.
      */
     public Builder setTracks(Paging<TrackSimplified> tracks) {
       this.tracks = tracks;
@@ -421,8 +421,8 @@ public class Album extends AbstractModelObject {
     /**
      * Set the type of the model object. In this case "album".
      *
-     * @param type  The model object type.
-     * @return      A builder object.
+     * @param type The model object type.
+     * @return A builder object.
      */
     public Builder setType(ModelObjectType type) {
       this.type = type;
@@ -433,7 +433,7 @@ public class Album extends AbstractModelObject {
      * Set the Spotify uri of the album to be built.
      *
      * @param uri The Spotify album uri.
-     * @return    A builder object.
+     * @return A builder object.
      */
     public Builder setUri(String uri) {
       this.uri = uri;

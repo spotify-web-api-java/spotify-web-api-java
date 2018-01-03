@@ -2,7 +2,7 @@ package com.wrapper.spotify.requests.data.personalization;
 
 import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.enums.ModelObjectType;
-import com.wrapper.spotify.exceptions.*;
+import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.AbstractModelObject;
 import com.wrapper.spotify.model_objects.specification.Artist;
 import com.wrapper.spotify.model_objects.specification.Paging;

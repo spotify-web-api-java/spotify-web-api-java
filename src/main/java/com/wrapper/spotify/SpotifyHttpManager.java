@@ -2,7 +2,7 @@ package com.wrapper.spotify;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.wrapper.spotify.exceptions.*;
+import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.exceptions.detailed.*;
 import org.apache.http.*;
 import org.apache.http.auth.AuthScope;

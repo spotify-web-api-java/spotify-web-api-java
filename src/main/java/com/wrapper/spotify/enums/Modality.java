@@ -16,11 +16,11 @@ public enum Modality {
     this.mode = mode;
   }
 
-    /**
-     * Get the {@link Modality} type as a string.
-     *
-     * @return {@link Modality} type as a string.
-     */
+  /**
+   * Get the {@link Modality} type as a string.
+   *
+   * @return {@link Modality} type as a string.
+   */
   public int getType() {
     return this.mode;
   }

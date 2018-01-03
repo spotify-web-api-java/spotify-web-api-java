@@ -80,7 +80,7 @@ public class PlaylistTrack extends AbstractModelObject {
      * Set the "added at" date of the playlist track to be built.
      *
      * @param addedAt A date object.
-     * @return        A builder object.
+     * @return A builder object.
      */
     public Builder setAddedAt(Date addedAt) {
       this.addedAt = addedAt;
@@ -91,7 +91,7 @@ public class PlaylistTrack extends AbstractModelObject {
      * Set the user who added the track to the playlist.
      *
      * @param addedBy A user object.
-     * @return        A builder object.
+     * @return A builder object.
      */
     public Builder setAddedBy(User addedBy) {
       this.addedBy = addedBy;
@@ -102,7 +102,7 @@ public class PlaylistTrack extends AbstractModelObject {
      * Set whether the track to be built is local or not.
      *
      * @param isLocal "true" if the track is local, "false" if not.
-     * @return        A builder object.
+     * @return A builder object.
      */
     public Builder setIsLocal(boolean isLocal) {
       this.isLocal = isLocal;
@@ -113,7 +113,7 @@ public class PlaylistTrack extends AbstractModelObject {
      * Set the full track object of the playlist track to be built.
      *
      * @param track A track object.
-     * @return      A builder object.
+     * @return A builder object.
      */
     public Builder setTrack(Track track) {
       this.track = track;

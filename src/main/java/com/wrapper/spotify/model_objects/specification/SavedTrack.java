@@ -54,7 +54,7 @@ public class SavedTrack extends AbstractModelObject {
      * Set the "added at" date of the saved track to be built.
      *
      * @param addedAt A date object.
-     * @return        A builder object.
+     * @return A builder object.
      */
     public Builder setAddedAt(Date addedAt) {
       this.addedAt = addedAt;
@@ -65,7 +65,7 @@ public class SavedTrack extends AbstractModelObject {
      * Set the full track object of the saved track to be built.
      *
      * @param track A track object.
-     * @return      A builder object.
+     * @return A builder object.
      */
     public Builder setTrack(Track track) {
       this.track = track;

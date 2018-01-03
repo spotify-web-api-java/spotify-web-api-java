@@ -94,6 +94,15 @@ public class SpotifyApi {
     this.refreshToken = builder.refreshToken;
   }
 
+  /**
+   * Create a builder for building a new Spotify API instance.
+   *
+   * @return A builder object.
+   */
+  public static Builder builder() {
+    return new Builder();
+  }
+
   public IHttpManager getHttpManager() {
     return httpManager;
   }
@@ -144,15 +153,6 @@ public class SpotifyApi {
 
   public String getRefreshToken() {
     return refreshToken;
-  }
-
-  /**
-   * Create a builder for building a new Spotify API instance.
-   *
-   * @return A builder object.
-   */
-  public static Builder builder() {
-    return new Builder();
   }
 
   public AuthorizationCodeRefreshRequest.Builder authorizationCodeRefresh(String client_id, String client_secret, String refresh_token) {

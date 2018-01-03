@@ -54,7 +54,7 @@ public class SavedAlbum extends AbstractModelObject {
      * Set the "added at" date of the saved album to be built.
      *
      * @param addedAt A date object.
-     * @return        A builder object.
+     * @return A builder object.
      */
     public Builder setAddedAt(Date addedAt) {
       this.addedAt = addedAt;
@@ -65,7 +65,7 @@ public class SavedAlbum extends AbstractModelObject {
      * Set the full album object of the saved album to be built.
      *
      * @param album An album object.
-     * @return      A builder object.
+     * @return A builder object.
      */
     public Builder setAlbum(Album album) {
       this.album = album;

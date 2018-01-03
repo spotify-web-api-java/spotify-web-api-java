@@ -1,9 +1,9 @@
 package com.wrapper.spotify.requests;
 
 import com.google.common.util.concurrent.SettableFuture;
-import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.IHttpManager;
-import com.wrapper.spotify.exceptions.*;
+import com.wrapper.spotify.SpotifyApi;
+import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import org.apache.http.Header;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.utils.URIBuilder;
