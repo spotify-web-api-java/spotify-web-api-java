@@ -3,7 +3,7 @@ package com.wrapper.spotify.requests.data.search;
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.SettableFuture;
-import com.wrapper.spotify.Api;
+import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.IHttpManager;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.model_objects.specification.Paging;
@@ -23,7 +23,7 @@ public class TrackSearchRequestTest {
 
   @Test
   public void shouldGetTracksResult_async() throws Exception {
-    final Api api = new Api.Builder().setAccessToken("AccessToken").build();
+    final SpotifyApi api = new SpotifyApi.Builder().setAccessToken("AccessToken").build();
 
     final SearchTrackRequest request = api.searchTracks("tania bowra")
             .offset(0)
@@ -66,7 +66,7 @@ public class TrackSearchRequestTest {
 
   @Test
   public void shouldGetTracksResult_sync() throws Exception {
-    final Api api = new Api.Builder().setAccessToken("AccessToken").build();
+    final SpotifyApi api = new SpotifyApi.Builder().setAccessToken("AccessToken").build();
     final IHttpManager mockedHttpManager = TestUtil.MockedHttpManager.returningJson("requests/data/search/TrackSearchRequest.json");
     final SearchTrackRequest request = api.searchTracks("Mr. Brightside").setHttpManager(mockedHttpManager).build();
 

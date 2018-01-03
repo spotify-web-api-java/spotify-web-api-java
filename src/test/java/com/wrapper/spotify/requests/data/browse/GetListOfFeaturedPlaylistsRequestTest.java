@@ -4,7 +4,7 @@ import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.SettableFuture;
 import com.neovisionaries.i18n.CountryCode;
-import com.wrapper.spotify.Api;
+import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.model_objects.specification.ArtistSimplified;
 import com.wrapper.spotify.model_objects.specification.Paging;
@@ -22,7 +22,7 @@ public class GetListOfFeaturedPlaylistsRequestTest {
 
   @Test
   public void shouldGetNewReleases_async() throws Exception {
-    final Api api = new Api.Builder().setAccessToken("AccessToken").build();
+    final SpotifyApi api = new SpotifyApi.Builder().setAccessToken("AccessToken").build();
 
     Calendar calendar = Calendar.getInstance();
     calendar.set(2014, Calendar.OCTOBER, 23, 9, 0, 0);
@@ -74,7 +74,7 @@ public class GetListOfFeaturedPlaylistsRequestTest {
 
   @Test
   public void shouldGetArtistsResult_sync() throws Exception {
-    final Api api = new Api.Builder().setAccessToken("AccessToken").build();
+    final SpotifyApi api = new SpotifyApi.Builder().setAccessToken("AccessToken").build();
 
     Calendar calendar = Calendar.getInstance();
     calendar.set(2014, Calendar.OCTOBER, 23, 9, 0, 0);

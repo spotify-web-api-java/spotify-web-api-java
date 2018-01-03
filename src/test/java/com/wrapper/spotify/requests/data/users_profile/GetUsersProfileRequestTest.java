@@ -3,7 +3,7 @@ package com.wrapper.spotify.requests.data.users_profile;
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.SettableFuture;
-import com.wrapper.spotify.Api;
+import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.model_objects.specification.User;
 import org.junit.Test;
@@ -20,7 +20,7 @@ public class GetUsersProfileRequestTest {
 
   @Test
   public void shouldCreateUser_async() throws Exception {
-    final Api api = new Api.Builder().setAccessToken("AccessToken").build();
+    final SpotifyApi api = new SpotifyApi.Builder().setAccessToken("AccessToken").build();
 
     final GetUsersProfileRequest request = api.getUser("wizzler")
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/users_profile/GetUsersProfileRequest.json"))
@@ -54,7 +54,7 @@ public class GetUsersProfileRequestTest {
 
   @Test
   public void shouldCreateUser_sync() throws Exception {
-    final Api api = new Api.Builder().setAccessToken("AccessToken").build();
+    final SpotifyApi api = new SpotifyApi.Builder().setAccessToken("AccessToken").build();
 
     final GetUsersProfileRequest request = api.getUser("wizzler")
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/users_profile/GetUsersProfileRequest.json"))

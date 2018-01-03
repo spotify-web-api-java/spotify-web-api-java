@@ -4,7 +4,7 @@ import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.SettableFuture;
 import com.neovisionaries.i18n.CountryCode;
-import com.wrapper.spotify.Api;
+import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.enums.ProductType;
 import com.wrapper.spotify.model_objects.specification.User;
@@ -19,7 +19,7 @@ public class GetCurrentUsersProfileRequestTest {
 
   @Test
   public void shouldGetCurrentUser_async() throws Exception {
-    final Api api = new Api.Builder().setAccessToken("AccessToken").build();
+    final SpotifyApi api = new SpotifyApi.Builder().setAccessToken("AccessToken").build();
 
     final GetCurrentUsersProfileRequest request = api.getMe()
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/users_profile/GetCurrentUsersProfileRequest.json"))
@@ -62,7 +62,7 @@ public class GetCurrentUsersProfileRequestTest {
 
   @Test
   public void shouldGetCurrentUser_sync() throws Exception {
-    final Api api = new Api.Builder().setAccessToken("AccessToken").build();
+    final SpotifyApi api = new SpotifyApi.Builder().setAccessToken("AccessToken").build();
 
     final GetCurrentUsersProfileRequest request = api.getMe()
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/users_profile/GetCurrentUsersProfileRequest.json"))

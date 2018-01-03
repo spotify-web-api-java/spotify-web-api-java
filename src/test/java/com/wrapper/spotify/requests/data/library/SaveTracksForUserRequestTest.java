@@ -3,7 +3,7 @@ package com.wrapper.spotify.requests.data.library;
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.SettableFuture;
-import com.wrapper.spotify.Api;
+import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.TestUtil;
 import org.junit.Test;
 
@@ -19,7 +19,7 @@ public class SaveTracksForUserRequestTest {
   public void shouldAddToMySavedTracks_async() throws Exception {
     final String accessToken = "someAccessToken";
 
-    final Api api = new Api.Builder().setAccessToken("AccessToken").build();
+    final SpotifyApi api = new SpotifyApi.Builder().setAccessToken("AccessToken").build();
 
     final String[]
             tracksToAdd = {"4BYGxv4rxSNcTgT3DsFB9o", "0BG2iE6McPhmAEKIhfqy1X"};
@@ -55,7 +55,7 @@ public class SaveTracksForUserRequestTest {
   public void shouldAddToMySavedTracks_sync() throws Exception {
     final String accessToken = "someAccessToken";
 
-    final Api api = new Api.Builder().setAccessToken("AccessToken").build();
+    final SpotifyApi api = new SpotifyApi.Builder().setAccessToken("AccessToken").build();
 
     final String[]
             tracksToAdd = {"4BYGxv4rxSNcTgT3DsFB9o", "0BG2iE6McPhmAEKIhfqy1X"};

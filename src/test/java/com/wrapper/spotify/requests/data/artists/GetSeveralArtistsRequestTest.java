@@ -3,7 +3,7 @@ package com.wrapper.spotify.requests.data.artists;
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.SettableFuture;
-import com.wrapper.spotify.Api;
+import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.model_objects.specification.Artist;
 import org.junit.Test;
@@ -21,7 +21,7 @@ public class GetSeveralArtistsRequestTest {
 
   @Test
   public void shouldGetArtistsResult_async() throws Exception {
-    final Api api = new Api.Builder().setAccessToken("AccessToken").build();
+    final SpotifyApi api = new SpotifyApi.Builder().setAccessToken("AccessToken").build();
 
     final GetSeveralArtistsRequest request = api.getArtists("0oSGxfWSnnOXhD2fKuz2Gy", "3dBVyJ7JuOMt4GE9607Qin")
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/artists/GetSeveralArtistsRequest.json"))
@@ -56,7 +56,7 @@ public class GetSeveralArtistsRequestTest {
 
   @Test
   public void shouldGetArtistsResult_sync() throws Exception {
-    final Api api = new Api.Builder().setAccessToken("AccessToken").build();
+    final SpotifyApi api = new SpotifyApi.Builder().setAccessToken("AccessToken").build();
 
     final GetSeveralArtistsRequest request = api.getArtists("0oSGxfWSnnOXhD2fKuz2Gy", "3dBVyJ7JuOMt4GE9607Qin")
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/artists/GetSeveralArtistsRequest.json"))

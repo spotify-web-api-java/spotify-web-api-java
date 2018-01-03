@@ -4,7 +4,7 @@ import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.SettableFuture;
 import com.neovisionaries.i18n.CountryCode;
-import com.wrapper.spotify.Api;
+import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.enums.AlbumType;
 import com.wrapper.spotify.model_objects.specification.AlbumSimplified;
@@ -23,7 +23,7 @@ public class GetArtistsAlbumsRequestTest {
 
   @Test
   public void shouldGetAlbumResultForArtistId_async() throws Exception {
-    final Api api = new Api.Builder().setAccessToken("AccessToken").build();
+    final SpotifyApi api = new SpotifyApi.Builder().setAccessToken("AccessToken").build();
 
     final GetArtistsAlbumsRequest request = api.getAlbumsForArtist("1vCWHaC5f2uS3yhpwWbIA6")
             .limit(2)
@@ -69,7 +69,7 @@ public class GetArtistsAlbumsRequestTest {
 
   @Test
   public void shouldGetAlbumResultForArtistId_sync() throws Exception {
-    final Api api = new Api.Builder().setAccessToken("AccessToken").build();
+    final SpotifyApi api = new SpotifyApi.Builder().setAccessToken("AccessToken").build();
 
     final GetArtistsAlbumsRequest request = api.getAlbumsForArtist("1vCWHaC5f2uS3yhpwWbIA6")
             .limit(2)

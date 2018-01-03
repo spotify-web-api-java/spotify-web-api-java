@@ -3,7 +3,7 @@ package com.wrapper.spotify.requests.data.playlists;
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.SettableFuture;
-import com.wrapper.spotify.Api;
+import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.model_objects.specification.Playlist;
 import org.junit.Ignore;
@@ -21,7 +21,7 @@ public class GetPlaylistRequestTest {
 
   @Test
   public void shouldCreatePlaylistPage_async() throws Exception {
-    final Api api = new Api.Builder().setAccessToken("AccessToken").build();
+    final SpotifyApi api = new SpotifyApi.Builder().setAccessToken("AccessToken").build();
 
     final GetPlaylistRequest request = api.getPlaylist("thelinmichael", "3ktAYNcRHpazJ9qecm3ptn")
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/playlists/GetPlaylistRequest.json"))
@@ -50,7 +50,7 @@ public class GetPlaylistRequestTest {
 
   @Test
   public void shouldCreatePlaylistPage() throws Exception {
-    final Api api = new Api.Builder().setAccessToken("AccessToken").build();
+    final SpotifyApi api = new SpotifyApi.Builder().setAccessToken("AccessToken").build();
 
     final GetPlaylistRequest request = api.getPlaylist("thelinmichael", "3ktAYNcRHpazJ9qecm3ptn")
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/playlists/GetPlaylistRequest.json"))
@@ -63,7 +63,7 @@ public class GetPlaylistRequestTest {
 
   @Test
   public void shouldBeAbleToHandlePlaylistsWithLocalFiles() throws Exception {
-    final Api api = new Api.Builder().setAccessToken("AccessToken").build();
+    final SpotifyApi api = new SpotifyApi.Builder().setAccessToken("AccessToken").build();
 
     final GetPlaylistRequest request = api.getPlaylist("thelinmichael", "3ktAYNcRHpazJ9qecm3ptn")
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/playlists/GetPlaylistRequest_Local.json"))

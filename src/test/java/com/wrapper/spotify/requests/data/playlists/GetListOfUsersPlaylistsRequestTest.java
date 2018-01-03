@@ -3,7 +3,7 @@ package com.wrapper.spotify.requests.data.playlists;
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.SettableFuture;
-import com.wrapper.spotify.Api;
+import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.enums.ModelObjectType;
 import com.wrapper.spotify.model_objects.specification.ArtistSimplified;
@@ -20,7 +20,7 @@ public class GetListOfUsersPlaylistsRequestTest {
   @Test
   public void shouldGetPlaylistsForUser_async() throws Exception {
     final String accessToken = "someAccessToken";
-    final Api api = new Api.Builder().setAccessToken("AccessToken").build();
+    final SpotifyApi api = new SpotifyApi.Builder().setAccessToken("AccessToken").build();
 
     final GetListOfUsersPlaylistsRequest request = api
             .getPlaylistsForUser("wizzler")
@@ -77,7 +77,7 @@ public class GetListOfUsersPlaylistsRequestTest {
   @Test
   public void shouldGetPlaylistsForUser_sync() throws Exception {
     final String accessToken = "myVeryLongAccessToken";
-    final Api api = new Api.Builder().setAccessToken("AccessToken").build();
+    final SpotifyApi api = new SpotifyApi.Builder().setAccessToken("AccessToken").build();
 
     final GetListOfUsersPlaylistsRequest request = api
             .getPlaylistsForUser("wizzler")

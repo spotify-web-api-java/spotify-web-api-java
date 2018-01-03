@@ -1,6 +1,6 @@
 package com.wrapper.spotify.requests.authorization.authorization_code;
 
-import com.wrapper.spotify.Api;
+import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.requests.AbstractRequest;
 
 public class AuthorizationCodeUriRequest extends AbstractRequest {
@@ -50,9 +50,9 @@ public class AuthorizationCodeUriRequest extends AbstractRequest {
     }
 
     public AuthorizationCodeUriRequest build() {
-      setHost(Api.DEFAULT_AUTHENTICATION_HOST);
-      setPort(Api.DEFAULT_AUTHENTICATION_PORT);
-      setScheme(Api.DEFAULT_AUTHENTICATION_SCHEME);
+      setHost(SpotifyApi.DEFAULT_AUTHENTICATION_HOST);
+      setPort(SpotifyApi.DEFAULT_AUTHENTICATION_PORT);
+      setScheme(SpotifyApi.DEFAULT_AUTHENTICATION_SCHEME);
       setPath("/authorize");
 
       return new AuthorizationCodeUriRequest(this);

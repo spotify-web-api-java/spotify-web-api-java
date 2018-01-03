@@ -39,7 +39,7 @@ import java.util.List;
 /**
  * Instances of the Api class provide access to the Spotify Web API.
  */
-public class Api {
+public class SpotifyApi {
 
   public static final String DEFAULT_AUTHENTICATION_HOST = "accounts.spotify.com";
 
@@ -81,7 +81,7 @@ public class Api {
   private final String accessToken;
   private final String refreshToken;
 
-  private Api(Builder builder) {
+  private SpotifyApi(Builder builder) {
     assert (builder.httpManager != null);
 
     this.httpManager = builder.httpManager;
@@ -792,8 +792,8 @@ public class Api {
       return this;
     }
 
-    public Api build() {
-      return new Api(this);
+    public SpotifyApi build() {
+      return new SpotifyApi(this);
     }
   }
 }

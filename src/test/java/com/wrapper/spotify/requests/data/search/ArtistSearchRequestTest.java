@@ -3,7 +3,7 @@ package com.wrapper.spotify.requests.data.search;
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.SettableFuture;
-import com.wrapper.spotify.Api;
+import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.enums.ModelObjectType;
 import com.wrapper.spotify.model_objects.specification.Artist;
@@ -23,7 +23,7 @@ public class ArtistSearchRequestTest {
 
   @Test
   public void shouldGetArtistsResult_async() throws Exception {
-    final Api api = new Api.Builder().setAccessToken("AccessToken").build();
+    final SpotifyApi api = new SpotifyApi.Builder().setAccessToken("AccessToken").build();
 
     final SearchArtistRequest request = api.searchArtists("tania bowra")
             .limit(20)
@@ -72,7 +72,7 @@ public class ArtistSearchRequestTest {
 
   @Test
   public void shouldGetArtistsResult_sync() throws Exception {
-    final Api api = new Api.Builder().setAccessToken("AccessToken").build();
+    final SpotifyApi api = new SpotifyApi.Builder().setAccessToken("AccessToken").build();
 
     final SearchArtistRequest request = api.searchArtists("tania bowra")
             .limit(20)

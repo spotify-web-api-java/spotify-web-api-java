@@ -4,7 +4,7 @@ import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.SettableFuture;
 import com.neovisionaries.i18n.CountryCode;
-import com.wrapper.spotify.Api;
+import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.enums.ModelObjectType;
 import com.wrapper.spotify.model_objects.specification.Track;
@@ -22,7 +22,7 @@ public class GetArtistsTopTracksRequestTest {
 
   @Test
   public void shouldGetTracksResult_async() throws Exception {
-    final Api api = new Api.Builder().setAccessToken("AccessToken").build();
+    final SpotifyApi api = new SpotifyApi.Builder().setAccessToken("AccessToken").build();
 
     final GetArtistsTopTracksRequest request = api.getTopTracksForArtist("43ZHCT0cAZBISjO8DG9PnE", CountryCode.GB)
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/artists/GetArtistsTopTracksRequest.json"))
@@ -71,7 +71,7 @@ public class GetArtistsTopTracksRequestTest {
 
   @Test
   public void shouldGetTracksResult_sync() throws Exception {
-    final Api api = new Api.Builder().setAccessToken("AccessToken").build();
+    final SpotifyApi api = new SpotifyApi.Builder().setAccessToken("AccessToken").build();
 
     final GetArtistsTopTracksRequest request = api.getTopTracksForArtist("43ZHCT0cAZBISjO8DG9PnE", CountryCode.GB)
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/artists/GetArtistsTopTracksRequest.json"))

@@ -3,7 +3,7 @@ package com.wrapper.spotify.requests.authorization.client_credentials;
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.SettableFuture;
-import com.wrapper.spotify.Api;
+import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.model_objects.credentials.ClientCredentials;
 import org.junit.Test;
@@ -21,7 +21,7 @@ public class ClientCredentialsRequestTest {
     final String clientId = "myClientId";
     final String clientSecret = "myClientSecret";
 
-    final Api api = Api.builder()
+    final SpotifyApi api = SpotifyApi.builder()
             .setClientId(clientId)
             .setClientSecret(clientSecret)
             .build();
@@ -42,7 +42,7 @@ public class ClientCredentialsRequestTest {
     final String clientId = "myClientId";
     final String clientSecret = "myClientSecret";
 
-    final Api api = Api.builder()
+    final SpotifyApi api = SpotifyApi.builder()
             .setClientId(clientId)
             .setClientSecret(clientSecret)
             .build();

@@ -3,7 +3,7 @@ package com.wrapper.spotify.requests.data.browse;
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.SettableFuture;
-import com.wrapper.spotify.Api;
+import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.model_objects.specification.Recommendations;
 import com.wrapper.spotify.model_objects.specification.TrackSimplified;
@@ -22,7 +22,7 @@ public class GetRecommendationsRequestTest {
 
   @Test
   public void shouldGetRecommendationsResult_async() throws Exception {
-    final Api api = new Api.Builder().setAccessToken("AccessToken").build();
+    final SpotifyApi api = new SpotifyApi.Builder().setAccessToken("AccessToken").build();
 
     final GetRecommendationsRequest request = api.getRecommendations()
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/browse/GetRecommendationsRequest.json"))
@@ -58,7 +58,7 @@ public class GetRecommendationsRequestTest {
 
   @Test
   public void shouldGetRecommendationsResult_sync() throws Exception {
-    final Api api = new Api.Builder().setAccessToken("AccessToken").build();
+    final SpotifyApi api = new SpotifyApi.Builder().setAccessToken("AccessToken").build();
 
     final GetRecommendationsRequest request = api.getRecommendations()
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/browse/GetRecommendationsRequest.json"))

@@ -3,7 +3,7 @@ package com.wrapper.spotify.requests.data.library;
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.SettableFuture;
-import com.wrapper.spotify.Api;
+import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.TestUtil;
 import org.junit.Test;
 
@@ -19,7 +19,7 @@ public class RemoveUsersSavedTracksRequestTest {
   public void removeFromMySavedTracks_async() throws Exception {
     final String accessToken = "accessToken";
 
-    final Api api = new Api.Builder().setAccessToken(accessToken)
+    final SpotifyApi api = new SpotifyApi.Builder().setAccessToken(accessToken)
             .setHttpManager(TestUtil.MockedHttpManager.returningString(""))
             .build();
 
@@ -54,7 +54,7 @@ public class RemoveUsersSavedTracksRequestTest {
   public void removeFromMySavedTracks_sync() throws Exception {
     final String accessToken = "accessToken";
 
-    final Api api = new Api.Builder().setAccessToken(accessToken)
+    final SpotifyApi api = new SpotifyApi.Builder().setAccessToken(accessToken)
             .setHttpManager(TestUtil.MockedHttpManager.returningString(""))
             .build();
 

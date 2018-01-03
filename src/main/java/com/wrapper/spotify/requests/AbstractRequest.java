@@ -1,7 +1,7 @@
 package com.wrapper.spotify.requests;
 
 import com.google.common.util.concurrent.SettableFuture;
-import com.wrapper.spotify.Api;
+import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.IHttpManager;
 import com.wrapper.spotify.exceptions.*;
 import org.apache.http.Header;
@@ -171,10 +171,10 @@ public abstract class AbstractRequest implements IRequest {
 
   public static abstract class Builder<BuilderType extends Builder<?>> implements IRequest.Builder {
 
-    private IHttpManager httpManager = Api.DEFAULT_HTTP_MANAGER;
-    private String scheme = Api.DEFAULT_SCHEME;
-    private String host = Api.DEFAULT_HOST;
-    private Integer port = Api.DEFAULT_PORT;
+    private IHttpManager httpManager = SpotifyApi.DEFAULT_HTTP_MANAGER;
+    private String scheme = SpotifyApi.DEFAULT_SCHEME;
+    private String host = SpotifyApi.DEFAULT_HOST;
+    private Integer port = SpotifyApi.DEFAULT_PORT;
     private String path = null;
     private List<NameValuePair> pathParameters = new ArrayList<>();
     private List<NameValuePair> queryParameters = new ArrayList<>();

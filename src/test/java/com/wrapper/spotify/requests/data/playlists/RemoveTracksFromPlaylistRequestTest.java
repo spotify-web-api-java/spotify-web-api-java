@@ -4,7 +4,7 @@ package com.wrapper.spotify.requests.data.playlists;
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.SettableFuture;
-import com.wrapper.spotify.Api;
+import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.model_objects.special.PlaylistTrackPosition;
 import com.wrapper.spotify.model_objects.special.SnapshotResult;
@@ -21,7 +21,7 @@ public class RemoveTracksFromPlaylistRequestTest {
   public void shouldAddTracksToPlaylist_async() throws Exception {
     final String accessToken = "someAccessToken";
 
-    final Api api = new Api.Builder().setAccessToken("AccessToken").build();
+    final SpotifyApi api = new SpotifyApi.Builder().setAccessToken("AccessToken").build();
 
     final String myUsername = "thelinmichael";
     final String myPlaylistId = "5ieJqeLJjjI8iJWaxeBLuK";
@@ -59,7 +59,7 @@ public class RemoveTracksFromPlaylistRequestTest {
   public void shouldAddTracksToPlaylist_sync() throws Exception {
     final String accessToken = "someAccessToken";
 
-    final Api api = new Api.Builder().setAccessToken("AccessToken").build();
+    final SpotifyApi api = new SpotifyApi.Builder().setAccessToken("AccessToken").build();
 
     final String myUsername = "thelinmichael";
     final String myPlaylistId = "5ieJqeLJjjI8iJWaxeBLuK";

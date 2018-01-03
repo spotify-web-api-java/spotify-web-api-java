@@ -3,7 +3,7 @@ package com.wrapper.spotify.requests.data.library;
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.SettableFuture;
-import com.wrapper.spotify.Api;
+import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.TestUtil;
 import org.junit.Test;
 
@@ -18,7 +18,7 @@ public class CheckUsersSavedTracksRequestTest {
   public void shouldCheckContains_Async() throws Exception {
     final String accessToken = "someAccessToken";
 
-    final Api api = new Api.Builder().setAccessToken("AccessToken").build();
+    final SpotifyApi api = new SpotifyApi.Builder().setAccessToken("AccessToken").build();
 
     CheckUsersSavedTracksRequest request = api.containsMySavedTracks(
             new String[]{"0udZHhCi7p1YzMlvI4fXoK", "1e1VmyiAuPyM4SHhySP1oU"})
@@ -52,7 +52,7 @@ public class CheckUsersSavedTracksRequestTest {
   public void shouldCheckContains_sync() throws Exception {
     final String accessToken = "someAccessToken";
 
-    final Api api = new Api.Builder().setAccessToken("AccessToken").build();
+    final SpotifyApi api = new SpotifyApi.Builder().setAccessToken("AccessToken").build();
 
     CheckUsersSavedTracksRequest request = api.containsMySavedTracks(
             new String[]{"0udZHhCi7p1YzMlvI4fXoK", "1e1VmyiAuPyM4SHhySP1oU"})

@@ -3,7 +3,7 @@ package com.wrapper.spotify.requests.data.albums;
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.SettableFuture;
-import com.wrapper.spotify.Api;
+import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.model_objects.specification.Paging;
 import com.wrapper.spotify.model_objects.specification.TrackSimplified;
@@ -21,7 +21,7 @@ public class GetAlbumsTracksRequestTest {
 
   @Test
   public void shouldTracksForAlbumId_async() throws Exception {
-    final Api api = new Api.Builder().setAccessToken("AccessToken").build();
+    final SpotifyApi api = new SpotifyApi.Builder().setAccessToken("AccessToken").build();
 
     final GetAlbumsTracksRequest request = api.getTracksForAlbum("6TJmQnO44YE5BtTxH8pop1")
             .limit(2)
@@ -64,7 +64,7 @@ public class GetAlbumsTracksRequestTest {
 
   @Test
   public void shouldTracksForAlbumId_sync() throws Exception {
-    final Api api = new Api.Builder().setAccessToken("AccessToken").build();
+    final SpotifyApi api = new SpotifyApi.Builder().setAccessToken("AccessToken").build();
 
     final GetAlbumsTracksRequest request = api.getTracksForAlbum("6TJmQnO44YE5BtTxH8pop1")
             .limit(2)

@@ -1,7 +1,7 @@
 package com.wrapper.spotify.requests.authorization.authorization_code;
 
 import com.google.common.util.concurrent.SettableFuture;
-import com.wrapper.spotify.Api;
+import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.exceptions.*;
 import com.wrapper.spotify.model_objects.credentials.AuthorizationCodeCredentials;
 import com.wrapper.spotify.requests.authorization.AbstractAthorizationRequest;
@@ -67,9 +67,9 @@ public class AuthorizationCodeRequest extends AbstractAthorizationRequest {
     }
 
     public AuthorizationCodeRequest build() {
-      setHost(Api.DEFAULT_AUTHENTICATION_HOST);
-      setPort(Api.DEFAULT_AUTHENTICATION_PORT);
-      setScheme(Api.DEFAULT_AUTHENTICATION_SCHEME);
+      setHost(SpotifyApi.DEFAULT_AUTHENTICATION_HOST);
+      setPort(SpotifyApi.DEFAULT_AUTHENTICATION_PORT);
+      setScheme(SpotifyApi.DEFAULT_AUTHENTICATION_SCHEME);
       setPath("/api/token");
 
       return new AuthorizationCodeRequest(this);

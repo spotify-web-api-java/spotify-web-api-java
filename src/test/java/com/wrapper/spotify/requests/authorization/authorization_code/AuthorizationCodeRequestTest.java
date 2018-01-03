@@ -1,6 +1,6 @@
 package com.wrapper.spotify.requests.authorization.authorization_code;
 
-import com.wrapper.spotify.Api;
+import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.model_objects.credentials.AuthorizationCodeCredentials;
 import org.junit.Test;
@@ -17,7 +17,7 @@ public class AuthorizationCodeRequestTest {
     final String redirectUri = "myRedirectUri";
     final String code = "myCode";
 
-    final Api api = Api.builder()
+    final SpotifyApi api = SpotifyApi.builder()
             .setClientId(clientId)
             .setClientSecret(clientSecret)
             .setRedirectUri(redirectUri)

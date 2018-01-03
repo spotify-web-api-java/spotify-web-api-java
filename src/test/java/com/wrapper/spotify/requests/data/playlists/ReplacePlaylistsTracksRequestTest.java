@@ -3,7 +3,7 @@ package com.wrapper.spotify.requests.data.playlists;
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.SettableFuture;
-import com.wrapper.spotify.Api;
+import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.TestUtil;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,7 +21,7 @@ public class ReplacePlaylistsTracksRequestTest {
 
   @Test
   public void shouldCreatePlaylist_async() throws Exception {
-    final Api api = new Api.Builder().setAccessToken("someAccessToken").build();
+    final SpotifyApi api = new SpotifyApi.Builder().setAccessToken("someAccessToken").build();
 
     final ReplacePlaylistsTracksRequest request = api.replacePlaylistsTracks(
             "userId", "5oEljuMoe9MXH6tBIPbd5e", new String[]{"spotify:track:4iV5W9uYEdYUVa79Axb7Rh"}
@@ -50,7 +50,7 @@ public class ReplacePlaylistsTracksRequestTest {
 
   @Test
   public void shouldCreatePlaylist_sync() throws Exception {
-    final Api api = new Api.Builder().setAccessToken("someAccessToken").build();
+    final SpotifyApi api = new SpotifyApi.Builder().setAccessToken("someAccessToken").build();
 
     final ReplacePlaylistsTracksRequest request = api.replacePlaylistsTracks(
             "userId", "5oEljuMoe9MXH6tBIPbd5e", new String[]{"spotify:track:4iV5W9uYEdYUVa79Axb7Rh"}
