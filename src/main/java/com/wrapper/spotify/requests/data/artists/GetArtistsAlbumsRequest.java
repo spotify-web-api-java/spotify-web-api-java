@@ -39,7 +39,6 @@ public class GetArtistsAlbumsRequest extends AbstractDataRequest {
       return setPathParameter("id", id);
     }
 
-    // TODO Joiner.on(",").join()
     public Builder album_type(final String album_type) {
       assert (album_type != null);
       assert (album_type.matches("((^|,)(single|album|appears_on|compilation))+$"));

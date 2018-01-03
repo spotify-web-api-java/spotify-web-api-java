@@ -451,7 +451,6 @@ public class GetRecommendationsRequest extends AbstractDataRequest {
      *                     provided in any combination of seed_artists, seed_tracks and seed_genres.
      * @return A {@link GetRecommendationsRequest.Builder}.
      * <p>
-     * TODO Joiner.on(",").join()
      */
     public Builder seed_artists(final String seed_artists) {
       assert (seed_artists != null);
@@ -464,7 +463,6 @@ public class GetRecommendationsRequest extends AbstractDataRequest {
      *                    values may be provided in any combination of seed_artists, seed_tracks and seed_genres.
      * @return A {@link GetRecommendationsRequest.Builder}.
      * <p>
-     * TODO Joiner.on(",").join()
      */
     public Builder seed_genres(final String seed_genres) {
       assert (seed_genres != null);
@@ -477,7 +475,6 @@ public class GetRecommendationsRequest extends AbstractDataRequest {
      *                    any combination of seed_artists, seed_tracks and seed_genres.
      * @return A {@link GetRecommendationsRequest.Builder}.
      * <p>
-     * TODO Joiner.on(",").join()
      */
     public Builder seed_tracks(final String seed_tracks) {
       assert (seed_tracks != null);

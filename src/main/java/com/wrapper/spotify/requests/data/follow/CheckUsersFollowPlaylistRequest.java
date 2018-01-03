@@ -44,7 +44,6 @@ public class CheckUsersFollowPlaylistRequest extends AbstractDataRequest {
       return setPathParameter("playlist_id", playlist_id);
     }
 
-    // TODO Joiner.on(",").join()
     public Builder ids(final String ids) {
       assert (ids != null);
       assert (ids.split(",").length <= 5);

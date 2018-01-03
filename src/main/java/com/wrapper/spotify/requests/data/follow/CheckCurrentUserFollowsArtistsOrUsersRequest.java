@@ -39,7 +39,6 @@ public class CheckCurrentUserFollowsArtistsOrUsersRequest extends AbstractDataRe
       return setQueryParameter("type", type);
     }
 
-    // TODO Joiner.on(",").join()
     public Builder ids(final String ids) {
       assert (ids != null);
       assert (ids.split(",").length <= 50);
