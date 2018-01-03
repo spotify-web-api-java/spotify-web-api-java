@@ -52,7 +52,7 @@ public class ExternalUrl extends AbstractModelObject {
   }
 
     /**
-     * Builder class for building {@link ExternalUrls} instances.
+     * Builder class for building {@link ExternalUrl} instances.
      */
   public static final class Builder extends AbstractModelObject.Builder {
     private Map<String, String> externalUrls;
@@ -61,7 +61,7 @@ public class ExternalUrl extends AbstractModelObject {
          * The external URLs setter.
          *
          * @param externalUrls A {@link Map} of external public URLs to its objects.
-         * @return A {@link ExternalUrls.Builder}.
+         * @return A {@link ExternalUrl.Builder}.
          */
     public Builder setExternalUrls(Map<String, String> externalUrls) {
       this.externalUrls = externalUrls;
@@ -75,7 +75,7 @@ public class ExternalUrl extends AbstractModelObject {
   }
 
     /**
-     * JsonUtil class for building {@link ExternalUrls} instances.
+     * JsonUtil class for building {@link ExternalUrl} instances.
      */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<ExternalUrl> {
     public ExternalUrl createModelObject(JsonObject jsonObject) {

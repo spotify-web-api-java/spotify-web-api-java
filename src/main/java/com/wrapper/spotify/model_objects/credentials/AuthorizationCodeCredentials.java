@@ -105,18 +105,17 @@ public class AuthorizationCodeCredentials extends AbstractModelObject {
       return this;
     }
 
+    public Builder setScope(String scope) {
+      this.scope = scope;
+      return this;
+    }
+
     /**
      * The expiration time setter.
      *
      * @param expiresIn The time period (in seconds) for which the access token is valid.
      * @return An AuthorizationCodeCredentials builder.
      */
-
-    public Builder setScope(String scope) {
-      this.scope = scope;
-      return this;
-    }
-
     public Builder setExpiresIn(int expiresIn) {
       this.expiresIn = expiresIn;
       return this;

@@ -1,5 +1,7 @@
 package com.wrapper.spotify.enums;
 
+import com.wrapper.spotify.model_objects.specification.Copyright;
+
 /**
  * An enumeration of all possible {@link Copyright} types.
  */

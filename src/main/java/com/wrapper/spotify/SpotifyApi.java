@@ -180,7 +180,13 @@ public class SpotifyApi {
    * grants.
    * Requires client ID, client secret, and redirect URI to be set.
    *
-   * @param code An authorization code.
+   * @param client_id     Required. When you register your application, Spotify provides you a Client ID.
+   * @param client_secret Required. When you register your application, Spotify provides you a Client Secret.
+   * @param code          Required. The authorization code returned from the initial request to the Account /authorize
+   *                      endpoint.
+   * @param redirect_uri  Required. This parameter is used for validation only (there is no actual redirection). The
+   *                      value of this parameter must exactly match the value of redirect_uri supplied when requesting
+   *                      the authorization code.
    * @return A builder that builds authorization code grant requests.
    */
   public AuthorizationCodeRequest.Builder authorizationCode(String client_id, String client_secret, String code, String redirect_uri) {
@@ -212,6 +218,10 @@ public class SpotifyApi {
   /**
    * Retrieve a URL where the user can give the application permissions.
    *
+   * @param client_id    Required. When you register your application, Spotify provides you a Client ID.
+   * @param redirect_uri Required. This parameter is used for validation only (there is no actual redirection). The
+   *                     value of this parameter must exactly match the value of redirect_uri supplied when requesting
+   *                     the authorization code.
    * @return The URL where the user can give application permissions.
    */
   public AuthorizationCodeUriRequest.Builder createAuthorizeUri(String client_id, String redirect_uri) {

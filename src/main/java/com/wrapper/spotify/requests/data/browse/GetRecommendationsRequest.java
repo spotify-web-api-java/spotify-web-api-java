@@ -450,7 +450,6 @@ public class GetRecommendationsRequest extends AbstractDataRequest {
      * @param seed_artists A comma separated list of Spotify IDs for seed seed_artists. Up to 5 seed values may be
      *                     provided in any combination of seed_artists, seed_tracks and seed_genres.
      * @return A {@link GetRecommendationsRequest.Builder}.
-     * <p>
      */
     public Builder seed_artists(final String seed_artists) {
       assert (seed_artists != null);
@@ -462,7 +461,6 @@ public class GetRecommendationsRequest extends AbstractDataRequest {
      * @param seed_genres A comma separated list of any seed_genres in the set of available genre seeds. Up to 5 seed
      *                    values may be provided in any combination of seed_artists, seed_tracks and seed_genres.
      * @return A {@link GetRecommendationsRequest.Builder}.
-     * <p>
      */
     public Builder seed_genres(final String seed_genres) {
       assert (seed_genres != null);
@@ -474,7 +472,6 @@ public class GetRecommendationsRequest extends AbstractDataRequest {
      * @param seed_tracks A comma separated list of Spotify IDs for a seed track. Up to 5 seed values may be provided in
      *                    any combination of seed_artists, seed_tracks and seed_genres.
      * @return A {@link GetRecommendationsRequest.Builder}.
-     * <p>
      */
     public Builder seed_tracks(final String seed_tracks) {
       assert (seed_tracks != null);

@@ -44,7 +44,7 @@ public class ExternalId extends AbstractModelObject {
   }
 
     /**
-     * Builder class for building {@link ExternalIds} instances.
+     * Builder class for building {@link ExternalId} instances.
      */
   public static final class Builder extends AbstractModelObject.Builder {
     private Map<String, String> externalIds;
@@ -53,7 +53,7 @@ public class ExternalId extends AbstractModelObject {
          * External IDs setter.
          *
          * @param externalIds A {@link Map} of external IDs, containing external identifiers for the object.
-         * @return A {@link ExternalIds.Builder}.
+         * @return A {@link ExternalId.Builder}.
          */
     public Builder setExternalIds(Map<String, String> externalIds) {
       this.externalIds = externalIds;
@@ -67,7 +67,7 @@ public class ExternalId extends AbstractModelObject {
   }
 
     /**
-     * JsonUtil class for building {@link ExternalIds} instances.
+     * JsonUtil class for building {@link ExternalId} instances.
      */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<ExternalId> {
     public ExternalId createModelObject(JsonObject jsonObject) {

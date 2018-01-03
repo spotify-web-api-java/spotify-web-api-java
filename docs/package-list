@@ -1,6 +1,7 @@
 com.wrapper.spotify
 com.wrapper.spotify.enums
 com.wrapper.spotify.exceptions
+com.wrapper.spotify.exceptions.detailed
 com.wrapper.spotify.model_objects
 com.wrapper.spotify.model_objects.credentials
 com.wrapper.spotify.model_objects.credentials.error
