@@ -32,13 +32,13 @@ public class AuthorizationCodeRefreshRequest extends AbstractAthorizationRequest
       super(clientId, clientSecret);
     }
 
-    public Builder setGrantType(final String grant_type) {
+    public Builder grant_type(final String grant_type) {
       assert (grant_type != null);
       assert (grant_type.equals("refresh_token"));
       return setBodyParameter("grant_type", grant_type);
     }
 
-    public Builder setRefreshToken(final String refresh_token) {
+    public Builder refresh_token(final String refresh_token) {
       assert (refresh_token != null);
       assert (!refresh_token.equals(""));
       return setBodyParameter("refresh_token", refresh_token);

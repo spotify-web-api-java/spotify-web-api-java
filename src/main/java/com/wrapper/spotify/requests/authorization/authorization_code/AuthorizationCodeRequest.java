@@ -32,19 +32,19 @@ public class AuthorizationCodeRequest extends AbstractAthorizationRequest {
       super(clientId, clientSecret);
     }
 
-    public Builder setGrantType(final String grant_type) {
+    public Builder grant_type(final String grant_type) {
       assert (grant_type != null);
       assert (grant_type.equals("authorization_code"));
       return setBodyParameter("grant_type", grant_type);
     }
 
-    public Builder setCode(final String code) {
+    public Builder code(final String code) {
       assert (code != null);
       assert (!code.equals(""));
       return setBodyParameter("code", code);
     }
 
-    public Builder setRedirectUri(final String redirect_uri) {
+    public Builder redirect_uri(final String redirect_uri) {
       assert (redirect_uri != null);
       assert (!redirect_uri.equals(""));
       return setBodyParameter("redirect_uri", redirect_uri);
