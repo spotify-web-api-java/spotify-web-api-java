@@ -1,8 +1,6 @@
 package com.wrapper.spotify.exceptions;
 
-import org.apache.http.HttpException;
-
-public class NotFoundException extends HttpException {
+public class NotFoundException extends SpotifyWebApiException {
 
   public NotFoundException() {
     super();

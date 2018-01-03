@@ -1,8 +1,6 @@
 package com.wrapper.spotify.exceptions;
 
-import org.apache.http.HttpException;
-
-public class UnauthorizedException extends HttpException {
+public class UnauthorizedException extends SpotifyWebApiException {
 
   public UnauthorizedException() {
     super();

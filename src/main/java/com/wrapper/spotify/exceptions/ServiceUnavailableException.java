@@ -1,8 +1,6 @@
 package com.wrapper.spotify.exceptions;
 
-import org.apache.http.HttpException;
-
-public class ServiceUnavailableException extends HttpException {
+public class ServiceUnavailableException extends SpotifyWebApiException {
 
   public ServiceUnavailableException() {
     super();

@@ -1,8 +1,6 @@
 package com.wrapper.spotify.exceptions;
 
-import org.apache.http.HttpException;
-
-public class BadRequestException extends HttpException {
+public class BadRequestException extends SpotifyWebApiException {
 
   public BadRequestException() {
     super();

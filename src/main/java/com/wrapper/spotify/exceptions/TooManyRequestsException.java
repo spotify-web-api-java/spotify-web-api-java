@@ -1,8 +1,6 @@
 package com.wrapper.spotify.exceptions;
 
-import org.apache.http.HttpException;
-
-public class TooManyRequestsException extends HttpException {
+public class TooManyRequestsException extends SpotifyWebApiException {
 
   public TooManyRequestsException() {
     super();

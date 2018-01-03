@@ -1,8 +1,6 @@
 package com.wrapper.spotify.exceptions;
 
-import org.apache.http.HttpException;
-
-public class NoContentException extends HttpException {
+public class NoContentException extends SpotifyWebApiException {
 
   public NoContentException() {
     super();

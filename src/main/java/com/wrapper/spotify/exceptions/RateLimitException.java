@@ -1,8 +1,6 @@
 package com.wrapper.spotify.exceptions;
 
-import org.apache.http.HttpException;
-
-public class RateLimitException extends HttpException {
+public class RateLimitException extends SpotifyWebApiException {
   private final int secondsToSleep;
 
   public RateLimitException(int secondsToSleep) {

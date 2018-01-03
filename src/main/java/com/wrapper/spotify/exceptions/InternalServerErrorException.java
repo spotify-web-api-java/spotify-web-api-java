@@ -1,8 +1,6 @@
 package com.wrapper.spotify.exceptions;
 
-import org.apache.http.HttpException;
-
-public class InternalServerErrorException extends HttpException {
+public class InternalServerErrorException extends SpotifyWebApiException {
 
   public InternalServerErrorException() {
     super();
