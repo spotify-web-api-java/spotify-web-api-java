@@ -25,7 +25,7 @@ public class GetArtistsAlbumsRequestTest {
   public void shouldGetAlbumResultForArtistId_async() throws Exception {
     final SpotifyApi api = new SpotifyApi.Builder().setAccessToken("AccessToken").build();
 
-    final GetArtistsAlbumsRequest request = api.getAlbumsForArtist("1vCWHaC5f2uS3yhpwWbIA6")
+    final GetArtistsAlbumsRequest request = api.getArtistsAlbums("1vCWHaC5f2uS3yhpwWbIA6")
             .limit(2)
             .album_type(AlbumType.SINGLE.getType())
             .market(CountryCode.US)
@@ -71,7 +71,7 @@ public class GetArtistsAlbumsRequestTest {
   public void shouldGetAlbumResultForArtistId_sync() throws Exception {
     final SpotifyApi api = new SpotifyApi.Builder().setAccessToken("AccessToken").build();
 
-    final GetArtistsAlbumsRequest request = api.getAlbumsForArtist("1vCWHaC5f2uS3yhpwWbIA6")
+    final GetArtistsAlbumsRequest request = api.getArtistsAlbums("1vCWHaC5f2uS3yhpwWbIA6")
             .limit(2)
             .album_type(AlbumType.SINGLE.getType())
             .market(CountryCode.US)

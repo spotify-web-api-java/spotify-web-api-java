@@ -27,7 +27,7 @@ public class GetSeveralAlbumsRequestTest {
   public void shouldGetAlbumResultForIds_async() throws Exception {
     final SpotifyApi api = new SpotifyApi.Builder().setAccessToken("AccessToken").build();
 
-    final GetSeveralAlbumsRequest request = api.getAlbums("2hYe61Nd2oOoM6RYCwIma1")
+    final GetSeveralAlbumsRequest request = api.getSeveralAlbums("2hYe61Nd2oOoM6RYCwIma1")
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/albums/GetSeveralAlbumsRequest.json"))
             .build();
 
@@ -75,7 +75,7 @@ public class GetSeveralAlbumsRequestTest {
   public void shouldGetAlbumResultForIds_sync() throws Exception {
     final SpotifyApi api = new SpotifyApi.Builder().setAccessToken("AccessToken").build();
 
-    final GetSeveralAlbumsRequest request = api.getAlbums("2hYe61Nd2oOoM6RYCwIma1")
+    final GetSeveralAlbumsRequest request = api.getSeveralAlbums("2hYe61Nd2oOoM6RYCwIma1")
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/albums/GetSeveralAlbumsRequest.json"))
             .build();
 
@@ -106,7 +106,7 @@ public class GetSeveralAlbumsRequestTest {
   public void shouldFailForNotFound_async() throws Exception {
     final SpotifyApi api = new SpotifyApi.Builder().setAccessToken("AccessToken").build();
 
-    final GetSeveralAlbumsRequest request = api.getAlbums("idontexist")
+    final GetSeveralAlbumsRequest request = api.getSeveralAlbums("idontexist")
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/albums/GetSeveralAlbumsRequest_None.json"))
             .build();
 

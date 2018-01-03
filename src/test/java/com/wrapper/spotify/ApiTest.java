@@ -1,7 +1,10 @@
 package com.wrapper.spotify;
 
+import com.google.common.base.Joiner;
+import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.neovisionaries.i18n.CountryCode;
 import com.neovisionaries.i18n.LanguageCode;
 import com.wrapper.spotify.enums.AlbumType;
@@ -12,6 +15,8 @@ import org.junit.Test;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -49,7 +54,7 @@ public class ApiTest {
   public void shouldCreateAGetAudioFeaturesUrl() {
     final SpotifyApi api = new SpotifyApi.Builder().setAccessToken(accessToken).build();
     IRequest request = api
-            .getAudioFeature("1hmNbafW4sAPNaGc7LeXAZ")
+            .getAudioFeaturesForTrack("1hmNbafW4sAPNaGc7LeXAZ")
             .build();
     assertEquals("https://api.spotify.com:443/v1/audio-features/1hmNbafW4sAPNaGc7LeXAZ", request.getUri().toString());
   }
@@ -58,7 +63,7 @@ public class ApiTest {
   public void shouldCreateAGetTracksForAlbumUrl() {
     final SpotifyApi api = new SpotifyApi.Builder().setAccessToken(accessToken).build();
     IRequest request = api
-            .getTracksForAlbum("5oEljuMoe9MXH6tBIPbd5e")
+            .getAlbumsTracks("5oEljuMoe9MXH6tBIPbd5e")
             .build();
     String test = request.toString();
     assertEquals(
@@ -95,7 +100,7 @@ public class ApiTest {
   public void shouldCreateAGetRecentlyPlayedTracksUrl() {
     final SpotifyApi api = new SpotifyApi.Builder().setAccessToken(accessToken).build();
     IRequest request = api
-            .getRecentlyPlayedTracks()
+            .getCurrentUsersRecentlyPlayedTracks()
             .build();
     assertEquals("https://api.spotify.com:443/v1/me/player/recently-played", request.getUri().toString());
   }
@@ -122,7 +127,7 @@ public class ApiTest {
   public void shouldCreateAGetAlbumsUrl() {
     final SpotifyApi api = new SpotifyApi.Builder().setAccessToken(accessToken).build();
     IRequest request = api
-            .getAlbums("6hDH3YWFdcUNQjubYztIsG", "2IA4WEsWAYpV9eKkwR2UYv")
+            .getSeveralAlbums("6hDH3YWFdcUNQjubYztIsG", "2IA4WEsWAYpV9eKkwR2UYv")
             .build();
     assertEquals("https://api.spotify.com:443/v1/albums?ids=6hDH3YWFdcUNQjubYztIsG%2C2IA4WEsWAYpV9eKkwR2UYv", request.getUri().toString());
     assertHasQueryParameter(request, "ids", "6hDH3YWFdcUNQjubYztIsG,2IA4WEsWAYpV9eKkwR2UYv");
@@ -132,7 +137,7 @@ public class ApiTest {
   public void shouldCreateAGetAlbumsUrlFromAList() {
     final SpotifyApi api = new SpotifyApi.Builder().setAccessToken(accessToken).build();
     IRequest request = api
-            .getAlbums("6hDH3YWFdcUNQjubYztIsG", "2IA4WEsWAYpV9eKkwR2UYv")
+            .getSeveralAlbums("6hDH3YWFdcUNQjubYztIsG", "2IA4WEsWAYpV9eKkwR2UYv")
             .build();
     assertEquals("https://api.spotify.com:443/v1/albums?ids=6hDH3YWFdcUNQjubYztIsG%2C2IA4WEsWAYpV9eKkwR2UYv", request.getUri().toString());
     assertHasQueryParameter(request, "ids", "6hDH3YWFdcUNQjubYztIsG,2IA4WEsWAYpV9eKkwR2UYv");
@@ -142,7 +147,7 @@ public class ApiTest {
   public void shouldCreateAGetTracksUrl() {
     final SpotifyApi api = new SpotifyApi.Builder().setAccessToken(accessToken).build();
     IRequest request = api
-            .getTracks("6hDH3YWFdcUNQjubYztIsG", "2IA4WEsWAYpV9eKkwR2UYv")
+            .getSeveralTracks("6hDH3YWFdcUNQjubYztIsG", "2IA4WEsWAYpV9eKkwR2UYv")
             .build();
     assertEquals("https://api.spotify.com:443/v1/tracks?ids=6hDH3YWFdcUNQjubYztIsG%2C2IA4WEsWAYpV9eKkwR2UYv", request.getUri().toString());
     assertHasQueryParameter(request, "ids", "6hDH3YWFdcUNQjubYztIsG,2IA4WEsWAYpV9eKkwR2UYv");
@@ -152,7 +157,7 @@ public class ApiTest {
   public void shouldCreateAGetTracksUrlFromList() {
     final SpotifyApi api = new SpotifyApi.Builder().setAccessToken(accessToken).build();
     IRequest request = api
-            .getTracks("6hDH3YWFdcUNQjubYztIsG", "2IA4WEsWAYpV9eKkwR2UYv")
+            .getSeveralTracks("6hDH3YWFdcUNQjubYztIsG", "2IA4WEsWAYpV9eKkwR2UYv")
             .build();
     assertEquals("https://api.spotify.com:443/v1/tracks?ids=6hDH3YWFdcUNQjubYztIsG%2C2IA4WEsWAYpV9eKkwR2UYv", request.getUri().toString());
     assertHasQueryParameter(request, "ids", "6hDH3YWFdcUNQjubYztIsG,2IA4WEsWAYpV9eKkwR2UYv");
@@ -180,7 +185,7 @@ public class ApiTest {
   public void shouldCreateAUrlForArtistsAlbum() {
     final SpotifyApi api = new SpotifyApi.Builder().setAccessToken(accessToken).build();
     IRequest request = api
-            .getAlbumsForArtist("4AK6F7OLvEQ5QYCBNiQWHq")
+            .getArtistsAlbums("4AK6F7OLvEQ5QYCBNiQWHq")
             .build();
     assertEquals("https://api.spotify.com:443/v1/artists/4AK6F7OLvEQ5QYCBNiQWHq/albums", request.getUri().toString());
   }
@@ -189,7 +194,7 @@ public class ApiTest {
   public void shouldHaveMultipleAlbumTypeParametersInArtistsAlbumUrl() {
     final SpotifyApi api = new SpotifyApi.Builder().setAccessToken(accessToken).build();
     IRequest request = api
-            .getAlbumsForArtist("4AK6F7OLvEQ5QYCBNiQWHq")
+            .getArtistsAlbums("4AK6F7OLvEQ5QYCBNiQWHq")
             .album_type(AlbumType.ALBUM.getType() + "," + AlbumType.SINGLE.getType())
             .market(CountryCode.SE)
             .build();
@@ -203,7 +208,7 @@ public class ApiTest {
   public void shouldHaveSingleAlbumTypeParametersInArtistsAlbumUrl() {
     final SpotifyApi api = new SpotifyApi.Builder().setAccessToken(accessToken).build();
     IRequest request = api
-            .getAlbumsForArtist("4AK6F7OLvEQ5QYCBNiQWHq")
+            .getArtistsAlbums("4AK6F7OLvEQ5QYCBNiQWHq")
             .album_type(AlbumType.SINGLE.getType())
             .build();
     assertEquals("https://api.spotify.com:443/v1/artists/4AK6F7OLvEQ5QYCBNiQWHq/albums?album_type=single", request.getUri().toString());
@@ -214,7 +219,7 @@ public class ApiTest {
   public void shouldFailIfAlbumTypeParametersIsInArtistsAlbumUrl() {
     final SpotifyApi api = new SpotifyApi.Builder().setAccessToken(accessToken).build();
     IRequest request = api
-            .getAlbumsForArtist("4AK6F7OLvEQ5QYCBNiQWHq")
+            .getArtistsAlbums("4AK6F7OLvEQ5QYCBNiQWHq")
             .album_type(AlbumType.SINGLE.getType())
             .build();
     assertEquals("https://api.spotify.com:443/v1/artists/4AK6F7OLvEQ5QYCBNiQWHq/albums?album_type=single", request.getUri().toString());
@@ -225,7 +230,7 @@ public class ApiTest {
   public void shouldHaveLimitParameterInArtistsAlbumUrl() {
     final SpotifyApi api = new SpotifyApi.Builder().setAccessToken(accessToken).build();
     IRequest request = api
-            .getAlbumsForArtist("4AK6F7OLvEQ5QYCBNiQWHq")
+            .getArtistsAlbums("4AK6F7OLvEQ5QYCBNiQWHq")
             .limit(2)
             .build();
     assertEquals("https://api.spotify.com:443/v1/artists/4AK6F7OLvEQ5QYCBNiQWHq/albums?limit=2", request.getUri().toString());
@@ -236,7 +241,7 @@ public class ApiTest {
   public void shouldHaveOffsetParameterInArtistsAlbumUrl() {
     final SpotifyApi api = new SpotifyApi.Builder().setAccessToken(accessToken).build();
     IRequest request = api
-            .getAlbumsForArtist("4AK6F7OLvEQ5QYCBNiQWHq")
+            .getArtistsAlbums("4AK6F7OLvEQ5QYCBNiQWHq")
             .offset(5)
             .build();
     assertEquals("https://api.spotify.com:443/v1/artists/4AK6F7OLvEQ5QYCBNiQWHq/albums?offset=5", request.getUri().toString());
@@ -247,7 +252,7 @@ public class ApiTest {
   public void shouldHaveSeveralQueryParametersAtTheSameTimeInArtistsAlbumUrl() {
     final SpotifyApi api = new SpotifyApi.Builder().setAccessToken(accessToken).build();
     IRequest request = api
-            .getAlbumsForArtist("4AK6F7OLvEQ5QYCBNiQWHq")
+            .getArtistsAlbums("4AK6F7OLvEQ5QYCBNiQWHq")
             .album_type(AlbumType.SINGLE.getType())
             .limit(2)
             .offset(5)
@@ -262,7 +267,7 @@ public class ApiTest {
   public void shouldCreateAGetArtistsUrl() {
     final SpotifyApi api = new SpotifyApi.Builder().setAccessToken(accessToken).build();
     IRequest request = api
-            .getArtists("4AK6F7OLvEQ5QYCBNiQWHq", "6rEzedK7cKWjeQWdAYvWVG")
+            .getSeveralArtists("4AK6F7OLvEQ5QYCBNiQWHq", "6rEzedK7cKWjeQWdAYvWVG")
             .build();
     assertEquals("https://api.spotify.com:443/v1/artists", request.getUri().toString());
     assertHasFormParameter(request, "ids", "4AK6F7OLvEQ5QYCBNiQWHq,6rEzedK7cKWjeQWdAYvWVG");
@@ -364,7 +369,7 @@ public class ApiTest {
   public void shouldCreateTopTracksUrl() {
     final SpotifyApi api = new SpotifyApi.Builder().setAccessToken(accessToken).build();
     IRequest request = api
-            .getTopTracksForArtist("0LcJLqbBmaGUft1e9Mm8HV", CountryCode.GB)
+            .getArtistsTopTracks("0LcJLqbBmaGUft1e9Mm8HV", CountryCode.GB)
             .build();
     assertEquals("https://api.spotify.com:443/v1/artists/0LcJLqbBmaGUft1e9Mm8HV/top-tracks?country=GB", request.getUri().toString());
     assertHasQueryParameter(request, "country", "GB");
@@ -374,7 +379,7 @@ public class ApiTest {
   public void shouldCreateUserProfileUrl() {
     final SpotifyApi api = new SpotifyApi.Builder().setAccessToken(accessToken).build();
     IRequest request = api
-            .getUser("wizzler")
+            .getUsersProfile("wizzler")
             .build();
     assertEquals("https://api.spotify.com:443/v1/users/wizzler", request.getUri().toString());
   }
@@ -384,7 +389,7 @@ public class ApiTest {
     final SpotifyApi api = new SpotifyApi.Builder().setAccessToken(accessToken).build();
 
     final IRequest request = api
-            .getPlaylistsForUser("wizzler")
+            .getListOfUsersPlaylists("wizzler")
             .build();
 
     assertEquals("https://api.spotify.com:443/v1/users/wizzler/playlists", request.getUri().toString());
@@ -405,7 +410,7 @@ public class ApiTest {
             .build();
 
     final IRequest request = api
-            .authorizationCodeGrant(code)
+            .authorizationCode(code)
             .build();
 
     assertEquals("https://accounts.spotify.com:443/api/token", request.getUri().toString());
@@ -435,7 +440,7 @@ public class ApiTest {
     final SpotifyApi api = new SpotifyApi.Builder().setAccessToken(accessToken).build();
 
     final IRequest request = api
-            .getMe()
+            .getCurrentUsersProfile()
             .build();
 
     assertEquals("https://api.spotify.com:443/v1/me", request.getUri().toString());
@@ -493,21 +498,21 @@ public class ApiTest {
     final int track2Position = 5;
     PlaylistTrackPosition playlistTrackPosition1 = new PlaylistTrackPosition(track1Uri);
     PlaylistTrackPosition playlistTrackPosition2 = new PlaylistTrackPosition(track2Uri, new int[]{track2Position});
-    final PlaylistTrackPosition[] tracksToRemove = {playlistTrackPosition1, playlistTrackPosition2};
+    final PlaylistTrackPosition[] playlistTrackPositions = {playlistTrackPosition1, playlistTrackPosition2};
+    final JsonArray tracksToRemove = new JsonParser().parse(new Gson().toJson(new ArrayList<>(Arrays.asList(playlistTrackPositions)))).getAsJsonArray();
 
-    final JsonArray tracks = new JsonArray();
+//    final JsonArray tracks = new JsonArray();
 
-    for (PlaylistTrackPosition playlistTrackPosition : tracksToRemove) {
-      tracks.add(getJsonFromPlaylistTrackPosition(playlistTrackPosition));
-    }
+//    for (PlaylistTrackPosition playlistTrackPosition : tracksToRemove) {
+//      tracks.add(getJsonFromPlaylistTrackPosition(playlistTrackPosition));
+//    }
 
     final String expectedJsonBodyTracks = String.format("[{\"uri\":\"%s\"},{\"uri\":\"%s\",\"positions\":[%s]}]",
             track1Uri, track2Uri, String.valueOf(track2Position));
 
     final IRequest request = api
-            .removeTrackFromPlaylist(myUsername, myPlaylistId, tracksToRemove)
+            .removeTracksFromPlaylist(myUsername, myPlaylistId, tracksToRemove)
             .snapshotId(snapshotId)
-            .tracks(tracks)
             .build();
 
     assertEquals("https://api.spotify.com:443/v1/users/thelinmichael/playlists/" + myPlaylistId + "/tracks", request.getUri().toString());
@@ -531,7 +536,7 @@ public class ApiTest {
             String.valueOf(rangeStart), String.valueOf(insertBefore), String.valueOf(rangeLength), snapshotId);
 
     final IRequest request = api
-            .reorderTracksInPlaylist(myUsername, myPlaylistId, rangeStart, insertBefore)
+            .reorderPlaylistsTracks(myUsername, myPlaylistId, rangeStart, insertBefore)
             .range_length(rangeLength)
             .snapshot_id(snapshotId)
             .build();
@@ -555,7 +560,7 @@ public class ApiTest {
     final String name = "Testing name change";
 
     final IRequest request = api
-            .changePlaylistDetails(myUsername, myPlaylistId)
+            .changePlaylistsDetails(myUsername, myPlaylistId)
             .public_(isPublic)
             .name(name)
             .build();
@@ -583,7 +588,7 @@ public class ApiTest {
     final String[] scopes = {"some-scope", "some-other-scope"};
 
     final IRequest request = api
-            .clientCredentialsGrant()
+            .clientCredentials()
             .build();
 
     assertEquals("https://accounts.spotify.com:443/api/token", request.getUri().toString());
@@ -603,7 +608,7 @@ public class ApiTest {
             .build();
 
     final IRequest request = api
-            .getPlaylistTracks(userId, playlistId)
+            .getPlaylistsTracks(userId, playlistId)
             .fields("items")
             .limit(20)
             .offset(1)
@@ -623,7 +628,7 @@ public class ApiTest {
     final String artistId = "0qeei9KQnptjwb8MgkqEoy";
 
     final IRequest request = api
-            .getArtistRelatedArtists(artistId)
+            .getArtistsRelatedArtists(artistId)
             .build();
 
     assertEquals("https://api.spotify.com:443/v1/artists/" + artistId + "/related-artists", request.getUri().toString());
@@ -631,8 +636,8 @@ public class ApiTest {
 
   @Test
   public void shouldCreateAuthorizeURL() {
-    final String redirectURI = "http://www.michaelthelin.se/test-callback";
     final String clientId = "fcecfc79122e4cd299473677a17cbd4d";
+    final String redirectURI = "http://www.michaelthelin.se/test-callback";
 
     final SpotifyApi api = SpotifyApi.builder()
             .setClientId(clientId)
@@ -643,7 +648,11 @@ public class ApiTest {
     final String state = "someExpectedStateString";
 
     String authorizeUrlString = api
-            .createAuthorizeUri(scopes, state)
+            .createAuthorizeUri()
+            .scope(Joiner.on(" ").join(scopes))
+            .state(state)
+            .build()
+            .getUri()
             .toString();
     assertEquals("https://accounts.spotify.com:443/authorize?client_id=fcecfc79122e4cd299473677a17cbd4d&response_type=code&redirect_uri=http%3A%2F%2Fwww.michaelthelin.se%2Ftest-callback&scope=user-read-private+user-read-email&state=someExpectedStateString", authorizeUrlString);
   }
@@ -662,7 +671,10 @@ public class ApiTest {
     final String state = "someExpectedStateString";
 
     String authorizeUrlString = api
-            .createAuthorizeUri(scopes)
+            .createAuthorizeUri(clientId, redirectURI)
+            .scope(Joiner.on(" ").join(scopes))
+            .build()
+            .getUri()
             .toString();
 
     assertEquals("https://accounts.spotify.com:443/authorize?client_id=fcecfc79122e4cd299473677a17cbd4d&response_type=code&redirect_uri=http%3A%2F%2Fwww.michaelthelin.se%2Ftest-callback&scope=user-read-private+user-read-email", authorizeUrlString);
@@ -682,7 +694,12 @@ public class ApiTest {
     final String state = "someExpectedStateString";
 
     String authorizeURLString = api
-            .createAuthorizeUri(scopes, state, true)
+            .createAuthorizeUri(clientId, redirectURI)
+            .scope(Joiner.on(" ").join(scopes))
+            .state(state)
+            .show_dialog(true)
+            .build()
+            .getUri()
             .toString();
     assertEquals("https://accounts.spotify.com:443/authorize?client_id=fcecfc79122e4cd299473677a17cbd4d&response_type=code&redirect_uri=http%3A%2F%2Fwww.michaelthelin.se%2Ftest-callback&scope=user-read-private+user-read-email&state=someExpectedStateString&show_dialog=true", authorizeURLString);
   }
@@ -696,7 +713,7 @@ public class ApiTest {
             .build();
 
     final IRequest request = api
-            .getMySavedTracks()
+            .getUsersSavedTracks()
             .limit(5)
             .offset(1)
             .build();
@@ -716,7 +733,7 @@ public class ApiTest {
             .build();
 
     final IRequest request = api
-            .addToMySavedTracks("test", "test2")
+            .saveTracksForUser("test", "test2")
             .build();
 
     assertEquals("https://api.spotify.com:443/v1/me/tracks?ids=test%2Ctest2", request.getUri().toString());
@@ -732,7 +749,7 @@ public class ApiTest {
             .build();
 
     final IRequest request = api
-            .removeFromMySavedTracks("test", "test2")
+            .removeUsersSavedTracks("test", "test2")
             .build();
 
     assertEquals("https://api.spotify.com:443/v1/me/tracks?ids=test%2Ctest2", request.getUri().toString());
@@ -747,7 +764,7 @@ public class ApiTest {
             .build();
 
     final IRequest request = api
-            .getNewReleases()
+            .getListOfNewReleases()
             .limit(4)
             .offset(1)
             .country(CountryCode.SE)
@@ -774,7 +791,7 @@ public class ApiTest {
     Date timestamp = calendar.getTime();
 
     final IRequest request = api
-            .getFeaturedPlaylists()
+            .getListOfFeaturedPlaylists()
             .country(CountryCode.SE)
             .locale(LanguageCode.es + "_" + CountryCode.MX)
             .limit(5)

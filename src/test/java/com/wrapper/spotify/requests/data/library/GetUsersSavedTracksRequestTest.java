@@ -20,7 +20,7 @@ public class GetUsersSavedTracksRequestTest {
   public void shouldGetSavedTracks_async() throws Exception {
     final SpotifyApi api = new SpotifyApi.Builder().setAccessToken("someAccessToken").build();
 
-    final GetUsersSavedTracksRequest request = api.getMySavedTracks()
+    final GetUsersSavedTracksRequest request = api.getUsersSavedTracks()
             .limit(5)
             .offset(1)
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/library/GetUsersSavedTracksRequest.json"))
@@ -62,7 +62,7 @@ public class GetUsersSavedTracksRequestTest {
   public void shouldGetSavedTracks_sync() throws Exception {
     final SpotifyApi api = new SpotifyApi.Builder().setAccessToken("someAccessToken").build();
 
-    final GetUsersSavedTracksRequest request = api.getMySavedTracks()
+    final GetUsersSavedTracksRequest request = api.getUsersSavedTracks()
             .limit(5)
             .offset(1)
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/library/GetUsersSavedTracksRequest.json"))

@@ -22,7 +22,7 @@ public class ChangePlaylistsDetailsRequestTest {
     final SpotifyApi api = new SpotifyApi.Builder().setAccessToken("AccessToken").build();
 
     ChangePlaylistsDetailsRequest request = api
-            .changePlaylistDetails("thelinmichael", "3ktAYNcRHpazJ9qecm3ptn")
+            .changePlaylistsDetails("thelinmichael", "3ktAYNcRHpazJ9qecm3ptn")
             .public_(true)
             .name("Testing playlist name change")
             .setHttpManager(TestUtil.MockedHttpManager.returningString(""))
@@ -57,7 +57,7 @@ public class ChangePlaylistsDetailsRequestTest {
     final SpotifyApi api = new SpotifyApi.Builder().setAccessToken("AccessToken").build();
 
     ChangePlaylistsDetailsRequest request = api
-            .changePlaylistDetails("thelinmichael", "3ktAYNcRHpazJ9qecm3ptn")
+            .changePlaylistsDetails("thelinmichael", "3ktAYNcRHpazJ9qecm3ptn")
             .public_(true)
             .name("Testing playlist name change")
             .setHttpManager(TestUtil.MockedHttpManager.returningString(""))

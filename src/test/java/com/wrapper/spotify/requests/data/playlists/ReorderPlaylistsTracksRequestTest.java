@@ -28,7 +28,7 @@ public class ReorderPlaylistsTracksRequestTest {
     final int rangeLength = 2;
     final int insertBefore = 5;
 
-    final ReorderPlaylistsTracksRequest request = api.reorderTracksInPlaylist(myUsername, myPlaylistId, rangeStart, insertBefore)
+    final ReorderPlaylistsTracksRequest request = api.reorderPlaylistsTracks(myUsername, myPlaylistId, rangeStart, insertBefore)
             .range_length(rangeLength)
             .snapshot_id(snapshotId)
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/playlists/ReorderPlaylistsTracksRequest.json"))
@@ -67,7 +67,7 @@ public class ReorderPlaylistsTracksRequestTest {
     final int rangeLength = 2;
     final int insertBefore = 5;
 
-    final ReorderPlaylistsTracksRequest request = api.reorderTracksInPlaylist(myUsername, myPlaylistId, rangeStart, insertBefore)
+    final ReorderPlaylistsTracksRequest request = api.reorderPlaylistsTracks(myUsername, myPlaylistId, rangeStart, insertBefore)
             .range_length(rangeLength)
             .snapshot_id(snapshotId)
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/playlists/ReorderPlaylistsTracksRequest.json"))

@@ -21,7 +21,7 @@ public class GetCurrentUsersProfileRequestTest {
   public void shouldGetCurrentUser_async() throws Exception {
     final SpotifyApi api = new SpotifyApi.Builder().setAccessToken("AccessToken").build();
 
-    final GetCurrentUsersProfileRequest request = api.getMe()
+    final GetCurrentUsersProfileRequest request = api.getCurrentUsersProfile()
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/users_profile/GetCurrentUsersProfileRequest.json"))
             .build();
 
@@ -64,7 +64,7 @@ public class GetCurrentUsersProfileRequestTest {
   public void shouldGetCurrentUser_sync() throws Exception {
     final SpotifyApi api = new SpotifyApi.Builder().setAccessToken("AccessToken").build();
 
-    final GetCurrentUsersProfileRequest request = api.getMe()
+    final GetCurrentUsersProfileRequest request = api.getCurrentUsersProfile()
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/users_profile/GetCurrentUsersProfileRequest.json"))
             .build();
 

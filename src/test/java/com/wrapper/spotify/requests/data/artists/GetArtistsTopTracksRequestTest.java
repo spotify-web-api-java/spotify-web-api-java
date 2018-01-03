@@ -24,7 +24,7 @@ public class GetArtistsTopTracksRequestTest {
   public void shouldGetTracksResult_async() throws Exception {
     final SpotifyApi api = new SpotifyApi.Builder().setAccessToken("AccessToken").build();
 
-    final GetArtistsTopTracksRequest request = api.getTopTracksForArtist("43ZHCT0cAZBISjO8DG9PnE", CountryCode.GB)
+    final GetArtistsTopTracksRequest request = api.getArtistsTopTracks("43ZHCT0cAZBISjO8DG9PnE", CountryCode.GB)
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/artists/GetArtistsTopTracksRequest.json"))
             .build();
 
@@ -73,7 +73,7 @@ public class GetArtistsTopTracksRequestTest {
   public void shouldGetTracksResult_sync() throws Exception {
     final SpotifyApi api = new SpotifyApi.Builder().setAccessToken("AccessToken").build();
 
-    final GetArtistsTopTracksRequest request = api.getTopTracksForArtist("43ZHCT0cAZBISjO8DG9PnE", CountryCode.GB)
+    final GetArtistsTopTracksRequest request = api.getArtistsTopTracks("43ZHCT0cAZBISjO8DG9PnE", CountryCode.GB)
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/artists/GetArtistsTopTracksRequest.json"))
             .build();
 

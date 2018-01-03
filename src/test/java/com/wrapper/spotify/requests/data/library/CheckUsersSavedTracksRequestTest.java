@@ -20,8 +20,8 @@ public class CheckUsersSavedTracksRequestTest {
 
     final SpotifyApi api = new SpotifyApi.Builder().setAccessToken("AccessToken").build();
 
-    CheckUsersSavedTracksRequest request = api.containsMySavedTracks(
-            new String[]{"0udZHhCi7p1YzMlvI4fXoK", "1e1VmyiAuPyM4SHhySP1oU"})
+    CheckUsersSavedTracksRequest request = api.checkUsersSavedTracks(
+            "0udZHhCi7p1YzMlvI4fXoK", "1e1VmyiAuPyM4SHhySP1oU")
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/library/CheckUsersSavedTracksRequest.json"))
             .build();
 
@@ -54,8 +54,8 @@ public class CheckUsersSavedTracksRequestTest {
 
     final SpotifyApi api = new SpotifyApi.Builder().setAccessToken("AccessToken").build();
 
-    CheckUsersSavedTracksRequest request = api.containsMySavedTracks(
-            new String[]{"0udZHhCi7p1YzMlvI4fXoK", "1e1VmyiAuPyM4SHhySP1oU"})
+    CheckUsersSavedTracksRequest request = api.checkUsersSavedTracks(
+            "0udZHhCi7p1YzMlvI4fXoK", "1e1VmyiAuPyM4SHhySP1oU")
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/library/CheckUsersSavedTracksRequest.json"))
             .build();
 

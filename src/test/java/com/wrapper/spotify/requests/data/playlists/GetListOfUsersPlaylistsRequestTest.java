@@ -23,7 +23,7 @@ public class GetListOfUsersPlaylistsRequestTest {
     final SpotifyApi api = new SpotifyApi.Builder().setAccessToken("AccessToken").build();
 
     final GetListOfUsersPlaylistsRequest request = api
-            .getPlaylistsForUser("wizzler")
+            .getListOfUsersPlaylists("wizzler")
             .limit(10)
             .offset(2)
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/playlists/GetListOfUsersPlaylistsRequest.json"))
@@ -80,7 +80,7 @@ public class GetListOfUsersPlaylistsRequestTest {
     final SpotifyApi api = new SpotifyApi.Builder().setAccessToken("AccessToken").build();
 
     final GetListOfUsersPlaylistsRequest request = api
-            .getPlaylistsForUser("wizzler")
+            .getListOfUsersPlaylists("wizzler")
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/playlists/GetListOfUsersPlaylistsRequest.json"))
             .build();
 

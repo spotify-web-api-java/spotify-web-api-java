@@ -24,7 +24,7 @@ public class GetPlaylistsTracksRequestTest {
             .build();
 
     final GetPlaylistsTracksRequest request = api
-            .getPlaylistTracks("thelinmichael", "3ktAYNcRHpazJ9qecm3ptn")
+            .getPlaylistsTracks("thelinmichael", "3ktAYNcRHpazJ9qecm3ptn")
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/playlists/GetPlaylistsTracksRequest.json"))
             .build();
 
@@ -71,7 +71,7 @@ public class GetPlaylistsTracksRequestTest {
     final SpotifyApi api = new SpotifyApi.Builder().setAccessToken("AccessToken").build();
 
     final GetPlaylistsTracksRequest request = api
-            .getPlaylistTracks("thelinmichael", "3ktAYNcRHpazJ9qecm3ptn")
+            .getPlaylistsTracks("thelinmichael", "3ktAYNcRHpazJ9qecm3ptn")
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/playlists/GetPlaylistsTracksRequest.json"))
             .build();
 

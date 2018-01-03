@@ -20,7 +20,7 @@ public class GetArtistsRelatedArtistsRequestTest {
     final SpotifyApi api = new SpotifyApi.Builder().setAccessToken("AccessToken").build();
 
     final GetArtistsRelatedArtistsRequest request = api
-            .getArtistRelatedArtists("0qeei9KQnptjwb8MgkqEoy")
+            .getArtistsRelatedArtists("0qeei9KQnptjwb8MgkqEoy")
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/artists/GetArtistsRelatedArtistsRequest.json"))
             .build();
 
@@ -55,7 +55,7 @@ public class GetArtistsRelatedArtistsRequestTest {
     final SpotifyApi api = new SpotifyApi.Builder().setAccessToken("AccessToken").build();
 
     final GetArtistsRelatedArtistsRequest request = api
-            .getArtistRelatedArtists("0qeei9KQnptjwb8MgkqEoy")
+            .getArtistsRelatedArtists("0qeei9KQnptjwb8MgkqEoy")
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/artists/GetArtistsRelatedArtistsRequest.json"))
             .build();
 

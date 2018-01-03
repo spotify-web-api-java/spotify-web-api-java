@@ -25,7 +25,7 @@ public class RemoveUsersSavedTracksRequestTest {
 
     final String[] tracksToAdd = new String[]{"5xFF6wNcoRwx7N3cDTgVWP", "13zm8XhfM4RBtQpjdqY44e"};
 
-    final RemoveUsersSavedTracksRequest request = api.removeFromMySavedTracks(tracksToAdd).build();
+    final RemoveUsersSavedTracksRequest request = api.removeUsersSavedTracks(tracksToAdd).build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
@@ -60,7 +60,7 @@ public class RemoveUsersSavedTracksRequestTest {
 
     final String[] tracksToAdd = new String[]{"5xFF6wNcoRwx7N3cDTgVWP", "13zm8XhfM4RBtQpjdqY44e"};
 
-    final RemoveUsersSavedTracksRequest request = api.removeFromMySavedTracks(tracksToAdd).build();
+    final RemoveUsersSavedTracksRequest request = api.removeUsersSavedTracks(tracksToAdd).build();
 
     request.delete();
   }

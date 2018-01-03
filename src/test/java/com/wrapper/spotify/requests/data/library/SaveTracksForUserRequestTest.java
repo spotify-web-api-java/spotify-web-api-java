@@ -24,7 +24,7 @@ public class SaveTracksForUserRequestTest {
     final String[]
             tracksToAdd = {"4BYGxv4rxSNcTgT3DsFB9o", "0BG2iE6McPhmAEKIhfqy1X"};
 
-    final SaveTracksForUserRequest request = api.addToMySavedTracks(tracksToAdd)
+    final SaveTracksForUserRequest request = api.saveTracksForUser(tracksToAdd)
             .setHttpManager(TestUtil.MockedHttpManager.returningString(""))
             .build();
 
@@ -60,7 +60,7 @@ public class SaveTracksForUserRequestTest {
     final String[]
             tracksToAdd = {"4BYGxv4rxSNcTgT3DsFB9o", "0BG2iE6McPhmAEKIhfqy1X"};
 
-    final SaveTracksForUserRequest request = api.addToMySavedTracks(tracksToAdd)
+    final SaveTracksForUserRequest request = api.saveTracksForUser(tracksToAdd)
             .setHttpManager(TestUtil.MockedHttpManager.returningString(""))
             .build();
 

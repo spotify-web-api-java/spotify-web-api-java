@@ -23,7 +23,7 @@ public class GetSeveralArtistsRequestTest {
   public void shouldGetArtistsResult_async() throws Exception {
     final SpotifyApi api = new SpotifyApi.Builder().setAccessToken("AccessToken").build();
 
-    final GetSeveralArtistsRequest request = api.getArtists("0oSGxfWSnnOXhD2fKuz2Gy", "3dBVyJ7JuOMt4GE9607Qin")
+    final GetSeveralArtistsRequest request = api.getSeveralArtists("0oSGxfWSnnOXhD2fKuz2Gy", "3dBVyJ7JuOMt4GE9607Qin")
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/artists/GetSeveralArtistsRequest.json"))
             .build();
 
@@ -58,7 +58,7 @@ public class GetSeveralArtistsRequestTest {
   public void shouldGetArtistsResult_sync() throws Exception {
     final SpotifyApi api = new SpotifyApi.Builder().setAccessToken("AccessToken").build();
 
-    final GetSeveralArtistsRequest request = api.getArtists("0oSGxfWSnnOXhD2fKuz2Gy", "3dBVyJ7JuOMt4GE9607Qin")
+    final GetSeveralArtistsRequest request = api.getSeveralArtists("0oSGxfWSnnOXhD2fKuz2Gy", "3dBVyJ7JuOMt4GE9607Qin")
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/artists/GetSeveralArtistsRequest.json"))
             .build();
 

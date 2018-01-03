@@ -23,7 +23,7 @@ public class GetAlbumsTracksRequestTest {
   public void shouldTracksForAlbumId_async() throws Exception {
     final SpotifyApi api = new SpotifyApi.Builder().setAccessToken("AccessToken").build();
 
-    final GetAlbumsTracksRequest request = api.getTracksForAlbum("6TJmQnO44YE5BtTxH8pop1")
+    final GetAlbumsTracksRequest request = api.getAlbumsTracks("6TJmQnO44YE5BtTxH8pop1")
             .limit(2)
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/albums/GetAlbumsTracksRequest.json"))
             .build();
@@ -66,7 +66,7 @@ public class GetAlbumsTracksRequestTest {
   public void shouldTracksForAlbumId_sync() throws Exception {
     final SpotifyApi api = new SpotifyApi.Builder().setAccessToken("AccessToken").build();
 
-    final GetAlbumsTracksRequest request = api.getTracksForAlbum("6TJmQnO44YE5BtTxH8pop1")
+    final GetAlbumsTracksRequest request = api.getAlbumsTracks("6TJmQnO44YE5BtTxH8pop1")
             .limit(2)
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/albums/GetAlbumsTracksRequest.json"))
             .build();

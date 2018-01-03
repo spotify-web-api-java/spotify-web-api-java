@@ -21,7 +21,7 @@ public class GetListOfNewReleasesRequestTest {
   public void shouldGetNewReleases_async() throws Exception {
     final SpotifyApi api = new SpotifyApi.Builder().setAccessToken("AccessToken").build();
 
-    final GetListOfNewReleasesRequest request = api.getNewReleases()
+    final GetListOfNewReleasesRequest request = api.getListOfNewReleases()
             .limit(1)
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/browse/GetListOfNewReleasesRequest.json"))
             .build();
@@ -67,7 +67,7 @@ public class GetListOfNewReleasesRequestTest {
   public void shouldGetArtistsResult_sync() throws Exception {
     final SpotifyApi api = new SpotifyApi.Builder().setAccessToken("AccessToken").build();
 
-    final GetListOfNewReleasesRequest request = api.getNewReleases()
+    final GetListOfNewReleasesRequest request = api.getListOfNewReleases()
             .limit(1)
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/browse/GetListOfNewReleasesRequest.json"))
             .build();

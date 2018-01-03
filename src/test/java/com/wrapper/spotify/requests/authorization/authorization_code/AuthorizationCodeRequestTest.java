@@ -23,7 +23,7 @@ public class AuthorizationCodeRequestTest {
             .setRedirectUri(redirectUri)
             .build();
 
-    final AuthorizationCodeRequest request = api.authorizationCodeGrant(code)
+    final AuthorizationCodeRequest request = api.authorizationCode(code)
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/authorization/authorization_code/AuthorizationCode.json"))
             .build();
     try {

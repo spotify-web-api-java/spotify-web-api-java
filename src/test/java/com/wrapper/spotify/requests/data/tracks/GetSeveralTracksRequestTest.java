@@ -23,7 +23,7 @@ public class GetSeveralTracksRequestTest {
   public void shouldGetTracksResult_async() throws Exception {
     final SpotifyApi api = new SpotifyApi.Builder().setAccessToken("AccessToken").build();
 
-    final GetSeveralTracksRequest request = api.getTracks("0eGsygTp906u18L0Oimnem", "1lDWb6b6ieDQ2xT7ewTC3G")
+    final GetSeveralTracksRequest request = api.getSeveralTracks("0eGsygTp906u18L0Oimnem", "1lDWb6b6ieDQ2xT7ewTC3G")
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/tracks/GetSeveralTracksRequest.json"))
             .build();
 
@@ -58,7 +58,7 @@ public class GetSeveralTracksRequestTest {
   public void shouldGetTracksResult_sync() throws Exception {
     final SpotifyApi api = new SpotifyApi.Builder().setAccessToken("AccessToken").build();
 
-    final GetSeveralTracksRequest request = api.getTracks("0eGsygTp906u18L0Oimnem", "1lDWb6b6ieDQ2xT7ewTC3G")
+    final GetSeveralTracksRequest request = api.getSeveralTracks("0eGsygTp906u18L0Oimnem", "1lDWb6b6ieDQ2xT7ewTC3G")
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/tracks/GetSeveralTracksRequest.json"))
             .build();
 
