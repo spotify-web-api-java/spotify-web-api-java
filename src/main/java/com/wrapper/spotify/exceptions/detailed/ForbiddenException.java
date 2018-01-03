@@ -1,4 +1,6 @@
-package com.wrapper.spotify.exceptions;
+package com.wrapper.spotify.exceptions.detailed;
+
+import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 
 /**
  * The server understood the request, but is refusing to fulfill it.

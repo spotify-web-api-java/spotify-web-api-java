@@ -1,4 +1,4 @@
-package com.wrapper.spotify.exceptions;
+package com.wrapper.spotify.exceptions.detailed;
 
 /**
  * The request has succeeded but returns no message body.

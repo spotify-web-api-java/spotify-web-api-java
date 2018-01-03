@@ -1,4 +1,6 @@
-package com.wrapper.spotify.exceptions;
+package com.wrapper.spotify.exceptions.detailed;
+
+import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 
 /**
  * You should never receive this error because our clever coders catch them all ... but if you are unlucky enough to get

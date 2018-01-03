@@ -1,4 +1,4 @@
-package com.wrapper.spotify.exceptions;
+package com.wrapper.spotify.exceptions.detailed;
 
 /**
  * The request requires user authorization or, if the request included authorization credentials, authorization has been

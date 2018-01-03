@@ -1,4 +1,4 @@
-package com.wrapper.spotify.exceptions;
+package com.wrapper.spotify.exceptions.detailed;
 
 /**
  * Rate limiting has been applied.

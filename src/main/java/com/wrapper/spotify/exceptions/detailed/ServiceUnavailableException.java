@@ -1,4 +1,6 @@
-package com.wrapper.spotify.exceptions;
+package com.wrapper.spotify.exceptions.detailed;
+
+import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 
 /**
  * The server is currently unable to handle the request due to a temporary condition which will be alleviated after some

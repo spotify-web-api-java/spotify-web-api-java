@@ -4,6 +4,7 @@ import com.google.common.util.concurrent.SettableFuture;
 import com.neovisionaries.i18n.CountryCode;
 import com.neovisionaries.i18n.LanguageCode;
 import com.wrapper.spotify.exceptions.*;
+import com.wrapper.spotify.exceptions.detailed.*;
 import com.wrapper.spotify.model_objects.special.FeaturedPlaylists;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
 
