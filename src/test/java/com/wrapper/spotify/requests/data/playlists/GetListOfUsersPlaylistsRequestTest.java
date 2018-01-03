@@ -8,6 +8,7 @@ import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.enums.ModelObjectType;
 import com.wrapper.spotify.model_objects.specification.ArtistSimplified;
 import com.wrapper.spotify.model_objects.specification.Paging;
+import com.wrapper.spotify.model_objects.specification.PlaylistSimplified;
 import org.junit.Test;
 
 import java.util.concurrent.CountDownLatch;
@@ -31,11 +32,11 @@ public class GetListOfUsersPlaylistsRequestTest {
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
-    final SettableFuture<Paging<ArtistSimplified.PlaylistSimplified>> playlistsPageFuture = request.getAsync();
+    final SettableFuture<Paging<PlaylistSimplified>> playlistsPageFuture = request.getAsync();
 
-    Futures.addCallback(playlistsPageFuture, new FutureCallback<Paging<ArtistSimplified.PlaylistSimplified>>() {
+    Futures.addCallback(playlistsPageFuture, new FutureCallback<Paging<PlaylistSimplified>>() {
       @Override
-      public void onSuccess(Paging<ArtistSimplified.PlaylistSimplified> playlistsPage) {
+      public void onSuccess(Paging<PlaylistSimplified> playlistsPage) {
         assertTrue(playlistsPage.getTotal() >= 0);
         assertNull(playlistsPage.getNext());
         assertEquals("https://api.spotify.com/v1/users/wizzler/playlists?offset=0&limit=10", playlistsPage.getPrevious());
@@ -43,7 +44,7 @@ public class GetListOfUsersPlaylistsRequestTest {
         assertEquals(2, playlistsPage.getOffset());
         assertEquals("https://api.spotify.com/v1/users/wizzler/playlists?offset=2&limit=10", playlistsPage.getHref());
 
-        final ArtistSimplified.PlaylistSimplified simplePlaylist = playlistsPage.getItems()[0];
+        final PlaylistSimplified simplePlaylist = playlistsPage.getItems()[0];
         final String playlistId = simplePlaylist.getId();
         assertNotNull(playlistId);
         assertTrue(playlistId.length() > 0);
@@ -84,7 +85,7 @@ public class GetListOfUsersPlaylistsRequestTest {
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/playlists/GetListOfUsersPlaylistsRequest.json"))
             .build();
 
-    final Paging<ArtistSimplified.PlaylistSimplified> playlistsPage = request.get();
+    final Paging<PlaylistSimplified> playlistsPage = request.get();
 
     assertTrue(playlistsPage.getTotal() >= 0);
     assertNull(playlistsPage.getNext());
@@ -93,7 +94,7 @@ public class GetListOfUsersPlaylistsRequestTest {
     assertEquals(2, playlistsPage.getOffset());
     assertEquals("https://api.spotify.com/v1/users/wizzler/playlists?offset=2&limit=10", playlistsPage.getHref());
 
-    final ArtistSimplified.PlaylistSimplified simplePlaylist = playlistsPage.getItems()[0];
+    final PlaylistSimplified simplePlaylist = playlistsPage.getItems()[0];
     final String playlistId = simplePlaylist.getId();
     assertNotNull(playlistId);
     assertTrue(playlistId.length() > 0);

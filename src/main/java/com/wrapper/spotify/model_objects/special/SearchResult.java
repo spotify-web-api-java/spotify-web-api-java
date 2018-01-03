@@ -9,7 +9,7 @@ import com.wrapper.spotify.requests.data.search.interfaces.ISearchModelObject;
 public class SearchResult extends AbstractModelObject implements IArtistTrackModelObject, ISearchModelObject {
   private final Paging<AlbumSimplified> albums;
   private final Paging<Artist> artists;
-  private final Paging<ArtistSimplified.PlaylistSimplified> playlists;
+  private final Paging<PlaylistSimplified> playlists;
   private final Paging<Track> tracks;
 
   private SearchResult(final SearchResult.Builder builder) {
@@ -29,7 +29,7 @@ public class SearchResult extends AbstractModelObject implements IArtistTrackMod
     return artists;
   }
 
-  public Paging<ArtistSimplified.PlaylistSimplified> getPlaylists() {
+  public Paging<PlaylistSimplified> getPlaylists() {
     return playlists;
   }
 
@@ -45,7 +45,7 @@ public class SearchResult extends AbstractModelObject implements IArtistTrackMod
   public static final class Builder extends AbstractModelObject.Builder {
     private Paging<AlbumSimplified> albums;
     private Paging<Artist> artists;
-    private Paging<ArtistSimplified.PlaylistSimplified> playlists;
+    private Paging<PlaylistSimplified> playlists;
     private Paging<Track> tracks;
 
     public Builder setAlbums(Paging<AlbumSimplified> albums) {
@@ -58,7 +58,7 @@ public class SearchResult extends AbstractModelObject implements IArtistTrackMod
       return this;
     }
 
-    public Builder setPlaylists(Paging<ArtistSimplified.PlaylistSimplified> playlists) {
+    public Builder setPlaylists(Paging<PlaylistSimplified> playlists) {
       this.playlists = playlists;
       return this;
     }
@@ -83,7 +83,7 @@ public class SearchResult extends AbstractModelObject implements IArtistTrackMod
       return new SearchResult.Builder()
               .setAlbums(new AlbumSimplified.JsonUtil().createModelObjectPaging(jsonObject.getAsJsonObject("albums")))
               .setArtists(new Artist.JsonUtil().createModelObjectPaging(jsonObject.getAsJsonObject("artists")))
-              .setPlaylists(new ArtistSimplified.PlaylistSimplified.JsonUtil().createModelObjectPaging(jsonObject.getAsJsonObject("playlists")))
+              .setPlaylists(new PlaylistSimplified.JsonUtil().createModelObjectPaging(jsonObject.getAsJsonObject("playlists")))
               .setTracks(new Track.JsonUtil().createModelObjectPaging(jsonObject.getAsJsonObject("tracks")))
               .build();
     }

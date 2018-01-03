@@ -8,6 +8,7 @@ import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.enums.ModelObjectType;
 import com.wrapper.spotify.model_objects.specification.ArtistSimplified;
 import com.wrapper.spotify.model_objects.specification.Paging;
+import com.wrapper.spotify.model_objects.specification.PlaylistSimplified;
 import com.wrapper.spotify.requests.data.search.simplified.SearchPlaylistsRequest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -30,11 +31,11 @@ public class PlaylistSearchRequestTest {
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
-    final SettableFuture<Paging<ArtistSimplified.PlaylistSimplified>> searchResultFuture = request.getAsync();
+    final SettableFuture<Paging<PlaylistSimplified>> searchResultFuture = request.getAsync();
 
-    Futures.addCallback(searchResultFuture, new FutureCallback<Paging<ArtistSimplified.PlaylistSimplified>>() {
+    Futures.addCallback(searchResultFuture, new FutureCallback<Paging<PlaylistSimplified>>() {
       @Override
-      public void onSuccess(Paging<ArtistSimplified.PlaylistSimplified> playlistSearchResult) {
+      public void onSuccess(Paging<PlaylistSimplified> playlistSearchResult) {
 
         validatePlayists(playlistSearchResult);
         asyncCompleted.countDown();
@@ -56,11 +57,11 @@ public class PlaylistSearchRequestTest {
     final SearchPlaylistsRequest request = api.searchPlaylists("dog")
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/search/PlaylistSearchRequest.json")).build();
 
-    final Paging<ArtistSimplified.PlaylistSimplified> playlistSearchResult = request.get();
+    final Paging<PlaylistSimplified> playlistSearchResult = request.get();
     validatePlayists(playlistSearchResult);
   }
 
-  private void validatePlayists(final Paging<ArtistSimplified.PlaylistSimplified> playlistSearchResult) {
+  private void validatePlayists(final Paging<PlaylistSimplified> playlistSearchResult) {
 
     assertEquals("https://api.spotify.com/v1/search?query=%22doom+metal%22&type=playlist&market=DE&offset=0&limit=20",
             playlistSearchResult.getHref());
@@ -70,10 +71,10 @@ public class PlaylistSearchRequestTest {
     assertNull(playlistSearchResult.getPrevious());
     assertEquals(575, playlistSearchResult.getTotal());
 
-    ArtistSimplified.PlaylistSimplified[] playlists = playlistSearchResult.getItems();
+    PlaylistSimplified[] playlists = playlistSearchResult.getItems();
     assertEquals(20, playlists.length);
 
-    ArtistSimplified.PlaylistSimplified firstPlaylist = playlists[0];
+    PlaylistSimplified firstPlaylist = playlists[0];
     assertEquals("https://open.spotify.com/user/holgar_the_red/playlist/5Lzif2bIMW8RiRLtbYJHU0",
             firstPlaylist.getExternalUrls().get("spotify"));
     assertEquals("https://api.spotify.com/v1/users/holgar_the_red/playlists/5Lzif2bIMW8RiRLtbYJHU0",

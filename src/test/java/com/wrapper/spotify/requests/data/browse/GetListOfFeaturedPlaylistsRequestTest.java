@@ -9,6 +9,7 @@ import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.model_objects.specification.ArtistSimplified;
 import com.wrapper.spotify.model_objects.specification.Paging;
 import com.wrapper.spotify.model_objects.special.FeaturedPlaylists;
+import com.wrapper.spotify.model_objects.specification.PlaylistSimplified;
 import org.junit.Test;
 
 import java.util.Calendar;
@@ -45,7 +46,7 @@ public class GetListOfFeaturedPlaylistsRequestTest {
       public void onSuccess(FeaturedPlaylists featuredPlaylists) {
         assertEquals("Sleepy?", featuredPlaylists.getMessage());
 
-        Paging<ArtistSimplified.PlaylistSimplified> playlistPage = featuredPlaylists.getPlaylists();
+        Paging<PlaylistSimplified> playlistPage = featuredPlaylists.getPlaylists();
 
         assertEquals(23, playlistPage.getTotal());
         assertEquals(0, playlistPage.getOffset());
@@ -54,10 +55,10 @@ public class GetListOfFeaturedPlaylistsRequestTest {
                 playlistPage.getNext());
         assertNull(playlistPage.getPrevious());
 
-        ArtistSimplified.PlaylistSimplified[] items = playlistPage.getItems();
+        PlaylistSimplified[] items = playlistPage.getItems();
         assertEquals(1, items.length);
 
-        ArtistSimplified.PlaylistSimplified playlist = items[0];
+        PlaylistSimplified playlist = items[0];
         assertEquals("37i9dQZF1DWStLt4f1zJ6I", playlist.getId());
         assertEquals("Songs For Sleeping", playlist.getName());
         asyncCompleted.countDown();
@@ -92,7 +93,7 @@ public class GetListOfFeaturedPlaylistsRequestTest {
 
     assertEquals("Sleepy?", featuredPlaylists.getMessage());
 
-    Paging<ArtistSimplified.PlaylistSimplified> playlistPage = featuredPlaylists.getPlaylists();
+    Paging<PlaylistSimplified> playlistPage = featuredPlaylists.getPlaylists();
 
     assertEquals(23, playlistPage.getTotal());
     assertEquals(0, playlistPage.getOffset());
@@ -101,10 +102,10 @@ public class GetListOfFeaturedPlaylistsRequestTest {
             playlistPage.getNext());
     assertNull(playlistPage.getPrevious());
 
-    ArtistSimplified.PlaylistSimplified[] items = playlistPage.getItems();
+    PlaylistSimplified[] items = playlistPage.getItems();
     assertEquals(1, items.length);
 
-    ArtistSimplified.PlaylistSimplified playlist = items[0];
+    PlaylistSimplified playlist = items[0];
     assertEquals("37i9dQZF1DWStLt4f1zJ6I", playlist.getId());
     assertEquals("Songs For Sleeping", playlist.getName());
 
