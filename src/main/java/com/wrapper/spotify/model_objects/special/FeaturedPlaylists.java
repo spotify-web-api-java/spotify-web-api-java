@@ -4,13 +4,14 @@ import com.google.gson.JsonObject;
 import com.wrapper.spotify.model_objects.AbstractModelObject;
 import com.wrapper.spotify.model_objects.specification.ArtistSimplified;
 import com.wrapper.spotify.model_objects.specification.Paging;
+import com.wrapper.spotify.model_objects.specification.PlaylistSimplified;
 
 /**
  * Retrieve information about featured playlists by building instances from this class.
  */
 public class FeaturedPlaylists extends AbstractModelObject {
   private final String message;
-  private final Paging<ArtistSimplified.PlaylistSimplified> playlists;
+  private final Paging<PlaylistSimplified> playlists;
 
   private FeaturedPlaylists(final FeaturedPlaylists.Builder builder) {
     super(builder);
@@ -35,7 +36,7 @@ public class FeaturedPlaylists extends AbstractModelObject {
    *
    * @return Featured playlists page.
    */
-  public Paging<ArtistSimplified.PlaylistSimplified> getPlaylists() {
+  public Paging<PlaylistSimplified> getPlaylists() {
     return playlists;
   }
 
@@ -49,7 +50,7 @@ public class FeaturedPlaylists extends AbstractModelObject {
    */
   public static final class Builder extends AbstractModelObject.Builder {
     private String message;
-    private Paging<ArtistSimplified.PlaylistSimplified> playlists;
+    private Paging<PlaylistSimplified> playlists;
 
     /**
      * Set the message, which normally would be displayed on the front page
@@ -69,7 +70,7 @@ public class FeaturedPlaylists extends AbstractModelObject {
      * @param playlists A page of simplified playlists.
      * @return A builder object.
      */
-    public Builder setPlaylists(Paging<ArtistSimplified.PlaylistSimplified> playlists) {
+    public Builder setPlaylists(Paging<PlaylistSimplified> playlists) {
       this.playlists = playlists;
       return this;
     }
@@ -91,7 +92,7 @@ public class FeaturedPlaylists extends AbstractModelObject {
 
       return new FeaturedPlaylists.Builder()
               .setMessage(jsonObject.get("message").getAsString())
-              .setPlaylists(new ArtistSimplified.PlaylistSimplified.JsonUtil().createModelObjectPaging(jsonObject.getAsJsonObject("playlists")))
+              .setPlaylists(new PlaylistSimplified.JsonUtil().createModelObjectPaging(jsonObject.getAsJsonObject("playlists")))
               .build();
     }
   }
