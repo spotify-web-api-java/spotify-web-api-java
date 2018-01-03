@@ -9,7 +9,7 @@ public enum ProductType {
 
   public final String type;
 
-  ProductType(String type) {
+  ProductType(final String type) {
     this.type = type;
   }
 

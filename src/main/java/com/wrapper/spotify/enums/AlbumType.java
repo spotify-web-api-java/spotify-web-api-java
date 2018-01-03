@@ -12,7 +12,7 @@ public enum AlbumType {
 
   public final String type;
 
-  AlbumType(String type) {
+  AlbumType(final String type) {
     this.type = type;
   }
 

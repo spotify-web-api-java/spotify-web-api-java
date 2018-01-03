@@ -8,7 +8,7 @@ public enum ReleaseDatePrecision {
 
   public final String precision;
 
-  ReleaseDatePrecision(String precision) {
+  ReleaseDatePrecision(final String precision) {
     this.precision = precision;
   }
 

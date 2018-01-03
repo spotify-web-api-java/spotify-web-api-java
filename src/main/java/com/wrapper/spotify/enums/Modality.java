@@ -12,7 +12,7 @@ public enum Modality {
 
   public final int mode;
 
-  Modality(int mode) {
+  Modality(final int mode) {
     this.mode = mode;
   }
 

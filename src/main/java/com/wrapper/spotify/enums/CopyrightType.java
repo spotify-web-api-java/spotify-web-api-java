@@ -12,7 +12,7 @@ public enum CopyrightType {
 
   public final String type;
 
-  CopyrightType(String type) {
+  CopyrightType(final String type) {
     this.type = type;
   }
 

@@ -15,7 +15,7 @@ public enum ModelObjectType {
 
   public final String type;
 
-  ModelObjectType(String type) {
+  ModelObjectType(final String type) {
     this.type = type;
   }
 
