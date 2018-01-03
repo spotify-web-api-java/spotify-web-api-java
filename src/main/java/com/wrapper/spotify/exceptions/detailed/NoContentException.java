@@ -1,5 +1,7 @@
 package com.wrapper.spotify.exceptions.detailed;
 
+import com.wrapper.spotify.exceptions.SpotifyWebApiException;
+
 /**
  * The request has succeeded but returns no message body.
  */

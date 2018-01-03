@@ -1,5 +1,7 @@
 package com.wrapper.spotify.exceptions.detailed;
 
+import com.wrapper.spotify.exceptions.SpotifyWebApiException;
+
 /**
  * The request requires user authorization or, if the request included authorization credentials, authorization has been
  * refused for those credentials.

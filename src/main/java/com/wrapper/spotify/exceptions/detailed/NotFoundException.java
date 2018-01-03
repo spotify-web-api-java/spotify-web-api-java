@@ -1,5 +1,7 @@
 package com.wrapper.spotify.exceptions.detailed;
 
+import com.wrapper.spotify.exceptions.SpotifyWebApiException;
+
 /**
  * The requested resource could not be found. This error can be due to a temporary or permanent condition.
  */
