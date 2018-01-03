@@ -67,15 +67,7 @@ public abstract class AbstractRequest implements IRequest {
 
   public String getJson() throws
           IOException,
-          NoContentException,
-          BadRequestException,
-          UnauthorizedException,
-          ForbiddenException,
-          NotFoundException,
-          TooManyRequestsException,
-          InternalServerErrorException,
-          BadGatewayException,
-          ServiceUnavailableException {
+          SpotifyWebApiException {
     Header[] headerArray = new Header[]{};
     headers.toArray(headerArray);
 
@@ -84,15 +76,7 @@ public abstract class AbstractRequest implements IRequest {
 
   public String postJson() throws
           IOException,
-          NoContentException,
-          BadRequestException,
-          UnauthorizedException,
-          ForbiddenException,
-          NotFoundException,
-          TooManyRequestsException,
-          InternalServerErrorException,
-          BadGatewayException,
-          ServiceUnavailableException {
+          SpotifyWebApiException {
     Header[] headerArray = new Header[]{};
     headers.toArray(headerArray);
 
@@ -101,15 +85,7 @@ public abstract class AbstractRequest implements IRequest {
 
   public String putJson() throws
           IOException,
-          NoContentException,
-          BadRequestException,
-          UnauthorizedException,
-          ForbiddenException,
-          NotFoundException,
-          TooManyRequestsException,
-          InternalServerErrorException,
-          BadGatewayException,
-          ServiceUnavailableException {
+          SpotifyWebApiException {
     Header[] headerArray = new Header[]{};
     headers.toArray(headerArray);
 
@@ -118,15 +94,7 @@ public abstract class AbstractRequest implements IRequest {
 
   public String deleteJson() throws
           IOException,
-          NoContentException,
-          BadRequestException,
-          UnauthorizedException,
-          ForbiddenException,
-          NotFoundException,
-          TooManyRequestsException,
-          InternalServerErrorException,
-          BadGatewayException,
-          ServiceUnavailableException {
+          SpotifyWebApiException {
     Header[] headerArray = new Header[]{};
     headers.toArray(headerArray);
 

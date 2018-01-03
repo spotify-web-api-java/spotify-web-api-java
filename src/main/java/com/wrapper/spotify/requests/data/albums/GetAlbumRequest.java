@@ -46,15 +46,7 @@ public class GetAlbumRequest extends AbstractDataRequest {
    */
   public Album get() throws
           IOException,
-          NoContentException,
-          BadRequestException,
-          UnauthorizedException,
-          ForbiddenException,
-          NotFoundException,
-          TooManyRequestsException,
-          InternalServerErrorException,
-          BadGatewayException,
-          ServiceUnavailableException {
+          SpotifyWebApiException {
     return new Album.JsonUtil().createModelObject(getJson());
   }
 
@@ -82,15 +74,7 @@ public class GetAlbumRequest extends AbstractDataRequest {
    */
   public SettableFuture<Album> getAsync() throws
           IOException,
-          NoContentException,
-          BadRequestException,
-          UnauthorizedException,
-          ForbiddenException,
-          NotFoundException,
-          TooManyRequestsException,
-          InternalServerErrorException,
-          BadGatewayException,
-          ServiceUnavailableException {
+          SpotifyWebApiException {
     return executeAsync(new Album.JsonUtil().createModelObject(getJson()));
   }
 

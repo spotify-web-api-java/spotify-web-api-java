@@ -16,29 +16,13 @@ public class CheckUsersFollowPlaylistRequest extends AbstractDataRequest {
 
   public Boolean[] get() throws
           IOException,
-          NoContentException,
-          BadRequestException,
-          UnauthorizedException,
-          ForbiddenException,
-          NotFoundException,
-          TooManyRequestsException,
-          InternalServerErrorException,
-          BadGatewayException,
-          ServiceUnavailableException {
+          SpotifyWebApiException {
     return new Gson().fromJson(new JsonParser().parse(getJson()).getAsJsonArray(), Boolean[].class);
   }
 
   public SettableFuture<Boolean[]> getAsync() throws
           IOException,
-          NoContentException,
-          BadRequestException,
-          UnauthorizedException,
-          ForbiddenException,
-          NotFoundException,
-          TooManyRequestsException,
-          InternalServerErrorException,
-          BadGatewayException,
-          ServiceUnavailableException {
+          SpotifyWebApiException {
     return executeAsync(new Gson().fromJson(new JsonParser().parse(getJson()).getAsJsonArray(), Boolean[].class));
   }
 

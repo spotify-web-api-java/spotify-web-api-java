@@ -16,29 +16,13 @@ public class ClientCredentialsRequest extends AbstractAthorizationRequest {
 
   public ClientCredentials post() throws
           IOException,
-          NoContentException,
-          BadRequestException,
-          UnauthorizedException,
-          ForbiddenException,
-          NotFoundException,
-          TooManyRequestsException,
-          InternalServerErrorException,
-          BadGatewayException,
-          ServiceUnavailableException {
+          SpotifyWebApiException {
     return new ClientCredentials.JsonUtil().createModelObject(postJson());
   }
 
   public SettableFuture<ClientCredentials> postAsync() throws
           IOException,
-          NoContentException,
-          BadRequestException,
-          UnauthorizedException,
-          ForbiddenException,
-          NotFoundException,
-          TooManyRequestsException,
-          InternalServerErrorException,
-          BadGatewayException,
-          ServiceUnavailableException {
+          SpotifyWebApiException {
     return executeAsync(new ClientCredentials.JsonUtil().createModelObject(postJson()));
   }
 

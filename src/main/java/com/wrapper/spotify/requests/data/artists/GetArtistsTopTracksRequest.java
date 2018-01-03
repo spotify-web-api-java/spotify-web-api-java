@@ -16,29 +16,13 @@ public class GetArtistsTopTracksRequest extends AbstractDataRequest {
 
   public Track[] get() throws
           IOException,
-          NoContentException,
-          BadRequestException,
-          UnauthorizedException,
-          ForbiddenException,
-          NotFoundException,
-          TooManyRequestsException,
-          InternalServerErrorException,
-          BadGatewayException,
-          ServiceUnavailableException {
+          SpotifyWebApiException {
     return new Track.JsonUtil().createModelObjectArray(getJson(), "tracks");
   }
 
   public SettableFuture<Track[]> getAsync() throws
           IOException,
-          NoContentException,
-          BadRequestException,
-          UnauthorizedException,
-          ForbiddenException,
-          NotFoundException,
-          TooManyRequestsException,
-          InternalServerErrorException,
-          BadGatewayException,
-          ServiceUnavailableException {
+          SpotifyWebApiException {
     return executeAsync(new Track.JsonUtil().createModelObjectArray(getJson(), "tracks"));
   }
 

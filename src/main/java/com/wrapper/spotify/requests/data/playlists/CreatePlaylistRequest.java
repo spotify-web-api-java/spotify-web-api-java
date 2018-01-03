@@ -15,29 +15,13 @@ public class CreatePlaylistRequest extends AbstractDataRequest {
 
   public Playlist post() throws
           IOException,
-          NoContentException,
-          BadRequestException,
-          UnauthorizedException,
-          ForbiddenException,
-          NotFoundException,
-          TooManyRequestsException,
-          InternalServerErrorException,
-          BadGatewayException,
-          ServiceUnavailableException {
+          SpotifyWebApiException {
     return new Playlist.JsonUtil().createModelObject(postJson());
   }
 
   public SettableFuture<Playlist> postAsync() throws
           IOException,
-          NoContentException,
-          BadRequestException,
-          UnauthorizedException,
-          ForbiddenException,
-          NotFoundException,
-          TooManyRequestsException,
-          InternalServerErrorException,
-          BadGatewayException,
-          ServiceUnavailableException {
+          SpotifyWebApiException {
     return executeAsync(new Playlist.JsonUtil().createModelObject(postJson()));
   }
 

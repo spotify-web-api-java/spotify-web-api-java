@@ -50,15 +50,7 @@ public class SpotifyHttpManager implements IHttpManager {
   @Override
   public String get(URI uri, Header[] headers) throws
           IOException,
-          NoContentException,
-          BadRequestException,
-          UnauthorizedException,
-          ForbiddenException,
-          NotFoundException,
-          TooManyRequestsException,
-          InternalServerErrorException,
-          BadGatewayException,
-          ServiceUnavailableException {
+          SpotifyWebApiException {
     assert (uri != null);
     assert (headers != null);
 
@@ -77,15 +69,7 @@ public class SpotifyHttpManager implements IHttpManager {
   @Override
   public String post(URI uri, Header[] headers, List<NameValuePair> postParameters) throws
           IOException,
-          NoContentException,
-          BadRequestException,
-          UnauthorizedException,
-          ForbiddenException,
-          NotFoundException,
-          TooManyRequestsException,
-          InternalServerErrorException,
-          BadGatewayException,
-          ServiceUnavailableException {
+          SpotifyWebApiException {
     assert (uri != null);
     assert (headers != null);
     assert (postParameters != null);
@@ -106,15 +90,7 @@ public class SpotifyHttpManager implements IHttpManager {
   @Override
   public String put(URI uri, Header[] headers, List<NameValuePair> putParameters) throws
           IOException,
-          NoContentException,
-          BadRequestException,
-          UnauthorizedException,
-          ForbiddenException,
-          NotFoundException,
-          TooManyRequestsException,
-          InternalServerErrorException,
-          BadGatewayException,
-          ServiceUnavailableException {
+          SpotifyWebApiException {
     assert (uri != null);
     assert (headers != null);
     assert (putParameters != null);
@@ -134,15 +110,7 @@ public class SpotifyHttpManager implements IHttpManager {
   @Override
   public String delete(URI uri, Header[] headers) throws
           IOException,
-          NoContentException,
-          BadRequestException,
-          UnauthorizedException,
-          ForbiddenException,
-          NotFoundException,
-          TooManyRequestsException,
-          InternalServerErrorException,
-          BadGatewayException,
-          ServiceUnavailableException {
+          SpotifyWebApiException {
     assert (uri != null);
     assert (headers != null);
 
@@ -186,15 +154,7 @@ public class SpotifyHttpManager implements IHttpManager {
 
   private String getResponseBody(CloseableHttpResponse httpResponse) throws
           IOException,
-          NoContentException,
-          BadRequestException,
-          UnauthorizedException,
-          ForbiddenException,
-          NotFoundException,
-          TooManyRequestsException,
-          InternalServerErrorException,
-          BadGatewayException,
-          ServiceUnavailableException {
+          SpotifyWebApiException {
     StatusLine statusLine = httpResponse.getStatusLine();
     String responseBody = EntityUtils.toString(httpResponse.getEntity(), "UTF-8");
 

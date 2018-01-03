@@ -16,29 +16,13 @@ public class GetUsersTopTracksRequest extends AbstractDataRequest {
 
   public Paging<Track> get() throws
           IOException,
-          NoContentException,
-          BadRequestException,
-          UnauthorizedException,
-          ForbiddenException,
-          NotFoundException,
-          TooManyRequestsException,
-          InternalServerErrorException,
-          BadGatewayException,
-          ServiceUnavailableException {
+          SpotifyWebApiException {
     return new Track.JsonUtil().createModelObjectPaging(getJson());
   }
 
   public SettableFuture<Paging<Track>> getAsync() throws
           IOException,
-          NoContentException,
-          BadRequestException,
-          UnauthorizedException,
-          ForbiddenException,
-          NotFoundException,
-          TooManyRequestsException,
-          InternalServerErrorException,
-          BadGatewayException,
-          ServiceUnavailableException {
+          SpotifyWebApiException {
     return executeAsync(new Track.JsonUtil().createModelObjectPaging(getJson()));
   }
 

@@ -1,5 +1,8 @@
 package com.wrapper.spotify.exceptions;
 
+/**
+ * The server understood the request, but is refusing to fulfill it.
+ */
 public class ForbiddenException extends SpotifyWebApiException {
 
   public ForbiddenException() {

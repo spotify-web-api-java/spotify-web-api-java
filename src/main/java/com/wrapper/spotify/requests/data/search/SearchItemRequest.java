@@ -16,29 +16,13 @@ public class SearchItemRequest extends AbstractDataRequest {
 
   public SearchResult get() throws
           IOException,
-          NoContentException,
-          BadRequestException,
-          UnauthorizedException,
-          ForbiddenException,
-          NotFoundException,
-          TooManyRequestsException,
-          InternalServerErrorException,
-          BadGatewayException,
-          ServiceUnavailableException {
+          SpotifyWebApiException {
     return new SearchResult.JsonUtil().createModelObject(getJson());
   }
 
   public SettableFuture<SearchResult> getAsync() throws
           IOException,
-          NoContentException,
-          BadRequestException,
-          UnauthorizedException,
-          ForbiddenException,
-          NotFoundException,
-          TooManyRequestsException,
-          InternalServerErrorException,
-          BadGatewayException,
-          ServiceUnavailableException {
+          SpotifyWebApiException {
     return executeAsync(new SearchResult.JsonUtil().createModelObject(getJson()));
   }
 

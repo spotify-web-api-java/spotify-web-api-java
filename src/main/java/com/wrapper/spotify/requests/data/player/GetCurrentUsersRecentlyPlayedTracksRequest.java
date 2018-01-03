@@ -17,29 +17,13 @@ public class GetCurrentUsersRecentlyPlayedTracksRequest extends AbstractDataRequ
 
   public PagingCursorbased<PlayHistory> get() throws
           IOException,
-          NoContentException,
-          BadRequestException,
-          UnauthorizedException,
-          ForbiddenException,
-          NotFoundException,
-          TooManyRequestsException,
-          InternalServerErrorException,
-          BadGatewayException,
-          ServiceUnavailableException {
+          SpotifyWebApiException {
     return new PlayHistory.JsonUtil().createModelObjectPagingCursorbased(getJson());
   }
 
   public SettableFuture<PagingCursorbased<PlayHistory>> getAsync() throws
           IOException,
-          NoContentException,
-          BadRequestException,
-          UnauthorizedException,
-          ForbiddenException,
-          NotFoundException,
-          TooManyRequestsException,
-          InternalServerErrorException,
-          BadGatewayException,
-          ServiceUnavailableException {
+          SpotifyWebApiException {
     return executeAsync(new PlayHistory.JsonUtil().createModelObjectPagingCursorbased(getJson()));
   }
 

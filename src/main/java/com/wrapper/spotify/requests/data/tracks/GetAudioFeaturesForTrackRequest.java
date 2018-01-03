@@ -15,29 +15,13 @@ public class GetAudioFeaturesForTrackRequest extends AbstractDataRequest {
 
   public AudioFeatures get() throws
           IOException,
-          NoContentException,
-          BadRequestException,
-          UnauthorizedException,
-          ForbiddenException,
-          NotFoundException,
-          TooManyRequestsException,
-          InternalServerErrorException,
-          BadGatewayException,
-          ServiceUnavailableException {
+          SpotifyWebApiException {
     return new AudioFeatures.JsonUtil().createModelObject(getJson());
   }
 
   public SettableFuture<AudioFeatures> getAsync() throws
           IOException,
-          NoContentException,
-          BadRequestException,
-          UnauthorizedException,
-          ForbiddenException,
-          NotFoundException,
-          TooManyRequestsException,
-          InternalServerErrorException,
-          BadGatewayException,
-          ServiceUnavailableException {
+          SpotifyWebApiException {
     return executeAsync(new AudioFeatures.JsonUtil().createModelObject(getJson()));
   }
 

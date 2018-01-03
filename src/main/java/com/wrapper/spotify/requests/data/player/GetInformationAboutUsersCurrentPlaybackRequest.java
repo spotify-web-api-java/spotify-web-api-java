@@ -16,29 +16,13 @@ public class GetInformationAboutUsersCurrentPlaybackRequest extends AbstractData
 
   public CurrentlyPlayingContext get() throws
           IOException,
-          NoContentException,
-          BadRequestException,
-          UnauthorizedException,
-          ForbiddenException,
-          NotFoundException,
-          TooManyRequestsException,
-          InternalServerErrorException,
-          BadGatewayException,
-          ServiceUnavailableException {
+          SpotifyWebApiException {
     return new CurrentlyPlayingContext.JsonUtil().createModelObject(getJson());
   }
 
   public SettableFuture<CurrentlyPlayingContext> getAsync() throws
           IOException,
-          NoContentException,
-          BadRequestException,
-          UnauthorizedException,
-          ForbiddenException,
-          NotFoundException,
-          TooManyRequestsException,
-          InternalServerErrorException,
-          BadGatewayException,
-          ServiceUnavailableException {
+          SpotifyWebApiException {
     return executeAsync(new CurrentlyPlayingContext.JsonUtil().createModelObject(getJson()));
   }
 

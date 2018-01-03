@@ -1,5 +1,8 @@
 package com.wrapper.spotify.exceptions;
 
+/**
+ * The server was acting as a gateway or proxy and received an invalid response from the upstream server.
+ */
 public class BadGatewayException extends SpotifyWebApiException {
 
   public BadGatewayException() {

@@ -16,29 +16,13 @@ public class GetRecommendationsRequest extends AbstractDataRequest {
 
   public Recommendations get() throws
           IOException,
-          NoContentException,
-          BadRequestException,
-          UnauthorizedException,
-          ForbiddenException,
-          NotFoundException,
-          TooManyRequestsException,
-          InternalServerErrorException,
-          BadGatewayException,
-          ServiceUnavailableException {
+          SpotifyWebApiException {
     return new Recommendations.JsonUtil().createModelObject(getJson());
   }
 
   public SettableFuture<Recommendations> getAsync() throws
           IOException,
-          NoContentException,
-          BadRequestException,
-          UnauthorizedException,
-          ForbiddenException,
-          NotFoundException,
-          TooManyRequestsException,
-          InternalServerErrorException,
-          BadGatewayException,
-          ServiceUnavailableException {
+          SpotifyWebApiException {
     return executeAsync(new Recommendations.JsonUtil().createModelObject(getJson()));
   }
 

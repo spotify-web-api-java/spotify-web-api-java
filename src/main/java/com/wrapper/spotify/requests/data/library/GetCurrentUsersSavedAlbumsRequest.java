@@ -17,29 +17,13 @@ public class GetCurrentUsersSavedAlbumsRequest extends AbstractDataRequest {
 
   public Paging<SavedAlbum> get() throws
           IOException,
-          NoContentException,
-          BadRequestException,
-          UnauthorizedException,
-          ForbiddenException,
-          NotFoundException,
-          TooManyRequestsException,
-          InternalServerErrorException,
-          BadGatewayException,
-          ServiceUnavailableException {
+          SpotifyWebApiException {
     return new SavedAlbum.JsonUtil().createModelObjectPaging(getJson());
   }
 
   public SettableFuture<Paging<SavedAlbum>> getAsync() throws
           IOException,
-          NoContentException,
-          BadRequestException,
-          UnauthorizedException,
-          ForbiddenException,
-          NotFoundException,
-          TooManyRequestsException,
-          InternalServerErrorException,
-          BadGatewayException,
-          ServiceUnavailableException {
+          SpotifyWebApiException {
     return executeAsync(new SavedAlbum.JsonUtil().createModelObjectPaging(getJson()));
   }
 

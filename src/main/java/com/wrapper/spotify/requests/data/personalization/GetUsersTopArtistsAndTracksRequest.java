@@ -23,29 +23,13 @@ public class GetUsersTopArtistsAndTracksRequest<T extends IArtistTrackModelObjec
 
   public Paging<T> get() throws
           IOException,
-          NoContentException,
-          BadRequestException,
-          UnauthorizedException,
-          ForbiddenException,
-          NotFoundException,
-          TooManyRequestsException,
-          InternalServerErrorException,
-          BadGatewayException,
-          ServiceUnavailableException {
+          SpotifyWebApiException {
     return tClass.createModelObjectPaging(getJson());
   }
 
   public SettableFuture<Paging<T>> getAsync() throws
           IOException,
-          NoContentException,
-          BadRequestException,
-          UnauthorizedException,
-          ForbiddenException,
-          NotFoundException,
-          TooManyRequestsException,
-          InternalServerErrorException,
-          BadGatewayException,
-          ServiceUnavailableException {
+          SpotifyWebApiException {
     return executeAsync(tClass.createModelObjectPaging(getJson()));
   }
 

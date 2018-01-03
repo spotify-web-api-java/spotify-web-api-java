@@ -1,5 +1,8 @@
 package com.wrapper.spotify.exceptions;
 
+/**
+ * The request could not be understood by the server due to malformed syntax.
+ */
 public class BadRequestException extends SpotifyWebApiException {
 
   public BadRequestException() {

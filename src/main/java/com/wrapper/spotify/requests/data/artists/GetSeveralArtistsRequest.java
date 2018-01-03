@@ -15,29 +15,13 @@ public class GetSeveralArtistsRequest extends AbstractDataRequest {
 
   public Artist[] get() throws
           IOException,
-          NoContentException,
-          BadRequestException,
-          UnauthorizedException,
-          ForbiddenException,
-          NotFoundException,
-          TooManyRequestsException,
-          InternalServerErrorException,
-          BadGatewayException,
-          ServiceUnavailableException {
+          SpotifyWebApiException {
     return new Artist.JsonUtil().createModelObjectArray(getJson(), "artists");
   }
 
   public SettableFuture<Artist[]> getAsync() throws
           IOException,
-          NoContentException,
-          BadRequestException,
-          UnauthorizedException,
-          ForbiddenException,
-          NotFoundException,
-          TooManyRequestsException,
-          InternalServerErrorException,
-          BadGatewayException,
-          ServiceUnavailableException {
+          SpotifyWebApiException {
     return executeAsync(new Artist.JsonUtil().createModelObjectArray(getJson(), "artists"));
   }
 

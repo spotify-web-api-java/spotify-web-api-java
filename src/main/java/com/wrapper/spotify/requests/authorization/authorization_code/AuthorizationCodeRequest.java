@@ -16,29 +16,13 @@ public class AuthorizationCodeRequest extends AbstractAthorizationRequest {
 
   public AuthorizationCodeCredentials post() throws
           IOException,
-          NoContentException,
-          BadRequestException,
-          UnauthorizedException,
-          ForbiddenException,
-          NotFoundException,
-          TooManyRequestsException,
-          InternalServerErrorException,
-          BadGatewayException,
-          ServiceUnavailableException {
+          SpotifyWebApiException {
     return new AuthorizationCodeCredentials.JsonUtil().createModelObject(postJson());
   }
 
   public SettableFuture<AuthorizationCodeCredentials> postAsync() throws
           IOException,
-          NoContentException,
-          BadRequestException,
-          UnauthorizedException,
-          ForbiddenException,
-          NotFoundException,
-          TooManyRequestsException,
-          InternalServerErrorException,
-          BadGatewayException,
-          ServiceUnavailableException {
+          SpotifyWebApiException {
     return executeAsync(new AuthorizationCodeCredentials.JsonUtil().createModelObject(postJson()));
   }
 

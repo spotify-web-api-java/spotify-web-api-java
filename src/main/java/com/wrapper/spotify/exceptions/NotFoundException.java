@@ -1,5 +1,8 @@
 package com.wrapper.spotify.exceptions;
 
+/**
+ * The requested resource could not be found. This error can be due to a temporary or permanent condition.
+ */
 public class NotFoundException extends SpotifyWebApiException {
 
   public NotFoundException() {

@@ -15,29 +15,13 @@ public class ReorderPlaylistsTracksRequest extends AbstractDataRequest {
 
   public SnapshotResult put() throws
           IOException,
-          NoContentException,
-          BadRequestException,
-          UnauthorizedException,
-          ForbiddenException,
-          NotFoundException,
-          TooManyRequestsException,
-          InternalServerErrorException,
-          BadGatewayException,
-          ServiceUnavailableException {
+          SpotifyWebApiException {
     return new SnapshotResult.JsonUtil().createModelObject(putJson());
   }
 
   public SettableFuture<SnapshotResult> putAsync() throws
           IOException,
-          NoContentException,
-          BadRequestException,
-          UnauthorizedException,
-          ForbiddenException,
-          NotFoundException,
-          TooManyRequestsException,
-          InternalServerErrorException,
-          BadGatewayException,
-          ServiceUnavailableException {
+          SpotifyWebApiException {
     return executeAsync(new SnapshotResult.JsonUtil().createModelObject(putJson()));
   }
 

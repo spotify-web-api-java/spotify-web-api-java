@@ -1,5 +1,9 @@
 package com.wrapper.spotify.exceptions;
 
+/**
+ * The request requires user authorization or, if the request included authorization credentials, authorization has been
+ * refused for those credentials.
+ */
 public class UnauthorizedException extends SpotifyWebApiException {
 
   public UnauthorizedException() {

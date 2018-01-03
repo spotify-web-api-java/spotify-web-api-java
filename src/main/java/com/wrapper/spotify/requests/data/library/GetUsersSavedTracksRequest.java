@@ -17,29 +17,13 @@ public class GetUsersSavedTracksRequest extends AbstractDataRequest {
 
   public Paging<SavedTrack> get() throws
           IOException,
-          NoContentException,
-          BadRequestException,
-          UnauthorizedException,
-          ForbiddenException,
-          NotFoundException,
-          TooManyRequestsException,
-          InternalServerErrorException,
-          BadGatewayException,
-          ServiceUnavailableException {
+          SpotifyWebApiException {
     return new SavedTrack.JsonUtil().createModelObjectPaging(getJson());
   }
 
   public SettableFuture<Paging<SavedTrack>> getAsync() throws
           IOException,
-          NoContentException,
-          BadRequestException,
-          UnauthorizedException,
-          ForbiddenException,
-          NotFoundException,
-          TooManyRequestsException,
-          InternalServerErrorException,
-          BadGatewayException,
-          ServiceUnavailableException {
+          SpotifyWebApiException {
     return executeAsync(new SavedTrack.JsonUtil().createModelObjectPaging(getJson()));
   }
 

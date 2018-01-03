@@ -15,29 +15,13 @@ public class GetPlaylistCoverImageRequest extends AbstractDataRequest {
 
   public Image[] get() throws
           IOException,
-          NoContentException,
-          BadRequestException,
-          UnauthorizedException,
-          ForbiddenException,
-          NotFoundException,
-          TooManyRequestsException,
-          InternalServerErrorException,
-          BadGatewayException,
-          ServiceUnavailableException {
+          SpotifyWebApiException {
     return new Image.JsonUtil().createModelObjectArray(getJson());
   }
 
   public SettableFuture<Image[]> getAsync() throws
           IOException,
-          NoContentException,
-          BadRequestException,
-          UnauthorizedException,
-          ForbiddenException,
-          NotFoundException,
-          TooManyRequestsException,
-          InternalServerErrorException,
-          BadGatewayException,
-          ServiceUnavailableException {
+          SpotifyWebApiException {
     return executeAsync(new Image.JsonUtil().createModelObjectArray(getJson()));
   }
 

@@ -16,29 +16,13 @@ public class RemoveTracksFromPlaylistRequest extends AbstractDataRequest {
 
   public SnapshotResult delete() throws
           IOException,
-          NoContentException,
-          BadRequestException,
-          UnauthorizedException,
-          ForbiddenException,
-          NotFoundException,
-          TooManyRequestsException,
-          InternalServerErrorException,
-          BadGatewayException,
-          ServiceUnavailableException {
+          SpotifyWebApiException {
     return new SnapshotResult.JsonUtil().createModelObject(getJson());
   }
 
   public SettableFuture<SnapshotResult> deleteAsync() throws
           IOException,
-          NoContentException,
-          BadRequestException,
-          UnauthorizedException,
-          ForbiddenException,
-          NotFoundException,
-          TooManyRequestsException,
-          InternalServerErrorException,
-          BadGatewayException,
-          ServiceUnavailableException {
+          SpotifyWebApiException {
     return executeAsync(new SnapshotResult.JsonUtil().createModelObject(getJson()));
   }
 

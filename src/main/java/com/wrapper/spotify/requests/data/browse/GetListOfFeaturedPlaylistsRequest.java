@@ -33,15 +33,7 @@ public class GetListOfFeaturedPlaylistsRequest extends AbstractDataRequest {
    */
   public FeaturedPlaylists get() throws
           IOException,
-          NoContentException,
-          BadRequestException,
-          UnauthorizedException,
-          ForbiddenException,
-          NotFoundException,
-          TooManyRequestsException,
-          InternalServerErrorException,
-          BadGatewayException,
-          ServiceUnavailableException {
+          SpotifyWebApiException {
     return new FeaturedPlaylists.JsonUtil().createModelObject(getJson());
   }
 
@@ -62,15 +54,7 @@ public class GetListOfFeaturedPlaylistsRequest extends AbstractDataRequest {
    */
   public SettableFuture<FeaturedPlaylists> getAsync() throws
           IOException,
-          NoContentException,
-          BadRequestException,
-          UnauthorizedException,
-          ForbiddenException,
-          NotFoundException,
-          TooManyRequestsException,
-          InternalServerErrorException,
-          BadGatewayException,
-          ServiceUnavailableException {
+          SpotifyWebApiException {
     return executeAsync(new FeaturedPlaylists.JsonUtil().createModelObject(getJson()));
   }
 

@@ -49,15 +49,7 @@ public class TestUtil {
 
     public static IHttpManager returningString(String returnedString) throws
             IOException,
-            NoContentException,
-            BadRequestException,
-            UnauthorizedException,
-            ForbiddenException,
-            NotFoundException,
-            TooManyRequestsException,
-            InternalServerErrorException,
-            BadGatewayException,
-            ServiceUnavailableException {
+            SpotifyWebApiException {
       final IHttpManager mockedHttpManager = mock(IHttpManager.class);
       when(mockedHttpManager.get(any(URI.class), any(Header[].class))).thenReturn(returnedString);
       when(mockedHttpManager.post(any(URI.class), any(Header[].class), anyListOf(NameValuePair.class))).thenReturn(returnedString);

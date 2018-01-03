@@ -18,15 +18,7 @@ public class GetAvailableGenreSeedsRequest extends AbstractDataRequest {
 
   public String[] get() throws
           IOException,
-          NoContentException,
-          BadRequestException,
-          UnauthorizedException,
-          ForbiddenException,
-          NotFoundException,
-          TooManyRequestsException,
-          InternalServerErrorException,
-          BadGatewayException,
-          ServiceUnavailableException {
+          SpotifyWebApiException {
     List<String> genres = new Gson().fromJson(
             new JsonParser()
                     .parse(getJson())
@@ -42,15 +34,7 @@ public class GetAvailableGenreSeedsRequest extends AbstractDataRequest {
 
   public SettableFuture<String[]> getAsync() throws
           IOException,
-          NoContentException,
-          BadRequestException,
-          UnauthorizedException,
-          ForbiddenException,
-          NotFoundException,
-          TooManyRequestsException,
-          InternalServerErrorException,
-          BadGatewayException,
-          ServiceUnavailableException {
+          SpotifyWebApiException {
     List<String> genres = new Gson().fromJson(
             new JsonParser()
                     .parse(getJson())

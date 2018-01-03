@@ -18,29 +18,13 @@ public class GetListOfCategoriesRequest extends AbstractDataRequest {
 
   public Paging<Category> get() throws
           IOException,
-          NoContentException,
-          BadRequestException,
-          UnauthorizedException,
-          ForbiddenException,
-          NotFoundException,
-          TooManyRequestsException,
-          InternalServerErrorException,
-          BadGatewayException,
-          ServiceUnavailableException {
+          SpotifyWebApiException {
     return new Category.JsonUtil().createModelObjectPaging(getJson(), "categories");
   }
 
   public SettableFuture<Paging<Category>> getAsync() throws
           IOException,
-          NoContentException,
-          BadRequestException,
-          UnauthorizedException,
-          ForbiddenException,
-          NotFoundException,
-          TooManyRequestsException,
-          InternalServerErrorException,
-          BadGatewayException,
-          ServiceUnavailableException {
+          SpotifyWebApiException {
     return executeAsync(new Category.JsonUtil().createModelObjectPaging(getJson(), "categories"));
   }
 

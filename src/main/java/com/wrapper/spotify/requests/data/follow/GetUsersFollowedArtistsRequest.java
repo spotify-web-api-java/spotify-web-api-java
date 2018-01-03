@@ -17,29 +17,13 @@ public class GetUsersFollowedArtistsRequest extends AbstractDataRequest {
 
   public PagingCursorbased<Artist> get() throws
           IOException,
-          NoContentException,
-          BadRequestException,
-          UnauthorizedException,
-          ForbiddenException,
-          NotFoundException,
-          TooManyRequestsException,
-          InternalServerErrorException,
-          BadGatewayException,
-          ServiceUnavailableException {
+          SpotifyWebApiException {
     return new Artist.JsonUtil().createModelObjectPagingCursorbased(getJson(), "artists");
   }
 
   public SettableFuture<PagingCursorbased<Artist>> getAsync() throws
           IOException,
-          NoContentException,
-          BadRequestException,
-          UnauthorizedException,
-          ForbiddenException,
-          NotFoundException,
-          TooManyRequestsException,
-          InternalServerErrorException,
-          BadGatewayException,
-          ServiceUnavailableException {
+          SpotifyWebApiException {
     return executeAsync(new Artist.JsonUtil().createModelObjectPagingCursorbased(getJson(), "artists"));
   }
 
