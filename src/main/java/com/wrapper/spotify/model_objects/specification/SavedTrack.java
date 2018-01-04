@@ -89,8 +89,15 @@ public class SavedTrack extends AbstractModelObject {
 
       try {
         return new Builder()
-                .setAddedAt(simpleDateFormat.parse(jsonObject.get("added_at").getAsString()))
-                .setTrack(new Track.JsonUtil().createModelObject(jsonObject.getAsJsonObject("track")))
+                .setAddedAt(
+                        hasAndNotNull(jsonObject, "added_at")
+                                ? simpleDateFormat.parse(jsonObject.get("added_at").getAsString())
+                                : null)
+                .setTrack(
+                        hasAndNotNull(jsonObject, "track")
+                                ? new Track.JsonUtil().createModelObject(
+                                jsonObject.getAsJsonObject("track"))
+                                : null)
                 .build();
       } catch (ParseException e) {
         e.printStackTrace();

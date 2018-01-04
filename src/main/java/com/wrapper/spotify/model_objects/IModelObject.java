@@ -43,6 +43,8 @@ public interface IModelObject {
    */
   interface IJsonUtil<T> {
 
+    boolean hasAndNotNull(final JsonObject jsonObject, final String memberName);
+
     /**
      * Build a model object with the information given in a json object. <br>
      * The type of the model object and its methods depend on its corresponding implementation.

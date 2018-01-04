@@ -1,6 +1,5 @@
 package com.wrapper.spotify.model_objects.specification;
 
-import com.google.gson.JsonNull;
 import com.google.gson.JsonObject;
 import com.wrapper.spotify.enums.ModelObjectType;
 import com.wrapper.spotify.model_objects.AbstractModelObject;
@@ -180,12 +179,32 @@ public class ArtistSimplified extends AbstractModelObject {
       }
 
       return new ArtistSimplified.Builder()
-              .setExternalUrls(new ExternalUrl.JsonUtil().createModelObject(jsonObject.getAsJsonObject("external_urls")))
-              .setHref((jsonObject.get("href") instanceof JsonNull) ? null : jsonObject.get("href").getAsString())
-              .setId((jsonObject.get("id") instanceof JsonNull) ? null : jsonObject.get("id").getAsString())
-              .setName(jsonObject.get("name").getAsString())
-              .setType(ModelObjectType.valueOf(jsonObject.get("type").getAsString().toUpperCase()))
-              .setUri((jsonObject.get("uri") instanceof JsonNull) ? null : jsonObject.get("uri").getAsString())
+              .setExternalUrls(
+                      hasAndNotNull(jsonObject, "external_urls")
+                              ? new ExternalUrl.JsonUtil().createModelObject(
+                              jsonObject.getAsJsonObject("external_urls"))
+                              : null)
+              .setHref(
+                      hasAndNotNull(jsonObject, "href")
+                              ? jsonObject.get("href").getAsString()
+                              : null)
+              .setId(
+                      hasAndNotNull(jsonObject, "id")
+                              ? jsonObject.get("id").getAsString()
+                              : null)
+              .setName(
+                      hasAndNotNull(jsonObject, "name")
+                              ? jsonObject.get("name").getAsString()
+                              : null)
+              .setType(
+                      hasAndNotNull(jsonObject, "type")
+                              ? ModelObjectType.valueOf(
+                              jsonObject.get("type").getAsString().toUpperCase())
+                              : null)
+              .setUri(
+                      hasAndNotNull(jsonObject, "uri")
+                              ? jsonObject.get("uri").getAsString()
+                              : null)
               .build();
     }
   }

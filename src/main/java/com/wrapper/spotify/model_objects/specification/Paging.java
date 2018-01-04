@@ -211,14 +211,34 @@ public class Paging<T> extends AbstractModelObject {
       }
 
       return new Paging.Builder<X>()
-              .setHref(jsonObject.get("href").getAsString())
-              .setItems(createModelObjectArray(jsonObject.getAsJsonArray("items"), new TypeToken<X>(getClass()) {
-              }))
-              .setLimit(jsonObject.get("limit").getAsInt())
-              .setNext((jsonObject.get("next") instanceof JsonNull) ? null : jsonObject.get("next").getAsString())
-              .setOffset(jsonObject.get("offset").getAsInt())
-              .setPrevious((jsonObject.get("previous") instanceof JsonNull) ? null : jsonObject.get("previous").getAsString())
-              .setTotal(jsonObject.get("total").getAsInt())
+              .setHref(
+                      hasAndNotNull(jsonObject, "href")
+                              ? jsonObject.get("href").getAsString()
+                              : null)
+              .setItems(
+                      createModelObjectArray(
+                              jsonObject.getAsJsonArray("items"), new TypeToken<X>(getClass()) {
+                              }))
+              .setLimit(
+                      hasAndNotNull(jsonObject, "limit")
+                              ? jsonObject.get("limit").getAsInt()
+                              : null)
+              .setNext(
+                      hasAndNotNull(jsonObject, "next")
+                              ? jsonObject.get("next").getAsString()
+                              : null)
+              .setOffset(
+                      hasAndNotNull(jsonObject, "offset")
+                              ? jsonObject.get("offset").getAsInt()
+                              : null)
+              .setPrevious(
+                      hasAndNotNull(jsonObject, "previous")
+                              ? jsonObject.get("previous").getAsString()
+                              : null)
+              .setTotal(
+                      hasAndNotNull(jsonObject, "total")
+                              ? jsonObject.get("total").getAsInt()
+                              : null)
               .build();
     }
   }

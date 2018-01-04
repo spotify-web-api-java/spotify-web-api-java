@@ -277,16 +277,51 @@ public class Artist extends AbstractModelObject implements IArtistTrackModelObje
       }
 
       return new Artist.Builder()
-              .setExternalUrls(new ExternalUrl.JsonUtil().createModelObject(jsonObject.getAsJsonObject("external_urls")))
-              .setFollowers(new Followers.JsonUtil().createModelObject(jsonObject.getAsJsonObject("followers")))
-              .setGenres(new Gson().fromJson(jsonObject.getAsJsonArray("genres"), String[].class))
-              .setHref(jsonObject.get("href").getAsString())
-              .setId(jsonObject.get("id").getAsString())
-              .setImages(new Image.JsonUtil().createModelObjectArray(jsonObject.getAsJsonArray("images")))
-              .setName(jsonObject.get("name").getAsString())
-              .setPopularity(jsonObject.get("popularity").getAsInt())
-              .setType(ModelObjectType.valueOf(jsonObject.get("type").getAsString().toUpperCase()))
-              .setUri(jsonObject.get("uri").getAsString())
+              .setExternalUrls(
+                      hasAndNotNull(jsonObject, "external_urls")
+                              ? new ExternalUrl.JsonUtil().createModelObject(
+                              jsonObject.getAsJsonObject("external_urls"))
+                              : null)
+              .setFollowers(
+                      hasAndNotNull(jsonObject, "followers")
+                              ? new Followers.JsonUtil().createModelObject(
+                              jsonObject.getAsJsonObject("followers"))
+                              : null)
+              .setGenres(
+                      hasAndNotNull(jsonObject, "genres")
+                              ? new Gson().fromJson(
+                              jsonObject.getAsJsonArray("genres"), String[].class)
+                              : null)
+              .setHref(
+                      hasAndNotNull(jsonObject, "href")
+                              ? jsonObject.get("href").getAsString()
+                              : null)
+              .setId(
+                      hasAndNotNull(jsonObject, "id")
+                              ? jsonObject.get("id").getAsString()
+                              : null)
+              .setImages(
+                      hasAndNotNull(jsonObject, "images")
+                              ? new Image.JsonUtil().createModelObjectArray(
+                              jsonObject.getAsJsonArray("images"))
+                              : null)
+              .setName(
+                      hasAndNotNull(jsonObject, "name")
+                              ? jsonObject.get("name").getAsString()
+                              : null)
+              .setPopularity(
+                      hasAndNotNull(jsonObject, "popularity")
+                              ? jsonObject.get("popularity").getAsInt()
+                              : null)
+              .setType(
+                      hasAndNotNull(jsonObject, "type")
+                              ? ModelObjectType.valueOf(
+                              jsonObject.get("type").getAsString().toUpperCase())
+                              : null)
+              .setUri(
+                      hasAndNotNull(jsonObject, "uri")
+                              ? jsonObject.get("uri").getAsString()
+                              : null)
               .build();
     }
   }

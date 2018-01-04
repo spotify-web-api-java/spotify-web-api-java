@@ -131,10 +131,23 @@ public class Category extends AbstractModelObject {
       }
 
       return new Category.Builder()
-              .setHref(jsonObject.get("href").getAsString())
-              .setIcons(new Image.JsonUtil().createModelObjectArray(jsonObject.getAsJsonArray("images")))
-              .setId(jsonObject.get("id").getAsString())
-              .setName(jsonObject.get("name").getAsString())
+              .setHref(
+                      hasAndNotNull(jsonObject, "href")
+                              ? jsonObject.get("href").getAsString()
+                              : null)
+              .setIcons(
+                      hasAndNotNull(jsonObject, "images")
+                              ? new Image.JsonUtil().createModelObjectArray(
+                              jsonObject.getAsJsonArray("images"))
+                              : null)
+              .setId(
+                      hasAndNotNull(jsonObject, "id")
+                              ? jsonObject.get("id").getAsString()
+                              : null)
+              .setName(
+                      hasAndNotNull(jsonObject, "name")
+                              ? jsonObject.get("name").getAsString()
+                              : null)
               .build();
     }
   }

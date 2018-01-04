@@ -54,8 +54,14 @@ public class AuthenticationError extends AbstractModelObject {
       }
 
       return new AuthenticationError.Builder()
-              .setError(jsonObject.get("error").getAsString())
-              .setError_description(jsonObject.get("error_description").getAsString())
+              .setError(
+                      hasAndNotNull(jsonObject, "error")
+                              ? jsonObject.get("error").getAsString()
+                              : null)
+              .setError_description(
+                      hasAndNotNull(jsonObject, "error_description")
+                              ? jsonObject.get("error_description").getAsString()
+                              : null)
               .build();
     }
   }

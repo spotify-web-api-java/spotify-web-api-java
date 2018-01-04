@@ -188,13 +188,31 @@ public class PagingCursorbased<T> extends AbstractModelObject {
       }
 
       return new Builder<X>()
-              .setHref(jsonObject.get("href").getAsString())
-              .setItems(createModelObjectArray(jsonObject.getAsJsonArray("items"), new TypeToken<X>() {
-              }))
-              .setLimit(jsonObject.get("limit").getAsInt())
-              .setNext((jsonObject.get("next") instanceof JsonNull) ? null : jsonObject.get("next").getAsString())
-              .setCursors(new Cursor.JsonUtil().createModelObjectArray(jsonObject.getAsJsonArray("cursors")))
-              .setTotal(jsonObject.get("total").getAsInt())
+              .setHref(
+                      hasAndNotNull(jsonObject, "href")
+                              ? jsonObject.get("href").getAsString()
+                              : null)
+              .setItems(
+                      createModelObjectArray(
+                              jsonObject.getAsJsonArray("items"), new TypeToken<X>() {
+                              }))
+              .setLimit(
+                      hasAndNotNull(jsonObject, "limit")
+                              ? jsonObject.get("limit").getAsInt()
+                              : null)
+              .setNext(
+                      hasAndNotNull(jsonObject, "next")
+                              ? jsonObject.get("next").getAsString()
+                              : null)
+              .setCursors(
+                      hasAndNotNull(jsonObject, "cursors")
+                              ? new Cursor.JsonUtil().createModelObjectArray(
+                              jsonObject.getAsJsonArray("cursors"))
+                              : null)
+              .setTotal(
+                      hasAndNotNull(jsonObject, "total")
+                              ? jsonObject.get("total").getAsInt()
+                              : null)
               .build();
     }
   }

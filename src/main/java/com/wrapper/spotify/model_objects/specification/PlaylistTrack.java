@@ -137,10 +137,24 @@ public class PlaylistTrack extends AbstractModelObject {
 
       try {
         return new Builder()
-                .setAddedAt(simpleDateFormat.parse((jsonObject.get("added_at") instanceof JsonNull) ? null : jsonObject.get("added_at").getAsString()))
-                .setAddedBy(new User.JsonUtil().createModelObject((jsonObject.get("added_by") instanceof JsonNull) ? null : jsonObject.get("added_by").getAsJsonObject()))
-                .setIsLocal(jsonObject.get("is_local").getAsBoolean())
-                .setTrack(new Track.JsonUtil().createModelObject(jsonObject.getAsJsonObject("track")))
+                .setAddedAt(
+                        hasAndNotNull(jsonObject, "added_at")
+                                ? simpleDateFormat.parse(jsonObject.get("added_at").getAsString())
+                                : null)
+                .setAddedBy(
+                        hasAndNotNull(jsonObject, "added_by")
+                                ? new User.JsonUtil().createModelObject(
+                                jsonObject.get("added_by").getAsJsonObject())
+                                : null)
+                .setIsLocal(
+                        hasAndNotNull(jsonObject, "is_local")
+                                ? jsonObject.get("is_local").getAsBoolean()
+                                : null)
+                .setTrack(
+                        hasAndNotNull(jsonObject, "track")
+                                ? new Track.JsonUtil().createModelObject(
+                                jsonObject.getAsJsonObject("track"))
+                                : null)
                 .build();
       } catch (ParseException e) {
         e.printStackTrace();

@@ -42,7 +42,10 @@ public class Restrictions extends AbstractModelObject {
       }
 
       return new Restrictions.Builder()
-              .setReason(jsonObject.get("reason").getAsString())
+              .setReason(
+                      hasAndNotNull(jsonObject, "reason")
+                              ? jsonObject.get("reason").getAsString()
+                              : null)
               .build();
     }
   }

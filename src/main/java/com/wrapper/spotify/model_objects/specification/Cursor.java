@@ -67,7 +67,10 @@ public class Cursor extends AbstractModelObject {
       }
 
       return new Cursor.Builder()
-              .setAfter(jsonObject.get("after").getAsString())
+              .setAfter(
+                      hasAndNotNull(jsonObject, "after")
+                              ? jsonObject.get("after").getAsString()
+                              : null)
               .build();
     }
   }

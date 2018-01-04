@@ -115,13 +115,35 @@ public class AudioAnalysisSegment extends AbstractModelObject {
       }
 
       return new AudioAnalysisSegment.Builder()
-              .setLoudnessEnd(jsonObject.get("loudness_end").getAsFloat())
-              .setLoudnessMax(jsonObject.get("loudness_max").getAsFloat())
-              .setLoudnessMaxTime(jsonObject.get("loudness_max_time").getAsFloat())
-              .setLoudnessStart(jsonObject.get("loudness_start").getAsFloat())
-              .setMeasure(new AudioAnalysisMeasure.JsonUtil().createModelObject(jsonObject.getAsJsonObject("measure")))
-              .setPitches(new Gson().fromJson(jsonObject.getAsJsonArray("pitches"), float[].class))
-              .setTimbre(new Gson().fromJson(jsonObject.getAsJsonArray("timbre"), float[].class))
+              .setLoudnessEnd(
+                      hasAndNotNull(jsonObject, "loudness_end")
+                              ? jsonObject.get("loudness_end").getAsFloat()
+                              : null)
+              .setLoudnessMax(
+                      hasAndNotNull(jsonObject, "loudness_max")
+                              ? jsonObject.get("loudness_max").getAsFloat()
+                              : null)
+              .setLoudnessMaxTime(
+                      hasAndNotNull(jsonObject, "loudness_max_time")
+                              ? jsonObject.get("loudness_max_time").getAsFloat()
+                              : null)
+              .setLoudnessStart(
+                      hasAndNotNull(jsonObject, "loudness_start")
+                              ? jsonObject.get("loudness_start").getAsFloat()
+                              : null)
+              .setMeasure(
+                      hasAndNotNull(jsonObject, "measure")
+                              ? new AudioAnalysisMeasure.JsonUtil().createModelObject(
+                              jsonObject.getAsJsonObject("measure"))
+                              : null)
+              .setPitches(
+                      hasAndNotNull(jsonObject, "pitches")
+                              ? new Gson().fromJson(jsonObject.getAsJsonArray("pitches"), float[].class)
+                              : null)
+              .setTimbre(
+                      hasAndNotNull(jsonObject, "timbre")
+                              ? new Gson().fromJson(jsonObject.getAsJsonArray("timbre"), float[].class)
+                              : null)
               .build();
     }
   }

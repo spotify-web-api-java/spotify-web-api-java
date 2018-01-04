@@ -1,7 +1,6 @@
 package com.wrapper.spotify.model_objects.specification;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonNull;
 import com.google.gson.JsonObject;
 import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.enums.AlbumType;
@@ -277,16 +276,52 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
       }
 
       return new AlbumSimplified.Builder()
-              .setAlbumType((jsonObject.get("album_type") instanceof JsonNull) ? null : AlbumType.valueOf(jsonObject.get("album_type").getAsString().toUpperCase()))
-              .setArtists(new ArtistSimplified.JsonUtil().createModelObjectArray(jsonObject.getAsJsonArray("artists")))
-              .setAvailableMarkets(new Gson().fromJson(jsonObject.get("available_markets"), CountryCode[].class))
-              .setExternalUrls(new ExternalUrl.JsonUtil().createModelObject(jsonObject.getAsJsonObject("external_urls")))
-              .setHref((jsonObject.get("href") instanceof JsonNull) ? null : jsonObject.get("href").getAsString())
-              .setId((jsonObject.get("id") instanceof JsonNull) ? null : jsonObject.get("id").getAsString())
-              .setImages(new Image.JsonUtil().createModelObjectArray(jsonObject.getAsJsonArray("images")))
-              .setName(jsonObject.get("name").getAsString())
-              .setType(ModelObjectType.valueOf(jsonObject.get("type").getAsString().toUpperCase()))
-              .setUri((jsonObject.get("uri") instanceof JsonNull) ? null : jsonObject.get("uri").getAsString())
+              .setAlbumType(
+                      hasAndNotNull(jsonObject, "album_type")
+                              ? AlbumType.valueOf(
+                              jsonObject.get("album_type").getAsString().toUpperCase())
+                              : null)
+              .setArtists(
+                      hasAndNotNull(jsonObject, "artists")
+                              ? new ArtistSimplified.JsonUtil().createModelObjectArray(
+                              jsonObject.getAsJsonArray("artists"))
+                              : null)
+              .setAvailableMarkets(
+                      hasAndNotNull(jsonObject, "available_markets")
+                              ? new Gson().fromJson(
+                              jsonObject.get("available_markets"), CountryCode[].class)
+                              : null)
+              .setExternalUrls(
+                      hasAndNotNull(jsonObject, "external_urls")
+                              ? new ExternalUrl.JsonUtil().createModelObject(
+                              jsonObject.getAsJsonObject("external_urls"))
+                              : null)
+              .setHref(
+                      hasAndNotNull(jsonObject, "href")
+                              ? jsonObject.get("href").getAsString()
+                              : null)
+              .setId(
+                      hasAndNotNull(jsonObject, "id")
+                              ? jsonObject.get("id").getAsString()
+                              : null)
+              .setImages(
+                      hasAndNotNull(jsonObject, "images")
+                              ? new Image.JsonUtil().createModelObjectArray(
+                              jsonObject.getAsJsonArray("images"))
+                              : null)
+              .setName(
+                      hasAndNotNull(jsonObject, "name")
+                              ? jsonObject.get("name").getAsString()
+                              : null)
+              .setType(
+                      hasAndNotNull(jsonObject, "type")
+                              ? ModelObjectType.valueOf(
+                              jsonObject.get("type").getAsString().toUpperCase())
+                              : null)
+              .setUri(
+                      hasAndNotNull(jsonObject, "uri")
+                              ? jsonObject.get("uri").getAsString()
+                              : null)
               .build();
     }
   }

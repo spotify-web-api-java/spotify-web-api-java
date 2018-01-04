@@ -88,8 +88,15 @@ public class Copyright extends AbstractModelObject {
       }
 
       return new Copyright.Builder()
-              .setText(jsonObject.get("text").getAsString())
-              .setType(CopyrightType.valueOf(jsonObject.get("type").getAsString().toUpperCase()))
+              .setText(
+                      hasAndNotNull(jsonObject, "text")
+                              ? jsonObject.get("text").getAsString()
+                              : null)
+              .setType(
+                      hasAndNotNull(jsonObject, "type")
+                              ? CopyrightType.valueOf(
+                              jsonObject.get("type").getAsString().toUpperCase())
+                              : null)
               .build();
     }
   }

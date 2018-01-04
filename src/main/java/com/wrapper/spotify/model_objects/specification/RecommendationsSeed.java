@@ -104,12 +104,31 @@ public class RecommendationsSeed extends AbstractModelObject {
       }
 
       return new RecommendationsSeed.Builder()
-              .setAfterFilteringSize(jsonObject.get("afterFilteringSize").getAsInt())
-              .setAfterRelinkingSize(jsonObject.get("afterRelinkingSize").getAsInt())
-              .setHref((jsonObject.get("href") instanceof JsonNull) ? null : jsonObject.get("href").getAsString())
-              .setId(jsonObject.get("id").getAsString())
-              .setInitialPoolSize(jsonObject.get("initialPoolSize").getAsInt())
-              .setType(ModelObjectType.valueOf(jsonObject.get("type").getAsString().toUpperCase()))
+              .setAfterFilteringSize(
+                      hasAndNotNull(jsonObject, "afterFilteringSize")
+                              ? jsonObject.get("afterFilteringSize").getAsInt()
+                              : null)
+              .setAfterRelinkingSize(
+                      hasAndNotNull(jsonObject, "afterRelinkingSize")
+                              ? jsonObject.get("afterRelinkingSize").getAsInt()
+                              : null)
+              .setHref(
+                      hasAndNotNull(jsonObject, "href")
+                              ? jsonObject.get("href").getAsString()
+                              : null)
+              .setId(
+                      hasAndNotNull(jsonObject, "id")
+                              ? jsonObject.get("id").getAsString()
+                              : null)
+              .setInitialPoolSize(
+                      hasAndNotNull(jsonObject, "initialPoolSize")
+                              ? jsonObject.get("initialPoolSize").getAsInt()
+                              : null)
+              .setType(
+                      hasAndNotNull(jsonObject, "type")
+                              ? ModelObjectType.valueOf(
+                              jsonObject.get("type").getAsString().toUpperCase())
+                              : null)
               .build();
     }
   }

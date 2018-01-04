@@ -42,7 +42,10 @@ public class SnapshotResult extends AbstractModelObject {
       }
 
       return new SnapshotResult.Builder()
-              .setSnapshotId(jsonObject.get("snapshot_id").getAsString())
+              .setSnapshotId(
+                      hasAndNotNull(jsonObject, "snapshot_id")
+                              ? jsonObject.get("snapshot_id").getAsString()
+                              : null)
               .build();
     }
   }

@@ -158,11 +158,28 @@ public class TrackLink extends AbstractModelObject {
       }
 
       return new TrackLink.Builder()
-              .setExternalUrls(new ExternalUrl.JsonUtil().createModelObject(jsonObject.getAsJsonObject("external_urls")))
-              .setHref(jsonObject.get("href").getAsString())
-              .setId(jsonObject.get("id").getAsString())
-              .setType(ModelObjectType.valueOf(jsonObject.get("type").getAsString().toUpperCase()))
-              .setUri(jsonObject.get("uri").getAsString())
+              .setExternalUrls(
+                      hasAndNotNull(jsonObject, "external_urls")
+                              ? new ExternalUrl.JsonUtil().createModelObject(
+                              jsonObject.getAsJsonObject("external_urls"))
+                              : null)
+              .setHref(
+                      hasAndNotNull(jsonObject, "href")
+                              ? jsonObject.get("href").getAsString()
+                              : null)
+              .setId(
+                      hasAndNotNull(jsonObject, "id")
+                              ? jsonObject.get("id").getAsString()
+                              : null)
+              .setType(
+                      hasAndNotNull(jsonObject, "type")
+                              ? ModelObjectType.valueOf(
+                              jsonObject.get("type").getAsString().toUpperCase())
+                              : null)
+              .setUri(
+                      hasAndNotNull(jsonObject, "uri")
+                              ? jsonObject.get("uri").getAsString()
+                              : null)
               .build();
     }
   }

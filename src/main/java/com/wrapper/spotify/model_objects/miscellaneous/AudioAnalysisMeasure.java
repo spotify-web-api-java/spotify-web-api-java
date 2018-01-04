@@ -66,9 +66,18 @@ public class AudioAnalysisMeasure extends AbstractModelObject {
       }
 
       return new AudioAnalysisMeasure.Builder()
-              .setConfidence(jsonObject.get("confidence").getAsFloat())
-              .setDuration(jsonObject.get("duration").getAsFloat())
-              .setStart(jsonObject.get("start").getAsFloat())
+              .setConfidence(
+                      hasAndNotNull(jsonObject, "confidence")
+                              ? jsonObject.get("confidence").getAsFloat()
+                              : null)
+              .setDuration(
+                      hasAndNotNull(jsonObject, "duration")
+                              ? jsonObject.get("duration").getAsFloat()
+                              : null)
+              .setStart(
+                      hasAndNotNull(jsonObject, "start")
+                              ? jsonObject.get("start").getAsFloat()
+                              : null)
               .build();
     }
   }

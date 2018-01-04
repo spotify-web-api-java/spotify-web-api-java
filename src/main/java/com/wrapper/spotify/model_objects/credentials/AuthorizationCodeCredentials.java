@@ -149,11 +149,26 @@ public class AuthorizationCodeCredentials extends AbstractModelObject {
       }
 
       return new AuthorizationCodeCredentials.Builder()
-              .setAccessToken(jsonObject.get("access_token").getAsString())
-              .setTokenType(jsonObject.get("token_type").getAsString())
-              .setScope(jsonObject.get("scope").getAsString())
-              .setExpiresIn(jsonObject.get("expires_in").getAsInt())
-              .setRefreshToken(jsonObject.get("refresh_token").getAsString())
+              .setAccessToken(
+                      hasAndNotNull(jsonObject, "access_token")
+                              ? jsonObject.get("access_token").getAsString()
+                              : null)
+              .setTokenType(
+                      hasAndNotNull(jsonObject, "token_type")
+                              ? jsonObject.get("token_type").getAsString()
+                              : null)
+              .setScope(
+                      hasAndNotNull(jsonObject, "scope")
+                              ? jsonObject.get("scope").getAsString()
+                              : null)
+              .setExpiresIn(
+                      hasAndNotNull(jsonObject, "expires_in")
+                              ? jsonObject.get("expires_in").getAsInt()
+                              : null)
+              .setRefreshToken(
+                      hasAndNotNull(jsonObject, "refresh_token")
+                              ? jsonObject.get("refresh_token").getAsString()
+                              : null)
               .build();
     }
   }

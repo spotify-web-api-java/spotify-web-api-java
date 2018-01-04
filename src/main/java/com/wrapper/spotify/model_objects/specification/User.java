@@ -322,33 +322,62 @@ public class User extends AbstractModelObject {
         return null;
       }
 
-      if (jsonObject.has("birthdate")) {
-        return new User.Builder()
-                .setBirthdate(jsonObject.get("birthdate").getAsString())
-                .setCountry(CountryCode.getByCode(jsonObject.get("country").getAsString()))
-                .setDisplayName(jsonObject.has("display_name") ? jsonObject.get("display_name").getAsString() : null)
-                .setEmail(jsonObject.get("email").getAsString())
-                .setExternalUrls(new ExternalUrl.JsonUtil().createModelObject(jsonObject.getAsJsonObject("external_urls")))
-                .setFollowers(new Followers.JsonUtil().createModelObject(jsonObject.getAsJsonObject("followers")))
-                .setHref(jsonObject.get("href").getAsString())
-                .setId(jsonObject.get("id").getAsString())
-                .setImages(jsonObject.has("images") ? new Image.JsonUtil().createModelObjectArray(jsonObject.getAsJsonArray("images")) : null)
-                .setProduct(ProductType.valueOf(jsonObject.get("product").getAsString().toUpperCase()))
-                .setType(ModelObjectType.valueOf(jsonObject.get("type").getAsString().toUpperCase()))
-                .setUri(jsonObject.get("uri").getAsString())
-                .build();
-      } else {
-        return new Builder()
-                .setDisplayName(jsonObject.has("display_name") ? jsonObject.get("display_name").getAsString() : null)
-                .setExternalUrls(new ExternalUrl.JsonUtil().createModelObject(jsonObject.getAsJsonObject("external_urls")))
-                .setFollowers(new Followers.JsonUtil().createModelObject(jsonObject.getAsJsonObject("followers")))
-                .setHref(jsonObject.get("href").getAsString())
-                .setId(jsonObject.get("id").getAsString())
-                .setImages(jsonObject.has("images") ? new Image.JsonUtil().createModelObjectArray(jsonObject.getAsJsonArray("images")) : null)
-                .setType(ModelObjectType.valueOf(jsonObject.get("type").getAsString().toUpperCase()))
-                .setUri(jsonObject.get("uri").getAsString())
-                .build();
-      }
+      return new User.Builder()
+              .setBirthdate(
+                      hasAndNotNull(jsonObject, "birthdate")
+                              ? jsonObject.get("birthdate").getAsString()
+                              : null)
+              .setCountry(
+                      hasAndNotNull(jsonObject, "country")
+                              ? CountryCode.getByCode(
+                              jsonObject.get("country").getAsString())
+                              : null)
+              .setDisplayName(
+                      hasAndNotNull(jsonObject, "display_name")
+                              ? jsonObject.get("display_name").getAsString()
+                              : null)
+              .setEmail(
+                      hasAndNotNull(jsonObject, "email")
+                              ? jsonObject.get("email").getAsString()
+                              : null)
+              .setExternalUrls(
+                      hasAndNotNull(jsonObject, "external_urls")
+                              ? new ExternalUrl.JsonUtil().createModelObject(
+                              jsonObject.getAsJsonObject("external_urls"))
+                              : null)
+              .setFollowers(
+                      hasAndNotNull(jsonObject, "followers")
+                              ? new Followers.JsonUtil().createModelObject(
+                              jsonObject.getAsJsonObject("followers"))
+                              : null)
+              .setHref(
+                      hasAndNotNull(jsonObject, "href")
+                              ? jsonObject.get("href").getAsString()
+                              : null)
+              .setId(
+                      hasAndNotNull(jsonObject, "id")
+                              ? jsonObject.get("id").getAsString()
+                              : null)
+              .setImages(
+                      hasAndNotNull(jsonObject, "images")
+                              ? new Image.JsonUtil().createModelObjectArray(
+                              jsonObject.getAsJsonArray("images"))
+                              : null)
+              .setProduct(
+                      hasAndNotNull(jsonObject, "product")
+                              ? ProductType.valueOf(
+                              jsonObject.get("product").getAsString().toUpperCase())
+                              : null)
+              .setType(
+                      hasAndNotNull(jsonObject, "type")
+                              ? ModelObjectType.valueOf(
+                              jsonObject.get("type").getAsString().toUpperCase())
+                              : null)
+              .setUri(
+                      hasAndNotNull(jsonObject, "uri")
+                              ? jsonObject.get("uri").getAsString()
+                              : null)
+              .build();
     }
   }
 }

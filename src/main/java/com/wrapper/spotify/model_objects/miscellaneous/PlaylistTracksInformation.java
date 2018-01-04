@@ -85,8 +85,14 @@ public class PlaylistTracksInformation extends AbstractModelObject {
       }
 
       return new PlaylistTracksInformation.Builder()
-              .setHref(jsonObject.get("href").getAsString())
-              .setTotal(jsonObject.get("total").getAsInt())
+              .setHref(
+                      hasAndNotNull(jsonObject, "href")
+                              ? jsonObject.get("href").getAsString()
+                              : null)
+              .setTotal(
+                      hasAndNotNull(jsonObject, "total")
+                              ? jsonObject.get("total").getAsInt()
+                              : null)
               .build();
     }
   }

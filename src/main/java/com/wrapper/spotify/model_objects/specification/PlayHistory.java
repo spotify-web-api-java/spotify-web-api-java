@@ -70,9 +70,20 @@ public class PlayHistory extends AbstractModelObject {
 
       try {
         return new Builder()
-                .setTrack(new TrackSimplified.JsonUtil().createModelObject(jsonObject.getAsJsonObject("track")))
-                .setPlayedAt(simpleDateFormat.parse(jsonObject.get("played_at").getAsString()))
-                .setContext(new Context.JsonUtil().createModelObject(jsonObject.getAsJsonObject("context")))
+                .setTrack(
+                        hasAndNotNull(jsonObject, "track")
+                                ? new TrackSimplified.JsonUtil().createModelObject(
+                                jsonObject.getAsJsonObject("track"))
+                                : null)
+                .setPlayedAt(
+                        hasAndNotNull(jsonObject, "played_at")
+                                ? simpleDateFormat.parse(jsonObject.get("played_at").getAsString())
+                                : null)
+                .setContext(
+                        hasAndNotNull(jsonObject, "context")
+                                ? new Context.JsonUtil().createModelObject(
+                                jsonObject.getAsJsonObject("context"))
+                                : null)
                 .build();
       } catch (ParseException e) {
         e.printStackTrace();

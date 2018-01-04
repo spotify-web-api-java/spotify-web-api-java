@@ -114,13 +114,34 @@ public class AudioAnalysisMeta extends AbstractModelObject {
       }
 
       return new AudioAnalysisMeta.Builder()
-              .setAnalysisTime(jsonObject.get("analysis_time").getAsFloat())
-              .setAnalyzerVersion(jsonObject.get("analyzer_version").getAsString())
-              .setDetailedStatus(jsonObject.get("detailed_status").getAsString())
-              .setInputProcess(jsonObject.get("input_process").getAsString())
-              .setPlatform(jsonObject.get("platform").getAsString())
-              .setStatusCode(jsonObject.get("status_code").getAsInt())
-              .setTimestamp(jsonObject.get("timestamp").getAsLong())
+              .setAnalysisTime(
+                      hasAndNotNull(jsonObject, "analysis_time")
+                              ? jsonObject.get("analysis_time").getAsFloat()
+                              : null)
+              .setAnalyzerVersion(
+                      hasAndNotNull(jsonObject, "analysis_time")
+                              ? jsonObject.get("analyzer_version").getAsString()
+                              : null)
+              .setDetailedStatus(
+                      hasAndNotNull(jsonObject, "analysis_time")
+                              ? jsonObject.get("detailed_status").getAsString()
+                              : null)
+              .setInputProcess(
+                      hasAndNotNull(jsonObject, "analysis_time")
+                              ? jsonObject.get("input_process").getAsString()
+                              : null)
+              .setPlatform(
+                      hasAndNotNull(jsonObject, "analysis_time")
+                              ? jsonObject.get("platform").getAsString()
+                              : null)
+              .setStatusCode(
+                      hasAndNotNull(jsonObject, "analysis_time")
+                              ? jsonObject.get("status_code").getAsInt()
+                              : null)
+              .setTimestamp(
+                      hasAndNotNull(jsonObject, "analysis_time")
+                              ? jsonObject.get("timestamp").getAsLong()
+                              : null)
               .build();
     }
   }

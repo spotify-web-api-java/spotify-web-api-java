@@ -54,8 +54,16 @@ public class Recommendations extends AbstractModelObject {
       }
 
       return new Recommendations.Builder()
-              .setSeeds(new RecommendationsSeed.JsonUtil().createModelObjectArray(jsonObject.getAsJsonArray("seeds")))
-              .setTracks(new TrackSimplified.JsonUtil().createModelObjectArray(jsonObject.getAsJsonArray("tracks")))
+              .setSeeds(
+                      hasAndNotNull(jsonObject, "seeds")
+                              ? new RecommendationsSeed.JsonUtil().createModelObjectArray(
+                              jsonObject.getAsJsonArray("seeds"))
+                              : null)
+              .setTracks(
+                      hasAndNotNull(jsonObject, "tracks")
+                              ? new TrackSimplified.JsonUtil().createModelObjectArray(
+                              jsonObject.getAsJsonArray("tracks"))
+                              : null)
               .build();
     }
   }

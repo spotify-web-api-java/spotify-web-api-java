@@ -89,8 +89,15 @@ public class SavedAlbum extends AbstractModelObject {
 
       try {
         return new Builder()
-                .setAddedAt(simpleDateFormat.parse(jsonObject.get("added_at").getAsString()))
-                .setAlbum(new Album.JsonUtil().createModelObject(jsonObject.getAsJsonObject("album")))
+                .setAddedAt(
+                        hasAndNotNull(jsonObject, "added_at")
+                                ? simpleDateFormat.parse(jsonObject.get("added_at").getAsString())
+                                : null)
+                .setAlbum(
+                        hasAndNotNull(jsonObject, "album")
+                                ? new Album.JsonUtil().createModelObject(
+                                jsonObject.getAsJsonObject("album"))
+                                : null)
                 .build();
       } catch (ParseException e) {
         e.printStackTrace();
