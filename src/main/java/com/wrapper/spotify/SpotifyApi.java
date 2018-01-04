@@ -224,7 +224,7 @@ public class SpotifyApi {
    *                     the authorization code.
    * @return The URL where the user can give application permissions.
    */
-  public AuthorizationCodeUriRequest.Builder createAuthorizeUri(String client_id, String redirect_uri) {
+  public AuthorizationCodeUriRequest.Builder authorizationCodeUri(String client_id, String redirect_uri) {
     return new AuthorizationCodeUriRequest.Builder()
             .setDefaults(httpManager, scheme, host, port)
             .client_id(client_id)
@@ -232,7 +232,7 @@ public class SpotifyApi {
             .redirect_uri(redirect_uri);
   }
 
-  public AuthorizationCodeUriRequest.Builder createAuthorizeUri() {
+  public AuthorizationCodeUriRequest.Builder authorizationCodeUri() {
     return new AuthorizationCodeUriRequest.Builder()
             .setDefaults(httpManager, scheme, host, port)
             .client_id(clientId)

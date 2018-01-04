@@ -648,7 +648,7 @@ public class ApiTest {
     final String state = "someExpectedStateString";
 
     String authorizeUrlString = api
-            .createAuthorizeUri()
+            .authorizationCodeUri()
             .scope(Joiner.on(" ").join(scopes))
             .state(state)
             .build()
@@ -671,7 +671,7 @@ public class ApiTest {
     final String state = "someExpectedStateString";
 
     String authorizeUrlString = api
-            .createAuthorizeUri(clientId, redirectURI)
+            .authorizationCodeUri(clientId, redirectURI)
             .scope(Joiner.on(" ").join(scopes))
             .build()
             .getUri()
@@ -694,7 +694,7 @@ public class ApiTest {
     final String state = "someExpectedStateString";
 
     String authorizeURLString = api
-            .createAuthorizeUri(clientId, redirectURI)
+            .authorizationCodeUri(clientId, redirectURI)
             .scope(Joiner.on(" ").join(scopes))
             .state(state)
             .show_dialog(true)
