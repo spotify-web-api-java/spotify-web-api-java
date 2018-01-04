@@ -11,15 +11,15 @@ import java.util.concurrent.ExecutionException;
 
 import static org.junit.Assert.assertEquals;
 
-public class AuthorizationCodeRequestTest implements ITest<AuthorizationCodeCredentials> {
+public class AuthorizationCodeRefreshRequestTest implements ITest<AuthorizationCodeCredentials> {
 
-  private final AuthorizationCodeRequest successRequest = SPOTIFY_API.authorizationCode("Code")
+  private final AuthorizationCodeRefreshRequest successRequest = SPOTIFY_API.authorizationCodeRefresh()
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
-                          "requests/authorization/authorization_code/AuthorizationCode.json"))
+                          "requests/authorization/authorization_code/AuthorizationCodeRefresh.json"))
           .build();
 
-  public AuthorizationCodeRequestTest() throws Exception {
+  public AuthorizationCodeRefreshRequestTest() throws Exception {
   }
 
   @Test
@@ -34,7 +34,7 @@ public class AuthorizationCodeRequestTest implements ITest<AuthorizationCodeCred
 
   public void shouldSucceed(final AuthorizationCodeCredentials authorizationCodeCredentials) {
     assertEquals(
-            "NgCXRK...MzYjw",
+            "NgA6ZcYI...ixn8bUQ",
             authorizationCodeCredentials.getAccessToken());
     assertEquals(
             "Bearer",
@@ -45,8 +45,5 @@ public class AuthorizationCodeRequestTest implements ITest<AuthorizationCodeCred
     assertEquals(
             3600,
             (int) authorizationCodeCredentials.getExpiresIn());
-    assertEquals(
-            "NgAagA...Um_SHo",
-            authorizationCodeCredentials.getRefreshToken());
   }
 }
