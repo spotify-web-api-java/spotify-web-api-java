@@ -2,9 +2,11 @@ package com.wrapper.spotify.requests;
 
 import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.IHttpManager;
+import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import org.apache.http.Header;
 import org.apache.http.NameValuePair;
 
+import java.io.IOException;
 import java.net.URI;
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -26,6 +28,26 @@ public interface IRequest {
   List<NameValuePair> getBodyParameters();
 
   String getBody();
+
+  <T> T execute() throws
+          IOException,
+          SpotifyWebApiException;
+
+  String getJson() throws
+          IOException,
+          SpotifyWebApiException;
+
+  String postJson() throws
+          IOException,
+          SpotifyWebApiException;
+
+  String putJson() throws
+          IOException,
+          SpotifyWebApiException;
+
+  String deleteJson() throws
+          IOException,
+          SpotifyWebApiException;
 
   interface Builder {
 

@@ -54,6 +54,8 @@ public interface IModelObject {
      */
     T createModelObject(final JsonObject jsonObject);
 
+    T createModelObject(final String json);
+
     T[] createModelObjectArray(final JsonArray jsonArray);
 
     T[] createModelObjectArray(final String json);
