@@ -10,7 +10,6 @@ import com.wrapper.spotify.model_objects.AbstractModelObject;
 
 /**
  * Retrieve information about albums by building instances from this class.
- * TODO: Implement a getLabel() method
  */
 public class Album extends AbstractModelObject {
   private final AlbumType albumType;
@@ -146,6 +145,15 @@ public class Album extends AbstractModelObject {
    */
   public Image[] getImages() {
     return images;
+  }
+
+  /**
+   * Get the label for the album.
+   *
+   * @return The label for the album.
+   */
+  public String getLabel() {
+    return label;
   }
 
   /**
