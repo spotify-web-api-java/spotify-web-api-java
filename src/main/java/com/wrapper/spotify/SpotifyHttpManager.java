@@ -125,7 +125,7 @@ public class SpotifyHttpManager implements IHttpManager {
     return responseBody;
   }
 
-  private CloseableHttpResponse execute(HttpRequestBase method) throws
+  private HttpResponse execute(HttpRequestBase method) throws
           IOException {
     final CredentialsProvider credentialsProvider = new BasicCredentialsProvider();
     credentialsProvider.setCredentials(
@@ -151,7 +151,7 @@ public class SpotifyHttpManager implements IHttpManager {
     return httpClient.execute(method);
   }
 
-  private String getResponseBody(CloseableHttpResponse httpResponse) throws
+  private String getResponseBody(HttpResponse httpResponse) throws
           IOException,
           SpotifyWebApiException {
     StatusLine statusLine = httpResponse.getStatusLine();
