@@ -1,8 +1,5 @@
 package com.wrapper.spotify.requests.data.search;
 
-import com.google.common.util.concurrent.FutureCallback;
-import com.google.common.util.concurrent.Futures;
-import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.enums.ModelObjectType;
@@ -14,7 +11,7 @@ import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.Future;
 
 import static org.junit.Assert.*;
 
@@ -30,23 +27,10 @@ public class PlaylistSearchRequestTest {
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
-    final SettableFuture<Paging<PlaylistSimplified>> searchResultFuture = request.getAsync();
+    final Future<Paging<PlaylistSimplified>> requestFuture = request.executeAsync();
+    final Paging<PlaylistSimplified> playlistSimplifiedPaging = requestFuture.get();
 
-    Futures.addCallback(searchResultFuture, new FutureCallback<Paging<PlaylistSimplified>>() {
-      @Override
-      public void onSuccess(Paging<PlaylistSimplified> playlistSearchResult) {
-
-        validatePlayists(playlistSearchResult);
-        asyncCompleted.countDown();
-      }
-
-      @Override
-      public void onFailure(Throwable throwable) {
-        fail("Failed to resolve future");
-      }
-    });
-
-    asyncCompleted.await(1, TimeUnit.SECONDS);
+    validatePlayists(playlistSimplifiedPaging);
   }
 
   @Test
@@ -56,7 +40,7 @@ public class PlaylistSearchRequestTest {
     final SearchPlaylistsRequest request = api.searchPlaylists("dog")
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/search/PlaylistSearchRequest.json")).build();
 
-    final Paging<PlaylistSimplified> playlistSearchResult = request.get();
+    final Paging<PlaylistSimplified> playlistSearchResult = request.execute();
     validatePlayists(playlistSearchResult);
   }
 

@@ -1,6 +1,5 @@
 package com.wrapper.spotify.requests.data.player;
 
-import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
 
@@ -12,16 +11,10 @@ public class SkipUsersPlaybackToPreviousTrackRequest extends AbstractDataRequest
     super(builder);
   }
 
-  public void post() throws
+  public String execute() throws
           IOException,
           SpotifyWebApiException {
-    postJson();
-  }
-
-  public SettableFuture postAsync() throws
-          IOException,
-          SpotifyWebApiException {
-    return executeAsync(postJson());
+    return postJson();
   }
 
   public static final class Builder extends AbstractDataRequest.Builder<Builder> {

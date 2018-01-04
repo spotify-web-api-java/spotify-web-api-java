@@ -1,6 +1,5 @@
 package com.wrapper.spotify.requests.data.search;
 
-import com.google.common.util.concurrent.SettableFuture;
 import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.special.SearchResult;
@@ -14,16 +13,10 @@ public class SearchItemRequest extends AbstractDataRequest {
     super(builder);
   }
 
-  public SearchResult get() throws
+  public SearchResult execute() throws
           IOException,
           SpotifyWebApiException {
     return new SearchResult.JsonUtil().createModelObject(getJson());
-  }
-
-  public SettableFuture<SearchResult> getAsync() throws
-          IOException,
-          SpotifyWebApiException {
-    return executeAsync(new SearchResult.JsonUtil().createModelObject(getJson()));
   }
 
   public static final class Builder extends AbstractDataRequest.Builder<Builder> {

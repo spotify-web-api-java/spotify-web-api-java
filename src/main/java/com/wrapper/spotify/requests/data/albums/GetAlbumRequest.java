@@ -1,6 +1,5 @@
 package com.wrapper.spotify.requests.data.albums;
 
-import com.google.common.util.concurrent.SettableFuture;
 import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.Album;
@@ -29,24 +28,12 @@ public class GetAlbumRequest extends AbstractDataRequest {
    * @throws IOException            In case of networking issues.
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
    */
-  public Album get() throws
+  public Album execute() throws
           IOException,
           SpotifyWebApiException {
     return new Album.JsonUtil().createModelObject(getJson());
   }
 
-  /**
-   * Get an {@link Album} asynchronously.
-   *
-   * @return A {@link SettableFuture} for an {@link Album}.
-   * @throws IOException            In case of networking issues.
-   * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
-   */
-  public SettableFuture<Album> getAsync() throws
-          IOException,
-          SpotifyWebApiException {
-    return executeAsync(new Album.JsonUtil().createModelObject(getJson()));
-  }
 
   /**
    * A builder class for a {@link GetAlbumRequest}.

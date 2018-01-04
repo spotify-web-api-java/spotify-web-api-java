@@ -1,6 +1,5 @@
 package com.wrapper.spotify.requests.data.follow;
 
-import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
 
@@ -12,16 +11,10 @@ public class UnfollowPlaylistRequest extends AbstractDataRequest {
     super(builder);
   }
 
-  public void delete() throws
+  public String execute() throws
           IOException,
           SpotifyWebApiException {
-    deleteJson();
-  }
-
-  public SettableFuture deleteAsync() throws
-          IOException,
-          SpotifyWebApiException {
-    return executeAsync(deleteJson());
+    return deleteJson();
   }
 
   public static final class Builder extends AbstractDataRequest.Builder<Builder> {

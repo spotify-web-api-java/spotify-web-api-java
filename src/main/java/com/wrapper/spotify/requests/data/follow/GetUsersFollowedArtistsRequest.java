@@ -1,6 +1,5 @@
 package com.wrapper.spotify.requests.data.follow;
 
-import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.enums.ModelObjectType;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.Artist;
@@ -15,16 +14,10 @@ public class GetUsersFollowedArtistsRequest extends AbstractDataRequest {
     super(builder);
   }
 
-  public PagingCursorbased<Artist> get() throws
+  public PagingCursorbased<Artist> execute() throws
           IOException,
           SpotifyWebApiException {
     return new Artist.JsonUtil().createModelObjectPagingCursorbased(getJson(), "artists");
-  }
-
-  public SettableFuture<PagingCursorbased<Artist>> getAsync() throws
-          IOException,
-          SpotifyWebApiException {
-    return executeAsync(new Artist.JsonUtil().createModelObjectPagingCursorbased(getJson(), "artists"));
   }
 
   public static final class Builder extends AbstractDataRequest.Builder<Builder> {

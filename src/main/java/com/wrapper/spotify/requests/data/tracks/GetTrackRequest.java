@@ -1,6 +1,5 @@
 package com.wrapper.spotify.requests.data.tracks;
 
-import com.google.common.util.concurrent.SettableFuture;
 import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.Track;
@@ -14,16 +13,10 @@ public class GetTrackRequest extends AbstractDataRequest {
     super(builder);
   }
 
-  public Track get() throws
+  public Track execute() throws
           IOException,
           SpotifyWebApiException {
     return new Track.JsonUtil().createModelObject(getJson());
-  }
-
-  public SettableFuture<Track> getAsync() throws
-          IOException,
-          SpotifyWebApiException {
-    return executeAsync(new Track.JsonUtil().createModelObject(getJson()));
   }
 
   public static final class Builder extends AbstractDataRequest.Builder<Builder> {

@@ -1,17 +1,14 @@
 package com.wrapper.spotify.requests.data.artists;
 
-import com.google.common.util.concurrent.FutureCallback;
-import com.google.common.util.concurrent.Futures;
-import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.model_objects.specification.Artist;
 import org.junit.Test;
 
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.Future;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 public class GetArtistsRelatedArtistsRequestTest {
 
@@ -24,30 +21,15 @@ public class GetArtistsRelatedArtistsRequestTest {
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/artists/GetArtistsRelatedArtistsRequest.json"))
             .build();
 
-    final CountDownLatch asyncCompleted = new CountDownLatch(1);
+    final Future<Artist[]> requestFuture = request.executeAsync();
+    final Artist[] artists = requestFuture.get();
 
-    final SettableFuture<Artist[]> artistFuture = request.getAsync();
-
-    Futures.addCallback(artistFuture, new FutureCallback<Artist[]>() {
-
-      @Override
-      public void onSuccess(Artist... artists) {
-        assertFalse(artists.length == 0);
-        final Artist firstArtist = artists[0];
-        final String id = firstArtist.getId();
-        assertEquals("https://api.spotify.com/v1/artists/" + id, firstArtist.getHref());
-        assertEquals(id, firstArtist.getId());
-        assertEquals("spotify:artist:" + id, firstArtist.getUri());
-        asyncCompleted.countDown();
-      }
-
-      @Override
-      public void onFailure(Throwable throwable) {
-        fail("Failed to resolve future");
-      }
-    });
-
-    asyncCompleted.await(1, TimeUnit.SECONDS);
+    assertFalse(artists.length == 0);
+    final Artist firstArtist = artists[0];
+    final String id = firstArtist.getId();
+    assertEquals("https://api.spotify.com/v1/artists/" + id, firstArtist.getHref());
+    assertEquals(id, firstArtist.getId());
+    assertEquals("spotify:artist:" + id, firstArtist.getUri());
   }
 
   @Test
@@ -59,7 +41,7 @@ public class GetArtistsRelatedArtistsRequestTest {
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/artists/GetArtistsRelatedArtistsRequest.json"))
             .build();
 
-    final Artist[] artists = request.get();
+    final Artist[] artists = request.execute();
 
 
     assertFalse(artists.length == 0);

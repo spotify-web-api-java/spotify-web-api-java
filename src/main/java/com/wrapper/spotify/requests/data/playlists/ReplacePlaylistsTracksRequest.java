@@ -1,6 +1,5 @@
 package com.wrapper.spotify.requests.data.playlists;
 
-import com.google.common.util.concurrent.SettableFuture;
 import com.google.gson.JsonArray;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
@@ -13,16 +12,10 @@ public class ReplacePlaylistsTracksRequest extends AbstractDataRequest {
     super(builder);
   }
 
-  public void put() throws
+  public String execute() throws
           IOException,
           SpotifyWebApiException {
-    putJson();
-  }
-
-  public SettableFuture putAsync() throws
-          IOException,
-          SpotifyWebApiException {
-    return executeAsync(putJson());
+    return putJson();
   }
 
   public static final class Builder extends AbstractDataRequest.Builder<Builder> {

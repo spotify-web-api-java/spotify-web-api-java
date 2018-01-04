@@ -1,6 +1,5 @@
 package com.wrapper.spotify.requests.data.personalization;
 
-import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.enums.ModelObjectType;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.AbstractModelObject;
@@ -21,16 +20,10 @@ public class GetUsersTopArtistsAndTracksRequest<T extends IArtistTrackModelObjec
     this.tClass = tClass;
   }
 
-  public Paging<T> get() throws
+  public Paging<T> execute() throws
           IOException,
           SpotifyWebApiException {
     return tClass.createModelObjectPaging(getJson());
-  }
-
-  public SettableFuture<Paging<T>> getAsync() throws
-          IOException,
-          SpotifyWebApiException {
-    return executeAsync(tClass.createModelObjectPaging(getJson()));
   }
 
   public static final class Builder<T extends IArtistTrackModelObject> extends AbstractDataRequest.Builder<Builder<T>> {

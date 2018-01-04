@@ -1,9 +1,6 @@
 package com.wrapper.spotify.requests.data.playlists;
 
 
-import com.google.common.util.concurrent.FutureCallback;
-import com.google.common.util.concurrent.Futures;
-import com.google.common.util.concurrent.SettableFuture;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonParser;
@@ -15,11 +12,9 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.Future;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
 
 public class RemoveTracksFromPlaylistRequestTest {
   @Test
@@ -41,24 +36,10 @@ public class RemoveTracksFromPlaylistRequestTest {
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/playlists/RemoveTracksFromPlaylistRequest.json"))
             .build();
 
-    final CountDownLatch asyncCompleted = new CountDownLatch(1);
+    final Future<SnapshotResult> requestFuture = request.executeAsync();
+    final SnapshotResult snapshotResult = requestFuture.get();
 
-    final SettableFuture<SnapshotResult> addTrackFuture = request.deleteAsync();
-
-    Futures.addCallback(addTrackFuture, new FutureCallback<SnapshotResult>() {
-      @Override
-      public void onSuccess(SnapshotResult response) {
-        assertEquals(snapshotId, response.getSnapshotId());
-        asyncCompleted.countDown();
-      }
-
-      @Override
-      public void onFailure(Throwable throwable) {
-        fail("Failed to resolve future: " + throwable.getMessage());
-      }
-    });
-
-    asyncCompleted.await(1, TimeUnit.SECONDS);
+    assertEquals(snapshotId, snapshotResult.getSnapshotId());
   }
 
   @Test
@@ -80,7 +61,7 @@ public class RemoveTracksFromPlaylistRequestTest {
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/playlists/RemoveTracksFromPlaylistRequest.json"))
             .build();
 
-    final SnapshotResult snapshotResult = request.delete();
+    final SnapshotResult snapshotResult = request.execute();
     assertEquals(snapshotId, snapshotResult.getSnapshotId());
   }
 }

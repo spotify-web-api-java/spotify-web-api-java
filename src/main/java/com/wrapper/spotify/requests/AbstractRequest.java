@@ -1,8 +1,8 @@
 package com.wrapper.spotify.requests;
 
-import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.IHttpManager;
 import com.wrapper.spotify.SpotifyApi;
+import com.wrapper.spotify.SpotifyApiThreading;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import org.apache.http.Header;
 import org.apache.http.NameValuePair;
@@ -17,6 +17,8 @@ import java.net.URISyntaxException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Callable;
+import java.util.concurrent.Future;
 
 public abstract class AbstractRequest implements IRequest {
 
@@ -65,6 +67,20 @@ public abstract class AbstractRequest implements IRequest {
     this.body = builder.body;
   }
 
+  /**
+   * Get something asynchronously.
+   *
+   * @return A {@link Future} for a generic.
+   */
+  public <T> Future<T> executeAsync() {
+    return SpotifyApiThreading.executeAsync(
+            new Callable<T>() {
+              public T call() throws IOException, SpotifyWebApiException {
+                return execute();
+              }
+            });
+  }
+
   public String getJson() throws
           IOException,
           SpotifyWebApiException {
@@ -99,18 +115,6 @@ public abstract class AbstractRequest implements IRequest {
     headers.toArray(headerArray);
 
     return httpManager.delete(uri, headerArray);
-  }
-
-  public <T> SettableFuture<T> executeAsync(T value) {
-    final SettableFuture<T> settableFuture = SettableFuture.create();
-
-    try {
-      settableFuture.set(value);
-    } catch (Exception e) {
-      settableFuture.setException(e);
-    }
-
-    return settableFuture;
   }
 
   public IHttpManager getHttpManager() {

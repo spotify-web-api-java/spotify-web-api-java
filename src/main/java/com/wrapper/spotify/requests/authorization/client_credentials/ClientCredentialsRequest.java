@@ -1,6 +1,5 @@
 package com.wrapper.spotify.requests.authorization.client_credentials;
 
-import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.credentials.ClientCredentials;
@@ -14,16 +13,10 @@ public class ClientCredentialsRequest extends AbstractAthorizationRequest {
     super(builder);
   }
 
-  public ClientCredentials post() throws
+  public ClientCredentials execute() throws
           IOException,
           SpotifyWebApiException {
     return new ClientCredentials.JsonUtil().createModelObject(postJson());
-  }
-
-  public SettableFuture<ClientCredentials> postAsync() throws
-          IOException,
-          SpotifyWebApiException {
-    return executeAsync(new ClientCredentials.JsonUtil().createModelObject(postJson()));
   }
 
   public static final class Builder extends AbstractAthorizationRequest.Builder<Builder> {

@@ -1,6 +1,5 @@
 package com.wrapper.spotify.requests.data.browse;
 
-import com.google.common.util.concurrent.SettableFuture;
 import com.neovisionaries.i18n.CountryCode;
 import com.neovisionaries.i18n.LanguageCode;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
@@ -23,23 +22,10 @@ public class GetListOfFeaturedPlaylistsRequest extends AbstractDataRequest {
    * @throws IOException            In case of networking issues.
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
    */
-  public FeaturedPlaylists get() throws
+  public FeaturedPlaylists execute() throws
           IOException,
           SpotifyWebApiException {
     return new FeaturedPlaylists.JsonUtil().createModelObject(getJson());
-  }
-
-  /**
-   * Get Featured Playlists asynchronously.
-   *
-   * @return A future that resolves to featured playlists.
-   * @throws IOException            In case of networking issues.
-   * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
-   */
-  public SettableFuture<FeaturedPlaylists> getAsync() throws
-          IOException,
-          SpotifyWebApiException {
-    return executeAsync(new FeaturedPlaylists.JsonUtil().createModelObject(getJson()));
   }
 
   public static final class Builder extends AbstractDataRequest.Builder<Builder> {

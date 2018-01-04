@@ -1,6 +1,5 @@
 package com.wrapper.spotify.requests.data.playlists;
 
-import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.Image;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
@@ -13,16 +12,10 @@ public class GetPlaylistCoverImageRequest extends AbstractDataRequest {
     super(builder);
   }
 
-  public Image[] get() throws
+  public Image[] execute() throws
           IOException,
           SpotifyWebApiException {
     return new Image.JsonUtil().createModelObjectArray(getJson());
-  }
-
-  public SettableFuture<Image[]> getAsync() throws
-          IOException,
-          SpotifyWebApiException {
-    return executeAsync(new Image.JsonUtil().createModelObjectArray(getJson()));
   }
 
   public static final class Builder extends AbstractDataRequest.Builder<Builder> {

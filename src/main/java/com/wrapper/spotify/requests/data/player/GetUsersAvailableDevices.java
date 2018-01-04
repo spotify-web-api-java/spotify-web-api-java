@@ -1,6 +1,5 @@
 package com.wrapper.spotify.requests.data.player;
 
-import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.miscellaneous.Device;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
@@ -13,16 +12,10 @@ public class GetUsersAvailableDevices extends AbstractDataRequest {
     super(builder);
   }
 
-  public Device[] get() throws
+  public Device[] execute() throws
           IOException,
           SpotifyWebApiException {
     return new Device.JsonUtil().createModelObjectArray(getJson(), "devices");
-  }
-
-  public SettableFuture<Device[]> getAsync() throws
-          IOException,
-          SpotifyWebApiException {
-    return executeAsync(new Device.JsonUtil().createModelObjectArray(getJson(), "devices"));
   }
 
   public static final class Builder extends AbstractDataRequest.Builder<Builder> {

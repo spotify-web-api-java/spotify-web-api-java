@@ -1,12 +1,21 @@
 package com.wrapper.spotify.requests.authorization.authorization_code;
 
 import com.wrapper.spotify.SpotifyApi;
+import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.requests.AbstractRequest;
+
+import java.io.IOException;
 
 public class AuthorizationCodeUriRequest extends AbstractRequest {
 
   private AuthorizationCodeUriRequest(Builder builder) {
     super(builder);
+  }
+
+  public String execute() throws
+          IOException,
+          SpotifyWebApiException {
+    return getJson();
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {

@@ -1,8 +1,5 @@
 package com.wrapper.spotify.requests.data.artists;
 
-import com.google.common.util.concurrent.FutureCallback;
-import com.google.common.util.concurrent.Futures;
-import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.model_objects.specification.Artist;
@@ -11,10 +8,9 @@ import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.Future;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
 
 @RunWith(MockitoJUnitRunner.class)
 public class GetSeveralArtistsRequestTest {
@@ -29,29 +25,16 @@ public class GetSeveralArtistsRequestTest {
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
-    final SettableFuture<Artist[]> artistsFuture = request.getAsync();
+    final Future<Artist[]> requestFuture = request.executeAsync();
+    final Artist[] artists = requestFuture.get();
 
-    Futures.addCallback(artistsFuture, new FutureCallback<Artist[]>() {
-      @Override
-      public void onSuccess(Artist... artists) {
-        assertEquals(2, artists.length);
+    assertEquals(2, artists.length);
 
-        final Artist firstArtist = artists[0];
-        final Artist secondArtist = artists[1];
+    final Artist firstArtist = artists[0];
+    final Artist secondArtist = artists[1];
 
-        assertEquals("0oSGxfWSnnOXhD2fKuz2Gy", firstArtist.getId());
-        assertEquals("3dBVyJ7JuOMt4GE9607Qin", secondArtist.getId());
-
-        asyncCompleted.countDown();
-      }
-
-      @Override
-      public void onFailure(Throwable throwable) {
-        fail("Failed to resolve future");
-      }
-    });
-
-    asyncCompleted.await(1, TimeUnit.SECONDS);
+    assertEquals("0oSGxfWSnnOXhD2fKuz2Gy", firstArtist.getId());
+    assertEquals("3dBVyJ7JuOMt4GE9607Qin", secondArtist.getId());
   }
 
   @Test
@@ -62,7 +45,7 @@ public class GetSeveralArtistsRequestTest {
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/artists/GetSeveralArtistsRequest.json"))
             .build();
 
-    final Artist[] artists = request.get();
+    final Artist[] artists = request.execute();
 
     assertEquals(2, artists.length);
 

@@ -1,6 +1,5 @@
 package com.wrapper.spotify.requests.data.search.simplified;
 
-import com.google.common.util.concurrent.SettableFuture;
 import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.Paging;
@@ -15,16 +14,10 @@ public class SearchPlaylistsRequest extends AbstractDataRequest {
     super(builder);
   }
 
-  public Paging<PlaylistSimplified> get() throws
+  public Paging<PlaylistSimplified> execute() throws
           IOException,
           SpotifyWebApiException {
     return new PlaylistSimplified.JsonUtil().createModelObjectPaging(getJson(), "playlists");
-  }
-
-  public SettableFuture<Paging<PlaylistSimplified>> getAsync() throws
-          IOException,
-          SpotifyWebApiException {
-    return executeAsync(new PlaylistSimplified.JsonUtil().createModelObjectPaging(getJson(), "playlists"));
   }
 
   public static final class Builder extends AbstractDataRequest.Builder<Builder> {

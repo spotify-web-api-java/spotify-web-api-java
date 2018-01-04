@@ -1,18 +1,15 @@
 package com.wrapper.spotify.requests.data.playlists;
 
-import com.google.common.util.concurrent.FutureCallback;
-import com.google.common.util.concurrent.Futures;
-import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.TestUtil;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.Future;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 @RunWith(MockitoJUnitRunner.class)
 public class ReplacePlaylistsTracksRequestTest {
@@ -25,25 +22,11 @@ public class ReplacePlaylistsTracksRequestTest {
             "userId", "5oEljuMoe9MXH6tBIPbd5e", new String[]{"spotify:track:4iV5W9uYEdYUVa79Axb7Rh"}
     ).setHttpManager(TestUtil.MockedHttpManager.returningString("")).build();
 
-    final CountDownLatch asyncCompleted = new CountDownLatch(1);
+    final Future<String> requestFuture = request.executeAsync();
+    final String string = requestFuture.get();
 
-    final SettableFuture<String> result = request.putAsync();
-
-    Futures.addCallback(result, new FutureCallback<String>() {
-      @Override
-      public void onSuccess(String result) {
-        assertNotNull(result);
-        assertEquals("", result);
-        asyncCompleted.countDown();
-      }
-
-      @Override
-      public void onFailure(Throwable throwable) {
-        fail("Failed to resolve future: " + throwable.getMessage());
-      }
-    });
-
-    asyncCompleted.await(1, TimeUnit.SECONDS);
+    assertNotNull(string);
+    assertEquals("", string);
   }
 
   @Test
@@ -53,6 +36,6 @@ public class ReplacePlaylistsTracksRequestTest {
     final ReplacePlaylistsTracksRequest request = api.replacePlaylistsTracks(
             "userId", "5oEljuMoe9MXH6tBIPbd5e", new String[]{"spotify:track:4iV5W9uYEdYUVa79Axb7Rh"}
     ).setHttpManager(TestUtil.MockedHttpManager.returningString("")).build();
-    request.put();
+    request.execute();
   }
 }

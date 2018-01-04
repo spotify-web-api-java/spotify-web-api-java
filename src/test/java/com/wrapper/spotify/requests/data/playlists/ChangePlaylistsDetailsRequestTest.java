@@ -1,17 +1,12 @@
 package com.wrapper.spotify.requests.data.playlists;
 
-import com.google.common.util.concurrent.FutureCallback;
-import com.google.common.util.concurrent.Futures;
-import com.google.common.util.concurrent.ListenableFuture;
 import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.TestUtil;
 import org.junit.Test;
 
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.Future;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
 
 public class ChangePlaylistsDetailsRequestTest {
 
@@ -28,26 +23,10 @@ public class ChangePlaylistsDetailsRequestTest {
             .setHttpManager(TestUtil.MockedHttpManager.returningString(""))
             .build();
 
-    final CountDownLatch asyncCompleted = new CountDownLatch(1);
+    final Future<String> requestFuture = request.executeAsync();
+    final String string = requestFuture.get();
 
-    ListenableFuture<String> future = request.putAsync();
-
-    Futures.addCallback(future, new FutureCallback<String>() {
-
-      @Override
-      public void onSuccess(String response) {
-        assertEquals("", response);
-
-        asyncCompleted.countDown();
-      }
-
-      @Override
-      public void onFailure(Throwable throwable) {
-        fail("Failed to resolve future");
-      }
-    });
-
-    asyncCompleted.await(1, TimeUnit.SECONDS);
+    assertEquals("", string);
   }
 
   @Test
@@ -63,6 +42,6 @@ public class ChangePlaylistsDetailsRequestTest {
             .setHttpManager(TestUtil.MockedHttpManager.returningString(""))
             .build();
 
-    request.put();
+    request.execute();
   }
 }

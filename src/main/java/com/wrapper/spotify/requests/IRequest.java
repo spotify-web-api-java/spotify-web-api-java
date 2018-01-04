@@ -1,6 +1,5 @@
 package com.wrapper.spotify.requests;
 
-import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.IHttpManager;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import org.apache.http.Header;
@@ -10,12 +9,11 @@ import java.io.IOException;
 import java.net.URI;
 import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.concurrent.Future;
 
 public interface IRequest {
 
   SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss");
-
-  <T> SettableFuture<T> executeAsync(T value);
 
   IHttpManager getHttpManager();
 
@@ -30,6 +28,10 @@ public interface IRequest {
   String getBody();
 
   <T> T execute() throws
+          IOException,
+          SpotifyWebApiException;
+
+  <T> Future<T> executeAsync() throws
           IOException,
           SpotifyWebApiException;
 

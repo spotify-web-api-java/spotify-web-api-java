@@ -1,18 +1,14 @@
 package com.wrapper.spotify.requests.authorization.client_credentials;
 
-import com.google.common.util.concurrent.FutureCallback;
-import com.google.common.util.concurrent.Futures;
-import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.model_objects.credentials.ClientCredentials;
 import org.junit.Test;
 
 import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.Future;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
 
 public class ClientCredentialsRequestTest {
 
@@ -31,7 +27,7 @@ public class ClientCredentialsRequestTest {
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/authorization/client_credentials/ClientCredentials.json"))
             .build();
 
-    final ClientCredentials response = request.post();
+    final ClientCredentials response = request.execute();
     assertEquals(3600, (int) response.getExpiresIn());
     assertEquals("BQAh_5C4JzOMLuF0W-UVTtaOhZaX0bjgJ5B8giFun_i7AJRKTpZ-VB1mFd3hWLLWRsZNihc_fG1xUlnW9sLBjQ", response.getAccessToken());
     assertEquals("Bearer", response.getTokenType());
@@ -54,24 +50,12 @@ public class ClientCredentialsRequestTest {
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
-    final SettableFuture<ClientCredentials> responseFuture = request.postAsync();
+    final Future<ClientCredentials> requestFuture = request.executeAsync();
+    ClientCredentials clientCredentials = requestFuture.get();
 
-    Futures.addCallback(responseFuture, new FutureCallback<ClientCredentials>() {
-      @Override
-      public void onSuccess(ClientCredentials response) {
-        assertEquals(3600, (int) response.getExpiresIn());
-        assertEquals("BQAh_5C4JzOMLuF0W-UVTtaOhZaX0bjgJ5B8giFun_i7AJRKTpZ-VB1mFd3hWLLWRsZNihc_fG1xUlnW9sLBjQ", response.getAccessToken());
-        assertEquals("Bearer", response.getTokenType());
-        asyncCompleted.countDown();
-      }
-
-      @Override
-      public void onFailure(Throwable throwable) {
-        fail("Failed to resolve future: " + throwable.getMessage());
-      }
-    });
-
-    asyncCompleted.await(1, TimeUnit.SECONDS);
+    assertEquals(3600, (int) clientCredentials.getExpiresIn());
+    assertEquals("BQAh_5C4JzOMLuF0W-UVTtaOhZaX0bjgJ5B8giFun_i7AJRKTpZ-VB1mFd3hWLLWRsZNihc_fG1xUlnW9sLBjQ", clientCredentials.getAccessToken());
+    assertEquals("Bearer", clientCredentials.getTokenType());
   }
 
 }

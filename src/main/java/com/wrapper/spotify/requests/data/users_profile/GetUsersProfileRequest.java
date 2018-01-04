@@ -1,6 +1,5 @@
 package com.wrapper.spotify.requests.data.users_profile;
 
-import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.User;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
@@ -13,16 +12,10 @@ public class GetUsersProfileRequest extends AbstractDataRequest {
     super(builder);
   }
 
-  public User get() throws
+  public User execute() throws
           IOException,
           SpotifyWebApiException {
     return new User.JsonUtil().createModelObject(getJson());
-  }
-
-  public SettableFuture<User> getAsync() throws
-          IOException,
-          SpotifyWebApiException {
-    return executeAsync(new User.JsonUtil().createModelObject(getJson()));
   }
 
   public static final class Builder extends AbstractDataRequest.Builder<Builder> {

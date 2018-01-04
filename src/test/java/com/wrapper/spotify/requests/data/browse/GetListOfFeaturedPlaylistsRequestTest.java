@@ -1,8 +1,5 @@
 package com.wrapper.spotify.requests.data.browse;
 
-import com.google.common.util.concurrent.FutureCallback;
-import com.google.common.util.concurrent.Futures;
-import com.google.common.util.concurrent.SettableFuture;
 import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.TestUtil;
@@ -14,9 +11,10 @@ import org.junit.Test;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.Future;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 public class GetListOfFeaturedPlaylistsRequestTest {
 
@@ -38,38 +36,26 @@ public class GetListOfFeaturedPlaylistsRequestTest {
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
-    final SettableFuture<FeaturedPlaylists> future = request.getAsync();
+    final Future<FeaturedPlaylists> requestFuture = request.executeAsync();
+    final FeaturedPlaylists featuredPlaylists = requestFuture.get();
 
-    Futures.addCallback(future, new FutureCallback<FeaturedPlaylists>() {
-      @Override
-      public void onSuccess(FeaturedPlaylists featuredPlaylists) {
-        assertEquals("Sleepy?", featuredPlaylists.getMessage());
+    assertEquals("Sleepy?", featuredPlaylists.getMessage());
 
-        Paging<PlaylistSimplified> playlistPage = featuredPlaylists.getPlaylists();
+    Paging<PlaylistSimplified> playlistPage = featuredPlaylists.getPlaylists();
 
-        assertEquals(23, (int) playlistPage.getTotal());
-        assertEquals(0, (int) playlistPage.getOffset());
-        assertEquals(1, (int) playlistPage.getLimit());
-        assertEquals("https://api.spotify.com/v1/browse/featured-playlists?timestamp=2017-12-03T01%3A40%3A49&offset=1&limit=1",
-                playlistPage.getNext());
-        assertNull(playlistPage.getPrevious());
+    assertEquals(23, (int) playlistPage.getTotal());
+    assertEquals(0, (int) playlistPage.getOffset());
+    assertEquals(1, (int) playlistPage.getLimit());
+    assertEquals("https://api.spotify.com/v1/browse/featured-playlists?timestamp=2017-12-03T01%3A40%3A49&offset=1&limit=1",
+            playlistPage.getNext());
+    assertNull(playlistPage.getPrevious());
 
-        PlaylistSimplified[] items = playlistPage.getItems();
-        assertEquals(1, items.length);
+    PlaylistSimplified[] items = playlistPage.getItems();
+    assertEquals(1, items.length);
 
-        PlaylistSimplified playlist = items[0];
-        assertEquals("37i9dQZF1DWStLt4f1zJ6I", playlist.getId());
-        assertEquals("Songs For Sleeping", playlist.getName());
-        asyncCompleted.countDown();
-      }
-
-      @Override
-      public void onFailure(Throwable throwable) {
-        fail("Failed to resolve future");
-      }
-    });
-
-    asyncCompleted.await(1, TimeUnit.SECONDS);
+    PlaylistSimplified playlist = items[0];
+    assertEquals("37i9dQZF1DWStLt4f1zJ6I", playlist.getId());
+    assertEquals("Songs For Sleeping", playlist.getName());
   }
 
   @Test
@@ -88,7 +74,7 @@ public class GetListOfFeaturedPlaylistsRequestTest {
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/browse/GetListOfFeaturedPlaylistsRequest.json"))
             .build();
 
-    FeaturedPlaylists featuredPlaylists = request.get();
+    FeaturedPlaylists featuredPlaylists = request.execute();
 
     assertEquals("Sleepy?", featuredPlaylists.getMessage());
 

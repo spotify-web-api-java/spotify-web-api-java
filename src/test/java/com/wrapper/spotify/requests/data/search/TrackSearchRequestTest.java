@@ -1,8 +1,5 @@
 package com.wrapper.spotify.requests.data.search;
 
-import com.google.common.util.concurrent.FutureCallback;
-import com.google.common.util.concurrent.Futures;
-import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.IHttpManager;
 import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.TestUtil;
@@ -13,8 +10,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.Future;
 
 import static org.junit.Assert.*;
 
@@ -31,37 +27,22 @@ public class TrackSearchRequestTest {
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/search/TrackSearchRequest.json"))
             .build();
 
-    final CountDownLatch asyncCompleted = new CountDownLatch(1);
+    final Future<Paging<Track>> requestFuture = request.executeAsync();
+    final Paging<Track> trackPaging = requestFuture.get();
 
-    SettableFuture<Paging<Track>> searchResultFuture = request.getAsync();
+    assertTrue(trackPaging.getTotal() > 0);
+    assertEquals(20, (int) trackPaging.getLimit());
+    assertEquals(0, (int) trackPaging.getOffset());
 
-    Futures.addCallback(searchResultFuture, new FutureCallback<Paging<Track>>() {
-      @Override
-      public void onSuccess(Paging<Track> trackSearchResult) {
-        assertTrue(trackSearchResult.getTotal() > 0);
-        assertEquals(20, (int) trackSearchResult.getLimit());
-        assertEquals(0, (int) trackSearchResult.getOffset());
+    Track[] tracks = trackPaging.getItems();
 
-        Track[] tracks = trackSearchResult.getItems();
+    Track firstTrack = tracks[0];
+    assertNotNull(firstTrack.getId());
 
-        Track firstTrack = tracks[0];
-        assertNotNull(firstTrack.getId());
-
-        String id = firstTrack.getId();
-        assertNotNull(firstTrack.getAlbum());
-        assertNotNull(firstTrack.getArtists());
-        assertEquals("https://api.spotify.com/v1/tracks/" + id, firstTrack.getHref());
-
-        asyncCompleted.countDown();
-      }
-
-      @Override
-      public void onFailure(Throwable throwable) {
-        fail("Failed to resolve future");
-      }
-    });
-
-    asyncCompleted.await(1, TimeUnit.SECONDS);
+    String id = firstTrack.getId();
+    assertNotNull(firstTrack.getAlbum());
+    assertNotNull(firstTrack.getArtists());
+    assertEquals("https://api.spotify.com/v1/tracks/" + id, firstTrack.getHref());
   }
 
   @Test
@@ -70,7 +51,7 @@ public class TrackSearchRequestTest {
     final IHttpManager mockedHttpManager = TestUtil.MockedHttpManager.returningJson("requests/data/search/TrackSearchRequest.json");
     final SearchTracksRequest request = api.searchTracks("Mr. Brightside").setHttpManager(mockedHttpManager).build();
 
-    final Paging<Track> trackSearchResult = request.get();
+    final Paging<Track> trackSearchResult = request.execute();
 
     assertTrue(trackSearchResult.getTotal() > 0);
     assertEquals(20, (int) trackSearchResult.getLimit());

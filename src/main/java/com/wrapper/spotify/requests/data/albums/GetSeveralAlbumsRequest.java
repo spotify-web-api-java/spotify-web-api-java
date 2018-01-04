@@ -1,6 +1,5 @@
 package com.wrapper.spotify.requests.data.albums;
 
-import com.google.common.util.concurrent.SettableFuture;
 import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.Album;
@@ -17,16 +16,10 @@ public class GetSeveralAlbumsRequest extends AbstractDataRequest {
     super(builder);
   }
 
-  public Album[] get() throws
+  public Album[] execute() throws
           IOException,
           SpotifyWebApiException {
     return new Album.JsonUtil().createModelObjectArray(getJson(), "albums");
-  }
-
-  public SettableFuture<Album[]> getAsync() throws
-          IOException,
-          SpotifyWebApiException {
-    return executeAsync(new Album.JsonUtil().createModelObjectArray(getJson(), "albums"));
   }
 
   public static final class Builder extends AbstractDataRequest.Builder<Builder> {

@@ -1,6 +1,5 @@
 package com.wrapper.spotify.requests.data.personalization.simplified;
 
-import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.Artist;
 import com.wrapper.spotify.model_objects.specification.Paging;
@@ -14,16 +13,10 @@ public class GetUsersTopArtistsRequest extends AbstractDataRequest {
     super(builder);
   }
 
-  public Paging<Artist> get() throws
+  public Paging<Artist> execute() throws
           IOException,
           SpotifyWebApiException {
     return new Artist.JsonUtil().createModelObjectPaging(getJson());
-  }
-
-  public SettableFuture<Paging<Artist>> getAsync() throws
-          IOException,
-          SpotifyWebApiException {
-    return executeAsync(new Artist.JsonUtil().createModelObjectPaging(getJson()));
   }
 
   public static final class Builder extends AbstractDataRequest.Builder<Builder> {
@@ -31,12 +24,6 @@ public class GetUsersTopArtistsRequest extends AbstractDataRequest {
     public Builder(final String accessToken) {
       super(accessToken);
     }
-
-//    public Builder type(final ModelObjectType type) {
-//      assert (type != null);
-//      assert (type.getType().equals("artists") || type.getType().equals("tracks"));
-//      return setPathParameter("type", type.getType());
-//    }
 
     public Builder limit(final Integer limit) {
       assert (limit != null);

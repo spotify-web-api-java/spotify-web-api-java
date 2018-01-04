@@ -1,6 +1,5 @@
 package com.wrapper.spotify.requests.data.browse;
 
-import com.google.common.util.concurrent.SettableFuture;
 import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.Recommendations;
@@ -14,16 +13,10 @@ public class GetRecommendationsRequest extends AbstractDataRequest {
     super(builder);
   }
 
-  public Recommendations get() throws
+  public Recommendations execute() throws
           IOException,
           SpotifyWebApiException {
     return new Recommendations.JsonUtil().createModelObject(getJson());
-  }
-
-  public SettableFuture<Recommendations> getAsync() throws
-          IOException,
-          SpotifyWebApiException {
-    return executeAsync(new Recommendations.JsonUtil().createModelObject(getJson()));
   }
 
   public static final class Builder extends AbstractDataRequest.Builder<Builder> {

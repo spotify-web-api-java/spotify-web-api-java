@@ -1,8 +1,5 @@
 package com.wrapper.spotify.requests.data.tracks;
 
-import com.google.common.util.concurrent.FutureCallback;
-import com.google.common.util.concurrent.Futures;
-import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.model_objects.specification.Track;
@@ -10,10 +7,10 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.Future;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 
 @RunWith(MockitoJUnitRunner.class)
@@ -27,26 +24,11 @@ public class GetTrackRequestTest {
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/tracks/GetTrackRequest.json"))
             .build();
 
-    final CountDownLatch asyncCompleted = new CountDownLatch(1);
+    final Future<Track> requestFuture = request.executeAsync();
+    final Track track = requestFuture.get();
 
-    final SettableFuture<Track> trackFuture = request.getAsync();
-
-    Futures.addCallback(trackFuture, new FutureCallback<Track>() {
-      @Override
-      public void onSuccess(Track track) {
-        assertNotNull(track);
-        assertEquals("0eGsygTp906u18L0Oimnem", track.getId());
-
-        asyncCompleted.countDown();
-      }
-
-      @Override
-      public void onFailure(Throwable throwable) {
-        fail("Failed to resolve future");
-      }
-    });
-
-    asyncCompleted.await(1, TimeUnit.SECONDS);
+    assertNotNull(track);
+    assertEquals("0eGsygTp906u18L0Oimnem", track.getId());
   }
 
   @Test
@@ -57,7 +39,7 @@ public class GetTrackRequestTest {
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/tracks/GetTrackRequest.json"))
             .build();
 
-    final Track track = request.get();
+    final Track track = request.execute();
 
     assertNotNull(track);
     assertEquals("0eGsygTp906u18L0Oimnem", track.getId());

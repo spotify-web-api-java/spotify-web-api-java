@@ -1,6 +1,5 @@
 package com.wrapper.spotify.requests.data.library;
 
-import com.google.common.util.concurrent.SettableFuture;
 import com.google.gson.Gson;
 import com.google.gson.JsonParser;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
@@ -14,16 +13,10 @@ public class CheckUsersSavedTracksRequest extends AbstractDataRequest {
     super(builder);
   }
 
-  public Boolean[] get() throws
+  public Boolean[] execute() throws
           IOException,
           SpotifyWebApiException {
     return new Gson().fromJson(new JsonParser().parse(getJson()).getAsJsonArray(), Boolean[].class);
-  }
-
-  public SettableFuture<Boolean[]> getAsync() throws
-          IOException,
-          SpotifyWebApiException {
-    return executeAsync(new Gson().fromJson(new JsonParser().parse(getJson()).getAsJsonArray(), Boolean[].class));
   }
 
   public static final class Builder extends AbstractDataRequest.Builder<Builder> {

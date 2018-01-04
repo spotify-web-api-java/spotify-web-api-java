@@ -1,6 +1,5 @@
 package com.wrapper.spotify.requests.authorization.authorization_code;
 
-import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.credentials.AuthorizationCodeCredentials;
@@ -14,16 +13,10 @@ public class AuthorizationCodeRefreshRequest extends AbstractAthorizationRequest
     super(builder);
   }
 
-  public AuthorizationCodeCredentials post() throws
+  public AuthorizationCodeCredentials execute() throws
           IOException,
           SpotifyWebApiException {
     return new AuthorizationCodeCredentials.JsonUtil().createModelObject(postJson());
-  }
-
-  public SettableFuture<AuthorizationCodeCredentials> postAsync() throws
-          IOException,
-          SpotifyWebApiException {
-    return executeAsync(new AuthorizationCodeCredentials.JsonUtil().createModelObject(postJson()));
   }
 
   public static final class Builder extends AbstractAthorizationRequest.Builder<Builder> {

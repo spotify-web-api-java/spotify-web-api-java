@@ -1,6 +1,5 @@
 package com.wrapper.spotify.requests.data.playlists;
 
-import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.special.SnapshotResult;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
@@ -13,16 +12,10 @@ public class ReorderPlaylistsTracksRequest extends AbstractDataRequest {
     super(builder);
   }
 
-  public SnapshotResult put() throws
+  public SnapshotResult execute() throws
           IOException,
           SpotifyWebApiException {
     return new SnapshotResult.JsonUtil().createModelObject(putJson());
-  }
-
-  public SettableFuture<SnapshotResult> putAsync() throws
-          IOException,
-          SpotifyWebApiException {
-    return executeAsync(new SnapshotResult.JsonUtil().createModelObject(putJson()));
   }
 
   public static final class Builder extends AbstractDataRequest.Builder<Builder> {

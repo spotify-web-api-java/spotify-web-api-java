@@ -1,8 +1,5 @@
 package com.wrapper.spotify.requests.data.playlists;
 
-import com.google.common.util.concurrent.FutureCallback;
-import com.google.common.util.concurrent.Futures;
-import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.model_objects.specification.Playlist;
@@ -10,6 +7,7 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.*;
@@ -29,21 +27,10 @@ public class GetPlaylistRequestTest {
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
-    final SettableFuture<Playlist> playlistFuture = request.getAsync();
+    final Future<Playlist> requestFuture = request.executeAsync();
+    final Playlist playlist = requestFuture.get();
 
-    Futures.addCallback(playlistFuture, new FutureCallback<Playlist>() {
-      @Override
-      public void onSuccess(Playlist playlist) {
-        assertEquals("https://api.spotify.com/v1/users/thelinmichael/playlists/3ktAYNcRHpazJ9qecm3ptn", playlist.getHref());
-        asyncCompleted.countDown();
-      }
-
-      @Override
-      public void onFailure(Throwable throwable) {
-        fail("Failed to resolve future: " + throwable.getMessage());
-      }
-
-    });
+    assertEquals("https://api.spotify.com/v1/users/thelinmichael/playlists/3ktAYNcRHpazJ9qecm3ptn", playlist.getHref());
 
     asyncCompleted.await(1, TimeUnit.SECONDS);
   }
@@ -56,7 +43,7 @@ public class GetPlaylistRequestTest {
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/playlists/GetPlaylistRequest.json"))
             .build();
 
-    final Playlist playlist = request.get();
+    final Playlist playlist = request.execute();
 
     assertEquals("https://api.spotify.com/v1/users/thelinmichael/playlists/3ktAYNcRHpazJ9qecm3ptn", playlist.getHref());
   }
@@ -69,7 +56,7 @@ public class GetPlaylistRequestTest {
             .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/playlists/GetPlaylistRequest_Local.json"))
             .build();
 
-    Playlist playlist = request.get();
+    Playlist playlist = request.execute();
 
     assertTrue(playlist.getTracks().getItems()[0].getTrack().getAlbum().getAlbumType() == null);
 
