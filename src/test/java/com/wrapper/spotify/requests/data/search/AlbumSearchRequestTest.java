@@ -37,11 +37,11 @@ public class AlbumSearchRequestTest {
       @Override
       public void onSuccess(Paging<AlbumSimplified> albumSearchResult) {
         assertEquals("https://api.spotify.com/v1/search?query=tania+bowra&type=album&market=DE&offset=0&limit=20", albumSearchResult.getHref());
-        assertEquals(20, albumSearchResult.getLimit());
-        assertEquals(0, albumSearchResult.getOffset());
+        assertEquals(20, (int) albumSearchResult.getLimit());
+        assertEquals(0, (int) albumSearchResult.getOffset());
         assertNull(albumSearchResult.getNext());
         assertNull(albumSearchResult.getPrevious());
-        assertEquals(1, albumSearchResult.getTotal());
+        assertEquals(1, (int) albumSearchResult.getTotal());
 
         AlbumSimplified[] albums = albumSearchResult.getItems();
         assertEquals(1, albums.length);
@@ -78,11 +78,11 @@ public class AlbumSearchRequestTest {
 
     final Paging<AlbumSimplified> albumSearchResult = request.get();
     assertEquals("https://api.spotify.com/v1/search?query=tania+bowra&type=album&market=DE&offset=0&limit=20", albumSearchResult.getHref());
-    assertEquals(20, albumSearchResult.getLimit());
-    assertEquals(0, albumSearchResult.getOffset());
+    assertEquals(20, (int) albumSearchResult.getLimit());
+    assertEquals(0, (int) albumSearchResult.getOffset());
     assertNull(albumSearchResult.getNext());
     assertNull(albumSearchResult.getPrevious());
-    assertEquals(1, albumSearchResult.getTotal());
+    assertEquals(1, (int) albumSearchResult.getTotal());
 
     final AlbumSimplified[] albums = albumSearchResult.getItems();
     assertEquals(1, albums.length);

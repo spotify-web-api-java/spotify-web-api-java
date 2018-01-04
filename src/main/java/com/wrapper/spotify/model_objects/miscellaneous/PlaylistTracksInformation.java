@@ -8,7 +8,7 @@ import com.wrapper.spotify.model_objects.AbstractModelObject;
  */
 public class PlaylistTracksInformation extends AbstractModelObject {
   private final String href;
-  private final int total;
+  private final Integer total;
 
   private PlaylistTracksInformation(final PlaylistTracksInformation.Builder builder) {
     super(builder);
@@ -31,7 +31,7 @@ public class PlaylistTracksInformation extends AbstractModelObject {
    *
    * @return The total amount of tracks in a playlist.
    */
-  public int getTotal() {
+  public Integer getTotal() {
     return total;
   }
 
@@ -45,7 +45,7 @@ public class PlaylistTracksInformation extends AbstractModelObject {
    */
   public static final class Builder extends AbstractModelObject.Builder {
     private String href;
-    private int total;
+    private Integer total;
 
     /**
      * Set href of Spotify api endpoint of the playlist tracks information object to be built.
@@ -64,7 +64,7 @@ public class PlaylistTracksInformation extends AbstractModelObject {
      * @param total Total amount of tracks.
      * @return A builder object.
      */
-    public Builder setTotal(int total) {
+    public Builder setTotal(Integer total) {
       this.total = total;
       return this;
     }

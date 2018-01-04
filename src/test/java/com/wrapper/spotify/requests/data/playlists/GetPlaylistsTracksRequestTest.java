@@ -40,9 +40,9 @@ public class GetPlaylistsTracksRequestTest {
         assertEquals(
                 "https://api.spotify.com/v1/users/thelinmichael/playlists/3ktAYNcRHpazJ9qecm3ptn/tracks?offset=0&limit=100",
                 page.getHref());
-        assertEquals(100, page.getLimit());
+        assertEquals(100, (int) page.getLimit());
         assertNull(page.getNext());
-        assertEquals(0, page.getOffset());
+        assertEquals(0, (int) page.getOffset());
         assertNull(page.getPrevious());
         assertTrue(page.getTotal() > 0);
 
@@ -81,9 +81,9 @@ public class GetPlaylistsTracksRequestTest {
     assertEquals(
             "https://api.spotify.com/v1/users/thelinmichael/playlists/3ktAYNcRHpazJ9qecm3ptn/tracks?offset=0&limit=100",
             page.getHref());
-    assertEquals(100, page.getLimit());
+    assertEquals(100, (int) page.getLimit());
     assertNull(page.getNext());
-    assertEquals(0, page.getOffset());
+    assertEquals(0, (int) page.getOffset());
     assertNull(page.getPrevious());
     assertTrue(page.getTotal() > 0);
 

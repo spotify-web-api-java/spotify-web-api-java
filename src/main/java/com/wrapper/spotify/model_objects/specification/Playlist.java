@@ -1,6 +1,5 @@
 package com.wrapper.spotify.model_objects.specification;
 
-import com.google.gson.JsonNull;
 import com.google.gson.JsonObject;
 import com.wrapper.spotify.enums.ModelObjectType;
 import com.wrapper.spotify.model_objects.AbstractModelObject;
@@ -9,7 +8,7 @@ import com.wrapper.spotify.model_objects.AbstractModelObject;
  * Retrieve information about playlists by building instances from this class.
  */
 public class Playlist extends AbstractModelObject {
-  private final boolean collaborative;
+  private final Boolean collaborative;
   private final String description;
   private final ExternalUrl externalUrls;
   private final Followers followers;
@@ -48,7 +47,7 @@ public class Playlist extends AbstractModelObject {
    *
    * @return "true" if the playlist is collaborytive, "false" if not.
    */
-  public boolean getIsCollaborative() {
+  public Boolean getIsCollaborative() {
     return collaborative;
   }
 
@@ -180,7 +179,7 @@ public class Playlist extends AbstractModelObject {
    * Builder class for building playlist instances.
    */
   public static final class Builder extends AbstractModelObject.Builder {
-    private boolean collaborative;
+    private Boolean collaborative;
     private String description;
     private ExternalUrl externalUrls;
     private Followers followers;
@@ -201,7 +200,7 @@ public class Playlist extends AbstractModelObject {
      * @param collaborative "true" for collaborative", false if not.
      * @return A builder object.
      */
-    public Builder setCollaborative(boolean collaborative) {
+    public Builder setCollaborative(Boolean collaborative) {
       this.collaborative = collaborative;
       return this;
     }

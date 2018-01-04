@@ -4,9 +4,9 @@ import com.google.gson.JsonObject;
 import com.wrapper.spotify.model_objects.AbstractModelObject;
 
 public class AudioAnalysisMeasure extends AbstractModelObject {
-  private final float confidence;
-  private final float duration;
-  private final float start;
+  private final Float confidence;
+  private final Float duration;
+  private final Float start;
 
   private AudioAnalysisMeasure(final AudioAnalysisMeasure.Builder builder) {
     super(builder);
@@ -16,15 +16,15 @@ public class AudioAnalysisMeasure extends AbstractModelObject {
     this.start = builder.start;
   }
 
-  public float getConfidence() {
+  public Float getConfidence() {
     return confidence;
   }
 
-  public float getDuration() {
+  public Float getDuration() {
     return duration;
   }
 
-  public float getStart() {
+  public Float getStart() {
     return start;
   }
 
@@ -34,21 +34,21 @@ public class AudioAnalysisMeasure extends AbstractModelObject {
   }
 
   public static final class Builder extends AbstractModelObject.Builder {
-    private float confidence;
-    private float duration;
-    private float start;
+    private Float confidence;
+    private Float duration;
+    private Float start;
 
-    public Builder setConfidence(float confidence) {
+    public Builder setConfidence(Float confidence) {
       this.confidence = confidence;
       return this;
     }
 
-    public Builder setDuration(float duration) {
+    public Builder setDuration(Float duration) {
       this.duration = duration;
       return this;
     }
 
-    public Builder setStart(float start) {
+    public Builder setStart(Float start) {
       this.start = start;
       return this;
     }

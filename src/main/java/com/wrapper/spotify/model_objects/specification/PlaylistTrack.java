@@ -1,6 +1,5 @@
 package com.wrapper.spotify.model_objects.specification;
 
-import com.google.gson.JsonNull;
 import com.google.gson.JsonObject;
 import com.wrapper.spotify.model_objects.AbstractModelObject;
 
@@ -13,7 +12,7 @@ import java.util.Date;
 public class PlaylistTrack extends AbstractModelObject {
   private final Date addedAt;
   private final User addedBy;
-  private final boolean isLocal;
+  private final Boolean isLocal;
   private final Track track;
 
   private PlaylistTrack(final PlaylistTrack.Builder builder) {
@@ -49,7 +48,7 @@ public class PlaylistTrack extends AbstractModelObject {
    *
    * @return "true" if the track is local, "false" if not.
    */
-  public boolean getIsLocal() {
+  public Boolean getIsLocal() {
     return isLocal;
   }
 
@@ -73,7 +72,7 @@ public class PlaylistTrack extends AbstractModelObject {
   public static final class Builder extends AbstractModelObject.Builder {
     private Date addedAt;
     private User addedBy;
-    private boolean isLocal;
+    private Boolean isLocal;
     private Track track;
 
     /**
@@ -104,7 +103,7 @@ public class PlaylistTrack extends AbstractModelObject {
      * @param isLocal "true" if the track is local, "false" if not.
      * @return A builder object.
      */
-    public Builder setIsLocal(boolean isLocal) {
+    public Builder setIsLocal(Boolean isLocal) {
       this.isLocal = isLocal;
       return this;
     }

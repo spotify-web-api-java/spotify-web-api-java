@@ -38,8 +38,8 @@ public class ArtistSearchRequestTest {
     Futures.addCallback(searchResultFuture, new FutureCallback<Paging<Artist>>() {
       @Override
       public void onSuccess(Paging<Artist> artistSearchResult) {
-        assertEquals(20, artistSearchResult.getLimit());
-        assertEquals(0, artistSearchResult.getOffset());
+        assertEquals(20, (int) artistSearchResult.getLimit());
+        assertEquals(0, (int) artistSearchResult.getOffset());
         assertTrue(artistSearchResult.getTotal() > 0);
         assertNull(artistSearchResult.getNext());
         assertNull(artistSearchResult.getPrevious());
@@ -82,8 +82,8 @@ public class ArtistSearchRequestTest {
 
     final Paging<Artist> artistSearchResult = request.get();
 
-    assertEquals(20, artistSearchResult.getLimit());
-    assertEquals(0, artistSearchResult.getOffset());
+    assertEquals(20, (int) artistSearchResult.getLimit());
+    assertEquals(0, (int) artistSearchResult.getOffset());
     assertTrue(artistSearchResult.getTotal() > 0);
     assertNull(artistSearchResult.getNext());
     assertNull(artistSearchResult.getPrevious());

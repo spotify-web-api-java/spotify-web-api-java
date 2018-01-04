@@ -7,9 +7,9 @@ public class AudioAnalysisMeta extends AbstractModelObject {
   private final String analyzerVersion;
   private final String platform;
   private final String detailedStatus;
-  private final int statusCode;
-  private final long timestamp;
-  private final float analysisTime;
+  private final Integer statusCode;
+  private final Long timestamp;
+  private final Float analysisTime;
   private final String inputProcess;
 
   private AudioAnalysisMeta(final AudioAnalysisMeta.Builder builder) {
@@ -36,15 +36,15 @@ public class AudioAnalysisMeta extends AbstractModelObject {
     return detailedStatus;
   }
 
-  public int getStatusCode() {
+  public Integer getStatusCode() {
     return statusCode;
   }
 
-  public long getTimestamp() {
+  public Long getTimestamp() {
     return timestamp;
   }
 
-  public float getAnalysisTime() {
+  public Float getAnalysisTime() {
     return analysisTime;
   }
 
@@ -61,9 +61,9 @@ public class AudioAnalysisMeta extends AbstractModelObject {
     private String analyzerVersion;
     private String platform;
     private String detailedStatus;
-    private int statusCode;
-    private long timestamp;
-    private float analysisTime;
+    private Integer statusCode;
+    private Long timestamp;
+    private Float analysisTime;
     private String inputProcess;
 
     public Builder setAnalyzerVersion(String analyzerVersion) {
@@ -81,17 +81,17 @@ public class AudioAnalysisMeta extends AbstractModelObject {
       return this;
     }
 
-    public Builder setStatusCode(int statusCode) {
+    public Builder setStatusCode(Integer statusCode) {
       this.statusCode = statusCode;
       return this;
     }
 
-    public Builder setTimestamp(long timestamp) {
+    public Builder setTimestamp(Long timestamp) {
       this.timestamp = timestamp;
       return this;
     }
 
-    public Builder setAnalysisTime(float analysisTime) {
+    public Builder setAnalysisTime(Float analysisTime) {
       this.analysisTime = analysisTime;
       return this;
     }

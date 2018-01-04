@@ -1,16 +1,15 @@
 package com.wrapper.spotify.model_objects.specification;
 
-import com.google.gson.JsonNull;
 import com.google.gson.JsonObject;
 import com.wrapper.spotify.enums.ModelObjectType;
 import com.wrapper.spotify.model_objects.AbstractModelObject;
 
 public class RecommendationsSeed extends AbstractModelObject {
-  private final int afterFilteringSize;
-  private final int afterRelinkingSize;
+  private final Integer afterFilteringSize;
+  private final Integer afterRelinkingSize;
   private final String href;
   private final String id;
-  private final int initialPoolSize;
+  private final Integer initialPoolSize;
   private final ModelObjectType type;
 
   private RecommendationsSeed(final RecommendationsSeed.Builder builder) {
@@ -24,11 +23,11 @@ public class RecommendationsSeed extends AbstractModelObject {
     this.type = builder.type;
   }
 
-  public int getAfterFilteringSize() {
+  public Integer getAfterFilteringSize() {
     return afterFilteringSize;
   }
 
-  public int getAfterRelinkingSize() {
+  public Integer getAfterRelinkingSize() {
     return afterRelinkingSize;
   }
 
@@ -40,7 +39,7 @@ public class RecommendationsSeed extends AbstractModelObject {
     return id;
   }
 
-  public int getInitialPoolSize() {
+  public Integer getInitialPoolSize() {
     return initialPoolSize;
   }
 
@@ -54,19 +53,19 @@ public class RecommendationsSeed extends AbstractModelObject {
   }
 
   public static final class Builder extends AbstractModelObject.Builder {
-    private int afterFilteringSize;
-    private int afterRelinkingSize;
+    private Integer afterFilteringSize;
+    private Integer afterRelinkingSize;
     private String href;
     private String id;
-    private int initialPoolSize;
+    private Integer initialPoolSize;
     private ModelObjectType type;
 
-    public Builder setAfterFilteringSize(int afterFilteringSize) {
+    public Builder setAfterFilteringSize(Integer afterFilteringSize) {
       this.afterFilteringSize = afterFilteringSize;
       return this;
     }
 
-    public Builder setAfterRelinkingSize(int afterRelinkingSize) {
+    public Builder setAfterRelinkingSize(Integer afterRelinkingSize) {
       this.afterRelinkingSize = afterRelinkingSize;
       return this;
     }
@@ -81,7 +80,7 @@ public class RecommendationsSeed extends AbstractModelObject {
       return this;
     }
 
-    public Builder setInitialPoolSize(int initialPoolSize) {
+    public Builder setInitialPoolSize(Integer initialPoolSize) {
       this.initialPoolSize = initialPoolSize;
       return this;
     }

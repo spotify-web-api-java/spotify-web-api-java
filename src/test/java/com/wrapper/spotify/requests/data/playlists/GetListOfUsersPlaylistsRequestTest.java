@@ -39,8 +39,8 @@ public class GetListOfUsersPlaylistsRequestTest {
         assertTrue(playlistsPage.getTotal() >= 0);
         assertNull(playlistsPage.getNext());
         assertEquals("https://api.spotify.com/v1/users/wizzler/playlists?offset=0&limit=10", playlistsPage.getPrevious());
-        assertEquals(10, playlistsPage.getLimit());
-        assertEquals(2, playlistsPage.getOffset());
+        assertEquals(10, (int) playlistsPage.getLimit());
+        assertEquals(2, (int) playlistsPage.getOffset());
         assertEquals("https://api.spotify.com/v1/users/wizzler/playlists?offset=2&limit=10", playlistsPage.getHref());
 
         final PlaylistSimplified simplePlaylist = playlistsPage.getItems()[0];
@@ -58,8 +58,8 @@ public class GetListOfUsersPlaylistsRequestTest {
         assertEquals("spotify:user:wizzler:playlist:" + playlistId, simplePlaylist.getUri());
         assertEquals(1, simplePlaylist.getImages().length);
         assertEquals("https://i.scdn.co/image/418ce596327dc3a0f4d377db80421bffb3b94a9a", simplePlaylist.getImages()[0].getUrl());
-        assertEquals(300, simplePlaylist.getImages()[0].getWidth());
-        assertEquals(300, simplePlaylist.getImages()[0].getHeight());
+        assertEquals(300, (int) simplePlaylist.getImages()[0].getWidth());
+        assertEquals(300, (int) simplePlaylist.getImages()[0].getHeight());
 
         asyncCompleted.countDown();
       }
@@ -89,8 +89,8 @@ public class GetListOfUsersPlaylistsRequestTest {
     assertTrue(playlistsPage.getTotal() >= 0);
     assertNull(playlistsPage.getNext());
     assertEquals("https://api.spotify.com/v1/users/wizzler/playlists?offset=0&limit=10", playlistsPage.getPrevious());
-    assertEquals(10, playlistsPage.getLimit());
-    assertEquals(2, playlistsPage.getOffset());
+    assertEquals(10, (int) playlistsPage.getLimit());
+    assertEquals(2, (int) playlistsPage.getOffset());
     assertEquals("https://api.spotify.com/v1/users/wizzler/playlists?offset=2&limit=10", playlistsPage.getHref());
 
     final PlaylistSimplified simplePlaylist = playlistsPage.getItems()[0];
@@ -108,8 +108,8 @@ public class GetListOfUsersPlaylistsRequestTest {
     assertEquals("spotify:user:wizzler:playlist:" + playlistId, simplePlaylist.getUri());
     assertEquals(1, simplePlaylist.getImages().length);
     assertEquals("https://i.scdn.co/image/418ce596327dc3a0f4d377db80421bffb3b94a9a", simplePlaylist.getImages()[0].getUrl());
-    assertEquals(300, simplePlaylist.getImages()[0].getWidth());
-    assertEquals(300, simplePlaylist.getImages()[0].getHeight());
+    assertEquals(300, (int) simplePlaylist.getImages()[0].getWidth());
+    assertEquals(300, (int) simplePlaylist.getImages()[0].getHeight());
   }
 
 }

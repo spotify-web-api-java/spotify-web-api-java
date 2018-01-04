@@ -65,11 +65,11 @@ public class SpotifyApi {
   private final IHttpManager httpManager;
   private final String scheme;
   private final String host;
-  private final int port;
+  private final Integer port;
   private final String proxyUrl;
-  private final int proxyPort;
-  private final int proxyUsername;
-  private final int proxyPassword;
+  private final Integer proxyPort;
+  private final Integer proxyUsername;
+  private final Integer proxyPassword;
   private final String clientId;
   private final String clientSecret;
   private final String redirectUri;
@@ -115,7 +115,7 @@ public class SpotifyApi {
     return host;
   }
 
-  public int getPort() {
+  public Integer getPort() {
     return port;
   }
 
@@ -123,15 +123,15 @@ public class SpotifyApi {
     return proxyUrl;
   }
 
-  public int getProxyPort() {
+  public Integer getProxyPort() {
     return proxyPort;
   }
 
-  public int getProxyUsername() {
+  public Integer getProxyUsername() {
     return proxyUsername;
   }
 
-  public int getProxyPassword() {
+  public Integer getProxyPassword() {
     return proxyPassword;
   }
 
@@ -1149,11 +1149,11 @@ public class SpotifyApi {
     private IHttpManager httpManager = DEFAULT_HTTP_MANAGER;
     private String scheme = DEFAULT_SCHEME;
     private String host = DEFAULT_HOST;
-    private int port = DEFAULT_PORT;
+    private Integer port = DEFAULT_PORT;
     private String proxyUrl;
-    private int proxyPort;
-    private int proxyUsername;
-    private int proxyPassword;
+    private Integer proxyPort;
+    private Integer proxyUsername;
+    private Integer proxyPassword;
     private String clientId;
     private String clientSecret;
     private String redirectUri;
@@ -1199,7 +1199,7 @@ public class SpotifyApi {
      * @param port A Spotify API port.
      * @return A builder object.
      */
-    public Builder setPort(int port) {
+    public Builder setPort(Integer port) {
       this.port = port;
       return this;
     }
@@ -1209,17 +1209,17 @@ public class SpotifyApi {
       return this;
     }
 
-    public Builder setProxyPort(int proxyPort) {
+    public Builder setProxyPort(Integer proxyPort) {
       this.proxyPort = proxyPort;
       return this;
     }
 
-    public Builder setProxyUsername(int proxyUsername) {
+    public Builder setProxyUsername(Integer proxyUsername) {
       this.proxyUsername = proxyUsername;
       return this;
     }
 
-    public Builder setProxyPassword(int proxyPassword) {
+    public Builder setProxyPassword(Integer proxyPassword) {
       this.proxyPassword = proxyPassword;
       return this;
     }

@@ -64,11 +64,11 @@ public class PlaylistSearchRequestTest {
 
     assertEquals("https://api.spotify.com/v1/search?query=%22doom+metal%22&type=playlist&market=DE&offset=0&limit=20",
             playlistSearchResult.getHref());
-    assertEquals(20, playlistSearchResult.getLimit());
-    assertEquals(0, playlistSearchResult.getOffset());
+    assertEquals(20, (int) playlistSearchResult.getLimit());
+    assertEquals(0, (int) playlistSearchResult.getOffset());
     assertEquals("https://api.spotify.com/v1/search?query=%22doom+metal%22&type=playlist&market=DE&offset=20&limit=20", playlistSearchResult.getNext());
     assertNull(playlistSearchResult.getPrevious());
-    assertEquals(575, playlistSearchResult.getTotal());
+    assertEquals(575, (int) playlistSearchResult.getTotal());
 
     PlaylistSimplified[] playlists = playlistSearchResult.getItems();
     assertEquals(20, playlists.length);

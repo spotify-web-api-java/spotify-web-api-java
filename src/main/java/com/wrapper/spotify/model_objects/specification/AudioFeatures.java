@@ -12,17 +12,17 @@ public class AudioFeatures extends AbstractModelObject {
   private final double acousticness;
   private final String analysisUrl;
   private final double danceability;
-  private final int durationMs;
+  private final Integer durationMs;
   private final double energy;
   private final String id;
   private final double instrumentalness;
-  private final int key;
+  private final Integer key;
   private final double liveness;
   private final double loudness;
   private final Modality mode;
   private final double speechiness;
   private final double tempo;
-  private final int timeSignature;
+  private final Integer timeSignature;
   private final String trackHref;
   private final ModelObjectType type;
   private final String uri;
@@ -86,7 +86,7 @@ public class AudioFeatures extends AbstractModelObject {
    *
    * @return Track duration.
    */
-  public int getDurationMs() {
+  public Integer getDurationMs() {
     return durationMs;
   }
 
@@ -129,7 +129,7 @@ public class AudioFeatures extends AbstractModelObject {
    * @see <a href="https://en.wikipedia.org/wiki/Pitch_class">Wikipedia: Pitch class notation</a>
    * @see <a href="https://en.wikipedia.org/wiki/Pitch_class">Wikipedia: Pitch class notation</a>
    */
-  public int getKey() {
+  public Integer getKey() {
     return key;
   }
 
@@ -194,7 +194,7 @@ public class AudioFeatures extends AbstractModelObject {
    *
    * @return Time signature value.
    */
-  public int getTimeSignature() {
+  public Integer getTimeSignature() {
     return timeSignature;
   }
 
@@ -245,24 +245,24 @@ public class AudioFeatures extends AbstractModelObject {
    * Builder class for building audio feature instances.
    */
   public static final class Builder extends AbstractModelObject.Builder {
-    private double acousticness;
+    private Float acousticness;
     private String analysisUrl;
-    private double danceability;
-    private int durationMs;
-    private double energy;
+    private Float danceability;
+    private Integer durationMs;
+    private Float energy;
     private String id;
-    private double instrumentalness;
-    private int key;
-    private double liveness;
-    private double loudness;
+    private Float instrumentalness;
+    private Integer key;
+    private Float liveness;
+    private Float loudness;
     private Modality mode;
-    private double speechiness;
-    private double tempo;
-    private int timeSignature;
+    private Float speechiness;
+    private Float tempo;
+    private Integer timeSignature;
     private String trackHref;
     private ModelObjectType type;
     private String uri;
-    private double valence;
+    private Float valence;
 
     /**
      * Set the acousticness of the audio features object to be built.
@@ -270,7 +270,7 @@ public class AudioFeatures extends AbstractModelObject {
      * @param acousticness Acousticness value between 0.0 and 1.0.
      * @return A builder object.
      */
-    public Builder setAcousticness(double acousticness) {
+    public Builder setAcousticness(Float acousticness) {
       this.acousticness = acousticness;
       return this;
     }
@@ -292,7 +292,7 @@ public class AudioFeatures extends AbstractModelObject {
      * @param danceability Danceability value between 0.0 and 1.0.
      * @return A builder object.
      */
-    public Builder setDanceability(double danceability) {
+    public Builder setDanceability(Float danceability) {
       this.danceability = danceability;
       return this;
     }
@@ -303,7 +303,7 @@ public class AudioFeatures extends AbstractModelObject {
      * @param durationMs Duration in milliseconds.
      * @return A builder object.
      */
-    public Builder setDurationMs(int durationMs) {
+    public Builder setDurationMs(Integer durationMs) {
       this.durationMs = durationMs;
       return this;
     }
@@ -314,7 +314,7 @@ public class AudioFeatures extends AbstractModelObject {
      * @param energy Energy value between 0.0 and 1.0.
      * @return A builder object.
      */
-    public Builder setEnergy(double energy) {
+    public Builder setEnergy(Float energy) {
       this.energy = energy;
       return this;
     }
@@ -336,7 +336,7 @@ public class AudioFeatures extends AbstractModelObject {
      * @param instrumentalness Instrumentalness value between 0.0 and 1.0.
      * @return A builder object.
      */
-    public Builder setInstrumentalness(double instrumentalness) {
+    public Builder setInstrumentalness(Float instrumentalness) {
       this.instrumentalness = instrumentalness;
       return this;
     }
@@ -347,7 +347,7 @@ public class AudioFeatures extends AbstractModelObject {
      * @param key Track key.
      * @return A builder object.
      */
-    public Builder setKey(int key) {
+    public Builder setKey(Integer key) {
       this.key = key;
       return this;
     }
@@ -358,7 +358,7 @@ public class AudioFeatures extends AbstractModelObject {
      * @param liveness Liveness value between 0.0 and 1.0.
      * @return A builder object.
      */
-    public Builder setLiveness(double liveness) {
+    public Builder setLiveness(Float liveness) {
       this.liveness = liveness;
       return this;
     }
@@ -369,7 +369,7 @@ public class AudioFeatures extends AbstractModelObject {
      * @param loudness Loudness value between 0.0 and 1.0.
      * @return A builder object.
      */
-    public Builder setLoudness(double loudness) {
+    public Builder setLoudness(Float loudness) {
       this.loudness = loudness;
       return this;
     }
@@ -391,7 +391,7 @@ public class AudioFeatures extends AbstractModelObject {
      * @param speechiness Speechiness value between 0.0 and 1.0.
      * @return A builder object.
      */
-    public Builder setSpeechiness(double speechiness) {
+    public Builder setSpeechiness(Float speechiness) {
       this.speechiness = speechiness;
       return this;
     }
@@ -402,7 +402,7 @@ public class AudioFeatures extends AbstractModelObject {
      * @param tempo Tempo value in beats per minute.
      * @return A builder object.
      */
-    public Builder setTempo(double tempo) {
+    public Builder setTempo(Float tempo) {
       this.tempo = tempo;
       return this;
     }
@@ -413,7 +413,7 @@ public class AudioFeatures extends AbstractModelObject {
      * @param timeSignature Time signature of the track.
      * @return A builder object.
      */
-    public Builder setTimeSignature(int timeSignature) {
+    public Builder setTimeSignature(Integer timeSignature) {
       this.timeSignature = timeSignature;
       return this;
     }
@@ -457,7 +457,7 @@ public class AudioFeatures extends AbstractModelObject {
      * @param valence Valence value between 0.0 and 1.0.
      * @return A builder object.
      */
-    public Builder setValence(double valence) {
+    public Builder setValence(Float valence) {
       this.valence = valence;
       return this;
     }

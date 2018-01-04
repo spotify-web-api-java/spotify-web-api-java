@@ -38,12 +38,12 @@ public class GetListOfNewReleasesRequestTest {
         assertEquals("https://api.spotify.com/v1/browse/new-releases?offset=0&limit=1",
                 newReleases.getHref());
 
-        assertEquals(1, newReleases.getLimit());
-        assertEquals(0, newReleases.getOffset());
+        assertEquals(1, (int) newReleases.getLimit());
+        assertEquals(0, (int) newReleases.getOffset());
         assertEquals("https://api.spotify.com/v1/browse/new-releases?offset=1&limit=1",
                 newReleases.getNext());
         assertNull(newReleases.getPrevious());
-        assertEquals(500, newReleases.getTotal());
+        assertEquals(500, (int) newReleases.getTotal());
 
         AlbumSimplified firstItem = newReleases.getItems()[0];
         assertEquals(AlbumType.SINGLE, firstItem.getAlbumType());
@@ -79,12 +79,12 @@ public class GetListOfNewReleasesRequestTest {
     assertEquals("https://api.spotify.com/v1/browse/new-releases?offset=0&limit=1",
             newReleases.getHref());
 
-    assertEquals(1, newReleases.getLimit());
-    assertEquals(0, newReleases.getOffset());
+    assertEquals(1, (int) newReleases.getLimit());
+    assertEquals(0, (int) newReleases.getOffset());
     assertEquals("https://api.spotify.com/v1/browse/new-releases?offset=1&limit=1",
             newReleases.getNext());
     assertNull(newReleases.getPrevious());
-    assertEquals(500, newReleases.getTotal());
+    assertEquals(500, (int) newReleases.getTotal());
 
     AlbumSimplified firstItem = newReleases.getItems()[0];
     assertEquals(AlbumType.SINGLE, firstItem.getAlbumType());

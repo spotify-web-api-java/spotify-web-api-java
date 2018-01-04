@@ -10,7 +10,7 @@ public class AuthorizationCodeCredentials extends AbstractModelObject {
   private final String accessToken;
   private final String tokenType;
   private final String scope;
-  private final int expiresIn;
+  private final Integer expiresIn;
   private final String refreshToken;
 
   private AuthorizationCodeCredentials(final AuthorizationCodeCredentials.Builder builder) {
@@ -52,7 +52,7 @@ public class AuthorizationCodeCredentials extends AbstractModelObject {
     return scope;
   }
 
-  public int getExpiresIn() {
+  public Integer getExpiresIn() {
     return expiresIn;
   }
 
@@ -79,7 +79,7 @@ public class AuthorizationCodeCredentials extends AbstractModelObject {
     private String accessToken;
     private String tokenType;
     private String scope;
-    private int expiresIn;
+    private Integer expiresIn;
     private String refreshToken;
 
     /**
@@ -89,7 +89,7 @@ public class AuthorizationCodeCredentials extends AbstractModelObject {
      *                    for example to Spotify Web API services.
      * @return An AuthorizationCodeCredentials builder.
      */
-    public Builder setAccessToken(String accessToken) {
+    public Builder setAccessToken(final String accessToken) {
       this.accessToken = accessToken;
       return this;
     }
@@ -100,12 +100,12 @@ public class AuthorizationCodeCredentials extends AbstractModelObject {
      * @param tokenType How the access token may be used: always &quot;Bearer&quot;.
      * @return An AuthorizationCodeCredentials builder.
      */
-    public Builder setTokenType(String tokenType) {
+    public Builder setTokenType(final String tokenType) {
       this.tokenType = tokenType;
       return this;
     }
 
-    public Builder setScope(String scope) {
+    public Builder setScope(final String scope) {
       this.scope = scope;
       return this;
     }
@@ -116,7 +116,7 @@ public class AuthorizationCodeCredentials extends AbstractModelObject {
      * @param expiresIn The time period (in seconds) for which the access token is valid.
      * @return An AuthorizationCodeCredentials builder.
      */
-    public Builder setExpiresIn(int expiresIn) {
+    public Builder setExpiresIn(final Integer expiresIn) {
       this.expiresIn = expiresIn;
       return this;
     }
@@ -128,7 +128,7 @@ public class AuthorizationCodeCredentials extends AbstractModelObject {
      *                     place of an authorization code.
      * @return An AuthorizationCodeCredentials builder.
      */
-    public Builder setRefreshToken(String refreshToken) {
+    public Builder setRefreshToken(final String refreshToken) {
       this.refreshToken = refreshToken;
       return this;
     }

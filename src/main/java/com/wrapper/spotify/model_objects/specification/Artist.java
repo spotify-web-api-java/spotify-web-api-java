@@ -18,7 +18,7 @@ public class Artist extends AbstractModelObject implements IArtistTrackModelObje
   private final String id;
   private final Image[] images;
   private final String name;
-  private final int popularity;
+  private final Integer popularity;
   private final ModelObjectType type;
   private final String uri;
 
@@ -109,7 +109,7 @@ public class Artist extends AbstractModelObject implements IArtistTrackModelObje
    *
    * @return The popularity of an artist.
    */
-  public int getPopularity() {
+  public Integer getPopularity() {
     return popularity;
   }
 
@@ -147,7 +147,7 @@ public class Artist extends AbstractModelObject implements IArtistTrackModelObje
     private String id;
     private Image[] images;
     private String name;
-    private int popularity;
+    private Integer popularity;
     private ModelObjectType type;
     private String uri;
 
@@ -234,7 +234,7 @@ public class Artist extends AbstractModelObject implements IArtistTrackModelObje
      * @param popularity The popularity of the artist between 0 and 100.
      * @return A builder object.
      */
-    public Builder setPopularity(int popularity) {
+    public Builder setPopularity(Integer popularity) {
       this.popularity = popularity;
       return this;
     }

@@ -41,8 +41,8 @@ public class GetCurrentUsersProfileRequestTest {
         assertEquals("thelinmichael", user.getId());
         assertEquals(CountryCode.SE, user.getCountry());
         assertNotNull(user.getFollowers());
-        assertEquals(0, user.getImages()[0].getHeight());
-        assertEquals(0, user.getImages()[0].getWidth());
+        assertNull(user.getImages()[0].getHeight());
+        assertNull(user.getImages()[0].getWidth());
         assertEquals("http://media.giphy.com/media/Aab07O5PYOmQ/giphy.gif", user.getImages()[0].getUrl());
         assertEquals(ProductType.PREMIUM, user.getProduct());
         assertEquals("spotify:user:thelinmichael", user.getUri());
@@ -79,8 +79,8 @@ public class GetCurrentUsersProfileRequestTest {
     assertEquals("thelinmichael", user.getId());
     assertEquals(CountryCode.SE, user.getCountry());
     assertNotNull(user.getFollowers());
-    assertEquals(0, user.getImages()[0].getHeight());
-    assertEquals(0, user.getImages()[0].getWidth());
+    assertNull(user.getImages()[0].getHeight());
+    assertNull(user.getImages()[0].getWidth());
     assertEquals("http://media.giphy.com/media/Aab07O5PYOmQ/giphy.gif", user.getImages()[0].getUrl());
     assertEquals(ProductType.PREMIUM, user.getProduct());
     assertEquals("spotify:user:thelinmichael", user.getUri());

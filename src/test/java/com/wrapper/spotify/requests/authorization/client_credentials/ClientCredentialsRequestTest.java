@@ -32,7 +32,7 @@ public class ClientCredentialsRequestTest {
             .build();
 
     final ClientCredentials response = request.post();
-    assertEquals(3600, response.getExpiresIn());
+    assertEquals(3600, (int) response.getExpiresIn());
     assertEquals("BQAh_5C4JzOMLuF0W-UVTtaOhZaX0bjgJ5B8giFun_i7AJRKTpZ-VB1mFd3hWLLWRsZNihc_fG1xUlnW9sLBjQ", response.getAccessToken());
     assertEquals("Bearer", response.getTokenType());
   }
@@ -59,7 +59,7 @@ public class ClientCredentialsRequestTest {
     Futures.addCallback(responseFuture, new FutureCallback<ClientCredentials>() {
       @Override
       public void onSuccess(ClientCredentials response) {
-        assertEquals(3600, response.getExpiresIn());
+        assertEquals(3600, (int) response.getExpiresIn());
         assertEquals("BQAh_5C4JzOMLuF0W-UVTtaOhZaX0bjgJ5B8giFun_i7AJRKTpZ-VB1mFd3hWLLWRsZNihc_fG1xUlnW9sLBjQ", response.getAccessToken());
         assertEquals("Bearer", response.getTokenType());
         asyncCompleted.countDown();

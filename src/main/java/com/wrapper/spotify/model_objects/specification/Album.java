@@ -25,7 +25,7 @@ public class Album extends AbstractModelObject {
   private final Image[] images;
   private final String label;
   private final String name;
-  private final int popularity;
+  private final Integer popularity;
   private final String releaseDate;
   private final ReleaseDatePrecision releaseDatePrecision;
   private final Paging<TrackSimplified> tracks;
@@ -163,7 +163,7 @@ public class Album extends AbstractModelObject {
    *
    * @return The popularity of an album.
    */
-  public int getPopularity() {
+  public Integer getPopularity() {
     return popularity;
   }
 
@@ -235,7 +235,7 @@ public class Album extends AbstractModelObject {
     private Image[] images;
     private String label;
     private String name;
-    private int popularity;
+    private Integer popularity;
     private String releaseDate;
     private ReleaseDatePrecision releaseDatePrecision;
     private Paging<TrackSimplified> tracks;
@@ -380,7 +380,7 @@ public class Album extends AbstractModelObject {
      * @param popularity The popularity of the album between 0 and 100.
      * @return A builder object.
      */
-    public Builder setPopularity(int popularity) {
+    public Builder setPopularity(Integer popularity) {
       this.popularity = popularity;
       return this;
     }

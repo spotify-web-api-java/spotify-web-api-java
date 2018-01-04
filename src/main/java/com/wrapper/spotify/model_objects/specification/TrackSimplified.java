@@ -12,17 +12,17 @@ import com.wrapper.spotify.model_objects.AbstractModelObject;
 public class TrackSimplified extends AbstractModelObject {
   private final ArtistSimplified[] artists;
   private final CountryCode[] availableMarkets;
-  private final int discNumber;
-  private final int durationMs;
-  private final boolean explicit;
+  private final Integer discNumber;
+  private final Integer durationMs;
+  private final Boolean explicit;
   private final ExternalUrl externalUrls;
   private final String href;
   private final String id;
-  private final boolean isPlayable;
+  private final Boolean isPlayable;
   private final TrackLink linkedFrom;
   private final String name;
   private final String previewUrl;
-  private final int trackNumber;
+  private final Integer trackNumber;
   private final ModelObjectType type;
   private final String uri;
 
@@ -69,7 +69,7 @@ public class TrackSimplified extends AbstractModelObject {
    *
    * @return A disc number.
    */
-  public int getDiscNumber() {
+  public Integer getDiscNumber() {
     return discNumber;
   }
 
@@ -78,7 +78,7 @@ public class TrackSimplified extends AbstractModelObject {
    *
    * @return Duration of track in milliseconds.
    */
-  public int getDurationMs() {
+  public Integer getDurationMs() {
     return durationMs;
   }
 
@@ -87,7 +87,7 @@ public class TrackSimplified extends AbstractModelObject {
    *
    * @return Returns "true" for explicit, "false" for not explicit.
    */
-  public boolean getIsExplicit() {
+  public Boolean getIsExplicit() {
     return explicit;
   }
 
@@ -125,7 +125,7 @@ public class TrackSimplified extends AbstractModelObject {
    *
    * @return "true" if the track is playable in specified market, "false" if not.
    */
-  public boolean getIsPlayable() {
+  public Boolean getIsPlayable() {
     return isPlayable;
   }
 
@@ -163,7 +163,7 @@ public class TrackSimplified extends AbstractModelObject {
    *
    * @return A track number.
    */
-  public int getTrackNumber() {
+  public Integer getTrackNumber() {
     return trackNumber;
   }
 
@@ -196,17 +196,17 @@ public class TrackSimplified extends AbstractModelObject {
   public static final class Builder extends AbstractModelObject.Builder {
     private ArtistSimplified[] artists;
     private CountryCode[] availableMarkets;
-    private int discNumber;
-    private int durationMs;
-    private boolean explicit;
+    private Integer discNumber;
+    private Integer durationMs;
+    private Boolean explicit;
     private ExternalUrl externalUrls;
     private String href;
     private String id;
-    private boolean isPlayable;
+    private Boolean isPlayable;
     private TrackLink linkedFrom;
     private String name;
     private String previewUrl;
-    private int trackNumber;
+    private Integer trackNumber;
     private ModelObjectType type;
     private String uri;
 
@@ -238,7 +238,7 @@ public class TrackSimplified extends AbstractModelObject {
      * @param discNumber The disc number.
      * @return A builder object.
      */
-    public Builder setDiscNumber(int discNumber) {
+    public Builder setDiscNumber(Integer discNumber) {
       this.discNumber = discNumber;
       return this;
     }
@@ -249,7 +249,7 @@ public class TrackSimplified extends AbstractModelObject {
      * @param durationMs Duration in milliseconds.
      * @return A builder object.
      */
-    public Builder setDurationMs(int durationMs) {
+    public Builder setDurationMs(Integer durationMs) {
       this.durationMs = durationMs;
       return this;
     }
@@ -260,7 +260,7 @@ public class TrackSimplified extends AbstractModelObject {
      * @param explicit "true" for explicit, "false" for not explicit.
      * @return A builder object.
      */
-    public Builder setExplicit(boolean explicit) {
+    public Builder setExplicit(Boolean explicit) {
       this.explicit = explicit;
       return this;
     }
@@ -304,7 +304,7 @@ public class TrackSimplified extends AbstractModelObject {
      * @param isPlayable "true" for playable, "false" for not playable.
      * @return A builder object.
      */
-    public Builder setIsPlayable(boolean isPlayable) {
+    public Builder setIsPlayable(Boolean isPlayable) {
       this.isPlayable = isPlayable;
       return this;
     }
@@ -348,7 +348,7 @@ public class TrackSimplified extends AbstractModelObject {
      * @param trackNumber The track number.
      * @return A builder object.
      */
-    public Builder setTrackNumber(int trackNumber) {
+    public Builder setTrackNumber(Integer trackNumber) {
       this.trackNumber = trackNumber;
       return this;
     }

@@ -40,9 +40,9 @@ public class GetArtistsAlbumsRequestTest {
       @Override
       public void onSuccess(Paging<AlbumSimplified> albumSearchResult) {
         assertEquals("https://api.spotify.com/v1/artists/1vCWHaC5f2uS3yhpwWbIA6/albums?offset=0&limit=2&album_type=single&market=US", albumSearchResult.getHref());
-        assertEquals(2, albumSearchResult.getLimit());
-        assertEquals(0, albumSearchResult.getOffset());
-        assertEquals(46, albumSearchResult.getTotal());
+        assertEquals(2, (int) albumSearchResult.getLimit());
+        assertEquals(0, (int) albumSearchResult.getOffset());
+        assertEquals(46, (int) albumSearchResult.getTotal());
         assertEquals("https://api.spotify.com/v1/artists/1vCWHaC5f2uS3yhpwWbIA6/albums?offset=2&limit=2&album_type=single&market=US", albumSearchResult.getNext());
         assertNull(albumSearchResult.getPrevious());
 
@@ -81,9 +81,9 @@ public class GetArtistsAlbumsRequestTest {
     final Paging<AlbumSimplified> albumSearchResult = request.get();
 
     assertEquals("https://api.spotify.com/v1/artists/1vCWHaC5f2uS3yhpwWbIA6/albums?offset=0&limit=2&album_type=single&market=US", albumSearchResult.getHref());
-    assertEquals(2, albumSearchResult.getLimit());
-    assertEquals(0, albumSearchResult.getOffset());
-    assertEquals(46, albumSearchResult.getTotal());
+    assertEquals(2, (int) albumSearchResult.getLimit());
+    assertEquals(0, (int) albumSearchResult.getOffset());
+    assertEquals(46, (int) albumSearchResult.getTotal());
     assertEquals("https://api.spotify.com/v1/artists/1vCWHaC5f2uS3yhpwWbIA6/albums?offset=2&limit=2&album_type=single&market=US", albumSearchResult.getNext());
     assertNull(albumSearchResult.getPrevious());
 

@@ -1,7 +1,6 @@
 package com.wrapper.spotify.model_objects.specification;
 
 import com.google.common.reflect.TypeToken;
-import com.google.gson.JsonNull;
 import com.google.gson.JsonObject;
 import com.wrapper.spotify.model_objects.AbstractModelObject;
 
@@ -16,11 +15,11 @@ import com.wrapper.spotify.model_objects.AbstractModelObject;
 public class Paging<T> extends AbstractModelObject {
   private final String href;
   private final T[] items;
-  private final int limit;
+  private final Integer limit;
   private final String next;
-  private final int offset;
+  private final Integer offset;
   private final String previous;
-  private final int total;
+  private final Integer total;
 
   private Paging(final Paging.Builder<T> builder) {
     super(builder);
@@ -57,7 +56,7 @@ public class Paging<T> extends AbstractModelObject {
    *
    * @return The maximum number of items in the response (as set in the query or by default).
    */
-  public int getLimit() {
+  public Integer getLimit() {
     return limit;
   }
 
@@ -75,7 +74,7 @@ public class Paging<T> extends AbstractModelObject {
    *
    * @return The offset of the items returned (as set in the query or by default).
    */
-  public int getOffset() {
+  public Integer getOffset() {
     return offset;
   }
 
@@ -93,7 +92,7 @@ public class Paging<T> extends AbstractModelObject {
    *
    * @return The total number of items available to return.
    */
-  public int getTotal() {
+  public Integer getTotal() {
     return total;
   }
 
@@ -110,11 +109,11 @@ public class Paging<T> extends AbstractModelObject {
   public static final class Builder<T> extends AbstractModelObject.Builder {
     private String href;
     private T[] items;
-    private int limit;
+    private Integer limit;
     private String next;
-    private int offset;
+    private Integer offset;
     private String previous;
-    private int total;
+    private Integer total;
 
     /**
      * The href setter.
@@ -144,7 +143,7 @@ public class Paging<T> extends AbstractModelObject {
      * @param limit The maximum number of items in the response (as set in the query or by default).
      * @return A {@link Paging.Builder}.
      */
-    public Builder<T> setLimit(int limit) {
+    public Builder<T> setLimit(Integer limit) {
       this.limit = limit;
       return this;
     }
@@ -166,7 +165,7 @@ public class Paging<T> extends AbstractModelObject {
      * @param offset The offset of the items returned (as set in the query or by default).
      * @return A {@link Paging.Builder}.
      */
-    public Builder<T> setOffset(int offset) {
+    public Builder<T> setOffset(Integer offset) {
       this.offset = offset;
       return this;
     }
@@ -188,7 +187,7 @@ public class Paging<T> extends AbstractModelObject {
      * @param total The total number of items available to return.
      * @return A {@link Paging.Builder}.
      */
-    public Builder<T> setTotal(int total) {
+    public Builder<T> setTotal(Integer total) {
       this.total = total;
       return this;
     }

@@ -39,8 +39,8 @@ public class TrackSearchRequestTest {
       @Override
       public void onSuccess(Paging<Track> trackSearchResult) {
         assertTrue(trackSearchResult.getTotal() > 0);
-        assertEquals(20, trackSearchResult.getLimit());
-        assertEquals(0, trackSearchResult.getOffset());
+        assertEquals(20, (int) trackSearchResult.getLimit());
+        assertEquals(0, (int) trackSearchResult.getOffset());
 
         Track[] tracks = trackSearchResult.getItems();
 
@@ -73,8 +73,8 @@ public class TrackSearchRequestTest {
     final Paging<Track> trackSearchResult = request.get();
 
     assertTrue(trackSearchResult.getTotal() > 0);
-    assertEquals(20, trackSearchResult.getLimit());
-    assertEquals(0, trackSearchResult.getOffset());
+    assertEquals(20, (int) trackSearchResult.getLimit());
+    assertEquals(0, (int) trackSearchResult.getOffset());
 
     Track[] tracks = trackSearchResult.getItems();
 

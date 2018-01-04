@@ -9,7 +9,7 @@ import com.wrapper.spotify.model_objects.AbstractModelObject;
 public class ClientCredentials extends AbstractModelObject {
   private final String accessToken;
   private final String tokenType;
-  private final int expiresIn;
+  private final Integer expiresIn;
 
   private ClientCredentials(final ClientCredentials.Builder builder) {
     super(builder);
@@ -43,7 +43,7 @@ public class ClientCredentials extends AbstractModelObject {
    *
    * @return The time period (in seconds) for which the access token is valid.
    */
-  public int getExpiresIn() {
+  public Integer getExpiresIn() {
     return expiresIn;
   }
 
@@ -58,7 +58,7 @@ public class ClientCredentials extends AbstractModelObject {
   public static final class Builder extends AbstractModelObject.Builder {
     private String accessToken;
     private String tokenType;
-    private int expiresIn;
+    private Integer expiresIn;
 
     /**
      * The access token setter.
@@ -89,7 +89,7 @@ public class ClientCredentials extends AbstractModelObject {
      * @param expiresIn The time period (in seconds) for which the access token is valid.
      * @return A ClientCredentials builder.
      */
-    public Builder setExpiresIn(int expiresIn) {
+    public Builder setExpiresIn(Integer expiresIn) {
       this.expiresIn = expiresIn;
       return this;
     }

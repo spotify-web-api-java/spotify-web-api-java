@@ -5,15 +5,15 @@ import com.wrapper.spotify.model_objects.AbstractModelObject;
 
 public class AudioAnalysisSection extends AbstractModelObject {
   private final AudioAnalysisMeasure measure;
-  private final float loudness;
-  private final float tempo;
-  private final float tempoConfidence;
-  private final int key;
-  private final float keyConfidence;
-  private final int mode;
-  private final float modeConfidence;
-  private final int timeSignature;
-  private final float timeSignatureConfidence;
+  private final Float loudness;
+  private final Float tempo;
+  private final Float tempoConfidence;
+  private final Integer key;
+  private final Float keyConfidence;
+  private final Integer mode;
+  private final Float modeConfidence;
+  private final Integer timeSignature;
+  private final Float timeSignatureConfidence;
 
   private AudioAnalysisSection(final AudioAnalysisSection.Builder builder) {
     super(builder);
@@ -34,39 +34,39 @@ public class AudioAnalysisSection extends AbstractModelObject {
     return measure;
   }
 
-  public float getLoudness() {
+  public Float getLoudness() {
     return loudness;
   }
 
-  public float getTempo() {
+  public Float getTempo() {
     return tempo;
   }
 
-  public float getTempoConfidence() {
+  public Float getTempoConfidence() {
     return tempoConfidence;
   }
 
-  public int getKey() {
+  public Integer getKey() {
     return key;
   }
 
-  public float getKeyConfidence() {
+  public Float getKeyConfidence() {
     return keyConfidence;
   }
 
-  public int getMode() {
+  public Integer getMode() {
     return mode;
   }
 
-  public float getModeConfidence() {
+  public Float getModeConfidence() {
     return modeConfidence;
   }
 
-  public int getTimeSignature() {
+  public Integer getTimeSignature() {
     return timeSignature;
   }
 
-  public float getTimeSignatureConfidence() {
+  public Float getTimeSignatureConfidence() {
     return timeSignatureConfidence;
   }
 
@@ -77,62 +77,62 @@ public class AudioAnalysisSection extends AbstractModelObject {
 
   public static final class Builder extends AbstractModelObject.Builder {
     private AudioAnalysisMeasure measure;
-    private float loudness;
-    private float tempo;
-    private float tempoConfidence;
-    private int key;
-    private float keyConfidence;
-    private int mode;
-    private float modeConfidence;
-    private int timeSignature;
-    private float timeSignatureConfidence;
+    private Float loudness;
+    private Float tempo;
+    private Float tempoConfidence;
+    private Integer key;
+    private Float keyConfidence;
+    private Integer mode;
+    private Float modeConfidence;
+    private Integer timeSignature;
+    private Float timeSignatureConfidence;
 
     public Builder setMeasure(AudioAnalysisMeasure measure) {
       this.measure = measure;
       return this;
     }
 
-    public Builder setLoudness(float loudness) {
+    public Builder setLoudness(Float loudness) {
       this.loudness = loudness;
       return this;
     }
 
-    public Builder setTempo(float tempo) {
+    public Builder setTempo(Float tempo) {
       this.tempo = tempo;
       return this;
     }
 
-    public Builder setTempoConfidence(float tempoConfidence) {
+    public Builder setTempoConfidence(Float tempoConfidence) {
       this.tempoConfidence = tempoConfidence;
       return this;
     }
 
-    public Builder setKey(int key) {
+    public Builder setKey(Integer key) {
       this.key = key;
       return this;
     }
 
-    public Builder setKeyConfidence(float keyConfidence) {
+    public Builder setKeyConfidence(Float keyConfidence) {
       this.keyConfidence = keyConfidence;
       return this;
     }
 
-    public Builder setMode(int mode) {
+    public Builder setMode(Integer mode) {
       this.mode = mode;
       return this;
     }
 
-    public Builder setModeConfidence(float modeConfidence) {
+    public Builder setModeConfidence(Float modeConfidence) {
       this.modeConfidence = modeConfidence;
       return this;
     }
 
-    public Builder setTimeSignature(int timeSignature) {
+    public Builder setTimeSignature(Integer timeSignature) {
       this.timeSignature = timeSignature;
       return this;
     }
 
-    public Builder setTimeSignatureConfidence(float timeSignatureConfidence) {
+    public Builder setTimeSignatureConfidence(Float timeSignatureConfidence) {
       this.timeSignatureConfidence = timeSignatureConfidence;
       return this;
     }

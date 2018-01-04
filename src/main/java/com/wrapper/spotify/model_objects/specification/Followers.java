@@ -1,6 +1,5 @@
 package com.wrapper.spotify.model_objects.specification;
 
-import com.google.gson.JsonNull;
 import com.google.gson.JsonObject;
 import com.wrapper.spotify.model_objects.AbstractModelObject;
 
@@ -11,7 +10,7 @@ import com.wrapper.spotify.model_objects.AbstractModelObject;
  */
 public class Followers extends AbstractModelObject {
   private final String href;
-  private final int total;
+  private final Integer total;
 
   private Followers(final Followers.Builder builder) {
     super(builder);
@@ -35,7 +34,7 @@ public class Followers extends AbstractModelObject {
    *
    * @return The total number of followers.
    */
-  public int getTotal() {
+  public Integer getTotal() {
     return total;
   }
 
@@ -49,7 +48,7 @@ public class Followers extends AbstractModelObject {
    */
   public static final class Builder extends AbstractModelObject.Builder {
     private String href;
-    private int total;
+    private Integer total;
 
     /**
      * The href setter.
@@ -69,7 +68,7 @@ public class Followers extends AbstractModelObject {
      * @param total The total number of followers.
      * @return A {@link Followers.Builder}.
      */
-    public Builder setTotal(int total) {
+    public Builder setTotal(Integer total) {
       this.total = total;
       return this;
     }

@@ -54,9 +54,9 @@ public class GetSeveralAlbumsRequestTest {
 
         Paging<TrackSimplified> tracksPage = firstAlbum.getTracks();
         assertEquals("https://api.spotify.com/v1/albums/2hYe61Nd2oOoM6RYCwIma1/tracks?offset=0&limit=50", tracksPage.getHref());
-        assertEquals(0, tracksPage.getOffset());
-        assertEquals(50, tracksPage.getLimit());
-        assertEquals(20, tracksPage.getTotal());
+        assertEquals(0, (int) tracksPage.getOffset());
+        assertEquals(50, (int) tracksPage.getLimit());
+        assertEquals(20, (int) tracksPage.getTotal());
         assertEquals("52J94k3JBYbHlFyg7zAABB", tracksPage.getItems()[0].getId());
 
         asyncCompleted.countDown();
@@ -96,9 +96,9 @@ public class GetSeveralAlbumsRequestTest {
 
     Paging<TrackSimplified> tracksPage = firstAlbum.getTracks();
     assertEquals("https://api.spotify.com/v1/albums/2hYe61Nd2oOoM6RYCwIma1/tracks?offset=0&limit=50", tracksPage.getHref());
-    assertEquals(0, tracksPage.getOffset());
-    assertEquals(50, tracksPage.getLimit());
-    assertEquals(20, tracksPage.getTotal());
+    assertEquals(0, (int) tracksPage.getOffset());
+    assertEquals(50, (int) tracksPage.getLimit());
+    assertEquals(20, (int) tracksPage.getTotal());
     assertEquals("52J94k3JBYbHlFyg7zAABB", tracksPage.getItems()[0].getId());
   }
 

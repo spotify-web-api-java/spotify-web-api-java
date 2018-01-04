@@ -6,10 +6,10 @@ import com.wrapper.spotify.model_objects.AbstractModelObject;
 
 public class AudioAnalysisSegment extends AbstractModelObject {
   private final AudioAnalysisMeasure measure;
-  private final float loudnessStart;
-  private final float loudnessMaxTime;
-  private final float loudnessMax;
-  private final float loudnessEnd;
+  private final Float loudnessStart;
+  private final Float loudnessMaxTime;
+  private final Float loudnessMax;
+  private final Float loudnessEnd;
   private final float[] pitches;
   private final float[] timbre;
 
@@ -29,19 +29,19 @@ public class AudioAnalysisSegment extends AbstractModelObject {
     return measure;
   }
 
-  public float getLoudnessStart() {
+  public Float getLoudnessStart() {
     return loudnessStart;
   }
 
-  public float getLoudnessMaxTime() {
+  public Float getLoudnessMaxTime() {
     return loudnessMaxTime;
   }
 
-  public float getLoudnessMax() {
+  public Float getLoudnessMax() {
     return loudnessMax;
   }
 
-  public float getLoudnessEnd() {
+  public Float getLoudnessEnd() {
     return loudnessEnd;
   }
 
@@ -60,10 +60,10 @@ public class AudioAnalysisSegment extends AbstractModelObject {
 
   public static final class Builder extends AbstractModelObject.Builder {
     private AudioAnalysisMeasure measure;
-    private float loudnessStart;
-    private float loudnessMaxTime;
-    private float loudnessMax;
-    private float loudnessEnd;
+    private Float loudnessStart;
+    private Float loudnessMaxTime;
+    private Float loudnessMax;
+    private Float loudnessEnd;
     private float[] pitches;
     private float[] timbre;
 
@@ -72,22 +72,22 @@ public class AudioAnalysisSegment extends AbstractModelObject {
       return this;
     }
 
-    public Builder setLoudnessStart(float loudnessStart) {
+    public Builder setLoudnessStart(Float loudnessStart) {
       this.loudnessStart = loudnessStart;
       return this;
     }
 
-    public Builder setLoudnessMaxTime(float loudnessMaxTime) {
+    public Builder setLoudnessMaxTime(Float loudnessMaxTime) {
       this.loudnessMaxTime = loudnessMaxTime;
       return this;
     }
 
-    public Builder setLoudnessMax(float loudnessMax) {
+    public Builder setLoudnessMax(Float loudnessMax) {
       this.loudnessMax = loudnessMax;
       return this;
     }
 
-    public Builder setLoudnessEnd(float loudnessEnd) {
+    public Builder setLoudnessEnd(Float loudnessEnd) {
       this.loudnessEnd = loudnessEnd;
       return this;
     }

@@ -1,7 +1,6 @@
 package com.wrapper.spotify.model_objects.specification;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonNull;
 import com.google.gson.JsonObject;
 import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.enums.ModelObjectType;
@@ -17,20 +16,20 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
   private final AlbumSimplified album;
   private final ArtistSimplified[] artists;
   private final CountryCode[] availableMarkets;
-  private final int discNumber;
-  private final int durationMs;
-  private final boolean explicit;
+  private final Integer discNumber;
+  private final Integer durationMs;
+  private final Boolean explicit;
   private final ExternalId externalIds;
   private final ExternalUrl externalUrls;
   private final String href;
   private final String id;
-  private final boolean isPlayable;
+  private final Boolean isPlayable;
   private final TrackLink linkedFrom;
   private final Restrictions restrictions;
   private final String name;
-  private final int popularity;
+  private final Integer popularity;
   private final String previewUrl;
-  private final int trackNumber;
+  private final Integer trackNumber;
   private final ModelObjectType type;
   private final String uri;
 
@@ -90,7 +89,7 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
    *
    * @return A disc number.
    */
-  public int getDiscNumber() {
+  public Integer getDiscNumber() {
     return discNumber;
   }
 
@@ -99,7 +98,7 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
    *
    * @return Duration of track in milliseconds.
    */
-  public int getDurationMs() {
+  public Integer getDurationMs() {
     return durationMs;
   }
 
@@ -108,7 +107,7 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
    *
    * @return "true" if explicit, "false" if not.
    */
-  public boolean getIsExplicit() {
+  public Boolean getIsExplicit() {
     return explicit;
   }
 
@@ -156,7 +155,7 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
    *
    * @return "true" if the track is playable in the specified market, "false" if not.
    */
-  public boolean getIsPlayable() {
+  public Boolean getIsPlayable() {
     return isPlayable;
   }
 
@@ -195,7 +194,7 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
    *
    * @return The popularity of a track.
    */
-  public int getPopularity() {
+  public Integer getPopularity() {
     return popularity;
   }
 
@@ -214,7 +213,7 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
    *
    * @return A track number.
    */
-  public int getTrackNumber() {
+  public Integer getTrackNumber() {
     return trackNumber;
   }
 
@@ -248,20 +247,20 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
     private AlbumSimplified album;
     private ArtistSimplified[] artists;
     private CountryCode[] availableMarkets;
-    private int discNumber;
-    private int durationMs;
-    private boolean explicit;
+    private Integer discNumber;
+    private Integer durationMs;
+    private Boolean explicit;
     private ExternalId externalIds;
     private ExternalUrl externalUrls;
     private String href;
     private String id;
-    private boolean isPlayable;
+    private Boolean isPlayable;
     private TrackLink linkedFrom;
     private Restrictions restrictions;
     private String name;
-    private int popularity;
+    private Integer popularity;
     private String previewUrl;
-    private int trackNumber;
+    private Integer trackNumber;
     private ModelObjectType type;
     private String uri;
 
@@ -304,7 +303,7 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
      * @param discNumber The disc number.
      * @return A builder object.
      */
-    public Builder setDiscNumber(int discNumber) {
+    public Builder setDiscNumber(Integer discNumber) {
       this.discNumber = discNumber;
       return this;
     }
@@ -315,7 +314,7 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
      * @param durationMs Duration in milliseconds.
      * @return A builder object.
      */
-    public Builder setDurationMs(int durationMs) {
+    public Builder setDurationMs(Integer durationMs) {
       this.durationMs = durationMs;
       return this;
     }
@@ -326,7 +325,7 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
      * @param explicit Set "true" for explicit, "false" for not explicit.
      * @return A builder object.
      */
-    public Builder setExplicit(boolean explicit) {
+    public Builder setExplicit(Boolean explicit) {
       this.explicit = explicit;
       return this;
     }
@@ -381,7 +380,7 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
      * @param isPlayable "true" for playable, "false" for not playable.
      * @return A builder object.
      */
-    public Builder setIsPlayable(boolean isPlayable) {
+    public Builder setIsPlayable(Boolean isPlayable) {
       this.isPlayable = isPlayable;
       return this;
     }
@@ -425,7 +424,7 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
      * @param popularity The popularity in a range between 0 and 100.
      * @return A builder object.
      */
-    public Builder setPopularity(int popularity) {
+    public Builder setPopularity(Integer popularity) {
       this.popularity = popularity;
       return this;
     }
@@ -447,7 +446,7 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
      * @param trackNumber The track number.
      * @return A builder object.
      */
-    public Builder setTrackNumber(int trackNumber) {
+    public Builder setTrackNumber(Integer trackNumber) {
       this.trackNumber = trackNumber;
       return this;
     }

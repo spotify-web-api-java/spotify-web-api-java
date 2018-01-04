@@ -52,30 +52,26 @@ public interface IModelObject {
      * @param jsonObject A json object.
      * @return A model object. The type depends on this methods implementation.
      */
-    T createModelObject(JsonObject jsonObject);
+    T createModelObject(final JsonObject jsonObject);
 
-    T[] createModelObjectArray(JsonArray jsonArray);
+    T[] createModelObjectArray(final JsonArray jsonArray);
 
-    T[] createModelObjectArray(String json);
+    T[] createModelObjectArray(final String json);
 
-    T[] createModelObjectArray(String json, String key);
+    T[] createModelObjectArray(final String json, final String key);
 
-    <X> X[] createModelObjectArray(JsonArray jsonArray, TypeToken<X> typeToken);
+    <X> X[] createModelObjectArray(final JsonArray jsonArray, final TypeToken<X> typeToken);
 
-    Paging<T> createModelObjectPaging(JsonObject jsonObject);
+    Paging<T> createModelObjectPaging(final JsonObject jsonObject);
 
-    Paging<T> createModelObjectPaging(String json);
+    Paging<T> createModelObjectPaging(final String json);
 
-    Paging<T> createModelObjectPaging(String json, String key);
+    Paging<T> createModelObjectPaging(final String json, final String key);
 
-    PagingCursorbased<T> createModelObjectPagingCursorbased(JsonObject jsonObject);
+    PagingCursorbased<T> createModelObjectPagingCursorbased(final JsonObject jsonObject);
 
-    PagingCursorbased<T> createModelObjectPagingCursorbased(String json);
+    PagingCursorbased<T> createModelObjectPagingCursorbased(final String json);
 
-    PagingCursorbased<T> createModelObjectPagingCursorbased(String json, String key);
+    PagingCursorbased<T> createModelObjectPagingCursorbased(final String json, final String key);
   }
-
-//  interface IJsonUtilPaging {
-//    <X> Paging<X> createModelObject(JsonObject jsonObject, TypeToken<X> typeToken);
-//  }
 }

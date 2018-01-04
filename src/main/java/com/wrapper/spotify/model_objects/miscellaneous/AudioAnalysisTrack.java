@@ -4,32 +4,32 @@ import com.google.gson.JsonObject;
 import com.wrapper.spotify.model_objects.AbstractModelObject;
 
 public class AudioAnalysisTrack extends AbstractModelObject {
-  private final long numSamples;
-  private final float duration;
+  private final Long numSamples;
+  private final Float duration;
   private final String sampleMd5;
-  private final int offsetSeconds;
-  private final int windowSeconds;
-  private final long analysisSampleRate;
-  private final int analysisChannels;
-  private final float endOfFadeIn;
-  private final float startOfFadeOut;
-  private final float loudness;
-  private final float tempo;
-  private final float tempoConfidence;
-  private final int timeSignature;
-  private final float timeSignatureConfidence;
-  private final int key;
-  private final float keyConfidence;
-  private final int mode;
-  private final float modeConfidence;
+  private final Integer offsetSeconds;
+  private final Integer windowSeconds;
+  private final Long analysisSampleRate;
+  private final Integer analysisChannels;
+  private final Float endOfFadeIn;
+  private final Float startOfFadeOut;
+  private final Float loudness;
+  private final Float tempo;
+  private final Float tempoConfidence;
+  private final Integer timeSignature;
+  private final Float timeSignatureConfidence;
+  private final Integer key;
+  private final Float keyConfidence;
+  private final Integer mode;
+  private final Float modeConfidence;
   private final String codeString;
-  private final float codeVersion;
+  private final Float codeVersion;
   private final String echoprintString;
-  private final float echoprintVersion;
+  private final Float echoprintVersion;
   private final String synchString;
-  private final float synchVersion;
+  private final Float synchVersion;
   private final String rythmString;
-  private final float rythmVersion;
+  private final Float rythmVersion;
 
   private AudioAnalysisTrack(final AudioAnalysisTrack.Builder builder) {
     super(builder);
@@ -61,11 +61,11 @@ public class AudioAnalysisTrack extends AbstractModelObject {
     this.rythmVersion = builder.rythmVersion;
   }
 
-  public long getNumSamples() {
+  public Long getNumSamples() {
     return numSamples;
   }
 
-  public float getDuration() {
+  public Float getDuration() {
     return duration;
   }
 
@@ -73,63 +73,63 @@ public class AudioAnalysisTrack extends AbstractModelObject {
     return sampleMd5;
   }
 
-  public int getOffsetSeconds() {
+  public Integer getOffsetSeconds() {
     return offsetSeconds;
   }
 
-  public int getWindowSeconds() {
+  public Integer getWindowSeconds() {
     return windowSeconds;
   }
 
-  public long getAnalysisSampleRate() {
+  public Long getAnalysisSampleRate() {
     return analysisSampleRate;
   }
 
-  public int getAnalysisChannels() {
+  public Integer getAnalysisChannels() {
     return analysisChannels;
   }
 
-  public float getEndOfFadeIn() {
+  public Float getEndOfFadeIn() {
     return endOfFadeIn;
   }
 
-  public float getStartOfFadeOut() {
+  public Float getStartOfFadeOut() {
     return startOfFadeOut;
   }
 
-  public float getLoudness() {
+  public Float getLoudness() {
     return loudness;
   }
 
-  public float getTempo() {
+  public Float getTempo() {
     return tempo;
   }
 
-  public float getTempoConfidence() {
+  public Float getTempoConfidence() {
     return tempoConfidence;
   }
 
-  public int getTimeSignature() {
+  public Integer getTimeSignature() {
     return timeSignature;
   }
 
-  public float getTimeSignatureConfidence() {
+  public Float getTimeSignatureConfidence() {
     return timeSignatureConfidence;
   }
 
-  public int getKey() {
+  public Integer getKey() {
     return key;
   }
 
-  public float getKeyConfidence() {
+  public Float getKeyConfidence() {
     return keyConfidence;
   }
 
-  public int getMode() {
+  public Integer getMode() {
     return mode;
   }
 
-  public float getModeConfidence() {
+  public Float getModeConfidence() {
     return modeConfidence;
   }
 
@@ -137,7 +137,7 @@ public class AudioAnalysisTrack extends AbstractModelObject {
     return codeString;
   }
 
-  public float getCodeVersion() {
+  public Float getCodeVersion() {
     return codeVersion;
   }
 
@@ -145,7 +145,7 @@ public class AudioAnalysisTrack extends AbstractModelObject {
     return echoprintString;
   }
 
-  public float getEchoprintVersion() {
+  public Float getEchoprintVersion() {
     return echoprintVersion;
   }
 
@@ -153,7 +153,7 @@ public class AudioAnalysisTrack extends AbstractModelObject {
     return synchString;
   }
 
-  public float getSynchVersion() {
+  public Float getSynchVersion() {
     return synchVersion;
   }
 
@@ -161,7 +161,7 @@ public class AudioAnalysisTrack extends AbstractModelObject {
     return rythmString;
   }
 
-  public float getRythmVersion() {
+  public Float getRythmVersion() {
     return rythmVersion;
   }
 
@@ -171,39 +171,39 @@ public class AudioAnalysisTrack extends AbstractModelObject {
   }
 
   public static final class Builder extends AbstractModelObject.Builder {
-    private long numSamples;
-    private float duration;
+    private Long numSamples;
+    private Float duration;
     private String sampleMd5;
-    private int offsetSeconds;
-    private int windowSeconds;
-    private long analysisSampleRate;
-    private int analysisChannels;
-    private float endOfFadeIn;
-    private float startOfFadeOut;
-    private float loudness;
-    private float tempo;
-    private float tempoConfidence;
-    private int timeSignature;
-    private float timeSignatureConfidence;
-    private int key;
-    private float keyConfidence;
-    private int mode;
-    private float modeConfidence;
+    private Integer offsetSeconds;
+    private Integer windowSeconds;
+    private Long analysisSampleRate;
+    private Integer analysisChannels;
+    private Float endOfFadeIn;
+    private Float startOfFadeOut;
+    private Float loudness;
+    private Float tempo;
+    private Float tempoConfidence;
+    private Integer timeSignature;
+    private Float timeSignatureConfidence;
+    private Integer key;
+    private Float keyConfidence;
+    private Integer mode;
+    private Float modeConfidence;
     private String codeString;
-    private float codeVersion;
+    private Float codeVersion;
     private String echoprintString;
-    private float echoprintVersion;
+    private Float echoprintVersion;
     private String synchString;
-    private float synchVersion;
+    private Float synchVersion;
     private String rythmString;
-    private float rythmVersion;
+    private Float rythmVersion;
 
-    public Builder setNumSamples(long numSamples) {
+    public Builder setNumSamples(Long numSamples) {
       this.numSamples = numSamples;
       return this;
     }
 
-    public Builder setDuration(float duration) {
+    public Builder setDuration(Float duration) {
       this.duration = duration;
       return this;
     }
@@ -213,77 +213,77 @@ public class AudioAnalysisTrack extends AbstractModelObject {
       return this;
     }
 
-    public Builder setOffsetSeconds(int offsetSeconds) {
+    public Builder setOffsetSeconds(Integer offsetSeconds) {
       this.offsetSeconds = offsetSeconds;
       return this;
     }
 
-    public Builder setWindowSeconds(int windowSeconds) {
+    public Builder setWindowSeconds(Integer windowSeconds) {
       this.windowSeconds = windowSeconds;
       return this;
     }
 
-    public Builder setAnalysisSampleRate(long analysisSampleRate) {
+    public Builder setAnalysisSampleRate(Long analysisSampleRate) {
       this.analysisSampleRate = analysisSampleRate;
       return this;
     }
 
-    public Builder setAnalysisChannels(int analysisChannels) {
+    public Builder setAnalysisChannels(Integer analysisChannels) {
       this.analysisChannels = analysisChannels;
       return this;
     }
 
-    public Builder setEndOfFadeIn(float endOfFadeIn) {
+    public Builder setEndOfFadeIn(Float endOfFadeIn) {
       this.endOfFadeIn = endOfFadeIn;
       return this;
     }
 
-    public Builder setStartOfFadeOut(float startOfFadeOut) {
+    public Builder setStartOfFadeOut(Float startOfFadeOut) {
       this.startOfFadeOut = startOfFadeOut;
       return this;
     }
 
-    public Builder setLoudness(float loudness) {
+    public Builder setLoudness(Float loudness) {
       this.loudness = loudness;
       return this;
     }
 
-    public Builder setTempo(float tempo) {
+    public Builder setTempo(Float tempo) {
       this.tempo = tempo;
       return this;
     }
 
-    public Builder setTempoConfidence(float tempoConfidence) {
+    public Builder setTempoConfidence(Float tempoConfidence) {
       this.tempoConfidence = tempoConfidence;
       return this;
     }
 
-    public Builder setTimeSignature(int timeSignature) {
+    public Builder setTimeSignature(Integer timeSignature) {
       this.timeSignature = timeSignature;
       return this;
     }
 
-    public Builder setTimeSignatureConfidence(float timeSignatureConfidence) {
+    public Builder setTimeSignatureConfidence(Float timeSignatureConfidence) {
       this.timeSignatureConfidence = timeSignatureConfidence;
       return this;
     }
 
-    public Builder setKey(int key) {
+    public Builder setKey(Integer key) {
       this.key = key;
       return this;
     }
 
-    public Builder setKeyConfidence(float keyConfidence) {
+    public Builder setKeyConfidence(Float keyConfidence) {
       this.keyConfidence = keyConfidence;
       return this;
     }
 
-    public Builder setMode(int mode) {
+    public Builder setMode(Integer mode) {
       this.mode = mode;
       return this;
     }
 
-    public Builder setModeConfidence(float modeConfidence) {
+    public Builder setModeConfidence(Float modeConfidence) {
       this.modeConfidence = modeConfidence;
       return this;
     }
@@ -293,7 +293,7 @@ public class AudioAnalysisTrack extends AbstractModelObject {
       return this;
     }
 
-    public Builder setCodeVersion(float codeVersion) {
+    public Builder setCodeVersion(Float codeVersion) {
       this.codeVersion = codeVersion;
       return this;
     }
@@ -303,7 +303,7 @@ public class AudioAnalysisTrack extends AbstractModelObject {
       return this;
     }
 
-    public Builder setEchoprintVersion(float echoprintVersion) {
+    public Builder setEchoprintVersion(Float echoprintVersion) {
       this.echoprintVersion = echoprintVersion;
       return this;
     }
@@ -313,7 +313,7 @@ public class AudioAnalysisTrack extends AbstractModelObject {
       return this;
     }
 
-    public Builder setSynchVersion(float synchVersion) {
+    public Builder setSynchVersion(Float synchVersion) {
       this.synchVersion = synchVersion;
       return this;
     }
@@ -323,7 +323,7 @@ public class AudioAnalysisTrack extends AbstractModelObject {
       return this;
     }
 
-    public Builder setRythmVersion(float rythmVersion) {
+    public Builder setRythmVersion(Float rythmVersion) {
       this.rythmVersion = rythmVersion;
       return this;
     }

@@ -1,6 +1,5 @@
 package com.wrapper.spotify.model_objects.specification;
 
-import com.google.gson.JsonNull;
 import com.google.gson.JsonObject;
 import com.wrapper.spotify.model_objects.AbstractModelObject;
 
@@ -10,9 +9,9 @@ import com.wrapper.spotify.model_objects.AbstractModelObject;
  * by building instances from this class.
  */
 public class Image extends AbstractModelObject {
-  private final int height;
+  private final Integer height;
   private final String url;
-  private final int width;
+  private final Integer width;
 
   private Image(final Image.Builder builder) {
     super(builder);
@@ -27,7 +26,7 @@ public class Image extends AbstractModelObject {
    *
    * @return The image height in pixels. If unknown: {@code null}.
    */
-  public int getHeight() {
+  public Integer getHeight() {
     return height;
   }
 
@@ -45,7 +44,7 @@ public class Image extends AbstractModelObject {
    *
    * @return The image width in pixels. If unknown: {@code null}.
    */
-  public int getWidth() {
+  public Integer getWidth() {
     return width;
   }
 
@@ -58,9 +57,9 @@ public class Image extends AbstractModelObject {
    * Builder class for building {@link Image} instances.
    */
   public static final class Builder extends AbstractModelObject.Builder {
-    private int height;
+    private Integer height;
     private String url;
-    private int width;
+    private Integer width;
 
     /**
      * The height setter.
@@ -68,7 +67,7 @@ public class Image extends AbstractModelObject {
      * @param height The image height in pixels. If unknown: {@code null}.
      * @return A {@link Image.Builder}.
      */
-    public Builder setHeight(int height) {
+    public Builder setHeight(Integer height) {
       this.height = height;
       return this;
     }
@@ -90,7 +89,7 @@ public class Image extends AbstractModelObject {
      * @param width The image width in pixels. If unknown: {@code null}.
      * @return A {@link Image.Builder}.
      */
-    public Builder setWidth(int width) {
+    public Builder setWidth(Integer width) {
       this.width = width;
       return this;
     }

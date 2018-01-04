@@ -36,9 +36,9 @@ public class GetAlbumsTracksRequestTest {
       @Override
       public void onSuccess(Paging<TrackSimplified> trackSearchResult) {
         assertEquals("https://api.spotify.com/v1/albums/6TJmQnO44YE5BtTxH8pop1/tracks?offset=0&limit=2", trackSearchResult.getHref());
-        assertEquals(2, trackSearchResult.getLimit());
-        assertEquals(0, trackSearchResult.getOffset());
-        assertEquals(14, trackSearchResult.getTotal());
+        assertEquals(2, (int) trackSearchResult.getLimit());
+        assertEquals(0, (int) trackSearchResult.getOffset());
+        assertEquals(14, (int) trackSearchResult.getTotal());
         assertEquals("https://api.spotify.com/v1/albums/6TJmQnO44YE5BtTxH8pop1/tracks?offset=2&limit=2", trackSearchResult.getNext());
         assertNull(trackSearchResult.getPrevious());
 
@@ -73,9 +73,9 @@ public class GetAlbumsTracksRequestTest {
     Paging<TrackSimplified> trackSearchResult = request.get();
     assertNotNull(trackSearchResult);
     assertEquals("https://api.spotify.com/v1/albums/6TJmQnO44YE5BtTxH8pop1/tracks?offset=0&limit=2", trackSearchResult.getHref());
-    assertEquals(2, trackSearchResult.getLimit());
-    assertEquals(0, trackSearchResult.getOffset());
-    assertEquals(14, trackSearchResult.getTotal());
+    assertEquals(2, (int) trackSearchResult.getLimit());
+    assertEquals(0, (int) trackSearchResult.getOffset());
+    assertEquals(14, (int) trackSearchResult.getTotal());
     assertEquals("https://api.spotify.com/v1/albums/6TJmQnO44YE5BtTxH8pop1/tracks?offset=2&limit=2", trackSearchResult.getNext());
     assertNull(trackSearchResult.getPrevious());
 

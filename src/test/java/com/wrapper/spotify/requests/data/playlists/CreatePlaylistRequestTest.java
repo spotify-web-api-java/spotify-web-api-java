@@ -36,14 +36,14 @@ public class CreatePlaylistRequestTest {
         assertFalse(playlist.getIsCollaborative());
         assertEquals("New playlist description", playlist.getDescription());
         assertEquals("http://open.spotify.com/user/1153065250/playlist/2oo3exZoJwBXwdYJDoe0Ru", playlist.getExternalUrls().get("spotify"));
-        assertEquals(0, playlist.getFollowers().getTotal());
+        assertEquals(0, (int) playlist.getFollowers().getTotal());
         assertEquals("https://api.spotify.com/v1/users/1153065250/playlists/2oo3exZoJwBXwdYJDoe0Ru", playlist.getHref());
         assertEquals("2oo3exZoJwBXwdYJDoe0Ru", playlist.getId());
         assertEquals(0, playlist.getImages().length);
         assertEquals("New Playlist", playlist.getName());
         assertNotNull(playlist.getOwner());
         assertFalse(playlist.getIsPublicAccess());
-        assertEquals(0, playlist.getTracks().getTotal());
+        assertEquals(0, (int) playlist.getTracks().getTotal());
         assertEquals(ModelObjectType.PLAYLIST, playlist.getType());
         assertEquals("spotify:user:1153065250:playlist:2oo3exZoJwBXwdYJDoe0Ru", playlist.getUri());
 
@@ -74,14 +74,14 @@ public class CreatePlaylistRequestTest {
     assertFalse(playlist.getIsCollaborative());
     assertEquals("New playlist description", playlist.getDescription());
     assertEquals("http://open.spotify.com/user/1153065250/playlist/2oo3exZoJwBXwdYJDoe0Ru", playlist.getExternalUrls().get("spotify"));
-    assertEquals(0, playlist.getFollowers().getTotal());
+    assertEquals(0, (int) playlist.getFollowers().getTotal());
     assertEquals("https://api.spotify.com/v1/users/1153065250/playlists/2oo3exZoJwBXwdYJDoe0Ru", playlist.getHref());
     assertEquals("2oo3exZoJwBXwdYJDoe0Ru", playlist.getId());
     assertEquals(0, playlist.getImages().length);
     assertEquals("New Playlist", playlist.getName());
     assertNotNull(playlist.getOwner());
     assertFalse(playlist.getIsPublicAccess());
-    assertEquals(0, playlist.getTracks().getTotal());
+    assertEquals(0, (int) playlist.getTracks().getTotal());
     assertEquals(ModelObjectType.PLAYLIST, playlist.getType());
     assertEquals("spotify:user:1153065250:playlist:2oo3exZoJwBXwdYJDoe0Ru", playlist.getUri());
   }
