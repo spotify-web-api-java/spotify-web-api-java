@@ -7,7 +7,6 @@ import com.wrapper.spotify.model_objects.specification.Paging;
 import com.wrapper.spotify.model_objects.specification.PagingCursorbased;
 
 import java.lang.reflect.Array;
-import java.lang.reflect.Type;
 import java.util.TimeZone;
 
 /**
@@ -15,12 +14,13 @@ import java.util.TimeZone;
  * other model object classes and includes multiple generic methods.
  */
 public abstract class AbstractModelObject implements IModelObject {
+
   /**
    * This constructor initializes the time zone.
    *
    * @param builder The builder object of the corresponding model object.
    */
-  protected AbstractModelObject(Builder builder) {
+  protected AbstractModelObject(final Builder builder) {
     simpleDateFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
   }
 
@@ -45,7 +45,7 @@ public abstract class AbstractModelObject implements IModelObject {
       }
     }
 
-    public T createModelObject(String json) {
+    public T createModelObject(final String json) {
       return createModelObject(new JsonParser().parse(json).getAsJsonObject());
     }
 
@@ -55,7 +55,7 @@ public abstract class AbstractModelObject implements IModelObject {
      * @param jsonArray A json array object.
      * @return A model object array.
      */
-    public T[] createModelObjectArray(JsonArray jsonArray) {
+    public T[] createModelObjectArray(final JsonArray jsonArray) {
       @SuppressWarnings("unchecked")
       T[] array = (T[]) Array.newInstance(new TypeToken<T>(getClass()) {
       }.getRawType(), jsonArray.size());
@@ -80,11 +80,11 @@ public abstract class AbstractModelObject implements IModelObject {
      * @param json A json string.
      * @return A model object array.
      */
-    public T[] createModelObjectArray(String json) {
+    public T[] createModelObjectArray(final String json) {
       return createModelObjectArray(new JsonParser().parse(json).getAsJsonArray());
     }
 
-    public T[] createModelObjectArray(String json, String key) {
+    public T[] createModelObjectArray(final String json, final String key) {
       return createModelObjectArray(new JsonParser().parse(json).getAsJsonObject().get(key).getAsJsonArray());
     }
 
@@ -96,7 +96,7 @@ public abstract class AbstractModelObject implements IModelObject {
      * @param <X>       The model object type of the array and type token.
      * @return A model object array.
      */
-    public <X> X[] createModelObjectArray(JsonArray jsonArray, TypeToken<X> typeToken) {
+    public <X> X[] createModelObjectArray(final JsonArray jsonArray, TypeToken<X> typeToken) {
       @SuppressWarnings("unchecked")
       X[] array = (X[]) Array.newInstance(typeToken.getRawType(), jsonArray.size());
 
@@ -115,10 +115,7 @@ public abstract class AbstractModelObject implements IModelObject {
      * @param jsonObject A json object.
      * @return A model object paging.
      */
-    public Paging<T> createModelObjectPaging(JsonObject jsonObject) {
-      Type type = new TypeToken<T>(getClass()) {
-      }.getType();
-
+    public Paging<T> createModelObjectPaging(final JsonObject jsonObject) {
       return new Paging.Builder<T>()
               .setHref(
                       hasAndNotNull(jsonObject, "href")
@@ -157,18 +154,15 @@ public abstract class AbstractModelObject implements IModelObject {
      * @param json A json string.
      * @return A model object paging.
      */
-    public Paging<T> createModelObjectPaging(String json) {
+    public Paging<T> createModelObjectPaging(final String json) {
       return createModelObjectPaging(new JsonParser().parse(json).getAsJsonObject());
     }
 
-    public Paging<T> createModelObjectPaging(String json, String key) {
+    public Paging<T> createModelObjectPaging(final String json, final String key) {
       return createModelObjectPaging(new JsonParser().parse(json).getAsJsonObject().get(key).getAsJsonObject());
     }
 
-    public PagingCursorbased<T> createModelObjectPagingCursorbased(JsonObject jsonObject) {
-      Type type = new TypeToken<T>(getClass()) {
-      }.getType();
-
+    public PagingCursorbased<T> createModelObjectPagingCursorbased(final JsonObject jsonObject) {
       return new PagingCursorbased.Builder<T>()
               .setHref(
                       hasAndNotNull(jsonObject, "href")
@@ -197,11 +191,11 @@ public abstract class AbstractModelObject implements IModelObject {
               .build();
     }
 
-    public PagingCursorbased<T> createModelObjectPagingCursorbased(String json) {
+    public PagingCursorbased<T> createModelObjectPagingCursorbased(final String json) {
       return createModelObjectPagingCursorbased(new JsonParser().parse(json).getAsJsonObject());
     }
 
-    public PagingCursorbased<T> createModelObjectPagingCursorbased(String json, String key) {
+    public PagingCursorbased<T> createModelObjectPagingCursorbased(final String json, final String key) {
       return createModelObjectPagingCursorbased(new JsonParser().parse(json).getAsJsonObject().get(key).getAsJsonObject());
     }
   }
