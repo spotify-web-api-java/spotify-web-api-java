@@ -5,8 +5,11 @@ import com.wrapper.spotify.enums.ModelObjectType;
 import com.wrapper.spotify.model_objects.AbstractModelObject;
 
 /**
- * Retrieve information about Context objects by building instances from this class.
- * Context objects contain information from where a specific track has been played by a user.
+ * Retrieve information about <a href="https://developer.spotify.com/web-api/object-model/#context-object">
+ *     Context objects</a> by building instances from this class. Context objects contain information from where a
+ *     specific track has been played by a user.
+ *
+ * @see PlayHistory
  */
 public class Context extends AbstractModelObject {
   private final ModelObjectType type;
@@ -26,32 +29,33 @@ public class Context extends AbstractModelObject {
   /**
    * Get the model object type of the context.
    *
-   * @return The object type, e.g. &quot;artist&quot;, &quot;playlist&quot;, &quot;album&quot;.
+   * @return The {@link ModelObjectType}.
    */
   public ModelObjectType getType() {
     return type;
   }
 
   /**
-   * Get the href of the contexts track.
+   * Get a link to the Spotify Web API endpoint providing full details of the track.
    *
-   * @return A link to the Web API endpoint providing full details of the track.
+   * @return A link to the Spotify Web API endpoint providing full details of the track.
    */
   public String getHref() {
     return href;
   }
 
   /**
-   * Get the external urls of the context.
+   * Get the external URLs of the context.
    *
-   * @return External URLs for this context.
+   * @return An {@link ExternalUrl} object.
    */
   public ExternalUrl getExternalUrls() {
     return externalUrls;
   }
 
   /**
-   * Get the Spotify URI for the context.
+   * Get the <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify URI</a>
+   * for the context.
    *
    * @return The Spotify URI for the context.
    */
@@ -65,7 +69,7 @@ public class Context extends AbstractModelObject {
   }
 
   /**
-   * Builder class for building Context instances.
+   * Builder class for building {@link Context} instances.
    */
   public static final class Builder extends AbstractModelObject.Builder {
     private ModelObjectType type;
@@ -76,8 +80,8 @@ public class Context extends AbstractModelObject {
     /**
      * The model object type setter.
      *
-     * @param type The object type, e.g. &quot;artist&quot;, &quot;playlist&quot;, &quot;album&quot;.
-     * @return A Context builder.
+     * @param type The {@link ModelObjectType}.
+     * @return A {@link Context.Builder}.
      */
     public Builder setType(ModelObjectType type) {
       this.type = type;
@@ -87,8 +91,8 @@ public class Context extends AbstractModelObject {
     /**
      * The context href setter.
      *
-     * @param href A link to the Web API endpoint providing full details of the track.
-     * @return A Context builder.
+     * @param href A link to the Spotify Web API endpoint providing full details of the track.
+     * @return A {@link Context.Builder}.
      */
     public Builder setHref(String href) {
       this.href = href;
@@ -96,10 +100,10 @@ public class Context extends AbstractModelObject {
     }
 
     /**
-     * The external urls setter.
+     * The external URLs setter.
      *
      * @param externalUrls External URLs for this context.
-     * @return A Context builder.
+     * @return A {@link Context.Builder}.
      */
     public Builder setExternalUrls(ExternalUrl externalUrls) {
       this.externalUrls = externalUrls;
@@ -107,10 +111,10 @@ public class Context extends AbstractModelObject {
     }
 
     /**
-     * The external urls setter.
+     * The Spotify URI setter.
      *
-     * @param uri External URLs for this context.
-     * @return A Context builder.
+     * @param uri Spotify URI for this context.
+     * @return A {@link Context.Builder}.
      */
     public Builder setUri(String uri) {
       this.uri = uri;
@@ -124,7 +128,7 @@ public class Context extends AbstractModelObject {
   }
 
   /**
-   * JsonUtil class for building Context instances.
+   * JsonUtil class for building {@link Context} instances.
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<Context> {
     public Context createModelObject(JsonObject jsonObject) {

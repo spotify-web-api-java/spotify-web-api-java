@@ -5,7 +5,8 @@ import com.wrapper.spotify.enums.ModelObjectType;
 import com.wrapper.spotify.model_objects.AbstractModelObject;
 
 /**
- * Retrieve information about playlists by building instances from this class.
+ * Retrieve information about <a href="https://developer.spotify.com/web-api/object-model/#playlist-object-full">
+ *     Playlist objects</a> by building instances from this class.
  */
 public class Playlist extends AbstractModelObject {
   private final Boolean collaborative;
@@ -43,65 +44,73 @@ public class Playlist extends AbstractModelObject {
   }
 
   /**
-   * Check whether a playlist is collaborative or not.
+   * Check whether the playlist is collaborative or not.
    *
-   * @return "true" if the playlist is collaborytive, "false" if not.
+   * @return {@code true} if the owner allows other users to modify the playlist, {@code false} if not.
+   * @see <a
+   *      href="https://developer.spotify.com/web-api/working-with-playlists/#public-private-and-collaborative-status">
+   *      Spotify: Working With Playlists</a>
    */
   public Boolean getIsCollaborative() {
     return collaborative;
   }
 
   /**
-   * Get the description of a playlist.
+   * Get the description of the playlist.
    *
-   * @return Playlist description.
+   * @return The playlist description. Only returned for modified, verified playlists, otherwise {@code null}.
    */
   public String getDescription() {
     return description;
   }
 
   /**
-   * Get the external urls of a playlist.<br>
+   * Get the external URLs of the playlist. <br>
    * Example: Spotify-URL.
    *
-   * @return The external urls of a playlist.
+   * @return Known external URLs for this playlist.
    */
   public ExternalUrl getExternalUrls() {
     return externalUrls;
   }
 
   /**
-   * Get information about the followers of a playlist.<br>
+   * Get information about the followers of the playlist. <br>
    * Example: Follower count.
    *
-   * @return Followers object.
+   * @return Information about the followers of the playlist.
    */
   public Followers getFollowers() {
     return followers;
   }
 
   /**
-   * Get the full Spotify API endpoint url of a playlist.
+   * Get the full Spotify API endpoint url of the playlist.
    *
-   * @return A Spotify API endpoint url.
+   * @return A link to the Web API endpoint providing full details of the playlist.
    */
   public String getHref() {
     return href;
   }
 
   /**
-   * Get the Spotify id of a playlist.
+   * Get the <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify ID</a>
+   * of a playlist.
    *
-   * @return A Spotify playlist id.
+   * @return The Spotify ID for the playlist.
    */
   public String getId() {
     return id;
   }
 
   /**
-   * Get the cover image of a playlist in different sizes.
+   * Images for the playlist. The array may be empty or contain up to three images. The images are returned by size in
+   * descending order. <br>
+   * <b>Note:</b> If returned, the source URL for the image is temporary and will expire in less than a day.
    *
    * @return An array of images in different sizes.
+   * @see <a href="https://developer.spotify.com/web-api/working-with-playlists/#using-playlist-images">
+   *      Spotify: Working With Playlists</a>
    */
   public Image[] getImages() {
     return images;
@@ -128,25 +137,31 @@ public class Playlist extends AbstractModelObject {
   /**
    * Check whether a playlist is available in public or is private.
    *
-   * @return "true" if the playlist is public, "false" if not.
+   * @return {@code true} the playlist is public, {@code false} the playlist is private, {@code null}
+   *         the playlist status is not relevant.
+   * @see <a
+   *      href="https://developer.spotify.com/web-api/working-with-playlists/#public-private-and-collaborative-status">
+   *      Spotify: Working With Playlists</a>
    */
   public Boolean getIsPublicAccess() {
     return publicAccess;
   }
 
   /**
-   * Get the latest snapshot id of a playlist.
+   * Get the snapshot ID, the version identifier for the current playlist. Can be supplied in other requests to target
+   * a specific playlist version.
    *
-   * @return A snapshot id.
+   * @return The version identifier for the current playlist.
+   * @see com.wrapper.spotify.requests.data.playlists.RemoveTracksFromPlaylistRequest
    */
   public String getSnapshotId() {
     return snapshotId;
   }
 
   /**
-   * Get a page of playlist tracks of a playlist.
+   * Get information about the tracks of the playlist.
    *
-   * @return A page of playlist tracks.
+   * @return Information about the tracks of the playlist.
    */
   public Paging<PlaylistTrack> getTracks() {
     return tracks;
@@ -155,16 +170,17 @@ public class Playlist extends AbstractModelObject {
   /**
    * Get the model object type. In this case "playlist".
    *
-   * @return A model object type.
+   * @return The object type: "playlist"
    */
   public ModelObjectType getType() {
     return type;
   }
 
   /**
-   * Get the Spotify uri of a playlist.
+   * Get the <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify URI</a>
+   * of a playlist.
    *
-   * @return Spotify playlist uri.
+   * @return Spotify playlist URI.
    */
   public String getUri() {
     return uri;
@@ -176,7 +192,7 @@ public class Playlist extends AbstractModelObject {
   }
 
   /**
-   * Builder class for building playlist instances.
+   * Builder class for building {@link Playlist} instances.
    */
   public static final class Builder extends AbstractModelObject.Builder {
     private Boolean collaborative;
@@ -197,8 +213,8 @@ public class Playlist extends AbstractModelObject {
     /**
      * Set whether the playlist to be built is collaborative or not.
      *
-     * @param collaborative "true" for collaborative", false if not.
-     * @return A builder object.
+     * @param collaborative {@code true} if the owner allows other users to modify the playlist, {@code false} if not.
+     * @return A {@link Playlist.Builder}.
      */
     public Builder setCollaborative(Boolean collaborative) {
       this.collaborative = collaborative;
@@ -209,7 +225,7 @@ public class Playlist extends AbstractModelObject {
      * Set the description of the playlist to be built.
      *
      * @param description Playlist description.
-     * @return A builder object.
+     * @return A {@link Playlist.Builder}.
      */
     public Builder setDescription(String description) {
       this.description = description;
@@ -217,10 +233,10 @@ public class Playlist extends AbstractModelObject {
     }
 
     /**
-     * Set external urls of the playlist to be built.
+     * Set the external URLs of the playlist to be built.
      *
-     * @param externalUrls External urls object.
-     * @return A builder object.
+     * @param externalUrls Known external URLs for this playlist.
+     * @return A {@link Playlist.Builder}.
      */
     public Builder setExternalUrls(ExternalUrl externalUrls) {
       this.externalUrls = externalUrls;
@@ -228,10 +244,10 @@ public class Playlist extends AbstractModelObject {
     }
 
     /**
-     * Set the followers object of the playlist to be built.
+     * Set information about the followers of the playlist to be built.
      *
-     * @param followers A followers object.
-     * @return A builder object.
+     * @param followers Information about the followers of the playlist.
+     * @return A {@link Playlist.Builder}.
      */
     public Builder setFollowers(Followers followers) {
       this.followers = followers;
@@ -239,10 +255,10 @@ public class Playlist extends AbstractModelObject {
     }
 
     /**
-     * Set href of Spotify api endpoint of the playlist to be built.
+     * Set the link to the Spotify Web API endpoint providing full details of the playlist.
      *
-     * @param href Spotify api endpoint url.
-     * @return A builder object.
+     * @param href A link to the Spotify Web API endpoint providing full details of the playlist.
+     * @return A {@link Playlist.Builder}.
      */
     public Builder setHref(String href) {
       this.href = href;
@@ -250,10 +266,10 @@ public class Playlist extends AbstractModelObject {
     }
 
     /**
-     * Set Spotify id of the playlist to be built.
+     * Set the Spotify ID for the playlist to be built.
      *
-     * @param id Spotify playlist id.
-     * @return A builder object.
+     * @param id The Spotify ID for the playlist.
+     * @return A {@link Playlist.Builder}.
      */
     public Builder setId(String id) {
       this.id = id;
@@ -263,8 +279,8 @@ public class Playlist extends AbstractModelObject {
     /**
      * Set the cover image of the playlist to be built.
      *
-     * @param images An array of image objects.
-     * @return A builder object.
+     * @param images An array of images in different sizes.
+     * @return A {@link Playlist.Builder}.
      */
     public Builder setImages(Image... images) {
       this.images = images;
@@ -275,7 +291,7 @@ public class Playlist extends AbstractModelObject {
      * Set the name of the playlist to be built.
      *
      * @param name The playlist name.
-     * @return A builder object.
+     * @return A {@link Playlist.Builder}.
      */
     public Builder setName(String name) {
       this.name = name;
@@ -286,7 +302,7 @@ public class Playlist extends AbstractModelObject {
      * Set the owner of the playlist to be built.
      *
      * @param owner A user object.
-     * @return A builder object.
+     * @return A {@link Playlist.Builder}.
      */
     public Builder setOwner(User owner) {
       this.owner = owner;
@@ -296,8 +312,9 @@ public class Playlist extends AbstractModelObject {
     /**
      * Set whether the playlist to be built is available in public or not.
      *
-     * @param publicAccess "true" if public, "false" if not.
-     * @return A builder object.
+     * @param publicAccess {@code true} the playlist is public, {@code false} the playlist is private, {@code null}
+     *                     the playlist status is not relevant.
+     * @return A {@link Playlist.Builder}.
      */
     public Builder setPublicAccess(Boolean publicAccess) {
       this.publicAccess = publicAccess;
@@ -305,10 +322,10 @@ public class Playlist extends AbstractModelObject {
     }
 
     /**
-     * Set the snapshot id of the playlist to be built.
+     * Set the version identifier for the playlist to be built.
      *
-     * @param snapshotId Snapshot id.
-     * @return A builder object.
+     * @param snapshotId The version identifier for the playlist.
+     * @return A {@link Playlist.Builder}.
      */
     public Builder setSnapshotId(String snapshotId) {
       this.snapshotId = snapshotId;
@@ -316,10 +333,10 @@ public class Playlist extends AbstractModelObject {
     }
 
     /**
-     * Set a page of playlist tracks of the playlist to be built.
+     * Set the tracks of the playlist to be built.
      *
-     * @param tracks A page of playlist tracks.
-     * @return A builder object.
+     * @param tracks Information about the tracks of the playlist.
+     * @return A {@link Playlist.Builder}.
      */
     public Builder setTracks(Paging<PlaylistTrack> tracks) {
       this.tracks = tracks;
@@ -330,7 +347,7 @@ public class Playlist extends AbstractModelObject {
      * Set the type of the model object. In this case "playlist".
      *
      * @param type The model object type.
-     * @return A builder object.
+     * @return A {@link Playlist.Builder}.
      */
     public Builder setType(ModelObjectType type) {
       this.type = type;
@@ -338,10 +355,11 @@ public class Playlist extends AbstractModelObject {
     }
 
     /**
-     * Set the Spotify uri of the playlist to be built.
+     * Set the <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify URI</a>
+     * of the playlist to be built.
      *
-     * @param uri The Spotify playlist uri.
-     * @return A builder object.
+     * @param uri The Spotify playlist URI.
+     * @return A {@link Playlist.Builder}.
      */
     public Builder setUri(String uri) {
       this.uri = uri;
@@ -355,7 +373,7 @@ public class Playlist extends AbstractModelObject {
   }
 
   /**
-   * JsonUtil class for building playlist instances.
+   * JsonUtil class for building {@link Playlist} instances.
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<Playlist> {
     public Playlist createModelObject(JsonObject jsonObject) {

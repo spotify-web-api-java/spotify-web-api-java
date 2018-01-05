@@ -7,7 +7,7 @@ import com.wrapper.spotify.model_objects.AbstractModelObject;
 
 /**
  * Retrieve information about <a href="https://developer.spotify.com/web-api/object-model/#audio-features-object">
- *     Audio Features</a> by building instances from this class.
+ *     Audio Feature objects</a> by building instances from this class.
  */
 public class AudioFeatures extends AbstractModelObject {
   private final double acousticness;
