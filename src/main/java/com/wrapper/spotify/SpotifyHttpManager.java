@@ -154,10 +154,16 @@ public class SpotifyHttpManager implements IHttpManager {
   private String getResponseBody(HttpResponse httpResponse) throws
           IOException,
           SpotifyWebApiException {
-    StatusLine statusLine = httpResponse.getStatusLine();
-    String responseBody = EntityUtils.toString(httpResponse.getEntity(), "UTF-8");
-
+    final StatusLine statusLine = httpResponse.getStatusLine();
+    final String responseBody = EntityUtils.toString(httpResponse.getEntity(), "UTF-8");
     final JsonObject jsonObject = new JsonParser().parse(responseBody).getAsJsonObject();
+    final String errorMessage;
+
+    if (jsonObject.has("error") && jsonObject.get("error").getAsJsonObject().has("message")) {
+      errorMessage = jsonObject.getAsJsonObject("error").get("message").getAsString();
+    } else {
+      errorMessage = statusLine.getReasonPhrase();
+    }
 
     switch (statusLine.getStatusCode()) {
       case HttpStatus.SC_OK:
@@ -171,23 +177,21 @@ public class SpotifyHttpManager implements IHttpManager {
       case HttpStatus.SC_NOT_MODIFIED:
         return responseBody;
       case HttpStatus.SC_BAD_REQUEST:
-        if (jsonObject.has("error")) {
-          throw new BadRequestException(jsonObject.get("error").getAsString());
-        }
+          throw new BadRequestException(errorMessage);
       case HttpStatus.SC_UNAUTHORIZED:
-        throw new UnauthorizedException(statusLine.getReasonPhrase());
+          throw new UnauthorizedException(errorMessage);
       case HttpStatus.SC_FORBIDDEN:
-        throw new ForbiddenException(statusLine.getReasonPhrase());
+          throw new ForbiddenException(errorMessage);
       case HttpStatus.SC_NOT_FOUND:
-        throw new NotFoundException(statusLine.getReasonPhrase());
+          throw new NotFoundException(errorMessage);
       case 429: // TOO_MANY_REQUESTS (additional status code, RFC 6585)
-        throw new TooManyRequestsException(statusLine.getReasonPhrase());
+          throw new TooManyRequestsException(errorMessage);
       case HttpStatus.SC_INTERNAL_SERVER_ERROR:
-        throw new InternalServerErrorException(statusLine.getReasonPhrase());
+          throw new InternalServerErrorException(errorMessage);
       case HttpStatus.SC_BAD_GATEWAY:
-        throw new BadGatewayException(statusLine.getReasonPhrase());
+          throw new BadGatewayException(errorMessage);
       case HttpStatus.SC_SERVICE_UNAVAILABLE:
-        throw new ServiceUnavailableException(statusLine.getReasonPhrase());
+          throw new ServiceUnavailableException(errorMessage);
       default:
         return responseBody;
     }
