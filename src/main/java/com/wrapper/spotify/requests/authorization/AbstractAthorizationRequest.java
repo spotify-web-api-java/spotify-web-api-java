@@ -1,7 +1,8 @@
 package com.wrapper.spotify.requests.authorization;
 
 import com.wrapper.spotify.requests.AbstractRequest;
-import org.apache.commons.codec.binary.Base64;
+
+import javax.xml.bind.DatatypeConverter;
 
 public abstract class AbstractAthorizationRequest extends AbstractRequest {
   protected AbstractAthorizationRequest(final Builder builder) {
@@ -17,7 +18,7 @@ public abstract class AbstractAthorizationRequest extends AbstractRequest {
       assert (!clientId.equals(""));
       assert (!clientSecret.equals(""));
 
-      setHeader("Authorization", "Basic " + Base64.encodeBase64String((clientId + ":" + clientSecret).getBytes()));
+      setHeader("Authorization", "Basic " + DatatypeConverter.printBase64Binary((clientId + ":" + clientSecret).getBytes()));
     }
   }
 }

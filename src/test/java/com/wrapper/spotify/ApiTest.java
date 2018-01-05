@@ -9,9 +9,9 @@ import com.neovisionaries.i18n.LanguageCode;
 import com.wrapper.spotify.enums.AlbumType;
 import com.wrapper.spotify.model_objects.special.PlaylistTrackPosition;
 import com.wrapper.spotify.requests.IRequest;
-import org.apache.commons.codec.binary.Base64;
 import org.junit.Test;
 
+import javax.xml.bind.DatatypeConverter;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -415,7 +415,7 @@ public class ApiTest {
     assertEquals("https://accounts.spotify.com:443/api/token", request.getUri().toString());
 
     final String idSecret = clientId + ":" + clientSecret;
-    assertHasHeader(request, "Authorization", "Basic " + new String(Base64.encodeBase64(idSecret.getBytes())));
+    assertHasHeader(request, "Authorization", "Basic " + DatatypeConverter.printBase64Binary((clientId + ":" + clientSecret).getBytes()));
   }
 
   @Test
@@ -593,7 +593,7 @@ public class ApiTest {
     assertEquals("https://accounts.spotify.com:443/api/token", request.getUri().toString());
 
     final String idSecret = clientId + ":" + clientSecret;
-    assertHasHeader(request, "Authorization", "Basic " + new String(Base64.encodeBase64(idSecret.getBytes())));
+    assertHasHeader(request, "Authorization", "Basic " + DatatypeConverter.printBase64Binary((clientId + ":" + clientSecret).getBytes()));
   }
 
   @Test
