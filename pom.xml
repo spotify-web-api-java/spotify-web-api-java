@@ -129,6 +129,9 @@
                 <configuration>
                     <reportOutputDirectory>${project.basedir}</reportOutputDirectory>
                     <destDir>docs</destDir>
+                    <additionalparam>
+                        --add-modules java.xml.bind
+                    </additionalparam>
                 </configuration>
                 <version>3.0.0-M1</version>
             </plugin>
