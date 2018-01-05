@@ -32,6 +32,8 @@ import com.wrapper.spotify.requests.data.tracks.*;
 import com.wrapper.spotify.requests.data.users_profile.GetCurrentUsersProfileRequest;
 import com.wrapper.spotify.requests.data.users_profile.GetUsersProfileRequest;
 
+import java.util.logging.Logger;
+
 /**
  * Instances of the Api class provide access to the Spotify Web API.
  */
@@ -62,6 +64,8 @@ public class SpotifyApi {
    * The default http scheme of Spotify API calls.
    */
   public static final String DEFAULT_SCHEME = "https";
+
+  public static final Logger LOGGER = Logger.getLogger(SpotifyApi.class.getName());
 
   private final IHttpManager httpManager;
   private final String scheme;
