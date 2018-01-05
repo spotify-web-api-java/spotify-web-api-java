@@ -8,6 +8,8 @@ import org.apache.http.*;
 import org.apache.http.auth.AuthScope;
 import org.apache.http.auth.UsernamePasswordCredentials;
 import org.apache.http.client.CredentialsProvider;
+import org.apache.http.client.cache.CacheResponseStatus;
+import org.apache.http.client.cache.HttpCacheContext;
 import org.apache.http.client.config.CookieSpecs;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
@@ -15,18 +17,28 @@ import org.apache.http.client.methods.*;
 import org.apache.http.config.ConnectionConfig;
 import org.apache.http.impl.client.BasicCredentialsProvider;
 import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClients;
+import org.apache.http.impl.client.cache.CacheConfig;
+import org.apache.http.impl.client.cache.CachingHttpClients;
 import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
 import java.net.URI;
 import java.nio.charset.Charset;
 import java.util.List;
+import java.util.logging.Level;
 
 public class SpotifyHttpManager implements IHttpManager {
 
+
+  private static final int DEFAULT_CACHE_MAX_ENTRIES = 1000;
+  private static final int DEFAULT_CACHE_MAX_OBJECT_SIZE = 8192;
+
   private final HttpHost proxy;
   private final UsernamePasswordCredentials proxyCredentials;
+  private final Integer cacheMaxEntries;
+  private final Integer cacheMaxObjectSize;
+
+  private static CloseableHttpClient httpClient = CachingHttpClients.custom().build();
 
   /**
    * Construct a new SpotifyHttpManager instance.
@@ -36,6 +48,44 @@ public class SpotifyHttpManager implements IHttpManager {
   public SpotifyHttpManager(Builder builder) {
     this.proxy = builder.proxy;
     this.proxyCredentials = builder.proxyCredentials;
+    this.cacheMaxEntries = builder.cacheMaxEntries;
+    this.cacheMaxObjectSize = builder.cacheMaxObjectSize;
+
+
+    CacheConfig cacheConfig = CacheConfig.custom()
+            .setMaxCacheEntries(cacheMaxEntries != null ? cacheMaxEntries : DEFAULT_CACHE_MAX_ENTRIES)
+            .setMaxObjectSize(cacheMaxEntries != null ? cacheMaxEntries : DEFAULT_CACHE_MAX_OBJECT_SIZE)
+            .setSharedCache(false)
+            .build();
+
+    ConnectionConfig connectionConfig = ConnectionConfig
+            .custom()
+            .setCharset(Charset.forName("UTF-8"))
+            .build();
+
+    new BasicCredentialsProvider();
+    CredentialsProvider credentialsProvider = new BasicCredentialsProvider();
+    if (proxy != null) {
+      credentialsProvider.setCredentials(
+              new AuthScope(proxy.getHostName(), proxy.getPort(), null, proxy.getSchemeName()),
+              proxyCredentials
+      );
+    }
+
+    RequestConfig requestConfig = RequestConfig
+            .custom()
+            .setCookieSpec(CookieSpecs.DEFAULT)
+            .setProxy(proxy)
+            .build();
+
+
+    httpClient = CachingHttpClients
+            .custom()
+            .setCacheConfig(cacheConfig)
+            .setDefaultConnectionConfig(connectionConfig)
+            .setDefaultCredentialsProvider(credentialsProvider)
+            .setDefaultRequestConfig(requestConfig)
+            .build();
   }
 
   public HttpHost getProxy() {
@@ -44,6 +94,14 @@ public class SpotifyHttpManager implements IHttpManager {
 
   public UsernamePasswordCredentials getProxyCredentials() {
     return proxyCredentials;
+  }
+
+  public Integer getCacheMaxEntries() {
+    return cacheMaxEntries;
+  }
+
+  public Integer getCacheMaxObjectSize() {
+    return cacheMaxObjectSize;
   }
 
   @Override
@@ -127,28 +185,38 @@ public class SpotifyHttpManager implements IHttpManager {
 
   private HttpResponse execute(HttpRequestBase method) throws
           IOException {
-    final CredentialsProvider credentialsProvider = new BasicCredentialsProvider();
-    credentialsProvider.setCredentials(
-            new AuthScope(proxy.getHostName(), proxy.getPort(), null, proxy.getSchemeName()),
-            proxyCredentials
-    );
-    final ConnectionConfig connectionConfig = ConnectionConfig
-            .custom()
-            .setCharset(Charset.forName("UTF-8"))
-            .build();
-    final RequestConfig requestConfig = RequestConfig
-            .custom()
-            .setCookieSpec(CookieSpecs.DEFAULT)
-            .setProxy(proxy)
-            .build();
-    final CloseableHttpClient httpClient = HttpClients
-            .custom()
-            .setDefaultConnectionConfig(connectionConfig)
-            .setDefaultCredentialsProvider(credentialsProvider)
-            .setDefaultRequestConfig(requestConfig)
-            .build();
+    HttpCacheContext context = HttpCacheContext.create();
+    HttpResponse response = httpClient.execute(method, context);
 
-    return httpClient.execute(method);
+    try {
+      CacheResponseStatus responseStatus = context.getCacheResponseStatus();
+      switch (responseStatus) {
+        case CACHE_HIT:
+          SpotifyApi.LOGGER.log(
+                  Level.CONFIG,
+                  "A response was generated from the cache with no requests sent upstream");
+          break;
+        case CACHE_MODULE_RESPONSE:
+          SpotifyApi.LOGGER.log(
+                  Level.CONFIG,
+                  "The response was generated directly by the caching module");
+          break;
+        case CACHE_MISS:
+          SpotifyApi.LOGGER.log(
+                  Level.CONFIG,
+                  "The response came from an upstream server");
+          break;
+        case VALIDATED:
+          SpotifyApi.LOGGER.log(
+                  Level.CONFIG,
+                  "The response was generated from the cache after validating the entry with the origin server");
+          break;
+      }
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+
+    return response;
   }
 
   private String getResponseBody(HttpResponse httpResponse) throws
@@ -200,6 +268,8 @@ public class SpotifyHttpManager implements IHttpManager {
   public static class Builder {
     private HttpHost proxy;
     private UsernamePasswordCredentials proxyCredentials;
+    private Integer cacheMaxEntries;
+    private Integer cacheMaxObjectSize;
 
     public Builder setProxy(HttpHost proxy) {
       this.proxy = proxy;
@@ -208,6 +278,16 @@ public class SpotifyHttpManager implements IHttpManager {
 
     public Builder setProxyCredentials(UsernamePasswordCredentials proxyCredentials) {
       this.proxyCredentials = proxyCredentials;
+      return this;
+    }
+
+    public Builder setCacheMaxEntries(Integer cacheMaxEntries) {
+      this.cacheMaxEntries = cacheMaxEntries;
+      return this;
+    }
+
+    public Builder setCacheMaxObjectSize(Integer cacheMaxObjectSize) {
+      this.cacheMaxObjectSize = cacheMaxObjectSize;
       return this;
     }
 
