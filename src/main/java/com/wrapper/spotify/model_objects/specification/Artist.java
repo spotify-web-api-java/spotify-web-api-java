@@ -8,7 +8,8 @@ import com.wrapper.spotify.requests.data.personalization.interfaces.IArtistTrack
 import com.wrapper.spotify.requests.data.search.interfaces.ISearchModelObject;
 
 /**
- * Retrieve information about artists by building instances from this class.
+ * Retrieve information about <a href="https://developer.spotify.com/web-api/object-model/#artist-object-full">
+ *     Artist objects</a> by building instances from this class.
  */
 public class Artist extends AbstractModelObject implements IArtistTrackModelObject, ISearchModelObject {
   private final ExternalUrl externalUrls;
@@ -38,64 +39,64 @@ public class Artist extends AbstractModelObject implements IArtistTrackModelObje
   }
 
   /**
-   * Get the external urls of an artist.<br>
-   * Example: Spotify-URL.
+   * Get the external URLs of the artist. <br>
+   * Example: <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify-URL</a>
    *
-   * @return The external urls of an artist.
+   * @return An {@link ExternalUrl} object.
    */
   public ExternalUrl getExternalUrls() {
     return externalUrls;
   }
 
   /**
-   * Get information about the followers of an artist.<br>
+   * Get information about the followers of the artist. <br>
    * Example: Follower count.
    *
-   * @return Followers object.
+   * @return A {@link Followers} object.
    */
   public Followers getFollowers() {
     return followers;
   }
 
   /**
-   * Get a list of all genres of an artist. <br>
+   * Get a list of all genres of the artist. <br>
    * A great amount of artists may contain no information about their genres.
    *
-   * @return An array of all genres of an artist.
+   * @return An array of genre names.
    */
   public String[] getGenres() {
     return genres;
   }
 
   /**
-   * Get the full Spotify API endpoint url of an artist.
+   * Get the full Spotify Web API endpoint URL of the artist.
    *
-   * @return A Spotify API endpoint url.
+   * @return A Spotify Web API endpoint URL.
    */
   public String getHref() {
     return href;
   }
 
   /**
-   * Get the Spotify id of an artist.
+   * Get the Spotify ID of the artist.
    *
-   * @return A Spotify artist id.
+   * @return A <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify artist ID</a>.
    */
   public String getId() {
     return id;
   }
 
   /**
-   * Get all images of an artist (like header image) in different sizes.
+   * Get all images of the artist (like header image) in different sizes.
    *
-   * @return An array of images in different sizes.
+   * @return An array of {@link Image} objects.
    */
   public Image[] getImages() {
     return images;
   }
 
   /**
-   * Get the name of an artist.
+   * Get the name of the artist.
    *
    * @return Artist name.
    */
@@ -104,10 +105,10 @@ public class Artist extends AbstractModelObject implements IArtistTrackModelObje
   }
 
   /**
-   * Get the popularity of an artist in a range between 0 and 100. (higher = more popular)<br>
-   * The popularity of an artist is based on the popularity of its tracks.
+   * Get the popularity of the artist in a range between 0 and 100. (higher = more popular)<br>
+   * The popularity of the artist is based on the popularity of its tracks.
    *
-   * @return The popularity of an artist.
+   * @return The popularity of the artist.
    */
   public Integer getPopularity() {
     return popularity;
@@ -116,16 +117,16 @@ public class Artist extends AbstractModelObject implements IArtistTrackModelObje
   /**
    * Get the model object type. In this case "artist".
    *
-   * @return A model object type.
+   * @return A {@link ModelObjectType}.
    */
   public ModelObjectType getType() {
     return type;
   }
 
   /**
-   * Get the Spotify uri of an artist.
+   * Get the Spotify URI of the artist.
    *
-   * @return Spotify artist uri.
+   * @return <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify artist URI</a>.
    */
   public String getUri() {
     return uri;
@@ -137,7 +138,7 @@ public class Artist extends AbstractModelObject implements IArtistTrackModelObje
   }
 
   /**
-   * Builder class for building artist instances.
+   * Builder class for building {@link Artist} instances.
    */
   public static final class Builder extends AbstractModelObject.Builder {
     private ExternalUrl externalUrls;
@@ -152,10 +153,10 @@ public class Artist extends AbstractModelObject implements IArtistTrackModelObje
     private String uri;
 
     /**
-     * Set external urls of the artist to be built.
+     * Set external URLs of the artist to be built.
      *
-     * @param externalUrls External urls object.
-     * @return A builder object.
+     * @param externalUrls {@link ExternalUrl} object.
+     * @return A {@link Artist.Builder}.
      */
     public Builder setExternalUrls(ExternalUrl externalUrls) {
       this.externalUrls = externalUrls;
@@ -165,8 +166,8 @@ public class Artist extends AbstractModelObject implements IArtistTrackModelObje
     /**
      * Set the followers object of the artist to be built.
      *
-     * @param followers A followers object.
-     * @return A builder object
+     * @param followers A {@link Followers} object.
+     * @return A {@link Artist.Builder}.
      */
     public Builder setFollowers(Followers followers) {
       this.followers = followers;
@@ -176,8 +177,8 @@ public class Artist extends AbstractModelObject implements IArtistTrackModelObje
     /**
      * Set the genres of the artist to be built.
      *
-     * @param genres An array of genres.
-     * @return A builder object.
+     * @param genres Genre names.
+     * @return A {@link Artist.Builder}.
      */
     public Builder setGenres(String... genres) {
       this.genres = genres;
@@ -185,10 +186,10 @@ public class Artist extends AbstractModelObject implements IArtistTrackModelObje
     }
 
     /**
-     * Set href of Spotify api endpoint of the artist to be built.
+     * Set href of Spotify Web API endpoint of the artist to be built.
      *
-     * @param href Spotify api endpoint url.
-     * @return A builder object.
+     * @param href Spotify Web API endpoint URL.
+     * @return A {@link Artist.Builder}.
      */
     public Builder setHref(String href) {
       this.href = href;
@@ -196,10 +197,10 @@ public class Artist extends AbstractModelObject implements IArtistTrackModelObje
     }
 
     /**
-     * Set the Spotify id of the artist to be built.
+     * Set artist ID of the artist to be built.
      *
-     * @param id Artist id.
-     * @return A builder object.
+     * @param id <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify artist ID</a>.
+     * @return A {@link Artist.Builder}.
      */
     public Builder setId(String id) {
       this.id = id;
@@ -209,8 +210,8 @@ public class Artist extends AbstractModelObject implements IArtistTrackModelObje
     /**
      * Set the images of the artist to be built, like the header image.
      *
-     * @param images An array of image objects.
-     * @return A builder object.
+     * @param images {@link Image} objects.
+     * @return A {@link Artist.Builder}.
      */
     public Builder setImages(Image... images) {
       this.images = images;
@@ -221,7 +222,7 @@ public class Artist extends AbstractModelObject implements IArtistTrackModelObje
      * Set the name of the artist to be built.
      *
      * @param name The artist name.
-     * @return A builder object.
+     * @return A {@link Artist.Builder}.
      */
     public Builder setName(String name) {
       this.name = name;
@@ -232,7 +233,7 @@ public class Artist extends AbstractModelObject implements IArtistTrackModelObje
      * Set the popularity of the artist to be built.
      *
      * @param popularity The popularity of the artist between 0 and 100.
-     * @return A builder object.
+     * @return A {@link Artist.Builder}.
      */
     public Builder setPopularity(Integer popularity) {
       this.popularity = popularity;
@@ -242,8 +243,8 @@ public class Artist extends AbstractModelObject implements IArtistTrackModelObje
     /**
      * Set the type of the model object. In this case "artist".
      *
-     * @param type The model object type.
-     * @return A builder object.
+     * @param type The {@link ModelObjectType}.
+     * @return A {@link Artist.Builder}.
      */
     public Builder setType(ModelObjectType type) {
       this.type = type;
@@ -251,10 +252,11 @@ public class Artist extends AbstractModelObject implements IArtistTrackModelObje
     }
 
     /**
-     * Set the Spotify uri of the artist to be built.
+     * Set the Spotify artist URI of the artist to be built.
      *
-     * @param uri The Spotify artist uri.
-     * @return A builder object.
+     * @param uri <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">
+     *            Spotify artist URI</a>.
+     * @return A {@link Artist.Builder}.
      */
     public Builder setUri(String uri) {
       this.uri = uri;
@@ -268,7 +270,7 @@ public class Artist extends AbstractModelObject implements IArtistTrackModelObje
   }
 
   /**
-   * JsonUtil class for building artist instances.
+   * JsonUtil class for building {@link Artist} instances.
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<Artist> {
     public Artist createModelObject(JsonObject jsonObject) {

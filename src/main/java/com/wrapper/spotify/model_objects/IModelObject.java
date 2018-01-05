@@ -12,10 +12,14 @@ import java.text.SimpleDateFormat;
  * Interface with methods used in model objects.
  */
 public interface IModelObject {
+
+  /**
+   * The date format used by the Spotify Web API. It uses the following pattern: {@code yyyy-MM-dd'T'hh:mm:ss}
+   */
   SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss");
 
   /**
-   * Create a builder for building an instance of a model object.<br>
+   * Create a builder for building an instance of a model object. <br>
    * The type of the builder and its methods depend on its corresponding implementation.
    *
    * @return A builder object.

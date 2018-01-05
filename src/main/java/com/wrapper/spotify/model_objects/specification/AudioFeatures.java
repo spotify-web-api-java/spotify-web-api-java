@@ -6,7 +6,8 @@ import com.wrapper.spotify.enums.ModelObjectType;
 import com.wrapper.spotify.model_objects.AbstractModelObject;
 
 /**
- * Retrieve information about audio features by building instances from this class.
+ * Retrieve information about <a href="https://developer.spotify.com/web-api/object-model/#audio-features-object">
+ *     Audio Features</a> by building instances from this class.
  */
 public class AudioFeatures extends AbstractModelObject {
   private final double acousticness;
@@ -52,8 +53,8 @@ public class AudioFeatures extends AbstractModelObject {
   }
 
   /**
-   * Get the acousticness of a track as a value between 0.0 and 1.0.<br>
-   * The higher the value, the higher the chance a track is acoustic.
+   * Get the acousticness of the track as a value between 0.0 and 1.0. <br>
+   * The higher the value, the higher the chance the track is acoustic.
    *
    * @return Acousticness value.
    */
@@ -62,17 +63,18 @@ public class AudioFeatures extends AbstractModelObject {
   }
 
   /**
-   * Get the api url to a full audio analysis. It contains additional information to
-   * audio feature objects.
+   * Get the Spotify Web API endpoint URL for a full audio analysis. An audio analysis contains additional information
+   * to audio feature objects.
    *
-   * @return Audio analysis api url.
+   * @see com.wrapper.spotify.model_objects.miscellaneous.AudioAnalysis
+   * @return Spotify Web API endpoint URL.
    */
   public String getAnalysisUrl() {
     return analysisUrl;
   }
 
   /**
-   * Get the danceability of a track as a value between 0.0 and 1.0.<br>
+   * Get the danceability of the track as a value between 0.0 and 1.0. <br>
    * The danceability depends on factors like tempo and rhythm stability. Higher is better.
    *
    * @return Danceability value.
@@ -82,7 +84,7 @@ public class AudioFeatures extends AbstractModelObject {
   }
 
   /**
-   * Get the duration of a track in milliseconds.
+   * Get the duration of the track in milliseconds.
    *
    * @return Track duration.
    */
@@ -91,9 +93,9 @@ public class AudioFeatures extends AbstractModelObject {
   }
 
   /**
-   * Get the energy of a track as a value between 0.0 and 1.0.<br>
-   * The energetic value of a track depends on factors like speed and loudness. Fast
-   * and loud tracks feel more energetic than slow and quiet tracks.
+   * Get the energy of the track as a value between 0.0 and 1.0.<br>
+   * The energetic value of the track depends on factors like speed and loudness. Fast and loud tracks feel more
+   * energetic than slow and quiet tracks.
    *
    * @return Energetic value.
    */
@@ -102,20 +104,20 @@ public class AudioFeatures extends AbstractModelObject {
   }
 
   /**
-   * Get the Spotify id of a track.
+   * Get the <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify ID</a>
+   * of the track.
    *
-   * @return Spotify track id.
+   * @return Spotify track ID.
    */
   public String getId() {
     return id;
   }
 
   /**
-   * Get the instrumentalness of a track as a value between 0.0 and 1.0.<br>
-   * The higher the value, the higher the chance a track contains no vocals.
+   * Get the instrumentalness of the track as a value between 0.0 and 1.0. <br>
+   * The higher the value, the higher the chance the track contains no vocals.
    *
    * @return Instrumentalness value.
-   * @see #getSpeechiness()
    * @see #getSpeechiness()
    */
   public double getInstrumentalness() {
@@ -127,16 +129,15 @@ public class AudioFeatures extends AbstractModelObject {
    *
    * @return Main key.
    * @see <a href="https://en.wikipedia.org/wiki/Pitch_class">Wikipedia: Pitch class notation</a>
-   * @see <a href="https://en.wikipedia.org/wiki/Pitch_class">Wikipedia: Pitch class notation</a>
    */
   public Integer getKey() {
     return key;
   }
 
   /**
-   * Get the liveness of a track as a value between 0.0 and 1.0.<br>
-   * The liveness depends on ambient sounds like the presence of an audience. The higher
-   * the value, the higher the chance a track was performed live.
+   * Get the liveness of the track as a value between 0.0 and 1.0.<br>
+   * The liveness depends on ambient sounds like the presence of an audience. The higher the value, the higher the
+   * chance the track was performed live.
    *
    * @return Liveness value.
    */
@@ -145,8 +146,7 @@ public class AudioFeatures extends AbstractModelObject {
   }
 
   /**
-   * Get the average loudness of a track. These values have mostly a range between
-   * -60 and 0 decibels.
+   * Get the average loudness of the track. These values have mostly a range between -60 and 0 decibels.
    *
    * @return Loudness value.
    */
@@ -155,10 +155,9 @@ public class AudioFeatures extends AbstractModelObject {
   }
 
   /**
-   * Get the modality of a track. (either "major" or "minor")
+   * Get the modality of the track. (either "major" or "minor")
    *
-   * @return Modality type.
-   * @see <a href="https://en.wikipedia.org/wiki/Mode_(music)">Wikipedia: Mode (music)</a>
+   * @return {@link Modality} type.
    * @see <a href="https://en.wikipedia.org/wiki/Mode_(music)">Wikipedia: Mode (music)</a>
    */
   public Modality getMode() {
@@ -166,11 +165,10 @@ public class AudioFeatures extends AbstractModelObject {
   }
 
   /**
-   * Get the speechiness of a track as a value between 0.0 and 1.0.<br>
-   * The higher the value, the higher the chance a track only consists of spoken words.
+   * Get the speechiness of the track as a value between 0.0 and 1.0. <br>
+   * The higher the value, the higher the chance the track only consists of spoken words.
    *
    * @return Speechiness value.
-   * @see #getInstrumentalness()
    * @see #getInstrumentalness()
    */
   public double getSpeechiness() {
@@ -178,7 +176,7 @@ public class AudioFeatures extends AbstractModelObject {
   }
 
   /**
-   * Get the estimated tempo of a track in beats per minute.
+   * Get the estimated tempo of the track in beats per minute.
    *
    * @return Tempo value.
    */
@@ -187,10 +185,9 @@ public class AudioFeatures extends AbstractModelObject {
   }
 
   /**
-   * Get the estimated overall time signature of a track. The time signature (or meter)
+   * Get the estimated overall time signature of the track. The time signature (or meter)
    * is the number of beats in a bar. <br>
-   * Example: A Viennese waltz has a three-quarters beat, so this method would
-   * return the value 3 in this case.
+   * Example: A Viennese waltz has a three-quarters beat, so this method would return the value 3 in this case.
    *
    * @return Time signature value.
    */
@@ -199,9 +196,9 @@ public class AudioFeatures extends AbstractModelObject {
   }
 
   /**
-   * Get the full Spotify API endpoint url of a track.
+   * Get the  Spotify Web API endpoint URL of the track.
    *
-   * @return A Spotify API endpoint url.
+   * @return A Spotify Web API endpoint URL.
    */
   public String getTrackHref() {
     return trackHref;
@@ -210,25 +207,26 @@ public class AudioFeatures extends AbstractModelObject {
   /**
    * Get the model object type. In this case "audio_features".
    *
-   * @return A model object type.
+   * @return A {@link ModelObjectType}.
    */
   public ModelObjectType getType() {
     return type;
   }
 
   /**
-   * Get the Spotify uri of a track.
+   * Get the <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify URI</a>
+   * of the track.
    *
-   * @return Spotify album uri.
+   * @return Spotify track URI.
    */
   public String getUri() {
     return uri;
   }
 
   /**
-   * Get the valence of a track as a value between 0.0 and 1.0.<br>
-   * A track with a high valence sounds more positive (happy, cheerful, euphoric)
-   * like a track with a low valence. (sad, depressed, angry)
+   * Get the valence of the track as a value between 0.0 and 1.0.<br>
+   * A track with a high valence sounds more positive (happy, cheerful, euphoric) like the track with a low valence.
+   * (sad, depressed, angry)
    *
    * @return Valence value.
    */
@@ -242,7 +240,7 @@ public class AudioFeatures extends AbstractModelObject {
   }
 
   /**
-   * Builder class for building audio feature instances.
+   * Builder class for building {@link AudioFeatures} instances.
    */
   public static final class Builder extends AbstractModelObject.Builder {
     private Float acousticness;
@@ -268,7 +266,7 @@ public class AudioFeatures extends AbstractModelObject {
      * Set the acousticness of the audio features object to be built.
      *
      * @param acousticness Acousticness value between 0.0 and 1.0.
-     * @return A builder object.
+     * @return An {@link AudioFeatures.Builder}.
      */
     public Builder setAcousticness(Float acousticness) {
       this.acousticness = acousticness;
@@ -276,10 +274,10 @@ public class AudioFeatures extends AbstractModelObject {
     }
 
     /**
-     * Set the audio analysis url of the audio features object to be built.
+     * Set the Spotify Web API audio analysis endpoint URL of the audio features object to be built.
      *
-     * @param analysisUrl Audio analysis api url.
-     * @return A builder object.
+     * @param analysisUrl Spotify Web API endpoint URL.
+     * @return An {@link AudioFeatures.Builder}.
      */
     public Builder setAnalysisUrl(String analysisUrl) {
       this.analysisUrl = analysisUrl;
@@ -290,7 +288,7 @@ public class AudioFeatures extends AbstractModelObject {
      * Set the danceability of the audio features object to be built.
      *
      * @param danceability Danceability value between 0.0 and 1.0.
-     * @return A builder object.
+     * @return An {@link AudioFeatures.Builder}.
      */
     public Builder setDanceability(Float danceability) {
       this.danceability = danceability;
@@ -301,7 +299,7 @@ public class AudioFeatures extends AbstractModelObject {
      * Set the duration in milliseconds of the audio features object to be built.
      *
      * @param durationMs Duration in milliseconds.
-     * @return A builder object.
+     * @return An {@link AudioFeatures.Builder}.
      */
     public Builder setDurationMs(Integer durationMs) {
       this.durationMs = durationMs;
@@ -312,7 +310,7 @@ public class AudioFeatures extends AbstractModelObject {
      * Set the energy of the audio features object to be built.
      *
      * @param energy Energy value between 0.0 and 1.0.
-     * @return A builder object.
+     * @return An {@link AudioFeatures.Builder}.
      */
     public Builder setEnergy(Float energy) {
       this.energy = energy;
@@ -320,10 +318,10 @@ public class AudioFeatures extends AbstractModelObject {
     }
 
     /**
-     * Set the Spotify track id of the audio features object to be built.
+     * Set the Spotify track ID of the audio features object to be built.
      *
-     * @param id Spotify track id.
-     * @return A builder object.
+     * @param id Spotify track ID.
+     * @return An {@link AudioFeatures.Builder}.
      */
     public Builder setId(String id) {
       this.id = id;
@@ -334,7 +332,7 @@ public class AudioFeatures extends AbstractModelObject {
      * Set the instrumentalness of the audio features object to be built.
      *
      * @param instrumentalness Instrumentalness value between 0.0 and 1.0.
-     * @return A builder object.
+     * @return An {@link AudioFeatures.Builder}.
      */
     public Builder setInstrumentalness(Float instrumentalness) {
       this.instrumentalness = instrumentalness;
@@ -345,7 +343,7 @@ public class AudioFeatures extends AbstractModelObject {
      * Set the key of the audio features object to be built.
      *
      * @param key Track key.
-     * @return A builder object.
+     * @return An {@link AudioFeatures.Builder}.
      */
     public Builder setKey(Integer key) {
       this.key = key;
@@ -356,7 +354,7 @@ public class AudioFeatures extends AbstractModelObject {
      * Set the liveness of the audio features object to be built.
      *
      * @param liveness Liveness value between 0.0 and 1.0.
-     * @return A builder object.
+     * @return An {@link AudioFeatures.Builder}.
      */
     public Builder setLiveness(Float liveness) {
       this.liveness = liveness;
@@ -367,7 +365,7 @@ public class AudioFeatures extends AbstractModelObject {
      * Set the loudness of the audio features object to be built.
      *
      * @param loudness Loudness value between 0.0 and 1.0.
-     * @return A builder object.
+     * @return An {@link AudioFeatures.Builder}.
      */
     public Builder setLoudness(Float loudness) {
       this.loudness = loudness;
@@ -378,7 +376,7 @@ public class AudioFeatures extends AbstractModelObject {
      * Set the mode of the audio features object to be built.
      *
      * @param mode Track mode.
-     * @return A builder object.
+     * @return An {@link AudioFeatures.Builder}.
      */
     public Builder setMode(Modality mode) {
       this.mode = mode;
@@ -389,7 +387,7 @@ public class AudioFeatures extends AbstractModelObject {
      * Set the speechiness of the audio features object to be built.
      *
      * @param speechiness Speechiness value between 0.0 and 1.0.
-     * @return A builder object.
+     * @return An {@link AudioFeatures.Builder}.
      */
     public Builder setSpeechiness(Float speechiness) {
       this.speechiness = speechiness;
@@ -400,7 +398,7 @@ public class AudioFeatures extends AbstractModelObject {
      * Set the tempo of the audio features object to be built.
      *
      * @param tempo Tempo value in beats per minute.
-     * @return A builder object.
+     * @return An {@link AudioFeatures.Builder}.
      */
     public Builder setTempo(Float tempo) {
       this.tempo = tempo;
@@ -411,7 +409,7 @@ public class AudioFeatures extends AbstractModelObject {
      * Set the time signature of the audio features object to be built.
      *
      * @param timeSignature Time signature of the track.
-     * @return A builder object.
+     * @return An {@link AudioFeatures.Builder}.
      */
     public Builder setTimeSignature(Integer timeSignature) {
       this.timeSignature = timeSignature;
@@ -419,10 +417,10 @@ public class AudioFeatures extends AbstractModelObject {
     }
 
     /**
-     * Set the track href to the Web API endpoint of the audio features object to be built.
+     * Set the track href to the Spotify Web API endpoint of the audio features object to be built.
      *
-     * @param trackHref Spotify api endpoint url.
-     * @return A builder object.
+     * @param trackHref Spotify Web API endpoint URL.
+     * @return An {@link AudioFeatures.Builder}.
      */
     public Builder setTrackHref(String trackHref) {
       this.trackHref = trackHref;
@@ -432,8 +430,8 @@ public class AudioFeatures extends AbstractModelObject {
     /**
      * Set the type of the model object. In this case "audio_features".
      *
-     * @param type The model object type.
-     * @return A builder object.
+     * @param type The {@link ModelObjectType}.
+     * @return An {@link AudioFeatures.Builder}.
      */
     public Builder setType(ModelObjectType type) {
       this.type = type;
@@ -441,10 +439,11 @@ public class AudioFeatures extends AbstractModelObject {
     }
 
     /**
-     * Set the Spotify uri of the audio feature objects track to be built.
+     * Set the <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify URI</a>
+     * of the audio feature objects track to be built.
      *
-     * @param uri The Spotify album uri.
-     * @return A builder object.
+     * @param uri The Spotify track URI.
+     * @return An {@link AudioFeatures.Builder}.
      */
     public Builder setUri(String uri) {
       this.uri = uri;
@@ -455,7 +454,7 @@ public class AudioFeatures extends AbstractModelObject {
      * Set the valence of the audio features object to be built.
      *
      * @param valence Valence value between 0.0 and 1.0.
-     * @return A builder object.
+     * @return An {@link AudioFeatures.Builder}.
      */
     public Builder setValence(Float valence) {
       this.valence = valence;
@@ -469,7 +468,7 @@ public class AudioFeatures extends AbstractModelObject {
   }
 
   /**
-   * JsonUtil class for building audio feature instances.
+   * JsonUtil class for building {@link AudioFeatures} instances.
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<AudioFeatures> {
     public AudioFeatures createModelObject(JsonObject jsonObject) {
