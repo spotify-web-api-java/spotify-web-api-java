@@ -9,7 +9,8 @@ import com.wrapper.spotify.model_objects.AbstractModelObject;
 import com.wrapper.spotify.requests.data.search.interfaces.ISearchModelObject;
 
 /**
- * Retrieve information about simplified albums by building instances from this class.
+ * Retrieve information about <a href="https://developer.spotify.com/web-api/object-model/#album-object-simplified">
+ *     simplified Album objects</a> by building instances from this class.
  */
 public class AlbumSimplified extends AbstractModelObject implements ISearchModelObject {
   private final AlbumType albumType;
@@ -37,73 +38,74 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
     this.type = builder.type;
     this.uri = builder.uri;
   }
-
+  
   /**
-   * Get the type of an album.
+   * Get the type of the album.
    *
-   * @return The album type.
+   * @return The {@link AlbumType}.
    */
   public AlbumType getAlbumType() {
     return albumType;
   }
 
   /**
-   * Get the artists of an album.
+   * Get the artists of the album.
    *
-   * @return An array of simplified artists.
+   * @return An array of {@link ArtistSimplified} objects.
    */
   public ArtistSimplified[] getArtists() {
     return artists;
   }
 
   /**
-   * Get the country codes of all countries, in which an album is available.
+   * Get the country codes of all countries, in which the album is available.
    *
-   * @return An array of ISO 3166-1 alpha-2 country codes.
+   * @return An array of <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2 country
+   *         codes</a>.
    */
   public CountryCode[] getAvailableMarkets() {
     return availableMarkets;
   }
 
   /**
-   * Get the external urls of an album.<br>
-   * Example: Spotify-URL.
+   * Get the external URLs of the album. <br>
+   * Example: <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify-URL</a>
    *
-   * @return The external urls of an album.
+   * @return An {@link ExternalUrl} object.
    */
   public ExternalUrl getExternalUrls() {
     return externalUrls;
   }
 
   /**
-   * Get the full Spotify API endpoint url of an album.
+   * Get the full Spotify Web API endpoint URL of the album.
    *
-   * @return A Spotify API endpoint url.
+   * @return A Spotify Web API endpoint URL.
    */
   public String getHref() {
     return href;
   }
 
   /**
-   * Get the Spotify id of an album.
+   * Get the Spotify ID of the album.
    *
-   * @return A Spotify album id.
+   * @return A Spotify album ID.
    */
   public String getId() {
     return id;
   }
 
   /**
-   * Get the album cover art of an album in different sizes.
+   * Get the album cover art of the album in different sizes.
    *
-   * @return An array of album cover arts in different sizes.
+   * @return An array of {@link Image} objects.
    */
   public Image[] getImages() {
     return images;
   }
 
   /**
-   * Get the name of an album.
+   * Get the name of the album.
    *
    * @return Album name.
    */
@@ -114,16 +116,16 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
   /**
    * Get the model object type. In this case "album".
    *
-   * @return A model object type.
+   * @return A {@link ModelObjectType}.
    */
   public ModelObjectType getType() {
     return type;
   }
 
   /**
-   * Get the Spotify uri of an album.
+   * Get the Spotify URI of the album.
    *
-   * @return Spotify album uri.
+   * @return <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify album URI</a>.
    */
   public String getUri() {
     return uri;
@@ -135,7 +137,7 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
   }
 
   /**
-   * Builder class for building simplified album instances.
+   * Builder class for building {@link AlbumSimplified} instances.
    */
   public static final class Builder extends AbstractModelObject.Builder {
 
@@ -153,19 +155,20 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
     /**
      * Set the type of the album to be built.
      *
-     * @param albumType Type of the album.
-     * @return A builder object.
+     * @param albumType The {@link AlbumType}.
+     * @return A {@link Album.Builder}.
      */
     public Builder setAlbumType(AlbumType albumType) {
       this.albumType = albumType;
       return this;
+
     }
 
     /**
      * Set the artists of the album to be built.
      *
-     * @param artists An array of simplified artists.
-     * @return A builder object.
+     * @param artists {@link ArtistSimplified} objects.
+     * @return A {@link Album.Builder}.
      */
     public Builder setArtists(ArtistSimplified... artists) {
       this.artists = artists;
@@ -175,8 +178,9 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
     /**
      * Set the available markets of the album to be built.
      *
-     * @param availableMarkets An array of ISO 3166-1 alpha-2 country codes.
-     * @return A builder object.
+     * @param availableMarkets <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">
+     *                         ISO 3166-1 alpha-2 country codes</a>.
+     * @return A {@link Album.Builder}.
      */
     public Builder setAvailableMarkets(CountryCode... availableMarkets) {
       this.availableMarkets = availableMarkets;
@@ -184,10 +188,10 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
     }
 
     /**
-     * Set external urls of the album to be built.
+     * Set external URLs of the album to be built.
      *
-     * @param externalUrls External urls object.
-     * @return A builder object.
+     * @param externalUrls {@link ExternalUrl} object.
+     * @return A {@link Album.Builder}.
      */
     public Builder setExternalUrls(ExternalUrl externalUrls) {
       this.externalUrls = externalUrls;
@@ -195,10 +199,10 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
     }
 
     /**
-     * Set href of Spotify api endpoint of the album to be built.
+     * Set href of Spotify Web API endpoint of the album to be built.
      *
-     * @param href Spotify api endpoint url.
-     * @return A builder object.
+     * @param href Spotify Web API endpoint URL.
+     * @return A {@link Album.Builder}.
      */
     public Builder setHref(String href) {
       this.href = href;
@@ -206,10 +210,10 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
     }
 
     /**
-     * Set album id of the album to be built.
+     * Set album ID of the album to be built.
      *
-     * @param id Album id.
-     * @return A builder object.
+     * @param id <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify album ID</a>.
+     * @return A {@link Album.Builder}.
      */
     public Builder setId(String id) {
       this.id = id;
@@ -219,8 +223,8 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
     /**
      * Set the cover art in different sizes of the album to be built.
      *
-     * @param images An array of image objects.
-     * @return A builder object.
+     * @param images {@link Image} objects.
+     * @return A {@link Album.Builder}.
      */
     public Builder setImages(Image... images) {
       this.images = images;
@@ -231,7 +235,7 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
      * Set the name of the album to be built.
      *
      * @param name The album name.
-     * @return A builder object.
+     * @return A {@link Album.Builder}.
      */
     public Builder setName(String name) {
       this.name = name;
@@ -241,8 +245,8 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
     /**
      * Set the type of the model object. In this case "album".
      *
-     * @param type The model object type.
-     * @return A builder object.
+     * @param type The {@link ModelObjectType}.
+     * @return A {@link Album.Builder}.
      */
     public Builder setType(ModelObjectType type) {
       this.type = type;
@@ -250,10 +254,11 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
     }
 
     /**
-     * Set the Spotify uri of the album to be built.
+     * Set the Spotify album URI of the album to be built.
      *
-     * @param uri The Spotify album uri.
-     * @return A builder object.
+     * @param uri <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">
+     *            Spotify album URI</a>.
+     * @return A {@link Album.Builder}.
      */
     public Builder setUri(String uri) {
       this.uri = uri;
@@ -267,7 +272,7 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
   }
 
   /**
-   * JsonUtil class for building simplified album instances.
+   * JsonUtil class for building {@link AlbumSimplified} instances.
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<AlbumSimplified> {
     public AlbumSimplified createModelObject(JsonObject jsonObject) {

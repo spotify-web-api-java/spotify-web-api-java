@@ -4,7 +4,8 @@ import com.google.gson.JsonObject;
 import com.wrapper.spotify.model_objects.AbstractModelObject;
 
 /**
- * Retrieve information about categories by building instances from this class.
+ * Retrieve information about <a href="https://developer.spotify.com/web-api/object-model/#category-object">
+ *     Category objects</a> by building instances from this class.
  */
 public class Category extends AbstractModelObject {
   private final String href;
@@ -22,9 +23,9 @@ public class Category extends AbstractModelObject {
   }
 
   /**
-   * Get the full Spotify API endpoint url of a category.
+   * Get the Spotify Web API endpoint URL of the category.
    *
-   * @return A link to the Web API endpoint returning full details of the category.
+   * @return A link to the Spotify Web API endpoint returning full details of the category.
    */
   public String getHref() {
     return href;
@@ -40,7 +41,8 @@ public class Category extends AbstractModelObject {
   }
 
   /**
-   * Get the Spotify ID of the category.
+   * Get the <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify ID</a>
+   * of the category.
    *
    * @return The Spotify category ID of the category.
    */
@@ -63,7 +65,7 @@ public class Category extends AbstractModelObject {
   }
 
   /**
-   * Builder class for building category instances.
+   * Builder class for building {@link Category} instances.
    */
   public static final class Builder extends AbstractModelObject.Builder {
     private String href;
@@ -74,7 +76,7 @@ public class Category extends AbstractModelObject {
     /**
      * The category href setter.
      *
-     * @param href A link to the Web API endpoint returning full details of the category.
+     * @param href A link to the Spotify Web API endpoint returning full details of the category.
      * @return A Category builder.
      */
     public Builder setHref(String href) {
@@ -94,7 +96,7 @@ public class Category extends AbstractModelObject {
     }
 
     /**
-     * The category id setter.
+     * The category ID setter.
      *
      * @param id The Spotify category ID of the category.
      * @return A Category builder.
@@ -122,7 +124,7 @@ public class Category extends AbstractModelObject {
   }
 
   /**
-   * JsonUtil class for building category instances.
+   * JsonUtil class for building {@link Category} instances.
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<Category> {
     public Category createModelObject(JsonObject jsonObject) {

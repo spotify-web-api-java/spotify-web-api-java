@@ -9,7 +9,8 @@ import com.wrapper.spotify.enums.ReleaseDatePrecision;
 import com.wrapper.spotify.model_objects.AbstractModelObject;
 
 /**
- * Retrieve information about albums by building instances from this class.
+ * Retrieve information about <a href="https://developer.spotify.com/web-api/object-model/#album-object-full">
+ *     Album objects</a> by building instances from this class.
  */
 public class Album extends AbstractModelObject {
   private final AlbumType albumType;
@@ -55,63 +56,64 @@ public class Album extends AbstractModelObject {
   }
 
   /**
-   * Get the type of an album.
+   * Get the type of the album.
    *
-   * @return The album type.
+   * @return The {@link AlbumType}.
    */
   public AlbumType getAlbumType() {
     return albumType;
   }
 
   /**
-   * Get the artists of an album.
+   * Get the artists of the album.
    *
-   * @return An array of simplified artists.
+   * @return An array of {@link ArtistSimplified} objects.
    */
   public ArtistSimplified[] getArtists() {
     return artists;
   }
 
   /**
-   * Get the country codes of all countries, in which an album is available.
+   * Get the country codes of all countries, in which the album is available.
    *
-   * @return An array of ISO 3166-1 alpha-2 country codes.
+   * @return An array of <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2 country
+   *         codes</a>.
    */
   public CountryCode[] getAvailableMarkets() {
     return availableMarkets;
   }
 
   /**
-   * Get all copyright texts of an album.
+   * Get all copyright texts of the album.
    *
-   * @return An array of copyright objects.
+   * @return An array of {@link Copyright} objects.
    */
   public Copyright[] getCopyrights() {
     return copyrights;
   }
 
   /**
-   * Get the external ids of an album.<br>
+   * Get the external IDs of the album. <br>
    * Example: upc -&gt; "Universal Product Code".
    *
-   * @return All external ids of an album.
+   * @return An array of {@link ExternalId} objects.
    */
   public ExternalId getExternalIds() {
     return externalIds;
   }
 
   /**
-   * Get the external urls of an album.<br>
-   * Example: Spotify-URL.
+   * Get the external URLs of the album. <br>
+   * Example: <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify-URL</a>
    *
-   * @return The external urls of an album.
+   * @return An {@link ExternalUrl} object.
    */
   public ExternalUrl getExternalUrls() {
     return externalUrls;
   }
 
   /**
-   * Get a list of all genres of an album. <br>
+   * Get a list of all genres of the album. <br>
    * A great amount of albums may contain no information about their genres.
    *
    * @return An array of all genres of an album.
@@ -121,27 +123,27 @@ public class Album extends AbstractModelObject {
   }
 
   /**
-   * Get the full Spotify API endpoint url of an album.
+   * Get the full Spotify Web API endpoint URL of the album.
    *
-   * @return A Spotify API endpoint url.
+   * @return A Spotify Web API endpoint URL.
    */
   public String getHref() {
     return href;
   }
 
   /**
-   * Get the Spotify id of an album.
+   * Get the Spotify ID of the album.
    *
-   * @return A Spotify album id.
+   * @return A <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify album ID</a>.
    */
   public String getId() {
     return id;
   }
 
   /**
-   * Get the album cover art of an album in different sizes.
+   * Get the album cover art of the album in different sizes.
    *
-   * @return An array of album cover arts in different sizes.
+   * @return An array of {@link Image} objects.
    */
   public Image[] getImages() {
     return images;
@@ -157,7 +159,7 @@ public class Album extends AbstractModelObject {
   }
 
   /**
-   * Get the name of an album.
+   * Get the name of the album.
    *
    * @return Album name.
    */
@@ -166,38 +168,37 @@ public class Album extends AbstractModelObject {
   }
 
   /**
-   * Get the popularity of an album in a range between 0 and 100. (higher = more popular)<br>
-   * The popularity of an album is based on the popularity of its individual tracks.
+   * Get the popularity of the album in a range between 0 and 100. (higher = more popular) <br>
+   * The popularity of the album is based on the popularity of its individual tracks.
    *
-   * @return The popularity of an album.
+   * @return The popularity of the album.
    */
   public Integer getPopularity() {
     return popularity;
   }
 
   /**
-   * Get the release date of an album with the highest precision available.
+   * Get the release date of the album with the highest precision available.
    *
-   * @return The release date of an album.
+   * @return The release date of the album.
    */
   public String getReleaseDate() {
     return releaseDate;
   }
 
   /**
-   * Get the precision of an albums release date. This is needed when the exact release day
-   * of an album is not known.
+   * Get the precision of the albums release date. This is needed when the exact release day of an album is not known.
    *
-   * @return The precision of an albums release date.
+   * @return The precision of the albums release date.
    */
   public ReleaseDatePrecision getReleaseDatePrecision() {
     return releaseDatePrecision;
   }
 
   /**
-   * Get a page of tracks of an album.
+   * Get a page of tracks of the album.
    *
-   * @return A page of simplified tracks.
+   * @return A {@link Paging} object containing {@link TrackSimplified} objects.
    */
   public Paging<TrackSimplified> getTracks() {
     return tracks;
@@ -206,16 +207,16 @@ public class Album extends AbstractModelObject {
   /**
    * Get the model object type. In this case "album".
    *
-   * @return A model object type.
+   * @return A {@link ModelObjectType}.
    */
   public ModelObjectType getType() {
     return type;
   }
 
   /**
-   * Get the Spotify uri of an album.
+   * Get the Spotify URI of the album.
    *
-   * @return Spotify album uri.
+   * @return <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify album URI</a>.
    */
   public String getUri() {
     return uri;
@@ -227,7 +228,7 @@ public class Album extends AbstractModelObject {
   }
 
   /**
-   * Builder class for building album instances.
+   * Builder class for building {@link Album} instances.
    */
   public static final class Builder extends AbstractModelObject.Builder {
 
@@ -253,8 +254,8 @@ public class Album extends AbstractModelObject {
     /**
      * Set the type of the album to be built.
      *
-     * @param albumType Type of the album.
-     * @return A builder object.
+     * @param albumType The {@link AlbumType}.
+     * @return A {@link Album.Builder}.
      */
     public Builder setAlbumType(AlbumType albumType) {
       this.albumType = albumType;
@@ -264,8 +265,8 @@ public class Album extends AbstractModelObject {
     /**
      * Set the artists of the album to be built.
      *
-     * @param artists An array of simplified artists.
-     * @return A builder object.
+     * @param artists {@link ArtistSimplified} objects.
+     * @return A {@link Album.Builder}.
      */
     public Builder setArtists(ArtistSimplified... artists) {
       this.artists = artists;
@@ -275,8 +276,9 @@ public class Album extends AbstractModelObject {
     /**
      * Set the available markets of the album to be built.
      *
-     * @param availableMarkets An array of ISO 3166-1 alpha-2 country codes.
-     * @return A builder object.
+     * @param availableMarkets <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">
+     *                         ISO 3166-1 alpha-2 country codes</a>.
+     * @return A {@link Album.Builder}.
      */
     public Builder setAvailableMarkets(CountryCode... availableMarkets) {
       this.availableMarkets = availableMarkets;
@@ -286,8 +288,8 @@ public class Album extends AbstractModelObject {
     /**
      * Set the copyrights of the album to be built.
      *
-     * @param copyrights Copyright objects.
-     * @return A builder object.
+     * @param copyrights {@link Copyright} objects.
+     * @return A {@link Album.Builder}.
      */
     public Builder setCopyrights(Copyright... copyrights) {
       this.copyrights = copyrights;
@@ -295,10 +297,10 @@ public class Album extends AbstractModelObject {
     }
 
     /**
-     * Set the external ids of the album to be built.
+     * Set the external IDs of the album to be built.
      *
-     * @param externalIds External ids of the album.
-     * @return A builder object.
+     * @param externalIds {@link ExternalId} object.
+     * @return A {@link Album.Builder}.
      */
     public Builder setExternalIds(ExternalId externalIds) {
       this.externalIds = externalIds;
@@ -306,10 +308,10 @@ public class Album extends AbstractModelObject {
     }
 
     /**
-     * Set external urls of the album to be built.
+     * Set external URLs of the album to be built.
      *
-     * @param externalUrls External urls object.
-     * @return A builder object.
+     * @param externalUrls {@link ExternalUrl} object.
+     * @return A {@link Album.Builder}.
      */
     public Builder setExternalUrls(ExternalUrl externalUrls) {
       this.externalUrls = externalUrls;
@@ -319,8 +321,8 @@ public class Album extends AbstractModelObject {
     /**
      * Set the genres of the album to be built.
      *
-     * @param genres An array of genres.
-     * @return A builder object.
+     * @param genres Genre names.
+     * @return A {@link Album.Builder}.
      */
     public Builder setGenres(String... genres) {
       this.genres = genres;
@@ -328,10 +330,10 @@ public class Album extends AbstractModelObject {
     }
 
     /**
-     * Set href of Spotify api endpoint of the album to be built.
+     * Set href of Spotify Web API endpoint of the album to be built.
      *
-     * @param href Spotify api endpoint url.
-     * @return A builder object.
+     * @param href Spotify Web API endpoint URL.
+     * @return A {@link Album.Builder}.
      */
     public Builder setHref(String href) {
       this.href = href;
@@ -339,10 +341,10 @@ public class Album extends AbstractModelObject {
     }
 
     /**
-     * Set album id of the album to be built.
+     * Set album ID of the album to be built.
      *
-     * @param id Album id.
-     * @return A builder object.
+     * @param id <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify album ID</a>.
+     * @return A {@link Album.Builder}.
      */
     public Builder setId(String id) {
       this.id = id;
@@ -352,8 +354,8 @@ public class Album extends AbstractModelObject {
     /**
      * Set the cover art in different sizes of the album to be built.
      *
-     * @param images An array of image objects.
-     * @return A builder object.
+     * @param images {@link Image} objects.
+     * @return A {@link Album.Builder}.
      */
     public Builder setImages(Image... images) {
       this.images = images;
@@ -364,7 +366,7 @@ public class Album extends AbstractModelObject {
      * Set the label of the album to be built.
      *
      * @param label The album label.
-     * @return A builder object.
+     * @return A {@link Album.Builder}.
      */
     public Builder setLabel(String label) {
       this.label = label;
@@ -375,7 +377,7 @@ public class Album extends AbstractModelObject {
      * Set the name of the album to be built.
      *
      * @param name The album name.
-     * @return A builder object.
+     * @return A {@link Album.Builder}.
      */
     public Builder setName(String name) {
       this.name = name;
@@ -386,7 +388,7 @@ public class Album extends AbstractModelObject {
      * Set the popularity of the album to be built.
      *
      * @param popularity The popularity of the album between 0 and 100.
-     * @return A builder object.
+     * @return A {@link Album.Builder}.
      */
     public Builder setPopularity(Integer popularity) {
       this.popularity = popularity;
@@ -397,7 +399,7 @@ public class Album extends AbstractModelObject {
      * Set the release date of the album to be built.
      *
      * @param releaseDate The release date of the album.
-     * @return A builder object.
+     * @return A {@link Album.Builder}.
      */
     public Builder setReleaseDate(String releaseDate) {
       this.releaseDate = releaseDate;
@@ -407,8 +409,8 @@ public class Album extends AbstractModelObject {
     /**
      * Set the release date precision of the album to be built.
      *
-     * @param releaseDatePrecision The release date precision of the album.
-     * @return A builder object.
+     * @param releaseDatePrecision The {@link ReleaseDatePrecision} of the album.
+     * @return A {@link Album.Builder}.
      */
     public Builder setReleaseDatePrecision(ReleaseDatePrecision releaseDatePrecision) {
       this.releaseDatePrecision = releaseDatePrecision;
@@ -416,10 +418,10 @@ public class Album extends AbstractModelObject {
     }
 
     /**
-     * Set a page of tracks of the album to be built.
+     * Set the tracks of the album to be built.
      *
-     * @param tracks A page of tracks.
-     * @return A builder object.
+     * @param tracks A {@link Paging} object containing {@link TrackSimplified} objects.
+     * @return A {@link Album.Builder}.
      */
     public Builder setTracks(Paging<TrackSimplified> tracks) {
       this.tracks = tracks;
@@ -429,8 +431,8 @@ public class Album extends AbstractModelObject {
     /**
      * Set the type of the model object. In this case "album".
      *
-     * @param type The model object type.
-     * @return A builder object.
+     * @param type The {@link ModelObjectType}.
+     * @return A {@link Album.Builder}.
      */
     public Builder setType(ModelObjectType type) {
       this.type = type;
@@ -438,10 +440,11 @@ public class Album extends AbstractModelObject {
     }
 
     /**
-     * Set the Spotify uri of the album to be built.
+     * Set the Spotify album URI of the album to be built.
      *
-     * @param uri The Spotify album uri.
-     * @return A builder object.
+     * @param uri <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">
+     *            Spotify album URI</a>.
+     * @return A {@link Album.Builder}.
      */
     public Builder setUri(String uri) {
       this.uri = uri;
@@ -455,7 +458,7 @@ public class Album extends AbstractModelObject {
   }
 
   /**
-   * JsonUtil class for building album instances.
+   * JsonUtil class for building {@link Album} instances.
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<Album> {
     public Album createModelObject(JsonObject jsonObject) {
