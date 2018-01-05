@@ -1,6 +1,5 @@
 package com.wrapper.spotify.model_objects;
 
-import com.google.common.reflect.TypeToken;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.wrapper.spotify.model_objects.specification.Paging;
@@ -62,7 +61,7 @@ public interface IModelObject {
 
     T[] createModelObjectArray(final String json, final String key);
 
-    <X> X[] createModelObjectArray(final JsonArray jsonArray, final TypeToken<X> typeToken);
+    <X> X[] createModelObjectArray(final JsonArray jsonArray, final Class<X> clazz);
 
     Paging<T> createModelObjectPaging(final JsonObject jsonObject);
 

@@ -1,12 +1,12 @@
 package com.wrapper.spotify.model_objects;
 
-import com.google.common.reflect.TypeToken;
 import com.google.gson.*;
 import com.wrapper.spotify.model_objects.specification.Cursor;
 import com.wrapper.spotify.model_objects.specification.Paging;
 import com.wrapper.spotify.model_objects.specification.PagingCursorbased;
 
 import java.lang.reflect.Array;
+import java.lang.reflect.ParameterizedType;
 import java.util.TimeZone;
 
 /**
@@ -57,8 +57,7 @@ public abstract class AbstractModelObject implements IModelObject {
      */
     public T[] createModelObjectArray(final JsonArray jsonArray) {
       @SuppressWarnings("unchecked")
-      T[] array = (T[]) Array.newInstance(new TypeToken<T>(getClass()) {
-      }.getRawType(), jsonArray.size());
+      T[] array = (T[]) Array.newInstance((Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0], jsonArray.size());
 
       for (int i = 0; i < jsonArray.size(); i++) {
         JsonElement jsonElement = jsonArray.get(i);
@@ -92,13 +91,13 @@ public abstract class AbstractModelObject implements IModelObject {
      * Create an array of model objects out of a json array object and type token.
      *
      * @param jsonArray A json array object.
-     * @param typeToken A type token.
+     * @param clazz     A type token.
      * @param <X>       The model object type of the array and type token.
      * @return A model object array.
      */
-    public <X> X[] createModelObjectArray(final JsonArray jsonArray, TypeToken<X> typeToken) {
+    public <X> X[] createModelObjectArray(final JsonArray jsonArray, Class<X> clazz) {
       @SuppressWarnings("unchecked")
-      X[] array = (X[]) Array.newInstance(typeToken.getRawType(), jsonArray.size());
+      X[] array = (X[]) Array.newInstance(clazz, jsonArray.size());
 
       for (int i = 0; i < jsonArray.size(); i++) {
         JsonElement jsonElement = jsonArray.get(i);

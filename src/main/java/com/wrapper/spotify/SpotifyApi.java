@@ -1,7 +1,8 @@
 package com.wrapper.spotify;
 
-import com.google.common.base.Joiner;
+import com.google.gson.Gson;
 import com.google.gson.JsonArray;
+import com.google.gson.JsonParser;
 import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.enums.ModelObjectType;
 import com.wrapper.spotify.requests.authorization.authorization_code.AuthorizationCodeRefreshRequest;
@@ -285,7 +286,7 @@ public class SpotifyApi {
     assert (ids.length <= 20);
     return new GetSeveralAlbumsRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
-            .ids(Joiner.on(",").join(ids));
+            .ids(concat(ids, ','));
   }
 
   /**
@@ -358,7 +359,7 @@ public class SpotifyApi {
     assert (ids.length <= 50);
     return new GetSeveralArtistsRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
-            .ids(Joiner.on(",").join(ids));
+            .ids(concat(ids, ','));
   }
 
   public GetCategoryRequest.Builder getCategory(String category_id) {
@@ -420,7 +421,7 @@ public class SpotifyApi {
     return new CheckCurrentUserFollowsArtistsOrUsersRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .type(type)
-            .ids(Joiner.on(",").join(ids));
+            .ids(concat(ids, ','));
   }
 
   public CheckUsersFollowPlaylistRequest.Builder checkUsersFollowPlaylist(
@@ -433,7 +434,7 @@ public class SpotifyApi {
             .setDefaults(httpManager, scheme, host, port)
             .owner_id(owner_id)
             .playlist_id(playlist_id)
-            .ids(Joiner.on(",").join(ids));
+            .ids(concat(ids, ','));
   }
 
   public FollowArtistsOrUsersRequest.Builder followArtistsOrUsers(ModelObjectType type, String[] ids) {
@@ -443,7 +444,7 @@ public class SpotifyApi {
     return new FollowArtistsOrUsersRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .type(type)
-            .ids(Joiner.on(",").join(ids));
+            .ids(concat(ids, ','));
   }
 
   public FollowArtistsOrUsersRequest.Builder followArtistsOrUsers(ModelObjectType type, JsonArray ids) {
@@ -454,7 +455,7 @@ public class SpotifyApi {
     return new FollowArtistsOrUsersRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .type(type)
-            .ids(Joiner.on(",").join(ids));
+            .ids(concat(new Gson().fromJson(ids, String[].class), ','));
   }
 
   public FollowPlaylistRequest.Builder followPlaylist(String owner_id, String playlist_id, boolean public_) {
@@ -483,7 +484,7 @@ public class SpotifyApi {
     return new UnfollowArtistsOrUsersRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .type(type)
-            .ids(Joiner.on(",").join(ids));
+            .ids(concat(ids, ','));
   }
 
   public UnfollowArtistsOrUsersRequest.Builder unfollowArtistsOrUsers(ModelObjectType type, JsonArray ids) {
@@ -493,7 +494,7 @@ public class SpotifyApi {
     return new UnfollowArtistsOrUsersRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .type(type)
-            .ids(Joiner.on(",").join(ids));
+            .ids(concat(new Gson().fromJson(ids, String[].class), ','));
   }
 
   /**
@@ -526,7 +527,7 @@ public class SpotifyApi {
     assert (ids.length <= 50);
     return new CheckUsersSavedAlbumsRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
-            .ids(Joiner.on(",").join(ids));
+            .ids(concat(ids, ','));
   }
 
   /**
@@ -540,7 +541,7 @@ public class SpotifyApi {
     assert (ids.length <= 50);
     return new CheckUsersSavedTracksRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
-            .ids(Joiner.on(",").join(ids));
+            .ids(concat(ids, ','));
   }
 
   public GetCurrentUsersSavedAlbumsRequest.Builder getCurrentUsersSavedAlbums() {
@@ -563,7 +564,7 @@ public class SpotifyApi {
     assert (ids.length <= 50);
     return new RemoveAlbumsForCurrentUserRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
-            .ids(Joiner.on(",").join(ids));
+            .ids(concat(ids, ','));
   }
 
   public RemoveAlbumsForCurrentUserRequest.Builder removeAlbumsForCurrentUser(JsonArray ids) {
@@ -571,7 +572,7 @@ public class SpotifyApi {
     assert (ids.size() <= 50);
     return new RemoveAlbumsForCurrentUserRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
-            .ids(Joiner.on(",").join(ids));
+            .ids(concat(new Gson().fromJson(ids, String[].class), ','));
   }
 
   /**
@@ -585,7 +586,7 @@ public class SpotifyApi {
     assert (ids.length <= 50);
     return new RemoveUsersSavedTracksRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
-            .ids(Joiner.on(",").join(ids));
+            .ids(concat(ids, ','));
   }
 
   /**
@@ -599,7 +600,7 @@ public class SpotifyApi {
     assert (ids.size() <= 50);
     return new RemoveUsersSavedTracksRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
-            .ids(Joiner.on(",").join(ids));
+            .ids(concat(new Gson().fromJson(ids, String[].class), ','));
   }
 
   /**
@@ -613,7 +614,7 @@ public class SpotifyApi {
     assert (ids.length <= 50);
     return new SaveAlbumsForCurrentUserRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
-            .ids(Joiner.on(",").join(ids));
+            .ids(concat(ids, ','));
   }
 
   /**
@@ -627,7 +628,7 @@ public class SpotifyApi {
     assert (ids.size() <= 50);
     return new SaveAlbumsForCurrentUserRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
-            .ids(Joiner.on(",").join(ids));
+            .ids(concat(new Gson().fromJson(ids, String[].class), ','));
   }
 
   /**
@@ -641,7 +642,7 @@ public class SpotifyApi {
     assert (ids.length <= 50);
     return new SaveTracksForUserRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
-            .ids(Joiner.on(",").join(ids));
+            .ids(concat(ids, ','));
   }
 
   public SaveTracksForUserRequest.Builder saveTracksForUser(JsonArray ids) {
@@ -649,7 +650,7 @@ public class SpotifyApi {
     assert (ids.size() <= 50);
     return new SaveTracksForUserRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
-            .ids(Joiner.on(",").join(ids));
+            .ids(concat(new Gson().fromJson(ids, String[].class), ','));
   }
 
   public <T extends IArtistTrackModelObject> GetUsersTopArtistsAndTracksRequest.Builder getUsersTopArtistsAndTracks(ModelObjectType type) {
@@ -759,7 +760,7 @@ public class SpotifyApi {
             .setDefaults(httpManager, scheme, host, port)
             .user_id(user_id)
             .playlist_id(playlist_id)
-            .uris(Joiner.on(",").join(uris));
+            .uris(concat(uris, ','));
   }
 
   public AddTracksToPlaylistRequest.Builder addTracksToPlaylist(String user_id, String playlist_id, JsonArray uris) {
@@ -967,7 +968,7 @@ public class SpotifyApi {
             .setDefaults(httpManager, scheme, host, port)
             .user_id(user_id)
             .playlist_id(playlist_id)
-            .uris(Joiner.on(",").join(uris));
+            .uris(concat(uris, ','));
   }
 
   public ReplacePlaylistsTracksRequest.Builder replacePlaylistsTracks(String user_id, String playlist_id, JsonArray uris) {
@@ -1084,7 +1085,7 @@ public class SpotifyApi {
     assert (ids.length <= 100);
     return new GetAudioFeaturesForSeveralTracksRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
-            .ids(Joiner.on(",").join(ids));
+            .ids(concat(ids, ','));
   }
 
   /**
@@ -1098,7 +1099,7 @@ public class SpotifyApi {
     assert (ids.length <= 50);
     return new GetSeveralTracksRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
-            .ids(Joiner.on(",").join(ids));
+            .ids(concat(ids, ','));
   }
 
   /**
@@ -1139,6 +1140,18 @@ public class SpotifyApi {
     return new GetUsersProfileRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .user_id(user_id);
+  }
+
+  public static String concat(String[] parts, char character) {
+    StringBuilder stringBuilder = new StringBuilder();
+
+    for (String part : parts) {
+      stringBuilder.append(part).append(character);
+    }
+
+    stringBuilder.deleteCharAt(stringBuilder.length() - 1);
+
+    return stringBuilder.toString();
   }
 
   /**

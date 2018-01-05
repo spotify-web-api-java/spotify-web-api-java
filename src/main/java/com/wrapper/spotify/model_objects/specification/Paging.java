@@ -1,8 +1,9 @@
 package com.wrapper.spotify.model_objects.specification;
 
-import com.google.common.reflect.TypeToken;
 import com.google.gson.JsonObject;
 import com.wrapper.spotify.model_objects.AbstractModelObject;
+
+import java.lang.reflect.ParameterizedType;
 
 /**
  * Retrieve information about
@@ -203,6 +204,7 @@ public class Paging<T> extends AbstractModelObject {
    *
    * @param <X> The type of the objects contained in a paging object.
    */
+  @SuppressWarnings("unchecked")
   public static final class JsonUtil<X> extends AbstractModelObject.JsonUtil<Paging<X>> {
     public Paging<X> createModelObject(JsonObject jsonObject) {
       if (jsonObject == null || jsonObject.isJsonNull()) {
@@ -216,8 +218,8 @@ public class Paging<T> extends AbstractModelObject {
                               : null)
               .setItems(
                       createModelObjectArray(
-                              jsonObject.getAsJsonArray("items"), new TypeToken<X>(getClass()) {
-                              }))
+                              jsonObject.getAsJsonArray("items"), (Class<X>) ((ParameterizedType) getClass()
+                                      .getGenericSuperclass()).getActualTypeArguments()[0]))
               .setLimit(
                       hasAndNotNull(jsonObject, "limit")
                               ? jsonObject.get("limit").getAsInt()

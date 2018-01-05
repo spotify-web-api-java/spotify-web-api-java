@@ -1,6 +1,5 @@
 package com.wrapper.spotify;
 
-import com.google.common.base.Joiner;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -649,7 +648,7 @@ public class ApiTest {
 
     String authorizeUrlString = api
             .authorizationCodeUri()
-            .scope(Joiner.on(" ").join(scopes))
+            .scope(SpotifyApi.concat(scopes, ' '))
             .state(state)
             .build()
             .getUri()
@@ -672,7 +671,7 @@ public class ApiTest {
 
     String authorizeUrlString = api
             .authorizationCodeUri(clientId, redirectURI)
-            .scope(Joiner.on(" ").join(scopes))
+            .scope(SpotifyApi.concat(scopes, ' '))
             .build()
             .getUri()
             .toString();
@@ -695,7 +694,7 @@ public class ApiTest {
 
     String authorizeURLString = api
             .authorizationCodeUri(clientId, redirectURI)
-            .scope(Joiner.on(" ").join(scopes))
+            .scope(SpotifyApi.concat(scopes, ' '))
             .state(state)
             .show_dialog(true)
             .build()

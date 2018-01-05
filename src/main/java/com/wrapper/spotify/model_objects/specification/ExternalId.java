@@ -1,10 +1,10 @@
 package com.wrapper.spotify.model_objects.specification;
 
-import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.wrapper.spotify.model_objects.AbstractModelObject;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -69,14 +69,14 @@ public class ExternalId extends AbstractModelObject {
   /**
    * JsonUtil class for building {@link ExternalId} instances.
    */
+  @SuppressWarnings("unchecked")
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<ExternalId> {
     public ExternalId createModelObject(JsonObject jsonObject) {
       if (jsonObject == null || jsonObject.isJsonNull()) {
         return null;
       }
 
-      Map<String, String> map = new Gson().fromJson(jsonObject, new TypeToken<Map<String, String>>() {
-      }.getType());
+      Map<String, String> map = new Gson().fromJson(jsonObject, Map.class);
 
       return new ExternalId.Builder()
               .setExternalIds(map)
