@@ -59,6 +59,18 @@
         </snapshotRepository>
     </distributionManagement>
 
+    <profiles>
+        <profile>
+            <id>java9-javadoc-fix</id>
+            <activation>
+                <jdk>[1.9,)</jdk>
+            </activation>
+            <properties>
+                <additionalparam>--add-modules java.xml.bind</additionalparam>
+            </properties>
+        </profile>
+    </profiles>
+
     <build>
         <plugins>
             <plugin>
@@ -129,9 +141,6 @@
                 <configuration>
                     <reportOutputDirectory>${project.basedir}</reportOutputDirectory>
                     <destDir>docs</destDir>
-                    <additionalparam>
-                        --add-modules java.xml.bind
-                    </additionalparam>
                 </configuration>
                 <version>3.0.0-M1</version>
             </plugin>
