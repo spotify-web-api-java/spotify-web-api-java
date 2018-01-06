@@ -38,6 +38,7 @@ public class SaveTracksForUserRequest extends AbstractDataRequest {
 
     @Override
     public SaveTracksForUserRequest build() {
+      setHeader("Content-Type", "application/json");
       setPath("/v1/me/tracks");
       return new SaveTracksForUserRequest(this);
     }

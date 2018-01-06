@@ -52,6 +52,7 @@ public class CreatePlaylistRequest extends AbstractDataRequest {
 
     @Override
     public CreatePlaylistRequest build() {
+      setHeader("Content-Type", "application/json");
       setPath("/v1/users/{user_id}/playlists");
       return new CreatePlaylistRequest(this);
     }

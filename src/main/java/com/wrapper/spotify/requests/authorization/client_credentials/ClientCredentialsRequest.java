@@ -32,6 +32,7 @@ public class ClientCredentialsRequest extends AbstractAthorizationRequest {
     }
 
     public ClientCredentialsRequest build() {
+      setHeader("Content-Type", "application/x-www-form-urlencoded");
       setHost(SpotifyApi.DEFAULT_AUTHENTICATION_HOST);
       setPort(SpotifyApi.DEFAULT_AUTHENTICATION_PORT);
       setScheme(SpotifyApi.DEFAULT_AUTHENTICATION_SCHEME);

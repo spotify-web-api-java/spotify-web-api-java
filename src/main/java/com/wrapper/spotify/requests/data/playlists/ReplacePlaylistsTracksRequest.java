@@ -51,6 +51,7 @@ public class ReplacePlaylistsTracksRequest extends AbstractDataRequest {
 
     @Override
     public ReplacePlaylistsTracksRequest build() {
+      setHeader("Content-Type", "application/json");
       setPath("/v1/users/{user_id}/playlists/{playlist_id}/tracks");
       return new ReplacePlaylistsTracksRequest(this);
     }

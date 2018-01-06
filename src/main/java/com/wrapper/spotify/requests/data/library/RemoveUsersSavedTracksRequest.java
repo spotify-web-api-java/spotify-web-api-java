@@ -38,6 +38,7 @@ public class RemoveUsersSavedTracksRequest extends AbstractDataRequest {
 
     @Override
     public RemoveUsersSavedTracksRequest build() {
+      setHeader("Content-Type", "application/json");
       setPath("/v1/me/tracks");
       return new RemoveUsersSavedTracksRequest(this);
     }

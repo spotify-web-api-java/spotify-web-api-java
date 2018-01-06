@@ -44,6 +44,7 @@ public class AuthorizationCodeRequest extends AbstractAthorizationRequest {
     }
 
     public AuthorizationCodeRequest build() {
+      setHeader("Content-Type", "application/x-www-form-urlencoded");
       setHost(SpotifyApi.DEFAULT_AUTHENTICATION_HOST);
       setPort(SpotifyApi.DEFAULT_AUTHENTICATION_PORT);
       setScheme(SpotifyApi.DEFAULT_AUTHENTICATION_SCHEME);

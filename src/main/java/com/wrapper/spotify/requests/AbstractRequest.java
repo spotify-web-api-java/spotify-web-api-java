@@ -144,7 +144,6 @@ public abstract class AbstractRequest implements IRequest {
     private String body = "";
 
     protected Builder() {
-      setHeader("Content-Type", "application/json");
     }
 
     public BuilderType setHttpManager(final IHttpManager httpManager) {

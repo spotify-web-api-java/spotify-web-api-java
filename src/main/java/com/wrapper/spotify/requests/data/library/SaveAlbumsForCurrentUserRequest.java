@@ -38,6 +38,7 @@ public class SaveAlbumsForCurrentUserRequest extends AbstractDataRequest {
 
     @Override
     public SaveAlbumsForCurrentUserRequest build() {
+      setHeader("Content-Type", "application/json");
       setPath("/v1/me/albums");
       return new SaveAlbumsForCurrentUserRequest(this);
     }

@@ -57,6 +57,7 @@ public class ChangePlaylistsDetailsRequest extends AbstractDataRequest {
 
     @Override
     public ChangePlaylistsDetailsRequest build() {
+      setHeader("Content-Type", "application/json");
       setPath("/v1/users/{user_id}/playlists/{playlist_id}");
       return new ChangePlaylistsDetailsRequest(this);
     }
