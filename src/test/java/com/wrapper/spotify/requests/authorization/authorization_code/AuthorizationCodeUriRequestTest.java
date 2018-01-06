@@ -6,11 +6,12 @@ import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.net.URI;
 import java.util.concurrent.ExecutionException;
 
 import static org.junit.Assert.assertEquals;
 
-public class AuthorizationCodeUriRequestTest implements ITest<String> {
+public class AuthorizationCodeUriRequestTest implements ITest<URI> {
 
   private final AuthorizationCodeUriRequest successRequest = SPOTIFY_API.authorizationCodeUri()
           .setHttpManager(
@@ -28,12 +29,12 @@ public class AuthorizationCodeUriRequestTest implements ITest<String> {
 
   @Test
   public void shouldSucceed_async() throws ExecutionException, InterruptedException {
-    shouldSucceed((String) successRequest.executeAsync().get());
+    shouldSucceed((URI) successRequest.executeAsync().get());
   }
 
-  public void shouldSucceed(final String string) {
+  public void shouldSucceed(final URI uri) {
     assertEquals(
             "https://example.com/callback?code=NApCCg..BkWtQ&state=profile%2Factivity",
-            string);
+            uri.toString());
   }
 }

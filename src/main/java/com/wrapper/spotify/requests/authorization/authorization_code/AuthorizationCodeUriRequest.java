@@ -5,6 +5,7 @@ import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.requests.AbstractRequest;
 
 import java.io.IOException;
+import java.net.URI;
 
 public class AuthorizationCodeUriRequest extends AbstractRequest {
 
@@ -12,10 +13,10 @@ public class AuthorizationCodeUriRequest extends AbstractRequest {
     super(builder);
   }
 
-  public String execute() throws
+  public URI execute() throws
           IOException,
           SpotifyWebApiException {
-    return getJson();
+    return this.getUri();
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {
