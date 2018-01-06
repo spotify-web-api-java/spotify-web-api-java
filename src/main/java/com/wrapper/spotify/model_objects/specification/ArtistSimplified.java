@@ -6,7 +6,7 @@ import com.wrapper.spotify.model_objects.AbstractModelObject;
 
 /**
  * Retrieve information about <a href="https://developer.spotify.com/web-api/object-model/#artist-object-simplified">
- *     simplified Artist objects</a> by building instances from this class.
+ * simplified Artist objects</a> by building instances from this class.
  */
 public class ArtistSimplified extends AbstractModelObject {
   private final ExternalUrl externalUrls;

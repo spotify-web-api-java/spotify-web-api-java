@@ -6,8 +6,8 @@ import com.wrapper.spotify.model_objects.AbstractModelObject;
 
 /**
  * Retrieve information about <a href="https://developer.spotify.com/web-api/object-model/#context-object">
- *     Context objects</a> by building instances from this class. Context objects contain information from where a
- *     specific track has been played by a user.
+ * Context objects</a> by building instances from this class. Context objects contain information from where a
+ * specific track has been played by a user.
  *
  * @see PlayHistory
  */

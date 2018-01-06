@@ -5,7 +5,7 @@ import com.wrapper.spotify.model_objects.AbstractModelObject;
 
 /**
  * Retrieve information about <a href="https://developer.spotify.com/web-api/object-model/#category-object">
- *     Category objects</a> by building instances from this class.
+ * Category objects</a> by building instances from this class.
  */
 public class Category extends AbstractModelObject {
   private final String href;

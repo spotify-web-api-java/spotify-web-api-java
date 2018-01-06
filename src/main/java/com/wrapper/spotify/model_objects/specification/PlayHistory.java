@@ -8,7 +8,7 @@ import java.util.Date;
 
 /**
  * Retrieve information about <a href="https://developer.spotify.com/web-api/object-model/#play-history-object">
- *     Play History objects</a> by building instances from this class.
+ * Play History objects</a> by building instances from this class.
  */
 public class PlayHistory extends AbstractModelObject {
   private final TrackSimplified track;

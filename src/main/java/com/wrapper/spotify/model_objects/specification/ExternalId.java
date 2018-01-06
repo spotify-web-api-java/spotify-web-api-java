@@ -4,7 +4,6 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.wrapper.spotify.model_objects.AbstractModelObject;
 
-import java.util.HashMap;
 import java.util.Map;
 
 /**

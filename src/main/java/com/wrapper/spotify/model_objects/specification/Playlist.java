@@ -6,7 +6,7 @@ import com.wrapper.spotify.model_objects.AbstractModelObject;
 
 /**
  * Retrieve information about <a href="https://developer.spotify.com/web-api/object-model/#playlist-object-full">
- *     Playlist objects</a> by building instances from this class.
+ * Playlist objects</a> by building instances from this class.
  */
 public class Playlist extends AbstractModelObject {
   private final Boolean collaborative;
@@ -48,8 +48,8 @@ public class Playlist extends AbstractModelObject {
    *
    * @return {@code true} if the owner allows other users to modify the playlist, {@code false} if not.
    * @see <a
-   *      href="https://developer.spotify.com/web-api/working-with-playlists/#public-private-and-collaborative-status">
-   *      Spotify: Working With Playlists</a>
+   * href="https://developer.spotify.com/web-api/working-with-playlists/#public-private-and-collaborative-status">
+   * Spotify: Working With Playlists</a>
    */
   public Boolean getIsCollaborative() {
     return collaborative;
@@ -110,7 +110,7 @@ public class Playlist extends AbstractModelObject {
    *
    * @return An array of images in different sizes.
    * @see <a href="https://developer.spotify.com/web-api/working-with-playlists/#using-playlist-images">
-   *      Spotify: Working With Playlists</a>
+   * Spotify: Working With Playlists</a>
    */
   public Image[] getImages() {
     return images;
@@ -138,10 +138,10 @@ public class Playlist extends AbstractModelObject {
    * Check whether a playlist is available in public or is private.
    *
    * @return {@code true} the playlist is public, {@code false} the playlist is private, {@code null}
-   *         the playlist status is not relevant.
+   * the playlist status is not relevant.
    * @see <a
-   *      href="https://developer.spotify.com/web-api/working-with-playlists/#public-private-and-collaborative-status">
-   *      Spotify: Working With Playlists</a>
+   * href="https://developer.spotify.com/web-api/working-with-playlists/#public-private-and-collaborative-status">
+   * Spotify: Working With Playlists</a>
    */
   public Boolean getIsPublicAccess() {
     return publicAccess;

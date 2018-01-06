@@ -12,7 +12,8 @@ import org.mockito.runners.MockitoJUnitRunner;
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 @RunWith(MockitoJUnitRunner.class)
 public class GetAlbumsTracksRequestTest implements ITest<Paging<TrackSimplified>> {

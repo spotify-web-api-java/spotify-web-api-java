@@ -1,23 +1,15 @@
 package com.wrapper.spotify.requests.data.albums;
 
 import com.wrapper.spotify.ITest;
-import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.TestUtil;
-import com.wrapper.spotify.enums.AlbumType;
-import com.wrapper.spotify.enums.ReleaseDatePrecision;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.Album;
-import com.wrapper.spotify.model_objects.specification.ArtistSimplified;
-import com.wrapper.spotify.model_objects.specification.Paging;
-import com.wrapper.spotify.model_objects.specification.TrackSimplified;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import java.io.IOException;
-import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;

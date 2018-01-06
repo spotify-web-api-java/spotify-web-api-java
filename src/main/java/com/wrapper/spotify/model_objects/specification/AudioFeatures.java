@@ -7,7 +7,7 @@ import com.wrapper.spotify.model_objects.AbstractModelObject;
 
 /**
  * Retrieve information about <a href="https://developer.spotify.com/web-api/object-model/#audio-features-object">
- *     Audio Feature objects</a> by building instances from this class.
+ * Audio Feature objects</a> by building instances from this class.
  */
 public class AudioFeatures extends AbstractModelObject {
   private final double acousticness;
@@ -66,8 +66,8 @@ public class AudioFeatures extends AbstractModelObject {
    * Get the Spotify Web API endpoint URL for a full audio analysis. An audio analysis contains additional information
    * to audio feature objects.
    *
-   * @see com.wrapper.spotify.model_objects.miscellaneous.AudioAnalysis
    * @return Spotify Web API endpoint URL.
+   * @see com.wrapper.spotify.model_objects.miscellaneous.AudioAnalysis
    */
   public String getAnalysisUrl() {
     return analysisUrl;

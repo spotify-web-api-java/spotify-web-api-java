@@ -9,7 +9,7 @@ import com.wrapper.spotify.requests.data.search.interfaces.ISearchModelObject;
 
 /**
  * Retrieve information about <a href="https://developer.spotify.com/web-api/object-model/#artist-object-full">
- *     Artist objects</a> by building instances from this class.
+ * Artist objects</a> by building instances from this class.
  */
 public class Artist extends AbstractModelObject implements IArtistTrackModelObject, ISearchModelObject {
   private final ExternalUrl externalUrls;

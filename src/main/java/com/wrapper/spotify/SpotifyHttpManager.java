@@ -32,13 +32,11 @@ public class SpotifyHttpManager implements IHttpManager {
 
   private static final int DEFAULT_CACHE_MAX_ENTRIES = 1000;
   private static final int DEFAULT_CACHE_MAX_OBJECT_SIZE = 8192;
-
+  private static CloseableHttpClient httpClient = CachingHttpClients.custom().build();
   private final HttpHost proxy;
   private final UsernamePasswordCredentials proxyCredentials;
   private final Integer cacheMaxEntries;
   private final Integer cacheMaxObjectSize;
-
-  private static CloseableHttpClient httpClient = CachingHttpClients.custom().build();
 
   /**
    * Construct a new SpotifyHttpManager instance.
@@ -245,21 +243,21 @@ public class SpotifyHttpManager implements IHttpManager {
       case HttpStatus.SC_NOT_MODIFIED:
         return responseBody;
       case HttpStatus.SC_BAD_REQUEST:
-          throw new BadRequestException(errorMessage);
+        throw new BadRequestException(errorMessage);
       case HttpStatus.SC_UNAUTHORIZED:
-          throw new UnauthorizedException(errorMessage);
+        throw new UnauthorizedException(errorMessage);
       case HttpStatus.SC_FORBIDDEN:
-          throw new ForbiddenException(errorMessage);
+        throw new ForbiddenException(errorMessage);
       case HttpStatus.SC_NOT_FOUND:
-          throw new NotFoundException(errorMessage);
+        throw new NotFoundException(errorMessage);
       case 429: // TOO_MANY_REQUESTS (additional status code, RFC 6585)
-          throw new TooManyRequestsException(errorMessage);
+        throw new TooManyRequestsException(errorMessage);
       case HttpStatus.SC_INTERNAL_SERVER_ERROR:
-          throw new InternalServerErrorException(errorMessage);
+        throw new InternalServerErrorException(errorMessage);
       case HttpStatus.SC_BAD_GATEWAY:
-          throw new BadGatewayException(errorMessage);
+        throw new BadGatewayException(errorMessage);
       case HttpStatus.SC_SERVICE_UNAVAILABLE:
-          throw new ServiceUnavailableException(errorMessage);
+        throw new ServiceUnavailableException(errorMessage);
       default:
         return responseBody;
     }

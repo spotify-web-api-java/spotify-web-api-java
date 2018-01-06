@@ -10,7 +10,7 @@ import com.wrapper.spotify.model_objects.AbstractModelObject;
 
 /**
  * Retrieve information about <a href="https://developer.spotify.com/web-api/object-model/#album-object-full">
- *     Album objects</a> by building instances from this class.
+ * Album objects</a> by building instances from this class.
  */
 public class Album extends AbstractModelObject {
   private final AlbumType albumType;
@@ -77,7 +77,7 @@ public class Album extends AbstractModelObject {
    * Get the country codes of all countries, in which the album is available.
    *
    * @return An array of <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2 country
-   *         codes</a>.
+   * codes</a>.
    */
   public CountryCode[] getAvailableMarkets() {
     return availableMarkets;

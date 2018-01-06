@@ -108,6 +108,18 @@ public class SpotifyApi {
     return new Builder();
   }
 
+  public static String concat(String[] parts, char character) {
+    StringBuilder stringBuilder = new StringBuilder();
+
+    for (String part : parts) {
+      stringBuilder.append(part).append(character);
+    }
+
+    stringBuilder.deleteCharAt(stringBuilder.length() - 1);
+
+    return stringBuilder.toString();
+  }
+
   public IHttpManager getHttpManager() {
     return httpManager;
   }
@@ -883,29 +895,6 @@ public class SpotifyApi {
             .playlist_id(playlist_id);
   }
 
-  /**
-   * delete tracks from a playlist
-   *
-   * @param user_id     The owner's username.
-   * @param playlist_id The playlist's ID.
-   * @param tracks      URIs of the tracks to remove.
-   * @return A builder object that can be used to build a request to remove tracks from a playlist.
-   */
-  public RemoveTracksFromPlaylistRequest.Builder removeTracksFromPlaylist(
-          String user_id, String playlist_id, JsonArray tracks) {
-    assert (user_id != null);
-    assert (!user_id.equals(""));
-    assert (playlist_id != null);
-    assert (!playlist_id.equals(""));
-    assert (tracks != null);
-    assert (tracks.size() <= 100);
-    return new RemoveTracksFromPlaylistRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port)
-            .user_id(user_id)
-            .playlist_id(playlist_id)
-            .tracks(tracks);
-  }
-
 //  public RemoveTracksFromPlaylistRequest.Builder removeTrackFromPlaylist(String userId, String playlistId, PlaylistTrackPosition[] playlistTrackPositions) {
 //    final RemoveTracksFromPlaylistRequest.Builder builder = new RemoveTracksFromPlaylistRequest.Builder(accessToken);
 //
@@ -939,6 +928,29 @@ public class SpotifyApi {
 //    builder.playlist_id(playlistId);
 //    return builder;
 //  }
+
+  /**
+   * delete tracks from a playlist
+   *
+   * @param user_id     The owner's username.
+   * @param playlist_id The playlist's ID.
+   * @param tracks      URIs of the tracks to remove.
+   * @return A builder object that can be used to build a request to remove tracks from a playlist.
+   */
+  public RemoveTracksFromPlaylistRequest.Builder removeTracksFromPlaylist(
+          String user_id, String playlist_id, JsonArray tracks) {
+    assert (user_id != null);
+    assert (!user_id.equals(""));
+    assert (playlist_id != null);
+    assert (!playlist_id.equals(""));
+    assert (tracks != null);
+    assert (tracks.size() <= 100);
+    return new RemoveTracksFromPlaylistRequest.Builder(accessToken)
+            .setDefaults(httpManager, scheme, host, port)
+            .user_id(user_id)
+            .playlist_id(playlist_id)
+            .tracks(tracks);
+  }
 
   public ReorderPlaylistsTracksRequest.Builder reorderPlaylistsTracks(String user_id, String playlist_id, int range_start, int insert_before) {
     assert (user_id != null);
@@ -1144,18 +1156,6 @@ public class SpotifyApi {
     return new GetUsersProfileRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .user_id(user_id);
-  }
-
-  public static String concat(String[] parts, char character) {
-    StringBuilder stringBuilder = new StringBuilder();
-
-    for (String part : parts) {
-      stringBuilder.append(part).append(character);
-    }
-
-    stringBuilder.deleteCharAt(stringBuilder.length() - 1);
-
-    return stringBuilder.toString();
   }
 
   /**
