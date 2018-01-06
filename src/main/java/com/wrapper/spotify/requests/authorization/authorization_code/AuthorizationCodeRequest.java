@@ -28,19 +28,19 @@ public class AuthorizationCodeRequest extends AbstractAthorizationRequest {
     public Builder grant_type(final String grant_type) {
       assert (grant_type != null);
       assert (grant_type.equals("authorization_code"));
-      return setBodyParameter("grant_type", grant_type);
+      return setFormParameter("grant_type", grant_type);
     }
 
     public Builder code(final String code) {
       assert (code != null);
       assert (!code.equals(""));
-      return setBodyParameter("code", code);
+      return setFormParameter("code", code);
     }
 
     public Builder redirect_uri(final String redirect_uri) {
       assert (redirect_uri != null);
       assert (!redirect_uri.equals(""));
-      return setBodyParameter("redirect_uri", redirect_uri);
+      return setFormParameter("redirect_uri", redirect_uri);
     }
 
     public AuthorizationCodeRequest build() {

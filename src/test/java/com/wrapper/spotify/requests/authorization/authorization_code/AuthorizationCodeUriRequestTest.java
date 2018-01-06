@@ -34,7 +34,7 @@ public class AuthorizationCodeUriRequestTest implements ITest<URI> {
 
   public void shouldSucceed(final URI uri) {
     assertEquals(
-            "https://example.com/callback?code=NApCCg..BkWtQ&state=profile%2Factivity",
+            "https://accounts.spotify.com:443/authorize?client_id=ClientId&response_type=code&redirect_uri=RedirectUri",
             uri.toString());
   }
 }
