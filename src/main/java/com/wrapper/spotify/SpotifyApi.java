@@ -2,7 +2,6 @@ package com.wrapper.spotify;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
-import com.google.gson.JsonParser;
 import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.enums.ModelObjectType;
 import com.wrapper.spotify.requests.authorization.authorization_code.AuthorizationCodeRefreshRequest;
@@ -78,8 +77,8 @@ public class SpotifyApi {
   private final String clientId;
   private final String clientSecret;
   private final String redirectUri;
-  private final String accessToken;
-  private final String refreshToken;
+  private String accessToken;
+  private String refreshToken;
 
   private SpotifyApi(Builder builder) {
     assert (builder.httpManager != null);
@@ -168,8 +167,26 @@ public class SpotifyApi {
     return accessToken;
   }
 
+  /**
+   * Set the acces token in a builder object.
+   *
+   * @param accessToken A Spotify API access token.
+   */
+  public void setAccessToken(String accessToken) {
+    this.accessToken = accessToken;
+  }
+
   public String getRefreshToken() {
     return refreshToken;
+  }
+
+  /**
+   * Set the refresh token in a builder object.
+   *
+   * @param refreshToken A Spotify API refresh token.
+   */
+  public void setRefreshToken(String refreshToken) {
+    this.refreshToken = refreshToken;
   }
 
   public AuthorizationCodeRefreshRequest.Builder authorizationCodeRefresh(String client_id, String client_secret, String refresh_token) {
