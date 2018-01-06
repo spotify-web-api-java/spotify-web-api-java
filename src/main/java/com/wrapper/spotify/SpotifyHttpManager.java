@@ -2,6 +2,7 @@ package com.wrapper.spotify;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.google.gson.JsonSyntaxException;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.exceptions.detailed.*;
 import org.apache.http.*;
@@ -222,13 +223,20 @@ public class SpotifyHttpManager implements IHttpManager {
           SpotifyWebApiException {
     final StatusLine statusLine = httpResponse.getStatusLine();
     final String responseBody = EntityUtils.toString(httpResponse.getEntity(), "UTF-8");
-    final JsonObject jsonObject = new JsonParser().parse(responseBody).getAsJsonObject();
-    final String errorMessage;
+    String errorMessage = statusLine.getReasonPhrase();
 
-    if (jsonObject.has("error") && jsonObject.get("error").getAsJsonObject().has("message")) {
-      errorMessage = jsonObject.getAsJsonObject("error").get("message").getAsString();
-    } else {
-      errorMessage = statusLine.getReasonPhrase();
+    try {
+      final JsonObject jsonObject = new JsonParser().parse(responseBody).getAsJsonObject();
+
+      if (jsonObject.has("error")) {
+        if (jsonObject.has("error_description")) {
+          errorMessage = jsonObject.get("error_description").getAsString();
+        } else if (jsonObject.get("error").isJsonObject() && jsonObject.getAsJsonObject("error").has("message")) {
+          errorMessage = jsonObject.getAsJsonObject("error").get("message").getAsString();
+        }
+      }
+    } catch (JsonSyntaxException e) {
+      // Nothing necessary
     }
 
     switch (statusLine.getStatusCode()) {
