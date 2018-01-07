@@ -30,17 +30,9 @@ public abstract class AbstractRequest implements IRequest {
   private String body;
 
   protected AbstractRequest(Builder<?> builder) {
-    assert (builder.httpManager != null);
-    assert (builder.scheme != null);
-    assert (builder.host != null);
-    assert (builder.port > 0);
+    assert (builder != null);
     assert (builder.path != null);
-    assert (builder.pathParameters != null);
-    assert (builder.queryParameters != null);
-    assert (builder.headers != null);
-    assert (builder.formParameters != null);
-    assert (builder.bodyParameters != null);
-    assert (builder.body != null);
+    assert (!builder.path.equals(""));
 
     this.httpManager = builder.httpManager;
 
@@ -141,7 +133,7 @@ public abstract class AbstractRequest implements IRequest {
     private String host = SpotifyApi.DEFAULT_HOST;
     private Integer port = SpotifyApi.DEFAULT_PORT;
     private String path = null;
-    private String body = "";
+    private String body = null;
 
     protected Builder() {
     }
@@ -225,6 +217,7 @@ public abstract class AbstractRequest implements IRequest {
     @SuppressWarnings("unchecked")
     public <X> T setQueryParameter(final String name, final X value) {
       assert (name != null);
+      assert (!name.equals(""));
       assert (value != null);
       this.queryParameters.add(new BasicNameValuePair(name, String.valueOf(value)));
       return (T) this;
@@ -232,18 +225,27 @@ public abstract class AbstractRequest implements IRequest {
 
     @SuppressWarnings("unchecked")
     public <X> T setHeader(final String name, final X value) {
+      assert (name != null);
+      assert (!name.equals(""));
+      assert (value != null);
       this.headers.add(new BasicHeader(name, String.valueOf(value)));
       return (T) this;
     }
 
     @SuppressWarnings("unchecked")
     public <X> T setFormParameter(final String name, final X value) {
+      assert (name != null);
+      assert (!name.equals(""));
+      assert (value != null);
       this.formParameters.add(new BasicNameValuePair(name, String.valueOf(value)));
       return (T) this;
     }
 
     @SuppressWarnings("unchecked")
     public <X> T setBodyParameter(final String name, final X value) {
+      assert (name != null);
+      assert (!name.equals(""));
+      assert (value != null);
       this.bodyParameters.add(new BasicNameValuePair(name, String.valueOf(value)));
       return (T) this;
     }

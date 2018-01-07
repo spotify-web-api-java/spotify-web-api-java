@@ -108,7 +108,7 @@ public class SpotifyHttpManager implements IHttpManager {
           IOException,
           SpotifyWebApiException {
     assert (uri != null);
-    assert (headers != null);
+    assert (!uri.toString().equals(""));
 
     final HttpGet httpGet = new HttpGet();
 
@@ -127,8 +127,7 @@ public class SpotifyHttpManager implements IHttpManager {
           IOException,
           SpotifyWebApiException {
     assert (uri != null);
-    assert (headers != null);
-    assert (postParameters != null);
+    assert (!uri.toString().equals(""));
 
     final HttpPost httpPost = new HttpPost();
 
@@ -148,8 +147,7 @@ public class SpotifyHttpManager implements IHttpManager {
           IOException,
           SpotifyWebApiException {
     assert (uri != null);
-    assert (headers != null);
-    assert (putParameters != null);
+    assert (!uri.toString().equals(""));
 
     final HttpPut httpPut = new HttpPut();
 
@@ -168,7 +166,7 @@ public class SpotifyHttpManager implements IHttpManager {
           IOException,
           SpotifyWebApiException {
     assert (uri != null);
-    assert (headers != null);
+    assert (!uri.toString().equals(""));
 
     final HttpDelete httpDelete = new HttpDelete();
 
