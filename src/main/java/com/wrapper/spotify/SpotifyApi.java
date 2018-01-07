@@ -912,40 +912,6 @@ public class SpotifyApi {
             .playlist_id(playlist_id);
   }
 
-//  public RemoveTracksFromPlaylistRequest.Builder removeTrackFromPlaylist(String userId, String playlistId, PlaylistTrackPosition[] playlistTrackPositions) {
-//    final RemoveTracksFromPlaylistRequest.Builder builder = new RemoveTracksFromPlaylistRequest.Builder(accessToken);
-//
-//    builder.setDefaults(httpManager, scheme, host, port);
-//
-//    JsonArray playlistTrackPositionJsonArray = new JsonArray();
-//
-//    for (PlaylistTrackPosition playlistTrackPosition : playlistTrackPositions) {
-//      JsonObject playlistTrackPositionJsonObject = new JsonObject();
-//
-//      playlistTrackPositionJsonObject.addProperty("uri", playlistTrackPosition.getUri());
-//
-//      if (playlistTrackPosition.getPositions() != null) {
-//        JsonArray positionArray = new JsonArray();
-//
-//        for (int position : playlistTrackPosition.getPositions()) {
-//          positionArray.add(position);
-//        }
-//
-//        playlistTrackPositionJsonObject.add("positions", positionArray);
-//      }
-//
-//      playlistTrackPositionJsonArray.add(playlistTrackPositionJsonObject);
-//    }
-//
-//    JsonObject tracks = new JsonObject();
-//    tracks.add("tracks", playlistTrackPositionJsonArray);
-//
-//    builder.setFormParameter("tracks", tracks.toString());
-//    builder.user_id(userId);
-//    builder.playlist_id(playlistId);
-//    return builder;
-//  }
-
   /**
    * delete tracks from a playlist
    *
