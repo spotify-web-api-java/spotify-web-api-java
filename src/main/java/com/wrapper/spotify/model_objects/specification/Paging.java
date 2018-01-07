@@ -133,7 +133,7 @@ public class Paging<T> extends AbstractModelObject {
      * @param items A page of items.
      * @return A {@link Paging.Builder}.
      */
-    public Builder<T> setItems(T... items) {
+    public Builder<T> setItems(T[] items) {
       this.items = items;
       return this;
     }

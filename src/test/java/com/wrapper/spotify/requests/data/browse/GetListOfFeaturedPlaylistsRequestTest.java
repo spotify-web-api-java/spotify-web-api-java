@@ -43,7 +43,7 @@ public class GetListOfFeaturedPlaylistsRequestTest {
 
     Paging<PlaylistSimplified> playlistPage = featuredPlaylists.getPlaylists();
 
-    assertEquals(23, (int) playlistPage.getTotal());
+    assertEquals(20, (int) playlistPage.getTotal());
     assertEquals(0, (int) playlistPage.getOffset());
     assertEquals(1, (int) playlistPage.getLimit());
     assertEquals("https://api.spotify.com/v1/browse/featured-playlists?timestamp=2017-12-03T01%3A40%3A49&offset=1&limit=1",
@@ -80,7 +80,7 @@ public class GetListOfFeaturedPlaylistsRequestTest {
 
     Paging<PlaylistSimplified> playlistPage = featuredPlaylists.getPlaylists();
 
-    assertEquals(23, (int) playlistPage.getTotal());
+    assertEquals(20, (int) playlistPage.getTotal());
     assertEquals(0, (int) playlistPage.getOffset());
     assertEquals(1, (int) playlistPage.getLimit());
     assertEquals("https://api.spotify.com/v1/browse/featured-playlists?timestamp=2017-12-03T01%3A40%3A49&offset=1&limit=1",

@@ -31,9 +31,7 @@ public interface IRequest {
           IOException,
           SpotifyWebApiException;
 
-  <T> Future<T> executeAsync() throws
-          IOException,
-          SpotifyWebApiException;
+  <T> Future<T> executeAsync();
 
   String getJson() throws
           IOException,

@@ -61,11 +61,10 @@ public class CurrentlyPlaying extends AbstractModelObject {
     if (this.getItem() == null || other.getItem() == null) {
       return false;
     }
-    if (this.getItem().getUri() == null || other.getItem().getUri() == null) {
-      return false;
-    }
 
-    return this.getItem().getUri().equals(other.getItem().getUri());
+    return this.getItem().getUri() != null
+            && other.getItem().getUri() != null
+            && this.getItem().getUri().equals(other.getItem().getUri());
   }
 
   public static final class Builder extends AbstractModelObject.Builder {

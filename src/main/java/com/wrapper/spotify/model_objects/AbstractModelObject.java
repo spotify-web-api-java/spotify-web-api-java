@@ -38,11 +38,7 @@ public abstract class AbstractModelObject implements IModelObject {
   public static abstract class JsonUtil<T> implements IModelObject.IJsonUtil<T> {
 
     public boolean hasAndNotNull(final JsonObject jsonObject, final String memberName) {
-      if (jsonObject.has(memberName) && !jsonObject.get(memberName).isJsonNull()) {
-        return true;
-      } else {
-        return false;
-      }
+      return jsonObject.has(memberName) && !jsonObject.get(memberName).isJsonNull();
     }
 
     public T createModelObject(final String json) {

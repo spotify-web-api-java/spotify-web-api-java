@@ -136,11 +136,11 @@ public abstract class AbstractRequest implements IRequest {
     private String host = SpotifyApi.DEFAULT_HOST;
     private Integer port = SpotifyApi.DEFAULT_PORT;
     private String path = null;
-    private List<NameValuePair> pathParameters = new ArrayList<>();
-    private List<NameValuePair> queryParameters = new ArrayList<>();
-    private List<Header> headers = new ArrayList<>();
-    private List<NameValuePair> formParameters = new ArrayList<>();
-    private List<NameValuePair> bodyParameters = new ArrayList<>();
+    private final List<NameValuePair> pathParameters = new ArrayList<>();
+    private final List<NameValuePair> queryParameters = new ArrayList<>();
+    private final List<Header> headers = new ArrayList<>();
+    private final List<NameValuePair> formParameters = new ArrayList<>();
+    private final List<NameValuePair> bodyParameters = new ArrayList<>();
     private String body = "";
 
     protected Builder() {

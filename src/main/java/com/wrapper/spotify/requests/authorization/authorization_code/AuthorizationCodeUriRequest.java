@@ -13,9 +13,7 @@ public class AuthorizationCodeUriRequest extends AbstractRequest {
     super(builder);
   }
 
-  public URI execute() throws
-          IOException,
-          SpotifyWebApiException {
+  public URI execute() {
     return this.getUri();
   }
 

@@ -65,27 +65,27 @@ public class GetPlaylistRequestTest {
 
   @Ignore
   @Test
-  public void shouldFailFutureIfPlaylistIsNotFound() throws Exception {
+  public void shouldFailFutureIfPlaylistIsNotFound() {
   }
 
   @Test
   @Ignore
-  public void shouldFailFutureIfNotAllowedAccess() throws Exception {
+  public void shouldFailFutureIfNotAllowedAccess() {
   }
 
   @Test
   @Ignore
-  public void shouldFailFutureIfUserDoesNotExist() throws Exception {
+  public void shouldFailFutureIfUserDoesNotExist() {
   }
 
   @Test
   @Ignore
-  public void shouldThrowExceptionIfPlaylistIsNotFound() throws Exception {
+  public void shouldThrowExceptionIfPlaylistIsNotFound() {
   }
 
   @Test
   @Ignore
-  public void shouldThrowExceptionIfNotAllowedAccess() throws Exception {
+  public void shouldThrowExceptionIfNotAllowedAccess() {
   }
 
 }

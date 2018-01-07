@@ -18,5 +18,5 @@ public interface ITest<T> {
 
   void shouldSucceed_async() throws ExecutionException, InterruptedException;
 
-  void shouldSucceed(final T type) throws IOException, SpotifyWebApiException;
+  void shouldSucceed(final T type);
 }

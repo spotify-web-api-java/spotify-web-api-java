@@ -13,7 +13,7 @@ import java.io.IOException;
 
 public class GetUsersTopArtistsAndTracksRequest<T extends IArtistTrackModelObject> extends AbstractDataRequest {
 
-  private AbstractModelObject.JsonUtil<T> tClass;
+  private final AbstractModelObject.JsonUtil<T> tClass;
 
   private GetUsersTopArtistsAndTracksRequest(final Builder builder, final AbstractModelObject.JsonUtil<T> tClass) {
     super(builder);

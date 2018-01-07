@@ -23,8 +23,8 @@ import static org.junit.Assert.assertEquals;
 
 public class ApiTest {
 
-  private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss");
-  private String accessToken = "AccessToken";
+  private final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss");
+  private final String accessToken = "AccessToken";
 
   private static JsonObject getJsonFromPlaylistTrackPosition(PlaylistTrackPosition playlistTrackPosition) {
     JsonObject jsonObject = new JsonObject();
@@ -383,7 +383,7 @@ public class ApiTest {
   }
 
   @Test
-  public void shouldCreateUrlForListingAUsersPlaylists() throws Exception {
+  public void shouldCreateUrlForListingAUsersPlaylists() {
     final SpotifyApi api = new SpotifyApi.Builder().setAccessToken(accessToken).build();
 
     final IRequest request = api

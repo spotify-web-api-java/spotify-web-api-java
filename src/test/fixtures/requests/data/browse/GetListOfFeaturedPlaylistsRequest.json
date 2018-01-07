@@ -34,7 +34,6 @@
           "href": "https://api.spotify.com/v1/users/spotify/playlists/37i9dQZF1DWStLt4f1zJ6I/tracks",
           "total": 99
         },
-        "snapshot_id": "1",
         "type": "playlist",
         "uri": "spotify:user:spotify:playlist:37i9dQZF1DWStLt4f1zJ6I"
       }
@@ -43,6 +42,6 @@
     "next": "https://api.spotify.com/v1/browse/featured-playlists?timestamp=2017-12-03T01%3A40%3A49&offset=1&limit=1",
     "offset": 0,
     "previous": null,
-    "total": 23
+    "total": 20
   }
 }
