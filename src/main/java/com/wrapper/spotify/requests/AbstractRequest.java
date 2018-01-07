@@ -129,7 +129,7 @@ public abstract class AbstractRequest implements IRequest {
     return body;
   }
 
-  public static abstract class Builder<BuilderType extends Builder<?>> implements IRequest.Builder {
+  public static abstract class Builder<T extends Builder<?>> implements IRequest.Builder {
 
     private IHttpManager httpManager = SpotifyApi.DEFAULT_HTTP_MANAGER;
     private String scheme = SpotifyApi.DEFAULT_SCHEME;
@@ -146,48 +146,48 @@ public abstract class AbstractRequest implements IRequest {
     protected Builder() {
     }
 
-    public BuilderType setHttpManager(final IHttpManager httpManager) {
+    public T setHttpManager(final IHttpManager httpManager) {
       assert (httpManager != null);
       this.httpManager = httpManager;
-      return (BuilderType) this;
+      return (T) this;
     }
 
-    public BuilderType setScheme(final String scheme) {
+    public T setScheme(final String scheme) {
       assert (scheme != null);
       assert (!scheme.equals(""));
       this.scheme = scheme;
-      return (BuilderType) this;
+      return (T) this;
     }
 
-    public BuilderType setHost(final String host) {
+    public T setHost(final String host) {
       assert (host != null);
       assert (!scheme.equals(""));
       this.host = host;
-      return (BuilderType) this;
+      return (T) this;
     }
 
-    public BuilderType setPort(final Integer port) {
+    public T setPort(final Integer port) {
       assert (port != null);
       assert (port >= 0);
       this.port = port;
-      return (BuilderType) this;
+      return (T) this;
     }
 
-    public BuilderType setPath(final String path) {
+    public T setPath(final String path) {
       assert (path != null);
       assert (!path.equals(""));
 
       String builtPath = path;
 
       for (NameValuePair nameValuePair : pathParameters) {
-        builtPath = builtPath.replaceAll("\\{" + nameValuePair.getName() + "\\}", nameValuePair.getValue());
+        builtPath = builtPath.replaceAll("\\{" + nameValuePair.getName() + "}", nameValuePair.getValue());
       }
 
       this.path = builtPath;
-      return (BuilderType) this;
+      return (T) this;
     }
 
-    public BuilderType setPathParameter(final String name, final String value) {
+    public T setPathParameter(final String name, final String value) {
       assert (name != null && value != null);
       assert (!name.equals("") && !value.equals(""));
 
@@ -200,46 +200,46 @@ public abstract class AbstractRequest implements IRequest {
       }
 
       this.pathParameters.add(new BasicNameValuePair(name, encodedValue));
-      return (BuilderType) this;
+      return (T) this;
     }
 
-    public BuilderType setDefaults(final IHttpManager httpManager,
-                                   final String scheme,
-                                   final String host,
-                                   final Integer port) {
+    public T setDefaults(final IHttpManager httpManager,
+                         final String scheme,
+                         final String host,
+                         final Integer port) {
       setHttpManager(httpManager);
       setScheme(scheme);
       setHost(host);
       setPort(port);
 
-      return (BuilderType) this;
+      return (T) this;
     }
 
-    public <T> BuilderType setQueryParameter(final String name, final T value) {
+    public <X> T setQueryParameter(final String name, final X value) {
       assert (name != null);
       assert (value != null);
       this.queryParameters.add(new BasicNameValuePair(name, String.valueOf(value)));
-      return (BuilderType) this;
+      return (T) this;
     }
 
-    public <T> BuilderType setHeader(final String name, final T value) {
+    public <X> T setHeader(final String name, final X value) {
       this.headers.add(new BasicHeader(name, String.valueOf(value)));
-      return (BuilderType) this;
+      return (T) this;
     }
 
-    public <T> BuilderType setFormParameter(final String name, final T value) {
+    public <X> T setFormParameter(final String name, final X value) {
       this.formParameters.add(new BasicNameValuePair(name, String.valueOf(value)));
-      return (BuilderType) this;
+      return (T) this;
     }
 
-    public <T> BuilderType setBodyParameter(final String name, final T value) {
+    public <X> T setBodyParameter(final String name, final X value) {
       this.bodyParameters.add(new BasicNameValuePair(name, String.valueOf(value)));
-      return (BuilderType) this;
+      return (T) this;
     }
 
-    public BuilderType setBody(final String value) {
+    public T setBody(final String value) {
       this.body = value;
-      return (BuilderType) this;
+      return (T) this;
     }
   }
 }
