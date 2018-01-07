@@ -494,8 +494,12 @@ public class ApiTest {
     final String track1Uri = "spotify:track:4BYGxv4rxSNcTgT3DsFB9o";
     final String track2Uri = "spotify:track:0BG2iE6McPhmAEKIhfqy1X";
     final int track2Position = 5;
-    PlaylistTrackPosition playlistTrackPosition1 = new PlaylistTrackPosition(track1Uri);
-    PlaylistTrackPosition playlistTrackPosition2 = new PlaylistTrackPosition(track2Uri, new int[]{track2Position});
+    PlaylistTrackPosition playlistTrackPosition1 = new PlaylistTrackPosition.Builder()
+            .setUri(track1Uri)
+            .build();
+    PlaylistTrackPosition playlistTrackPosition2 = new PlaylistTrackPosition.Builder()
+            .setUri(track2Uri)
+            .setPositions(new int[]{track2Position}).build();
     final PlaylistTrackPosition[] playlistTrackPositions = {playlistTrackPosition1, playlistTrackPosition2};
     final JsonArray tracksToRemove = new JsonParser().parse(new Gson().toJson(new ArrayList<>(Arrays.asList(playlistTrackPositions)))).getAsJsonArray();
 

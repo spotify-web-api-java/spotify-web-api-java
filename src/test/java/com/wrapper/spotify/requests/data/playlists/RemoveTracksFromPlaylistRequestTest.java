@@ -19,15 +19,17 @@ import static org.junit.Assert.assertEquals;
 public class RemoveTracksFromPlaylistRequestTest {
   @Test
   public void shouldAddTracksToPlaylist_async() throws Exception {
-    final String accessToken = "someAccessToken";
-
     final SpotifyApi api = new SpotifyApi.Builder().setAccessToken("AccessToken").build();
 
     final String myUsername = "thelinmichael";
     final String myPlaylistId = "5ieJqeLJjjI8iJWaxeBLuK";
     final String snapshotId = "JbtmHBDBAYu3/bt8BOXKjzKx3i0b6LCa/wVjyl6qQ2Yf6nFXkbmzuEa+ZI/U1yF+";
-    PlaylistTrackPosition playlistTrackPosition1 = new PlaylistTrackPosition("spotify:track:4BYGxv4rxSNcTgT3DsFB9o");
-    PlaylistTrackPosition playlistTrackPosition2 = new PlaylistTrackPosition("spotify:track:0BG2iE6McPhmAEKIhfqy1X", new int[]{5});
+    PlaylistTrackPosition playlistTrackPosition1 = new PlaylistTrackPosition.Builder()
+            .setUri("spotify:track:4BYGxv4rxSNcTgT3DsFB9o")
+            .build();
+    PlaylistTrackPosition playlistTrackPosition2 = new PlaylistTrackPosition.Builder()
+            .setUri("spotify:track:0BG2iE6McPhmAEKIhfqy1X").setPositions(new int[]{5,3})
+            .build();
     final PlaylistTrackPosition[] playlistTrackPositions = {playlistTrackPosition1, playlistTrackPosition2};
     final JsonArray tracksToRemove = new JsonParser().parse(new Gson().toJson(new ArrayList<>(Arrays.asList(playlistTrackPositions)))).getAsJsonArray();
 
@@ -44,15 +46,17 @@ public class RemoveTracksFromPlaylistRequestTest {
 
   @Test
   public void shouldAddTracksToPlaylist_sync() throws Exception {
-    final String accessToken = "someAccessToken";
-
     final SpotifyApi api = new SpotifyApi.Builder().setAccessToken("AccessToken").build();
 
     final String myUsername = "thelinmichael";
     final String myPlaylistId = "5ieJqeLJjjI8iJWaxeBLuK";
     final String snapshotId = "JbtmHBDBAYu3/bt8BOXKjzKx3i0b6LCa/wVjyl6qQ2Yf6nFXkbmzuEa+ZI/U1yF+";
-    PlaylistTrackPosition playlistTrackPosition1 = new PlaylistTrackPosition("spotify:track:4BYGxv4rxSNcTgT3DsFB9o");
-    PlaylistTrackPosition playlistTrackPosition2 = new PlaylistTrackPosition("spotify:track:0BG2iE6McPhmAEKIhfqy1X", new int[]{5});
+    PlaylistTrackPosition playlistTrackPosition1 = new PlaylistTrackPosition.Builder()
+            .setUri("spotify:track:4BYGxv4rxSNcTgT3DsFB9o")
+            .build();
+    PlaylistTrackPosition playlistTrackPosition2 = new PlaylistTrackPosition.Builder()
+            .setUri("spotify:track:0BG2iE6McPhmAEKIhfqy1X").setPositions(new int[]{5,3})
+            .build();
     final PlaylistTrackPosition[] playlistTrackPositions = {playlistTrackPosition1, playlistTrackPosition2};
     final JsonArray tracksToRemove = new JsonParser().parse(new Gson().toJson(new ArrayList<>(Arrays.asList(playlistTrackPositions)))).getAsJsonArray();
 
