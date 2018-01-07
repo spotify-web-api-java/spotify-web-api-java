@@ -15,7 +15,7 @@ public class PlayHistory extends AbstractModelObject {
   private final Date playedAt;
   private final Context context;
 
-  private PlayHistory(final PlayHistory.Builder builder) {
+  private PlayHistory(final Builder builder) {
     super(builder);
 
     this.track = builder.track;

@@ -10,7 +10,7 @@ public class PlaylistTracksInformation extends AbstractModelObject {
   private final String href;
   private final Integer total;
 
-  private PlaylistTracksInformation(final PlaylistTracksInformation.Builder builder) {
+  private PlaylistTracksInformation(final Builder builder) {
     super(builder);
 
     this.href = builder.href;

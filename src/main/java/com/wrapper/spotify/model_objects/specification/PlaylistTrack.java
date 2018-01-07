@@ -15,7 +15,7 @@ public class PlaylistTrack extends AbstractModelObject {
   private final Boolean isLocal;
   private final Track track;
 
-  private PlaylistTrack(final PlaylistTrack.Builder builder) {
+  private PlaylistTrack(final Builder builder) {
     super(builder);
 
     this.addedAt = builder.addedAt;

@@ -12,7 +12,7 @@ public class RecommendationsSeed extends AbstractModelObject {
   private final Integer initialPoolSize;
   private final ModelObjectType type;
 
-  private RecommendationsSeed(final RecommendationsSeed.Builder builder) {
+  private RecommendationsSeed(final Builder builder) {
     super(builder);
 
     this.afterFilteringSize = builder.afterFilteringSize;

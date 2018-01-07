@@ -33,7 +33,7 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
   private final ModelObjectType type;
   private final String uri;
 
-  private Track(final Track.Builder builder) {
+  private Track(final Builder builder) {
     super(builder);
 
     this.album = builder.album;

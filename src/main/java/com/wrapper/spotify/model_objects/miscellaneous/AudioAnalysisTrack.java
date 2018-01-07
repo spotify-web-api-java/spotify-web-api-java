@@ -31,7 +31,7 @@ public class AudioAnalysisTrack extends AbstractModelObject {
   private final String rythmString;
   private final Float rythmVersion;
 
-  private AudioAnalysisTrack(final AudioAnalysisTrack.Builder builder) {
+  private AudioAnalysisTrack(final Builder builder) {
     super(builder);
     this.numSamples = builder.numSamples;
     this.duration = builder.duration;

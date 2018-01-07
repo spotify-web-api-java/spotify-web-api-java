@@ -13,7 +13,7 @@ public class SavedTrack extends AbstractModelObject {
   private final Date addedAt;
   private final Track track;
 
-  private SavedTrack(final SavedTrack.Builder builder) {
+  private SavedTrack(final Builder builder) {
     super(builder);
 
     this.addedAt = builder.addedAt;

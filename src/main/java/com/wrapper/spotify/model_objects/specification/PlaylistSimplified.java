@@ -23,7 +23,7 @@ public class PlaylistSimplified extends AbstractModelObject implements ISearchMo
   private final ModelObjectType type;
   private final String uri;
 
-  private PlaylistSimplified(final PlaylistSimplified.Builder builder) {
+  private PlaylistSimplified(final Builder builder) {
     super(builder);
 
     this.collaborative = builder.collaborative;

@@ -17,7 +17,7 @@ public class Context extends AbstractModelObject {
   private final ExternalUrl externalUrls;
   private final String uri;
 
-  private Context(final Context.Builder builder) {
+  private Context(final Builder builder) {
     super(builder);
 
     this.type = builder.type;

@@ -32,7 +32,7 @@ public class Album extends AbstractModelObject {
   private final ModelObjectType type;
   private final String uri;
 
-  private Album(final Album.Builder builder) {
+  private Album(final Builder builder) {
     super(builder);
 
     this.albumType = builder.albumType;

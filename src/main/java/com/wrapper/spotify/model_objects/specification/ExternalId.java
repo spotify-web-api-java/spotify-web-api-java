@@ -14,7 +14,7 @@ import java.util.Map;
 public class ExternalId extends AbstractModelObject {
   private final Map<String, String> externalIds;
 
-  private ExternalId(final ExternalId.Builder builder) {
+  private ExternalId(final Builder builder) {
     super(builder);
 
     this.externalIds = builder.externalIds;

@@ -23,7 +23,7 @@ public class User extends AbstractModelObject {
   private final ModelObjectType type;
   private final String uri;
 
-  private User(final User.Builder builder) {
+  private User(final Builder builder) {
     super(builder);
 
     this.birthdate = builder.birthdate;

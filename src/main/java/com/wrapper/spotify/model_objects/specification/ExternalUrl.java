@@ -14,7 +14,7 @@ import java.util.Map;
 public class ExternalUrl extends AbstractModelObject {
   private final Map<String, String> externalUrls;
 
-  private ExternalUrl(final ExternalUrl.Builder builder) {
+  private ExternalUrl(final Builder builder) {
     super(builder);
 
     this.externalUrls = builder.externalUrls;

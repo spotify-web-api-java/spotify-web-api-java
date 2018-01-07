@@ -6,7 +6,7 @@ import com.wrapper.spotify.model_objects.AbstractModelObject;
 public class SnapshotResult extends AbstractModelObject {
   public final String snapshotId;
 
-  private SnapshotResult(final SnapshotResult.Builder builder) {
+  private SnapshotResult(final Builder builder) {
     super(builder);
 
     this.snapshotId = builder.snapshotId;

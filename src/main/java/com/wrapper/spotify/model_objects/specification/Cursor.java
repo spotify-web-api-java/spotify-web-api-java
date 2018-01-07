@@ -11,7 +11,7 @@ import com.wrapper.spotify.model_objects.AbstractModelObject;
 public class Cursor extends AbstractModelObject {
   private final String after;
 
-  private Cursor(final Cursor.Builder builder) {
+  private Cursor(final Builder builder) {
     super(builder);
 
     this.after = builder.after;

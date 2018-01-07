@@ -12,7 +12,7 @@ public class AudioAnalysis extends AbstractModelObject {
   private final AudioAnalysisMeasure[] tatums;
   private final AudioAnalysisTrack track;
 
-  private AudioAnalysis(final AudioAnalysis.Builder builder) {
+  private AudioAnalysis(final Builder builder) {
     super(builder);
 
     this.bars = builder.bars;

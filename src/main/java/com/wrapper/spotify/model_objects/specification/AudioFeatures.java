@@ -29,7 +29,7 @@ public class AudioFeatures extends AbstractModelObject {
   private final String uri;
   private final double valence;
 
-  private AudioFeatures(final AudioFeatures.Builder builder) {
+  private AudioFeatures(final Builder builder) {
     super(builder);
 
     this.acousticness = builder.acousticness;

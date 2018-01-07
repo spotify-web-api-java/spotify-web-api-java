@@ -12,7 +12,7 @@ public class Followers extends AbstractModelObject {
   private final String href;
   private final Integer total;
 
-  private Followers(final Followers.Builder builder) {
+  private Followers(final Builder builder) {
     super(builder);
 
     this.href = builder.href;

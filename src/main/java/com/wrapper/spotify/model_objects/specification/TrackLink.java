@@ -16,7 +16,7 @@ public class TrackLink extends AbstractModelObject {
   private final ModelObjectType type;
   private final String uri;
 
-  private TrackLink(final TrackLink.Builder builder) {
+  private TrackLink(final Builder builder) {
     super(builder);
 
     this.externalUrls = builder.externalUrls;

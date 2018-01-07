@@ -6,7 +6,7 @@ import com.wrapper.spotify.model_objects.AbstractModelObject;
 public class Restrictions extends AbstractModelObject {
   private final String reason;
 
-  private Restrictions(final Restrictions.Builder builder) {
+  private Restrictions(final Builder builder) {
     super(builder);
 
     this.reason = builder.reason;

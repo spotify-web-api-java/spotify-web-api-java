@@ -13,7 +13,7 @@ public class Category extends AbstractModelObject {
   private final String id;
   private final String name;
 
-  private Category(final Category.Builder builder) {
+  private Category(final Builder builder) {
     super(builder);
 
     this.href = builder.href;

@@ -8,7 +8,7 @@ public class AudioAnalysisMeasure extends AbstractModelObject {
   private final Float duration;
   private final Float start;
 
-  private AudioAnalysisMeasure(final AudioAnalysisMeasure.Builder builder) {
+  private AudioAnalysisMeasure(final Builder builder) {
     super(builder);
 
     this.confidence = builder.confidence;

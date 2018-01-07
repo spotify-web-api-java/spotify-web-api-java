@@ -23,7 +23,7 @@ public class Artist extends AbstractModelObject implements IArtistTrackModelObje
   private final ModelObjectType type;
   private final String uri;
 
-  private Artist(final Artist.Builder builder) {
+  private Artist(final Builder builder) {
     super(builder);
 
     this.externalUrls = builder.externalUrls;

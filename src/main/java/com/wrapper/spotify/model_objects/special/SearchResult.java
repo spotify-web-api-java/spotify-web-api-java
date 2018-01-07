@@ -12,7 +12,7 @@ public class SearchResult extends AbstractModelObject implements IArtistTrackMod
   private final Paging<PlaylistSimplified> playlists;
   private final Paging<Track> tracks;
 
-  private SearchResult(final SearchResult.Builder builder) {
+  private SearchResult(final Builder builder) {
     super(builder);
 
     this.albums = builder.albums;

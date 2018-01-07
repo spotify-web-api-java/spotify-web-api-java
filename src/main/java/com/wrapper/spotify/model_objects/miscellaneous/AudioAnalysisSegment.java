@@ -13,7 +13,7 @@ public class AudioAnalysisSegment extends AbstractModelObject {
   private final float[] pitches;
   private final float[] timbre;
 
-  private AudioAnalysisSegment(final AudioAnalysisSegment.Builder builder) {
+  private AudioAnalysisSegment(final Builder builder) {
     super(builder);
 
     this.measure = builder.measure;

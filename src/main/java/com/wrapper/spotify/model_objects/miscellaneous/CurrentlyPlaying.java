@@ -12,7 +12,7 @@ public class CurrentlyPlaying extends AbstractModelObject {
   private final Boolean is_playing;
   private final Track item;
 
-  private CurrentlyPlaying(final CurrentlyPlaying.Builder builder) {
+  private CurrentlyPlaying(final Builder builder) {
     super(builder);
 
     this.context = builder.context;

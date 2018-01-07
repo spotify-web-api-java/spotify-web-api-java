@@ -12,7 +12,7 @@ public class AudioAnalysisMeta extends AbstractModelObject {
   private final Float analysisTime;
   private final String inputProcess;
 
-  private AudioAnalysisMeta(final AudioAnalysisMeta.Builder builder) {
+  private AudioAnalysisMeta(final Builder builder) {
     super(builder);
 
     this.analyzerVersion = builder.analyzerVersion;

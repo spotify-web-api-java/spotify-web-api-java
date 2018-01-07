@@ -13,7 +13,7 @@ public class AuthorizationCodeCredentials extends AbstractModelObject {
   private final Integer expiresIn;
   private final String refreshToken;
 
-  private AuthorizationCodeCredentials(final AuthorizationCodeCredentials.Builder builder) {
+  private AuthorizationCodeCredentials(final Builder builder) {
     super(builder);
 
     this.accessToken = builder.accessToken;

@@ -24,7 +24,7 @@ public class Playlist extends AbstractModelObject {
   private final ModelObjectType type;
   private final String uri;
 
-  private Playlist(final Playlist.Builder builder) {
+  private Playlist(final Builder builder) {
     super(builder);
 
     this.collaborative = builder.collaborative;

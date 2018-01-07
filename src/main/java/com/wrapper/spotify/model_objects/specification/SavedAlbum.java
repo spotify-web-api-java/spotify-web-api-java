@@ -13,7 +13,7 @@ public class SavedAlbum extends AbstractModelObject {
   private final Date addedAt;
   private final Album album;
 
-  private SavedAlbum(final SavedAlbum.Builder builder) {
+  private SavedAlbum(final Builder builder) {
     super(builder);
 
     this.addedAt = builder.addedAt;

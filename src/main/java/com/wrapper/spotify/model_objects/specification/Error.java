@@ -11,7 +11,7 @@ public class Error extends AbstractModelObject {
   private final Integer status;
   private final String message;
 
-  private Error(final Error.Builder builder) {
+  private Error(final Builder builder) {
     super(builder);
 
     this.status = builder.status;

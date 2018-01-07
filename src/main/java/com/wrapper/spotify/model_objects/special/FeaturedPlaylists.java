@@ -12,7 +12,7 @@ public class FeaturedPlaylists extends AbstractModelObject {
   private final String message;
   private final Paging<PlaylistSimplified> playlists;
 
-  private FeaturedPlaylists(final FeaturedPlaylists.Builder builder) {
+  private FeaturedPlaylists(final Builder builder) {
     super(builder);
 
     this.message = builder.message;

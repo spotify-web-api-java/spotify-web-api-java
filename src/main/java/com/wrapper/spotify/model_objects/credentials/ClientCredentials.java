@@ -11,7 +11,7 @@ public class ClientCredentials extends AbstractModelObject {
   private final String tokenType;
   private final Integer expiresIn;
 
-  private ClientCredentials(final ClientCredentials.Builder builder) {
+  private ClientCredentials(final Builder builder) {
     super(builder);
 
     this.accessToken = builder.accessToken;

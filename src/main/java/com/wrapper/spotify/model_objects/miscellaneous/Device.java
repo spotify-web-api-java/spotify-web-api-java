@@ -11,7 +11,7 @@ public class Device extends AbstractModelObject {
   private final String type;
   private final Integer volume_percent;
 
-  private Device(final Device.Builder builder) {
+  private Device(final Builder builder) {
     super(builder);
 
     this.id = builder.id;

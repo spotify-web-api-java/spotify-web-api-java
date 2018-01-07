@@ -13,7 +13,7 @@ public class Image extends AbstractModelObject {
   private final String url;
   private final Integer width;
 
-  private Image(final Image.Builder builder) {
+  private Image(final Builder builder) {
     super(builder);
 
     this.height = builder.height;

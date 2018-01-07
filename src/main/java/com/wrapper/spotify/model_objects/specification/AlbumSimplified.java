@@ -24,7 +24,7 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
   private final ModelObjectType type;
   private final String uri;
 
-  private AlbumSimplified(final AlbumSimplified.Builder builder) {
+  private AlbumSimplified(final Builder builder) {
     super(builder);
 
     this.albumType = builder.albumType;

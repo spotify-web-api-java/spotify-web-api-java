@@ -7,7 +7,7 @@ public class Recommendations extends AbstractModelObject {
   private final RecommendationsSeed[] seeds;
   private final TrackSimplified[] tracks;
 
-  private Recommendations(final Recommendations.Builder builder) {
+  private Recommendations(final Builder builder) {
     super(builder);
 
     this.seeds = builder.seeds;

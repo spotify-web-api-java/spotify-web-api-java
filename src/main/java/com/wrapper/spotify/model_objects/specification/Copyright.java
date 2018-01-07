@@ -13,7 +13,7 @@ public class Copyright extends AbstractModelObject {
   private final String text;
   private final CopyrightType type;
 
-  private Copyright(final Copyright.Builder builder) {
+  private Copyright(final Builder builder) {
     super(builder);
 
     this.text = builder.text;

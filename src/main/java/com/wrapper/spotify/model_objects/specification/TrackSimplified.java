@@ -26,7 +26,7 @@ public class TrackSimplified extends AbstractModelObject {
   private final ModelObjectType type;
   private final String uri;
 
-  private TrackSimplified(final TrackSimplified.Builder builder) {
+  private TrackSimplified(final Builder builder) {
     super(builder);
 
     this.artists = builder.artists;

@@ -16,7 +16,7 @@ public class ArtistSimplified extends AbstractModelObject {
   private final ModelObjectType type;
   private final String uri;
 
-  private ArtistSimplified(final ArtistSimplified.Builder builder) {
+  private ArtistSimplified(final Builder builder) {
     super(builder);
 
     this.externalUrls = builder.externalUrls;

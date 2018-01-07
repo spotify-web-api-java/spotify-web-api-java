@@ -15,7 +15,7 @@ public class AudioAnalysisSection extends AbstractModelObject {
   private final Integer timeSignature;
   private final Float timeSignatureConfidence;
 
-  private AudioAnalysisSection(final AudioAnalysisSection.Builder builder) {
+  private AudioAnalysisSection(final Builder builder) {
     super(builder);
 
     this.measure = builder.measure;

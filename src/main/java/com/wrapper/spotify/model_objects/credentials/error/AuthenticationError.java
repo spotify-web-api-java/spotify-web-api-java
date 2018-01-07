@@ -7,7 +7,7 @@ public class AuthenticationError extends AbstractModelObject {
   private final String error;
   private final String error_description;
 
-  private AuthenticationError(final AuthenticationError.Builder builder) {
+  private AuthenticationError(final Builder builder) {
     super(builder);
 
     this.error = builder.error;

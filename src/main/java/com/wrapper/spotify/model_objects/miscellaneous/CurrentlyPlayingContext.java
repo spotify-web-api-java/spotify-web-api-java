@@ -15,7 +15,7 @@ public class CurrentlyPlayingContext extends AbstractModelObject {
   private final Boolean is_playing;
   private final Track item;
 
-  private CurrentlyPlayingContext(final CurrentlyPlayingContext.Builder builder) {
+  private CurrentlyPlayingContext(final Builder builder) {
     super(builder);
 
     this.device = builder.device;
