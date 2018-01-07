@@ -11,6 +11,7 @@ public class FollowPlaylistRequest extends AbstractDataRequest {
     super(builder);
   }
 
+  @SuppressWarnings("unchecked")
   public String execute() throws
           IOException,
           SpotifyWebApiException {

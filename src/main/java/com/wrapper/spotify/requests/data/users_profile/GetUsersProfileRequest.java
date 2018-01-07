@@ -12,6 +12,7 @@ public class GetUsersProfileRequest extends AbstractDataRequest {
     super(builder);
   }
 
+  @SuppressWarnings("unchecked")
   public User execute() throws
           IOException,
           SpotifyWebApiException {

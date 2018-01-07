@@ -13,6 +13,7 @@ public class GetUsersCurrentlyPlayingTrackRequest extends AbstractDataRequest {
     super(builder);
   }
 
+  @SuppressWarnings("unchecked")
   public CurrentlyPlaying execute() throws
           IOException,
           SpotifyWebApiException {

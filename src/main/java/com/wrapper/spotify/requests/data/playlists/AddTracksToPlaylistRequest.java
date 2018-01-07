@@ -13,6 +13,7 @@ public class AddTracksToPlaylistRequest extends AbstractDataRequest {
     super(builder);
   }
 
+  @SuppressWarnings("unchecked")
   public SnapshotResult execute() throws
           IOException,
           SpotifyWebApiException {

@@ -14,6 +14,7 @@ public class GetCategorysPlaylistsRequest extends AbstractDataRequest {
     super(builder);
   }
 
+  @SuppressWarnings("unchecked")
   public Paging<PlaylistSimplified> execute() throws
           IOException,
           SpotifyWebApiException {

@@ -13,6 +13,7 @@ public class GetTrackRequest extends AbstractDataRequest {
     super(builder);
   }
 
+  @SuppressWarnings("unchecked")
   public Track execute() throws
           IOException,
           SpotifyWebApiException {

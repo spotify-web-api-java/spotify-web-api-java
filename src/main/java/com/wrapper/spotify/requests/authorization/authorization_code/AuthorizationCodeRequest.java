@@ -13,6 +13,7 @@ public class AuthorizationCodeRequest extends AbstractAthorizationRequest {
     super(builder);
   }
 
+  @SuppressWarnings("unchecked")
   public AuthorizationCodeCredentials execute() throws
           IOException,
           SpotifyWebApiException {

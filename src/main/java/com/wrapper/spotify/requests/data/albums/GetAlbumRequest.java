@@ -28,6 +28,7 @@ public class GetAlbumRequest extends AbstractDataRequest {
    * @throws IOException            In case of networking issues.
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
    */
+  @SuppressWarnings("unchecked")
   public Album execute() throws
           IOException,
           SpotifyWebApiException {

@@ -91,6 +91,7 @@ public abstract class AbstractModelObject implements IModelObject {
      * @param <X>       The model object type of the array and type token.
      * @return A model object array.
      */
+    @SuppressWarnings("unchecked")
     public <X> X[] createModelObjectArray(final JsonArray jsonArray, Class<X> clazz) {
       @SuppressWarnings("unchecked")
       X[] array = (X[]) Array.newInstance(clazz, jsonArray.size());

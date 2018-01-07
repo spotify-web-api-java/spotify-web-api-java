@@ -58,13 +58,12 @@ public class CurrentlyPlaying extends AbstractModelObject {
 
     CurrentlyPlaying other = (CurrentlyPlaying) obj;
 
-    if (this.getItem() == null || other.getItem() == null) {
-      return false;
-    }
-
-    return this.getItem().getUri() != null
+    return this.getItem() != null
+            && other.getItem() != null
+            && this.getItem().getUri() != null
             && other.getItem().getUri() != null
             && this.getItem().getUri().equals(other.getItem().getUri());
+
   }
 
   public static final class Builder extends AbstractModelObject.Builder {

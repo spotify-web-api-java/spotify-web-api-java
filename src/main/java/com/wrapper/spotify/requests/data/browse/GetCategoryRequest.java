@@ -14,6 +14,7 @@ public class GetCategoryRequest extends AbstractDataRequest {
     super(builder);
   }
 
+  @SuppressWarnings("unchecked")
   public Category execute() throws
           IOException,
           SpotifyWebApiException {

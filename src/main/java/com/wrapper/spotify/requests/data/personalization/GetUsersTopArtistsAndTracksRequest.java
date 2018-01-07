@@ -20,6 +20,7 @@ public class GetUsersTopArtistsAndTracksRequest<T extends IArtistTrackModelObjec
     this.tClass = tClass;
   }
 
+  @SuppressWarnings("unchecked")
   public Paging<T> execute() throws
           IOException,
           SpotifyWebApiException {
@@ -34,6 +35,7 @@ public class GetUsersTopArtistsAndTracksRequest<T extends IArtistTrackModelObjec
       super(accessToken);
     }
 
+    @SuppressWarnings("unchecked")
     public Builder type(final ModelObjectType type) {
       assert (type != null);
       assert (type.getType().equals("artists") || type.getType().equals("tracks"));

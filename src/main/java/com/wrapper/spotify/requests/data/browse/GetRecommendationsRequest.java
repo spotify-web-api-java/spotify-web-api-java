@@ -13,6 +13,7 @@ public class GetRecommendationsRequest extends AbstractDataRequest {
     super(builder);
   }
 
+  @SuppressWarnings("unchecked")
   public Recommendations execute() throws
           IOException,
           SpotifyWebApiException {

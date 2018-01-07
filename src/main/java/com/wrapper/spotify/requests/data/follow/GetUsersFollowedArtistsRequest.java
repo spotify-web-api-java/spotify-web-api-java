@@ -14,6 +14,7 @@ public class GetUsersFollowedArtistsRequest extends AbstractDataRequest {
     super(builder);
   }
 
+  @SuppressWarnings("unchecked")
   public PagingCursorbased<Artist> execute() throws
           IOException,
           SpotifyWebApiException {

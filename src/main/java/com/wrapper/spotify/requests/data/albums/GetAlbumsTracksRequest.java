@@ -18,6 +18,7 @@ public class GetAlbumsTracksRequest extends AbstractDataRequest {
     super(builder);
   }
 
+  @SuppressWarnings("unchecked")
   public Paging<TrackSimplified> execute() throws
           IOException,
           SpotifyWebApiException {

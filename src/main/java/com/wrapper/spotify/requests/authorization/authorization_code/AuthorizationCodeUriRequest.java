@@ -1,10 +1,8 @@
 package com.wrapper.spotify.requests.authorization.authorization_code;
 
 import com.wrapper.spotify.SpotifyApi;
-import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.requests.AbstractRequest;
 
-import java.io.IOException;
 import java.net.URI;
 
 public class AuthorizationCodeUriRequest extends AbstractRequest {
@@ -13,6 +11,7 @@ public class AuthorizationCodeUriRequest extends AbstractRequest {
     super(builder);
   }
 
+  @SuppressWarnings("unchecked")
   public URI execute() {
     return this.getUri();
   }

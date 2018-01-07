@@ -11,6 +11,7 @@ public class SeekToPositionInCurrentlyPlayingTrackRequest extends AbstractDataRe
     super(builder);
   }
 
+  @SuppressWarnings("unchecked")
   public String execute() throws
           IOException,
           SpotifyWebApiException {

@@ -12,6 +12,7 @@ public class GetAudioFeaturesForTrackRequest extends AbstractDataRequest {
     super(builder);
   }
 
+  @SuppressWarnings("unchecked")
   public AudioFeatures execute() throws
           IOException,
           SpotifyWebApiException {

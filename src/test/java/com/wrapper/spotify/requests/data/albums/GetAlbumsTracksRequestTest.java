@@ -33,6 +33,7 @@ public class GetAlbumsTracksRequestTest implements ITest<Paging<TrackSimplified>
     shouldSucceed(successRequest.execute());
   }
 
+  @SuppressWarnings("unchecked")
   @Test
   public void shouldSucceed_async() throws ExecutionException, InterruptedException {
     shouldSucceed((Paging<TrackSimplified>) successRequest.executeAsync().get());

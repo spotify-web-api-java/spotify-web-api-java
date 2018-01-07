@@ -2,10 +2,8 @@ package com.wrapper.spotify.requests.authorization.authorization_code;
 
 import com.wrapper.spotify.ITest;
 import com.wrapper.spotify.TestUtil;
-import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import org.junit.Test;
 
-import java.io.IOException;
 import java.net.URI;
 import java.util.concurrent.ExecutionException;
 
@@ -23,7 +21,7 @@ public class AuthorizationCodeUriRequestTest implements ITest<URI> {
   }
 
   @Test
-  public void shouldSucceed_sync() throws IOException, SpotifyWebApiException {
+  public void shouldSucceed_sync() {
     shouldSucceed(successRequest.execute());
   }
 

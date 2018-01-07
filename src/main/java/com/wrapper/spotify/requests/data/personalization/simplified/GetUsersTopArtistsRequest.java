@@ -13,6 +13,7 @@ public class GetUsersTopArtistsRequest extends AbstractDataRequest {
     super(builder);
   }
 
+  @SuppressWarnings("unchecked")
   public Paging<Artist> execute() throws
           IOException,
           SpotifyWebApiException {

@@ -131,27 +131,29 @@ public abstract class AbstractRequest implements IRequest {
 
   public static abstract class Builder<T extends Builder<?>> implements IRequest.Builder {
 
-    private IHttpManager httpManager = SpotifyApi.DEFAULT_HTTP_MANAGER;
-    private String scheme = SpotifyApi.DEFAULT_SCHEME;
-    private String host = SpotifyApi.DEFAULT_HOST;
-    private Integer port = SpotifyApi.DEFAULT_PORT;
-    private String path = null;
     private final List<NameValuePair> pathParameters = new ArrayList<>();
     private final List<NameValuePair> queryParameters = new ArrayList<>();
     private final List<Header> headers = new ArrayList<>();
     private final List<NameValuePair> formParameters = new ArrayList<>();
     private final List<NameValuePair> bodyParameters = new ArrayList<>();
+    private IHttpManager httpManager = SpotifyApi.DEFAULT_HTTP_MANAGER;
+    private String scheme = SpotifyApi.DEFAULT_SCHEME;
+    private String host = SpotifyApi.DEFAULT_HOST;
+    private Integer port = SpotifyApi.DEFAULT_PORT;
+    private String path = null;
     private String body = "";
 
     protected Builder() {
     }
 
+    @SuppressWarnings("unchecked")
     public T setHttpManager(final IHttpManager httpManager) {
       assert (httpManager != null);
       this.httpManager = httpManager;
       return (T) this;
     }
 
+    @SuppressWarnings("unchecked")
     public T setScheme(final String scheme) {
       assert (scheme != null);
       assert (!scheme.equals(""));
@@ -159,6 +161,7 @@ public abstract class AbstractRequest implements IRequest {
       return (T) this;
     }
 
+    @SuppressWarnings("unchecked")
     public T setHost(final String host) {
       assert (host != null);
       assert (!scheme.equals(""));
@@ -166,6 +169,7 @@ public abstract class AbstractRequest implements IRequest {
       return (T) this;
     }
 
+    @SuppressWarnings("unchecked")
     public T setPort(final Integer port) {
       assert (port != null);
       assert (port >= 0);
@@ -173,6 +177,7 @@ public abstract class AbstractRequest implements IRequest {
       return (T) this;
     }
 
+    @SuppressWarnings("unchecked")
     public T setPath(final String path) {
       assert (path != null);
       assert (!path.equals(""));
@@ -187,6 +192,7 @@ public abstract class AbstractRequest implements IRequest {
       return (T) this;
     }
 
+    @SuppressWarnings("unchecked")
     public T setPathParameter(final String name, final String value) {
       assert (name != null && value != null);
       assert (!name.equals("") && !value.equals(""));
@@ -203,6 +209,7 @@ public abstract class AbstractRequest implements IRequest {
       return (T) this;
     }
 
+    @SuppressWarnings("unchecked")
     public T setDefaults(final IHttpManager httpManager,
                          final String scheme,
                          final String host,
@@ -215,6 +222,7 @@ public abstract class AbstractRequest implements IRequest {
       return (T) this;
     }
 
+    @SuppressWarnings("unchecked")
     public <X> T setQueryParameter(final String name, final X value) {
       assert (name != null);
       assert (value != null);
@@ -222,21 +230,25 @@ public abstract class AbstractRequest implements IRequest {
       return (T) this;
     }
 
+    @SuppressWarnings("unchecked")
     public <X> T setHeader(final String name, final X value) {
       this.headers.add(new BasicHeader(name, String.valueOf(value)));
       return (T) this;
     }
 
+    @SuppressWarnings("unchecked")
     public <X> T setFormParameter(final String name, final X value) {
       this.formParameters.add(new BasicNameValuePair(name, String.valueOf(value)));
       return (T) this;
     }
 
+    @SuppressWarnings("unchecked")
     public <X> T setBodyParameter(final String name, final X value) {
       this.bodyParameters.add(new BasicNameValuePair(name, String.valueOf(value)));
       return (T) this;
     }
 
+    @SuppressWarnings("unchecked")
     public T setBody(final String value) {
       this.body = value;
       return (T) this;

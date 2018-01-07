@@ -12,6 +12,7 @@ public class ReplacePlaylistsTracksRequest extends AbstractDataRequest {
     super(builder);
   }
 
+  @SuppressWarnings("unchecked")
   public String execute() throws
           IOException,
           SpotifyWebApiException {

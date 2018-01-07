@@ -12,6 +12,7 @@ public class GetArtistRequest extends AbstractDataRequest {
     super(builder);
   }
 
+  @SuppressWarnings("unchecked")
   public Artist execute() throws
           IOException,
           SpotifyWebApiException {

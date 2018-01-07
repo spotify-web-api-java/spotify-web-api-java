@@ -12,6 +12,7 @@ public class GetAudioAnalysisForTrackRequest extends AbstractDataRequest {
     super(builder);
   }
 
+  @SuppressWarnings("unchecked")
   public AudioAnalysis execute() throws
           IOException,
           SpotifyWebApiException {

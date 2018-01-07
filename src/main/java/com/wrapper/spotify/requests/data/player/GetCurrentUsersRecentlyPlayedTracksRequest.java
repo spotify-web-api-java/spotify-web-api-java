@@ -14,6 +14,7 @@ public class GetCurrentUsersRecentlyPlayedTracksRequest extends AbstractDataRequ
     super(builder);
   }
 
+  @SuppressWarnings("unchecked")
   public PagingCursorbased<PlayHistory> execute() throws
           IOException,
           SpotifyWebApiException {

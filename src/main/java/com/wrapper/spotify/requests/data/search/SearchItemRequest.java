@@ -13,6 +13,7 @@ public class SearchItemRequest extends AbstractDataRequest {
     super(builder);
   }
 
+  @SuppressWarnings("unchecked")
   public SearchResult execute() throws
           IOException,
           SpotifyWebApiException {

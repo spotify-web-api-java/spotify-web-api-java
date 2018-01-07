@@ -14,6 +14,7 @@ public class GetUsersSavedTracksRequest extends AbstractDataRequest {
     super(builder);
   }
 
+  @SuppressWarnings("unchecked")
   public Paging<SavedTrack> execute() throws
           IOException,
           SpotifyWebApiException {

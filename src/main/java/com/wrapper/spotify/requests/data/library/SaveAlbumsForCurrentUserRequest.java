@@ -12,6 +12,7 @@ public class SaveAlbumsForCurrentUserRequest extends AbstractDataRequest {
     super(builder);
   }
 
+  @SuppressWarnings("unchecked")
   public String execute() throws
           IOException,
           SpotifyWebApiException {

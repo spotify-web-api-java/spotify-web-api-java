@@ -12,6 +12,7 @@ public class CreatePlaylistRequest extends AbstractDataRequest {
     super(builder);
   }
 
+  @SuppressWarnings("unchecked")
   public Playlist execute() throws
           IOException,
           SpotifyWebApiException {

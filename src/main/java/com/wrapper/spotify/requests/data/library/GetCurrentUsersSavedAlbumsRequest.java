@@ -14,6 +14,7 @@ public class GetCurrentUsersSavedAlbumsRequest extends AbstractDataRequest {
     super(builder);
   }
 
+  @SuppressWarnings("unchecked")
   public Paging<SavedAlbum> execute() throws
           IOException,
           SpotifyWebApiException {
