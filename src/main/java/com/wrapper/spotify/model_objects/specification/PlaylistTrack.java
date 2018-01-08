@@ -7,7 +7,8 @@ import java.text.ParseException;
 import java.util.Date;
 
 /**
- * Retrieve information about playlist tracks by building instances from this class.
+ * Retrieve information about <a href="https://developer.spotify.com/web-api/object-model/#playlist-track-object">
+ *     Playlist Track objects</a> by building instances from this class.
  */
 public class PlaylistTrack extends AbstractModelObject {
   private final Date addedAt;
@@ -25,18 +26,20 @@ public class PlaylistTrack extends AbstractModelObject {
   }
 
   /**
-   * Get the date, when a track has been added to its playlist.
+   * Get the date, when the track has been added to its playlist.
+   * <b>Note:</b> Some very old playlists may return {@code null} in this field.
    *
-   * @return A date object.
+   * @return The date and time the track was added.
    */
   public Date getAddedAt() {
     return addedAt;
   }
 
   /**
-   * Get the user, who added a track to its playlist.
+   * Get the user, who added the track to its playlist.
+   * <b>Note:</b> Some very old playlists may return null in this field.
    *
-   * @return A user object.
+   * @return The Spotify user who added the track.
    */
   public User getAddedBy() {
     return addedBy;
@@ -46,7 +49,7 @@ public class PlaylistTrack extends AbstractModelObject {
    * Check whether a playlist track is a local track or not.<br>
    * Local tracks can only be played on devices, where the track files are present.
    *
-   * @return "true" if the track is local, "false" if not.
+   * @return Whether this track is a local file or not.
    */
   public Boolean getIsLocal() {
     return isLocal;
@@ -55,7 +58,7 @@ public class PlaylistTrack extends AbstractModelObject {
   /**
    * Get a full track object from this playlist track object.
    *
-   * @return A track object.
+   * @return Information about the track.
    */
   public Track getTrack() {
     return track;
@@ -67,7 +70,7 @@ public class PlaylistTrack extends AbstractModelObject {
   }
 
   /**
-   * Builder class for building playlist track instances.
+   * Builder class for building {@link PlaylistTrack} instances.
    */
   public static final class Builder extends AbstractModelObject.Builder {
     private Date addedAt;
@@ -78,8 +81,8 @@ public class PlaylistTrack extends AbstractModelObject {
     /**
      * Set the "added at" date of the playlist track to be built.
      *
-     * @param addedAt A date object.
-     * @return A builder object.
+     * @param addedAt The date and time the track was added.
+     * @return A {@link PlaylistTrack.Builder}.
      */
     public Builder setAddedAt(Date addedAt) {
       this.addedAt = addedAt;
@@ -89,8 +92,8 @@ public class PlaylistTrack extends AbstractModelObject {
     /**
      * Set the user who added the track to the playlist.
      *
-     * @param addedBy A user object.
-     * @return A builder object.
+     * @param addedBy The Spotify user who added the track.
+     * @return A {@link PlaylistTrack.Builder}.
      */
     public Builder setAddedBy(User addedBy) {
       this.addedBy = addedBy;
@@ -100,8 +103,8 @@ public class PlaylistTrack extends AbstractModelObject {
     /**
      * Set whether the track to be built is local or not.
      *
-     * @param isLocal "true" if the track is local, "false" if not.
-     * @return A builder object.
+     * @param isLocal Whether this track is a local file or not.
+     * @return A {@link PlaylistTrack.Builder}.
      */
     public Builder setIsLocal(Boolean isLocal) {
       this.isLocal = isLocal;
@@ -111,8 +114,8 @@ public class PlaylistTrack extends AbstractModelObject {
     /**
      * Set the full track object of the playlist track to be built.
      *
-     * @param track A track object.
-     * @return A builder object.
+     * @param track Information about the track.
+     * @return A {@link PlaylistTrack.Builder}.
      */
     public Builder setTrack(Track track) {
       this.track = track;
@@ -126,7 +129,7 @@ public class PlaylistTrack extends AbstractModelObject {
   }
 
   /**
-   * JsonUtil class for building playlist track instances.
+   * JsonUtil class for building {@link PlaylistTrack} instances.
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<PlaylistTrack> {
     public PlaylistTrack createModelObject(JsonObject jsonObject) {
