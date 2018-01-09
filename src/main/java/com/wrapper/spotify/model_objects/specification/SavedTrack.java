@@ -7,7 +7,8 @@ import java.text.ParseException;
 import java.util.Date;
 
 /**
- * Retrieve information about your saved tracks by building instances from this class.
+ * Retrieve information about <a href="https://developer.spotify.com/web-api/object-model/#saved-track-object">
+ *     Saved Track objects</a> by building instances from this class.
  */
 public class SavedTrack extends AbstractModelObject {
   private final Date addedAt;
@@ -21,18 +22,18 @@ public class SavedTrack extends AbstractModelObject {
   }
 
   /**
-   * Get the date, when a track has been saved.
+   * Get the date, when the track has been saved.
    *
-   * @return A date object.
+   * @return The date and time the track was saved.
    */
   public Date getAddedAt() {
     return addedAt;
   }
 
   /**
-   * Get a full track object from a saved track object.
+   * Get information about the track from a saved track object.
    *
-   * @return A track object.
+   * @return Information about the track.
    */
   public Track getTrack() {
     return track;
@@ -44,7 +45,7 @@ public class SavedTrack extends AbstractModelObject {
   }
 
   /**
-   * Builder class for building saved track instances.
+   * Builder class for building {@link SavedTrack} instances.
    */
   public static final class Builder extends AbstractModelObject.Builder {
     private Date addedAt;
@@ -53,8 +54,8 @@ public class SavedTrack extends AbstractModelObject {
     /**
      * Set the "added at" date of the saved track to be built.
      *
-     * @param addedAt A date object.
-     * @return A builder object.
+     * @param addedAt The date and time the track was saved.
+     * @return A {@link SavedTrack.Builder}.
      */
     public Builder setAddedAt(Date addedAt) {
       this.addedAt = addedAt;
@@ -64,8 +65,8 @@ public class SavedTrack extends AbstractModelObject {
     /**
      * Set the full track object of the saved track to be built.
      *
-     * @param track A track object.
-     * @return A builder object.
+     * @param track Information about the track.
+     * @return A {@link SavedTrack.Builder}.
      */
     public Builder setTrack(Track track) {
       this.track = track;
@@ -79,7 +80,7 @@ public class SavedTrack extends AbstractModelObject {
   }
 
   /**
-   * JsonUtil class for building saved track instances.
+   * JsonUtil class for building {@link SavedTrack} instances.
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<SavedTrack> {
     public SavedTrack createModelObject(JsonObject jsonObject) {

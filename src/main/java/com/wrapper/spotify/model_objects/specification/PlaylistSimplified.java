@@ -7,7 +7,8 @@ import com.wrapper.spotify.model_objects.miscellaneous.PlaylistTracksInformation
 import com.wrapper.spotify.requests.data.search.interfaces.ISearchModelObject;
 
 /**
- * Retrieve information about simplified playlists by building instances from this class.
+ * Retrieve information about <a href="https://developer.spotify.com/web-api/object-model/#playlist-object-simplified">
+ *     simplified Playlist objects</a> by building instances from this class.
  */
 public class PlaylistSimplified extends AbstractModelObject implements ISearchModelObject {
   private final Boolean collaborative;
@@ -41,46 +42,54 @@ public class PlaylistSimplified extends AbstractModelObject implements ISearchMo
   }
 
   /**
-   * Check whether a playlist is collaborative or not.
+   * Check whether the playlist is collaborative or not.
    *
-   * @return "true" if the playlist is collaborytive, "false" if not.
+   * @return {@code true} if the owner allows other users to modify the playlist, {@code false} if not.
+   * @see <a
+   *      href="https://developer.spotify.com/web-api/working-with-playlists/#public-private-and-collaborative-status">
+   *      Spotify: Working With Playlists</a>
    */
   public Boolean getIsCollaborative() {
     return collaborative;
   }
 
   /**
-   * Get the external urls of a playlist.<br>
+   * Get the external URLs of the playlist. <br>
    * Example: Spotify-URL.
    *
-   * @return The external urls of a playlist.
+   * @return Known external URLs for this playlist.
    */
   public ExternalUrl getExternalUrls() {
     return externalUrls;
   }
 
   /**
-   * Get the full Spotify API endpoint url of a playlist.
+   * Get the full Spotify API endpoint url of the playlist.
    *
-   * @return A Spotify API endpoint url.
+   * @return A link to the Web API endpoint providing full details of the playlist.
    */
   public String getHref() {
     return href;
   }
 
   /**
-   * Get the Spotify id of a playlist.
+   * Get the <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify ID</a>
+   * of a playlist.
    *
-   * @return A Spotify playlist id.
+   * @return The Spotify ID for the playlist.
    */
   public String getId() {
     return id;
   }
 
   /**
-   * Get the cover image of a playlist in different sizes.
+   * Images for the playlist. The array may be empty or contain up to three images. The images are returned by size in
+   * descending order. <br>
+   * <b>Note:</b> If returned, the source URL for the image is temporary and will expire in less than a day.
    *
    * @return An array of images in different sizes.
+   * @see <a href="https://developer.spotify.com/web-api/working-with-playlists/#using-playlist-images">
+   *      Spotify: Working With Playlists</a>
    */
   public Image[] getImages() {
     return images;
@@ -107,26 +116,31 @@ public class PlaylistSimplified extends AbstractModelObject implements ISearchMo
   /**
    * Check whether a playlist is available in public or is private.
    *
-   * @return "true" if the playlist is public, "false" if not.
+   * @return {@code true} the playlist is public, {@code false} the playlist is private, {@code null}
+   *         the playlist status is not relevant.
+   * @see <a
+   *      href="https://developer.spotify.com/web-api/working-with-playlists/#public-private-and-collaborative-status">
+   *      Spotify: Working With Playlists</a>
    */
   public Boolean getIsPublicAccess() {
     return publicAccess;
   }
 
   /**
-   * Get the latest snapshot id of a playlist.
+   * Get the snapshot ID, the version identifier for the current playlist. Can be supplied in other requests to target
+   * a specific playlist version.
    *
-   * @return A snapshot id.
+   * @return The version identifier for the current playlist.
+   * @see com.wrapper.spotify.requests.data.playlists.RemoveTracksFromPlaylistRequest
    */
   public String getSnapshotId() {
     return snapshotId;
   }
 
   /**
-   * Get information about the tracks in a playlist.<br>
-   * Example: Track count.
+   * Get information about the tracks of the playlist.
    *
-   * @return Playlist tracks information object.
+   * @return Information about the tracks of the playlist.
    */
   public PlaylistTracksInformation getTracks() {
     return tracks;
@@ -135,16 +149,17 @@ public class PlaylistSimplified extends AbstractModelObject implements ISearchMo
   /**
    * Get the model object type. In this case "playlist".
    *
-   * @return A model object type.
+   * @return The object type: "playlist"
    */
   public ModelObjectType getType() {
     return type;
   }
 
   /**
-   * Get the Spotify uri of a playlist.
+   * Get the <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify URI</a>
+   * of a playlist.
    *
-   * @return Spotify playlist uri.
+   * @return Spotify playlist URI.
    */
   public String getUri() {
     return uri;
@@ -156,7 +171,7 @@ public class PlaylistSimplified extends AbstractModelObject implements ISearchMo
   }
 
   /**
-   * Builder class for building simplified playlist instances.
+   * Builder class for building {@link PlaylistSimplified} instances.
    */
   public static final class Builder extends AbstractModelObject.Builder {
     private Boolean collaborative;
@@ -175,8 +190,8 @@ public class PlaylistSimplified extends AbstractModelObject implements ISearchMo
     /**
      * Set whether the playlist to be built is collaborative or not.
      *
-     * @param collaborative "true" for collaborative", false if not.
-     * @return A builder object.
+     * @param collaborative {@code true} if the owner allows other users to modify the playlist, {@code false} if not.
+     * @return A {@link PlaylistSimplified.Builder}.
      */
     public Builder setCollaborative(Boolean collaborative) {
       this.collaborative = collaborative;
@@ -184,10 +199,10 @@ public class PlaylistSimplified extends AbstractModelObject implements ISearchMo
     }
 
     /**
-     * Set external urls of the playlist to be built.
+     * Set the external URLs of the playlist to be built.
      *
-     * @param externalUrls External urls object.
-     * @return A builder object.
+     * @param externalUrls Known external URLs for this playlist.
+     * @return A {@link PlaylistSimplified.Builder}.
      */
     public Builder setExternalUrls(ExternalUrl externalUrls) {
       this.externalUrls = externalUrls;
@@ -195,10 +210,10 @@ public class PlaylistSimplified extends AbstractModelObject implements ISearchMo
     }
 
     /**
-     * Set href of Spotify api endpoint of the playlist to be built.
+     * Set the link to the Spotify Web API endpoint providing full details of the playlist.
      *
-     * @param href Spotify api endpoint url.
-     * @return A builder object.
+     * @param href A link to the Spotify Web API endpoint providing full details of the playlist.
+     * @return A {@link PlaylistSimplified.Builder}.
      */
     public Builder setHref(String href) {
       this.href = href;
@@ -206,10 +221,10 @@ public class PlaylistSimplified extends AbstractModelObject implements ISearchMo
     }
 
     /**
-     * Set the Spotify id of the playlist to be built.
+     * Set the Spotify ID for the playlist to be built.
      *
-     * @param id Spotify playlist id.
-     * @return A builder object.
+     * @param id The Spotify ID for the playlist.
+     * @return A {@link PlaylistSimplified.Builder}.
      */
     public Builder setId(String id) {
       this.id = id;
@@ -219,8 +234,8 @@ public class PlaylistSimplified extends AbstractModelObject implements ISearchMo
     /**
      * Set the cover image of the playlist to be built.
      *
-     * @param images An array of image objects.
-     * @return A builder object.
+     * @param images An array of images in different sizes.
+     * @return A {@link PlaylistSimplified.Builder}.
      */
     public Builder setImages(Image... images) {
       this.images = images;
@@ -231,7 +246,7 @@ public class PlaylistSimplified extends AbstractModelObject implements ISearchMo
      * Set the name of the playlist to be built.
      *
      * @param name The playlist name.
-     * @return A builder object.
+     * @return A {@link PlaylistSimplified.Builder}.
      */
     public Builder setName(String name) {
       this.name = name;
@@ -242,7 +257,7 @@ public class PlaylistSimplified extends AbstractModelObject implements ISearchMo
      * Set the owner of the playlist to be built.
      *
      * @param owner A user object.
-     * @return A builder object.
+     * @return A {@link PlaylistSimplified.Builder}.
      */
     public Builder setOwner(User owner) {
       this.owner = owner;
@@ -252,8 +267,9 @@ public class PlaylistSimplified extends AbstractModelObject implements ISearchMo
     /**
      * Set whether the playlist to be built is available in public or not.
      *
-     * @param publicAccess "true" if public, "false" if not.
-     * @return A builder object.
+     * @param publicAccess {@code true} the playlist is public, {@code false} the playlist is private, {@code null}
+     *                     the playlist status is not relevant.
+     * @return A {@link PlaylistSimplified.Builder}.
      */
     public Builder setPublicAccess(Boolean publicAccess) {
       this.publicAccess = publicAccess;
@@ -261,10 +277,10 @@ public class PlaylistSimplified extends AbstractModelObject implements ISearchMo
     }
 
     /**
-     * Set the snapshot id of the playlist to be built.
+     * Set the version identifier for the playlist to be built.
      *
-     * @param snapshotId Snapshot id.
-     * @return A builder object.
+     * @param snapshotId The version identifier for the playlist.
+     * @return A {@link PlaylistSimplified.Builder}.
      */
     public Builder setSnapshotId(String snapshotId) {
       this.snapshotId = snapshotId;
@@ -275,7 +291,7 @@ public class PlaylistSimplified extends AbstractModelObject implements ISearchMo
      * Set some track infromation of the playlist to be built.
      *
      * @param tracks A playlist tracks information object.
-     * @return A builder object.
+     * @return A {@link PlaylistSimplified.Builder}.
      */
     public Builder setTracks(PlaylistTracksInformation tracks) {
       this.tracks = tracks;
@@ -286,7 +302,7 @@ public class PlaylistSimplified extends AbstractModelObject implements ISearchMo
      * Set the type of the model object. In this case "playlist".
      *
      * @param type The model object type.
-     * @return A builder object.
+     * @return A {@link PlaylistSimplified.Builder}.
      */
     public Builder setType(ModelObjectType type) {
       this.type = type;
@@ -294,10 +310,11 @@ public class PlaylistSimplified extends AbstractModelObject implements ISearchMo
     }
 
     /**
-     * Set the Spotify uri of the playlist to be built.
+     * Set the <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify URI</a>
+     * of the playlist to be built.
      *
-     * @param uri The Spotify playlist uri.
-     * @return A builder object.
+     * @param uri The Spotify playlist URI.
+     * @return A {@link PlaylistSimplified.Builder}.
      */
     public Builder setUri(String uri) {
       this.uri = uri;
@@ -311,7 +328,7 @@ public class PlaylistSimplified extends AbstractModelObject implements ISearchMo
   }
 
   /**
-   * JsonUtil class for building simplified playlist instances.
+   * JsonUtil class for building {@link PlaylistSimplified} instances.
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<PlaylistSimplified> {
     public PlaylistSimplified createModelObject(JsonObject jsonObject) {
