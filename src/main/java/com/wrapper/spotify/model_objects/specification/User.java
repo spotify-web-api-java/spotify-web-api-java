@@ -7,7 +7,12 @@ import com.wrapper.spotify.enums.ProductType;
 import com.wrapper.spotify.model_objects.AbstractModelObject;
 
 /**
- * Retrieve information about users by building instances from this class.
+ * Retrieve information about <a href="https://developer.spotify.com/web-api/object-model/#user-object-private">
+ * User objects</a> by building instances from this class. <br>
+ * <b>Note:</b> Many methods of this model object may return {@code null}, depending on the scopes specified in the
+ * authentication request.
+ *
+ * @see <a href="https://developer.spotify.com/web-api/using-scopes/">Spotify: Using Scopes</a>
  */
 public class User extends AbstractModelObject {
   private final String birthdate;
@@ -41,94 +46,108 @@ public class User extends AbstractModelObject {
   }
 
   /**
-   * Get a users birthdate.
+   * Get the users birthdate. <br>
+   * <b>Note:</b> This field is only available when the current user has granted access to the
+   * {@code user-read-birthdate} scope.
    *
-   * @return Birthdate as a string.
+   * @return The user's date-of-birth.
+   * @see <a href="https://developer.spotify.com/web-api/using-scopes/">Spotify: Using Scopes</a>
    */
   public String getBirthdate() {
     return birthdate;
   }
 
   /**
-   * Get the country code of a users home country.
+   * Get the country code of the users set home country. <br>
+   * <b>Note:</b> This field is only available when the current user has granted access to the {@code user-read-private}
+   * scope.
    *
-   * @return An ISO 3166-1 alpha-2 country code.
+   * @return An <a href="http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2</a> country code.
+   * @see <a href="https://developer.spotify.com/web-api/using-scopes/">Spotify: Using Scopes</a>
    */
   public CountryCode getCountry() {
     return country;
   }
 
   /**
-   * Get a users display name if available.<br>
-   * If the display name is not available, null will be returned.
+   * Get the users display name if available. <br>
+   * If the display name is not available, {@code null} will be returned.
    *
-   * @return Display name if available.
+   * @return The name displayed on the user's profile. {@code null} if not available.
    */
   public String getDisplayName() {
     return displayName;
   }
 
   /**
-   * Get a users email address.
+   * Get the users email address. <br>
+   * <b>Important!</b> This email address is unverified; there is no proof that it actually belongs to the user. <br>
+   * <b>Note:</b> This field is only available when the current user has granted access to the {@code user-read-email}
+   * scope.
    *
-   * @return Email address.
+   * @return The user's email address, as entered by the user when creating their account.
+   * @see <a href="https://developer.spotify.com/web-api/using-scopes/">Spotify: Using Scopes</a>
    */
   public String getEmail() {
     return email;
   }
 
   /**
-   * Get the external urls of an user.<br>
+   * Get the external URLs of the user. <br>
    * Example: Spotify-URL.
    *
-   * @return The external urls of an user.
+   * @return Known external URLs for this user.
    */
   public ExternalUrl getExternalUrls() {
     return externalUrls;
   }
 
   /**
-   * Get information about the followers of an user.<br>
+   * Get information about the followers of the user. <br>
    * Example: Follower count.
    *
-   * @return Followers object.
+   * @return Information about the followers of the user.
    */
   public Followers getFollowers() {
     return followers;
   }
 
   /**
-   * Get the full Spotify API endpoint url of an user.
+   * Get the Spotify Web API endpoint URL of the user.
    *
-   * @return A Spotify API endpoint url.
+   * @return A link to the Spotify Web API endpoint for this user.
    */
   public String getHref() {
     return href;
   }
 
   /**
-   * Get the Spotify id of an user.
+   * Get the Spotify ID of the user.
    *
-   * @return A Spotify user id.
+   * @return The <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify user ID</a>
+   * for the user.
    */
   public String getId() {
     return id;
   }
 
   /**
-   * Get the profile image of an user in different sizes.
+   * Get the profile image of the user in different sizes.
    *
-   * @return An array of images in different sizes.
+   * @return The user's profile image.
    */
   public Image[] getImages() {
     return images;
   }
 
   /**
-   * Get the product type of a users account.<br>
-   * Product type refers to premium account, free account, etc.
+   * Get the product type of the users account. <br>
+   * Product type refers to premium account, free account, etc. <br>
+   * <b>Note:</b> This field is only available when the current user has granted access to the {@code user-read-private}
+   * scope.
    *
-   * @return The product type.
+   * @return The user's Spotify subscription level: "premium", "free", etc.
+   * @see <a href="https://developer.spotify.com/web-api/using-scopes/">Spotify: Using Scopes</a>
    */
   public ProductType getProduct() {
     return product;
@@ -137,16 +156,17 @@ public class User extends AbstractModelObject {
   /**
    * Get the model object type. In this case "user".
    *
-   * @return A model object type.
+   * @return The object type: "user"
    */
   public ModelObjectType getType() {
     return type;
   }
 
   /**
-   * Get the Spotify uri of an user.
+   * Get the <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify URI</a> of the
+   * user.
    *
-   * @return Spotify user uri.
+   * @return The Spotify URI for the user.
    */
   public String getUri() {
     return uri;
@@ -158,7 +178,7 @@ public class User extends AbstractModelObject {
   }
 
   /**
-   * Builder class for building user instances.
+   * Builder class for building {@link User} instances.
    */
   public static final class Builder extends AbstractModelObject.Builder {
     private String birthdate;
@@ -177,8 +197,8 @@ public class User extends AbstractModelObject {
     /**
      * Set the birthday of the user object to be built.
      *
-     * @param birthdate A users birthdate.
-     * @return A builder object.
+     * @param birthdate The user's date-of-birth.
+     * @return A {@link User.Builder}.
      */
     public Builder setBirthdate(String birthdate) {
       this.birthdate = birthdate;
@@ -189,7 +209,7 @@ public class User extends AbstractModelObject {
      * Set the home country of the user object to be built.
      *
      * @param country An ISO 3166-1 alpha-2 country code.
-     * @return A builder object.
+     * @return A {@link User.Builder}.
      */
     public Builder setCountry(CountryCode country) {
       this.country = country;
@@ -197,11 +217,10 @@ public class User extends AbstractModelObject {
     }
 
     /**
-     * Set the display name of the user to be built. If a user hasn't a display
-     * name, set null instead.
+     * Set the display name of the user to be built. If the user hasn't a display name, set {@code null} instead.
      *
-     * @param displayName Display name of a user or null.
-     * @return A builder object.
+     * @param displayName The name displayed on the user's profile. {@code null} if not available.
+     * @return A {@link User.Builder}.
      */
     public Builder setDisplayName(String displayName) {
       this.displayName = displayName;
@@ -211,8 +230,8 @@ public class User extends AbstractModelObject {
     /**
      * Set the email address of the user to be built.
      *
-     * @param email Email adress.
-     * @return A builder object.
+     * @param email The user's email address, as entered by the user when creating their account.
+     * @return A {@link User.Builder}.
      */
     public Builder setEmail(String email) {
       this.email = email;
@@ -222,8 +241,8 @@ public class User extends AbstractModelObject {
     /**
      * Set external urls of the user to be built.
      *
-     * @param externalUrls External urls object.
-     * @return A builder object.
+     * @param externalUrls Known external URLs for this user.
+     * @return A {@link User.Builder}.
      */
     public Builder setExternalUrls(ExternalUrl externalUrls) {
       this.externalUrls = externalUrls;
@@ -233,8 +252,8 @@ public class User extends AbstractModelObject {
     /**
      * Set the followers object of the user to be built.
      *
-     * @param followers A followers object.
-     * @return A builder object.
+     * @param followers Information about the followers of the user.
+     * @return A {@link User.Builder}.
      */
     public Builder setFollowers(Followers followers) {
       this.followers = followers;
@@ -244,8 +263,8 @@ public class User extends AbstractModelObject {
     /**
      * Set href of Spotify api endpoint of the user to be built.
      *
-     * @param href Spotify api endpoint url.
-     * @return A builder object.
+     * @param href A link to the Spotify Web API endpoint for this user.
+     * @return A {@link User.Builder}.
      */
     public Builder setHref(String href) {
       this.href = href;
@@ -253,10 +272,11 @@ public class User extends AbstractModelObject {
     }
 
     /**
-     * Set user id of the user to be built.
+     * Set user ID of the user to be built.
      *
-     * @param id User id.
-     * @return A builder object.
+     * @param id The <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify user ID
+     *           </a> for the user.
+     * @return A {@link User.Builder}.
      */
     public Builder setId(String id) {
       this.id = id;
@@ -266,8 +286,8 @@ public class User extends AbstractModelObject {
     /**
      * Set the profile image of the user to be built.
      *
-     * @param images An array of image objects.
-     * @return A builder object.
+     * @param images The user's profile image.
+     * @return A {@link User.Builder}.
      */
     public Builder setImages(Image... images) {
       this.images = images;
@@ -277,8 +297,8 @@ public class User extends AbstractModelObject {
     /**
      * Set the product type of the user to be built.
      *
-     * @param product Product type.
-     * @return A builder object.
+     * @param product The user's Spotify subscription level: "premium", "free", etc.
+     * @return A {@link User.Builder}.
      */
     public Builder setProduct(ProductType product) {
       this.product = product;
@@ -288,8 +308,8 @@ public class User extends AbstractModelObject {
     /**
      * Set the type of the model object. In this case "user".
      *
-     * @param type The model object type.
-     * @return A builder object.
+     * @param type The object type: "user"
+     * @return A {@link User.Builder}.
      */
     public Builder setType(ModelObjectType type) {
       this.type = type;
@@ -297,10 +317,10 @@ public class User extends AbstractModelObject {
     }
 
     /**
-     * Set the Spotify uri of the user to be built.
+     * Set the Spotify URI of the user to be built.
      *
-     * @param uri The Spotify playlist uri.
-     * @return A builder object.
+     * @param uri The Spotify URI for the user.
+     * @return A {@link User.Builder}.
      */
     public Builder setUri(String uri) {
       this.uri = uri;
@@ -314,7 +334,7 @@ public class User extends AbstractModelObject {
   }
 
   /**
-   * JsonUtil class for building user instances.
+   * JsonUtil class for building {@link User} instances.
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<User> {
     public User createModelObject(JsonObject jsonObject) {

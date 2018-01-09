@@ -7,7 +7,8 @@ import java.text.ParseException;
 import java.util.Date;
 
 /**
- * Retrieve information about your saved albums by building instances from this class.
+ * Retrieve information about <a href="https://developer.spotify.com/web-api/object-model/#saved-album-object">
+ *     Saved Album objects</a> by building instances from this class.
  */
 public class SavedAlbum extends AbstractModelObject {
   private final Date addedAt;
@@ -21,18 +22,18 @@ public class SavedAlbum extends AbstractModelObject {
   }
 
   /**
-   * Get the date, when an album has been saved.
+   * Get the date, when the album has been saved.
    *
-   * @return A date object.
+   * @return The date and time the album was saved.
    */
   public Date getAddedAt() {
     return addedAt;
   }
 
   /**
-   * Get a full album object from a saved album object.
+   * Get information about the album from a saved album object.
    *
-   * @return An album object.
+   * @return Information about the album.
    */
   public Album getAlbum() {
     return album;
@@ -44,7 +45,7 @@ public class SavedAlbum extends AbstractModelObject {
   }
 
   /**
-   * Builder class for building saved album instances.
+   * Builder class for building {@link SavedAlbum} instances.
    */
   public static final class Builder extends AbstractModelObject.Builder {
     private Date addedAt;
@@ -53,8 +54,8 @@ public class SavedAlbum extends AbstractModelObject {
     /**
      * Set the "added at" date of the saved album to be built.
      *
-     * @param addedAt A date object.
-     * @return A builder object.
+     * @param addedAt The date and time the album was saved.
+     * @return A {@link SavedAlbum.Builder}.
      */
     public Builder setAddedAt(Date addedAt) {
       this.addedAt = addedAt;
@@ -64,8 +65,8 @@ public class SavedAlbum extends AbstractModelObject {
     /**
      * Set the full album object of the saved album to be built.
      *
-     * @param album An album object.
-     * @return A builder object.
+     * @param album Information about the album.
+     * @return A {@link SavedAlbum.Builder}.
      */
     public Builder setAlbum(Album album) {
       this.album = album;
@@ -79,7 +80,7 @@ public class SavedAlbum extends AbstractModelObject {
   }
 
   /**
-   * JsonUtil class for building saved album instances.
+   * JsonUtil class for building {@link SavedAlbum} instances.
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<SavedAlbum> {
     public SavedAlbum createModelObject(JsonObject jsonObject) {

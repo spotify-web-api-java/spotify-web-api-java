@@ -7,7 +7,8 @@ import com.wrapper.spotify.enums.ModelObjectType;
 import com.wrapper.spotify.model_objects.AbstractModelObject;
 
 /**
- * Retrieve information about simplified tracks by building instances from this class.
+ * Retrieve information about <a href="https://developer.spotify.com/web-api/object-model/#track-object-simplified">
+ *     simplified Track objects</a> by building instances from this class.
  */
 public class TrackSimplified extends AbstractModelObject {
   private final ArtistSimplified[] artists;
@@ -47,93 +48,99 @@ public class TrackSimplified extends AbstractModelObject {
   }
 
   /**
-   * Get the artists of a track.
+   * Get the artists who performed the track.
    *
-   * @return An array of simplified artists.
+   * @return The artists who performed the track. Each artist object includes a link in {@code href} to more detailed
+   *         information about the artist.
    */
   public ArtistSimplified[] getArtists() {
     return artists;
   }
 
   /**
-   * Get the country codes of all countries, in which a track is available.
+   * Get the country codes of all countries, in which the track is available.
    *
-   * @return An array of ISO 3166-1 alpha-2 country codes.
+   * @return A list of the countries in which the track can be played, identified by their
+   *         <a href="http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2</a> code.
    */
   public CountryCode[] getAvailableMarkets() {
     return availableMarkets;
   }
 
   /**
-   * Get the disc number of a track in its album.
+   * Get the disc number of the track in its album.
    *
-   * @return A disc number.
+   * @return The disc number (usually 1 unless the album consists of more than one disc).
    */
   public Integer getDiscNumber() {
     return discNumber;
   }
 
   /**
-   * Get the duration of a track in milliseconds.
+   * Get the duration of the track in milliseconds.
    *
-   * @return Duration of track in milliseconds.
+   * @return The track length in milliseconds.
    */
   public Integer getDurationMs() {
     return durationMs;
   }
 
   /**
-   * Check whether a track is explicit or not.
+   * Check whether the track is explicit or not.
    *
-   * @return Returns "true" for explicit, "false" for not explicit.
+   * @return Whether or not the track has explicit lyrics ({@code true} = yes it does; {@code false} = no it does not
+   *         <b>OR</b> unknown).
    */
   public Boolean getIsExplicit() {
     return explicit;
   }
 
   /**
-   * Get the external urls of a track.<br>
+   * Get the external URLs of the track.<br>
    * Example: Spotify-URL.
    *
-   * @return The external urls of the track.
+   * @return Known external URLs for this track.
    */
   public ExternalUrl getExternalUrls() {
     return externalUrls;
   }
 
   /**
-   * Get the full Spotify API endpoint url of a track.
+   * Get the full Spotify Web API endpoint URL of the track.
    *
-   * @return A Spotify API endpoint url.
+   * @return A link to the Web API endpoint providing full details of the track.
    */
   public String getHref() {
     return href;
   }
 
   /**
-   * Get the Spotify id of a track.
+   * Get the <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify ID</a> of the
+   * track.
    *
-   * @return A Spotify track id.
+   * @return The Spotify ID for the track.
    */
   public String getId() {
     return id;
   }
 
   /**
-   * Check whether a track is playable in the market, which may has been specified
-   * somewhere before requesting it.
+   * Check whether the track is playable in the market, which may has been specified somewhere before requesting it.
+   * Part of the response when <a href="https://developer.spotify.com/web-api/track-relinking-guide/">Track Relinking
+   * </a> is applied.
    *
-   * @return "true" if the track is playable in specified market, "false" if not.
+   * @return If {@code true}, the track is playable in the given market. Otherwise {@code false}.
    */
   public Boolean getIsPlayable() {
     return isPlayable;
   }
 
   /**
-   * Get the track link object of a track if the given track has been relinked.<br>
-   * This happens mostly when a specific track is not available in a specific market.
+   * Get the track link object of the track if <a href="https://developer.spotify.com/web-api/track-relinking-guide/">
+   * Track Relinking</a> was applied and the requested track has been replaced with a different track. The track in the
+   * {@code linked_from} object contains information about the originally requested track.
    *
-   * @return A track link object.
+   * @return The track in the {@code linked_from} object contains information about the originally requested track.
    */
   public TrackLink getLinkedFrom() {
     return linkedFrom;
@@ -149,19 +156,19 @@ public class TrackSimplified extends AbstractModelObject {
   }
 
   /**
-   * Get an url to a 30 seconds long track preview in MP3 format.<br>
-   * If there is no track preview available, null will be returned.
+   * Get a link to a 30 second preview (MP3 format) of the track. {@code null} if not available.
    *
-   * @return A track preview url if available, null if not available.
+   * @return A link to a 30 second preview (MP3 format) of the track. {@code null} if not available.
    */
   public String getPreviewUrl() {
     return previewUrl;
   }
 
   /**
-   * Get the track number of a track.
+   * Get the track number of the track. If an album has several discs, the track number is the number on the specified
+   * disc.
    *
-   * @return A track number.
+   * @return The number of the track.
    */
   public Integer getTrackNumber() {
     return trackNumber;
@@ -170,16 +177,17 @@ public class TrackSimplified extends AbstractModelObject {
   /**
    * Get the model object type, which should be a "track" in this case.
    *
-   * @return A model object type.
+   * @return The object type: "track".
    */
   public ModelObjectType getType() {
     return type;
   }
 
   /**
-   * Get a Spotify track uri.
+   * Get the Spotify track URI.
    *
-   * @return A Spotify track uri.
+   * @return The <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify URI</a> for
+   *         the track.
    */
   public String getUri() {
     return uri;
@@ -191,7 +199,7 @@ public class TrackSimplified extends AbstractModelObject {
   }
 
   /**
-   * Builder class for building simplified track instances.
+   * Builder class for building {@link TrackSimplified} instances.
    */
   public static final class Builder extends AbstractModelObject.Builder {
     private ArtistSimplified[] artists;
@@ -213,8 +221,8 @@ public class TrackSimplified extends AbstractModelObject {
     /**
      * Set the artists of the track to be built.
      *
-     * @param artists An array of simplified artists.
-     * @return A builder object.
+     * @param artists The artists who performed the track.
+     * @return A {@link TrackSimplified.Builder}.
      */
     public Builder setArtists(ArtistSimplified... artists) {
       this.artists = artists;
@@ -224,8 +232,9 @@ public class TrackSimplified extends AbstractModelObject {
     /**
      * Set the available markets of the track to be built.
      *
-     * @param availableMarkets An array of ISO 3166-1 alpha-2 country codes.
-     * @return A builder object.
+     * @param availableMarkets A list of the countries in which the track can be played, identified by their
+     *                         <a href="http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2</a> code.
+     * @return A {@link TrackSimplified.Builder}.
      */
     public Builder setAvailableMarkets(CountryCode... availableMarkets) {
       this.availableMarkets = availableMarkets;
@@ -235,8 +244,8 @@ public class TrackSimplified extends AbstractModelObject {
     /**
      * Set the disc numer of the track to be built.
      *
-     * @param discNumber The disc number.
-     * @return A builder object.
+     * @param discNumber The disc number (usually 1 unless the album consists of more than one disc).
+     * @return A {@link TrackSimplified.Builder}.
      */
     public Builder setDiscNumber(Integer discNumber) {
       this.discNumber = discNumber;
@@ -246,8 +255,8 @@ public class TrackSimplified extends AbstractModelObject {
     /**
      * Set the duration in milliseconds of the track to be built.
      *
-     * @param durationMs Duration in milliseconds.
-     * @return A builder object.
+     * @param durationMs The track length in milliseconds.
+     * @return A {@link TrackSimplified.Builder}.
      */
     public Builder setDurationMs(Integer durationMs) {
       this.durationMs = durationMs;
@@ -257,8 +266,9 @@ public class TrackSimplified extends AbstractModelObject {
     /**
      * Set whether the track to be built is explicit or not.
      *
-     * @param explicit "true" for explicit, "false" for not explicit.
-     * @return A builder object.
+     * @param explicit Whether or not the track has explicit lyrics ({@code true} = yes it does; {@code false} = no it
+     *                 does not <b>OR</b> unknown).
+     * @return A {@link TrackSimplified.Builder}.
      */
     public Builder setExplicit(Boolean explicit) {
       this.explicit = explicit;
@@ -266,10 +276,10 @@ public class TrackSimplified extends AbstractModelObject {
     }
 
     /**
-     * Set external urls of the track to be built.
+     * Set external URLs of the track to be built.
      *
-     * @param externalUrls External urls object.
-     * @return A builder object.
+     * @param externalUrls Known external URLs for the track.
+     * @return A {@link TrackSimplified.Builder}.
      */
     public Builder setExternalUrls(ExternalUrl externalUrls) {
       this.externalUrls = externalUrls;
@@ -277,10 +287,10 @@ public class TrackSimplified extends AbstractModelObject {
     }
 
     /**
-     * Set href of Spotify api endpoint of the track to be built.
+     * Set href of Spotify Web API endpoint of the track to be built.
      *
-     * @param href Spotify api endpoint url.
-     * @return A builder object.
+     * @param href A link to the Web API endpoint providing full details of the track.
+     * @return A {@link TrackSimplified.Builder}.
      */
     public Builder setHref(String href) {
       this.href = href;
@@ -288,10 +298,10 @@ public class TrackSimplified extends AbstractModelObject {
     }
 
     /**
-     * Set the Spotify id of the track to be built.
+     * Set track ID of the track to be built.
      *
-     * @param id Spotify track id.
-     * @return A builder object.
+     * @param id The Spotify ID for the track.
+     * @return A {@link TrackSimplified.Builder}.
      */
     public Builder setId(String id) {
       this.id = id;
@@ -301,8 +311,8 @@ public class TrackSimplified extends AbstractModelObject {
     /**
      * Set whether the track to be built is playable in your market region or not.
      *
-     * @param isPlayable "true" for playable, "false" for not playable.
-     * @return A builder object.
+     * @param isPlayable If {@code true}, the track is playable in the given market. Otherwise {@code false}.
+     * @return A {@link TrackSimplified.Builder}.
      */
     public Builder setIsPlayable(Boolean isPlayable) {
       this.isPlayable = isPlayable;
@@ -312,8 +322,9 @@ public class TrackSimplified extends AbstractModelObject {
     /**
      * Set the track link object of the track to be built.
      *
-     * @param linkedFrom Track link object.
-     * @return A builder object.
+     * @param linkedFrom The track in the {@code linked_from} object contains information about the originally requested
+     *                   track.
+     * @return A {@link TrackSimplified.Builder}.
      */
     public Builder setLinkedFrom(TrackLink linkedFrom) {
       this.linkedFrom = linkedFrom;
@@ -324,7 +335,7 @@ public class TrackSimplified extends AbstractModelObject {
      * Set the name of the track to be built.
      *
      * @param name Track name.
-     * @return A builder object.
+     * @return A {@link TrackSimplified.Builder}.
      */
     public Builder setName(String name) {
       this.name = name;
@@ -332,10 +343,10 @@ public class TrackSimplified extends AbstractModelObject {
     }
 
     /**
-     * Set the preview url of the track to be built.
+     * Set the preview URL of the track to be built.
      *
-     * @param previewUrl The url of a track preview.
-     * @return A builder object.
+     * @param previewUrl A link to a 30 second preview (MP3 format) of the track. {@code null} if not available.
+     * @return A {@link TrackSimplified.Builder}.
      */
     public Builder setPreviewUrl(String previewUrl) {
       this.previewUrl = previewUrl;
@@ -343,10 +354,10 @@ public class TrackSimplified extends AbstractModelObject {
     }
 
     /**
-     * Set the track numer of the track to be built.
+     * Set the track number of the track to be built.
      *
      * @param trackNumber The track number.
-     * @return A builder object.
+     * @return A {@link TrackSimplified.Builder}.
      */
     public Builder setTrackNumber(Integer trackNumber) {
       this.trackNumber = trackNumber;
@@ -356,8 +367,8 @@ public class TrackSimplified extends AbstractModelObject {
     /**
      * Set the type of the model object. In this case "track".
      *
-     * @param type Type of the model object.
-     * @return A builder object.
+     * @param type The object type: "track".
+     * @return A {@link TrackSimplified.Builder}.
      */
     public Builder setType(ModelObjectType type) {
       this.type = type;
@@ -365,10 +376,11 @@ public class TrackSimplified extends AbstractModelObject {
     }
 
     /**
-     * Set Spotify uri of the track to be built.
+     * Set Spotify URI of the track to be built.
      *
-     * @param uri The Spotify track uri.
-     * @return A builder object.
+     * @param uri The <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify URI</a>
+     *            for the track.
+     * @return A {@link TrackSimplified.Builder}.
      */
     public Builder setUri(String uri) {
       this.uri = uri;
@@ -382,7 +394,7 @@ public class TrackSimplified extends AbstractModelObject {
   }
 
   /**
-   * JsonUtil class for building simplified track instances.
+   * JsonUtil class for building {@link TrackSimplified} instances.
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<TrackSimplified> {
     public TrackSimplified createModelObject(JsonObject jsonObject) {
