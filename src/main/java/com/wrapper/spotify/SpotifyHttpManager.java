@@ -210,7 +210,7 @@ public class SpotifyHttpManager implements IHttpManager {
           break;
       }
     } catch (Exception e) {
-      e.printStackTrace();
+      SpotifyApi.LOGGER.log(Level.SEVERE, e.getMessage());
     }
 
     return response;

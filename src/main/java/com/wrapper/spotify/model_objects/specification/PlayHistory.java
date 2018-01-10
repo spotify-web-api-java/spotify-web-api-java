@@ -1,10 +1,12 @@
 package com.wrapper.spotify.model_objects.specification;
 
 import com.google.gson.JsonObject;
+import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.model_objects.AbstractModelObject;
 
 import java.text.ParseException;
 import java.util.Date;
+import java.util.logging.Level;
 
 /**
  * Retrieve information about <a href="https://developer.spotify.com/web-api/object-model/#play-history-object">
@@ -129,7 +131,7 @@ public class PlayHistory extends AbstractModelObject {
                                 : null)
                 .build();
       } catch (ParseException e) {
-        e.printStackTrace();
+        SpotifyApi.LOGGER.log(Level.SEVERE, e.getMessage());
         return null;
       }
     }

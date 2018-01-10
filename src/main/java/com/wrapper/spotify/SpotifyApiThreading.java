@@ -4,6 +4,7 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
+import java.util.logging.Level;
 
 public class SpotifyApiThreading {
 
@@ -15,7 +16,7 @@ public class SpotifyApiThreading {
         try {
           return callable.call();
         } catch (Exception e) {
-          e.printStackTrace();
+          SpotifyApi.LOGGER.log(Level.SEVERE, e.getMessage());
         }
 
         return null;

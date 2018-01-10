@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;
 import java.util.concurrent.Future;
+import java.util.logging.Level;
 
 public abstract class AbstractRequest implements IRequest {
 
@@ -50,7 +51,7 @@ public abstract class AbstractRequest implements IRequest {
     try {
       this.uri = uriBuilder.build();
     } catch (URISyntaxException e) {
-      e.printStackTrace();
+      SpotifyApi.LOGGER.log(Level.SEVERE, e.getMessage());
     }
 
     this.headers = builder.headers;
@@ -194,7 +195,7 @@ public abstract class AbstractRequest implements IRequest {
       try {
         encodedValue = URLEncoder.encode(value, "UTF-8");
       } catch (UnsupportedEncodingException e) {
-        e.printStackTrace();
+        SpotifyApi.LOGGER.log(Level.SEVERE, e.getMessage());
       }
 
       this.pathParameters.add(new BasicNameValuePair(name, encodedValue));
