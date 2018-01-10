@@ -1,5 +1,7 @@
 ### JetBrains
 .idea/
+spotify-web-api-java.iml
+
 ### Maven
 target/
 
