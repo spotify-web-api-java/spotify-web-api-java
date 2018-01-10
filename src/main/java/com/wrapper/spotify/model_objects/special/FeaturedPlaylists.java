@@ -6,7 +6,8 @@ import com.wrapper.spotify.model_objects.specification.Paging;
 import com.wrapper.spotify.model_objects.specification.PlaylistSimplified;
 
 /**
- * Retrieve information about featured playlists by building instances from this class.
+ * Retrieve information about <a href="https://developer.spotify.com/web-api/console/get-featured-playlists">
+ * Featured Playlist objects</a> by building instances from this class.
  */
 public class FeaturedPlaylists extends AbstractModelObject {
   private final String message;
@@ -20,8 +21,7 @@ public class FeaturedPlaylists extends AbstractModelObject {
   }
 
   /**
-   * Get the message which is displayed on the front page of the "browse" tab
-   * in the Spotify client. <br>
+   * Get the message which is displayed on the front page of the "browse" tab in the Spotify client. <br>
    * The message usually refers to the featured playlists.
    *
    * @return A "welcoming" message.
@@ -31,7 +31,7 @@ public class FeaturedPlaylists extends AbstractModelObject {
   }
 
   /**
-   * Get a page of featured playlists.
+   * Get the page of featured playlists.
    *
    * @return Featured playlists page.
    */
@@ -45,18 +45,17 @@ public class FeaturedPlaylists extends AbstractModelObject {
   }
 
   /**
-   * Builder class for building featured playlists instances.
+   * Builder class for building {@link FeaturedPlaylists} instances.
    */
   public static final class Builder extends AbstractModelObject.Builder {
     private String message;
     private Paging<PlaylistSimplified> playlists;
 
     /**
-     * Set the message, which normally would be displayed on the front page
-     * of the "browse" tab.
+     * Set the message, which normally would be displayed on the front page of the "browse" tab.
      *
      * @param message Message to be set.
-     * @return A builder object.
+     * @return A {@link FeaturedPlaylists.Builder}.
      */
     public Builder setMessage(String message) {
       this.message = message;
@@ -67,7 +66,7 @@ public class FeaturedPlaylists extends AbstractModelObject {
      * Set a page of playlists contained in the featured playlists object to be built.
      *
      * @param playlists A page of simplified playlists.
-     * @return A builder object.
+     * @return A {@link FeaturedPlaylists.Builder}.
      */
     public Builder setPlaylists(Paging<PlaylistSimplified> playlists) {
       this.playlists = playlists;
@@ -81,7 +80,7 @@ public class FeaturedPlaylists extends AbstractModelObject {
   }
 
   /**
-   * JsonUtil class for building featured playlists instances.
+   * JsonUtil class for building {@link FeaturedPlaylists} instances.
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<FeaturedPlaylists> {
     public FeaturedPlaylists createModelObject(JsonObject jsonObject) {
