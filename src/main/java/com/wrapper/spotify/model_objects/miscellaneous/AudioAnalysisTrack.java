@@ -3,6 +3,9 @@ package com.wrapper.spotify.model_objects.miscellaneous;
 import com.google.gson.JsonObject;
 import com.wrapper.spotify.model_objects.AbstractModelObject;
 
+/**
+ * Retrieve information about Audio Analysis Track objects by creating instances from this class.
+ */
 public class AudioAnalysisTrack extends AbstractModelObject {
   private final Long numSamples;
   private final Float duration;
@@ -61,106 +64,266 @@ public class AudioAnalysisTrack extends AbstractModelObject {
     this.rythmVersion = builder.rythmVersion;
   }
 
+  /**
+   * Get the number of samples in the track. <br>
+   * The total number of samples is calculated by multiplying the duration of the track with the sample rate. <br>
+   *
+   * @return The total number of samples in the track.
+   */
   public Long getNumSamples() {
     return numSamples;
   }
 
+  /**
+   * Get the duration of the track in seconds.
+   *
+   * @return The duration of the track in seconds.
+   */
   public Float getDuration() {
     return duration;
   }
 
+  /**
+   * Get the sample MD5. <br><br>
+   *
+   * <b>Note:</b> The sample MD5 is <b>probably</b> the MD5 of the track file. In the documentaion of the Analyzer
+   * software, this field is mentioned in an example and contains a value, but it seems that audio analysis objects
+   * returned by the Spotify Web API doesn't include a value in the field anymore. <br>
+   * TODO: Look into this by creating multiple Audio Analysis objects. This field is probably always empty.
+   *
+   * @return The sample MD5.
+   */
   public String getSampleMd5() {
     return sampleMd5;
   }
 
+  /**
+   * Get the offset seconds. <br>
+   * <b>Note:</b> There is no public documentation available for this field. <br>
+   * TODO: Look into this by creating multiple Audio Analysis objects. This field contains probably always the value 0.
+   *
+   * @return The offset seconds.
+   */
   public Integer getOffsetSeconds() {
     return offsetSeconds;
   }
 
+  /**
+   * Get the window seconds. <br>
+   * <b>Note:</b> There is no public documentation available for this field. <br>
+   * TODO: Look into this by creating multiple Audio Analysis objects. This field contains probably always the value 0.
+   *
+   * @return The window seconds.
+   */
   public Integer getWindowSeconds() {
     return windowSeconds;
   }
 
+  /**
+   * Get the sample rate in which the audio analysis was performed.
+   *
+   * @return The analysis sample rate.
+   */
   public Long getAnalysisSampleRate() {
     return analysisSampleRate;
   }
 
+  /**
+   * Get the analysis channels.
+   * TODO: Look into this by creating multiple Audio Analysis objects. This field contains probably always the value 1.
+   *
+   * @return The analysis channels.
+   */
   public Integer getAnalysisChannels() {
     return analysisChannels;
   }
 
+  /**
+   * Get the end of fade in introduction of the track.
+   *
+   * @return The end of fade in introduction in seconds.
+   */
   public Float getEndOfFadeIn() {
     return endOfFadeIn;
   }
 
+  /**
+   * Get the start of the fade out in seconds.
+   *
+   * @return The start of the fade out in seconds.
+   */
   public Float getStartOfFadeOut() {
     return startOfFadeOut;
   }
 
+  /**
+   * Get the average loudness of the track in decibels. These values are mostly in a range between -60 and 0 decibels.
+   *
+   * @return Average loudness of the track.
+   */
   public Float getLoudness() {
     return loudness;
   }
 
+  /**
+   * Get the estimated tempo of the track in beats per minute.
+   *
+   * @return The estimated tempo of the track.
+   */
   public Float getTempo() {
     return tempo;
   }
 
+  /**
+   * Get the tempo confidence of the track.
+   *
+   * @return The tempo confidence of the track.
+   */
   public Float getTempoConfidence() {
     return tempoConfidence;
   }
 
+  /**
+   * Get the estimated overall time signature of the track. The time signature (or meter) is the number of beats in a
+   * bar. <br>
+   * Example: A Viennese waltz has a three-quarters beat, so this method would return the value 3 in this case.
+   *
+   * @return Time signature value.
+   */
   public Integer getTimeSignature() {
     return timeSignature;
   }
 
+  /**
+   * Get the time signature confidence of the track.
+   *
+   * @return The time signature confidence.
+   */
   public Float getTimeSignatureConfidence() {
     return timeSignatureConfidence;
   }
 
+  /**
+   * Get the estimated main key of the track.
+   *
+   * @return Main key of the track.
+   * @see <a href="https://en.wikipedia.org/wiki/Pitch_class">Wikipedia: Pitch class notation</a>
+   */
   public Integer getKey() {
     return key;
   }
 
+  /**
+   * Get the key confidence of the track.
+   *
+   * @return The key confidence of the track.
+   */
   public Float getKeyConfidence() {
     return keyConfidence;
   }
 
+  /**
+   * Get the modality of the track. (either "major" or "minor")
+   * TODO: Return Value: Return as a {@link com.wrapper.spotify.enums.Modality} type.
+   *
+   * @return The modality type of the track.
+   * @see <a href="https://en.wikipedia.org/wiki/Mode_(music)">Wikipedia: Mode (music)</a>
+   */
   public Integer getMode() {
     return mode;
   }
 
+  /**
+   * Get the modality confidence of the track.
+   *
+   * @return The modality confidence of the track.
+   */
   public Float getModeConfidence() {
     return modeConfidence;
   }
 
+  /**
+   * Get the code string of the track. <br><br>
+   *
+   * <b>Note:</b> The code string is a fingerprint computed on the audio and were used by the Echo Nest services for
+   * song identification, which are no longer available.
+   *
+   * @return The code string of the track.
+   */
   public String getCodeString() {
     return codeString;
   }
 
+  /**
+   * Get the version of the code string.
+   *
+   * @return The version of the code string.
+   */
   public Float getCodeVersion() {
     return codeVersion;
   }
 
+  /**
+   * Get the echoprint string of the track. <br><br>
+   *
+   * <b>Note:</b> The echoprint string is a fingerprint computed on the audio and were used by the Echo Nest services
+   * for song identification, which are no longer available.
+   *
+   * @return The echoprint string of the track.
+   */
   public String getEchoprintString() {
     return echoprintString;
   }
 
+  /**
+   * Get the version of the echoprint string.
+   *
+   * @return The version of the echoprint string.
+   */
   public Float getEchoprintVersion() {
     return echoprintVersion;
   }
 
+  /**
+   * Get the synch string of the track. <br>
+   *
+   * It works with a simple synchronization algorithm to be implemented on the client side, which generates offset
+   * values in numbers of samples for 3 locations in the decoded waveform, the beginning, the middle, and the end. These
+   * offsets allow the client application to detect decoding errors (when offsets mismatch). They provide for synching
+   * with sample accuracy, the JSON timing data with the waveform, regardless of which mp3 decoder was used on the
+   * client side (quicktime, ffmpeg, mpg123, etc).
+   *
+   * @return The synch string.
+   */
   public String getSynchString() {
     return synchString;
   }
 
+  /**
+   * Get the version of the synch string.
+   *
+   * @return The synch string version.
+   */
   public Float getSynchVersion() {
     return synchVersion;
   }
 
+  /**
+   * Get the rhythm string of the track.
+   *
+   * TODO: Correct method and field spelling (rythm - rhythm)
+   *
+   * @return The rhythm string of the track.
+   */
   public String getRythmString() {
     return rythmString;
   }
 
+  /**
+   * Get the version of the rhythm string.
+   *
+   * @return The rhythm string version.
+   */
   public Float getRythmVersion() {
     return rythmVersion;
   }
@@ -170,6 +333,9 @@ public class AudioAnalysisTrack extends AbstractModelObject {
     return new Builder();
   }
 
+  /**
+   * Builder class for building {@link AudioAnalysisTrack} instances.
+   */
   public static final class Builder extends AbstractModelObject.Builder {
     private Long numSamples;
     private Float duration;
@@ -198,131 +364,287 @@ public class AudioAnalysisTrack extends AbstractModelObject {
     private String rythmString;
     private Float rythmVersion;
 
+    /**
+     * The sample number setter.
+     *
+     * @param numSamples The total number of samples in the track.
+     * @return An {@link AudioAnalysisTrack.Builder}.
+     */
     public Builder setNumSamples(Long numSamples) {
       this.numSamples = numSamples;
       return this;
     }
 
+    /**
+     * The track duration setter.
+     *
+     * @param duration The duration of the track in seconds.
+     * @return An {@link AudioAnalysisTrack.Builder}.
+     */
     public Builder setDuration(Float duration) {
       this.duration = duration;
       return this;
     }
 
+    /**
+     * The sample MD5 setter.
+     *
+     * @param sampleMd5 The sample MD5.
+     * @return An {@link AudioAnalysisTrack.Builder}.
+     */
     public Builder setSampleMd5(String sampleMd5) {
       this.sampleMd5 = sampleMd5;
       return this;
     }
 
+    /**
+     * The offset seconds setter.
+     *
+     * @param offsetSeconds The offset seconds.
+     * @return An {@link AudioAnalysisTrack.Builder}.
+     */
     public Builder setOffsetSeconds(Integer offsetSeconds) {
       this.offsetSeconds = offsetSeconds;
       return this;
     }
 
+    /**
+     * The window seconds setter.
+     *
+     * @param windowSeconds The window seconds.
+     * @return An {@link AudioAnalysisTrack.Builder}.
+     */
     public Builder setWindowSeconds(Integer windowSeconds) {
       this.windowSeconds = windowSeconds;
       return this;
     }
 
+    /**
+     * The analysis sample rate setter.
+     *
+     * @param analysisSampleRate The analysis sample rate.
+     * @return An {@link AudioAnalysisTrack.Builder}.
+     */
     public Builder setAnalysisSampleRate(Long analysisSampleRate) {
       this.analysisSampleRate = analysisSampleRate;
       return this;
     }
 
+    /**
+     * The analysis channels setter.
+     *
+     * @param analysisChannels The analysis channels.
+     * @return An {@link AudioAnalysisTrack.Builder}.
+     */
     public Builder setAnalysisChannels(Integer analysisChannels) {
       this.analysisChannels = analysisChannels;
       return this;
     }
 
+    /**
+     * The end of fade in introduction setter.
+     *
+     * @param endOfFadeIn The end of fade in introduction in seconds.
+     * @return An {@link AudioAnalysisTrack.Builder}.
+     */
     public Builder setEndOfFadeIn(Float endOfFadeIn) {
       this.endOfFadeIn = endOfFadeIn;
       return this;
     }
 
+    /**
+     * The start of fade out setter.
+     *
+     * @param startOfFadeOut The start of the fade out in seconds.
+     * @return An {@link AudioAnalysisTrack.Builder}.
+     */
     public Builder setStartOfFadeOut(Float startOfFadeOut) {
       this.startOfFadeOut = startOfFadeOut;
       return this;
     }
 
+    /**
+     * The average loudness setter.
+     *
+     * @param loudness Average loudness of the track.
+     * @return An {@link AudioAnalysisTrack.Builder}.
+     */
     public Builder setLoudness(Float loudness) {
       this.loudness = loudness;
       return this;
     }
 
+    /**
+     * The estimated tempo setter.
+     *
+     * @param tempo The estimated tempo of the track.
+     * @return An {@link AudioAnalysisTrack.Builder}.
+     */
     public Builder setTempo(Float tempo) {
       this.tempo = tempo;
       return this;
     }
 
+    /**
+     * The tempo confidence setter.
+     *
+     * @param tempoConfidence The tempo confidence of the track.
+     * @return An {@link AudioAnalysisTrack.Builder}.
+     */
     public Builder setTempoConfidence(Float tempoConfidence) {
       this.tempoConfidence = tempoConfidence;
       return this;
     }
 
+    /**
+     * The time signature setter.
+     *
+     * @param timeSignature Time signature value.
+     * @return An {@link AudioAnalysisTrack.Builder}.
+     */
     public Builder setTimeSignature(Integer timeSignature) {
       this.timeSignature = timeSignature;
       return this;
     }
 
+    /**
+     * The time signature confidence setter.
+     *
+     * @param timeSignatureConfidence The time signature confidence.
+     * @return An {@link AudioAnalysisTrack.Builder}.
+     */
     public Builder setTimeSignatureConfidence(Float timeSignatureConfidence) {
       this.timeSignatureConfidence = timeSignatureConfidence;
       return this;
     }
 
+    /**
+     * The track key setter.
+     *
+     * @param key Main key of the track.
+     * @return An {@link AudioAnalysisTrack.Builder}.
+     */
     public Builder setKey(Integer key) {
       this.key = key;
       return this;
     }
 
+    /**
+     * The key confidence setter.
+     *
+     * @param keyConfidence The key confidence of the track.
+     * @return An {@link AudioAnalysisTrack.Builder}.
+     */
     public Builder setKeyConfidence(Float keyConfidence) {
       this.keyConfidence = keyConfidence;
       return this;
     }
 
+    /**
+     * The track modality setter.
+     *
+     * @param mode The modality type of the track.
+     * @return An {@link AudioAnalysisTrack.Builder}.
+     */
     public Builder setMode(Integer mode) {
       this.mode = mode;
       return this;
     }
 
+    /**
+     * The modality confidence setter.
+     *
+     * @param modeConfidence The modality confidence of the track.
+     * @return An {@link AudioAnalysisTrack.Builder}.
+     */
     public Builder setModeConfidence(Float modeConfidence) {
       this.modeConfidence = modeConfidence;
       return this;
     }
 
+    /**
+     * The code string setter.
+     *
+     * @param codeString The code string of the track.
+     * @return An {@link AudioAnalysisTrack.Builder}.
+     */
     public Builder setCodeString(String codeString) {
       this.codeString = codeString;
       return this;
     }
 
+    /**
+     * The code string version setter.
+     *
+     * @param codeVersion The version of the code string.
+     * @return An {@link AudioAnalysisTrack.Builder}.
+     */
     public Builder setCodeVersion(Float codeVersion) {
       this.codeVersion = codeVersion;
       return this;
     }
 
+    /**
+     * The echoprint string setter.
+     *
+     * @param echoprintString The echoprint string of the track.
+     * @return An {@link AudioAnalysisTrack.Builder}.
+     */
     public Builder setEchoprintString(String echoprintString) {
       this.echoprintString = echoprintString;
       return this;
     }
 
+    /**
+     * The echoprint string version setter.
+     *
+     * @param echoprintVersion The version of the echoprint string.
+     * @return An {@link AudioAnalysisTrack.Builder}.
+     */
     public Builder setEchoprintVersion(Float echoprintVersion) {
       this.echoprintVersion = echoprintVersion;
       return this;
     }
 
+    /**
+     * The synch string setter.
+     *
+     * @param synchString The synch string.
+     * @return An {@link AudioAnalysisTrack.Builder}.
+     */
     public Builder setSynchString(String synchString) {
       this.synchString = synchString;
       return this;
     }
 
+    /**
+     * The synch string version setter.
+     *
+     * @param synchVersion The synch string version.
+     * @return An {@link AudioAnalysisTrack.Builder}.
+     */
     public Builder setSynchVersion(Float synchVersion) {
       this.synchVersion = synchVersion;
       return this;
     }
 
+    /**
+     * The rhythm string setter.
+     *
+     * @param rythmString The rhythm string of the track.
+     * @return An {@link AudioAnalysisTrack.Builder}.
+     */
     public Builder setRythmString(String rythmString) {
       this.rythmString = rythmString;
       return this;
     }
 
+    /**
+     * The rhythm string version setter.
+     *
+     * @param rythmVersion The rhythm string version.
+     * @return An {@link AudioAnalysisTrack.Builder}.
+     */
     public Builder setRythmVersion(Float rythmVersion) {
       this.rythmVersion = rythmVersion;
       return this;
@@ -334,6 +656,9 @@ public class AudioAnalysisTrack extends AbstractModelObject {
     }
   }
 
+  /**
+   * JsonUtil class for building {@link AudioAnalysisTrack} instances.
+   */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<AudioAnalysisTrack> {
     public AudioAnalysisTrack createModelObject(JsonObject jsonObject) {
       if (jsonObject == null || jsonObject.isJsonNull()) {
