@@ -4,7 +4,7 @@ import com.google.gson.JsonObject;
 import com.wrapper.spotify.model_objects.AbstractModelObject;
 
 /**
- * Retrieve information about a playlists tracks by building instances from this class.
+ * Retrieve information about Playlist Track Information objects by building instances from this class.
  */
 public class PlaylistTracksInformation extends AbstractModelObject {
   private final String href;
@@ -18,18 +18,18 @@ public class PlaylistTracksInformation extends AbstractModelObject {
   }
 
   /**
-   * Get the full Spotify API endpoint url of a playlist tracks information object.
+   * Get the Spotify Web API endpoint URL of the playlist tracks object.
    *
-   * @return A Spotify API endpoint url.
+   * @return A Spotify API endpoint URL.
    */
   public String getHref() {
     return href;
   }
 
   /**
-   * Get the total amount of tracks in a playlist.
+   * Get the total amount of tracks in the playlist.
    *
-   * @return The total amount of tracks in a playlist.
+   * @return The total amount of tracks in the playlist.
    */
   public Integer getTotal() {
     return total;
@@ -41,17 +41,17 @@ public class PlaylistTracksInformation extends AbstractModelObject {
   }
 
   /**
-   * Builder class for building playlist tracks information instances.
+   * Builder class for building {@link PlaylistTracksInformation} instances.
    */
   public static final class Builder extends AbstractModelObject.Builder {
     private String href;
     private Integer total;
 
     /**
-     * Set href of Spotify api endpoint of the playlist tracks information object to be built.
+     * Set href of Spotify Web API endpoint of the playlist tracks information object to be built.
      *
-     * @param href Spotify api endpoint url.
-     * @return A builder object.
+     * @param href Spotify Web API endpoint URL.
+     * @return A {@link PlaylistTracksInformation.Builder}.
      */
     public Builder setHref(String href) {
       this.href = href;
@@ -62,7 +62,7 @@ public class PlaylistTracksInformation extends AbstractModelObject {
      * Set the total amount of tracks in the playlist.
      *
      * @param total Total amount of tracks.
-     * @return A builder object.
+     * @return A {@link PlaylistTracksInformation.Builder}.
      */
     public Builder setTotal(Integer total) {
       this.total = total;
@@ -76,7 +76,7 @@ public class PlaylistTracksInformation extends AbstractModelObject {
   }
 
   /**
-   * JsonUtil class for building playlist tracks information instances.
+   * JsonUtil class for building {@link PlaylistTracksInformation} instances.
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<PlaylistTracksInformation> {
     public PlaylistTracksInformation createModelObject(JsonObject jsonObject) {

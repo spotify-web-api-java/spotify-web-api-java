@@ -4,6 +4,10 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.wrapper.spotify.model_objects.AbstractModelObject;
 
+/**
+ * Retrieve information about Playlist Track Position objects by building instances from this class. These objects
+ * contain the position in a playlist, where tracks should be added in a request.
+ */
 public class PlaylistTrackPosition extends AbstractModelObject {
   private final String uri;
   private final int[] positions;
@@ -15,10 +19,21 @@ public class PlaylistTrackPosition extends AbstractModelObject {
     this.positions = builder.positions;
   }
 
+  /**
+   * Get the <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify URI</a> of the
+   * track.
+   *
+   * @return Spotify track URI.
+   */
   public String getUri() {
     return uri;
   }
 
+  /**
+   * Get the position, where the track should be added in the playlist.
+   *
+   * @return Track position.
+   */
   public int[] getPositions() {
     return positions;
   }
@@ -28,6 +43,9 @@ public class PlaylistTrackPosition extends AbstractModelObject {
     return new Builder();
   }
 
+  /**
+   * Builder class for building {@link PlaylistTrackPosition} instances.
+   */
   public static final class Builder extends AbstractModelObject.Builder {
     private String uri;
     private int[] positions;
@@ -48,6 +66,9 @@ public class PlaylistTrackPosition extends AbstractModelObject {
     }
   }
 
+  /**
+   * JsonUtil class for building {@link PlaylistTrackPosition} instances.
+   */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<PlaylistTrackPosition> {
     public PlaylistTrackPosition createModelObject(JsonObject jsonObject) {
       if (jsonObject == null || jsonObject.isJsonNull()) {

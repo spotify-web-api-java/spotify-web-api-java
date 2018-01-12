@@ -185,8 +185,8 @@ public class AudioFeatures extends AbstractModelObject {
   }
 
   /**
-   * Get the estimated overall time signature of the track. The time signature (or meter)
-   * is the number of beats in a bar. <br>
+   * Get the estimated overall time signature of the track. The time signature (or meter) is the number of beats in a
+   * bar. <br>
    * Example: A Viennese waltz has a three-quarters beat, so this method would return the value 3 in this case.
    *
    * @return Time signature value.

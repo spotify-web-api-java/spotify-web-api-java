@@ -3,6 +3,13 @@ package com.wrapper.spotify.model_objects.special;
 import com.google.gson.JsonObject;
 import com.wrapper.spotify.model_objects.AbstractModelObject;
 
+/**
+ * Retrieve information about Snapshot Result objects by building instances from this class. These objects contain a
+ * playlist snapshot ID, which is created after adding or removing tracks from a playlsit.
+ *
+ * <a href="https://developer.spotify.com/web-api/working-with-playlists/#version-control-and-snapshots">
+ *     Spotify: Working With Playlists</a>
+ */
 public class SnapshotResult extends AbstractModelObject {
   public final String snapshotId;
 
@@ -12,6 +19,11 @@ public class SnapshotResult extends AbstractModelObject {
     this.snapshotId = builder.snapshotId;
   }
 
+  /**
+   * Get the snapshot ID.
+   *
+   * @return The snapshot ID.
+   */
   public String getSnapshotId() {
     return snapshotId;
   }
@@ -20,7 +32,9 @@ public class SnapshotResult extends AbstractModelObject {
   public Builder builder() {
     return new Builder();
   }
-
+  /**
+   * Builder class for building {@link SnapshotResult} instances.
+   */
   public static final class Builder extends AbstractModelObject.Builder {
     public String snapshotId;
 
@@ -35,6 +49,9 @@ public class SnapshotResult extends AbstractModelObject {
     }
   }
 
+  /**
+   * JsonUtil class for building {@link SnapshotResult} instances.
+   */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<SnapshotResult> {
     public SnapshotResult createModelObject(JsonObject jsonObject) {
       if (jsonObject == null || jsonObject.isJsonNull()) {
