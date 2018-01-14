@@ -1,56 +1,42 @@
 package com.wrapper.spotify.requests.data.artists;
 
-import com.wrapper.spotify.SpotifyApi;
+import com.wrapper.spotify.ITest;
 import com.wrapper.spotify.TestUtil;
+import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.Artist;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.runners.MockitoJUnitRunner;
 
-import java.util.concurrent.Future;
+import java.io.IOException;
+import java.util.concurrent.ExecutionException;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 
-public class GetArtistsRelatedArtistsRequestTest {
+@RunWith(MockitoJUnitRunner.class)
+public class GetArtistsRelatedArtistsRequestTest implements ITest<Artist[]> {
+  private final GetArtistsRelatedArtistsRequest successRequest = SPOTIFY_API.getArtistsRelatedArtists("id")
+          .setHttpManager(
+                  TestUtil.MockedHttpManager.returningJson(
+                          "requests/data/artists/GetArtistsRelatedArtistsRequest.json"))
+          .build();
 
-  @Test
-  public void shouldGetRelatedArtists_async() throws Exception {
-    final SpotifyApi api = new SpotifyApi.Builder().setAccessToken("AccessToken").build();
-
-    final GetArtistsRelatedArtistsRequest request = api
-            .getArtistsRelatedArtists("0qeei9KQnptjwb8MgkqEoy")
-            .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/artists/GetArtistsRelatedArtistsRequest.json"))
-            .build();
-
-    final Future<Artist[]> requestFuture = request.executeAsync();
-    final Artist[] artists = requestFuture.get();
-
-    assertFalse(artists.length == 0);
-    final Artist firstArtist = artists[0];
-    final String id = firstArtist.getId();
-    assertEquals("https://api.spotify.com/v1/artists/" + id, firstArtist.getHref());
-    assertEquals(id, firstArtist.getId());
-    assertEquals("spotify:artist:" + id, firstArtist.getUri());
+  public GetArtistsRelatedArtistsRequestTest() throws Exception {
   }
 
   @Test
-  public void shouldGetRelatedArtists_sync() throws Exception {
-    final SpotifyApi api = new SpotifyApi.Builder().setAccessToken("AccessToken").build();
-
-    final GetArtistsRelatedArtistsRequest request = api
-            .getArtistsRelatedArtists("0qeei9KQnptjwb8MgkqEoy")
-            .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/artists/GetArtistsRelatedArtistsRequest.json"))
-            .build();
-
-    final Artist[] artists = request.execute();
-
-
-    assertFalse(artists.length == 0);
-    final Artist firstArtist = artists[0];
-    final String id = firstArtist.getId();
-    assertEquals("https://api.spotify.com/v1/artists/" + id, firstArtist.getHref());
-    assertEquals(id, firstArtist.getId());
-    assertEquals("spotify:artist:" + id, firstArtist.getUri());
+  public void shouldSucceed_sync() throws IOException, SpotifyWebApiException {
+    shouldSucceed(successRequest.execute());
   }
 
+  @Test
+  public void shouldSucceed_async() throws ExecutionException, InterruptedException {
+    shouldSucceed((Artist[]) successRequest.executeAsync().get());
+  }
 
+  public void shouldSucceed(final Artist[] artists) {
+    assertEquals(
+            20,
+            artists.length);
+  }
 }

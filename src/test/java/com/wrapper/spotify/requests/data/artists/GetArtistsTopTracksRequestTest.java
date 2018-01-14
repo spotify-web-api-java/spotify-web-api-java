@@ -1,86 +1,43 @@
 package com.wrapper.spotify.requests.data.artists;
 
 import com.neovisionaries.i18n.CountryCode;
-import com.wrapper.spotify.SpotifyApi;
+import com.wrapper.spotify.ITest;
 import com.wrapper.spotify.TestUtil;
-import com.wrapper.spotify.enums.ModelObjectType;
+import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.Track;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import java.util.concurrent.Future;
+import java.io.IOException;
+import java.util.concurrent.ExecutionException;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 @RunWith(MockitoJUnitRunner.class)
-public class GetArtistsTopTracksRequestTest {
+public class GetArtistsTopTracksRequestTest implements ITest<Track[]> {
+  private final GetArtistsTopTracksRequest successRequest = SPOTIFY_API.getArtistsTopTracks("id", CountryCode.UNDEFINED)
+          .setHttpManager(
+                  TestUtil.MockedHttpManager.returningJson(
+                          "requests/data/artists/GetArtistsTopTracksRequest.json"))
+          .build();
 
-  @Test
-  public void shouldGetTracksResult_async() throws Exception {
-    final SpotifyApi api = new SpotifyApi.Builder().setAccessToken("AccessToken").build();
-
-    final GetArtistsTopTracksRequest request = api.getArtistsTopTracks("43ZHCT0cAZBISjO8DG9PnE", CountryCode.GB)
-            .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/artists/GetArtistsTopTracksRequest.json"))
-            .build();
-
-    final Future<Track[]> requestFuture = request.executeAsync();
-    final Track[] tracks = requestFuture.get();
-
-    assertTrue(tracks.length > 0);
-
-    Track firstTrack = tracks[0];
-
-    assertNotNull(firstTrack.getAlbum());
-    assertNotNull(firstTrack.getArtists());
-    assertNotNull(firstTrack.getAvailableMarkets());
-    assertTrue(firstTrack.getDiscNumber() > 0);
-    assertTrue(firstTrack.getDurationMs() > 0);
-    assertNotNull(firstTrack.getIsExplicit());
-    assertNotNull(firstTrack.getExternalIds());
-
-    String id = firstTrack.getId();
-    assertNotNull(firstTrack.getId());
-    assertEquals("https://open.spotify.com/track/" + id, firstTrack.getExternalUrls().get("spotify"));
-    assertEquals("https://api.spotify.com/v1/tracks/" + id, firstTrack.getHref());
-    assertTrue(firstTrack.getPopularity() >= 0 && firstTrack.getPopularity() <= 100);
-    assertNotNull(firstTrack.getPreviewUrl());
-    assertTrue(firstTrack.getTrackNumber() >= 0);
-    assertEquals(ModelObjectType.TRACK, firstTrack.getType());
-    assertEquals("spotify:track:" + id, firstTrack.getUri());
+  public GetArtistsTopTracksRequestTest() throws Exception {
   }
 
   @Test
-  public void shouldGetTracksResult_sync() throws Exception {
-    final SpotifyApi api = new SpotifyApi.Builder().setAccessToken("AccessToken").build();
-
-    final GetArtistsTopTracksRequest request = api.getArtistsTopTracks("43ZHCT0cAZBISjO8DG9PnE", CountryCode.GB)
-            .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/artists/GetArtistsTopTracksRequest.json"))
-            .build();
-
-    final Track[] tracks = request.execute();
-
-    assertTrue(tracks.length > 0);
-
-    Track firstTrack = tracks[0];
-
-    assertNotNull(firstTrack.getAlbum());
-    assertNotNull(firstTrack.getArtists());
-    assertNotNull(firstTrack.getAvailableMarkets());
-    assertTrue(firstTrack.getDiscNumber() > 0);
-    assertTrue(firstTrack.getDurationMs() > 0);
-    assertNotNull(firstTrack.getIsExplicit());
-    assertNotNull(firstTrack.getExternalIds());
-
-    String id = firstTrack.getId();
-    assertNotNull(firstTrack.getId());
-    assertEquals("https://open.spotify.com/track/" + id, firstTrack.getExternalUrls().get("spotify"));
-    assertEquals("https://api.spotify.com/v1/tracks/" + id, firstTrack.getHref());
-    assertTrue(firstTrack.getPopularity() >= 0 && firstTrack.getPopularity() <= 100);
-    assertNotNull(firstTrack.getPreviewUrl());
-    assertTrue(firstTrack.getTrackNumber() >= 0);
-    assertEquals(ModelObjectType.TRACK, firstTrack.getType());
-    assertEquals("spotify:track:" + id, firstTrack.getUri());
+  public void shouldSucceed_sync() throws IOException, SpotifyWebApiException {
+    shouldSucceed(successRequest.execute());
   }
 
+  @Test
+  public void shouldSucceed_async() throws ExecutionException, InterruptedException {
+    shouldSucceed((Track[]) successRequest.executeAsync().get());
+  }
+
+  public void shouldSucceed(final Track[] tracks) {
+    assertEquals(
+            10,
+            tracks.length);
+  }
 }
