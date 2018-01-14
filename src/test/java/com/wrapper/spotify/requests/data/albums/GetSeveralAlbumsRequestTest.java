@@ -17,11 +17,11 @@ import static org.junit.Assert.assertNull;
 @RunWith(MockitoJUnitRunner.class)
 public class GetSeveralAlbumsRequestTest implements ITest<Album[]> {
 
-  private final GetSeveralAlbumsRequest successRequest = SPOTIFY_API.getSeveralAlbums("2hYe61Nd2oOoM6RYCwIma1")
+  private final GetSeveralAlbumsRequest successRequest = SPOTIFY_API.getSeveralAlbums("id")
           .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/albums/GetSeveralAlbumsRequest.json"))
           .build();
 
-  private final GetSeveralAlbumsRequest failureRequest = SPOTIFY_API.getSeveralAlbums("DOES_NOT_EXIST")
+  private final GetSeveralAlbumsRequest failureRequest = SPOTIFY_API.getSeveralAlbums("id")
           .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/albums/GetSeveralAlbumsRequest_None.json"))
           .build();
 
@@ -40,7 +40,7 @@ public class GetSeveralAlbumsRequestTest implements ITest<Album[]> {
 
   public void shouldSucceed(final Album[] albums) {
     assertEquals(
-            1,
+            3,
             albums.length);
   }
 

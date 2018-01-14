@@ -78,7 +78,7 @@ public class AudioAnalysisSegment extends AbstractModelObject {
 
   /**
    * Get the pitches of the segment. <br><br>
-   *
+   * <p>
    * Pitch content is given by a "chroma" vector, corresponding to the 12 pitch classes C, C#, D to B, with values
    * ranging from 0 to 1 that describe the relative dominance of every pitch in the chromatic scale. For example a C
    * Major chord would likely be represented by large values of C, E and G (i.e. classes 0, 4, and 7). Vectors are
@@ -93,7 +93,7 @@ public class AudioAnalysisSegment extends AbstractModelObject {
 
   /**
    * Get the timbre of the segment. <br><br>
-   *
+   * <p>
    * The timbre is the quality of a musical note or sound that distinguishes different types of musical instruments, or
    * voices. It is a complex notion also referred to as sound color, texture, or tone quality, and is derived from the
    * shape of a segments spectro-temporal surface, independently of pitch and loudness.

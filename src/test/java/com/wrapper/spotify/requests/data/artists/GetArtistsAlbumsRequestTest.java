@@ -38,25 +38,25 @@ public class GetArtistsAlbumsRequestTest implements ITest<Paging<AlbumSimplified
 
   public void shouldSucceed(final Paging<AlbumSimplified> albumSimplifiedPaging) {
     assertEquals(
-            "https://api.spotify.com/v1/artists/1vCWHaC5f2uS3yhpwWbIA6/albums?offset=0&limit=2&album_type=single&market=US",
+            "https://api.spotify.com/v1/artists/0TnOYISbd1XYRBk9myaseg/albums?offset=5&limit=10&album_type=single,album&market=ES",
             albumSimplifiedPaging.getHref());
     assertEquals(
-            2,
+            10,
             albumSimplifiedPaging.getItems().length);
     assertEquals(
-            2,
+            10,
             (int) albumSimplifiedPaging.getLimit());
     assertEquals(
-            "https://api.spotify.com/v1/artists/1vCWHaC5f2uS3yhpwWbIA6/albums?offset=2&limit=2&album_type=single&market=US",
+            "https://api.spotify.com/v1/artists/0TnOYISbd1XYRBk9myaseg/albums?offset=15&limit=10&album_type=single,album&market=ES",
             albumSimplifiedPaging.getNext());
     assertEquals(
-            0,
+            5,
             (int) albumSimplifiedPaging.getOffset());
     assertEquals(
-            null,
+            "https://api.spotify.com/v1/artists/0TnOYISbd1XYRBk9myaseg/albums?offset=0&limit=10&album_type=single,album&market=ES",
             albumSimplifiedPaging.getPrevious());
     assertEquals(
-            46,
+            99,
             (int) albumSimplifiedPaging.getTotal());
   }
 }

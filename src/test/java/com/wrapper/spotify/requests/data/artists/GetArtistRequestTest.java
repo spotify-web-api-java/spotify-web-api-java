@@ -37,34 +37,34 @@ public class GetArtistRequestTest implements ITest<Artist> {
 
   public void shouldSucceed(final Artist artist) {
     assertEquals(
-            "https://open.spotify.com/artist/2BTZIqw0ntH9MvilQ3ewNY",
+            "https://open.spotify.com/artist/0TnOYISbd1XYRBk9myaseg",
             artist.getExternalUrls().get("spotify"));
     assertEquals(
-            87836,
+            4715206,
             (int) artist.getFollowers().getTotal());
     assertEquals(
-            "new wave pop",
+            "dance pop",
             artist.getGenres()[0]);
     assertEquals(
-            "https://api.spotify.com/v1/artists/2BTZIqw0ntH9MvilQ3ewNY",
+            "https://api.spotify.com/v1/artists/0TnOYISbd1XYRBk9myaseg",
             artist.getHref());
     assertEquals(
-            "2BTZIqw0ntH9MvilQ3ewNY",
+            "0TnOYISbd1XYRBk9myaseg",
             artist.getId());
     assertEquals(
-            4,
+            3,
             artist.getImages().length);
     assertEquals(
-            "Cyndi Lauper",
+            "Pitbull",
             artist.getName());
     assertEquals(
-            64,
+            85,
             (int) artist.getPopularity());
     assertEquals(
             ModelObjectType.ARTIST,
             artist.getType());
     assertEquals(
-            "spotify:artist:2BTZIqw0ntH9MvilQ3ewNY",
+            "spotify:artist:0TnOYISbd1XYRBk9myaseg",
             artist.getUri());
   }
 }

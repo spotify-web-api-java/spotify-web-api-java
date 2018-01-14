@@ -8,7 +8,7 @@ import com.wrapper.spotify.model_objects.AbstractModelObject;
 
 /**
  * Retrieve information about <a href="https://developer.spotify.com/web-api/object-model/#track-object-simplified">
- *     simplified Track objects</a> by building instances from this class.
+ * simplified Track objects</a> by building instances from this class.
  */
 public class TrackSimplified extends AbstractModelObject {
   private final ArtistSimplified[] artists;
@@ -51,7 +51,7 @@ public class TrackSimplified extends AbstractModelObject {
    * Get the artists who performed the track.
    *
    * @return The artists who performed the track. Each artist object includes a link in {@code href} to more detailed
-   *         information about the artist.
+   * information about the artist.
    */
   public ArtistSimplified[] getArtists() {
     return artists;
@@ -61,7 +61,7 @@ public class TrackSimplified extends AbstractModelObject {
    * Get the country codes of all countries, in which the track is available.
    *
    * @return A list of the countries in which the track can be played, identified by their
-   *         <a href="http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2</a> code.
+   * <a href="http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2</a> code.
    */
   public CountryCode[] getAvailableMarkets() {
     return availableMarkets;
@@ -89,7 +89,7 @@ public class TrackSimplified extends AbstractModelObject {
    * Check whether the track is explicit or not.
    *
    * @return Whether or not the track has explicit lyrics ({@code true} = yes it does; {@code false} = no it does not
-   *         <b>OR</b> unknown).
+   * <b>OR</b> unknown).
    */
   public Boolean getIsExplicit() {
     return explicit;
@@ -187,7 +187,7 @@ public class TrackSimplified extends AbstractModelObject {
    * Get the Spotify track URI.
    *
    * @return The <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify URI</a> for
-   *         the track.
+   * the track.
    */
   public String getUri() {
     return uri;

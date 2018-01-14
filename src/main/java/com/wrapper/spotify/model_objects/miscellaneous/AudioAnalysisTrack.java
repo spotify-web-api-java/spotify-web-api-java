@@ -85,7 +85,7 @@ public class AudioAnalysisTrack extends AbstractModelObject {
 
   /**
    * Get the sample MD5. <br><br>
-   *
+   * <p>
    * <b>Note:</b> The sample MD5 is <b>probably</b> the MD5 of the track file. In the documentaion of the Analyzer
    * software, this field is mentioned in an example and contains a value, but it seems that audio analysis objects
    * returned by the Spotify Web API doesn't include a value in the field anymore. <br>
@@ -244,7 +244,7 @@ public class AudioAnalysisTrack extends AbstractModelObject {
 
   /**
    * Get the code string of the track. <br><br>
-   *
+   * <p>
    * <b>Note:</b> The code string is a fingerprint computed on the audio and were used by the Echo Nest services for
    * song identification, which are no longer available.
    *
@@ -265,7 +265,7 @@ public class AudioAnalysisTrack extends AbstractModelObject {
 
   /**
    * Get the echoprint string of the track. <br><br>
-   *
+   * <p>
    * <b>Note:</b> The echoprint string is a fingerprint computed on the audio and were used by the Echo Nest services
    * for song identification, which are no longer available.
    *
@@ -286,7 +286,7 @@ public class AudioAnalysisTrack extends AbstractModelObject {
 
   /**
    * Get the synch string of the track. <br>
-   *
+   * <p>
    * It works with a simple synchronization algorithm to be implemented on the client side, which generates offset
    * values in numbers of samples for 3 locations in the decoded waveform, the beginning, the middle, and the end. These
    * offsets allow the client application to detect decoding errors (when offsets mismatch). They provide for synching
@@ -310,7 +310,7 @@ public class AudioAnalysisTrack extends AbstractModelObject {
 
   /**
    * Get the rhythm string of the track.
-   *
+   * <p>
    * TODO: Correct method and field spelling (rythm - rhythm)
    *
    * @return The rhythm string of the track.

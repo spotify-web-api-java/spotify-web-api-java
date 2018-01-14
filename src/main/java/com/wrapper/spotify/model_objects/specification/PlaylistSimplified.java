@@ -8,7 +8,7 @@ import com.wrapper.spotify.requests.data.search.interfaces.ISearchModelObject;
 
 /**
  * Retrieve information about <a href="https://developer.spotify.com/web-api/object-model/#playlist-object-simplified">
- *     simplified Playlist objects</a> by building instances from this class.
+ * simplified Playlist objects</a> by building instances from this class.
  */
 public class PlaylistSimplified extends AbstractModelObject implements ISearchModelObject {
   private final Boolean collaborative;
@@ -46,8 +46,8 @@ public class PlaylistSimplified extends AbstractModelObject implements ISearchMo
    *
    * @return {@code true} if the owner allows other users to modify the playlist, {@code false} if not.
    * @see <a
-   *      href="https://developer.spotify.com/web-api/working-with-playlists/#public-private-and-collaborative-status">
-   *      Spotify: Working With Playlists</a>
+   * href="https://developer.spotify.com/web-api/working-with-playlists/#public-private-and-collaborative-status">
+   * Spotify: Working With Playlists</a>
    */
   public Boolean getIsCollaborative() {
     return collaborative;
@@ -89,7 +89,7 @@ public class PlaylistSimplified extends AbstractModelObject implements ISearchMo
    *
    * @return An array of images in different sizes.
    * @see <a href="https://developer.spotify.com/web-api/working-with-playlists/#using-playlist-images">
-   *      Spotify: Working With Playlists</a>
+   * Spotify: Working With Playlists</a>
    */
   public Image[] getImages() {
     return images;
@@ -117,10 +117,10 @@ public class PlaylistSimplified extends AbstractModelObject implements ISearchMo
    * Check whether a playlist is available in public or is private.
    *
    * @return {@code true} the playlist is public, {@code false} the playlist is private, {@code null}
-   *         the playlist status is not relevant.
+   * the playlist status is not relevant.
    * @see <a
-   *      href="https://developer.spotify.com/web-api/working-with-playlists/#public-private-and-collaborative-status">
-   *      Spotify: Working With Playlists</a>
+   * href="https://developer.spotify.com/web-api/working-with-playlists/#public-private-and-collaborative-status">
+   * Spotify: Working With Playlists</a>
    */
   public Boolean getIsPublicAccess() {
     return publicAccess;

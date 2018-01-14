@@ -10,7 +10,7 @@ import java.util.logging.Level;
 
 /**
  * Retrieve information about <a href="https://developer.spotify.com/web-api/object-model/#saved-album-object">
- *     Saved Album objects</a> by building instances from this class.
+ * Saved Album objects</a> by building instances from this class.
  */
 public class SavedAlbum extends AbstractModelObject {
   private final Date addedAt;

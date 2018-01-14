@@ -10,7 +10,7 @@ import java.util.logging.Level;
 
 /**
  * Retrieve information about <a href="https://developer.spotify.com/web-api/object-model/#playlist-track-object">
- *     Playlist Track objects</a> by building instances from this class.
+ * Playlist Track objects</a> by building instances from this class.
  */
 public class PlaylistTrack extends AbstractModelObject {
   private final Date addedAt;

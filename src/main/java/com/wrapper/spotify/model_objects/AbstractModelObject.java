@@ -21,7 +21,7 @@ public abstract class AbstractModelObject implements IModelObject {
    * @param builder The builder object of the corresponding model object.
    */
   protected AbstractModelObject(final Builder builder) {
-    assert(builder != null);
+    assert (builder != null);
 
     simpleDateFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
   }

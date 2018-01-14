@@ -8,7 +8,7 @@ import com.wrapper.spotify.model_objects.AbstractModelObject;
  * Audio Analysis objects</a> by building instances from this class. <br>
  * These objects contain a great amount of additional information to
  * {@link com.wrapper.spotify.model_objects.specification.AudioFeatures} objects. <br><br>
- *
+ * <p>
  * <b>Note:</b> Audio Analysis data is created by the Software "Analyzer" by "The Echo Nest", which has been bought by
  * Spotify in the past. Since then, new Analyzer versions were created by Spotify but there is a lack of documentation
  * on the side of Spotify, so it is possible that this Javadoc page (and other Audio Analysis related Javadoc pages)

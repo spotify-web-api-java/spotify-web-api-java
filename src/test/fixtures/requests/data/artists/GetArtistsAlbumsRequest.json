@@ -1,92 +1,924 @@
 {
-  "href": "https://api.spotify.com/v1/artists/1vCWHaC5f2uS3yhpwWbIA6/albums?offset=0&limit=2&album_type=single&market=US",
+  "href": "https://api.spotify.com/v1/artists/0TnOYISbd1XYRBk9myaseg/albums?offset=5&limit=10&album_type=single,album&market=ES",
   "items": [
     {
-      "album_type": "single",
+      "album_type": "album",
       "artists": [
         {
           "external_urls": {
-            "spotify": "https://open.spotify.com/artist/1vCWHaC5f2uS3yhpwWbIA6"
+            "spotify": "https://open.spotify.com/artist/0TnOYISbd1XYRBk9myaseg"
           },
-          "href": "https://api.spotify.com/v1/artists/1vCWHaC5f2uS3yhpwWbIA6",
-          "id": "1vCWHaC5f2uS3yhpwWbIA6",
-          "name": "Avicii",
+          "href": "https://api.spotify.com/v1/artists/0TnOYISbd1XYRBk9myaseg",
+          "id": "0TnOYISbd1XYRBk9myaseg",
+          "name": "Pitbull",
           "type": "artist",
-          "uri": "spotify:artist:1vCWHaC5f2uS3yhpwWbIA6"
+          "uri": "spotify:artist:0TnOYISbd1XYRBk9myaseg"
         }
       ],
-      "available_markets": [],
+      "available_markets": [
+        "AD",
+        "AR",
+        "AT",
+        "AU",
+        "BE",
+        "BG",
+        "BO",
+        "BR",
+        "CA",
+        "CH",
+        "CL",
+        "CO",
+        "CR",
+        "CY",
+        "CZ",
+        "DE",
+        "DK",
+        "DO",
+        "EC",
+        "EE",
+        "ES",
+        "FI",
+        "FR",
+        "GB",
+        "GR",
+        "GT",
+        "HK",
+        "HN",
+        "HU",
+        "ID",
+        "IE",
+        "IS",
+        "IT",
+        "JP",
+        "LI",
+        "LT",
+        "LU",
+        "LV",
+        "MC",
+        "MT",
+        "MX",
+        "MY",
+        "NI",
+        "NL",
+        "NO",
+        "NZ",
+        "PA",
+        "PE",
+        "PH",
+        "PL",
+        "PT",
+        "PY",
+        "SE",
+        "SG",
+        "SK",
+        "SV",
+        "TH",
+        "TR",
+        "TW",
+        "US",
+        "UY",
+        "VN"
+      ],
       "external_urls": {
-        "spotify": "https://open.spotify.com/album/31gLK2SKwtqNogrwMRIyQ0"
+        "spotify": "https://open.spotify.com/album/4aawyAB9vmqN3uQ7FjRGTy"
       },
-      "href": "https://api.spotify.com/v1/albums/31gLK2SKwtqNogrwMRIyQ0",
-      "id": "31gLK2SKwtqNogrwMRIyQ0",
+      "href": "https://api.spotify.com/v1/albums/4aawyAB9vmqN3uQ7FjRGTy",
+      "id": "4aawyAB9vmqN3uQ7FjRGTy",
       "images": [
         {
           "height": 640,
-          "url": "https://i.scdn.co/image/748bd48cd36fef691914fec4bbed02b2050a3fec",
+          "url": "https://i.scdn.co/image/3edb3f970f4a3af9ef922efd18cdb4dabaf85ced",
           "width": 640
         },
         {
           "height": 300,
-          "url": "https://i.scdn.co/image/bba7aa084785434a49611480b9d1f34d3235d1c3",
+          "url": "https://i.scdn.co/image/b6be520fd1dc9feb84100be40f63de4f80694f18",
           "width": 300
         },
         {
           "height": 64,
-          "url": "https://i.scdn.co/image/4b6c10740d42f84fb518807b01ff26d7af0045d3",
+          "url": "https://i.scdn.co/image/cd113be5fef83497992e17eb923b674187f7aaef",
           "width": 64
         }
       ],
-      "name": "Lonely Together (Remixes)",
+      "name": "Global Warming",
       "type": "album",
-      "uri": "spotify:album:31gLK2SKwtqNogrwMRIyQ0"
+      "uri": "spotify:album:4aawyAB9vmqN3uQ7FjRGTy"
     },
     {
-      "album_type": "single",
+      "album_type": "album",
       "artists": [
         {
           "external_urls": {
-            "spotify": "https://open.spotify.com/artist/1vCWHaC5f2uS3yhpwWbIA6"
+            "spotify": "https://open.spotify.com/artist/0TnOYISbd1XYRBk9myaseg"
           },
-          "href": "https://api.spotify.com/v1/artists/1vCWHaC5f2uS3yhpwWbIA6",
-          "id": "1vCWHaC5f2uS3yhpwWbIA6",
-          "name": "Avicii",
+          "href": "https://api.spotify.com/v1/artists/0TnOYISbd1XYRBk9myaseg",
+          "id": "0TnOYISbd1XYRBk9myaseg",
+          "name": "Pitbull",
           "type": "artist",
-          "uri": "spotify:artist:1vCWHaC5f2uS3yhpwWbIA6"
+          "uri": "spotify:artist:0TnOYISbd1XYRBk9myaseg"
         }
       ],
-      "available_markets": [],
+      "available_markets": [
+        "AD",
+        "AR",
+        "AT",
+        "AU",
+        "BE",
+        "BG",
+        "BO",
+        "BR",
+        "CA",
+        "CH",
+        "CL",
+        "CO",
+        "CR",
+        "CY",
+        "CZ",
+        "DE",
+        "DK",
+        "DO",
+        "EC",
+        "EE",
+        "ES",
+        "FI",
+        "FR",
+        "GB",
+        "GR",
+        "GT",
+        "HK",
+        "HN",
+        "HU",
+        "ID",
+        "IE",
+        "IS",
+        "IT",
+        "JP",
+        "LI",
+        "LT",
+        "LU",
+        "LV",
+        "MC",
+        "MT",
+        "MX",
+        "MY",
+        "NI",
+        "NL",
+        "NO",
+        "NZ",
+        "PA",
+        "PE",
+        "PH",
+        "PL",
+        "PT",
+        "PY",
+        "SE",
+        "SG",
+        "SK",
+        "SV",
+        "TH",
+        "TR",
+        "TW",
+        "US",
+        "UY",
+        "VN"
+      ],
       "external_urls": {
-        "spotify": "https://open.spotify.com/album/3IPBaA3vOQN7aGCQoZU40K"
+        "spotify": "https://open.spotify.com/album/4brEzXAZB8SWqgQIOBn7nF"
       },
-      "href": "https://api.spotify.com/v1/albums/3IPBaA3vOQN7aGCQoZU40K",
-      "id": "3IPBaA3vOQN7aGCQoZU40K",
+      "href": "https://api.spotify.com/v1/albums/4brEzXAZB8SWqgQIOBn7nF",
+      "id": "4brEzXAZB8SWqgQIOBn7nF",
       "images": [
         {
           "height": 640,
-          "url": "https://i.scdn.co/image/05b4171a8ad713f09ee378f1f0baceb95e1d219e",
+          "url": "https://i.scdn.co/image/4d3273b6765ec41b64c92932c2c32d96c58a237b",
           "width": 640
         },
         {
           "height": 300,
-          "url": "https://i.scdn.co/image/820f50675ae1163eafded092c013975a0bf31842",
+          "url": "https://i.scdn.co/image/3265fff0580ddb064f455483462d3d7e80425d14",
           "width": 300
         },
         {
           "height": 64,
-          "url": "https://i.scdn.co/image/e2f8035dc13761879177c3601044aa16fcde8365",
+          "url": "https://i.scdn.co/image/51d2b149c1e9fa09245a6e15c19346e7714cbf36",
           "width": 64
         }
       ],
-      "name": "Lonely Together (Acoustic)",
+      "name": "I Am Armando (Armando Reloaded)",
       "type": "album",
-      "uri": "spotify:album:3IPBaA3vOQN7aGCQoZU40K"
+      "uri": "spotify:album:4brEzXAZB8SWqgQIOBn7nF"
+    },
+    {
+      "album_type": "album",
+      "artists": [
+        {
+          "external_urls": {
+            "spotify": "https://open.spotify.com/artist/0TnOYISbd1XYRBk9myaseg"
+          },
+          "href": "https://api.spotify.com/v1/artists/0TnOYISbd1XYRBk9myaseg",
+          "id": "0TnOYISbd1XYRBk9myaseg",
+          "name": "Pitbull",
+          "type": "artist",
+          "uri": "spotify:artist:0TnOYISbd1XYRBk9myaseg"
+        }
+      ],
+      "available_markets": [
+        "AD",
+        "AR",
+        "AT",
+        "AU",
+        "BE",
+        "BG",
+        "BO",
+        "BR",
+        "CA",
+        "CH",
+        "CL",
+        "CO",
+        "CR",
+        "CY",
+        "CZ",
+        "DE",
+        "DK",
+        "DO",
+        "EC",
+        "EE",
+        "ES",
+        "FI",
+        "FR",
+        "GB",
+        "GR",
+        "GT",
+        "HK",
+        "HN",
+        "HU",
+        "ID",
+        "IE",
+        "IS",
+        "IT",
+        "JP",
+        "LI",
+        "LT",
+        "LU",
+        "LV",
+        "MC",
+        "MT",
+        "MX",
+        "MY",
+        "NI",
+        "NL",
+        "NO",
+        "NZ",
+        "PA",
+        "PE",
+        "PH",
+        "PL",
+        "PT",
+        "PY",
+        "SE",
+        "SG",
+        "SK",
+        "SV",
+        "TH",
+        "TR",
+        "TW",
+        "US",
+        "UY",
+        "VN"
+      ],
+      "external_urls": {
+        "spotify": "https://open.spotify.com/album/4rG0MhkU6UojACJxkMHIXB"
+      },
+      "href": "https://api.spotify.com/v1/albums/4rG0MhkU6UojACJxkMHIXB",
+      "id": "4rG0MhkU6UojACJxkMHIXB",
+      "images": [
+        {
+          "height": 636,
+          "url": "https://i.scdn.co/image/8f8245bee4d922f0ab68f0827623e5a57717fced",
+          "width": 640
+        },
+        {
+          "height": 298,
+          "url": "https://i.scdn.co/image/ca773d0f9776dec1769be54603ebbe56748d51fe",
+          "width": 300
+        },
+        {
+          "height": 64,
+          "url": "https://i.scdn.co/image/20e38c821e9d6b97bb2293b1e0baf6dae0a50849",
+          "width": 64
+        }
+      ],
+      "name": "Planet Pit (Deluxe Version)",
+      "type": "album",
+      "uri": "spotify:album:4rG0MhkU6UojACJxkMHIXB"
+    },
+    {
+      "album_type": "album",
+      "artists": [
+        {
+          "external_urls": {
+            "spotify": "https://open.spotify.com/artist/0TnOYISbd1XYRBk9myaseg"
+          },
+          "href": "https://api.spotify.com/v1/artists/0TnOYISbd1XYRBk9myaseg",
+          "id": "0TnOYISbd1XYRBk9myaseg",
+          "name": "Pitbull",
+          "type": "artist",
+          "uri": "spotify:artist:0TnOYISbd1XYRBk9myaseg"
+        }
+      ],
+      "available_markets": [
+        "AD",
+        "AR",
+        "AT",
+        "AU",
+        "BE",
+        "BG",
+        "BO",
+        "BR",
+        "CA",
+        "CH",
+        "CL",
+        "CO",
+        "CR",
+        "CY",
+        "CZ",
+        "DE",
+        "DK",
+        "DO",
+        "EC",
+        "EE",
+        "ES",
+        "FI",
+        "FR",
+        "GB",
+        "GR",
+        "GT",
+        "HK",
+        "HN",
+        "HU",
+        "ID",
+        "IE",
+        "IS",
+        "IT",
+        "JP",
+        "LI",
+        "LT",
+        "LU",
+        "LV",
+        "MC",
+        "MT",
+        "MX",
+        "MY",
+        "NI",
+        "NL",
+        "NO",
+        "NZ",
+        "PA",
+        "PE",
+        "PH",
+        "PL",
+        "PT",
+        "PY",
+        "SE",
+        "SG",
+        "SK",
+        "SV",
+        "TH",
+        "TR",
+        "TW",
+        "US",
+        "UY",
+        "VN"
+      ],
+      "external_urls": {
+        "spotify": "https://open.spotify.com/album/6gDS2GqnfUDKDls11aNDDy"
+      },
+      "href": "https://api.spotify.com/v1/albums/6gDS2GqnfUDKDls11aNDDy",
+      "id": "6gDS2GqnfUDKDls11aNDDy",
+      "images": [
+        {
+          "height": 640,
+          "url": "https://i.scdn.co/image/c94f014cefb65afff59fa6fbdde797412dc089bc",
+          "width": 640
+        },
+        {
+          "height": 300,
+          "url": "https://i.scdn.co/image/666f464161896911ee90742ea7e39e35ba8e5fba",
+          "width": 300
+        },
+        {
+          "height": 64,
+          "url": "https://i.scdn.co/image/0432fdaa0b7f812150111212f68f10aaa314b858",
+          "width": 64
+        }
+      ],
+      "name": "Armando",
+      "type": "album",
+      "uri": "spotify:album:6gDS2GqnfUDKDls11aNDDy"
+    },
+    {
+      "album_type": "album",
+      "artists": [
+        {
+          "external_urls": {
+            "spotify": "https://open.spotify.com/artist/0TnOYISbd1XYRBk9myaseg"
+          },
+          "href": "https://api.spotify.com/v1/artists/0TnOYISbd1XYRBk9myaseg",
+          "id": "0TnOYISbd1XYRBk9myaseg",
+          "name": "Pitbull",
+          "type": "artist",
+          "uri": "spotify:artist:0TnOYISbd1XYRBk9myaseg"
+        }
+      ],
+      "available_markets": [],
+      "external_urls": {
+        "spotify": "https://open.spotify.com/album/5xLAcbvbSAlRtPXnKkggXA"
+      },
+      "href": "https://api.spotify.com/v1/albums/5xLAcbvbSAlRtPXnKkggXA",
+      "id": "5xLAcbvbSAlRtPXnKkggXA",
+      "images": [
+        {
+          "height": 640,
+          "url": "https://i.scdn.co/image/33155f0b0a431c181d8dcca0a6ca2b3b0a0636c3",
+          "width": 640
+        },
+        {
+          "height": 300,
+          "url": "https://i.scdn.co/image/9b9bddde294bbfb8e90618e2cfda0a757c7f25f3",
+          "width": 300
+        },
+        {
+          "height": 64,
+          "url": "https://i.scdn.co/image/a2cd45870bf7481855680eba767afad62fabcd31",
+          "width": 64
+        }
+      ],
+      "name": "Pitbull Starring In Rebelution",
+      "type": "album",
+      "uri": "spotify:album:5xLAcbvbSAlRtPXnKkggXA"
+    },
+    {
+      "album_type": "album",
+      "artists": [
+        {
+          "external_urls": {
+            "spotify": "https://open.spotify.com/artist/0TnOYISbd1XYRBk9myaseg"
+          },
+          "href": "https://api.spotify.com/v1/artists/0TnOYISbd1XYRBk9myaseg",
+          "id": "0TnOYISbd1XYRBk9myaseg",
+          "name": "Pitbull",
+          "type": "artist",
+          "uri": "spotify:artist:0TnOYISbd1XYRBk9myaseg"
+        }
+      ],
+      "available_markets": [
+        "AD",
+        "AR",
+        "AT",
+        "AU",
+        "BE",
+        "BG",
+        "BO",
+        "BR",
+        "CA",
+        "CH",
+        "CL",
+        "CO",
+        "CR",
+        "CY",
+        "CZ",
+        "DE",
+        "DK",
+        "DO",
+        "EC",
+        "EE",
+        "ES",
+        "FI",
+        "FR",
+        "GB",
+        "GR",
+        "GT",
+        "HK",
+        "HN",
+        "HU",
+        "ID",
+        "IE",
+        "IS",
+        "IT",
+        "JP",
+        "LI",
+        "LT",
+        "LU",
+        "LV",
+        "MC",
+        "MT",
+        "MX",
+        "MY",
+        "NI",
+        "NL",
+        "NO",
+        "NZ",
+        "PA",
+        "PE",
+        "PH",
+        "PL",
+        "PT",
+        "PY",
+        "SE",
+        "SG",
+        "SK",
+        "SV",
+        "TH",
+        "TR",
+        "TW",
+        "US",
+        "UY",
+        "VN"
+      ],
+      "external_urls": {
+        "spotify": "https://open.spotify.com/album/00zN65JStpVnpJn9ckMsQI"
+      },
+      "href": "https://api.spotify.com/v1/albums/00zN65JStpVnpJn9ckMsQI",
+      "id": "00zN65JStpVnpJn9ckMsQI",
+      "images": [
+        {
+          "height": 636,
+          "url": "https://i.scdn.co/image/cffd10f4474547c3ecd96da3b71649851af1cc21",
+          "width": 640
+        },
+        {
+          "height": 298,
+          "url": "https://i.scdn.co/image/06a0319415a3279e004b46590f0c06ce2906715f",
+          "width": 300
+        },
+        {
+          "height": 64,
+          "url": "https://i.scdn.co/image/a703caca90066d299aec2697e115b314219cdf79",
+          "width": 64
+        }
+      ],
+      "name": "Pitbull Starring In Rebelution",
+      "type": "album",
+      "uri": "spotify:album:00zN65JStpVnpJn9ckMsQI"
+    },
+    {
+      "album_type": "album",
+      "artists": [
+        {
+          "external_urls": {
+            "spotify": "https://open.spotify.com/artist/0TnOYISbd1XYRBk9myaseg"
+          },
+          "href": "https://api.spotify.com/v1/artists/0TnOYISbd1XYRBk9myaseg",
+          "id": "0TnOYISbd1XYRBk9myaseg",
+          "name": "Pitbull",
+          "type": "artist",
+          "uri": "spotify:artist:0TnOYISbd1XYRBk9myaseg"
+        }
+      ],
+      "available_markets": [],
+      "external_urls": {
+        "spotify": "https://open.spotify.com/album/4RaAjieYFIZRF8uh6GY43r"
+      },
+      "href": "https://api.spotify.com/v1/albums/4RaAjieYFIZRF8uh6GY43r",
+      "id": "4RaAjieYFIZRF8uh6GY43r",
+      "images": [
+        {
+          "height": 636,
+          "url": "https://i.scdn.co/image/ce397e5d886ac86b34c1ef6dd75b528b8908466b",
+          "width": 640
+        },
+        {
+          "height": 298,
+          "url": "https://i.scdn.co/image/46ec0bcc1dae735ef2454dd2b8f9f32dacb32e27",
+          "width": 300
+        },
+        {
+          "height": 64,
+          "url": "https://i.scdn.co/image/eaa65f061269cb25b8aa54d10228e9a508e6b590",
+          "width": 64
+        }
+      ],
+      "name": "Pitbull Starring In Rebelution",
+      "type": "album",
+      "uri": "spotify:album:4RaAjieYFIZRF8uh6GY43r"
+    },
+    {
+      "album_type": "album",
+      "artists": [
+        {
+          "external_urls": {
+            "spotify": "https://open.spotify.com/artist/0TnOYISbd1XYRBk9myaseg"
+          },
+          "href": "https://api.spotify.com/v1/artists/0TnOYISbd1XYRBk9myaseg",
+          "id": "0TnOYISbd1XYRBk9myaseg",
+          "name": "Pitbull",
+          "type": "artist",
+          "uri": "spotify:artist:0TnOYISbd1XYRBk9myaseg"
+        }
+      ],
+      "available_markets": [
+        "AD",
+        "AR",
+        "AT",
+        "AU",
+        "BE",
+        "BG",
+        "BO",
+        "BR",
+        "CA",
+        "CH",
+        "CL",
+        "CO",
+        "CR",
+        "CY",
+        "CZ",
+        "DE",
+        "DK",
+        "DO",
+        "EC",
+        "EE",
+        "ES",
+        "FI",
+        "FR",
+        "GB",
+        "GR",
+        "GT",
+        "HK",
+        "HN",
+        "HU",
+        "ID",
+        "IE",
+        "IS",
+        "IT",
+        "JP",
+        "LI",
+        "LT",
+        "LU",
+        "LV",
+        "MC",
+        "MT",
+        "MX",
+        "MY",
+        "NI",
+        "NL",
+        "NO",
+        "NZ",
+        "PA",
+        "PE",
+        "PH",
+        "PL",
+        "PT",
+        "PY",
+        "SE",
+        "SG",
+        "SK",
+        "SV",
+        "TH",
+        "TR",
+        "TW",
+        "US",
+        "UY",
+        "VN"
+      ],
+      "external_urls": {
+        "spotify": "https://open.spotify.com/album/1webHYaeCy8j9smqS23sgE"
+      },
+      "href": "https://api.spotify.com/v1/albums/1webHYaeCy8j9smqS23sgE",
+      "id": "1webHYaeCy8j9smqS23sgE",
+      "images": [
+        {
+          "height": 640,
+          "url": "https://i.scdn.co/image/af926848b5ea1f569d5961367a161d759bbf5ecf",
+          "width": 640
+        },
+        {
+          "height": 300,
+          "url": "https://i.scdn.co/image/00b4d68f6c84a8a7aeb4a443a0b67068d1c71f9b",
+          "width": 300
+        },
+        {
+          "height": 64,
+          "url": "https://i.scdn.co/image/7b0be2a1a476763875f63deac1ff2273f6710018",
+          "width": 64
+        }
+      ],
+      "name": "Greatest Hits",
+      "type": "album",
+      "uri": "spotify:album:1webHYaeCy8j9smqS23sgE"
+    },
+    {
+      "album_type": "album",
+      "artists": [
+        {
+          "external_urls": {
+            "spotify": "https://open.spotify.com/artist/0TnOYISbd1XYRBk9myaseg"
+          },
+          "href": "https://api.spotify.com/v1/artists/0TnOYISbd1XYRBk9myaseg",
+          "id": "0TnOYISbd1XYRBk9myaseg",
+          "name": "Pitbull",
+          "type": "artist",
+          "uri": "spotify:artist:0TnOYISbd1XYRBk9myaseg"
+        }
+      ],
+      "available_markets": [
+        "AD",
+        "AR",
+        "AT",
+        "AU",
+        "BE",
+        "BG",
+        "BO",
+        "BR",
+        "CA",
+        "CH",
+        "CL",
+        "CO",
+        "CR",
+        "CY",
+        "CZ",
+        "DE",
+        "DK",
+        "DO",
+        "EC",
+        "EE",
+        "ES",
+        "FI",
+        "FR",
+        "GB",
+        "GR",
+        "GT",
+        "HK",
+        "HN",
+        "HU",
+        "ID",
+        "IE",
+        "IS",
+        "IT",
+        "JP",
+        "LI",
+        "LT",
+        "LU",
+        "LV",
+        "MC",
+        "MT",
+        "MX",
+        "MY",
+        "NI",
+        "NL",
+        "NO",
+        "NZ",
+        "PA",
+        "PE",
+        "PH",
+        "PL",
+        "PT",
+        "PY",
+        "SE",
+        "SG",
+        "SK",
+        "SV",
+        "TH",
+        "TR",
+        "TW",
+        "US",
+        "UY",
+        "VN"
+      ],
+      "external_urls": {
+        "spotify": "https://open.spotify.com/album/7m9AYxqeFPagkaqlg6WE0J"
+      },
+      "href": "https://api.spotify.com/v1/albums/7m9AYxqeFPagkaqlg6WE0J",
+      "id": "7m9AYxqeFPagkaqlg6WE0J",
+      "images": [
+        {
+          "height": 640,
+          "url": "https://i.scdn.co/image/0ed0eda690f1e26730137576366571e7c3668c73",
+          "width": 640
+        },
+        {
+          "height": 300,
+          "url": "https://i.scdn.co/image/642b29f2bb6529d1d9b64c5602fa26cabfb5cf1f",
+          "width": 300
+        },
+        {
+          "height": 64,
+          "url": "https://i.scdn.co/image/3b2801025bc4cef976d1f668e2f36827767a6bc5",
+          "width": 64
+        }
+      ],
+      "name": "The Boatlift",
+      "type": "album",
+      "uri": "spotify:album:7m9AYxqeFPagkaqlg6WE0J"
+    },
+    {
+      "album_type": "album",
+      "artists": [
+        {
+          "external_urls": {
+            "spotify": "https://open.spotify.com/artist/0TnOYISbd1XYRBk9myaseg"
+          },
+          "href": "https://api.spotify.com/v1/artists/0TnOYISbd1XYRBk9myaseg",
+          "id": "0TnOYISbd1XYRBk9myaseg",
+          "name": "Pitbull",
+          "type": "artist",
+          "uri": "spotify:artist:0TnOYISbd1XYRBk9myaseg"
+        }
+      ],
+      "available_markets": [
+        "AD",
+        "AR",
+        "AT",
+        "AU",
+        "BE",
+        "BG",
+        "BO",
+        "BR",
+        "CA",
+        "CH",
+        "CL",
+        "CO",
+        "CR",
+        "CY",
+        "CZ",
+        "DE",
+        "DK",
+        "DO",
+        "EC",
+        "EE",
+        "ES",
+        "FI",
+        "FR",
+        "GB",
+        "GR",
+        "GT",
+        "HK",
+        "HN",
+        "HU",
+        "ID",
+        "IE",
+        "IS",
+        "IT",
+        "JP",
+        "LI",
+        "LT",
+        "LU",
+        "LV",
+        "MC",
+        "MT",
+        "MX",
+        "MY",
+        "NI",
+        "NL",
+        "NO",
+        "NZ",
+        "PA",
+        "PE",
+        "PH",
+        "PL",
+        "PT",
+        "PY",
+        "SE",
+        "SG",
+        "SK",
+        "SV",
+        "TH",
+        "TR",
+        "TW",
+        "US",
+        "UY",
+        "VN"
+      ],
+      "external_urls": {
+        "spotify": "https://open.spotify.com/album/6ODOJvYpaQ3p0O6Agrlt4B"
+      },
+      "href": "https://api.spotify.com/v1/albums/6ODOJvYpaQ3p0O6Agrlt4B",
+      "id": "6ODOJvYpaQ3p0O6Agrlt4B",
+      "images": [
+        {
+          "height": 640,
+          "url": "https://i.scdn.co/image/0e717ff2f603b6782f9ff4eacc8f2e99433059a0",
+          "width": 640
+        },
+        {
+          "height": 300,
+          "url": "https://i.scdn.co/image/b2138a406ed919cea7db082962ccf1b5b2581529",
+          "width": 300
+        },
+        {
+          "height": 64,
+          "url": "https://i.scdn.co/image/4ecddbe5da0239d22935d94bb92cdffcacccfa51",
+          "width": 64
+        }
+      ],
+      "name": "The Boatlift - Clean",
+      "type": "album",
+      "uri": "spotify:album:6ODOJvYpaQ3p0O6Agrlt4B"
     }
   ],
-  "limit": 2,
-  "next": "https://api.spotify.com/v1/artists/1vCWHaC5f2uS3yhpwWbIA6/albums?offset=2&limit=2&album_type=single&market=US",
-  "offset": 0,
-  "previous": null,
-  "total": 46
+  "limit": 10,
+  "next": "https://api.spotify.com/v1/artists/0TnOYISbd1XYRBk9myaseg/albums?offset=15&limit=10&album_type=single,album&market=ES",
+  "offset": 5,
+  "previous": "https://api.spotify.com/v1/artists/0TnOYISbd1XYRBk9myaseg/albums?offset=0&limit=10&album_type=single,album&market=ES",
+  "total": 99
 }

@@ -18,7 +18,7 @@ import static org.junit.Assert.assertNull;
 @RunWith(MockitoJUnitRunner.class)
 public class GetAlbumsTracksRequestTest implements ITest<Paging<TrackSimplified>> {
 
-  private final GetAlbumsTracksRequest successRequest = SPOTIFY_API.getAlbumsTracks("6TJmQnO44YE5BtTxH8pop1")
+  private final GetAlbumsTracksRequest successRequest = SPOTIFY_API.getAlbumsTracks("id")
           .limit(2)
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
@@ -41,24 +41,25 @@ public class GetAlbumsTracksRequestTest implements ITest<Paging<TrackSimplified>
 
   public void shouldSucceed(final Paging<TrackSimplified> trackSimplifiedPaging) {
     assertEquals(
-            "https://api.spotify.com/v1/albums/6TJmQnO44YE5BtTxH8pop1/tracks?offset=0&limit=2",
+            "https://api.spotify.com/v1/albums/4aawyAB9vmqN3uQ7FjRGTy/tracks?offset=5&limit=10&market=ES",
             trackSimplifiedPaging.getHref());
     assertEquals(
-            2,
+            10,
             trackSimplifiedPaging.getItems().length);
     assertEquals(
-            2,
+            10,
             (int) trackSimplifiedPaging.getLimit());
     assertEquals(
-            "https://api.spotify.com/v1/albums/6TJmQnO44YE5BtTxH8pop1/tracks?offset=2&limit=2",
+            "https://api.spotify.com/v1/albums/4aawyAB9vmqN3uQ7FjRGTy/tracks?offset=15&limit=10&market=ES",
             trackSimplifiedPaging.getNext());
     assertEquals(
-            0,
+            5,
             (int) trackSimplifiedPaging.getOffset());
-    assertNull(
+    assertEquals(
+            "https://api.spotify.com/v1/albums/4aawyAB9vmqN3uQ7FjRGTy/tracks?offset=0&limit=10&market=ES",
             trackSimplifiedPaging.getPrevious());
     assertEquals(
-            14,
+            18,
             (int) trackSimplifiedPaging.getTotal());
   }
 }

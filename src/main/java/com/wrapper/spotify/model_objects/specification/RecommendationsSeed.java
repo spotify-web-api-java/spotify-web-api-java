@@ -6,7 +6,7 @@ import com.wrapper.spotify.model_objects.AbstractModelObject;
 
 /**
  * Retrieve information about <a href="https://developer.spotify.com/web-api/object-model/#recommendations-seed-object">
- *     Recommendation Seed objects</a> by building instances from this class.
+ * Recommendation Seed objects</a> by building instances from this class.
  */
 public class RecommendationsSeed extends AbstractModelObject {
   private final Integer afterFilteringSize;
@@ -49,7 +49,7 @@ public class RecommendationsSeed extends AbstractModelObject {
    * Get the link to the full track or artist data for this seed.
    *
    * @return A link to the full track or artist data for this seed. For tracks this will be a link to a {@link Track}
-   *         object. For artists a link to an {@link Artist} Object. For genre seeds, this value will be {@code null}.
+   * object. For artists a link to an {@link Artist} Object. For genre seeds, this value will be {@code null}.
    */
   public String getHref() {
     return href;
@@ -59,7 +59,7 @@ public class RecommendationsSeed extends AbstractModelObject {
    * Get the ID used to select this seed.
    *
    * @return The ID used to select this seed. This will be the same as the string used in the {@code seed_artists},
-   *         {@code seed_tracks} or {@code seed_genres} request parameter.
+   * {@code seed_tracks} or {@code seed_genres} request parameter.
    */
   public String getId() {
     return id;
@@ -87,6 +87,7 @@ public class RecommendationsSeed extends AbstractModelObject {
   public Builder builder() {
     return new Builder();
   }
+
   /**
    * Builder class for building {@link RecommendationsSeed} instances.
    */

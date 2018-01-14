@@ -1,7 +1,6 @@
 package com.wrapper.spotify.requests.data.browse.miscellaneous;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;

@@ -98,6 +98,7 @@ public class Device extends AbstractModelObject {
 
     /**
      * The device ID setter.
+     *
      * @param id The device ID. This may be {@code null}.
      * @return A {@link Device.Builder}.
      */

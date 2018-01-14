@@ -19,7 +19,7 @@ import static org.junit.Assert.assertNotNull;
 
 @RunWith(MockitoJUnitRunner.class)
 public class GetAlbumRequestTest implements ITest<Album> {
-  private final GetAlbumRequest successRequest = SPOTIFY_API.getAlbum("4pox3k0CGuwwAknR9GtcoX")
+  private final GetAlbumRequest successRequest = SPOTIFY_API.getAlbum("id")
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
                           "requests/data/albums/GetAlbumRequest.json"))
@@ -44,9 +44,6 @@ public class GetAlbumRequestTest implements ITest<Album> {
             album.getAlbumType());
     assertNotNull(
             album.getArtists());
-    assertEquals(
-            62,
-            album.getAvailableMarkets().length);
     assertNotNull(
             album.getCopyrights());
     assertNotNull(
@@ -57,37 +54,37 @@ public class GetAlbumRequestTest implements ITest<Album> {
             0,
             album.getGenres().length);
     assertEquals(
-            "https://api.spotify.com/v1/albums/4pox3k0CGuwwAknR9GtcoX",
+            "https://api.spotify.com/v1/albums/4aawyAB9vmqN3uQ7FjRGTy",
             album.getHref());
     assertEquals(
-            "4pox3k0CGuwwAknR9GtcoX",
+            "4aawyAB9vmqN3uQ7FjRGTy",
             album.getId());
     assertEquals(
             3,
             album.getImages().length);
     assertEquals(
-            "Epic/Legacy",
+            "Mr.305/Polo Grounds Music/RCA Records",
             album.getLabel());
     assertEquals(
-            "She's So Unusual: A 30th Anniversary Celebration (Deluxe Edition)",
+            "Global Warming",
             album.getName());
     assertEquals(
-            70,
+            58,
             (int) album.getPopularity());
     assertEquals(
-            "2014-03-28",
+            "2012-11-16",
             album.getReleaseDate());
     assertEquals(
             ReleaseDatePrecision.DAY,
             album.getReleaseDatePrecision());
     assertEquals(
-            22,
+            18,
             album.getTracks().getItems().length);
     assertEquals(
             ModelObjectType.ALBUM,
             album.getType());
     assertEquals(
-            "spotify:album:4pox3k0CGuwwAknR9GtcoX",
+            "spotify:album:4aawyAB9vmqN3uQ7FjRGTy",
             album.getUri());
   }
 }

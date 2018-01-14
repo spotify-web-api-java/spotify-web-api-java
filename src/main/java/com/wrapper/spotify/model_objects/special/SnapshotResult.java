@@ -6,9 +6,9 @@ import com.wrapper.spotify.model_objects.AbstractModelObject;
 /**
  * Retrieve information about Snapshot Result objects by building instances from this class. These objects contain a
  * playlist snapshot ID, which is created after adding or removing tracks from a playlsit.
- *
+ * <p>
  * <a href="https://developer.spotify.com/web-api/working-with-playlists/#version-control-and-snapshots">
- *     Spotify: Working With Playlists</a>
+ * Spotify: Working With Playlists</a>
  */
 public class SnapshotResult extends AbstractModelObject {
   public final String snapshotId;
@@ -32,6 +32,7 @@ public class SnapshotResult extends AbstractModelObject {
   public Builder builder() {
     return new Builder();
   }
+
   /**
    * Builder class for building {@link SnapshotResult} instances.
    */

@@ -1,41 +1,39 @@
 {
   "external_urls": {
-    "spotify": "https://open.spotify.com/artist/2BTZIqw0ntH9MvilQ3ewNY"
+    "spotify": "https://open.spotify.com/artist/0TnOYISbd1XYRBk9myaseg"
   },
   "followers": {
     "href": null,
-    "total": 87836
+    "total": 4715206
   },
   "genres": [
-    "new wave pop",
-    "pop christmas"
+    "dance pop",
+    "latin",
+    "pop",
+    "pop rap",
+    "post-teen pop"
   ],
-  "href": "https://api.spotify.com/v1/artists/2BTZIqw0ntH9MvilQ3ewNY",
-  "id": "2BTZIqw0ntH9MvilQ3ewNY",
+  "href": "https://api.spotify.com/v1/artists/0TnOYISbd1XYRBk9myaseg",
+  "id": "0TnOYISbd1XYRBk9myaseg",
   "images": [
     {
-      "height": 1242,
-      "url": "https://i.scdn.co/image/dbe7680dd55d8d8ef4f6b55e29cdb69920d2a5d8",
-      "width": 1000
-    },
-    {
-      "height": 795,
-      "url": "https://i.scdn.co/image/ce5b341957ad280c9ef8e9b4f2a206f300463f1b",
+      "height": 640,
+      "url": "https://i.scdn.co/image/c82dfff224bfb7fe29e0364a5aacc55da29b465b",
       "width": 640
     },
     {
-      "height": 248,
-      "url": "https://i.scdn.co/image/b9bba0707b9e4d942e931860aecbc48ede7626b2",
-      "width": 200
+      "height": 320,
+      "url": "https://i.scdn.co/image/d482525120fc7eed9ea0696f564c6cba5237c8f5",
+      "width": 320
     },
     {
-      "height": 79,
-      "url": "https://i.scdn.co/image/a75ca2fb7ea65a02629239d2319812be14b607e5",
-      "width": 64
+      "height": 160,
+      "url": "https://i.scdn.co/image/49a45aac2c93bab9575de13cee2d71b7eb164cab",
+      "width": 160
     }
   ],
-  "name": "Cyndi Lauper",
-  "popularity": 64,
+  "name": "Pitbull",
+  "popularity": 85,
   "type": "artist",
-  "uri": "spotify:artist:2BTZIqw0ntH9MvilQ3ewNY"
+  "uri": "spotify:artist:0TnOYISbd1XYRBk9myaseg"
 }

@@ -11,7 +11,7 @@ import com.wrapper.spotify.requests.data.search.interfaces.ISearchModelObject;
 
 /**
  * Retrieve information about <a href="https://developer.spotify.com/web-api/object-model/#track-object-full">
- *     Track objects</a> by building instances from this class.
+ * Track objects</a> by building instances from this class.
  */
 public class Track extends AbstractModelObject implements IArtistTrackModelObject, ISearchModelObject {
   private final AlbumSimplified album;
@@ -72,7 +72,7 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
    * Get the artists who performed the track.
    *
    * @return The artists who performed the track. Each artist object includes a link in {@code href} to more detailed
-   *         information about the artist.
+   * information about the artist.
    */
   public ArtistSimplified[] getArtists() {
     return artists;
@@ -82,7 +82,7 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
    * Get the country codes of all countries, in which the track is available.
    *
    * @return A list of the countries in which the track can be played, identified by their
-   *         <a href="http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2</a> code.
+   * <a href="http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2</a> code.
    */
   public CountryCode[] getAvailableMarkets() {
     return availableMarkets;
@@ -110,7 +110,7 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
    * Check whether the track is explicit or not.
    *
    * @return Whether or not the track has explicit lyrics ({@code true} = yes it does; {@code false} = no it does not
-   *         <b>OR</b> unknown).
+   * <b>OR</b> unknown).
    */
   public Boolean getIsExplicit() {
     return explicit;
@@ -186,7 +186,7 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
    * Example: {@code "restrictions" : {"reason" : "market"}}
    *
    * @return The track response will still contain metadata for the original track, and a restrictions object containing
-   *         the reason why the track is not available.
+   * the reason why the track is not available.
    */
   public Restrictions getRestrictions() {
     return restrictions;
@@ -203,11 +203,11 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
 
   /**
    * Get the popularity of the track. The value will be between 0 and 100, with 100 being the most popular. <br><br>
-   *
+   * <p>
    * The popularity of a track is a value between 0 and 100, with 100 being the most popular. The popularity is
    * calculated by algorithm and is based, in the most part, on the total number of plays the track has had and how
    * recent those plays are.<br><br>
-   *
+   * <p>
    * Generally speaking, songs that are being played a lot now will have a higher popularity than songs that were played
    * a lot in the past. Duplicate tracks (e.g. the same track from a single and an album) are rated independently.
    * Artist and album popularity is derived mathematically from track popularity. Note that the popularity value may lag
@@ -251,7 +251,7 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
    * Get the Spotify track URI.
    *
    * @return The <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify URI</a> for
-   *         the track.
+   * the track.
    */
   public String getUri() {
     return uri;
