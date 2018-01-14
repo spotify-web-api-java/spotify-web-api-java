@@ -1,23 +1,22 @@
 {
-  "message": "Throwback Thursday",
   "playlists": {
-    "href": "https://api.spotify.com/v1/browse/featured-playlists?country=SE&locale=sv_se&timestamp=2014-10-23T09%3A00%3A00&offset=5&limit=10",
+    "href": "https://api.spotify.com/v1/browse/categories/dinner/playlists?country=SE&offset=5&limit=10",
     "items": [
       {
         "collaborative": false,
         "external_urls": {
-          "spotify": "https://open.spotify.com/user/spotify/playlist/37i9dQZF1DX8ky12eWIvcW"
+          "spotify": "https://open.spotify.com/user/spotify/playlist/37i9dQZF1DX2FsCLsHeMrM"
         },
-        "href": "https://api.spotify.com/v1/users/spotify/playlists/37i9dQZF1DX8ky12eWIvcW",
-        "id": "37i9dQZF1DX8ky12eWIvcW",
+        "href": "https://api.spotify.com/v1/users/spotify/playlists/37i9dQZF1DX2FsCLsHeMrM",
+        "id": "37i9dQZF1DX2FsCLsHeMrM",
         "images": [
           {
             "height": 300,
-            "url": "https://i.scdn.co/image/b808f5f35355ee60f10519d3575f96f74cdabffb",
+            "url": "https://i.scdn.co/image/1b3c1080669581993ccd644addb1d6b7b269691f",
             "width": 300
           }
         ],
-        "name": "Throwback Jams",
+        "name": "Kitchen Swagger",
         "owner": {
           "display_name": "Spotify",
           "external_urls": {
@@ -29,29 +28,29 @@
           "uri": "spotify:user:spotify"
         },
         "public": null,
-        "snapshot_id": "thVydAjDDku12mwp1ZnRBXzj/XVZYKwHP9UoCB7r+XLukoQGkT3DhN/0hb9iWhoFD78h/nq4Lxk=",
+        "snapshot_id": "0Zeex+vTVRgx86d0hzBr3bScJz9le35AOhj8qiZ27wRJFs91FoekpBNDA3GcHmnpJwjgRiWtfu4=",
         "tracks": {
-          "href": "https://api.spotify.com/v1/users/spotify/playlists/37i9dQZF1DX8ky12eWIvcW/tracks",
-          "total": 100
+          "href": "https://api.spotify.com/v1/users/spotify/playlists/37i9dQZF1DX2FsCLsHeMrM/tracks",
+          "total": 77
         },
         "type": "playlist",
-        "uri": "spotify:user:spotify:playlist:37i9dQZF1DX8ky12eWIvcW"
+        "uri": "spotify:user:spotify:playlist:37i9dQZF1DX2FsCLsHeMrM"
       },
       {
         "collaborative": false,
         "external_urls": {
-          "spotify": "https://open.spotify.com/user/spotify/playlist/37i9dQZF1DWV9ewTpxJ0d9"
+          "spotify": "https://open.spotify.com/user/spotify/playlist/37i9dQZF1DXatMjChPKgBk"
         },
-        "href": "https://api.spotify.com/v1/users/spotify/playlists/37i9dQZF1DWV9ewTpxJ0d9",
-        "id": "37i9dQZF1DWV9ewTpxJ0d9",
+        "href": "https://api.spotify.com/v1/users/spotify/playlists/37i9dQZF1DXatMjChPKgBk",
+        "id": "37i9dQZF1DXatMjChPKgBk",
         "images": [
           {
             "height": 300,
-            "url": "https://i.scdn.co/image/5ef0b4a9c33b420d8b5272c79eebf22d8526c590",
+            "url": "https://i.scdn.co/image/7417d9e5610366317c0b61584fcae687dac23c16",
             "width": 300
           }
         ],
-        "name": "Årets Rock 2017",
+        "name": "Dinner Music",
         "owner": {
           "display_name": "Spotify",
           "external_urls": {
@@ -63,29 +62,29 @@
           "uri": "spotify:user:spotify"
         },
         "public": null,
-        "snapshot_id": "pqqVZo8iaZj7tc+nS+3zZSMxbvd4cFzmkx8R1mgANsSZDL/SDA0cwBsnUJBtI9tKbeMZXPzBvTI=",
+        "snapshot_id": "S8xwB6T1Do8SQV+Puxg94ealDWVjd+SvuLZ0x4gBmqhYjZl60ZhyG86C7JgjEAtISP9t1siakmM=",
         "tracks": {
-          "href": "https://api.spotify.com/v1/users/spotify/playlists/37i9dQZF1DWV9ewTpxJ0d9/tracks",
-          "total": 50
+          "href": "https://api.spotify.com/v1/users/spotify/playlists/37i9dQZF1DXatMjChPKgBk/tracks",
+          "total": 92
         },
         "type": "playlist",
-        "uri": "spotify:user:spotify:playlist:37i9dQZF1DWV9ewTpxJ0d9"
+        "uri": "spotify:user:spotify:playlist:37i9dQZF1DXatMjChPKgBk"
       },
       {
         "collaborative": false,
         "external_urls": {
-          "spotify": "https://open.spotify.com/user/spotify/playlist/37i9dQZF1DX8CwbNGNKurt"
+          "spotify": "https://open.spotify.com/user/spotify/playlist/37i9dQZF1DX6T7BDvbGhmT"
         },
-        "href": "https://api.spotify.com/v1/users/spotify/playlists/37i9dQZF1DX8CwbNGNKurt",
-        "id": "37i9dQZF1DX8CwbNGNKurt",
+        "href": "https://api.spotify.com/v1/users/spotify/playlists/37i9dQZF1DX6T7BDvbGhmT",
+        "id": "37i9dQZF1DX6T7BDvbGhmT",
         "images": [
           {
             "height": 300,
-            "url": "https://i.scdn.co/image/f933b834e2f1fd47c862869eb3c8c9d13f1641a9",
+            "url": "https://i.scdn.co/image/95801bc1bd70d0b3cf892784066f1adb03020dd1",
             "width": 300
           }
         ],
-        "name": "Throwback Workout",
+        "name": "Dinner Romance",
         "owner": {
           "display_name": "Spotify",
           "external_urls": {
@@ -97,47 +96,47 @@
           "uri": "spotify:user:spotify"
         },
         "public": null,
-        "snapshot_id": "1DsXoWt8y08bhKYce4MIiXzj/XVZYKwHGwD/dKKZesYztCJfwve/neB1YFD5vPF5WLlVpCFpQ2w=",
+        "snapshot_id": "JvqXopaBF4AJ5jo+rmXv7k6oOaaMlcdH1ohyLpjx1r+vqvp1isq0e+UnW+K0RThmQ9sim7j2RD0=",
         "tracks": {
-          "href": "https://api.spotify.com/v1/users/spotify/playlists/37i9dQZF1DX8CwbNGNKurt/tracks",
-          "total": 61
+          "href": "https://api.spotify.com/v1/users/spotify/playlists/37i9dQZF1DX6T7BDvbGhmT/tracks",
+          "total": 64
         },
         "type": "playlist",
-        "uri": "spotify:user:spotify:playlist:37i9dQZF1DX8CwbNGNKurt"
+        "uri": "spotify:user:spotify:playlist:37i9dQZF1DX6T7BDvbGhmT"
       },
       {
         "collaborative": false,
         "external_urls": {
-          "spotify": "https://open.spotify.com/user/spotify/playlist/37i9dQZF1DWUH2AzNQzWua"
+          "spotify": "https://open.spotify.com/user/playlistmesweden/playlist/2Urm2od5mgPL2ocMrm6yu6"
         },
-        "href": "https://api.spotify.com/v1/users/spotify/playlists/37i9dQZF1DWUH2AzNQzWua",
-        "id": "37i9dQZF1DWUH2AzNQzWua",
+        "href": "https://api.spotify.com/v1/users/playlistmesweden/playlists/2Urm2od5mgPL2ocMrm6yu6",
+        "id": "2Urm2od5mgPL2ocMrm6yu6",
         "images": [
           {
-            "height": 300,
-            "url": "https://i.scdn.co/image/f37e848c7c528afb474725bd37f6f620b6436c43",
-            "width": 300
+            "height": null,
+            "url": "https://pl.scdn.co/images/pl/default/36b5f8a4ba2d7e7c9b0a69da8e5d33bfdfa794c4",
+            "width": null
           }
         ],
-        "name": "Acoustic Hits: Oldies but Goodies",
+        "name": "Middagsmingel",
         "owner": {
-          "display_name": "Spotify",
+          "display_name": "Topsify Sweden",
           "external_urls": {
-            "spotify": "https://open.spotify.com/user/spotify"
+            "spotify": "https://open.spotify.com/user/playlistmesweden"
           },
-          "href": "https://api.spotify.com/v1/users/spotify",
-          "id": "spotify",
+          "href": "https://api.spotify.com/v1/users/playlistmesweden",
+          "id": "playlistmesweden",
           "type": "user",
-          "uri": "spotify:user:spotify"
+          "uri": "spotify:user:playlistmesweden"
         },
         "public": null,
-        "snapshot_id": "HicLW+OEdHXDYWVSFp+sZG8DKP8D7PVbarR8j2XhjtAmw37wKa3bHAVPfQ939KJbU1OolI5zIVo=",
+        "snapshot_id": "7VtqIB8BqaTIQCesPgt0HefM2i1qeyTmAzOlnqqzQTxEALTXBn1flcinVr/OqXbg",
         "tracks": {
-          "href": "https://api.spotify.com/v1/users/spotify/playlists/37i9dQZF1DWUH2AzNQzWua/tracks",
-          "total": 72
+          "href": "https://api.spotify.com/v1/users/playlistmesweden/playlists/2Urm2od5mgPL2ocMrm6yu6/tracks",
+          "total": 87
         },
         "type": "playlist",
-        "uri": "spotify:user:spotify:playlist:37i9dQZF1DWUH2AzNQzWua"
+        "uri": "spotify:user:playlistmesweden:playlist:2Urm2od5mgPL2ocMrm6yu6"
       },
       {
         "collaborative": false,
@@ -176,18 +175,18 @@
       {
         "collaborative": false,
         "external_urls": {
-          "spotify": "https://open.spotify.com/user/spotify/playlist/37i9dQZF1DX27hx1vGd0BZ"
+          "spotify": "https://open.spotify.com/user/spotify/playlist/37i9dQZF1DX6EVq6W95bR5"
         },
-        "href": "https://api.spotify.com/v1/users/spotify/playlists/37i9dQZF1DX27hx1vGd0BZ",
-        "id": "37i9dQZF1DX27hx1vGd0BZ",
+        "href": "https://api.spotify.com/v1/users/spotify/playlists/37i9dQZF1DX6EVq6W95bR5",
+        "id": "37i9dQZF1DX6EVq6W95bR5",
         "images": [
           {
             "height": 300,
-            "url": "https://i.scdn.co/image/d7e79deeff2790248191d41fea503e48a50e427d",
+            "url": "https://i.scdn.co/image/3faca2844f9c4e5066cdc0a1d620e54efa146b2d",
             "width": 300
           }
         ],
-        "name": "Top Female Artists of 2017",
+        "name": "Middagsmusik",
         "owner": {
           "display_name": "Spotify",
           "external_urls": {
@@ -199,29 +198,29 @@
           "uri": "spotify:user:spotify"
         },
         "public": null,
-        "snapshot_id": "ueOOFhcRAV4YCTkJdHGSES7aQjV/FxpJOG5nmvwDLpypobBu1VQUzUZG6YupIlmaris8R5m0xII=",
+        "snapshot_id": "JvqXopaBF4Cp/2NKCqp6vVez6VUsVc4dHCmNxqiO8bH/YGHUZ2ZanLTrmK9NnGeCtO7MuW0WgWs=",
         "tracks": {
-          "href": "https://api.spotify.com/v1/users/spotify/playlists/37i9dQZF1DX27hx1vGd0BZ/tracks",
-          "total": 50
+          "href": "https://api.spotify.com/v1/users/spotify/playlists/37i9dQZF1DX6EVq6W95bR5/tracks",
+          "total": 68
         },
         "type": "playlist",
-        "uri": "spotify:user:spotify:playlist:37i9dQZF1DX27hx1vGd0BZ"
+        "uri": "spotify:user:spotify:playlist:37i9dQZF1DX6EVq6W95bR5"
       },
       {
         "collaborative": false,
         "external_urls": {
-          "spotify": "https://open.spotify.com/user/spotify/playlist/37i9dQZF1DXbYM3nMM0oPk"
+          "spotify": "https://open.spotify.com/user/spotify/playlist/37i9dQZF1DWTALrdBtcXjw"
         },
-        "href": "https://api.spotify.com/v1/users/spotify/playlists/37i9dQZF1DXbYM3nMM0oPk",
-        "id": "37i9dQZF1DXbYM3nMM0oPk",
+        "href": "https://api.spotify.com/v1/users/spotify/playlists/37i9dQZF1DWTALrdBtcXjw",
+        "id": "37i9dQZF1DWTALrdBtcXjw",
         "images": [
           {
             "height": 300,
-            "url": "https://i.scdn.co/image/2e2d8816a2763e3b213c4012e983e960c9229f2e",
+            "url": "https://i.scdn.co/image/c06f8b37111ac2426be2ce54c1823f3a0d89b164",
             "width": 300
           }
         ],
-        "name": "Mega Hit Mix",
+        "name": "Jazzy Dinner",
         "owner": {
           "display_name": "Spotify",
           "external_urls": {
@@ -233,29 +232,29 @@
           "uri": "spotify:user:spotify"
         },
         "public": null,
-        "snapshot_id": "ikillqd6Awydu9uun/RKF28DKP8D7PVbSLFuS9iaTXNMLeOsNf8EKQv4HleA3fdaWfYdKJoNtxE=",
+        "snapshot_id": "7U1hwduIfOI8BbBB6gUQf5Vvby/2WLz/KNQj0Bk6nC1/hobhBhytIqp7bjQ/jq4s7RMsHM0ct98=",
         "tracks": {
-          "href": "https://api.spotify.com/v1/users/spotify/playlists/37i9dQZF1DXbYM3nMM0oPk/tracks",
-          "total": 75
+          "href": "https://api.spotify.com/v1/users/spotify/playlists/37i9dQZF1DWTALrdBtcXjw/tracks",
+          "total": 59
         },
         "type": "playlist",
-        "uri": "spotify:user:spotify:playlist:37i9dQZF1DXbYM3nMM0oPk"
+        "uri": "spotify:user:spotify:playlist:37i9dQZF1DWTALrdBtcXjw"
       },
       {
         "collaborative": false,
         "external_urls": {
-          "spotify": "https://open.spotify.com/user/spotify/playlist/37i9dQZF1DXcQFLaKHy42g"
+          "spotify": "https://open.spotify.com/user/spotify/playlist/37i9dQZF1DWTJNOeepZTGy"
         },
-        "href": "https://api.spotify.com/v1/users/spotify/playlists/37i9dQZF1DXcQFLaKHy42g",
-        "id": "37i9dQZF1DXcQFLaKHy42g",
+        "href": "https://api.spotify.com/v1/users/spotify/playlists/37i9dQZF1DWTJNOeepZTGy",
+        "id": "37i9dQZF1DWTJNOeepZTGy",
         "images": [
           {
             "height": 300,
-            "url": "https://i.scdn.co/image/3a28f3e2a7f437ed2baef700c1b9f9ef18791e6b",
+            "url": "https://i.scdn.co/image/3609d08d9672e954b4f7c3d7397e560a075393a8",
             "width": 300
           }
         ],
-        "name": "Träna till 90-talet",
+        "name": "Wine & Dine",
         "owner": {
           "display_name": "Spotify",
           "external_urls": {
@@ -267,29 +266,29 @@
           "uri": "spotify:user:spotify"
         },
         "public": null,
-        "snapshot_id": "chJimfQI8h2tNEeIVFrCvVez6VUsVc4dwOW4vDnXo3e1dqLxJVZ6XFspej9Rt0SlVX7XIey5lEQ=",
+        "snapshot_id": "4DMS1iOBU24W93ImlpTvrr4x8odIFzkN9gqYW32lzikrFOzFpj7PT/OQLuPTXxiUkM+2UhA7jWo=",
         "tracks": {
-          "href": "https://api.spotify.com/v1/users/spotify/playlists/37i9dQZF1DXcQFLaKHy42g/tracks",
-          "total": 58
+          "href": "https://api.spotify.com/v1/users/spotify/playlists/37i9dQZF1DWTJNOeepZTGy/tracks",
+          "total": 44
         },
         "type": "playlist",
-        "uri": "spotify:user:spotify:playlist:37i9dQZF1DXcQFLaKHy42g"
+        "uri": "spotify:user:spotify:playlist:37i9dQZF1DWTJNOeepZTGy"
       },
       {
         "collaborative": false,
         "external_urls": {
-          "spotify": "https://open.spotify.com/user/spotify/playlist/37i9dQZF1DXbITWG1ZJKYt"
+          "spotify": "https://open.spotify.com/user/spotify/playlist/37i9dQZF1DX6kz6Kli3wib"
         },
-        "href": "https://api.spotify.com/v1/users/spotify/playlists/37i9dQZF1DXbITWG1ZJKYt",
-        "id": "37i9dQZF1DXbITWG1ZJKYt",
+        "href": "https://api.spotify.com/v1/users/spotify/playlists/37i9dQZF1DX6kz6Kli3wib",
+        "id": "37i9dQZF1DX6kz6Kli3wib",
         "images": [
           {
             "height": 300,
-            "url": "https://i.scdn.co/image/e21c109eaa490dcb1f5278008c9111f17093d26e",
+            "url": "https://i.scdn.co/image/92ae472ef35610e4f577cf34596740a1d50983c1",
             "width": 300
           }
         ],
-        "name": "Jazz Classics",
+        "name": "Chill Out Dinner",
         "owner": {
           "display_name": "Spotify",
           "external_urls": {
@@ -301,29 +300,29 @@
           "uri": "spotify:user:spotify"
         },
         "public": null,
-        "snapshot_id": "kfI7eIiOQX99Ha4AtzIQAyEZEEU3zB3cLTvLqEcaKBWIM/SGW1wJ8QiOY/iE3fYiA3W7qoVRT8w=",
+        "snapshot_id": "yd+/PyIo9r4SQV+Puxg94WmjK5uagxIa5mUvitmvP2fk6s/td8894JA0T1T8fD2lhngYRcclUfI=",
         "tracks": {
-          "href": "https://api.spotify.com/v1/users/spotify/playlists/37i9dQZF1DXbITWG1ZJKYt/tracks",
-          "total": 70
+          "href": "https://api.spotify.com/v1/users/spotify/playlists/37i9dQZF1DX6kz6Kli3wib/tracks",
+          "total": 85
         },
         "type": "playlist",
-        "uri": "spotify:user:spotify:playlist:37i9dQZF1DXbITWG1ZJKYt"
+        "uri": "spotify:user:spotify:playlist:37i9dQZF1DX6kz6Kli3wib"
       },
       {
         "collaborative": false,
         "external_urls": {
-          "spotify": "https://open.spotify.com/user/spotify/playlist/37i9dQZF1DX2qN6i2yd6oQ"
+          "spotify": "https://open.spotify.com/user/spotify/playlist/37i9dQZF1DWSv7hr1iSurd"
         },
-        "href": "https://api.spotify.com/v1/users/spotify/playlists/37i9dQZF1DX2qN6i2yd6oQ",
-        "id": "37i9dQZF1DX2qN6i2yd6oQ",
+        "href": "https://api.spotify.com/v1/users/spotify/playlists/37i9dQZF1DWSv7hr1iSurd",
+        "id": "37i9dQZF1DWSv7hr1iSurd",
         "images": [
           {
             "height": 300,
-            "url": "https://i.scdn.co/image/e8441f9958429ac7db33b62d08cfdc20118745c7",
+            "url": "https://i.scdn.co/image/84114b955e645df9fc4ad3c6bff4102c9fa09030",
             "width": 300
           }
         ],
-        "name": "Årets Låtar 2017",
+        "name": "Middag hos mig",
         "owner": {
           "display_name": "Spotify",
           "external_urls": {
@@ -335,19 +334,19 @@
           "uri": "spotify:user:spotify"
         },
         "public": null,
-        "snapshot_id": "xHB7GMXZQjQ8qIHW8uf4QC7aQjV/FxpJhuqbRhZdkN10btBeDrNCHl3fncgxVcJJgBsIwjQEZA4=",
+        "snapshot_id": "YELbz8MhTs6Wjo/hqCky2eX/4YCLey/rGIvjDW1wCdAWSChohucEfV5JHBjW44DKUXjZaILwaDI=",
         "tracks": {
-          "href": "https://api.spotify.com/v1/users/spotify/playlists/37i9dQZF1DX2qN6i2yd6oQ/tracks",
-          "total": 50
+          "href": "https://api.spotify.com/v1/users/spotify/playlists/37i9dQZF1DWSv7hr1iSurd/tracks",
+          "total": 54
         },
         "type": "playlist",
-        "uri": "spotify:user:spotify:playlist:37i9dQZF1DX2qN6i2yd6oQ"
+        "uri": "spotify:user:spotify:playlist:37i9dQZF1DWSv7hr1iSurd"
       }
     ],
     "limit": 10,
-    "next": null,
+    "next": "https://api.spotify.com/v1/browse/categories/dinner/playlists?country=SE&offset=15&limit=10",
     "offset": 5,
-    "previous": "https://api.spotify.com/v1/browse/featured-playlists?country=SE&locale=sv_se&timestamp=2014-10-23T09%3A00%3A00&offset=0&limit=10",
-    "total": 15
+    "previous": "https://api.spotify.com/v1/browse/categories/dinner/playlists?country=SE&offset=0&limit=10",
+    "total": 30
   }
 }

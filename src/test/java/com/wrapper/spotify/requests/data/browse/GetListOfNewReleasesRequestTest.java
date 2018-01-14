@@ -1,77 +1,62 @@
 package com.wrapper.spotify.requests.data.browse;
 
-import com.wrapper.spotify.SpotifyApi;
+import com.wrapper.spotify.ITest;
 import com.wrapper.spotify.TestUtil;
-import com.wrapper.spotify.enums.AlbumType;
+import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.AlbumSimplified;
 import com.wrapper.spotify.model_objects.specification.Paging;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.runners.MockitoJUnitRunner;
 
-import java.util.concurrent.Future;
+import java.io.IOException;
+import java.util.concurrent.ExecutionException;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
-public class GetListOfNewReleasesRequestTest {
+@RunWith(MockitoJUnitRunner.class)
+public class GetListOfNewReleasesRequestTest implements ITest<Paging<AlbumSimplified>> {
+  private final GetListOfNewReleasesRequest successRequest = SPOTIFY_API.getListOfNewReleases()
+          .setHttpManager(
+                  TestUtil.MockedHttpManager.returningJson(
+                          "requests/data/browse/GetListOfNewReleasesRequest.json"))
+          .build();
 
-  @Test
-  public void shouldGetNewReleases_async() throws Exception {
-    final SpotifyApi api = new SpotifyApi.Builder().setAccessToken("AccessToken").build();
-
-    final GetListOfNewReleasesRequest request = api.getListOfNewReleases()
-            .limit(1)
-            .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/browse/GetListOfNewReleasesRequest.json"))
-            .build();
-
-    final Future<Paging<AlbumSimplified>> requestFuture = request.executeAsync();
-    final Paging<AlbumSimplified> albumSimplifiedPaging = requestFuture.get();
-
-    assertNotNull(albumSimplifiedPaging.getItems());
-
-    assertEquals("https://api.spotify.com/v1/browse/new-releases?offset=0&limit=1",
-            albumSimplifiedPaging.getHref());
-
-    assertEquals(1, (int) albumSimplifiedPaging.getLimit());
-    assertEquals(0, (int) albumSimplifiedPaging.getOffset());
-    assertEquals("https://api.spotify.com/v1/browse/new-releases?offset=1&limit=1",
-            albumSimplifiedPaging.getNext());
-    assertNull(albumSimplifiedPaging.getPrevious());
-    assertEquals(500, (int) albumSimplifiedPaging.getTotal());
-
-    AlbumSimplified firstItem = albumSimplifiedPaging.getItems()[0];
-    assertEquals(AlbumType.SINGLE, firstItem.getAlbumType());
-    assertEquals(62, firstItem.getAvailableMarkets().length);
-    assertNotNull(firstItem.getExternalUrls());
-    assertEquals("spotify:album:52kvZcbEDm0v2kWZQXjuuA", firstItem.getUri());
+  public GetListOfNewReleasesRequestTest() throws Exception {
   }
 
   @Test
-  public void shouldGetArtistsResult_sync() throws Exception {
-    final SpotifyApi api = new SpotifyApi.Builder().setAccessToken("AccessToken").build();
+  public void shouldSucceed_sync() throws IOException, SpotifyWebApiException {
+    shouldSucceed(successRequest.execute());
+  }
 
-    final GetListOfNewReleasesRequest request = api.getListOfNewReleases()
-            .limit(1)
-            .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/browse/GetListOfNewReleasesRequest.json"))
-            .build();
+  @SuppressWarnings("unchecked")
+  @Test
+  public void shouldSucceed_async() throws ExecutionException, InterruptedException {
+    shouldSucceed((Paging<AlbumSimplified>) successRequest.executeAsync().get());
+  }
 
-    Paging<AlbumSimplified> newReleases = request.execute();
-
-    assertNotNull(newReleases.getItems());
-
-    assertEquals("https://api.spotify.com/v1/browse/new-releases?offset=0&limit=1",
-            newReleases.getHref());
-
-    assertEquals(1, (int) newReleases.getLimit());
-    assertEquals(0, (int) newReleases.getOffset());
-    assertEquals("https://api.spotify.com/v1/browse/new-releases?offset=1&limit=1",
-            newReleases.getNext());
-    assertNull(newReleases.getPrevious());
-    assertEquals(500, (int) newReleases.getTotal());
-
-    AlbumSimplified firstItem = newReleases.getItems()[0];
-    assertEquals(AlbumType.SINGLE, firstItem.getAlbumType());
-    assertEquals(62, firstItem.getAvailableMarkets().length);
-    assertNotNull(firstItem.getExternalUrls());
-    assertEquals("spotify:album:52kvZcbEDm0v2kWZQXjuuA", firstItem.getUri());
-
+  public void shouldSucceed(final Paging<AlbumSimplified> albumSimplifiedPaging) {
+    assertEquals(
+            "https://api.spotify.com/v1/browse/new-releases?country=SE&offset=5&limit=10",
+            albumSimplifiedPaging.getHref());
+    assertEquals(
+            10,
+            albumSimplifiedPaging.getItems().length);
+    assertEquals(
+            10,
+            (int) albumSimplifiedPaging.getLimit());
+    assertEquals(
+            "https://api.spotify.com/v1/browse/new-releases?country=SE&offset=15&limit=10",
+            albumSimplifiedPaging.getNext());
+    assertEquals(
+            5,
+            (int) albumSimplifiedPaging.getOffset());
+    assertEquals(
+            "https://api.spotify.com/v1/browse/new-releases?country=SE&offset=0&limit=10",
+            albumSimplifiedPaging.getPrevious());
+    assertEquals(
+            500,
+            (int) albumSimplifiedPaging.getTotal());
   }
 }

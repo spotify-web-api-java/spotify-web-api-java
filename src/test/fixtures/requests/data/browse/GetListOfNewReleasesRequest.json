@@ -1,29 +1,29 @@
 {
   "albums": {
-    "href": "https://api.spotify.com/v1/browse/new-releases?offset=0&limit=1",
+    "href": "https://api.spotify.com/v1/browse/new-releases?country=SE&offset=5&limit=10",
     "items": [
       {
         "album_type": "single",
         "artists": [
           {
             "external_urls": {
-              "spotify": "https://open.spotify.com/artist/6eUKZXaKkcviH0Ku9w2n3V"
+              "spotify": "https://open.spotify.com/artist/64KEffDW9EtZ1y2vBYgq8T"
             },
-            "href": "https://api.spotify.com/v1/artists/6eUKZXaKkcviH0Ku9w2n3V",
-            "id": "6eUKZXaKkcviH0Ku9w2n3V",
-            "name": "Ed Sheeran",
+            "href": "https://api.spotify.com/v1/artists/64KEffDW9EtZ1y2vBYgq8T",
+            "id": "64KEffDW9EtZ1y2vBYgq8T",
+            "name": "Marshmello",
             "type": "artist",
-            "uri": "spotify:artist:6eUKZXaKkcviH0Ku9w2n3V"
+            "uri": "spotify:artist:64KEffDW9EtZ1y2vBYgq8T"
           },
           {
             "external_urls": {
-              "spotify": "https://open.spotify.com/artist/6vWDO969PvNqNYHIOW5v0m"
+              "spotify": "https://open.spotify.com/artist/2kCcBybjl3SAtIcwdWpUe3"
             },
-            "href": "https://api.spotify.com/v1/artists/6vWDO969PvNqNYHIOW5v0m",
-            "id": "6vWDO969PvNqNYHIOW5v0m",
-            "name": "Beyoncé",
+            "href": "https://api.spotify.com/v1/artists/2kCcBybjl3SAtIcwdWpUe3",
+            "id": "2kCcBybjl3SAtIcwdWpUe3",
+            "name": "Lil Peep",
             "type": "artist",
-            "uri": "spotify:artist:6vWDO969PvNqNYHIOW5v0m"
+            "uri": "spotify:artist:2kCcBybjl3SAtIcwdWpUe3"
           }
         ],
         "available_markets": [
@@ -91,36 +91,919 @@
           "VN"
         ],
         "external_urls": {
-          "spotify": "https://open.spotify.com/album/52kvZcbEDm0v2kWZQXjuuA"
+          "spotify": "https://open.spotify.com/album/2oQFjuVpdWJWfjRXIKUKCn"
         },
-        "href": "https://api.spotify.com/v1/albums/52kvZcbEDm0v2kWZQXjuuA",
-        "id": "52kvZcbEDm0v2kWZQXjuuA",
+        "href": "https://api.spotify.com/v1/albums/2oQFjuVpdWJWfjRXIKUKCn",
+        "id": "2oQFjuVpdWJWfjRXIKUKCn",
         "images": [
           {
             "height": 640,
-            "url": "https://i.scdn.co/image/6d27b4ab01b5f52ad8a4ed1b56422c6c7f71fcf2",
+            "url": "https://i.scdn.co/image/c24a66e9898d1a3ccfb53a8f9a8b977f102a18f4",
             "width": 640
           },
           {
             "height": 300,
-            "url": "https://i.scdn.co/image/5659184967911d3d40656aabbbb08311ea366e9f",
+            "url": "https://i.scdn.co/image/55ba5e2f42557e1f8908ad1a8f5b9cc9fefa91ad",
             "width": 300
           },
           {
             "height": 64,
-            "url": "https://i.scdn.co/image/c45fb7a706f43746e2c5c381d64a5d75b39ed72d",
+            "url": "https://i.scdn.co/image/dab5eb5eac3e5b7906abd77c65370fb53dbefda3",
             "width": 64
           }
         ],
-        "name": "Perfect Duet (Ed Sheeran & Beyoncé)",
+        "name": "Spotlight",
         "type": "album",
-        "uri": "spotify:album:52kvZcbEDm0v2kWZQXjuuA"
+        "uri": "spotify:album:2oQFjuVpdWJWfjRXIKUKCn"
+      },
+      {
+        "album_type": "album",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/4nDoRrQiYLoBzwC5BhVJzF"
+            },
+            "href": "https://api.spotify.com/v1/artists/4nDoRrQiYLoBzwC5BhVJzF",
+            "id": "4nDoRrQiYLoBzwC5BhVJzF",
+            "name": "Camila Cabello",
+            "type": "artist",
+            "uri": "spotify:artist:4nDoRrQiYLoBzwC5BhVJzF"
+          }
+        ],
+        "available_markets": [
+          "AD",
+          "AR",
+          "AT",
+          "AU",
+          "BE",
+          "BG",
+          "BO",
+          "BR",
+          "CA",
+          "CH",
+          "CL",
+          "CO",
+          "CR",
+          "CY",
+          "CZ",
+          "DE",
+          "DK",
+          "DO",
+          "EC",
+          "EE",
+          "ES",
+          "FI",
+          "FR",
+          "GB",
+          "GR",
+          "GT",
+          "HK",
+          "HN",
+          "HU",
+          "ID",
+          "IE",
+          "IS",
+          "IT",
+          "JP",
+          "LI",
+          "LT",
+          "LU",
+          "LV",
+          "MC",
+          "MT",
+          "MX",
+          "MY",
+          "NI",
+          "NL",
+          "NO",
+          "NZ",
+          "PA",
+          "PE",
+          "PH",
+          "PL",
+          "PT",
+          "PY",
+          "SE",
+          "SG",
+          "SK",
+          "SV",
+          "TH",
+          "TR",
+          "TW",
+          "US",
+          "UY",
+          "VN"
+        ],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/2vD3zSQr8hNlg0obNel4TE"
+        },
+        "href": "https://api.spotify.com/v1/albums/2vD3zSQr8hNlg0obNel4TE",
+        "id": "2vD3zSQr8hNlg0obNel4TE",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/8ebf0216fa9d294177e79cfef03628ed68043454",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/ac7215afbceb58c8a7f3713eaf9d00ff3d959779",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/014f38920ba75a4efd3488b4626cf6e16f94c9e5",
+            "width": 64
+          }
+        ],
+        "name": "Camila",
+        "type": "album",
+        "uri": "spotify:album:2vD3zSQr8hNlg0obNel4TE"
+      },
+      {
+        "album_type": "single",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/2JyWXPbkqI5ZJa3gwqVa0c"
+            },
+            "href": "https://api.spotify.com/v1/artists/2JyWXPbkqI5ZJa3gwqVa0c",
+            "id": "2JyWXPbkqI5ZJa3gwqVa0c",
+            "name": "Craig David",
+            "type": "artist",
+            "uri": "spotify:artist:2JyWXPbkqI5ZJa3gwqVa0c"
+          }
+        ],
+        "available_markets": [
+          "AD",
+          "AR",
+          "AT",
+          "AU",
+          "BE",
+          "BG",
+          "BO",
+          "BR",
+          "CA",
+          "CH",
+          "CL",
+          "CO",
+          "CR",
+          "CY",
+          "CZ",
+          "DE",
+          "DK",
+          "DO",
+          "EC",
+          "EE",
+          "ES",
+          "FI",
+          "FR",
+          "GB",
+          "GR",
+          "GT",
+          "HK",
+          "HN",
+          "HU",
+          "ID",
+          "IE",
+          "IS",
+          "IT",
+          "JP",
+          "LI",
+          "LT",
+          "LU",
+          "LV",
+          "MC",
+          "MT",
+          "MX",
+          "MY",
+          "NI",
+          "NL",
+          "NO",
+          "NZ",
+          "PA",
+          "PE",
+          "PH",
+          "PL",
+          "PT",
+          "PY",
+          "SE",
+          "SG",
+          "SK",
+          "SV",
+          "TH",
+          "TR",
+          "TW",
+          "US",
+          "UY",
+          "VN"
+        ],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/1eblj73T9kwJpAgd2lwlti"
+        },
+        "href": "https://api.spotify.com/v1/albums/1eblj73T9kwJpAgd2lwlti",
+        "id": "1eblj73T9kwJpAgd2lwlti",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/4f426b81cde30c440506fc0056f7867530cf68a4",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/50992f0a4dd5c6535fce29a4bf7e7260693f8051",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/c7e67e30809a4e215831af20b736915729f56b28",
+            "width": 64
+          }
+        ],
+        "name": "Live in the Moment",
+        "type": "album",
+        "uri": "spotify:album:1eblj73T9kwJpAgd2lwlti"
+      },
+      {
+        "album_type": "single",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/5p7f24Rk5HkUZsaS3BLG5F"
+            },
+            "href": "https://api.spotify.com/v1/artists/5p7f24Rk5HkUZsaS3BLG5F",
+            "id": "5p7f24Rk5HkUZsaS3BLG5F",
+            "name": "Hailee Steinfeld",
+            "type": "artist",
+            "uri": "spotify:artist:5p7f24Rk5HkUZsaS3BLG5F"
+          },
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/1okJ4NC308qbtY9LyHn6DO"
+            },
+            "href": "https://api.spotify.com/v1/artists/1okJ4NC308qbtY9LyHn6DO",
+            "id": "1okJ4NC308qbtY9LyHn6DO",
+            "name": "BloodPop®",
+            "type": "artist",
+            "uri": "spotify:artist:1okJ4NC308qbtY9LyHn6DO"
+          }
+        ],
+        "available_markets": [
+          "AD",
+          "AR",
+          "AT",
+          "AU",
+          "BE",
+          "BG",
+          "BO",
+          "BR",
+          "CA",
+          "CH",
+          "CL",
+          "CO",
+          "CR",
+          "CY",
+          "CZ",
+          "DE",
+          "DK",
+          "DO",
+          "EC",
+          "EE",
+          "ES",
+          "FI",
+          "FR",
+          "GB",
+          "GR",
+          "GT",
+          "HK",
+          "HN",
+          "HU",
+          "ID",
+          "IE",
+          "IS",
+          "IT",
+          "JP",
+          "LI",
+          "LT",
+          "LU",
+          "LV",
+          "MC",
+          "MT",
+          "MX",
+          "MY",
+          "NI",
+          "NL",
+          "NO",
+          "NZ",
+          "PA",
+          "PE",
+          "PH",
+          "PL",
+          "PT",
+          "PY",
+          "SE",
+          "SG",
+          "SK",
+          "SV",
+          "TH",
+          "TR",
+          "TW",
+          "US",
+          "UY",
+          "VN"
+        ],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/2nmhzJgbpV1eJ5lvtZ7Z1c"
+        },
+        "href": "https://api.spotify.com/v1/albums/2nmhzJgbpV1eJ5lvtZ7Z1c",
+        "id": "2nmhzJgbpV1eJ5lvtZ7Z1c",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/f63e2c91b1dc40876b2b13187e40d1a5b46fa7d4",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/d0b5256179daca2bdb1f5045737b4aec144ddf5a",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/e383c4040fb0e1218d0e44661a2478782566297c",
+            "width": 64
+          }
+        ],
+        "name": "Capital Letters [From \"Fifty Shades Freed (Original Motion Picture Soundtrack)]",
+        "type": "album",
+        "uri": "spotify:album:2nmhzJgbpV1eJ5lvtZ7Z1c"
+      },
+      {
+        "album_type": "single",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/4FZ3j1oH43e7cukCALsCwf"
+            },
+            "href": "https://api.spotify.com/v1/artists/4FZ3j1oH43e7cukCALsCwf",
+            "id": "4FZ3j1oH43e7cukCALsCwf",
+            "name": "Jack White",
+            "type": "artist",
+            "uri": "spotify:artist:4FZ3j1oH43e7cukCALsCwf"
+          }
+        ],
+        "available_markets": [],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/37JmxVmefsfXkeAY4TxA37"
+        },
+        "href": "https://api.spotify.com/v1/albums/37JmxVmefsfXkeAY4TxA37",
+        "id": "37JmxVmefsfXkeAY4TxA37",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/b9f3d3c2aaaf33be4861a2593a4525254ecc1b46",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/154fe424ff832ade53073b4fa6794a08ec69f780",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/1c6f05552eabc3e66c0c19ab835ffac6060f472b",
+            "width": 64
+          }
+        ],
+        "name": "Connected By Love - Single",
+        "type": "album",
+        "uri": "spotify:album:37JmxVmefsfXkeAY4TxA37"
+      },
+      {
+        "album_type": "album",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/6J3RPKUwZlKMzh3vWa9wPc"
+            },
+            "href": "https://api.spotify.com/v1/artists/6J3RPKUwZlKMzh3vWa9wPc",
+            "id": "6J3RPKUwZlKMzh3vWa9wPc",
+            "name": "Skott",
+            "type": "artist",
+            "uri": "spotify:artist:6J3RPKUwZlKMzh3vWa9wPc"
+          }
+        ],
+        "available_markets": [
+          "AD",
+          "AR",
+          "AT",
+          "AU",
+          "BE",
+          "BG",
+          "BO",
+          "BR",
+          "CA",
+          "CH",
+          "CL",
+          "CO",
+          "CR",
+          "CY",
+          "CZ",
+          "DE",
+          "DK",
+          "DO",
+          "EC",
+          "EE",
+          "ES",
+          "FI",
+          "FR",
+          "GB",
+          "GR",
+          "GT",
+          "HK",
+          "HN",
+          "HU",
+          "ID",
+          "IE",
+          "IS",
+          "IT",
+          "JP",
+          "LI",
+          "LT",
+          "LU",
+          "LV",
+          "MC",
+          "MT",
+          "MX",
+          "MY",
+          "NI",
+          "NL",
+          "NO",
+          "NZ",
+          "PA",
+          "PE",
+          "PH",
+          "PL",
+          "PT",
+          "PY",
+          "SE",
+          "SG",
+          "SK",
+          "SV",
+          "TH",
+          "TR",
+          "TW",
+          "US",
+          "UY",
+          "VN"
+        ],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/5nwcMFsg6l1JJXmnHtrH0T"
+        },
+        "href": "https://api.spotify.com/v1/albums/5nwcMFsg6l1JJXmnHtrH0T",
+        "id": "5nwcMFsg6l1JJXmnHtrH0T",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/4911466aef7f4b83989b78ddd715b7561f7f5dbc",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/e86b8f8e9e537a85e4ece531b1572d1d7f12a72f",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/837dcc3f8106faac894ddadaac6e4cdf095f8eaa",
+            "width": 64
+          }
+        ],
+        "name": "Stay Off My Mind - EP",
+        "type": "album",
+        "uri": "spotify:album:5nwcMFsg6l1JJXmnHtrH0T"
+      },
+      {
+        "album_type": "single",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/0LyfQWJT6nXafLPZqxe9Of"
+            },
+            "href": "https://api.spotify.com/v1/artists/0LyfQWJT6nXafLPZqxe9Of",
+            "id": "0LyfQWJT6nXafLPZqxe9Of",
+            "name": "Various Artists",
+            "type": "artist",
+            "uri": "spotify:artist:0LyfQWJT6nXafLPZqxe9Of"
+          }
+        ],
+        "available_markets": [
+          "AD",
+          "AR",
+          "AT",
+          "AU",
+          "BE",
+          "BG",
+          "BO",
+          "BR",
+          "CA",
+          "CH",
+          "CL",
+          "CO",
+          "CR",
+          "CY",
+          "CZ",
+          "DE",
+          "DK",
+          "DO",
+          "EC",
+          "EE",
+          "ES",
+          "FI",
+          "FR",
+          "GB",
+          "GR",
+          "GT",
+          "HK",
+          "HN",
+          "HU",
+          "ID",
+          "IE",
+          "IS",
+          "IT",
+          "JP",
+          "LI",
+          "LT",
+          "LU",
+          "LV",
+          "MC",
+          "MT",
+          "MX",
+          "MY",
+          "NI",
+          "NL",
+          "NO",
+          "NZ",
+          "PA",
+          "PE",
+          "PH",
+          "PL",
+          "PT",
+          "PY",
+          "SE",
+          "SG",
+          "SK",
+          "SV",
+          "TH",
+          "TR",
+          "TW",
+          "US",
+          "UY",
+          "VN"
+        ],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/0xgbaoVF9zal8Z8qTDbuqT"
+        },
+        "href": "https://api.spotify.com/v1/albums/0xgbaoVF9zal8Z8qTDbuqT",
+        "id": "0xgbaoVF9zal8Z8qTDbuqT",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/c3e9a934880c310249ae24079a11a5f64178423d",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/344f71b1025cd36dc1ec125da27e9cf3f0e81831",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/900fd8513f888783f94e7cf700bd47a255d84564",
+            "width": 64
+          }
+        ],
+        "name": "King's Dead (with Kendrick Lamar, Future & James Blake)",
+        "type": "album",
+        "uri": "spotify:album:0xgbaoVF9zal8Z8qTDbuqT"
+      },
+      {
+        "album_type": "single",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/6Gi8ZaXGx8MK79HwzXpuVZ"
+            },
+            "href": "https://api.spotify.com/v1/artists/6Gi8ZaXGx8MK79HwzXpuVZ",
+            "id": "6Gi8ZaXGx8MK79HwzXpuVZ",
+            "name": "Emily Burns",
+            "type": "artist",
+            "uri": "spotify:artist:6Gi8ZaXGx8MK79HwzXpuVZ"
+          }
+        ],
+        "available_markets": [
+          "AD",
+          "AR",
+          "AT",
+          "AU",
+          "BE",
+          "BG",
+          "BO",
+          "BR",
+          "CA",
+          "CH",
+          "CL",
+          "CO",
+          "CR",
+          "CY",
+          "CZ",
+          "DE",
+          "DK",
+          "DO",
+          "EC",
+          "EE",
+          "ES",
+          "FI",
+          "FR",
+          "GB",
+          "GR",
+          "GT",
+          "HK",
+          "HN",
+          "HU",
+          "ID",
+          "IE",
+          "IS",
+          "IT",
+          "JP",
+          "LI",
+          "LT",
+          "LU",
+          "LV",
+          "MC",
+          "MT",
+          "MX",
+          "MY",
+          "NI",
+          "NL",
+          "NO",
+          "NZ",
+          "PA",
+          "PE",
+          "PH",
+          "PL",
+          "PT",
+          "PY",
+          "SE",
+          "SG",
+          "SK",
+          "SV",
+          "TH",
+          "TR",
+          "TW",
+          "US",
+          "UY",
+          "VN"
+        ],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/4AvS9sXvszK3RoAXTMtQzX"
+        },
+        "href": "https://api.spotify.com/v1/albums/4AvS9sXvszK3RoAXTMtQzX",
+        "id": "4AvS9sXvszK3RoAXTMtQzX",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/16d6b5a0e9a86c10f6c2ed7351d3194318e8d10b",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/a06bd758ef6771ecd2866b0490676344b08b1b4f",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/c7b3f3400b38df214e50f0c70fa0fb50f6be9ce7",
+            "width": 64
+          }
+        ],
+        "name": "Bitch",
+        "type": "album",
+        "uri": "spotify:album:4AvS9sXvszK3RoAXTMtQzX"
+      },
+      {
+        "album_type": "single",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/7qG3b048QCHVRO5Pv1T5lw"
+            },
+            "href": "https://api.spotify.com/v1/artists/7qG3b048QCHVRO5Pv1T5lw",
+            "id": "7qG3b048QCHVRO5Pv1T5lw",
+            "name": "Enrique Iglesias",
+            "type": "artist",
+            "uri": "spotify:artist:7qG3b048QCHVRO5Pv1T5lw"
+          }
+        ],
+        "available_markets": [
+          "AD",
+          "AR",
+          "AT",
+          "AU",
+          "BE",
+          "BG",
+          "BO",
+          "BR",
+          "CA",
+          "CH",
+          "CL",
+          "CO",
+          "CR",
+          "CY",
+          "CZ",
+          "DE",
+          "DK",
+          "DO",
+          "EC",
+          "EE",
+          "ES",
+          "FI",
+          "FR",
+          "GB",
+          "GR",
+          "GT",
+          "HK",
+          "HN",
+          "HU",
+          "ID",
+          "IE",
+          "IS",
+          "IT",
+          "JP",
+          "LI",
+          "LT",
+          "LU",
+          "LV",
+          "MC",
+          "MT",
+          "MX",
+          "MY",
+          "NI",
+          "NL",
+          "NO",
+          "NZ",
+          "PA",
+          "PE",
+          "PH",
+          "PL",
+          "PT",
+          "PY",
+          "SE",
+          "SG",
+          "SK",
+          "SV",
+          "TH",
+          "TR",
+          "TW",
+          "US",
+          "UY",
+          "VN"
+        ],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/5phDwq3mKZdLiFxyRpgcCV"
+        },
+        "href": "https://api.spotify.com/v1/albums/5phDwq3mKZdLiFxyRpgcCV",
+        "id": "5phDwq3mKZdLiFxyRpgcCV",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/47ad2bec5af85577739b7bc237f3859e0e65c37a",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/f5626a4a5ec04867627ae3dc9c55821e9c9a6a47",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/de437660ae00c40647630fcec19b3dc077ec198d",
+            "width": 64
+          }
+        ],
+        "name": "EL BAÑO",
+        "type": "album",
+        "uri": "spotify:album:5phDwq3mKZdLiFxyRpgcCV"
+      },
+      {
+        "album_type": "single",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/10exVja0key0uqUkk6LJRT"
+            },
+            "href": "https://api.spotify.com/v1/artists/10exVja0key0uqUkk6LJRT",
+            "id": "10exVja0key0uqUkk6LJRT",
+            "name": "Vance Joy",
+            "type": "artist",
+            "uri": "spotify:artist:10exVja0key0uqUkk6LJRT"
+          }
+        ],
+        "available_markets": [
+          "AD",
+          "AR",
+          "AT",
+          "AU",
+          "BE",
+          "BG",
+          "BO",
+          "BR",
+          "CA",
+          "CH",
+          "CL",
+          "CO",
+          "CR",
+          "CY",
+          "CZ",
+          "DE",
+          "DK",
+          "DO",
+          "EC",
+          "EE",
+          "ES",
+          "FI",
+          "FR",
+          "GB",
+          "GR",
+          "GT",
+          "HK",
+          "HN",
+          "HU",
+          "ID",
+          "IE",
+          "IS",
+          "IT",
+          "JP",
+          "LI",
+          "LT",
+          "LU",
+          "LV",
+          "MC",
+          "MT",
+          "MX",
+          "MY",
+          "NI",
+          "NL",
+          "NO",
+          "NZ",
+          "PA",
+          "PE",
+          "PH",
+          "PL",
+          "PT",
+          "PY",
+          "SE",
+          "SG",
+          "SK",
+          "SV",
+          "TH",
+          "TR",
+          "TW",
+          "US",
+          "UY",
+          "VN"
+        ],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/3pSxcCrWioc1kvNSuJVMnp"
+        },
+        "href": "https://api.spotify.com/v1/albums/3pSxcCrWioc1kvNSuJVMnp",
+        "id": "3pSxcCrWioc1kvNSuJVMnp",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/8f56e37706134336c286fbdaf0e4754164024644",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/4c587ec86e82854bab19ae964cafa34dc5574c60",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/6fec1e9fcb2505c6423cb73ae8aa438b6faab448",
+            "width": 64
+          }
+        ],
+        "name": "We're Going Home",
+        "type": "album",
+        "uri": "spotify:album:3pSxcCrWioc1kvNSuJVMnp"
       }
     ],
-    "limit": 1,
-    "next": "https://api.spotify.com/v1/browse/new-releases?offset=1&limit=1",
-    "offset": 0,
-    "previous": null,
+    "limit": 10,
+    "next": "https://api.spotify.com/v1/browse/new-releases?country=SE&offset=15&limit=10",
+    "offset": 5,
+    "previous": "https://api.spotify.com/v1/browse/new-releases?country=SE&offset=0&limit=10",
     "total": 500
   }
 }

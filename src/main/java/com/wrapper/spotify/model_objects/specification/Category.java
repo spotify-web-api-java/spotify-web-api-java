@@ -138,9 +138,9 @@ public class Category extends AbstractModelObject {
                               ? jsonObject.get("href").getAsString()
                               : null)
               .setIcons(
-                      hasAndNotNull(jsonObject, "images")
+                      hasAndNotNull(jsonObject, "icons")
                               ? new Image.JsonUtil().createModelObjectArray(
-                              jsonObject.getAsJsonArray("images"))
+                              jsonObject.getAsJsonArray("icons"))
                               : null)
               .setId(
                       hasAndNotNull(jsonObject, "id")

@@ -1,9 +1,11 @@
-package com.wrapper.spotify.requests.data.browse;
+package com.wrapper.spotify.requests.data.browse.miscellaneous;
 
 import com.wrapper.spotify.ITest;
 import com.wrapper.spotify.TestUtil;
+import com.wrapper.spotify.enums.ModelObjectType;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
-import com.wrapper.spotify.model_objects.specification.Recommendations;
+import com.wrapper.spotify.model_objects.specification.Artist;
+import com.wrapper.spotify.requests.data.artists.GetArtistRequest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -14,14 +16,14 @@ import java.util.concurrent.ExecutionException;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(MockitoJUnitRunner.class)
-public class GetRecommendationsRequestTest implements ITest<Recommendations> {
-  private final GetRecommendationsRequest successRequest = SPOTIFY_API.getRecommendations()
+public class GetAvailableGenreSeedsRequestTest implements ITest<String[]> {
+  private final GetAvailableGenreSeedsRequest successRequest = SPOTIFY_API.getAvailableGenreSeeds()
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
-                          "requests/data/browse/GetRecommendationsRequest.json"))
+                          "requests/data/browse/miscellaneous/GetAvailableGenreSeedsRequest.json"))
           .build();
 
-  public GetRecommendationsRequestTest() throws Exception {
+  public GetAvailableGenreSeedsRequestTest() throws Exception {
   }
 
   @Test
@@ -31,15 +33,12 @@ public class GetRecommendationsRequestTest implements ITest<Recommendations> {
 
   @Test
   public void shouldSucceed_async() throws ExecutionException, InterruptedException {
-    shouldSucceed((Recommendations) successRequest.executeAsync().get());
+    shouldSucceed((String[]) successRequest.executeAsync().get());
   }
 
-  public void shouldSucceed(final Recommendations recommendations) {
+  public void shouldSucceed(final String[] strings) {
     assertEquals(
-            10,
-            recommendations.getTracks().length);
-    assertEquals(
-            4,
-            recommendations.getSeeds().length);
+            126,
+            strings.length);
   }
 }
