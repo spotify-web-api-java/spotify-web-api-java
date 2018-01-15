@@ -175,12 +175,12 @@ public abstract class AbstractModelObject implements IModelObject {
                               ? jsonObject.get("limit").getAsInt()
                               : null)
               .setNext(
-                      hasAndNotNull(jsonObject, "total")
+                      hasAndNotNull(jsonObject, "next")
                               ? jsonObject.get("next").getAsString()
                               : null)
               .setCursors(
-                      hasAndNotNull(jsonObject, "total")
-                              ? new Cursor.JsonUtil().createModelObjectArray(jsonObject.get("cursors").getAsJsonArray())
+                      hasAndNotNull(jsonObject, "cursors")
+                              ? new Cursor.JsonUtil().createModelObject(jsonObject.getAsJsonObject("cursors"))
                               : null)
               .setTotal(
                       hasAndNotNull(jsonObject, "total")

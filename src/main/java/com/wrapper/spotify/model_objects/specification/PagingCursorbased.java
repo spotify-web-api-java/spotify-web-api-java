@@ -194,9 +194,11 @@ public class PagingCursorbased<T> extends AbstractModelObject {
                               ? jsonObject.get("href").getAsString()
                               : null)
               .setItems(
-                      createModelObjectArray(
+                      hasAndNotNull(jsonObject, "items")
+                              ? createModelObjectArray(
                               jsonObject.getAsJsonArray("items"), (Class<X>) ((ParameterizedType) getClass()
-                                      .getGenericSuperclass()).getActualTypeArguments()[0]))
+                                      .getGenericSuperclass()).getActualTypeArguments()[0])
+                              : null)
               .setLimit(
                       hasAndNotNull(jsonObject, "limit")
                               ? jsonObject.get("limit").getAsInt()
