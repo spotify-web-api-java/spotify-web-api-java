@@ -13,15 +13,15 @@ import java.util.concurrent.ExecutionException;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(MockitoJUnitRunner.class)
-public class UnfollowPlaylistRequestTest implements ITest<String> {
-  private final UnfollowPlaylistRequest successRequest = SPOTIFY_API
-          .unfollowPlaylist("owner_id", "playlist_id")
+public class CheckUsersFollowPlaylistRequestTest implements ITest<Boolean[]> {
+  private final CheckUsersFollowPlaylistRequest successRequest = SPOTIFY_API
+          .checkUsersFollowPlaylist("owner_id", "playlist_id", new String[]{"id"})
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
-                          "requests/data/follow/FollowArtistsOrUsersRequestTest.json"))
+                          "requests/data/follow/CheckUsersFollowPlaylistRequest.json"))
           .build();
 
-  public UnfollowPlaylistRequestTest() throws Exception {
+  public CheckUsersFollowPlaylistRequestTest() throws Exception {
   }
 
   @Test
@@ -31,12 +31,12 @@ public class UnfollowPlaylistRequestTest implements ITest<String> {
 
   @Test
   public void shouldSucceed_async() throws ExecutionException, InterruptedException {
-    shouldSucceed((String) successRequest.executeAsync().get());
+    shouldSucceed((Boolean[]) successRequest.executeAsync().get());
   }
 
-  public void shouldSucceed(final String string) {
+  public void shouldSucceed(final Boolean[] booleans) {
     assertEquals(
-            "",
-            string);
+            3,
+            booleans.length);
   }
 }

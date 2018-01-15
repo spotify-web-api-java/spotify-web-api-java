@@ -13,15 +13,15 @@ import java.util.concurrent.ExecutionException;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(MockitoJUnitRunner.class)
-public class UnfollowPlaylistRequestTest implements ITest<String> {
-  private final UnfollowPlaylistRequest successRequest = SPOTIFY_API
-          .unfollowPlaylist("owner_id", "playlist_id")
+public class FollowPlaylistRequestTest implements ITest<String> {
+  private final FollowPlaylistRequest successRequest = SPOTIFY_API
+          .followPlaylist("owner_id", "playlist_id", false)
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
-                          "requests/data/follow/FollowArtistsOrUsersRequestTest.json"))
+                          "requests/data/follow/FollowPlaylistRequestTest.json"))
           .build();
 
-  public UnfollowPlaylistRequestTest() throws Exception {
+  public FollowPlaylistRequestTest() throws Exception {
   }
 
   @Test

@@ -2,6 +2,7 @@ package com.wrapper.spotify.requests.data.follow;
 
 import com.wrapper.spotify.ITest;
 import com.wrapper.spotify.TestUtil;
+import com.wrapper.spotify.enums.ModelObjectType;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,15 +14,15 @@ import java.util.concurrent.ExecutionException;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(MockitoJUnitRunner.class)
-public class UnfollowPlaylistRequestTest implements ITest<String> {
-  private final UnfollowPlaylistRequest successRequest = SPOTIFY_API
-          .unfollowPlaylist("owner_id", "playlist_id")
+public class CheckCurrentUserFollowsArtistsOrUsersRequestTest implements ITest<Boolean[]> {
+  private final CheckCurrentUserFollowsArtistsOrUsersRequest successRequest = SPOTIFY_API
+          .checkCurrentUserFollowsArtistsOrUsers(ModelObjectType.ARTIST, new String[]{"id"})
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
-                          "requests/data/follow/FollowArtistsOrUsersRequestTest.json"))
+                          "requests/data/follow/CheckCurrentUserFollowsArtistsOrUsersRequest.json"))
           .build();
 
-  public UnfollowPlaylistRequestTest() throws Exception {
+  public CheckCurrentUserFollowsArtistsOrUsersRequestTest() throws Exception {
   }
 
   @Test
@@ -31,12 +32,12 @@ public class UnfollowPlaylistRequestTest implements ITest<String> {
 
   @Test
   public void shouldSucceed_async() throws ExecutionException, InterruptedException {
-    shouldSucceed((String) successRequest.executeAsync().get());
+    shouldSucceed((Boolean[]) successRequest.executeAsync().get());
   }
 
-  public void shouldSucceed(final String string) {
+  public void shouldSucceed(final Boolean[] booleans) {
     assertEquals(
-            "",
-            string);
+            3,
+            booleans.length);
   }
 }

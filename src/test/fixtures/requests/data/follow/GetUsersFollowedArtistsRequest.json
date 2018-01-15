@@ -1,0 +1,50 @@
+{
+  "artists": {
+    "items": [
+      {
+        "external_urls": {
+          "spotify": "https://open.spotify.com/artist/0LcJLqbBmaGUft1e9Mm8HV"
+        },
+        "followers": {
+          "href": null,
+          "total": 877953
+        },
+        "genres": [
+          "europop",
+          "mellow gold",
+          "swedish pop"
+        ],
+        "href": "https://api.spotify.com/v1/artists/0LcJLqbBmaGUft1e9Mm8HV",
+        "id": "0LcJLqbBmaGUft1e9Mm8HV",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/d65bdff819f52ded2da29743a6c9c2f3c5e6180f",
+            "width": 640
+          },
+          {
+            "height": 320,
+            "url": "https://i.scdn.co/image/4352125c6ade6445aa86b43b9e269e4e2f11fe60",
+            "width": 320
+          },
+          {
+            "height": 160,
+            "url": "https://i.scdn.co/image/8584e226df70ee30e7981d82cfbca2a4f1a4c58a",
+            "width": 160
+          }
+        ],
+        "name": "ABBA",
+        "popularity": 76,
+        "type": "artist",
+        "uri": "spotify:artist:0LcJLqbBmaGUft1e9Mm8HV"
+      }
+    ],
+    "next": null,
+    "total": 0,
+    "cursors": {
+      "after": null
+    },
+    "limit": 10,
+    "href": "https://api.spotify.com/v1/me/following?type=artist&after=0I2XqVXqHScXjHhk6AYYRe&limit=10"
+  }
+}
