@@ -10,8 +10,8 @@ import java.lang.reflect.ParameterizedType;
 import java.util.TimeZone;
 
 /**
- * This abstract class (and its wrapping classes) is used as a sort of template for
- * other model object classes and includes multiple generic methods.
+ * This abstract class (and its wrapping classes) is used as a sort of template for other model object classes and
+ * includes multiple generic methods.
  */
 public abstract class AbstractModelObject implements IModelObject {
 
@@ -33,25 +33,28 @@ public abstract class AbstractModelObject implements IModelObject {
   }
 
   /**
-   * Each model object needs to implement its own JsonUtil class.<br>
+   * Each model object needs to implement its own JsonUtil class. <br>
    *
    * @param <T> The model object type of the corresponding JsonUtil.
    */
   public static abstract class JsonUtil<T> implements IModelObject.IJsonUtil<T> {
 
+    /**
+     * {@inheritDoc}
+     */
     public boolean hasAndNotNull(final JsonObject jsonObject, final String memberName) {
       return jsonObject.has(memberName) && !jsonObject.get(memberName).isJsonNull();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public T createModelObject(final String json) {
       return createModelObject(new JsonParser().parse(json).getAsJsonObject());
     }
 
     /**
-     * Create an array of model objects out of a json array object.
-     *
-     * @param jsonArray A json array object.
-     * @return A model object array.
+     * {@inheritDoc}
      */
     public T[] createModelObjectArray(final JsonArray jsonArray) {
       @SuppressWarnings("unchecked")
@@ -72,26 +75,21 @@ public abstract class AbstractModelObject implements IModelObject {
     }
 
     /**
-     * Create an array of model objects out of a json string.
-     *
-     * @param json A json string.
-     * @return A model object array.
+     * {@inheritDoc}
      */
     public T[] createModelObjectArray(final String json) {
       return createModelObjectArray(new JsonParser().parse(json).getAsJsonArray());
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public T[] createModelObjectArray(final String json, final String key) {
       return createModelObjectArray(new JsonParser().parse(json).getAsJsonObject().get(key).getAsJsonArray());
     }
 
     /**
-     * Create an array of model objects out of a json array object and type token.
-     *
-     * @param jsonArray A json array object.
-     * @param clazz     A type token.
-     * @param <X>       The model object type of the array and type token.
-     * @return A model object array.
+     * {@inheritDoc}
      */
     @SuppressWarnings("unchecked")
     public <X> X[] createModelObjectArray(final JsonArray jsonArray, Class<X> clazz) {
@@ -108,10 +106,7 @@ public abstract class AbstractModelObject implements IModelObject {
     }
 
     /**
-     * Create a paging object out of a json array.
-     *
-     * @param jsonObject A json object.
-     * @return A model object paging.
+     * {@inheritDoc}
      */
     public Paging<T> createModelObjectPaging(final JsonObject jsonObject) {
       return new Paging.Builder<T>()
@@ -147,19 +142,22 @@ public abstract class AbstractModelObject implements IModelObject {
     }
 
     /**
-     * Create a paging object out of a json string.
-     *
-     * @param json A json string.
-     * @return A model object paging.
+     * {@inheritDoc}
      */
     public Paging<T> createModelObjectPaging(final String json) {
       return createModelObjectPaging(new JsonParser().parse(json).getAsJsonObject());
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public Paging<T> createModelObjectPaging(final String json, final String key) {
       return createModelObjectPaging(new JsonParser().parse(json).getAsJsonObject().get(key).getAsJsonObject());
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public PagingCursorbased<T> createModelObjectPagingCursorbased(final JsonObject jsonObject) {
       return new PagingCursorbased.Builder<T>()
               .setHref(
@@ -189,10 +187,16 @@ public abstract class AbstractModelObject implements IModelObject {
               .build();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public PagingCursorbased<T> createModelObjectPagingCursorbased(final String json) {
       return createModelObjectPagingCursorbased(new JsonParser().parse(json).getAsJsonObject());
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public PagingCursorbased<T> createModelObjectPagingCursorbased(final String json, final String key) {
       return createModelObjectPagingCursorbased(new JsonParser().parse(json).getAsJsonObject().get(key).getAsJsonObject());
     }
