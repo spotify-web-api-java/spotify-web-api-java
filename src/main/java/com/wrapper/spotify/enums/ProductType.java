@@ -1,5 +1,8 @@
 package com.wrapper.spotify.enums;
 
+/**
+ * An enumeration of all possible Spotify product types.
+ */
 public enum ProductType {
 
   PREMIUM("premium"),
@@ -13,6 +16,11 @@ public enum ProductType {
     this.type = type;
   }
 
+  /**
+   * Get the Spotify product type as a string.
+   *
+   * @return The Spotify product type as a string.
+   */
   public String getType() {
     return type;
   }
