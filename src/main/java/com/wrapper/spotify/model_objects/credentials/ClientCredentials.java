@@ -4,7 +4,8 @@ import com.google.gson.JsonObject;
 import com.wrapper.spotify.model_objects.AbstractModelObject;
 
 /**
- * Retrieve information about client credentials by building instances from this class.
+ * Retrieve information about <a href="https://developer.spotify.com/web-api/authorization-guide/#implicit_grant_flow">
+ *   Client Credentials</a> by building instances from this class.
  */
 public class ClientCredentials extends AbstractModelObject {
   private final String accessToken;
@@ -22,8 +23,7 @@ public class ClientCredentials extends AbstractModelObject {
   /**
    * Get the access token. It becomes invalid after a certain period of time.
    *
-   * @return An access token that can be provided in subsequent calls, for example
-   * to Spotify Web API services.
+   * @return An access token that can be provided in subsequent calls, for example to Spotify Web API services.
    */
   public String getAccessToken() {
     return accessToken;
@@ -53,7 +53,7 @@ public class ClientCredentials extends AbstractModelObject {
   }
 
   /**
-   * Builder class for building client credential instances.
+   * Builder class for building {@link ClientCredentials} instances.
    */
   public static final class Builder extends AbstractModelObject.Builder {
     private String accessToken;
@@ -65,7 +65,7 @@ public class ClientCredentials extends AbstractModelObject {
      *
      * @param accessToken An access token that can be provided in subsequent calls,
      *                    for example to Spotify Web API services.
-     * @return A ClientCredentials builder.
+     * @return A {@link ClientCredentials.Builder}.
      */
     public Builder setAccessToken(String accessToken) {
       this.accessToken = accessToken;
@@ -76,7 +76,7 @@ public class ClientCredentials extends AbstractModelObject {
      * The access token type setter.
      *
      * @param tokenType How the access token may be used: always &quot;Bearer&quot;.
-     * @return A ClientCredentials builder.
+     * @return A {@link ClientCredentials.Builder}.
      */
     public Builder setTokenType(String tokenType) {
       this.tokenType = tokenType;
@@ -87,7 +87,7 @@ public class ClientCredentials extends AbstractModelObject {
      * The expiration time setter.
      *
      * @param expiresIn The time period (in seconds) for which the access token is valid.
-     * @return A ClientCredentials builder.
+     * @return A {@link ClientCredentials.Builder}.
      */
     public Builder setExpiresIn(Integer expiresIn) {
       this.expiresIn = expiresIn;
@@ -101,7 +101,7 @@ public class ClientCredentials extends AbstractModelObject {
   }
 
   /**
-   * JsonUtil class for building client credential instances.
+   * JsonUtil class for building {@link ClientCredentials} instances.
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<ClientCredentials> {
     public ClientCredentials createModelObject(JsonObject jsonObject) {
