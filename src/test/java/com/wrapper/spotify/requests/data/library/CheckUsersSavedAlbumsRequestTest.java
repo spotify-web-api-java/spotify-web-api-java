@@ -13,15 +13,15 @@ import java.util.concurrent.ExecutionException;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(MockitoJUnitRunner.class)
-public class CheckUsersSavedTracksRequestTest implements ITest<Boolean[]> {
-  private final CheckUsersSavedTracksRequest successRequest = SPOTIFY_API
-          .checkUsersSavedTracks("id")
+public class CheckUsersSavedAlbumsRequestTest implements ITest<Boolean[]> {
+  private final CheckUsersSavedAlbumsRequest successRequest = SPOTIFY_API
+          .checkUsersSavedAlbums("id")
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
-                          "requests/data/library/CheckUsersSavedTracksRequest.json"))
+                          "requests/data/library/CheckUsersSavedAlbumsRequest.json"))
           .build();
 
-  public CheckUsersSavedTracksRequestTest() throws Exception {
+  public CheckUsersSavedAlbumsRequestTest() throws Exception {
   }
 
   @Test

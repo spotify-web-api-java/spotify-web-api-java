@@ -1,47 +1,46 @@
 package com.wrapper.spotify.requests.data.library;
 
-import com.wrapper.spotify.SpotifyApi;
+import com.wrapper.spotify.ITest;
 import com.wrapper.spotify.TestUtil;
+import com.wrapper.spotify.exceptions.SpotifyWebApiException;
+import com.wrapper.spotify.model_objects.specification.Paging;
+import com.wrapper.spotify.model_objects.specification.SavedAlbum;
+import com.wrapper.spotify.model_objects.specification.SavedTrack;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.runners.MockitoJUnitRunner;
 
-import java.util.concurrent.Future;
+import java.io.IOException;
+import java.util.concurrent.ExecutionException;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
-public class SaveTracksForUserRequestTest {
+@RunWith(MockitoJUnitRunner.class)
+public class SaveTracksForUserRequestTest implements ITest<String> {
+  private final SaveTracksForUserRequest successRequest = SPOTIFY_API
+          .saveTracksForUser("id")
+          .setHttpManager(
+                  TestUtil.MockedHttpManager.returningJson(
+                          "requests/data/library/SaveTracksForUserRequest.json"))
+          .build();
 
-  @Test
-  public void shouldAddToMySavedTracks_async() throws Exception {
-    final String accessToken = "someAccessToken";
-
-    final SpotifyApi api = new SpotifyApi.Builder().setAccessToken("AccessToken").build();
-
-    final String[]
-            tracksToAdd = {"4BYGxv4rxSNcTgT3DsFB9o", "0BG2iE6McPhmAEKIhfqy1X"};
-
-    final SaveTracksForUserRequest request = api.saveTracksForUser(tracksToAdd)
-            .setHttpManager(TestUtil.MockedHttpManager.returningString(""))
-            .build();
-
-    final Future<String> requestFuture = request.executeAsync();
-    final String string = requestFuture.get();
-
-    assertEquals("", string);
+  public SaveTracksForUserRequestTest() throws Exception {
   }
 
   @Test
-  public void shouldAddToMySavedTracks_sync() throws Exception {
-    final String accessToken = "someAccessToken";
+  public void shouldSucceed_sync() throws IOException, SpotifyWebApiException {
+    shouldSucceed(successRequest.execute());
+  }
 
-    final SpotifyApi api = new SpotifyApi.Builder().setAccessToken("AccessToken").build();
+  @Test
+  public void shouldSucceed_async() throws ExecutionException, InterruptedException {
+    shouldSucceed((String) successRequest.executeAsync().get());
+  }
 
-    final String[]
-            tracksToAdd = {"4BYGxv4rxSNcTgT3DsFB9o", "0BG2iE6McPhmAEKIhfqy1X"};
-
-    final SaveTracksForUserRequest request = api.saveTracksForUser(tracksToAdd)
-            .setHttpManager(TestUtil.MockedHttpManager.returningString(""))
-            .build();
-
-    request.execute();
+  public void shouldSucceed(final String string) {
+    assertEquals(
+            "",
+            string);
   }
 }

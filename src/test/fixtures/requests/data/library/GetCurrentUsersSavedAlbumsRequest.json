@@ -1,0 +1,9 @@
+{
+  "href": "https://api.spotify.com/v1/me/albums?offset=5&limit=10",
+  "items": [],
+  "limit": 10,
+  "next": null,
+  "offset": 5,
+  "previous": "https://api.spotify.com/v1/me/albums?offset=0&limit=10",
+  "total": 0
+}

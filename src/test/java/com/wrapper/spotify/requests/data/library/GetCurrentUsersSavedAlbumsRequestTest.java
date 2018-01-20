@@ -5,7 +5,6 @@ import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.Paging;
 import com.wrapper.spotify.model_objects.specification.SavedAlbum;
-import com.wrapper.spotify.model_objects.specification.SavedTrack;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -17,15 +16,15 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
 @RunWith(MockitoJUnitRunner.class)
-public class GetUsersSavedTracksRequestTest implements ITest<Paging<SavedTrack>> {
-  private final GetUsersSavedTracksRequest successRequest = SPOTIFY_API
-          .getUsersSavedTracks()
+public class GetCurrentUsersSavedAlbumsRequestTest implements ITest<Paging<SavedAlbum>> {
+  private final GetCurrentUsersSavedAlbumsRequest successRequest = SPOTIFY_API
+          .getCurrentUsersSavedAlbums()
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
-                          "requests/data/library/GetUsersSavedTracksRequest.json"))
+                          "requests/data/library/GetCurrentUsersSavedAlbumsRequest.json"))
           .build();
 
-  public GetUsersSavedTracksRequestTest() throws Exception {
+  public GetCurrentUsersSavedAlbumsRequestTest() throws Exception {
   }
 
   @Test
@@ -36,29 +35,29 @@ public class GetUsersSavedTracksRequestTest implements ITest<Paging<SavedTrack>>
   @SuppressWarnings("unchecked")
   @Test
   public void shouldSucceed_async() throws ExecutionException, InterruptedException {
-    shouldSucceed((Paging<SavedTrack>) successRequest.executeAsync().get());
+    shouldSucceed((Paging<SavedAlbum>) successRequest.executeAsync().get());
   }
 
-  public void shouldSucceed(final Paging<SavedTrack> savedTrackPaging) {
+  public void shouldSucceed(final Paging<SavedAlbum> savedAlbumPaging) {
     assertEquals(
-            "https://api.spotify.com/v1/me/tracks?offset=5&limit=10&market=ES",
-            savedTrackPaging.getHref());
+            "https://api.spotify.com/v1/me/albums?offset=5&limit=10",
+            savedAlbumPaging.getHref());
     assertEquals(
             0,
-            savedTrackPaging.getItems().length);
+            savedAlbumPaging.getItems().length);
     assertEquals(
             10,
-            (int) savedTrackPaging.getLimit());
+            (int) savedAlbumPaging.getLimit());
     assertNull(
-            savedTrackPaging.getNext());
+            savedAlbumPaging.getNext());
     assertEquals(
             5,
-            (int) savedTrackPaging.getOffset());
+            (int) savedAlbumPaging.getOffset());
     assertEquals(
-            "https://api.spotify.com/v1/me/tracks?offset=0&limit=10&market=ES",
-            savedTrackPaging.getPrevious());
+            "https://api.spotify.com/v1/me/albums?offset=0&limit=10",
+            savedAlbumPaging.getPrevious());
     assertEquals(
             0,
-            (int) savedTrackPaging.getTotal());
+            (int) savedAlbumPaging.getTotal());
   }
 }

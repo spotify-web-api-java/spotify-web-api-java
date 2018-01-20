@@ -3,6 +3,9 @@ package com.wrapper.spotify.requests.data.library;
 import com.wrapper.spotify.ITest;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
+import com.wrapper.spotify.model_objects.specification.Paging;
+import com.wrapper.spotify.model_objects.specification.SavedAlbum;
+import com.wrapper.spotify.model_objects.specification.SavedTrack;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -11,17 +14,18 @@ import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 @RunWith(MockitoJUnitRunner.class)
-public class CheckUsersSavedTracksRequestTest implements ITest<Boolean[]> {
-  private final CheckUsersSavedTracksRequest successRequest = SPOTIFY_API
-          .checkUsersSavedTracks("id")
+public class RemoveAlbumsForCurrentUserRequestTest implements ITest<String> {
+  private final RemoveAlbumsForCurrentUserRequest successRequest = SPOTIFY_API
+          .removeAlbumsForCurrentUser("id")
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
-                          "requests/data/library/CheckUsersSavedTracksRequest.json"))
+                          "requests/data/library/RemoveAlbumsForCurrentUserRequest.json"))
           .build();
 
-  public CheckUsersSavedTracksRequestTest() throws Exception {
+  public RemoveAlbumsForCurrentUserRequestTest() throws Exception {
   }
 
   @Test
@@ -31,12 +35,12 @@ public class CheckUsersSavedTracksRequestTest implements ITest<Boolean[]> {
 
   @Test
   public void shouldSucceed_async() throws ExecutionException, InterruptedException {
-    shouldSucceed((Boolean[]) successRequest.executeAsync().get());
+    shouldSucceed((String) successRequest.executeAsync().get());
   }
 
-  public void shouldSucceed(final Boolean[] booleans) {
+  public void shouldSucceed(final String string) {
     assertEquals(
-            3,
-            booleans.length);
+            "",
+            string);
   }
 }
