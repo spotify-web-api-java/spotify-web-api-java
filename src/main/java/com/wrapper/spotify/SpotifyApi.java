@@ -316,7 +316,7 @@ public class SpotifyApi {
    */
   public GetSeveralAlbumsRequest.Builder getSeveralAlbums(String... ids) {
     assert (ids != null);
-    assert (ids.length <= 20);
+    assert (1 <= ids.length && ids.length <= 20);
     return new GetSeveralAlbumsRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .ids(concat(ids, ','));
@@ -389,7 +389,7 @@ public class SpotifyApi {
    */
   public GetSeveralArtistsRequest.Builder getSeveralArtists(String... ids) {
     assert (ids != null);
-    assert (ids.length <= 50);
+    assert (1 <= ids.length && ids.length <= 50);
     return new GetSeveralArtistsRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .ids(concat(ids, ','));
@@ -450,7 +450,7 @@ public class SpotifyApi {
           ModelObjectType type, String[] ids) {
     assert (type != null);
     assert (ids != null);
-    assert (ids.length <= 50);
+    assert (1 <= ids.length && ids.length <= 50);
     return new CheckCurrentUserFollowsArtistsOrUsersRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .type(type)
@@ -462,7 +462,7 @@ public class SpotifyApi {
     assert (owner_id != null);
     assert (playlist_id != null);
     assert (ids != null);
-    assert (ids.length <= 5);
+    assert (1 <= ids.length && ids.length <= 5);
     return new CheckUsersFollowPlaylistRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .owner_id(owner_id)
@@ -473,7 +473,7 @@ public class SpotifyApi {
   public FollowArtistsOrUsersRequest.Builder followArtistsOrUsers(ModelObjectType type, String[] ids) {
     assert (type != null);
     assert (ids != null);
-    assert (ids.length <= 50);
+    assert (1 <= ids.length && ids.length <= 50);
     return new FollowArtistsOrUsersRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .type(type)
@@ -513,7 +513,7 @@ public class SpotifyApi {
   public UnfollowArtistsOrUsersRequest.Builder unfollowArtistsOrUsers(ModelObjectType type, String[] ids) {
     assert (type != null);
     assert (ids != null);
-    assert (ids.length <= 50);
+    assert (1 <= ids.length && ids.length <= 50);
     return new UnfollowArtistsOrUsersRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .type(type)
@@ -557,7 +557,7 @@ public class SpotifyApi {
    */
   public CheckUsersSavedAlbumsRequest.Builder checkUsersSavedAlbums(String... ids) {
     assert (ids != null);
-    assert (ids.length <= 50);
+    assert (1 <= ids.length && ids.length <= 50);
     return new CheckUsersSavedAlbumsRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .ids(concat(ids, ','));
@@ -571,7 +571,7 @@ public class SpotifyApi {
    */
   public CheckUsersSavedTracksRequest.Builder checkUsersSavedTracks(String... ids) {
     assert (ids != null);
-    assert (ids.length <= 50);
+    assert (1 <= ids.length && ids.length <= 50);
     return new CheckUsersSavedTracksRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .ids(concat(ids, ','));
@@ -594,7 +594,7 @@ public class SpotifyApi {
 
   public RemoveAlbumsForCurrentUserRequest.Builder removeAlbumsForCurrentUser(String... ids) {
     assert (ids != null);
-    assert (ids.length <= 50);
+    assert (1 <= ids.length && ids.length <= 50);
     return new RemoveAlbumsForCurrentUserRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .ids(concat(ids, ','));
@@ -616,7 +616,7 @@ public class SpotifyApi {
    */
   public RemoveUsersSavedTracksRequest.Builder removeUsersSavedTracks(String... ids) {
     assert (ids != null);
-    assert (ids.length <= 50);
+    assert (1 <= ids.length && ids.length <= 50);
     return new RemoveUsersSavedTracksRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .ids(concat(ids, ','));
@@ -644,7 +644,7 @@ public class SpotifyApi {
    */
   public SaveAlbumsForCurrentUserRequest.Builder saveAlbumsForCurrentUser(String... ids) {
     assert (ids != null);
-    assert (ids.length <= 50);
+    assert (1 <= ids.length && ids.length <= 50);
     return new SaveAlbumsForCurrentUserRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .ids(concat(ids, ','));
@@ -672,7 +672,7 @@ public class SpotifyApi {
    */
   public SaveTracksForUserRequest.Builder saveTracksForUser(String... ids) {
     assert (ids != null);
-    assert (ids.length <= 50);
+    assert (1 <= ids.length && ids.length <= 50);
     return new SaveTracksForUserRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .ids(concat(ids, ','));
@@ -788,7 +788,7 @@ public class SpotifyApi {
     assert (playlist_id != null);
     assert (!playlist_id.equals(""));
     assert (uris != null);
-    assert (uris.length <= 100);
+    assert (1 <= uris.length && uris.length <= 100);
     return new AddTracksToPlaylistRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .user_id(user_id)
@@ -962,7 +962,7 @@ public class SpotifyApi {
     assert (playlist_id != null);
     assert (!playlist_id.equals(""));
     assert (uris != null);
-    assert (uris.length <= 100);
+    assert (1 <= uris.length && uris.length <= 100);
     return new ReplacePlaylistsTracksRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .user_id(user_id)
@@ -1081,7 +1081,7 @@ public class SpotifyApi {
 
   public GetAudioFeaturesForSeveralTracksRequest.Builder getAudioFeaturesForSeveralTracks(String... ids) {
     assert (ids != null);
-    assert (ids.length <= 100);
+    assert (1 <= ids.length && ids.length <= 100);
     return new GetAudioFeaturesForSeveralTracksRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .ids(concat(ids, ','));
@@ -1095,7 +1095,7 @@ public class SpotifyApi {
    */
   public GetSeveralTracksRequest.Builder getSeveralTracks(String... ids) {
     assert (ids != null);
-    assert (ids.length <= 50);
+    assert (1 <= ids.length && ids.length <= 50);
     return new GetSeveralTracksRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .ids(concat(ids, ','));
