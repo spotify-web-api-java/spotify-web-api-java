@@ -714,6 +714,11 @@ public class SpotifyApi {
             .setDefaults(httpManager, scheme, host, port);
   }
 
+  public GetUsersAvailableDevices.Builder getUsersAvailableDevices() {
+    return new GetUsersAvailableDevices.Builder(accessToken)
+            .setDefaults(httpManager, scheme, host, port);
+  }
+
   public GetUsersCurrentlyPlayingTrackRequest.Builder getUsersCurrentlyPlayingTrack() {
     return new GetUsersCurrentlyPlayingTrackRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port);
