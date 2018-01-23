@@ -77,25 +77,49 @@ public abstract class AbstractRequest implements IRequest {
   public String getJson() throws
           IOException,
           SpotifyWebApiException {
-    return httpManager.get(uri, headers.toArray(new Header[headers.size()]));
+    String json = httpManager.get(uri, headers.toArray(new Header[headers.size()]));
+
+    if (json.equals("")) {
+      return null;
+    } else {
+      return json;
+    }
   }
 
   public String postJson() throws
           IOException,
           SpotifyWebApiException {
-    return httpManager.post(uri, headers.toArray(new Header[headers.size()]), formParameters);
+    String json = httpManager.post(uri, headers.toArray(new Header[headers.size()]), formParameters);
+
+    if (json.equals("")) {
+      return null;
+    } else {
+      return json;
+    }
   }
 
   public String putJson() throws
           IOException,
           SpotifyWebApiException {
-    return httpManager.put(uri, headers.toArray(new Header[headers.size()]), formParameters);
+    String json = httpManager.put(uri, headers.toArray(new Header[headers.size()]), formParameters);
+
+    if (json.equals("")) {
+      return null;
+    } else {
+      return json;
+    }
   }
 
   public String deleteJson() throws
           IOException,
           SpotifyWebApiException {
-    return httpManager.delete(uri, headers.toArray(new Header[headers.size()]));
+    String json = httpManager.delete(uri, headers.toArray(new Header[headers.size()]));
+
+    if (json.equals("")) {
+      return null;
+    } else {
+      return json;
+    }
   }
 
   public IHttpManager getHttpManager() {

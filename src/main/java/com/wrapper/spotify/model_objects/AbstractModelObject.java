@@ -50,7 +50,11 @@ public abstract class AbstractModelObject implements IModelObject {
      * {@inheritDoc}
      */
     public T createModelObject(final String json) {
-      return createModelObject(new JsonParser().parse(json).getAsJsonObject());
+      if (json == null) {
+        return null;
+      } else {
+        return createModelObject(new JsonParser().parse(json).getAsJsonObject());
+      }
     }
 
     /**

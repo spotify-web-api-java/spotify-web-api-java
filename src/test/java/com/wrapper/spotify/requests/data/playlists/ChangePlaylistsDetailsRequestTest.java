@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import java.util.concurrent.Future;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 public class ChangePlaylistsDetailsRequestTest {
 
@@ -26,7 +26,7 @@ public class ChangePlaylistsDetailsRequestTest {
     final Future<String> requestFuture = request.executeAsync();
     final String string = requestFuture.get();
 
-    assertEquals("", string);
+    assertNull(string);
   }
 
   @Test

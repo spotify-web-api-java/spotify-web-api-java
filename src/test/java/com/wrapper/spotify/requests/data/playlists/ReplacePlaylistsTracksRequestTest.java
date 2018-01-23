@@ -8,8 +8,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import java.util.concurrent.Future;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 @RunWith(MockitoJUnitRunner.class)
 public class ReplacePlaylistsTracksRequestTest {
@@ -25,8 +24,7 @@ public class ReplacePlaylistsTracksRequestTest {
     final Future<String> requestFuture = request.executeAsync();
     final String string = requestFuture.get();
 
-    assertNotNull(string);
-    assertEquals("", string);
+    assertNull(string);
   }
 
   @Test
