@@ -15,7 +15,7 @@ public class CurrentlyPlayingContext extends AbstractModelObject {
   private final String repeat_state;
   private final Boolean shuffle_state;
   private final Context context;
-  private final Integer timestamp;
+  private final Long timestamp;
   private final Integer progress_ms;
   private final Boolean is_playing;
   private final Track item;
@@ -74,7 +74,7 @@ public class CurrentlyPlayingContext extends AbstractModelObject {
    *
    * @return Unix Millisecond Timestamp when data was fetched.
    */
-  public Integer getTimestamp() {
+  public Long getTimestamp() {
     return timestamp;
   }
 
@@ -118,7 +118,7 @@ public class CurrentlyPlayingContext extends AbstractModelObject {
     private String repeat_state;
     private Boolean shuffle_state;
     private Context context;
-    private Integer timestamp;
+    private Long timestamp;
     private Integer progress_ms;
     private Boolean is_playing;
     private Track item;
@@ -173,7 +173,7 @@ public class CurrentlyPlayingContext extends AbstractModelObject {
      * @param timestamp Unix Millisecond Timestamp when data was fetched.
      * @return A {@link CurrentlyPlayingContext.Builder}.
      */
-    public Builder setTimestamp(Integer timestamp) {
+    public Builder setTimestamp(Long timestamp) {
       this.timestamp = timestamp;
       return this;
     }
@@ -247,7 +247,7 @@ public class CurrentlyPlayingContext extends AbstractModelObject {
                               : null)
               .setTimestamp(
                       hasAndNotNull(jsonObject, "timestamp")
-                              ? jsonObject.get("timestamp").getAsInt()
+                              ? jsonObject.get("timestamp").getAsLong()
                               : null)
               .setProgress_ms(
                       hasAndNotNull(jsonObject, "progress_ms")

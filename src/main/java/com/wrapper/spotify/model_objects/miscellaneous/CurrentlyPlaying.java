@@ -11,7 +11,7 @@ import com.wrapper.spotify.model_objects.specification.Track;
  */
 public class CurrentlyPlaying extends AbstractModelObject {
   private final Context context;
-  private final Integer timestamp;
+  private final Long timestamp;
   private final Integer progress_ms;
   private final Boolean is_playing;
   private final Track item;
@@ -40,7 +40,7 @@ public class CurrentlyPlaying extends AbstractModelObject {
    *
    * @return Unix Millisecond Timestamp when data was fetched.
    */
-  public Integer getTimestamp() {
+  public Long getTimestamp() {
     return timestamp;
   }
 
@@ -106,7 +106,7 @@ public class CurrentlyPlaying extends AbstractModelObject {
    */
   public static final class Builder extends AbstractModelObject.Builder {
     private Context context;
-    private Integer timestamp;
+    private Long timestamp;
     private Integer progress_ms;
     private Boolean is_playing;
     private Track item;
@@ -128,7 +128,7 @@ public class CurrentlyPlaying extends AbstractModelObject {
      * @param timestamp Unix Millisecond Timestamp when data was fetched.
      * @return A {@link CurrentlyPlaying.Builder}.
      */
-    public Builder setTimestamp(Integer timestamp) {
+    public Builder setTimestamp(Long timestamp) {
       this.timestamp = timestamp;
       return this;
     }
@@ -189,7 +189,7 @@ public class CurrentlyPlaying extends AbstractModelObject {
                               : null)
               .setTimestamp(
                       hasAndNotNull(jsonObject, "timestamp")
-                              ? jsonObject.get("timestamp").getAsInt()
+                              ? jsonObject.get("timestamp").getAsLong()
                               : null)
               .setProgress_ms(
                       hasAndNotNull(jsonObject, "progress_ms")
