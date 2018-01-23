@@ -45,9 +45,16 @@ public class GetSeveralAlbumsRequestTest implements ITest<Album[]> {
   }
 
   @Test
-  public void shouldFail() throws Exception {
-    final Album[] albums = (Album[]) failureRequest.executeAsync().get();
+  public void shouldFail_sync() throws IOException, SpotifyWebApiException {
+    shouldFail(failureRequest.execute());
+  }
 
+  @Test
+  public void shouldFail_async() throws ExecutionException, InterruptedException {
+    shouldFail((Album[]) failureRequest.executeAsync().get());
+  }
+
+  public void shouldFail(final Album[] albums) {
     assertEquals(
             1,
             albums.length);
