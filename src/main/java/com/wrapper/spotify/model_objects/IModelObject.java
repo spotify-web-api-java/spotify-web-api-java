@@ -93,7 +93,7 @@ public interface IModelObject {
      * Create an array of model objects out of a json array, which is contained in a json object.
      *
      * @param json A {@link JsonObject}.
-     * @param key The key of the json array in the json object.
+     * @param key  The key of the json array in the json object.
      * @return A model object array. The type depends on this methods implementation.
      */
     T[] createModelObjectArray(final String json, final String key);
@@ -128,7 +128,7 @@ public interface IModelObject {
      * Create a paging of model objects out of a json array, which is contained in a json object.
      *
      * @param json A {@link JsonObject}.
-     * @param key The key of the json array in the json object.
+     * @param key  The key of the json array in the json object.
      * @return A model object array. The type depends on this methods implementation.
      */
     Paging<T> createModelObjectPaging(final String json, final String key);
@@ -153,7 +153,7 @@ public interface IModelObject {
      * Create a cursor-based paging of model objects out of a json array, which is contained in a json object.
      *
      * @param json A {@link JsonObject}.
-     * @param key The key of the json array in the json object.
+     * @param key  The key of the json array in the json object.
      * @return A cursor-based model object paging.
      */
     PagingCursorbased<T> createModelObjectPagingCursorbased(final String json, final String key);

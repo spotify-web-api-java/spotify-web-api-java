@@ -8,9 +8,17 @@ import com.wrapper.spotify.model_objects.specification.Paging;
 import com.wrapper.spotify.model_objects.specification.Track;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
 import com.wrapper.spotify.requests.data.personalization.interfaces.IArtistTrackModelObject;
+import com.wrapper.spotify.requests.data.personalization.simplified.GetUsersTopArtistsRequest;
+import com.wrapper.spotify.requests.data.personalization.simplified.GetUsersTopTracksRequest;
 
 import java.io.IOException;
 
+/**
+ * This class only exists for theoretical purposes. Please use {@link GetUsersTopArtistsRequest} and
+ * {@link GetUsersTopTracksRequest}
+ *
+ * @param <T> The request {@link ModelObjectType}: artist or track.
+ */
 public class GetUsersTopArtistsAndTracksRequest<T extends IArtistTrackModelObject> extends AbstractDataRequest {
 
   private final AbstractModelObject.JsonUtil<T> tClass;

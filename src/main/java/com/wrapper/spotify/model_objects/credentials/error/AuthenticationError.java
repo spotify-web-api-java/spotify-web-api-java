@@ -33,7 +33,7 @@ public class AuthenticationError extends AbstractModelObject {
    * Get the more detailed description of the error as specified in
    * <a href="https://tools.ietf.org/html/rfc6749#section-4.1.2.1">RFC 6749 Section 4.1.2.1</a>.
    *
-   * @return string	A more detailed description of the error as specified in RFC 6749 Section 4.1.2.1.
+   * @return string    A more detailed description of the error as specified in RFC 6749 Section 4.1.2.1.
    */
   public String getError_description() {
     return error_description;

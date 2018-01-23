@@ -5,7 +5,7 @@ import com.wrapper.spotify.model_objects.AbstractModelObject;
 
 /**
  * Retrieve information about <a href="https://developer.spotify.com/web-api/authorization-guide/#implicit_grant_flow">
- *   Client Credentials</a> by building instances from this class.
+ * Client Credentials</a> by building instances from this class.
  */
 public class ClientCredentials extends AbstractModelObject {
   private final String accessToken;

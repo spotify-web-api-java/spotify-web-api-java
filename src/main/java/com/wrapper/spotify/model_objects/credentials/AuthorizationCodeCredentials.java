@@ -44,7 +44,6 @@ public class AuthorizationCodeCredentials extends AbstractModelObject {
   }
 
 
-
   /**
    * Get the <a href="https://developer.spotify.com/web-api/using-scopes/">Scopes</a> specified in the authorization
    * code credentials request.
