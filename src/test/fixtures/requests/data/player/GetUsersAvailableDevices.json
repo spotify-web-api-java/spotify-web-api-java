@@ -1,0 +1,12 @@
+{
+  "devices": [
+    {
+      "id": "1234567891234567891234567891234567891234",
+      "is_active": true,
+      "is_restricted": false,
+      "name": "Testmachine",
+      "type": "Computer",
+      "volume_percent": 100
+    }
+  ]
+}
