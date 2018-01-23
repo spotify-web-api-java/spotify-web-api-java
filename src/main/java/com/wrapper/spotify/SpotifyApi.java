@@ -686,7 +686,8 @@ public class SpotifyApi {
             .ids(concat(new Gson().fromJson(ids, String[].class), ','));
   }
 
-  public <T extends IArtistTrackModelObject> GetUsersTopArtistsAndTracksRequest.Builder getUsersTopArtistsAndTracks(ModelObjectType type) {
+  @SuppressWarnings("unchecked")
+  public <T extends IArtistTrackModelObject> GetUsersTopArtistsAndTracksRequest.Builder<T> getUsersTopArtistsAndTracks(ModelObjectType type) {
     assert (type != null);
     return new GetUsersTopArtistsAndTracksRequest.Builder<T>(accessToken)
             .setDefaults(httpManager, scheme, host, port)
