@@ -1,0 +1,396 @@
+{
+  "items": [
+    {
+      "external_urls": {
+        "spotify": "https://open.spotify.com/artist/0jNDKefhfSbLR9sFvcPLHo"
+      },
+      "followers": {
+        "href": null,
+        "total": 227667
+      },
+      "genres": [
+        "bass trap",
+        "brostep",
+        "catstep",
+        "edm",
+        "electro house",
+        "electronic trap",
+        "tracestep",
+        "tropical house",
+        "vapor twitch"
+      ],
+      "href": "https://api.spotify.com/v1/artists/0jNDKefhfSbLR9sFvcPLHo",
+      "id": "0jNDKefhfSbLR9sFvcPLHo",
+      "images": [
+        {
+          "height": 640,
+          "url": "https://i.scdn.co/image/6f2637eed9b15b8655cbb7071c6d335a5611cefd",
+          "width": 640
+        },
+        {
+          "height": 320,
+          "url": "https://i.scdn.co/image/2715054e6248aa3b1b40dfbe3f8245bc92ce99d4",
+          "width": 320
+        },
+        {
+          "height": 160,
+          "url": "https://i.scdn.co/image/0e7894b912c54a460d2d1d6c4c0b6e89346bfa2a",
+          "width": 160
+        }
+      ],
+      "name": "San Holo",
+      "popularity": 72,
+      "type": "artist",
+      "uri": "spotify:artist:0jNDKefhfSbLR9sFvcPLHo"
+    },
+    {
+      "external_urls": {
+        "spotify": "https://open.spotify.com/artist/6gto7HVNhu4ARE3P3g8Y5Y"
+      },
+      "followers": {
+        "href": null,
+        "total": 746441
+      },
+      "genres": [
+        "german hip hop"
+      ],
+      "href": "https://api.spotify.com/v1/artists/6gto7HVNhu4ARE3P3g8Y5Y",
+      "id": "6gto7HVNhu4ARE3P3g8Y5Y",
+      "images": [
+        {
+          "height": 640,
+          "url": "https://i.scdn.co/image/6a805488b3be4d28a7579f85219a8e2d4ef8c4f4",
+          "width": 640
+        },
+        {
+          "height": 320,
+          "url": "https://i.scdn.co/image/aea835f0bef07b177f2cc0ab0c74512d986b9b90",
+          "width": 320
+        },
+        {
+          "height": 160,
+          "url": "https://i.scdn.co/image/5a514fac41e28400938960a42aea9a4d5ea7c7b4",
+          "width": 160
+        }
+      ],
+      "name": "Kollegah",
+      "popularity": 80,
+      "type": "artist",
+      "uri": "spotify:artist:6gto7HVNhu4ARE3P3g8Y5Y"
+    },
+    {
+      "external_urls": {
+        "spotify": "https://open.spotify.com/artist/2o5jDhtHVPhrJdv3cEQ99Z"
+      },
+      "followers": {
+        "href": null,
+        "total": 2560853
+      },
+      "genres": [
+        "big room",
+        "brostep",
+        "edm",
+        "electro house",
+        "house",
+        "trance",
+        "tropical house"
+      ],
+      "href": "https://api.spotify.com/v1/artists/2o5jDhtHVPhrJdv3cEQ99Z",
+      "id": "2o5jDhtHVPhrJdv3cEQ99Z",
+      "images": [
+        {
+          "height": 640,
+          "url": "https://i.scdn.co/image/ec396fb659e29efcfbadd91cb1dd8e270393908f",
+          "width": 640
+        },
+        {
+          "height": 320,
+          "url": "https://i.scdn.co/image/faed8e05e122ca6e35f5ad64c65c9c3eb09dbeb6",
+          "width": 320
+        },
+        {
+          "height": 160,
+          "url": "https://i.scdn.co/image/d922ec259da800ae24792b14a5ae0f5883a9aea1",
+          "width": 160
+        }
+      ],
+      "name": "Tiësto",
+      "popularity": 82,
+      "type": "artist",
+      "uri": "spotify:artist:2o5jDhtHVPhrJdv3cEQ99Z"
+    },
+    {
+      "external_urls": {
+        "spotify": "https://open.spotify.com/artist/0tMFcqLXhtm1Gep20iuIR3"
+      },
+      "followers": {
+        "href": null,
+        "total": 160144
+      },
+      "genres": [
+        "deep german hip hop",
+        "german hip hop"
+      ],
+      "href": "https://api.spotify.com/v1/artists/0tMFcqLXhtm1Gep20iuIR3",
+      "id": "0tMFcqLXhtm1Gep20iuIR3",
+      "images": [
+        {
+          "height": 640,
+          "url": "https://i.scdn.co/image/39bb8d7e94bf57fba3561a9b1ab098e67addd899",
+          "width": 640
+        },
+        {
+          "height": 300,
+          "url": "https://i.scdn.co/image/31a91649e012a8cf9f8e1acc61883e0859e24f6a",
+          "width": 300
+        },
+        {
+          "height": 64,
+          "url": "https://i.scdn.co/image/dbdbb0469b04fc3298f4f96a1bafeda72c66194f",
+          "width": 64
+        }
+      ],
+      "name": "SXTN",
+      "popularity": 70,
+      "type": "artist",
+      "uri": "spotify:artist:0tMFcqLXhtm1Gep20iuIR3"
+    },
+    {
+      "external_urls": {
+        "spotify": "https://open.spotify.com/artist/7dGJo4pcD2V6oG8kP0tJRR"
+      },
+      "followers": {
+        "href": null,
+        "total": 13155758
+      },
+      "genres": [
+        "detroit hip hop",
+        "g funk",
+        "hip hop",
+        "rap"
+      ],
+      "href": "https://api.spotify.com/v1/artists/7dGJo4pcD2V6oG8kP0tJRR",
+      "id": "7dGJo4pcD2V6oG8kP0tJRR",
+      "images": [
+        {
+          "height": 640,
+          "url": "https://i.scdn.co/image/6c3ecb13aa0160b990cc957292751f229c9b5b7b",
+          "width": 640
+        },
+        {
+          "height": 320,
+          "url": "https://i.scdn.co/image/25b1026ea50d9d6ec565c32f4c81bf6b5d45a5d9",
+          "width": 320
+        },
+        {
+          "height": 160,
+          "url": "https://i.scdn.co/image/e479a506942c089a34683bc03bd95bdb99e20048",
+          "width": 160
+        }
+      ],
+      "name": "Eminem",
+      "popularity": 97,
+      "type": "artist",
+      "uri": "spotify:artist:7dGJo4pcD2V6oG8kP0tJRR"
+    },
+    {
+      "external_urls": {
+        "spotify": "https://open.spotify.com/artist/1l2ekx5skC4gJH8djERwh1"
+      },
+      "followers": {
+        "href": null,
+        "total": 706378
+      },
+      "genres": [
+        "big room",
+        "deep big room",
+        "edm",
+        "electro house",
+        "house",
+        "progressive electro house",
+        "progressive house",
+        "tropical house"
+      ],
+      "href": "https://api.spotify.com/v1/artists/1l2ekx5skC4gJH8djERwh1",
+      "id": "1l2ekx5skC4gJH8djERwh1",
+      "images": [
+        {
+          "height": 640,
+          "url": "https://i.scdn.co/image/8e300462ea539531b1640897fed77380cb7e14e0",
+          "width": 640
+        },
+        {
+          "height": 320,
+          "url": "https://i.scdn.co/image/7288835a9a8c7ebc4fd2044b1a2eda6a5e120e7c",
+          "width": 320
+        },
+        {
+          "height": 160,
+          "url": "https://i.scdn.co/image/178c6e7e3bf24710d4895048586a86f1bb81d842",
+          "width": 160
+        }
+      ],
+      "name": "Don Diablo",
+      "popularity": 76,
+      "type": "artist",
+      "uri": "spotify:artist:1l2ekx5skC4gJH8djERwh1"
+    },
+    {
+      "external_urls": {
+        "spotify": "https://open.spotify.com/artist/1vCWHaC5f2uS3yhpwWbIA6"
+      },
+      "followers": {
+        "href": null,
+        "total": 6934601
+      },
+      "genres": [
+        "big room",
+        "edm",
+        "electro house",
+        "pop",
+        "tropical house"
+      ],
+      "href": "https://api.spotify.com/v1/artists/1vCWHaC5f2uS3yhpwWbIA6",
+      "id": "1vCWHaC5f2uS3yhpwWbIA6",
+      "images": [
+        {
+          "height": 640,
+          "url": "https://i.scdn.co/image/81b19a403109c4fe528ee3972137127b85be9519",
+          "width": 640
+        },
+        {
+          "height": 320,
+          "url": "https://i.scdn.co/image/9c0d8fa969a9f5db6ff860203d6880a125e501d2",
+          "width": 320
+        },
+        {
+          "height": 160,
+          "url": "https://i.scdn.co/image/c55bc6f57b6bb297425c3ae694f92672dcf0e2c2",
+          "width": 160
+        }
+      ],
+      "name": "Avicii",
+      "popularity": 86,
+      "type": "artist",
+      "uri": "spotify:artist:1vCWHaC5f2uS3yhpwWbIA6"
+    },
+    {
+      "external_urls": {
+        "spotify": "https://open.spotify.com/artist/41LLNWUptvfbQ9Q7oCefmg"
+      },
+      "followers": {
+        "href": null,
+        "total": 270479
+      },
+      "genres": [
+        "deep german hip hop",
+        "german hip hop"
+      ],
+      "href": "https://api.spotify.com/v1/artists/41LLNWUptvfbQ9Q7oCefmg",
+      "id": "41LLNWUptvfbQ9Q7oCefmg",
+      "images": [
+        {
+          "height": 640,
+          "url": "https://i.scdn.co/image/1d9932254920b0b629f7527ed7b9281b57b2e0b4",
+          "width": 640
+        },
+        {
+          "height": 320,
+          "url": "https://i.scdn.co/image/b67a507fa0e6cc11685490e0b78da0d04acf232f",
+          "width": 320
+        },
+        {
+          "height": 160,
+          "url": "https://i.scdn.co/image/bffe0a950aa7a325f5f6c6b2a7d673afffa55de5",
+          "width": 160
+        }
+      ],
+      "name": "Genetikk",
+      "popularity": 65,
+      "type": "artist",
+      "uri": "spotify:artist:41LLNWUptvfbQ9Q7oCefmg"
+    },
+    {
+      "external_urls": {
+        "spotify": "https://open.spotify.com/artist/6XyY86QOPPrYVGvF9ch6wz"
+      },
+      "followers": {
+        "href": null,
+        "total": 6840609
+      },
+      "genres": [
+        "alternative metal",
+        "nu metal",
+        "post-grunge",
+        "rap metal",
+        "rock"
+      ],
+      "href": "https://api.spotify.com/v1/artists/6XyY86QOPPrYVGvF9ch6wz",
+      "id": "6XyY86QOPPrYVGvF9ch6wz",
+      "images": [
+        {
+          "height": 640,
+          "url": "https://i.scdn.co/image/1685533969d5b68cbc630f991e873bd6467f1814",
+          "width": 640
+        },
+        {
+          "height": 320,
+          "url": "https://i.scdn.co/image/f759994946aa42851e5293083f472c96c1753105",
+          "width": 320
+        },
+        {
+          "height": 160,
+          "url": "https://i.scdn.co/image/0b0925b544b46d90a549f25a7f754ce6e59e6be2",
+          "width": 160
+        }
+      ],
+      "name": "Linkin Park",
+      "popularity": 88,
+      "type": "artist",
+      "uri": "spotify:artist:6XyY86QOPPrYVGvF9ch6wz"
+    },
+    {
+      "external_urls": {
+        "spotify": "https://open.spotify.com/artist/5BcAKTbp20cv7tC5VqPFoC"
+      },
+      "followers": {
+        "href": null,
+        "total": 2023844
+      },
+      "genres": [
+        "pop",
+        "pop rap",
+        "underground pop rap"
+      ],
+      "href": "https://api.spotify.com/v1/artists/5BcAKTbp20cv7tC5VqPFoC",
+      "id": "5BcAKTbp20cv7tC5VqPFoC",
+      "images": [
+        {
+          "height": 640,
+          "url": "https://i.scdn.co/image/aa77c545af000003e22621637813e2e7c65c4203",
+          "width": 640
+        },
+        {
+          "height": 320,
+          "url": "https://i.scdn.co/image/02b156507da36da44d7b838c325285452dffa9a6",
+          "width": 320
+        },
+        {
+          "height": 160,
+          "url": "https://i.scdn.co/image/89c1341da3c66efd71ecb0494fe8c4a5dad3c1aa",
+          "width": 160
+        }
+      ],
+      "name": "Macklemore & Ryan Lewis",
+      "popularity": 79,
+      "type": "artist",
+      "uri": "spotify:artist:5BcAKTbp20cv7tC5VqPFoC"
+    }
+  ],
+  "total": 50,
+  "limit": 10,
+  "offset": 5,
+  "href": "https://api.spotify.com/v1/me/top/artists?limit=10&offset=5",
+  "previous": null,
+  "next": "https://api.spotify.com/v1/me/top/artists?limit=10&offset=15"
+}
