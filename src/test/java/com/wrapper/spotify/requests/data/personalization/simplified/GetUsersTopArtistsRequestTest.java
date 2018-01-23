@@ -41,30 +41,23 @@ public class GetUsersTopArtistsRequestTest implements ITest<Paging<Artist>> {
   public void shouldSucceed(final Paging<Artist> artistPaging) {
     assertEquals(
             10,
-            artistPaging.getItems().length
-    );
+            artistPaging.getItems().length);
     assertEquals(
             50,
-            (int) artistPaging.getTotal()
-    );
+            (int) artistPaging.getTotal());
     assertEquals(
             10,
-            (int) artistPaging.getLimit()
-    );
+            (int) artistPaging.getLimit());
     assertEquals(
             5,
-            (int) artistPaging.getOffset()
-    );
+            (int) artistPaging.getOffset());
     assertEquals(
             "https://api.spotify.com/v1/me/top/artists?limit=10&offset=5",
-            artistPaging.getHref()
-    );
+            artistPaging.getHref());
     assertNull(
-            artistPaging.getPrevious()
-    );
+            artistPaging.getPrevious());
     assertEquals(
             "https://api.spotify.com/v1/me/top/artists?limit=10&offset=15",
-            artistPaging.getNext()
-    );
+            artistPaging.getNext());
   }
 }
