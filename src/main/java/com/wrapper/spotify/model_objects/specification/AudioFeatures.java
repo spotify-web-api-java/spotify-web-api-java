@@ -10,24 +10,24 @@ import com.wrapper.spotify.model_objects.AbstractModelObject;
  * Audio Feature objects</a> by building instances from this class.
  */
 public class AudioFeatures extends AbstractModelObject {
-  private final double acousticness;
+  private final Float acousticness;
   private final String analysisUrl;
-  private final double danceability;
+  private final Float danceability;
   private final Integer durationMs;
-  private final double energy;
+  private final Float energy;
   private final String id;
-  private final double instrumentalness;
+  private final Float instrumentalness;
   private final Integer key;
-  private final double liveness;
-  private final double loudness;
+  private final Float liveness;
+  private final Float loudness;
   private final Modality mode;
-  private final double speechiness;
-  private final double tempo;
+  private final Float speechiness;
+  private final Float tempo;
   private final Integer timeSignature;
   private final String trackHref;
   private final ModelObjectType type;
   private final String uri;
-  private final double valence;
+  private final Float valence;
 
   private AudioFeatures(final Builder builder) {
     super(builder);
@@ -58,7 +58,7 @@ public class AudioFeatures extends AbstractModelObject {
    *
    * @return Acousticness value.
    */
-  public double getAcousticness() {
+  public Float getAcousticness() {
     return acousticness;
   }
 
@@ -79,7 +79,7 @@ public class AudioFeatures extends AbstractModelObject {
    *
    * @return Danceability value.
    */
-  public double getDanceability() {
+  public Float getDanceability() {
     return danceability;
   }
 
@@ -99,7 +99,7 @@ public class AudioFeatures extends AbstractModelObject {
    *
    * @return Energetic value.
    */
-  public double getEnergy() {
+  public Float getEnergy() {
     return energy;
   }
 
@@ -120,7 +120,7 @@ public class AudioFeatures extends AbstractModelObject {
    * @return Instrumentalness value.
    * @see #getSpeechiness()
    */
-  public double getInstrumentalness() {
+  public Float getInstrumentalness() {
     return instrumentalness;
   }
 
@@ -141,7 +141,7 @@ public class AudioFeatures extends AbstractModelObject {
    *
    * @return Liveness value.
    */
-  public double getLiveness() {
+  public Float getLiveness() {
     return liveness;
   }
 
@@ -150,7 +150,7 @@ public class AudioFeatures extends AbstractModelObject {
    *
    * @return Loudness value.
    */
-  public double getLoudness() {
+  public Float getLoudness() {
     return loudness;
   }
 
@@ -171,7 +171,7 @@ public class AudioFeatures extends AbstractModelObject {
    * @return Speechiness value.
    * @see #getInstrumentalness()
    */
-  public double getSpeechiness() {
+  public Float getSpeechiness() {
     return speechiness;
   }
 
@@ -180,7 +180,7 @@ public class AudioFeatures extends AbstractModelObject {
    *
    * @return Tempo value.
    */
-  public double getTempo() {
+  public Float getTempo() {
     return tempo;
   }
 
@@ -230,7 +230,7 @@ public class AudioFeatures extends AbstractModelObject {
    *
    * @return Valence value.
    */
-  public double getValence() {
+  public Float getValence() {
     return valence;
   }
 
@@ -520,7 +520,7 @@ public class AudioFeatures extends AbstractModelObject {
               .setMode(
                       hasAndNotNull(jsonObject, "mode")
                               ? Modality.valueOf(
-                              jsonObject.get("mode").getAsString().toUpperCase())
+                                      jsonObject.get("mode").getAsInt())
                               : null)
               .setSpeechiness(
                       hasAndNotNull(jsonObject, "speechiness")
