@@ -11,7 +11,7 @@ import com.wrapper.spotify.model_objects.AbstractModelObject;
  * Spotify: Working With Playlists</a>
  */
 public class SnapshotResult extends AbstractModelObject {
-  public final String snapshotId;
+  private final String snapshotId;
 
   private SnapshotResult(final Builder builder) {
     super(builder);
