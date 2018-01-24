@@ -1,5 +1,8 @@
 package com.wrapper.spotify.enums;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * An enumeration with the two modality types.
  *
@@ -11,9 +14,20 @@ public enum Modality {
   MAJOR(1);
 
   public final int mode;
+  private static Map<Integer, Modality> map = new HashMap<>();
+
+  static {
+    for (Modality modality : Modality.values()) {
+      map.put(modality.mode, modality);
+    }
+  }
 
   Modality(final int mode) {
     this.mode = mode;
+  }
+
+  public static Modality valueOf(int mode) {
+    return map.get(mode);
   }
 
   /**
