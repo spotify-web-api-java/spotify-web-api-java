@@ -16,6 +16,7 @@ import java.util.concurrent.ExecutionException;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 @RunWith(MockitoJUnitRunner.class)
 public class GetAlbumRequestTest implements ITest<Album> {
@@ -44,8 +45,12 @@ public class GetAlbumRequestTest implements ITest<Album> {
             album.getAlbumType());
     assertNotNull(
             album.getArtists());
-    assertNotNull(
-            album.getCopyrights());
+    assertEquals(
+            57,
+            album.getAvailableMarkets().length);
+    assertEquals(
+            1,
+            album.getCopyrights().length);
     assertNotNull(
             album.getExternalIds());
     assertNotNull(
@@ -54,37 +59,35 @@ public class GetAlbumRequestTest implements ITest<Album> {
             0,
             album.getGenres().length);
     assertEquals(
-            "https://api.spotify.com/v1/albums/4aawyAB9vmqN3uQ7FjRGTy",
+            "https://api.spotify.com/v1/albums/0sNOF9WDwhWunNAHPD3Baj",
             album.getHref());
     assertEquals(
-            "4aawyAB9vmqN3uQ7FjRGTy",
+            "0sNOF9WDwhWunNAHPD3Baj",
             album.getId());
     assertEquals(
             3,
             album.getImages().length);
-    assertEquals(
-            "Mr.305/Polo Grounds Music/RCA Records",
+    assertNull(
             album.getLabel());
     assertEquals(
-            "Global Warming",
+            "She's So Unusual",
             album.getName());
     assertEquals(
-            58,
+            39,
             (int) album.getPopularity());
     assertEquals(
-            "2012-11-16",
+            "1983",
             album.getReleaseDate());
     assertEquals(
-            ReleaseDatePrecision.DAY,
+            ReleaseDatePrecision.YEAR,
             album.getReleaseDatePrecision());
-    assertEquals(
-            18,
-            album.getTracks().getItems().length);
+    assertNotNull(
+            album.getTracks());
     assertEquals(
             ModelObjectType.ALBUM,
             album.getType());
     assertEquals(
-            "spotify:album:4aawyAB9vmqN3uQ7FjRGTy",
+            "spotify:album:0sNOF9WDwhWunNAHPD3Baj",
             album.getUri());
   }
 }

@@ -36,7 +36,7 @@ public class CheckUsersSavedAlbumsRequestTest implements ITest<Boolean[]> {
 
   public void shouldSucceed(final Boolean[] booleans) {
     assertEquals(
-            3,
+            2,
             booleans.length);
   }
 }

@@ -37,7 +37,7 @@ public class CheckCurrentUserFollowsArtistsOrUsersRequestTest implements ITest<B
 
   public void shouldSucceed(final Boolean[] booleans) {
     assertEquals(
-            3,
+            2,
             booleans.length);
   }
 }

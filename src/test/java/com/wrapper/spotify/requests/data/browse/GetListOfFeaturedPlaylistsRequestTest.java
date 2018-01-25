@@ -37,7 +37,7 @@ public class GetListOfFeaturedPlaylistsRequestTest implements ITest<FeaturedPlay
 
   public void shouldSucceed(final FeaturedPlaylists featuredPlaylists) {
     assertEquals(
-            "Throwback Thursday",
+            "Monday morning music, coming right up!",
             featuredPlaylists.getMessage());
     assertNotNull(
             featuredPlaylists.getPlaylists());

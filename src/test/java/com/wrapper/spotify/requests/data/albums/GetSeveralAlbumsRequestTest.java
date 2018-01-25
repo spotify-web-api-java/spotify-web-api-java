@@ -40,7 +40,7 @@ public class GetSeveralAlbumsRequestTest implements ITest<Album[]> {
 
   public void shouldSucceed(final Album[] albums) {
     assertEquals(
-            3,
+            1,
             albums.length);
   }
 
@@ -56,9 +56,7 @@ public class GetSeveralAlbumsRequestTest implements ITest<Album[]> {
 
   public void shouldFail(final Album[] albums) {
     assertEquals(
-            1,
+            0,
             albums.length);
-    assertNull(
-            albums[0]);
   }
 }

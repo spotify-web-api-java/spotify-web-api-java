@@ -2,123 +2,86 @@
   "artists": [
     {
       "external_urls": {
-        "spotify": "https://open.spotify.com/artist/2CIMQHirSU0MQqyYHq0eOx"
+        "spotify": "https://open.spotify.com/artist/0oSGxfWSnnOXhD2fKuz2Gy"
       },
       "followers": {
         "href": null,
-        "total": 1855051
+        "total": 633494
       },
       "genres": [
-        "big room",
-        "edm",
-        "electro house",
-        "progressive house"
+        "art rock",
+        "glam rock",
+        "permanent wave"
       ],
-      "href": "https://api.spotify.com/v1/artists/2CIMQHirSU0MQqyYHq0eOx",
-      "id": "2CIMQHirSU0MQqyYHq0eOx",
+      "href": "https://api.spotify.com/v1/artists/0oSGxfWSnnOXhD2fKuz2Gy",
+      "id": "0oSGxfWSnnOXhD2fKuz2Gy",
       "images": [
         {
-          "height": 640,
-          "url": "https://i.scdn.co/image/86e8991077d6ce237be8f24dbc65e90f2e1f2a43",
-          "width": 640
-        },
-        {
-          "height": 320,
-          "url": "https://i.scdn.co/image/cd362662352ce88b693b1a31cf5c9784730291dd",
-          "width": 320
-        },
-        {
-          "height": 160,
-          "url": "https://i.scdn.co/image/70e010473dc0f158253111e035c71086fb7904fa",
-          "width": 160
-        }
-      ],
-      "name": "deadmau5",
-      "popularity": 71,
-      "type": "artist",
-      "uri": "spotify:artist:2CIMQHirSU0MQqyYHq0eOx"
-    },
-    {
-      "external_urls": {
-        "spotify": "https://open.spotify.com/artist/57dN52uHvrHOxijzpIgu3E"
-      },
-      "followers": {
-        "href": null,
-        "total": 383755
-      },
-      "genres": [
-        "alternative dance",
-        "brooklyn indie",
-        "indietronica",
-        "modern rock",
-        "new rave"
-      ],
-      "href": "https://api.spotify.com/v1/artists/57dN52uHvrHOxijzpIgu3E",
-      "id": "57dN52uHvrHOxijzpIgu3E",
-      "images": [
-        {
-          "height": 693,
-          "url": "https://i.scdn.co/image/2f0c6c465a83cd196e651e3d4e7625ba799a6f60",
+          "height": 1000,
+          "url": "https://i.scdn.co/image/32bd9707b42a2c081482ec9cd3ffa8879f659f95",
           "width": 1000
         },
         {
-          "height": 444,
-          "url": "https://i.scdn.co/image/4e3e13c8b993bde9898e49509fb9ae121636e05f",
+          "height": 640,
+          "url": "https://i.scdn.co/image/865f24753e5e4f40a383bf24a9cdda598a4559a8",
           "width": 640
         },
         {
-          "height": 139,
-          "url": "https://i.scdn.co/image/dc68dd24b45b74ecce9d4ed486423673d683ced3",
+          "height": 200,
+          "url": "https://i.scdn.co/image/7ddd6fa5cf78aee2f2e8b347616151393022b7d9",
           "width": 200
         },
         {
-          "height": 44,
-          "url": "https://i.scdn.co/image/4e55ca05d4f336a2fa0e3062a7ec9778a201e8bc",
-          "width": 63
+          "height": 64,
+          "url": "https://i.scdn.co/image/c8dc28c191432862afce298216458a6f00bbfbd8",
+          "width": 64
         }
       ],
-      "name": "Ratatat",
-      "popularity": 69,
+      "name": "David Bowie",
+      "popularity": 77,
       "type": "artist",
-      "uri": "spotify:artist:57dN52uHvrHOxijzpIgu3E"
+      "uri": "spotify:artist:0oSGxfWSnnOXhD2fKuz2Gy"
     },
     {
       "external_urls": {
-        "spotify": "https://open.spotify.com/artist/1vCWHaC5f2uS3yhpwWbIA6"
+        "spotify": "https://open.spotify.com/artist/3dBVyJ7JuOMt4GE9607Qin"
       },
       "followers": {
         "href": null,
-        "total": 6890016
+        "total": 52338
       },
       "genres": [
-        "big room",
-        "edm",
-        "pop",
-        "tropical house"
+        "glam rock",
+        "protopunk"
       ],
-      "href": "https://api.spotify.com/v1/artists/1vCWHaC5f2uS3yhpwWbIA6",
-      "id": "1vCWHaC5f2uS3yhpwWbIA6",
+      "href": "https://api.spotify.com/v1/artists/3dBVyJ7JuOMt4GE9607Qin",
+      "id": "3dBVyJ7JuOMt4GE9607Qin",
       "images": [
         {
-          "height": 640,
-          "url": "https://i.scdn.co/image/81b19a403109c4fe528ee3972137127b85be9519",
+          "height": 1300,
+          "url": "https://i.scdn.co/image/5515a710c94ccd4edd8b9a0587778ed5e3f997da",
+          "width": 1000
+        },
+        {
+          "height": 832,
+          "url": "https://i.scdn.co/image/c990e667b4ca8240c73b0db06e6d76a3b27ce929",
           "width": 640
         },
         {
-          "height": 320,
-          "url": "https://i.scdn.co/image/9c0d8fa969a9f5db6ff860203d6880a125e501d2",
-          "width": 320
+          "height": 260,
+          "url": "https://i.scdn.co/image/de2fa1d11c59e63143117d44ec9990b9e40451a2",
+          "width": 200
         },
         {
-          "height": 160,
-          "url": "https://i.scdn.co/image/c55bc6f57b6bb297425c3ae694f92672dcf0e2c2",
-          "width": 160
+          "height": 83,
+          "url": "https://i.scdn.co/image/b39638735adb4a4a54621293b99ab65c546f605e",
+          "width": 64
         }
       ],
-      "name": "Avicii",
-      "popularity": 86,
+      "name": "T. Rex",
+      "popularity": 58,
       "type": "artist",
-      "uri": "spotify:artist:1vCWHaC5f2uS3yhpwWbIA6"
+      "uri": "spotify:artist:3dBVyJ7JuOMt4GE9607Qin"
     }
   ]
 }

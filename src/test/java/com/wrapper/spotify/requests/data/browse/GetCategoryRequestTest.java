@@ -36,16 +36,16 @@ public class GetCategoryRequestTest implements ITest<Category> {
 
   public void shouldSucceed(final Category category) {
     assertEquals(
-            "https://api.spotify.com/v1/browse/categories/dinner",
+            "https://api.spotify.com/v1/browse/categories/party",
             category.getHref());
     assertEquals(
             1,
             category.getIcons().length);
     assertEquals(
-            "dinner",
+            "party",
             category.getId());
     assertEquals(
-            "Middag",
+            "Party",
             category.getName());
   }
 }

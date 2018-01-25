@@ -36,7 +36,7 @@ public class GetSeveralArtistsRequestTest implements ITest<Artist[]> {
 
   public void shouldSucceed(final Artist[] artists) {
     assertEquals(
-            3,
+            2,
             artists.length);
   }
 }

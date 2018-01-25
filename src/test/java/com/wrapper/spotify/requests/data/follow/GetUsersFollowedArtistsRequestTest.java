@@ -24,7 +24,9 @@ public class GetUsersFollowedArtistsRequestTest implements ITest<PagingCursorbas
           .build();
 
   private final GetUsersFollowedArtistsRequest failureRequest = SPOTIFY_API.getUsersFollowedArtists(ModelObjectType.ARTIST)
-          .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/follow/GetUsersFollowedArtistsRequest_None.json"))
+          .setHttpManager(
+                  TestUtil.MockedHttpManager.returningJson(
+                          "requests/data/follow/GetUsersFollowedArtistsRequest_None.json"))
           .build();
 
   public GetUsersFollowedArtistsRequestTest() throws Exception {
@@ -43,42 +45,51 @@ public class GetUsersFollowedArtistsRequestTest implements ITest<PagingCursorbas
 
   public void shouldSucceed(final PagingCursorbased<Artist> artistPagingCursorbased) {
     assertEquals(
+            "https://api.spotify.com/v1/users/thelinmichael/following?type=artist&limit=20",
+            artistPagingCursorbased.getHref());
+    assertEquals(
             1,
             artistPagingCursorbased.getItems().length);
-    assertNull(
-            artistPagingCursorbased.getNext());
     assertEquals(
-            0,
-            (int) artistPagingCursorbased.getTotal());
+            20,
+            (int) artistPagingCursorbased.getLimit());
+    assertEquals(
+            "https://api.spotify.com/v1/users/thelinmichael/following?type=artist&after=0aV6DOiouImYTqrR5YlIqx&limit=20",
+            artistPagingCursorbased.getNext());
     assertNotNull(
             artistPagingCursorbased.getCursors());
     assertEquals(
-            10,
-            (int) artistPagingCursorbased.getLimit());
-    assertEquals(
-            "https://api.spotify.com/v1/me/following?type=artist&after=0I2XqVXqHScXjHhk6AYYRe&limit=10",
-            artistPagingCursorbased.getHref());
+            183,
+            (int) artistPagingCursorbased.getTotal());
   }
 
   @Test
-  public void shouldFail() throws Exception {
-    final PagingCursorbased<Artist> artistPagingCursorbased = failureRequest.execute();
+  public void shouldFail_sync() throws IOException, SpotifyWebApiException {
+    shouldFail(failureRequest.execute());
+  }
 
+  @SuppressWarnings("unchecked")
+  @Test
+  public void shouldFail_async() throws ExecutionException, InterruptedException {
+    shouldFail((PagingCursorbased<Artist>) failureRequest.executeAsync().get());
+  }
+
+  public void shouldFail(final PagingCursorbased<Artist> artistPagingCursorbased) {
+    assertEquals(
+            "https://api.spotify.com/v1/me/following?type=artist&limit=10",
+            artistPagingCursorbased.getHref());
     assertEquals(
             0,
             artistPagingCursorbased.getItems().length);
-    assertNull(
-            artistPagingCursorbased.getNext());
-    assertEquals(
-            0,
-            (int) artistPagingCursorbased.getTotal());
-    assertNotNull(
-            artistPagingCursorbased.getCursors());
     assertEquals(
             10,
             (int) artistPagingCursorbased.getLimit());
+    assertNull(
+            artistPagingCursorbased.getNext());
+    assertNotNull(
+            artistPagingCursorbased.getCursors());
     assertEquals(
-            "https://api.spotify.com/v1/me/following?type=artist&after=0I2XqVXqHScXjHhk6AYYRe&limit=10",
-            artistPagingCursorbased.getHref());
+            0,
+            (int) artistPagingCursorbased.getTotal());
   }
 }

@@ -40,24 +40,24 @@ public class GetCurrentUsersSavedAlbumsRequestTest implements ITest<Paging<Saved
 
   public void shouldSucceed(final Paging<SavedAlbum> savedAlbumPaging) {
     assertEquals(
-            "https://api.spotify.com/v1/me/albums?offset=5&limit=10",
+            "https://api.spotify.com/v1/me/albums?offset=0&limit=1",
             savedAlbumPaging.getHref());
     assertEquals(
-            0,
+            1,
             savedAlbumPaging.getItems().length);
     assertEquals(
-            10,
+            1,
             (int) savedAlbumPaging.getLimit());
-    assertNull(
+    assertEquals(
+            "https://api.spotify.com/v1/me/albums?offset=1&limit=1",
             savedAlbumPaging.getNext());
     assertEquals(
-            5,
+            0,
             (int) savedAlbumPaging.getOffset());
-    assertEquals(
-            "https://api.spotify.com/v1/me/albums?offset=0&limit=10",
+    assertNull(
             savedAlbumPaging.getPrevious());
     assertEquals(
-            0,
+            19,
             (int) savedAlbumPaging.getTotal());
   }
 }

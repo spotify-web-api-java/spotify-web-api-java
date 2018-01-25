@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 @RunWith(MockitoJUnitRunner.class)
 public class GetListOfNewReleasesRequestTest implements ITest<Paging<AlbumSimplified>> {
@@ -38,22 +39,21 @@ public class GetListOfNewReleasesRequestTest implements ITest<Paging<AlbumSimpli
 
   public void shouldSucceed(final Paging<AlbumSimplified> albumSimplifiedPaging) {
     assertEquals(
-            "https://api.spotify.com/v1/browse/new-releases?country=SE&offset=5&limit=10",
+            "https://api.spotify.com/v1/browse/new-releases?country=SE&offset=0&limit=20",
             albumSimplifiedPaging.getHref());
     assertEquals(
-            10,
+            2,
             albumSimplifiedPaging.getItems().length);
     assertEquals(
-            10,
+            20,
             (int) albumSimplifiedPaging.getLimit());
     assertEquals(
-            "https://api.spotify.com/v1/browse/new-releases?country=SE&offset=15&limit=10",
+            "https://api.spotify.com/v1/browse/new-releases?country=SE&offset=20&limit=20",
             albumSimplifiedPaging.getNext());
     assertEquals(
-            5,
+            0,
             (int) albumSimplifiedPaging.getOffset());
-    assertEquals(
-            "https://api.spotify.com/v1/browse/new-releases?country=SE&offset=0&limit=10",
+    assertNull(
             albumSimplifiedPaging.getPrevious());
     assertEquals(
             500,

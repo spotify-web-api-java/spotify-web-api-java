@@ -3,48 +3,46 @@
     "items": [
       {
         "external_urls": {
-          "spotify": "https://open.spotify.com/artist/0LcJLqbBmaGUft1e9Mm8HV"
+          "spotify": "https://open.spotify.com/artist/0I2XqVXqHScXjHhk6AYYRe"
         },
         "followers": {
           "href": null,
-          "total": 877953
+          "total": 7753
         },
         "genres": [
-          "europop",
-          "mellow gold",
-          "swedish pop"
+          "swedish hip hop"
         ],
-        "href": "https://api.spotify.com/v1/artists/0LcJLqbBmaGUft1e9Mm8HV",
-        "id": "0LcJLqbBmaGUft1e9Mm8HV",
+        "href": "https://api.spotify.com/v1/artists/0I2XqVXqHScXjHhk6AYYRe",
+        "id": "0I2XqVXqHScXjHhk6AYYRe",
         "images": [
           {
             "height": 640,
-            "url": "https://i.scdn.co/image/d65bdff819f52ded2da29743a6c9c2f3c5e6180f",
+            "url": "https://i.scdn.co/image/2c8c0cea05bf3d3c070b7498d8d0b957c4cdec20",
             "width": 640
           },
           {
-            "height": 320,
-            "url": "https://i.scdn.co/image/4352125c6ade6445aa86b43b9e269e4e2f11fe60",
-            "width": 320
+            "height": 300,
+            "url": "https://i.scdn.co/image/394302b42c4b894786943e028cdd46d7baaa29b7",
+            "width": 300
           },
           {
-            "height": 160,
-            "url": "https://i.scdn.co/image/8584e226df70ee30e7981d82cfbca2a4f1a4c58a",
-            "width": 160
+            "height": 64,
+            "url": "https://i.scdn.co/image/ca9df7225ade6e5dfc62e7076709ca3409a7cbbf",
+            "width": 64
           }
         ],
-        "name": "ABBA",
-        "popularity": 76,
+        "name": "Afasi & Filthy",
+        "popularity": 54,
         "type": "artist",
-        "uri": "spotify:artist:0LcJLqbBmaGUft1e9Mm8HV"
+        "uri": "spotify:artist:0I2XqVXqHScXjHhk6AYYRe"
       }
     ],
-    "next": null,
-    "total": 0,
+    "next": "https://api.spotify.com/v1/users/thelinmichael/following?type=artist&after=0aV6DOiouImYTqrR5YlIqx&limit=20",
+    "total": 183,
     "cursors": {
-      "after": null
+      "after": "0aV6DOiouImYTqrR5YlIqx"
     },
-    "limit": 10,
-    "href": "https://api.spotify.com/v1/me/following?type=artist&after=0I2XqVXqHScXjHhk6AYYRe&limit=10"
+    "limit": 20,
+    "href": "https://api.spotify.com/v1/users/thelinmichael/following?type=artist&limit=20"
   }
 }

@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 @RunWith(MockitoJUnitRunner.class)
 public class GetAlbumsTracksRequestTest implements ITest<Paging<TrackSimplified>> {
@@ -40,25 +41,24 @@ public class GetAlbumsTracksRequestTest implements ITest<Paging<TrackSimplified>
 
   public void shouldSucceed(final Paging<TrackSimplified> trackSimplifiedPaging) {
     assertEquals(
-            "https://api.spotify.com/v1/albums/4aawyAB9vmqN3uQ7FjRGTy/tracks?offset=5&limit=10&market=ES",
+            "https://api.spotify.com/v1/albums/6akEvsycLGftJxYudPjmqK/tracks?offset=0&limit=2",
             trackSimplifiedPaging.getHref());
     assertEquals(
-            10,
+            2,
             trackSimplifiedPaging.getItems().length);
     assertEquals(
-            10,
+            2,
             (int) trackSimplifiedPaging.getLimit());
     assertEquals(
-            "https://api.spotify.com/v1/albums/4aawyAB9vmqN3uQ7FjRGTy/tracks?offset=15&limit=10&market=ES",
+            "https://api.spotify.com/v1/albums/6akEvsycLGftJxYudPjmqK/tracks?offset=2&limit=2",
             trackSimplifiedPaging.getNext());
     assertEquals(
-            5,
+            0,
             (int) trackSimplifiedPaging.getOffset());
-    assertEquals(
-            "https://api.spotify.com/v1/albums/4aawyAB9vmqN3uQ7FjRGTy/tracks?offset=0&limit=10&market=ES",
+    assertNull(
             trackSimplifiedPaging.getPrevious());
     assertEquals(
-            18,
+            11,
             (int) trackSimplifiedPaging.getTotal());
   }
 }

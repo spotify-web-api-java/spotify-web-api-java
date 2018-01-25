@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 @RunWith(MockitoJUnitRunner.class)
 public class GetArtistsAlbumsRequestTest implements ITest<Paging<AlbumSimplified>> {
@@ -38,25 +39,24 @@ public class GetArtistsAlbumsRequestTest implements ITest<Paging<AlbumSimplified
 
   public void shouldSucceed(final Paging<AlbumSimplified> albumSimplifiedPaging) {
     assertEquals(
-            "https://api.spotify.com/v1/artists/0TnOYISbd1XYRBk9myaseg/albums?offset=5&limit=10&album_type=single,album&market=ES",
+            "https://api.spotify.com/v1/artists/1vCWHaC5f2uS3yhpwWbIA6/albums?offset=0&limit=2&album_type=single&market=ES",
             albumSimplifiedPaging.getHref());
     assertEquals(
-            10,
+            2,
             albumSimplifiedPaging.getItems().length);
     assertEquals(
-            10,
+            2,
             (int) albumSimplifiedPaging.getLimit());
     assertEquals(
-            "https://api.spotify.com/v1/artists/0TnOYISbd1XYRBk9myaseg/albums?offset=15&limit=10&album_type=single,album&market=ES",
+            "https://api.spotify.com/v1/artists/1vCWHaC5f2uS3yhpwWbIA6/albums?offset=2&limit=2&album_type=single&market=ES",
             albumSimplifiedPaging.getNext());
     assertEquals(
-            5,
+            0,
             (int) albumSimplifiedPaging.getOffset());
-    assertEquals(
-            "https://api.spotify.com/v1/artists/0TnOYISbd1XYRBk9myaseg/albums?offset=0&limit=10&album_type=single,album&market=ES",
+    assertNull(
             albumSimplifiedPaging.getPrevious());
     assertEquals(
-            99,
+            48,
             (int) albumSimplifiedPaging.getTotal());
   }
 }

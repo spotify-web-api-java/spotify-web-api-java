@@ -1,27 +1,26 @@
 {
-  "message": "Throwback Thursday",
+  "message": "Monday morning music, coming right up!",
   "playlists": {
-    "href": "https://api.spotify.com/v1/browse/featured-playlists?country=SE&locale=sv_se&timestamp=2014-10-23T09%3A00%3A00&offset=5&limit=10",
+    "href": "https://api.spotify.com/v1/browse/featured-playlists?country=SE&timestamp=2015-05-18T06:44:32&offset=0&limit=2",
     "items": [
       {
         "collaborative": false,
         "external_urls": {
-          "spotify": "https://open.spotify.com/user/spotify/playlist/37i9dQZF1DX8ky12eWIvcW"
+          "spotify": "http://open.spotify.com/user/spotify/playlist/6ftJBzU2LLQcaKefMi7ee7"
         },
-        "href": "https://api.spotify.com/v1/users/spotify/playlists/37i9dQZF1DX8ky12eWIvcW",
-        "id": "37i9dQZF1DX8ky12eWIvcW",
+        "href": "https://api.spotify.com/v1/users/spotify/playlists/6ftJBzU2LLQcaKefMi7ee7",
+        "id": "6ftJBzU2LLQcaKefMi7ee7",
         "images": [
           {
             "height": 300,
-            "url": "https://i.scdn.co/image/b808f5f35355ee60f10519d3575f96f74cdabffb",
+            "url": "https://i.scdn.co/image/7bd33c65ebd1e45975bbcbbf513bafe272f033c7",
             "width": 300
           }
         ],
-        "name": "Throwback Jams",
+        "name": "Monday Morning Mood",
         "owner": {
-          "display_name": "Spotify",
           "external_urls": {
-            "spotify": "https://open.spotify.com/user/spotify"
+            "spotify": "http://open.spotify.com/user/spotify"
           },
           "href": "https://api.spotify.com/v1/users/spotify",
           "id": "spotify",
@@ -29,325 +28,52 @@
           "uri": "spotify:user:spotify"
         },
         "public": null,
-        "snapshot_id": "thVydAjDDku12mwp1ZnRBXzj/XVZYKwHP9UoCB7r+XLukoQGkT3DhN/0hb9iWhoFD78h/nq4Lxk=",
+        "snapshot_id": "WwGvSIVUkUvGvqjgj/bQHlRycYmJ2TkoIxYfoalWlmIZT6TvsgvGMgtQ2dGbkrAW",
         "tracks": {
-          "href": "https://api.spotify.com/v1/users/spotify/playlists/37i9dQZF1DX8ky12eWIvcW/tracks",
-          "total": 100
+          "href": "https://api.spotify.com/v1/users/spotify/playlists/6ftJBzU2LLQcaKefMi7ee7/tracks",
+          "total": 245
         },
         "type": "playlist",
-        "uri": "spotify:user:spotify:playlist:37i9dQZF1DX8ky12eWIvcW"
+        "uri": "spotify:user:spotify:playlist:6ftJBzU2LLQcaKefMi7ee7"
       },
       {
         "collaborative": false,
         "external_urls": {
-          "spotify": "https://open.spotify.com/user/spotify/playlist/37i9dQZF1DWV9ewTpxJ0d9"
+          "spotify": "http://open.spotify.com/user/spotify__sverige/playlist/4uOEx4OUrkoGNZoIlWMUbO"
         },
-        "href": "https://api.spotify.com/v1/users/spotify/playlists/37i9dQZF1DWV9ewTpxJ0d9",
-        "id": "37i9dQZF1DWV9ewTpxJ0d9",
+        "href": "https://api.spotify.com/v1/users/spotify__sverige/playlists/4uOEx4OUrkoGNZoIlWMUbO",
+        "id": "4uOEx4OUrkoGNZoIlWMUbO",
         "images": [
           {
             "height": 300,
-            "url": "https://i.scdn.co/image/5ef0b4a9c33b420d8b5272c79eebf22d8526c590",
+            "url": "https://i.scdn.co/image/24aa1d1b491dd529b9c03392f350740ed73438d8",
             "width": 300
           }
         ],
-        "name": "Årets Rock 2017",
+        "name": "Upp och hoppa!",
         "owner": {
-          "display_name": "Spotify",
           "external_urls": {
-            "spotify": "https://open.spotify.com/user/spotify"
+            "spotify": "http://open.spotify.com/user/spotify__sverige"
           },
-          "href": "https://api.spotify.com/v1/users/spotify",
-          "id": "spotify",
+          "href": "https://api.spotify.com/v1/users/spotify__sverige",
+          "id": "spotify__sverige",
           "type": "user",
-          "uri": "spotify:user:spotify"
+          "uri": "spotify:user:spotify__sverige"
         },
         "public": null,
-        "snapshot_id": "pqqVZo8iaZj7tc+nS+3zZSMxbvd4cFzmkx8R1mgANsSZDL/SDA0cwBsnUJBtI9tKbeMZXPzBvTI=",
+        "snapshot_id": "0j9Rcbt2KtCXEXKtKy/tnSL5r4byjDBOIVY1dn4S6GV73EEUgNuK2hU+QyDuNnXz",
         "tracks": {
-          "href": "https://api.spotify.com/v1/users/spotify/playlists/37i9dQZF1DWV9ewTpxJ0d9/tracks",
-          "total": 50
+          "href": "https://api.spotify.com/v1/users/spotify__sverige/playlists/4uOEx4OUrkoGNZoIlWMUbO/tracks",
+          "total": 38
         },
         "type": "playlist",
-        "uri": "spotify:user:spotify:playlist:37i9dQZF1DWV9ewTpxJ0d9"
-      },
-      {
-        "collaborative": false,
-        "external_urls": {
-          "spotify": "https://open.spotify.com/user/spotify/playlist/37i9dQZF1DX8CwbNGNKurt"
-        },
-        "href": "https://api.spotify.com/v1/users/spotify/playlists/37i9dQZF1DX8CwbNGNKurt",
-        "id": "37i9dQZF1DX8CwbNGNKurt",
-        "images": [
-          {
-            "height": 300,
-            "url": "https://i.scdn.co/image/f933b834e2f1fd47c862869eb3c8c9d13f1641a9",
-            "width": 300
-          }
-        ],
-        "name": "Throwback Workout",
-        "owner": {
-          "display_name": "Spotify",
-          "external_urls": {
-            "spotify": "https://open.spotify.com/user/spotify"
-          },
-          "href": "https://api.spotify.com/v1/users/spotify",
-          "id": "spotify",
-          "type": "user",
-          "uri": "spotify:user:spotify"
-        },
-        "public": null,
-        "snapshot_id": "1DsXoWt8y08bhKYce4MIiXzj/XVZYKwHGwD/dKKZesYztCJfwve/neB1YFD5vPF5WLlVpCFpQ2w=",
-        "tracks": {
-          "href": "https://api.spotify.com/v1/users/spotify/playlists/37i9dQZF1DX8CwbNGNKurt/tracks",
-          "total": 61
-        },
-        "type": "playlist",
-        "uri": "spotify:user:spotify:playlist:37i9dQZF1DX8CwbNGNKurt"
-      },
-      {
-        "collaborative": false,
-        "external_urls": {
-          "spotify": "https://open.spotify.com/user/spotify/playlist/37i9dQZF1DWUH2AzNQzWua"
-        },
-        "href": "https://api.spotify.com/v1/users/spotify/playlists/37i9dQZF1DWUH2AzNQzWua",
-        "id": "37i9dQZF1DWUH2AzNQzWua",
-        "images": [
-          {
-            "height": 300,
-            "url": "https://i.scdn.co/image/f37e848c7c528afb474725bd37f6f620b6436c43",
-            "width": 300
-          }
-        ],
-        "name": "Acoustic Hits: Oldies but Goodies",
-        "owner": {
-          "display_name": "Spotify",
-          "external_urls": {
-            "spotify": "https://open.spotify.com/user/spotify"
-          },
-          "href": "https://api.spotify.com/v1/users/spotify",
-          "id": "spotify",
-          "type": "user",
-          "uri": "spotify:user:spotify"
-        },
-        "public": null,
-        "snapshot_id": "HicLW+OEdHXDYWVSFp+sZG8DKP8D7PVbarR8j2XhjtAmw37wKa3bHAVPfQ939KJbU1OolI5zIVo=",
-        "tracks": {
-          "href": "https://api.spotify.com/v1/users/spotify/playlists/37i9dQZF1DWUH2AzNQzWua/tracks",
-          "total": 72
-        },
-        "type": "playlist",
-        "uri": "spotify:user:spotify:playlist:37i9dQZF1DWUH2AzNQzWua"
-      },
-      {
-        "collaborative": false,
-        "external_urls": {
-          "spotify": "https://open.spotify.com/user/spotify/playlist/37i9dQZF1DWY3X53lmPYk9"
-        },
-        "href": "https://api.spotify.com/v1/users/spotify/playlists/37i9dQZF1DWY3X53lmPYk9",
-        "id": "37i9dQZF1DWY3X53lmPYk9",
-        "images": [
-          {
-            "height": 300,
-            "url": "https://i.scdn.co/image/7d4108d321183389b2dfbefcbf7f70ac11a0b2ab",
-            "width": 300
-          }
-        ],
-        "name": "The Great American Songbook",
-        "owner": {
-          "display_name": "Spotify",
-          "external_urls": {
-            "spotify": "https://open.spotify.com/user/spotify"
-          },
-          "href": "https://api.spotify.com/v1/users/spotify",
-          "id": "spotify",
-          "type": "user",
-          "uri": "spotify:user:spotify"
-        },
-        "public": null,
-        "snapshot_id": "jGDxAPICk3w8BbBB6gUQf0BWnqDIBW0OA48xYTVWw0bZqWnG6Dgg3sb2QC5muYo20kVVpYY/H9Q=",
-        "tracks": {
-          "href": "https://api.spotify.com/v1/users/spotify/playlists/37i9dQZF1DWY3X53lmPYk9/tracks",
-          "total": 41
-        },
-        "type": "playlist",
-        "uri": "spotify:user:spotify:playlist:37i9dQZF1DWY3X53lmPYk9"
-      },
-      {
-        "collaborative": false,
-        "external_urls": {
-          "spotify": "https://open.spotify.com/user/spotify/playlist/37i9dQZF1DX27hx1vGd0BZ"
-        },
-        "href": "https://api.spotify.com/v1/users/spotify/playlists/37i9dQZF1DX27hx1vGd0BZ",
-        "id": "37i9dQZF1DX27hx1vGd0BZ",
-        "images": [
-          {
-            "height": 300,
-            "url": "https://i.scdn.co/image/d7e79deeff2790248191d41fea503e48a50e427d",
-            "width": 300
-          }
-        ],
-        "name": "Top Female Artists of 2017",
-        "owner": {
-          "display_name": "Spotify",
-          "external_urls": {
-            "spotify": "https://open.spotify.com/user/spotify"
-          },
-          "href": "https://api.spotify.com/v1/users/spotify",
-          "id": "spotify",
-          "type": "user",
-          "uri": "spotify:user:spotify"
-        },
-        "public": null,
-        "snapshot_id": "ueOOFhcRAV4YCTkJdHGSES7aQjV/FxpJOG5nmvwDLpypobBu1VQUzUZG6YupIlmaris8R5m0xII=",
-        "tracks": {
-          "href": "https://api.spotify.com/v1/users/spotify/playlists/37i9dQZF1DX27hx1vGd0BZ/tracks",
-          "total": 50
-        },
-        "type": "playlist",
-        "uri": "spotify:user:spotify:playlist:37i9dQZF1DX27hx1vGd0BZ"
-      },
-      {
-        "collaborative": false,
-        "external_urls": {
-          "spotify": "https://open.spotify.com/user/spotify/playlist/37i9dQZF1DXbYM3nMM0oPk"
-        },
-        "href": "https://api.spotify.com/v1/users/spotify/playlists/37i9dQZF1DXbYM3nMM0oPk",
-        "id": "37i9dQZF1DXbYM3nMM0oPk",
-        "images": [
-          {
-            "height": 300,
-            "url": "https://i.scdn.co/image/2e2d8816a2763e3b213c4012e983e960c9229f2e",
-            "width": 300
-          }
-        ],
-        "name": "Mega Hit Mix",
-        "owner": {
-          "display_name": "Spotify",
-          "external_urls": {
-            "spotify": "https://open.spotify.com/user/spotify"
-          },
-          "href": "https://api.spotify.com/v1/users/spotify",
-          "id": "spotify",
-          "type": "user",
-          "uri": "spotify:user:spotify"
-        },
-        "public": null,
-        "snapshot_id": "ikillqd6Awydu9uun/RKF28DKP8D7PVbSLFuS9iaTXNMLeOsNf8EKQv4HleA3fdaWfYdKJoNtxE=",
-        "tracks": {
-          "href": "https://api.spotify.com/v1/users/spotify/playlists/37i9dQZF1DXbYM3nMM0oPk/tracks",
-          "total": 75
-        },
-        "type": "playlist",
-        "uri": "spotify:user:spotify:playlist:37i9dQZF1DXbYM3nMM0oPk"
-      },
-      {
-        "collaborative": false,
-        "external_urls": {
-          "spotify": "https://open.spotify.com/user/spotify/playlist/37i9dQZF1DXcQFLaKHy42g"
-        },
-        "href": "https://api.spotify.com/v1/users/spotify/playlists/37i9dQZF1DXcQFLaKHy42g",
-        "id": "37i9dQZF1DXcQFLaKHy42g",
-        "images": [
-          {
-            "height": 300,
-            "url": "https://i.scdn.co/image/3a28f3e2a7f437ed2baef700c1b9f9ef18791e6b",
-            "width": 300
-          }
-        ],
-        "name": "Träna till 90-talet",
-        "owner": {
-          "display_name": "Spotify",
-          "external_urls": {
-            "spotify": "https://open.spotify.com/user/spotify"
-          },
-          "href": "https://api.spotify.com/v1/users/spotify",
-          "id": "spotify",
-          "type": "user",
-          "uri": "spotify:user:spotify"
-        },
-        "public": null,
-        "snapshot_id": "chJimfQI8h2tNEeIVFrCvVez6VUsVc4dwOW4vDnXo3e1dqLxJVZ6XFspej9Rt0SlVX7XIey5lEQ=",
-        "tracks": {
-          "href": "https://api.spotify.com/v1/users/spotify/playlists/37i9dQZF1DXcQFLaKHy42g/tracks",
-          "total": 58
-        },
-        "type": "playlist",
-        "uri": "spotify:user:spotify:playlist:37i9dQZF1DXcQFLaKHy42g"
-      },
-      {
-        "collaborative": false,
-        "external_urls": {
-          "spotify": "https://open.spotify.com/user/spotify/playlist/37i9dQZF1DXbITWG1ZJKYt"
-        },
-        "href": "https://api.spotify.com/v1/users/spotify/playlists/37i9dQZF1DXbITWG1ZJKYt",
-        "id": "37i9dQZF1DXbITWG1ZJKYt",
-        "images": [
-          {
-            "height": 300,
-            "url": "https://i.scdn.co/image/e21c109eaa490dcb1f5278008c9111f17093d26e",
-            "width": 300
-          }
-        ],
-        "name": "Jazz Classics",
-        "owner": {
-          "display_name": "Spotify",
-          "external_urls": {
-            "spotify": "https://open.spotify.com/user/spotify"
-          },
-          "href": "https://api.spotify.com/v1/users/spotify",
-          "id": "spotify",
-          "type": "user",
-          "uri": "spotify:user:spotify"
-        },
-        "public": null,
-        "snapshot_id": "kfI7eIiOQX99Ha4AtzIQAyEZEEU3zB3cLTvLqEcaKBWIM/SGW1wJ8QiOY/iE3fYiA3W7qoVRT8w=",
-        "tracks": {
-          "href": "https://api.spotify.com/v1/users/spotify/playlists/37i9dQZF1DXbITWG1ZJKYt/tracks",
-          "total": 70
-        },
-        "type": "playlist",
-        "uri": "spotify:user:spotify:playlist:37i9dQZF1DXbITWG1ZJKYt"
-      },
-      {
-        "collaborative": false,
-        "external_urls": {
-          "spotify": "https://open.spotify.com/user/spotify/playlist/37i9dQZF1DX2qN6i2yd6oQ"
-        },
-        "href": "https://api.spotify.com/v1/users/spotify/playlists/37i9dQZF1DX2qN6i2yd6oQ",
-        "id": "37i9dQZF1DX2qN6i2yd6oQ",
-        "images": [
-          {
-            "height": 300,
-            "url": "https://i.scdn.co/image/e8441f9958429ac7db33b62d08cfdc20118745c7",
-            "width": 300
-          }
-        ],
-        "name": "Årets Låtar 2017",
-        "owner": {
-          "display_name": "Spotify",
-          "external_urls": {
-            "spotify": "https://open.spotify.com/user/spotify"
-          },
-          "href": "https://api.spotify.com/v1/users/spotify",
-          "id": "spotify",
-          "type": "user",
-          "uri": "spotify:user:spotify"
-        },
-        "public": null,
-        "snapshot_id": "xHB7GMXZQjQ8qIHW8uf4QC7aQjV/FxpJhuqbRhZdkN10btBeDrNCHl3fncgxVcJJgBsIwjQEZA4=",
-        "tracks": {
-          "href": "https://api.spotify.com/v1/users/spotify/playlists/37i9dQZF1DX2qN6i2yd6oQ/tracks",
-          "total": 50
-        },
-        "type": "playlist",
-        "uri": "spotify:user:spotify:playlist:37i9dQZF1DX2qN6i2yd6oQ"
+        "uri": "spotify:user:spotify__sverige:playlist:4uOEx4OUrkoGNZoIlWMUbO"
       }
     ],
-    "limit": 10,
-    "next": null,
-    "offset": 5,
-    "previous": "https://api.spotify.com/v1/browse/featured-playlists?country=SE&locale=sv_se&timestamp=2014-10-23T09%3A00%3A00&offset=0&limit=10",
-    "total": 15
+    "limit": 2,
+    "next": "https://api.spotify.com/v1/browse/featured-playlists?country=SE&timestamp=2015-05-18T06:44:32&offset=2&limit=2",
+    "offset": 0,
+    "previous": null,
+    "total": 12
   }
 }

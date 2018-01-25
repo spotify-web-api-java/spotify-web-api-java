@@ -37,7 +37,7 @@ public class GetArtistsTopTracksRequestTest implements ITest<Track[]> {
 
   public void shouldSucceed(final Track[] tracks) {
     assertEquals(
-            10,
+            1,
             tracks.length);
   }
 }

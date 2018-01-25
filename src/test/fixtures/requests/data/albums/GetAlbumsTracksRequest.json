@@ -1,420 +1,188 @@
 {
-  "href": "https://api.spotify.com/v1/albums/4aawyAB9vmqN3uQ7FjRGTy/tracks?offset=5&limit=10&market=ES",
+  "href": "https://api.spotify.com/v1/albums/6akEvsycLGftJxYudPjmqK/tracks?offset=0&limit=2",
   "items": [
     {
       "artists": [
         {
           "external_urls": {
-            "spotify": "https://open.spotify.com/artist/0TnOYISbd1XYRBk9myaseg"
+            "spotify": "https://open.spotify.com/artist/08td7MxkoHQkXnWAYD8d6Q"
           },
-          "href": "https://api.spotify.com/v1/artists/0TnOYISbd1XYRBk9myaseg",
-          "id": "0TnOYISbd1XYRBk9myaseg",
-          "name": "Pitbull",
+          "href": "https://api.spotify.com/v1/artists/08td7MxkoHQkXnWAYD8d6Q",
+          "id": "08td7MxkoHQkXnWAYD8d6Q",
+          "name": "Tania Bowra",
           "type": "artist",
-          "uri": "spotify:artist:0TnOYISbd1XYRBk9myaseg"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/23zg3TcAtWQy7J6upgbUnj"
-          },
-          "href": "https://api.spotify.com/v1/artists/23zg3TcAtWQy7J6upgbUnj",
-          "id": "23zg3TcAtWQy7J6upgbUnj",
-          "name": "Usher",
-          "type": "artist",
-          "uri": "spotify:artist:23zg3TcAtWQy7J6upgbUnj"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/4D75GcNG95ebPtNvoNVXhz"
-          },
-          "href": "https://api.spotify.com/v1/artists/4D75GcNG95ebPtNvoNVXhz",
-          "id": "4D75GcNG95ebPtNvoNVXhz",
-          "name": "Afrojack",
-          "type": "artist",
-          "uri": "spotify:artist:4D75GcNG95ebPtNvoNVXhz"
+          "uri": "spotify:artist:08td7MxkoHQkXnWAYD8d6Q"
         }
       ],
-      "disc_number": 1,
-      "duration_ms": 243160,
-      "explicit": true,
-      "external_urls": {
-        "spotify": "https://open.spotify.com/track/6Q4PYJtrq8CBx7YCY5IyRN"
-      },
-      "href": "https://api.spotify.com/v1/tracks/6Q4PYJtrq8CBx7YCY5IyRN",
-      "id": "6Q4PYJtrq8CBx7YCY5IyRN",
-      "is_playable": true,
-      "name": "Party Ain't Over",
-      "preview_url": "https://p.scdn.co/mp3-preview/d3e3191991feb0cb732398374e8c59cdb2cc9fe7?cid=774b29d4f13844c495f206cafdad9c86",
-      "track_number": 6,
-      "type": "track",
-      "uri": "spotify:track:6Q4PYJtrq8CBx7YCY5IyRN"
-    },
-    {
-      "artists": [
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/0TnOYISbd1XYRBk9myaseg"
-          },
-          "href": "https://api.spotify.com/v1/artists/0TnOYISbd1XYRBk9myaseg",
-          "id": "0TnOYISbd1XYRBk9myaseg",
-          "name": "Pitbull",
-          "type": "artist",
-          "uri": "spotify:artist:0TnOYISbd1XYRBk9myaseg"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/2BICa6b3GtjSqhOkgnDUu6"
-          },
-          "href": "https://api.spotify.com/v1/artists/2BICa6b3GtjSqhOkgnDUu6",
-          "id": "2BICa6b3GtjSqhOkgnDUu6",
-          "name": "J.Lo",
-          "type": "artist",
-          "uri": "spotify:artist:2BICa6b3GtjSqhOkgnDUu6"
-        }
+      "available_markets": [
+        "AD",
+        "AR",
+        "AT",
+        "AU",
+        "BE",
+        "BG",
+        "BO",
+        "BR",
+        "CA",
+        "CH",
+        "CL",
+        "CO",
+        "CR",
+        "CY",
+        "CZ",
+        "DE",
+        "DK",
+        "DO",
+        "EC",
+        "EE",
+        "ES",
+        "FI",
+        "FR",
+        "GB",
+        "GR",
+        "GT",
+        "HK",
+        "HN",
+        "HU",
+        "IE",
+        "IS",
+        "IT",
+        "LI",
+        "LT",
+        "LU",
+        "LV",
+        "MC",
+        "MT",
+        "MX",
+        "MY",
+        "NI",
+        "NL",
+        "NO",
+        "NZ",
+        "PA",
+        "PE",
+        "PH",
+        "PL",
+        "PT",
+        "PY",
+        "RO",
+        "SE",
+        "SG",
+        "SI",
+        "SK",
+        "SV",
+        "TR",
+        "TW",
+        "US",
+        "UY"
       ],
       "disc_number": 1,
-      "duration_ms": 196920,
+      "duration_ms": 276773,
       "explicit": false,
       "external_urls": {
-        "spotify": "https://open.spotify.com/track/0QTVwqcOsYd73AOkYkk0Hg"
+        "spotify": "https://open.spotify.com/track/2TpxZ7JUBn3uw46aR7qd6V"
       },
-      "href": "https://api.spotify.com/v1/tracks/0QTVwqcOsYd73AOkYkk0Hg",
-      "id": "0QTVwqcOsYd73AOkYkk0Hg",
-      "is_playable": true,
-      "name": "Drinks for You (Ladies Anthem)",
-      "preview_url": "https://p.scdn.co/mp3-preview/8c76d62cfbbabb6fbd5daf421c8b9d5365858757?cid=774b29d4f13844c495f206cafdad9c86",
-      "track_number": 7,
+      "href": "https://api.spotify.com/v1/tracks/2TpxZ7JUBn3uw46aR7qd6V",
+      "id": "2TpxZ7JUBn3uw46aR7qd6V",
+      "name": "All I Want",
+      "preview_url": "https://p.scdn.co/mp3-preview/6d00206e32194d15df329d4770e4fa1f2ced3f57",
+      "track_number": 1,
       "type": "track",
-      "uri": "spotify:track:0QTVwqcOsYd73AOkYkk0Hg"
+      "uri": "spotify:track:2TpxZ7JUBn3uw46aR7qd6V"
     },
     {
       "artists": [
         {
           "external_urls": {
-            "spotify": "https://open.spotify.com/artist/0TnOYISbd1XYRBk9myaseg"
+            "spotify": "https://open.spotify.com/artist/08td7MxkoHQkXnWAYD8d6Q"
           },
-          "href": "https://api.spotify.com/v1/artists/0TnOYISbd1XYRBk9myaseg",
-          "id": "0TnOYISbd1XYRBk9myaseg",
-          "name": "Pitbull",
+          "href": "https://api.spotify.com/v1/artists/08td7MxkoHQkXnWAYD8d6Q",
+          "id": "08td7MxkoHQkXnWAYD8d6Q",
+          "name": "Tania Bowra",
           "type": "artist",
-          "uri": "spotify:artist:0TnOYISbd1XYRBk9myaseg"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/7yvTVBk6rPyekp664Vi6rF"
-          },
-          "href": "https://api.spotify.com/v1/artists/7yvTVBk6rPyekp664Vi6rF",
-          "id": "7yvTVBk6rPyekp664Vi6rF",
-          "name": "The Wanted",
-          "type": "artist",
-          "uri": "spotify:artist:7yvTVBk6rPyekp664Vi6rF"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/4D75GcNG95ebPtNvoNVXhz"
-          },
-          "href": "https://api.spotify.com/v1/artists/4D75GcNG95ebPtNvoNVXhz",
-          "id": "4D75GcNG95ebPtNvoNVXhz",
-          "name": "Afrojack",
-          "type": "artist",
-          "uri": "spotify:artist:4D75GcNG95ebPtNvoNVXhz"
+          "uri": "spotify:artist:08td7MxkoHQkXnWAYD8d6Q"
         }
       ],
+      "available_markets": [
+        "AD",
+        "AR",
+        "AT",
+        "AU",
+        "BE",
+        "BG",
+        "BO",
+        "BR",
+        "CA",
+        "CH",
+        "CL",
+        "CO",
+        "CR",
+        "CY",
+        "CZ",
+        "DE",
+        "DK",
+        "DO",
+        "EC",
+        "EE",
+        "ES",
+        "FI",
+        "FR",
+        "GB",
+        "GR",
+        "GT",
+        "HK",
+        "HN",
+        "HU",
+        "IE",
+        "IS",
+        "IT",
+        "LI",
+        "LT",
+        "LU",
+        "LV",
+        "MC",
+        "MT",
+        "MX",
+        "MY",
+        "NI",
+        "NL",
+        "NO",
+        "NZ",
+        "PA",
+        "PE",
+        "PH",
+        "PL",
+        "PT",
+        "PY",
+        "RO",
+        "SE",
+        "SG",
+        "SI",
+        "SK",
+        "SV",
+        "TR",
+        "TW",
+        "US",
+        "UY"
+      ],
       "disc_number": 1,
-      "duration_ms": 244920,
+      "duration_ms": 247680,
       "explicit": false,
       "external_urls": {
-        "spotify": "https://open.spotify.com/track/10Sydb6AAFPdgCzCKOSZuI"
+        "spotify": "https://open.spotify.com/track/4PjcfyZZVE10TFd9EKA72r"
       },
-      "href": "https://api.spotify.com/v1/tracks/10Sydb6AAFPdgCzCKOSZuI",
-      "id": "10Sydb6AAFPdgCzCKOSZuI",
-      "is_playable": true,
-      "name": "Have Some Fun",
-      "preview_url": "https://p.scdn.co/mp3-preview/7896249670ea7d4ff6d0e1b4d73f380ce70a2356?cid=774b29d4f13844c495f206cafdad9c86",
-      "track_number": 8,
+      "href": "https://api.spotify.com/v1/tracks/4PjcfyZZVE10TFd9EKA72r",
+      "id": "4PjcfyZZVE10TFd9EKA72r",
+      "name": "Someday",
+      "preview_url": "https://p.scdn.co/mp3-preview/2b15de922bf4f4b8cfe09c8448079b8ff7a45a5f",
+      "track_number": 2,
       "type": "track",
-      "uri": "spotify:track:10Sydb6AAFPdgCzCKOSZuI"
-    },
-    {
-      "artists": [
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/0TnOYISbd1XYRBk9myaseg"
-          },
-          "href": "https://api.spotify.com/v1/artists/0TnOYISbd1XYRBk9myaseg",
-          "id": "0TnOYISbd1XYRBk9myaseg",
-          "name": "Pitbull",
-          "type": "artist",
-          "uri": "spotify:artist:0TnOYISbd1XYRBk9myaseg"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/0e9P96siQmxphVXAwTy2pa"
-          },
-          "href": "https://api.spotify.com/v1/artists/0e9P96siQmxphVXAwTy2pa",
-          "id": "0e9P96siQmxphVXAwTy2pa",
-          "name": "Danny Mercer",
-          "type": "artist",
-          "uri": "spotify:artist:0e9P96siQmxphVXAwTy2pa"
-        }
-      ],
-      "disc_number": 1,
-      "duration_ms": 206800,
-      "explicit": true,
-      "external_urls": {
-        "spotify": "https://open.spotify.com/track/4k61iDqmtX9nI7RfLmp9aq"
-      },
-      "href": "https://api.spotify.com/v1/tracks/4k61iDqmtX9nI7RfLmp9aq",
-      "id": "4k61iDqmtX9nI7RfLmp9aq",
-      "is_playable": true,
-      "name": "Outta Nowhere",
-      "preview_url": "https://p.scdn.co/mp3-preview/c5038fdf589d869bff568cae397f983fa056825d?cid=774b29d4f13844c495f206cafdad9c86",
-      "track_number": 9,
-      "type": "track",
-      "uri": "spotify:track:4k61iDqmtX9nI7RfLmp9aq"
-    },
-    {
-      "artists": [
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/0TnOYISbd1XYRBk9myaseg"
-          },
-          "href": "https://api.spotify.com/v1/artists/0TnOYISbd1XYRBk9myaseg",
-          "id": "0TnOYISbd1XYRBk9myaseg",
-          "name": "Pitbull",
-          "type": "artist",
-          "uri": "spotify:artist:0TnOYISbd1XYRBk9myaseg"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/7qG3b048QCHVRO5Pv1T5lw"
-          },
-          "href": "https://api.spotify.com/v1/artists/7qG3b048QCHVRO5Pv1T5lw",
-          "id": "7qG3b048QCHVRO5Pv1T5lw",
-          "name": "Enrique Iglesias",
-          "type": "artist",
-          "uri": "spotify:artist:7qG3b048QCHVRO5Pv1T5lw"
-        }
-      ],
-      "disc_number": 1,
-      "duration_ms": 205800,
-      "explicit": false,
-      "external_urls": {
-        "spotify": "https://open.spotify.com/track/7oGRkL31ElVMcevQDceT99"
-      },
-      "href": "https://api.spotify.com/v1/tracks/7oGRkL31ElVMcevQDceT99",
-      "id": "7oGRkL31ElVMcevQDceT99",
-      "is_playable": true,
-      "name": "Tchu Tchu Tcha",
-      "preview_url": "https://p.scdn.co/mp3-preview/977ea4cd1a12653d8da5c80dbe7ef59d1b82cf41?cid=774b29d4f13844c495f206cafdad9c86",
-      "track_number": 10,
-      "type": "track",
-      "uri": "spotify:track:7oGRkL31ElVMcevQDceT99"
-    },
-    {
-      "artists": [
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/0TnOYISbd1XYRBk9myaseg"
-          },
-          "href": "https://api.spotify.com/v1/artists/0TnOYISbd1XYRBk9myaseg",
-          "id": "0TnOYISbd1XYRBk9myaseg",
-          "name": "Pitbull",
-          "type": "artist",
-          "uri": "spotify:artist:0TnOYISbd1XYRBk9myaseg"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/4D75GcNG95ebPtNvoNVXhz"
-          },
-          "href": "https://api.spotify.com/v1/artists/4D75GcNG95ebPtNvoNVXhz",
-          "id": "4D75GcNG95ebPtNvoNVXhz",
-          "name": "Afrojack",
-          "type": "artist",
-          "uri": "spotify:artist:4D75GcNG95ebPtNvoNVXhz"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/1EVWYRr2obCRDoSoD6KSuM"
-          },
-          "href": "https://api.spotify.com/v1/artists/1EVWYRr2obCRDoSoD6KSuM",
-          "id": "1EVWYRr2obCRDoSoD6KSuM",
-          "name": "Havana Brown",
-          "type": "artist",
-          "uri": "spotify:artist:1EVWYRr2obCRDoSoD6KSuM"
-        }
-      ],
-      "disc_number": 1,
-      "duration_ms": 219600,
-      "explicit": true,
-      "external_urls": {
-        "spotify": "https://open.spotify.com/track/60xPqMqnHZl7Jfiu6E9q8X"
-      },
-      "href": "https://api.spotify.com/v1/tracks/60xPqMqnHZl7Jfiu6E9q8X",
-      "id": "60xPqMqnHZl7Jfiu6E9q8X",
-      "is_playable": true,
-      "name": "Last Night",
-      "preview_url": "https://p.scdn.co/mp3-preview/1dcae6bd0bfffd2f1501f9aa2a8b594c2d6618fa?cid=774b29d4f13844c495f206cafdad9c86",
-      "track_number": 11,
-      "type": "track",
-      "uri": "spotify:track:60xPqMqnHZl7Jfiu6E9q8X"
-    },
-    {
-      "artists": [
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/0TnOYISbd1XYRBk9myaseg"
-          },
-          "href": "https://api.spotify.com/v1/artists/0TnOYISbd1XYRBk9myaseg",
-          "id": "0TnOYISbd1XYRBk9myaseg",
-          "name": "Pitbull",
-          "type": "artist",
-          "uri": "spotify:artist:0TnOYISbd1XYRBk9myaseg"
-        }
-      ],
-      "disc_number": 1,
-      "duration_ms": 197520,
-      "explicit": true,
-      "external_urls": {
-        "spotify": "https://open.spotify.com/track/1jAdXqOSICyXYLaW9ioSur"
-      },
-      "href": "https://api.spotify.com/v1/tracks/1jAdXqOSICyXYLaW9ioSur",
-      "id": "1jAdXqOSICyXYLaW9ioSur",
-      "is_playable": true,
-      "name": "I'm Off That",
-      "preview_url": "https://p.scdn.co/mp3-preview/5aca73ec07274bf216925d71c48d5130a45a7e2a?cid=774b29d4f13844c495f206cafdad9c86",
-      "track_number": 12,
-      "type": "track",
-      "uri": "spotify:track:1jAdXqOSICyXYLaW9ioSur"
-    },
-    {
-      "artists": [
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/0TnOYISbd1XYRBk9myaseg"
-          },
-          "href": "https://api.spotify.com/v1/artists/0TnOYISbd1XYRBk9myaseg",
-          "id": "0TnOYISbd1XYRBk9myaseg",
-          "name": "Pitbull",
-          "type": "artist",
-          "uri": "spotify:artist:0TnOYISbd1XYRBk9myaseg"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/5F2Bwl7Is7KVwTbNbMclIS"
-          },
-          "href": "https://api.spotify.com/v1/artists/5F2Bwl7Is7KVwTbNbMclIS",
-          "id": "5F2Bwl7Is7KVwTbNbMclIS",
-          "name": "Papayo",
-          "type": "artist",
-          "uri": "spotify:artist:5F2Bwl7Is7KVwTbNbMclIS"
-        }
-      ],
-      "disc_number": 1,
-      "duration_ms": 196440,
-      "explicit": false,
-      "external_urls": {
-        "spotify": "https://open.spotify.com/track/0fjRYHFz9ealui1lfnN8it"
-      },
-      "href": "https://api.spotify.com/v1/tracks/0fjRYHFz9ealui1lfnN8it",
-      "id": "0fjRYHFz9ealui1lfnN8it",
-      "is_playable": true,
-      "name": "Echa Pa'lla (Manos Pa'rriba)",
-      "preview_url": "https://p.scdn.co/mp3-preview/b5dc8fdadc8133914412bb9be48a000eefae1906?cid=774b29d4f13844c495f206cafdad9c86",
-      "track_number": 13,
-      "type": "track",
-      "uri": "spotify:track:0fjRYHFz9ealui1lfnN8it"
-    },
-    {
-      "artists": [
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/0TnOYISbd1XYRBk9myaseg"
-          },
-          "href": "https://api.spotify.com/v1/artists/0TnOYISbd1XYRBk9myaseg",
-          "id": "0TnOYISbd1XYRBk9myaseg",
-          "name": "Pitbull",
-          "type": "artist",
-          "uri": "spotify:artist:0TnOYISbd1XYRBk9myaseg"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/0z4gvV4rjIZ9wHck67ucSV"
-          },
-          "href": "https://api.spotify.com/v1/artists/0z4gvV4rjIZ9wHck67ucSV",
-          "id": "0z4gvV4rjIZ9wHck67ucSV",
-          "name": "Akon",
-          "type": "artist",
-          "uri": "spotify:artist:0z4gvV4rjIZ9wHck67ucSV"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/5IqWDVLGThjmkm22e3oBU3"
-          },
-          "href": "https://api.spotify.com/v1/artists/5IqWDVLGThjmkm22e3oBU3",
-          "id": "5IqWDVLGThjmkm22e3oBU3",
-          "name": "David Rush",
-          "type": "artist",
-          "uri": "spotify:artist:5IqWDVLGThjmkm22e3oBU3"
-        }
-      ],
-      "disc_number": 1,
-      "duration_ms": 257613,
-      "explicit": true,
-      "external_urls": {
-        "spotify": "https://open.spotify.com/track/7of35ktwTbL906Z1i3mT4K"
-      },
-      "href": "https://api.spotify.com/v1/tracks/7of35ktwTbL906Z1i3mT4K",
-      "id": "7of35ktwTbL906Z1i3mT4K",
-      "is_playable": true,
-      "name": "Everybody Fucks",
-      "preview_url": "https://p.scdn.co/mp3-preview/cce6c8d1dae71670ba14bf5bbdc4066601a328ca?cid=774b29d4f13844c495f206cafdad9c86",
-      "track_number": 14,
-      "type": "track",
-      "uri": "spotify:track:7of35ktwTbL906Z1i3mT4K"
-    },
-    {
-      "artists": [
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/0TnOYISbd1XYRBk9myaseg"
-          },
-          "href": "https://api.spotify.com/v1/artists/0TnOYISbd1XYRBk9myaseg",
-          "id": "0TnOYISbd1XYRBk9myaseg",
-          "name": "Pitbull",
-          "type": "artist",
-          "uri": "spotify:artist:0TnOYISbd1XYRBk9myaseg"
-        },
-        {
-          "external_urls": {
-            "spotify": "https://open.spotify.com/artist/0EmeFodog0BfCgMzAIvKQp"
-          },
-          "href": "https://api.spotify.com/v1/artists/0EmeFodog0BfCgMzAIvKQp",
-          "id": "0EmeFodog0BfCgMzAIvKQp",
-          "name": "Shakira",
-          "type": "artist",
-          "uri": "spotify:artist:0EmeFodog0BfCgMzAIvKQp"
-        }
-      ],
-      "disc_number": 1,
-      "duration_ms": 245920,
-      "explicit": false,
-      "external_urls": {
-        "spotify": "https://open.spotify.com/track/2JA6A6Y5f4m7PawM58U2Op"
-      },
-      "href": "https://api.spotify.com/v1/tracks/2JA6A6Y5f4m7PawM58U2Op",
-      "id": "2JA6A6Y5f4m7PawM58U2Op",
-      "is_playable": true,
-      "name": "Get It Started",
-      "preview_url": "https://p.scdn.co/mp3-preview/9b81dacd22e4be31f60783a8ba0b7973b7ef637e?cid=774b29d4f13844c495f206cafdad9c86",
-      "track_number": 15,
-      "type": "track",
-      "uri": "spotify:track:2JA6A6Y5f4m7PawM58U2Op"
+      "uri": "spotify:track:4PjcfyZZVE10TFd9EKA72r"
     }
   ],
-  "limit": 10,
-  "next": "https://api.spotify.com/v1/albums/4aawyAB9vmqN3uQ7FjRGTy/tracks?offset=15&limit=10&market=ES",
-  "offset": 5,
-  "previous": "https://api.spotify.com/v1/albums/4aawyAB9vmqN3uQ7FjRGTy/tracks?offset=0&limit=10&market=ES",
-  "total": 18
+  "limit": 2,
+  "next": "https://api.spotify.com/v1/albums/6akEvsycLGftJxYudPjmqK/tracks?offset=2&limit=2",
+  "offset": 0,
+  "previous": null,
+  "total": 11
 }

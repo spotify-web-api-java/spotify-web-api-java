@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 @RunWith(MockitoJUnitRunner.class)
 public class GetCategorysPlaylistRequestTest implements ITest<Paging<PlaylistSimplified>> {
@@ -38,25 +39,24 @@ public class GetCategorysPlaylistRequestTest implements ITest<Paging<PlaylistSim
 
   public void shouldSucceed(final Paging<PlaylistSimplified> playlistSimplifiedPaging) {
     assertEquals(
-            "https://api.spotify.com/v1/browse/categories/dinner/playlists?country=SE&offset=5&limit=10",
+            "https://api.spotify.com/v1/browse/categories/party/playlists?country=BR&offset=0&limit=2",
             playlistSimplifiedPaging.getHref());
     assertEquals(
-            10,
+            2,
             playlistSimplifiedPaging.getItems().length);
     assertEquals(
-            10,
+            2,
             (int) playlistSimplifiedPaging.getLimit());
     assertEquals(
-            "https://api.spotify.com/v1/browse/categories/dinner/playlists?country=SE&offset=15&limit=10",
+            "https://api.spotify.com/v1/browse/categories/party/playlists?country=BR&offset=2&limit=2",
             playlistSimplifiedPaging.getNext());
     assertEquals(
-            5,
+            0,
             (int) playlistSimplifiedPaging.getOffset());
-    assertEquals(
-            "https://api.spotify.com/v1/browse/categories/dinner/playlists?country=SE&offset=0&limit=10",
+    assertNull(
             playlistSimplifiedPaging.getPrevious());
     assertEquals(
-            30,
+            86,
             (int) playlistSimplifiedPaging.getTotal());
   }
 }

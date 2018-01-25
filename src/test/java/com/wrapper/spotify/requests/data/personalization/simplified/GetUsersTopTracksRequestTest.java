@@ -40,24 +40,24 @@ public class GetUsersTopTracksRequestTest implements ITest<Paging<Track>> {
 
   public void shouldSucceed(final Paging<Track> trackPaging) {
     assertEquals(
+            "https://api.spotify.com/v1/me/top/tracks?limit=10&offset=5",
+            trackPaging.getHref());
+    assertEquals(
             10,
             trackPaging.getItems().length);
-    assertEquals(
-            50,
-            (int) trackPaging.getTotal());
     assertEquals(
             10,
             (int) trackPaging.getLimit());
     assertEquals(
+            "https://api.spotify.com/v1/me/top/tracks?limit=10&offset=15",
+            trackPaging.getNext());
+    assertEquals(
             5,
             (int) trackPaging.getOffset());
-    assertEquals(
-            "https://api.spotify.com/v1/me/top/tracks?limit=10&offset=5",
-            trackPaging.getHref());
     assertNull(
             trackPaging.getPrevious());
     assertEquals(
-            "https://api.spotify.com/v1/me/top/tracks?limit=10&offset=15",
-            trackPaging.getNext());
+            50,
+            (int) trackPaging.getTotal());
   }
 }

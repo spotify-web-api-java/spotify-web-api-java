@@ -36,10 +36,10 @@ public class GetRecommendationsRequestTest implements ITest<Recommendations> {
 
   public void shouldSucceed(final Recommendations recommendations) {
     assertEquals(
-            10,
-            recommendations.getTracks().length);
-    assertEquals(
-            4,
+            2,
             recommendations.getSeeds().length);
+    assertEquals(
+            2,
+            recommendations.getTracks().length);
   }
 }

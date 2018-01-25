@@ -40,24 +40,24 @@ public class GetUsersSavedTracksRequestTest implements ITest<Paging<SavedTrack>>
 
   public void shouldSucceed(final Paging<SavedTrack> savedTrackPaging) {
     assertEquals(
-            "https://api.spotify.com/v1/me/tracks?offset=5&limit=10&market=ES",
+            "https://api.spotify.com/v1/me/tracks?offset=0&limit=20",
             savedTrackPaging.getHref());
     assertEquals(
-            0,
+            1,
             savedTrackPaging.getItems().length);
     assertEquals(
-            10,
+            20,
             (int) savedTrackPaging.getLimit());
-    assertNull(
+    assertEquals(
+            "https://api.spotify.com/v1/me/tracks?offset=20&limit=20",
             savedTrackPaging.getNext());
     assertEquals(
-            5,
+            0,
             (int) savedTrackPaging.getOffset());
-    assertEquals(
-            "https://api.spotify.com/v1/me/tracks?offset=0&limit=10&market=ES",
+    assertNull(
             savedTrackPaging.getPrevious());
     assertEquals(
-            0,
+            53,
             (int) savedTrackPaging.getTotal());
   }
 }
