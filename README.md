@@ -795,28 +795,27 @@ try {
 See this project's [Javadoc](https://dargmuesli.github.io/spotify-web-api-java/).
 
 ## Code Overview
-This project's code is divided into four main parts which all include the same folder/package structure. We distinguish
-between...
+This project's main Java package is divided into four sections:
 - enumerations
 - exceptions
 - model objects
 - requests.
 
-Those (unit-tested) parts are connected through various classes that make the API accessible for other Java projects.
-You can find details about specific parts or single classes in the sections below.
+Those unit-tested parts are connected through various classes that make the API accessible for other Java projects. You
+can find details about specific parts or single classes in the sections below.
 
 ### Enumerations
 `src/main/java/com.wrapper.spotify/enums/`
 
-Enumerations allow elements to "be of a type" and limit them to a known value set. They are currently not clearly
-specified in a central place, but are rather scrambled acress the online reference. Thus, the reference only allows us
-to constructed the enum classes out of sparse information.
+Enumerations allow elements to "be of a type" and limit them to a known value set. They are currently not specified in a
+unique place, but are rather scrambled across the online reference. Thus, the reference only allows for construction
+of enum classes from this sparse information.
 
 ### Exceptions
 `src/main/java/com.wrapper.spotify/exceptions/`
 
-Exceptions are thrown when errors occur. It is unlikely that this API's exceptions change, as they are following
-RFC-specified [HTTP status codes](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes) tied to a more detailed error
+Exceptions are thrown when errors occur. They are following RFC-specified
+[HTTP status codes](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes) and are packed with a more detailed error
 description.
 
 ### Model Objects
@@ -825,24 +824,24 @@ description.
 The model objects are entities that form the API's responses in arranged formats. They are mostly specified in the
 [Web API Object Model](https://developer.spotify.com/web-api/object-model/) and in the
 [Web API Authorization Guide](https://developer.spotify.com/web-api/authorization-guide/). Though, unreferenced model
-objects exist, which this project subdivides into...
+objects exist. This project subdivides those into...
 
 - "miscellaneous" model objects: these are mentioned somewhere in the reference, but not in the model object list
-- "special" model objects: these are not mentioned at all, but appear in API answers nevertheless.
+- "special" model objects: these are not mentioned at all, but appear in API answers nonetheless.
 
-Java classes representing the model objects include private instance variables, a private constructor, but public getter
+Java classes representing those model objects include private instance variables, a private constructor, but public getter
 methods as well as an embedded...
 
-1. builder class including the setter functions and a public build method
-2. JSON-util class implementing the `createModelObject` method.
+1. builder class, including the setter functions and a public build method
+2. JSON-util class, implementing the `createModelObject` method.
 
 ### Requests
 `src/main/java/com.wrapper.spotify/requests/`
 
-The request classes resemble the strucure of
-[Spotify's Web Api endpoints](https://developer.spotify.com/web-api/endpoint-reference/). They are divided into several
-categories like `authorization`, `data/albums` or `data/tracks`. They must extend from `AbstractDataRequest` and contain
-an implementation for request execution. They have to include a builder class too, which makes request creation dynamic.
+The request classes mirror the strucure of Spotify's Web Api endpoints. They are divided into several categories like
+`authorization`, `data/albums` or `data/tracks`. They must extend from `AbstractDataRequest` and contain an
+implementation of the request's `execute` method. They have to embed a builder class too, enabling dynamic request
+creation.
 
 ### Tests
 `src/test/java/com.wrapper.spotify/`
@@ -853,12 +852,12 @@ and [mockito](http://site.mockito.org/) for mocking.
 #### Fixtures
 `src/test/fixtures/`
 
-Fixtures are JSON files that represent the data that the API server returns. We use the examples directly provided by
+Fixtures are JSON files that represent the data returned from the API server. We use the examples directly provided by
 the [Web API Endpoint Reference](https://developer.spotify.com/web-api/endpoint-reference/) with minor tweaks. Tweaks
 are needed because the reference sometimes contains invalid data examples.
 
 ## Contributions
-See [CONTRIBUTING.md]().
+See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 Requirements: Java, Maven.
 
