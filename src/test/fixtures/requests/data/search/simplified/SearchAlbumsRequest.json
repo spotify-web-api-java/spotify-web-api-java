@@ -1,0 +1,989 @@
+{
+  "albums": {
+    "href": "https://api.spotify.com/v1/search?query=Muse&type=album&market=US&offset=5&limit=10",
+    "items": [
+      {
+        "album_type": "album",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/12Chz98pHFMPJEknJQMWvI"
+            },
+            "href": "https://api.spotify.com/v1/artists/12Chz98pHFMPJEknJQMWvI",
+            "id": "12Chz98pHFMPJEknJQMWvI",
+            "name": "Muse",
+            "type": "artist",
+            "uri": "spotify:artist:12Chz98pHFMPJEknJQMWvI"
+          }
+        ],
+        "available_markets": [
+          "AD",
+          "AR",
+          "AT",
+          "AU",
+          "BE",
+          "BG",
+          "BO",
+          "BR",
+          "CA",
+          "CH",
+          "CL",
+          "CO",
+          "CR",
+          "CY",
+          "CZ",
+          "DE",
+          "DK",
+          "DO",
+          "EC",
+          "EE",
+          "ES",
+          "FI",
+          "FR",
+          "GB",
+          "GR",
+          "GT",
+          "HK",
+          "HN",
+          "HU",
+          "ID",
+          "IE",
+          "IS",
+          "IT",
+          "JP",
+          "LI",
+          "LT",
+          "LU",
+          "LV",
+          "MC",
+          "MT",
+          "MX",
+          "MY",
+          "NI",
+          "NL",
+          "NO",
+          "NZ",
+          "PA",
+          "PE",
+          "PH",
+          "PL",
+          "PT",
+          "PY",
+          "SE",
+          "SG",
+          "SK",
+          "SV",
+          "TH",
+          "TR",
+          "TW",
+          "US",
+          "UY",
+          "VN"
+        ],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/0HcHPBu9aaF1MxOiZmUQTl"
+        },
+        "href": "https://api.spotify.com/v1/albums/0HcHPBu9aaF1MxOiZmUQTl",
+        "id": "0HcHPBu9aaF1MxOiZmUQTl",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/ae61915fc3f4b3019200ba6ee58a2a85866461bf",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/523194c8f4f32d0d091a7686fea8fda0411b25a5",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/700cdaab602da14c4f007ad2f9cefcbd9292ac24",
+            "width": 64
+          }
+        ],
+        "name": "Absolution",
+        "type": "album",
+        "uri": "spotify:album:0HcHPBu9aaF1MxOiZmUQTl"
+      },
+      {
+        "album_type": "album",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/12Chz98pHFMPJEknJQMWvI"
+            },
+            "href": "https://api.spotify.com/v1/artists/12Chz98pHFMPJEknJQMWvI",
+            "id": "12Chz98pHFMPJEknJQMWvI",
+            "name": "Muse",
+            "type": "artist",
+            "uri": "spotify:artist:12Chz98pHFMPJEknJQMWvI"
+          }
+        ],
+        "available_markets": [],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/1AP6uGYHdakRgwuWQsP5pK"
+        },
+        "href": "https://api.spotify.com/v1/albums/1AP6uGYHdakRgwuWQsP5pK",
+        "id": "1AP6uGYHdakRgwuWQsP5pK",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/ecb609f80a433a4bcf06c42e69821772140f0632",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/1df08bc3fac0a95d783417bddba0bba9a1da579d",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/ea2eabc1ce63838531d746386cac28d2f9e3ce4c",
+            "width": 64
+          }
+        ],
+        "name": "Origin Of Symmetry (New 09 version)",
+        "type": "album",
+        "uri": "spotify:album:1AP6uGYHdakRgwuWQsP5pK"
+      },
+      {
+        "album_type": "album",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/4vGrte8FDu062Ntj0RsPiZ"
+            },
+            "href": "https://api.spotify.com/v1/artists/4vGrte8FDu062Ntj0RsPiZ",
+            "id": "4vGrte8FDu062Ntj0RsPiZ",
+            "name": "Polyphia",
+            "type": "artist",
+            "uri": "spotify:artist:4vGrte8FDu062Ntj0RsPiZ"
+          }
+        ],
+        "available_markets": [
+          "AD",
+          "AR",
+          "AT",
+          "AU",
+          "BE",
+          "BG",
+          "BO",
+          "BR",
+          "CA",
+          "CH",
+          "CL",
+          "CO",
+          "CR",
+          "CY",
+          "CZ",
+          "DE",
+          "DK",
+          "DO",
+          "EC",
+          "EE",
+          "ES",
+          "FI",
+          "FR",
+          "GB",
+          "GR",
+          "GT",
+          "HK",
+          "HN",
+          "HU",
+          "ID",
+          "IE",
+          "IS",
+          "IT",
+          "JP",
+          "LI",
+          "LT",
+          "LU",
+          "LV",
+          "MC",
+          "MT",
+          "MX",
+          "MY",
+          "NI",
+          "NL",
+          "NO",
+          "NZ",
+          "PA",
+          "PE",
+          "PH",
+          "PL",
+          "PT",
+          "PY",
+          "SE",
+          "SG",
+          "SK",
+          "SV",
+          "TH",
+          "TR",
+          "TW",
+          "US",
+          "UY",
+          "VN"
+        ],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/7EyDVKiEcQw9tE44UpcLWJ"
+        },
+        "href": "https://api.spotify.com/v1/albums/7EyDVKiEcQw9tE44UpcLWJ",
+        "id": "7EyDVKiEcQw9tE44UpcLWJ",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/64859fa60c44086c6161488236a0d6c3b22adee2",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/003033e7e76f2244e0e78f7cff7c6f546019c202",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/7352e2fde5ca0da88436ec73d06b0650f4af8e21",
+            "width": 64
+          }
+        ],
+        "name": "Muse",
+        "type": "album",
+        "uri": "spotify:album:7EyDVKiEcQw9tE44UpcLWJ"
+      },
+      {
+        "album_type": "single",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/12Chz98pHFMPJEknJQMWvI"
+            },
+            "href": "https://api.spotify.com/v1/artists/12Chz98pHFMPJEknJQMWvI",
+            "id": "12Chz98pHFMPJEknJQMWvI",
+            "name": "Muse",
+            "type": "artist",
+            "uri": "spotify:artist:12Chz98pHFMPJEknJQMWvI"
+          }
+        ],
+        "available_markets": [
+          "AD",
+          "AR",
+          "AT",
+          "AU",
+          "BE",
+          "BG",
+          "BO",
+          "BR",
+          "CA",
+          "CH",
+          "CL",
+          "CO",
+          "CR",
+          "CY",
+          "CZ",
+          "DE",
+          "DK",
+          "DO",
+          "EC",
+          "EE",
+          "ES",
+          "FI",
+          "FR",
+          "GB",
+          "GR",
+          "GT",
+          "HK",
+          "HN",
+          "HU",
+          "ID",
+          "IE",
+          "IS",
+          "IT",
+          "JP",
+          "LI",
+          "LT",
+          "LU",
+          "LV",
+          "MC",
+          "MT",
+          "MX",
+          "MY",
+          "NI",
+          "NL",
+          "NO",
+          "NZ",
+          "PA",
+          "PE",
+          "PH",
+          "PL",
+          "PT",
+          "PY",
+          "SE",
+          "SG",
+          "SK",
+          "SV",
+          "TH",
+          "TR",
+          "TW",
+          "US",
+          "UY",
+          "VN"
+        ],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/2mugumSqUWxhW2InJ9dPTv"
+        },
+        "href": "https://api.spotify.com/v1/albums/2mugumSqUWxhW2InJ9dPTv",
+        "id": "2mugumSqUWxhW2InJ9dPTv",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/08d56eac0c7d48bb8bf7752b2202c3314db79394",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/e6e7234a572a83fa7a98ee51c225d161a6750e01",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/105e1c4fee340f987c8708b5eaf42b36cf742519",
+            "width": 64
+          }
+        ],
+        "name": "Dig Down",
+        "type": "album",
+        "uri": "spotify:album:2mugumSqUWxhW2InJ9dPTv"
+      },
+      {
+        "album_type": "album",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/12Chz98pHFMPJEknJQMWvI"
+            },
+            "href": "https://api.spotify.com/v1/artists/12Chz98pHFMPJEknJQMWvI",
+            "id": "12Chz98pHFMPJEknJQMWvI",
+            "name": "Muse",
+            "type": "artist",
+            "uri": "spotify:artist:12Chz98pHFMPJEknJQMWvI"
+          }
+        ],
+        "available_markets": [
+          "AD",
+          "AR",
+          "AT",
+          "AU",
+          "BE",
+          "BG",
+          "BO",
+          "BR",
+          "CA",
+          "CH",
+          "CL",
+          "CO",
+          "CR",
+          "CY",
+          "CZ",
+          "DE",
+          "DK",
+          "DO",
+          "EC",
+          "EE",
+          "ES",
+          "FI",
+          "FR",
+          "GB",
+          "GR",
+          "GT",
+          "HK",
+          "HN",
+          "HU",
+          "ID",
+          "IE",
+          "IS",
+          "IT",
+          "JP",
+          "LI",
+          "LT",
+          "LU",
+          "LV",
+          "MC",
+          "MT",
+          "MX",
+          "MY",
+          "NI",
+          "NL",
+          "NO",
+          "NZ",
+          "PA",
+          "PE",
+          "PH",
+          "PL",
+          "PT",
+          "PY",
+          "SE",
+          "SG",
+          "SK",
+          "SV",
+          "TH",
+          "TR",
+          "TW",
+          "US",
+          "UY",
+          "VN"
+        ],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/6AyUVv7MnxxTuijp4WmrhO"
+        },
+        "href": "https://api.spotify.com/v1/albums/6AyUVv7MnxxTuijp4WmrhO",
+        "id": "6AyUVv7MnxxTuijp4WmrhO",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/3e67c0e68b6cfa0e6d851e0492b29b968d6bb3b9",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/29a5e9fc13b9d5f7d5f78ba69d71afa23c84a9d5",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/fdd7655946d83f014ba2d2c2a3d89d7c7bdb2b64",
+            "width": 64
+          }
+        ],
+        "name": "Showbiz",
+        "type": "album",
+        "uri": "spotify:album:6AyUVv7MnxxTuijp4WmrhO"
+      },
+      {
+        "album_type": "album",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/12Chz98pHFMPJEknJQMWvI"
+            },
+            "href": "https://api.spotify.com/v1/artists/12Chz98pHFMPJEknJQMWvI",
+            "id": "12Chz98pHFMPJEknJQMWvI",
+            "name": "Muse",
+            "type": "artist",
+            "uri": "spotify:artist:12Chz98pHFMPJEknJQMWvI"
+          }
+        ],
+        "available_markets": [
+          "AD",
+          "AR",
+          "AT",
+          "AU",
+          "BE",
+          "BG",
+          "BO",
+          "BR",
+          "CA",
+          "CH",
+          "CL",
+          "CO",
+          "CR",
+          "CY",
+          "CZ",
+          "DE",
+          "DK",
+          "DO",
+          "EC",
+          "EE",
+          "ES",
+          "FI",
+          "FR",
+          "GB",
+          "GR",
+          "GT",
+          "HK",
+          "HN",
+          "HU",
+          "ID",
+          "IE",
+          "IS",
+          "IT",
+          "JP",
+          "LI",
+          "LT",
+          "LU",
+          "LV",
+          "MC",
+          "MT",
+          "MX",
+          "MY",
+          "NI",
+          "NL",
+          "NO",
+          "NZ",
+          "PA",
+          "PE",
+          "PH",
+          "PL",
+          "PT",
+          "PY",
+          "SE",
+          "SG",
+          "SK",
+          "SV",
+          "TH",
+          "TR",
+          "TW",
+          "US",
+          "UY",
+          "VN"
+        ],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/2m7L60M210ABzrY9GLyBPZ"
+        },
+        "href": "https://api.spotify.com/v1/albums/2m7L60M210ABzrY9GLyBPZ",
+        "id": "2m7L60M210ABzrY9GLyBPZ",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/05c049956ed66d6dd3451d9ac06e0f30ff1693b3",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/71a45fc4b9d8f4f5e0998751f7c29a97f5f0fdd3",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/680b385164b970b271365f2da1271bc642b77fb7",
+            "width": 64
+          }
+        ],
+        "name": "Live At Rome Olympic Stadium",
+        "type": "album",
+        "uri": "spotify:album:2m7L60M210ABzrY9GLyBPZ"
+      },
+      {
+        "album_type": "album",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/12Chz98pHFMPJEknJQMWvI"
+            },
+            "href": "https://api.spotify.com/v1/artists/12Chz98pHFMPJEknJQMWvI",
+            "id": "12Chz98pHFMPJEknJQMWvI",
+            "name": "Muse",
+            "type": "artist",
+            "uri": "spotify:artist:12Chz98pHFMPJEknJQMWvI"
+          }
+        ],
+        "available_markets": [
+          "AD",
+          "AR",
+          "AT",
+          "AU",
+          "BE",
+          "BG",
+          "BO",
+          "BR",
+          "CA",
+          "CH",
+          "CL",
+          "CO",
+          "CR",
+          "CY",
+          "CZ",
+          "DE",
+          "DK",
+          "DO",
+          "EC",
+          "EE",
+          "ES",
+          "FI",
+          "FR",
+          "GB",
+          "GR",
+          "GT",
+          "HK",
+          "HN",
+          "HU",
+          "ID",
+          "IE",
+          "IS",
+          "IT",
+          "JP",
+          "LI",
+          "LT",
+          "LU",
+          "LV",
+          "MC",
+          "MT",
+          "MX",
+          "MY",
+          "NI",
+          "NL",
+          "NO",
+          "NZ",
+          "PA",
+          "PE",
+          "PH",
+          "PL",
+          "PT",
+          "PY",
+          "SE",
+          "SG",
+          "SK",
+          "SV",
+          "TH",
+          "TR",
+          "TW",
+          "US",
+          "UY",
+          "VN"
+        ],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/5eJTvSeghTKoqN3Ly4TqEf"
+        },
+        "href": "https://api.spotify.com/v1/albums/5eJTvSeghTKoqN3Ly4TqEf",
+        "id": "5eJTvSeghTKoqN3Ly4TqEf",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/09f08a5296bed8f5658bdc8d7befc8d04294d41f",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/77fdcc5caeb6bd3cb4e84c7cb5ab0979934f48bf",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/d1e366b2a054053cf668fc33493ae2da440c92df",
+            "width": 64
+          }
+        ],
+        "name": "Hullabaloo Soundtrack",
+        "type": "album",
+        "uri": "spotify:album:5eJTvSeghTKoqN3Ly4TqEf"
+      },
+      {
+        "album_type": "album",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/12Chz98pHFMPJEknJQMWvI"
+            },
+            "href": "https://api.spotify.com/v1/artists/12Chz98pHFMPJEknJQMWvI",
+            "id": "12Chz98pHFMPJEknJQMWvI",
+            "name": "Muse",
+            "type": "artist",
+            "uri": "spotify:artist:12Chz98pHFMPJEknJQMWvI"
+          }
+        ],
+        "available_markets": [
+          "AD",
+          "AR",
+          "AT",
+          "AU",
+          "BE",
+          "BG",
+          "BO",
+          "BR",
+          "CA",
+          "CH",
+          "CL",
+          "CO",
+          "CR",
+          "CY",
+          "CZ",
+          "DE",
+          "DK",
+          "DO",
+          "EC",
+          "EE",
+          "ES",
+          "FI",
+          "FR",
+          "GB",
+          "GR",
+          "GT",
+          "HK",
+          "HN",
+          "HU",
+          "ID",
+          "IE",
+          "IS",
+          "IT",
+          "JP",
+          "LI",
+          "LT",
+          "LU",
+          "LV",
+          "MC",
+          "MT",
+          "MX",
+          "MY",
+          "NI",
+          "NL",
+          "NO",
+          "NZ",
+          "PA",
+          "PE",
+          "PH",
+          "PL",
+          "PT",
+          "PY",
+          "SE",
+          "SG",
+          "SK",
+          "SV",
+          "TH",
+          "TR",
+          "TW",
+          "US",
+          "UY",
+          "VN"
+        ],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/7IEp2DUicr3uqt2BTEQfMX"
+        },
+        "href": "https://api.spotify.com/v1/albums/7IEp2DUicr3uqt2BTEQfMX",
+        "id": "7IEp2DUicr3uqt2BTEQfMX",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/3da2ab75e1ca3f12eb48caeb2438aeae201acce7",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/b7c44d39e7385e1bdb41ffc70e2591317e4a2f7d",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/eaa91343326be9bfd483a865588133a00f5d9a4d",
+            "width": 64
+          }
+        ],
+        "name": "HAARP (Live From Wembley Stadium)",
+        "type": "album",
+        "uri": "spotify:album:7IEp2DUicr3uqt2BTEQfMX"
+      },
+      {
+        "album_type": "single",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/6iLGJqxVgxxWsJe5bW4dxt"
+            },
+            "href": "https://api.spotify.com/v1/artists/6iLGJqxVgxxWsJe5bW4dxt",
+            "id": "6iLGJqxVgxxWsJe5bW4dxt",
+            "name": "Woodie Gochild",
+            "type": "artist",
+            "uri": "spotify:artist:6iLGJqxVgxxWsJe5bW4dxt"
+          }
+        ],
+        "available_markets": [
+          "AD",
+          "AR",
+          "AT",
+          "AU",
+          "BE",
+          "BG",
+          "BO",
+          "BR",
+          "CA",
+          "CH",
+          "CL",
+          "CO",
+          "CR",
+          "CY",
+          "CZ",
+          "DE",
+          "DK",
+          "DO",
+          "EC",
+          "EE",
+          "ES",
+          "FI",
+          "FR",
+          "GB",
+          "GR",
+          "GT",
+          "HK",
+          "HN",
+          "HU",
+          "ID",
+          "IE",
+          "IS",
+          "IT",
+          "JP",
+          "LI",
+          "LT",
+          "LU",
+          "LV",
+          "MC",
+          "MT",
+          "MX",
+          "MY",
+          "NI",
+          "NL",
+          "NO",
+          "NZ",
+          "PA",
+          "PE",
+          "PH",
+          "PL",
+          "PT",
+          "PY",
+          "SE",
+          "SG",
+          "SK",
+          "SV",
+          "TH",
+          "TR",
+          "TW",
+          "US",
+          "UY",
+          "VN"
+        ],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/3eCiclCiwjiy72p2fhXHub"
+        },
+        "href": "https://api.spotify.com/v1/albums/3eCiclCiwjiy72p2fhXHub",
+        "id": "3eCiclCiwjiy72p2fhXHub",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/4316cff643136d66716012025418dfd3db56eda4",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/33cfad37de24f8f9801347a121eb7de46ef463a6",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/08c0f575a92cebb5a8e5fa65fc723da322f1eeb7",
+            "width": 64
+          }
+        ],
+        "name": "Muse",
+        "type": "album",
+        "uri": "spotify:album:3eCiclCiwjiy72p2fhXHub"
+      },
+      {
+        "album_type": "single",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/1Q8pPoJYMxI69UkONXODr4"
+            },
+            "href": "https://api.spotify.com/v1/artists/1Q8pPoJYMxI69UkONXODr4",
+            "id": "1Q8pPoJYMxI69UkONXODr4",
+            "name": "Edgar Sandoval Jr",
+            "type": "artist",
+            "uri": "spotify:artist:1Q8pPoJYMxI69UkONXODr4"
+          }
+        ],
+        "available_markets": [
+          "AD",
+          "AR",
+          "AT",
+          "AU",
+          "BE",
+          "BG",
+          "BO",
+          "BR",
+          "CA",
+          "CH",
+          "CL",
+          "CO",
+          "CR",
+          "CY",
+          "CZ",
+          "DE",
+          "DK",
+          "DO",
+          "EC",
+          "EE",
+          "ES",
+          "FI",
+          "FR",
+          "GB",
+          "GR",
+          "GT",
+          "HK",
+          "HN",
+          "HU",
+          "ID",
+          "IE",
+          "IS",
+          "IT",
+          "JP",
+          "LI",
+          "LT",
+          "LU",
+          "LV",
+          "MC",
+          "MT",
+          "MX",
+          "MY",
+          "NI",
+          "NL",
+          "NO",
+          "NZ",
+          "PA",
+          "PE",
+          "PH",
+          "PL",
+          "PT",
+          "PY",
+          "SE",
+          "SG",
+          "SK",
+          "SV",
+          "TH",
+          "TR",
+          "TW",
+          "US",
+          "UY",
+          "VN"
+        ],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/7twRq45szqKHttKsuktIGY"
+        },
+        "href": "https://api.spotify.com/v1/albums/7twRq45szqKHttKsuktIGY",
+        "id": "7twRq45szqKHttKsuktIGY",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/934b1667f64dc3474415c426e4f000e0b75921ec",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/e64390e9667261feb16655d5d11bf3c609932d47",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/ebfdf930885aae94144337eca903588daea74a37",
+            "width": 64
+          }
+        ],
+        "name": "Muse",
+        "type": "album",
+        "uri": "spotify:album:7twRq45szqKHttKsuktIGY"
+      }
+    ],
+    "limit": 10,
+    "next": "https://api.spotify.com/v1/search?query=Muse&type=album&market=US&offset=15&limit=10",
+    "offset": 5,
+    "previous": "https://api.spotify.com/v1/search?query=Muse&type=album&market=US&offset=0&limit=10",
+    "total": 1032
+  }
+}
