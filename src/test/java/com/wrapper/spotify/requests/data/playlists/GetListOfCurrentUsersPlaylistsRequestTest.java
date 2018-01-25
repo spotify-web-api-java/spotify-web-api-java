@@ -16,15 +16,15 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
 @RunWith(MockitoJUnitRunner.class)
-public class GetListOfUsersPlaylistsRequestTest implements ITest<Paging<PlaylistSimplified>> {
-  private final GetListOfUsersPlaylistsRequest successRequest = SPOTIFY_API
-          .getListOfUsersPlaylists("user_id")
+public class GetListOfCurrentUsersPlaylistsRequestTest implements ITest<Paging<PlaylistSimplified>> {
+  private final GetListOfCurrentUsersPlaylistsRequest successRequest = SPOTIFY_API
+          .getListOfCurrentUsersPlaylists()
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
-                          "requests/data/playlists/GetListOfUsersPlaylistsRequest.json"))
+                          "requests/data/playlists/GetListOfCurrentUsersPlaylistsRequest.json"))
           .build();
 
-  public GetListOfUsersPlaylistsRequestTest() throws Exception {
+  public GetListOfCurrentUsersPlaylistsRequestTest() throws Exception {
   }
 
   @Test

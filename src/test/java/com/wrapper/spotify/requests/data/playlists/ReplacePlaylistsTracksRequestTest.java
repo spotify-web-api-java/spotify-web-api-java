@@ -1,39 +1,41 @@
 package com.wrapper.spotify.requests.data.playlists;
 
-import com.wrapper.spotify.SpotifyApi;
+import com.wrapper.spotify.ITest;
 import com.wrapper.spotify.TestUtil;
+import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import java.util.concurrent.Future;
+import java.io.IOException;
+import java.util.concurrent.ExecutionException;
 
 import static org.junit.Assert.assertNull;
 
 @RunWith(MockitoJUnitRunner.class)
-public class ReplacePlaylistsTracksRequestTest {
+public class ReplacePlaylistsTracksRequestTest implements ITest<String> {
+  private final ReplacePlaylistsTracksRequest successRequest = SPOTIFY_API
+          .replacePlaylistsTracks("user_id", "playlist_id", new String[]{"uri"})
+          .setHttpManager(
+                  TestUtil.MockedHttpManager.returningJson(
+                          "requests/data/playlists/ReplacePlaylistsTracksRequest.json"))
+          .build();
 
-  @Test
-  public void shouldCreatePlaylist_async() throws Exception {
-    final SpotifyApi api = new SpotifyApi.Builder().setAccessToken("someAccessToken").build();
-
-    final ReplacePlaylistsTracksRequest request = api.replacePlaylistsTracks(
-            "userId", "5oEljuMoe9MXH6tBIPbd5e", new String[]{"spotify:track:4iV5W9uYEdYUVa79Axb7Rh"}
-    ).setHttpManager(TestUtil.MockedHttpManager.returningString("")).build();
-
-    final Future<String> requestFuture = request.executeAsync();
-    final String string = requestFuture.get();
-
-    assertNull(string);
+  public ReplacePlaylistsTracksRequestTest() throws Exception {
   }
 
   @Test
-  public void shouldCreatePlaylist_sync() throws Exception {
-    final SpotifyApi api = new SpotifyApi.Builder().setAccessToken("someAccessToken").build();
+  public void shouldSucceed_sync() throws IOException, SpotifyWebApiException {
+    shouldSucceed(successRequest.execute());
+  }
 
-    final ReplacePlaylistsTracksRequest request = api.replacePlaylistsTracks(
-            "userId", "5oEljuMoe9MXH6tBIPbd5e", new String[]{"spotify:track:4iV5W9uYEdYUVa79Axb7Rh"}
-    ).setHttpManager(TestUtil.MockedHttpManager.returningString("")).build();
-    request.execute();
+  @Test
+  public void shouldSucceed_async() throws ExecutionException, InterruptedException {
+    shouldSucceed((String) successRequest.executeAsync().get());
+  }
+
+  public void shouldSucceed(final String string) {
+    assertNull(
+            string);
   }
 }

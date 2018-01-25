@@ -3,6 +3,7 @@ package com.wrapper.spotify.requests.data.playlists;
 import com.wrapper.spotify.ITest;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
+import com.wrapper.spotify.model_objects.specification.Image;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -10,18 +11,18 @@ import org.mockito.runners.MockitoJUnitRunner;
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
-import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertEquals;
 
 @RunWith(MockitoJUnitRunner.class)
-public class ChangePlaylistsDetailsRequestTest implements ITest<String> {
-  private final ChangePlaylistsDetailsRequest successRequest = SPOTIFY_API
-          .changePlaylistsDetails("user_id", "playlist_id")
+public class GetPlaylistCoverImageRequestTest implements ITest<Image[]> {
+  private final GetPlaylistCoverImageRequest successRequest = SPOTIFY_API
+          .getPlaylistCoverImage("user_id", "playlist_id")
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
-                          "requests/data/playlists/ChangePlaylistsDetailsRequest.json"))
+                          "requests/data/playlists/GetPlaylistCoverImageRequest.json"))
           .build();
 
-  public ChangePlaylistsDetailsRequestTest() throws Exception {
+  public GetPlaylistCoverImageRequestTest() throws Exception {
   }
 
   @Test
@@ -31,11 +32,12 @@ public class ChangePlaylistsDetailsRequestTest implements ITest<String> {
 
   @Test
   public void shouldSucceed_async() throws ExecutionException, InterruptedException {
-    shouldSucceed((String) successRequest.executeAsync().get());
+    shouldSucceed((Image[]) successRequest.executeAsync().get());
   }
 
-  public void shouldSucceed(final String string) {
-    assertNull(
-            string);
+  public void shouldSucceed(final Image[] images) {
+    assertEquals(
+            1,
+            images.length);
   }
 }

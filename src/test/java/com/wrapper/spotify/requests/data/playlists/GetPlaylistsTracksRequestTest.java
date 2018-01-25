@@ -1,77 +1,62 @@
 package com.wrapper.spotify.requests.data.playlists;
 
-import com.wrapper.spotify.SpotifyApi;
+import com.wrapper.spotify.ITest;
 import com.wrapper.spotify.TestUtil;
+import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.Paging;
 import com.wrapper.spotify.model_objects.specification.PlaylistTrack;
-import com.wrapper.spotify.model_objects.specification.Track;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.runners.MockitoJUnitRunner;
 
-import java.util.concurrent.Future;
+import java.io.IOException;
+import java.util.concurrent.ExecutionException;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
-public class GetPlaylistsTracksRequestTest {
+@RunWith(MockitoJUnitRunner.class)
+public class GetPlaylistsTracksRequestTest implements ITest<Paging<PlaylistTrack>> {
+  private final GetPlaylistsTracksRequest successRequest = SPOTIFY_API
+          .getPlaylistsTracks("user_id", "playlist_id")
+          .setHttpManager(
+                  TestUtil.MockedHttpManager.returningJson(
+                          "requests/data/playlists/GetPlaylistsTracksRequest.json"))
+          .build();
 
-  @Test
-  public void shouldGetTracksResult_async() throws Exception {
-    String accessToken = "someToken";
-    final SpotifyApi api = new SpotifyApi.Builder().setAccessToken(accessToken)
-            .build();
-
-    final GetPlaylistsTracksRequest request = api
-            .getPlaylistsTracks("thelinmichael", "3ktAYNcRHpazJ9qecm3ptn")
-            .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/playlists/GetPlaylistsTracksRequest.json"))
-            .build();
-
-    final Future<Paging<PlaylistTrack>> requestFuture = request.executeAsync();
-    final Paging<PlaylistTrack> playlistTrackPaging = requestFuture.get();
-
-    assertNotNull(playlistTrackPaging);
-    assertEquals(
-            "https://api.spotify.com/v1/users/thelinmichael/playlists/3ktAYNcRHpazJ9qecm3ptn/tracks?offset=0&limit=100",
-            playlistTrackPaging.getHref());
-    assertEquals(100, (int) playlistTrackPaging.getLimit());
-    assertNull(playlistTrackPaging.getNext());
-    assertEquals(0, (int) playlistTrackPaging.getOffset());
-    assertNull(playlistTrackPaging.getPrevious());
-    assertTrue(playlistTrackPaging.getTotal() > 0);
-
-    final PlaylistTrack playlistTrack = playlistTrackPaging.getItems()[0];
-    assertNotNull(playlistTrack.getAddedAt());
-    assertNotNull(playlistTrack.getAddedBy());
-
-    final Track track = playlistTrack.getTrack();
-    assertTrue(track.getPopularity() >= 0);
+  public GetPlaylistsTracksRequestTest() throws Exception {
   }
 
   @Test
-  public void shouldGetTracksResult_sync() throws Exception {
-    String accessToken = "someToken";
-    final SpotifyApi api = new SpotifyApi.Builder().setAccessToken("AccessToken").build();
+  public void shouldSucceed_sync() throws IOException, SpotifyWebApiException {
+    shouldSucceed(successRequest.execute());
+  }
 
-    final GetPlaylistsTracksRequest request = api
-            .getPlaylistsTracks("thelinmichael", "3ktAYNcRHpazJ9qecm3ptn")
-            .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/playlists/GetPlaylistsTracksRequest.json"))
-            .build();
+  @SuppressWarnings("unchecked")
+  @Test
+  public void shouldSucceed_async() throws ExecutionException, InterruptedException {
+    shouldSucceed((Paging<PlaylistTrack>) successRequest.executeAsync().get());
+  }
 
-    final Paging<PlaylistTrack> page = request.execute();
-
-    assertNotNull(page);
+  public void shouldSucceed(final Paging<PlaylistTrack> playlistTrackPaging) {
     assertEquals(
-            "https://api.spotify.com/v1/users/thelinmichael/playlists/3ktAYNcRHpazJ9qecm3ptn/tracks?offset=0&limit=100",
-            page.getHref());
-    assertEquals(100, (int) page.getLimit());
-    assertNull(page.getNext());
-    assertEquals(0, (int) page.getOffset());
-    assertNull(page.getPrevious());
-    assertTrue(page.getTotal() > 0);
-
-    final PlaylistTrack playlistTrack = page.getItems()[0];
-    assertNotNull(playlistTrack.getAddedAt());
-    assertNotNull(playlistTrack.getAddedBy());
-
-    final Track track = playlistTrack.getTrack();
-    assertTrue(track.getPopularity() >= 0);
+            "https://api.spotify.com/v1/users/spotify_espa%C3%B1a/playlists/21THa8j9TaSGuXYNBU5tsC/tracks",
+            playlistTrackPaging.getHref());
+    assertEquals(
+            2,
+            playlistTrackPaging.getItems().length);
+    assertEquals(
+            100,
+            (int) playlistTrackPaging.getLimit());
+    assertNull(
+            playlistTrackPaging.getNext());
+    assertEquals(
+            0,
+            (int) playlistTrackPaging.getOffset());
+    assertNull(
+            playlistTrackPaging.getPrevious());
+    assertEquals(
+            58,
+            (int) playlistTrackPaging.getTotal());
   }
 }

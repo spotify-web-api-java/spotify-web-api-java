@@ -1,60 +1,43 @@
 package com.wrapper.spotify.requests.data.playlists;
 
-import com.wrapper.spotify.SpotifyApi;
+import com.wrapper.spotify.ITest;
 import com.wrapper.spotify.TestUtil;
+import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.special.SnapshotResult;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.runners.MockitoJUnitRunner;
 
-import java.util.concurrent.Future;
+import java.io.IOException;
+import java.util.concurrent.ExecutionException;
 
 import static org.junit.Assert.assertEquals;
 
-public class ReorderPlaylistsTracksRequestTest {
-  @Test
-  public void shouldReorderTracksInPlaylist_async() throws Exception {
-    final String accessToken = "someAccessToken";
+@RunWith(MockitoJUnitRunner.class)
+public class ReorderPlaylistsTracksRequestTest implements ITest<SnapshotResult> {
+  private final ReorderPlaylistsTracksRequest successRequest = SPOTIFY_API
+          .reorderPlaylistsTracks("user_id", "playlist_id", 0, 0)
+          .setHttpManager(
+                  TestUtil.MockedHttpManager.returningJson(
+                          "requests/data/playlists/ReorderPlaylistsTracksRequest.json"))
+          .build();
 
-    final SpotifyApi api = new SpotifyApi.Builder().setAccessToken("AccessToken").build();
-
-    final String myUsername = "thelinmichael";
-    final String myPlaylistId = "5ieJqeLJjjI8iJWaxeBLuK";
-    final String snapshotId = "JbtmHBDBAYu3/bt8BOXKjzKx3i0b6LCa/wVjyl6qQ2Yf6nFXkbmzuEa+ZI/U1yF+";
-    final int rangeStart = 10;
-    final int rangeLength = 2;
-    final int insertBefore = 5;
-
-    final ReorderPlaylistsTracksRequest request = api.reorderPlaylistsTracks(myUsername, myPlaylistId, rangeStart, insertBefore)
-            .range_length(rangeLength)
-            .snapshot_id(snapshotId)
-            .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/playlists/ReorderPlaylistsTracksRequest.json"))
-            .build();
-
-    final Future<SnapshotResult> requestFuture = request.executeAsync();
-    final SnapshotResult snapshotResult = requestFuture.get();
-
-    assertEquals(snapshotId, snapshotResult.getSnapshotId());
+  public ReorderPlaylistsTracksRequestTest() throws Exception {
   }
 
   @Test
-  public void shouldReorderTracksInPlaylist_sync() throws Exception {
-    final String accessToken = "someAccessToken";
+  public void shouldSucceed_sync() throws IOException, SpotifyWebApiException {
+    shouldSucceed(successRequest.execute());
+  }
 
-    final SpotifyApi api = new SpotifyApi.Builder().setAccessToken("AccessToken").build();
+  @Test
+  public void shouldSucceed_async() throws ExecutionException, InterruptedException {
+    shouldSucceed((SnapshotResult) successRequest.executeAsync().get());
+  }
 
-    final String myUsername = "thelinmichael";
-    final String myPlaylistId = "5ieJqeLJjjI8iJWaxeBLuK";
-    final String snapshotId = "JbtmHBDBAYu3/bt8BOXKjzKx3i0b6LCa/wVjyl6qQ2Yf6nFXkbmzuEa+ZI/U1yF+";
-    final int rangeStart = 10;
-    final int rangeLength = 2;
-    final int insertBefore = 5;
-
-    final ReorderPlaylistsTracksRequest request = api.reorderPlaylistsTracks(myUsername, myPlaylistId, rangeStart, insertBefore)
-            .range_length(rangeLength)
-            .snapshot_id(snapshotId)
-            .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/playlists/ReorderPlaylistsTracksRequest.json"))
-            .build();
-
-    final SnapshotResult snapshotResult = request.execute();
-    assertEquals(snapshotId, snapshotResult.getSnapshotId());
+  public void shouldSucceed(final SnapshotResult snapshotResult) {
+    assertEquals(
+            "KsWY41k+zLqbx7goYX9zr+2IUZQtqbBNfk4ZOgEpIurvab4VSHhEL2L4za8HW6D0",
+            snapshotResult.getSnapshotId());
   }
 }

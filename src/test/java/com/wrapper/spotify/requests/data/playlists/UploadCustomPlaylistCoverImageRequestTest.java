@@ -13,15 +13,15 @@ import java.util.concurrent.ExecutionException;
 import static org.junit.Assert.assertNull;
 
 @RunWith(MockitoJUnitRunner.class)
-public class ChangePlaylistsDetailsRequestTest implements ITest<String> {
-  private final ChangePlaylistsDetailsRequest successRequest = SPOTIFY_API
-          .changePlaylistsDetails("user_id", "playlist_id")
+public class UploadCustomPlaylistCoverImageRequestTest implements ITest<String> {
+  private final UploadCustomPlaylistCoverImageRequest successRequest = SPOTIFY_API
+          .uploadCustomPlaylistCoverImage("user_id", "playlist_id")
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
-                          "requests/data/playlists/ChangePlaylistsDetailsRequest.json"))
+                          "requests/data/playlists/UploadCustomPlaylistCoverImageRequest.json"))
           .build();
 
-  public ChangePlaylistsDetailsRequestTest() throws Exception {
+  public UploadCustomPlaylistCoverImageRequestTest() throws Exception {
   }
 
   @Test

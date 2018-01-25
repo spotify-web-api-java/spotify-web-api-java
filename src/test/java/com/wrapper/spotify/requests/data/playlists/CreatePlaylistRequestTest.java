@@ -1,70 +1,76 @@
 package com.wrapper.spotify.requests.data.playlists;
 
-import com.wrapper.spotify.SpotifyApi;
+import com.wrapper.spotify.ITest;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.enums.ModelObjectType;
+import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.Playlist;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.runners.MockitoJUnitRunner;
 
-import java.util.concurrent.Future;
+import java.io.IOException;
+import java.util.concurrent.ExecutionException;
 
 import static org.junit.Assert.*;
 
-public class CreatePlaylistRequestTest {
+@RunWith(MockitoJUnitRunner.class)
+public class CreatePlaylistRequestTest implements ITest<Playlist> {
+  private final CreatePlaylistRequest successRequest = SPOTIFY_API
+          .createPlaylist("user_id", "playlist_id")
+          .setHttpManager(
+                  TestUtil.MockedHttpManager.returningJson(
+                          "requests/data/playlists/CreatePlaylistRequest.json"))
+          .build();
 
-  @Test
-  public void shouldCreatePlaylist_async() throws Exception {
-    final SpotifyApi api = new SpotifyApi.Builder().setAccessToken("someAccessToken").build();
-
-    final CreatePlaylistRequest request = api.createPlaylist("thelinmichael", "Coolest playlist")
-            .public_(true)
-            .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/playlists/CreatePlaylistRequest.json"))
-            .build();
-
-    final Future<Playlist> requestFuture = request.executeAsync();
-    final Playlist playlist = requestFuture.get();
-
-    assertNotNull(playlist);
-    assertFalse(playlist.getIsCollaborative());
-    assertEquals("New playlist description", playlist.getDescription());
-    assertEquals("http://open.spotify.com/user/1153065250/playlist/2oo3exZoJwBXwdYJDoe0Ru", playlist.getExternalUrls().get("spotify"));
-    assertEquals(0, (int) playlist.getFollowers().getTotal());
-    assertEquals("https://api.spotify.com/v1/users/1153065250/playlists/2oo3exZoJwBXwdYJDoe0Ru", playlist.getHref());
-    assertEquals("2oo3exZoJwBXwdYJDoe0Ru", playlist.getId());
-    assertEquals(0, playlist.getImages().length);
-    assertEquals("New Playlist", playlist.getName());
-    assertNotNull(playlist.getOwner());
-    assertFalse(playlist.getIsPublicAccess());
-    assertEquals(0, (int) playlist.getTracks().getTotal());
-    assertEquals(ModelObjectType.PLAYLIST, playlist.getType());
-    assertEquals("spotify:user:1153065250:playlist:2oo3exZoJwBXwdYJDoe0Ru", playlist.getUri());
+  public CreatePlaylistRequestTest() throws Exception {
   }
 
   @Test
-  public void shouldCreatePlaylist_sync() throws Exception {
-    final SpotifyApi api = new SpotifyApi.Builder().setAccessToken("someAccessToken").build();
-
-    final CreatePlaylistRequest request = api.createPlaylist("thelinmichael", "title")
-            .public_(true)
-            .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/playlists/CreatePlaylistRequest.json"))
-            .build();
-
-    final Playlist playlist = request.execute();
-
-    assertNotNull(playlist);
-    assertFalse(playlist.getIsCollaborative());
-    assertEquals("New playlist description", playlist.getDescription());
-    assertEquals("http://open.spotify.com/user/1153065250/playlist/2oo3exZoJwBXwdYJDoe0Ru", playlist.getExternalUrls().get("spotify"));
-    assertEquals(0, (int) playlist.getFollowers().getTotal());
-    assertEquals("https://api.spotify.com/v1/users/1153065250/playlists/2oo3exZoJwBXwdYJDoe0Ru", playlist.getHref());
-    assertEquals("2oo3exZoJwBXwdYJDoe0Ru", playlist.getId());
-    assertEquals(0, playlist.getImages().length);
-    assertEquals("New Playlist", playlist.getName());
-    assertNotNull(playlist.getOwner());
-    assertFalse(playlist.getIsPublicAccess());
-    assertEquals(0, (int) playlist.getTracks().getTotal());
-    assertEquals(ModelObjectType.PLAYLIST, playlist.getType());
-    assertEquals("spotify:user:1153065250:playlist:2oo3exZoJwBXwdYJDoe0Ru", playlist.getUri());
+  public void shouldSucceed_sync() throws IOException, SpotifyWebApiException {
+    shouldSucceed(successRequest.execute());
   }
 
+  @Test
+  public void shouldSucceed_async() throws ExecutionException, InterruptedException {
+    shouldSucceed((Playlist) successRequest.executeAsync().get());
+  }
+
+  public void shouldSucceed(final Playlist playlist) {
+    assertFalse(
+            playlist.getIsCollaborative());
+    assertNull(
+            playlist.getDescription());
+    assertNotNull(
+            playlist.getExternalUrls());
+    assertNotNull(
+            playlist.getFollowers());
+    assertEquals(
+            "https://api.spotify.com/v1/users/thelinmichael/playlists/7d2D2S200NyUE5KYs80PwO",
+            playlist.getHref());
+    assertEquals(
+            "7d2D2S200NyUE5KYs80PwO",
+            playlist.getId());
+    assertEquals(
+            0,
+            playlist.getImages().length);
+    assertEquals(
+            "A New Playlist",
+            playlist.getName());
+    assertNotNull(
+            playlist.getOwner());
+    assertFalse(
+            playlist.getIsPublicAccess());
+    assertEquals(
+            "s0o3TSuYnRLl2jch+oA4OEbKwq/fNxhGBkSPnvhZdmWjNV0q3uCAWuGIhEx8SHIx",
+            playlist.getSnapshotId());
+    assertNotNull(
+            playlist.getTracks());
+    assertEquals(
+            ModelObjectType.PLAYLIST,
+            playlist.getType());
+    assertEquals(
+            "spotify:user:thelinmichael:playlist:7d2D2S200NyUE5KYs80PwO",
+            playlist.getUri());
+  }
 }

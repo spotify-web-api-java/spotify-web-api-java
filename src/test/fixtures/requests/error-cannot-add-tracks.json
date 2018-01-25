@@ -1,6 +1,0 @@
-{
-  "error": {
-    "type": "forbidden",
-    "description": "You cannot add tracks to a playlist you don\u0027t own."
-  }
-}
