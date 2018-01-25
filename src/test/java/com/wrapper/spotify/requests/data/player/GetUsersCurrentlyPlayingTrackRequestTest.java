@@ -43,15 +43,18 @@ public class GetUsersCurrentlyPlayingTrackRequestTest implements ITest<Currently
   }
 
   public void shouldSucceed(final CurrentlyPlaying currentlyPlaying) {
+    assertNull(
+            currentlyPlaying.getContext());
     assertEquals(
             1516669900630L,
             (long) currentlyPlaying.getTimestamp());
+    assertEquals(
+            78810,
+            (int) currentlyPlaying.getProgress_ms());
     assertFalse(
             currentlyPlaying.getIs_playing());
     assertNotNull(
             currentlyPlaying.getItem());
-    assertNull(
-            currentlyPlaying.getContext());
   }
 
   @Test

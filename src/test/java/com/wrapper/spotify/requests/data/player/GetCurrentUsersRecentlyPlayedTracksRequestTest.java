@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 @RunWith(MockitoJUnitRunner.class)
 public class GetCurrentUsersRecentlyPlayedTracksRequestTest implements ITest<PagingCursorbased<PlayHistory>> {
@@ -39,19 +40,21 @@ public class GetCurrentUsersRecentlyPlayedTracksRequestTest implements ITest<Pag
 
   public void shouldSucceed(final PagingCursorbased<PlayHistory> playHistoryPagingCursorbased) {
     assertEquals(
-            10,
+            "https://api.spotify.com/v1/me/player/recently-played?limit=2",
+            playHistoryPagingCursorbased.getHref());
+    assertEquals(
+            2,
             playHistoryPagingCursorbased.getItems().length);
     assertEquals(
-            "https://api.spotify.com/v1/me/player/recently-played?after=1515558610865&limit=10&type=track",
+            2,
+            (int) playHistoryPagingCursorbased.getLimit());
+    assertEquals(
+            "https://api.spotify.com/v1/me/player/recently-played?before=1481661737016&limit=2",
             playHistoryPagingCursorbased.getNext());
     assertEquals(
             1,
             playHistoryPagingCursorbased.getCursors().length);
-    assertEquals(
-            10,
-            (int) playHistoryPagingCursorbased.getLimit());
-    assertEquals(
-            "https://api.spotify.com/v1/me/player/recently-played?after=1484811043508&limit=10&type=track",
-            playHistoryPagingCursorbased.getHref());
+    assertNull(
+            playHistoryPagingCursorbased.getTotal());
   }
 }

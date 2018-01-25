@@ -43,16 +43,6 @@ public class GetInformationAboutUsersCurrentPlaybackRequestTest implements ITest
   }
 
   public void shouldSucceed(final CurrentlyPlayingContext currentlyPlayingContext) {
-    assertEquals(
-            1516669848357L,
-            (long) currentlyPlayingContext.getTimestamp());
-    assertEquals(
-            69937,
-            (int) currentlyPlayingContext.getProgress_ms());
-    assertNotNull(
-            currentlyPlayingContext.getItem());
-    assertNull(
-            currentlyPlayingContext.getContext());
     assertNotNull(
             currentlyPlayingContext.getDevice());
     assertEquals(
@@ -60,6 +50,18 @@ public class GetInformationAboutUsersCurrentPlaybackRequestTest implements ITest
             currentlyPlayingContext.getRepeat_state());
     assertFalse(
             currentlyPlayingContext.getShuffle_state());
+    assertNull(
+            currentlyPlayingContext.getContext());
+    assertEquals(
+            1516669848357L,
+            (long) currentlyPlayingContext.getTimestamp());
+    assertEquals(
+            69937,
+            (int) currentlyPlayingContext.getProgress_ms());
+    assertTrue(
+            currentlyPlayingContext.getIs_playing());
+    assertNotNull(
+            currentlyPlayingContext.getItem());
   }
 
   @Test
