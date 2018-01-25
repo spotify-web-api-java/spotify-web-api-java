@@ -1,25 +1,25 @@
 {
-  "birthdate": "1989-07-04",
+  "birthdate": "1937-06-01",
   "country": "SE",
-  "display_name": "Michael",
-  "email": "thelinmichael+test@gmail.com",
+  "display_name": "JM Wizzler",
+  "email": "email@example.com",
   "external_urls": {
-    "spotify": "https://open.spotify.com/user/thelinmichael"
+    "spotify": "https://open.spotify.com/user/wizzler"
   },
   "followers": {
     "href": null,
-    "total": 17
+    "total": 3829
   },
-  "href": "https://api.spotify.com/v1/users/thelinmichael",
-  "id": "thelinmichael",
+  "href": "https://api.spotify.com/v1/users/wizzler",
+  "id": "wizzler",
   "images": [
     {
       "height": null,
-      "url": "http://media.giphy.com/media/Aab07O5PYOmQ/giphy.gif",
+      "url": "https://fbcdn-profile-a.akamaihd.net/hprofile-ak-frc3/t1.0-1/1970403_10152215092574354_1798272330_n.jpg",
       "width": null
     }
   ],
   "product": "premium",
   "type": "user",
-  "uri": "spotify:user:thelinmichael"
+  "uri": "spotify:user:wizzler"
 }

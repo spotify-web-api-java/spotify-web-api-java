@@ -1,21 +1,21 @@
 {
-  "display_name": "Ronald Pompa",
+  "display_name": "Lilla Namo",
   "external_urls": {
-    "spotify": "https://open.spotify.com/user/wizzler"
+    "spotify": "https://open.spotify.com/user/tuggareutangranser"
   },
   "followers": {
     "href": null,
-    "total": 3911
+    "total": 4561
   },
-  "href": "https://api.spotify.com/v1/users/wizzler",
-  "id": "wizzler",
+  "href": "https://api.spotify.com/v1/users/tuggareutangranser",
+  "id": "tuggareutangranser",
   "images": [
     {
       "height": null,
-      "url": "http://profile-images.scdn.co/images/userprofile/default/9d51820e73667ea5f1e97ea601cf0593b558050e",
+      "url": "http://profile-images.scdn.co/artists/default/d4f208d4d49c6f3e1363765597d10c4277f5b74f",
       "width": null
     }
   ],
   "type": "user",
-  "uri": "spotify:user:wizzler"
+  "uri": "spotify:user:tuggareutangranser"
 }
