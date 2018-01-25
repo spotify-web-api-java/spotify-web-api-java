@@ -1,47 +1,86 @@
 package com.wrapper.spotify.requests.data.tracks;
 
-import com.wrapper.spotify.SpotifyApi;
+import com.wrapper.spotify.ITest;
 import com.wrapper.spotify.TestUtil;
+import com.wrapper.spotify.enums.ModelObjectType;
+import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.Track;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import java.util.concurrent.Future;
+import java.io.IOException;
+import java.util.concurrent.ExecutionException;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-
+import static org.junit.Assert.*;
 
 @RunWith(MockitoJUnitRunner.class)
-public class GetTrackRequestTest {
+public class GetTrackRequestTest implements ITest<Track> {
+  private final GetTrackRequest successRequest = SPOTIFY_API
+          .getTrack("id")
+          .setHttpManager(
+                  TestUtil.MockedHttpManager.returningJson(
+                          "requests/data/tracks/GetTrackRequest.json"))
+          .build();
 
-  @Test
-  public void shouldGetTrackResult_async() throws Exception {
-    final SpotifyApi api = new SpotifyApi.Builder().setAccessToken("AccessToken").build();
-
-    final GetTrackRequest request = api.getTrack("0eGsygTp906u18L0Oimnem")
-            .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/tracks/GetTrackRequest.json"))
-            .build();
-
-    final Future<Track> requestFuture = request.executeAsync();
-    final Track track = requestFuture.get();
-
-    assertNotNull(track);
-    assertEquals("0eGsygTp906u18L0Oimnem", track.getId());
+  public GetTrackRequestTest() throws Exception {
   }
 
   @Test
-  public void shouldGetTrackResult_sync() throws Exception {
-    final SpotifyApi api = new SpotifyApi.Builder().setAccessToken("AccessToken").build();
+  public void shouldSucceed_sync() throws IOException, SpotifyWebApiException {
+    shouldSucceed(successRequest.execute());
+  }
 
-    final GetTrackRequest request = api.getTrack("0eGsygTp906u18L0Oimnem")
-            .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/tracks/GetTrackRequest.json"))
-            .build();
+  @Test
+  public void shouldSucceed_async() throws ExecutionException, InterruptedException {
+    shouldSucceed((Track) successRequest.executeAsync().get());
+  }
 
-    final Track track = request.execute();
-
-    assertNotNull(track);
-    assertEquals("0eGsygTp906u18L0Oimnem", track.getId());
+  public void shouldSucceed(final Track track) {
+    assertNotNull(
+            "",
+            track.getAlbum());
+    assertNotNull(
+            "",
+            track.getArtists());
+    assertEquals(
+            57,
+            track.getAvailableMarkets().length);
+    assertEquals(
+            1,
+            (int) track.getDiscNumber());
+    assertEquals(
+            222200,
+            (int) track.getDurationMs());
+    assertFalse(
+            track.getIsExplicit());
+    assertNotNull(
+            track.getExternalIds());
+    assertNotNull(
+            track.getExternalUrls());
+    assertEquals(
+            "https://api.spotify.com/v1/tracks/3n3Ppam7vgaVa1iaRUc9Lp",
+            track.getHref());
+    assertEquals(
+            "3n3Ppam7vgaVa1iaRUc9Lp",
+            track.getId());
+    assertEquals(
+            "Mr. Brightside",
+            track.getName());
+    assertEquals(
+            73,
+            (int) track.getPopularity());
+    assertEquals(
+            "https://p.scdn.co/mp3-preview/4839b070015ab7d6de9fec1756e1f3096d908fba",
+            track.getPreviewUrl());
+    assertEquals(
+            2,
+            (int) track.getTrackNumber());
+    assertEquals(
+            ModelObjectType.TRACK,
+            track.getType());
+    assertEquals(
+            "spotify:track:3n3Ppam7vgaVa1iaRUc9Lp",
+            track.getUri());
   }
 }

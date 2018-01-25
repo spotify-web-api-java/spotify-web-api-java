@@ -3,7 +3,7 @@ package com.wrapper.spotify.requests.data.tracks;
 import com.wrapper.spotify.ITest;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
-import com.wrapper.spotify.model_objects.specification.Track;
+import com.wrapper.spotify.model_objects.specification.AudioFeatures;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -14,15 +14,15 @@ import java.util.concurrent.ExecutionException;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(MockitoJUnitRunner.class)
-public class GetSeveralTracksRequestTest implements ITest<Track[]> {
-  private final GetSeveralTracksRequest successRequest = SPOTIFY_API
-          .getSeveralTracks("id")
+public class GetAudioFeaturesForSeveralTracksRequestTest implements ITest<AudioFeatures[]> {
+  private final GetAudioFeaturesForSeveralTracksRequest successRequest = SPOTIFY_API
+          .getAudioFeaturesForSeveralTracks("id")
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
-                          "requests/data/tracks/GetSeveralTracksRequest.json"))
+                          "requests/data/tracks/GetAudioFeaturesForSeveralTracksRequest.json"))
           .build();
 
-  public GetSeveralTracksRequestTest() throws Exception {
+  public GetAudioFeaturesForSeveralTracksRequestTest() throws Exception {
   }
 
   @Test
@@ -32,12 +32,12 @@ public class GetSeveralTracksRequestTest implements ITest<Track[]> {
 
   @Test
   public void shouldSucceed_async() throws ExecutionException, InterruptedException {
-    shouldSucceed((Track[]) successRequest.executeAsync().get());
+    shouldSucceed((AudioFeatures[]) successRequest.executeAsync().get());
   }
 
-  public void shouldSucceed(final Track[] tracks) {
+  public void shouldSucceed(final AudioFeatures[] audioFeatures) {
     assertEquals(
-            2,
-            tracks.length);
+            3,
+            audioFeatures.length);
   }
 }
