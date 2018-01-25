@@ -520,7 +520,7 @@ public class AudioFeatures extends AbstractModelObject {
               .setMode(
                       hasAndNotNull(jsonObject, "mode")
                               ? Modality.valueOf(
-                                      jsonObject.get("mode").getAsInt())
+                              jsonObject.get("mode").getAsInt())
                               : null)
               .setSpeechiness(
                       hasAndNotNull(jsonObject, "speechiness")

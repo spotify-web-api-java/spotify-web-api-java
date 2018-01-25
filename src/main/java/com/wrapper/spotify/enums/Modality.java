@@ -13,7 +13,6 @@ public enum Modality {
   MINOR(0),
   MAJOR(1);
 
-  public final int mode;
   private static Map<Integer, Modality> map = new HashMap<>();
 
   static {
@@ -21,6 +20,8 @@ public enum Modality {
       map.put(modality.mode, modality);
     }
   }
+
+  public final int mode;
 
   Modality(final int mode) {
     this.mode = mode;
