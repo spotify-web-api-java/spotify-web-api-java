@@ -33,6 +33,10 @@ help. But bear in mind that this can take its time.
  
 A complete contribution includes the following features:
 
+### Integrity
+Make sure that your contribution embeds well into the already existing code. For example, the unified folder/package
+structure must be used wherever possible.
+
 ### Documentation
 Document your source code! It's easy because one can most likely just stick to the online API reference. This is a
 requirement. Not because your contributed source code is unreadable. Instead, the aim is to keep the Javadoc complete
