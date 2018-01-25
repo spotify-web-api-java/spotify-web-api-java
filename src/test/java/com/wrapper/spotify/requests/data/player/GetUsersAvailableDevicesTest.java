@@ -15,14 +15,14 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(MockitoJUnitRunner.class)
 public class GetUsersAvailableDevicesTest implements ITest<Device[]> {
-  private final GetUsersAvailableDevices successRequest = SPOTIFY_API
+  private final GetUsersAvailableDevicesRequest successRequest = SPOTIFY_API
           .getUsersAvailableDevices()
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
                           "requests/data/player/GetUsersAvailableDevices.json"))
           .build();
 
-  private final GetUsersAvailableDevices failureRequest = SPOTIFY_API
+  private final GetUsersAvailableDevicesRequest failureRequest = SPOTIFY_API
           .getUsersAvailableDevices()
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(

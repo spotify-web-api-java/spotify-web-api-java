@@ -6,9 +6,9 @@ import com.wrapper.spotify.requests.data.AbstractDataRequest;
 
 import java.io.IOException;
 
-public class GetUsersAvailableDevices extends AbstractDataRequest {
+public class GetUsersAvailableDevicesRequest extends AbstractDataRequest {
 
-  private GetUsersAvailableDevices(final Builder builder) {
+  private GetUsersAvailableDevicesRequest(final Builder builder) {
     super(builder);
   }
 
@@ -25,9 +25,9 @@ public class GetUsersAvailableDevices extends AbstractDataRequest {
     }
 
     @Override
-    public GetUsersAvailableDevices build() {
+    public GetUsersAvailableDevicesRequest build() {
       setPath("/v1/me/player/devices");
-      return new GetUsersAvailableDevices(this);
+      return new GetUsersAvailableDevicesRequest(this);
     }
   }
 }
