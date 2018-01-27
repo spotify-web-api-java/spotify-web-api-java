@@ -6,6 +6,7 @@ import com.wrapper.spotify.model_objects.credentials.AuthorizationCodeCredential
 import com.wrapper.spotify.requests.authorization.AbstractAthorizationRequest;
 
 import java.io.IOException;
+import java.net.URI;
 
 public class AuthorizationCodeRequest extends AbstractAthorizationRequest {
 
@@ -38,10 +39,9 @@ public class AuthorizationCodeRequest extends AbstractAthorizationRequest {
       return setFormParameter("code", code);
     }
 
-    public Builder redirect_uri(final String redirect_uri) {
+    public Builder redirect_uri(final URI redirect_uri) {
       assert (redirect_uri != null);
-      assert (!redirect_uri.equals(""));
-      return setFormParameter("redirect_uri", redirect_uri);
+      return setFormParameter("redirect_uri", redirect_uri.toString());
     }
 
     public AuthorizationCodeRequest build() {

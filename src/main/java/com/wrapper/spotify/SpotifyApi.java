@@ -31,6 +31,8 @@ import com.wrapper.spotify.requests.data.tracks.*;
 import com.wrapper.spotify.requests.data.users_profile.GetCurrentUsersProfileRequest;
 import com.wrapper.spotify.requests.data.users_profile.GetUsersProfileRequest;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.logging.Logger;
 
 /**
@@ -76,7 +78,7 @@ public class SpotifyApi {
   private final Integer proxyPassword;
   private final String clientId;
   private final String clientSecret;
-  private final String redirectUri;
+  private final URI redirectUri;
   private String accessToken;
   private String refreshToken;
 
@@ -159,7 +161,7 @@ public class SpotifyApi {
     return clientSecret;
   }
 
-  public String getRedirectURI() {
+  public URI getRedirectURI() {
     return redirectUri;
   }
 
@@ -223,7 +225,7 @@ public class SpotifyApi {
    *                      the authorization code.
    * @return A builder that builds authorization code grant requests.
    */
-  public AuthorizationCodeRequest.Builder authorizationCode(String client_id, String client_secret, String code, String redirect_uri) {
+  public AuthorizationCodeRequest.Builder authorizationCode(String client_id, String client_secret, String code, URI redirect_uri) {
     assert (client_id != null);
     assert (!client_id.equals(""));
     assert (client_secret != null);
@@ -231,7 +233,6 @@ public class SpotifyApi {
     assert (code != null);
     assert (!code.equals(""));
     assert (redirect_uri != null);
-    assert (!redirect_uri.equals(""));
     return new AuthorizationCodeRequest.Builder(clientId, clientSecret)
             .setDefaults(httpManager, scheme, host, port)
             .grant_type("authorization_code")
@@ -258,7 +259,7 @@ public class SpotifyApi {
    *                     the authorization code.
    * @return The URL where the user can give application permissions.
    */
-  public AuthorizationCodeUriRequest.Builder authorizationCodeUri(String client_id, String redirect_uri) {
+  public AuthorizationCodeUriRequest.Builder authorizationCodeUri(String client_id, URI redirect_uri) {
     return new AuthorizationCodeUriRequest.Builder()
             .setDefaults(httpManager, scheme, host, port)
             .client_id(client_id)
@@ -1162,7 +1163,7 @@ public class SpotifyApi {
     private Integer proxyPassword;
     private String clientId;
     private String clientSecret;
-    private String redirectUri;
+    private URI redirectUri;
     private String accessToken;
     private String refreshToken;
 
@@ -1258,9 +1259,24 @@ public class SpotifyApi {
      * @param redirectUri A redirect URI of your application.
      * @return A builder object.
      */
-    public Builder setRedirectUri(String redirectUri) {
+    public Builder setRedirectUri(URI redirectUri) {
       this.redirectUri = redirectUri;
       return this;
+    }
+
+    /**
+     * Set the redirect uri in a builder object.
+     *
+     * @param redirectUri A redirect URI of your application.
+     * @return A builder object.
+     */
+    public Builder setRedirectUri(String redirectUri) {
+      try {
+        return setRedirectUri(new URI(redirectUri));
+      } catch (URISyntaxException e) {
+        e.printStackTrace();
+        return null;
+      }
     }
 
     /**

@@ -34,10 +34,9 @@ public class AuthorizationCodeUriRequest extends AbstractRequest {
       return setQueryParameter("response_type", response_type);
     }
 
-    public Builder redirect_uri(final String redirect_uri) {
+    public Builder redirect_uri(final URI redirect_uri) {
       assert (redirect_uri != null);
-      assert (!redirect_uri.equals(""));
-      return setQueryParameter("redirect_uri", redirect_uri);
+      return setQueryParameter("redirect_uri", redirect_uri.toString());
     }
 
     public Builder state(final String state) {

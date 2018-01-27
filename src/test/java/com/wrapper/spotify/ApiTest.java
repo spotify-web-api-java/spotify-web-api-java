@@ -9,8 +9,11 @@ import com.neovisionaries.i18n.LanguageCode;
 import com.wrapper.spotify.enums.AlbumType;
 import com.wrapper.spotify.model_objects.special.PlaylistTrackPosition;
 import com.wrapper.spotify.requests.IRequest;
+import org.apache.http.client.utils.URIBuilder;
 import org.junit.Test;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -398,8 +401,14 @@ public class ApiTest {
   public void shouldCreateRequestForTokensUrl() {
     final String clientId = "myClientId";
     final String clientSecret = "myClientSecret";
-    final String redirectURI = "myRedirectUri";
+    URI redirectURI = null;
     final String code = "returnedCode";
+
+    try {
+      redirectURI = new URIBuilder().setScheme("http").setHost("www.michaelthelin.se").setPath("test-callback").build();
+    } catch (URISyntaxException e) {
+      e.printStackTrace();
+    }
 
     final SpotifyApi api = SpotifyApi.builder()
             .setClientId(clientId)
@@ -639,7 +648,13 @@ public class ApiTest {
   @Test
   public void shouldCreateAuthorizeURL() {
     final String clientId = "fcecfc79122e4cd299473677a17cbd4d";
-    final String redirectURI = "http://www.michaelthelin.se/test-callback";
+    URI redirectURI = null;
+
+    try {
+      redirectURI = new URIBuilder().setScheme("http").setHost("www.michaelthelin.se").setPath("test-callback").build();
+    } catch (URISyntaxException e) {
+      e.printStackTrace();
+    }
 
     final SpotifyApi api = SpotifyApi.builder()
             .setClientId(clientId)
@@ -661,8 +676,14 @@ public class ApiTest {
 
   @Test
   public void shouldCreateAuthorizeUrlWithOptionalParameters() {
-    final String redirectURI = "http://www.michaelthelin.se/test-callback";
+    URI redirectURI = null;
     final String clientId = "fcecfc79122e4cd299473677a17cbd4d";
+
+    try {
+      redirectURI = new URIBuilder().setScheme("http").setHost("www.michaelthelin.se").setPath("test-callback").build();
+    } catch (URISyntaxException e) {
+      e.printStackTrace();
+    }
 
     final SpotifyApi api = SpotifyApi.builder()
             .setClientId(clientId)
@@ -684,8 +705,14 @@ public class ApiTest {
 
   @Test
   public void shouldCreateAuthorizeUrlWithShowDialog() {
-    final String redirectURI = "http://www.michaelthelin.se/test-callback";
-    final String clientId = "fcecfc79122e4cd299473677a17cbd4d";
+    URI redirectURI = null;
+    String clientId = "fcecfc79122e4cd299473677a17cbd4d";
+
+    try {
+      redirectURI = new URIBuilder().setScheme("http").setHost("www.michaelthelin.se").setPath("test-callback").build();
+    } catch (URISyntaxException e) {
+      e.printStackTrace();
+    }
 
     final SpotifyApi api = SpotifyApi.builder()
             .setClientId(clientId)
