@@ -29,7 +29,7 @@ public class ClientCredentialsRequest extends AbstractAthorizationRequest {
     public Builder grant_type(final String grant_type) {
       assert (grant_type != null);
       assert (grant_type.equals("client_credentials"));
-      return setBodyParameter("grant_type", grant_type);
+      return setFormParameter("grant_type", grant_type);
     }
 
     public ClientCredentialsRequest build() {
