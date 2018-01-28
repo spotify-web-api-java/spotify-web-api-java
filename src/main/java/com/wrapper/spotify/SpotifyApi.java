@@ -1007,7 +1007,7 @@ public class SpotifyApi {
   /**
    * Get information about an users available devices.
    *
-   * @return A {@link GetUsersAvailableDevices.Builder}.
+   * @return A {@link GetUsersAvailableDevicesRequest.Builder}.
    */
   public GetUsersAvailableDevicesRequest.Builder getUsersAvailableDevices() {
     return new GetUsersAvailableDevicesRequest.Builder(accessToken)
