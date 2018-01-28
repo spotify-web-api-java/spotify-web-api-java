@@ -7,95 +7,22 @@ Spotify Web API Java [![Build Status](https://travis-ci.org/thelinmichael/spotif
 
 This is a Java wrapper/client for the [Spotify Web API](https://developer.spotify.com/web-api/).
 
-It includes helper functions to do:
+## Table of Contents
+1. **[Installation](#Installation)**
+2. **[Documentation](#Documentation)**
+3. **[General Usage](#General-Usage)**
+    1. **[Authorization](#Authorization)**
+4. **[Examples](#Examples)**
+5. **[Contributions](#Contributions)**
+    1. **[Code Overview](#Code-Overview)**
+6. **[Changelog](#Changelog)**
 
-- [**Albums**](https://developer.spotify.com/web-api/album-endpoints/)
-  - [Get an Album](https://developer.spotify.com/web-api/get-album/)
-  - [Get Several Albums](https://developer.spotify.com/web-api/get-several-albums/)
-  - [Get an Album’s Tracks](https://developer.spotify.com/web-api/get-albums-tracks/)
-
-- [**Artists**](https://developer.spotify.com/web-api/artist-endpoints/)
-  - [Get an Artist](https://developer.spotify.com/web-api/get-artist/)
-  - [Get Several Artists](https://developer.spotify.com/web-api/get-several-artists/)
-  - [Get an Artist’s Albums](https://developer.spotify.com/web-api/get-artists-albums/)
-  - [Get an Artist’s Top Tracks](https://developer.spotify.com/web-api/get-artists-top-tracks/)
-  - [Get an Artist’s Related Artists](https://developer.spotify.com/web-api/get-related-artists/)
-
-- [**Browse**](https://developer.spotify.com/web-api/browse-endpoints/)
-  - [Get a List of Featured Playlists](https://developer.spotify.com/web-api/get-list-featured-playlists/)
-  - [Get a List of New Releases](https://developer.spotify.com/web-api/get-list-new-releases/)
-  - [Get a List of Categories](https://developer.spotify.com/web-api/get-list-categories/)
-  - [Get a Category](https://developer.spotify.com/web-api/get-category/)
-  - [Get a Category’s Playlists](https://developer.spotify.com/web-api/get-categorys-playlists/)
-  - [Get Recommendations Based on Seeds](https://developer.spotify.com/web-api/get-recommendations/)
-
-- [**Follow**](https://developer.spotify.com/web-api/web-api-follow-endpoints/)
-  - [Get User’s Followed Artists](https://developer.spotify.com/web-api/get-followed-artists/)
-  - [Follow Artists or Users](https://developer.spotify.com/web-api/follow-artists-users/)
-  - [Unfollow Artists or Users](https://developer.spotify.com/web-api/unfollow-artists-users/)
-  - [Check if Current User Follows Artists or Users](https://developer.spotify.com/web-api/check-current-user-follows/)
-  - [Follow a Playlist](https://developer.spotify.com/web-api/follow-playlist/)
-  - [Unfollow a Playlist](https://developer.spotify.com/web-api/unfollow-playlist/)
-  - [Check if Users Follow a Playlist](https://developer.spotify.com/web-api/check-user-following-playlist/)
-
-- [**Library**](https://developer.spotify.com/web-api/library-endpoints/)
-  - [Save Tracks for User](https://developer.spotify.com/web-api/save-tracks-user/)
-  - [Get User’s Saved Tracks](https://developer.spotify.com/web-api/get-users-saved-tracks/)
-  - [Remove User’s Saved Tracks](https://developer.spotify.com/web-api/remove-tracks-user/)
-  - [Check User’s Saved Tracks](https://developer.spotify.com/web-api/check-users-saved-tracks/)
-  - [Save Albums for Current User](https://developer.spotify.com/web-api/save-albums-user/)
-  - [Get User’s Saved Albums](https://developer.spotify.com/web-api/get-users-saved-albums/)
-  - [Remove Albums for Current User](https://developer.spotify.com/web-api/remove-albums-user/)
-  - [Check User’s Saved Albums](https://developer.spotify.com/web-api/check-users-saved-albums/)
-
-- [**Personalization**](https://developer.spotify.com/web-api/web-api-personalization-endpoints/)
-  - [Get a User’s Top Artists and Tracks](https://developer.spotify.com/web-api/web-api-personalization-endpoints/)
-  - [Get Current User’s Recently Played Tracks](https://developer.spotify.com/web-api/web-api-personalization-endpoints/get-recently-played/)
-
-- [**Player**](https://developer.spotify.com/web-api/web-api-connect-endpoint-reference/)
-  - [Get a User’s Available Devices](https://developer.spotify.com/web-api/get-a-users-available-devices/)
-  - [Get Information About The User’s Current Playback](https://developer.spotify.com/web-api/get-information-about-the-users-current-playback/)
-  - [Get the User’s Currently Playing Track](https://developer.spotify.com/web-api/get-the-users-currently-playing-track/)
-  - [Transfer a User’s Playback](https://developer.spotify.com/web-api/transfer-a-users-playback/)
-  - [Start/Resume a User’s Playback](https://developer.spotify.com/web-api/start-a-users-playback/)
-  - [Pause a User’s Playback](https://developer.spotify.com/web-api/pause-a-users-playback/)
-  - [Skip User’s Playback To Next Track](https://developer.spotify.com/web-api/skip-users-playback-to-next-track/)
-  - [Skip User’s Playback To Previous Track](https://developer.spotify.com/web-api/skip-users-playback-to-previous-track/)
-  - [Seek To Position In Currently Playing Track](https://developer.spotify.com/web-api/seek-to-position-in-currently-playing-track/)
-  - [Set Repeat Mode On User’s Playback](https://developer.spotify.com/web-api/set-repeat-mode-on-users-playback/)
-  - [Set Volume For User’s Playback](https://developer.spotify.com/web-api/set-volume-for-users-playback/)
-  - [Toggle Shuffle For User’s Playback](https://developer.spotify.com/web-api/toggle-shuffle-for-users-playback/)
-
-- [**Playlists**](https://developer.spotify.com/web-api/playlist-endpoints/)
-  - [Get a List of a User’s Playlists](https://developer.spotify.com/web-api/get-list-users-playlists/)
-  - [Get a List of Current User’s Playlists](https://developer.spotify.com/web-api/get-a-list-of-current-users-playlists/)
-  - [Get a Playlist](https://developer.spotify.com/web-api/get-playlist/)
-  - [Get a Playlist’s Tracks](https://developer.spotify.com/web-api/get-playlists-tracks/)
-  - [Create a Playlist](https://developer.spotify.com/web-api/create-playlist/)
-  - [Add Tracks to a Playlist](https://developer.spotify.com/web-api/add-tracks-to-playlist/)
-  - [Remove Tracks from a Playlist](https://developer.spotify.com/web-api/remove-tracks-playlist/)
-  - [Reorder a Playlist’s Tracks](https://developer.spotify.com/web-api/reorder-playlists-tracks/)
-  - [Replace a Playlist’s Tracks](https://developer.spotify.com/web-api/replace-playlists-tracks/)
-  - [Change a Playlist’s Details](https://developer.spotify.com/web-api/change-playlist-details/)
-
-- [**Profiles**](https://developer.spotify.com/web-api/user-profile-endpoints/)
-  - [Get a User’s Profile](https://developer.spotify.com/web-api/get-users-profile/)
-  - [Get Current User’s Profile](https://developer.spotify.com/web-api/get-current-users-profile/)
-
-- [**Search**](https://developer.spotify.com/web-api/search-item/)
-
-- [**Tracks**](https://developer.spotify.com/web-api/track-endpoints/)
-  - [Get a Track](https://developer.spotify.com/web-api/get-track/)
-  - [Get Several Tracks](https://developer.spotify.com/web-api/get-several-tracks/)
-  - [Get Audio Analysis for a Track](https://developer.spotify.com/web-api/get-audio-analysis/)
-  - [Get Audio Features for a Track](https://developer.spotify.com/web-api/get-audio-features/)
-  - [Get Audio Features for Several Tracks](https://developer.spotify.com/web-api/get-several-audio-features/)
+<a name="Installation"></a>
 
 ## Installation
 
-Since version 1.4.5 the artifact is available through Maven Central. (All artifacts are available at https://oss.sonatype.org/#nexus-search;quick~spotify-web-api-java.)
-
-Get the latest version:
+The artifact is available through
+[Maven Central](https://oss.sonatype.org/#nexus-search;quick~spotify-web-api-java).
 
 ### Maven
 
@@ -103,698 +30,240 @@ Get the latest version:
 <dependency>
   <groupId>se.michaelthelin.spotify</groupId>
   <artifactId>spotify-web-api-java</artifactId>
-  <version>1.5.0</version>
+  <version>2.0.0-RC1</version>
 </dependency>
 ```
 
 ### Gradle
 
-This project uses net.sf.json-lib for marshalling, which may cause your Android build to fail if you're using Android Studio 1.0 ([relevant Stack Overflow post](http://stackoverflow.com/questions/27458227/org-apache-commons-collections-arraystack-has-already-been-added-to-output-plea)). It may therefore necessary to make an exclusion of common-beanutils when setting up this library as a dependency.
-
 ```
-compile('se.michaelthelin.spotify:spotify-web-api-java:1.5.0') {
-  exclude group: "commons-beanutils", module: "commons-beanutils"
-}
-
-compile 'commons-beanutils:commons-beanutils:20030211.134440'
+compile 'se.michaelthelin.spotify:spotify-web-api-java:2.0.0-RC1'
 ```
 
-Thanks a lot [digitaldesaster](https://github.com/digitaldesaster) for coming up with the workaround.
-
-## Usage
-
-### Asynchronous, using [Guava's future API](https://code.google.com/p/guava-libraries/wiki/ListenableFutureExplained).
-
-```java
-// Create an API instance. The default instance connects to https://api.spotify.com/.
-Api api = Api.DEFAULT_API;
-
-// Create a request object for the type of request you want to make
-AlbumRequest request = api.getAlbum("7e0ij2fpWaxOEHv5fUYZjd").build();
-
-// Retrieve a future for an album
-SettableFuture<Album> albumFuture = request.getAsync();
-
-// Create callbacks in case of success or failure
-Futures.addCallback(albumFuture, new FutureCallback<Album>() {
-
-  // Print the genres of the album call is successful
-  public void onSuccess(Album album) {
-    List<String> genres = album.getGenres();
-    for (String genre : genres) {
-      System.out.println(genre);
-    }
-  }
-  // In case of failure
-  public void onFailure(Throwable thrown) {
-    System.out.println("Could not get albums.");
-  }
-});
-```
-
-### Synchronous
-```java
-// Create an API instance. The default instance connects to https://api.spotify.com/.
-Api api = Api.DEFAULT_API;
-
-// Create a request object for the type of request you want to make
-AlbumRequest request = api.getAlbum("7e0ij2fpWaxOEHv5fUYZjd").build();
-
-// Retrieve an album
-try {
-  Album album = request.get();
-
-  // Print the genres of the album
-  List<String> genres = album.getGenres();
-  for (String genre : genres) {
-    System.out.println(genre);
-  };
-
-} catch (Exception e) {
-  System.out.println("Could not get albums.");
-}
-```
-
-## Authorization
-Client ID, client secret and redirect URI are set on the API object when it's created, and will be used by functions that need them, e.g. when retrieving or refreshing an access token. You can retrieve these credentials by creating an application [here](https://developer.spotify.com/my-applications).
-
-```java
-Api api = Api.builder()
-  .clientId("<your_client_id>")
-  .clientSecret("<your_client_secret>")
-  .redirectURI("<your_redirect_uri>")
-  .build();
-```
-
-Access token and refresh token can also be set using the Api builder.
-
-```java
-Api api = Api.builder()
-  .accessToken("<your_access_token>")
-  .refreshToken("<your_refresh_token>")
-  .build();
-```
-
-There are two ways of retrieving access tokens. The first one is the Client Credentials flow, which is useful when a specific user's permission isn't needed, for example when simply looking up albums or searching for tracks. The second one is the Authorization Code Grant, which requires a user to sign in and authorize the application.
-
-### [Client Credentials flow](http://tools.ietf.org/html/rfc6749#section-4.4)
-
-Use the Client Credentials flow when the requests doesn't require permission from a specific user. This flow doesn't return an refresh token. However, there are still benefits with using an access token when making requests as it gives the application a higher rate limit.
-
-The example below implements the asynchronous version of the Client Credentials flow.
-
-```java
-final String clientId = "<insert client id>";
-final String clientSecret = "<insert client secret>";
-
-final Api api = Api.builder()
-  .clientId(clientId)
-  .clientSecret(clientSecret)
-  .build();
-
-/* Create a request object. */
-final ClientCredentialsGrantRequest request = api.clientCredentialsGrant().build();
-
-/* Use the request object to make the request, either asynchronously (getAsync) or synchronously (get) */
-final SettableFuture<ClientCredentials> responseFuture = request.getAsync();
-
-/* Add callbacks to handle success and failure */
-Futures.addCallback(responseFuture, new FutureCallback<ClientCredentials>() {
-  @Override
-  public void onSuccess(ClientCredentials clientCredentials) {
-    /* The tokens were retrieved successfully! */
-    System.out.println("Successfully retrieved an access token! " + clientCredentials.getAccessToken());
-    System.out.println("The access token expires in " + clientCredentials.getExpiresIn() + " seconds");
-
-    /* Set access token on the Api object so that it's used going forward */
-    api.setAccessToken(clientCredentials.getAccessToken());
-
-    /* Please note that this flow does not return a refresh token.
-   * That's only for the Authorization code flow */
-  }
-
-  @Override
-  public void onFailure(Throwable throwable) {
-    /* An error occurred while getting the access token. This is probably caused by the client id or
-     * client secret is invalid. */
-  }
-});
-```
-
-When the access token has been set on the Api object, it will be used automatically when making requests. This wrapper leaves it to the implementer to handle expiration time. If a token expires, the access token on the Api object either needs to be set again, or set to null so that it's not used when making requests.
-
-### [Authorization Code Grant](http://tools.ietf.org/html/rfc6749#section-4.1)
-
-Using the Authorization Code Grant to retrieve an access token is necessary if the requests are bound to a specific user, e.g. the retrieving information about the current user (.getMe()). Using this flow returns a refresh token, which can be used to renew the access token before it expires.
-
-#### Retrieving an Authorization code
-
-The Authorization Code Grant flow requires a code, which is returned to the redirectURI when the user has authorized the application. This wrapper provides a helper function to create the URL which the user needs to go to in order to authorize the application.
-
-```java
-final String clientId = "<your_client_id>";
-final String clientSecret = "<your_client_secret>";
-final String redirectURI = "<your_redirect_uri>";
-
-final Api api = Api.builder()
-  .clientId(clientId)
-  .clientSecret(clientSecret)
-  .redirectURI(redirectURI)
-  .build();
-
-/* Set the necessary scopes that the application will need from the user */
-final List<String> scopes = Arrays.asList("user-read-private", "user-read-email");
-
-/* Set a state. This is used to prevent cross site request forgeries. */
-final String state = "someExpectedStateString";
-
-String authorizeURL = api.createAuthorizeURL(scopes, state);
-
-/* Continue by sending the user to the authorizeURL, which will look something like
-   https://accounts.spotify.com:443/authorize?client_id=5fe01282e44241328a84e7c5cc169165&response_type=code&redirect_uri=https://example.com/callback&scope=user-read-private%20user-read-email&state=some-state-of-my-choice
- */
-```
-
-#### Retrieving the access token
-
-When the code has been retrieved from the user, it can be used to get an access token as well as a refresh token.
-
-```java
-/* Application details necessary to get an access token */
-final String code = "<insert code>";
-
-/* Make a token request. Asynchronous requests are made with the .getAsync method and synchronous requests
- * are made with the .get method. This holds for all type of requests. */
-final SettableFuture<AuthorizationCodeCredentials> authorizationCodeCredentialsFuture = api.authorizationCodeGrant(code).build().getAsync();
-
-/* Add callbacks to handle success and failure */
-Futures.addCallback(authorizationCodeCredentialsFuture, new FutureCallback<AuthorizationCodeCredentials>() {
-  @Override
-  public void onSuccess(AuthorizationCodeCredentials authorizationCodeCredentials) {
-    /* The tokens were retrieved successfully! */
-    System.out.println("Successfully retrieved an access token! " + authorizationCodeCredentials.getAccessToken());
-    System.out.println("The access token expires in " + authorizationCodeCredentials.getExpiresIn() + " seconds");
-    System.out.println("Luckily, I can refresh it using this refresh token! " +     authorizationCodeCredentials.getRefreshToken());
-
-    /* Set the access token and refresh token so that they are used whenever needed */
-    api.setAccessToken(authorizationCodeCredentials.getAccessToken());
-    api.setRefreshToken(authorizationCodeCredentials.getRefreshToken());
-  }
-
-  @Override
-  public void onFailure(Throwable throwable) {
-    /* Let's say that the client id is invalid, or the code has been used more than once,
-     * the request will fail. Why it fails is written in the throwable's message. */
-
-  }
-});
-```
-
-## More examples
-
-This section includes example requests for every helper function. Please note that the requests in the examples doesn't necessarily use all possible options when making the request. Since the requests use the builder pattern, optional parameters can be appended using the builder. Required parameters are parameters on the api method (e.g. searchTracks).
-
-The examples below use the synchronous version of the request (.get). In order to make asynchronous request, simply use the request's .getAsync() method instead.
-
-Please refer to the documentation linked in the headline of each example to read about potential authorization requirements.
-
-### Searching tracks, artists and albums
-
-#### [Searching for tracks](https://developer.spotify.com/spotify-web-api/search-item/)
-
-```java
-final TrackSearchRequest request = api.searchTracks("Mr. Brightside").market("US").build();
-
-try {
-   final Page<Track> trackSearchResult = request.get();
-   System.out.println("I got " + trackSearchResult.getTotal() + " results!");
-} catch (Exception e) {
-   System.out.println("Something went wrong!" + e.getMessage());
-}
-```
-
-#### [Searching for artists](https://developer.spotify.com/spotify-web-api/search-item/)
-
-```java
-final ArtistSearchRequest request = api.searchArtists("tania bowra").market("SE").limit(10).build();
-
-try {
-   final Page<Artist> artistSearchResult = request.get();
-   final List<Artist> artists = artistSearchResult.getItems();
-
-   System.out.println("I've found " + artistSearchResult.getTotal() + " artists!");
-
-   for (Artist artist : artists) {
-     System.out.println(artist.getName());
-   }
-
-} catch (Exception e) {
-   System.out.println("Something went wrong!" + e.getMessage());
-}
-```
-
-#### [Searching for albums](https://developer.spotify.com/spotify-web-api/search-item/)
-
-```java
-final AlbumSearchRequest request = api.searchAlbums("black album").offset(0).limit(3).build();
-
-try {
-   final Page<SimpleAlbum> albumSearchResult = request.get();
-
-   System.out.println("Printing results..");
-   for (SimpleAlbum album : albumSearchResult.getItems)) {
-     System.out.println(album.getName());
-   }
-
-} catch (Exception e) {
-   System.out.println("Something went wrong!" + e.getMessage());
-}
-```
-
-### Lookup of albums, tracks, artists, playlists and users
-
-#### [Album lookup](https://developer.spotify.com/spotify-web-api/get-album/)
-
-```java
-final String albumId = "0sNOF9WDwhWunNAHPD3Baj";
-final AlbumRequest request = api.getAlbum(albumId).build();
-
-try {
-   final Album album = request.get();
-   System.out.println("Retrieved album " + album.getName());
-   System.out.println("Its popularity is " + album.getPopularity());
-} catch (Exception e) {
-   System.out.println("Something went wrong!" + e.getMessage());
-}
-```
-
-#### [Track lookup](https://developer.spotify.com/spotify-web-api/get-track/)
-
-```java
-final TrackRequest request = api.getTrack("0eGsygTp906u18L0Oimnem").build();
-
-try {
-   final Track track = request.get();
-   System.out.println("Retrieved track " + track.getName());
-   System.out.println("Its popularity is " + track.getPopularity());
-
-   if (track.isExplicit()) {
-      System.out.println("This track is explicit!");
-   } else {
-      System.out.println("It's OK, this track isn't explicit.");
-   }
-} catch (Exception e) {
-   System.out.println("Something went wrong!" + e.getMessage());
-}
-```
-
-#### [Artist lookup](https://developer.spotify.com/spotify-web-api/get-artist/)
-
-```java
-final Artist request = api.getArtist("0LcJLqbBmaGUft1e9Mm8HV").build();
-
-try {
-   final Artist artist = request.get();
-
-   System.out.println("This artist's name is " + artist.getName());
-
-   // Print URLs to the artist's images
-   final List<Image> images = artist.getImages();
-   for (Image image : images) {
-      System.out.println(image.getUrl());
-   }
-
-} catch (Exception e) {
-   System.out.println("Something went wrong!" + e.getMessage());
-}
-```
-
-#### [Playlist lookup](https://developer.spotify.com/spotify-web-api/get-playlist/)
-
-```java
-final PlaylistRequest request = api.getPlaylist("thelinmichael", "3ktAYNcRHpazJ9qecm3ptn").build();
-
-try {
-   final Playlist playlist = request.get();
-
-   System.out.println("Retrieved playlist " + playlist.getName());
-   System.out.println(playlist.getDescription());
-   System.out.println("It contains " + playlist.getTracks().getTotal() + " tracks");
-
-} catch (Exception e) {
-   System.out.println("Something went wrong!" + e.getMessage());
-}
-```
-
-#### [User lookup](https://developer.spotify.com/spotify-web-api/get-users-profile/)
-
-```java
-final UserRequest request = api.getUser("wizzler").build();
-
-try {
-   final User user = request.get();
-
-   System.out.println("This user's Spotify URI is " + user.getUri());
-} catch (Exception e) {
-   System.out.println("Something went wrong!" + e.getMessage());
-}
-```
-
-### Lookup of of several albums, tracks, and artists
-
-#### [Several albums lookup](https://developer.spotify.com/spotify-web-api/get-several-albums/)
-
-```java
-final AlbumsRequest = api.getAlbums("41MnTivkwTO3UUJ8DrqEJJ", "0ntmUPwjfE9iGGM9qHglCm").get();
-
-try {
-   final List<Album> albums = request.get();
-
-   final Album firstAlbum = albums.get(0);
-
-   System.out.println(firstAlbum.getName());
-   System.out.println("The artists on this albums are");
-
-   for (SimpleArtist artist : firstAlbum.getArtists()) {
-      System.out.println(artist.getName());
-   }
-
-
-   final Album secondAlbum = albums.get(1);
-
-   System.out.println(secondAlbum.getName());
-   System.out.println("The artists on this albums are");
-
-   for (SimpleArtist artist : secondAlbum.getArtists()) {
-      System.out.println(artist.getName());
-   }
-
-} catch (Exception e) {
-   System.out.println("Something went wrong!" + e.getMessage());
-}
-```
-
-#### [Several tracks lookup](https://developer.spotify.com/spotify-web-api/get-several-tracks/)
-
-```java
-final TracksRequest request = api.getTracks("0eGsygTp906u18L0Oimnem", "1lDWb6b6ieDQ2xT7ewTC3G").build();
-
-try {
-   final List<Track> tracks = request.get();
-
-   for (Track track : tracks) {
-      System.out.println(track.getName());
-   }
-
-} catch (Exception e) {
-   System.out.println("Something went wrong!" + e.getMessage());
-}
-```
-
-#### [Several artists lookup](https://developer.spotify.com/spotify-web-api/get-several-artists/)
-
-```java
-final ArtistsRequest request = api.getArtists("0oSGxfWSnnOXhD2fKuz2Gy", "3dBVyJ7JuOMt4GE9607Qin").build();
-
-try {
-
-   final List<Artist> artists = request.get();
-
-   for (Artist artist : artists) {
-      System.out.println(artist.getName() + " has popularity " + artist.getPopularity());
-   }
-
-} catch (Exception e) {
-   System.out.println("Something went wrong!" + e.getMessage());
-}
-```
-
-### Other lookup methods
-
-
-#### [Related artists](https://developer.spotify.com/web-api/get-related-artists/)
-
-```java
-final RelatedArtistsRequest request = api.getArtistRelatedArtists("0qeei9KQnptjwb8MgkqEoy").build();
-
-try {
-
-  final List<Artist> artists = request.get();
-
-  if (numbers.isEmpty()) {
-    System.out.println("Didn't find any similar artists!");
-  } else {
-    System.out.println("The related artists are:");
-    for (Artist artist : artists) {
-      System.out.println(artist.getName());
-    }
-  }
-} catch (Exception e) {
-  System.out.println("Something went wrong!" + e.getMessage());
-}
-```
-
-#### [Current user lookup](https://developer.spotify.com/spotify-web-api/get-current-users-profile/)
-
-The attributes that are loaded onto the User object depends on the permissions given by the user to the application.
-
-```java
-final CurrentUserRequest request = api.getMe().build();
-
-try {
-   final User user = request.get();
-
-   System.out.println("Display name: " + user.getDisplayName());
-   System.out.println("Email: " + user.getEmail());
-
-   System.out.println("Images:");
-   for (Image image : user.getImages()) {
-      System.out.println(image.getUrl());
-   }
-
-   System.out.println("This account is a " + user.getProduct() + " account");
-} catch (Exception e) {
-   System.out.println("Something went wrong!" + e.getMessage());
-}
-```
-
-#### [Playlist track lookup](https://developer.spotify.com/spotify-web-api/get-playlists-tracks/)
-
-```java
-final PlaylistTracksRequest request = api.getPlaylistTracks("thelinmichael", "3ktAYNcRHpazJ9qecm3ptn").build();
-
-try {
-   final Page<PlaylistTrack> page = request.get();
-
-   final List<PlaylistTrack> playlistTracks = page.getItems();
-
-   for (PlaylistTrack playlistTrack : playlistTracks) {
-      System.out.println(playlistTrack.getTrack().getName());
-   }
-
-} catch (Exception e) {
-   System.out.println("Something went wrong!" + e.getMessage());
-}
-```
-
-#### [Users playlist lookup](https://developer.spotify.com/spotify-web-api/get-list-users-playlists/)
-
-```java
-final UserPlaylistsRequest request = api.getPlaylistsForUser("thelinmichael").build();
-
-try {
-   final Page<SimplePlaylist> playlistsPage = request.get();
-
-   for (SimplePlaylist playlist : playlistsPage.getItems()) {
-      System.out.println(playlist.getName());
-   }
-} catch (Exception e) {
-   System.out.println("Something went wrong!" + e.getMessage());
-}
-```
-
-### Playlist manipulation
-
-#### [Add tracks to a playlist](https://developer.spotify.com/spotify-web-api/add-tracks-to-playlist/)
-
-```java
-final List<String> tracksToAdd = Arrays.asList("spotify:track:4BYGxv4rxSNcTgT3DsFB9o","spotify:track:0BG2iE6McPhmAEKIhfqy1X");
-
-// Index starts at 0
-final int insertIndex = 3;
-
-final AddTrackToPlaylistRequest request = api.addTracksToPlaylist("thelinmichael", "5ieJqeLJjjI8iJWaxeBLuK", tracksToAdd)
-  .position(insertIndex)
-  .build();
-
-try {
-  request.get();
-} catch (Exception e) {
-   System.out.println("Something went wrong!" + e.getMessage());
-}
-```
-
-#### [Create a playlist](https://developer.spotify.com/spotify-web-api/create-playlist/)
-
-```java
-final PlaylistCreationRequest request = api.createPlaylist("thelinmichael", "title")
-  .publicAccess(true)
-  .build();
-
-try {
-  final Playlist playlist = request.get();
-
-  System.out.println("You just created this playlist!");
-  System.out.println("Its title is " + playlist.getName());
-} catch (Exception e) {
-   System.out.println("Something went wrong!" + e.getMessage());
-}
-```
-
-#### [Change a Playlist's details](https://developer.spotify.com/web-api/change-playlist-details/)
-```java
-final Api api = Api.builder().accessToken(accessToken).build();
-
-ChangePlaylistDetailsRequest request = api
-  .changePlaylistDetails("thelinmichael", "3ktAYNcRHpazJ9qecm3ptn")
-  .publicAccess(true)
-  .name("Testing playlist name change")
-  .build();
-
-try {
-  String response = request.get();
-} catch (Exception e) {
-  System.out.println("Something went wrong!" + e.getMessage());
-}
-```
-
-### Your Music library
-
-#### [Get User's Saved Tracks](https://developer.spotify.com/web-api/get-users-saved-tracks/)
-```java
-Api api = Api.builder().accessToken(accessToken).build();
-
-GetMySavedTracksRequest request = api.getMySavedTracks()
-    .limit(5)
-    .offset(1)
-    .build();
-
-try {
-  Page<LibraryTrack> libraryTracks = request.get();
-} catch (Exception e) {
-  System.out.println("Something went wrong!" + e.getMessage());
-}
-```
-
-#### [Check User's Saved Tracks](https://developer.spotify.com/web-api/check-users-saved-tracks/)
-```java
-Api api = Api.builder().accessToken(accessToken).build();
-
-ContainsMySavedTracksRequest request = api.containsMySavedTracks(
-    Arrays.asList("0udZHhCi7p1YzMlvI4fXoK", "1e1VmyiAuPyM4SHhySP1oU"))
-    .build();
-
-try {
-    List<Boolean> containedTracks = request.get();
-    System.out.println("0udZHhCi7p1YzMlvI4fXoK is in the library: " + containedTracks.get(0));
-    System.out.println("1e1VmyiAuPyM4SHhySP1oU is in the library: " + containedTracks.get(1));
-} catch (Exception e) {
-    System.out.println("Something went wrong!" + e.getMessage());
-}
-```
-
-#### [Save Tracks for User](https://developer.spotify.com/web-api/save-tracks-user/)
-
-```java
-Api api = Api.builder().accessToken(accessToken).build();
-
-List<String> tracksToAdd = Arrays.asList("4BYGxv4rxSNcTgT3DsFB9o", "0BG2iE6McPhmAEKIhfqy1X");
-
-AddToMySavedTracksRequest request = api.addToMySavedTracks(tracksToAdd).build();
-
-try {
-    // Add tracks synchronously
-    request.get();
-    System.out.println("Added tracks to the user's Your Music library!');
-} catch (Exception e) {
-    System.out.println("Something went wrong!" + e.getMessage());
-}
-```
-
-#### [Remove User’s Saved Tracks](https://developer.spotify.com/web-api/remove-tracks-user/)
-
-```java
-Api api = Api.builder().accessToken(accessToken).build();
-
-List<String> tracksToRemove = Arrays.asList("4BYGxv4rxSNcTgT3DsFB9o", "0BG2iE6McPhmAEKIhfqy1X");
-
-RemoveFromMySavedTracksRequest request = api.removeFromMySavedTracks(tracksToAdd).build();
-
-try {
-    // Remove tracks synchronously
-    request.get();
-    System.out.println("Removed tracks from the user's Your Music library!');
-} catch (Exception e) {
-    System.out.println("Something went wrong! " + e.getMessage());
-}
-```
-
-### Browse
-
-#### [Get New Releases](https://developer.spotify.com/web-api/get-list-new-releases/)
-
-```java
-Api api = Api.builder().accessToken(accessToken).build();
-
-// Create a request to get five new releases in Sweden
-final NewReleasesRequest request = api.getNewReleases()
-    .limit(5)
-    .offset(0)
-    .country("SE")
-    .build();
-
-try {
-    NewReleases newReleases = request.get();
-    Page<SimpleAlbum> albums = newReleases.getAlbums();
-
-    // Print the name of the albums
-    System.out.println(albums.get(0).getName());
-    System.out.println(albums.get(1).getName());
-    System.out.println(albums.get(2).getName());
-} catch(Exception e) {
-    System.out.println("Something went wrong! " + e.getMessage());
-}
-
-```
-
-#### [Get Featured Playlists](https://developer.spotify.com/web-api/get-list-featured-playlists/)
-
-```java
-Api api = Api.builder().accessToken(accessToken).build();
-
-Calendar calendar = Calendar.getInstance();
-calendar.set(2014, 9, 23, 9, 0, 0);
-Date timestamp = calendar.getTime();
-
-final FeaturedPlaylistsRequest request = api.getFeaturedPlaylists()
-    .limit(1)
-    .offset(1)
-    .country("SE")
-    .timestamp(timestamp)
-    .build();
-
-try {
-    FeaturedPlaylists featuredPlaylists = request.get();
-    System.out.println("Message for this set of playlists: " + featuredPlaylists.getMessage());
-} catch (Exception e) {
-    System.out.println("Something went wrong! " + e.getMessage());
-}
-```
+<a name="Documentation"></a>
 
 ## Documentation
-See this project's [Javadoc](https://dargmuesli.github.io/spotify-web-api-java/).
+See this project's [Javadoc](https://thelinmichael.github.io/spotify-web-api-java/).
 
-## Code Overview
+<a name="General-Usage"></a>
+
+## General Usage
+```Java
+// For all requests an access token is needed
+SpotifyApi spotifyApi = new SpotifyApi.Builder()
+        .setAccessToken("taHZ2SdB-bPA3FsK3D7ZN5npZS47cMy-IEySVEGttOhXmqaVAIo0ESvTCLjLBifhHOHOIuhFUKPW1WMDP7w6dj3MAZdWT8CLI2MkZaXbYLTeoDvXesf2eeiLYPBGdx8tIwQJKgV8XdnzH_DONk")
+        .build();
+
+// Create a request object with the optional parameter "market"
+final GetSomethingRequest getSomethingRequest = spotifyApi.getSomething("qKRpDADUKrFeKhFHDMdfcu")
+        .market(CountryCode.SE)
+        .build();
+
+void getSomething_Sync() {
+  try {
+    // Execute the request synchronous
+    final Something something = getSomethingRequest.execute();
+
+    // Print something's name
+    System.out.println("Name: " + something.getName());
+  } catch (Exception e) {
+    System.out.println("Something went wrong!\n" + e.getMessage());
+  }
+}
+
+void getSomething_Async() {
+  try {
+    // Execute the request asynchronous
+    final Future<Something> somethingFuture = getSomethingRequest.executeAsync();
+
+    // Do other things...
+
+    // Wait for the request to complete
+    final Something something = somethingFuture.get();
+
+    // Print something's name
+    System.out.println("Name: " + something.getName());
+  } catch (Exception e) {
+    System.out.println("Something went wrong!\n" + e.getMessage());
+  }
+}
+```
+
+<a name="Authorization"></a>
+
+### Authorization
+For authorization requests the API object requires at least to have
+[your application](https://developer.spotify.com/my-applications)'s client ID and client secret set as its properties.
+When using the authorization code flow, the application's redirect URI is required too. Those properties will then be
+automatically used by functions that depend on them.
+
+```Java
+SpotifyApi spotifyApi = new SpotifyApi.Builder()
+  .setClientId("<your_client_id>")
+  .setClientSecret("<your_client_secret>")
+  .setRedirectUri("<your_redirect_uri>")
+  .build();
+```
+
+There are two ways to retrieving an access token:
+
+#### [Client Credentials Flow](http://tools.ietf.org/html/rfc6749#section-4.4)
+Use the client credentials flow when the requests don't require permission from a specific user. This flow doesn't
+return a refresh token and is useful for simple requests, like fetching albums or searching for tracks.
+
+Example: [ClientCredentialsExample.java](examples/authorization/client_credentials/ClientCredentialsExample.java)
+
+#### [Authorization Code Flow](http://tools.ietf.org/html/rfc6749#section-4.1)
+Using the authorization code flow to retrieve an access token is necessary if the requests are bound to a specific user.
+Using this flow returns a refresh token, which can be used to renew the access token before it expires. This is how it
+works:
+
+1. The authorization code flow requires a code, which is part of the `redirectUri`'s query parameters when the user has
+opened a custom URL in a browser and authorized the application.
+
+   Example: [AuthorizationCodeUriExample.java](examples/authorization/authorization_code/AuthorizationCodeUriExample.java)
+
+2. When the code has been retrieved, it can be used in another request to get an access token as well as a refresh token.
+
+   Example: [AuthorizationCodeExample.java](examples/authorization/authorization_code/AuthorizationCodeExample.java)
+
+3. Now, the refresh token in turn can be used in a loop to retrieve new access and refresh tokens.
+
+   Example: [AuthorizationCodeRefreshExample.java](examples/authorization/authorization_code/AuthorizationCodeRefreshExample.java)
+
+---
+
+When you've fetched an access and refresh token, you have to add them to your API properties for automatic usage in
+requests. The implementer has to handle the access token's expiration.
+
+```Java
+spotifyApi
+  .setAccessToken("<your_access_token>")
+  .setRefreshToken("<your_refresh_token>")
+  .build();
+```
+
+<a name="Examples"></a>
+
+## Examples
+- **Albums**
+  - [Get an Album](examples/data/albums/GetAlbumExample.java)
+  - [Get an Album's Tracks](examples/data/albums/GetAlbumsTracksExample.java)
+  - [Get several Albums](examples/data/albums/GetSeveralAlbumsExample.java)
+
+
+- **Artists**
+  - [Get an Artist](examples/data/artists/GetArtistExample.java)
+  - [Get an Artist's Albums](examples/data/artists/GetArtistsAlbumsExample.java)
+  - [Get an Artist's Top Tracks](examples/data/artists/GetArtistsTopTracksExample.java)
+  - [Get an Artist's Related Artists](examples/data/artists/GetArtistsRelatedArtistsExample.java)
+  - [Get Several Artists](examples/data/artists/GetSeveralArtistsExample.java)
+
+
+- **Browse**
+  - Miscellaneous
+    - [Get Available Genre Seeds](examples/data/browse/miscellaneous/GetAvailableGenreSeedsExample.java)
+  - [Get a Category](examples/data/browse/GetCategoryExample.java)
+  - [Get a Category's Playlists](examples/data/browse/GetCategorysPlaylistsExample.java)
+  - [Get a List of Categories](examples/data/browse/GetListOfCategoriesExample.java)
+  - [Get a List of Featured Playlists](examples/data/browse/GetListOfFeaturedPlaylistsExample.java)
+  - [Get a List of New Releases](examples/data/browse/GetListOfNewReleasesExample.java)
+  - [Get Recommendations](examples/data/browse/GetRecommendationsExample.java)
+
+
+- **Follow**
+  - [Check if Current User Follows Artists or Users](examples/data/follow/CheckCurrentUserFollowsArtistsOrUsersExample.java)
+  - [Check if Users Follow a Playlist](examples/data/follow/CheckUsersFollowPlaylistExample.java)
+  - [Follow Artists or Users](examples/data/follow/FollowArtistsOrUsersExample.java)
+  - [Follow a Playlist](examples/data/follow/FollowPlaylistExample.java)
+  - [Get User's Followed Artists](examples/data/follow/GetUsersFollowedArtistsExample.java)
+  - [Unfollow Artists or Users](examples/data/follow/UnfollowArtistsOrUsersExample.java)
+  - [Unfollow a Playlist](examples/data/follow/UnfollowPlaylistExample.java)
+
+
+- **Library**
+  - [Check User's Saved Albums](examples/data/library/CheckUsersSavedAlbumsExample.java)
+  - [Check User's Saved Tracks](examples/data/library/CheckUsersSavedTracksExample.java)
+  - [Get Current User's Saved Albums](examples/data/library/GetCurrentUsersSavedAlbumsExample.java)
+  - [Get User's Saved Tracks](examples/data/library/GetUsersSavedTracksExample.java)
+  - [Remove Albums for Current User](examples/data/library/RemoveAlbumsForCurrentUserExample.java)
+  - [Remove User's Saved Tracks](examples/data/library/RemoveUsersSavedTracksExample.java)
+  - [Save Albums for Current User](examples/data/library/SaveAlbumsForCurrentUserExample.java)
+  - [Save Tracks for User](examples/data/library/SaveTracksForUserExample.java)
+
+
+- **Personalization**
+  - Simplified
+    - [Get a User's Top Artists](examples/data/personalization/simplified/GetUsersTopArtistsExample.java)
+    - [Get a User's Top Tracks](examples/data/personalization/simplified/GetUsersTopTracksExample.java)
+  - [Get a User's Top Artists and Tracks](examples/data/personalization/GetUsersTopArtistsAndTracksExample.java)
+
+
+- **Player**
+  - [Get a User's Available Devices](examples/data/player/GetUsersAvailableDevicesExample.java)
+  - [Get Information About The User's Current Playback](examples/data/player/GetInformationAboutUsersCurrentPlaybackExample.java)
+  - [Get Current User's Recently Played Tracks](examples/data/player/GetCurrentUsersRecentlyPlayedTracksExample.java)
+  - [Get the User's Currently Playing Track](examples/data/player/GetUsersCurrentlyPlayingTrackExample.java)
+  - [Pause a User's Playback](examples/data/player/PauseUsersPlaybackExample.java)
+  - [Seek To Position In Currently Playing Track](examples/data/player/SeekToPositionInCurrentlyPlayingTrackExample.java)
+  - [Set Repeat Mode On User's Playback](examples/data/player/SetRepeatModeOnUsersPlaybackExample.java)
+  - [Set Volume For User's Playback](examples/data/player/SetVolumeForUsersPlaybackExample.java)
+  - [Skip User's Playback To Next Track](examples/data/player/SkipUsersPlaybackToNextTrackExample.java)
+  - [Skip User's Playback To Previous Track](examples/data/player/SkipUsersPlaybackToPreviousTrackExample.java)
+  - [Start/Resume a User's Playback](examples/data/player/StartResumeUsersPlaybackExample.java)
+  - [Toggle Shuffle For User's Playback](examples/data/player/ToggleShuffleForUsersPlaybackExample.java)
+  - [Transfer a User's Playback](examples/data/player/TransferUsersPlaybackExample.java)
+
+
+- **Playlists**
+  - [Add Tracks to a Playlist](examples/data/playlists/AddTracksToPlaylistExample.java)
+  - [Change a Playlist's Details](examples/data/playlists/ChangePlaylistsDetailsExample.java)
+  - [Create a Playlist](examples/data/playlists/CreatePlaylistExample.java)
+  - [Get a List of Current User's Playlists](examples/data/playlists/GetListOfCurrentUsersPlaylistsExample.java)
+  - [Get a List of a User's Playlists](examples/data/playlists/GetListOfUsersPlaylistsExample.java)
+  - [Get a Playlist](examples/data/playlists/GetPlaylistExample.java)
+  - [Get a Playlist Cover Image](examples/data/playlists/GetPlaylistCoverImageExample.java)
+  - [Get a Playlist's Tracks](examples/data/playlists/GetPlaylistsTracksExample.java)
+  - [Remove Tracks from a Playlist](examples/data/playlists/RemoveTracksFromPlaylistExample.java)
+  - [Reorder a Playlist's Tracks](examples/data/playlists/ReorderPlaylistsTracksExample.java)
+  - [Replace a Playlist's Tracks](examples/data/playlists/ReplacePlaylistsTracksExample.java)
+  - [Upload a Custom Playlist Cover Image](examples/data/playlists/UploadCustomPlaylistCoverImageExample.java)
+
+
+- **Search**
+  - Simplified
+    - [Search Albums](examples/data/search/simplified/SearchAlbumsExample.java)
+    - [Search Artists](examples/data/search/simplified/SearchArtistsExample.java)
+    - [Search Playlists](examples/data/search/simplified/SearchPlaylistsExample.java)
+    - [Search Tracks](examples/data/search/simplified/SearchTracksExample.java)
+  - [Search Item](examples/data/search/SearchItemExample.java)
+
+
+- **Tracks**
+  - [Get Audio Analysis for a Track](examples/data/tracks/GetAudioAnalysisForTrackExample.java)
+  - [Get Audio Features for a Track](examples/data/tracks/GetAudioFeaturesForTrackExample.java)
+  - [Get Audio Features for Several Tracks](examples/data/tracks/GetAudioFeaturesForSeveralTracksExample.java)
+  - [Get Several Tracks](examples/data/tracks/GetSeveralTracksExample.java)
+  - [Get a Track](examples/data/tracks/GetTrackExample.java)
+
+
+- **User's Profile**
+  - [Get Current User's Profile](examples/data/users_profile/GetCurrentUsersProfileExample.java)
+  - [Get a User's Profile](examples/data/users_profile/GetUsersProfileExample.java)
+
+<a name="Contributions"></a>
+
+## Contributions
+See [CONTRIBUTING.md](CONTRIBUTING.md).
+
+- Build: `mvn clean install`
+- Test: `mvn clean test`
+
+Requirements: Java, Maven.
+
+<a name="Code-Overview"></a>
+
+### Code Overview
 This project's main Java package is divided into four sections:
 - enumerations
 - exceptions
@@ -804,21 +273,21 @@ This project's main Java package is divided into four sections:
 Those unit-tested parts are connected through various classes that make the API accessible for other Java projects. You
 can find details about specific parts or single classes in the sections below.
 
-### Enumerations
+#### Enumerations
 `src/main/java/com.wrapper.spotify/enums/`
 
 Enumerations allow elements to "be of a type" and limit them to a known value set. They are currently not specified in a
 unique place, but are rather scrambled across the online reference. Thus, the reference only allows for construction
 of enum classes from this sparse information.
 
-### Exceptions
+#### Exceptions
 `src/main/java/com.wrapper.spotify/exceptions/`
 
 Exceptions are thrown when errors occur. They are following RFC-specified
 [HTTP status codes](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes) and are packed with a more detailed error
 description.
 
-### Model Objects
+#### Model Objects
 `src/main/java/com.wrapper.spotify/model_objects/`
 
 The model objects are entities that form the API's responses in arranged formats. They are mostly specified in the
@@ -835,7 +304,7 @@ methods as well as an embedded...
 1. builder class, including the setter functions and a public build method
 2. JSON-util class, implementing the `createModelObject` method.
 
-### Requests
+#### Requests
 `src/main/java/com.wrapper.spotify/requests/`
 
 The request classes mirror the strucure of Spotify's Web Api endpoints. They are divided into several categories like
@@ -843,47 +312,41 @@ The request classes mirror the strucure of Spotify's Web Api endpoints. They are
 implementation of the request's `execute` method. They have to embed a builder class too, enabling dynamic request
 creation.
 
-### Tests
+#### Tests
 `src/test/java/com.wrapper.spotify/`
 
 Unit tests ensure that implemented features work. This project's unit tests are implemented with [JUnit](http://junit.org/)
 and [mockito](http://site.mockito.org/) for mocking.
 
-#### Fixtures
+##### Fixtures
 `src/test/fixtures/`
 
 Fixtures are JSON files that represent the data returned from the API server. We use the examples directly provided by
 the [Web API Endpoint Reference](https://developer.spotify.com/web-api/endpoint-reference/) with minor tweaks. Tweaks
 are needed because the reference sometimes contains invalid data examples.
 
-## Contributions
-See [CONTRIBUTING.md](CONTRIBUTING.md).
+<a name="Changelog"></a>
 
-Requirements: Java, Maven.
+## Changelog
 
-### Build
-
-```mvn clean install```
-
-### Tests
-
-There's a known issue in that tests cannot be run from an IDE as it doesn't pick up the mocked response files.
-
-```mvn clean test```
-
-## Change log
+### 2.0.0-RC1
+- Major rewrite of the whole project. Too many changes to list them here. All current endpoints are now supported and
+documentation was added.
 
 ### 1.5.0
 
-- Change response type for Add Tracks to Playlist to SnapshotResult since it now includes a `snapshot_id`. **Code using Add Tracks to Playlist will break with this change.**
+- Change response type for Add Tracks to Playlist to SnapshotResult since it now includes a `snapshot_id`. **Code using
+Add Tracks to Playlist will break with this change.**
 
 ### 1.4.21
 
-- Add [Featured Playlists](https://developer.spotify.com/web-api/get-list-featured-playlists/) endpoint. Thanks [JMPerez](https://github.com/JMPerez)!
+- Add [Featured Playlists](https://developer.spotify.com/web-api/get-list-featured-playlists/) endpoint. Thanks
+[JMPerez](https://github.com/JMPerez)!
 
 ### 1.4.20
 
-- Add [New Releases](https://developer.spotify.com/web-api/get-list-new-releases/) endpoint. Thanks [Jirakon](https://github.com/Jirakon)!
+- Add [New Releases](https://developer.spotify.com/web-api/get-list-new-releases/) endpoint. Thanks
+[Jirakon](https://github.com/Jirakon)!
 
 ### 1.4.19
 
@@ -911,7 +374,9 @@ There's a known issue in that tests cannot be run from an IDE as it doesn't pick
 
 ### 1.4.12
 
-- Add [followers](https://developer.spotify.com/web-api/object-model/#followers-object) to [Artist](https://developer.spotify.com/web-api/object-model/#artist-object-full) and [User](https://developer.spotify.com/web-api/object-model/#user-object-private) responses.
+- Add [followers](https://developer.spotify.com/web-api/object-model/#followers-object) to
+[Artist](https://developer.spotify.com/web-api/object-model/#artist-object-full) and
+[User](https://developer.spotify.com/web-api/object-model/#user-object-private) responses.
 
 ### 1.4.11
 
