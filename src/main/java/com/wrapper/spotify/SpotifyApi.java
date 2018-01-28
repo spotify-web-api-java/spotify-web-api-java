@@ -36,14 +36,23 @@ import java.net.URISyntaxException;
 import java.util.logging.Logger;
 
 /**
- * Instances of the Api class provide access to the Spotify Web API.
+ * Instances of the SpotifyApi class provide access to the Spotify Web API.
  */
 public class SpotifyApi {
 
+  /**
+   * The default authentication host of Spotify API calls.
+   */
   public static final String DEFAULT_AUTHENTICATION_HOST = "accounts.spotify.com";
 
+  /**
+   * The default authentication port of Spotify API calls.
+   */
   public static final int DEFAULT_AUTHENTICATION_PORT = 443;
 
+  /**
+   * The default authentication http scheme of Spotify API calls.
+   */
   public static final String DEFAULT_AUTHENTICATION_SCHEME = "https";
 
   /**
@@ -103,12 +112,19 @@ public class SpotifyApi {
   /**
    * Create a builder for building a new Spotify API instance.
    *
-   * @return A builder object.
+   * @return A {@link SpotifyApi.Builder}.
    */
   public static Builder builder() {
     return new Builder();
   }
 
+  /**
+   * String concatenation helper method.
+   *
+   * @param parts     String parts.
+   * @param character Separation character.
+   * @return A string.
+   */
   public static String concat(String[] parts, char character) {
     StringBuilder stringBuilder = new StringBuilder();
 
@@ -257,13 +273,12 @@ public class SpotifyApi {
   }
 
   /**
-   * Request a new access token by creating a new
-   * {@link com.wrapper.spotify.model_objects.credentials.AuthorizationCodeCredentials} object.
+   * Refresh the access token by using authorization code grant. <br>
    * Requires client ID, client secret, and refresh token to be set.
    *
-   * @param client_id     Required. When you register your application, Spotify provides you a Client ID.
-   * @param client_secret Required. When you register your application, Spotify provides you a Client Secret.
-   * @param refresh_token Required. The refresh token returned from the authorization code exchange.
+   * @param client_id     When you register your application, Spotify provides you a Client ID.
+   * @param client_secret When you register your application, Spotify provides you a Client Secret.
+   * @param refresh_token The refresh token returned from the authorization code exchange.
    * @return An {@link AuthorizationCodeRequest.Builder}.
    */
   public AuthorizationCodeRefreshRequest.Builder authorizationCodeRefresh(String client_id, String client_secret, String refresh_token) {
@@ -280,8 +295,7 @@ public class SpotifyApi {
   }
 
   /**
-   * Request a new access token by creating a new
-   * {@link com.wrapper.spotify.model_objects.credentials.AuthorizationCodeCredentials} object.
+   * Refresh the access token by using authorization code grant.
    *
    * @return An {@link AuthorizationCodeRequest.Builder}.
    */
@@ -293,17 +307,16 @@ public class SpotifyApi {
   }
 
   /**
-   * Returns a builder that can be used to build requests for authorization code grants.
+   * Returns a builder that can be used to build requests for authorization code grants. <br>
    * Requires client ID, client secret, and redirect URI to be set.
    *
-   * @param client_id     Required. When you register your application, Spotify provides you a Client ID.
-   * @param client_secret Required. When you register your application, Spotify provides you a Client Secret.
-   * @param code          Required. The authorization code returned from the initial request to the Account /authorize
-   *                      endpoint.
-   * @param redirect_uri  Required. This parameter is used for validation only (there is no actual redirection). The
+   * @param client_id     When you register your application, Spotify provides you a Client ID.
+   * @param client_secret When you register your application, Spotify provides you a Client Secret.
+   * @param code          The authorization code returned from the initial request to the Account /authorize endpoint.
+   * @param redirect_uri  This parameter is used for validation only (there is no actual redirection). The
    *                      value of this parameter must exactly match the value of redirect_uri supplied when requesting
    *                      the authorization code.
-   * @return A builder that builds authorization code grant requests.
+   * @return An {@link AuthorizationCodeRequest.Builder}.
    */
   public AuthorizationCodeRequest.Builder authorizationCode(String client_id, String client_secret, String code, URI redirect_uri) {
     assert (client_id != null);
@@ -321,11 +334,11 @@ public class SpotifyApi {
   }
 
   /**
-   * Returns a builder that can be used to build requests for authorization code grants.
+   * Returns a builder that can be used to build requests for authorization code grants. <br>
    * Requires authorization code to be set.
    *
-   * @param code Required. The authorization code returned from the initial request to the Account /authorize endpoint.
-   * @return A builder that builds authorization code grant requests.
+   * @param code The authorization code returned from the initial request to the Account /authorize endpoint.
+   * @return An {@link AuthorizationCodeRequest.Builder}.
    */
   public AuthorizationCodeRequest.Builder authorizationCode(String code) {
     assert (code != null);
@@ -338,13 +351,13 @@ public class SpotifyApi {
   }
 
   /**
-   * Retrieve a URL where the user can give the application permissions.
+   * Retrieve an URL where the user can give the application permissions.
    *
-   * @param client_id    Required. When you register your application, Spotify provides you a Client ID.
-   * @param redirect_uri Required. This parameter is used for validation only (there is no actual redirection). The
+   * @param client_id    When you register your application, Spotify provides you a Client ID.
+   * @param redirect_uri This parameter is used for validation only (there is no actual redirection). The
    *                     value of this parameter must exactly match the value of redirect_uri supplied when requesting
    *                     the authorization code.
-   * @return The URL where the user can give application permissions.
+   * @return An {@link AuthorizationCodeUriRequest.Builder}.
    */
   public AuthorizationCodeUriRequest.Builder authorizationCodeUri(String client_id, URI redirect_uri) {
     return new AuthorizationCodeUriRequest.Builder()
@@ -355,9 +368,9 @@ public class SpotifyApi {
   }
 
   /**
-   * Retrieve a URL where the user can give the application permissions.
+   * Retrieve an URL where the user can give the application permissions.
    *
-   * @return The URL where the user can give application permissions.
+   * @return An {@link AuthorizationCodeUriRequest.Builder}.
    */
   public AuthorizationCodeUriRequest.Builder authorizationCodeUri() {
     return new AuthorizationCodeUriRequest.Builder()
@@ -368,10 +381,10 @@ public class SpotifyApi {
   }
 
   /**
-   * Returns a builder that can be used to build requests for client credential grants.
+   * Returns a builder that can be used to build requests for client credential grants. <br>
    * Requires client ID and client secret to be set.
    *
-   * @return A builder that builds client credential grant requests.
+   * @return A {@link ClientCredentialsRequest.Builder}.
    */
   public ClientCredentialsRequest.Builder clientCredentials() {
     return new ClientCredentialsRequest.Builder(clientId, clientSecret)
@@ -382,8 +395,9 @@ public class SpotifyApi {
   /**
    * Returns an album with the ID given below.
    *
-   * @param id The base62 ID of the album you're trying to retrieve.
+   * @param id The Spotify album ID of the album you're trying to retrieve.
    * @return A {@link GetAlbumRequest.Builder}.
+   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public GetAlbumRequest.Builder getAlbum(String id) {
     assert (id != null);
@@ -396,8 +410,9 @@ public class SpotifyApi {
   /**
    * Returns the tracks of the album with the ID given below.
    *
-   * @param id The base62 ID of the album you're trying to retrieve.
+   * @param id The Spotify ID of the album you're trying to retrieve.
    * @return A {@link GetAlbumsTracksRequest.Builder}.
+   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public GetAlbumsTracksRequest.Builder getAlbumsTracks(String id) {
     assert (id != null);
@@ -410,8 +425,9 @@ public class SpotifyApi {
   /**
    * Get multiple albums.
    *
-   * @param ids The base62 IDs of all albums you're trying to retrieve.
+   * @param ids The Spotify IDs of all albums you're trying to retrieve.
    * @return A {@link GetSeveralAlbumsRequest.Builder}.
+   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public GetSeveralAlbumsRequest.Builder getSeveralAlbums(String... ids) {
     assert (ids != null);
@@ -424,8 +440,9 @@ public class SpotifyApi {
   /**
    * Get an artist.
    *
-   * @param id The base62 ID of the artist.
+   * @param id The Spotify ID of the artist.
    * @return A {@link GetArtistRequest.Builder}.
+   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public GetArtistRequest.Builder getArtist(String id) {
     assert (id != null);
@@ -438,8 +455,9 @@ public class SpotifyApi {
   /**
    * Get the albums of a specific artist.
    *
-   * @param id The base62 ID of the artist.
+   * @param id The Spotify ID of the artist.
    * @return A {@link GetArtistsAlbumsRequest.Builder}.
+   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public GetArtistsAlbumsRequest.Builder getArtistsAlbums(String id) {
     assert (id != null);
@@ -452,10 +470,11 @@ public class SpotifyApi {
   /**
    * Get the top tracks of an artist in a specific country.
    *
-   * @param id      A base62 ID of the artist.
-   * @param country The <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2 country code </a>
-   *                of the specific country.
+   * @param id      The Spotify ID of the artist.
+   * @param country The ISO 3166-1 alpha-2 country code of the specific country.
    * @return A {@link GetArtistsTopTracksRequest.Builder}.
+   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   * @see <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">Wikipedia: ISO 3166-1 alpha-2 country codes </a>
    */
   public GetArtistsTopTracksRequest.Builder getArtistsTopTracks(String id, CountryCode country) {
     assert (id != null);
@@ -470,8 +489,9 @@ public class SpotifyApi {
   /**
    * Get artists related/similar to an artist.
    *
-   * @param id The artist's ID.
+   * @param id The Spotify ID of the artist.
    * @return A {@link GetArtistsRelatedArtistsRequest.Builder}.
+   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public GetArtistsRelatedArtistsRequest.Builder getArtistsRelatedArtists(String id) {
     assert (id != null);
@@ -484,8 +504,9 @@ public class SpotifyApi {
   /**
    * Get multiple artists.
    *
-   * @param ids The base62 IDs of all artists you're trying to retrieve.
+   * @param ids The Spotify IDs of all artists you're trying to retrieve.
    * @return A {@link GetSeveralArtistsRequest.Builder}.
+   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public GetSeveralArtistsRequest.Builder getSeveralArtists(String... ids) {
     assert (ids != null);
@@ -500,6 +521,7 @@ public class SpotifyApi {
    *
    * @param category_id The Spotify category ID for the category.
    * @return A {@link GetCategoryRequest.Builder}.
+   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public GetCategoryRequest.Builder getCategory(String category_id) {
     assert (category_id != null);
@@ -514,6 +536,7 @@ public class SpotifyApi {
    *
    * @param category_id The Spotify category ID for the category.
    * @return A {@link GetCategorysPlaylistsRequest.Builder}.
+   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public GetCategorysPlaylistsRequest.Builder getCategorysPlaylists(String category_id) {
     assert (category_id != null);
@@ -536,7 +559,7 @@ public class SpotifyApi {
   /**
    * Get "Featured Playlists" of different countries which may match a specific language.
    *
-   * @return A builder that builds a request to retrieve featured playlists.
+   * @return A {@link GetListOfFeaturedPlaylistsRequest.Builder}.
    */
   public GetListOfFeaturedPlaylistsRequest.Builder getListOfFeaturedPlaylists() {
     return new GetListOfFeaturedPlaylistsRequest.Builder(accessToken)
@@ -546,7 +569,7 @@ public class SpotifyApi {
   /**
    * Get the newest releases from a specific country.
    *
-   * @return A builder that builds a request to retrieve the newest releases.
+   * @return A {@link GetListOfNewReleasesRequest.Builder}.
    */
   public GetListOfNewReleasesRequest.Builder getListOfNewReleases() {
     return new GetListOfNewReleasesRequest.Builder(accessToken)
@@ -566,7 +589,7 @@ public class SpotifyApi {
   /**
    * Retrieve a list of available genres seed parameter values for recommendations.
    *
-   * @return Recommendation seeds genres.
+   * @return A {@link GetAvailableGenreSeedsRequest.Builder}.
    */
   public GetAvailableGenreSeedsRequest.Builder getAvailableGenreSeeds() {
     return new GetAvailableGenreSeedsRequest.Builder(accessToken)
@@ -576,9 +599,10 @@ public class SpotifyApi {
   /**
    * Check to see if the current user is following one or more artists or other Spotify users.
    *
-   * @param type Required. The ID type: either artist or user.
-   * @param ids  Required. A list of the artist or the user Spotify IDs to check.
+   * @param type The ID type: either artist or user.
+   * @param ids  A list of the artist or the user Spotify IDs to check.
    * @return A {@link CheckCurrentUserFollowsArtistsOrUsersRequest.Builder}.
+   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public CheckCurrentUserFollowsArtistsOrUsersRequest.Builder checkCurrentUserFollowsArtistsOrUsers(
           ModelObjectType type, String[] ids) {
@@ -594,11 +618,12 @@ public class SpotifyApi {
   /**
    * Check to see if one or more Spotify users are following a specified playlist.
    *
-   * @param owner_id    The Spotify user ID of the person who owns the playlist.
+   * @param owner_id    The Spotify User ID of the person who owns the playlist.
    * @param playlist_id The Spotify ID of the playlist.
-   * @param ids         Required. A list of Spotify User IDs; the ids of the users that you want to check to see if they
-   *                    follow the playlist. Maximum: 5 ids.
+   * @param ids         A list of Spotify User IDs; the IDs of the users that you want to check to see if they
+   *                    follow the playlist. Maximum: 5 IDs.
    * @return A {@link CheckUsersFollowPlaylistRequest.Builder}.
+   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public CheckUsersFollowPlaylistRequest.Builder checkUsersFollowPlaylist(
           String owner_id, String playlist_id, String[] ids) {
@@ -616,9 +641,10 @@ public class SpotifyApi {
   /**
    * Add the current user as a follower of one or more artists or other Spotify users.
    *
-   * @param type Required. The ID type: either artist or user.
+   * @param type The ID type: either artist or user.
    * @param ids  A list of the artist or the user Spotify IDs.
    * @return A {@link FollowArtistsOrUsersRequest.Builder}.
+   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public FollowArtistsOrUsersRequest.Builder followArtistsOrUsers(ModelObjectType type, String[] ids) {
     assert (type != null);
@@ -633,9 +659,10 @@ public class SpotifyApi {
   /**
    * Add the current user as a follower of one or more artists or other Spotify users.
    *
-   * @param type Required. The ID type: either artist or user.
+   * @param type The ID type: either artist or user.
    * @param ids  A list of the artist or the user Spotify IDs.
    * @return A {@link FollowArtistsOrUsersRequest.Builder}.
+   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public FollowArtistsOrUsersRequest.Builder followArtistsOrUsers(ModelObjectType type, JsonArray ids) {
     assert (type != null);
@@ -654,10 +681,11 @@ public class SpotifyApi {
    * @param owner_id 	The Spotify user ID of the person who owns the playlist.
    * @param playlist_id The Spotify ID of the playlist. Any playlist can be followed, regardless of its
    *                    public/private status, as long as you know its playlist ID.
-   * @param public_     Optional, default true. If true the playlist will be included in user's public playlists, if
-   *                    false it will remain private. To be able to follow playlists privately, the user must have
-   *                    granted the playlist-modify-private scope.
+   * @param public_     Default: true. If true the playlist will be included in user's public playlists, if false it
+   *                    will remain private. To be able to follow playlists privately, the user must have granted the
+   *                    playlist-modify-private scope.
    * @return A {@link FollowPlaylistRequest.Builder}.
+   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public FollowPlaylistRequest.Builder followPlaylist(String owner_id, String playlist_id, boolean public_) {
     assert (owner_id != null);
@@ -674,8 +702,9 @@ public class SpotifyApi {
   /**
    * Get the current user’s followed artists.
    *
-   * @param type Required. The ID type: currently only artist is supported.
+   * @param type The ID type: currently only artist is supported.
    * @return A {@link GetUsersFollowedArtistsRequest.Builder}.
+   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public GetUsersFollowedArtistsRequest.Builder getUsersFollowedArtists(ModelObjectType type) {
     assert (type != null);
@@ -687,9 +716,10 @@ public class SpotifyApi {
   /**
    * Remove the current user as a follower of one or more artists or other Spotify users.
    *
-   * @param type Required. The ID type: either artist or user.
+   * @param type The ID type: either artist or user.
    * @param ids  A list of the artist or the user Spotify IDs.
    * @return A {@link UnfollowArtistsOrUsersRequest.Builder}.
+   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public UnfollowArtistsOrUsersRequest.Builder unfollowArtistsOrUsers(ModelObjectType type, String[] ids) {
     assert (type != null);
@@ -704,9 +734,10 @@ public class SpotifyApi {
   /**
    * Remove the current user as a follower of one or more artists or other Spotify users.
    *
-   * @param type Required. The ID type: either artist or user.
+   * @param type The ID type: either {@code artist} or {@code user}.
    * @param ids  A list of the artist or the user Spotify IDs.
    * @return A {@link UnfollowArtistsOrUsersRequest.Builder}.
+   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public UnfollowArtistsOrUsersRequest.Builder unfollowArtistsOrUsers(ModelObjectType type, JsonArray ids) {
     assert (type != null);
@@ -721,10 +752,10 @@ public class SpotifyApi {
   /**
    * Remove the current user as a follower of a playlist.
    *
-   * @param owner_id    The owner's username.
+   * @param owner_id    The owners username.
    * @param playlist_id The playlist's ID.
-   * @return A builder object that can be used to build a request
-   * to remove the current user as a follower of a playlist.
+   * @return An {@link UnfollowPlaylistRequest.Builder}.
+   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public UnfollowPlaylistRequest.Builder unfollowPlaylist(String owner_id, String playlist_id) {
     assert (owner_id != null);
@@ -738,10 +769,11 @@ public class SpotifyApi {
   }
 
   /**
-   * Check if a track is saved in the user's Your Music library.
+   * Check if a track is saved in the users "Your Music" library.
    *
    * @param ids The tracks IDs to check for in the user's Your Music library.
-   * @return A builder object that can be used to check if a user has saved a track.
+   * @return A {@link CheckUsersSavedAlbumsRequest.Builder}.
+   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public CheckUsersSavedAlbumsRequest.Builder checkUsersSavedAlbums(String... ids) {
     assert (ids != null);
@@ -752,10 +784,10 @@ public class SpotifyApi {
   }
 
   /**
-   * Check if a track is saved in the user's Your Music library.
+   * Check if a track is saved in the users "Your Music" library.
    *
    * @param ids The tracks IDs to check for in the user's Your Music library.
-   * @return A builder object that can be used to check if a user has saved a track.
+   * @return A builder object that can be used to check if an user has saved a track.
    */
   public CheckUsersSavedTracksRequest.Builder checkUsersSavedTracks(String... ids) {
     assert (ids != null);
@@ -776,9 +808,9 @@ public class SpotifyApi {
   }
 
   /**
-   * Get a users Your Music tracks.
+   * Get an users "Your Music" tracks.
    *
-   * @return A builder object that can be used to build a request to get the user's Your Music library.
+   * @return A {@link GetUsersSavedTracksRequest.Builder}.
    */
   public GetUsersSavedTracksRequest.Builder getUsersSavedTracks() {
     return new GetUsersSavedTracksRequest.Builder(accessToken)
@@ -786,10 +818,11 @@ public class SpotifyApi {
   }
 
   /**
-   * Remove one or more albums from the current user’s "Your Music" library.
+   * Remove one or more albums from the current users "Your Music" library.
    *
    * @param ids A list of the Spotify IDs.
    * @return A {@link RemoveAlbumsForCurrentUserRequest.Builder}.
+   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public RemoveAlbumsForCurrentUserRequest.Builder removeAlbumsForCurrentUser(String... ids) {
     assert (ids != null);
@@ -800,10 +833,11 @@ public class SpotifyApi {
   }
 
   /**
-   * Remove one or more albums from the current user's "Your Music" library.
+   * Remove one or more albums from the current users "Your Music" library.
    *
    * @param ids A list of the Spotify IDs.
    * @return A {@link RemoveAlbumsForCurrentUserRequest.Builder}.
+   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public RemoveAlbumsForCurrentUserRequest.Builder removeAlbumsForCurrentUser(JsonArray ids) {
     assert (ids != null);
@@ -814,10 +848,11 @@ public class SpotifyApi {
   }
 
   /**
-   * Remove a track if saved to the user's Your Music library.
+   * Remove a track if saved to the users "Your Music" library.
    *
-   * @param ids The track IDs to remove from the user's Your Music library.
-   * @return A builder object that can be used to remove tracks from the user's library.
+   * @param ids The track IDs to remove from the users Your Music library.
+   * @return A {@link RemoveUsersSavedTracksRequest.Builder}.
+   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public RemoveUsersSavedTracksRequest.Builder removeUsersSavedTracks(String... ids) {
     assert (ids != null);
@@ -828,10 +863,10 @@ public class SpotifyApi {
   }
 
   /**
-   * Remove a track if saved to the user's Your Music library.
+   * Remove a track if saved to the users "Your Music" library.
    *
-   * @param ids The track IDs to remove from the user's Your Music library.
-   * @return A builder object that can be used to remove tracks from the user's library.
+   * @param ids The track IDs to remove from the users "Your Music" library.
+   * @return A {@link RemoveUsersSavedTracksRequest.Builder}.
    */
   public RemoveUsersSavedTracksRequest.Builder removeUsersSavedTracks(JsonArray ids) {
     assert (ids != null);
@@ -842,10 +877,11 @@ public class SpotifyApi {
   }
 
   /**
-   * Save tracks in the user's Your Music library.
+   * Save albums in the users "Your Music" library.
    *
-   * @param ids The track IDs to add to the user's library.
-   * @return A builder object that can be used to add tracks to the user's library.
+   * @param ids The album IDs to add to the users library.
+   * @return A {@link SaveAlbumsForCurrentUserRequest.Builder}.
+   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public SaveAlbumsForCurrentUserRequest.Builder saveAlbumsForCurrentUser(String... ids) {
     assert (ids != null);
@@ -856,10 +892,11 @@ public class SpotifyApi {
   }
 
   /**
-   * Save tracks in the user's Your Music library.
+   * Save albums in the users "Your Music" library.
    *
-   * @param ids The track IDs to add to the user's library.
-   * @return A builder object that can be used to add tracks to the user's library.
+   * @param ids The album IDs to add to the users library.
+   * @return A {@link SaveAlbumsForCurrentUserRequest.Builder}.
+   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public SaveAlbumsForCurrentUserRequest.Builder saveAlbumsForCurrentUser(JsonArray ids) {
     assert (ids != null);
@@ -870,10 +907,11 @@ public class SpotifyApi {
   }
 
   /**
-   * Save tracks in the user's Your Music library.
+   * Save tracks in the users "Your Music" library.
    *
-   * @param ids The track IDs to add to the user's library.
-   * @return A builder object that can be used to add tracks to the user's library.
+   * @param ids The track IDs to add to the users library.
+   * @return A {@link SaveTracksForUserRequest.Builder}.
+   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public SaveTracksForUserRequest.Builder saveTracksForUser(String... ids) {
     assert (ids != null);
@@ -884,10 +922,11 @@ public class SpotifyApi {
   }
 
   /**
-   * Save tracks in the user's Your Music library.
+   * Save tracks in the users "Your Music" library.
    *
-   * @param ids The track IDs to add to the user's library.
-   * @return A builder object that can be used to add tracks to the user's library.
+   * @param ids The track IDs to add to the users library.
+   * @return A {@link SaveTracksForUserRequest.Builder}.
+   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public SaveTracksForUserRequest.Builder saveTracksForUser(JsonArray ids) {
     assert (ids != null);
@@ -898,9 +937,9 @@ public class SpotifyApi {
   }
 
   /**
-   * Get the current user’s top artists or tracks based on calculated affinity. <br><br>
+   * Get the current users top artists or tracks based on calculated affinity. <br><br>
    *
-   * Affinity is a measure of the expected preference a user has for a particular track or artist.  It is based on user
+   * Affinity is a measure of the expected preference an user has for a particular track or artist. It is based on user
    * behavior, including play history, but does not include actions made while in incognito mode. Light or infrequent
    * users of Spotify may not have sufficient play history to generate a full affinity data set.
    *
@@ -918,7 +957,7 @@ public class SpotifyApi {
   }
 
   /**
-   * Get the current user’s top artists based on calculated affinity.
+   * Get the current users top artists based on calculated affinity.
    *
    * @return A {@link GetUsersTopArtistsRequest.Builder}.
    * @see #getUsersTopArtistsAndTracks(ModelObjectType)
@@ -929,7 +968,7 @@ public class SpotifyApi {
   }
 
   /**
-   * Get the current user’s top tracks based on calculated affinity.
+   * Get the current users top tracks based on calculated affinity.
    *
    * @return A {@link GetUsersTopTracksRequest.Builder}.
    * @see #getUsersTopArtistsAndTracks(ModelObjectType)
@@ -940,7 +979,7 @@ public class SpotifyApi {
   }
 
   /**
-   * Get information about the user’s current playback state, including track, track progress, and active device.
+   * Get information about the users current playback state, including track, track progress, and active device.
    *
    * @return A {@link GetInformationAboutUsersCurrentPlaybackRequest.Builder}.
    */
@@ -950,9 +989,9 @@ public class SpotifyApi {
   }
 
   /**
-   * Get tracks from the current user's recently played tracks. <br><br>
+   * Get tracks from the current users recently played tracks. <br><br>
    *
-   * Returns the most recent 50 tracks played by a user. Note that a track currently playing will not be visible in play
+   * Returns the most recent 50 tracks played by an user. Note that a track currently playing will not be visible in play
    * history until it has completed. A track must be played for more than 30 seconds to be included in play history.
    *
    * Any tracks listened to while the user had "Private Session" enabled in their client will not be returned in the
@@ -966,7 +1005,7 @@ public class SpotifyApi {
   }
 
   /**
-   * Get information about a user's available devices.
+   * Get information about an users available devices.
    *
    * @return A {@link GetUsersAvailableDevices.Builder}.
    */
@@ -976,7 +1015,7 @@ public class SpotifyApi {
   }
 
   /**
-   * Get the object currently being played on the user’s Spotify account.
+   * Get the object currently being played on the users Spotify account.
    *
    * @return A {@link GetUsersCurrentlyPlayingTrackRequest.Builder}.
    */
@@ -986,7 +1025,7 @@ public class SpotifyApi {
   }
 
   /**
-   * Pause playback on the user’s account.
+   * Pause playback on the users account.
    *
    * @return A {@link PauseUsersPlaybackRequest.Builder}.
    */
@@ -996,11 +1035,10 @@ public class SpotifyApi {
   }
 
   /**
-   * Seeks to the given position in the user’s currently playing track.
+   * Seeks to the given position in the users currently playing track.
    *
-   * @param position_ms Required. The position in milliseconds to seek to. Must be a positive number. Passing in a
-   *                    position that is greater than the length of the track will cause the player to start playing the
-   *                    next song.
+   * @param position_ms The position in milliseconds to seek to. Must be a positive number. Passing in a position that
+   *                    is greater than the length of the track will cause the player to start playing the next song.
    * @return A {@link SeekToPositionInCurrentlyPlayingTrackRequest.Builder}.
    */
   public SeekToPositionInCurrentlyPlayingTrackRequest.Builder seekToPositionInCurrentlyPlayingTrack(int position_ms) {
@@ -1011,9 +1049,9 @@ public class SpotifyApi {
   }
 
   /**
-   * Set the repeat mode for the user’s playback. Options are repeat-track, repeat-context, and off.
+   * Set the repeat mode for the users playback. Options are repeat-track, repeat-context, and off.
    *
-   * @param state Required. track, context or off. track will repeat the current track. context will repeat the current
+   * @param state track, context or off. track will repeat the current track. context will repeat the current
    *              context. off will turn repeat off.
    * @return A {@link SetRepeatModeOnUsersPlaybackRequest.Builder}.
    */
@@ -1026,9 +1064,9 @@ public class SpotifyApi {
   }
 
   /**
-   * Set the volume for the user’s current playback device.
+   * Set the volume for the users current playback device.
    *
-   * @param volume_percent Required. Integer. The volume to set. Must be a value from 0 to 100 inclusive.
+   * @param volume_percent Integer. The volume to set. Must be a value from 0 to 100 inclusive.
    * @return A {@link SetVolumeForUsersPlaybackRequest.Builder}.
    */
   public SetVolumeForUsersPlaybackRequest.Builder setVolumeForUsersPlayback(int volume_percent) {
@@ -1039,7 +1077,7 @@ public class SpotifyApi {
   }
 
   /**
-   * Skips to next track in the user’s queue.
+   * Skips to next track in the users queue.
    *
    * @return A {@link SkipUsersPlaybackToNextTrackRequest.Builder}.
    */
@@ -1049,7 +1087,7 @@ public class SpotifyApi {
   }
 
   /**
-   * Skips to previous track in the user’s queue.
+   * Skips to previous track in the users queue.
    *
    * <b>Note:</b> This will ALWAYS skip to the previous track, regardless of the current track’s progress. Returning to
    * the start of the current track should be performed using the {@link #seekToPositionInCurrentlyPlayingTrack(int)}
@@ -1063,7 +1101,7 @@ public class SpotifyApi {
   }
 
   /**
-   * Start a new context or resume current playback on the user’s active device.
+   * Start a new context or resume current playback on the users active device.
    *
    * @return A {@link StartResumeUsersPlaybackRequest.Builder}.
    */
@@ -1073,9 +1111,9 @@ public class SpotifyApi {
   }
 
   /**
-   * Toggle shuffle on or off for user’s playback.
+   * Toggle shuffle on or off for users playback.
    *
-   * @param state Required. true: Shuffle user's playback. false: Do not shuffle user's playback.
+   * @param state true: Shuffle user's playback. false: Do not shuffle user's playback.
    * @return A {@link ToggleShuffleForUsersPlaybackRequest.Builder}.
    */
   public ToggleShuffleForUsersPlaybackRequest.Builder toggleShuffleForUsersPlayback(boolean state) {
@@ -1087,9 +1125,8 @@ public class SpotifyApi {
   /**
    * Transfer playback to a new device and determine if it should start playing.
    *
-   * @param device_ids Required. A JSON array containing the ID of the device on which playback should be
-   *                   started/transferred. Note: Although an array is accepted, only a single device_id is currently
-   *                   supported.
+   * @param device_ids A JSON array containing the ID of the device on which playback should be started/transferred.
+   *                   <br><b>Note:</b> Although an array is accepted, only a single device_id is currently supported.
    * @return A {@link TransferUsersPlaybackRequest.Builder}.
    */
   public TransferUsersPlaybackRequest.Builder transferUsersPlayback(JsonArray device_ids) {
@@ -1103,10 +1140,11 @@ public class SpotifyApi {
   /**
    * Add tracks to a playlist.
    *
-   * @param user_id     The owner's username.
-   * @param playlist_id The playlist's ID.
+   * @param user_id     The owners username.
+   * @param playlist_id The playlists ID.
    * @param uris        URIs of the tracks to add.
-   * @return A builder object that can be used to build a request to add tracks to a playlist.
+   * @return An {@link AddTracksToPlaylistRequest.Builder}.
+   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public AddTracksToPlaylistRequest.Builder addTracksToPlaylist(String user_id, String playlist_id, String[] uris) {
     assert (user_id != null);
@@ -1125,10 +1163,11 @@ public class SpotifyApi {
   /**
    * Add tracks to a playlist.
    *
-   * @param user_id     The owner's username.
-   * @param playlist_id The playlist's ID.
+   * @param user_id     The owners username.
+   * @param playlist_id The playlists ID.
    * @param uris        URIs of the tracks to add.
-   * @return A builder object that can be used to build a request to add tracks to a playlist.
+   * @return An {@link AddTracksToPlaylistRequest.Builder}.
+   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public AddTracksToPlaylistRequest.Builder addTracksToPlaylist(String user_id, String playlist_id, JsonArray uris) {
     assert (user_id != null);
@@ -1145,11 +1184,12 @@ public class SpotifyApi {
   }
 
   /**
-   * Update a playlist's properties.
+   * Update a playlists properties.
    *
-   * @param user_id     The owner's username.
-   * @param playlist_id The playlist's ID.
-   * @return A builder object that can be used to build a request to change a playlist's details.
+   * @param user_id     The owners username.
+   * @param playlist_id The playlists ID.
+   * @return A {@link ChangePlaylistsDetailsRequest.Builder}.
+   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public ChangePlaylistsDetailsRequest.Builder changePlaylistsDetails(String user_id, String playlist_id) {
     assert (user_id != null);
@@ -1165,9 +1205,10 @@ public class SpotifyApi {
   /**
    * Create a playlist.
    *
-   * @param user_id The playlist's owner.
+   * @param user_id The playlists owner.
    * @param name    The name of the playlist.
-   * @return A builder object that can be used to build a request to create a playlist.
+   * @return A {@link CreatePlaylistRequest.Builder}.
+   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public CreatePlaylistRequest.Builder createPlaylist(String user_id, String name) {
     assert (user_id != null);
@@ -1191,10 +1232,11 @@ public class SpotifyApi {
   }
 
   /**
-   * Get a user's playlists.
+   * Get an users playlists.
    *
-   * @param user_id A base62 ID of the user.
-   * @return A builder that builds a request to retrieve the playlists of an user.
+   * @param user_id A Spotify ID of the user.
+   * @return A {@link GetListOfUsersPlaylistsRequest.Builder}.
+   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public GetListOfUsersPlaylistsRequest.Builder getListOfUsersPlaylists(String user_id) {
     assert (user_id != null);
@@ -1207,9 +1249,10 @@ public class SpotifyApi {
   /**
    * Get a playlist.
    *
-   * @param user_id     The playlist's owner's username.
-   * @param playlist_id The playlist's ID.
-   * @return A builder object that can be used to build a request to retrieve a playlist.
+   * @param user_id     The playlists owners username.
+   * @param playlist_id The playlists ID.
+   * @return A {@link GetPlaylistRequest.Builder}.
+   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public GetPlaylistRequest.Builder getPlaylist(String user_id, String playlist_id) {
     assert (user_id != null);
@@ -1225,9 +1268,10 @@ public class SpotifyApi {
   /**
    * Get the image used to represent a specific playlist.
    *
-   * @param user_id     The user's Spotify user ID.
+   * @param user_id     The users Spotify user ID.
    * @param playlist_id The Spotify ID for the playlist.
    * @return A {@link GetPlaylistCoverImageRequest.Builder}.
+   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public GetPlaylistCoverImageRequest.Builder getPlaylistCoverImage(String user_id, String playlist_id) {
     assert (user_id != null);
@@ -1241,11 +1285,12 @@ public class SpotifyApi {
   }
 
   /**
-   * Get a playlist's tracks.
+   * Get a playlists tracks.
    *
-   * @param user_id     The playlist's owner's username.
-   * @param playlist_id The playlist's ID.
-   * @return A builder object that can be used to build a request to retrieve playlist tracks.
+   * @param user_id     The playlists owners username.
+   * @param playlist_id The playlists ID.
+   * @return A {@link GetPlaylistsTracksRequest.Builder}.
+   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public GetPlaylistsTracksRequest.Builder getPlaylistsTracks(String user_id, String playlist_id) {
     assert (user_id != null);
@@ -1261,10 +1306,11 @@ public class SpotifyApi {
   /**
    * Delete tracks from a playlist
    *
-   * @param user_id     The owner's username.
-   * @param playlist_id The playlist's ID.
+   * @param user_id     The owners username.
+   * @param playlist_id The playlists ID.
    * @param tracks      URIs of the tracks to remove.
-   * @return A builder object that can be used to build a request to remove tracks from a playlist.
+   * @return A {@link RemoveTracksFromPlaylistRequest.Builder}.
+   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public RemoveTracksFromPlaylistRequest.Builder removeTracksFromPlaylist(
           String user_id, String playlist_id, JsonArray tracks) {
@@ -1288,12 +1334,13 @@ public class SpotifyApi {
    * untouched. In addition, the users following the playlists won’t be notified about changes in the playlists when the
    * tracks are reordered.
    *
-   * @param user_id       The user's Spotify user ID.
+   * @param user_id       The users Spotify user ID.
    * @param playlist_id   The Spotify ID for the playlist.
-   * @param range_start   Required. The position of the first track to be reordered.
-   * @param insert_before Required. The position where the tracks should be inserted. To reorder the tracks to the end
-   *                      of the playlist, simply set insert_before to the position after the last track.
+   * @param range_start   The position of the first track to be reordered.
+   * @param insert_before The position where the tracks should be inserted. To reorder the tracks to the end of the
+   *                      playlist, simply set insert_before to the position after the last track.
    * @return A {@link ReorderPlaylistsTracksRequest.Builder}.
+   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public ReorderPlaylistsTracksRequest.Builder reorderPlaylistsTracks(String user_id, String playlist_id, int range_start, int insert_before) {
     assert (user_id != null);
@@ -1311,10 +1358,11 @@ public class SpotifyApi {
   /**
    * Replace tracks in a playlist.
    *
-   * @param user_id     The owner's username.
-   * @param playlist_id The playlist's ID.
+   * @param user_id     The owners username.
+   * @param playlist_id The playlists ID.
    * @param uris        URIs of the tracks to add.
-   * @return A builder object that can e used to build a request to add tracks to a playlist.
+   * @return A {@link ReplacePlaylistsTracksRequest.Builder}.
+   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public ReplacePlaylistsTracksRequest.Builder replacePlaylistsTracks(String user_id, String playlist_id, String[] uris) {
     assert (user_id != null);
@@ -1333,10 +1381,11 @@ public class SpotifyApi {
   /**
    * Replace tracks in a playlist.
    *
-   * @param user_id     The owner's username.
-   * @param playlist_id The playlist's ID.
+   * @param user_id     The owners username.
+   * @param playlist_id The playlists ID.
    * @param uris        URIs of the tracks to add.
-   * @return A builder object that can e used to build a request to add tracks to a playlist.
+   * @return A {@link ReplacePlaylistsTracksRequest.Builder}.
+   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public ReplacePlaylistsTracksRequest.Builder replacePlaylistsTracks(String user_id, String playlist_id, JsonArray uris) {
     assert (user_id != null);
@@ -1355,9 +1404,10 @@ public class SpotifyApi {
   /**
    * Replace the image used to represent a specific playlist.
    *
-   * @param user_id     The user's Spotify user ID.
+   * @param user_id     The users Spotify user ID.
    * @param playlist_id The Spotify ID for the playlist.
    * @return An {@link UploadCustomPlaylistCoverImageRequest.Builder}.
+   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public UploadCustomPlaylistCoverImageRequest.Builder uploadCustomPlaylistCoverImage(String user_id, String playlist_id) {
     assert (user_id != null);
@@ -1373,9 +1423,9 @@ public class SpotifyApi {
   /**
    * Get Spotify catalog information about artists, albums, tracks or playlists that match a keyword string.
    *
-   * @param q    Required. The search query's keywords (and optional field filters and operators).
-   * @param type Required. A comma-separated list of item types to search across. Valid types are: album, artist,
-   *             playlist, and track.
+   * @param q    The search query's keywords (and optional field filters and operators).
+   * @param type A comma-separated list of item types to search across. Valid types are: album, artist, playlist, and
+   *             track.
    * @return A {@link SearchItemRequest.Builder}.
    */
   public SearchItemRequest.Builder searchItem(String q, String type) {
@@ -1390,10 +1440,10 @@ public class SpotifyApi {
   }
 
   /**
-   * Search for albums.
+   * Get Spotify catalog information about albums that match a keyword string.
    *
-   * @param q A search query string.
-   * @return A builder that builds a request to search for an album.
+   * @param q The search query's keywords (and optional field filters and operators).
+   * @return A {@link SearchAlbumsRequest.Builder}.
    */
   public SearchAlbumsRequest.Builder searchAlbums(String q) {
     assert (q != null);
@@ -1404,10 +1454,10 @@ public class SpotifyApi {
   }
 
   /**
-   * Search for artists.
+   * Get Spotify catalog information about artists that match a keyword string.
    *
-   * @param q A search query string.
-   * @return A builder that builds a request to search for an artist.
+   * @param q The search query's keywords (and optional field filters and operators).
+   * @return A {@link SearchArtistsRequest.Builder}.
    */
   public SearchArtistsRequest.Builder searchArtists(String q) {
     assert (q != null);
@@ -1420,7 +1470,7 @@ public class SpotifyApi {
   /**
    * Get Spotify catalog information about playlists that match a keyword string.
    *
-   * @param q Required. The search query's keywords (and optional field filters and operators).
+   * @param q The search query's keywords (and optional field filters and operators).
    * @return A {@link SearchPlaylistsRequest.Builder}.
    */
   public SearchPlaylistsRequest.Builder searchPlaylists(String q) {
@@ -1432,10 +1482,10 @@ public class SpotifyApi {
   }
 
   /**
-   * Search for tracks.
+   * Get Spotify catalog information about tracks that match a keyword string.
    *
-   * @param q A search query string.
-   * @return A builder that builds a request to search for a track.
+   * @param q The search query's keywords (and optional field filters and operators).
+   * @return A {@link SearchTracksRequest.Builder}.
    */
   public SearchTracksRequest.Builder searchTracks(String q) {
     assert (q != null);
@@ -1448,8 +1498,9 @@ public class SpotifyApi {
   /**
    * Get a detailed audio analysis for a single track identified by its unique Spotify ID.
    *
-   * @param id Required. The Spotify ID for the track.
+   * @param id The Spotify ID for the track.
    * @return A {@link GetAudioAnalysisForTrackRequest.Builder}.
+   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public GetAudioAnalysisForTrackRequest.Builder getAudioAnalysisForTrack(String id) {
     assert (id != null);
@@ -1460,11 +1511,11 @@ public class SpotifyApi {
   }
 
   /**
-   * Get audio features from a track. <br>
-   * Examples: Tempo, danceability, accousticness...
+   * Get audio features for a track based on its Spotify ID.
    *
-   * @param id The base62 ID of the track.
-   * @return A builder that builds a request to retrieve the audio features from a track.
+   * @param id The Spotify ID of the track.
+   * @return A {@link GetAudioFeaturesForTrackRequest.Builder}.
+   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public GetAudioFeaturesForTrackRequest.Builder getAudioFeaturesForTrack(String id) {
     assert (id != null);
@@ -1477,8 +1528,9 @@ public class SpotifyApi {
   /**
    * Get audio features for multiple tracks based on their Spotify IDs.
    *
-   * @param ids Required. A comma-separated list of the Spotify IDs for the tracks. Maximum: 100 IDs.
+   * @param ids A comma-separated list of the Spotify IDs for the tracks. Maximum: 100 IDs.
    * @return A {@link GetAudioFeaturesForSeveralTracksRequest.Builder}.
+   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public GetAudioFeaturesForSeveralTracksRequest.Builder getAudioFeaturesForSeveralTracks(String... ids) {
     assert (ids != null);
@@ -1491,8 +1543,9 @@ public class SpotifyApi {
   /**
    * Get multiple tracks.
    *
-   * @param ids The base62 IDs of all tracks you're trying to retrieve.
-   * @return A builder that builds a request to retrieve multiple tracks.
+   * @param ids The Spotify IDs of all tracks you're trying to retrieve.
+   * @return A {@link GetSeveralTracksRequest.Builder}.
+   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public GetSeveralTracksRequest.Builder getSeveralTracks(String... ids) {
     assert (ids != null);
@@ -1505,8 +1558,9 @@ public class SpotifyApi {
   /**
    * Get a track.
    *
-   * @param id The base62 id of the track.
-   * @return A builder that builds a request to retrieve a track.
+   * @param id The Spotify ID of the track.
+   * @return A {@link GetTrackRequest.Builder}.
+   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public GetTrackRequest.Builder getTrack(String id) {
     assert (id != null);
@@ -1517,10 +1571,9 @@ public class SpotifyApi {
   }
 
   /**
-   * Get information about the user that has given authorization to the application.
+   * Get detailed profile information about the current user (including the current user’s username).
    *
-   * @return A builder object that can be used to build a request to retrieve information
-   * about the current user.
+   * @return A {@link GetCurrentUsersProfileRequest.Builder}.
    */
   public GetCurrentUsersProfileRequest.Builder getCurrentUsersProfile() {
     return new GetCurrentUsersProfileRequest.Builder(accessToken)
@@ -1528,11 +1581,11 @@ public class SpotifyApi {
   }
 
   /**
-   * Get information of an user.<br>
-   * Examples: Birthdate, country, followers...
+   * Get public profile information about a Spotify user.
    *
-   * @param user_id A base62 id of the user.
-   * @return A builder that builds a request to retrieve an user.
+   * @param user_id The Spotify ID of the user.
+   * @return A {@link GetUsersProfileRequest.Builder}.
+   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public GetUsersProfileRequest.Builder getUsersProfile(String user_id) {
     assert (user_id != null);
@@ -1543,7 +1596,7 @@ public class SpotifyApi {
   }
 
   /**
-   * Builder class for building a Spotify API instance.
+   * Builder class for building {@link SpotifyApi} instances.
    */
   public static class Builder {
 
@@ -1562,7 +1615,7 @@ public class SpotifyApi {
     private String refreshToken;
 
     /**
-     * Set the HttpManager in a builder object.
+     * The HttpManager setter.
      *
      * @param httpManager A Spotify HttpManager.
      * @return A {@link SpotifyApi.Builder}.
@@ -1573,7 +1626,7 @@ public class SpotifyApi {
     }
 
     /**
-     * Set the scheme in a builder object.
+     * The scheme setter.
      *
      * @param scheme A HTTP-scheme.
      * @return A {@link SpotifyApi.Builder}.
@@ -1584,7 +1637,7 @@ public class SpotifyApi {
     }
 
     /**
-     * Set the Spotify API host in a builder object.
+     * The Spotify API host setter.
      *
      * @param host A Spotify API host.
      * @return A {@link SpotifyApi.Builder}.
@@ -1595,7 +1648,7 @@ public class SpotifyApi {
     }
 
     /**
-     * Set the port in a builder object.
+     * The Spotify API port setter.
      *
      * @param port A Spotify API port.
      * @return A {@link SpotifyApi.Builder}.
@@ -1650,9 +1703,9 @@ public class SpotifyApi {
     }
 
     /**
-     * Set the client ID in a builder object.
+     * The client ID setter.
      *
-     * @param clientId A client id of your application.
+     * @param clientId A client ID of your application.
      * @return A {@link SpotifyApi.Builder}.
      */
     public Builder setClientId(String clientId) {
@@ -1661,7 +1714,7 @@ public class SpotifyApi {
     }
 
     /**
-     * Set the client secret in a builder object.
+     * The client secret setter.
      *
      * @param clientSecret A client secret of your application.
      * @return A {@link SpotifyApi.Builder}.
@@ -1672,7 +1725,7 @@ public class SpotifyApi {
     }
 
     /**
-     * Set the redirect uri in a builder object.
+     * The redirect URI setter.
      *
      * @param redirectUri A redirect URI of your application.
      * @return A {@link SpotifyApi.Builder}.
@@ -1683,10 +1736,10 @@ public class SpotifyApi {
     }
 
     /**
-     * Set the redirect uri in a builder object.
+     * The redirect URI setter.
      *
      * @param redirectUri A redirect URI of your application.
-     * @return A builder object.
+     * @return A {@link SpotifyApi.Builder}.
      */
     public Builder setRedirectUri(String redirectUri) {
       try {
@@ -1698,7 +1751,7 @@ public class SpotifyApi {
     }
 
     /**
-     * Set the acces token in a builder object.
+     * The access token setter.
      *
      * @param accessToken A Spotify API access token.
      * @return A {@link SpotifyApi.Builder}.
@@ -1709,7 +1762,7 @@ public class SpotifyApi {
     }
 
     /**
-     * Set the refresh token in a builder object.
+     * The refresh token setter.
      *
      * @param refreshToken A Spotify API refresh token.
      * @return A {@link SpotifyApi.Builder}.
@@ -1720,9 +1773,9 @@ public class SpotifyApi {
     }
 
     /**
-     * Build a Spotify API instance with the information given to the builder.
+     * Build a {@link SpotifyApi} instance with the information given to the builder.
      *
-     * @return A Spotify API instance.
+     * @return A {@link SpotifyApi} instance.
      */
     public SpotifyApi build() {
       return new SpotifyApi(this);
