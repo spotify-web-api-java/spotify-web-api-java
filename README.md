@@ -15,7 +15,6 @@ This is a Java wrapper/client for the [Spotify Web API](https://developer.spotif
 4. **[Examples](#Examples)**
 5. **[Contributions](#Contributions)**
     1. **[Code Overview](#Code-Overview)**
-6. **[Changelog](#Changelog)**
 
 <a name="Installation"></a>
 
@@ -324,99 +323,3 @@ and [mockito](http://site.mockito.org/) for mocking.
 Fixtures are JSON files that represent the data returned from the API server. We use the examples directly provided by
 the [Web API Endpoint Reference](https://developer.spotify.com/web-api/endpoint-reference/) with minor tweaks. Tweaks
 are needed because the reference sometimes contains invalid data examples.
-
-<a name="Changelog"></a>
-
-## Changelog
-
-### 2.0.0-RC1
-- Major rewrite of the whole project. Too many changes to list them here. All current endpoints are now supported and
-documentation was added.
-
-### 1.5.0
-
-- Change response type for Add Tracks to Playlist to SnapshotResult since it now includes a `snapshot_id`. **Code using
-Add Tracks to Playlist will break with this change.**
-
-### 1.4.21
-
-- Add [Featured Playlists](https://developer.spotify.com/web-api/get-list-featured-playlists/) endpoint. Thanks
-[JMPerez](https://github.com/JMPerez)!
-
-### 1.4.20
-
-- Add [New Releases](https://developer.spotify.com/web-api/get-list-new-releases/) endpoint. Thanks
-[Jirakon](https://github.com/Jirakon)!
-
-### 1.4.19
-
-- Add [Remove Tracks for User](https://developer.spotify.com/web-api/remove-tracks-user/) endpoint.
-
-### 1.4.18
-
-- Add [Save Tracks for User](https://developer.spotify.com/web-api/save-tracks-user/) endpoint.
-
-### 1.4.17
-
-- Add [Check User's Saved Tracks](https://developer.spotify.com/web-api/check-users-saved-tracks/) endpoint.
-
-### 1.4.16
-
-- [bradnussbaum](https://github.com/bradnussbaum) bumped Guava version and sorted out test dependencies. Cheers!
-
-### 1.4.14
-
-- Add [Get User's Saved Tracks](https://developer.spotify.com/web-api/get-users-saved-tracks/) endpoint.
-
-### 1.4.13
-
-- Add [Change a Playlist's Details](https://developer.spotify.com/web-api/change-playlist-details/) endpoint.
-
-### 1.4.12
-
-- Add [followers](https://developer.spotify.com/web-api/object-model/#followers-object) to
-[Artist](https://developer.spotify.com/web-api/object-model/#artist-object-full) and
-[User](https://developer.spotify.com/web-api/object-model/#user-object-private) responses.
-
-### 1.4.11
-
-- Add market parameter to [Get Artist's Albums endpoint](https://developer.spotify.com/web-api/get-artists-albums/).
-
-### 1.4.10
-
-- Add images to SimplePlaylist object. (Currently only returned from the Get User's Playlists endpoint)
-
-### 1.4.9
-
-- Add available_markets to SimpleTrack object.
-- Add market parameter to Search requests.
-
-### 1.4.8
-
-- Enable limit and offset parameters when retrieving a playlist's tracks.
-
-### 1.4.7
-
-- Get a user's starred tracks. (Thanks [felx](https://github.com/felx))
-
-### 1.4.5
-
-- Distribute via Maven Central.
-- Use query parameter to add tracks.
-
-### 1.4.1
-
-- Add available_markets to SimpleAlbum
-- Add show dialog parameter to authorization URL
-
-### 1.4.0
-
-- Enable setting limit and offset when requesting a user's playlists.
-
-### 1.3
-
-- Bug fixes. (Thanks [danieldisu](https://www.github.com/danieldisu) and [Schweig](https://www.github.com/Schweig))
-
-### 1.2
-
-- Add [Related artists](https://developer.spotify.com/web-api/get-related-artists/) endpoint
