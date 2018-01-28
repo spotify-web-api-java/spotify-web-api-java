@@ -39,6 +39,11 @@ public class GetSeveralAlbumsRequest extends AbstractDataRequest {
    */
   public static final class Builder extends AbstractDataRequest.Builder<Builder> {
 
+    /**
+     * Create a new {@link GetSeveralAlbumsRequest.Builder} instance.
+     *
+     * @param accessToken Required. A valid access token from the Spotify Accounts service.
+     */
     public Builder(final String accessToken) {
       super(accessToken);
     }
