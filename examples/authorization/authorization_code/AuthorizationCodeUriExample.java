@@ -23,7 +23,7 @@ public class AuthorizationCodeUriExample {
 
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
           .setClientId(clientId)
-          .setClientId(clientSecret)
+          .setClientSecret(clientSecret)
           .setRedirectUri(redirectUri)
           .build();
   private static final AuthorizationCodeUriRequest authorizationCodeUriRequest = spotifyApi.authorizationCodeUri()

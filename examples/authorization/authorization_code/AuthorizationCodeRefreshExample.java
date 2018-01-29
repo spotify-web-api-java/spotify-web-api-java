@@ -16,7 +16,7 @@ public class AuthorizationCodeRefreshExample {
 
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
           .setClientId(clientId)
-          .setClientId(clientSecret)
+          .setClientSecret(clientSecret)
           .setRefreshToken(refreshToken)
           .build();
   private static final AuthorizationCodeRefreshRequest authorizationCodeRefreshRequest = spotifyApi.authorizationCodeRefresh()
