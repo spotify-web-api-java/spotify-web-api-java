@@ -35,12 +35,12 @@ public class GetCurrentUsersRecentlyPlayedTracksRequest extends AbstractDataRequ
 
     public Builder after(final Date after) {
       assert (after != null);
-      return setQueryParameter("after", simpleDateFormat.format(after));
+      return setQueryParameter("after", SIMPLE_DATE_FORMAT.format(after));
     }
 
     public Builder before(final Date before) {
       assert (before != null);
-      return setQueryParameter("before", simpleDateFormat.format(before));
+      return setQueryParameter("before", SIMPLE_DATE_FORMAT.format(before));
     }
 
     @Override

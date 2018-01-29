@@ -13,7 +13,7 @@ import java.util.concurrent.Future;
 
 public interface IRequest {
 
-  SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss");
+  SimpleDateFormat SIMPLE_DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss");
 
   IHttpManager getHttpManager();
 

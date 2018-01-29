@@ -52,7 +52,7 @@ public class GetListOfFeaturedPlaylistsRequest extends AbstractDataRequest {
 
     public Builder timestamp(final Date timestamp) {
       assert (timestamp != null);
-      return setQueryParameter("timestamp", simpleDateFormat.format(timestamp));
+      return setQueryParameter("timestamp", SIMPLE_DATE_FORMAT.format(timestamp));
     }
 
     public Builder limit(final Integer limit) {
