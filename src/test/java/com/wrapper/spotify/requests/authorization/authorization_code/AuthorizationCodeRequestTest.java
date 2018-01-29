@@ -34,19 +34,19 @@ public class AuthorizationCodeRequestTest implements ITest<AuthorizationCodeCred
 
   public void shouldSucceed(final AuthorizationCodeCredentials authorizationCodeCredentials) {
     assertEquals(
-            "NgCXRK...MzYjw",
+            "taHZ2SdB-bPA3FsK3D7ZN5npZS47cMy-IEySVEGttOhXmqaVAIo0ESvTCLjLBifhHOHOIuhFUKPW1WMDP7w6dj3MAZdWT8CLI2MkZaXbYLTeoDvXesf2eeiLYPBGdx8tIwQJKgV8XdnzH_DONk",
             authorizationCodeCredentials.getAccessToken());
     assertEquals(
             "Bearer",
             authorizationCodeCredentials.getTokenType());
     assertEquals(
-            "user-read-private user-read-email",
+            "user-read-birthdate user-read-email",
             authorizationCodeCredentials.getScope());
     assertEquals(
             3600,
             (int) authorizationCodeCredentials.getExpiresIn());
     assertEquals(
-            "NgAagA...Um_SHo",
+            "b0KuPuLw77Z0hQhCsK-GTHoEx_kethtn357V7iqwEpCTIsLgqbBC_vQBTGC6M5rINl0FrqHK-D3cbOsMOlfyVKuQPvpyGcLcxAoLOTpYXc28nVwB7iBq2oKj9G9lHkFOUKn",
             authorizationCodeCredentials.getRefreshToken());
   }
 }

@@ -14,7 +14,8 @@ import static org.junit.Assert.assertEquals;
 public class ClientCredentialsRequestTest implements ITest<ClientCredentials> {
   private final ClientCredentialsRequest successRequest = SPOTIFY_API
           .clientCredentials()
-          .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/authorization/client_credentials/ClientCredentials.json"))
+          .setHttpManager(TestUtil.MockedHttpManager.returningJson(
+                  "requests/authorization/client_credentials/ClientCredentials.json"))
           .build();
 
   public ClientCredentialsRequestTest() throws Exception {
@@ -32,7 +33,7 @@ public class ClientCredentialsRequestTest implements ITest<ClientCredentials> {
 
   public void shouldSucceed(final ClientCredentials clientCredentials) {
     assertEquals(
-            "NgCXRKc...MzYjw",
+            "taHZ2SdB-bPA3FsK3D7ZN5npZS47cMy-IEySVEGttOhXmqaVAIo0ESvTCLjLBifhHOHOIuhFUKPW1WMDP7w6dj3MAZdWT8CLI2MkZaXbYLTeoDvXesf2eeiLYPBGdx8tIwQJKgV8XdnzH_DONk",
             clientCredentials.getAccessToken());
     assertEquals(
             "Bearer",

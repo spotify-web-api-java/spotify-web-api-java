@@ -12,12 +12,9 @@ import static org.junit.Assert.assertEquals;
 public class AuthorizationCodeUriRequestTest implements ITest<URI> {
 
   private final AuthorizationCodeUriRequest successRequest = SPOTIFY_API.authorizationCodeUri()
-          .setHttpManager(
-                  TestUtil.MockedHttpManager.returningJson(
-                          "requests/authorization/authorization_code/AuthorizationCodeUri.txt"))
           .build();
 
-  public AuthorizationCodeUriRequestTest() throws Exception {
+  public AuthorizationCodeUriRequestTest() {
   }
 
   @Test
@@ -32,7 +29,7 @@ public class AuthorizationCodeUriRequestTest implements ITest<URI> {
 
   public void shouldSucceed(final URI uri) {
     assertEquals(
-            "https://accounts.spotify.com:443/authorize?client_id=ClientId&response_type=code&redirect_uri=RedirectUri",
+            "https://accounts.spotify.com:443/authorize?client_id=zyuxhfo1c51b5hxjk09x2uhv5n0svgd6g&response_type=code&redirect_uri=https%3A%2F%2Fexample.com%2Fspotify-redirect",
             uri.toString());
   }
 }
