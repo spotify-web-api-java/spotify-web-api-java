@@ -15,7 +15,7 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(MockitoJUnitRunner.class)
 public class GetCategoryRequestTest implements ITest<Category> {
-  private final GetCategoryRequest successRequest = SPOTIFY_API.getCategory("id")
+  private final GetCategoryRequest defaultRequest = SPOTIFY_API.getCategory("id")
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
                           "requests/data/browse/GetCategoryRequest.json"))
@@ -25,16 +25,16 @@ public class GetCategoryRequestTest implements ITest<Category> {
   }
 
   @Test
-  public void shouldSucceed_sync() throws IOException, SpotifyWebApiException {
-    shouldSucceed(successRequest.execute());
+  public void shouldReturnDefault_sync() throws IOException, SpotifyWebApiException {
+    shouldReturnDefault(defaultRequest.execute());
   }
 
   @Test
-  public void shouldSucceed_async() throws ExecutionException, InterruptedException {
-    shouldSucceed((Category) successRequest.executeAsync().get());
+  public void shouldReturnDefault_async() throws ExecutionException, InterruptedException {
+    shouldReturnDefault((Category) defaultRequest.executeAsync().get());
   }
 
-  public void shouldSucceed(final Category category) {
+  public void shouldReturnDefault(final Category category) {
     assertEquals(
             "https://api.spotify.com/v1/browse/categories/party",
             category.getHref());

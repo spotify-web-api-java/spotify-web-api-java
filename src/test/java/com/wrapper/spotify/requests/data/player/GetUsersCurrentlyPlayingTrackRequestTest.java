@@ -15,14 +15,14 @@ import static org.junit.Assert.*;
 
 @RunWith(MockitoJUnitRunner.class)
 public class GetUsersCurrentlyPlayingTrackRequestTest implements ITest<CurrentlyPlaying> {
-  private final GetUsersCurrentlyPlayingTrackRequest successRequest = SPOTIFY_API
+  private final GetUsersCurrentlyPlayingTrackRequest defaultRequest = SPOTIFY_API
           .getUsersCurrentlyPlayingTrack()
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
                           "requests/data/player/GetUsersCurrentlyPlayingTrackRequest.json"))
           .build();
 
-  private final GetUsersCurrentlyPlayingTrackRequest failureRequest = SPOTIFY_API
+  private final GetUsersCurrentlyPlayingTrackRequest emptyRequest = SPOTIFY_API
           .getUsersCurrentlyPlayingTrack()
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
@@ -33,16 +33,16 @@ public class GetUsersCurrentlyPlayingTrackRequestTest implements ITest<Currently
   }
 
   @Test
-  public void shouldSucceed_sync() throws IOException, SpotifyWebApiException {
-    shouldSucceed(successRequest.execute());
+  public void shouldReturnDefault_sync() throws IOException, SpotifyWebApiException {
+    shouldReturnDefault(defaultRequest.execute());
   }
 
   @Test
-  public void shouldSucceed_async() throws ExecutionException, InterruptedException {
-    shouldSucceed((CurrentlyPlaying) successRequest.executeAsync().get());
+  public void shouldReturnDefault_async() throws ExecutionException, InterruptedException {
+    shouldReturnDefault((CurrentlyPlaying) defaultRequest.executeAsync().get());
   }
 
-  public void shouldSucceed(final CurrentlyPlaying currentlyPlaying) {
+  public void shouldReturnDefault(final CurrentlyPlaying currentlyPlaying) {
     assertNull(
             currentlyPlaying.getContext());
     assertEquals(
@@ -58,16 +58,16 @@ public class GetUsersCurrentlyPlayingTrackRequestTest implements ITest<Currently
   }
 
   @Test
-  public void shouldFail_sync() throws IOException, SpotifyWebApiException {
-    shouldFail(failureRequest.execute());
+  public void shouldReturnEmpty_sync() throws IOException, SpotifyWebApiException {
+    shouldReturnEmpty(emptyRequest.execute());
   }
 
   @Test
-  public void shouldFail_async() throws ExecutionException, InterruptedException {
-    shouldFail((CurrentlyPlaying) failureRequest.executeAsync().get());
+  public void shouldReturnEmpty_async() throws ExecutionException, InterruptedException {
+    shouldReturnEmpty((CurrentlyPlaying) emptyRequest.executeAsync().get());
   }
 
-  public void shouldFail(final CurrentlyPlaying currentlyPlaying) {
+  public void shouldReturnEmpty(final CurrentlyPlaying currentlyPlaying) {
     assertNull(
             currentlyPlaying);
   }

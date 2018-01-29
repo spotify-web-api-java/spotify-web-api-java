@@ -15,7 +15,7 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(MockitoJUnitRunner.class)
 public class GetSeveralTracksRequestTest implements ITest<Track[]> {
-  private final GetSeveralTracksRequest successRequest = SPOTIFY_API
+  private final GetSeveralTracksRequest defaultRequest = SPOTIFY_API
           .getSeveralTracks("id")
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
@@ -26,16 +26,16 @@ public class GetSeveralTracksRequestTest implements ITest<Track[]> {
   }
 
   @Test
-  public void shouldSucceed_sync() throws IOException, SpotifyWebApiException {
-    shouldSucceed(successRequest.execute());
+  public void shouldReturnDefault_sync() throws IOException, SpotifyWebApiException {
+    shouldReturnDefault(defaultRequest.execute());
   }
 
   @Test
-  public void shouldSucceed_async() throws ExecutionException, InterruptedException {
-    shouldSucceed((Track[]) successRequest.executeAsync().get());
+  public void shouldReturnDefault_async() throws ExecutionException, InterruptedException {
+    shouldReturnDefault((Track[]) defaultRequest.executeAsync().get());
   }
 
-  public void shouldSucceed(final Track[] tracks) {
+  public void shouldReturnDefault(final Track[] tracks) {
     assertEquals(
             2,
             tracks.length);

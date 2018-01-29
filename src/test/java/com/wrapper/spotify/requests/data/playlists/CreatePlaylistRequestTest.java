@@ -16,7 +16,7 @@ import static org.junit.Assert.*;
 
 @RunWith(MockitoJUnitRunner.class)
 public class CreatePlaylistRequestTest implements ITest<Playlist> {
-  private final CreatePlaylistRequest successRequest = SPOTIFY_API
+  private final CreatePlaylistRequest defaultRequest = SPOTIFY_API
           .createPlaylist("user_id", "playlist_id")
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
@@ -27,16 +27,16 @@ public class CreatePlaylistRequestTest implements ITest<Playlist> {
   }
 
   @Test
-  public void shouldSucceed_sync() throws IOException, SpotifyWebApiException {
-    shouldSucceed(successRequest.execute());
+  public void shouldReturnDefault_sync() throws IOException, SpotifyWebApiException {
+    shouldReturnDefault(defaultRequest.execute());
   }
 
   @Test
-  public void shouldSucceed_async() throws ExecutionException, InterruptedException {
-    shouldSucceed((Playlist) successRequest.executeAsync().get());
+  public void shouldReturnDefault_async() throws ExecutionException, InterruptedException {
+    shouldReturnDefault((Playlist) defaultRequest.executeAsync().get());
   }
 
-  public void shouldSucceed(final Playlist playlist) {
+  public void shouldReturnDefault(final Playlist playlist) {
     assertFalse(
             playlist.getIsCollaborative());
     assertNull(

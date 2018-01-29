@@ -17,7 +17,7 @@ import static org.junit.Assert.assertNull;
 
 @RunWith(MockitoJUnitRunner.class)
 public class GetArtistsAlbumsRequestTest implements ITest<Paging<AlbumSimplified>> {
-  private final GetArtistsAlbumsRequest successRequest = SPOTIFY_API.getArtistsAlbums("id")
+  private final GetArtistsAlbumsRequest defaultRequest = SPOTIFY_API.getArtistsAlbums("id")
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
                           "requests/data/artists/GetArtistsAlbumsRequest.json"))
@@ -27,17 +27,17 @@ public class GetArtistsAlbumsRequestTest implements ITest<Paging<AlbumSimplified
   }
 
   @Test
-  public void shouldSucceed_sync() throws IOException, SpotifyWebApiException {
-    shouldSucceed(successRequest.execute());
+  public void shouldReturnDefault_sync() throws IOException, SpotifyWebApiException {
+    shouldReturnDefault(defaultRequest.execute());
   }
 
   @SuppressWarnings("unchecked")
   @Test
-  public void shouldSucceed_async() throws ExecutionException, InterruptedException {
-    shouldSucceed((Paging<AlbumSimplified>) successRequest.executeAsync().get());
+  public void shouldReturnDefault_async() throws ExecutionException, InterruptedException {
+    shouldReturnDefault((Paging<AlbumSimplified>) defaultRequest.executeAsync().get());
   }
 
-  public void shouldSucceed(final Paging<AlbumSimplified> albumSimplifiedPaging) {
+  public void shouldReturnDefault(final Paging<AlbumSimplified> albumSimplifiedPaging) {
     assertEquals(
             "https://api.spotify.com/v1/artists/1vCWHaC5f2uS3yhpwWbIA6/albums?offset=0&limit=2&album_type=single&market=ES",
             albumSimplifiedPaging.getHref());

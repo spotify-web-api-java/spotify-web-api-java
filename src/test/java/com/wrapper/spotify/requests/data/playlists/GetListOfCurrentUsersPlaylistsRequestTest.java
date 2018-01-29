@@ -17,7 +17,7 @@ import static org.junit.Assert.assertNull;
 
 @RunWith(MockitoJUnitRunner.class)
 public class GetListOfCurrentUsersPlaylistsRequestTest implements ITest<Paging<PlaylistSimplified>> {
-  private final GetListOfCurrentUsersPlaylistsRequest successRequest = SPOTIFY_API
+  private final GetListOfCurrentUsersPlaylistsRequest defaultRequest = SPOTIFY_API
           .getListOfCurrentUsersPlaylists()
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
@@ -28,17 +28,17 @@ public class GetListOfCurrentUsersPlaylistsRequestTest implements ITest<Paging<P
   }
 
   @Test
-  public void shouldSucceed_sync() throws IOException, SpotifyWebApiException {
-    shouldSucceed(successRequest.execute());
+  public void shouldReturnDefault_sync() throws IOException, SpotifyWebApiException {
+    shouldReturnDefault(defaultRequest.execute());
   }
 
   @SuppressWarnings("unchecked")
   @Test
-  public void shouldSucceed_async() throws ExecutionException, InterruptedException {
-    shouldSucceed((Paging<PlaylistSimplified>) successRequest.executeAsync().get());
+  public void shouldReturnDefault_async() throws ExecutionException, InterruptedException {
+    shouldReturnDefault((Paging<PlaylistSimplified>) defaultRequest.executeAsync().get());
   }
 
-  public void shouldSucceed(final Paging<PlaylistSimplified> playlistSimplifiedPaging) {
+  public void shouldReturnDefault(final Paging<PlaylistSimplified> playlistSimplifiedPaging) {
     assertEquals(
             "https://api.spotify.com/v1/users/wizzler/playlists",
             playlistSimplifiedPaging.getHref());

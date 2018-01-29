@@ -16,7 +16,7 @@ import static org.junit.Assert.assertNull;
 
 @RunWith(MockitoJUnitRunner.class)
 public class SearchItemRequestTest implements ITest<SearchResult> {
-  private final SearchItemRequest successRequest = SPOTIFY_API
+  private final SearchItemRequest defaultRequest = SPOTIFY_API
           .searchItem("q", "track")
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
@@ -27,16 +27,16 @@ public class SearchItemRequestTest implements ITest<SearchResult> {
   }
 
   @Test
-  public void shouldSucceed_sync() throws IOException, SpotifyWebApiException {
-    shouldSucceed(successRequest.execute());
+  public void shouldReturnDefault_sync() throws IOException, SpotifyWebApiException {
+    shouldReturnDefault(defaultRequest.execute());
   }
 
   @Test
-  public void shouldSucceed_async() throws ExecutionException, InterruptedException {
-    shouldSucceed((SearchResult) successRequest.executeAsync().get());
+  public void shouldReturnDefault_async() throws ExecutionException, InterruptedException {
+    shouldReturnDefault((SearchResult) defaultRequest.executeAsync().get());
   }
 
-  public void shouldSucceed(final SearchResult searchResult) {
+  public void shouldReturnDefault(final SearchResult searchResult) {
     assertNull(
             searchResult.getAlbums());
     assertNotNull(

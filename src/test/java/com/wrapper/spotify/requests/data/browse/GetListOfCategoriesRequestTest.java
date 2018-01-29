@@ -17,7 +17,7 @@ import static org.junit.Assert.assertNull;
 
 @RunWith(MockitoJUnitRunner.class)
 public class GetListOfCategoriesRequestTest implements ITest<Paging<Category>> {
-  private final GetListOfCategoriesRequest successRequest = SPOTIFY_API.getListOfCategories()
+  private final GetListOfCategoriesRequest defaultRequest = SPOTIFY_API.getListOfCategories()
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
                           "requests/data/browse/GetListOfCategoriesRequest.json"))
@@ -27,17 +27,17 @@ public class GetListOfCategoriesRequestTest implements ITest<Paging<Category>> {
   }
 
   @Test
-  public void shouldSucceed_sync() throws IOException, SpotifyWebApiException {
-    shouldSucceed(successRequest.execute());
+  public void shouldReturnDefault_sync() throws IOException, SpotifyWebApiException {
+    shouldReturnDefault(defaultRequest.execute());
   }
 
   @SuppressWarnings("unchecked")
   @Test
-  public void shouldSucceed_async() throws ExecutionException, InterruptedException {
-    shouldSucceed((Paging<Category>) successRequest.executeAsync().get());
+  public void shouldReturnDefault_async() throws ExecutionException, InterruptedException {
+    shouldReturnDefault((Paging<Category>) defaultRequest.executeAsync().get());
   }
 
-  public void shouldSucceed(final Paging<Category> categoryPaging) {
+  public void shouldReturnDefault(final Paging<Category> categoryPaging) {
     assertEquals(
             "https://api.spotify.com/v1/browse/categories?offset=0&limit=20",
             categoryPaging.getHref());

@@ -17,7 +17,7 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(MockitoJUnitRunner.class)
 public class GetAudioFeaturesForTrackRequestTest implements ITest<AudioFeatures> {
-  private final GetAudioFeaturesForTrackRequest successRequest = SPOTIFY_API
+  private final GetAudioFeaturesForTrackRequest defaultRequest = SPOTIFY_API
           .getAudioFeaturesForTrack("id")
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
@@ -28,16 +28,16 @@ public class GetAudioFeaturesForTrackRequestTest implements ITest<AudioFeatures>
   }
 
   @Test
-  public void shouldSucceed_sync() throws IOException, SpotifyWebApiException {
-    shouldSucceed(successRequest.execute());
+  public void shouldReturnDefault_sync() throws IOException, SpotifyWebApiException {
+    shouldReturnDefault(defaultRequest.execute());
   }
 
   @Test
-  public void shouldSucceed_async() throws ExecutionException, InterruptedException {
-    shouldSucceed((AudioFeatures) successRequest.executeAsync().get());
+  public void shouldReturnDefault_async() throws ExecutionException, InterruptedException {
+    shouldReturnDefault((AudioFeatures) defaultRequest.executeAsync().get());
   }
 
-  public void shouldSucceed(final AudioFeatures audioFeatures) {
+  public void shouldReturnDefault(final AudioFeatures audioFeatures) {
     assertEquals(
             0.514,
             audioFeatures.getAcousticness(), 0.001);

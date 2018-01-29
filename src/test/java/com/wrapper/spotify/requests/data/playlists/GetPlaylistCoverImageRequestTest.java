@@ -15,7 +15,7 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(MockitoJUnitRunner.class)
 public class GetPlaylistCoverImageRequestTest implements ITest<Image[]> {
-  private final GetPlaylistCoverImageRequest successRequest = SPOTIFY_API
+  private final GetPlaylistCoverImageRequest defaultRequest = SPOTIFY_API
           .getPlaylistCoverImage("user_id", "playlist_id")
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
@@ -26,16 +26,16 @@ public class GetPlaylistCoverImageRequestTest implements ITest<Image[]> {
   }
 
   @Test
-  public void shouldSucceed_sync() throws IOException, SpotifyWebApiException {
-    shouldSucceed(successRequest.execute());
+  public void shouldReturnDefault_sync() throws IOException, SpotifyWebApiException {
+    shouldReturnDefault(defaultRequest.execute());
   }
 
   @Test
-  public void shouldSucceed_async() throws ExecutionException, InterruptedException {
-    shouldSucceed((Image[]) successRequest.executeAsync().get());
+  public void shouldReturnDefault_async() throws ExecutionException, InterruptedException {
+    shouldReturnDefault((Image[]) defaultRequest.executeAsync().get());
   }
 
-  public void shouldSucceed(final Image[] images) {
+  public void shouldReturnDefault(final Image[] images) {
     assertEquals(
             1,
             images.length);

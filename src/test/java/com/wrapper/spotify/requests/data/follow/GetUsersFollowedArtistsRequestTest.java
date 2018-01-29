@@ -17,13 +17,13 @@ import static org.junit.Assert.*;
 
 @RunWith(MockitoJUnitRunner.class)
 public class GetUsersFollowedArtistsRequestTest implements ITest<PagingCursorbased<Artist>> {
-  private final GetUsersFollowedArtistsRequest successRequest = SPOTIFY_API.getUsersFollowedArtists(ModelObjectType.ARTIST)
+  private final GetUsersFollowedArtistsRequest defaultRequest = SPOTIFY_API.getUsersFollowedArtists(ModelObjectType.ARTIST)
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
                           "requests/data/follow/GetUsersFollowedArtistsRequest.json"))
           .build();
 
-  private final GetUsersFollowedArtistsRequest failureRequest = SPOTIFY_API.getUsersFollowedArtists(ModelObjectType.ARTIST)
+  private final GetUsersFollowedArtistsRequest emptyRequest = SPOTIFY_API.getUsersFollowedArtists(ModelObjectType.ARTIST)
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
                           "requests/data/follow/GetUsersFollowedArtistsRequest_None.json"))
@@ -33,17 +33,17 @@ public class GetUsersFollowedArtistsRequestTest implements ITest<PagingCursorbas
   }
 
   @Test
-  public void shouldSucceed_sync() throws IOException, SpotifyWebApiException {
-    shouldSucceed(successRequest.execute());
+  public void shouldReturnDefault_sync() throws IOException, SpotifyWebApiException {
+    shouldReturnDefault(defaultRequest.execute());
   }
 
   @SuppressWarnings("unchecked")
   @Test
-  public void shouldSucceed_async() throws ExecutionException, InterruptedException {
-    shouldSucceed((PagingCursorbased<Artist>) successRequest.executeAsync().get());
+  public void shouldReturnDefault_async() throws ExecutionException, InterruptedException {
+    shouldReturnDefault((PagingCursorbased<Artist>) defaultRequest.executeAsync().get());
   }
 
-  public void shouldSucceed(final PagingCursorbased<Artist> artistPagingCursorbased) {
+  public void shouldReturnDefault(final PagingCursorbased<Artist> artistPagingCursorbased) {
     assertEquals(
             "https://api.spotify.com/v1/users/thelinmichael/following?type=artist&limit=20",
             artistPagingCursorbased.getHref());
@@ -64,17 +64,17 @@ public class GetUsersFollowedArtistsRequestTest implements ITest<PagingCursorbas
   }
 
   @Test
-  public void shouldFail_sync() throws IOException, SpotifyWebApiException {
-    shouldFail(failureRequest.execute());
+  public void shouldReturnEmpty_sync() throws IOException, SpotifyWebApiException {
+    shouldReturnEmpty(emptyRequest.execute());
   }
 
   @SuppressWarnings("unchecked")
   @Test
-  public void shouldFail_async() throws ExecutionException, InterruptedException {
-    shouldFail((PagingCursorbased<Artist>) failureRequest.executeAsync().get());
+  public void shouldReturnEmpty_async() throws ExecutionException, InterruptedException {
+    shouldReturnEmpty((PagingCursorbased<Artist>) emptyRequest.executeAsync().get());
   }
 
-  public void shouldFail(final PagingCursorbased<Artist> artistPagingCursorbased) {
+  public void shouldReturnEmpty(final PagingCursorbased<Artist> artistPagingCursorbased) {
     assertEquals(
             "https://api.spotify.com/v1/me/following?type=artist&limit=10",
             artistPagingCursorbased.getHref());

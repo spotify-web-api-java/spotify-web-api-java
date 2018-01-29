@@ -1,6 +1,0 @@
-{
-  "error": {
-    "status": 403,
-    "message": "You cannot add tracks to a playlist you don't own."
-  }
-}

@@ -16,11 +16,11 @@ import static org.junit.Assert.assertEquals;
 @RunWith(MockitoJUnitRunner.class)
 public class GetSeveralAlbumsRequestTest implements ITest<Album[]> {
 
-  private final GetSeveralAlbumsRequest successRequest = SPOTIFY_API.getSeveralAlbums("id")
+  private final GetSeveralAlbumsRequest defaultRequest = SPOTIFY_API.getSeveralAlbums("id")
           .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/albums/GetSeveralAlbumsRequest.json"))
           .build();
 
-  private final GetSeveralAlbumsRequest failureRequest = SPOTIFY_API.getSeveralAlbums("id")
+  private final GetSeveralAlbumsRequest emptyRequest = SPOTIFY_API.getSeveralAlbums("id")
           .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/albums/GetSeveralAlbumsRequest_None.json"))
           .build();
 
@@ -28,32 +28,32 @@ public class GetSeveralAlbumsRequestTest implements ITest<Album[]> {
   }
 
   @Test
-  public void shouldSucceed_sync() throws IOException, SpotifyWebApiException {
-    shouldSucceed(successRequest.execute());
+  public void shouldReturnDefault_sync() throws IOException, SpotifyWebApiException {
+    shouldReturnDefault(defaultRequest.execute());
   }
 
   @Test
-  public void shouldSucceed_async() throws ExecutionException, InterruptedException {
-    shouldSucceed((Album[]) successRequest.executeAsync().get());
+  public void shouldReturnDefault_async() throws ExecutionException, InterruptedException {
+    shouldReturnDefault((Album[]) defaultRequest.executeAsync().get());
   }
 
-  public void shouldSucceed(final Album[] albums) {
+  public void shouldReturnDefault(final Album[] albums) {
     assertEquals(
             1,
             albums.length);
   }
 
   @Test
-  public void shouldFail_sync() throws IOException, SpotifyWebApiException {
-    shouldFail(failureRequest.execute());
+  public void shouldReturnEmpty_sync() throws IOException, SpotifyWebApiException {
+    shouldReturnEmpty(emptyRequest.execute());
   }
 
   @Test
-  public void shouldFail_async() throws ExecutionException, InterruptedException {
-    shouldFail((Album[]) failureRequest.executeAsync().get());
+  public void shouldReturnEmpty_async() throws ExecutionException, InterruptedException {
+    shouldReturnEmpty((Album[]) emptyRequest.executeAsync().get());
   }
 
-  public void shouldFail(final Album[] albums) {
+  public void shouldReturnEmpty(final Album[] albums) {
     assertEquals(
             0,
             albums.length);

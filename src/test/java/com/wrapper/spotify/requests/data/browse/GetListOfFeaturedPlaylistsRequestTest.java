@@ -16,7 +16,7 @@ import static org.junit.Assert.assertNotNull;
 
 @RunWith(MockitoJUnitRunner.class)
 public class GetListOfFeaturedPlaylistsRequestTest implements ITest<FeaturedPlaylists> {
-  private final GetListOfFeaturedPlaylistsRequest successRequest = SPOTIFY_API.getListOfFeaturedPlaylists()
+  private final GetListOfFeaturedPlaylistsRequest defaultRequest = SPOTIFY_API.getListOfFeaturedPlaylists()
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
                           "requests/data/browse/GetListOfFeaturedPlaylistsRequest.json"))
@@ -26,16 +26,16 @@ public class GetListOfFeaturedPlaylistsRequestTest implements ITest<FeaturedPlay
   }
 
   @Test
-  public void shouldSucceed_sync() throws IOException, SpotifyWebApiException {
-    shouldSucceed(successRequest.execute());
+  public void shouldReturnDefault_sync() throws IOException, SpotifyWebApiException {
+    shouldReturnDefault(defaultRequest.execute());
   }
 
   @Test
-  public void shouldSucceed_async() throws ExecutionException, InterruptedException {
-    shouldSucceed((FeaturedPlaylists) successRequest.executeAsync().get());
+  public void shouldReturnDefault_async() throws ExecutionException, InterruptedException {
+    shouldReturnDefault((FeaturedPlaylists) defaultRequest.executeAsync().get());
   }
 
-  public void shouldSucceed(final FeaturedPlaylists featuredPlaylists) {
+  public void shouldReturnDefault(final FeaturedPlaylists featuredPlaylists) {
     assertEquals(
             "Monday morning music, coming right up!",
             featuredPlaylists.getMessage());

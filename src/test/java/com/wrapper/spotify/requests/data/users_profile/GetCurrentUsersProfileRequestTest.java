@@ -19,7 +19,7 @@ import static org.junit.Assert.assertNotNull;
 
 @RunWith(MockitoJUnitRunner.class)
 public class GetCurrentUsersProfileRequestTest implements ITest<User> {
-  private final GetCurrentUsersProfileRequest successRequest = SPOTIFY_API
+  private final GetCurrentUsersProfileRequest defaultRequest = SPOTIFY_API
           .getCurrentUsersProfile()
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
@@ -30,16 +30,16 @@ public class GetCurrentUsersProfileRequestTest implements ITest<User> {
   }
 
   @Test
-  public void shouldSucceed_sync() throws IOException, SpotifyWebApiException {
-    shouldSucceed(successRequest.execute());
+  public void shouldReturnDefault_sync() throws IOException, SpotifyWebApiException {
+    shouldReturnDefault(defaultRequest.execute());
   }
 
   @Test
-  public void shouldSucceed_async() throws ExecutionException, InterruptedException {
-    shouldSucceed((User) successRequest.executeAsync().get());
+  public void shouldReturnDefault_async() throws ExecutionException, InterruptedException {
+    shouldReturnDefault((User) defaultRequest.executeAsync().get());
   }
 
-  public void shouldSucceed(final User user) {
+  public void shouldReturnDefault(final User user) {
     assertEquals(
             "1937-06-01",
             user.getBirthdate());

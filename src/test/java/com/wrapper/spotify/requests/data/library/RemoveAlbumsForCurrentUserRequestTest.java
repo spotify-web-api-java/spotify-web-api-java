@@ -14,7 +14,7 @@ import static org.junit.Assert.assertNull;
 
 @RunWith(MockitoJUnitRunner.class)
 public class RemoveAlbumsForCurrentUserRequestTest implements ITest<String> {
-  private final RemoveAlbumsForCurrentUserRequest successRequest = SPOTIFY_API
+  private final RemoveAlbumsForCurrentUserRequest defaultRequest = SPOTIFY_API
           .removeAlbumsForCurrentUser("id")
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
@@ -25,16 +25,16 @@ public class RemoveAlbumsForCurrentUserRequestTest implements ITest<String> {
   }
 
   @Test
-  public void shouldSucceed_sync() throws IOException, SpotifyWebApiException {
-    shouldSucceed(successRequest.execute());
+  public void shouldReturnDefault_sync() throws IOException, SpotifyWebApiException {
+    shouldReturnDefault(defaultRequest.execute());
   }
 
   @Test
-  public void shouldSucceed_async() throws ExecutionException, InterruptedException {
-    shouldSucceed((String) successRequest.executeAsync().get());
+  public void shouldReturnDefault_async() throws ExecutionException, InterruptedException {
+    shouldReturnDefault((String) defaultRequest.executeAsync().get());
   }
 
-  public void shouldSucceed(final String string) {
+  public void shouldReturnDefault(final String string) {
     assertNull(
             string);
   }

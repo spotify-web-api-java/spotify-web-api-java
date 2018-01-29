@@ -16,7 +16,7 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(MockitoJUnitRunner.class)
 public class RemoveTracksFromPlaylistRequestTest implements ITest<SnapshotResult> {
-  private final RemoveTracksFromPlaylistRequest successRequest = SPOTIFY_API
+  private final RemoveTracksFromPlaylistRequest defaultRequest = SPOTIFY_API
           .removeTracksFromPlaylist("user_id", "playlist_id", new JsonParser().parse("[]").getAsJsonArray())
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
@@ -27,16 +27,16 @@ public class RemoveTracksFromPlaylistRequestTest implements ITest<SnapshotResult
   }
 
   @Test
-  public void shouldSucceed_sync() throws IOException, SpotifyWebApiException {
-    shouldSucceed(successRequest.execute());
+  public void shouldReturnDefault_sync() throws IOException, SpotifyWebApiException {
+    shouldReturnDefault(defaultRequest.execute());
   }
 
   @Test
-  public void shouldSucceed_async() throws ExecutionException, InterruptedException {
-    shouldSucceed((SnapshotResult) successRequest.executeAsync().get());
+  public void shouldReturnDefault_async() throws ExecutionException, InterruptedException {
+    shouldReturnDefault((SnapshotResult) defaultRequest.executeAsync().get());
   }
 
-  public void shouldSucceed(final SnapshotResult snapshotResult) {
+  public void shouldReturnDefault(final SnapshotResult snapshotResult) {
     assertEquals(
             "JbtmHBDBAYu3/bt8BOXKjzKx3i0b6LCa/wVjyl6qQ2Yf6nFXkbmzuEa+ZI/U1yF+",
             snapshotResult.getSnapshotId());

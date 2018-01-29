@@ -18,7 +18,7 @@ import static org.junit.Assert.*;
 
 @RunWith(MockitoJUnitRunner.class)
 public class GetAlbumRequestTest implements ITest<Album> {
-  private final GetAlbumRequest successRequest = SPOTIFY_API.getAlbum("id")
+  private final GetAlbumRequest defaultRequest = SPOTIFY_API.getAlbum("id")
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
                           "requests/data/albums/GetAlbumRequest.json"))
@@ -28,16 +28,16 @@ public class GetAlbumRequestTest implements ITest<Album> {
   }
 
   @Test
-  public void shouldSucceed_sync() throws IOException, SpotifyWebApiException {
-    shouldSucceed(successRequest.execute());
+  public void shouldReturnDefault_sync() throws IOException, SpotifyWebApiException {
+    shouldReturnDefault(defaultRequest.execute());
   }
 
   @Test
-  public void shouldSucceed_async() throws ExecutionException, InterruptedException {
-    shouldSucceed((Album) successRequest.executeAsync().get());
+  public void shouldReturnDefault_async() throws ExecutionException, InterruptedException {
+    shouldReturnDefault((Album) defaultRequest.executeAsync().get());
   }
 
-  public void shouldSucceed(final Album album) {
+  public void shouldReturnDefault(final Album album) {
     assertEquals(
             AlbumType.ALBUM,
             album.getAlbumType());

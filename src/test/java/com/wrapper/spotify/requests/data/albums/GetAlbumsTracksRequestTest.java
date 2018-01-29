@@ -18,7 +18,7 @@ import static org.junit.Assert.assertNull;
 @RunWith(MockitoJUnitRunner.class)
 public class GetAlbumsTracksRequestTest implements ITest<Paging<TrackSimplified>> {
 
-  private final GetAlbumsTracksRequest successRequest = SPOTIFY_API.getAlbumsTracks("id")
+  private final GetAlbumsTracksRequest defaultRequest = SPOTIFY_API.getAlbumsTracks("id")
           .limit(2)
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
@@ -29,17 +29,17 @@ public class GetAlbumsTracksRequestTest implements ITest<Paging<TrackSimplified>
   }
 
   @Test
-  public void shouldSucceed_sync() throws IOException, SpotifyWebApiException {
-    shouldSucceed(successRequest.execute());
+  public void shouldReturnDefault_sync() throws IOException, SpotifyWebApiException {
+    shouldReturnDefault(defaultRequest.execute());
   }
 
   @SuppressWarnings("unchecked")
   @Test
-  public void shouldSucceed_async() throws ExecutionException, InterruptedException {
-    shouldSucceed((Paging<TrackSimplified>) successRequest.executeAsync().get());
+  public void shouldReturnDefault_async() throws ExecutionException, InterruptedException {
+    shouldReturnDefault((Paging<TrackSimplified>) defaultRequest.executeAsync().get());
   }
 
-  public void shouldSucceed(final Paging<TrackSimplified> trackSimplifiedPaging) {
+  public void shouldReturnDefault(final Paging<TrackSimplified> trackSimplifiedPaging) {
     assertEquals(
             "https://api.spotify.com/v1/albums/6akEvsycLGftJxYudPjmqK/tracks?offset=0&limit=2",
             trackSimplifiedPaging.getHref());

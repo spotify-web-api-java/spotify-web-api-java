@@ -14,7 +14,7 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(MockitoJUnitRunner.class)
 public class CheckUsersSavedAlbumsRequestTest implements ITest<Boolean[]> {
-  private final CheckUsersSavedAlbumsRequest successRequest = SPOTIFY_API
+  private final CheckUsersSavedAlbumsRequest defaultRequest = SPOTIFY_API
           .checkUsersSavedAlbums("id")
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
@@ -25,16 +25,16 @@ public class CheckUsersSavedAlbumsRequestTest implements ITest<Boolean[]> {
   }
 
   @Test
-  public void shouldSucceed_sync() throws IOException, SpotifyWebApiException {
-    shouldSucceed(successRequest.execute());
+  public void shouldReturnDefault_sync() throws IOException, SpotifyWebApiException {
+    shouldReturnDefault(defaultRequest.execute());
   }
 
   @Test
-  public void shouldSucceed_async() throws ExecutionException, InterruptedException {
-    shouldSucceed((Boolean[]) successRequest.executeAsync().get());
+  public void shouldReturnDefault_async() throws ExecutionException, InterruptedException {
+    shouldReturnDefault((Boolean[]) defaultRequest.executeAsync().get());
   }
 
-  public void shouldSucceed(final Boolean[] booleans) {
+  public void shouldReturnDefault(final Boolean[] booleans) {
     assertEquals(
             2,
             booleans.length);

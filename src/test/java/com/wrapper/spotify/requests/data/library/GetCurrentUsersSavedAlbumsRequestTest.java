@@ -17,7 +17,7 @@ import static org.junit.Assert.assertNull;
 
 @RunWith(MockitoJUnitRunner.class)
 public class GetCurrentUsersSavedAlbumsRequestTest implements ITest<Paging<SavedAlbum>> {
-  private final GetCurrentUsersSavedAlbumsRequest successRequest = SPOTIFY_API
+  private final GetCurrentUsersSavedAlbumsRequest defaultRequest = SPOTIFY_API
           .getCurrentUsersSavedAlbums()
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
@@ -28,17 +28,17 @@ public class GetCurrentUsersSavedAlbumsRequestTest implements ITest<Paging<Saved
   }
 
   @Test
-  public void shouldSucceed_sync() throws IOException, SpotifyWebApiException {
-    shouldSucceed(successRequest.execute());
+  public void shouldReturnDefault_sync() throws IOException, SpotifyWebApiException {
+    shouldReturnDefault(defaultRequest.execute());
   }
 
   @SuppressWarnings("unchecked")
   @Test
-  public void shouldSucceed_async() throws ExecutionException, InterruptedException {
-    shouldSucceed((Paging<SavedAlbum>) successRequest.executeAsync().get());
+  public void shouldReturnDefault_async() throws ExecutionException, InterruptedException {
+    shouldReturnDefault((Paging<SavedAlbum>) defaultRequest.executeAsync().get());
   }
 
-  public void shouldSucceed(final Paging<SavedAlbum> savedAlbumPaging) {
+  public void shouldReturnDefault(final Paging<SavedAlbum> savedAlbumPaging) {
     assertEquals(
             "https://api.spotify.com/v1/me/albums?offset=0&limit=1",
             savedAlbumPaging.getHref());

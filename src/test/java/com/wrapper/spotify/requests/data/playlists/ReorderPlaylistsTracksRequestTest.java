@@ -15,7 +15,7 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(MockitoJUnitRunner.class)
 public class ReorderPlaylistsTracksRequestTest implements ITest<SnapshotResult> {
-  private final ReorderPlaylistsTracksRequest successRequest = SPOTIFY_API
+  private final ReorderPlaylistsTracksRequest defaultRequest = SPOTIFY_API
           .reorderPlaylistsTracks("user_id", "playlist_id", 0, 0)
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
@@ -26,16 +26,16 @@ public class ReorderPlaylistsTracksRequestTest implements ITest<SnapshotResult> 
   }
 
   @Test
-  public void shouldSucceed_sync() throws IOException, SpotifyWebApiException {
-    shouldSucceed(successRequest.execute());
+  public void shouldReturnDefault_sync() throws IOException, SpotifyWebApiException {
+    shouldReturnDefault(defaultRequest.execute());
   }
 
   @Test
-  public void shouldSucceed_async() throws ExecutionException, InterruptedException {
-    shouldSucceed((SnapshotResult) successRequest.executeAsync().get());
+  public void shouldReturnDefault_async() throws ExecutionException, InterruptedException {
+    shouldReturnDefault((SnapshotResult) defaultRequest.executeAsync().get());
   }
 
-  public void shouldSucceed(final SnapshotResult snapshotResult) {
+  public void shouldReturnDefault(final SnapshotResult snapshotResult) {
     assertEquals(
             "KsWY41k+zLqbx7goYX9zr+2IUZQtqbBNfk4ZOgEpIurvab4VSHhEL2L4za8HW6D0",
             snapshotResult.getSnapshotId());

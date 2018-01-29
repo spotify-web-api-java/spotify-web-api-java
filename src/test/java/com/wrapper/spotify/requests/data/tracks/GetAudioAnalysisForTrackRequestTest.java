@@ -16,7 +16,7 @@ import static org.junit.Assert.assertNotNull;
 
 @RunWith(MockitoJUnitRunner.class)
 public class GetAudioAnalysisForTrackRequestTest implements ITest<AudioAnalysis> {
-  private final GetAudioAnalysisForTrackRequest successRequest = SPOTIFY_API
+  private final GetAudioAnalysisForTrackRequest defaultRequest = SPOTIFY_API
           .getAudioAnalysisForTrack("id")
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
@@ -27,16 +27,16 @@ public class GetAudioAnalysisForTrackRequestTest implements ITest<AudioAnalysis>
   }
 
   @Test
-  public void shouldSucceed_sync() throws IOException, SpotifyWebApiException {
-    shouldSucceed(successRequest.execute());
+  public void shouldReturnDefault_sync() throws IOException, SpotifyWebApiException {
+    shouldReturnDefault(defaultRequest.execute());
   }
 
   @Test
-  public void shouldSucceed_async() throws ExecutionException, InterruptedException {
-    shouldSucceed((AudioAnalysis) successRequest.executeAsync().get());
+  public void shouldReturnDefault_async() throws ExecutionException, InterruptedException {
+    shouldReturnDefault((AudioAnalysis) defaultRequest.executeAsync().get());
   }
 
-  public void shouldSucceed(final AudioAnalysis audioAnalysis) {
+  public void shouldReturnDefault(final AudioAnalysis audioAnalysis) {
     assertEquals(
             1,
             audioAnalysis.getBars().length);

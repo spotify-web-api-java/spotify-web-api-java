@@ -17,7 +17,7 @@ import static org.junit.Assert.assertNull;
 
 @RunWith(MockitoJUnitRunner.class)
 public class GetCurrentUsersRecentlyPlayedTracksRequestTest implements ITest<PagingCursorbased<PlayHistory>> {
-  private final GetCurrentUsersRecentlyPlayedTracksRequest successRequest = SPOTIFY_API
+  private final GetCurrentUsersRecentlyPlayedTracksRequest defaultRequest = SPOTIFY_API
           .getCurrentUsersRecentlyPlayedTracks()
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
@@ -28,17 +28,17 @@ public class GetCurrentUsersRecentlyPlayedTracksRequestTest implements ITest<Pag
   }
 
   @Test
-  public void shouldSucceed_sync() throws IOException, SpotifyWebApiException {
-    shouldSucceed(successRequest.execute());
+  public void shouldReturnDefault_sync() throws IOException, SpotifyWebApiException {
+    shouldReturnDefault(defaultRequest.execute());
   }
 
   @SuppressWarnings("unchecked")
   @Test
-  public void shouldSucceed_async() throws ExecutionException, InterruptedException {
-    shouldSucceed((PagingCursorbased<PlayHistory>) successRequest.executeAsync().get());
+  public void shouldReturnDefault_async() throws ExecutionException, InterruptedException {
+    shouldReturnDefault((PagingCursorbased<PlayHistory>) defaultRequest.executeAsync().get());
   }
 
-  public void shouldSucceed(final PagingCursorbased<PlayHistory> playHistoryPagingCursorbased) {
+  public void shouldReturnDefault(final PagingCursorbased<PlayHistory> playHistoryPagingCursorbased) {
     assertEquals(
             "https://api.spotify.com/v1/me/player/recently-played?limit=2",
             playHistoryPagingCursorbased.getHref());

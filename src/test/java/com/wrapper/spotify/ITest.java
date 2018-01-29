@@ -15,9 +15,9 @@ public interface ITest<T> {
           .setRefreshToken("b0KuPuLw77Z0hQhCsK-GTHoEx_kethtn357V7iqwEpCTIsLgqbBC_vQBTGC6M5rINl0FrqHK-D3cbOsMOlfyVKuQPvpyGcLcxAoLOTpYXc28nVwB7iBq2oKj9G9lHkFOUKn")
           .build();
 
-  void shouldSucceed_sync() throws IOException, SpotifyWebApiException;
+  void shouldReturnDefault_sync() throws IOException, SpotifyWebApiException;
 
-  void shouldSucceed_async() throws ExecutionException, InterruptedException;
+  void shouldReturnDefault_async() throws ExecutionException, InterruptedException;
 
-  void shouldSucceed(final T type);
+  void shouldReturnDefault(final T type);
 }

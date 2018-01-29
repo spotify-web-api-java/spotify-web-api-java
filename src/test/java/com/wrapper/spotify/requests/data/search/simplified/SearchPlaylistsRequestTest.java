@@ -16,7 +16,7 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(MockitoJUnitRunner.class)
 public class SearchPlaylistsRequestTest implements ITest<Paging<PlaylistSimplified>> {
-  private final SearchPlaylistsRequest successRequest = SPOTIFY_API
+  private final SearchPlaylistsRequest defaultRequest = SPOTIFY_API
           .searchPlaylists("q")
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
@@ -27,17 +27,17 @@ public class SearchPlaylistsRequestTest implements ITest<Paging<PlaylistSimplifi
   }
 
   @Test
-  public void shouldSucceed_sync() throws IOException, SpotifyWebApiException {
-    shouldSucceed(successRequest.execute());
+  public void shouldReturnDefault_sync() throws IOException, SpotifyWebApiException {
+    shouldReturnDefault(defaultRequest.execute());
   }
 
   @SuppressWarnings("unchecked")
   @Test
-  public void shouldSucceed_async() throws ExecutionException, InterruptedException {
-    shouldSucceed((Paging<PlaylistSimplified>) successRequest.executeAsync().get());
+  public void shouldReturnDefault_async() throws ExecutionException, InterruptedException {
+    shouldReturnDefault((Paging<PlaylistSimplified>) defaultRequest.executeAsync().get());
   }
 
-  public void shouldSucceed(final Paging<PlaylistSimplified> playlistSimplifiedPaging) {
+  public void shouldReturnDefault(final Paging<PlaylistSimplified> playlistSimplifiedPaging) {
     assertEquals(
             "https://api.spotify.com/v1/search?query=Muse&type=playlist&market=US&offset=5&limit=10",
             playlistSimplifiedPaging.getHref());

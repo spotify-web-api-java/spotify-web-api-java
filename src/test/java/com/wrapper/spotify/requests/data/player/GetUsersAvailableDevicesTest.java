@@ -15,14 +15,14 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(MockitoJUnitRunner.class)
 public class GetUsersAvailableDevicesTest implements ITest<Device[]> {
-  private final GetUsersAvailableDevicesRequest successRequest = SPOTIFY_API
+  private final GetUsersAvailableDevicesRequest defaultRequest = SPOTIFY_API
           .getUsersAvailableDevices()
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
                           "requests/data/player/GetUsersAvailableDevices.json"))
           .build();
 
-  private final GetUsersAvailableDevicesRequest failureRequest = SPOTIFY_API
+  private final GetUsersAvailableDevicesRequest emptyRequest = SPOTIFY_API
           .getUsersAvailableDevices()
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
@@ -33,32 +33,32 @@ public class GetUsersAvailableDevicesTest implements ITest<Device[]> {
   }
 
   @Test
-  public void shouldSucceed_sync() throws IOException, SpotifyWebApiException {
-    shouldSucceed(successRequest.execute());
+  public void shouldReturnDefault_sync() throws IOException, SpotifyWebApiException {
+    shouldReturnDefault(defaultRequest.execute());
   }
 
   @Test
-  public void shouldSucceed_async() throws ExecutionException, InterruptedException {
-    shouldSucceed((Device[]) successRequest.executeAsync().get());
+  public void shouldReturnDefault_async() throws ExecutionException, InterruptedException {
+    shouldReturnDefault((Device[]) defaultRequest.executeAsync().get());
   }
 
-  public void shouldSucceed(final Device[] devices) {
+  public void shouldReturnDefault(final Device[] devices) {
     assertEquals(
             1,
             devices.length);
   }
 
   @Test
-  public void shouldFail_sync() throws IOException, SpotifyWebApiException {
-    shouldFail(failureRequest.execute());
+  public void shouldReturnEmpty_sync() throws IOException, SpotifyWebApiException {
+    shouldReturnEmpty(emptyRequest.execute());
   }
 
   @Test
-  public void shouldFail_async() throws ExecutionException, InterruptedException {
-    shouldFail((Device[]) failureRequest.executeAsync().get());
+  public void shouldReturnEmpty_async() throws ExecutionException, InterruptedException {
+    shouldReturnEmpty((Device[]) emptyRequest.executeAsync().get());
   }
 
-  public void shouldFail(final Device[] devices) {
+  public void shouldReturnEmpty(final Device[] devices) {
     assertEquals(
             0,
             devices.length);

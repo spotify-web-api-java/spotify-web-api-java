@@ -13,7 +13,7 @@ import static org.junit.Assert.assertEquals;
 
 public class AuthorizationCodeRequestTest implements ITest<AuthorizationCodeCredentials> {
 
-  private final AuthorizationCodeRequest successRequest = SPOTIFY_API.authorizationCode("Code")
+  private final AuthorizationCodeRequest defaultRequest = SPOTIFY_API.authorizationCode("Code")
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
                           "requests/authorization/authorization_code/AuthorizationCode.json"))
@@ -23,16 +23,16 @@ public class AuthorizationCodeRequestTest implements ITest<AuthorizationCodeCred
   }
 
   @Test
-  public void shouldSucceed_sync() throws IOException, SpotifyWebApiException {
-    shouldSucceed(successRequest.execute());
+  public void shouldReturnDefault_sync() throws IOException, SpotifyWebApiException {
+    shouldReturnDefault(defaultRequest.execute());
   }
 
   @Test
-  public void shouldSucceed_async() throws ExecutionException, InterruptedException {
-    shouldSucceed((AuthorizationCodeCredentials) successRequest.executeAsync().get());
+  public void shouldReturnDefault_async() throws ExecutionException, InterruptedException {
+    shouldReturnDefault((AuthorizationCodeCredentials) defaultRequest.executeAsync().get());
   }
 
-  public void shouldSucceed(final AuthorizationCodeCredentials authorizationCodeCredentials) {
+  public void shouldReturnDefault(final AuthorizationCodeCredentials authorizationCodeCredentials) {
     assertEquals(
             "taHZ2SdB-bPA3FsK3D7ZN5npZS47cMy-IEySVEGttOhXmqaVAIo0ESvTCLjLBifhHOHOIuhFUKPW1WMDP7w6dj3MAZdWT8CLI2MkZaXbYLTeoDvXesf2eeiLYPBGdx8tIwQJKgV8XdnzH_DONk",
             authorizationCodeCredentials.getAccessToken());

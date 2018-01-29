@@ -12,7 +12,7 @@ import java.util.concurrent.ExecutionException;
 import static org.junit.Assert.assertEquals;
 
 public class ClientCredentialsRequestTest implements ITest<ClientCredentials> {
-  private final ClientCredentialsRequest successRequest = SPOTIFY_API
+  private final ClientCredentialsRequest defaultRequest = SPOTIFY_API
           .clientCredentials()
           .setHttpManager(TestUtil.MockedHttpManager.returningJson(
                   "requests/authorization/client_credentials/ClientCredentials.json"))
@@ -22,16 +22,16 @@ public class ClientCredentialsRequestTest implements ITest<ClientCredentials> {
   }
 
   @Test
-  public void shouldSucceed_sync() throws IOException, SpotifyWebApiException {
-    shouldSucceed(successRequest.execute());
+  public void shouldReturnDefault_sync() throws IOException, SpotifyWebApiException {
+    shouldReturnDefault(defaultRequest.execute());
   }
 
   @Test
-  public void shouldSucceed_async() throws ExecutionException, InterruptedException {
-    shouldSucceed((ClientCredentials) successRequest.executeAsync().get());
+  public void shouldReturnDefault_async() throws ExecutionException, InterruptedException {
+    shouldReturnDefault((ClientCredentials) defaultRequest.executeAsync().get());
   }
 
-  public void shouldSucceed(final ClientCredentials clientCredentials) {
+  public void shouldReturnDefault(final ClientCredentials clientCredentials) {
     assertEquals(
             "taHZ2SdB-bPA3FsK3D7ZN5npZS47cMy-IEySVEGttOhXmqaVAIo0ESvTCLjLBifhHOHOIuhFUKPW1WMDP7w6dj3MAZdWT8CLI2MkZaXbYLTeoDvXesf2eeiLYPBGdx8tIwQJKgV8XdnzH_DONk",
             clientCredentials.getAccessToken());

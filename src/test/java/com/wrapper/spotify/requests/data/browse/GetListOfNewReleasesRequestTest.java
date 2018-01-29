@@ -17,7 +17,7 @@ import static org.junit.Assert.assertNull;
 
 @RunWith(MockitoJUnitRunner.class)
 public class GetListOfNewReleasesRequestTest implements ITest<Paging<AlbumSimplified>> {
-  private final GetListOfNewReleasesRequest successRequest = SPOTIFY_API.getListOfNewReleases()
+  private final GetListOfNewReleasesRequest defaultRequest = SPOTIFY_API.getListOfNewReleases()
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
                           "requests/data/browse/GetListOfNewReleasesRequest.json"))
@@ -27,17 +27,17 @@ public class GetListOfNewReleasesRequestTest implements ITest<Paging<AlbumSimpli
   }
 
   @Test
-  public void shouldSucceed_sync() throws IOException, SpotifyWebApiException {
-    shouldSucceed(successRequest.execute());
+  public void shouldReturnDefault_sync() throws IOException, SpotifyWebApiException {
+    shouldReturnDefault(defaultRequest.execute());
   }
 
   @SuppressWarnings("unchecked")
   @Test
-  public void shouldSucceed_async() throws ExecutionException, InterruptedException {
-    shouldSucceed((Paging<AlbumSimplified>) successRequest.executeAsync().get());
+  public void shouldReturnDefault_async() throws ExecutionException, InterruptedException {
+    shouldReturnDefault((Paging<AlbumSimplified>) defaultRequest.executeAsync().get());
   }
 
-  public void shouldSucceed(final Paging<AlbumSimplified> albumSimplifiedPaging) {
+  public void shouldReturnDefault(final Paging<AlbumSimplified> albumSimplifiedPaging) {
     assertEquals(
             "https://api.spotify.com/v1/browse/new-releases?country=SE&offset=0&limit=20",
             albumSimplifiedPaging.getHref());

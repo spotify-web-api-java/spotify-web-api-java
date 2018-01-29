@@ -15,7 +15,7 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(MockitoJUnitRunner.class)
 public class GetRecommendationsRequestTest implements ITest<Recommendations> {
-  private final GetRecommendationsRequest successRequest = SPOTIFY_API.getRecommendations()
+  private final GetRecommendationsRequest defaultRequest = SPOTIFY_API.getRecommendations()
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
                           "requests/data/browse/GetRecommendationsRequest.json"))
@@ -25,16 +25,16 @@ public class GetRecommendationsRequestTest implements ITest<Recommendations> {
   }
 
   @Test
-  public void shouldSucceed_sync() throws IOException, SpotifyWebApiException {
-    shouldSucceed(successRequest.execute());
+  public void shouldReturnDefault_sync() throws IOException, SpotifyWebApiException {
+    shouldReturnDefault(defaultRequest.execute());
   }
 
   @Test
-  public void shouldSucceed_async() throws ExecutionException, InterruptedException {
-    shouldSucceed((Recommendations) successRequest.executeAsync().get());
+  public void shouldReturnDefault_async() throws ExecutionException, InterruptedException {
+    shouldReturnDefault((Recommendations) defaultRequest.executeAsync().get());
   }
 
-  public void shouldSucceed(final Recommendations recommendations) {
+  public void shouldReturnDefault(final Recommendations recommendations) {
     assertEquals(
             2,
             recommendations.getSeeds().length);
