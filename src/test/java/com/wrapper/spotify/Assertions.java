@@ -10,20 +10,6 @@ import static org.junit.Assert.fail;
 
 public class Assertions {
 
-  public static void assertHasQueryParameter(IRequest request, String name) {
-    String[] queryParameters = request.getUri().getQuery().split("&");
-
-    for (String queryParameter : queryParameters) {
-      String[] queryParameterParts = queryParameter.split("=");
-
-      if (queryParameterParts[0].equals(name)) {
-        return;
-      }
-    }
-
-    fail(String.format("Request %s does not contain form parameter %s", request, name));
-  }
-
   public static <T> void assertHasQueryParameter(IRequest request, String name, T value) {
     String[] queryParameters = request.getUri().getQuery().split("&");
 
@@ -35,19 +21,7 @@ public class Assertions {
       }
     }
 
-    fail(String.format("Request %s does not contain form parameter %s with value %s", request, name, String.valueOf(value)));
-  }
-
-  public static void assertHasHeader(IRequest request, String name) {
-    List<Header> headers = request.getHeaders();
-
-    for (Header header : headers) {
-      if (header.getName().equals(name)) {
-        return;
-      }
-    }
-
-    fail(String.format("Request %s does not contain form parameter %s", request, name));
+    fail(String.format("Request \"%s\" does not contain form parameter \"%s\" with value \"%s\"", request.getClass().getSimpleName(), name, String.valueOf(value)));
   }
 
   public static <T> void assertHasHeader(IRequest request, String name, T value) {
@@ -59,19 +33,7 @@ public class Assertions {
       }
     }
 
-    fail(String.format("Request %s does not contain form parameter %s with value %s", request, name, String.valueOf(value)));
-  }
-
-  public static void assertHasFormParameter(IRequest request, String name) {
-    List<NameValuePair> formParameters = request.getFormParameters();
-
-    for (NameValuePair formParameter : formParameters) {
-      if (formParameter.getName().equals(name)) {
-        return;
-      }
-    }
-
-    fail(String.format("Request %s does not contain form parameter %s", request, name));
+    fail(String.format("Request \"%s\" does not contain form parameter \"%s\" with value \"%s\"", request.getClass().getSimpleName(), name, String.valueOf(value)));
   }
 
   public static <T> void assertHasFormParameter(IRequest request, String name, T value) {
@@ -83,19 +45,7 @@ public class Assertions {
       }
     }
 
-    fail(String.format("Request %s does not contain form parameter %s with value %s", request, name, String.valueOf(value)));
-  }
-
-  public static void assertHasBodyParameter(IRequest request, String name) {
-    List<NameValuePair> bodyParameters = request.getBodyParameters();
-
-    for (NameValuePair bodyParameter : bodyParameters) {
-      if (bodyParameter.getName().equals(name)) {
-        return;
-      }
-    }
-
-    fail(String.format("Request %s does not contain form parameter %s", request, name));
+    fail(String.format("Request \"%s\" does not contain form parameter \"%s\" with value \"%s\"", request.getClass().getSimpleName(), name, String.valueOf(value)));
   }
 
   public static <T> void assertHasBodyParameter(IRequest request, String name, T value) {
@@ -107,6 +57,6 @@ public class Assertions {
       }
     }
 
-    fail(String.format("Request %s does not contain form parameter %s with value %s", request, name, String.valueOf(value)));
+    fail(String.format("Request \"%s\" does not contain form parameter \"%s\" with value \"%s\"", request.getClass().getSimpleName(), name, String.valueOf(value)));
   }
 }
