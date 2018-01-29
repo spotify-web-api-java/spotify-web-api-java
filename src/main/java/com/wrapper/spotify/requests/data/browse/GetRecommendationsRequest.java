@@ -7,12 +7,33 @@ import com.wrapper.spotify.requests.data.AbstractDataRequest;
 
 import java.io.IOException;
 
+/**
+ * Create a playlist-style listening experience based on seed artists, tracks and genres. <br><br>
+ *
+ * Recommendations are generated based on the available information for a given seed entity and matched against similar
+ * artists and tracks. If there is sufficient information about the provided seeds, a list of tracks will be returned
+ * together with pool size details. <br><br>
+ *
+ * For artists and tracks that are very new or obscure there might not be enough data to generate a list of tracks.
+ */
 public class GetRecommendationsRequest extends AbstractDataRequest {
 
+  /**
+   * The private {@link GetRecommendationsRequest} constructor.
+   *
+   * @param builder A {@link GetRecommendationsRequest.Builder}.
+   */
   private GetRecommendationsRequest(final Builder builder) {
     super(builder);
   }
 
+  /**
+   * Get the {@link Recommendations}.
+   *
+   * @return A {@link Recommendations} object.
+   * @throws IOException            In case of networking issues.
+   * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
+   */
   @SuppressWarnings("unchecked")
   public Recommendations execute() throws
           IOException,
@@ -20,13 +41,23 @@ public class GetRecommendationsRequest extends AbstractDataRequest {
     return new Recommendations.JsonUtil().createModelObject(getJson());
   }
 
+  /**
+   * Builder class for building a {@link GetRecommendationsRequest}.
+   */
   public static final class Builder extends AbstractDataRequest.Builder<Builder> {
 
+    /**
+     * Create a new {@link GetRecommendationsRequest.Builder} instance.
+     *
+     * @param accessToken Required. A valid access token from the Spotify Accounts service.
+     */
     public Builder(final String accessToken) {
       super(accessToken);
     }
 
     /**
+     * The limit setter.
+     *
      * @param limit Optional. The target size of the list of recommended tracks. For seeds with unusually small pools or
      *              when highly restrictive filtering is applied, it may be impossible to generate the requested number
      *              of recommended tracks. Debugging information for such cases is available in the response. Default:
@@ -39,11 +70,15 @@ public class GetRecommendationsRequest extends AbstractDataRequest {
     }
 
     /**
+     * The country code setter.
+     *
      * @param market Optional. An ISO 3166-1 alpha-2 country code. Provide this parameter if you want to apply Track
-     *               Relinking. Because min_*, max_* and target_* are applied to pools before relinking, the generated
-     *               results may not precisely match the filters applied. Original, non-relinked tracks are available
-     *               via the linked_from attribute of the relinked track response.
+     *               Relinking. Because {@code min_*}, {@code max_*} and {@code target_*} are applied to pools before
+     *               relinking, the generated results may not precisely match the filters applied. Original,
+     *               non-relinked tracks are available via the {@code linked_from} attribute of the relinked track
+     *               response.
      * @return A {@link GetRecommendationsRequest.Builder}.
+     * @see <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">Wikipedia: ISO 3166-1 alpha-2 country codes</a>
      */
     public Builder market(final CountryCode market) {
       assert (market != null);
@@ -51,7 +86,7 @@ public class GetRecommendationsRequest extends AbstractDataRequest {
     }
 
     /**
-     * Optional. A hard ceiling. Tracks with the attribute value above the maximum value will be omitted.
+     * The maximum acousticness setter. Tracks with the attribute value above the maximum value will be omitted.
      *
      * @param max_acousticness A confidence measure from 0.0 to 1.0 of whether the track is acoustic. 1.0 represents
      *                         high confidence the track is acoustic.
@@ -64,7 +99,7 @@ public class GetRecommendationsRequest extends AbstractDataRequest {
     }
 
     /**
-     * Optional. A hard ceiling. Tracks with the attribute value above the maximum value will be omitted.
+     * The maximum danceability setter. Tracks with the attribute value above the maximum value will be omitted.
      *
      * @param max_danceability Danceability describes how suitable a track is for dancing based on a combination of
      *                         musical elements including tempo, rhythm stability, beat strength, and overall
@@ -78,7 +113,7 @@ public class GetRecommendationsRequest extends AbstractDataRequest {
     }
 
     /**
-     * Optional. A hard ceiling. Tracks with the attribute value above the maximum value will be omitted.
+     * The maximum duration setter. Tracks with the attribute value above the maximum value will be omitted.
      *
      * @param max_duration_ms The duration of the track in milliseconds.
      * @return A {@link GetRecommendationsRequest.Builder}.
@@ -89,7 +124,7 @@ public class GetRecommendationsRequest extends AbstractDataRequest {
     }
 
     /**
-     * Optional. A hard ceiling. Tracks with the attribute value above the maximum value will be omitted.
+     * The maximum energy setter. Tracks with the attribute value above the maximum value will be omitted.
      *
      * @param max_energy Energy is a measure from 0.0 to 1.0 and represents a perceptual measure of intensity and
      *                   activity. Typically, energetic seed_tracks feel fast, loud, and noisy. For example, death metal
@@ -105,7 +140,7 @@ public class GetRecommendationsRequest extends AbstractDataRequest {
     }
 
     /**
-     * Optional. A hard ceiling. Tracks with the attribute value above the maximum value will be omitted.
+     * The maximum instrumentalness setter. Tracks with the attribute value above the maximum value will be omitted.
      *
      * @param max_instrumentalness Predicts whether a track contains no vocals. "Ooh" and "aah" sounds are treated as
      *                             instrumental in this context. Rap or spoken word seed_tracks are clearly "vocal". The
@@ -121,7 +156,7 @@ public class GetRecommendationsRequest extends AbstractDataRequest {
     }
 
     /**
-     * Optional. A hard ceiling. Tracks with the attribute value above the maximum value will be omitted.
+     * The maximum key setter. Tracks with the attribute value above the maximum value will be omitted.
      *
      * @param max_key The key the track is in. Integers map to pitches using standard
      *                <a href="https://en.wikipedia.org/wiki/Pitch_class">Pitch Class notation</a>. E.g. 0 = C, 1 =
@@ -135,7 +170,7 @@ public class GetRecommendationsRequest extends AbstractDataRequest {
     }
 
     /**
-     * Optional. A hard ceiling. Tracks with the attribute value above the maximum value will be omitted.
+     * The maximum liveness setter. Tracks with the attribute value above the maximum value will be omitted.
      *
      * @param max_liveness Detects the presence of an audience in the recording. Higher liveness values represent an
      *                     increased probability that the track was performed live. A value above 0.8 provides strong
@@ -149,7 +184,7 @@ public class GetRecommendationsRequest extends AbstractDataRequest {
     }
 
     /**
-     * Optional. A hard ceiling. Tracks with the attribute value above the maximum value will be omitted.
+     * The maximum loudness setter. Tracks with the attribute value above the maximum value will be omitted.
      *
      * @param max_loudness The overall loudness of a track in decibels (dB). Loudness values are averaged across the
      *                     entire track and are useful for comparing relative loudness of seed_tracks. Loudness is the
@@ -163,7 +198,7 @@ public class GetRecommendationsRequest extends AbstractDataRequest {
     }
 
     /**
-     * Optional. A hard ceiling. Tracks with the attribute value above the maximum value will be omitted.
+     * The maximum mode setter. Tracks with the attribute value above the maximum value will be omitted.
      *
      * @param max_mode Mode indicates the modality (major or minor) of a track, the type of scale from which its melodic
      *                 content is derived. Major is represented by 1 and minor is 0.
@@ -176,7 +211,7 @@ public class GetRecommendationsRequest extends AbstractDataRequest {
     }
 
     /**
-     * Optional. A hard ceiling. Tracks with the attribute value above the maximum value will be omitted.
+     * The maximum popularity setter. Tracks with the attribute value above the maximum value will be omitted.
      *
      * @param max_popularity The popularity of the track. The value will be between 0 and 100, with 100 being the most
      *                       popular. The popularity is calculated by algorithm and is based, in the most part, on the
@@ -190,7 +225,7 @@ public class GetRecommendationsRequest extends AbstractDataRequest {
     }
 
     /**
-     * Optional. A hard ceiling. Tracks with the attribute value above the maximum value will be omitted.
+     * The maximum speechiness setter. Tracks with the attribute value above the maximum value will be omitted.
      *
      * @param max_speechiness Speechiness detects the presence of spoken words in a track. The more exclusively
      *                        speech-like the recording (e.g. talk show, audio book, poetry), the closer to 1.0 the
@@ -207,7 +242,7 @@ public class GetRecommendationsRequest extends AbstractDataRequest {
     }
 
     /**
-     * Optional. A hard ceiling. Tracks with the attribute value above the maximum value will be omitted.
+     * The maximum tempo setter. Tracks with the attribute value above the maximum value will be omitted.
      *
      * @param max_tempo The overall estimated tempo of a track in beats per minute (BPM). In musical terminology, tempo
      *                  is the speed or pace of a given piece and derives directly from the average beat duration.
@@ -220,7 +255,7 @@ public class GetRecommendationsRequest extends AbstractDataRequest {
     }
 
     /**
-     * Optional. A hard ceiling. Tracks with the attribute value above the maximum value will be omitted.
+     * The maximum time signature setter. Tracks with the attribute value above the maximum value will be omitted.
      *
      * @param max_time_signature An estimated overall time signature of a track. The time signature (meter) is a
      *                           notational convention to specify how many beats are in each bar (or measure).
@@ -232,7 +267,7 @@ public class GetRecommendationsRequest extends AbstractDataRequest {
     }
 
     /**
-     * Optional. A hard ceiling. Tracks with the attribute value above the maximum value will be omitted.
+     * The maximum valence setter. Tracks with the attribute value above the maximum value will be omitted.
      *
      * @param max_valence A measure from 0.0 to 1.0 describing the musical positiveness conveyed by a track. Tracks with
      *                    high valence sound more positive (e.g. happy, cheerful, euphoric), while seed_tracks with low
@@ -246,7 +281,7 @@ public class GetRecommendationsRequest extends AbstractDataRequest {
     }
 
     /**
-     * Optional. A hard floor. Tracks with the attribute value below the minimum value will be omitted.
+     * The minimum acousticness setter. Tracks with the attribute value below the minimum value will be omitted.
      *
      * @param min_acousticness A confidence measure from 0.0 to 1.0 of whether the track is acoustic. 1.0 represents
      *                         high confidence the track is acoustic.
@@ -259,7 +294,7 @@ public class GetRecommendationsRequest extends AbstractDataRequest {
     }
 
     /**
-     * Optional. A hard floor. Tracks with the attribute value below the minimum value will be omitted.
+     * The minimum danceability setter. Tracks with the attribute value below the minimum value will be omitted.
      *
      * @param min_danceability Danceability describes how suitable a track is for dancing based on a combination of
      *                         musical elements including tempo, rhythm stability, beat strength, and overall
@@ -273,7 +308,7 @@ public class GetRecommendationsRequest extends AbstractDataRequest {
     }
 
     /**
-     * Optional. A hard floor. Tracks with the attribute value below the minimum value will be omitted.
+     * The minimum duration setter. Tracks with the attribute value below the minimum value will be omitted.
      *
      * @param min_duration_ms The duration of the track in milliseconds.
      * @return A {@link GetRecommendationsRequest.Builder}.
@@ -284,7 +319,7 @@ public class GetRecommendationsRequest extends AbstractDataRequest {
     }
 
     /**
-     * Optional. A hard floor. Tracks with the attribute value below the minimum value will be omitted.
+     * The minimum energy setter. Tracks with the attribute value below the minimum value will be omitted.
      *
      * @param min_energy Energy is a measure from 0.0 to 1.0 and represents a perceptual measure of intensity and
      *                   activity. Typically, energetic seed_tracks feel fast, loud, and noisy. For example, death metal
@@ -300,7 +335,7 @@ public class GetRecommendationsRequest extends AbstractDataRequest {
     }
 
     /**
-     * Optional. A hard floor. Tracks with the attribute value below the minimum value will be omitted.
+     * The minimum instrumentalness setter. Tracks with the attribute value below the minimum value will be omitted.
      *
      * @param min_instrumentalness Predicts whether a track contains no vocals. "Ooh" and "aah" sounds are treated as
      *                             instrumental in this context. Rap or spoken word seed_tracks are clearly "vocal". The
@@ -316,7 +351,7 @@ public class GetRecommendationsRequest extends AbstractDataRequest {
     }
 
     /**
-     * Optional. A hard floor. Tracks with the attribute value below the minimum value will be omitted.
+     * The minimum key setter. Tracks with the attribute value below the minimum value will be omitted.
      *
      * @param min_key The key the track is in. Integers map to pitches using standard
      *                <a href="https://en.wikipedia.org/wiki/Pitch_class">Pitch Class notation</a>. E.g. 0 = C, 1 =
@@ -330,7 +365,7 @@ public class GetRecommendationsRequest extends AbstractDataRequest {
     }
 
     /**
-     * Optional. A hard floor. Tracks with the attribute value below the minimum value will be omitted.
+     * The minimum liveness setter. Tracks with the attribute value below the minimum value will be omitted.
      *
      * @param min_liveness Detects the presence of an audience in the recording. Higher liveness values represent an
      *                     increased probability that the track was performed live. A value above 0.8 provides strong
@@ -344,7 +379,7 @@ public class GetRecommendationsRequest extends AbstractDataRequest {
     }
 
     /**
-     * Optional. A hard floor. Tracks with the attribute value below the minimum value will be omitted.
+     * The minimum loudness setter. Tracks with the attribute value below the minimum value will be omitted.
      *
      * @param min_loudness The overall loudness of a track in decibels (dB). Loudness values are averaged across the
      *                     entire track and are useful for comparing relative loudness of seed_tracks. Loudness is the
@@ -358,7 +393,7 @@ public class GetRecommendationsRequest extends AbstractDataRequest {
     }
 
     /**
-     * Optional. A hard floor. Tracks with the attribute value below the minimum value will be omitted.
+     * The minimum mode setter. Tracks with the attribute value below the minimum value will be omitted.
      *
      * @param min_mode Mode indicates the modality (major or minor) of a track, the type of scale from which its melodic
      *                 content is derived. Major is represented by 1 and minor is 0.
@@ -371,7 +406,7 @@ public class GetRecommendationsRequest extends AbstractDataRequest {
     }
 
     /**
-     * Optional. A hard floor. Tracks with the attribute value below the minimum value will be omitted.
+     * The minimum popularity setter. Tracks with the attribute value below the minimum value will be omitted.
      *
      * @param min_popularity The popularity of the track. The value will be between 0 and 100, with 100 being the most
      *                       popular. The popularity is calculated by algorithm and is based, in the most part, on the
@@ -385,7 +420,7 @@ public class GetRecommendationsRequest extends AbstractDataRequest {
     }
 
     /**
-     * Optional. A hard floor. Tracks with the attribute value below the minimum value will be omitted.
+     * The minimum speechiness setter. Tracks with the attribute value below the minimum value will be omitted.
      *
      * @param min_speechiness Speechiness detects the presence of spoken words in a track. The more exclusively
      *                        speech-like the recording (e.g. talk show, audio book, poetry), the closer to 1.0 the
@@ -402,7 +437,7 @@ public class GetRecommendationsRequest extends AbstractDataRequest {
     }
 
     /**
-     * Optional. A hard floor. Tracks with the attribute value below the minimum value will be omitted.
+     * The minimum tempo setter. Tracks with the attribute value below the minimum value will be omitted.
      *
      * @param min_tempo The overall estimated tempo of a track in beats per minute (BPM). In musical terminology, tempo
      *                  is the speed or pace of a given piece and derives directly from the average beat duration.
@@ -415,7 +450,7 @@ public class GetRecommendationsRequest extends AbstractDataRequest {
     }
 
     /**
-     * Optional. A hard floor. Tracks with the attribute value below the minimum value will be omitted.
+     * The minimum time signature setter. Tracks with the attribute value below the minimum value will be omitted.
      *
      * @param min_time_signature An estimated overall time signature of a track. The time signature (meter) is a
      *                           notational convention to specify how many beats are in each bar (or measure).
@@ -427,7 +462,7 @@ public class GetRecommendationsRequest extends AbstractDataRequest {
     }
 
     /**
-     * Optional. A hard floor. Tracks with the attribute value below the minimum value will be omitted.
+     * The minimum valence setter. Tracks with the attribute value below the minimum value will be omitted.
      *
      * @param min_valence A measure from 0.0 to 1.0 describing the musical positiveness conveyed by a track. Tracks with
      *                    high valence sound more positive (e.g. happy, cheerful, euphoric), while seed_tracks with low
@@ -441,9 +476,12 @@ public class GetRecommendationsRequest extends AbstractDataRequest {
     }
 
     /**
+     * The seed artists setter.
+     *
      * @param seed_artists A comma separated list of Spotify IDs for seed seed_artists. Up to 5 seed values may be
      *                     provided in any combination of seed_artists, seed_tracks and seed_genres.
      * @return A {@link GetRecommendationsRequest.Builder}.
+     * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify URIs &amp; IDs</a>
      */
     public Builder seed_artists(final String seed_artists) {
       assert (seed_artists != null);
@@ -452,9 +490,12 @@ public class GetRecommendationsRequest extends AbstractDataRequest {
     }
 
     /**
+     * The seed genres setter.
+     *
      * @param seed_genres A comma separated list of any seed_genres in the set of available genre seeds. Up to 5 seed
      *                    values may be provided in any combination of seed_artists, seed_tracks and seed_genres.
      * @return A {@link GetRecommendationsRequest.Builder}.
+     * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify URIs &amp; IDs</a>
      */
     public Builder seed_genres(final String seed_genres) {
       assert (seed_genres != null);
@@ -463,8 +504,11 @@ public class GetRecommendationsRequest extends AbstractDataRequest {
     }
 
     /**
+     * The seed tracks setter.
+     *
      * @param seed_tracks A comma separated list of Spotify IDs for a seed track. Up to 5 seed values may be provided in
      *                    any combination of seed_artists, seed_tracks and seed_genres.
+     *                    @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify URIs &amp; IDs</a>
      * @return A {@link GetRecommendationsRequest.Builder}.
      */
     public Builder seed_tracks(final String seed_tracks) {
@@ -474,8 +518,8 @@ public class GetRecommendationsRequest extends AbstractDataRequest {
     }
 
     /**
-     * Optional. Tracks with the attribute value nearest to the target value will be preferred. All target values will
-     * be weighed equally in ranking results.
+     * The target acousticness setter. Tracks with the attribute value nearest to the target value will be preferred.
+     * All target values will be weighed equally in ranking results.
      *
      * @param target_acousticness A confidence measure from 0.0 to 1.0 of whether the track is acoustic. 1.0 represents
      *                            high confidence the track is acoustic.
@@ -488,8 +532,8 @@ public class GetRecommendationsRequest extends AbstractDataRequest {
     }
 
     /**
-     * Optional. Tracks with the attribute value nearest to the target value will be preferred. All target values will
-     * be weighed equally in ranking results.
+     * The target danceability setter. Tracks with the attribute value nearest to the target value will be preferred.
+     * All target values will be weighed equally in ranking results.
      *
      * @param target_danceability Danceability describes how suitable a track is for dancing based on a combination of
      *                            musical elements including tempo, rhythm stability, beat strength, and overall
@@ -503,8 +547,8 @@ public class GetRecommendationsRequest extends AbstractDataRequest {
     }
 
     /**
-     * Optional. Tracks with the attribute value nearest to the target value will be preferred. All target values will
-     * be weighed equally in ranking results.
+     * The target duration setter. Tracks with the attribute value nearest to the target value will be preferred. All
+     * target values will be weighed equally in ranking results.
      *
      * @param target_duration_ms The duration of the track in milliseconds.
      * @return A {@link GetRecommendationsRequest.Builder}.
@@ -515,8 +559,8 @@ public class GetRecommendationsRequest extends AbstractDataRequest {
     }
 
     /**
-     * Optional. Tracks with the attribute value nearest to the target value will be preferred. All target values will
-     * be weighed equally in ranking results.
+     * The target energy setter. Tracks with the attribute value nearest to the target value will be preferred. All
+     * target values will be weighed equally in ranking results.
      *
      * @param target_energy Energy is a measure from 0.0 to 1.0 and represents a perceptual measure of intensity and
      *                      activity. Typically, energetic seed_tracks feel fast, loud, and noisy. For example, death
@@ -532,8 +576,8 @@ public class GetRecommendationsRequest extends AbstractDataRequest {
     }
 
     /**
-     * Optional. Tracks with the attribute value nearest to the target value will be preferred. All target values will
-     * be weighed equally in ranking results.
+     * The target instrumentalness setter. Tracks with the attribute value nearest to the target value will be
+     * preferred. All target values will be weighed equally in ranking results.
      *
      * @param target_instrumentalness Predicts whether a track contains no vocals. "Ooh" and "aah" sounds are treated as
      *                                instrumental in this context. Rap or spoken word seed_tracks are clearly "vocal".
@@ -549,8 +593,8 @@ public class GetRecommendationsRequest extends AbstractDataRequest {
     }
 
     /**
-     * Optional. Tracks with the attribute value nearest to the target value will be preferred. All target values will
-     * be weighed equally in ranking results.
+     * The target key setter. Tracks with the attribute value nearest to the target value will be preferred. All target
+     * values will be weighed equally in ranking results.
      *
      * @param target_key The key the track is in. Integers map to pitches using standard
      *                   <a href="https://en.wikipedia.org/wiki/Pitch_class">Pitch Class notation</a>. E.g. 0 = C, 1 =
@@ -564,8 +608,8 @@ public class GetRecommendationsRequest extends AbstractDataRequest {
     }
 
     /**
-     * Optional. Tracks with the attribute value nearest to the target value will be preferred. All target values will
-     * be weighed equally in ranking results.
+     * The target liveness setter. Tracks with the attribute value nearest to the target value will be preferred. All
+     * target values will be weighed equally in ranking results.
      *
      * @param target_liveness Detects the presence of an audience in the recording. Higher liveness values represent an
      *                        increased probability that the track was performed live. A value above 0.8 provides strong
@@ -579,8 +623,8 @@ public class GetRecommendationsRequest extends AbstractDataRequest {
     }
 
     /**
-     * Optional. Tracks with the attribute value nearest to the target value will be preferred. All target values will
-     * be weighed equally in ranking results.
+     * The target loudness setter. Tracks with the attribute value nearest to the target value will be preferred. All
+     * target values will be weighed equally in ranking results.
      *
      * @param target_loudness The overall loudness of a track in decibels (dB). Loudness values are averaged across the
      *                        entire track and are useful for comparing relative loudness of seed_tracks. Loudness is
@@ -594,8 +638,8 @@ public class GetRecommendationsRequest extends AbstractDataRequest {
     }
 
     /**
-     * Optional. Tracks with the attribute value nearest to the target value will be preferred. All target values will
-     * be weighed equally in ranking results.
+     * The target mode setter. Tracks with the attribute value nearest to the target value will be preferred. All target
+     * values will be weighed equally in ranking results.
      *
      * @param target_mode Mode indicates the modality (major or minor) of a track, the type of scale from which its
      *                    melodic content is derived. Major is represented by 1 and minor is 0.
@@ -608,8 +652,8 @@ public class GetRecommendationsRequest extends AbstractDataRequest {
     }
 
     /**
-     * Optional. Tracks with the attribute value nearest to the target value will be preferred. All target values will
-     * be weighed equally in ranking results.
+     * The target popularity setter. Tracks with the attribute value nearest to the target value will be preferred. All
+     * target values will be weighed equally in ranking results.
      *
      * @param target_popularity The value will be between 0 and 100, with 100 being the most
      *                          popular. The popularity is calculated by algorithm and is based, in the most part, on
@@ -623,8 +667,8 @@ public class GetRecommendationsRequest extends AbstractDataRequest {
     }
 
     /**
-     * Optional. Tracks with the attribute value nearest to the target value will be preferred. All target values will
-     * be weighed equally in ranking results.
+     * The target speechiness setter. Tracks with the attribute value nearest to the target value will be preferred. All
+     * target values will be weighed equally in ranking results.
      *
      * @param target_speechiness Speechiness detects the presence of spoken words in a track. The more exclusively
      *                           speech-like the recording (e.g. talk show, audio book, poetry), the closer to 1.0 the
@@ -641,8 +685,8 @@ public class GetRecommendationsRequest extends AbstractDataRequest {
     }
 
     /**
-     * Optional. Tracks with the attribute value nearest to the target value will be preferred. All target values will
-     * be weighed equally in ranking results.
+     * The target tempo setter. Tracks with the attribute value nearest to the target value will be preferred. All
+     * target values will be weighed equally in ranking results.
      *
      * @param target_tempo The overall estimated tempo of a track in beats per minute (BPM). In musical terminology,
      *                     tempo is the speed or pace of a given piece and derives directly from the average beat
@@ -656,8 +700,8 @@ public class GetRecommendationsRequest extends AbstractDataRequest {
     }
 
     /**
-     * Optional. Tracks with the attribute value nearest to the target value will be preferred. All target values will
-     * be weighed equally in ranking results.
+     * The target time signature setter. Tracks with the attribute value nearest to the target value will be preferred.
+     * All target values will be weighed equally in ranking results.
      *
      * @param target_time_signature An estimated overall time signature of a track. The time signature (meter) is a
      *                              notational convention to specify how many beats are in each bar (or measure).
@@ -669,8 +713,8 @@ public class GetRecommendationsRequest extends AbstractDataRequest {
     }
 
     /**
-     * Optional. Tracks with the attribute value nearest to the target value will be preferred. All target values will
-     * be weighed equally in ranking results.
+     * The target valence setter. Tracks with the attribute value nearest to the target value will be preferred. All
+     * target values will be weighed equally in ranking results.
      *
      * @param target_valence A measure from 0.0 to 1.0 describing the musical positiveness conveyed by a track. Tracks
      *                       with high valence sound more positive (e.g. happy, cheerful, euphoric), while seed_tracks
@@ -683,6 +727,11 @@ public class GetRecommendationsRequest extends AbstractDataRequest {
       return setQueryParameter("target_valence", target_valence);
     }
 
+    /**
+     * The request build method.
+     *
+     * @return A custom {@link GetRecommendationsRequest}.
+     */
     @Override
     public GetRecommendationsRequest build() {
       setPath("/v1/recommendations");
