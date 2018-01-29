@@ -1,25 +1,16 @@
 package authorization.authorization_code;
 
 import com.wrapper.spotify.SpotifyApi;
+import com.wrapper.spotify.SpotifyHttpManager;
 import com.wrapper.spotify.requests.authorization.authorization_code.AuthorizationCodeUriRequest;
-import org.apache.http.client.utils.URIBuilder;
 
 import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.concurrent.Future;
 
 public class AuthorizationCodeUriExample {
   private static final String clientId = "zyuxhfo1c51b5hxjk09x2uhv5n0svgd6g";
   private static final String clientSecret = "zudknyqbh3wunbhcvg9uyvo7uwzeu6nne";
-  private static URI redirectUri = null;
-
-  static {
-    try {
-      redirectUri = new URIBuilder().setScheme("https").setHost("example.com").setPath("spotify-redirect").build();
-    } catch (URISyntaxException e) {
-      e.printStackTrace();
-    }
-  }
+  private static final URI redirectUri = SpotifyHttpManager.makeUri("https://example.com/spotify-redirect");
 
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
           .setClientId(clientId)

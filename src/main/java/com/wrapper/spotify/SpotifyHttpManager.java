@@ -24,12 +24,12 @@ import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
 import java.net.URI;
+import java.net.URISyntaxException;
 import java.nio.charset.Charset;
 import java.util.List;
 import java.util.logging.Level;
 
 public class SpotifyHttpManager implements IHttpManager {
-
 
   private static final int DEFAULT_CACHE_MAX_ENTRIES = 1000;
   private static final int DEFAULT_CACHE_MAX_OBJECT_SIZE = 8192;
@@ -85,6 +85,17 @@ public class SpotifyHttpManager implements IHttpManager {
             .setDefaultCredentialsProvider(credentialsProvider)
             .setDefaultRequestConfig(requestConfig)
             .build();
+  }
+
+  public static URI makeUri(String uriString) {
+    try {
+      return new URI(uriString);
+    } catch (URISyntaxException e) {
+      SpotifyApi.LOGGER.log(
+              Level.SEVERE,
+              "URI Syntax Exception for \"" + uriString + "\"");
+      return null;
+    }
   }
 
   public HttpHost getProxy() {

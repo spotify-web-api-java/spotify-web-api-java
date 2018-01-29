@@ -3,10 +3,7 @@ package authorization.authorization_code;
 import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.model_objects.credentials.AuthorizationCodeCredentials;
 import com.wrapper.spotify.requests.authorization.authorization_code.AuthorizationCodeRefreshRequest;
-import org.apache.http.client.utils.URIBuilder;
 
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.concurrent.Future;
 
 public class AuthorizationCodeRefreshExample {

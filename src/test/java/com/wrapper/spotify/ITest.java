@@ -10,7 +10,7 @@ public interface ITest<T> {
   SpotifyApi SPOTIFY_API = new SpotifyApi.Builder().setAccessToken("AccessToken")
           .setClientId("ClientId")
           .setClientSecret("ClientSecret")
-          .setRedirectUri("RedirectUri")
+          .setRedirectUri(SpotifyHttpManager.makeUri("RedirectUri"))
           .setRefreshToken("RefreshToken")
           .build();
 

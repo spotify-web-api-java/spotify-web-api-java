@@ -1736,21 +1736,6 @@ public class SpotifyApi {
     }
 
     /**
-     * The redirect URI setter.
-     *
-     * @param redirectUri A redirect URI of your application.
-     * @return A {@link SpotifyApi.Builder}.
-     */
-    public Builder setRedirectUri(String redirectUri) {
-      try {
-        return setRedirectUri(new URI(redirectUri));
-      } catch (URISyntaxException e) {
-        e.printStackTrace();
-        return null;
-      }
-    }
-
-    /**
      * The access token setter.
      *
      * @param accessToken A Spotify API access token.
