@@ -16,10 +16,10 @@ public class GetCurrentUsersRecentlyPlayedTracksExample {
           .build();
   private static final GetCurrentUsersRecentlyPlayedTracksRequest getCurrentUsersRecentlyPlayedTracksRequest =
           spotifyApi.getCurrentUsersRecentlyPlayedTracks()
-                  .after(new Date(1517087230))
-                  .before(new Date(1453932420))
+                  .after(new Date(1517087230000L))
+                  .before(new Date(1453932420000L))
                   .limit(10)
-          .build();
+                  .build();
 
   public static void getCurrentUsersRecentlyPlayedTracks_Sync() {
     try {

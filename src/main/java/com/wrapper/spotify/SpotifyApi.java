@@ -32,7 +32,6 @@ import com.wrapper.spotify.requests.data.users_profile.GetCurrentUsersProfileReq
 import com.wrapper.spotify.requests.data.users_profile.GetUsersProfileRequest;
 
 import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.logging.Logger;
 
 /**
@@ -678,7 +677,7 @@ public class SpotifyApi {
   /**
    * Add the current user as a follower of a playlist.
    *
-   * @param owner_id 	The Spotify user ID of the person who owns the playlist.
+   * @param owner_id    The Spotify user ID of the person who owns the playlist.
    * @param playlist_id The Spotify ID of the playlist. Any playlist can be followed, regardless of its
    *                    public/private status, as long as you know its playlist ID.
    * @param public_     Default: true. If true the playlist will be included in user's public playlists, if false it
@@ -938,7 +937,7 @@ public class SpotifyApi {
 
   /**
    * Get the current users top artists or tracks based on calculated affinity. <br><br>
-   *
+   * <p>
    * Affinity is a measure of the expected preference an user has for a particular track or artist. It is based on user
    * behavior, including play history, but does not include actions made while in incognito mode. Light or infrequent
    * users of Spotify may not have sufficient play history to generate a full affinity data set.
@@ -990,10 +989,10 @@ public class SpotifyApi {
 
   /**
    * Get tracks from the current users recently played tracks. <br><br>
-   *
+   * <p>
    * Returns the most recent 50 tracks played by an user. Note that a track currently playing will not be visible in play
    * history until it has completed. A track must be played for more than 30 seconds to be included in play history.
-   *
+   * <p>
    * Any tracks listened to while the user had "Private Session" enabled in their client will not be returned in the
    * list of recently played tracks.
    *
@@ -1088,7 +1087,7 @@ public class SpotifyApi {
 
   /**
    * Skips to previous track in the users queue.
-   *
+   * <p>
    * <b>Note:</b> This will ALWAYS skip to the previous track, regardless of the current track’s progress. Returning to
    * the start of the current track should be performed using the {@link #seekToPositionInCurrentlyPlayingTrack(int)}
    * method.
@@ -1329,7 +1328,7 @@ public class SpotifyApi {
 
   /**
    * Reorder a track or a group of tracks in a playlist. <br><br>
-   *
+   * <p>
    * When reordering tracks, the timestamp indicating when they were added and the user who added them will be kept
    * untouched. In addition, the users following the playlists won’t be notified about changes in the playlists when the
    * tracks are reordered.

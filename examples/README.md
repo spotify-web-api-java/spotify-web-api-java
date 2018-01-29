@@ -8,6 +8,7 @@ The following (random) data should be used when modifying examples:
 - Client ID: `"zyuxhfo1c51b5hxjk09x2uhv5n0svgd6g"`
 - Client secret: `"zudknyqbh3wunbhcvg9uyvo7uwzeu6nne"`
 - Redirect URI: `SpotifyHttpManager.makeUri("https://example.com/spotify-redirect")`
+- Authorization code: `"c-oGaPdYJF3tu3oUZRUiBHWQvm4oHnBrsxfHackYzzomKJiy5te1k04LJdr6XxjACe9TonpJR8NPOQ3o5btASx_oMw4trmXLYdkda77wY0NJ9Scl69lKvGiOfdnRi5Q0IbBu185Y0TZgyUJz3Auqqv-Wk7zjRke4DzqYEc3ucyUBOq08j5223te-G2K72aL9PxgVJaEHBbLvhdJscCy-zcyU29EZoNlG_E5"`
 - Refresh token: `"b0KuPuLw77Z0hQhCsK-GTHoEx_kethtn357V7iqwEpCTIsLgqbBC_vQBTGC6M5rINl0FrqHK-D3cbOsMOlfyVKuQPvpyGcLcxAoLOTpYXc28nVwB7iBq2oKj9G9lHkFOUKn"`
 - Access token: `"taHZ2SdB-bPA3FsK3D7ZN5npZS47cMy-IEySVEGttOhXmqaVAIo0ESvTCLjLBifhHOHOIuhFUKPW1WMDP7w6dj3MAZdWT8CLI2MkZaXbYLTeoDvXesf2eeiLYPBGdx8tIwQJKgV8XdnzH_DONk"`
 
@@ -32,9 +33,9 @@ The following (random) data should be used when modifying examples:
 - Volume percent: `100`
 
 ### Optional
-- After: see appropriate IDs or `new Date(1517087230)`
-- Album type: `"album"`
-- Before: `new Date(1453932420)`
+- After: see appropriate IDs or `new Date(1517087230000L)`
+- Album type: `AlbumType.ALBUM.getType()`
+- Before: `new Date(1453932420000L)`
 - Collaborative: `false`
 - Context URI: `"spotify:album:5zT1JLIj9E57p3e1rFm9Uq"`
 - Description: `"Amazing music."`
@@ -42,7 +43,7 @@ The following (random) data should be used when modifying examples:
 - Fields: `"description"`
 - Image data: see `image_data.txt`
 - Limit: `10`
-- Locale: `"sv_SE"`
+- Locale: `LanguageCode.sv + "_" + CountryCode.SE`
 - Market: `CountryCode.SE`
 - Max popularity: `50`
 - Min popularity: `10`
@@ -51,16 +52,16 @@ The following (random) data should be used when modifying examples:
 - Play: `false`
 - Position: `0`
 - Public: `false`
-- Range length: `0`
-- Scope: `"user-read-birthdate"`
+- Range length: `1`
+- Scope: `"user-read-birthdate,user-read-email"`
 - Seed artists: `"0LcJLqbBmaGUft1e9Mm8HV"`
 - Seed genres: `"electro"`
 - Seed tracks: `"01iyCAUm8EvOFqVWYJ3dVX"`
-- Show dialog: true
+- Show dialog: `true`
 - Snapshot ID: `"JbtmHBDBAYu3/bt8BOXKjzKx3i0b6LCa/wVjyl6qQ2Yf6nFXkbmzuEa+ZI/U1yF+"`
 - State: `"x4xkmn9pu3j6ukrs8n"`
 - Target popularity: `20`
 - Time range: `"medium_term"`
-- Timestamp: `new Date(1414054800)`
+- Timestamp: `new Date(1414054800000L)`
 - Tracks: `new JsonParser().parse("[\"01iyCAUm8EvOFqVWYJ3dVX\"]").getAsJsonArray()`
 - URIs: `new JsonParser().parse("{\"position\": 0}").getAsJsonArray()`

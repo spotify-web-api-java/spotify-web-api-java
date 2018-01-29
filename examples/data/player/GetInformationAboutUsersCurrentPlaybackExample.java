@@ -16,7 +16,7 @@ public class GetInformationAboutUsersCurrentPlaybackExample {
   private static final GetInformationAboutUsersCurrentPlaybackRequest getInformationAboutUsersCurrentPlaybackRequest =
           spotifyApi.getInformationAboutUsersCurrentPlayback()
                   .market(CountryCode.SE)
-          .build();
+                  .build();
 
   public static void getInformationAboutUsersCurrentPlayback_Sync() {
     try {

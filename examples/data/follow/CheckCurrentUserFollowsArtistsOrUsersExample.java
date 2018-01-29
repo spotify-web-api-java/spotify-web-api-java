@@ -16,7 +16,7 @@ public class CheckCurrentUserFollowsArtistsOrUsersExample {
           .build();
   private static final CheckCurrentUserFollowsArtistsOrUsersRequest checkCurrentUserFollowsArtistsOrUsersRequest =
           spotifyApi.checkCurrentUserFollowsArtistsOrUsers(type, ids)
-          .build();
+                  .build();
 
   public static void checkCurrentUserFollowsArtistsOrUsers_Sync() {
     try {

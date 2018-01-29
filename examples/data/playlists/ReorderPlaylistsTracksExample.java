@@ -11,6 +11,7 @@ public class ReorderPlaylistsTracksExample {
   private static final String userId = "user_id";
   private static final String playlistId = "3AGOiaoRXMSjswCLtuNqv5";
   private static final int rangeStart = 0;
+  private static final int rangeLength = 1;
   private static final int insertBefore = 0;
 
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
@@ -18,7 +19,7 @@ public class ReorderPlaylistsTracksExample {
           .build();
   private static final ReorderPlaylistsTracksRequest reorderPlaylistsTracksRequest = spotifyApi.
           reorderPlaylistsTracks(userId, playlistId, rangeStart, insertBefore)
-          .range_length(0)
+          .range_length(rangeLength)
           .snapshot_id("JbtmHBDBAYu3/bt8BOXKjzKx3i0b6LCa/wVjyl6qQ2Yf6nFXkbmzuEa+ZI/U1yF+")
           .build();
 
