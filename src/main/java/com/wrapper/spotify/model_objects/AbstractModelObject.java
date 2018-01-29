@@ -7,7 +7,6 @@ import com.wrapper.spotify.model_objects.specification.PagingCursorbased;
 
 import java.lang.reflect.Array;
 import java.lang.reflect.ParameterizedType;
-import java.util.TimeZone;
 
 /**
  * This abstract class (and its wrapping classes) is used as a sort of template for other model object classes and
@@ -22,8 +21,6 @@ public abstract class AbstractModelObject implements IModelObject {
    */
   protected AbstractModelObject(final Builder builder) {
     assert (builder != null);
-
-    simpleDateFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
   }
 
   /**

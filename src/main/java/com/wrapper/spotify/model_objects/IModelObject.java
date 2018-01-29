@@ -5,17 +5,10 @@ import com.google.gson.JsonObject;
 import com.wrapper.spotify.model_objects.specification.Paging;
 import com.wrapper.spotify.model_objects.specification.PagingCursorbased;
 
-import java.text.SimpleDateFormat;
-
 /**
  * Interface with methods used in model objects.
  */
 public interface IModelObject {
-
-  /**
-   * The date format used by the Spotify Web API. It uses the following pattern: {@code yyyy-MM-dd'T'hh:mm:ss}
-   */
-  SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss");
 
   /**
    * Create a builder for building an instance of a model object. <br>

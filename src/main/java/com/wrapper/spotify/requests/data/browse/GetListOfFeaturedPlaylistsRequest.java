@@ -2,6 +2,7 @@ package com.wrapper.spotify.requests.data.browse;
 
 import com.neovisionaries.i18n.CountryCode;
 import com.neovisionaries.i18n.LanguageCode;
+import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.special.FeaturedPlaylists;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
@@ -52,7 +53,7 @@ public class GetListOfFeaturedPlaylistsRequest extends AbstractDataRequest {
 
     public Builder timestamp(final Date timestamp) {
       assert (timestamp != null);
-      return setQueryParameter("timestamp", SIMPLE_DATE_FORMAT.format(timestamp));
+      return setQueryParameter("timestamp", SpotifyApi.SIMPLE_DATE_FORMAT.format(timestamp));
     }
 
     public Builder limit(final Integer limit) {

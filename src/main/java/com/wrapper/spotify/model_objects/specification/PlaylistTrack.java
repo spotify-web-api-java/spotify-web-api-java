@@ -143,7 +143,7 @@ public class PlaylistTrack extends AbstractModelObject {
         return new Builder()
                 .setAddedAt(
                         hasAndNotNull(jsonObject, "added_at")
-                                ? simpleDateFormat.parse(jsonObject.get("added_at").getAsString())
+                                ? SpotifyApi.SIMPLE_DATE_FORMAT.parse(jsonObject.get("added_at").getAsString())
                                 : null)
                 .setAddedBy(
                         hasAndNotNull(jsonObject, "added_by")

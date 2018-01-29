@@ -94,7 +94,7 @@ public class SavedAlbum extends AbstractModelObject {
         return new Builder()
                 .setAddedAt(
                         hasAndNotNull(jsonObject, "added_at")
-                                ? simpleDateFormat.parse(jsonObject.get("added_at").getAsString())
+                                ? SpotifyApi.SIMPLE_DATE_FORMAT.parse(jsonObject.get("added_at").getAsString())
                                 : null)
                 .setAlbum(
                         hasAndNotNull(jsonObject, "album")

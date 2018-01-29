@@ -860,7 +860,7 @@ public class ApiTest {
             .build();
 
     assertEquals(
-            "https://api.spotify.com:443/v1/browse/featured-playlists?country=SE&locale=sv_SE&limit=10&offset=0&timestamp=2014-10-23T11%3A00%3A00",
+            "https://api.spotify.com:443/v1/browse/featured-playlists?country=SE&locale=sv_SE&limit=10&offset=0&timestamp=2014-10-23T09%3A00%3A00",
             request.getUri().toString());
     assertHasHeader(
             request,
@@ -880,6 +880,6 @@ public class ApiTest {
             "sv_SE");
     assertHasQueryParameter(
             request, "timestamp",
-            "2014-10-23T11:00:00");
+            "2014-10-23T09:00:00");
   }
 }

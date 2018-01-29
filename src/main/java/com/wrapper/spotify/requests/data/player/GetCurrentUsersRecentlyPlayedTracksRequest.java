@@ -1,5 +1,6 @@
 package com.wrapper.spotify.requests.data.player;
 
+import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.PagingCursorbased;
 import com.wrapper.spotify.model_objects.specification.PlayHistory;
@@ -35,12 +36,12 @@ public class GetCurrentUsersRecentlyPlayedTracksRequest extends AbstractDataRequ
 
     public Builder after(final Date after) {
       assert (after != null);
-      return setQueryParameter("after", SIMPLE_DATE_FORMAT.format(after));
+      return setQueryParameter("after", SpotifyApi.SIMPLE_DATE_FORMAT.format(after));
     }
 
     public Builder before(final Date before) {
       assert (before != null);
-      return setQueryParameter("before", SIMPLE_DATE_FORMAT.format(before));
+      return setQueryParameter("before", SpotifyApi.SIMPLE_DATE_FORMAT.format(before));
     }
 
     @Override

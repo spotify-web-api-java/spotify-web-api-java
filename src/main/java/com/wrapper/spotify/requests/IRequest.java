@@ -7,13 +7,10 @@ import org.apache.http.NameValuePair;
 
 import java.io.IOException;
 import java.net.URI;
-import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.concurrent.Future;
 
 public interface IRequest {
-
-  SimpleDateFormat SIMPLE_DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss");
 
   IHttpManager getHttpManager();
 

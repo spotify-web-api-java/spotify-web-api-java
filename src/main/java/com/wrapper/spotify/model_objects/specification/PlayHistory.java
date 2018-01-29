@@ -122,7 +122,7 @@ public class PlayHistory extends AbstractModelObject {
                                 : null)
                 .setPlayedAt(
                         hasAndNotNull(jsonObject, "played_at")
-                                ? simpleDateFormat.parse(jsonObject.get("played_at").getAsString())
+                                ? SpotifyApi.SIMPLE_DATE_FORMAT.parse(jsonObject.get("played_at").getAsString())
                                 : null)
                 .setContext(
                         hasAndNotNull(jsonObject, "context")

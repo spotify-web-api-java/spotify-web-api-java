@@ -32,6 +32,8 @@ import com.wrapper.spotify.requests.data.users_profile.GetCurrentUsersProfileReq
 import com.wrapper.spotify.requests.data.users_profile.GetUsersProfileRequest;
 
 import java.net.URI;
+import java.text.SimpleDateFormat;
+import java.util.TimeZone;
 import java.util.logging.Logger;
 
 /**
@@ -75,6 +77,13 @@ public class SpotifyApi {
   public static final String DEFAULT_SCHEME = "https";
 
   public static final Logger LOGGER = Logger.getLogger(SpotifyApi.class.getName());
+
+  /**
+   * The date format used by the Spotify Web API. It uses the {@code GMT}  timezone and the following pattern:
+   * {@code yyyy-MM-dd'T'HH:mm:ss}
+   */
+  public static final SimpleDateFormat SIMPLE_DATE_FORMAT = makeSimpleDateFormat(
+          "yyyy-MM-dd'T'HH:mm:ss", "GMT");
 
   private final IHttpManager httpManager;
   private final String scheme;
@@ -134,6 +143,13 @@ public class SpotifyApi {
     stringBuilder.deleteCharAt(stringBuilder.length() - 1);
 
     return stringBuilder.toString();
+  }
+
+  public static SimpleDateFormat makeSimpleDateFormat(String pattern, String id) {
+    SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+    simpleDateFormat.setTimeZone(TimeZone.getTimeZone(id));
+
+    return simpleDateFormat;
   }
 
   /**
