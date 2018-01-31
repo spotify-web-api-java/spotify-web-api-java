@@ -1,10 +1,10 @@
 package com.wrapper.spotify.requests.data.users_profile;
 
-import com.wrapper.spotify.ITest;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.enums.ModelObjectType;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.User;
+import com.wrapper.spotify.requests.data.AbstractDataTest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -16,15 +16,23 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 @RunWith(MockitoJUnitRunner.class)
-public class GetUsersProfileRequestTest implements ITest<User> {
+public class GetUsersProfileRequestTest extends AbstractDataTest<User> {
   private final GetUsersProfileRequest defaultRequest = SPOTIFY_API
-          .getUsersProfile("user_id")
+          .getUsersProfile(ID_USER)
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
                           "requests/data/users_profile/GetUsersProfileRequest.json"))
           .build();
 
   public GetUsersProfileRequestTest() throws Exception {
+  }
+
+  @Test
+  public void shouldComplyWithReference() {
+    assertHasAuthorizationHeader(defaultRequest);
+    assertEquals(
+            "https://api.spotify.com:443/v1/users/abbaspotify",
+            defaultRequest.getUri().toString());
   }
 
   @Test

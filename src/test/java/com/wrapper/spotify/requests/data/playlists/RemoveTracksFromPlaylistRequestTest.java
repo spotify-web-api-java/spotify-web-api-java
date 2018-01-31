@@ -1,10 +1,10 @@
 package com.wrapper.spotify.requests.data.playlists;
 
 import com.google.gson.JsonParser;
-import com.wrapper.spotify.ITest;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.special.SnapshotResult;
+import com.wrapper.spotify.requests.data.AbstractDataTest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -12,18 +12,33 @@ import org.mockito.runners.MockitoJUnitRunner;
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
+import static com.wrapper.spotify.Assertions.assertHasBodyParameter;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(MockitoJUnitRunner.class)
-public class RemoveTracksFromPlaylistRequestTest implements ITest<SnapshotResult> {
+public class RemoveTracksFromPlaylistRequestTest extends AbstractDataTest<SnapshotResult> {
   private final RemoveTracksFromPlaylistRequest defaultRequest = SPOTIFY_API
-          .removeTracksFromPlaylist("user_id", "playlist_id", new JsonParser().parse("[]").getAsJsonArray())
+          .removeTracksFromPlaylist(ID_USER, ID_PLAYLIST, new JsonParser()
+                  .parse("[\"" + ID_TRACK + "\",\"" + ID_TRACK + "\"]").getAsJsonArray())
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
                           "requests/data/playlists/RemoveTracksFromPlaylistRequest.json"))
+          .snapshotId(SNAPSHOT_ID)
           .build();
 
   public RemoveTracksFromPlaylistRequestTest() throws Exception {
+  }
+
+  @Test
+  public void shouldComplyWithReference() {
+    assertHasAuthorizationHeader(defaultRequest);
+    assertHasBodyParameter(
+            defaultRequest,
+            "tracks",
+            "[\"" + ID_TRACK + "\",\"" + ID_TRACK + "\"]");
+    assertEquals(
+            "https://api.spotify.com:443/v1/users/abbaspotify/playlists/3AGOiaoRXMSjswCLtuNqv5/tracks",
+            defaultRequest.getUri().toString());
   }
 
   @Test

@@ -5,6 +5,7 @@ import org.apache.http.NameValuePair;
 
 import java.io.*;
 import java.net.URI;
+import java.util.logging.Level;
 
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyListOf;
@@ -31,6 +32,17 @@ public class TestUtil {
     in.close();
 
     return out.toString();
+  }
+
+  protected static String readFromFileTry(File file) {
+    try {
+      return readFromFile(file);
+    } catch (IOException e) {
+      SpotifyApi.LOGGER.log(
+              Level.SEVERE,
+              "IOException while trying to read from file \"" + file.getName() + "\"");
+      return null;
+    }
   }
 
   public static class MockedHttpManager {

@@ -1,10 +1,10 @@
 package com.wrapper.spotify.requests.data.player;
 
-import com.wrapper.spotify.ITest;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.PagingCursorbased;
 import com.wrapper.spotify.model_objects.specification.PlayHistory;
+import com.wrapper.spotify.requests.data.AbstractDataTest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -16,15 +16,26 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
 @RunWith(MockitoJUnitRunner.class)
-public class GetCurrentUsersRecentlyPlayedTracksRequestTest implements ITest<PagingCursorbased<PlayHistory>> {
+public class GetCurrentUsersRecentlyPlayedTracksRequestTest extends AbstractDataTest<PagingCursorbased<PlayHistory>> {
   private final GetCurrentUsersRecentlyPlayedTracksRequest defaultRequest = SPOTIFY_API
           .getCurrentUsersRecentlyPlayedTracks()
+          .after(AFTER)
+          .before(BEFORE)
+          .limit(LIMIT)
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
                           "requests/data/player/GetCurrentUsersRecentlyPlayedTracksRequest.json"))
           .build();
 
   public GetCurrentUsersRecentlyPlayedTracksRequestTest() throws Exception {
+  }
+
+  @Test
+  public void shouldComplyWithReference() {
+    assertHasAuthorizationHeader(defaultRequest);
+    assertEquals(
+            "https://api.spotify.com:443/v1/me/player/recently-played?after=2018-01-27T21%3A07%3A10&before=2016-01-27T22%3A07%3A00&limit=10",
+            defaultRequest.getUri().toString());
   }
 
   @Test

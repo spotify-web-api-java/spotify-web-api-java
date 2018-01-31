@@ -1,10 +1,10 @@
 package com.wrapper.spotify.requests.data.browse;
 
-import com.wrapper.spotify.ITest;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.AlbumSimplified;
 import com.wrapper.spotify.model_objects.specification.Paging;
+import com.wrapper.spotify.requests.data.AbstractDataTest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -16,14 +16,25 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
 @RunWith(MockitoJUnitRunner.class)
-public class GetListOfNewReleasesRequestTest implements ITest<Paging<AlbumSimplified>> {
+public class GetListOfNewReleasesRequestTest extends AbstractDataTest<Paging<AlbumSimplified>> {
   private final GetListOfNewReleasesRequest defaultRequest = SPOTIFY_API.getListOfNewReleases()
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
                           "requests/data/browse/GetListOfNewReleasesRequest.json"))
+          .country(COUNTRY)
+          .limit(LIMIT)
+          .offset(OFFSET)
           .build();
 
   public GetListOfNewReleasesRequestTest() throws Exception {
+  }
+
+  @Test
+  public void shouldComplyWithReference() {
+    assertHasAuthorizationHeader(defaultRequest);
+    assertEquals(
+            "https://api.spotify.com:443/v1/browse/new-releases?country=SE&limit=10&offset=0",
+            defaultRequest.getUri().toString());
   }
 
   @Test

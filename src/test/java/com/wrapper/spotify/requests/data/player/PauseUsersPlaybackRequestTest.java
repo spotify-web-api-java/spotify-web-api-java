@@ -1,8 +1,8 @@
 package com.wrapper.spotify.requests.data.player;
 
-import com.wrapper.spotify.ITest;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
+import com.wrapper.spotify.requests.data.AbstractDataTest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -10,18 +10,28 @@ import org.mockito.runners.MockitoJUnitRunner;
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
 @RunWith(MockitoJUnitRunner.class)
-public class PauseUsersPlaybackRequestTest implements ITest<String> {
+public class PauseUsersPlaybackRequestTest extends AbstractDataTest<String> {
   private final PauseUsersPlaybackRequest defaultRequest = SPOTIFY_API
           .pauseUsersPlayback()
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
                           "requests/data/player/PauseUsersPlaybackRequest.json"))
+          .device_id(DEVICE_ID)
           .build();
 
   public PauseUsersPlaybackRequestTest() throws Exception {
+  }
+
+  @Test
+  public void shouldComplyWithReference() {
+    assertHasAuthorizationHeader(defaultRequest);
+    assertEquals(
+            "https://api.spotify.com:443/v1/me/player/pause?device_id=5fbb3ba6aa454b5534c4ba43a8c7e8e45a63ad0e",
+            defaultRequest.getUri().toString());
   }
 
   @Test

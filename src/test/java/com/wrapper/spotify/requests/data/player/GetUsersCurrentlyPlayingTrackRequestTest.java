@@ -1,9 +1,9 @@
 package com.wrapper.spotify.requests.data.player;
 
-import com.wrapper.spotify.ITest;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.miscellaneous.CurrentlyPlaying;
+import com.wrapper.spotify.requests.data.AbstractDataTest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -14,12 +14,13 @@ import java.util.concurrent.ExecutionException;
 import static org.junit.Assert.*;
 
 @RunWith(MockitoJUnitRunner.class)
-public class GetUsersCurrentlyPlayingTrackRequestTest implements ITest<CurrentlyPlaying> {
+public class GetUsersCurrentlyPlayingTrackRequestTest extends AbstractDataTest<CurrentlyPlaying> {
   private final GetUsersCurrentlyPlayingTrackRequest defaultRequest = SPOTIFY_API
           .getUsersCurrentlyPlayingTrack()
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
                           "requests/data/player/GetUsersCurrentlyPlayingTrackRequest.json"))
+          .market(MARKET)
           .build();
 
   private final GetUsersCurrentlyPlayingTrackRequest emptyRequest = SPOTIFY_API
@@ -27,9 +28,18 @@ public class GetUsersCurrentlyPlayingTrackRequestTest implements ITest<Currently
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
                           "requests/data/player/GetUsersCurrentlyPlayingTrackRequest_None.json"))
+          .market(MARKET)
           .build();
 
   public GetUsersCurrentlyPlayingTrackRequestTest() throws Exception {
+  }
+
+  @Test
+  public void shouldComplyWithReference() {
+    assertHasAuthorizationHeader(defaultRequest);
+    assertEquals(
+            "https://api.spotify.com:443/v1/me/player/currently-playing?market=SE",
+            defaultRequest.getUri().toString());
   }
 
   @Test

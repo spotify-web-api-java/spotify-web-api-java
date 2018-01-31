@@ -1,10 +1,10 @@
 package com.wrapper.spotify.requests.data.tracks;
 
-import com.wrapper.spotify.ITest;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.enums.ModelObjectType;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.Track;
+import com.wrapper.spotify.requests.data.AbstractDataTest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -15,15 +15,24 @@ import java.util.concurrent.ExecutionException;
 import static org.junit.Assert.*;
 
 @RunWith(MockitoJUnitRunner.class)
-public class GetTrackRequestTest implements ITest<Track> {
+public class GetTrackRequestTest extends AbstractDataTest<Track> {
   private final GetTrackRequest defaultRequest = SPOTIFY_API
-          .getTrack("id")
+          .getTrack(ID_TRACK)
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
                           "requests/data/tracks/GetTrackRequest.json"))
+          .market(MARKET)
           .build();
 
   public GetTrackRequestTest() throws Exception {
+  }
+
+  @Test
+  public void shouldComplyWithReference() {
+    assertHasAuthorizationHeader(defaultRequest);
+    assertEquals(
+            "https://api.spotify.com:443/v1/tracks/01iyCAUm8EvOFqVWYJ3dVX?market=SE",
+            defaultRequest.getUri().toString());
   }
 
   @Test

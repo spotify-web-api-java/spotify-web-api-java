@@ -1,8 +1,8 @@
 package com.wrapper.spotify.requests.data.playlists;
 
-import com.wrapper.spotify.ITest;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
+import com.wrapper.spotify.requests.data.AbstractDataTest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -10,18 +10,48 @@ import org.mockito.runners.MockitoJUnitRunner;
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
+import static com.wrapper.spotify.Assertions.assertHasBodyParameter;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
 @RunWith(MockitoJUnitRunner.class)
-public class ChangePlaylistsDetailsRequestTest implements ITest<String> {
+public class ChangePlaylistsDetailsRequestTest extends AbstractDataTest<String> {
   private final ChangePlaylistsDetailsRequest defaultRequest = SPOTIFY_API
-          .changePlaylistsDetails("user_id", "playlist_id")
+          .changePlaylistsDetails(ID_USER, ID_PLAYLIST)
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
                           "requests/data/playlists/ChangePlaylistsDetailsRequest.json"))
+          .collaborative(COLLABORATIVE)
+          .description(DESCRIPTION)
+          .name(NAME)
+          .public_(PUBLIC)
           .build();
 
   public ChangePlaylistsDetailsRequestTest() throws Exception {
+  }
+
+  @Test
+  public void shouldComplyWithReference() {
+    assertHasAuthorizationHeader(defaultRequest);
+    assertHasBodyParameter(
+            defaultRequest,
+            "name",
+            NAME);
+    assertHasBodyParameter(
+            defaultRequest,
+            "public",
+            PUBLIC);
+    assertHasBodyParameter(
+            defaultRequest,
+            "collaborative",
+            COLLABORATIVE);
+    assertHasBodyParameter(
+            defaultRequest,
+            "description",
+            DESCRIPTION);
+    assertEquals(
+            "https://api.spotify.com:443/v1/users/abbaspotify/playlists/3AGOiaoRXMSjswCLtuNqv5",
+            defaultRequest.getUri().toString());
   }
 
   @Test

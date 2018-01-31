@@ -1,9 +1,9 @@
 package com.wrapper.spotify.requests.data.player;
 
 import com.google.gson.JsonParser;
-import com.wrapper.spotify.ITest;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
+import com.wrapper.spotify.requests.data.AbstractDataTest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -11,18 +11,38 @@ import org.mockito.runners.MockitoJUnitRunner;
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
+import static com.wrapper.spotify.Assertions.assertHasBodyParameter;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
 @RunWith(MockitoJUnitRunner.class)
-public class TransferUsersPlaybackRequestTest implements ITest<String> {
+public class TransferUsersPlaybackRequestTest extends AbstractDataTest<String> {
   private final TransferUsersPlaybackRequest defaultRequest = SPOTIFY_API
-          .transferUsersPlayback(new JsonParser().parse("[\"74ASZWbe4lXaubB36ztrGX\"]").getAsJsonArray())
+          .transferUsersPlayback(new JsonParser()
+                  .parse("[\"" + DEVICE_ID + "\"]").getAsJsonArray())
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
                           "requests/data/player/TransferUsersPlaybackRequest.json"))
+          .play(PLAY)
           .build();
 
   public TransferUsersPlaybackRequestTest() throws Exception {
+  }
+
+  @Test
+  public void shouldComplyWithReference() {
+    assertHasAuthorizationHeader(defaultRequest);
+    assertHasBodyParameter(
+            defaultRequest,
+            "device_ids",
+            "[\"" + DEVICE_ID + "\"]");
+    assertHasBodyParameter(
+            defaultRequest,
+            "play",
+            PLAY);
+    assertEquals(
+            "https://api.spotify.com:443/v1/me/player",
+            defaultRequest.getUri().toString());
   }
 
   @Test

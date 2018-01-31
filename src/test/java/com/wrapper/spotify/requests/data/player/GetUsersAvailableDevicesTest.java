@@ -1,9 +1,9 @@
 package com.wrapper.spotify.requests.data.player;
 
-import com.wrapper.spotify.ITest;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.miscellaneous.Device;
+import com.wrapper.spotify.requests.data.AbstractDataTest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -14,7 +14,7 @@ import java.util.concurrent.ExecutionException;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(MockitoJUnitRunner.class)
-public class GetUsersAvailableDevicesTest implements ITest<Device[]> {
+public class GetUsersAvailableDevicesTest extends AbstractDataTest<Device[]> {
   private final GetUsersAvailableDevicesRequest defaultRequest = SPOTIFY_API
           .getUsersAvailableDevices()
           .setHttpManager(
@@ -30,6 +30,14 @@ public class GetUsersAvailableDevicesTest implements ITest<Device[]> {
           .build();
 
   public GetUsersAvailableDevicesTest() throws Exception {
+  }
+
+  @Test
+  public void shouldComplyWithReference() {
+    assertHasAuthorizationHeader(defaultRequest);
+    assertEquals(
+            "https://api.spotify.com:443/v1/me/player/devices",
+            defaultRequest.getUri().toString());
   }
 
   @Test

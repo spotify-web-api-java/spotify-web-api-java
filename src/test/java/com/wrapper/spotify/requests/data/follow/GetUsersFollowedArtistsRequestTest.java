@@ -1,11 +1,10 @@
 package com.wrapper.spotify.requests.data.follow;
 
-import com.wrapper.spotify.ITest;
 import com.wrapper.spotify.TestUtil;
-import com.wrapper.spotify.enums.ModelObjectType;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.Artist;
 import com.wrapper.spotify.model_objects.specification.PagingCursorbased;
+import com.wrapper.spotify.requests.data.AbstractDataTest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -16,20 +15,32 @@ import java.util.concurrent.ExecutionException;
 import static org.junit.Assert.*;
 
 @RunWith(MockitoJUnitRunner.class)
-public class GetUsersFollowedArtistsRequestTest implements ITest<PagingCursorbased<Artist>> {
-  private final GetUsersFollowedArtistsRequest defaultRequest = SPOTIFY_API.getUsersFollowedArtists(ModelObjectType.ARTIST)
+public class GetUsersFollowedArtistsRequestTest extends AbstractDataTest<PagingCursorbased<Artist>> {
+  private final GetUsersFollowedArtistsRequest defaultRequest = SPOTIFY_API.getUsersFollowedArtists(TYPE)
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
                           "requests/data/follow/GetUsersFollowedArtistsRequest.json"))
+          .after(ID_ARTIST)
+          .limit(LIMIT)
           .build();
 
-  private final GetUsersFollowedArtistsRequest emptyRequest = SPOTIFY_API.getUsersFollowedArtists(ModelObjectType.ARTIST)
+  private final GetUsersFollowedArtistsRequest emptyRequest = SPOTIFY_API.getUsersFollowedArtists(TYPE)
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
                           "requests/data/follow/GetUsersFollowedArtistsRequest_None.json"))
+          .after(ID_ARTIST)
+          .limit(LIMIT)
           .build();
 
   public GetUsersFollowedArtistsRequestTest() throws Exception {
+  }
+
+  @Test
+  public void shouldComplyWithReference() {
+    assertHasAuthorizationHeader(defaultRequest);
+    assertEquals(
+            "https://api.spotify.com:443/v1/me/following?type=ARTIST&after=0LcJLqbBmaGUft1e9Mm8HV&limit=10",
+            defaultRequest.getUri().toString());
   }
 
   @Test

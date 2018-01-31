@@ -1,10 +1,10 @@
 package com.wrapper.spotify.requests.data.personalization.simplified;
 
-import com.wrapper.spotify.ITest;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.Artist;
 import com.wrapper.spotify.model_objects.specification.Paging;
+import com.wrapper.spotify.requests.data.AbstractDataTest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -16,15 +16,25 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
 @RunWith(MockitoJUnitRunner.class)
-public class GetUsersTopArtistsRequestTest implements ITest<Paging<Artist>> {
-  private final GetUsersTopArtistsRequest defaultRequest = SPOTIFY_API
-          .getUsersTopArtists()
+public class GetUsersTopArtistsRequestTest extends AbstractDataTest<Paging<Artist>> {
+  private final GetUsersTopArtistsRequest defaultRequest = SPOTIFY_API.getUsersTopArtists()
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
                           "requests/data/personalization/simplified/GetUsersTopArtistsRequest.json"))
+          .limit(LIMIT)
+          .offset(OFFSET)
+          .time_range(TIME_RANGE)
           .build();
 
   public GetUsersTopArtistsRequestTest() throws Exception {
+  }
+
+  @Test
+  public void shouldComplyWithReference() {
+    assertHasAuthorizationHeader(defaultRequest);
+    assertEquals(
+            "https://api.spotify.com:443/v1/me/top/artists?limit=10&offset=0&time_range=medium_term",
+            defaultRequest.getUri().toString());
   }
 
   @Test

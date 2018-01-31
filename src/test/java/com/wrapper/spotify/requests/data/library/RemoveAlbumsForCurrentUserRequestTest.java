@@ -1,8 +1,9 @@
 package com.wrapper.spotify.requests.data.library;
 
-import com.wrapper.spotify.ITest;
+import com.google.gson.JsonParser;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
+import com.wrapper.spotify.requests.data.AbstractDataTest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -10,18 +11,44 @@ import org.mockito.runners.MockitoJUnitRunner;
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
+import static com.wrapper.spotify.Assertions.assertHasBodyParameter;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
 @RunWith(MockitoJUnitRunner.class)
-public class RemoveAlbumsForCurrentUserRequestTest implements ITest<String> {
+public class RemoveAlbumsForCurrentUserRequestTest extends AbstractDataTest<String> {
   private final RemoveAlbumsForCurrentUserRequest defaultRequest = SPOTIFY_API
-          .removeAlbumsForCurrentUser("id")
+          .removeAlbumsForCurrentUser(ID_ALBUM, ID_ALBUM)
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
                           "requests/data/library/RemoveAlbumsForCurrentUserRequest.json"))
           .build();
+  private final RemoveAlbumsForCurrentUserRequest bodyRequest = SPOTIFY_API
+          .removeAlbumsForCurrentUser(new JsonParser()
+                  .parse("[\"" + ID_ALBUM + "\",\"" + ID_ALBUM + "\"]").getAsJsonArray())
+          .setHttpManager(
+                  TestUtil.MockedHttpManager.returningJson(
+                          "requests/data/follow/FollowArtistsOrUsersRequestTest.json"))
+          .build();
 
   public RemoveAlbumsForCurrentUserRequestTest() throws Exception {
+  }
+
+  @Test
+  public void shouldComplyWithReference() {
+    assertHasAuthorizationHeader(defaultRequest);
+    assertEquals(
+            "https://api.spotify.com:443/v1/me/albums?ids=5zT1JLIj9E57p3e1rFm9Uq%2C5zT1JLIj9E57p3e1rFm9Uq",
+            defaultRequest.getUri().toString());
+
+    assertHasAuthorizationHeader(bodyRequest);
+    assertHasBodyParameter(
+            bodyRequest,
+            "ids",
+            "[\"" + ID_ALBUM + "\",\"" + ID_ALBUM + "\"]");
+    assertEquals(
+            "https://api.spotify.com:443/v1/me/albums",
+            bodyRequest.getUri().toString());
   }
 
   @Test

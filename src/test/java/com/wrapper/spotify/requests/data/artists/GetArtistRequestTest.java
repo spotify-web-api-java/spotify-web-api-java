@@ -1,11 +1,11 @@
 package com.wrapper.spotify.requests.data.artists;
 
-import com.wrapper.spotify.ITest;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.enums.ModelObjectType;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.Artist;
 import com.wrapper.spotify.model_objects.specification.Followers;
+import com.wrapper.spotify.requests.data.AbstractDataTest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -16,14 +16,22 @@ import java.util.concurrent.ExecutionException;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(MockitoJUnitRunner.class)
-public class GetArtistRequestTest implements ITest<Artist> {
-  private final GetArtistRequest defaultRequest = SPOTIFY_API.getArtist("id")
+public class GetArtistRequestTest extends AbstractDataTest<Artist> {
+  private final GetArtistRequest defaultRequest = SPOTIFY_API.getArtist(ID_ARTIST)
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
                           "requests/data/artists/GetArtistRequest.json"))
           .build();
 
   public GetArtistRequestTest() throws Exception {
+  }
+
+  @Test
+  public void shouldComplyWithReference() {
+    assertHasAuthorizationHeader(defaultRequest);
+    assertEquals(
+            "https://api.spotify.com:443/v1/artists/0LcJLqbBmaGUft1e9Mm8HV",
+            defaultRequest.getUri().toString());
   }
 
   @Test

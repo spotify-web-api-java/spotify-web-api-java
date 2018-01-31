@@ -1,10 +1,10 @@
 package com.wrapper.spotify.requests.data.artists;
 
-import com.wrapper.spotify.ITest;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.AlbumSimplified;
 import com.wrapper.spotify.model_objects.specification.Paging;
+import com.wrapper.spotify.requests.data.AbstractDataTest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -16,14 +16,26 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
 @RunWith(MockitoJUnitRunner.class)
-public class GetArtistsAlbumsRequestTest implements ITest<Paging<AlbumSimplified>> {
-  private final GetArtistsAlbumsRequest defaultRequest = SPOTIFY_API.getArtistsAlbums("id")
+public class GetArtistsAlbumsRequestTest extends AbstractDataTest<Paging<AlbumSimplified>> {
+  private final GetArtistsAlbumsRequest defaultRequest = SPOTIFY_API.getArtistsAlbums(ID_ARTIST)
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
                           "requests/data/artists/GetArtistsAlbumsRequest.json"))
+          .album_type(ALBUM_TYPE)
+          .limit(LIMIT)
+          .market(MARKET)
+          .offset(OFFSET)
           .build();
 
   public GetArtistsAlbumsRequestTest() throws Exception {
+  }
+
+  @Test
+  public void shouldComplyWithReference() {
+    assertHasAuthorizationHeader(defaultRequest);
+    assertEquals(
+            "https://api.spotify.com:443/v1/artists/0LcJLqbBmaGUft1e9Mm8HV/albums?album_type=album&limit=10&market=SE&offset=0",
+            defaultRequest.getUri().toString());
   }
 
   @Test

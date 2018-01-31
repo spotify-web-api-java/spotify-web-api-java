@@ -1,12 +1,12 @@
 package com.wrapper.spotify.requests.data.albums;
 
-import com.wrapper.spotify.ITest;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.enums.AlbumType;
 import com.wrapper.spotify.enums.ModelObjectType;
 import com.wrapper.spotify.enums.ReleaseDatePrecision;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.Album;
+import com.wrapper.spotify.requests.data.AbstractDataTest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -17,14 +17,23 @@ import java.util.concurrent.ExecutionException;
 import static org.junit.Assert.*;
 
 @RunWith(MockitoJUnitRunner.class)
-public class GetAlbumRequestTest implements ITest<Album> {
-  private final GetAlbumRequest defaultRequest = SPOTIFY_API.getAlbum("id")
+public class GetAlbumRequestTest extends AbstractDataTest<Album> {
+  private final GetAlbumRequest defaultRequest = SPOTIFY_API.getAlbum(ID_ALBUM)
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
                           "requests/data/albums/GetAlbumRequest.json"))
+          .market(MARKET)
           .build();
 
   public GetAlbumRequestTest() throws Exception {
+  }
+
+  @Test
+  public void shouldComplyWithReference() {
+    assertHasAuthorizationHeader(defaultRequest);
+    assertEquals(
+            "https://api.spotify.com:443/v1/albums/5zT1JLIj9E57p3e1rFm9Uq?market=SE",
+            defaultRequest.getUri().toString());
   }
 
   @Test

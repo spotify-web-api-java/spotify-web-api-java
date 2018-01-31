@@ -1,9 +1,9 @@
 package com.wrapper.spotify.requests.data.playlists;
 
-import com.wrapper.spotify.ITest;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.special.SnapshotResult;
+import com.wrapper.spotify.requests.data.AbstractDataTest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -11,18 +11,45 @@ import org.mockito.runners.MockitoJUnitRunner;
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
+import static com.wrapper.spotify.Assertions.assertHasBodyParameter;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(MockitoJUnitRunner.class)
-public class ReorderPlaylistsTracksRequestTest implements ITest<SnapshotResult> {
+public class ReorderPlaylistsTracksRequestTest extends AbstractDataTest<SnapshotResult> {
   private final ReorderPlaylistsTracksRequest defaultRequest = SPOTIFY_API
-          .reorderPlaylistsTracks("user_id", "playlist_id", 0, 0)
+          .reorderPlaylistsTracks(ID_USER, ID_PLAYLIST, RANGE_START, INSERT_BEFORE)
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
                           "requests/data/playlists/ReorderPlaylistsTracksRequest.json"))
+          .range_length(RANGE_LENGTH)
+          .snapshot_id(SNAPSHOT_ID)
           .build();
 
   public ReorderPlaylistsTracksRequestTest() throws Exception {
+  }
+
+  @Test
+  public void shouldComplyWithReference() {
+    assertHasAuthorizationHeader(defaultRequest);
+    assertHasBodyParameter(
+            defaultRequest,
+            "range_start",
+            RANGE_START);
+    assertHasBodyParameter(
+            defaultRequest,
+            "range_length",
+            RANGE_LENGTH);
+    assertHasBodyParameter(
+            defaultRequest,
+            "insert_before",
+            INSERT_BEFORE);
+    assertHasBodyParameter(
+            defaultRequest,
+            "snapshot_id",
+            SNAPSHOT_ID);
+    assertEquals(
+            "https://api.spotify.com:443/v1/users/abbaspotify/playlists/3AGOiaoRXMSjswCLtuNqv5/tracks",
+            defaultRequest.getUri().toString());
   }
 
   @Test

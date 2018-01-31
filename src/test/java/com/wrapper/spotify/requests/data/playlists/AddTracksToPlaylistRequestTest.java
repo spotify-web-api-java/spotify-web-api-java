@@ -1,9 +1,10 @@
 package com.wrapper.spotify.requests.data.playlists;
 
-import com.wrapper.spotify.ITest;
+import com.google.gson.JsonParser;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.special.SnapshotResult;
+import com.wrapper.spotify.requests.data.AbstractDataTest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -11,18 +12,49 @@ import org.mockito.runners.MockitoJUnitRunner;
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
+import static com.wrapper.spotify.Assertions.assertHasBodyParameter;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(MockitoJUnitRunner.class)
-public class AddTracksToPlaylistRequestTest implements ITest<SnapshotResult> {
+public class AddTracksToPlaylistRequestTest extends AbstractDataTest<SnapshotResult> {
   private final AddTracksToPlaylistRequest defaultRequest = SPOTIFY_API
-          .addTracksToPlaylist("user_id", "playlist_id", new String[]{"uri"})
+          .addTracksToPlaylist(ID_USER, ID_PLAYLIST, new String[]{ID_TRACK, ID_TRACK})
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
                           "requests/data/playlists/AddTracksToPlaylistRequest.json"))
+          .position(POSITION)
+          .build();
+  private final AddTracksToPlaylistRequest bodyRequest = SPOTIFY_API
+          .addTracksToPlaylist(ID_USER, ID_PLAYLIST, new JsonParser()
+                  .parse("[\"" + ID_TRACK + "\",\"" + ID_TRACK + "\"]").getAsJsonArray())
+          .setHttpManager(
+                  TestUtil.MockedHttpManager.returningJson(
+                          "requests/data/playlists/AddTracksToPlaylistRequest.json"))
+          .position(POSITION, true)
           .build();
 
   public AddTracksToPlaylistRequestTest() throws Exception {
+  }
+
+  @Test
+  public void shouldComplyWithReference() {
+    assertHasAuthorizationHeader(defaultRequest);
+    assertEquals(
+            "https://api.spotify.com:443/v1/users/abbaspotify/playlists/3AGOiaoRXMSjswCLtuNqv5/tracks?uris=01iyCAUm8EvOFqVWYJ3dVX%2C01iyCAUm8EvOFqVWYJ3dVX&position=0",
+            defaultRequest.getUri().toString());
+
+    assertHasAuthorizationHeader(bodyRequest);
+    assertHasBodyParameter(
+            bodyRequest,
+            "uris",
+            "[\"" + ID_TRACK + "\",\"" + ID_TRACK + "\"]");
+    assertHasBodyParameter(
+            bodyRequest,
+            "position",
+            POSITION);
+    assertEquals(
+            "https://api.spotify.com:443/v1/users/abbaspotify/playlists/3AGOiaoRXMSjswCLtuNqv5/tracks",
+            bodyRequest.getUri().toString());
   }
 
   @Test

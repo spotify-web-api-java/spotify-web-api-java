@@ -1,10 +1,10 @@
 package com.wrapper.spotify.requests.data.playlists;
 
-import com.wrapper.spotify.ITest;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.Paging;
 import com.wrapper.spotify.model_objects.specification.PlaylistSimplified;
+import com.wrapper.spotify.requests.data.AbstractDataTest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -16,15 +16,25 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
 @RunWith(MockitoJUnitRunner.class)
-public class GetListOfUsersPlaylistsRequestTest implements ITest<Paging<PlaylistSimplified>> {
+public class GetListOfUsersPlaylistsRequestTest extends AbstractDataTest<Paging<PlaylistSimplified>> {
   private final GetListOfUsersPlaylistsRequest defaultRequest = SPOTIFY_API
-          .getListOfUsersPlaylists("user_id")
+          .getListOfUsersPlaylists(ID_USER)
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
                           "requests/data/playlists/GetListOfUsersPlaylistsRequest.json"))
+          .limit(LIMIT)
+          .offset(OFFSET)
           .build();
 
   public GetListOfUsersPlaylistsRequestTest() throws Exception {
+  }
+
+  @Test
+  public void shouldComplyWithReference() {
+    assertHasAuthorizationHeader(defaultRequest);
+    assertEquals(
+            "https://api.spotify.com:443/v1/users/abbaspotify/playlists?limit=10&offset=0",
+            defaultRequest.getUri().toString());
   }
 
   @Test

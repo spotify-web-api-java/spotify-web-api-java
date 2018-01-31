@@ -1,10 +1,10 @@
 package com.wrapper.spotify.requests.data.browse;
 
-import com.wrapper.spotify.ITest;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.Paging;
 import com.wrapper.spotify.model_objects.specification.PlaylistSimplified;
+import com.wrapper.spotify.requests.data.AbstractDataTest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -16,14 +16,25 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
 @RunWith(MockitoJUnitRunner.class)
-public class GetCategorysPlaylistRequestTest implements ITest<Paging<PlaylistSimplified>> {
-  private final GetCategorysPlaylistsRequest defaultRequest = SPOTIFY_API.getCategorysPlaylists("id")
+public class GetCategorysPlaylistRequestTest extends AbstractDataTest<Paging<PlaylistSimplified>> {
+  private final GetCategorysPlaylistsRequest defaultRequest = SPOTIFY_API.getCategorysPlaylists(CATEGORY_ID)
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
                           "requests/data/browse/GetCategorysPlaylistsRequest.json"))
+          .country(COUNTRY)
+          .limit(LIMIT)
+          .offset(OFFSET)
           .build();
 
   public GetCategorysPlaylistRequestTest() throws Exception {
+  }
+
+  @Test
+  public void shouldComplyWithReference() {
+    assertHasAuthorizationHeader(defaultRequest);
+    assertEquals(
+            "https://api.spotify.com:443/v1/browse/categories/dinner/playlists?country=SE&limit=10&offset=0",
+            defaultRequest.getUri().toString());
   }
 
   @Test

@@ -1,10 +1,10 @@
 package com.wrapper.spotify.requests.data.search.simplified;
 
-import com.wrapper.spotify.ITest;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.Paging;
 import com.wrapper.spotify.model_objects.specification.Track;
+import com.wrapper.spotify.requests.data.AbstractDataTest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -15,15 +15,26 @@ import java.util.concurrent.ExecutionException;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(MockitoJUnitRunner.class)
-public class SearchTracksRequestTest implements ITest<Paging<Track>> {
+public class SearchTracksRequestTest extends AbstractDataTest<Paging<Track>> {
   private final SearchTracksRequest defaultRequest = SPOTIFY_API
-          .searchTracks("q")
+          .searchTracks(Q)
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
                           "requests/data/search/simplified/SearchTracksRequest.json"))
+          .limit(LIMIT)
+          .market(MARKET)
+          .offset(OFFSET)
           .build();
 
   public SearchTracksRequestTest() throws Exception {
+  }
+
+  @Test
+  public void shouldComplyWithReference() {
+    assertHasAuthorizationHeader(defaultRequest);
+    assertEquals(
+            "https://api.spotify.com:443/v1/search?q=Abba&limit=10&market=SE&offset=0&type=track",
+            defaultRequest.getUri().toString());
   }
 
   @Test

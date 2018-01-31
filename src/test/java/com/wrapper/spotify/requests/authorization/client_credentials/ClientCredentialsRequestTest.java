@@ -1,9 +1,9 @@
 package com.wrapper.spotify.requests.authorization.client_credentials;
 
-import com.wrapper.spotify.ITest;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.credentials.ClientCredentials;
+import com.wrapper.spotify.requests.authorization.AbstractAuthorizationTest;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -11,14 +11,22 @@ import java.util.concurrent.ExecutionException;
 
 import static org.junit.Assert.assertEquals;
 
-public class ClientCredentialsRequestTest implements ITest<ClientCredentials> {
-  private final ClientCredentialsRequest defaultRequest = SPOTIFY_API
-          .clientCredentials()
+public class ClientCredentialsRequestTest extends AbstractAuthorizationTest<ClientCredentials> {
+  private final ClientCredentialsRequest defaultRequest = SPOTIFY_API.clientCredentials()
           .setHttpManager(TestUtil.MockedHttpManager.returningJson(
                   "requests/authorization/client_credentials/ClientCredentials.json"))
+          .grant_type("client_credentials")
           .build();
 
   public ClientCredentialsRequestTest() throws Exception {
+  }
+
+  @Test
+  public void shouldComplyWithReference() {
+    assertHasAuthorizationHeader(defaultRequest);
+    assertEquals(
+            "https://accounts.spotify.com:443/api/token",
+            defaultRequest.getUri().toString());
   }
 
   @Test

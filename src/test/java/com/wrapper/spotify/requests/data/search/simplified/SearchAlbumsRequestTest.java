@@ -1,10 +1,10 @@
 package com.wrapper.spotify.requests.data.search.simplified;
 
-import com.wrapper.spotify.ITest;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.AlbumSimplified;
 import com.wrapper.spotify.model_objects.specification.Paging;
+import com.wrapper.spotify.requests.data.AbstractDataTest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -15,15 +15,25 @@ import java.util.concurrent.ExecutionException;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(MockitoJUnitRunner.class)
-public class SearchAlbumsRequestTest implements ITest<Paging<AlbumSimplified>> {
-  private final SearchAlbumsRequest defaultRequest = SPOTIFY_API
-          .searchAlbums("q")
+public class SearchAlbumsRequestTest extends AbstractDataTest<Paging<AlbumSimplified>> {
+  private final SearchAlbumsRequest defaultRequest = SPOTIFY_API.searchAlbums(Q)
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
                           "requests/data/search/simplified/SearchAlbumsRequest.json"))
+          .limit(LIMIT)
+          .market(MARKET)
+          .offset(OFFSET)
           .build();
 
   public SearchAlbumsRequestTest() throws Exception {
+  }
+
+  @Test
+  public void shouldComplyWithReference() {
+    assertHasAuthorizationHeader(defaultRequest);
+    assertEquals(
+            "https://api.spotify.com:443/v1/search?q=Abba&limit=10&market=SE&offset=0&type=album",
+            defaultRequest.getUri().toString());
   }
 
   @Test

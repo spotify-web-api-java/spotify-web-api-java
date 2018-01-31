@@ -1,9 +1,9 @@
 package com.wrapper.spotify.requests.data.tracks;
 
-import com.wrapper.spotify.ITest;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.AudioFeatures;
+import com.wrapper.spotify.requests.data.AbstractDataTest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -14,15 +14,23 @@ import java.util.concurrent.ExecutionException;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(MockitoJUnitRunner.class)
-public class GetAudioFeaturesForSeveralTracksRequestTest implements ITest<AudioFeatures[]> {
+public class GetAudioFeaturesForSeveralTracksRequestTest extends AbstractDataTest<AudioFeatures[]> {
   private final GetAudioFeaturesForSeveralTracksRequest defaultRequest = SPOTIFY_API
-          .getAudioFeaturesForSeveralTracks("id")
+          .getAudioFeaturesForSeveralTracks(ID_TRACK, ID_TRACK)
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
                           "requests/data/tracks/GetAudioFeaturesForSeveralTracksRequest.json"))
           .build();
 
   public GetAudioFeaturesForSeveralTracksRequestTest() throws Exception {
+  }
+
+  @Test
+  public void shouldComplyWithReference() {
+    assertHasAuthorizationHeader(defaultRequest);
+    assertEquals(
+            "https://api.spotify.com:443/v1/audio-features?ids=01iyCAUm8EvOFqVWYJ3dVX%2C01iyCAUm8EvOFqVWYJ3dVX",
+            defaultRequest.getUri().toString());
   }
 
   @Test
