@@ -2,6 +2,7 @@ package data.search;
 
 import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.SpotifyApi;
+import com.wrapper.spotify.enums.ModelObjectType;
 import com.wrapper.spotify.model_objects.special.SearchResult;
 import com.wrapper.spotify.requests.data.search.SearchItemRequest;
 
@@ -10,7 +11,7 @@ import java.util.concurrent.Future;
 public class SearchItemExample {
   private static final String accessToken = "taHZ2SdB-bPA3FsK3D7ZN5npZS47cMy-IEySVEGttOhXmqaVAIo0ESvTCLjLBifhHOHOIuhFUKPW1WMDP7w6dj3MAZdWT8CLI2MkZaXbYLTeoDvXesf2eeiLYPBGdx8tIwQJKgV8XdnzH_DONk";
   private static final String q = "Abba";
-  private static final String type = "track";
+  private static final String type = ModelObjectType.ARTIST.getType();
 
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
           .setAccessToken(accessToken)

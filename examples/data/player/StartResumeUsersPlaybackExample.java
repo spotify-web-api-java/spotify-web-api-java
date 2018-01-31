@@ -16,8 +16,8 @@ public class StartResumeUsersPlaybackExample {
           .startResumeUsersPlayback()
           .context_uri("spotify:album:5zT1JLIj9E57p3e1rFm9Uq")
           .device_id("5fbb3ba6aa454b5534c4ba43a8c7e8e45a63ad0e")
-          .offset(new JsonParser().parse("[\"spotify:track:01iyCAUm8EvOFqVWYJ3dVX\"]").getAsJsonObject())
-          .uris(new JsonParser().parse("{\"position\": 0}").getAsJsonArray())
+          .offset(new JsonParser().parse("{\"uri\":\"spotify:track:01iyCAUm8EvOFqVWYJ3dVX\"}").getAsJsonObject())
+          .uris(new JsonParser().parse("{\"01iyCAUm8EvOFqVWYJ3dVX\"}").getAsJsonArray())
           .build();
 
   public static void startResumeUsersPlayback_Sync() {

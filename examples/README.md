@@ -25,11 +25,12 @@ The following (random) data should be used when modifying examples:
 - Ids: see appropriate IDs
 - Insert before: `0`
 - Model object type: first appropriate
+- Position ms: `10000`
 - Public: `false`
 - Q: `"Abba"`
 - Range start: `0`
 - State: `"track"` or `true`
-- Type: `"track"`
+- Type: `ModelObjectType.ARTIST`
 - Volume percent: `100`
 
 ### Optional
@@ -48,7 +49,7 @@ The following (random) data should be used when modifying examples:
 - Max popularity: `50`
 - Min popularity: `10`
 - Name: `"Abba"`
-- Offset: `0` or `new JsonParser().parse("[\"spotify:track:01iyCAUm8EvOFqVWYJ3dVX\"]").getAsJsonObject()`
+- Offset: `0` or `new JsonParser().parse("{\"uri\":\"spotify:track:01iyCAUm8EvOFqVWYJ3dVX\"}").getAsJsonObject()`
 - Play: `false`
 - Position: `0`
 - Public: `false`
@@ -64,4 +65,4 @@ The following (random) data should be used when modifying examples:
 - Time range: `"medium_term"`
 - Timestamp: `new Date(1414054800000L)`
 - Tracks: `new JsonParser().parse("[\"01iyCAUm8EvOFqVWYJ3dVX\"]").getAsJsonArray()`
-- URIs: `new JsonParser().parse("{\"position\": 0}").getAsJsonArray()`
+- URIs: `new JsonParser().parse("{\"01iyCAUm8EvOFqVWYJ3dVX\"}").getAsJsonArray()`
