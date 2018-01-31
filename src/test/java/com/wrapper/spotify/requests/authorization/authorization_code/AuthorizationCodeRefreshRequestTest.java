@@ -9,6 +9,7 @@ import org.junit.Test;
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
+import static com.wrapper.spotify.Assertions.assertHasFormParameter;
 import static org.junit.Assert.assertEquals;
 
 public class AuthorizationCodeRefreshRequestTest extends AbstractAuthorizationTest<AuthorizationCodeCredentials> {
@@ -27,6 +28,14 @@ public class AuthorizationCodeRefreshRequestTest extends AbstractAuthorizationTe
   @Test
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
+    assertHasFormParameter(
+            defaultRequest,
+            "grant_type",
+            "refresh_token");
+    assertHasFormParameter(
+            defaultRequest,
+            "refresh_token",
+            SPOTIFY_API.getRefreshToken());
     assertEquals(
             "https://accounts.spotify.com:443/api/token",
             defaultRequest.getUri().toString());

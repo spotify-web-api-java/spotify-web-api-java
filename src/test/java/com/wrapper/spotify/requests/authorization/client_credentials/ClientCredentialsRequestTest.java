@@ -9,6 +9,7 @@ import org.junit.Test;
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
+import static com.wrapper.spotify.Assertions.assertHasFormParameter;
 import static org.junit.Assert.assertEquals;
 
 public class ClientCredentialsRequestTest extends AbstractAuthorizationTest<ClientCredentials> {
@@ -24,6 +25,10 @@ public class ClientCredentialsRequestTest extends AbstractAuthorizationTest<Clie
   @Test
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
+    assertHasFormParameter(
+            defaultRequest,
+            "grant_type",
+            "client_credentials");
     assertEquals(
             "https://accounts.spotify.com:443/api/token",
             defaultRequest.getUri().toString());

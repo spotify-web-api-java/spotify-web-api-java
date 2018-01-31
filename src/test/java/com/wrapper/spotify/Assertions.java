@@ -10,20 +10,6 @@ import static org.junit.Assert.fail;
 
 public class Assertions {
 
-  public static <T> void assertHasQueryParameter(IRequest request, String name, T value) {
-    String[] queryParameters = request.getUri().getQuery().split("&");
-
-    for (String queryParameter : queryParameters) {
-      String[] queryParameterParts = queryParameter.split("=");
-
-      if (queryParameterParts[0].equals(name) && queryParameterParts[1].equals(String.valueOf(value))) {
-        return;
-      }
-    }
-
-    fail(String.format("Request \"%s\" does not contain form parameter \"%s\" with value \"%s\"", request.getClass().getSimpleName(), name, String.valueOf(value)));
-  }
-
   public static <T> void assertHasHeader(IRequest request, String name, T value) {
     List<Header> headers = request.getHeaders();
 
