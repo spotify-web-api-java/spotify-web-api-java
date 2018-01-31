@@ -42,7 +42,9 @@ compile 'se.michaelthelin.spotify:spotify-web-api-java:2.0.0-RC1'
 <a name="Documentation"></a>
 
 ## Documentation
-See this project's [Javadoc](https://thelinmichael.github.io/spotify-web-api-java/).
+See this project's **[Javadoc](https://thelinmichael.github.io/spotify-web-api-java/)**.
+
+*A huge thanks to [c-schuhmann](https://github.com/c-schuhmann) for his amazing work on the documentation!*
 
 <a name="General-Usage"></a>
 
