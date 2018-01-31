@@ -5,7 +5,7 @@ import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.models.RefreshAccessTokenCredentials;
 import org.junit.Test;
 
-import static junit.framework.Assert.assertNotNull;
+import static org.junit.Assert.assertNotNull;
 
 public class RefreshAccessTokenRequestTest {
 
