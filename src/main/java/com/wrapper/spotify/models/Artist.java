@@ -13,6 +13,7 @@ public class Artist {
   private int popularity;
   private SpotifyEntityType type = SpotifyEntityType.ARTIST;
   private String uri;
+  private Followers followers;
 
   public Followers getFollowers() {
     return followers;
@@ -21,8 +22,6 @@ public class Artist {
   public void setFollowers(Followers followers) {
     this.followers = followers;
   }
-
-  private Followers followers;
 
   public ExternalUrls getExternalUrls() {
     return externalUrls;

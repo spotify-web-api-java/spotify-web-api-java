@@ -17,10 +17,15 @@ public class FeaturedPlaylistsRequest extends AbstractRequest {
     super(builder);
   }
 
+  public static Builder builder() {
+    return new Builder();
+  }
+
   /**
    * Get Featured Playlists synchronously.
+   *
    * @return Featured playlists.
-   * @throws IOException In case of networking issues.
+   * @throws IOException     In case of networking issues.
    * @throws WebApiException In case of error replies from the Web API.
    */
   public FeaturedPlaylists get() throws IOException, WebApiException {
@@ -30,6 +35,7 @@ public class FeaturedPlaylistsRequest extends AbstractRequest {
 
   /**
    * Get Featured Playlists asynchronously.
+   *
    * @return A future that resolves to featured playlists.
    */
   public SettableFuture<FeaturedPlaylists> getAsync() {
@@ -42,10 +48,6 @@ public class FeaturedPlaylistsRequest extends AbstractRequest {
     }
 
     return future;
-  }
-
-  public static Builder builder() {
-    return new Builder();
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {

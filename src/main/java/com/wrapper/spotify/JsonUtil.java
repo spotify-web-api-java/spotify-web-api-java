@@ -64,7 +64,7 @@ public class JsonUtil {
 
   public static ExternalUrls createExternalUrls(JSONObject externalUrls) {
     ExternalUrls returnedExternalUrls = new ExternalUrls();
-    Map<String,String> addedExternalUrls = returnedExternalUrls.getExternalUrls();
+    Map<String, String> addedExternalUrls = returnedExternalUrls.getExternalUrls();
     for (Object keyObject : externalUrls.keySet()) {
       String key = (String) keyObject;
       addedExternalUrls.put(key, externalUrls.getString(key));
@@ -176,17 +176,18 @@ public class JsonUtil {
 
   /**
    * Create a list of Copyright object.
+   *
    * @param copyrightsJson A JSON array containing copyright information retrieved from the Web API.
    * @return A list of Copyright objects.
    */
   public static List<Copyright> createCopyrights(JSONArray copyrightsJson) {
     List<Copyright> copyrights = new ArrayList<Copyright>();
     for (int i = 0; i < copyrightsJson.size(); i++) {
-        Copyright copyright = new Copyright();
-        JSONObject copyrightJson = copyrightsJson.getJSONObject(i);
-        if (existsAndNotNull("text", copyrightJson)) {
-          copyright.setText(copyrightJson.getString("text"));
-        }
+      Copyright copyright = new Copyright();
+      JSONObject copyrightJson = copyrightsJson.getJSONObject(i);
+      if (existsAndNotNull("text", copyrightJson)) {
+        copyright.setText(copyrightJson.getString("text"));
+      }
       if (existsAndNotNull("type", copyrightJson)) {
         copyright.setType(copyrightJson.getString("type"));
       }
@@ -197,12 +198,12 @@ public class JsonUtil {
 
   public static AlbumType createAlbumType(String albumType) {
     if ("null".equalsIgnoreCase(albumType)) {
-    	return null;
+      return null;
     }
     return AlbumType.valueOf(albumType.toUpperCase());
   }
 
-  public  static SimpleAlbum createSimpleAlbum(JSONObject simpleAlbumJson) {
+  public static SimpleAlbum createSimpleAlbum(JSONObject simpleAlbumJson) {
     if (simpleAlbumJson == null || simpleAlbumJson.isNullObject()) {
       return null;
     }
@@ -218,7 +219,7 @@ public class JsonUtil {
     simpleAlbum.setType(createSpotifyEntityType(simpleAlbumJson.getString("type")));
     simpleAlbum.setUri(simpleAlbumJson.getString("uri"));
     simpleAlbum.setAvailableMarkets(
-        createAvailableMarkets(simpleAlbumJson.getJSONArray("available_markets")));
+            createAvailableMarkets(simpleAlbumJson.getJSONArray("available_markets")));
 
     return simpleAlbum;
   }
@@ -262,7 +263,7 @@ public class JsonUtil {
   }
 
   private static List<SimpleArtist> createSimpleArtists(JSONArray artists) {
-   List<SimpleArtist> returnedArtists = new ArrayList<SimpleArtist>();
+    List<SimpleArtist> returnedArtists = new ArrayList<SimpleArtist>();
     for (int i = 0; i < artists.size(); i++) {
       returnedArtists.add(createSimpleArtist(artists.getJSONObject(i)));
     }
@@ -321,7 +322,7 @@ public class JsonUtil {
 
   public static ExternalIds createExternalIds(JSONObject externalIds) {
     ExternalIds returnedExternalIds = new ExternalIds();
-    Map<String,String> addedIds = returnedExternalIds.getExternalIds();
+    Map<String, String> addedIds = returnedExternalIds.getExternalIds();
 
     for (Object keyObject : externalIds.keySet()) {
       String key = (String) keyObject;
@@ -693,7 +694,7 @@ public class JsonUtil {
 
   private static boolean existsAndNotNull(String key, JSONObject jsonObject) {
     return jsonObject.containsKey(key) &&
-           !JSONNull.getInstance().equals(jsonObject.get(key));
+            !JSONNull.getInstance().equals(jsonObject.get(key));
   }
 
   private static Page<LibraryTrack> createItemlessLibraryTrackPage(JSONObject pageJson) {
@@ -714,7 +715,7 @@ public class JsonUtil {
   public static Page<LibraryTrack> createLibraryTracksPage(JSONObject jsonObject) {
     final Page<LibraryTrack> libraryTracksPage = createItemlessLibraryTrackPage(jsonObject);
     libraryTracksPage.setItems(createLibraryTracks(
-        JSONArray.fromObject(jsonObject.getJSONArray("items"))));
+            JSONArray.fromObject(jsonObject.getJSONArray("items"))));
 
     return libraryTracksPage;
   }
@@ -759,6 +760,7 @@ public class JsonUtil {
 
   /**
    * Create a Featured Playlist object
+   *
    * @param jsonObject The JSON object containing the featured playlists.
    * @return A Featured Playlists object.
    */

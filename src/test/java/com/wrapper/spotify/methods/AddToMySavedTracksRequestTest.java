@@ -27,11 +27,11 @@ public class AddToMySavedTracksRequestTest {
     final Api api = Api.builder().accessToken(accessToken).build();
 
     final List<String>
-        tracksToAdd = Arrays.asList("4BYGxv4rxSNcTgT3DsFB9o", "0BG2iE6McPhmAEKIhfqy1X");
+            tracksToAdd = Arrays.asList("4BYGxv4rxSNcTgT3DsFB9o", "0BG2iE6McPhmAEKIhfqy1X");
 
     final AddToMySavedTracksRequest request = api.addToMySavedTracks(tracksToAdd)
-      .httpManager(TestUtil.MockedHttpManager.returningString(""))
-      .build();
+            .httpManager(TestUtil.MockedHttpManager.returningString(""))
+            .build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
@@ -63,11 +63,11 @@ public class AddToMySavedTracksRequestTest {
     final Api api = Api.builder().accessToken(accessToken).build();
 
     final List<String>
-        tracksToAdd = Arrays.asList("4BYGxv4rxSNcTgT3DsFB9o", "0BG2iE6McPhmAEKIhfqy1X");
+            tracksToAdd = Arrays.asList("4BYGxv4rxSNcTgT3DsFB9o", "0BG2iE6McPhmAEKIhfqy1X");
 
     final AddToMySavedTracksRequest request = api.addToMySavedTracks(tracksToAdd)
-        .httpManager(TestUtil.MockedHttpManager.returningString(""))
-        .build();
+            .httpManager(TestUtil.MockedHttpManager.returningString(""))
+            .build();
 
     final String addTrackResponse = request.get();
 

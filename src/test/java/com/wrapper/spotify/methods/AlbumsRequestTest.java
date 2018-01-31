@@ -14,9 +14,7 @@ import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.fail;
+import static org.junit.Assert.*;
 
 @RunWith(MockitoJUnitRunner.class)
 public class AlbumsRequestTest {
@@ -26,8 +24,8 @@ public class AlbumsRequestTest {
     final Api api = Api.DEFAULT_API;
 
     final AlbumsRequest request = api.getAlbums("2hYe61Nd2oOoM6RYCwIma1")
-        .httpManager(TestUtil.MockedHttpManager.returningJson("albums.json"))
-        .build();
+            .httpManager(TestUtil.MockedHttpManager.returningJson("albums.json"))
+            .build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
@@ -74,8 +72,8 @@ public class AlbumsRequestTest {
     final Api api = Api.DEFAULT_API;
 
     final AlbumsRequest request = api.getAlbums("2hYe61Nd2oOoM6RYCwIma1")
-        .httpManager(TestUtil.MockedHttpManager.returningJson("albums.json"))
-        .build();
+            .httpManager(TestUtil.MockedHttpManager.returningJson("albums.json"))
+            .build();
 
     List<Album> albums = request.get();
 
@@ -105,8 +103,8 @@ public class AlbumsRequestTest {
     final Api api = Api.DEFAULT_API;
 
     final AlbumsRequest request = api.getAlbums("idontexist")
-        .httpManager(TestUtil.MockedHttpManager.returningJson("albums-none-found.json"))
-        .build();
+            .httpManager(TestUtil.MockedHttpManager.returningJson("albums-none-found.json"))
+            .build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 

@@ -12,9 +12,7 @@ import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.fail;
+import static org.junit.Assert.*;
 
 public class RelatedArtistsRequestTest {
 
@@ -23,9 +21,9 @@ public class RelatedArtistsRequestTest {
     final Api api = Api.DEFAULT_API;
 
     final RelatedArtistsRequest request = api
-        .getArtistRelatedArtists("0qeei9KQnptjwb8MgkqEoy")
-        .httpManager(TestUtil.MockedHttpManager.returningJson("related-artists.json"))
-        .build();
+            .getArtistRelatedArtists("0qeei9KQnptjwb8MgkqEoy")
+            .httpManager(TestUtil.MockedHttpManager.returningJson("related-artists.json"))
+            .build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
@@ -58,9 +56,9 @@ public class RelatedArtistsRequestTest {
     final Api api = Api.DEFAULT_API;
 
     final RelatedArtistsRequest request = api
-        .getArtistRelatedArtists("0qeei9KQnptjwb8MgkqEoy")
-        .httpManager(TestUtil.MockedHttpManager.returningJson("related-artists.json"))
-        .build();
+            .getArtistRelatedArtists("0qeei9KQnptjwb8MgkqEoy")
+            .httpManager(TestUtil.MockedHttpManager.returningJson("related-artists.json"))
+            .build();
 
     final List<Artist> artists = request.get();
 

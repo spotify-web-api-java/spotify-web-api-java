@@ -23,8 +23,8 @@ public class UserRequestTest {
     final Api api = Api.DEFAULT_API;
 
     final UserRequest request = api.getUser("wizzler")
-        .httpManager(TestUtil.MockedHttpManager.returningJson("user.json"))
-        .build();
+            .httpManager(TestUtil.MockedHttpManager.returningJson("user.json"))
+            .build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
@@ -57,8 +57,8 @@ public class UserRequestTest {
     final Api api = Api.DEFAULT_API;
 
     final UserRequest request = api.getUser("wizzler")
-        .httpManager(TestUtil.MockedHttpManager.returningJson("user.json"))
-        .build();
+            .httpManager(TestUtil.MockedHttpManager.returningJson("user.json"))
+            .build();
 
     final User user = request.get();
 

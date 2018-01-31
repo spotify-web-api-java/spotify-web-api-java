@@ -14,7 +14,9 @@ public class NewReleasesRequest extends AbstractRequest {
     super(builder);
   }
 
-  public static Builder builder() { return new Builder(); }
+  public static Builder builder() {
+    return new Builder();
+  }
 
   public SettableFuture<NewReleases> getAsync() {
     final SettableFuture<NewReleases> newReleasesFuture = SettableFuture.create();

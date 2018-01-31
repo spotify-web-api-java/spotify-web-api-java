@@ -26,11 +26,11 @@ public class AlbumsForArtistsRequestTest {
     final Api api = Api.DEFAULT_API;
 
     final AlbumsForArtistRequest request = api.getAlbumsForArtist("1vCWHaC5f2uS3yhpwWbIA6")
-        .limit(2)
-        .types(AlbumType.SINGLE)
-        .market("US")
-        .httpManager(TestUtil.MockedHttpManager.returningJson("artist-album.json"))
-        .build();
+            .limit(2)
+            .types(AlbumType.SINGLE)
+            .market("US")
+            .httpManager(TestUtil.MockedHttpManager.returningJson("artist-album.json"))
+            .build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
@@ -72,11 +72,11 @@ public class AlbumsForArtistsRequestTest {
     final Api api = Api.DEFAULT_API;
 
     final AlbumsForArtistRequest request = api.getAlbumsForArtist("1vCWHaC5f2uS3yhpwWbIA6")
-        .limit(2)
-        .types(AlbumType.SINGLE)
-        .market("US")
-        .httpManager(TestUtil.MockedHttpManager.returningJson("artist-album.json"))
-        .build();
+            .limit(2)
+            .types(AlbumType.SINGLE)
+            .market("US")
+            .httpManager(TestUtil.MockedHttpManager.returningJson("artist-album.json"))
+            .build();
 
     final Page<SimpleAlbum> albumSearchResult = request.get();
 

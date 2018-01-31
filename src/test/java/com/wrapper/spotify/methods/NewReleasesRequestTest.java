@@ -17,9 +17,7 @@ import org.junit.Test;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.fail;
+import static org.junit.Assert.*;
 
 public class NewReleasesRequestTest {
 
@@ -28,11 +26,11 @@ public class NewReleasesRequestTest {
     final Api api = Api.DEFAULT_API;
 
     final NewReleasesRequest request = api.getNewReleases()
-        .limit(3)
-        .offset(1)
-        .country("SE")
-        .httpManager(TestUtil.MockedHttpManager.returningJson("new-releases.json"))
-        .build();
+            .limit(3)
+            .offset(1)
+            .country("SE")
+            .httpManager(TestUtil.MockedHttpManager.returningJson("new-releases.json"))
+            .build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
@@ -46,14 +44,14 @@ public class NewReleasesRequestTest {
         Page<SimpleAlbum> albums = newReleases.getAlbums();
 
         assertEquals("https://api.spotify.com/v1/browse/new-releases?country=SE&offset=1&limit=3",
-                     albums.getHref());
+                albums.getHref());
 
         assertEquals(3, albums.getLimit());
         assertEquals(1, albums.getOffset());
         assertEquals("https://api.spotify.com/v1/browse/new-releases?country=SE&offset=4&limit=3",
-                     albums.getNext());
+                albums.getNext());
         assertEquals("https://api.spotify.com/v1/browse/new-releases?country=SE&offset=0&limit=3",
-                     albums.getPrevious());
+                albums.getPrevious());
         assertEquals(500, albums.getTotal());
 
         SimpleAlbum firstItem = albums.getItems().get(0);
@@ -80,11 +78,11 @@ public class NewReleasesRequestTest {
     final Api api = Api.DEFAULT_API;
 
     final NewReleasesRequest request = api.getNewReleases()
-        .limit(3)
-        .offset(1)
-        .country("SE")
-        .httpManager(TestUtil.MockedHttpManager.returningJson("new-releases.json"))
-        .build();
+            .limit(3)
+            .offset(1)
+            .country("SE")
+            .httpManager(TestUtil.MockedHttpManager.returningJson("new-releases.json"))
+            .build();
 
     NewReleases newReleases = request.get();
 
@@ -93,14 +91,14 @@ public class NewReleasesRequestTest {
     Page<SimpleAlbum> albums = newReleases.getAlbums();
 
     assertEquals("https://api.spotify.com/v1/browse/new-releases?country=SE&offset=1&limit=3",
-                 albums.getHref());
+            albums.getHref());
 
     assertEquals(3, albums.getLimit());
     assertEquals(1, albums.getOffset());
     assertEquals("https://api.spotify.com/v1/browse/new-releases?country=SE&offset=4&limit=3",
-                 albums.getNext());
+            albums.getNext());
     assertEquals("https://api.spotify.com/v1/browse/new-releases?country=SE&offset=0&limit=3",
-                 albums.getPrevious());
+            albums.getPrevious());
     assertEquals(500, albums.getTotal());
 
     SimpleAlbum firstItem = albums.getItems().get(0);

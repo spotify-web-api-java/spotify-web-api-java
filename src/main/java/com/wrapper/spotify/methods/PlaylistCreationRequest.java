@@ -46,7 +46,7 @@ public class PlaylistCreationRequest extends AbstractRequest {
       if (jsonBody == null) {
         jsonBody = new JSONObject();
       }
-      jsonBody.put("public",String.valueOf(publicAccess));
+      jsonBody.put("public", String.valueOf(publicAccess));
       return body(jsonBody);
     }
 
@@ -54,7 +54,7 @@ public class PlaylistCreationRequest extends AbstractRequest {
       if (jsonBody == null) {
         jsonBody = new JSONObject();
       }
-      jsonBody.put("name",String.valueOf(title));
+      jsonBody.put("name", String.valueOf(title));
       return body(jsonBody);
     }
 

@@ -18,6 +18,10 @@ public class GetMySavedTracksRequest extends AbstractRequest {
     super(builder);
   }
 
+  public static Builder builder() {
+    return new Builder();
+  }
+
   public SettableFuture<Page<LibraryTrack>> getAsync() {
     SettableFuture<Page<LibraryTrack>> libraryTracksFuture = SettableFuture.create();
 
@@ -36,10 +40,6 @@ public class GetMySavedTracksRequest extends AbstractRequest {
     final JSONObject jsonObject = JSONObject.fromObject(getJson());
 
     return JsonUtil.createLibraryTracksPage(jsonObject);
-  }
-
-  public static Builder builder() {
-    return new Builder();
   }
 
   public static final class Builder extends AbstractRequest.Builder<Builder> {

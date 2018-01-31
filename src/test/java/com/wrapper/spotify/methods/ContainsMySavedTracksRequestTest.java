@@ -8,7 +8,6 @@ import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.SettableFuture;
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.TestUtil;
-import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -16,22 +15,20 @@ import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
+import static org.junit.Assert.*;
 
 public class ContainsMySavedTracksRequestTest {
 
   @Test
-  public void  shouldCheckContains_Async() throws Exception {
+  public void shouldCheckContains_Async() throws Exception {
     final String accessToken = "someAccessToken";
 
     final Api api = Api.builder().accessToken(accessToken).build();
 
     ContainsMySavedTracksRequest request = api.containsMySavedTracks(
-        Arrays.asList("0udZHhCi7p1YzMlvI4fXoK", "1e1VmyiAuPyM4SHhySP1oU"))
-        .httpManager(TestUtil.MockedHttpManager.returningJson("yourmusic-contains.json"))
-        .build();
+            Arrays.asList("0udZHhCi7p1YzMlvI4fXoK", "1e1VmyiAuPyM4SHhySP1oU"))
+            .httpManager(TestUtil.MockedHttpManager.returningJson("yourmusic-contains.json"))
+            .build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
@@ -63,9 +60,9 @@ public class ContainsMySavedTracksRequestTest {
     final Api api = Api.builder().accessToken(accessToken).build();
 
     ContainsMySavedTracksRequest request = api.containsMySavedTracks(
-        Arrays.asList("0udZHhCi7p1YzMlvI4fXoK", "1e1VmyiAuPyM4SHhySP1oU"))
-        .httpManager(TestUtil.MockedHttpManager.returningJson("yourmusic-contains.json"))
-        .build();
+            Arrays.asList("0udZHhCi7p1YzMlvI4fXoK", "1e1VmyiAuPyM4SHhySP1oU"))
+            .httpManager(TestUtil.MockedHttpManager.returningJson("yourmusic-contains.json"))
+            .build();
 
     List<Boolean> response = request.get();
     assertFalse(response.get(0));

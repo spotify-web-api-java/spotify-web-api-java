@@ -1,4 +1,4 @@
 {
-    "error": "invalid_client",
-    "error_description": "Invalid client"
+  "error": "invalid_client",
+  "error_description": "Invalid client"
 }

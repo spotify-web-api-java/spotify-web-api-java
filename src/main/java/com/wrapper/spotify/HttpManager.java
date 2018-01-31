@@ -16,7 +16,7 @@ public interface HttpManager {
    * @param url the {@link Url} to HTTP GET.
    * @return a String containing the body of the HTTP GET response.
    * @throws WebApiException In case of error replies from the Web API.
-   * @throws IOException In case of networking issues.
+   * @throws IOException     In case of networking issues.
    */
   String get(Url url) throws WebApiException, IOException;
 
@@ -26,12 +26,13 @@ public interface HttpManager {
    * @param url the {@link Url} to HTTP POST.
    * @return a String containing the body of the HTTP POST response.
    * @throws WebApiException In case of error replies from the Web API.
-   * @throws IOException In case of networking issues.
+   * @throws IOException     In case of networking issues.
    */
   String post(Url url) throws WebApiException, IOException;
 
   /**
    * Perform an HTTP DELETE request to the specified URL.
+   *
    * @param url the {@link Url} to HTTP DELETE.
    * @return a String containing the body of the HTTP DELETE response.
    */
@@ -43,7 +44,7 @@ public interface HttpManager {
    * @param url the {@link Url} to HTTP PUT.
    * @return a String containing the body of the HTTP PUTresponse.
    * @throws WebApiException In case of error replies from the Web API.
-   * @throws IOException In case of networking issues.
+   * @throws IOException     In case of networking issues.
    */
   String put(Url url) throws IOException, WebApiException;
 

@@ -17,6 +17,39 @@ public abstract class AbstractRequest implements Request {
 
   private HttpManager httpManager;
 
+  public AbstractRequest(Builder<?> builder) {
+    assert (builder.path != null);
+    assert (builder.host != null);
+    assert (builder.port > 0);
+    assert (builder.scheme != null);
+    assert (builder.parameters != null);
+    assert (builder.parts != null);
+    assert (builder.bodyParameters != null);
+    assert (builder.headerParameters != null);
+
+    if (builder.httpManager == null) {
+      httpManager = Api.DEFAULT_HTTP_MANAGER;
+    } else {
+      httpManager = builder.httpManager;
+    }
+
+    Url.Builder urlBuilder = Url.newBuilder()
+            .setScheme(builder.scheme)
+            .setHost(builder.host)
+            .setPort(builder.port)
+            .setPath(builder.path)
+            .addAllParameters(builder.parameters)
+            .addAllBodyParameters(builder.bodyParameters)
+            .addAllHeaderParameters(builder.headerParameters)
+            .addAllParts(builder.parts);
+
+    if (builder.jsonBody != null) {
+      urlBuilder.setJsonBody(builder.jsonBody.toString());
+    }
+
+    url = urlBuilder.build();
+  }
+
   public Url toUrl() {
     return url;
   }
@@ -43,39 +76,6 @@ public abstract class AbstractRequest implements Request {
 
   public String deleteJson() throws IOException, WebApiException {
     return httpManager.delete(url);
-  }
-
-  public AbstractRequest(Builder<?> builder) {
-    assert (builder.path != null);
-    assert (builder.host != null);
-    assert (builder.port > 0);
-    assert (builder.scheme != null);
-    assert (builder.parameters != null);
-    assert (builder.parts != null);
-    assert (builder.bodyParameters != null);
-    assert (builder.headerParameters != null);
-
-    if (builder.httpManager == null) {
-      httpManager = Api.DEFAULT_HTTP_MANAGER;
-    } else {
-      httpManager = builder.httpManager;
-    }
-
-    Url.Builder urlBuilder = Url.newBuilder()
-             .setScheme(builder.scheme)
-             .setHost(builder.host)
-             .setPort(builder.port)
-             .setPath(builder.path)
-             .addAllParameters(builder.parameters)
-             .addAllBodyParameters(builder.bodyParameters)
-             .addAllHeaderParameters(builder.headerParameters)
-             .addAllParts(builder.parts);
-
-    if (builder.jsonBody != null) {
-      urlBuilder.setJsonBody(builder.jsonBody.toString());
-    }
-
-    url = urlBuilder.build();
   }
 
   public static abstract class Builder<BuilderType extends Builder<?>> implements Request.Builder {
@@ -145,7 +145,7 @@ public abstract class AbstractRequest implements Request {
       assert (name.length() > 0);
       assert (value != null);
 
-      Url.Parameter parameter= Url.Parameter.newBuilder().setName(name).setValue(value).build();
+      Url.Parameter parameter = Url.Parameter.newBuilder().setName(name).setValue(value).build();
       headerParameters.add(parameter);
 
       return (BuilderType) this;

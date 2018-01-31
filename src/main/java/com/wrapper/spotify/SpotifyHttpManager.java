@@ -32,6 +32,7 @@ public class SpotifyHttpManager implements HttpManager {
 
   /**
    * Construct a new SpotifyHttpManager instance.
+   *
    * @param builder The builder.
    */
   public SpotifyHttpManager(Builder builder) {
@@ -40,6 +41,10 @@ public class SpotifyHttpManager implements HttpManager {
     } else {
       connectionManager = new PoolingHttpClientConnectionManager();
     }
+  }
+
+  public static Builder builder() {
+    return new Builder();
   }
 
   @Override
@@ -107,8 +112,6 @@ public class SpotifyHttpManager implements HttpManager {
     return execute(method);
   }
 
-
-  // TODO(michael): Allow JSON body to be sent.
   @Override
   public String delete(UtilProtos.Url url) throws IOException, WebApiException {
     assert (url != null);
@@ -129,16 +132,15 @@ public class SpotifyHttpManager implements HttpManager {
 
     queryStrBuilder.append("?");
 
-    for (Url.Parameter param : parameterList)
-    {
+    for (Url.Parameter param : parameterList) {
       queryStrBuilder.append(param.getName())
-                     .append("=")
-                     .append(param.getValue())
-                     .append("&");
+              .append("=")
+              .append(param.getValue())
+              .append("&");
     }
 
     queryStr = queryStrBuilder.toString()
-                              .substring(0, queryStrBuilder.length() - 1);
+            .substring(0, queryStrBuilder.length() - 1);
 
     return queryStr;
   }
@@ -188,7 +190,6 @@ public class SpotifyHttpManager implements HttpManager {
   }
 
   /*
-   * TODO: Error handling could be more granular and throw a different exception depending on status code.
    * It could also look into the JSON object to find an error message.
    */
   private void handleErrorStatusCode(CloseableHttpResponse httpResponse) throws BadRequestException, ServerErrorException {
@@ -217,13 +218,12 @@ public class SpotifyHttpManager implements HttpManager {
     }
   }
 
-  public static Builder builder() {
-    return new Builder();
-  }
-
   public static class Builder {
     private PoolingHttpClientConnectionManager connectionManager = null;
-    public Builder() {}
+
+    public Builder() {
+    }
+
     public SpotifyHttpManager build() {
       return new SpotifyHttpManager(this);
     }

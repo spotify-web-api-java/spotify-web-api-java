@@ -19,17 +19,17 @@ import static org.junit.Assert.fail;
 public class ChangePlaylistDetailsRequestTest {
 
   @Test
-  public void shouldChangeNameAndPublishedStatus_async() throws Exception  {
+  public void shouldChangeNameAndPublishedStatus_async() throws Exception {
     final String accessToken = "someAccessToken";
 
     final Api api = Api.builder().accessToken(accessToken).build();
 
     ChangePlaylistDetailsRequest request = api
-        .changePlaylistDetails("thelinmichael", "3ktAYNcRHpazJ9qecm3ptn")
-        .publicAccess(true)
-        .name("Testing playlist name change")
-        .httpManager(TestUtil.MockedHttpManager.returningString(""))
-        .build();
+            .changePlaylistDetails("thelinmichael", "3ktAYNcRHpazJ9qecm3ptn")
+            .publicAccess(true)
+            .name("Testing playlist name change")
+            .httpManager(TestUtil.MockedHttpManager.returningString(""))
+            .build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
@@ -54,17 +54,17 @@ public class ChangePlaylistDetailsRequestTest {
   }
 
   @Test
-  public void shouldChangeNameAndPublishedStatus_sync() throws Exception  {
+  public void shouldChangeNameAndPublishedStatus_sync() throws Exception {
     final String accessToken = "someAccessToken";
 
     final Api api = Api.builder().accessToken(accessToken).build();
 
     ChangePlaylistDetailsRequest request = api
-        .changePlaylistDetails("thelinmichael", "3ktAYNcRHpazJ9qecm3ptn")
-        .publicAccess(true)
-        .name("Testing playlist name change")
-        .httpManager(TestUtil.MockedHttpManager.returningString(""))
-        .build();
+            .changePlaylistDetails("thelinmichael", "3ktAYNcRHpazJ9qecm3ptn")
+            .publicAccess(true)
+            .name("Testing playlist name change")
+            .httpManager(TestUtil.MockedHttpManager.returningString(""))
+            .build();
 
     String response = request.get();
     assertEquals("", response);

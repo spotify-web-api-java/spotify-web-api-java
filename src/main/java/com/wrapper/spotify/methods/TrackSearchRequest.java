@@ -15,6 +15,10 @@ public class TrackSearchRequest extends AbstractRequest {
     super(builder);
   }
 
+  public static Builder builder() {
+    return new Builder();
+  }
+
   public SettableFuture<Page<Track>> getAsync() {
     SettableFuture<Page<Track>> searchResultFuture = SettableFuture.create();
 
@@ -33,16 +37,12 @@ public class TrackSearchRequest extends AbstractRequest {
     return JsonUtil.createTrackPage(jsonObject);
   }
 
-  public static Builder builder() {
-    return new Builder();
-  }
-
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
     public Builder query(String query) {
       assert (query != null);
       path("/v1/search");
-      parameter("type","track");
+      parameter("type", "track");
       return parameter("q", query);
     }
 

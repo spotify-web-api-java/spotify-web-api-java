@@ -26,10 +26,10 @@ public class TrackSearchRequestTest {
     final Api api = Api.DEFAULT_API;
 
     final TrackSearchRequest request = api.searchTracks("tania bowra")
-        .offset(0)
-        .limit(20)
-        .httpManager(TestUtil.MockedHttpManager.returningJson("search-track.json"))
-        .build();
+            .offset(0)
+            .limit(20)
+            .httpManager(TestUtil.MockedHttpManager.returningJson("search-track.json"))
+            .build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 

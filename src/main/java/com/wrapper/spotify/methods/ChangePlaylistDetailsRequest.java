@@ -17,6 +17,10 @@ public class ChangePlaylistDetailsRequest extends AbstractRequest {
     super(builder);
   }
 
+  public static Builder builder() {
+    return new Builder();
+  }
+
   public SettableFuture<String> getAsync() {
     final SettableFuture<String> changeDetailsFuture = SettableFuture.create();
 
@@ -37,13 +41,9 @@ public class ChangePlaylistDetailsRequest extends AbstractRequest {
     return putJson();
   }
 
-  public static Builder builder() {
-    return new Builder();
-  }
-
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
-    final private Map<String,Object> properties = Maps.newHashMap();
+    final private Map<String, Object> properties = Maps.newHashMap();
 
     public Builder name(String name) {
       assert (name != null);

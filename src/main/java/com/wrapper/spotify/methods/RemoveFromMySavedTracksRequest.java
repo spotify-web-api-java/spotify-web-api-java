@@ -16,6 +16,10 @@ public class RemoveFromMySavedTracksRequest extends AbstractRequest {
     super(builder);
   }
 
+  public static Builder builder() {
+    return new Builder();
+  }
+
   public SettableFuture<String> getAsync() {
     final SettableFuture<String> removeFromMyTracksFuture = SettableFuture.create();
 
@@ -34,10 +38,6 @@ public class RemoveFromMySavedTracksRequest extends AbstractRequest {
 
   public String get() throws IOException, WebApiException {
     return deleteJson();
-  }
-
-  public static Builder builder() {
-    return new Builder();
   }
 
   public static class Builder extends AbstractRequest.Builder<Builder> {

@@ -23,8 +23,8 @@ public class AlbumRequestTest {
     final Api api = Api.DEFAULT_API;
 
     final AlbumRequest request = api.getAlbum("4pox3k0CGuwwAknR9GtcoX")
-        .httpManager(TestUtil.MockedHttpManager.returningJson("album.json"))
-        .build();
+            .httpManager(TestUtil.MockedHttpManager.returningJson("album.json"))
+            .build();
 
     final SettableFuture<Album> albumFuture = request.getAsync();
 
@@ -38,7 +38,7 @@ public class AlbumRequestTest {
         assertNotNull(album.getCopyrights());
         assertFalse(album.getCopyrights().isEmpty());
 
-          asyncCompleted.countDown();
+        asyncCompleted.countDown();
       }
 
       @Override
@@ -56,8 +56,8 @@ public class AlbumRequestTest {
     final Api api = Api.DEFAULT_API;
 
     final AlbumRequest request = api.getAlbum("4pox3k0CGuwwAknR9GtcoX")
-        .httpManager(TestUtil.MockedHttpManager.returningJson("album.json"))
-        .build();
+            .httpManager(TestUtil.MockedHttpManager.returningJson("album.json"))
+            .build();
 
     Album album = request.get();
 

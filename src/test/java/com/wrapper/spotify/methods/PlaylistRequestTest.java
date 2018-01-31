@@ -14,9 +14,6 @@ import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.*;
 
-/*
- * TODO: Add negative tests
- */
 public class PlaylistRequestTest {
 
   @Test
@@ -66,16 +63,16 @@ public class PlaylistRequestTest {
     final Api api = Api.DEFAULT_API;
 
     final PlaylistRequest request = api.getPlaylist("thelinmichael", "3ktAYNcRHpazJ9qecm3ptn")
-        .httpManager(TestUtil.MockedHttpManager.returningJson("playlist-localfiles-response.json"))
-        .build();
+            .httpManager(TestUtil.MockedHttpManager.returningJson("playlist-localfiles-response.json"))
+            .build();
 
     Playlist playlist = request.get();
-    
+
     assertTrue(playlist.getTracks().getItems().get(0).getTrack().getAlbum().getAlbumType() == null);
 
     assertNotNull(playlist);
   }
-  
+
   @Ignore
   @Test
   public void shouldFailFutureIfPlaylistIsNotFound() throws Exception {

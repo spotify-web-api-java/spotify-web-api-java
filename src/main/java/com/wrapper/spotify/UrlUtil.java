@@ -18,7 +18,7 @@ public abstract class UrlUtil {
                   .put(Scheme.HTTPS, "https")
                   .build();
 
-  public static String assemble(UtilProtos.Url url)  {
+  public static String assemble(UtilProtos.Url url) {
     try {
       if (!url.getPath().contains("users")) {
         final URIBuilder uriBuilder = new URIBuilder();
@@ -37,7 +37,7 @@ public abstract class UrlUtil {
       throw new IllegalStateException(e);
     }
   }
-  
+
   public static String assembleWithQueryParameters(UtilProtos.Url url) {
     try {
       final URI uri = new URI(SCHEME_NAMES.get(url.getScheme()), null, url.getHost(), url.getPort(), url.getPath(), getParametersListAsString(url), null);
@@ -47,12 +47,12 @@ public abstract class UrlUtil {
     }
   }
 
-  public static String userToUri(String userName){
+  public static String userToUri(String userName) {
     String uriString = "";
     try {
-       uriString = URLEncoder.encode(userName, "UTF-8");
+      uriString = URLEncoder.encode(userName, "UTF-8");
     } catch (Throwable e) {
-       e.printStackTrace();
+      e.printStackTrace();
     }
     uriString = uriString.replaceAll("!", toHex("!"));
     uriString = uriString.replaceAll("\\?", toHex("?"));
@@ -64,13 +64,13 @@ public abstract class UrlUtil {
   private static String toHex(String s) {
     StringBuffer buf;
     try {
-       buf = new StringBuffer(s.getBytes("UTF-8").length);
-       for (byte x : s.getBytes("UTF-8")) {
-         buf.append("%");
-         buf.append(Integer.toHexString(x & 0xFF));
+      buf = new StringBuffer(s.getBytes("UTF-8").length);
+      for (byte x : s.getBytes("UTF-8")) {
+        buf.append("%");
+        buf.append(Integer.toHexString(x & 0xFF));
       }
     } catch (UnsupportedEncodingException e) {
-       throw new IllegalStateException(e);
+      throw new IllegalStateException(e);
     }
     return buf.toString().toUpperCase();
   }

@@ -26,10 +26,10 @@ public class ArtistSearchRequestTest {
     final Api api = Api.DEFAULT_API;
 
     final ArtistSearchRequest request = api.searchArtists("tania bowra")
-        .limit(20)
-        .offset(0)
-        .httpManager(TestUtil.MockedHttpManager.returningJson("search-artist.json"))
-        .build();
+            .limit(20)
+            .offset(0)
+            .httpManager(TestUtil.MockedHttpManager.returningJson("search-artist.json"))
+            .build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
@@ -75,10 +75,10 @@ public class ArtistSearchRequestTest {
     final Api api = Api.DEFAULT_API;
 
     final ArtistSearchRequest request = api.searchArtists("tania bowra")
-        .limit(20)
-        .offset(0)
-        .httpManager(TestUtil.MockedHttpManager.returningJson("search-artist.json"))
-        .build();
+            .limit(20)
+            .offset(0)
+            .httpManager(TestUtil.MockedHttpManager.returningJson("search-artist.json"))
+            .build();
 
     final Page<Artist> artistSearchResult = request.get();
 

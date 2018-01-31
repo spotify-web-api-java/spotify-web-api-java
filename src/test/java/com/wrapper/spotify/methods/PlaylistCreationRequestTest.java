@@ -20,7 +20,7 @@ public class PlaylistCreationRequestTest {
   public void shouldCreatePlaylist_async() throws Exception {
     final Api api = Api.builder().accessToken("someAccessToken").build();
 
-    final PlaylistCreationRequest request = api.createPlaylist("thelinmichael","Coolest playlist")
+    final PlaylistCreationRequest request = api.createPlaylist("thelinmichael", "Coolest playlist")
             .publicAccess(true)
             .httpManager(TestUtil.MockedHttpManager.returningJson("created-playlist.json"))
             .build();
@@ -64,7 +64,7 @@ public class PlaylistCreationRequestTest {
   public void shouldCreatePlaylist_sync() throws Exception {
     final Api api = Api.builder().accessToken("someAccessToken").build();
 
-    final PlaylistCreationRequest request = api.createPlaylist("thelinmichael","title")
+    final PlaylistCreationRequest request = api.createPlaylist("thelinmichael", "title")
             .publicAccess(true)
             .httpManager(TestUtil.MockedHttpManager.returningJson("created-playlist.json"))
             .build();

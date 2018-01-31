@@ -3,7 +3,6 @@ package com.wrapper.spotify;
 import com.wrapper.spotify.exceptions.WebApiException;
 
 import java.io.*;
-import java.nio.CharBuffer;
 
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.mock;

@@ -11,7 +11,7 @@ public enum SpotifyEntityType {
   public final String type;
 
   SpotifyEntityType(String type) {
-   this.type = type;
+    this.type = type;
   }
 
   public String getType() {

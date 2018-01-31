@@ -16,6 +16,10 @@ public class ArtistSearchRequest extends AbstractRequest {
     super(builder);
   }
 
+  public static Builder builder() {
+    return new Builder();
+  }
+
   public SettableFuture<Page<Artist>> getAsync() {
     SettableFuture<Page<Artist>> searchResultFuture = SettableFuture.create();
 
@@ -34,16 +38,12 @@ public class ArtistSearchRequest extends AbstractRequest {
     return JsonUtil.createArtistPage(jsonObject.getJSONObject("artists"));
   }
 
-  public static Builder builder() {
-    return new Builder();
-  }
-
   public static final class Builder extends AbstractRequest.Builder<Builder> {
 
     public Builder query(String query) {
       assert (query != null);
       path("/v1/search");
-      parameter("type","artist");
+      parameter("type", "artist");
       return parameter("q", query);
     }
 

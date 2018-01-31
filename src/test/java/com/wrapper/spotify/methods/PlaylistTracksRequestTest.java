@@ -24,9 +24,9 @@ public class PlaylistTracksRequestTest {
             .build();
 
     final PlaylistTracksRequest request = api
-        .getPlaylistTracks("thelinmichael", "3ktAYNcRHpazJ9qecm3ptn")
-        .httpManager(TestUtil.MockedHttpManager.returningJson("playlist-tracks.json"))
-        .build();
+            .getPlaylistTracks("thelinmichael", "3ktAYNcRHpazJ9qecm3ptn")
+            .httpManager(TestUtil.MockedHttpManager.returningJson("playlist-tracks.json"))
+            .build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
@@ -38,8 +38,8 @@ public class PlaylistTracksRequestTest {
       public void onSuccess(Page<PlaylistTrack> page) {
         assertNotNull(page);
         assertEquals(
-            "https://api.spotify.com/v1/users/thelinmichael/playlists/3ktAYNcRHpazJ9qecm3ptn/tracks",
-            page.getHref());
+                "https://api.spotify.com/v1/users/thelinmichael/playlists/3ktAYNcRHpazJ9qecm3ptn/tracks",
+                page.getHref());
         assertEquals(100, page.getLimit());
         assertNull(page.getNext());
         assertEquals(0, page.getOffset());
@@ -72,9 +72,9 @@ public class PlaylistTracksRequestTest {
             .build();
 
     final PlaylistTracksRequest request = api
-        .getStarred("thelinmichael")
-        .httpManager(TestUtil.MockedHttpManager.returningJson("starred-tracks.json"))
-        .build();
+            .getStarred("thelinmichael")
+            .httpManager(TestUtil.MockedHttpManager.returningJson("starred-tracks.json"))
+            .build();
 
     final CountDownLatch asyncCompleted = new CountDownLatch(1);
 
@@ -86,8 +86,8 @@ public class PlaylistTracksRequestTest {
       public void onSuccess(Page<PlaylistTrack> page) {
         assertNotNull(page);
         assertEquals(
-            "https://api.spotify.com/v1/users/thelinmichael/starred/tracks?offset=0&limit=100",
-            page.getHref());
+                "https://api.spotify.com/v1/users/thelinmichael/starred/tracks?offset=0&limit=100",
+                page.getHref());
         assertEquals(100, page.getLimit());
         assertNull(page.getNext());
         assertEquals(0, page.getOffset());
@@ -119,16 +119,16 @@ public class PlaylistTracksRequestTest {
     final Api api = Api.builder().accessToken(accessToken).build();
 
     final PlaylistTracksRequest request = api
-        .getPlaylistTracks("thelinmichael", "3ktAYNcRHpazJ9qecm3ptn")
-        .httpManager(TestUtil.MockedHttpManager.returningJson("playlist-tracks.json"))
-        .build();
+            .getPlaylistTracks("thelinmichael", "3ktAYNcRHpazJ9qecm3ptn")
+            .httpManager(TestUtil.MockedHttpManager.returningJson("playlist-tracks.json"))
+            .build();
 
     final Page<PlaylistTrack> page = request.get();
 
     assertNotNull(page);
     assertEquals(
-        "https://api.spotify.com/v1/users/thelinmichael/playlists/3ktAYNcRHpazJ9qecm3ptn/tracks",
-        page.getHref());
+            "https://api.spotify.com/v1/users/thelinmichael/playlists/3ktAYNcRHpazJ9qecm3ptn/tracks",
+            page.getHref());
     assertEquals(100, page.getLimit());
     assertNull(page.getNext());
     assertEquals(0, page.getOffset());
@@ -149,15 +149,15 @@ public class PlaylistTracksRequestTest {
     final Api api = Api.builder().accessToken(accessToken).build();
 
     final PlaylistTracksRequest request = api.getStarred("thelinmichael")
-        .httpManager(TestUtil.MockedHttpManager.returningJson("starred-tracks.json"))
-        .build();
+            .httpManager(TestUtil.MockedHttpManager.returningJson("starred-tracks.json"))
+            .build();
 
     final Page<PlaylistTrack> page = request.get();
 
     assertNotNull(page);
     assertEquals(
-        "https://api.spotify.com/v1/users/thelinmichael/starred/tracks?offset=0&limit=100",
-        page.getHref());
+            "https://api.spotify.com/v1/users/thelinmichael/starred/tracks?offset=0&limit=100",
+            page.getHref());
     assertEquals(100, page.getLimit());
     assertNull(page.getNext());
     assertEquals(0, page.getOffset());

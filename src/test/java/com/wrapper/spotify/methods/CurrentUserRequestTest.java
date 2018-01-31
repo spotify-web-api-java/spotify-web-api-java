@@ -36,7 +36,7 @@ public class CurrentUserRequestTest {
         assertEquals("Michael", user.getDisplayName());
         assertEquals("thelinmichael+test@gmail.com", user.getEmail());
         assertEquals("https://open.spotify.com/user/thelinmichael", user.getExternalUrls().get(
-            "spotify"));
+                "spotify"));
         assertEquals("https://api.spotify.com/v1/users/thelinmichael", user.getHref());
         assertEquals("thelinmichael", user.getId());
         assertEquals("SE", user.getCountry());
@@ -75,7 +75,7 @@ public class CurrentUserRequestTest {
     assertEquals("Michael", user.getDisplayName());
     assertEquals("thelinmichael+test@gmail.com", user.getEmail());
     assertEquals("https://open.spotify.com/user/thelinmichael", user.getExternalUrls().get(
-        "spotify"));
+            "spotify"));
     assertEquals("https://api.spotify.com/v1/users/thelinmichael", user.getHref());
     assertEquals("thelinmichael", user.getId());
     assertEquals("SE", user.getCountry());
