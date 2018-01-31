@@ -1,6 +1,5 @@
 package com.wrapper.spotify;
 
-import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.enums.ModelObjectType;
@@ -687,7 +686,7 @@ public class SpotifyApi {
     return new FollowArtistsOrUsersRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .type(type)
-            .ids(concat(new Gson().fromJson(ids, String[].class), ','));
+            .ids(ids);
   }
 
   /**
@@ -761,7 +760,7 @@ public class SpotifyApi {
     return new UnfollowArtistsOrUsersRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .type(type)
-            .ids(concat(new Gson().fromJson(ids, String[].class), ','));
+            .ids(ids);
   }
 
   /**
@@ -859,7 +858,7 @@ public class SpotifyApi {
     assert (ids.size() <= 50);
     return new RemoveAlbumsForCurrentUserRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
-            .ids(concat(new Gson().fromJson(ids, String[].class), ','));
+            .ids(ids);
   }
 
   /**
@@ -888,7 +887,7 @@ public class SpotifyApi {
     assert (ids.size() <= 50);
     return new RemoveUsersSavedTracksRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
-            .ids(concat(new Gson().fromJson(ids, String[].class), ','));
+            .ids(ids);
   }
 
   /**
@@ -918,7 +917,7 @@ public class SpotifyApi {
     assert (ids.size() <= 50);
     return new SaveAlbumsForCurrentUserRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
-            .ids(concat(new Gson().fromJson(ids, String[].class), ','));
+            .ids(ids);
   }
 
   /**
@@ -948,7 +947,7 @@ public class SpotifyApi {
     assert (ids.size() <= 50);
     return new SaveTracksForUserRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
-            .ids(concat(new Gson().fromJson(ids, String[].class), ','));
+            .ids(ids);
   }
 
   /**
