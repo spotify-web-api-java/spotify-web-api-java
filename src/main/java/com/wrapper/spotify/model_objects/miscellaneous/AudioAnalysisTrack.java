@@ -1,6 +1,7 @@
 package com.wrapper.spotify.model_objects.miscellaneous;
 
 import com.google.gson.JsonObject;
+import com.wrapper.spotify.enums.Modality;
 import com.wrapper.spotify.model_objects.AbstractModelObject;
 
 /**
@@ -23,7 +24,7 @@ public class AudioAnalysisTrack extends AbstractModelObject {
   private final Float timeSignatureConfidence;
   private final Integer key;
   private final Float keyConfidence;
-  private final Integer mode;
+  private final Modality mode;
   private final Float modeConfidence;
   private final String codeString;
   private final Float codeVersion;
@@ -31,8 +32,8 @@ public class AudioAnalysisTrack extends AbstractModelObject {
   private final Float echoprintVersion;
   private final String synchString;
   private final Float synchVersion;
-  private final String rythmString;
-  private final Float rythmVersion;
+  private final String rhythmString;
+  private final Float rhythmVersion;
 
   private AudioAnalysisTrack(final Builder builder) {
     super(builder);
@@ -60,8 +61,8 @@ public class AudioAnalysisTrack extends AbstractModelObject {
     this.echoprintVersion = builder.echoprintVersion;
     this.synchString = builder.synchString;
     this.synchVersion = builder.synchVersion;
-    this.rythmString = builder.rythmString;
-    this.rythmVersion = builder.rythmVersion;
+    this.rhythmString = builder.rhythmString;
+    this.rhythmVersion = builder.rhythmVersion;
   }
 
   /**
@@ -89,7 +90,6 @@ public class AudioAnalysisTrack extends AbstractModelObject {
    * <b>Note:</b> The sample MD5 is <b>probably</b> the MD5 of the track file. In the documentaion of the Analyzer
    * software, this field is mentioned in an example and contains a value, but it seems that audio analysis objects
    * returned by the Spotify Web API doesn't include a value in the field anymore. <br>
-   * TODO: Look into this by creating multiple Audio Analysis objects. This field is probably always empty.
    *
    * @return The sample MD5.
    */
@@ -100,7 +100,6 @@ public class AudioAnalysisTrack extends AbstractModelObject {
   /**
    * Get the offset seconds. <br>
    * <b>Note:</b> There is no public documentation available for this field. <br>
-   * TODO: Look into this by creating multiple Audio Analysis objects. This field contains probably always the value 0.
    *
    * @return The offset seconds.
    */
@@ -111,7 +110,6 @@ public class AudioAnalysisTrack extends AbstractModelObject {
   /**
    * Get the window seconds. <br>
    * <b>Note:</b> There is no public documentation available for this field. <br>
-   * TODO: Look into this by creating multiple Audio Analysis objects. This field contains probably always the value 0.
    *
    * @return The window seconds.
    */
@@ -130,7 +128,6 @@ public class AudioAnalysisTrack extends AbstractModelObject {
 
   /**
    * Get the analysis channels.
-   * TODO: Look into this by creating multiple Audio Analysis objects. This field contains probably always the value 1.
    *
    * @return The analysis channels.
    */
@@ -224,12 +221,11 @@ public class AudioAnalysisTrack extends AbstractModelObject {
 
   /**
    * Get the modality of the track. (either "major" or "minor")
-   * TODO: Return Value: Return as a {@link com.wrapper.spotify.enums.Modality} type.
    *
    * @return The modality type of the track.
    * @see <a href="https://en.wikipedia.org/wiki/Mode_(music)">Wikipedia: Mode (music)</a>
    */
-  public Integer getMode() {
+  public Modality getMode() {
     return mode;
   }
 
@@ -311,12 +307,11 @@ public class AudioAnalysisTrack extends AbstractModelObject {
   /**
    * Get the rhythm string of the track.
    * <p>
-   * TODO: Correct method and field spelling (rythm - rhythm)
    *
    * @return The rhythm string of the track.
    */
-  public String getRythmString() {
-    return rythmString;
+  public String getRhythmString() {
+    return rhythmString;
   }
 
   /**
@@ -324,8 +319,8 @@ public class AudioAnalysisTrack extends AbstractModelObject {
    *
    * @return The rhythm string version.
    */
-  public Float getRythmVersion() {
-    return rythmVersion;
+  public Float getRhythmVersion() {
+    return rhythmVersion;
   }
 
   @Override
@@ -353,7 +348,7 @@ public class AudioAnalysisTrack extends AbstractModelObject {
     private Float timeSignatureConfidence;
     private Integer key;
     private Float keyConfidence;
-    private Integer mode;
+    private Modality mode;
     private Float modeConfidence;
     private String codeString;
     private Float codeVersion;
@@ -361,8 +356,8 @@ public class AudioAnalysisTrack extends AbstractModelObject {
     private Float echoprintVersion;
     private String synchString;
     private Float synchVersion;
-    private String rythmString;
-    private Float rythmVersion;
+    private String rhythmString;
+    private Float rhythmVersion;
 
     /**
      * The sample number setter.
@@ -546,7 +541,7 @@ public class AudioAnalysisTrack extends AbstractModelObject {
      * @param mode The modality type of the track.
      * @return An {@link AudioAnalysisTrack.Builder}.
      */
-    public Builder setMode(Integer mode) {
+    public Builder setMode(Modality mode) {
       this.mode = mode;
       return this;
     }
@@ -631,22 +626,22 @@ public class AudioAnalysisTrack extends AbstractModelObject {
     /**
      * The rhythm string setter.
      *
-     * @param rythmString The rhythm string of the track.
+     * @param rhythmString The rhythm string of the track.
      * @return An {@link AudioAnalysisTrack.Builder}.
      */
-    public Builder setRythmString(String rythmString) {
-      this.rythmString = rythmString;
+    public Builder setRhythmString(String rhythmString) {
+      this.rhythmString = rhythmString;
       return this;
     }
 
     /**
      * The rhythm string version setter.
      *
-     * @param rythmVersion The rhythm string version.
+     * @param rhythmVersion The rhythm string version.
      * @return An {@link AudioAnalysisTrack.Builder}.
      */
-    public Builder setRythmVersion(Float rythmVersion) {
-      this.rythmVersion = rythmVersion;
+    public Builder setRhythmVersion(Float rhythmVersion) {
+      this.rhythmVersion = rhythmVersion;
       return this;
     }
 
@@ -711,8 +706,9 @@ public class AudioAnalysisTrack extends AbstractModelObject {
                               ? jsonObject.get("loudness").getAsFloat()
                               : null)
               .setMode(
-                      hasAndNotNull(jsonObject, "mode")
-                              ? jsonObject.get("mode").getAsInt()
+                      hasAndNotNull(jsonObject, "type")
+                              ? Modality.valueOf(
+                              jsonObject.get("mode").getAsInt())
                               : null)
               .setModeConfidence(
                       hasAndNotNull(jsonObject, "mode_confidence")
@@ -726,13 +722,13 @@ public class AudioAnalysisTrack extends AbstractModelObject {
                       hasAndNotNull(jsonObject, "offset_seconds")
                               ? jsonObject.get("offset_seconds").getAsInt()
                               : null)
-              .setRythmString(
-                      hasAndNotNull(jsonObject, "rythmstring")
-                              ? jsonObject.get("rythmstring").getAsString()
+              .setRhythmString(
+                      hasAndNotNull(jsonObject, "rhythmstring")
+                              ? jsonObject.get("rhythmstring").getAsString()
                               : null)
-              .setRythmVersion(
-                      hasAndNotNull(jsonObject, "rythm_version")
-                              ? jsonObject.get("rythm_version").getAsFloat()
+              .setRhythmVersion(
+                      hasAndNotNull(jsonObject, "rhythm_version")
+                              ? jsonObject.get("rhythm_version").getAsFloat()
                               : null)
               .setSampleMd5(
                       hasAndNotNull(jsonObject, "sample_md5")

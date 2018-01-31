@@ -1,6 +1,7 @@
 package com.wrapper.spotify.model_objects.miscellaneous;
 
 import com.google.gson.JsonObject;
+import com.wrapper.spotify.enums.Modality;
 import com.wrapper.spotify.model_objects.AbstractModelObject;
 
 /**
@@ -15,7 +16,7 @@ public class AudioAnalysisSection extends AbstractModelObject {
   private final Float tempoConfidence;
   private final Integer key;
   private final Float keyConfidence;
-  private final Integer mode;
+  private final Modality mode;
   private final Float modeConfidence;
   private final Integer timeSignature;
   private final Float timeSignatureConfidence;
@@ -93,12 +94,11 @@ public class AudioAnalysisSection extends AbstractModelObject {
 
   /**
    * Get the modality of the section. (either "major" or "minor")
-   * TODO: Return Value: Return as a {@link com.wrapper.spotify.enums.Modality} type.
    *
    * @return The modality type of the section.
    * @see <a href="https://en.wikipedia.org/wiki/Mode_(music)">Wikipedia: Mode (music)</a>
    */
-  public Integer getMode() {
+  public Modality getMode() {
     return mode;
   }
 
@@ -146,7 +146,7 @@ public class AudioAnalysisSection extends AbstractModelObject {
     private Float tempoConfidence;
     private Integer key;
     private Float keyConfidence;
-    private Integer mode;
+    private Modality mode;
     private Float modeConfidence;
     private Integer timeSignature;
     private Float timeSignatureConfidence;
@@ -223,7 +223,7 @@ public class AudioAnalysisSection extends AbstractModelObject {
      * @param mode The modality type of the section.
      * @return An {@link AudioAnalysisSection.Builder}.
      */
-    public Builder setMode(Integer mode) {
+    public Builder setMode(Modality mode) {
       this.mode = mode;
       return this;
     }
@@ -295,8 +295,9 @@ public class AudioAnalysisSection extends AbstractModelObject {
                               jsonObject.getAsJsonObject("measure"))
                               : null)
               .setMode(
-                      hasAndNotNull(jsonObject, "mode")
-                              ? jsonObject.get("mode").getAsInt()
+                      hasAndNotNull(jsonObject, "type")
+                              ? Modality.valueOf(
+                              jsonObject.get("mode").getAsInt())
                               : null)
               .setModeConfidence(
                       hasAndNotNull(jsonObject, "mode_confidence")
