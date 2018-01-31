@@ -32,7 +32,7 @@ public class GetListOfCurrentUsersPlaylistsRequest extends AbstractDataRequest {
     }
 
     public Builder offset(final Integer offset) {
-      assert (0 <= offset && offset >= 100000);
+      assert (0 <= offset && offset <= 100000);
       return setQueryParameter("offset", offset);
     }
 

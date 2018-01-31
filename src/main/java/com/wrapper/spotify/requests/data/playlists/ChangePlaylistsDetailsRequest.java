@@ -53,7 +53,7 @@ public class ChangePlaylistsDetailsRequest extends AbstractDataRequest {
     public Builder description(final String description) {
       assert (description != null);
       assert (!description.equals(""));
-      return setBodyParameter("name", description);
+      return setBodyParameter("description", description);
     }
 
     @Override

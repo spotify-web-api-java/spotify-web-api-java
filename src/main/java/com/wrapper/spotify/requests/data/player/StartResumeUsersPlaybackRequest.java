@@ -47,7 +47,7 @@ public class StartResumeUsersPlaybackRequest extends AbstractDataRequest {
     public Builder offset(final JsonObject offset) {
       assert (offset != null);
       assert (!offset.isJsonNull());
-      return setBodyParameter("device_id", offset);
+      return setBodyParameter("offset", offset);
     }
 
     @Override

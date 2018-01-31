@@ -27,7 +27,7 @@ public class GetSeveralArtistsRequest extends AbstractDataRequest {
     public Builder ids(final String ids) {
       assert (ids != null);
       assert (ids.split(",").length <= 50);
-      return setFormParameter("ids", ids);
+      return setQueryParameter("ids", ids);
     }
 
     @Override
