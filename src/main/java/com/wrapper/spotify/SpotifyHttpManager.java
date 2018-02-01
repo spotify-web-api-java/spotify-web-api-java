@@ -22,6 +22,8 @@ import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
@@ -133,10 +135,14 @@ public class SpotifyHttpManager implements HttpManager {
     queryStrBuilder.append("?");
 
     for (Url.Parameter param : parameterList) {
-      queryStrBuilder.append(param.getName())
-              .append("=")
-              .append(param.getValue())
-              .append("&");
+      try {
+        queryStrBuilder.append(param.getName())
+                .append("=")
+                .append(URLEncoder.encode(param.getValue(), "UTF-8"))
+                .append("&");
+      } catch (UnsupportedEncodingException e) {
+        e.printStackTrace();
+      }
     }
 
     queryStr = queryStrBuilder.toString()
