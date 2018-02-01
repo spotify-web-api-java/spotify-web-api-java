@@ -25,7 +25,7 @@ The artifact is available through
 
 ### Maven
 
-```
+```XML
 <dependency>
   <groupId>se.michaelthelin.spotify</groupId>
   <artifactId>spotify-web-api-java</artifactId>
@@ -35,7 +35,7 @@ The artifact is available through
 
 ### Gradle
 
-```
+```Gradle
 compile 'se.michaelthelin.spotify:spotify-web-api-java:2.0.0-RC1'
 ```
 
