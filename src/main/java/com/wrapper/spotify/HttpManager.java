@@ -35,6 +35,8 @@ public interface HttpManager {
    *
    * @param url the {@link Url} to HTTP DELETE.
    * @return a String containing the body of the HTTP DELETE response.
+   * @throws WebApiException In case of error replies from the Web API.
+   * @throws IOException     In case of networking issues.
    */
   String delete(Url url) throws WebApiException, IOException;
 
