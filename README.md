@@ -54,7 +54,7 @@ Get the latest version:
 
 #### Maven users
 
-```
+```XML
 <dependency>
   <groupId>se.michaelthelin.spotify</groupId>
   <artifactId>spotify-web-api-java</artifactId>
@@ -65,12 +65,11 @@ Get the latest version:
 #### Gradle users
 
 This project uses net.sf.json-lib for marshalling, which may cause your Android build to fail if you're using Android Studio 1.0 ([relevant Stack Overflow post](http://stackoverflow.com/questions/27458227/org-apache-commons-collections-arraystack-has-already-been-added-to-output-plea)). It may therefore necessary to make an exclusion of common-beanutils when setting up this library as a dependency.
-```
+```Gradle
 compile('se.michaelthelin.spotify:spotify-web-api-java:1.7.3') {
-        exclude group: "commons-beanutils", module: "commons-beanutils"
-
-    }
-    compile 'commons-beanutils:commons-beanutils:20030211.134440'
+    exclude group: "commons-beanutils", module: "commons-beanutils"
+}
+compile 'commons-beanutils:commons-beanutils:20030211.134440'
 ```
 
 Thanks a lot [digitaldesaster](https://github.com/digitaldesaster) for coming up with the workaround.
