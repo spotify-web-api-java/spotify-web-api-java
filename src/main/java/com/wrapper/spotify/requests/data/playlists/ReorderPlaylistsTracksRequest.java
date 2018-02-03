@@ -125,7 +125,7 @@ public class ReorderPlaylistsTracksRequest extends AbstractDataRequest {
     /**
      * The playlist snapshot ID setter.
      *
-     * @param snapshotId Optional. The playlist's snapshot ID against which you want to make the changes.
+     * @param snapshot_id Optional. The playlist's snapshot ID against which you want to make the changes.
      * @return A {@link RemoveTracksFromPlaylistRequest.Builder}.
      * @see <a href="https://developer.spotify.com/web-api/working-with-playlists/#version-control-and-snapshots">
      *      Spotify: Version Control and Snapshots</a>
