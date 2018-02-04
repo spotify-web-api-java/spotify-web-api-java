@@ -98,7 +98,7 @@ public class CreatePlaylistRequest extends AbstractDataRequest {
      * @param collaborative Optional, default {@code false}. If {@code true} the playlist will be collaborative.
      *                      <b>Note:</b> To create a collaborative playlist you must also set {@link #public_(Boolean)}
      *                      to {@code false}. To create collaborative playlists you must have granted
-     *                     {@code playlist-modify-private} and {@code playlist-modify-public} scopes.
+     *                      {@code playlist-modify-private} and {@code playlist-modify-public} scopes.
      * @return A {@link CreatePlaylistRequest.Builder}.
      */
     public Builder collaborative(final Boolean collaborative) {

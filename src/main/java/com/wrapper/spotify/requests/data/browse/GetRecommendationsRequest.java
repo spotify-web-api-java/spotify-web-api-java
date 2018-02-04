@@ -9,11 +9,11 @@ import java.io.IOException;
 
 /**
  * Create a playlist-style listening experience based on seed artists, tracks and genres. <br><br>
- *
+ * <p>
  * Recommendations are generated based on the available information for a given seed entity and matched against similar
  * artists and tracks. If there is sufficient information about the provided seeds, a list of tracks will be returned
  * together with pool size details. <br><br>
- *
+ * <p>
  * For artists and tracks that are very new or obscure there might not be enough data to generate a list of tracks.
  */
 public class GetRecommendationsRequest extends AbstractDataRequest {
@@ -508,8 +508,8 @@ public class GetRecommendationsRequest extends AbstractDataRequest {
      *
      * @param seed_tracks A comma separated list of Spotify IDs for a seed track. Up to 5 seed values may be provided in
      *                    any combination of seed_artists, seed_tracks and seed_genres.
-     *                    @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify URIs &amp; IDs</a>
      * @return A {@link GetRecommendationsRequest.Builder}.
+     * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify URIs &amp; IDs</a>
      */
     public Builder seed_tracks(final String seed_tracks) {
       assert (seed_tracks != null);

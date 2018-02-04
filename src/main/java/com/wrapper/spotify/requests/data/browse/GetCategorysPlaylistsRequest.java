@@ -90,7 +90,7 @@ public class GetCategorysPlaylistsRequest extends AbstractDataRequest {
      * The offset setter.
      *
      * @param offset Optional. The index of the first item to return. Default: 0 (the first object). Use with
-     * {@link #limit(Integer)} to get the next set of items.
+     *               {@link #limit(Integer)} to get the next set of items.
      * @return A {@link GetCategorysPlaylistsRequest.Builder}.
      */
     public Builder offset(final Integer offset) {

@@ -45,6 +45,7 @@ public class UnfollowArtistsOrUsersRequest extends AbstractDataRequest {
      * <p>
      * Modifying the list of artists or users the current user follows requires authorization of the
      * {@code user-follow-modify} scope.
+     *
      * @param accessToken Required. A valid access token from the Spotify Accounts service.
      * @see <a href="https://developer.spotify.com/web-api/using-scopes/">Spotify: Using Scopes</a>
      */

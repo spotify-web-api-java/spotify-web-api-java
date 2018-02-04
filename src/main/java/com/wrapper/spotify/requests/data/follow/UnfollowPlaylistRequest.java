@@ -54,7 +54,7 @@ public class UnfollowPlaylistRequest extends AbstractDataRequest {
     /**
      * The playlist owner ID setter.
      *
-     * @param owner_id 	The Spotify user ID of the person who owns the playlist.
+     * @param owner_id The Spotify user ID of the person who owns the playlist.
      * @return An {@link UnfollowPlaylistRequest.Builder}.
      * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URIs &amp; IDs</a>
      */

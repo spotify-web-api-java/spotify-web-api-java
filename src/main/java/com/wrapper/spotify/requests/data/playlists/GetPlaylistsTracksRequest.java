@@ -85,7 +85,7 @@ public class GetPlaylistsTracksRequest extends AbstractDataRequest {
      *               If omitted, all fields are returned.
      * @return A {@link GetPlaylistsTracksRequest.Builder}.
      * @see <a href="https://developer.spotify.com/web-api/get-playlists-tracks/#tablepress-107">
-     *      Spotify: More Details on Playlist Fields</a>
+     * Spotify: More Details on Playlist Fields</a>
      */
     public Builder fields(final String fields) {
       assert (fields != null);

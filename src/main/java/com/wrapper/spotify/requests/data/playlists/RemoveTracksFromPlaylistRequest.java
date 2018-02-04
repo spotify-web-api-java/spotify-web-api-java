@@ -25,10 +25,10 @@ public class RemoveTracksFromPlaylistRequest extends AbstractDataRequest {
    * Remove tracks from a playlist.
    *
    * @return A playlist snapshot ID. The snapshot ID can be used to identify your playlist version in future requests.
-   * @see <a href="https://developer.spotify.com/web-api/working-with-playlists/#version-control-and-snapshots">
-   *      Spotify: Version Control and Snapshots</a>
    * @throws IOException            In case of networking issues.
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
+   * @see <a href="https://developer.spotify.com/web-api/working-with-playlists/#version-control-and-snapshots">
+   * Spotify: Version Control and Snapshots</a>
    */
   @SuppressWarnings("unchecked")
   public SnapshotResult execute() throws
@@ -116,7 +116,7 @@ public class RemoveTracksFromPlaylistRequest extends AbstractDataRequest {
      *                   even if more recent changes have been made to the playlist.
      * @return A {@link RemoveTracksFromPlaylistRequest.Builder}.
      * @see <a href="https://developer.spotify.com/web-api/working-with-playlists/#version-control-and-snapshots">
-     *      Spotify: Version Control and Snapshots</a>
+     * Spotify: Version Control and Snapshots</a>
      */
     public Builder snapshotId(final String snapshotId) {
       assert (snapshotId != null);

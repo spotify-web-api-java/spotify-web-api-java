@@ -72,7 +72,7 @@ public class GetListOfCurrentUsersPlaylistsRequest extends AbstractDataRequest {
      * The offset setter.
      *
      * @param offset Optional. The index of the first playlist to return. Default: 0 (the first object). Maximum offset:
-     *              100.000. Use with {@link #limit(Integer)} to get the next set of playlists.
+     *               100.000. Use with {@link #limit(Integer)} to get the next set of playlists.
      * @return A {@link GetListOfCurrentUsersPlaylistsRequest.Builder}.
      */
     public Builder offset(final Integer offset) {

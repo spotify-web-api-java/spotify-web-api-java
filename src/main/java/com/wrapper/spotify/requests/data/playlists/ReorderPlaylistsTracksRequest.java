@@ -28,10 +28,10 @@ public class ReorderPlaylistsTracksRequest extends AbstractDataRequest {
    * Reorder the tracks in a playlist.
    *
    * @return A playlist snapshot ID. The snapshot ID can be used to identify your playlist version in future requests.
-   * @see <a href="https://developer.spotify.com/web-api/working-with-playlists/#version-control-and-snapshots">
-   *      Spotify: Version Control and Snapshots</a>
    * @throws IOException            In case of networking issues.
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
+   * @see <a href="https://developer.spotify.com/web-api/working-with-playlists/#version-control-and-snapshots">
+   * Spotify: Version Control and Snapshots</a>
    */
   @SuppressWarnings("unchecked")
   public SnapshotResult execute() throws
@@ -100,7 +100,7 @@ public class ReorderPlaylistsTracksRequest extends AbstractDataRequest {
     /**
      * The range length setter.
      *
-     * @param range_length 	Optional. The amount of tracks to be reordered. Defaults to 1 if not set.
+     * @param range_length Optional. The amount of tracks to be reordered. Defaults to 1 if not set.
      * @return A {@link ReorderPlaylistsTracksRequest.Builder}.
      */
     public Builder range_length(final Integer range_length) {
@@ -128,7 +128,7 @@ public class ReorderPlaylistsTracksRequest extends AbstractDataRequest {
      * @param snapshot_id Optional. The playlist's snapshot ID against which you want to make the changes.
      * @return A {@link RemoveTracksFromPlaylistRequest.Builder}.
      * @see <a href="https://developer.spotify.com/web-api/working-with-playlists/#version-control-and-snapshots">
-     *      Spotify: Version Control and Snapshots</a>
+     * Spotify: Version Control and Snapshots</a>
      */
     public Builder snapshot_id(final String snapshot_id) {
       assert (snapshot_id != null);

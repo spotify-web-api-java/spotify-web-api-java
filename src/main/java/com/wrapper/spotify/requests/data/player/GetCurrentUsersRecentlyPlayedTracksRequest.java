@@ -17,7 +17,7 @@ import java.util.Date;
  * <p>
  * Any tracks listened to while the user had "Private Session" enabled in their client will not be returned in the list
  * of recently played tracks.
- *
+ * <p>
  * The endpoint uses a bidirectional cursor for paging. Follow the {@code next} field with the {@code before} parameter
  * to move back in time, or use the after parameter to move forward in time. If you supply no {@code before} or
  * {@code after} parameter, the endpoint  will return the most recently played songs, and the {@code next}
@@ -94,7 +94,7 @@ public class GetCurrentUsersRecentlyPlayedTracksRequest extends AbstractDataRequ
      * The before date setter.
      *
      * @param before Optional. A {@link Date} object. Returns all items before (but not including) this cursor position.
-     *              If {@link #before(Date)} is specified, {@link #after(Date)} must not be specified.
+     *               If {@link #before(Date)} is specified, {@link #after(Date)} must not be specified.
      * @return A {@link GetCurrentUsersRecentlyPlayedTracksRequest.Builder}.
      */
     public Builder before(final Date before) {

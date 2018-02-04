@@ -28,10 +28,10 @@ public class AddTracksToPlaylistRequest extends AbstractDataRequest {
    * Add tracks to playlist.
    *
    * @return A playlist snapshot ID. The snapshot ID can be used to identify your playlist version in future requests.
-   * @see <a href="https://developer.spotify.com/web-api/working-with-playlists/#version-control-and-snapshots">
-   *      Spotify: Version Control and Snapshots</a>
    * @throws IOException            In case of networking issues.
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
+   * @see <a href="https://developer.spotify.com/web-api/working-with-playlists/#version-control-and-snapshots">
+   * Spotify: Version Control and Snapshots</a>
    */
   @SuppressWarnings("unchecked")
   public SnapshotResult execute() throws
@@ -118,6 +118,7 @@ public class AddTracksToPlaylistRequest extends AbstractDataRequest {
      * The track URIs setter.
      * <p>
      * <b>Note:</b> If the URIs already have been set with {@link #uris(String)}, any URIs listed here will be ignored.
+     *
      * @param uris Optional. A JSON array of the Spotify track URIs to add. maximum: 100 track URIs.
      * @return An {@link AddTracksToPlaylistRequest.Builder}.
      * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URIs &amp; IDs</a>
