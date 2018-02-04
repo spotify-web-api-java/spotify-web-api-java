@@ -1,0 +1,44 @@
+{
+  "artists": [
+    {
+      "external_urls": {
+        "spotify": "https://open.spotify.com/artist/5ZKMPRDHc7qElVJFh3uRqB"
+      },
+      "followers": {
+        "href": null,
+        "total": 18108
+      },
+      "genres": [
+        "rockabilly"
+      ],
+      "href": "https://api.spotify.com/v1/artists/5ZKMPRDHc7qElVJFh3uRqB",
+      "id": "5ZKMPRDHc7qElVJFh3uRqB",
+      "images": [
+        {
+          "height": 997,
+          "url": "https://i.scdn.co/image/beff5827580bcc4d129cbc0872768095eeba8c14",
+          "width": 1000
+        },
+        {
+          "height": 638,
+          "url": "https://i.scdn.co/image/dbabf703779789917c4dd1c0e54da62c7a45ce92",
+          "width": 640
+        },
+        {
+          "height": 199,
+          "url": "https://i.scdn.co/image/74761c343bec27c814b8e44e4bc095cbf1b674bb",
+          "width": 200
+        },
+        {
+          "height": 64,
+          "url": "https://i.scdn.co/image/0c30af5647c74fee14fb97981c23b336abbc9f21",
+          "width": 64
+        }
+      ],
+      "name": "Wanda Jackson",
+      "popularity": 59,
+      "type": "artist",
+      "uri": "spotify:artist:5ZKMPRDHc7qElVJFh3uRqB"
+    }
+  ]
+}

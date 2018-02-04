@@ -1,0 +1,422 @@
+{
+  "playlists": {
+    "href": "https://api.spotify.com/v1/search?query=Muse&type=playlist&market=US&offset=5&limit=10",
+    "items": [
+      {
+        "collaborative": false,
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/spotify/playlist/37i9dQZF1DWT6VDwxLyl0W"
+        },
+        "href": "https://api.spotify.com/v1/users/spotify/playlists/37i9dQZF1DWT6VDwxLyl0W",
+        "id": "37i9dQZF1DWT6VDwxLyl0W",
+        "images": [
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/e84b7e258039267f97dc6db73b8d8333a599bf7b",
+            "width": 300
+          }
+        ],
+        "name": "This Is: Neil Young",
+        "owner": {
+          "display_name": "Spotify",
+          "external_urls": {
+            "spotify": "https://open.spotify.com/user/spotify"
+          },
+          "href": "https://api.spotify.com/v1/users/spotify",
+          "id": "spotify",
+          "type": "user",
+          "uri": "spotify:user:spotify"
+        },
+        "public": null,
+        "snapshot_id": "+NTCFqkUdkOXYFUWvU5WKt6UZ6qCjYLaW46lrg5CKNo9jA8/UaTlAiKhjjCSWvNX0t0RI5UlgN0=",
+        "tracks": {
+          "href": "https://api.spotify.com/v1/users/spotify/playlists/37i9dQZF1DWT6VDwxLyl0W/tracks",
+          "total": 50
+        },
+        "type": "playlist",
+        "uri": "spotify:user:spotify:playlist:37i9dQZF1DWT6VDwxLyl0W"
+      },
+      {
+        "collaborative": false,
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/22sf74of2vex22mbg4jglkugy/playlist/3l5sfazmY1FP0wDlNCUunG"
+        },
+        "href": "https://api.spotify.com/v1/users/22sf74of2vex22mbg4jglkugy/playlists/3l5sfazmY1FP0wDlNCUunG",
+        "id": "3l5sfazmY1FP0wDlNCUunG",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://mosaic.scdn.co/640/59fbbabeecaade686c44c99e5d1102130556bba1d3ba14242f74eb17c6b32a95c1bd6ab35af24d244862a7168866cfd07a288e110f034381a22580354c086c68ef4695ea277aa8657cfa5694e8c0ae7d",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://mosaic.scdn.co/300/59fbbabeecaade686c44c99e5d1102130556bba1d3ba14242f74eb17c6b32a95c1bd6ab35af24d244862a7168866cfd07a288e110f034381a22580354c086c68ef4695ea277aa8657cfa5694e8c0ae7d",
+            "width": 300
+          },
+          {
+            "height": 60,
+            "url": "https://mosaic.scdn.co/60/59fbbabeecaade686c44c99e5d1102130556bba1d3ba14242f74eb17c6b32a95c1bd6ab35af24d244862a7168866cfd07a288e110f034381a22580354c086c68ef4695ea277aa8657cfa5694e8c0ae7d",
+            "width": 60
+          }
+        ],
+        "name": "Muse — Madness",
+        "owner": {
+          "display_name": "Eric Dosal",
+          "external_urls": {
+            "spotify": "https://open.spotify.com/user/22sf74of2vex22mbg4jglkugy"
+          },
+          "href": "https://api.spotify.com/v1/users/22sf74of2vex22mbg4jglkugy",
+          "id": "22sf74of2vex22mbg4jglkugy",
+          "type": "user",
+          "uri": "spotify:user:22sf74of2vex22mbg4jglkugy"
+        },
+        "public": null,
+        "snapshot_id": "JtRnjv1ZOAMvfIzydGLUSYFsny/ClfCjg2CRusVZlsBhxamdGMXstAMmA5uVcjLo",
+        "tracks": {
+          "href": "https://api.spotify.com/v1/users/22sf74of2vex22mbg4jglkugy/playlists/3l5sfazmY1FP0wDlNCUunG/tracks",
+          "total": 76
+        },
+        "type": "playlist",
+        "uri": "spotify:user:22sf74of2vex22mbg4jglkugy:playlist:3l5sfazmY1FP0wDlNCUunG"
+      },
+      {
+        "collaborative": false,
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/22aood6wrht2pipht3ukvoyxa/playlist/1d2XIviyWqrmbxZBQKy8C8"
+        },
+        "href": "https://api.spotify.com/v1/users/22aood6wrht2pipht3ukvoyxa/playlists/1d2XIviyWqrmbxZBQKy8C8",
+        "id": "1d2XIviyWqrmbxZBQKy8C8",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://mosaic.scdn.co/640/9e5288926fadb82f873ccf2b45300c3a6f65fa146915d5fd2314866488a8be397542bfdef212fb20cdbbf4382c1adc6b158b02c361abd3440359a587376a7ccee858b675377d5a9e21a7c4f8ab007142",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://mosaic.scdn.co/300/9e5288926fadb82f873ccf2b45300c3a6f65fa146915d5fd2314866488a8be397542bfdef212fb20cdbbf4382c1adc6b158b02c361abd3440359a587376a7ccee858b675377d5a9e21a7c4f8ab007142",
+            "width": 300
+          },
+          {
+            "height": 60,
+            "url": "https://mosaic.scdn.co/60/9e5288926fadb82f873ccf2b45300c3a6f65fa146915d5fd2314866488a8be397542bfdef212fb20cdbbf4382c1adc6b158b02c361abd3440359a587376a7ccee858b675377d5a9e21a7c4f8ab007142",
+            "width": 60
+          }
+        ],
+        "name": "Muse — Starlight",
+        "owner": {
+          "display_name": "Julio Zuniga",
+          "external_urls": {
+            "spotify": "https://open.spotify.com/user/22aood6wrht2pipht3ukvoyxa"
+          },
+          "href": "https://api.spotify.com/v1/users/22aood6wrht2pipht3ukvoyxa",
+          "id": "22aood6wrht2pipht3ukvoyxa",
+          "type": "user",
+          "uri": "spotify:user:22aood6wrht2pipht3ukvoyxa"
+        },
+        "public": null,
+        "snapshot_id": "eNUie5w8PrXk1g+LaoRsXrTEVNbaH5CkETcyiIY1ukv4gD94c/OoCPPepydX5eVl",
+        "tracks": {
+          "href": "https://api.spotify.com/v1/users/22aood6wrht2pipht3ukvoyxa/playlists/1d2XIviyWqrmbxZBQKy8C8/tracks",
+          "total": 34
+        },
+        "type": "playlist",
+        "uri": "spotify:user:22aood6wrht2pipht3ukvoyxa:playlist:1d2XIviyWqrmbxZBQKy8C8"
+      },
+      {
+        "collaborative": false,
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/anoymusid/playlist/0qyro9Fdqr1wNcGQjzDh3e"
+        },
+        "href": "https://api.spotify.com/v1/users/anoymusid/playlists/0qyro9Fdqr1wNcGQjzDh3e",
+        "id": "0qyro9Fdqr1wNcGQjzDh3e",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://mosaic.scdn.co/640/9e5288926fadb82f873ccf2b45300c3a6f65fa14b9ff83c29bd0a00b8e179183615e1588500fcb9294c124dd9812e03e8d21de9a05bbee08ad60ed91ac68a9e4a867ec3ce8249cd90a2d7c73755fb487",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://mosaic.scdn.co/300/9e5288926fadb82f873ccf2b45300c3a6f65fa14b9ff83c29bd0a00b8e179183615e1588500fcb9294c124dd9812e03e8d21de9a05bbee08ad60ed91ac68a9e4a867ec3ce8249cd90a2d7c73755fb487",
+            "width": 300
+          },
+          {
+            "height": 60,
+            "url": "https://mosaic.scdn.co/60/9e5288926fadb82f873ccf2b45300c3a6f65fa14b9ff83c29bd0a00b8e179183615e1588500fcb9294c124dd9812e03e8d21de9a05bbee08ad60ed91ac68a9e4a867ec3ce8249cd90a2d7c73755fb487",
+            "width": 60
+          }
+        ],
+        "name": "Muse Radio",
+        "owner": {
+          "display_name": null,
+          "external_urls": {
+            "spotify": "https://open.spotify.com/user/anoymusid"
+          },
+          "href": "https://api.spotify.com/v1/users/anoymusid",
+          "id": "anoymusid",
+          "type": "user",
+          "uri": "spotify:user:anoymusid"
+        },
+        "public": null,
+        "snapshot_id": "F4fBgK1AbQUKcirEYoYa+pvNkM7dFnffYJyGDU1TyuJDkCrMkt0eR8kE5Ln00Mhd",
+        "tracks": {
+          "href": "https://api.spotify.com/v1/users/anoymusid/playlists/0qyro9Fdqr1wNcGQjzDh3e/tracks",
+          "total": 164
+        },
+        "type": "playlist",
+        "uri": "spotify:user:anoymusid:playlist:0qyro9Fdqr1wNcGQjzDh3e"
+      },
+      {
+        "collaborative": false,
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/musicdeche/playlist/4YUo5t8gIhxtGFl8tT3Ovq"
+        },
+        "href": "https://api.spotify.com/v1/users/musicdeche/playlists/4YUo5t8gIhxtGFl8tT3Ovq",
+        "id": "4YUo5t8gIhxtGFl8tT3Ovq",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://mosaic.scdn.co/640/ae61915fc3f4b3019200ba6ee58a2a85866461bf6e1be3ceda70250c701caee5a16bef205e94bc98849eecf3c9df835181c2970c435ac2d008346ea3c7d70e10ba8935b96819737cad388c68baa4d7a8",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://mosaic.scdn.co/300/ae61915fc3f4b3019200ba6ee58a2a85866461bf6e1be3ceda70250c701caee5a16bef205e94bc98849eecf3c9df835181c2970c435ac2d008346ea3c7d70e10ba8935b96819737cad388c68baa4d7a8",
+            "width": 300
+          },
+          {
+            "height": 60,
+            "url": "https://mosaic.scdn.co/60/ae61915fc3f4b3019200ba6ee58a2a85866461bf6e1be3ceda70250c701caee5a16bef205e94bc98849eecf3c9df835181c2970c435ac2d008346ea3c7d70e10ba8935b96819737cad388c68baa4d7a8",
+            "width": 60
+          }
+        ],
+        "name": "Muse - Hysteria",
+        "owner": {
+          "display_name": null,
+          "external_urls": {
+            "spotify": "https://open.spotify.com/user/musicdeche"
+          },
+          "href": "https://api.spotify.com/v1/users/musicdeche",
+          "id": "musicdeche",
+          "type": "user",
+          "uri": "spotify:user:musicdeche"
+        },
+        "public": null,
+        "snapshot_id": "epniUoKVG+Rz1xbNOSv9/5OuV8fav1ZW8oZz6mzJb+hpSrSdh1I+O+VQDluQBYVP",
+        "tracks": {
+          "href": "https://api.spotify.com/v1/users/musicdeche/playlists/4YUo5t8gIhxtGFl8tT3Ovq/tracks",
+          "total": 170
+        },
+        "type": "playlist",
+        "uri": "spotify:user:musicdeche:playlist:4YUo5t8gIhxtGFl8tT3Ovq"
+      },
+      {
+        "collaborative": false,
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/22fkrew4v2cs7zc6uwii76i4a/playlist/7qlkRPYzSxw24oD83dntuk"
+        },
+        "href": "https://api.spotify.com/v1/users/22fkrew4v2cs7zc6uwii76i4a/playlists/7qlkRPYzSxw24oD83dntuk",
+        "id": "7qlkRPYzSxw24oD83dntuk",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://mosaic.scdn.co/640/ecb609f80a433a4bcf06c42e69821772140f0632f513ae2d610d9255913795d4bc28ca33c827b2327e35a74a96e73a1c56becb161ea3e29432349806c6ebef248b155a5c73cebe7bddf8a068f0d5c143",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://mosaic.scdn.co/300/ecb609f80a433a4bcf06c42e69821772140f0632f513ae2d610d9255913795d4bc28ca33c827b2327e35a74a96e73a1c56becb161ea3e29432349806c6ebef248b155a5c73cebe7bddf8a068f0d5c143",
+            "width": 300
+          },
+          {
+            "height": 60,
+            "url": "https://mosaic.scdn.co/60/ecb609f80a433a4bcf06c42e69821772140f0632f513ae2d610d9255913795d4bc28ca33c827b2327e35a74a96e73a1c56becb161ea3e29432349806c6ebef248b155a5c73cebe7bddf8a068f0d5c143",
+            "width": 60
+          }
+        ],
+        "name": "Muse — Feeling Good",
+        "owner": {
+          "display_name": "Thiago Araujo",
+          "external_urls": {
+            "spotify": "https://open.spotify.com/user/22fkrew4v2cs7zc6uwii76i4a"
+          },
+          "href": "https://api.spotify.com/v1/users/22fkrew4v2cs7zc6uwii76i4a",
+          "id": "22fkrew4v2cs7zc6uwii76i4a",
+          "type": "user",
+          "uri": "spotify:user:22fkrew4v2cs7zc6uwii76i4a"
+        },
+        "public": null,
+        "snapshot_id": "71QE8VXYJz54pM7SnFpQDuC8hF/kZ9gc4s9hUT1keV1+QKQDUiIH7zg0OtYhRV3X",
+        "tracks": {
+          "href": "https://api.spotify.com/v1/users/22fkrew4v2cs7zc6uwii76i4a/playlists/7qlkRPYzSxw24oD83dntuk/tracks",
+          "total": 357
+        },
+        "type": "playlist",
+        "uri": "spotify:user:22fkrew4v2cs7zc6uwii76i4a:playlist:7qlkRPYzSxw24oD83dntuk"
+      },
+      {
+        "collaborative": false,
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/muse_official/playlist/2zNu81WarotkZVGvMApl7y"
+        },
+        "href": "https://api.spotify.com/v1/users/muse_official/playlists/2zNu81WarotkZVGvMApl7y",
+        "id": "2zNu81WarotkZVGvMApl7y",
+        "images": [
+          {
+            "height": null,
+            "url": "https://pl.scdn.co/images/pl/default/c44c0da53b03b18dd3fdaf91a7cb297e96e96491",
+            "width": null
+          }
+        ],
+        "name": "MUSE: Band's Picks",
+        "owner": {
+          "display_name": null,
+          "external_urls": {
+            "spotify": "https://open.spotify.com/user/muse_official"
+          },
+          "href": "https://api.spotify.com/v1/users/muse_official",
+          "id": "muse_official",
+          "type": "user",
+          "uri": "spotify:user:muse_official"
+        },
+        "public": null,
+        "snapshot_id": "6QMBjA/Eh/AvQQVNYBZQcCFcw4gqHIPNTxplTZJ9FAnv0JNNuUeFjlMKZyvwamB5",
+        "tracks": {
+          "href": "https://api.spotify.com/v1/users/muse_official/playlists/2zNu81WarotkZVGvMApl7y/tracks",
+          "total": 38
+        },
+        "type": "playlist",
+        "uri": "spotify:user:muse_official:playlist:2zNu81WarotkZVGvMApl7y"
+      },
+      {
+        "collaborative": false,
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/tyronecleggburrell/playlist/4hBO5JpMRFdkWY7KIycz81"
+        },
+        "href": "https://api.spotify.com/v1/users/tyronecleggburrell/playlists/4hBO5JpMRFdkWY7KIycz81",
+        "id": "4hBO5JpMRFdkWY7KIycz81",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/59fbbabeecaade686c44c99e5d1102130556bba1",
+            "width": 640
+          }
+        ],
+        "name": "Madness – Muse",
+        "owner": {
+          "display_name": null,
+          "external_urls": {
+            "spotify": "https://open.spotify.com/user/tyronecleggburrell"
+          },
+          "href": "https://api.spotify.com/v1/users/tyronecleggburrell",
+          "id": "tyronecleggburrell",
+          "type": "user",
+          "uri": "spotify:user:tyronecleggburrell"
+        },
+        "public": null,
+        "snapshot_id": "+/D264YZcuccEbR9ZBdRcZtC9Ugm06mrNvTvv2QeLLEcK2jd93gDlRf8t7dApev2",
+        "tracks": {
+          "href": "https://api.spotify.com/v1/users/tyronecleggburrell/playlists/4hBO5JpMRFdkWY7KIycz81/tracks",
+          "total": 3
+        },
+        "type": "playlist",
+        "uri": "spotify:user:tyronecleggburrell:playlist:4hBO5JpMRFdkWY7KIycz81"
+      },
+      {
+        "collaborative": false,
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/eaglestormcatcher/playlist/4dCdOaKewZr04ZiBr1kwbd"
+        },
+        "href": "https://api.spotify.com/v1/users/eaglestormcatcher/playlists/4dCdOaKewZr04ZiBr1kwbd",
+        "id": "4dCdOaKewZr04ZiBr1kwbd",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://mosaic.scdn.co/640/3e67c0e68b6cfa0e6d851e0492b29b968d6bb3b9de81a9650e16814399e16b75fb0b875b40070b6856811f07a79e752441115694f024013f534cac6d194bc425f7ad5e54dac2a215f7d12e4e000b9a5d",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://mosaic.scdn.co/300/3e67c0e68b6cfa0e6d851e0492b29b968d6bb3b9de81a9650e16814399e16b75fb0b875b40070b6856811f07a79e752441115694f024013f534cac6d194bc425f7ad5e54dac2a215f7d12e4e000b9a5d",
+            "width": 300
+          },
+          {
+            "height": 60,
+            "url": "https://mosaic.scdn.co/60/3e67c0e68b6cfa0e6d851e0492b29b968d6bb3b9de81a9650e16814399e16b75fb0b875b40070b6856811f07a79e752441115694f024013f534cac6d194bc425f7ad5e54dac2a215f7d12e4e000b9a5d",
+            "width": 60
+          }
+        ],
+        "name": "Muse — Unintended",
+        "owner": {
+          "display_name": "Julie Thompson Whelan",
+          "external_urls": {
+            "spotify": "https://open.spotify.com/user/eaglestormcatcher"
+          },
+          "href": "https://api.spotify.com/v1/users/eaglestormcatcher",
+          "id": "eaglestormcatcher",
+          "type": "user",
+          "uri": "spotify:user:eaglestormcatcher"
+        },
+        "public": null,
+        "snapshot_id": "cGFAdwLhD1jVsVNulBWuKbCw0/s7e3xEtH6uqRHac4tiUuSq+o4woxPUBCZZDErc",
+        "tracks": {
+          "href": "https://api.spotify.com/v1/users/eaglestormcatcher/playlists/4dCdOaKewZr04ZiBr1kwbd/tracks",
+          "total": 61
+        },
+        "type": "playlist",
+        "uri": "spotify:user:eaglestormcatcher:playlist:4dCdOaKewZr04ZiBr1kwbd"
+      },
+      {
+        "collaborative": false,
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/doggybluescarf/playlist/1EWgI1FFh0fjZTbCrMUULt"
+        },
+        "href": "https://api.spotify.com/v1/users/doggybluescarf/playlists/1EWgI1FFh0fjZTbCrMUULt",
+        "id": "1EWgI1FFh0fjZTbCrMUULt",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://mosaic.scdn.co/640/3e67c0e68b6cfa0e6d851e0492b29b968d6bb3b959fbbabeecaade686c44c99e5d1102130556bba16e1be3ceda70250c701caee5a16bef205e94bc989e5288926fadb82f873ccf2b45300c3a6f65fa14",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://mosaic.scdn.co/300/3e67c0e68b6cfa0e6d851e0492b29b968d6bb3b959fbbabeecaade686c44c99e5d1102130556bba16e1be3ceda70250c701caee5a16bef205e94bc989e5288926fadb82f873ccf2b45300c3a6f65fa14",
+            "width": 300
+          },
+          {
+            "height": 60,
+            "url": "https://mosaic.scdn.co/60/3e67c0e68b6cfa0e6d851e0492b29b968d6bb3b959fbbabeecaade686c44c99e5d1102130556bba16e1be3ceda70250c701caee5a16bef205e94bc989e5288926fadb82f873ccf2b45300c3a6f65fa14",
+            "width": 60
+          }
+        ],
+        "name": "Best of Muse",
+        "owner": {
+          "display_name": null,
+          "external_urls": {
+            "spotify": "https://open.spotify.com/user/doggybluescarf"
+          },
+          "href": "https://api.spotify.com/v1/users/doggybluescarf",
+          "id": "doggybluescarf",
+          "type": "user",
+          "uri": "spotify:user:doggybluescarf"
+        },
+        "public": null,
+        "snapshot_id": "wuTDlZGdSLWmfVZIftV5rODduEgWuYJmyeS8wi572QeBdHZOhupfmH5k+k8Ia/EU",
+        "tracks": {
+          "href": "https://api.spotify.com/v1/users/doggybluescarf/playlists/1EWgI1FFh0fjZTbCrMUULt/tracks",
+          "total": 86
+        },
+        "type": "playlist",
+        "uri": "spotify:user:doggybluescarf:playlist:1EWgI1FFh0fjZTbCrMUULt"
+      }
+    ],
+    "limit": 10,
+    "next": "https://api.spotify.com/v1/search?query=Muse&type=playlist&market=US&offset=15&limit=10",
+    "offset": 5,
+    "previous": "https://api.spotify.com/v1/search?query=Muse&type=playlist&market=US&offset=0&limit=10",
+    "total": 21476
+  }
+}

@@ -1,52 +1,48 @@
 package com.wrapper.spotify;
 
+import com.wrapper.spotify.requests.IRequest;
+import org.apache.http.Header;
+import org.apache.http.NameValuePair;
+
+import java.util.List;
+
 import static org.junit.Assert.fail;
 
 public class Assertions {
 
-  public static void assertHasParameter(UtilProtos.Url url, String name, String value) {
-    UtilProtos.Url.Parameter expected = UtilProtos.Url.Parameter.newBuilder().setName(name).setValue(value).build();
-    for (UtilProtos.Url.Parameter actual : url.getParametersList()) {
-      if (actual.equals(expected)) {
+  public static <T> void assertHasHeader(IRequest request, String name, T value) {
+    List<Header> headers = request.getHeaders();
+
+    for (Header header : headers) {
+      if (header.getName().equals(name) && header.getValue().equals(String.valueOf(value))) {
         return;
       }
     }
-    fail(String.format("Actual URL %s does not contain parameter %s", url, expected));
+
+    fail(String.format("Request \"%s\" does not contain form parameter \"%s\" with value \"%s\"", request.getClass().getSimpleName(), name, String.valueOf(value)));
   }
 
-  public static void assertNoParameter(UtilProtos.Url url, String name) {
-    for (UtilProtos.Url.Parameter actual : url.getParametersList()) {
-      if (actual.getName().equals(name)) {
-        fail(String.format("Actual URL %s contains parameter %s", url, name));
-      }
-    }
-  }
+  public static <T> void assertHasFormParameter(IRequest request, String name, T value) {
+    List<NameValuePair> formParameters = request.getFormParameters();
 
-  public static void assertHasBodyParameter(UtilProtos.Url url, String name, String value) {
-    UtilProtos.Url.Parameter expected = UtilProtos.Url.Parameter.newBuilder().setName(name).setValue(value).build();
-    for (UtilProtos.Url.Parameter actual : url.getBodyParametersList()) {
-      if (actual.equals(expected)) {
+    for (NameValuePair formParameter : formParameters) {
+      if (formParameter.getName().equals(name) && formParameter.getValue().equals(String.valueOf(value))) {
         return;
       }
     }
-    fail(String.format("Actual URL %s does not contain body parameter %s", url, expected));
+
+    fail(String.format("Request \"%s\" does not contain form parameter \"%s\" with value \"%s\"", request.getClass().getSimpleName(), name, String.valueOf(value)));
   }
 
+  public static <T> void assertHasBodyParameter(IRequest request, String name, T value) {
+    List<NameValuePair> bodyParameters = request.getBodyParameters();
 
-  public static void assertHasHeader(UtilProtos.Url url, String name, String value) {
-    UtilProtos.Url.Parameter expected = UtilProtos.Url.Parameter.newBuilder().setName(name).setValue(value).build();
-    for (UtilProtos.Url.Parameter actual : url.getHeaderParametersList()) {
-      if (actual.equals(expected)) {
+    for (NameValuePair bodyParameter : bodyParameters) {
+      if (bodyParameter.getName().equals(name) && bodyParameter.getValue().equals(String.valueOf(value))) {
         return;
       }
     }
-    fail(String.format("Actual URL %s does not contain header %s", url, expected));
-  }
 
-  public static void assertHasJsonBody(UtilProtos.Url url, String jsonBody) {
-    if (url.hasJsonBody() && url.getJsonBody().equals(jsonBody)) {
-      return;
-    }
-    fail(String.format("Actual URL %s does not contain body %s", url, jsonBody));
+    fail(String.format("Request \"%s\" does not contain form parameter \"%s\" with value \"%s\"", request.getClass().getSimpleName(), name, String.valueOf(value)));
   }
 }

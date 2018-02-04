@@ -1,0 +1,12 @@
+{
+  "artists": {
+    "items": [],
+    "next": null,
+    "total": 0,
+    "cursors": {
+      "after": null
+    },
+    "limit": 10,
+    "href": "https://api.spotify.com/v1/me/following?type=artist&limit=10"
+  }
+}

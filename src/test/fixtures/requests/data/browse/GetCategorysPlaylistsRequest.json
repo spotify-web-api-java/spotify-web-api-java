@@ -1,0 +1,78 @@
+{
+  "playlists": {
+    "href": "https://api.spotify.com/v1/browse/categories/party/playlists?country=BR&offset=0&limit=2",
+    "items": [
+      {
+        "collaborative": false,
+        "external_urls": {
+          "spotify": "http://open.spotify.com/user/spotifybrazilian/playlist/4k7EZPI3uKMz4aRRrLVfen"
+        },
+        "href": "https://api.spotify.com/v1/users/spotifybrazilian/playlists/4k7EZPI3uKMz4aRRrLVfen",
+        "id": "4k7EZPI3uKMz4aRRrLVfen",
+        "images": [
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/bf6544c213532e9650088dfef76c8521093d970e",
+            "width": 300
+          }
+        ],
+        "name": "Noite Eletrônica",
+        "owner": {
+          "external_urls": {
+            "spotify": "http://open.spotify.com/user/spotifybrazilian"
+          },
+          "href": "https://api.spotify.com/v1/users/spotifybrazilian",
+          "id": "spotifybrazilian",
+          "type": "user",
+          "uri": "spotify:user:spotifybrazilian"
+        },
+        "public": null,
+        "snapshot_id": "PULvu1V2Ps8lzCxNXfNZTw4QbhBpaV0ZORc03Mw6oj6kQw9Ks2REwhL5Xcw/74wL",
+        "tracks": {
+          "href": "https://api.spotify.com/v1/users/spotifybrazilian/playlists/4k7EZPI3uKMz4aRRrLVfen/tracks",
+          "total": 100
+        },
+        "type": "playlist",
+        "uri": "spotify:user:spotifybrazilian:playlist:4k7EZPI3uKMz4aRRrLVfen"
+      },
+      {
+        "collaborative": false,
+        "external_urls": {
+          "spotify": "http://open.spotify.com/user/spotifybrazilian/playlist/4HZh0C9y80GzHDbHZyX770"
+        },
+        "href": "https://api.spotify.com/v1/users/spotifybrazilian/playlists/4HZh0C9y80GzHDbHZyX770",
+        "id": "4HZh0C9y80GzHDbHZyX770",
+        "images": [
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/be6c333146674440123073cb32c1c8b851e69023",
+            "width": 300
+          }
+        ],
+        "name": "Festa Indie",
+        "owner": {
+          "external_urls": {
+            "spotify": "http://open.spotify.com/user/spotifybrazilian"
+          },
+          "href": "https://api.spotify.com/v1/users/spotifybrazilian",
+          "id": "spotifybrazilian",
+          "type": "user",
+          "uri": "spotify:user:spotifybrazilian"
+        },
+        "public": null,
+        "snapshot_id": "V66hh9k2HnLCdzHvtoXPv+tm0jp3ODM63SZ0oISfGnlHQxwG/scupDbKgIo99Zfz",
+        "tracks": {
+          "href": "https://api.spotify.com/v1/users/spotifybrazilian/playlists/4HZh0C9y80GzHDbHZyX770/tracks",
+          "total": 74
+        },
+        "type": "playlist",
+        "uri": "spotify:user:spotifybrazilian:playlist:4HZh0C9y80GzHDbHZyX770"
+      }
+    ],
+    "limit": 2,
+    "next": "https://api.spotify.com/v1/browse/categories/party/playlists?country=BR&offset=2&limit=2",
+    "offset": 0,
+    "previous": null,
+    "total": 86
+  }
+}
