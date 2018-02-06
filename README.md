@@ -1,6 +1,6 @@
-| Android developers   |
-| ------------------------------------- |
-| You can use this library in your Android app. However, you should have a look at the [Android Wrapper](https://www.github.com/kaaes/spotify-web-api-android) project built by [kaaes](https://www.github.com/kaaes) as it's made specifically for Android. See also [Spotify's Android SDK](https://developer.spotify.com/technologies/spotify-android-sdk/). |
+| Android Developers |
+| ------------------ |
+| You **cannot** use this library for Android app development. Have a look at [kaaes/spotify-web-api-android](https://www.github.com/kaaes/spotify-web-api-android) and [Spotify's Android SDK](https://developer.spotify.com/technologies/spotify-android-sdk/) and [see why](https://github.com/thelinmichael/spotify-web-api-java/issues/120#issuecomment-363266591). |
 
 Spotify Web API Java [![Build Status](https://travis-ci.org/thelinmichael/spotify-web-api-java.svg?branch=master)](https://travis-ci.org/thelinmichael/spotify-web-api-java)
 ==================
