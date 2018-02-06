@@ -99,6 +99,7 @@ public class AddTracksToPlaylistRequest extends AbstractDataRequest {
     public Builder uris(final String uris) {
       assert (uris != null);
       assert (!uris.equals(""));
+      assert (uris.split(",").length <= 100);
       return setQueryParameter("uris", uris);
     }
 

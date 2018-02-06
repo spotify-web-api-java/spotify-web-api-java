@@ -90,6 +90,7 @@ public class FollowArtistsOrUsersRequest extends AbstractDataRequest {
     public Builder ids(final JsonArray ids) {
       assert (ids != null);
       assert (!ids.isJsonNull());
+      assert (ids.size() <= 50);
       return setBodyParameter("ids", ids);
     }
 

@@ -65,7 +65,7 @@ public class GetRecommendationsRequest extends AbstractDataRequest {
      * @return A {@link GetRecommendationsRequest.Builder}.
      */
     public Builder limit(final Integer limit) {
-      assert (limit > 0 && limit <= 100);
+      assert (1 <= limit && limit <= 100);
       return setQueryParameter("limit", limit);
     }
 
