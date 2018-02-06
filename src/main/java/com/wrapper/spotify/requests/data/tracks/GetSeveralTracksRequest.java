@@ -57,7 +57,7 @@ public class GetSeveralTracksRequest extends AbstractDataRequest {
      */
     public Builder ids(final String ids) {
       assert (ids != null);
-      assert (ids.split(",").length <= 100);
+      assert (ids.split(",").length <= 50);
       return setQueryParameter("ids", ids);
     }
 
