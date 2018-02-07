@@ -296,12 +296,6 @@ public class SpotifyApi {
    * @return An {@link AuthorizationCodeRequest.Builder}.
    */
   public AuthorizationCodeRefreshRequest.Builder authorizationCodeRefresh(String client_id, String client_secret, String refresh_token) {
-    assert (client_id != null);
-    assert (!client_id.equals(""));
-    assert (client_secret != null);
-    assert (!client_secret.equals(""));
-    assert (refresh_token != null);
-    assert (!refresh_token.equals(""));
     return new AuthorizationCodeRefreshRequest.Builder(client_id, client_secret)
             .setDefaults(httpManager, scheme, host, port)
             .grant_type("refresh_token")
@@ -333,13 +327,6 @@ public class SpotifyApi {
    * @return An {@link AuthorizationCodeRequest.Builder}.
    */
   public AuthorizationCodeRequest.Builder authorizationCode(String client_id, String client_secret, String code, URI redirect_uri) {
-    assert (client_id != null);
-    assert (!client_id.equals(""));
-    assert (client_secret != null);
-    assert (!client_secret.equals(""));
-    assert (code != null);
-    assert (!code.equals(""));
-    assert (redirect_uri != null);
     return new AuthorizationCodeRequest.Builder(clientId, clientSecret)
             .setDefaults(httpManager, scheme, host, port)
             .grant_type("authorization_code")
@@ -355,8 +342,6 @@ public class SpotifyApi {
    * @return An {@link AuthorizationCodeRequest.Builder}.
    */
   public AuthorizationCodeRequest.Builder authorizationCode(String code) {
-    assert (code != null);
-    assert (!code.equals(""));
     return new AuthorizationCodeRequest.Builder(clientId, clientSecret)
             .setDefaults(httpManager, scheme, host, port)
             .grant_type("authorization_code")
@@ -414,8 +399,6 @@ public class SpotifyApi {
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public GetAlbumRequest.Builder getAlbum(String id) {
-    assert (id != null);
-    assert (!id.equals(""));
     return new GetAlbumRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .id(id);
@@ -429,8 +412,6 @@ public class SpotifyApi {
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public GetAlbumsTracksRequest.Builder getAlbumsTracks(String id) {
-    assert (id != null);
-    assert (!id.equals(""));
     return new GetAlbumsTracksRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .id(id);
@@ -439,13 +420,11 @@ public class SpotifyApi {
   /**
    * Get multiple albums.
    *
-   * @param ids The Spotify IDs of all albums you're trying to retrieve.
+   * @param ids The Spotify IDs of all albums you're trying to retrieve. Maximum: 20 IDs.
    * @return A {@link GetSeveralAlbumsRequest.Builder}.
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public GetSeveralAlbumsRequest.Builder getSeveralAlbums(String... ids) {
-    assert (ids != null);
-    assert (1 <= ids.length && ids.length <= 20);
     return new GetSeveralAlbumsRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .ids(concat(ids, ','));
@@ -459,8 +438,6 @@ public class SpotifyApi {
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public GetArtistRequest.Builder getArtist(String id) {
-    assert (id != null);
-    assert (!id.equals(""));
     return new GetArtistRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .id(id);
@@ -474,8 +451,6 @@ public class SpotifyApi {
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public GetArtistsAlbumsRequest.Builder getArtistsAlbums(String id) {
-    assert (id != null);
-    assert (!id.equals(""));
     return new GetArtistsAlbumsRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .id(id);
@@ -491,9 +466,6 @@ public class SpotifyApi {
    * @see <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">Wikipedia: ISO 3166-1 alpha-2 country codes </a>
    */
   public GetArtistsTopTracksRequest.Builder getArtistsTopTracks(String id, CountryCode country) {
-    assert (id != null);
-    assert (!id.equals(""));
-    assert (country != null);
     return new GetArtistsTopTracksRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .id(id)
@@ -508,8 +480,6 @@ public class SpotifyApi {
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public GetArtistsRelatedArtistsRequest.Builder getArtistsRelatedArtists(String id) {
-    assert (id != null);
-    assert (!id.equals(""));
     return new GetArtistsRelatedArtistsRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .id(id);
@@ -518,13 +488,11 @@ public class SpotifyApi {
   /**
    * Get multiple artists.
    *
-   * @param ids The Spotify IDs of all artists you're trying to retrieve.
+   * @param ids The Spotify IDs of all artists you're trying to retrieve. Maximum: 50 IDs.
    * @return A {@link GetSeveralArtistsRequest.Builder}.
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public GetSeveralArtistsRequest.Builder getSeveralArtists(String... ids) {
-    assert (ids != null);
-    assert (1 <= ids.length && ids.length <= 50);
     return new GetSeveralArtistsRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .ids(concat(ids, ','));
@@ -538,8 +506,6 @@ public class SpotifyApi {
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public GetCategoryRequest.Builder getCategory(String category_id) {
-    assert (category_id != null);
-    assert (!category_id.equals(""));
     return new GetCategoryRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .category_id(category_id);
@@ -553,8 +519,6 @@ public class SpotifyApi {
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public GetCategorysPlaylistsRequest.Builder getCategorysPlaylists(String category_id) {
-    assert (category_id != null);
-    assert (!category_id.equals(""));
     return new GetCategorysPlaylistsRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .category_id(category_id);
@@ -614,15 +578,12 @@ public class SpotifyApi {
    * Check to see if the current user is following one or more artists or other Spotify users.
    *
    * @param type The ID type: either artist or user.
-   * @param ids  A list of the artist or the user Spotify IDs to check.
+   * @param ids  A list of the artist or the user Spotify IDs to check. Maximum: 50 IDs.
    * @return A {@link CheckCurrentUserFollowsArtistsOrUsersRequest.Builder}.
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public CheckCurrentUserFollowsArtistsOrUsersRequest.Builder checkCurrentUserFollowsArtistsOrUsers(
           ModelObjectType type, String[] ids) {
-    assert (type != null);
-    assert (ids != null);
-    assert (1 <= ids.length && ids.length <= 50);
     return new CheckCurrentUserFollowsArtistsOrUsersRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .type(type)
@@ -641,10 +602,6 @@ public class SpotifyApi {
    */
   public CheckUsersFollowPlaylistRequest.Builder checkUsersFollowPlaylist(
           String owner_id, String playlist_id, String[] ids) {
-    assert (owner_id != null);
-    assert (playlist_id != null);
-    assert (ids != null);
-    assert (1 <= ids.length && ids.length <= 5);
     return new CheckUsersFollowPlaylistRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .owner_id(owner_id)
@@ -656,14 +613,11 @@ public class SpotifyApi {
    * Add the current user as a follower of one or more artists or other Spotify users.
    *
    * @param type The ID type: either artist or user.
-   * @param ids  A list of the artist or the user Spotify IDs.
+   * @param ids  A list of the artist or the user Spotify IDs. Maximum: 50 IDs.
    * @return A {@link FollowArtistsOrUsersRequest.Builder}.
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public FollowArtistsOrUsersRequest.Builder followArtistsOrUsers(ModelObjectType type, String[] ids) {
-    assert (type != null);
-    assert (ids != null);
-    assert (1 <= ids.length && ids.length <= 50);
     return new FollowArtistsOrUsersRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .type(type)
@@ -674,15 +628,11 @@ public class SpotifyApi {
    * Add the current user as a follower of one or more artists or other Spotify users.
    *
    * @param type The ID type: either artist or user.
-   * @param ids  A list of the artist or the user Spotify IDs.
+   * @param ids  A list of the artist or the user Spotify IDs. Maximum: 50 IDs.
    * @return A {@link FollowArtistsOrUsersRequest.Builder}.
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public FollowArtistsOrUsersRequest.Builder followArtistsOrUsers(ModelObjectType type, JsonArray ids) {
-    assert (type != null);
-    assert (type.getType().equals("artist") || type.getType().equals("user"));
-    assert (ids != null);
-    assert (ids.size() <= 50);
     return new FollowArtistsOrUsersRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .type(type)
@@ -702,10 +652,6 @@ public class SpotifyApi {
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public FollowPlaylistRequest.Builder followPlaylist(String owner_id, String playlist_id, boolean public_) {
-    assert (owner_id != null);
-    assert (!owner_id.equals(""));
-    assert (playlist_id != null);
-    assert (!playlist_id.equals(""));
     return new FollowPlaylistRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .owner_id(owner_id)
@@ -721,7 +667,6 @@ public class SpotifyApi {
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public GetUsersFollowedArtistsRequest.Builder getUsersFollowedArtists(ModelObjectType type) {
-    assert (type != null);
     return new GetUsersFollowedArtistsRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .type(type);
@@ -731,14 +676,11 @@ public class SpotifyApi {
    * Remove the current user as a follower of one or more artists or other Spotify users.
    *
    * @param type The ID type: either artist or user.
-   * @param ids  A list of the artist or the user Spotify IDs.
+   * @param ids  A list of the artist or the user Spotify IDs. Maximum: 50 IDs.
    * @return A {@link UnfollowArtistsOrUsersRequest.Builder}.
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public UnfollowArtistsOrUsersRequest.Builder unfollowArtistsOrUsers(ModelObjectType type, String[] ids) {
-    assert (type != null);
-    assert (ids != null);
-    assert (1 <= ids.length && ids.length <= 50);
     return new UnfollowArtistsOrUsersRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .type(type)
@@ -749,14 +691,11 @@ public class SpotifyApi {
    * Remove the current user as a follower of one or more artists or other Spotify users.
    *
    * @param type The ID type: either {@code artist} or {@code user}.
-   * @param ids  A list of the artist or the user Spotify IDs.
+   * @param ids  A list of the artist or the user Spotify IDs. Maximum: 50 IDs.
    * @return A {@link UnfollowArtistsOrUsersRequest.Builder}.
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public UnfollowArtistsOrUsersRequest.Builder unfollowArtistsOrUsers(ModelObjectType type, JsonArray ids) {
-    assert (type != null);
-    assert (ids != null);
-    assert (ids.size() <= 50);
     return new UnfollowArtistsOrUsersRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .type(type)
@@ -772,10 +711,6 @@ public class SpotifyApi {
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public UnfollowPlaylistRequest.Builder unfollowPlaylist(String owner_id, String playlist_id) {
-    assert (owner_id != null);
-    assert (!owner_id.equals(""));
-    assert (playlist_id != null);
-    assert (!playlist_id.equals(""));
     return new UnfollowPlaylistRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .owner_id(owner_id)
@@ -785,13 +720,11 @@ public class SpotifyApi {
   /**
    * Check if a track is saved in the users "Your Music" library.
    *
-   * @param ids The tracks IDs to check for in the user's Your Music library.
+   * @param ids The tracks IDs to check for in the user's Your Music library. Maximum: 50 IDs.
    * @return A {@link CheckUsersSavedAlbumsRequest.Builder}.
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public CheckUsersSavedAlbumsRequest.Builder checkUsersSavedAlbums(String... ids) {
-    assert (ids != null);
-    assert (1 <= ids.length && ids.length <= 50);
     return new CheckUsersSavedAlbumsRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .ids(concat(ids, ','));
@@ -800,12 +733,10 @@ public class SpotifyApi {
   /**
    * Check if a track is saved in the users "Your Music" library.
    *
-   * @param ids The tracks IDs to check for in the user's Your Music library.
+   * @param ids The tracks IDs to check for in the user's Your Music library. Maximum: 50 IDs.
    * @return A builder object that can be used to check if an user has saved a track.
    */
   public CheckUsersSavedTracksRequest.Builder checkUsersSavedTracks(String... ids) {
-    assert (ids != null);
-    assert (1 <= ids.length && ids.length <= 50);
     return new CheckUsersSavedTracksRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .ids(concat(ids, ','));
@@ -834,13 +765,11 @@ public class SpotifyApi {
   /**
    * Remove one or more albums from the current users "Your Music" library.
    *
-   * @param ids A list of the Spotify IDs.
+   * @param ids A list of the Spotify IDs. Maximum: 50 IDs.
    * @return A {@link RemoveAlbumsForCurrentUserRequest.Builder}.
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public RemoveAlbumsForCurrentUserRequest.Builder removeAlbumsForCurrentUser(String... ids) {
-    assert (ids != null);
-    assert (1 <= ids.length && ids.length <= 50);
     return new RemoveAlbumsForCurrentUserRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .ids(concat(ids, ','));
@@ -849,13 +778,11 @@ public class SpotifyApi {
   /**
    * Remove one or more albums from the current users "Your Music" library.
    *
-   * @param ids A list of the Spotify IDs.
+   * @param ids A list of the Spotify IDs. Maximum: 50 IDs.
    * @return A {@link RemoveAlbumsForCurrentUserRequest.Builder}.
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public RemoveAlbumsForCurrentUserRequest.Builder removeAlbumsForCurrentUser(JsonArray ids) {
-    assert (ids != null);
-    assert (ids.size() <= 50);
     return new RemoveAlbumsForCurrentUserRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .ids(ids);
@@ -864,13 +791,11 @@ public class SpotifyApi {
   /**
    * Remove a track if saved to the users "Your Music" library.
    *
-   * @param ids The track IDs to remove from the users Your Music library.
+   * @param ids The track IDs to remove from the users Your Music library. Maximum: 50 IDs.
    * @return A {@link RemoveUsersSavedTracksRequest.Builder}.
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public RemoveUsersSavedTracksRequest.Builder removeUsersSavedTracks(String... ids) {
-    assert (ids != null);
-    assert (1 <= ids.length && ids.length <= 50);
     return new RemoveUsersSavedTracksRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .ids(concat(ids, ','));
@@ -879,12 +804,10 @@ public class SpotifyApi {
   /**
    * Remove a track if saved to the users "Your Music" library.
    *
-   * @param ids The track IDs to remove from the users "Your Music" library.
+   * @param ids The track IDs to remove from the users "Your Music" library. Maximum: 50 IDs.
    * @return A {@link RemoveUsersSavedTracksRequest.Builder}.
    */
   public RemoveUsersSavedTracksRequest.Builder removeUsersSavedTracks(JsonArray ids) {
-    assert (ids != null);
-    assert (ids.size() <= 50);
     return new RemoveUsersSavedTracksRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .ids(ids);
@@ -893,13 +816,11 @@ public class SpotifyApi {
   /**
    * Save albums in the users "Your Music" library.
    *
-   * @param ids The album IDs to add to the users library.
+   * @param ids The album IDs to add to the users library. Maximum: 50 IDs.
    * @return A {@link SaveAlbumsForCurrentUserRequest.Builder}.
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public SaveAlbumsForCurrentUserRequest.Builder saveAlbumsForCurrentUser(String... ids) {
-    assert (ids != null);
-    assert (1 <= ids.length && ids.length <= 50);
     return new SaveAlbumsForCurrentUserRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .ids(concat(ids, ','));
@@ -908,13 +829,11 @@ public class SpotifyApi {
   /**
    * Save albums in the users "Your Music" library.
    *
-   * @param ids The album IDs to add to the users library.
+   * @param ids The album IDs to add to the users library. Maximum: 50 IDs.
    * @return A {@link SaveAlbumsForCurrentUserRequest.Builder}.
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public SaveAlbumsForCurrentUserRequest.Builder saveAlbumsForCurrentUser(JsonArray ids) {
-    assert (ids != null);
-    assert (ids.size() <= 50);
     return new SaveAlbumsForCurrentUserRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .ids(ids);
@@ -923,13 +842,11 @@ public class SpotifyApi {
   /**
    * Save tracks in the users "Your Music" library.
    *
-   * @param ids The track IDs to add to the users library.
+   * @param ids The track IDs to add to the users library. Maximum: 50 IDs.
    * @return A {@link SaveTracksForUserRequest.Builder}.
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public SaveTracksForUserRequest.Builder saveTracksForUser(String... ids) {
-    assert (ids != null);
-    assert (1 <= ids.length && ids.length <= 50);
     return new SaveTracksForUserRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .ids(concat(ids, ','));
@@ -938,13 +855,11 @@ public class SpotifyApi {
   /**
    * Save tracks in the users "Your Music" library.
    *
-   * @param ids The track IDs to add to the users library.
+   * @param ids The track IDs to add to the users library. Maximum: 50 IDs.
    * @return A {@link SaveTracksForUserRequest.Builder}.
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public SaveTracksForUserRequest.Builder saveTracksForUser(JsonArray ids) {
-    assert (ids != null);
-    assert (ids.size() <= 50);
     return new SaveTracksForUserRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .ids(ids);
@@ -964,7 +879,6 @@ public class SpotifyApi {
    */
   @SuppressWarnings("unchecked")
   public <T extends IArtistTrackModelObject> GetUsersTopArtistsAndTracksRequest.Builder<T> getUsersTopArtistsAndTracks(ModelObjectType type) {
-    assert (type != null);
     return new GetUsersTopArtistsAndTracksRequest.Builder<T>(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .type(type);
@@ -1056,7 +970,6 @@ public class SpotifyApi {
    * @return A {@link SeekToPositionInCurrentlyPlayingTrackRequest.Builder}.
    */
   public SeekToPositionInCurrentlyPlayingTrackRequest.Builder seekToPositionInCurrentlyPlayingTrack(int position_ms) {
-    assert (position_ms >= 0);
     return new SeekToPositionInCurrentlyPlayingTrackRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .position_ms(position_ms);
@@ -1070,8 +983,6 @@ public class SpotifyApi {
    * @return A {@link SetRepeatModeOnUsersPlaybackRequest.Builder}.
    */
   public SetRepeatModeOnUsersPlaybackRequest.Builder setRepeatModeOnUsersPlayback(String state) {
-    assert (state != null);
-    assert (!state.equals(""));
     return new SetRepeatModeOnUsersPlaybackRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .state(state);
@@ -1084,7 +995,6 @@ public class SpotifyApi {
    * @return A {@link SetVolumeForUsersPlaybackRequest.Builder}.
    */
   public SetVolumeForUsersPlaybackRequest.Builder setVolumeForUsersPlayback(int volume_percent) {
-    assert (0 <= volume_percent && volume_percent <= 100);
     return new SetVolumeForUsersPlaybackRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .volume_percent(volume_percent);
@@ -1144,8 +1054,6 @@ public class SpotifyApi {
    * @return A {@link TransferUsersPlaybackRequest.Builder}.
    */
   public TransferUsersPlaybackRequest.Builder transferUsersPlayback(JsonArray device_ids) {
-    assert (device_ids != null);
-    assert (device_ids.size() == 1);
     return new TransferUsersPlaybackRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .device_ids(device_ids);
@@ -1156,17 +1064,11 @@ public class SpotifyApi {
    *
    * @param user_id     The owners username.
    * @param playlist_id The playlists ID.
-   * @param uris        URIs of the tracks to add.
+   * @param uris        URIs of the tracks to add. Maximum: 100 track URIs.
    * @return An {@link AddTracksToPlaylistRequest.Builder}.
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public AddTracksToPlaylistRequest.Builder addTracksToPlaylist(String user_id, String playlist_id, String[] uris) {
-    assert (user_id != null);
-    assert (!user_id.equals(""));
-    assert (playlist_id != null);
-    assert (!playlist_id.equals(""));
-    assert (uris != null);
-    assert (1 <= uris.length && uris.length <= 100);
     return new AddTracksToPlaylistRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .user_id(user_id)
@@ -1179,17 +1081,11 @@ public class SpotifyApi {
    *
    * @param user_id     The owners username.
    * @param playlist_id The playlists ID.
-   * @param uris        URIs of the tracks to add.
+   * @param uris        URIs of the tracks to add. Maximum: 100 track URIs.
    * @return An {@link AddTracksToPlaylistRequest.Builder}.
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public AddTracksToPlaylistRequest.Builder addTracksToPlaylist(String user_id, String playlist_id, JsonArray uris) {
-    assert (user_id != null);
-    assert (!user_id.equals(""));
-    assert (playlist_id != null);
-    assert (!playlist_id.equals(""));
-    assert (uris != null);
-    assert (uris.size() <= 100);
     return new AddTracksToPlaylistRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .user_id(user_id)
@@ -1206,10 +1102,6 @@ public class SpotifyApi {
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public ChangePlaylistsDetailsRequest.Builder changePlaylistsDetails(String user_id, String playlist_id) {
-    assert (user_id != null);
-    assert (!user_id.equals(""));
-    assert (playlist_id != null);
-    assert (!playlist_id.equals(""));
     return new ChangePlaylistsDetailsRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .user_id(user_id)
@@ -1225,10 +1117,6 @@ public class SpotifyApi {
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public CreatePlaylistRequest.Builder createPlaylist(String user_id, String name) {
-    assert (user_id != null);
-    assert (!user_id.equals(""));
-    assert (name != null);
-    assert (!name.equals(""));
     return new CreatePlaylistRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .user_id(user_id)
@@ -1253,8 +1141,6 @@ public class SpotifyApi {
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public GetListOfUsersPlaylistsRequest.Builder getListOfUsersPlaylists(String user_id) {
-    assert (user_id != null);
-    assert (!user_id.equals(""));
     return new GetListOfUsersPlaylistsRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .user_id(user_id);
@@ -1269,10 +1155,6 @@ public class SpotifyApi {
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public GetPlaylistRequest.Builder getPlaylist(String user_id, String playlist_id) {
-    assert (user_id != null);
-    assert (!user_id.equals(""));
-    assert (playlist_id != null);
-    assert (!playlist_id.equals(""));
     return new GetPlaylistRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .user_id(user_id)
@@ -1288,10 +1170,6 @@ public class SpotifyApi {
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public GetPlaylistCoverImageRequest.Builder getPlaylistCoverImage(String user_id, String playlist_id) {
-    assert (user_id != null);
-    assert (!user_id.equals(""));
-    assert (playlist_id != null);
-    assert (!playlist_id.equals(""));
     return new GetPlaylistCoverImageRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .user_id(user_id)
@@ -1307,10 +1185,6 @@ public class SpotifyApi {
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public GetPlaylistsTracksRequest.Builder getPlaylistsTracks(String user_id, String playlist_id) {
-    assert (user_id != null);
-    assert (!user_id.equals(""));
-    assert (playlist_id != null);
-    assert (!playlist_id.equals(""));
     return new GetPlaylistsTracksRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .user_id(user_id)
@@ -1322,18 +1196,12 @@ public class SpotifyApi {
    *
    * @param user_id     The owners username.
    * @param playlist_id The playlists ID.
-   * @param tracks      URIs of the tracks to remove.
+   * @param tracks      URIs of the tracks to remove. Maximum: 100 track URIs.
    * @return A {@link RemoveTracksFromPlaylistRequest.Builder}.
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public RemoveTracksFromPlaylistRequest.Builder removeTracksFromPlaylist(
           String user_id, String playlist_id, JsonArray tracks) {
-    assert (user_id != null);
-    assert (!user_id.equals(""));
-    assert (playlist_id != null);
-    assert (!playlist_id.equals(""));
-    assert (tracks != null);
-    assert (tracks.size() <= 100);
     return new RemoveTracksFromPlaylistRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .user_id(user_id)
@@ -1357,10 +1225,6 @@ public class SpotifyApi {
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public ReorderPlaylistsTracksRequest.Builder reorderPlaylistsTracks(String user_id, String playlist_id, int range_start, int insert_before) {
-    assert (user_id != null);
-    assert (!user_id.equals(""));
-    assert (playlist_id != null);
-    assert (!playlist_id.equals(""));
     return new ReorderPlaylistsTracksRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .user_id(user_id)
@@ -1374,17 +1238,11 @@ public class SpotifyApi {
    *
    * @param user_id     The owners username.
    * @param playlist_id The playlists ID.
-   * @param uris        URIs of the tracks to add.
+   * @param uris        URIs of the tracks to add. Maximum: 100 track URIs.
    * @return A {@link ReplacePlaylistsTracksRequest.Builder}.
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public ReplacePlaylistsTracksRequest.Builder replacePlaylistsTracks(String user_id, String playlist_id, String[] uris) {
-    assert (user_id != null);
-    assert (!user_id.equals(""));
-    assert (playlist_id != null);
-    assert (!playlist_id.equals(""));
-    assert (uris != null);
-    assert (1 <= uris.length && uris.length <= 100);
     return new ReplacePlaylistsTracksRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .user_id(user_id)
@@ -1397,17 +1255,11 @@ public class SpotifyApi {
    *
    * @param user_id     The owners username.
    * @param playlist_id The playlists ID.
-   * @param uris        URIs of the tracks to add.
+   * @param uris        URIs of the tracks to add. Maximum: 100 track URIs.
    * @return A {@link ReplacePlaylistsTracksRequest.Builder}.
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public ReplacePlaylistsTracksRequest.Builder replacePlaylistsTracks(String user_id, String playlist_id, JsonArray uris) {
-    assert (user_id != null);
-    assert (!user_id.equals(""));
-    assert (playlist_id != null);
-    assert (!playlist_id.equals(""));
-    assert (uris != null);
-    assert (uris.size() <= 100);
     return new ReplacePlaylistsTracksRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .user_id(user_id)
@@ -1424,10 +1276,6 @@ public class SpotifyApi {
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public UploadCustomPlaylistCoverImageRequest.Builder uploadCustomPlaylistCoverImage(String user_id, String playlist_id) {
-    assert (user_id != null);
-    assert (!user_id.equals(""));
-    assert (playlist_id != null);
-    assert (!playlist_id.equals(""));
     return new UploadCustomPlaylistCoverImageRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .user_id(user_id)
@@ -1443,10 +1291,6 @@ public class SpotifyApi {
    * @return A {@link SearchItemRequest.Builder}.
    */
   public SearchItemRequest.Builder searchItem(String q, String type) {
-    assert (q != null);
-    assert (!q.equals(""));
-    assert (type != null);
-    assert (!type.equals(""));
     return new SearchItemRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .q(q)
@@ -1460,8 +1304,6 @@ public class SpotifyApi {
    * @return A {@link SearchAlbumsRequest.Builder}.
    */
   public SearchAlbumsRequest.Builder searchAlbums(String q) {
-    assert (q != null);
-    assert (!q.equals(""));
     return new SearchAlbumsRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .q(q);
@@ -1474,8 +1316,6 @@ public class SpotifyApi {
    * @return A {@link SearchArtistsRequest.Builder}.
    */
   public SearchArtistsRequest.Builder searchArtists(String q) {
-    assert (q != null);
-    assert (!q.equals(""));
     return new SearchArtistsRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .q(q);
@@ -1488,8 +1328,6 @@ public class SpotifyApi {
    * @return A {@link SearchPlaylistsRequest.Builder}.
    */
   public SearchPlaylistsRequest.Builder searchPlaylists(String q) {
-    assert (q != null);
-    assert (!q.equals(""));
     return new SearchPlaylistsRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .q(q);
@@ -1502,8 +1340,6 @@ public class SpotifyApi {
    * @return A {@link SearchTracksRequest.Builder}.
    */
   public SearchTracksRequest.Builder searchTracks(String q) {
-    assert (q != null);
-    assert (!q.equals(""));
     return new SearchTracksRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .q(q);
@@ -1517,8 +1353,6 @@ public class SpotifyApi {
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public GetAudioAnalysisForTrackRequest.Builder getAudioAnalysisForTrack(String id) {
-    assert (id != null);
-    assert (!id.equals(""));
     return new GetAudioAnalysisForTrackRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .id(id);
@@ -1532,8 +1366,6 @@ public class SpotifyApi {
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public GetAudioFeaturesForTrackRequest.Builder getAudioFeaturesForTrack(String id) {
-    assert (id != null);
-    assert (!id.equals(""));
     return new GetAudioFeaturesForTrackRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .id(id);
@@ -1547,8 +1379,6 @@ public class SpotifyApi {
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public GetAudioFeaturesForSeveralTracksRequest.Builder getAudioFeaturesForSeveralTracks(String... ids) {
-    assert (ids != null);
-    assert (1 <= ids.length && ids.length <= 100);
     return new GetAudioFeaturesForSeveralTracksRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .ids(concat(ids, ','));
@@ -1557,13 +1387,11 @@ public class SpotifyApi {
   /**
    * Get multiple tracks.
    *
-   * @param ids The Spotify IDs of all tracks you're trying to retrieve.
+   * @param ids The Spotify IDs of all tracks you're trying to retrieve. Maximum: 50 IDs.
    * @return A {@link GetSeveralTracksRequest.Builder}.
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public GetSeveralTracksRequest.Builder getSeveralTracks(String... ids) {
-    assert (ids != null);
-    assert (1 <= ids.length && ids.length <= 50);
     return new GetSeveralTracksRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .ids(concat(ids, ','));
@@ -1577,8 +1405,6 @@ public class SpotifyApi {
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public GetTrackRequest.Builder getTrack(String id) {
-    assert (id != null);
-    assert (!id.equals(""));
     return new GetTrackRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .id(id);
@@ -1602,8 +1428,6 @@ public class SpotifyApi {
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public GetUsersProfileRequest.Builder getUsersProfile(String user_id) {
-    assert (user_id != null);
-    assert (!user_id.equals(""));
     return new GetUsersProfileRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .user_id(user_id);

@@ -93,13 +93,15 @@ public class RemoveTracksFromPlaylistRequest extends AbstractDataRequest {
      * {@code { "tracks": [{ "uri": "spotify:track:4iV5W9uYEdYUVa79Axb7Rh", "positions": [0,3] },
      * { "uri": "spotify:track:1301WleyT98MSxVHPZCA6M", "positions": [7] }] }}
      *
-     * @param tracks Required. An array of objects containing Spotify URIs of the tracks to remove.
+     * @param tracks Required. An array of objects containing Spotify URIs of the tracks to remove. A maximum of
+     *               100 objects can be sent at once
      * @return A {@link RemoveTracksFromPlaylistRequest.Builder}.
      * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URIs &amp; IDs</a>
      */
     public Builder tracks(final JsonArray tracks) {
       assert (tracks != null);
       assert (!tracks.isJsonNull());
+      assert (tracks.size() <= 100);
       return setBodyParameter("tracks", tracks);
     }
 
