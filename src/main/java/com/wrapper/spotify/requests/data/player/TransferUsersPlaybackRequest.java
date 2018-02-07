@@ -63,6 +63,7 @@ public class TransferUsersPlaybackRequest extends AbstractDataRequest {
     public Builder device_ids(final JsonArray device_ids) {
       assert (device_ids != null);
       assert (!device_ids.isJsonNull());
+      assert (device_ids.size() == 1);
       return setBodyParameter("device_ids", device_ids);
     }
 
