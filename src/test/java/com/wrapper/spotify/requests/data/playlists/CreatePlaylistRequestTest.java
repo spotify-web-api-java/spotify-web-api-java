@@ -18,11 +18,10 @@ import static org.junit.Assert.*;
 @RunWith(MockitoJUnitRunner.class)
 public class CreatePlaylistRequestTest extends AbstractDataTest<Playlist> {
   private final CreatePlaylistRequest defaultRequest = SPOTIFY_API
-          .createPlaylist(ID_USER, ID_PLAYLIST)
+          .createPlaylist(ID_USER, NAME)
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
                           "requests/data/playlists/CreatePlaylistRequest.json"))
-          .name(NAME)
           .collaborative(COLLABORATIVE)
           .description(DESCRIPTION)
           .public_(PUBLIC)
