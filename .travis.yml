@@ -25,7 +25,7 @@ deploy:
   skip_cleanup: true
   script: "mvn deploy -P release"
   on:
-    repo: thelinmichael/spotify-web-api-wrapper
+    repo: thelinmichael/spotify-web-api-java
     branch:
     - master
     - v1
