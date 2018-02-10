@@ -6,9 +6,9 @@ package com.wrapper.spotify.enums;
 public enum AlbumType {
 
   ALBUM("album"),
-  SINGLE("single"),
   APPEARS_ON("appears_on"),
-  COMPILATION("compilation");
+  COMPILATION("compilation"),
+  SINGLE("single");
 
   public final String type;
 

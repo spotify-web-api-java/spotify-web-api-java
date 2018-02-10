@@ -5,9 +5,9 @@ package com.wrapper.spotify.enums;
  */
 public enum ReleaseDatePrecision {
 
-  YEAR("year"),
+  DAY("day"),
   MONTH("month"),
-  DAY("day");
+  YEAR("year");
 
   public final String precision;
 

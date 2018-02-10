@@ -10,8 +10,8 @@ import java.util.Map;
  */
 public enum Modality {
 
-  MINOR(0),
-  MAJOR(1);
+  MAJOR(1),
+  MINOR(0);
 
   private static Map<Integer, Modality> map = new HashMap<>();
 

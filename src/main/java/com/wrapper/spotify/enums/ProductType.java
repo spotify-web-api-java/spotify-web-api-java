@@ -5,10 +5,11 @@ package com.wrapper.spotify.enums;
  */
 public enum ProductType {
 
-  PREMIUM("premium"),
+  BASIC_DESKTOP("basic-desktop"),
+  DAYPASS("daypass"),
   FREE("free"),
   OPEN("open"),
-  DAYPASS("daypass");
+  PREMIUM("premium");
 
   public final String type;
 
