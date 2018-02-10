@@ -1,9 +1,12 @@
 package data.playlists;
 
 import com.wrapper.spotify.SpotifyApi;
+import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.Playlist;
 import com.wrapper.spotify.requests.data.playlists.CreatePlaylistRequest;
 
+import java.io.IOException;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
 public class CreatePlaylistExample {
@@ -25,8 +28,8 @@ public class CreatePlaylistExample {
       final Playlist playlist = createPlaylistRequest.execute();
 
       System.out.println("Name: " + playlist.getName());
-    } catch (Exception e) {
-      System.out.println("Something went wrong!\n" + e.getMessage());
+    } catch (IOException | SpotifyWebApiException e) {
+      System.out.println("Error: " + e.getMessage());
     }
   }
 
@@ -39,8 +42,8 @@ public class CreatePlaylistExample {
       final Playlist playlist = playlistFuture.get();
 
       System.out.println("Name: " + playlist.getName());
-    } catch (Exception e) {
-      System.out.println("Something went wrong!\n" + e.getMessage());
+    } catch (InterruptedException | ExecutionException e) {
+      System.out.println("Error: " + e.getCause().getMessage());
     }
   }
 }

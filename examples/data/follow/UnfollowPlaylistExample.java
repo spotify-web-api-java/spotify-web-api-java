@@ -1,8 +1,11 @@
 package data.follow;
 
 import com.wrapper.spotify.SpotifyApi;
+import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.requests.data.follow.UnfollowPlaylistRequest;
 
+import java.io.IOException;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
 public class UnfollowPlaylistExample {
@@ -22,8 +25,8 @@ public class UnfollowPlaylistExample {
       final String string = unfollowPlaylistRequest.execute();
 
       System.out.println("Empty String: " + string);
-    } catch (Exception e) {
-      System.out.println("Something went wrong!\n" + e.getMessage());
+    } catch (IOException | SpotifyWebApiException e) {
+      System.out.println("Error: " + e.getMessage());
     }
   }
 
@@ -36,8 +39,8 @@ public class UnfollowPlaylistExample {
       final String string = stringFuture.get();
 
       System.out.println("Empty String: " + string);
-    } catch (Exception e) {
-      System.out.println("Something went wrong!\n" + e.getMessage());
+    } catch (InterruptedException | ExecutionException e) {
+      System.out.println("Error: " + e.getCause().getMessage());
     }
   }
 }

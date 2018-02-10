@@ -2,10 +2,13 @@ package data.browse;
 
 import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.SpotifyApi;
+import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.special.FeaturedPlaylists;
 import com.wrapper.spotify.requests.data.browse.GetListOfFeaturedPlaylistsRequest;
 
+import java.io.IOException;
 import java.util.Date;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
 public class GetListOfFeaturedPlaylistsExample {
@@ -27,8 +30,8 @@ public class GetListOfFeaturedPlaylistsExample {
       final FeaturedPlaylists featuredPlaylists = getListOfFeaturedPlaylistsRequest.execute();
 
       System.out.println("Message: " + featuredPlaylists.getMessage());
-    } catch (Exception e) {
-      System.out.println("Something went wrong!\n" + e.getMessage());
+    } catch (IOException | SpotifyWebApiException e) {
+      System.out.println("Error: " + e.getMessage());
     }
   }
 
@@ -41,8 +44,8 @@ public class GetListOfFeaturedPlaylistsExample {
       final FeaturedPlaylists featuredPlaylists = featuredPlaylistsFuture.get();
 
       System.out.println("Message: " + featuredPlaylists.getMessage());
-    } catch (Exception e) {
-      System.out.println("Something went wrong!\n" + e.getMessage());
+    } catch (InterruptedException | ExecutionException e) {
+      System.out.println("Error: " + e.getCause().getMessage());
     }
   }
 }

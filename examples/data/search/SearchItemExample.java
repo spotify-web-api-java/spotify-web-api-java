@@ -3,9 +3,12 @@ package data.search;
 import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.enums.ModelObjectType;
+import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.special.SearchResult;
 import com.wrapper.spotify.requests.data.search.SearchItemRequest;
 
+import java.io.IOException;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
 public class SearchItemExample {
@@ -27,8 +30,8 @@ public class SearchItemExample {
       final SearchResult searchResult = searchItemRequest.execute();
 
       System.out.println("Total tracks: " + searchResult.getTracks().getTotal());
-    } catch (Exception e) {
-      System.out.println("Something went wrong!\n" + e.getMessage());
+    } catch (IOException | SpotifyWebApiException e) {
+      System.out.println("Error: " + e.getMessage());
     }
   }
 
@@ -41,8 +44,8 @@ public class SearchItemExample {
       final SearchResult searchResult = searchResultFuture.get();
 
       System.out.println("Total tracks: " + searchResult.getTracks().getTotal());
-    } catch (Exception e) {
-      System.out.println("Something went wrong!\n" + e.getMessage());
+    } catch (InterruptedException | ExecutionException e) {
+      System.out.println("Error: " + e.getCause().getMessage());
     }
   }
 }

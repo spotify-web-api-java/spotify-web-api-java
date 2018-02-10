@@ -2,9 +2,12 @@ package data.browse;
 
 import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.SpotifyApi;
+import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.Category;
 import com.wrapper.spotify.requests.data.browse.GetCategoryRequest;
 
+import java.io.IOException;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
 public class GetCategoryExample {
@@ -24,8 +27,8 @@ public class GetCategoryExample {
       final Category category = getCategoryRequest.execute();
 
       System.out.println("Name: " + category.getName());
-    } catch (Exception e) {
-      System.out.println("Something went wrong!\n" + e.getMessage());
+    } catch (IOException | SpotifyWebApiException e) {
+      System.out.println("Error: " + e.getMessage());
     }
   }
 
@@ -38,8 +41,8 @@ public class GetCategoryExample {
       final Category category = categoryFuture.get();
 
       System.out.println("Name: " + category.getName());
-    } catch (Exception e) {
-      System.out.println("Something went wrong!\n" + e.getMessage());
+    } catch (InterruptedException | ExecutionException e) {
+      System.out.println("Error: " + e.getCause().getMessage());
     }
   }
 }

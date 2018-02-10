@@ -1,10 +1,13 @@
 package data.playlists;
 
 import com.wrapper.spotify.SpotifyApi;
+import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.Paging;
 import com.wrapper.spotify.model_objects.specification.PlaylistSimplified;
 import com.wrapper.spotify.requests.data.playlists.GetListOfCurrentUsersPlaylistsRequest;
 
+import java.io.IOException;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
 public class GetListOfCurrentUsersPlaylistsExample {
@@ -24,8 +27,8 @@ public class GetListOfCurrentUsersPlaylistsExample {
       final Paging<PlaylistSimplified> playlistSimplifiedPaging = getListOfCurrentUsersPlaylistsRequest.execute();
 
       System.out.println("Total: " + playlistSimplifiedPaging.getTotal());
-    } catch (Exception e) {
-      System.out.println("Something went wrong!\n" + e.getMessage());
+    } catch (IOException | SpotifyWebApiException e) {
+      System.out.println("Error: " + e.getMessage());
     }
   }
 
@@ -38,8 +41,8 @@ public class GetListOfCurrentUsersPlaylistsExample {
       final Paging<PlaylistSimplified> playlistSimplifiedPaging = pagingFuture.get();
 
       System.out.println("Total: " + playlistSimplifiedPaging.getTotal());
-    } catch (Exception e) {
-      System.out.println("Something went wrong!\n" + e.getMessage());
+    } catch (InterruptedException | ExecutionException e) {
+      System.out.println("Error: " + e.getCause().getMessage());
     }
   }
 }

@@ -1,9 +1,12 @@
 package data.playlists;
 
 import com.wrapper.spotify.SpotifyApi;
+import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.Image;
 import com.wrapper.spotify.requests.data.playlists.GetPlaylistCoverImageRequest;
 
+import java.io.IOException;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
 public class GetPlaylistCoverImageExample {
@@ -23,8 +26,8 @@ public class GetPlaylistCoverImageExample {
       final Image[] images = getPlaylistCoverImageRequest.execute();
 
       System.out.println("Length: " + images.length);
-    } catch (Exception e) {
-      System.out.println("Something went wrong!\n" + e.getMessage());
+    } catch (IOException | SpotifyWebApiException e) {
+      System.out.println("Error: " + e.getMessage());
     }
   }
 
@@ -37,8 +40,8 @@ public class GetPlaylistCoverImageExample {
       final Image[] images = imagesFuture.get();
 
       System.out.println("Length: " + images.length);
-    } catch (Exception e) {
-      System.out.println("Something went wrong!\n" + e.getMessage());
+    } catch (InterruptedException | ExecutionException e) {
+      System.out.println("Error: " + e.getCause().getMessage());
     }
   }
 }

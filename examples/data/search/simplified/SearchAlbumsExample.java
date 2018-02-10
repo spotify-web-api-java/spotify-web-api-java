@@ -2,10 +2,13 @@ package data.search.simplified;
 
 import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.SpotifyApi;
+import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.AlbumSimplified;
 import com.wrapper.spotify.model_objects.specification.Paging;
 import com.wrapper.spotify.requests.data.search.simplified.SearchAlbumsRequest;
 
+import java.io.IOException;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
 public class SearchAlbumsExample {
@@ -26,8 +29,8 @@ public class SearchAlbumsExample {
       final Paging<AlbumSimplified> albumSimplifiedPaging = searchAlbumsRequest.execute();
 
       System.out.println("Total: " + albumSimplifiedPaging.getTotal());
-    } catch (Exception e) {
-      System.out.println("Something went wrong!\n" + e.getMessage());
+    } catch (IOException | SpotifyWebApiException e) {
+      System.out.println("Error: " + e.getMessage());
     }
   }
 
@@ -40,8 +43,8 @@ public class SearchAlbumsExample {
       final Paging<AlbumSimplified> albumSimplifiedPaging = pagingFuture.get();
 
       System.out.println("Total: " + albumSimplifiedPaging.getTotal());
-    } catch (Exception e) {
-      System.out.println("Something went wrong!\n" + e.getMessage());
+    } catch (InterruptedException | ExecutionException e) {
+      System.out.println("Error: " + e.getCause().getMessage());
     }
   }
 }

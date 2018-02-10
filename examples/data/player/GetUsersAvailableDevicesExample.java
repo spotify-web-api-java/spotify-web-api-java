@@ -1,9 +1,12 @@
 package data.player;
 
 import com.wrapper.spotify.SpotifyApi;
+import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.miscellaneous.Device;
 import com.wrapper.spotify.requests.data.player.GetUsersAvailableDevicesRequest;
 
+import java.io.IOException;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
 public class GetUsersAvailableDevicesExample {
@@ -21,8 +24,8 @@ public class GetUsersAvailableDevicesExample {
       final Device[] devices = getUsersAvailableDevicesRequest.execute();
 
       System.out.println("Length: " + devices.length);
-    } catch (Exception e) {
-      System.out.println("Something went wrong!\n" + e.getMessage());
+    } catch (IOException | SpotifyWebApiException e) {
+      System.out.println("Error: " + e.getMessage());
     }
   }
 
@@ -35,8 +38,8 @@ public class GetUsersAvailableDevicesExample {
       final Device[] devices = devicesFuture.get();
 
       System.out.println("Length: " + devices.length);
-    } catch (Exception e) {
-      System.out.println("Something went wrong!\n" + e.getMessage());
+    } catch (InterruptedException | ExecutionException e) {
+      System.out.println("Error: " + e.getCause().getMessage());
     }
   }
 }

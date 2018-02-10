@@ -1,8 +1,11 @@
 package data.library;
 
 import com.wrapper.spotify.SpotifyApi;
+import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.requests.data.library.RemoveAlbumsForCurrentUserRequest;
 
+import java.io.IOException;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
 public class RemoveAlbumsForCurrentUserExample {
@@ -21,8 +24,8 @@ public class RemoveAlbumsForCurrentUserExample {
       final String string = removeAlbumsForCurrentUserRequest.execute();
 
       System.out.println("Empty string: " + string);
-    } catch (Exception e) {
-      System.out.println("Something went wrong!\n" + e.getMessage());
+    } catch (IOException | SpotifyWebApiException e) {
+      System.out.println("Error: " + e.getMessage());
     }
   }
 
@@ -35,8 +38,8 @@ public class RemoveAlbumsForCurrentUserExample {
       final String string = stringFuture.get();
 
       System.out.println("Empty string: " + string);
-    } catch (Exception e) {
-      System.out.println("Something went wrong!\n" + e.getMessage());
+    } catch (InterruptedException | ExecutionException e) {
+      System.out.println("Error: " + e.getCause().getMessage());
     }
   }
 }

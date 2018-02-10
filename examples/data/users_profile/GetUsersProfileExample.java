@@ -1,9 +1,12 @@
 package data.users_profile;
 
 import com.wrapper.spotify.SpotifyApi;
+import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.User;
 import com.wrapper.spotify.requests.data.users_profile.GetUsersProfileRequest;
 
+import java.io.IOException;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
 public class GetUsersProfileExample {
@@ -21,8 +24,8 @@ public class GetUsersProfileExample {
       final User user = getUsersProfileRequest.execute();
 
       System.out.println("Display name: " + user.getDisplayName());
-    } catch (Exception e) {
-      System.out.println("Something went wrong!\n" + e.getMessage());
+    } catch (IOException | SpotifyWebApiException e) {
+      System.out.println("Error: " + e.getMessage());
     }
   }
 
@@ -35,8 +38,8 @@ public class GetUsersProfileExample {
       final User user = userFuture.get();
 
       System.out.println("Display name: " + user.getDisplayName());
-    } catch (Exception e) {
-      System.out.println("Something went wrong!\n" + e.getMessage());
+    } catch (InterruptedException | ExecutionException e) {
+      System.out.println("Error: " + e.getCause().getMessage());
     }
   }
 }

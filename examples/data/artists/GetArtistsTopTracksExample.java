@@ -2,9 +2,12 @@ package data.artists;
 
 import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.SpotifyApi;
+import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.Track;
 import com.wrapper.spotify.requests.data.artists.GetArtistsTopTracksRequest;
 
+import java.io.IOException;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
 public class GetArtistsTopTracksExample {
@@ -24,8 +27,8 @@ public class GetArtistsTopTracksExample {
       final Track[] tracks = getArtistsTopTracksRequest.execute();
 
       System.out.println("Length: " + tracks.length);
-    } catch (Exception e) {
-      System.out.println("Something went wrong!\n" + e.getMessage());
+    } catch (IOException | SpotifyWebApiException e) {
+      System.out.println("Error: " + e.getMessage());
     }
   }
 
@@ -38,8 +41,8 @@ public class GetArtistsTopTracksExample {
       final Track[] tracks = artistsFuture.get();
 
       System.out.println("Length: " + tracks.length);
-    } catch (Exception e) {
-      System.out.println("Something went wrong!\n" + e.getMessage());
+    } catch (InterruptedException | ExecutionException e) {
+      System.out.println("Error: " + e.getCause().getMessage());
     }
   }
 }

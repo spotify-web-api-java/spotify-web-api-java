@@ -1,9 +1,12 @@
 package data.artists;
 
 import com.wrapper.spotify.SpotifyApi;
+import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.Artist;
 import com.wrapper.spotify.requests.data.artists.GetSeveralArtistsRequest;
 
+import java.io.IOException;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
 public class GetSeveralArtistsExample {
@@ -21,8 +24,8 @@ public class GetSeveralArtistsExample {
       final Artist[] artists = getSeveralArtistsRequest.execute();
 
       System.out.println("Length: " + artists.length);
-    } catch (Exception e) {
-      System.out.println("Something went wrong!\n" + e.getMessage());
+    } catch (IOException | SpotifyWebApiException e) {
+      System.out.println("Error: " + e.getMessage());
     }
   }
 
@@ -35,8 +38,8 @@ public class GetSeveralArtistsExample {
       final Artist[] artists = artistFuture.get();
 
       System.out.println("Length: " + artists.length);
-    } catch (Exception e) {
-      System.out.println("Something went wrong!\n" + e.getMessage());
+    } catch (InterruptedException | ExecutionException e) {
+      System.out.println("Error: " + e.getCause().getMessage());
     }
   }
 }

@@ -1,9 +1,12 @@
 package data.playlists;
 
 import com.wrapper.spotify.SpotifyApi;
+import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.special.SnapshotResult;
 import com.wrapper.spotify.requests.data.playlists.ReorderPlaylistsTracksRequest;
 
+import java.io.IOException;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
 public class ReorderPlaylistsTracksExample {
@@ -28,8 +31,8 @@ public class ReorderPlaylistsTracksExample {
       final SnapshotResult snapshotResult = reorderPlaylistsTracksRequest.execute();
 
       System.out.println("Snapshot ID: " + snapshotResult.getSnapshotId());
-    } catch (Exception e) {
-      System.out.println("Something went wrong!\n" + e.getMessage());
+    } catch (IOException | SpotifyWebApiException e) {
+      System.out.println("Error: " + e.getMessage());
     }
   }
 
@@ -42,8 +45,8 @@ public class ReorderPlaylistsTracksExample {
       final SnapshotResult snapshotResult = snapshotResultFuture.get();
 
       System.out.println("Snapshot ID: " + snapshotResult.getSnapshotId());
-    } catch (Exception e) {
-      System.out.println("Something went wrong!\n" + e.getMessage());
+    } catch (InterruptedException | ExecutionException e) {
+      System.out.println("Error: " + e.getCause().getMessage());
     }
   }
 }

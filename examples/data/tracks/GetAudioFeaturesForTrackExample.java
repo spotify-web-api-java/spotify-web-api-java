@@ -1,9 +1,12 @@
 package data.tracks;
 
 import com.wrapper.spotify.SpotifyApi;
+import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.AudioFeatures;
 import com.wrapper.spotify.requests.data.tracks.GetAudioFeaturesForTrackRequest;
 
+import java.io.IOException;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
 public class GetAudioFeaturesForTrackExample {
@@ -22,8 +25,8 @@ public class GetAudioFeaturesForTrackExample {
       final AudioFeatures audioFeatures = getAudioFeaturesForTrackRequest.execute();
 
       System.out.println("ID: " + audioFeatures.getId());
-    } catch (Exception e) {
-      System.out.println("Something went wrong!\n" + e.getMessage());
+    } catch (IOException | SpotifyWebApiException e) {
+      System.out.println("Error: " + e.getMessage());
     }
   }
 
@@ -36,8 +39,8 @@ public class GetAudioFeaturesForTrackExample {
       final AudioFeatures audioFeatures = audioFeaturesFuture.get();
 
       System.out.println("ID: " + audioFeatures.getId());
-    } catch (Exception e) {
-      System.out.println("Something went wrong!\n" + e.getMessage());
+    } catch (InterruptedException | ExecutionException e) {
+      System.out.println("Error: " + e.getCause().getMessage());
     }
   }
 }

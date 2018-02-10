@@ -5,6 +5,7 @@ import com.wrapper.spotify.SpotifyHttpManager;
 import com.wrapper.spotify.requests.authorization.authorization_code.AuthorizationCodeUriRequest;
 
 import java.net.URI;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
 public class AuthorizationCodeUriExample {
@@ -24,13 +25,9 @@ public class AuthorizationCodeUriExample {
           .build();
 
   public static void authorizationCodeUri_Sync() {
-    try {
-      final URI uri = authorizationCodeUriRequest.execute();
+    final URI uri = authorizationCodeUriRequest.execute();
 
-      System.out.println("URI: " + uri.toString());
-    } catch (Exception e) {
-      System.out.println("Something went wrong!\n" + e.getMessage());
-    }
+    System.out.println("URI: " + uri.toString());
   }
 
   public static void authorizationCodeUri_Async() {
@@ -42,8 +39,8 @@ public class AuthorizationCodeUriExample {
       final URI uri = uriFuture.get();
 
       System.out.println("URI: " + uri.toString());
-    } catch (Exception e) {
-      System.out.println("Something went wrong!\n" + e.getMessage());
+    } catch (InterruptedException | ExecutionException e) {
+      System.out.println("Error: " + e.getCause().getMessage());
     }
   }
 }

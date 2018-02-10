@@ -2,10 +2,13 @@ package data.library;
 
 import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.SpotifyApi;
+import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.Paging;
 import com.wrapper.spotify.model_objects.specification.SavedAlbum;
 import com.wrapper.spotify.requests.data.library.GetCurrentUsersSavedAlbumsRequest;
 
+import java.io.IOException;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
 public class GetCurrentUsersSavedAlbumsExample {
@@ -26,8 +29,8 @@ public class GetCurrentUsersSavedAlbumsExample {
       final Paging<SavedAlbum> savedAlbumPaging = getCurrentUsersSavedAlbumsRequest.execute();
 
       System.out.println("Total: " + savedAlbumPaging.getTotal());
-    } catch (Exception e) {
-      System.out.println("Something went wrong!\n" + e.getMessage());
+    } catch (IOException | SpotifyWebApiException e) {
+      System.out.println("Error: " + e.getMessage());
     }
   }
 
@@ -40,8 +43,8 @@ public class GetCurrentUsersSavedAlbumsExample {
       final Paging<SavedAlbum> savedAlbumPaging = pagingFuture.get();
 
       System.out.println("Total: " + savedAlbumPaging.getTotal());
-    } catch (Exception e) {
-      System.out.println("Something went wrong!\n" + e.getMessage());
+    } catch (InterruptedException | ExecutionException e) {
+      System.out.println("Error: " + e.getCause().getMessage());
     }
   }
 }

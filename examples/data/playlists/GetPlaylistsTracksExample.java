@@ -2,10 +2,13 @@ package data.playlists;
 
 import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.SpotifyApi;
+import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.Paging;
 import com.wrapper.spotify.model_objects.specification.PlaylistTrack;
 import com.wrapper.spotify.requests.data.playlists.GetPlaylistsTracksRequest;
 
+import java.io.IOException;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
 public class GetPlaylistsTracksExample {
@@ -29,8 +32,8 @@ public class GetPlaylistsTracksExample {
       final Paging<PlaylistTrack> playlistTrackPaging = getPlaylistsTracksRequest.execute();
 
       System.out.println("Total: " + playlistTrackPaging.getTotal());
-    } catch (Exception e) {
-      System.out.println("Something went wrong!\n" + e.getMessage());
+    } catch (IOException | SpotifyWebApiException e) {
+      System.out.println("Error: " + e.getMessage());
     }
   }
 
@@ -43,8 +46,8 @@ public class GetPlaylistsTracksExample {
       final Paging<PlaylistTrack> playlistTrackPaging = pagingFuture.get();
 
       System.out.println("Total: " + playlistTrackPaging.getTotal());
-    } catch (Exception e) {
-      System.out.println("Something went wrong!\n" + e.getMessage());
+    } catch (InterruptedException | ExecutionException e) {
+      System.out.println("Error: " + e.getCause().getMessage());
     }
   }
 }
