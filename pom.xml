@@ -7,7 +7,7 @@
 
     <groupId>se.michaelthelin.spotify</groupId>
     <artifactId>spotify-web-api-java</artifactId>
-    <version>1.7.4-SNAPSHOT</version>
+    <version>1.7.4</version>
 
     <name>Spotify Web API Java Client</name>
     <description>A Java client for Spotify's Web API</description>
