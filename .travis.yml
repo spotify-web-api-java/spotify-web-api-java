@@ -18,7 +18,7 @@ cache:
   directories:
   - $HOME/.m2
 before_deploy:
-  - ./travis/before_deploy.sh
+  - ./travis/before-deploy.sh
   - cp /travis/.m2.settings.xml $HOME/.m2/settings.xml
 deploy:
   provider: script
