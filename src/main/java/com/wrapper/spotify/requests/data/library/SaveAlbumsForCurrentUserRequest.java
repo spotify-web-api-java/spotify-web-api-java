@@ -3,6 +3,7 @@ package com.wrapper.spotify.requests.data.library;
 import com.google.gson.JsonArray;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
+import org.apache.http.entity.ContentType;
 
 import java.io.IOException;
 
@@ -86,7 +87,7 @@ public class SaveAlbumsForCurrentUserRequest extends AbstractDataRequest {
      */
     @Override
     public SaveAlbumsForCurrentUserRequest build() {
-      setHeader("Content-Type", "application/json");
+      setContentType(ContentType.APPLICATION_JSON);
       setPath("/v1/me/albums");
       return new SaveAlbumsForCurrentUserRequest(this);
     }

@@ -1,12 +1,17 @@
 package com.wrapper.spotify.requests;
 
+import com.google.gson.JsonObject;
 import com.wrapper.spotify.IHttpManager;
 import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.SpotifyApiThreading;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import org.apache.http.Header;
+import org.apache.http.HttpEntity;
 import org.apache.http.NameValuePair;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.utils.URIBuilder;
+import org.apache.http.entity.ContentType;
+import org.apache.http.entity.StringEntity;
 import org.apache.http.message.BasicHeader;
 import org.apache.http.message.BasicNameValuePair;
 
@@ -26,9 +31,9 @@ public abstract class AbstractRequest implements IRequest {
   private IHttpManager httpManager;
   private URI uri;
   private List<Header> headers;
-  private List<NameValuePair> formParameters;
+  private ContentType contentType;
+  private HttpEntity body;
   private List<NameValuePair> bodyParameters;
-  private String body;
 
   protected AbstractRequest(Builder<?> builder) {
     assert (builder != null);
@@ -55,9 +60,9 @@ public abstract class AbstractRequest implements IRequest {
     }
 
     this.headers = builder.headers;
-    this.formParameters = builder.formParameters;
-    this.bodyParameters = builder.bodyParameters;
+    this.contentType = builder.contentType;
     this.body = builder.body;
+    this.bodyParameters = builder.bodyParameters;
   }
 
   /**
@@ -72,6 +77,31 @@ public abstract class AbstractRequest implements IRequest {
                 return execute();
               }
             });
+  }
+
+  public void initializeBody() throws UnsupportedEncodingException {
+    if (body == null && contentType != null) {
+      switch (contentType.getMimeType()) {
+        case "application/json":
+          body = new StringEntity(
+                  bodyParametersToJson(bodyParameters),
+                  ContentType.APPLICATION_JSON);
+          break;
+        case "application/x-www-form-urlencoded":
+          body = new UrlEncodedFormEntity(bodyParameters);
+          break;
+      }
+    }
+  }
+
+  public String bodyParametersToJson(List<NameValuePair> bodyParameters) {
+    JsonObject jsonObject = new JsonObject();
+
+    for (NameValuePair nameValuePair : bodyParameters) {
+      jsonObject.addProperty(nameValuePair.getName(), nameValuePair.getValue());
+    }
+
+    return jsonObject.toString();
   }
 
   public String getJson() throws
@@ -89,7 +119,9 @@ public abstract class AbstractRequest implements IRequest {
   public String postJson() throws
           IOException,
           SpotifyWebApiException {
-    String json = httpManager.post(uri, headers.toArray(new Header[headers.size()]), formParameters);
+    initializeBody();
+
+    String json = httpManager.post(uri, headers.toArray(new Header[headers.size()]), body);
 
     if (json.equals("")) {
       return null;
@@ -101,7 +133,9 @@ public abstract class AbstractRequest implements IRequest {
   public String putJson() throws
           IOException,
           SpotifyWebApiException {
-    String json = httpManager.put(uri, headers.toArray(new Header[headers.size()]), formParameters);
+    initializeBody();
+
+    String json = httpManager.put(uri, headers.toArray(new Header[headers.size()]), body);
 
     if (json.equals("")) {
       return null;
@@ -113,6 +147,8 @@ public abstract class AbstractRequest implements IRequest {
   public String deleteJson() throws
           IOException,
           SpotifyWebApiException {
+    initializeBody();
+
     String json = httpManager.delete(uri, headers.toArray(new Header[headers.size()]));
 
     if (json.equals("")) {
@@ -134,16 +170,16 @@ public abstract class AbstractRequest implements IRequest {
     return headers;
   }
 
-  public List<NameValuePair> getFormParameters() {
-    return formParameters;
+  public ContentType getContentType() {
+    return contentType;
+  }
+
+  public HttpEntity getBody() {
+    return body;
   }
 
   public List<NameValuePair> getBodyParameters() {
     return bodyParameters;
-  }
-
-  public String getBody() {
-    return body;
   }
 
   public static abstract class Builder<T extends Builder<?>> implements IRequest.Builder {
@@ -151,14 +187,14 @@ public abstract class AbstractRequest implements IRequest {
     private final List<NameValuePair> pathParameters = new ArrayList<>();
     private final List<NameValuePair> queryParameters = new ArrayList<>();
     private final List<Header> headers = new ArrayList<>();
-    private final List<NameValuePair> formParameters = new ArrayList<>();
     private final List<NameValuePair> bodyParameters = new ArrayList<>();
     private IHttpManager httpManager = SpotifyApi.DEFAULT_HTTP_MANAGER;
     private String scheme = SpotifyApi.DEFAULT_SCHEME;
     private String host = SpotifyApi.DEFAULT_HOST;
     private Integer port = SpotifyApi.DEFAULT_PORT;
     private String path = null;
-    private String body = null;
+    private ContentType contentType = null;
+    private HttpEntity body = null;
 
     protected Builder() {
     }
@@ -258,11 +294,15 @@ public abstract class AbstractRequest implements IRequest {
     }
 
     @SuppressWarnings("unchecked")
-    public <X> T setFormParameter(final String name, final X value) {
-      assert (name != null);
-      assert (!name.equals(""));
-      assert (value != null);
-      this.formParameters.add(new BasicNameValuePair(name, String.valueOf(value)));
+    public T setContentType(final ContentType contentType) {
+      this.contentType = contentType;
+      setHeader("Content-Type", contentType.getMimeType());
+      return (T) this;
+    }
+
+    @SuppressWarnings("unchecked")
+    public T setBody(final HttpEntity httpEntity) {
+      this.body = httpEntity;
       return (T) this;
     }
 
@@ -272,12 +312,6 @@ public abstract class AbstractRequest implements IRequest {
       assert (!name.equals(""));
       assert (value != null);
       this.bodyParameters.add(new BasicNameValuePair(name, String.valueOf(value)));
-      return (T) this;
-    }
-
-    @SuppressWarnings("unchecked")
-    public T setBody(final String value) {
-      this.body = value;
       return (T) this;
     }
   }

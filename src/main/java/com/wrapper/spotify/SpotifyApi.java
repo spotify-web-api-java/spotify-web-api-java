@@ -688,21 +688,6 @@ public class SpotifyApi {
   }
 
   /**
-   * Remove the current user as a follower of one or more artists or other Spotify users.
-   *
-   * @param type The ID type: either {@code artist} or {@code user}.
-   * @param ids  A list of the artist or the user Spotify IDs. Maximum: 50 IDs.
-   * @return A {@link UnfollowArtistsOrUsersRequest.Builder}.
-   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
-   */
-  public UnfollowArtistsOrUsersRequest.Builder unfollowArtistsOrUsers(ModelObjectType type, JsonArray ids) {
-    return new UnfollowArtistsOrUsersRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port)
-            .type(type)
-            .ids(ids);
-  }
-
-  /**
    * Remove the current user as a follower of a playlist.
    *
    * @param owner_id    The owners username.
@@ -776,19 +761,6 @@ public class SpotifyApi {
   }
 
   /**
-   * Remove one or more albums from the current users "Your Music" library.
-   *
-   * @param ids A list of the Spotify IDs. Maximum: 50 IDs.
-   * @return A {@link RemoveAlbumsForCurrentUserRequest.Builder}.
-   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
-   */
-  public RemoveAlbumsForCurrentUserRequest.Builder removeAlbumsForCurrentUser(JsonArray ids) {
-    return new RemoveAlbumsForCurrentUserRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port)
-            .ids(ids);
-  }
-
-  /**
    * Remove a track if saved to the users "Your Music" library.
    *
    * @param ids The track IDs to remove from the users Your Music library. Maximum: 50 IDs.
@@ -799,18 +771,6 @@ public class SpotifyApi {
     return new RemoveUsersSavedTracksRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .ids(concat(ids, ','));
-  }
-
-  /**
-   * Remove a track if saved to the users "Your Music" library.
-   *
-   * @param ids The track IDs to remove from the users "Your Music" library. Maximum: 50 IDs.
-   * @return A {@link RemoveUsersSavedTracksRequest.Builder}.
-   */
-  public RemoveUsersSavedTracksRequest.Builder removeUsersSavedTracks(JsonArray ids) {
-    return new RemoveUsersSavedTracksRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port)
-            .ids(ids);
   }
 
   /**

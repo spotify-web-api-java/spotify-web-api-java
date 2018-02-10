@@ -4,6 +4,7 @@ import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.credentials.AuthorizationCodeCredentials;
 import com.wrapper.spotify.requests.authorization.AbstractAthorizationRequest;
+import org.apache.http.entity.ContentType;
 
 import java.io.IOException;
 import java.net.URI;
@@ -52,7 +53,7 @@ public class AuthorizationCodeRequest extends AbstractAthorizationRequest {
     public Builder grant_type(final String grant_type) {
       assert (grant_type != null);
       assert (grant_type.equals("authorization_code"));
-      return setFormParameter("grant_type", grant_type);
+      return setBodyParameter("grant_type", grant_type);
     }
 
     /**
@@ -65,7 +66,7 @@ public class AuthorizationCodeRequest extends AbstractAthorizationRequest {
     public Builder code(final String code) {
       assert (code != null);
       assert (!code.equals(""));
-      return setFormParameter("code", code);
+      return setBodyParameter("code", code);
     }
 
     /**
@@ -78,7 +79,7 @@ public class AuthorizationCodeRequest extends AbstractAthorizationRequest {
      */
     public Builder redirect_uri(final URI redirect_uri) {
       assert (redirect_uri != null);
-      return setFormParameter("redirect_uri", redirect_uri.toString());
+      return setBodyParameter("redirect_uri", redirect_uri.toString());
     }
 
     /**
@@ -87,7 +88,7 @@ public class AuthorizationCodeRequest extends AbstractAthorizationRequest {
      * @return An {@link AuthorizationCodeRequest}.
      */
     public AuthorizationCodeRequest build() {
-      setHeader("Content-Type", "application/x-www-form-urlencoded");
+      setContentType(ContentType.APPLICATION_FORM_URLENCODED);
       setHost(SpotifyApi.DEFAULT_AUTHENTICATION_HOST);
       setPort(SpotifyApi.DEFAULT_AUTHENTICATION_PORT);
       setScheme(SpotifyApi.DEFAULT_AUTHENTICATION_SCHEME);

@@ -3,6 +3,7 @@ package com.wrapper.spotify.requests.data.playlists;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.Playlist;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
+import org.apache.http.entity.ContentType;
 
 import java.io.IOException;
 
@@ -124,7 +125,7 @@ public class CreatePlaylistRequest extends AbstractDataRequest {
      */
     @Override
     public CreatePlaylistRequest build() {
-      setHeader("Content-Type", "application/json");
+      setContentType(ContentType.APPLICATION_JSON);
       setPath("/v1/users/{user_id}/playlists");
       return new CreatePlaylistRequest(this);
     }

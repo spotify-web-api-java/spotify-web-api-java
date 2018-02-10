@@ -22,18 +22,6 @@ public class Assertions {
     fail(String.format("Request \"%s\" does not contain form parameter \"%s\" with value \"%s\"", request.getClass().getSimpleName(), name, String.valueOf(value)));
   }
 
-  public static <T> void assertHasFormParameter(IRequest request, String name, T value) {
-    List<NameValuePair> formParameters = request.getFormParameters();
-
-    for (NameValuePair formParameter : formParameters) {
-      if (formParameter.getName().equals(name) && formParameter.getValue().equals(String.valueOf(value))) {
-        return;
-      }
-    }
-
-    fail(String.format("Request \"%s\" does not contain form parameter \"%s\" with value \"%s\"", request.getClass().getSimpleName(), name, String.valueOf(value)));
-  }
-
   public static <T> void assertHasBodyParameter(IRequest request, String name, T value) {
     List<NameValuePair> bodyParameters = request.getBodyParameters();
 

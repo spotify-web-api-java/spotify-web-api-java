@@ -1,14 +1,13 @@
 package com.wrapper.spotify;
 
 import org.apache.http.Header;
-import org.apache.http.NameValuePair;
+import org.apache.http.HttpEntity;
 
 import java.io.*;
 import java.net.URI;
 import java.util.logging.Level;
 
 import static org.mockito.Matchers.any;
-import static org.mockito.Matchers.anyListOf;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -54,8 +53,8 @@ public class TestUtil {
       final String fixture = readTestData(jsonFixture);
 
       when(mockedHttpManager.get(any(URI.class), any(Header[].class))).thenReturn(fixture);
-      when(mockedHttpManager.post(any(URI.class), any(Header[].class), anyListOf(NameValuePair.class))).thenReturn(fixture);
-      when(mockedHttpManager.put(any(URI.class), any(Header[].class), anyListOf(NameValuePair.class))).thenReturn(fixture);
+      when(mockedHttpManager.post(any(URI.class), any(Header[].class), any(HttpEntity.class))).thenReturn(fixture);
+      when(mockedHttpManager.put(any(URI.class), any(Header[].class), any(HttpEntity.class))).thenReturn(fixture);
       when(mockedHttpManager.delete(any(URI.class), any(Header[].class))).thenReturn(fixture);
 
       return mockedHttpManager;

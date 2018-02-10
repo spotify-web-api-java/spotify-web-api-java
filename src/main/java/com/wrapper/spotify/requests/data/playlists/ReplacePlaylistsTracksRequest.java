@@ -3,6 +3,7 @@ package com.wrapper.spotify.requests.data.playlists;
 import com.google.gson.JsonArray;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
+import org.apache.http.entity.ContentType;
 
 import java.io.IOException;
 
@@ -117,7 +118,7 @@ public class ReplacePlaylistsTracksRequest extends AbstractDataRequest {
      */
     @Override
     public ReplacePlaylistsTracksRequest build() {
-      setHeader("Content-Type", "application/json");
+      setContentType(ContentType.APPLICATION_JSON);
       setPath("/v1/users/{user_id}/playlists/{playlist_id}/tracks");
       return new ReplacePlaylistsTracksRequest(this);
     }

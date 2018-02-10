@@ -4,6 +4,7 @@ import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.credentials.AuthorizationCodeCredentials;
 import com.wrapper.spotify.requests.authorization.AbstractAthorizationRequest;
+import org.apache.http.entity.ContentType;
 
 import java.io.IOException;
 
@@ -50,7 +51,7 @@ public class AuthorizationCodeRefreshRequest extends AbstractAthorizationRequest
     public Builder grant_type(final String grant_type) {
       assert (grant_type != null);
       assert (grant_type.equals("refresh_token"));
-      return setFormParameter("grant_type", grant_type);
+      return setBodyParameter("grant_type", grant_type);
     }
 
     /**
@@ -62,7 +63,7 @@ public class AuthorizationCodeRefreshRequest extends AbstractAthorizationRequest
     public Builder refresh_token(final String refresh_token) {
       assert (refresh_token != null);
       assert (!refresh_token.equals(""));
-      return setFormParameter("refresh_token", refresh_token);
+      return setBodyParameter("refresh_token", refresh_token);
     }
 
     /**
@@ -71,7 +72,7 @@ public class AuthorizationCodeRefreshRequest extends AbstractAthorizationRequest
      * @return An {@link AuthorizationCodeRefreshRequest}.
      */
     public AuthorizationCodeRefreshRequest build() {
-      setHeader("Content-Type", "application/x-www-form-urlencoded");
+      setContentType(ContentType.APPLICATION_FORM_URLENCODED);
       setHost(SpotifyApi.DEFAULT_AUTHENTICATION_HOST);
       setPort(SpotifyApi.DEFAULT_AUTHENTICATION_PORT);
       setScheme(SpotifyApi.DEFAULT_AUTHENTICATION_SCHEME);

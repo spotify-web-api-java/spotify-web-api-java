@@ -9,7 +9,7 @@ import org.junit.Test;
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
-import static com.wrapper.spotify.Assertions.assertHasFormParameter;
+import static com.wrapper.spotify.Assertions.assertHasBodyParameter;
 import static org.junit.Assert.assertEquals;
 
 public class ClientCredentialsRequestTest extends AbstractAuthorizationTest<ClientCredentials> {
@@ -25,7 +25,7 @@ public class ClientCredentialsRequestTest extends AbstractAuthorizationTest<Clie
   @Test
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
-    assertHasFormParameter(
+    assertHasBodyParameter(
             defaultRequest,
             "grant_type",
             "client_credentials");

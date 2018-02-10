@@ -10,8 +10,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
+import static org.junit.Assert.*;
 
 @RunWith(MockitoJUnitRunner.class)
 public class UploadCustomPlaylistCoverImageRequestTest extends AbstractDataTest<String> {
@@ -29,8 +28,7 @@ public class UploadCustomPlaylistCoverImageRequestTest extends AbstractDataTest<
   @Test
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
-    assertEquals(
-            IMAGE_DATA,
+    assertNotNull(
             defaultRequest.getBody());
     assertEquals(
             "https://api.spotify.com:443/v1/users/abbaspotify/playlists/3AGOiaoRXMSjswCLtuNqv5/images",

@@ -1,6 +1,5 @@
 package com.wrapper.spotify.requests.data.follow;
 
-import com.google.gson.JsonArray;
 import com.wrapper.spotify.enums.ModelObjectType;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
@@ -77,21 +76,6 @@ public class UnfollowArtistsOrUsersRequest extends AbstractDataRequest {
       assert (ids != null);
       assert (ids.split(",").length <= 50);
       return setQueryParameter("ids", ids);
-    }
-
-    /**
-     * The artist or user IDs setter.
-     *
-     * @param ids Optional. A json array of the artist or the user Spotify IDs. A maximum of 50 IDs can be
-     *            sent in one request.
-     * @return An {@link UnfollowArtistsOrUsersRequest.Builder}.
-     * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URIs &amp; IDs</a>
-     */
-    public Builder ids(final JsonArray ids) {
-      assert (ids != null);
-      assert (!ids.isJsonNull());
-      assert (ids.size() <= 50);
-      return setBodyParameter("ids", ids);
     }
 
     /**

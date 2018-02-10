@@ -13,7 +13,6 @@ import org.apache.http.client.cache.CacheResponseStatus;
 import org.apache.http.client.cache.HttpCacheContext;
 import org.apache.http.client.config.CookieSpecs;
 import org.apache.http.client.config.RequestConfig;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.*;
 import org.apache.http.config.ConnectionConfig;
 import org.apache.http.impl.client.BasicCredentialsProvider;
@@ -26,7 +25,6 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.charset.Charset;
-import java.util.List;
 import java.util.logging.Level;
 
 public class SpotifyHttpManager implements IHttpManager {
@@ -134,7 +132,7 @@ public class SpotifyHttpManager implements IHttpManager {
   }
 
   @Override
-  public String post(URI uri, Header[] headers, List<NameValuePair> postParameters) throws
+  public String post(URI uri, Header[] headers, HttpEntity body) throws
           IOException,
           SpotifyWebApiException {
     assert (uri != null);
@@ -144,7 +142,7 @@ public class SpotifyHttpManager implements IHttpManager {
 
     httpPost.setURI(uri);
     httpPost.setHeaders(headers);
-    httpPost.setEntity(new UrlEncodedFormEntity(postParameters));
+    httpPost.setEntity(body);
 
     String responseBody = getResponseBody(execute(httpPost));
 
@@ -154,7 +152,7 @@ public class SpotifyHttpManager implements IHttpManager {
   }
 
   @Override
-  public String put(URI uri, Header[] headers, List<NameValuePair> putParameters) throws
+  public String put(URI uri, Header[] headers, HttpEntity body) throws
           IOException,
           SpotifyWebApiException {
     assert (uri != null);
@@ -164,7 +162,7 @@ public class SpotifyHttpManager implements IHttpManager {
 
     httpPut.setURI(uri);
     httpPut.setHeaders(headers);
-    httpPut.setEntity(new UrlEncodedFormEntity(putParameters));
+    httpPut.setEntity(body);
 
     String responseBody = getResponseBody(execute(httpPut));
     httpPut.releaseConnection();

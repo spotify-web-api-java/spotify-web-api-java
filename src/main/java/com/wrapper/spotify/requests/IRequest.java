@@ -3,7 +3,9 @@ package com.wrapper.spotify.requests;
 import com.wrapper.spotify.IHttpManager;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import org.apache.http.Header;
+import org.apache.http.HttpEntity;
 import org.apache.http.NameValuePair;
+import org.apache.http.entity.ContentType;
 
 import java.io.IOException;
 import java.net.URI;
@@ -18,11 +20,11 @@ public interface IRequest {
 
   List<Header> getHeaders();
 
-  List<NameValuePair> getFormParameters();
+  ContentType getContentType();
+
+  HttpEntity getBody();
 
   List<NameValuePair> getBodyParameters();
-
-  String getBody();
 
   <T> T execute() throws
           IOException,
@@ -69,11 +71,11 @@ public interface IRequest {
 
     <T> Builder setHeader(final String name, final T value);
 
-    <T> Builder setFormParameter(final String name, final T value);
+    Builder setContentType(final ContentType contentType);
+
+    Builder setBody(final HttpEntity httpEntity);
 
     <T> Builder setBodyParameter(final String name, final T value);
-
-    Builder setBody(final String value);
 
     AbstractRequest build();
   }

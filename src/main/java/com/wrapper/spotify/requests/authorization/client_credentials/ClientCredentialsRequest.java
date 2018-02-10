@@ -4,6 +4,7 @@ import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.credentials.ClientCredentials;
 import com.wrapper.spotify.requests.authorization.AbstractAthorizationRequest;
+import org.apache.http.entity.ContentType;
 
 import java.io.IOException;
 
@@ -50,7 +51,7 @@ public class ClientCredentialsRequest extends AbstractAthorizationRequest {
     public Builder grant_type(final String grant_type) {
       assert (grant_type != null);
       assert (grant_type.equals("client_credentials"));
-      return setFormParameter("grant_type", grant_type);
+      return setBodyParameter("grant_type", grant_type);
     }
 
     /**
@@ -59,7 +60,7 @@ public class ClientCredentialsRequest extends AbstractAthorizationRequest {
      * @return A {@link ClientCredentialsRequest}.
      */
     public ClientCredentialsRequest build() {
-      setHeader("Content-Type", "application/x-www-form-urlencoded");
+      setContentType(ContentType.APPLICATION_FORM_URLENCODED);
       setHost(SpotifyApi.DEFAULT_AUTHENTICATION_HOST);
       setPort(SpotifyApi.DEFAULT_AUTHENTICATION_PORT);
       setScheme(SpotifyApi.DEFAULT_AUTHENTICATION_SCHEME);

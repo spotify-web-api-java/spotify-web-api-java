@@ -2,6 +2,8 @@ package com.wrapper.spotify.requests.data.playlists;
 
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
+import org.apache.http.entity.ContentType;
+import org.apache.http.entity.StringEntity;
 
 import java.io.IOException;
 
@@ -88,7 +90,7 @@ public class UploadCustomPlaylistCoverImageRequest extends AbstractDataRequest {
       assert (image_data != null);
       assert (!image_data.equals(""));
       assert (image_data.getBytes().length <= 256000);
-      return setBody(image_data);
+      return setBody(new StringEntity(image_data, ContentType.IMAGE_JPEG));
     }
 
     /**
@@ -98,6 +100,7 @@ public class UploadCustomPlaylistCoverImageRequest extends AbstractDataRequest {
      */
     @Override
     public UploadCustomPlaylistCoverImageRequest build() {
+      setContentType(ContentType.IMAGE_JPEG);
       setPath("/v1/users/{user_id}/playlists/{playlist_id}/images");
       return new UploadCustomPlaylistCoverImageRequest(this);
     }

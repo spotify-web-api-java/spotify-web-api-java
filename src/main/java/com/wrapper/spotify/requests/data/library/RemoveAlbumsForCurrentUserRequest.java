@@ -1,6 +1,5 @@
 package com.wrapper.spotify.requests.data.library;
 
-import com.google.gson.JsonArray;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
 
@@ -63,20 +62,6 @@ public class RemoveAlbumsForCurrentUserRequest extends AbstractDataRequest {
       assert (ids != null);
       assert (ids.split(",").length <= 50);
       return setQueryParameter("ids", ids);
-    }
-
-    /**
-     * The album IDs setter.
-     *
-     * @param ids Optional. A json array consisting of the Spotify IDs. Maximum: 50 IDs.
-     * @return A {@link RemoveAlbumsForCurrentUserRequest.Builder}.
-     * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URIs &amp; IDs</a>
-     */
-    public Builder ids(final JsonArray ids) {
-      assert (ids != null);
-      assert (!ids.isJsonNull());
-      assert (ids.size() <= 50);
-      return setBodyParameter("ids", ids);
     }
 
     /**
