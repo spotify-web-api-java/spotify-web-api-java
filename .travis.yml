@@ -17,9 +17,6 @@ env:
 cache:
   directories:
   - $HOME/.m2
-before_install:
-  - ./travis/install-gnupg22.sh
-  - hash -r
 before_deploy:
   - ./travis/before-deploy.sh
   - cp ./travis/.m2.settings.xml $HOME/.m2/settings.xml

@@ -7,7 +7,7 @@
 
     <groupId>se.michaelthelin.spotify</groupId>
     <artifactId>spotify-web-api-java</artifactId>
-    <version>1.7.4</version>
+    <version>1.7.5</version>
 
     <name>Spotify Web API Java Client</name>
     <description>A Java client for Spotify's Web API</description>
@@ -162,12 +162,7 @@
                             </execution>
                         </executions>
                         <configuration>
-                            <executable>gpg</executable>
-                            <gpgArguments>
-                                <arg>--batch</arg>
-                                <arg>--pinentry-mode</arg>
-                                <arg>loopback</arg>
-                            </gpgArguments>
+                            <executable>gpg2</executable>
                         </configuration>
                     </plugin>
                     <plugin>
