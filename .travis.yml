@@ -1,3 +1,4 @@
+sudo: required
 language: java
 jdk:
 - openjdk7
@@ -10,20 +11,22 @@ env:
   - # ^^SONATYPE_USERNAME
   - secure: Sa7tSlz29eOhOazmyGAfv7tFtaZjI1PMtgQJ3fFFZ2EVaAbxxGU/l+TVmcCOxOt7OdCf1MTgB9/dRGPZAuVdtelPIytoJEpB7U2qBci72K1at2zqKF6dq0pPswuwdbkqJeAf39M3J1nZcXKXwirU/J4OfwWyi5qwXpM8pO7W/qM=
   - # ^^SONATYPE_PASSWORD
-  - secure: hiAE0Gt7pcTmcQ/rjfK+KB+Mj1O3LaEM6wNgFleG04fuPbsUgTpF3U1HMTfEvU8nB0AEoIHgPZ2qWHIqGdJ23HfC7pTXtZXy8YSMOnPpTx8j9+qX0i7kJsqA6CNd+5i1CN0aM0uSd2CXRj7CFpwBa+5kfQmsml90oG3mev1MXcs=
-  - # ^^GPG_KEY_NAME
-  - secure: ECyldY3OJbgw5GzMXeBwH8LduVzFcKYhy9nMLzUdHT/pc+4+/z/kJNGuEFHlVaUwCYLGmdBhUx7HbJ+VOdFO75dwgX1zFQqnfH9TxPprHPXWpq2dAic8a+Lv4JuuU1jvrwZfRsvpNUKRLk5YjO5BaNA2haKvAtK3yMEwd0Sjnpw=
+  - GPG_KEY_NAME=C546418B
+  - secure: gvElUeWA6ArpETjlD8s75PljnmVOQLchuAsYhG8lbakRCOBvklooc8hB9lYbtblKLgaY7ZX6Uu2tApH0gJAqb0YijEK3Hvu1417wI4FRUc+wX79MI3Y9lTqP9ACFifnUa2mjp8NqGz+/KebiZvtiI3u4OxK8U/QPUtUDLgvAdH4=
   - # ^^GPG_PASSPHRASE
 cache:
   directories:
   - $HOME/.m2
+before_install:
+  - ./travis/install-gnupg22.sh
+  - hash -r
 before_deploy:
   - ./travis/before-deploy.sh
   - cp ./travis/.m2.settings.xml $HOME/.m2/settings.xml
 deploy:
   provider: script
   skip_cleanup: true
-  script: "mvn deploy -P release"
+  script: "mvn deploy -P release -DskipTests=true"
   on:
     repo: thelinmichael/spotify-web-api-java
     branch:
@@ -33,4 +36,4 @@ deploy:
 notifications:
   email:
     on_success: never
-    on_failure: always
+    on_failure: change
