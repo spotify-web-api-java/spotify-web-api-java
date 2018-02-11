@@ -437,8 +437,8 @@ public class Playlist extends AbstractModelObject {
                               : null)
               .setType(
                       hasAndNotNull(jsonObject, "type")
-                              ? ModelObjectType.valueOf(
-                              jsonObject.get("type").getAsString().toUpperCase())
+                              ? ModelObjectType.keyOf(
+                              jsonObject.get("type").getAsString().toLowerCase())
                               : null)
               .setUri(
                       hasAndNotNull(jsonObject, "uri")

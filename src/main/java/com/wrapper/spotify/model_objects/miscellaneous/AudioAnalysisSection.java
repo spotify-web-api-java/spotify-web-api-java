@@ -296,7 +296,7 @@ public class AudioAnalysisSection extends AbstractModelObject {
                               : null)
               .setMode(
                       hasAndNotNull(jsonObject, "type")
-                              ? Modality.valueOf(
+                              ? Modality.keyOf(
                               jsonObject.get("mode").getAsInt())
                               : null)
               .setModeConfidence(

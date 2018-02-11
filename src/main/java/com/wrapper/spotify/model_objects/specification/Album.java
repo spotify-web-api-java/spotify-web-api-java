@@ -469,8 +469,8 @@ public class Album extends AbstractModelObject {
       return new Album.Builder()
               .setAlbumType(
                       hasAndNotNull(jsonObject, "album_type")
-                              ? AlbumType.valueOf(
-                              jsonObject.get("album_type").getAsString().toUpperCase())
+                              ? AlbumType.keyOf(
+                              jsonObject.get("album_type").getAsString().toLowerCase())
                               : null)
               .setArtists(
                       hasAndNotNull(jsonObject, "artists")
@@ -533,8 +533,8 @@ public class Album extends AbstractModelObject {
                               : null)
               .setReleaseDatePrecision(
                       hasAndNotNull(jsonObject, "release_date_precision")
-                              ? ReleaseDatePrecision.valueOf(
-                              jsonObject.get("release_date_precision").getAsString().toUpperCase())
+                              ? ReleaseDatePrecision.keyOf(
+                              jsonObject.get("release_date_precision").getAsString().toLowerCase())
                               : null)
               .setTracks(
                       hasAndNotNull(jsonObject, "tracks")
@@ -543,8 +543,8 @@ public class Album extends AbstractModelObject {
                               : null)
               .setType(
                       hasAndNotNull(jsonObject, "type")
-                              ? ModelObjectType.valueOf(
-                              jsonObject.get("type").getAsString().toUpperCase())
+                              ? ModelObjectType.keyOf(
+                              jsonObject.get("type").getAsString().toLowerCase())
                               : null)
               .setUri(
                       hasAndNotNull(jsonObject, "uri")

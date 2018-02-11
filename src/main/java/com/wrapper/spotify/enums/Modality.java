@@ -27,7 +27,7 @@ public enum Modality {
     this.mode = mode;
   }
 
-  public static Modality valueOf(int mode) {
+  public static Modality keyOf(int mode) {
     return map.get(mode);
   }
 

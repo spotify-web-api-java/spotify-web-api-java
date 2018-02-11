@@ -139,8 +139,8 @@ public class Context extends AbstractModelObject {
       return new Context.Builder()
               .setType(
                       hasAndNotNull(jsonObject, "type")
-                              ? ModelObjectType.valueOf(
-                              jsonObject.get("type").getAsString().toUpperCase())
+                              ? ModelObjectType.keyOf(
+                              jsonObject.get("type").getAsString().toLowerCase())
                               : null)
               .setHref(
                       hasAndNotNull(jsonObject, "href")

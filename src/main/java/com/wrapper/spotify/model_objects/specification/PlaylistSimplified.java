@@ -383,8 +383,8 @@ public class PlaylistSimplified extends AbstractModelObject implements ISearchMo
                               : null)
               .setType(
                       hasAndNotNull(jsonObject, "type")
-                              ? ModelObjectType.valueOf(
-                              jsonObject.get("type").getAsString().toUpperCase())
+                              ? ModelObjectType.keyOf(
+                              jsonObject.get("type").getAsString().toLowerCase())
                               : null)
               .setUri(
                       hasAndNotNull(jsonObject, "uri")

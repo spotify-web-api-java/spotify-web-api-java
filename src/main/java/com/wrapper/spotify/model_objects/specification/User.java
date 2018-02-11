@@ -385,13 +385,13 @@ public class User extends AbstractModelObject {
                               : null)
               .setProduct(
                       hasAndNotNull(jsonObject, "product")
-                              ? ProductType.valueOf(
-                              jsonObject.get("product").getAsString().toUpperCase())
+                              ? ProductType.keyOf(
+                              jsonObject.get("product").getAsString().toLowerCase())
                               : null)
               .setType(
                       hasAndNotNull(jsonObject, "type")
-                              ? ModelObjectType.valueOf(
-                              jsonObject.get("type").getAsString().toUpperCase())
+                              ? ModelObjectType.keyOf(
+                              jsonObject.get("type").getAsString().toLowerCase())
                               : null)
               .setUri(
                       hasAndNotNull(jsonObject, "uri")

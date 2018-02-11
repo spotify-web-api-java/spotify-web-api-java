@@ -283,8 +283,8 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
       return new AlbumSimplified.Builder()
               .setAlbumType(
                       hasAndNotNull(jsonObject, "album_type")
-                              ? AlbumType.valueOf(
-                              jsonObject.get("album_type").getAsString().toUpperCase())
+                              ? AlbumType.keyOf(
+                              jsonObject.get("album_type").getAsString().toLowerCase())
                               : null)
               .setArtists(
                       hasAndNotNull(jsonObject, "artists")
@@ -320,8 +320,8 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
                               : null)
               .setType(
                       hasAndNotNull(jsonObject, "type")
-                              ? ModelObjectType.valueOf(
-                              jsonObject.get("type").getAsString().toUpperCase())
+                              ? ModelObjectType.keyOf(
+                              jsonObject.get("type").getAsString().toLowerCase())
                               : null)
               .setUri(
                       hasAndNotNull(jsonObject, "uri")

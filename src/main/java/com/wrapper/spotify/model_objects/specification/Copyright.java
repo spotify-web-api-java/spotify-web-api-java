@@ -94,8 +94,8 @@ public class Copyright extends AbstractModelObject {
                               : null)
               .setType(
                       hasAndNotNull(jsonObject, "type")
-                              ? CopyrightType.valueOf(
-                              jsonObject.get("type").getAsString().toUpperCase())
+                              ? CopyrightType.keyOf(
+                              jsonObject.get("type").getAsString().toLowerCase())
                               : null)
               .build();
     }

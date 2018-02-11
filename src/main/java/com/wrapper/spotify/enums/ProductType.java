@@ -1,5 +1,8 @@
 package com.wrapper.spotify.enums;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * An enumeration of all possible Spotify product types.
  */
@@ -11,10 +14,22 @@ public enum ProductType {
   OPEN("open"),
   PREMIUM("premium");
 
+  private static Map<String, ProductType> map = new HashMap<>();
+
+  static {
+    for (ProductType productType : ProductType.values()) {
+      map.put(productType.type, productType);
+    }
+  }
+
   public final String type;
 
   ProductType(final String type) {
     this.type = type;
+  }
+
+  public static ProductType keyOf(String type) {
+    return map.get(type);
   }
 
   /**
