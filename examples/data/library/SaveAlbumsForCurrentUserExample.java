@@ -23,7 +23,7 @@ public class SaveAlbumsForCurrentUserExample {
     try {
       final String string = saveAlbumsForCurrentUserRequest.execute();
 
-      System.out.println("Empty string: " + string);
+      System.out.println("Null: " + string);
     } catch (IOException | SpotifyWebApiException e) {
       System.out.println("Error: " + e.getMessage());
     }
@@ -37,7 +37,7 @@ public class SaveAlbumsForCurrentUserExample {
 
       final String string = stringFuture.get();
 
-      System.out.println("Empty string: " + string);
+      System.out.println("Null: " + string);
     } catch (InterruptedException | ExecutionException e) {
       System.out.println("Error: " + e.getCause().getMessage());
     }

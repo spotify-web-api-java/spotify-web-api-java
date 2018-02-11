@@ -1,6 +1,6 @@
 package com.wrapper.spotify.requests;
 
-import com.google.gson.JsonObject;
+import com.google.gson.*;
 import com.wrapper.spotify.IHttpManager;
 import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.SpotifyApiThreading;
@@ -96,9 +96,16 @@ public abstract class AbstractRequest implements IRequest {
 
   public String bodyParametersToJson(List<NameValuePair> bodyParameters) {
     JsonObject jsonObject = new JsonObject();
+    JsonElement jsonElement;
 
     for (NameValuePair nameValuePair : bodyParameters) {
-      jsonObject.addProperty(nameValuePair.getName(), nameValuePair.getValue());
+      try {
+        jsonElement = new JsonParser().parse(nameValuePair.getValue());
+      } catch (JsonSyntaxException e) {
+        jsonElement = new JsonPrimitive(nameValuePair.getValue());
+      }
+
+      jsonObject.add(nameValuePair.getName(), jsonElement);
     }
 
     return jsonObject.toString();
@@ -109,7 +116,7 @@ public abstract class AbstractRequest implements IRequest {
           SpotifyWebApiException {
     String json = httpManager.get(uri, headers.toArray(new Header[headers.size()]));
 
-    if (json.equals("")) {
+    if (json == null || json.equals("")) {
       return null;
     } else {
       return json;
@@ -123,7 +130,7 @@ public abstract class AbstractRequest implements IRequest {
 
     String json = httpManager.post(uri, headers.toArray(new Header[headers.size()]), body);
 
-    if (json.equals("")) {
+    if (json == null || json.equals("")) {
       return null;
     } else {
       return json;
@@ -137,7 +144,7 @@ public abstract class AbstractRequest implements IRequest {
 
     String json = httpManager.put(uri, headers.toArray(new Header[headers.size()]), body);
 
-    if (json.equals("")) {
+    if (json == null || json.equals("")) {
       return null;
     } else {
       return json;
@@ -151,7 +158,7 @@ public abstract class AbstractRequest implements IRequest {
 
     String json = httpManager.delete(uri, headers.toArray(new Header[headers.size()]));
 
-    if (json.equals("")) {
+    if (json == null || json.equals("")) {
       return null;
     } else {
       return json;

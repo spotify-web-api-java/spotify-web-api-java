@@ -23,7 +23,7 @@ public class SkipUsersPlaybackToNextTrackExample {
     try {
       final String string = skipUsersPlaybackToNextTrackRequest.execute();
 
-      System.out.println("Empty String: " + string);
+      System.out.println("Null: " + string);
     } catch (IOException | SpotifyWebApiException e) {
       System.out.println("Error: " + e.getMessage());
     }
@@ -37,7 +37,7 @@ public class SkipUsersPlaybackToNextTrackExample {
 
       final String string = stringFuture.get();
 
-      System.out.println("Empty String: " + string);
+      System.out.println("Null: " + string);
     } catch (InterruptedException | ExecutionException e) {
       System.out.println("Error: " + e.getCause().getMessage());
     }

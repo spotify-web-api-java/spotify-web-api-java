@@ -28,7 +28,7 @@ public class ChangePlaylistsDetailsExample {
     try {
       final String string = changePlaylistsDetailsRequest.execute();
 
-      System.out.println("Empty string: " + string);
+      System.out.println("Null: " + string);
     } catch (IOException | SpotifyWebApiException e) {
       System.out.println("Error: " + e.getMessage());
     }
@@ -42,7 +42,7 @@ public class ChangePlaylistsDetailsExample {
 
       final String string = stringFuture.get();
 
-      System.out.println("Empty string: " + string);
+      System.out.println("Null: " + string);
     } catch (InterruptedException | ExecutionException e) {
       System.out.println("Error: " + e.getCause().getMessage());
     }

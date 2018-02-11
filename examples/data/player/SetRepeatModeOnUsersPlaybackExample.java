@@ -24,7 +24,7 @@ public class SetRepeatModeOnUsersPlaybackExample {
     try {
       final String string = setRepeatModeOnUsersPlaybackRequest.execute();
 
-      System.out.println("Empty String: " + string);
+      System.out.println("Null: " + string);
     } catch (IOException | SpotifyWebApiException e) {
       System.out.println("Error: " + e.getMessage());
     }
@@ -38,7 +38,7 @@ public class SetRepeatModeOnUsersPlaybackExample {
 
       final String string = stringFuture.get();
 
-      System.out.println("Empty String: " + string);
+      System.out.println("Null: " + string);
     } catch (InterruptedException | ExecutionException e) {
       System.out.println("Error: " + e.getCause().getMessage());
     }

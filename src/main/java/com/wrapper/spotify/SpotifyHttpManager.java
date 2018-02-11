@@ -229,21 +229,25 @@ public class SpotifyHttpManager implements IHttpManager {
           IOException,
           SpotifyWebApiException {
     final StatusLine statusLine = httpResponse.getStatusLine();
-    final String responseBody = EntityUtils.toString(httpResponse.getEntity(), "UTF-8");
+    final String responseBody = httpResponse.getEntity() != null
+            ? EntityUtils.toString(httpResponse.getEntity(), "UTF-8")
+            : null;
     String errorMessage = statusLine.getReasonPhrase();
 
-    try {
-      final JsonObject jsonObject = new JsonParser().parse(responseBody).getAsJsonObject();
+    if (responseBody != null) {
+      try {
+        final JsonObject jsonObject = new JsonParser().parse(responseBody).getAsJsonObject();
 
-      if (jsonObject.has("error")) {
-        if (jsonObject.has("error_description")) {
-          errorMessage = jsonObject.get("error_description").getAsString();
-        } else if (jsonObject.get("error").isJsonObject() && jsonObject.getAsJsonObject("error").has("message")) {
-          errorMessage = jsonObject.getAsJsonObject("error").get("message").getAsString();
+        if (jsonObject.has("error")) {
+          if (jsonObject.has("error_description")) {
+            errorMessage = jsonObject.get("error_description").getAsString();
+          } else if (jsonObject.get("error").isJsonObject() && jsonObject.getAsJsonObject("error").has("message")) {
+            errorMessage = jsonObject.getAsJsonObject("error").get("message").getAsString();
+          }
         }
+      } catch (JsonSyntaxException e) {
+        // Not necessary
       }
-    } catch (JsonSyntaxException e) {
-      // Nothing necessary
     }
 
     switch (statusLine.getStatusCode()) {
@@ -254,7 +258,7 @@ public class SpotifyHttpManager implements IHttpManager {
       case HttpStatus.SC_ACCEPTED:
         return responseBody;
       case HttpStatus.SC_NO_CONTENT:
-        throw new NoContentException(statusLine.getReasonPhrase());
+        return responseBody;
       case HttpStatus.SC_NOT_MODIFIED:
         return responseBody;
       case HttpStatus.SC_BAD_REQUEST:

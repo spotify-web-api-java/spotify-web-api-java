@@ -2,6 +2,7 @@ package com.wrapper.spotify.requests.data.follow;
 
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
+import org.apache.http.entity.ContentType;
 
 import java.io.IOException;
 
@@ -98,6 +99,7 @@ public class FollowPlaylistRequest extends AbstractDataRequest {
      */
     @Override
     public FollowPlaylistRequest build() {
+      setContentType(ContentType.APPLICATION_JSON);
       setPath("/v1/users/{owner_id}/playlists/{playlist_id}/followers");
       return new FollowPlaylistRequest(this);
     }
