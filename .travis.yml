@@ -1,11 +1,35 @@
 language: java
-install: mvn install -DskipTests=true -Dgpg.skip=true
 jdk:
-  - oraclejdk8
-  - oraclejdk9
-  - openjdk7
-  - openjdk8
+- openjdk7
+- openjdk8
+- oraclejdk8
+- oraclejdk9
+env:
+  global:
+  - secure: hiAE0Gt7pcTmcQ/rjfK+KB+Mj1O3LaEM6wNgFleG04fuPbsUgTpF3U1HMTfEvU8nB0AEoIHgPZ2qWHIqGdJ23HfC7pTXtZXy8YSMOnPpTx8j9+qX0i7kJsqA6CNd+5i1CN0aM0uSd2CXRj7CFpwBa+5kfQmsml90oG3mev1MXcs=
+  - # ^^SONATYPE_USERNAME
+  - secure: Sa7tSlz29eOhOazmyGAfv7tFtaZjI1PMtgQJ3fFFZ2EVaAbxxGU/l+TVmcCOxOt7OdCf1MTgB9/dRGPZAuVdtelPIytoJEpB7U2qBci72K1at2zqKF6dq0pPswuwdbkqJeAf39M3J1nZcXKXwirU/J4OfwWyi5qwXpM8pO7W/qM=
+  - # ^^SONATYPE_PASSWORD
+  - GPG_KEY_NAME=C546418B
+  - secure: gvElUeWA6ArpETjlD8s75PljnmVOQLchuAsYhG8lbakRCOBvklooc8hB9lYbtblKLgaY7ZX6Uu2tApH0gJAqb0YijEK3Hvu1417wI4FRUc+wX79MI3Y9lTqP9ACFifnUa2mjp8NqGz+/KebiZvtiI3u4OxK8U/QPUtUDLgvAdH4=
+  - # ^^GPG_PASSPHRASE
+cache:
+  directories:
+  - $HOME/.m2
+before_deploy:
+  - ./travis/before-deploy.sh
+  - cp ./travis/.m2.settings.xml $HOME/.m2/settings.xml
+deploy:
+  provider: script
+  skip_cleanup: true
+  script: "if [ '${TRAVIS_JDK_VERSION}' = 'oraclejdk9' ]; then mvn deploy -P release -DskipTests=true ; fi"
+  on:
+    repo: thelinmichael/spotify-web-api-java
+    branch:
+    - master
+    - v1
+    tags: true
 notifications:
   email:
     on_success: never
-    on_failure: always
+    on_failure: change

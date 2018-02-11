@@ -30,14 +30,14 @@ The artifact is available through
 <dependency>
   <groupId>se.michaelthelin.spotify</groupId>
   <artifactId>spotify-web-api-java</artifactId>
-  <version>2.0.0-RC1</version>
+  <version>2.0.0-RC2</version>
 </dependency>
 ```
 
 ### Gradle
 
 ```Gradle
-compile 'se.michaelthelin.spotify:spotify-web-api-java:2.0.0-RC1'
+compile 'se.michaelthelin.spotify:spotify-web-api-java:2.0.0-RC2'
 ```
 
 <a name="Documentation"></a>
