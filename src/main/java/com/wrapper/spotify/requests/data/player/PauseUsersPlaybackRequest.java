@@ -2,6 +2,7 @@ package com.wrapper.spotify.requests.data.player;
 
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
+import org.apache.http.entity.ContentType;
 
 import java.io.IOException;
 
@@ -71,6 +72,7 @@ public class PauseUsersPlaybackRequest extends AbstractDataRequest {
      */
     @Override
     public PauseUsersPlaybackRequest build() {
+      setContentType(ContentType.APPLICATION_JSON);
       setPath("/v1/me/player/pause");
       return new PauseUsersPlaybackRequest(this);
     }

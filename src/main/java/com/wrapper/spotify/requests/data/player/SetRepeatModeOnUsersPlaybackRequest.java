@@ -2,6 +2,7 @@ package com.wrapper.spotify.requests.data.player;
 
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
+import org.apache.http.entity.ContentType;
 
 import java.io.IOException;
 
@@ -84,6 +85,7 @@ public class SetRepeatModeOnUsersPlaybackRequest extends AbstractDataRequest {
      */
     @Override
     public SetRepeatModeOnUsersPlaybackRequest build() {
+      setContentType(ContentType.APPLICATION_JSON);
       setPath("/v1/me/player/repeat");
       return new SetRepeatModeOnUsersPlaybackRequest(this);
     }

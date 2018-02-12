@@ -7,6 +7,8 @@ import com.wrapper.spotify.requests.data.AbstractDataRequest;
 
 import java.io.IOException;
 
+import org.apache.http.entity.ContentType;
+
 /**
  * Start a new context or resume current playback on the user’s active device.
  */
@@ -121,6 +123,7 @@ public class StartResumeUsersPlaybackRequest extends AbstractDataRequest {
      */
     @Override
     public StartResumeUsersPlaybackRequest build() {
+      setContentType(ContentType.APPLICATION_JSON);
       setPath("/v1/me/player/play");
       return new StartResumeUsersPlaybackRequest(this);
     }

@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
 import static com.wrapper.spotify.Assertions.assertHasBodyParameter;
+import static com.wrapper.spotify.Assertions.assertHasHeader;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -44,6 +45,7 @@ public class AddTracksToPlaylistRequestTest extends AbstractDataTest<SnapshotRes
             defaultRequest.getUri().toString());
 
     assertHasAuthorizationHeader(bodyRequest);
+    assertHasHeader(defaultRequest, "Content-Type", "application/json");
     assertHasBodyParameter(
             bodyRequest,
             "uris",

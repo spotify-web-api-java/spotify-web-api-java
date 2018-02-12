@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
 import static com.wrapper.spotify.Assertions.assertHasBodyParameter;
+import static com.wrapper.spotify.Assertions.assertHasHeader;
 import static org.junit.Assert.assertEquals;
 
 public class AuthorizationCodeRequestTest extends AbstractAuthorizationTest<AuthorizationCodeCredentials> {
@@ -28,6 +29,7 @@ public class AuthorizationCodeRequestTest extends AbstractAuthorizationTest<Auth
   @Test
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
+    assertHasHeader(defaultRequest, "Content-Type", "application/x-www-form-urlencoded");
     assertHasBodyParameter(
             defaultRequest,
             "code",

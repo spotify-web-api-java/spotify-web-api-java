@@ -2,6 +2,7 @@ package com.wrapper.spotify.requests.data.player;
 
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
+import org.apache.http.entity.ContentType;
 
 import java.io.IOException;
 
@@ -83,6 +84,7 @@ public class SetVolumeForUsersPlaybackRequest extends AbstractDataRequest {
      */
     @Override
     public SetVolumeForUsersPlaybackRequest build() {
+      setContentType(ContentType.APPLICATION_JSON);
       setPath("/v1/me/player/volume");
       return new SetVolumeForUsersPlaybackRequest(this);
     }

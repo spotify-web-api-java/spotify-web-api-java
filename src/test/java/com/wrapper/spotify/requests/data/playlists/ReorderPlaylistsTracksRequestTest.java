@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
 import static com.wrapper.spotify.Assertions.assertHasBodyParameter;
+import static com.wrapper.spotify.Assertions.assertHasHeader;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -31,6 +32,7 @@ public class ReorderPlaylistsTracksRequestTest extends AbstractDataTest<Snapshot
   @Test
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
+    assertHasHeader(defaultRequest, "Content-Type", "application/json");
     assertHasBodyParameter(
             defaultRequest,
             "range_start",
