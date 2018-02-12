@@ -2,6 +2,7 @@ package com.wrapper.spotify.requests.data.player;
 
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
+import org.apache.http.entity.ContentType;
 
 import java.io.IOException;
 
@@ -81,6 +82,7 @@ public class ToggleShuffleForUsersPlaybackRequest extends AbstractDataRequest {
      */
     @Override
     public ToggleShuffleForUsersPlaybackRequest build() {
+      setContentType(ContentType.APPLICATION_JSON);
       setPath("/v1/me/player/shuffle");
       return new ToggleShuffleForUsersPlaybackRequest(this);
     }

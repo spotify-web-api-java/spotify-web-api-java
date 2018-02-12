@@ -10,6 +10,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
+import static com.wrapper.spotify.Assertions.assertHasHeader;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
@@ -29,6 +30,7 @@ public class SetVolumeForUsersPlaybackRequestTest extends AbstractDataTest<Strin
   @Test
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
+    assertHasHeader(defaultRequest, "Content-Type", "application/json");
     assertEquals(
             "https://api.spotify.com:443/v1/me/player/volume?volume_percent=100&device_id=5fbb3ba6aa454b5534c4ba43a8c7e8e45a63ad0e",
             defaultRequest.getUri().toString());
