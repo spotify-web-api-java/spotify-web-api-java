@@ -11,7 +11,7 @@
     <!--
      DO NOT FORGET
      - to update version numbers in README (2x)
-     - to update the Javadoc
+     - to update the Javadoc by deleting the docs folder and recreating it
     -->
 
     <name>Spotify Web API Java Client</name>
@@ -117,6 +117,17 @@
             <build>
                 <plugins>
                     <plugin>
+                        <artifactId>maven-clean-plugin</artifactId>
+                        <version>3.0.0</version>
+                        <configuration>
+                            <filesets>
+                                <fileset>
+                                    <directory>docs</directory>
+                                </fileset>
+                            </filesets>
+                        </configuration>
+                    </plugin>
+                    <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-javadoc-plugin</artifactId>
                         <version>3.0.0</version>
@@ -130,7 +141,9 @@
                             </execution>
                         </executions>
                         <configuration>
-                            <failOnError>false</failOnError>
+                            <reportOutputDirectory>${project.basedir}</reportOutputDirectory>
+                            <destDir>docs</destDir>
+                            <subpackages>com.wrapper.spotify</subpackages>
                         </configuration>
                     </plugin>
                     <plugin>
