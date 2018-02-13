@@ -9,6 +9,7 @@ This is a Java wrapper/client for the [Spotify Web API](https://developer.spotif
 
 ## Table of Contents
 1. **[Installation](#Installation)**
+    1. **[Jitpack](#Jitpack)**
 2. **[Documentation](#Documentation)**
 3. **[General Usage](#General-Usage)**
     1. **[Authorization](#Authorization)**
@@ -23,9 +24,11 @@ This is a Java wrapper/client for the [Spotify Web API](https://developer.spotif
 The artifact is available through
 [Maven Central](https://mvnrepository.com/artifact/se.michaelthelin.spotify/spotify-web-api-java) via
 [Sonatype](https://oss.sonatype.org/#nexus-search;quick~spotify-web-api-java).
+Or to use a snapshot of the latest commit you can use [jitpack.io](https://jitpack.io/) as described [further down below](#Jitpack).
 
 ### Maven
 
+Latest official release:
 ```XML
 <dependency>
   <groupId>se.michaelthelin.spotify</groupId>
@@ -34,10 +37,52 @@ The artifact is available through
 </dependency>
 ```
 
+Latest snapshot:
+```XML
+<dependency>
+  <groupId>com.github.thelinmichael</groupId>
+  <artifactId>spotify-web-api-java</artifactId>
+  <version>master-SNAPSHOT</version>
+</dependency>
+```
+
 ### Gradle
 
+Latest official release:
 ```Gradle
 compile 'se.michaelthelin.spotify:spotify-web-api-java:2.0.0-RC2'
+```
+
+Latest snapshot:
+```Gradle
+compile 'com.github.thelinmichael:spotify-web-api-java:master-SNAPSHOT'
+```
+
+---
+
+<a name="Jitpack"></a>
+
+### Jitpack
+
+In order to use Jitpack you need to add their repository to your `pom.xml`:
+
+#### Maven
+```XML
+<repositories>
+    <repository>
+        <id>jitpack.io</id>
+        <url>https://jitpack.io</url>
+    </repository>
+</repositories>
+```
+
+#### Gradle
+```Gradle
+allprojects {
+    repositories {
+        maven { url 'https://jitpack.io' }
+    }
+}
 ```
 
 <a name="Documentation"></a>
