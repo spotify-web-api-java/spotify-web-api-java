@@ -270,19 +270,14 @@ public class SpotifyHttpManager implements IHttpManager {
       case HttpStatus.SC_NOT_FOUND:
         throw new NotFoundException(errorMessage);
       case 429: // TOO_MANY_REQUESTS (additional status code, RFC 6585)
-        //sets Retry-After from Header as described at https://beta.developer.spotify.com/documentation/web-api/#rate-limiting
-        Header[] headers = httpResponse.getAllHeaders();
-        int retryAfter = -99;
-        for (Header header : headers) {
-          if (header.getName().equalsIgnoreCase("Retry-After")) {
-            retryAfter = Integer.parseInt(header.getValue());
-          }
+        // Sets "Retry-After" header as described at https://beta.developer.spotify.com/documentation/web-api/#rate-limiting
+        Header header = httpResponse.getFirstHeader("Retry-After");
+
+        if (header != null) {
+          throw new TooManyRequestsException(errorMessage, Integer.parseInt(header.getValue()));
+        } else {
+          throw new TooManyRequestsException(errorMessage);
         }
-        TooManyRequestsException tmrEx = new TooManyRequestsException(errorMessage);
-        if (retryAfter != -99) {
-          tmrEx.setRetryAfter(retryAfter);
-        }
-        throw tmrEx;
       case HttpStatus.SC_INTERNAL_SERVER_ERROR:
         throw new InternalServerErrorException(errorMessage);
       case HttpStatus.SC_BAD_GATEWAY:
