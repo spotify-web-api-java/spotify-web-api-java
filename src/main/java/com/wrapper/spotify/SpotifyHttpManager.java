@@ -20,6 +20,7 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.cache.CacheConfig;
 import org.apache.http.impl.client.cache.CachingHttpClients;
 import org.apache.http.util.EntityUtils;
+
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -49,36 +50,48 @@ public class SpotifyHttpManager implements IHttpManager {
 
 
     CacheConfig cacheConfig = CacheConfig.custom()
-        .setMaxCacheEntries(cacheMaxEntries != null ? cacheMaxEntries : DEFAULT_CACHE_MAX_ENTRIES)
-        .setMaxObjectSize(cacheMaxEntries != null ? cacheMaxEntries : DEFAULT_CACHE_MAX_OBJECT_SIZE)
-        .setSharedCache(false).build();
+            .setMaxCacheEntries(cacheMaxEntries != null ? cacheMaxEntries : DEFAULT_CACHE_MAX_ENTRIES)
+            .setMaxObjectSize(cacheMaxEntries != null ? cacheMaxEntries : DEFAULT_CACHE_MAX_OBJECT_SIZE)
+            .setSharedCache(false)
+            .build();
 
-    ConnectionConfig connectionConfig =
-        ConnectionConfig.custom().setCharset(Charset.forName("UTF-8")).build();
+    ConnectionConfig connectionConfig = ConnectionConfig
+            .custom()
+            .setCharset(Charset.forName("UTF-8"))
+            .build();
 
     new BasicCredentialsProvider();
     CredentialsProvider credentialsProvider = new BasicCredentialsProvider();
     if (proxy != null) {
       credentialsProvider.setCredentials(
-          new AuthScope(proxy.getHostName(), proxy.getPort(), null, proxy.getSchemeName()),
-          proxyCredentials);
+              new AuthScope(proxy.getHostName(), proxy.getPort(), null, proxy.getSchemeName()),
+              proxyCredentials
+      );
     }
 
-    RequestConfig requestConfig =
-        RequestConfig.custom().setCookieSpec(CookieSpecs.DEFAULT).setProxy(proxy).build();
+    RequestConfig requestConfig = RequestConfig
+            .custom()
+            .setCookieSpec(CookieSpecs.DEFAULT)
+            .setProxy(proxy)
+            .build();
 
 
-    httpClient = CachingHttpClients.custom().setCacheConfig(cacheConfig)
-        .setDefaultConnectionConfig(connectionConfig)
-        .setDefaultCredentialsProvider(credentialsProvider).setDefaultRequestConfig(requestConfig)
-        .build();
+    httpClient = CachingHttpClients
+            .custom()
+            .setCacheConfig(cacheConfig)
+            .setDefaultConnectionConfig(connectionConfig)
+            .setDefaultCredentialsProvider(credentialsProvider)
+            .setDefaultRequestConfig(requestConfig)
+            .build();
   }
 
   public static URI makeUri(String uriString) {
     try {
       return new URI(uriString);
     } catch (URISyntaxException e) {
-      SpotifyApi.LOGGER.log(Level.SEVERE, "URI Syntax Exception for \"" + uriString + "\"");
+      SpotifyApi.LOGGER.log(
+              Level.SEVERE,
+              "URI Syntax Exception for \"" + uriString + "\"");
       return null;
     }
   }
@@ -100,7 +113,9 @@ public class SpotifyHttpManager implements IHttpManager {
   }
 
   @Override
-  public String get(URI uri, Header[] headers) throws IOException, SpotifyWebApiException {
+  public String get(URI uri, Header[] headers) throws
+          IOException,
+          SpotifyWebApiException {
     assert (uri != null);
     assert (!uri.toString().equals(""));
 
@@ -117,8 +132,9 @@ public class SpotifyHttpManager implements IHttpManager {
   }
 
   @Override
-  public String post(URI uri, Header[] headers, HttpEntity body)
-      throws IOException, SpotifyWebApiException {
+  public String post(URI uri, Header[] headers, HttpEntity body) throws
+          IOException,
+          SpotifyWebApiException {
     assert (uri != null);
     assert (!uri.toString().equals(""));
 
@@ -136,8 +152,9 @@ public class SpotifyHttpManager implements IHttpManager {
   }
 
   @Override
-  public String put(URI uri, Header[] headers, HttpEntity body)
-      throws IOException, SpotifyWebApiException {
+  public String put(URI uri, Header[] headers, HttpEntity body) throws
+          IOException,
+          SpotifyWebApiException {
     assert (uri != null);
     assert (!uri.toString().equals(""));
 
@@ -154,7 +171,9 @@ public class SpotifyHttpManager implements IHttpManager {
   }
 
   @Override
-  public String delete(URI uri, Header[] headers) throws IOException, SpotifyWebApiException {
+  public String delete(URI uri, Header[] headers) throws
+          IOException,
+          SpotifyWebApiException {
     assert (uri != null);
     assert (!uri.toString().equals(""));
 
@@ -170,7 +189,8 @@ public class SpotifyHttpManager implements IHttpManager {
     return responseBody;
   }
 
-  private HttpResponse execute(HttpRequestBase method) throws IOException {
+  private HttpResponse execute(HttpRequestBase method) throws
+          IOException {
     HttpCacheContext context = HttpCacheContext.create();
     HttpResponse response = httpClient.execute(method, context);
 
@@ -178,19 +198,24 @@ public class SpotifyHttpManager implements IHttpManager {
       CacheResponseStatus responseStatus = context.getCacheResponseStatus();
       switch (responseStatus) {
         case CACHE_HIT:
-          SpotifyApi.LOGGER.log(Level.CONFIG,
-              "A response was generated from the cache with no requests sent upstream");
+          SpotifyApi.LOGGER.log(
+                  Level.CONFIG,
+                  "A response was generated from the cache with no requests sent upstream");
           break;
         case CACHE_MODULE_RESPONSE:
-          SpotifyApi.LOGGER.log(Level.CONFIG,
-              "The response was generated directly by the caching module");
+          SpotifyApi.LOGGER.log(
+                  Level.CONFIG,
+                  "The response was generated directly by the caching module");
           break;
         case CACHE_MISS:
-          SpotifyApi.LOGGER.log(Level.CONFIG, "The response came from an upstream server");
+          SpotifyApi.LOGGER.log(
+                  Level.CONFIG,
+                  "The response came from an upstream server");
           break;
         case VALIDATED:
-          SpotifyApi.LOGGER.log(Level.CONFIG,
-              "The response was generated from the cache after validating the entry with the origin server");
+          SpotifyApi.LOGGER.log(
+                  Level.CONFIG,
+                  "The response was generated from the cache after validating the entry with the origin server");
           break;
       }
     } catch (Exception e) {
@@ -200,11 +225,13 @@ public class SpotifyHttpManager implements IHttpManager {
     return response;
   }
 
-  private String getResponseBody(HttpResponse httpResponse)
-      throws IOException, SpotifyWebApiException {
+  private String getResponseBody(HttpResponse httpResponse) throws
+          IOException,
+          SpotifyWebApiException {
     final StatusLine statusLine = httpResponse.getStatusLine();
     final String responseBody = httpResponse.getEntity() != null
-        ? EntityUtils.toString(httpResponse.getEntity(), "UTF-8") : null;
+            ? EntityUtils.toString(httpResponse.getEntity(), "UTF-8")
+            : null;
     String errorMessage = statusLine.getReasonPhrase();
 
     if (responseBody != null) {
@@ -214,8 +241,7 @@ public class SpotifyHttpManager implements IHttpManager {
         if (jsonObject.has("error")) {
           if (jsonObject.has("error_description")) {
             errorMessage = jsonObject.get("error_description").getAsString();
-          } else if (jsonObject.get("error").isJsonObject()
-              && jsonObject.getAsJsonObject("error").has("message")) {
+          } else if (jsonObject.get("error").isJsonObject() && jsonObject.getAsJsonObject("error").has("message")) {
             errorMessage = jsonObject.getAsJsonObject("error").get("message").getAsString();
           }
         }
