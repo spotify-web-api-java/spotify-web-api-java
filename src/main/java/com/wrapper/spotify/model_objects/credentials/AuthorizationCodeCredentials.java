@@ -14,6 +14,7 @@ public class AuthorizationCodeCredentials extends AbstractModelObject {
   private final String scope;
   private final Integer expiresIn;
   private final String refreshToken;
+  private final Boolean isRevoked;
 
   private AuthorizationCodeCredentials(final Builder builder) {
     super(builder);
@@ -23,6 +24,7 @@ public class AuthorizationCodeCredentials extends AbstractModelObject {
     this.scope = builder.scope;
     this.expiresIn = builder.expiresIn;
     this.refreshToken = builder.refreshToken;
+    this.isRevoked = builder.isRevoked;
   }
 
   /**
@@ -72,6 +74,17 @@ public class AuthorizationCodeCredentials extends AbstractModelObject {
   public String getRefreshToken() {
     return refreshToken;
   }
+  
+  
+  /**
+   * Shows, if the refresh Token is invoked. If the user revokes the access for the application, 
+   * a false value will be returned
+   *
+   * @return Boolean which indicates, if the refresh token is revoked.
+   */
+  public Boolean isRevoked() {
+    return isRevoked;
+  }
 
   @Override
   public Builder builder() {
@@ -87,6 +100,7 @@ public class AuthorizationCodeCredentials extends AbstractModelObject {
     private String scope;
     private Integer expiresIn;
     private String refreshToken;
+    private Boolean isRevoked;
 
     /**
      * The access token setter.
@@ -143,6 +157,18 @@ public class AuthorizationCodeCredentials extends AbstractModelObject {
       this.refreshToken = refreshToken;
       return this;
     }
+    
+    
+    /**
+     * The isRevoked setter.
+     *
+     * @param isRevoked A Boolean, which indicates, if the refresh token is revoked.
+     * @return An {@link AuthorizationCodeCredentials.Builder}.
+     */
+    public Builder setIsInvoked(final Boolean isRevoked) {
+      this.isRevoked = isRevoked;
+      return this;
+    }
 
     @Override
     public AuthorizationCodeCredentials build() {
@@ -180,6 +206,10 @@ public class AuthorizationCodeCredentials extends AbstractModelObject {
                       hasAndNotNull(jsonObject, "refresh_token")
                               ? jsonObject.get("refresh_token").getAsString()
                               : null)
+              .setIsInvoked(
+                      hasAndNotNull(jsonObject, "error") 
+                              ? jsonObject.get("error").getAsString().equals("invalid_grant") 
+                              : false)
               .build();
     }
   }

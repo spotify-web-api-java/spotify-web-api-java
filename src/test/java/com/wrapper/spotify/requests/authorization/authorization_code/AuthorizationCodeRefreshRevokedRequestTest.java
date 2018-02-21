@@ -12,19 +12,20 @@ import java.util.concurrent.ExecutionException;
 import static com.wrapper.spotify.Assertions.assertHasBodyParameter;
 import static com.wrapper.spotify.Assertions.assertHasHeader;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
-public class AuthorizationCodeRefreshRequestTest extends AbstractAuthorizationTest<AuthorizationCodeCredentials> {
+public class AuthorizationCodeRefreshRevokedRequestTest extends AbstractAuthorizationTest<AuthorizationCodeCredentials> {
 
   private final AuthorizationCodeRefreshRequest defaultRequest = SPOTIFY_API.authorizationCodeRefresh()
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
-                          "requests/authorization/authorization_code/AuthorizationCodeRefresh.json"))
+                          "requests/authorization/authorization_code/AuthorizationCodeRefreshRevoked.json"))
           .grant_type("refresh_token")
           .refresh_token(SPOTIFY_API.getRefreshToken())
           .build();
 
-  public AuthorizationCodeRefreshRequestTest() throws Exception {
+  public AuthorizationCodeRefreshRevokedRequestTest() throws Exception {
   }
 
   @Test
@@ -55,18 +56,7 @@ public class AuthorizationCodeRefreshRequestTest extends AbstractAuthorizationTe
   }
 
   public void shouldReturnDefault(final AuthorizationCodeCredentials authorizationCodeCredentials) {
-    assertEquals(
-            "taHZ2SdB-bPA3FsK3D7ZN5npZS47cMy-IEySVEGttOhXmqaVAIo0ESvTCLjLBifhHOHOIuhFUKPW1WMDP7w6dj3MAZdWT8CLI2MkZaXbYLTeoDvXesf2eeiLYPBGdx8tIwQJKgV8XdnzH_DONk",
-            authorizationCodeCredentials.getAccessToken());
-    assertEquals(
-            "Bearer",
-            authorizationCodeCredentials.getTokenType());
-    assertEquals(
-            "user-read-birthdate user-read-email",
-            authorizationCodeCredentials.getScope());
-    assertEquals(
-            3600,
-            (int) authorizationCodeCredentials.getExpiresIn());
-    assertFalse(authorizationCodeCredentials.isRevoked());
+    assertTrue(authorizationCodeCredentials.isRevoked());
+    assertNull(authorizationCodeCredentials.getRefreshToken());
   }
 }
