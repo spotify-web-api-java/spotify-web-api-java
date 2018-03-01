@@ -35,7 +35,7 @@ public class RemoveTracksFromPlaylistRequestTest extends AbstractDataTest<Snapsh
     assertHasBodyParameter(
             defaultRequest,
             "tracks",
-            "[\"" + ID_TRACK + "\",\"" + ID_TRACK + "\"]");
+            "[{\"uri\":\"" + ID_TRACK + "\"},{\"uri\":\"" + ID_TRACK + "\"}]");
     assertEquals(
             "https://api.spotify.com:443/v1/users/abbaspotify/playlists/3AGOiaoRXMSjswCLtuNqv5/tracks",
             defaultRequest.getUri().toString());

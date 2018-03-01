@@ -1,10 +1,13 @@
 package com.wrapper.spotify.requests.data.playlists;
 
 import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.special.SnapshotResult;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
 import org.apache.http.entity.ContentType;
+import org.apache.http.message.BasicNameValuePair;
 
 import java.io.IOException;
 
@@ -35,7 +38,7 @@ public class RemoveTracksFromPlaylistRequest extends AbstractDataRequest {
   public SnapshotResult execute() throws
           IOException,
           SpotifyWebApiException {
-    return new SnapshotResult.JsonUtil().createModelObject(getJson());
+    return new SnapshotResult.JsonUtil().createModelObject(deleteJson());
   }
 
   /**
@@ -103,7 +106,15 @@ public class RemoveTracksFromPlaylistRequest extends AbstractDataRequest {
       assert (tracks != null);
       assert (!tracks.isJsonNull());
       assert (tracks.size() <= 100);
-      return setBodyParameter("tracks", tracks);
+
+      JsonArray formattedArray = new JsonArray();
+      for (JsonElement element : tracks) {
+        JsonObject object = new JsonObject();
+        object.add("uri", element);
+        formattedArray.add(object);
+      }
+
+      return setBodyParameter("tracks", formattedArray);
     }
 
     /**

@@ -55,7 +55,7 @@ public class TestUtil {
       when(mockedHttpManager.get(any(URI.class), any(Header[].class))).thenReturn(fixture);
       when(mockedHttpManager.post(any(URI.class), any(Header[].class), any(HttpEntity.class))).thenReturn(fixture);
       when(mockedHttpManager.put(any(URI.class), any(Header[].class), any(HttpEntity.class))).thenReturn(fixture);
-      when(mockedHttpManager.delete(any(URI.class), any(Header[].class))).thenReturn(fixture);
+      when(mockedHttpManager.delete(any(URI.class), any(Header[].class), any(HttpEntity.class))).thenReturn(fixture);
 
       return mockedHttpManager;
     }
