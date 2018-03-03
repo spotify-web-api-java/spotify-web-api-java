@@ -60,7 +60,7 @@ public interface ITest<T> {
   String Q = "Abba";
   int RANGE_LENGTH = 1;
   int RANGE_START = 0;
-  String[] SCOPES = new String[]{"user-read-birthday", "user-read-email"};
+  String SCOPE = "user-read-birthday user-read-email";
   String SEED_ARTISTS = "0LcJLqbBmaGUft1e9Mm8HV";
   String SEED_GENRES = "electro";
   String SEED_TRACKS = "01iyCAUm8EvOFqVWYJ3dVX";
@@ -72,7 +72,7 @@ public interface ITest<T> {
   String TIME_RANGE = "medium_term";
   Date TIMESTAMP = new Date(1414054800000L);
   ModelObjectType TYPE = ModelObjectType.ARTIST;
-  JsonArray URIS = new JsonParser().parse("[\"01iyCAUm8EvOFqVWYJ3dVX\",\"01iyCAUm8EvOFqVWYJ3dVX\"]").getAsJsonArray();
+  JsonArray URIS = new JsonParser().parse("[\"spotify:track:01iyCAUm8EvOFqVWYJ3dVX\",\"spotify:track:01iyCAUm8EvOFqVWYJ3dVX\"]").getAsJsonArray();
   int VOLUME_PERCENT = 100;
 
   void shouldComplyWithReference();

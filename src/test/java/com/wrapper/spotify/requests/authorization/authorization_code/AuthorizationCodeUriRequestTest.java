@@ -11,6 +11,8 @@ import static org.junit.Assert.assertEquals;
 public class AuthorizationCodeUriRequestTest extends AbstractAuthorizationTest<URI> {
 
   private final AuthorizationCodeUriRequest defaultRequest = SPOTIFY_API.authorizationCodeUri()
+          .scope(SCOPE)
+          .show_dialog(SHOW_DIALOG)
           .build();
 
   public AuthorizationCodeUriRequestTest() {
@@ -19,7 +21,7 @@ public class AuthorizationCodeUriRequestTest extends AbstractAuthorizationTest<U
   @Test
   public void shouldComplyWithReference() {
     assertEquals(
-            "https://accounts.spotify.com:443/authorize?client_id=zyuxhfo1c51b5hxjk09x2uhv5n0svgd6g&response_type=code&redirect_uri=https%3A%2F%2Fexample.com%2Fspotify-redirect",
+            "https://accounts.spotify.com:443/authorize?client_id=zyuxhfo1c51b5hxjk09x2uhv5n0svgd6g&response_type=code&redirect_uri=https%3A%2F%2Fexample.com%2Fspotify-redirect&scope=user-read-birthday+user-read-email&show_dialog=true",
             defaultRequest.getUri().toString());
   }
 
@@ -35,7 +37,7 @@ public class AuthorizationCodeUriRequestTest extends AbstractAuthorizationTest<U
 
   public void shouldReturnDefault(final URI uri) {
     assertEquals(
-            "https://accounts.spotify.com:443/authorize?client_id=zyuxhfo1c51b5hxjk09x2uhv5n0svgd6g&response_type=code&redirect_uri=https%3A%2F%2Fexample.com%2Fspotify-redirect",
+            "https://accounts.spotify.com:443/authorize?client_id=zyuxhfo1c51b5hxjk09x2uhv5n0svgd6g&response_type=code&redirect_uri=https%3A%2F%2Fexample.com%2Fspotify-redirect&scope=user-read-birthday+user-read-email&show_dialog=true",
             uri.toString());
   }
 }

@@ -65,4 +65,4 @@ The following (random) data should be used when modifying examples:
 - Time range: `"medium_term"`
 - Timestamp: `new Date(1414054800000L)`
 - Tracks: `new JsonParser().parse("[\"01iyCAUm8EvOFqVWYJ3dVX\"]").getAsJsonArray()`
-- URIs: `new JsonParser().parse("{\"01iyCAUm8EvOFqVWYJ3dVX\"}").getAsJsonArray()`
+- URIs: `new JsonParser().parse("{\"spotify:track:01iyCAUm8EvOFqVWYJ3dVX\"}").getAsJsonArray()`
