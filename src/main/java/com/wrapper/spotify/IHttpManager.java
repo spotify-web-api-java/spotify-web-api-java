@@ -58,6 +58,7 @@ public interface IHttpManager {
    *
    * @param uri     The DELETE request's {@link URI}.
    * @param headers The DELETE request's {@link Header}s.
+   * @param body    The DELETE request's body as a {@link HttpEntity}.
    * @return A string containing the DELETE request's response body.
    * @throws IOException            In case of networking issues.
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
