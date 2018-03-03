@@ -156,7 +156,7 @@ public abstract class AbstractRequest implements IRequest {
           SpotifyWebApiException {
     initializeBody();
 
-    String json = httpManager.delete(uri, headers.toArray(new Header[headers.size()]));
+    String json = httpManager.delete(uri, headers.toArray(new Header[headers.size()]), body);
 
     if (json == null || json.equals("")) {
       return null;

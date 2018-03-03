@@ -171,16 +171,17 @@ public class SpotifyHttpManager implements IHttpManager {
   }
 
   @Override
-  public String delete(URI uri, Header[] headers) throws
+  public String delete(URI uri, Header[] headers, HttpEntity body) throws
           IOException,
           SpotifyWebApiException {
     assert (uri != null);
     assert (!uri.toString().equals(""));
 
-    final HttpDelete httpDelete = new HttpDelete();
+    final HttpDeleteBody httpDelete = new HttpDeleteBody();
 
     httpDelete.setURI(uri);
     httpDelete.setHeaders(headers);
+    httpDelete.setEntity(body);
 
     String responseBody = getResponseBody(execute(httpDelete));
 

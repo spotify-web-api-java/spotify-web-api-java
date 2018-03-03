@@ -62,7 +62,7 @@ public interface IHttpManager {
    * @throws IOException            In case of networking issues.
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
    */
-  String delete(URI uri, Header[] headers) throws
+  String delete(URI uri, Header[] headers, HttpEntity body) throws
           IOException,
           SpotifyWebApiException;
 
