@@ -1,13 +1,10 @@
 package com.wrapper.spotify.requests.data.playlists;
 
 import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.special.SnapshotResult;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
 import org.apache.http.entity.ContentType;
-import org.apache.http.message.BasicNameValuePair;
 
 import java.io.IOException;
 
@@ -91,11 +88,11 @@ public class RemoveTracksFromPlaylistRequest extends AbstractDataRequest {
      * <p>
      * There are several ways to specify which tracks to remove, determined by the request parameters.
      * Removing all occurrences of specific tracks: <br>
-     * {@code { "tracks": [{ "uri": "spotify:track:4iV5W9uYEdYUVa79Axb7Rh" },
-     * {"uri": "spotify:track:1301WleyT98MSxVHPZCA6M" }] }} <br>
+     * {@code [{ "uri": "spotify:track:4iV5W9uYEdYUVa79Axb7Rh" },
+     * {"uri": "spotify:track:1301WleyT98MSxVHPZCA6M" }] } <br>
      * Removing a specific occurrence of a track: <br>
-     * {@code { "tracks": [{ "uri": "spotify:track:4iV5W9uYEdYUVa79Axb7Rh", "positions": [0,3] },
-     * { "uri": "spotify:track:1301WleyT98MSxVHPZCA6M", "positions": [7] }] }}
+     * {@code [{ "uri": "spotify:track:4iV5W9uYEdYUVa79Axb7Rh", "positions": [0,3] },
+     * { "uri": "spotify:track:1301WleyT98MSxVHPZCA6M", "positions": [7] }] }
      *
      * @param tracks Required. An array of objects containing Spotify URIs of the tracks to remove. A maximum of
      *               100 objects can be sent at once
@@ -106,15 +103,7 @@ public class RemoveTracksFromPlaylistRequest extends AbstractDataRequest {
       assert (tracks != null);
       assert (!tracks.isJsonNull());
       assert (tracks.size() <= 100);
-
-      JsonArray formattedArray = new JsonArray();
-      for (JsonElement element : tracks) {
-        JsonObject object = new JsonObject();
-        object.add("uri", element);
-        formattedArray.add(object);
-      }
-
-      return setBodyParameter("tracks", formattedArray);
+      return setBodyParameter("tracks", tracks);
     }
 
     /**
