@@ -94,7 +94,7 @@ public class SavedTrack extends AbstractModelObject {
         return new Builder()
                 .setAddedAt(
                         hasAndNotNull(jsonObject, "added_at")
-                                ? SpotifyApi.SIMPLE_DATE_FORMAT.parse(jsonObject.get("added_at").getAsString())
+                                ? SpotifyApi.parseDefaultDate(jsonObject.get("added_at").getAsString())
                                 : null)
                 .setTrack(
                         hasAndNotNull(jsonObject, "track")

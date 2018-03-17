@@ -102,7 +102,7 @@ public class GetListOfFeaturedPlaylistsRequest extends AbstractDataRequest {
      */
     public Builder timestamp(final Date timestamp) {
       assert (timestamp != null);
-      return setQueryParameter("timestamp", SpotifyApi.SIMPLE_DATE_FORMAT.format(timestamp));
+      return setQueryParameter("timestamp", SpotifyApi.formatDefaultDate(timestamp));
     }
 
     /**
