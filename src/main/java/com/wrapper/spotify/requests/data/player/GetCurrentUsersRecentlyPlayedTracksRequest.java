@@ -87,7 +87,7 @@ public class GetCurrentUsersRecentlyPlayedTracksRequest extends AbstractDataRequ
      */
     public Builder after(final Date after) {
       assert (after != null);
-      return setQueryParameter("after", SpotifyApi.SIMPLE_DATE_FORMAT.format(after));
+      return setQueryParameter("after", SpotifyApi.formatDefaultDate(after));
     }
 
     /**
@@ -99,7 +99,7 @@ public class GetCurrentUsersRecentlyPlayedTracksRequest extends AbstractDataRequ
      */
     public Builder before(final Date before) {
       assert (before != null);
-      return setQueryParameter("before", SpotifyApi.SIMPLE_DATE_FORMAT.format(before));
+      return setQueryParameter("before", SpotifyApi.formatDefaultDate(before));
     }
 
     /**

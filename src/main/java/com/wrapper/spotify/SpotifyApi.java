@@ -31,7 +31,9 @@ import com.wrapper.spotify.requests.data.users_profile.GetCurrentUsersProfileReq
 import com.wrapper.spotify.requests.data.users_profile.GetUsersProfileRequest;
 
 import java.net.URI;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.TimeZone;
 import java.util.logging.Logger;
 
@@ -81,8 +83,12 @@ public class SpotifyApi {
    * The date format used by the Spotify Web API. It uses the {@code GMT}  timezone and the following pattern:
    * {@code yyyy-MM-dd'T'HH:mm:ss}
    */
-  public static final SimpleDateFormat SIMPLE_DATE_FORMAT = makeSimpleDateFormat(
-          "yyyy-MM-dd'T'HH:mm:ss", "GMT");
+  private static final ThreadLocal<SimpleDateFormat> SIMPLE_DATE_FORMAT = new ThreadLocal<SimpleDateFormat>()  {
+    @Override
+    protected SimpleDateFormat initialValue() {
+      return makeSimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", "GMT");
+    }
+  };
 
   private final IHttpManager httpManager;
   private final String scheme;
@@ -142,6 +148,27 @@ public class SpotifyApi {
     stringBuilder.deleteCharAt(stringBuilder.length() - 1);
 
     return stringBuilder.toString();
+  }
+
+  /**
+   * Parses a date in the default spotify format.
+   *
+   * @param date the input date to parse
+   * @return the pared {@link Date}
+   * @throws ParseException if the date is not in a valid format
+   */
+  public static Date parseDefaultDate(String date) throws ParseException {
+    return SIMPLE_DATE_FORMAT.get().parse(date);
+  }
+
+  /**
+   * Formats a date, using the default spotify format.
+   *
+   * @param date the date to format
+   * @return the formatted date
+   */
+  public static String formatDefaultDate(Date date) {
+    return SIMPLE_DATE_FORMAT.get().format(date);
   }
 
   public static SimpleDateFormat makeSimpleDateFormat(String pattern, String id) {
