@@ -290,9 +290,10 @@ public class AudioAnalysisSection extends AbstractModelObject {
                               ? jsonObject.get("loudness").getAsFloat()
                               : null)
               .setMeasure(
-                      hasAndNotNull(jsonObject, "measure")
-                              ? new AudioAnalysisMeasure.JsonUtil().createModelObject(
-                              jsonObject.getAsJsonObject("measure"))
+                      (hasAndNotNull(jsonObject, "start")
+                              && hasAndNotNull(jsonObject, "duration")
+                              && hasAndNotNull(jsonObject, "confidence"))
+                              ? new AudioAnalysisMeasure.JsonUtil().createModelObject(jsonObject)
                               : null)
               .setMode(
                       hasAndNotNull(jsonObject, "type")
