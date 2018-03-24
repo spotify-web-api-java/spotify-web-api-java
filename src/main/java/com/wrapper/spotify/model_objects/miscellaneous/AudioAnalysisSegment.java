@@ -231,11 +231,7 @@ public class AudioAnalysisSegment extends AbstractModelObject {
                               ? jsonObject.get("loudness_start").getAsFloat()
                               : null)
               .setMeasure(
-                      (hasAndNotNull(jsonObject, "start")
-                              && hasAndNotNull(jsonObject, "duration")
-                              && hasAndNotNull(jsonObject, "confidence"))
-                              ? new AudioAnalysisMeasure.JsonUtil().createModelObject(jsonObject)
-                              : null)
+                      new AudioAnalysisMeasure.JsonUtil().createModelObject(jsonObject))
               .setPitches(
                       hasAndNotNull(jsonObject, "pitches")
                               ? new Gson().fromJson(jsonObject.getAsJsonArray("pitches"), float[].class)
