@@ -165,6 +165,7 @@ public class SpotifyHttpManager implements IHttpManager {
     httpPut.setEntity(body);
 
     String responseBody = getResponseBody(execute(httpPut));
+
     httpPut.releaseConnection();
 
     return responseBody;
@@ -235,7 +236,7 @@ public class SpotifyHttpManager implements IHttpManager {
             : null;
     String errorMessage = statusLine.getReasonPhrase();
 
-    if (responseBody != null) {
+    if (responseBody != null && !responseBody.equals("")) {
       try {
         final JsonObject jsonObject = new JsonParser().parse(responseBody).getAsJsonObject();
 
