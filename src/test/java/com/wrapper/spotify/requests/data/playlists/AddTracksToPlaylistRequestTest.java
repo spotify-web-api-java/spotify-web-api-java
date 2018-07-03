@@ -1,5 +1,6 @@
 package com.wrapper.spotify.requests.data.playlists;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonParser;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
@@ -19,7 +20,7 @@ import static org.junit.Assert.assertEquals;
 @RunWith(MockitoJUnitRunner.class)
 public class AddTracksToPlaylistRequestTest extends AbstractDataTest<SnapshotResult> {
   private final AddTracksToPlaylistRequest defaultRequest = SPOTIFY_API
-          .addTracksToPlaylist(ID_USER, ID_PLAYLIST, new String[]{ID_TRACK, ID_TRACK})
+          .addTracksToPlaylist(ID_USER, ID_PLAYLIST, new Gson().fromJson(URIS, String[].class))
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
                           "requests/data/playlists/AddTracksToPlaylistRequest.json"))
@@ -27,7 +28,7 @@ public class AddTracksToPlaylistRequestTest extends AbstractDataTest<SnapshotRes
           .build();
   private final AddTracksToPlaylistRequest bodyRequest = SPOTIFY_API
           .addTracksToPlaylist(ID_USER, ID_PLAYLIST, new JsonParser()
-                  .parse("[\"" + ID_TRACK + "\",\"" + ID_TRACK + "\"]").getAsJsonArray())
+                  .parse(URIS.toString()).getAsJsonArray())
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
                           "requests/data/playlists/AddTracksToPlaylistRequest.json"))
@@ -41,7 +42,7 @@ public class AddTracksToPlaylistRequestTest extends AbstractDataTest<SnapshotRes
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
     assertEquals(
-            "https://api.spotify.com:443/v1/users/abbaspotify/playlists/3AGOiaoRXMSjswCLtuNqv5/tracks?uris=01iyCAUm8EvOFqVWYJ3dVX%2C01iyCAUm8EvOFqVWYJ3dVX&position=0",
+            "https://api.spotify.com:443/v1/users/abbaspotify/playlists/3AGOiaoRXMSjswCLtuNqv5/tracks?uris=spotify%3Atrack%3A01iyCAUm8EvOFqVWYJ3dVX%2Cspotify%3Atrack%3A01iyCAUm8EvOFqVWYJ3dVX&position=0",
             defaultRequest.getUri().toString());
 
     assertHasAuthorizationHeader(bodyRequest);
@@ -49,7 +50,7 @@ public class AddTracksToPlaylistRequestTest extends AbstractDataTest<SnapshotRes
     assertHasBodyParameter(
             bodyRequest,
             "uris",
-            "[\"" + ID_TRACK + "\",\"" + ID_TRACK + "\"]");
+            "[\"spotify:track:" + ID_TRACK + "\",\"spotify:track:" + ID_TRACK + "\"]");
     assertHasBodyParameter(
             bodyRequest,
             "position",
