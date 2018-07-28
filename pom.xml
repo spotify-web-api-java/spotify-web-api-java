@@ -144,6 +144,7 @@
                             <reportOutputDirectory>${project.basedir}</reportOutputDirectory>
                             <destDir>docs</destDir>
                             <subpackages>com.wrapper.spotify</subpackages>
+                            <additionalOptions>-html5</additionalOptions>
                         </configuration>
                     </plugin>
                     <plugin>
