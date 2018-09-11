@@ -57,7 +57,7 @@ public class SpotifyHttpManager implements IHttpManager {
 
     CacheConfig cacheConfig = CacheConfig.custom()
             .setMaxCacheEntries(cacheMaxEntries != null ? cacheMaxEntries : DEFAULT_CACHE_MAX_ENTRIES)
-            .setMaxObjectSize(cacheMaxEntries != null ? cacheMaxEntries : DEFAULT_CACHE_MAX_OBJECT_SIZE)
+            .setMaxObjectSize(cacheMaxObjectSize != null ? cacheMaxObjectSize : DEFAULT_CACHE_MAX_OBJECT_SIZE)
             .setSharedCache(false)
             .build();
 
