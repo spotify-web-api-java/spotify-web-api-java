@@ -31,7 +31,7 @@ public class SpotifyHttpManager implements IHttpManager {
 
   private static final int DEFAULT_CACHE_MAX_ENTRIES = 1000;
   private static final int DEFAULT_CACHE_MAX_OBJECT_SIZE = 8192;
-  private static CloseableHttpClient httpClient = CachingHttpClients.custom().build();
+  private final CloseableHttpClient httpClient;
   private final HttpHost proxy;
   private final UsernamePasswordCredentials proxyCredentials;
   private final Integer cacheMaxEntries;
@@ -90,8 +90,7 @@ public class SpotifyHttpManager implements IHttpManager {
                     : RequestConfig.DEFAULT.getSocketTimeout())
             .build();
 
-
-    httpClient = CachingHttpClients
+    this.httpClient = CachingHttpClients
             .custom()
             .setCacheConfig(cacheConfig)
             .setDefaultConnectionConfig(connectionConfig)
