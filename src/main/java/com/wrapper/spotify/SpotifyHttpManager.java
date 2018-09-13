@@ -36,6 +36,9 @@ public class SpotifyHttpManager implements IHttpManager {
   private final UsernamePasswordCredentials proxyCredentials;
   private final Integer cacheMaxEntries;
   private final Integer cacheMaxObjectSize;
+  private final Integer connectionRequestTimeout;
+  private final Integer connectTimeout;
+  private final Integer socketTimeout;
 
   /**
    * Construct a new SpotifyHttpManager instance.
@@ -47,11 +50,14 @@ public class SpotifyHttpManager implements IHttpManager {
     this.proxyCredentials = builder.proxyCredentials;
     this.cacheMaxEntries = builder.cacheMaxEntries;
     this.cacheMaxObjectSize = builder.cacheMaxObjectSize;
+    this.connectionRequestTimeout = builder.connectionRequestTimeout;
+    this.connectTimeout = builder.connectTimeout;
+    this.socketTimeout = builder.socketTimeout;
 
 
     CacheConfig cacheConfig = CacheConfig.custom()
             .setMaxCacheEntries(cacheMaxEntries != null ? cacheMaxEntries : DEFAULT_CACHE_MAX_ENTRIES)
-            .setMaxObjectSize(cacheMaxEntries != null ? cacheMaxEntries : DEFAULT_CACHE_MAX_OBJECT_SIZE)
+            .setMaxObjectSize(cacheMaxObjectSize != null ? cacheMaxObjectSize : DEFAULT_CACHE_MAX_OBJECT_SIZE)
             .setSharedCache(false)
             .build();
 
@@ -73,6 +79,15 @@ public class SpotifyHttpManager implements IHttpManager {
             .custom()
             .setCookieSpec(CookieSpecs.DEFAULT)
             .setProxy(proxy)
+            .setConnectionRequestTimeout(builder.connectionRequestTimeout != null
+                    ? builder.connectionRequestTimeout
+                    : RequestConfig.DEFAULT.getConnectionRequestTimeout())
+            .setConnectTimeout(builder.connectTimeout != null
+                    ? builder.connectTimeout
+                    : RequestConfig.DEFAULT.getConnectTimeout())
+            .setSocketTimeout(builder.socketTimeout != null
+                    ? builder.socketTimeout
+                    : RequestConfig.DEFAULT.getSocketTimeout())
             .build();
 
 
@@ -110,6 +125,18 @@ public class SpotifyHttpManager implements IHttpManager {
 
   public Integer getCacheMaxObjectSize() {
     return cacheMaxObjectSize;
+  }
+
+  public Integer getConnectionRequestTimeout() {
+    return connectionRequestTimeout;
+  }
+
+  public Integer getConnectTimeout() {
+    return connectTimeout;
+  }
+
+  public Integer getSocketTimeout() {
+    return socketTimeout;
   }
 
   @Override
@@ -296,6 +323,9 @@ public class SpotifyHttpManager implements IHttpManager {
     private UsernamePasswordCredentials proxyCredentials;
     private Integer cacheMaxEntries;
     private Integer cacheMaxObjectSize;
+    private Integer connectionRequestTimeout;
+    private Integer connectTimeout;
+    private Integer socketTimeout;
 
     public Builder setProxy(HttpHost proxy) {
       this.proxy = proxy;
@@ -314,6 +344,21 @@ public class SpotifyHttpManager implements IHttpManager {
 
     public Builder setCacheMaxObjectSize(Integer cacheMaxObjectSize) {
       this.cacheMaxObjectSize = cacheMaxObjectSize;
+      return this;
+    }
+
+    public Builder setConnectionRequestTimeout(Integer connectionRequestTimeout) {
+      this.connectionRequestTimeout = connectionRequestTimeout;
+      return this;
+    }
+
+    public Builder setConnectTimeout(Integer connectTimeout) {
+      this.connectTimeout = connectTimeout;
+      return this;
+    }
+
+    public Builder setSocketTimeout(Integer socketTimeout) {
+      this.socketTimeout = socketTimeout;
       return this;
     }
 
