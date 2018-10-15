@@ -26,6 +26,7 @@ public class StartResumeUsersPlaybackRequestTest extends AbstractDataTest<String
           .device_id(DEVICE_ID)
           .offset(OFFSET_JSON)
           .uris(URIS)
+          .position_ms(POSITION_MS)
           .build();
 
   public StartResumeUsersPlaybackRequestTest() throws Exception {
@@ -48,7 +49,7 @@ public class StartResumeUsersPlaybackRequestTest extends AbstractDataTest<String
             "offset",
             OFFSET_JSON);
     assertEquals(
-            "https://api.spotify.com:443/v1/me/player/play?device_id=5fbb3ba6aa454b5534c4ba43a8c7e8e45a63ad0e",
+            "https://api.spotify.com:443/v1/me/player/play?device_id=5fbb3ba6aa454b5534c4ba43a8c7e8e45a63ad0e&position_ms=10000",
             defaultRequest.getUri().toString());
   }
 

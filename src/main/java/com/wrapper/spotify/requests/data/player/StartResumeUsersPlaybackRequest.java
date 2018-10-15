@@ -117,6 +117,20 @@ public class StartResumeUsersPlaybackRequest extends AbstractDataRequest {
     }
 
     /**
+     * The position setter.
+     *
+     * @param position_ms Optional. Indicates from what position to start playback. Must be a positive number. Passing
+     *                    in a position that is greater than the length of the track will cause the player to start
+     *                    playing the next song.
+     * @return A {@link StartResumeUsersPlaybackRequest.Builder}.
+     */
+    public Builder position_ms(final Integer position_ms) {
+      assert (position_ms != null);
+      assert (position_ms >= 0);
+      return setQueryParameter("position_ms", position_ms);
+    }
+
+    /**
      * The request build method.
      *
      * @return A custom {@link StartResumeUsersPlaybackRequest}.
