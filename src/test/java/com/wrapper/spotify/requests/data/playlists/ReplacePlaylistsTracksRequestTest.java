@@ -19,13 +19,13 @@ import static org.junit.Assert.assertNull;
 @RunWith(MockitoJUnitRunner.class)
 public class ReplacePlaylistsTracksRequestTest extends AbstractDataTest<String> {
   private final ReplacePlaylistsTracksRequest defaultRequest = SPOTIFY_API
-          .replacePlaylistsTracks(ID_USER, ID_PLAYLIST, new String[]{"spotify:track:" + ID_TRACK, "spotify:track:" + ID_TRACK})
+          .replacePlaylistsTracks(ID_PLAYLIST, new String[]{"spotify:track:" + ID_TRACK, "spotify:track:" + ID_TRACK})
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
                           "requests/data/playlists/ReplacePlaylistsTracksRequest.json"))
           .build();
   private final ReplacePlaylistsTracksRequest bodyRequest = SPOTIFY_API
-          .replacePlaylistsTracks(ID_USER, ID_PLAYLIST, new JsonParser()
+          .replacePlaylistsTracks(ID_PLAYLIST, new JsonParser()
                   .parse("[\"spotify:track:" + ID_TRACK + "\",\"spotify:track:" + ID_TRACK + "\"]").getAsJsonArray())
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
@@ -39,7 +39,7 @@ public class ReplacePlaylistsTracksRequestTest extends AbstractDataTest<String> 
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
     assertEquals(
-            "https://api.spotify.com:443/v1/users/abbaspotify/playlists/3AGOiaoRXMSjswCLtuNqv5/tracks?uris=spotify%3Atrack%3A01iyCAUm8EvOFqVWYJ3dVX%2Cspotify%3Atrack%3A01iyCAUm8EvOFqVWYJ3dVX",
+            "https://api.spotify.com:443/v1/playlists/3AGOiaoRXMSjswCLtuNqv5/tracks?uris=spotify%3Atrack%3A01iyCAUm8EvOFqVWYJ3dVX%2Cspotify%3Atrack%3A01iyCAUm8EvOFqVWYJ3dVX",
             defaultRequest.getUri().toString());
 
     assertHasAuthorizationHeader(bodyRequest);
@@ -49,7 +49,7 @@ public class ReplacePlaylistsTracksRequestTest extends AbstractDataTest<String> 
             "uris",
             "[\"spotify:track:" + ID_TRACK + "\",\"spotify:track:" + ID_TRACK + "\"]");
     assertEquals(
-            "https://api.spotify.com:443/v1/users/abbaspotify/playlists/3AGOiaoRXMSjswCLtuNqv5/tracks",
+            "https://api.spotify.com:443/v1/playlists/3AGOiaoRXMSjswCLtuNqv5/tracks",
             bodyRequest.getUri().toString());
   }
 

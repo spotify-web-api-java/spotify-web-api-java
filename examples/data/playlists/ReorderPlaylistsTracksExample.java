@@ -11,7 +11,6 @@ import java.util.concurrent.Future;
 
 public class ReorderPlaylistsTracksExample {
   private static final String accessToken = "taHZ2SdB-bPA3FsK3D7ZN5npZS47cMy-IEySVEGttOhXmqaVAIo0ESvTCLjLBifhHOHOIuhFUKPW1WMDP7w6dj3MAZdWT8CLI2MkZaXbYLTeoDvXesf2eeiLYPBGdx8tIwQJKgV8XdnzH_DONk";
-  private static final String userId = "user_id";
   private static final String playlistId = "3AGOiaoRXMSjswCLtuNqv5";
   private static final int rangeStart = 0;
   private static final int rangeLength = 1;
@@ -21,7 +20,7 @@ public class ReorderPlaylistsTracksExample {
           .setAccessToken(accessToken)
           .build();
   private static final ReorderPlaylistsTracksRequest reorderPlaylistsTracksRequest = spotifyApi.
-          reorderPlaylistsTracks(userId, playlistId, rangeStart, insertBefore)
+          reorderPlaylistsTracks(playlistId, rangeStart, insertBefore)
           .range_length(rangeLength)
           .snapshot_id("JbtmHBDBAYu3/bt8BOXKjzKx3i0b6LCa/wVjyl6qQ2Yf6nFXkbmzuEa+ZI/U1yF+")
           .build();

@@ -16,7 +16,7 @@ import static org.junit.Assert.assertEquals;
 @RunWith(MockitoJUnitRunner.class)
 public class GetPlaylistCoverImageRequestTest extends AbstractDataTest<Image[]> {
   private final GetPlaylistCoverImageRequest defaultRequest = SPOTIFY_API
-          .getPlaylistCoverImage(ID_USER, ID_PLAYLIST)
+          .getPlaylistCoverImage(ID_PLAYLIST)
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
                           "requests/data/playlists/GetPlaylistCoverImageRequest.json"))
@@ -29,7 +29,7 @@ public class GetPlaylistCoverImageRequestTest extends AbstractDataTest<Image[]> 
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
     assertEquals(
-            "https://api.spotify.com:443/v1/users/abbaspotify/playlists/3AGOiaoRXMSjswCLtuNqv5/images",
+            "https://api.spotify.com:443/v1/playlists/3AGOiaoRXMSjswCLtuNqv5/images",
             defaultRequest.getUri().toString());
   }
 

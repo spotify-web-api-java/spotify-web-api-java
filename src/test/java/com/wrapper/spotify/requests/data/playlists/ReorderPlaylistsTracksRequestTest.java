@@ -18,7 +18,7 @@ import static org.junit.Assert.assertEquals;
 @RunWith(MockitoJUnitRunner.class)
 public class ReorderPlaylistsTracksRequestTest extends AbstractDataTest<SnapshotResult> {
   private final ReorderPlaylistsTracksRequest defaultRequest = SPOTIFY_API
-          .reorderPlaylistsTracks(ID_USER, ID_PLAYLIST, RANGE_START, INSERT_BEFORE)
+          .reorderPlaylistsTracks(ID_PLAYLIST, RANGE_START, INSERT_BEFORE)
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
                           "requests/data/playlists/ReorderPlaylistsTracksRequest.json"))
@@ -50,7 +50,7 @@ public class ReorderPlaylistsTracksRequestTest extends AbstractDataTest<Snapshot
             "snapshot_id",
             SNAPSHOT_ID);
     assertEquals(
-            "https://api.spotify.com:443/v1/users/abbaspotify/playlists/3AGOiaoRXMSjswCLtuNqv5/tracks",
+            "https://api.spotify.com:443/v1/playlists/3AGOiaoRXMSjswCLtuNqv5/tracks",
             defaultRequest.getUri().toString());
   }
 

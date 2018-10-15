@@ -16,7 +16,7 @@ import static org.junit.Assert.*;
 @RunWith(MockitoJUnitRunner.class)
 public class UploadCustomPlaylistCoverImageRequestTest extends AbstractDataTest<String> {
   private final UploadCustomPlaylistCoverImageRequest defaultRequest = SPOTIFY_API
-          .uploadCustomPlaylistCoverImage(ID_USER, ID_PLAYLIST)
+          .uploadCustomPlaylistCoverImage(ID_PLAYLIST)
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
                           "requests/data/playlists/UploadCustomPlaylistCoverImageRequest.json"))
@@ -33,7 +33,7 @@ public class UploadCustomPlaylistCoverImageRequestTest extends AbstractDataTest<
     assertNotNull(
             defaultRequest.getBody());
     assertEquals(
-            "https://api.spotify.com:443/v1/users/abbaspotify/playlists/3AGOiaoRXMSjswCLtuNqv5/images",
+            "https://api.spotify.com:443/v1/playlists/3AGOiaoRXMSjswCLtuNqv5/images",
             defaultRequest.getUri().toString());
   }
 

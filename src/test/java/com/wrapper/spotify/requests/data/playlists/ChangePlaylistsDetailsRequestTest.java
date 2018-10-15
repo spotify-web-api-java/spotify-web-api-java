@@ -18,7 +18,7 @@ import static org.junit.Assert.assertNull;
 @RunWith(MockitoJUnitRunner.class)
 public class ChangePlaylistsDetailsRequestTest extends AbstractDataTest<String> {
   private final ChangePlaylistsDetailsRequest defaultRequest = SPOTIFY_API
-          .changePlaylistsDetails(ID_USER, ID_PLAYLIST)
+          .changePlaylistsDetails(ID_PLAYLIST)
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
                           "requests/data/playlists/ChangePlaylistsDetailsRequest.json"))
@@ -52,7 +52,7 @@ public class ChangePlaylistsDetailsRequestTest extends AbstractDataTest<String> 
             "description",
             DESCRIPTION);
     assertEquals(
-            "https://api.spotify.com:443/v1/users/abbaspotify/playlists/3AGOiaoRXMSjswCLtuNqv5",
+            "https://api.spotify.com:443/v1/playlists/3AGOiaoRXMSjswCLtuNqv5",
             defaultRequest.getUri().toString());
   }
 

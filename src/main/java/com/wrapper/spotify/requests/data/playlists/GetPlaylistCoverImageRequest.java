@@ -50,10 +50,13 @@ public class GetPlaylistCoverImageRequest extends AbstractDataRequest {
     /**
      * The user ID setter.
      *
+     * @deprecated Playlist IDs are unique for themselves. This parameter is thus no longer used.
+     * (https://developer.spotify.com/community/news/2018/06/12/changes-to-playlist-uris/)
      * @param user_id The user's Spotify user ID.
      * @return A {@link GetPlaylistCoverImageRequest.Builder}.
      * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URIs &amp; IDs</a>
      */
+    @Deprecated
     public Builder user_id(final String user_id) {
       assert (user_id != null);
       assert (!user_id.equals(""));
@@ -80,7 +83,7 @@ public class GetPlaylistCoverImageRequest extends AbstractDataRequest {
      */
     @Override
     public GetPlaylistCoverImageRequest build() {
-      setPath("/v1/users/{user_id}/playlists/{playlist_id}/images");
+      setPath("/v1/playlists/{playlist_id}/images");
       return new GetPlaylistCoverImageRequest(this);
     }
   }

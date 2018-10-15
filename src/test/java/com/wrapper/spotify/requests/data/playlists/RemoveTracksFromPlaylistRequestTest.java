@@ -18,7 +18,7 @@ import static org.junit.Assert.assertEquals;
 @RunWith(MockitoJUnitRunner.class)
 public class RemoveTracksFromPlaylistRequestTest extends AbstractDataTest<SnapshotResult> {
   private final RemoveTracksFromPlaylistRequest defaultRequest = SPOTIFY_API
-          .removeTracksFromPlaylist(ID_USER, ID_PLAYLIST, new JsonParser()
+          .removeTracksFromPlaylist(ID_PLAYLIST, new JsonParser()
                   .parse("[{\"uri\":\"" + ID_TRACK + "\"},{\"uri\":\"" + ID_TRACK + "\"}]").getAsJsonArray())
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
@@ -37,7 +37,7 @@ public class RemoveTracksFromPlaylistRequestTest extends AbstractDataTest<Snapsh
             "tracks",
             "[{\"uri\":\"" + ID_TRACK + "\"},{\"uri\":\"" + ID_TRACK + "\"}]");
     assertEquals(
-            "https://api.spotify.com:443/v1/users/abbaspotify/playlists/3AGOiaoRXMSjswCLtuNqv5/tracks",
+            "https://api.spotify.com:443/v1/playlists/3AGOiaoRXMSjswCLtuNqv5/tracks",
             defaultRequest.getUri().toString());
   }
 

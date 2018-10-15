@@ -17,7 +17,7 @@ import static org.junit.Assert.*;
 @RunWith(MockitoJUnitRunner.class)
 public class GetPlaylistRequestTest extends AbstractDataTest<Playlist> {
   private final GetPlaylistRequest defaultRequest = SPOTIFY_API
-          .getPlaylist(ID_USER, ID_PLAYLIST)
+          .getPlaylist(ID_PLAYLIST)
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
                           "requests/data/playlists/GetPlaylistRequest.json"))
@@ -32,7 +32,7 @@ public class GetPlaylistRequestTest extends AbstractDataTest<Playlist> {
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
     assertEquals(
-            "https://api.spotify.com:443/v1/users/abbaspotify/playlists/3AGOiaoRXMSjswCLtuNqv5?fields=description&market=SE",
+            "https://api.spotify.com:443/v1/playlists/3AGOiaoRXMSjswCLtuNqv5?fields=description&market=SE",
             defaultRequest.getUri().toString());
   }
 

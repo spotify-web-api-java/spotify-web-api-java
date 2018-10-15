@@ -20,14 +20,14 @@ import static org.junit.Assert.assertEquals;
 @RunWith(MockitoJUnitRunner.class)
 public class AddTracksToPlaylistRequestTest extends AbstractDataTest<SnapshotResult> {
   private final AddTracksToPlaylistRequest defaultRequest = SPOTIFY_API
-          .addTracksToPlaylist(ID_USER, ID_PLAYLIST, new Gson().fromJson(URIS, String[].class))
+          .addTracksToPlaylist(ID_PLAYLIST, new Gson().fromJson(URIS, String[].class))
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
                           "requests/data/playlists/AddTracksToPlaylistRequest.json"))
           .position(POSITION)
           .build();
   private final AddTracksToPlaylistRequest bodyRequest = SPOTIFY_API
-          .addTracksToPlaylist(ID_USER, ID_PLAYLIST, new JsonParser()
+          .addTracksToPlaylist(ID_PLAYLIST, new JsonParser()
                   .parse(URIS.toString()).getAsJsonArray())
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
@@ -42,7 +42,7 @@ public class AddTracksToPlaylistRequestTest extends AbstractDataTest<SnapshotRes
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
     assertEquals(
-            "https://api.spotify.com:443/v1/users/abbaspotify/playlists/3AGOiaoRXMSjswCLtuNqv5/tracks?uris=spotify%3Atrack%3A01iyCAUm8EvOFqVWYJ3dVX%2Cspotify%3Atrack%3A01iyCAUm8EvOFqVWYJ3dVX&position=0",
+            "https://api.spotify.com:443/v1/playlists/3AGOiaoRXMSjswCLtuNqv5/tracks?uris=spotify%3Atrack%3A01iyCAUm8EvOFqVWYJ3dVX%2Cspotify%3Atrack%3A01iyCAUm8EvOFqVWYJ3dVX&position=0",
             defaultRequest.getUri().toString());
 
     assertHasAuthorizationHeader(bodyRequest);
@@ -56,7 +56,7 @@ public class AddTracksToPlaylistRequestTest extends AbstractDataTest<SnapshotRes
             "position",
             POSITION);
     assertEquals(
-            "https://api.spotify.com:443/v1/users/abbaspotify/playlists/3AGOiaoRXMSjswCLtuNqv5/tracks",
+            "https://api.spotify.com:443/v1/playlists/3AGOiaoRXMSjswCLtuNqv5/tracks",
             bodyRequest.getUri().toString());
   }
 
