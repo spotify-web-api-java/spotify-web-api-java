@@ -48,8 +48,12 @@ public class StartResumeUsersPlaybackRequestTest extends AbstractDataTest<String
             defaultRequest,
             "offset",
             OFFSET_JSON);
+    assertHasBodyParameter(
+    		defaultRequest,
+    		"position_ms",
+    		POSITION_MS);
     assertEquals(
-            "https://api.spotify.com:443/v1/me/player/play?device_id=5fbb3ba6aa454b5534c4ba43a8c7e8e45a63ad0e&position_ms=10000",
+            "https://api.spotify.com:443/v1/me/player/play?device_id=5fbb3ba6aa454b5534c4ba43a8c7e8e45a63ad0e",
             defaultRequest.getUri().toString());
   }
 

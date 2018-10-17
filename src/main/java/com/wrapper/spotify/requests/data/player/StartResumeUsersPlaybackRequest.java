@@ -127,7 +127,7 @@ public class StartResumeUsersPlaybackRequest extends AbstractDataRequest {
     public Builder position_ms(final Integer position_ms) {
       assert (position_ms != null);
       assert (position_ms >= 0);
-      return setQueryParameter("position_ms", position_ms);
+      return setBodyParameter("position_ms", position_ms);
     }
 
     /**
