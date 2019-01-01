@@ -1,5 +1,6 @@
 package com.wrapper.spotify;
 
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.JsonSyntaxException;
@@ -264,13 +265,17 @@ public class SpotifyHttpManager implements IHttpManager {
 
     if (responseBody != null && !responseBody.equals("")) {
       try {
-        final JsonObject jsonObject = new JsonParser().parse(responseBody).getAsJsonObject();
+        final JsonElement jsonElement = new JsonParser().parse(responseBody);
 
-        if (jsonObject.has("error")) {
-          if (jsonObject.has("error_description")) {
-            errorMessage = jsonObject.get("error_description").getAsString();
-          } else if (jsonObject.get("error").isJsonObject() && jsonObject.getAsJsonObject("error").has("message")) {
-            errorMessage = jsonObject.getAsJsonObject("error").get("message").getAsString();
+        if (jsonElement.isJsonObject()) {
+          final JsonObject jsonObject = new JsonParser().parse(responseBody).getAsJsonObject();
+
+          if (jsonObject.has("error")) {
+            if (jsonObject.has("error_description")) {
+              errorMessage = jsonObject.get("error_description").getAsString();
+            } else if (jsonObject.get("error").isJsonObject() && jsonObject.getAsJsonObject("error").has("message")) {
+              errorMessage = jsonObject.getAsJsonObject("error").get("message").getAsString();
+            }
           }
         }
       } catch (JsonSyntaxException e) {
