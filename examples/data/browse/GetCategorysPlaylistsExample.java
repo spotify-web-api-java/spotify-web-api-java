@@ -19,9 +19,9 @@ public class GetCategorysPlaylistsExample {
           .setAccessToken(accessToken)
           .build();
   private static final GetCategorysPlaylistsRequest getCategoryRequest = spotifyApi.getCategorysPlaylists(categoryId)
-          .country(CountryCode.SE)
-          .limit(10)
-          .offset(0)
+//          .country(CountryCode.SE)
+//          .limit(10)
+//          .offset(0)
           .build();
 
   public static void getCategorysPlaylists_Sync() {

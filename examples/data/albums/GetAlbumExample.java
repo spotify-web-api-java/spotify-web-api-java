@@ -18,7 +18,7 @@ public class GetAlbumExample {
           .setAccessToken(accessToken)
           .build();
   private static final GetAlbumRequest getAlbumRequest = spotifyApi.getAlbum(id)
-          .market(CountryCode.SE)
+//          .market(CountryCode.SE)
           .build();
 
   public static void getAlbum_Sync() {

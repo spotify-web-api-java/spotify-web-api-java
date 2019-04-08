@@ -18,8 +18,8 @@ public class GetPlaylistExample {
           .setAccessToken(accessToken)
           .build();
   private static final GetPlaylistRequest getPlaylistRequest = spotifyApi.getPlaylist(playlistId)
-          .fields("description")
-          .market(CountryCode.SE)
+//          .fields("description")
+//          .market(CountryCode.SE)
           .build();
 
   public static void getPlaylist_Sync() {

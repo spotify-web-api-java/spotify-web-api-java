@@ -18,8 +18,8 @@ public class GetCategoryExample {
           .setAccessToken(accessToken)
           .build();
   private static final GetCategoryRequest getCategoryRequest = spotifyApi.getCategory(categoryId)
-          .country(CountryCode.SE)
-          .locale("sv_SE")
+//          .country(CountryCode.SE)
+//          .locale("sv_SE")
           .build();
 
   public static void getCategory_Sync() {

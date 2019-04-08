@@ -19,9 +19,9 @@ public class SearchPlaylistsExample {
           .setAccessToken(accessToken)
           .build();
   private static final SearchPlaylistsRequest searchPlaylistsRequest = spotifyApi.searchPlaylists(q)
-          .market(CountryCode.SE)
-          .limit(10)
-          .offset(0)
+//          .market(CountryCode.SE)
+//          .limit(10)
+//          .offset(0)
           .build();
 
   public static void searchPlaylists_Sync() {

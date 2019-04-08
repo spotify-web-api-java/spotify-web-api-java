@@ -19,10 +19,10 @@ public class GetListOfFeaturedPlaylistsExample {
           .build();
   private static final GetListOfFeaturedPlaylistsRequest getListOfFeaturedPlaylistsRequest = spotifyApi
           .getListOfFeaturedPlaylists()
-          .country(CountryCode.SE)
-          .limit(10)
-          .offset(0)
-          .timestamp(new Date(1414054800000L))
+//          .country(CountryCode.SE)
+//          .limit(10)
+//          .offset(0)
+//          .timestamp(new Date(1414054800000L))
           .build();
 
   public static void getListOfFeaturedPlaylists_Sync() {

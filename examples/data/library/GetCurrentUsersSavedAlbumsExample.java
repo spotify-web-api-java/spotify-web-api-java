@@ -19,9 +19,9 @@ public class GetCurrentUsersSavedAlbumsExample {
           .build();
   private static final GetCurrentUsersSavedAlbumsRequest getCurrentUsersSavedAlbumsRequest = spotifyApi
           .getCurrentUsersSavedAlbums()
-          .limit(10)
-          .market(CountryCode.SE)
-          .offset(0)
+//          .limit(10)
+//          .market(CountryCode.SE)
+//          .offset(0)
           .build();
 
   public static void getCurrentUsersSavedAlbums_Sync() {

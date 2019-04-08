@@ -19,7 +19,7 @@ public class AddTracksToPlaylistExample {
           .build();
   private static final AddTracksToPlaylistRequest addTracksToPlaylistRequest = spotifyApi
           .addTracksToPlaylist(playlistId, uris)
-          .position(0)
+//          .position(0)
           .build();
 
   public static void addTracksToPlaylist_Sync() {

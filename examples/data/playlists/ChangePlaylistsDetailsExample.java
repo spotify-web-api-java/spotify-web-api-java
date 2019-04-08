@@ -17,10 +17,10 @@ public class ChangePlaylistsDetailsExample {
           .build();
   private static final ChangePlaylistsDetailsRequest changePlaylistsDetailsRequest = spotifyApi
           .changePlaylistsDetails(playlistId)
-          .name("Abba")
-          .public_(false)
-          .collaborative(false)
-          .description("Amazing music.")
+//          .name("Abba")
+//          .public_(false)
+//          .collaborative(false)
+//          .description("Amazing music.")
           .build();
 
   public static void changePlaylistsDetails_Sync() {

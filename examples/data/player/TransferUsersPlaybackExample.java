@@ -18,8 +18,8 @@ public class TransferUsersPlaybackExample {
           .setAccessToken(accessToken)
           .build();
   private static final TransferUsersPlaybackRequest transferUsersPlaybackRequest = spotifyApi
-          .transferUsersPlayback(deviceIds)
-          .play(false)
+//          .transferUsersPlayback(deviceIds)
+//          .play(false)
           .build();
 
   public static void transferUsersPlayback_Sync() {

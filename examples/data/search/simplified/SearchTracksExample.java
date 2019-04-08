@@ -19,9 +19,9 @@ public class SearchTracksExample {
           .setAccessToken(accessToken)
           .build();
   private static final SearchTracksRequest searchTracksRequest = spotifyApi.searchTracks(q)
-          .market(CountryCode.SE)
-          .limit(10)
-          .offset(0)
+//          .market(CountryCode.SE)
+//          .limit(10)
+//          .offset(0)
           .build();
 
   public static void searchTracks_Sync() {

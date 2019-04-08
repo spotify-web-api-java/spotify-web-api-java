@@ -19,10 +19,10 @@ public class GetArtistsAlbumsExample {
           .setAccessToken(accessToken)
           .build();
   private static final GetArtistsAlbumsRequest getArtistsAlbumsRequest = spotifyApi.getArtistsAlbums(id)
-          .album_type("album")
-          .limit(10)
-          .offset(0)
-          .market(CountryCode.SE)
+//          .album_type("album")
+//          .limit(10)
+//          .offset(0)
+//          .market(CountryCode.SE)
           .build();
 
   public static void getArtistsAlbums_Sync() {

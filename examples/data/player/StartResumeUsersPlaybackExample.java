@@ -17,11 +17,11 @@ public class StartResumeUsersPlaybackExample {
           .build();
   private static final StartResumeUsersPlaybackRequest startResumeUsersPlaybackRequest = spotifyApi
           .startResumeUsersPlayback()
-          .context_uri("spotify:album:5zT1JLIj9E57p3e1rFm9Uq")
-          .device_id("5fbb3ba6aa454b5534c4ba43a8c7e8e45a63ad0e")
-          .offset(new JsonParser().parse("{\"uri\":\"spotify:track:01iyCAUm8EvOFqVWYJ3dVX\"}").getAsJsonObject())
-          .uris(new JsonParser().parse("[\"spotify:track:01iyCAUm8EvOFqVWYJ3dVX\"]").getAsJsonArray())
-          .position_ms(10000)
+//          .context_uri("spotify:album:5zT1JLIj9E57p3e1rFm9Uq")
+//          .device_id("5fbb3ba6aa454b5534c4ba43a8c7e8e45a63ad0e")
+//          .offset(new JsonParser().parse("{\"uri\":\"spotify:track:01iyCAUm8EvOFqVWYJ3dVX\"}").getAsJsonObject())
+//          .uris(new JsonParser().parse("[\"spotify:track:01iyCAUm8EvOFqVWYJ3dVX\"]").getAsJsonArray())
+//          .position_ms(10000)
           .build();
 
   public static void startResumeUsersPlayback_Sync() {

@@ -17,9 +17,9 @@ public class GetUsersTopArtistsExample {
           .setAccessToken(accessToken)
           .build();
   private static final GetUsersTopArtistsRequest getUsersTopArtistsRequest = spotifyApi.getUsersTopArtists()
-          .limit(10)
-          .offset(0)
-          .time_range("medium_term")
+//          .limit(10)
+//          .offset(0)
+//          .time_range("medium_term")
           .build();
 
   public static void getUsersTopArtists_Sync() {

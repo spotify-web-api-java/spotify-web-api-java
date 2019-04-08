@@ -19,9 +19,9 @@ public class GetAlbumsTracksExample {
           .setAccessToken(accessToken)
           .build();
   private static final GetAlbumsTracksRequest getAlbumsTracksRequest = spotifyApi.getAlbumsTracks(id)
-          .limit(10)
-          .offset(0)
-          .market(CountryCode.SE)
+//          .limit(10)
+//          .offset(0)
+//          .market(CountryCode.SE)
           .build();
 
   public static void getAlbumsTracks_Sync() {

@@ -16,7 +16,7 @@ public class SkipUsersPlaybackToNextTrackExample {
           .build();
   private static final SkipUsersPlaybackToNextTrackRequest skipUsersPlaybackToNextTrackRequest = spotifyApi
           .skipUsersPlaybackToNextTrack()
-          .device_id("5fbb3ba6aa454b5534c4ba43a8c7e8e45a63ad0e")
+//          .device_id("5fbb3ba6aa454b5534c4ba43a8c7e8e45a63ad0e")
           .build();
 
   public static void skipUsersPlaybackToNextTrack_Sync() {

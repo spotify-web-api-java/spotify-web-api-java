@@ -20,10 +20,10 @@ public class GetPlaylistsTracksExample {
           .build();
   private static final GetPlaylistsTracksRequest getPlaylistsTracksRequest = spotifyApi
           .getPlaylistsTracks(playlistId)
-          .fields("description")
-          .limit(10)
-          .offset(0)
-          .market(CountryCode.SE)
+//          .fields("description")
+//          .limit(10)
+//          .offset(0)
+//          .market(CountryCode.SE)
           .build();
 
   public static void getPlaylistsTracks_Sync() {

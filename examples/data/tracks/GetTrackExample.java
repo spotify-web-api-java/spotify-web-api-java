@@ -18,7 +18,7 @@ public class GetTrackExample {
           .setAccessToken(accessToken)
           .build();
   private static final GetTrackRequest getTrackRequest = spotifyApi.getTrack(id)
-          .market(CountryCode.SE)
+//          .market(CountryCode.SE)
           .build();
 
   public static void getTrack_Sync() {

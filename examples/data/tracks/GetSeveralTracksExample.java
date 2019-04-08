@@ -18,7 +18,7 @@ public class GetSeveralTracksExample {
           .setAccessToken(accessToken)
           .build();
   private static final GetSeveralTracksRequest getSeveralTracksRequest = spotifyApi.getSeveralTracks(ids)
-          .market(CountryCode.SE)
+//          .market(CountryCode.SE)
           .build();
 
   public static void getSeveralTracks_Sync() {

@@ -19,8 +19,8 @@ public class GetListOfUsersPlaylistsExample {
           .build();
   private static final GetListOfUsersPlaylistsRequest getListOfUsersPlaylistsRequest = spotifyApi
           .getListOfUsersPlaylists(userId)
-          .limit(10)
-          .offset(0)
+//          .limit(10)
+//          .offset(0)
           .build();
 
   public static void getListOfUsersPlaylists_Sync() {

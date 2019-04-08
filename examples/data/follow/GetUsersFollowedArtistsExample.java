@@ -20,8 +20,8 @@ public class GetUsersFollowedArtistsExample {
           .build();
   private static final GetUsersFollowedArtistsRequest getUsersFollowedArtistsRequest = spotifyApi
           .getUsersFollowedArtists(type)
-          .after("0LcJLqbBmaGUft1e9Mm8HV")
-          .limit(10)
+//          .after("0LcJLqbBmaGUft1e9Mm8HV")
+//          .limit(10)
           .build();
 
   public static void getUsersFollowedArtists_Sync() {

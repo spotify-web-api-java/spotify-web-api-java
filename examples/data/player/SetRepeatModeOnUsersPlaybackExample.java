@@ -17,7 +17,7 @@ public class SetRepeatModeOnUsersPlaybackExample {
           .build();
   private static final SetRepeatModeOnUsersPlaybackRequest setRepeatModeOnUsersPlaybackRequest = spotifyApi
           .setRepeatModeOnUsersPlayback(state)
-          .device_id("5fbb3ba6aa454b5534c4ba43a8c7e8e45a63ad0e")
+//          .device_id("5fbb3ba6aa454b5534c4ba43a8c7e8e45a63ad0e")
           .build();
 
   public static void setRepeatModeOnUsersPlayback_Sync() {

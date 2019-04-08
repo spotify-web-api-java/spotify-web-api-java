@@ -20,9 +20,9 @@ public class GetUsersTopArtistsAndTracksExample {
           .build();
   private static final GetUsersTopArtistsAndTracksRequest getUsersTopArtistsAndTracksRequest = spotifyApi
           .getUsersTopArtistsAndTracks(type)
-          .limit(10)
-          .offset(0)
-          .time_range("medium_term")
+//          .limit(10)
+//          .offset(0)
+//          .time_range("medium_term")
           .build();
 
   @SuppressWarnings("unchecked")

@@ -18,7 +18,7 @@ public class GetUsersCurrentlyPlayingTrackExample {
           .build();
   private static final GetUsersCurrentlyPlayingTrackRequest getUsersCurrentlyPlayingTrackRequest = spotifyApi
           .getUsersCurrentlyPlayingTrack()
-          .market(CountryCode.SE)
+//          .market(CountryCode.SE)
           .build();
 
   public static void getUsersCurrentlyPlayingTrack_Sync() {

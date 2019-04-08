@@ -18,9 +18,9 @@ public class CreatePlaylistExample {
           .setAccessToken(accessToken)
           .build();
   private static final CreatePlaylistRequest createPlaylistRequest = spotifyApi.createPlaylist(userId, name)
-          .collaborative(false)
-          .public_(false)
-          .description("Amazing music.")
+//          .collaborative(false)
+//          .public_(false)
+//          .description("Amazing music.")
           .build();
 
   public static void createPlaylist_Sync() {

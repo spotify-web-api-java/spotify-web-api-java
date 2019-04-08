@@ -22,7 +22,7 @@ public class RemoveTracksFromPlaylistExample {
           .build();
   private static final RemoveTracksFromPlaylistRequest removeTracksFromPlaylistRequest = spotifyApi
           .removeTracksFromPlaylist(playlistId, tracks)
-          .snapshotId("JbtmHBDBAYu3/bt8BOXKjzKx3i0b6LCa/wVjyl6qQ2Yf6nFXkbmzuEa+ZI/U1yF+")
+//          .snapshotId("JbtmHBDBAYu3/bt8BOXKjzKx3i0b6LCa/wVjyl6qQ2Yf6nFXkbmzuEa+ZI/U1yF+")
           .build();
 
   public static void removeTracksFromPlaylist_Sync() {

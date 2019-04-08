@@ -17,14 +17,14 @@ public class GetRecommendationsExample {
           .setAccessToken(accessToken)
           .build();
   private static final GetRecommendationsRequest getRecommendationsRequest = spotifyApi.getRecommendations()
-          .limit(10)
-          .market(CountryCode.SE)
-          .max_popularity(50)
-          .min_popularity(10)
-          .seed_artists("0LcJLqbBmaGUft1e9Mm8HV")
-          .seed_genres("electro")
-          .seed_tracks("01iyCAUm8EvOFqVWYJ3dVX")
-          .target_popularity(20)
+//          .limit(10)
+//          .market(CountryCode.SE)
+//          .max_popularity(50)
+//          .min_popularity(10)
+//          .seed_artists("0LcJLqbBmaGUft1e9Mm8HV")
+//          .seed_genres("electro")
+//          .seed_tracks("01iyCAUm8EvOFqVWYJ3dVX")
+//          .target_popularity(20)
           .build();
 
   public static void getRecommendations_Sync() {

@@ -21,8 +21,8 @@ public class ReorderPlaylistsTracksExample {
           .build();
   private static final ReorderPlaylistsTracksRequest reorderPlaylistsTracksRequest = spotifyApi.
           reorderPlaylistsTracks(playlistId, rangeStart, insertBefore)
-          .range_length(rangeLength)
-          .snapshot_id("JbtmHBDBAYu3/bt8BOXKjzKx3i0b6LCa/wVjyl6qQ2Yf6nFXkbmzuEa+ZI/U1yF+")
+//          .range_length(rangeLength)
+//          .snapshot_id("JbtmHBDBAYu3/bt8BOXKjzKx3i0b6LCa/wVjyl6qQ2Yf6nFXkbmzuEa+ZI/U1yF+")
           .build();
 
   public static void reorderPlaylistsTracks_Sync() {

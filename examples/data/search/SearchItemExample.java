@@ -20,9 +20,9 @@ public class SearchItemExample {
           .setAccessToken(accessToken)
           .build();
   private static final SearchItemRequest searchItemRequest = spotifyApi.searchItem(q, type)
-          .market(CountryCode.SE)
-          .limit(10)
-          .offset(0)
+//          .market(CountryCode.SE)
+//          .limit(10)
+//          .offset(0)
           .build();
 
   public static void searchItem_Sync() {

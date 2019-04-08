@@ -19,9 +19,9 @@ public class SearchArtistsExample {
           .setAccessToken(accessToken)
           .build();
   private static final SearchArtistsRequest searchArtistsRequest = spotifyApi.searchArtists(q)
-          .market(CountryCode.SE)
-          .limit(10)
-          .offset(0)
+//          .market(CountryCode.SE)
+//          .limit(10)
+//          .offset(0)
           .build();
 
   public static void searchArtists_Sync() {

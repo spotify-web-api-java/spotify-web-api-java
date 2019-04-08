@@ -18,10 +18,10 @@ public class GetListOfCategoriesExample {
           .setAccessToken(accessToken)
           .build();
   private static final GetListOfCategoriesRequest getListOfCategoriesRequest = spotifyApi.getListOfCategories()
-          .country(CountryCode.SE)
-          .limit(10)
-          .offset(0)
-          .locale("sv_SE")
+//          .country(CountryCode.SE)
+//          .limit(10)
+//          .offset(0)
+//          .locale("sv_SE")
           .build();
 
   public static void getListOfCategories_Sync() {

@@ -18,9 +18,9 @@ public class GetListOfNewReleasesExample {
           .setAccessToken(accessToken)
           .build();
   private static final GetListOfNewReleasesRequest getListOfNewReleasesRequest = spotifyApi.getListOfNewReleases()
-          .country(CountryCode.SE)
-          .limit(10)
-          .offset(0)
+//          .country(CountryCode.SE)
+//          .limit(10)
+//          .offset(0)
           .build();
 
   public static void getListOfNewReleases_Sync() {

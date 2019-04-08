@@ -19,9 +19,9 @@ public class SearchAlbumsExample {
           .setAccessToken(accessToken)
           .build();
   private static final SearchAlbumsRequest searchAlbumsRequest = spotifyApi.searchAlbums(q)
-          .market(CountryCode.SE)
-          .limit(10)
-          .offset(0)
+//          .market(CountryCode.SE)
+//          .limit(10)
+//          .offset(0)
           .build();
 
   public static void searchAlbums_Sync() {

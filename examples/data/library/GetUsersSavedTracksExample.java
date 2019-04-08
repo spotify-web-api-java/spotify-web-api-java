@@ -18,9 +18,9 @@ public class GetUsersSavedTracksExample {
           .setAccessToken(accessToken)
           .build();
   private static final GetUsersSavedTracksRequest getUsersSavedTracksRequest = spotifyApi.getUsersSavedTracks()
-          .limit(10)
-          .offset(0)
-          .market(CountryCode.SE)
+//          .limit(10)
+//          .offset(0)
+//          .market(CountryCode.SE)
           .build();
 
   public static void getUsersSavedTracks_Sync() {
