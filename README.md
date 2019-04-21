@@ -17,8 +17,6 @@ This is a Java wrapper/client for the [Spotify Web API](https://developer.spotif
 5. **[Contributions](#Contributions)**
     1. **[Code Overview](#Code-Overview)**
 
-<a name="Installation"></a>
-
 ## Installation
 
 The artifact is available through
@@ -60,8 +58,6 @@ compile 'com.github.thelinmichael:spotify-web-api-java:master-SNAPSHOT'
 
 ---
 
-<a name="Jitpack"></a>
-
 ### Jitpack
 
 In order to use Jitpack you need to add their repository to your `pom.xml`:
@@ -85,14 +81,10 @@ allprojects {
 }
 ```
 
-<a name="Documentation"></a>
-
 ## Documentation
 See this project's **[Javadoc](https://thelinmichael.github.io/spotify-web-api-java/)**.
 
 *A huge thanks to [c-schuhmann](https://github.com/c-schuhmann) for his amazing work on the documentation!*
-
-<a name="General-Usage"></a>
 
 ## General Usage
 ```Java
@@ -135,8 +127,6 @@ void getSomething_Async() {
   }
 }
 ```
-
-<a name="Authorization"></a>
 
 ### Authorization
 For authorization requests the API object requires at least to have
@@ -189,8 +179,6 @@ spotifyApi
   .setRefreshToken("<your_refresh_token>")
   .build();
 ```
-
-<a name="Examples"></a>
 
 ## Examples
 - **Albums**
@@ -298,8 +286,6 @@ spotifyApi
   - [Get Current User's Profile](examples/data/users_profile/GetCurrentUsersProfileExample.java)
   - [Get a User's Profile](examples/data/users_profile/GetUsersProfileExample.java)
 
-<a name="Contributions"></a>
-
 ## Contributions
 See [CONTRIBUTING.md](CONTRIBUTING.md).
 
@@ -307,8 +293,6 @@ See [CONTRIBUTING.md](CONTRIBUTING.md).
 - Test: `mvn clean test`
 
 Requirements: Java, Maven.
-
-<a name="Code-Overview"></a>
 
 ### Code Overview
 This project's main Java package is divided into four sections:
