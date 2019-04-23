@@ -77,31 +77,6 @@ public class CurrentlyPlaying extends AbstractModelObject {
   }
 
   /**
-   * Helper method to compare two {@link CurrentlyPlaying} objects. Both objects only have to contain the same track URI
-   * to be equal. (eg. the same track object)
-   *
-   * @param obj Another {@link CurrentlyPlaying} object.
-   * @return Whether the objects are equal or not.
-   */
-  @Override
-  public boolean equals(Object obj) {
-    if (this == obj)
-      return true;
-    if (obj == null)
-      return false;
-    if (!(obj instanceof CurrentlyPlaying))
-      return false;
-
-    CurrentlyPlaying other = (CurrentlyPlaying) obj;
-
-    return this.getItem() != null
-            && other.getItem() != null
-            && this.getItem().getUri() != null
-            && other.getItem().getUri() != null
-            && this.getItem().getUri().equals(other.getItem().getUri());
-  }
-
-  /**
    * Builder class for building {@link CurrentlyPlaying} instances.
    */
   public static final class Builder extends AbstractModelObject.Builder {
