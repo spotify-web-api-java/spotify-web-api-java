@@ -6,7 +6,7 @@ import com.wrapper.spotify.requests.data.AbstractDataRequest;
 import java.io.IOException;
 
 /**
- * Remove the current user as a follower of a playlist.
+ * Remove the specified user as a follower of a playlist.
  */
 public class UnfollowPlaylistRequest extends AbstractDataRequest {
 

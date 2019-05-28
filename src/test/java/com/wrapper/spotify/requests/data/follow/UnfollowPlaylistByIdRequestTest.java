@@ -15,7 +15,7 @@ import static org.junit.Assert.assertNull;
 
 @RunWith(MockitoJUnitRunner.class)
 public class UnfollowPlaylistByIdRequestTest extends AbstractDataTest<String> {
-    private final UnfollowPlaylisByIdRequest defaultRequest = SPOTIFY_API
+    private final UnfollowPlaylistByIdRequest defaultRequest = SPOTIFY_API
             .unfollowPlaylist(ID_PLAYLIST)
             .setHttpManager(
                     TestUtil.MockedHttpManager.returningJson(

@@ -11,9 +11,9 @@ package com.wrapper.spotify.requests.data.follow;
 public class UnfollowPlaylistByIdRequest extends AbstractDataRequest {
 
     /**
-     * The private {@link UnfollowPlaylistRequest} constructor.
+     * The private {@link UnfollowPlaylistByIdRequest} constructor.
      *
-     * @param builder A {@link UnfollowPlaylistRequest.Builder}.
+     * @param builder A {@link UnfollowPlaylistByIdRequest.Builder}.
      */
     private UnfollowPlaylistByIdRequest(final Builder builder) {
         super(builder);
@@ -34,12 +34,12 @@ public class UnfollowPlaylistByIdRequest extends AbstractDataRequest {
     }
 
     /**
-     * Builder class for building an {@link UnfollowPlaylistRequest}.
+     * Builder class for building an {@link UnfollowPlaylistByIdRequest}.
      */
     public static final class Builder extends AbstractDataRequest.Builder<Builder> {
 
         /**
-         * Create a new {@link UnfollowPlaylistRequest.Builder} instance.
+         * Create a new {@link UnfollowPlaylistByIdRequest.Builder} instance.
          * <p>
          * Unfollowing a publicly followed playlist for a user requires authorization of the {@code playlist-modify-public}
          * scope; unfollowing a privately followed playlist requires the {@code playlist-modify-private} scope.
@@ -55,7 +55,7 @@ public class UnfollowPlaylistByIdRequest extends AbstractDataRequest {
          * The playlist ID setter.
          *
          * @param playlist_id The Spotify ID of the playlist that is to be no longer followed.
-         * @return An {@link UnfollowPlaylistRequest.Builder}.
+         * @return An {@link UnfollowPlaylistByIdRequest.Builder}.
          * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URIs &amp; IDs</a>
          */
         public Builder playlist_id(final String playlist_id) {
@@ -67,7 +67,7 @@ public class UnfollowPlaylistByIdRequest extends AbstractDataRequest {
         /**
          * The request build method.
          *
-         * @return A custom {@link UnfollowPlaylistRequest}.
+         * @return A custom {@link UnfollowPlaylistByIdRequest}.
          */
         @Override
         public UnfollowPlaylistByIdRequest build() {
