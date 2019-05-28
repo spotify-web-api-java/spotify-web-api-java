@@ -715,7 +715,7 @@ public class SpotifyApi {
   }
 
   /**
-   * Remove the current user as a follower of a playlist.
+   * Remove the specified user as a follower of a playlist.
    *
    * @param owner_id    The owners username.
    * @param playlist_id The playlist's ID.
@@ -726,6 +726,19 @@ public class SpotifyApi {
     return new UnfollowPlaylistRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .owner_id(owner_id)
+            .playlist_id(playlist_id);
+  }
+
+  /**
+   * Remove the current user as a follower of a playlist.
+   *
+   * @param playlist_id The playlist's ID.
+   * @return An {@link UnfollowPlaylistRequest.Builder}.
+   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   */
+  public UnfollowPlaylisByIdRequest.Builder unfollowPlaylist(String playlist_id) {
+    return new UnfollowPlaylisByIdRequest.Builder(accessToken)
+            .setDefaults(httpManager, scheme, host, port)
             .playlist_id(playlist_id);
   }
 
