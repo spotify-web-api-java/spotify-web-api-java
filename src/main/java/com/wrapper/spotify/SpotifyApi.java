@@ -736,8 +736,8 @@ public class SpotifyApi {
    * @return An {@link UnfollowPlaylistRequest.Builder}.
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
-  public UnfollowPlaylisByIdRequest.Builder unfollowPlaylist(String playlist_id) {
-    return new UnfollowPlaylisByIdRequest.Builder(accessToken)
+  public UnfollowPlaylistByIdRequest.Builder unfollowPlaylist(String playlist_id) {
+    return new UnfollowPlaylistByIdRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .playlist_id(playlist_id);
   }

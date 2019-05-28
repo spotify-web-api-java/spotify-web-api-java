@@ -8,14 +8,14 @@ package com.wrapper.spotify.requests.data.follow;
 /**
  * Remove the current user as a follower of a playlist.
  */
-public class UnfollowPlaylisByIdRequest extends AbstractDataRequest {
+public class UnfollowPlaylistByIdRequest extends AbstractDataRequest {
 
     /**
      * The private {@link UnfollowPlaylistRequest} constructor.
      *
      * @param builder A {@link UnfollowPlaylistRequest.Builder}.
      */
-    private UnfollowPlaylisByIdRequest(final Builder builder) {
+    private UnfollowPlaylistByIdRequest(final Builder builder) {
         super(builder);
     }
 
@@ -70,9 +70,9 @@ public class UnfollowPlaylisByIdRequest extends AbstractDataRequest {
          * @return A custom {@link UnfollowPlaylistRequest}.
          */
         @Override
-        public UnfollowPlaylisByIdRequest build() {
+        public UnfollowPlaylistByIdRequest build() {
             setPath("/v1/playlists/{playlist_id}/followers");
-            return new UnfollowPlaylisByIdRequest(this);
+            return new UnfollowPlaylistByIdRequest(this);
         }
     }
 }
