@@ -733,7 +733,7 @@ public class SpotifyApi {
    * Remove the current user as a follower of a playlist.
    *
    * @param playlist_id The playlist's ID.
-   * @return An {@link UnfollowPlaylistRequest.Builder}.
+   * @return An {@link UnfollowPlaylistByIdRequest.Builder}.
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public UnfollowPlaylistByIdRequest.Builder unfollowPlaylist(String playlist_id) {
