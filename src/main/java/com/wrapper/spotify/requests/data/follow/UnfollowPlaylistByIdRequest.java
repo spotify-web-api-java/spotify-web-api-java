@@ -1,9 +1,9 @@
 package com.wrapper.spotify.requests.data.follow;
 
-        import com.wrapper.spotify.exceptions.SpotifyWebApiException;
-        import com.wrapper.spotify.requests.data.AbstractDataRequest;
+import com.wrapper.spotify.exceptions.SpotifyWebApiException;
+import com.wrapper.spotify.requests.data.AbstractDataRequest;
 
-        import java.io.IOException;
+import java.io.IOException;
 
 /**
  * Remove the current user as a follower of a playlist.
