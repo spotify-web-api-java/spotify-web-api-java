@@ -719,11 +719,11 @@ public class SpotifyApi {
    *
    * @param owner_id    The owners username.
    * @param playlist_id The playlist's ID.
-   * @return An {@link UnfollowPlaylistRequest.Builder}.
+   * @return An {@link com.wrapper.spotify.requests.data.follow.legacy.UnfollowPlaylistRequest.Builder}.
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
-  public UnfollowPlaylistRequest.Builder unfollowPlaylist(String owner_id, String playlist_id) {
-    return new UnfollowPlaylistRequest.Builder(accessToken)
+  public com.wrapper.spotify.requests.data.follow.legacy.UnfollowPlaylistRequest.Builder unfollowPlaylist(String owner_id, String playlist_id) {
+    return new com.wrapper.spotify.requests.data.follow.legacy.UnfollowPlaylistRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .owner_id(owner_id)
             .playlist_id(playlist_id);
@@ -733,11 +733,11 @@ public class SpotifyApi {
    * Remove the current user as a follower of a playlist.
    *
    * @param playlist_id The playlist's ID.
-   * @return An {@link UnfollowPlaylistByIdRequest.Builder}.
+   * @return An {@link UnfollowPlaylistRequest.Builder}.
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
-  public UnfollowPlaylistByIdRequest.Builder unfollowPlaylist(String playlist_id) {
-    return new UnfollowPlaylistByIdRequest.Builder(accessToken)
+  public UnfollowPlaylistRequest.Builder unfollowPlaylist(String playlist_id) {
+    return new UnfollowPlaylistRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .playlist_id(playlist_id);
   }

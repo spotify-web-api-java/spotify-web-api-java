@@ -14,22 +14,22 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
 @RunWith(MockitoJUnitRunner.class)
-public class UnfollowPlaylistByIdRequestTest extends AbstractDataTest<String> {
-  private final UnfollowPlaylistByIdRequest defaultRequest = SPOTIFY_API
-          .unfollowPlaylist(ID_PLAYLIST)
+public class UnfollowPlaylistRequestTest extends AbstractDataTest<String> {
+  private final UnfollowPlaylistRequest defaultRequest = SPOTIFY_API
+          .unfollowPlaylist(ID_USER, ID_PLAYLIST)
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
                           "requests/data/follow/FollowArtistsOrUsersRequestTest.json"))
           .build();
 
-  public UnfollowPlaylistByIdRequestTest() throws Exception {
+  public UnfollowPlaylistRequestTest() throws Exception {
   }
 
   @Test
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
     assertEquals(
-            "https://api.spotify.com:443/v1/playlists/3AGOiaoRXMSjswCLtuNqv5/followers",
+            "https://api.spotify.com:443/v1/users/abbaspotify/playlists/3AGOiaoRXMSjswCLtuNqv5/followers",
             defaultRequest.getUri().toString());
   }
 
