@@ -1,4 +1,4 @@
-package com.wrapper.spotify.requests.data.follow;
+package com.wrapper.spotify.requests.data.follow.legacy;
 
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;

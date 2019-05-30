@@ -675,16 +675,37 @@ public class SpotifyApi {
    * @param public_     Default: true. If true the playlist will be included in user's public playlists, if false it
    *                    will remain private. To be able to follow playlists privately, the user must have granted the
    *                    playlist-modify-private scope.
-   * @return A {@link FollowPlaylistRequest.Builder}.
+   * @return A {@link com.wrapper.spotify.requests.data.follow.legacy.FollowPlaylistRequest.Builder}.
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
-  public FollowPlaylistRequest.Builder followPlaylist(String owner_id, String playlist_id, boolean public_) {
-    return new FollowPlaylistRequest.Builder(accessToken)
+  public com.wrapper.spotify.requests.data.follow.legacy.FollowPlaylistRequest.Builder followPlaylist(String owner_id, String playlist_id, boolean public_) {
+    return new com.wrapper.spotify.requests.data.follow.legacy.FollowPlaylistRequest.Builder(accessToken)
             .setDefaults(httpManager, scheme, host, port)
             .owner_id(owner_id)
             .playlist_id(playlist_id)
             .public_(public_);
   }
+
+
+
+  /**
+   * Add the current user as a follower of a playlist.
+   *
+   * @param playlist_id The Spotify ID of the playlist. Any playlist can be followed, regardless of its
+   *                    public/private status, as long as you know its playlist ID.
+   * @param public_     Default: true. If true the playlist will be included in user's public playlists, if false it
+   *                    will remain private. To be able to follow playlists privately, the user must have granted the
+   *                    playlist-modify-private scope.
+   * @return A {@link com.wrapper.spotify.requests.data.follow.legacy.FollowPlaylistRequest.Builder}.
+   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   */
+  public FollowPlaylistRequest.Builder followPlaylist(String playlist_id, boolean public_) {
+    return new FollowPlaylistRequest.Builder(accessToken)
+            .setDefaults(httpManager, scheme, host, port)
+            .playlist_id(playlist_id)
+            .public_(public_);
+  }
+
 
   /**
    * Get the current user’s followed artists.

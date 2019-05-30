@@ -53,19 +53,6 @@ public class FollowPlaylistRequest extends AbstractDataRequest {
     }
 
     /**
-     * The playlist owner ID setter.
-     *
-     * @param owner_id The Spotify user ID of the person who owns the playlist.
-     * @return A {@link FollowPlaylistRequest.Builder}.
-     * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URIs &amp; IDs</a>
-     */
-    public Builder owner_id(final String owner_id) {
-      assert (owner_id != null);
-      assert (!owner_id.equals(""));
-      return setPathParameter("owner_id", owner_id);
-    }
-
-    /**
      * The playlist ID setter.
      *
      * @param playlist_id The Spotify ID of the playlist. Any playlist can be followed, regardless of its public/private
@@ -100,7 +87,7 @@ public class FollowPlaylistRequest extends AbstractDataRequest {
     @Override
     public FollowPlaylistRequest build() {
       setContentType(ContentType.APPLICATION_JSON);
-      setPath("/v1/users/{owner_id}/playlists/{playlist_id}/followers");
+      setPath("/v1/playlists/{playlist_id}/followers");
       return new FollowPlaylistRequest(this);
     }
   }
