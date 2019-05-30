@@ -1,4 +1,4 @@
-package com.wrapper.spotify.requests.data.follow;
+package com.wrapper.spotify.requests.data.follow.legacy;
 
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
@@ -6,7 +6,7 @@ import com.wrapper.spotify.requests.data.AbstractDataRequest;
 import java.io.IOException;
 
 /**
- * Remove the current user as a follower of a playlist.
+ * Remove the specified user as a follower of a playlist.
  */
 public class UnfollowPlaylistRequest extends AbstractDataRequest {
 
@@ -52,6 +52,19 @@ public class UnfollowPlaylistRequest extends AbstractDataRequest {
     }
 
     /**
+     * The playlist owner ID setter.
+     *
+     * @param owner_id The Spotify user ID of the person who owns the playlist.
+     * @return An {@link UnfollowPlaylistRequest.Builder}.
+     * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URIs &amp; IDs</a>
+     */
+    public Builder owner_id(final String owner_id) {
+      assert (owner_id != null);
+      assert (!owner_id.equals(""));
+      return setPathParameter("owner_id", owner_id);
+    }
+
+    /**
      * The playlist ID setter.
      *
      * @param playlist_id The Spotify ID of the playlist that is to be no longer followed.
@@ -71,7 +84,7 @@ public class UnfollowPlaylistRequest extends AbstractDataRequest {
      */
     @Override
     public UnfollowPlaylistRequest build() {
-      setPath("/v1/playlists/{playlist_id}/followers");
+      setPath("/v1/users/{owner_id}/playlists/{playlist_id}/followers");
       return new UnfollowPlaylistRequest(this);
     }
   }

@@ -1,4 +1,4 @@
-package com.wrapper.spotify.requests.data.follow;
+package com.wrapper.spotify.requests.data.follow.legacy;
 
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
@@ -10,33 +10,26 @@ import org.mockito.runners.MockitoJUnitRunner;
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
-import static com.wrapper.spotify.Assertions.assertHasBodyParameter;
-import static com.wrapper.spotify.Assertions.assertHasHeader;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
 @RunWith(MockitoJUnitRunner.class)
-public class FollowPlaylistRequestTest extends AbstractDataTest<String> {
-  private final FollowPlaylistRequest defaultRequest = SPOTIFY_API
-          .followPlaylist(ID_PLAYLIST, PUBLIC)
+public class UnfollowPlaylistRequestTest extends AbstractDataTest<String> {
+  private final UnfollowPlaylistRequest defaultRequest = SPOTIFY_API
+          .unfollowPlaylist(ID_USER, ID_PLAYLIST)
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
-                          "requests/data/follow/FollowPlaylistRequestTest.json"))
+                          "requests/data/follow/FollowArtistsOrUsersRequestTest.json"))
           .build();
 
-  public FollowPlaylistRequestTest() throws Exception {
+  public UnfollowPlaylistRequestTest() throws Exception {
   }
 
   @Test
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
-    assertHasHeader(defaultRequest, "Content-Type", "application/json");
-    assertHasBodyParameter(
-            defaultRequest,
-            "public",
-            PUBLIC);
     assertEquals(
-            "https://api.spotify.com:443/v1/playlists/3AGOiaoRXMSjswCLtuNqv5/followers",
+            "https://api.spotify.com:443/v1/users/abbaspotify/playlists/3AGOiaoRXMSjswCLtuNqv5/followers",
             defaultRequest.getUri().toString());
   }
 
