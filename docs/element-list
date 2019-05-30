@@ -18,6 +18,7 @@ com.wrapper.spotify.requests.data.artists
 com.wrapper.spotify.requests.data.browse
 com.wrapper.spotify.requests.data.browse.miscellaneous
 com.wrapper.spotify.requests.data.follow
+com.wrapper.spotify.requests.data.follow.legacy
 com.wrapper.spotify.requests.data.library
 com.wrapper.spotify.requests.data.personalization
 com.wrapper.spotify.requests.data.personalization.interfaces
