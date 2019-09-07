@@ -1,10 +1,13 @@
 language: java
-dist: trusty
-jdk:
-- openjdk7
-- openjdk8
-- oraclejdk8
-- oraclejdk9
+matrix:
+  include:
+    - jdk: openjdk8
+    - jdk: oraclejdk9
+      before_install:
+        - rm "${JAVA_HOME}/lib/security/cacerts"
+        - ln -s /etc/ssl/certs/java/cacerts "${JAVA_HOME}/lib/security/cacerts"
+    - jdk: openjdk12
+    - jdk: oraclejdk12
 env:
   global:
   - secure: hiAE0Gt7pcTmcQ/rjfK+KB+Mj1O3LaEM6wNgFleG04fuPbsUgTpF3U1HMTfEvU8nB0AEoIHgPZ2qWHIqGdJ23HfC7pTXtZXy8YSMOnPpTx8j9+qX0i7kJsqA6CNd+5i1CN0aM0uSd2CXRj7CFpwBa+5kfQmsml90oG3mev1MXcs=
@@ -23,7 +26,7 @@ before_deploy:
 deploy:
   provider: script
   skip_cleanup: true
-  script: "if [ '${TRAVIS_JDK_VERSION}' = 'oraclejdk9' ]; then mvn deploy -P release -DskipTests=true ; fi"
+  script: "if [ '${TRAVIS_JDK_VERSION}' = 'oraclejdk12' ]; then mvn deploy -P release -DskipTests=true ; fi"
   on:
     repo: thelinmichael/spotify-web-api-java
     branch:
