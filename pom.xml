@@ -7,7 +7,7 @@
 
     <groupId>se.michaelthelin.spotify</groupId>
     <artifactId>spotify-web-api-java</artifactId>
-    <version>2.2.1</version>
+    <version>3.0.0</version>
     <!--
      DO NOT FORGET
      - to update version numbers in README (2x)
@@ -100,8 +100,8 @@
                         <artifactId>maven-compiler-plugin</artifactId>
                         <version>3.7.0</version>
                         <configuration>
-                            <source>1.7</source>
-                            <target>1.7</target>
+                            <source>1.8</source>
+                            <target>1.8</target>
                         </configuration>
                     </plugin>
                     <plugin>
