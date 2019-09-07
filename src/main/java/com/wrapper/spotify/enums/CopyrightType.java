@@ -10,8 +10,8 @@ import java.util.Map;
  */
 public enum CopyrightType {
 
-  C("C"),
-  P("P");
+  C("c"),
+  P("p");
 
   private static Map<String, CopyrightType> map = new HashMap<>();
 
