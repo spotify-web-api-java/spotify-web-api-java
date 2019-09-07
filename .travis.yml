@@ -1,10 +1,9 @@
 language: java
-dist: trusty
 jdk:
-- openjdk7
 - openjdk8
 - oraclejdk8
-- oraclejdk9
+- openjdk12
+- oraclejdk12
 env:
   global:
   - secure: hiAE0Gt7pcTmcQ/rjfK+KB+Mj1O3LaEM6wNgFleG04fuPbsUgTpF3U1HMTfEvU8nB0AEoIHgPZ2qWHIqGdJ23HfC7pTXtZXy8YSMOnPpTx8j9+qX0i7kJsqA6CNd+5i1CN0aM0uSd2CXRj7CFpwBa+5kfQmsml90oG3mev1MXcs=
