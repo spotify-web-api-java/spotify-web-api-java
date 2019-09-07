@@ -22,7 +22,7 @@ before_deploy:
 deploy:
   provider: script
   skip_cleanup: true
-  script: "if [ '${TRAVIS_JDK_VERSION}' = 'oraclejdk9' ]; then mvn deploy -P release -DskipTests=true ; fi"
+  script: "if [ '${TRAVIS_JDK_VERSION}' = 'oraclejdk12' ]; then mvn deploy -P release -DskipTests=true ; fi"
   on:
     repo: thelinmichael/spotify-web-api-java
     branch:
