@@ -1,9 +1,13 @@
 language: java
-jdk:
-- openjdk8
-- oraclejdk9
-- openjdk12
-- oraclejdk12
+matrix:
+  include:
+    - jdk: openjdk8
+    - jdk: oraclejdk9
+      before_install:
+        - rm "${JAVA_HOME}/lib/security/cacerts"
+        - ln -s /etc/ssl/certs/java/cacerts "${JAVA_HOME}/lib/security/cacerts"
+    - jdk: openjdk12
+    - jdk: oraclejdk12
 env:
   global:
   - secure: hiAE0Gt7pcTmcQ/rjfK+KB+Mj1O3LaEM6wNgFleG04fuPbsUgTpF3U1HMTfEvU8nB0AEoIHgPZ2qWHIqGdJ23HfC7pTXtZXy8YSMOnPpTx8j9+qX0i7kJsqA6CNd+5i1CN0aM0uSd2CXRj7CFpwBa+5kfQmsml90oG3mev1MXcs=
@@ -16,9 +20,6 @@ env:
 cache:
   directories:
   - $HOME/.m2
-before_install:
-  - rm "${JAVA_HOME}/lib/security/cacerts"
-  - ln -s /etc/ssl/certs/java/cacerts "${JAVA_HOME}/lib/security/cacerts"
 before_deploy:
   - ./travis/before-deploy.sh
   - cp ./travis/.m2.settings.xml $HOME/.m2/settings.xml
