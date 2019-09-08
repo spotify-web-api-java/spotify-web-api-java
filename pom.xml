@@ -173,9 +173,6 @@
                                 </goals>
                             </execution>
                         </executions>
-                        <configuration>
-                            <executable>gpg2</executable>
-                        </configuration>
                     </plugin>
                     <plugin>
                         <groupId>org.sonatype.plugins</groupId>
