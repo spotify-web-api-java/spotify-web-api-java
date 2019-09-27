@@ -1,5 +1,6 @@
 package com.wrapper.spotify.requests.data.browse;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.Paging;
@@ -11,6 +12,7 @@ import java.io.IOException;
 /**
  * Get a list of Spotify playlists tagged with a particular category.
  */
+@JsonDeserialize(builder = GetCategorysPlaylistsRequest.Builder.class)
 public class GetCategorysPlaylistsRequest extends AbstractDataRequest {
 
   /**

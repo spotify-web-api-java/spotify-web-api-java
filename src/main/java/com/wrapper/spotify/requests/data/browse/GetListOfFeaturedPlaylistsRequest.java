@@ -1,5 +1,6 @@
 package com.wrapper.spotify.requests.data.browse;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.neovisionaries.i18n.CountryCode;
 import com.neovisionaries.i18n.LanguageCode;
 import com.wrapper.spotify.SpotifyApi;
@@ -13,6 +14,7 @@ import java.util.Date;
 /**
  * Get a list of Spotify featured playlists (shown, for example, on a Spotify player’s "Browse" tab).
  */
+@JsonDeserialize(builder = GetListOfFeaturedPlaylistsRequest.Builder.class)
 public class GetListOfFeaturedPlaylistsRequest extends AbstractDataRequest {
 
   /**

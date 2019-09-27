@@ -1,5 +1,6 @@
 package com.wrapper.spotify.requests.data.personalization.simplified;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.Artist;
 import com.wrapper.spotify.model_objects.specification.Paging;
@@ -20,6 +21,7 @@ import java.io.IOException;
  * For each time range, the top 50 tracks and artists are available for each user. In the future, it is likely that this
  * restriction will be relaxed. This data is typically updated once each day for each user.
  */
+@JsonDeserialize(builder = GetUsersTopArtistsRequest.Builder.class)
 public class GetUsersTopArtistsRequest extends AbstractDataRequest {
 
   /**

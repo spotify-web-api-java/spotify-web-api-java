@@ -1,5 +1,6 @@
 package com.wrapper.spotify.model_objects.specification;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.JsonObject;
 import com.wrapper.spotify.enums.ModelObjectType;
 import com.wrapper.spotify.model_objects.AbstractModelObject;
@@ -8,6 +9,7 @@ import com.wrapper.spotify.model_objects.AbstractModelObject;
  * Retrieve information about <a href="https://developer.spotify.com/web-api/object-model/#artist-object-simplified">
  * simplified Artist objects</a> by building instances from this class.
  */
+@JsonDeserialize(builder = ArtistSimplified.Builder.class)
 public class ArtistSimplified extends AbstractModelObject {
   private final ExternalUrl externalUrls;
   private final String href;

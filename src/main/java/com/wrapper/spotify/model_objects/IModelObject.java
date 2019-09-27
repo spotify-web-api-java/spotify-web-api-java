@@ -1,5 +1,6 @@
 package com.wrapper.spotify.model_objects;
 
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.wrapper.spotify.model_objects.specification.Paging;
@@ -21,6 +22,7 @@ public interface IModelObject {
   /**
    * Interface with methods used in builder classes of model objects.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
   interface Builder {
 
     /**

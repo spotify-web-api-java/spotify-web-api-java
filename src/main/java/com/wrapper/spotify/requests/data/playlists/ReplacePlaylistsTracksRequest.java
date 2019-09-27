@@ -1,5 +1,6 @@
 package com.wrapper.spotify.requests.data.playlists;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.JsonArray;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
@@ -11,6 +12,7 @@ import java.io.IOException;
  * Replace all the tracks in a playlist, overwriting its existing tracks. This powerful request can be useful for
  * replacing tracks, re-ordering existing tracks, or clearing the playlist.
  */
+@JsonDeserialize(builder = ReplacePlaylistsTracksRequest.Builder.class)
 public class ReplacePlaylistsTracksRequest extends AbstractDataRequest {
 
   /**

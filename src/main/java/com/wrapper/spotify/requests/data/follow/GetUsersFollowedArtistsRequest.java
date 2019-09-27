@@ -1,5 +1,6 @@
 package com.wrapper.spotify.requests.data.follow;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.wrapper.spotify.enums.ModelObjectType;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.Artist;
@@ -11,6 +12,7 @@ import java.io.IOException;
 /**
  * Get the current user’s followed artists.
  */
+@JsonDeserialize(builder = GetUsersFollowedArtistsRequest.Builder.class)
 public class GetUsersFollowedArtistsRequest extends AbstractDataRequest {
 
   /**

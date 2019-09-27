@@ -1,5 +1,6 @@
 package com.wrapper.spotify.model_objects.specification;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.JsonObject;
 import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.enums.ModelObjectType;
@@ -14,6 +15,7 @@ import com.wrapper.spotify.model_objects.AbstractModelObject;
  *
  * @see <a href="https://developer.spotify.com/web-api/using-scopes/">Spotify: Using Scopes</a>
  */
+@JsonDeserialize(builder = User.Builder.class)
 public class User extends AbstractModelObject {
   private final String birthdate;
   private final CountryCode country;

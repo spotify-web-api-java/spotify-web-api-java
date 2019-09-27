@@ -1,5 +1,6 @@
 package com.wrapper.spotify.requests.data.follow.legacy;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
 import org.apache.http.entity.ContentType;
@@ -9,6 +10,7 @@ import java.io.IOException;
 /**
  * Add the current user as a follower of a playlist.
  */
+@JsonDeserialize(builder = FollowPlaylistRequest.Builder.class)
 public class FollowPlaylistRequest extends AbstractDataRequest {
 
     /**

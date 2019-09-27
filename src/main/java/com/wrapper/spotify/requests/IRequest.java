@@ -1,5 +1,6 @@
 package com.wrapper.spotify.requests;
 
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 import com.wrapper.spotify.IHttpManager;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import org.apache.http.Header;
@@ -48,6 +49,7 @@ public interface IRequest {
           IOException,
           SpotifyWebApiException;
 
+  @JsonPOJOBuilder(withPrefix = "set")
   interface Builder {
 
     Builder setHttpManager(final IHttpManager httpManager);

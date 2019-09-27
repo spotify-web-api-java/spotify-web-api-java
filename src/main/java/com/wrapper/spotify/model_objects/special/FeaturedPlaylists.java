@@ -1,5 +1,6 @@
 package com.wrapper.spotify.model_objects.special;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.JsonObject;
 import com.wrapper.spotify.model_objects.AbstractModelObject;
 import com.wrapper.spotify.model_objects.specification.Paging;
@@ -9,6 +10,7 @@ import com.wrapper.spotify.model_objects.specification.PlaylistSimplified;
  * Retrieve information about <a href="https://developer.spotify.com/web-api/console/get-featured-playlists">
  * Featured Playlist objects</a> by building instances from this class.
  */
+@JsonDeserialize(builder = FeaturedPlaylists.Builder.class)
 public class FeaturedPlaylists extends AbstractModelObject {
   private final String message;
   private final Paging<PlaylistSimplified> playlists;

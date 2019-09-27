@@ -1,5 +1,6 @@
 package com.wrapper.spotify.requests.data.follow;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.Gson;
 import com.google.gson.JsonParser;
 import com.wrapper.spotify.enums.ModelObjectType;
@@ -11,6 +12,7 @@ import java.io.IOException;
 /**
  * Check to see if the current user is following one or more artists or other Spotify users.
  */
+@JsonDeserialize(builder = CheckCurrentUserFollowsArtistsOrUsersRequest.Builder.class)
 public class CheckCurrentUserFollowsArtistsOrUsersRequest extends AbstractDataRequest {
 
   /**

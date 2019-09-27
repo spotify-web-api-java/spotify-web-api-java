@@ -1,5 +1,6 @@
 package com.wrapper.spotify.model_objects.miscellaneous;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.JsonObject;
 import com.wrapper.spotify.model_objects.AbstractModelObject;
 
@@ -8,6 +9,7 @@ import com.wrapper.spotify.model_objects.AbstractModelObject;
  * These objects can store the data of various {@link AudioAnalysis} measurements, like {@code tatums}, {@code bars} and
  * {@code beats}.
  */
+@JsonDeserialize(builder = AudioAnalysisMeasure.Builder.class)
 public class AudioAnalysisMeasure extends AbstractModelObject {
   private final Float confidence;
   private final Float duration;

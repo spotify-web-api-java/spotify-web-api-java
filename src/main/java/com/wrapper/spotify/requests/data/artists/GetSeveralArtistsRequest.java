@@ -1,5 +1,6 @@
 package com.wrapper.spotify.requests.data.artists;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.Artist;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
@@ -9,6 +10,7 @@ import java.io.IOException;
 /**
  * Get Spotify catalog information for several artists based on their Spotify IDs.
  */
+@JsonDeserialize(builder = GetSeveralArtistsRequest.Builder.class)
 public class GetSeveralArtistsRequest extends AbstractDataRequest {
 
   /**

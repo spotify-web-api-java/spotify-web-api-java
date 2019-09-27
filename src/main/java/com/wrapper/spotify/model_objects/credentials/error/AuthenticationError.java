@@ -1,5 +1,6 @@
 package com.wrapper.spotify.model_objects.credentials.error;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.JsonObject;
 import com.wrapper.spotify.model_objects.AbstractModelObject;
 
@@ -8,6 +9,7 @@ import com.wrapper.spotify.model_objects.AbstractModelObject;
  *
  * @see <a href="https://developer.spotify.com/web-api/authorization-guide/">Spotify: Authorization Guide</a>
  */
+@JsonDeserialize(builder = AuthenticationError.Builder.class)
 public class AuthenticationError extends AbstractModelObject {
   private final String error;
   private final String error_description;

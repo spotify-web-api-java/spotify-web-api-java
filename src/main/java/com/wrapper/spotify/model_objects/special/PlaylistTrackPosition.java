@@ -1,5 +1,6 @@
 package com.wrapper.spotify.model_objects.special;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.wrapper.spotify.model_objects.AbstractModelObject;
@@ -8,6 +9,7 @@ import com.wrapper.spotify.model_objects.AbstractModelObject;
  * Retrieve information about Playlist Track Position objects by building instances from this class. These objects
  * contain the position in a playlist, where tracks should be added in a request.
  */
+@JsonDeserialize(builder = PlaylistTrackPosition.Builder.class)
 public class PlaylistTrackPosition extends AbstractModelObject {
   private final String uri;
   private final int[] positions;

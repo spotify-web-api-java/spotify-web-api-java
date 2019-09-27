@@ -1,5 +1,6 @@
 package com.wrapper.spotify.requests.data.playlists;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.JsonArray;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.special.SnapshotResult;
@@ -11,6 +12,7 @@ import java.io.IOException;
 /**
  * Remove one or more tracks from a user’s playlist.
  */
+@JsonDeserialize(builder = RemoveTracksFromPlaylistRequest.Builder.class)
 public class RemoveTracksFromPlaylistRequest extends AbstractDataRequest {
 
   /**

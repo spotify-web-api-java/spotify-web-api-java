@@ -1,5 +1,6 @@
 package com.wrapper.spotify.requests.data.artists;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.Track;
@@ -10,6 +11,7 @@ import java.io.IOException;
 /**
  * Get Spotify catalog information about an artist’s top tracks by country.
  */
+@JsonDeserialize(builder = GetArtistsTopTracksRequest.Builder.class)
 public class GetArtistsTopTracksRequest extends AbstractDataRequest {
 
   /**

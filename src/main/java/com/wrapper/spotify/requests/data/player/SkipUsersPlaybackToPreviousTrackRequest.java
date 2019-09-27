@@ -1,5 +1,6 @@
 package com.wrapper.spotify.requests.data.player;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
 import org.apache.http.entity.ContentType;
@@ -13,6 +14,7 @@ import java.io.IOException;
  * Returning to the start of the current track should be performed using a
  * {@link SeekToPositionInCurrentlyPlayingTrackRequest}.
  */
+@JsonDeserialize(builder = SkipUsersPlaybackToPreviousTrackRequest.Builder.class)
 public class SkipUsersPlaybackToPreviousTrackRequest extends AbstractDataRequest {
 
   /**

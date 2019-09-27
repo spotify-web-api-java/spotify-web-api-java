@@ -1,5 +1,6 @@
 package com.wrapper.spotify.model_objects.miscellaneous;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.JsonObject;
 import com.wrapper.spotify.model_objects.AbstractModelObject;
 
@@ -7,6 +8,7 @@ import com.wrapper.spotify.model_objects.AbstractModelObject;
  * Retrieve information about <a href="https://developer.spotify.com/web-api/get-a-users-available-devices/">Device
  * objects</a> by creating instances from this class.
  */
+@JsonDeserialize(builder = Device.Builder.class)
 public class Device extends AbstractModelObject {
   private final String id;
   private final Boolean is_active;

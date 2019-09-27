@@ -1,5 +1,6 @@
 package com.wrapper.spotify.requests.data.playlists;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
 import org.apache.http.entity.ContentType;
@@ -10,6 +11,7 @@ import java.io.IOException;
 /**
  * Replace the image used to represent a specific playlist.
  */
+@JsonDeserialize(builder = UploadCustomPlaylistCoverImageRequest.Builder.class)
 public class UploadCustomPlaylistCoverImageRequest extends AbstractDataRequest {
 
   /**

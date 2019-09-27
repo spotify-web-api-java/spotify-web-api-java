@@ -1,5 +1,6 @@
 package com.wrapper.spotify.requests.data.browse.miscellaneous;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.Gson;
 import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
@@ -12,6 +13,7 @@ import java.util.List;
 /**
  * Retrieve a list of available genres seed parameter values for recommendations.
  */
+@JsonDeserialize(builder = GetAvailableGenreSeedsRequest.Builder.class)
 public class GetAvailableGenreSeedsRequest extends AbstractDataRequest {
 
   /**

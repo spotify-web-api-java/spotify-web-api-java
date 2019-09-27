@@ -1,5 +1,6 @@
 package com.wrapper.spotify.requests.data.player;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
 import org.apache.http.entity.ContentType;
@@ -9,6 +10,7 @@ import java.io.IOException;
 /**
  * Skips to next track in the user’s queue.
  */
+@JsonDeserialize(builder = SkipUsersPlaybackToNextTrackRequest.Builder.class)
 public class SkipUsersPlaybackToNextTrackRequest extends AbstractDataRequest {
 
   /**

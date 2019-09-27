@@ -1,5 +1,6 @@
 package com.wrapper.spotify.model_objects.specification;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.neovisionaries.i18n.CountryCode;
@@ -12,6 +13,7 @@ import com.wrapper.spotify.requests.data.search.interfaces.ISearchModelObject;
  * Retrieve information about <a href="https://developer.spotify.com/web-api/object-model/#album-object-simplified">
  * simplified Album objects</a> by building instances from this class.
  */
+@JsonDeserialize(builder = AlbumSimplified.Builder.class)
 public class AlbumSimplified extends AbstractModelObject implements ISearchModelObject {
   private final AlbumType albumType;
   private final ArtistSimplified[] artists;

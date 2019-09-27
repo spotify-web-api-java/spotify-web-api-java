@@ -1,5 +1,6 @@
 package com.wrapper.spotify.requests.data.artists;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.Artist;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
@@ -10,6 +11,7 @@ import java.io.IOException;
  * Get Spotify catalog information about artists similar to a given artist. Similarity is based on analysis of the
  * Spotify community’s listening history.
  */
+@JsonDeserialize(builder = GetArtistsRelatedArtistsRequest.Builder.class)
 public class GetArtistsRelatedArtistsRequest extends AbstractDataRequest {
 
   /**

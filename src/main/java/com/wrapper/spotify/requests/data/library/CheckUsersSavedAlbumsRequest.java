@@ -1,5 +1,6 @@
 package com.wrapper.spotify.requests.data.library;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.Gson;
 import com.google.gson.JsonParser;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
@@ -10,6 +11,7 @@ import java.io.IOException;
 /**
  * Check if one or more albums is already saved in the current Spotify user’s "Your Music" library.
  */
+@JsonDeserialize(builder = CheckUsersSavedAlbumsRequest.Builder.class)
 public class CheckUsersSavedAlbumsRequest extends AbstractDataRequest {
 
   /**

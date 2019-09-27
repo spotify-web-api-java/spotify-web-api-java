@@ -1,5 +1,6 @@
 package com.wrapper.spotify.requests.data.player;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.miscellaneous.Device;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
@@ -9,6 +10,7 @@ import java.io.IOException;
 /**
  * Get information about a user’s available devices.
  */
+@JsonDeserialize(builder = GetUsersAvailableDevicesRequest.Builder.class)
 public class GetUsersAvailableDevicesRequest extends AbstractDataRequest {
 
   /**

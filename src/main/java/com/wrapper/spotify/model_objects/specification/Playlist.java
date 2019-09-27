@@ -1,5 +1,6 @@
 package com.wrapper.spotify.model_objects.specification;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.JsonObject;
 import com.wrapper.spotify.enums.ModelObjectType;
 import com.wrapper.spotify.model_objects.AbstractModelObject;
@@ -8,6 +9,7 @@ import com.wrapper.spotify.model_objects.AbstractModelObject;
  * Retrieve information about <a href="https://developer.spotify.com/web-api/object-model/#playlist-object-full">
  * Playlist objects</a> by building instances from this class.
  */
+@JsonDeserialize(builder = Playlist.Builder.class)
 public class Playlist extends AbstractModelObject {
   private final Boolean collaborative;
   private final String description;

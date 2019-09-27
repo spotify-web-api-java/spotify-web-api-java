@@ -1,5 +1,6 @@
 package com.wrapper.spotify.requests.authorization.client_credentials;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.credentials.ClientCredentials;
@@ -13,6 +14,7 @@ import java.io.IOException;
  * <a href="https://developer.spotify.com/web-api/authorization-guide/#client-credentials-flow">Client Credentials</a>
  * request.
  */
+@JsonDeserialize(builder = ClientCredentialsRequest.Builder.class)
 public class ClientCredentialsRequest extends AbstractAthorizationRequest {
 
   public ClientCredentialsRequest(Builder builder) {

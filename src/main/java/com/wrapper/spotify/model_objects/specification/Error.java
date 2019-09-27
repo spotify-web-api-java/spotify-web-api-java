@@ -1,5 +1,6 @@
 package com.wrapper.spotify.model_objects.specification;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.JsonObject;
 import com.wrapper.spotify.model_objects.AbstractModelObject;
 
@@ -7,6 +8,7 @@ import com.wrapper.spotify.model_objects.AbstractModelObject;
  * Retrieve information about <a href="https://developer.spotify.com/web-api/object-model/#error-object">
  * Error objects</a> by building instances from this class.
  */
+@JsonDeserialize(builder = Error.Builder.class)
 public class Error extends AbstractModelObject {
   private final Integer status;
   private final String message;

@@ -1,5 +1,6 @@
 package com.wrapper.spotify.requests.data.tracks;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.miscellaneous.AudioAnalysis;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
@@ -9,6 +10,7 @@ import java.io.IOException;
 /**
  * Get a detailed audio analysis for a single track identified by its unique Spotify ID.
  */
+@JsonDeserialize(builder = GetAudioAnalysisForTrackRequest.Builder.class)
 public class GetAudioAnalysisForTrackRequest extends AbstractDataRequest {
 
   /**

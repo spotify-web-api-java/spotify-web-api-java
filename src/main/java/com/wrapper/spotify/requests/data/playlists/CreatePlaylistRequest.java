@@ -1,5 +1,6 @@
 package com.wrapper.spotify.requests.data.playlists;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.Playlist;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
@@ -11,6 +12,7 @@ import java.io.IOException;
  * Create a playlist for a Spotify user. (The playlist will be empty until you add tracks
  * with an {@link AddTracksToPlaylistRequest}.)
  */
+@JsonDeserialize(builder = CreatePlaylistRequest.Builder.class)
 public class CreatePlaylistRequest extends AbstractDataRequest {
 
   /**
