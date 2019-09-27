@@ -1,5 +1,6 @@
 package com.wrapper.spotify.model_objects.specification;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.JsonObject;
 import com.wrapper.spotify.enums.ModelObjectType;
 import com.wrapper.spotify.model_objects.AbstractModelObject;
@@ -12,6 +13,7 @@ import com.wrapper.spotify.model_objects.AbstractModelObject;
  *
  * @see <a href="https://developer.spotify.com/web-api/track-relinking-guide/">Spotify: Track Relinking Guide</a>
  */
+@JsonDeserialize(builder = TrackLink.Builder.class)
 public class TrackLink extends AbstractModelObject {
   private final ExternalUrl externalUrls;
   private final String href;

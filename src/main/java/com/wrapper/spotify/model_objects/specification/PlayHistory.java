@@ -1,5 +1,6 @@
 package com.wrapper.spotify.model_objects.specification;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.JsonObject;
 import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.model_objects.AbstractModelObject;
@@ -12,6 +13,7 @@ import java.util.logging.Level;
  * Retrieve information about <a href="https://developer.spotify.com/web-api/object-model/#play-history-object">
  * Play History objects</a> by building instances from this class.
  */
+@JsonDeserialize(builder = PlayHistory.Builder.class)
 public class PlayHistory extends AbstractModelObject {
   private final TrackSimplified track;
   private final Date playedAt;

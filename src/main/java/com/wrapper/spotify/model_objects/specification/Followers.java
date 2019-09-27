@@ -1,5 +1,6 @@
 package com.wrapper.spotify.model_objects.specification;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.JsonObject;
 import com.wrapper.spotify.model_objects.AbstractModelObject;
 
@@ -8,6 +9,7 @@ import com.wrapper.spotify.model_objects.AbstractModelObject;
  * <a href="https://developer.spotify.com/web-api/object-model/#followers-object">Follower objects</a>
  * by building instances from this class.
  */
+@JsonDeserialize(builder = Followers.Builder.class)
 public class Followers extends AbstractModelObject {
   private final String href;
   private final Integer total;

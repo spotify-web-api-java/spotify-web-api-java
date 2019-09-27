@@ -1,5 +1,6 @@
 package com.wrapper.spotify.model_objects.specification;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.wrapper.spotify.enums.ModelObjectType;
@@ -11,6 +12,7 @@ import com.wrapper.spotify.requests.data.search.interfaces.ISearchModelObject;
  * Retrieve information about <a href="https://developer.spotify.com/web-api/object-model/#artist-object-full">
  * Artist objects</a> by building instances from this class.
  */
+@JsonDeserialize(builder = Artist.Builder.class)
 public class Artist extends AbstractModelObject implements IArtistTrackModelObject, ISearchModelObject {
   private final ExternalUrl externalUrls;
   private final Followers followers;

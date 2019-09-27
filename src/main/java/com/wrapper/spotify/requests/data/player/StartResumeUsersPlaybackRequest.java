@@ -1,5 +1,6 @@
 package com.wrapper.spotify.requests.data.player;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
@@ -12,6 +13,7 @@ import org.apache.http.entity.ContentType;
 /**
  * Start a new context or resume current playback on the user’s active device.
  */
+@JsonDeserialize(builder = StartResumeUsersPlaybackRequest.Builder.class)
 public class StartResumeUsersPlaybackRequest extends AbstractDataRequest {
 
   /**

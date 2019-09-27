@@ -1,5 +1,6 @@
 package com.wrapper.spotify.requests.data.player;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.miscellaneous.CurrentlyPlayingContext;
@@ -10,6 +11,7 @@ import java.io.IOException;
 /**
  * Get information about the user’s current playback state, including track, track progress, and active device.
  */
+@JsonDeserialize(builder = GetInformationAboutUsersCurrentPlaybackRequest.Builder.class)
 public class GetInformationAboutUsersCurrentPlaybackRequest extends AbstractDataRequest {
 
   /**

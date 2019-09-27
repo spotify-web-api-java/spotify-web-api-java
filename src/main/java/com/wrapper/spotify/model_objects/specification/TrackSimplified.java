@@ -1,5 +1,6 @@
 package com.wrapper.spotify.model_objects.specification;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.neovisionaries.i18n.CountryCode;
@@ -10,6 +11,7 @@ import com.wrapper.spotify.model_objects.AbstractModelObject;
  * Retrieve information about <a href="https://developer.spotify.com/web-api/object-model/#track-object-simplified">
  * simplified Track objects</a> by building instances from this class.
  */
+@JsonDeserialize(builder = TrackSimplified.Builder.class)
 public class TrackSimplified extends AbstractModelObject {
   private final ArtistSimplified[] artists;
   private final CountryCode[] availableMarkets;

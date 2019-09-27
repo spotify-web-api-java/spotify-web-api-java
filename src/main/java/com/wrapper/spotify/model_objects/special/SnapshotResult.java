@@ -1,5 +1,6 @@
 package com.wrapper.spotify.model_objects.special;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.JsonObject;
 import com.wrapper.spotify.model_objects.AbstractModelObject;
 
@@ -10,6 +11,7 @@ import com.wrapper.spotify.model_objects.AbstractModelObject;
  * <a href="https://developer.spotify.com/web-api/working-with-playlists/#version-control-and-snapshots">
  * Spotify: Working With Playlists</a>
  */
+@JsonDeserialize(builder = SnapshotResult.Builder.class)
 public class SnapshotResult extends AbstractModelObject {
   private final String snapshotId;
 

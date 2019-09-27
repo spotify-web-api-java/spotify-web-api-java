@@ -1,5 +1,6 @@
 package com.wrapper.spotify.model_objects.specification;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.JsonObject;
 import com.wrapper.spotify.enums.Modality;
 import com.wrapper.spotify.enums.ModelObjectType;
@@ -9,6 +10,7 @@ import com.wrapper.spotify.model_objects.AbstractModelObject;
  * Retrieve information about <a href="https://developer.spotify.com/web-api/object-model/#audio-features-object">
  * Audio Feature objects</a> by building instances from this class.
  */
+@JsonDeserialize(builder = AudioFeatures.Builder.class)
 public class AudioFeatures extends AbstractModelObject {
   private final Float acousticness;
   private final String analysisUrl;

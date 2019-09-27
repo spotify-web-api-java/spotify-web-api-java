@@ -1,5 +1,6 @@
 package com.wrapper.spotify.requests.data.users_profile;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.User;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
@@ -9,6 +10,7 @@ import java.io.IOException;
 /**
  * Get public profile information about a Spotify user.
  */
+@JsonDeserialize(builder = GetUsersProfileRequest.Builder.class)
 public class GetUsersProfileRequest extends AbstractDataRequest {
 
   /**

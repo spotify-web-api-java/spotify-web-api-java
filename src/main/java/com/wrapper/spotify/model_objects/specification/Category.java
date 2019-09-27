@@ -1,5 +1,6 @@
 package com.wrapper.spotify.model_objects.specification;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.JsonObject;
 import com.wrapper.spotify.model_objects.AbstractModelObject;
 
@@ -7,6 +8,7 @@ import com.wrapper.spotify.model_objects.AbstractModelObject;
  * Retrieve information about <a href="https://developer.spotify.com/web-api/object-model/#category-object">
  * Category objects</a> by building instances from this class.
  */
+@JsonDeserialize(builder = Category.Builder.class)
 public class Category extends AbstractModelObject {
   private final String href;
   private final Image[] icons;

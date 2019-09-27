@@ -1,5 +1,6 @@
 package com.wrapper.spotify.requests.data.tracks;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.AudioFeatures;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
@@ -9,6 +10,7 @@ import java.io.IOException;
 /**
  * Get audio features for multiple tracks based on their Spotify IDs.
  */
+@JsonDeserialize(builder = GetAudioFeaturesForSeveralTracksRequest.Builder.class)
 public class GetAudioFeaturesForSeveralTracksRequest extends AbstractDataRequest {
 
   /**

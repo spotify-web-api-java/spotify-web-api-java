@@ -1,5 +1,6 @@
 package com.wrapper.spotify.model_objects.miscellaneous;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.JsonObject;
 import com.wrapper.spotify.model_objects.AbstractModelObject;
 
@@ -14,6 +15,7 @@ import com.wrapper.spotify.model_objects.AbstractModelObject;
  * on the side of Spotify, so it is possible that this Javadoc page (and other Audio Analysis related Javadoc pages)
  * contains speculative information about a few of its corresponding methods.
  */
+@JsonDeserialize(builder = AudioAnalysis.Builder.class)
 public class AudioAnalysis extends AbstractModelObject {
   private final AudioAnalysisMeasure[] bars;
   private final AudioAnalysisMeasure[] beats;

@@ -1,5 +1,6 @@
 package com.wrapper.spotify.model_objects.specification;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.JsonObject;
 import com.wrapper.spotify.model_objects.AbstractModelObject;
 
@@ -13,6 +14,7 @@ import java.lang.reflect.ParameterizedType;
  *
  * @param <T> The type of the objects contained in a paging object.
  */
+@JsonDeserialize(builder = Paging.Builder.class)
 public class Paging<T> extends AbstractModelObject {
   private final String href;
   private final T[] items;

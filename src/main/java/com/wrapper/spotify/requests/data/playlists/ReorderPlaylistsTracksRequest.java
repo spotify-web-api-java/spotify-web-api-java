@@ -1,5 +1,6 @@
 package com.wrapper.spotify.requests.data.playlists;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.special.SnapshotResult;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
@@ -14,6 +15,7 @@ import java.io.IOException;
  * be kept untouched. In addition, the users following the playlists won’t be notified about changes in
  * the playlists when the tracks are reordered.
  */
+@JsonDeserialize(builder = ReorderPlaylistsTracksRequest.Builder.class)
 public class ReorderPlaylistsTracksRequest extends AbstractDataRequest {
 
   /**

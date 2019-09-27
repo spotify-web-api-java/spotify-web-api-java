@@ -1,5 +1,6 @@
 package com.wrapper.spotify.model_objects.specification;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.JsonObject;
 import com.wrapper.spotify.enums.ModelObjectType;
 import com.wrapper.spotify.model_objects.AbstractModelObject;
@@ -10,6 +11,7 @@ import com.wrapper.spotify.requests.data.search.interfaces.ISearchModelObject;
  * Retrieve information about <a href="https://developer.spotify.com/web-api/object-model/#playlist-object-simplified">
  * simplified Playlist objects</a> by building instances from this class.
  */
+@JsonDeserialize(builder = PlaylistSimplified.Builder.class)
 public class PlaylistSimplified extends AbstractModelObject implements ISearchModelObject {
   private final Boolean collaborative;
   private final ExternalUrl externalUrls;

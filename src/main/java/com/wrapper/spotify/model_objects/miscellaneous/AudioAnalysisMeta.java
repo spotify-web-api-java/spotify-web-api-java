@@ -1,5 +1,6 @@
 package com.wrapper.spotify.model_objects.miscellaneous;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.JsonObject;
 import com.wrapper.spotify.model_objects.AbstractModelObject;
 
@@ -7,6 +8,7 @@ import com.wrapper.spotify.model_objects.AbstractModelObject;
  * Retrieve information about Audio Analysis Metadata objects by creating instances from this class. <br>
  * These objects only contain metadata created by the Analyzer software.
  */
+@JsonDeserialize(builder = AudioAnalysisMeta.Builder.class)
 public class AudioAnalysisMeta extends AbstractModelObject {
   private final String analyzerVersion;
   private final String platform;

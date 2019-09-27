@@ -1,5 +1,6 @@
 package com.wrapper.spotify.requests.data.follow;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.JsonArray;
 import com.wrapper.spotify.enums.ModelObjectType;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
@@ -11,6 +12,7 @@ import java.io.IOException;
 /**
  * Add the current user as a follower of one or more artists or other Spotify users.
  */
+@JsonDeserialize(builder = FollowArtistsOrUsersRequest.Builder.class)
 public class FollowArtistsOrUsersRequest extends AbstractDataRequest {
 
   /**

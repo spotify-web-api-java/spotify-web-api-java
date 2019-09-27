@@ -1,5 +1,6 @@
 package com.wrapper.spotify.requests.data.browse;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.AlbumSimplified;
@@ -11,6 +12,7 @@ import java.io.IOException;
 /**
  * Get a list of new album releases featured in Spotify (shown, for example, on a Spotify player’s "Browse" tab).
  */
+@JsonDeserialize(builder = GetListOfNewReleasesRequest.Builder.class)
 public class GetListOfNewReleasesRequest extends AbstractDataRequest {
 
   /**

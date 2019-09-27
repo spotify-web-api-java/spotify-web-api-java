@@ -1,5 +1,6 @@
 package com.wrapper.spotify.requests.data.albums;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.Album;
@@ -10,6 +11,7 @@ import java.io.IOException;
 /**
  * Get Spotify catalog information for multiple albums identified by their Spotify IDs.
  */
+@JsonDeserialize(builder = GetSeveralAlbumsRequest.Builder.class)
 public class GetSeveralAlbumsRequest extends AbstractDataRequest {
 
   /**

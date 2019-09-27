@@ -1,5 +1,6 @@
 package com.wrapper.spotify.requests.data.playlists;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.Playlist;
@@ -10,6 +11,7 @@ import java.io.IOException;
 /**
  * Get a playlist owned by a Spotify user.
  */
+@JsonDeserialize(builder = GetPlaylistRequest.Builder.class)
 public class GetPlaylistRequest extends AbstractDataRequest {
 
   /**

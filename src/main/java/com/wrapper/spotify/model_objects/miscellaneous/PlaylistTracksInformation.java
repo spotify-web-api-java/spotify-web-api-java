@@ -1,11 +1,13 @@
 package com.wrapper.spotify.model_objects.miscellaneous;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.JsonObject;
 import com.wrapper.spotify.model_objects.AbstractModelObject;
 
 /**
  * Retrieve information about Playlist Track Information objects by building instances from this class.
  */
+@JsonDeserialize(builder = PlaylistTracksInformation.Builder.class)
 public class PlaylistTracksInformation extends AbstractModelObject {
   private final String href;
   private final Integer total;

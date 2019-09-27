@@ -1,5 +1,6 @@
 package com.wrapper.spotify.requests.authorization.authorization_code;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.credentials.AuthorizationCodeCredentials;
@@ -13,6 +14,7 @@ import java.io.IOException;
  * <a href="https://developer.spotify.com/web-api/authorization-guide/#request-access-token-from-refresh-token">
  * Authorization Code Refresh</a> request.
  */
+@JsonDeserialize(builder = AuthorizationCodeRefreshRequest.Builder.class)
 public class AuthorizationCodeRefreshRequest extends AbstractAthorizationRequest {
 
   private AuthorizationCodeRefreshRequest(Builder builder) {

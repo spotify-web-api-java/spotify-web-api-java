@@ -1,5 +1,6 @@
 package com.wrapper.spotify.requests.data.playlists;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.Paging;
 import com.wrapper.spotify.model_objects.specification.PlaylistSimplified;
@@ -10,6 +11,7 @@ import java.io.IOException;
 /**
  * Get a list of the playlists owned or followed by the current Spotify user.
  */
+@JsonDeserialize(builder = GetListOfCurrentUsersPlaylistsRequest.Builder.class)
 public class GetListOfCurrentUsersPlaylistsRequest extends AbstractDataRequest {
 
   /**

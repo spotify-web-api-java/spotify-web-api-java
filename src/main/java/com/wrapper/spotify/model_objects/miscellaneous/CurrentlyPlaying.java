@@ -1,5 +1,6 @@
 package com.wrapper.spotify.model_objects.miscellaneous;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.JsonObject;
 import com.wrapper.spotify.model_objects.AbstractModelObject;
 import com.wrapper.spotify.model_objects.specification.Context;
@@ -9,6 +10,7 @@ import com.wrapper.spotify.model_objects.specification.Track;
  * Retrieve information about <a href="https://developer.spotify.com/web-api/get-the-users-currently-playing-track/">
  * Currently Playing objects</a> by creating instances from this class.
  */
+@JsonDeserialize(builder = CurrentlyPlaying.Builder.class)
 public class CurrentlyPlaying extends AbstractModelObject {
   private final Context context;
   private final Long timestamp;

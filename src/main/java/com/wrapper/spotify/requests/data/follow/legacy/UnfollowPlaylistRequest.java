@@ -1,5 +1,6 @@
 package com.wrapper.spotify.requests.data.follow.legacy;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
 
@@ -8,6 +9,7 @@ import java.io.IOException;
 /**
  * Remove the specified user as a follower of a playlist.
  */
+@JsonDeserialize(builder = UnfollowPlaylistRequest.Builder.class)
 public class UnfollowPlaylistRequest extends AbstractDataRequest {
 
   /**

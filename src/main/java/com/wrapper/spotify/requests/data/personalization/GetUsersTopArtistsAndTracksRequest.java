@@ -1,5 +1,6 @@
 package com.wrapper.spotify.requests.data.personalization;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.wrapper.spotify.enums.ModelObjectType;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.AbstractModelObject;
@@ -19,6 +20,7 @@ import java.io.IOException;
  *
  * @param <T> The request {@link ModelObjectType}: artist or track.
  */
+@JsonDeserialize(builder = GetUsersTopArtistsAndTracksRequest.Builder.class)
 public class GetUsersTopArtistsAndTracksRequest<T extends IArtistTrackModelObject> extends AbstractDataRequest {
 
   private final AbstractModelObject.JsonUtil<T> tClass;

@@ -1,5 +1,6 @@
 package com.wrapper.spotify.model_objects.credentials;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.JsonObject;
 import com.wrapper.spotify.model_objects.AbstractModelObject;
 
@@ -8,6 +9,7 @@ import com.wrapper.spotify.model_objects.AbstractModelObject;
  * <a href="https://developer.spotify.com/web-api/authorization-guide/#authorization-code-flow">Authorization Code
  * Credentials</a> by building instances from this class.
  */
+@JsonDeserialize(builder = AuthorizationCodeCredentials.Builder.class)
 public class AuthorizationCodeCredentials extends AbstractModelObject {
   private final String accessToken;
   private final String tokenType;

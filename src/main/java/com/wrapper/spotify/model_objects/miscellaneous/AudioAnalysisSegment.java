@@ -1,5 +1,6 @@
 package com.wrapper.spotify.model_objects.miscellaneous;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.wrapper.spotify.model_objects.AbstractModelObject;
@@ -9,6 +10,7 @@ import com.wrapper.spotify.model_objects.AbstractModelObject;
  * Segments are sound entities (typically under a second) each relatively uniform in timbre and harmony. They are
  * characterized by their perceptual onsets and duration in seconds, loudness (dB), pitch and timbral content.
  */
+@JsonDeserialize(builder = AudioAnalysisSegment.Builder.class)
 public class AudioAnalysisSegment extends AbstractModelObject {
   private final AudioAnalysisMeasure measure;
   private final Float loudnessStart;

@@ -1,5 +1,6 @@
 package com.wrapper.spotify.requests.data.library;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.JsonArray;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
@@ -10,6 +11,7 @@ import java.io.IOException;
 /**
  * Save one or more albums to the current user’s "Your Music" library.
  */
+@JsonDeserialize(builder = SaveAlbumsForCurrentUserRequest.Builder.class)
 public class SaveAlbumsForCurrentUserRequest extends AbstractDataRequest {
 
   /**

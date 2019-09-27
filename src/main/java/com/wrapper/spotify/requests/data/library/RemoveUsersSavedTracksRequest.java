@@ -1,5 +1,6 @@
 package com.wrapper.spotify.requests.data.library;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
 
@@ -8,6 +9,7 @@ import java.io.IOException;
 /**
  * Remove one or more tracks from the current user’s "Your Music" library.
  */
+@JsonDeserialize(builder = RemoveUsersSavedTracksRequest.Builder.class)
 public class RemoveUsersSavedTracksRequest extends AbstractDataRequest {
 
   /**

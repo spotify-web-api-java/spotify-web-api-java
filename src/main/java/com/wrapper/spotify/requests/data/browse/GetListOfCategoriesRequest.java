@@ -1,5 +1,6 @@
 package com.wrapper.spotify.requests.data.browse;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.neovisionaries.i18n.CountryCode;
 import com.neovisionaries.i18n.LanguageCode;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
@@ -12,6 +13,7 @@ import java.io.IOException;
 /**
  * Get a list of categories used to tag items in Spotify (on, for example, the Spotify player’s "Browse" tab).
  */
+@JsonDeserialize(builder = GetListOfCategoriesRequest.Builder.class)
 public class GetListOfCategoriesRequest extends AbstractDataRequest {
 
   /**

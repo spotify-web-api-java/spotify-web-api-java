@@ -1,5 +1,6 @@
 package com.wrapper.spotify.model_objects.miscellaneous;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.JsonObject;
 import com.wrapper.spotify.enums.Modality;
 import com.wrapper.spotify.model_objects.AbstractModelObject;
@@ -7,6 +8,7 @@ import com.wrapper.spotify.model_objects.AbstractModelObject;
 /**
  * Retrieve information about Audio Analysis Track objects by creating instances from this class.
  */
+@JsonDeserialize(builder = AudioAnalysisTrack.Builder.class)
 public class AudioAnalysisTrack extends AbstractModelObject {
   private final Long numSamples;
   private final Float duration;

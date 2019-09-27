@@ -1,5 +1,6 @@
 package com.wrapper.spotify.requests.data.search.simplified;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.Paging;
@@ -11,6 +12,7 @@ import java.io.IOException;
 /**
  * Get Spotify catalog information about tracks that match a keyword string.
  */
+@JsonDeserialize(builder = SearchTracksRequest.Builder.class)
 public class SearchTracksRequest extends AbstractDataRequest {
 
   /**

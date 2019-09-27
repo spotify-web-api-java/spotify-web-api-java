@@ -1,5 +1,6 @@
 package com.wrapper.spotify.model_objects.specification;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.JsonObject;
 import com.wrapper.spotify.model_objects.AbstractModelObject;
 
@@ -7,6 +8,7 @@ import com.wrapper.spotify.model_objects.AbstractModelObject;
  * Retrieve information about <a href="https://developer.spotify.com/web-api/object-model/#recommendations-object">
  * Recommendation objects</a> by building instances from this class.
  */
+@JsonDeserialize(builder = Recommendations.Builder.class)
 public class Recommendations extends AbstractModelObject {
   private final RecommendationsSeed[] seeds;
   private final TrackSimplified[] tracks;

@@ -1,5 +1,6 @@
 package com.wrapper.spotify.requests.data.player;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.JsonArray;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
@@ -10,6 +11,7 @@ import java.io.IOException;
 /**
  * Transfer playback to a new device and determine if it should start playing.
  */
+@JsonDeserialize(builder = TransferUsersPlaybackRequest.Builder.class)
 public class TransferUsersPlaybackRequest extends AbstractDataRequest {
 
   /**

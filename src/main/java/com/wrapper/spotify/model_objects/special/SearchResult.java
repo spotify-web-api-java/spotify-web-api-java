@@ -1,5 +1,6 @@
 package com.wrapper.spotify.model_objects.special;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.JsonObject;
 import com.wrapper.spotify.model_objects.AbstractModelObject;
 import com.wrapper.spotify.model_objects.specification.*;
@@ -10,6 +11,7 @@ import com.wrapper.spotify.requests.data.search.interfaces.ISearchModelObject;
  * Retrieve information about <a href="https://developer.spotify.com/web-api/console/get-featured-playlists">
  * Search Result objects</a> by building instances from this class.
  */
+@JsonDeserialize(builder = SearchResult.Builder.class)
 public class SearchResult extends AbstractModelObject implements IArtistTrackModelObject, ISearchModelObject {
   private final Paging<AlbumSimplified> albums;
   private final Paging<Artist> artists;

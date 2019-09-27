@@ -1,5 +1,6 @@
 package com.wrapper.spotify.requests.data.library;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.Paging;
@@ -11,6 +12,7 @@ import java.io.IOException;
 /**
  * Get a list of the albums saved in the current Spotify user’s "Your Music" library.
  */
+@JsonDeserialize(builder = GetCurrentUsersSavedAlbumsRequest.Builder.class)
 public class GetCurrentUsersSavedAlbumsRequest extends AbstractDataRequest {
 
   /**

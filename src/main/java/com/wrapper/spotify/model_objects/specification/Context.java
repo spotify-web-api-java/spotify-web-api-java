@@ -1,5 +1,6 @@
 package com.wrapper.spotify.model_objects.specification;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.JsonObject;
 import com.wrapper.spotify.enums.ModelObjectType;
 import com.wrapper.spotify.model_objects.AbstractModelObject;
@@ -11,6 +12,7 @@ import com.wrapper.spotify.model_objects.AbstractModelObject;
  *
  * @see PlayHistory
  */
+@JsonDeserialize(builder = Context.Builder.class)
 public class Context extends AbstractModelObject {
   private final ModelObjectType type;
   private final String href;

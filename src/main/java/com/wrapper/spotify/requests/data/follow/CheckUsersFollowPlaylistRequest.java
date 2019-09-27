@@ -1,5 +1,6 @@
 package com.wrapper.spotify.requests.data.follow;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.Gson;
 import com.google.gson.JsonParser;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
@@ -10,6 +11,7 @@ import java.io.IOException;
 /**
  * Check to see if one or more Spotify users are following a specified playlist.
  */
+@JsonDeserialize(builder = CheckUsersFollowPlaylistRequest.Builder.class)
 public class CheckUsersFollowPlaylistRequest extends AbstractDataRequest {
 
   /**
