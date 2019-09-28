@@ -110,7 +110,7 @@ public class ChangePlaylistsDetailsRequest extends AbstractDataRequest<String> {
      *
      * @param collaborative Optional. If {@code true}, the playlist will become collaborative and other users will be
      *                      able to modify the playlist in their Spotify client. <b>Note:</b> You can only set
-     *                      {@link #collaborative(Boolean)} to {@code true} on non-public playlists.
+     *                      this to {@code true} on non-public playlists.
      * @return A {@link ChangePlaylistsDetailsRequest.Builder}.
      */
     public Builder collaborative(final Boolean collaborative) {

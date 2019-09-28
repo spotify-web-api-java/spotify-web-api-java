@@ -85,9 +85,10 @@ public class GetCurrentUsersRecentlyPlayedTracksRequest extends AbstractDataRequ
      * The after date setter.
      *
      * @param after Optional. A {@link Date} object. Returns all items after (but not including) this cursor position.
-     *              If {@link #after(Date)} is specified, {@link #before(Date)} must not be specified.
+     *              If this is specified, {@link #before(Date)} must not be specified.
      * @return A {@link GetCurrentUsersRecentlyPlayedTracksRequest.Builder}.
      */
+    @Override
     public Builder after(final Date after) {
       assert (after != null);
       return setQueryParameter("after", SpotifyApi.formatDefaultDate(after));
@@ -97,7 +98,7 @@ public class GetCurrentUsersRecentlyPlayedTracksRequest extends AbstractDataRequ
      * The before date setter.
      *
      * @param before Optional. A {@link Date} object. Returns all items before (but not including) this cursor position.
-     *               If {@link #before(Date)} is specified, {@link #after(Date)} must not be specified.
+     *               If this is specified, {@link #after(Date)} must not be specified.
      * @return A {@link GetCurrentUsersRecentlyPlayedTracksRequest.Builder}.
      */
     public Builder before(final Date before) {

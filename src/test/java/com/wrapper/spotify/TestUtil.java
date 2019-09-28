@@ -5,6 +5,7 @@ import org.apache.http.HttpEntity;
 
 import java.io.*;
 import java.net.URI;
+import java.nio.charset.StandardCharsets;
 import java.util.logging.Level;
 
 import static org.mockito.Matchers.any;
@@ -20,7 +21,7 @@ public class TestUtil {
   }
 
   private static String readFromFile(File file) throws IOException {
-    BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(file), "UTF8"));
+    BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(file), StandardCharsets.UTF_8));
     StringBuilder out = new StringBuilder();
     String line;
 
