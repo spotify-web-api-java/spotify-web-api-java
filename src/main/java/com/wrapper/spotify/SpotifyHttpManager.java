@@ -284,16 +284,6 @@ public class SpotifyHttpManager implements IHttpManager {
     }
 
     switch (statusLine.getStatusCode()) {
-      case HttpStatus.SC_OK:
-        return responseBody;
-      case HttpStatus.SC_CREATED:
-        return responseBody;
-      case HttpStatus.SC_ACCEPTED:
-        return responseBody;
-      case HttpStatus.SC_NO_CONTENT:
-        return responseBody;
-      case HttpStatus.SC_NOT_MODIFIED:
-        return responseBody;
       case HttpStatus.SC_BAD_REQUEST:
         throw new BadRequestException(errorMessage);
       case HttpStatus.SC_UNAUTHORIZED:
