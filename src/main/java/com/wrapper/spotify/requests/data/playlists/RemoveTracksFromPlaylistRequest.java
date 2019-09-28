@@ -13,7 +13,7 @@ import java.io.IOException;
  * Remove one or more tracks from a user’s playlist.
  */
 @JsonDeserialize(builder = RemoveTracksFromPlaylistRequest.Builder.class)
-public class RemoveTracksFromPlaylistRequest extends AbstractDataRequest {
+public class RemoveTracksFromPlaylistRequest extends AbstractDataRequest<SnapshotResult> {
 
   /**
    * The private {@link RemoveTracksFromPlaylistRequest} constructor.
@@ -33,7 +33,6 @@ public class RemoveTracksFromPlaylistRequest extends AbstractDataRequest {
    * @see <a href="https://developer.spotify.com/web-api/working-with-playlists/#version-control-and-snapshots">
    * Spotify: Version Control and Snapshots</a>
    */
-  @SuppressWarnings("unchecked")
   public SnapshotResult execute() throws
           IOException,
           SpotifyWebApiException {
@@ -43,7 +42,7 @@ public class RemoveTracksFromPlaylistRequest extends AbstractDataRequest {
   /**
    * Builder class for building a {@link RemoveTracksFromPlaylistRequest}.
    */
-  public static final class Builder extends AbstractDataRequest.Builder<Builder> {
+  public static final class Builder extends AbstractDataRequest.Builder<SnapshotResult, Builder> {
 
     /**
      * Create a new {@link RemoveTracksFromPlaylistRequest.Builder}.

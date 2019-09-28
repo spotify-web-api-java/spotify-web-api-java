@@ -11,7 +11,7 @@ import java.io.IOException;
  * Get audio features for multiple tracks based on their Spotify IDs.
  */
 @JsonDeserialize(builder = GetAudioFeaturesForSeveralTracksRequest.Builder.class)
-public class GetAudioFeaturesForSeveralTracksRequest extends AbstractDataRequest {
+public class GetAudioFeaturesForSeveralTracksRequest extends AbstractDataRequest<AudioFeatures[]> {
 
   /**
    * The private {@link GetAudioFeaturesForSeveralTracksRequest} constructor.
@@ -38,7 +38,7 @@ public class GetAudioFeaturesForSeveralTracksRequest extends AbstractDataRequest
   /**
    * Builder class for building a {@link GetAudioFeaturesForSeveralTracksRequest}.
    */
-  public static final class Builder extends AbstractDataRequest.Builder<Builder> {
+  public static final class Builder extends AbstractDataRequest.Builder<AudioFeatures[], Builder> {
 
     /**
      * Create a new {@link GetAudioFeaturesForSeveralTracksRequest.Builder}.

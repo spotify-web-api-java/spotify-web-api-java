@@ -7,6 +7,7 @@ import com.wrapper.spotify.model_objects.AbstractModelObject;
 import com.wrapper.spotify.model_objects.specification.Artist;
 import com.wrapper.spotify.model_objects.specification.Paging;
 import com.wrapper.spotify.model_objects.specification.Track;
+import com.wrapper.spotify.requests.data.AbstractDataPagingRequest;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
 import com.wrapper.spotify.requests.data.personalization.interfaces.IArtistTrackModelObject;
 import com.wrapper.spotify.requests.data.personalization.simplified.GetUsersTopArtistsRequest;
@@ -21,7 +22,7 @@ import java.io.IOException;
  * @param <T> The request {@link ModelObjectType}: artist or track.
  */
 @JsonDeserialize(builder = GetUsersTopArtistsAndTracksRequest.Builder.class)
-public class GetUsersTopArtistsAndTracksRequest<T extends IArtistTrackModelObject> extends AbstractDataRequest {
+public class GetUsersTopArtistsAndTracksRequest<T extends IArtistTrackModelObject> extends AbstractDataRequest<Paging<T>> {
 
   private final AbstractModelObject.JsonUtil<T> tClass;
 
@@ -31,7 +32,7 @@ public class GetUsersTopArtistsAndTracksRequest<T extends IArtistTrackModelObjec
    * @param builder A {@link GetUsersTopArtistsAndTracksRequest.Builder}.
    * @param tClass  A {@link AbstractModelObject.JsonUtil}.
    */
-  private GetUsersTopArtistsAndTracksRequest(final Builder builder, final AbstractModelObject.JsonUtil<T> tClass) {
+  private GetUsersTopArtistsAndTracksRequest(final Builder<T> builder, final AbstractModelObject.JsonUtil<T> tClass) {
     super(builder);
     this.tClass = tClass;
   }
@@ -43,7 +44,6 @@ public class GetUsersTopArtistsAndTracksRequest<T extends IArtistTrackModelObjec
    * @throws IOException            In case of networking issues.
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
    */
-  @SuppressWarnings("unchecked")
   public Paging<T> execute() throws
           IOException,
           SpotifyWebApiException {
@@ -58,7 +58,7 @@ public class GetUsersTopArtistsAndTracksRequest<T extends IArtistTrackModelObjec
    *
    * @param <T> The request {@link ModelObjectType}: artist or track.
    */
-  public static final class Builder<T extends IArtistTrackModelObject> extends AbstractDataRequest.Builder<Builder<T>> {
+  public static final class Builder<T extends IArtistTrackModelObject> extends AbstractDataPagingRequest.Builder<T, Builder<T>> {
 
     private AbstractModelObject.JsonUtil<T> tClass;
 
@@ -103,7 +103,8 @@ public class GetUsersTopArtistsAndTracksRequest<T extends IArtistTrackModelObjec
      * @param limit Optional. The number of entities to return. Default: 20. Minimum: 1. Maximum: 50.
      * @return A {@link GetUsersTopArtistsAndTracksRequest.Builder}.
      */
-    public Builder limit(final Integer limit) {
+    @Override
+    public Builder<T> limit(final Integer limit) {
       assert (limit != null);
       assert (1 <= limit && limit <= 50);
       return setQueryParameter("limit", limit);
@@ -116,7 +117,8 @@ public class GetUsersTopArtistsAndTracksRequest<T extends IArtistTrackModelObjec
      *               {@link #limit(Integer)} to get the next set of entities.
      * @return A {@link GetUsersTopArtistsAndTracksRequest.Builder}.
      */
-    public Builder offset(final Integer offset) {
+    @Override
+    public Builder<T> offset(final Integer offset) {
       assert (offset >= 0);
       return setQueryParameter("offset", offset);
     }

@@ -16,7 +16,7 @@ import java.io.IOException;
  * the playlists when the tracks are reordered.
  */
 @JsonDeserialize(builder = ReorderPlaylistsTracksRequest.Builder.class)
-public class ReorderPlaylistsTracksRequest extends AbstractDataRequest {
+public class ReorderPlaylistsTracksRequest extends AbstractDataRequest<SnapshotResult> {
 
   /**
    * The private {@link ReorderPlaylistsTracksRequest} constructor.
@@ -36,7 +36,6 @@ public class ReorderPlaylistsTracksRequest extends AbstractDataRequest {
    * @see <a href="https://developer.spotify.com/web-api/working-with-playlists/#version-control-and-snapshots">
    * Spotify: Version Control and Snapshots</a>
    */
-  @SuppressWarnings("unchecked")
   public SnapshotResult execute() throws
           IOException,
           SpotifyWebApiException {
@@ -46,7 +45,7 @@ public class ReorderPlaylistsTracksRequest extends AbstractDataRequest {
   /**
    * Builder class for building a {@link ReorderPlaylistsTracksRequest}.
    */
-  public static final class Builder extends AbstractDataRequest.Builder<Builder> {
+  public static final class Builder extends AbstractDataRequest.Builder<SnapshotResult, Builder> {
 
     /**
      * Create a new {@link ReorderPlaylistsTracksRequest.Builder}.

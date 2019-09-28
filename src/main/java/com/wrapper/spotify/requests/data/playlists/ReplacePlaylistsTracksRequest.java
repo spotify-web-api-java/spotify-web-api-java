@@ -13,7 +13,7 @@ import java.io.IOException;
  * replacing tracks, re-ordering existing tracks, or clearing the playlist.
  */
 @JsonDeserialize(builder = ReplacePlaylistsTracksRequest.Builder.class)
-public class ReplacePlaylistsTracksRequest extends AbstractDataRequest {
+public class ReplacePlaylistsTracksRequest extends AbstractDataRequest<String> {
 
   /**
    * The private {@link ReplacePlaylistsTracksRequest} constructor.
@@ -31,7 +31,6 @@ public class ReplacePlaylistsTracksRequest extends AbstractDataRequest {
    * @throws IOException            In case of networking issues.
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
    */
-  @SuppressWarnings("unchecked")
   public String execute() throws
           IOException,
           SpotifyWebApiException {
@@ -41,7 +40,7 @@ public class ReplacePlaylistsTracksRequest extends AbstractDataRequest {
   /**
    * Builder class for building a {@link ReplacePlaylistsTracksRequest}.
    */
-  public static final class Builder extends AbstractDataRequest.Builder<Builder> {
+  public static final class Builder extends AbstractDataRequest.Builder<String, Builder> {
 
     /**
      * Create a new {@link ReplacePlaylistsTracksRequest.Builder}.

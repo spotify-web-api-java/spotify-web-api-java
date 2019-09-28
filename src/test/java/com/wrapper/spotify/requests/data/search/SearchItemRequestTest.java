@@ -44,7 +44,7 @@ public class SearchItemRequestTest extends AbstractDataTest<SearchResult> {
 
   @Test
   public void shouldReturnDefault_async() throws ExecutionException, InterruptedException {
-    shouldReturnDefault((SearchResult) defaultRequest.executeAsync().get());
+    shouldReturnDefault(defaultRequest.executeAsync().get());
   }
 
   public void shouldReturnDefault(final SearchResult searchResult) {

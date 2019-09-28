@@ -11,7 +11,7 @@ import java.io.IOException;
  * Pause playback on the user’s account.
  */
 @JsonDeserialize(builder = PauseUsersPlaybackRequest.Builder.class)
-public class PauseUsersPlaybackRequest extends AbstractDataRequest {
+public class PauseUsersPlaybackRequest extends AbstractDataRequest<String> {
 
   /**
    * The private {@link PauseUsersPlaybackRequest} constructor.
@@ -29,7 +29,6 @@ public class PauseUsersPlaybackRequest extends AbstractDataRequest {
    * @throws IOException            In case of networking issues.
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
    */
-  @SuppressWarnings("unchecked")
   public String execute() throws
           IOException,
           SpotifyWebApiException {
@@ -39,7 +38,7 @@ public class PauseUsersPlaybackRequest extends AbstractDataRequest {
   /**
    * Builder class for building a {@link PauseUsersPlaybackRequest}.
    */
-  public static final class Builder extends AbstractDataRequest.Builder<Builder> {
+  public static final class Builder extends AbstractDataRequest.Builder<String, Builder> {
 
     /**
      * Create a new {@link PauseUsersPlaybackRequest.Builder}.

@@ -11,7 +11,7 @@ import java.io.IOException;
  * Get audio feature information for a single track identified by its unique Spotify ID.
  */
 @JsonDeserialize(builder = GetAudioFeaturesForTrackRequest.Builder.class)
-public class GetAudioFeaturesForTrackRequest extends AbstractDataRequest {
+public class GetAudioFeaturesForTrackRequest extends AbstractDataRequest<AudioFeatures> {
 
   /**
    * The private {@link GetAudioFeaturesForTrackRequest} constructor.
@@ -29,7 +29,6 @@ public class GetAudioFeaturesForTrackRequest extends AbstractDataRequest {
    * @throws IOException            In case of networking issues.
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
    */
-  @SuppressWarnings("unchecked")
   public AudioFeatures execute() throws
           IOException,
           SpotifyWebApiException {
@@ -39,7 +38,7 @@ public class GetAudioFeaturesForTrackRequest extends AbstractDataRequest {
   /**
    * Builder class for building a {@link GetAudioFeaturesForTrackRequest}.
    */
-  public static final class Builder extends AbstractDataRequest.Builder<Builder> {
+  public static final class Builder extends AbstractDataRequest.Builder<AudioFeatures, Builder> {
 
     /**
      * Create a new {@link GetAudioFeaturesForTrackRequest.Builder}.

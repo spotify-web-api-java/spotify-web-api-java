@@ -12,7 +12,7 @@ import java.io.IOException;
  * Get Spotify catalog information about artists, albums, tracks or playlists that match a keyword string.
  */
 @JsonDeserialize(builder = SearchItemRequest.Builder.class)
-public class SearchItemRequest extends AbstractDataRequest {
+public class SearchItemRequest extends AbstractDataRequest<SearchResult> {
 
   /**
    * The private {@link SearchItemRequest} constructor.
@@ -30,7 +30,6 @@ public class SearchItemRequest extends AbstractDataRequest {
    * @throws IOException            In case of networking issues.
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
    */
-  @SuppressWarnings("unchecked")
   public SearchResult execute() throws
           IOException,
           SpotifyWebApiException {
@@ -40,7 +39,7 @@ public class SearchItemRequest extends AbstractDataRequest {
   /**
    * Builder class for building a {@link SearchItemRequest}.
    */
-  public static final class Builder extends AbstractDataRequest.Builder<Builder> {
+  public static final class Builder extends AbstractDataRequest.Builder<SearchResult, Builder> {
 
     /**
      * Create a new {@link SearchItemRequest.Builder}.

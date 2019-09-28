@@ -10,11 +10,7 @@ public class SpotifyApiThreading {
   public static final ExecutorService THREADPOOL = Executors.newCachedThreadPool();
 
   public static <T> Future<T> executeAsync(final Callable<T> callable) {
-    return SpotifyApiThreading.THREADPOOL.submit(new Callable<T>() {
-      public T call() throws Exception {
-        return callable.call();
-      }
-    });
+    return SpotifyApiThreading.THREADPOOL.submit(callable);
   }
 
 }

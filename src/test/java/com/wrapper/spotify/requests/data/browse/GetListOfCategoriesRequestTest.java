@@ -43,10 +43,9 @@ public class GetListOfCategoriesRequestTest extends AbstractDataTest<Paging<Cate
     shouldReturnDefault(defaultRequest.execute());
   }
 
-  @SuppressWarnings("unchecked")
   @Test
   public void shouldReturnDefault_async() throws ExecutionException, InterruptedException {
-    shouldReturnDefault((Paging<Category>) defaultRequest.executeAsync().get());
+    shouldReturnDefault(defaultRequest.executeAsync().get());
   }
 
   public void shouldReturnDefault(final Paging<Category> categoryPaging) {

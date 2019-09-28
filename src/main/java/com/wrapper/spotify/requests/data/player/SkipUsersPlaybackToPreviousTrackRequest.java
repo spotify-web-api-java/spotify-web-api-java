@@ -15,7 +15,7 @@ import java.io.IOException;
  * {@link SeekToPositionInCurrentlyPlayingTrackRequest}.
  */
 @JsonDeserialize(builder = SkipUsersPlaybackToPreviousTrackRequest.Builder.class)
-public class SkipUsersPlaybackToPreviousTrackRequest extends AbstractDataRequest {
+public class SkipUsersPlaybackToPreviousTrackRequest extends AbstractDataRequest<String> {
 
   /**
    * The private {@link SkipUsersPlaybackToPreviousTrackRequest} constructor.
@@ -33,7 +33,6 @@ public class SkipUsersPlaybackToPreviousTrackRequest extends AbstractDataRequest
    * @throws IOException            In case of networking issues.
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
    */
-  @SuppressWarnings("unchecked")
   public String execute() throws
           IOException,
           SpotifyWebApiException {
@@ -43,7 +42,7 @@ public class SkipUsersPlaybackToPreviousTrackRequest extends AbstractDataRequest
   /**
    * Builder class for building a {@link SkipUsersPlaybackToPreviousTrackRequest}.
    */
-  public static final class Builder extends AbstractDataRequest.Builder<Builder> {
+  public static final class Builder extends AbstractDataRequest.Builder<String, Builder> {
 
     /**
      * Create a new {@link SkipUsersPlaybackToPreviousTrackRequest.Builder}.

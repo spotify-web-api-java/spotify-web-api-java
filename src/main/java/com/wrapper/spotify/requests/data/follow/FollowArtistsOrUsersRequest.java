@@ -13,7 +13,7 @@ import java.io.IOException;
  * Add the current user as a follower of one or more artists or other Spotify users.
  */
 @JsonDeserialize(builder = FollowArtistsOrUsersRequest.Builder.class)
-public class FollowArtistsOrUsersRequest extends AbstractDataRequest {
+public class FollowArtistsOrUsersRequest extends AbstractDataRequest<String> {
 
   /**
    * The private {@link FollowArtistsOrUsersRequest} constructor.
@@ -31,7 +31,6 @@ public class FollowArtistsOrUsersRequest extends AbstractDataRequest {
    * @throws IOException            In case of networking issues.
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
    */
-  @SuppressWarnings("unchecked")
   public String execute() throws
           IOException,
           SpotifyWebApiException {
@@ -41,7 +40,7 @@ public class FollowArtistsOrUsersRequest extends AbstractDataRequest {
   /**
    * Builder class for building a {@link FollowArtistsOrUsersRequest}.
    */
-  public static final class Builder extends AbstractDataRequest.Builder<Builder> {
+  public static final class Builder extends AbstractDataRequest.Builder<String, Builder> {
 
     /**
      * Create a new {@link FollowArtistsOrUsersRequest}.

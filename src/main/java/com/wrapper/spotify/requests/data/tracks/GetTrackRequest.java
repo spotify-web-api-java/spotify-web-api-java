@@ -12,7 +12,7 @@ import java.io.IOException;
  * Get Spotify catalog information for a single track identified by its unique Spotify ID.
  */
 @JsonDeserialize(builder = GetTrackRequest.Builder.class)
-public class GetTrackRequest extends AbstractDataRequest {
+public class GetTrackRequest extends AbstractDataRequest<Track> {
 
   /**
    * The private {@link GetTrackRequest} constructor.
@@ -30,7 +30,6 @@ public class GetTrackRequest extends AbstractDataRequest {
    * @throws IOException            In case of networking issues.
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
    */
-  @SuppressWarnings("unchecked")
   public Track execute() throws
           IOException,
           SpotifyWebApiException {
@@ -40,7 +39,7 @@ public class GetTrackRequest extends AbstractDataRequest {
   /**
    * Builder class for building a {@link GetTrackRequest}.
    */
-  public static final class Builder extends AbstractDataRequest.Builder<Builder> {
+  public static final class Builder extends AbstractDataRequest.Builder<Track, Builder> {
 
     /**
      * Create a new {@link GetTrackRequest.Builder}.

@@ -12,7 +12,7 @@ public enum ReleaseDatePrecision {
   MONTH("month"),
   YEAR("year");
 
-  private static Map<String, ReleaseDatePrecision> map = new HashMap<>();
+  private static final Map<String, ReleaseDatePrecision> map = new HashMap<>();
 
   static {
     for (ReleaseDatePrecision releaseDatePrecision : ReleaseDatePrecision.values()) {

@@ -5,6 +5,7 @@ import com.wrapper.spotify.enums.ModelObjectType;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.Artist;
 import com.wrapper.spotify.model_objects.specification.PagingCursorbased;
+import com.wrapper.spotify.requests.data.AbstractDataPagingCursorbasedRequest;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
 
 import java.io.IOException;
@@ -13,7 +14,7 @@ import java.io.IOException;
  * Get the current user’s followed artists.
  */
 @JsonDeserialize(builder = GetUsersFollowedArtistsRequest.Builder.class)
-public class GetUsersFollowedArtistsRequest extends AbstractDataRequest {
+public class GetUsersFollowedArtistsRequest extends AbstractDataRequest<PagingCursorbased<Artist>> {
 
   /**
    * The private {@link GetUsersFollowedArtistsRequest} constructor.
@@ -31,7 +32,6 @@ public class GetUsersFollowedArtistsRequest extends AbstractDataRequest {
    * @throws IOException            In case of networking issues.
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
    */
-  @SuppressWarnings("unchecked")
   public PagingCursorbased<Artist> execute() throws
           IOException,
           SpotifyWebApiException {
@@ -41,7 +41,7 @@ public class GetUsersFollowedArtistsRequest extends AbstractDataRequest {
   /**
    * Builder class for building a {@link GetUsersFollowedArtistsRequest}.
    */
-  public static final class Builder extends AbstractDataRequest.Builder<Builder> {
+  public static final class Builder extends AbstractDataPagingCursorbasedRequest.Builder<Artist, String, Builder> {
 
     /**
      * Create a new {@link GetUsersFollowedArtistsRequest.Builder} instance.
@@ -74,6 +74,7 @@ public class GetUsersFollowedArtistsRequest extends AbstractDataRequest {
      * @param limit Optional. The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.
      * @return A {@link GetUsersFollowedArtistsRequest.Builder}.
      */
+    @Override
     public Builder limit(final Integer limit) {
       assert (limit != null);
       assert (1 <= limit && limit <= 50);
@@ -87,6 +88,7 @@ public class GetUsersFollowedArtistsRequest extends AbstractDataRequest {
      * @return A {@link GetUsersFollowedArtistsRequest.Builder}.
      * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URIs &amp; IDs</a>
      */
+    @Override
     public Builder after(final String after) {
       assert (after != null);
       return setQueryParameter("after", after);

@@ -50,7 +50,7 @@ public class AuthorizationCodeRefreshRequestTest extends AbstractAuthorizationTe
 
   @Test
   public void shouldReturnDefault_async() throws ExecutionException, InterruptedException {
-    shouldReturnDefault((AuthorizationCodeCredentials) defaultRequest.executeAsync().get());
+    shouldReturnDefault(defaultRequest.executeAsync().get());
   }
 
   public void shouldReturnDefault(final AuthorizationCodeCredentials authorizationCodeCredentials) {

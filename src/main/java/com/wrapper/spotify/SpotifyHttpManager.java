@@ -25,7 +25,7 @@ import org.apache.http.util.EntityUtils;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.logging.Level;
 
 public class SpotifyHttpManager implements IHttpManager {
@@ -64,7 +64,7 @@ public class SpotifyHttpManager implements IHttpManager {
 
     ConnectionConfig connectionConfig = ConnectionConfig
             .custom()
-            .setCharset(Charset.forName("UTF-8"))
+            .setCharset(StandardCharsets.UTF_8)
             .build();
 
     new BasicCredentialsProvider();
@@ -284,16 +284,6 @@ public class SpotifyHttpManager implements IHttpManager {
     }
 
     switch (statusLine.getStatusCode()) {
-      case HttpStatus.SC_OK:
-        return responseBody;
-      case HttpStatus.SC_CREATED:
-        return responseBody;
-      case HttpStatus.SC_ACCEPTED:
-        return responseBody;
-      case HttpStatus.SC_NO_CONTENT:
-        return responseBody;
-      case HttpStatus.SC_NOT_MODIFIED:
-        return responseBody;
       case HttpStatus.SC_BAD_REQUEST:
         throw new BadRequestException(errorMessage);
       case HttpStatus.SC_UNAUTHORIZED:

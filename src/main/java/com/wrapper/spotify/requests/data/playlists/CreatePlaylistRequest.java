@@ -13,7 +13,7 @@ import java.io.IOException;
  * with an {@link AddTracksToPlaylistRequest}.)
  */
 @JsonDeserialize(builder = CreatePlaylistRequest.Builder.class)
-public class CreatePlaylistRequest extends AbstractDataRequest {
+public class CreatePlaylistRequest extends AbstractDataRequest<Playlist> {
 
   /**
    * The private {@link CreatePlaylistRequest} constructor.
@@ -31,7 +31,6 @@ public class CreatePlaylistRequest extends AbstractDataRequest {
    * @throws IOException            In case of networking issues.
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
    */
-  @SuppressWarnings("unchecked")
   public Playlist execute() throws
           IOException,
           SpotifyWebApiException {
@@ -41,7 +40,7 @@ public class CreatePlaylistRequest extends AbstractDataRequest {
   /**
    * Builder class for building a {@link CreatePlaylistRequest}.
    */
-  public static final class Builder extends AbstractDataRequest.Builder<Builder> {
+  public static final class Builder extends AbstractDataRequest.Builder<Playlist, Builder> {
 
     /**
      * Create a new {@link CreatePlaylistRequest.Builder}.

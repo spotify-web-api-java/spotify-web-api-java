@@ -12,7 +12,7 @@ import java.io.IOException;
  * Save one or more tracks to the current user’s "Your Music" library.
  */
 @JsonDeserialize(builder = SaveTracksForUserRequest.Builder.class)
-public class SaveTracksForUserRequest extends AbstractDataRequest {
+public class SaveTracksForUserRequest extends AbstractDataRequest<String> {
 
   /**
    * The private {@link SaveTracksForUserRequest} constructor.
@@ -30,7 +30,6 @@ public class SaveTracksForUserRequest extends AbstractDataRequest {
    * @throws IOException            In case of networking issues.
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
    */
-  @SuppressWarnings("unchecked")
   public String execute() throws
           IOException,
           SpotifyWebApiException {
@@ -40,7 +39,7 @@ public class SaveTracksForUserRequest extends AbstractDataRequest {
   /**
    * Builder class for building a {@link SaveTracksForUserRequest}.
    */
-  public static final class Builder extends AbstractDataRequest.Builder<Builder> {
+  public static final class Builder extends AbstractDataRequest.Builder<String, Builder> {
 
     /**
      * Create a new {@link SaveTracksForUserRequest.Builder} instance.

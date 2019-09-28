@@ -18,7 +18,7 @@ import java.io.IOException;
  * For artists and tracks that are very new or obscure there might not be enough data to generate a list of tracks.
  */
 @JsonDeserialize(builder = GetRecommendationsRequest.Builder.class)
-public class GetRecommendationsRequest extends AbstractDataRequest {
+public class GetRecommendationsRequest extends AbstractDataRequest<Recommendations> {
 
   /**
    * The private {@link GetRecommendationsRequest} constructor.
@@ -36,7 +36,6 @@ public class GetRecommendationsRequest extends AbstractDataRequest {
    * @throws IOException            In case of networking issues.
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
    */
-  @SuppressWarnings("unchecked")
   public Recommendations execute() throws
           IOException,
           SpotifyWebApiException {
@@ -46,7 +45,7 @@ public class GetRecommendationsRequest extends AbstractDataRequest {
   /**
    * Builder class for building a {@link GetRecommendationsRequest}.
    */
-  public static final class Builder extends AbstractDataRequest.Builder<Builder> {
+  public static final class Builder extends AbstractDataRequest.Builder<Recommendations, Builder> {
 
     /**
      * Create a new {@link GetRecommendationsRequest.Builder} instance.

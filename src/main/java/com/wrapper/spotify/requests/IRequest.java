@@ -13,7 +13,7 @@ import java.net.URI;
 import java.util.List;
 import java.util.concurrent.Future;
 
-public interface IRequest {
+public interface IRequest<T> {
 
   IHttpManager getHttpManager();
 
@@ -27,11 +27,11 @@ public interface IRequest {
 
   List<NameValuePair> getBodyParameters();
 
-  <T> T execute() throws
+  T execute() throws
           IOException,
           SpotifyWebApiException;
 
-  <T> Future<T> executeAsync();
+  Future<T> executeAsync();
 
   String getJson() throws
           IOException,
@@ -50,7 +50,7 @@ public interface IRequest {
           SpotifyWebApiException;
 
   @JsonPOJOBuilder(withPrefix = "set")
-  interface Builder {
+  interface Builder<T, X> {
 
     Builder setHttpManager(final IHttpManager httpManager);
 
@@ -69,16 +69,16 @@ public interface IRequest {
                         final String host,
                         final Integer port);
 
-    <T> Builder setQueryParameter(final String name, final T value);
+    <ST> Builder setQueryParameter(final String name, final ST value);
 
-    <T> Builder setHeader(final String name, final T value);
+    <ST> Builder setHeader(final String name, final ST value);
 
     Builder setContentType(final ContentType contentType);
 
     Builder setBody(final HttpEntity httpEntity);
 
-    <T> Builder setBodyParameter(final String name, final T value);
+    <ST> Builder setBodyParameter(final String name, final ST value);
 
-    AbstractRequest build();
+    AbstractRequest<T> build();
   }
 }

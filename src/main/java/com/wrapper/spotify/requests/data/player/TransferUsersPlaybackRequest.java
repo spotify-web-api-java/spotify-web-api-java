@@ -12,7 +12,7 @@ import java.io.IOException;
  * Transfer playback to a new device and determine if it should start playing.
  */
 @JsonDeserialize(builder = TransferUsersPlaybackRequest.Builder.class)
-public class TransferUsersPlaybackRequest extends AbstractDataRequest {
+public class TransferUsersPlaybackRequest extends AbstractDataRequest<String> {
 
   /**
    * The private {@link TransferUsersPlaybackRequest} constructor.
@@ -30,7 +30,6 @@ public class TransferUsersPlaybackRequest extends AbstractDataRequest {
    * @throws IOException            In case of networking issues.
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
    */
-  @SuppressWarnings("unchecked")
   public String execute() throws
           IOException,
           SpotifyWebApiException {
@@ -40,7 +39,7 @@ public class TransferUsersPlaybackRequest extends AbstractDataRequest {
   /**
    * Builder class for building a {@link TransferUsersPlaybackRequest}.
    */
-  public static final class Builder extends AbstractDataRequest.Builder<Builder> {
+  public static final class Builder extends AbstractDataRequest.Builder<String, Builder> {
 
     /**
      * Create a new {@link TransferUsersPlaybackRequest.Builder}.

@@ -12,7 +12,7 @@ import java.io.IOException;
  * Get a playlist owned by a Spotify user.
  */
 @JsonDeserialize(builder = GetPlaylistRequest.Builder.class)
-public class GetPlaylistRequest extends AbstractDataRequest {
+public class GetPlaylistRequest extends AbstractDataRequest<Playlist> {
 
   /**
    * The private {@link GetPlaylistRequest} constructor.
@@ -30,7 +30,6 @@ public class GetPlaylistRequest extends AbstractDataRequest {
    * @throws IOException            In case of networking issues.
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
    */
-  @SuppressWarnings("unchecked")
   public Playlist execute() throws
           IOException,
           SpotifyWebApiException {
@@ -40,7 +39,7 @@ public class GetPlaylistRequest extends AbstractDataRequest {
   /**
    * Builder class for building a {@link GetPlaylistRequest}.
    */
-  public static final class Builder extends AbstractDataRequest.Builder<Builder> {
+  public static final class Builder extends AbstractDataRequest.Builder<Playlist, Builder> {
 
     /**
      * Create a new {@link GetPlaylistRequest.Builder}.

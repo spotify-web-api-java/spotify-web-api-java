@@ -42,7 +42,7 @@ public class GetSeveralAlbumsRequestTest extends AbstractDataTest<Album[]> {
 
   @Test
   public void shouldReturnDefault_async() throws ExecutionException, InterruptedException {
-    shouldReturnDefault((Album[]) defaultRequest.executeAsync().get());
+    shouldReturnDefault(defaultRequest.executeAsync().get());
   }
 
   public void shouldReturnDefault(final Album[] albums) {
@@ -58,7 +58,7 @@ public class GetSeveralAlbumsRequestTest extends AbstractDataTest<Album[]> {
 
   @Test
   public void shouldReturnEmpty_async() throws ExecutionException, InterruptedException {
-    shouldReturnEmpty((Album[]) emptyRequest.executeAsync().get());
+    shouldReturnEmpty(emptyRequest.executeAsync().get());
   }
 
   public void shouldReturnEmpty(final Album[] albums) {

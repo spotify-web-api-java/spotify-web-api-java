@@ -14,7 +14,7 @@ import org.apache.http.entity.ContentType;
  * Start a new context or resume current playback on the user’s active device.
  */
 @JsonDeserialize(builder = StartResumeUsersPlaybackRequest.Builder.class)
-public class StartResumeUsersPlaybackRequest extends AbstractDataRequest {
+public class StartResumeUsersPlaybackRequest extends AbstractDataRequest<String> {
 
   /**
    * The private {@link StartResumeUsersPlaybackRequest} constructor.
@@ -32,7 +32,6 @@ public class StartResumeUsersPlaybackRequest extends AbstractDataRequest {
    * @throws IOException            In case of networking issues.
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
    */
-  @SuppressWarnings("unchecked")
   public String execute() throws
           IOException,
           SpotifyWebApiException {
@@ -42,7 +41,7 @@ public class StartResumeUsersPlaybackRequest extends AbstractDataRequest {
   /**
    * Builder class for building a {@link StartResumeUsersPlaybackRequest}.
    */
-  public static final class Builder extends AbstractDataRequest.Builder<Builder> {
+  public static final class Builder extends AbstractDataRequest.Builder<String, Builder> {
 
     /**
      * Create a new {@link StartResumeUsersPlaybackRequest.Builder}.

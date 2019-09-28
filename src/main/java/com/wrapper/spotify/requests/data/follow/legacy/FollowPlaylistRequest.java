@@ -11,7 +11,7 @@ import java.io.IOException;
  * Add the current user as a follower of a playlist.
  */
 @JsonDeserialize(builder = FollowPlaylistRequest.Builder.class)
-public class FollowPlaylistRequest extends AbstractDataRequest {
+public class FollowPlaylistRequest extends AbstractDataRequest<String> {
 
     /**
      * The private {@link FollowPlaylistRequest} constructor.
@@ -29,7 +29,6 @@ public class FollowPlaylistRequest extends AbstractDataRequest {
      * @throws IOException            In case of networking issues.
      * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
      */
-    @SuppressWarnings("unchecked")
     public String execute() throws
             IOException,
             SpotifyWebApiException {
@@ -39,7 +38,7 @@ public class FollowPlaylistRequest extends AbstractDataRequest {
     /**
      * Builder class for building a {@link FollowPlaylistRequest}.
      */
-    public static final class Builder extends AbstractDataRequest.Builder<Builder> {
+    public static final class Builder extends AbstractDataRequest.Builder<String, Builder> {
 
         /**
          * Create a new {@link FollowPlaylistRequest} instance.

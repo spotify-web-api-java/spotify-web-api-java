@@ -20,7 +20,7 @@ public class UploadCustomPlaylistCoverImageRequestTest extends AbstractDataTest<
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
                           "requests/data/playlists/UploadCustomPlaylistCoverImageRequest.json"))
-          .image_data(IMAGE_DATA)
+          .image_data(IMAGE_DATA != null ? IMAGE_DATA : "")
           .build();
 
   public UploadCustomPlaylistCoverImageRequestTest() throws Exception {
@@ -44,7 +44,7 @@ public class UploadCustomPlaylistCoverImageRequestTest extends AbstractDataTest<
 
   @Test
   public void shouldReturnDefault_async() throws ExecutionException, InterruptedException {
-    shouldReturnDefault((String) defaultRequest.executeAsync().get());
+    shouldReturnDefault(defaultRequest.executeAsync().get());
   }
 
   public void shouldReturnDefault(final String string) {
