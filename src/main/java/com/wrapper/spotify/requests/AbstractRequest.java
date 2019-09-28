@@ -114,7 +114,7 @@ public abstract class AbstractRequest implements IRequest {
   public String getJson() throws
           IOException,
           SpotifyWebApiException {
-    String json = httpManager.get(uri, headers.toArray(new Header[headers.size()]));
+    String json = httpManager.get(uri, headers.toArray(new Header[0]));
 
     if (json == null || json.equals("")) {
       return null;
@@ -128,7 +128,7 @@ public abstract class AbstractRequest implements IRequest {
           SpotifyWebApiException {
     initializeBody();
 
-    String json = httpManager.post(uri, headers.toArray(new Header[headers.size()]), body);
+    String json = httpManager.post(uri, headers.toArray(new Header[0]), body);
 
     if (json == null || json.equals("")) {
       return null;
@@ -142,7 +142,7 @@ public abstract class AbstractRequest implements IRequest {
           SpotifyWebApiException {
     initializeBody();
 
-    String json = httpManager.put(uri, headers.toArray(new Header[headers.size()]), body);
+    String json = httpManager.put(uri, headers.toArray(new Header[0]), body);
 
     if (json == null || json.equals("")) {
       return null;
@@ -156,7 +156,7 @@ public abstract class AbstractRequest implements IRequest {
           SpotifyWebApiException {
     initializeBody();
 
-    String json = httpManager.delete(uri, headers.toArray(new Header[headers.size()]), body);
+    String json = httpManager.delete(uri, headers.toArray(new Header[0]), body);
 
     if (json == null || json.equals("")) {
       return null;
