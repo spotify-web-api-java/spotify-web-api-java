@@ -4,7 +4,6 @@ import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.enums.ModelObjectType;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.Artist;
-import com.wrapper.spotify.model_objects.specification.Followers;
 import com.wrapper.spotify.requests.data.AbstractDataTest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,6 +13,7 @@ import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 @RunWith(MockitoJUnitRunner.class)
 public class GetArtistRequestTest extends AbstractDataTest<Artist> {
@@ -74,8 +74,5 @@ public class GetArtistRequestTest extends AbstractDataTest<Artist> {
     assertEquals(
             "spotify:artist:0OdUWJ0sBjDrqHygGUXeCF",
             artist.getUri());
-  }
-
-  private void assertNotNull(Followers followers) {
   }
 }
