@@ -11,7 +11,7 @@ import java.io.IOException;
  * Set the volume for the user’s current playback device.
  */
 @JsonDeserialize(builder = SetVolumeForUsersPlaybackRequest.Builder.class)
-public class SetVolumeForUsersPlaybackRequest extends AbstractDataRequest {
+public class SetVolumeForUsersPlaybackRequest extends AbstractDataRequest<String> {
 
   /**
    * The private {@link SetVolumeForUsersPlaybackRequest} constructor.
@@ -29,7 +29,6 @@ public class SetVolumeForUsersPlaybackRequest extends AbstractDataRequest {
    * @throws IOException            In case of networking issues.
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
    */
-  @SuppressWarnings("unchecked")
   public String execute() throws
           IOException,
           SpotifyWebApiException {
@@ -39,7 +38,7 @@ public class SetVolumeForUsersPlaybackRequest extends AbstractDataRequest {
   /**
    * Builder class for building a {@link SetVolumeForUsersPlaybackRequest}.
    */
-  public static final class Builder extends AbstractDataRequest.Builder<Builder> {
+  public static final class Builder extends AbstractDataRequest.Builder<String, Builder> {
 
     /**
      * Create a new {@link SetVolumeForUsersPlaybackRequest.Builder}.

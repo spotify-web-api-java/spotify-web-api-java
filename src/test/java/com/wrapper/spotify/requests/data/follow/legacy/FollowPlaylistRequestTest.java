@@ -47,7 +47,7 @@ public class FollowPlaylistRequestTest extends AbstractDataTest<String> {
 
     @Test
     public void shouldReturnDefault_async() throws ExecutionException, InterruptedException {
-        shouldReturnDefault((String) defaultRequest.executeAsync().get());
+        shouldReturnDefault(defaultRequest.executeAsync().get());
     }
 
     public void shouldReturnDefault(final String string) {

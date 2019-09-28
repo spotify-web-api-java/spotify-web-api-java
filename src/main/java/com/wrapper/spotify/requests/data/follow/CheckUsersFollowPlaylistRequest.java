@@ -12,7 +12,7 @@ import java.io.IOException;
  * Check to see if one or more Spotify users are following a specified playlist.
  */
 @JsonDeserialize(builder = CheckUsersFollowPlaylistRequest.Builder.class)
-public class CheckUsersFollowPlaylistRequest extends AbstractDataRequest {
+public class CheckUsersFollowPlaylistRequest extends AbstractDataRequest<Boolean[]> {
 
   /**
    * The private {@link CheckUsersFollowPlaylistRequest} constructor.
@@ -39,7 +39,7 @@ public class CheckUsersFollowPlaylistRequest extends AbstractDataRequest {
   /**
    * Builder class for building a {@link CheckUsersFollowPlaylistRequest}.
    */
-  public static final class Builder extends AbstractDataRequest.Builder<Builder> {
+  public static final class Builder extends AbstractDataRequest.Builder<Boolean[], Builder> {
 
     /**
      * Create a new {@link CheckUsersFollowPlaylistRequest.Builder} instance.

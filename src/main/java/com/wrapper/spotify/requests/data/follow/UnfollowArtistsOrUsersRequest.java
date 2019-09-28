@@ -11,7 +11,7 @@ import java.io.IOException;
  * Remove the current user as a follower of one or more artists or other Spotify users.
  */
 @JsonDeserialize(builder = UnfollowArtistsOrUsersRequest.Builder.class)
-public class UnfollowArtistsOrUsersRequest extends AbstractDataRequest {
+public class UnfollowArtistsOrUsersRequest extends AbstractDataRequest<String> {
 
   /**
    * The private {@link UnfollowArtistsOrUsersRequest} constructor.
@@ -29,7 +29,6 @@ public class UnfollowArtistsOrUsersRequest extends AbstractDataRequest {
    * @throws IOException            In case of networking issues.
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
    */
-  @SuppressWarnings("unchecked")
   public String execute() throws
           IOException,
           SpotifyWebApiException {
@@ -39,7 +38,7 @@ public class UnfollowArtistsOrUsersRequest extends AbstractDataRequest {
   /**
    * Builder class for building an {@link UnfollowArtistsOrUsersRequest}.
    */
-  public static final class Builder extends AbstractDataRequest.Builder<Builder> {
+  public static final class Builder extends AbstractDataRequest.Builder<String, Builder> {
 
     /**
      * Create a new {@link UnfollowArtistsOrUsersRequest.Builder} instance.

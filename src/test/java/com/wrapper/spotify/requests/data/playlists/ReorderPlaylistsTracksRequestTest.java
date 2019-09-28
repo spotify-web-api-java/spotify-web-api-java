@@ -61,7 +61,7 @@ public class ReorderPlaylistsTracksRequestTest extends AbstractDataTest<Snapshot
 
   @Test
   public void shouldReturnDefault_async() throws ExecutionException, InterruptedException {
-    shouldReturnDefault((SnapshotResult) defaultRequest.executeAsync().get());
+    shouldReturnDefault(defaultRequest.executeAsync().get());
   }
 
   public void shouldReturnDefault(final SnapshotResult snapshotResult) {

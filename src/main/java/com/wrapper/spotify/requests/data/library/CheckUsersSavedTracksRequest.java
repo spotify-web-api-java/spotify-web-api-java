@@ -12,7 +12,7 @@ import java.io.IOException;
  * Check if one or more tracks is already saved in the current Spotify user’s "Your Music" library.
  */
 @JsonDeserialize(builder = CheckUsersSavedTracksRequest.Builder.class)
-public class CheckUsersSavedTracksRequest extends AbstractDataRequest {
+public class CheckUsersSavedTracksRequest extends AbstractDataRequest<Boolean[]> {
 
   /**
    * The private {@link CheckUsersSavedTracksRequest} constructor.
@@ -39,7 +39,7 @@ public class CheckUsersSavedTracksRequest extends AbstractDataRequest {
   /**
    * Builder class for building a {@link CheckUsersSavedTracksRequest}.
    */
-  public static final class Builder extends AbstractDataRequest.Builder<Builder> {
+  public static final class Builder extends AbstractDataRequest.Builder<Boolean[], Builder> {
 
     /**
      * Create a new {@link CheckUsersSavedTracksRequest.Builder} instance.

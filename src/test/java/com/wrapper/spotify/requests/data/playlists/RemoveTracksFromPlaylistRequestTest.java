@@ -48,7 +48,7 @@ public class RemoveTracksFromPlaylistRequestTest extends AbstractDataTest<Snapsh
 
   @Test
   public void shouldReturnDefault_async() throws ExecutionException, InterruptedException {
-    shouldReturnDefault((SnapshotResult) defaultRequest.executeAsync().get());
+    shouldReturnDefault(defaultRequest.executeAsync().get());
   }
 
   public void shouldReturnDefault(final SnapshotResult snapshotResult) {

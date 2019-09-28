@@ -15,7 +15,7 @@ import java.io.IOException;
  * request.
  */
 @JsonDeserialize(builder = ClientCredentialsRequest.Builder.class)
-public class ClientCredentialsRequest extends AbstractAthorizationRequest {
+public class ClientCredentialsRequest extends AbstractAthorizationRequest<ClientCredentials> {
 
   public ClientCredentialsRequest(Builder builder) {
     super(builder);
@@ -28,7 +28,6 @@ public class ClientCredentialsRequest extends AbstractAthorizationRequest {
    * @throws IOException            In case of networking issues.
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
    */
-  @SuppressWarnings("unchecked")
   public ClientCredentials execute() throws
           IOException,
           SpotifyWebApiException {
@@ -38,7 +37,7 @@ public class ClientCredentialsRequest extends AbstractAthorizationRequest {
   /**
    * Builder class for building a {@link ClientCredentialsRequest}.
    */
-  public static final class Builder extends AbstractAthorizationRequest.Builder<Builder> {
+  public static final class Builder extends AbstractAthorizationRequest.Builder<ClientCredentials, Builder> {
 
     public Builder(final String clientId, final String clientSecret) {
       super(clientId, clientSecret);

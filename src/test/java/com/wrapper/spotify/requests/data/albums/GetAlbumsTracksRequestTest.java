@@ -43,10 +43,9 @@ public class GetAlbumsTracksRequestTest extends AbstractDataTest<Paging<TrackSim
     shouldReturnDefault(defaultRequest.execute());
   }
 
-  @SuppressWarnings("unchecked")
   @Test
   public void shouldReturnDefault_async() throws ExecutionException, InterruptedException {
-    shouldReturnDefault((Paging<TrackSimplified>) defaultRequest.executeAsync().get());
+    shouldReturnDefault(defaultRequest.executeAsync().get());
   }
 
   public void shouldReturnDefault(final Paging<TrackSimplified> trackSimplifiedPaging) {

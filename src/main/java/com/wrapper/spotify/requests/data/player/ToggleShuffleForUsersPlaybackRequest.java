@@ -11,7 +11,7 @@ import java.io.IOException;
  * Toggle shuffle on or off for user’s playback.
  */
 @JsonDeserialize(builder = ToggleShuffleForUsersPlaybackRequest.Builder.class)
-public class ToggleShuffleForUsersPlaybackRequest extends AbstractDataRequest {
+public class ToggleShuffleForUsersPlaybackRequest extends AbstractDataRequest<String> {
 
   /**
    * The private {@link ToggleShuffleForUsersPlaybackRequest} constructor.
@@ -29,7 +29,6 @@ public class ToggleShuffleForUsersPlaybackRequest extends AbstractDataRequest {
    * @throws IOException            In case of networking issues.
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
    */
-  @SuppressWarnings("unchecked")
   public String execute() throws
           IOException,
           SpotifyWebApiException {
@@ -39,7 +38,7 @@ public class ToggleShuffleForUsersPlaybackRequest extends AbstractDataRequest {
   /**
    * Builder class for building a {@link ToggleShuffleForUsersPlaybackRequest}.
    */
-  public static final class Builder extends AbstractDataRequest.Builder<Builder> {
+  public static final class Builder extends AbstractDataRequest.Builder<String, Builder> {
 
     /**
      * Create a new {@link ToggleShuffleForUsersPlaybackRequest.Builder}.

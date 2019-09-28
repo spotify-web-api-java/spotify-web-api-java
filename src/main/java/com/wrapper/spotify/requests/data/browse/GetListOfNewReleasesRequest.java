@@ -5,6 +5,7 @@ import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.AlbumSimplified;
 import com.wrapper.spotify.model_objects.specification.Paging;
+import com.wrapper.spotify.requests.data.AbstractDataPagingRequest;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
 
 import java.io.IOException;
@@ -13,7 +14,7 @@ import java.io.IOException;
  * Get a list of new album releases featured in Spotify (shown, for example, on a Spotify player’s "Browse" tab).
  */
 @JsonDeserialize(builder = GetListOfNewReleasesRequest.Builder.class)
-public class GetListOfNewReleasesRequest extends AbstractDataRequest {
+public class GetListOfNewReleasesRequest extends AbstractDataRequest<Paging<AlbumSimplified>> {
 
   /**
    * The private {@link GetListOfNewReleasesRequest} constructor.
@@ -31,7 +32,6 @@ public class GetListOfNewReleasesRequest extends AbstractDataRequest {
    * @throws IOException            In case of networking issues.
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
    */
-  @SuppressWarnings("unchecked")
   public Paging<AlbumSimplified> execute() throws
           IOException,
           SpotifyWebApiException {
@@ -41,7 +41,7 @@ public class GetListOfNewReleasesRequest extends AbstractDataRequest {
   /**
    * Builder class for building a {@link GetListOfNewReleasesRequest}.
    */
-  public static final class Builder extends AbstractDataRequest.Builder<Builder> {
+  public static final class Builder extends AbstractDataPagingRequest.Builder<AlbumSimplified, Builder> {
 
     /**
      * Create a new {@link GetListOfNewReleasesRequest.Builder} instance.
@@ -72,6 +72,7 @@ public class GetListOfNewReleasesRequest extends AbstractDataRequest {
      * @param limit Optional. The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.
      * @return A {@link GetListOfNewReleasesRequest.Builder}.
      */
+    @Override
     public Builder limit(final Integer limit) {
       assert (1 <= limit && limit <= 50);
       return setQueryParameter("limit", limit);
@@ -84,6 +85,7 @@ public class GetListOfNewReleasesRequest extends AbstractDataRequest {
      *               {@link #limit(Integer)} to get the next set of items.
      * @return A {@link GetListOfNewReleasesRequest.Builder}.
      */
+    @Override
     public Builder offset(final Integer offset) {
       assert (offset >= 0);
       return setQueryParameter("offset", offset);

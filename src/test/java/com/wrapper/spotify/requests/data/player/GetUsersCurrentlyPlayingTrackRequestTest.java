@@ -49,7 +49,7 @@ public class GetUsersCurrentlyPlayingTrackRequestTest extends AbstractDataTest<C
 
   @Test
   public void shouldReturnDefault_async() throws ExecutionException, InterruptedException {
-    shouldReturnDefault((CurrentlyPlaying) defaultRequest.executeAsync().get());
+    shouldReturnDefault(defaultRequest.executeAsync().get());
   }
 
   public void shouldReturnDefault(final CurrentlyPlaying currentlyPlaying) {
@@ -74,7 +74,7 @@ public class GetUsersCurrentlyPlayingTrackRequestTest extends AbstractDataTest<C
 
   @Test
   public void shouldReturnEmpty_async() throws ExecutionException, InterruptedException {
-    shouldReturnEmpty((CurrentlyPlaying) emptyRequest.executeAsync().get());
+    shouldReturnEmpty(emptyRequest.executeAsync().get());
   }
 
   public void shouldReturnEmpty(final CurrentlyPlaying currentlyPlaying) {

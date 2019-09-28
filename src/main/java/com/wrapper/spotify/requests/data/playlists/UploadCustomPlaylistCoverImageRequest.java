@@ -12,7 +12,7 @@ import java.io.IOException;
  * Replace the image used to represent a specific playlist.
  */
 @JsonDeserialize(builder = UploadCustomPlaylistCoverImageRequest.Builder.class)
-public class UploadCustomPlaylistCoverImageRequest extends AbstractDataRequest {
+public class UploadCustomPlaylistCoverImageRequest extends AbstractDataRequest<String> {
 
   /**
    * The private {@link UploadCustomPlaylistCoverImageRequest} constructor.
@@ -30,7 +30,6 @@ public class UploadCustomPlaylistCoverImageRequest extends AbstractDataRequest {
    * @throws IOException            In case of networking issues.
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
    */
-  @SuppressWarnings("unchecked")
   public String execute() throws
           IOException,
           SpotifyWebApiException {
@@ -40,7 +39,7 @@ public class UploadCustomPlaylistCoverImageRequest extends AbstractDataRequest {
   /**
    * Builder class for building an {@link UploadCustomPlaylistCoverImageRequest}.
    */
-  public static final class Builder extends AbstractDataRequest.Builder<Builder> {
+  public static final class Builder extends AbstractDataRequest.Builder<String, Builder> {
 
     /**
      * Create a new {@link UploadCustomPlaylistCoverImageRequest.Builder}.

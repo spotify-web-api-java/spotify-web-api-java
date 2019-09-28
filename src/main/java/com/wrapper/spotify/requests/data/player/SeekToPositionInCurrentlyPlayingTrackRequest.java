@@ -11,7 +11,7 @@ import java.io.IOException;
  * Seeks to the given position in the user’s currently playing track.
  */
 @JsonDeserialize(builder = SeekToPositionInCurrentlyPlayingTrackRequest.Builder.class)
-public class SeekToPositionInCurrentlyPlayingTrackRequest extends AbstractDataRequest {
+public class SeekToPositionInCurrentlyPlayingTrackRequest extends AbstractDataRequest<String> {
 
   /**
    * The private {@link SeekToPositionInCurrentlyPlayingTrackRequest} constructor.
@@ -29,7 +29,6 @@ public class SeekToPositionInCurrentlyPlayingTrackRequest extends AbstractDataRe
    * @throws IOException            In case of networking issues.
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
    */
-  @SuppressWarnings("unchecked")
   public String execute() throws
           IOException,
           SpotifyWebApiException {
@@ -39,7 +38,7 @@ public class SeekToPositionInCurrentlyPlayingTrackRequest extends AbstractDataRe
   /**
    * Builder class for building a {@link SeekToPositionInCurrentlyPlayingTrackRequest}.
    */
-  public static final class Builder extends AbstractDataRequest.Builder<Builder> {
+  public static final class Builder extends AbstractDataRequest.Builder<String, Builder> {
 
     /**
      * Create a new {@link SeekToPositionInCurrentlyPlayingTrackRequest.Builder}.

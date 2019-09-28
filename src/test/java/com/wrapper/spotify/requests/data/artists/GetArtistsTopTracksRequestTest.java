@@ -39,7 +39,7 @@ public class GetArtistsTopTracksRequestTest extends AbstractDataTest<Track[]> {
 
   @Test
   public void shouldReturnDefault_async() throws ExecutionException, InterruptedException {
-    shouldReturnDefault((Track[]) defaultRequest.executeAsync().get());
+    shouldReturnDefault(defaultRequest.executeAsync().get());
   }
 
   public void shouldReturnDefault(final Track[] tracks) {

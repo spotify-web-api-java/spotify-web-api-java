@@ -13,7 +13,7 @@ public enum CopyrightType {
   C("c"),
   P("p");
 
-  private static Map<String, CopyrightType> map = new HashMap<>();
+  private static final Map<String, CopyrightType> map = new HashMap<>();
 
   static {
     for (CopyrightType copyrightType : CopyrightType.values()) {

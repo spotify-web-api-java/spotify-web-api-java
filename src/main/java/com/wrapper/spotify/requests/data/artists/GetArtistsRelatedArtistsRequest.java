@@ -12,7 +12,7 @@ import java.io.IOException;
  * Spotify community’s listening history.
  */
 @JsonDeserialize(builder = GetArtistsRelatedArtistsRequest.Builder.class)
-public class GetArtistsRelatedArtistsRequest extends AbstractDataRequest {
+public class GetArtistsRelatedArtistsRequest extends AbstractDataRequest<Artist[]> {
 
   /**
    * The private {@link GetArtistsRelatedArtistsRequest} constructor.
@@ -39,7 +39,7 @@ public class GetArtistsRelatedArtistsRequest extends AbstractDataRequest {
   /**
    * Builder class for building a {@link GetArtistsRelatedArtistsRequest}.
    */
-  public static final class Builder extends AbstractDataRequest.Builder<Builder> {
+  public static final class Builder extends AbstractDataRequest.Builder<Artist[], Builder> {
 
     /**
      * Create a new {@link GetArtistsRelatedArtistsRequest.Builder} instance.

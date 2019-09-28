@@ -41,10 +41,9 @@ public class SearchArtistsRequestTest extends AbstractDataTest<Paging<Artist>> {
     shouldReturnDefault(defaultRequest.execute());
   }
 
-  @SuppressWarnings("unchecked")
   @Test
   public void shouldReturnDefault_async() throws ExecutionException, InterruptedException {
-    shouldReturnDefault((Paging<Artist>) defaultRequest.executeAsync().get());
+    shouldReturnDefault(defaultRequest.executeAsync().get());
   }
 
   public void shouldReturnDefault(final Paging<Artist> artistPaging) {

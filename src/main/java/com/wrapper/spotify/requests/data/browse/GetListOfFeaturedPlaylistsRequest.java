@@ -15,7 +15,7 @@ import java.util.Date;
  * Get a list of Spotify featured playlists (shown, for example, on a Spotify player’s "Browse" tab).
  */
 @JsonDeserialize(builder = GetListOfFeaturedPlaylistsRequest.Builder.class)
-public class GetListOfFeaturedPlaylistsRequest extends AbstractDataRequest {
+public class GetListOfFeaturedPlaylistsRequest extends AbstractDataRequest<FeaturedPlaylists> {
 
   /**
    * The private {@link GetListOfFeaturedPlaylistsRequest} constructor.
@@ -33,7 +33,6 @@ public class GetListOfFeaturedPlaylistsRequest extends AbstractDataRequest {
    * @throws IOException            In case of networking issues.
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
    */
-  @SuppressWarnings("unchecked")
   public FeaturedPlaylists execute() throws
           IOException,
           SpotifyWebApiException {
@@ -43,7 +42,7 @@ public class GetListOfFeaturedPlaylistsRequest extends AbstractDataRequest {
   /**
    * Builder class for building a {@link GetListOfFeaturedPlaylistsRequest}.
    */
-  public static final class Builder extends AbstractDataRequest.Builder<Builder> {
+  public static final class Builder extends AbstractDataRequest.Builder<FeaturedPlaylists, Builder> {
 
     /**
      * Create a new {@link GetListOfFeaturedPlaylistsRequest.Builder} instance.

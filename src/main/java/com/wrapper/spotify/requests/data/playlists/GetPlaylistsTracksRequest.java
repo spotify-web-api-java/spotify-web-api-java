@@ -5,6 +5,7 @@ import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.Paging;
 import com.wrapper.spotify.model_objects.specification.PlaylistTrack;
+import com.wrapper.spotify.requests.data.AbstractDataPagingRequest;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
 
 import java.io.IOException;
@@ -13,7 +14,7 @@ import java.io.IOException;
  * Get full details of the tracks of a playlist owned by a Spotify user.
  */
 @JsonDeserialize(builder = GetPlaylistsTracksRequest.Builder.class)
-public class GetPlaylistsTracksRequest extends AbstractDataRequest {
+public class GetPlaylistsTracksRequest extends AbstractDataRequest<Paging<PlaylistTrack>> {
 
   /**
    * The private {@link GetPlaylistsTracksRequest} constructor.
@@ -31,7 +32,6 @@ public class GetPlaylistsTracksRequest extends AbstractDataRequest {
    * @throws IOException            In case of networking issues.
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
    */
-  @SuppressWarnings("unchecked")
   public Paging<PlaylistTrack> execute() throws
           IOException,
           SpotifyWebApiException {
@@ -41,7 +41,7 @@ public class GetPlaylistsTracksRequest extends AbstractDataRequest {
   /**
    * Builder class for building a {@link GetPlaylistsTracksRequest}.
    */
-  public static final class Builder extends AbstractDataRequest.Builder<Builder> {
+  public static final class Builder extends AbstractDataPagingRequest.Builder<PlaylistTrack, Builder> {
 
     /**
      * Create a new {@link GetPlaylistsTracksRequest.Builder}.
@@ -57,11 +57,11 @@ public class GetPlaylistsTracksRequest extends AbstractDataRequest {
     /**
      * The user ID setter.
      *
-     * @deprecated Playlist IDs are unique for themselves. This parameter is thus no longer used
-     * (https://developer.spotify.com/community/news/2018/06/12/changes-to-playlist-uris/)
      * @param user_id The user's Spotify user ID.
      * @return A {@link GetPlaylistsTracksRequest.Builder}.
      * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URIs &amp; IDs</a>
+     * @deprecated Playlist IDs are unique for themselves. This parameter is thus no longer used
+     * (https://developer.spotify.com/community/news/2018/06/12/changes-to-playlist-uris/)
      */
     @Deprecated
     public Builder user_id(final String user_id) {
@@ -104,6 +104,7 @@ public class GetPlaylistsTracksRequest extends AbstractDataRequest {
      * @param limit Optional. The maximum number of tracks to return. Default: 100. Minimum: 1. Maximum: 100.
      * @return A {@link GetPlaylistsTracksRequest.Builder}.
      */
+    @Override
     public Builder limit(final Integer limit) {
       assert (1 <= limit && limit <= 100);
       return setQueryParameter("limit", limit);
@@ -115,6 +116,7 @@ public class GetPlaylistsTracksRequest extends AbstractDataRequest {
      * @param offset Optional. The index of the first track to return. Default: 0 (the first object).
      * @return A {@link GetPlaylistsTracksRequest.Builder}.
      */
+    @Override
     public Builder offset(final Integer offset) {
       assert (offset >= 0);
       return setQueryParameter("offset", offset);

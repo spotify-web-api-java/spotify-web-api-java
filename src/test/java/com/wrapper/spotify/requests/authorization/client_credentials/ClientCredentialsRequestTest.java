@@ -43,7 +43,7 @@ public class ClientCredentialsRequestTest extends AbstractAuthorizationTest<Clie
 
   @Test
   public void shouldReturnDefault_async() throws ExecutionException, InterruptedException {
-    shouldReturnDefault((ClientCredentials) defaultRequest.executeAsync().get());
+    shouldReturnDefault(defaultRequest.executeAsync().get());
   }
 
   public void shouldReturnDefault(final ClientCredentials clientCredentials) {
