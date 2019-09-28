@@ -16,7 +16,7 @@ public enum ModelObjectType {
   TRACK("track"),
   USER("user");
 
-  private static Map<String, ModelObjectType> map = new HashMap<>();
+  private static final Map<String, ModelObjectType> map = new HashMap<>();
 
   static {
     for (ModelObjectType modelObjectType : ModelObjectType.values()) {
