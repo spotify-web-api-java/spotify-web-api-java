@@ -11,7 +11,7 @@ import java.io.IOException;
  * Get Spotify catalog information for several artists based on their Spotify IDs.
  */
 @JsonDeserialize(builder = GetSeveralArtistsRequest.Builder.class)
-public class GetSeveralArtistsRequest extends AbstractDataRequest {
+public class GetSeveralArtistsRequest extends AbstractDataRequest<Artist[]> {
 
   /**
    * The private {@link GetSeveralArtistsRequest} constructor.
@@ -38,7 +38,7 @@ public class GetSeveralArtistsRequest extends AbstractDataRequest {
   /**
    * Builder class for building a {@link GetSeveralArtistsRequest}.
    */
-  public static final class Builder extends AbstractDataRequest.Builder<Builder> {
+  public static final class Builder extends AbstractDataRequest.Builder<Artist[], Builder> {
 
     /**
      * Create a new {@link GetSeveralArtistsRequest.Builder} instance.

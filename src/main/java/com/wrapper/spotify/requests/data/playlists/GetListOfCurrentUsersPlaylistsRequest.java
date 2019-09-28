@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.Paging;
 import com.wrapper.spotify.model_objects.specification.PlaylistSimplified;
+import com.wrapper.spotify.requests.data.AbstractDataPagingRequest;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
 
 import java.io.IOException;
@@ -12,7 +13,7 @@ import java.io.IOException;
  * Get a list of the playlists owned or followed by the current Spotify user.
  */
 @JsonDeserialize(builder = GetListOfCurrentUsersPlaylistsRequest.Builder.class)
-public class GetListOfCurrentUsersPlaylistsRequest extends AbstractDataRequest {
+public class GetListOfCurrentUsersPlaylistsRequest extends AbstractDataRequest<Paging<PlaylistSimplified>> {
 
   /**
    * The private {@link GetListOfCurrentUsersPlaylistsRequest} constructor.
@@ -30,7 +31,6 @@ public class GetListOfCurrentUsersPlaylistsRequest extends AbstractDataRequest {
    * @throws IOException            In case of networking issues.
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
    */
-  @SuppressWarnings("unchecked")
   public Paging<PlaylistSimplified> execute() throws
           IOException,
           SpotifyWebApiException {
@@ -40,7 +40,7 @@ public class GetListOfCurrentUsersPlaylistsRequest extends AbstractDataRequest {
   /**
    * Builder class for building a {@link GetListOfCurrentUsersPlaylistsRequest}
    */
-  public static final class Builder extends AbstractDataRequest.Builder<Builder> {
+  public static final class Builder extends AbstractDataPagingRequest.Builder<PlaylistSimplified, Builder> {
 
     /**
      * Create a new {@link GetListOfCurrentUsersPlaylistsRequest.Builder}.
@@ -65,6 +65,7 @@ public class GetListOfCurrentUsersPlaylistsRequest extends AbstractDataRequest {
      * @param limit Optional. The maximum number of playlists to return. Default: 20. Minimum: 1. Maximum: 50.
      * @return A {@link GetListOfCurrentUsersPlaylistsRequest.Builder}.
      */
+    @Override
     public Builder limit(final Integer limit) {
       assert (1 <= limit && limit <= 50);
       return setQueryParameter("limit", limit);
@@ -77,6 +78,7 @@ public class GetListOfCurrentUsersPlaylistsRequest extends AbstractDataRequest {
      *               100.000. Use with {@link #limit(Integer)} to get the next set of playlists.
      * @return A {@link GetListOfCurrentUsersPlaylistsRequest.Builder}.
      */
+    @Override
     public Builder offset(final Integer offset) {
       assert (0 <= offset && offset <= 100000);
       return setQueryParameter("offset", offset);

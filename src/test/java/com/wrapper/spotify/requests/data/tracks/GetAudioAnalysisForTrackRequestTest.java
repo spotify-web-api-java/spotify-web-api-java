@@ -41,7 +41,7 @@ public class GetAudioAnalysisForTrackRequestTest extends AbstractDataTest<AudioA
 
   @Test
   public void shouldReturnDefault_async() throws ExecutionException, InterruptedException {
-    shouldReturnDefault((AudioAnalysis) defaultRequest.executeAsync().get());
+    shouldReturnDefault(defaultRequest.executeAsync().get());
   }
 
   public void shouldReturnDefault(final AudioAnalysis audioAnalysis) {

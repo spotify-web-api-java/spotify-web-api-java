@@ -43,7 +43,7 @@ public class GetPlaylistRequestTest extends AbstractDataTest<Playlist> {
 
   @Test
   public void shouldReturnDefault_async() throws ExecutionException, InterruptedException {
-    shouldReturnDefault((Playlist) defaultRequest.executeAsync().get());
+    shouldReturnDefault(defaultRequest.executeAsync().get());
   }
 
   public void shouldReturnDefault(final Playlist playlist) {

@@ -5,6 +5,7 @@ import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.Paging;
 import com.wrapper.spotify.model_objects.specification.TrackSimplified;
+import com.wrapper.spotify.requests.data.AbstractDataPagingRequest;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
 
 import java.io.IOException;
@@ -14,7 +15,7 @@ import java.io.IOException;
  * tracks returned.
  */
 @JsonDeserialize(builder = GetAlbumsTracksRequest.Builder.class)
-public class GetAlbumsTracksRequest extends AbstractDataRequest {
+public class GetAlbumsTracksRequest extends AbstractDataRequest<Paging<TrackSimplified>> {
 
   /**
    * The private {@link GetAlbumsTracksRequest} constructor.
@@ -32,7 +33,6 @@ public class GetAlbumsTracksRequest extends AbstractDataRequest {
    * @throws IOException            In case of networking issues.
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
    */
-  @SuppressWarnings("unchecked")
   public Paging<TrackSimplified> execute() throws
           IOException,
           SpotifyWebApiException {
@@ -42,7 +42,7 @@ public class GetAlbumsTracksRequest extends AbstractDataRequest {
   /**
    * Builder class for building a {@link GetAlbumsTracksRequest}.
    */
-  public static final class Builder extends AbstractDataRequest.Builder<Builder> {
+  public static final class Builder extends AbstractDataPagingRequest.Builder<TrackSimplified, Builder> {
 
     /**
      * Create a new {@link GetAlbumsTracksRequest.Builder} instance.
@@ -72,6 +72,7 @@ public class GetAlbumsTracksRequest extends AbstractDataRequest {
      * @param limit Optional. The maximum number of tracks to return. Default: 20. Minimum: 1. Maximum: 50.
      * @return A {@link GetAlbumsTracksRequest.Builder}.
      */
+    @Override
     public Builder limit(final Integer limit) {
       assert (1 <= limit && limit <= 50);
       return setQueryParameter("limit", limit);
@@ -84,6 +85,7 @@ public class GetAlbumsTracksRequest extends AbstractDataRequest {
      *               get the next set of tracks.
      * @return A {@link GetAlbumsTracksRequest.Builder}.
      */
+    @Override
     public Builder offset(final Integer offset) {
       assert (offset >= 0);
       return setQueryParameter("offset", offset);

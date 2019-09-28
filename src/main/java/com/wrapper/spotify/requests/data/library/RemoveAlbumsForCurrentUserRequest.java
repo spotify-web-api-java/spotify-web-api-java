@@ -10,7 +10,7 @@ import java.io.IOException;
  * Remove one or more albums from the current user’s "Your Music" library.
  */
 @JsonDeserialize(builder = RemoveAlbumsForCurrentUserRequest.Builder.class)
-public class RemoveAlbumsForCurrentUserRequest extends AbstractDataRequest {
+public class RemoveAlbumsForCurrentUserRequest extends AbstractDataRequest<String> {
 
   /**
    * The private {@link RemoveAlbumsForCurrentUserRequest} constructor.
@@ -28,7 +28,6 @@ public class RemoveAlbumsForCurrentUserRequest extends AbstractDataRequest {
    * @throws IOException            In case of networking issues.
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
    */
-  @SuppressWarnings("unchecked")
   public String execute() throws
           IOException,
           SpotifyWebApiException {
@@ -38,7 +37,7 @@ public class RemoveAlbumsForCurrentUserRequest extends AbstractDataRequest {
   /**
    * Builder class for building a {@link RemoveAlbumsForCurrentUserRequest}.
    */
-  public static class Builder extends AbstractDataRequest.Builder<Builder> {
+  public static class Builder extends AbstractDataRequest.Builder<String, Builder> {
 
     /**
      * Create a new {@link RemoveAlbumsForCurrentUserRequest.Builder} instance.

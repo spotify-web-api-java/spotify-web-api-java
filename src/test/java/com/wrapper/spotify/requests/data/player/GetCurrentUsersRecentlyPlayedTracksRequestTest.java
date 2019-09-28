@@ -43,10 +43,9 @@ public class GetCurrentUsersRecentlyPlayedTracksRequestTest extends AbstractData
     shouldReturnDefault(defaultRequest.execute());
   }
 
-  @SuppressWarnings("unchecked")
   @Test
   public void shouldReturnDefault_async() throws ExecutionException, InterruptedException {
-    shouldReturnDefault((PagingCursorbased<PlayHistory>) defaultRequest.executeAsync().get());
+    shouldReturnDefault(defaultRequest.executeAsync().get());
   }
 
   public void shouldReturnDefault(final PagingCursorbased<PlayHistory> playHistoryPagingCursorbased) {

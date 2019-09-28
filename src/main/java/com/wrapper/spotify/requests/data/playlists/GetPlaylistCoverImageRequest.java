@@ -11,7 +11,7 @@ import java.io.IOException;
  * Get the current image associated with a specific playlist.
  */
 @JsonDeserialize(builder = GetPlaylistCoverImageRequest.Builder.class)
-public class GetPlaylistCoverImageRequest extends AbstractDataRequest {
+public class GetPlaylistCoverImageRequest extends AbstractDataRequest<Image[]> {
 
   /**
    * The private {@link GetPlaylistCoverImageRequest} constructor.
@@ -38,7 +38,7 @@ public class GetPlaylistCoverImageRequest extends AbstractDataRequest {
   /**
    * Builder class for building a {@link GetPlaylistCoverImageRequest}.
    */
-  public static final class Builder extends AbstractDataRequest.Builder<Builder> {
+  public static final class Builder extends AbstractDataRequest.Builder<Image[], Builder> {
 
     /**
      * Create a new {@link GetPlaylistCoverImageRequest.Builder}.

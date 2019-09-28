@@ -16,7 +16,7 @@ import java.io.IOException;
  * Note that local tracks can’t be added.
  */
 @JsonDeserialize(builder = AddTracksToPlaylistRequest.Builder.class)
-public class AddTracksToPlaylistRequest extends AbstractDataRequest {
+public class AddTracksToPlaylistRequest extends AbstractDataRequest<SnapshotResult> {
 
   /**
    * The private {@link AddTracksToPlaylistRequest} constructor.
@@ -36,7 +36,6 @@ public class AddTracksToPlaylistRequest extends AbstractDataRequest {
    * @see <a href="https://developer.spotify.com/web-api/working-with-playlists/#version-control-and-snapshots">
    * Spotify: Version Control and Snapshots</a>
    */
-  @SuppressWarnings("unchecked")
   public SnapshotResult execute() throws
           IOException,
           SpotifyWebApiException {
@@ -46,7 +45,7 @@ public class AddTracksToPlaylistRequest extends AbstractDataRequest {
   /**
    * Builder class for building an {@link AddTracksToPlaylistRequest}.
    */
-  public static final class Builder extends AbstractDataRequest.Builder<Builder> {
+  public static final class Builder extends AbstractDataRequest.Builder<SnapshotResult, Builder> {
 
     /**
      * Create a new {@link AddTracksToPlaylistRequest.Builder}.

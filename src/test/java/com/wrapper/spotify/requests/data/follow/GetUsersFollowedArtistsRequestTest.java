@@ -48,10 +48,9 @@ public class GetUsersFollowedArtistsRequestTest extends AbstractDataTest<PagingC
     shouldReturnDefault(defaultRequest.execute());
   }
 
-  @SuppressWarnings("unchecked")
   @Test
   public void shouldReturnDefault_async() throws ExecutionException, InterruptedException {
-    shouldReturnDefault((PagingCursorbased<Artist>) defaultRequest.executeAsync().get());
+    shouldReturnDefault(defaultRequest.executeAsync().get());
   }
 
   public void shouldReturnDefault(final PagingCursorbased<Artist> artistPagingCursorbased) {
@@ -79,10 +78,9 @@ public class GetUsersFollowedArtistsRequestTest extends AbstractDataTest<PagingC
     shouldReturnEmpty(emptyRequest.execute());
   }
 
-  @SuppressWarnings("unchecked")
   @Test
   public void shouldReturnEmpty_async() throws ExecutionException, InterruptedException {
-    shouldReturnEmpty((PagingCursorbased<Artist>) emptyRequest.executeAsync().get());
+    shouldReturnEmpty(emptyRequest.executeAsync().get());
   }
 
   public void shouldReturnEmpty(final PagingCursorbased<Artist> artistPagingCursorbased) {

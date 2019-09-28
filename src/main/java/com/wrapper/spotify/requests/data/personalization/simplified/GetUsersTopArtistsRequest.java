@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.Artist;
 import com.wrapper.spotify.model_objects.specification.Paging;
+import com.wrapper.spotify.requests.data.AbstractDataPagingRequest;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
 
 import java.io.IOException;
@@ -22,7 +23,7 @@ import java.io.IOException;
  * restriction will be relaxed. This data is typically updated once each day for each user.
  */
 @JsonDeserialize(builder = GetUsersTopArtistsRequest.Builder.class)
-public class GetUsersTopArtistsRequest extends AbstractDataRequest {
+public class GetUsersTopArtistsRequest extends AbstractDataRequest<Paging<Artist>> {
 
   /**
    * The private {@link GetUsersTopArtistsRequest} constructor.
@@ -40,7 +41,6 @@ public class GetUsersTopArtistsRequest extends AbstractDataRequest {
    * @throws IOException            In case of networking issues.
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
    */
-  @SuppressWarnings("unchecked")
   public Paging<Artist> execute() throws
           IOException,
           SpotifyWebApiException {
@@ -50,7 +50,7 @@ public class GetUsersTopArtistsRequest extends AbstractDataRequest {
   /**
    * Builder class for building a {@link GetUsersTopArtistsRequest}.
    */
-  public static final class Builder extends AbstractDataRequest.Builder<Builder> {
+  public static final class Builder extends AbstractDataPagingRequest.Builder<Artist, Builder> {
 
     /**
      * Create a new {@link GetUsersTopArtistsRequest.Builder} instance.
@@ -70,6 +70,7 @@ public class GetUsersTopArtistsRequest extends AbstractDataRequest {
      * @param limit Optional. The number of entities to return. Default: 20. Minimum: 1. Maximum: 50.
      * @return A {@link GetUsersTopArtistsRequest.Builder}.
      */
+    @Override
     public Builder limit(final Integer limit) {
       assert (limit != null);
       assert (1 <= limit && limit <= 50);
@@ -83,6 +84,7 @@ public class GetUsersTopArtistsRequest extends AbstractDataRequest {
      *               {@link #limit(Integer)} to get the next set of entities.
      * @return A {@link GetUsersTopArtistsRequest.Builder}.
      */
+    @Override
     public Builder offset(final Integer offset) {
       assert (offset >= 0);
       return setQueryParameter("offset", offset);

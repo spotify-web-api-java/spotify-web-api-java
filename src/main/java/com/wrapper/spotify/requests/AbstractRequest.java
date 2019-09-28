@@ -22,11 +22,10 @@ import java.net.URISyntaxException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.Callable;
 import java.util.concurrent.Future;
 import java.util.logging.Level;
 
-public abstract class AbstractRequest implements IRequest {
+public abstract class AbstractRequest<T> implements IRequest<T> {
 
   private IHttpManager httpManager;
   private URI uri;
@@ -35,7 +34,7 @@ public abstract class AbstractRequest implements IRequest {
   private HttpEntity body;
   private List<NameValuePair> bodyParameters;
 
-  protected AbstractRequest(Builder<?> builder) {
+  protected AbstractRequest(Builder<T, ?> builder) {
     assert (builder != null);
     assert (builder.path != null);
     assert (!builder.path.equals(""));
@@ -70,13 +69,9 @@ public abstract class AbstractRequest implements IRequest {
    *
    * @return A {@link Future} for a generic.
    */
-  public <T> Future<T> executeAsync() {
+  public Future<T> executeAsync() {
     return SpotifyApiThreading.executeAsync(
-            new Callable<T>() {
-              public T call() throws IOException, SpotifyWebApiException {
-                return execute();
-              }
-            });
+            this::execute);
   }
 
   public void initializeBody() throws UnsupportedEncodingException {
@@ -189,7 +184,7 @@ public abstract class AbstractRequest implements IRequest {
     return bodyParameters;
   }
 
-  public static abstract class Builder<T extends Builder<?>> implements IRequest.Builder {
+  public static abstract class Builder<T, BT extends Builder<T, ?>> implements IRequest.Builder<T, BT> {
 
     private final List<NameValuePair> pathParameters = new ArrayList<>();
     private final List<NameValuePair> queryParameters = new ArrayList<>();
@@ -207,38 +202,38 @@ public abstract class AbstractRequest implements IRequest {
     }
 
     @SuppressWarnings("unchecked")
-    public T setHttpManager(final IHttpManager httpManager) {
+    public BT setHttpManager(final IHttpManager httpManager) {
       assert (httpManager != null);
       this.httpManager = httpManager;
-      return (T) this;
+      return (BT) this;
     }
 
     @SuppressWarnings("unchecked")
-    public T setScheme(final String scheme) {
+    public BT setScheme(final String scheme) {
       assert (scheme != null);
       assert (!scheme.equals(""));
       this.scheme = scheme;
-      return (T) this;
+      return (BT) this;
     }
 
     @SuppressWarnings("unchecked")
-    public T setHost(final String host) {
+    public BT setHost(final String host) {
       assert (host != null);
       assert (!scheme.equals(""));
       this.host = host;
-      return (T) this;
+      return (BT) this;
     }
 
     @SuppressWarnings("unchecked")
-    public T setPort(final Integer port) {
+    public BT setPort(final Integer port) {
       assert (port != null);
       assert (port >= 0);
       this.port = port;
-      return (T) this;
+      return (BT) this;
     }
 
     @SuppressWarnings("unchecked")
-    public T setPath(final String path) {
+    public BT setPath(final String path) {
       assert (path != null);
       assert (!path.equals(""));
 
@@ -249,11 +244,11 @@ public abstract class AbstractRequest implements IRequest {
       }
 
       this.path = builtPath;
-      return (T) this;
+      return (BT) this;
     }
 
-    @SuppressWarnings("unchecked")
-    public T setPathParameter(final String name, final String value) {
+    @SuppressWarnings({"unchecked", "CharsetObjectCanBeUsed"})
+    public BT setPathParameter(final String name, final String value) {
       assert (name != null && value != null);
       assert (!name.equals("") && !value.equals(""));
 
@@ -266,60 +261,60 @@ public abstract class AbstractRequest implements IRequest {
       }
 
       this.pathParameters.add(new BasicNameValuePair(name, encodedValue));
-      return (T) this;
+      return (BT) this;
     }
 
     @SuppressWarnings("unchecked")
-    public T setDefaults(final IHttpManager httpManager,
-                         final String scheme,
-                         final String host,
-                         final Integer port) {
+    public BT setDefaults(final IHttpManager httpManager,
+                          final String scheme,
+                          final String host,
+                          final Integer port) {
       setHttpManager(httpManager);
       setScheme(scheme);
       setHost(host);
       setPort(port);
 
-      return (T) this;
+      return (BT) this;
     }
 
     @SuppressWarnings("unchecked")
-    public <X> T setQueryParameter(final String name, final X value) {
+    public <X> BT setQueryParameter(final String name, final X value) {
       assert (name != null);
       assert (!name.equals(""));
       assert (value != null);
       this.queryParameters.add(new BasicNameValuePair(name, String.valueOf(value)));
-      return (T) this;
+      return (BT) this;
     }
 
     @SuppressWarnings("unchecked")
-    public <X> T setHeader(final String name, final X value) {
+    public <X> BT setHeader(final String name, final X value) {
       assert (name != null);
       assert (!name.equals(""));
       assert (value != null);
       this.headers.add(new BasicHeader(name, String.valueOf(value)));
-      return (T) this;
+      return (BT) this;
     }
 
     @SuppressWarnings("unchecked")
-    public T setContentType(final ContentType contentType) {
+    public BT setContentType(final ContentType contentType) {
       this.contentType = contentType;
       setHeader("Content-Type", contentType.getMimeType());
-      return (T) this;
+      return (BT) this;
     }
 
     @SuppressWarnings("unchecked")
-    public T setBody(final HttpEntity httpEntity) {
+    public BT setBody(final HttpEntity httpEntity) {
       this.body = httpEntity;
-      return (T) this;
+      return (BT) this;
     }
 
     @SuppressWarnings("unchecked")
-    public <X> T setBodyParameter(final String name, final X value) {
+    public <X> BT setBodyParameter(final String name, final X value) {
       assert (name != null);
       assert (!name.equals(""));
       assert (value != null);
       this.bodyParameters.add(new BasicNameValuePair(name, String.valueOf(value)));
-      return (T) this;
+      return (BT) this;
     }
   }
 }

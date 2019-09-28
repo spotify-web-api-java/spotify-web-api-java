@@ -83,5 +83,5 @@ public interface ITest<T> {
 
   void shouldReturnDefault(final T type);
 
-  void assertHasAuthorizationHeader(IRequest request);
+  void assertHasAuthorizationHeader(IRequest<T> request);
 }

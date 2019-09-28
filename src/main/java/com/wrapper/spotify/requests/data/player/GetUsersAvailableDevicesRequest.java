@@ -11,7 +11,7 @@ import java.io.IOException;
  * Get information about a user’s available devices.
  */
 @JsonDeserialize(builder = GetUsersAvailableDevicesRequest.Builder.class)
-public class GetUsersAvailableDevicesRequest extends AbstractDataRequest {
+public class GetUsersAvailableDevicesRequest extends AbstractDataRequest<Device[]> {
 
   /**
    * The private {@link GetUsersAvailableDevicesRequest} constructor.
@@ -38,7 +38,7 @@ public class GetUsersAvailableDevicesRequest extends AbstractDataRequest {
   /**
    * Builder class for building a {@link GetUsersAvailableDevicesRequest}.
    */
-  public static final class Builder extends AbstractDataRequest.Builder<Builder> {
+  public static final class Builder extends AbstractDataRequest.Builder<Device[], Builder> {
 
     /**
      * Create a new {@link GetUsersAvailableDevicesRequest.Builder}.

@@ -10,7 +10,7 @@ import static org.junit.Assert.fail;
 
 public class Assertions {
 
-  public static <T> void assertHasHeader(IRequest request, String name, T value) {
+  public static <RT, T> void assertHasHeader(IRequest<RT> request, String name, T value) {
     List<Header> headers = request.getHeaders();
 
     for (Header header : headers) {
@@ -22,7 +22,7 @@ public class Assertions {
     fail(String.format("Request \"%s\" does not contain form parameter \"%s\" with value \"%s\"", request.getClass().getSimpleName(), name, String.valueOf(value)));
   }
 
-  public static <T> void assertHasBodyParameter(IRequest request, String name, T value) {
+  public static <RT, T> void assertHasBodyParameter(IRequest<RT> request, String name, T value) {
     List<NameValuePair> bodyParameters = request.getBodyParameters();
 
     for (NameValuePair bodyParameter : bodyParameters) {

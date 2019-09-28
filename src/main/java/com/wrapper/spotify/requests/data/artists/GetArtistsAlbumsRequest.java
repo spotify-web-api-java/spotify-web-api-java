@@ -5,6 +5,7 @@ import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.AlbumSimplified;
 import com.wrapper.spotify.model_objects.specification.Paging;
+import com.wrapper.spotify.requests.data.AbstractDataPagingRequest;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
 
 import java.io.IOException;
@@ -14,7 +15,7 @@ import java.io.IOException;
  * filter and sort the response.
  */
 @JsonDeserialize(builder = GetArtistsAlbumsRequest.Builder.class)
-public class GetArtistsAlbumsRequest extends AbstractDataRequest {
+public class GetArtistsAlbumsRequest extends AbstractDataRequest<Paging<AlbumSimplified>> {
 
   /**
    * The private {@link GetArtistsAlbumsRequest} constructor.
@@ -32,7 +33,6 @@ public class GetArtistsAlbumsRequest extends AbstractDataRequest {
    * @throws IOException            In case of networking issues.
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
    */
-  @SuppressWarnings("unchecked")
   public Paging<AlbumSimplified> execute() throws
           IOException,
           SpotifyWebApiException {
@@ -42,7 +42,7 @@ public class GetArtistsAlbumsRequest extends AbstractDataRequest {
   /**
    * Builder class for building a {@link GetArtistsAlbumsRequest}.
    */
-  public static final class Builder extends AbstractDataRequest.Builder<Builder> {
+  public static final class Builder extends AbstractDataPagingRequest.Builder<AlbumSimplified, Builder> {
 
     /**
      * Create a new {@link GetArtistsAlbumsRequest.Builder} instance.
@@ -99,6 +99,7 @@ public class GetArtistsAlbumsRequest extends AbstractDataRequest {
      * @param limit Optional. The number of album objects to return. Default: 20. Minimum: 1. Maximum: 50.
      * @return A {@link GetArtistsAlbumsRequest.Builder}.
      */
+    @Override
     public Builder limit(final Integer limit) {
       assert (1 <= limit && limit <= 50);
       return setQueryParameter("limit", limit);
@@ -111,6 +112,7 @@ public class GetArtistsAlbumsRequest extends AbstractDataRequest {
      *               {@link #limit(Integer)} to get the next set of albums.
      * @return A {@link GetArtistsAlbumsRequest.Builder}.
      */
+    @Override
     public Builder offset(final Integer offset) {
       assert (offset >= 0);
       return setQueryParameter("offset", offset);

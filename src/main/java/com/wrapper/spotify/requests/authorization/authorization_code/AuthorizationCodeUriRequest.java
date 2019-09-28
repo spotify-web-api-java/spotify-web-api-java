@@ -12,7 +12,7 @@ import java.net.URI;
  * URI</a> request.
  */
 @JsonDeserialize(builder = AuthorizationCodeUriRequest.Builder.class)
-public class AuthorizationCodeUriRequest extends AbstractRequest {
+public class AuthorizationCodeUriRequest extends AbstractRequest<URI> {
 
   private AuthorizationCodeUriRequest(Builder builder) {
     super(builder);
@@ -23,7 +23,6 @@ public class AuthorizationCodeUriRequest extends AbstractRequest {
    *
    * @return An authorization URI.
    */
-  @SuppressWarnings("unchecked")
   public URI execute() {
     return this.getUri();
   }
@@ -31,7 +30,7 @@ public class AuthorizationCodeUriRequest extends AbstractRequest {
   /**
    * Builder class for building an {@link AuthorizationCodeUriRequest}.
    */
-  public static final class Builder extends AbstractRequest.Builder<Builder> {
+  public static final class Builder extends AbstractRequest.Builder<URI, Builder> {
 
     public Builder() {
       super();

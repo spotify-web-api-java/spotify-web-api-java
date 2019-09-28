@@ -40,7 +40,7 @@ public class GetPlaylistCoverImageRequestTest extends AbstractDataTest<Image[]> 
 
   @Test
   public void shouldReturnDefault_async() throws ExecutionException, InterruptedException {
-    shouldReturnDefault((Image[]) defaultRequest.executeAsync().get());
+    shouldReturnDefault(defaultRequest.executeAsync().get());
   }
 
   public void shouldReturnDefault(final Image[] images) {

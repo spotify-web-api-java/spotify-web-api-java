@@ -5,6 +5,7 @@ import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.PagingCursorbased;
 import com.wrapper.spotify.model_objects.specification.PlayHistory;
+import com.wrapper.spotify.requests.data.AbstractDataPagingCursorbasedRequest;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
 
 import java.io.IOException;
@@ -25,7 +26,7 @@ import java.util.Date;
  * link will page back in time.
  */
 @JsonDeserialize(builder = GetCurrentUsersRecentlyPlayedTracksRequest.Builder.class)
-public class GetCurrentUsersRecentlyPlayedTracksRequest extends AbstractDataRequest {
+public class GetCurrentUsersRecentlyPlayedTracksRequest extends AbstractDataRequest<PagingCursorbased<PlayHistory>> {
 
   /**
    * The private {@link GetCurrentUsersRecentlyPlayedTracksRequest} constructor.
@@ -43,7 +44,6 @@ public class GetCurrentUsersRecentlyPlayedTracksRequest extends AbstractDataRequ
    * @throws IOException            In case of networking issues.
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
    */
-  @SuppressWarnings("unchecked")
   public PagingCursorbased<PlayHistory> execute() throws
           IOException,
           SpotifyWebApiException {
@@ -53,7 +53,7 @@ public class GetCurrentUsersRecentlyPlayedTracksRequest extends AbstractDataRequ
   /**
    * Builder class for building a {@link GetCurrentUsersRecentlyPlayedTracksRequest}.
    */
-  public static final class Builder extends AbstractDataRequest.Builder<Builder> {
+  public static final class Builder extends AbstractDataPagingCursorbasedRequest.Builder<PlayHistory, Date, Builder> {
 
     /**
      * Create a new {@link GetCurrentUsersRecentlyPlayedTracksRequest.Builder}.
@@ -74,6 +74,7 @@ public class GetCurrentUsersRecentlyPlayedTracksRequest extends AbstractDataRequ
      * @param limit Optional. The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.
      * @return A {@link GetCurrentUsersRecentlyPlayedTracksRequest.Builder}.
      */
+    @Override
     public Builder limit(final Integer limit) {
       assert (limit != null);
       assert (1 <= limit && limit <= 50);

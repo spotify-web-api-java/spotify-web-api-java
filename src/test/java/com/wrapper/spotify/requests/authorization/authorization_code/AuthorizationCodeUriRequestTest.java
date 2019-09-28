@@ -32,7 +32,7 @@ public class AuthorizationCodeUriRequestTest extends AbstractAuthorizationTest<U
 
   @Test
   public void shouldReturnDefault_async() throws ExecutionException, InterruptedException {
-    shouldReturnDefault((URI) defaultRequest.executeAsync().get());
+    shouldReturnDefault(defaultRequest.executeAsync().get());
   }
 
   public void shouldReturnDefault(final URI uri) {

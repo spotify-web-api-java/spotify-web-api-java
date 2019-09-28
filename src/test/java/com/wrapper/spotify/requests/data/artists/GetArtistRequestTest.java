@@ -41,7 +41,7 @@ public class GetArtistRequestTest extends AbstractDataTest<Artist> {
 
   @Test
   public void shouldReturnDefault_async() throws ExecutionException, InterruptedException {
-    shouldReturnDefault((Artist) defaultRequest.executeAsync().get());
+    shouldReturnDefault(defaultRequest.executeAsync().get());
   }
 
   public void shouldReturnDefault(final Artist artist) {

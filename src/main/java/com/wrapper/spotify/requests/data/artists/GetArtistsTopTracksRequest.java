@@ -12,7 +12,7 @@ import java.io.IOException;
  * Get Spotify catalog information about an artist’s top tracks by country.
  */
 @JsonDeserialize(builder = GetArtistsTopTracksRequest.Builder.class)
-public class GetArtistsTopTracksRequest extends AbstractDataRequest {
+public class GetArtistsTopTracksRequest extends AbstractDataRequest<Track[]> {
 
   /**
    * The private {@link GetArtistsTopTracksRequest} constructor.
@@ -39,7 +39,7 @@ public class GetArtistsTopTracksRequest extends AbstractDataRequest {
   /**
    * Builder class for building a {@link GetArtistsTopTracksRequest}.
    */
-  public static final class Builder extends AbstractDataRequest.Builder<Builder> {
+  public static final class Builder extends AbstractDataRequest.Builder<Track[], Builder> {
 
     /**
      * Create a new {@link GetArtistsTopTracksRequest.Builder} instance.
