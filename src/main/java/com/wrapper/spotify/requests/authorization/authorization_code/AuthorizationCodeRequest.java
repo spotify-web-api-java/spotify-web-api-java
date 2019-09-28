@@ -16,7 +16,7 @@ import java.net.URI;
  * request.
  */
 @JsonDeserialize(builder = AuthorizationCodeRequest.Builder.class)
-public class AuthorizationCodeRequest extends AbstractAthorizationRequest {
+public class AuthorizationCodeRequest extends AbstractAthorizationRequest<AuthorizationCodeCredentials> {
 
   private AuthorizationCodeRequest(Builder builder) {
     super(builder);
@@ -29,7 +29,6 @@ public class AuthorizationCodeRequest extends AbstractAthorizationRequest {
    * @throws IOException            In case of networking issues.
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
    */
-  @SuppressWarnings("unchecked")
   public AuthorizationCodeCredentials execute() throws
           IOException,
           SpotifyWebApiException {
@@ -39,7 +38,7 @@ public class AuthorizationCodeRequest extends AbstractAthorizationRequest {
   /**
    * Builder class for building an {@link AuthorizationCodeRequest}.
    */
-  public static final class Builder extends AbstractAthorizationRequest.Builder<Builder> {
+  public static final class Builder extends AbstractAthorizationRequest.Builder<AuthorizationCodeCredentials, Builder> {
 
     public Builder(final String clientId, final String clientSecret) {
       super(clientId, clientSecret);

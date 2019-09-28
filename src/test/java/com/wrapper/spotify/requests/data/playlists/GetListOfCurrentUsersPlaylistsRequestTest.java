@@ -42,10 +42,9 @@ public class GetListOfCurrentUsersPlaylistsRequestTest extends AbstractDataTest<
     shouldReturnDefault(defaultRequest.execute());
   }
 
-  @SuppressWarnings("unchecked")
   @Test
   public void shouldReturnDefault_async() throws ExecutionException, InterruptedException {
-    shouldReturnDefault((Paging<PlaylistSimplified>) defaultRequest.executeAsync().get());
+    shouldReturnDefault(defaultRequest.executeAsync().get());
   }
 
   public void shouldReturnDefault(final Paging<PlaylistSimplified> playlistSimplifiedPaging) {

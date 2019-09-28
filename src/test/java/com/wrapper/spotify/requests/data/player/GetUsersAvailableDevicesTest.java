@@ -47,7 +47,7 @@ public class GetUsersAvailableDevicesTest extends AbstractDataTest<Device[]> {
 
   @Test
   public void shouldReturnDefault_async() throws ExecutionException, InterruptedException {
-    shouldReturnDefault((Device[]) defaultRequest.executeAsync().get());
+    shouldReturnDefault(defaultRequest.executeAsync().get());
   }
 
   public void shouldReturnDefault(final Device[] devices) {
@@ -63,7 +63,7 @@ public class GetUsersAvailableDevicesTest extends AbstractDataTest<Device[]> {
 
   @Test
   public void shouldReturnEmpty_async() throws ExecutionException, InterruptedException {
-    shouldReturnEmpty((Device[]) emptyRequest.executeAsync().get());
+    shouldReturnEmpty(emptyRequest.executeAsync().get());
   }
 
   public void shouldReturnEmpty(final Device[] devices) {

@@ -13,7 +13,7 @@ public enum AlbumType {
   COMPILATION("compilation"),
   SINGLE("single");
 
-  private static Map<String, AlbumType> map = new HashMap<>();
+  private static final Map<String, AlbumType> map = new HashMap<>();
 
   static {
     for (AlbumType albumType : AlbumType.values()) {

@@ -13,7 +13,7 @@ import java.io.IOException;
  * Get a single category used to tag items in Spotify (on, for example, the Spotify player’s "Browse" tab).
  */
 @JsonDeserialize(builder = GetCategoryRequest.Builder.class)
-public class GetCategoryRequest extends AbstractDataRequest {
+public class GetCategoryRequest extends AbstractDataRequest<Category> {
 
   /**
    * The private {@link GetCategoryRequest} constructor.
@@ -31,7 +31,6 @@ public class GetCategoryRequest extends AbstractDataRequest {
    * @throws IOException            In case of networking issues.
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
    */
-  @SuppressWarnings("unchecked")
   public Category execute() throws
           IOException,
           SpotifyWebApiException {
@@ -41,7 +40,7 @@ public class GetCategoryRequest extends AbstractDataRequest {
   /**
    * Builder class for building a {@link GetCategoryRequest}.
    */
-  public static final class Builder extends AbstractDataRequest.Builder<Builder> {
+  public static final class Builder extends AbstractDataRequest.Builder<Category, Builder> {
 
     /**
      * Create a new {@link GetCategoryRequest.Builder} instance.

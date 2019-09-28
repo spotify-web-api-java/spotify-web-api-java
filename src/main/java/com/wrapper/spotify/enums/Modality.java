@@ -13,7 +13,7 @@ public enum Modality {
   MAJOR(1),
   MINOR(0);
 
-  private static Map<Integer, Modality> map = new HashMap<>();
+  private static final Map<Integer, Modality> map = new HashMap<>();
 
   static {
     for (Modality modality : Modality.values()) {

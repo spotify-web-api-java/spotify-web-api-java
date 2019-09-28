@@ -11,7 +11,7 @@ import java.io.IOException;
  * Get public profile information about a Spotify user.
  */
 @JsonDeserialize(builder = GetUsersProfileRequest.Builder.class)
-public class GetUsersProfileRequest extends AbstractDataRequest {
+public class GetUsersProfileRequest extends AbstractDataRequest<User> {
 
   /**
    * The private {@link GetUsersProfileRequest} constructor.
@@ -29,7 +29,6 @@ public class GetUsersProfileRequest extends AbstractDataRequest {
    * @throws IOException            In case of networking issues.
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
    */
-  @SuppressWarnings("unchecked")
   public User execute() throws
           IOException,
           SpotifyWebApiException {
@@ -39,7 +38,7 @@ public class GetUsersProfileRequest extends AbstractDataRequest {
   /**
    * Builder class for building a {@link GetUsersProfileRequest}.
    */
-  public static final class Builder extends AbstractDataRequest.Builder<Builder> {
+  public static final class Builder extends AbstractDataRequest.Builder<User, Builder> {
 
     /**
      * Create a new {@link GetUsersProfileRequest.Builder}.

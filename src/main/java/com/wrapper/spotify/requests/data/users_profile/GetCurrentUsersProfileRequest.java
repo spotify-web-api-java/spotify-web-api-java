@@ -11,7 +11,7 @@ import java.io.IOException;
  * Get detailed profile information about the current user (including the current user’s username).
  */
 @JsonDeserialize(builder = GetCurrentUsersProfileRequest.Builder.class)
-public class GetCurrentUsersProfileRequest extends AbstractDataRequest {
+public class GetCurrentUsersProfileRequest extends AbstractDataRequest<User> {
 
   /**
    * The private {@link GetCurrentUsersProfileRequest} constructor.
@@ -29,7 +29,6 @@ public class GetCurrentUsersProfileRequest extends AbstractDataRequest {
    * @throws IOException            In case of networking issues.
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
    */
-  @SuppressWarnings("unchecked")
   public User execute() throws
           IOException,
           SpotifyWebApiException {
@@ -39,7 +38,7 @@ public class GetCurrentUsersProfileRequest extends AbstractDataRequest {
   /**
    * Builder class for building a {@link GetCurrentUsersProfileRequest}.
    */
-  public static final class Builder extends AbstractDataRequest.Builder<Builder> {
+  public static final class Builder extends AbstractDataRequest.Builder<User, Builder> {
 
     /**
      * Create a new {@link GetCurrentUsersProfileRequest.Builder}.

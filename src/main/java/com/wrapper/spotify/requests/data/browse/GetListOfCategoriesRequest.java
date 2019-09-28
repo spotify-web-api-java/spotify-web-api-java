@@ -6,6 +6,7 @@ import com.neovisionaries.i18n.LanguageCode;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.Category;
 import com.wrapper.spotify.model_objects.specification.Paging;
+import com.wrapper.spotify.requests.data.AbstractDataPagingRequest;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
 
 import java.io.IOException;
@@ -14,7 +15,7 @@ import java.io.IOException;
  * Get a list of categories used to tag items in Spotify (on, for example, the Spotify player’s "Browse" tab).
  */
 @JsonDeserialize(builder = GetListOfCategoriesRequest.Builder.class)
-public class GetListOfCategoriesRequest extends AbstractDataRequest {
+public class GetListOfCategoriesRequest extends AbstractDataRequest<Paging<Category>> {
 
   /**
    * The private {@link GetListOfCategoriesRequest} constructor.
@@ -32,7 +33,6 @@ public class GetListOfCategoriesRequest extends AbstractDataRequest {
    * @throws IOException            In case of networking issues.
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
    */
-  @SuppressWarnings("unchecked")
   public Paging<Category> execute() throws
           IOException,
           SpotifyWebApiException {
@@ -42,7 +42,7 @@ public class GetListOfCategoriesRequest extends AbstractDataRequest {
   /**
    * Builder class for building a {@link GetListOfCategoriesRequest}.
    */
-  public static final class Builder extends AbstractDataRequest.Builder<Builder> {
+  public static final class Builder extends AbstractDataPagingRequest.Builder<Category, Builder> {
 
     /**
      * Create a new {@link GetListOfCategoriesRequest.Builder} instance.
@@ -98,6 +98,7 @@ public class GetListOfCategoriesRequest extends AbstractDataRequest {
      * @param limit Optional. The maximum number of categories to return. Default: 20. Minimum: 1. Maximum: 50.
      * @return A {@link GetListOfCategoriesRequest.Builder}.
      */
+    @Override
     public Builder limit(Integer limit) {
       assert (1 <= limit && limit <= 50);
       return setQueryParameter("limit", limit);
@@ -110,6 +111,7 @@ public class GetListOfCategoriesRequest extends AbstractDataRequest {
      *               {@link #limit(Integer)} to get the next set of categories.
      * @return A {@link GetListOfCategoriesRequest.Builder}.
      */
+    @Override
     public Builder offset(Integer offset) {
       assert (offset >= 0);
       return setQueryParameter("offset", offset);

@@ -5,6 +5,7 @@ import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.Paging;
 import com.wrapper.spotify.model_objects.specification.PlaylistSimplified;
+import com.wrapper.spotify.requests.data.AbstractDataPagingRequest;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
 
 import java.io.IOException;
@@ -13,7 +14,7 @@ import java.io.IOException;
  * Get Spotify catalog information about playlists that match a keyword string.
  */
 @JsonDeserialize(builder = SearchPlaylistsRequest.Builder.class)
-public class SearchPlaylistsRequest extends AbstractDataRequest {
+public class SearchPlaylistsRequest extends AbstractDataRequest<Paging<PlaylistSimplified>> {
 
   /**
    * The private {@link SearchPlaylistsRequest} constructor.
@@ -31,7 +32,6 @@ public class SearchPlaylistsRequest extends AbstractDataRequest {
    * @throws IOException            In case of networking issues.
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
    */
-  @SuppressWarnings("unchecked")
   public Paging<PlaylistSimplified> execute() throws
           IOException,
           SpotifyWebApiException {
@@ -41,7 +41,7 @@ public class SearchPlaylistsRequest extends AbstractDataRequest {
   /**
    * Builder class for building a {@link SearchPlaylistsRequest}.
    */
-  public static final class Builder extends AbstractDataRequest.Builder<Builder> {
+  public static final class Builder extends AbstractDataPagingRequest.Builder<PlaylistSimplified, Builder> {
 
     /**
      * Create a new {@link SearchPlaylistsRequest.Builder}.
@@ -85,6 +85,7 @@ public class SearchPlaylistsRequest extends AbstractDataRequest {
      * @param limit Optional. The maximum number of results to return. Default: 20. Minimum: 1. Maximum: 50.
      * @return A {@link SearchPlaylistsRequest.Builder}.
      */
+    @Override
     public Builder limit(final Integer limit) {
       assert (limit != null);
       assert (1 <= limit && limit <= 50);
@@ -98,6 +99,7 @@ public class SearchPlaylistsRequest extends AbstractDataRequest {
      *               offset: 100.000. Use with {@link #limit(Integer)} to get the next page of search results.
      * @return A {@link SearchPlaylistsRequest.Builder}.
      */
+    @Override
     public Builder offset(final Integer offset) {
       assert (offset != null);
       assert (0 <= offset && offset <= 100000);

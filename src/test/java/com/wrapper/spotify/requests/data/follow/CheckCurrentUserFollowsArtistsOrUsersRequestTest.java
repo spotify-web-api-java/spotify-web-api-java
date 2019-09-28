@@ -40,7 +40,7 @@ public class CheckCurrentUserFollowsArtistsOrUsersRequestTest extends AbstractDa
 
   @Test
   public void shouldReturnDefault_async() throws ExecutionException, InterruptedException {
-    shouldReturnDefault((Boolean[]) defaultRequest.executeAsync().get());
+    shouldReturnDefault(defaultRequest.executeAsync().get());
   }
 
   public void shouldReturnDefault(final Boolean[] booleans) {

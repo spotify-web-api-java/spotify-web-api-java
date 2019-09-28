@@ -42,7 +42,7 @@ public class GetUsersProfileRequestTest extends AbstractDataTest<User> {
 
   @Test
   public void shouldReturnDefault_async() throws ExecutionException, InterruptedException {
-    shouldReturnDefault((User) defaultRequest.executeAsync().get());
+    shouldReturnDefault(defaultRequest.executeAsync().get());
   }
 
   public void shouldReturnDefault(final User user) {

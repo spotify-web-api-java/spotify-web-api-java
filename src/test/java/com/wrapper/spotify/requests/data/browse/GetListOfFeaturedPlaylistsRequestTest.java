@@ -45,7 +45,7 @@ public class GetListOfFeaturedPlaylistsRequestTest extends AbstractDataTest<Feat
 
   @Test
   public void shouldReturnDefault_async() throws ExecutionException, InterruptedException {
-    shouldReturnDefault((FeaturedPlaylists) defaultRequest.executeAsync().get());
+    shouldReturnDefault(defaultRequest.executeAsync().get());
   }
 
   public void shouldReturnDefault(final FeaturedPlaylists featuredPlaylists) {

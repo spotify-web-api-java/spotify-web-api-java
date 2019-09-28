@@ -11,7 +11,7 @@ import java.io.IOException;
  * Set the repeat mode for the user’s playback.
  */
 @JsonDeserialize(builder = SetRepeatModeOnUsersPlaybackRequest.Builder.class)
-public class SetRepeatModeOnUsersPlaybackRequest extends AbstractDataRequest {
+public class SetRepeatModeOnUsersPlaybackRequest extends AbstractDataRequest<String> {
 
   /**
    * The private {@link SetRepeatModeOnUsersPlaybackRequest} constructor.
@@ -29,7 +29,6 @@ public class SetRepeatModeOnUsersPlaybackRequest extends AbstractDataRequest {
    * @throws IOException            In case of networking issues.
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
    */
-  @SuppressWarnings("unchecked")
   public String execute() throws
           IOException,
           SpotifyWebApiException {
@@ -39,7 +38,7 @@ public class SetRepeatModeOnUsersPlaybackRequest extends AbstractDataRequest {
   /**
    * Builder class for building a {@link SetRepeatModeOnUsersPlaybackRequest}.
    */
-  public static final class Builder extends AbstractDataRequest.Builder<Builder> {
+  public static final class Builder extends AbstractDataRequest.Builder<String, Builder> {
 
     /**
      * Create a new {@link SetRepeatModeOnUsersPlaybackRequest.Builder}.

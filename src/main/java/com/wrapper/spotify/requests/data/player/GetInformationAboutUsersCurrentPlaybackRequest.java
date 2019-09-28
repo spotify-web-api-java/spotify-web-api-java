@@ -12,7 +12,7 @@ import java.io.IOException;
  * Get information about the user’s current playback state, including track, track progress, and active device.
  */
 @JsonDeserialize(builder = GetInformationAboutUsersCurrentPlaybackRequest.Builder.class)
-public class GetInformationAboutUsersCurrentPlaybackRequest extends AbstractDataRequest {
+public class GetInformationAboutUsersCurrentPlaybackRequest extends AbstractDataRequest<CurrentlyPlayingContext> {
 
   /**
    * The private {@link GetInformationAboutUsersCurrentPlaybackRequest} constructor.
@@ -30,7 +30,6 @@ public class GetInformationAboutUsersCurrentPlaybackRequest extends AbstractData
    * @throws IOException            In case of networking issues.
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
    */
-  @SuppressWarnings("unchecked")
   public CurrentlyPlayingContext execute() throws
           IOException,
           SpotifyWebApiException {
@@ -40,7 +39,7 @@ public class GetInformationAboutUsersCurrentPlaybackRequest extends AbstractData
   /**
    * Builder class for building a {@link GetInformationAboutUsersCurrentPlaybackRequest}.
    */
-  public static final class Builder extends AbstractDataRequest.Builder<Builder> {
+  public static final class Builder extends AbstractDataRequest.Builder<CurrentlyPlayingContext, Builder> {
 
     /**
      * Create a new {@link GetInformationAboutUsersCurrentPlaybackRequest.Builder}.

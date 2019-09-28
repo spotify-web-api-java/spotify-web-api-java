@@ -42,10 +42,9 @@ public class GetCurrentUsersSavedAlbumsRequestTest extends AbstractDataTest<Pagi
     shouldReturnDefault(defaultRequest.execute());
   }
 
-  @SuppressWarnings("unchecked")
   @Test
   public void shouldReturnDefault_async() throws ExecutionException, InterruptedException {
-    shouldReturnDefault((Paging<SavedAlbum>) defaultRequest.executeAsync().get());
+    shouldReturnDefault(defaultRequest.executeAsync().get());
   }
 
   public void shouldReturnDefault(final Paging<SavedAlbum> savedAlbumPaging) {

@@ -14,7 +14,7 @@ public enum ProductType {
   OPEN("open"),
   PREMIUM("premium");
 
-  private static Map<String, ProductType> map = new HashMap<>();
+  private static final Map<String, ProductType> map = new HashMap<>();
 
   static {
     for (ProductType productType : ProductType.values()) {

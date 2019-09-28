@@ -49,7 +49,7 @@ public class GetInformationAboutUsersCurrentPlaybackRequestTest extends Abstract
 
   @Test
   public void shouldReturnDefault_async() throws ExecutionException, InterruptedException {
-    shouldReturnDefault((CurrentlyPlayingContext) defaultRequest.executeAsync().get());
+    shouldReturnDefault(defaultRequest.executeAsync().get());
   }
 
   public void shouldReturnDefault(final CurrentlyPlayingContext currentlyPlayingContext) {
@@ -81,7 +81,7 @@ public class GetInformationAboutUsersCurrentPlaybackRequestTest extends Abstract
 
   @Test
   public void shouldReturnEmpty_async() throws ExecutionException, InterruptedException {
-    shouldReturnEmpty((CurrentlyPlayingContext) emptyRequest.executeAsync().get());
+    shouldReturnEmpty(emptyRequest.executeAsync().get());
   }
 
   public void shouldReturnEmpty(final CurrentlyPlayingContext currentlyPlayingContext) {

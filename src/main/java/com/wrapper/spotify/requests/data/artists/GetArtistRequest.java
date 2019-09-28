@@ -11,7 +11,7 @@ import java.io.IOException;
  * Get Spotify catalog information for a single artist identified by their unique Spotify ID.
  */
 @JsonDeserialize(builder = GetArtistRequest.Builder.class)
-public class GetArtistRequest extends AbstractDataRequest {
+public class GetArtistRequest extends AbstractDataRequest<Artist> {
 
   /**
    * The private {@link GetArtistRequest} constructor.
@@ -29,7 +29,6 @@ public class GetArtistRequest extends AbstractDataRequest {
    * @throws IOException            In case of networking issues.
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
    */
-  @SuppressWarnings("unchecked")
   public Artist execute() throws
           IOException,
           SpotifyWebApiException {
@@ -39,7 +38,7 @@ public class GetArtistRequest extends AbstractDataRequest {
   /**
    * Builder class for building a {@link GetArtistRequest}.
    */
-  public static final class Builder extends AbstractDataRequest.Builder<Builder> {
+  public static final class Builder extends AbstractDataRequest.Builder<Artist, Builder> {
 
     /**
      * Create a new {@link GetArtistRequest.Builder} instance.

@@ -14,7 +14,7 @@ import java.util.List;
  * Retrieve a list of available genres seed parameter values for recommendations.
  */
 @JsonDeserialize(builder = GetAvailableGenreSeedsRequest.Builder.class)
-public class GetAvailableGenreSeedsRequest extends AbstractDataRequest {
+public class GetAvailableGenreSeedsRequest extends AbstractDataRequest<String[]> {
 
   /**
    * The private {@link GetAvailableGenreSeedsRequest} constructor.
@@ -51,7 +51,7 @@ public class GetAvailableGenreSeedsRequest extends AbstractDataRequest {
   /**
    * Builder class for building a {@link GetAvailableGenreSeedsRequest.Builder}.
    */
-  public static final class Builder extends AbstractDataRequest.Builder<Builder> {
+  public static final class Builder extends AbstractDataRequest.Builder<String[], Builder> {
 
     /**
      * Create a new {@link GetAvailableGenreSeedsRequest.Builder} instance.

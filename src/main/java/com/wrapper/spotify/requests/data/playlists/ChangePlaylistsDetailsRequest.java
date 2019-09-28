@@ -11,7 +11,7 @@ import java.io.IOException;
  * Change a playlist’s name and public/private state. (The user must, of course, own the playlist.)
  */
 @JsonDeserialize(builder = ChangePlaylistsDetailsRequest.Builder.class)
-public class ChangePlaylistsDetailsRequest extends AbstractDataRequest {
+public class ChangePlaylistsDetailsRequest extends AbstractDataRequest<String> {
 
   /**
    * The private {@link ChangePlaylistsDetailsRequest} constructor.
@@ -29,7 +29,6 @@ public class ChangePlaylistsDetailsRequest extends AbstractDataRequest {
    * @throws IOException            In case of networking issues.
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
    */
-  @SuppressWarnings("unchecked")
   public String execute() throws
           IOException,
           SpotifyWebApiException {
@@ -39,7 +38,7 @@ public class ChangePlaylistsDetailsRequest extends AbstractDataRequest {
   /**
    * Builder class for building a {@link ChangePlaylistsDetailsRequest}.
    */
-  public static final class Builder extends AbstractDataRequest.Builder<Builder> {
+  public static final class Builder extends AbstractDataRequest.Builder<String, Builder> {
 
     /**
      * Create a new {@link ChangePlaylistsDetailsRequest.Builder}.

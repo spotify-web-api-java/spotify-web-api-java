@@ -43,7 +43,7 @@ public class SetRepeatModeOnUsersPlaybackRequestTest extends AbstractDataTest<St
 
   @Test
   public void shouldReturnDefault_async() throws ExecutionException, InterruptedException {
-    shouldReturnDefault((String) defaultRequest.executeAsync().get());
+    shouldReturnDefault(defaultRequest.executeAsync().get());
   }
 
   public void shouldReturnDefault(final String string) {

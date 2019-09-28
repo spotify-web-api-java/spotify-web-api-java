@@ -13,7 +13,7 @@ import java.io.IOException;
  * Check to see if the current user is following one or more artists or other Spotify users.
  */
 @JsonDeserialize(builder = CheckCurrentUserFollowsArtistsOrUsersRequest.Builder.class)
-public class CheckCurrentUserFollowsArtistsOrUsersRequest extends AbstractDataRequest {
+public class CheckCurrentUserFollowsArtistsOrUsersRequest extends AbstractDataRequest<Boolean[]> {
 
   /**
    * The private {@link CheckCurrentUserFollowsArtistsOrUsersRequest} constructor.
@@ -40,7 +40,7 @@ public class CheckCurrentUserFollowsArtistsOrUsersRequest extends AbstractDataRe
   /**
    * Builder class for building a {@link CheckCurrentUserFollowsArtistsOrUsersRequest}.
    */
-  public static final class Builder extends AbstractDataRequest.Builder<Builder> {
+  public static final class Builder extends AbstractDataRequest.Builder<Boolean[], Builder> {
 
     /**
      * Create a new {@link CheckCurrentUserFollowsArtistsOrUsersRequest.Builder} instance.

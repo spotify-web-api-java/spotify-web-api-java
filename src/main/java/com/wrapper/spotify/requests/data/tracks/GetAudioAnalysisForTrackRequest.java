@@ -11,7 +11,7 @@ import java.io.IOException;
  * Get a detailed audio analysis for a single track identified by its unique Spotify ID.
  */
 @JsonDeserialize(builder = GetAudioAnalysisForTrackRequest.Builder.class)
-public class GetAudioAnalysisForTrackRequest extends AbstractDataRequest {
+public class GetAudioAnalysisForTrackRequest extends AbstractDataRequest<AudioAnalysis> {
 
   /**
    * The private {@link GetAudioAnalysisForTrackRequest} constructor.
@@ -29,7 +29,6 @@ public class GetAudioAnalysisForTrackRequest extends AbstractDataRequest {
    * @throws IOException            In case of networking issues.
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
    */
-  @SuppressWarnings("unchecked")
   public AudioAnalysis execute() throws
           IOException,
           SpotifyWebApiException {
@@ -39,7 +38,7 @@ public class GetAudioAnalysisForTrackRequest extends AbstractDataRequest {
   /**
    * Builder class for building a {@link GetAudioAnalysisForTrackRequest}.
    */
-  public static final class Builder extends AbstractDataRequest.Builder<Builder> {
+  public static final class Builder extends AbstractDataRequest.Builder<AudioAnalysis, Builder> {
 
     /**
      * Create a new {@link GetAudioAnalysisForTrackRequest.Builder}.

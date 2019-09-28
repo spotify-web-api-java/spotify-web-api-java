@@ -43,7 +43,7 @@ public class GetAlbumRequestTest extends AbstractDataTest<Album> {
 
   @Test
   public void shouldReturnDefault_async() throws ExecutionException, InterruptedException {
-    shouldReturnDefault((Album) defaultRequest.executeAsync().get());
+    shouldReturnDefault(defaultRequest.executeAsync().get());
   }
 
   public void shouldReturnDefault(final Album album) {
