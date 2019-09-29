@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Future;
 import java.util.logging.Level;
+import java.util.stream.Collectors;
 
 public abstract class AbstractRequest<T> implements IRequest<T> {
 
@@ -259,8 +260,7 @@ public abstract class AbstractRequest<T> implements IRequest<T> {
       } catch (UnsupportedEncodingException e) {
         SpotifyApi.LOGGER.log(Level.SEVERE, e.getMessage());
       }
-
-      this.pathParameters.add(new BasicNameValuePair(name, encodedValue));
+      listAddOnce(this.pathParameters, new BasicNameValuePair(name, encodedValue));
       return (BT) this;
     }
 
@@ -282,7 +282,7 @@ public abstract class AbstractRequest<T> implements IRequest<T> {
       assert (name != null);
       assert (!name.equals(""));
       assert (value != null);
-      this.queryParameters.add(new BasicNameValuePair(name, String.valueOf(value)));
+      listAddOnce(this.queryParameters, new BasicNameValuePair(name, String.valueOf(value)));
       return (BT) this;
     }
 
@@ -291,7 +291,7 @@ public abstract class AbstractRequest<T> implements IRequest<T> {
       assert (name != null);
       assert (!name.equals(""));
       assert (value != null);
-      this.headers.add(new BasicHeader(name, String.valueOf(value)));
+      listAddOnce(this.headers, new BasicHeader(name, String.valueOf(value)));
       return (BT) this;
     }
 
@@ -313,8 +313,22 @@ public abstract class AbstractRequest<T> implements IRequest<T> {
       assert (name != null);
       assert (!name.equals(""));
       assert (value != null);
-      this.bodyParameters.add(new BasicNameValuePair(name, String.valueOf(value)));
+      listAddOnce(this.bodyParameters, new BasicNameValuePair(name, String.valueOf(value)));
       return (BT) this;
+    }
+
+    private void listAddOnce(List<NameValuePair> nameValuePairs, NameValuePair newNameValuePair) {
+      nameValuePairs.removeAll(nameValuePairs.stream()
+              .filter(nameValuePair -> nameValuePair.getName().equals(newNameValuePair.getName()))
+              .collect(Collectors.toList()));
+      nameValuePairs.add(newNameValuePair);
+    }
+
+    private void listAddOnce(List<Header> headers, Header newHeader) {
+      headers.removeAll(headers.stream()
+              .filter(header -> header.getName().equals(newHeader.getName()))
+              .collect(Collectors.toList()));
+      headers.add(newHeader);
     }
   }
 }
