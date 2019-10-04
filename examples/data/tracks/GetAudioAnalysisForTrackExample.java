@@ -6,8 +6,9 @@ import com.wrapper.spotify.model_objects.miscellaneous.AudioAnalysis;
 import com.wrapper.spotify.requests.data.tracks.GetAudioAnalysisForTrackRequest;
 
 import java.io.IOException;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
+import java.util.concurrent.CancellationException;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
 
 public class GetAudioAnalysisForTrackExample {
   private static final String accessToken = "taHZ2SdB-bPA3FsK3D7ZN5npZS47cMy-IEySVEGttOhXmqaVAIo0ESvTCLjLBifhHOHOIuhFUKPW1WMDP7w6dj3MAZdWT8CLI2MkZaXbYLTeoDvXesf2eeiLYPBGdx8tIwQJKgV8XdnzH_DONk";
@@ -32,15 +33,18 @@ public class GetAudioAnalysisForTrackExample {
 
   public static void getAudioAnalysisForTrack_Async() {
     try {
-      final Future<AudioAnalysis> audioAnalysisFuture = getAudioAnalysisForTrackRequest.executeAsync();
+      final CompletableFuture<AudioAnalysis> audioAnalysisFuture = getAudioAnalysisForTrackRequest.executeAsync();
 
-      // ...
+      // Thread free to do other tasks...
 
-      final AudioAnalysis audioAnalysis = audioAnalysisFuture.get();
+      // Example Only. Never block in production code.
+      final AudioAnalysis audioAnalysis = audioAnalysisFuture.join();
 
       System.out.println("Track duration: " + audioAnalysis.getTrack().getDuration());
-    } catch (InterruptedException | ExecutionException e) {
+    } catch (CompletionException e) {
       System.out.println("Error: " + e.getCause().getMessage());
+    } catch (CancellationException e) {
+      System.out.println("Async operation cancelled.");
     }
   }
 }

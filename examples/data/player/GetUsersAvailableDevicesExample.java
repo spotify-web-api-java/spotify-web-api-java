@@ -6,8 +6,9 @@ import com.wrapper.spotify.model_objects.miscellaneous.Device;
 import com.wrapper.spotify.requests.data.player.GetUsersAvailableDevicesRequest;
 
 import java.io.IOException;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
+import java.util.concurrent.CancellationException;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
 
 public class GetUsersAvailableDevicesExample {
   private static final String accessToken = "taHZ2SdB-bPA3FsK3D7ZN5npZS47cMy-IEySVEGttOhXmqaVAIo0ESvTCLjLBifhHOHOIuhFUKPW1WMDP7w6dj3MAZdWT8CLI2MkZaXbYLTeoDvXesf2eeiLYPBGdx8tIwQJKgV8XdnzH_DONk";
@@ -31,15 +32,18 @@ public class GetUsersAvailableDevicesExample {
 
   public static void getUsersAvailableDevices_Async() {
     try {
-      final Future<Device[]> devicesFuture = getUsersAvailableDevicesRequest.executeAsync();
+      final CompletableFuture<Device[]> devicesFuture = getUsersAvailableDevicesRequest.executeAsync();
 
-      // ...
+      // Thread free to do other tasks...
 
-      final Device[] devices = devicesFuture.get();
+      // Example Only. Never block in production code.
+      final Device[] devices = devicesFuture.join();
 
       System.out.println("Length: " + devices.length);
-    } catch (InterruptedException | ExecutionException e) {
+    } catch (CompletionException e) {
       System.out.println("Error: " + e.getCause().getMessage());
+    } catch (CancellationException e) {
+      System.out.println("Async operation cancelled.");
     }
   }
 }

@@ -6,8 +6,9 @@ import com.wrapper.spotify.model_objects.special.SnapshotResult;
 import com.wrapper.spotify.requests.data.playlists.ReorderPlaylistsTracksRequest;
 
 import java.io.IOException;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
+import java.util.concurrent.CancellationException;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
 
 public class ReorderPlaylistsTracksExample {
   private static final String accessToken = "taHZ2SdB-bPA3FsK3D7ZN5npZS47cMy-IEySVEGttOhXmqaVAIo0ESvTCLjLBifhHOHOIuhFUKPW1WMDP7w6dj3MAZdWT8CLI2MkZaXbYLTeoDvXesf2eeiLYPBGdx8tIwQJKgV8XdnzH_DONk";
@@ -37,15 +38,18 @@ public class ReorderPlaylistsTracksExample {
 
   public static void reorderPlaylistsTracks_Async() {
     try {
-      final Future<SnapshotResult> snapshotResultFuture = reorderPlaylistsTracksRequest.executeAsync();
+      final CompletableFuture<SnapshotResult> snapshotResultFuture = reorderPlaylistsTracksRequest.executeAsync();
 
-      // ...
+      // Thread free to do other tasks...
 
-      final SnapshotResult snapshotResult = snapshotResultFuture.get();
+      // Example Only. Never block in production code.
+      final SnapshotResult snapshotResult = snapshotResultFuture.join();
 
       System.out.println("Snapshot ID: " + snapshotResult.getSnapshotId());
-    } catch (InterruptedException | ExecutionException e) {
+    } catch (CompletionException e) {
       System.out.println("Error: " + e.getCause().getMessage());
+    } catch (CancellationException e) {
+      System.out.println("Async operation cancelled.");
     }
   }
 }
