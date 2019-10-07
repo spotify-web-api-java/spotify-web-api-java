@@ -6,8 +6,9 @@ import com.wrapper.spotify.model_objects.specification.Artist;
 import com.wrapper.spotify.requests.data.artists.GetArtistsRelatedArtistsRequest;
 
 import java.io.IOException;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
+import java.util.concurrent.CancellationException;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
 
 public class GetArtistsRelatedArtistsExample {
   private static final String accessToken = "taHZ2SdB-bPA3FsK3D7ZN5npZS47cMy-IEySVEGttOhXmqaVAIo0ESvTCLjLBifhHOHOIuhFUKPW1WMDP7w6dj3MAZdWT8CLI2MkZaXbYLTeoDvXesf2eeiLYPBGdx8tIwQJKgV8XdnzH_DONk";
@@ -32,15 +33,18 @@ public class GetArtistsRelatedArtistsExample {
 
   public static void getArtistsRelatedArtists_Async() {
     try {
-      final Future<Artist[]> artistsFuture = getArtistsRelatedArtistsRequest.executeAsync();
+      final CompletableFuture<Artist[]> artistsFuture = getArtistsRelatedArtistsRequest.executeAsync();
 
-      // ...
+      // Thread free to do other tasks...
 
-      final Artist[] artists = artistsFuture.get();
+      // Example Only. Never block in production code.
+      final Artist[] artists = artistsFuture.join();
 
       System.out.println("Length: " + artists.length);
-    } catch (InterruptedException | ExecutionException e) {
+    } catch (CompletionException e) {
       System.out.println("Error: " + e.getCause().getMessage());
+    } catch (CancellationException e) {
+      System.out.println("Async operation cancelled.");
     }
   }
 }

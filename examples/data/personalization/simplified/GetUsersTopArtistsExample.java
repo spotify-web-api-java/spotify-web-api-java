@@ -7,8 +7,9 @@ import com.wrapper.spotify.model_objects.specification.Paging;
 import com.wrapper.spotify.requests.data.personalization.simplified.GetUsersTopArtistsRequest;
 
 import java.io.IOException;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
+import java.util.concurrent.CancellationException;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
 
 public class GetUsersTopArtistsExample {
   private static final String accessToken = "taHZ2SdB-bPA3FsK3D7ZN5npZS47cMy-IEySVEGttOhXmqaVAIo0ESvTCLjLBifhHOHOIuhFUKPW1WMDP7w6dj3MAZdWT8CLI2MkZaXbYLTeoDvXesf2eeiLYPBGdx8tIwQJKgV8XdnzH_DONk";
@@ -34,15 +35,18 @@ public class GetUsersTopArtistsExample {
 
   public static void getUsersTopArtists_Async() {
     try {
-      final Future<Paging<Artist>> pagingFuture = getUsersTopArtistsRequest.executeAsync();
+      final CompletableFuture<Paging<Artist>> pagingFuture = getUsersTopArtistsRequest.executeAsync();
 
-      // ...
+      // Thread free to do other tasks...
 
-      final Paging<Artist> artistPaging = pagingFuture.get();
+      // Example Only. Never block in production code.
+      final Paging<Artist> artistPaging = pagingFuture.join();
 
       System.out.println("Total: " + artistPaging.getTotal());
-    } catch (InterruptedException | ExecutionException e) {
+    } catch (CompletionException e) {
       System.out.println("Error: " + e.getCause().getMessage());
+    } catch (CancellationException e) {
+      System.out.println("Async operation cancelled.");
     }
   }
 }

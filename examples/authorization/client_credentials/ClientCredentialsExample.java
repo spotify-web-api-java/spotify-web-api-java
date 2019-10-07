@@ -6,8 +6,9 @@ import com.wrapper.spotify.model_objects.credentials.ClientCredentials;
 import com.wrapper.spotify.requests.authorization.client_credentials.ClientCredentialsRequest;
 
 import java.io.IOException;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
+import java.util.concurrent.CancellationException;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
 
 public class ClientCredentialsExample {
   private static final String clientId = "zyuxhfo1c51b5hxjk09x2uhv5n0svgd6g";
@@ -35,18 +36,21 @@ public class ClientCredentialsExample {
 
   public static void clientCredentials_Async() {
     try {
-      final Future<ClientCredentials> clientCredentialsFuture = clientCredentialsRequest.executeAsync();
+      final CompletableFuture<ClientCredentials> clientCredentialsFuture = clientCredentialsRequest.executeAsync();
 
-      // ...
+      // Thread free to do other tasks...
 
-      final ClientCredentials clientCredentials = clientCredentialsFuture.get();
+      // Example Only. Never block in production code.
+      final ClientCredentials clientCredentials = clientCredentialsFuture.join();
 
       // Set access token for further "spotifyApi" object usage
       spotifyApi.setAccessToken(clientCredentials.getAccessToken());
 
       System.out.println("Expires in: " + clientCredentials.getExpiresIn());
-    } catch (InterruptedException | ExecutionException e) {
+    } catch (CompletionException e) {
       System.out.println("Error: " + e.getCause().getMessage());
+    } catch (CancellationException e) {
+      System.out.println("Async operation cancelled.");
     }
   }
 }

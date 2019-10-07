@@ -22,7 +22,7 @@ import java.net.URISyntaxException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.Future;
+import java.util.concurrent.CompletableFuture;
 import java.util.logging.Level;
 import java.util.stream.Collectors;
 
@@ -68,9 +68,9 @@ public abstract class AbstractRequest<T> implements IRequest<T> {
   /**
    * Get something asynchronously.
    *
-   * @return A {@link Future} for a generic.
+   * @return A {@link CompletableFuture} for a generic.
    */
-  public Future<T> executeAsync() {
+  public CompletableFuture<T> executeAsync() {
     return SpotifyApiThreading.executeAsync(
             this::execute);
   }

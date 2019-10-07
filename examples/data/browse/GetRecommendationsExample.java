@@ -1,14 +1,14 @@
 package data.browse;
 
-import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.Recommendations;
 import com.wrapper.spotify.requests.data.browse.GetRecommendationsRequest;
 
 import java.io.IOException;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
+import java.util.concurrent.CancellationException;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
 
 public class GetRecommendationsExample {
   private static final String accessToken = "taHZ2SdB-bPA3FsK3D7ZN5npZS47cMy-IEySVEGttOhXmqaVAIo0ESvTCLjLBifhHOHOIuhFUKPW1WMDP7w6dj3MAZdWT8CLI2MkZaXbYLTeoDvXesf2eeiLYPBGdx8tIwQJKgV8XdnzH_DONk";
@@ -39,15 +39,18 @@ public class GetRecommendationsExample {
 
   public static void getRecommendations_Async() {
     try {
-      final Future<Recommendations> recommendationsFuture = getRecommendationsRequest.executeAsync();
+      final CompletableFuture<Recommendations> recommendationsFuture = getRecommendationsRequest.executeAsync();
 
-      // ...
+      // Thread free to do other tasks...
 
-      final Recommendations recommendations = recommendationsFuture.get();
+      // Example Only. Never block in production code.
+      final Recommendations recommendations = recommendationsFuture.join();
 
       System.out.println("Length: " + recommendations.getTracks().length);
-    } catch (InterruptedException | ExecutionException e) {
+    } catch (CompletionException e) {
       System.out.println("Error: " + e.getCause().getMessage());
+    } catch (CancellationException e) {
+      System.out.println("Async operation cancelled.");
     }
   }
 }

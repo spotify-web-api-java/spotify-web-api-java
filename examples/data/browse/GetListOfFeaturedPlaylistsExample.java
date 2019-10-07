@@ -1,15 +1,14 @@
 package data.browse;
 
-import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.special.FeaturedPlaylists;
 import com.wrapper.spotify.requests.data.browse.GetListOfFeaturedPlaylistsRequest;
 
 import java.io.IOException;
-import java.util.Date;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
+import java.util.concurrent.CancellationException;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
 
 public class GetListOfFeaturedPlaylistsExample {
   private static final String accessToken = "taHZ2SdB-bPA3FsK3D7ZN5npZS47cMy-IEySVEGttOhXmqaVAIo0ESvTCLjLBifhHOHOIuhFUKPW1WMDP7w6dj3MAZdWT8CLI2MkZaXbYLTeoDvXesf2eeiLYPBGdx8tIwQJKgV8XdnzH_DONk";
@@ -37,15 +36,18 @@ public class GetListOfFeaturedPlaylistsExample {
 
   public static void getListOfFeaturedPlaylists_Async() {
     try {
-      final Future<FeaturedPlaylists> featuredPlaylistsFuture = getListOfFeaturedPlaylistsRequest.executeAsync();
+      final CompletableFuture<FeaturedPlaylists> featuredPlaylistsFuture = getListOfFeaturedPlaylistsRequest.executeAsync();
 
-      // ...
+      // Thread free to do other tasks...
 
-      final FeaturedPlaylists featuredPlaylists = featuredPlaylistsFuture.get();
+      // Example Only. Never block in production code.
+      final FeaturedPlaylists featuredPlaylists = featuredPlaylistsFuture.join();
 
       System.out.println("Message: " + featuredPlaylists.getMessage());
-    } catch (InterruptedException | ExecutionException e) {
+    } catch (CompletionException e) {
       System.out.println("Error: " + e.getCause().getMessage());
+    } catch (CancellationException e) {
+      System.out.println("Async operation cancelled.");
     }
   }
 }

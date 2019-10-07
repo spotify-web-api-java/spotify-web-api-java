@@ -5,8 +5,9 @@ import com.wrapper.spotify.SpotifyHttpManager;
 import com.wrapper.spotify.requests.authorization.authorization_code.AuthorizationCodeUriRequest;
 
 import java.net.URI;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
+import java.util.concurrent.CancellationException;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
 
 public class AuthorizationCodeUriExample {
   private static final String clientId = "zyuxhfo1c51b5hxjk09x2uhv5n0svgd6g";
@@ -32,15 +33,18 @@ public class AuthorizationCodeUriExample {
 
   public static void authorizationCodeUri_Async() {
     try {
-      final Future<URI> uriFuture = authorizationCodeUriRequest.executeAsync();
+      final CompletableFuture<URI> uriFuture = authorizationCodeUriRequest.executeAsync();
 
-      // ...
+      // Thread free to do other tasks...
 
-      final URI uri = uriFuture.get();
+      // Example Only. Never block in production code.
+      final URI uri = uriFuture.join();
 
       System.out.println("URI: " + uri.toString());
-    } catch (InterruptedException | ExecutionException e) {
+    } catch (CompletionException e) {
       System.out.println("Error: " + e.getCause().getMessage());
+    } catch (CancellationException e) {
+      System.out.println("Async operation cancelled.");
     }
   }
 }
