@@ -11,7 +11,7 @@ import org.apache.http.entity.ContentType;
 import java.io.IOException;
 import java.net.URI;
 import java.util.List;
-import java.util.concurrent.Future;
+import java.util.concurrent.CompletableFuture;
 
 public interface IRequest<T> {
 
@@ -31,7 +31,7 @@ public interface IRequest<T> {
           IOException,
           SpotifyWebApiException;
 
-  Future<T> executeAsync();
+  CompletableFuture<T> executeAsync();
 
   String getJson() throws
           IOException,

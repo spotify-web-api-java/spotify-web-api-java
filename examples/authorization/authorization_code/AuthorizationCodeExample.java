@@ -8,8 +8,9 @@ import com.wrapper.spotify.requests.authorization.authorization_code.Authorizati
 
 import java.io.IOException;
 import java.net.URI;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
+import java.util.concurrent.CancellationException;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
 
 public class AuthorizationCodeExample {
   private static final String clientId = "zyuxhfo1c51b5hxjk09x2uhv5n0svgd6g";
@@ -41,19 +42,22 @@ public class AuthorizationCodeExample {
 
   public static void authorizationCode_Async() {
     try {
-      final Future<AuthorizationCodeCredentials> authorizationCodeCredentialsFuture = authorizationCodeRequest.executeAsync();
+      final CompletableFuture<AuthorizationCodeCredentials> authorizationCodeCredentialsFuture = authorizationCodeRequest.executeAsync();
 
-      // ...
+      // Thread free to do other tasks...
 
-      final AuthorizationCodeCredentials authorizationCodeCredentials = authorizationCodeCredentialsFuture.get();
+      // Example Only. Never block in production code.
+      final AuthorizationCodeCredentials authorizationCodeCredentials = authorizationCodeCredentialsFuture.join();
 
       // Set access and refresh token for further "spotifyApi" object usage
       spotifyApi.setAccessToken(authorizationCodeCredentials.getAccessToken());
       spotifyApi.setRefreshToken(authorizationCodeCredentials.getRefreshToken());
 
       System.out.println("Expires in: " + authorizationCodeCredentials.getExpiresIn());
-    } catch (InterruptedException | ExecutionException e) {
+    } catch (CompletionException e) {
       System.out.println("Error: " + e.getCause().getMessage());
+    } catch (CancellationException e) {
+      System.out.println("Async operation cancelled.");
     }
   }
 }

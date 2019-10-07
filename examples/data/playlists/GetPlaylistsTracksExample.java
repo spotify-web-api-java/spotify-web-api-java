@@ -1,6 +1,5 @@
 package data.playlists;
 
-import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.Paging;
@@ -8,8 +7,9 @@ import com.wrapper.spotify.model_objects.specification.PlaylistTrack;
 import com.wrapper.spotify.requests.data.playlists.GetPlaylistsTracksRequest;
 
 import java.io.IOException;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
+import java.util.concurrent.CancellationException;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
 
 public class GetPlaylistsTracksExample {
   private static final String accessToken = "taHZ2SdB-bPA3FsK3D7ZN5npZS47cMy-IEySVEGttOhXmqaVAIo0ESvTCLjLBifhHOHOIuhFUKPW1WMDP7w6dj3MAZdWT8CLI2MkZaXbYLTeoDvXesf2eeiLYPBGdx8tIwQJKgV8XdnzH_DONk";
@@ -38,15 +38,18 @@ public class GetPlaylistsTracksExample {
 
   public static void getPlaylistsTracks_Async() {
     try {
-      final Future<Paging<PlaylistTrack>> pagingFuture = getPlaylistsTracksRequest.executeAsync();
+      final CompletableFuture<Paging<PlaylistTrack>> pagingFuture = getPlaylistsTracksRequest.executeAsync();
 
-      // ...
+      // Thread free to do other tasks...
 
-      final Paging<PlaylistTrack> playlistTrackPaging = pagingFuture.get();
+      // Example Only. Never block in production code.
+      final Paging<PlaylistTrack> playlistTrackPaging = pagingFuture.join();
 
       System.out.println("Total: " + playlistTrackPaging.getTotal());
-    } catch (InterruptedException | ExecutionException e) {
+    } catch (CompletionException e) {
       System.out.println("Error: " + e.getCause().getMessage());
+    } catch (CancellationException e) {
+      System.out.println("Async operation cancelled.");
     }
   }
 }

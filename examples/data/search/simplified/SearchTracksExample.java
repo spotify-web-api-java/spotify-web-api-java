@@ -8,8 +8,7 @@ import com.wrapper.spotify.model_objects.specification.Track;
 import com.wrapper.spotify.requests.data.search.simplified.SearchTracksRequest;
 
 import java.io.IOException;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
+import java.util.concurrent.*;
 
 public class SearchTracksExample {
   private static final String accessToken = "taHZ2SdB-bPA3FsK3D7ZN5npZS47cMy-IEySVEGttOhXmqaVAIo0ESvTCLjLBifhHOHOIuhFUKPW1WMDP7w6dj3MAZdWT8CLI2MkZaXbYLTeoDvXesf2eeiLYPBGdx8tIwQJKgV8XdnzH_DONk";
@@ -36,15 +35,18 @@ public class SearchTracksExample {
 
   public static void searchTracks_Async() {
     try {
-      final Future<Paging<Track>> pagingFuture = searchTracksRequest.executeAsync();
+      final CompletableFuture<Paging<Track>> pagingFuture = searchTracksRequest.executeAsync();
 
-      // ...
+      // Thread free to do other tasks...
 
-      final Paging<Track> trackPaging = pagingFuture.get();
+      // Example Only. Never block in production code.
+      final Paging<Track> trackPaging = pagingFuture.join();
 
       System.out.println("Total: " + trackPaging.getTotal());
-    } catch (InterruptedException | ExecutionException e) {
+    } catch (CompletionException e) {
       System.out.println("Error: " + e.getCause().getMessage());
+    } catch (CancellationException e) {
+      System.out.println("Async operation cancelled.");
     }
   }
 }
