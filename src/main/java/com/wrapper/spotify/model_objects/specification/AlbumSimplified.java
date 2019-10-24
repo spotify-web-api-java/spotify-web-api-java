@@ -25,6 +25,9 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
   private final String name;
   private final ModelObjectType type;
   private final String uri;
+  private final int totalTracks;
+  private final String releaseDate;
+  private final String releaseDatePrecision;
 
   private AlbumSimplified(final Builder builder) {
     super(builder);
@@ -39,6 +42,9 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
     this.name = builder.name;
     this.type = builder.type;
     this.uri = builder.uri;
+    this.totalTracks = builder.totalTracks;
+    this.releaseDate = builder.releaseDate;
+    this.releaseDatePrecision = builder.releaseDatePrecision;
   }
 
   /**
@@ -133,6 +139,34 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
     return uri;
   }
 
+  /**
+   * Get the total track count of the album.
+   *
+   * @return Total track count.
+   */
+  public int getTotalTracks() {
+    return totalTracks;
+  }
+  
+  /**
+   * Get the release date of the album.
+   *
+   * @return Release date.
+   */
+  public String getReleaseDate() {
+    return releaseDate;
+  }
+  
+  
+  /**
+   * Get the release date precision of the album.
+   *
+   * @return Release date precision. 
+   */
+  public String getReleaseDatePrecision() {
+    return releaseDatePrecision;
+  }
+  
   @Override
   public Builder builder() {
     return new Builder();
@@ -153,6 +187,9 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
     private String name;
     private ModelObjectType type;
     private String uri;
+    private int totalTracks;
+    private String releaseDate;
+    private String releaseDatePrecision;
 
     /**
      * Set the type of the album to be built.
@@ -267,6 +304,39 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
       return this;
     }
 
+    /**
+     * Set the total track count of the album to be built.
+     *
+     * @param totalTracks The total track count.
+     * @return A {@link Album.Builder}.
+     */
+    public Builder setTotalTracks(int totalTracks) {
+      this.totalTracks = totalTracks;
+      return this;
+    }
+    
+    /**
+     * The date the album was first released.
+     *
+     * @param releaseDate The release date.
+     * @return A {@link Album.Builder}.
+     */
+    public Builder setReleaseDate(String releaseDate) {
+      this.releaseDate = releaseDate;
+      return this;
+    }
+    
+    /**
+     * The precision with which release_date value is known.
+     *
+     * @param releaseDatePrecision The release date precision.
+     * @return A {@link Album.Builder}.
+     */
+    public Builder setReleaseDatePrecision(String releaseDatePrecision) {
+      this.releaseDatePrecision = releaseDatePrecision;
+      return this;
+    }
+    
     @Override
     public AlbumSimplified build() {
       return new AlbumSimplified(this);
@@ -328,6 +398,18 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
               .setUri(
                       hasAndNotNull(jsonObject, "uri")
                               ? jsonObject.get("uri").getAsString()
+                              : null)
+              .setTotalTracks(
+                      hasAndNotNull(jsonObject, "total_tracks")
+                              ? jsonObject.get("total_tracks").getAsInt()
+                              : null)
+              .setReleaseDate(
+                      hasAndNotNull(jsonObject, "release_date")
+                              ? jsonObject.get("release_date").getAsString()
+                              : null)
+              .setReleaseDatePrecision(
+                      hasAndNotNull(jsonObject, "release_date_precision")
+                              ? jsonObject.get("release_date_precision").getAsString()
                               : null)
               .build();
     }
