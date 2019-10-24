@@ -5,7 +5,7 @@ import com.google.gson.JsonObject;
 import com.wrapper.spotify.model_objects.AbstractModelObject;
 
 /**
- * Retrieve information about <a href="hhttps://developer.spotify.com/web-api/get-audio-analysis/">
+ * Retrieve information about <a href="https://developer.spotify.com/web-api/get-audio-analysis/">
  * Audio Analysis objects</a> by building instances from this class. <br>
  * These objects contain a great amount of additional information to
  * {@link com.wrapper.spotify.model_objects.specification.AudioFeatures} objects. <br><br>
