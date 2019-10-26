@@ -12,6 +12,9 @@ import java.io.IOException;
 
 /**
  * Get Spotify catalog information about albums that match a keyword string.
+ *
+ * This class exists because it includes the undocumented property totalTracks, which is not documented in the
+ * official specification although the albums object returned by the searches API includes it.
  */
 @JsonDeserialize(builder = SearchAlbumsSpecialRequest.Builder.class)
 public class SearchAlbumsSpecialRequest extends AbstractDataRequest<Paging<AlbumSimplifiedSpecial>> {
