@@ -145,27 +145,27 @@ public class SearchResult extends AbstractModelObject implements IArtistTrackMod
       }
 
       return new SearchResult.Builder()
-              .setAlbums(
-                      hasAndNotNull(jsonObject, "albums")
-                              ? new AlbumSimplified.JsonUtil().createModelObjectPaging(
-                              jsonObject.getAsJsonObject("albums"))
-                              : null)
-              .setArtists(
-                      hasAndNotNull(jsonObject, "artists")
-                              ? new Artist.JsonUtil().createModelObjectPaging(
-                              jsonObject.getAsJsonObject("artists"))
-                              : null)
-              .setPlaylists(
-                      hasAndNotNull(jsonObject, "playlists")
-                              ? new PlaylistSimplified.JsonUtil().createModelObjectPaging(
-                              jsonObject.getAsJsonObject("playlists"))
-                              : null)
-              .setTracks(
-                      hasAndNotNull(jsonObject, "tracks")
-                              ? new Track.JsonUtil().createModelObjectPaging(
-                              jsonObject.getAsJsonObject("tracks"))
-                              : null)
-              .build();
+        .setAlbums(
+          hasAndNotNull(jsonObject, "albums")
+            ? new AlbumSimplified.JsonUtil().createModelObjectPaging(
+            jsonObject.getAsJsonObject("albums"))
+            : null)
+        .setArtists(
+          hasAndNotNull(jsonObject, "artists")
+            ? new Artist.JsonUtil().createModelObjectPaging(
+            jsonObject.getAsJsonObject("artists"))
+            : null)
+        .setPlaylists(
+          hasAndNotNull(jsonObject, "playlists")
+            ? new PlaylistSimplified.JsonUtil().createModelObjectPaging(
+            jsonObject.getAsJsonObject("playlists"))
+            : null)
+        .setTracks(
+          hasAndNotNull(jsonObject, "tracks")
+            ? new Track.JsonUtil().createModelObjectPaging(
+            jsonObject.getAsJsonObject("tracks"))
+            : null)
+        .build();
     }
   }
 

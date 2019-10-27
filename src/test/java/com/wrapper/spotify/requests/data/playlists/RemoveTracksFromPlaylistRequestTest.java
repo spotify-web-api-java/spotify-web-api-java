@@ -18,13 +18,13 @@ import static org.junit.Assert.assertEquals;
 @RunWith(MockitoJUnitRunner.class)
 public class RemoveTracksFromPlaylistRequestTest extends AbstractDataTest<SnapshotResult> {
   private final RemoveTracksFromPlaylistRequest defaultRequest = SPOTIFY_API
-          .removeTracksFromPlaylist(ID_PLAYLIST, new JsonParser()
-                  .parse("[{\"uri\":\"" + ID_TRACK + "\"},{\"uri\":\"" + ID_TRACK + "\"}]").getAsJsonArray())
-          .setHttpManager(
-                  TestUtil.MockedHttpManager.returningJson(
-                          "requests/data/playlists/RemoveTracksFromPlaylistRequest.json"))
-          .snapshotId(SNAPSHOT_ID)
-          .build();
+    .removeTracksFromPlaylist(ID_PLAYLIST, new JsonParser()
+      .parse("[{\"uri\":\"" + ID_TRACK + "\"},{\"uri\":\"" + ID_TRACK + "\"}]").getAsJsonArray())
+    .setHttpManager(
+      TestUtil.MockedHttpManager.returningJson(
+        "requests/data/playlists/RemoveTracksFromPlaylistRequest.json"))
+    .snapshotId(SNAPSHOT_ID)
+    .build();
 
   public RemoveTracksFromPlaylistRequestTest() throws Exception {
   }
@@ -33,12 +33,12 @@ public class RemoveTracksFromPlaylistRequestTest extends AbstractDataTest<Snapsh
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
     assertHasBodyParameter(
-            defaultRequest,
-            "tracks",
-            "[{\"uri\":\"" + ID_TRACK + "\"},{\"uri\":\"" + ID_TRACK + "\"}]");
+      defaultRequest,
+      "tracks",
+      "[{\"uri\":\"" + ID_TRACK + "\"},{\"uri\":\"" + ID_TRACK + "\"}]");
     assertEquals(
-            "https://api.spotify.com:443/v1/playlists/3AGOiaoRXMSjswCLtuNqv5/tracks",
-            defaultRequest.getUri().toString());
+      "https://api.spotify.com:443/v1/playlists/3AGOiaoRXMSjswCLtuNqv5/tracks",
+      defaultRequest.getUri().toString());
   }
 
   @Test
@@ -53,7 +53,7 @@ public class RemoveTracksFromPlaylistRequestTest extends AbstractDataTest<Snapsh
 
   public void shouldReturnDefault(final SnapshotResult snapshotResult) {
     assertEquals(
-            "JbtmHBDBAYu3/bt8BOXKjzKx3i0b6LCa/wVjyl6qQ2Yf6nFXkbmzuEa+ZI/U1yF+",
-            snapshotResult.getSnapshotId());
+      "JbtmHBDBAYu3/bt8BOXKjzKx3i0b6LCa/wVjyl6qQ2Yf6nFXkbmzuEa+ZI/U1yF+",
+      snapshotResult.getSnapshotId());
   }
 }

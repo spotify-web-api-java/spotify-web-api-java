@@ -191,34 +191,34 @@ public class PagingCursorbased<T> extends AbstractModelObject {
       }
 
       return new Builder<X>()
-              .setHref(
-                      hasAndNotNull(jsonObject, "href")
-                              ? jsonObject.get("href").getAsString()
-                              : null)
-              .setItems(
-                      hasAndNotNull(jsonObject, "items")
-                              ? createModelObjectArray(
-                              jsonObject.getAsJsonArray("items"), (Class<X>) ((ParameterizedType) getClass()
-                                      .getGenericSuperclass()).getActualTypeArguments()[0])
-                              : null)
-              .setLimit(
-                      hasAndNotNull(jsonObject, "limit")
-                              ? jsonObject.get("limit").getAsInt()
-                              : null)
-              .setNext(
-                      hasAndNotNull(jsonObject, "next")
-                              ? jsonObject.get("next").getAsString()
-                              : null)
-              .setCursors(
-                      hasAndNotNull(jsonObject, "cursors")
-                              ? new Cursor.JsonUtil().createModelObjectArray(
-                              jsonObject.getAsJsonArray("cursors"))
-                              : null)
-              .setTotal(
-                      hasAndNotNull(jsonObject, "total")
-                              ? jsonObject.get("total").getAsInt()
-                              : null)
-              .build();
+        .setHref(
+          hasAndNotNull(jsonObject, "href")
+            ? jsonObject.get("href").getAsString()
+            : null)
+        .setItems(
+          hasAndNotNull(jsonObject, "items")
+            ? createModelObjectArray(
+            jsonObject.getAsJsonArray("items"), (Class<X>) ((ParameterizedType) getClass()
+              .getGenericSuperclass()).getActualTypeArguments()[0])
+            : null)
+        .setLimit(
+          hasAndNotNull(jsonObject, "limit")
+            ? jsonObject.get("limit").getAsInt()
+            : null)
+        .setNext(
+          hasAndNotNull(jsonObject, "next")
+            ? jsonObject.get("next").getAsString()
+            : null)
+        .setCursors(
+          hasAndNotNull(jsonObject, "cursors")
+            ? new Cursor.JsonUtil().createModelObjectArray(
+            jsonObject.getAsJsonArray("cursors"))
+            : null)
+        .setTotal(
+          hasAndNotNull(jsonObject, "total")
+            ? jsonObject.get("total").getAsInt()
+            : null)
+        .build();
     }
   }
 }

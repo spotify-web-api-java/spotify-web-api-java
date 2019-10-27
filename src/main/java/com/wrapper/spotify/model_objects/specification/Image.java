@@ -112,19 +112,19 @@ public class Image extends AbstractModelObject {
       }
 
       return new Image.Builder()
-              .setHeight(
-                      hasAndNotNull(jsonObject, "height")
-                              ? jsonObject.get("height").getAsInt()
-                              : null)
-              .setUrl(
-                      hasAndNotNull(jsonObject, "url")
-                              ? jsonObject.get("url").getAsString()
-                              : null)
-              .setWidth(
-                      hasAndNotNull(jsonObject, "width")
-                              ? jsonObject.get("width").getAsInt()
-                              : null)
-              .build();
+        .setHeight(
+          hasAndNotNull(jsonObject, "height")
+            ? jsonObject.get("height").getAsInt()
+            : null)
+        .setUrl(
+          hasAndNotNull(jsonObject, "url")
+            ? jsonObject.get("url").getAsString()
+            : null)
+        .setWidth(
+          hasAndNotNull(jsonObject, "width")
+            ? jsonObject.get("width").getAsInt()
+            : null)
+        .build();
     }
   }
 }

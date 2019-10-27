@@ -229,42 +229,42 @@ public class CurrentlyPlayingContext extends AbstractModelObject {
       }
 
       return new Builder()
-              .setDevice(
-                      hasAndNotNull(jsonObject, "device")
-                              ? new Device.JsonUtil().createModelObject(
-                              jsonObject.getAsJsonObject("device"))
-                              : null)
-              .setRepeat_state(
-                      hasAndNotNull(jsonObject, "repeat_state")
-                              ? jsonObject.get("repeat_state").getAsString()
-                              : null)
-              .setShuffle_state(
-                      hasAndNotNull(jsonObject, "shuffle_state")
-                              ? jsonObject.get("shuffle_state").getAsBoolean()
-                              : null)
-              .setContext(
-                      hasAndNotNull(jsonObject, "context")
-                              ? new Context.JsonUtil().createModelObject(
-                              jsonObject.getAsJsonObject("context"))
-                              : null)
-              .setTimestamp(
-                      hasAndNotNull(jsonObject, "timestamp")
-                              ? jsonObject.get("timestamp").getAsLong()
-                              : null)
-              .setProgress_ms(
-                      hasAndNotNull(jsonObject, "progress_ms")
-                              ? jsonObject.get("progress_ms").getAsInt()
-                              : null)
-              .setIs_playing(
-                      hasAndNotNull(jsonObject, "is_playing")
-                              ? jsonObject.get("is_playing").getAsBoolean()
-                              : null)
-              .setItem(
-                      hasAndNotNull(jsonObject, "item")
-                              ? new Track.JsonUtil().createModelObject(
-                              jsonObject.getAsJsonObject("item"))
-                              : null)
-              .build();
+        .setDevice(
+          hasAndNotNull(jsonObject, "device")
+            ? new Device.JsonUtil().createModelObject(
+            jsonObject.getAsJsonObject("device"))
+            : null)
+        .setRepeat_state(
+          hasAndNotNull(jsonObject, "repeat_state")
+            ? jsonObject.get("repeat_state").getAsString()
+            : null)
+        .setShuffle_state(
+          hasAndNotNull(jsonObject, "shuffle_state")
+            ? jsonObject.get("shuffle_state").getAsBoolean()
+            : null)
+        .setContext(
+          hasAndNotNull(jsonObject, "context")
+            ? new Context.JsonUtil().createModelObject(
+            jsonObject.getAsJsonObject("context"))
+            : null)
+        .setTimestamp(
+          hasAndNotNull(jsonObject, "timestamp")
+            ? jsonObject.get("timestamp").getAsLong()
+            : null)
+        .setProgress_ms(
+          hasAndNotNull(jsonObject, "progress_ms")
+            ? jsonObject.get("progress_ms").getAsInt()
+            : null)
+        .setIs_playing(
+          hasAndNotNull(jsonObject, "is_playing")
+            ? jsonObject.get("is_playing").getAsBoolean()
+            : null)
+        .setItem(
+          hasAndNotNull(jsonObject, "item")
+            ? new Track.JsonUtil().createModelObject(
+            jsonObject.getAsJsonObject("item"))
+            : null)
+        .build();
     }
   }
 }

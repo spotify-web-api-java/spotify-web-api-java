@@ -16,12 +16,12 @@ import static org.junit.Assert.assertEquals;
 @RunWith(MockitoJUnitRunner.class)
 public class GetSeveralTracksRequestTest extends AbstractDataTest<Track[]> {
   private final GetSeveralTracksRequest defaultRequest = SPOTIFY_API
-          .getSeveralTracks(ID_TRACK)
-          .setHttpManager(
-                  TestUtil.MockedHttpManager.returningJson(
-                          "requests/data/tracks/GetSeveralTracksRequest.json"))
-          .market(MARKET)
-          .build();
+    .getSeveralTracks(ID_TRACK)
+    .setHttpManager(
+      TestUtil.MockedHttpManager.returningJson(
+        "requests/data/tracks/GetSeveralTracksRequest.json"))
+    .market(MARKET)
+    .build();
 
   public GetSeveralTracksRequestTest() throws Exception {
   }
@@ -30,8 +30,8 @@ public class GetSeveralTracksRequestTest extends AbstractDataTest<Track[]> {
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
     assertEquals(
-            "https://api.spotify.com:443/v1/tracks?ids=01iyCAUm8EvOFqVWYJ3dVX&market=SE",
-            defaultRequest.getUri().toString());
+      "https://api.spotify.com:443/v1/tracks?ids=01iyCAUm8EvOFqVWYJ3dVX&market=SE",
+      defaultRequest.getUri().toString());
   }
 
   @Test
@@ -46,7 +46,7 @@ public class GetSeveralTracksRequestTest extends AbstractDataTest<Track[]> {
 
   public void shouldReturnDefault(final Track[] tracks) {
     assertEquals(
-            2,
-            tracks.length);
+      2,
+      tracks.length);
   }
 }

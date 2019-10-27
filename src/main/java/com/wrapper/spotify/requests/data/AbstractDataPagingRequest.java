@@ -8,8 +8,8 @@ public abstract class AbstractDataPagingRequest<T> extends AbstractDataRequest<T
   }
 
   public static abstract class Builder<T, BT extends Builder<T, ?>>
-          extends AbstractDataRequest.Builder<Paging<T>, BT>
-          implements IPagingRequestBuilder<T, BT> {
+    extends AbstractDataRequest.Builder<Paging<T>, BT>
+    implements IPagingRequestBuilder<T, BT> {
     protected Builder(String accessToken) {
       super(accessToken);
 

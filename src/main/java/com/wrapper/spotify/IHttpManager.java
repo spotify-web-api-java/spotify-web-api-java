@@ -22,8 +22,8 @@ public interface IHttpManager {
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
    */
   String get(URI uri, Header[] headers) throws
-          IOException,
-          SpotifyWebApiException;
+    IOException,
+    SpotifyWebApiException;
 
   /**
    * Perform an HTTP POST request to the specified URL.
@@ -36,8 +36,8 @@ public interface IHttpManager {
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
    */
   String post(URI uri, Header[] headers, HttpEntity body) throws
-          IOException,
-          SpotifyWebApiException;
+    IOException,
+    SpotifyWebApiException;
 
   /**
    * Perform an HTTP PUT request to the specified URL.
@@ -50,8 +50,8 @@ public interface IHttpManager {
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
    */
   String put(URI uri, Header[] headers, HttpEntity body) throws
-          IOException,
-          SpotifyWebApiException;
+    IOException,
+    SpotifyWebApiException;
 
   /**
    * Perform an HTTP DELETE request to the specified URL.
@@ -64,7 +64,7 @@ public interface IHttpManager {
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
    */
   String delete(URI uri, Header[] headers, HttpEntity body) throws
-          IOException,
-          SpotifyWebApiException;
+    IOException,
+    SpotifyWebApiException;
 
 }

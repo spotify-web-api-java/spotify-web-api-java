@@ -19,13 +19,13 @@ import static org.junit.Assert.assertNull;
 @RunWith(MockitoJUnitRunner.class)
 public class TransferUsersPlaybackRequestTest extends AbstractDataTest<String> {
   private final TransferUsersPlaybackRequest defaultRequest = SPOTIFY_API
-          .transferUsersPlayback(new JsonParser()
-                  .parse("[\"" + DEVICE_ID + "\"]").getAsJsonArray())
-          .setHttpManager(
-                  TestUtil.MockedHttpManager.returningJson(
-                          "requests/data/player/TransferUsersPlaybackRequest.json"))
-          .play(PLAY)
-          .build();
+    .transferUsersPlayback(new JsonParser()
+      .parse("[\"" + DEVICE_ID + "\"]").getAsJsonArray())
+    .setHttpManager(
+      TestUtil.MockedHttpManager.returningJson(
+        "requests/data/player/TransferUsersPlaybackRequest.json"))
+    .play(PLAY)
+    .build();
 
   public TransferUsersPlaybackRequestTest() throws Exception {
   }
@@ -35,16 +35,16 @@ public class TransferUsersPlaybackRequestTest extends AbstractDataTest<String> {
     assertHasAuthorizationHeader(defaultRequest);
     assertHasHeader(defaultRequest, "Content-Type", "application/json");
     assertHasBodyParameter(
-            defaultRequest,
-            "device_ids",
-            "[\"" + DEVICE_ID + "\"]");
+      defaultRequest,
+      "device_ids",
+      "[\"" + DEVICE_ID + "\"]");
     assertHasBodyParameter(
-            defaultRequest,
-            "play",
-            PLAY);
+      defaultRequest,
+      "play",
+      PLAY);
     assertEquals(
-            "https://api.spotify.com:443/v1/me/player",
-            defaultRequest.getUri().toString());
+      "https://api.spotify.com:443/v1/me/player",
+      defaultRequest.getUri().toString());
   }
 
   @Test
@@ -59,6 +59,6 @@ public class TransferUsersPlaybackRequestTest extends AbstractDataTest<String> {
 
   public void shouldReturnDefault(final String string) {
     assertNull(
-            string);
+      string);
   }
 }

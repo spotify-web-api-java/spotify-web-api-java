@@ -78,16 +78,16 @@ public class PlaylistTrackPosition extends AbstractModelObject {
       }
 
       return new PlaylistTrackPosition.Builder()
-              .setPositions(
-                      hasAndNotNull(jsonObject, "positions")
-                              ? new Gson().fromJson(
-                              jsonObject.getAsJsonArray("positions"), int[].class)
-                              : null)
-              .setUri(
-                      hasAndNotNull(jsonObject, "uri")
-                              ? jsonObject.get("uri").getAsString()
-                              : null)
-              .build();
+        .setPositions(
+          hasAndNotNull(jsonObject, "positions")
+            ? new Gson().fromJson(
+            jsonObject.getAsJsonArray("positions"), int[].class)
+            : null)
+        .setUri(
+          hasAndNotNull(jsonObject, "uri")
+            ? jsonObject.get("uri").getAsString()
+            : null)
+        .build();
     }
   }
 }

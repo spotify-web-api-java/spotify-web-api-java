@@ -18,11 +18,11 @@ import static org.junit.Assert.assertNull;
 @RunWith(MockitoJUnitRunner.class)
 public class FollowPlaylistRequestTest extends AbstractDataTest<String> {
   private final FollowPlaylistRequest defaultRequest = SPOTIFY_API
-          .followPlaylist(ID_PLAYLIST, PUBLIC)
-          .setHttpManager(
-                  TestUtil.MockedHttpManager.returningJson(
-                          "requests/data/follow/FollowPlaylistRequestTest.json"))
-          .build();
+    .followPlaylist(ID_PLAYLIST, PUBLIC)
+    .setHttpManager(
+      TestUtil.MockedHttpManager.returningJson(
+        "requests/data/follow/FollowPlaylistRequestTest.json"))
+    .build();
 
   public FollowPlaylistRequestTest() throws Exception {
   }
@@ -32,12 +32,12 @@ public class FollowPlaylistRequestTest extends AbstractDataTest<String> {
     assertHasAuthorizationHeader(defaultRequest);
     assertHasHeader(defaultRequest, "Content-Type", "application/json");
     assertHasBodyParameter(
-            defaultRequest,
-            "public",
-            PUBLIC);
+      defaultRequest,
+      "public",
+      PUBLIC);
     assertEquals(
-            "https://api.spotify.com:443/v1/playlists/3AGOiaoRXMSjswCLtuNqv5/followers",
-            defaultRequest.getUri().toString());
+      "https://api.spotify.com:443/v1/playlists/3AGOiaoRXMSjswCLtuNqv5/followers",
+      defaultRequest.getUri().toString());
   }
 
   @Test
@@ -52,6 +52,6 @@ public class FollowPlaylistRequestTest extends AbstractDataTest<String> {
 
   public void shouldReturnDefault(final String string) {
     assertNull(
-            string);
+      string);
   }
 }

@@ -33,8 +33,8 @@ public class SearchPlaylistsRequest extends AbstractDataRequest<Paging<PlaylistS
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
    */
   public Paging<PlaylistSimplified> execute() throws
-          IOException,
-          SpotifyWebApiException {
+    IOException,
+    SpotifyWebApiException {
     return new PlaylistSimplified.JsonUtil().createModelObjectPaging(getJson(), "playlists");
   }
 

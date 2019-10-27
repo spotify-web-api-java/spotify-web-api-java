@@ -519,91 +519,91 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
       }
 
       return new Track.Builder()
-              .setAlbum(
-                      hasAndNotNull(jsonObject, "album")
-                              ? new AlbumSimplified.JsonUtil().createModelObject(
-                              jsonObject.getAsJsonObject("album"))
-                              : null)
-              .setArtists(
-                      hasAndNotNull(jsonObject, "artists")
-                              ? new ArtistSimplified.JsonUtil().createModelObjectArray(
-                              jsonObject.getAsJsonArray("artists"))
-                              : null)
-              .setAvailableMarkets(
-                      hasAndNotNull(jsonObject, "available_markets")
-                              ? new Gson().fromJson(
-                              jsonObject.getAsJsonArray("available_markets"), CountryCode[].class)
-                              : null)
-              .setDiscNumber(
-                      hasAndNotNull(jsonObject, "disc_number")
-                              ? jsonObject.get("disc_number").getAsInt()
-                              : null)
-              .setDurationMs(
-                      hasAndNotNull(jsonObject, "duration_ms")
-                              ? jsonObject.get("duration_ms").getAsInt()
-                              : null)
-              .setExplicit(
-                      hasAndNotNull(jsonObject, "explicit")
-                              ? jsonObject.get("explicit").getAsBoolean()
-                              : null)
-              .setExternalIds(
-                      hasAndNotNull(jsonObject, "external_ids")
-                              ? new ExternalId.JsonUtil().createModelObject(
-                              jsonObject.getAsJsonObject("external_ids"))
-                              : null)
-              .setExternalUrls(
-                      hasAndNotNull(jsonObject, "external_urls")
-                              ? new ExternalUrl.JsonUtil().createModelObject(
-                              jsonObject.getAsJsonObject("external_urls"))
-                              : null)
-              .setHref(
-                      hasAndNotNull(jsonObject, "href")
-                              ? jsonObject.get("href").getAsString()
-                              : null)
-              .setId(
-                      hasAndNotNull(jsonObject, "id")
-                              ? jsonObject.get("id").getAsString()
-                              : null)
-              .setIsPlayable(
-                      hasAndNotNull(jsonObject, "is_playable")
-                              ? jsonObject.get("is_playable").getAsBoolean()
-                              : null)
-              .setLinkedFrom(
-                      hasAndNotNull(jsonObject, "linked_from")
-                              ? new TrackLink.JsonUtil().createModelObject(
-                              jsonObject.get("linked_from").getAsJsonObject())
-                              : null)
-              .setRestrictions(
-                      hasAndNotNull(jsonObject, "restrictions")
-                              ? new Restrictions.JsonUtil().createModelObject(
-                              jsonObject.get("restrictions").getAsJsonObject())
-                              : null)
-              .setName(
-                      hasAndNotNull(jsonObject, "name")
-                              ? jsonObject.get("name").getAsString()
-                              : null)
-              .setPopularity(
-                      hasAndNotNull(jsonObject, "popularity")
-                              ? jsonObject.get("popularity").getAsInt()
-                              : null)
-              .setPreviewUrl(
-                      hasAndNotNull(jsonObject, "preview_url")
-                              ? jsonObject.get("preview_url").getAsString()
-                              : null)
-              .setTrackNumber(
-                      hasAndNotNull(jsonObject, "track_number")
-                              ? jsonObject.get("track_number").getAsInt()
-                              : null)
-              .setType(
-                      hasAndNotNull(jsonObject, "type")
-                              ? ModelObjectType.keyOf(
-                              jsonObject.get("type").getAsString().toLowerCase())
-                              : null)
-              .setUri(
-                      hasAndNotNull(jsonObject, "uri")
-                              ? jsonObject.get("uri").getAsString()
-                              : null)
-              .build();
+        .setAlbum(
+          hasAndNotNull(jsonObject, "album")
+            ? new AlbumSimplified.JsonUtil().createModelObject(
+            jsonObject.getAsJsonObject("album"))
+            : null)
+        .setArtists(
+          hasAndNotNull(jsonObject, "artists")
+            ? new ArtistSimplified.JsonUtil().createModelObjectArray(
+            jsonObject.getAsJsonArray("artists"))
+            : null)
+        .setAvailableMarkets(
+          hasAndNotNull(jsonObject, "available_markets")
+            ? new Gson().fromJson(
+            jsonObject.getAsJsonArray("available_markets"), CountryCode[].class)
+            : null)
+        .setDiscNumber(
+          hasAndNotNull(jsonObject, "disc_number")
+            ? jsonObject.get("disc_number").getAsInt()
+            : null)
+        .setDurationMs(
+          hasAndNotNull(jsonObject, "duration_ms")
+            ? jsonObject.get("duration_ms").getAsInt()
+            : null)
+        .setExplicit(
+          hasAndNotNull(jsonObject, "explicit")
+            ? jsonObject.get("explicit").getAsBoolean()
+            : null)
+        .setExternalIds(
+          hasAndNotNull(jsonObject, "external_ids")
+            ? new ExternalId.JsonUtil().createModelObject(
+            jsonObject.getAsJsonObject("external_ids"))
+            : null)
+        .setExternalUrls(
+          hasAndNotNull(jsonObject, "external_urls")
+            ? new ExternalUrl.JsonUtil().createModelObject(
+            jsonObject.getAsJsonObject("external_urls"))
+            : null)
+        .setHref(
+          hasAndNotNull(jsonObject, "href")
+            ? jsonObject.get("href").getAsString()
+            : null)
+        .setId(
+          hasAndNotNull(jsonObject, "id")
+            ? jsonObject.get("id").getAsString()
+            : null)
+        .setIsPlayable(
+          hasAndNotNull(jsonObject, "is_playable")
+            ? jsonObject.get("is_playable").getAsBoolean()
+            : null)
+        .setLinkedFrom(
+          hasAndNotNull(jsonObject, "linked_from")
+            ? new TrackLink.JsonUtil().createModelObject(
+            jsonObject.get("linked_from").getAsJsonObject())
+            : null)
+        .setRestrictions(
+          hasAndNotNull(jsonObject, "restrictions")
+            ? new Restrictions.JsonUtil().createModelObject(
+            jsonObject.get("restrictions").getAsJsonObject())
+            : null)
+        .setName(
+          hasAndNotNull(jsonObject, "name")
+            ? jsonObject.get("name").getAsString()
+            : null)
+        .setPopularity(
+          hasAndNotNull(jsonObject, "popularity")
+            ? jsonObject.get("popularity").getAsInt()
+            : null)
+        .setPreviewUrl(
+          hasAndNotNull(jsonObject, "preview_url")
+            ? jsonObject.get("preview_url").getAsString()
+            : null)
+        .setTrackNumber(
+          hasAndNotNull(jsonObject, "track_number")
+            ? jsonObject.get("track_number").getAsInt()
+            : null)
+        .setType(
+          hasAndNotNull(jsonObject, "type")
+            ? ModelObjectType.keyOf(
+            jsonObject.get("type").getAsString().toLowerCase())
+            : null)
+        .setUri(
+          hasAndNotNull(jsonObject, "uri")
+            ? jsonObject.get("uri").getAsString()
+            : null)
+        .build();
     }
   }
 }

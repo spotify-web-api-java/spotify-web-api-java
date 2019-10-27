@@ -17,14 +17,14 @@ import static org.junit.Assert.*;
 @RunWith(MockitoJUnitRunner.class)
 public class SearchItemRequestTest extends AbstractDataTest<SearchResult> {
   private final SearchItemRequest defaultRequest = SPOTIFY_API
-          .searchItem(Q, ModelObjectType.ARTIST.getType())
-          .setHttpManager(
-                  TestUtil.MockedHttpManager.returningJson(
-                          "requests/data/search/SearchItemRequest.json"))
-          .limit(LIMIT)
-          .market(MARKET)
-          .offset(OFFSET)
-          .build();
+    .searchItem(Q, ModelObjectType.ARTIST.getType())
+    .setHttpManager(
+      TestUtil.MockedHttpManager.returningJson(
+        "requests/data/search/SearchItemRequest.json"))
+    .limit(LIMIT)
+    .market(MARKET)
+    .offset(OFFSET)
+    .build();
 
   public SearchItemRequestTest() throws Exception {
   }
@@ -33,8 +33,8 @@ public class SearchItemRequestTest extends AbstractDataTest<SearchResult> {
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
     assertEquals(
-            "https://api.spotify.com:443/v1/search?q=Abba&type=artist&limit=10&market=SE&offset=0",
-            defaultRequest.getUri().toString());
+      "https://api.spotify.com:443/v1/search?q=Abba&type=artist&limit=10&market=SE&offset=0",
+      defaultRequest.getUri().toString());
   }
 
   @Test
@@ -49,12 +49,12 @@ public class SearchItemRequestTest extends AbstractDataTest<SearchResult> {
 
   public void shouldReturnDefault(final SearchResult searchResult) {
     assertNull(
-            searchResult.getAlbums());
+      searchResult.getAlbums());
     assertNotNull(
-            searchResult.getArtists());
+      searchResult.getArtists());
     assertNull(
-            searchResult.getPlaylists());
+      searchResult.getPlaylists());
     assertNotNull(
-            searchResult.getTracks());
+      searchResult.getTracks());
   }
 }

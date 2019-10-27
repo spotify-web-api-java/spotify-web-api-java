@@ -18,13 +18,13 @@ import static org.junit.Assert.assertNull;
 @RunWith(MockitoJUnitRunner.class)
 public class GetUsersTopTracksRequestTest extends AbstractDataTest<Paging<Track>> {
   private final GetUsersTopTracksRequest defaultRequest = SPOTIFY_API.getUsersTopTracks()
-          .setHttpManager(
-                  TestUtil.MockedHttpManager.returningJson(
-                          "requests/data/personalization/simplified/GetUsersTopTracksRequest.json"))
-          .limit(LIMIT)
-          .offset(OFFSET)
-          .time_range(TIME_RANGE)
-          .build();
+    .setHttpManager(
+      TestUtil.MockedHttpManager.returningJson(
+        "requests/data/personalization/simplified/GetUsersTopTracksRequest.json"))
+    .limit(LIMIT)
+    .offset(OFFSET)
+    .time_range(TIME_RANGE)
+    .build();
 
   public GetUsersTopTracksRequestTest() throws Exception {
   }
@@ -33,8 +33,8 @@ public class GetUsersTopTracksRequestTest extends AbstractDataTest<Paging<Track>
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
     assertEquals(
-            "https://api.spotify.com:443/v1/me/top/tracks?limit=10&offset=0&time_range=medium_term",
-            defaultRequest.getUri().toString());
+      "https://api.spotify.com:443/v1/me/top/tracks?limit=10&offset=0&time_range=medium_term",
+      defaultRequest.getUri().toString());
   }
 
   @Test
@@ -49,24 +49,24 @@ public class GetUsersTopTracksRequestTest extends AbstractDataTest<Paging<Track>
 
   public void shouldReturnDefault(final Paging<Track> trackPaging) {
     assertEquals(
-            "https://api.spotify.com/v1/me/top/tracks?limit=10&offset=5",
-            trackPaging.getHref());
+      "https://api.spotify.com/v1/me/top/tracks?limit=10&offset=5",
+      trackPaging.getHref());
     assertEquals(
-            10,
-            trackPaging.getItems().length);
+      10,
+      trackPaging.getItems().length);
     assertEquals(
-            10,
-            (int) trackPaging.getLimit());
+      10,
+      (int) trackPaging.getLimit());
     assertEquals(
-            "https://api.spotify.com/v1/me/top/tracks?limit=10&offset=15",
-            trackPaging.getNext());
+      "https://api.spotify.com/v1/me/top/tracks?limit=10&offset=15",
+      trackPaging.getNext());
     assertEquals(
-            5,
-            (int) trackPaging.getOffset());
+      5,
+      (int) trackPaging.getOffset());
     assertNull(
-            trackPaging.getPrevious());
+      trackPaging.getPrevious());
     assertEquals(
-            50,
-            (int) trackPaging.getTotal());
+      50,
+      (int) trackPaging.getTotal());
   }
 }

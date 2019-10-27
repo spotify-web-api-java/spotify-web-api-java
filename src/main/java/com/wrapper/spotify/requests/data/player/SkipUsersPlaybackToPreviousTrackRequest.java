@@ -34,8 +34,8 @@ public class SkipUsersPlaybackToPreviousTrackRequest extends AbstractDataRequest
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
    */
   public String execute() throws
-          IOException,
-          SpotifyWebApiException {
+    IOException,
+    SpotifyWebApiException {
     return postJson();
   }
 

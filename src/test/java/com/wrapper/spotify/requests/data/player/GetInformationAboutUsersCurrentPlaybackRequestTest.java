@@ -16,20 +16,20 @@ import static org.junit.Assert.*;
 @RunWith(MockitoJUnitRunner.class)
 public class GetInformationAboutUsersCurrentPlaybackRequestTest extends AbstractDataTest<CurrentlyPlayingContext> {
   private final GetInformationAboutUsersCurrentPlaybackRequest defaultRequest = SPOTIFY_API
-          .getInformationAboutUsersCurrentPlayback()
-          .setHttpManager(
-                  TestUtil.MockedHttpManager.returningJson(
-                          "requests/data/player/GetInformationAboutUsersCurrentPlaybackRequest.json"))
-          .market(MARKET)
-          .build();
+    .getInformationAboutUsersCurrentPlayback()
+    .setHttpManager(
+      TestUtil.MockedHttpManager.returningJson(
+        "requests/data/player/GetInformationAboutUsersCurrentPlaybackRequest.json"))
+    .market(MARKET)
+    .build();
 
   private final GetInformationAboutUsersCurrentPlaybackRequest emptyRequest = SPOTIFY_API
-          .getInformationAboutUsersCurrentPlayback()
-          .setHttpManager(
-                  TestUtil.MockedHttpManager.returningJson(
-                          "requests/data/player/GetInformationAboutUsersCurrentPlaybackRequest_None.json"))
-          .market(MARKET)
-          .build();
+    .getInformationAboutUsersCurrentPlayback()
+    .setHttpManager(
+      TestUtil.MockedHttpManager.returningJson(
+        "requests/data/player/GetInformationAboutUsersCurrentPlaybackRequest_None.json"))
+    .market(MARKET)
+    .build();
 
   public GetInformationAboutUsersCurrentPlaybackRequestTest() throws Exception {
   }
@@ -38,8 +38,8 @@ public class GetInformationAboutUsersCurrentPlaybackRequestTest extends Abstract
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
     assertEquals(
-            "https://api.spotify.com:443/v1/me/player?market=SE",
-            defaultRequest.getUri().toString());
+      "https://api.spotify.com:443/v1/me/player?market=SE",
+      defaultRequest.getUri().toString());
   }
 
   @Test
@@ -54,24 +54,24 @@ public class GetInformationAboutUsersCurrentPlaybackRequestTest extends Abstract
 
   public void shouldReturnDefault(final CurrentlyPlayingContext currentlyPlayingContext) {
     assertNotNull(
-            currentlyPlayingContext.getDevice());
+      currentlyPlayingContext.getDevice());
     assertEquals(
-            "off",
-            currentlyPlayingContext.getRepeat_state());
+      "off",
+      currentlyPlayingContext.getRepeat_state());
     assertFalse(
-            currentlyPlayingContext.getShuffle_state());
+      currentlyPlayingContext.getShuffle_state());
     assertNull(
-            currentlyPlayingContext.getContext());
+      currentlyPlayingContext.getContext());
     assertEquals(
-            1516669848357L,
-            (long) currentlyPlayingContext.getTimestamp());
+      1516669848357L,
+      (long) currentlyPlayingContext.getTimestamp());
     assertEquals(
-            69937,
-            (int) currentlyPlayingContext.getProgress_ms());
+      69937,
+      (int) currentlyPlayingContext.getProgress_ms());
     assertTrue(
-            currentlyPlayingContext.getIs_playing());
+      currentlyPlayingContext.getIs_playing());
     assertNotNull(
-            currentlyPlayingContext.getItem());
+      currentlyPlayingContext.getItem());
   }
 
   @Test
@@ -86,6 +86,6 @@ public class GetInformationAboutUsersCurrentPlaybackRequestTest extends Abstract
 
   public void shouldReturnEmpty(final CurrentlyPlayingContext currentlyPlayingContext) {
     assertNull(
-            currentlyPlayingContext);
+      currentlyPlayingContext);
   }
 }

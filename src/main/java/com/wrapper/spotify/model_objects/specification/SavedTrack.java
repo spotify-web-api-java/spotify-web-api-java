@@ -94,16 +94,16 @@ public class SavedTrack extends AbstractModelObject {
 
       try {
         return new Builder()
-                .setAddedAt(
-                        hasAndNotNull(jsonObject, "added_at")
-                                ? SpotifyApi.parseDefaultDate(jsonObject.get("added_at").getAsString())
-                                : null)
-                .setTrack(
-                        hasAndNotNull(jsonObject, "track")
-                                ? new Track.JsonUtil().createModelObject(
-                                jsonObject.getAsJsonObject("track"))
-                                : null)
-                .build();
+          .setAddedAt(
+            hasAndNotNull(jsonObject, "added_at")
+              ? SpotifyApi.parseDefaultDate(jsonObject.get("added_at").getAsString())
+              : null)
+          .setTrack(
+            hasAndNotNull(jsonObject, "track")
+              ? new Track.JsonUtil().createModelObject(
+              jsonObject.getAsJsonObject("track"))
+              : null)
+          .build();
       } catch (ParseException e) {
         SpotifyApi.LOGGER.log(Level.SEVERE, e.getMessage());
         return null;

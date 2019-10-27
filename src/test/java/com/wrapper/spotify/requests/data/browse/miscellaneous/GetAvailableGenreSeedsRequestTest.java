@@ -15,10 +15,10 @@ import static org.junit.Assert.assertEquals;
 @RunWith(MockitoJUnitRunner.class)
 public class GetAvailableGenreSeedsRequestTest extends AbstractDataTest<String[]> {
   private final GetAvailableGenreSeedsRequest defaultRequest = SPOTIFY_API.getAvailableGenreSeeds()
-          .setHttpManager(
-                  TestUtil.MockedHttpManager.returningJson(
-                          "requests/data/browse/miscellaneous/GetAvailableGenreSeedsRequest.json"))
-          .build();
+    .setHttpManager(
+      TestUtil.MockedHttpManager.returningJson(
+        "requests/data/browse/miscellaneous/GetAvailableGenreSeedsRequest.json"))
+    .build();
 
   public GetAvailableGenreSeedsRequestTest() throws Exception {
   }
@@ -27,8 +27,8 @@ public class GetAvailableGenreSeedsRequestTest extends AbstractDataTest<String[]
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
     assertEquals(
-            "https://api.spotify.com:443/v1/recommendations/available-genre-seeds",
-            defaultRequest.getUri().toString());
+      "https://api.spotify.com:443/v1/recommendations/available-genre-seeds",
+      defaultRequest.getUri().toString());
   }
 
   @Test
@@ -43,7 +43,7 @@ public class GetAvailableGenreSeedsRequestTest extends AbstractDataTest<String[]
 
   public void shouldReturnDefault(final String[] strings) {
     assertEquals(
-            126,
-            strings.length);
+      126,
+      strings.length);
   }
 }

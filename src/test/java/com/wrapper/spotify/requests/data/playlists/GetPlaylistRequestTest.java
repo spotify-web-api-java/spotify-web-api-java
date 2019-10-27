@@ -17,13 +17,13 @@ import static org.junit.Assert.*;
 @RunWith(MockitoJUnitRunner.class)
 public class GetPlaylistRequestTest extends AbstractDataTest<Playlist> {
   private final GetPlaylistRequest defaultRequest = SPOTIFY_API
-          .getPlaylist(ID_PLAYLIST)
-          .setHttpManager(
-                  TestUtil.MockedHttpManager.returningJson(
-                          "requests/data/playlists/GetPlaylistRequest.json"))
-          .fields(FIELDS)
-          .market(MARKET)
-          .build();
+    .getPlaylist(ID_PLAYLIST)
+    .setHttpManager(
+      TestUtil.MockedHttpManager.returningJson(
+        "requests/data/playlists/GetPlaylistRequest.json"))
+    .fields(FIELDS)
+    .market(MARKET)
+    .build();
 
   public GetPlaylistRequestTest() throws Exception {
   }
@@ -32,8 +32,8 @@ public class GetPlaylistRequestTest extends AbstractDataTest<Playlist> {
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
     assertEquals(
-            "https://api.spotify.com:443/v1/playlists/3AGOiaoRXMSjswCLtuNqv5?fields=description&market=SE",
-            defaultRequest.getUri().toString());
+      "https://api.spotify.com:443/v1/playlists/3AGOiaoRXMSjswCLtuNqv5?fields=description&market=SE",
+      defaultRequest.getUri().toString());
   }
 
   @Test
@@ -48,40 +48,40 @@ public class GetPlaylistRequestTest extends AbstractDataTest<Playlist> {
 
   public void shouldReturnDefault(final Playlist playlist) {
     assertFalse(
-            playlist.getIsCollaborative());
+      playlist.getIsCollaborative());
     assertEquals(
-            "Having friends over for dinner? Here´s the perfect playlist.",
-            playlist.getDescription());
+      "Having friends over for dinner? Here´s the perfect playlist.",
+      playlist.getDescription());
     assertNotNull(
-            playlist.getExternalUrls());
+      playlist.getExternalUrls());
     assertNotNull(
-            playlist.getFollowers());
+      playlist.getFollowers());
     assertEquals(
-            "https://api.spotify.com/v1/users/spotify/playlists/59ZbFPES4DQwEjBpWHzrtC",
-            playlist.getHref());
+      "https://api.spotify.com/v1/users/spotify/playlists/59ZbFPES4DQwEjBpWHzrtC",
+      playlist.getHref());
     assertEquals(
-            "59ZbFPES4DQwEjBpWHzrtC",
-            playlist.getId());
+      "59ZbFPES4DQwEjBpWHzrtC",
+      playlist.getId());
     assertEquals(
-            1,
-            playlist.getImages().length);
+      1,
+      playlist.getImages().length);
     assertEquals(
-            "Dinner with Friends",
-            playlist.getName());
+      "Dinner with Friends",
+      playlist.getName());
     assertNotNull(
-            playlist.getOwner());
+      playlist.getOwner());
     assertNull(
-            playlist.getIsPublicAccess());
+      playlist.getIsPublicAccess());
     assertEquals(
-            "bNLWdmhh+HDsbHzhckXeDC0uyKyg4FjPI/KEsKjAE526usnz2LxwgyBoMShVL+z+",
-            playlist.getSnapshotId());
+      "bNLWdmhh+HDsbHzhckXeDC0uyKyg4FjPI/KEsKjAE526usnz2LxwgyBoMShVL+z+",
+      playlist.getSnapshotId());
     assertNotNull(
-            playlist.getTracks());
+      playlist.getTracks());
     assertEquals(
-            ModelObjectType.PLAYLIST,
-            playlist.getType());
+      ModelObjectType.PLAYLIST,
+      playlist.getType());
     assertEquals(
-            "spotify:user:spotify:playlist:59ZbFPES4DQwEjBpWHzrtC",
-            playlist.getUri());
+      "spotify:user:spotify:playlist:59ZbFPES4DQwEjBpWHzrtC",
+      playlist.getUri());
   }
 }

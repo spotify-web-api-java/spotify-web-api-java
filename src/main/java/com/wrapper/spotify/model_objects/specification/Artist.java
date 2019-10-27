@@ -281,52 +281,52 @@ public class Artist extends AbstractModelObject implements IArtistTrackModelObje
       }
 
       return new Artist.Builder()
-              .setExternalUrls(
-                      hasAndNotNull(jsonObject, "external_urls")
-                              ? new ExternalUrl.JsonUtil().createModelObject(
-                              jsonObject.getAsJsonObject("external_urls"))
-                              : null)
-              .setFollowers(
-                      hasAndNotNull(jsonObject, "followers")
-                              ? new Followers.JsonUtil().createModelObject(
-                              jsonObject.getAsJsonObject("followers"))
-                              : null)
-              .setGenres(
-                      hasAndNotNull(jsonObject, "genres")
-                              ? new Gson().fromJson(
-                              jsonObject.getAsJsonArray("genres"), String[].class)
-                              : null)
-              .setHref(
-                      hasAndNotNull(jsonObject, "href")
-                              ? jsonObject.get("href").getAsString()
-                              : null)
-              .setId(
-                      hasAndNotNull(jsonObject, "id")
-                              ? jsonObject.get("id").getAsString()
-                              : null)
-              .setImages(
-                      hasAndNotNull(jsonObject, "images")
-                              ? new Image.JsonUtil().createModelObjectArray(
-                              jsonObject.getAsJsonArray("images"))
-                              : null)
-              .setName(
-                      hasAndNotNull(jsonObject, "name")
-                              ? jsonObject.get("name").getAsString()
-                              : null)
-              .setPopularity(
-                      hasAndNotNull(jsonObject, "popularity")
-                              ? jsonObject.get("popularity").getAsInt()
-                              : null)
-              .setType(
-                      hasAndNotNull(jsonObject, "type")
-                              ? ModelObjectType.keyOf(
-                              jsonObject.get("type").getAsString().toLowerCase())
-                              : null)
-              .setUri(
-                      hasAndNotNull(jsonObject, "uri")
-                              ? jsonObject.get("uri").getAsString()
-                              : null)
-              .build();
+        .setExternalUrls(
+          hasAndNotNull(jsonObject, "external_urls")
+            ? new ExternalUrl.JsonUtil().createModelObject(
+            jsonObject.getAsJsonObject("external_urls"))
+            : null)
+        .setFollowers(
+          hasAndNotNull(jsonObject, "followers")
+            ? new Followers.JsonUtil().createModelObject(
+            jsonObject.getAsJsonObject("followers"))
+            : null)
+        .setGenres(
+          hasAndNotNull(jsonObject, "genres")
+            ? new Gson().fromJson(
+            jsonObject.getAsJsonArray("genres"), String[].class)
+            : null)
+        .setHref(
+          hasAndNotNull(jsonObject, "href")
+            ? jsonObject.get("href").getAsString()
+            : null)
+        .setId(
+          hasAndNotNull(jsonObject, "id")
+            ? jsonObject.get("id").getAsString()
+            : null)
+        .setImages(
+          hasAndNotNull(jsonObject, "images")
+            ? new Image.JsonUtil().createModelObjectArray(
+            jsonObject.getAsJsonArray("images"))
+            : null)
+        .setName(
+          hasAndNotNull(jsonObject, "name")
+            ? jsonObject.get("name").getAsString()
+            : null)
+        .setPopularity(
+          hasAndNotNull(jsonObject, "popularity")
+            ? jsonObject.get("popularity").getAsInt()
+            : null)
+        .setType(
+          hasAndNotNull(jsonObject, "type")
+            ? ModelObjectType.keyOf(
+            jsonObject.get("type").getAsString().toLowerCase())
+            : null)
+        .setUri(
+          hasAndNotNull(jsonObject, "uri")
+            ? jsonObject.get("uri").getAsString()
+            : null)
+        .build();
     }
   }
 

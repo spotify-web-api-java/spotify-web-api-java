@@ -28,26 +28,26 @@ public interface IRequest<T> {
   List<NameValuePair> getBodyParameters();
 
   T execute() throws
-          IOException,
-          SpotifyWebApiException;
+    IOException,
+    SpotifyWebApiException;
 
   CompletableFuture<T> executeAsync();
 
   String getJson() throws
-          IOException,
-          SpotifyWebApiException;
+    IOException,
+    SpotifyWebApiException;
 
   String postJson() throws
-          IOException,
-          SpotifyWebApiException;
+    IOException,
+    SpotifyWebApiException;
 
   String putJson() throws
-          IOException,
-          SpotifyWebApiException;
+    IOException,
+    SpotifyWebApiException;
 
   String deleteJson() throws
-          IOException,
-          SpotifyWebApiException;
+    IOException,
+    SpotifyWebApiException;
 
   @JsonPOJOBuilder(withPrefix = "set")
   interface Builder<T, X> {

@@ -20,11 +20,11 @@ import static org.junit.Assert.assertNotNull;
 @RunWith(MockitoJUnitRunner.class)
 public class GetCurrentUsersProfileRequestTest extends AbstractDataTest<User> {
   private final GetCurrentUsersProfileRequest defaultRequest = SPOTIFY_API
-          .getCurrentUsersProfile()
-          .setHttpManager(
-                  TestUtil.MockedHttpManager.returningJson(
-                          "requests/data/users_profile/GetCurrentUsersProfileRequest.json"))
-          .build();
+    .getCurrentUsersProfile()
+    .setHttpManager(
+      TestUtil.MockedHttpManager.returningJson(
+        "requests/data/users_profile/GetCurrentUsersProfileRequest.json"))
+    .build();
 
   public GetCurrentUsersProfileRequestTest() throws Exception {
   }
@@ -33,8 +33,8 @@ public class GetCurrentUsersProfileRequestTest extends AbstractDataTest<User> {
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
     assertEquals(
-            "https://api.spotify.com:443/v1/me",
-            defaultRequest.getUri().toString());
+      "https://api.spotify.com:443/v1/me",
+      defaultRequest.getUri().toString());
   }
 
   @Test
@@ -49,38 +49,38 @@ public class GetCurrentUsersProfileRequestTest extends AbstractDataTest<User> {
 
   public void shouldReturnDefault(final User user) {
     assertEquals(
-            "1937-06-01",
-            user.getBirthdate());
+      "1937-06-01",
+      user.getBirthdate());
     assertEquals(
-            CountryCode.SE,
-            user.getCountry());
+      CountryCode.SE,
+      user.getCountry());
     assertEquals(
-            "JM Wizzler",
-            user.getDisplayName());
+      "JM Wizzler",
+      user.getDisplayName());
     assertEquals(
-            "email@example.com",
-            user.getEmail());
+      "email@example.com",
+      user.getEmail());
     assertNotNull(
-            user.getExternalUrls());
+      user.getExternalUrls());
     assertNotNull(
-            user.getFollowers());
+      user.getFollowers());
     assertEquals(
-            "https://api.spotify.com/v1/users/wizzler",
-            user.getHref());
+      "https://api.spotify.com/v1/users/wizzler",
+      user.getHref());
     assertEquals(
-            "wizzler",
-            user.getId());
+      "wizzler",
+      user.getId());
     assertEquals(
-            1,
-            user.getImages().length);
+      1,
+      user.getImages().length);
     assertEquals(
-            ProductType.PREMIUM,
-            user.getProduct());
+      ProductType.PREMIUM,
+      user.getProduct());
     assertEquals(
-            ModelObjectType.USER,
-            user.getType());
+      ModelObjectType.USER,
+      user.getType());
     assertEquals(
-            "spotify:user:wizzler",
-            user.getUri());
+      "spotify:user:wizzler",
+      user.getUri());
   }
 }

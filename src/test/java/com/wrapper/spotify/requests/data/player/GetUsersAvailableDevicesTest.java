@@ -16,18 +16,18 @@ import static org.junit.Assert.assertEquals;
 @RunWith(MockitoJUnitRunner.class)
 public class GetUsersAvailableDevicesTest extends AbstractDataTest<Device[]> {
   private final GetUsersAvailableDevicesRequest defaultRequest = SPOTIFY_API
-          .getUsersAvailableDevices()
-          .setHttpManager(
-                  TestUtil.MockedHttpManager.returningJson(
-                          "requests/data/player/GetUsersAvailableDevices.json"))
-          .build();
+    .getUsersAvailableDevices()
+    .setHttpManager(
+      TestUtil.MockedHttpManager.returningJson(
+        "requests/data/player/GetUsersAvailableDevices.json"))
+    .build();
 
   private final GetUsersAvailableDevicesRequest emptyRequest = SPOTIFY_API
-          .getUsersAvailableDevices()
-          .setHttpManager(
-                  TestUtil.MockedHttpManager.returningJson(
-                          "requests/data/player/GetUsersAvailableDevices_None.json"))
-          .build();
+    .getUsersAvailableDevices()
+    .setHttpManager(
+      TestUtil.MockedHttpManager.returningJson(
+        "requests/data/player/GetUsersAvailableDevices_None.json"))
+    .build();
 
   public GetUsersAvailableDevicesTest() throws Exception {
   }
@@ -36,8 +36,8 @@ public class GetUsersAvailableDevicesTest extends AbstractDataTest<Device[]> {
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
     assertEquals(
-            "https://api.spotify.com:443/v1/me/player/devices",
-            defaultRequest.getUri().toString());
+      "https://api.spotify.com:443/v1/me/player/devices",
+      defaultRequest.getUri().toString());
   }
 
   @Test
@@ -52,8 +52,8 @@ public class GetUsersAvailableDevicesTest extends AbstractDataTest<Device[]> {
 
   public void shouldReturnDefault(final Device[] devices) {
     assertEquals(
-            1,
-            devices.length);
+      1,
+      devices.length);
   }
 
   @Test
@@ -68,7 +68,7 @@ public class GetUsersAvailableDevicesTest extends AbstractDataTest<Device[]> {
 
   public void shouldReturnEmpty(final Device[] devices) {
     assertEquals(
-            0,
-            devices.length);
+      0,
+      devices.length);
   }
 }

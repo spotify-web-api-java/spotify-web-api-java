@@ -39,8 +39,8 @@ public class TestUtil {
       return readFromFile(file);
     } catch (IOException e) {
       SpotifyApi.LOGGER.log(
-              Level.SEVERE,
-              "IOException while trying to read from file \"" + file.getName() + "\"");
+        Level.SEVERE,
+        "IOException while trying to read from file \"" + file.getName() + "\"");
       return null;
     }
   }

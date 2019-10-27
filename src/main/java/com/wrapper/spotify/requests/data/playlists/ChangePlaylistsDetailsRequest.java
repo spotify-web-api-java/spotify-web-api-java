@@ -30,8 +30,8 @@ public class ChangePlaylistsDetailsRequest extends AbstractDataRequest<String> {
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
    */
   public String execute() throws
-          IOException,
-          SpotifyWebApiException {
+    IOException,
+    SpotifyWebApiException {
     return putJson();
   }
 
@@ -57,11 +57,11 @@ public class ChangePlaylistsDetailsRequest extends AbstractDataRequest<String> {
     /**
      * The user ID setter.
      *
-     * @deprecated Playlist IDs are unique for themselves. This parameter is thus no longer used.
-     * (https://developer.spotify.com/community/news/2018/06/12/changes-to-playlist-uris/)
      * @param user_id The user's Spotify user ID.
      * @return A {@link ChangePlaylistsDetailsRequest.Builder}.
      * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URIs &amp; IDs</a>
+     * @deprecated Playlist IDs are unique for themselves. This parameter is thus no longer used.
+     * (https://developer.spotify.com/community/news/2018/06/12/changes-to-playlist-uris/)
      */
     @Deprecated
     public Builder user_id(final String user_id) {

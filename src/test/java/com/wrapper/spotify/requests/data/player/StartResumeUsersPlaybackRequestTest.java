@@ -18,16 +18,16 @@ import static org.junit.Assert.assertNull;
 @RunWith(MockitoJUnitRunner.class)
 public class StartResumeUsersPlaybackRequestTest extends AbstractDataTest<String> {
   private final StartResumeUsersPlaybackRequest defaultRequest = SPOTIFY_API
-          .startResumeUsersPlayback()
-          .setHttpManager(
-                  TestUtil.MockedHttpManager.returningJson(
-                          "requests/data/player/StartResumeUsersPlaybackRequest.json"))
-          .context_uri(CONTEXT_URI)
-          .device_id(DEVICE_ID)
-          .offset(OFFSET_JSON)
-          .uris(URIS)
-          .position_ms(POSITION_MS)
-          .build();
+    .startResumeUsersPlayback()
+    .setHttpManager(
+      TestUtil.MockedHttpManager.returningJson(
+        "requests/data/player/StartResumeUsersPlaybackRequest.json"))
+    .context_uri(CONTEXT_URI)
+    .device_id(DEVICE_ID)
+    .offset(OFFSET_JSON)
+    .uris(URIS)
+    .position_ms(POSITION_MS)
+    .build();
 
   public StartResumeUsersPlaybackRequestTest() throws Exception {
   }
@@ -37,24 +37,24 @@ public class StartResumeUsersPlaybackRequestTest extends AbstractDataTest<String
     assertHasAuthorizationHeader(defaultRequest);
     assertHasHeader(defaultRequest, "Content-Type", "application/json");
     assertHasBodyParameter(
-            defaultRequest,
-            "context_uri",
-            CONTEXT_URI);
+      defaultRequest,
+      "context_uri",
+      CONTEXT_URI);
     assertHasBodyParameter(
-            defaultRequest,
-            "uris",
-            URIS);
+      defaultRequest,
+      "uris",
+      URIS);
     assertHasBodyParameter(
-            defaultRequest,
-            "offset",
-            OFFSET_JSON);
+      defaultRequest,
+      "offset",
+      OFFSET_JSON);
     assertHasBodyParameter(
-    		defaultRequest,
-    		"position_ms",
-    		POSITION_MS);
+      defaultRequest,
+      "position_ms",
+      POSITION_MS);
     assertEquals(
-            "https://api.spotify.com:443/v1/me/player/play?device_id=5fbb3ba6aa454b5534c4ba43a8c7e8e45a63ad0e",
-            defaultRequest.getUri().toString());
+      "https://api.spotify.com:443/v1/me/player/play?device_id=5fbb3ba6aa454b5534c4ba43a8c7e8e45a63ad0e",
+      defaultRequest.getUri().toString());
   }
 
   @Test
@@ -69,6 +69,6 @@ public class StartResumeUsersPlaybackRequestTest extends AbstractDataTest<String
 
   public void shouldReturnDefault(final String string) {
     assertNull(
-            string);
+      string);
   }
 }

@@ -16,11 +16,11 @@ import static org.junit.Assert.assertEquals;
 @RunWith(MockitoJUnitRunner.class)
 public class GetAudioFeaturesForSeveralTracksRequestTest extends AbstractDataTest<AudioFeatures[]> {
   private final GetAudioFeaturesForSeveralTracksRequest defaultRequest = SPOTIFY_API
-          .getAudioFeaturesForSeveralTracks(ID_TRACK, ID_TRACK)
-          .setHttpManager(
-                  TestUtil.MockedHttpManager.returningJson(
-                          "requests/data/tracks/GetAudioFeaturesForSeveralTracksRequest.json"))
-          .build();
+    .getAudioFeaturesForSeveralTracks(ID_TRACK, ID_TRACK)
+    .setHttpManager(
+      TestUtil.MockedHttpManager.returningJson(
+        "requests/data/tracks/GetAudioFeaturesForSeveralTracksRequest.json"))
+    .build();
 
   public GetAudioFeaturesForSeveralTracksRequestTest() throws Exception {
   }
@@ -29,8 +29,8 @@ public class GetAudioFeaturesForSeveralTracksRequestTest extends AbstractDataTes
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
     assertEquals(
-            "https://api.spotify.com:443/v1/audio-features?ids=01iyCAUm8EvOFqVWYJ3dVX%2C01iyCAUm8EvOFqVWYJ3dVX",
-            defaultRequest.getUri().toString());
+      "https://api.spotify.com:443/v1/audio-features?ids=01iyCAUm8EvOFqVWYJ3dVX%2C01iyCAUm8EvOFqVWYJ3dVX",
+      defaultRequest.getUri().toString());
   }
 
   @Test
@@ -45,7 +45,7 @@ public class GetAudioFeaturesForSeveralTracksRequestTest extends AbstractDataTes
 
   public void shouldReturnDefault(final AudioFeatures[] audioFeatures) {
     assertEquals(
-            3,
-            audioFeatures.length);
+      3,
+      audioFeatures.length);
   }
 }

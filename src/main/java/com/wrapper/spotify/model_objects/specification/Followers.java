@@ -91,15 +91,15 @@ public class Followers extends AbstractModelObject {
       }
 
       return new Followers.Builder()
-              .setHref(
-                      hasAndNotNull(jsonObject, "href")
-                              ? jsonObject.get("href").getAsString()
-                              : null)
-              .setTotal(
-                      hasAndNotNull(jsonObject, "total")
-                              ? jsonObject.get("total").getAsInt()
-                              : null)
-              .build();
+        .setHref(
+          hasAndNotNull(jsonObject, "href")
+            ? jsonObject.get("href").getAsString()
+            : null)
+        .setTotal(
+          hasAndNotNull(jsonObject, "total")
+            ? jsonObject.get("total").getAsInt()
+            : null)
+        .build();
     }
   }
 }

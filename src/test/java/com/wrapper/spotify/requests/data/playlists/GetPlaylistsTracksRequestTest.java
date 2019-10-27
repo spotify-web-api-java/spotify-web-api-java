@@ -18,15 +18,15 @@ import static org.junit.Assert.assertNull;
 @RunWith(MockitoJUnitRunner.class)
 public class GetPlaylistsTracksRequestTest extends AbstractDataTest<Paging<PlaylistTrack>> {
   private final GetPlaylistsTracksRequest defaultRequest = SPOTIFY_API
-          .getPlaylistsTracks(ID_PLAYLIST)
-          .setHttpManager(
-                  TestUtil.MockedHttpManager.returningJson(
-                          "requests/data/playlists/GetPlaylistsTracksRequest.json"))
-          .fields(FIELDS)
-          .limit(LIMIT)
-          .market(MARKET)
-          .offset(OFFSET)
-          .build();
+    .getPlaylistsTracks(ID_PLAYLIST)
+    .setHttpManager(
+      TestUtil.MockedHttpManager.returningJson(
+        "requests/data/playlists/GetPlaylistsTracksRequest.json"))
+    .fields(FIELDS)
+    .limit(LIMIT)
+    .market(MARKET)
+    .offset(OFFSET)
+    .build();
 
   public GetPlaylistsTracksRequestTest() throws Exception {
   }
@@ -35,8 +35,8 @@ public class GetPlaylistsTracksRequestTest extends AbstractDataTest<Paging<Playl
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
     assertEquals(
-            "https://api.spotify.com:443/v1/playlists/3AGOiaoRXMSjswCLtuNqv5/tracks?fields=description&limit=10&market=SE&offset=0",
-            defaultRequest.getUri().toString());
+      "https://api.spotify.com:443/v1/playlists/3AGOiaoRXMSjswCLtuNqv5/tracks?fields=description&limit=10&market=SE&offset=0",
+      defaultRequest.getUri().toString());
   }
 
   @Test
@@ -51,23 +51,23 @@ public class GetPlaylistsTracksRequestTest extends AbstractDataTest<Paging<Playl
 
   public void shouldReturnDefault(final Paging<PlaylistTrack> playlistTrackPaging) {
     assertEquals(
-            "https://api.spotify.com/v1/users/spotify_espa%C3%B1a/playlists/21THa8j9TaSGuXYNBU5tsC/tracks",
-            playlistTrackPaging.getHref());
+      "https://api.spotify.com/v1/users/spotify_espa%C3%B1a/playlists/21THa8j9TaSGuXYNBU5tsC/tracks",
+      playlistTrackPaging.getHref());
     assertEquals(
-            2,
-            playlistTrackPaging.getItems().length);
+      2,
+      playlistTrackPaging.getItems().length);
     assertEquals(
-            100,
-            (int) playlistTrackPaging.getLimit());
+      100,
+      (int) playlistTrackPaging.getLimit());
     assertNull(
-            playlistTrackPaging.getNext());
+      playlistTrackPaging.getNext());
     assertEquals(
-            0,
-            (int) playlistTrackPaging.getOffset());
+      0,
+      (int) playlistTrackPaging.getOffset());
     assertNull(
-            playlistTrackPaging.getPrevious());
+      playlistTrackPaging.getPrevious());
     assertEquals(
-            58,
-            (int) playlistTrackPaging.getTotal());
+      58,
+      (int) playlistTrackPaging.getTotal());
   }
 }

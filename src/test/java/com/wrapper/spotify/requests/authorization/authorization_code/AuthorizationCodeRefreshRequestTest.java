@@ -16,12 +16,12 @@ import static org.junit.Assert.assertEquals;
 public class AuthorizationCodeRefreshRequestTest extends AbstractAuthorizationTest<AuthorizationCodeCredentials> {
 
   private final AuthorizationCodeRefreshRequest defaultRequest = SPOTIFY_API.authorizationCodeRefresh()
-          .setHttpManager(
-                  TestUtil.MockedHttpManager.returningJson(
-                          "requests/authorization/authorization_code/AuthorizationCodeRefresh.json"))
-          .grant_type("refresh_token")
-          .refresh_token(SPOTIFY_API.getRefreshToken())
-          .build();
+    .setHttpManager(
+      TestUtil.MockedHttpManager.returningJson(
+        "requests/authorization/authorization_code/AuthorizationCodeRefresh.json"))
+    .grant_type("refresh_token")
+    .refresh_token(SPOTIFY_API.getRefreshToken())
+    .build();
 
   public AuthorizationCodeRefreshRequestTest() throws Exception {
   }
@@ -31,16 +31,16 @@ public class AuthorizationCodeRefreshRequestTest extends AbstractAuthorizationTe
     assertHasAuthorizationHeader(defaultRequest);
     assertHasHeader(defaultRequest, "Content-Type", "application/x-www-form-urlencoded");
     assertHasBodyParameter(
-            defaultRequest,
-            "grant_type",
-            "refresh_token");
+      defaultRequest,
+      "grant_type",
+      "refresh_token");
     assertHasBodyParameter(
-            defaultRequest,
-            "refresh_token",
-            SPOTIFY_API.getRefreshToken());
+      defaultRequest,
+      "refresh_token",
+      SPOTIFY_API.getRefreshToken());
     assertEquals(
-            "https://accounts.spotify.com:443/api/token",
-            defaultRequest.getUri().toString());
+      "https://accounts.spotify.com:443/api/token",
+      defaultRequest.getUri().toString());
   }
 
   @Test
@@ -55,16 +55,16 @@ public class AuthorizationCodeRefreshRequestTest extends AbstractAuthorizationTe
 
   public void shouldReturnDefault(final AuthorizationCodeCredentials authorizationCodeCredentials) {
     assertEquals(
-            "taHZ2SdB-bPA3FsK3D7ZN5npZS47cMy-IEySVEGttOhXmqaVAIo0ESvTCLjLBifhHOHOIuhFUKPW1WMDP7w6dj3MAZdWT8CLI2MkZaXbYLTeoDvXesf2eeiLYPBGdx8tIwQJKgV8XdnzH_DONk",
-            authorizationCodeCredentials.getAccessToken());
+      "taHZ2SdB-bPA3FsK3D7ZN5npZS47cMy-IEySVEGttOhXmqaVAIo0ESvTCLjLBifhHOHOIuhFUKPW1WMDP7w6dj3MAZdWT8CLI2MkZaXbYLTeoDvXesf2eeiLYPBGdx8tIwQJKgV8XdnzH_DONk",
+      authorizationCodeCredentials.getAccessToken());
     assertEquals(
-            "Bearer",
-            authorizationCodeCredentials.getTokenType());
+      "Bearer",
+      authorizationCodeCredentials.getTokenType());
     assertEquals(
-            "user-read-birthdate user-read-email",
-            authorizationCodeCredentials.getScope());
+      "user-read-birthdate user-read-email",
+      authorizationCodeCredentials.getScope());
     assertEquals(
-            3600,
-            (int) authorizationCodeCredentials.getExpiresIn());
+      3600,
+      (int) authorizationCodeCredentials.getExpiresIn());
   }
 }

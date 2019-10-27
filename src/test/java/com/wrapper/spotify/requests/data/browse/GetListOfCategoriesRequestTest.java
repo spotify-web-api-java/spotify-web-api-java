@@ -18,14 +18,14 @@ import static org.junit.Assert.assertNull;
 @RunWith(MockitoJUnitRunner.class)
 public class GetListOfCategoriesRequestTest extends AbstractDataTest<Paging<Category>> {
   private final GetListOfCategoriesRequest defaultRequest = SPOTIFY_API.getListOfCategories()
-          .setHttpManager(
-                  TestUtil.MockedHttpManager.returningJson(
-                          "requests/data/browse/GetListOfCategoriesRequest.json"))
-          .country(COUNTRY)
-          .limit(LIMIT)
-          .locale(LOCALE)
-          .offset(OFFSET)
-          .build();
+    .setHttpManager(
+      TestUtil.MockedHttpManager.returningJson(
+        "requests/data/browse/GetListOfCategoriesRequest.json"))
+    .country(COUNTRY)
+    .limit(LIMIT)
+    .locale(LOCALE)
+    .offset(OFFSET)
+    .build();
 
   public GetListOfCategoriesRequestTest() throws Exception {
   }
@@ -34,8 +34,8 @@ public class GetListOfCategoriesRequestTest extends AbstractDataTest<Paging<Cate
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
     assertEquals(
-            "https://api.spotify.com:443/v1/browse/categories?country=SE&limit=10&locale=sv_SE&offset=0",
-            defaultRequest.getUri().toString());
+      "https://api.spotify.com:443/v1/browse/categories?country=SE&limit=10&locale=sv_SE&offset=0",
+      defaultRequest.getUri().toString());
   }
 
   @Test
@@ -50,24 +50,24 @@ public class GetListOfCategoriesRequestTest extends AbstractDataTest<Paging<Cate
 
   public void shouldReturnDefault(final Paging<Category> categoryPaging) {
     assertEquals(
-            "https://api.spotify.com/v1/browse/categories?offset=0&limit=20",
-            categoryPaging.getHref());
+      "https://api.spotify.com/v1/browse/categories?offset=0&limit=20",
+      categoryPaging.getHref());
     assertEquals(
-            5,
-            categoryPaging.getItems().length);
+      5,
+      categoryPaging.getItems().length);
     assertEquals(
-            20,
-            (int) categoryPaging.getLimit());
+      20,
+      (int) categoryPaging.getLimit());
     assertEquals(
-            "https://api.spotify.com/v1/browse/categories?offset=20&limit=20",
-            categoryPaging.getNext());
+      "https://api.spotify.com/v1/browse/categories?offset=20&limit=20",
+      categoryPaging.getNext());
     assertEquals(
-            0,
-            (int) categoryPaging.getOffset());
+      0,
+      (int) categoryPaging.getOffset());
     assertNull(
-            categoryPaging.getPrevious());
+      categoryPaging.getPrevious());
     assertEquals(
-            31,
-            (int) categoryPaging.getTotal());
+      31,
+      (int) categoryPaging.getTotal());
   }
 }

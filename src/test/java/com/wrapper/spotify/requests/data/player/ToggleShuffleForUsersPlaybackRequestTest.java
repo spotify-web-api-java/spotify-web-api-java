@@ -17,12 +17,12 @@ import static org.junit.Assert.assertNull;
 @RunWith(MockitoJUnitRunner.class)
 public class ToggleShuffleForUsersPlaybackRequestTest extends AbstractDataTest<String> {
   private final ToggleShuffleForUsersPlaybackRequest defaultRequest = SPOTIFY_API
-          .toggleShuffleForUsersPlayback(STATE_BOOLEAN)
-          .setHttpManager(
-                  TestUtil.MockedHttpManager.returningJson(
-                          "requests/data/player/ToggleShuffleForUsersPlaybackRequest.json"))
-          .device_id(DEVICE_ID)
-          .build();
+    .toggleShuffleForUsersPlayback(STATE_BOOLEAN)
+    .setHttpManager(
+      TestUtil.MockedHttpManager.returningJson(
+        "requests/data/player/ToggleShuffleForUsersPlaybackRequest.json"))
+    .device_id(DEVICE_ID)
+    .build();
 
   public ToggleShuffleForUsersPlaybackRequestTest() throws Exception {
   }
@@ -32,8 +32,8 @@ public class ToggleShuffleForUsersPlaybackRequestTest extends AbstractDataTest<S
     assertHasAuthorizationHeader(defaultRequest);
     assertHasHeader(defaultRequest, "Content-Type", "application/json");
     assertEquals(
-            "https://api.spotify.com:443/v1/me/player/shuffle?state=false&device_id=5fbb3ba6aa454b5534c4ba43a8c7e8e45a63ad0e",
-            defaultRequest.getUri().toString());
+      "https://api.spotify.com:443/v1/me/player/shuffle?state=false&device_id=5fbb3ba6aa454b5534c4ba43a8c7e8e45a63ad0e",
+      defaultRequest.getUri().toString());
   }
 
   @Test
@@ -48,6 +48,6 @@ public class ToggleShuffleForUsersPlaybackRequestTest extends AbstractDataTest<S
 
   public void shouldReturnDefault(final String string) {
     assertNull(
-            string);
+      string);
   }
 }

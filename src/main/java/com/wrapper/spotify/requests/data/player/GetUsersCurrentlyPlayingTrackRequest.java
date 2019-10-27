@@ -31,8 +31,8 @@ public class GetUsersCurrentlyPlayingTrackRequest extends AbstractDataRequest<Cu
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
    */
   public CurrentlyPlaying execute() throws
-          IOException,
-          SpotifyWebApiException {
+    IOException,
+    SpotifyWebApiException {
     return new CurrentlyPlaying.JsonUtil().createModelObject(getJson());
   }
 

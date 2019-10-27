@@ -18,11 +18,11 @@ import static org.junit.Assert.assertEquals;
 @RunWith(MockitoJUnitRunner.class)
 public class GetAudioFeaturesForTrackRequestTest extends AbstractDataTest<AudioFeatures> {
   private final GetAudioFeaturesForTrackRequest defaultRequest = SPOTIFY_API
-          .getAudioFeaturesForTrack(ID_TRACK)
-          .setHttpManager(
-                  TestUtil.MockedHttpManager.returningJson(
-                          "requests/data/tracks/GetAudioFeaturesForTrackRequest.json"))
-          .build();
+    .getAudioFeaturesForTrack(ID_TRACK)
+    .setHttpManager(
+      TestUtil.MockedHttpManager.returningJson(
+        "requests/data/tracks/GetAudioFeaturesForTrackRequest.json"))
+    .build();
 
   public GetAudioFeaturesForTrackRequestTest() throws Exception {
   }
@@ -31,8 +31,8 @@ public class GetAudioFeaturesForTrackRequestTest extends AbstractDataTest<AudioF
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
     assertEquals(
-            "https://api.spotify.com:443/v1/audio-features/01iyCAUm8EvOFqVWYJ3dVX",
-            defaultRequest.getUri().toString());
+      "https://api.spotify.com:443/v1/audio-features/01iyCAUm8EvOFqVWYJ3dVX",
+      defaultRequest.getUri().toString());
   }
 
   @Test
@@ -47,58 +47,58 @@ public class GetAudioFeaturesForTrackRequestTest extends AbstractDataTest<AudioF
 
   public void shouldReturnDefault(final AudioFeatures audioFeatures) {
     assertEquals(
-            0.514,
-            audioFeatures.getAcousticness(), 0.001);
+      0.514,
+      audioFeatures.getAcousticness(), 0.001);
     assertEquals(
-            "https://api.spotify.com/v1/audio-analysis/06AKEBrKUckW0KREUWRnvT",
-            audioFeatures.getAnalysisUrl());
+      "https://api.spotify.com/v1/audio-analysis/06AKEBrKUckW0KREUWRnvT",
+      audioFeatures.getAnalysisUrl());
     assertEquals(
-            0.735,
-            audioFeatures.getDanceability(), 0.001);
+      0.735,
+      audioFeatures.getDanceability(), 0.001);
     assertEquals(
-            255349,
-            (int) audioFeatures.getDurationMs());
+      255349,
+      (int) audioFeatures.getDurationMs());
     assertEquals(
-            0.578,
-            audioFeatures.getEnergy(), 0.001);
+      0.578,
+      audioFeatures.getEnergy(), 0.001);
     assertEquals(
-            "06AKEBrKUckW0KREUWRnvT",
-            audioFeatures.getId());
+      "06AKEBrKUckW0KREUWRnvT",
+      audioFeatures.getId());
     assertEquals(
-            0.0902,
-            audioFeatures.getInstrumentalness(), 0.001);
+      0.0902,
+      audioFeatures.getInstrumentalness(), 0.001);
     assertEquals(
-            5,
-            (int) audioFeatures.getKey());
+      5,
+      (int) audioFeatures.getKey());
     assertEquals(
-            0.159,
-            audioFeatures.getLiveness(), 0.001);
+      0.159,
+      audioFeatures.getLiveness(), 0.001);
     assertEquals(
-            -11.840,
-            audioFeatures.getLoudness(), 0.001);
+      -11.840,
+      audioFeatures.getLoudness(), 0.001);
     assertEquals(
-            Modality.MINOR,
-            audioFeatures.getMode());
+      Modality.MINOR,
+      audioFeatures.getMode());
     assertEquals(
-            0.0461,
-            audioFeatures.getSpeechiness(), 0.001);
+      0.0461,
+      audioFeatures.getSpeechiness(), 0.001);
     assertEquals(
-            98.002,
-            audioFeatures.getTempo(), 0.001);
+      98.002,
+      audioFeatures.getTempo(), 0.001);
     assertEquals(
-            4,
-            (int) audioFeatures.getTimeSignature());
+      4,
+      (int) audioFeatures.getTimeSignature());
     assertEquals(
-            "https://api.spotify.com/v1/tracks/06AKEBrKUckW0KREUWRnvT",
-            audioFeatures.getTrackHref());
+      "https://api.spotify.com/v1/tracks/06AKEBrKUckW0KREUWRnvT",
+      audioFeatures.getTrackHref());
     assertEquals(
-            ModelObjectType.AUDIO_FEATURES,
-            audioFeatures.getType());
+      ModelObjectType.AUDIO_FEATURES,
+      audioFeatures.getType());
     assertEquals(
-            "spotify:track:06AKEBrKUckW0KREUWRnvT",
-            audioFeatures.getUri());
+      "spotify:track:06AKEBrKUckW0KREUWRnvT",
+      audioFeatures.getUri());
     assertEquals(
-            0.624,
-            audioFeatures.getValence(), 0.001);
+      0.624,
+      audioFeatures.getValence(), 0.001);
   }
 }

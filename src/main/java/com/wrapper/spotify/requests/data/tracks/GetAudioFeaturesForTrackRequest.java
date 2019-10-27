@@ -30,8 +30,8 @@ public class GetAudioFeaturesForTrackRequest extends AbstractDataRequest<AudioFe
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
    */
   public AudioFeatures execute() throws
-          IOException,
-          SpotifyWebApiException {
+    IOException,
+    SpotifyWebApiException {
     return new AudioFeatures.JsonUtil().createModelObject(getJson());
   }
 

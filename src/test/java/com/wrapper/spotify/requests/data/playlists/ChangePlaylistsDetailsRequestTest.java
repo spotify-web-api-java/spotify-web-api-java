@@ -18,15 +18,15 @@ import static org.junit.Assert.assertNull;
 @RunWith(MockitoJUnitRunner.class)
 public class ChangePlaylistsDetailsRequestTest extends AbstractDataTest<String> {
   private final ChangePlaylistsDetailsRequest defaultRequest = SPOTIFY_API
-          .changePlaylistsDetails(ID_PLAYLIST)
-          .setHttpManager(
-                  TestUtil.MockedHttpManager.returningJson(
-                          "requests/data/playlists/ChangePlaylistsDetailsRequest.json"))
-          .collaborative(COLLABORATIVE)
-          .description(DESCRIPTION)
-          .name(NAME)
-          .public_(PUBLIC)
-          .build();
+    .changePlaylistsDetails(ID_PLAYLIST)
+    .setHttpManager(
+      TestUtil.MockedHttpManager.returningJson(
+        "requests/data/playlists/ChangePlaylistsDetailsRequest.json"))
+    .collaborative(COLLABORATIVE)
+    .description(DESCRIPTION)
+    .name(NAME)
+    .public_(PUBLIC)
+    .build();
 
   public ChangePlaylistsDetailsRequestTest() throws Exception {
   }
@@ -36,24 +36,24 @@ public class ChangePlaylistsDetailsRequestTest extends AbstractDataTest<String> 
     assertHasAuthorizationHeader(defaultRequest);
     assertHasHeader(defaultRequest, "Content-Type", "application/json");
     assertHasBodyParameter(
-            defaultRequest,
-            "name",
-            NAME);
+      defaultRequest,
+      "name",
+      NAME);
     assertHasBodyParameter(
-            defaultRequest,
-            "public",
-            PUBLIC);
+      defaultRequest,
+      "public",
+      PUBLIC);
     assertHasBodyParameter(
-            defaultRequest,
-            "collaborative",
-            COLLABORATIVE);
+      defaultRequest,
+      "collaborative",
+      COLLABORATIVE);
     assertHasBodyParameter(
-            defaultRequest,
-            "description",
-            DESCRIPTION);
+      defaultRequest,
+      "description",
+      DESCRIPTION);
     assertEquals(
-            "https://api.spotify.com:443/v1/playlists/3AGOiaoRXMSjswCLtuNqv5",
-            defaultRequest.getUri().toString());
+      "https://api.spotify.com:443/v1/playlists/3AGOiaoRXMSjswCLtuNqv5",
+      defaultRequest.getUri().toString());
   }
 
   @Test
@@ -68,6 +68,6 @@ public class ChangePlaylistsDetailsRequestTest extends AbstractDataTest<String> 
 
   public void shouldReturnDefault(final String string) {
     assertNull(
-            string);
+      string);
   }
 }

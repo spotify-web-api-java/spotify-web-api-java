@@ -30,8 +30,8 @@ public class GetAudioAnalysisForTrackRequest extends AbstractDataRequest<AudioAn
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
    */
   public AudioAnalysis execute() throws
-          IOException,
-          SpotifyWebApiException {
+    IOException,
+    SpotifyWebApiException {
     return new AudioAnalysis.JsonUtil().createModelObject(getJson());
   }
 

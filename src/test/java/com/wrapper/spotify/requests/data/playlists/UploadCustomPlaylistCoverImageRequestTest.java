@@ -16,12 +16,12 @@ import static org.junit.Assert.*;
 @RunWith(MockitoJUnitRunner.class)
 public class UploadCustomPlaylistCoverImageRequestTest extends AbstractDataTest<String> {
   private final UploadCustomPlaylistCoverImageRequest defaultRequest = SPOTIFY_API
-          .uploadCustomPlaylistCoverImage(ID_PLAYLIST)
-          .setHttpManager(
-                  TestUtil.MockedHttpManager.returningJson(
-                          "requests/data/playlists/UploadCustomPlaylistCoverImageRequest.json"))
-          .image_data(IMAGE_DATA != null ? IMAGE_DATA : "")
-          .build();
+    .uploadCustomPlaylistCoverImage(ID_PLAYLIST)
+    .setHttpManager(
+      TestUtil.MockedHttpManager.returningJson(
+        "requests/data/playlists/UploadCustomPlaylistCoverImageRequest.json"))
+    .image_data(IMAGE_DATA != null ? IMAGE_DATA : "")
+    .build();
 
   public UploadCustomPlaylistCoverImageRequestTest() throws Exception {
   }
@@ -31,10 +31,10 @@ public class UploadCustomPlaylistCoverImageRequestTest extends AbstractDataTest<
     assertHasAuthorizationHeader(defaultRequest);
     assertHasHeader(defaultRequest, "Content-Type", "image/jpeg");
     assertNotNull(
-            defaultRequest.getBody());
+      defaultRequest.getBody());
     assertEquals(
-            "https://api.spotify.com:443/v1/playlists/3AGOiaoRXMSjswCLtuNqv5/images",
-            defaultRequest.getUri().toString());
+      "https://api.spotify.com:443/v1/playlists/3AGOiaoRXMSjswCLtuNqv5/images",
+      defaultRequest.getUri().toString());
   }
 
   @Test
@@ -49,6 +49,6 @@ public class UploadCustomPlaylistCoverImageRequestTest extends AbstractDataTest<
 
   public void shouldReturnDefault(final String string) {
     assertNull(
-            string);
+      string);
   }
 }

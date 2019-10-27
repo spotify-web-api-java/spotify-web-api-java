@@ -15,10 +15,10 @@ import static org.junit.Assert.assertEquals;
 @RunWith(MockitoJUnitRunner.class)
 public class CheckUsersSavedTracksRequestTest extends AbstractDataTest<Boolean[]> {
   private final CheckUsersSavedTracksRequest defaultRequest = SPOTIFY_API.checkUsersSavedTracks(ID_TRACK, ID_TRACK)
-          .setHttpManager(
-                  TestUtil.MockedHttpManager.returningJson(
-                          "requests/data/library/CheckUsersSavedTracksRequest.json"))
-          .build();
+    .setHttpManager(
+      TestUtil.MockedHttpManager.returningJson(
+        "requests/data/library/CheckUsersSavedTracksRequest.json"))
+    .build();
 
   public CheckUsersSavedTracksRequestTest() throws Exception {
   }
@@ -27,8 +27,8 @@ public class CheckUsersSavedTracksRequestTest extends AbstractDataTest<Boolean[]
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
     assertEquals(
-            "https://api.spotify.com:443/v1/me/tracks/contains?ids=01iyCAUm8EvOFqVWYJ3dVX%2C01iyCAUm8EvOFqVWYJ3dVX",
-            defaultRequest.getUri().toString());
+      "https://api.spotify.com:443/v1/me/tracks/contains?ids=01iyCAUm8EvOFqVWYJ3dVX%2C01iyCAUm8EvOFqVWYJ3dVX",
+      defaultRequest.getUri().toString());
   }
 
   @Test
@@ -43,7 +43,7 @@ public class CheckUsersSavedTracksRequestTest extends AbstractDataTest<Boolean[]
 
   public void shouldReturnDefault(final Boolean[] booleans) {
     assertEquals(
-            2,
-            booleans.length);
+      2,
+      booleans.length);
   }
 }

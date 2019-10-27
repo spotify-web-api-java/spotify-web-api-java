@@ -16,20 +16,20 @@ import static org.junit.Assert.*;
 @RunWith(MockitoJUnitRunner.class)
 public class GetUsersCurrentlyPlayingTrackRequestTest extends AbstractDataTest<CurrentlyPlaying> {
   private final GetUsersCurrentlyPlayingTrackRequest defaultRequest = SPOTIFY_API
-          .getUsersCurrentlyPlayingTrack()
-          .setHttpManager(
-                  TestUtil.MockedHttpManager.returningJson(
-                          "requests/data/player/GetUsersCurrentlyPlayingTrackRequest.json"))
-          .market(MARKET)
-          .build();
+    .getUsersCurrentlyPlayingTrack()
+    .setHttpManager(
+      TestUtil.MockedHttpManager.returningJson(
+        "requests/data/player/GetUsersCurrentlyPlayingTrackRequest.json"))
+    .market(MARKET)
+    .build();
 
   private final GetUsersCurrentlyPlayingTrackRequest emptyRequest = SPOTIFY_API
-          .getUsersCurrentlyPlayingTrack()
-          .setHttpManager(
-                  TestUtil.MockedHttpManager.returningJson(
-                          "requests/data/player/GetUsersCurrentlyPlayingTrackRequest_None.json"))
-          .market(MARKET)
-          .build();
+    .getUsersCurrentlyPlayingTrack()
+    .setHttpManager(
+      TestUtil.MockedHttpManager.returningJson(
+        "requests/data/player/GetUsersCurrentlyPlayingTrackRequest_None.json"))
+    .market(MARKET)
+    .build();
 
   public GetUsersCurrentlyPlayingTrackRequestTest() throws Exception {
   }
@@ -38,8 +38,8 @@ public class GetUsersCurrentlyPlayingTrackRequestTest extends AbstractDataTest<C
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
     assertEquals(
-            "https://api.spotify.com:443/v1/me/player/currently-playing?market=SE",
-            defaultRequest.getUri().toString());
+      "https://api.spotify.com:443/v1/me/player/currently-playing?market=SE",
+      defaultRequest.getUri().toString());
   }
 
   @Test
@@ -54,17 +54,17 @@ public class GetUsersCurrentlyPlayingTrackRequestTest extends AbstractDataTest<C
 
   public void shouldReturnDefault(final CurrentlyPlaying currentlyPlaying) {
     assertNull(
-            currentlyPlaying.getContext());
+      currentlyPlaying.getContext());
     assertEquals(
-            1516669900630L,
-            (long) currentlyPlaying.getTimestamp());
+      1516669900630L,
+      (long) currentlyPlaying.getTimestamp());
     assertEquals(
-            78810,
-            (int) currentlyPlaying.getProgress_ms());
+      78810,
+      (int) currentlyPlaying.getProgress_ms());
     assertFalse(
-            currentlyPlaying.getIs_playing());
+      currentlyPlaying.getIs_playing());
     assertNotNull(
-            currentlyPlaying.getItem());
+      currentlyPlaying.getItem());
   }
 
   @Test
@@ -79,6 +79,6 @@ public class GetUsersCurrentlyPlayingTrackRequestTest extends AbstractDataTest<C
 
   public void shouldReturnEmpty(final CurrentlyPlaying currentlyPlaying) {
     assertNull(
-            currentlyPlaying);
+      currentlyPlaying);
   }
 }

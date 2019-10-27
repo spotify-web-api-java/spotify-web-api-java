@@ -117,21 +117,21 @@ public class PlayHistory extends AbstractModelObject {
 
       try {
         return new Builder()
-                .setTrack(
-                        hasAndNotNull(jsonObject, "track")
-                                ? new TrackSimplified.JsonUtil().createModelObject(
-                                jsonObject.getAsJsonObject("track"))
-                                : null)
-                .setPlayedAt(
-                        hasAndNotNull(jsonObject, "played_at")
-                                ? SpotifyApi.parseDefaultDate(jsonObject.get("played_at").getAsString())
-                                : null)
-                .setContext(
-                        hasAndNotNull(jsonObject, "context")
-                                ? new Context.JsonUtil().createModelObject(
-                                jsonObject.getAsJsonObject("context"))
-                                : null)
-                .build();
+          .setTrack(
+            hasAndNotNull(jsonObject, "track")
+              ? new TrackSimplified.JsonUtil().createModelObject(
+              jsonObject.getAsJsonObject("track"))
+              : null)
+          .setPlayedAt(
+            hasAndNotNull(jsonObject, "played_at")
+              ? SpotifyApi.parseDefaultDate(jsonObject.get("played_at").getAsString())
+              : null)
+          .setContext(
+            hasAndNotNull(jsonObject, "context")
+              ? new Context.JsonUtil().createModelObject(
+              jsonObject.getAsJsonObject("context"))
+              : null)
+          .build();
       } catch (ParseException e) {
         SpotifyApi.LOGGER.log(Level.SEVERE, e.getMessage());
         return null;

@@ -17,11 +17,11 @@ import static org.junit.Assert.assertNotNull;
 @RunWith(MockitoJUnitRunner.class)
 public class GetAudioAnalysisForTrackRequestTest extends AbstractDataTest<AudioAnalysis> {
   private final GetAudioAnalysisForTrackRequest defaultRequest = SPOTIFY_API
-          .getAudioAnalysisForTrack(ID_TRACK)
-          .setHttpManager(
-                  TestUtil.MockedHttpManager.returningJson(
-                          "requests/data/tracks/GetAudioAnalysisForTrackRequest.json"))
-          .build();
+    .getAudioAnalysisForTrack(ID_TRACK)
+    .setHttpManager(
+      TestUtil.MockedHttpManager.returningJson(
+        "requests/data/tracks/GetAudioAnalysisForTrackRequest.json"))
+    .build();
 
   public GetAudioAnalysisForTrackRequestTest() throws Exception {
   }
@@ -30,8 +30,8 @@ public class GetAudioAnalysisForTrackRequestTest extends AbstractDataTest<AudioA
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
     assertEquals(
-            "https://api.spotify.com:443/v1/audio-analysis/01iyCAUm8EvOFqVWYJ3dVX",
-            defaultRequest.getUri().toString());
+      "https://api.spotify.com:443/v1/audio-analysis/01iyCAUm8EvOFqVWYJ3dVX",
+      defaultRequest.getUri().toString());
   }
 
   @Test
@@ -46,24 +46,24 @@ public class GetAudioAnalysisForTrackRequestTest extends AbstractDataTest<AudioA
 
   public void shouldReturnDefault(final AudioAnalysis audioAnalysis) {
     assertEquals(
-            1,
-            audioAnalysis.getBars().length);
+      1,
+      audioAnalysis.getBars().length);
     assertEquals(
-            1,
-            audioAnalysis.getBeats().length);
+      1,
+      audioAnalysis.getBeats().length);
     assertNotNull(
-            audioAnalysis.getMeta());
+      audioAnalysis.getMeta());
     assertEquals(
-            1,
-            audioAnalysis.getSections().length);
+      1,
+      audioAnalysis.getSections().length);
     assertEquals(
-            1,
-            audioAnalysis.getSegments().length);
+      1,
+      audioAnalysis.getSegments().length);
     assertEquals(
-            1,
-            audioAnalysis.getTatums().length);
+      1,
+      audioAnalysis.getTatums().length);
     assertNotNull(
-            "",
-            audioAnalysis.getTrack());
+      "",
+      audioAnalysis.getTrack());
   }
 }

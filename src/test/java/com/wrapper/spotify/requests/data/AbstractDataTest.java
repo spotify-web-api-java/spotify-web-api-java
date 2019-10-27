@@ -9,8 +9,8 @@ public abstract class AbstractDataTest<T> implements ITest<T> {
 
   public void assertHasAuthorizationHeader(IRequest<T> request) {
     assertHasHeader(
-            request,
-            "Authorization",
-            "Bearer " + SPOTIFY_API.getAccessToken());
+      request,
+      "Authorization",
+      "Bearer " + SPOTIFY_API.getAccessToken());
   }
 }

@@ -34,8 +34,8 @@ public class GetArtistsAlbumsRequest extends AbstractDataRequest<Paging<AlbumSim
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
    */
   public Paging<AlbumSimplified> execute() throws
-          IOException,
-          SpotifyWebApiException {
+    IOException,
+    SpotifyWebApiException {
     return new AlbumSimplified.JsonUtil().createModelObjectPaging(getJson());
   }
 

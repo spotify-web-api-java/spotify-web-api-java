@@ -384,69 +384,69 @@ public class Playlist extends AbstractModelObject {
       }
 
       return new Playlist.Builder()
-              .setCollaborative(
-                      hasAndNotNull(jsonObject, "collaborative")
-                              ? jsonObject.get("collaborative").getAsBoolean()
-                              : null)
-              .setDescription(
-                      hasAndNotNull(jsonObject, "description")
-                              ? jsonObject.get("description").getAsString()
-                              : null)
-              .setExternalUrls(
-                      hasAndNotNull(jsonObject, "external_urls")
-                              ? new ExternalUrl.JsonUtil().createModelObject(
-                              jsonObject.getAsJsonObject("external_urls"))
-                              : null)
-              .setFollowers(
-                      hasAndNotNull(jsonObject, "followers")
-                              ? new Followers.JsonUtil().createModelObject(
-                              jsonObject.getAsJsonObject("followers"))
-                              : null)
-              .setHref(
-                      hasAndNotNull(jsonObject, "href")
-                              ? jsonObject.get("href").getAsString()
-                              : null)
-              .setId(
-                      hasAndNotNull(jsonObject, "id")
-                              ? jsonObject.get("id").getAsString()
-                              : null)
-              .setImages(
-                      hasAndNotNull(jsonObject, "images")
-                              ? new Image.JsonUtil().createModelObjectArray(
-                              jsonObject.getAsJsonArray("images"))
-                              : null)
-              .setName(
-                      hasAndNotNull(jsonObject, "name")
-                              ? jsonObject.get("name").getAsString()
-                              : null)
-              .setOwner(
-                      hasAndNotNull(jsonObject, "owner")
-                              ? new User.JsonUtil().createModelObject(
-                              jsonObject.getAsJsonObject("owner"))
-                              : null)
-              .setPublicAccess(
-                      hasAndNotNull(jsonObject, "public")
-                              ? jsonObject.get("public").getAsBoolean()
-                              : null)
-              .setSnapshotId(
-                      hasAndNotNull(jsonObject, "snapshot_id")
-                              ? jsonObject.get("snapshot_id").getAsString()
-                              : null)
-              .setTracks(
-                      hasAndNotNull(jsonObject, "tracks")
-                              ? new PlaylistTrack.JsonUtil().createModelObjectPaging(
-                              jsonObject.getAsJsonObject("tracks"))
-                              : null)
-              .setType(
-                      hasAndNotNull(jsonObject, "type")
-                              ? ModelObjectType.keyOf(
-                              jsonObject.get("type").getAsString().toLowerCase())
-                              : null)
-              .setUri(
-                      hasAndNotNull(jsonObject, "uri")
-                              ? jsonObject.get("uri").getAsString()
-                              : null)
-              .build();
+        .setCollaborative(
+          hasAndNotNull(jsonObject, "collaborative")
+            ? jsonObject.get("collaborative").getAsBoolean()
+            : null)
+        .setDescription(
+          hasAndNotNull(jsonObject, "description")
+            ? jsonObject.get("description").getAsString()
+            : null)
+        .setExternalUrls(
+          hasAndNotNull(jsonObject, "external_urls")
+            ? new ExternalUrl.JsonUtil().createModelObject(
+            jsonObject.getAsJsonObject("external_urls"))
+            : null)
+        .setFollowers(
+          hasAndNotNull(jsonObject, "followers")
+            ? new Followers.JsonUtil().createModelObject(
+            jsonObject.getAsJsonObject("followers"))
+            : null)
+        .setHref(
+          hasAndNotNull(jsonObject, "href")
+            ? jsonObject.get("href").getAsString()
+            : null)
+        .setId(
+          hasAndNotNull(jsonObject, "id")
+            ? jsonObject.get("id").getAsString()
+            : null)
+        .setImages(
+          hasAndNotNull(jsonObject, "images")
+            ? new Image.JsonUtil().createModelObjectArray(
+            jsonObject.getAsJsonArray("images"))
+            : null)
+        .setName(
+          hasAndNotNull(jsonObject, "name")
+            ? jsonObject.get("name").getAsString()
+            : null)
+        .setOwner(
+          hasAndNotNull(jsonObject, "owner")
+            ? new User.JsonUtil().createModelObject(
+            jsonObject.getAsJsonObject("owner"))
+            : null)
+        .setPublicAccess(
+          hasAndNotNull(jsonObject, "public")
+            ? jsonObject.get("public").getAsBoolean()
+            : null)
+        .setSnapshotId(
+          hasAndNotNull(jsonObject, "snapshot_id")
+            ? jsonObject.get("snapshot_id").getAsString()
+            : null)
+        .setTracks(
+          hasAndNotNull(jsonObject, "tracks")
+            ? new PlaylistTrack.JsonUtil().createModelObjectPaging(
+            jsonObject.getAsJsonObject("tracks"))
+            : null)
+        .setType(
+          hasAndNotNull(jsonObject, "type")
+            ? ModelObjectType.keyOf(
+            jsonObject.get("type").getAsString().toLowerCase())
+            : null)
+        .setUri(
+          hasAndNotNull(jsonObject, "uri")
+            ? jsonObject.get("uri").getAsString()
+            : null)
+        .build();
     }
   }
 }
