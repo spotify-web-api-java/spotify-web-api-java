@@ -18,8 +18,8 @@ import com.wrapper.spotify.requests.data.search.interfaces.ISearchModelObject;
  * Retrieve information about <a href="https://developer.spotify.com/web-api/object-model/#album-object-simplified">
  * simplified Album objects</a> by building instances from this class.
  *
- * This class exists because it includes the undocumented property totalTracks, which is not documented in the
- * official specification although the albums object returned by the searches API includes it.
+ * This class exists because it includes the property {@code totalTracks}, which is not documented in the official
+ * specification, although the albums object as returned by the searches API includes it.
  */
 @JsonDeserialize(builder = AlbumSimplifiedSpecial.Builder.class)
 public class AlbumSimplifiedSpecial extends AbstractModelObject implements ISearchModelObject {

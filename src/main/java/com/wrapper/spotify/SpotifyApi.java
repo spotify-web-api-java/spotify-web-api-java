@@ -1522,6 +1522,9 @@ public class SpotifyApi {
   /**
    * Get Spotify catalog information about albums that match a keyword string.
    *
+   * This method exists because the searches API returns the undocumented property {@code totalTracks}, which is
+   * included by this method's return type.
+   *
    * @param q The search query's keywords (and optional field filters and operators).
    * @return A {@link SearchAlbumsSpecialRequest.Builder}.
    */
