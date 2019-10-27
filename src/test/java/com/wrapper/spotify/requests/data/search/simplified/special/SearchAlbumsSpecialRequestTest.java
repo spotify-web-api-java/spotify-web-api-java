@@ -20,7 +20,7 @@ public class SearchAlbumsSpecialRequestTest extends AbstractDataTest<Paging<Albu
   private final SearchAlbumsSpecialRequest defaultRequest = SPOTIFY_API.searchAlbumsSpecial(Q)
           .setHttpManager(
                   TestUtil.MockedHttpManager.returningJson(
-                          "requests/data/search/simplified/SearchAlbumsSpecialRequest.json"))
+                          "requests/data/search/simplified/special/SearchAlbumsSpecialRequest.json"))
           .limit(LIMIT)
           .market(MARKET)
           .offset(OFFSET)
