@@ -80,8 +80,8 @@ public class ExternalId extends AbstractModelObject {
       Map<String, String> map = new Gson().fromJson(jsonObject, Map.class);
 
       return new ExternalId.Builder()
-              .setExternalIds(map)
-              .build();
+        .setExternalIds(map)
+        .build();
     }
   }
 }

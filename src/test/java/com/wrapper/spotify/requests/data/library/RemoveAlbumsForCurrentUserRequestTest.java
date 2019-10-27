@@ -16,11 +16,11 @@ import static org.junit.Assert.assertNull;
 @RunWith(MockitoJUnitRunner.class)
 public class RemoveAlbumsForCurrentUserRequestTest extends AbstractDataTest<String> {
   private final RemoveAlbumsForCurrentUserRequest defaultRequest = SPOTIFY_API
-          .removeAlbumsForCurrentUser(ID_ALBUM, ID_ALBUM)
-          .setHttpManager(
-                  TestUtil.MockedHttpManager.returningJson(
-                          "requests/data/library/RemoveAlbumsForCurrentUserRequest.json"))
-          .build();
+    .removeAlbumsForCurrentUser(ID_ALBUM, ID_ALBUM)
+    .setHttpManager(
+      TestUtil.MockedHttpManager.returningJson(
+        "requests/data/library/RemoveAlbumsForCurrentUserRequest.json"))
+    .build();
 
   public RemoveAlbumsForCurrentUserRequestTest() throws Exception {
   }
@@ -29,8 +29,8 @@ public class RemoveAlbumsForCurrentUserRequestTest extends AbstractDataTest<Stri
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
     assertEquals(
-            "https://api.spotify.com:443/v1/me/albums?ids=5zT1JLIj9E57p3e1rFm9Uq%2C5zT1JLIj9E57p3e1rFm9Uq",
-            defaultRequest.getUri().toString());
+      "https://api.spotify.com:443/v1/me/albums?ids=5zT1JLIj9E57p3e1rFm9Uq%2C5zT1JLIj9E57p3e1rFm9Uq",
+      defaultRequest.getUri().toString());
   }
 
   @Test
@@ -45,6 +45,6 @@ public class RemoveAlbumsForCurrentUserRequestTest extends AbstractDataTest<Stri
 
   public void shouldReturnDefault(final String string) {
     assertNull(
-            string);
+      string);
   }
 }

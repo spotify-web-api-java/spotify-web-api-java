@@ -162,27 +162,27 @@ public class AuthorizationCodeCredentials extends AbstractModelObject {
       }
 
       return new AuthorizationCodeCredentials.Builder()
-              .setAccessToken(
-                      hasAndNotNull(jsonObject, "access_token")
-                              ? jsonObject.get("access_token").getAsString()
-                              : null)
-              .setTokenType(
-                      hasAndNotNull(jsonObject, "token_type")
-                              ? jsonObject.get("token_type").getAsString()
-                              : null)
-              .setScope(
-                      hasAndNotNull(jsonObject, "scope")
-                              ? jsonObject.get("scope").getAsString()
-                              : null)
-              .setExpiresIn(
-                      hasAndNotNull(jsonObject, "expires_in")
-                              ? jsonObject.get("expires_in").getAsInt()
-                              : null)
-              .setRefreshToken(
-                      hasAndNotNull(jsonObject, "refresh_token")
-                              ? jsonObject.get("refresh_token").getAsString()
-                              : null)
-              .build();
+        .setAccessToken(
+          hasAndNotNull(jsonObject, "access_token")
+            ? jsonObject.get("access_token").getAsString()
+            : null)
+        .setTokenType(
+          hasAndNotNull(jsonObject, "token_type")
+            ? jsonObject.get("token_type").getAsString()
+            : null)
+        .setScope(
+          hasAndNotNull(jsonObject, "scope")
+            ? jsonObject.get("scope").getAsString()
+            : null)
+        .setExpiresIn(
+          hasAndNotNull(jsonObject, "expires_in")
+            ? jsonObject.get("expires_in").getAsInt()
+            : null)
+        .setRefreshToken(
+          hasAndNotNull(jsonObject, "refresh_token")
+            ? jsonObject.get("refresh_token").getAsString()
+            : null)
+        .build();
     }
   }
 }

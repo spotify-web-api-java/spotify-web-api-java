@@ -44,13 +44,13 @@ public abstract class AbstractRequest<T> implements IRequest<T> {
 
     URIBuilder uriBuilder = new URIBuilder();
     uriBuilder
-            .setScheme(builder.scheme)
-            .setHost(builder.host)
-            .setPort(builder.port)
-            .setPath(builder.path);
+      .setScheme(builder.scheme)
+      .setHost(builder.host)
+      .setPort(builder.port)
+      .setPath(builder.path);
     if (builder.queryParameters.size() > 0) {
       uriBuilder
-              .setParameters(builder.queryParameters);
+        .setParameters(builder.queryParameters);
     }
 
     try {
@@ -72,7 +72,7 @@ public abstract class AbstractRequest<T> implements IRequest<T> {
    */
   public CompletableFuture<T> executeAsync() {
     return SpotifyApiThreading.executeAsync(
-            this::execute);
+      this::execute);
   }
 
   public void initializeBody() throws UnsupportedEncodingException {
@@ -80,8 +80,8 @@ public abstract class AbstractRequest<T> implements IRequest<T> {
       switch (contentType.getMimeType()) {
         case "application/json":
           body = new StringEntity(
-                  bodyParametersToJson(bodyParameters),
-                  ContentType.APPLICATION_JSON);
+            bodyParametersToJson(bodyParameters),
+            ContentType.APPLICATION_JSON);
           break;
         case "application/x-www-form-urlencoded":
           body = new UrlEncodedFormEntity(bodyParameters);
@@ -108,8 +108,8 @@ public abstract class AbstractRequest<T> implements IRequest<T> {
   }
 
   public String getJson() throws
-          IOException,
-          SpotifyWebApiException {
+    IOException,
+    SpotifyWebApiException {
     String json = httpManager.get(uri, headers.toArray(new Header[0]));
 
     if (json == null || json.equals("")) {
@@ -120,8 +120,8 @@ public abstract class AbstractRequest<T> implements IRequest<T> {
   }
 
   public String postJson() throws
-          IOException,
-          SpotifyWebApiException {
+    IOException,
+    SpotifyWebApiException {
     initializeBody();
 
     String json = httpManager.post(uri, headers.toArray(new Header[0]), body);
@@ -134,8 +134,8 @@ public abstract class AbstractRequest<T> implements IRequest<T> {
   }
 
   public String putJson() throws
-          IOException,
-          SpotifyWebApiException {
+    IOException,
+    SpotifyWebApiException {
     initializeBody();
 
     String json = httpManager.put(uri, headers.toArray(new Header[0]), body);
@@ -148,8 +148,8 @@ public abstract class AbstractRequest<T> implements IRequest<T> {
   }
 
   public String deleteJson() throws
-          IOException,
-          SpotifyWebApiException {
+    IOException,
+    SpotifyWebApiException {
     initializeBody();
 
     String json = httpManager.delete(uri, headers.toArray(new Header[0]), body);
@@ -319,15 +319,15 @@ public abstract class AbstractRequest<T> implements IRequest<T> {
 
     private void listAddOnce(List<NameValuePair> nameValuePairs, NameValuePair newNameValuePair) {
       nameValuePairs.removeAll(nameValuePairs.stream()
-              .filter(nameValuePair -> nameValuePair.getName().equals(newNameValuePair.getName()))
-              .collect(Collectors.toList()));
+        .filter(nameValuePair -> nameValuePair.getName().equals(newNameValuePair.getName()))
+        .collect(Collectors.toList()));
       nameValuePairs.add(newNameValuePair);
     }
 
     private void listAddOnce(List<Header> headers, Header newHeader) {
       headers.removeAll(headers.stream()
-              .filter(header -> header.getName().equals(newHeader.getName()))
-              .collect(Collectors.toList()));
+        .filter(header -> header.getName().equals(newHeader.getName()))
+        .collect(Collectors.toList()));
       headers.add(newHeader);
     }
   }

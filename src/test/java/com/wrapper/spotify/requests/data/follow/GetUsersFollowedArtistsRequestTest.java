@@ -17,20 +17,20 @@ import static org.junit.Assert.*;
 @RunWith(MockitoJUnitRunner.class)
 public class GetUsersFollowedArtistsRequestTest extends AbstractDataTest<PagingCursorbased<Artist>> {
   private final GetUsersFollowedArtistsRequest defaultRequest = SPOTIFY_API.getUsersFollowedArtists(TYPE)
-          .setHttpManager(
-                  TestUtil.MockedHttpManager.returningJson(
-                          "requests/data/follow/GetUsersFollowedArtistsRequest.json"))
-          .after(ID_ARTIST)
-          .limit(LIMIT)
-          .build();
+    .setHttpManager(
+      TestUtil.MockedHttpManager.returningJson(
+        "requests/data/follow/GetUsersFollowedArtistsRequest.json"))
+    .after(ID_ARTIST)
+    .limit(LIMIT)
+    .build();
 
   private final GetUsersFollowedArtistsRequest emptyRequest = SPOTIFY_API.getUsersFollowedArtists(TYPE)
-          .setHttpManager(
-                  TestUtil.MockedHttpManager.returningJson(
-                          "requests/data/follow/GetUsersFollowedArtistsRequest_None.json"))
-          .after(ID_ARTIST)
-          .limit(LIMIT)
-          .build();
+    .setHttpManager(
+      TestUtil.MockedHttpManager.returningJson(
+        "requests/data/follow/GetUsersFollowedArtistsRequest_None.json"))
+    .after(ID_ARTIST)
+    .limit(LIMIT)
+    .build();
 
   public GetUsersFollowedArtistsRequestTest() throws Exception {
   }
@@ -39,8 +39,8 @@ public class GetUsersFollowedArtistsRequestTest extends AbstractDataTest<PagingC
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
     assertEquals(
-            "https://api.spotify.com:443/v1/me/following?type=ARTIST&after=0LcJLqbBmaGUft1e9Mm8HV&limit=10",
-            defaultRequest.getUri().toString());
+      "https://api.spotify.com:443/v1/me/following?type=ARTIST&after=0LcJLqbBmaGUft1e9Mm8HV&limit=10",
+      defaultRequest.getUri().toString());
   }
 
   @Test
@@ -55,22 +55,22 @@ public class GetUsersFollowedArtistsRequestTest extends AbstractDataTest<PagingC
 
   public void shouldReturnDefault(final PagingCursorbased<Artist> artistPagingCursorbased) {
     assertEquals(
-            "https://api.spotify.com/v1/users/thelinmichael/following?type=artist&limit=20",
-            artistPagingCursorbased.getHref());
+      "https://api.spotify.com/v1/users/thelinmichael/following?type=artist&limit=20",
+      artistPagingCursorbased.getHref());
     assertEquals(
-            1,
-            artistPagingCursorbased.getItems().length);
+      1,
+      artistPagingCursorbased.getItems().length);
     assertEquals(
-            20,
-            (int) artistPagingCursorbased.getLimit());
+      20,
+      (int) artistPagingCursorbased.getLimit());
     assertEquals(
-            "https://api.spotify.com/v1/users/thelinmichael/following?type=artist&after=0aV6DOiouImYTqrR5YlIqx&limit=20",
-            artistPagingCursorbased.getNext());
+      "https://api.spotify.com/v1/users/thelinmichael/following?type=artist&after=0aV6DOiouImYTqrR5YlIqx&limit=20",
+      artistPagingCursorbased.getNext());
     assertNotNull(
-            artistPagingCursorbased.getCursors());
+      artistPagingCursorbased.getCursors());
     assertEquals(
-            183,
-            (int) artistPagingCursorbased.getTotal());
+      183,
+      (int) artistPagingCursorbased.getTotal());
   }
 
   @Test
@@ -85,20 +85,20 @@ public class GetUsersFollowedArtistsRequestTest extends AbstractDataTest<PagingC
 
   public void shouldReturnEmpty(final PagingCursorbased<Artist> artistPagingCursorbased) {
     assertEquals(
-            "https://api.spotify.com/v1/me/following?type=artist&limit=10",
-            artistPagingCursorbased.getHref());
+      "https://api.spotify.com/v1/me/following?type=artist&limit=10",
+      artistPagingCursorbased.getHref());
     assertEquals(
-            0,
-            artistPagingCursorbased.getItems().length);
+      0,
+      artistPagingCursorbased.getItems().length);
     assertEquals(
-            10,
-            (int) artistPagingCursorbased.getLimit());
+      10,
+      (int) artistPagingCursorbased.getLimit());
     assertNull(
-            artistPagingCursorbased.getNext());
+      artistPagingCursorbased.getNext());
     assertNotNull(
-            artistPagingCursorbased.getCursors());
+      artistPagingCursorbased.getCursors());
     assertEquals(
-            0,
-            (int) artistPagingCursorbased.getTotal());
+      0,
+      (int) artistPagingCursorbased.getTotal());
   }
 }

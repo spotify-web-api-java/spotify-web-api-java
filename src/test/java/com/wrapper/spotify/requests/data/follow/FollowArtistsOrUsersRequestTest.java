@@ -20,18 +20,18 @@ import static org.junit.Assert.assertNull;
 @RunWith(MockitoJUnitRunner.class)
 public class FollowArtistsOrUsersRequestTest extends AbstractDataTest<String> {
   private final FollowArtistsOrUsersRequest defaultRequest = SPOTIFY_API
-          .followArtistsOrUsers(ModelObjectType.ARTIST, new String[]{ID_ARTIST, ID_ARTIST})
-          .setHttpManager(
-                  TestUtil.MockedHttpManager.returningJson(
-                          "requests/data/follow/FollowArtistsOrUsersRequestTest.json"))
-          .build();
+    .followArtistsOrUsers(ModelObjectType.ARTIST, new String[]{ID_ARTIST, ID_ARTIST})
+    .setHttpManager(
+      TestUtil.MockedHttpManager.returningJson(
+        "requests/data/follow/FollowArtistsOrUsersRequestTest.json"))
+    .build();
   private final FollowArtistsOrUsersRequest bodyRequest = SPOTIFY_API
-          .followArtistsOrUsers(ModelObjectType.ARTIST, new JsonParser()
-                  .parse("[\"" + ID_ARTIST + "\",\"" + ID_ARTIST + "\"]").getAsJsonArray())
-          .setHttpManager(
-                  TestUtil.MockedHttpManager.returningJson(
-                          "requests/data/follow/FollowArtistsOrUsersRequestTest.json"))
-          .build();
+    .followArtistsOrUsers(ModelObjectType.ARTIST, new JsonParser()
+      .parse("[\"" + ID_ARTIST + "\",\"" + ID_ARTIST + "\"]").getAsJsonArray())
+    .setHttpManager(
+      TestUtil.MockedHttpManager.returningJson(
+        "requests/data/follow/FollowArtistsOrUsersRequestTest.json"))
+    .build();
 
   public FollowArtistsOrUsersRequestTest() throws Exception {
   }
@@ -40,18 +40,18 @@ public class FollowArtistsOrUsersRequestTest extends AbstractDataTest<String> {
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
     assertEquals(
-            "https://api.spotify.com:443/v1/me/following?type=ARTIST&ids=0LcJLqbBmaGUft1e9Mm8HV%2C0LcJLqbBmaGUft1e9Mm8HV",
-            defaultRequest.getUri().toString());
+      "https://api.spotify.com:443/v1/me/following?type=ARTIST&ids=0LcJLqbBmaGUft1e9Mm8HV%2C0LcJLqbBmaGUft1e9Mm8HV",
+      defaultRequest.getUri().toString());
 
     assertHasAuthorizationHeader(bodyRequest);
     assertHasHeader(defaultRequest, "Content-Type", "application/json");
     assertHasBodyParameter(
-            bodyRequest,
-            "ids",
-            "[\"" + ID_ARTIST + "\",\"" + ID_ARTIST + "\"]");
+      bodyRequest,
+      "ids",
+      "[\"" + ID_ARTIST + "\",\"" + ID_ARTIST + "\"]");
     assertEquals(
-            "https://api.spotify.com:443/v1/me/following?type=ARTIST",
-            bodyRequest.getUri().toString());
+      "https://api.spotify.com:443/v1/me/following?type=ARTIST",
+      bodyRequest.getUri().toString());
   }
 
   @Test
@@ -66,6 +66,6 @@ public class FollowArtistsOrUsersRequestTest extends AbstractDataTest<String> {
 
   public void shouldReturnDefault(final String string) {
     assertNull(
-            string);
+      string);
   }
 }

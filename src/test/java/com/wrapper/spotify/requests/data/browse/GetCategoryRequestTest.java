@@ -16,12 +16,12 @@ import static org.junit.Assert.assertEquals;
 @RunWith(MockitoJUnitRunner.class)
 public class GetCategoryRequestTest extends AbstractDataTest<Category> {
   private final GetCategoryRequest defaultRequest = SPOTIFY_API.getCategory(CATEGORY_ID)
-          .setHttpManager(
-                  TestUtil.MockedHttpManager.returningJson(
-                          "requests/data/browse/GetCategoryRequest.json"))
-          .country(COUNTRY)
-          .locale(LOCALE)
-          .build();
+    .setHttpManager(
+      TestUtil.MockedHttpManager.returningJson(
+        "requests/data/browse/GetCategoryRequest.json"))
+    .country(COUNTRY)
+    .locale(LOCALE)
+    .build();
 
   public GetCategoryRequestTest() throws Exception {
   }
@@ -30,8 +30,8 @@ public class GetCategoryRequestTest extends AbstractDataTest<Category> {
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
     assertEquals(
-            "https://api.spotify.com:443/v1/browse/categories/dinner?country=SE&locale=sv_SE",
-            defaultRequest.getUri().toString());
+      "https://api.spotify.com:443/v1/browse/categories/dinner?country=SE&locale=sv_SE",
+      defaultRequest.getUri().toString());
   }
 
   @Test
@@ -46,16 +46,16 @@ public class GetCategoryRequestTest extends AbstractDataTest<Category> {
 
   public void shouldReturnDefault(final Category category) {
     assertEquals(
-            "https://api.spotify.com/v1/browse/categories/party",
-            category.getHref());
+      "https://api.spotify.com/v1/browse/categories/party",
+      category.getHref());
     assertEquals(
-            1,
-            category.getIcons().length);
+      1,
+      category.getIcons().length);
     assertEquals(
-            "party",
-            category.getId());
+      "party",
+      category.getId());
     assertEquals(
-            "Party",
-            category.getName());
+      "Party",
+      category.getName());
   }
 }

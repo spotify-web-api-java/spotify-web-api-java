@@ -33,16 +33,16 @@ public class GetAvailableGenreSeedsRequest extends AbstractDataRequest<String[]>
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
    */
   public String[] execute() throws
-          IOException,
-          SpotifyWebApiException {
+    IOException,
+    SpotifyWebApiException {
     List<String> genres = new Gson().fromJson(
-            new JsonParser()
-                    .parse(getJson())
-                    .getAsJsonObject()
-                    .get("genres")
-                    .getAsJsonArray(),
-            new TypeToken<List<String>>() {
-            }.getType()
+      new JsonParser()
+        .parse(getJson())
+        .getAsJsonObject()
+        .get("genres")
+        .getAsJsonArray(),
+      new TypeToken<List<String>>() {
+      }.getType()
     );
 
     return genres.toArray(new String[0]);

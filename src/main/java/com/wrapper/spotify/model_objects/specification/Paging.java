@@ -214,35 +214,35 @@ public class Paging<T> extends AbstractModelObject {
       }
 
       return new Paging.Builder<X>()
-              .setHref(
-                      hasAndNotNull(jsonObject, "href")
-                              ? jsonObject.get("href").getAsString()
-                              : null)
-              .setItems(
-                      createModelObjectArray(
-                              jsonObject.getAsJsonArray("items"), (Class<X>) ((ParameterizedType) getClass()
-                                      .getGenericSuperclass()).getActualTypeArguments()[0]))
-              .setLimit(
-                      hasAndNotNull(jsonObject, "limit")
-                              ? jsonObject.get("limit").getAsInt()
-                              : null)
-              .setNext(
-                      hasAndNotNull(jsonObject, "next")
-                              ? jsonObject.get("next").getAsString()
-                              : null)
-              .setOffset(
-                      hasAndNotNull(jsonObject, "offset")
-                              ? jsonObject.get("offset").getAsInt()
-                              : null)
-              .setPrevious(
-                      hasAndNotNull(jsonObject, "previous")
-                              ? jsonObject.get("previous").getAsString()
-                              : null)
-              .setTotal(
-                      hasAndNotNull(jsonObject, "total")
-                              ? jsonObject.get("total").getAsInt()
-                              : null)
-              .build();
+        .setHref(
+          hasAndNotNull(jsonObject, "href")
+            ? jsonObject.get("href").getAsString()
+            : null)
+        .setItems(
+          createModelObjectArray(
+            jsonObject.getAsJsonArray("items"), (Class<X>) ((ParameterizedType) getClass()
+              .getGenericSuperclass()).getActualTypeArguments()[0]))
+        .setLimit(
+          hasAndNotNull(jsonObject, "limit")
+            ? jsonObject.get("limit").getAsInt()
+            : null)
+        .setNext(
+          hasAndNotNull(jsonObject, "next")
+            ? jsonObject.get("next").getAsString()
+            : null)
+        .setOffset(
+          hasAndNotNull(jsonObject, "offset")
+            ? jsonObject.get("offset").getAsInt()
+            : null)
+        .setPrevious(
+          hasAndNotNull(jsonObject, "previous")
+            ? jsonObject.get("previous").getAsString()
+            : null)
+        .setTotal(
+          hasAndNotNull(jsonObject, "total")
+            ? jsonObject.get("total").getAsInt()
+            : null)
+        .build();
     }
   }
 }

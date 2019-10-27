@@ -15,11 +15,11 @@ import static org.junit.Assert.assertEquals;
 @RunWith(MockitoJUnitRunner.class)
 public class CheckUsersFollowPlaylistRequestTest extends AbstractDataTest<Boolean[]> {
   private final CheckUsersFollowPlaylistRequest defaultRequest = SPOTIFY_API
-          .checkUsersFollowPlaylist(ID_USER, ID_PLAYLIST, new String[]{ID_USER, ID_USER})
-          .setHttpManager(
-                  TestUtil.MockedHttpManager.returningJson(
-                          "requests/data/follow/CheckUsersFollowPlaylistRequest.json"))
-          .build();
+    .checkUsersFollowPlaylist(ID_USER, ID_PLAYLIST, new String[]{ID_USER, ID_USER})
+    .setHttpManager(
+      TestUtil.MockedHttpManager.returningJson(
+        "requests/data/follow/CheckUsersFollowPlaylistRequest.json"))
+    .build();
 
   public CheckUsersFollowPlaylistRequestTest() throws Exception {
   }
@@ -28,8 +28,8 @@ public class CheckUsersFollowPlaylistRequestTest extends AbstractDataTest<Boolea
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
     assertEquals(
-            "https://api.spotify.com:443/v1/users/abbaspotify/playlists/3AGOiaoRXMSjswCLtuNqv5/followers/contains?ids=abbaspotify%2Cabbaspotify",
-            defaultRequest.getUri().toString());
+      "https://api.spotify.com:443/v1/users/abbaspotify/playlists/3AGOiaoRXMSjswCLtuNqv5/followers/contains?ids=abbaspotify%2Cabbaspotify",
+      defaultRequest.getUri().toString());
   }
 
   @Test
@@ -44,7 +44,7 @@ public class CheckUsersFollowPlaylistRequestTest extends AbstractDataTest<Boolea
 
   public void shouldReturnDefault(final Boolean[] booleans) {
     assertEquals(
-            2,
-            booleans.length);
+      2,
+      booleans.length);
   }
 }

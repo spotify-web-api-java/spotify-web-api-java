@@ -15,10 +15,10 @@ import static org.junit.Assert.assertEquals;
 
 public class ClientCredentialsRequestTest extends AbstractAuthorizationTest<ClientCredentials> {
   private final ClientCredentialsRequest defaultRequest = SPOTIFY_API.clientCredentials()
-          .setHttpManager(TestUtil.MockedHttpManager.returningJson(
-                  "requests/authorization/client_credentials/ClientCredentials.json"))
-          .grant_type("client_credentials")
-          .build();
+    .setHttpManager(TestUtil.MockedHttpManager.returningJson(
+      "requests/authorization/client_credentials/ClientCredentials.json"))
+    .grant_type("client_credentials")
+    .build();
 
   public ClientCredentialsRequestTest() throws Exception {
   }
@@ -28,12 +28,12 @@ public class ClientCredentialsRequestTest extends AbstractAuthorizationTest<Clie
     assertHasAuthorizationHeader(defaultRequest);
     assertHasHeader(defaultRequest, "Content-Type", "application/x-www-form-urlencoded");
     assertHasBodyParameter(
-            defaultRequest,
-            "grant_type",
-            "client_credentials");
+      defaultRequest,
+      "grant_type",
+      "client_credentials");
     assertEquals(
-            "https://accounts.spotify.com:443/api/token",
-            defaultRequest.getUri().toString());
+      "https://accounts.spotify.com:443/api/token",
+      defaultRequest.getUri().toString());
   }
 
   @Test
@@ -48,13 +48,13 @@ public class ClientCredentialsRequestTest extends AbstractAuthorizationTest<Clie
 
   public void shouldReturnDefault(final ClientCredentials clientCredentials) {
     assertEquals(
-            "taHZ2SdB-bPA3FsK3D7ZN5npZS47cMy-IEySVEGttOhXmqaVAIo0ESvTCLjLBifhHOHOIuhFUKPW1WMDP7w6dj3MAZdWT8CLI2MkZaXbYLTeoDvXesf2eeiLYPBGdx8tIwQJKgV8XdnzH_DONk",
-            clientCredentials.getAccessToken());
+      "taHZ2SdB-bPA3FsK3D7ZN5npZS47cMy-IEySVEGttOhXmqaVAIo0ESvTCLjLBifhHOHOIuhFUKPW1WMDP7w6dj3MAZdWT8CLI2MkZaXbYLTeoDvXesf2eeiLYPBGdx8tIwQJKgV8XdnzH_DONk",
+      clientCredentials.getAccessToken());
     assertEquals(
-            "Bearer",
-            clientCredentials.getTokenType());
+      "Bearer",
+      clientCredentials.getTokenType());
     assertEquals(
-            3600,
-            (int) clientCredentials.getExpiresIn());
+      3600,
+      (int) clientCredentials.getExpiresIn());
   }
 }

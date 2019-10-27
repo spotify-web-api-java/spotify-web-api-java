@@ -31,8 +31,8 @@ public class GetArtistsTopTracksRequest extends AbstractDataRequest<Track[]> {
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
    */
   public Track[] execute() throws
-          IOException,
-          SpotifyWebApiException {
+    IOException,
+    SpotifyWebApiException {
     return new Track.JsonUtil().createModelObjectArray(getJson(), "tracks");
   }
 

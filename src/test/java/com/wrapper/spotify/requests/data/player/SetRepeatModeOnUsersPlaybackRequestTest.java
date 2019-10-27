@@ -17,12 +17,12 @@ import static org.junit.Assert.assertNull;
 @RunWith(MockitoJUnitRunner.class)
 public class SetRepeatModeOnUsersPlaybackRequestTest extends AbstractDataTest<String> {
   private final SetRepeatModeOnUsersPlaybackRequest defaultRequest = SPOTIFY_API
-          .setRepeatModeOnUsersPlayback(STATE)
-          .setHttpManager(
-                  TestUtil.MockedHttpManager.returningJson(
-                          "requests/data/player/SetRepeatModeOnUsersPlaybackRequest.json"))
-          .device_id(DEVICE_ID)
-          .build();
+    .setRepeatModeOnUsersPlayback(STATE)
+    .setHttpManager(
+      TestUtil.MockedHttpManager.returningJson(
+        "requests/data/player/SetRepeatModeOnUsersPlaybackRequest.json"))
+    .device_id(DEVICE_ID)
+    .build();
 
   public SetRepeatModeOnUsersPlaybackRequestTest() throws Exception {
   }
@@ -32,8 +32,8 @@ public class SetRepeatModeOnUsersPlaybackRequestTest extends AbstractDataTest<St
     assertHasAuthorizationHeader(defaultRequest);
     assertHasHeader(defaultRequest, "Content-Type", "application/json");
     assertEquals(
-            "https://api.spotify.com:443/v1/me/player/repeat?state=track&device_id=5fbb3ba6aa454b5534c4ba43a8c7e8e45a63ad0e",
-            defaultRequest.getUri().toString());
+      "https://api.spotify.com:443/v1/me/player/repeat?state=track&device_id=5fbb3ba6aa454b5534c4ba43a8c7e8e45a63ad0e",
+      defaultRequest.getUri().toString());
   }
 
   @Test
@@ -48,6 +48,6 @@ public class SetRepeatModeOnUsersPlaybackRequestTest extends AbstractDataTest<St
 
   public void shouldReturnDefault(final String string) {
     assertNull(
-            string);
+      string);
   }
 }

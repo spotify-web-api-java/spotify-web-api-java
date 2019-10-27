@@ -479,81 +479,81 @@ public class AudioFeatures extends AbstractModelObject {
       }
 
       return new AudioFeatures.Builder()
-              .setAcousticness(
-                      hasAndNotNull(jsonObject, "acousticness")
-                              ? jsonObject.get("acousticness").getAsFloat()
-                              : null)
-              .setAnalysisUrl(
-                      hasAndNotNull(jsonObject, "analysis_url")
-                              ? jsonObject.get("analysis_url").getAsString()
-                              : null)
-              .setDanceability(
-                      hasAndNotNull(jsonObject, "danceability")
-                              ? jsonObject.get("danceability").getAsFloat()
-                              : null)
-              .setDurationMs(
-                      hasAndNotNull(jsonObject, "duration_ms")
-                              ? jsonObject.get("duration_ms").getAsInt()
-                              : null)
-              .setEnergy(
-                      hasAndNotNull(jsonObject, "energy")
-                              ? jsonObject.get("energy").getAsFloat()
-                              : null)
-              .setId(
-                      hasAndNotNull(jsonObject, "id")
-                              ? jsonObject.get("id").getAsString()
-                              : null)
-              .setInstrumentalness(
-                      hasAndNotNull(jsonObject, "instrumentalness")
-                              ? jsonObject.get("instrumentalness").getAsFloat()
-                              : null)
-              .setKey(
-                      hasAndNotNull(jsonObject, "key")
-                              ? jsonObject.get("key").getAsInt()
-                              : null)
-              .setLiveness(
-                      hasAndNotNull(jsonObject, "liveness")
-                              ? jsonObject.get("liveness").getAsFloat()
-                              : null)
-              .setLoudness(
-                      hasAndNotNull(jsonObject, "loudness")
-                              ? jsonObject.get("loudness").getAsFloat()
-                              : null)
-              .setMode(
-                      hasAndNotNull(jsonObject, "mode")
-                              ? Modality.keyOf(
-                              jsonObject.get("mode").getAsInt())
-                              : null)
-              .setSpeechiness(
-                      hasAndNotNull(jsonObject, "speechiness")
-                              ? jsonObject.get("speechiness").getAsFloat()
-                              : null)
-              .setTempo(
-                      hasAndNotNull(jsonObject, "tempo")
-                              ? jsonObject.get("tempo").getAsFloat()
-                              : null)
-              .setTimeSignature(
-                      hasAndNotNull(jsonObject, "time_signature")
-                              ? jsonObject.get("time_signature").getAsInt()
-                              : null)
-              .setTrackHref(
-                      hasAndNotNull(jsonObject, "track_href")
-                              ? jsonObject.get("track_href").getAsString()
-                              : null)
-              .setType(
-                      hasAndNotNull(jsonObject, "type")
-                              ? ModelObjectType.keyOf(
-                              jsonObject.get("type").getAsString().toLowerCase())
-                              : null)
-              .setUri(
-                      hasAndNotNull(jsonObject, "uri")
-                              ? jsonObject.get("uri").getAsString()
-                              : null)
-              .setValence(
-                      hasAndNotNull(jsonObject, "valence")
-                              ? jsonObject.get("valence").getAsFloat()
-                              : null)
-              .build();
+        .setAcousticness(
+          hasAndNotNull(jsonObject, "acousticness")
+            ? jsonObject.get("acousticness").getAsFloat()
+            : null)
+        .setAnalysisUrl(
+          hasAndNotNull(jsonObject, "analysis_url")
+            ? jsonObject.get("analysis_url").getAsString()
+            : null)
+        .setDanceability(
+          hasAndNotNull(jsonObject, "danceability")
+            ? jsonObject.get("danceability").getAsFloat()
+            : null)
+        .setDurationMs(
+          hasAndNotNull(jsonObject, "duration_ms")
+            ? jsonObject.get("duration_ms").getAsInt()
+            : null)
+        .setEnergy(
+          hasAndNotNull(jsonObject, "energy")
+            ? jsonObject.get("energy").getAsFloat()
+            : null)
+        .setId(
+          hasAndNotNull(jsonObject, "id")
+            ? jsonObject.get("id").getAsString()
+            : null)
+        .setInstrumentalness(
+          hasAndNotNull(jsonObject, "instrumentalness")
+            ? jsonObject.get("instrumentalness").getAsFloat()
+            : null)
+        .setKey(
+          hasAndNotNull(jsonObject, "key")
+            ? jsonObject.get("key").getAsInt()
+            : null)
+        .setLiveness(
+          hasAndNotNull(jsonObject, "liveness")
+            ? jsonObject.get("liveness").getAsFloat()
+            : null)
+        .setLoudness(
+          hasAndNotNull(jsonObject, "loudness")
+            ? jsonObject.get("loudness").getAsFloat()
+            : null)
+        .setMode(
+          hasAndNotNull(jsonObject, "mode")
+            ? Modality.keyOf(
+            jsonObject.get("mode").getAsInt())
+            : null)
+        .setSpeechiness(
+          hasAndNotNull(jsonObject, "speechiness")
+            ? jsonObject.get("speechiness").getAsFloat()
+            : null)
+        .setTempo(
+          hasAndNotNull(jsonObject, "tempo")
+            ? jsonObject.get("tempo").getAsFloat()
+            : null)
+        .setTimeSignature(
+          hasAndNotNull(jsonObject, "time_signature")
+            ? jsonObject.get("time_signature").getAsInt()
+            : null)
+        .setTrackHref(
+          hasAndNotNull(jsonObject, "track_href")
+            ? jsonObject.get("track_href").getAsString()
+            : null)
+        .setType(
+          hasAndNotNull(jsonObject, "type")
+            ? ModelObjectType.keyOf(
+            jsonObject.get("type").getAsString().toLowerCase())
+            : null)
+        .setUri(
+          hasAndNotNull(jsonObject, "uri")
+            ? jsonObject.get("uri").getAsString()
+            : null)
+        .setValence(
+          hasAndNotNull(jsonObject, "valence")
+            ? jsonObject.get("valence").getAsFloat()
+            : null)
+        .build();
     }
   }
 }

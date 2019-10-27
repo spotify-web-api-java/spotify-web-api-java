@@ -5,5 +5,6 @@ import com.wrapper.spotify.requests.IRequest;
 
 public interface IPagingCursorbasedRequestBuilder<T, A, Builder> extends IRequest.Builder<PagingCursorbased<T>, Builder> {
   Builder limit(final Integer limit);
+
   Builder after(final A after);
 }

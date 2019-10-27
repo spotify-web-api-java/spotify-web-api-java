@@ -17,12 +17,12 @@ import static org.junit.Assert.assertNull;
 @RunWith(MockitoJUnitRunner.class)
 public class PauseUsersPlaybackRequestTest extends AbstractDataTest<String> {
   private final PauseUsersPlaybackRequest defaultRequest = SPOTIFY_API
-          .pauseUsersPlayback()
-          .setHttpManager(
-                  TestUtil.MockedHttpManager.returningJson(
-                          "requests/data/player/PauseUsersPlaybackRequest.json"))
-          .device_id(DEVICE_ID)
-          .build();
+    .pauseUsersPlayback()
+    .setHttpManager(
+      TestUtil.MockedHttpManager.returningJson(
+        "requests/data/player/PauseUsersPlaybackRequest.json"))
+    .device_id(DEVICE_ID)
+    .build();
 
   public PauseUsersPlaybackRequestTest() throws Exception {
   }
@@ -32,8 +32,8 @@ public class PauseUsersPlaybackRequestTest extends AbstractDataTest<String> {
     assertHasAuthorizationHeader(defaultRequest);
     assertHasHeader(defaultRequest, "Content-Type", "application/json");
     assertEquals(
-            "https://api.spotify.com:443/v1/me/player/pause?device_id=5fbb3ba6aa454b5534c4ba43a8c7e8e45a63ad0e",
-            defaultRequest.getUri().toString());
+      "https://api.spotify.com:443/v1/me/player/pause?device_id=5fbb3ba6aa454b5534c4ba43a8c7e8e45a63ad0e",
+      defaultRequest.getUri().toString());
   }
 
   @Test
@@ -48,6 +48,6 @@ public class PauseUsersPlaybackRequestTest extends AbstractDataTest<String> {
 
   public void shouldReturnDefault(final String string) {
     assertNull(
-            string);
+      string);
   }
 }

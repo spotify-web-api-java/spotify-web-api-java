@@ -19,14 +19,14 @@ import static org.junit.Assert.*;
 @RunWith(MockitoJUnitRunner.class)
 public class CreatePlaylistRequestTest extends AbstractDataTest<Playlist> {
   private final CreatePlaylistRequest defaultRequest = SPOTIFY_API
-          .createPlaylist(ID_USER, NAME)
-          .setHttpManager(
-                  TestUtil.MockedHttpManager.returningJson(
-                          "requests/data/playlists/CreatePlaylistRequest.json"))
-          .collaborative(COLLABORATIVE)
-          .description(DESCRIPTION)
-          .public_(PUBLIC)
-          .build();
+    .createPlaylist(ID_USER, NAME)
+    .setHttpManager(
+      TestUtil.MockedHttpManager.returningJson(
+        "requests/data/playlists/CreatePlaylistRequest.json"))
+    .collaborative(COLLABORATIVE)
+    .description(DESCRIPTION)
+    .public_(PUBLIC)
+    .build();
 
   public CreatePlaylistRequestTest() throws Exception {
   }
@@ -36,24 +36,24 @@ public class CreatePlaylistRequestTest extends AbstractDataTest<Playlist> {
     assertHasAuthorizationHeader(defaultRequest);
     assertHasHeader(defaultRequest, "Content-Type", "application/json");
     assertHasBodyParameter(
-            defaultRequest,
-            "name",
-            NAME);
+      defaultRequest,
+      "name",
+      NAME);
     assertHasBodyParameter(
-            defaultRequest,
-            "public",
-            PUBLIC);
+      defaultRequest,
+      "public",
+      PUBLIC);
     assertHasBodyParameter(
-            defaultRequest,
-            "collaborative",
-            COLLABORATIVE);
+      defaultRequest,
+      "collaborative",
+      COLLABORATIVE);
     assertHasBodyParameter(
-            defaultRequest,
-            "description",
-            DESCRIPTION);
+      defaultRequest,
+      "description",
+      DESCRIPTION);
     assertEquals(
-            "https://api.spotify.com:443/v1/users/abbaspotify/playlists",
-            defaultRequest.getUri().toString());
+      "https://api.spotify.com:443/v1/users/abbaspotify/playlists",
+      defaultRequest.getUri().toString());
   }
 
   @Test
@@ -68,39 +68,39 @@ public class CreatePlaylistRequestTest extends AbstractDataTest<Playlist> {
 
   public void shouldReturnDefault(final Playlist playlist) {
     assertFalse(
-            playlist.getIsCollaborative());
+      playlist.getIsCollaborative());
     assertNull(
-            playlist.getDescription());
+      playlist.getDescription());
     assertNotNull(
-            playlist.getExternalUrls());
+      playlist.getExternalUrls());
     assertNotNull(
-            playlist.getFollowers());
+      playlist.getFollowers());
     assertEquals(
-            "https://api.spotify.com/v1/users/thelinmichael/playlists/7d2D2S200NyUE5KYs80PwO",
-            playlist.getHref());
+      "https://api.spotify.com/v1/users/thelinmichael/playlists/7d2D2S200NyUE5KYs80PwO",
+      playlist.getHref());
     assertEquals(
-            "7d2D2S200NyUE5KYs80PwO",
-            playlist.getId());
+      "7d2D2S200NyUE5KYs80PwO",
+      playlist.getId());
     assertEquals(
-            0,
-            playlist.getImages().length);
+      0,
+      playlist.getImages().length);
     assertEquals(
-            "A New Playlist",
-            playlist.getName());
+      "A New Playlist",
+      playlist.getName());
     assertNotNull(
-            playlist.getOwner());
+      playlist.getOwner());
     assertFalse(
-            playlist.getIsPublicAccess());
+      playlist.getIsPublicAccess());
     assertEquals(
-            "s0o3TSuYnRLl2jch+oA4OEbKwq/fNxhGBkSPnvhZdmWjNV0q3uCAWuGIhEx8SHIx",
-            playlist.getSnapshotId());
+      "s0o3TSuYnRLl2jch+oA4OEbKwq/fNxhGBkSPnvhZdmWjNV0q3uCAWuGIhEx8SHIx",
+      playlist.getSnapshotId());
     assertNotNull(
-            playlist.getTracks());
+      playlist.getTracks());
     assertEquals(
-            ModelObjectType.PLAYLIST,
-            playlist.getType());
+      ModelObjectType.PLAYLIST,
+      playlist.getType());
     assertEquals(
-            "spotify:user:thelinmichael:playlist:7d2D2S200NyUE5KYs80PwO",
-            playlist.getUri());
+      "spotify:user:thelinmichael:playlist:7d2D2S200NyUE5KYs80PwO",
+      playlist.getUri());
   }
 }

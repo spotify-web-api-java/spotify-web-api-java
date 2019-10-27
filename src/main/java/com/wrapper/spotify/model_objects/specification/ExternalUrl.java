@@ -88,8 +88,8 @@ public class ExternalUrl extends AbstractModelObject {
       Map<String, String> map = new Gson().fromJson(jsonObject, Map.class);
 
       return new ExternalUrl.Builder()
-              .setExternalUrls(map)
-              .build();
+        .setExternalUrls(map)
+        .build();
     }
   }
 

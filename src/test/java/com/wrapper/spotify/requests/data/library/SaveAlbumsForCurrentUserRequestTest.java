@@ -19,18 +19,18 @@ import static org.junit.Assert.assertNull;
 @RunWith(MockitoJUnitRunner.class)
 public class SaveAlbumsForCurrentUserRequestTest extends AbstractDataTest<String> {
   private final SaveAlbumsForCurrentUserRequest defaultRequest = SPOTIFY_API
-          .saveAlbumsForCurrentUser(ID_ALBUM, ID_ALBUM)
-          .setHttpManager(
-                  TestUtil.MockedHttpManager.returningJson(
-                          "requests/data/library/SaveAlbumsForCurrentUserRequest.json"))
-          .build();
+    .saveAlbumsForCurrentUser(ID_ALBUM, ID_ALBUM)
+    .setHttpManager(
+      TestUtil.MockedHttpManager.returningJson(
+        "requests/data/library/SaveAlbumsForCurrentUserRequest.json"))
+    .build();
   private final SaveAlbumsForCurrentUserRequest bodyRequest = SPOTIFY_API
-          .saveAlbumsForCurrentUser(new JsonParser()
-                  .parse("[\"" + ID_ALBUM + "\",\"" + ID_ALBUM + "\"]").getAsJsonArray())
-          .setHttpManager(
-                  TestUtil.MockedHttpManager.returningJson(
-                          "requests/data/follow/FollowArtistsOrUsersRequestTest.json"))
-          .build();
+    .saveAlbumsForCurrentUser(new JsonParser()
+      .parse("[\"" + ID_ALBUM + "\",\"" + ID_ALBUM + "\"]").getAsJsonArray())
+    .setHttpManager(
+      TestUtil.MockedHttpManager.returningJson(
+        "requests/data/follow/FollowArtistsOrUsersRequestTest.json"))
+    .build();
 
   public SaveAlbumsForCurrentUserRequestTest() throws Exception {
   }
@@ -39,18 +39,18 @@ public class SaveAlbumsForCurrentUserRequestTest extends AbstractDataTest<String
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
     assertEquals(
-            "https://api.spotify.com:443/v1/me/albums?ids=5zT1JLIj9E57p3e1rFm9Uq%2C5zT1JLIj9E57p3e1rFm9Uq",
-            defaultRequest.getUri().toString());
+      "https://api.spotify.com:443/v1/me/albums?ids=5zT1JLIj9E57p3e1rFm9Uq%2C5zT1JLIj9E57p3e1rFm9Uq",
+      defaultRequest.getUri().toString());
 
     assertHasAuthorizationHeader(bodyRequest);
     assertHasHeader(defaultRequest, "Content-Type", "application/json");
     assertHasBodyParameter(
-            bodyRequest,
-            "ids",
-            "[\"" + ID_ALBUM + "\",\"" + ID_ALBUM + "\"]");
+      bodyRequest,
+      "ids",
+      "[\"" + ID_ALBUM + "\",\"" + ID_ALBUM + "\"]");
     assertEquals(
-            "https://api.spotify.com:443/v1/me/albums",
-            bodyRequest.getUri().toString());
+      "https://api.spotify.com:443/v1/me/albums",
+      bodyRequest.getUri().toString());
   }
 
   @Test
@@ -65,6 +65,6 @@ public class SaveAlbumsForCurrentUserRequestTest extends AbstractDataTest<String
 
   public void shouldReturnDefault(final String string) {
     assertNull(
-            string);
+      string);
   }
 }

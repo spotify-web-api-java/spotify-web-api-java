@@ -469,90 +469,90 @@ public class Album extends AbstractModelObject {
       }
 
       return new Album.Builder()
-              .setAlbumType(
-                      hasAndNotNull(jsonObject, "album_type")
-                              ? AlbumType.keyOf(
-                              jsonObject.get("album_type").getAsString().toLowerCase())
-                              : null)
-              .setArtists(
-                      hasAndNotNull(jsonObject, "artists")
-                              ? new ArtistSimplified.JsonUtil().createModelObjectArray(
-                              jsonObject.getAsJsonArray("artists"))
-                              : null)
-              .setAvailableMarkets(
-                      hasAndNotNull(jsonObject, "available_markets")
-                              ? new Gson().fromJson(
-                              jsonObject.getAsJsonArray("available_markets"), CountryCode[].class)
-                              : null)
-              .setCopyrights(
-                      hasAndNotNull(jsonObject, "copyrights")
-                              ? new Copyright.JsonUtil().createModelObjectArray(
-                              jsonObject.getAsJsonArray("copyrights"))
-                              : null)
-              .setExternalIds(
-                      hasAndNotNull(jsonObject, "external_ids")
-                              ? new ExternalId.JsonUtil().createModelObject(
-                              jsonObject.getAsJsonObject("external_ids"))
-                              : null)
-              .setExternalUrls(
-                      hasAndNotNull(jsonObject, "external_urls")
-                              ? new ExternalUrl.JsonUtil().createModelObject(
-                              jsonObject.getAsJsonObject("external_urls"))
-                              : null)
-              .setGenres(
-                      hasAndNotNull(jsonObject, "genres")
-                              ? new Gson().fromJson(
-                              jsonObject.getAsJsonArray("genres"), String[].class)
-                              : null)
-              .setHref(
-                      hasAndNotNull(jsonObject, "href")
-                              ? jsonObject.get("href").getAsString()
-                              : null)
-              .setId(
-                      hasAndNotNull(jsonObject, "id")
-                              ? jsonObject.get("id").getAsString()
-                              : null)
-              .setImages(
-                      hasAndNotNull(jsonObject, "images")
-                              ? new Image.JsonUtil().createModelObjectArray(
-                              jsonObject.getAsJsonArray("images"))
-                              : null)
-              .setLabel(
-                      hasAndNotNull(jsonObject, "label")
-                              ? jsonObject.get("label").getAsString()
-                              : null)
-              .setName(
-                      hasAndNotNull(jsonObject, "name")
-                              ? jsonObject.get("name").getAsString()
-                              : null)
-              .setPopularity(
-                      hasAndNotNull(jsonObject, "popularity")
-                              ? jsonObject.get("popularity").getAsInt()
-                              : null)
-              .setReleaseDate(
-                      hasAndNotNull(jsonObject, "release_date")
-                              ? jsonObject.get("release_date").getAsString()
-                              : null)
-              .setReleaseDatePrecision(
-                      hasAndNotNull(jsonObject, "release_date_precision")
-                              ? ReleaseDatePrecision.keyOf(
-                              jsonObject.get("release_date_precision").getAsString().toLowerCase())
-                              : null)
-              .setTracks(
-                      hasAndNotNull(jsonObject, "tracks")
-                              ? new TrackSimplified.JsonUtil().createModelObjectPaging(
-                              jsonObject.getAsJsonObject("tracks"))
-                              : null)
-              .setType(
-                      hasAndNotNull(jsonObject, "type")
-                              ? ModelObjectType.keyOf(
-                              jsonObject.get("type").getAsString().toLowerCase())
-                              : null)
-              .setUri(
-                      hasAndNotNull(jsonObject, "uri")
-                              ? jsonObject.get("uri").getAsString()
-                              : null)
-              .build();
+        .setAlbumType(
+          hasAndNotNull(jsonObject, "album_type")
+            ? AlbumType.keyOf(
+            jsonObject.get("album_type").getAsString().toLowerCase())
+            : null)
+        .setArtists(
+          hasAndNotNull(jsonObject, "artists")
+            ? new ArtistSimplified.JsonUtil().createModelObjectArray(
+            jsonObject.getAsJsonArray("artists"))
+            : null)
+        .setAvailableMarkets(
+          hasAndNotNull(jsonObject, "available_markets")
+            ? new Gson().fromJson(
+            jsonObject.getAsJsonArray("available_markets"), CountryCode[].class)
+            : null)
+        .setCopyrights(
+          hasAndNotNull(jsonObject, "copyrights")
+            ? new Copyright.JsonUtil().createModelObjectArray(
+            jsonObject.getAsJsonArray("copyrights"))
+            : null)
+        .setExternalIds(
+          hasAndNotNull(jsonObject, "external_ids")
+            ? new ExternalId.JsonUtil().createModelObject(
+            jsonObject.getAsJsonObject("external_ids"))
+            : null)
+        .setExternalUrls(
+          hasAndNotNull(jsonObject, "external_urls")
+            ? new ExternalUrl.JsonUtil().createModelObject(
+            jsonObject.getAsJsonObject("external_urls"))
+            : null)
+        .setGenres(
+          hasAndNotNull(jsonObject, "genres")
+            ? new Gson().fromJson(
+            jsonObject.getAsJsonArray("genres"), String[].class)
+            : null)
+        .setHref(
+          hasAndNotNull(jsonObject, "href")
+            ? jsonObject.get("href").getAsString()
+            : null)
+        .setId(
+          hasAndNotNull(jsonObject, "id")
+            ? jsonObject.get("id").getAsString()
+            : null)
+        .setImages(
+          hasAndNotNull(jsonObject, "images")
+            ? new Image.JsonUtil().createModelObjectArray(
+            jsonObject.getAsJsonArray("images"))
+            : null)
+        .setLabel(
+          hasAndNotNull(jsonObject, "label")
+            ? jsonObject.get("label").getAsString()
+            : null)
+        .setName(
+          hasAndNotNull(jsonObject, "name")
+            ? jsonObject.get("name").getAsString()
+            : null)
+        .setPopularity(
+          hasAndNotNull(jsonObject, "popularity")
+            ? jsonObject.get("popularity").getAsInt()
+            : null)
+        .setReleaseDate(
+          hasAndNotNull(jsonObject, "release_date")
+            ? jsonObject.get("release_date").getAsString()
+            : null)
+        .setReleaseDatePrecision(
+          hasAndNotNull(jsonObject, "release_date_precision")
+            ? ReleaseDatePrecision.keyOf(
+            jsonObject.get("release_date_precision").getAsString().toLowerCase())
+            : null)
+        .setTracks(
+          hasAndNotNull(jsonObject, "tracks")
+            ? new TrackSimplified.JsonUtil().createModelObjectPaging(
+            jsonObject.getAsJsonObject("tracks"))
+            : null)
+        .setType(
+          hasAndNotNull(jsonObject, "type")
+            ? ModelObjectType.keyOf(
+            jsonObject.get("type").getAsString().toLowerCase())
+            : null)
+        .setUri(
+          hasAndNotNull(jsonObject, "uri")
+            ? jsonObject.get("uri").getAsString()
+            : null)
+        .build();
     }
   }
 }

@@ -143,25 +143,25 @@ public class PlaylistTrack extends AbstractModelObject {
 
       try {
         return new Builder()
-                .setAddedAt(
-                        hasAndNotNull(jsonObject, "added_at")
-                                ? SpotifyApi.parseDefaultDate(jsonObject.get("added_at").getAsString())
-                                : null)
-                .setAddedBy(
-                        hasAndNotNull(jsonObject, "added_by")
-                                ? new User.JsonUtil().createModelObject(
-                                jsonObject.get("added_by").getAsJsonObject())
-                                : null)
-                .setIsLocal(
-                        hasAndNotNull(jsonObject, "is_local")
-                                ? jsonObject.get("is_local").getAsBoolean()
-                                : null)
-                .setTrack(
-                        hasAndNotNull(jsonObject, "track")
-                                ? new Track.JsonUtil().createModelObject(
-                                jsonObject.getAsJsonObject("track"))
-                                : null)
-                .build();
+          .setAddedAt(
+            hasAndNotNull(jsonObject, "added_at")
+              ? SpotifyApi.parseDefaultDate(jsonObject.get("added_at").getAsString())
+              : null)
+          .setAddedBy(
+            hasAndNotNull(jsonObject, "added_by")
+              ? new User.JsonUtil().createModelObject(
+              jsonObject.get("added_by").getAsJsonObject())
+              : null)
+          .setIsLocal(
+            hasAndNotNull(jsonObject, "is_local")
+              ? jsonObject.get("is_local").getAsBoolean()
+              : null)
+          .setTrack(
+            hasAndNotNull(jsonObject, "track")
+              ? new Track.JsonUtil().createModelObject(
+              jsonObject.getAsJsonObject("track"))
+              : null)
+          .build();
       } catch (ParseException e) {
         SpotifyApi.LOGGER.log(Level.SEVERE, e.getMessage());
         return null;

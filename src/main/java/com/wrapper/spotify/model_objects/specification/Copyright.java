@@ -90,16 +90,16 @@ public class Copyright extends AbstractModelObject {
       }
 
       return new Copyright.Builder()
-              .setText(
-                      hasAndNotNull(jsonObject, "text")
-                              ? jsonObject.get("text").getAsString()
-                              : null)
-              .setType(
-                      hasAndNotNull(jsonObject, "type")
-                              ? CopyrightType.keyOf(
-                              jsonObject.get("type").getAsString().toLowerCase())
-                              : null)
-              .build();
+        .setText(
+          hasAndNotNull(jsonObject, "text")
+            ? jsonObject.get("text").getAsString()
+            : null)
+        .setType(
+          hasAndNotNull(jsonObject, "type")
+            ? CopyrightType.keyOf(
+            jsonObject.get("type").getAsString().toLowerCase())
+            : null)
+        .build();
     }
   }
 }

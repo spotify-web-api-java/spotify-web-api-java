@@ -34,8 +34,8 @@ public class GetListOfFeaturedPlaylistsRequest extends AbstractDataRequest<Featu
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
    */
   public FeaturedPlaylists execute() throws
-          IOException,
-          SpotifyWebApiException {
+    IOException,
+    SpotifyWebApiException {
     return new FeaturedPlaylists.JsonUtil().createModelObject(getJson());
   }
 

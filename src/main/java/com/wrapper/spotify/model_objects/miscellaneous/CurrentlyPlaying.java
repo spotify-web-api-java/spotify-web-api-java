@@ -159,29 +159,29 @@ public class CurrentlyPlaying extends AbstractModelObject {
       }
 
       return new CurrentlyPlaying.Builder()
-              .setContext(
-                      hasAndNotNull(jsonObject, "context")
-                              ? new Context.JsonUtil().createModelObject(
-                              jsonObject.getAsJsonObject("context"))
-                              : null)
-              .setTimestamp(
-                      hasAndNotNull(jsonObject, "timestamp")
-                              ? jsonObject.get("timestamp").getAsLong()
-                              : null)
-              .setProgress_ms(
-                      hasAndNotNull(jsonObject, "progress_ms")
-                              ? jsonObject.get("progress_ms").getAsInt()
-                              : null)
-              .setIs_playing(
-                      hasAndNotNull(jsonObject, "is_playing")
-                              ? jsonObject.get("is_playing").getAsBoolean()
-                              : null)
-              .setItem(
-                      hasAndNotNull(jsonObject, "item")
-                              ? new Track.JsonUtil().createModelObject(
-                              jsonObject.getAsJsonObject("item"))
-                              : null)
-              .build();
+        .setContext(
+          hasAndNotNull(jsonObject, "context")
+            ? new Context.JsonUtil().createModelObject(
+            jsonObject.getAsJsonObject("context"))
+            : null)
+        .setTimestamp(
+          hasAndNotNull(jsonObject, "timestamp")
+            ? jsonObject.get("timestamp").getAsLong()
+            : null)
+        .setProgress_ms(
+          hasAndNotNull(jsonObject, "progress_ms")
+            ? jsonObject.get("progress_ms").getAsInt()
+            : null)
+        .setIs_playing(
+          hasAndNotNull(jsonObject, "is_playing")
+            ? jsonObject.get("is_playing").getAsBoolean()
+            : null)
+        .setItem(
+          hasAndNotNull(jsonObject, "item")
+            ? new Track.JsonUtil().createModelObject(
+            jsonObject.getAsJsonObject("item"))
+            : null)
+        .build();
     }
   }
 }

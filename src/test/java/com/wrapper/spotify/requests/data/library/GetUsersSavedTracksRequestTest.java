@@ -18,13 +18,13 @@ import static org.junit.Assert.assertNull;
 @RunWith(MockitoJUnitRunner.class)
 public class GetUsersSavedTracksRequestTest extends AbstractDataTest<Paging<SavedTrack>> {
   private final GetUsersSavedTracksRequest defaultRequest = SPOTIFY_API.getUsersSavedTracks()
-          .setHttpManager(
-                  TestUtil.MockedHttpManager.returningJson(
-                          "requests/data/library/GetUsersSavedTracksRequest.json"))
-          .limit(LIMIT)
-          .market(MARKET)
-          .offset(OFFSET)
-          .build();
+    .setHttpManager(
+      TestUtil.MockedHttpManager.returningJson(
+        "requests/data/library/GetUsersSavedTracksRequest.json"))
+    .limit(LIMIT)
+    .market(MARKET)
+    .offset(OFFSET)
+    .build();
 
   public GetUsersSavedTracksRequestTest() throws Exception {
   }
@@ -33,8 +33,8 @@ public class GetUsersSavedTracksRequestTest extends AbstractDataTest<Paging<Save
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
     assertEquals(
-            "https://api.spotify.com:443/v1/me/tracks?limit=10&market=SE&offset=0",
-            defaultRequest.getUri().toString());
+      "https://api.spotify.com:443/v1/me/tracks?limit=10&market=SE&offset=0",
+      defaultRequest.getUri().toString());
   }
 
   @Test
@@ -49,24 +49,24 @@ public class GetUsersSavedTracksRequestTest extends AbstractDataTest<Paging<Save
 
   public void shouldReturnDefault(final Paging<SavedTrack> savedTrackPaging) {
     assertEquals(
-            "https://api.spotify.com/v1/me/tracks?offset=0&limit=20",
-            savedTrackPaging.getHref());
+      "https://api.spotify.com/v1/me/tracks?offset=0&limit=20",
+      savedTrackPaging.getHref());
     assertEquals(
-            1,
-            savedTrackPaging.getItems().length);
+      1,
+      savedTrackPaging.getItems().length);
     assertEquals(
-            20,
-            (int) savedTrackPaging.getLimit());
+      20,
+      (int) savedTrackPaging.getLimit());
     assertEquals(
-            "https://api.spotify.com/v1/me/tracks?offset=20&limit=20",
-            savedTrackPaging.getNext());
+      "https://api.spotify.com/v1/me/tracks?offset=20&limit=20",
+      savedTrackPaging.getNext());
     assertEquals(
-            0,
-            (int) savedTrackPaging.getOffset());
+      0,
+      (int) savedTrackPaging.getOffset());
     assertNull(
-            savedTrackPaging.getPrevious());
+      savedTrackPaging.getPrevious());
     assertEquals(
-            53,
-            (int) savedTrackPaging.getTotal());
+      53,
+      (int) savedTrackPaging.getTotal());
   }
 }

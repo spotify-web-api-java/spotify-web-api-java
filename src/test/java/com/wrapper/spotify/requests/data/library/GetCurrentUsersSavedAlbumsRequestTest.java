@@ -18,13 +18,13 @@ import static org.junit.Assert.assertNull;
 @RunWith(MockitoJUnitRunner.class)
 public class GetCurrentUsersSavedAlbumsRequestTest extends AbstractDataTest<Paging<SavedAlbum>> {
   private final GetCurrentUsersSavedAlbumsRequest defaultRequest = SPOTIFY_API.getCurrentUsersSavedAlbums()
-          .setHttpManager(
-                  TestUtil.MockedHttpManager.returningJson(
-                          "requests/data/library/GetCurrentUsersSavedAlbumsRequest.json"))
-          .limit(LIMIT)
-          .market(MARKET)
-          .offset(OFFSET)
-          .build();
+    .setHttpManager(
+      TestUtil.MockedHttpManager.returningJson(
+        "requests/data/library/GetCurrentUsersSavedAlbumsRequest.json"))
+    .limit(LIMIT)
+    .market(MARKET)
+    .offset(OFFSET)
+    .build();
 
   public GetCurrentUsersSavedAlbumsRequestTest() throws Exception {
   }
@@ -33,8 +33,8 @@ public class GetCurrentUsersSavedAlbumsRequestTest extends AbstractDataTest<Pagi
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
     assertEquals(
-            "https://api.spotify.com:443/v1/me/albums?limit=10&market=SE&offset=0",
-            defaultRequest.getUri().toString());
+      "https://api.spotify.com:443/v1/me/albums?limit=10&market=SE&offset=0",
+      defaultRequest.getUri().toString());
   }
 
   @Test
@@ -49,24 +49,24 @@ public class GetCurrentUsersSavedAlbumsRequestTest extends AbstractDataTest<Pagi
 
   public void shouldReturnDefault(final Paging<SavedAlbum> savedAlbumPaging) {
     assertEquals(
-            "https://api.spotify.com/v1/me/albums?offset=0&limit=1",
-            savedAlbumPaging.getHref());
+      "https://api.spotify.com/v1/me/albums?offset=0&limit=1",
+      savedAlbumPaging.getHref());
     assertEquals(
-            1,
-            savedAlbumPaging.getItems().length);
+      1,
+      savedAlbumPaging.getItems().length);
     assertEquals(
-            1,
-            (int) savedAlbumPaging.getLimit());
+      1,
+      (int) savedAlbumPaging.getLimit());
     assertEquals(
-            "https://api.spotify.com/v1/me/albums?offset=1&limit=1",
-            savedAlbumPaging.getNext());
+      "https://api.spotify.com/v1/me/albums?offset=1&limit=1",
+      savedAlbumPaging.getNext());
     assertEquals(
-            0,
-            (int) savedAlbumPaging.getOffset());
+      0,
+      (int) savedAlbumPaging.getOffset());
     assertNull(
-            savedAlbumPaging.getPrevious());
+      savedAlbumPaging.getPrevious());
     assertEquals(
-            19,
-            (int) savedAlbumPaging.getTotal());
+      19,
+      (int) savedAlbumPaging.getTotal());
   }
 }

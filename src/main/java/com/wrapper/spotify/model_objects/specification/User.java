@@ -345,61 +345,61 @@ public class User extends AbstractModelObject {
       }
 
       return new User.Builder()
-              .setBirthdate(
-                      hasAndNotNull(jsonObject, "birthdate")
-                              ? jsonObject.get("birthdate").getAsString()
-                              : null)
-              .setCountry(
-                      hasAndNotNull(jsonObject, "country")
-                              ? CountryCode.getByCode(
-                              jsonObject.get("country").getAsString())
-                              : null)
-              .setDisplayName(
-                      hasAndNotNull(jsonObject, "display_name")
-                              ? jsonObject.get("display_name").getAsString()
-                              : null)
-              .setEmail(
-                      hasAndNotNull(jsonObject, "email")
-                              ? jsonObject.get("email").getAsString()
-                              : null)
-              .setExternalUrls(
-                      hasAndNotNull(jsonObject, "external_urls")
-                              ? new ExternalUrl.JsonUtil().createModelObject(
-                              jsonObject.getAsJsonObject("external_urls"))
-                              : null)
-              .setFollowers(
-                      hasAndNotNull(jsonObject, "followers")
-                              ? new Followers.JsonUtil().createModelObject(
-                              jsonObject.getAsJsonObject("followers"))
-                              : null)
-              .setHref(
-                      hasAndNotNull(jsonObject, "href")
-                              ? jsonObject.get("href").getAsString()
-                              : null)
-              .setId(
-                      hasAndNotNull(jsonObject, "id")
-                              ? jsonObject.get("id").getAsString()
-                              : null)
-              .setImages(
-                      hasAndNotNull(jsonObject, "images")
-                              ? new Image.JsonUtil().createModelObjectArray(
-                              jsonObject.getAsJsonArray("images"))
-                              : null)
-              .setProduct(
-                      hasAndNotNull(jsonObject, "product")
-                              ? ProductType.keyOf(
-                              jsonObject.get("product").getAsString().toLowerCase())
-                              : null)
-              .setType(
-                      hasAndNotNull(jsonObject, "type")
-                              ? ModelObjectType.keyOf(
-                              jsonObject.get("type").getAsString().toLowerCase())
-                              : null)
-              .setUri(
-                      hasAndNotNull(jsonObject, "uri")
-                              ? jsonObject.get("uri").getAsString()
-                              : null)
-              .build();
+        .setBirthdate(
+          hasAndNotNull(jsonObject, "birthdate")
+            ? jsonObject.get("birthdate").getAsString()
+            : null)
+        .setCountry(
+          hasAndNotNull(jsonObject, "country")
+            ? CountryCode.getByCode(
+            jsonObject.get("country").getAsString())
+            : null)
+        .setDisplayName(
+          hasAndNotNull(jsonObject, "display_name")
+            ? jsonObject.get("display_name").getAsString()
+            : null)
+        .setEmail(
+          hasAndNotNull(jsonObject, "email")
+            ? jsonObject.get("email").getAsString()
+            : null)
+        .setExternalUrls(
+          hasAndNotNull(jsonObject, "external_urls")
+            ? new ExternalUrl.JsonUtil().createModelObject(
+            jsonObject.getAsJsonObject("external_urls"))
+            : null)
+        .setFollowers(
+          hasAndNotNull(jsonObject, "followers")
+            ? new Followers.JsonUtil().createModelObject(
+            jsonObject.getAsJsonObject("followers"))
+            : null)
+        .setHref(
+          hasAndNotNull(jsonObject, "href")
+            ? jsonObject.get("href").getAsString()
+            : null)
+        .setId(
+          hasAndNotNull(jsonObject, "id")
+            ? jsonObject.get("id").getAsString()
+            : null)
+        .setImages(
+          hasAndNotNull(jsonObject, "images")
+            ? new Image.JsonUtil().createModelObjectArray(
+            jsonObject.getAsJsonArray("images"))
+            : null)
+        .setProduct(
+          hasAndNotNull(jsonObject, "product")
+            ? ProductType.keyOf(
+            jsonObject.get("product").getAsString().toLowerCase())
+            : null)
+        .setType(
+          hasAndNotNull(jsonObject, "type")
+            ? ModelObjectType.keyOf(
+            jsonObject.get("type").getAsString().toLowerCase())
+            : null)
+        .setUri(
+          hasAndNotNull(jsonObject, "uri")
+            ? jsonObject.get("uri").getAsString()
+            : null)
+        .build();
     }
   }
 }

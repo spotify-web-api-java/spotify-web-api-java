@@ -33,8 +33,8 @@ public class SearchTracksRequest extends AbstractDataRequest<Paging<Track>> {
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
    */
   public Paging<Track> execute() throws
-          IOException,
-          SpotifyWebApiException {
+    IOException,
+    SpotifyWebApiException {
     return new Track.JsonUtil().createModelObjectPaging(getJson(), "tracks");
   }
 

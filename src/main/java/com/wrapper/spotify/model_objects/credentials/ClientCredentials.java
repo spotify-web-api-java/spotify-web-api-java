@@ -112,19 +112,19 @@ public class ClientCredentials extends AbstractModelObject {
       }
 
       return new ClientCredentials.Builder()
-              .setAccessToken(
-                      hasAndNotNull(jsonObject, "access_token")
-                              ? jsonObject.get("access_token").getAsString()
-                              : null)
-              .setTokenType(
-                      hasAndNotNull(jsonObject, "token_type")
-                              ? jsonObject.get("token_type").getAsString()
-                              : null)
-              .setExpiresIn(
-                      hasAndNotNull(jsonObject, "expires_in")
-                              ? jsonObject.get("expires_in").getAsInt()
-                              : null)
-              .build();
+        .setAccessToken(
+          hasAndNotNull(jsonObject, "access_token")
+            ? jsonObject.get("access_token").getAsString()
+            : null)
+        .setTokenType(
+          hasAndNotNull(jsonObject, "token_type")
+            ? jsonObject.get("token_type").getAsString()
+            : null)
+        .setExpiresIn(
+          hasAndNotNull(jsonObject, "expires_in")
+            ? jsonObject.get("expires_in").getAsInt()
+            : null)
+        .build();
     }
   }
 }

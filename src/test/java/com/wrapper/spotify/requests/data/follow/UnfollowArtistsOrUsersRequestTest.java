@@ -17,11 +17,11 @@ import static org.junit.Assert.assertNull;
 @RunWith(MockitoJUnitRunner.class)
 public class UnfollowArtistsOrUsersRequestTest extends AbstractDataTest<String> {
   private final UnfollowArtistsOrUsersRequest defaultRequest = SPOTIFY_API
-          .unfollowArtistsOrUsers(ModelObjectType.ARTIST, new String[]{ID_ARTIST, ID_ARTIST})
-          .setHttpManager(
-                  TestUtil.MockedHttpManager.returningJson(
-                          "requests/data/follow/UnfollowArtistsOrUsersRequestTest.json"))
-          .build();
+    .unfollowArtistsOrUsers(ModelObjectType.ARTIST, new String[]{ID_ARTIST, ID_ARTIST})
+    .setHttpManager(
+      TestUtil.MockedHttpManager.returningJson(
+        "requests/data/follow/UnfollowArtistsOrUsersRequestTest.json"))
+    .build();
 
   public UnfollowArtistsOrUsersRequestTest() throws Exception {
   }
@@ -30,8 +30,8 @@ public class UnfollowArtistsOrUsersRequestTest extends AbstractDataTest<String> 
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
     assertEquals(
-            "https://api.spotify.com:443/v1/me/following?type=ARTIST&ids=0LcJLqbBmaGUft1e9Mm8HV%2C0LcJLqbBmaGUft1e9Mm8HV",
-            defaultRequest.getUri().toString());
+      "https://api.spotify.com:443/v1/me/following?type=ARTIST&ids=0LcJLqbBmaGUft1e9Mm8HV%2C0LcJLqbBmaGUft1e9Mm8HV",
+      defaultRequest.getUri().toString());
   }
 
   @Test
@@ -46,6 +46,6 @@ public class UnfollowArtistsOrUsersRequestTest extends AbstractDataTest<String> 
 
   public void shouldReturnDefault(final String string) {
     assertNull(
-            string);
+      string);
   }
 }

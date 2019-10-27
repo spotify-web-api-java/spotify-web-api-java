@@ -17,14 +17,14 @@ import static org.junit.Assert.assertEquals;
 @RunWith(MockitoJUnitRunner.class)
 public class SearchTracksRequestTest extends AbstractDataTest<Paging<Track>> {
   private final SearchTracksRequest defaultRequest = SPOTIFY_API
-          .searchTracks(Q)
-          .setHttpManager(
-                  TestUtil.MockedHttpManager.returningJson(
-                          "requests/data/search/simplified/SearchTracksRequest.json"))
-          .limit(LIMIT)
-          .market(MARKET)
-          .offset(OFFSET)
-          .build();
+    .searchTracks(Q)
+    .setHttpManager(
+      TestUtil.MockedHttpManager.returningJson(
+        "requests/data/search/simplified/SearchTracksRequest.json"))
+    .limit(LIMIT)
+    .market(MARKET)
+    .offset(OFFSET)
+    .build();
 
   public SearchTracksRequestTest() throws Exception {
   }
@@ -33,8 +33,8 @@ public class SearchTracksRequestTest extends AbstractDataTest<Paging<Track>> {
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
     assertEquals(
-            "https://api.spotify.com:443/v1/search?q=Abba&limit=10&market=SE&offset=0&type=track",
-            defaultRequest.getUri().toString());
+      "https://api.spotify.com:443/v1/search?q=Abba&limit=10&market=SE&offset=0&type=track",
+      defaultRequest.getUri().toString());
   }
 
   @Test
@@ -49,25 +49,25 @@ public class SearchTracksRequestTest extends AbstractDataTest<Paging<Track>> {
 
   public void shouldReturnDefault(final Paging<Track> trackPaging) {
     assertEquals(
-            "https://api.spotify.com/v1/search?query=Muse&type=track&market=US&offset=5&limit=10",
-            trackPaging.getHref());
+      "https://api.spotify.com/v1/search?query=Muse&type=track&market=US&offset=5&limit=10",
+      trackPaging.getHref());
     assertEquals(
-            10,
-            trackPaging.getItems().length);
+      10,
+      trackPaging.getItems().length);
     assertEquals(
-            10,
-            (int) trackPaging.getLimit());
+      10,
+      (int) trackPaging.getLimit());
     assertEquals(
-            "https://api.spotify.com/v1/search?query=Muse&type=track&market=US&offset=15&limit=10",
-            trackPaging.getNext());
+      "https://api.spotify.com/v1/search?query=Muse&type=track&market=US&offset=15&limit=10",
+      trackPaging.getNext());
     assertEquals(
-            5,
-            (int) trackPaging.getOffset());
+      5,
+      (int) trackPaging.getOffset());
     assertEquals(
-            "https://api.spotify.com/v1/search?query=Muse&type=track&market=US&offset=0&limit=10",
-            trackPaging.getPrevious());
+      "https://api.spotify.com/v1/search?query=Muse&type=track&market=US&offset=0&limit=10",
+      trackPaging.getPrevious());
     assertEquals(
-            11113,
-            (int) trackPaging.getTotal());
+      11113,
+      (int) trackPaging.getTotal());
   }
 }

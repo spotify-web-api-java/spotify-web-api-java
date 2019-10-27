@@ -19,11 +19,11 @@ import static org.junit.Assert.*;
 @RunWith(MockitoJUnitRunner.class)
 public class GetAlbumRequestTest extends AbstractDataTest<Album> {
   private final GetAlbumRequest defaultRequest = SPOTIFY_API.getAlbum(ID_ALBUM)
-          .setHttpManager(
-                  TestUtil.MockedHttpManager.returningJson(
-                          "requests/data/albums/GetAlbumRequest.json"))
-          .market(MARKET)
-          .build();
+    .setHttpManager(
+      TestUtil.MockedHttpManager.returningJson(
+        "requests/data/albums/GetAlbumRequest.json"))
+    .market(MARKET)
+    .build();
 
   public GetAlbumRequestTest() throws Exception {
   }
@@ -32,8 +32,8 @@ public class GetAlbumRequestTest extends AbstractDataTest<Album> {
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
     assertEquals(
-            "https://api.spotify.com:443/v1/albums/5zT1JLIj9E57p3e1rFm9Uq?market=SE",
-            defaultRequest.getUri().toString());
+      "https://api.spotify.com:443/v1/albums/5zT1JLIj9E57p3e1rFm9Uq?market=SE",
+      defaultRequest.getUri().toString());
   }
 
   @Test
@@ -48,56 +48,56 @@ public class GetAlbumRequestTest extends AbstractDataTest<Album> {
 
   public void shouldReturnDefault(final Album album) {
     assertEquals(
-            AlbumType.ALBUM,
-            album.getAlbumType());
+      AlbumType.ALBUM,
+      album.getAlbumType());
     assertNotNull(
-            album.getArtists());
+      album.getArtists());
     assertEquals(
-            57,
-            album.getAvailableMarkets().length);
+      57,
+      album.getAvailableMarkets().length);
     assertEquals(
-            1,
-            album.getCopyrights().length);
+      1,
+      album.getCopyrights().length);
     assertEquals(
-            "P",
-            album.getCopyrights()[0].getType().toString());
+      "P",
+      album.getCopyrights()[0].getType().toString());
     assertNotNull(
-            album.getExternalIds());
+      album.getExternalIds());
     assertNotNull(
-            album.getExternalUrls());
+      album.getExternalUrls());
     assertEquals(
-            0,
-            album.getGenres().length);
+      0,
+      album.getGenres().length);
     assertEquals(
-            "https://api.spotify.com/v1/albums/0sNOF9WDwhWunNAHPD3Baj",
-            album.getHref());
+      "https://api.spotify.com/v1/albums/0sNOF9WDwhWunNAHPD3Baj",
+      album.getHref());
     assertEquals(
-            "0sNOF9WDwhWunNAHPD3Baj",
-            album.getId());
+      "0sNOF9WDwhWunNAHPD3Baj",
+      album.getId());
     assertEquals(
-            3,
-            album.getImages().length);
+      3,
+      album.getImages().length);
     assertNull(
-            album.getLabel());
+      album.getLabel());
     assertEquals(
-            "She's So Unusual",
-            album.getName());
+      "She's So Unusual",
+      album.getName());
     assertEquals(
-            39,
-            (int) album.getPopularity());
+      39,
+      (int) album.getPopularity());
     assertEquals(
-            "1983",
-            album.getReleaseDate());
+      "1983",
+      album.getReleaseDate());
     assertEquals(
-            ReleaseDatePrecision.YEAR,
-            album.getReleaseDatePrecision());
+      ReleaseDatePrecision.YEAR,
+      album.getReleaseDatePrecision());
     assertNotNull(
-            album.getTracks());
+      album.getTracks());
     assertEquals(
-            ModelObjectType.ALBUM,
-            album.getType());
+      ModelObjectType.ALBUM,
+      album.getType());
     assertEquals(
-            "spotify:album:0sNOF9WDwhWunNAHPD3Baj",
-            album.getUri());
+      "spotify:album:0sNOF9WDwhWunNAHPD3Baj",
+      album.getUri());
   }
 }

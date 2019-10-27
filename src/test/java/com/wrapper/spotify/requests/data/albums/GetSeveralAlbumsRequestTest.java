@@ -17,12 +17,12 @@ import static org.junit.Assert.assertEquals;
 public class GetSeveralAlbumsRequestTest extends AbstractDataTest<Album[]> {
 
   private final GetSeveralAlbumsRequest defaultRequest = SPOTIFY_API.getSeveralAlbums(ID_ALBUM, ID_ALBUM)
-          .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/albums/GetSeveralAlbumsRequest.json"))
-          .build();
+    .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/albums/GetSeveralAlbumsRequest.json"))
+    .build();
 
   private final GetSeveralAlbumsRequest emptyRequest = SPOTIFY_API.getSeveralAlbums(ID_ALBUM, ID_ALBUM)
-          .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/albums/GetSeveralAlbumsRequest_None.json"))
-          .build();
+    .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/albums/GetSeveralAlbumsRequest_None.json"))
+    .build();
 
   public GetSeveralAlbumsRequestTest() throws Exception {
   }
@@ -31,8 +31,8 @@ public class GetSeveralAlbumsRequestTest extends AbstractDataTest<Album[]> {
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
     assertEquals(
-            "https://api.spotify.com:443/v1/albums?ids=5zT1JLIj9E57p3e1rFm9Uq%2C5zT1JLIj9E57p3e1rFm9Uq",
-            defaultRequest.getUri().toString());
+      "https://api.spotify.com:443/v1/albums?ids=5zT1JLIj9E57p3e1rFm9Uq%2C5zT1JLIj9E57p3e1rFm9Uq",
+      defaultRequest.getUri().toString());
   }
 
   @Test
@@ -47,8 +47,8 @@ public class GetSeveralAlbumsRequestTest extends AbstractDataTest<Album[]> {
 
   public void shouldReturnDefault(final Album[] albums) {
     assertEquals(
-            1,
-            albums.length);
+      1,
+      albums.length);
   }
 
   @Test
@@ -63,7 +63,7 @@ public class GetSeveralAlbumsRequestTest extends AbstractDataTest<Album[]> {
 
   public void shouldReturnEmpty(final Album[] albums) {
     assertEquals(
-            0,
-            albums.length);
+      0,
+      albums.length);
   }
 }

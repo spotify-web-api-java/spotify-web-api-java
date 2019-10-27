@@ -16,11 +16,11 @@ import static org.junit.Assert.assertEquals;
 @RunWith(MockitoJUnitRunner.class)
 public class CheckCurrentUserFollowsArtistsOrUsersRequestTest extends AbstractDataTest<Boolean[]> {
   private final CheckCurrentUserFollowsArtistsOrUsersRequest defaultRequest = SPOTIFY_API
-          .checkCurrentUserFollowsArtistsOrUsers(ModelObjectType.ARTIST, new String[]{ID_ARTIST, ID_ARTIST})
-          .setHttpManager(
-                  TestUtil.MockedHttpManager.returningJson(
-                          "requests/data/follow/CheckCurrentUserFollowsArtistsOrUsersRequest.json"))
-          .build();
+    .checkCurrentUserFollowsArtistsOrUsers(ModelObjectType.ARTIST, new String[]{ID_ARTIST, ID_ARTIST})
+    .setHttpManager(
+      TestUtil.MockedHttpManager.returningJson(
+        "requests/data/follow/CheckCurrentUserFollowsArtistsOrUsersRequest.json"))
+    .build();
 
   public CheckCurrentUserFollowsArtistsOrUsersRequestTest() throws Exception {
   }
@@ -29,8 +29,8 @@ public class CheckCurrentUserFollowsArtistsOrUsersRequestTest extends AbstractDa
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
     assertEquals(
-            "https://api.spotify.com:443/v1/me/following/contains?type=ARTIST&ids=0LcJLqbBmaGUft1e9Mm8HV%2C0LcJLqbBmaGUft1e9Mm8HV",
-            defaultRequest.getUri().toString());
+      "https://api.spotify.com:443/v1/me/following/contains?type=ARTIST&ids=0LcJLqbBmaGUft1e9Mm8HV%2C0LcJLqbBmaGUft1e9Mm8HV",
+      defaultRequest.getUri().toString());
   }
 
   @Test
@@ -45,7 +45,7 @@ public class CheckCurrentUserFollowsArtistsOrUsersRequestTest extends AbstractDa
 
   public void shouldReturnDefault(final Boolean[] booleans) {
     assertEquals(
-            2,
-            booleans.length);
+      2,
+      booleans.length);
   }
 }

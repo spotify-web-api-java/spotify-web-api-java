@@ -279,46 +279,46 @@ public class AudioAnalysisSection extends AbstractModelObject {
       }
 
       return new AudioAnalysisSection.Builder()
-              .setKey(
-                      hasAndNotNull(jsonObject, "key")
-                              ? jsonObject.get("key").getAsInt()
-                              : null)
-              .setKeyConfidence(
-                      hasAndNotNull(jsonObject, "key_confidence")
-                              ? jsonObject.get("key_confidence").getAsFloat()
-                              : null)
-              .setLoudness(
-                      hasAndNotNull(jsonObject, "loudness")
-                              ? jsonObject.get("loudness").getAsFloat()
-                              : null)
-              .setMeasure(
-                      new AudioAnalysisMeasure.JsonUtil().createModelObject(jsonObject))
-              .setMode(
-                      hasAndNotNull(jsonObject, "type")
-                              ? Modality.keyOf(
-                              jsonObject.get("mode").getAsInt())
-                              : null)
-              .setModeConfidence(
-                      hasAndNotNull(jsonObject, "mode_confidence")
-                              ? jsonObject.get("mode_confidence").getAsFloat()
-                              : null)
-              .setTempo(
-                      hasAndNotNull(jsonObject, "tempo")
-                              ? jsonObject.get("tempo").getAsFloat()
-                              : null)
-              .setTempoConfidence(
-                      hasAndNotNull(jsonObject, "tempo_confidence")
-                              ? jsonObject.get("tempo_confidence").getAsFloat()
-                              : null)
-              .setTimeSignature(
-                      hasAndNotNull(jsonObject, "time_signature")
-                              ? jsonObject.get("time_signature").getAsInt()
-                              : null)
-              .setTimeSignatureConfidence(
-                      hasAndNotNull(jsonObject, "time_signature_confidence")
-                              ? jsonObject.get("time_signature_confidence").getAsFloat()
-                              : null)
-              .build();
+        .setKey(
+          hasAndNotNull(jsonObject, "key")
+            ? jsonObject.get("key").getAsInt()
+            : null)
+        .setKeyConfidence(
+          hasAndNotNull(jsonObject, "key_confidence")
+            ? jsonObject.get("key_confidence").getAsFloat()
+            : null)
+        .setLoudness(
+          hasAndNotNull(jsonObject, "loudness")
+            ? jsonObject.get("loudness").getAsFloat()
+            : null)
+        .setMeasure(
+          new AudioAnalysisMeasure.JsonUtil().createModelObject(jsonObject))
+        .setMode(
+          hasAndNotNull(jsonObject, "type")
+            ? Modality.keyOf(
+            jsonObject.get("mode").getAsInt())
+            : null)
+        .setModeConfidence(
+          hasAndNotNull(jsonObject, "mode_confidence")
+            ? jsonObject.get("mode_confidence").getAsFloat()
+            : null)
+        .setTempo(
+          hasAndNotNull(jsonObject, "tempo")
+            ? jsonObject.get("tempo").getAsFloat()
+            : null)
+        .setTempoConfidence(
+          hasAndNotNull(jsonObject, "tempo_confidence")
+            ? jsonObject.get("tempo_confidence").getAsFloat()
+            : null)
+        .setTimeSignature(
+          hasAndNotNull(jsonObject, "time_signature")
+            ? jsonObject.get("time_signature").getAsInt()
+            : null)
+        .setTimeSignatureConfidence(
+          hasAndNotNull(jsonObject, "time_signature_confidence")
+            ? jsonObject.get("time_signature_confidence").getAsFloat()
+            : null)
+        .build();
     }
   }
 }

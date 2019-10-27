@@ -45,8 +45,8 @@ public class GetCurrentUsersRecentlyPlayedTracksRequest extends AbstractDataRequ
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
    */
   public PagingCursorbased<PlayHistory> execute() throws
-          IOException,
-          SpotifyWebApiException {
+    IOException,
+    SpotifyWebApiException {
     return new PlayHistory.JsonUtil().createModelObjectPagingCursorbased(getJson());
   }
 

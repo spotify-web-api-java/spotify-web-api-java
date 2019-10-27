@@ -319,9 +319,9 @@ public class SpotifyApi {
    */
   public AuthorizationCodeRefreshRequest.Builder authorizationCodeRefresh(String client_id, String client_secret, String refresh_token) {
     return new AuthorizationCodeRefreshRequest.Builder(client_id, client_secret)
-            .setDefaults(httpManager, scheme, host, port)
-            .grant_type("refresh_token")
-            .refresh_token(refresh_token);
+      .setDefaults(httpManager, scheme, host, port)
+      .grant_type("refresh_token")
+      .refresh_token(refresh_token);
   }
 
   /**
@@ -331,9 +331,9 @@ public class SpotifyApi {
    */
   public AuthorizationCodeRefreshRequest.Builder authorizationCodeRefresh() {
     return new AuthorizationCodeRefreshRequest.Builder(clientId, clientSecret)
-            .setDefaults(httpManager, scheme, host, port)
-            .grant_type("refresh_token")
-            .refresh_token(refreshToken);
+      .setDefaults(httpManager, scheme, host, port)
+      .grant_type("refresh_token")
+      .refresh_token(refreshToken);
   }
 
   /**
@@ -350,10 +350,10 @@ public class SpotifyApi {
    */
   public AuthorizationCodeRequest.Builder authorizationCode(String client_id, String client_secret, String code, URI redirect_uri) {
     return new AuthorizationCodeRequest.Builder(clientId, clientSecret)
-            .setDefaults(httpManager, scheme, host, port)
-            .grant_type("authorization_code")
-            .code(code)
-            .redirect_uri(redirect_uri);
+      .setDefaults(httpManager, scheme, host, port)
+      .grant_type("authorization_code")
+      .code(code)
+      .redirect_uri(redirect_uri);
   }
 
   /**
@@ -365,10 +365,10 @@ public class SpotifyApi {
    */
   public AuthorizationCodeRequest.Builder authorizationCode(String code) {
     return new AuthorizationCodeRequest.Builder(clientId, clientSecret)
-            .setDefaults(httpManager, scheme, host, port)
-            .grant_type("authorization_code")
-            .code(code)
-            .redirect_uri(redirectUri);
+      .setDefaults(httpManager, scheme, host, port)
+      .grant_type("authorization_code")
+      .code(code)
+      .redirect_uri(redirectUri);
   }
 
   /**
@@ -382,10 +382,10 @@ public class SpotifyApi {
    */
   public AuthorizationCodeUriRequest.Builder authorizationCodeUri(String client_id, URI redirect_uri) {
     return new AuthorizationCodeUriRequest.Builder()
-            .setDefaults(httpManager, scheme, host, port)
-            .client_id(client_id)
-            .response_type("code")
-            .redirect_uri(redirect_uri);
+      .setDefaults(httpManager, scheme, host, port)
+      .client_id(client_id)
+      .response_type("code")
+      .redirect_uri(redirect_uri);
   }
 
   /**
@@ -395,10 +395,10 @@ public class SpotifyApi {
    */
   public AuthorizationCodeUriRequest.Builder authorizationCodeUri() {
     return new AuthorizationCodeUriRequest.Builder()
-            .setDefaults(httpManager, scheme, host, port)
-            .client_id(clientId)
-            .response_type("code")
-            .redirect_uri(redirectUri);
+      .setDefaults(httpManager, scheme, host, port)
+      .client_id(clientId)
+      .response_type("code")
+      .redirect_uri(redirectUri);
   }
 
   /**
@@ -409,8 +409,8 @@ public class SpotifyApi {
    */
   public ClientCredentialsRequest.Builder clientCredentials() {
     return new ClientCredentialsRequest.Builder(clientId, clientSecret)
-            .setDefaults(httpManager, scheme, host, port)
-            .grant_type("client_credentials");
+      .setDefaults(httpManager, scheme, host, port)
+      .grant_type("client_credentials");
   }
 
   /**
@@ -422,8 +422,8 @@ public class SpotifyApi {
    */
   public GetAlbumRequest.Builder getAlbum(String id) {
     return new GetAlbumRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port)
-            .id(id);
+      .setDefaults(httpManager, scheme, host, port)
+      .id(id);
   }
 
   /**
@@ -435,8 +435,8 @@ public class SpotifyApi {
    */
   public GetAlbumsTracksRequest.Builder getAlbumsTracks(String id) {
     return new GetAlbumsTracksRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port)
-            .id(id);
+      .setDefaults(httpManager, scheme, host, port)
+      .id(id);
   }
 
   /**
@@ -448,8 +448,8 @@ public class SpotifyApi {
    */
   public GetSeveralAlbumsRequest.Builder getSeveralAlbums(String... ids) {
     return new GetSeveralAlbumsRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port)
-            .ids(concat(ids, ','));
+      .setDefaults(httpManager, scheme, host, port)
+      .ids(concat(ids, ','));
   }
 
   /**
@@ -461,8 +461,8 @@ public class SpotifyApi {
    */
   public GetArtistRequest.Builder getArtist(String id) {
     return new GetArtistRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port)
-            .id(id);
+      .setDefaults(httpManager, scheme, host, port)
+      .id(id);
   }
 
   /**
@@ -474,8 +474,8 @@ public class SpotifyApi {
    */
   public GetArtistsAlbumsRequest.Builder getArtistsAlbums(String id) {
     return new GetArtistsAlbumsRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port)
-            .id(id);
+      .setDefaults(httpManager, scheme, host, port)
+      .id(id);
   }
 
   /**
@@ -489,9 +489,9 @@ public class SpotifyApi {
    */
   public GetArtistsTopTracksRequest.Builder getArtistsTopTracks(String id, CountryCode country) {
     return new GetArtistsTopTracksRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port)
-            .id(id)
-            .country(country);
+      .setDefaults(httpManager, scheme, host, port)
+      .id(id)
+      .country(country);
   }
 
   /**
@@ -503,8 +503,8 @@ public class SpotifyApi {
    */
   public GetArtistsRelatedArtistsRequest.Builder getArtistsRelatedArtists(String id) {
     return new GetArtistsRelatedArtistsRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port)
-            .id(id);
+      .setDefaults(httpManager, scheme, host, port)
+      .id(id);
   }
 
   /**
@@ -516,8 +516,8 @@ public class SpotifyApi {
    */
   public GetSeveralArtistsRequest.Builder getSeveralArtists(String... ids) {
     return new GetSeveralArtistsRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port)
-            .ids(concat(ids, ','));
+      .setDefaults(httpManager, scheme, host, port)
+      .ids(concat(ids, ','));
   }
 
   /**
@@ -529,8 +529,8 @@ public class SpotifyApi {
    */
   public GetCategoryRequest.Builder getCategory(String category_id) {
     return new GetCategoryRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port)
-            .category_id(category_id);
+      .setDefaults(httpManager, scheme, host, port)
+      .category_id(category_id);
   }
 
   /**
@@ -542,8 +542,8 @@ public class SpotifyApi {
    */
   public GetCategorysPlaylistsRequest.Builder getCategorysPlaylists(String category_id) {
     return new GetCategorysPlaylistsRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port)
-            .category_id(category_id);
+      .setDefaults(httpManager, scheme, host, port)
+      .category_id(category_id);
   }
 
   /**
@@ -553,7 +553,7 @@ public class SpotifyApi {
    */
   public GetListOfCategoriesRequest.Builder getListOfCategories() {
     return new GetListOfCategoriesRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port);
+      .setDefaults(httpManager, scheme, host, port);
   }
 
   /**
@@ -563,7 +563,7 @@ public class SpotifyApi {
    */
   public GetListOfFeaturedPlaylistsRequest.Builder getListOfFeaturedPlaylists() {
     return new GetListOfFeaturedPlaylistsRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port);
+      .setDefaults(httpManager, scheme, host, port);
   }
 
   /**
@@ -573,7 +573,7 @@ public class SpotifyApi {
    */
   public GetListOfNewReleasesRequest.Builder getListOfNewReleases() {
     return new GetListOfNewReleasesRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port);
+      .setDefaults(httpManager, scheme, host, port);
   }
 
   /**
@@ -583,7 +583,7 @@ public class SpotifyApi {
    */
   public GetRecommendationsRequest.Builder getRecommendations() {
     return new GetRecommendationsRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port);
+      .setDefaults(httpManager, scheme, host, port);
   }
 
   /**
@@ -593,7 +593,7 @@ public class SpotifyApi {
    */
   public GetAvailableGenreSeedsRequest.Builder getAvailableGenreSeeds() {
     return new GetAvailableGenreSeedsRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port);
+      .setDefaults(httpManager, scheme, host, port);
   }
 
   /**
@@ -605,11 +605,11 @@ public class SpotifyApi {
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public CheckCurrentUserFollowsArtistsOrUsersRequest.Builder checkCurrentUserFollowsArtistsOrUsers(
-          ModelObjectType type, String[] ids) {
+    ModelObjectType type, String[] ids) {
     return new CheckCurrentUserFollowsArtistsOrUsersRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port)
-            .type(type)
-            .ids(concat(ids, ','));
+      .setDefaults(httpManager, scheme, host, port)
+      .type(type)
+      .ids(concat(ids, ','));
   }
 
   /**
@@ -623,12 +623,12 @@ public class SpotifyApi {
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public CheckUsersFollowPlaylistRequest.Builder checkUsersFollowPlaylist(
-          String owner_id, String playlist_id, String[] ids) {
+    String owner_id, String playlist_id, String[] ids) {
     return new CheckUsersFollowPlaylistRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port)
-            .owner_id(owner_id)
-            .playlist_id(playlist_id)
-            .ids(concat(ids, ','));
+      .setDefaults(httpManager, scheme, host, port)
+      .owner_id(owner_id)
+      .playlist_id(playlist_id)
+      .ids(concat(ids, ','));
   }
 
   /**
@@ -641,9 +641,9 @@ public class SpotifyApi {
    */
   public FollowArtistsOrUsersRequest.Builder followArtistsOrUsers(ModelObjectType type, String[] ids) {
     return new FollowArtistsOrUsersRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port)
-            .type(type)
-            .ids(concat(ids, ','));
+      .setDefaults(httpManager, scheme, host, port)
+      .type(type)
+      .ids(concat(ids, ','));
   }
 
   /**
@@ -656,9 +656,9 @@ public class SpotifyApi {
    */
   public FollowArtistsOrUsersRequest.Builder followArtistsOrUsers(ModelObjectType type, JsonArray ids) {
     return new FollowArtistsOrUsersRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port)
-            .type(type)
-            .ids(ids);
+      .setDefaults(httpManager, scheme, host, port)
+      .type(type)
+      .ids(ids);
   }
 
   /**
@@ -675,12 +675,11 @@ public class SpotifyApi {
    */
   public com.wrapper.spotify.requests.data.follow.legacy.FollowPlaylistRequest.Builder followPlaylist(String owner_id, String playlist_id, boolean public_) {
     return new com.wrapper.spotify.requests.data.follow.legacy.FollowPlaylistRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port)
-            .owner_id(owner_id)
-            .playlist_id(playlist_id)
-            .public_(public_);
+      .setDefaults(httpManager, scheme, host, port)
+      .owner_id(owner_id)
+      .playlist_id(playlist_id)
+      .public_(public_);
   }
-
 
 
   /**
@@ -696,9 +695,9 @@ public class SpotifyApi {
    */
   public FollowPlaylistRequest.Builder followPlaylist(String playlist_id, boolean public_) {
     return new FollowPlaylistRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port)
-            .playlist_id(playlist_id)
-            .public_(public_);
+      .setDefaults(httpManager, scheme, host, port)
+      .playlist_id(playlist_id)
+      .public_(public_);
   }
 
 
@@ -711,8 +710,8 @@ public class SpotifyApi {
    */
   public GetUsersFollowedArtistsRequest.Builder getUsersFollowedArtists(ModelObjectType type) {
     return new GetUsersFollowedArtistsRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port)
-            .type(type);
+      .setDefaults(httpManager, scheme, host, port)
+      .type(type);
   }
 
   /**
@@ -725,9 +724,9 @@ public class SpotifyApi {
    */
   public UnfollowArtistsOrUsersRequest.Builder unfollowArtistsOrUsers(ModelObjectType type, String[] ids) {
     return new UnfollowArtistsOrUsersRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port)
-            .type(type)
-            .ids(concat(ids, ','));
+      .setDefaults(httpManager, scheme, host, port)
+      .type(type)
+      .ids(concat(ids, ','));
   }
 
   /**
@@ -740,9 +739,9 @@ public class SpotifyApi {
    */
   public com.wrapper.spotify.requests.data.follow.legacy.UnfollowPlaylistRequest.Builder unfollowPlaylist(String owner_id, String playlist_id) {
     return new com.wrapper.spotify.requests.data.follow.legacy.UnfollowPlaylistRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port)
-            .owner_id(owner_id)
-            .playlist_id(playlist_id);
+      .setDefaults(httpManager, scheme, host, port)
+      .owner_id(owner_id)
+      .playlist_id(playlist_id);
   }
 
   /**
@@ -754,8 +753,8 @@ public class SpotifyApi {
    */
   public UnfollowPlaylistRequest.Builder unfollowPlaylist(String playlist_id) {
     return new UnfollowPlaylistRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port)
-            .playlist_id(playlist_id);
+      .setDefaults(httpManager, scheme, host, port)
+      .playlist_id(playlist_id);
   }
 
   /**
@@ -767,8 +766,8 @@ public class SpotifyApi {
    */
   public CheckUsersSavedAlbumsRequest.Builder checkUsersSavedAlbums(String... ids) {
     return new CheckUsersSavedAlbumsRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port)
-            .ids(concat(ids, ','));
+      .setDefaults(httpManager, scheme, host, port)
+      .ids(concat(ids, ','));
   }
 
   /**
@@ -779,8 +778,8 @@ public class SpotifyApi {
    */
   public CheckUsersSavedTracksRequest.Builder checkUsersSavedTracks(String... ids) {
     return new CheckUsersSavedTracksRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port)
-            .ids(concat(ids, ','));
+      .setDefaults(httpManager, scheme, host, port)
+      .ids(concat(ids, ','));
   }
 
   /**
@@ -790,7 +789,7 @@ public class SpotifyApi {
    */
   public GetCurrentUsersSavedAlbumsRequest.Builder getCurrentUsersSavedAlbums() {
     return new GetCurrentUsersSavedAlbumsRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port);
+      .setDefaults(httpManager, scheme, host, port);
   }
 
   /**
@@ -800,7 +799,7 @@ public class SpotifyApi {
    */
   public GetUsersSavedTracksRequest.Builder getUsersSavedTracks() {
     return new GetUsersSavedTracksRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port);
+      .setDefaults(httpManager, scheme, host, port);
   }
 
   /**
@@ -812,8 +811,8 @@ public class SpotifyApi {
    */
   public RemoveAlbumsForCurrentUserRequest.Builder removeAlbumsForCurrentUser(String... ids) {
     return new RemoveAlbumsForCurrentUserRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port)
-            .ids(concat(ids, ','));
+      .setDefaults(httpManager, scheme, host, port)
+      .ids(concat(ids, ','));
   }
 
   /**
@@ -825,8 +824,8 @@ public class SpotifyApi {
    */
   public RemoveUsersSavedTracksRequest.Builder removeUsersSavedTracks(String... ids) {
     return new RemoveUsersSavedTracksRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port)
-            .ids(concat(ids, ','));
+      .setDefaults(httpManager, scheme, host, port)
+      .ids(concat(ids, ','));
   }
 
   /**
@@ -838,8 +837,8 @@ public class SpotifyApi {
    */
   public SaveAlbumsForCurrentUserRequest.Builder saveAlbumsForCurrentUser(String... ids) {
     return new SaveAlbumsForCurrentUserRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port)
-            .ids(concat(ids, ','));
+      .setDefaults(httpManager, scheme, host, port)
+      .ids(concat(ids, ','));
   }
 
   /**
@@ -851,8 +850,8 @@ public class SpotifyApi {
    */
   public SaveAlbumsForCurrentUserRequest.Builder saveAlbumsForCurrentUser(JsonArray ids) {
     return new SaveAlbumsForCurrentUserRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port)
-            .ids(ids);
+      .setDefaults(httpManager, scheme, host, port)
+      .ids(ids);
   }
 
   /**
@@ -864,8 +863,8 @@ public class SpotifyApi {
    */
   public SaveTracksForUserRequest.Builder saveTracksForUser(String... ids) {
     return new SaveTracksForUserRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port)
-            .ids(concat(ids, ','));
+      .setDefaults(httpManager, scheme, host, port)
+      .ids(concat(ids, ','));
   }
 
   /**
@@ -877,8 +876,8 @@ public class SpotifyApi {
    */
   public SaveTracksForUserRequest.Builder saveTracksForUser(JsonArray ids) {
     return new SaveTracksForUserRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port)
-            .ids(ids);
+      .setDefaults(httpManager, scheme, host, port)
+      .ids(ids);
   }
 
   /**
@@ -896,8 +895,8 @@ public class SpotifyApi {
   @SuppressWarnings("unchecked")
   public <T extends IArtistTrackModelObject> GetUsersTopArtistsAndTracksRequest.Builder<T> getUsersTopArtistsAndTracks(ModelObjectType type) {
     return new GetUsersTopArtistsAndTracksRequest.Builder<T>(accessToken)
-            .setDefaults(httpManager, scheme, host, port)
-            .type(type);
+      .setDefaults(httpManager, scheme, host, port)
+      .type(type);
   }
 
   /**
@@ -908,7 +907,7 @@ public class SpotifyApi {
    */
   public GetUsersTopArtistsRequest.Builder getUsersTopArtists() {
     return new GetUsersTopArtistsRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port);
+      .setDefaults(httpManager, scheme, host, port);
   }
 
   /**
@@ -919,7 +918,7 @@ public class SpotifyApi {
    */
   public GetUsersTopTracksRequest.Builder getUsersTopTracks() {
     return new GetUsersTopTracksRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port);
+      .setDefaults(httpManager, scheme, host, port);
   }
 
   /**
@@ -929,7 +928,7 @@ public class SpotifyApi {
    */
   public GetInformationAboutUsersCurrentPlaybackRequest.Builder getInformationAboutUsersCurrentPlayback() {
     return new GetInformationAboutUsersCurrentPlaybackRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port);
+      .setDefaults(httpManager, scheme, host, port);
   }
 
   /**
@@ -945,7 +944,7 @@ public class SpotifyApi {
    */
   public GetCurrentUsersRecentlyPlayedTracksRequest.Builder getCurrentUsersRecentlyPlayedTracks() {
     return new GetCurrentUsersRecentlyPlayedTracksRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port);
+      .setDefaults(httpManager, scheme, host, port);
   }
 
   /**
@@ -955,7 +954,7 @@ public class SpotifyApi {
    */
   public GetUsersAvailableDevicesRequest.Builder getUsersAvailableDevices() {
     return new GetUsersAvailableDevicesRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port);
+      .setDefaults(httpManager, scheme, host, port);
   }
 
   /**
@@ -965,7 +964,7 @@ public class SpotifyApi {
    */
   public GetUsersCurrentlyPlayingTrackRequest.Builder getUsersCurrentlyPlayingTrack() {
     return new GetUsersCurrentlyPlayingTrackRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port);
+      .setDefaults(httpManager, scheme, host, port);
   }
 
   /**
@@ -975,7 +974,7 @@ public class SpotifyApi {
    */
   public PauseUsersPlaybackRequest.Builder pauseUsersPlayback() {
     return new PauseUsersPlaybackRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port);
+      .setDefaults(httpManager, scheme, host, port);
   }
 
   /**
@@ -987,8 +986,8 @@ public class SpotifyApi {
    */
   public SeekToPositionInCurrentlyPlayingTrackRequest.Builder seekToPositionInCurrentlyPlayingTrack(int position_ms) {
     return new SeekToPositionInCurrentlyPlayingTrackRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port)
-            .position_ms(position_ms);
+      .setDefaults(httpManager, scheme, host, port)
+      .position_ms(position_ms);
   }
 
   /**
@@ -1000,8 +999,8 @@ public class SpotifyApi {
    */
   public SetRepeatModeOnUsersPlaybackRequest.Builder setRepeatModeOnUsersPlayback(String state) {
     return new SetRepeatModeOnUsersPlaybackRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port)
-            .state(state);
+      .setDefaults(httpManager, scheme, host, port)
+      .state(state);
   }
 
   /**
@@ -1012,8 +1011,8 @@ public class SpotifyApi {
    */
   public SetVolumeForUsersPlaybackRequest.Builder setVolumeForUsersPlayback(int volume_percent) {
     return new SetVolumeForUsersPlaybackRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port)
-            .volume_percent(volume_percent);
+      .setDefaults(httpManager, scheme, host, port)
+      .volume_percent(volume_percent);
   }
 
   /**
@@ -1023,7 +1022,7 @@ public class SpotifyApi {
    */
   public SkipUsersPlaybackToNextTrackRequest.Builder skipUsersPlaybackToNextTrack() {
     return new SkipUsersPlaybackToNextTrackRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port);
+      .setDefaults(httpManager, scheme, host, port);
   }
 
   /**
@@ -1037,7 +1036,7 @@ public class SpotifyApi {
    */
   public SkipUsersPlaybackToPreviousTrackRequest.Builder skipUsersPlaybackToPreviousTrack() {
     return new SkipUsersPlaybackToPreviousTrackRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port);
+      .setDefaults(httpManager, scheme, host, port);
   }
 
   /**
@@ -1047,7 +1046,7 @@ public class SpotifyApi {
    */
   public StartResumeUsersPlaybackRequest.Builder startResumeUsersPlayback() {
     return new StartResumeUsersPlaybackRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port);
+      .setDefaults(httpManager, scheme, host, port);
   }
 
   /**
@@ -1058,8 +1057,8 @@ public class SpotifyApi {
    */
   public ToggleShuffleForUsersPlaybackRequest.Builder toggleShuffleForUsersPlayback(boolean state) {
     return new ToggleShuffleForUsersPlaybackRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port)
-            .state(state);
+      .setDefaults(httpManager, scheme, host, port)
+      .state(state);
   }
 
   /**
@@ -1071,28 +1070,28 @@ public class SpotifyApi {
    */
   public TransferUsersPlaybackRequest.Builder transferUsersPlayback(JsonArray device_ids) {
     return new TransferUsersPlaybackRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port)
-            .device_ids(device_ids);
+      .setDefaults(httpManager, scheme, host, port)
+      .device_ids(device_ids);
   }
 
   /**
    * Add tracks to a playlist.
    *
-   * @deprecated Playlist IDs are unique for themselves. This parameter is thus no longer used.
-   * (https://developer.spotify.com/community/news/2018/06/12/changes-to-playlist-uris/)
    * @param user_id     The owners username.
    * @param playlist_id The playlists ID.
    * @param uris        URIs of the tracks to add. Maximum: 100 track URIs.
    * @return An {@link AddTracksToPlaylistRequest.Builder}.
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   * @deprecated Playlist IDs are unique for themselves. This parameter is thus no longer used.
+   * (https://developer.spotify.com/community/news/2018/06/12/changes-to-playlist-uris/)
    */
   @Deprecated
   public AddTracksToPlaylistRequest.Builder addTracksToPlaylist(String user_id, String playlist_id, String[] uris) {
     return new AddTracksToPlaylistRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port)
-            .user_id(user_id)
-            .playlist_id(playlist_id)
-            .uris(concat(uris, ','));
+      .setDefaults(httpManager, scheme, host, port)
+      .user_id(user_id)
+      .playlist_id(playlist_id)
+      .uris(concat(uris, ','));
   }
 
   /**
@@ -1105,29 +1104,29 @@ public class SpotifyApi {
    */
   public AddTracksToPlaylistRequest.Builder addTracksToPlaylist(String playlist_id, String[] uris) {
     return new AddTracksToPlaylistRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port)
-            .playlist_id(playlist_id)
-            .uris(concat(uris, ','));
+      .setDefaults(httpManager, scheme, host, port)
+      .playlist_id(playlist_id)
+      .uris(concat(uris, ','));
   }
 
   /**
    * Add tracks to a playlist.
    *
-   * @deprecated Playlist IDs are unique for themselves. This parameter is thus no longer used.
-   * (https://developer.spotify.com/community/news/2018/06/12/changes-to-playlist-uris/)
    * @param user_id     The owners username.
    * @param playlist_id The playlists ID.
    * @param uris        URIs of the tracks to add. Maximum: 100 track URIs.
    * @return An {@link AddTracksToPlaylistRequest.Builder}.
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   * @deprecated Playlist IDs are unique for themselves. This parameter is thus no longer used.
+   * (https://developer.spotify.com/community/news/2018/06/12/changes-to-playlist-uris/)
    */
   @Deprecated
   public AddTracksToPlaylistRequest.Builder addTracksToPlaylist(String user_id, String playlist_id, JsonArray uris) {
     return new AddTracksToPlaylistRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port)
-            .user_id(user_id)
-            .playlist_id(playlist_id)
-            .uris(uris);
+      .setDefaults(httpManager, scheme, host, port)
+      .user_id(user_id)
+      .playlist_id(playlist_id)
+      .uris(uris);
   }
 
   /**
@@ -1140,27 +1139,27 @@ public class SpotifyApi {
    */
   public AddTracksToPlaylistRequest.Builder addTracksToPlaylist(String playlist_id, JsonArray uris) {
     return new AddTracksToPlaylistRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port)
-            .playlist_id(playlist_id)
-            .uris(uris);
+      .setDefaults(httpManager, scheme, host, port)
+      .playlist_id(playlist_id)
+      .uris(uris);
   }
 
   /**
    * Update a playlists properties.
    *
-   * @deprecated Playlist IDs are unique for themselves. This parameter is thus no longer used.
-   * (https://developer.spotify.com/community/news/2018/06/12/changes-to-playlist-uris/)
    * @param user_id     The owners username.
    * @param playlist_id The playlists ID.
    * @return A {@link ChangePlaylistsDetailsRequest.Builder}.
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   * @deprecated Playlist IDs are unique for themselves. This parameter is thus no longer used.
+   * (https://developer.spotify.com/community/news/2018/06/12/changes-to-playlist-uris/)
    */
   @Deprecated
   public ChangePlaylistsDetailsRequest.Builder changePlaylistsDetails(String user_id, String playlist_id) {
     return new ChangePlaylistsDetailsRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port)
-            .user_id(user_id)
-            .playlist_id(playlist_id);
+      .setDefaults(httpManager, scheme, host, port)
+      .user_id(user_id)
+      .playlist_id(playlist_id);
   }
 
   /**
@@ -1172,8 +1171,8 @@ public class SpotifyApi {
    */
   public ChangePlaylistsDetailsRequest.Builder changePlaylistsDetails(String playlist_id) {
     return new ChangePlaylistsDetailsRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port)
-            .playlist_id(playlist_id);
+      .setDefaults(httpManager, scheme, host, port)
+      .playlist_id(playlist_id);
   }
 
   /**
@@ -1186,9 +1185,9 @@ public class SpotifyApi {
    */
   public CreatePlaylistRequest.Builder createPlaylist(String user_id, String name) {
     return new CreatePlaylistRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port)
-            .user_id(user_id)
-            .name(name);
+      .setDefaults(httpManager, scheme, host, port)
+      .user_id(user_id)
+      .name(name);
   }
 
   /**
@@ -1198,7 +1197,7 @@ public class SpotifyApi {
    */
   public GetListOfCurrentUsersPlaylistsRequest.Builder getListOfCurrentUsersPlaylists() {
     return new GetListOfCurrentUsersPlaylistsRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port);
+      .setDefaults(httpManager, scheme, host, port);
   }
 
   /**
@@ -1210,26 +1209,26 @@ public class SpotifyApi {
    */
   public GetListOfUsersPlaylistsRequest.Builder getListOfUsersPlaylists(String user_id) {
     return new GetListOfUsersPlaylistsRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port)
-            .user_id(user_id);
+      .setDefaults(httpManager, scheme, host, port)
+      .user_id(user_id);
   }
 
   /**
    * Get a playlist.
    *
-   * @deprecated Playlist IDs are unique for themselves. This parameter is thus no longer used.
-   * (https://developer.spotify.com/community/news/2018/06/12/changes-to-playlist-uris/)
    * @param user_id     The playlists owners username.
    * @param playlist_id The playlists ID.
    * @return A {@link GetPlaylistRequest.Builder}.
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   * @deprecated Playlist IDs are unique for themselves. This parameter is thus no longer used.
+   * (https://developer.spotify.com/community/news/2018/06/12/changes-to-playlist-uris/)
    */
   @Deprecated
   public GetPlaylistRequest.Builder getPlaylist(String user_id, String playlist_id) {
     return new GetPlaylistRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port)
-            .user_id(user_id)
-            .playlist_id(playlist_id);
+      .setDefaults(httpManager, scheme, host, port)
+      .user_id(user_id)
+      .playlist_id(playlist_id);
   }
 
   /**
@@ -1241,26 +1240,26 @@ public class SpotifyApi {
    */
   public GetPlaylistRequest.Builder getPlaylist(String playlist_id) {
     return new GetPlaylistRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port)
-            .playlist_id(playlist_id);
+      .setDefaults(httpManager, scheme, host, port)
+      .playlist_id(playlist_id);
   }
 
   /**
    * Get the image used to represent a specific playlist.
    *
-   * @deprecated Playlist IDs are unique for themselves. This parameter is thus no longer used.
-   * (https://developer.spotify.com/community/news/2018/06/12/changes-to-playlist-uris/)
    * @param user_id     The users Spotify user ID.
    * @param playlist_id The Spotify ID for the playlist.
    * @return A {@link GetPlaylistCoverImageRequest.Builder}.
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   * @deprecated Playlist IDs are unique for themselves. This parameter is thus no longer used.
+   * (https://developer.spotify.com/community/news/2018/06/12/changes-to-playlist-uris/)
    */
   @Deprecated
   public GetPlaylistCoverImageRequest.Builder getPlaylistCoverImage(String user_id, String playlist_id) {
     return new GetPlaylistCoverImageRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port)
-            .user_id(user_id)
-            .playlist_id(playlist_id);
+      .setDefaults(httpManager, scheme, host, port)
+      .user_id(user_id)
+      .playlist_id(playlist_id);
   }
 
   /**
@@ -1272,26 +1271,26 @@ public class SpotifyApi {
    */
   public GetPlaylistCoverImageRequest.Builder getPlaylistCoverImage(String playlist_id) {
     return new GetPlaylistCoverImageRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port)
-            .playlist_id(playlist_id);
+      .setDefaults(httpManager, scheme, host, port)
+      .playlist_id(playlist_id);
   }
 
   /**
    * Get a playlists tracks.
    *
-   * @deprecated Playlist IDs are unique for themselves. This parameter is thus no longer used.
-   * (https://developer.spotify.com/community/news/2018/06/12/changes-to-playlist-uris/)
    * @param user_id     The playlists owners username.
    * @param playlist_id The playlists ID.
    * @return A {@link GetPlaylistsTracksRequest.Builder}.
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   * @deprecated Playlist IDs are unique for themselves. This parameter is thus no longer used.
+   * (https://developer.spotify.com/community/news/2018/06/12/changes-to-playlist-uris/)
    */
   @Deprecated
   public GetPlaylistsTracksRequest.Builder getPlaylistsTracks(String user_id, String playlist_id) {
     return new GetPlaylistsTracksRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port)
-            .user_id(user_id)
-            .playlist_id(playlist_id);
+      .setDefaults(httpManager, scheme, host, port)
+      .user_id(user_id)
+      .playlist_id(playlist_id);
   }
 
   /**
@@ -1303,29 +1302,29 @@ public class SpotifyApi {
    */
   public GetPlaylistsTracksRequest.Builder getPlaylistsTracks(String playlist_id) {
     return new GetPlaylistsTracksRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port)
-            .playlist_id(playlist_id);
+      .setDefaults(httpManager, scheme, host, port)
+      .playlist_id(playlist_id);
   }
 
   /**
    * Delete tracks from a playlist
    *
-   * @deprecated Playlist IDs are unique for themselves. This parameter is thus no longer used.
-   * (https://developer.spotify.com/community/news/2018/06/12/changes-to-playlist-uris/)
    * @param user_id     The owners username.
    * @param playlist_id The playlists ID.
    * @param tracks      URIs of the tracks to remove. Maximum: 100 track URIs.
    * @return A {@link RemoveTracksFromPlaylistRequest.Builder}.
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   * @deprecated Playlist IDs are unique for themselves. This parameter is thus no longer used.
+   * (https://developer.spotify.com/community/news/2018/06/12/changes-to-playlist-uris/)
    */
   @Deprecated
   public RemoveTracksFromPlaylistRequest.Builder removeTracksFromPlaylist(
-          String user_id, String playlist_id, JsonArray tracks) {
+    String user_id, String playlist_id, JsonArray tracks) {
     return new RemoveTracksFromPlaylistRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port)
-            .user_id(user_id)
-            .playlist_id(playlist_id)
-            .tracks(tracks);
+      .setDefaults(httpManager, scheme, host, port)
+      .user_id(user_id)
+      .playlist_id(playlist_id)
+      .tracks(tracks);
   }
 
   /**
@@ -1337,11 +1336,11 @@ public class SpotifyApi {
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public RemoveTracksFromPlaylistRequest.Builder removeTracksFromPlaylist(
-          String playlist_id, JsonArray tracks) {
+    String playlist_id, JsonArray tracks) {
     return new RemoveTracksFromPlaylistRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port)
-            .playlist_id(playlist_id)
-            .tracks(tracks);
+      .setDefaults(httpManager, scheme, host, port)
+      .playlist_id(playlist_id)
+      .tracks(tracks);
   }
 
   /**
@@ -1351,8 +1350,6 @@ public class SpotifyApi {
    * untouched. In addition, the users following the playlists won’t be notified about changes in the playlists when the
    * tracks are reordered.
    *
-   * @deprecated Playlist IDs are unique for themselves. This parameter is thus no longer used.
-   * (https://developer.spotify.com/community/news/2018/06/12/changes-to-playlist-uris/)
    * @param user_id       The users Spotify user ID.
    * @param playlist_id   The Spotify ID for the playlist.
    * @param range_start   The position of the first track to be reordered.
@@ -1360,15 +1357,17 @@ public class SpotifyApi {
    *                      playlist, simply set insert_before to the position after the last track.
    * @return A {@link ReorderPlaylistsTracksRequest.Builder}.
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   * @deprecated Playlist IDs are unique for themselves. This parameter is thus no longer used.
+   * (https://developer.spotify.com/community/news/2018/06/12/changes-to-playlist-uris/)
    */
   @Deprecated
   public ReorderPlaylistsTracksRequest.Builder reorderPlaylistsTracks(String user_id, String playlist_id, int range_start, int insert_before) {
     return new ReorderPlaylistsTracksRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port)
-            .user_id(user_id)
-            .playlist_id(playlist_id)
-            .range_start(range_start)
-            .insert_before(insert_before);
+      .setDefaults(httpManager, scheme, host, port)
+      .user_id(user_id)
+      .playlist_id(playlist_id)
+      .range_start(range_start)
+      .insert_before(insert_before);
   }
 
   /**
@@ -1387,30 +1386,30 @@ public class SpotifyApi {
    */
   public ReorderPlaylistsTracksRequest.Builder reorderPlaylistsTracks(String playlist_id, int range_start, int insert_before) {
     return new ReorderPlaylistsTracksRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port)
-            .playlist_id(playlist_id)
-            .range_start(range_start)
-            .insert_before(insert_before);
+      .setDefaults(httpManager, scheme, host, port)
+      .playlist_id(playlist_id)
+      .range_start(range_start)
+      .insert_before(insert_before);
   }
 
   /**
    * Replace tracks in a playlist.
    *
-   * @deprecated Playlist IDs are unique for themselves. This parameter is thus no longer used.
-   * (https://developer.spotify.com/community/news/2018/06/12/changes-to-playlist-uris/)
    * @param user_id     The owners username.
    * @param playlist_id The playlists ID.
    * @param uris        URIs of the tracks to add. Maximum: 100 track URIs.
    * @return A {@link ReplacePlaylistsTracksRequest.Builder}.
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   * @deprecated Playlist IDs are unique for themselves. This parameter is thus no longer used.
+   * (https://developer.spotify.com/community/news/2018/06/12/changes-to-playlist-uris/)
    */
   @Deprecated
   public ReplacePlaylistsTracksRequest.Builder replacePlaylistsTracks(String user_id, String playlist_id, String[] uris) {
     return new ReplacePlaylistsTracksRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port)
-            .user_id(user_id)
-            .playlist_id(playlist_id)
-            .uris(concat(uris, ','));
+      .setDefaults(httpManager, scheme, host, port)
+      .user_id(user_id)
+      .playlist_id(playlist_id)
+      .uris(concat(uris, ','));
   }
 
   /**
@@ -1423,29 +1422,29 @@ public class SpotifyApi {
    */
   public ReplacePlaylistsTracksRequest.Builder replacePlaylistsTracks(String playlist_id, String[] uris) {
     return new ReplacePlaylistsTracksRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port)
-            .playlist_id(playlist_id)
-            .uris(concat(uris, ','));
+      .setDefaults(httpManager, scheme, host, port)
+      .playlist_id(playlist_id)
+      .uris(concat(uris, ','));
   }
 
   /**
    * Replace tracks in a playlist.
    *
-   * @deprecated Playlist IDs are unique for themselves. This parameter is thus no longer used.
-   * (https://developer.spotify.com/community/news/2018/06/12/changes-to-playlist-uris/)
    * @param user_id     The owners username.
    * @param playlist_id The playlists ID.
    * @param uris        URIs of the tracks to add. Maximum: 100 track URIs.
    * @return A {@link ReplacePlaylistsTracksRequest.Builder}.
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   * @deprecated Playlist IDs are unique for themselves. This parameter is thus no longer used.
+   * (https://developer.spotify.com/community/news/2018/06/12/changes-to-playlist-uris/)
    */
   @Deprecated
   public ReplacePlaylistsTracksRequest.Builder replacePlaylistsTracks(String user_id, String playlist_id, JsonArray uris) {
     return new ReplacePlaylistsTracksRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port)
-            .user_id(user_id)
-            .playlist_id(playlist_id)
-            .uris(uris);
+      .setDefaults(httpManager, scheme, host, port)
+      .user_id(user_id)
+      .playlist_id(playlist_id)
+      .uris(uris);
   }
 
   /**
@@ -1458,27 +1457,27 @@ public class SpotifyApi {
    */
   public ReplacePlaylistsTracksRequest.Builder replacePlaylistsTracks(String playlist_id, JsonArray uris) {
     return new ReplacePlaylistsTracksRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port)
-            .playlist_id(playlist_id)
-            .uris(uris);
+      .setDefaults(httpManager, scheme, host, port)
+      .playlist_id(playlist_id)
+      .uris(uris);
   }
 
   /**
    * Replace the image used to represent a specific playlist.
    *
-   * @deprecated Playlist IDs are unique for themselves. This parameter is thus no longer used.
-   * (https://developer.spotify.com/community/news/2018/06/12/changes-to-playlist-uris/)
    * @param user_id     The users Spotify user ID.
    * @param playlist_id The Spotify ID for the playlist.
    * @return An {@link UploadCustomPlaylistCoverImageRequest.Builder}.
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   * @deprecated Playlist IDs are unique for themselves. This parameter is thus no longer used.
+   * (https://developer.spotify.com/community/news/2018/06/12/changes-to-playlist-uris/)
    */
   @Deprecated
   public UploadCustomPlaylistCoverImageRequest.Builder uploadCustomPlaylistCoverImage(String user_id, String playlist_id) {
     return new UploadCustomPlaylistCoverImageRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port)
-            .user_id(user_id)
-            .playlist_id(playlist_id);
+      .setDefaults(httpManager, scheme, host, port)
+      .user_id(user_id)
+      .playlist_id(playlist_id);
   }
 
   /**
@@ -1490,8 +1489,8 @@ public class SpotifyApi {
    */
   public UploadCustomPlaylistCoverImageRequest.Builder uploadCustomPlaylistCoverImage(String playlist_id) {
     return new UploadCustomPlaylistCoverImageRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port)
-            .playlist_id(playlist_id);
+      .setDefaults(httpManager, scheme, host, port)
+      .playlist_id(playlist_id);
   }
 
   /**
@@ -1504,9 +1503,9 @@ public class SpotifyApi {
    */
   public SearchItemRequest.Builder searchItem(String q, String type) {
     return new SearchItemRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port)
-            .q(q)
-            .type(type);
+      .setDefaults(httpManager, scheme, host, port)
+      .q(q)
+      .type(type);
   }
 
   /**
@@ -1517,8 +1516,8 @@ public class SpotifyApi {
    */
   public SearchAlbumsRequest.Builder searchAlbums(String q) {
     return new SearchAlbumsRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port)
-            .q(q);
+      .setDefaults(httpManager, scheme, host, port)
+      .q(q);
   }
 
   /**
@@ -1529,8 +1528,8 @@ public class SpotifyApi {
    */
   public SearchArtistsRequest.Builder searchArtists(String q) {
     return new SearchArtistsRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port)
-            .q(q);
+      .setDefaults(httpManager, scheme, host, port)
+      .q(q);
   }
 
   /**
@@ -1541,8 +1540,8 @@ public class SpotifyApi {
    */
   public SearchPlaylistsRequest.Builder searchPlaylists(String q) {
     return new SearchPlaylistsRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port)
-            .q(q);
+      .setDefaults(httpManager, scheme, host, port)
+      .q(q);
   }
 
   /**
@@ -1553,8 +1552,8 @@ public class SpotifyApi {
    */
   public SearchTracksRequest.Builder searchTracks(String q) {
     return new SearchTracksRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port)
-            .q(q);
+      .setDefaults(httpManager, scheme, host, port)
+      .q(q);
   }
 
   /**
@@ -1566,8 +1565,8 @@ public class SpotifyApi {
    */
   public GetAudioAnalysisForTrackRequest.Builder getAudioAnalysisForTrack(String id) {
     return new GetAudioAnalysisForTrackRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port)
-            .id(id);
+      .setDefaults(httpManager, scheme, host, port)
+      .id(id);
   }
 
   /**
@@ -1579,8 +1578,8 @@ public class SpotifyApi {
    */
   public GetAudioFeaturesForTrackRequest.Builder getAudioFeaturesForTrack(String id) {
     return new GetAudioFeaturesForTrackRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port)
-            .id(id);
+      .setDefaults(httpManager, scheme, host, port)
+      .id(id);
   }
 
   /**
@@ -1592,8 +1591,8 @@ public class SpotifyApi {
    */
   public GetAudioFeaturesForSeveralTracksRequest.Builder getAudioFeaturesForSeveralTracks(String... ids) {
     return new GetAudioFeaturesForSeveralTracksRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port)
-            .ids(concat(ids, ','));
+      .setDefaults(httpManager, scheme, host, port)
+      .ids(concat(ids, ','));
   }
 
   /**
@@ -1605,8 +1604,8 @@ public class SpotifyApi {
    */
   public GetSeveralTracksRequest.Builder getSeveralTracks(String... ids) {
     return new GetSeveralTracksRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port)
-            .ids(concat(ids, ','));
+      .setDefaults(httpManager, scheme, host, port)
+      .ids(concat(ids, ','));
   }
 
   /**
@@ -1618,8 +1617,8 @@ public class SpotifyApi {
    */
   public GetTrackRequest.Builder getTrack(String id) {
     return new GetTrackRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port)
-            .id(id);
+      .setDefaults(httpManager, scheme, host, port)
+      .id(id);
   }
 
   /**
@@ -1629,7 +1628,7 @@ public class SpotifyApi {
    */
   public GetCurrentUsersProfileRequest.Builder getCurrentUsersProfile() {
     return new GetCurrentUsersProfileRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port);
+      .setDefaults(httpManager, scheme, host, port);
   }
 
   /**
@@ -1641,8 +1640,8 @@ public class SpotifyApi {
    */
   public GetUsersProfileRequest.Builder getUsersProfile(String user_id) {
     return new GetUsersProfileRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port)
-            .user_id(user_id);
+      .setDefaults(httpManager, scheme, host, port)
+      .user_id(user_id);
   }
 
   /**
