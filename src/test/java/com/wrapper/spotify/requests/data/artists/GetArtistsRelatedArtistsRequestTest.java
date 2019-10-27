@@ -16,10 +16,10 @@ import static org.junit.Assert.assertEquals;
 @RunWith(MockitoJUnitRunner.class)
 public class GetArtistsRelatedArtistsRequestTest extends AbstractDataTest<Artist[]> {
   private final GetArtistsRelatedArtistsRequest defaultRequest = SPOTIFY_API.getArtistsRelatedArtists(ID_ARTIST)
-          .setHttpManager(
-                  TestUtil.MockedHttpManager.returningJson(
-                          "requests/data/artists/GetArtistsRelatedArtistsRequest.json"))
-          .build();
+    .setHttpManager(
+      TestUtil.MockedHttpManager.returningJson(
+        "requests/data/artists/GetArtistsRelatedArtistsRequest.json"))
+    .build();
 
   public GetArtistsRelatedArtistsRequestTest() throws Exception {
   }
@@ -28,8 +28,8 @@ public class GetArtistsRelatedArtistsRequestTest extends AbstractDataTest<Artist
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
     assertEquals(
-            "https://api.spotify.com:443/v1/artists/0LcJLqbBmaGUft1e9Mm8HV/related-artists",
-            defaultRequest.getUri().toString());
+      "https://api.spotify.com:443/v1/artists/0LcJLqbBmaGUft1e9Mm8HV/related-artists",
+      defaultRequest.getUri().toString());
   }
 
   @Test
@@ -44,7 +44,7 @@ public class GetArtistsRelatedArtistsRequestTest extends AbstractDataTest<Artist
 
   public void shouldReturnDefault(final Artist[] artists) {
     assertEquals(
-            1,
-            artists.length);
+      1,
+      artists.length);
   }
 }

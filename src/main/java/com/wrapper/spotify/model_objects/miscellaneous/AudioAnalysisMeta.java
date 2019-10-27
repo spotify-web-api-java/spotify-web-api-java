@@ -206,35 +206,35 @@ public class AudioAnalysisMeta extends AbstractModelObject {
       }
 
       return new AudioAnalysisMeta.Builder()
-              .setAnalysisTime(
-                      hasAndNotNull(jsonObject, "analysis_time")
-                              ? jsonObject.get("analysis_time").getAsFloat()
-                              : null)
-              .setAnalyzerVersion(
-                      hasAndNotNull(jsonObject, "analysis_time")
-                              ? jsonObject.get("analyzer_version").getAsString()
-                              : null)
-              .setDetailedStatus(
-                      hasAndNotNull(jsonObject, "analysis_time")
-                              ? jsonObject.get("detailed_status").getAsString()
-                              : null)
-              .setInputProcess(
-                      hasAndNotNull(jsonObject, "analysis_time")
-                              ? jsonObject.get("input_process").getAsString()
-                              : null)
-              .setPlatform(
-                      hasAndNotNull(jsonObject, "analysis_time")
-                              ? jsonObject.get("platform").getAsString()
-                              : null)
-              .setStatusCode(
-                      hasAndNotNull(jsonObject, "analysis_time")
-                              ? jsonObject.get("status_code").getAsInt()
-                              : null)
-              .setTimestamp(
-                      hasAndNotNull(jsonObject, "analysis_time")
-                              ? jsonObject.get("timestamp").getAsLong()
-                              : null)
-              .build();
+        .setAnalysisTime(
+          hasAndNotNull(jsonObject, "analysis_time")
+            ? jsonObject.get("analysis_time").getAsFloat()
+            : null)
+        .setAnalyzerVersion(
+          hasAndNotNull(jsonObject, "analysis_time")
+            ? jsonObject.get("analyzer_version").getAsString()
+            : null)
+        .setDetailedStatus(
+          hasAndNotNull(jsonObject, "analysis_time")
+            ? jsonObject.get("detailed_status").getAsString()
+            : null)
+        .setInputProcess(
+          hasAndNotNull(jsonObject, "analysis_time")
+            ? jsonObject.get("input_process").getAsString()
+            : null)
+        .setPlatform(
+          hasAndNotNull(jsonObject, "analysis_time")
+            ? jsonObject.get("platform").getAsString()
+            : null)
+        .setStatusCode(
+          hasAndNotNull(jsonObject, "analysis_time")
+            ? jsonObject.get("status_code").getAsInt()
+            : null)
+        .setTimestamp(
+          hasAndNotNull(jsonObject, "analysis_time")
+            ? jsonObject.get("timestamp").getAsLong()
+            : null)
+        .build();
     }
   }
 }

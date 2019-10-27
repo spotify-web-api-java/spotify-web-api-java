@@ -91,15 +91,15 @@ public class Error extends AbstractModelObject {
       }
 
       return new Error.Builder()
-              .setStatus(
-                      hasAndNotNull(jsonObject, "status")
-                              ? jsonObject.get("status").getAsInt()
-                              : null)
-              .setMessage(
-                      hasAndNotNull(jsonObject, "message")
-                              ? jsonObject.get("message").getAsString()
-                              : null)
-              .build();
+        .setStatus(
+          hasAndNotNull(jsonObject, "status")
+            ? jsonObject.get("status").getAsInt()
+            : null)
+        .setMessage(
+          hasAndNotNull(jsonObject, "message")
+            ? jsonObject.get("message").getAsString()
+            : null)
+        .build();
     }
   }
 }

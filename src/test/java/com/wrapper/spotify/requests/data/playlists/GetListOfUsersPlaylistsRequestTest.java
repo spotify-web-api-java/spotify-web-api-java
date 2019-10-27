@@ -18,13 +18,13 @@ import static org.junit.Assert.assertNull;
 @RunWith(MockitoJUnitRunner.class)
 public class GetListOfUsersPlaylistsRequestTest extends AbstractDataTest<Paging<PlaylistSimplified>> {
   private final GetListOfUsersPlaylistsRequest defaultRequest = SPOTIFY_API
-          .getListOfUsersPlaylists(ID_USER)
-          .setHttpManager(
-                  TestUtil.MockedHttpManager.returningJson(
-                          "requests/data/playlists/GetListOfUsersPlaylistsRequest.json"))
-          .limit(LIMIT)
-          .offset(OFFSET)
-          .build();
+    .getListOfUsersPlaylists(ID_USER)
+    .setHttpManager(
+      TestUtil.MockedHttpManager.returningJson(
+        "requests/data/playlists/GetListOfUsersPlaylistsRequest.json"))
+    .limit(LIMIT)
+    .offset(OFFSET)
+    .build();
 
   public GetListOfUsersPlaylistsRequestTest() throws Exception {
   }
@@ -33,8 +33,8 @@ public class GetListOfUsersPlaylistsRequestTest extends AbstractDataTest<Paging<
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
     assertEquals(
-            "https://api.spotify.com:443/v1/users/abbaspotify/playlists?limit=10&offset=0",
-            defaultRequest.getUri().toString());
+      "https://api.spotify.com:443/v1/users/abbaspotify/playlists?limit=10&offset=0",
+      defaultRequest.getUri().toString());
   }
 
   @Test
@@ -49,23 +49,23 @@ public class GetListOfUsersPlaylistsRequestTest extends AbstractDataTest<Paging<
 
   public void shouldReturnDefault(final Paging<PlaylistSimplified> playlistSimplifiedPaging) {
     assertEquals(
-            "https://api.spotify.com/v1/users/wizzler/playlists",
-            playlistSimplifiedPaging.getHref());
+      "https://api.spotify.com/v1/users/wizzler/playlists",
+      playlistSimplifiedPaging.getHref());
     assertEquals(
-            2,
-            playlistSimplifiedPaging.getItems().length);
+      2,
+      playlistSimplifiedPaging.getItems().length);
     assertEquals(
-            9,
-            (int) playlistSimplifiedPaging.getLimit());
+      9,
+      (int) playlistSimplifiedPaging.getLimit());
     assertNull(
-            playlistSimplifiedPaging.getNext());
+      playlistSimplifiedPaging.getNext());
     assertEquals(
-            0,
-            (int) playlistSimplifiedPaging.getOffset());
+      0,
+      (int) playlistSimplifiedPaging.getOffset());
     assertNull(
-            playlistSimplifiedPaging.getPrevious());
+      playlistSimplifiedPaging.getPrevious());
     assertEquals(
-            9,
-            (int) playlistSimplifiedPaging.getTotal());
+      9,
+      (int) playlistSimplifiedPaging.getTotal());
   }
 }

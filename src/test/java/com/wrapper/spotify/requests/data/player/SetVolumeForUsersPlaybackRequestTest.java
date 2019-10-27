@@ -17,12 +17,12 @@ import static org.junit.Assert.assertNull;
 @RunWith(MockitoJUnitRunner.class)
 public class SetVolumeForUsersPlaybackRequestTest extends AbstractDataTest<String> {
   private final SetVolumeForUsersPlaybackRequest defaultRequest = SPOTIFY_API
-          .setVolumeForUsersPlayback(VOLUME_PERCENT)
-          .setHttpManager(
-                  TestUtil.MockedHttpManager.returningJson(
-                          "requests/data/player/SetVolumeForUsersPlaybackRequest.json"))
-          .device_id(DEVICE_ID)
-          .build();
+    .setVolumeForUsersPlayback(VOLUME_PERCENT)
+    .setHttpManager(
+      TestUtil.MockedHttpManager.returningJson(
+        "requests/data/player/SetVolumeForUsersPlaybackRequest.json"))
+    .device_id(DEVICE_ID)
+    .build();
 
   public SetVolumeForUsersPlaybackRequestTest() throws Exception {
   }
@@ -32,8 +32,8 @@ public class SetVolumeForUsersPlaybackRequestTest extends AbstractDataTest<Strin
     assertHasAuthorizationHeader(defaultRequest);
     assertHasHeader(defaultRequest, "Content-Type", "application/json");
     assertEquals(
-            "https://api.spotify.com:443/v1/me/player/volume?volume_percent=100&device_id=5fbb3ba6aa454b5534c4ba43a8c7e8e45a63ad0e",
-            defaultRequest.getUri().toString());
+      "https://api.spotify.com:443/v1/me/player/volume?volume_percent=100&device_id=5fbb3ba6aa454b5534c4ba43a8c7e8e45a63ad0e",
+      defaultRequest.getUri().toString());
   }
 
   @Test
@@ -48,6 +48,6 @@ public class SetVolumeForUsersPlaybackRequestTest extends AbstractDataTest<Strin
 
   public void shouldReturnDefault(final String string) {
     assertNull(
-            string);
+      string);
   }
 }

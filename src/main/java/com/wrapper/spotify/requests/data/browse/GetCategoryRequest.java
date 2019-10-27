@@ -32,8 +32,8 @@ public class GetCategoryRequest extends AbstractDataRequest<Category> {
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
    */
   public Category execute() throws
-          IOException,
-          SpotifyWebApiException {
+    IOException,
+    SpotifyWebApiException {
     return new Category.JsonUtil().createModelObject(getJson());
   }
 

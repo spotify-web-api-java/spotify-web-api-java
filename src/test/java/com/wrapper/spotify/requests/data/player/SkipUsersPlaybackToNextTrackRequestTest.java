@@ -17,12 +17,12 @@ import static org.junit.Assert.assertNull;
 @RunWith(MockitoJUnitRunner.class)
 public class SkipUsersPlaybackToNextTrackRequestTest extends AbstractDataTest<String> {
   private final SkipUsersPlaybackToNextTrackRequest defaultRequest = SPOTIFY_API
-          .skipUsersPlaybackToNextTrack()
-          .setHttpManager(
-                  TestUtil.MockedHttpManager.returningJson(
-                          "requests/data/player/SkipUsersPlaybackToNextTrackRequest.json"))
-          .device_id(DEVICE_ID)
-          .build();
+    .skipUsersPlaybackToNextTrack()
+    .setHttpManager(
+      TestUtil.MockedHttpManager.returningJson(
+        "requests/data/player/SkipUsersPlaybackToNextTrackRequest.json"))
+    .device_id(DEVICE_ID)
+    .build();
 
   public SkipUsersPlaybackToNextTrackRequestTest() throws Exception {
   }
@@ -32,8 +32,8 @@ public class SkipUsersPlaybackToNextTrackRequestTest extends AbstractDataTest<St
     assertHasAuthorizationHeader(defaultRequest);
     assertHasHeader(defaultRequest, "Content-Type", "application/json");
     assertEquals(
-            "https://api.spotify.com:443/v1/me/player/next?device_id=5fbb3ba6aa454b5534c4ba43a8c7e8e45a63ad0e",
-            defaultRequest.getUri().toString());
+      "https://api.spotify.com:443/v1/me/player/next?device_id=5fbb3ba6aa454b5534c4ba43a8c7e8e45a63ad0e",
+      defaultRequest.getUri().toString());
   }
 
   @Test
@@ -48,6 +48,6 @@ public class SkipUsersPlaybackToNextTrackRequestTest extends AbstractDataTest<St
 
   public void shouldReturnDefault(final String string) {
     assertNull(
-            string);
+      string);
   }
 }

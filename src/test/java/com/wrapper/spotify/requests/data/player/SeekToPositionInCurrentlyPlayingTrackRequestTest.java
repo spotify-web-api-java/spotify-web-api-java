@@ -17,12 +17,12 @@ import static org.junit.Assert.assertNull;
 @RunWith(MockitoJUnitRunner.class)
 public class SeekToPositionInCurrentlyPlayingTrackRequestTest extends AbstractDataTest<String> {
   private final SeekToPositionInCurrentlyPlayingTrackRequest defaultRequest = SPOTIFY_API
-          .seekToPositionInCurrentlyPlayingTrack(POSITION_MS)
-          .setHttpManager(
-                  TestUtil.MockedHttpManager.returningJson(
-                          "requests/data/player/SeekToPositionInCurrentlyPlayingTrackRequest.json"))
-          .device_id(DEVICE_ID)
-          .build();
+    .seekToPositionInCurrentlyPlayingTrack(POSITION_MS)
+    .setHttpManager(
+      TestUtil.MockedHttpManager.returningJson(
+        "requests/data/player/SeekToPositionInCurrentlyPlayingTrackRequest.json"))
+    .device_id(DEVICE_ID)
+    .build();
 
   public SeekToPositionInCurrentlyPlayingTrackRequestTest() throws Exception {
   }
@@ -32,8 +32,8 @@ public class SeekToPositionInCurrentlyPlayingTrackRequestTest extends AbstractDa
     assertHasAuthorizationHeader(defaultRequest);
     assertHasHeader(defaultRequest, "Content-Type", "application/json");
     assertEquals(
-            "https://api.spotify.com:443/v1/me/player/seek?position_ms=10000&device_id=5fbb3ba6aa454b5534c4ba43a8c7e8e45a63ad0e",
-            defaultRequest.getUri().toString());
+      "https://api.spotify.com:443/v1/me/player/seek?position_ms=10000&device_id=5fbb3ba6aa454b5534c4ba43a8c7e8e45a63ad0e",
+      defaultRequest.getUri().toString());
   }
 
   @Test
@@ -48,6 +48,6 @@ public class SeekToPositionInCurrentlyPlayingTrackRequestTest extends AbstractDa
 
   public void shouldReturnDefault(final String string) {
     assertNull(
-            string);
+      string);
   }
 }

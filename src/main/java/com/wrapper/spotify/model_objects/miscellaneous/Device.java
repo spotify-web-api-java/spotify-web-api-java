@@ -180,31 +180,31 @@ public class Device extends AbstractModelObject {
       }
 
       return new Device.Builder()
-              .setId(
-                      hasAndNotNull(jsonObject, "id")
-                              ? jsonObject.get("id").getAsString()
-                              : null)
-              .setIs_active(
-                      hasAndNotNull(jsonObject, "is_active")
-                              ? jsonObject.get("is_active").getAsBoolean()
-                              : null)
-              .setIs_restricted(
-                      hasAndNotNull(jsonObject, "is_restricted")
-                              ? jsonObject.get("is_restricted").getAsBoolean()
-                              : null)
-              .setName(
-                      hasAndNotNull(jsonObject, "name")
-                              ? jsonObject.get("name").getAsString()
-                              : null)
-              .setType(
-                      hasAndNotNull(jsonObject, "type")
-                              ? jsonObject.get("type").getAsString()
-                              : null)
-              .setVolume_percent(
-                      hasAndNotNull(jsonObject, "volume_percent")
-                              ? jsonObject.get("volume_percent").getAsInt()
-                              : null)
-              .build();
+        .setId(
+          hasAndNotNull(jsonObject, "id")
+            ? jsonObject.get("id").getAsString()
+            : null)
+        .setIs_active(
+          hasAndNotNull(jsonObject, "is_active")
+            ? jsonObject.get("is_active").getAsBoolean()
+            : null)
+        .setIs_restricted(
+          hasAndNotNull(jsonObject, "is_restricted")
+            ? jsonObject.get("is_restricted").getAsBoolean()
+            : null)
+        .setName(
+          hasAndNotNull(jsonObject, "name")
+            ? jsonObject.get("name").getAsString()
+            : null)
+        .setType(
+          hasAndNotNull(jsonObject, "type")
+            ? jsonObject.get("type").getAsString()
+            : null)
+        .setVolume_percent(
+          hasAndNotNull(jsonObject, "volume_percent")
+            ? jsonObject.get("volume_percent").getAsInt()
+            : null)
+        .build();
     }
   }
 }

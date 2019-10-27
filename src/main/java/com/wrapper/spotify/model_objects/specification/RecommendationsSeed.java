@@ -187,32 +187,32 @@ public class RecommendationsSeed extends AbstractModelObject {
       }
 
       return new RecommendationsSeed.Builder()
-              .setAfterFilteringSize(
-                      hasAndNotNull(jsonObject, "afterFilteringSize")
-                              ? jsonObject.get("afterFilteringSize").getAsInt()
-                              : null)
-              .setAfterRelinkingSize(
-                      hasAndNotNull(jsonObject, "afterRelinkingSize")
-                              ? jsonObject.get("afterRelinkingSize").getAsInt()
-                              : null)
-              .setHref(
-                      hasAndNotNull(jsonObject, "href")
-                              ? jsonObject.get("href").getAsString()
-                              : null)
-              .setId(
-                      hasAndNotNull(jsonObject, "id")
-                              ? jsonObject.get("id").getAsString()
-                              : null)
-              .setInitialPoolSize(
-                      hasAndNotNull(jsonObject, "initialPoolSize")
-                              ? jsonObject.get("initialPoolSize").getAsInt()
-                              : null)
-              .setType(
-                      hasAndNotNull(jsonObject, "type")
-                              ? ModelObjectType.keyOf(
-                              jsonObject.get("type").getAsString().toLowerCase())
-                              : null)
-              .build();
+        .setAfterFilteringSize(
+          hasAndNotNull(jsonObject, "afterFilteringSize")
+            ? jsonObject.get("afterFilteringSize").getAsInt()
+            : null)
+        .setAfterRelinkingSize(
+          hasAndNotNull(jsonObject, "afterRelinkingSize")
+            ? jsonObject.get("afterRelinkingSize").getAsInt()
+            : null)
+        .setHref(
+          hasAndNotNull(jsonObject, "href")
+            ? jsonObject.get("href").getAsString()
+            : null)
+        .setId(
+          hasAndNotNull(jsonObject, "id")
+            ? jsonObject.get("id").getAsString()
+            : null)
+        .setInitialPoolSize(
+          hasAndNotNull(jsonObject, "initialPoolSize")
+            ? jsonObject.get("initialPoolSize").getAsInt()
+            : null)
+        .setType(
+          hasAndNotNull(jsonObject, "type")
+            ? ModelObjectType.keyOf(
+            jsonObject.get("type").getAsString().toLowerCase())
+            : null)
+        .build();
     }
   }
 }

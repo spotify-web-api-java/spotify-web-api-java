@@ -33,8 +33,8 @@ public class GetUsersFollowedArtistsRequest extends AbstractDataRequest<PagingCu
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
    */
   public PagingCursorbased<Artist> execute() throws
-          IOException,
-          SpotifyWebApiException {
+    IOException,
+    SpotifyWebApiException {
     return new Artist.JsonUtil().createModelObjectPagingCursorbased(getJson(), "artists");
   }
 

@@ -91,16 +91,16 @@ public class FeaturedPlaylists extends AbstractModelObject {
       }
 
       return new FeaturedPlaylists.Builder()
-              .setMessage(
-                      hasAndNotNull(jsonObject, "message")
-                              ? jsonObject.get("message").getAsString()
-                              : null)
-              .setPlaylists(
-                      hasAndNotNull(jsonObject, "playlists")
-                              ? new PlaylistSimplified.JsonUtil().createModelObjectPaging(
-                              jsonObject.getAsJsonObject("playlists"))
-                              : null)
-              .build();
+        .setMessage(
+          hasAndNotNull(jsonObject, "message")
+            ? jsonObject.get("message").getAsString()
+            : null)
+        .setPlaylists(
+          hasAndNotNull(jsonObject, "playlists")
+            ? new PlaylistSimplified.JsonUtil().createModelObjectPaging(
+            jsonObject.getAsJsonObject("playlists"))
+            : null)
+        .build();
     }
   }
 }

@@ -30,8 +30,8 @@ public class AuthorizationCodeRequest extends AbstractAthorizationRequest<Author
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
    */
   public AuthorizationCodeCredentials execute() throws
-          IOException,
-          SpotifyWebApiException {
+    IOException,
+    SpotifyWebApiException {
     return new AuthorizationCodeCredentials.JsonUtil().createModelObject(postJson());
   }
 

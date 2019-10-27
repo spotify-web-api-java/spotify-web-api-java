@@ -42,8 +42,8 @@ public class GetUsersTopArtistsRequest extends AbstractDataRequest<Paging<Artist
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
    */
   public Paging<Artist> execute() throws
-          IOException,
-          SpotifyWebApiException {
+    IOException,
+    SpotifyWebApiException {
     return new Artist.JsonUtil().createModelObjectPaging(getJson());
   }
 

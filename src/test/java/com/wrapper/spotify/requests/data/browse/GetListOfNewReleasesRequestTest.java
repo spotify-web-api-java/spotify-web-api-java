@@ -18,13 +18,13 @@ import static org.junit.Assert.assertNull;
 @RunWith(MockitoJUnitRunner.class)
 public class GetListOfNewReleasesRequestTest extends AbstractDataTest<Paging<AlbumSimplified>> {
   private final GetListOfNewReleasesRequest defaultRequest = SPOTIFY_API.getListOfNewReleases()
-          .setHttpManager(
-                  TestUtil.MockedHttpManager.returningJson(
-                          "requests/data/browse/GetListOfNewReleasesRequest.json"))
-          .country(COUNTRY)
-          .limit(LIMIT)
-          .offset(OFFSET)
-          .build();
+    .setHttpManager(
+      TestUtil.MockedHttpManager.returningJson(
+        "requests/data/browse/GetListOfNewReleasesRequest.json"))
+    .country(COUNTRY)
+    .limit(LIMIT)
+    .offset(OFFSET)
+    .build();
 
   public GetListOfNewReleasesRequestTest() throws Exception {
   }
@@ -33,8 +33,8 @@ public class GetListOfNewReleasesRequestTest extends AbstractDataTest<Paging<Alb
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
     assertEquals(
-            "https://api.spotify.com:443/v1/browse/new-releases?country=SE&limit=10&offset=0",
-            defaultRequest.getUri().toString());
+      "https://api.spotify.com:443/v1/browse/new-releases?country=SE&limit=10&offset=0",
+      defaultRequest.getUri().toString());
   }
 
   @Test
@@ -49,24 +49,24 @@ public class GetListOfNewReleasesRequestTest extends AbstractDataTest<Paging<Alb
 
   public void shouldReturnDefault(final Paging<AlbumSimplified> albumSimplifiedPaging) {
     assertEquals(
-            "https://api.spotify.com/v1/browse/new-releases?country=SE&offset=0&limit=20",
-            albumSimplifiedPaging.getHref());
+      "https://api.spotify.com/v1/browse/new-releases?country=SE&offset=0&limit=20",
+      albumSimplifiedPaging.getHref());
     assertEquals(
-            2,
-            albumSimplifiedPaging.getItems().length);
+      2,
+      albumSimplifiedPaging.getItems().length);
     assertEquals(
-            20,
-            (int) albumSimplifiedPaging.getLimit());
+      20,
+      (int) albumSimplifiedPaging.getLimit());
     assertEquals(
-            "https://api.spotify.com/v1/browse/new-releases?country=SE&offset=20&limit=20",
-            albumSimplifiedPaging.getNext());
+      "https://api.spotify.com/v1/browse/new-releases?country=SE&offset=20&limit=20",
+      albumSimplifiedPaging.getNext());
     assertEquals(
-            0,
-            (int) albumSimplifiedPaging.getOffset());
+      0,
+      (int) albumSimplifiedPaging.getOffset());
     assertNull(
-            albumSimplifiedPaging.getPrevious());
+      albumSimplifiedPaging.getPrevious());
     assertEquals(
-            500,
-            (int) albumSimplifiedPaging.getTotal());
+      500,
+      (int) albumSimplifiedPaging.getTotal());
   }
 }

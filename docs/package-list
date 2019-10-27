@@ -28,5 +28,6 @@ com.wrapper.spotify.requests.data.playlists
 com.wrapper.spotify.requests.data.search
 com.wrapper.spotify.requests.data.search.interfaces
 com.wrapper.spotify.requests.data.search.simplified
+com.wrapper.spotify.requests.data.search.simplified.special
 com.wrapper.spotify.requests.data.tracks
 com.wrapper.spotify.requests.data.users_profile

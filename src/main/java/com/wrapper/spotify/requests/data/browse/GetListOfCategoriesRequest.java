@@ -34,8 +34,8 @@ public class GetListOfCategoriesRequest extends AbstractDataRequest<Paging<Categ
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
    */
   public Paging<Category> execute() throws
-          IOException,
-          SpotifyWebApiException {
+    IOException,
+    SpotifyWebApiException {
     return new Category.JsonUtil().createModelObjectPaging(getJson(), "categories");
   }
 

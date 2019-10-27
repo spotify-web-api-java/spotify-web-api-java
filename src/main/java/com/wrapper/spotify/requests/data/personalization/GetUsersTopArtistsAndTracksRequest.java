@@ -45,8 +45,8 @@ public class GetUsersTopArtistsAndTracksRequest<T extends IArtistTrackModelObjec
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
    */
   public Paging<T> execute() throws
-          IOException,
-          SpotifyWebApiException {
+    IOException,
+    SpotifyWebApiException {
     return tClass.createModelObjectPaging(getJson());
   }
 

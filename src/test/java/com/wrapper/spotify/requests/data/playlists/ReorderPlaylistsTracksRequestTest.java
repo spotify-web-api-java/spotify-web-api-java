@@ -18,13 +18,13 @@ import static org.junit.Assert.assertEquals;
 @RunWith(MockitoJUnitRunner.class)
 public class ReorderPlaylistsTracksRequestTest extends AbstractDataTest<SnapshotResult> {
   private final ReorderPlaylistsTracksRequest defaultRequest = SPOTIFY_API
-          .reorderPlaylistsTracks(ID_PLAYLIST, RANGE_START, INSERT_BEFORE)
-          .setHttpManager(
-                  TestUtil.MockedHttpManager.returningJson(
-                          "requests/data/playlists/ReorderPlaylistsTracksRequest.json"))
-          .range_length(RANGE_LENGTH)
-          .snapshot_id(SNAPSHOT_ID)
-          .build();
+    .reorderPlaylistsTracks(ID_PLAYLIST, RANGE_START, INSERT_BEFORE)
+    .setHttpManager(
+      TestUtil.MockedHttpManager.returningJson(
+        "requests/data/playlists/ReorderPlaylistsTracksRequest.json"))
+    .range_length(RANGE_LENGTH)
+    .snapshot_id(SNAPSHOT_ID)
+    .build();
 
   public ReorderPlaylistsTracksRequestTest() throws Exception {
   }
@@ -34,24 +34,24 @@ public class ReorderPlaylistsTracksRequestTest extends AbstractDataTest<Snapshot
     assertHasAuthorizationHeader(defaultRequest);
     assertHasHeader(defaultRequest, "Content-Type", "application/json");
     assertHasBodyParameter(
-            defaultRequest,
-            "range_start",
-            RANGE_START);
+      defaultRequest,
+      "range_start",
+      RANGE_START);
     assertHasBodyParameter(
-            defaultRequest,
-            "range_length",
-            RANGE_LENGTH);
+      defaultRequest,
+      "range_length",
+      RANGE_LENGTH);
     assertHasBodyParameter(
-            defaultRequest,
-            "insert_before",
-            INSERT_BEFORE);
+      defaultRequest,
+      "insert_before",
+      INSERT_BEFORE);
     assertHasBodyParameter(
-            defaultRequest,
-            "snapshot_id",
-            SNAPSHOT_ID);
+      defaultRequest,
+      "snapshot_id",
+      SNAPSHOT_ID);
     assertEquals(
-            "https://api.spotify.com:443/v1/playlists/3AGOiaoRXMSjswCLtuNqv5/tracks",
-            defaultRequest.getUri().toString());
+      "https://api.spotify.com:443/v1/playlists/3AGOiaoRXMSjswCLtuNqv5/tracks",
+      defaultRequest.getUri().toString());
   }
 
   @Test
@@ -66,7 +66,7 @@ public class ReorderPlaylistsTracksRequestTest extends AbstractDataTest<Snapshot
 
   public void shouldReturnDefault(final SnapshotResult snapshotResult) {
     assertEquals(
-            "KsWY41k+zLqbx7goYX9zr+2IUZQtqbBNfk4ZOgEpIurvab4VSHhEL2L4za8HW6D0",
-            snapshotResult.getSnapshotId());
+      "KsWY41k+zLqbx7goYX9zr+2IUZQtqbBNfk4ZOgEpIurvab4VSHhEL2L4za8HW6D0",
+      snapshotResult.getSnapshotId());
   }
 }

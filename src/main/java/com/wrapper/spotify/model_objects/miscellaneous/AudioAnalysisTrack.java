@@ -663,112 +663,112 @@ public class AudioAnalysisTrack extends AbstractModelObject {
       }
 
       return new AudioAnalysisTrack.Builder()
-              .setAnalysisChannels(
-                      hasAndNotNull(jsonObject, "analysis_channels")
-                              ? jsonObject.get("analysis_channels").getAsInt()
-                              : null)
-              .setAnalysisSampleRate(
-                      hasAndNotNull(jsonObject, "analysis_sample_rate")
-                              ? jsonObject.get("analysis_sample_rate").getAsLong()
-                              : null)
-              .setCodeString(
-                      hasAndNotNull(jsonObject, "code_string")
-                              ? jsonObject.get("code_string").getAsString()
-                              : null)
-              .setCodeVersion(
-                      hasAndNotNull(jsonObject, "code_version")
-                              ? jsonObject.get("code_version").getAsFloat()
-                              : null)
-              .setDuration(
-                      hasAndNotNull(jsonObject, "duration")
-                              ? jsonObject.get("duration").getAsFloat()
-                              : null)
-              .setEchoprintString(
-                      hasAndNotNull(jsonObject, "echoprintstring")
-                              ? jsonObject.get("echoprintstring").getAsString()
-                              : null)
-              .setEchoprintVersion(
-                      hasAndNotNull(jsonObject, "echoprint_version")
-                              ? jsonObject.get("echoprint_version").getAsFloat()
-                              : null)
-              .setEndOfFadeIn(
-                      hasAndNotNull(jsonObject, "end_of_face_in")
-                              ? jsonObject.get("end_of_face_in").getAsFloat()
-                              : null)
-              .setKey(
-                      hasAndNotNull(jsonObject, "key")
-                              ? jsonObject.get("key").getAsInt()
-                              : null)
-              .setKeyConfidence(
-                      hasAndNotNull(jsonObject, "key_confidence")
-                              ? jsonObject.get("key_confidence").getAsFloat()
-                              : null)
-              .setLoudness(
-                      hasAndNotNull(jsonObject, "loudness")
-                              ? jsonObject.get("loudness").getAsFloat()
-                              : null)
-              .setMode(
-                      hasAndNotNull(jsonObject, "type")
-                              ? Modality.keyOf(
-                              jsonObject.get("mode").getAsInt())
-                              : null)
-              .setModeConfidence(
-                      hasAndNotNull(jsonObject, "mode_confidence")
-                              ? jsonObject.get("mode_confidence").getAsFloat()
-                              : null)
-              .setNumSamples(
-                      hasAndNotNull(jsonObject, "num_samples")
-                              ? jsonObject.get("num_samples").getAsLong()
-                              : null)
-              .setOffsetSeconds(
-                      hasAndNotNull(jsonObject, "offset_seconds")
-                              ? jsonObject.get("offset_seconds").getAsInt()
-                              : null)
-              .setRhythmString(
-                      hasAndNotNull(jsonObject, "rhythmstring")
-                              ? jsonObject.get("rhythmstring").getAsString()
-                              : null)
-              .setRhythmVersion(
-                      hasAndNotNull(jsonObject, "rhythm_version")
-                              ? jsonObject.get("rhythm_version").getAsFloat()
-                              : null)
-              .setSampleMd5(
-                      hasAndNotNull(jsonObject, "sample_md5")
-                              ? jsonObject.get("sample_md5").getAsString()
-                              : null)
-              .setStartOfFadeOut(
-                      hasAndNotNull(jsonObject, "start_of_fade_out")
-                              ? jsonObject.get("start_of_fade_out").getAsFloat()
-                              : null)
-              .setSynchString(
-                      hasAndNotNull(jsonObject, "synchstring")
-                              ? jsonObject.get("synchstring").getAsString()
-                              : null)
-              .setSynchVersion(
-                      hasAndNotNull(jsonObject, "synch_version")
-                              ? jsonObject.get("synch_version").getAsFloat()
-                              : null)
-              .setTempo(
-                      hasAndNotNull(jsonObject, "tempo")
-                              ? jsonObject.get("tempo").getAsFloat()
-                              : null)
-              .setTempoConfidence(
-                      hasAndNotNull(jsonObject, "tempo_confidence")
-                              ? jsonObject.get("tempo_confidence").getAsFloat()
-                              : null)
-              .setTimeSignature(
-                      hasAndNotNull(jsonObject, "time_sidnature")
-                              ? jsonObject.get("time_sidnature").getAsInt()
-                              : null)
-              .setTimeSignatureConfidence(
-                      hasAndNotNull(jsonObject, "time_signature_confidence")
-                              ? jsonObject.get("time_signature_confidence").getAsFloat()
-                              : null)
-              .setWindowSeconds(
-                      hasAndNotNull(jsonObject, "windows_seconds")
-                              ? jsonObject.get("windows_seconds").getAsInt()
-                              : null)
-              .build();
+        .setAnalysisChannels(
+          hasAndNotNull(jsonObject, "analysis_channels")
+            ? jsonObject.get("analysis_channels").getAsInt()
+            : null)
+        .setAnalysisSampleRate(
+          hasAndNotNull(jsonObject, "analysis_sample_rate")
+            ? jsonObject.get("analysis_sample_rate").getAsLong()
+            : null)
+        .setCodeString(
+          hasAndNotNull(jsonObject, "code_string")
+            ? jsonObject.get("code_string").getAsString()
+            : null)
+        .setCodeVersion(
+          hasAndNotNull(jsonObject, "code_version")
+            ? jsonObject.get("code_version").getAsFloat()
+            : null)
+        .setDuration(
+          hasAndNotNull(jsonObject, "duration")
+            ? jsonObject.get("duration").getAsFloat()
+            : null)
+        .setEchoprintString(
+          hasAndNotNull(jsonObject, "echoprintstring")
+            ? jsonObject.get("echoprintstring").getAsString()
+            : null)
+        .setEchoprintVersion(
+          hasAndNotNull(jsonObject, "echoprint_version")
+            ? jsonObject.get("echoprint_version").getAsFloat()
+            : null)
+        .setEndOfFadeIn(
+          hasAndNotNull(jsonObject, "end_of_face_in")
+            ? jsonObject.get("end_of_face_in").getAsFloat()
+            : null)
+        .setKey(
+          hasAndNotNull(jsonObject, "key")
+            ? jsonObject.get("key").getAsInt()
+            : null)
+        .setKeyConfidence(
+          hasAndNotNull(jsonObject, "key_confidence")
+            ? jsonObject.get("key_confidence").getAsFloat()
+            : null)
+        .setLoudness(
+          hasAndNotNull(jsonObject, "loudness")
+            ? jsonObject.get("loudness").getAsFloat()
+            : null)
+        .setMode(
+          hasAndNotNull(jsonObject, "type")
+            ? Modality.keyOf(
+            jsonObject.get("mode").getAsInt())
+            : null)
+        .setModeConfidence(
+          hasAndNotNull(jsonObject, "mode_confidence")
+            ? jsonObject.get("mode_confidence").getAsFloat()
+            : null)
+        .setNumSamples(
+          hasAndNotNull(jsonObject, "num_samples")
+            ? jsonObject.get("num_samples").getAsLong()
+            : null)
+        .setOffsetSeconds(
+          hasAndNotNull(jsonObject, "offset_seconds")
+            ? jsonObject.get("offset_seconds").getAsInt()
+            : null)
+        .setRhythmString(
+          hasAndNotNull(jsonObject, "rhythmstring")
+            ? jsonObject.get("rhythmstring").getAsString()
+            : null)
+        .setRhythmVersion(
+          hasAndNotNull(jsonObject, "rhythm_version")
+            ? jsonObject.get("rhythm_version").getAsFloat()
+            : null)
+        .setSampleMd5(
+          hasAndNotNull(jsonObject, "sample_md5")
+            ? jsonObject.get("sample_md5").getAsString()
+            : null)
+        .setStartOfFadeOut(
+          hasAndNotNull(jsonObject, "start_of_fade_out")
+            ? jsonObject.get("start_of_fade_out").getAsFloat()
+            : null)
+        .setSynchString(
+          hasAndNotNull(jsonObject, "synchstring")
+            ? jsonObject.get("synchstring").getAsString()
+            : null)
+        .setSynchVersion(
+          hasAndNotNull(jsonObject, "synch_version")
+            ? jsonObject.get("synch_version").getAsFloat()
+            : null)
+        .setTempo(
+          hasAndNotNull(jsonObject, "tempo")
+            ? jsonObject.get("tempo").getAsFloat()
+            : null)
+        .setTempoConfidence(
+          hasAndNotNull(jsonObject, "tempo_confidence")
+            ? jsonObject.get("tempo_confidence").getAsFloat()
+            : null)
+        .setTimeSignature(
+          hasAndNotNull(jsonObject, "time_sidnature")
+            ? jsonObject.get("time_sidnature").getAsInt()
+            : null)
+        .setTimeSignatureConfidence(
+          hasAndNotNull(jsonObject, "time_signature_confidence")
+            ? jsonObject.get("time_signature_confidence").getAsFloat()
+            : null)
+        .setWindowSeconds(
+          hasAndNotNull(jsonObject, "windows_seconds")
+            ? jsonObject.get("windows_seconds").getAsInt()
+            : null)
+        .build();
     }
   }
 }

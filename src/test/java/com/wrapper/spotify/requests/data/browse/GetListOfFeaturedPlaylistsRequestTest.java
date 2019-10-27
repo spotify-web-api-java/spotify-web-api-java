@@ -17,15 +17,15 @@ import static org.junit.Assert.assertNotNull;
 @RunWith(MockitoJUnitRunner.class)
 public class GetListOfFeaturedPlaylistsRequestTest extends AbstractDataTest<FeaturedPlaylists> {
   private final GetListOfFeaturedPlaylistsRequest defaultRequest = SPOTIFY_API.getListOfFeaturedPlaylists()
-          .setHttpManager(
-                  TestUtil.MockedHttpManager.returningJson(
-                          "requests/data/browse/GetListOfFeaturedPlaylistsRequest.json"))
-          .country(COUNTRY)
-          .limit(LIMIT)
-          .locale(LOCALE)
-          .offset(OFFSET)
-          .timestamp(TIMESTAMP)
-          .build();
+    .setHttpManager(
+      TestUtil.MockedHttpManager.returningJson(
+        "requests/data/browse/GetListOfFeaturedPlaylistsRequest.json"))
+    .country(COUNTRY)
+    .limit(LIMIT)
+    .locale(LOCALE)
+    .offset(OFFSET)
+    .timestamp(TIMESTAMP)
+    .build();
 
   public GetListOfFeaturedPlaylistsRequestTest() throws Exception {
   }
@@ -34,8 +34,8 @@ public class GetListOfFeaturedPlaylistsRequestTest extends AbstractDataTest<Feat
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
     assertEquals(
-            "https://api.spotify.com:443/v1/browse/featured-playlists?country=SE&limit=10&locale=sv_SE&offset=0&timestamp=2014-10-23T09%3A00%3A00",
-            defaultRequest.getUri().toString());
+      "https://api.spotify.com:443/v1/browse/featured-playlists?country=SE&limit=10&locale=sv_SE&offset=0&timestamp=2014-10-23T09%3A00%3A00",
+      defaultRequest.getUri().toString());
   }
 
   @Test
@@ -50,9 +50,9 @@ public class GetListOfFeaturedPlaylistsRequestTest extends AbstractDataTest<Feat
 
   public void shouldReturnDefault(final FeaturedPlaylists featuredPlaylists) {
     assertEquals(
-            "Monday morning music, coming right up!",
-            featuredPlaylists.getMessage());
+      "Monday morning music, coming right up!",
+      featuredPlaylists.getMessage());
     assertNotNull(
-            featuredPlaylists.getPlaylists());
+      featuredPlaylists.getPlaylists());
   }
 }

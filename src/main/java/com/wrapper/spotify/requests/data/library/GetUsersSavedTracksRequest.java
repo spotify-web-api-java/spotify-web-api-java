@@ -33,8 +33,8 @@ public class GetUsersSavedTracksRequest extends AbstractDataRequest<Paging<Saved
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
    */
   public Paging<SavedTrack> execute() throws
-          IOException,
-          SpotifyWebApiException {
+    IOException,
+    SpotifyWebApiException {
     return new SavedTrack.JsonUtil().createModelObjectPaging(getJson());
   }
 

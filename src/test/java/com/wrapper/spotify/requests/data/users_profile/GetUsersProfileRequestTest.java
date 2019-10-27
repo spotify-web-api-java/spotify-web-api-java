@@ -18,11 +18,11 @@ import static org.junit.Assert.assertNotNull;
 @RunWith(MockitoJUnitRunner.class)
 public class GetUsersProfileRequestTest extends AbstractDataTest<User> {
   private final GetUsersProfileRequest defaultRequest = SPOTIFY_API
-          .getUsersProfile(ID_USER)
-          .setHttpManager(
-                  TestUtil.MockedHttpManager.returningJson(
-                          "requests/data/users_profile/GetUsersProfileRequest.json"))
-          .build();
+    .getUsersProfile(ID_USER)
+    .setHttpManager(
+      TestUtil.MockedHttpManager.returningJson(
+        "requests/data/users_profile/GetUsersProfileRequest.json"))
+    .build();
 
   public GetUsersProfileRequestTest() throws Exception {
   }
@@ -31,8 +31,8 @@ public class GetUsersProfileRequestTest extends AbstractDataTest<User> {
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
     assertEquals(
-            "https://api.spotify.com:443/v1/users/abbaspotify",
-            defaultRequest.getUri().toString());
+      "https://api.spotify.com:443/v1/users/abbaspotify",
+      defaultRequest.getUri().toString());
   }
 
   @Test
@@ -47,26 +47,26 @@ public class GetUsersProfileRequestTest extends AbstractDataTest<User> {
 
   public void shouldReturnDefault(final User user) {
     assertEquals(
-            "Lilla Namo",
-            user.getDisplayName());
+      "Lilla Namo",
+      user.getDisplayName());
     assertNotNull(
-            user.getExternalUrls());
+      user.getExternalUrls());
     assertNotNull(
-            user.getFollowers());
+      user.getFollowers());
     assertEquals(
-            "https://api.spotify.com/v1/users/tuggareutangranser",
-            user.getHref());
+      "https://api.spotify.com/v1/users/tuggareutangranser",
+      user.getHref());
     assertEquals(
-            "tuggareutangranser",
-            user.getId());
+      "tuggareutangranser",
+      user.getId());
     assertEquals(
-            1,
-            user.getImages().length);
+      1,
+      user.getImages().length);
     assertEquals(
-            ModelObjectType.USER,
-            user.getType());
+      ModelObjectType.USER,
+      user.getType());
     assertEquals(
-            "spotify:user:tuggareutangranser",
-            user.getUri());
+      "spotify:user:tuggareutangranser",
+      user.getUri());
   }
 }

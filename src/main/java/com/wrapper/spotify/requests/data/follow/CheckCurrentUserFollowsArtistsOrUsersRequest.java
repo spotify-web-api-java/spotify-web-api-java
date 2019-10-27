@@ -32,8 +32,8 @@ public class CheckCurrentUserFollowsArtistsOrUsersRequest extends AbstractDataRe
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
    */
   public Boolean[] execute() throws
-          IOException,
-          SpotifyWebApiException {
+    IOException,
+    SpotifyWebApiException {
     return new Gson().fromJson(new JsonParser().parse(getJson()).getAsJsonArray(), Boolean[].class);
   }
 

@@ -18,14 +18,14 @@ import static org.junit.Assert.assertNull;
 @RunWith(MockitoJUnitRunner.class)
 public class GetCurrentUsersRecentlyPlayedTracksRequestTest extends AbstractDataTest<PagingCursorbased<PlayHistory>> {
   private final GetCurrentUsersRecentlyPlayedTracksRequest defaultRequest = SPOTIFY_API
-          .getCurrentUsersRecentlyPlayedTracks()
-          .after(AFTER)
-          .before(BEFORE)
-          .limit(LIMIT)
-          .setHttpManager(
-                  TestUtil.MockedHttpManager.returningJson(
-                          "requests/data/player/GetCurrentUsersRecentlyPlayedTracksRequest.json"))
-          .build();
+    .getCurrentUsersRecentlyPlayedTracks()
+    .after(AFTER)
+    .before(BEFORE)
+    .limit(LIMIT)
+    .setHttpManager(
+      TestUtil.MockedHttpManager.returningJson(
+        "requests/data/player/GetCurrentUsersRecentlyPlayedTracksRequest.json"))
+    .build();
 
   public GetCurrentUsersRecentlyPlayedTracksRequestTest() throws Exception {
   }
@@ -34,8 +34,8 @@ public class GetCurrentUsersRecentlyPlayedTracksRequestTest extends AbstractData
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
     assertEquals(
-            "https://api.spotify.com:443/v1/me/player/recently-played?after=2018-01-27T21%3A07%3A10&before=2016-01-27T22%3A07%3A00&limit=10",
-            defaultRequest.getUri().toString());
+      "https://api.spotify.com:443/v1/me/player/recently-played?after=2018-01-27T21%3A07%3A10&before=2016-01-27T22%3A07%3A00&limit=10",
+      defaultRequest.getUri().toString());
   }
 
   @Test
@@ -50,21 +50,21 @@ public class GetCurrentUsersRecentlyPlayedTracksRequestTest extends AbstractData
 
   public void shouldReturnDefault(final PagingCursorbased<PlayHistory> playHistoryPagingCursorbased) {
     assertEquals(
-            "https://api.spotify.com/v1/me/player/recently-played?limit=2",
-            playHistoryPagingCursorbased.getHref());
+      "https://api.spotify.com/v1/me/player/recently-played?limit=2",
+      playHistoryPagingCursorbased.getHref());
     assertEquals(
-            2,
-            playHistoryPagingCursorbased.getItems().length);
+      2,
+      playHistoryPagingCursorbased.getItems().length);
     assertEquals(
-            2,
-            (int) playHistoryPagingCursorbased.getLimit());
+      2,
+      (int) playHistoryPagingCursorbased.getLimit());
     assertEquals(
-            "https://api.spotify.com/v1/me/player/recently-played?before=1481661737016&limit=2",
-            playHistoryPagingCursorbased.getNext());
+      "https://api.spotify.com/v1/me/player/recently-played?before=1481661737016&limit=2",
+      playHistoryPagingCursorbased.getNext());
     assertEquals(
-            1,
-            playHistoryPagingCursorbased.getCursors().length);
+      1,
+      playHistoryPagingCursorbased.getCursors().length);
     assertNull(
-            playHistoryPagingCursorbased.getTotal());
+      playHistoryPagingCursorbased.getTotal());
   }
 }

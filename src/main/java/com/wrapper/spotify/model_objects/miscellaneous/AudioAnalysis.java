@@ -5,7 +5,7 @@ import com.google.gson.JsonObject;
 import com.wrapper.spotify.model_objects.AbstractModelObject;
 
 /**
- * Retrieve information about <a href="hhttps://developer.spotify.com/web-api/get-audio-analysis/">
+ * Retrieve information about <a href="https://developer.spotify.com/web-api/get-audio-analysis/">
  * Audio Analysis objects</a> by building instances from this class. <br>
  * These objects contain a great amount of additional information to
  * {@link com.wrapper.spotify.model_objects.specification.AudioFeatures} objects. <br><br>
@@ -218,42 +218,42 @@ public class AudioAnalysis extends AbstractModelObject {
       }
 
       return new AudioAnalysis.Builder()
-              .setBars(
-                      hasAndNotNull(jsonObject, "bars")
-                              ? new AudioAnalysisMeasure.JsonUtil().createModelObjectArray(
-                              jsonObject.getAsJsonArray("bars"))
-                              : null)
-              .setBeats(
-                      hasAndNotNull(jsonObject, "beats")
-                              ? new AudioAnalysisMeasure.JsonUtil().createModelObjectArray(
-                              jsonObject.getAsJsonArray("beats"))
-                              : null)
-              .setMeta(
-                      hasAndNotNull(jsonObject, "meta")
-                              ? new AudioAnalysisMeta.JsonUtil().createModelObject(
-                              jsonObject.getAsJsonObject("meta"))
-                              : null)
-              .setSections(
-                      hasAndNotNull(jsonObject, "sections")
-                              ? new AudioAnalysisSection.JsonUtil().createModelObjectArray(
-                              jsonObject.getAsJsonArray("sections"))
-                              : null)
-              .setSegments(
-                      hasAndNotNull(jsonObject, "segments")
-                              ? new AudioAnalysisSegment.JsonUtil().createModelObjectArray(
-                              jsonObject.getAsJsonArray("segments"))
-                              : null)
-              .setTatums(
-                      hasAndNotNull(jsonObject, "tatums")
-                              ? new AudioAnalysisMeasure.JsonUtil().createModelObjectArray(
-                              jsonObject.getAsJsonArray("tatums"))
-                              : null)
-              .setTrack(
-                      hasAndNotNull(jsonObject, "track")
-                              ? new AudioAnalysisTrack.JsonUtil().createModelObject(
-                              jsonObject.getAsJsonObject("track"))
-                              : null)
-              .build();
+        .setBars(
+          hasAndNotNull(jsonObject, "bars")
+            ? new AudioAnalysisMeasure.JsonUtil().createModelObjectArray(
+            jsonObject.getAsJsonArray("bars"))
+            : null)
+        .setBeats(
+          hasAndNotNull(jsonObject, "beats")
+            ? new AudioAnalysisMeasure.JsonUtil().createModelObjectArray(
+            jsonObject.getAsJsonArray("beats"))
+            : null)
+        .setMeta(
+          hasAndNotNull(jsonObject, "meta")
+            ? new AudioAnalysisMeta.JsonUtil().createModelObject(
+            jsonObject.getAsJsonObject("meta"))
+            : null)
+        .setSections(
+          hasAndNotNull(jsonObject, "sections")
+            ? new AudioAnalysisSection.JsonUtil().createModelObjectArray(
+            jsonObject.getAsJsonArray("sections"))
+            : null)
+        .setSegments(
+          hasAndNotNull(jsonObject, "segments")
+            ? new AudioAnalysisSegment.JsonUtil().createModelObjectArray(
+            jsonObject.getAsJsonArray("segments"))
+            : null)
+        .setTatums(
+          hasAndNotNull(jsonObject, "tatums")
+            ? new AudioAnalysisMeasure.JsonUtil().createModelObjectArray(
+            jsonObject.getAsJsonArray("tatums"))
+            : null)
+        .setTrack(
+          hasAndNotNull(jsonObject, "track")
+            ? new AudioAnalysisTrack.JsonUtil().createModelObject(
+            jsonObject.getAsJsonObject("track"))
+            : null)
+        .build();
     }
   }
 }

@@ -18,13 +18,13 @@ import static org.junit.Assert.assertNull;
 @RunWith(MockitoJUnitRunner.class)
 public class GetCategorysPlaylistRequestTest extends AbstractDataTest<Paging<PlaylistSimplified>> {
   private final GetCategorysPlaylistsRequest defaultRequest = SPOTIFY_API.getCategorysPlaylists(CATEGORY_ID)
-          .setHttpManager(
-                  TestUtil.MockedHttpManager.returningJson(
-                          "requests/data/browse/GetCategorysPlaylistsRequest.json"))
-          .country(COUNTRY)
-          .limit(LIMIT)
-          .offset(OFFSET)
-          .build();
+    .setHttpManager(
+      TestUtil.MockedHttpManager.returningJson(
+        "requests/data/browse/GetCategorysPlaylistsRequest.json"))
+    .country(COUNTRY)
+    .limit(LIMIT)
+    .offset(OFFSET)
+    .build();
 
   public GetCategorysPlaylistRequestTest() throws Exception {
   }
@@ -33,8 +33,8 @@ public class GetCategorysPlaylistRequestTest extends AbstractDataTest<Paging<Pla
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
     assertEquals(
-            "https://api.spotify.com:443/v1/browse/categories/dinner/playlists?country=SE&limit=10&offset=0",
-            defaultRequest.getUri().toString());
+      "https://api.spotify.com:443/v1/browse/categories/dinner/playlists?country=SE&limit=10&offset=0",
+      defaultRequest.getUri().toString());
   }
 
   @Test
@@ -49,24 +49,24 @@ public class GetCategorysPlaylistRequestTest extends AbstractDataTest<Paging<Pla
 
   public void shouldReturnDefault(final Paging<PlaylistSimplified> playlistSimplifiedPaging) {
     assertEquals(
-            "https://api.spotify.com/v1/browse/categories/party/playlists?country=BR&offset=0&limit=2",
-            playlistSimplifiedPaging.getHref());
+      "https://api.spotify.com/v1/browse/categories/party/playlists?country=BR&offset=0&limit=2",
+      playlistSimplifiedPaging.getHref());
     assertEquals(
-            2,
-            playlistSimplifiedPaging.getItems().length);
+      2,
+      playlistSimplifiedPaging.getItems().length);
     assertEquals(
-            2,
-            (int) playlistSimplifiedPaging.getLimit());
+      2,
+      (int) playlistSimplifiedPaging.getLimit());
     assertEquals(
-            "https://api.spotify.com/v1/browse/categories/party/playlists?country=BR&offset=2&limit=2",
-            playlistSimplifiedPaging.getNext());
+      "https://api.spotify.com/v1/browse/categories/party/playlists?country=BR&offset=2&limit=2",
+      playlistSimplifiedPaging.getNext());
     assertEquals(
-            0,
-            (int) playlistSimplifiedPaging.getOffset());
+      0,
+      (int) playlistSimplifiedPaging.getOffset());
     assertNull(
-            playlistSimplifiedPaging.getPrevious());
+      playlistSimplifiedPaging.getPrevious());
     assertEquals(
-            86,
-            (int) playlistSimplifiedPaging.getTotal());
+      86,
+      (int) playlistSimplifiedPaging.getTotal());
   }
 }

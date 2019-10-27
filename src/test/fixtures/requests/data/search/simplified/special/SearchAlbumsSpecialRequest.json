@@ -1,0 +1,443 @@
+{
+  "albums": {
+    "href": "https://api.spotify.com/v1/search?query=Muse&type=album&market=US&offset=5&limit=10",
+    "items": [
+      {
+        "album_type": "album",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/12Chz98pHFMPJEknJQMWvI"
+            },
+            "href": "https://api.spotify.com/v1/artists/12Chz98pHFMPJEknJQMWvI",
+            "id": "12Chz98pHFMPJEknJQMWvI",
+            "name": "Muse",
+            "type": "artist",
+            "uri": "spotify:artist:12Chz98pHFMPJEknJQMWvI"
+          }
+        ],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/0HcHPBu9aaF1MxOiZmUQTl"
+        },
+        "href": "https://api.spotify.com/v1/albums/0HcHPBu9aaF1MxOiZmUQTl",
+        "id": "0HcHPBu9aaF1MxOiZmUQTl",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/ab67616d0000b2738cb690f962092fd44bbe2bf4",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/ab67616d00001e028cb690f962092fd44bbe2bf4",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/ab67616d000048518cb690f962092fd44bbe2bf4",
+            "width": 64
+          }
+        ],
+        "name": "Absolution",
+        "release_date": "2004-03-23",
+        "release_date_precision": "day",
+        "total_tracks": 15,
+        "type": "album",
+        "uri": "spotify:album:0HcHPBu9aaF1MxOiZmUQTl"
+      },
+      {
+        "album_type": "album",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/12Chz98pHFMPJEknJQMWvI"
+            },
+            "href": "https://api.spotify.com/v1/artists/12Chz98pHFMPJEknJQMWvI",
+            "id": "12Chz98pHFMPJEknJQMWvI",
+            "name": "Muse",
+            "type": "artist",
+            "uri": "spotify:artist:12Chz98pHFMPJEknJQMWvI"
+          }
+        ],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/2wart5Qjnvx1fd7LPdQxgJ"
+        },
+        "href": "https://api.spotify.com/v1/albums/2wart5Qjnvx1fd7LPdQxgJ",
+        "id": "2wart5Qjnvx1fd7LPdQxgJ",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/ab67616d0000b273808846f0223d97d5963c420d",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/ab67616d00001e02808846f0223d97d5963c420d",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/ab67616d00004851808846f0223d97d5963c420d",
+            "width": 64
+          }
+        ],
+        "name": "Drones",
+        "release_date": "2015-06-04",
+        "release_date_precision": "day",
+        "total_tracks": 12,
+        "type": "album",
+        "uri": "spotify:album:2wart5Qjnvx1fd7LPdQxgJ"
+      },
+      {
+        "album_type": "album",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/4vGrte8FDu062Ntj0RsPiZ"
+            },
+            "href": "https://api.spotify.com/v1/artists/4vGrte8FDu062Ntj0RsPiZ",
+            "id": "4vGrte8FDu062Ntj0RsPiZ",
+            "name": "Polyphia",
+            "type": "artist",
+            "uri": "spotify:artist:4vGrte8FDu062Ntj0RsPiZ"
+          }
+        ],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/7EyDVKiEcQw9tE44UpcLWJ"
+        },
+        "href": "https://api.spotify.com/v1/albums/7EyDVKiEcQw9tE44UpcLWJ",
+        "id": "7EyDVKiEcQw9tE44UpcLWJ",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/ab67616d0000b273679ea8567de7eb96c50daa86",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/ab67616d00001e02679ea8567de7eb96c50daa86",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/ab67616d00004851679ea8567de7eb96c50daa86",
+            "width": 64
+          }
+        ],
+        "name": "Muse",
+        "release_date": "2015-04-21",
+        "release_date_precision": "day",
+        "total_tracks": 11,
+        "type": "album",
+        "uri": "spotify:album:7EyDVKiEcQw9tE44UpcLWJ"
+      },
+      {
+        "album_type": "album",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/12Chz98pHFMPJEknJQMWvI"
+            },
+            "href": "https://api.spotify.com/v1/artists/12Chz98pHFMPJEknJQMWvI",
+            "id": "12Chz98pHFMPJEknJQMWvI",
+            "name": "Muse",
+            "type": "artist",
+            "uri": "spotify:artist:12Chz98pHFMPJEknJQMWvI"
+          }
+        ],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/1AP6uGYHdakRgwuWQsP5pK"
+        },
+        "href": "https://api.spotify.com/v1/albums/1AP6uGYHdakRgwuWQsP5pK",
+        "id": "1AP6uGYHdakRgwuWQsP5pK",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/ab67616d0000b273a9e6856251d6c4b13167924a",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/ab67616d00001e02a9e6856251d6c4b13167924a",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/ab67616d00004851a9e6856251d6c4b13167924a",
+            "width": 64
+          }
+        ],
+        "name": "Origin of Symmetry",
+        "release_date": "2001",
+        "release_date_precision": "year",
+        "total_tracks": 12,
+        "type": "album",
+        "uri": "spotify:album:1AP6uGYHdakRgwuWQsP5pK"
+      },
+      {
+        "album_type": "album",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/12Chz98pHFMPJEknJQMWvI"
+            },
+            "href": "https://api.spotify.com/v1/artists/12Chz98pHFMPJEknJQMWvI",
+            "id": "12Chz98pHFMPJEknJQMWvI",
+            "name": "Muse",
+            "type": "artist",
+            "uri": "spotify:artist:12Chz98pHFMPJEknJQMWvI"
+          }
+        ],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/6AyUVv7MnxxTuijp4WmrhO"
+        },
+        "href": "https://api.spotify.com/v1/albums/6AyUVv7MnxxTuijp4WmrhO",
+        "id": "6AyUVv7MnxxTuijp4WmrhO",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/ab67616d0000b27334dd1b3a44cccef2d3c8bfce",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/ab67616d00001e0234dd1b3a44cccef2d3c8bfce",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/ab67616d0000485134dd1b3a44cccef2d3c8bfce",
+            "width": 64
+          }
+        ],
+        "name": "Showbiz",
+        "release_date": "1999",
+        "release_date_precision": "year",
+        "total_tracks": 13,
+        "type": "album",
+        "uri": "spotify:album:6AyUVv7MnxxTuijp4WmrhO"
+      },
+      {
+        "album_type": "album",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/57Ce6izcYKvFOFlhsUFzLJ"
+            },
+            "href": "https://api.spotify.com/v1/artists/57Ce6izcYKvFOFlhsUFzLJ",
+            "id": "57Ce6izcYKvFOFlhsUFzLJ",
+            "name": "Ben Flocks",
+            "type": "artist",
+            "uri": "spotify:artist:57Ce6izcYKvFOFlhsUFzLJ"
+          }
+        ],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/3oFFsDmGaUmFeAgljXFexD"
+        },
+        "href": "https://api.spotify.com/v1/albums/3oFFsDmGaUmFeAgljXFexD",
+        "id": "3oFFsDmGaUmFeAgljXFexD",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/ab67616d0000b27376b8f285df5be75a1de94a4a",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/ab67616d00001e0276b8f285df5be75a1de94a4a",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/ab67616d0000485176b8f285df5be75a1de94a4a",
+            "width": 64
+          }
+        ],
+        "name": "Mask of the Muse",
+        "release_date": "2019-08-16",
+        "release_date_precision": "day",
+        "total_tracks": 12,
+        "type": "album",
+        "uri": "spotify:album:3oFFsDmGaUmFeAgljXFexD"
+      },
+      {
+        "album_type": "single",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/58uK0d4R5Rq4FDUNgNIFeI"
+            },
+            "href": "https://api.spotify.com/v1/artists/58uK0d4R5Rq4FDUNgNIFeI",
+            "id": "58uK0d4R5Rq4FDUNgNIFeI",
+            "name": "Paperboy Fabe",
+            "type": "artist",
+            "uri": "spotify:artist:58uK0d4R5Rq4FDUNgNIFeI"
+          }
+        ],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/5kW1rRJcQkY1MvgABvd824"
+        },
+        "href": "https://api.spotify.com/v1/albums/5kW1rRJcQkY1MvgABvd824",
+        "id": "5kW1rRJcQkY1MvgABvd824",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/ab67616d0000b273948d93d92e6b03910e8cf497",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/ab67616d00001e02948d93d92e6b03910e8cf497",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/ab67616d00004851948d93d92e6b03910e8cf497",
+            "width": 64
+          }
+        ],
+        "name": "Muse",
+        "release_date": "2019-02-07",
+        "release_date_precision": "day",
+        "total_tracks": 1,
+        "type": "album",
+        "uri": "spotify:album:5kW1rRJcQkY1MvgABvd824"
+      },
+      {
+        "album_type": "album",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/1JdeDdujDbS6ZeSlkXqx3a"
+            },
+            "href": "https://api.spotify.com/v1/artists/1JdeDdujDbS6ZeSlkXqx3a",
+            "id": "1JdeDdujDbS6ZeSlkXqx3a",
+            "name": "Loreena McKennitt",
+            "type": "artist",
+            "uri": "spotify:artist:1JdeDdujDbS6ZeSlkXqx3a"
+          }
+        ],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/1rdm9B7mGLOZce7k804x6o"
+        },
+        "href": "https://api.spotify.com/v1/albums/1rdm9B7mGLOZce7k804x6o",
+        "id": "1rdm9B7mGLOZce7k804x6o",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/bd06e254fdf6f802244fa004e2d28228474946d9",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/16325eaae9dd6c668d2910b2cf22f9e056680702",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/6113662fc817e4bad2bff6018dcb16a398064bd2",
+            "width": 64
+          }
+        ],
+        "name": "An Ancient Muse",
+        "release_date": "2014-01-01",
+        "release_date_precision": "day",
+        "total_tracks": 10,
+        "type": "album",
+        "uri": "spotify:album:1rdm9B7mGLOZce7k804x6o"
+      },
+      {
+        "album_type": "album",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/6UiJwR29GXZroy2iiUDQun"
+            },
+            "href": "https://api.spotify.com/v1/artists/6UiJwR29GXZroy2iiUDQun",
+            "id": "6UiJwR29GXZroy2iiUDQun",
+            "name": "Samsonyte",
+            "type": "artist",
+            "uri": "spotify:artist:6UiJwR29GXZroy2iiUDQun"
+          }
+        ],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/1n98cCidcYFGj668hdJXtE"
+        },
+        "href": "https://api.spotify.com/v1/albums/1n98cCidcYFGj668hdJXtE",
+        "id": "1n98cCidcYFGj668hdJXtE",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/ab67616d0000b273e0a148585514f9b5d3d54ddf",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/ab67616d00001e02e0a148585514f9b5d3d54ddf",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/ab67616d00004851e0a148585514f9b5d3d54ddf",
+            "width": 64
+          }
+        ],
+        "name": "The Muse",
+        "release_date": "2017-04-27",
+        "release_date_precision": "day",
+        "total_tracks": 12,
+        "type": "album",
+        "uri": "spotify:album:1n98cCidcYFGj668hdJXtE"
+      },
+      {
+        "album_type": "album",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/12Chz98pHFMPJEknJQMWvI"
+            },
+            "href": "https://api.spotify.com/v1/artists/12Chz98pHFMPJEknJQMWvI",
+            "id": "12Chz98pHFMPJEknJQMWvI",
+            "name": "Muse",
+            "type": "artist",
+            "uri": "spotify:artist:12Chz98pHFMPJEknJQMWvI"
+          }
+        ],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/2m7L60M210ABzrY9GLyBPZ"
+        },
+        "href": "https://api.spotify.com/v1/albums/2m7L60M210ABzrY9GLyBPZ",
+        "id": "2m7L60M210ABzrY9GLyBPZ",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/ab67616d0000b27306abd7e9854cba988401707c",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/ab67616d00001e0206abd7e9854cba988401707c",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/ab67616d0000485106abd7e9854cba988401707c",
+            "width": 64
+          }
+        ],
+        "name": "Live at Rome Olympic Stadium",
+        "release_date": "2013-11-25",
+        "release_date_precision": "day",
+        "total_tracks": 13,
+        "type": "album",
+        "uri": "spotify:album:2m7L60M210ABzrY9GLyBPZ"
+      }
+    ],
+    "limit": 10,
+    "next": "https://api.spotify.com/v1/search?query=Muse&type=album&market=US&offset=15&limit=10",
+    "offset": 5,
+    "previous": "https://api.spotify.com/v1/search?query=Muse&type=album&market=US&offset=0&limit=10",
+    "total": 1550
+  }
+}
+

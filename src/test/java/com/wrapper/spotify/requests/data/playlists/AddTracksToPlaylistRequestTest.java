@@ -20,20 +20,20 @@ import static org.junit.Assert.assertEquals;
 @RunWith(MockitoJUnitRunner.class)
 public class AddTracksToPlaylistRequestTest extends AbstractDataTest<SnapshotResult> {
   private final AddTracksToPlaylistRequest defaultRequest = SPOTIFY_API
-          .addTracksToPlaylist(ID_PLAYLIST, new Gson().fromJson(URIS, String[].class))
-          .setHttpManager(
-                  TestUtil.MockedHttpManager.returningJson(
-                          "requests/data/playlists/AddTracksToPlaylistRequest.json"))
-          .position(POSITION)
-          .build();
+    .addTracksToPlaylist(ID_PLAYLIST, new Gson().fromJson(URIS, String[].class))
+    .setHttpManager(
+      TestUtil.MockedHttpManager.returningJson(
+        "requests/data/playlists/AddTracksToPlaylistRequest.json"))
+    .position(POSITION)
+    .build();
   private final AddTracksToPlaylistRequest bodyRequest = SPOTIFY_API
-          .addTracksToPlaylist(ID_PLAYLIST, new JsonParser()
-                  .parse(URIS.toString()).getAsJsonArray())
-          .setHttpManager(
-                  TestUtil.MockedHttpManager.returningJson(
-                          "requests/data/playlists/AddTracksToPlaylistRequest.json"))
-          .position(POSITION, true)
-          .build();
+    .addTracksToPlaylist(ID_PLAYLIST, new JsonParser()
+      .parse(URIS.toString()).getAsJsonArray())
+    .setHttpManager(
+      TestUtil.MockedHttpManager.returningJson(
+        "requests/data/playlists/AddTracksToPlaylistRequest.json"))
+    .position(POSITION, true)
+    .build();
 
   public AddTracksToPlaylistRequestTest() throws Exception {
   }
@@ -42,22 +42,22 @@ public class AddTracksToPlaylistRequestTest extends AbstractDataTest<SnapshotRes
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
     assertEquals(
-            "https://api.spotify.com:443/v1/playlists/3AGOiaoRXMSjswCLtuNqv5/tracks?uris=spotify%3Atrack%3A01iyCAUm8EvOFqVWYJ3dVX%2Cspotify%3Atrack%3A01iyCAUm8EvOFqVWYJ3dVX&position=0",
-            defaultRequest.getUri().toString());
+      "https://api.spotify.com:443/v1/playlists/3AGOiaoRXMSjswCLtuNqv5/tracks?uris=spotify%3Atrack%3A01iyCAUm8EvOFqVWYJ3dVX%2Cspotify%3Atrack%3A01iyCAUm8EvOFqVWYJ3dVX&position=0",
+      defaultRequest.getUri().toString());
 
     assertHasAuthorizationHeader(bodyRequest);
     assertHasHeader(defaultRequest, "Content-Type", "application/json");
     assertHasBodyParameter(
-            bodyRequest,
-            "uris",
-            "[\"spotify:track:" + ID_TRACK + "\",\"spotify:track:" + ID_TRACK + "\"]");
+      bodyRequest,
+      "uris",
+      "[\"spotify:track:" + ID_TRACK + "\",\"spotify:track:" + ID_TRACK + "\"]");
     assertHasBodyParameter(
-            bodyRequest,
-            "position",
-            POSITION);
+      bodyRequest,
+      "position",
+      POSITION);
     assertEquals(
-            "https://api.spotify.com:443/v1/playlists/3AGOiaoRXMSjswCLtuNqv5/tracks",
-            bodyRequest.getUri().toString());
+      "https://api.spotify.com:443/v1/playlists/3AGOiaoRXMSjswCLtuNqv5/tracks",
+      bodyRequest.getUri().toString());
   }
 
   @Test
@@ -72,7 +72,7 @@ public class AddTracksToPlaylistRequestTest extends AbstractDataTest<SnapshotRes
 
   public void shouldReturnDefault(final SnapshotResult snapshotResult) {
     assertEquals(
-            "JbtmHBDBAYu3/bt8BOXKjzKx3i0b6LCa/wVjyl6qQ2Yf6nFXkbmzuEa+ZI/U1yF+",
-            snapshotResult.getSnapshotId());
+      "JbtmHBDBAYu3/bt8BOXKjzKx3i0b6LCa/wVjyl6qQ2Yf6nFXkbmzuEa+ZI/U1yF+",
+      snapshotResult.getSnapshotId());
   }
 }

@@ -5,10 +5,9 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
+import org.apache.http.entity.ContentType;
 
 import java.io.IOException;
-
-import org.apache.http.entity.ContentType;
 
 /**
  * Start a new context or resume current playback on the user’s active device.
@@ -33,8 +32,8 @@ public class StartResumeUsersPlaybackRequest extends AbstractDataRequest<String>
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
    */
   public String execute() throws
-          IOException,
-          SpotifyWebApiException {
+    IOException,
+    SpotifyWebApiException {
     return putJson();
   }
 

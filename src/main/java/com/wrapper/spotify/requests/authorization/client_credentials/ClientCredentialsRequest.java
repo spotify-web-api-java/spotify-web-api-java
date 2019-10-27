@@ -29,8 +29,8 @@ public class ClientCredentialsRequest extends AbstractAthorizationRequest<Client
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
    */
   public ClientCredentials execute() throws
-          IOException,
-          SpotifyWebApiException {
+    IOException,
+    SpotifyWebApiException {
     return new ClientCredentials.JsonUtil().createModelObject(postJson());
   }
 

@@ -37,8 +37,8 @@ public class GetRecommendationsRequest extends AbstractDataRequest<Recommendatio
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
    */
   public Recommendations execute() throws
-          IOException,
-          SpotifyWebApiException {
+    IOException,
+    SpotifyWebApiException {
     return new Recommendations.JsonUtil().createModelObject(getJson());
   }
 

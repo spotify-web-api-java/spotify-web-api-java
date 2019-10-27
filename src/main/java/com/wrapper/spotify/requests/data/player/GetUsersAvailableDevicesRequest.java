@@ -30,8 +30,8 @@ public class GetUsersAvailableDevicesRequest extends AbstractDataRequest<Device[
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
    */
   public Device[] execute() throws
-          IOException,
-          SpotifyWebApiException {
+    IOException,
+    SpotifyWebApiException {
     return new Device.JsonUtil().createModelObjectArray(getJson(), "devices");
   }
 

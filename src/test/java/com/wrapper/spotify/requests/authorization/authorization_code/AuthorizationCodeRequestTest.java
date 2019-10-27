@@ -16,12 +16,12 @@ import static org.junit.Assert.assertEquals;
 public class AuthorizationCodeRequestTest extends AbstractAuthorizationTest<AuthorizationCodeCredentials> {
 
   private final AuthorizationCodeRequest defaultRequest = SPOTIFY_API.authorizationCode(AUTHORIZATION_CODE)
-          .setHttpManager(
-                  TestUtil.MockedHttpManager.returningJson(
-                          "requests/authorization/authorization_code/AuthorizationCode.json"))
-          .grant_type("authorization_code")
-          .redirect_uri(SPOTIFY_API.getRedirectURI())
-          .build();
+    .setHttpManager(
+      TestUtil.MockedHttpManager.returningJson(
+        "requests/authorization/authorization_code/AuthorizationCode.json"))
+    .grant_type("authorization_code")
+    .redirect_uri(SPOTIFY_API.getRedirectURI())
+    .build();
 
   public AuthorizationCodeRequestTest() throws Exception {
   }
@@ -31,20 +31,20 @@ public class AuthorizationCodeRequestTest extends AbstractAuthorizationTest<Auth
     assertHasAuthorizationHeader(defaultRequest);
     assertHasHeader(defaultRequest, "Content-Type", "application/x-www-form-urlencoded");
     assertHasBodyParameter(
-            defaultRequest,
-            "code",
-            AUTHORIZATION_CODE);
+      defaultRequest,
+      "code",
+      AUTHORIZATION_CODE);
     assertHasBodyParameter(
-            defaultRequest,
-            "grant_type",
-            "authorization_code");
+      defaultRequest,
+      "grant_type",
+      "authorization_code");
     assertHasBodyParameter(
-            defaultRequest,
-            "redirect_uri",
-            SPOTIFY_API.getRedirectURI());
+      defaultRequest,
+      "redirect_uri",
+      SPOTIFY_API.getRedirectURI());
     assertEquals(
-            "https://accounts.spotify.com:443/api/token",
-            defaultRequest.getUri().toString());
+      "https://accounts.spotify.com:443/api/token",
+      defaultRequest.getUri().toString());
   }
 
   @Test
@@ -59,19 +59,19 @@ public class AuthorizationCodeRequestTest extends AbstractAuthorizationTest<Auth
 
   public void shouldReturnDefault(final AuthorizationCodeCredentials authorizationCodeCredentials) {
     assertEquals(
-            "taHZ2SdB-bPA3FsK3D7ZN5npZS47cMy-IEySVEGttOhXmqaVAIo0ESvTCLjLBifhHOHOIuhFUKPW1WMDP7w6dj3MAZdWT8CLI2MkZaXbYLTeoDvXesf2eeiLYPBGdx8tIwQJKgV8XdnzH_DONk",
-            authorizationCodeCredentials.getAccessToken());
+      "taHZ2SdB-bPA3FsK3D7ZN5npZS47cMy-IEySVEGttOhXmqaVAIo0ESvTCLjLBifhHOHOIuhFUKPW1WMDP7w6dj3MAZdWT8CLI2MkZaXbYLTeoDvXesf2eeiLYPBGdx8tIwQJKgV8XdnzH_DONk",
+      authorizationCodeCredentials.getAccessToken());
     assertEquals(
-            "Bearer",
-            authorizationCodeCredentials.getTokenType());
+      "Bearer",
+      authorizationCodeCredentials.getTokenType());
     assertEquals(
-            "user-read-birthdate user-read-email",
-            authorizationCodeCredentials.getScope());
+      "user-read-birthdate user-read-email",
+      authorizationCodeCredentials.getScope());
     assertEquals(
-            3600,
-            (int) authorizationCodeCredentials.getExpiresIn());
+      3600,
+      (int) authorizationCodeCredentials.getExpiresIn());
     assertEquals(
-            "b0KuPuLw77Z0hQhCsK-GTHoEx_kethtn357V7iqwEpCTIsLgqbBC_vQBTGC6M5rINl0FrqHK-D3cbOsMOlfyVKuQPvpyGcLcxAoLOTpYXc28nVwB7iBq2oKj9G9lHkFOUKn",
-            authorizationCodeCredentials.getRefreshToken());
+      "b0KuPuLw77Z0hQhCsK-GTHoEx_kethtn357V7iqwEpCTIsLgqbBC_vQBTGC6M5rINl0FrqHK-D3cbOsMOlfyVKuQPvpyGcLcxAoLOTpYXc28nVwB7iBq2oKj9G9lHkFOUKn",
+      authorizationCodeCredentials.getRefreshToken());
   }
 }

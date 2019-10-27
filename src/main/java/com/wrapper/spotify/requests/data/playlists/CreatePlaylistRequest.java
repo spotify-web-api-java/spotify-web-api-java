@@ -32,8 +32,8 @@ public class CreatePlaylistRequest extends AbstractDataRequest<Playlist> {
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
    */
   public Playlist execute() throws
-          IOException,
-          SpotifyWebApiException {
+    IOException,
+    SpotifyWebApiException {
     return new Playlist.JsonUtil().createModelObject(postJson());
   }
 
