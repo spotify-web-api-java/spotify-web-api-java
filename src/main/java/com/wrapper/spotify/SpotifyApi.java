@@ -23,6 +23,7 @@ import com.wrapper.spotify.requests.data.player.*;
 import com.wrapper.spotify.requests.data.playlists.*;
 import com.wrapper.spotify.requests.data.search.SearchItemRequest;
 import com.wrapper.spotify.requests.data.search.simplified.*;
+import com.wrapper.spotify.requests.data.search.simplified.special.SearchAlbumsSpecialRequest;
 import com.wrapper.spotify.requests.data.tracks.*;
 import com.wrapper.spotify.requests.data.users_profile.GetCurrentUsersProfileRequest;
 import com.wrapper.spotify.requests.data.users_profile.GetUsersProfileRequest;

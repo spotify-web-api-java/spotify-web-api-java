@@ -1,4 +1,4 @@
-package com.wrapper.spotify.requests.data.search.simplified;
+package com.wrapper.spotify.requests.data.search.simplified.special;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.neovisionaries.i18n.CountryCode;

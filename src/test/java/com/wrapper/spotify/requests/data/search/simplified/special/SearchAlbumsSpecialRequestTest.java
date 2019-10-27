@@ -1,10 +1,11 @@
-package com.wrapper.spotify.requests.data.search.simplified;
+package com.wrapper.spotify.requests.data.search.simplified.special;
 
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.special.AlbumSimplifiedSpecial;
 import com.wrapper.spotify.model_objects.specification.Paging;
 import com.wrapper.spotify.requests.data.AbstractDataTest;
+import com.wrapper.spotify.requests.data.search.simplified.special.SearchAlbumsSpecialRequest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
