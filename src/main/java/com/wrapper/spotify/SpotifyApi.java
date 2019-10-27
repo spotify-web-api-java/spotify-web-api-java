@@ -22,10 +22,8 @@ import com.wrapper.spotify.requests.data.personalization.simplified.GetUsersTopT
 import com.wrapper.spotify.requests.data.player.*;
 import com.wrapper.spotify.requests.data.playlists.*;
 import com.wrapper.spotify.requests.data.search.SearchItemRequest;
-import com.wrapper.spotify.requests.data.search.simplified.SearchAlbumsRequest;
-import com.wrapper.spotify.requests.data.search.simplified.SearchArtistsRequest;
-import com.wrapper.spotify.requests.data.search.simplified.SearchPlaylistsRequest;
-import com.wrapper.spotify.requests.data.search.simplified.SearchTracksRequest;
+import com.wrapper.spotify.requests.data.search.simplified.*;
+import com.wrapper.spotify.requests.data.search.simplified.special.SearchAlbumsSpecialRequest;
 import com.wrapper.spotify.requests.data.tracks.*;
 import com.wrapper.spotify.requests.data.users_profile.GetCurrentUsersProfileRequest;
 import com.wrapper.spotify.requests.data.users_profile.GetUsersProfileRequest;
@@ -120,7 +118,7 @@ public class SpotifyApi {
   /**
    * Create a builder for building a new Spotify API instance.
    *
-   * @return A {@link SpotifyApi.Builder}.
+   * @return A {@link Builder}.
    */
   public static Builder builder() {
     return new Builder();
@@ -1521,6 +1519,21 @@ public class SpotifyApi {
   }
 
   /**
+   * Get Spotify catalog information about albums that match a keyword string.
+   *
+   * This method exists because the searches API returns the undocumented property {@code totalTracks}, which is
+   * included by this method's return type.
+   *
+   * @param q The search query's keywords (and optional field filters and operators).
+   * @return A {@link SearchAlbumsSpecialRequest.Builder}.
+   */
+  public SearchAlbumsSpecialRequest.Builder searchAlbumsSpecial(String q) {
+    return new SearchAlbumsSpecialRequest.Builder(accessToken)
+            .setDefaults(httpManager, scheme, host, port)
+            .q(q);
+  }
+
+  /**
    * Get Spotify catalog information about artists that match a keyword string.
    *
    * @param q The search query's keywords (and optional field filters and operators).
@@ -1667,7 +1680,7 @@ public class SpotifyApi {
      * The HttpManager setter.
      *
      * @param httpManager A Spotify HttpManager.
-     * @return A {@link SpotifyApi.Builder}.
+     * @return A {@link Builder}.
      */
     public Builder setHttpManager(IHttpManager httpManager) {
       this.httpManager = httpManager;
@@ -1678,7 +1691,7 @@ public class SpotifyApi {
      * The scheme setter.
      *
      * @param scheme A HTTP-scheme.
-     * @return A {@link SpotifyApi.Builder}.
+     * @return A {@link Builder}.
      */
     public Builder setScheme(String scheme) {
       this.scheme = scheme;
@@ -1689,7 +1702,7 @@ public class SpotifyApi {
      * The Spotify API host setter.
      *
      * @param host A Spotify API host.
-     * @return A {@link SpotifyApi.Builder}.
+     * @return A {@link Builder}.
      */
     public Builder setHost(String host) {
       this.host = host;
@@ -1700,7 +1713,7 @@ public class SpotifyApi {
      * The Spotify API port setter.
      *
      * @param port A Spotify API port.
-     * @return A {@link SpotifyApi.Builder}.
+     * @return A {@link Builder}.
      */
     public Builder setPort(Integer port) {
       this.port = port;
@@ -1711,7 +1724,7 @@ public class SpotifyApi {
      * The proxy URL setter.
      *
      * @param proxyUrl A proxy URL.
-     * @return A {@link SpotifyApi.Builder}.
+     * @return A {@link Builder}.
      */
     public Builder setProxyUrl(String proxyUrl) {
       this.proxyUrl = proxyUrl;
@@ -1722,7 +1735,7 @@ public class SpotifyApi {
      * The proxy port setter.
      *
      * @param proxyPort A proxy port.
-     * @return A {@link SpotifyApi.Builder}.
+     * @return A {@link Builder}.
      */
     public Builder setProxyPort(Integer proxyPort) {
       this.proxyPort = proxyPort;
@@ -1733,7 +1746,7 @@ public class SpotifyApi {
      * The proxy username setter.
      *
      * @param proxyUsername A proxy username.
-     * @return A {@link SpotifyApi.Builder}.
+     * @return A {@link Builder}.
      */
     public Builder setProxyUsername(Integer proxyUsername) {
       this.proxyUsername = proxyUsername;
@@ -1744,7 +1757,7 @@ public class SpotifyApi {
      * The proxy password setter.
      *
      * @param proxyPassword A proxy password.
-     * @return A {@link SpotifyApi.Builder}.
+     * @return A {@link Builder}.
      */
     public Builder setProxyPassword(Integer proxyPassword) {
       this.proxyPassword = proxyPassword;
@@ -1755,7 +1768,7 @@ public class SpotifyApi {
      * The client ID setter.
      *
      * @param clientId A client ID of your application.
-     * @return A {@link SpotifyApi.Builder}.
+     * @return A {@link Builder}.
      */
     public Builder setClientId(String clientId) {
       this.clientId = clientId;
@@ -1766,7 +1779,7 @@ public class SpotifyApi {
      * The client secret setter.
      *
      * @param clientSecret A client secret of your application.
-     * @return A {@link SpotifyApi.Builder}.
+     * @return A {@link Builder}.
      */
     public Builder setClientSecret(String clientSecret) {
       this.clientSecret = clientSecret;
@@ -1777,7 +1790,7 @@ public class SpotifyApi {
      * The redirect URI setter.
      *
      * @param redirectUri A redirect URI of your application.
-     * @return A {@link SpotifyApi.Builder}.
+     * @return A {@link Builder}.
      */
     public Builder setRedirectUri(URI redirectUri) {
       this.redirectUri = redirectUri;
@@ -1788,7 +1801,7 @@ public class SpotifyApi {
      * The access token setter.
      *
      * @param accessToken A Spotify API access token.
-     * @return A {@link SpotifyApi.Builder}.
+     * @return A {@link Builder}.
      */
     public Builder setAccessToken(String accessToken) {
       this.accessToken = accessToken;
@@ -1799,7 +1812,7 @@ public class SpotifyApi {
      * The refresh token setter.
      *
      * @param refreshToken A Spotify API refresh token.
-     * @return A {@link SpotifyApi.Builder}.
+     * @return A {@link Builder}.
      */
     public Builder setRefreshToken(String refreshToken) {
       this.refreshToken = refreshToken;
