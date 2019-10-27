@@ -1,4 +1,4 @@
-package com.wrapper.spotify.model_objects.specification;
+package com.wrapper.spotify.model_objects.special;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.Gson;
@@ -8,14 +8,21 @@ import com.wrapper.spotify.enums.AlbumType;
 import com.wrapper.spotify.enums.ModelObjectType;
 import com.wrapper.spotify.enums.ReleaseDatePrecision;
 import com.wrapper.spotify.model_objects.AbstractModelObject;
+import com.wrapper.spotify.model_objects.specification.Album;
+import com.wrapper.spotify.model_objects.specification.ArtistSimplified;
+import com.wrapper.spotify.model_objects.specification.ExternalUrl;
+import com.wrapper.spotify.model_objects.specification.Image;
 import com.wrapper.spotify.requests.data.search.interfaces.ISearchModelObject;
 
 /**
  * Retrieve information about <a href="https://developer.spotify.com/web-api/object-model/#album-object-simplified">
  * simplified Album objects</a> by building instances from this class.
+ *
+ * This class exists because it includes the property {@code totalTracks}, which is not documented in the official
+ * specification, although the albums object as returned by the searches API includes it.
  */
-@JsonDeserialize(builder = AlbumSimplified.Builder.class)
-public class AlbumSimplified extends AbstractModelObject implements ISearchModelObject {
+@JsonDeserialize(builder = AlbumSimplifiedSpecial.Builder.class)
+public class AlbumSimplifiedSpecial extends AbstractModelObject implements ISearchModelObject {
   private final AlbumType albumType;
   private final ArtistSimplified[] artists;
   private final CountryCode[] availableMarkets;
@@ -26,10 +33,11 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
   private final String name;
   private final String releaseDate;
   private final ReleaseDatePrecision releaseDatePrecision;
+  private final int totalTracks;
   private final ModelObjectType type;
   private final String uri;
 
-  private AlbumSimplified(final Builder builder) {
+  private AlbumSimplifiedSpecial(final Builder builder) {
     super(builder);
 
     this.albumType = builder.albumType;
@@ -42,6 +50,7 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
     this.name = builder.name;
     this.releaseDate = builder.releaseDate;
     this.releaseDatePrecision = builder.releaseDatePrecision;
+    this.totalTracks = builder.totalTracks;
     this.type = builder.type;
     this.uri = builder.uri;
   }
@@ -139,6 +148,15 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
   }
 
   /**
+   * Get the total tracks of the album.
+   *
+   * @return The total tracks of the album.
+   */
+  public int getTotalTracks() {
+    return totalTracks;
+  }
+
+  /**
    * Get the model object type. In this case "album".
    *
    * @return A {@link ModelObjectType}.
@@ -162,7 +180,7 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
   }
 
   /**
-   * Builder class for building {@link AlbumSimplified} instances.
+   * Builder class for building {@link AlbumSimplifiedSpecial} instances.
    */
   public static final class Builder extends AbstractModelObject.Builder {
 
@@ -176,6 +194,7 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
     private String name;
     private String releaseDate;
     private ReleaseDatePrecision releaseDatePrecision;
+    private int totalTracks;
     private ModelObjectType type;
     private String uri;
 
@@ -292,6 +311,17 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
     }
 
     /**
+     * Set the number of total tracks of the album to be built.
+     *
+     * @param totalTracks The number of total tracks of the album.
+     * @return A {@link Album.Builder}.
+     */
+    public Builder setTotalTracks(int totalTracks) {
+      this.totalTracks = totalTracks;
+      return this;
+    }
+
+    /**
      * Set the type of the model object. In this case "album".
      *
      * @param type The {@link ModelObjectType}.
@@ -315,21 +345,21 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
     }
 
     @Override
-    public AlbumSimplified build() {
-      return new AlbumSimplified(this);
+    public AlbumSimplifiedSpecial build() {
+      return new AlbumSimplifiedSpecial(this);
     }
   }
 
   /**
-   * JsonUtil class for building {@link AlbumSimplified} instances.
+   * JsonUtil class for building {@link AlbumSimplifiedSpecial} instances.
    */
-  public static final class JsonUtil extends AbstractModelObject.JsonUtil<AlbumSimplified> {
-    public AlbumSimplified createModelObject(JsonObject jsonObject) {
+  public static final class JsonUtil extends AbstractModelObject.JsonUtil<AlbumSimplifiedSpecial> {
+    public AlbumSimplifiedSpecial createModelObject(JsonObject jsonObject) {
       if (jsonObject == null || jsonObject.isJsonNull()) {
         return null;
       }
 
-      return new AlbumSimplified.Builder()
+      return new AlbumSimplifiedSpecial.Builder()
               .setAlbumType(
                       hasAndNotNull(jsonObject, "album_type")
                               ? AlbumType.keyOf(
@@ -375,6 +405,10 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
                       hasAndNotNull(jsonObject, "release_date_precision")
                               ? ReleaseDatePrecision.keyOf(
                               jsonObject.get("release_date_precision").getAsString().toLowerCase())
+                              : null)
+              .setTotalTracks(
+                      hasAndNotNull(jsonObject, "total_tracks")
+                              ? jsonObject.get("total_tracks").getAsInt()
                               : null)
               .setType(
                       hasAndNotNull(jsonObject, "type")
