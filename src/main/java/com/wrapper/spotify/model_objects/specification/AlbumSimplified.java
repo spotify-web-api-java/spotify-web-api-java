@@ -8,6 +8,7 @@ import com.wrapper.spotify.enums.AlbumType;
 import com.wrapper.spotify.enums.ModelObjectType;
 import com.wrapper.spotify.enums.ReleaseDatePrecision;
 import com.wrapper.spotify.model_objects.AbstractModelObject;
+import com.wrapper.spotify.model_objects.miscellaneous.Restrictions;
 import com.wrapper.spotify.requests.data.search.interfaces.ISearchModelObject;
 
 /**
@@ -28,7 +29,9 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
   private final ReleaseDatePrecision releaseDatePrecision;
   private final ModelObjectType type;
   private final String uri;
-
+  private final String albumGroup;
+  private final Restrictions restrictions;
+  
   private AlbumSimplified(final Builder builder) {
     super(builder);
 
@@ -44,6 +47,8 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
     this.releaseDatePrecision = builder.releaseDatePrecision;
     this.type = builder.type;
     this.uri = builder.uri;
+    this.albumGroup = builder.albumGroup;
+    this.restrictions = builder.restrictions;
   }
 
   /**
@@ -156,6 +161,24 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
     return uri;
   }
 
+  /**
+   * Get the Spotify Album Group of the album.
+   *
+   * @return The album group date of the album.
+   */
+  public String getAlbumGroup() {
+    return albumGroup;
+  }
+
+  /**
+   * Get the Restrictions of the album.
+   * 
+   * @return An object of {@link Restrictions} .   
+   */
+  public Restrictions getRestrictions() {
+    return restrictions;
+  }  
+
   @Override
   public Builder builder() {
     return new Builder();
@@ -178,6 +201,8 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
     private ReleaseDatePrecision releaseDatePrecision;
     private ModelObjectType type;
     private String uri;
+    private String albumGroup;
+    private Restrictions restrictions;
 
     /**
      * Set the type of the album to be built.
@@ -313,6 +338,28 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
       this.uri = uri;
       return this;
     }
+    
+    /**
+     * Set the album group of the album to be built.
+     *
+     * @param albumGroup The album group of the album.
+     * @return A {@link Album.Builder}.
+     */
+    public Builder setAlbumGroup(String albumGroup) {
+        this.albumGroup = albumGroup;
+        return this;
+    }
+    
+    /**
+     * Set the restrictions of the album to be built.
+     *
+     * @param restrictions The restrictions of the album.
+     * @return A {@link Album.Builder}.
+     */
+    public Builder setRestrictions(Restrictions restrictions) {
+        this.restrictions = restrictions;
+        return this;
+    }    
 
     @Override
     public AlbumSimplified build() {
@@ -367,6 +414,15 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
           hasAndNotNull(jsonObject, "name")
             ? jsonObject.get("name").getAsString()
             : null)
+        .setReleaseDate(
+          hasAndNotNull(jsonObject, "release_date")
+            ? jsonObject.get("release_date").getAsString()
+            : null)
+        .setReleaseDatePrecision(
+          hasAndNotNull(jsonObject, "release_date_precision")
+            ? ReleaseDatePrecision.keyOf(
+            jsonObject.get("release_date_precision").getAsString().toLowerCase())
+            : null)
         .setType(
           hasAndNotNull(jsonObject, "type")
             ? ModelObjectType.keyOf(
@@ -376,6 +432,15 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
           hasAndNotNull(jsonObject, "uri")
             ? jsonObject.get("uri").getAsString()
             : null)
+        .setAlbumGroup(
+          hasAndNotNull(jsonObject, "album_group")
+            ? jsonObject.get("album_group").getAsString()
+            : null)     
+        .setRestrictions(
+          hasAndNotNull(jsonObject, "restrictions")
+            ? new Restrictions.JsonUtil().createModelObject(
+            jsonObject.getAsJsonObject("restrictions"))
+            : null)         
         .build();
     }
   }
