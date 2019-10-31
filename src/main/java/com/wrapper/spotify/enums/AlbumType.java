@@ -9,7 +9,6 @@ import java.util.Map;
 public enum AlbumType {
 
   ALBUM("album"),
-  APPEARS_ON("appears_on"),
   COMPILATION("compilation"),
   SINGLE("single");
 

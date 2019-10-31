@@ -4,10 +4,12 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.neovisionaries.i18n.CountryCode;
+import com.wrapper.spotify.enums.AlbumGroup;
 import com.wrapper.spotify.enums.AlbumType;
 import com.wrapper.spotify.enums.ModelObjectType;
 import com.wrapper.spotify.enums.ReleaseDatePrecision;
 import com.wrapper.spotify.model_objects.AbstractModelObject;
+import com.wrapper.spotify.model_objects.miscellaneous.Restrictions;
 import com.wrapper.spotify.requests.data.search.interfaces.ISearchModelObject;
 
 /**
@@ -16,6 +18,7 @@ import com.wrapper.spotify.requests.data.search.interfaces.ISearchModelObject;
  */
 @JsonDeserialize(builder = AlbumSimplified.Builder.class)
 public class AlbumSimplified extends AbstractModelObject implements ISearchModelObject {
+  private final AlbumGroup albumGroup;
   private final AlbumType albumType;
   private final ArtistSimplified[] artists;
   private final CountryCode[] availableMarkets;
@@ -26,12 +29,14 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
   private final String name;
   private final String releaseDate;
   private final ReleaseDatePrecision releaseDatePrecision;
+  private final Restrictions restrictions;
   private final ModelObjectType type;
   private final String uri;
 
   private AlbumSimplified(final Builder builder) {
     super(builder);
 
+    this.albumGroup = builder.albumGroup;
     this.albumType = builder.albumType;
     this.artists = builder.artists;
     this.availableMarkets = builder.availableMarkets;
@@ -42,8 +47,18 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
     this.name = builder.name;
     this.releaseDate = builder.releaseDate;
     this.releaseDatePrecision = builder.releaseDatePrecision;
+    this.restrictions = builder.restrictions;
     this.type = builder.type;
     this.uri = builder.uri;
+  }
+
+  /**
+   * Get the Spotify Album Group of the album.
+   *
+   * @return The album group date of the album.
+   */
+  public AlbumGroup getAlbumGroup() {
+    return albumGroup;
   }
 
   /**
@@ -139,6 +154,15 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
   }
 
   /**
+   * Get the Restrictions of the album.
+   *
+   * @return An object of {@link Restrictions} .
+   */
+  public Restrictions getRestrictions() {
+    return restrictions;
+  }
+
+  /**
    * Get the model object type. In this case "album".
    *
    * @return A {@link ModelObjectType}.
@@ -166,6 +190,7 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
    */
   public static final class Builder extends AbstractModelObject.Builder {
 
+    private AlbumGroup albumGroup;
     private AlbumType albumType;
     private ArtistSimplified[] artists;
     private CountryCode[] availableMarkets;
@@ -176,8 +201,20 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
     private String name;
     private String releaseDate;
     private ReleaseDatePrecision releaseDatePrecision;
+    private Restrictions restrictions;
     private ModelObjectType type;
     private String uri;
+
+    /**
+     * Set the album group of the album to be built.
+     *
+     * @param albumGroup The album group of the album.
+     * @return A {@link Album.Builder}.
+     */
+    public Builder setAlbumGroup(AlbumGroup albumGroup) {
+      this.albumGroup = albumGroup;
+      return this;
+    }
 
     /**
      * Set the type of the album to be built.
@@ -188,7 +225,6 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
     public Builder setAlbumType(AlbumType albumType) {
       this.albumType = albumType;
       return this;
-
     }
 
     /**
@@ -292,6 +328,17 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
     }
 
     /**
+     * Set the restrictions of the album to be built.
+     *
+     * @param restrictions The restrictions of the album.
+     * @return A {@link Album.Builder}.
+     */
+    public Builder setRestrictions(Restrictions restrictions) {
+      this.restrictions = restrictions;
+      return this;
+    }
+
+    /**
      * Set the type of the model object. In this case "album".
      *
      * @param type The {@link ModelObjectType}.
@@ -330,6 +377,11 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
       }
 
       return new AlbumSimplified.Builder()
+        .setAlbumGroup(
+          hasAndNotNull(jsonObject, "album_group")
+            ? AlbumGroup.keyOf(
+              jsonObject.get("album_group").getAsString().toLowerCase())
+            : null)
         .setAlbumType(
           hasAndNotNull(jsonObject, "album_type")
             ? AlbumType.keyOf(
@@ -366,6 +418,20 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
         .setName(
           hasAndNotNull(jsonObject, "name")
             ? jsonObject.get("name").getAsString()
+            : null)
+        .setReleaseDate(
+          hasAndNotNull(jsonObject, "release_date")
+            ? jsonObject.get("release_date").getAsString()
+            : null)
+        .setReleaseDatePrecision(
+          hasAndNotNull(jsonObject, "release_date_precision")
+            ? ReleaseDatePrecision.keyOf(
+            jsonObject.get("release_date_precision").getAsString().toLowerCase())
+            : null)
+        .setRestrictions(
+          hasAndNotNull(jsonObject, "restrictions")
+            ? new Restrictions.JsonUtil().createModelObject(
+            jsonObject.getAsJsonObject("restrictions"))
             : null)
         .setType(
           hasAndNotNull(jsonObject, "type")
