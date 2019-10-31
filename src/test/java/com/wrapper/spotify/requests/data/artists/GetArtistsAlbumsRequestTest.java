@@ -1,6 +1,8 @@
 package com.wrapper.spotify.requests.data.artists;
 
 import com.wrapper.spotify.TestUtil;
+import com.wrapper.spotify.enums.AlbumGroup;
+import com.wrapper.spotify.enums.AlbumType;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.AlbumSimplified;
 import com.wrapper.spotify.model_objects.specification.Paging;
@@ -50,16 +52,22 @@ public class GetArtistsAlbumsRequestTest extends AbstractDataTest<Paging<AlbumSi
 
   public void shouldReturnDefault(final Paging<AlbumSimplified> albumSimplifiedPaging) {
     assertEquals(
-      "https://api.spotify.com/v1/artists/1vCWHaC5f2uS3yhpwWbIA6/albums?offset=0&limit=2&album_type=single&market=ES",
+      "https://api.spotify.com/v1/artists/1vCWHaC5f2uS3yhpwWbIA6/albums?offset=0&limit=2&include_groups=single&market=ES",
       albumSimplifiedPaging.getHref());
     assertEquals(
       2,
       albumSimplifiedPaging.getItems().length);
     assertEquals(
+      AlbumGroup.SINGLE,
+      albumSimplifiedPaging.getItems()[0].getAlbumGroup());
+    assertEquals(
+      AlbumType.SINGLE,
+      albumSimplifiedPaging.getItems()[0].getAlbumType());
+    assertEquals(
       2,
       (int) albumSimplifiedPaging.getLimit());
     assertEquals(
-      "https://api.spotify.com/v1/artists/1vCWHaC5f2uS3yhpwWbIA6/albums?offset=2&limit=2&album_type=single&market=ES",
+      "https://api.spotify.com/v1/artists/1vCWHaC5f2uS3yhpwWbIA6/albums?offset=2&limit=2&include_groups=single&market=ES",
       albumSimplifiedPaging.getNext());
     assertEquals(
       0,
@@ -67,7 +75,7 @@ public class GetArtistsAlbumsRequestTest extends AbstractDataTest<Paging<AlbumSi
     assertNull(
       albumSimplifiedPaging.getPrevious());
     assertEquals(
-      48,
+      64,
       (int) albumSimplifiedPaging.getTotal());
   }
 }
