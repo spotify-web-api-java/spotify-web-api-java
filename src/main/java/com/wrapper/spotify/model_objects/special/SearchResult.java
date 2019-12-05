@@ -29,7 +29,7 @@ public class SearchResult extends AbstractModelObject implements IArtistTrackMod
 
   /**
    * Get the album objects contained in the search result object. <br>
-   * <b>Note:</b> The serch result only contains album objects when the {@code album} parameter has been specified
+   * <b>Note:</b> The search result only contains album objects when the {@code album} parameter has been specified
    * in the request.
    *
    * @return Albums from the search result.
@@ -40,7 +40,7 @@ public class SearchResult extends AbstractModelObject implements IArtistTrackMod
 
   /**
    * Get the artist objects contained in the search result object. <br>
-   * <b>Note:</b> The serch result only contains artist objects when the {@code artist} parameter has been specified
+   * <b>Note:</b> The search result only contains artist objects when the {@code artist} parameter has been specified
    * in the request.
    *
    * @return Artists from the search result.
@@ -51,7 +51,7 @@ public class SearchResult extends AbstractModelObject implements IArtistTrackMod
 
   /**
    * Get the playlist objects contained in the search result object. <br>
-   * <b>Note:</b> The serch result only contains playlist objects when the {@code playlis} parameter has been specified
+   * <b>Note:</b> The search result only contains playlist objects when the {@code playlist} parameter has been specified
    * in the request.
    *
    * @return Playlists from the search result.
@@ -62,7 +62,7 @@ public class SearchResult extends AbstractModelObject implements IArtistTrackMod
 
   /**
    * Get the track objects contained in the search result object. <br>
-   * <b>Note:</b> The serch result only contains track objects when the {@code track} parameter has been specified
+   * <b>Note:</b> The search result only contains track objects when the {@code track} parameter has been specified
    * in the request.
    *
    * @return Tracks from the search result.
