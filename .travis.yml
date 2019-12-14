@@ -37,3 +37,7 @@ notifications:
   email:
     on_success: never
     on_failure: change
+script: "mvn cobertura:cobertura"
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
