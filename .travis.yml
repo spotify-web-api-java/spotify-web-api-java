@@ -1,3 +1,5 @@
+before_install:
+  - chmod +x /travis/code_cov.sh
 language: java
 matrix:
   include:
@@ -6,7 +8,6 @@ matrix:
       before_install:
         - rm "${JAVA_HOME}/lib/security/cacerts"
         - ln -s /etc/ssl/certs/java/cacerts "${JAVA_HOME}/lib/security/cacerts"
-        - chmod +x /travis/code_cov.sh
     - jdk: openjdk12
     - jdk: oraclejdk12
 env:
