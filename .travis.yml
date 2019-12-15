@@ -1,5 +1,3 @@
-before_install:
-  - chmod +x travis/code_cov.sh
 language: java
 matrix:
   include:
