@@ -21,7 +21,7 @@ cache:
   directories:
   - $HOME/.m2
 after_success:
-  script: "if [ '${TRAVIS_JDK_VERSION}' = 'openjdk8' ]; then bash <(curl -s https://codecov.io/bash) ; fi"
+  script: "if [ '${TRAVIS_JDK_VERSION}' = 'openjdk8' ]; then mvn cobertura:cobertura ; bash <(curl -s https://codecov.io/bash) ; fi"
 before_deploy:
   - ./travis/before-deploy.sh
   - cp ./travis/.m2.settings.xml $HOME/.m2/settings.xml
