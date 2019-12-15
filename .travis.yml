@@ -37,15 +37,8 @@ notifications:
   email:
     on_success: never
     on_failure: change
-    env:
-  - ONE=one
-  - TWO=two
-jobs:
-  allow_failures:
-    - if: jdk = oraclejdk9 
-  include:
-      if: jdk = openjdk8
-      script: "mvn cobertura:cobertura"
-
-after_success:
-  - bash <(curl -s https://codecov.io/bash)
+    
+if: jdk = openjdk8
+  script: "mvn cobertura:cobertura"
+  after_success:
+    - bash <(curl -s https://codecov.io/bash)
