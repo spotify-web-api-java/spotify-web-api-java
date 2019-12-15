@@ -23,7 +23,7 @@ cache:
   directories:
   - $HOME/.m2
 after_success:
-  script: "if [ '${TRAVIS_JDK_VERSION}' = 'openjdk8' ]; then mvn cobertura:cobertura ; fi"
+  - ./travis/code_cov.sh
 before_deploy:
   - ./travis/before-deploy.sh
   - cp ./travis/.m2.settings.xml $HOME/.m2/settings.xml
