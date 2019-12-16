@@ -2,7 +2,7 @@
 | ------------------ |
 | You **cannot** use this library for Android app development. Have a look at [kaaes/spotify-web-api-android](https://www.github.com/kaaes/spotify-web-api-android) and [Spotify's Android SDK](https://developer.spotify.com/technologies/spotify-android-sdk/) and [see why](https://github.com/thelinmichael/spotify-web-api-java/issues/120#issuecomment-363266591). |
 
-Spotify Web API Java [![Build Status](https://travis-ci.org/thelinmichael/spotify-web-api-java.svg?branch=master)](https://travis-ci.org/thelinmichael/spotify-web-api-java)
+Spotify Web API Java [![Build Status](https://travis-ci.org/thelinmichael/spotify-web-api-java.svg?branch=master)](https://travis-ci.org/thelinmichael/spotify-web-api-java) [![codecov](https://codecov.io/gh/thelinmichael/spotify-web-api-java/branch/develop/graph/badge.svg)](https://codecov.io/gh/thelinmichael/spotify-web-api-java)
 ====================
 
 This is a Java wrapper/client for the [Spotify Web API](https://developer.spotify.com/web-api/).
@@ -31,7 +31,7 @@ Latest official release:
 <dependency>
   <groupId>se.michaelthelin.spotify</groupId>
   <artifactId>spotify-web-api-java</artifactId>
-  <version>4.2.0</version>
+  <version>4.2.1</version>
 </dependency>
 ```
 
@@ -48,7 +48,7 @@ Latest snapshot:
 
 Latest official release:
 ```Gradle
-compile 'se.michaelthelin.spotify:spotify-web-api-java:4.2.0'
+compile 'se.michaelthelin.spotify:spotify-web-api-java:4.2.1'
 ```
 
 Latest snapshot:
