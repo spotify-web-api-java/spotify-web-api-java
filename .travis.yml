@@ -1,5 +1,6 @@
+os: linux
 language: java
-matrix:
+jobs:
   include:
     - jdk: openjdk8
     - jdk: oraclejdk9
@@ -27,7 +28,7 @@ before_deploy:
   - cp ./travis/.m2.settings.xml $HOME/.m2/settings.xml
 deploy:
   provider: script
-  skip_cleanup: true
+  cleanup: false
   script: "if [ '${TRAVIS_JDK_VERSION}' = 'oraclejdk12' ]; then mvn deploy -P release -DskipTests=true ; fi"
   on:
     repo: thelinmichael/spotify-web-api-java
