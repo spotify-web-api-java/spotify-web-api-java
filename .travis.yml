@@ -16,7 +16,7 @@ env:
   - secure: Sa7tSlz29eOhOazmyGAfv7tFtaZjI1PMtgQJ3fFFZ2EVaAbxxGU/l+TVmcCOxOt7OdCf1MTgB9/dRGPZAuVdtelPIytoJEpB7U2qBci72K1at2zqKF6dq0pPswuwdbkqJeAf39M3J1nZcXKXwirU/J4OfwWyi5qwXpM8pO7W/qM=
   - # ^^SONATYPE_PASSWORD
   - GPG_KEY_NAME=C546418B
-  - secure: BJo5bbJrlxg0v0JKFpNE3JP0cRmDclG4CwMJO+j+puHVwl1p/crgbq1mL3//DJ1USIWiIy98U+xQSH1/gIhAssPXUwI5Xv94AKgE7K/8hY1E7pqt6WSr9jGEMalceggFHHTNkfRXlet+Cpag7R73Fyx8++pEqMESpf043hc0EBc=
+  - secure: fNOQPRDKEoW62EnxhXqb8q3JChwfYiUk6EidmXzvcEFQZutWmSnagPIwzywfeEt4FlLrhspLawtC5MIuFjOQY80S4oEkEAj28A1ltFb18upjN807fzSVFmo/3+j0r8geLpEfDc0qh4GIGhMz1WtfR1zFJ5YtNzN5wLKeF2/dB8M=
   - # ^^GPG_PASSPHRASE
 cache:
   directories:
