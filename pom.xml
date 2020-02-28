@@ -196,7 +196,6 @@
               <reportOutputDirectory>${project.basedir}</reportOutputDirectory>
               <source>8</source>
               <destDir>docs</destDir>
-              <subpackages>com.wrapper.spotify</subpackages>
             </configuration>
           </plugin>
           <plugin>
