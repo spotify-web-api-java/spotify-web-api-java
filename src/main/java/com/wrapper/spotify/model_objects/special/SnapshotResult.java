@@ -6,7 +6,7 @@ import com.wrapper.spotify.model_objects.AbstractModelObject;
 
 /**
  * Retrieve information about Snapshot Result objects by building instances from this class. These objects contain a
- * playlist snapshot ID, which is created after adding or removing tracks from a playlsit.
+ * playlist snapshot ID, which is created after adding or removing tracks from a playlist.
  * <p>
  * <a href="https://developer.spotify.com/web-api/working-with-playlists/#version-control-and-snapshots">
  * Spotify: Working With Playlists</a>

@@ -24,7 +24,7 @@ public class GetAudioAnalysisForTrackRequest extends AbstractDataRequest<AudioAn
   }
 
   /**
-   * Get an audio analyis for a track.
+   * Get an audio analysis for a track.
    *
    * @return An {@link AudioAnalysis}.
    * @throws IOException            In case of networking issues.

@@ -756,7 +756,7 @@ public class SpotifyApi {
   }
 
   /**
-   * Check if a track is saved in the users "Your Music" library.
+   * Check if a track is saved in the user's "Your Music" library.
    *
    * @param ids The tracks IDs to check for in the user's Your Music library. Maximum: 50 IDs.
    * @return A {@link CheckUsersSavedAlbumsRequest.Builder}.
@@ -769,7 +769,7 @@ public class SpotifyApi {
   }
 
   /**
-   * Check if a track is saved in the users "Your Music" library.
+   * Check if a track is saved in the user's "Your Music" library.
    *
    * @param ids The tracks IDs to check for in the user's Your Music library. Maximum: 50 IDs.
    * @return A builder object that can be used to check if an user has saved a track.
@@ -791,7 +791,7 @@ public class SpotifyApi {
   }
 
   /**
-   * Get an users "Your Music" tracks.
+   * Get an user's "Your Music" tracks.
    *
    * @return A {@link GetUsersSavedTracksRequest.Builder}.
    */
@@ -801,7 +801,7 @@ public class SpotifyApi {
   }
 
   /**
-   * Remove one or more albums from the current users "Your Music" library.
+   * Remove one or more albums from the current user's "Your Music" library.
    *
    * @param ids A list of the Spotify IDs. Maximum: 50 IDs.
    * @return A {@link RemoveAlbumsForCurrentUserRequest.Builder}.
@@ -814,9 +814,9 @@ public class SpotifyApi {
   }
 
   /**
-   * Remove a track if saved to the users "Your Music" library.
+   * Remove a track if saved to the user's "Your Music" library.
    *
-   * @param ids The track IDs to remove from the users Your Music library. Maximum: 50 IDs.
+   * @param ids The track IDs to remove from the user's Your Music library. Maximum: 50 IDs.
    * @return A {@link RemoveUsersSavedTracksRequest.Builder}.
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
@@ -827,9 +827,9 @@ public class SpotifyApi {
   }
 
   /**
-   * Save albums in the users "Your Music" library.
+   * Save albums in the user's "Your Music" library.
    *
-   * @param ids The album IDs to add to the users library. Maximum: 50 IDs.
+   * @param ids The album IDs to add to the user's library. Maximum: 50 IDs.
    * @return A {@link SaveAlbumsForCurrentUserRequest.Builder}.
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
@@ -840,9 +840,9 @@ public class SpotifyApi {
   }
 
   /**
-   * Save albums in the users "Your Music" library.
+   * Save albums in the user's "Your Music" library.
    *
-   * @param ids The album IDs to add to the users library. Maximum: 50 IDs.
+   * @param ids The album IDs to add to the user's library. Maximum: 50 IDs.
    * @return A {@link SaveAlbumsForCurrentUserRequest.Builder}.
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
@@ -853,9 +853,9 @@ public class SpotifyApi {
   }
 
   /**
-   * Save tracks in the users "Your Music" library.
+   * Save tracks in the user's "Your Music" library.
    *
-   * @param ids The track IDs to add to the users library. Maximum: 50 IDs.
+   * @param ids The track IDs to add to the user's library. Maximum: 50 IDs.
    * @return A {@link SaveTracksForUserRequest.Builder}.
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
@@ -866,9 +866,9 @@ public class SpotifyApi {
   }
 
   /**
-   * Save tracks in the users "Your Music" library.
+   * Save tracks in the user's "Your Music" library.
    *
-   * @param ids The track IDs to add to the users library. Maximum: 50 IDs.
+   * @param ids The track IDs to add to the user's library. Maximum: 50 IDs.
    * @return A {@link SaveTracksForUserRequest.Builder}.
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
@@ -879,7 +879,7 @@ public class SpotifyApi {
   }
 
   /**
-   * Get the current users top artists or tracks based on calculated affinity. <br><br>
+   * Get the current user's top artists or tracks based on calculated affinity. <br><br>
    * <p>
    * Affinity is a measure of the expected preference an user has for a particular track or artist. It is based on user
    * behavior, including play history, but does not include actions made while in incognito mode. Light or infrequent
@@ -898,7 +898,7 @@ public class SpotifyApi {
   }
 
   /**
-   * Get the current users top artists based on calculated affinity.
+   * Get the current user's top artists based on calculated affinity.
    *
    * @return A {@link GetUsersTopArtistsRequest.Builder}.
    * @see #getUsersTopArtistsAndTracks(ModelObjectType)
@@ -909,7 +909,7 @@ public class SpotifyApi {
   }
 
   /**
-   * Get the current users top tracks based on calculated affinity.
+   * Get the current user's top tracks based on calculated affinity.
    *
    * @return A {@link GetUsersTopTracksRequest.Builder}.
    * @see #getUsersTopArtistsAndTracks(ModelObjectType)
@@ -920,7 +920,7 @@ public class SpotifyApi {
   }
 
   /**
-   * Get information about the users current playback state, including track, track progress, and active device.
+   * Get information about the user's current playback state, including track, track progress, and active device.
    *
    * @return A {@link GetInformationAboutUsersCurrentPlaybackRequest.Builder}.
    */
@@ -930,7 +930,7 @@ public class SpotifyApi {
   }
 
   /**
-   * Get tracks from the current users recently played tracks. <br><br>
+   * Get tracks from the current user's recently played tracks. <br><br>
    * <p>
    * Returns the most recent 50 tracks played by an user. Note that a track currently playing will not be visible in play
    * history until it has completed. A track must be played for more than 30 seconds to be included in play history.
@@ -946,7 +946,7 @@ public class SpotifyApi {
   }
 
   /**
-   * Get information about an users available devices.
+   * Get information about an user's available devices.
    *
    * @return A {@link GetUsersAvailableDevicesRequest.Builder}.
    */
@@ -956,7 +956,7 @@ public class SpotifyApi {
   }
 
   /**
-   * Get the object currently being played on the users Spotify account.
+   * Get the object currently being played on the user's Spotify account.
    *
    * @return A {@link GetUsersCurrentlyPlayingTrackRequest.Builder}.
    */
@@ -966,7 +966,7 @@ public class SpotifyApi {
   }
 
   /**
-   * Pause playback on the users account.
+   * Pause playback on the user's account.
    *
    * @return A {@link PauseUsersPlaybackRequest.Builder}.
    */
@@ -976,7 +976,7 @@ public class SpotifyApi {
   }
 
   /**
-   * Seeks to the given position in the users currently playing track.
+   * Seeks to the given position in the user's currently playing track.
    *
    * @param position_ms The position in milliseconds to seek to. Must be a positive number. Passing in a position that
    *                    is greater than the length of the track will cause the player to start playing the next song.
@@ -989,7 +989,7 @@ public class SpotifyApi {
   }
 
   /**
-   * Set the repeat mode for the users playback. Options are repeat-track, repeat-context, and off.
+   * Set the repeat mode for the user's playback. Options are repeat-track, repeat-context, and off.
    *
    * @param state track, context or off. track will repeat the current track. context will repeat the current
    *              context. off will turn repeat off.
@@ -1002,7 +1002,7 @@ public class SpotifyApi {
   }
 
   /**
-   * Set the volume for the users current playback device.
+   * Set the volume for the user's current playback device.
    *
    * @param volume_percent Integer. The volume to set. Must be a value from 0 to 100 inclusive.
    * @return A {@link SetVolumeForUsersPlaybackRequest.Builder}.
@@ -1014,7 +1014,7 @@ public class SpotifyApi {
   }
 
   /**
-   * Skips to next track in the users queue.
+   * Skips to next track in the user's queue.
    *
    * @return A {@link SkipUsersPlaybackToNextTrackRequest.Builder}.
    */
@@ -1024,7 +1024,7 @@ public class SpotifyApi {
   }
 
   /**
-   * Skips to previous track in the users queue.
+   * Skips to previous track in the user's queue.
    * <p>
    * <b>Note:</b> This will ALWAYS skip to the previous track, regardless of the current track’s progress. Returning to
    * the start of the current track should be performed using the {@link #seekToPositionInCurrentlyPlayingTrack(int)}
@@ -1038,7 +1038,7 @@ public class SpotifyApi {
   }
 
   /**
-   * Start a new context or resume current playback on the users active device.
+   * Start a new context or resume current playback on the user's active device.
    *
    * @return A {@link StartResumeUsersPlaybackRequest.Builder}.
    */
@@ -1048,7 +1048,7 @@ public class SpotifyApi {
   }
 
   /**
-   * Toggle shuffle on or off for users playback.
+   * Toggle shuffle on or off for user's playback.
    *
    * @param state true: Shuffle user's playback. false: Do not shuffle user's playback.
    * @return A {@link ToggleShuffleForUsersPlaybackRequest.Builder}.
@@ -1212,7 +1212,7 @@ public class SpotifyApi {
   }
 
   /**
-   * Get an users playlists.
+   * Get an user's playlists.
    *
    * @param user_id A Spotify ID of the user.
    * @return A {@link GetListOfUsersPlaylistsRequest.Builder}.
@@ -1258,7 +1258,7 @@ public class SpotifyApi {
   /**
    * Get the image used to represent a specific playlist.
    *
-   * @param user_id     The users Spotify user ID.
+   * @param user_id     The user's Spotify user ID.
    * @param playlist_id The Spotify ID for the playlist.
    * @return A {@link GetPlaylistCoverImageRequest.Builder}.
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
@@ -1361,7 +1361,7 @@ public class SpotifyApi {
    * untouched. In addition, the users following the playlists won’t be notified about changes in the playlists when the
    * tracks are reordered.
    *
-   * @param user_id       The users Spotify user ID.
+   * @param user_id       The user's Spotify user ID.
    * @param playlist_id   The Spotify ID for the playlist.
    * @param range_start   The position of the first track to be reordered.
    * @param insert_before The position where the tracks should be inserted. To reorder the tracks to the end of the
@@ -1476,7 +1476,7 @@ public class SpotifyApi {
   /**
    * Replace the image used to represent a specific playlist.
    *
-   * @param user_id     The users Spotify user ID.
+   * @param user_id     The user's Spotify user ID.
    * @param playlist_id The Spotify ID for the playlist.
    * @return An {@link UploadCustomPlaylistCoverImageRequest.Builder}.
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>

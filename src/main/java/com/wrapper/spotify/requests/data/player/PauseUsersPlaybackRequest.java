@@ -69,7 +69,7 @@ public class PauseUsersPlaybackRequest extends AbstractDataRequest<String> {
     }
 
     /**
-     * The reuqest build method.
+     * The request build method.
      *
      * @return A custom {@link PauseUsersPlaybackRequest}.
      */

@@ -73,7 +73,7 @@ public class CheckUsersFollowPlaylistRequest extends AbstractDataRequest<Boolean
     }
 
     /**
-     * The paylist ID setter.
+     * The playlist ID setter.
      *
      * @param playlist_id The Spotify ID of the playlist.
      * @return A {@link CheckUsersFollowPlaylistRequest.Builder}.

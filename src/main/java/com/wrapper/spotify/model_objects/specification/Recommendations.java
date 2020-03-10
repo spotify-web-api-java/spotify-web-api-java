@@ -62,7 +62,7 @@ public class Recommendations extends AbstractModelObject {
     }
 
     /**
-     * The recommendated tracks setter.
+     * The recommended tracks setter.
      *
      * @param tracks An array of track objects (simplified).
      * @return A {@link Recommendations.Builder}.

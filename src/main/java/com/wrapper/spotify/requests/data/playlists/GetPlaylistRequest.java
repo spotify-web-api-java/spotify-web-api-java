@@ -113,7 +113,7 @@ public class GetPlaylistRequest extends AbstractDataRequest<Playlist> {
     }
 
     /**
-     * ther request build method.
+     * The request build method.
      *
      * @return A custom {@link GetPlaylistRequest}.
      */

@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.credentials.AuthorizationCodeCredentials;
-import com.wrapper.spotify.requests.authorization.AbstractAthorizationRequest;
+import com.wrapper.spotify.requests.authorization.AbstractAuthorizationRequest;
 import org.apache.hc.core5.http.ContentType;
 import org.apache.hc.core5.http.ParseException;
 
@@ -17,7 +17,7 @@ import java.net.URI;
  * request.
  */
 @JsonDeserialize(builder = AuthorizationCodeRequest.Builder.class)
-public class AuthorizationCodeRequest extends AbstractAthorizationRequest<AuthorizationCodeCredentials> {
+public class AuthorizationCodeRequest extends AbstractAuthorizationRequest<AuthorizationCodeCredentials> {
 
   private AuthorizationCodeRequest(Builder builder) {
     super(builder);
@@ -40,7 +40,7 @@ public class AuthorizationCodeRequest extends AbstractAthorizationRequest<Author
   /**
    * Builder class for building an {@link AuthorizationCodeRequest}.
    */
-  public static final class Builder extends AbstractAthorizationRequest.Builder<AuthorizationCodeCredentials, Builder> {
+  public static final class Builder extends AbstractAuthorizationRequest.Builder<AuthorizationCodeCredentials, Builder> {
 
     public Builder(final String clientId, final String clientSecret) {
       super(clientId, clientSecret);

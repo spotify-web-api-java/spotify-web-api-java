@@ -290,7 +290,7 @@ public class PlaylistSimplified extends AbstractModelObject implements ISearchMo
     }
 
     /**
-     * Set some track infromation of the playlist to be built.
+     * Set some track information of the playlist to be built.
      *
      * @param tracks A playlist tracks information object.
      * @return A {@link PlaylistSimplified.Builder}.
