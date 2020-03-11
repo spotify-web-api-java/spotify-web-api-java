@@ -235,6 +235,7 @@ spotifyApi
 
 
 - **Player**
+  - [Add Item to User's Playback Queue](examples/data/player/AddItemToUsersPlaybackQueueExample.java)
   - [Get a User's Available Devices](examples/data/player/GetUsersAvailableDevicesExample.java)
   - [Get Information About The User's Current Playback](examples/data/player/GetInformationAboutUsersCurrentPlaybackExample.java)
   - [Get Current User's Recently Played Tracks](examples/data/player/GetCurrentUsersRecentlyPlayedTracksExample.java)
