@@ -31,7 +31,7 @@ Latest official release:
 <dependency>
   <groupId>se.michaelthelin.spotify</groupId>
   <artifactId>spotify-web-api-java</artifactId>
-  <version>4.2.2</version>
+  <version>4.3.0</version>
 </dependency>
 ```
 
@@ -48,7 +48,7 @@ Latest snapshot:
 
 Latest official release:
 ```Gradle
-compile 'se.michaelthelin.spotify:spotify-web-api-java:4.2.2'
+compile 'se.michaelthelin.spotify:spotify-web-api-java:4.3.0'
 ```
 
 Latest snapshot:
@@ -235,6 +235,7 @@ spotifyApi
 
 
 - **Player**
+  - [Add Item to User's Playback Queue](examples/data/player/AddItemToUsersPlaybackQueueExample.java)
   - [Get a User's Available Devices](examples/data/player/GetUsersAvailableDevicesExample.java)
   - [Get Information About The User's Current Playback](examples/data/player/GetInformationAboutUsersCurrentPlaybackExample.java)
   - [Get Current User's Recently Played Tracks](examples/data/player/GetCurrentUsersRecentlyPlayedTracksExample.java)

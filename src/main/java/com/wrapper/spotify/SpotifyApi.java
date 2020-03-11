@@ -1073,6 +1073,19 @@ public class SpotifyApi {
   }
 
   /**
+   * Add a track or an episode to the end of the user's current playback queue.
+   *
+   * @param uri The uri of the item to add to the queue. Must be a track or an episode uri.
+   * @return A {@link AddItemToUsersPlaybackQueueRequest.Builder}.
+   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   */
+  public AddItemToUsersPlaybackQueueRequest.Builder addItemToUsersPlaybackQueue(String uri) {
+    return new AddItemToUsersPlaybackQueueRequest.Builder(accessToken)
+      .setDefaults(httpManager, scheme, host, port)
+      .uri(uri);
+  }
+
+  /**
    * Add tracks to a playlist.
    *
    * @param user_id     The owners username.
