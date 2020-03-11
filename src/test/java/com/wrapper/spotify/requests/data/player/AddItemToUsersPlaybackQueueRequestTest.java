@@ -15,7 +15,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
 @RunWith(MockitoJUnitRunner.class)
-public class AddItemToUsersPlaybackQueueRequestTest extends AbstractDataTest<String>{
+public class AddItemToUsersPlaybackQueueRequestTest extends AbstractDataTest<String> {
   private final AddItemToUsersPlaybackQueueRequest defaultRequest = SPOTIFY_API
     .addItemToUsersPlaybackQueue("spotify:track:" + ID_TRACK)
     .setHttpManager(
@@ -44,9 +44,7 @@ public class AddItemToUsersPlaybackQueueRequestTest extends AbstractDataTest<Str
     shouldReturnDefault(defaultRequest.executeAsync().get());
   }
 
-
   public void shouldReturnDefault(String string) {
-    assertNull(
-      string);
+    assertNull(string);
   }
 }
