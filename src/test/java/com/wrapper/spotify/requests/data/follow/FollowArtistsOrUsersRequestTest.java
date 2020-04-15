@@ -5,6 +5,7 @@ import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.enums.ModelObjectType;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.requests.data.AbstractDataTest;
+import org.apache.hc.core5.http.ParseException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -26,8 +27,7 @@ public class FollowArtistsOrUsersRequestTest extends AbstractDataTest<String> {
         "requests/data/follow/FollowArtistsOrUsersRequestTest.json"))
     .build();
   private final FollowArtistsOrUsersRequest bodyRequest = SPOTIFY_API
-    .followArtistsOrUsers(ModelObjectType.ARTIST, new JsonParser()
-      .parse("[\"" + ID_ARTIST + "\",\"" + ID_ARTIST + "\"]").getAsJsonArray())
+    .followArtistsOrUsers(ModelObjectType.ARTIST, JsonParser.parseString("[\"" + ID_ARTIST + "\",\"" + ID_ARTIST + "\"]").getAsJsonArray())
     .setHttpManager(
       TestUtil.MockedHttpManager.returningJson(
         "requests/data/follow/FollowArtistsOrUsersRequestTest.json"))
@@ -55,7 +55,7 @@ public class FollowArtistsOrUsersRequestTest extends AbstractDataTest<String> {
   }
 
   @Test
-  public void shouldReturnDefault_sync() throws IOException, SpotifyWebApiException {
+  public void shouldReturnDefault_sync() throws IOException, SpotifyWebApiException, ParseException {
     shouldReturnDefault(defaultRequest.execute());
   }
 

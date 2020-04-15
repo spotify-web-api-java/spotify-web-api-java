@@ -3,7 +3,8 @@ package com.wrapper.spotify.requests.data.follow.legacy;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
-import org.apache.http.entity.ContentType;
+import org.apache.hc.core5.http.ContentType;
+import org.apache.hc.core5.http.ParseException;
 
 import java.io.IOException;
 
@@ -31,7 +32,8 @@ public class FollowPlaylistRequest extends AbstractDataRequest<String> {
    */
   public String execute() throws
     IOException,
-    SpotifyWebApiException {
+    SpotifyWebApiException,
+    ParseException {
     return putJson();
   }
 

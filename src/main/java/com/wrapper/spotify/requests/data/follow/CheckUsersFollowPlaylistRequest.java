@@ -5,6 +5,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonParser;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
+import org.apache.hc.core5.http.ParseException;
 
 import java.io.IOException;
 
@@ -32,8 +33,9 @@ public class CheckUsersFollowPlaylistRequest extends AbstractDataRequest<Boolean
    */
   public Boolean[] execute() throws
     IOException,
-    SpotifyWebApiException {
-    return new Gson().fromJson(new JsonParser().parse(getJson()).getAsJsonArray(), Boolean[].class);
+    SpotifyWebApiException,
+    ParseException {
+    return new Gson().fromJson(JsonParser.parseString(getJson()).getAsJsonArray(), Boolean[].class);
   }
 
   /**

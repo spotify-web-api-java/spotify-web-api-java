@@ -5,15 +5,12 @@ import com.wrapper.spotify.IHttpManager;
 import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.SpotifyApiThreading;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
-import org.apache.http.Header;
-import org.apache.http.HttpEntity;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.utils.URIBuilder;
-import org.apache.http.entity.ContentType;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.message.BasicHeader;
-import org.apache.http.message.BasicNameValuePair;
+import org.apache.hc.client5.http.entity.UrlEncodedFormEntity;
+import org.apache.hc.core5.http.*;
+import org.apache.hc.core5.http.io.entity.StringEntity;
+import org.apache.hc.core5.http.message.BasicHeader;
+import org.apache.hc.core5.http.message.BasicNameValuePair;
+import org.apache.hc.core5.net.URIBuilder;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -96,7 +93,7 @@ public abstract class AbstractRequest<T> implements IRequest<T> {
 
     for (NameValuePair nameValuePair : bodyParameters) {
       try {
-        jsonElement = new JsonParser().parse(nameValuePair.getValue());
+        jsonElement = JsonParser.parseString(nameValuePair.getValue());
       } catch (JsonSyntaxException e) {
         jsonElement = new JsonPrimitive(nameValuePair.getValue());
       }
@@ -109,7 +106,8 @@ public abstract class AbstractRequest<T> implements IRequest<T> {
 
   public String getJson() throws
     IOException,
-    SpotifyWebApiException {
+    SpotifyWebApiException,
+    ParseException {
     String json = httpManager.get(uri, headers.toArray(new Header[0]));
 
     if (json == null || json.equals("")) {
@@ -121,7 +119,8 @@ public abstract class AbstractRequest<T> implements IRequest<T> {
 
   public String postJson() throws
     IOException,
-    SpotifyWebApiException {
+    SpotifyWebApiException,
+    ParseException {
     initializeBody();
 
     String json = httpManager.post(uri, headers.toArray(new Header[0]), body);
@@ -135,7 +134,8 @@ public abstract class AbstractRequest<T> implements IRequest<T> {
 
   public String putJson() throws
     IOException,
-    SpotifyWebApiException {
+    SpotifyWebApiException,
+    ParseException {
     initializeBody();
 
     String json = httpManager.put(uri, headers.toArray(new Header[0]), body);
@@ -149,7 +149,8 @@ public abstract class AbstractRequest<T> implements IRequest<T> {
 
   public String deleteJson() throws
     IOException,
-    SpotifyWebApiException {
+    SpotifyWebApiException,
+    ParseException {
     initializeBody();
 
     String json = httpManager.delete(uri, headers.toArray(new Header[0]), body);

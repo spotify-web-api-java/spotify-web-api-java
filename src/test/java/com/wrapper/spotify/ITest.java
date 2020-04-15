@@ -9,6 +9,7 @@ import com.wrapper.spotify.enums.AlbumType;
 import com.wrapper.spotify.enums.ModelObjectType;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.requests.IRequest;
+import org.apache.hc.core5.http.ParseException;
 
 import java.io.File;
 import java.io.IOException;
@@ -52,7 +53,7 @@ public interface ITest<T> {
   int MIN_POPULARITY = 10;
   String NAME = "Abba";
   int OFFSET = 0;
-  JsonObject OFFSET_JSON = new JsonParser().parse("{\"uri\":\"spotify:track:01iyCAUm8EvOFqVWYJ3dVX\"}").getAsJsonObject();
+  JsonObject OFFSET_JSON = JsonParser.parseString("{\"uri\":\"spotify:track:01iyCAUm8EvOFqVWYJ3dVX\"}").getAsJsonObject();
   boolean PLAY = false;
   int POSITION = 0;
   int POSITION_MS = 10000;
@@ -72,12 +73,12 @@ public interface ITest<T> {
   String TIME_RANGE = "medium_term";
   Date TIMESTAMP = new Date(1414054800000L);
   ModelObjectType TYPE = ModelObjectType.ARTIST;
-  JsonArray URIS = new JsonParser().parse("[\"spotify:track:01iyCAUm8EvOFqVWYJ3dVX\",\"spotify:track:01iyCAUm8EvOFqVWYJ3dVX\"]").getAsJsonArray();
+  JsonArray URIS = JsonParser.parseString("[\"spotify:track:01iyCAUm8EvOFqVWYJ3dVX\",\"spotify:track:01iyCAUm8EvOFqVWYJ3dVX\"]").getAsJsonArray();
   int VOLUME_PERCENT = 100;
 
   void shouldComplyWithReference();
 
-  void shouldReturnDefault_sync() throws IOException, SpotifyWebApiException;
+  void shouldReturnDefault_sync() throws IOException, SpotifyWebApiException, ParseException;
 
   void shouldReturnDefault_async() throws ExecutionException, InterruptedException;
 

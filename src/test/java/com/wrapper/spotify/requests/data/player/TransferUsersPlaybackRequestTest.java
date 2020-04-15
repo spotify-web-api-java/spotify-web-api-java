@@ -4,6 +4,7 @@ import com.google.gson.JsonParser;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.requests.data.AbstractDataTest;
+import org.apache.hc.core5.http.ParseException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -19,8 +20,7 @@ import static org.junit.Assert.assertNull;
 @RunWith(MockitoJUnitRunner.class)
 public class TransferUsersPlaybackRequestTest extends AbstractDataTest<String> {
   private final TransferUsersPlaybackRequest defaultRequest = SPOTIFY_API
-    .transferUsersPlayback(new JsonParser()
-      .parse("[\"" + DEVICE_ID + "\"]").getAsJsonArray())
+    .transferUsersPlayback(JsonParser.parseString("[\"" + DEVICE_ID + "\"]").getAsJsonArray())
     .setHttpManager(
       TestUtil.MockedHttpManager.returningJson(
         "requests/data/player/TransferUsersPlaybackRequest.json"))
@@ -48,7 +48,7 @@ public class TransferUsersPlaybackRequestTest extends AbstractDataTest<String> {
   }
 
   @Test
-  public void shouldReturnDefault_sync() throws IOException, SpotifyWebApiException {
+  public void shouldReturnDefault_sync() throws IOException, SpotifyWebApiException, ParseException {
     shouldReturnDefault(defaultRequest.execute());
   }
 

@@ -12,6 +12,7 @@ import com.wrapper.spotify.requests.data.AbstractDataRequest;
 import com.wrapper.spotify.requests.data.personalization.interfaces.IArtistTrackModelObject;
 import com.wrapper.spotify.requests.data.personalization.simplified.GetUsersTopArtistsRequest;
 import com.wrapper.spotify.requests.data.personalization.simplified.GetUsersTopTracksRequest;
+import org.apache.hc.core5.http.ParseException;
 
 import java.io.IOException;
 
@@ -46,7 +47,8 @@ public class GetUsersTopArtistsAndTracksRequest<T extends IArtistTrackModelObjec
    */
   public Paging<T> execute() throws
     IOException,
-    SpotifyWebApiException {
+    SpotifyWebApiException,
+    ParseException {
     return tClass.createModelObjectPaging(getJson());
   }
 

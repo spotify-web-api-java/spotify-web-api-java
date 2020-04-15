@@ -4,6 +4,7 @@ import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.credentials.AuthorizationCodeCredentials;
 import com.wrapper.spotify.requests.authorization.AbstractAuthorizationTest;
+import org.apache.hc.core5.http.ParseException;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -48,7 +49,7 @@ public class AuthorizationCodeRequestTest extends AbstractAuthorizationTest<Auth
   }
 
   @Test
-  public void shouldReturnDefault_sync() throws IOException, SpotifyWebApiException {
+  public void shouldReturnDefault_sync() throws IOException, SpotifyWebApiException, ParseException {
     shouldReturnDefault(defaultRequest.execute());
   }
 

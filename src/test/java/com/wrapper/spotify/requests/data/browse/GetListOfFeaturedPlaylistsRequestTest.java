@@ -4,6 +4,7 @@ import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.special.FeaturedPlaylists;
 import com.wrapper.spotify.requests.data.AbstractDataTest;
+import org.apache.hc.core5.http.ParseException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -39,7 +40,7 @@ public class GetListOfFeaturedPlaylistsRequestTest extends AbstractDataTest<Feat
   }
 
   @Test
-  public void shouldReturnDefault_sync() throws IOException, SpotifyWebApiException {
+  public void shouldReturnDefault_sync() throws IOException, SpotifyWebApiException, ParseException {
     shouldReturnDefault(defaultRequest.execute());
   }
 

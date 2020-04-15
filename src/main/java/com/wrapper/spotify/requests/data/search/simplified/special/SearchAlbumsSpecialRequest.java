@@ -7,6 +7,7 @@ import com.wrapper.spotify.model_objects.special.AlbumSimplifiedSpecial;
 import com.wrapper.spotify.model_objects.specification.Paging;
 import com.wrapper.spotify.requests.data.AbstractDataPagingRequest;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
+import org.apache.hc.core5.http.ParseException;
 
 import java.io.IOException;
 
@@ -36,8 +37,9 @@ public class SearchAlbumsSpecialRequest extends AbstractDataRequest<Paging<Album
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
    */
   public Paging<AlbumSimplifiedSpecial> execute() throws
-          IOException,
-          SpotifyWebApiException {
+    IOException,
+    SpotifyWebApiException,
+    ParseException {
     return new AlbumSimplifiedSpecial.JsonUtil().createModelObjectPaging(getJson(), "albums");
   }
 

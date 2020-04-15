@@ -5,6 +5,7 @@ import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.special.SnapshotResult;
 import com.wrapper.spotify.requests.data.AbstractDataTest;
+import org.apache.hc.core5.http.ParseException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -18,8 +19,7 @@ import static org.junit.Assert.assertEquals;
 @RunWith(MockitoJUnitRunner.class)
 public class RemoveTracksFromPlaylistRequestTest extends AbstractDataTest<SnapshotResult> {
   private final RemoveTracksFromPlaylistRequest defaultRequest = SPOTIFY_API
-    .removeTracksFromPlaylist(ID_PLAYLIST, new JsonParser()
-      .parse("[{\"uri\":\"" + ID_TRACK + "\"},{\"uri\":\"" + ID_TRACK + "\"}]").getAsJsonArray())
+    .removeTracksFromPlaylist(ID_PLAYLIST, JsonParser.parseString("[{\"uri\":\"" + ID_TRACK + "\"},{\"uri\":\"" + ID_TRACK + "\"}]").getAsJsonArray())
     .setHttpManager(
       TestUtil.MockedHttpManager.returningJson(
         "requests/data/playlists/RemoveTracksFromPlaylistRequest.json"))
@@ -42,7 +42,7 @@ public class RemoveTracksFromPlaylistRequestTest extends AbstractDataTest<Snapsh
   }
 
   @Test
-  public void shouldReturnDefault_sync() throws IOException, SpotifyWebApiException {
+  public void shouldReturnDefault_sync() throws IOException, SpotifyWebApiException, ParseException {
     shouldReturnDefault(defaultRequest.execute());
   }
 

@@ -3,10 +3,7 @@ package com.wrapper.spotify.requests;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 import com.wrapper.spotify.IHttpManager;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
-import org.apache.http.Header;
-import org.apache.http.HttpEntity;
-import org.apache.http.NameValuePair;
-import org.apache.http.entity.ContentType;
+import org.apache.hc.core5.http.*;
 
 import java.io.IOException;
 import java.net.URI;
@@ -29,25 +26,30 @@ public interface IRequest<T> {
 
   T execute() throws
     IOException,
-    SpotifyWebApiException;
+    SpotifyWebApiException,
+    ParseException;
 
   CompletableFuture<T> executeAsync();
 
   String getJson() throws
     IOException,
-    SpotifyWebApiException;
+    SpotifyWebApiException,
+    ParseException;
 
   String postJson() throws
     IOException,
-    SpotifyWebApiException;
+    SpotifyWebApiException,
+    ParseException;
 
   String putJson() throws
     IOException,
-    SpotifyWebApiException;
+    SpotifyWebApiException,
+    ParseException;
 
   String deleteJson() throws
     IOException,
-    SpotifyWebApiException;
+    SpotifyWebApiException,
+    ParseException;
 
   @JsonPOJOBuilder(withPrefix = "set")
   interface Builder<T, X> {

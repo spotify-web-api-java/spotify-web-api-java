@@ -6,6 +6,7 @@ import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.special.SnapshotResult;
 import com.wrapper.spotify.requests.data.AbstractDataTest;
+import org.apache.hc.core5.http.ParseException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -27,8 +28,7 @@ public class AddTracksToPlaylistRequestTest extends AbstractDataTest<SnapshotRes
     .position(POSITION)
     .build();
   private final AddTracksToPlaylistRequest bodyRequest = SPOTIFY_API
-    .addTracksToPlaylist(ID_PLAYLIST, new JsonParser()
-      .parse(URIS.toString()).getAsJsonArray())
+    .addTracksToPlaylist(ID_PLAYLIST, JsonParser.parseString(URIS.toString()).getAsJsonArray())
     .setHttpManager(
       TestUtil.MockedHttpManager.returningJson(
         "requests/data/playlists/AddTracksToPlaylistRequest.json"))
@@ -61,7 +61,7 @@ public class AddTracksToPlaylistRequestTest extends AbstractDataTest<SnapshotRes
   }
 
   @Test
-  public void shouldReturnDefault_sync() throws IOException, SpotifyWebApiException {
+  public void shouldReturnDefault_sync() throws IOException, SpotifyWebApiException, ParseException {
     shouldReturnDefault(defaultRequest.execute());
   }
 
