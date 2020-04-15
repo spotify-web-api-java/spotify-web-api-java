@@ -261,10 +261,10 @@ public class SpotifyHttpManager implements IHttpManager {
 
     if (responseBody != null && !responseBody.equals("")) {
       try {
-        final JsonElement jsonElement = new JsonParser().parse(responseBody);
+        final JsonElement jsonElement = JsonParser.parseString(responseBody);
 
         if (jsonElement.isJsonObject()) {
-          final JsonObject jsonObject = new JsonParser().parse(responseBody).getAsJsonObject();
+          final JsonObject jsonObject = JsonParser.parseString(responseBody).getAsJsonObject();
 
           if (jsonObject.has("error")) {
             if (jsonObject.has("error_description")) {

@@ -1,8 +1,8 @@
 package com.wrapper.spotify;
 
 import com.wrapper.spotify.requests.IRequest;
-import org.apache.http.Header;
-import org.apache.http.NameValuePair;
+import org.apache.hc.core5.http.Header;
+import org.apache.hc.core5.http.NameValuePair;
 
 import java.util.List;
 

@@ -38,8 +38,8 @@ public class GetAvailableGenreSeedsRequest extends AbstractDataRequest<String[]>
     SpotifyWebApiException,
     ParseException {
     List<String> genres = new Gson().fromJson(
-      new JsonParser()
-        .parse(getJson())
+      JsonParser
+        .parseString(getJson())
         .getAsJsonObject()
         .get("genres")
         .getAsJsonArray(),

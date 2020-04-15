@@ -1,7 +1,7 @@
 package com.wrapper.spotify;
 
-import org.apache.http.Header;
-import org.apache.http.HttpEntity;
+import org.apache.hc.core5.http.Header;
+import org.apache.hc.core5.http.HttpEntity;
 
 import java.io.*;
 import java.net.URI;

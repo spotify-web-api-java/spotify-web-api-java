@@ -50,7 +50,7 @@ public abstract class AbstractModelObject implements IModelObject {
       if (json == null) {
         return null;
       } else {
-        return createModelObject(new JsonParser().parse(json).getAsJsonObject());
+        return createModelObject(JsonParser.parseString(json).getAsJsonObject());
       }
     }
 
@@ -79,14 +79,14 @@ public abstract class AbstractModelObject implements IModelObject {
      * {@inheritDoc}
      */
     public T[] createModelObjectArray(final String json) {
-      return createModelObjectArray(new JsonParser().parse(json).getAsJsonArray());
+      return createModelObjectArray(JsonParser.parseString(json).getAsJsonArray());
     }
 
     /**
      * {@inheritDoc}
      */
     public T[] createModelObjectArray(final String json, final String key) {
-      return createModelObjectArray(new JsonParser().parse(json).getAsJsonObject().get(key).getAsJsonArray());
+      return createModelObjectArray(JsonParser.parseString(json).getAsJsonObject().get(key).getAsJsonArray());
     }
 
     /**
@@ -146,14 +146,14 @@ public abstract class AbstractModelObject implements IModelObject {
      * {@inheritDoc}
      */
     public Paging<T> createModelObjectPaging(final String json) {
-      return createModelObjectPaging(new JsonParser().parse(json).getAsJsonObject());
+      return createModelObjectPaging(JsonParser.parseString(json).getAsJsonObject());
     }
 
     /**
      * {@inheritDoc}
      */
     public Paging<T> createModelObjectPaging(final String json, final String key) {
-      return createModelObjectPaging(new JsonParser().parse(json).getAsJsonObject().get(key).getAsJsonObject());
+      return createModelObjectPaging(JsonParser.parseString(json).getAsJsonObject().get(key).getAsJsonObject());
     }
 
     /**
@@ -192,14 +192,14 @@ public abstract class AbstractModelObject implements IModelObject {
      * {@inheritDoc}
      */
     public PagingCursorbased<T> createModelObjectPagingCursorbased(final String json) {
-      return createModelObjectPagingCursorbased(new JsonParser().parse(json).getAsJsonObject());
+      return createModelObjectPagingCursorbased(JsonParser.parseString(json).getAsJsonObject());
     }
 
     /**
      * {@inheritDoc}
      */
     public PagingCursorbased<T> createModelObjectPagingCursorbased(final String json, final String key) {
-      return createModelObjectPagingCursorbased(new JsonParser().parse(json).getAsJsonObject().get(key).getAsJsonObject());
+      return createModelObjectPagingCursorbased(JsonParser.parseString(json).getAsJsonObject().get(key).getAsJsonObject());
     }
   }
 }
