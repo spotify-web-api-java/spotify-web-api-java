@@ -93,7 +93,7 @@ public abstract class AbstractRequest<T> implements IRequest<T> {
 
     for (NameValuePair nameValuePair : bodyParameters) {
       try {
-        jsonElement = new JsonParser().parse(nameValuePair.getValue());
+        jsonElement = JsonParser.parseString(nameValuePair.getValue());
       } catch (JsonSyntaxException e) {
         jsonElement = new JsonPrimitive(nameValuePair.getValue());
       }

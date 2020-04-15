@@ -35,7 +35,7 @@ public class CheckUsersSavedAlbumsRequest extends AbstractDataRequest<Boolean[]>
     IOException,
     SpotifyWebApiException,
     ParseException {
-    return new Gson().fromJson(new JsonParser().parse(getJson()).getAsJsonArray(), Boolean[].class);
+    return new Gson().fromJson(JsonParser.parseString(getJson()).getAsJsonArray(), Boolean[].class);
   }
 
   /**
