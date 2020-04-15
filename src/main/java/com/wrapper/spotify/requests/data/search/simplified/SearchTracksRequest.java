@@ -7,6 +7,7 @@ import com.wrapper.spotify.model_objects.specification.Paging;
 import com.wrapper.spotify.model_objects.specification.Track;
 import com.wrapper.spotify.requests.data.AbstractDataPagingRequest;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
+import org.apache.hc.core5.http.ParseException;
 
 import java.io.IOException;
 
@@ -34,7 +35,8 @@ public class SearchTracksRequest extends AbstractDataRequest<Paging<Track>> {
    */
   public Paging<Track> execute() throws
     IOException,
-    SpotifyWebApiException {
+    SpotifyWebApiException,
+    ParseException {
     return new Track.JsonUtil().createModelObjectPaging(getJson(), "tracks");
   }
 

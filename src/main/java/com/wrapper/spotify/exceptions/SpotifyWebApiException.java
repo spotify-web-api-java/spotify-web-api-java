@@ -1,6 +1,6 @@
 package com.wrapper.spotify.exceptions;
 
-import org.apache.http.HttpException;
+import org.apache.hc.core5.http.HttpException;
 
 /**
  * An exception happened, eg. a HTTP status code 4** or 5** has been returned in a request.

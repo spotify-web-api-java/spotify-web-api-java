@@ -4,7 +4,8 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.Playlist;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
-import org.apache.http.entity.ContentType;
+import org.apache.hc.core5.http.ContentType;
+import org.apache.hc.core5.http.ParseException;
 
 import java.io.IOException;
 
@@ -33,7 +34,8 @@ public class CreatePlaylistRequest extends AbstractDataRequest<Playlist> {
    */
   public Playlist execute() throws
     IOException,
-    SpotifyWebApiException {
+    SpotifyWebApiException,
+    ParseException {
     return new Playlist.JsonUtil().createModelObject(postJson());
   }
 

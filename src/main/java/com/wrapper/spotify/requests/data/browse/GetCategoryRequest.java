@@ -6,6 +6,7 @@ import com.neovisionaries.i18n.LanguageCode;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.Category;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
+import org.apache.hc.core5.http.ParseException;
 
 import java.io.IOException;
 
@@ -33,7 +34,8 @@ public class GetCategoryRequest extends AbstractDataRequest<Category> {
    */
   public Category execute() throws
     IOException,
-    SpotifyWebApiException {
+    SpotifyWebApiException,
+    ParseException {
     return new Category.JsonUtil().createModelObject(getJson());
   }
 

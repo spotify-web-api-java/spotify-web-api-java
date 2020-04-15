@@ -5,6 +5,7 @@ import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.Album;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
+import org.apache.hc.core5.http.ParseException;
 
 import java.io.IOException;
 
@@ -32,7 +33,8 @@ public class GetSeveralAlbumsRequest extends AbstractDataRequest<Album[]> {
    */
   public Album[] execute() throws
     IOException,
-    SpotifyWebApiException {
+    SpotifyWebApiException,
+    ParseException {
     return new Album.JsonUtil().createModelObjectArray(getJson(), "albums");
   }
 

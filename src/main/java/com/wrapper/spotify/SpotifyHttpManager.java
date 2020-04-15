@@ -6,29 +6,28 @@ import com.google.gson.JsonParser;
 import com.google.gson.JsonSyntaxException;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.exceptions.detailed.*;
-import org.apache.http.*;
-import org.apache.http.auth.AuthScope;
-import org.apache.http.auth.UsernamePasswordCredentials;
-import org.apache.http.client.CredentialsProvider;
-import org.apache.http.client.cache.CacheResponseStatus;
-import org.apache.http.client.cache.HttpCacheContext;
-import org.apache.http.client.config.CookieSpecs;
-import org.apache.http.client.config.RequestConfig;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.client.methods.HttpPut;
-import org.apache.http.client.methods.HttpRequestBase;
-import org.apache.http.config.ConnectionConfig;
-import org.apache.http.impl.client.BasicCredentialsProvider;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.cache.CacheConfig;
-import org.apache.http.impl.client.cache.CachingHttpClients;
-import org.apache.http.util.EntityUtils;
+import org.apache.hc.client5.http.auth.AuthScope;
+import org.apache.hc.client5.http.auth.UsernamePasswordCredentials;
+import org.apache.hc.client5.http.cache.CacheResponseStatus;
+import org.apache.hc.client5.http.cache.HttpCacheContext;
+import org.apache.hc.client5.http.classic.methods.HttpDelete;
+import org.apache.hc.client5.http.classic.methods.HttpGet;
+import org.apache.hc.client5.http.classic.methods.HttpPost;
+import org.apache.hc.client5.http.classic.methods.HttpPut;
+import org.apache.hc.client5.http.config.RequestConfig;
+import org.apache.hc.client5.http.cookie.StandardCookieSpec;
+import org.apache.hc.client5.http.impl.auth.BasicCredentialsProvider;
+import org.apache.hc.client5.http.impl.cache.CacheConfig;
+import org.apache.hc.client5.http.impl.cache.CachingHttpClients;
+import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
+import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
+import org.apache.hc.core5.http.*;
+import org.apache.hc.core5.http.io.entity.EntityUtils;
+import org.apache.hc.core5.util.Timeout;
 
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.nio.charset.StandardCharsets;
 import java.util.logging.Level;
 
 public class SpotifyHttpManager implements IHttpManager {
@@ -65,39 +64,33 @@ public class SpotifyHttpManager implements IHttpManager {
       .setSharedCache(false)
       .build();
 
-    ConnectionConfig connectionConfig = ConnectionConfig
-      .custom()
-      .setCharset(StandardCharsets.UTF_8)
-      .build();
+    BasicCredentialsProvider credentialsProvider = new BasicCredentialsProvider();
 
-    new BasicCredentialsProvider();
-    CredentialsProvider credentialsProvider = new BasicCredentialsProvider();
     if (proxy != null) {
       credentialsProvider.setCredentials(
-        new AuthScope(proxy.getHostName(), proxy.getPort(), null, proxy.getSchemeName()),
+        new AuthScope(null, proxy.getHostName(), proxy.getPort(), null, proxy.getSchemeName()),
         proxyCredentials
       );
     }
 
     RequestConfig requestConfig = RequestConfig
       .custom()
-      .setCookieSpec(CookieSpecs.DEFAULT)
+      .setCookieSpec(StandardCookieSpec.STRICT)
       .setProxy(proxy)
       .setConnectionRequestTimeout(builder.connectionRequestTimeout != null
-        ? builder.connectionRequestTimeout
+        ? Timeout.ofMilliseconds(builder.connectionRequestTimeout)
         : RequestConfig.DEFAULT.getConnectionRequestTimeout())
       .setConnectTimeout(builder.connectTimeout != null
-        ? builder.connectTimeout
+        ? Timeout.ofMilliseconds(builder.connectTimeout)
         : RequestConfig.DEFAULT.getConnectTimeout())
-      .setSocketTimeout(builder.socketTimeout != null
-        ? builder.socketTimeout
-        : RequestConfig.DEFAULT.getSocketTimeout())
+      .setResponseTimeout(builder.socketTimeout != null
+        ? Timeout.ofMilliseconds(builder.socketTimeout)
+        : RequestConfig.DEFAULT.getResponseTimeout())
       .build();
 
     this.httpClient = CachingHttpClients
       .custom()
       .setCacheConfig(cacheConfig)
-      .setDefaultConnectionConfig(connectionConfig)
       .setDefaultCredentialsProvider(credentialsProvider)
       .setDefaultRequestConfig(requestConfig)
       .build();
@@ -145,18 +138,18 @@ public class SpotifyHttpManager implements IHttpManager {
   @Override
   public String get(URI uri, Header[] headers) throws
     IOException,
-    SpotifyWebApiException {
+    SpotifyWebApiException,
+    ParseException {
     assert (uri != null);
     assert (!uri.toString().equals(""));
 
-    final HttpGet httpGet = new HttpGet();
+    final HttpGet httpGet = new HttpGet(uri);
 
-    httpGet.setURI(uri);
     httpGet.setHeaders(headers);
 
     String responseBody = getResponseBody(execute(httpGet));
 
-    httpGet.releaseConnection();
+    httpGet.reset();
 
     return responseBody;
   }
@@ -164,19 +157,19 @@ public class SpotifyHttpManager implements IHttpManager {
   @Override
   public String post(URI uri, Header[] headers, HttpEntity body) throws
     IOException,
-    SpotifyWebApiException {
+    SpotifyWebApiException,
+    ParseException {
     assert (uri != null);
     assert (!uri.toString().equals(""));
 
-    final HttpPost httpPost = new HttpPost();
+    final HttpPost httpPost = new HttpPost(uri);
 
-    httpPost.setURI(uri);
     httpPost.setHeaders(headers);
     httpPost.setEntity(body);
 
     String responseBody = getResponseBody(execute(httpPost));
 
-    httpPost.releaseConnection();
+    httpPost.reset();
 
     return responseBody;
   }
@@ -184,19 +177,19 @@ public class SpotifyHttpManager implements IHttpManager {
   @Override
   public String put(URI uri, Header[] headers, HttpEntity body) throws
     IOException,
-    SpotifyWebApiException {
+    SpotifyWebApiException,
+    ParseException {
     assert (uri != null);
     assert (!uri.toString().equals(""));
 
-    final HttpPut httpPut = new HttpPut();
+    final HttpPut httpPut = new HttpPut(uri);
 
-    httpPut.setURI(uri);
     httpPut.setHeaders(headers);
     httpPut.setEntity(body);
 
     String responseBody = getResponseBody(execute(httpPut));
 
-    httpPut.releaseConnection();
+    httpPut.reset();
 
     return responseBody;
   }
@@ -204,27 +197,27 @@ public class SpotifyHttpManager implements IHttpManager {
   @Override
   public String delete(URI uri, Header[] headers, HttpEntity body) throws
     IOException,
-    SpotifyWebApiException {
+    SpotifyWebApiException,
+    ParseException {
     assert (uri != null);
     assert (!uri.toString().equals(""));
 
-    final HttpDeleteBody httpDelete = new HttpDeleteBody();
+    final HttpDelete httpDelete = new HttpDelete(uri);
 
-    httpDelete.setURI(uri);
     httpDelete.setHeaders(headers);
     httpDelete.setEntity(body);
 
     String responseBody = getResponseBody(execute(httpDelete));
 
-    httpDelete.releaseConnection();
+    httpDelete.reset();
 
     return responseBody;
   }
 
-  private HttpResponse execute(HttpRequestBase method) throws
+  private CloseableHttpResponse execute(ClassicHttpRequest method) throws
     IOException {
     HttpCacheContext context = HttpCacheContext.create();
-    HttpResponse response = httpClient.execute(method, context);
+    CloseableHttpResponse response = httpClient.execute(method, context);
 
     try {
       CacheResponseStatus responseStatus = context.getCacheResponseStatus();
@@ -257,14 +250,14 @@ public class SpotifyHttpManager implements IHttpManager {
     return response;
   }
 
-  private String getResponseBody(HttpResponse httpResponse) throws
+  private String getResponseBody(CloseableHttpResponse httpResponse) throws
     IOException,
-    SpotifyWebApiException {
-    final StatusLine statusLine = httpResponse.getStatusLine();
+    SpotifyWebApiException,
+    ParseException {
     final String responseBody = httpResponse.getEntity() != null
       ? EntityUtils.toString(httpResponse.getEntity(), "UTF-8")
       : null;
-    String errorMessage = statusLine.getReasonPhrase();
+    String errorMessage = httpResponse.getReasonPhrase();
 
     if (responseBody != null && !responseBody.equals("")) {
       try {
@@ -286,7 +279,7 @@ public class SpotifyHttpManager implements IHttpManager {
       }
     }
 
-    switch (statusLine.getStatusCode()) {
+    switch (httpResponse.getCode()) {
       case HttpStatus.SC_BAD_REQUEST:
         throw new BadRequestException(errorMessage);
       case HttpStatus.SC_UNAUTHORIZED:

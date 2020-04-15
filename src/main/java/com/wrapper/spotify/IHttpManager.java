@@ -1,8 +1,9 @@
 package com.wrapper.spotify;
 
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
-import org.apache.http.Header;
-import org.apache.http.HttpEntity;
+import org.apache.hc.core5.http.Header;
+import org.apache.hc.core5.http.HttpEntity;
+import org.apache.hc.core5.http.ParseException;
 
 import java.io.IOException;
 import java.net.URI;
@@ -23,7 +24,8 @@ public interface IHttpManager {
    */
   String get(URI uri, Header[] headers) throws
     IOException,
-    SpotifyWebApiException;
+    SpotifyWebApiException,
+    ParseException;
 
   /**
    * Perform an HTTP POST request to the specified URL.
@@ -37,7 +39,8 @@ public interface IHttpManager {
    */
   String post(URI uri, Header[] headers, HttpEntity body) throws
     IOException,
-    SpotifyWebApiException;
+    SpotifyWebApiException,
+    ParseException;
 
   /**
    * Perform an HTTP PUT request to the specified URL.
@@ -51,7 +54,8 @@ public interface IHttpManager {
    */
   String put(URI uri, Header[] headers, HttpEntity body) throws
     IOException,
-    SpotifyWebApiException;
+    SpotifyWebApiException,
+    ParseException;
 
   /**
    * Perform an HTTP DELETE request to the specified URL.
@@ -65,6 +69,7 @@ public interface IHttpManager {
    */
   String delete(URI uri, Header[] headers, HttpEntity body) throws
     IOException,
-    SpotifyWebApiException;
+    SpotifyWebApiException,
+    ParseException;
 
 }

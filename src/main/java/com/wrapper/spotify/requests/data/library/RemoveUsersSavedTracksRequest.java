@@ -3,6 +3,7 @@ package com.wrapper.spotify.requests.data.library;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
+import org.apache.hc.core5.http.ParseException;
 
 import java.io.IOException;
 
@@ -30,7 +31,8 @@ public class RemoveUsersSavedTracksRequest extends AbstractDataRequest<String> {
    */
   public String execute() throws
     IOException,
-    SpotifyWebApiException {
+    SpotifyWebApiException,
+    ParseException {
     return deleteJson();
   }
 

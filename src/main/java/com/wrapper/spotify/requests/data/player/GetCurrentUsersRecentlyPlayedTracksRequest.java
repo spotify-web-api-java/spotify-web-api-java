@@ -7,6 +7,7 @@ import com.wrapper.spotify.model_objects.specification.PagingCursorbased;
 import com.wrapper.spotify.model_objects.specification.PlayHistory;
 import com.wrapper.spotify.requests.data.AbstractDataPagingCursorbasedRequest;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
+import org.apache.hc.core5.http.ParseException;
 
 import java.io.IOException;
 import java.util.Date;
@@ -46,7 +47,8 @@ public class GetCurrentUsersRecentlyPlayedTracksRequest extends AbstractDataRequ
    */
   public PagingCursorbased<PlayHistory> execute() throws
     IOException,
-    SpotifyWebApiException {
+    SpotifyWebApiException,
+    ParseException {
     return new PlayHistory.JsonUtil().createModelObjectPagingCursorbased(getJson());
   }
 

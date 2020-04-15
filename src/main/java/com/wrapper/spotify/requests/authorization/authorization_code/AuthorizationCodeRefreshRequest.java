@@ -5,7 +5,8 @@ import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.credentials.AuthorizationCodeCredentials;
 import com.wrapper.spotify.requests.authorization.AbstractAthorizationRequest;
-import org.apache.http.entity.ContentType;
+import org.apache.hc.core5.http.ContentType;
+import org.apache.hc.core5.http.ParseException;
 
 import java.io.IOException;
 
@@ -30,7 +31,8 @@ public class AuthorizationCodeRefreshRequest extends AbstractAthorizationRequest
    */
   public AuthorizationCodeCredentials execute() throws
     IOException,
-    SpotifyWebApiException {
+    SpotifyWebApiException,
+    ParseException {
     return new AuthorizationCodeCredentials.JsonUtil().createModelObject(postJson());
   }
 

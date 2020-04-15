@@ -3,8 +3,9 @@ package com.wrapper.spotify.requests.data.playlists;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
-import org.apache.http.entity.ContentType;
-import org.apache.http.entity.StringEntity;
+import org.apache.hc.core5.http.ContentType;
+import org.apache.hc.core5.http.ParseException;
+import org.apache.hc.core5.http.io.entity.StringEntity;
 
 import java.io.IOException;
 
@@ -32,7 +33,8 @@ public class UploadCustomPlaylistCoverImageRequest extends AbstractDataRequest<S
    */
   public String execute() throws
     IOException,
-    SpotifyWebApiException {
+    SpotifyWebApiException,
+    ParseException {
     return putJson();
   }
 

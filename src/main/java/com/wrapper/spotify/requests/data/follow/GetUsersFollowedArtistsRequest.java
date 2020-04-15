@@ -7,6 +7,7 @@ import com.wrapper.spotify.model_objects.specification.Artist;
 import com.wrapper.spotify.model_objects.specification.PagingCursorbased;
 import com.wrapper.spotify.requests.data.AbstractDataPagingCursorbasedRequest;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
+import org.apache.hc.core5.http.ParseException;
 
 import java.io.IOException;
 
@@ -34,7 +35,8 @@ public class GetUsersFollowedArtistsRequest extends AbstractDataRequest<PagingCu
    */
   public PagingCursorbased<Artist> execute() throws
     IOException,
-    SpotifyWebApiException {
+    SpotifyWebApiException,
+    ParseException {
     return new Artist.JsonUtil().createModelObjectPagingCursorbased(getJson(), "artists");
   }
 
