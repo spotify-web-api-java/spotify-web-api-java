@@ -7,7 +7,7 @@ public abstract class AbstractDataRequest<T> extends AbstractRequest<T> {
     super(builder);
   }
 
-  public static abstract class Builder<T, BuilderType extends Builder<T, ?>> extends AbstractRequest.Builder<T, BuilderType> {
+  public static abstract class Builder<T, BT extends Builder<T, ?>> extends AbstractRequest.Builder<T, BT> {
     protected Builder(String accessToken) {
       super();
 

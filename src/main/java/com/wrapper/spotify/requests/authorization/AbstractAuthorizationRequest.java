@@ -8,7 +8,7 @@ public abstract class AbstractAuthorizationRequest<T> extends AbstractRequest<T>
     super(builder);
   }
 
-  public static abstract class Builder<T, BuilderType extends Builder<T, ?>> extends AbstractRequest.Builder<T, BuilderType> {
+  public static abstract class Builder<T, BT extends Builder<T, ?>> extends AbstractRequest.Builder<T, BT> {
     protected Builder(final String clientId, final String clientSecret) {
       super();
 
