@@ -316,7 +316,7 @@ public class AlbumSimplifiedSpecial extends AbstractModelObject implements ISear
      * @param totalTracks The number of total tracks of the album.
      * @return A {@link Album.Builder}.
      */
-    public Builder setTotalTracks(int totalTracks) {
+    public Builder setTotalTracks(Integer totalTracks) {
       this.totalTracks = totalTracks;
       return this;
     }
