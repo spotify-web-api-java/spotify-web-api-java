@@ -39,7 +39,7 @@ public class RemoveAlbumsForCurrentUserRequest extends AbstractDataRequest<Strin
   /**
    * Builder class for building a {@link RemoveAlbumsForCurrentUserRequest}.
    */
-  public static class Builder extends AbstractDataRequest.Builder<String, Builder> {
+  public static final class Builder extends AbstractDataRequest.Builder<String, Builder> {
 
     /**
      * Create a new {@link RemoveAlbumsForCurrentUserRequest.Builder} instance.

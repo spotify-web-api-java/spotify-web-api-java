@@ -39,7 +39,7 @@ public class RemoveUsersSavedTracksRequest extends AbstractDataRequest<String> {
   /**
    * Builder class for building a {@link RemoveUsersSavedTracksRequest}.
    */
-  public static class Builder extends AbstractDataRequest.Builder<String, Builder> {
+  public static final class Builder extends AbstractDataRequest.Builder<String, Builder> {
 
     /**
      * Create a new {@link RemoveUsersSavedTracksRequest.Builder} instance.
