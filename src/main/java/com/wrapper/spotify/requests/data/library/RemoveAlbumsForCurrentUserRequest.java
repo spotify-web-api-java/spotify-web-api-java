@@ -23,7 +23,7 @@ public class RemoveAlbumsForCurrentUserRequest extends AbstractDataRequest<Strin
   }
 
   /**
-   * Remove an album.
+   * Remove one or more albums from the current user’s ‘Your Music’ library.
    *
    * @return A string. <b>Note:</b> This endpoint doesn't return something in its response body.
    * @throws IOException            In case of networking issues.

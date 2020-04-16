@@ -27,7 +27,7 @@ public class SearchTracksRequest extends AbstractDataRequest<Paging<Track>> {
   }
 
   /**
-   * Search for playlists.
+   * Search for tracks.
    *
    * @return A {@link Track} paging.
    * @throws IOException            In case of networking issues.

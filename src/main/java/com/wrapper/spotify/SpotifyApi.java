@@ -756,9 +756,9 @@ public class SpotifyApi {
   }
 
   /**
-   * Check if a track is saved in the user's "Your Music" library.
+   * Check if an album is saved in the user's "Your Music" library.
    *
-   * @param ids The tracks IDs to check for in the user's Your Music library. Maximum: 50 IDs.
+   * @param ids The album IDs to check for in the user's Your Music library. Maximum: 50 IDs.
    * @return A {@link CheckUsersSavedAlbumsRequest.Builder}.
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
@@ -771,8 +771,9 @@ public class SpotifyApi {
   /**
    * Check if a track is saved in the user's "Your Music" library.
    *
-   * @param ids The tracks IDs to check for in the user's Your Music library. Maximum: 50 IDs.
-   * @return A builder object that can be used to check if an user has saved a track.
+   * @param ids The track IDs to check for in the user's Your Music library. Maximum: 50 IDs.
+   * @return A {@link CheckUsersSavedTracksRequest.Builder}.
+   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public CheckUsersSavedTracksRequest.Builder checkUsersSavedTracks(String... ids) {
     return new CheckUsersSavedTracksRequest.Builder(accessToken)

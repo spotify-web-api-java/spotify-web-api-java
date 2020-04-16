@@ -5,11 +5,13 @@ import com.google.gson.JsonObject;
 import com.wrapper.spotify.model_objects.AbstractModelObject;
 import com.wrapper.spotify.model_objects.specification.*;
 import com.wrapper.spotify.requests.data.personalization.interfaces.IArtistTrackModelObject;
+import com.wrapper.spotify.requests.data.search.SearchItemRequest;
 import com.wrapper.spotify.requests.data.search.interfaces.ISearchModelObject;
 
 /**
- * Retrieve information about <a href="https://developer.spotify.com/web-api/console/get-featured-playlists">
- * Search Result objects</a> by building instances from this class.
+ * Retrieve the searched-for items by building instances from this class. This objects contains
+ * for every type specified by the {@code type} parameter in the {@link SearchItemRequest}
+ * the searched-for items wrapped in a {@link Paging} object.
  */
 @JsonDeserialize(builder = SearchResult.Builder.class)
 public class SearchResult extends AbstractModelObject implements IArtistTrackModelObject, ISearchModelObject {
