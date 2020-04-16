@@ -74,5 +74,10 @@ public class GetAudioFeaturesForSeveralTracksRequest extends AbstractDataRequest
       setPath("/v1/audio-features");
       return new GetAudioFeaturesForSeveralTracksRequest(this);
     }
+
+    @Override
+    protected Builder self() {
+      return this;
+    }
   }
 }

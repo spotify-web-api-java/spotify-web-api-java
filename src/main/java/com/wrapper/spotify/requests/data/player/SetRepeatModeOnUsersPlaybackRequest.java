@@ -92,5 +92,10 @@ public class SetRepeatModeOnUsersPlaybackRequest extends AbstractDataRequest<Str
       setPath("/v1/me/player/repeat");
       return new SetRepeatModeOnUsersPlaybackRequest(this);
     }
+
+    @Override
+    protected Builder self() {
+      return this;
+    }
   }
 }

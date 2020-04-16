@@ -74,5 +74,10 @@ public class GetUsersProfileRequest extends AbstractDataRequest<User> {
       setPath("/v1/users/{user_id}");
       return new GetUsersProfileRequest(this);
     }
+
+    @Override
+    protected Builder self() {
+      return this;
+    }
   }
 }

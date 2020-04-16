@@ -64,5 +64,10 @@ public class GetUsersAvailableDevicesRequest extends AbstractDataRequest<Device[
       setPath("/v1/me/player/devices");
       return new GetUsersAvailableDevicesRequest(this);
     }
+
+    @Override
+    protected Builder self() {
+      return this;
+    }
   }
 }

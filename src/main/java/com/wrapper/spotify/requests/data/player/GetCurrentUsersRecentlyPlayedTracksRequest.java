@@ -118,5 +118,10 @@ public class GetCurrentUsersRecentlyPlayedTracksRequest extends AbstractDataRequ
       setPath("/v1/me/player/recently-played");
       return new GetCurrentUsersRecentlyPlayedTracksRequest(this);
     }
+
+    @Override
+    protected Builder self() {
+      return this;
+    }
   }
 }

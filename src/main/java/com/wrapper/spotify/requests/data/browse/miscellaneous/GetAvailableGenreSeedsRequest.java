@@ -74,5 +74,10 @@ public class GetAvailableGenreSeedsRequest extends AbstractDataRequest<String[]>
       setPath("/v1/recommendations/available-genre-seeds");
       return new GetAvailableGenreSeedsRequest(this);
     }
+
+    @Override
+    protected Builder self() {
+      return this;
+    }
   }
 }

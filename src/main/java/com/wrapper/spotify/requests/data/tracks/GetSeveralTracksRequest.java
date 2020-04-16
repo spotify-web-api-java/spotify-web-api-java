@@ -89,5 +89,10 @@ public class GetSeveralTracksRequest extends AbstractDataRequest<Track[]> {
       setPath("/v1/tracks");
       return new GetSeveralTracksRequest(this);
     }
+
+    @Override
+    protected Builder self() {
+      return this;
+    }
   }
 }

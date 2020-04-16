@@ -109,5 +109,10 @@ public class GetListOfUsersPlaylistsRequest extends AbstractDataRequest<Paging<P
       setPath("/v1/users/{user_id}/playlists");
       return new GetListOfUsersPlaylistsRequest(this);
     }
+
+    @Override
+    protected Builder self() {
+      return this;
+    }
   }
 }

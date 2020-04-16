@@ -71,5 +71,10 @@ public class ClientCredentialsRequest extends AbstractAuthorizationRequest<Clien
 
       return new ClientCredentialsRequest(this);
     }
+
+    @Override
+    protected Builder self() {
+      return this;
+    }
   }
 }

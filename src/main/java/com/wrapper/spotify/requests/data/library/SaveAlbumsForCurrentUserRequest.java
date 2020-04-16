@@ -94,5 +94,10 @@ public class SaveAlbumsForCurrentUserRequest extends AbstractDataRequest<String>
       setPath("/v1/me/albums");
       return new SaveAlbumsForCurrentUserRequest(this);
     }
+
+    @Override
+    protected Builder self() {
+      return this;
+    }
   }
 }

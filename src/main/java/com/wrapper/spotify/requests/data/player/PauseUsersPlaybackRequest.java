@@ -79,5 +79,10 @@ public class PauseUsersPlaybackRequest extends AbstractDataRequest<String> {
       setPath("/v1/me/player/pause");
       return new PauseUsersPlaybackRequest(this);
     }
+
+    @Override
+    protected Builder self() {
+      return this;
+    }
   }
 }

@@ -99,5 +99,10 @@ public class AuthorizationCodeRequest extends AbstractAuthorizationRequest<Autho
 
       return new AuthorizationCodeRequest(this);
     }
+
+    @Override
+    protected Builder self() {
+      return this;
+    }
   }
 }

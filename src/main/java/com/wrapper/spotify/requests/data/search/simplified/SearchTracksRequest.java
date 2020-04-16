@@ -119,5 +119,10 @@ public class SearchTracksRequest extends AbstractDataRequest<Paging<Track>> {
       setQueryParameter("type", "track");
       return new SearchTracksRequest(this);
     }
+
+    @Override
+    protected Builder self() {
+      return this;
+    }
   }
 }

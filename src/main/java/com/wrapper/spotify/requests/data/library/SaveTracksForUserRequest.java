@@ -94,5 +94,10 @@ public class SaveTracksForUserRequest extends AbstractDataRequest<String> {
       setPath("/v1/me/tracks");
       return new SaveTracksForUserRequest(this);
     }
+
+    @Override
+    protected Builder self() {
+      return this;
+    }
   }
 }

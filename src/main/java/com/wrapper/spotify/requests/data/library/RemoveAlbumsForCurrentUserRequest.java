@@ -77,5 +77,10 @@ public class RemoveAlbumsForCurrentUserRequest extends AbstractDataRequest<Strin
       setPath("/v1/me/albums");
       return new RemoveAlbumsForCurrentUserRequest(this);
     }
+
+    @Override
+    protected Builder self() {
+      return this;
+    }
   }
 }

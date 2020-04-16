@@ -91,5 +91,10 @@ public class SetVolumeForUsersPlaybackRequest extends AbstractDataRequest<String
       setPath("/v1/me/player/volume");
       return new SetVolumeForUsersPlaybackRequest(this);
     }
+
+    @Override
+    protected Builder self() {
+      return this;
+    }
   }
 }

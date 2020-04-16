@@ -74,5 +74,10 @@ public class GetAudioFeaturesForTrackRequest extends AbstractDataRequest<AudioFe
       setPath("/v1/audio-features/{id}");
       return new GetAudioFeaturesForTrackRequest(this);
     }
+
+    @Override
+    protected Builder self() {
+      return this;
+    }
   }
 }

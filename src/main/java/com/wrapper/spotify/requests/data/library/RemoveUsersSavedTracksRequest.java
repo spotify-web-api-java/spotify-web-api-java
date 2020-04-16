@@ -77,5 +77,10 @@ public class RemoveUsersSavedTracksRequest extends AbstractDataRequest<String> {
       setPath("/v1/me/tracks");
       return new RemoveUsersSavedTracksRequest(this);
     }
+
+    @Override
+    protected Builder self() {
+      return this;
+    }
   }
 }

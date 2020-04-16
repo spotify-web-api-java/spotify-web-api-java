@@ -129,5 +129,10 @@ public class GetListOfCategoriesRequest extends AbstractDataRequest<Paging<Categ
       setPath("/v1/browse/categories");
       return new GetListOfCategoriesRequest(this);
     }
+
+    @Override
+    protected Builder self() {
+      return this;
+    }
   }
 }

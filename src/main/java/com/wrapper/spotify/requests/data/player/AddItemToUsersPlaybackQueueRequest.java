@@ -95,6 +95,11 @@ public class AddItemToUsersPlaybackQueueRequest extends AbstractDataRequest<Stri
       setPath("/v1/me/player/queue");
       return new AddItemToUsersPlaybackQueueRequest(this);
     }
+
+    @Override
+    protected Builder self() {
+      return this;
+    }
   }
 
 }

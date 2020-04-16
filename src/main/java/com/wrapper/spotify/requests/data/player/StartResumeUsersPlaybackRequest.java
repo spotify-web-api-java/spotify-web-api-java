@@ -143,5 +143,10 @@ public class StartResumeUsersPlaybackRequest extends AbstractDataRequest<String>
       setPath("/v1/me/player/play");
       return new StartResumeUsersPlaybackRequest(this);
     }
+
+    @Override
+    protected Builder self() {
+      return this;
+    }
   }
 }

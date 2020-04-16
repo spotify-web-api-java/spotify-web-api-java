@@ -109,5 +109,10 @@ public class CheckUsersFollowPlaylistRequest extends AbstractDataRequest<Boolean
       setPath("/v1/users/{owner_id}/playlists/{playlist_id}/followers/contains");
       return new CheckUsersFollowPlaylistRequest(this);
     }
+
+    @Override
+    protected Builder self() {
+      return this;
+    }
   }
 }

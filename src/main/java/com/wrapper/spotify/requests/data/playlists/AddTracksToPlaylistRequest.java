@@ -169,5 +169,10 @@ public class AddTracksToPlaylistRequest extends AbstractDataRequest<SnapshotResu
       setPath("/v1/playlists/{playlist_id}/tracks");
       return new AddTracksToPlaylistRequest(this);
     }
+
+    @Override
+    protected Builder self() {
+      return this;
+    }
   }
 }

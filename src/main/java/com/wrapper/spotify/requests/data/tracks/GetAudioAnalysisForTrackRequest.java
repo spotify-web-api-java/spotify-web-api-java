@@ -74,5 +74,10 @@ public class GetAudioAnalysisForTrackRequest extends AbstractDataRequest<AudioAn
       setPath("/v1/audio-analysis/{id}");
       return new GetAudioAnalysisForTrackRequest(this);
     }
+
+    @Override
+    protected Builder self() {
+      return this;
+    }
   }
 }

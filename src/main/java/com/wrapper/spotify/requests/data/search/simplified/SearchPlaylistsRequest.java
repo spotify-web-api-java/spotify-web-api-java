@@ -119,5 +119,10 @@ public class SearchPlaylistsRequest extends AbstractDataRequest<Paging<PlaylistS
       setQueryParameter("type", "playlist");
       return new SearchPlaylistsRequest(this);
     }
+
+    @Override
+    protected Builder self() {
+      return this;
+    }
   }
 }

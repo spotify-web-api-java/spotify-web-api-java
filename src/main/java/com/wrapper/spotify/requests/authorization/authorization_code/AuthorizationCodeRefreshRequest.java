@@ -83,5 +83,10 @@ public class AuthorizationCodeRefreshRequest extends AbstractAuthorizationReques
 
       return new AuthorizationCodeRefreshRequest(this);
     }
+
+    @Override
+    protected Builder self() {
+      return this;
+    }
   }
 }

@@ -122,5 +122,10 @@ public class SearchAlbumsSpecialRequest extends AbstractDataRequest<Paging<Album
       setQueryParameter("type", "album");
       return new SearchAlbumsSpecialRequest(this);
     }
+
+    @Override
+    protected Builder self() {
+      return this;
+    }
   }
 }

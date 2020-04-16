@@ -106,5 +106,10 @@ public class GetUsersSavedTracksRequest extends AbstractDataRequest<Paging<Saved
       setPath("/v1/me/tracks");
       return new GetUsersSavedTracksRequest(this);
     }
+
+    @Override
+    protected Builder self() {
+      return this;
+    }
   }
 }
