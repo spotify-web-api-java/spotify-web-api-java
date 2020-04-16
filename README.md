@@ -129,6 +129,8 @@ void getSomething_Async() {
 ```
 
 ### Authorization
+**Please see [Spotify's Authorization Guide](https://developer.spotify.com/documentation/general/guides/authorization-guide/) too!**
+
 For authorization requests the API object requires at least to have
 [your application](https://developer.spotify.com/my-applications)'s client ID and client secret set as its properties.
 When using the authorization code flow, the application's redirect URI is required too. Those properties will then be
