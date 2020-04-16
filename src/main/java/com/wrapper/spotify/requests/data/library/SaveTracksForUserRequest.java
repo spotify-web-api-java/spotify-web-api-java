@@ -25,7 +25,7 @@ public class SaveTracksForUserRequest extends AbstractDataRequest<String> {
   }
 
   /**
-   * Save an album.
+   * Save one or more tracks.
    *
    * @return A string. <b>Note:</b> This endpoint doesn't return something in its response body.
    * @throws IOException            In case of networking issues.
@@ -93,6 +93,11 @@ public class SaveTracksForUserRequest extends AbstractDataRequest<String> {
       setContentType(ContentType.APPLICATION_JSON);
       setPath("/v1/me/tracks");
       return new SaveTracksForUserRequest(this);
+    }
+
+    @Override
+    protected Builder self() {
+      return this;
     }
   }
 }

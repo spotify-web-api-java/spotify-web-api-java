@@ -106,5 +106,10 @@ public class GetCurrentUsersSavedAlbumsRequest extends AbstractDataRequest<Pagin
       setPath("/v1/me/albums");
       return new GetCurrentUsersSavedAlbumsRequest(this);
     }
+
+    @Override
+    protected Builder self() {
+      return this;
+    }
   }
 }

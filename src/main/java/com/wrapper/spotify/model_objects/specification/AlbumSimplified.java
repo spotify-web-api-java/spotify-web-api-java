@@ -209,7 +209,7 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
      * Set the album group of the album to be built.
      *
      * @param albumGroup The album group of the album.
-     * @return A {@link Album.Builder}.
+     * @return A {@link AlbumSimplified.Builder}.
      */
     public Builder setAlbumGroup(AlbumGroup albumGroup) {
       this.albumGroup = albumGroup;
@@ -220,7 +220,7 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
      * Set the type of the album to be built.
      *
      * @param albumType The {@link AlbumType}.
-     * @return A {@link Album.Builder}.
+     * @return A {@link AlbumSimplified.Builder}.
      */
     public Builder setAlbumType(AlbumType albumType) {
       this.albumType = albumType;
@@ -231,7 +231,7 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
      * Set the artists of the album to be built.
      *
      * @param artists {@link ArtistSimplified} objects.
-     * @return A {@link Album.Builder}.
+     * @return A {@link AlbumSimplified.Builder}.
      */
     public Builder setArtists(ArtistSimplified... artists) {
       this.artists = artists;
@@ -243,7 +243,7 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
      *
      * @param availableMarkets <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">
      *                         ISO 3166-1 alpha-2 country codes</a>.
-     * @return A {@link Album.Builder}.
+     * @return A {@link AlbumSimplified.Builder}.
      */
     public Builder setAvailableMarkets(CountryCode... availableMarkets) {
       this.availableMarkets = availableMarkets;
@@ -254,7 +254,7 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
      * Set external URLs of the album to be built.
      *
      * @param externalUrls {@link ExternalUrl} object.
-     * @return A {@link Album.Builder}.
+     * @return A {@link AlbumSimplified.Builder}.
      */
     public Builder setExternalUrls(ExternalUrl externalUrls) {
       this.externalUrls = externalUrls;
@@ -265,7 +265,7 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
      * Set href of Spotify Web API endpoint of the album to be built.
      *
      * @param href Spotify Web API endpoint URL.
-     * @return A {@link Album.Builder}.
+     * @return A {@link AlbumSimplified.Builder}.
      */
     public Builder setHref(String href) {
       this.href = href;
@@ -276,7 +276,7 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
      * Set album ID of the album to be built.
      *
      * @param id <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify album ID</a>.
-     * @return A {@link Album.Builder}.
+     * @return A {@link AlbumSimplified.Builder}.
      */
     public Builder setId(String id) {
       this.id = id;
@@ -287,7 +287,7 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
      * Set the cover art in different sizes of the album to be built.
      *
      * @param images {@link Image} objects.
-     * @return A {@link Album.Builder}.
+     * @return A {@link AlbumSimplified.Builder}.
      */
     public Builder setImages(Image... images) {
       this.images = images;
@@ -298,7 +298,7 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
      * Set the name of the album to be built.
      *
      * @param name The album name.
-     * @return A {@link Album.Builder}.
+     * @return A {@link AlbumSimplified.Builder}.
      */
     public Builder setName(String name) {
       this.name = name;
@@ -309,7 +309,7 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
      * Set the release date of the album to be built.
      *
      * @param releaseDate The release date of the album.
-     * @return A {@link Album.Builder}.
+     * @return A {@link AlbumSimplified.Builder}.
      */
     public Builder setReleaseDate(String releaseDate) {
       this.releaseDate = releaseDate;
@@ -320,7 +320,7 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
      * Set the release date precision of the album to be built.
      *
      * @param releaseDatePrecision The {@link ReleaseDatePrecision} of the album.
-     * @return A {@link Album.Builder}.
+     * @return A {@link AlbumSimplified.Builder}.
      */
     public Builder setReleaseDatePrecision(ReleaseDatePrecision releaseDatePrecision) {
       this.releaseDatePrecision = releaseDatePrecision;
@@ -331,7 +331,7 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
      * Set the restrictions of the album to be built.
      *
      * @param restrictions The restrictions of the album.
-     * @return A {@link Album.Builder}.
+     * @return A {@link AlbumSimplified.Builder}.
      */
     public Builder setRestrictions(Restrictions restrictions) {
       this.restrictions = restrictions;
@@ -342,7 +342,7 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
      * Set the type of the model object. In this case "album".
      *
      * @param type The {@link ModelObjectType}.
-     * @return A {@link Album.Builder}.
+     * @return A {@link AlbumSimplified.Builder}.
      */
     public Builder setType(ModelObjectType type) {
       this.type = type;
@@ -354,7 +354,7 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
      *
      * @param uri <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">
      *            Spotify album URI</a>.
-     * @return A {@link Album.Builder}.
+     * @return A {@link AlbumSimplified.Builder}.
      */
     public Builder setUri(String uri) {
       this.uri = uri;

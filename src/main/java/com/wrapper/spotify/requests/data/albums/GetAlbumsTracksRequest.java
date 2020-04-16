@@ -117,5 +117,10 @@ public class GetAlbumsTracksRequest extends AbstractDataRequest<Paging<TrackSimp
       setPath("/v1/albums/{id}/tracks");
       return new GetAlbumsTracksRequest(this);
     }
+
+    @Override
+    protected Builder self() {
+      return this;
+    }
   }
 }

@@ -117,5 +117,10 @@ public class GetUsersTopArtistsRequest extends AbstractDataRequest<Paging<Artist
       setPath("/v1/me/top/artists");
       return new GetUsersTopArtistsRequest(this);
     }
+
+    @Override
+    protected Builder self() {
+      return this;
+    }
   }
 }

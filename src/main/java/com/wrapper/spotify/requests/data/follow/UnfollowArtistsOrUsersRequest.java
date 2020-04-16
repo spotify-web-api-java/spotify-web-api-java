@@ -91,5 +91,10 @@ public class UnfollowArtistsOrUsersRequest extends AbstractDataRequest<String> {
       setPath("/v1/me/following");
       return new UnfollowArtistsOrUsersRequest(this);
     }
+
+    @Override
+    protected Builder self() {
+      return this;
+    }
   }
 }

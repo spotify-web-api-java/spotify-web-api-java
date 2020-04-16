@@ -93,5 +93,10 @@ public class TransferUsersPlaybackRequest extends AbstractDataRequest<String> {
       setPath("/v1/me/player");
       return new TransferUsersPlaybackRequest(this);
     }
+
+    @Override
+    protected Builder self() {
+      return this;
+    }
   }
 }

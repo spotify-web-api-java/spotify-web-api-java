@@ -79,5 +79,10 @@ public class GetInformationAboutUsersCurrentPlaybackRequest extends AbstractData
       setPath("/v1/me/player");
       return new GetInformationAboutUsersCurrentPlaybackRequest(this);
     }
+
+    @Override
+    protected Builder self() {
+      return this;
+    }
   }
 }

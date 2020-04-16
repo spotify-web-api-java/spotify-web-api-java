@@ -114,5 +114,10 @@ public class GetCategorysPlaylistsRequest extends AbstractDataRequest<Paging<Pla
       setPath("/v1/browse/categories/{category_id}/playlists");
       return new GetCategorysPlaylistsRequest(this);
     }
+
+    @Override
+    protected Builder self() {
+      return this;
+    }
   }
 }

@@ -80,5 +80,10 @@ public class GetUsersCurrentlyPlayingTrackRequest extends AbstractDataRequest<Cu
       setPath("/v1/me/player/currently-playing");
       return new GetUsersCurrentlyPlayingTrackRequest(this);
     }
+
+    @Override
+    protected Builder self() {
+      return this;
+    }
   }
 }

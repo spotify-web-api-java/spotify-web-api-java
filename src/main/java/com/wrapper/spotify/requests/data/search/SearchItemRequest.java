@@ -127,5 +127,10 @@ public class SearchItemRequest extends AbstractDataRequest<SearchResult> {
       setPath("/v1/search");
       return new SearchItemRequest(this);
     }
+
+    @Override
+    protected Builder self() {
+      return this;
+    }
   }
 }

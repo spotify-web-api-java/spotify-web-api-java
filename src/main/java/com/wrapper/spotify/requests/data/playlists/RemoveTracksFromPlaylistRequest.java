@@ -144,5 +144,10 @@ public class RemoveTracksFromPlaylistRequest extends AbstractDataRequest<Snapsho
       setPath("/v1/playlists/{playlist_id}/tracks");
       return new RemoveTracksFromPlaylistRequest(this);
     }
+
+    @Override
+    protected Builder self() {
+      return this;
+    }
   }
 }

@@ -83,5 +83,10 @@ public class SkipUsersPlaybackToPreviousTrackRequest extends AbstractDataRequest
       setPath("/v1/me/player/previous");
       return new SkipUsersPlaybackToPreviousTrackRequest(this);
     }
+
+    @Override
+    protected Builder self() {
+      return this;
+    }
   }
 }

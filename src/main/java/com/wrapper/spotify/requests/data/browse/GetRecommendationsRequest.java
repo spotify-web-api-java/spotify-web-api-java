@@ -740,5 +740,10 @@ public class GetRecommendationsRequest extends AbstractDataRequest<Recommendatio
       setPath("/v1/recommendations");
       return new GetRecommendationsRequest(this);
     }
+
+    @Override
+    protected Builder self() {
+      return this;
+    }
   }
 }

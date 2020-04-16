@@ -23,7 +23,7 @@ public class RemoveUsersSavedTracksRequest extends AbstractDataRequest<String> {
   }
 
   /**
-   * Remove a track.
+   * Remove one or more tracks from the current user’s ‘Your Music’ library.
    *
    * @return A string. <b>Note:</b> This endpoint doesn't return something in its response body.
    * @throws IOException            In case of networking issues.
@@ -39,7 +39,7 @@ public class RemoveUsersSavedTracksRequest extends AbstractDataRequest<String> {
   /**
    * Builder class for building a {@link RemoveUsersSavedTracksRequest}.
    */
-  public static class Builder extends AbstractDataRequest.Builder<String, Builder> {
+  public static final class Builder extends AbstractDataRequest.Builder<String, Builder> {
 
     /**
      * Create a new {@link RemoveUsersSavedTracksRequest.Builder} instance.
@@ -76,6 +76,11 @@ public class RemoveUsersSavedTracksRequest extends AbstractDataRequest<String> {
     public RemoveUsersSavedTracksRequest build() {
       setPath("/v1/me/tracks");
       return new RemoveUsersSavedTracksRequest(this);
+    }
+
+    @Override
+    protected Builder self() {
+      return this;
     }
   }
 }

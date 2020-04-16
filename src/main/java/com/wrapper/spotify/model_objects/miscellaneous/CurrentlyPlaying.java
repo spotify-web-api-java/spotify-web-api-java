@@ -38,7 +38,7 @@ public class CurrentlyPlaying extends AbstractModelObject {
   }
 
   /**
-   * Get the timestamp when the recieved data was fetched.
+   * Get the timestamp when the received data was fetched.
    *
    * @return Unix Millisecond Timestamp when data was fetched.
    */

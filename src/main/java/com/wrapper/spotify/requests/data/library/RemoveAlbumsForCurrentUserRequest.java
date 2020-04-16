@@ -23,7 +23,7 @@ public class RemoveAlbumsForCurrentUserRequest extends AbstractDataRequest<Strin
   }
 
   /**
-   * Remove an album.
+   * Remove one or more albums from the current user’s ‘Your Music’ library.
    *
    * @return A string. <b>Note:</b> This endpoint doesn't return something in its response body.
    * @throws IOException            In case of networking issues.
@@ -39,7 +39,7 @@ public class RemoveAlbumsForCurrentUserRequest extends AbstractDataRequest<Strin
   /**
    * Builder class for building a {@link RemoveAlbumsForCurrentUserRequest}.
    */
-  public static class Builder extends AbstractDataRequest.Builder<String, Builder> {
+  public static final class Builder extends AbstractDataRequest.Builder<String, Builder> {
 
     /**
      * Create a new {@link RemoveAlbumsForCurrentUserRequest.Builder} instance.
@@ -76,6 +76,11 @@ public class RemoveAlbumsForCurrentUserRequest extends AbstractDataRequest<Strin
     public RemoveAlbumsForCurrentUserRequest build() {
       setPath("/v1/me/albums");
       return new RemoveAlbumsForCurrentUserRequest(this);
+    }
+
+    @Override
+    protected Builder self() {
+      return this;
     }
   }
 }

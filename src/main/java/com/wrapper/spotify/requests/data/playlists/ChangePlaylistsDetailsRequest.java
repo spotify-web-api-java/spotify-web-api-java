@@ -142,5 +142,10 @@ public class ChangePlaylistsDetailsRequest extends AbstractDataRequest<String> {
       setPath("/v1/playlists/{playlist_id}");
       return new ChangePlaylistsDetailsRequest(this);
     }
+
+    @Override
+    protected Builder self() {
+      return this;
+    }
   }
 }

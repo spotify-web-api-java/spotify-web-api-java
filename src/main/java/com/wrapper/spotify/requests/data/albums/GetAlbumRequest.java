@@ -90,5 +90,10 @@ public class GetAlbumRequest extends AbstractDataRequest<Album> {
       setPath("/v1/albums/{id}");
       return new GetAlbumRequest(this);
     }
+
+    @Override
+    protected Builder self() {
+      return this;
+    }
   }
 }

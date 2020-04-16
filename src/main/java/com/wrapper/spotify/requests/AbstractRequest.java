@@ -203,38 +203,33 @@ public abstract class AbstractRequest<T> implements IRequest<T> {
     protected Builder() {
     }
 
-    @SuppressWarnings("unchecked")
     public BT setHttpManager(final IHttpManager httpManager) {
       assert (httpManager != null);
       this.httpManager = httpManager;
-      return (BT) this;
+      return self();
     }
 
-    @SuppressWarnings("unchecked")
     public BT setScheme(final String scheme) {
       assert (scheme != null);
       assert (!scheme.equals(""));
       this.scheme = scheme;
-      return (BT) this;
+      return self();
     }
 
-    @SuppressWarnings("unchecked")
     public BT setHost(final String host) {
       assert (host != null);
       assert (!scheme.equals(""));
       this.host = host;
-      return (BT) this;
+      return self();
     }
 
-    @SuppressWarnings("unchecked")
     public BT setPort(final Integer port) {
       assert (port != null);
       assert (port >= 0);
       this.port = port;
-      return (BT) this;
+      return self();
     }
 
-    @SuppressWarnings("unchecked")
     public BT setPath(final String path) {
       assert (path != null);
       assert (!path.equals(""));
@@ -246,10 +241,10 @@ public abstract class AbstractRequest<T> implements IRequest<T> {
       }
 
       this.path = builtPath;
-      return (BT) this;
+      return self();
     }
 
-    @SuppressWarnings({"unchecked", "CharsetObjectCanBeUsed"})
+    @SuppressWarnings("CharsetObjectCanBeUsed")
     public BT setPathParameter(final String name, final String value) {
       assert (name != null && value != null);
       assert (!name.equals("") && !value.equals(""));
@@ -262,10 +257,9 @@ public abstract class AbstractRequest<T> implements IRequest<T> {
         SpotifyApi.LOGGER.log(Level.SEVERE, e.getMessage());
       }
       listAddOnce(this.pathParameters, new BasicNameValuePair(name, encodedValue));
-      return (BT) this;
+      return self();
     }
 
-    @SuppressWarnings("unchecked")
     public BT setDefaults(final IHttpManager httpManager,
                           final String scheme,
                           final String host,
@@ -275,47 +269,42 @@ public abstract class AbstractRequest<T> implements IRequest<T> {
       setHost(host);
       setPort(port);
 
-      return (BT) this;
+      return self();
     }
 
-    @SuppressWarnings("unchecked")
     public <X> BT setQueryParameter(final String name, final X value) {
       assert (name != null);
       assert (!name.equals(""));
       assert (value != null);
       listAddOnce(this.queryParameters, new BasicNameValuePair(name, String.valueOf(value)));
-      return (BT) this;
+      return self();
     }
 
-    @SuppressWarnings("unchecked")
     public <X> BT setHeader(final String name, final X value) {
       assert (name != null);
       assert (!name.equals(""));
       assert (value != null);
       listAddOnce(this.headers, new BasicHeader(name, String.valueOf(value)));
-      return (BT) this;
+      return self();
     }
 
-    @SuppressWarnings("unchecked")
     public BT setContentType(final ContentType contentType) {
       this.contentType = contentType;
       setHeader("Content-Type", contentType.getMimeType());
-      return (BT) this;
+      return self();
     }
 
-    @SuppressWarnings("unchecked")
     public BT setBody(final HttpEntity httpEntity) {
       this.body = httpEntity;
-      return (BT) this;
+      return self();
     }
 
-    @SuppressWarnings("unchecked")
     public <X> BT setBodyParameter(final String name, final X value) {
       assert (name != null);
       assert (!name.equals(""));
       assert (value != null);
       listAddOnce(this.bodyParameters, new BasicNameValuePair(name, String.valueOf(value)));
-      return (BT) this;
+      return self();
     }
 
     private void listAddOnce(List<NameValuePair> nameValuePairs, NameValuePair newNameValuePair) {
@@ -331,5 +320,12 @@ public abstract class AbstractRequest<T> implements IRequest<T> {
         .collect(Collectors.toList()));
       headers.add(newHeader);
     }
+
+    /**
+     * Return this instance to simulate a self-type.
+     *
+     * @return This instance.
+     */
+    protected abstract BT self();
   }
 }

@@ -52,35 +52,35 @@ public interface IRequest<T> {
     ParseException;
 
   @JsonPOJOBuilder(withPrefix = "set")
-  interface Builder<T, X> {
+  interface Builder<T, BT extends Builder<T, ?>> {
 
-    Builder setHttpManager(final IHttpManager httpManager);
+    BT setHttpManager(final IHttpManager httpManager);
 
-    Builder setScheme(final String scheme);
+    BT setScheme(final String scheme);
 
-    Builder setHost(final String host);
+    BT setHost(final String host);
 
-    Builder setPort(final Integer port);
+    BT setPort(final Integer port);
 
-    Builder setPath(final String path);
+    BT setPath(final String path);
 
-    Builder setPathParameter(final String name, final String value);
+    BT setPathParameter(final String name, final String value);
 
-    Builder setDefaults(final IHttpManager httpManager,
+    BT setDefaults(final IHttpManager httpManager,
                         final String scheme,
                         final String host,
                         final Integer port);
 
-    <ST> Builder setQueryParameter(final String name, final ST value);
+    <ST> BT setQueryParameter(final String name, final ST value);
 
-    <ST> Builder setHeader(final String name, final ST value);
+    <ST> BT setHeader(final String name, final ST value);
 
-    Builder setContentType(final ContentType contentType);
+    BT setContentType(final ContentType contentType);
 
-    Builder setBody(final HttpEntity httpEntity);
+    BT setBody(final HttpEntity httpEntity);
 
-    <ST> Builder setBodyParameter(final String name, final ST value);
+    <ST> BT setBodyParameter(final String name, final ST value);
 
-    AbstractRequest<T> build();
+    IRequest<T> build();
   }
 }

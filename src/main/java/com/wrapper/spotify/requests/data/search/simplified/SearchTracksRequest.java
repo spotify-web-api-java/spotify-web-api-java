@@ -27,7 +27,7 @@ public class SearchTracksRequest extends AbstractDataRequest<Paging<Track>> {
   }
 
   /**
-   * Search for playlists.
+   * Search for tracks.
    *
    * @return A {@link Track} paging.
    * @throws IOException            In case of networking issues.
@@ -118,6 +118,11 @@ public class SearchTracksRequest extends AbstractDataRequest<Paging<Track>> {
       setPath("/v1/search");
       setQueryParameter("type", "track");
       return new SearchTracksRequest(this);
+    }
+
+    @Override
+    protected Builder self() {
+      return this;
     }
   }
 }

@@ -89,5 +89,10 @@ public class GetTrackRequest extends AbstractDataRequest<Track> {
       setPath("/v1/tracks/{id}");
       return new GetTrackRequest(this);
     }
+
+    @Override
+    protected Builder self() {
+      return this;
+    }
   }
 }

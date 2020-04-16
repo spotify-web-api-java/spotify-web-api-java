@@ -113,7 +113,7 @@ public class GetPlaylistRequest extends AbstractDataRequest<Playlist> {
     }
 
     /**
-     * ther request build method.
+     * The request build method.
      *
      * @return A custom {@link GetPlaylistRequest}.
      */
@@ -121,6 +121,11 @@ public class GetPlaylistRequest extends AbstractDataRequest<Playlist> {
     public GetPlaylistRequest build() {
       setPath("/v1/playlists/{playlist_id}");
       return new GetPlaylistRequest(this);
+    }
+
+    @Override
+    protected Builder self() {
+      return this;
     }
   }
 }

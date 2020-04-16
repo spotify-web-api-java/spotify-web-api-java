@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.credentials.ClientCredentials;
-import com.wrapper.spotify.requests.authorization.AbstractAthorizationRequest;
+import com.wrapper.spotify.requests.authorization.AbstractAuthorizationRequest;
 import org.apache.hc.core5.http.ContentType;
 import org.apache.hc.core5.http.ParseException;
 
@@ -16,7 +16,7 @@ import java.io.IOException;
  * request.
  */
 @JsonDeserialize(builder = ClientCredentialsRequest.Builder.class)
-public class ClientCredentialsRequest extends AbstractAthorizationRequest<ClientCredentials> {
+public class ClientCredentialsRequest extends AbstractAuthorizationRequest<ClientCredentials> {
 
   public ClientCredentialsRequest(Builder builder) {
     super(builder);
@@ -39,7 +39,7 @@ public class ClientCredentialsRequest extends AbstractAthorizationRequest<Client
   /**
    * Builder class for building a {@link ClientCredentialsRequest}.
    */
-  public static final class Builder extends AbstractAthorizationRequest.Builder<ClientCredentials, Builder> {
+  public static final class Builder extends AbstractAuthorizationRequest.Builder<ClientCredentials, Builder> {
 
     public Builder(final String clientId, final String clientSecret) {
       super(clientId, clientSecret);
@@ -70,6 +70,11 @@ public class ClientCredentialsRequest extends AbstractAthorizationRequest<Client
       setPath("/api/token");
 
       return new ClientCredentialsRequest(this);
+    }
+
+    @Override
+    protected Builder self() {
+      return this;
     }
   }
 }

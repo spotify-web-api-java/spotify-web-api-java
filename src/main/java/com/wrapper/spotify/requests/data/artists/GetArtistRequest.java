@@ -74,5 +74,10 @@ public class GetArtistRequest extends AbstractDataRequest<Artist> {
       setPath("/v1/artists/{id}");
       return new GetArtistRequest(this);
     }
+
+    @Override
+    protected Builder self() {
+      return this;
+    }
   }
 }

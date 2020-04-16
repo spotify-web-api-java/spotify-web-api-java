@@ -37,7 +37,7 @@ public class AuthorizationCodeCredentials extends AbstractModelObject {
   }
 
   /**
-   * Get the type of an access token, which will alway be "Bearer".
+   * Get the type of an access token, which will always be "Bearer".
    *
    * @return How the access token may be used: always &quot;Bearer&quot;.
    */

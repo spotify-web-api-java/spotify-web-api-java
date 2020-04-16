@@ -117,5 +117,10 @@ public class GetUsersTopTracksRequest extends AbstractDataRequest<Paging<Track>>
       setPath("/v1/me/top/tracks");
       return new GetUsersTopTracksRequest(this);
     }
+
+    @Override
+    protected Builder self() {
+      return this;
+    }
   }
 }

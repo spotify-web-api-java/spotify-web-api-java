@@ -78,5 +78,10 @@ public class CheckUsersSavedAlbumsRequest extends AbstractDataRequest<Boolean[]>
       setPath("/v1/me/albums/contains");
       return new CheckUsersSavedAlbumsRequest(this);
     }
+
+    @Override
+    protected Builder self() {
+      return this;
+    }
   }
 }

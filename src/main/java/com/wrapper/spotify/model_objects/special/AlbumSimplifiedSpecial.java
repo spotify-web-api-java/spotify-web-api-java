@@ -202,7 +202,7 @@ public class AlbumSimplifiedSpecial extends AbstractModelObject implements ISear
      * Set the type of the album to be built.
      *
      * @param albumType The {@link AlbumType}.
-     * @return A {@link Album.Builder}.
+     * @return A {@link AlbumSimplifiedSpecial.Builder}.
      */
     public Builder setAlbumType(AlbumType albumType) {
       this.albumType = albumType;
@@ -214,7 +214,7 @@ public class AlbumSimplifiedSpecial extends AbstractModelObject implements ISear
      * Set the artists of the album to be built.
      *
      * @param artists {@link ArtistSimplified} objects.
-     * @return A {@link Album.Builder}.
+     * @return A {@link AlbumSimplifiedSpecial.Builder}.
      */
     public Builder setArtists(ArtistSimplified... artists) {
       this.artists = artists;
@@ -226,7 +226,7 @@ public class AlbumSimplifiedSpecial extends AbstractModelObject implements ISear
      *
      * @param availableMarkets <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">
      *                         ISO 3166-1 alpha-2 country codes</a>.
-     * @return A {@link Album.Builder}.
+     * @return A {@link AlbumSimplifiedSpecial.Builder}.
      */
     public Builder setAvailableMarkets(CountryCode... availableMarkets) {
       this.availableMarkets = availableMarkets;
@@ -237,7 +237,7 @@ public class AlbumSimplifiedSpecial extends AbstractModelObject implements ISear
      * Set external URLs of the album to be built.
      *
      * @param externalUrls {@link ExternalUrl} object.
-     * @return A {@link Album.Builder}.
+     * @return A {@link AlbumSimplifiedSpecial.Builder}.
      */
     public Builder setExternalUrls(ExternalUrl externalUrls) {
       this.externalUrls = externalUrls;
@@ -248,7 +248,7 @@ public class AlbumSimplifiedSpecial extends AbstractModelObject implements ISear
      * Set href of Spotify Web API endpoint of the album to be built.
      *
      * @param href Spotify Web API endpoint URL.
-     * @return A {@link Album.Builder}.
+     * @return A {@link AlbumSimplifiedSpecial.Builder}.
      */
     public Builder setHref(String href) {
       this.href = href;
@@ -270,7 +270,7 @@ public class AlbumSimplifiedSpecial extends AbstractModelObject implements ISear
      * Set the cover art in different sizes of the album to be built.
      *
      * @param images {@link Image} objects.
-     * @return A {@link Album.Builder}.
+     * @return A {@link AlbumSimplifiedSpecial.Builder}.
      */
     public Builder setImages(Image... images) {
       this.images = images;
@@ -281,7 +281,7 @@ public class AlbumSimplifiedSpecial extends AbstractModelObject implements ISear
      * Set the name of the album to be built.
      *
      * @param name The album name.
-     * @return A {@link Album.Builder}.
+     * @return A {@link AlbumSimplifiedSpecial.Builder}.
      */
     public Builder setName(String name) {
       this.name = name;
@@ -292,7 +292,7 @@ public class AlbumSimplifiedSpecial extends AbstractModelObject implements ISear
      * Set the release date of the album to be built.
      *
      * @param releaseDate The release date of the album.
-     * @return A {@link Album.Builder}.
+     * @return A {@link AlbumSimplifiedSpecial.Builder}.
      */
     public Builder setReleaseDate(String releaseDate) {
       this.releaseDate = releaseDate;
@@ -303,7 +303,7 @@ public class AlbumSimplifiedSpecial extends AbstractModelObject implements ISear
      * Set the release date precision of the album to be built.
      *
      * @param releaseDatePrecision The {@link ReleaseDatePrecision} of the album.
-     * @return A {@link Album.Builder}.
+     * @return A {@link AlbumSimplifiedSpecial.Builder}.
      */
     public Builder setReleaseDatePrecision(ReleaseDatePrecision releaseDatePrecision) {
       this.releaseDatePrecision = releaseDatePrecision;
@@ -314,7 +314,7 @@ public class AlbumSimplifiedSpecial extends AbstractModelObject implements ISear
      * Set the number of total tracks of the album to be built.
      *
      * @param totalTracks The number of total tracks of the album.
-     * @return A {@link Album.Builder}.
+     * @return A {@link AlbumSimplifiedSpecial.Builder}.
      */
     public Builder setTotalTracks(Integer totalTracks) {
       this.totalTracks = totalTracks;
@@ -325,7 +325,7 @@ public class AlbumSimplifiedSpecial extends AbstractModelObject implements ISear
      * Set the type of the model object. In this case "album".
      *
      * @param type The {@link ModelObjectType}.
-     * @return A {@link Album.Builder}.
+     * @return A {@link AlbumSimplifiedSpecial.Builder}.
      */
     public Builder setType(ModelObjectType type) {
       this.type = type;
@@ -337,7 +337,7 @@ public class AlbumSimplifiedSpecial extends AbstractModelObject implements ISear
      *
      * @param uri <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">
      *            Spotify album URI</a>.
-     * @return A {@link Album.Builder}.
+     * @return A {@link AlbumSimplifiedSpecial.Builder}.
      */
     public Builder setUri(String uri) {
       this.uri = uri;

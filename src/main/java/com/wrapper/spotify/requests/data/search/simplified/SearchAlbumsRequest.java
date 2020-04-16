@@ -119,5 +119,10 @@ public class SearchAlbumsRequest extends AbstractDataRequest<Paging<AlbumSimplif
       setQueryParameter("type", "album");
       return new SearchAlbumsRequest(this);
     }
+
+    @Override
+    protected Builder self() {
+      return this;
+    }
   }
 }
