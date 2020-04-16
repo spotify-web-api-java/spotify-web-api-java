@@ -130,5 +130,10 @@ public class GetArtistsAlbumsRequest extends AbstractDataRequest<Paging<AlbumSim
       setPath("/v1/artists/{id}/albums");
       return new GetArtistsAlbumsRequest(this);
     }
+
+    @Override
+    protected Builder self() {
+      return this;
+    }
   }
 }

@@ -90,5 +90,10 @@ public class UnfollowPlaylistRequest extends AbstractDataRequest<String> {
       setPath("/v1/users/{owner_id}/playlists/{playlist_id}/followers");
       return new UnfollowPlaylistRequest(this);
     }
+
+    @Override
+    protected Builder self() {
+      return this;
+    }
   }
 }

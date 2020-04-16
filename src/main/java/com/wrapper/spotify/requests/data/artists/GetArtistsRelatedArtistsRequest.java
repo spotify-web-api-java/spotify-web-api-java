@@ -75,5 +75,10 @@ public class GetArtistsRelatedArtistsRequest extends AbstractDataRequest<Artist[
       setPath("/v1/artists/{id}/related-artists");
       return new GetArtistsRelatedArtistsRequest(this);
     }
+
+    @Override
+    protected Builder self() {
+      return this;
+    }
   }
 }

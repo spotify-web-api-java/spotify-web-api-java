@@ -106,5 +106,10 @@ public class GetUsersFollowedArtistsRequest extends AbstractDataRequest<PagingCu
       setPath("/v1/me/following");
       return new GetUsersFollowedArtistsRequest(this);
     }
+
+    @Override
+    protected Builder self() {
+      return this;
+    }
   }
 }

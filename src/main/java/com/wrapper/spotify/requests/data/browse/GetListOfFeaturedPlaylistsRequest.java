@@ -141,5 +141,10 @@ public class GetListOfFeaturedPlaylistsRequest extends AbstractDataRequest<Featu
       setPath("/v1/browse/featured-playlists");
       return new GetListOfFeaturedPlaylistsRequest(this);
     }
+
+    @Override
+    protected Builder self() {
+      return this;
+    }
   }
 }

@@ -90,5 +90,10 @@ public class CheckCurrentUserFollowsArtistsOrUsersRequest extends AbstractDataRe
       setPath("/v1/me/following/contains");
       return new CheckCurrentUserFollowsArtistsOrUsersRequest(this);
     }
+
+    @Override
+    protected Builder self() {
+      return this;
+    }
   }
 }

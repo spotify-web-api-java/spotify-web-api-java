@@ -89,5 +89,10 @@ public class GetSeveralAlbumsRequest extends AbstractDataRequest<Album[]> {
       setPath("/v1/albums");
       return new GetSeveralAlbumsRequest(this);
     }
+
+    @Override
+    protected Builder self() {
+      return this;
+    }
   }
 }

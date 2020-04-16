@@ -132,5 +132,10 @@ public class CreatePlaylistRequest extends AbstractDataRequest<Playlist> {
       setPath("/v1/users/{user_id}/playlists");
       return new CreatePlaylistRequest(this);
     }
+
+    @Override
+    protected Builder self() {
+      return this;
+    }
   }
 }

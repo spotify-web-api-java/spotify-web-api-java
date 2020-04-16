@@ -69,7 +69,7 @@ public class PauseUsersPlaybackRequest extends AbstractDataRequest<String> {
     }
 
     /**
-     * The reuqest build method.
+     * The request build method.
      *
      * @return A custom {@link PauseUsersPlaybackRequest}.
      */
@@ -78,6 +78,11 @@ public class PauseUsersPlaybackRequest extends AbstractDataRequest<String> {
       setContentType(ContentType.APPLICATION_JSON);
       setPath("/v1/me/player/pause");
       return new PauseUsersPlaybackRequest(this);
+    }
+
+    @Override
+    protected Builder self() {
+      return this;
     }
   }
 }

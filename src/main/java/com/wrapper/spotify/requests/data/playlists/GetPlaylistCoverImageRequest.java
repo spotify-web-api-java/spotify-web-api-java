@@ -90,5 +90,10 @@ public class GetPlaylistCoverImageRequest extends AbstractDataRequest<Image[]> {
       setPath("/v1/playlists/{playlist_id}/images");
       return new GetPlaylistCoverImageRequest(this);
     }
+
+    @Override
+    protected Builder self() {
+      return this;
+    }
   }
 }

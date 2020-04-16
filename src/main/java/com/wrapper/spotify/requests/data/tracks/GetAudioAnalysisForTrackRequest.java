@@ -24,7 +24,7 @@ public class GetAudioAnalysisForTrackRequest extends AbstractDataRequest<AudioAn
   }
 
   /**
-   * Get an audio analyis for a track.
+   * Get an audio analysis for a track.
    *
    * @return An {@link AudioAnalysis}.
    * @throws IOException            In case of networking issues.
@@ -73,6 +73,11 @@ public class GetAudioAnalysisForTrackRequest extends AbstractDataRequest<AudioAn
     public GetAudioAnalysisForTrackRequest build() {
       setPath("/v1/audio-analysis/{id}");
       return new GetAudioAnalysisForTrackRequest(this);
+    }
+
+    @Override
+    protected Builder self() {
+      return this;
     }
   }
 }

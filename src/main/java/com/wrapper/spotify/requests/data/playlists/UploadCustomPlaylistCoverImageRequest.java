@@ -110,5 +110,10 @@ public class UploadCustomPlaylistCoverImageRequest extends AbstractDataRequest<S
       setPath("/v1/playlists/{playlist_id}/images");
       return new UploadCustomPlaylistCoverImageRequest(this);
     }
+
+    @Override
+    protected Builder self() {
+      return this;
+    }
   }
 }

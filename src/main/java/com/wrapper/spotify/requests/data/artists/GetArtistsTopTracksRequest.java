@@ -87,5 +87,10 @@ public class GetArtistsTopTracksRequest extends AbstractDataRequest<Track[]> {
       setPath("/v1/artists/{id}/top-tracks");
       return new GetArtistsTopTracksRequest(this);
     }
+
+    @Override
+    protected Builder self() {
+      return this;
+    }
   }
 }

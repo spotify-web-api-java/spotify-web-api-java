@@ -74,5 +74,10 @@ public class GetSeveralArtistsRequest extends AbstractDataRequest<Artist[]> {
       setPath("/v1/artists");
       return new GetSeveralArtistsRequest(this);
     }
+
+    @Override
+    protected Builder self() {
+      return this;
+    }
   }
 }

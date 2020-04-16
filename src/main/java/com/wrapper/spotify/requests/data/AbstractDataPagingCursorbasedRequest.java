@@ -7,7 +7,7 @@ public abstract class AbstractDataPagingCursorbasedRequest<T> extends AbstractDa
     super(builder);
   }
 
-  public static abstract class Builder<T, A, BuilderType extends Builder<T, A, ?>> extends AbstractDataRequest.Builder<PagingCursorbased<T>, BuilderType> implements IPagingCursorbasedRequestBuilder<T, A, BuilderType> {
+  public static abstract class Builder<T, A, BT extends Builder<T, A, ?>> extends AbstractDataRequest.Builder<PagingCursorbased<T>, BT> implements IPagingCursorbasedRequestBuilder<T, A, BT> {
     protected Builder(String accessToken) {
       super(accessToken);
 

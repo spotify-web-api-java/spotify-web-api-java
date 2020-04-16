@@ -89,7 +89,7 @@ public class AudioAnalysisTrack extends AbstractModelObject {
   /**
    * Get the sample MD5. <br><br>
    * <p>
-   * <b>Note:</b> The sample MD5 is <b>probably</b> the MD5 of the track file. In the documentaion of the Analyzer
+   * <b>Note:</b> The sample MD5 is <b>probably</b> the MD5 of the track file. In the documentation of the Analyzer
    * software, this field is mentioned in an example and contains a value, but it seems that audio analysis objects
    * returned by the Spotify Web API doesn't include a value in the field anymore. <br>
    *
@@ -757,8 +757,8 @@ public class AudioAnalysisTrack extends AbstractModelObject {
             ? jsonObject.get("tempo_confidence").getAsFloat()
             : null)
         .setTimeSignature(
-          hasAndNotNull(jsonObject, "time_sidnature")
-            ? jsonObject.get("time_sidnature").getAsInt()
+          hasAndNotNull(jsonObject, "time_signature")
+            ? jsonObject.get("time_signature").getAsInt()
             : null)
         .setTimeSignatureConfidence(
           hasAndNotNull(jsonObject, "time_signature_confidence")

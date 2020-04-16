@@ -148,5 +148,10 @@ public class GetPlaylistsTracksRequest extends AbstractDataRequest<Paging<Playli
       setPath("/v1/playlists/{playlist_id}/tracks");
       return new GetPlaylistsTracksRequest(this);
     }
+
+    @Override
+    protected Builder self() {
+      return this;
+    }
   }
 }

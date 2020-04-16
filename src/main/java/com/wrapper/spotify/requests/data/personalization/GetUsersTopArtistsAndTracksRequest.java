@@ -150,5 +150,10 @@ public class GetUsersTopArtistsAndTracksRequest<T extends IArtistTrackModelObjec
       setPath("/v1/me/top/{type}");
       return new GetUsersTopArtistsAndTracksRequest<>(this, tClass);
     }
+
+    @Override
+    protected Builder<T> self() {
+      return this;
+    }
   }
 }

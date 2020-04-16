@@ -128,5 +128,10 @@ public class ReplacePlaylistsTracksRequest extends AbstractDataRequest<String> {
       setPath("/v1/playlists/{playlist_id}/tracks");
       return new ReplacePlaylistsTracksRequest(this);
     }
+
+    @Override
+    protected Builder self() {
+      return this;
+    }
   }
 }

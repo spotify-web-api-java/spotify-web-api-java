@@ -78,5 +78,10 @@ public class CheckUsersSavedTracksRequest extends AbstractDataRequest<Boolean[]>
       setPath("/v1/me/tracks/contains");
       return new CheckUsersSavedTracksRequest(this);
     }
+
+    @Override
+    protected Builder self() {
+      return this;
+    }
   }
 }

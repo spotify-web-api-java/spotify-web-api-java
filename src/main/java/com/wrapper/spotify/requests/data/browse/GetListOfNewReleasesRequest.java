@@ -103,5 +103,10 @@ public class GetListOfNewReleasesRequest extends AbstractDataRequest<Paging<Albu
       setPath("/v1/browse/new-releases");
       return new GetListOfNewReleasesRequest(this);
     }
+
+    @Override
+    protected Builder self() {
+      return this;
+    }
   }
 }

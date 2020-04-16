@@ -21,6 +21,7 @@ public interface IHttpManager {
    * @return A string containing the GET request's response body.
    * @throws IOException            In case of networking issues.
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
+   * @throws ParseException         The response could not be parsed as a string.
    */
   String get(URI uri, Header[] headers) throws
     IOException,
@@ -36,6 +37,7 @@ public interface IHttpManager {
    * @return A string containing the POST request's response body.
    * @throws IOException            In case of networking issues.
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
+   * @throws ParseException         The response could not be parsed as a string.
    */
   String post(URI uri, Header[] headers, HttpEntity body) throws
     IOException,
@@ -51,6 +53,7 @@ public interface IHttpManager {
    * @return A string containing the PUT request's response body.
    * @throws IOException            In case of networking issues.
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
+   * @throws ParseException         The response could not be parsed as a string.
    */
   String put(URI uri, Header[] headers, HttpEntity body) throws
     IOException,
@@ -66,6 +69,7 @@ public interface IHttpManager {
    * @return A string containing the DELETE request's response body.
    * @throws IOException            In case of networking issues.
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
+   * @throws ParseException         The response could not be parsed as a string.
    */
   String delete(URI uri, Header[] headers, HttpEntity body) throws
     IOException,

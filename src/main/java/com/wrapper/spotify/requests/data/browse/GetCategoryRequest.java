@@ -115,5 +115,10 @@ public class GetCategoryRequest extends AbstractDataRequest<Category> {
       setPath("/v1/browse/categories/{category_id}");
       return new GetCategoryRequest(this);
     }
+
+    @Override
+    protected Builder self() {
+      return this;
+    }
   }
 }

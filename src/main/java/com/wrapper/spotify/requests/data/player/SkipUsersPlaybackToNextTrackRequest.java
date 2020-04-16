@@ -79,5 +79,10 @@ public class SkipUsersPlaybackToNextTrackRequest extends AbstractDataRequest<Str
       setPath("/v1/me/player/next");
       return new SkipUsersPlaybackToNextTrackRequest(this);
     }
+
+    @Override
+    protected Builder self() {
+      return this;
+    }
   }
 }

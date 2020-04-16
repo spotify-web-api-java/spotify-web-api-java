@@ -134,5 +134,10 @@ public class AuthorizationCodeUriRequest extends AbstractRequest<URI> {
 
       return new AuthorizationCodeUriRequest(this);
     }
+
+    @Override
+    protected AuthorizationCodeUriRequest.Builder self() {
+      return this;
+    }
   }
 }

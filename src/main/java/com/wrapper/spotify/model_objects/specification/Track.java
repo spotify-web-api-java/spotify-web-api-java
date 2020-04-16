@@ -323,7 +323,7 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
     }
 
     /**
-     * Set the disc numer of the track to be built.
+     * Set the disc number of the track to be built.
      *
      * @param discNumber The disc number (usually 1 unless the album consists of more than one disc).
      * @return A {@link Track.Builder}.

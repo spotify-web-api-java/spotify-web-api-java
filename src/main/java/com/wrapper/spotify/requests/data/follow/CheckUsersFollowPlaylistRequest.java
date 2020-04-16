@@ -73,7 +73,7 @@ public class CheckUsersFollowPlaylistRequest extends AbstractDataRequest<Boolean
     }
 
     /**
-     * The paylist ID setter.
+     * The playlist ID setter.
      *
      * @param playlist_id The Spotify ID of the playlist.
      * @return A {@link CheckUsersFollowPlaylistRequest.Builder}.
@@ -108,6 +108,11 @@ public class CheckUsersFollowPlaylistRequest extends AbstractDataRequest<Boolean
     public CheckUsersFollowPlaylistRequest build() {
       setPath("/v1/users/{owner_id}/playlists/{playlist_id}/followers/contains");
       return new CheckUsersFollowPlaylistRequest(this);
+    }
+
+    @Override
+    protected Builder self() {
+      return this;
     }
   }
 }

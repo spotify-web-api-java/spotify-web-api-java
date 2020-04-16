@@ -89,5 +89,10 @@ public class ToggleShuffleForUsersPlaybackRequest extends AbstractDataRequest<St
       setPath("/v1/me/player/shuffle");
       return new ToggleShuffleForUsersPlaybackRequest(this);
     }
+
+    @Override
+    protected Builder self() {
+      return this;
+    }
   }
 }

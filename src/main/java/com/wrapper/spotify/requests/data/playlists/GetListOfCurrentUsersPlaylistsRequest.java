@@ -96,5 +96,10 @@ public class GetListOfCurrentUsersPlaylistsRequest extends AbstractDataRequest<P
       setPath("/v1/me/playlists");
       return new GetListOfCurrentUsersPlaylistsRequest(this);
     }
+
+    @Override
+    protected Builder self() {
+      return this;
+    }
   }
 }

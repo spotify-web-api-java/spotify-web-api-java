@@ -154,5 +154,10 @@ public class ReorderPlaylistsTracksRequest extends AbstractDataRequest<SnapshotR
       setPath("/v1/playlists/{playlist_id}/tracks");
       return new ReorderPlaylistsTracksRequest(this);
     }
+
+    @Override
+    protected Builder self() {
+      return this;
+    }
   }
 }

@@ -93,5 +93,10 @@ public class SeekToPositionInCurrentlyPlayingTrackRequest extends AbstractDataRe
       setPath("/v1/me/player/seek");
       return new SeekToPositionInCurrentlyPlayingTrackRequest(this);
     }
+
+    @Override
+    protected Builder self() {
+      return this;
+    }
   }
 }

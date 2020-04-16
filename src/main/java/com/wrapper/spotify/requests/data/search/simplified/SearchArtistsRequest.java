@@ -120,5 +120,9 @@ public class SearchArtistsRequest extends AbstractDataRequest<Paging<Artist>> {
       return new SearchArtistsRequest(this);
     }
 
+    @Override
+    protected Builder self() {
+      return this;
+    }
   }
 }
