@@ -17,13 +17,13 @@ public class CreatePlaylistExample {
   private static final String name = "Abba";
 
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
-          .setAccessToken(accessToken)
-          .build();
+    .setAccessToken(accessToken)
+    .build();
   private static final CreatePlaylistRequest createPlaylistRequest = spotifyApi.createPlaylist(userId, name)
 //          .collaborative(false)
 //          .public_(false)
 //          .description("Amazing music.")
-          .build();
+    .build();
 
   public static void createPlaylist_Sync() {
     try {

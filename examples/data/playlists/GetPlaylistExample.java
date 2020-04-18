@@ -16,12 +16,12 @@ public class GetPlaylistExample {
   private static final String playlistId = "3AGOiaoRXMSjswCLtuNqv5";
 
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
-          .setAccessToken(accessToken)
-          .build();
+    .setAccessToken(accessToken)
+    .build();
   private static final GetPlaylistRequest getPlaylistRequest = spotifyApi.getPlaylist(playlistId)
 //          .fields("description")
 //          .market(CountryCode.SE)
-          .build();
+    .build();
 
   public static void getPlaylist_Sync() {
     try {

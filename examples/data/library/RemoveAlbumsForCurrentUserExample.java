@@ -15,11 +15,11 @@ public class RemoveAlbumsForCurrentUserExample {
   private static final String[] ids = new String[]{"5zT1JLIj9E57p3e1rFm9Uq"};
 
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
-          .setAccessToken(accessToken)
-          .build();
+    .setAccessToken(accessToken)
+    .build();
   private static final RemoveAlbumsForCurrentUserRequest removeAlbumsForCurrentUserRequest = spotifyApi
-          .removeAlbumsForCurrentUser(ids)
-          .build();
+    .removeAlbumsForCurrentUser(ids)
+    .build();
 
   public static void removeAlbumsForCurrentUser_Sync() {
     try {

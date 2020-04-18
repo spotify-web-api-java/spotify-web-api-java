@@ -15,11 +15,11 @@ public class RemoveUsersSavedTracksExample {
   private static final String[] ids = new String[]{"01iyCAUm8EvOFqVWYJ3dVX"};
 
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
-          .setAccessToken(accessToken)
-          .build();
+    .setAccessToken(accessToken)
+    .build();
   private static final RemoveUsersSavedTracksRequest removeUsersSavedTracksRequest = spotifyApi
-          .removeUsersSavedTracks(ids)
-          .build();
+    .removeUsersSavedTracks(ids)
+    .build();
 
   public static void removeUsersSavedTracks_Sync() {
     try {

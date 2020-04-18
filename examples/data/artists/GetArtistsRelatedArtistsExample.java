@@ -16,11 +16,11 @@ public class GetArtistsRelatedArtistsExample {
   private static final String id = "0LcJLqbBmaGUft1e9Mm8HV";
 
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
-          .setAccessToken(accessToken)
-          .build();
+    .setAccessToken(accessToken)
+    .build();
   private static final GetArtistsRelatedArtistsRequest getArtistsRelatedArtistsRequest = spotifyApi
-          .getArtistsRelatedArtists(id)
-          .build();
+    .getArtistsRelatedArtists(id)
+    .build();
 
   public static void getArtistsRelatedArtists_Sync() {
     try {

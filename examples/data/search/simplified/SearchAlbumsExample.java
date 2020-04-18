@@ -17,13 +17,13 @@ public class SearchAlbumsExample {
   private static final String q = "Abba";
 
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
-          .setAccessToken(accessToken)
-          .build();
+    .setAccessToken(accessToken)
+    .build();
   private static final SearchAlbumsRequest searchAlbumsRequest = spotifyApi.searchAlbums(q)
 //          .market(CountryCode.SE)
 //          .limit(10)
 //          .offset(0)
-          .build();
+    .build();
 
   public static void searchAlbums_Sync() {
     try {

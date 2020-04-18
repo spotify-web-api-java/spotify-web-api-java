@@ -18,13 +18,13 @@ public class GetUsersFollowedArtistsExample {
   private static final ModelObjectType type = ModelObjectType.ARTIST;
 
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
-          .setAccessToken(accessToken)
-          .build();
+    .setAccessToken(accessToken)
+    .build();
   private static final GetUsersFollowedArtistsRequest getUsersFollowedArtistsRequest = spotifyApi
-          .getUsersFollowedArtists(type)
+    .getUsersFollowedArtists(type)
 //          .after("0LcJLqbBmaGUft1e9Mm8HV")
 //          .limit(10)
-          .build();
+    .build();
 
   public static void getUsersFollowedArtists_Sync() {
     try {

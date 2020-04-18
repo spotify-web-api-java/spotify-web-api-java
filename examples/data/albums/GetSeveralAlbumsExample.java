@@ -16,11 +16,11 @@ public class GetSeveralAlbumsExample {
   private static final String[] ids = new String[]{"0LcJLqbBmaGUft1e9Mm8HV"};
 
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
-          .setAccessToken(accessToken)
-          .build();
+    .setAccessToken(accessToken)
+    .build();
   private static final GetSeveralAlbumsRequest getSeveralAlbumsRequest = spotifyApi.getSeveralAlbums(ids)
 //          .market(CountryCode.SE)
-          .build();
+    .build();
 
   public static void getSeveralAlbums_Sync() {
     try {

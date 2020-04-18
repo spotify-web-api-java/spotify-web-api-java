@@ -18,13 +18,13 @@ public class SearchItemExample {
   private static final String type = ModelObjectType.ARTIST.getType();
 
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
-          .setAccessToken(accessToken)
-          .build();
+    .setAccessToken(accessToken)
+    .build();
   private static final SearchItemRequest searchItemRequest = spotifyApi.searchItem(q, type)
 //          .market(CountryCode.SE)
 //          .limit(10)
 //          .offset(0)
-          .build();
+    .build();
 
   public static void searchItem_Sync() {
     try {

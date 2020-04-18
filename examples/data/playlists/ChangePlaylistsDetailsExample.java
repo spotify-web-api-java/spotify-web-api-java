@@ -15,15 +15,15 @@ public class ChangePlaylistsDetailsExample {
   private static final String playlistId = "3AGOiaoRXMSjswCLtuNqv5";
 
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
-          .setAccessToken(accessToken)
-          .build();
+    .setAccessToken(accessToken)
+    .build();
   private static final ChangePlaylistsDetailsRequest changePlaylistsDetailsRequest = spotifyApi
-          .changePlaylistsDetails(playlistId)
+    .changePlaylistsDetails(playlistId)
 //          .name("Abba")
 //          .public_(false)
 //          .collaborative(false)
 //          .description("Amazing music.")
-          .build();
+    .build();
 
   public static void changePlaylistsDetails_Sync() {
     try {

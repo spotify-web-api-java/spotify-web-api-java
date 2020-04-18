@@ -15,8 +15,8 @@ public class GetRecommendationsExample {
   private static final String accessToken = "taHZ2SdB-bPA3FsK3D7ZN5npZS47cMy-IEySVEGttOhXmqaVAIo0ESvTCLjLBifhHOHOIuhFUKPW1WMDP7w6dj3MAZdWT8CLI2MkZaXbYLTeoDvXesf2eeiLYPBGdx8tIwQJKgV8XdnzH_DONk";
 
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
-          .setAccessToken(accessToken)
-          .build();
+    .setAccessToken(accessToken)
+    .build();
   private static final GetRecommendationsRequest getRecommendationsRequest = spotifyApi.getRecommendations()
 //          .limit(10)
 //          .market(CountryCode.SE)
@@ -26,7 +26,7 @@ public class GetRecommendationsExample {
 //          .seed_genres("electro")
 //          .seed_tracks("01iyCAUm8EvOFqVWYJ3dVX")
 //          .target_popularity(20)
-          .build();
+    .build();
 
   public static void getRecommendations_Sync() {
     try {

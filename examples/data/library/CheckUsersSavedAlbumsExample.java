@@ -15,10 +15,10 @@ public class CheckUsersSavedAlbumsExample {
   private static final String[] ids = new String[]{"5zT1JLIj9E57p3e1rFm9Uq"};
 
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
-          .setAccessToken(accessToken)
-          .build();
+    .setAccessToken(accessToken)
+    .build();
   private static final CheckUsersSavedAlbumsRequest checkUsersSavedAlbumsRequest = spotifyApi.checkUsersSavedAlbums(ids)
-          .build();
+    .build();
 
   public static void checkUsersSavedAlbums_Sync() {
     try {

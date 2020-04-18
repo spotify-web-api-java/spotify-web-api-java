@@ -16,10 +16,10 @@ public class GetUsersProfileExample {
   private static final String userId = "user_id";
 
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
-          .setAccessToken(accessToken)
-          .build();
+    .setAccessToken(accessToken)
+    .build();
   private static final GetUsersProfileRequest getUsersProfileRequest = spotifyApi.getUsersProfile(userId)
-          .build();
+    .build();
 
   public static void getUsersProfile_Sync() {
     try {

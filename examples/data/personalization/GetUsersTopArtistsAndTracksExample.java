@@ -18,14 +18,14 @@ public class GetUsersTopArtistsAndTracksExample {
   private static final ModelObjectType type = ModelObjectType.ARTIST;
 
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
-          .setAccessToken(accessToken)
-          .build();
+    .setAccessToken(accessToken)
+    .build();
   private static final GetUsersTopArtistsAndTracksRequest getUsersTopArtistsAndTracksRequest = spotifyApi
-          .getUsersTopArtistsAndTracks(type)
+    .getUsersTopArtistsAndTracks(type)
 //          .limit(10)
 //          .offset(0)
 //          .time_range("medium_term")
-          .build();
+    .build();
 
   @SuppressWarnings("unchecked")
   public static void getUsersTopArtistsAndTracks_Sync() {

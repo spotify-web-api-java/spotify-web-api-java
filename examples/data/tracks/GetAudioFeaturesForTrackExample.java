@@ -16,11 +16,11 @@ public class GetAudioFeaturesForTrackExample {
   private static final String id = "01iyCAUm8EvOFqVWYJ3dVX";
 
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
-          .setAccessToken(accessToken)
-          .build();
+    .setAccessToken(accessToken)
+    .build();
   private static final GetAudioFeaturesForTrackRequest getAudioFeaturesForTrackRequest = spotifyApi
-          .getAudioFeaturesForTrack(id)
-          .build();
+    .getAudioFeaturesForTrack(id)
+    .build();
 
   public static void getAudioFeaturesForTrack_Sync() {
     try {

@@ -15,11 +15,11 @@ public class GetUsersAvailableDevicesExample {
   private static final String accessToken = "taHZ2SdB-bPA3FsK3D7ZN5npZS47cMy-IEySVEGttOhXmqaVAIo0ESvTCLjLBifhHOHOIuhFUKPW1WMDP7w6dj3MAZdWT8CLI2MkZaXbYLTeoDvXesf2eeiLYPBGdx8tIwQJKgV8XdnzH_DONk";
 
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
-          .setAccessToken(accessToken)
-          .build();
+    .setAccessToken(accessToken)
+    .build();
   private static final GetUsersAvailableDevicesRequest getUsersAvailableDevicesRequest = spotifyApi
-          .getUsersAvailableDevices()
-          .build();
+    .getUsersAvailableDevices()
+    .build();
 
   public static void getUsersAvailableDevices_Sync() {
     try {

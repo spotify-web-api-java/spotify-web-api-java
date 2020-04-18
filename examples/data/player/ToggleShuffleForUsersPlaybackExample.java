@@ -15,12 +15,12 @@ public class ToggleShuffleForUsersPlaybackExample {
   private static final boolean state = true;
 
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
-          .setAccessToken(accessToken)
-          .build();
+    .setAccessToken(accessToken)
+    .build();
   private static final ToggleShuffleForUsersPlaybackRequest toggleShuffleForUsersPlaybackRequest = spotifyApi
-          .toggleShuffleForUsersPlayback(state)
+    .toggleShuffleForUsersPlayback(state)
 //          .device_id("5fbb3ba6aa454b5534c4ba43a8c7e8e45a63ad0e")
-          .build();
+    .build();
 
   public static void toggleShuffleForUsersPlayback_Sync() {
     try {

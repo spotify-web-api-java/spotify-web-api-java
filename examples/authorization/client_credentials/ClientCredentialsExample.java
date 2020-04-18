@@ -16,11 +16,11 @@ public class ClientCredentialsExample {
   private static final String clientSecret = "zudknyqbh3wunbhcvg9uyvo7uwzeu6nne";
 
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
-          .setClientId(clientId)
-          .setClientSecret(clientSecret)
-          .build();
+    .setClientId(clientId)
+    .setClientSecret(clientSecret)
+    .build();
   private static final ClientCredentialsRequest clientCredentialsRequest = spotifyApi.clientCredentials()
-          .build();
+    .build();
 
   public static void clientCredentials_Sync() {
     try {

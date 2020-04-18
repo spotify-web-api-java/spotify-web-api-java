@@ -19,13 +19,13 @@ public class ReorderPlaylistsTracksExample {
   private static final int insertBefore = 0;
 
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
-          .setAccessToken(accessToken)
-          .build();
+    .setAccessToken(accessToken)
+    .build();
   private static final ReorderPlaylistsTracksRequest reorderPlaylistsTracksRequest = spotifyApi.
-          reorderPlaylistsTracks(playlistId, rangeStart, insertBefore)
+    reorderPlaylistsTracks(playlistId, rangeStart, insertBefore)
 //          .range_length(rangeLength)
 //          .snapshot_id("JbtmHBDBAYu3/bt8BOXKjzKx3i0b6LCa/wVjyl6qQ2Yf6nFXkbmzuEa+ZI/U1yF+")
-          .build();
+    .build();
 
   public static void reorderPlaylistsTracks_Sync() {
     try {

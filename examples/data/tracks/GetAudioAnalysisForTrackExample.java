@@ -16,11 +16,11 @@ public class GetAudioAnalysisForTrackExample {
   private static final String id = "01iyCAUm8EvOFqVWYJ3dVX";
 
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
-          .setAccessToken(accessToken)
-          .build();
+    .setAccessToken(accessToken)
+    .build();
   private static final GetAudioAnalysisForTrackRequest getAudioAnalysisForTrackRequest = spotifyApi
-          .getAudioAnalysisForTrack(id)
-          .build();
+    .getAudioAnalysisForTrack(id)
+    .build();
 
   public static void getAudioAnalysisForTrack_Sync() {
     try {

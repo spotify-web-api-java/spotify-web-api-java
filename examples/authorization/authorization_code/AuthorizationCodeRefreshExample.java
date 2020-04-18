@@ -17,12 +17,12 @@ public class AuthorizationCodeRefreshExample {
   private static final String refreshToken = "b0KuPuLw77Z0hQhCsK-GTHoEx_kethtn357V7iqwEpCTIsLgqbBC_vQBTGC6M5rINl0FrqHK-D3cbOsMOlfyVKuQPvpyGcLcxAoLOTpYXc28nVwB7iBq2oKj9G9lHkFOUKn";
 
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
-          .setClientId(clientId)
-          .setClientSecret(clientSecret)
-          .setRefreshToken(refreshToken)
-          .build();
+    .setClientId(clientId)
+    .setClientSecret(clientSecret)
+    .setRefreshToken(refreshToken)
+    .build();
   private static final AuthorizationCodeRefreshRequest authorizationCodeRefreshRequest = spotifyApi.authorizationCodeRefresh()
-          .build();
+    .build();
 
   public static void authorizationCodeRefresh_Sync() {
     try {

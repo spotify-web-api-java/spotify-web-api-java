@@ -17,12 +17,12 @@ public class TransferUsersPlaybackExample {
   private static final JsonArray deviceIds = JsonParser.parseString("[\"5fbb3ba6aa454b5534c4ba43a8c7e8e45a63ad0e\"]").getAsJsonArray();
 
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
-          .setAccessToken(accessToken)
-          .build();
+    .setAccessToken(accessToken)
+    .build();
   private static final TransferUsersPlaybackRequest transferUsersPlaybackRequest = spotifyApi
-          .transferUsersPlayback(deviceIds)
+    .transferUsersPlayback(deviceIds)
 //          .play(false)
-          .build();
+    .build();
 
   public static void transferUsersPlayback_Sync() {
     try {

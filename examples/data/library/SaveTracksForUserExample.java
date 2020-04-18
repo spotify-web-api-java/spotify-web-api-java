@@ -15,10 +15,10 @@ public class SaveTracksForUserExample {
   private static final String[] ids = new String[]{"01iyCAUm8EvOFqVWYJ3dVX"};
 
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
-          .setAccessToken(accessToken)
-          .build();
+    .setAccessToken(accessToken)
+    .build();
   private static final SaveTracksForUserRequest saveTracksForUserRequest = spotifyApi.saveTracksForUser(ids)
-          .build();
+    .build();
 
   public static void saveTracksForUser_Sync() {
     try {

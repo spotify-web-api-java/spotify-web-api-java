@@ -20,12 +20,12 @@ public class AuthorizationCodeExample {
   private static final String code = "";
 
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
-          .setClientId(clientId)
-          .setClientSecret(clientSecret)
-          .setRedirectUri(redirectUri)
-          .build();
+    .setClientId(clientId)
+    .setClientSecret(clientSecret)
+    .setRedirectUri(redirectUri)
+    .build();
   private static final AuthorizationCodeRequest authorizationCodeRequest = spotifyApi.authorizationCode(code)
-          .build();
+    .build();
 
   public static void authorizationCode_Sync() {
     try {

@@ -15,15 +15,15 @@ public class GetListOfFeaturedPlaylistsExample {
   private static final String accessToken = "taHZ2SdB-bPA3FsK3D7ZN5npZS47cMy-IEySVEGttOhXmqaVAIo0ESvTCLjLBifhHOHOIuhFUKPW1WMDP7w6dj3MAZdWT8CLI2MkZaXbYLTeoDvXesf2eeiLYPBGdx8tIwQJKgV8XdnzH_DONk";
 
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
-          .setAccessToken(accessToken)
-          .build();
+    .setAccessToken(accessToken)
+    .build();
   private static final GetListOfFeaturedPlaylistsRequest getListOfFeaturedPlaylistsRequest = spotifyApi
-          .getListOfFeaturedPlaylists()
+    .getListOfFeaturedPlaylists()
 //          .country(CountryCode.SE)
 //          .limit(10)
 //          .offset(0)
 //          .timestamp(new Date(1414054800000L))
-          .build();
+    .build();
 
   public static void getListOfFeaturedPlaylists_Sync() {
     try {

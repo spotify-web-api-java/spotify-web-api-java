@@ -15,15 +15,15 @@ public class AuthorizationCodeUriExample {
   private static final URI redirectUri = SpotifyHttpManager.makeUri("https://example.com/spotify-redirect");
 
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
-          .setClientId(clientId)
-          .setClientSecret(clientSecret)
-          .setRedirectUri(redirectUri)
-          .build();
+    .setClientId(clientId)
+    .setClientSecret(clientSecret)
+    .setRedirectUri(redirectUri)
+    .build();
   private static final AuthorizationCodeUriRequest authorizationCodeUriRequest = spotifyApi.authorizationCodeUri()
 //          .state("x4xkmn9pu3j6ukrs8n")
 //          .scope("user-read-birthdate,user-read-email")
 //          .show_dialog(true)
-          .build();
+    .build();
 
   public static void authorizationCodeUri_Sync() {
     final URI uri = authorizationCodeUriRequest.execute();

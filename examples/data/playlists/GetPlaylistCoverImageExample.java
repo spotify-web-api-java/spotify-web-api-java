@@ -16,11 +16,11 @@ public class GetPlaylistCoverImageExample {
   private static final String playlistId = "3AGOiaoRXMSjswCLtuNqv5";
 
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
-          .setAccessToken(accessToken)
-          .build();
+    .setAccessToken(accessToken)
+    .build();
   private static final GetPlaylistCoverImageRequest getPlaylistCoverImageRequest = spotifyApi
-          .getPlaylistCoverImage(playlistId)
-          .build();
+    .getPlaylistCoverImage(playlistId)
+    .build();
 
   public static void getPlaylistCoverImage_Sync() {
     try {

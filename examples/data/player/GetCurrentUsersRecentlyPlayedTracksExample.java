@@ -16,14 +16,14 @@ public class GetCurrentUsersRecentlyPlayedTracksExample {
   private static final String accessToken = "taHZ2SdB-bPA3FsK3D7ZN5npZS47cMy-IEySVEGttOhXmqaVAIo0ESvTCLjLBifhHOHOIuhFUKPW1WMDP7w6dj3MAZdWT8CLI2MkZaXbYLTeoDvXesf2eeiLYPBGdx8tIwQJKgV8XdnzH_DONk";
 
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
-          .setAccessToken(accessToken)
-          .build();
+    .setAccessToken(accessToken)
+    .build();
   private static final GetCurrentUsersRecentlyPlayedTracksRequest getCurrentUsersRecentlyPlayedTracksRequest =
-          spotifyApi.getCurrentUsersRecentlyPlayedTracks()
+    spotifyApi.getCurrentUsersRecentlyPlayedTracks()
 //                  .after(new Date(1517087230000L))
 //                  .before(new Date(1453932420000L))
 //                  .limit(10)
-                  .build();
+      .build();
 
   public static void getCurrentUsersRecentlyPlayedTracks_Sync() {
     try {

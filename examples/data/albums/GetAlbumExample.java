@@ -16,11 +16,11 @@ public class GetAlbumExample {
   private static final String id = "5zT1JLIj9E57p3e1rFm9Uq";
 
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
-          .setAccessToken(accessToken)
-          .build();
+    .setAccessToken(accessToken)
+    .build();
   private static final GetAlbumRequest getAlbumRequest = spotifyApi.getAlbum(id)
 //          .market(CountryCode.SE)
-          .build();
+    .build();
 
   public static void getAlbum_Sync() {
     try {

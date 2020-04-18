@@ -17,14 +17,14 @@ public class GetArtistsAlbumsExample {
   private static final String id = "0LcJLqbBmaGUft1e9Mm8HV";
 
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
-          .setAccessToken(accessToken)
-          .build();
+    .setAccessToken(accessToken)
+    .build();
   private static final GetArtistsAlbumsRequest getArtistsAlbumsRequest = spotifyApi.getArtistsAlbums(id)
 //          .album_type("album")
 //          .limit(10)
 //          .offset(0)
 //          .market(CountryCode.SE)
-          .build();
+    .build();
 
   public static void getArtistsAlbums_Sync() {
     try {

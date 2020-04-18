@@ -15,12 +15,12 @@ public class SeekToPositionInCurrentlyPlayingTrackExample {
   private static final int positionMs = 10000;
 
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
-          .setAccessToken(accessToken)
-          .build();
+    .setAccessToken(accessToken)
+    .build();
   private static final SeekToPositionInCurrentlyPlayingTrackRequest seekToPositionInCurrentlyPlayingTrackRequest =
-          spotifyApi.seekToPositionInCurrentlyPlayingTrack(positionMs)
+    spotifyApi.seekToPositionInCurrentlyPlayingTrack(positionMs)
 //                  .device_id("5fbb3ba6aa454b5534c4ba43a8c7e8e45a63ad0e")
-                  .build();
+      .build();
 
   public static void seekToPositionInCurrentlyPlayingTrack_Sync() {
     try {

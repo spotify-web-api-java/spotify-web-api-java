@@ -17,13 +17,13 @@ public class GetCategorysPlaylistsExample {
   private static final String categoryId = "dinner";
 
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
-          .setAccessToken(accessToken)
-          .build();
+    .setAccessToken(accessToken)
+    .build();
   private static final GetCategorysPlaylistsRequest getCategoryRequest = spotifyApi.getCategorysPlaylists(categoryId)
 //          .country(CountryCode.SE)
 //          .limit(10)
 //          .offset(0)
-          .build();
+    .build();
 
   public static void getCategorysPlaylists_Sync() {
     try {

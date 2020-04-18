@@ -18,11 +18,11 @@ public class GetArtistsTopTracksExample {
   private static final CountryCode countryCode = CountryCode.SE;
 
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
-          .setAccessToken(accessToken)
-          .build();
+    .setAccessToken(accessToken)
+    .build();
   private static final GetArtistsTopTracksRequest getArtistsTopTracksRequest = spotifyApi
-          .getArtistsTopTracks(id, countryCode)
-          .build();
+    .getArtistsTopTracks(id, countryCode)
+    .build();
 
   public static void getArtistsTopTracks_Sync() {
     try {

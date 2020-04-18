@@ -16,11 +16,11 @@ public class UnfollowPlaylistExample {
   private static final String playlistId = "3AGOiaoRXMSjswCLtuNqv5";
 
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
-          .setAccessToken(accessToken)
-          .build();
+    .setAccessToken(accessToken)
+    .build();
   private static final UnfollowPlaylistRequest unfollowPlaylistRequest = spotifyApi
-          .unfollowPlaylist(ownerId, playlistId)
-          .build();
+    .unfollowPlaylist(ownerId, playlistId)
+    .build();
 
   public static void unfollowPlaylist_Sync() {
     try {

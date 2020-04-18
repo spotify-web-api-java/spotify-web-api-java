@@ -17,11 +17,11 @@ public class UnfollowArtistsOrUsersExample {
   private static final String[] ids = new String[]{"0LcJLqbBmaGUft1e9Mm8HV"};
 
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
-          .setAccessToken(accessToken)
-          .build();
+    .setAccessToken(accessToken)
+    .build();
   private static final UnfollowArtistsOrUsersRequest unfollowArtistsOrUsersRequest = spotifyApi
-          .unfollowArtistsOrUsers(type, ids)
-          .build();
+    .unfollowArtistsOrUsers(type, ids)
+    .build();
 
   public static void unfollowArtistsOrUsers_Sync() {
     try {

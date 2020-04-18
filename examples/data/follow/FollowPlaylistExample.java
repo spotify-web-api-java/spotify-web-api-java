@@ -17,11 +17,11 @@ public class FollowPlaylistExample {
   private static final Boolean public_ = false;
 
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
-          .setAccessToken(accessToken)
-          .build();
+    .setAccessToken(accessToken)
+    .build();
   private static final FollowPlaylistRequest followPlaylistRequest = spotifyApi
-          .followPlaylist(ownerId, playlistId, public_)
-          .build();
+    .followPlaylist(ownerId, playlistId, public_)
+    .build();
 
   public static void followPlaylist_Sync() {
     try {

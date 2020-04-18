@@ -17,11 +17,11 @@ public class CheckUsersFollowPlaylistExample {
   private static final String[] ids = new String[]{"abbaspotify"};
 
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
-          .setAccessToken(accessToken)
-          .build();
+    .setAccessToken(accessToken)
+    .build();
   private static final CheckUsersFollowPlaylistRequest checkUsersFollowPlaylistRequest = spotifyApi
-          .checkUsersFollowPlaylist(ownerId, playlistId, ids)
-          .build();
+    .checkUsersFollowPlaylist(ownerId, playlistId, ids)
+    .build();
 
   public static void checkUsersFollowPlaylist_Sync() {
     try {
