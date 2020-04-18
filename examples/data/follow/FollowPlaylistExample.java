@@ -19,6 +19,7 @@ public class FollowPlaylistExample {
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
     .setAccessToken(accessToken)
     .build();
+  @SuppressWarnings("ConstantConditions")
   private static final FollowPlaylistRequest followPlaylistRequest = spotifyApi
     .followPlaylist(ownerId, playlistId, public_)
     .build();

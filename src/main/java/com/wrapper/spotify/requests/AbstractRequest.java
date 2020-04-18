@@ -72,7 +72,7 @@ public abstract class AbstractRequest<T> implements IRequest<T> {
       this::execute);
   }
 
-  public void initializeBody() throws UnsupportedEncodingException {
+  public void initializeBody() {
     if (body == null && contentType != null) {
       switch (contentType.getMimeType()) {
         case "application/json":

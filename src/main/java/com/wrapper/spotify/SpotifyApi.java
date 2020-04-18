@@ -894,7 +894,6 @@ public class SpotifyApi {
    *             {@link com.wrapper.spotify.model_objects.specification.Track}
    * @return A {@link GetUsersTopArtistsAndTracksRequest.Builder}.
    */
-  @SuppressWarnings("unchecked")
   public <T extends IArtistTrackModelObject> GetUsersTopArtistsAndTracksRequest.Builder<T> getUsersTopArtistsAndTracks(ModelObjectType type) {
     return new GetUsersTopArtistsAndTracksRequest.Builder<T>(accessToken)
       .setDefaults(httpManager, scheme, host, port)

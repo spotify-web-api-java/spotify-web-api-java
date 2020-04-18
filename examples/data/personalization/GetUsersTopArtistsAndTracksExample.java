@@ -38,6 +38,7 @@ public class GetUsersTopArtistsAndTracksExample {
     }
   }
 
+  @SuppressWarnings("unchecked")
   public static void getUsersTopArtistsAndTracks_Async() {
     try {
       final CompletableFuture<Paging<Artist>> pagingFuture = getUsersTopArtistsAndTracksRequest.executeAsync();

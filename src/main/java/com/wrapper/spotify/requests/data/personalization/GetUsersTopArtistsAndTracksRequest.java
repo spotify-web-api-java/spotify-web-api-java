@@ -83,7 +83,7 @@ public class GetUsersTopArtistsAndTracksRequest<T extends IArtistTrackModelObjec
      * @return A {@link GetUsersTopArtistsAndTracksRequest.Builder}.
      */
     @SuppressWarnings("unchecked")
-    public Builder type(final ModelObjectType type) {
+    public Builder<T> type(final ModelObjectType type) {
       assert (type != null);
       assert (type.getType().equals("artists") || type.getType().equals("tracks"));
 
@@ -134,7 +134,7 @@ public class GetUsersTopArtistsAndTracksRequest<T extends IArtistTrackModelObjec
      *                   weeks). Default: {@code medium_term}.
      * @return A {@link GetUsersTopArtistsAndTracksRequest.Builder}.
      */
-    public Builder time_range(final String time_range) {
+    public Builder<T> time_range(final String time_range) {
       assert (time_range != null);
       assert (time_range.equals("long_term") || time_range.equals("medium_term") || time_range.equals("short_term"));
       return setQueryParameter("time_range", time_range);
