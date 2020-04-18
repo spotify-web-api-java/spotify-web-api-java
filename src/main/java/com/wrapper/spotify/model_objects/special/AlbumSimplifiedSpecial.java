@@ -17,7 +17,7 @@ import com.wrapper.spotify.requests.data.search.interfaces.ISearchModelObject;
 /**
  * Retrieve information about <a href="https://developer.spotify.com/web-api/object-model/#album-object-simplified">
  * simplified Album objects</a> by building instances from this class.
- *
+ * <p>
  * This class exists because it includes the property {@code totalTracks}, which is not documented in the official
  * specification, although the albums object as returned by the searches API includes it.
  */
@@ -360,66 +360,66 @@ public class AlbumSimplifiedSpecial extends AbstractModelObject implements ISear
       }
 
       return new AlbumSimplifiedSpecial.Builder()
-              .setAlbumType(
-                      hasAndNotNull(jsonObject, "album_type")
-                              ? AlbumType.keyOf(
-                              jsonObject.get("album_type").getAsString().toLowerCase())
-                              : null)
-              .setArtists(
-                      hasAndNotNull(jsonObject, "artists")
-                              ? new ArtistSimplified.JsonUtil().createModelObjectArray(
-                              jsonObject.getAsJsonArray("artists"))
-                              : null)
-              .setAvailableMarkets(
-                      hasAndNotNull(jsonObject, "available_markets")
-                              ? new Gson().fromJson(
-                              jsonObject.get("available_markets"), CountryCode[].class)
-                              : null)
-              .setExternalUrls(
-                      hasAndNotNull(jsonObject, "external_urls")
-                              ? new ExternalUrl.JsonUtil().createModelObject(
-                              jsonObject.getAsJsonObject("external_urls"))
-                              : null)
-              .setHref(
-                      hasAndNotNull(jsonObject, "href")
-                              ? jsonObject.get("href").getAsString()
-                              : null)
-              .setId(
-                      hasAndNotNull(jsonObject, "id")
-                              ? jsonObject.get("id").getAsString()
-                              : null)
-              .setImages(
-                      hasAndNotNull(jsonObject, "images")
-                              ? new Image.JsonUtil().createModelObjectArray(
-                              jsonObject.getAsJsonArray("images"))
-                              : null)
-              .setName(
-                      hasAndNotNull(jsonObject, "name")
-                              ? jsonObject.get("name").getAsString()
-                              : null)
-              .setReleaseDate(
-                      hasAndNotNull(jsonObject, "release_date")
-                              ? jsonObject.get("release_date").getAsString()
-                              : null)
-              .setReleaseDatePrecision(
-                      hasAndNotNull(jsonObject, "release_date_precision")
-                              ? ReleaseDatePrecision.keyOf(
-                              jsonObject.get("release_date_precision").getAsString().toLowerCase())
-                              : null)
-              .setTotalTracks(
-                      hasAndNotNull(jsonObject, "total_tracks")
-                              ? jsonObject.get("total_tracks").getAsInt()
-                              : null)
-              .setType(
-                      hasAndNotNull(jsonObject, "type")
-                              ? ModelObjectType.keyOf(
-                              jsonObject.get("type").getAsString().toLowerCase())
-                              : null)
-              .setUri(
-                      hasAndNotNull(jsonObject, "uri")
-                              ? jsonObject.get("uri").getAsString()
-                              : null)
-              .build();
+        .setAlbumType(
+          hasAndNotNull(jsonObject, "album_type")
+            ? AlbumType.keyOf(
+            jsonObject.get("album_type").getAsString().toLowerCase())
+            : null)
+        .setArtists(
+          hasAndNotNull(jsonObject, "artists")
+            ? new ArtistSimplified.JsonUtil().createModelObjectArray(
+            jsonObject.getAsJsonArray("artists"))
+            : null)
+        .setAvailableMarkets(
+          hasAndNotNull(jsonObject, "available_markets")
+            ? new Gson().fromJson(
+            jsonObject.get("available_markets"), CountryCode[].class)
+            : null)
+        .setExternalUrls(
+          hasAndNotNull(jsonObject, "external_urls")
+            ? new ExternalUrl.JsonUtil().createModelObject(
+            jsonObject.getAsJsonObject("external_urls"))
+            : null)
+        .setHref(
+          hasAndNotNull(jsonObject, "href")
+            ? jsonObject.get("href").getAsString()
+            : null)
+        .setId(
+          hasAndNotNull(jsonObject, "id")
+            ? jsonObject.get("id").getAsString()
+            : null)
+        .setImages(
+          hasAndNotNull(jsonObject, "images")
+            ? new Image.JsonUtil().createModelObjectArray(
+            jsonObject.getAsJsonArray("images"))
+            : null)
+        .setName(
+          hasAndNotNull(jsonObject, "name")
+            ? jsonObject.get("name").getAsString()
+            : null)
+        .setReleaseDate(
+          hasAndNotNull(jsonObject, "release_date")
+            ? jsonObject.get("release_date").getAsString()
+            : null)
+        .setReleaseDatePrecision(
+          hasAndNotNull(jsonObject, "release_date_precision")
+            ? ReleaseDatePrecision.keyOf(
+            jsonObject.get("release_date_precision").getAsString().toLowerCase())
+            : null)
+        .setTotalTracks(
+          hasAndNotNull(jsonObject, "total_tracks")
+            ? jsonObject.get("total_tracks").getAsInt()
+            : null)
+        .setType(
+          hasAndNotNull(jsonObject, "type")
+            ? ModelObjectType.keyOf(
+            jsonObject.get("type").getAsString().toLowerCase())
+            : null)
+        .setUri(
+          hasAndNotNull(jsonObject, "uri")
+            ? jsonObject.get("uri").getAsString()
+            : null)
+        .build();
     }
   }
 }

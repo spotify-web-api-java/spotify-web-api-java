@@ -19,7 +19,7 @@ public class AddItemToUsersPlaybackQueueRequest extends AbstractDataRequest<Stri
    *
    * @param builder A {@link AddItemToUsersPlaybackQueueRequest.Builder}.
    */
-  private AddItemToUsersPlaybackQueueRequest(final Builder builder){
+  private AddItemToUsersPlaybackQueueRequest(final Builder builder) {
     super(builder);
   }
 
@@ -41,7 +41,7 @@ public class AddItemToUsersPlaybackQueueRequest extends AbstractDataRequest<Stri
   /**
    * Builder class for building a {@link AddItemToUsersPlaybackQueueRequest}.
    */
-  public static final class Builder extends AbstractDataRequest.Builder<String, Builder>{
+  public static final class Builder extends AbstractDataRequest.Builder<String, Builder> {
 
     /**
      * Create a new {@link AddItemToUsersPlaybackQueueRequest.Builder}.
@@ -77,7 +77,7 @@ public class AddItemToUsersPlaybackQueueRequest extends AbstractDataRequest<Stri
      * @return A {@link AddItemToUsersPlaybackQueueRequest.Builder}.
      * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URIs &amp; IDs</a>
      */
-    public Builder uri(final String uri){
+    public Builder uri(final String uri) {
       assert (uri != null);
       assert (!uri.equals(""));
       return setQueryParameter("uri", uri);
