@@ -56,8 +56,7 @@ public class SpotifyHttpManager implements IHttpManager {
     this.connectionRequestTimeout = builder.connectionRequestTimeout;
     this.connectTimeout = builder.connectTimeout;
     this.socketTimeout = builder.socketTimeout;
-
-
+    
     CacheConfig cacheConfig = CacheConfig.custom()
       .setMaxCacheEntries(cacheMaxEntries != null ? cacheMaxEntries : DEFAULT_CACHE_MAX_ENTRIES)
       .setMaxObjectSize(cacheMaxObjectSize != null ? cacheMaxObjectSize : DEFAULT_CACHE_MAX_OBJECT_SIZE)
@@ -93,6 +92,7 @@ public class SpotifyHttpManager implements IHttpManager {
       .setCacheConfig(cacheConfig)
       .setDefaultCredentialsProvider(credentialsProvider)
       .setDefaultRequestConfig(requestConfig)
+      .disableContentCompression()
       .build();
   }
 
@@ -254,6 +254,7 @@ public class SpotifyHttpManager implements IHttpManager {
     IOException,
     SpotifyWebApiException,
     ParseException {
+
     final String responseBody = httpResponse.getEntity() != null
       ? EntityUtils.toString(httpResponse.getEntity(), "UTF-8")
       : null;
