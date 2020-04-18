@@ -56,7 +56,7 @@ public class SpotifyHttpManager implements IHttpManager {
     this.connectionRequestTimeout = builder.connectionRequestTimeout;
     this.connectTimeout = builder.connectTimeout;
     this.socketTimeout = builder.socketTimeout;
-    
+
     CacheConfig cacheConfig = CacheConfig.custom()
       .setMaxCacheEntries(cacheMaxEntries != null ? cacheMaxEntries : DEFAULT_CACHE_MAX_ENTRIES)
       .setMaxObjectSize(cacheMaxObjectSize != null ? cacheMaxObjectSize : DEFAULT_CACHE_MAX_OBJECT_SIZE)

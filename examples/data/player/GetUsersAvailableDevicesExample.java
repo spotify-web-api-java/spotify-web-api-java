@@ -4,6 +4,7 @@ import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.miscellaneous.Device;
 import com.wrapper.spotify.requests.data.player.GetUsersAvailableDevicesRequest;
+import org.apache.hc.core5.http.ParseException;
 
 import java.io.IOException;
 import java.util.concurrent.CancellationException;
@@ -25,7 +26,7 @@ public class GetUsersAvailableDevicesExample {
       final Device[] devices = getUsersAvailableDevicesRequest.execute();
 
       System.out.println("Length: " + devices.length);
-    } catch (IOException | SpotifyWebApiException e) {
+    } catch (IOException | SpotifyWebApiException | ParseException e) {
       System.out.println("Error: " + e.getMessage());
     }
   }

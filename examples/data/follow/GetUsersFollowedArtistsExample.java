@@ -6,6 +6,7 @@ import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.Artist;
 import com.wrapper.spotify.model_objects.specification.PagingCursorbased;
 import com.wrapper.spotify.requests.data.follow.GetUsersFollowedArtistsRequest;
+import org.apache.hc.core5.http.ParseException;
 
 import java.io.IOException;
 import java.util.concurrent.CancellationException;
@@ -30,7 +31,7 @@ public class GetUsersFollowedArtistsExample {
       final PagingCursorbased<Artist> artistPagingCursorbased = getUsersFollowedArtistsRequest.execute();
 
       System.out.println("Total: " + artistPagingCursorbased.getTotal());
-    } catch (IOException | SpotifyWebApiException e) {
+    } catch (IOException | SpotifyWebApiException | ParseException e) {
       System.out.println("Error: " + e.getMessage());
     }
   }

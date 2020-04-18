@@ -4,6 +4,7 @@ import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.miscellaneous.AudioAnalysis;
 import com.wrapper.spotify.requests.data.tracks.GetAudioAnalysisForTrackRequest;
+import org.apache.hc.core5.http.ParseException;
 
 import java.io.IOException;
 import java.util.concurrent.CancellationException;
@@ -26,7 +27,7 @@ public class GetAudioAnalysisForTrackExample {
       final AudioAnalysis audioAnalysis = getAudioAnalysisForTrackRequest.execute();
 
       System.out.println("Track duration: " + audioAnalysis.getTrack().getDuration());
-    } catch (IOException | SpotifyWebApiException e) {
+    } catch (IOException | SpotifyWebApiException | ParseException e) {
       System.out.println("Error: " + e.getMessage());
     }
   }

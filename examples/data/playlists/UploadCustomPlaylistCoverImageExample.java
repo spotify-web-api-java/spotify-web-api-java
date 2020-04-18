@@ -3,6 +3,7 @@ package data.playlists;
 import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.requests.data.playlists.UploadCustomPlaylistCoverImageRequest;
+import org.apache.hc.core5.http.ParseException;
 
 import java.io.IOException;
 import java.util.concurrent.*;
@@ -24,7 +25,7 @@ public class UploadCustomPlaylistCoverImageExample {
       final String string = uploadCustomPlaylistCoverImageRequest.execute();
 
       System.out.println("Null: " + string);
-    } catch (IOException | SpotifyWebApiException e) {
+    } catch (IOException | SpotifyWebApiException | ParseException e) {
       System.out.println("Error: " + e.getMessage());
     }
   }

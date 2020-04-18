@@ -5,6 +5,7 @@ import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.PagingCursorbased;
 import com.wrapper.spotify.model_objects.specification.PlayHistory;
 import com.wrapper.spotify.requests.data.player.GetCurrentUsersRecentlyPlayedTracksRequest;
+import org.apache.hc.core5.http.ParseException;
 
 import java.io.IOException;
 import java.util.concurrent.CancellationException;
@@ -29,7 +30,7 @@ public class GetCurrentUsersRecentlyPlayedTracksExample {
       final PagingCursorbased<PlayHistory> playHistoryPagingCursorbased = getCurrentUsersRecentlyPlayedTracksRequest.execute();
 
       System.out.println("Total: " + playHistoryPagingCursorbased.getTotal());
-    } catch (IOException | SpotifyWebApiException e) {
+    } catch (IOException | SpotifyWebApiException | ParseException e) {
       System.out.println("Error: " + e.getMessage());
     }
   }

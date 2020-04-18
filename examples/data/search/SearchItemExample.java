@@ -5,6 +5,7 @@ import com.wrapper.spotify.enums.ModelObjectType;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.special.SearchResult;
 import com.wrapper.spotify.requests.data.search.SearchItemRequest;
+import org.apache.hc.core5.http.ParseException;
 
 import java.io.IOException;
 import java.util.concurrent.CancellationException;
@@ -30,7 +31,7 @@ public class SearchItemExample {
       final SearchResult searchResult = searchItemRequest.execute();
 
       System.out.println("Total tracks: " + searchResult.getTracks().getTotal());
-    } catch (IOException | SpotifyWebApiException e) {
+    } catch (IOException | SpotifyWebApiException | ParseException e) {
       System.out.println("Error: " + e.getMessage());
     }
   }

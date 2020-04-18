@@ -5,6 +5,7 @@ import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.Category;
 import com.wrapper.spotify.requests.data.browse.GetCategoryRequest;
+import org.apache.hc.core5.http.ParseException;
 
 import java.io.IOException;
 import java.util.concurrent.*;
@@ -26,7 +27,7 @@ public class GetCategoryExample {
       final Category category = getCategoryRequest.execute();
 
       System.out.println("Name: " + category.getName());
-    } catch (IOException | SpotifyWebApiException e) {
+    } catch (IOException | SpotifyWebApiException | ParseException e) {
       System.out.println("Error: " + e.getMessage());
     }
   }

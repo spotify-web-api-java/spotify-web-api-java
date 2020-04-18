@@ -4,6 +4,7 @@ import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.special.SnapshotResult;
 import com.wrapper.spotify.requests.data.playlists.AddTracksToPlaylistRequest;
+import org.apache.hc.core5.http.ParseException;
 
 import java.io.IOException;
 import java.util.concurrent.*;
@@ -26,7 +27,7 @@ public class AddTracksToPlaylistExample {
       final SnapshotResult snapshotResult = addTracksToPlaylistRequest.execute();
 
       System.out.println("Snapshot ID: " + snapshotResult.getSnapshotId());
-    } catch (IOException | SpotifyWebApiException e) {
+    } catch (IOException | SpotifyWebApiException | ParseException e) {
       System.out.println("Error: " + e.getMessage());
     }
   }

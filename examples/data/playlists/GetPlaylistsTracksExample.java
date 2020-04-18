@@ -5,6 +5,7 @@ import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.Paging;
 import com.wrapper.spotify.model_objects.specification.PlaylistTrack;
 import com.wrapper.spotify.requests.data.playlists.GetPlaylistsTracksRequest;
+import org.apache.hc.core5.http.ParseException;
 
 import java.io.IOException;
 import java.util.concurrent.CancellationException;
@@ -31,7 +32,7 @@ public class GetPlaylistsTracksExample {
       final Paging<PlaylistTrack> playlistTrackPaging = getPlaylistsTracksRequest.execute();
 
       System.out.println("Total: " + playlistTrackPaging.getTotal());
-    } catch (IOException | SpotifyWebApiException e) {
+    } catch (IOException | SpotifyWebApiException | ParseException e) {
       System.out.println("Error: " + e.getMessage());
     }
   }

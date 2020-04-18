@@ -2,7 +2,8 @@ package data.follow;
 
 import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
-import com.wrapper.spotify.requests.data.follow.FollowPlaylistRequest;
+import com.wrapper.spotify.requests.data.follow.legacy.FollowPlaylistRequest;
+import org.apache.hc.core5.http.ParseException;
 
 import java.io.IOException;
 import java.util.concurrent.CancellationException;
@@ -27,7 +28,7 @@ public class FollowPlaylistExample {
       final String string = followPlaylistRequest.execute();
 
       System.out.println("Null: " + string);
-    } catch (IOException | SpotifyWebApiException e) {
+    } catch (IOException | SpotifyWebApiException | ParseException e) {
       System.out.println("Error: " + e.getMessage());
     }
   }

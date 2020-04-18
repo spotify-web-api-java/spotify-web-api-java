@@ -3,6 +3,7 @@ package data.library;
 import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.requests.data.library.CheckUsersSavedAlbumsRequest;
+import org.apache.hc.core5.http.ParseException;
 
 import java.io.IOException;
 import java.util.concurrent.CancellationException;
@@ -24,7 +25,7 @@ public class CheckUsersSavedAlbumsExample {
       final Boolean[] booleans = checkUsersSavedAlbumsRequest.execute();
 
       System.out.println("Length: " + booleans.length);
-    } catch (IOException | SpotifyWebApiException e) {
+    } catch (IOException | SpotifyWebApiException | ParseException e) {
       System.out.println("Error: " + e.getMessage());
     }
   }

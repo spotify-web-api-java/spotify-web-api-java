@@ -4,6 +4,7 @@ import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.User;
 import com.wrapper.spotify.requests.data.users_profile.GetCurrentUsersProfileRequest;
+import org.apache.hc.core5.http.ParseException;
 
 import java.io.IOException;
 import java.util.concurrent.CancellationException;
@@ -24,7 +25,7 @@ public class GetCurrentUsersProfileExample {
       final User user = getCurrentUsersProfileRequest.execute();
 
       System.out.println("Display name: " + user.getDisplayName());
-    } catch (IOException | SpotifyWebApiException e) {
+    } catch (IOException | SpotifyWebApiException | ParseException e) {
       System.out.println("Error: " + e.getMessage());
     }
   }

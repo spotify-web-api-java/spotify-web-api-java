@@ -5,6 +5,7 @@ import com.wrapper.spotify.SpotifyHttpManager;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.credentials.AuthorizationCodeCredentials;
 import com.wrapper.spotify.requests.authorization.authorization_code.AuthorizationCodeRequest;
+import org.apache.hc.core5.http.ParseException;
 
 import java.io.IOException;
 import java.net.URI;
@@ -35,7 +36,7 @@ public class AuthorizationCodeExample {
       spotifyApi.setRefreshToken(authorizationCodeCredentials.getRefreshToken());
 
       System.out.println("Expires in: " + authorizationCodeCredentials.getExpiresIn());
-    } catch (IOException | SpotifyWebApiException e) {
+    } catch (IOException | SpotifyWebApiException | ParseException e) {
       System.out.println("Error: " + e.getMessage());
     }
   }
