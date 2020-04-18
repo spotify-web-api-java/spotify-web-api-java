@@ -67,9 +67,9 @@ public interface IRequest<T> {
     BT setPathParameter(final String name, final String value);
 
     BT setDefaults(final IHttpManager httpManager,
-                        final String scheme,
-                        final String host,
-                        final Integer port);
+                   final String scheme,
+                   final String host,
+                   final Integer port);
 
     <ST> BT setQueryParameter(final String name, final ST value);
 

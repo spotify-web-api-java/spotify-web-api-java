@@ -4,6 +4,7 @@ import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.Playlist;
 import com.wrapper.spotify.requests.data.playlists.CreatePlaylistRequest;
+import org.apache.hc.core5.http.ParseException;
 
 import java.io.IOException;
 import java.util.concurrent.CancellationException;
@@ -16,20 +17,20 @@ public class CreatePlaylistExample {
   private static final String name = "Abba";
 
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
-          .setAccessToken(accessToken)
-          .build();
+    .setAccessToken(accessToken)
+    .build();
   private static final CreatePlaylistRequest createPlaylistRequest = spotifyApi.createPlaylist(userId, name)
 //          .collaborative(false)
 //          .public_(false)
 //          .description("Amazing music.")
-          .build();
+    .build();
 
   public static void createPlaylist_Sync() {
     try {
       final Playlist playlist = createPlaylistRequest.execute();
 
       System.out.println("Name: " + playlist.getName());
-    } catch (IOException | SpotifyWebApiException e) {
+    } catch (IOException | SpotifyWebApiException | ParseException e) {
       System.out.println("Error: " + e.getMessage());
     }
   }

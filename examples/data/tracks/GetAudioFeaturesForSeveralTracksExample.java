@@ -4,6 +4,7 @@ import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.AudioFeatures;
 import com.wrapper.spotify.requests.data.tracks.GetAudioFeaturesForSeveralTracksRequest;
+import org.apache.hc.core5.http.ParseException;
 
 import java.io.IOException;
 import java.util.concurrent.CancellationException;
@@ -15,18 +16,18 @@ public class GetAudioFeaturesForSeveralTracksExample {
   private static final String[] ids = new String[]{"01iyCAUm8EvOFqVWYJ3dVX"};
 
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
-          .setAccessToken(accessToken)
-          .build();
+    .setAccessToken(accessToken)
+    .build();
   private static final GetAudioFeaturesForSeveralTracksRequest getAudioFeaturesForSeveralTracksRequest = spotifyApi
-          .getAudioFeaturesForSeveralTracks(ids)
-          .build();
+    .getAudioFeaturesForSeveralTracks(ids)
+    .build();
 
   public static void getAudioFeaturesForSeveralTracks_Sync() {
     try {
       final AudioFeatures[] audioFeatures = getAudioFeaturesForSeveralTracksRequest.execute();
 
       System.out.println("Length: " + audioFeatures.length);
-    } catch (IOException | SpotifyWebApiException e) {
+    } catch (IOException | SpotifyWebApiException | ParseException e) {
       System.out.println("Error: " + e.getMessage());
     }
   }

@@ -5,6 +5,7 @@ import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.Paging;
 import com.wrapper.spotify.model_objects.specification.SavedTrack;
 import com.wrapper.spotify.requests.data.library.GetUsersSavedTracksRequest;
+import org.apache.hc.core5.http.ParseException;
 
 import java.io.IOException;
 import java.util.concurrent.CancellationException;
@@ -15,20 +16,20 @@ public class GetUsersSavedTracksExample {
   private static final String accessToken = "taHZ2SdB-bPA3FsK3D7ZN5npZS47cMy-IEySVEGttOhXmqaVAIo0ESvTCLjLBifhHOHOIuhFUKPW1WMDP7w6dj3MAZdWT8CLI2MkZaXbYLTeoDvXesf2eeiLYPBGdx8tIwQJKgV8XdnzH_DONk";
 
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
-          .setAccessToken(accessToken)
-          .build();
+    .setAccessToken(accessToken)
+    .build();
   private static final GetUsersSavedTracksRequest getUsersSavedTracksRequest = spotifyApi.getUsersSavedTracks()
 //          .limit(10)
 //          .offset(0)
 //          .market(CountryCode.SE)
-          .build();
+    .build();
 
   public static void getUsersSavedTracks_Sync() {
     try {
       final Paging<SavedTrack> savedTrackPaging = getUsersSavedTracksRequest.execute();
 
       System.out.println("Total: " + savedTrackPaging.getTotal());
-    } catch (IOException | SpotifyWebApiException e) {
+    } catch (IOException | SpotifyWebApiException | ParseException e) {
       System.out.println("Error: " + e.getMessage());
     }
   }

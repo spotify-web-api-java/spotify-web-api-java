@@ -5,6 +5,7 @@ import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.Paging;
 import com.wrapper.spotify.model_objects.specification.PlaylistSimplified;
 import com.wrapper.spotify.requests.data.browse.GetCategorysPlaylistsRequest;
+import org.apache.hc.core5.http.ParseException;
 
 import java.io.IOException;
 import java.util.concurrent.CancellationException;
@@ -16,20 +17,20 @@ public class GetCategorysPlaylistsExample {
   private static final String categoryId = "dinner";
 
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
-          .setAccessToken(accessToken)
-          .build();
+    .setAccessToken(accessToken)
+    .build();
   private static final GetCategorysPlaylistsRequest getCategoryRequest = spotifyApi.getCategorysPlaylists(categoryId)
 //          .country(CountryCode.SE)
 //          .limit(10)
 //          .offset(0)
-          .build();
+    .build();
 
   public static void getCategorysPlaylists_Sync() {
     try {
       final Paging<PlaylistSimplified> playlistSimplifiedPaging = getCategoryRequest.execute();
 
       System.out.println("Total: " + playlistSimplifiedPaging.getTotal());
-    } catch (IOException | SpotifyWebApiException e) {
+    } catch (IOException | SpotifyWebApiException | ParseException e) {
       System.out.println("Error: " + e.getMessage());
     }
   }

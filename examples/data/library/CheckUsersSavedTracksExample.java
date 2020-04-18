@@ -3,6 +3,7 @@ package data.library;
 import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.requests.data.library.CheckUsersSavedTracksRequest;
+import org.apache.hc.core5.http.ParseException;
 
 import java.io.IOException;
 import java.util.concurrent.CancellationException;
@@ -14,17 +15,17 @@ public class CheckUsersSavedTracksExample {
   private static final String[] ids = new String[]{"01iyCAUm8EvOFqVWYJ3dVX"};
 
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
-          .setAccessToken(accessToken)
-          .build();
+    .setAccessToken(accessToken)
+    .build();
   private static final CheckUsersSavedTracksRequest checkUsersSavedTracksRequest = spotifyApi.checkUsersSavedTracks(ids)
-          .build();
+    .build();
 
   public static void checkUsersSavedTracks_Sync() {
     try {
       final Boolean[] booleans = checkUsersSavedTracksRequest.execute();
 
       System.out.println("Length: " + booleans.length);
-    } catch (IOException | SpotifyWebApiException e) {
+    } catch (IOException | SpotifyWebApiException | ParseException e) {
       System.out.println("Error: " + e.getMessage());
     }
   }

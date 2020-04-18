@@ -5,6 +5,7 @@ import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.Paging;
 import com.wrapper.spotify.model_objects.specification.TrackSimplified;
 import com.wrapper.spotify.requests.data.albums.GetAlbumsTracksRequest;
+import org.apache.hc.core5.http.ParseException;
 
 import java.io.IOException;
 import java.util.concurrent.CancellationException;
@@ -16,20 +17,20 @@ public class GetAlbumsTracksExample {
   private static final String id = "5zT1JLIj9E57p3e1rFm9Uq";
 
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
-          .setAccessToken(accessToken)
-          .build();
+    .setAccessToken(accessToken)
+    .build();
   private static final GetAlbumsTracksRequest getAlbumsTracksRequest = spotifyApi.getAlbumsTracks(id)
 //          .limit(10)
 //          .offset(0)
 //          .market(CountryCode.SE)
-          .build();
+    .build();
 
   public static void getAlbumsTracks_Sync() {
     try {
       final Paging<TrackSimplified> trackSimplifiedPaging = getAlbumsTracksRequest.execute();
 
       System.out.println("Total: " + trackSimplifiedPaging.getTotal());
-    } catch (IOException | SpotifyWebApiException e) {
+    } catch (IOException | SpotifyWebApiException | ParseException e) {
       System.out.println("Error: " + e.getMessage());
     }
   }

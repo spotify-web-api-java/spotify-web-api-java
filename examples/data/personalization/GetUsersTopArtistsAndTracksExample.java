@@ -6,6 +6,7 @@ import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.Artist;
 import com.wrapper.spotify.model_objects.specification.Paging;
 import com.wrapper.spotify.requests.data.personalization.GetUsersTopArtistsAndTracksRequest;
+import org.apache.hc.core5.http.ParseException;
 
 import java.io.IOException;
 import java.util.concurrent.CancellationException;
@@ -17,14 +18,14 @@ public class GetUsersTopArtistsAndTracksExample {
   private static final ModelObjectType type = ModelObjectType.ARTIST;
 
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
-          .setAccessToken(accessToken)
-          .build();
+    .setAccessToken(accessToken)
+    .build();
   private static final GetUsersTopArtistsAndTracksRequest getUsersTopArtistsAndTracksRequest = spotifyApi
-          .getUsersTopArtistsAndTracks(type)
+    .getUsersTopArtistsAndTracks(type)
 //          .limit(10)
 //          .offset(0)
 //          .time_range("medium_term")
-          .build();
+    .build();
 
   @SuppressWarnings("unchecked")
   public static void getUsersTopArtistsAndTracks_Sync() {
@@ -32,7 +33,7 @@ public class GetUsersTopArtistsAndTracksExample {
       final Paging<Artist> artistPaging = getUsersTopArtistsAndTracksRequest.execute();
 
       System.out.println("Total: " + artistPaging.getTotal());
-    } catch (IOException | SpotifyWebApiException e) {
+    } catch (IOException | SpotifyWebApiException | ParseException e) {
       System.out.println("Error: " + e.getMessage());
     }
   }

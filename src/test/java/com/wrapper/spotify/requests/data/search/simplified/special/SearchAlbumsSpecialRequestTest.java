@@ -5,7 +5,6 @@ import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.special.AlbumSimplifiedSpecial;
 import com.wrapper.spotify.model_objects.specification.Paging;
 import com.wrapper.spotify.requests.data.AbstractDataTest;
-import com.wrapper.spotify.requests.data.search.simplified.special.SearchAlbumsSpecialRequest;
 import org.apache.hc.core5.http.ParseException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,13 +18,13 @@ import static org.junit.Assert.assertEquals;
 @RunWith(MockitoJUnitRunner.class)
 public class SearchAlbumsSpecialRequestTest extends AbstractDataTest<Paging<AlbumSimplifiedSpecial>> {
   private final SearchAlbumsSpecialRequest defaultRequest = SPOTIFY_API.searchAlbumsSpecial(Q)
-          .setHttpManager(
-                  TestUtil.MockedHttpManager.returningJson(
-                          "requests/data/search/simplified/special/SearchAlbumsSpecialRequest.json"))
-          .limit(LIMIT)
-          .market(MARKET)
-          .offset(OFFSET)
-          .build();
+    .setHttpManager(
+      TestUtil.MockedHttpManager.returningJson(
+        "requests/data/search/simplified/special/SearchAlbumsSpecialRequest.json"))
+    .limit(LIMIT)
+    .market(MARKET)
+    .offset(OFFSET)
+    .build();
 
   public SearchAlbumsSpecialRequestTest() throws Exception {
   }
@@ -34,8 +33,8 @@ public class SearchAlbumsSpecialRequestTest extends AbstractDataTest<Paging<Albu
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
     assertEquals(
-            "https://api.spotify.com:443/v1/search?q=Abba&limit=10&market=SE&offset=0&type=album",
-            defaultRequest.getUri().toString());
+      "https://api.spotify.com:443/v1/search?q=Abba&limit=10&market=SE&offset=0&type=album",
+      defaultRequest.getUri().toString());
   }
 
   @Test
@@ -50,25 +49,25 @@ public class SearchAlbumsSpecialRequestTest extends AbstractDataTest<Paging<Albu
 
   public void shouldReturnDefault(final Paging<AlbumSimplifiedSpecial> albumSimplifiedPaging) {
     assertEquals(
-            "https://api.spotify.com/v1/search?query=Muse&type=album&market=US&offset=5&limit=10",
-            albumSimplifiedPaging.getHref());
+      "https://api.spotify.com/v1/search?query=Muse&type=album&market=US&offset=5&limit=10",
+      albumSimplifiedPaging.getHref());
     assertEquals(
-            10,
-            albumSimplifiedPaging.getItems().length);
+      10,
+      albumSimplifiedPaging.getItems().length);
     assertEquals(
-            10,
-            (int) albumSimplifiedPaging.getLimit());
+      10,
+      (int) albumSimplifiedPaging.getLimit());
     assertEquals(
-            "https://api.spotify.com/v1/search?query=Muse&type=album&market=US&offset=15&limit=10",
-            albumSimplifiedPaging.getNext());
+      "https://api.spotify.com/v1/search?query=Muse&type=album&market=US&offset=15&limit=10",
+      albumSimplifiedPaging.getNext());
     assertEquals(
-            5,
-            (int) albumSimplifiedPaging.getOffset());
+      5,
+      (int) albumSimplifiedPaging.getOffset());
     assertEquals(
-            "https://api.spotify.com/v1/search?query=Muse&type=album&market=US&offset=0&limit=10",
-            albumSimplifiedPaging.getPrevious());
+      "https://api.spotify.com/v1/search?query=Muse&type=album&market=US&offset=0&limit=10",
+      albumSimplifiedPaging.getPrevious());
     assertEquals(
-            1550,
-            (int) albumSimplifiedPaging.getTotal());
+      1550,
+      (int) albumSimplifiedPaging.getTotal());
   }
 }

@@ -22,7 +22,10 @@ import com.wrapper.spotify.requests.data.personalization.simplified.GetUsersTopT
 import com.wrapper.spotify.requests.data.player.*;
 import com.wrapper.spotify.requests.data.playlists.*;
 import com.wrapper.spotify.requests.data.search.SearchItemRequest;
-import com.wrapper.spotify.requests.data.search.simplified.*;
+import com.wrapper.spotify.requests.data.search.simplified.SearchAlbumsRequest;
+import com.wrapper.spotify.requests.data.search.simplified.SearchArtistsRequest;
+import com.wrapper.spotify.requests.data.search.simplified.SearchPlaylistsRequest;
+import com.wrapper.spotify.requests.data.search.simplified.SearchTracksRequest;
 import com.wrapper.spotify.requests.data.search.simplified.special.SearchAlbumsSpecialRequest;
 import com.wrapper.spotify.requests.data.tracks.*;
 import com.wrapper.spotify.requests.data.users_profile.GetCurrentUsersProfileRequest;
@@ -1534,7 +1537,7 @@ public class SpotifyApi {
 
   /**
    * Get Spotify catalog information about albums that match a keyword string.
-   *
+   * <p>
    * This method exists because the searches API returns the undocumented property {@code totalTracks}, which is
    * included by this method's return type.
    *
@@ -1543,8 +1546,8 @@ public class SpotifyApi {
    */
   public SearchAlbumsSpecialRequest.Builder searchAlbumsSpecial(String q) {
     return new SearchAlbumsSpecialRequest.Builder(accessToken)
-            .setDefaults(httpManager, scheme, host, port)
-            .q(q);
+      .setDefaults(httpManager, scheme, host, port)
+      .q(q);
   }
 
   /**

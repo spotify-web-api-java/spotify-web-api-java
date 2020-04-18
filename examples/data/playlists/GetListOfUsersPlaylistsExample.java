@@ -5,29 +5,32 @@ import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.Paging;
 import com.wrapper.spotify.model_objects.specification.PlaylistSimplified;
 import com.wrapper.spotify.requests.data.playlists.GetListOfUsersPlaylistsRequest;
+import org.apache.hc.core5.http.ParseException;
 
 import java.io.IOException;
-import java.util.concurrent.*;
+import java.util.concurrent.CancellationException;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
 
 public class GetListOfUsersPlaylistsExample {
   private static final String accessToken = "taHZ2SdB-bPA3FsK3D7ZN5npZS47cMy-IEySVEGttOhXmqaVAIo0ESvTCLjLBifhHOHOIuhFUKPW1WMDP7w6dj3MAZdWT8CLI2MkZaXbYLTeoDvXesf2eeiLYPBGdx8tIwQJKgV8XdnzH_DONk";
   private static final String userId = "abbaspotify";
 
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
-          .setAccessToken(accessToken)
-          .build();
+    .setAccessToken(accessToken)
+    .build();
   private static final GetListOfUsersPlaylistsRequest getListOfUsersPlaylistsRequest = spotifyApi
-          .getListOfUsersPlaylists(userId)
+    .getListOfUsersPlaylists(userId)
 //          .limit(10)
 //          .offset(0)
-          .build();
+    .build();
 
   public static void getListOfUsersPlaylists_Sync() {
     try {
       final Paging<PlaylistSimplified> playlistSimplifiedPaging = getListOfUsersPlaylistsRequest.execute();
 
       System.out.println("Total: " + playlistSimplifiedPaging.getTotal());
-    } catch (IOException | SpotifyWebApiException e) {
+    } catch (IOException | SpotifyWebApiException | ParseException e) {
       System.out.println("Error: " + e.getMessage());
     }
   }

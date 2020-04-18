@@ -7,7 +7,7 @@
 
   <groupId>se.michaelthelin.spotify</groupId>
   <artifactId>spotify-web-api-java</artifactId>
-  <version>5.0.1</version>
+  <version>5.0.2</version>
   <!--
    DO NOT FORGET
    - to update version numbers in README (2x)
@@ -86,6 +86,12 @@
       <groupId>org.mockito</groupId>
       <artifactId>mockito-all</artifactId>
       <version>1.10.19</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-simple</artifactId>
+      <version>1.7.30</version>
       <scope>test</scope>
     </dependency>
   </dependencies>

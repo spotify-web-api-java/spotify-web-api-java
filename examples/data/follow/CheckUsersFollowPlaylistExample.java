@@ -3,6 +3,7 @@ package data.follow;
 import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.requests.data.follow.CheckUsersFollowPlaylistRequest;
+import org.apache.hc.core5.http.ParseException;
 
 import java.io.IOException;
 import java.util.concurrent.CancellationException;
@@ -16,18 +17,18 @@ public class CheckUsersFollowPlaylistExample {
   private static final String[] ids = new String[]{"abbaspotify"};
 
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
-          .setAccessToken(accessToken)
-          .build();
+    .setAccessToken(accessToken)
+    .build();
   private static final CheckUsersFollowPlaylistRequest checkUsersFollowPlaylistRequest = spotifyApi
-          .checkUsersFollowPlaylist(ownerId, playlistId, ids)
-          .build();
+    .checkUsersFollowPlaylist(ownerId, playlistId, ids)
+    .build();
 
   public static void checkUsersFollowPlaylist_Sync() {
     try {
       final Boolean[] booleans = checkUsersFollowPlaylistRequest.execute();
 
       System.out.println("Length: " + booleans.length);
-    } catch (IOException | SpotifyWebApiException e) {
+    } catch (IOException | SpotifyWebApiException | ParseException e) {
       System.out.println("Error: " + e.getMessage());
     }
   }

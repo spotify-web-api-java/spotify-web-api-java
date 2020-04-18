@@ -244,7 +244,6 @@ public abstract class AbstractRequest<T> implements IRequest<T> {
       return self();
     }
 
-    @SuppressWarnings("CharsetObjectCanBeUsed")
     public BT setPathParameter(final String name, final String value) {
       assert (name != null && value != null);
       assert (!name.equals("") && !value.equals(""));

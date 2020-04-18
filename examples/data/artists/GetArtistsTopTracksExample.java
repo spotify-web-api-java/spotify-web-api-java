@@ -5,6 +5,7 @@ import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.Track;
 import com.wrapper.spotify.requests.data.artists.GetArtistsTopTracksRequest;
+import org.apache.hc.core5.http.ParseException;
 
 import java.io.IOException;
 import java.util.concurrent.CancellationException;
@@ -17,18 +18,18 @@ public class GetArtistsTopTracksExample {
   private static final CountryCode countryCode = CountryCode.SE;
 
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
-          .setAccessToken(accessToken)
-          .build();
+    .setAccessToken(accessToken)
+    .build();
   private static final GetArtistsTopTracksRequest getArtistsTopTracksRequest = spotifyApi
-          .getArtistsTopTracks(id, countryCode)
-          .build();
+    .getArtistsTopTracks(id, countryCode)
+    .build();
 
   public static void getArtistsTopTracks_Sync() {
     try {
       final Track[] tracks = getArtistsTopTracksRequest.execute();
 
       System.out.println("Length: " + tracks.length);
-    } catch (IOException | SpotifyWebApiException e) {
+    } catch (IOException | SpotifyWebApiException | ParseException e) {
       System.out.println("Error: " + e.getMessage());
     }
   }

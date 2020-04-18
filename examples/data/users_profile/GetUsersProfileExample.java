@@ -4,6 +4,7 @@ import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.User;
 import com.wrapper.spotify.requests.data.users_profile.GetUsersProfileRequest;
+import org.apache.hc.core5.http.ParseException;
 
 import java.io.IOException;
 import java.util.concurrent.CancellationException;
@@ -15,17 +16,17 @@ public class GetUsersProfileExample {
   private static final String userId = "user_id";
 
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
-          .setAccessToken(accessToken)
-          .build();
+    .setAccessToken(accessToken)
+    .build();
   private static final GetUsersProfileRequest getUsersProfileRequest = spotifyApi.getUsersProfile(userId)
-          .build();
+    .build();
 
   public static void getUsersProfile_Sync() {
     try {
       final User user = getUsersProfileRequest.execute();
 
       System.out.println("Display name: " + user.getDisplayName());
-    } catch (IOException | SpotifyWebApiException e) {
+    } catch (IOException | SpotifyWebApiException | ParseException e) {
       System.out.println("Error: " + e.getMessage());
     }
   }

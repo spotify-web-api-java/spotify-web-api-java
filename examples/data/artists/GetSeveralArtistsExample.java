@@ -4,6 +4,7 @@ import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.Artist;
 import com.wrapper.spotify.requests.data.artists.GetSeveralArtistsRequest;
+import org.apache.hc.core5.http.ParseException;
 
 import java.io.IOException;
 import java.util.concurrent.CancellationException;
@@ -15,17 +16,17 @@ public class GetSeveralArtistsExample {
   private static final String[] ids = new String[]{"0LcJLqbBmaGUft1e9Mm8HV"};
 
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
-          .setAccessToken(accessToken)
-          .build();
+    .setAccessToken(accessToken)
+    .build();
   private static final GetSeveralArtistsRequest getSeveralArtistsRequest = spotifyApi.getSeveralArtists(ids)
-          .build();
+    .build();
 
   public static void getSeveralArtists_Sync() {
     try {
       final Artist[] artists = getSeveralArtistsRequest.execute();
 
       System.out.println("Length: " + artists.length);
-    } catch (IOException | SpotifyWebApiException e) {
+    } catch (IOException | SpotifyWebApiException | ParseException e) {
       System.out.println("Error: " + e.getMessage());
     }
   }

@@ -13,7 +13,7 @@ import java.io.IOException;
 
 /**
  * Get Spotify catalog information about albums that match a keyword string.
- *
+ * <p>
  * This class exists because it includes the property {@code totalTracks}, which is not documented in the official
  * specification, although the albums object as returned by the searches API includes it.
  */

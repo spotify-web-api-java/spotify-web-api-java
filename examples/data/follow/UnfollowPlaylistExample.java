@@ -2,7 +2,8 @@ package data.follow;
 
 import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
-import com.wrapper.spotify.requests.data.follow.UnfollowPlaylistRequest;
+import com.wrapper.spotify.requests.data.follow.legacy.UnfollowPlaylistRequest;
+import org.apache.hc.core5.http.ParseException;
 
 import java.io.IOException;
 import java.util.concurrent.CancellationException;
@@ -15,18 +16,18 @@ public class UnfollowPlaylistExample {
   private static final String playlistId = "3AGOiaoRXMSjswCLtuNqv5";
 
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
-          .setAccessToken(accessToken)
-          .build();
+    .setAccessToken(accessToken)
+    .build();
   private static final UnfollowPlaylistRequest unfollowPlaylistRequest = spotifyApi
-          .unfollowPlaylist(ownerId, playlistId)
-          .build();
+    .unfollowPlaylist(ownerId, playlistId)
+    .build();
 
   public static void unfollowPlaylist_Sync() {
     try {
       final String string = unfollowPlaylistRequest.execute();
 
       System.out.println("Null: " + string);
-    } catch (IOException | SpotifyWebApiException e) {
+    } catch (IOException | SpotifyWebApiException | ParseException e) {
       System.out.println("Error: " + e.getMessage());
     }
   }

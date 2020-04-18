@@ -19,7 +19,7 @@ public class Assertions {
       }
     }
 
-    fail(String.format("Request \"%s\" does not contain form parameter \"%s\" with value \"%s\"", request.getClass().getSimpleName(), name, String.valueOf(value)));
+    fail(String.format("Request \"%s\" does not contain form parameter \"%s\" with value \"%s\"", request.getClass().getSimpleName(), name, value));
   }
 
   public static <RT, T> void assertHasBodyParameter(IRequest<RT> request, String name, T value) {
@@ -31,6 +31,6 @@ public class Assertions {
       }
     }
 
-    fail(String.format("Request \"%s\" does not contain form parameter \"%s\" with value \"%s\"", request.getClass().getSimpleName(), name, String.valueOf(value)));
+    fail(String.format("Request \"%s\" does not contain form parameter \"%s\" with value \"%s\"", request.getClass().getSimpleName(), name, value));
   }
 }

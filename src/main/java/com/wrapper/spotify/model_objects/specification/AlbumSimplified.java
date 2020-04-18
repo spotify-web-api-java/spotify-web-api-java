@@ -380,7 +380,7 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
         .setAlbumGroup(
           hasAndNotNull(jsonObject, "album_group")
             ? AlbumGroup.keyOf(
-              jsonObject.get("album_group").getAsString().toLowerCase())
+            jsonObject.get("album_group").getAsString().toLowerCase())
             : null)
         .setAlbumType(
           hasAndNotNull(jsonObject, "album_type")

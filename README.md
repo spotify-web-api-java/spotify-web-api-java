@@ -2,7 +2,7 @@
 | ------------------ |
 | You **cannot** use this library for Android app development. Have a look at [kaaes/spotify-web-api-android](https://www.github.com/kaaes/spotify-web-api-android) and [Spotify's Android SDK](https://developer.spotify.com/technologies/spotify-android-sdk/) and [see why](https://github.com/thelinmichael/spotify-web-api-java/issues/120#issuecomment-363266591). |
 
-Spotify Web API Java [![Build Status](https://travis-ci.org/thelinmichael/spotify-web-api-java.svg?branch=master)](https://travis-ci.org/thelinmichael/spotify-web-api-java) [![codecov](https://codecov.io/gh/thelinmichael/spotify-web-api-java/branch/develop/graph/badge.svg)](https://codecov.io/gh/thelinmichael/spotify-web-api-java)
+Spotify Web API Java [![Build Status](https://travis-ci.org/thelinmichael/spotify-web-api-java.svg?branch=master)](https://travis-ci.org/thelinmichael/spotify-web-api-java) [![codecov](https://codecov.io/gh/thelinmichael/spotify-web-api-java/branch/develop/graph/badge.svg)](https://codecov.io/gh/thelinmichael/spotify-web-api-java) [![Language grade: Java](https://img.shields.io/lgtm/grade/java/g/thelinmichael/spotify-web-api-java.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/thelinmichael/spotify-web-api-java/context:java)
 ====================
 
 This is a Java wrapper/client for the [Spotify Web API](https://developer.spotify.com/web-api/).
@@ -31,7 +31,7 @@ Latest official release:
 <dependency>
   <groupId>se.michaelthelin.spotify</groupId>
   <artifactId>spotify-web-api-java</artifactId>
-  <version>5.0.1</version>
+  <version>5.0.2</version>
 </dependency>
 ```
 
@@ -48,7 +48,7 @@ Latest snapshot:
 
 Latest official release:
 ```Gradle
-compile 'se.michaelthelin.spotify:spotify-web-api-java:5.0.1'
+compile 'se.michaelthelin.spotify:spotify-web-api-java:5.0.2'
 ```
 
 Latest snapshot:
@@ -129,6 +129,8 @@ void getSomething_Async() {
 ```
 
 ### Authorization
+**Please see [Spotify's Authorization Guide](https://developer.spotify.com/documentation/general/guides/authorization-guide/) too!**
+
 For authorization requests the API object requires at least to have
 [your application](https://developer.spotify.com/my-applications)'s client ID and client secret set as its properties.
 When using the authorization code flow, the application's redirect URI is required too. Those properties will then be
