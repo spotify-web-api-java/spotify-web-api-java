@@ -19,8 +19,7 @@ public class UnfollowPlaylistRequestTest extends AbstractDataTest<String> {
   private final UnfollowPlaylistRequest defaultRequest = SPOTIFY_API
     .unfollowPlaylist(ID_USER, ID_PLAYLIST)
     .setHttpManager(
-      TestUtil.MockedHttpManager.returningJson(
-        "requests/data/follow/FollowArtistsOrUsersRequestTest.json"))
+      TestUtil.MockedHttpManager.returningJson(null))
     .build();
 
   public UnfollowPlaylistRequestTest() throws Exception {

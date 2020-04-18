@@ -21,8 +21,7 @@ public class ChangePlaylistsDetailsRequestTest extends AbstractDataTest<String> 
   private final ChangePlaylistsDetailsRequest defaultRequest = SPOTIFY_API
     .changePlaylistsDetails(ID_PLAYLIST)
     .setHttpManager(
-      TestUtil.MockedHttpManager.returningJson(
-        "requests/data/playlists/ChangePlaylistsDetailsRequest.json"))
+      TestUtil.MockedHttpManager.returningJson(null))
     .collaborative(COLLABORATIVE)
     .description(DESCRIPTION)
     .name(NAME)

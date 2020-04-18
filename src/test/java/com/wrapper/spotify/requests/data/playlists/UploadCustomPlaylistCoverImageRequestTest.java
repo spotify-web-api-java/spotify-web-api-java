@@ -19,8 +19,7 @@ public class UploadCustomPlaylistCoverImageRequestTest extends AbstractDataTest<
   private final UploadCustomPlaylistCoverImageRequest defaultRequest = SPOTIFY_API
     .uploadCustomPlaylistCoverImage(ID_PLAYLIST)
     .setHttpManager(
-      TestUtil.MockedHttpManager.returningJson(
-        "requests/data/playlists/UploadCustomPlaylistCoverImageRequest.json"))
+      TestUtil.MockedHttpManager.returningJson(null))
     .image_data(IMAGE_DATA != null ? IMAGE_DATA : "")
     .build();
 

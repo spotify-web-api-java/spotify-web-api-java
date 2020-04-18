@@ -20,8 +20,7 @@ public class UnfollowArtistsOrUsersRequestTest extends AbstractDataTest<String> 
   private final UnfollowArtistsOrUsersRequest defaultRequest = SPOTIFY_API
     .unfollowArtistsOrUsers(ModelObjectType.ARTIST, new String[]{ID_ARTIST, ID_ARTIST})
     .setHttpManager(
-      TestUtil.MockedHttpManager.returningJson(
-        "requests/data/follow/UnfollowArtistsOrUsersRequestTest.json"))
+      TestUtil.MockedHttpManager.returningJson(null))
     .build();
 
   public UnfollowArtistsOrUsersRequestTest() throws Exception {

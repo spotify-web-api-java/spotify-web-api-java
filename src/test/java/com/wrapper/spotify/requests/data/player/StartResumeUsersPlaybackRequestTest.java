@@ -21,8 +21,7 @@ public class StartResumeUsersPlaybackRequestTest extends AbstractDataTest<String
   private final StartResumeUsersPlaybackRequest defaultRequest = SPOTIFY_API
     .startResumeUsersPlayback()
     .setHttpManager(
-      TestUtil.MockedHttpManager.returningJson(
-        "requests/data/player/StartResumeUsersPlaybackRequest.json"))
+      TestUtil.MockedHttpManager.returningJson(null))
     .context_uri(CONTEXT_URI)
     .device_id(DEVICE_ID)
     .offset(OFFSET_JSON)

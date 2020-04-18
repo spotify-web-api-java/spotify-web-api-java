@@ -20,8 +20,7 @@ public class AddItemToUsersPlaybackQueueRequestTest extends AbstractDataTest<Str
   private final AddItemToUsersPlaybackQueueRequest defaultRequest = SPOTIFY_API
     .addItemToUsersPlaybackQueue("spotify:track:" + ID_TRACK)
     .setHttpManager(
-      TestUtil.MockedHttpManager.returningJson(
-        "requests/data/player/AddItemToUsersPlaybackQueueRequest.json"))
+      TestUtil.MockedHttpManager.returningJson(null))
     .device_id(DEVICE_ID)
     .build();
 

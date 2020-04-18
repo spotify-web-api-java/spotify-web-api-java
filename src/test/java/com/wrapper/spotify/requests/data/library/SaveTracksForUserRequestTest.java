@@ -22,14 +22,12 @@ public class SaveTracksForUserRequestTest extends AbstractDataTest<String> {
   private final SaveTracksForUserRequest defaultRequest = SPOTIFY_API
     .saveTracksForUser(ID_TRACK, ID_TRACK)
     .setHttpManager(
-      TestUtil.MockedHttpManager.returningJson(
-        "requests/data/library/SaveTracksForUserRequest.json"))
+      TestUtil.MockedHttpManager.returningJson(null))
     .build();
   private final SaveTracksForUserRequest bodyRequest = SPOTIFY_API
     .saveTracksForUser(JsonParser.parseString("[\"" + ID_TRACK + "\",\"" + ID_TRACK + "\"]").getAsJsonArray())
     .setHttpManager(
-      TestUtil.MockedHttpManager.returningJson(
-        "requests/data/follow/FollowArtistsOrUsersRequestTest.json"))
+      TestUtil.MockedHttpManager.returningJson(null))
     .build();
 
   public SaveTracksForUserRequestTest() throws Exception {

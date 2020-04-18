@@ -20,8 +20,7 @@ public class ToggleShuffleForUsersPlaybackRequestTest extends AbstractDataTest<S
   private final ToggleShuffleForUsersPlaybackRequest defaultRequest = SPOTIFY_API
     .toggleShuffleForUsersPlayback(STATE_BOOLEAN)
     .setHttpManager(
-      TestUtil.MockedHttpManager.returningJson(
-        "requests/data/player/ToggleShuffleForUsersPlaybackRequest.json"))
+      TestUtil.MockedHttpManager.returningJson(null))
     .device_id(DEVICE_ID)
     .build();
 

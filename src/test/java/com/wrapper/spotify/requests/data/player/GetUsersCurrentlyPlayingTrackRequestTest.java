@@ -27,8 +27,7 @@ public class GetUsersCurrentlyPlayingTrackRequestTest extends AbstractDataTest<C
   private final GetUsersCurrentlyPlayingTrackRequest emptyRequest = SPOTIFY_API
     .getUsersCurrentlyPlayingTrack()
     .setHttpManager(
-      TestUtil.MockedHttpManager.returningJson(
-        "requests/data/player/GetUsersCurrentlyPlayingTrackRequest_None.json"))
+      TestUtil.MockedHttpManager.returningJson(null))
     .market(MARKET)
     .build();
 

@@ -22,8 +22,7 @@ public class TransferUsersPlaybackRequestTest extends AbstractDataTest<String> {
   private final TransferUsersPlaybackRequest defaultRequest = SPOTIFY_API
     .transferUsersPlayback(JsonParser.parseString("[\"" + DEVICE_ID + "\"]").getAsJsonArray())
     .setHttpManager(
-      TestUtil.MockedHttpManager.returningJson(
-        "requests/data/player/TransferUsersPlaybackRequest.json"))
+      TestUtil.MockedHttpManager.returningJson(null))
     .play(PLAY)
     .build();
 
