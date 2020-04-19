@@ -20,8 +20,7 @@ public class PauseUsersPlaybackRequestTest extends AbstractDataTest<String> {
   private final PauseUsersPlaybackRequest defaultRequest = SPOTIFY_API
     .pauseUsersPlayback()
     .setHttpManager(
-      TestUtil.MockedHttpManager.returningJson(
-        "requests/data/player/PauseUsersPlaybackRequest.json"))
+      TestUtil.MockedHttpManager.returningJson(null))
     .device_id(DEVICE_ID)
     .build();
 

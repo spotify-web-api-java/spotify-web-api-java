@@ -48,4 +48,9 @@ public class GetArtistsRelatedArtistsExample {
       System.out.println("Async operation cancelled.");
     }
   }
+
+  public static void main(String[] args) {
+    getArtistsRelatedArtists_Sync();
+    getArtistsRelatedArtists_Async();
+  }
 }

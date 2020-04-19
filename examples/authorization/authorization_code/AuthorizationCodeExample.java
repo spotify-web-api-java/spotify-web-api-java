@@ -61,4 +61,9 @@ public class AuthorizationCodeExample {
       System.out.println("Async operation cancelled.");
     }
   }
+
+  public static void main(String[] args) {
+    authorizationCode_Sync();
+    authorizationCode_Async();
+  }
 }

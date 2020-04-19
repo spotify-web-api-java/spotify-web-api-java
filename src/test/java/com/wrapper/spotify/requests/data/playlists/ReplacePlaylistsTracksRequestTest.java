@@ -22,14 +22,12 @@ public class ReplacePlaylistsTracksRequestTest extends AbstractDataTest<String> 
   private final ReplacePlaylistsTracksRequest defaultRequest = SPOTIFY_API
     .replacePlaylistsTracks(ID_PLAYLIST, new String[]{"spotify:track:" + ID_TRACK, "spotify:track:" + ID_TRACK})
     .setHttpManager(
-      TestUtil.MockedHttpManager.returningJson(
-        "requests/data/playlists/ReplacePlaylistsTracksRequest.json"))
+      TestUtil.MockedHttpManager.returningJson(null))
     .build();
   private final ReplacePlaylistsTracksRequest bodyRequest = SPOTIFY_API
     .replacePlaylistsTracks(ID_PLAYLIST, JsonParser.parseString("[\"spotify:track:" + ID_TRACK + "\",\"spotify:track:" + ID_TRACK + "\"]").getAsJsonArray())
     .setHttpManager(
-      TestUtil.MockedHttpManager.returningJson(
-        "requests/data/playlists/ReplacePlaylistsTracksRequest.json"))
+      TestUtil.MockedHttpManager.returningJson(null))
     .build();
 
   public ReplacePlaylistsTracksRequestTest() throws Exception {

@@ -46,4 +46,9 @@ public class CheckUsersSavedAlbumsExample {
       System.out.println("Async operation cancelled.");
     }
   }
+
+  public static void main(String[] args) {
+    checkUsersSavedAlbums_Sync();
+    checkUsersSavedAlbums_Async();
+  }
 }

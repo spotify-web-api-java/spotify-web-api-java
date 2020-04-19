@@ -20,8 +20,7 @@ public class SetRepeatModeOnUsersPlaybackRequestTest extends AbstractDataTest<St
   private final SetRepeatModeOnUsersPlaybackRequest defaultRequest = SPOTIFY_API
     .setRepeatModeOnUsersPlayback(STATE)
     .setHttpManager(
-      TestUtil.MockedHttpManager.returningJson(
-        "requests/data/player/SetRepeatModeOnUsersPlaybackRequest.json"))
+      TestUtil.MockedHttpManager.returningJson(null))
     .device_id(DEVICE_ID)
     .build();
 

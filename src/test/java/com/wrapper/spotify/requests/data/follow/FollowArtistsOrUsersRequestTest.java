@@ -23,14 +23,12 @@ public class FollowArtistsOrUsersRequestTest extends AbstractDataTest<String> {
   private final FollowArtistsOrUsersRequest defaultRequest = SPOTIFY_API
     .followArtistsOrUsers(ModelObjectType.ARTIST, new String[]{ID_ARTIST, ID_ARTIST})
     .setHttpManager(
-      TestUtil.MockedHttpManager.returningJson(
-        "requests/data/follow/FollowArtistsOrUsersRequestTest.json"))
+      TestUtil.MockedHttpManager.returningJson(null))
     .build();
   private final FollowArtistsOrUsersRequest bodyRequest = SPOTIFY_API
     .followArtistsOrUsers(ModelObjectType.ARTIST, JsonParser.parseString("[\"" + ID_ARTIST + "\",\"" + ID_ARTIST + "\"]").getAsJsonArray())
     .setHttpManager(
-      TestUtil.MockedHttpManager.returningJson(
-        "requests/data/follow/FollowArtistsOrUsersRequestTest.json"))
+      TestUtil.MockedHttpManager.returningJson(null))
     .build();
 
   public FollowArtistsOrUsersRequestTest() throws Exception {

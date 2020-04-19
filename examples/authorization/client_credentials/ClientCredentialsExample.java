@@ -54,4 +54,9 @@ public class ClientCredentialsExample {
       System.out.println("Async operation cancelled.");
     }
   }
+
+  public static void main(String[] args) {
+    clientCredentials_Sync();
+    clientCredentials_Async();
+  }
 }

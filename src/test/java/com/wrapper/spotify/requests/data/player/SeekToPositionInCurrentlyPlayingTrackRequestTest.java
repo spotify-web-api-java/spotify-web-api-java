@@ -20,8 +20,7 @@ public class SeekToPositionInCurrentlyPlayingTrackRequestTest extends AbstractDa
   private final SeekToPositionInCurrentlyPlayingTrackRequest defaultRequest = SPOTIFY_API
     .seekToPositionInCurrentlyPlayingTrack(POSITION_MS)
     .setHttpManager(
-      TestUtil.MockedHttpManager.returningJson(
-        "requests/data/player/SeekToPositionInCurrentlyPlayingTrackRequest.json"))
+      TestUtil.MockedHttpManager.returningJson(null))
     .device_id(DEVICE_ID)
     .build();
 

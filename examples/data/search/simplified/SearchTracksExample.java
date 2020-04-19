@@ -51,4 +51,9 @@ public class SearchTracksExample {
       System.out.println("Async operation cancelled.");
     }
   }
+
+  public static void main(String[] args) {
+    searchTracks_Sync();
+    searchTracks_Async();
+  }
 }

@@ -47,4 +47,9 @@ public class RemoveUsersSavedTracksExample {
       System.out.println("Async operation cancelled.");
     }
   }
+
+  public static void main(String[] args) {
+    removeUsersSavedTracks_Sync();
+    removeUsersSavedTracks_Async();
+  }
 }

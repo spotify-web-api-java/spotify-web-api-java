@@ -48,4 +48,9 @@ public class ReplacePlaylistsTracksExample {
       System.out.println("Async operation cancelled.");
     }
   }
+
+  public static void main(String[] args) {
+    replacePlaylistsTracks_Sync();
+    replacePlaylistsTracks_Async();
+  }
 }

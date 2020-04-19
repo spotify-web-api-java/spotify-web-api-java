@@ -47,11 +47,15 @@ public class TestUtil {
 
   public static class MockedHttpManager {
 
-    public static IHttpManager returningJson(String jsonFixture) throws Exception {
+    public static IHttpManager returningJson(String jsonFixtureFileName) throws Exception {
 
       // Mocked HTTP Manager to get predictable responses
       final IHttpManager mockedHttpManager = mock(IHttpManager.class);
-      final String fixture = readTestData(jsonFixture);
+      String fixture = null;
+
+      if (jsonFixtureFileName != null) {
+        fixture = readTestData(jsonFixtureFileName);
+      }
 
       when(mockedHttpManager.get(any(URI.class), any(Header[].class))).thenReturn(fixture);
       when(mockedHttpManager.post(any(URI.class), any(Header[].class), any(HttpEntity.class))).thenReturn(fixture);

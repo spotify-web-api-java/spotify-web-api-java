@@ -48,4 +48,9 @@ public class GetPlaylistCoverImageExample {
       System.out.println("Async operation cancelled.");
     }
   }
+
+  public static void main(String[] args) {
+    getPlaylistCoverImage_Sync();
+    getPlaylistCoverImage_Async();
+  }
 }

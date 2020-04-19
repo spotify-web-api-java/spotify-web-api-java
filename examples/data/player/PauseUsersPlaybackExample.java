@@ -46,4 +46,9 @@ public class PauseUsersPlaybackExample {
       System.out.println("Async operation cancelled.");
     }
   }
+
+  public static void main(String[] args) {
+    pauseUsersPlayback_Sync();
+    pauseUsersPlayback_Async();
+  }
 }

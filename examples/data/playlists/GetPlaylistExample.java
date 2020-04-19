@@ -49,4 +49,9 @@ public class GetPlaylistExample {
       System.out.println("Async operation cancelled.");
     }
   }
+
+  public static void main(String[] args) {
+    getPlaylist_Sync();
+    getPlaylist_Async();
+  }
 }

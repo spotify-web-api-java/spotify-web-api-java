@@ -47,4 +47,9 @@ public class GetUsersProfileExample {
       System.out.println("Async operation cancelled.");
     }
   }
+
+  public static void main(String[] args) {
+    getUsersProfile_Sync();
+    getUsersProfile_Async();
+  }
 }

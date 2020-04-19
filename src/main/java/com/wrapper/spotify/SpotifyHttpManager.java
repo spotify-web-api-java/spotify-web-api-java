@@ -21,6 +21,7 @@ import org.apache.hc.client5.http.impl.cache.CacheConfig;
 import org.apache.hc.client5.http.impl.cache.CachingHttpClients;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
+import org.apache.hc.client5.http.impl.classic.HttpClients;
 import org.apache.hc.core5.http.*;
 import org.apache.hc.core5.http.io.entity.EntityUtils;
 import org.apache.hc.core5.util.Timeout;
@@ -35,6 +36,7 @@ public class SpotifyHttpManager implements IHttpManager {
   private static final int DEFAULT_CACHE_MAX_ENTRIES = 1000;
   private static final int DEFAULT_CACHE_MAX_OBJECT_SIZE = 8192;
   private final CloseableHttpClient httpClient;
+  private final CloseableHttpClient httpClientCaching;
   private final HttpHost proxy;
   private final UsernamePasswordCredentials proxyCredentials;
   private final Integer cacheMaxEntries;
@@ -87,7 +89,14 @@ public class SpotifyHttpManager implements IHttpManager {
         : RequestConfig.DEFAULT.getResponseTimeout())
       .build();
 
-    this.httpClient = CachingHttpClients
+    this.httpClient = HttpClients
+      .custom()
+      .setDefaultCredentialsProvider(credentialsProvider)
+      .setDefaultRequestConfig(requestConfig)
+      .disableContentCompression()
+      .build();
+
+    this.httpClientCaching = CachingHttpClients
       .custom()
       .setCacheConfig(cacheConfig)
       .setDefaultCredentialsProvider(credentialsProvider)
@@ -147,7 +156,7 @@ public class SpotifyHttpManager implements IHttpManager {
 
     httpGet.setHeaders(headers);
 
-    String responseBody = getResponseBody(execute(httpGet));
+    String responseBody = getResponseBody(execute(httpClientCaching, httpGet));
 
     httpGet.reset();
 
@@ -167,7 +176,7 @@ public class SpotifyHttpManager implements IHttpManager {
     httpPost.setHeaders(headers);
     httpPost.setEntity(body);
 
-    String responseBody = getResponseBody(execute(httpPost));
+    String responseBody = getResponseBody(execute(httpClient, httpPost));
 
     httpPost.reset();
 
@@ -187,7 +196,7 @@ public class SpotifyHttpManager implements IHttpManager {
     httpPut.setHeaders(headers);
     httpPut.setEntity(body);
 
-    String responseBody = getResponseBody(execute(httpPut));
+    String responseBody = getResponseBody(execute(httpClient, httpPut));
 
     httpPut.reset();
 
@@ -207,14 +216,14 @@ public class SpotifyHttpManager implements IHttpManager {
     httpDelete.setHeaders(headers);
     httpDelete.setEntity(body);
 
-    String responseBody = getResponseBody(execute(httpDelete));
+    String responseBody = getResponseBody(execute(httpClient, httpDelete));
 
     httpDelete.reset();
 
     return responseBody;
   }
 
-  private CloseableHttpResponse execute(ClassicHttpRequest method) throws
+  private CloseableHttpResponse execute(CloseableHttpClient httpClient, ClassicHttpRequest method) throws
     IOException {
     HttpCacheContext context = HttpCacheContext.create();
     CloseableHttpResponse response = httpClient.execute(method, context);

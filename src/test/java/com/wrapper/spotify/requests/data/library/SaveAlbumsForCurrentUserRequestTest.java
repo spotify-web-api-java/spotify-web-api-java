@@ -22,14 +22,12 @@ public class SaveAlbumsForCurrentUserRequestTest extends AbstractDataTest<String
   private final SaveAlbumsForCurrentUserRequest defaultRequest = SPOTIFY_API
     .saveAlbumsForCurrentUser(ID_ALBUM, ID_ALBUM)
     .setHttpManager(
-      TestUtil.MockedHttpManager.returningJson(
-        "requests/data/library/SaveAlbumsForCurrentUserRequest.json"))
+      TestUtil.MockedHttpManager.returningJson(null))
     .build();
   private final SaveAlbumsForCurrentUserRequest bodyRequest = SPOTIFY_API
     .saveAlbumsForCurrentUser(JsonParser.parseString("[\"" + ID_ALBUM + "\",\"" + ID_ALBUM + "\"]").getAsJsonArray())
     .setHttpManager(
-      TestUtil.MockedHttpManager.returningJson(
-        "requests/data/follow/FollowArtistsOrUsersRequestTest.json"))
+      TestUtil.MockedHttpManager.returningJson(null))
     .build();
 
   public SaveAlbumsForCurrentUserRequestTest() throws Exception {

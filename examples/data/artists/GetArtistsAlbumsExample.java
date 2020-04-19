@@ -52,4 +52,9 @@ public class GetArtistsAlbumsExample {
       System.out.println("Async operation cancelled.");
     }
   }
+
+  public static void main(String[] args) {
+    getArtistsAlbums_Sync();
+    getArtistsAlbums_Async();
+  }
 }

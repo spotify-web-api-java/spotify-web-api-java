@@ -50,4 +50,9 @@ public class GetListOfCurrentUsersPlaylistsExample {
       System.out.println("Async operation cancelled.");
     }
   }
+
+  public static void main(String[] args) {
+    getListOfCurrentUsersPlaylists_Sync();
+    getListOfCurrentUsersPlaylists_Async();
+  }
 }

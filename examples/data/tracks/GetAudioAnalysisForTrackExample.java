@@ -48,4 +48,9 @@ public class GetAudioAnalysisForTrackExample {
       System.out.println("Async operation cancelled.");
     }
   }
+
+  public static void main(String[] args) {
+    getAudioAnalysisForTrack_Sync();
+    getAudioAnalysisForTrack_Async();
+  }
 }

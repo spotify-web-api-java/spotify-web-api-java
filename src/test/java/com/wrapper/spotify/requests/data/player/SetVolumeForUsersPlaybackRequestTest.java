@@ -20,8 +20,7 @@ public class SetVolumeForUsersPlaybackRequestTest extends AbstractDataTest<Strin
   private final SetVolumeForUsersPlaybackRequest defaultRequest = SPOTIFY_API
     .setVolumeForUsersPlayback(VOLUME_PERCENT)
     .setHttpManager(
-      TestUtil.MockedHttpManager.returningJson(
-        "requests/data/player/SetVolumeForUsersPlaybackRequest.json"))
+      TestUtil.MockedHttpManager.returningJson(null))
     .device_id(DEVICE_ID)
     .build();
 

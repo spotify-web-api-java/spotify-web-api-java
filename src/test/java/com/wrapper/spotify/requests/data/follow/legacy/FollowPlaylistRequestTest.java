@@ -21,8 +21,7 @@ public class FollowPlaylistRequestTest extends AbstractDataTest<String> {
   private final FollowPlaylistRequest defaultRequest = SPOTIFY_API
     .followPlaylist(ID_USER, ID_PLAYLIST, PUBLIC)
     .setHttpManager(
-      TestUtil.MockedHttpManager.returningJson(
-        "requests/data/follow/FollowPlaylistRequestTest.json"))
+      TestUtil.MockedHttpManager.returningJson(null))
     .build();
 
   public FollowPlaylistRequestTest() throws Exception {

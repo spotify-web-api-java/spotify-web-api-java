@@ -51,4 +51,9 @@ public class StartResumeUsersPlaybackExample {
       System.out.println("Async operation cancelled.");
     }
   }
+
+  public static void main(String[] args) {
+    startResumeUsersPlayback_Sync();
+    startResumeUsersPlayback_Async();
+  }
 }

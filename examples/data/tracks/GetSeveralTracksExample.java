@@ -48,4 +48,9 @@ public class GetSeveralTracksExample {
       System.out.println("Async operation cancelled.");
     }
   }
+
+  public static void main(String[] args) {
+    getSeveralTracks_Sync();
+    getSeveralTracks_Async();
+  }
 }

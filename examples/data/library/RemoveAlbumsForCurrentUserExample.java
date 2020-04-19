@@ -47,4 +47,9 @@ public class RemoveAlbumsForCurrentUserExample {
       System.out.println("Async operation cancelled.");
     }
   }
+
+  public static void main(String[] args) {
+    removeAlbumsForCurrentUser_Sync();
+    removeAlbumsForCurrentUser_Async();
+  }
 }

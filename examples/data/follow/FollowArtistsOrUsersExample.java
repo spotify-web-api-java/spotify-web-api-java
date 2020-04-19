@@ -49,4 +49,9 @@ public class FollowArtistsOrUsersExample {
       System.out.println("Async operation cancelled.");
     }
   }
+
+  public static void main(String[] args) {
+    followArtistsOrUsers_Sync();
+    followArtistsOrUsers_Async();
+  }
 }

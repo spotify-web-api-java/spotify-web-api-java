@@ -49,4 +49,9 @@ public class GetCategoryExample {
       System.out.println("Async operation cancelled.");
     }
   }
+
+  public static void main(String[] args) {
+    getCategory_Sync();
+    getCategory_Async();
+  }
 }

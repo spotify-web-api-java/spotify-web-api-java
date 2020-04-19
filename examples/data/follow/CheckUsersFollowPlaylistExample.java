@@ -49,4 +49,9 @@ public class CheckUsersFollowPlaylistExample {
       System.out.println("Async operation cancelled.");
     }
   }
+
+  public static void main(String[] args) {
+    checkUsersFollowPlaylist_Sync();
+    checkUsersFollowPlaylist_Async();
+  }
 }

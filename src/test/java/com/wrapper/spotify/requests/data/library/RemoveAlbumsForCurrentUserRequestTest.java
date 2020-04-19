@@ -19,8 +19,7 @@ public class RemoveAlbumsForCurrentUserRequestTest extends AbstractDataTest<Stri
   private final RemoveAlbumsForCurrentUserRequest defaultRequest = SPOTIFY_API
     .removeAlbumsForCurrentUser(ID_ALBUM, ID_ALBUM)
     .setHttpManager(
-      TestUtil.MockedHttpManager.returningJson(
-        "requests/data/library/RemoveAlbumsForCurrentUserRequest.json"))
+      TestUtil.MockedHttpManager.returningJson(null))
     .build();
 
   public RemoveAlbumsForCurrentUserRequestTest() throws Exception {

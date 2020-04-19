@@ -47,4 +47,9 @@ public class SkipUsersPlaybackToNextTrackExample {
       System.out.println("Async operation cancelled.");
     }
   }
+
+  public static void main(String[] args) {
+    skipUsersPlaybackToNextTrack_Sync();
+    skipUsersPlaybackToNextTrack_Async();
+  }
 }

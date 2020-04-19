@@ -538,11 +538,11 @@ public class SpotifyApi {
    * Get the playlists from a specific category.
    *
    * @param category_id The Spotify category ID for the category.
-   * @return A {@link GetCategorysPlaylistsRequest.Builder}.
+   * @return A {@link GetCategoriesPlaylistsRequest.Builder}.
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
-  public GetCategorysPlaylistsRequest.Builder getCategorysPlaylists(String category_id) {
-    return new GetCategorysPlaylistsRequest.Builder(accessToken)
+  public GetCategoriesPlaylistsRequest.Builder getCategoriesPlaylists(String category_id) {
+    return new GetCategoriesPlaylistsRequest.Builder(accessToken)
       .setDefaults(httpManager, scheme, host, port)
       .category_id(category_id);
   }
@@ -894,7 +894,6 @@ public class SpotifyApi {
    *             {@link com.wrapper.spotify.model_objects.specification.Track}
    * @return A {@link GetUsersTopArtistsAndTracksRequest.Builder}.
    */
-  @SuppressWarnings("unchecked")
   public <T extends IArtistTrackModelObject> GetUsersTopArtistsAndTracksRequest.Builder<T> getUsersTopArtistsAndTracks(ModelObjectType type) {
     return new GetUsersTopArtistsAndTracksRequest.Builder<T>(accessToken)
       .setDefaults(httpManager, scheme, host, port)

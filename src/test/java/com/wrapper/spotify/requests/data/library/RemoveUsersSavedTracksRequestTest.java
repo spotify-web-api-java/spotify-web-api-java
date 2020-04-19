@@ -19,8 +19,7 @@ public class RemoveUsersSavedTracksRequestTest extends AbstractDataTest<String> 
   private final RemoveUsersSavedTracksRequest defaultRequest = SPOTIFY_API
     .removeUsersSavedTracks(ID_TRACK, ID_TRACK)
     .setHttpManager(
-      TestUtil.MockedHttpManager.returningJson(
-        "requests/data/library/RemoveUsersSavedTracksRequest.json"))
+      TestUtil.MockedHttpManager.returningJson(null))
     .build();
 
   public RemoveUsersSavedTracksRequestTest() throws Exception {

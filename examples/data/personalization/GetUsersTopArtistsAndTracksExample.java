@@ -38,6 +38,7 @@ public class GetUsersTopArtistsAndTracksExample {
     }
   }
 
+  @SuppressWarnings("unchecked")
   public static void getUsersTopArtistsAndTracks_Async() {
     try {
       final CompletableFuture<Paging<Artist>> pagingFuture = getUsersTopArtistsAndTracksRequest.executeAsync();
@@ -53,5 +54,10 @@ public class GetUsersTopArtistsAndTracksExample {
     } catch (CancellationException e) {
       System.out.println("Async operation cancelled.");
     }
+  }
+
+  public static void main(String[] args) {
+    getUsersTopArtistsAndTracks_Sync();
+    getUsersTopArtistsAndTracks_Async();
   }
 }

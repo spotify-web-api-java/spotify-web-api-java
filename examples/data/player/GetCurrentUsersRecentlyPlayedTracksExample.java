@@ -51,4 +51,9 @@ public class GetCurrentUsersRecentlyPlayedTracksExample {
       System.out.println("Async operation cancelled.");
     }
   }
+
+  public static void main(String[] args) {
+    getCurrentUsersRecentlyPlayedTracks_Sync();
+    getCurrentUsersRecentlyPlayedTracks_Async();
+  }
 }

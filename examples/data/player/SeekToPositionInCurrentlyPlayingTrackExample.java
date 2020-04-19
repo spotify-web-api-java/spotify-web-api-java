@@ -48,4 +48,9 @@ public class SeekToPositionInCurrentlyPlayingTrackExample {
       System.out.println("Async operation cancelled.");
     }
   }
+
+  public static void main(String[] args) {
+    seekToPositionInCurrentlyPlayingTrack_Sync();
+    seekToPositionInCurrentlyPlayingTrack_Async();
+  }
 }

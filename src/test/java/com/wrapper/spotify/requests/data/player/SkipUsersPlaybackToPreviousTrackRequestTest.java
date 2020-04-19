@@ -20,8 +20,7 @@ public class SkipUsersPlaybackToPreviousTrackRequestTest extends AbstractDataTes
   private final SkipUsersPlaybackToPreviousTrackRequest defaultRequest = SPOTIFY_API
     .skipUsersPlaybackToPreviousTrack()
     .setHttpManager(
-      TestUtil.MockedHttpManager.returningJson(
-        "requests/data/player/SkipUsersPlaybackToPreviousTrackRequest.json"))
+      TestUtil.MockedHttpManager.returningJson(null))
     .device_id(DEVICE_ID)
     .build();
 

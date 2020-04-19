@@ -52,4 +52,9 @@ public class SearchItemExample {
       System.out.println("Async operation cancelled.");
     }
   }
+
+  public static void main(String[] args) {
+    searchItem_Sync();
+    searchItem_Async();
+  }
 }

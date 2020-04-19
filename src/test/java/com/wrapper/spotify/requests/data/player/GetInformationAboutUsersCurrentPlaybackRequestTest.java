@@ -27,8 +27,7 @@ public class GetInformationAboutUsersCurrentPlaybackRequestTest extends Abstract
   private final GetInformationAboutUsersCurrentPlaybackRequest emptyRequest = SPOTIFY_API
     .getInformationAboutUsersCurrentPlayback()
     .setHttpManager(
-      TestUtil.MockedHttpManager.returningJson(
-        "requests/data/player/GetInformationAboutUsersCurrentPlaybackRequest_None.json"))
+      TestUtil.MockedHttpManager.returningJson(null))
     .market(MARKET)
     .build();
 

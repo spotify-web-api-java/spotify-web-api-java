@@ -48,4 +48,9 @@ public class SetRepeatModeOnUsersPlaybackExample {
       System.out.println("Async operation cancelled.");
     }
   }
+
+  public static void main(String[] args) {
+    setRepeatModeOnUsersPlayback_Sync();
+    setRepeatModeOnUsersPlayback_Async();
+  }
 }

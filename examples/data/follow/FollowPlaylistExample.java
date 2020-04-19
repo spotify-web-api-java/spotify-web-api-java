@@ -19,6 +19,7 @@ public class FollowPlaylistExample {
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
     .setAccessToken(accessToken)
     .build();
+  @SuppressWarnings("ConstantConditions")
   private static final FollowPlaylistRequest followPlaylistRequest = spotifyApi
     .followPlaylist(ownerId, playlistId, public_)
     .build();
@@ -48,5 +49,10 @@ public class FollowPlaylistExample {
     } catch (CancellationException e) {
       System.out.println("Async operation cancelled.");
     }
+  }
+
+  public static void main(String[] args) {
+    followPlaylist_Sync();
+    followPlaylist_Async();
   }
 }

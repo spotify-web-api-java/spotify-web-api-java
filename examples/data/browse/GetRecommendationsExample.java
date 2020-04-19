@@ -54,4 +54,9 @@ public class GetRecommendationsExample {
       System.out.println("Async operation cancelled.");
     }
   }
+
+  public static void main(String[] args) {
+    getRecommendations_Sync();
+    getRecommendations_Async();
+  }
 }
