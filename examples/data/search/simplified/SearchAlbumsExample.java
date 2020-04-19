@@ -51,4 +51,9 @@ public class SearchAlbumsExample {
       System.out.println("Async operation cancelled.");
     }
   }
+
+  public static void main(String[] args) {
+    searchAlbums_Sync();
+    searchAlbums_Async();
+  }
 }

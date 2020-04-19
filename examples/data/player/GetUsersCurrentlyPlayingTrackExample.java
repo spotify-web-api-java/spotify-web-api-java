@@ -48,4 +48,9 @@ public class GetUsersCurrentlyPlayingTrackExample {
       System.out.println("Async operation cancelled.");
     }
   }
+
+  public static void main(String[] args) {
+    getUsersCurrentlyPlayingTrack_Sync();
+    getUsersCurrentlyPlayingTrack_Async();
+  }
 }

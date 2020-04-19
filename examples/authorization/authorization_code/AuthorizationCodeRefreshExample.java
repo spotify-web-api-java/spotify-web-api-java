@@ -57,4 +57,9 @@ public class AuthorizationCodeRefreshExample {
       System.out.println("Async operation cancelled.");
     }
   }
+
+  public static void main(String[] args) {
+    authorizationCodeRefresh_Sync();
+    authorizationCodeRefresh_Async();
+  }
 }

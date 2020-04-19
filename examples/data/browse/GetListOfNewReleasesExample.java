@@ -50,4 +50,9 @@ public class GetListOfNewReleasesExample {
       System.out.println("Async operation cancelled.");
     }
   }
+
+  public static void main(String[] args) {
+    getListOfNewReleases_Sync();
+    getListOfNewReleases_Async();
+  }
 }

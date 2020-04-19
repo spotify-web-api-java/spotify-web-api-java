@@ -48,4 +48,9 @@ public class GetAudioFeaturesForSeveralTracksExample {
       System.out.println("Async operation cancelled.");
     }
   }
+
+  public static void main(String[] args) {
+    getAudioFeaturesForSeveralTracks_Sync();
+    getAudioFeaturesForSeveralTracks_Async();
+  }
 }

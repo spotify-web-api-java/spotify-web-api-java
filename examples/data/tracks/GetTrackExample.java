@@ -48,4 +48,9 @@ public class GetTrackExample {
       System.out.println("Async operation cancelled.");
     }
   }
+
+  public static void main(String[] args) {
+    getTrack_Sync();
+    getTrack_Async();
+  }
 }

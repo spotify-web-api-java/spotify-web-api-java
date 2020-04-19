@@ -51,4 +51,9 @@ public class GetCategorysPlaylistsExample {
       System.out.println("Async operation cancelled.");
     }
   }
+
+  public static void main(String[] args) {
+    getCategorysPlaylists_Sync();
+    getCategorysPlaylists_Async();
+  }
 }

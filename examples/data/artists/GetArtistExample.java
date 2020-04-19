@@ -47,4 +47,9 @@ public class GetArtistExample {
       System.out.println("Async operation cancelled.");
     }
   }
+
+  public static void main(String[] args) {
+    getArtist_Sync();
+    getArtist_Async();
+  }
 }

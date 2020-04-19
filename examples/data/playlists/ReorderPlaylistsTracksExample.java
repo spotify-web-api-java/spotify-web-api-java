@@ -53,4 +53,9 @@ public class ReorderPlaylistsTracksExample {
       System.out.println("Async operation cancelled.");
     }
   }
+
+  public static void main(String[] args) {
+    reorderPlaylistsTracks_Sync();
+    reorderPlaylistsTracks_Async();
+  }
 }

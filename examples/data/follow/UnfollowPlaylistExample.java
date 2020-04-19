@@ -48,4 +48,9 @@ public class UnfollowPlaylistExample {
       System.out.println("Async operation cancelled.");
     }
   }
+
+  public static void main(String[] args) {
+    unfollowPlaylist_Sync();
+    unfollowPlaylist_Async();
+  }
 }

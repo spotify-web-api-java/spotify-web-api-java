@@ -49,4 +49,9 @@ public class CheckCurrentUserFollowsArtistsOrUsersExample {
       System.out.println("Async operation cancelled.");
     }
   }
+
+  public static void main(String[] args) {
+    checkCurrentUserFollowsArtistsOrUsers_Sync();
+    checkCurrentUserFollowsArtistsOrUsers_Async();
+  }
 }

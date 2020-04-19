@@ -45,4 +45,9 @@ public class GetAvailableGenreSeedsExample {
       System.out.println("Async operation cancelled.");
     }
   }
+
+  public static void main(String[] args) {
+    getAvailableGenreSeeds_Sync();
+    getAvailableGenreSeeds_Async();
+  }
 }

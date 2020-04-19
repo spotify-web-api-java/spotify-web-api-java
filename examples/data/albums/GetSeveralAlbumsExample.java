@@ -48,4 +48,9 @@ public class GetSeveralAlbumsExample {
       System.out.println("Async operation cancelled.");
     }
   }
+
+  public static void main(String[] args) {
+    getSeveralAlbums_Sync();
+    getSeveralAlbums_Async();
+  }
 }

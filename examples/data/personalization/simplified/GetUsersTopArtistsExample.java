@@ -50,4 +50,9 @@ public class GetUsersTopArtistsExample {
       System.out.println("Async operation cancelled.");
     }
   }
+
+  public static void main(String[] args) {
+    getUsersTopArtists_Sync();
+    getUsersTopArtists_Async();
+  }
 }

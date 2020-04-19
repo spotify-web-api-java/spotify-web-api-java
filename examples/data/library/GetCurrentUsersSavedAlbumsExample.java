@@ -51,4 +51,9 @@ public class GetCurrentUsersSavedAlbumsExample {
       System.out.println("Async operation cancelled.");
     }
   }
+
+  public static void main(String[] args) {
+    getCurrentUsersSavedAlbums_Sync();
+    getCurrentUsersSavedAlbums_Async();
+  }
 }

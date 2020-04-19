@@ -47,4 +47,9 @@ public class SaveAlbumsForCurrentUserExample {
       System.out.println("Async operation cancelled.");
     }
   }
+
+  public static void main(String[] args) {
+    saveAlbumsForCurrentUser_Sync();
+    saveAlbumsForCurrentUser_Async();
+  }
 }

@@ -50,4 +50,9 @@ public class TransferUsersPlaybackExample {
       System.out.println("Async operation cancelled.");
     }
   }
+
+  public static void main(String[] args) {
+    transferUsersPlayback_Sync();
+    transferUsersPlayback_Async();
+  }
 }

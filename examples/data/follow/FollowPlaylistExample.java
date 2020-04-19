@@ -50,4 +50,9 @@ public class FollowPlaylistExample {
       System.out.println("Async operation cancelled.");
     }
   }
+
+  public static void main(String[] args) {
+    followPlaylist_Sync();
+    followPlaylist_Async();
+  }
 }

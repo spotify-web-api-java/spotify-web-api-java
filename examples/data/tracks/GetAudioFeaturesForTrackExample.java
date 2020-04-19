@@ -48,4 +48,9 @@ public class GetAudioFeaturesForTrackExample {
       System.out.println("Async operation cancelled.");
     }
   }
+
+  public static void main(String[] args) {
+    getAudioFeaturesForTrack_Sync();
+    getAudioFeaturesForTrack_Async();
+  }
 }

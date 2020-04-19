@@ -50,4 +50,9 @@ public class GetArtistsTopTracksExample {
       System.out.println("Async operation cancelled.");
     }
   }
+
+  public static void main(String[] args) {
+    getArtistsTopTracks_Sync();
+    getArtistsTopTracks_Async();
+  }
 }

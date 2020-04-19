@@ -52,4 +52,9 @@ public class GetUsersFollowedArtistsExample {
       System.out.println("Async operation cancelled.");
     }
   }
+
+  public static void main(String[] args) {
+    getUsersFollowedArtists_Sync();
+    getUsersFollowedArtists_Async();
+  }
 }

@@ -51,4 +51,9 @@ public class GetListOfFeaturedPlaylistsExample {
       System.out.println("Async operation cancelled.");
     }
   }
+
+  public static void main(String[] args) {
+    getListOfFeaturedPlaylists_Sync();
+    getListOfFeaturedPlaylists_Async();
+  }
 }

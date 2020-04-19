@@ -50,4 +50,9 @@ public class AddTracksToPlaylistExample {
       System.out.println("Async operation cancelled.");
     }
   }
+
+  public static void main(String[] args) {
+    addTracksToPlaylist_Sync();
+    addTracksToPlaylist_Async();
+  }
 }

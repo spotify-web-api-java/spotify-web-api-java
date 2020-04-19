@@ -48,4 +48,9 @@ public class ToggleShuffleForUsersPlaybackExample {
       System.out.println("Async operation cancelled.");
     }
   }
+
+  public static void main(String[] args) {
+    toggleShuffleForUsersPlayback_Sync();
+    toggleShuffleForUsersPlayback_Async();
+  }
 }

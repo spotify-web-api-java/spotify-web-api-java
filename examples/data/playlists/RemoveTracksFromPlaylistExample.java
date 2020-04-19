@@ -52,4 +52,9 @@ public class RemoveTracksFromPlaylistExample {
       System.out.println("Async operation cancelled.");
     }
   }
+
+  public static void main(String[] args) {
+    removeTracksFromPlaylist_Sync();
+    removeTracksFromPlaylist_Async();
+  }
 }

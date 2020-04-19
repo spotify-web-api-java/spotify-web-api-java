@@ -47,4 +47,9 @@ public class GetUsersAvailableDevicesExample {
       System.out.println("Async operation cancelled.");
     }
   }
+
+  public static void main(String[] args) {
+    getUsersAvailableDevices_Sync();
+    getUsersAvailableDevices_Async();
+  }
 }

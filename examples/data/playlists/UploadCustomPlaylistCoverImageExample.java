@@ -48,4 +48,9 @@ public class UploadCustomPlaylistCoverImageExample {
       System.out.println("Async operation cancelled.");
     }
   }
+
+  public static void main(String[] args) {
+    uploadCustomPlaylistCoverImage_Sync();
+    uploadCustomPlaylistCoverImage_Async();
+  }
 }

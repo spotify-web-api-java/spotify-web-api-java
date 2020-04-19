@@ -48,4 +48,9 @@ public class AddItemToUsersPlaybackQueueExample {
       System.out.println("Async operation cancelled.");
     }
   }
+
+  public static void main(String[] args) {
+    addItemToUsersPlaybackQueue_Sync();
+    addItemToUsersPlaybackQueue_Async();
+  }
 }

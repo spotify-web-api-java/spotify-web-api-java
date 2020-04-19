@@ -48,4 +48,9 @@ public class SetVolumeForUsersPlaybackExample {
       System.out.println("Async operation cancelled.");
     }
   }
+
+  public static void main(String[] args) {
+    setVolumeForUsersPlayback_Sync();
+    setVolumeForUsersPlayback_Async();
+  }
 }
