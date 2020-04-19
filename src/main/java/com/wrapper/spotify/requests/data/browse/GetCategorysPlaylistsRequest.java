@@ -14,15 +14,15 @@ import java.io.IOException;
 /**
  * Get a list of Spotify playlists tagged with a particular category.
  */
-@JsonDeserialize(builder = GetCategoriesPlaylistsRequest.Builder.class)
-public class GetCategoriesPlaylistsRequest extends AbstractDataRequest<Paging<PlaylistSimplified>> {
+@JsonDeserialize(builder = GetCategorysPlaylistsRequest.Builder.class)
+public class GetCategorysPlaylistsRequest extends AbstractDataRequest<Paging<PlaylistSimplified>> {
 
   /**
-   * The private {@link GetCategoriesPlaylistsRequest} constructor.
+   * The private {@link GetCategorysPlaylistsRequest} constructor.
    *
-   * @param builder A {@link GetCategoriesPlaylistsRequest.Builder}.
+   * @param builder A {@link GetCategorysPlaylistsRequest.Builder}.
    */
-  private GetCategoriesPlaylistsRequest(final Builder builder) {
+  private GetCategorysPlaylistsRequest(final Builder builder) {
     super(builder);
   }
 
@@ -41,12 +41,12 @@ public class GetCategoriesPlaylistsRequest extends AbstractDataRequest<Paging<Pl
   }
 
   /**
-   * Builder class for building a {@link GetCategoriesPlaylistsRequest}.
+   * Builder class for building a {@link GetCategorysPlaylistsRequest}.
    */
   public static final class Builder extends AbstractDataPagingRequest.Builder<PlaylistSimplified, Builder> {
 
     /**
-     * Create a new {@link GetCategoriesPlaylistsRequest.Builder} instance.
+     * Create a new {@link GetCategorysPlaylistsRequest.Builder} instance.
      *
      * @param accessToken Required. A valid access token from the Spotify Accounts service.
      */
@@ -58,7 +58,7 @@ public class GetCategoriesPlaylistsRequest extends AbstractDataRequest<Paging<Pl
      * The categroy ID setter.
      *
      * @param category_id The Spotify category ID for the category.
-     * @return A {@link GetCategoriesPlaylistsRequest.Builder}.
+     * @return A {@link GetCategorysPlaylistsRequest.Builder}.
      * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify URIs &amp; IDs</a>
      */
     public Builder category_id(final String category_id) {
@@ -71,7 +71,7 @@ public class GetCategoriesPlaylistsRequest extends AbstractDataRequest<Paging<Pl
      * The country code setter.
      *
      * @param country Optional. A country: an ISO 3166-1 alpha-2 country code.
-     * @return A {@link GetCategoriesPlaylistsRequest.Builder}.
+     * @return A {@link GetCategorysPlaylistsRequest.Builder}.
      * @see <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">Wikipedia: ISO 3166-1 alpha-2 country codes</a>
      */
     public Builder country(final CountryCode country) {
@@ -83,7 +83,7 @@ public class GetCategoriesPlaylistsRequest extends AbstractDataRequest<Paging<Pl
      * The limit setter.
      *
      * @param limit Optional. The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.
-     * @return A {@link GetCategoriesPlaylistsRequest.Builder}.
+     * @return A {@link GetCategorysPlaylistsRequest.Builder}.
      */
     @Override
     public Builder limit(final Integer limit) {
@@ -96,7 +96,7 @@ public class GetCategoriesPlaylistsRequest extends AbstractDataRequest<Paging<Pl
      *
      * @param offset Optional. The index of the first item to return. Default: 0 (the first object). Use with
      *               {@link #limit(Integer)} to get the next set of items.
-     * @return A {@link GetCategoriesPlaylistsRequest.Builder}.
+     * @return A {@link GetCategorysPlaylistsRequest.Builder}.
      */
     @Override
     public Builder offset(final Integer offset) {
@@ -107,12 +107,12 @@ public class GetCategoriesPlaylistsRequest extends AbstractDataRequest<Paging<Pl
     /**
      * The request build method.
      *
-     * @return A custom {@link GetCategoriesPlaylistsRequest}.
+     * @return A custom {@link GetCategorysPlaylistsRequest}.
      */
     @Override
-    public GetCategoriesPlaylistsRequest build() {
+    public GetCategorysPlaylistsRequest build() {
       setPath("/v1/browse/categories/{category_id}/playlists");
-      return new GetCategoriesPlaylistsRequest(this);
+      return new GetCategorysPlaylistsRequest(this);
     }
 
     @Override

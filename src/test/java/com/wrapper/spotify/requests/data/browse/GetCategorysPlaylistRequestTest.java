@@ -17,17 +17,17 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
 @RunWith(MockitoJUnitRunner.class)
-public class GetCategoriesPlaylistRequestTest extends AbstractDataTest<Paging<PlaylistSimplified>> {
-  private final GetCategoriesPlaylistsRequest defaultRequest = SPOTIFY_API.getCategoriesPlaylists(CATEGORY_ID)
+public class GetCategorysPlaylistRequestTest extends AbstractDataTest<Paging<PlaylistSimplified>> {
+  private final GetCategorysPlaylistsRequest defaultRequest = SPOTIFY_API.getCategorysPlaylists(CATEGORY_ID)
     .setHttpManager(
       TestUtil.MockedHttpManager.returningJson(
-        "requests/data/browse/GetCategoriesPlaylistsRequest.json"))
+        "requests/data/browse/GetCategorysPlaylistsRequest.json"))
     .country(COUNTRY)
     .limit(LIMIT)
     .offset(OFFSET)
     .build();
 
-  public GetCategoriesPlaylistRequestTest() throws Exception {
+  public GetCategorysPlaylistRequestTest() throws Exception {
   }
 
   @Test
