@@ -538,11 +538,11 @@ public class SpotifyApi {
    * Get the playlists from a specific category.
    *
    * @param category_id The Spotify category ID for the category.
-   * @return A {@link GetCategorysPlaylistsRequest.Builder}.
+   * @return A {@link GetCategoriesPlaylistsRequest.Builder}.
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
-  public GetCategorysPlaylistsRequest.Builder getCategorysPlaylists(String category_id) {
-    return new GetCategorysPlaylistsRequest.Builder(accessToken)
+  public GetCategoriesPlaylistsRequest.Builder getCategoriesPlaylists(String category_id) {
+    return new GetCategoriesPlaylistsRequest.Builder(accessToken)
       .setDefaults(httpManager, scheme, host, port)
       .category_id(category_id);
   }
