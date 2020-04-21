@@ -13,6 +13,8 @@ import com.wrapper.spotify.requests.data.albums.GetSeveralAlbumsRequest;
 import com.wrapper.spotify.requests.data.artists.*;
 import com.wrapper.spotify.requests.data.browse.*;
 import com.wrapper.spotify.requests.data.browse.miscellaneous.GetAvailableGenreSeedsRequest;
+import com.wrapper.spotify.requests.data.episodes.GetEpisodeRequest;
+import com.wrapper.spotify.requests.data.episodes.GetSeveralEpisodesRequest;
 import com.wrapper.spotify.requests.data.follow.*;
 import com.wrapper.spotify.requests.data.library.*;
 import com.wrapper.spotify.requests.data.personalization.GetUsersTopArtistsAndTracksRequest;
@@ -27,6 +29,9 @@ import com.wrapper.spotify.requests.data.search.simplified.SearchArtistsRequest;
 import com.wrapper.spotify.requests.data.search.simplified.SearchPlaylistsRequest;
 import com.wrapper.spotify.requests.data.search.simplified.SearchTracksRequest;
 import com.wrapper.spotify.requests.data.search.simplified.special.SearchAlbumsSpecialRequest;
+import com.wrapper.spotify.requests.data.shows.GetSeveralShowsRequest;
+import com.wrapper.spotify.requests.data.shows.GetShowRequest;
+import com.wrapper.spotify.requests.data.shows.GetShowsEpisodesRequest;
 import com.wrapper.spotify.requests.data.tracks.*;
 import com.wrapper.spotify.requests.data.users_profile.GetCurrentUsersProfileRequest;
 import com.wrapper.spotify.requests.data.users_profile.GetUsersProfileRequest;
@@ -598,6 +603,32 @@ public class SpotifyApi {
   }
 
   /**
+   * Get an episode.
+   *
+   * @param id The Spotify ID of the episode.
+   * @return A {@link GetEpisodeRequest.Builder}.
+   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   */
+  public GetEpisodeRequest.Builder getEpisode(String id) {
+    return new GetEpisodeRequest.Builder(accessToken)
+      .setDefaults(httpManager, scheme, host, port)
+      .id(id);
+  }
+
+  /**
+   * Get multiple episodes.
+   *
+   * @param ids The Spotify IDs of all episodes you're trying to retrieve. Maximum: 50 IDs.
+   * @return A {@link GetSeveralEpisodesRequest.Builder}.
+   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   */
+  public GetSeveralEpisodesRequest.Builder getSeveralEpisodes(String... ids) {
+    return new GetSeveralEpisodesRequest.Builder(accessToken)
+      .setDefaults(httpManager, scheme, host, port)
+      .ids(concat(ids, ','));
+  }
+
+  /**
    * Check to see if the current user is following one or more artists or other Spotify users.
    *
    * @param type The ID type: either artist or user.
@@ -772,6 +803,19 @@ public class SpotifyApi {
   }
 
   /**
+   * Check if a show is saved in the users "Your Music" library.
+   *
+   * @param ids The show IDs to check for in the user's Your Music library. Maximum: 50 IDs.
+   * @return A {@link CheckUsersSavedShowsRequest.Builder}.
+   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   */
+  public CheckUsersSavedShowsRequest.Builder checkUsersSavedShows(String... ids) {
+    return new CheckUsersSavedShowsRequest.Builder(accessToken)
+      .setDefaults(httpManager, scheme, host, port)
+      .ids(concat(ids, ','));
+  }
+
+  /**
    * Check if a track is saved in the user's "Your Music" library.
    *
    * @param ids The track IDs to check for in the user's Your Music library. Maximum: 50 IDs.
@@ -795,6 +839,15 @@ public class SpotifyApi {
   }
 
   /**
+   * Get a list of shows saved in the current Spotify user’s library.
+   * @return A {@link GetUsersSavedShowsRequest.Builder}.
+   */
+  public GetUsersSavedShowsRequest.Builder getUsersSavedShows() {
+    return new GetUsersSavedShowsRequest.Builder(accessToken)
+      .setDefaults(httpManager, scheme, host, port);
+  }
+
+  /**
    * Get an user's "Your Music" tracks.
    *
    * @return A {@link GetUsersSavedTracksRequest.Builder}.
@@ -813,6 +866,19 @@ public class SpotifyApi {
    */
   public RemoveAlbumsForCurrentUserRequest.Builder removeAlbumsForCurrentUser(String... ids) {
     return new RemoveAlbumsForCurrentUserRequest.Builder(accessToken)
+      .setDefaults(httpManager, scheme, host, port)
+      .ids(concat(ids, ','));
+  }
+
+  /**
+   * Remove one or more shows from the current users "Your Music" library.
+   *
+   * @param ids The Spotify IDs for the shows to be deleted. Maximum: 50 IDs.
+   * @return A {@link RemoveAlbumsForCurrentUserRequest.Builder}.
+   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   */
+  public RemoveUsersSavedShowsRequest.Builder removeUsersSavedShows(String... ids) {
+    return new RemoveUsersSavedShowsRequest.Builder(accessToken)
       .setDefaults(httpManager, scheme, host, port)
       .ids(concat(ids, ','));
   }
@@ -854,6 +920,19 @@ public class SpotifyApi {
     return new SaveAlbumsForCurrentUserRequest.Builder(accessToken)
       .setDefaults(httpManager, scheme, host, port)
       .ids(ids);
+  }
+
+  /**
+   * Save one or more shows to current Spotify user’s library.
+   *
+   * @param ids The show IDs to add to the users library. Maximum: 50 IDs.
+   * @return A {@link SaveShowsForCurrentUserRequest.Builder}.
+   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   */
+  public SaveShowsForCurrentUserRequest.Builder saveShowsForCurrentUser(String... ids) {
+    return new SaveShowsForCurrentUserRequest.Builder(accessToken)
+      .setDefaults(httpManager, scheme, host, port)
+      .ids(concat(ids, ','));
   }
 
   /**
@@ -1508,10 +1587,10 @@ public class SpotifyApi {
   }
 
   /**
-   * Get Spotify catalog information about artists, albums, tracks or playlists that match a keyword string.
+   * Get Spotify catalog information about artists, albums, episodes, shows, tracks or playlists that match a keyword string.
    *
    * @param q    The search query's keywords (and optional field filters and operators).
-   * @param type A comma-separated list of item types to search across. Valid types are: album, artist, playlist, and
+   * @param type A comma-separated list of item types to search across. Valid types are: album, artist, episode, show, playlist and
    *             track.
    * @return A {@link SearchItemRequest.Builder}.
    */
@@ -1562,6 +1641,18 @@ public class SpotifyApi {
   }
 
   /**
+   * Get Spotify catalog information about episodes that match a keyword string.
+   *
+   * @param q The search query's keywords (and optional field filters and operators).
+   * @return A {@link SearchEpisodesRequest.Builder}.
+   */
+  public SearchEpisodesRequest.Builder searchEpisodes(String q) {
+    return new SearchEpisodesRequest.Builder(accessToken)
+      .setDefaults(httpManager, scheme, host, port)
+      .q(q);
+  }
+
+  /**
    * Get Spotify catalog information about playlists that match a keyword string.
    *
    * @param q The search query's keywords (and optional field filters and operators).
@@ -1569,6 +1660,18 @@ public class SpotifyApi {
    */
   public SearchPlaylistsRequest.Builder searchPlaylists(String q) {
     return new SearchPlaylistsRequest.Builder(accessToken)
+      .setDefaults(httpManager, scheme, host, port)
+      .q(q);
+  }
+
+  /**
+   * Get Spotify catalog information about shows that match a keyword string.
+   *
+   * @param q The search query's keywords (and optional field filters and operators).
+   * @return A {@link SearchShowsRequest.Builder}.
+   */
+  public SearchShowsRequest.Builder searchShows(String q) {
+    return new SearchShowsRequest.Builder(accessToken)
       .setDefaults(httpManager, scheme, host, port)
       .q(q);
   }
@@ -1583,6 +1686,45 @@ public class SpotifyApi {
     return new SearchTracksRequest.Builder(accessToken)
       .setDefaults(httpManager, scheme, host, port)
       .q(q);
+  }
+
+  /**
+   * Get a show.
+   *
+   * @param id The Spotify ID of the show.
+   * @return A {@link GetShowRequest.Builder}.
+   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   */
+  public GetShowRequest.Builder getShow(String id) {
+    return new GetShowRequest.Builder(accessToken)
+      .setDefaults(httpManager, scheme, host, port)
+      .id(id);
+  }
+
+  /**
+   * Get multiple shows.
+   *
+   * @param ids The Spotify IDs of all shows you're trying to retrieve. Maximum: 50 IDs.
+   * @return A {@link GetSeveralShowsRequest.Builder}.
+   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   */
+  public GetSeveralShowsRequest.Builder getSeveralShows(String... ids) {
+    return new GetSeveralShowsRequest.Builder(accessToken)
+      .setDefaults(httpManager, scheme, host, port)
+      .ids(concat(ids, ','));
+  }
+
+  /**
+   * Get Spotify catalog information about an show’s episodes.
+   *
+   * @param id The Spotify ID of the show.
+   * @return A {@link GetShowsEpisodesRequest.Builder}.
+   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   */
+  public GetShowsEpisodesRequest.Builder getShowEpisodes(String id) {
+    return new GetShowsEpisodesRequest.Builder(accessToken)
+      .setDefaults(httpManager, scheme, host, port)
+      .id(id);
   }
 
   /**

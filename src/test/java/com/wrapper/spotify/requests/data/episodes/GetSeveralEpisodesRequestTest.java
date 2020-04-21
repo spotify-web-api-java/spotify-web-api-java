@@ -1,9 +1,8 @@
-package com.wrapper.spotify.requests.data.search;
+package com.wrapper.spotify.requests.data.episodes;
 
 import com.wrapper.spotify.TestUtil;
-import com.wrapper.spotify.enums.ModelObjectType;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
-import com.wrapper.spotify.model_objects.special.SearchResult;
+import com.wrapper.spotify.model_objects.specification.Episode;
 import com.wrapper.spotify.requests.data.AbstractDataTest;
 import org.apache.hc.core5.http.ParseException;
 import org.junit.Test;
@@ -13,28 +12,26 @@ import org.mockito.runners.MockitoJUnitRunner;
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 @RunWith(MockitoJUnitRunner.class)
-public class SearchItemRequestTest extends AbstractDataTest<SearchResult> {
-  private final SearchItemRequest defaultRequest = SPOTIFY_API
-    .searchItem(Q, ModelObjectType.ARTIST.getType())
+public class GetSeveralEpisodesRequestTest extends AbstractDataTest<Episode[]> {
+  private final GetSeveralEpisodesRequest defaultRequest = SPOTIFY_API
+    .getSeveralEpisodes(ID_EPISODE, ID_EPISODE)
     .setHttpManager(
       TestUtil.MockedHttpManager.returningJson(
-        "requests/data/search/SearchItemRequest.json"))
-    .limit(LIMIT)
+        "requests/data/episodes/GetSeveralEpisodesRequest.json"))
     .market(MARKET)
-    .offset(OFFSET)
     .build();
 
-  public SearchItemRequestTest() throws Exception {
+  public GetSeveralEpisodesRequestTest() throws Exception {
   }
 
   @Test
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
     assertEquals(
-      "https://api.spotify.com:443/v1/search?q=Abba&type=artist&limit=10&market=SE&offset=0",
+      "https://api.spotify.com:443/v1/episodes?ids=4GI3dxEafwap1sFiTGPKd1%2C4GI3dxEafwap1sFiTGPKd1&market=SE",
       defaultRequest.getUri().toString());
   }
 
@@ -48,18 +45,9 @@ public class SearchItemRequestTest extends AbstractDataTest<SearchResult> {
     shouldReturnDefault(defaultRequest.executeAsync().get());
   }
 
-  public void shouldReturnDefault(final SearchResult searchResult) {
-    assertNull(
-      searchResult.getAlbums());
-    assertNotNull(
-      searchResult.getArtists());
-    assertNull(
-      searchResult.getEpisodes());
-    assertNull(
-      searchResult.getPlaylists());
-    assertNull(
-      searchResult.getShows());
-    assertNotNull(
-      searchResult.getTracks());
+  public void shouldReturnDefault(final Episode[] episodes) {
+    assertEquals(
+      2,
+      episodes.length);
   }
 }
