@@ -6,14 +6,14 @@ import com.google.gson.JsonObject;
 import com.wrapper.spotify.enums.ModelObjectType;
 import com.wrapper.spotify.enums.ReleaseDatePrecision;
 import com.wrapper.spotify.model_objects.AbstractModelObject;
-import com.wrapper.spotify.requests.data.PlaylistItem;
+import com.wrapper.spotify.requests.data.IPlaylistItem;
 
 /**
  * Retrieve information about <a href="https://developer.spotify.com/documentation/web-api/reference/object-model/#episode-object-full">
  * episode objects</a> by building instances from this class.
  */
 @JsonDeserialize(builder = Episode.Builder.class)
-public class Episode extends AbstractModelObject implements PlaylistItem {
+public class Episode extends AbstractModelObject implements IPlaylistItem {
   private final String audioPreviewUrl;
   private final String description;
   private final Integer durationMs;

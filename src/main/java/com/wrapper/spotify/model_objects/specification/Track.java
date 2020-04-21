@@ -8,6 +8,7 @@ import com.wrapper.spotify.enums.ModelObjectType;
 import com.wrapper.spotify.model_objects.AbstractModelObject;
 import com.wrapper.spotify.model_objects.miscellaneous.Restrictions;
 import com.wrapper.spotify.requests.data.personalization.interfaces.IArtistTrackModelObject;
+import com.wrapper.spotify.requests.data.IPlaylistItem;
 import com.wrapper.spotify.requests.data.search.interfaces.ISearchModelObject;
 
 /**
@@ -15,7 +16,7 @@ import com.wrapper.spotify.requests.data.search.interfaces.ISearchModelObject;
  * Track objects</a> by building instances from this class.
  */
 @JsonDeserialize(builder = Track.Builder.class)
-public class Track extends AbstractModelObject implements IArtistTrackModelObject, ISearchModelObject {
+public class Track extends AbstractModelObject implements IArtistTrackModelObject, ISearchModelObject, IPlaylistItem {
   private final AlbumSimplified album;
   private final ArtistSimplified[] artists;
   private final CountryCode[] availableMarkets;
