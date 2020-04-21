@@ -45,6 +45,8 @@ public class GetPlaylistsTracksRequest extends AbstractDataRequest<Paging<Playli
    */
   public static final class Builder extends AbstractDataPagingRequest.Builder<PlaylistTrack, Builder> {
 
+    private String additionalTypes = "";
+
     /**
      * Create a new {@link GetPlaylistsTracksRequest.Builder}.
      * <p>
@@ -139,12 +141,31 @@ public class GetPlaylistsTracksRequest extends AbstractDataRequest<Paging<Playli
     }
 
     /**
+     * The additional types setter.
+     *
+     * @param additionalTypes Optional. A comma-separated list of item types that your client supports
+     *                        besides the default track type. Valid types are: {@code track} and {@code episode}.
+     *                        An unsupported type in the response is expected to be represented as {@code null} value in the {@code item} field.
+     * @return A {@link GetPlaylistsTracksRequest.Builder}.
+     */
+    public Builder additionalTypes(final String additionalTypes){
+      assert (additionalTypes != null);
+      assert (additionalTypes.matches("((^|,)(episode|track))*$"));
+      this.additionalTypes = additionalTypes;
+      return this;
+    }
+
+    /**
      * The request build method.
      *
      * @return A custom {@link GetPlaylistsTracksRequest}.
      */
     @Override
     public GetPlaylistsTracksRequest build() {
+      if (!this.additionalTypes.isEmpty()){
+        setQueryParameter("additional_types", additionalTypes);
+      }
+      setPath("/v1/me/player");
       setPath("/v1/playlists/{playlist_id}/tracks");
       return new GetPlaylistsTracksRequest(this);
     }

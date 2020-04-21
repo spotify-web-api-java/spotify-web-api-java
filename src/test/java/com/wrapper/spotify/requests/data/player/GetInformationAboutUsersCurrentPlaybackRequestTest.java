@@ -1,8 +1,12 @@
 package com.wrapper.spotify.requests.data.player;
 
 import com.wrapper.spotify.TestUtil;
+import com.wrapper.spotify.enums.CurrentlyPlayingType;
+import com.wrapper.spotify.enums.ModelObjectType;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.miscellaneous.CurrentlyPlayingContext;
+import com.wrapper.spotify.model_objects.specification.Episode;
+import com.wrapper.spotify.model_objects.specification.Track;
 import com.wrapper.spotify.requests.data.AbstractDataTest;
 import org.apache.hc.core5.http.ParseException;
 import org.junit.Test;
@@ -22,6 +26,16 @@ public class GetInformationAboutUsersCurrentPlaybackRequestTest extends Abstract
       TestUtil.MockedHttpManager.returningJson(
         "requests/data/player/GetInformationAboutUsersCurrentPlaybackRequest.json"))
     .market(MARKET)
+    .additionalTypes(ADDITIONAL_TYPES)
+    .build();
+
+  private final GetInformationAboutUsersCurrentPlaybackRequest defaultEpisodeRequest = SPOTIFY_API
+    .getInformationAboutUsersCurrentPlayback()
+    .setHttpManager(
+      TestUtil.MockedHttpManager.returningJson(
+        "requests/data/player/GetInformationAboutUsersCurrentPlaybackRequest_Episode.json"))
+    .market(MARKET)
+    .additionalTypes(ADDITIONAL_TYPES)
     .build();
 
   private final GetInformationAboutUsersCurrentPlaybackRequest emptyRequest = SPOTIFY_API
@@ -29,6 +43,7 @@ public class GetInformationAboutUsersCurrentPlaybackRequestTest extends Abstract
     .setHttpManager(
       TestUtil.MockedHttpManager.returningJson(null))
     .market(MARKET)
+    .additionalTypes(ADDITIONAL_TYPES)
     .build();
 
   public GetInformationAboutUsersCurrentPlaybackRequestTest() throws Exception {
@@ -38,7 +53,7 @@ public class GetInformationAboutUsersCurrentPlaybackRequestTest extends Abstract
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
     assertEquals(
-      "https://api.spotify.com:443/v1/me/player?market=SE",
+      "https://api.spotify.com:443/v1/me/player?market=SE&additional_types=track%2Cepisode",
       defaultRequest.getUri().toString());
   }
 
@@ -72,6 +87,61 @@ public class GetInformationAboutUsersCurrentPlaybackRequestTest extends Abstract
       currentlyPlayingContext.getIs_playing());
     assertNotNull(
       currentlyPlayingContext.getItem());
+    assertTrue(
+      currentlyPlayingContext.getItem() instanceof Track);
+    assertEquals(
+      CurrentlyPlayingType.TRACK,
+      currentlyPlayingContext.getCurrentlyPlayingType());
+    assertNotNull(
+      currentlyPlayingContext.getActions());
+    assertEquals(
+      2,
+      currentlyPlayingContext.getActions().getDisallows().getDisallowedActions().size());
+  }
+
+  @Test
+  public void shouldReturnDefaultEpisode_sync() throws IOException, SpotifyWebApiException, ParseException {
+    shouldReturnDefaultEpisode(defaultEpisodeRequest.execute());
+  }
+
+  @Test
+  public void shouldReturnDefaultEpisode_async() throws ExecutionException, InterruptedException {
+    shouldReturnDefaultEpisode(defaultEpisodeRequest.executeAsync().get());
+  }
+
+  public void shouldReturnDefaultEpisode(final CurrentlyPlayingContext currentlyPlayingContext) {
+    assertNotNull(
+      currentlyPlayingContext.getDevice());
+    assertEquals(
+      "off",
+      currentlyPlayingContext.getRepeat_state());
+    assertFalse(
+      currentlyPlayingContext.getShuffle_state());
+    assertNotNull(
+      currentlyPlayingContext.getContext());
+    assertEquals(
+      currentlyPlayingContext.getContext().getType(),
+      ModelObjectType.SHOW);
+    assertEquals(
+      1516669848357L,
+      (long) currentlyPlayingContext.getTimestamp());
+    assertEquals(
+      1625,
+      (int) currentlyPlayingContext.getProgress_ms());
+    assertTrue(
+      currentlyPlayingContext.getIs_playing());
+    assertNotNull(
+      currentlyPlayingContext.getItem());
+    assertTrue(
+      currentlyPlayingContext.getItem() instanceof Episode);
+    assertEquals(
+      CurrentlyPlayingType.EPISODE,
+      currentlyPlayingContext.getCurrentlyPlayingType());
+    assertNotNull(
+      currentlyPlayingContext.getActions());
+    assertEquals(
+      4,
+      currentlyPlayingContext.getActions().getDisallows().getDisallowedActions().size());
   }
 
   @Test

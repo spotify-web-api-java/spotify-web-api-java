@@ -43,6 +43,8 @@ public class GetInformationAboutUsersCurrentPlaybackRequest extends AbstractData
    */
   public static final class Builder extends AbstractDataRequest.Builder<CurrentlyPlayingContext, Builder> {
 
+    private String additionalTypes = "";
+
     /**
      * Create a new {@link GetInformationAboutUsersCurrentPlaybackRequest.Builder}.
      * <p>
@@ -70,12 +72,30 @@ public class GetInformationAboutUsersCurrentPlaybackRequest extends AbstractData
     }
 
     /**
+     * The additional types setter.
+     *
+     * @param additionalTypes Optional. A comma-separated list of item types that your client supports
+     *                        besides the default track type. Valid types are: {@code track} and {@code episode}.
+     *                        An unsupported type in the response is expected to be represented as {@code null} value in the {@code item} field.
+     * @return A {@link GetInformationAboutUsersCurrentPlaybackRequest.Builder}.
+     */
+    public Builder additionalTypes(final String additionalTypes){
+      assert (additionalTypes != null);
+      assert (additionalTypes.matches("((^|,)(episode|track))*$"));
+      this.additionalTypes = additionalTypes;
+      return this;
+    }
+
+    /**
      * The request build method.
      *
      * @return A custom {@link GetInformationAboutUsersCurrentPlaybackRequest}.
      */
     @Override
     public GetInformationAboutUsersCurrentPlaybackRequest build() {
+      if (!this.additionalTypes.isEmpty()){
+        setQueryParameter("additional_types", additionalTypes);
+      }
       setPath("/v1/me/player");
       return new GetInformationAboutUsersCurrentPlaybackRequest(this);
     }

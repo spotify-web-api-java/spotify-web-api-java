@@ -39,6 +39,7 @@ public interface ITest<T> {
   String DESCRIPTION = "Amazing music.";
   String DEVICE_ID = "5fbb3ba6aa454b5534c4ba43a8c7e8e45a63ad0e";
   String FIELDS = "description";
+  String ADDITIONAL_TYPES = "track,episode";
   String ID_ALBUM = "5zT1JLIj9E57p3e1rFm9Uq";
   String ID_ARTIST = "0LcJLqbBmaGUft1e9Mm8HV";
   String ID_EPISODE = "4GI3dxEafwap1sFiTGPKd1";

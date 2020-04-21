@@ -25,6 +25,7 @@ public class GetPlaylistsTracksExample {
 //          .limit(10)
 //          .offset(0)
 //          .market(CountryCode.SE)
+//          .additionalTypes("track,episode")
     .build();
 
   public static void getPlaylistsTracks_Sync() {

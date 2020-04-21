@@ -24,10 +24,7 @@ import com.wrapper.spotify.requests.data.personalization.simplified.GetUsersTopT
 import com.wrapper.spotify.requests.data.player.*;
 import com.wrapper.spotify.requests.data.playlists.*;
 import com.wrapper.spotify.requests.data.search.SearchItemRequest;
-import com.wrapper.spotify.requests.data.search.simplified.SearchAlbumsRequest;
-import com.wrapper.spotify.requests.data.search.simplified.SearchArtistsRequest;
-import com.wrapper.spotify.requests.data.search.simplified.SearchPlaylistsRequest;
-import com.wrapper.spotify.requests.data.search.simplified.SearchTracksRequest;
+import com.wrapper.spotify.requests.data.search.simplified.*;
 import com.wrapper.spotify.requests.data.search.simplified.special.SearchAlbumsSpecialRequest;
 import com.wrapper.spotify.requests.data.shows.GetSeveralShowsRequest;
 import com.wrapper.spotify.requests.data.shows.GetShowRequest;
@@ -1002,13 +999,14 @@ public class SpotifyApi {
   }
 
   /**
-   * Get information about the user's current playback state, including track, track progress, and active device.
+   * Get information about the user's current playback state, including track or episode, progress, and active device.
    *
    * @return A {@link GetInformationAboutUsersCurrentPlaybackRequest.Builder}.
    */
   public GetInformationAboutUsersCurrentPlaybackRequest.Builder getInformationAboutUsersCurrentPlayback() {
     return new GetInformationAboutUsersCurrentPlaybackRequest.Builder(accessToken)
-      .setDefaults(httpManager, scheme, host, port);
+      .setDefaults(httpManager, scheme, host, port)
+      .additionalTypes("episode");
   }
 
   /**
@@ -1044,7 +1042,8 @@ public class SpotifyApi {
    */
   public GetUsersCurrentlyPlayingTrackRequest.Builder getUsersCurrentlyPlayingTrack() {
     return new GetUsersCurrentlyPlayingTrackRequest.Builder(accessToken)
-      .setDefaults(httpManager, scheme, host, port);
+      .setDefaults(httpManager, scheme, host, port)
+      .additionalTypes("episode");
   }
 
   /**
@@ -1334,7 +1333,8 @@ public class SpotifyApi {
   public GetPlaylistRequest.Builder getPlaylist(String playlist_id) {
     return new GetPlaylistRequest.Builder(accessToken)
       .setDefaults(httpManager, scheme, host, port)
-      .playlist_id(playlist_id);
+      .playlist_id(playlist_id)
+      .additionalTypes("episode");
   }
 
   /**
@@ -1387,7 +1387,7 @@ public class SpotifyApi {
   }
 
   /**
-   * Get a playlists tracks.
+   * Get a playlist's items.
    *
    * @param playlist_id The playlists ID.
    * @return A {@link GetPlaylistsTracksRequest.Builder}.
@@ -1396,7 +1396,8 @@ public class SpotifyApi {
   public GetPlaylistsTracksRequest.Builder getPlaylistsTracks(String playlist_id) {
     return new GetPlaylistsTracksRequest.Builder(accessToken)
       .setDefaults(httpManager, scheme, host, port)
-      .playlist_id(playlist_id);
+      .playlist_id(playlist_id)
+      .additionalTypes("episode");
   }
 
   /**
