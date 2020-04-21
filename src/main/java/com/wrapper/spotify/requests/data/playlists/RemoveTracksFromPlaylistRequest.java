@@ -11,7 +11,7 @@ import org.apache.hc.core5.http.ParseException;
 import java.io.IOException;
 
 /**
- * Remove one or more tracks from a user’s playlist.
+ * Remove one or more items from a user’s playlist.
  */
 @JsonDeserialize(builder = RemoveTracksFromPlaylistRequest.Builder.class)
 public class RemoveTracksFromPlaylistRequest extends AbstractDataRequest<SnapshotResult> {
@@ -26,7 +26,7 @@ public class RemoveTracksFromPlaylistRequest extends AbstractDataRequest<Snapsho
   }
 
   /**
-   * Remove tracks from a playlist.
+   * Remove items from a playlist.
    *
    * @return A playlist snapshot ID. The snapshot ID can be used to identify your playlist version in future requests.
    * @throws IOException            In case of networking issues.
@@ -49,8 +49,8 @@ public class RemoveTracksFromPlaylistRequest extends AbstractDataRequest<Snapsho
     /**
      * Create a new {@link RemoveTracksFromPlaylistRequest.Builder}.
      * <p>
-     * Removing tracks from an user's public playlists requires authorization of the {@code playlist-modify-public}
-     * scope; removing tracks from an user's private playlist (including collaborative playlists) requires the
+     * Removing items from an user's public playlists requires authorization of the {@code playlist-modify-public}
+     * scope; removing items from an user's private playlist (including collaborative playlists) requires the
      * {@code playlist-modify-private} scope.
      *
      * @param accessToken Required. A valid access token from the Spotify Accounts service.
@@ -90,17 +90,17 @@ public class RemoveTracksFromPlaylistRequest extends AbstractDataRequest<Snapsho
     }
 
     /**
-     * The track URIs setter.
+     * The item URIs setter.
      * <p>
-     * There are several ways to specify which tracks to remove, determined by the request parameters.
-     * Removing all occurrences of specific tracks: <br>
+     * There are several ways to specify which tracks or episodes to remove, determined by the request parameters.
+     * Removing all occurrences of specific items: <br>
      * {@code [{ "uri": "spotify:track:4iV5W9uYEdYUVa79Axb7Rh" },
-     * {"uri": "spotify:track:1301WleyT98MSxVHPZCA6M" }] } <br>
-     * Removing a specific occurrence of a track: <br>
+     * {"uri": "spotify:episode:512ojhOuo1ktJprKbVcKyQ" }] } <br>
+     * Removing a specific occurrence of an item: <br>
      * {@code [{ "uri": "spotify:track:4iV5W9uYEdYUVa79Axb7Rh", "positions": [0,3] },
      * { "uri": "spotify:track:1301WleyT98MSxVHPZCA6M", "positions": [7] }] }
      *
-     * @param tracks Required. An array of objects containing Spotify URIs of the tracks to remove. A maximum of
+     * @param tracks Required. An array of objects containing Spotify URIs of the items to remove. A maximum of
      *               100 objects can be sent at once
      * @return A {@link RemoveTracksFromPlaylistRequest.Builder}.
      * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URIs &amp; IDs</a>
@@ -117,11 +117,11 @@ public class RemoveTracksFromPlaylistRequest extends AbstractDataRequest<Snapsho
      * <p>
      * To guard against errors when concurrent edits happen to the same playlist, we recommend specifying a snapshot ID.
      * The snapshot ID lets us know which version of the playlist you are trying to edit. Concurrent edits by another
-     * user will be automatically resolved. If a given track in a given position is not found in the specified snapshot,
+     * user will be automatically resolved. If a given item in a given position is not found in the specified snapshot,
      * the entire request will fail an no edits will take place.
      *
      * @param snapshotId Optional. The playlist's snapshot ID against which you want to make the changes. The API will
-     *                   validate that the specified tracks exist and in the specified positions and make the changes,
+     *                   validate that the specified items exist and in the specified positions and make the changes,
      *                   even if more recent changes have been made to the playlist.
      * @return A {@link RemoveTracksFromPlaylistRequest.Builder}.
      * @see <a href="https://developer.spotify.com/web-api/working-with-playlists/#version-control-and-snapshots">

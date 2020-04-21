@@ -10,8 +10,8 @@ import org.apache.hc.core5.http.ParseException;
 import java.io.IOException;
 
 /**
- * Replace all the tracks in a playlist, overwriting its existing tracks. This powerful request can be useful for
- * replacing tracks, re-ordering existing tracks, or clearing the playlist.
+ * Replace all the items in a playlist, overwriting its existing items. This powerful request can be useful for
+ * replacing items, re-ordering existing items, or clearing the playlist.
  */
 @JsonDeserialize(builder = ReplacePlaylistsTracksRequest.Builder.class)
 public class ReplacePlaylistsTracksRequest extends AbstractDataRequest<String> {
@@ -26,7 +26,7 @@ public class ReplacePlaylistsTracksRequest extends AbstractDataRequest<String> {
   }
 
   /**
-   * Replace tracks in a playlist.
+   * Replace items in a playlist.
    *
    * @return A string. <b>Note:</b> This endpoint doesn't return something in its response body.
    * @throws IOException            In case of networking issues.
@@ -47,8 +47,8 @@ public class ReplacePlaylistsTracksRequest extends AbstractDataRequest<String> {
     /**
      * Create a new {@link ReplacePlaylistsTracksRequest.Builder}.
      * <p>
-     * Replacing tracks in the current user's public playlists requires authorization of the
-     * {@code playlist-modify-public} scope; replacing tracks in the current user's private playlist (including
+     * Replacing items in the current user's public playlists requires authorization of the
+     * {@code playlist-modify-public} scope; replacing items in the current user's private playlist (including
      * collaborative playlists) requires the {@code playlist-modify-private} scope.
      *
      * @param accessToken Required. A valid access token from the Spotify Accounts service.
@@ -88,9 +88,9 @@ public class ReplacePlaylistsTracksRequest extends AbstractDataRequest<String> {
     }
 
     /**
-     * The track URIs setter.
+     * The item URIs setter.
      *
-     * @param uris Optional. A comma-separated list of Spotify track URIs to set. Maximum: 100 track URIs.
+     * @param uris Optional. A comma-separated list of Spotify track or episode URIs to set. Maximum: 100 track or episode URIs.
      * @return A {@link ReplacePlaylistsTracksRequest.Builder}.
      * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URIs &amp; IDs</a>
      */
@@ -102,11 +102,11 @@ public class ReplacePlaylistsTracksRequest extends AbstractDataRequest<String> {
     }
 
     /**
-     * The track URIs setter.
+     * The item URIs setter.
      * <p>
      * <b>Note:</b> If the URIs have already been set with {@link #uris(String)}, any URIs set here will be ignored.
      *
-     * @param uris Optional. A JSON array of Spotify track URIs to set. Maximum: 100 track URIs.
+     * @param uris Optional. A JSON array of Spotify track or episode URIs to set. Maximum: 100 track or episode URIs.
      * @return A {@link ReplacePlaylistsTracksRequest.Builder}.
      * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URIs &amp; IDs</a>
      */

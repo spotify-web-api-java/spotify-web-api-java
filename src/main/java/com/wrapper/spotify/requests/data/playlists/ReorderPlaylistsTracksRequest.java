@@ -10,11 +10,11 @@ import org.apache.hc.core5.http.ParseException;
 import java.io.IOException;
 
 /**
- * Reorder a track or a group of tracks in a playlist.
+ * Reorder an item or a group of items in a playlist.
  * <p>
- * When reordering tracks, the timestamp indicating when they were added and the user who added them will
+ * When reordering items, the timestamp indicating when they were added and the user who added them will
  * be kept untouched. In addition, the users following the playlists won’t be notified about changes in
- * the playlists when the tracks are reordered.
+ * the playlists when the items are reordered.
  */
 @JsonDeserialize(builder = ReorderPlaylistsTracksRequest.Builder.class)
 public class ReorderPlaylistsTracksRequest extends AbstractDataRequest<SnapshotResult> {
@@ -29,7 +29,7 @@ public class ReorderPlaylistsTracksRequest extends AbstractDataRequest<SnapshotR
   }
 
   /**
-   * Reorder the tracks in a playlist.
+   * Reorder the items in a playlist.
    *
    * @return A playlist snapshot ID. The snapshot ID can be used to identify your playlist version in future requests.
    * @throws IOException            In case of networking issues.
@@ -52,8 +52,8 @@ public class ReorderPlaylistsTracksRequest extends AbstractDataRequest<SnapshotR
     /**
      * Create a new {@link ReorderPlaylistsTracksRequest.Builder}.
      * <p>
-     * Reordering tracks in the current user's public playlists requires authorization of the
-     * {@code playlist-modify-public} scope; reordering tracks in the current user's private playlist (including
+     * Reordering items in the current user's public playlists requires authorization of the
+     * {@code playlist-modify-public} scope; reordering items in the current user's private playlist (including
      * collaborative playlists) requires the {@code playlist-modify-private} scope.
      *
      * @param accessToken Required. A valid access token from the Spotify Accounts service.
@@ -95,7 +95,7 @@ public class ReorderPlaylistsTracksRequest extends AbstractDataRequest<SnapshotR
     /**
      * The range start setter.
      *
-     * @param range_start Required. The position of the first track to be reordered.
+     * @param range_start Required. The position of the first item to be reordered.
      * @return A {@link ReorderPlaylistsTracksRequest.Builder}.
      */
     public Builder range_start(final Integer range_start) {
@@ -107,7 +107,7 @@ public class ReorderPlaylistsTracksRequest extends AbstractDataRequest<SnapshotR
     /**
      * The range length setter.
      *
-     * @param range_length Optional. The amount of tracks to be reordered. Defaults to 1 if not set.
+     * @param range_length Optional. The amount of items to be reordered. Defaults to 1 if not set.
      * @return A {@link ReorderPlaylistsTracksRequest.Builder}.
      */
     public Builder range_length(final Integer range_length) {
@@ -119,8 +119,8 @@ public class ReorderPlaylistsTracksRequest extends AbstractDataRequest<SnapshotR
     /**
      * The insert before setter.
      *
-     * @param insert_before Required. The position where the tracks should be inserted. To reorder the tracks to the
-     *                      end of the playlist, simply set insert_before to the position after the last track.
+     * @param insert_before Required. The position where the items should be inserted. To reorder the items to the
+     *                      end of the playlist, simply set insert_before to the position after the last item.
      * @return A {@link ReorderPlaylistsTracksRequest.Builder}.
      */
     public Builder insert_before(final Integer insert_before) {

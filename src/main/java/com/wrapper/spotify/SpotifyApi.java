@@ -1187,10 +1187,10 @@ public class SpotifyApi {
   }
 
   /**
-   * Add tracks to a playlist.
+   * Add items to a playlist.
    *
    * @param playlist_id The playlists ID.
-   * @param uris        URIs of the tracks to add. Maximum: 100 track URIs.
+   * @param uris        URIs of the tracks or episodes to add. Maximum: 100 item URIs.
    * @return An {@link AddTracksToPlaylistRequest.Builder}.
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
@@ -1222,10 +1222,10 @@ public class SpotifyApi {
   }
 
   /**
-   * Add tracks to a playlist.
+   * Add items to a playlist.
    *
    * @param playlist_id The playlists ID.
-   * @param uris        URIs of the tracks to add. Maximum: 100 track URIs.
+   * @param uris        URIs of the tracks or episodes to add. Maximum: 100 item URIs.
    * @return An {@link AddTracksToPlaylistRequest.Builder}.
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
@@ -1422,10 +1422,10 @@ public class SpotifyApi {
   }
 
   /**
-   * Delete tracks from a playlist
+   * Delete items from a playlist
    *
    * @param playlist_id The playlists ID.
-   * @param tracks      URIs of the tracks to remove. Maximum: 100 track URIs.
+   * @param tracks      URIs of the items to remove. Maximum: 100 track or episode URIs.
    * @return A {@link RemoveTracksFromPlaylistRequest.Builder}.
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
@@ -1465,16 +1465,16 @@ public class SpotifyApi {
   }
 
   /**
-   * Reorder a track or a group of tracks in a playlist. <br><br>
+   * Reorder an item or a group of items in a playlist. <br><br>
    * <p>
-   * When reordering tracks, the timestamp indicating when they were added and the user who added them will be kept
+   * When reordering items, the timestamp indicating when they were added and the user who added them will be kept
    * untouched. In addition, the users following the playlists won’t be notified about changes in the playlists when the
-   * tracks are reordered.
+   * items are reordered.
    *
    * @param playlist_id   The Spotify ID for the playlist.
-   * @param range_start   The position of the first track to be reordered.
-   * @param insert_before The position where the tracks should be inserted. To reorder the tracks to the end of the
-   *                      playlist, simply set insert_before to the position after the last track.
+   * @param range_start   The position of the first item to be reordered.
+   * @param insert_before The position where the items should be inserted. To reorder the items to the end of the
+   *                      playlist, simply set insert_before to the position after the last item.
    * @return A {@link ReorderPlaylistsTracksRequest.Builder}.
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
@@ -1507,10 +1507,10 @@ public class SpotifyApi {
   }
 
   /**
-   * Replace tracks in a playlist.
+   * Replace items in a playlist.
    *
    * @param playlist_id The playlists ID.
-   * @param uris        URIs of the tracks to add. Maximum: 100 track URIs.
+   * @param uris        URIs of the items to add. Maximum: 100 track or episode URIs.
    * @return A {@link ReplacePlaylistsTracksRequest.Builder}.
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
@@ -1542,10 +1542,10 @@ public class SpotifyApi {
   }
 
   /**
-   * Replace tracks in a playlist.
+   * Replace items in a playlist.
    *
    * @param playlist_id The playlists ID.
-   * @param uris        URIs of the tracks to add. Maximum: 100 track URIs.
+   * @param uris        URIs of the items to add. Maximum: 100 track or episode URIs.
    * @return A {@link ReplacePlaylistsTracksRequest.Builder}.
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
