@@ -230,27 +230,30 @@ public class SpotifyHttpManager implements IHttpManager {
 
     try {
       CacheResponseStatus responseStatus = context.getCacheResponseStatus();
-      switch (responseStatus) {
-        case CACHE_HIT:
-          SpotifyApi.LOGGER.log(
-            Level.CONFIG,
-            "A response was generated from the cache with no requests sent upstream");
-          break;
-        case CACHE_MODULE_RESPONSE:
-          SpotifyApi.LOGGER.log(
-            Level.CONFIG,
-            "The response was generated directly by the caching module");
-          break;
-        case CACHE_MISS:
-          SpotifyApi.LOGGER.log(
-            Level.CONFIG,
-            "The response came from an upstream server");
-          break;
-        case VALIDATED:
-          SpotifyApi.LOGGER.log(
-            Level.CONFIG,
-            "The response was generated from the cache after validating the entry with the origin server");
-          break;
+
+      if (responseStatus != null) {
+        switch (responseStatus) {
+          case CACHE_HIT:
+            SpotifyApi.LOGGER.log(
+              Level.CONFIG,
+              "A response was generated from the cache with no requests sent upstream");
+            break;
+          case CACHE_MODULE_RESPONSE:
+            SpotifyApi.LOGGER.log(
+              Level.CONFIG,
+              "The response was generated directly by the caching module");
+            break;
+          case CACHE_MISS:
+            SpotifyApi.LOGGER.log(
+              Level.CONFIG,
+              "The response came from an upstream server");
+            break;
+          case VALIDATED:
+            SpotifyApi.LOGGER.log(
+              Level.CONFIG,
+              "The response was generated from the cache after validating the entry with the origin server");
+            break;
+        }
       }
     } catch (Exception e) {
       SpotifyApi.LOGGER.log(Level.SEVERE, e.getMessage());
