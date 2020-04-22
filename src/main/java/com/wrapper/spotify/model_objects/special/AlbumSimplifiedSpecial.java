@@ -33,7 +33,7 @@ public class AlbumSimplifiedSpecial extends AbstractModelObject implements ISear
   private final String name;
   private final String releaseDate;
   private final ReleaseDatePrecision releaseDatePrecision;
-  private final int totalTracks;
+  private final Integer totalTracks;
   private final ModelObjectType type;
   private final String uri;
 
@@ -152,7 +152,7 @@ public class AlbumSimplifiedSpecial extends AbstractModelObject implements ISear
    *
    * @return The total tracks of the album.
    */
-  public int getTotalTracks() {
+  public Integer getTotalTracks() {
     return totalTracks;
   }
 
@@ -194,7 +194,7 @@ public class AlbumSimplifiedSpecial extends AbstractModelObject implements ISear
     private String name;
     private String releaseDate;
     private ReleaseDatePrecision releaseDatePrecision;
-    private int totalTracks;
+    private Integer totalTracks;
     private ModelObjectType type;
     private String uri;
 
