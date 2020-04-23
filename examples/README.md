@@ -52,7 +52,7 @@ The following (random) data should be used when modifying examples:
 - Max popularity: `50`
 - Min popularity: `10`
 - Name: `"Abba"`
-- Offset: `0` or `new JsonParser().parse("{\"uri\":\"spotify:track:01iyCAUm8EvOFqVWYJ3dVX\"}").getAsJsonObject()`
+- Offset: `0` or `JsonParser.parseString("{\"uri\":\"spotify:track:01iyCAUm8EvOFqVWYJ3dVX\"}").getAsJsonObject()`
 - Play: `false`
 - Position: `0`
 - Public: `false`
@@ -67,5 +67,5 @@ The following (random) data should be used when modifying examples:
 - Target popularity: `20`
 - Time range: `"medium_term"`
 - Timestamp: `new Date(1414054800000L)`
-- Tracks: `new JsonParser().parse("[\"01iyCAUm8EvOFqVWYJ3dVX\"]").getAsJsonArray()`
-- URIs: `new JsonParser().parse("{\"spotify:track:01iyCAUm8EvOFqVWYJ3dVX\"}").getAsJsonArray()`
+- Tracks: `JsonParser.parseString("[\"01iyCAUm8EvOFqVWYJ3dVX\"]").getAsJsonArray()`
+- URIs: `JsonParser.parseString("{\"spotify:track:01iyCAUm8EvOFqVWYJ3dVX\"}").getAsJsonArray()`
