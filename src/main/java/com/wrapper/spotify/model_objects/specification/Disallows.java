@@ -73,10 +73,10 @@ public class Disallows extends AbstractModelObject {
 
       EnumSet<Action> disallowedActions = EnumSet.noneOf(Action.class);
       for (Map.Entry<String, JsonElement> entry : jsonObject.entrySet()) {
-          if(entry.getValue().getAsJsonPrimitive().getAsBoolean()){
-            disallowedActions.add(
-              Action.keyOf(entry.getKey().toLowerCase()));
-          }
+        if (entry.getValue().getAsJsonPrimitive().getAsBoolean()) {
+          disallowedActions.add(
+            Action.keyOf(entry.getKey().toLowerCase()));
+        }
       }
 
       return new Builder()

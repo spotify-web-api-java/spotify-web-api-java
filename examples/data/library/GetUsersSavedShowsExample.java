@@ -19,7 +19,7 @@ public class GetUsersSavedShowsExample {
     .setAccessToken(accessToken)
     .build();
   private static final GetUsersSavedShowsRequest getUsersSavedShowsRequest = spotifyApi.getUsersSavedShows()
-//          .limit(10)b
+//          .limit(10)
 //          .offset(0)
     .build();
 

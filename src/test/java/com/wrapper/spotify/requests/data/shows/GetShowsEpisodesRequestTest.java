@@ -19,13 +19,13 @@ import static org.junit.Assert.assertEquals;
 public class GetShowsEpisodesRequestTest extends AbstractDataTest<Paging<EpisodeSimplified>> {
 
   private final GetShowsEpisodesRequest defaultRequest = SPOTIFY_API.getShowEpisodes(ID_SHOW)
-        .setHttpManager(
-         TestUtil.MockedHttpManager.returningJson(
-           "requests/data/shows/GetShowsEpisodesRequest.json"))
-        .offset(OFFSET)
-        .limit(LIMIT)
-        .market(MARKET)
-        .build();
+    .setHttpManager(
+      TestUtil.MockedHttpManager.returningJson(
+        "requests/data/shows/GetShowsEpisodesRequest.json"))
+    .offset(OFFSET)
+    .limit(LIMIT)
+    .market(MARKET)
+    .build();
 
   public GetShowsEpisodesRequestTest() throws Exception {
   }

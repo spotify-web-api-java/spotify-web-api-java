@@ -6,7 +6,7 @@ import com.google.gson.JsonObject;
 import com.wrapper.spotify.enums.ModelObjectType;
 import com.wrapper.spotify.enums.ReleaseDatePrecision;
 import com.wrapper.spotify.model_objects.AbstractModelObject;
-import com.wrapper.spotify.requests.data.IPlaylistItem;
+import com.wrapper.spotify.model_objects.IPlaylistItem;
 
 /**
  * Retrieve information about <a href="https://developer.spotify.com/documentation/web-api/reference/object-model/#episode-object-full">
@@ -33,7 +33,7 @@ public class Episode extends AbstractModelObject implements IPlaylistItem {
   private final ModelObjectType type;
   private final String uri;
 
-  private Episode(final Builder builder){
+  private Episode(final Builder builder) {
     super(builder);
     this.audioPreviewUrl = builder.audioPreviewUrl;
     this.description = builder.description;
@@ -132,7 +132,7 @@ public class Episode extends AbstractModelObject implements IPlaylistItem {
   /**
    * Check whether the episode is hosted outside of Spotify's CDN.
    *
-   * @return 	True if the episode is hosted outside of Spotify’s CDN.
+   * @return True if the episode is hosted outside of Spotify’s CDN.
    */
   public Boolean getExternallyHosted() {
     return isExternallyHosted;
@@ -371,7 +371,7 @@ public class Episode extends AbstractModelObject implements IPlaylistItem {
     /**
      * Set the name for the episode to be built.
      *
-     * @param name	The name of the episode.
+     * @param name The name of the episode.
      * @return A {@link Episode.Builder}.
      */
     public Builder setName(String name) {
@@ -381,6 +381,7 @@ public class Episode extends AbstractModelObject implements IPlaylistItem {
 
     /**
      * Set the release date for the episode to be built.
+     *
      * @param releaseDate The release date of the episode.
      * @return A {@link Episode.Builder}.
      */
@@ -391,6 +392,7 @@ public class Episode extends AbstractModelObject implements IPlaylistItem {
 
     /**
      * Set the release date precision for the episode to be built.
+     *
      * @param releaseDatePrecision The {@link ReleaseDatePrecision} of the episode.
      * @return A {@link Episode.Builder}.
      */
@@ -423,6 +425,7 @@ public class Episode extends AbstractModelObject implements IPlaylistItem {
 
     /**
      * Set the type of model object. In this case "episode".
+     *
      * @param type The {@link ModelObjectType}.
      * @return A {@link Episode.Builder}.
      */
@@ -512,7 +515,7 @@ public class Episode extends AbstractModelObject implements IPlaylistItem {
             : null)
         .setReleaseDate(
           hasAndNotNull(jsonObject, "release_date")
-            ?  jsonObject.get("release_date").getAsString()
+            ? jsonObject.get("release_date").getAsString()
             : null)
         .setReleaseDatePrecision(
           hasAndNotNull(jsonObject, "release_date_precision")

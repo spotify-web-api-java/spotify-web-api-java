@@ -18,7 +18,7 @@ public class CheckUsersSavedShowsExample {
     .setAccessToken(accessToken)
     .build();
   private static final CheckUsersSavedShowsRequest checkUsersSavedShowsRequest = spotifyApi.checkUsersSavedShows(ids)
-    .build( );
+    .build();
 
   public static void checkUsersSavedShows_Sync() {
     try {

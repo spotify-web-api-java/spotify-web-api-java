@@ -28,6 +28,7 @@ public class GetShowsEpisodesRequest extends AbstractDataRequest<Paging<EpisodeS
 
   /**
    * Get episodes of a show.
+   *
    * @return An array of {@link EpisodeSimplified} objects wrapped in a {@link Paging} object.
    * @throws IOException            In case of networking issues.
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.

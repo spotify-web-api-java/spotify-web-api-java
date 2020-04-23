@@ -80,7 +80,7 @@ public class GetUsersCurrentlyPlayingTrackRequest extends AbstractDataRequest<Cu
      *                        An unsupported type in the response is expected to be represented as {@code null} value in the {@code item} field.
      * @return A {@link GetUsersCurrentlyPlayingTrackRequest.Builder}.
      */
-    public GetUsersCurrentlyPlayingTrackRequest.Builder additionalTypes(final String additionalTypes){
+    public GetUsersCurrentlyPlayingTrackRequest.Builder additionalTypes(final String additionalTypes) {
       assert (additionalTypes != null);
       assert (additionalTypes.matches("((^|,)(episode|track))*$"));
       this.additionalTypes = additionalTypes;
@@ -94,7 +94,7 @@ public class GetUsersCurrentlyPlayingTrackRequest extends AbstractDataRequest<Cu
      */
     @Override
     public GetUsersCurrentlyPlayingTrackRequest build() {
-      if (!this.additionalTypes.isEmpty()){
+      if (!this.additionalTypes.isEmpty()) {
         setQueryParameter("additional_types", additionalTypes);
       }
       setPath("/v1/me/player/currently-playing");

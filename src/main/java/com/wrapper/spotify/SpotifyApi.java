@@ -837,6 +837,7 @@ public class SpotifyApi {
 
   /**
    * Get a list of shows saved in the current Spotify user’s library.
+   *
    * @return A {@link GetUsersSavedShowsRequest.Builder}.
    */
   public GetUsersSavedShowsRequest.Builder getUsersSavedShows() {

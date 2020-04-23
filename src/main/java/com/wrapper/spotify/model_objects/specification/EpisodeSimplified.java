@@ -32,7 +32,7 @@ public class EpisodeSimplified extends AbstractModelObject implements ISearchMod
   private final ModelObjectType type;
   private final String uri;
 
-  private EpisodeSimplified(final Builder builder){
+  private EpisodeSimplified(final Builder builder) {
     super(builder);
     this.audioPreviewUrl = builder.audioPreviewUrl;
     this.description = builder.description;
@@ -130,7 +130,7 @@ public class EpisodeSimplified extends AbstractModelObject implements ISearchMod
   /**
    * Check whether the episode is hosted outside of Spotify's CDN.
    *
-   * @return 	True if the episode is hosted outside of Spotify’s CDN.
+   * @return True if the episode is hosted outside of Spotify’s CDN.
    */
   public Boolean getExternallyHosted() {
     return isExternallyHosted;
@@ -359,7 +359,7 @@ public class EpisodeSimplified extends AbstractModelObject implements ISearchMod
     /**
      * Set the name for the episode to be built.
      *
-     * @param name	The name of the episode.
+     * @param name The name of the episode.
      * @return A {@link EpisodeSimplified.Builder}.
      */
     public Builder setName(String name) {
@@ -369,6 +369,7 @@ public class EpisodeSimplified extends AbstractModelObject implements ISearchMod
 
     /**
      * Set the release date for the episode to be built.
+     *
      * @param releaseDate The release date of the episode.
      * @return A {@link EpisodeSimplified.Builder}.
      */
@@ -379,6 +380,7 @@ public class EpisodeSimplified extends AbstractModelObject implements ISearchMod
 
     /**
      * Set the release date precision for the episode to be built.
+     *
      * @param releaseDatePrecision The {@link ReleaseDatePrecision} of the episode.
      * @return A {@link EpisodeSimplified.Builder}.
      */
@@ -400,6 +402,7 @@ public class EpisodeSimplified extends AbstractModelObject implements ISearchMod
 
     /**
      * Set the type of model object. In this case "episode".
+     *
      * @param type The {@link ModelObjectType}.
      * @return A {@link EpisodeSimplified.Builder}.
      */
@@ -489,7 +492,7 @@ public class EpisodeSimplified extends AbstractModelObject implements ISearchMod
             : null)
         .setReleaseDate(
           hasAndNotNull(jsonObject, "release_date")
-            ?  jsonObject.get("release_date").getAsString()
+            ? jsonObject.get("release_date").getAsString()
             : null)
         .setReleaseDatePrecision(
           hasAndNotNull(jsonObject, "release_date_precision")

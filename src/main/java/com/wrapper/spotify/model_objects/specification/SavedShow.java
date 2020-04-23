@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.JsonObject;
 import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.model_objects.AbstractModelObject;
-import com.wrapper.spotify.model_objects.IModelObject;
 
 import java.text.ParseException;
 import java.util.Date;

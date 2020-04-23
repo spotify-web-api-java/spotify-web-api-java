@@ -101,6 +101,7 @@ public class GetUsersCurrentlyPlayingTrackRequestTest extends AbstractDataTest<C
   public void shouldReturnDefaultEpisode_async() throws ExecutionException, InterruptedException {
     shouldReturnDefaultEpisode(defaultEpisodeRequest.executeAsync().get());
   }
+
   public void shouldReturnDefaultEpisode(final CurrentlyPlaying currentlyPlaying) {
     assertEquals(
       1516669848357L,

@@ -19,12 +19,12 @@ import static org.junit.Assert.assertNull;
 @RunWith(MockitoJUnitRunner.class)
 public class GetUsersSavedShowsRequestTest extends AbstractDataTest<Paging<SavedShow>> {
   private final GetUsersSavedShowsRequest defaultRequest = SPOTIFY_API.getUsersSavedShows()
-   .setHttpManager(
-     TestUtil.MockedHttpManager.returningJson(
-       "requests/data/library/GetUsersSavedShowsRequest.json"))
-   .limit(LIMIT)
-   .offset(OFFSET)
-   .build();
+    .setHttpManager(
+      TestUtil.MockedHttpManager.returningJson(
+        "requests/data/library/GetUsersSavedShowsRequest.json"))
+    .limit(LIMIT)
+    .offset(OFFSET)
+    .build();
 
   public GetUsersSavedShowsRequestTest() throws Exception {
   }

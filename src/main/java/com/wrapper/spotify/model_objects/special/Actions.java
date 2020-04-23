@@ -3,7 +3,6 @@ package com.wrapper.spotify.model_objects.special;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.JsonObject;
 import com.wrapper.spotify.model_objects.AbstractModelObject;
-import com.wrapper.spotify.model_objects.IModelObject;
 import com.wrapper.spotify.model_objects.specification.Disallows;
 
 /**
@@ -70,9 +69,9 @@ public class Actions extends AbstractModelObject {
       return new Builder()
         .setDisallows(
           hasAndNotNull(jsonObject, "disallows")
-          ? new Disallows.JsonUtil().createModelObject(
+            ? new Disallows.JsonUtil().createModelObject(
             jsonObject.getAsJsonObject("disallows"))
-          : null)
+            : null)
         .build();
     }
   }

@@ -80,6 +80,7 @@ public class SaveShowsForCurrentUserRequest extends AbstractDataRequest<String> 
       setPath("/v1/me/shows");
       return new SaveShowsForCurrentUserRequest(this);
     }
+
     @Override
     protected SaveShowsForCurrentUserRequest.Builder self() {
       return this;

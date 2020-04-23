@@ -18,11 +18,11 @@ import static org.junit.Assert.*;
 @RunWith(MockitoJUnitRunner.class)
 public class GetShowRequestTest extends AbstractDataTest<Show> {
   private final GetShowRequest defaultRequest = SPOTIFY_API.getShow(ID_SHOW)
-     .setHttpManager(
-        TestUtil.MockedHttpManager.returningJson(
-          "requests/data/shows/GetShowRequest.json"))
-     .market(MARKET)
-     .build();
+    .setHttpManager(
+      TestUtil.MockedHttpManager.returningJson(
+        "requests/data/shows/GetShowRequest.json"))
+    .market(MARKET)
+    .build();
 
   public GetShowRequestTest() throws Exception {
   }

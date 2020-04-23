@@ -79,7 +79,7 @@ public class GetInformationAboutUsersCurrentPlaybackRequest extends AbstractData
      *                        An unsupported type in the response is expected to be represented as {@code null} value in the {@code item} field.
      * @return A {@link GetInformationAboutUsersCurrentPlaybackRequest.Builder}.
      */
-    public Builder additionalTypes(final String additionalTypes){
+    public Builder additionalTypes(final String additionalTypes) {
       assert (additionalTypes != null);
       assert (additionalTypes.matches("((^|,)(episode|track))*$"));
       this.additionalTypes = additionalTypes;
@@ -93,7 +93,7 @@ public class GetInformationAboutUsersCurrentPlaybackRequest extends AbstractData
      */
     @Override
     public GetInformationAboutUsersCurrentPlaybackRequest build() {
-      if (!this.additionalTypes.isEmpty()){
+      if (!this.additionalTypes.isEmpty()) {
         setQueryParameter("additional_types", additionalTypes);
       }
       setPath("/v1/me/player");

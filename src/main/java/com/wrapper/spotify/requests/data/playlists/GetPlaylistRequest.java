@@ -43,6 +43,8 @@ public class GetPlaylistRequest extends AbstractDataRequest<Playlist> {
    */
   public static final class Builder extends AbstractDataRequest.Builder<Playlist, Builder> {
 
+    private String additionalTypes = "";
+
     /**
      * Create a new {@link GetPlaylistRequest.Builder}.
      * <p>
@@ -53,8 +55,6 @@ public class GetPlaylistRequest extends AbstractDataRequest<Playlist> {
     public Builder(final String accessToken) {
       super(accessToken);
     }
-
-      private String additionalTypes = "";
 
     /**
      * The user ID setter.
@@ -122,10 +122,12 @@ public class GetPlaylistRequest extends AbstractDataRequest<Playlist> {
      *                        An unsupported type in the response is expected to be represented as {@code null} value in the {@code item} field.
      * @return A {@link GetPlaylistRequest.Builder}.
      */
-    public Builder additionalTypes(final String additionalTypes){
+    public Builder additionalTypes(final String additionalTypes) {
       assert (additionalTypes != null);
       assert (additionalTypes.matches("((^|,)(episode|track))*$"));
+
       this.additionalTypes = additionalTypes;
+
       return this;
     }
 
@@ -136,9 +138,10 @@ public class GetPlaylistRequest extends AbstractDataRequest<Playlist> {
      */
     @Override
     public GetPlaylistRequest build() {
-      if (!this.additionalTypes.isEmpty()){
+      if (!this.additionalTypes.isEmpty()) {
         setQueryParameter("additional_types", additionalTypes);
       }
+
       setPath("/v1/playlists/{playlist_id}");
       return new GetPlaylistRequest(this);
     }

@@ -5,6 +5,7 @@ import java.util.Map;
 
 /**
  * An enumeration of all possible {@link Action} types.
+ *
  * @see <a href="https://developer.spotify.com/web-api/object-model/#disallows-object">Disallows object</a>
  */
 public enum Action {

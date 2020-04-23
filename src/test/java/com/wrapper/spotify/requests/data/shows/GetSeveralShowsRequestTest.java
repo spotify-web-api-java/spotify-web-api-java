@@ -18,8 +18,8 @@ import static org.junit.Assert.assertEquals;
 public class GetSeveralShowsRequestTest extends AbstractDataTest<ShowSimplified[]> {
 
   private final GetSeveralShowsRequest defaultRequest = SPOTIFY_API.getSeveralShows(ID_SHOW, ID_SHOW)
-   .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/shows/GetSeveralShowsRequest.json"))
-   .build();
+    .setHttpManager(TestUtil.MockedHttpManager.returningJson("requests/data/shows/GetSeveralShowsRequest.json"))
+    .build();
 
   public GetSeveralShowsRequestTest() throws Exception {
   }

@@ -4,12 +4,12 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.JsonObject;
 import com.wrapper.spotify.enums.CurrentlyPlayingType;
 import com.wrapper.spotify.model_objects.AbstractModelObject;
+import com.wrapper.spotify.model_objects.IPlaylistItem;
 import com.wrapper.spotify.model_objects.special.Actions;
 import com.wrapper.spotify.model_objects.specification.Context;
 import com.wrapper.spotify.model_objects.specification.Disallows;
 import com.wrapper.spotify.model_objects.specification.Episode;
 import com.wrapper.spotify.model_objects.specification.Track;
-import com.wrapper.spotify.requests.data.IPlaylistItem;
 
 /**
  * Retrieve information about <a href="https://developer.spotify.com/web-api/get-the-users-currently-playing-track/">
@@ -238,15 +238,15 @@ public class CurrentlyPlaying extends AbstractModelObject {
             jsonObject.getAsJsonObject("actions"))
             : null);
 
-        return builder
-          .setItem(
-            hasAndNotNull(jsonObject, "item") && builder.currentlyPlayingType != null
-              ? builder.currentlyPlayingType == CurrentlyPlayingType.TRACK
-              ? new Track.JsonUtil().createModelObject(jsonObject.getAsJsonObject("item"))
-              : builder.currentlyPlayingType == CurrentlyPlayingType.EPISODE
-              ? new Episode.JsonUtil().createModelObject(jsonObject.getAsJsonObject("item"))
-              : null
-              : null)
+      return builder
+        .setItem(
+          hasAndNotNull(jsonObject, "item") && builder.currentlyPlayingType != null
+            ? builder.currentlyPlayingType == CurrentlyPlayingType.TRACK
+            ? new Track.JsonUtil().createModelObject(jsonObject.getAsJsonObject("item"))
+            : builder.currentlyPlayingType == CurrentlyPlayingType.EPISODE
+            ? new Episode.JsonUtil().createModelObject(jsonObject.getAsJsonObject("item"))
+            : null
+            : null)
         .build();
     }
   }

@@ -1,7 +1,6 @@
-package com.wrapper.spotify.requests.data;
+package com.wrapper.spotify.model_objects;
 
 import com.wrapper.spotify.enums.ModelObjectType;
-import com.wrapper.spotify.model_objects.IModelObject;
 import com.wrapper.spotify.model_objects.specification.Episode;
 import com.wrapper.spotify.model_objects.specification.Track;
 

@@ -16,10 +16,10 @@ import static org.junit.Assert.assertEquals;
 @RunWith(MockitoJUnitRunner.class)
 public class CheckUsersSavedShowsRequestTest extends AbstractDataTest<Boolean[]> {
   private final CheckUsersSavedShowsRequest defaultRequest = SPOTIFY_API.checkUsersSavedShows(ID_SHOW, ID_SHOW)
-                                                                         .setHttpManager(
-                                                                           TestUtil.MockedHttpManager.returningJson(
-                                                                             "requests/data/library/CheckUsersSavedShowsRequest.json"))
-                                                                         .build();
+    .setHttpManager(
+      TestUtil.MockedHttpManager.returningJson(
+        "requests/data/library/CheckUsersSavedShowsRequest.json"))
+    .build();
 
   public CheckUsersSavedShowsRequestTest() throws Exception {
   }

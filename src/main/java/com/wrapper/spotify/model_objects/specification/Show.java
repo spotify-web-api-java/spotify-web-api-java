@@ -54,7 +54,7 @@ public class Show extends AbstractModelObject {
    * Get a list of the countries in which the show can be played.
    *
    * @return An array of <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2 country
-   *    * codes</a>.
+   * * codes</a>.
    */
   public CountryCode[] getAvailableMarkets() {
     return availableMarkets;
@@ -137,7 +137,7 @@ public class Show extends AbstractModelObject {
   /**
    * Check whether the show is hosted outside of Spotify's CDN.
    *
-   * @return 	True if the show is hosted outside of Spotify’s CDN. Might be {@code null} in some cases.
+   * @return True if the show is hosted outside of Spotify’s CDN. Might be {@code null} in some cases.
    */
   public Boolean getExternallyHosted() {
     return isExternallyHosted;
@@ -359,7 +359,7 @@ public class Show extends AbstractModelObject {
     /**
      * Set the name for the show to be built.
      *
-     * @param name	The name of the show.
+     * @param name The name of the show.
      * @return A {@link Show.Builder}.
      */
     public Builder setName(String name) {
@@ -370,7 +370,7 @@ public class Show extends AbstractModelObject {
     /**
      * Set the publisher for the show to be built.
      *
-     * @param publisher	The publisher of the show.
+     * @param publisher The publisher of the show.
      * @return A {@link Show.Builder}.
      */
     public Builder setPublisher(String publisher) {

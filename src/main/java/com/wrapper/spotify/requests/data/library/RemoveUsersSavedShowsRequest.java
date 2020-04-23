@@ -19,7 +19,7 @@ public class RemoveUsersSavedShowsRequest extends AbstractDataRequest<String> {
    *
    * @param builder A {@link RemoveUsersSavedShowsRequest.Builder}.
    */
-  private RemoveUsersSavedShowsRequest(final Builder builder){
+  private RemoveUsersSavedShowsRequest(final Builder builder) {
     super(builder);
   }
 
@@ -95,6 +95,7 @@ public class RemoveUsersSavedShowsRequest extends AbstractDataRequest<String> {
       setPath("/v1/me/shows");
       return new RemoveUsersSavedShowsRequest(this);
     }
+
     @Override
     protected RemoveUsersSavedShowsRequest.Builder self() {
       return this;
