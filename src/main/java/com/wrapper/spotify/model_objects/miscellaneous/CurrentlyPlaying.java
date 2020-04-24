@@ -209,7 +209,7 @@ public class CurrentlyPlaying extends AbstractModelObject {
         return null;
       }
 
-      final Builder builder = new CurrentlyPlaying.Builder()
+      return new CurrentlyPlaying.Builder()
         .setContext(
           hasAndNotNull(jsonObject, "context")
             ? new Context.JsonUtil().createModelObject(
@@ -227,6 +227,14 @@ public class CurrentlyPlaying extends AbstractModelObject {
           hasAndNotNull(jsonObject, "is_playing")
             ? jsonObject.get("is_playing").getAsBoolean()
             : null)
+        .setItem(
+          hasAndNotNull(jsonObject, "item") && hasAndNotNull(jsonObject, "currently_playing_type")
+            ? (jsonObject.get("currently_playing_type").getAsString().equals("track")
+              ? new Track.JsonUtil().createModelObject(jsonObject.getAsJsonObject("item"))
+              : jsonObject.get("currently_playing_type").getAsString().equals("episode")
+                ? new Episode.JsonUtil().createModelObject(jsonObject.getAsJsonObject("item"))
+                : null)
+            : null)
         .setCurrentlyPlayingType(
           hasAndNotNull(jsonObject, "currently_playing_type")
             ? CurrentlyPlayingType.keyOf(
@@ -236,16 +244,6 @@ public class CurrentlyPlaying extends AbstractModelObject {
           hasAndNotNull(jsonObject, "actions")
             ? new Actions.JsonUtil().createModelObject(
             jsonObject.getAsJsonObject("actions"))
-            : null);
-
-      return builder
-        .setItem(
-          hasAndNotNull(jsonObject, "item") && builder.currentlyPlayingType != null
-            ? builder.currentlyPlayingType == CurrentlyPlayingType.TRACK
-            ? new Track.JsonUtil().createModelObject(jsonObject.getAsJsonObject("item"))
-            : builder.currentlyPlayingType == CurrentlyPlayingType.EPISODE
-            ? new Episode.JsonUtil().createModelObject(jsonObject.getAsJsonObject("item"))
-            : null
             : null)
         .build();
     }

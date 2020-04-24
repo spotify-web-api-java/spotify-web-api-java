@@ -1000,7 +1000,7 @@ public class SpotifyApi {
   }
 
   /**
-   * Get information about the user's current playback state, including track or episode, progress, and active device.
+   * Get information about the user's current playback context.
    *
    * @return A {@link GetInformationAboutUsersCurrentPlaybackRequest.Builder}.
    */
