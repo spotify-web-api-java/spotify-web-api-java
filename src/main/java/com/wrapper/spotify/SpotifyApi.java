@@ -1006,8 +1006,7 @@ public class SpotifyApi {
    */
   public GetInformationAboutUsersCurrentPlaybackRequest.Builder getInformationAboutUsersCurrentPlayback() {
     return new GetInformationAboutUsersCurrentPlaybackRequest.Builder(accessToken)
-      .setDefaults(httpManager, scheme, host, port)
-      .additionalTypes("episode");
+      .setDefaults(httpManager, scheme, host, port);
   }
 
   /**
@@ -1043,8 +1042,7 @@ public class SpotifyApi {
    */
   public GetUsersCurrentlyPlayingTrackRequest.Builder getUsersCurrentlyPlayingTrack() {
     return new GetUsersCurrentlyPlayingTrackRequest.Builder(accessToken)
-      .setDefaults(httpManager, scheme, host, port)
-      .additionalTypes("episode");
+      .setDefaults(httpManager, scheme, host, port);
   }
 
   /**
@@ -1334,8 +1332,7 @@ public class SpotifyApi {
   public GetPlaylistRequest.Builder getPlaylist(String playlist_id) {
     return new GetPlaylistRequest.Builder(accessToken)
       .setDefaults(httpManager, scheme, host, port)
-      .playlist_id(playlist_id)
-      .additionalTypes("episode");
+      .playlist_id(playlist_id);
   }
 
   /**
@@ -1397,8 +1394,7 @@ public class SpotifyApi {
   public GetPlaylistsTracksRequest.Builder getPlaylistsTracks(String playlist_id) {
     return new GetPlaylistsTracksRequest.Builder(accessToken)
       .setDefaults(httpManager, scheme, host, port)
-      .playlist_id(playlist_id)
-      .additionalTypes("episode");
+      .playlist_id(playlist_id);
   }
 
   /**

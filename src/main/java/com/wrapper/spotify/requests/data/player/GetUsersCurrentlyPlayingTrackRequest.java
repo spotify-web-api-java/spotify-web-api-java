@@ -43,8 +43,6 @@ public class GetUsersCurrentlyPlayingTrackRequest extends AbstractDataRequest<Cu
    */
   public static final class Builder extends AbstractDataRequest.Builder<CurrentlyPlaying, Builder> {
 
-    private String additionalTypes = "";
-
     /**
      * Create a new {@link GetUsersCurrentlyPlayingTrackRequest.Builder}.
      * <p>
@@ -82,9 +80,8 @@ public class GetUsersCurrentlyPlayingTrackRequest extends AbstractDataRequest<Cu
      */
     public GetUsersCurrentlyPlayingTrackRequest.Builder additionalTypes(final String additionalTypes) {
       assert (additionalTypes != null);
-      assert (additionalTypes.matches("((^|,)(episode|track))*$"));
-      this.additionalTypes = additionalTypes;
-      return this;
+      assert (additionalTypes.matches("((^|,)(episode|track))+$"));
+      return setQueryParameter("additional_types", additionalTypes);
     }
 
     /**
@@ -94,9 +91,6 @@ public class GetUsersCurrentlyPlayingTrackRequest extends AbstractDataRequest<Cu
      */
     @Override
     public GetUsersCurrentlyPlayingTrackRequest build() {
-      if (!this.additionalTypes.isEmpty()) {
-        setQueryParameter("additional_types", additionalTypes);
-      }
       setPath("/v1/me/player/currently-playing");
       return new GetUsersCurrentlyPlayingTrackRequest(this);
     }

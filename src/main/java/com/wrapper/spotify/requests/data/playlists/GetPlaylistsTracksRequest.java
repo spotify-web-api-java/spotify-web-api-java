@@ -45,8 +45,6 @@ public class GetPlaylistsTracksRequest extends AbstractDataRequest<Paging<Playli
    */
   public static final class Builder extends AbstractDataPagingRequest.Builder<PlaylistTrack, Builder> {
 
-    private String additionalTypes = "";
-
     /**
      * Create a new {@link GetPlaylistsTracksRequest.Builder}.
      * <p>
@@ -150,9 +148,8 @@ public class GetPlaylistsTracksRequest extends AbstractDataRequest<Paging<Playli
      */
     public Builder additionalTypes(final String additionalTypes) {
       assert (additionalTypes != null);
-      assert (additionalTypes.matches("((^|,)(episode|track))*$"));
-      this.additionalTypes = additionalTypes;
-      return this;
+      assert (additionalTypes.matches("((^|,)(episode|track))+$"));
+      return setQueryParameter("additional_types", additionalTypes);
     }
 
     /**
@@ -162,11 +159,6 @@ public class GetPlaylistsTracksRequest extends AbstractDataRequest<Paging<Playli
      */
     @Override
     public GetPlaylistsTracksRequest build() {
-      if (!this.additionalTypes.isEmpty()) {
-        setQueryParameter("additional_types", additionalTypes);
-      }
-
-      setPath("/v1/me/player");
       setPath("/v1/playlists/{playlist_id}/tracks");
       return new GetPlaylistsTracksRequest(this);
     }

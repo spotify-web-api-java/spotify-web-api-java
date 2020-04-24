@@ -43,8 +43,6 @@ public class GetPlaylistRequest extends AbstractDataRequest<Playlist> {
    */
   public static final class Builder extends AbstractDataRequest.Builder<Playlist, Builder> {
 
-    private String additionalTypes = "";
-
     /**
      * Create a new {@link GetPlaylistRequest.Builder}.
      * <p>
@@ -124,11 +122,8 @@ public class GetPlaylistRequest extends AbstractDataRequest<Playlist> {
      */
     public Builder additionalTypes(final String additionalTypes) {
       assert (additionalTypes != null);
-      assert (additionalTypes.matches("((^|,)(episode|track))*$"));
-
-      this.additionalTypes = additionalTypes;
-
-      return this;
+      assert (additionalTypes.matches("((^|,)(episode|track))+$"));
+      return setQueryParameter("additional_types", additionalTypes);
     }
 
     /**
@@ -138,10 +133,6 @@ public class GetPlaylistRequest extends AbstractDataRequest<Playlist> {
      */
     @Override
     public GetPlaylistRequest build() {
-      if (!this.additionalTypes.isEmpty()) {
-        setQueryParameter("additional_types", additionalTypes);
-      }
-
       setPath("/v1/playlists/{playlist_id}");
       return new GetPlaylistRequest(this);
     }

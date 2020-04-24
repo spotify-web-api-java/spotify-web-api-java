@@ -43,8 +43,6 @@ public class GetInformationAboutUsersCurrentPlaybackRequest extends AbstractData
    */
   public static final class Builder extends AbstractDataRequest.Builder<CurrentlyPlayingContext, Builder> {
 
-    private String additionalTypes = "";
-
     /**
      * Create a new {@link GetInformationAboutUsersCurrentPlaybackRequest.Builder}.
      * <p>
@@ -81,9 +79,8 @@ public class GetInformationAboutUsersCurrentPlaybackRequest extends AbstractData
      */
     public Builder additionalTypes(final String additionalTypes) {
       assert (additionalTypes != null);
-      assert (additionalTypes.matches("((^|,)(episode|track))*$"));
-      this.additionalTypes = additionalTypes;
-      return this;
+      assert (additionalTypes.matches("((^|,)(episode|track))+$"));
+      return setQueryParameter("additional_types", additionalTypes);
     }
 
     /**
@@ -93,9 +90,6 @@ public class GetInformationAboutUsersCurrentPlaybackRequest extends AbstractData
      */
     @Override
     public GetInformationAboutUsersCurrentPlaybackRequest build() {
-      if (!this.additionalTypes.isEmpty()) {
-        setQueryParameter("additional_types", additionalTypes);
-      }
       setPath("/v1/me/player");
       return new GetInformationAboutUsersCurrentPlaybackRequest(this);
     }
