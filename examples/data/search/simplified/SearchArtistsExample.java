@@ -23,6 +23,7 @@ public class SearchArtistsExample {
 //          .market(CountryCode.SE)
 //          .limit(10)
 //          .offset(0)
+//          .includeExternal("audio")
     .build();
 
   public static void searchArtists_Sync() {

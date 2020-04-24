@@ -118,6 +118,20 @@ public class SearchItemRequest extends AbstractDataRequest<SearchResult> {
     }
 
     /**
+     * The include external setter.
+     *
+     * @param includeExternal Optional. Possible values: {@code audio}. If {@code audio} is set
+     *                        the response will include any relevant audio content that is hosted externally.
+     *                        By default external content is filtered out from responses.
+     * @return A {@link SearchItemRequest.Builder}.
+     */
+    public Builder includeExternal(String includeExternal) {
+      assert (includeExternal != null);
+      assert (includeExternal.matches("audio"));
+      return setQueryParameter("include_external", includeExternal);
+    }
+
+    /**
      * The request build method.
      *
      * @return A {@link SearchItemRequest.Builder}.
