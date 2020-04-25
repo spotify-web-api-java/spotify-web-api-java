@@ -18,12 +18,12 @@ import java.util.concurrent.ExecutionException;
 import static org.junit.Assert.*;
 
 @RunWith(MockitoJUnitRunner.class)
-public class GetPlaylistsTracksRequestTest extends AbstractDataTest<Paging<PlaylistTrack>> {
-  private final GetPlaylistsTracksRequest defaultRequest = SPOTIFY_API
-    .getPlaylistsTracks(ID_PLAYLIST)
+public class GetPlaylistsItemsRequestTest extends AbstractDataTest<Paging<PlaylistTrack>> {
+  private final GetPlaylistsItemsRequest defaultRequest = SPOTIFY_API
+    .getPlaylistsItems(ID_PLAYLIST)
     .setHttpManager(
       TestUtil.MockedHttpManager.returningJson(
-        "requests/data/playlists/GetPlaylistsTracksRequest.json"))
+        "requests/data/playlists/GetPlaylistsItemsRequest.json"))
     .fields(FIELDS)
     .limit(LIMIT)
     .market(MARKET)
@@ -31,11 +31,11 @@ public class GetPlaylistsTracksRequestTest extends AbstractDataTest<Paging<Playl
     .additionalTypes(ADDITIONAL_TYPES)
     .build();
 
-  private final GetPlaylistsTracksRequest defaultEpisodeRequest = SPOTIFY_API
-    .getPlaylistsTracks(ID_PLAYLIST)
+  private final GetPlaylistsItemsRequest defaultEpisodeRequest = SPOTIFY_API
+    .getPlaylistsItems(ID_PLAYLIST)
     .setHttpManager(
       TestUtil.MockedHttpManager.returningJson(
-        "requests/data/playlists/GetPlaylistsTracksRequest_Episode.json"))
+        "requests/data/playlists/GetPlaylistsItemsRequest_Episode.json"))
     .fields(FIELDS)
     .limit(LIMIT)
     .market(MARKET)
@@ -43,7 +43,7 @@ public class GetPlaylistsTracksRequestTest extends AbstractDataTest<Paging<Playl
     .additionalTypes(ADDITIONAL_TYPES)
     .build();
 
-  public GetPlaylistsTracksRequestTest() throws Exception {
+  public GetPlaylistsItemsRequestTest() throws Exception {
   }
 
   @Test

@@ -13,15 +13,15 @@ import java.io.IOException;
 /**
  * Remove one or more items from a user’s playlist.
  */
-@JsonDeserialize(builder = RemoveTracksFromPlaylistRequest.Builder.class)
-public class RemoveTracksFromPlaylistRequest extends AbstractDataRequest<SnapshotResult> {
+@JsonDeserialize(builder = RemoveItemsFromPlaylistRequest.Builder.class)
+public class RemoveItemsFromPlaylistRequest extends AbstractDataRequest<SnapshotResult> {
 
   /**
-   * The private {@link RemoveTracksFromPlaylistRequest} constructor.
+   * The private {@link RemoveItemsFromPlaylistRequest} constructor.
    *
-   * @param builder A {@link RemoveTracksFromPlaylistRequest.Builder}.
+   * @param builder A {@link RemoveItemsFromPlaylistRequest.Builder}.
    */
-  private RemoveTracksFromPlaylistRequest(final Builder builder) {
+  private RemoveItemsFromPlaylistRequest(final Builder builder) {
     super(builder);
   }
 
@@ -42,12 +42,12 @@ public class RemoveTracksFromPlaylistRequest extends AbstractDataRequest<Snapsho
   }
 
   /**
-   * Builder class for building a {@link RemoveTracksFromPlaylistRequest}.
+   * Builder class for building a {@link RemoveItemsFromPlaylistRequest}.
    */
   public static final class Builder extends AbstractDataRequest.Builder<SnapshotResult, Builder> {
 
     /**
-     * Create a new {@link RemoveTracksFromPlaylistRequest.Builder}.
+     * Create a new {@link RemoveItemsFromPlaylistRequest.Builder}.
      * <p>
      * Removing items from an user's public playlists requires authorization of the {@code playlist-modify-public}
      * scope; removing items from an user's private playlist (including collaborative playlists) requires the
@@ -64,7 +64,7 @@ public class RemoveTracksFromPlaylistRequest extends AbstractDataRequest<Snapsho
      * The user ID setter.
      *
      * @param user_id The user's Spotify user ID.
-     * @return An {@link RemoveTracksFromPlaylistRequest.Builder}.
+     * @return An {@link RemoveItemsFromPlaylistRequest.Builder}.
      * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URIs &amp; IDs</a>
      * @deprecated Playlist IDs are unique for themselves. This parameter is thus no longer used.
      * (https://developer.spotify.com/community/news/2018/06/12/changes-to-playlist-uris/)
@@ -80,7 +80,7 @@ public class RemoveTracksFromPlaylistRequest extends AbstractDataRequest<Snapsho
      * The playlist ID setter.
      *
      * @param playlist_id The Spotify ID for the playlist.
-     * @return An {@link RemoveTracksFromPlaylistRequest.Builder}.
+     * @return An {@link RemoveItemsFromPlaylistRequest.Builder}.
      * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URIs &amp; IDs</a>
      */
     public Builder playlist_id(final String playlist_id) {
@@ -102,7 +102,7 @@ public class RemoveTracksFromPlaylistRequest extends AbstractDataRequest<Snapsho
      *
      * @param tracks Required. An array of objects containing Spotify URIs of the items to remove. A maximum of
      *               100 objects can be sent at once
-     * @return A {@link RemoveTracksFromPlaylistRequest.Builder}.
+     * @return A {@link RemoveItemsFromPlaylistRequest.Builder}.
      * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URIs &amp; IDs</a>
      */
     public Builder tracks(final JsonArray tracks) {
@@ -123,7 +123,7 @@ public class RemoveTracksFromPlaylistRequest extends AbstractDataRequest<Snapsho
      * @param snapshotId Optional. The playlist's snapshot ID against which you want to make the changes. The API will
      *                   validate that the specified items exist and in the specified positions and make the changes,
      *                   even if more recent changes have been made to the playlist.
-     * @return A {@link RemoveTracksFromPlaylistRequest.Builder}.
+     * @return A {@link RemoveItemsFromPlaylistRequest.Builder}.
      * @see <a href="https://developer.spotify.com/web-api/working-with-playlists/#version-control-and-snapshots">
      * Spotify: Version Control and Snapshots</a>
      */
@@ -136,13 +136,13 @@ public class RemoveTracksFromPlaylistRequest extends AbstractDataRequest<Snapsho
     /**
      * The request build method.
      *
-     * @return A custom {@link RemoveTracksFromPlaylistRequest}.
+     * @return A custom {@link RemoveItemsFromPlaylistRequest}.
      */
     @Override
-    public RemoveTracksFromPlaylistRequest build() {
+    public RemoveItemsFromPlaylistRequest build() {
       setContentType(ContentType.APPLICATION_JSON);
       setPath("/v1/playlists/{playlist_id}/tracks");
-      return new RemoveTracksFromPlaylistRequest(this);
+      return new RemoveItemsFromPlaylistRequest(this);
     }
 
     @Override

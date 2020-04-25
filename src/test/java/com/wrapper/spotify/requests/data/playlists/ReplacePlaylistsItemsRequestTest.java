@@ -1,8 +1,8 @@
 package com.wrapper.spotify.requests.data.playlists;
 
+import com.google.gson.JsonParser;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
-import com.wrapper.spotify.model_objects.special.SnapshotResult;
 import com.wrapper.spotify.requests.data.AbstractDataTest;
 import org.apache.hc.core5.http.ParseException;
 import org.junit.Test;
@@ -15,44 +15,40 @@ import java.util.concurrent.ExecutionException;
 import static com.wrapper.spotify.Assertions.assertHasBodyParameter;
 import static com.wrapper.spotify.Assertions.assertHasHeader;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 @RunWith(MockitoJUnitRunner.class)
-public class ReorderPlaylistsTracksRequestTest extends AbstractDataTest<SnapshotResult> {
-  private final ReorderPlaylistsTracksRequest defaultRequest = SPOTIFY_API
-    .reorderPlaylistsTracks(ID_PLAYLIST, RANGE_START, INSERT_BEFORE)
+public class ReplacePlaylistsItemsRequestTest extends AbstractDataTest<String> {
+  private final ReplacePlaylistsItemsRequest defaultRequest = SPOTIFY_API
+    .replacePlaylistsItems(ID_PLAYLIST, new String[]{"spotify:track:" + ID_TRACK, "spotify:track:" + ID_TRACK})
     .setHttpManager(
-      TestUtil.MockedHttpManager.returningJson(
-        "requests/data/playlists/ReorderPlaylistsTracksRequest.json"))
-    .range_length(RANGE_LENGTH)
-    .snapshot_id(SNAPSHOT_ID)
+      TestUtil.MockedHttpManager.returningJson(null))
+    .build();
+  private final ReplacePlaylistsItemsRequest bodyRequest = SPOTIFY_API
+    .replacePlaylistsItems(ID_PLAYLIST, JsonParser.parseString("[\"spotify:track:" + ID_TRACK + "\",\"spotify:track:" + ID_TRACK + "\"]").getAsJsonArray())
+    .setHttpManager(
+      TestUtil.MockedHttpManager.returningJson(null))
     .build();
 
-  public ReorderPlaylistsTracksRequestTest() throws Exception {
+  public ReplacePlaylistsItemsRequestTest() throws Exception {
   }
 
   @Test
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
+    assertEquals(
+      "https://api.spotify.com:443/v1/playlists/3AGOiaoRXMSjswCLtuNqv5/tracks?uris=spotify%3Atrack%3A01iyCAUm8EvOFqVWYJ3dVX%2Cspotify%3Atrack%3A01iyCAUm8EvOFqVWYJ3dVX",
+      defaultRequest.getUri().toString());
+
+    assertHasAuthorizationHeader(bodyRequest);
     assertHasHeader(defaultRequest, "Content-Type", "application/json");
     assertHasBodyParameter(
-      defaultRequest,
-      "range_start",
-      RANGE_START);
-    assertHasBodyParameter(
-      defaultRequest,
-      "range_length",
-      RANGE_LENGTH);
-    assertHasBodyParameter(
-      defaultRequest,
-      "insert_before",
-      INSERT_BEFORE);
-    assertHasBodyParameter(
-      defaultRequest,
-      "snapshot_id",
-      SNAPSHOT_ID);
+      bodyRequest,
+      "uris",
+      "[\"spotify:track:" + ID_TRACK + "\",\"spotify:track:" + ID_TRACK + "\"]");
     assertEquals(
       "https://api.spotify.com:443/v1/playlists/3AGOiaoRXMSjswCLtuNqv5/tracks",
-      defaultRequest.getUri().toString());
+      bodyRequest.getUri().toString());
   }
 
   @Test
@@ -65,9 +61,8 @@ public class ReorderPlaylistsTracksRequestTest extends AbstractDataTest<Snapshot
     shouldReturnDefault(defaultRequest.executeAsync().get());
   }
 
-  public void shouldReturnDefault(final SnapshotResult snapshotResult) {
-    assertEquals(
-      "KsWY41k+zLqbx7goYX9zr+2IUZQtqbBNfk4ZOgEpIurvab4VSHhEL2L4za8HW6D0",
-      snapshotResult.getSnapshotId());
+  public void shouldReturnDefault(final String string) {
+    assertNull(
+      string);
   }
 }

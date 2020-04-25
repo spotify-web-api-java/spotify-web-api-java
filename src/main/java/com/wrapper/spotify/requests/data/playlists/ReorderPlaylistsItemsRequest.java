@@ -16,15 +16,15 @@ import java.io.IOException;
  * be kept untouched. In addition, the users following the playlists won’t be notified about changes in
  * the playlists when the items are reordered.
  */
-@JsonDeserialize(builder = ReorderPlaylistsTracksRequest.Builder.class)
-public class ReorderPlaylistsTracksRequest extends AbstractDataRequest<SnapshotResult> {
+@JsonDeserialize(builder = ReorderPlaylistsItemsRequest.Builder.class)
+public class ReorderPlaylistsItemsRequest extends AbstractDataRequest<SnapshotResult> {
 
   /**
-   * The private {@link ReorderPlaylistsTracksRequest} constructor.
+   * The private {@link ReorderPlaylistsItemsRequest} constructor.
    *
-   * @param builder A {@link ReorderPlaylistsTracksRequest.Builder}.
+   * @param builder A {@link ReorderPlaylistsItemsRequest.Builder}.
    */
-  private ReorderPlaylistsTracksRequest(final Builder builder) {
+  private ReorderPlaylistsItemsRequest(final Builder builder) {
     super(builder);
   }
 
@@ -45,12 +45,12 @@ public class ReorderPlaylistsTracksRequest extends AbstractDataRequest<SnapshotR
   }
 
   /**
-   * Builder class for building a {@link ReorderPlaylistsTracksRequest}.
+   * Builder class for building a {@link ReorderPlaylistsItemsRequest}.
    */
   public static final class Builder extends AbstractDataRequest.Builder<SnapshotResult, Builder> {
 
     /**
-     * Create a new {@link ReorderPlaylistsTracksRequest.Builder}.
+     * Create a new {@link ReorderPlaylistsItemsRequest.Builder}.
      * <p>
      * Reordering items in the current user's public playlists requires authorization of the
      * {@code playlist-modify-public} scope; reordering items in the current user's private playlist (including
@@ -67,7 +67,7 @@ public class ReorderPlaylistsTracksRequest extends AbstractDataRequest<SnapshotR
      * The user ID setter.
      *
      * @param user_id The user's Spotify user ID.
-     * @return A {@link ReorderPlaylistsTracksRequest.Builder}.
+     * @return A {@link ReorderPlaylistsItemsRequest.Builder}.
      * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URIs &amp; IDs</a>
      * @deprecated Playlist IDs are unique for themselves. This parameter is thus no longer used.
      * (https://developer.spotify.com/community/news/2018/06/12/changes-to-playlist-uris/)
@@ -83,7 +83,7 @@ public class ReorderPlaylistsTracksRequest extends AbstractDataRequest<SnapshotR
      * The playlist ID setter.
      *
      * @param playlist_id The Spotify ID for the playlist.
-     * @return A {@link ReorderPlaylistsTracksRequest.Builder}.
+     * @return A {@link ReorderPlaylistsItemsRequest.Builder}.
      * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URIs &amp; IDs</a>
      */
     public Builder playlist_id(final String playlist_id) {
@@ -96,7 +96,7 @@ public class ReorderPlaylistsTracksRequest extends AbstractDataRequest<SnapshotR
      * The range start setter.
      *
      * @param range_start Required. The position of the first item to be reordered.
-     * @return A {@link ReorderPlaylistsTracksRequest.Builder}.
+     * @return A {@link ReorderPlaylistsItemsRequest.Builder}.
      */
     public Builder range_start(final Integer range_start) {
       assert (range_start != null);
@@ -108,7 +108,7 @@ public class ReorderPlaylistsTracksRequest extends AbstractDataRequest<SnapshotR
      * The range length setter.
      *
      * @param range_length Optional. The amount of items to be reordered. Defaults to 1 if not set.
-     * @return A {@link ReorderPlaylistsTracksRequest.Builder}.
+     * @return A {@link ReorderPlaylistsItemsRequest.Builder}.
      */
     public Builder range_length(final Integer range_length) {
       assert (range_length != null);
@@ -121,7 +121,7 @@ public class ReorderPlaylistsTracksRequest extends AbstractDataRequest<SnapshotR
      *
      * @param insert_before Required. The position where the items should be inserted. To reorder the items to the
      *                      end of the playlist, simply set insert_before to the position after the last item.
-     * @return A {@link ReorderPlaylistsTracksRequest.Builder}.
+     * @return A {@link ReorderPlaylistsItemsRequest.Builder}.
      */
     public Builder insert_before(final Integer insert_before) {
       assert (insert_before != null);
@@ -133,7 +133,7 @@ public class ReorderPlaylistsTracksRequest extends AbstractDataRequest<SnapshotR
      * The playlist snapshot ID setter.
      *
      * @param snapshot_id Optional. The playlist's snapshot ID against which you want to make the changes.
-     * @return A {@link RemoveTracksFromPlaylistRequest.Builder}.
+     * @return A {@link ReorderPlaylistsItemsRequest.Builder}.
      * @see <a href="https://developer.spotify.com/web-api/working-with-playlists/#version-control-and-snapshots">
      * Spotify: Version Control and Snapshots</a>
      */
@@ -146,13 +146,13 @@ public class ReorderPlaylistsTracksRequest extends AbstractDataRequest<SnapshotR
     /**
      * The request build method.
      *
-     * @return A custom {@link ReorderPlaylistsTracksRequest}.
+     * @return A custom {@link ReorderPlaylistsItemsRequest}.
      */
     @Override
-    public ReorderPlaylistsTracksRequest build() {
+    public ReorderPlaylistsItemsRequest build() {
       setContentType(ContentType.APPLICATION_JSON);
       setPath("/v1/playlists/{playlist_id}/tracks");
-      return new ReorderPlaylistsTracksRequest(this);
+      return new ReorderPlaylistsItemsRequest(this);
     }
 
     @Override

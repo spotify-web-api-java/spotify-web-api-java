@@ -16,15 +16,15 @@ import java.io.IOException;
  * Use this endpoint to add Spotify tracks or episodes to a user’s playlist, sending their Spotify URI.
  * Note that local tracks can’t be added.
  */
-@JsonDeserialize(builder = AddTracksToPlaylistRequest.Builder.class)
-public class AddTracksToPlaylistRequest extends AbstractDataRequest<SnapshotResult> {
+@JsonDeserialize(builder = AddItemsToPlaylistRequest.Builder.class)
+public class AddItemsToPlaylistRequest extends AbstractDataRequest<SnapshotResult> {
 
   /**
-   * The private {@link AddTracksToPlaylistRequest} constructor.
+   * The private {@link AddItemsToPlaylistRequest} constructor.
    *
-   * @param builder A {@link AddTracksToPlaylistRequest.Builder}.
+   * @param builder A {@link AddItemsToPlaylistRequest.Builder}.
    */
-  private AddTracksToPlaylistRequest(final Builder builder) {
+  private AddItemsToPlaylistRequest(final Builder builder) {
     super(builder);
   }
 
@@ -45,12 +45,12 @@ public class AddTracksToPlaylistRequest extends AbstractDataRequest<SnapshotResu
   }
 
   /**
-   * Builder class for building an {@link AddTracksToPlaylistRequest}.
+   * Builder class for building an {@link AddItemsToPlaylistRequest}.
    */
   public static final class Builder extends AbstractDataRequest.Builder<SnapshotResult, Builder> {
 
     /**
-     * Create a new {@link AddTracksToPlaylistRequest.Builder}.
+     * Create a new {@link AddItemsToPlaylistRequest.Builder}.
      * <p>
      * Adding items to the current user's public playlists requires authorization of the {@code playlist-modify-public}
      * scope; adding items to the current user's private playlist (including collaborative playlists) requires the
@@ -67,7 +67,7 @@ public class AddTracksToPlaylistRequest extends AbstractDataRequest<SnapshotResu
      * The user ID setter.
      *
      * @param user_id The user's Spotify user ID.
-     * @return An {@link AddTracksToPlaylistRequest.Builder}.
+     * @return An {@link AddItemsToPlaylistRequest.Builder}.
      * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URIs &amp; IDs</a>
      * @deprecated Playlist IDs are unique for themselves. This parameter is thus no longer used.
      * (https://developer.spotify.com/community/news/2018/06/12/changes-to-playlist-uris/)
@@ -83,7 +83,7 @@ public class AddTracksToPlaylistRequest extends AbstractDataRequest<SnapshotResu
      * The playlist ID setter.
      *
      * @param playlist_id The Spotify ID for the playlist.
-     * @return An {@link AddTracksToPlaylistRequest.Builder}.
+     * @return An {@link AddItemsToPlaylistRequest.Builder}.
      * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URIs &amp; IDs</a>
      */
     public Builder playlist_id(final String playlist_id) {
@@ -100,7 +100,7 @@ public class AddTracksToPlaylistRequest extends AbstractDataRequest<SnapshotResu
      * with {@link #uris(JsonArray)}.
      *
      * @param uris Optional. A comma-separated list of Spotify track or episode URIs to add. Maximum: 100 item URIs.
-     * @return An {@link AddTracksToPlaylistRequest.Builder}.
+     * @return An {@link AddItemsToPlaylistRequest.Builder}.
      * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URIs &amp; IDs</a>
      */
     public Builder uris(final String uris) {
@@ -116,7 +116,7 @@ public class AddTracksToPlaylistRequest extends AbstractDataRequest<SnapshotResu
      * @param position Optional. The position to insert the items, a zero-based index. If omitted, the
      *                 items will be appended to the playlist. Items are added in the order they are
      *                 listed in the query string or request body.
-     * @return An {@link AddTracksToPlaylistRequest.Builder}.
+     * @return An {@link AddItemsToPlaylistRequest.Builder}.
      */
     public Builder position(final Integer position) {
       return position(position, false);
@@ -128,7 +128,7 @@ public class AddTracksToPlaylistRequest extends AbstractDataRequest<SnapshotResu
      * <b>Note:</b> If the URIs already have been set with {@link #uris(String)}, any URIs listed here will be ignored.
      *
      * @param uris Optional. A JSON array of the Spotify track or episode URIs to add. maximum: 100 item URIs.
-     * @return An {@link AddTracksToPlaylistRequest.Builder}.
+     * @return An {@link AddItemsToPlaylistRequest.Builder}.
      * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URIs &amp; IDs</a>
      */
     public Builder uris(final JsonArray uris) {
@@ -146,7 +146,7 @@ public class AddTracksToPlaylistRequest extends AbstractDataRequest<SnapshotResu
      *                 items will be appended to the playlist. Items are added in the order they are
      *                 listed in the query string or request body.
      * @param use_body Whether to include the position in the request query string or body.
-     * @return An {@link AddTracksToPlaylistRequest.Builder}.
+     * @return An {@link AddItemsToPlaylistRequest.Builder}.
      */
     public Builder position(final Integer position, final Boolean use_body) {
       assert (position >= 0);
@@ -161,13 +161,13 @@ public class AddTracksToPlaylistRequest extends AbstractDataRequest<SnapshotResu
     /**
      * The request build method.
      *
-     * @return A custom {@link AddTracksToPlaylistRequest}.
+     * @return A custom {@link AddItemsToPlaylistRequest}.
      */
     @Override
-    public AddTracksToPlaylistRequest build() {
+    public AddItemsToPlaylistRequest build() {
       setContentType(ContentType.APPLICATION_JSON);
       setPath("/v1/playlists/{playlist_id}/tracks");
-      return new AddTracksToPlaylistRequest(this);
+      return new AddItemsToPlaylistRequest(this);
     }
 
     @Override

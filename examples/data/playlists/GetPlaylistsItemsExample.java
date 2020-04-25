@@ -1,11 +1,10 @@
 package data.playlists;
 
-import com.google.gson.JsonArray;
-import com.google.gson.JsonParser;
 import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
-import com.wrapper.spotify.model_objects.special.SnapshotResult;
-import com.wrapper.spotify.requests.data.playlists.RemoveTracksFromPlaylistRequest;
+import com.wrapper.spotify.model_objects.specification.Paging;
+import com.wrapper.spotify.model_objects.specification.PlaylistTrack;
+import com.wrapper.spotify.requests.data.playlists.GetPlaylistsItemsRequest;
 import org.apache.hc.core5.http.ParseException;
 
 import java.io.IOException;
@@ -13,39 +12,42 @@ import java.util.concurrent.CancellationException;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionException;
 
-public class RemoveTracksFromPlaylistExample {
+public class GetPlaylistsItemsExample {
   private static final String accessToken = "taHZ2SdB-bPA3FsK3D7ZN5npZS47cMy-IEySVEGttOhXmqaVAIo0ESvTCLjLBifhHOHOIuhFUKPW1WMDP7w6dj3MAZdWT8CLI2MkZaXbYLTeoDvXesf2eeiLYPBGdx8tIwQJKgV8XdnzH_DONk";
   private static final String playlistId = "3AGOiaoRXMSjswCLtuNqv5";
-  private static final JsonArray tracks = JsonParser.parseString("[{\"uri\":\"spotify:track:01iyCAUm8EvOFqVWYJ3dVX\"}]").getAsJsonArray();
 
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
     .setAccessToken(accessToken)
     .build();
-  private static final RemoveTracksFromPlaylistRequest removeTracksFromPlaylistRequest = spotifyApi
-    .removeTracksFromPlaylist(playlistId, tracks)
-//          .snapshotId("JbtmHBDBAYu3/bt8BOXKjzKx3i0b6LCa/wVjyl6qQ2Yf6nFXkbmzuEa+ZI/U1yF+")
+  private static final GetPlaylistsItemsRequest GET_PLAYLISTS_ITEMS_REQUEST = spotifyApi
+    .getPlaylistsItems(playlistId)
+//          .fields("description")
+//          .limit(10)
+//          .offset(0)
+//          .market(CountryCode.SE)
+//          .additionalTypes("track,episode")
     .build();
 
-  public static void removeTracksFromPlaylist_Sync() {
+  public static void getPlaylistsItems_Sync() {
     try {
-      final SnapshotResult snapshotResult = removeTracksFromPlaylistRequest.execute();
+      final Paging<PlaylistTrack> playlistTrackPaging = GET_PLAYLISTS_ITEMS_REQUEST.execute();
 
-      System.out.println("Snapshot ID: " + snapshotResult.getSnapshotId());
+      System.out.println("Total: " + playlistTrackPaging.getTotal());
     } catch (IOException | SpotifyWebApiException | ParseException e) {
       System.out.println("Error: " + e.getMessage());
     }
   }
 
-  public static void removeTracksFromPlaylist_Async() {
+  public static void getPlaylistsItems_Async() {
     try {
-      final CompletableFuture<SnapshotResult> snapshotResultFuture = removeTracksFromPlaylistRequest.executeAsync();
+      final CompletableFuture<Paging<PlaylistTrack>> pagingFuture = GET_PLAYLISTS_ITEMS_REQUEST.executeAsync();
 
       // Thread free to do other tasks...
 
       // Example Only. Never block in production code.
-      final SnapshotResult snapshotResult = snapshotResultFuture.join();
+      final Paging<PlaylistTrack> playlistTrackPaging = pagingFuture.join();
 
-      System.out.println("Snapshot ID: " + snapshotResult.getSnapshotId());
+      System.out.println("Total: " + playlistTrackPaging.getTotal());
     } catch (CompletionException e) {
       System.out.println("Error: " + e.getCause().getMessage());
     } catch (CancellationException e) {
@@ -54,7 +56,7 @@ public class RemoveTracksFromPlaylistExample {
   }
 
   public static void main(String[] args) {
-    removeTracksFromPlaylist_Sync();
-    removeTracksFromPlaylist_Async();
+    getPlaylistsItems_Sync();
+    getPlaylistsItems_Async();
   }
 }

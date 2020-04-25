@@ -1,5 +1,6 @@
 package com.wrapper.spotify.requests.data.playlists;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonParser;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
@@ -14,31 +15,49 @@ import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
 import static com.wrapper.spotify.Assertions.assertHasBodyParameter;
+import static com.wrapper.spotify.Assertions.assertHasHeader;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(MockitoJUnitRunner.class)
-public class RemoveTracksFromPlaylistRequestTest extends AbstractDataTest<SnapshotResult> {
-  private final RemoveTracksFromPlaylistRequest defaultRequest = SPOTIFY_API
-    .removeTracksFromPlaylist(ID_PLAYLIST, JsonParser.parseString("[{\"uri\":\"" + ID_TRACK + "\"},{\"uri\":\"" + ID_TRACK + "\"}]").getAsJsonArray())
+public class AddItemsToPlaylistRequestTest extends AbstractDataTest<SnapshotResult> {
+  private final AddItemsToPlaylistRequest defaultRequest = SPOTIFY_API
+    .addItemsToPlaylist(ID_PLAYLIST, new Gson().fromJson(URIS, String[].class))
     .setHttpManager(
       TestUtil.MockedHttpManager.returningJson(
-        "requests/data/playlists/RemoveTracksFromPlaylistRequest.json"))
-    .snapshotId(SNAPSHOT_ID)
+        "requests/data/playlists/AddItemsToPlaylistRequest.json"))
+    .position(POSITION)
+    .build();
+  private final AddItemsToPlaylistRequest bodyRequest = SPOTIFY_API
+    .addItemsToPlaylist(ID_PLAYLIST, JsonParser.parseString(URIS.toString()).getAsJsonArray())
+    .setHttpManager(
+      TestUtil.MockedHttpManager.returningJson(
+        "requests/data/playlists/AddItemsToPlaylistRequest.json"))
+    .position(POSITION, true)
     .build();
 
-  public RemoveTracksFromPlaylistRequestTest() throws Exception {
+  public AddItemsToPlaylistRequestTest() throws Exception {
   }
 
   @Test
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
+    assertEquals(
+      "https://api.spotify.com:443/v1/playlists/3AGOiaoRXMSjswCLtuNqv5/tracks?uris=spotify%3Atrack%3A01iyCAUm8EvOFqVWYJ3dVX%2Cspotify%3Atrack%3A01iyCAUm8EvOFqVWYJ3dVX&position=0",
+      defaultRequest.getUri().toString());
+
+    assertHasAuthorizationHeader(bodyRequest);
+    assertHasHeader(defaultRequest, "Content-Type", "application/json");
     assertHasBodyParameter(
-      defaultRequest,
-      "tracks",
-      "[{\"uri\":\"" + ID_TRACK + "\"},{\"uri\":\"" + ID_TRACK + "\"}]");
+      bodyRequest,
+      "uris",
+      "[\"spotify:track:" + ID_TRACK + "\",\"spotify:track:" + ID_TRACK + "\"]");
+    assertHasBodyParameter(
+      bodyRequest,
+      "position",
+      POSITION);
     assertEquals(
       "https://api.spotify.com:443/v1/playlists/3AGOiaoRXMSjswCLtuNqv5/tracks",
-      defaultRequest.getUri().toString());
+      bodyRequest.getUri().toString());
   }
 
   @Test

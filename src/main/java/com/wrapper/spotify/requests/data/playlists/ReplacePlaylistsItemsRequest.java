@@ -13,15 +13,15 @@ import java.io.IOException;
  * Replace all the items in a playlist, overwriting its existing items. This powerful request can be useful for
  * replacing items, re-ordering existing items, or clearing the playlist.
  */
-@JsonDeserialize(builder = ReplacePlaylistsTracksRequest.Builder.class)
-public class ReplacePlaylistsTracksRequest extends AbstractDataRequest<String> {
+@JsonDeserialize(builder = ReplacePlaylistsItemsRequest.Builder.class)
+public class ReplacePlaylistsItemsRequest extends AbstractDataRequest<String> {
 
   /**
-   * The private {@link ReplacePlaylistsTracksRequest} constructor.
+   * The private {@link ReplacePlaylistsItemsRequest} constructor.
    *
-   * @param builder A {@link ReplacePlaylistsTracksRequest.Builder}.
+   * @param builder A {@link ReplacePlaylistsItemsRequest.Builder}.
    */
-  private ReplacePlaylistsTracksRequest(final Builder builder) {
+  private ReplacePlaylistsItemsRequest(final Builder builder) {
     super(builder);
   }
 
@@ -40,12 +40,12 @@ public class ReplacePlaylistsTracksRequest extends AbstractDataRequest<String> {
   }
 
   /**
-   * Builder class for building a {@link ReplacePlaylistsTracksRequest}.
+   * Builder class for building a {@link ReplacePlaylistsItemsRequest}.
    */
   public static final class Builder extends AbstractDataRequest.Builder<String, Builder> {
 
     /**
-     * Create a new {@link ReplacePlaylistsTracksRequest.Builder}.
+     * Create a new {@link ReplacePlaylistsItemsRequest.Builder}.
      * <p>
      * Replacing items in the current user's public playlists requires authorization of the
      * {@code playlist-modify-public} scope; replacing items in the current user's private playlist (including
@@ -62,7 +62,7 @@ public class ReplacePlaylistsTracksRequest extends AbstractDataRequest<String> {
      * The user ID setter.
      *
      * @param user_id The user's Spotify user ID.
-     * @return A {@link ReplacePlaylistsTracksRequest.Builder}.
+     * @return A {@link ReplacePlaylistsItemsRequest.Builder}.
      * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URIs &amp; IDs</a>
      * @deprecated Playlist IDs are unique for themselves. This parameter is thus no longer used.
      * (https://developer.spotify.com/community/news/2018/06/12/changes-to-playlist-uris/)
@@ -78,7 +78,7 @@ public class ReplacePlaylistsTracksRequest extends AbstractDataRequest<String> {
      * The playlist ID setter.
      *
      * @param playlist_id The Spotify ID for the playlist.
-     * @return A {@link ReplacePlaylistsTracksRequest.Builder}.
+     * @return A {@link ReplacePlaylistsItemsRequest.Builder}.
      * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URIs &amp; IDs</a>
      */
     public Builder playlist_id(final String playlist_id) {
@@ -91,7 +91,7 @@ public class ReplacePlaylistsTracksRequest extends AbstractDataRequest<String> {
      * The item URIs setter.
      *
      * @param uris Optional. A comma-separated list of Spotify track or episode URIs to set. Maximum: 100 track or episode URIs.
-     * @return A {@link ReplacePlaylistsTracksRequest.Builder}.
+     * @return A {@link ReplacePlaylistsItemsRequest.Builder}.
      * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URIs &amp; IDs</a>
      */
     public Builder uris(final String uris) {
@@ -107,7 +107,7 @@ public class ReplacePlaylistsTracksRequest extends AbstractDataRequest<String> {
      * <b>Note:</b> If the URIs have already been set with {@link #uris(String)}, any URIs set here will be ignored.
      *
      * @param uris Optional. A JSON array of Spotify track or episode URIs to set. Maximum: 100 track or episode URIs.
-     * @return A {@link ReplacePlaylistsTracksRequest.Builder}.
+     * @return A {@link ReplacePlaylistsItemsRequest.Builder}.
      * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URIs &amp; IDs</a>
      */
     public Builder uris(final JsonArray uris) {
@@ -120,13 +120,13 @@ public class ReplacePlaylistsTracksRequest extends AbstractDataRequest<String> {
     /**
      * The request build method.
      *
-     * @return A custom {@link ReplacePlaylistsTracksRequest}.
+     * @return A custom {@link ReplacePlaylistsItemsRequest}.
      */
     @Override
-    public ReplacePlaylistsTracksRequest build() {
+    public ReplacePlaylistsItemsRequest build() {
       setContentType(ContentType.APPLICATION_JSON);
       setPath("/v1/playlists/{playlist_id}/tracks");
-      return new ReplacePlaylistsTracksRequest(this);
+      return new ReplacePlaylistsItemsRequest(this);
     }
 
     @Override

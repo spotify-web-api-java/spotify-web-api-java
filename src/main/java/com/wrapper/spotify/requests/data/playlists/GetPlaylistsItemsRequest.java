@@ -12,24 +12,24 @@ import org.apache.hc.core5.http.ParseException;
 import java.io.IOException;
 
 /**
- * Get full details of the tracks of a playlist owned by a Spotify user.
+ * Get full details of the tracks or episodes of a playlist owned by a Spotify user.
  */
-@JsonDeserialize(builder = GetPlaylistsTracksRequest.Builder.class)
-public class GetPlaylistsTracksRequest extends AbstractDataRequest<Paging<PlaylistTrack>> {
+@JsonDeserialize(builder = GetPlaylistsItemsRequest.Builder.class)
+public class GetPlaylistsItemsRequest extends AbstractDataRequest<Paging<PlaylistTrack>> {
 
   /**
-   * The private {@link GetPlaylistsTracksRequest} constructor.
+   * The private {@link GetPlaylistsItemsRequest} constructor.
    *
-   * @param builder A {@link GetPlaylistsTracksRequest.Builder}.
+   * @param builder A {@link GetPlaylistsItemsRequest.Builder}.
    */
-  private GetPlaylistsTracksRequest(final Builder builder) {
+  private GetPlaylistsItemsRequest(final Builder builder) {
     super(builder);
   }
 
   /**
-   * Get a playlist's tracks.
+   * Get a playlist's items.
    *
-   * @return A playlist's tracks.
+   * @return A playlist's items.
    * @throws IOException            In case of networking issues.
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
    */
@@ -41,12 +41,12 @@ public class GetPlaylistsTracksRequest extends AbstractDataRequest<Paging<Playli
   }
 
   /**
-   * Builder class for building a {@link GetPlaylistsTracksRequest}.
+   * Builder class for building a {@link GetPlaylistsItemsRequest}.
    */
   public static final class Builder extends AbstractDataPagingRequest.Builder<PlaylistTrack, Builder> {
 
     /**
-     * Create a new {@link GetPlaylistsTracksRequest.Builder}.
+     * Create a new {@link GetPlaylistsItemsRequest.Builder}.
      * <p>
      * Both Public and Private playlists belonging to any user are retrievable on provision of a valid access token.
      *
@@ -60,7 +60,7 @@ public class GetPlaylistsTracksRequest extends AbstractDataRequest<Paging<Playli
      * The user ID setter.
      *
      * @param user_id The user's Spotify user ID.
-     * @return A {@link GetPlaylistsTracksRequest.Builder}.
+     * @return A {@link GetPlaylistsItemsRequest.Builder}.
      * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URIs &amp; IDs</a>
      * @deprecated Playlist IDs are unique for themselves. This parameter is thus no longer used
      * (https://developer.spotify.com/community/news/2018/06/12/changes-to-playlist-uris/)
@@ -76,7 +76,7 @@ public class GetPlaylistsTracksRequest extends AbstractDataRequest<Paging<Playli
      * The playlist ID setter.
      *
      * @param playlist_id The Spotify ID for the playlist.
-     * @return A {@link GetPlaylistsTracksRequest.Builder}.
+     * @return A {@link GetPlaylistsItemsRequest.Builder}.
      * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URIs &amp; IDs</a>
      */
     public Builder playlist_id(final String playlist_id) {
@@ -90,7 +90,7 @@ public class GetPlaylistsTracksRequest extends AbstractDataRequest<Paging<Playli
      *
      * @param fields Optional. Filters for the query: a comma-separated list of the fields to return.
      *               If omitted, all fields are returned.
-     * @return A {@link GetPlaylistsTracksRequest.Builder}.
+     * @return A {@link GetPlaylistsItemsRequest.Builder}.
      * @see <a href="https://developer.spotify.com/web-api/get-playlists-tracks/#tablepress-107">
      * Spotify: More Details on Playlist Fields</a>
      */
@@ -103,8 +103,8 @@ public class GetPlaylistsTracksRequest extends AbstractDataRequest<Paging<Playli
     /**
      * The limit setter.
      *
-     * @param limit Optional. The maximum number of tracks to return. Default: 100. Minimum: 1. Maximum: 100.
-     * @return A {@link GetPlaylistsTracksRequest.Builder}.
+     * @param limit Optional. The maximum number of items to return. Default: 100. Minimum: 1. Maximum: 100.
+     * @return A {@link GetPlaylistsItemsRequest.Builder}.
      */
     @Override
     public Builder limit(final Integer limit) {
@@ -115,8 +115,8 @@ public class GetPlaylistsTracksRequest extends AbstractDataRequest<Paging<Playli
     /**
      * The offset setter.
      *
-     * @param offset Optional. The index of the first track to return. Default: 0 (the first object).
-     * @return A {@link GetPlaylistsTracksRequest.Builder}.
+     * @param offset Optional. The index of the first item to return. Default: 0 (the first object).
+     * @return A {@link GetPlaylistsItemsRequest.Builder}.
      */
     @Override
     public Builder offset(final Integer offset) {
@@ -129,7 +129,7 @@ public class GetPlaylistsTracksRequest extends AbstractDataRequest<Paging<Playli
      *
      * @param market Optional. An ISO 3166-1 alpha-2 country code. Provide this
      *               parameter if you want to apply Track Relinking.
-     * @return A {@link GetPlaylistsTracksRequest.Builder}.
+     * @return A {@link GetPlaylistsItemsRequest.Builder}.
      * @see <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">Wikipedia: ISO 3166-1 alpha-2 country codes</a>
      * @see <a href="https://developer.spotify.com/web-api/track-relinking-guide/">Spotify: Track Relinking Guide</a>
      */
@@ -144,7 +144,7 @@ public class GetPlaylistsTracksRequest extends AbstractDataRequest<Paging<Playli
      * @param additionalTypes Optional. A comma-separated list of item types that your client supports
      *                        besides the default track type. Valid types are: {@code track} and {@code episode}.
      *                        An unsupported type in the response is expected to be represented as {@code null} value in the {@code item} field.
-     * @return A {@link GetPlaylistsTracksRequest.Builder}.
+     * @return A {@link GetPlaylistsItemsRequest.Builder}.
      */
     public Builder additionalTypes(final String additionalTypes) {
       assert (additionalTypes != null);
@@ -155,12 +155,12 @@ public class GetPlaylistsTracksRequest extends AbstractDataRequest<Paging<Playli
     /**
      * The request build method.
      *
-     * @return A custom {@link GetPlaylistsTracksRequest}.
+     * @return A custom {@link GetPlaylistsItemsRequest}.
      */
     @Override
-    public GetPlaylistsTracksRequest build() {
+    public GetPlaylistsItemsRequest build() {
       setPath("/v1/playlists/{playlist_id}/tracks");
-      return new GetPlaylistsTracksRequest(this);
+      return new GetPlaylistsItemsRequest(this);
     }
 
     @Override

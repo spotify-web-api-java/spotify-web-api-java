@@ -11,7 +11,7 @@ import java.io.IOException;
 
 /**
  * Create a playlist for a Spotify user. (The playlist will be empty until you add tracks
- * with an {@link AddTracksToPlaylistRequest}.)
+ * with an {@link AddItemsToPlaylistRequest}.)
  */
 @JsonDeserialize(builder = CreatePlaylistRequest.Builder.class)
 public class CreatePlaylistRequest extends AbstractDataRequest<Playlist> {

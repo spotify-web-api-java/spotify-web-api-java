@@ -2,8 +2,7 @@ package data.playlists;
 
 import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
-import com.wrapper.spotify.model_objects.special.SnapshotResult;
-import com.wrapper.spotify.requests.data.playlists.AddTracksToPlaylistRequest;
+import com.wrapper.spotify.requests.data.playlists.ReplacePlaylistsItemsRequest;
 import org.apache.hc.core5.http.ParseException;
 
 import java.io.IOException;
@@ -11,39 +10,38 @@ import java.util.concurrent.CancellationException;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionException;
 
-public class AddTracksToPlaylistExample {
+public class ReplacePlaylistsItemsExample {
   private static final String accessToken = "taHZ2SdB-bPA3FsK3D7ZN5npZS47cMy-IEySVEGttOhXmqaVAIo0ESvTCLjLBifhHOHOIuhFUKPW1WMDP7w6dj3MAZdWT8CLI2MkZaXbYLTeoDvXesf2eeiLYPBGdx8tIwQJKgV8XdnzH_DONk";
   private static final String playlistId = "3AGOiaoRXMSjswCLtuNqv5";
-  private static final String[] uris = new String[]{"spotify:track:01iyCAUm8EvOFqVWYJ3dVX", "spotify:episode:4GI3dxEafwap1sFiTGPKd1"};
+  private static final String[] uris = new String[]{"uris"};
 
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
     .setAccessToken(accessToken)
     .build();
-  private static final AddTracksToPlaylistRequest addTracksToPlaylistRequest = spotifyApi
-    .addTracksToPlaylist(playlistId, uris)
-//          .position(0)
+  private static final ReplacePlaylistsItemsRequest REPLACE_PLAYLISTS_ITEMS_REQUEST = spotifyApi
+    .replacePlaylistsItems(playlistId, uris)
     .build();
 
-  public static void addTracksToPlaylist_Sync() {
+  public static void replacePlaylistsItems_Sync() {
     try {
-      final SnapshotResult snapshotResult = addTracksToPlaylistRequest.execute();
+      final String string = REPLACE_PLAYLISTS_ITEMS_REQUEST.execute();
 
-      System.out.println("Snapshot ID: " + snapshotResult.getSnapshotId());
+      System.out.println("Null: " + string);
     } catch (IOException | SpotifyWebApiException | ParseException e) {
       System.out.println("Error: " + e.getMessage());
     }
   }
 
-  public static void addTracksToPlaylist_Async() {
+  public static void replacePlaylistsItems_Async() {
     try {
-      final CompletableFuture<SnapshotResult> snapshotResultFuture = addTracksToPlaylistRequest.executeAsync();
+      final CompletableFuture<String> stringFuture = REPLACE_PLAYLISTS_ITEMS_REQUEST.executeAsync();
 
       // Thread free to do other tasks...
 
       // Example Only. Never block in production code.
-      final SnapshotResult snapshotResult = snapshotResultFuture.join();
+      final String string = stringFuture.join();
 
-      System.out.println("Snapshot ID: " + snapshotResult.getSnapshotId());
+      System.out.println("Null: " + string);
     } catch (CompletionException e) {
       System.out.println("Error: " + e.getCause().getMessage());
     } catch (CancellationException e) {
@@ -52,7 +50,7 @@ public class AddTracksToPlaylistExample {
   }
 
   public static void main(String[] args) {
-    addTracksToPlaylist_Sync();
-    addTracksToPlaylist_Async();
+    replacePlaylistsItems_Sync();
+    replacePlaylistsItems_Async();
   }
 }
