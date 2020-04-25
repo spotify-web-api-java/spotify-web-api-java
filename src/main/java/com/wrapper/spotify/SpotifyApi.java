@@ -1166,18 +1166,18 @@ public class SpotifyApi {
   }
 
   /**
-   * Add tracks to a playlist.
+   * Add items to a playlist.
    *
    * @param user_id     The owners username.
    * @param playlist_id The playlists ID.
-   * @param uris        URIs of the tracks to add. Maximum: 100 track URIs.
+   * @param uris        URIs of the tracks or episodes to add. Maximum: 100 item URIs.
    * @return An {@link AddItemsToPlaylistRequest.Builder}.
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    * @deprecated Playlist IDs are unique for themselves. This parameter is thus no longer used.
    * (https://developer.spotify.com/community/news/2018/06/12/changes-to-playlist-uris/)
    */
   @Deprecated
-  public AddItemsToPlaylistRequest.Builder addTracksToPlaylist(String user_id, String playlist_id, String[] uris) {
+  public AddItemsToPlaylistRequest.Builder addItemsToPlaylist(String user_id, String playlist_id, String[] uris) {
     return new AddItemsToPlaylistRequest.Builder(accessToken)
       .setDefaults(httpManager, scheme, host, port)
       .user_id(user_id)
@@ -1201,18 +1201,18 @@ public class SpotifyApi {
   }
 
   /**
-   * Add tracks to a playlist.
+   * Add items to a playlist.
    *
    * @param user_id     The owners username.
    * @param playlist_id The playlists ID.
-   * @param uris        URIs of the tracks to add. Maximum: 100 track URIs.
+   * @param uris        URIs of the tracks or episodes to add. Maximum: 100 item URIs.
    * @return An {@link AddItemsToPlaylistRequest.Builder}.
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    * @deprecated Playlist IDs are unique for themselves. This parameter is thus no longer used.
    * (https://developer.spotify.com/community/news/2018/06/12/changes-to-playlist-uris/)
    */
   @Deprecated
-  public AddItemsToPlaylistRequest.Builder addTracksToPlaylist(String user_id, String playlist_id, JsonArray uris) {
+  public AddItemsToPlaylistRequest.Builder addItemsToPlaylist(String user_id, String playlist_id, JsonArray uris) {
     return new AddItemsToPlaylistRequest.Builder(accessToken)
       .setDefaults(httpManager, scheme, host, port)
       .user_id(user_id)
@@ -1367,7 +1367,7 @@ public class SpotifyApi {
   }
 
   /**
-   * Get a playlists tracks.
+   * Get a playlists items.
    *
    * @param user_id     The playlists owners username.
    * @param playlist_id The playlists ID.
@@ -1377,7 +1377,7 @@ public class SpotifyApi {
    * (https://developer.spotify.com/community/news/2018/06/12/changes-to-playlist-uris/)
    */
   @Deprecated
-  public GetPlaylistsItemsRequest.Builder getPlaylistsTracks(String user_id, String playlist_id) {
+  public GetPlaylistsItemsRequest.Builder getPlaylistsItems(String user_id, String playlist_id) {
     return new GetPlaylistsItemsRequest.Builder(accessToken)
       .setDefaults(httpManager, scheme, host, port)
       .user_id(user_id)
@@ -1398,18 +1398,18 @@ public class SpotifyApi {
   }
 
   /**
-   * Delete tracks from a playlist
+   * Delete items from a playlist
    *
    * @param user_id     The owners username.
    * @param playlist_id The playlists ID.
-   * @param tracks      URIs of the tracks to remove. Maximum: 100 track URIs.
+   * @param tracks      URIs of the items to remove. Maximum: 100 track or episode URIs.
    * @return A {@link RemoveItemsFromPlaylistRequest.Builder}.
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    * @deprecated Playlist IDs are unique for themselves. This parameter is thus no longer used.
    * (https://developer.spotify.com/community/news/2018/06/12/changes-to-playlist-uris/)
    */
   @Deprecated
-  public RemoveItemsFromPlaylistRequest.Builder removeTracksFromPlaylist(
+  public RemoveItemsFromPlaylistRequest.Builder removeItemsFromPlaylist(
     String user_id, String playlist_id, JsonArray tracks) {
     return new RemoveItemsFromPlaylistRequest.Builder(accessToken)
       .setDefaults(httpManager, scheme, host, port)
@@ -1435,24 +1435,24 @@ public class SpotifyApi {
   }
 
   /**
-   * Reorder a track or a group of tracks in a playlist. <br><br>
+   * Reorder a item or a group of items in a playlist. <br><br>
    * <p>
-   * When reordering tracks, the timestamp indicating when they were added and the user who added them will be kept
+   * When reordering items, the timestamp indicating when they were added and the user who added them will be kept
    * untouched. In addition, the users following the playlists won’t be notified about changes in the playlists when the
-   * tracks are reordered.
+   * items are reordered.
    *
    * @param user_id       The user's Spotify user ID.
    * @param playlist_id   The Spotify ID for the playlist.
-   * @param range_start   The position of the first track to be reordered.
-   * @param insert_before The position where the tracks should be inserted. To reorder the tracks to the end of the
-   *                      playlist, simply set insert_before to the position after the last track.
+   * @param range_start   The position of the first item to be reordered.
+   * @param insert_before The position where the items should be inserted. To reorder the items to the end of the
+   *                      playlist, simply set insert_before to the position after the last item.
    * @return A {@link ReorderPlaylistsItemsRequest.Builder}.
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    * @deprecated Playlist IDs are unique for themselves. This parameter is thus no longer used.
    * (https://developer.spotify.com/community/news/2018/06/12/changes-to-playlist-uris/)
    */
   @Deprecated
-  public ReorderPlaylistsItemsRequest.Builder reorderPlaylistsTracks(String user_id, String playlist_id, int range_start, int insert_before) {
+  public ReorderPlaylistsItemsRequest.Builder reorderPlaylistsItems(String user_id, String playlist_id, int range_start, int insert_before) {
     return new ReorderPlaylistsItemsRequest.Builder(accessToken)
       .setDefaults(httpManager, scheme, host, port)
       .user_id(user_id)
@@ -1484,18 +1484,18 @@ public class SpotifyApi {
   }
 
   /**
-   * Replace tracks in a playlist.
+   * Replace items in a playlist.
    *
    * @param user_id     The owners username.
    * @param playlist_id The playlists ID.
-   * @param uris        URIs of the tracks to add. Maximum: 100 track URIs.
+   * @param uris        URIs of the items to add. Maximum: 100 track or episode URIs.
    * @return A {@link ReplacePlaylistsItemsRequest.Builder}.
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    * @deprecated Playlist IDs are unique for themselves. This parameter is thus no longer used.
    * (https://developer.spotify.com/community/news/2018/06/12/changes-to-playlist-uris/)
    */
   @Deprecated
-  public ReplacePlaylistsItemsRequest.Builder replacePlaylistsTracks(String user_id, String playlist_id, String[] uris) {
+  public ReplacePlaylistsItemsRequest.Builder replacePlaylistsItems(String user_id, String playlist_id, String[] uris) {
     return new ReplacePlaylistsItemsRequest.Builder(accessToken)
       .setDefaults(httpManager, scheme, host, port)
       .user_id(user_id)
@@ -1519,18 +1519,18 @@ public class SpotifyApi {
   }
 
   /**
-   * Replace tracks in a playlist.
+   * Replace items in a playlist.
    *
    * @param user_id     The owners username.
    * @param playlist_id The playlists ID.
-   * @param uris        URIs of the tracks to add. Maximum: 100 track URIs.
+   * @param uris        URIs of the items to add. Maximum: 100 track or episode URIs.
    * @return A {@link ReplacePlaylistsItemsRequest.Builder}.
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    * @deprecated Playlist IDs are unique for themselves. This parameter is thus no longer used.
    * (https://developer.spotify.com/community/news/2018/06/12/changes-to-playlist-uris/)
    */
   @Deprecated
-  public ReplacePlaylistsItemsRequest.Builder replacePlaylistsTracks(String user_id, String playlist_id, JsonArray uris) {
+  public ReplacePlaylistsItemsRequest.Builder replacePlaylistsItems(String user_id, String playlist_id, JsonArray uris) {
     return new ReplacePlaylistsItemsRequest.Builder(accessToken)
       .setDefaults(httpManager, scheme, host, port)
       .user_id(user_id)
