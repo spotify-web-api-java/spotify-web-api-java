@@ -21,14 +21,14 @@ public class RemoveItemsFromPlaylistExample {
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
     .setAccessToken(accessToken)
     .build();
-  private static final RemoveItemsFromPlaylistRequest REMOVE_ITEMS_FROM_PLAYLIST_REQUEST = spotifyApi
+  private static final RemoveItemsFromPlaylistRequest removeItemsFromPlaylistRequest = spotifyApi
     .removeItemsFromPlaylist(playlistId, tracks)
 //          .snapshotId("JbtmHBDBAYu3/bt8BOXKjzKx3i0b6LCa/wVjyl6qQ2Yf6nFXkbmzuEa+ZI/U1yF+")
     .build();
 
   public static void removeItemsFromPlaylist_Sync() {
     try {
-      final SnapshotResult snapshotResult = REMOVE_ITEMS_FROM_PLAYLIST_REQUEST.execute();
+      final SnapshotResult snapshotResult = removeItemsFromPlaylistRequest.execute();
 
       System.out.println("Snapshot ID: " + snapshotResult.getSnapshotId());
     } catch (IOException | SpotifyWebApiException | ParseException e) {
@@ -38,7 +38,7 @@ public class RemoveItemsFromPlaylistExample {
 
   public static void removeItemsFromPlaylist_Async() {
     try {
-      final CompletableFuture<SnapshotResult> snapshotResultFuture = REMOVE_ITEMS_FROM_PLAYLIST_REQUEST.executeAsync();
+      final CompletableFuture<SnapshotResult> snapshotResultFuture = removeItemsFromPlaylistRequest.executeAsync();
 
       // Thread free to do other tasks...
 

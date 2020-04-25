@@ -21,7 +21,7 @@ public class ReorderPlaylistsItemsExample {
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
     .setAccessToken(accessToken)
     .build();
-  private static final ReorderPlaylistsItemsRequest REORDER_PLAYLISTS_ITEMS_REQUEST = spotifyApi.
+  private static final ReorderPlaylistsItemsRequest reorderPlaylistsItemsRequest = spotifyApi.
 																									   reorderPlaylistsItems(playlistId, rangeStart, insertBefore)
 //          .range_length(rangeLength)
 //          .snapshot_id("JbtmHBDBAYu3/bt8BOXKjzKx3i0b6LCa/wVjyl6qQ2Yf6nFXkbmzuEa+ZI/U1yF+")
@@ -29,7 +29,7 @@ public class ReorderPlaylistsItemsExample {
 
   public static void reorderPlaylistsItems_Sync() {
     try {
-      final SnapshotResult snapshotResult = REORDER_PLAYLISTS_ITEMS_REQUEST.execute();
+      final SnapshotResult snapshotResult = reorderPlaylistsItemsRequest.execute();
 
       System.out.println("Snapshot ID: " + snapshotResult.getSnapshotId());
     } catch (IOException | SpotifyWebApiException | ParseException e) {
@@ -39,7 +39,7 @@ public class ReorderPlaylistsItemsExample {
 
   public static void reorderPlaylistsItems_Async() {
     try {
-      final CompletableFuture<SnapshotResult> snapshotResultFuture = REORDER_PLAYLISTS_ITEMS_REQUEST.executeAsync();
+      final CompletableFuture<SnapshotResult> snapshotResultFuture = reorderPlaylistsItemsRequest.executeAsync();
 
       // Thread free to do other tasks...
 

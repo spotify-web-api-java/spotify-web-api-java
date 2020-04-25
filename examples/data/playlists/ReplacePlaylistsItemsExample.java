@@ -18,13 +18,13 @@ public class ReplacePlaylistsItemsExample {
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
     .setAccessToken(accessToken)
     .build();
-  private static final ReplacePlaylistsItemsRequest REPLACE_PLAYLISTS_ITEMS_REQUEST = spotifyApi
+  private static final ReplacePlaylistsItemsRequest replacePlaylistsItemsRequest = spotifyApi
     .replacePlaylistsItems(playlistId, uris)
     .build();
 
   public static void replacePlaylistsItems_Sync() {
     try {
-      final String string = REPLACE_PLAYLISTS_ITEMS_REQUEST.execute();
+      final String string = replacePlaylistsItemsRequest.execute();
 
       System.out.println("Null: " + string);
     } catch (IOException | SpotifyWebApiException | ParseException e) {
@@ -34,7 +34,7 @@ public class ReplacePlaylistsItemsExample {
 
   public static void replacePlaylistsItems_Async() {
     try {
-      final CompletableFuture<String> stringFuture = REPLACE_PLAYLISTS_ITEMS_REQUEST.executeAsync();
+      final CompletableFuture<String> stringFuture = replacePlaylistsItemsRequest.executeAsync();
 
       // Thread free to do other tasks...
 

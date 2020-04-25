@@ -19,7 +19,7 @@ public class GetPlaylistsItemsExample {
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
     .setAccessToken(accessToken)
     .build();
-  private static final GetPlaylistsItemsRequest GET_PLAYLISTS_ITEMS_REQUEST = spotifyApi
+  private static final GetPlaylistsItemsRequest getPlaylistsItemsRequest = spotifyApi
     .getPlaylistsItems(playlistId)
 //          .fields("description")
 //          .limit(10)
@@ -30,7 +30,7 @@ public class GetPlaylistsItemsExample {
 
   public static void getPlaylistsItems_Sync() {
     try {
-      final Paging<PlaylistTrack> playlistTrackPaging = GET_PLAYLISTS_ITEMS_REQUEST.execute();
+      final Paging<PlaylistTrack> playlistTrackPaging = getPlaylistsItemsRequest.execute();
 
       System.out.println("Total: " + playlistTrackPaging.getTotal());
     } catch (IOException | SpotifyWebApiException | ParseException e) {
@@ -40,7 +40,7 @@ public class GetPlaylistsItemsExample {
 
   public static void getPlaylistsItems_Async() {
     try {
-      final CompletableFuture<Paging<PlaylistTrack>> pagingFuture = GET_PLAYLISTS_ITEMS_REQUEST.executeAsync();
+      final CompletableFuture<Paging<PlaylistTrack>> pagingFuture = getPlaylistsItemsRequest.executeAsync();
 
       // Thread free to do other tasks...
 
