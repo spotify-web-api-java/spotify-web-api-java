@@ -2,8 +2,13 @@ package com.wrapper.spotify.model_objects.miscellaneous;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.JsonObject;
+import com.wrapper.spotify.enums.CurrentlyPlayingType;
 import com.wrapper.spotify.model_objects.AbstractModelObject;
+import com.wrapper.spotify.model_objects.IPlaylistItem;
+import com.wrapper.spotify.model_objects.special.Actions;
 import com.wrapper.spotify.model_objects.specification.Context;
+import com.wrapper.spotify.model_objects.specification.Disallows;
+import com.wrapper.spotify.model_objects.specification.Episode;
 import com.wrapper.spotify.model_objects.specification.Track;
 
 /**
@@ -20,7 +25,9 @@ public class CurrentlyPlayingContext extends AbstractModelObject {
   private final Long timestamp;
   private final Integer progress_ms;
   private final Boolean is_playing;
-  private final Track item;
+  private final IPlaylistItem item;
+  private final CurrentlyPlayingType currentlyPlayingType;
+  private final Actions actions;
 
   private CurrentlyPlayingContext(final Builder builder) {
     super(builder);
@@ -33,6 +40,8 @@ public class CurrentlyPlayingContext extends AbstractModelObject {
     this.progress_ms = builder.progress_ms;
     this.is_playing = builder.is_playing;
     this.item = builder.item;
+    this.currentlyPlayingType = builder.currentlyPlayingType;
+    this.actions = builder.actions;
   }
 
   /**
@@ -63,7 +72,7 @@ public class CurrentlyPlayingContext extends AbstractModelObject {
   }
 
   /**
-   * Get the context from where the currently playing track is played from.
+   * Get the context from where the currently playing item is played from.
    *
    * @return A Context Object. Can be {@code null}.
    */
@@ -81,16 +90,16 @@ public class CurrentlyPlayingContext extends AbstractModelObject {
   }
 
   /**
-   * Get the progress of the currently playing track.
+   * Get the progress of the currently playing item.
    *
-   * @return Progress into the currently playing track. Can be {@code null}.
+   * @return Progress into the currently playing item. Can be {@code null}.
    */
   public Integer getProgress_ms() {
     return progress_ms;
   }
 
   /**
-   * Check whether a track is playing on the device or not.
+   * Check whether a track or episode is playing on the device or not.
    *
    * @return If something is currently playing.
    */
@@ -99,12 +108,30 @@ public class CurrentlyPlayingContext extends AbstractModelObject {
   }
 
   /**
-   * Get the currently playing track, if the device is playing something.
+   * Get the currently playing track or episode, if the device is playing something.
    *
-   * @return The currently playing track. Can be {@code null}.
+   * @return The currently playing item. Can be {@code null}.
    */
-  public Track getItem() {
+  public IPlaylistItem getItem() {
     return item;
+  }
+
+  /**
+   * Get the type of the currently playing item.
+   *
+   * @return The type of the currently playing item.
+   */
+  public CurrentlyPlayingType getCurrentlyPlayingType() {
+    return currentlyPlayingType;
+  }
+
+  /**
+   * Get which playback actions are available within the current context.
+   *
+   * @return A {@link Actions} object which contains a {@link Disallows} object.
+   */
+  public Actions getActions() {
+    return actions;
   }
 
   @Override
@@ -123,7 +150,9 @@ public class CurrentlyPlayingContext extends AbstractModelObject {
     private Long timestamp;
     private Integer progress_ms;
     private Boolean is_playing;
-    private Track item;
+    private IPlaylistItem item;
+    private CurrentlyPlayingType currentlyPlayingType;
+    private Actions actions;
 
     /**
      * The active device setter.
@@ -181,9 +210,9 @@ public class CurrentlyPlayingContext extends AbstractModelObject {
     }
 
     /**
-     * The track progress setter.
+     * The item progress setter.
      *
-     * @param progress_ms Progress into the currently playing track. Can be {@code null}.
+     * @param progress_ms Progress into the currently playing item. Can be {@code null}.
      * @return A {@link CurrentlyPlayingContext.Builder}.
      */
     public Builder setProgress_ms(Integer progress_ms) {
@@ -203,13 +232,35 @@ public class CurrentlyPlayingContext extends AbstractModelObject {
     }
 
     /**
-     * The currently playing track setter.
+     * The currently playing item setter.
      *
      * @param item If something is currently playing.
      * @return A {@link CurrentlyPlayingContext.Builder}.
      */
-    public Builder setItem(Track item) {
+    public Builder setItem(IPlaylistItem item) {
       this.item = item;
+      return this;
+    }
+
+    /**
+     * The currently playing type setter.
+     *
+     * @param currentlyPlayingType The type of the currently playing item.
+     * @return A {@link CurrentlyPlayingContext.Builder}.
+     */
+    public Builder setCurrentlyPlayingType(CurrentlyPlayingType currentlyPlayingType) {
+      this.currentlyPlayingType = currentlyPlayingType;
+      return this;
+    }
+
+    /**
+     * The actions setter.
+     *
+     * @param actions A {@link Actions} object which contains a {@link Disallows} object.
+     * @return A {@link CurrentlyPlayingContext.Builder}.
+     */
+    public Builder setActions(Actions actions) {
+      this.actions = actions;
       return this;
     }
 
@@ -260,9 +311,22 @@ public class CurrentlyPlayingContext extends AbstractModelObject {
             ? jsonObject.get("is_playing").getAsBoolean()
             : null)
         .setItem(
-          hasAndNotNull(jsonObject, "item")
-            ? new Track.JsonUtil().createModelObject(
-            jsonObject.getAsJsonObject("item"))
+          hasAndNotNull(jsonObject, "item") && hasAndNotNull(jsonObject, "currently_playing_type")
+            ? (jsonObject.get("currently_playing_type").getAsString().equals("track")
+              ? new Track.JsonUtil().createModelObject(jsonObject.getAsJsonObject("item"))
+              : jsonObject.get("currently_playing_type").getAsString().equals("episode")
+                ? new Episode.JsonUtil().createModelObject(jsonObject.getAsJsonObject("item"))
+                : null)
+            : null)
+        .setCurrentlyPlayingType(
+          hasAndNotNull(jsonObject, "currently_playing_type")
+            ? CurrentlyPlayingType.keyOf(
+            jsonObject.get("currently_playing_type").getAsString().toLowerCase())
+            : null)
+        .setActions(
+          hasAndNotNull(jsonObject, "actions")
+            ? new Actions.JsonUtil().createModelObject(
+            jsonObject.getAsJsonObject("actions"))
             : null)
         .build();
     }

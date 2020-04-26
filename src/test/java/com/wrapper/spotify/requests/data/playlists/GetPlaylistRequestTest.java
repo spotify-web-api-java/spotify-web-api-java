@@ -24,6 +24,7 @@ public class GetPlaylistRequestTest extends AbstractDataTest<Playlist> {
         "requests/data/playlists/GetPlaylistRequest.json"))
     .fields(FIELDS)
     .market(MARKET)
+    .additionalTypes(ADDITIONAL_TYPES)
     .build();
 
   public GetPlaylistRequestTest() throws Exception {
@@ -33,7 +34,7 @@ public class GetPlaylistRequestTest extends AbstractDataTest<Playlist> {
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
     assertEquals(
-      "https://api.spotify.com:443/v1/playlists/3AGOiaoRXMSjswCLtuNqv5?fields=description&market=SE",
+      "https://api.spotify.com:443/v1/playlists/3AGOiaoRXMSjswCLtuNqv5?fields=description&market=SE&additional_types=track%2Cepisode",
       defaultRequest.getUri().toString());
   }
 

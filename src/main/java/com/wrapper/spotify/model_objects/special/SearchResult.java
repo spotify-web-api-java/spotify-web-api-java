@@ -17,7 +17,9 @@ import com.wrapper.spotify.requests.data.search.interfaces.ISearchModelObject;
 public class SearchResult extends AbstractModelObject implements IArtistTrackModelObject, ISearchModelObject {
   private final Paging<AlbumSimplified> albums;
   private final Paging<Artist> artists;
+  private final Paging<EpisodeSimplified> episodes;
   private final Paging<PlaylistSimplified> playlists;
+  private final Paging<ShowSimplified> shows;
   private final Paging<Track> tracks;
 
   private SearchResult(final Builder builder) {
@@ -25,7 +27,9 @@ public class SearchResult extends AbstractModelObject implements IArtistTrackMod
 
     this.albums = builder.albums;
     this.artists = builder.artists;
+    this.episodes = builder.episodes;
     this.playlists = builder.playlists;
+    this.shows = builder.shows;
     this.tracks = builder.tracks;
   }
 
@@ -52,6 +56,17 @@ public class SearchResult extends AbstractModelObject implements IArtistTrackMod
   }
 
   /**
+   * Get the episode objects contained in the search result object. <br>
+   * <b>Note:</b> The search result only contains episode objects when the {@code episode} parameter has been specified
+   * in the request.
+   *
+   * @return Episodes from the search result.
+   */
+  public Paging<EpisodeSimplified> getEpisodes() {
+    return episodes;
+  }
+
+  /**
    * Get the playlist objects contained in the search result object. <br>
    * <b>Note:</b> The search result only contains playlist objects when the {@code playlist} parameter has been specified
    * in the request.
@@ -60,6 +75,17 @@ public class SearchResult extends AbstractModelObject implements IArtistTrackMod
    */
   public Paging<PlaylistSimplified> getPlaylists() {
     return playlists;
+  }
+
+  /**
+   * Get the show objects contained in the search result object. <br>
+   * <b>Note:</b> The search result only contains show objects when the {@code show} parameter has been specified
+   * in the request.
+   *
+   * @return Shows from the search result.
+   */
+  public Paging<ShowSimplified> getShows() {
+    return shows;
   }
 
   /**
@@ -84,7 +110,9 @@ public class SearchResult extends AbstractModelObject implements IArtistTrackMod
   public static final class Builder extends AbstractModelObject.Builder {
     private Paging<AlbumSimplified> albums;
     private Paging<Artist> artists;
+    private Paging<EpisodeSimplified> episodes;
     private Paging<PlaylistSimplified> playlists;
+    private Paging<ShowSimplified> shows;
     private Paging<Track> tracks;
 
     /**
@@ -110,6 +138,17 @@ public class SearchResult extends AbstractModelObject implements IArtistTrackMod
     }
 
     /**
+     * The episodes setter.
+     *
+     * @param episodes Episodes from the search result.
+     * @return A {@link SearchResult.Builder}.
+     */
+    public Builder setEpisodes(Paging<EpisodeSimplified> episodes) {
+      this.episodes = episodes;
+      return this;
+    }
+
+    /**
      * The playlists setter.
      *
      * @param playlists Playlists from the search result.
@@ -117,6 +156,17 @@ public class SearchResult extends AbstractModelObject implements IArtistTrackMod
      */
     public Builder setPlaylists(Paging<PlaylistSimplified> playlists) {
       this.playlists = playlists;
+      return this;
+    }
+
+    /**
+     * The shows setter.
+     *
+     * @param shows Shows from the search result.
+     * @return A {@link SearchResult.Builder}.
+     */
+    public Builder setShows(Paging<ShowSimplified> shows) {
+      this.shows = shows;
       return this;
     }
 
@@ -157,10 +207,20 @@ public class SearchResult extends AbstractModelObject implements IArtistTrackMod
             ? new Artist.JsonUtil().createModelObjectPaging(
             jsonObject.getAsJsonObject("artists"))
             : null)
+        .setEpisodes(
+          hasAndNotNull(jsonObject, "episodes")
+            ? new EpisodeSimplified.JsonUtil().createModelObjectPaging(
+            jsonObject.getAsJsonObject("episodes"))
+            : null)
         .setPlaylists(
           hasAndNotNull(jsonObject, "playlists")
             ? new PlaylistSimplified.JsonUtil().createModelObjectPaging(
             jsonObject.getAsJsonObject("playlists"))
+            : null)
+        .setShows(
+          hasAndNotNull(jsonObject, "shows")
+            ? new ShowSimplified.JsonUtil().createModelObjectPaging(
+            jsonObject.getAsJsonObject("shows"))
             : null)
         .setTracks(
           hasAndNotNull(jsonObject, "tracks")
