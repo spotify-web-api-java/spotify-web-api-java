@@ -21,6 +21,7 @@ public class GetPlaylistExample {
   private static final GetPlaylistRequest getPlaylistRequest = spotifyApi.getPlaylist(playlistId)
 //          .fields("description")
 //          .market(CountryCode.SE)
+//          .additionalTypes("track,episode")
     .build();
 
   public static void getPlaylist_Sync() {

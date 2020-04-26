@@ -1,0 +1,164 @@
+{
+  "available_markets": [
+    "AD",
+    "AE",
+    "AR",
+    "AT",
+    "AU",
+    "BE",
+    "BG",
+    "BH",
+    "BO",
+    "BR",
+    "CA",
+    "CH",
+    "CL",
+    "CO",
+    "CR",
+    "CY",
+    "CZ",
+    "DE",
+    "DK",
+    "DO",
+    "DZ",
+    "EC",
+    "EE",
+    "ES",
+    "FI",
+    "FR",
+    "GB",
+    "GR",
+    "GT",
+    "HK",
+    "HN",
+    "HU",
+    "ID",
+    "IE",
+    "IL",
+    "IN",
+    "IS",
+    "IT",
+    "JO",
+    "JP",
+    "KW",
+    "LB",
+    "LI",
+    "LT",
+    "LU",
+    "LV",
+    "MA",
+    "MC",
+    "MT",
+    "MX",
+    "MY",
+    "NI",
+    "NL",
+    "NO",
+    "NZ",
+    "OM",
+    "PA",
+    "PE",
+    "PH",
+    "PL",
+    "PS",
+    "PT",
+    "PY",
+    "QA",
+    "RO",
+    "SE",
+    "SG",
+    "SK",
+    "SV",
+    "TH",
+    "TN",
+    "TR",
+    "TW",
+    "US",
+    "UY",
+    "VN",
+    "ZA"
+  ],
+  "copyrights": [],
+  "description": "Wie navigiert die Welt durch die Coronakrise? Juan Moreno spricht mit den SPIEGEL-Korrespondentinnen und Korrespondenten über die globale Herausforderung. Wie wirkt sie sich auf Politik und Gesellschaft aus? Wie gehen die Menschen weltweit damit um?",
+  "episodes": {
+    "href": "https://api.spotify.com/v1/shows/7iZEp9f2Gg8JvKNqK3t905/episodes?offset=0&limit=50",
+    "items": [
+      {
+        "audio_preview_url": "https://p.scdn.co/mp3-preview/fb7c635d9a0b86406b34a4c58282b5c0073cd50a",
+        "description": "Hat China die Coronakrise wirklich schon überwunden? Wie fühlt sich das Leben in Peking jetzt an? Und verschiebt sich durch Corona die Weltordnung? Juan Moreno im Gespräch mit SPIEGEL-Korrespondent Bernhard Zand.",
+        "duration_ms": 1777964,
+        "explicit": false,
+        "external_urls": {
+          "spotify": "https://open.spotify.com/episode/4fCuyVT71S1OIOLVnSQDaq"
+        },
+        "href": "https://api.spotify.com/v1/episodes/4fCuyVT71S1OIOLVnSQDaq",
+        "id": "4fCuyVT71S1OIOLVnSQDaq",
+        "images": [
+          {
+            "height": 500,
+            "url": "https://i.scdn.co/image/8ddc7f3df7b9f8faed405924801d3f08fbb53382",
+            "width": 500
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/2875e4ec8f3dacda37f7a1af5ba2e8750e7f5b41",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/bbb683f74a5f28164432e2278b31c9d214ab3b32",
+            "width": 64
+          }
+        ],
+        "is_externally_hosted": false,
+        "is_playable": true,
+        "language": "de",
+        "languages": [
+          "de"
+        ],
+        "name": "Coronakrise in China: Wie Peking die USA vorführt",
+        "release_date": "2020-03-30",
+        "release_date_precision": "day",
+        "type": "episode",
+        "uri": "spotify:episode:4fCuyVT71S1OIOLVnSQDaq"
+      }
+    ],
+    "limit": 50,
+    "next": null,
+    "offset": 0,
+    "previous": null,
+    "total": 1
+  },
+  "explicit": false,
+  "external_urls": {
+    "spotify": "https://open.spotify.com/show/7iZEp9f2Gg8JvKNqK3t905"
+  },
+  "href": "https://api.spotify.com/v1/shows/7iZEp9f2Gg8JvKNqK3t905",
+  "id": "7iZEp9f2Gg8JvKNqK3t905",
+  "images": [
+    {
+      "height": 640,
+      "url": "https://i.scdn.co/image/012f4d88c26885482415ec9b9d280753fc8c29c6",
+      "width": 640
+    },
+    {
+      "height": 300,
+      "url": "https://i.scdn.co/image/c3bc1fadca78b9f7725ab5d8af7b589f4389f51d",
+      "width": 300
+    },
+    {
+      "height": 64,
+      "url": "https://i.scdn.co/image/885360157d9c3170099a26ac0b8bbcfb5bdf2e99",
+      "width": 64
+    }
+  ],
+  "is_externally_hosted": false,
+  "languages": [
+    "de"
+  ],
+  "media_type": "audio",
+  "name": "Acht Milliarden – Der Auslands-Podcast",
+  "publisher": "DER SPIEGEL",
+  "type": "show",
+  "uri": "spotify:show:7iZEp9f2Gg8JvKNqK3t905"
+}

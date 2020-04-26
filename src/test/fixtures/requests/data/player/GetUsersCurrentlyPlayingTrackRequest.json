@@ -74,5 +74,14 @@
     "type": "track",
     "uri": "spotify:track:01iyCAUm8EvOFqVWYJ3dVX"
   },
+  "currently_playing_type": "track",
+  "actions": {
+    "disallows": {
+      "resuming": true,
+      "toggling_repeat_context": true,
+      "toggling_repeat_track": true,
+      "toggling_shuffle": true
+    }
+  },
   "context": null
 }

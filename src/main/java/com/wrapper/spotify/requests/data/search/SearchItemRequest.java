@@ -10,7 +10,7 @@ import org.apache.hc.core5.http.ParseException;
 import java.io.IOException;
 
 /**
- * Get Spotify catalog information about artists, albums, tracks or playlists that match a keyword string.
+ * Get Spotify catalog information about artists, albums, episodes, playlists, shows or tracks that match a keyword string.
  */
 @JsonDeserialize(builder = SearchItemRequest.Builder.class)
 public class SearchItemRequest extends AbstractDataRequest<SearchResult> {
@@ -69,12 +69,12 @@ public class SearchItemRequest extends AbstractDataRequest<SearchResult> {
      * The type setter.
      *
      * @param type Required. A comma-separated list of item types to search across. Valid types are: {@code album},
-     *             {@code artist}, {@code playlist}, and {@code track}.
+     *             {@code artist}, {@code episode}, {@code playlist}, {@code show} and {@code track}.
      * @return A {@link SearchItemRequest.Builder}.
      */
     public Builder type(final String type) {
       assert (type != null);
-      assert (type.matches("((^|,)(album|artist|playlist|track))+$"));
+      assert (type.matches("((^|,)(album|artist|episode|playlist|show|track))+$"));
       return setQueryParameter("type", type);
     }
 
@@ -115,6 +115,20 @@ public class SearchItemRequest extends AbstractDataRequest<SearchResult> {
       assert (offset != null);
       assert (0 <= offset && offset <= 100000);
       return setQueryParameter("offset", offset);
+    }
+
+    /**
+     * The include external setter.
+     *
+     * @param includeExternal Optional. Possible values: {@code audio}. If {@code audio} is set
+     *                        the response will include any relevant audio content that is hosted externally.
+     *                        By default external content is filtered out from responses.
+     * @return A {@link SearchItemRequest.Builder}.
+     */
+    public Builder includeExternal(String includeExternal) {
+      assert (includeExternal != null);
+      assert (includeExternal.matches("audio"));
+      return setQueryParameter("include_external", includeExternal);
     }
 
     /**

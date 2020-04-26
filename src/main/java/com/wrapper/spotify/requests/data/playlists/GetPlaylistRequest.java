@@ -113,6 +113,20 @@ public class GetPlaylistRequest extends AbstractDataRequest<Playlist> {
     }
 
     /**
+     * The additional types setter.
+     *
+     * @param additionalTypes Optional. A comma-separated list of item types that your client supports
+     *                        besides the default track type. Valid types are: {@code track} and {@code episode}.
+     *                        An unsupported type in the response is expected to be represented as {@code null} value in the {@code item} field.
+     * @return A {@link GetPlaylistRequest.Builder}.
+     */
+    public Builder additionalTypes(final String additionalTypes) {
+      assert (additionalTypes != null);
+      assert (additionalTypes.matches("((^|,)(episode|track))+$"));
+      return setQueryParameter("additional_types", additionalTypes);
+    }
+
+    /**
      * The request build method.
      *
      * @return A custom {@link GetPlaylistRequest}.

@@ -1,0 +1,187 @@
+{
+  "device": {
+    "id": "5fbb3ba6aa454b5534c4ba43a8c7e8e45a63ad0e",
+    "is_active": true,
+    "is_private_session": false,
+    "is_restricted": false,
+    "name": "My fridge",
+    "type": "Computer",
+    "volume_percent": 100
+  },
+  "shuffle_state": false,
+  "repeat_state": "off",
+  "timestamp": 1516669848357,
+  "context": {
+    "external_urls": {
+      "spotify": "https://open.spotify.com/show/5AvwZVawapvyhJUIx71pdJ"
+    },
+    "href": "https://api.spotify.com/v1/shows/5AvwZVawapvyhJUIx71pdJ",
+    "type": "show",
+    "uri": "spotify:show:5AvwZVawapvyhJUIx71pdJ"
+  },
+  "progress_ms": 1625,
+  "item": {
+    "audio_preview_url": "https://p.scdn.co/mp3-preview/732323e08d818b865972f0604000d6b9b303b031",
+    "description": "The crew's all here after their long weekend and they're ready to discuss everything: from Death Stranding, to scented candles, to googling KIDS! We've got it all!",
+    "duration_ms": 9590568,
+    "explicit": false,
+    "external_urls": {
+      "spotify": "https://open.spotify.com/episode/78iZfkNcsOJZVhmSQdYNUb"
+    },
+    "href": "https://api.spotify.com/v1/episodes/78iZfkNcsOJZVhmSQdYNUb",
+    "id": "78iZfkNcsOJZVhmSQdYNUb",
+    "images": [
+      {
+        "height": 360,
+        "url": "https://i.scdn.co/image/ff5ec9060db4b218fdace3c4d513f3f63588e6d3",
+        "width": 640
+      },
+      {
+        "height": 169,
+        "url": "https://i.scdn.co/image/d8e6a614b2b28ea34d5d07c77a5c93e9db045807",
+        "width": 300
+      },
+      {
+        "height": 36,
+        "url": "https://i.scdn.co/image/38fbf2e9d314557d417b334e7c1cd699cc3d749f",
+        "width": 64
+      }
+    ],
+    "is_externally_hosted": false,
+    "is_playable": true,
+    "language": "en-US",
+    "languages": [
+      "en-US"
+    ],
+    "name": "The Giant Beastcast: Episode 210",
+    "release_date": "2019-05-31",
+    "release_date_precision": "day",
+    "show": {
+      "available_markets": [
+        "AD",
+        "AE",
+        "AR",
+        "AT",
+        "AU",
+        "BE",
+        "BG",
+        "BH",
+        "BO",
+        "BR",
+        "CA",
+        "CH",
+        "CL",
+        "CO",
+        "CR",
+        "CY",
+        "CZ",
+        "DE",
+        "DK",
+        "DO",
+        "DZ",
+        "EC",
+        "EE",
+        "ES",
+        "FI",
+        "FR",
+        "GB",
+        "GR",
+        "GT",
+        "HK",
+        "HN",
+        "HU",
+        "ID",
+        "IE",
+        "IL",
+        "IN",
+        "IS",
+        "IT",
+        "JO",
+        "JP",
+        "KW",
+        "LB",
+        "LI",
+        "LT",
+        "LU",
+        "LV",
+        "MA",
+        "MC",
+        "MT",
+        "MX",
+        "MY",
+        "NI",
+        "NL",
+        "NO",
+        "NZ",
+        "OM",
+        "PA",
+        "PE",
+        "PH",
+        "PL",
+        "PS",
+        "PT",
+        "PY",
+        "QA",
+        "RO",
+        "SE",
+        "SG",
+        "SK",
+        "SV",
+        "TH",
+        "TN",
+        "TR",
+        "TW",
+        "US",
+        "UY",
+        "VN",
+        "ZA"
+      ],
+      "copyrights": [],
+      "description": "The Giant Bomb East team gathers to talk about the week in video games, their lives, and basically anything that interests them. All from New York City!",
+      "explicit": false,
+      "external_urls": {
+        "spotify": "https://open.spotify.com/show/5AvwZVawapvyhJUIx71pdJ"
+      },
+      "href": "https://api.spotify.com/v1/shows/5AvwZVawapvyhJUIx71pdJ",
+      "id": "5AvwZVawapvyhJUIx71pdJ",
+      "images": [
+        {
+          "height": 640,
+          "url": "https://i.scdn.co/image/1ddf77cc09b21b34b9536f76794b43bac7240688",
+          "width": 640
+        },
+        {
+          "height": 300,
+          "url": "https://i.scdn.co/image/b96bc3c4b41162cf3dbec9f66cd0ba63fde47849",
+          "width": 300
+        },
+        {
+          "height": 64,
+          "url": "https://i.scdn.co/image/e699a95e7494c7c898a85f3676572b71faecf032",
+          "width": 64
+        }
+      ],
+      "is_externally_hosted": false,
+      "languages": [
+        "en-US"
+      ],
+      "media_type": "audio",
+      "name": "The Giant Beastcast",
+      "publisher": "Giant Bomb",
+      "type": "show",
+      "uri": "spotify:show:5AvwZVawapvyhJUIx71pdJ"
+    },
+    "type": "episode",
+    "uri": "spotify:episode:78iZfkNcsOJZVhmSQdYNUb"
+  },
+  "currently_playing_type": "episode",
+  "actions": {
+    "disallows": {
+      "resuming": true,
+      "toggling_repeat_context": true,
+      "toggling_repeat_track": true,
+      "toggling_shuffle": true
+    }
+  },
+  "is_playing": true
+}

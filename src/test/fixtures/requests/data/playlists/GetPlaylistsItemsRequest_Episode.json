@@ -1,0 +1,183 @@
+{
+  "href": "https://api.spotify.com/v1/playlists/21THa8j9TaSGuXYNBU5tsC/tracks?offset=0&limit=100&additional_types=episode",
+  "items": [
+    {
+      "added_at": "2016-10-11T13:44:40Z",
+      "added_by": {
+        "external_urls": {
+          "spotify": "http://open.spotify.com/user/spotify_espa%C3%B1a"
+        },
+        "href": "https://api.spotify.com/v1/users/spotify_espa%C3%B1a",
+        "id": "spotify_españa",
+        "type": "user",
+        "uri": "spotify:user:spotify_espa%C3%B1a"
+      },
+      "is_local": false,
+      "primary_color": null,
+      "track": {
+        "audio_preview_url": "https://p.scdn.co/mp3-preview/9b0ebffde166917f35f9eab25af874e765261776",
+        "description": "We try to convince CNET's Jeff Bakalar that the Witcher's extended universe is amazing while he clues us in on where the real money is made. We've also got updates on the Grand Theft Auto movie, Splatoon, Alex's Mad Max impressions, and hot New York real ",
+        "duration_ms": 8052140,
+        "episode": true,
+        "explicit": false,
+        "external_urls": {
+          "spotify": "https://open.spotify.com/episode/4GI3dxEafwap1sFiTGPKd1"
+        },
+        "href": "https://api.spotify.com/v1/episodes/4GI3dxEafwap1sFiTGPKd1",
+        "id": "4GI3dxEafwap1sFiTGPKd1",
+        "images": [
+          {
+            "height": 327,
+            "url": "https://i.scdn.co/image/207663099fe4dab2eafbc2b52813d283e80be07a",
+            "width": 580
+          },
+          {
+            "height": 169,
+            "url": "https://i.scdn.co/image/156b88e30fbeb1864e75401b619e53238e252dd5",
+            "width": 300
+          },
+          {
+            "height": 36,
+            "url": "https://i.scdn.co/image/e96c7aa1c2415e29a68d93f4089c8add48b29984",
+            "width": 64
+          }
+        ],
+        "is_externally_hosted": false,
+        "is_playable": true,
+        "language": "en-US",
+        "languages": [
+          "en-US"
+        ],
+        "name": "The Giant Beastcast: Episode 0",
+        "release_date": "2015-05-22",
+        "release_date_precision": "day",
+        "show": {
+          "available_markets": [
+            "AD",
+            "AE",
+            "AR",
+            "AT",
+            "AU",
+            "BE",
+            "BG",
+            "BH",
+            "BO",
+            "BR",
+            "CA",
+            "CH",
+            "CL",
+            "CO",
+            "CR",
+            "CY",
+            "CZ",
+            "DE",
+            "DK",
+            "DO",
+            "DZ",
+            "EC",
+            "EE",
+            "ES",
+            "FI",
+            "FR",
+            "GB",
+            "GR",
+            "GT",
+            "HK",
+            "HN",
+            "HU",
+            "ID",
+            "IE",
+            "IL",
+            "IN",
+            "IS",
+            "IT",
+            "JO",
+            "JP",
+            "KW",
+            "LB",
+            "LI",
+            "LT",
+            "LU",
+            "LV",
+            "MA",
+            "MC",
+            "MT",
+            "MX",
+            "MY",
+            "NI",
+            "NL",
+            "NO",
+            "NZ",
+            "OM",
+            "PA",
+            "PE",
+            "PH",
+            "PL",
+            "PS",
+            "PT",
+            "PY",
+            "QA",
+            "RO",
+            "SE",
+            "SG",
+            "SK",
+            "SV",
+            "TH",
+            "TN",
+            "TR",
+            "TW",
+            "US",
+            "UY",
+            "VN",
+            "ZA"
+          ],
+          "copyrights": [],
+          "description": "The Giant Bomb East team gathers to talk about the week in video games, their lives, and basically anything that interests them. All from New York City!",
+          "explicit": false,
+          "external_urls": {
+            "spotify": "https://open.spotify.com/show/5AvwZVawapvyhJUIx71pdJ"
+          },
+          "href": "https://api.spotify.com/v1/shows/5AvwZVawapvyhJUIx71pdJ",
+          "id": "5AvwZVawapvyhJUIx71pdJ",
+          "images": [
+            {
+              "height": 640,
+              "url": "https://i.scdn.co/image/1ddf77cc09b21b34b9536f76794b43bac7240688",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://i.scdn.co/image/b96bc3c4b41162cf3dbec9f66cd0ba63fde47849",
+              "width": 300
+            },
+            {
+              "height": 64,
+              "url": "https://i.scdn.co/image/e699a95e7494c7c898a85f3676572b71faecf032",
+              "width": 64
+            }
+          ],
+          "is_externally_hosted": false,
+          "languages": [
+            "en-US"
+          ],
+          "media_type": "audio",
+          "name": "The Giant Beastcast",
+          "publisher": "Giant Bomb",
+          "type": "show",
+          "uri": "spotify:show:5AvwZVawapvyhJUIx71pdJ"
+        },
+        "track": false,
+        "type": "episode",
+        "uri": "spotify:episode:4GI3dxEafwap1sFiTGPKd1"
+      },
+      "video_thumbnail": {
+        "url": null
+      }
+    }
+  ],
+  "limit": 100,
+  "next": null,
+  "offset": 0,
+  "previous": null,
+  "total": 58
+}

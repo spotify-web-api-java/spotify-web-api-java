@@ -83,6 +83,13 @@
     "type": "Computer",
     "volume_percent": 100
   },
+  "currently_playing_type": "track",
+  "actions": {
+    "disallows": {
+      "resuming": true,
+      "skipping_prev": true
+    }
+  },
   "repeat_state": "off",
   "shuffle_state": false
 }

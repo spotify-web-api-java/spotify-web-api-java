@@ -15,8 +15,10 @@ The following (random) data should be used when modifying examples:
 ### IDs
 - Artist: ["0LcJLqbBmaGUft1e9Mm8HV"](https://open.spotify.com/artist/0LcJLqbBmaGUft1e9Mm8HV?si=tUHw6JYdQwmE5QIla_7ZaQ)
 - Album: ["5zT1JLIj9E57p3e1rFm9Uq"](https://open.spotify.com/album/5zT1JLIj9E57p3e1rFm9Uq?si=PkAs2KWQTkm2b0vxg_qcRA)
+- Episode: ["4GI3dxEafwap1sFiTGPKd1"](https://open.spotify.com/episode/4GI3dxEafwap1sFiTGPKd1?si=p32KTdx_QTuV2YLatvYkKw)
 - Playlist: ["3AGOiaoRXMSjswCLtuNqv5"](https://open.spotify.com/user/abbaspotify/playlist/3AGOiaoRXMSjswCLtuNqv5?si=ru1yCc8QSueG7gHEC7E40w)
 - Track: ["01iyCAUm8EvOFqVWYJ3dVX"](https://open.spotify.com/track/01iyCAUm8EvOFqVWYJ3dVX?si=m0Fdh5ASScyfue6kQerIZg)
+- Show ["5AvwZVawapvyhJUIx71pdJ"](https://open.spotify.com/show/5AvwZVawapvyhJUIx71pdJ?si=TFUPZuTrTS2yF-LD8nIYiw)
 - User: ["abbaspotify"](https://open.spotify.com/user/abbaspotify?si=xlmKbz6mQZ6fLfqwtOGozg)
 
 ### Required
@@ -34,6 +36,7 @@ The following (random) data should be used when modifying examples:
 - Volume percent: `100`
 
 ### Optional
+- Additional types: `"track, episode"`
 - After: see appropriate IDs or `new Date(1517087230000L)`
 - Album type: `AlbumType.ALBUM.getType()`
 - Before: `new Date(1453932420000L)`
@@ -49,7 +52,7 @@ The following (random) data should be used when modifying examples:
 - Max popularity: `50`
 - Min popularity: `10`
 - Name: `"Abba"`
-- Offset: `0` or `new JsonParser().parse("{\"uri\":\"spotify:track:01iyCAUm8EvOFqVWYJ3dVX\"}").getAsJsonObject()`
+- Offset: `0` or `JsonParser.parseString("{\"uri\":\"spotify:track:01iyCAUm8EvOFqVWYJ3dVX\"}").getAsJsonObject()`
 - Play: `false`
 - Position: `0`
 - Public: `false`
@@ -64,5 +67,5 @@ The following (random) data should be used when modifying examples:
 - Target popularity: `20`
 - Time range: `"medium_term"`
 - Timestamp: `new Date(1414054800000L)`
-- Tracks: `new JsonParser().parse("[\"01iyCAUm8EvOFqVWYJ3dVX\"]").getAsJsonArray()`
-- URIs: `new JsonParser().parse("{\"spotify:track:01iyCAUm8EvOFqVWYJ3dVX\"}").getAsJsonArray()`
+- Tracks: `JsonParser.parseString("[\"01iyCAUm8EvOFqVWYJ3dVX\"]").getAsJsonArray()`
+- URIs: `JsonParser.parseString("{\"spotify:track:01iyCAUm8EvOFqVWYJ3dVX\"}").getAsJsonArray()`

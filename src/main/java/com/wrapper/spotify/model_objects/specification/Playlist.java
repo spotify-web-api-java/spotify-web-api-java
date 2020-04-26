@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.JsonObject;
 import com.wrapper.spotify.enums.ModelObjectType;
 import com.wrapper.spotify.model_objects.AbstractModelObject;
+import com.wrapper.spotify.requests.data.playlists.RemoveItemsFromPlaylistRequest;
 
 /**
  * Retrieve information about <a href="https://developer.spotify.com/web-api/object-model/#playlist-object-full">
@@ -154,7 +155,7 @@ public class Playlist extends AbstractModelObject {
    * a specific playlist version.
    *
    * @return The version identifier for the current playlist.
-   * @see com.wrapper.spotify.requests.data.playlists.RemoveTracksFromPlaylistRequest
+   * @see RemoveItemsFromPlaylistRequest
    */
   public String getSnapshotId() {
     return snapshotId;

@@ -5,6 +5,7 @@ import com.google.gson.JsonObject;
 import com.wrapper.spotify.enums.ModelObjectType;
 import com.wrapper.spotify.model_objects.AbstractModelObject;
 import com.wrapper.spotify.model_objects.miscellaneous.PlaylistTracksInformation;
+import com.wrapper.spotify.requests.data.playlists.RemoveItemsFromPlaylistRequest;
 import com.wrapper.spotify.requests.data.search.interfaces.ISearchModelObject;
 
 /**
@@ -133,7 +134,7 @@ public class PlaylistSimplified extends AbstractModelObject implements ISearchMo
    * a specific playlist version.
    *
    * @return The version identifier for the current playlist.
-   * @see com.wrapper.spotify.requests.data.playlists.RemoveTracksFromPlaylistRequest
+   * @see RemoveItemsFromPlaylistRequest
    */
   public String getSnapshotId() {
     return snapshotId;

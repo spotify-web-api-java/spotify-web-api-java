@@ -31,7 +31,7 @@ Latest official release:
 <dependency>
   <groupId>se.michaelthelin.spotify</groupId>
   <artifactId>spotify-web-api-java</artifactId>
-  <version>5.0.4</version>
+  <version>6.0.0-RC1</version>
 </dependency>
 ```
 
@@ -48,7 +48,7 @@ Latest snapshot:
 
 Latest official release:
 ```Gradle
-compile 'se.michaelthelin.spotify:spotify-web-api-java:5.0.4'
+compile 'se.michaelthelin.spotify:spotify-web-api-java:6.0.0-RC1'
 ```
 
 Latest snapshot:
@@ -208,6 +208,11 @@ spotifyApi
   - [Get Recommendations](examples/data/browse/GetRecommendationsExample.java)
 
 
+- **Episodes**
+  - [Get an Episode](examples/data/episodes/GetEpisodeExample.java)
+  - [Get several Episodes](examples/data/episodes/GetSeveralEpisodesExample.java)
+
+
 - **Follow**
   - [Check if Current User Follows Artists or Users](examples/data/follow/CheckCurrentUserFollowsArtistsOrUsersExample.java)
   - [Check if Users Follow a Playlist](examples/data/follow/CheckUsersFollowPlaylistExample.java)
@@ -220,12 +225,16 @@ spotifyApi
 
 - **Library**
   - [Check User's Saved Albums](examples/data/library/CheckUsersSavedAlbumsExample.java)
+  - [Check User's Saved Shows](examples/data/library/CheckUsersSavedShowsExample.java)
   - [Check User's Saved Tracks](examples/data/library/CheckUsersSavedTracksExample.java)
   - [Get Current User's Saved Albums](examples/data/library/GetCurrentUsersSavedAlbumsExample.java)
+  - [Get User's Saved Shows](examples/data/library/GetUsersSavedShowsExample.java)
   - [Get User's Saved Tracks](examples/data/library/GetUsersSavedTracksExample.java)
   - [Remove Albums for Current User](examples/data/library/RemoveAlbumsForCurrentUserExample.java)
+  - [Remove User's Saved Shows](examples/data/library/RemoveUsersSavedShowsExample.java)
   - [Remove User's Saved Tracks](examples/data/library/RemoveUsersSavedTracksExample.java)
   - [Save Albums for Current User](examples/data/library/SaveAlbumsForCurrentUserExample.java)
+  - [Save Shows for Current User](examples/data/library/SaveShowsForCurrentUserExample.java)
   - [Save Tracks for User](examples/data/library/SaveTracksForUserExample.java)
 
 
@@ -272,9 +281,17 @@ spotifyApi
   - Simplified
     - [Search Albums](examples/data/search/simplified/SearchAlbumsExample.java)
     - [Search Artists](examples/data/search/simplified/SearchArtistsExample.java)
+    - [Search Episodes](examples/data/search/simplified/SearchEpisodesExample.java)
     - [Search Playlists](examples/data/search/simplified/SearchPlaylistsExample.java)
+    - [Search Shows](examples/data/search/simplified/SearchShowsExample.java)
     - [Search Tracks](examples/data/search/simplified/SearchTracksExample.java)
   - [Search Item](examples/data/search/SearchItemExample.java)
+
+
+- **Shows**
+  - [Get a Show](examples/data/shows/GetShowExample.java)
+  - [Get several Show](examples/data/shows/GetSeveralShowsExample.java)
+  - [Get a Show's Episodes](examples/data/shows/GetShowsEpisodesExample.java)
 
 
 - **Tracks**

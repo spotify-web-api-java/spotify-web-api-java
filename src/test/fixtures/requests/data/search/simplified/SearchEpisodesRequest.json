@@ -1,0 +1,359 @@
+{
+  "episodes": {
+    "href": "https://api.spotify.com/v1/search?query=Muse&type=episode&market=US&offset=5&limit=10",
+    "items": [
+      {
+        "audio_preview_url": "https://p.scdn.co/mp3-preview/4953f9273305b4080857a5827b5284574427d140",
+        "description": "         Who deserves to be in a museum? For too long, the answer has been \"the extraordinary\" -- those aspirational historymakers who inspire us with their successes. But those stories are limiting, says museum curator Ariana Curtis. In a visionary talk, she imagines how museums can more accurately represent history by honoring the lives of people both extraordinary and everyday, prominent and hidden -- and amplify diverse perspectives that should have always been included.       ",
+        "duration_ms": 742492,
+        "explicit": false,
+        "external_urls": {
+          "spotify": "https://open.spotify.com/episode/2cbgiJZ4czXj8OCPSCDcn3"
+        },
+        "href": "https://api.spotify.com/v1/episodes/2cbgiJZ4czXj8OCPSCDcn3",
+        "id": "2cbgiJZ4czXj8OCPSCDcn3",
+        "images": [
+          {
+            "height": 360,
+            "url": "https://i.scdn.co/image/2125de11fbf7fd49cef9d5f2a2a7abe4b9c2264a",
+            "width": 640
+          },
+          {
+            "height": 169,
+            "url": "https://i.scdn.co/image/7a902e5328f82f849acc1ffcaf5db8e84d485e88",
+            "width": 300
+          },
+          {
+            "height": 36,
+            "url": "https://i.scdn.co/image/64235d805217d8d89c8cff552ac00852b97be852",
+            "width": 64
+          }
+        ],
+        "is_externally_hosted": false,
+        "is_playable": true,
+        "language": "en",
+        "languages": [
+          "en"
+        ],
+        "name": "Museums should honor the everyday, not just the extraordinary | Ariana Curtis",
+        "release_date": "2020-02-04",
+        "release_date_precision": "day",
+        "type": "episode",
+        "uri": "spotify:episode:2cbgiJZ4czXj8OCPSCDcn3"
+      },
+      {
+        "audio_preview_url": "https://p.scdn.co/mp3-preview/3862b0e13afe328b30705673a43f14dabda26dc3",
+        "description": "         Welcome, all, to our most fanciful episode yet! It's got everything: Extremely wrong-headed Super Bowl predictions, Travis' mushroom-tainted movie memories and a brief lesson on Mogwai rights. Come with us on a three-way mind voyage! Suggested talking points: The Hug Heard Round the World, Mushroom Movie Editions, A Very Terrible Towel, Office Traps, Pirate Jeffcoats, Emu President        ",
+        "duration_ms": 3332456,
+        "explicit": true,
+        "external_urls": {
+          "spotify": "https://open.spotify.com/episode/0YRBcj9e7P5pb16FozLIbQ"
+        },
+        "href": "https://api.spotify.com/v1/episodes/0YRBcj9e7P5pb16FozLIbQ",
+        "id": "0YRBcj9e7P5pb16FozLIbQ",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/08ba50b87fe2c3acb37b131dc70d6655ee4171bd",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/b43494e6e836d37935fe583c6be728f17fa5df5d",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/fb1ef5b581e144291984a72e4855c885c0dc4a85",
+            "width": 64
+          }
+        ],
+        "is_externally_hosted": false,
+        "is_playable": true,
+        "language": "en",
+        "languages": [
+          "en"
+        ],
+        "name": "MBMBaM 289: Ben Stiller's Museum Nights",
+        "release_date": "2016-02-08",
+        "release_date_precision": "day",
+        "type": "episode",
+        "uri": "spotify:episode:0YRBcj9e7P5pb16FozLIbQ"
+      },
+      null,
+      {
+        "audio_preview_url": "https://p.scdn.co/mp3-preview/6cbb1f9e8e7b9c75b21ad7bd7a12a2b1afb1a595",
+        "description": "This week on Watchtime we talk about what is going on in the world right now with Covid-19, and the affect it is having on the YouTube sphere.    ",
+        "duration_ms": 3156096,
+        "explicit": true,
+        "external_urls": {
+          "spotify": "https://open.spotify.com/episode/0AzrnJXpkeZTXsUTHykHcN"
+        },
+        "href": "https://api.spotify.com/v1/episodes/0AzrnJXpkeZTXsUTHykHcN",
+        "id": "0AzrnJXpkeZTXsUTHykHcN",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/357355064cd7356e67743edc55b5eec08023386b",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/eeff66e6bc8ab5d6d52f4bda59a3f98b6b746b9c",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/ea8bf1815dee3db9362ac571080fc8edc2bdae11",
+            "width": 64
+          }
+        ],
+        "is_externally_hosted": false,
+        "is_playable": true,
+        "language": "en",
+        "languages": [
+          "en"
+        ],
+        "name": "LazarBeam and Muselk's Corona Plans",
+        "release_date": "2020-03-23",
+        "release_date_precision": "day",
+        "type": "episode",
+        "uri": "spotify:episode:0AzrnJXpkeZTXsUTHykHcN"
+      },
+      {
+        "audio_preview_url": "https://p.scdn.co/mp3-preview/46fe7bffd6d1ed053c06ecb5876bdecd9b266147",
+        "description": "Welcome to episode 10 of the podcast where a couple of poorly dressed jobsworths read awful reviews. This very special episode is full of big announcements and big egos.  We even answer the age old question: Which has more museums, Boise or New York City? We also discover the world of people who get excited by squirrels, making this our most wholesome episode yet. But don't get too excited, because we're still being described as \"what muppets would sound like on crack.\" Logo by Courtney DeKorte. Theme by Mavus White.  Music by PSOVOD, Sirkoto51 and tyops.   ---   This episode is sponsored by  · Talk Money With Mesh Lakhani Podcast: On The Talk Money with Mesh Lakhani podcast, Mesh will follow paper trails, chat with experts, and break down complex ideas to bring clarity to the mystical financial phenomena behind your finances. https://open.spotify.com/show/20gI5HoX4J0zlsCgnjqWoP?si=w8xX2XpITSuysd_xGiGQiQ  · Anchor: The easiest way to make a podcast.  https://anchor.fm/app ",
+        "duration_ms": 2543607,
+        "explicit": true,
+        "external_urls": {
+          "spotify": "https://open.spotify.com/episode/57mGvOrTPqNKesjOD9n9Xg"
+        },
+        "href": "https://api.spotify.com/v1/episodes/57mGvOrTPqNKesjOD9n9Xg",
+        "id": "57mGvOrTPqNKesjOD9n9Xg",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/95f60863b45b0cbfaeb08e501c64e50e110047c7",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/ad737c9411368bd7657ad8978696af9b990275dd",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/d4c806fccff499b9bd063a933e5a17d9486df246",
+            "width": 64
+          }
+        ],
+        "is_externally_hosted": false,
+        "is_playable": true,
+        "language": "en",
+        "languages": [
+          "en"
+        ],
+        "name": "10: Museums in Boise, ID",
+        "release_date": "2019-01-30",
+        "release_date_precision": "day",
+        "type": "episode",
+        "uri": "spotify:episode:57mGvOrTPqNKesjOD9n9Xg"
+      },
+      {
+        "audio_preview_url": "https://p.scdn.co/mp3-preview/034a691eae5a386381825691001130b23bfc4b38",
+        "description": "         It’s difficult to convey who you are in a two-dimensional dating profile. So a brand new dating service brings you into the third dimension, allowing you to create a museum all about yourself.  Written by Davy Gardner  Performed by Ann Carr and Nicholas Richardson. With Johnna Scrabis, and Adelaide Kipiniak.  The Truth  Instagram  Twitter       ",
+        "duration_ms": 1589408,
+        "explicit": false,
+        "external_urls": {
+          "spotify": "https://open.spotify.com/episode/7ybEKrMYjiImqMciLIfTyt"
+        },
+        "href": "https://api.spotify.com/v1/episodes/7ybEKrMYjiImqMciLIfTyt",
+        "id": "7ybEKrMYjiImqMciLIfTyt",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/f67f556cceb4cb6b1367d87b03fc591561707215",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/f206e3fe0c0a059335e802e76cabd1f88f2eec67",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/d751f5a35a56580559aaf51744d6bf81d6025600",
+            "width": 64
+          }
+        ],
+        "is_externally_hosted": false,
+        "is_playable": true,
+        "language": "en",
+        "languages": [
+          "en"
+        ],
+        "name": "Museum of You",
+        "release_date": "2020-01-16",
+        "release_date_precision": "day",
+        "type": "episode",
+        "uri": "spotify:episode:7ybEKrMYjiImqMciLIfTyt"
+      },
+      {
+        "audio_preview_url": "https://p.scdn.co/mp3-preview/4e3ad259248fa3fa3b24d38cf049d420215ab1c1",
+        "description": "She was an incredibly famous writer of incredible output. Her behavior and personal style were almost as talked about as her novels, and these factors combined made her into a figure that was admired by many, despised by some, and completely fascinating.  Learn more about your ad-choices at https://news.iheart.com/podcast-advertisers",
+        "duration_ms": 2677473,
+        "explicit": false,
+        "external_urls": {
+          "spotify": "https://open.spotify.com/episode/1l66VN198BfFHI89AxPDT8"
+        },
+        "href": "https://api.spotify.com/v1/episodes/1l66VN198BfFHI89AxPDT8",
+        "id": "1l66VN198BfFHI89AxPDT8",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/3b2c6bf0109b96bbf8808e9e8da339b90a39a21e",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/e271d78d511c568589bd872a85445078f3cd194d",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/ca298b23df80fb6eabd0aa8f4396932c1e2cf232",
+            "width": 64
+          }
+        ],
+        "is_externally_hosted": false,
+        "is_playable": true,
+        "language": "en",
+        "languages": [
+          "en"
+        ],
+        "name": "George Sand: Novelist, Muse and Gender Bender",
+        "release_date": "2020-02-03",
+        "release_date_precision": "day",
+        "type": "episode",
+        "uri": "spotify:episode:1l66VN198BfFHI89AxPDT8"
+      },
+      {
+        "audio_preview_url": "https://p.scdn.co/mp3-preview/0c995d84d986775e09f8fd81bcffddee3be398fe",
+        "description": "Stiff Socks go to Madame Tussaud's Wax Museum. They learn that Jason Derulo is somehow famous enough to have a wax statue and that even wax J-Lo has cake. Want an EXTRA episode a week? Become an exclusive member on Patreon!  https://www.patreon.com/stiffsockspod",
+        "duration_ms": 3269094,
+        "explicit": false,
+        "external_urls": {
+          "spotify": "https://open.spotify.com/episode/7JE6wTDwaMuz5jQonMzlaa"
+        },
+        "href": "https://api.spotify.com/v1/episodes/7JE6wTDwaMuz5jQonMzlaa",
+        "id": "7JE6wTDwaMuz5jQonMzlaa",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/632006803540546edea067b2a4ad551680c1ee35",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/d14b5882339dceee4468f3fcad805359942eac57",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/ddfa96ad08ba30c1660cb07ee394d4ac0f17c938",
+            "width": 64
+          }
+        ],
+        "is_externally_hosted": false,
+        "is_playable": true,
+        "language": "en",
+        "languages": [
+          "en"
+        ],
+        "name": "Episode 08: Stiff Socks Goes to a Wax Museum",
+        "release_date": "2019-03-06",
+        "release_date_precision": "day",
+        "type": "episode",
+        "uri": "spotify:episode:7JE6wTDwaMuz5jQonMzlaa"
+      },
+      {
+        "audio_preview_url": "https://p.scdn.co/mp3-preview/43795c89e14413717b99caf10020e65041f2fb32",
+        "description": "Rehab, arrests, fights, hitting on Prince Harry, dramatic stage breakdowns, slagging off the press, Amy Winehouse was a rockstar’s rockstar and she was also one of the greatest musical talents of the past 20 years. Her voice was unlike any other. She modernized jazz. She gave weight to pop. When she was inspired, she was untouchable. Driven by her muse, haunted by her addictions and harassed endlessly by the paparazzi, Amy Winehouse’s story is tragic and all too familiar but her music and the way she expressed herself; entirely unique.   Learn more about your ad-choices at https://news.iheart.com/podcast-advertisers",
+        "duration_ms": 2727340,
+        "explicit": false,
+        "external_urls": {
+          "spotify": "https://open.spotify.com/episode/0Yop8V3Xvn1W0VjR6Qv8o6"
+        },
+        "href": "https://api.spotify.com/v1/episodes/0Yop8V3Xvn1W0VjR6Qv8o6",
+        "id": "0Yop8V3Xvn1W0VjR6Qv8o6",
+        "images": [
+          {
+            "height": 268,
+            "url": "https://i.scdn.co/image/bafd7be7f1d253fd6c6b63b0b885b0527813f8a5",
+            "width": 268
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/a159ed673478b2cf305ba13c9edd4ddbbe21b693",
+            "width": 64
+          }
+        ],
+        "is_externally_hosted": false,
+        "is_playable": true,
+        "language": "en",
+        "languages": [
+          "en"
+        ],
+        "name": "Amy Winehouse: Rehab, the Muse and a Rare Talent",
+        "release_date": "2019-05-14",
+        "release_date_precision": "day",
+        "type": "episode",
+        "uri": "spotify:episode:0Yop8V3Xvn1W0VjR6Qv8o6"
+      },
+      {
+        "audio_preview_url": "https://p.scdn.co/mp3-preview/1e316c5edceecb5930eb0ef0ccdcd5bcab2b063d",
+        "description": "         Philadelphia is home not only to the most recent Sawbones live show, but also one of the world's most unusual museums -- The Mutter Museum -- a collection of medical oddities and anatomical specimens. But this is no freak show, this is an unflinching, educational look at the disturbingly beautiful and beautifully disturbing side of medicine. This is the Sawbones promised land. Music: \"Medicines\" by The Taxpayers        ",
+        "duration_ms": 2787555,
+        "explicit": false,
+        "external_urls": {
+          "spotify": "https://open.spotify.com/episode/74yDmTYN1aXuPpSUHNhyAS"
+        },
+        "href": "https://api.spotify.com/v1/episodes/74yDmTYN1aXuPpSUHNhyAS",
+        "id": "74yDmTYN1aXuPpSUHNhyAS",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/a5df4175b871971251566a02e788b5e20087dedf",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/514cb8d6b965666ffb65881b11db782d5a247830",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/39151b4cc0aae957bed3633cd8659579c3bd1f87",
+            "width": 64
+          }
+        ],
+        "is_externally_hosted": false,
+        "is_playable": true,
+        "language": "en",
+        "languages": [
+          "en"
+        ],
+        "name": "Sawbones: Mutter Museum",
+        "release_date": "2017-07-20",
+        "release_date_precision": "day",
+        "type": "episode",
+        "uri": "spotify:episode:74yDmTYN1aXuPpSUHNhyAS"
+      }
+    ],
+    "limit": 10,
+    "next": "https://api.spotify.com/v1/search?query=Muse&type=episode&market=US&offset=15&limit=10",
+    "offset": 5,
+    "previous": "https://api.spotify.com/v1/search?query=Muse&type=episode&market=US&offset=0&limit=10",
+    "total": 14440
+  }
+}

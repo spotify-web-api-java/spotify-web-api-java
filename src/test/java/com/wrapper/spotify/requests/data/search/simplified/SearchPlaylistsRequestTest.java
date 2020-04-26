@@ -25,6 +25,7 @@ public class SearchPlaylistsRequestTest extends AbstractDataTest<Paging<Playlist
     .limit(LIMIT)
     .market(MARKET)
     .offset(OFFSET)
+    .includeExternal("audio")
     .build();
 
   public SearchPlaylistsRequestTest() throws Exception {
@@ -34,7 +35,7 @@ public class SearchPlaylistsRequestTest extends AbstractDataTest<Paging<Playlist
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
     assertEquals(
-      "https://api.spotify.com:443/v1/search?q=Abba&limit=10&market=SE&offset=0&type=playlist",
+      "https://api.spotify.com:443/v1/search?q=Abba&limit=10&market=SE&offset=0&include_external=audio&type=playlist",
       defaultRequest.getUri().toString());
   }
 
