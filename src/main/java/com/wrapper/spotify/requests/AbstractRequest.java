@@ -25,12 +25,12 @@ import java.util.stream.Collectors;
 
 public abstract class AbstractRequest<T> implements IRequest<T> {
 
-  private IHttpManager httpManager;
+  private final IHttpManager httpManager;
+  private final List<Header> headers;
+  private final ContentType contentType;
+  private final List<NameValuePair> bodyParameters;
   private URI uri;
-  private List<Header> headers;
-  private ContentType contentType;
   private HttpEntity body;
-  private List<NameValuePair> bodyParameters;
 
   protected AbstractRequest(Builder<T, ?> builder) {
     assert (builder != null);

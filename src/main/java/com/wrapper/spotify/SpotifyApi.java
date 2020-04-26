@@ -1391,7 +1391,7 @@ public class SpotifyApi {
    * @return A {@link GetPlaylistsItemsRequest.Builder}.
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
-  public GetPlaylistsItemsRequest.Builder getPlaylistsItems (String playlist_id) {
+  public GetPlaylistsItemsRequest.Builder getPlaylistsItems(String playlist_id) {
     return new GetPlaylistsItemsRequest.Builder(accessToken)
       .setDefaults(httpManager, scheme, host, port)
       .playlist_id(playlist_id);

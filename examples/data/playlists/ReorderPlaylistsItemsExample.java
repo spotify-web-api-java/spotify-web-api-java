@@ -22,7 +22,7 @@ public class ReorderPlaylistsItemsExample {
     .setAccessToken(accessToken)
     .build();
   private static final ReorderPlaylistsItemsRequest reorderPlaylistsItemsRequest = spotifyApi.
-																									   reorderPlaylistsItems(playlistId, rangeStart, insertBefore)
+    reorderPlaylistsItems(playlistId, rangeStart, insertBefore)
 //          .range_length(rangeLength)
 //          .snapshot_id("JbtmHBDBAYu3/bt8BOXKjzKx3i0b6LCa/wVjyl6qQ2Yf6nFXkbmzuEa+ZI/U1yF+")
     .build();

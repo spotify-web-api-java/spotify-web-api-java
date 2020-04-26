@@ -313,10 +313,10 @@ public class CurrentlyPlayingContext extends AbstractModelObject {
         .setItem(
           hasAndNotNull(jsonObject, "item") && hasAndNotNull(jsonObject, "currently_playing_type")
             ? (jsonObject.get("currently_playing_type").getAsString().equals("track")
-              ? new Track.JsonUtil().createModelObject(jsonObject.getAsJsonObject("item"))
-              : jsonObject.get("currently_playing_type").getAsString().equals("episode")
-                ? new Episode.JsonUtil().createModelObject(jsonObject.getAsJsonObject("item"))
-                : null)
+            ? new Track.JsonUtil().createModelObject(jsonObject.getAsJsonObject("item"))
+            : jsonObject.get("currently_playing_type").getAsString().equals("episode")
+            ? new Episode.JsonUtil().createModelObject(jsonObject.getAsJsonObject("item"))
+            : null)
             : null)
         .setCurrentlyPlayingType(
           hasAndNotNull(jsonObject, "currently_playing_type")
