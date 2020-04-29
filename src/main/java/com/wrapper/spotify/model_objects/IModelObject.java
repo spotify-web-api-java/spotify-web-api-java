@@ -1,5 +1,6 @@
 package com.wrapper.spotify.model_objects;
 
+import java.io.Serializable;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -9,7 +10,7 @@ import com.wrapper.spotify.model_objects.specification.PagingCursorbased;
 /**
  * Interface with methods used in model objects.
  */
-public interface IModelObject {
+public interface IModelObject extends Serializable{
 
   /**
    * Create a builder for building an instance of a model object. <br>
