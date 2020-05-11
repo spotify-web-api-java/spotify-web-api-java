@@ -211,27 +211,27 @@ public class AudioAnalysisMeta extends AbstractModelObject {
             ? jsonObject.get("analysis_time").getAsFloat()
             : null)
         .setAnalyzerVersion(
-          hasAndNotNull(jsonObject, "analysis_time")
+          hasAndNotNull(jsonObject, "analyzer_version")
             ? jsonObject.get("analyzer_version").getAsString()
             : null)
         .setDetailedStatus(
-          hasAndNotNull(jsonObject, "analysis_time")
+          hasAndNotNull(jsonObject, "detailed_status")
             ? jsonObject.get("detailed_status").getAsString()
             : null)
         .setInputProcess(
-          hasAndNotNull(jsonObject, "analysis_time")
+          hasAndNotNull(jsonObject, "input_process")
             ? jsonObject.get("input_process").getAsString()
             : null)
         .setPlatform(
-          hasAndNotNull(jsonObject, "analysis_time")
+          hasAndNotNull(jsonObject, "platform")
             ? jsonObject.get("platform").getAsString()
             : null)
         .setStatusCode(
-          hasAndNotNull(jsonObject, "analysis_time")
+          hasAndNotNull(jsonObject, "status_code")
             ? jsonObject.get("status_code").getAsInt()
             : null)
         .setTimestamp(
-          hasAndNotNull(jsonObject, "analysis_time")
+          hasAndNotNull(jsonObject, "timestamp")
             ? jsonObject.get("timestamp").getAsLong()
             : null)
         .build();

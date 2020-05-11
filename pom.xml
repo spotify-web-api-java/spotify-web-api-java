@@ -7,7 +7,7 @@
 
   <groupId>se.michaelthelin.spotify</groupId>
   <artifactId>spotify-web-api-java</artifactId>
-  <version>6.0.0-RC1</version>
+  <version>6.0.0</version>
   <!--
    DO NOT FORGET
    - to update version numbers in README (2x)
@@ -90,8 +90,14 @@
     </dependency>
     <dependency>
       <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>1.7.30</version>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
       <artifactId>slf4j-simple</artifactId>
       <version>1.7.30</version>
+      <scope>test</scope>
     </dependency>
   </dependencies>
 

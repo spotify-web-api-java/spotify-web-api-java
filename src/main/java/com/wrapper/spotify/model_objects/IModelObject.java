@@ -6,10 +6,12 @@ import com.google.gson.JsonObject;
 import com.wrapper.spotify.model_objects.specification.Paging;
 import com.wrapper.spotify.model_objects.specification.PagingCursorbased;
 
+import java.io.Serializable;
+
 /**
  * Interface with methods used in model objects.
  */
-public interface IModelObject {
+public interface IModelObject extends Serializable {
 
   /**
    * Create a builder for building an instance of a model object. <br>

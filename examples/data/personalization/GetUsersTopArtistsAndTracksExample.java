@@ -3,9 +3,9 @@ package data.personalization;
 import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.enums.ModelObjectType;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
-import com.wrapper.spotify.model_objects.specification.Artist;
 import com.wrapper.spotify.model_objects.specification.Paging;
 import com.wrapper.spotify.requests.data.personalization.GetUsersTopArtistsAndTracksRequest;
+import com.wrapper.spotify.requests.data.personalization.interfaces.IArtistTrackModelObject;
 import org.apache.hc.core5.http.ParseException;
 
 import java.io.IOException;
@@ -20,17 +20,16 @@ public class GetUsersTopArtistsAndTracksExample {
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
     .setAccessToken(accessToken)
     .build();
-  private static final GetUsersTopArtistsAndTracksRequest getUsersTopArtistsAndTracksRequest = spotifyApi
+  private static final GetUsersTopArtistsAndTracksRequest<? extends IArtistTrackModelObject> getUsersTopArtistsAndTracksRequest = spotifyApi
     .getUsersTopArtistsAndTracks(type)
 //          .limit(10)
 //          .offset(0)
 //          .time_range("medium_term")
     .build();
 
-  @SuppressWarnings("unchecked")
   public static void getUsersTopArtistsAndTracks_Sync() {
     try {
-      final Paging<Artist> artistPaging = getUsersTopArtistsAndTracksRequest.execute();
+      final Paging<? extends IArtistTrackModelObject> artistPaging = getUsersTopArtistsAndTracksRequest.execute();
 
       System.out.println("Total: " + artistPaging.getTotal());
     } catch (IOException | SpotifyWebApiException | ParseException e) {
@@ -38,15 +37,14 @@ public class GetUsersTopArtistsAndTracksExample {
     }
   }
 
-  @SuppressWarnings("unchecked")
   public static void getUsersTopArtistsAndTracks_Async() {
     try {
-      final CompletableFuture<Paging<Artist>> pagingFuture = getUsersTopArtistsAndTracksRequest.executeAsync();
+      final CompletableFuture<? extends Paging<? extends IArtistTrackModelObject>> pagingFuture = getUsersTopArtistsAndTracksRequest.executeAsync();
 
       // Thread free to do other tasks...
 
       // Example Only. Never block in production code.
-      final Paging<Artist> artistPaging = pagingFuture.join();
+      final Paging<? extends IArtistTrackModelObject> artistPaging = pagingFuture.join();
 
       System.out.println("Total: " + artistPaging.getTotal());
     } catch (CompletionException e) {
