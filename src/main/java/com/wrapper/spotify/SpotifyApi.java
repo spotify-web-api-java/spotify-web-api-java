@@ -352,7 +352,7 @@ public class SpotifyApi {
    * @return An {@link AuthorizationCodeRequest.Builder}.
    */
   public AuthorizationCodeRequest.Builder authorizationCode(String client_id, String client_secret, String code, URI redirect_uri) {
-    return new AuthorizationCodeRequest.Builder(clientId, clientSecret)
+    return new AuthorizationCodeRequest.Builder(client_id, client_secret)
       .setDefaults(httpManager, scheme, host, port)
       .grant_type("authorization_code")
       .code(code)
