@@ -60,7 +60,8 @@ public class Episode extends AbstractModelObject implements IPlaylistItem {
    *
    * @return A URL to an audio preview.
    */
-  public String getAudioPreviewUrl() {
+  @Override
+  public String getPreviewUrl() {
     return audioPreviewUrl;
   }
 
@@ -78,6 +79,7 @@ public class Episode extends AbstractModelObject implements IPlaylistItem {
    *
    * @return The length of the episode in milliseconds.
    */
+  @Override
   public Integer getDurationMs() {
     return durationMs;
   }
@@ -88,7 +90,8 @@ public class Episode extends AbstractModelObject implements IPlaylistItem {
    * @return Whether or not the episode has explicit content ({@code true} = yes it does; {@code false} = no it does not
    * <b>OR</b> unknown).
    */
-  public Boolean getExplicit() {
+  @Override
+  public Boolean isExplicit() {
     return explicit;
   }
 
@@ -98,6 +101,7 @@ public class Episode extends AbstractModelObject implements IPlaylistItem {
    *
    * @return An {@link ExternalUrl} object.
    */
+  @Override
   public ExternalUrl getExternalUrls() {
     return externalUrls;
   }
@@ -107,6 +111,7 @@ public class Episode extends AbstractModelObject implements IPlaylistItem {
    *
    * @return A link to the Web API endpoint providing full details of the episode.
    */
+  @Override
   public String getHref() {
     return href;
   }
@@ -116,6 +121,7 @@ public class Episode extends AbstractModelObject implements IPlaylistItem {
    *
    * @return A <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify episode ID</a>.
    */
+  @Override
   public String getId() {
     return id;
   }
@@ -143,7 +149,8 @@ public class Episode extends AbstractModelObject implements IPlaylistItem {
    *
    * @return True if the episode is playable in the given market. Otherwise false.
    */
-  public Boolean getPlayable() {
+  @Override
+  public Boolean isPlayable() {
     return isPlayable;
   }
 
@@ -161,6 +168,7 @@ public class Episode extends AbstractModelObject implements IPlaylistItem {
    *
    * @return The name of the episode.
    */
+  @Override
   public String getName() {
     return name;
   }
@@ -206,6 +214,7 @@ public class Episode extends AbstractModelObject implements IPlaylistItem {
    *
    * @return A {@link ModelObjectType}.
    */
+  @Override
   public ModelObjectType getType() {
     return type;
   }

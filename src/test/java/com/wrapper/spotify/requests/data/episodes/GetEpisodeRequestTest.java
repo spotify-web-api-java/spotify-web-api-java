@@ -50,7 +50,7 @@ public class GetEpisodeRequestTest extends AbstractDataTest<Episode> {
   public void shouldReturnDefault(final Episode episode) {
     assertEquals(
       "https://p.scdn.co/mp3-preview/9b0ebffde166917f35f9eab25af874e765261776",
-      episode.getAudioPreviewUrl());
+      episode.getPreviewUrl());
     assertEquals(
       255,
       episode.getDescription().length());
@@ -58,7 +58,7 @@ public class GetEpisodeRequestTest extends AbstractDataTest<Episode> {
       8052140,
       (int) episode.getDurationMs());
     assertFalse(
-      episode.getExplicit());
+      episode.isExplicit());
     assertNotNull(
       episode.getExternalUrls());
     assertEquals(
@@ -73,7 +73,7 @@ public class GetEpisodeRequestTest extends AbstractDataTest<Episode> {
     assertFalse(
       episode.getExternallyHosted());
     assertTrue(
-      episode.getPlayable());
+      episode.isPlayable());
     assertEquals(
       1,
       episode.getLanguages().length);

@@ -105,6 +105,7 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
    *
    * @return The track length in milliseconds.
    */
+  @Override
   public Integer getDurationMs() {
     return durationMs;
   }
@@ -115,7 +116,8 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
    * @return Whether or not the track has explicit lyrics ({@code true} = yes it does; {@code false} = no it does not
    * <b>OR</b> unknown).
    */
-  public Boolean getIsExplicit() {
+  @Override
+  public Boolean isExplicit() {
     return explicit;
   }
 
@@ -135,6 +137,7 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
    *
    * @return Known external URLs for this track.
    */
+  @Override
   public ExternalUrl getExternalUrls() {
     return externalUrls;
   }
@@ -144,6 +147,7 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
    *
    * @return A link to the Web API endpoint providing full details of the track.
    */
+  @Override
   public String getHref() {
     return href;
   }
@@ -154,6 +158,7 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
    *
    * @return The Spotify ID for the track.
    */
+  @Override
   public String getId() {
     return id;
   }
@@ -165,7 +170,8 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
    *
    * @return If {@code true}, the track is playable in the given market. Otherwise {@code false}.
    */
-  public Boolean getIsPlayable() {
+  @Override
+  public Boolean isPlayable() {
     return isPlayable;
   }
 
@@ -200,6 +206,7 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
    *
    * @return Track name.
    */
+  @Override
   public String getName() {
     return name;
   }
@@ -227,6 +234,7 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
    *
    * @return A link to a 30 second preview (MP3 format) of the track. {@code null} if not available.
    */
+  @Override
   public String getPreviewUrl() {
     return previewUrl;
   }
@@ -246,6 +254,7 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
    *
    * @return The object type: "track".
    */
+  @Override
   public ModelObjectType getType() {
     return type;
   }
