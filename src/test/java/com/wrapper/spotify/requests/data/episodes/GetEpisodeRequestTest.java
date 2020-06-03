@@ -58,7 +58,7 @@ public class GetEpisodeRequestTest extends AbstractDataTest<Episode> {
       8052140,
       (int) episode.getDurationMs());
     assertFalse(
-      episode.isExplicit());
+      episode.getIsExplicit());
     assertNotNull(
       episode.getExternalUrls());
     assertEquals(
@@ -73,7 +73,7 @@ public class GetEpisodeRequestTest extends AbstractDataTest<Episode> {
     assertFalse(
       episode.getExternallyHosted());
     assertTrue(
-      episode.isPlayable());
+      episode.getIsPlayable());
     assertEquals(
       1,
       episode.getLanguages().length);

@@ -40,7 +40,7 @@ public interface IPlaylistItem extends IModelObject {
    * @return Whether or not the playlist item has explicit content ({@code true} = yes it does; {@code false} = no it does not
    * <b>OR</b> unknown).
    */
-  Boolean isExplicit();
+  Boolean getIsExplicit();
 
   /**
    * Get the external URLs of the playlist item. <br>
@@ -69,7 +69,7 @@ public interface IPlaylistItem extends IModelObject {
    *
    * @return True if the playlist item is playable in the given market. Otherwise false.
    */
-  Boolean isPlayable();
+  Boolean getIsPlayable();
 
   /**
    * Get the name of the playlist item.

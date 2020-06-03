@@ -91,7 +91,7 @@ public class Episode extends AbstractModelObject implements IPlaylistItem {
    * <b>OR</b> unknown).
    */
   @Override
-  public Boolean isExplicit() {
+  public Boolean getIsExplicit() {
     return explicit;
   }
 
@@ -150,7 +150,7 @@ public class Episode extends AbstractModelObject implements IPlaylistItem {
    * @return True if the episode is playable in the given market. Otherwise false.
    */
   @Override
-  public Boolean isPlayable() {
+  public Boolean getIsPlayable() {
     return isPlayable;
   }
 
