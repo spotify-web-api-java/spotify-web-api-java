@@ -77,4 +77,11 @@ public interface IPlaylistItem extends IModelObject {
    * @return The name of the playlist item.
    */
   String getName();
+
+  /**
+   * Get the Spotify URI of the playlist item.
+   *
+   * @return <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify URI</a>.
+   */
+  String getUri();
 }

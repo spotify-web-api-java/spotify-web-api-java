@@ -265,6 +265,7 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
    * @return The <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify URI</a> for
    * the track.
    */
+  @Override
   public String getUri() {
     return uri;
   }

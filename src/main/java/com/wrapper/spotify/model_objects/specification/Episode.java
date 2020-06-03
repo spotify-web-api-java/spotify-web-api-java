@@ -224,6 +224,7 @@ public class Episode extends AbstractModelObject implements IPlaylistItem {
    *
    * @return <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify episode URI</a>.
    */
+  @Override
   public String getUri() {
     return uri;
   }
