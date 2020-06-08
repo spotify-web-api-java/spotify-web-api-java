@@ -150,7 +150,7 @@
             <configuration>
               <archive>
                 <manifestEntries>
-                  <Automatic-Module-Name>spotify.web.api.java</Automatic-Module-Name>
+                  <Automatic-Module-Name>com.wrapper.spotify</Automatic-Module-Name>
                 </manifestEntries>
               </archive>
             </configuration>
