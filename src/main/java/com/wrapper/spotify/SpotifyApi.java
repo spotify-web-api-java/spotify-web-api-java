@@ -341,7 +341,7 @@ public class SpotifyApi {
 
   /**
    * Returns a builder that can be used to build requests for authorization code grants. <br>
-   * Requires client ID, client secret, and redirect URI to be set.
+   * Requires client ID, client secret, authorization code and redirect URI to be set.
    *
    * @param client_id     When you register your application, Spotify provides you a Client ID.
    * @param client_secret When you register your application, Spotify provides you a Client Secret.

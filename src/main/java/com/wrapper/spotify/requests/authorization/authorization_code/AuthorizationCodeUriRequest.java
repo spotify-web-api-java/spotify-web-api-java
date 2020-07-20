@@ -51,12 +51,12 @@ public class AuthorizationCodeUriRequest extends AbstractRequest<URI> {
     /**
      * The response type setter.
      *
-     * @param response_type Required. Set it to {@code code}.
+     * @param response_type Required. Set it to {@code "code"}.
      * @return An {@link AuthorizationCodeUriRequest.Builder}.
      */
     public Builder response_type(final String response_type) {
       assert (response_type != null);
-      assert (!response_type.equals(""));
+      assert (response_type.equals("code"));
       return setQueryParameter("response_type", response_type);
     }
 
