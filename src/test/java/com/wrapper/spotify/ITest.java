@@ -8,7 +8,6 @@ import com.neovisionaries.i18n.LanguageCode;
 import com.wrapper.spotify.enums.AlbumType;
 import com.wrapper.spotify.enums.ModelObjectType;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
-import com.wrapper.spotify.requests.IRequest;
 import org.apache.hc.core5.http.ParseException;
 
 import java.io.File;
@@ -87,5 +86,4 @@ public interface ITest<T> {
 
   void shouldReturnDefault(final T type);
 
-  void assertHasAuthorizationHeader(IRequest<T> request);
 }

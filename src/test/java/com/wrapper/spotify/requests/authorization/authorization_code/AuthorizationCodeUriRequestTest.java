@@ -1,6 +1,6 @@
 package com.wrapper.spotify.requests.authorization.authorization_code;
 
-import com.wrapper.spotify.requests.authorization.AbstractAuthorizationTest;
+import com.wrapper.spotify.ITest;
 import org.junit.Test;
 
 import java.net.URI;
@@ -8,7 +8,7 @@ import java.util.concurrent.ExecutionException;
 
 import static org.junit.Assert.assertEquals;
 
-public class AuthorizationCodeUriRequestTest extends AbstractAuthorizationTest<URI> {
+public class AuthorizationCodeUriRequestTest implements ITest<URI> {
 
   private final AuthorizationCodeUriRequest defaultRequest = SPOTIFY_API.authorizationCodeUri()
     .scope(SCOPE)
