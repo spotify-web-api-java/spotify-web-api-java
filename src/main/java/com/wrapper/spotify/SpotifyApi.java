@@ -6,6 +6,8 @@ import com.wrapper.spotify.enums.ModelObjectType;
 import com.wrapper.spotify.requests.authorization.authorization_code.AuthorizationCodeRefreshRequest;
 import com.wrapper.spotify.requests.authorization.authorization_code.AuthorizationCodeRequest;
 import com.wrapper.spotify.requests.authorization.authorization_code.AuthorizationCodeUriRequest;
+import com.wrapper.spotify.requests.authorization.authorization_code.pkce.AuthorizationCodePKCERefreshRequest;
+import com.wrapper.spotify.requests.authorization.authorization_code.pkce.AuthorizationCodePKCERequest;
 import com.wrapper.spotify.requests.authorization.client_credentials.ClientCredentialsRequest;
 import com.wrapper.spotify.requests.data.albums.GetAlbumRequest;
 import com.wrapper.spotify.requests.data.albums.GetAlbumsTracksRequest;
@@ -340,6 +342,35 @@ public class SpotifyApi {
   }
 
   /**
+   * Refresh the access token by using the authorization code flow with Proof Key for Code Exchange (PKCE). <br>
+   * Requires client ID and refresh token to be set.
+   *
+   * @param client_id     When you register your application, Spotify provides you a Client ID.
+   * @param refresh_token The refresh token returned from the authorization code exchange or the last access token refresh.
+   * @return An {@link AuthorizationCodePKCERefreshRequest.Builder}.
+   */
+  public AuthorizationCodePKCERefreshRequest.Builder authorizationCodePKCERefresh(String client_id, String refresh_token) {
+    return new AuthorizationCodePKCERefreshRequest.Builder()
+      .setDefaults(httpManager, scheme, host, port)
+      .client_id(client_id)
+      .grant_type("refresh_token")
+      .refresh_token(refresh_token);
+  }
+
+  /**
+   * Refresh the access token by using the authorization code flow with Proof Key for Code Exchange (PKCE).
+   *
+   * @return An {@link AuthorizationCodePKCERefreshRequest.Builder}.
+   */
+  public AuthorizationCodePKCERefreshRequest.Builder authorizationCodePKCERefresh() {
+    return new AuthorizationCodePKCERefreshRequest.Builder()
+      .setDefaults(httpManager, scheme, host, port)
+      .client_id(clientId)
+      .grant_type("refresh_token")
+      .refresh_token(refreshToken);
+  }
+
+  /**
    * Returns a builder that can be used to build requests for authorization code grants. <br>
    * Requires client ID, client secret, authorization code and redirect URI to be set.
    *
@@ -373,6 +404,49 @@ public class SpotifyApi {
       .code(code)
       .redirect_uri(redirectUri);
   }
+  /**
+   * Returns a builder that can be used to build requests for authorization code grants using the Proof Key for Code Exchange (PKCE) flow. <br>
+   * Requires client ID, authorization code, code verifier and redirect URI to be set.
+   *
+   * @param client_id     When you register your application, Spotify provides you a Client ID.
+   * @param code          The authorization code returned from the initial request to the Account /authorize endpoint.
+   * @param code_verifier The value of this parameter must match the value of the code_verifier that your app generated beforehand.
+   * @param redirect_uri  This parameter is used for validation only (there is no actual redirection). The
+   *                      value of this parameter must exactly match the value of redirect_uri supplied when requesting
+   *                      the authorization code.
+   * @return An {@link AuthorizationCodePKCERequest.Builder}.
+   * @see <a href="https://developer.spotify.com/documentation/general/guides/authorization-guide/#authorization-code-flow-with-proof-key-for-code-exchange-pkce">
+   *      Authorization Code Flow with Proof Key for Code Exchange (PKCE)</a>
+   */
+  public AuthorizationCodePKCERequest.Builder authorizationCodePKCE(String client_id, String code, String code_verifier, URI redirect_uri) {
+    return new AuthorizationCodePKCERequest.Builder()
+      .setDefaults(httpManager, scheme, host, port)
+      .client_id(client_id)
+      .code_verifier(code_verifier)
+      .grant_type("authorization_code")
+      .code(code)
+      .redirect_uri(redirect_uri);
+  }
+
+  /**
+   * Returns a builder that can be used to build requests for authorization code grants using the Proof Key for Code Exchange (PKCE) flow. <br>
+   * Requires authorization code and code verifier to be set.
+   *
+   * @param code The authorization code returned from the initial request to the Account /authorize endpoint.
+   * @param code_verifier The value of this parameter must match the value of the code_verifier that your app generated beforehand.
+   * @return An {@link AuthorizationCodePKCERequest.Builder}.
+   * @see <a href="https://developer.spotify.com/documentation/general/guides/authorization-guide/#authorization-code-flow-with-proof-key-for-code-exchange-pkce">
+   *      Authorization Code Flow with Proof Key for Code Exchange (PKCE)</a>
+   */
+  public AuthorizationCodePKCERequest.Builder authorizationCodePKCE(String code, String code_verifier) {
+    return new AuthorizationCodePKCERequest.Builder()
+      .setDefaults(httpManager, scheme, host, port)
+      .client_id(clientId)
+      .code_verifier(code_verifier)
+      .grant_type("authorization_code")
+      .code(code)
+      .redirect_uri(redirectUri);
+  }
 
   /**
    * Retrieve an URL where the user can give the application permissions.
@@ -401,6 +475,54 @@ public class SpotifyApi {
       .setDefaults(httpManager, scheme, host, port)
       .client_id(clientId)
       .response_type("code")
+      .redirect_uri(redirectUri);
+  }
+
+  /**
+   * Retrieve an URL where the user can give the application permissions using the Proof Key for Code Exchange (PKCE) flow.
+   *
+   * @param client_id    When you register your application, Spotify provides you a Client ID.
+   * @param code_challenge  The code challenge that your app calculated beforehand.
+   *                        The code challenge is the base64url encoded sha256-hash of the code verifier,
+   *                        which is a cryptographically random string between 43 and 128 characters in length.
+   *                        It can contain letters, digits, underscores, periods, hyphens, or tildes and is generated
+   *                        by your app before each authentication request.
+   * @param redirect_uri This parameter is used for validation only (there is no actual redirection). The
+   *                     value of this parameter must exactly match the value of redirect_uri supplied when requesting
+   *                     the authorization code.
+   * @return An {@link AuthorizationCodeUriRequest.Builder}.
+   * @see <a href="https://developer.spotify.com/documentation/general/guides/authorization-guide/#authorization-code-flow-with-proof-key-for-code-exchange-pkce">
+   *      Authorization Code Flow with Proof Key for Code Exchange (PKCE)</a>
+   */
+  public AuthorizationCodeUriRequest.Builder authorizationCodePKCEUri(String client_id, String code_challenge, URI redirect_uri) {
+    return new AuthorizationCodeUriRequest.Builder()
+      .setDefaults(httpManager, scheme, host, port)
+      .client_id(client_id)
+      .response_type("code")
+      .code_challenge_method("S256")
+      .code_challenge(code_challenge)
+      .redirect_uri(redirect_uri);
+  }
+
+  /**
+   * Retrieve an URL where the user can give the application permissions using the Proof Key for Code Exchange (PKCE) flow.
+   *
+   * @param code_challenge  The code challenge that your app calculated beforehand.
+   *                        The code challenge is the base64url encoded sha256-hash of the code verifier,
+   *                        which is a cryptographically random string between 43 and 128 characters in length.
+   *                        It can contain letters, digits, underscores, periods, hyphens, or tildes and is generated
+   *
+   * @return An {@link AuthorizationCodeUriRequest.Builder}.
+   * @see <a href="https://developer.spotify.com/documentation/general/guides/authorization-guide/#authorization-code-flow-with-proof-key-for-code-exchange-pkce">
+   *      Authorization Code Flow with Proof Key for Code Exchange (PKCE)</a>
+   */
+  public AuthorizationCodeUriRequest.Builder authorizationCodePKCEUri(String code_challenge) {
+    return new AuthorizationCodeUriRequest.Builder()
+      .setDefaults(httpManager, scheme, host, port)
+      .client_id(clientId)
+      .response_type("code")
+      .code_challenge_method("S256")
+      .code_challenge(code_challenge)
       .redirect_uri(redirectUri);
   }
 

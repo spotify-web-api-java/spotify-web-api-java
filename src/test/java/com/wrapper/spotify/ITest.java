@@ -32,6 +32,8 @@ public interface ITest<T> {
   String AUTHORIZATION_CODE = "c-oGaPdYJF3tu3oUZRUiBHWQvm4oHnBrsxfHackYzzomKJiy5te1k04LJdr6XxjACe9TonpJR8NPOQ3o5btASx_oMw4trmXLYdkda77wY0NJ9Scl69lKvGiOfdnRi5Q0IbBu185Y0TZgyUJz3Auqqv-Wk7zjRke4DzqYEc3ucyUBOq08j5223te-G2K72aL9PxgVJaEHBbLvhdJscCy-zcyU29EZoNlG_E5";
   Date BEFORE = new Date(1453932420000L);
   String CATEGORY_ID = "dinner";
+  String CODE_VERIFIER = "NlJx4kD4opk4HY7zBM6WfUHxX7HoF8A2TUhOIPGA74w";
+  String CODE_CHALLENGE = "w6iZIj99vHGtEx_NVl9u3sthTN646vvkiP8OMCGfPmo";
   boolean COLLABORATIVE = false;
   String CONTEXT_URI = "spotify:album:5zT1JLIj9E57p3e1rFm9Uq";
   CountryCode COUNTRY = CountryCode.SE;
