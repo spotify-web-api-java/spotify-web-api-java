@@ -12,6 +12,7 @@ com.wrapper.spotify.model_objects.specification
 com.wrapper.spotify.requests
 com.wrapper.spotify.requests.authorization
 com.wrapper.spotify.requests.authorization.authorization_code
+com.wrapper.spotify.requests.authorization.authorization_code.pkce
 com.wrapper.spotify.requests.authorization.client_credentials
 com.wrapper.spotify.requests.data
 com.wrapper.spotify.requests.data.albums
