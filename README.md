@@ -144,7 +144,7 @@ SpotifyApi spotifyApi = new SpotifyApi.Builder()
   .build();
 ```
 
-There are two ways to retrieving an access token:
+There are three ways to retrieving an access token:
 
 #### [Client Credentials Flow](http://tools.ietf.org/html/rfc6749#section-4.4)
 Use the client credentials flow when the requests don't require permission from a specific user. This flow doesn't
@@ -181,6 +181,41 @@ spotifyApi
   .setRefreshToken("<your_refresh_token>")
   .build();
 ```
+
+#### [Authorization Code Flow with Proof Key for Code Exchange (PKCE)](https://tools.ietf.org/html/rfc7636)
+The authorization code flow with PKCE is quite like the Authorization Code Flow except that no client secret is necessary
+(therefore, it is a good option for mobile and desktop applications). Instead, your application should generate a
+**code verifier** and a **code challenge** before each authentication request.
+
+
+The code verifier is a cryptographically random string between 43 and 128 characters in length. It can contain letters, digits, underscores, periods, hyphens, or tildes.
+To generate the code challenge, your app should hash the code verifier using the SHA256 algorithm. Then, base64url encode the hash that you generated.
+
+
+This flow provides your app with an access token which can be refreshed, too.
+The steps are similar as above:
+
+1. The authorization code flow with PKCE requires a code, which is part of the `redirectUri`'s query parameters when the user has
+   opened a custom URL in a browser and authorized the application. The **code challenge** is supplied to this request as a query parameter.
+
+   Example: [AuthorizationCodePKCEUriExample.java](examples/authorization/authorization_code/pkce/AuthorizationCodePKCEUriExample.java)
+
+2. When the code has been retrieved, it can be used in another request to get an access token as well as a refresh token.
+   The **code verifier** is supplied to this request a query parameter.
+
+   Example: [AuthorizationCodePKCEExample.java](examples/authorization/authorization_code/pkce/AuthorizationCodePKCEExample.java)
+
+3. Now, the refresh token in turn can be used in a loop to retrieve new access and refresh tokens.
+
+   Example: [AuthorizationCodePKCERefreshExample.java](examples/authorization/authorization_code/pkce/AuthorizationCodePKCERefreshExample.java)
+
+---
+
+When you have fetched an access and refresh token, you have to add them to your API properties for automatic usage in
+requests. The implementer must handle the access token's expiration. The refresh token can be exchanged for an
+access token only once, after which it becomes invalid.
+
+
 
 ## Examples
 - **Albums**

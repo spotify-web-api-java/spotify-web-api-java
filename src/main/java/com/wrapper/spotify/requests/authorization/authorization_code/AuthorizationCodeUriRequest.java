@@ -51,12 +51,12 @@ public class AuthorizationCodeUriRequest extends AbstractRequest<URI> {
     /**
      * The response type setter.
      *
-     * @param response_type Required. Set it to {@code code}.
+     * @param response_type Required. Set it to {@code "code"}.
      * @return An {@link AuthorizationCodeUriRequest.Builder}.
      */
     public Builder response_type(final String response_type) {
       assert (response_type != null);
-      assert (!response_type.equals(""));
+      assert (response_type.equals("code"));
       return setQueryParameter("response_type", response_type);
     }
 
@@ -73,6 +73,37 @@ public class AuthorizationCodeUriRequest extends AbstractRequest<URI> {
     public Builder redirect_uri(final URI redirect_uri) {
       assert (redirect_uri != null);
       return setQueryParameter("redirect_uri", redirect_uri.toString());
+    }
+
+    /**
+     * The code challenge method setter.
+     *
+     * @param code_challenge_method Required if the Proof Key for Code Exchange (PKCE) flow is used. Set it to {@code "S256"}.
+     * @return An {@link AuthorizationCodeUriRequest.Builder}.
+     */
+    public Builder code_challenge_method(String code_challenge_method) {
+      assert (code_challenge_method != null);
+      assert (code_challenge_method.equals("S256"));
+      return setQueryParameter("code_challenge_method", code_challenge_method);
+    }
+
+    /**
+     * The code challenge setter.
+     *
+     * @param code_challenge Required if the Proof Key for Code Exchange (PKCE) flow is used.
+     *                       The code challenge that your app calculated beforehand.
+     *                       The code challenge is the base64url encoded sha256-hash of the code verifier,
+     *                       which is a cryptographically random string between 43 and 128 characters in length.
+     *                       It can contain letters, digits, underscores, periods, hyphens, or tildes and is generated
+     *                       by your app before each authentication request.
+     * @return An {@link AuthorizationCodeUriRequest.Builder}.
+     * @see <a href="https://developer.spotify.com/documentation/general/guides/authorization-guide/#authorization-code-flow-with-proof-key-for-code-exchange-pkce">
+     *      Authorization Code Flow with Proof Key for Code Exchange (PKCE)</a>
+     */
+    public Builder code_challenge(String code_challenge) {
+      assert (code_challenge != null);
+      assert (!code_challenge.equals(""));
+      return setQueryParameter("code_challenge", code_challenge);
     }
 
     /**

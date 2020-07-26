@@ -7,7 +7,7 @@ import static com.wrapper.spotify.Assertions.assertHasHeader;
 
 public abstract class AbstractDataTest<T> implements ITest<T> {
 
-  public void assertHasAuthorizationHeader(IRequest<T> request) {
+  public void assertHasAuthorizationHeader(AbstractDataRequest<T> request) {
     assertHasHeader(
       request,
       "Authorization",
