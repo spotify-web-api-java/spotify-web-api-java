@@ -26,7 +26,7 @@ public class FollowArtistsOrUsersRequestTest extends AbstractDataTest<String> {
       TestUtil.MockedHttpManager.returningJson(null))
     .build();
   private final FollowArtistsOrUsersRequest bodyRequest = SPOTIFY_API
-    .followArtistsOrUsers(ModelObjectType.ARTIST, JsonParser.parseString("[\"" + ID_ARTIST + "\",\"" + ID_ARTIST + "\"]").getAsJsonArray())
+    .followArtistsOrUsers(ModelObjectType.ARTIST, ARTISTS)
     .setHttpManager(
       TestUtil.MockedHttpManager.returningJson(null))
     .build();
@@ -46,7 +46,7 @@ public class FollowArtistsOrUsersRequestTest extends AbstractDataTest<String> {
     assertHasBodyParameter(
       bodyRequest,
       "ids",
-      "[\"" + ID_ARTIST + "\",\"" + ID_ARTIST + "\"]");
+      ARTISTS);
     assertEquals(
       "https://api.spotify.com:443/v1/me/following?type=ARTIST",
       bodyRequest.getUri().toString());

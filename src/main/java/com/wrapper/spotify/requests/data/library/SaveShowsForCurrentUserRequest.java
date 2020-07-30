@@ -1,6 +1,7 @@
 package com.wrapper.spotify.requests.data.library;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.google.gson.JsonArray;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
 import org.apache.hc.core5.http.ContentType;
@@ -59,7 +60,7 @@ public class SaveShowsForCurrentUserRequest extends AbstractDataRequest<String> 
     /**
      * The show IDs setter.
      *
-     * @param ids Required. A comma-separated list of Spotify IDs for the shows to be added to the user’s library.
+     * @param ids Optional. A comma-separated list of Spotify IDs for the shows to be added to the user’s library.
      * @return A {@link SaveShowsForCurrentUserRequest.Builder}.
      * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URIs &amp; IDs</a>
      */
@@ -67,6 +68,21 @@ public class SaveShowsForCurrentUserRequest extends AbstractDataRequest<String> 
       assert (ids != null);
       assert (ids.split(",").length <= 50);
       return setQueryParameter("ids", ids);
+    }
+
+    /**
+     * The show IDs setter.
+     * <p>
+     * <b>Note:</b> If the ids have already been set with {@link #ids(String)}, any ids added here will be ignored.
+     * @param ids Optional. A JSON array of Spotify IDs for the shows to be added to the user’s library.
+     * @return A {@link SaveShowsForCurrentUserRequest.Builder}.
+     * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URIs &amp; IDs</a>
+     */
+    public Builder ids(final JsonArray ids) {
+      assert (ids != null);
+      assert (!ids.isJsonNull());
+      assert (ids.size() <= 50);
+      return setBodyParameter("ids", ids);
     }
 
     /**

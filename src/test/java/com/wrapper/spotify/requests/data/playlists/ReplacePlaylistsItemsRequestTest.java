@@ -1,6 +1,5 @@
 package com.wrapper.spotify.requests.data.playlists;
 
-import com.google.gson.JsonParser;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.requests.data.AbstractDataTest;
@@ -25,7 +24,7 @@ public class ReplacePlaylistsItemsRequestTest extends AbstractDataTest<String> {
       TestUtil.MockedHttpManager.returningJson(null))
     .build();
   private final ReplacePlaylistsItemsRequest bodyRequest = SPOTIFY_API
-    .replacePlaylistsItems(ID_PLAYLIST, JsonParser.parseString("[\"spotify:track:" + ID_TRACK + "\",\"spotify:track:" + ID_TRACK + "\"]").getAsJsonArray())
+    .replacePlaylistsItems(ID_PLAYLIST, TRACKS)
     .setHttpManager(
       TestUtil.MockedHttpManager.returningJson(null))
     .build();
@@ -45,7 +44,7 @@ public class ReplacePlaylistsItemsRequestTest extends AbstractDataTest<String> {
     assertHasBodyParameter(
       bodyRequest,
       "uris",
-      "[\"spotify:track:" + ID_TRACK + "\",\"spotify:track:" + ID_TRACK + "\"]");
+      TRACKS);
     assertEquals(
       "https://api.spotify.com:443/v1/playlists/3AGOiaoRXMSjswCLtuNqv5/tracks",
       bodyRequest.getUri().toString());

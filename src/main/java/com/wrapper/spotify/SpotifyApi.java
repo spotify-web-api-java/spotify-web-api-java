@@ -881,6 +881,21 @@ public class SpotifyApi {
   }
 
   /**
+   * Remove the current user as a follower of one or more artists or other Spotify users.
+   *
+   * @param type The ID type: either artist or user.
+   * @param ids  A JSON array of the artist or the user Spotify IDs. Maximum: 50 IDs.
+   * @return A {@link UnfollowArtistsOrUsersRequest.Builder}.
+   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   */
+  public UnfollowArtistsOrUsersRequest.Builder unfollowArtistsOrUsers(ModelObjectType type, JsonArray ids) {
+    return new UnfollowArtistsOrUsersRequest.Builder(accessToken)
+      .setDefaults(httpManager, scheme, host, port)
+      .type(type)
+      .ids(ids);
+  }
+
+  /**
    * Remove the specified user as a follower of a playlist.
    *
    * @param owner_id    The owners username.
@@ -991,6 +1006,19 @@ public class SpotifyApi {
   }
 
   /**
+   * Remove one or more albums from the current user's "Your Music" library.
+   *
+   * @param ids The Spotify IDs for the albums to be deleted. Maximum: 50 IDs.
+   * @return A {@link RemoveAlbumsForCurrentUserRequest.Builder}.
+   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   */
+  public RemoveAlbumsForCurrentUserRequest.Builder removeAlbumsForCurrentUser(JsonArray ids) {
+    return new RemoveAlbumsForCurrentUserRequest.Builder(accessToken)
+      .setDefaults(httpManager, scheme, host, port)
+      .ids(ids);
+  }
+
+  /**
    * Remove one or more shows from the current users "Your Music" library.
    *
    * @param ids The Spotify IDs for the shows to be deleted. Maximum: 50 IDs.
@@ -1004,6 +1032,19 @@ public class SpotifyApi {
   }
 
   /**
+   * Remove one or more shows from the current users "Your Music" library.
+   *
+   * @param ids The Spotify IDs for the shows to be deleted. Maximum: 50 IDs.
+   * @return A {@link RemoveAlbumsForCurrentUserRequest.Builder}.
+   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   */
+  public RemoveUsersSavedShowsRequest.Builder removeUsersSavedShows(JsonArray ids) {
+    return new RemoveUsersSavedShowsRequest.Builder(accessToken)
+      .setDefaults(httpManager, scheme, host, port)
+      .ids(ids);
+  }
+
+  /**
    * Remove a track if saved to the user's "Your Music" library.
    *
    * @param ids The track IDs to remove from the user's Your Music library. Maximum: 50 IDs.
@@ -1014,6 +1055,19 @@ public class SpotifyApi {
     return new RemoveUsersSavedTracksRequest.Builder(accessToken)
       .setDefaults(httpManager, scheme, host, port)
       .ids(concat(ids, ','));
+  }
+
+  /**
+   * Remove a track if saved to the user's "Your Music" library.
+   *
+   * @param ids The track IDs to remove from the user's Your Music library. Maximum: 50 IDs.
+   * @return A {@link RemoveUsersSavedTracksRequest.Builder}.
+   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   */
+  public RemoveUsersSavedTracksRequest.Builder removeUsersSavedTracks(JsonArray ids) {
+    return new RemoveUsersSavedTracksRequest.Builder(accessToken)
+      .setDefaults(httpManager, scheme, host, port)
+      .ids(ids);
   }
 
   /**
@@ -1053,6 +1107,19 @@ public class SpotifyApi {
     return new SaveShowsForCurrentUserRequest.Builder(accessToken)
       .setDefaults(httpManager, scheme, host, port)
       .ids(concat(ids, ','));
+  }
+
+  /**
+   * Save one or more shows to current Spotify user’s library.
+   *
+   * @param ids The show IDs to add to the users library. Maximum: 50 IDs.
+   * @return A {@link SaveShowsForCurrentUserRequest.Builder}.
+   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   */
+  public SaveShowsForCurrentUserRequest.Builder saveShowsForCurrentUser(JsonArray ids) {
+    return new SaveShowsForCurrentUserRequest.Builder(accessToken)
+      .setDefaults(httpManager, scheme, host, port)
+      .ids(ids);
   }
 
   /**
@@ -1309,7 +1376,9 @@ public class SpotifyApi {
 
   /**
    * Add items to a playlist.
-   *
+   * <p>
+   * <b>Note:</b> If you want to add a large number of items (>50), use {@link #addItemsToPlaylist(String, JsonArray)} to not exceed
+   * the maximum URI length.
    * @param playlist_id The playlists ID.
    * @param uris        URIs of the tracks or episodes to add. Maximum: 100 item URIs.
    * @return An {@link AddItemsToPlaylistRequest.Builder}.

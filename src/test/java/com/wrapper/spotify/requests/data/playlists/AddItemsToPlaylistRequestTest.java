@@ -1,7 +1,6 @@
 package com.wrapper.spotify.requests.data.playlists;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonParser;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.special.SnapshotResult;
@@ -28,7 +27,7 @@ public class AddItemsToPlaylistRequestTest extends AbstractDataTest<SnapshotResu
     .position(POSITION)
     .build();
   private final AddItemsToPlaylistRequest bodyRequest = SPOTIFY_API
-    .addItemsToPlaylist(ID_PLAYLIST, JsonParser.parseString(URIS.toString()).getAsJsonArray())
+    .addItemsToPlaylist(ID_PLAYLIST, URIS)
     .setHttpManager(
       TestUtil.MockedHttpManager.returningJson(
         "requests/data/playlists/AddItemsToPlaylistRequest.json"))
@@ -50,7 +49,7 @@ public class AddItemsToPlaylistRequestTest extends AbstractDataTest<SnapshotResu
     assertHasBodyParameter(
       bodyRequest,
       "uris",
-      "[\"spotify:track:" + ID_TRACK + "\",\"spotify:track:" + ID_TRACK + "\"]");
+      URIS);
     assertHasBodyParameter(
       bodyRequest,
       "position",

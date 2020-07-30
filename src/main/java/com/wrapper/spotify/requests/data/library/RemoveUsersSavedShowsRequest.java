@@ -1,9 +1,11 @@
 package com.wrapper.spotify.requests.data.library;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.google.gson.JsonArray;
 import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.requests.data.AbstractDataRequest;
+import org.apache.hc.core5.http.ContentType;
 import org.apache.hc.core5.http.ParseException;
 
 import java.io.IOException;
@@ -59,7 +61,7 @@ public class RemoveUsersSavedShowsRequest extends AbstractDataRequest<String> {
     /**
      * The show IDs setter.
      *
-     * @param ids Required. A comma-separated list of Spotify IDs for the shows to be deleted from the user’s library. Maximum: 50 IDs.
+     * @param ids Optional. A comma-separated list of Spotify IDs for the shows to be deleted from the user’s library. Maximum: 50 IDs.
      * @return A {@link RemoveUsersSavedShowsRequest.Builder}.
      * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URIs &amp; IDs</a>
      */
@@ -86,12 +88,28 @@ public class RemoveUsersSavedShowsRequest extends AbstractDataRequest<String> {
     }
 
     /**
+     * The show IDs setter.
+     * <p>
+     * <b>Note:</b> If the ids have already been set with {@link #ids(String)}, any ids added here will be ignored.
+     * @param ids Optional. A JSON array of Spotify IDs for the shows to be deleted from the user’s library. Maximum: 50 IDs.
+     * @return A {@link RemoveUsersSavedShowsRequest.Builder}.
+     * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URIs &amp; IDs</a>
+     */
+    public Builder ids(final JsonArray ids) {
+      assert (ids != null);
+      assert (!ids.isJsonNull());
+      assert (ids.size() <= 50);
+      return setBodyParameter("ids", ids);
+    }
+
+    /**
      * The request build method.
      *
      * @return A custom {@link RemoveUsersSavedShowsRequest}.
      */
     @Override
     public RemoveUsersSavedShowsRequest build() {
+      setContentType(ContentType.APPLICATION_JSON);
       setPath("/v1/me/shows");
       return new RemoveUsersSavedShowsRequest(this);
     }
