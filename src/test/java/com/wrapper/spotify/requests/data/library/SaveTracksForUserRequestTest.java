@@ -1,6 +1,5 @@
 package com.wrapper.spotify.requests.data.library;
 
-import com.google.gson.JsonParser;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.requests.data.AbstractDataTest;
@@ -25,7 +24,7 @@ public class SaveTracksForUserRequestTest extends AbstractDataTest<String> {
       TestUtil.MockedHttpManager.returningJson(null))
     .build();
   private final SaveTracksForUserRequest bodyRequest = SPOTIFY_API
-    .saveTracksForUser(JsonParser.parseString("[\"" + ID_TRACK + "\",\"" + ID_TRACK + "\"]").getAsJsonArray())
+    .saveTracksForUser(TRACKS)
     .setHttpManager(
       TestUtil.MockedHttpManager.returningJson(null))
     .build();
@@ -45,7 +44,7 @@ public class SaveTracksForUserRequestTest extends AbstractDataTest<String> {
     assertHasBodyParameter(
       bodyRequest,
       "ids",
-      "[\"" + ID_TRACK + "\",\"" + ID_TRACK + "\"]");
+      TRACKS);
     assertEquals(
       "https://api.spotify.com:443/v1/me/tracks",
       bodyRequest.getUri().toString());
