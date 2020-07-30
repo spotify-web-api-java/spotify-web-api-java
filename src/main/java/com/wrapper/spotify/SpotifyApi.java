@@ -1309,7 +1309,9 @@ public class SpotifyApi {
 
   /**
    * Add items to a playlist.
-   *
+   * <p>
+   * <b>Note:</b> If you want to add a large number of items (>50), use {@link #addItemsToPlaylist(String, JsonArray)} to not exceed
+   * the maximum URI length.
    * @param playlist_id The playlists ID.
    * @param uris        URIs of the tracks or episodes to add. Maximum: 100 item URIs.
    * @return An {@link AddItemsToPlaylistRequest.Builder}.
