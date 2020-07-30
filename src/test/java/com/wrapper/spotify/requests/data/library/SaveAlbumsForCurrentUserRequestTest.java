@@ -1,6 +1,5 @@
 package com.wrapper.spotify.requests.data.library;
 
-import com.google.gson.JsonParser;
 import com.wrapper.spotify.TestUtil;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.requests.data.AbstractDataTest;
@@ -25,7 +24,7 @@ public class SaveAlbumsForCurrentUserRequestTest extends AbstractDataTest<String
       TestUtil.MockedHttpManager.returningJson(null))
     .build();
   private final SaveAlbumsForCurrentUserRequest bodyRequest = SPOTIFY_API
-    .saveAlbumsForCurrentUser(JsonParser.parseString("[\"" + ID_ALBUM + "\",\"" + ID_ALBUM + "\"]").getAsJsonArray())
+    .saveAlbumsForCurrentUser(ALBUMS.getAsJsonArray())
     .setHttpManager(
       TestUtil.MockedHttpManager.returningJson(null))
     .build();
@@ -45,7 +44,7 @@ public class SaveAlbumsForCurrentUserRequestTest extends AbstractDataTest<String
     assertHasBodyParameter(
       bodyRequest,
       "ids",
-      "[\"" + ID_ALBUM + "\",\"" + ID_ALBUM + "\"]");
+      ALBUMS);
     assertEquals(
       "https://api.spotify.com:443/v1/me/albums",
       bodyRequest.getUri().toString());

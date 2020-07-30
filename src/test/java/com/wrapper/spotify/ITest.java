@@ -29,6 +29,8 @@ public interface ITest<T> {
 
   Date AFTER = new Date(1517087230000L);
   String ALBUM_TYPE = AlbumType.ALBUM.getType();
+  JsonArray ALBUMS = JsonParser.parseString("[\"5zT1JLIj9E57p3e1rFm9Uq\", \"5zT1JLIj9E57p3e1rFm9Uq\"]" ).getAsJsonArray();
+  JsonArray ARTISTS = JsonParser.parseString("[\"0LcJLqbBmaGUft1e9Mm8HV\", \"0LcJLqbBmaGUft1e9Mm8HV\"]" ).getAsJsonArray();
   String AUTHORIZATION_CODE = "c-oGaPdYJF3tu3oUZRUiBHWQvm4oHnBrsxfHackYzzomKJiy5te1k04LJdr6XxjACe9TonpJR8NPOQ3o5btASx_oMw4trmXLYdkda77wY0NJ9Scl69lKvGiOfdnRi5Q0IbBu185Y0TZgyUJz3Auqqv-Wk7zjRke4DzqYEc3ucyUBOq08j5223te-G2K72aL9PxgVJaEHBbLvhdJscCy-zcyU29EZoNlG_E5";
   Date BEFORE = new Date(1453932420000L);
   String CATEGORY_ID = "dinner";
@@ -70,11 +72,13 @@ public interface ITest<T> {
   String SEED_GENRES = "electro";
   String SEED_TRACKS = "01iyCAUm8EvOFqVWYJ3dVX";
   boolean SHOW_DIALOG = true;
+  JsonArray SHOWS = JsonParser.parseString("[\"5AvwZVawapvyhJUIx71pdJ\", \"5AvwZVawapvyhJUIx71pdJ\"]").getAsJsonArray();
   String SNAPSHOT_ID = "JbtmHBDBAYu3/bt8BOXKjzKx3i0b6LCa/wVjyl6qQ2Yf6nFXkbmzuEa+ZI/U1yF+";
   String STATE = "track";
   boolean STATE_BOOLEAN = false;
   int TARGET_POPULARITY = 20;
   String TIME_RANGE = "medium_term";
+  JsonArray TRACKS = JsonParser.parseString("[\"01iyCAUm8EvOFqVWYJ3dVX\", \"01iyCAUm8EvOFqVWYJ3dVX\"]").getAsJsonArray();
   Date TIMESTAMP = new Date(1414054800000L);
   ModelObjectType TYPE = ModelObjectType.ARTIST;
   JsonArray URIS = JsonParser.parseString("[\"spotify:track:01iyCAUm8EvOFqVWYJ3dVX\",\"spotify:track:01iyCAUm8EvOFqVWYJ3dVX\"]").getAsJsonArray();
