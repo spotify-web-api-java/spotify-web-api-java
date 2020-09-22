@@ -97,6 +97,13 @@ public class AudioAnalysisMeta extends AbstractModelObject {
   }
 
   @Override
+  public String toString() {
+    return "AudioAnalysisMeta(analyzerVersion=" + analyzerVersion + ", platform=" + platform + ", detailedStatus="
+        + detailedStatus + ", statusCode=" + statusCode + ", timestamp=" + timestamp + ", analysisTime=" + analysisTime
+        + ", inputProcess=" + inputProcess + ")";
+  }
+
+  @Override
   public Builder builder() {
     return new Builder();
   }

@@ -1,5 +1,7 @@
 package com.wrapper.spotify.model_objects.specification;
 
+import java.util.Arrays;
+
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.JsonObject;
 import com.wrapper.spotify.enums.ModelObjectType;
@@ -187,6 +189,14 @@ public class Playlist extends AbstractModelObject {
    */
   public String getUri() {
     return uri;
+  }
+
+  @Override
+  public String toString() {
+    return "Playlist(name=" + name + ", description=" + description + ", tracks=" + tracks + ", collaborative="
+        + collaborative + ", externalUrls=" + externalUrls + ", followers=" + followers + ", href=" + href + ", id="
+        + id + ", images=" + Arrays.toString(images) + ", owner=" + owner + ", publicAccess=" + publicAccess
+        + ", snapshotId=" + snapshotId + ", type=" + type + ", uri=" + uri + ")";
   }
 
   @Override

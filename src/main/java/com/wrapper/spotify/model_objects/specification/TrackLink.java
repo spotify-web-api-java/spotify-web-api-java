@@ -80,6 +80,12 @@ public class TrackLink extends AbstractModelObject {
   }
 
   @Override
+  public String toString() {
+    return "TrackLink(externalUrls=" + externalUrls + ", href=" + href + ", id=" + id + ", type=" + type + ", uri="
+        + uri + ")";
+  }
+
+  @Override
   public Builder builder() {
     return new Builder();
   }

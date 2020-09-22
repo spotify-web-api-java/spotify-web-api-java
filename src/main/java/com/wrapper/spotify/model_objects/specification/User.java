@@ -1,5 +1,7 @@
 package com.wrapper.spotify.model_objects.specification;
 
+import java.util.Arrays;
+
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.JsonObject;
 import com.neovisionaries.i18n.CountryCode;
@@ -172,6 +174,13 @@ public class User extends AbstractModelObject {
    */
   public String getUri() {
     return uri;
+  }
+
+  @Override
+  public String toString() {
+    return "User(birthdate=" + birthdate + ", country=" + country + ", displayName=" + displayName + ", email=" + email
+        + ", externalUrls=" + externalUrls + ", followers=" + followers + ", href=" + href + ", id=" + id + ", images="
+        + Arrays.toString(images) + ", product=" + product + ", type=" + type + ", uri=" + uri + ")";
   }
 
   @Override

@@ -40,6 +40,11 @@ public class Error extends AbstractModelObject {
   }
 
   @Override
+  public String toString() {
+    return "Error(status=" + status + ", message=" + message + ")";
+  }
+
+  @Override
   public Builder builder() {
     return new Builder();
   }

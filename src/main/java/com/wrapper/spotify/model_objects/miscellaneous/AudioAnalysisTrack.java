@@ -326,6 +326,19 @@ public class AudioAnalysisTrack extends AbstractModelObject {
   }
 
   @Override
+  public String toString() {
+    return "AudioAnalysisTrack(numSamples=" + numSamples + ", duration=" + duration + ", sampleMd5=" + sampleMd5
+        + ", offsetSeconds=" + offsetSeconds + ", windowSeconds=" + windowSeconds + ", analysisSampleRate="
+        + analysisSampleRate + ", analysisChannels=" + analysisChannels + ", endOfFadeIn=" + endOfFadeIn
+        + ", startOfFadeOut=" + startOfFadeOut + ", loudness=" + loudness + ", tempo=" + tempo + ", tempoConfidence="
+        + tempoConfidence + ", timeSignature=" + timeSignature + ", timeSignatureConfidence=" + timeSignatureConfidence
+        + ", key=" + key + ", keyConfidence=" + keyConfidence + ", mode=" + mode + ", modeConfidence=" + modeConfidence
+        + ", codeString=" + codeString + ", codeVersion=" + codeVersion + ", echoprintString=" + echoprintString
+        + ", echoprintVersion=" + echoprintVersion + ", synchString=" + synchString + ", synchVersion=" + synchVersion
+        + ", rhythmString=" + rhythmString + ", rhythmVersion=" + rhythmVersion + ")";
+  }
+
+  @Override
   public Builder builder() {
     return new Builder();
   }

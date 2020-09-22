@@ -1,5 +1,7 @@
 package com.wrapper.spotify.model_objects.specification;
 
+import java.util.Arrays;
+
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
@@ -178,6 +180,15 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
    */
   public String getUri() {
     return uri;
+  }
+
+  @Override
+  public String toString() {
+    return "AlbumSimplified(artists=" + Arrays.toString(artists) + ", name=" + name + ", albumGroup=" + albumGroup
+        + ", albumType=" + albumType + ", availableMarkets=" + Arrays.toString(availableMarkets) + ", externalUrls="
+        + externalUrls + ", href=" + href + ", id=" + id + ", images=" + Arrays.toString(images) + ", releaseDate="
+        + releaseDate + ", releaseDatePrecision=" + releaseDatePrecision + ", restrictions=" + restrictions + ", type="
+        + type + ", uri=" + uri + ")";
   }
 
   @Override

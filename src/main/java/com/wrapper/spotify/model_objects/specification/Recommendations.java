@@ -1,5 +1,7 @@
 package com.wrapper.spotify.model_objects.specification;
 
+import java.util.Arrays;
+
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.JsonObject;
 import com.wrapper.spotify.model_objects.AbstractModelObject;
@@ -36,6 +38,11 @@ public class Recommendations extends AbstractModelObject {
    */
   public TrackSimplified[] getTracks() {
     return tracks;
+  }
+
+  @Override
+  public String toString() {
+    return "Recommendations(seeds=" + Arrays.toString(seeds) + ", tracks=" + Arrays.toString(tracks) + ")";
   }
 
   @Override

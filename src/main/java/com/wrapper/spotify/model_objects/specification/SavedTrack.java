@@ -44,6 +44,11 @@ public class SavedTrack extends AbstractModelObject {
   }
 
   @Override
+  public String toString() {
+    return "SavedTrack(addedAt=" + addedAt + ", track=" + track + ")";
+  }
+
+  @Override
   public Builder builder() {
     return new Builder();
   }

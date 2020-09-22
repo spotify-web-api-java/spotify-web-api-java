@@ -42,6 +42,11 @@ public class AuthenticationError extends AbstractModelObject {
   }
 
   @Override
+  public String toString() {
+    return "AuthenticationError(error=" + error + ", error_description=" + error_description + ")";
+  }
+
+  @Override
   public Builder builder() {
     return new Builder();
   }

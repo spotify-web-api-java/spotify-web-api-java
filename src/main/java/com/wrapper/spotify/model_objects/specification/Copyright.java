@@ -41,6 +41,11 @@ public class Copyright extends AbstractModelObject {
   }
 
   @Override
+  public String toString() {
+    return "Copyright(text=" + text + ", type=" + type + ")";
+  }
+
+  @Override
   public Builder builder() {
     return new Builder();
   }

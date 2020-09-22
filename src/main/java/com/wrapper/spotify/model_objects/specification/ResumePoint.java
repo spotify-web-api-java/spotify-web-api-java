@@ -39,6 +39,11 @@ public class ResumePoint extends AbstractModelObject {
   }
 
   @Override
+  public String toString() {
+    return "ResumePoint(fullyPlayed=" + fullyPlayed + ", resumePositionMs=" + resumePositionMs + ")";
+  }
+
+  @Override
   public Builder builder() {
     return new Builder();
   }
