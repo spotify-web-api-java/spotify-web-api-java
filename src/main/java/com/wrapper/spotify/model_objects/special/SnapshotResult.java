@@ -31,6 +31,11 @@ public class SnapshotResult extends AbstractModelObject {
   }
 
   @Override
+  public String toString() {
+    return "SnapshotResult(snapshotId=" + snapshotId + ")";
+  }
+
+  @Override
   public Builder builder() {
     return new Builder();
   }

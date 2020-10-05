@@ -1,5 +1,7 @@
 package com.wrapper.spotify.model_objects.specification;
 
+import java.util.Arrays;
+
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
@@ -132,6 +134,13 @@ public class Artist extends AbstractModelObject implements IArtistTrackModelObje
    */
   public String getUri() {
     return uri;
+  }
+
+  @Override
+  public String toString() {
+    return "Artist(name=" + name + ", externalUrls=" + externalUrls + ", followers=" + followers + ", genres="
+        + Arrays.toString(genres) + ", href=" + href + ", id=" + id + ", images=" + Arrays.toString(images)
+        + ", popularity=" + popularity + ", type=" + type + ", uri=" + uri + ")";
   }
 
   @Override

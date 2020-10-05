@@ -1,5 +1,7 @@
 package com.wrapper.spotify.model_objects.specification;
 
+import java.util.Arrays;
+
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
@@ -222,6 +224,16 @@ public class Album extends AbstractModelObject {
    */
   public String getUri() {
     return uri;
+  }
+
+  @Override
+  public String toString() {
+    return "Album(artists=" + Arrays.toString(artists) + ", name=" + name + ", albumType=" + albumType
+        + ", availableMarkets=" + Arrays.toString(availableMarkets) + ", copyrights=" + Arrays.toString(copyrights)
+        + ", externalIds=" + externalIds + ", externalUrls=" + externalUrls + ", genres=" + Arrays.toString(genres)
+        + ", href=" + href + ", id=" + id + ", images=" + Arrays.toString(images) + ", label=" + label + ", popularity="
+        + popularity + ", releaseDate=" + releaseDate + ", releaseDatePrecision=" + releaseDatePrecision + ", tracks="
+        + tracks + ", type=" + type + ", uri=" + uri + ")";
   }
 
   @Override

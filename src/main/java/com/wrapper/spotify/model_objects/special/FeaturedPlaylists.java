@@ -42,6 +42,11 @@ public class FeaturedPlaylists extends AbstractModelObject {
   }
 
   @Override
+  public String toString() {
+    return "FeaturedPlaylists(message=" + message + ", playlists=" + playlists + ")";
+  }
+
+  @Override
   public Builder builder() {
     return new Builder();
   }

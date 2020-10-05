@@ -50,6 +50,12 @@ public class ClientCredentials extends AbstractModelObject {
   }
 
   @Override
+  public String toString() {
+    return "ClientCredentials(accessToken=" + accessToken + ", tokenType=" + tokenType + ", expiresIn=" + expiresIn
+        + ")";
+  }
+
+  @Override
   public Builder builder() {
     return new Builder();
   }

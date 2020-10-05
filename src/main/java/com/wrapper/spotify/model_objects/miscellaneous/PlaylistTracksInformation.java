@@ -38,6 +38,11 @@ public class PlaylistTracksInformation extends AbstractModelObject {
   }
 
   @Override
+  public String toString() {
+    return "PlaylistTracksInformation(href=" + href + ", total=" + total + ")";
+  }
+
+  @Override
   public Builder builder() {
     return new Builder();
   }

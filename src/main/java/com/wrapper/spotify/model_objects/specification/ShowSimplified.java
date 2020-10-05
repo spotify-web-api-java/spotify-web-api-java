@@ -1,5 +1,7 @@
 package com.wrapper.spotify.model_objects.specification;
 
+import java.util.Arrays;
+
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
@@ -185,6 +187,15 @@ public class ShowSimplified extends AbstractModelObject implements ISearchModelO
    */
   public String getUri() {
     return uri;
+  }
+
+  @Override
+  public String toString() {
+    return "ShowSimplified(availableMarkets=" + Arrays.toString(availableMarkets) + ", copyrights="
+        + Arrays.toString(copyrights) + ", description=" + description + ", explicit=" + explicit + ", externalUrls="
+        + externalUrls + ", href=" + href + ", id=" + id + ", images=" + Arrays.toString(images)
+        + ", isExternallyHosted=" + isExternallyHosted + ", languages=" + Arrays.toString(languages) + ", mediaType="
+        + mediaType + ", name=" + name + ", publisher=" + publisher + ", type=" + type + ", uri=" + uri + ")";
   }
 
   @Override

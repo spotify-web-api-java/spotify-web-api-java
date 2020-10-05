@@ -54,6 +54,11 @@ public class AudioAnalysisMeasure extends AbstractModelObject {
   }
 
   @Override
+  public String toString() {
+    return "AudioAnalysisMeasure(confidence=" + confidence + ", duration=" + duration + ", start=" + start + ")";
+  }
+
+  @Override
   public Builder builder() {
     return new Builder();
   }

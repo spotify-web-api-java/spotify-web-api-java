@@ -1,5 +1,7 @@
 package com.wrapper.spotify.model_objects.special;
 
+import java.util.Arrays;
+
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
@@ -38,6 +40,11 @@ public class PlaylistTrackPosition extends AbstractModelObject {
    */
   public int[] getPositions() {
     return positions;
+  }
+
+  @Override
+  public String toString() {
+    return "PlaylistTrackPosition(uri=" + uri + ", positions=" + Arrays.toString(positions) + ")";
   }
 
   @Override

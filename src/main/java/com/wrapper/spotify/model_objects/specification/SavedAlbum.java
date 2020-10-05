@@ -44,6 +44,11 @@ public class SavedAlbum extends AbstractModelObject {
   }
 
   @Override
+  public String toString() {
+    return "SavedAlbum(addedAt=" + addedAt + ", album=" + album + ")";
+  }
+
+  @Override
   public Builder builder() {
     return new Builder();
   }

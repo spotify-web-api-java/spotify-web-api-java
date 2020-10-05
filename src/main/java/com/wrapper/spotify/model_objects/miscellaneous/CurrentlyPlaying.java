@@ -101,6 +101,13 @@ public class CurrentlyPlaying extends AbstractModelObject {
   }
 
   @Override
+  public String toString() {
+    return "CurrentlyPlaying(context=" + context + ", timestamp=" + timestamp + ", progress_ms=" + progress_ms
+        + ", is_playing=" + is_playing + ", item=" + item + ", currentlyPlayingType=" + currentlyPlayingType
+        + ", actions=" + actions + ")";
+  }
+
+  @Override
   public Builder builder() {
     return new Builder();
   }

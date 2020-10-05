@@ -100,6 +100,12 @@ public class SearchResult extends AbstractModelObject implements IArtistTrackMod
   }
 
   @Override
+  public String toString() {
+    return "SearchResult(albums=" + albums + ", artists=" + artists + ", episodes=" + episodes + ", playlists="
+        + playlists + ", shows=" + shows + ", tracks=" + tracks + ")";
+  }
+
+  @Override
   public Builder builder() {
     return new Builder();
   }

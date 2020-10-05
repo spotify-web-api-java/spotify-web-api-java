@@ -51,6 +51,11 @@ public class Image extends AbstractModelObject {
   }
 
   @Override
+  public String toString() {
+    return "Image(height=" + height + ", url=" + url + ", width=" + width + ")";
+  }
+
+  @Override
   public Builder builder() {
     return new Builder();
   }

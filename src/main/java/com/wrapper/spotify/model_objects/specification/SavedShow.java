@@ -44,6 +44,11 @@ public class SavedShow extends AbstractModelObject {
   }
 
   @Override
+  public String toString() {
+    return "SavedShow(addedAt=" + addedAt + ", show=" + show + ")";
+  }
+
+  @Override
   public Builder builder() {
     return new Builder();
   }

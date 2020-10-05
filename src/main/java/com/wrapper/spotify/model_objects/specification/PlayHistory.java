@@ -55,6 +55,11 @@ public class PlayHistory extends AbstractModelObject {
   }
 
   @Override
+  public String toString() {
+    return "PlayHistory(track=" + track + ", playedAt=" + playedAt + ", context=" + context + ")";
+  }
+
+  @Override
   public Builder builder() {
     return new Builder();
   }

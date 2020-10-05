@@ -85,6 +85,12 @@ public class ArtistSimplified extends AbstractModelObject {
   }
 
   @Override
+  public String toString() {
+    return "ArtistSimplified(name=" + name + ", externalUrls=" + externalUrls + ", href=" + href + ", id=" + id
+        + ", type=" + type + ", uri=" + uri + ")";
+  }
+
+  @Override
   public Builder builder() {
     return new Builder();
   }
