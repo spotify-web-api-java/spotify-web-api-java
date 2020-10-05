@@ -24,6 +24,13 @@ public abstract class AbstractModelObject implements IModelObject {
   }
 
   /**
+   * Returns a String representation of this model object in the style:<p>
+   * {@code ModelObject(attr1=value1, attr2=value2, ...)}
+   */
+  @Override
+  public abstract String toString(); // abstract enforces overriding of toString() for subclasses
+  
+  /**
    * Each model object needs to implement its own builder class.
    */
   public static abstract class Builder implements IModelObject.Builder {
@@ -94,7 +101,6 @@ public abstract class AbstractModelObject implements IModelObject {
      */
     @SuppressWarnings("unchecked")
     public <X> X[] createModelObjectArray(final JsonArray jsonArray, Class<X> clazz) {
-      @SuppressWarnings("unchecked")
       X[] array = (X[]) Array.newInstance(clazz, jsonArray.size());
 
       for (int i = 0; i < jsonArray.size(); i++) {

@@ -1,5 +1,7 @@
 package com.wrapper.spotify.model_objects.specification;
 
+import java.util.Arrays;
+
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
@@ -193,6 +195,15 @@ public class TrackSimplified extends AbstractModelObject {
    */
   public String getUri() {
     return uri;
+  }
+
+  @Override
+  public String toString() {
+    return "TrackSimplified(name=" + name + ", artists=" + Arrays.toString(artists) + ", availableMarkets="
+        + Arrays.toString(availableMarkets) + ", discNumber=" + discNumber + ", durationMs=" + durationMs
+        + ", explicit=" + explicit + ", externalUrls=" + externalUrls + ", href=" + href + ", id=" + id
+        + ", isPlayable=" + isPlayable + ", linkedFrom=" + linkedFrom + ", previewUrl=" + previewUrl + ", trackNumber="
+        + trackNumber + ", type=" + type + ", uri=" + uri + ")";
   }
 
   @Override

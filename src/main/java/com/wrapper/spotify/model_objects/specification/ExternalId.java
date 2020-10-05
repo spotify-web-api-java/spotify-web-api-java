@@ -40,6 +40,11 @@ public class ExternalId extends AbstractModelObject {
   }
 
   @Override
+  public String toString() {
+    return "ExternalId(externalIds=" + externalIds + ")";
+  }
+
+  @Override
   public Builder builder() {
     return new Builder();
   }

@@ -70,6 +70,12 @@ public class PlaylistTrack extends AbstractModelObject {
   }
 
   @Override
+  public String toString() {
+    return "PlaylistTrack(track=" + track + ", addedAt=" + addedAt + ", addedBy=" + addedBy + ", isLocal=" + isLocal
+        + ")";
+  }
+
+  @Override
   public Builder builder() {
     return new Builder();
   }

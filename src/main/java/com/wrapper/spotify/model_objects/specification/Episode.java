@@ -1,5 +1,7 @@
 package com.wrapper.spotify.model_objects.specification;
 
+import java.util.Arrays;
+
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
@@ -217,6 +219,16 @@ public class Episode extends AbstractModelObject implements IPlaylistItem {
    */
   public String getUri() {
     return uri;
+  }
+
+  @Override
+  public String toString() {
+    return "Episode(name=" + name + ", description=" + description + ", show=" + show + ", audioPreviewUrl="
+        + audioPreviewUrl + ", durationMs=" + durationMs + ", explicit=" + explicit + ", externalUrls=" + externalUrls
+        + ", href=" + href + ", id=" + id + ", images=" + Arrays.toString(images) + ", isExternallyHosted="
+        + isExternallyHosted + ", isPlayable=" + isPlayable + ", languages=" + Arrays.toString(languages)
+        + ", releaseDate=" + releaseDate + ", releaseDatePrecision=" + releaseDatePrecision + ", resumePoint="
+        + resumePoint + ", type=" + type + ", uri=" + uri + ")";
   }
 
   @Override

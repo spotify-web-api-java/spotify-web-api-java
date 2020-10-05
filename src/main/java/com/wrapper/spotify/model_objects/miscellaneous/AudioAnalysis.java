@@ -1,5 +1,7 @@
 package com.wrapper.spotify.model_objects.miscellaneous;
 
+import java.util.Arrays;
+
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.JsonObject;
 import com.wrapper.spotify.model_objects.AbstractModelObject;
@@ -105,6 +107,13 @@ public class AudioAnalysis extends AbstractModelObject {
    */
   public AudioAnalysisTrack getTrack() {
     return track;
+  }
+
+  @Override
+  public String toString() {
+    return "AudioAnalysis(bars=" + Arrays.toString(bars) + ", beats=" + Arrays.toString(beats) + ", meta=" + meta
+        + ", sections=" + Arrays.toString(sections) + ", segments=" + Arrays.toString(segments) + ", tatums="
+        + Arrays.toString(tatums) + ", track=" + track + ")";
   }
 
   @Override

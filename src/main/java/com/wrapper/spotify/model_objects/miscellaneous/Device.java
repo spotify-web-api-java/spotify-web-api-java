@@ -83,6 +83,12 @@ public class Device extends AbstractModelObject {
   }
 
   @Override
+  public String toString() {
+    return "Device(id=" + id + ", is_active=" + is_active + ", is_restricted=" + is_restricted + ", name=" + name
+        + ", type=" + type + ", volume_percent=" + volume_percent + ")";
+  }
+
+  @Override
   public Builder builder() {
     return new Builder();
   }

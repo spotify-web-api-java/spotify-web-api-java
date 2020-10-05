@@ -66,6 +66,11 @@ public class Context extends AbstractModelObject {
   }
 
   @Override
+  public String toString() {
+    return "Context(type=" + type + ", href=" + href + ", externalUrls=" + externalUrls + ", uri=" + uri + ")";
+  }
+
+  @Override
   public Builder builder() {
     return new Builder();
   }

@@ -5,6 +5,7 @@ import com.google.gson.JsonObject;
 import com.wrapper.spotify.model_objects.AbstractModelObject;
 
 import java.lang.reflect.ParameterizedType;
+import java.util.Arrays;
 
 /**
  * Retrieve information about
@@ -86,6 +87,12 @@ public class PagingCursorbased<T> extends AbstractModelObject {
    */
   public Integer getTotal() {
     return total;
+  }
+
+  @Override
+  public String toString() {
+    return "PagingCursorbased(href=" + href + ", items=" + Arrays.toString(items) + ", limit=" + limit + ", next="
+        + next + ", cursors=" + Arrays.toString(cursors) + ", total=" + total + ")";
   }
 
   @Override

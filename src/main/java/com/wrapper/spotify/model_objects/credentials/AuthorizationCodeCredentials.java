@@ -76,6 +76,12 @@ public class AuthorizationCodeCredentials extends AbstractModelObject {
   }
 
   @Override
+  public String toString() {
+    return "AuthorizationCodeCredentials(accessToken=" + accessToken + ", tokenType=" + tokenType + ", scope=" + scope
+        + ", expiresIn=" + expiresIn + ", refreshToken=" + refreshToken + ")";
+  }
+
+  @Override
   public Builder builder() {
     return new Builder();
   }

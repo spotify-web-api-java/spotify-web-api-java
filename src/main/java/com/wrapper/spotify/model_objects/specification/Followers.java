@@ -41,6 +41,11 @@ public class Followers extends AbstractModelObject {
   }
 
   @Override
+  public String toString() {
+    return "Followers(href=" + href + ", total=" + total + ")";
+  }
+
+  @Override
   public Builder builder() {
     return new Builder();
   }

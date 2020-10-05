@@ -1,5 +1,7 @@
 package com.wrapper.spotify.model_objects.specification;
 
+import java.util.Arrays;
+
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.JsonObject;
 import com.wrapper.spotify.model_objects.AbstractModelObject;
@@ -59,6 +61,11 @@ public class Category extends AbstractModelObject {
    */
   public String getName() {
     return name;
+  }
+
+  @Override
+  public String toString() {
+    return "Category(href=" + href + ", icons=" + Arrays.toString(icons) + ", id=" + id + ", name=" + name + ")";
   }
 
   @Override

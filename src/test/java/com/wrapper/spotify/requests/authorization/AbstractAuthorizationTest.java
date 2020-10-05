@@ -1,7 +1,6 @@
 package com.wrapper.spotify.requests.authorization;
 
 import com.wrapper.spotify.ITest;
-import com.wrapper.spotify.requests.IRequest;
 
 import static com.wrapper.spotify.Assertions.assertHasHeader;
 

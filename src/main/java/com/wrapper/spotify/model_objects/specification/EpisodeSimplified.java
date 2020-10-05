@@ -1,5 +1,7 @@
 package com.wrapper.spotify.model_objects.specification;
 
+import java.util.Arrays;
+
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
@@ -206,6 +208,16 @@ public class EpisodeSimplified extends AbstractModelObject implements ISearchMod
    */
   public String getUri() {
     return uri;
+  }
+
+  @Override
+  public String toString() {
+    return "EpisodeSimplified(name=" + name + ", audioPreviewUrl=" + audioPreviewUrl + ", description=" + description
+        + ", durationMs=" + durationMs + ", explicit=" + explicit + ", externalUrls=" + externalUrls + ", href=" + href
+        + ", id=" + id + ", images=" + Arrays.toString(images) + ", isExternallyHosted=" + isExternallyHosted
+        + ", isPlayable=" + isPlayable + ", languages=" + Arrays.toString(languages) + ", releaseDate=" + releaseDate
+        + ", releaseDatePrecision=" + releaseDatePrecision + ", resumePoint=" + resumePoint + ", type=" + type
+        + ", uri=" + uri + ")";
   }
 
   @Override

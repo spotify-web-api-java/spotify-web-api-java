@@ -1,5 +1,7 @@
 package com.wrapper.spotify.model_objects.miscellaneous;
 
+import java.util.Arrays;
+
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
@@ -104,6 +106,13 @@ public class AudioAnalysisSegment extends AbstractModelObject {
    */
   public float[] getTimbre() {
     return timbre;
+  }
+
+  @Override
+  public String toString() {
+    return "AudioAnalysisSegment(measure=" + measure + ", loudnessStart=" + loudnessStart + ", loudnessMaxTime="
+        + loudnessMaxTime + ", loudnessMax=" + loudnessMax + ", loudnessEnd=" + loudnessEnd + ", pitches="
+        + Arrays.toString(pitches) + ", timbre=" + Arrays.toString(timbre) + ")";
   }
 
   @Override

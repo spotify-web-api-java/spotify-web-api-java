@@ -32,6 +32,11 @@ public class Cursor extends AbstractModelObject {
   }
 
   @Override
+  public String toString() {
+    return "Cursor(after=" + after + ")";
+  }
+
+  @Override
   public Builder builder() {
     return new Builder();
   }

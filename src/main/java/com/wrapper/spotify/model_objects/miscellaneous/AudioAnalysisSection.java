@@ -134,6 +134,14 @@ public class AudioAnalysisSection extends AbstractModelObject {
   }
 
   @Override
+  public String toString() {
+    return "AudioAnalysisSection(measure=" + measure + ", loudness=" + loudness + ", tempo=" + tempo
+        + ", tempoConfidence=" + tempoConfidence + ", key=" + key + ", keyConfidence=" + keyConfidence + ", mode="
+        + mode + ", modeConfidence=" + modeConfidence + ", timeSignature=" + timeSignature
+        + ", timeSignatureConfidence=" + timeSignatureConfidence + ")";
+  }
+
+  @Override
   public Builder builder() {
     return new Builder();
   }

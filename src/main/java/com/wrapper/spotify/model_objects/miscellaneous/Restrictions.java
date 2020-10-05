@@ -32,6 +32,11 @@ public class Restrictions extends AbstractModelObject {
   }
 
   @Override
+  public String toString() {
+    return "Restrictions(reason=" + reason + ")";
+  }
+
+  @Override
   public Builder builder() {
     return new Builder();
   }

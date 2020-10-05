@@ -48,6 +48,11 @@ public class ExternalUrl extends AbstractModelObject {
   }
 
   @Override
+  public String toString() {
+    return "ExternalUrl(externalUrls=" + externalUrls + ")";
+  }
+
+  @Override
   public Builder builder() {
     return new Builder();
   }

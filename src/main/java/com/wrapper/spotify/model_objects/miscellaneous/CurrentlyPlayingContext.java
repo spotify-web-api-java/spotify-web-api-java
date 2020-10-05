@@ -135,6 +135,14 @@ public class CurrentlyPlayingContext extends AbstractModelObject {
   }
 
   @Override
+  public String toString() {
+    return "CurrentlyPlayingContext(device=" + device + ", repeat_state=" + repeat_state + ", shuffle_state="
+        + shuffle_state + ", context=" + context + ", timestamp=" + timestamp + ", progress_ms=" + progress_ms
+        + ", is_playing=" + is_playing + ", item=" + item + ", currentlyPlayingType=" + currentlyPlayingType
+        + ", actions=" + actions + ")";
+  }
+
+  @Override
   public Builder builder() {
     return new Builder();
   }

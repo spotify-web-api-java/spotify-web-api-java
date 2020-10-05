@@ -86,6 +86,12 @@ public class RecommendationsSeed extends AbstractModelObject {
   }
 
   @Override
+  public String toString() {
+    return "RecommendationsSeed(afterFilteringSize=" + afterFilteringSize + ", afterRelinkingSize=" + afterRelinkingSize
+        + ", href=" + href + ", id=" + id + ", initialPoolSize=" + initialPoolSize + ", type=" + type + ")";
+  }
+
+  @Override
   public Builder builder() {
     return new Builder();
   }

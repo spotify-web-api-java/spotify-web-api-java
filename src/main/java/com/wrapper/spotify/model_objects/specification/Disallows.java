@@ -34,6 +34,11 @@ public class Disallows extends AbstractModelObject {
   }
 
   @Override
+  public String toString() {
+    return "Disallows(disallowedActions=" + disallowedActions + ")";
+  }
+
+  @Override
   public Builder builder() {
     return new Builder();
   }
