@@ -7,7 +7,7 @@
 
   <groupId>se.michaelthelin.spotify</groupId>
   <artifactId>spotify-web-api-java</artifactId>
-  <version>6.4.0</version>
+  <version>6.4.1</version>
   <!--
    DO NOT FORGET
    - to update version numbers in README (2x)
@@ -59,7 +59,7 @@
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.13</version>
+      <version>4.13.1</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -80,7 +80,7 @@
     <dependency>
       <groupId>org.apache.httpcomponents.client5</groupId>
       <artifactId>httpclient5-cache</artifactId>
-      <version>5.0.1</version>
+      <version>5.0.3</version>
     </dependency>
     <dependency>
       <groupId>org.mockito</groupId>
