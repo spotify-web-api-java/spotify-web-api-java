@@ -119,7 +119,7 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
    * <b>OR</b> unknown).
    */
   @Override
-  public Boolean getIsExplicit() {
+  public Boolean getExplicit() {
     return explicit;
   }
 
@@ -173,7 +173,7 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
    * @return If {@code true}, the track is playable in the given market. Otherwise {@code false}.
    */
   @Override
-  public Boolean getIsPlayable() {
+  public Boolean getPlayable() {
     return isPlayable;
   }
 

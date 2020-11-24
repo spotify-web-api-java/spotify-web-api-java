@@ -26,14 +26,13 @@ public interface IPlaylistItem extends IModelObject {
    */
   public Integer getDurationMs();
   
-  
   /**
    * Check whether the playlist item is explicit or not.
    *
    * @return Whether or not the playlist item has explicit lyrics ({@code true} = yes it does; {@code false} = no it does not
    * <b>OR</b> unknown).
    */
-  public Boolean getIsExplicit();
+  public Boolean getExplicit();
   
   /**
    * Get the external URLs of the playlist item.<br>
@@ -63,7 +62,7 @@ public interface IPlaylistItem extends IModelObject {
    *
    * @return If {@code true}, the playlist item is playable in the given market. Otherwise {@code false}.
    */
-  public Boolean getIsPlayable();
+  public Boolean getPlayable();
   
   /**
    * Get the name of the playlist item.
