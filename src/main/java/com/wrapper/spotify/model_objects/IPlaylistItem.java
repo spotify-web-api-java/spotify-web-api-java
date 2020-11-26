@@ -11,13 +11,6 @@ import com.wrapper.spotify.model_objects.specification.Track;
  * currently {@link Episode} and {@link Track}.
  */
 public interface IPlaylistItem extends IModelObject {
-
-  /**
-   * Get a URL to a 30 second preview (MP3 format) of this playlist item. {@code null} if not available.
-   *
-   * @return A URL to an audio preview.
-   */
-  public String getAudioPreviewUrl();
   
   /**
    * Get the duration of this playlist item in milliseconds.
@@ -25,14 +18,6 @@ public interface IPlaylistItem extends IModelObject {
    * @return The playlist item length in milliseconds.
    */
   public Integer getDurationMs();
-  
-  /**
-   * Check whether the playlist item is explicit or not.
-   *
-   * @return Whether or not the playlist item has explicit lyrics ({@code true} = yes it does; {@code false} = no it does not
-   * <b>OR</b> unknown).
-   */
-  public Boolean getExplicit();
   
   /**
    * Get the external URLs of the playlist item.<br>
@@ -56,13 +41,6 @@ public interface IPlaylistItem extends IModelObject {
    * @return The Spotify ID for the playlist item.
    */
   public String getId();
-  
-  /**
-   * Check whether the playlist item is playable in the market, which may has been specified somewhere before requesting it.
-   *
-   * @return If {@code true}, the playlist item is playable in the given market. Otherwise {@code false}.
-   */
-  public Boolean getPlayable();
   
   /**
    * Get the name of the playlist item.

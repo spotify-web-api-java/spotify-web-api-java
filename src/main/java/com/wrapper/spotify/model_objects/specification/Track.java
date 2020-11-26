@@ -118,8 +118,7 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
    * @return Whether or not the track has explicit lyrics ({@code true} = yes it does; {@code false} = no it does not
    * <b>OR</b> unknown).
    */
-  @Override
-  public Boolean getExplicit() {
+  public Boolean getIsExplicit() {
     return explicit;
   }
 
@@ -172,8 +171,7 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
    *
    * @return If {@code true}, the track is playable in the given market. Otherwise {@code false}.
    */
-  @Override
-  public Boolean getPlayable() {
+  public Boolean getIsPlayable() {
     return isPlayable;
   }
 
@@ -236,8 +234,7 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
    *
    * @return A link to a 30 second preview (MP3 format) of the track. {@code null} if not available.
    */
-  @Override
-  public String getAudioPreviewUrl() {
+  public String getPreviewUrl() {
     return previewUrl;
   }
 

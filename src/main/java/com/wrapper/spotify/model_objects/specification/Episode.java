@@ -62,7 +62,6 @@ public class Episode extends AbstractModelObject implements IPlaylistItem {
    *
    * @return A URL to an audio preview.
    */
-  @Override
   public String getAudioPreviewUrl() {
     return audioPreviewUrl;
   }
@@ -92,7 +91,6 @@ public class Episode extends AbstractModelObject implements IPlaylistItem {
    * @return Whether or not the episode has explicit content ({@code true} = yes it does; {@code false} = no it does not
    * <b>OR</b> unknown).
    */
-  @Override
   public Boolean getExplicit() {
     return explicit;
   }
@@ -151,7 +149,6 @@ public class Episode extends AbstractModelObject implements IPlaylistItem {
    *
    * @return True if the episode is playable in the given market. Otherwise false.
    */
-  @Override
   public Boolean getPlayable() {
     return isPlayable;
   }

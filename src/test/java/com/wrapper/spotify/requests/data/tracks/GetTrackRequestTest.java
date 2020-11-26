@@ -63,7 +63,7 @@ public class GetTrackRequestTest extends AbstractDataTest<Track> {
       222200,
       (int) track.getDurationMs());
     assertFalse(
-      track.getExplicit());
+      track.getIsExplicit());
     assertNotNull(
       track.getExternalIds());
     assertNotNull(
@@ -82,7 +82,7 @@ public class GetTrackRequestTest extends AbstractDataTest<Track> {
       (int) track.getPopularity());
     assertEquals(
       "https://p.scdn.co/mp3-preview/4839b070015ab7d6de9fec1756e1f3096d908fba",
-      track.getAudioPreviewUrl());
+      track.getPreviewUrl());
     assertEquals(
       2,
       (int) track.getTrackNumber());
