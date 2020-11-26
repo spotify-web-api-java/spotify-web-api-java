@@ -1,0 +1,8 @@
+version: "1"
+rules:
+- base: master
+  upstream: thelinmichael:master
+  mergeMethod: hardreset
+- base: develop
+  upstream: thelinmichael:develop
+  mergeMethod: hardreset
