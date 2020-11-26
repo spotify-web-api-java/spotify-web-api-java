@@ -107,6 +107,7 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
    *
    * @return The track length in milliseconds.
    */
+  @Override
   public Integer getDurationMs() {
     return durationMs;
   }
@@ -137,6 +138,7 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
    *
    * @return Known external URLs for this track.
    */
+  @Override
   public ExternalUrl getExternalUrls() {
     return externalUrls;
   }
@@ -146,6 +148,7 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
    *
    * @return A link to the Web API endpoint providing full details of the track.
    */
+  @Override
   public String getHref() {
     return href;
   }
@@ -156,6 +159,7 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
    *
    * @return The Spotify ID for the track.
    */
+  @Override
   public String getId() {
     return id;
   }
@@ -202,6 +206,7 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
    *
    * @return Track name.
    */
+  @Override
   public String getName() {
     return name;
   }
@@ -248,6 +253,7 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
    *
    * @return The object type: "track".
    */
+  @Override
   public ModelObjectType getType() {
     return type;
   }
@@ -258,6 +264,7 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
    * @return The <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify URI</a> for
    * the track.
    */
+  @Override
   public String getUri() {
     return uri;
   }

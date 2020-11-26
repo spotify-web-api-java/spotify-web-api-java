@@ -253,6 +253,11 @@ public class SpotifyHttpManager implements IHttpManager {
               Level.CONFIG,
               "The response was generated from the cache after validating the entry with the origin server");
             break;
+          case FAILURE:
+            SpotifyApi.LOGGER.log(
+              Level.CONFIG,
+              "The response came from an upstream server after a cache failure");
+            break;
         }
       }
     } catch (Exception e) {
