@@ -248,14 +248,7 @@ public abstract class AbstractRequest<T> implements IRequest<T> {
       assert (name != null && value != null);
       assert (!name.equals("") && !value.equals(""));
 
-      String encodedValue = null;
-
-      try {
-        encodedValue = URLEncoder.encode(value, "UTF-8");
-      } catch (UnsupportedEncodingException e) {
-        SpotifyApi.LOGGER.log(Level.SEVERE, e.getMessage());
-      }
-      listAddOnce(this.pathParameters, new BasicNameValuePair(name, encodedValue));
+      listAddOnce(this.pathParameters, new BasicNameValuePair(name, value));
       return self();
     }
 

@@ -19,7 +19,7 @@ import static org.junit.Assert.assertNotNull;
 @RunWith(MockitoJUnitRunner.class)
 public class GetUsersProfileRequestTest extends AbstractDataTest<User> {
   private final GetUsersProfileRequest defaultRequest = SPOTIFY_API
-    .getUsersProfile(ID_USER)
+    .getUsersProfile(ID_USER_NON_ASCII)
     .setHttpManager(
       TestUtil.MockedHttpManager.returningJson(
         "requests/data/users_profile/GetUsersProfileRequest.json"))
@@ -32,7 +32,17 @@ public class GetUsersProfileRequestTest extends AbstractDataTest<User> {
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
     assertEquals(
-      "https://api.spotify.com:443/v1/users/abbaspotify",
+      // Yes, ABBA is not spelled that way ;)
+      // But it should be ensured non-ASCII characters are handled properly as well.
+      // Therefore, "abbaspötify" is used instead of "abbaspotify".
+      // "abbaspötify" should become abbasp%C3%B6tify after URL encoding.
+      // These characters do exist, for example there are plenty of them in the German speaking area,
+      // they are used in profile names and Spotify permits them.
+      // Additionally, the URL encoding is not only applied to non-ASCII characters as the set of characters allowed to be used in an URL
+      // is just a subset of ASCII.
+      // Only used ids and category ids are prone to this as the other ids used by spotify are Base62 encoded and
+      // therefore do not contain characters requiring to be encoded via Percent/URL encoding.
+      "https://api.spotify.com:443/v1/users/abbasp%C3%B6tify",
       defaultRequest.getUri().toString());
   }
 
