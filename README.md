@@ -298,17 +298,17 @@ access token only once, after which it becomes invalid.
 
 
 - **Playlists**
-  - [Add Tracks to a Playlist](examples/data/playlists/AddTracksToPlaylistExample.java)
+  - [Add Items to a Playlist](examples/data/playlists/AddItemsToPlaylistExample.java)
   - [Change a Playlist's Details](examples/data/playlists/ChangePlaylistsDetailsExample.java)
   - [Create a Playlist](examples/data/playlists/CreatePlaylistExample.java)
   - [Get a List of Current User's Playlists](examples/data/playlists/GetListOfCurrentUsersPlaylistsExample.java)
   - [Get a List of a User's Playlists](examples/data/playlists/GetListOfUsersPlaylistsExample.java)
   - [Get a Playlist](examples/data/playlists/GetPlaylistExample.java)
   - [Get a Playlist Cover Image](examples/data/playlists/GetPlaylistCoverImageExample.java)
-  - [Get a Playlist's Tracks](examples/data/playlists/GetPlaylistsTracksExample.java)
-  - [Remove Tracks from a Playlist](examples/data/playlists/RemoveTracksFromPlaylistExample.java)
-  - [Reorder a Playlist's Tracks](examples/data/playlists/ReorderPlaylistsTracksExample.java)
-  - [Replace a Playlist's Tracks](examples/data/playlists/ReplacePlaylistsTracksExample.java)
+  - [Get a Playlist's Items](examples/data/playlists/GetPlaylistsItemsExample.java)
+  - [Remove Items from a Playlist](examples/data/playlists/RemoveItemsFromPlaylistExample.java)
+  - [Reorder a Playlist's Items](examples/data/playlists/ReorderPlaylistsItemsExample.java)
+  - [Replace a Playlist's Items](examples/data/playlists/ReplacePlaylistsItemsExample.java)
   - [Upload a Custom Playlist Cover Image](examples/data/playlists/UploadCustomPlaylistCoverImageExample.java)
 
 
