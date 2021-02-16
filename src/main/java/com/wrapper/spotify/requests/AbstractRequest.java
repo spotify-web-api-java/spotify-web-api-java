@@ -237,7 +237,10 @@ public abstract class AbstractRequest<T> implements IRequest<T> {
       String builtPath = path;
 
       for (NameValuePair nameValuePair : pathParameters) {
-        builtPath = builtPath.replaceAll("\\{" + nameValuePair.getName() + "}", nameValuePair.getValue());
+        //ATTENTION! don't remove \\ chars before '}' char.
+        //the replaceAll will fail on android without double \ because an issue in regex
+        String key = "\\{" + nameValuePair.getName() + "\\}";
+        builtPath = builtPath.replaceAll(key, nameValuePair.getValue());
       }
 
       this.path = builtPath;
