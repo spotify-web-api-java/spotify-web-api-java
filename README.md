@@ -1,6 +1,6 @@
 | Android Developers |
 | ------------------ |
-| You **cannot** use this library for Android app development. Have a look at [kaaes/spotify-web-api-android](https://www.github.com/kaaes/spotify-web-api-android) and [Spotify's Android SDK](https://developer.spotify.com/technologies/spotify-android-sdk/) and [see why](https://github.com/thelinmichael/spotify-web-api-java/issues/120#issuecomment-363266591). |
+| You **cannot** use this library for Android app development. Have a look at [adamint/spotify-web-api-kotlin](https://www.github.com/adamint/spotify-web-api-kotlin), [kaaes/spotify-web-api-android](https://www.github.com/kaaes/spotify-web-api-android) and [Spotify's Android SDK](https://developer.spotify.com/technologies/spotify-android-sdk/) and [see why](https://github.com/thelinmichael/spotify-web-api-java/issues/120#issuecomment-363266591). |
 
 Spotify Web API Java [![Build Status](https://travis-ci.org/thelinmichael/spotify-web-api-java.svg?branch=master)](https://travis-ci.org/thelinmichael/spotify-web-api-java) [![codecov](https://codecov.io/gh/thelinmichael/spotify-web-api-java/branch/develop/graph/badge.svg)](https://codecov.io/gh/thelinmichael/spotify-web-api-java) [![Language grade: Java](https://img.shields.io/lgtm/grade/java/g/thelinmichael/spotify-web-api-java.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/thelinmichael/spotify-web-api-java/context:java)
 ====================
