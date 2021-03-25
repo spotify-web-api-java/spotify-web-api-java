@@ -11,7 +11,6 @@ import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.credentials.AuthorizationCodeCredentials;
 import com.wrapper.spotify.model_objects.specification.PagingCursorbased;
 import com.wrapper.spotify.model_objects.specification.PlayHistory;
-import com.wrapper.spotify.requests.authorization.authorization_code.AuthorizationCodeRefreshRequest;
 import com.wrapper.spotify.requests.authorization.authorization_code.AuthorizationCodeUriRequest;
 import com.wrapper.spotify.requests.authorization.authorization_code.pkce.AuthorizationCodePKCERefreshRequest;
 import com.wrapper.spotify.requests.authorization.authorization_code.pkce.AuthorizationCodePKCERequest;
@@ -24,8 +23,8 @@ public class AuthoritationCodePKCECompleteWorkFlow {
 	 *after registering our app. Instead we will use two codes, the codeVerifier and the codeChallenge.  Instead, your application should generate a code verifier and a code challenge 
 	 *before each authentication request.The code verifier is a cryptographically random string between 43 and 128 characters in length. It can contain letters, digits, underscores, 
 	 *periods, hyphens, or tildes. To generate the code challenge, your app should hash the code verifier using the SHA256 algorithm. Then, base64url encode the hash that you generated. 
-	 *We will also need the redirection URI, to which the user will be redirected after authorising his account to obtain the code that is exchanged for the access and refresh tokens.
-	 *This URI must be registered in our app in Spotify Developer DashBoards.
+	 *We will also need the redirection URI, to which the user will be redirected after authorizing his account to obtain the code that is exchanged for the access and refresh tokens.
+	 *This URI must be registered in our app using the Spotify Developer dashboards.
 	 * 
 	 */
 
@@ -35,32 +34,32 @@ public class AuthoritationCodePKCECompleteWorkFlow {
 	  private static final String codeVerifier = "NlJx4kD4opk4HY7zBM6WfUHxX7HoF8A2TUhOIPGA74w";
 	  
 	  /*
-	   * Add the properties to our spotifyApi object
+	   * Add the properties to our spotifyApi object.
 	   */
 	  private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
 	    .setClientId(clientId)
 	    .setRedirectUri(redirectUri)
 	    .build();
 
-	  /**
-	   * <p>We make the request to obtain the authorisation URI that will allow us, after the redirection, to obtain the code we need to 
+	  /*
+	   * We make the request to obtain the authorization URI that will allow us, after the redirection, to obtain the code we need to 
 	   * obtain the access and refresh token. The URI shown must be copied in our browser. The scope field indicates what we will be able 
-	   * to do with the user's information. This will be shown to them before they authorise our app.</p>
+	   * to do with the user's information. This will be shown to them before they authorize our app.
 	   */
 	  public static void obtainsCode() {
 		 final AuthorizationCodeUriRequest authorizationCodeUriRequest = spotifyApi.authorizationCodePKCEUri(codeChallenge)
 			        .scope("user-read-recently-played")
 				    .build();
 	    final URI uri = authorizationCodeUriRequest.execute();
-	    System.out.println("The URI you have to use in the browser is the following: " + uri.toString());
+	    System.out.println("The URI to be copied and placed in the browser is the following: " + uri.toString());
 	  }
 	
 	  
-	  /**
-	   * <p>After obtaining the code, we add it to spotifyApi along with the codeVerifier and execute a token fetch request that will return the access and refresh token. 
-	   * The refresh token will be used to obtain an access token in each new request.</p>
+	  /*
+	   * After obtaining the code, we add it to spotifyApi along with the codeVerifier and execute a token fetch request that will return the access and refresh token. 
+	   * The refresh token will be used to obtain an access token in each new request.
 	   * 
-	   * @param code - The code that returns the server to the redirect uri. It appears at http://www.example.com/...code=AQwe3...2dFv
+	   * parameter: code - The code that returns the server to the redirect uri. It appears at http://www.example.com/...code=AQwe3...2dFv
 	   */
 	  public static void obtainsTokens(String code) {
 		  final AuthorizationCodePKCERequest authorizationCodePKCERequest = spotifyApi.authorizationCodePKCE(code, codeVerifier)
@@ -83,14 +82,14 @@ public class AuthoritationCodePKCECompleteWorkFlow {
 	  }
 	  
 	  
-	  /**
-	   * <p>With this type of credential retrieval we can see information about the profile with which we are logged into Spotify thanks to the obtainsCode() method. 
-	   * Among others, we can see the last 5 plays of our profile and all its information.</p>
+	  /*
+	   * With this type of credential retrieval we can see information about the profile with which we are logged into Spotify thanks to the obtainsCode() method. 
+	   * Among others, we can see the last 5 plays of our profile and all its information.
 	   * 
-	   * @param refreshToken - The refresh token displayed on console after execution of obtainsTokens()
-	   * @throws ParseException
-	   * @throws SpotifyWebApiException
-	   * @throws IOException
+	   * parameter: refreshToken - The refresh token displayed on console after execution of obtainsTokens()
+	   * can throws: ParseException (Signals a protocol exception due to failure to parse a message element)
+	   * can throws: SpotifyWebApiException (An exception happened, eg. a HTTP status code 4** or 5** has been returned in a request.)
+	   * can throws: IOException (Signals that an I/O exception of some sort has occurred. This class is the general class of exceptions produced by failed orinterrupted I/O operations.)
 	   */
 	  public static void obtainsRecentTracks(String refreshToken) throws ParseException, SpotifyWebApiException, IOException {
 		 
@@ -113,23 +112,26 @@ public class AuthoritationCodePKCECompleteWorkFlow {
 	  
 	  
 	public static void main(String[] args) {
-		//obtainsCode();
+		
+/*It is necessary to execute function by function, in order to copy the code after the first function and the refresh token after the second.*/
+		
+		obtainsCode();
 		
 		
-		//obtainsTokens("AQDSsVx3udX39eztbNdTEqcvnX1R3fwfpbrWeI6hnMLaIzpnfmoo0zfkO4yRLgsR0UVDDe9xgVFHBXqCIpnjvbA-TxBHDMjpuG30gjnSE9vADrm9vEXsJayJXEyWCIy2U2tBOB-iGfhA4pHAsTdzCSaHGfNPH-9ziOxi7j5pG5lDsndwVrOGuFd0_BgDeFRLIFuYw6FGWj9W5f1E2T77bD_uuRjwN_9xiIDDG9gBJXpPo-U40e-lY1STXZuwtiP3UTXIDBCqv883icmc_7E1NjrzUc5wUA");
+//		obtainsTokens("AQDSsVx3udX39eztbNdTEqcvnX1R3fwfpbrWeI6hnMLaIzpnfmoo0zfkO4yRLgsR0UVDDe9xgVFHBXqCIpnjvbA-TxBHDMjpuG30gjnSE9vADrm9vEXsJayJXEyWCIy2U2tBOB-iGfhA4pHAsTdzCSaHGfNPH-9ziOxi7j5pG5lDsndwVrOGuFd0_BgDeFRLIFuYw6FGWj9W5f1E2T77bD_uuRjwN_9xiIDDG9gBJXpPo-U40e-lY1STXZuwtiP3UTXIDBCqv883icmc_7E1NjrzUc5wUA");
 		
 		
-		try {
-			
-			obtainsRecentTracks("AQBy6boUOM5DpfH-Rh9fprJb0uL0WlowOM5XCX4_zSGp5vuQ51Vz54M7ykV5im8Q-TdDMvDT0ctP189cBF5SnDZxNd915ZR6Def79ycw5nbT9HB3bVXxFn73XGe77IW-LT0");
-		
-		} catch (ParseException e) {
-			e.printStackTrace();
-		} catch (SpotifyWebApiException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+//		try {
+//			
+//			obtainsRecentTracks("AQBy6boUOM5DpfH-Rh9fprJb0uL0WlowOM5XCX4_zSGp5vuQ51Vz54M7ykV5im8Q-TdDMvDT0ctP189cBF5SnDZxNd915ZR6Def79ycw5nbT9HB3bVXxFn73XGe77IW-LT0");
+//		
+//		} catch (ParseException e) {
+//			e.printStackTrace();
+//		} catch (SpotifyWebApiException e) {
+//			e.printStackTrace();
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
 	}
 
 }

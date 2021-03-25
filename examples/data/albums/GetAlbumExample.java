@@ -1,7 +1,6 @@
 package data.albums;
 
 import com.wrapper.spotify.SpotifyApi;
-
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.Album;
 import com.wrapper.spotify.requests.data.albums.GetAlbumRequest;
