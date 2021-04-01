@@ -28,12 +28,15 @@ First, for the end-user application to obtain data from Spotify, it must obtain 
 be used whenever we want to obtain some kind of information from Spotify, whether private (about a user) or public (about an artist, for example). For this we will have to
 register our application in Spotify Developers, where we will be able to configure and see some of the most relevant parameters about our application and the use it is given.
 An example of the application registration screen is shown in the figure. In addition, if we want to access a particular user’s private information, we will first have to gain access.
+
 To do this, the user will be redirected to the Spotify account service, where he will be informed of the data to which he will have access and where, after accepting, he will be
 redirected to a URI that we have previously configured. After this, a code is returned that is exchanged for information access tokens.
 All this data exchange flow is done using the REST principles. That is to say, we access specific URIs (endpoints) providing in it key sets:value that will be the data that we
 will pass to the server. This, in response, will return JSON objects with the information we have requested. 
 
-![AISS-2021-L7-G06-raugalroc](docs/application_log.PNG)
+To make these authorizations we have at our disposal 3 ways to do so. Each one of them has to be provided with one information or another and each one of them gives us access to some Spotify data or others. We shall deal with this in point 4.1.
+
+![AISS-2021-L7-G06-raugalroc](docs/application_log.PNG)                                                   ![AISS-2021-L7-G06-raugalroc](docs/application_log.PNG)
 
 ## Installation
 
