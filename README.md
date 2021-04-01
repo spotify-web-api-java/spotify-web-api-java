@@ -33,6 +33,8 @@ redirected to a URI that we have previously configured. After this, a code is re
 All this data exchange flow is done using the REST principles. That is to say, we access specific URIs (endpoints) providing in it key sets:value that will be the data that we
 will pass to the server. This, in response, will return JSON objects with the information we have requested. 
 
+![AISS-2021-L7-G06-raugalroc](docs/application_log.PNG)
+
 ## Installation
 
 The artifact is available through
