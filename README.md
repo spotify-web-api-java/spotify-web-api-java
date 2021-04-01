@@ -10,6 +10,7 @@ The base address of Spotify Web API Java is https://api.spotify.com. The API pro
 
 
 ## Table of Contents
+
 1. **[Operating Summary](#Operating Summary)**
 2. **[Installation](#Installation)**
     1. **[Jitpack](#Jitpack)**
