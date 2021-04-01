@@ -7,7 +7,7 @@ Spotify Web API Java [![Build Status](https://travis-ci.org/thelinmichael/spotif
 
 The Spotify Web API provides external applications with access to Spotify content such as album and playlist data in a programmatic way using Java.
 The base address of Spotify Web API Java is https://api.spotify.com. The API provides a set of endpoints based on simple REST principles, each with its own unique path. These endpoints return JSON metadata about music artists, albums and tracks, directly from the Spotify data catalog.
-The project is developed in Java and uses Maven as a tool to manage it.
+
 
 ## Table of Contents
 1. **[Installation](#Installation)**
