@@ -10,14 +10,20 @@ The base address of Spotify Web API Java is https://api.spotify.com. The API pro
 
 
 ## Table of Contents
-1. **[Installation](#Installation)**
+1. **[Operating Summary](#Operating Summary)**
+2. **[Installation](#Installation)**
     1. **[Jitpack](#Jitpack)**
-2. **[Documentation](#Documentation)**
-3. **[General Usage](#General-Usage)**
+3. **[Documentation](#Documentation)**
+4. **[General Usage](#General-Usage)**
     1. **[Authorization](#Authorization)**
-4. **[Examples](#Examples)**
-5. **[Contributions](#Contributions)**
+5. **[Examples](#Examples)**
+6. **[Contributions](#Contributions)**
     1. **[Code Overview](#Code-Overview)**
+
+## Operating Summary
+
+First, for the end-user application to obtain data from Spotify, it must obtain an authorization. Spotify authorizes your application to access the Spotify platform. This should be used whenever we want to obtain some kind of information from Spotify, whether private (about a user) or public (about an artist, for example). For this we will have to register our application in Spotify Developers, where we will be able to configure and see some of the most relevant parameters about our application and the use it is given. Figure 1 shows an example of the application registration screen. In addition, if we want to access a particular user’s private information, we will first have to gain access. To do this, the user will be redirected to the Spotify account service, where he will be informed of the data to which he will have access and where, after accepting, he will be redirected to a URI that we have previously configured. After this, a code is returned that is exchanged for information access tokens.
+All this data exchange flow is done using the REST principles. That is to say, we access specific URIs (endpoints) providing in it key sets:value that will be the data that we will pass to the server. This, in response, will return JSON objects with the information we have requested. 
 
 ## Installation
 
