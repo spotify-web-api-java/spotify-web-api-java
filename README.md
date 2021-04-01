@@ -5,7 +5,9 @@
 Spotify Web API Java [![Build Status](https://travis-ci.org/thelinmichael/spotify-web-api-java.svg?branch=master)](https://travis-ci.org/thelinmichael/spotify-web-api-java) [![codecov](https://codecov.io/gh/thelinmichael/spotify-web-api-java/branch/develop/graph/badge.svg)](https://codecov.io/gh/thelinmichael/spotify-web-api-java) [![Language grade: Java](https://img.shields.io/lgtm/grade/java/g/thelinmichael/spotify-web-api-java.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/thelinmichael/spotify-web-api-java/context:java)
 ====================
 
-This is a Java wrapper/client for the [Spotify Web API](https://developer.spotify.com/web-api/).
+The Spotify Web API provides external applications with access to Spotify content such as album and playlist data in a programmatic way using Java.
+The base address of Spotify Web API Java is https://api.spotify.com. The API provides a set of endpoints based on simple REST principles, each with its own unique path. These endpoints return JSON metadata about music artists, albums and tracks, directly from the Spotify data catalog.
+The project is developed in Java and uses Maven as a tool to manage it.
 
 ## Table of Contents
 1. **[Installation](#Installation)**
