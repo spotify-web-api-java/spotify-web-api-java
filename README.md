@@ -12,13 +12,14 @@ The base address of Spotify Web API Java is https://api.spotify.com. The API pro
 ## Table of Contents
 
 1. **[Operating Summary](#Operating-Summary)**
-2. **[Installation](#Installation)**
+2. **[Some Interesting Metrics](#Some-Interesting-Metrics)**
+3. **[Installation](#Installation)**
     1. **[Jitpack](#Jitpack)**
-3. **[Documentation](#Documentation)**
-4. **[General Usage](#General-Usage)**
+4. **[Documentation](#Documentation)**
+5. **[General Usage](#General-Usage)**
     1. **[Authorization](#Authorization)**
-5. **[Examples](#Examples)**
-6. **[Contributions](#Contributions)**
+6. **[Examples](#Examples)**
+7. **[Contributions](#Contributions)**
     1. **[Code Overview](#Code-Overview)**
 
 
@@ -27,7 +28,7 @@ The base address of Spotify Web API Java is https://api.spotify.com. The API pro
 First, for the end-user application to obtain data from Spotify, it must obtain an authorization. Spotify authorizes your application to access the Spotify platform. This should
 be used whenever we want to obtain some kind of information from Spotify, whether private (about a user) or public (about an artist, for example). For this we will have to
 register our application in Spotify Developers, where we will be able to configure and see some of the most relevant parameters about our application and the use it is given.
-An example of the app log screen is shown in the figure. In addition, if we want to access a particular user’s private information, we will first have to gain access.
+An example of the app log screen is shown in the figure. In addition, if we want to access the private information of a particular user, we will first have to get access.
 
 To do this, the user will be redirected to the Spotify account service, where he will be informed of the data to which he will have access and where, after accepting, he will be
 redirected to a URI that we have previously configured. After this, a code is returned that is exchanged for information access tokens.
@@ -36,7 +37,18 @@ will pass to the server. This, in response, will return JSON objects with the in
 
 To make these authorizations we have at our disposal 3 ways to do so. Each one of them has to be provided with one information or another and each one of them gives us access to some Spotify data or others. We shall deal with this in point 4.1.
 
-![AISS-2021-L7-G06-raugalroc](docs/application_log.PNG)                                                                                                                             
+![AISS-2021-L7-G06-raugalroc](docs/application_log.PNG)    
+
+
+## Some Interesting Metrics
+
+Some of the results obtained after using SonarCloud to evaluate the quality of the project code, are the following:
+
+- SonarCloud detected 2 system bugs. In addition, this attribute is labeled with the letter 'C', which means there is at least one major bug.
+- SonarCloud has not detected any vulnerabilities in the system, therefore it has the ability to control and monitor who can perform what actions in what resources.
+- The SonarCloud analysis shows a technical debt of 15 days, which means a debt ratio of 1.7%. SonarCloud classifies maintenance as 'A', having a debt ratio of less than 5%. It’s in the class 'GetRecommendationsRequest.java' where the largest technical debt is located (1 day and 2 hours).
+- The system has a high percentage of coverage of test cases (66.4%). The set of tests that ensure that the code works correctly, composed of 288 tests, takes only about 3 seconds to execute.
+- Another metric analyzed by SonarCloud, code duplications, is noteworthy. The density of the duplicate lines is quite high, as it is 21.1%. However, most files with duplicate lines or blocks are in the same directory, as there are files that are a simplification of an existing file. For example: "Album.java" and "AlbumSimplified.java".
 
 
 ## Installation
