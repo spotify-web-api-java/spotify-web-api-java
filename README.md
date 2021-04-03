@@ -35,7 +35,7 @@ redirected to a URI that we have previously configured. After this, a code is re
 All this data exchange flow is done using the REST principles. That is to say, we access specific URIs (endpoints) providing in it key sets:value that will be the data that we
 will pass to the server. This, in response, will return JSON objects with the information we have requested. 
 
-To make these authorizations we have at our disposal 3 ways to do so. Each one of them has to be provided with one information or another and each one of them gives us access to some Spotify data or others. We shall deal with this in point 4.1.
+To make these authorizations we have at our disposal 3 ways to do so. Each one of them has to be provided with one information or another and each one of them gives us access to some Spotify data or others. This is discussed in point 4.1.
 
 ![AISS-2021-L7-G06-raugalroc](docs/application_log.PNG)    
 
