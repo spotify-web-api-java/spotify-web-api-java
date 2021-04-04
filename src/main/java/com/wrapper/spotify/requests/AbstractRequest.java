@@ -108,13 +108,10 @@ public abstract class AbstractRequest<T> implements IRequest<T> {
     IOException,
     SpotifyWebApiException,
     ParseException {
+
     String json = httpManager.get(uri, headers.toArray(new Header[0]));
 
-    if (json == null || json.equals("")) {
-      return null;
-    } else {
-      return json;
-    }
+    return returnJson(json);
   }
 
   public String postJson() throws
@@ -125,11 +122,7 @@ public abstract class AbstractRequest<T> implements IRequest<T> {
 
     String json = httpManager.post(uri, headers.toArray(new Header[0]), body);
 
-    if (json == null || json.equals("")) {
-      return null;
-    } else {
-      return json;
-    }
+    return returnJson(json);
   }
 
   public String putJson() throws
@@ -140,11 +133,7 @@ public abstract class AbstractRequest<T> implements IRequest<T> {
 
     String json = httpManager.put(uri, headers.toArray(new Header[0]), body);
 
-    if (json == null || json.equals("")) {
-      return null;
-    } else {
-      return json;
-    }
+    return returnJson(json);
   }
 
   public String deleteJson() throws
@@ -155,9 +144,24 @@ public abstract class AbstractRequest<T> implements IRequest<T> {
 
     String json = httpManager.delete(uri, headers.toArray(new Header[0]), body);
 
-    if (json == null || json.equals("")) {
+    return returnJson(json);
+  }
+
+  private String returnJson(String json) {
+    if (json == null) {
+      SpotifyApi.LOGGER.log(
+        Level.FINE,
+        "The httpManager returned json == null.");
+      return null;
+    } else if (json.equals("")) {
+      SpotifyApi.LOGGER.log(
+        Level.FINE,
+        "The httpManager returned json == \"\".");
       return null;
     } else {
+      SpotifyApi.LOGGER.log(
+        Level.FINE,
+        "The httpManager returned json == " + json + ".");
       return json;
     }
   }
