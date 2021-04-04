@@ -277,6 +277,10 @@ public class SpotifyHttpManager implements IHttpManager {
       : null;
     String errorMessage = httpResponse.getReasonPhrase();
 
+    SpotifyApi.LOGGER.log(
+      Level.FINE,
+      "The http response has body " + responseBody);
+
     if (responseBody != null && !responseBody.equals("")) {
       try {
         final JsonElement jsonElement = JsonParser.parseString(responseBody);
@@ -296,6 +300,10 @@ public class SpotifyHttpManager implements IHttpManager {
         // Not necessary
       }
     }
+
+    SpotifyApi.LOGGER.log(
+      Level.FINE,
+      "The http response has status code " + httpResponse.getCode());
 
     switch (httpResponse.getCode()) {
       case HttpStatus.SC_BAD_REQUEST:
