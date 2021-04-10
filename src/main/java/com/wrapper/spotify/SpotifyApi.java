@@ -322,10 +322,11 @@ public class SpotifyApi {
    * @param refresh_token The refresh token returned from the authorization code exchange.
    * @return An {@link AuthorizationCodeRequest.Builder}.
    */
+  private static final String RT="refresh_token";
   public AuthorizationCodeRefreshRequest.Builder authorizationCodeRefresh(String client_id, String client_secret, String refresh_token) {
     return new AuthorizationCodeRefreshRequest.Builder(client_id, client_secret)
       .setDefaults(httpManager, scheme, host, port)
-      .grant_type("refresh_token")
+      .grant_type(RT)
       .refresh_token(refresh_token);
   }
 
@@ -337,7 +338,7 @@ public class SpotifyApi {
   public AuthorizationCodeRefreshRequest.Builder authorizationCodeRefresh() {
     return new AuthorizationCodeRefreshRequest.Builder(clientId, clientSecret)
       .setDefaults(httpManager, scheme, host, port)
-      .grant_type("refresh_token")
+      .grant_type(RT)
       .refresh_token(refreshToken);
   }
 
@@ -353,7 +354,7 @@ public class SpotifyApi {
     return new AuthorizationCodePKCERefreshRequest.Builder()
       .setDefaults(httpManager, scheme, host, port)
       .client_id(client_id)
-      .grant_type("refresh_token")
+      .grant_type(RT)
       .refresh_token(refresh_token);
   }
 
@@ -366,7 +367,7 @@ public class SpotifyApi {
     return new AuthorizationCodePKCERefreshRequest.Builder()
       .setDefaults(httpManager, scheme, host, port)
       .client_id(clientId)
-      .grant_type("refresh_token")
+      .grant_type(RT)
       .refresh_token(refreshToken);
   }
 
