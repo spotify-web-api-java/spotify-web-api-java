@@ -323,11 +323,11 @@ public class SpotifyApi {
    * @return An {@link AuthorizationCodeRequest.Builder}.
    */
   private static final String RT="refresh_token";
-  public AuthorizationCodeRefreshRequest.Builder authorizationCodeRefresh(String client_id, String client_secret, String refresh_token) {
-    return new AuthorizationCodeRefreshRequest.Builder(client_id, client_secret)
+  public AuthorizationCodeRefreshRequest.Builder authorizationCodeRefresh(String clientId, String clientSecret, String refreshToken) {
+    return new AuthorizationCodeRefreshRequest.Builder(clientId, clientSecret)
       .setDefaults(httpManager, scheme, host, port)
       .grant_type(RT)
-      .refresh_token(refresh_token);
+      .refresh_token(refreshToken);
   }
 
   /**
@@ -346,16 +346,16 @@ public class SpotifyApi {
    * Refresh the access token by using the authorization code flow with Proof Key for Code Exchange (PKCE). <br>
    * Requires client ID and refresh token to be set.
    *
-   * @param client_id     When you register your application, Spotify provides you a Client ID.
-   * @param refresh_token The refresh token returned from the authorization code exchange or the last access token refresh.
+   * @param clientId     When you register your application, Spotify provides you a Client ID.
+   * @param refreshToken The refresh token returned from the authorization code exchange or the last access token refresh.
    * @return An {@link AuthorizationCodePKCERefreshRequest.Builder}.
    */
-  public AuthorizationCodePKCERefreshRequest.Builder authorizationCodePKCERefresh(String client_id, String refresh_token) {
+  public AuthorizationCodePKCERefreshRequest.Builder authorizationCodePKCERefresh(String clientId, String refreshToken) {
     return new AuthorizationCodePKCERefreshRequest.Builder()
       .setDefaults(httpManager, scheme, host, port)
-      .client_id(client_id)
+      .client_id(clientId)
       .grant_type(RT)
-      .refresh_token(refresh_token);
+      .refresh_token(refreshToken);
   }
 
   /**
@@ -375,20 +375,21 @@ public class SpotifyApi {
    * Returns a builder that can be used to build requests for authorization code grants. <br>
    * Requires client ID, client secret, authorization code and redirect URI to be set.
    *
-   * @param client_id     When you register your application, Spotify provides you a Client ID.
-   * @param client_secret When you register your application, Spotify provides you a Client Secret.
+   * @param clientId     When you register your application, Spotify provides you a Client ID.
+   * @param clientSecret When you register your application, Spotify provides you a Client Secret.
    * @param code          The authorization code returned from the initial request to the Account /authorize endpoint.
-   * @param redirect_uri  This parameter is used for validation only (there is no actual redirection). The
-   *                      value of this parameter must exactly match the value of redirect_uri supplied when requesting
+   * @param redirectUri  This parameter is used for validation only (there is no actual redirection). The
+   *                      value of this parameter must exactly match the value of redirectUri supplied when requesting
    *                      the authorization code.
    * @return An {@link AuthorizationCodeRequest.Builder}.
    */
-  public AuthorizationCodeRequest.Builder authorizationCode(String client_id, String client_secret, String code, URI redirect_uri) {
-    return new AuthorizationCodeRequest.Builder(client_id, client_secret)
+  private static final String AC = "authorization_code";
+  public AuthorizationCodeRequest.Builder authorizationCode(String clientId, String clientSecret, String code, URI redirectUri) {
+    return new AuthorizationCodeRequest.Builder(clientId, clientSecret)
       .setDefaults(httpManager, scheme, host, port)
-      .grant_type("authorization_code")
+      .grant_type(AC)
       .code(code)
-      .redirect_uri(redirect_uri);
+      .redirect_uri(redirectUri);
   }
 
   /**
@@ -401,7 +402,7 @@ public class SpotifyApi {
   public AuthorizationCodeRequest.Builder authorizationCode(String code) {
     return new AuthorizationCodeRequest.Builder(clientId, clientSecret)
       .setDefaults(httpManager, scheme, host, port)
-      .grant_type("authorization_code")
+      .grant_type(AC)
       .code(code)
       .redirect_uri(redirectUri);
   }
@@ -409,24 +410,24 @@ public class SpotifyApi {
    * Returns a builder that can be used to build requests for authorization code grants using the Proof Key for Code Exchange (PKCE) flow. <br>
    * Requires client ID, authorization code, code verifier and redirect URI to be set.
    *
-   * @param client_id     When you register your application, Spotify provides you a Client ID.
+   * @param clientId     When you register your application, Spotify provides you a Client ID.
    * @param code          The authorization code returned from the initial request to the Account /authorize endpoint.
-   * @param code_verifier The value of this parameter must match the value of the code_verifier that your app generated beforehand.
-   * @param redirect_uri  This parameter is used for validation only (there is no actual redirection). The
-   *                      value of this parameter must exactly match the value of redirect_uri supplied when requesting
+   * @param codeVerifier The value of this parameter must match the value of the codeVerifier that your app generated beforehand.
+   * @param redirectUri  This parameter is used for validation only (there is no actual redirection). The
+   *                      value of this parameter must exactly match the value of redirectUri supplied when requesting
    *                      the authorization code.
    * @return An {@link AuthorizationCodePKCERequest.Builder}.
    * @see <a href="https://developer.spotify.com/documentation/general/guides/authorization-guide/#authorization-code-flow-with-proof-key-for-code-exchange-pkce">
    *      Authorization Code Flow with Proof Key for Code Exchange (PKCE)</a>
    */
-  public AuthorizationCodePKCERequest.Builder authorizationCodePKCE(String client_id, String code, String code_verifier, URI redirect_uri) {
+  public AuthorizationCodePKCERequest.Builder authorizationCodePKCE(String clientId, String code, String codeVerifier, URI redirectUri) {
     return new AuthorizationCodePKCERequest.Builder()
       .setDefaults(httpManager, scheme, host, port)
-      .client_id(client_id)
-      .code_verifier(code_verifier)
-      .grant_type("authorization_code")
+      .client_id(clientId)
+      .code_verifier(codeVerifier)
+      .grant_type(AC)
       .code(code)
-      .redirect_uri(redirect_uri);
+      .redirect_uri(redirectUri);
   }
 
   /**
@@ -434,17 +435,17 @@ public class SpotifyApi {
    * Requires authorization code and code verifier to be set.
    *
    * @param code The authorization code returned from the initial request to the Account /authorize endpoint.
-   * @param code_verifier The value of this parameter must match the value of the code_verifier that your app generated beforehand.
+   * @param codeVerifier The value of this parameter must match the value of the codeVerifier that your app generated beforehand.
    * @return An {@link AuthorizationCodePKCERequest.Builder}.
    * @see <a href="https://developer.spotify.com/documentation/general/guides/authorization-guide/#authorization-code-flow-with-proof-key-for-code-exchange-pkce">
    *      Authorization Code Flow with Proof Key for Code Exchange (PKCE)</a>
    */
-  public AuthorizationCodePKCERequest.Builder authorizationCodePKCE(String code, String code_verifier) {
+  public AuthorizationCodePKCERequest.Builder authorizationCodePKCE(String code, String codeVerifier) {
     return new AuthorizationCodePKCERequest.Builder()
       .setDefaults(httpManager, scheme, host, port)
       .client_id(clientId)
-      .code_verifier(code_verifier)
-      .grant_type("authorization_code")
+      .code_verifier(codeVerifier)
+      .grant_type(AC)
       .code(code)
       .redirect_uri(redirectUri);
   }
@@ -452,18 +453,18 @@ public class SpotifyApi {
   /**
    * Retrieve an URL where the user can give the application permissions.
    *
-   * @param client_id    When you register your application, Spotify provides you a Client ID.
-   * @param redirect_uri This parameter is used for validation only (there is no actual redirection). The
-   *                     value of this parameter must exactly match the value of redirect_uri supplied when requesting
+   * @param clientId    When you register your application, Spotify provides you a Client ID.
+   * @param redirectUri This parameter is used for validation only (there is no actual redirection). The
+   *                     value of this parameter must exactly match the value of redirectUri supplied when requesting
    *                     the authorization code.
    * @return An {@link AuthorizationCodeUriRequest.Builder}.
    */
-  public AuthorizationCodeUriRequest.Builder authorizationCodeUri(String client_id, URI redirect_uri) {
+  public AuthorizationCodeUriRequest.Builder authorizationCodeUri(String clientId, URI redirectUri) {
     return new AuthorizationCodeUriRequest.Builder()
       .setDefaults(httpManager, scheme, host, port)
-      .client_id(client_id)
+      .client_id(clientId)
       .response_type("code")
-      .redirect_uri(redirect_uri);
+      .redirect_uri(redirectUri);
   }
 
   /**
@@ -482,33 +483,33 @@ public class SpotifyApi {
   /**
    * Retrieve an URL where the user can give the application permissions using the Proof Key for Code Exchange (PKCE) flow.
    *
-   * @param client_id    When you register your application, Spotify provides you a Client ID.
-   * @param code_challenge  The code challenge that your app calculated beforehand.
+   * @param clientId    When you register your application, Spotify provides you a Client ID.
+   * @param codeChallenge  The code challenge that your app calculated beforehand.
    *                        The code challenge is the base64url encoded sha256-hash of the code verifier,
    *                        which is a cryptographically random string between 43 and 128 characters in length.
    *                        It can contain letters, digits, underscores, periods, hyphens, or tildes and is generated
    *                        by your app before each authentication request.
-   * @param redirect_uri This parameter is used for validation only (there is no actual redirection). The
-   *                     value of this parameter must exactly match the value of redirect_uri supplied when requesting
+   * @param redirectUri This parameter is used for validation only (there is no actual redirection). The
+   *                     value of this parameter must exactly match the value of redirectUri supplied when requesting
    *                     the authorization code.
    * @return An {@link AuthorizationCodeUriRequest.Builder}.
    * @see <a href="https://developer.spotify.com/documentation/general/guides/authorization-guide/#authorization-code-flow-with-proof-key-for-code-exchange-pkce">
    *      Authorization Code Flow with Proof Key for Code Exchange (PKCE)</a>
    */
-  public AuthorizationCodeUriRequest.Builder authorizationCodePKCEUri(String client_id, String code_challenge, URI redirect_uri) {
+  public AuthorizationCodeUriRequest.Builder authorizationCodePKCEUri(String clientId, String codeChallenge, URI redirectUri) {
     return new AuthorizationCodeUriRequest.Builder()
       .setDefaults(httpManager, scheme, host, port)
-      .client_id(client_id)
+      .client_id(clientId)
       .response_type("code")
       .code_challenge_method("S256")
-      .code_challenge(code_challenge)
-      .redirect_uri(redirect_uri);
+      .code_challenge(codeChallenge)
+      .redirect_uri(redirectUri);
   }
 
   /**
    * Retrieve an URL where the user can give the application permissions using the Proof Key for Code Exchange (PKCE) flow.
    *
-   * @param code_challenge  The code challenge that your app calculated beforehand.
+   * @param codeChallenge  The code challenge that your app calculated beforehand.
    *                        The code challenge is the base64url encoded sha256-hash of the code verifier,
    *                        which is a cryptographically random string between 43 and 128 characters in length.
    *                        It can contain letters, digits, underscores, periods, hyphens, or tildes and is generated
@@ -517,13 +518,13 @@ public class SpotifyApi {
    * @see <a href="https://developer.spotify.com/documentation/general/guides/authorization-guide/#authorization-code-flow-with-proof-key-for-code-exchange-pkce">
    *      Authorization Code Flow with Proof Key for Code Exchange (PKCE)</a>
    */
-  public AuthorizationCodeUriRequest.Builder authorizationCodePKCEUri(String code_challenge) {
+  public AuthorizationCodeUriRequest.Builder authorizationCodePKCEUri(String codeChallenge) {
     return new AuthorizationCodeUriRequest.Builder()
       .setDefaults(httpManager, scheme, host, port)
       .client_id(clientId)
       .response_type("code")
       .code_challenge_method("S256")
-      .code_challenge(code_challenge)
+      .code_challenge(codeChallenge)
       .redirect_uri(redirectUri);
   }
 
@@ -649,27 +650,27 @@ public class SpotifyApi {
   /**
    * Get a category.
    *
-   * @param category_id The Spotify category ID for the category.
+   * @param categoryId The Spotify category ID for the category.
    * @return A {@link GetCategoryRequest.Builder}.
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
-  public GetCategoryRequest.Builder getCategory(String category_id) {
+  public GetCategoryRequest.Builder getCategory(String categoryId) {
     return new GetCategoryRequest.Builder(accessToken)
       .setDefaults(httpManager, scheme, host, port)
-      .category_id(category_id);
+      .category_id(categoryId);
   }
 
   /**
    * Get the playlists from a specific category.
    *
-   * @param category_id The Spotify category ID for the category.
+   * @param categoryId The Spotify category ID for the category.
    * @return A {@link GetCategorysPlaylistsRequest.Builder}.
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
-  public GetCategorysPlaylistsRequest.Builder getCategorysPlaylists(String category_id) {
+  public GetCategorysPlaylistsRequest.Builder getCategorysPlaylists(String categoryId) {
     return new GetCategorysPlaylistsRequest.Builder(accessToken)
       .setDefaults(httpManager, scheme, host, port)
-      .category_id(category_id);
+      .category_id(categoryId);
   }
 
   /**
@@ -767,19 +768,19 @@ public class SpotifyApi {
   /**
    * Check to see if one or more Spotify users are following a specified playlist.
    *
-   * @param owner_id    The Spotify User ID of the person who owns the playlist.
-   * @param playlist_id The Spotify ID of the playlist.
+   * @param ownerId    The Spotify User ID of the person who owns the playlist.
+   * @param playlistId The Spotify ID of the playlist.
    * @param ids         A list of Spotify User IDs; the IDs of the users that you want to check to see if they
    *                    follow the playlist. Maximum: 5 IDs.
    * @return A {@link CheckUsersFollowPlaylistRequest.Builder}.
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public CheckUsersFollowPlaylistRequest.Builder checkUsersFollowPlaylist(
-    String owner_id, String playlist_id, String[] ids) {
+    String ownerId, String playlistId, String[] ids) {
     return new CheckUsersFollowPlaylistRequest.Builder(accessToken)
       .setDefaults(httpManager, scheme, host, port)
-      .owner_id(owner_id)
-      .playlist_id(playlist_id)
+      .owner_id(ownerId)
+      .playlist_id(playlistId)
       .ids(concat(ids, ','));
   }
 
@@ -816,40 +817,40 @@ public class SpotifyApi {
   /**
    * Add the current user as a follower of a playlist.
    *
-   * @param owner_id    The Spotify user ID of the person who owns the playlist.
-   * @param playlist_id The Spotify ID of the playlist. Any playlist can be followed, regardless of its
+   * @param ownerId    The Spotify user ID of the person who owns the playlist.
+   * @param playlistId The Spotify ID of the playlist. Any playlist can be followed, regardless of its
    *                    public/private status, as long as you know its playlist ID.
-   * @param public_     Default: true. If true the playlist will be included in user's public playlists, if false it
+   * @param publicBool     Default: true. If true the playlist will be included in user's public playlists, if false it
    *                    will remain private. To be able to follow playlists privately, the user must have granted the
    *                    playlist-modify-private scope.
    * @return A {@link com.wrapper.spotify.requests.data.follow.legacy.FollowPlaylistRequest.Builder}.
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
-  public com.wrapper.spotify.requests.data.follow.legacy.FollowPlaylistRequest.Builder followPlaylist(String owner_id, String playlist_id, boolean public_) {
+  public com.wrapper.spotify.requests.data.follow.legacy.FollowPlaylistRequest.Builder followPlaylist(String ownerId, String playlistId, boolean publicBool) {
     return new com.wrapper.spotify.requests.data.follow.legacy.FollowPlaylistRequest.Builder(accessToken)
       .setDefaults(httpManager, scheme, host, port)
-      .owner_id(owner_id)
-      .playlist_id(playlist_id)
-      .public_(public_);
+      .owner_id(ownerId)
+      .playlist_id(playlistId)
+      .public_(publicBool);
   }
 
 
   /**
    * Add the current user as a follower of a playlist.
    *
-   * @param playlist_id The Spotify ID of the playlist. Any playlist can be followed, regardless of its
+   * @param playlistId The Spotify ID of the playlist. Any playlist can be followed, regardless of its
    *                    public/private status, as long as you know its playlist ID.
-   * @param public_     Default: true. If true the playlist will be included in user's public playlists, if false it
+   * @param publicBool     Default: true. If true the playlist will be included in user's public playlists, if false it
    *                    will remain private. To be able to follow playlists privately, the user must have granted the
    *                    playlist-modify-private scope.
    * @return A {@link com.wrapper.spotify.requests.data.follow.legacy.FollowPlaylistRequest.Builder}.
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
-  public FollowPlaylistRequest.Builder followPlaylist(String playlist_id, boolean public_) {
+  public FollowPlaylistRequest.Builder followPlaylist(String playlistId, boolean publicBool) {
     return new FollowPlaylistRequest.Builder(accessToken)
       .setDefaults(httpManager, scheme, host, port)
-      .playlist_id(playlist_id)
-      .public_(public_);
+      .playlist_id(playlistId)
+      .public_(publicBool);
   }
 
 
@@ -899,29 +900,29 @@ public class SpotifyApi {
   /**
    * Remove the specified user as a follower of a playlist.
    *
-   * @param owner_id    The owners username.
-   * @param playlist_id The playlist's ID.
+   * @param ownerId    The owners username.
+   * @param playlistId The playlist's ID.
    * @return An {@link com.wrapper.spotify.requests.data.follow.legacy.UnfollowPlaylistRequest.Builder}.
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
-  public com.wrapper.spotify.requests.data.follow.legacy.UnfollowPlaylistRequest.Builder unfollowPlaylist(String owner_id, String playlist_id) {
+  public com.wrapper.spotify.requests.data.follow.legacy.UnfollowPlaylistRequest.Builder unfollowPlaylist(String ownerId, String playlistId) {
     return new com.wrapper.spotify.requests.data.follow.legacy.UnfollowPlaylistRequest.Builder(accessToken)
       .setDefaults(httpManager, scheme, host, port)
-      .owner_id(owner_id)
-      .playlist_id(playlist_id);
+      .owner_id(ownerId)
+      .playlist_id(playlistId);
   }
 
   /**
    * Remove the current user as a follower of a playlist.
    *
-   * @param playlist_id The playlist's ID.
+   * @param playlistId The playlist's ID.
    * @return An {@link UnfollowPlaylistRequest.Builder}.
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
-  public UnfollowPlaylistRequest.Builder unfollowPlaylist(String playlist_id) {
+  public UnfollowPlaylistRequest.Builder unfollowPlaylist(String playlistId) {
     return new UnfollowPlaylistRequest.Builder(accessToken)
       .setDefaults(httpManager, scheme, host, port)
-      .playlist_id(playlist_id);
+      .playlist_id(playlistId);
   }
 
   /**
@@ -1248,14 +1249,14 @@ public class SpotifyApi {
   /**
    * Seeks to the given position in the user's currently playing track.
    *
-   * @param position_ms The position in milliseconds to seek to. Must be a positive number. Passing in a position that
+   * @param positionMs The position in milliseconds to seek to. Must be a positive number. Passing in a position that
    *                    is greater than the length of the track will cause the player to start playing the next song.
    * @return A {@link SeekToPositionInCurrentlyPlayingTrackRequest.Builder}.
    */
-  public SeekToPositionInCurrentlyPlayingTrackRequest.Builder seekToPositionInCurrentlyPlayingTrack(int position_ms) {
+  public SeekToPositionInCurrentlyPlayingTrackRequest.Builder seekToPositionInCurrentlyPlayingTrack(int positionMs) {
     return new SeekToPositionInCurrentlyPlayingTrackRequest.Builder(accessToken)
       .setDefaults(httpManager, scheme, host, port)
-      .position_ms(position_ms);
+      .position_ms(positionMs);
   }
 
   /**
@@ -1274,13 +1275,13 @@ public class SpotifyApi {
   /**
    * Set the volume for the user's current playback device.
    *
-   * @param volume_percent Integer. The volume to set. Must be a value from 0 to 100 inclusive.
+   * @param volumePercent Integer. The volume to set. Must be a value from 0 to 100 inclusive.
    * @return A {@link SetVolumeForUsersPlaybackRequest.Builder}.
    */
-  public SetVolumeForUsersPlaybackRequest.Builder setVolumeForUsersPlayback(int volume_percent) {
+  public SetVolumeForUsersPlaybackRequest.Builder setVolumeForUsersPlayback(int volumePercent) {
     return new SetVolumeForUsersPlaybackRequest.Builder(accessToken)
       .setDefaults(httpManager, scheme, host, port)
-      .volume_percent(volume_percent);
+      .volume_percent(volumePercent);
   }
 
   /**
@@ -1332,14 +1333,14 @@ public class SpotifyApi {
   /**
    * Transfer playback to a new device and determine if it should start playing.
    *
-   * @param device_ids A JSON array containing the ID of the device on which playback should be started/transferred.
+   * @param deviceIds A JSON array containing the ID of the device on which playback should be started/transferred.
    *                   <br><b>Note:</b> Although an array is accepted, only a single device_id is currently supported.
    * @return A {@link TransferUsersPlaybackRequest.Builder}.
    */
-  public TransferUsersPlaybackRequest.Builder transferUsersPlayback(JsonArray device_ids) {
+  public TransferUsersPlaybackRequest.Builder transferUsersPlayback(JsonArray deviceIds) {
     return new TransferUsersPlaybackRequest.Builder(accessToken)
       .setDefaults(httpManager, scheme, host, port)
-      .device_ids(device_ids);
+      .device_ids(deviceIds);
   }
 
   /**
@@ -1357,119 +1358,61 @@ public class SpotifyApi {
 
   /**
    * Add items to a playlist.
-   *
-   * @param user_id     The owners username.
-   * @param playlist_id The playlists ID.
-   * @param uris        URIs of the tracks or episodes to add. Maximum: 100 item URIs.
-   * @return An {@link AddItemsToPlaylistRequest.Builder}.
-   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
-   * @deprecated Playlist IDs are unique for themselves. This parameter is thus no longer used.
-   * (https://developer.spotify.com/community/news/2018/06/12/changes-to-playlist-uris/)
-   */
-  @Deprecated
-  public AddItemsToPlaylistRequest.Builder addItemsToPlaylist(String user_id, String playlist_id, String[] uris) {
-    return new AddItemsToPlaylistRequest.Builder(accessToken)
-      .setDefaults(httpManager, scheme, host, port)
-      .user_id(user_id)
-      .playlist_id(playlist_id)
-      .uris(concat(uris, ','));
-  }
-
-  /**
-   * Add items to a playlist.
    * <p>
    * <b>Note:</b> If you want to add a large number of items (&gt;50), use {@link #addItemsToPlaylist(String, JsonArray)} to not exceed
    * the maximum URI length.
-   * @param playlist_id The playlists ID.
+   * @param playlistId The playlists ID.
    * @param uris        URIs of the tracks or episodes to add. Maximum: 100 item URIs.
    * @return An {@link AddItemsToPlaylistRequest.Builder}.
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
-  public AddItemsToPlaylistRequest.Builder addItemsToPlaylist(String playlist_id, String[] uris) {
+  public AddItemsToPlaylistRequest.Builder addItemsToPlaylist(String playlistId, String[] uris) {
     return new AddItemsToPlaylistRequest.Builder(accessToken)
       .setDefaults(httpManager, scheme, host, port)
-      .playlist_id(playlist_id)
+      .playlist_id(playlistId)
       .uris(concat(uris, ','));
   }
 
   /**
    * Add items to a playlist.
    *
-   * @param user_id     The owners username.
-   * @param playlist_id The playlists ID.
-   * @param uris        URIs of the tracks or episodes to add. Maximum: 100 item URIs.
-   * @return An {@link AddItemsToPlaylistRequest.Builder}.
-   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
-   * @deprecated Playlist IDs are unique for themselves. This parameter is thus no longer used.
-   * (https://developer.spotify.com/community/news/2018/06/12/changes-to-playlist-uris/)
-   */
-  @Deprecated
-  public AddItemsToPlaylistRequest.Builder addItemsToPlaylist(String user_id, String playlist_id, JsonArray uris) {
-    return new AddItemsToPlaylistRequest.Builder(accessToken)
-      .setDefaults(httpManager, scheme, host, port)
-      .user_id(user_id)
-      .playlist_id(playlist_id)
-      .uris(uris);
-  }
-
-  /**
-   * Add items to a playlist.
-   *
-   * @param playlist_id The playlists ID.
+   * @param playlistId The playlists ID.
    * @param uris        URIs of the tracks or episodes to add. Maximum: 100 item URIs.
    * @return An {@link AddItemsToPlaylistRequest.Builder}.
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
-  public AddItemsToPlaylistRequest.Builder addItemsToPlaylist(String playlist_id, JsonArray uris) {
+  public AddItemsToPlaylistRequest.Builder addItemsToPlaylist(String playlistId, JsonArray uris) {
     return new AddItemsToPlaylistRequest.Builder(accessToken)
       .setDefaults(httpManager, scheme, host, port)
-      .playlist_id(playlist_id)
+      .playlist_id(playlistId)
       .uris(uris);
   }
 
   /**
    * Update a playlists properties.
    *
-   * @param user_id     The owners username.
-   * @param playlist_id The playlists ID.
-   * @return A {@link ChangePlaylistsDetailsRequest.Builder}.
-   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
-   * @deprecated Playlist IDs are unique for themselves. This parameter is thus no longer used.
-   * (https://developer.spotify.com/community/news/2018/06/12/changes-to-playlist-uris/)
-   */
-  @Deprecated
-  public ChangePlaylistsDetailsRequest.Builder changePlaylistsDetails(String user_id, String playlist_id) {
-    return new ChangePlaylistsDetailsRequest.Builder(accessToken)
-      .setDefaults(httpManager, scheme, host, port)
-      .user_id(user_id)
-      .playlist_id(playlist_id);
-  }
-
-  /**
-   * Update a playlists properties.
-   *
-   * @param playlist_id The playlists ID.
+   * @param playlistId The playlists ID.
    * @return A {@link ChangePlaylistsDetailsRequest.Builder}.
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
-  public ChangePlaylistsDetailsRequest.Builder changePlaylistsDetails(String playlist_id) {
+  public ChangePlaylistsDetailsRequest.Builder changePlaylistsDetails(String playlistId) {
     return new ChangePlaylistsDetailsRequest.Builder(accessToken)
       .setDefaults(httpManager, scheme, host, port)
-      .playlist_id(playlist_id);
+      .playlist_id(playlistId);
   }
 
   /**
    * Create a playlist.
    *
-   * @param user_id The playlists owner.
+   * @param userId The playlists owner.
    * @param name    The name of the playlist.
    * @return A {@link CreatePlaylistRequest.Builder}.
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
-  public CreatePlaylistRequest.Builder createPlaylist(String user_id, String name) {
+  public CreatePlaylistRequest.Builder createPlaylist(String userId, String name) {
     return new CreatePlaylistRequest.Builder(accessToken)
       .setDefaults(httpManager, scheme, host, port)
-      .user_id(user_id)
+      .user_id(userId)
       .name(name);
   }
 
@@ -1486,171 +1429,69 @@ public class SpotifyApi {
   /**
    * Get an user's playlists.
    *
-   * @param user_id A Spotify ID of the user.
+   * @param userId A Spotify ID of the user.
    * @return A {@link GetListOfUsersPlaylistsRequest.Builder}.
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
-  public GetListOfUsersPlaylistsRequest.Builder getListOfUsersPlaylists(String user_id) {
+  public GetListOfUsersPlaylistsRequest.Builder getListOfUsersPlaylists(String userId) {
     return new GetListOfUsersPlaylistsRequest.Builder(accessToken)
       .setDefaults(httpManager, scheme, host, port)
-      .user_id(user_id);
+      .user_id(userId);
   }
 
   /**
    * Get a playlist.
    *
-   * @param user_id     The playlists owners username.
-   * @param playlist_id The playlists ID.
-   * @return A {@link GetPlaylistRequest.Builder}.
-   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
-   * @deprecated Playlist IDs are unique for themselves. This parameter is thus no longer used.
-   * (https://developer.spotify.com/community/news/2018/06/12/changes-to-playlist-uris/)
-   */
-  @Deprecated
-  public GetPlaylistRequest.Builder getPlaylist(String user_id, String playlist_id) {
-    return new GetPlaylistRequest.Builder(accessToken)
-      .setDefaults(httpManager, scheme, host, port)
-      .user_id(user_id)
-      .playlist_id(playlist_id);
-  }
-
-  /**
-   * Get a playlist.
-   *
-   * @param playlist_id The playlists ID.
+   * @param playlistId The playlists ID.
    * @return A {@link GetPlaylistRequest.Builder}.
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
-  public GetPlaylistRequest.Builder getPlaylist(String playlist_id) {
+  public GetPlaylistRequest.Builder getPlaylist(String playlistId) {
     return new GetPlaylistRequest.Builder(accessToken)
       .setDefaults(httpManager, scheme, host, port)
-      .playlist_id(playlist_id);
+      .playlist_id(playlistId);
   }
 
   /**
    * Get the image used to represent a specific playlist.
    *
-   * @param user_id     The user's Spotify user ID.
-   * @param playlist_id The Spotify ID for the playlist.
-   * @return A {@link GetPlaylistCoverImageRequest.Builder}.
-   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
-   * @deprecated Playlist IDs are unique for themselves. This parameter is thus no longer used.
-   * (https://developer.spotify.com/community/news/2018/06/12/changes-to-playlist-uris/)
-   */
-  @Deprecated
-  public GetPlaylistCoverImageRequest.Builder getPlaylistCoverImage(String user_id, String playlist_id) {
-    return new GetPlaylistCoverImageRequest.Builder(accessToken)
-      .setDefaults(httpManager, scheme, host, port)
-      .user_id(user_id)
-      .playlist_id(playlist_id);
-  }
-
-  /**
-   * Get the image used to represent a specific playlist.
-   *
-   * @param playlist_id The Spotify ID for the playlist.
+   * @param playlistId The Spotify ID for the playlist.
    * @return A {@link GetPlaylistCoverImageRequest.Builder}.
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
-  public GetPlaylistCoverImageRequest.Builder getPlaylistCoverImage(String playlist_id) {
+  public GetPlaylistCoverImageRequest.Builder getPlaylistCoverImage(String playlistId) {
     return new GetPlaylistCoverImageRequest.Builder(accessToken)
       .setDefaults(httpManager, scheme, host, port)
-      .playlist_id(playlist_id);
-  }
-
-  /**
-   * Get a playlists items.
-   *
-   * @param user_id     The playlists owners username.
-   * @param playlist_id The playlists ID.
-   * @return A {@link GetPlaylistsItemsRequest.Builder}.
-   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
-   * @deprecated Playlist IDs are unique for themselves. This parameter is thus no longer used.
-   * (https://developer.spotify.com/community/news/2018/06/12/changes-to-playlist-uris/)
-   */
-  @Deprecated
-  public GetPlaylistsItemsRequest.Builder getPlaylistsItems(String user_id, String playlist_id) {
-    return new GetPlaylistsItemsRequest.Builder(accessToken)
-      .setDefaults(httpManager, scheme, host, port)
-      .user_id(user_id)
-      .playlist_id(playlist_id);
+      .playlist_id(playlistId);
   }
 
   /**
    * Get a playlist's items.
    *
-   * @param playlist_id The playlists ID.
+   * @param playlistId The playlists ID.
    * @return A {@link GetPlaylistsItemsRequest.Builder}.
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
-  public GetPlaylistsItemsRequest.Builder getPlaylistsItems(String playlist_id) {
+  public GetPlaylistsItemsRequest.Builder getPlaylistsItems(String playlistId) {
     return new GetPlaylistsItemsRequest.Builder(accessToken)
       .setDefaults(httpManager, scheme, host, port)
-      .playlist_id(playlist_id);
+      .playlist_id(playlistId);
   }
 
   /**
    * Delete items from a playlist
    *
-   * @param user_id     The owners username.
-   * @param playlist_id The playlists ID.
-   * @param tracks      URIs of the items to remove. Maximum: 100 track or episode URIs.
-   * @return A {@link RemoveItemsFromPlaylistRequest.Builder}.
-   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
-   * @deprecated Playlist IDs are unique for themselves. This parameter is thus no longer used.
-   * (https://developer.spotify.com/community/news/2018/06/12/changes-to-playlist-uris/)
-   */
-  @Deprecated
-  public RemoveItemsFromPlaylistRequest.Builder removeItemsFromPlaylist(
-    String user_id, String playlist_id, JsonArray tracks) {
-    return new RemoveItemsFromPlaylistRequest.Builder(accessToken)
-      .setDefaults(httpManager, scheme, host, port)
-      .user_id(user_id)
-      .playlist_id(playlist_id)
-      .tracks(tracks);
-  }
-
-  /**
-   * Delete items from a playlist
-   *
-   * @param playlist_id The playlists ID.
+   * @param playlistId The playlists ID.
    * @param tracks      URIs of the items to remove. Maximum: 100 track or episode URIs.
    * @return A {@link RemoveItemsFromPlaylistRequest.Builder}.
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
   public RemoveItemsFromPlaylistRequest.Builder removeItemsFromPlaylist(
-    String playlist_id, JsonArray tracks) {
+    String playlistId, JsonArray tracks) {
     return new RemoveItemsFromPlaylistRequest.Builder(accessToken)
       .setDefaults(httpManager, scheme, host, port)
-      .playlist_id(playlist_id)
+      .playlist_id(playlistId)
       .tracks(tracks);
-  }
-
-  /**
-   * Reorder a item or a group of items in a playlist. <br><br>
-   * <p>
-   * When reordering items, the timestamp indicating when they were added and the user who added them will be kept
-   * untouched. In addition, the users following the playlists won’t be notified about changes in the playlists when the
-   * items are reordered.
-   *
-   * @param user_id       The user's Spotify user ID.
-   * @param playlist_id   The Spotify ID for the playlist.
-   * @param range_start   The position of the first item to be reordered.
-   * @param insert_before The position where the items should be inserted. To reorder the items to the end of the
-   *                      playlist, simply set insert_before to the position after the last item.
-   * @return A {@link ReorderPlaylistsItemsRequest.Builder}.
-   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
-   * @deprecated Playlist IDs are unique for themselves. This parameter is thus no longer used.
-   * (https://developer.spotify.com/community/news/2018/06/12/changes-to-playlist-uris/)
-   */
-  @Deprecated
-  public ReorderPlaylistsItemsRequest.Builder reorderPlaylistsItems(String user_id, String playlist_id, int range_start, int insert_before) {
-    return new ReorderPlaylistsItemsRequest.Builder(accessToken)
-      .setDefaults(httpManager, scheme, host, port)
-      .user_id(user_id)
-      .playlist_id(playlist_id)
-      .range_start(range_start)
-      .insert_before(insert_before);
   }
 
   /**
@@ -1660,120 +1501,62 @@ public class SpotifyApi {
    * untouched. In addition, the users following the playlists won’t be notified about changes in the playlists when the
    * items are reordered.
    *
-   * @param playlist_id   The Spotify ID for the playlist.
-   * @param range_start   The position of the first item to be reordered.
-   * @param insert_before The position where the items should be inserted. To reorder the items to the end of the
-   *                      playlist, simply set insert_before to the position after the last item.
+   * @param playlistId   The Spotify ID for the playlist.
+   * @param rangeStart   The position of the first item to be reordered.
+   * @param insertBefore The position where the items should be inserted. To reorder the items to the end of the
+   *                      playlist, simply set insertBefore to the position after the last item.
    * @return A {@link ReorderPlaylistsItemsRequest.Builder}.
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
-  public ReorderPlaylistsItemsRequest.Builder reorderPlaylistsItems(String playlist_id, int range_start, int insert_before) {
+  public ReorderPlaylistsItemsRequest.Builder reorderPlaylistsItems(String playlistId, int rangeStart, int insertBefore) {
     return new ReorderPlaylistsItemsRequest.Builder(accessToken)
       .setDefaults(httpManager, scheme, host, port)
-      .playlist_id(playlist_id)
-      .range_start(range_start)
-      .insert_before(insert_before);
+      .playlist_id(playlistId)
+      .range_start(rangeStart)
+      .insert_before(insertBefore);
   }
 
   /**
    * Replace items in a playlist.
    *
-   * @param user_id     The owners username.
-   * @param playlist_id The playlists ID.
-   * @param uris        URIs of the items to add. Maximum: 100 track or episode URIs.
-   * @return A {@link ReplacePlaylistsItemsRequest.Builder}.
-   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
-   * @deprecated Playlist IDs are unique for themselves. This parameter is thus no longer used.
-   * (https://developer.spotify.com/community/news/2018/06/12/changes-to-playlist-uris/)
-   */
-  @Deprecated
-  public ReplacePlaylistsItemsRequest.Builder replacePlaylistsItems(String user_id, String playlist_id, String[] uris) {
-    return new ReplacePlaylistsItemsRequest.Builder(accessToken)
-      .setDefaults(httpManager, scheme, host, port)
-      .user_id(user_id)
-      .playlist_id(playlist_id)
-      .uris(concat(uris, ','));
-  }
-
-  /**
-   * Replace items in a playlist.
-   *
-   * @param playlist_id The playlists ID.
+   * @param playlistId The playlists ID.
    * @param uris        URIs of the items to set. Maximum: 100 track or episode URIs.
    * @return A {@link ReplacePlaylistsItemsRequest.Builder}.
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
-  public ReplacePlaylistsItemsRequest.Builder replacePlaylistsItems(String playlist_id, String[] uris) {
+  public ReplacePlaylistsItemsRequest.Builder replacePlaylistsItems(String playlistId, String[] uris) {
     return new ReplacePlaylistsItemsRequest.Builder(accessToken)
       .setDefaults(httpManager, scheme, host, port)
-      .playlist_id(playlist_id)
+      .playlist_id(playlistId)
       .uris(concat(uris, ','));
   }
 
   /**
    * Replace items in a playlist.
    *
-   * @param user_id     The owners username.
-   * @param playlist_id The playlists ID.
-   * @param uris        URIs of the items to add. Maximum: 100 track or episode URIs.
-   * @return A {@link ReplacePlaylistsItemsRequest.Builder}.
-   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
-   * @deprecated Playlist IDs are unique for themselves. This parameter is thus no longer used.
-   * (https://developer.spotify.com/community/news/2018/06/12/changes-to-playlist-uris/)
-   */
-  @Deprecated
-  public ReplacePlaylistsItemsRequest.Builder replacePlaylistsItems(String user_id, String playlist_id, JsonArray uris) {
-    return new ReplacePlaylistsItemsRequest.Builder(accessToken)
-      .setDefaults(httpManager, scheme, host, port)
-      .user_id(user_id)
-      .playlist_id(playlist_id)
-      .uris(uris);
-  }
-
-  /**
-   * Replace items in a playlist.
-   *
-   * @param playlist_id The playlists ID.
+   * @param playlistId The playlists ID.
    * @param uris        URIs of the items to add. Maximum: 100 track or episode URIs.
    * @return A {@link ReplacePlaylistsItemsRequest.Builder}.
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
-  public ReplacePlaylistsItemsRequest.Builder replacePlaylistsItems(String playlist_id, JsonArray uris) {
+  public ReplacePlaylistsItemsRequest.Builder replacePlaylistsItems(String playlistId, JsonArray uris) {
     return new ReplacePlaylistsItemsRequest.Builder(accessToken)
       .setDefaults(httpManager, scheme, host, port)
-      .playlist_id(playlist_id)
+      .playlist_id(playlistId)
       .uris(uris);
   }
 
   /**
    * Replace the image used to represent a specific playlist.
    *
-   * @param user_id     The user's Spotify user ID.
-   * @param playlist_id The Spotify ID for the playlist.
-   * @return An {@link UploadCustomPlaylistCoverImageRequest.Builder}.
-   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
-   * @deprecated Playlist IDs are unique for themselves. This parameter is thus no longer used.
-   * (https://developer.spotify.com/community/news/2018/06/12/changes-to-playlist-uris/)
-   */
-  @Deprecated
-  public UploadCustomPlaylistCoverImageRequest.Builder uploadCustomPlaylistCoverImage(String user_id, String playlist_id) {
-    return new UploadCustomPlaylistCoverImageRequest.Builder(accessToken)
-      .setDefaults(httpManager, scheme, host, port)
-      .user_id(user_id)
-      .playlist_id(playlist_id);
-  }
-
-  /**
-   * Replace the image used to represent a specific playlist.
-   *
-   * @param playlist_id The Spotify ID for the playlist.
+   * @param playlistId The Spotify ID for the playlist.
    * @return An {@link UploadCustomPlaylistCoverImageRequest.Builder}.
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
-  public UploadCustomPlaylistCoverImageRequest.Builder uploadCustomPlaylistCoverImage(String playlist_id) {
+  public UploadCustomPlaylistCoverImageRequest.Builder uploadCustomPlaylistCoverImage(String playlistId) {
     return new UploadCustomPlaylistCoverImageRequest.Builder(accessToken)
       .setDefaults(httpManager, scheme, host, port)
-      .playlist_id(playlist_id);
+      .playlist_id(playlistId);
   }
 
   /**
@@ -1995,14 +1778,14 @@ public class SpotifyApi {
   /**
    * Get public profile information about a Spotify user.
    *
-   * @param user_id The Spotify ID of the user.
+   * @param userId The Spotify ID of the user.
    * @return A {@link GetUsersProfileRequest.Builder}.
    * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
    */
-  public GetUsersProfileRequest.Builder getUsersProfile(String user_id) {
+  public GetUsersProfileRequest.Builder getUsersProfile(String userId) {
     return new GetUsersProfileRequest.Builder(accessToken)
       .setDefaults(httpManager, scheme, host, port)
-      .user_id(user_id);
+      .user_id(userId);
   }
 
   /**
