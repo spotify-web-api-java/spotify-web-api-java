@@ -57,30 +57,30 @@ public class GetPlaylistRequest extends AbstractDataRequest<Playlist> {
     /**
      * The user ID setter.
      *
-     * @param user_id The user's Spotify user ID.
+     * @param userId The user's Spotify user ID.
      * @return A {@link GetPlaylistRequest.Builder}.
      * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URIs &amp; IDs</a>
      * @deprecated Playlist IDs are unique for themselves. This parameter is thus no longer used
      * (https://developer.spotify.com/community/news/2018/06/12/changes-to-playlist-uris/)
      */
     @Deprecated
-    public Builder user_id(final String user_id) {
-      assert (user_id != null);
-      assert (!user_id.equals(""));
-      return setPathParameter("user_id", user_id);
+    public Builder userId(final String userId) {
+      assert (userId != null);
+      assert (!userId.equals(""));
+      return setPathParameter("user_id", userId);
     }
 
     /**
      * The playlist ID setter.
      *
-     * @param playlist_id The Spotify ID for the playlist.
+     * @param playlistId The Spotify ID for the playlist.
      * @return A {@link GetPlaylistRequest.Builder}.
      * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URIs &amp; IDs</a>
      */
-    public Builder playlist_id(final String playlist_id) {
-      assert (playlist_id != null);
-      assert (!playlist_id.equals(""));
-      return setPathParameter("playlist_id", playlist_id);
+    public Builder playlistId(final String playlistId) {
+      assert (playlistId != null);
+      assert (!playlistId.equals(""));
+      return setPathParameter("playlist_id", playlistId);
     }
 
     /**

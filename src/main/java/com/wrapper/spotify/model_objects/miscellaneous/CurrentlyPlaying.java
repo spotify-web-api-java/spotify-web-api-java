@@ -19,8 +19,8 @@ import com.wrapper.spotify.model_objects.specification.Track;
 public class CurrentlyPlaying extends AbstractModelObject {
   private final Context context;
   private final Long timestamp;
-  private final Integer progress_ms;
-  private final Boolean is_playing;
+  private final Integer progressms;
+  private final Boolean isPlaying;
   private final IPlaylistItem item;
   private final CurrentlyPlayingType currentlyPlayingType;
   private final Actions actions;
@@ -30,8 +30,8 @@ public class CurrentlyPlaying extends AbstractModelObject {
 
     this.context = builder.context;
     this.timestamp = builder.timestamp;
-    this.progress_ms = builder.progress_ms;
-    this.is_playing = builder.is_playing;
+    this.progressms = builder.progressms;
+    this.isPlaying = builder.isPlaying;
     this.item = builder.item;
     this.currentlyPlayingType = builder.currentlyPlayingType;
     this.actions = builder.actions;
@@ -61,7 +61,7 @@ public class CurrentlyPlaying extends AbstractModelObject {
    * @return Progress into the currently playing item. Can be {@code null}.
    */
   public Integer getProgress_ms() {
-    return progress_ms;
+    return progressms;
   }
 
   /**
@@ -70,7 +70,7 @@ public class CurrentlyPlaying extends AbstractModelObject {
    * @return If something is currently playing.
    */
   public Boolean getIs_playing() {
-    return is_playing;
+    return isPlaying;
   }
 
   /**
@@ -102,8 +102,8 @@ public class CurrentlyPlaying extends AbstractModelObject {
 
   @Override
   public String toString() {
-    return "CurrentlyPlaying(context=" + context + ", timestamp=" + timestamp + ", progress_ms=" + progress_ms
-        + ", is_playing=" + is_playing + ", item=" + item + ", currentlyPlayingType=" + currentlyPlayingType
+    return "CurrentlyPlaying(context=" + context + ", timestamp=" + timestamp + ", progress_ms=" + progressms
+        + ", isPlaying=" + isPlaying + ", item=" + item + ", currentlyPlayingType=" + currentlyPlayingType
         + ", actions=" + actions + ")";
   }
 
@@ -118,8 +118,8 @@ public class CurrentlyPlaying extends AbstractModelObject {
   public static final class Builder extends AbstractModelObject.Builder {
     private Context context;
     private Long timestamp;
-    private Integer progress_ms;
-    private Boolean is_playing;
+    private Integer progressms;
+    private Boolean isPlaying;
     private IPlaylistItem item;
     private CurrentlyPlayingType currentlyPlayingType;
     private Actions actions;
@@ -149,22 +149,22 @@ public class CurrentlyPlaying extends AbstractModelObject {
     /**
      * The current track progress setter.
      *
-     * @param progress_ms Progress into the currently playing track. Can be {@code null}.
-     * @return A {@link CurrentlyPlaying.Builder}.
+     * @param progressms Progress into the currently playing track. Can be {@code null}.
+     * @return A {@link Builder}.
      */
-    public Builder setProgress_ms(Integer progress_ms) {
-      this.progress_ms = progress_ms;
+    public Builder setProgressms(Integer progressms) {
+      this.progressms = progressms;
       return this;
     }
 
     /**
      * The playing state setter.
      *
-     * @param is_playing If something is currently playing.
+     * @param isPlaying If something is currently playing.
      * @return A {@link CurrentlyPlaying.Builder}.
      */
-    public Builder setIs_playing(Boolean is_playing) {
-      this.is_playing = is_playing;
+    public Builder setIsPlaying(Boolean isPlaying) {
+      this.isPlaying = isPlaying;
       return this;
     }
 
@@ -226,11 +226,11 @@ public class CurrentlyPlaying extends AbstractModelObject {
           hasAndNotNull(jsonObject, "timestamp")
             ? jsonObject.get("timestamp").getAsLong()
             : null)
-        .setProgress_ms(
+        .setProgressms(
           hasAndNotNull(jsonObject, "progress_ms")
             ? jsonObject.get("progress_ms").getAsInt()
             : null)
-        .setIs_playing(
+        .setIsPlaying(
           hasAndNotNull(jsonObject, "is_playing")
             ? jsonObject.get("is_playing").getAsBoolean()
             : null)

@@ -22,12 +22,12 @@ public class GetRecommendationsRequestTest extends AbstractDataTest<Recommendati
         "requests/data/browse/GetRecommendationsRequest.json"))
     .limit(LIMIT)
     .market(MARKET)
-    .max_popularity(MAX_POPULARITY)
-    .min_popularity(MIN_POPULARITY)
-    .seed_artists(SEED_ARTISTS)
-    .seed_genres(SEED_GENRES)
-    .seed_tracks(SEED_TRACKS)
-    .target_popularity(TARGET_POPULARITY)
+    .maxPopularity(MAX_POPULARITY)
+    .minPopularity(MIN_POPULARITY)
+    .seedArtists(SEED_ARTISTS)
+    .seedGenres(SEED_GENRES)
+    .seedTracks(SEED_TRACKS)
+    .targetPopularity(TARGET_POPULARITY)
     .build();
 
   public GetRecommendationsRequestTest() throws Exception {
