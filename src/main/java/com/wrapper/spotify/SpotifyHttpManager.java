@@ -1,9 +1,6 @@
 package com.wrapper.spotify;
 
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.google.gson.JsonSyntaxException;
+import com.google.gson.*;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.exceptions.detailed.*;
 import org.apache.hc.client5.http.auth.AuthScope;
@@ -35,6 +32,7 @@ public class SpotifyHttpManager implements IHttpManager {
 
   private static final int DEFAULT_CACHE_MAX_ENTRIES = 1000;
   private static final int DEFAULT_CACHE_MAX_OBJECT_SIZE = 8192;
+  private static final Gson GSON = new Gson();
   private final CloseableHttpClient httpClient;
   private final CloseableHttpClient httpClientCaching;
   private final HttpHost proxy;
@@ -155,6 +153,9 @@ public class SpotifyHttpManager implements IHttpManager {
     final HttpGet httpGet = new HttpGet(uri);
 
     httpGet.setHeaders(headers);
+    SpotifyApi.LOGGER.log(
+      Level.FINE,
+      "GET request uses these headers: " + GSON.toJson(headers));
 
     String responseBody = getResponseBody(execute(httpClientCaching, httpGet));
 
@@ -175,6 +176,9 @@ public class SpotifyHttpManager implements IHttpManager {
 
     httpPost.setHeaders(headers);
     httpPost.setEntity(body);
+    SpotifyApi.LOGGER.log(
+      Level.FINE,
+      "POST request uses these headers: " + GSON.toJson(headers));
 
     String responseBody = getResponseBody(execute(httpClient, httpPost));
 
@@ -195,6 +199,9 @@ public class SpotifyHttpManager implements IHttpManager {
 
     httpPut.setHeaders(headers);
     httpPut.setEntity(body);
+    SpotifyApi.LOGGER.log(
+      Level.FINE,
+      "PUT request uses these headers: " + GSON.toJson(headers));
 
     String responseBody = getResponseBody(execute(httpClient, httpPut));
 
@@ -215,6 +222,9 @@ public class SpotifyHttpManager implements IHttpManager {
 
     httpDelete.setHeaders(headers);
     httpDelete.setEntity(body);
+    SpotifyApi.LOGGER.log(
+      Level.FINE,
+      "DELETE request uses these headers: " + GSON.toJson(headers));
 
     String responseBody = getResponseBody(execute(httpClient, httpDelete));
 
