@@ -2,7 +2,6 @@ os: linux
 language: java
 jobs:
   include:
-    - jdk: openjdk8
     - jdk: oraclejdk9
       before_install:
         - rm "${JAVA_HOME}/lib/security/cacerts"
