@@ -1,4 +1,4 @@
-module com.wrapper.spotify {
+module se.michaelthelin.spotify {
   requires com.fasterxml.jackson.databind;
   requires com.google.gson;
   requires nv.i18n;

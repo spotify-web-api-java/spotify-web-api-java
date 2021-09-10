@@ -2,9 +2,9 @@ package data.player;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonParser;
-import com.wrapper.spotify.SpotifyApi;
-import com.wrapper.spotify.exceptions.SpotifyWebApiException;
-import com.wrapper.spotify.requests.data.player.TransferUsersPlaybackRequest;
+import se.michaelthelin.spotify.SpotifyApi;
+import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
+import se.michaelthelin.spotify.requests.data.player.TransferUsersPlaybackRequest;
 import org.apache.hc.core5.http.ParseException;
 
 import java.io.IOException;

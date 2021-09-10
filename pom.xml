@@ -151,7 +151,7 @@
             <configuration>
               <archive>
                 <manifestEntries>
-                  <Automatic-Module-Name>com.wrapper.spotify</Automatic-Module-Name>
+                  <Automatic-Module-Name>se.michaelthelin.spotify</Automatic-Module-Name>
                 </manifestEntries>
               </archive>
             </configuration>
@@ -218,7 +218,7 @@
             </executions>
             <configuration>
               <reportOutputDirectory>${project.basedir}</reportOutputDirectory>
-              <source>9</source>
+              <source>8</source>
               <destDir>docs</destDir>
             </configuration>
           </plugin>

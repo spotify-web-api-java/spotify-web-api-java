@@ -1,8 +1,8 @@
 package data.follow;
 
-import com.wrapper.spotify.SpotifyApi;
-import com.wrapper.spotify.exceptions.SpotifyWebApiException;
-import com.wrapper.spotify.requests.data.follow.legacy.UnfollowPlaylistRequest;
+import se.michaelthelin.spotify.SpotifyApi;
+import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
+import se.michaelthelin.spotify.requests.data.follow.legacy.UnfollowPlaylistRequest;
 import org.apache.hc.core5.http.ParseException;
 
 import java.io.IOException;

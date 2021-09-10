@@ -6,4 +6,4 @@ spotify-web-api-java.iml
 target/
 
 ### Project
-src/main/java/com/wrapper/spotify/Main.java
+src/main/java/se/michaelthelin/spotify/Main.java
