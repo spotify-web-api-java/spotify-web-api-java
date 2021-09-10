@@ -27,7 +27,7 @@ public class AuthorizationCodeUriRequestTest implements ITest<URI> {
   @Test
   public void shouldComplyWithReference() {
     Assert.assertEquals(
-      "https://accounts.spotify.com:443/authorize?client_id=zyuxhfo1c51b5hxjk09x2uhv5n0svgd6g&response_type=code&redirect_uri=https%3A%2F%2Fexample.com%2Fspotify-redirect&scope=user-read-birthday+user-read-email&show_dialog=true",
+      "https://accounts.spotify.com:443/authorize?client_id=zyuxhfo1c51b5hxjk09x2uhv5n0svgd6g&response_type=code&redirect_uri=https%3A%2F%2Fexample.com%2Fspotify-redirect&scope=user-read-birthday%20user-read-email&show_dialog=true",
       defaultRequest.getUri().toString());
   }
 
@@ -43,7 +43,7 @@ public class AuthorizationCodeUriRequestTest implements ITest<URI> {
 
   public void shouldReturnDefault(final URI uri) {
     assertEquals(
-      "https://accounts.spotify.com:443/authorize?client_id=zyuxhfo1c51b5hxjk09x2uhv5n0svgd6g&response_type=code&redirect_uri=https%3A%2F%2Fexample.com%2Fspotify-redirect&scope=user-read-birthday+user-read-email&show_dialog=true",
+      "https://accounts.spotify.com:443/authorize?client_id=zyuxhfo1c51b5hxjk09x2uhv5n0svgd6g&response_type=code&redirect_uri=https%3A%2F%2Fexample.com%2Fspotify-redirect&scope=user-read-birthday%20user-read-email&show_dialog=true",
       uri.toString());
   }
 
@@ -59,7 +59,7 @@ public class AuthorizationCodeUriRequestTest implements ITest<URI> {
 
   public void shouldReturnDefaultPKCE(final URI uri) {
     assertEquals(
-      "https://accounts.spotify.com:443/authorize?client_id=zyuxhfo1c51b5hxjk09x2uhv5n0svgd6g&response_type=code&code_challenge_method=S256&code_challenge=w6iZIj99vHGtEx_NVl9u3sthTN646vvkiP8OMCGfPmo&redirect_uri=https%3A%2F%2Fexample.com%2Fspotify-redirect&scope=user-read-birthday+user-read-email&show_dialog=true",
+      "https://accounts.spotify.com:443/authorize?client_id=zyuxhfo1c51b5hxjk09x2uhv5n0svgd6g&response_type=code&code_challenge_method=S256&code_challenge=w6iZIj99vHGtEx_NVl9u3sthTN646vvkiP8OMCGfPmo&redirect_uri=https%3A%2F%2Fexample.com%2Fspotify-redirect&scope=user-read-birthday%20user-read-email&show_dialog=true",
       uri.toString());
   }
 }
