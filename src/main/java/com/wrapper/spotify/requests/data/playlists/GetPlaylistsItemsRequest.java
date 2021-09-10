@@ -57,22 +57,6 @@ public class GetPlaylistsItemsRequest extends AbstractDataRequest<Paging<Playlis
     }
 
     /**
-     * The user ID setter.
-     *
-     * @param user_id The user's Spotify user ID.
-     * @return A {@link GetPlaylistsItemsRequest.Builder}.
-     * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URIs &amp; IDs</a>
-     * @deprecated Playlist IDs are unique for themselves. This parameter is thus no longer used
-     * (https://developer.spotify.com/community/news/2018/06/12/changes-to-playlist-uris/)
-     */
-    @Deprecated
-    public Builder user_id(final String user_id) {
-      assert (user_id != null);
-      assert (!user_id.equals(""));
-      return setPathParameter("user_id", user_id);
-    }
-
-    /**
      * The playlist ID setter.
      *
      * @param playlist_id The Spotify ID for the playlist.
