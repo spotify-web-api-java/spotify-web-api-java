@@ -16,7 +16,7 @@
 
   <name>Spotify Web API Java Client</name>
   <description>A Java client for Spotify's Web API</description>
-  <url>https://github.com/thelinmichael/spotify-web-api-java</url>
+  <url>https://github.com/spotify-web-api-java/spotify-web-api-java</url>
 
   <developers>
     <developer>
@@ -50,9 +50,9 @@
   </licenses>
 
   <scm>
-    <url>https://github.com/thelinmichael/spotify-web-api-java</url>
-    <connection>scm:git:git://github.com/thelinmichael/spotify-web-api-java.git</connection>
-    <developerConnection>scm:git:git@github.com:thelinmichael/spotify-web-api-java.git</developerConnection>
+    <url>https://github.com/spotify-web-api-java/spotify-web-api-java</url>
+    <connection>scm:git:git://github.com/spotify-web-api-java/spotify-web-api-java.git</connection>
+    <developerConnection>scm:git:git@github.com:spotify-web-api-java/spotify-web-api-java.git</developerConnection>
   </scm>
 
   <dependencies>

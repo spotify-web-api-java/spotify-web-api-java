@@ -1,8 +1,8 @@
 version: "1"
 rules:
 - base: master
-  upstream: thelinmichael:master
+  upstream: spotify-web-api-java:master
   mergeMethod: hardreset
 - base: develop
-  upstream: thelinmichael:develop
+  upstream: spotify-web-api-java:develop
   mergeMethod: hardreset
