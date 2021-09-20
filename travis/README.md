@@ -1,5 +1,5 @@
 ```shell
- ravis login --org --github-token xxxxxxxxxx
+travis login --pro --github-token xxxxxxxxxx
 gpg --export --armor your@email.com > codesigning.asc
 gpg --export-secret-keys --armor your@email.com >> codesigning.asc
 travis encrypt-file codesigning.asc
