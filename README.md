@@ -48,12 +48,12 @@ Latest snapshot:
 
 Latest official release:
 ```Gradle
-compile 'se.michaelthelin.spotify:spotify-web-api-java:6.5.4'
+implementation 'se.michaelthelin.spotify:spotify-web-api-java:6.5.4'
 ```
 
 Latest snapshot:
 ```Gradle
-compile 'com.github.thelinmichael:spotify-web-api-java:master-SNAPSHOT'
+implementation 'com.github.thelinmichael:spotify-web-api-java:master-SNAPSHOT'
 ```
 
 ---
