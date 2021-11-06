@@ -20,3 +20,14 @@ jobs:
         run: mvn -B package --file pom.xml
       - name: Upload code coverage
         uses: codecov/codecov-action@v2
+      - name: Release
+        if: startsWith(github.ref, 'refs/tags/') && ${{ matrix.java }} == 17
+        env:
+          GPG_KEY_NAME: C546418B
+          GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+          SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
+          SONATYPE_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
+        run: |
+          ./ci/before-deploy.sh
+          cp ./ci/.m2.settings.xml $HOME/.m2/settings.xml
+          mvn deploy -P release -DskipTests=true
