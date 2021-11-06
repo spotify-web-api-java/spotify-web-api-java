@@ -21,7 +21,7 @@ jobs:
       - name: Upload code coverage
         uses: codecov/codecov-action@v2
       - name: Release
-        if: startsWith(github.ref, 'refs/tags/') && matrix.java == 17
+        if: startsWith(github.ref, 'refs/tags/') && matrix.java == 11
         env:
           GPG_KEY_NAME: C546418B
           GPG_PASSPHRASE_KEY: ${{ secrets.GPG_PASSPHRASE_KEY }}
