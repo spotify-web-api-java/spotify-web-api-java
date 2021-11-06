@@ -1,8 +1,8 @@
 package data.player;
 
-import com.wrapper.spotify.SpotifyApi;
-import com.wrapper.spotify.exceptions.SpotifyWebApiException;
-import com.wrapper.spotify.requests.data.player.SetRepeatModeOnUsersPlaybackRequest;
+import se.michaelthelin.spotify.SpotifyApi;
+import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
+import se.michaelthelin.spotify.requests.data.player.SetRepeatModeOnUsersPlaybackRequest;
 import org.apache.hc.core5.http.ParseException;
 
 import java.io.IOException;

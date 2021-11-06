@@ -1,9 +1,9 @@
 package data.playlists;
 
-import com.wrapper.spotify.SpotifyApi;
-import com.wrapper.spotify.exceptions.SpotifyWebApiException;
-import com.wrapper.spotify.model_objects.special.SnapshotResult;
-import com.wrapper.spotify.requests.data.playlists.ReorderPlaylistsItemsRequest;
+import se.michaelthelin.spotify.SpotifyApi;
+import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
+import se.michaelthelin.spotify.model_objects.special.SnapshotResult;
+import se.michaelthelin.spotify.requests.data.playlists.ReorderPlaylistsItemsRequest;
 import org.apache.hc.core5.http.ParseException;
 
 import java.io.IOException;
