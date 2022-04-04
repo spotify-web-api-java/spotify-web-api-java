@@ -9,9 +9,9 @@ jobs:
       matrix:
         java: [ '11', '17' ]
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Set up JDK 11
-        uses: actions/setup-java@v2
+        uses: actions/setup-java@v3
         with:
           java-version: ${{ matrix.java }}
           distribution: 'adopt'
@@ -23,7 +23,7 @@ jobs:
       - name: Release
         if: startsWith(github.ref, 'refs/tags/') && matrix.java == 11
         env:
-          GPG_KEY_NAME: C546418B
+          GPG_KEY_NAME: B70E1EAC
           GPG_PASSPHRASE_KEY: ${{ secrets.GPG_PASSPHRASE_KEY }}
           GPG_PASSPHRASE_FILE: ${{ secrets.GPG_PASSPHRASE_FILE }}
           SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
