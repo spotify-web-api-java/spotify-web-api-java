@@ -2,6 +2,7 @@ package se.michaelthelin.spotify.requests.authorization.authorization_code;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import se.michaelthelin.spotify.SpotifyApi;
+import se.michaelthelin.spotify.enums.AuthorizationScope;
 import se.michaelthelin.spotify.requests.AbstractRequest;
 
 import java.net.URI;
@@ -98,7 +99,7 @@ public class AuthorizationCodeUriRequest extends AbstractRequest<URI> {
      *                       by your app before each authentication request.
      * @return An {@link AuthorizationCodeUriRequest.Builder}.
      * @see <a href="https://developer.spotify.com/documentation/general/guides/authorization-guide/#authorization-code-flow-with-proof-key-for-code-exchange-pkce">
-     *      Authorization Code Flow with Proof Key for Code Exchange (PKCE)</a>
+     * Authorization Code Flow with Proof Key for Code Exchange (PKCE)</a>
      */
     public Builder code_challenge(String code_challenge) {
       assert (code_challenge != null);
@@ -137,6 +138,16 @@ public class AuthorizationCodeUriRequest extends AbstractRequest<URI> {
       assert (scope != null);
       assert (!scope.equals(""));
       return setQueryParameter("scope", scope);
+    }
+
+    public Builder scope(final AuthorizationScope... scopes) {
+      String finalScopes = "";
+
+      for (AuthorizationScope scope : scopes) {
+        finalScopes += (scope.GetScope() + " ");
+      }
+
+      return scope(finalScopes.trim());
     }
 
     /**
