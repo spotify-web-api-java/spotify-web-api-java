@@ -2,8 +2,10 @@ package data.playlists;
 
 import se.michaelthelin.spotify.SpotifyApi;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
+import se.michaelthelin.spotify.model_objects.specification.Episode;
 import se.michaelthelin.spotify.model_objects.specification.Paging;
 import se.michaelthelin.spotify.model_objects.specification.PlaylistTrack;
+import se.michaelthelin.spotify.model_objects.specification.Track;
 import se.michaelthelin.spotify.requests.data.playlists.GetPlaylistsItemsRequest;
 import org.apache.hc.core5.http.ParseException;
 
@@ -33,6 +35,8 @@ public class GetPlaylistsItemsExample {
       final Paging<PlaylistTrack> playlistTrackPaging = getPlaylistsItemsRequest.execute();
 
       System.out.println("Total: " + playlistTrackPaging.getTotal());
+      System.out.println("Track's first artist: " + ((Track) playlistTrackPaging.getItems()[0].getTrack()).getArtists()[0]);
+      System.out.println("Episode's show: " + ((Episode) playlistTrackPaging.getItems()[0].getTrack()).getShow());
     } catch (IOException | SpotifyWebApiException | ParseException e) {
       System.out.println("Error: " + e.getMessage());
     }
@@ -48,6 +52,8 @@ public class GetPlaylistsItemsExample {
       final Paging<PlaylistTrack> playlistTrackPaging = pagingFuture.join();
 
       System.out.println("Total: " + playlistTrackPaging.getTotal());
+      System.out.println("Track's first artist: " + ((Track) playlistTrackPaging.getItems()[0].getTrack()).getArtists()[0]);
+      System.out.println("Episode's show: " + ((Episode) playlistTrackPaging.getItems()[0].getTrack()).getShow());
     } catch (CompletionException e) {
       System.out.println("Error: " + e.getCause().getMessage());
     } catch (CancellationException e) {
