@@ -12,6 +12,7 @@ import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 public class Device extends AbstractModelObject {
   private final String id;
   private final Boolean is_active;
+  private final Boolean is_private_session;
   private final Boolean is_restricted;
   private final String name;
   private final String type;
@@ -22,6 +23,7 @@ public class Device extends AbstractModelObject {
 
     this.id = builder.id;
     this.is_active = builder.is_active;
+    this.is_private_session = builder.is_private_session;
     this.is_restricted = builder.is_restricted;
     this.name = builder.name;
     this.type = builder.type;
@@ -45,6 +47,16 @@ public class Device extends AbstractModelObject {
   public Boolean getIs_active() {
     return is_active;
   }
+
+  /**
+   * Get whether the device is a private session. Access to playback info is limited on private session clients.
+   *
+   * @return whether the user has put the client into a private session.
+   */
+  public Boolean getIs_private_session() {
+    return is_private_session;
+  }
+
 
   /**
    * Check whether the device is restricted or not. Restricted devices don't accept Spotify Web API calls.
@@ -84,7 +96,7 @@ public class Device extends AbstractModelObject {
 
   @Override
   public String toString() {
-    return "Device(id=" + id + ", is_active=" + is_active + ", is_restricted=" + is_restricted + ", name=" + name
+    return "Device(id=" + id + ", is_active=" + is_active + ", is_private_session=" + is_private_session + ", is_restricted=" + is_restricted + ", name=" + name
         + ", type=" + type + ", volume_percent=" + volume_percent + ")";
   }
 
@@ -99,6 +111,7 @@ public class Device extends AbstractModelObject {
   public static final class Builder extends AbstractModelObject.Builder {
     private String id;
     private Boolean is_active;
+    private Boolean is_private_session;
     private Boolean is_restricted;
     private String name;
     private String type;
@@ -123,6 +136,17 @@ public class Device extends AbstractModelObject {
      */
     public Builder setIs_active(Boolean is_active) {
       this.is_active = is_active;
+      return this;
+    }
+
+    /**
+     * The private session state setter.
+     *
+     * @param is_private_session If this device is the currently active device.
+     * @return A {@link Device.Builder}.
+     */
+    public Builder setIs_private_session(Boolean is_private_session) {
+      this.is_private_session = is_private_session;
       return this;
     }
 
@@ -193,6 +217,10 @@ public class Device extends AbstractModelObject {
         .setIs_active(
           hasAndNotNull(jsonObject, "is_active")
             ? jsonObject.get("is_active").getAsBoolean()
+            : null)
+        .setIs_private_session(
+          hasAndNotNull(jsonObject, "is_private_session")
+            ? jsonObject.get("is_private_session").getAsBoolean()
             : null)
         .setIs_restricted(
           hasAndNotNull(jsonObject, "is_restricted")
