@@ -49,14 +49,13 @@ public class Device extends AbstractModelObject {
   }
 
   /**
-   * Get whether the device is a private session. Access to playback info is limited on private session clients.
+   * Get whether the device is in a private session. Access to playback info is limited on clients in a private session.
    *
-   * @return whether the user has put the client into a private session.
+   * @return Whether the user has put the client into a private session.
    */
   public Boolean getIs_private_session() {
     return is_private_session;
   }
-
 
   /**
    * Check whether the device is restricted or not. Restricted devices don't accept Spotify Web API calls.
@@ -142,7 +141,7 @@ public class Device extends AbstractModelObject {
     /**
      * The private session state setter.
      *
-     * @param is_private_session If this device is the currently active device.
+     * @param is_private_session If this device is currently in a private session.
      * @return A {@link Device.Builder}.
      */
     public Builder setIs_private_session(Boolean is_private_session) {
