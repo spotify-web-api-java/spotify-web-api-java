@@ -2,8 +2,6 @@ package se.michaelthelin.spotify.requests.data.follow;
 
 import org.apache.hc.core5.http.ParseException;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.runners.MockitoJUnitRunner;
 import se.michaelthelin.spotify.ITest;
 import se.michaelthelin.spotify.TestUtil;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
@@ -15,7 +13,6 @@ import java.util.concurrent.ExecutionException;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
-@RunWith(MockitoJUnitRunner.class)
 public class UnfollowPlaylistRequestTest extends AbstractDataTest<String> {
   private final UnfollowPlaylistRequest defaultRequest = ITest.SPOTIFY_API
     .unfollowPlaylist(ITest.ID_PLAYLIST)

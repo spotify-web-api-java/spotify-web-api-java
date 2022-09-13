@@ -3,8 +3,6 @@ package se.michaelthelin.spotify.requests.data.playlists;
 import com.google.gson.Gson;
 import org.apache.hc.core5.http.ParseException;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.runners.MockitoJUnitRunner;
 import se.michaelthelin.spotify.ITest;
 import se.michaelthelin.spotify.TestUtil;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
@@ -18,7 +16,6 @@ import static org.junit.Assert.assertEquals;
 import static se.michaelthelin.spotify.Assertions.assertHasBodyParameter;
 import static se.michaelthelin.spotify.Assertions.assertHasHeader;
 
-@RunWith(MockitoJUnitRunner.class)
 public class AddItemsToPlaylistRequestTest extends AbstractDataTest<SnapshotResult> {
   private final AddItemsToPlaylistRequest defaultRequest = ITest.SPOTIFY_API
     .addItemsToPlaylist(ITest.ID_PLAYLIST, new Gson().fromJson(ITest.URIS, String[].class))

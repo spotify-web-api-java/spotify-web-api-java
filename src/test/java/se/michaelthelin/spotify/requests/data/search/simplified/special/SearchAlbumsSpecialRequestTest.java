@@ -2,8 +2,6 @@ package se.michaelthelin.spotify.requests.data.search.simplified.special;
 
 import org.apache.hc.core5.http.ParseException;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.runners.MockitoJUnitRunner;
 import se.michaelthelin.spotify.ITest;
 import se.michaelthelin.spotify.TestUtil;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
@@ -16,7 +14,6 @@ import java.util.concurrent.ExecutionException;
 
 import static org.junit.Assert.assertEquals;
 
-@RunWith(MockitoJUnitRunner.class)
 public class SearchAlbumsSpecialRequestTest extends AbstractDataTest<Paging<AlbumSimplifiedSpecial>> {
   private final SearchAlbumsSpecialRequest defaultRequest = ITest.SPOTIFY_API.searchAlbumsSpecial(ITest.Q)
     .setHttpManager(

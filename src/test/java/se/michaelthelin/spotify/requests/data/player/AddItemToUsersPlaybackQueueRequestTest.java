@@ -2,8 +2,6 @@ package se.michaelthelin.spotify.requests.data.player;
 
 import org.apache.hc.core5.http.ParseException;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.runners.MockitoJUnitRunner;
 import se.michaelthelin.spotify.ITest;
 import se.michaelthelin.spotify.TestUtil;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
@@ -16,7 +14,6 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static se.michaelthelin.spotify.Assertions.assertHasHeader;
 
-@RunWith(MockitoJUnitRunner.class)
 public class AddItemToUsersPlaybackQueueRequestTest extends AbstractDataTest<String> {
   private final AddItemToUsersPlaybackQueueRequest defaultRequest = ITest.SPOTIFY_API
     .addItemToUsersPlaybackQueue("spotify:track:" + ITest.ID_TRACK)

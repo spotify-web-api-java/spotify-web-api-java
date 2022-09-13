@@ -2,8 +2,6 @@ package se.michaelthelin.spotify.requests.data.tracks;
 
 import org.apache.hc.core5.http.ParseException;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.runners.MockitoJUnitRunner;
 import se.michaelthelin.spotify.ITest;
 import se.michaelthelin.spotify.TestUtil;
 import se.michaelthelin.spotify.enums.Modality;
@@ -17,7 +15,6 @@ import java.util.concurrent.ExecutionException;
 
 import static org.junit.Assert.assertEquals;
 
-@RunWith(MockitoJUnitRunner.class)
 public class GetAudioFeaturesForTrackRequestTest extends AbstractDataTest<AudioFeatures> {
   private final GetAudioFeaturesForTrackRequest defaultRequest = ITest.SPOTIFY_API
     .getAudioFeaturesForTrack(ITest.ID_TRACK)

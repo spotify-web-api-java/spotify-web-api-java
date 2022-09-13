@@ -2,8 +2,6 @@ package se.michaelthelin.spotify.requests.data.personalization.simplified;
 
 import org.apache.hc.core5.http.ParseException;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.runners.MockitoJUnitRunner;
 import se.michaelthelin.spotify.ITest;
 import se.michaelthelin.spotify.TestUtil;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
@@ -17,7 +15,6 @@ import java.util.concurrent.ExecutionException;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
-@RunWith(MockitoJUnitRunner.class)
 public class GetUsersTopTracksRequestTest extends AbstractDataTest<Paging<Track>> {
   private final GetUsersTopTracksRequest defaultRequest = ITest.SPOTIFY_API.getUsersTopTracks()
     .setHttpManager(

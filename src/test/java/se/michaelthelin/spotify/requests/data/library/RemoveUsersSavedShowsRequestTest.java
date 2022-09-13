@@ -2,8 +2,6 @@ package se.michaelthelin.spotify.requests.data.library;
 
 import org.apache.hc.core5.http.ParseException;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.runners.MockitoJUnitRunner;
 import se.michaelthelin.spotify.ITest;
 import se.michaelthelin.spotify.TestUtil;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
@@ -17,7 +15,6 @@ import static org.junit.Assert.assertNull;
 import static se.michaelthelin.spotify.Assertions.assertHasBodyParameter;
 import static se.michaelthelin.spotify.Assertions.assertHasHeader;
 
-@RunWith(MockitoJUnitRunner.class)
 public class RemoveUsersSavedShowsRequestTest extends AbstractDataTest<String> {
   private final RemoveUsersSavedShowsRequest defaultRequest = ITest.SPOTIFY_API
     .removeUsersSavedShows(ITest.ID_SHOW, ITest.ID_SHOW)

@@ -2,8 +2,6 @@ package se.michaelthelin.spotify.requests.data.search;
 
 import org.apache.hc.core5.http.ParseException;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.runners.MockitoJUnitRunner;
 import se.michaelthelin.spotify.ITest;
 import se.michaelthelin.spotify.TestUtil;
 import se.michaelthelin.spotify.enums.ModelObjectType;
@@ -18,7 +16,6 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
-@RunWith(MockitoJUnitRunner.class)
 public class SearchItemRequestTest extends AbstractDataTest<SearchResult> {
   private final SearchItemRequest defaultRequest = ITest.SPOTIFY_API
     .searchItem(ITest.Q, ModelObjectType.ARTIST.getType())

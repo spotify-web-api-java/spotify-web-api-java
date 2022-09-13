@@ -2,8 +2,6 @@ package se.michaelthelin.spotify.requests.data.browse;
 
 import org.apache.hc.core5.http.ParseException;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.runners.MockitoJUnitRunner;
 import se.michaelthelin.spotify.TestUtil;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.model_objects.specification.Category;
@@ -16,7 +14,6 @@ import java.util.concurrent.ExecutionException;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
-@RunWith(MockitoJUnitRunner.class)
 public class GetListOfCategoriesRequestTest extends AbstractDataTest<Paging<Category>> {
   private final GetListOfCategoriesRequest defaultRequest = SPOTIFY_API.getListOfCategories()
     .setHttpManager(

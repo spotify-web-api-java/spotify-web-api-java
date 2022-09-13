@@ -2,8 +2,6 @@ package se.michaelthelin.spotify.requests.data.albums;
 
 import org.apache.hc.core5.http.ParseException;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.runners.MockitoJUnitRunner;
 import se.michaelthelin.spotify.TestUtil;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.model_objects.specification.Album;
@@ -14,7 +12,6 @@ import java.util.concurrent.ExecutionException;
 
 import static org.junit.Assert.assertEquals;
 
-@RunWith(MockitoJUnitRunner.class)
 public class GetSeveralAlbumsRequestTest extends AbstractDataTest<Album[]> {
 
   private final GetSeveralAlbumsRequest defaultRequest = SPOTIFY_API.getSeveralAlbums(ID_ALBUM, ID_ALBUM)

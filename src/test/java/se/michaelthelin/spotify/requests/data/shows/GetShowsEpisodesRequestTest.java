@@ -2,8 +2,6 @@ package se.michaelthelin.spotify.requests.data.shows;
 
 import org.apache.hc.core5.http.ParseException;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.runners.MockitoJUnitRunner;
 import se.michaelthelin.spotify.TestUtil;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.model_objects.specification.EpisodeSimplified;
@@ -15,7 +13,6 @@ import java.util.concurrent.ExecutionException;
 
 import static org.junit.Assert.assertEquals;
 
-@RunWith(MockitoJUnitRunner.class)
 public class GetShowsEpisodesRequestTest extends AbstractDataTest<Paging<EpisodeSimplified>> {
 
   private final GetShowsEpisodesRequest defaultRequest = SPOTIFY_API.getShowEpisodes(ID_SHOW)

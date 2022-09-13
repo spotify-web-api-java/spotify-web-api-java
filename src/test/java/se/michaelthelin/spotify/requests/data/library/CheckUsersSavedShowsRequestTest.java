@@ -2,8 +2,6 @@ package se.michaelthelin.spotify.requests.data.library;
 
 import org.apache.hc.core5.http.ParseException;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.runners.MockitoJUnitRunner;
 import se.michaelthelin.spotify.ITest;
 import se.michaelthelin.spotify.TestUtil;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
@@ -14,7 +12,6 @@ import java.util.concurrent.ExecutionException;
 
 import static org.junit.Assert.assertEquals;
 
-@RunWith(MockitoJUnitRunner.class)
 public class CheckUsersSavedShowsRequestTest extends AbstractDataTest<Boolean[]> {
   private final CheckUsersSavedShowsRequest defaultRequest = ITest.SPOTIFY_API.checkUsersSavedShows(ITest.ID_SHOW, ITest.ID_SHOW)
     .setHttpManager(

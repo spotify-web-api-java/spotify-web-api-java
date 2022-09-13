@@ -2,8 +2,6 @@ package se.michaelthelin.spotify.requests.data.playlists;
 
 import org.apache.hc.core5.http.ParseException;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.runners.MockitoJUnitRunner;
 import se.michaelthelin.spotify.ITest;
 import se.michaelthelin.spotify.TestUtil;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
@@ -16,7 +14,6 @@ import java.util.concurrent.ExecutionException;
 import static org.junit.Assert.assertEquals;
 import static se.michaelthelin.spotify.Assertions.assertHasBodyParameter;
 
-@RunWith(MockitoJUnitRunner.class)
 public class RemoveItemsFromPlaylistRequestTest extends AbstractDataTest<SnapshotResult> {
   private final RemoveItemsFromPlaylistRequest defaultRequest = ITest.SPOTIFY_API
     .removeItemsFromPlaylist(ITest.ID_PLAYLIST, ITest.TRACKS)

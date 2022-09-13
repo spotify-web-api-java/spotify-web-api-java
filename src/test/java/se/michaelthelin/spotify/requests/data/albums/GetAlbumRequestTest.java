@@ -2,8 +2,6 @@ package se.michaelthelin.spotify.requests.data.albums;
 
 import org.apache.hc.core5.http.ParseException;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.runners.MockitoJUnitRunner;
 import se.michaelthelin.spotify.TestUtil;
 import se.michaelthelin.spotify.enums.AlbumType;
 import se.michaelthelin.spotify.enums.ModelObjectType;
@@ -17,7 +15,6 @@ import java.util.concurrent.ExecutionException;
 
 import static org.junit.Assert.*;
 
-@RunWith(MockitoJUnitRunner.class)
 public class GetAlbumRequestTest extends AbstractDataTest<Album> {
   private final GetAlbumRequest defaultRequest = SPOTIFY_API.getAlbum(ID_ALBUM)
     .setHttpManager(
