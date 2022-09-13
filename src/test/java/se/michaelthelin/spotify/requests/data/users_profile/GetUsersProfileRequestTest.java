@@ -1,7 +1,7 @@
 package se.michaelthelin.spotify.requests.data.users_profile;
 
 import org.apache.hc.core5.http.ParseException;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import se.michaelthelin.spotify.ITest;
 import se.michaelthelin.spotify.TestUtil;
 import se.michaelthelin.spotify.enums.ModelObjectType;
@@ -12,8 +12,8 @@ import se.michaelthelin.spotify.requests.data.AbstractDataTest;
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class GetUsersProfileRequestTest extends AbstractDataTest<User> {
   private final GetUsersProfileRequest defaultRequest = ITest.SPOTIFY_API

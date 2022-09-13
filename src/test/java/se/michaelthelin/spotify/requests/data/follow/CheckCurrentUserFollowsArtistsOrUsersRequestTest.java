@@ -1,7 +1,7 @@
 package se.michaelthelin.spotify.requests.data.follow;
 
 import org.apache.hc.core5.http.ParseException;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import se.michaelthelin.spotify.TestUtil;
 import se.michaelthelin.spotify.enums.ModelObjectType;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
@@ -10,7 +10,7 @@ import se.michaelthelin.spotify.requests.data.AbstractDataTest;
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CheckCurrentUserFollowsArtistsOrUsersRequestTest extends AbstractDataTest<Boolean[]> {
   private final CheckCurrentUserFollowsArtistsOrUsersRequest defaultRequest = SPOTIFY_API

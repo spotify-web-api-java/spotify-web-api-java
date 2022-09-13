@@ -1,7 +1,7 @@
 package se.michaelthelin.spotify.requests.data.library;
 
 import org.apache.hc.core5.http.ParseException;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import se.michaelthelin.spotify.ITest;
 import se.michaelthelin.spotify.TestUtil;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
@@ -10,7 +10,7 @@ import se.michaelthelin.spotify.requests.data.AbstractDataTest;
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CheckUsersSavedTracksRequestTest extends AbstractDataTest<Boolean[]> {
   private final CheckUsersSavedTracksRequest defaultRequest = ITest.SPOTIFY_API.checkUsersSavedTracks(ITest.ID_TRACK, ITest.ID_TRACK)

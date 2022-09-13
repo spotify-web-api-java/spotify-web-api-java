@@ -1,7 +1,7 @@
 package se.michaelthelin.spotify.requests.data.player;
 
 import org.apache.hc.core5.http.ParseException;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import se.michaelthelin.spotify.ITest;
 import se.michaelthelin.spotify.TestUtil;
 import se.michaelthelin.spotify.enums.CurrentlyPlayingType;
@@ -15,7 +15,7 @@ import se.michaelthelin.spotify.requests.data.AbstractDataTest;
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class GetUsersCurrentlyPlayingTrackRequestTest extends AbstractDataTest<CurrentlyPlaying> {
   private final GetUsersCurrentlyPlayingTrackRequest defaultRequest = ITest.SPOTIFY_API

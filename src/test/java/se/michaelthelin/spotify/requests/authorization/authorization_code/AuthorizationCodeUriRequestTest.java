@@ -1,12 +1,12 @@
 package se.michaelthelin.spotify.requests.authorization.authorization_code;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import se.michaelthelin.spotify.ITest;
 
 import java.net.URI;
 import java.util.concurrent.ExecutionException;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class AuthorizationCodeUriRequestTest implements ITest<URI> {
 

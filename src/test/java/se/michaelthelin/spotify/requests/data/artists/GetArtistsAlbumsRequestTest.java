@@ -1,7 +1,7 @@
 package se.michaelthelin.spotify.requests.data.artists;
 
 import org.apache.hc.core5.http.ParseException;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import se.michaelthelin.spotify.ITest;
 import se.michaelthelin.spotify.TestUtil;
 import se.michaelthelin.spotify.enums.AlbumGroup;
@@ -14,8 +14,8 @@ import se.michaelthelin.spotify.requests.data.AbstractDataTest;
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 public class GetArtistsAlbumsRequestTest extends AbstractDataTest<Paging<AlbumSimplified>> {
   private final GetArtistsAlbumsRequest defaultRequest = ITest.SPOTIFY_API.getArtistsAlbums(ITest.ID_ARTIST)
