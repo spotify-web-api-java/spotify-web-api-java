@@ -1,11 +1,9 @@
 package se.michaelthelin.spotify.requests.data.library;
 
 import org.apache.hc.core5.http.ParseException;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
-import se.michaelthelin.spotify.Assertions;
 import se.michaelthelin.spotify.ITest;
 import se.michaelthelin.spotify.TestUtil;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
@@ -14,7 +12,10 @@ import se.michaelthelin.spotify.requests.data.AbstractDataTest;
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
+import static se.michaelthelin.spotify.Assertions.assertHasBodyParameter;
+import static se.michaelthelin.spotify.Assertions.assertHasHeader;
 
 @RunWith(MockitoJUnitRunner.class)
 public class RemoveAlbumsForCurrentUserRequestTest extends AbstractDataTest<String> {
@@ -35,16 +36,16 @@ public class RemoveAlbumsForCurrentUserRequestTest extends AbstractDataTest<Stri
   @Test
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
-    Assert.assertEquals(
+    assertEquals(
       "https://api.spotify.com:443/v1/me/albums?ids=5zT1JLIj9E57p3e1rFm9Uq%2C5zT1JLIj9E57p3e1rFm9Uq",
       defaultRequest.getUri().toString());
 
     assertHasAuthorizationHeader(bodyRequest);
-    Assertions.assertHasHeader(defaultRequest, "Content-Type", "application/json");
-    Assertions.assertHasBodyParameter(bodyRequest,
+    assertHasHeader(defaultRequest, "Content-Type", "application/json");
+    assertHasBodyParameter(bodyRequest,
       "ids",
       ITest.ALBUMS);
-    Assert.assertEquals("https://api.spotify.com:443/v1/me/albums",
+    assertEquals("https://api.spotify.com:443/v1/me/albums",
       bodyRequest.getUri().toString());
   }
 

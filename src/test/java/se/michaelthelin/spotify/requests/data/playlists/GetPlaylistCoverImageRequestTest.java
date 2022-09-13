@@ -1,7 +1,6 @@
 package se.michaelthelin.spotify.requests.data.playlists;
 
 import org.apache.hc.core5.http.ParseException;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -31,7 +30,7 @@ public class GetPlaylistCoverImageRequestTest extends AbstractDataTest<Image[]> 
   @Test
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
-    Assert.assertEquals(
+    assertEquals(
       "https://api.spotify.com:443/v1/playlists/3AGOiaoRXMSjswCLtuNqv5/images",
       defaultRequest.getUri().toString());
   }

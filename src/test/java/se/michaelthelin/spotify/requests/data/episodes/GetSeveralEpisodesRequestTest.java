@@ -1,7 +1,6 @@
 package se.michaelthelin.spotify.requests.data.episodes;
 
 import org.apache.hc.core5.http.ParseException;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -32,7 +31,7 @@ public class GetSeveralEpisodesRequestTest extends AbstractDataTest<Episode[]> {
   @Test
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
-    Assert.assertEquals(
+    assertEquals(
       "https://api.spotify.com:443/v1/episodes?ids=4GI3dxEafwap1sFiTGPKd1%2C4GI3dxEafwap1sFiTGPKd1&market=SE",
       defaultRequest.getUri().toString());
   }

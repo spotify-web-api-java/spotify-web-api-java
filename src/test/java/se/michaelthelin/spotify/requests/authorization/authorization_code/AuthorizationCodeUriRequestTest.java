@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.requests.authorization.authorization_code;
 
-import org.junit.Assert;
 import org.junit.Test;
 import se.michaelthelin.spotify.ITest;
 
@@ -26,7 +25,7 @@ public class AuthorizationCodeUriRequestTest implements ITest<URI> {
 
   @Test
   public void shouldComplyWithReference() {
-    Assert.assertEquals(
+    assertEquals(
       "https://accounts.spotify.com:443/authorize?client_id=zyuxhfo1c51b5hxjk09x2uhv5n0svgd6g&response_type=code&redirect_uri=https%3A%2F%2Fexample.com%2Fspotify-redirect&scope=user-read-birthday%20user-read-email&show_dialog=true",
       defaultRequest.getUri().toString());
   }

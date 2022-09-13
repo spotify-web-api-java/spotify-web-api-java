@@ -1,7 +1,6 @@
 package se.michaelthelin.spotify.requests.data.player;
 
 import org.apache.hc.core5.http.ParseException;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -38,7 +37,7 @@ public class GetUsersAvailableDevicesTest extends AbstractDataTest<Device[]> {
   @Test
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
-    Assert.assertEquals(
+    assertEquals(
       "https://api.spotify.com:443/v1/me/player/devices",
       defaultRequest.getUri().toString());
   }

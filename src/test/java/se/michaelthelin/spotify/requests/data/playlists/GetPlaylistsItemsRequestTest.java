@@ -1,7 +1,6 @@
 package se.michaelthelin.spotify.requests.data.playlists;
 
 import org.apache.hc.core5.http.ParseException;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -51,7 +50,7 @@ public class GetPlaylistsItemsRequestTest extends AbstractDataTest<Paging<Playli
   @Test
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
-    Assert.assertEquals(
+    assertEquals(
       "https://api.spotify.com:443/v1/playlists/3AGOiaoRXMSjswCLtuNqv5/tracks?fields=description&limit=10&market=SE&offset=0&additional_types=track%2Cepisode",
       defaultRequest.getUri().toString());
   }

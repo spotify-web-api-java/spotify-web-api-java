@@ -1,11 +1,9 @@
 package se.michaelthelin.spotify.requests.data.playlists;
 
 import org.apache.hc.core5.http.ParseException;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
-import se.michaelthelin.spotify.Assertions;
 import se.michaelthelin.spotify.ITest;
 import se.michaelthelin.spotify.TestUtil;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
@@ -16,6 +14,7 @@ import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
 import static org.junit.Assert.assertEquals;
+import static se.michaelthelin.spotify.Assertions.assertHasBodyParameter;
 
 @RunWith(MockitoJUnitRunner.class)
 public class RemoveItemsFromPlaylistRequestTest extends AbstractDataTest<SnapshotResult> {
@@ -33,11 +32,11 @@ public class RemoveItemsFromPlaylistRequestTest extends AbstractDataTest<Snapsho
   @Test
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
-    Assertions.assertHasBodyParameter(
+    assertHasBodyParameter(
       defaultRequest,
       "tracks",
       ITest.TRACKS);
-    Assert.assertEquals(
+    assertEquals(
       "https://api.spotify.com:443/v1/playlists/3AGOiaoRXMSjswCLtuNqv5/tracks",
       defaultRequest.getUri().toString());
   }

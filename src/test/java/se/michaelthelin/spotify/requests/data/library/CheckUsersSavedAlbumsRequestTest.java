@@ -1,7 +1,6 @@
 package se.michaelthelin.spotify.requests.data.library;
 
 import org.apache.hc.core5.http.ParseException;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -29,7 +28,7 @@ public class CheckUsersSavedAlbumsRequestTest extends AbstractDataTest<Boolean[]
   @Test
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
-    Assert.assertEquals(
+    assertEquals(
       "https://api.spotify.com:443/v1/me/albums/contains?ids=5zT1JLIj9E57p3e1rFm9Uq%2C5zT1JLIj9E57p3e1rFm9Uq",
       defaultRequest.getUri().toString());
   }

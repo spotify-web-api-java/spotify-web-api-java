@@ -1,7 +1,6 @@
 package se.michaelthelin.spotify.requests.data.episodes;
 
 import org.apache.hc.core5.http.ParseException;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -34,7 +33,7 @@ public class GetEpisodeRequestTest extends AbstractDataTest<Episode> {
   @Test
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
-    Assert.assertEquals(
+    assertEquals(
       "https://api.spotify.com:443/v1/episodes/4GI3dxEafwap1sFiTGPKd1?market=SE",
       defaultRequest.getUri().toString());
   }
@@ -66,7 +65,7 @@ public class GetEpisodeRequestTest extends AbstractDataTest<Episode> {
     assertEquals(
       "https://api.spotify.com/v1/episodes/4GI3dxEafwap1sFiTGPKd1",
       episode.getHref());
-    Assert.assertEquals(
+    assertEquals(
       ITest.ID_EPISODE,
       episode.getId());
     assertEquals(
@@ -85,7 +84,7 @@ public class GetEpisodeRequestTest extends AbstractDataTest<Episode> {
     assertEquals(
       "2015-05-22",
       episode.getReleaseDate());
-    Assert.assertEquals(
+    assertEquals(
       ReleaseDatePrecision.DAY,
       episode.getReleaseDatePrecision());
     assertFalse(
@@ -97,7 +96,7 @@ public class GetEpisodeRequestTest extends AbstractDataTest<Episode> {
       episode.getResumePoint().getFullyPlayed());
     assertNotNull(
       episode.getShow());
-    Assert.assertEquals(
+    assertEquals(
       ModelObjectType.EPISODE,
       episode.getType());
     assertEquals(

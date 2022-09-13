@@ -1,7 +1,6 @@
 package se.michaelthelin.spotify.requests.data.player;
 
 import org.apache.hc.core5.http.ParseException;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -54,7 +53,7 @@ public class GetInformationAboutUsersCurrentPlaybackRequestTest extends Abstract
   @Test
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
-    Assert.assertEquals(
+    assertEquals(
       "https://api.spotify.com:443/v1/me/player?market=SE&additional_types=track%2Cepisode",
       defaultRequest.getUri().toString());
   }
@@ -91,12 +90,12 @@ public class GetInformationAboutUsersCurrentPlaybackRequestTest extends Abstract
       currentlyPlayingContext.getItem());
     assertTrue(
       currentlyPlayingContext.getItem() instanceof Track);
-    Assert.assertEquals(
+    assertEquals(
       CurrentlyPlayingType.TRACK,
       currentlyPlayingContext.getCurrentlyPlayingType());
     assertNotNull(
       currentlyPlayingContext.getActions());
-    Assert.assertEquals(
+    assertEquals(
       2,
       currentlyPlayingContext.getActions().getDisallows().getDisallowedActions().size());
   }
@@ -121,7 +120,7 @@ public class GetInformationAboutUsersCurrentPlaybackRequestTest extends Abstract
       currentlyPlayingContext.getShuffle_state());
     assertNotNull(
       currentlyPlayingContext.getContext());
-    Assert.assertEquals(
+    assertEquals(
       currentlyPlayingContext.getContext().getType(),
       ModelObjectType.SHOW);
     assertEquals(
@@ -136,12 +135,12 @@ public class GetInformationAboutUsersCurrentPlaybackRequestTest extends Abstract
       currentlyPlayingContext.getItem());
     assertTrue(
       currentlyPlayingContext.getItem() instanceof Episode);
-    Assert.assertEquals(
+    assertEquals(
       CurrentlyPlayingType.EPISODE,
       currentlyPlayingContext.getCurrentlyPlayingType());
     assertNotNull(
       currentlyPlayingContext.getActions());
-    Assert.assertEquals(
+    assertEquals(
       4,
       currentlyPlayingContext.getActions().getDisallows().getDisallowedActions().size());
   }

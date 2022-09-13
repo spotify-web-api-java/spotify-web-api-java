@@ -2,11 +2,9 @@ package se.michaelthelin.spotify.requests.data.player;
 
 import com.google.gson.JsonParser;
 import org.apache.hc.core5.http.ParseException;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
-import se.michaelthelin.spotify.Assertions;
 import se.michaelthelin.spotify.ITest;
 import se.michaelthelin.spotify.TestUtil;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
@@ -15,7 +13,10 @@ import se.michaelthelin.spotify.requests.data.AbstractDataTest;
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
+import static se.michaelthelin.spotify.Assertions.assertHasBodyParameter;
+import static se.michaelthelin.spotify.Assertions.assertHasHeader;
 
 @RunWith(MockitoJUnitRunner.class)
 public class TransferUsersPlaybackRequestTest extends AbstractDataTest<String> {
@@ -32,16 +33,16 @@ public class TransferUsersPlaybackRequestTest extends AbstractDataTest<String> {
   @Test
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
-    Assertions.assertHasHeader(defaultRequest, "Content-Type", "application/json");
-    Assertions.assertHasBodyParameter(
+    assertHasHeader(defaultRequest, "Content-Type", "application/json");
+    assertHasBodyParameter(
       defaultRequest,
       "device_ids",
       "[\"" + ITest.DEVICE_ID + "\"]");
-    Assertions.assertHasBodyParameter(
+    assertHasBodyParameter(
       defaultRequest,
       "play",
       ITest.PLAY);
-    Assert.assertEquals(
+    assertEquals(
       "https://api.spotify.com:443/v1/me/player",
       defaultRequest.getUri().toString());
   }

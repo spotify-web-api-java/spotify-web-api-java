@@ -1,9 +1,7 @@
 package se.michaelthelin.spotify.requests.authorization.authorization_code;
 
 import org.apache.hc.core5.http.ParseException;
-import org.junit.Assert;
 import org.junit.Test;
-import se.michaelthelin.spotify.Assertions;
 import se.michaelthelin.spotify.ITest;
 import se.michaelthelin.spotify.TestUtil;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
@@ -14,6 +12,8 @@ import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
 import static org.junit.Assert.assertEquals;
+import static se.michaelthelin.spotify.Assertions.assertHasBodyParameter;
+import static se.michaelthelin.spotify.Assertions.assertHasHeader;
 
 public class AuthorizationCodeRefreshRequestTest extends AbstractAuthorizationTest<AuthorizationCodeCredentials> {
 
@@ -31,16 +31,16 @@ public class AuthorizationCodeRefreshRequestTest extends AbstractAuthorizationTe
   @Test
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
-    Assertions.assertHasHeader(defaultRequest, "Content-Type", "application/x-www-form-urlencoded");
-    Assertions.assertHasBodyParameter(
+    assertHasHeader(defaultRequest, "Content-Type", "application/x-www-form-urlencoded");
+    assertHasBodyParameter(
       defaultRequest,
       "grant_type",
       "refresh_token");
-    Assertions.assertHasBodyParameter(
+    assertHasBodyParameter(
       defaultRequest,
       "refresh_token",
       ITest.SPOTIFY_API.getRefreshToken());
-    Assert.assertEquals(
+    assertEquals(
       "https://accounts.spotify.com:443/api/token",
       defaultRequest.getUri().toString());
   }

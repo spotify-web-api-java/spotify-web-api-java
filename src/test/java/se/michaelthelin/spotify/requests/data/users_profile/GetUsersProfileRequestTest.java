@@ -1,7 +1,6 @@
 package se.michaelthelin.spotify.requests.data.users_profile;
 
 import org.apache.hc.core5.http.ParseException;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -33,7 +32,7 @@ public class GetUsersProfileRequestTest extends AbstractDataTest<User> {
   @Test
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
-    Assert.assertEquals(
+    assertEquals(
       // Yes, ABBA is not spelled that way ;)
       // But it should be ensured non-ASCII characters are handled properly as well.
       // Therefore, "abbaspötify" is used instead of "abbaspotify".
@@ -75,7 +74,7 @@ public class GetUsersProfileRequestTest extends AbstractDataTest<User> {
     assertEquals(
       1,
       user.getImages().length);
-    Assert.assertEquals(
+    assertEquals(
       ModelObjectType.USER,
       user.getType());
     assertEquals(

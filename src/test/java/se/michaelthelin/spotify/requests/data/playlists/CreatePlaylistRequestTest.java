@@ -1,11 +1,9 @@
 package se.michaelthelin.spotify.requests.data.playlists;
 
 import org.apache.hc.core5.http.ParseException;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
-import se.michaelthelin.spotify.Assertions;
 import se.michaelthelin.spotify.ITest;
 import se.michaelthelin.spotify.TestUtil;
 import se.michaelthelin.spotify.enums.ModelObjectType;
@@ -17,6 +15,7 @@ import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
 import static org.junit.Assert.*;
+import static se.michaelthelin.spotify.Assertions.*;
 
 @RunWith(MockitoJUnitRunner.class)
 public class CreatePlaylistRequestTest extends AbstractDataTest<Playlist> {
@@ -36,24 +35,24 @@ public class CreatePlaylistRequestTest extends AbstractDataTest<Playlist> {
   @Test
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
-    Assertions.assertHasHeader(defaultRequest, "Content-Type", "application/json");
-    Assertions.assertHasBodyParameter(
+    assertHasHeader(defaultRequest, "Content-Type", "application/json");
+    assertHasBodyParameter(
       defaultRequest,
       "name",
       ITest.NAME);
-    Assertions.assertHasBodyParameter(
+    assertHasBodyParameter(
       defaultRequest,
       "public",
       ITest.PUBLIC);
-    Assertions.assertHasBodyParameter(
+    assertHasBodyParameter(
       defaultRequest,
       "collaborative",
       ITest.COLLABORATIVE);
-    Assertions.assertHasBodyParameter(
+    assertHasBodyParameter(
       defaultRequest,
       "description",
       ITest.DESCRIPTION);
-    Assert.assertEquals(
+    assertEquals(
       "https://api.spotify.com:443/v1/users/abbaspotify/playlists",
       defaultRequest.getUri().toString());
   }
@@ -98,7 +97,7 @@ public class CreatePlaylistRequestTest extends AbstractDataTest<Playlist> {
       playlist.getSnapshotId());
     assertNotNull(
       playlist.getTracks());
-    Assert.assertEquals(
+    assertEquals(
       ModelObjectType.PLAYLIST,
       playlist.getType());
     assertEquals(

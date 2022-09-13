@@ -1,7 +1,6 @@
 package se.michaelthelin.spotify.requests.data.artists;
 
 import org.apache.hc.core5.http.ParseException;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -30,7 +29,7 @@ public class GetSeveralArtistsRequestTest extends AbstractDataTest<Artist[]> {
   @Test
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
-    Assert.assertEquals(
+    assertEquals(
       "https://api.spotify.com:443/v1/artists?ids=0LcJLqbBmaGUft1e9Mm8HV%2C0LcJLqbBmaGUft1e9Mm8HV",
       defaultRequest.getUri().toString());
   }

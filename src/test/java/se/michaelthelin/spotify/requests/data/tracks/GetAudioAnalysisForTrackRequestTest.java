@@ -1,7 +1,6 @@
 package se.michaelthelin.spotify.requests.data.tracks;
 
 import org.apache.hc.core5.http.ParseException;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -33,7 +32,7 @@ public class GetAudioAnalysisForTrackRequestTest extends AbstractDataTest<AudioA
   @Test
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
-    Assert.assertEquals(
+    assertEquals(
       "https://api.spotify.com:443/v1/audio-analysis/01iyCAUm8EvOFqVWYJ3dVX",
       defaultRequest.getUri().toString());
   }

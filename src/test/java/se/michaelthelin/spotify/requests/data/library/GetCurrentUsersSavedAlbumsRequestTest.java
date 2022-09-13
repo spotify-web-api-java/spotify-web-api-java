@@ -1,7 +1,6 @@
 package se.michaelthelin.spotify.requests.data.library;
 
 import org.apache.hc.core5.http.ParseException;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -35,7 +34,7 @@ public class GetCurrentUsersSavedAlbumsRequestTest extends AbstractDataTest<Pagi
   @Test
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
-    Assert.assertEquals(
+    assertEquals(
       "https://api.spotify.com:443/v1/me/albums?limit=10&market=SE&offset=0",
       defaultRequest.getUri().toString());
   }

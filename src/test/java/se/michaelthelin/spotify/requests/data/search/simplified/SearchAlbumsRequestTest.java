@@ -1,7 +1,6 @@
 package se.michaelthelin.spotify.requests.data.search.simplified;
 
 import org.apache.hc.core5.http.ParseException;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -35,7 +34,7 @@ public class SearchAlbumsRequestTest extends AbstractDataTest<Paging<AlbumSimpli
   @Test
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
-    Assert.assertEquals(
+    assertEquals(
       "https://api.spotify.com:443/v1/search?q=Abba&limit=10&market=SE&offset=0&include_external=audio&type=album",
       defaultRequest.getUri().toString());
   }

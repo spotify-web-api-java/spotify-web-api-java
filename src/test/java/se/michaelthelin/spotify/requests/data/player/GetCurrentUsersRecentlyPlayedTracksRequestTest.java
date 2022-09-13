@@ -1,7 +1,6 @@
 package se.michaelthelin.spotify.requests.data.player;
 
 import org.apache.hc.core5.http.ParseException;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -36,7 +35,7 @@ public class GetCurrentUsersRecentlyPlayedTracksRequestTest extends AbstractData
   @Test
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
-    Assert.assertEquals(
+    assertEquals(
       "https://api.spotify.com:443/v1/me/player/recently-played?after=2018-01-27T21%3A07%3A10&before=2016-01-27T22%3A07%3A00&limit=10",
       defaultRequest.getUri().toString());
   }

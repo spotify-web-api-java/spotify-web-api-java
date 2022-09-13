@@ -1,11 +1,9 @@
 package se.michaelthelin.spotify.requests.data.playlists;
 
 import org.apache.hc.core5.http.ParseException;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
-import se.michaelthelin.spotify.Assertions;
 import se.michaelthelin.spotify.ITest;
 import se.michaelthelin.spotify.TestUtil;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
@@ -14,8 +12,10 @@ import se.michaelthelin.spotify.requests.data.AbstractDataTest;
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
+import static se.michaelthelin.spotify.Assertions.assertHasHeader;
 
 @RunWith(MockitoJUnitRunner.class)
 public class UploadCustomPlaylistCoverImageRequestTest extends AbstractDataTest<String> {
@@ -32,10 +32,10 @@ public class UploadCustomPlaylistCoverImageRequestTest extends AbstractDataTest<
   @Test
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
-    Assertions.assertHasHeader(defaultRequest, "Content-Type", "image/jpeg");
+    assertHasHeader(defaultRequest, "Content-Type", "image/jpeg");
     assertNotNull(
       defaultRequest.getBody());
-    Assert.assertEquals(
+    assertEquals(
       "https://api.spotify.com:443/v1/playlists/3AGOiaoRXMSjswCLtuNqv5/images",
       defaultRequest.getUri().toString());
   }

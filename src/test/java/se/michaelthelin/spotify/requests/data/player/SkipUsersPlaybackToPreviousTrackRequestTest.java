@@ -4,7 +4,6 @@ import org.apache.hc.core5.http.ParseException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
-import se.michaelthelin.spotify.Assertions;
 import se.michaelthelin.spotify.ITest;
 import se.michaelthelin.spotify.TestUtil;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
@@ -15,6 +14,7 @@ import java.util.concurrent.ExecutionException;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
+import static se.michaelthelin.spotify.Assertions.assertHasHeader;
 
 @RunWith(MockitoJUnitRunner.class)
 public class SkipUsersPlaybackToPreviousTrackRequestTest extends AbstractDataTest<String> {
@@ -31,7 +31,7 @@ public class SkipUsersPlaybackToPreviousTrackRequestTest extends AbstractDataTes
   @Test
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
-    Assertions.assertHasHeader(defaultRequest, "Content-Type", "application/json");
+    assertHasHeader(defaultRequest, "Content-Type", "application/json");
     assertEquals(
       "https://api.spotify.com:443/v1/me/player/previous?device_id=5fbb3ba6aa454b5534c4ba43a8c7e8e45a63ad0e",
       defaultRequest.getUri().toString());

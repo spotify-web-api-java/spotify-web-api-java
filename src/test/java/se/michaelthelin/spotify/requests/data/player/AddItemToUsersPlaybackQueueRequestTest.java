@@ -1,11 +1,9 @@
 package se.michaelthelin.spotify.requests.data.player;
 
 import org.apache.hc.core5.http.ParseException;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
-import se.michaelthelin.spotify.Assertions;
 import se.michaelthelin.spotify.ITest;
 import se.michaelthelin.spotify.TestUtil;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
@@ -14,7 +12,9 @@ import se.michaelthelin.spotify.requests.data.AbstractDataTest;
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
+import static se.michaelthelin.spotify.Assertions.assertHasHeader;
 
 @RunWith(MockitoJUnitRunner.class)
 public class AddItemToUsersPlaybackQueueRequestTest extends AbstractDataTest<String> {
@@ -30,8 +30,8 @@ public class AddItemToUsersPlaybackQueueRequestTest extends AbstractDataTest<Str
 
   @Test
   public void shouldComplyWithReference() {
-    Assertions.assertHasHeader(defaultRequest, "Content-Type", "application/json");
-    Assert.assertEquals("https://api.spotify.com:443/v1/me/player/queue?uri=spotify%3Atrack%3A01iyCAUm8EvOFqVWYJ3dVX&device_id=5fbb3ba6aa454b5534c4ba43a8c7e8e45a63ad0e",
+    assertHasHeader(defaultRequest, "Content-Type", "application/json");
+    assertEquals("https://api.spotify.com:443/v1/me/player/queue?uri=spotify%3Atrack%3A01iyCAUm8EvOFqVWYJ3dVX&device_id=5fbb3ba6aa454b5534c4ba43a8c7e8e45a63ad0e",
       defaultRequest.getUri().toString());
   }
 

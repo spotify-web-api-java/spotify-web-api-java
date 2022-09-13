@@ -2,7 +2,6 @@ package se.michaelthelin.spotify.requests.data.users_profile;
 
 import com.neovisionaries.i18n.CountryCode;
 import org.apache.hc.core5.http.ParseException;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -35,7 +34,7 @@ public class GetCurrentUsersProfileRequestTest extends AbstractDataTest<User> {
   @Test
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
-    Assert.assertEquals(
+    assertEquals(
       "https://api.spotify.com:443/v1/me",
       defaultRequest.getUri().toString());
   }
@@ -76,10 +75,10 @@ public class GetCurrentUsersProfileRequestTest extends AbstractDataTest<User> {
     assertEquals(
       1,
       user.getImages().length);
-    Assert.assertEquals(
+    assertEquals(
       ProductType.PREMIUM,
       user.getProduct());
-    Assert.assertEquals(
+    assertEquals(
       ModelObjectType.USER,
       user.getType());
     assertEquals(

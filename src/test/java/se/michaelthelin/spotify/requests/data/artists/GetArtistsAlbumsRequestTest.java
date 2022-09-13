@@ -1,7 +1,6 @@
 package se.michaelthelin.spotify.requests.data.artists;
 
 import org.apache.hc.core5.http.ParseException;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -38,7 +37,7 @@ public class GetArtistsAlbumsRequestTest extends AbstractDataTest<Paging<AlbumSi
   @Test
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
-    Assert.assertEquals(
+    assertEquals(
       "https://api.spotify.com:443/v1/artists/0LcJLqbBmaGUft1e9Mm8HV/albums?album_type=album&limit=10&market=SE&offset=0",
       defaultRequest.getUri().toString());
   }
@@ -60,10 +59,10 @@ public class GetArtistsAlbumsRequestTest extends AbstractDataTest<Paging<AlbumSi
     assertEquals(
       2,
       albumSimplifiedPaging.getItems().length);
-    Assert.assertEquals(
+    assertEquals(
       AlbumGroup.SINGLE,
       albumSimplifiedPaging.getItems()[0].getAlbumGroup());
-    Assert.assertEquals(
+    assertEquals(
       AlbumType.SINGLE,
       albumSimplifiedPaging.getItems()[0].getAlbumType());
     assertEquals(
