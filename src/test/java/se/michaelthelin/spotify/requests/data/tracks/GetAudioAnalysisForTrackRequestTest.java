@@ -7,6 +7,7 @@ import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 import se.michaelthelin.spotify.ITest;
 import se.michaelthelin.spotify.TestUtil;
+import se.michaelthelin.spotify.enums.Modality;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.model_objects.miscellaneous.AudioAnalysis;
 import se.michaelthelin.spotify.requests.data.AbstractDataTest;
@@ -68,5 +69,8 @@ public class GetAudioAnalysisForTrackRequestTest extends AbstractDataTest<AudioA
     assertNotNull(
       "",
       audioAnalysis.getTrack());
+    assertEquals(
+      Modality.MINOR,
+      audioAnalysis.getTrack().getMode());
   }
 }

@@ -721,7 +721,7 @@ public class AudioAnalysisTrack extends AbstractModelObject {
             ? jsonObject.get("loudness").getAsFloat()
             : null)
         .setMode(
-          hasAndNotNull(jsonObject, "type")
+          hasAndNotNull(jsonObject, "mode")
             ? Modality.keyOf(
             jsonObject.get("mode").getAsInt())
             : null)
