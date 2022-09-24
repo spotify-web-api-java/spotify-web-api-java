@@ -1,3 +1,7 @@
+| Everyone – One click to help!|
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Please **upvote [this Spotify community issue](https://community.spotify.com/t5/Spotify-for-Developers/Revive-the-Object-Model-Specification/td-p/5368580)** to ensure maintenance for this repository remains possible! |
+
 | Android Developers |
 | ------------------ |
 | You **cannot** use this library for Android app development. Have a look at [adamint/spotify-web-api-kotlin](https://www.github.com/adamint/spotify-web-api-kotlin), [kaaes/spotify-web-api-android](https://www.github.com/kaaes/spotify-web-api-android) and [Spotify's Android SDK](https://developer.spotify.com/technologies/spotify-android-sdk/) and [see why](https://github.com/thelinmichael/spotify-web-api-java/issues/120#issuecomment-363266591). |
