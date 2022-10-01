@@ -5,6 +5,8 @@ import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.enums.ModelObjectType;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 
+import java.util.Objects;
+
 /**
  * Retrieve information about <a href="https://developer.spotify.com/web-api/object-model/#artist-object-simplified">
  * simplified Artist objects</a> by building instances from this class.
@@ -217,5 +219,22 @@ public class ArtistSimplified extends AbstractModelObject {
             : null)
         .build();
     }
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    ArtistSimplified artist = (ArtistSimplified) o;
+    return Objects.equals(id, artist.id) && Objects.equals(name, artist.name) && Objects.equals(uri, artist.uri);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(id, name, uri);
   }
 }

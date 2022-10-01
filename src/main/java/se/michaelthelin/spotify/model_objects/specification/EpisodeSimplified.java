@@ -9,6 +9,7 @@ import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 import se.michaelthelin.spotify.requests.data.search.interfaces.ISearchModelObject;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 /**
  * Retrieve information about <a href="https://developer.spotify.com/documentation/web-api/reference/object-model/#episode-object-simplified">
@@ -527,5 +528,24 @@ public class EpisodeSimplified extends AbstractModelObject implements ISearchMod
             : null)
         .build();
     }
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    EpisodeSimplified episode = (EpisodeSimplified) o;
+    return Objects.equals(id, episode.id) && Objects.equals(name, episode.name) &&
+      Objects.equals(releaseDate, episode.releaseDate) && Objects.equals(explicit, episode.explicit) &&
+      Objects.equals(uri, episode.uri);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(id, name, releaseDate, explicit, uri);
   }
 }

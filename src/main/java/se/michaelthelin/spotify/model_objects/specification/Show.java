@@ -8,6 +8,7 @@ import se.michaelthelin.spotify.enums.ModelObjectType;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 /**
  * Retrieve information about <a href="https://developer.spotify.com/documentation/web-api/reference/object-model/#show-object-full">
@@ -501,5 +502,23 @@ public class Show extends AbstractModelObject {
             : null)
         .build();
     }
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    Show show = (Show) o;
+    return Objects.equals(id, show.id) && Objects.equals(name, show.name) && Objects.equals(explicit, show.explicit) &&
+      Objects.equals(uri, show.uri);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(id, name, explicit, uri);
   }
 }
