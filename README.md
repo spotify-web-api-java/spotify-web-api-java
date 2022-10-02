@@ -405,8 +405,7 @@ creation.
 #### Tests
 `src/test/java/se.michaelthelin.spotify/`
 
-Unit tests ensure that implemented features work. This project's unit tests are implemented with [JUnit](http://junit.org/)
-and [mockito](http://site.mockito.org/) for mocking.
+Unit tests ensure that implemented features work. This project's unit tests are implemented with [JUnit](http://junit.org/).
 
 ##### Fixtures
 `src/test/fixtures/`
