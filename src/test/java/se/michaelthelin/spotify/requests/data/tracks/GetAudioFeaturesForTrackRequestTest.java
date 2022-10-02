@@ -1,10 +1,7 @@
 package se.michaelthelin.spotify.requests.data.tracks;
 
 import org.apache.hc.core5.http.ParseException;
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.junit.jupiter.api.Test;
 import se.michaelthelin.spotify.ITest;
 import se.michaelthelin.spotify.TestUtil;
 import se.michaelthelin.spotify.enums.Modality;
@@ -16,9 +13,8 @@ import se.michaelthelin.spotify.requests.data.AbstractDataTest;
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@RunWith(MockitoJUnitRunner.class)
 public class GetAudioFeaturesForTrackRequestTest extends AbstractDataTest<AudioFeatures> {
   private final GetAudioFeaturesForTrackRequest defaultRequest = ITest.SPOTIFY_API
     .getAudioFeaturesForTrack(ITest.ID_TRACK)
@@ -33,7 +29,7 @@ public class GetAudioFeaturesForTrackRequestTest extends AbstractDataTest<AudioF
   @Test
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
-    Assert.assertEquals(
+    assertEquals(
       "https://api.spotify.com:443/v1/audio-features/01iyCAUm8EvOFqVWYJ3dVX",
       defaultRequest.getUri().toString());
   }
@@ -79,7 +75,7 @@ public class GetAudioFeaturesForTrackRequestTest extends AbstractDataTest<AudioF
     assertEquals(
       -11.840,
       audioFeatures.getLoudness(), 0.001);
-    Assert.assertEquals(
+    assertEquals(
       Modality.MINOR,
       audioFeatures.getMode());
     assertEquals(
@@ -94,7 +90,7 @@ public class GetAudioFeaturesForTrackRequestTest extends AbstractDataTest<AudioF
     assertEquals(
       "https://api.spotify.com/v1/tracks/06AKEBrKUckW0KREUWRnvT",
       audioFeatures.getTrackHref());
-    Assert.assertEquals(
+    assertEquals(
       ModelObjectType.AUDIO_FEATURES,
       audioFeatures.getType());
     assertEquals(

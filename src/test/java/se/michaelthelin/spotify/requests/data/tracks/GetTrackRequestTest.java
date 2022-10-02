@@ -1,10 +1,7 @@
 package se.michaelthelin.spotify.requests.data.tracks;
 
 import org.apache.hc.core5.http.ParseException;
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.junit.jupiter.api.Test;
 import se.michaelthelin.spotify.ITest;
 import se.michaelthelin.spotify.TestUtil;
 import se.michaelthelin.spotify.enums.ModelObjectType;
@@ -15,9 +12,8 @@ import se.michaelthelin.spotify.requests.data.AbstractDataTest;
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
-@RunWith(MockitoJUnitRunner.class)
 public class GetTrackRequestTest extends AbstractDataTest<Track> {
   private final GetTrackRequest defaultRequest = ITest.SPOTIFY_API
     .getTrack(ITest.ID_TRACK)
@@ -33,7 +29,7 @@ public class GetTrackRequestTest extends AbstractDataTest<Track> {
   @Test
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
-    Assert.assertEquals(
+    assertEquals(
       "https://api.spotify.com:443/v1/tracks/01iyCAUm8EvOFqVWYJ3dVX?market=SE",
       defaultRequest.getUri().toString());
   }
@@ -50,11 +46,11 @@ public class GetTrackRequestTest extends AbstractDataTest<Track> {
 
   public void shouldReturnDefault(final Track track) {
     assertNotNull(
-      "",
-      track.getAlbum());
+      track.getAlbum(),
+      "");
     assertNotNull(
-      "",
-      track.getArtists());
+      track.getArtists(),
+      "");
     assertEquals(
       57,
       track.getAvailableMarkets().length);
@@ -88,7 +84,7 @@ public class GetTrackRequestTest extends AbstractDataTest<Track> {
     assertEquals(
       2,
       (int) track.getTrackNumber());
-    Assert.assertEquals(
+    assertEquals(
       ModelObjectType.TRACK,
       track.getType());
     assertEquals(
