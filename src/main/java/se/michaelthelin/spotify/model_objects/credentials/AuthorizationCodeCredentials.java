@@ -4,6 +4,8 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 
+import java.util.Objects;
+
 /**
  * Retrieve information about
  * <a href="https://developer.spotify.com/web-api/authorization-guide/#authorization-code-flow">Authorization Code
@@ -190,5 +192,24 @@ public class AuthorizationCodeCredentials extends AbstractModelObject {
             : null)
         .build();
     }
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    AuthorizationCodeCredentials that = (AuthorizationCodeCredentials) o;
+    return Objects.equals(accessToken, that.accessToken) && Objects.equals(tokenType, that.tokenType) &&
+      Objects.equals(scope, that.scope) && Objects.equals(expiresIn, that.expiresIn) &&
+      Objects.equals(refreshToken, that.refreshToken);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(accessToken, tokenType, scope, expiresIn, refreshToken);
   }
 }
