@@ -6,6 +6,7 @@ import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 /**
  * Retrieve information about Playlist Track Position objects by building instances from this class. These objects
@@ -96,5 +97,22 @@ public class PlaylistTrackPosition extends AbstractModelObject {
             : null)
         .build();
     }
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    PlaylistTrackPosition that = (PlaylistTrackPosition) o;
+    return Objects.equals(uri, that.uri);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(uri);
   }
 }

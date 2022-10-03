@@ -15,6 +15,7 @@ import se.michaelthelin.spotify.model_objects.specification.Image;
 import se.michaelthelin.spotify.requests.data.search.interfaces.ISearchModelObject;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 /**
  * Retrieve information about <a href="https://developer.spotify.com/web-api/object-model/#album-object-simplified">
@@ -432,5 +433,23 @@ public class AlbumSimplifiedSpecial extends AbstractModelObject implements ISear
             : null)
         .build();
     }
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    AlbumSimplifiedSpecial that = (AlbumSimplifiedSpecial) o;
+    return Objects.equals(id, that.id) && Objects.equals(name, that.name) &&
+      Objects.equals(releaseDate, that.releaseDate) && Objects.equals(uri, that.uri);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(id, name, releaseDate, uri);
   }
 }
