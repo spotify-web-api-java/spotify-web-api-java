@@ -7,6 +7,8 @@ import se.michaelthelin.spotify.enums.ModelObjectType;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 import se.michaelthelin.spotify.model_objects.miscellaneous.AudioAnalysis;
 
+import java.util.Objects;
+
 /**
  * Retrieve information about <a href="https://developer.spotify.com/web-api/object-model/#audio-features-object">
  * Audio Feature objects</a> by building instances from this class.
@@ -565,5 +567,23 @@ public class AudioFeatures extends AbstractModelObject {
             : null)
         .build();
     }
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    AudioFeatures that = (AudioFeatures) o;
+    return Objects.equals(analysisUrl, that.analysisUrl) && Objects.equals(id, that.id) &&
+      Objects.equals(key, that.key) && Objects.equals(uri, that.uri);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(analysisUrl, id, key, uri);
   }
 }

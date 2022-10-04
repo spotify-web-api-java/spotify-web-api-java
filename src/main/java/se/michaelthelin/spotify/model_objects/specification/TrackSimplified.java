@@ -8,6 +8,7 @@ import se.michaelthelin.spotify.enums.ModelObjectType;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 /**
  * Retrieve information about <a href="https://developer.spotify.com/web-api/object-model/#track-object-simplified">
@@ -483,5 +484,23 @@ public class TrackSimplified extends AbstractModelObject {
             : null)
         .build();
     }
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    TrackSimplified track = (TrackSimplified) o;
+    return Objects.equals(explicit, track.explicit) && Objects.equals(id, track.id) &&
+      Objects.equals(name, track.name) && Objects.equals(uri, track.uri);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(explicit, id, name, uri);
   }
 }

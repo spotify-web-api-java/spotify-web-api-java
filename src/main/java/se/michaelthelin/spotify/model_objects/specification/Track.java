@@ -12,6 +12,7 @@ import se.michaelthelin.spotify.requests.data.personalization.interfaces.IArtist
 import se.michaelthelin.spotify.requests.data.search.interfaces.ISearchModelObject;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 /**
  * Retrieve information about <a href="https://developer.spotify.com/web-api/object-model/#track-object-full">
@@ -625,5 +626,23 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
             : null)
         .build();
     }
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    Track track = (Track) o;
+    return Objects.equals(explicit, track.explicit) && Objects.equals(id, track.id) &&
+      Objects.equals(name, track.name) && Objects.equals(uri, track.uri);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(explicit, id, name, uri);
   }
 }

@@ -4,6 +4,8 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 
+import java.util.Objects;
+
 /**
  * Retrieve information about Authorization Error objects by building instances from this class.
  *
@@ -106,5 +108,22 @@ public class AuthenticationError extends AbstractModelObject {
             : null)
         .build();
     }
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    AuthenticationError that = (AuthenticationError) o;
+    return Objects.equals(error, that.error) && Objects.equals(error_description, that.error_description);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(error, error_description);
   }
 }

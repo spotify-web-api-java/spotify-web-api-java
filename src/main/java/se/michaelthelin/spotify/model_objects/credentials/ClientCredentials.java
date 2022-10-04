@@ -4,6 +4,8 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 
+import java.util.Objects;
+
 /**
  * Retrieve information about <a href="https://developer.spotify.com/web-api/authorization-guide/#implicit_grant_flow">
  * Client Credentials</a> by building instances from this class.
@@ -132,5 +134,23 @@ public class ClientCredentials extends AbstractModelObject {
             : null)
         .build();
     }
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    ClientCredentials that = (ClientCredentials) o;
+    return Objects.equals(accessToken, that.accessToken) && Objects.equals(tokenType, that.tokenType) &&
+      Objects.equals(expiresIn, that.expiresIn);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(accessToken, tokenType, expiresIn);
   }
 }

@@ -9,6 +9,7 @@ import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 import se.michaelthelin.spotify.model_objects.IPlaylistItem;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 /**
  * Retrieve information about <a href="https://developer.spotify.com/documentation/web-api/reference/object-model/#episode-object-full">
@@ -562,5 +563,24 @@ public class Episode extends AbstractModelObject implements IPlaylistItem {
             : null)
         .build();
     }
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    Episode episode = (Episode) o;
+    return Objects.equals(id, episode.id) && Objects.equals(name, episode.name) &&
+      Objects.equals(releaseDate, episode.releaseDate) && Objects.equals(explicit, episode.explicit) &&
+      Objects.equals(uri, episode.uri);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(id, name, releaseDate, explicit, uri);
   }
 }

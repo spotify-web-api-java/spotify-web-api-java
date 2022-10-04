@@ -10,6 +10,7 @@ import se.michaelthelin.spotify.enums.ReleaseDatePrecision;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 /**
  * Retrieve information about <a href="https://developer.spotify.com/web-api/object-model/#album-object-full">
@@ -566,5 +567,23 @@ public class Album extends AbstractModelObject {
             : null)
         .build();
     }
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    Album album = (Album) o;
+    return Objects.equals(id, album.id) && Objects.equals(label, album.label) && Objects.equals(name, album.name) &&
+      Objects.equals(releaseDate, album.releaseDate) && Objects.equals(uri, album.uri);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(id, label, name, releaseDate, uri);
   }
 }
