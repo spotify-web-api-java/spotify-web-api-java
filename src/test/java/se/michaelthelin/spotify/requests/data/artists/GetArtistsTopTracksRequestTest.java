@@ -1,10 +1,7 @@
 package se.michaelthelin.spotify.requests.data.artists;
 
 import org.apache.hc.core5.http.ParseException;
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.junit.jupiter.api.Test;
 import se.michaelthelin.spotify.ITest;
 import se.michaelthelin.spotify.TestUtil;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
@@ -14,9 +11,8 @@ import se.michaelthelin.spotify.requests.data.AbstractDataTest;
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@RunWith(MockitoJUnitRunner.class)
 public class GetArtistsTopTracksRequestTest extends AbstractDataTest<Track[]> {
   private final GetArtistsTopTracksRequest defaultRequest = ITest.SPOTIFY_API.getArtistsTopTracks(ITest.ID_ARTIST, ITest.COUNTRY)
     .setHttpManager(
@@ -30,7 +26,7 @@ public class GetArtistsTopTracksRequestTest extends AbstractDataTest<Track[]> {
   @Test
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
-    Assert.assertEquals(
+    assertEquals(
       "https://api.spotify.com:443/v1/artists/0LcJLqbBmaGUft1e9Mm8HV/top-tracks?country=SE",
       defaultRequest.getUri().toString());
   }

@@ -4,6 +4,8 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 
+import java.util.Objects;
+
 /**
  * Retrieve information about <a href="https://developer.spotify.com/web-api/get-a-users-available-devices/">Device
  * objects</a> by creating instances from this class.
@@ -239,5 +241,22 @@ public class Device extends AbstractModelObject {
             : null)
         .build();
     }
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    Device device = (Device) o;
+    return Objects.equals(id, device.id) && Objects.equals(name, device.name);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(id, name);
   }
 }

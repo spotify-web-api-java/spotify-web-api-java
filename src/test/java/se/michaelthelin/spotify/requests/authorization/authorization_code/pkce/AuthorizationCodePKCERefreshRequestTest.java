@@ -2,9 +2,7 @@ package se.michaelthelin.spotify.requests.authorization.authorization_code.pkce;
 
 
 import org.apache.hc.core5.http.ParseException;
-import org.junit.Assert;
-import org.junit.Test;
-import se.michaelthelin.spotify.Assertions;
+import org.junit.jupiter.api.Test;
 import se.michaelthelin.spotify.ITest;
 import se.michaelthelin.spotify.TestUtil;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
@@ -13,7 +11,9 @@ import se.michaelthelin.spotify.model_objects.credentials.AuthorizationCodeCrede
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static se.michaelthelin.spotify.Assertions.assertHasBodyParameter;
+import static se.michaelthelin.spotify.Assertions.assertHasHeader;
 
 public class AuthorizationCodePKCERefreshRequestTest implements ITest<AuthorizationCodeCredentials> {
 
@@ -28,20 +28,20 @@ public class AuthorizationCodePKCERefreshRequestTest implements ITest<Authorizat
 
   @Test
   public void shouldComplyWithReference() {
-    Assertions.assertHasHeader(defaultRequest, "Content-Type", "application/x-www-form-urlencoded");
-    Assertions.assertHasBodyParameter(
+    assertHasHeader(defaultRequest, "Content-Type", "application/x-www-form-urlencoded");
+    assertHasBodyParameter(
       defaultRequest,
       "grant_type",
       "refresh_token");
-    Assertions.assertHasBodyParameter(
+    assertHasBodyParameter(
       defaultRequest,
       "refresh_token",
       SPOTIFY_API.getRefreshToken());
-    Assertions.assertHasBodyParameter(
+    assertHasBodyParameter(
       defaultRequest,
       "client_id",
       SPOTIFY_API.getClientId());
-    Assert.assertEquals(
+    assertEquals(
       "https://accounts.spotify.com:443/api/token",
       defaultRequest.getUri().toString());
   }

@@ -1,9 +1,7 @@
 package se.michaelthelin.spotify.requests.authorization.authorization_code.pkce;
 
 import org.apache.hc.core5.http.ParseException;
-import org.junit.Assert;
-import org.junit.Test;
-import se.michaelthelin.spotify.Assertions;
+import org.junit.jupiter.api.Test;
 import se.michaelthelin.spotify.ITest;
 import se.michaelthelin.spotify.TestUtil;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
@@ -12,7 +10,9 @@ import se.michaelthelin.spotify.model_objects.credentials.AuthorizationCodeCrede
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static se.michaelthelin.spotify.Assertions.assertHasBodyParameter;
+import static se.michaelthelin.spotify.Assertions.assertHasHeader;
 
 public class AuthorizationCodePKCERequestTest implements ITest<AuthorizationCodeCredentials> {
 
@@ -27,27 +27,27 @@ public class AuthorizationCodePKCERequestTest implements ITest<AuthorizationCode
 
   @Test
   public void shouldComplyWithReference() {
-    Assertions.assertHasHeader(defaultRequest, "Content-Type", "application/x-www-form-urlencoded");
-    Assertions.assertHasBodyParameter(
+    assertHasHeader(defaultRequest, "Content-Type", "application/x-www-form-urlencoded");
+    assertHasBodyParameter(
       defaultRequest,
       "code",
       AUTHORIZATION_CODE);
-    Assertions.assertHasBodyParameter(
+    assertHasBodyParameter(
       defaultRequest,
       "grant_type",
       "authorization_code");
-    Assertions.assertHasBodyParameter(
+    assertHasBodyParameter(
       defaultRequest,
       "redirect_uri",
       SPOTIFY_API.getRedirectURI());
-    Assert.assertEquals(
+    assertEquals(
       "https://accounts.spotify.com:443/api/token",
       defaultRequest.getUri().toString());
-    Assertions.assertHasBodyParameter(
+    assertHasBodyParameter(
       defaultRequest,
       "client_id",
       SPOTIFY_API.getClientId());
-    Assertions.assertHasBodyParameter(
+    assertHasBodyParameter(
       defaultRequest,
       "code_verifier",
       CODE_VERIFIER);

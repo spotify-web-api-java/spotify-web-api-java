@@ -1,11 +1,7 @@
 package se.michaelthelin.spotify.requests.data.library;
 
 import org.apache.hc.core5.http.ParseException;
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.runners.MockitoJUnitRunner;
-import se.michaelthelin.spotify.Assertions;
+import org.junit.jupiter.api.Test;
 import se.michaelthelin.spotify.ITest;
 import se.michaelthelin.spotify.TestUtil;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
@@ -14,9 +10,11 @@ import se.michaelthelin.spotify.requests.data.AbstractDataTest;
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
-import static org.junit.Assert.assertNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static se.michaelthelin.spotify.Assertions.assertHasBodyParameter;
+import static se.michaelthelin.spotify.Assertions.assertHasHeader;
 
-@RunWith(MockitoJUnitRunner.class)
 public class RemoveUsersSavedTracksRequestTest extends AbstractDataTest<String> {
   private final RemoveUsersSavedTracksRequest defaultRequest = ITest.SPOTIFY_API
     .removeUsersSavedTracks(ITest.ID_TRACK, ITest.ID_TRACK)
@@ -35,16 +33,16 @@ public class RemoveUsersSavedTracksRequestTest extends AbstractDataTest<String> 
   @Test
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
-    Assert.assertEquals(
+    assertEquals(
       "https://api.spotify.com:443/v1/me/tracks?ids=01iyCAUm8EvOFqVWYJ3dVX%2C01iyCAUm8EvOFqVWYJ3dVX",
       defaultRequest.getUri().toString());
 
     assertHasAuthorizationHeader(bodyRequest);
-    Assertions.assertHasHeader(defaultRequest, "Content-Type", "application/json");
-    Assertions.assertHasBodyParameter(bodyRequest,
+    assertHasHeader(defaultRequest, "Content-Type", "application/json");
+    assertHasBodyParameter(bodyRequest,
       "ids",
       ITest.TRACKS);
-    Assert.assertEquals("https://api.spotify.com:443/v1/me/tracks",
+    assertEquals("https://api.spotify.com:443/v1/me/tracks",
       bodyRequest.getUri().toString());
   }
 

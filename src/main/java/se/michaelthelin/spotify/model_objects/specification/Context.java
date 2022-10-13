@@ -5,6 +5,8 @@ import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.enums.ModelObjectType;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 
+import java.util.Objects;
+
 /**
  * Retrieve information about <a href="https://developer.spotify.com/web-api/object-model/#context-object">
  * Context objects</a> by building instances from this class. Context objects contain information from where a
@@ -164,5 +166,22 @@ public class Context extends AbstractModelObject {
             : null)
         .build();
     }
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    Context context = (Context) o;
+    return Objects.equals(uri, context.uri);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(uri);
   }
 }

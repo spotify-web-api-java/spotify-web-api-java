@@ -1,9 +1,7 @@
 package se.michaelthelin.spotify.requests.authorization.authorization_code;
 
 import org.apache.hc.core5.http.ParseException;
-import org.junit.Assert;
-import org.junit.Test;
-import se.michaelthelin.spotify.Assertions;
+import org.junit.jupiter.api.Test;
 import se.michaelthelin.spotify.TestUtil;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.model_objects.credentials.AuthorizationCodeCredentials;
@@ -12,7 +10,9 @@ import se.michaelthelin.spotify.requests.authorization.AbstractAuthorizationTest
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static se.michaelthelin.spotify.Assertions.assertHasBodyParameter;
+import static se.michaelthelin.spotify.Assertions.assertHasHeader;
 
 public class AuthorizationCodeRequestTest extends AbstractAuthorizationTest<AuthorizationCodeCredentials> {
 
@@ -30,20 +30,20 @@ public class AuthorizationCodeRequestTest extends AbstractAuthorizationTest<Auth
   @Test
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
-    Assertions.assertHasHeader(defaultRequest, "Content-Type", "application/x-www-form-urlencoded");
-    Assertions.assertHasBodyParameter(
+    assertHasHeader(defaultRequest, "Content-Type", "application/x-www-form-urlencoded");
+    assertHasBodyParameter(
       defaultRequest,
       "code",
       AUTHORIZATION_CODE);
-    Assertions.assertHasBodyParameter(
+    assertHasBodyParameter(
       defaultRequest,
       "grant_type",
       "authorization_code");
-    Assertions.assertHasBodyParameter(
+    assertHasBodyParameter(
       defaultRequest,
       "redirect_uri",
       SPOTIFY_API.getRedirectURI());
-    Assert.assertEquals(
+    assertEquals(
       "https://accounts.spotify.com:443/api/token",
       defaultRequest.getUri().toString());
   }

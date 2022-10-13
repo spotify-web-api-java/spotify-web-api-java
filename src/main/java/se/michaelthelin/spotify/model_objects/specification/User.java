@@ -8,6 +8,7 @@ import se.michaelthelin.spotify.enums.ProductType;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 /**
  * Retrieve information about <a href="https://developer.spotify.com/web-api/object-model/#user-object-private">
@@ -410,5 +411,22 @@ public class User extends AbstractModelObject {
             : null)
         .build();
     }
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    User user = (User) o;
+    return Objects.equals(birthdate, user.birthdate) && Objects.equals(id, user.id) && Objects.equals(uri, user.uri);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(birthdate, id, uri);
   }
 }

@@ -1,10 +1,7 @@
 package se.michaelthelin.spotify.requests.data.artists;
 
 import org.apache.hc.core5.http.ParseException;
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.junit.jupiter.api.Test;
 import se.michaelthelin.spotify.ITest;
 import se.michaelthelin.spotify.TestUtil;
 import se.michaelthelin.spotify.enums.ModelObjectType;
@@ -15,10 +12,9 @@ import se.michaelthelin.spotify.requests.data.AbstractDataTest;
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-@RunWith(MockitoJUnitRunner.class)
 public class GetArtistRequestTest extends AbstractDataTest<Artist> {
   private final GetArtistRequest defaultRequest = ITest.SPOTIFY_API.getArtist(ITest.ID_ARTIST)
     .setHttpManager(
@@ -32,7 +28,7 @@ public class GetArtistRequestTest extends AbstractDataTest<Artist> {
   @Test
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
-    Assert.assertEquals(
+    assertEquals(
       "https://api.spotify.com:443/v1/artists/0LcJLqbBmaGUft1e9Mm8HV",
       defaultRequest.getUri().toString());
   }
@@ -71,7 +67,7 @@ public class GetArtistRequestTest extends AbstractDataTest<Artist> {
     assertEquals(
       59,
       (int) artist.getPopularity());
-    Assert.assertEquals(
+    assertEquals(
       ModelObjectType.ARTIST,
       artist.getType());
     assertEquals(

@@ -1,10 +1,7 @@
 package se.michaelthelin.spotify.requests.data.users_profile;
 
 import org.apache.hc.core5.http.ParseException;
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.junit.jupiter.api.Test;
 import se.michaelthelin.spotify.ITest;
 import se.michaelthelin.spotify.TestUtil;
 import se.michaelthelin.spotify.enums.ModelObjectType;
@@ -15,10 +12,9 @@ import se.michaelthelin.spotify.requests.data.AbstractDataTest;
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-@RunWith(MockitoJUnitRunner.class)
 public class GetUsersProfileRequestTest extends AbstractDataTest<User> {
   private final GetUsersProfileRequest defaultRequest = ITest.SPOTIFY_API
     .getUsersProfile(ITest.ID_USER_NON_ASCII)
@@ -33,7 +29,7 @@ public class GetUsersProfileRequestTest extends AbstractDataTest<User> {
   @Test
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
-    Assert.assertEquals(
+    assertEquals(
       // Yes, ABBA is not spelled that way ;)
       // But it should be ensured non-ASCII characters are handled properly as well.
       // Therefore, "abbaspötify" is used instead of "abbaspotify".
@@ -75,7 +71,7 @@ public class GetUsersProfileRequestTest extends AbstractDataTest<User> {
     assertEquals(
       1,
       user.getImages().length);
-    Assert.assertEquals(
+    assertEquals(
       ModelObjectType.USER,
       user.getType());
     assertEquals(

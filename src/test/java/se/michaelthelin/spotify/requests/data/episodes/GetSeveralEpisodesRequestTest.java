@@ -1,10 +1,7 @@
 package se.michaelthelin.spotify.requests.data.episodes;
 
 import org.apache.hc.core5.http.ParseException;
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.junit.jupiter.api.Test;
 import se.michaelthelin.spotify.ITest;
 import se.michaelthelin.spotify.TestUtil;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
@@ -14,9 +11,8 @@ import se.michaelthelin.spotify.requests.data.AbstractDataTest;
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@RunWith(MockitoJUnitRunner.class)
 public class GetSeveralEpisodesRequestTest extends AbstractDataTest<Episode[]> {
   private final GetSeveralEpisodesRequest defaultRequest = ITest.SPOTIFY_API
     .getSeveralEpisodes(ITest.ID_EPISODE, ITest.ID_EPISODE)
@@ -32,7 +28,7 @@ public class GetSeveralEpisodesRequestTest extends AbstractDataTest<Episode[]> {
   @Test
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
-    Assert.assertEquals(
+    assertEquals(
       "https://api.spotify.com:443/v1/episodes?ids=4GI3dxEafwap1sFiTGPKd1%2C4GI3dxEafwap1sFiTGPKd1&market=SE",
       defaultRequest.getUri().toString());
   }
