@@ -1359,6 +1359,15 @@ public class SpotifyApi {
   }
 
   /**
+   * Receive all tracks from the user's current playback queue.
+   *
+   */
+  public GetListOfTracksFromUsersPlaybackQueueRequest.Builder getListOfTracksFromUsersPlaybackQueue() {
+    return new GetListOfTracksFromUsersPlaybackQueueRequest.Builder(accessToken)
+      .setDefaults(httpManager, scheme, host, port);
+  }
+
+  /**
    * Add items to a playlist.
    * <p>
    * <b>Note:</b> If you want to add a large number of items (&gt;50), use {@link #addItemsToPlaylist(String, JsonArray)} to not exceed

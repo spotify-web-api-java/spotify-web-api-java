@@ -19,7 +19,7 @@ public class AddItemToUsersPlaybackQueueRequest extends AbstractDataRequest<Stri
    *
    * @param builder A {@link AddItemToUsersPlaybackQueueRequest.Builder}.
    */
-  private AddItemToUsersPlaybackQueueRequest(final Builder builder) {
+  AddItemToUsersPlaybackQueueRequest(final Builder builder) {
     super(builder);
   }
 
