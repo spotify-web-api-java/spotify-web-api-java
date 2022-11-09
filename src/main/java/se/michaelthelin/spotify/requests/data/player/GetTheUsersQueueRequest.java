@@ -9,22 +9,22 @@ import se.michaelthelin.spotify.requests.data.AbstractDataRequest;
 import java.io.IOException;
 
 /**
- * Get tracks from the current user’s playback queue.
+ * Get the list of objects that make up the user's queue.
  * <p>
  * Returns the tracks from the current user’s playback queue. Does not include the current playing track.
  * <p>
  *  The endpoint does not support paging since the queue is not expected to be large.
  *  Therefore, the request will return a {@link PlaybackQueue} object including a List of {@link se.michaelthelin.spotify.model_objects.specification.Track}.
  */
-@JsonDeserialize(builder = GetListOfTracksFromUsersPlaybackQueueRequest.Builder.class)
-public class GetListOfTracksFromUsersPlaybackQueueRequest extends AbstractDataRequest<PlaybackQueue> {
+@JsonDeserialize(builder = GetTheUsersQueueRequest.Builder.class)
+public class GetTheUsersQueueRequest extends AbstractDataRequest<PlaybackQueue> {
 
   /**
-   * The private {@link GetListOfTracksFromUsersPlaybackQueueRequest} constructor.
+   * The private {@link GetTheUsersQueueRequest} constructor.
    *
-   * @param builder A {@link GetListOfTracksFromUsersPlaybackQueueRequest.Builder}.
+   * @param builder A {@link GetTheUsersQueueRequest.Builder}.
    */
-  private GetListOfTracksFromUsersPlaybackQueueRequest(final Builder builder) {
+  private GetTheUsersQueueRequest(final Builder builder) {
     super(builder);
   }
 
@@ -41,12 +41,12 @@ public class GetListOfTracksFromUsersPlaybackQueueRequest extends AbstractDataRe
   }
 
   /**
-   * Builder class for building a {@link GetListOfTracksFromUsersPlaybackQueueRequest}.
+   * Builder class for building a {@link GetTheUsersQueueRequest}.
    */
-  public static final class Builder extends AbstractDataRequest.Builder<PlaybackQueue, GetListOfTracksFromUsersPlaybackQueueRequest.Builder> {
+  public static final class Builder extends AbstractDataRequest.Builder<PlaybackQueue, GetTheUsersQueueRequest.Builder> {
 
     /**
-     * Create a new {@link GetListOfTracksFromUsersPlaybackQueueRequest.Builder}.
+     * Create a new {@link GetTheUsersQueueRequest.Builder}.
      * <p>
      * Your access token must have the {@code user-read-currently-playing} scope and/or the
      * {@code user-read-playback-state} authorized in order to read information.
@@ -61,16 +61,16 @@ public class GetListOfTracksFromUsersPlaybackQueueRequest extends AbstractDataRe
     /**
      * The request build method.
      *
-     * @return A custom {@link GetListOfTracksFromUsersPlaybackQueueRequest}.
+     * @return A custom {@link GetTheUsersQueueRequest}.
      */
     @Override
-    public GetListOfTracksFromUsersPlaybackQueueRequest build() {
+    public GetTheUsersQueueRequest build() {
       setPath("/v1/me/player/queue");
-      return new GetListOfTracksFromUsersPlaybackQueueRequest(this);
+      return new GetTheUsersQueueRequest(this);
     }
 
     @Override
-    protected GetListOfTracksFromUsersPlaybackQueueRequest.Builder self() {
+    protected GetTheUsersQueueRequest.Builder self() {
       return this;
     }
   }

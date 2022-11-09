@@ -13,15 +13,15 @@ import java.util.concurrent.ExecutionException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class GetListOfTracksFromUsersPlaybackQueueRequestTest extends AbstractDataTest<PlaybackQueue> {
+public class GetTheUsersQueueRequestTest extends AbstractDataTest<PlaybackQueue> {
 
-  private final GetListOfTracksFromUsersPlaybackQueueRequest defaultRequest = ITest.SPOTIFY_API
+  private final GetTheUsersQueueRequest defaultRequest = ITest.SPOTIFY_API
     .getListOfTracksFromUsersPlaybackQueue()
     .setHttpManager(
-      TestUtil.MockedHttpManager.returningJson("requests/data/player/GetListOfTracksFromUsersPlaybackQueueRequest.json"))
+      TestUtil.MockedHttpManager.returningJson("requests/data/player/GetTheUsersQueueRequest.json"))
     .build();
 
-  public GetListOfTracksFromUsersPlaybackQueueRequestTest() throws Exception {
+  public GetTheUsersQueueRequestTest() throws Exception {
     assertEquals("https://api.spotify.com:443/v1/me/player/queue",
       defaultRequest.getUri().toString());
   }

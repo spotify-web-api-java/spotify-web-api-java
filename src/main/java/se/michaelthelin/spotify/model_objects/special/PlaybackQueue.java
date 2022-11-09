@@ -10,10 +10,7 @@ import se.michaelthelin.spotify.model_objects.specification.*;
 import java.util.List;
 
 /**
- * Includes tracks that are in the queue of the user for the upcoming playback.
- * <p>
- * Retrieve information about <a href="https://developer.spotify.com/web-api/object-model/#playback-queue-object">
- *
+ * Get the list of objects that make up the user's queue.
  */
 @JsonDeserialize(builder = CurrentlyPlaying.Builder.class)
 public class PlaybackQueue extends AbstractModelObject{
@@ -26,7 +23,7 @@ public class PlaybackQueue extends AbstractModelObject{
   }
 
   /**
-   * Get the tracks that are in the queue of the user for the upcoming playback.
+   * Get the list of objects that make up the user's queue.
    *
    * @return The tracks that are in the queue of the user for the upcoming playback.
    */

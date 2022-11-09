@@ -1362,8 +1362,8 @@ public class SpotifyApi {
    * Receive all tracks from the user's current playback queue.
    *
    */
-  public GetListOfTracksFromUsersPlaybackQueueRequest.Builder getListOfTracksFromUsersPlaybackQueue() {
-    return new GetListOfTracksFromUsersPlaybackQueueRequest.Builder(accessToken)
+  public GetTheUsersQueueRequest.Builder getListOfTracksFromUsersPlaybackQueue() {
+    return new GetTheUsersQueueRequest.Builder(accessToken)
       .setDefaults(httpManager, scheme, host, port);
   }
 
