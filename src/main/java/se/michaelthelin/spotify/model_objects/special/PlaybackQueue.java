@@ -25,7 +25,7 @@ public class PlaybackQueue extends AbstractModelObject{
   /**
    * Get the list of objects that make up the user's queue.
    *
-   * @return The tracks that are in the queue of the user for the upcoming playback.
+   * @return The tracks that are in the user's queue for the upcoming playback.
    */
   public List<Track> getQueue() {
     return queue;
@@ -51,9 +51,9 @@ public class PlaybackQueue extends AbstractModelObject{
     private List<Track> queue;
 
     /**
-     * The tracks that are in the queue of the user for the upcoming playback setter.
+     * The tracks that are in the user's queue for the upcoming playback setter.
      *
-     * @param queue The tracks that are in the queue of the user for the upcoming playback.
+     * @param queue The tracks that are in the user's queue for the upcoming playback.
      * @return A {@link PlaybackQueue.Builder}.
      */
     public Builder setQueue(List<Track> queue) {

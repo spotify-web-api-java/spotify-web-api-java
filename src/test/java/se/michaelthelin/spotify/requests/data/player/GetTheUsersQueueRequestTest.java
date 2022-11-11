@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class GetTheUsersQueueRequestTest extends AbstractDataTest<PlaybackQueue> {
 
   private final GetTheUsersQueueRequest defaultRequest = ITest.SPOTIFY_API
-    .getListOfTracksFromUsersPlaybackQueue()
+    .getTheUsersQueue()
     .setHttpManager(
       TestUtil.MockedHttpManager.returningJson("requests/data/player/GetTheUsersQueueRequest.json"))
     .build();

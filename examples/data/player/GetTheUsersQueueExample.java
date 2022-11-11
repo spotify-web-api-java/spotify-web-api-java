@@ -3,7 +3,7 @@ package data.player;
 import se.michaelthelin.spotify.SpotifyApi;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.model_objects.special.PlaybackQueue;
-import se.michaelthelin.spotify.requests.data.player.GetUsersCurrentlyPlayingTrackRequest;
+import se.michaelthelin.spotify.requests.data.player.GetTheUsersQueueRequest;
 import org.apache.hc.core5.http.ParseException;
 
 import java.io.IOException;
@@ -25,7 +25,7 @@ public class GetTheUsersQueueExample {
     try {
       final PlaybackQueue playbackQueue = getTheUsersQueueRequest.execute();
 
-      System.out.println("Count of Tracks in the Queue: " + playbackQueue.getQueue().size());
+      System.out.println("Count of tracks in the queue: " + playbackQueue.getQueue().size());
     } catch (IOException | SpotifyWebApiException | ParseException e) {
       System.out.println("Error: " + e.getMessage());
     }
@@ -40,7 +40,7 @@ public class GetTheUsersQueueExample {
       // Example Only. Never block in production code.
       final PlaybackQueue playbackQueue = playbackQueueFuture.join();
 
-      System.out.println("Count of Tracks in the Queue: " + playbackQueue.getQueue().size());
+      System.out.println("Count of tracks in the queue: " + playbackQueue.getQueue().size());
     } catch (CompletionException e) {
       System.out.println("Error: " + e.getCause().getMessage());
     } catch (CancellationException e) {
