@@ -34,6 +34,7 @@ public class GetTheUsersQueueRequest extends AbstractDataRequest<PlaybackQueue> 
    * @return An {@link PlaybackQueue} object including a List of {@link se.michaelthelin.spotify.model_objects.specification.Track}.
    * @throws IOException            In case of networking issues.
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
+   * @throws ParseException         In case of an error parsing the response.
    */
   @Override
   public PlaybackQueue execute() throws IOException, SpotifyWebApiException, ParseException {
