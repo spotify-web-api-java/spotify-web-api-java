@@ -1,4 +1,4 @@
-name: Java CI with Maven
+name: CI
 
 on: [create, pull_request, push]
 
