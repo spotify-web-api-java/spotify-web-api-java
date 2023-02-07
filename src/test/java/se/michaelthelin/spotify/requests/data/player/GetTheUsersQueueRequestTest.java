@@ -50,6 +50,7 @@ public class GetTheUsersQueueRequestTest extends AbstractDataTest<PlaybackQueue>
 
   @Override
   public void shouldReturnDefault(PlaybackQueue type) {
+    assertNotNull(type.getCurrentlyPlaying());
     assertNotNull(type.getQueue());
     assertEquals(type.getQueue().size(), 1);
     assertEquals(type.getQueue().get(0).getName(), "string");
