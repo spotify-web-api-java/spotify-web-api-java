@@ -4,6 +4,7 @@ import org.apache.hc.core5.http.ParseException;
 import org.junit.jupiter.api.Test;
 import se.michaelthelin.spotify.ITest;
 import se.michaelthelin.spotify.TestUtil;
+import se.michaelthelin.spotify.enums.ModelObjectType;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.model_objects.special.PlaybackQueue;
 import se.michaelthelin.spotify.requests.data.AbstractDataTest;
@@ -51,8 +52,12 @@ public class GetTheUsersQueueRequestTest extends AbstractDataTest<PlaybackQueue>
   @Override
   public void shouldReturnDefault(PlaybackQueue type) {
     assertNotNull(type.getCurrentlyPlaying());
+    assertEquals(type.getCurrentlyPlaying().getName(), "Borders");
     assertNotNull(type.getQueue());
-    assertEquals(type.getQueue().size(), 1);
-    assertEquals(type.getQueue().get(0).getName(), "string");
+    assertEquals(type.getQueue().size(), 20);
+    assertEquals(type.getQueue().get(0).getName(), "AUSGABE VIERUNDSIEBZIG");
+    assertEquals(type.getQueue().get(0).getType(), ModelObjectType.EPISODE);
+    assertEquals(type.getQueue().get(1).getName(), "Helvegen");
+    assertEquals(type.getQueue().get(1).getType(), ModelObjectType.TRACK);
   }
 }
