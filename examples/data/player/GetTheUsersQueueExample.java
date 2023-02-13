@@ -25,7 +25,7 @@ public class GetTheUsersQueueExample {
     try {
       final PlaybackQueue playbackQueue = getTheUsersQueueRequest.execute();
 
-      System.out.println("Count of tracks in the queue: " + playbackQueue.getQueue().size());
+      System.out.println("Count of items in the queue: " + playbackQueue.getQueue().size());
     } catch (IOException | SpotifyWebApiException | ParseException e) {
       System.out.println("Error: " + e.getMessage());
     }
@@ -40,7 +40,7 @@ public class GetTheUsersQueueExample {
       // Example Only. Never block in production code.
       final PlaybackQueue playbackQueue = playbackQueueFuture.join();
 
-      System.out.println("Count of tracks in the queue: " + playbackQueue.getQueue().size());
+      System.out.println("Count of items in the queue: " + playbackQueue.getQueue().size());
     } catch (CompletionException e) {
       System.out.println("Error: " + e.getCause().getMessage());
     } catch (CancellationException e) {
