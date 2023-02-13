@@ -1,20 +1,22 @@
 package se.michaelthelin.spotify.requests.data.player;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import java.io.IOException;
+
 import org.apache.hc.core5.http.ParseException;
+
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.model_objects.special.PlaybackQueue;
 import se.michaelthelin.spotify.requests.data.AbstractDataRequest;
 
-import java.io.IOException;
-
 /**
  * Get the list of objects that make up the user's queue.
  * <p>
- * Returns the tracks from the current user’s playback queue. Does not include the current playing track.
+ * Returns the items from the current user’s playback queue, including the currently playing item.
  * <p>
  *  The endpoint does not support paging since the queue is not expected to be large.
- *  Therefore, the request will return a {@link PlaybackQueue} object including a List of {@link se.michaelthelin.spotify.model_objects.specification.Track}.
+ *  Therefore, the request will return a {@link PlaybackQueue} object including a List of {@link se.michaelthelin.spotify.model_objects.IPlaylistItem}.
  */
 @JsonDeserialize(builder = GetTheUsersQueueRequest.Builder.class)
 public class GetTheUsersQueueRequest extends AbstractDataRequest<PlaybackQueue> {
@@ -29,9 +31,9 @@ public class GetTheUsersQueueRequest extends AbstractDataRequest<PlaybackQueue> 
   }
 
   /**
-   * Get an user's current playback queue.
+   * Get the user's current playback queue.
    *
-   * @return An {@link PlaybackQueue} object including a List of {@link se.michaelthelin.spotify.model_objects.specification.Track}.
+   * @return An {@link PlaybackQueue} object including a List of {@link se.michaelthelin.spotify.model_objects.IPlaylistItem}.
    * @throws IOException            In case of networking issues.
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
    * @throws ParseException         In case of an error parsing the response.

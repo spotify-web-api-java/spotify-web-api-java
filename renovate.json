@@ -1,5 +1,0 @@
-{
-  "extends": [
-    "github>dargmuesli/renovate-config"
-  ]
-}

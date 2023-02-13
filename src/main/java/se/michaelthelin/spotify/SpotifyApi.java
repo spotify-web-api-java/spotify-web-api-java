@@ -1359,7 +1359,7 @@ public class SpotifyApi {
   }
 
   /**
-   * Receive all tracks from the user's current playback queue.
+   * Receive all items from the user's current playback queue.
    * @return An {@link GetTheUsersQueueRequest.Builder}.
    */
   public GetTheUsersQueueRequest.Builder getTheUsersQueue() {

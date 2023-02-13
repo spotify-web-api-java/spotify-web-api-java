@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * An enumeration of all possible album types.
+ * Compare to [AlbumType] this field represents relationship between the artist and the album.
  */
 public enum AlbumGroup {
 

@@ -6,8 +6,8 @@
 | ------------------ |
 | You **cannot** use this library for Android app development. Have a look at [adamint/spotify-web-api-kotlin](https://www.github.com/adamint/spotify-web-api-kotlin), [kaaes/spotify-web-api-android](https://www.github.com/kaaes/spotify-web-api-android) and [Spotify's Android SDK](https://developer.spotify.com/technologies/spotify-android-sdk/) and [see why](https://github.com/thelinmichael/spotify-web-api-java/issues/120#issuecomment-363266591). |
 
-Spotify Web API Java [![build status](https://github.com/spotify-web-api-java/spotify-web-api-java/workflows/maven/badge.svg)](https://github.com/spotify-web-api-java/spotify-web-api-java/actions?query=workflow%3A%22maven%22 "build status") [![codecov](https://codecov.io/gh/spotify-web-api-java/spotify-web-api-java/branch/develop/graph/badge.svg)](https://codecov.io/gh/spotify-web-api-java/spotify-web-api-java) [![Language grade: Java](https://img.shields.io/lgtm/grade/java/g/spotify-web-api-java/spotify-web-api-java.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/spotify-web-api-java/spotify-web-api-java/context:java)
-====================
+# Spotify Web API Java
+[![CI](https://github.com/spotify-web-api-java/spotify-web-api-java/actions/workflows/maven.yml/badge.svg)](https://github.com/spotify-web-api-java/spotify-web-api-java/actions/workflows/maven.yml) [![codecov](https://codecov.io/gh/spotify-web-api-java/spotify-web-api-java/branch/develop/graph/badge.svg)](https://codecov.io/gh/spotify-web-api-java/spotify-web-api-java)
 
 This is a Java wrapper/client for the [Spotify Web API](https://developer.spotify.com/web-api/).
 
@@ -35,7 +35,7 @@ Latest official release:
 <dependency>
   <groupId>se.michaelthelin.spotify</groupId>
   <artifactId>spotify-web-api-java</artifactId>
-  <version>7.3.0</version>
+  <version>8.0.0</version>
 </dependency>
 ```
 
@@ -52,7 +52,7 @@ Latest snapshot:
 
 Latest official release:
 ```Gradle
-implementation 'se.michaelthelin.spotify:spotify-web-api-java:7.3.0'
+implementation 'se.michaelthelin.spotify:spotify-web-api-java:8.0.0'
 ```
 
 Latest snapshot:
