@@ -91,6 +91,7 @@ public class SpotifyHttpManager implements IHttpManager {
       .custom()
       .setDefaultCredentialsProvider(credentialsProvider)
       .setDefaultRequestConfig(requestConfig)
+      .disableAutomaticRetries()
       .disableContentCompression()
       .build();
 
@@ -98,6 +99,7 @@ public class SpotifyHttpManager implements IHttpManager {
       .custom()
       .setCacheConfig(cacheConfig)
       .setDefaultCredentialsProvider(credentialsProvider)
+      .disableAutomaticRetries()
       .setDefaultRequestConfig(requestConfig)
       .disableContentCompression()
       .build();
