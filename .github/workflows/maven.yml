@@ -20,6 +20,8 @@ jobs:
         run: mvn -B package --file pom.xml
       - name: Upload code coverage
         uses: codecov/codecov-action@v4
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
       - name: Release
         if: startsWith(github.ref, 'refs/tags/') && matrix.java == 11
         env:
