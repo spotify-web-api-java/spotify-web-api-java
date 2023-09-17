@@ -19,6 +19,7 @@ public class Device extends AbstractModelObject {
   private final String name;
   private final String type;
   private final Integer volume_percent;
+  private final Boolean supports_volume;
 
   private Device(final Builder builder) {
     super(builder);
@@ -30,6 +31,7 @@ public class Device extends AbstractModelObject {
     this.name = builder.name;
     this.type = builder.type;
     this.volume_percent = builder.volume_percent;
+    this.supports_volume = builder.supports_volume;
   }
 
   /**
@@ -95,10 +97,19 @@ public class Device extends AbstractModelObject {
     return volume_percent;
   }
 
+  /**
+   * Check whether the device can be used to set the volume.
+   *
+   * @return If this device can be used to set the volume.
+   */
+  public Boolean getSupports_volume() {
+    return supports_volume;
+  }
+
   @Override
   public String toString() {
     return "Device(id=" + id + ", is_active=" + is_active + ", is_private_session=" + is_private_session + ", is_restricted=" + is_restricted + ", name=" + name
-        + ", type=" + type + ", volume_percent=" + volume_percent + ")";
+      + ", type=" + type + ", volume_percent=" + volume_percent + ", supports_volume=" + supports_volume + ")";
   }
 
   @Override
@@ -117,6 +128,7 @@ public class Device extends AbstractModelObject {
     private String name;
     private String type;
     private Integer volume_percent;
+    private Boolean supports_volume;
 
     /**
      * The device ID setter.
@@ -195,6 +207,17 @@ public class Device extends AbstractModelObject {
       return this;
     }
 
+    /**
+     * The supports volume state setter.
+     *
+     * @param supports_volume If this device can be used to set the volume.
+     * @return A {@link Device.Builder}.
+     */
+    public Builder setSupports_volume(Boolean supports_volume) {
+      this.supports_volume = supports_volume;
+      return this;
+    }
+
     @Override
     public Device build() {
       return new Device(this);
@@ -238,6 +261,10 @@ public class Device extends AbstractModelObject {
         .setVolume_percent(
           hasAndNotNull(jsonObject, "volume_percent")
             ? jsonObject.get("volume_percent").getAsInt()
+            : null)
+        .setSupports_volume(
+          hasAndNotNull(jsonObject, "supports_volume")
+            ? jsonObject.get("supports_volume").getAsBoolean()
             : null)
         .build();
     }

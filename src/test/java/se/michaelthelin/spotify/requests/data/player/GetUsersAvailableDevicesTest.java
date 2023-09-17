@@ -11,7 +11,7 @@ import se.michaelthelin.spotify.requests.data.AbstractDataTest;
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class GetUsersAvailableDevicesTest extends AbstractDataTest<Device[]> {
   private final GetUsersAvailableDevicesRequest defaultRequest = ITest.SPOTIFY_API
@@ -51,8 +51,29 @@ public class GetUsersAvailableDevicesTest extends AbstractDataTest<Device[]> {
 
   public void shouldReturnDefault(final Device[] devices) {
     assertEquals(
-      1,
+      2,
       devices.length);
+
+    Device computerDevice = devices[0];
+    Device smartPhoneDevice = devices[1];
+
+    assertEquals(computerDevice.getId(), "5fbb3ba6aa454b5534c4ba43a8c7e8e45a63ad0e");
+    assertFalse(computerDevice.getIs_active());
+    assertFalse(computerDevice.getIs_private_session());
+    assertFalse(computerDevice.getIs_restricted());
+    assertEquals(computerDevice.getName(), "My fridge");
+    assertEquals(computerDevice.getType(), "Computer");
+    assertEquals(computerDevice.getVolume_percent(), 100);
+    assertTrue(computerDevice.getSupports_volume());
+
+    assertEquals(smartPhoneDevice.getId(), "dc96ab03e8ecad17a70945b000acfef7591cd34e");
+    assertFalse(smartPhoneDevice.getIs_active());
+    assertFalse(smartPhoneDevice.getIs_private_session());
+    assertFalse(smartPhoneDevice.getIs_restricted());
+    assertEquals(smartPhoneDevice.getName(), "My Smartphone");
+    assertEquals(smartPhoneDevice.getType(), "Smartphone");
+    assertEquals(smartPhoneDevice.getVolume_percent(), 100);
+    assertFalse(smartPhoneDevice.getSupports_volume());
   }
 
   @Test
