@@ -17,9 +17,9 @@ public class Device extends AbstractModelObject {
   private final Boolean is_private_session;
   private final Boolean is_restricted;
   private final String name;
+  private final Boolean supports_volume;
   private final String type;
   private final Integer volume_percent;
-  private final Boolean supports_volume;
 
   private Device(final Builder builder) {
     super(builder);
@@ -29,9 +29,9 @@ public class Device extends AbstractModelObject {
     this.is_private_session = builder.is_private_session;
     this.is_restricted = builder.is_restricted;
     this.name = builder.name;
+    this.supports_volume = builder.supports_volume;
     this.type = builder.type;
     this.volume_percent = builder.volume_percent;
-    this.supports_volume = builder.supports_volume;
   }
 
   /**
@@ -80,6 +80,15 @@ public class Device extends AbstractModelObject {
   }
 
   /**
+   * Check whether the device can be used to set the volume.
+   *
+   * @return If this device can be used to set the volume.
+   */
+  public Boolean getSupports_volume() {
+    return supports_volume;
+  }
+
+  /**
    * Get the type of the device.
    *
    * @return Device type, such as "Computer", "Smartphone" or "Speaker".
@@ -97,19 +106,10 @@ public class Device extends AbstractModelObject {
     return volume_percent;
   }
 
-  /**
-   * Check whether the device can be used to set the volume.
-   *
-   * @return If this device can be used to set the volume.
-   */
-  public Boolean getSupports_volume() {
-    return supports_volume;
-  }
-
   @Override
   public String toString() {
     return "Device(id=" + id + ", is_active=" + is_active + ", is_private_session=" + is_private_session + ", is_restricted=" + is_restricted + ", name=" + name
-      + ", type=" + type + ", volume_percent=" + volume_percent + ", supports_volume=" + supports_volume + ")";
+      + ", supports_volume=" + supports_volume + ", type=" + type + ", volume_percent=" + volume_percent + ")";
   }
 
   @Override
@@ -126,9 +126,9 @@ public class Device extends AbstractModelObject {
     private Boolean is_private_session;
     private Boolean is_restricted;
     private String name;
+    private Boolean supports_volume;
     private String type;
     private Integer volume_percent;
-    private Boolean supports_volume;
 
     /**
      * The device ID setter.
@@ -186,6 +186,17 @@ public class Device extends AbstractModelObject {
     }
 
     /**
+     * The supports volume state setter.
+     *
+     * @param supports_volume If this device can be used to set the volume.
+     * @return A {@link Device.Builder}.
+     */
+    public Builder setSupports_volume(Boolean supports_volume) {
+      this.supports_volume = supports_volume;
+      return this;
+    }
+
+    /**
      * The device type setter.
      *
      * @param type Device type, such as "Computer", "Smartphone" or "Speaker".
@@ -204,17 +215,6 @@ public class Device extends AbstractModelObject {
      */
     public Builder setVolume_percent(Integer volume_percent) {
       this.volume_percent = volume_percent;
-      return this;
-    }
-
-    /**
-     * The supports volume state setter.
-     *
-     * @param supports_volume If this device can be used to set the volume.
-     * @return A {@link Device.Builder}.
-     */
-    public Builder setSupports_volume(Boolean supports_volume) {
-      this.supports_volume = supports_volume;
       return this;
     }
 
@@ -254,6 +254,10 @@ public class Device extends AbstractModelObject {
           hasAndNotNull(jsonObject, "name")
             ? jsonObject.get("name").getAsString()
             : null)
+        .setSupports_volume(
+          hasAndNotNull(jsonObject, "supports_volume")
+            ? jsonObject.get("supports_volume").getAsBoolean()
+            : null)
         .setType(
           hasAndNotNull(jsonObject, "type")
             ? jsonObject.get("type").getAsString()
@@ -261,10 +265,6 @@ public class Device extends AbstractModelObject {
         .setVolume_percent(
           hasAndNotNull(jsonObject, "volume_percent")
             ? jsonObject.get("volume_percent").getAsInt()
-            : null)
-        .setSupports_volume(
-          hasAndNotNull(jsonObject, "supports_volume")
-            ? jsonObject.get("supports_volume").getAsBoolean()
             : null)
         .build();
     }
