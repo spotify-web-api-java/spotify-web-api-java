@@ -50,10 +50,10 @@ public class GetRecommendationsRequestTest extends AbstractDataTest<Recommendati
 
   public void shouldReturnDefault(final Recommendations recommendations) {
     assertEquals(
-      2,
+      3,
       recommendations.getSeeds().length);
     assertEquals(
-      2,
+      10,
       recommendations.getTracks().length);
   }
 }

@@ -58,7 +58,7 @@ public class GetCurrentUsersRecentlyPlayedTracksRequestTest extends AbstractData
       2,
       (int) playHistoryPagingCursorbased.getLimit());
     assertEquals(
-      "https://api.spotify.com/v1/me/player/recently-played?before=1481661737016&limit=2",
+      "https://api.spotify.com/v1/me/player/recently-played?before=1695396194294&limit=2",
       playHistoryPagingCursorbased.getNext());
     assertEquals(
       1,
