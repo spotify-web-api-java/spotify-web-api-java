@@ -3,7 +3,21 @@ name: CI
 on: [create, pull_request, push]
 
 jobs:
+  prepare_jobs:
+    name: 'Prepare: job optimization'
+    runs-on: ubuntu-latest
+    outputs:
+      pr_found: ${{ steps.pr.outputs.pr_found }}
+    steps:
+      - name: Get current PR
+        id: pr
+        uses: 8BitJonny/gh-get-current-pr@2.2.0
+        with:
+          filterOutClosed: true
+          sha: ${{ github.event.pull_request.head.sha }}
   build:
+    needs: prepare_jobs
+    if: needs.prepare_jobs.outputs.pr_found == 'false' || github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     strategy:
       matrix:
