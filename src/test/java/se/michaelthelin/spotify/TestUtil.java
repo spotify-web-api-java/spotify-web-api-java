@@ -8,7 +8,7 @@ import java.net.URI;
 import java.nio.charset.StandardCharsets;
 import java.util.logging.Level;
 
-import static org.mockito.Matchers.any;
+import static org.mockito.ArgumentMatchers.nullable;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -57,10 +57,10 @@ public class TestUtil {
         fixture = readTestData(jsonFixtureFileName);
       }
 
-      when(mockedHttpManager.get(any(URI.class), any(Header[].class))).thenReturn(fixture);
-      when(mockedHttpManager.post(any(URI.class), any(Header[].class), any(HttpEntity.class))).thenReturn(fixture);
-      when(mockedHttpManager.put(any(URI.class), any(Header[].class), any(HttpEntity.class))).thenReturn(fixture);
-      when(mockedHttpManager.delete(any(URI.class), any(Header[].class), any(HttpEntity.class))).thenReturn(fixture);
+      when(mockedHttpManager.get(nullable(URI.class), nullable(Header[].class))).thenReturn(fixture);
+      when(mockedHttpManager.post(nullable(URI.class), nullable(Header[].class), nullable(HttpEntity.class))).thenReturn(fixture);
+      when(mockedHttpManager.put(nullable(URI.class), nullable(Header[].class), nullable(HttpEntity.class))).thenReturn(fixture);
+      when(mockedHttpManager.delete(nullable(URI.class), nullable(Header[].class), nullable(HttpEntity.class))).thenReturn(fixture);
 
       return mockedHttpManager;
     }

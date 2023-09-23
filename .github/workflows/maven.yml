@@ -9,7 +9,7 @@ jobs:
       matrix:
         java: [ '11', '17' ]
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # v4
       - name: Set up JDK 11
         uses: actions/setup-java@v3
         with:
@@ -19,7 +19,9 @@ jobs:
       - name: Build with Maven
         run: mvn -B package --file pom.xml
       - name: Upload code coverage
-        uses: codecov/codecov-action@v3
+        uses: codecov/codecov-action@v4.0.0-beta.2
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
       - name: Release
         if: startsWith(github.ref, 'refs/tags/') && matrix.java == 11
         env:

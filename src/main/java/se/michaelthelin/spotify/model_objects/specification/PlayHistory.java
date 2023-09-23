@@ -15,7 +15,7 @@ import java.util.logging.Level;
  */
 @JsonDeserialize(builder = PlayHistory.Builder.class)
 public class PlayHistory extends AbstractModelObject {
-  private final TrackSimplified track;
+  private final Track track;
   private final Date playedAt;
   private final Context context;
 
@@ -30,9 +30,9 @@ public class PlayHistory extends AbstractModelObject {
   /**
    * Get the track the user listened to.
    *
-   * @return The (simplified) track the user listened to.
+   * @return The track the user listened to.
    */
-  public TrackSimplified getTrack() {
+  public Track getTrack() {
     return track;
   }
 
@@ -68,7 +68,7 @@ public class PlayHistory extends AbstractModelObject {
    * Builder class for building {@link PlayHistory} instances.
    */
   public static final class Builder extends AbstractModelObject.Builder {
-    private TrackSimplified track;
+    private Track track;
     private Date playedAt;
     private Context context;
 
@@ -78,7 +78,7 @@ public class PlayHistory extends AbstractModelObject {
      * @param track The track the user listened to.
      * @return A {@link PlayHistory.Builder}.
      */
-    public Builder setTrack(TrackSimplified track) {
+    public Builder setTrack(Track track) {
       this.track = track;
       return this;
     }
@@ -124,7 +124,7 @@ public class PlayHistory extends AbstractModelObject {
         return new Builder()
           .setTrack(
             hasAndNotNull(jsonObject, "track")
-              ? new TrackSimplified.JsonUtil().createModelObject(
+              ? new Track.JsonUtil().createModelObject(
               jsonObject.getAsJsonObject("track"))
               : null)
           .setPlayedAt(
