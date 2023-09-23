@@ -1,88 +1,847 @@
 {
   "tracks": [
     {
+      "album": {
+        "album_type": "SINGLE",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/0cw3LjArvSnokOQO02e6xF"
+            },
+            "href": "https://api.spotify.com/v1/artists/0cw3LjArvSnokOQO02e6xF",
+            "id": "0cw3LjArvSnokOQO02e6xF",
+            "name": "Anna Book",
+            "type": "artist",
+            "uri": "spotify:artist:0cw3LjArvSnokOQO02e6xF"
+          }
+        ],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/3EzQi2PxIKDrRONWkNpg4n"
+        },
+        "href": "https://api.spotify.com/v1/albums/3EzQi2PxIKDrRONWkNpg4n",
+        "id": "3EzQi2PxIKDrRONWkNpg4n",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/ab67616d0000b2731b0b8233ce407e4853434c86",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/ab67616d00001e021b0b8233ce407e4853434c86",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/ab67616d000048511b0b8233ce407e4853434c86",
+            "width": 64
+          }
+        ],
+        "is_playable": true,
+        "name": "Himmel för två",
+        "release_date": "2016-02-04",
+        "release_date_precision": "day",
+        "total_tracks": 1,
+        "type": "album",
+        "uri": "spotify:album:3EzQi2PxIKDrRONWkNpg4n"
+      },
       "artists": [
         {
           "external_urls": {
-            "spotify": "https://open.spotify.com/artist/134GdR5tUtxJrf8cpsfpyY"
+            "spotify": "https://open.spotify.com/artist/0cw3LjArvSnokOQO02e6xF"
           },
-          "href": "https://api.spotify.com/v1/artists/134GdR5tUtxJrf8cpsfpyY",
-          "id": "134GdR5tUtxJrf8cpsfpyY",
-          "name": "Elliphant",
+          "href": "https://api.spotify.com/v1/artists/0cw3LjArvSnokOQO02e6xF",
+          "id": "0cw3LjArvSnokOQO02e6xF",
+          "name": "Anna Book",
           "type": "artist",
-          "uri": "spotify:artist:134GdR5tUtxJrf8cpsfpyY"
+          "uri": "spotify:artist:0cw3LjArvSnokOQO02e6xF"
+        }
+      ],
+      "disc_number": 1,
+      "duration_ms": 173560,
+      "explicit": false,
+      "external_ids": {
+        "isrc": "SEPQA1600012"
+      },
+      "external_urls": {
+        "spotify": "https://open.spotify.com/track/5CmFbhholq7Uu1suRA13BS"
+      },
+      "href": "https://api.spotify.com/v1/tracks/5CmFbhholq7Uu1suRA13BS",
+      "id": "5CmFbhholq7Uu1suRA13BS",
+      "is_local": false,
+      "is_playable": true,
+      "name": "Himmel för två",
+      "popularity": 20,
+      "preview_url": "https://p.scdn.co/mp3-preview/d116b646dcbd9acadd8ea9fd14fa1ec17e0f0d2c?cid=27c8986168cb4550ac8c963095f11ecb",
+      "track_number": 1,
+      "type": "track",
+      "uri": "spotify:track:5CmFbhholq7Uu1suRA13BS"
+    },
+    {
+      "album": {
+        "album_type": "ALBUM",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/65EXuYHVoehCKqp0kOS6px"
+            },
+            "href": "https://api.spotify.com/v1/artists/65EXuYHVoehCKqp0kOS6px",
+            "id": "65EXuYHVoehCKqp0kOS6px",
+            "name": "Parov Stelar",
+            "type": "artist",
+            "uri": "spotify:artist:65EXuYHVoehCKqp0kOS6px"
+          }
+        ],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/2zRY5eIWN7dUvyP447GN2A"
+        },
+        "href": "https://api.spotify.com/v1/albums/2zRY5eIWN7dUvyP447GN2A",
+        "id": "2zRY5eIWN7dUvyP447GN2A",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/ab67616d0000b273d2e1a965ae443dc92e63ba09",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/ab67616d00001e02d2e1a965ae443dc92e63ba09",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/ab67616d00004851d2e1a965ae443dc92e63ba09",
+            "width": 64
+          }
+        ],
+        "is_playable": true,
+        "name": "The Princess Part Two",
+        "release_date": "2012-10-19",
+        "release_date_precision": "day",
+        "total_tracks": 13,
+        "type": "album",
+        "uri": "spotify:album:2zRY5eIWN7dUvyP447GN2A"
+      },
+      "artists": [
+        {
+          "external_urls": {
+            "spotify": "https://open.spotify.com/artist/65EXuYHVoehCKqp0kOS6px"
+          },
+          "href": "https://api.spotify.com/v1/artists/65EXuYHVoehCKqp0kOS6px",
+          "id": "65EXuYHVoehCKqp0kOS6px",
+          "name": "Parov Stelar",
+          "type": "artist",
+          "uri": "spotify:artist:65EXuYHVoehCKqp0kOS6px"
+        }
+      ],
+      "disc_number": 1,
+      "duration_ms": 271986,
+      "explicit": false,
+      "external_ids": {
+        "isrc": "ATE611000002"
+      },
+      "external_urls": {
+        "spotify": "https://open.spotify.com/track/13HZnDE1HdFWx5qBWtIKpg"
+      },
+      "href": "https://api.spotify.com/v1/tracks/13HZnDE1HdFWx5qBWtIKpg",
+      "id": "13HZnDE1HdFWx5qBWtIKpg",
+      "is_local": false,
+      "is_playable": true,
+      "linked_from": {
+        "external_urls": {
+          "spotify": "https://open.spotify.com/track/3MeFwT8zv6gcptWJdlIqgR"
+        },
+        "href": "https://api.spotify.com/v1/tracks/3MeFwT8zv6gcptWJdlIqgR",
+        "id": "3MeFwT8zv6gcptWJdlIqgR",
+        "type": "track",
+        "uri": "spotify:track:3MeFwT8zv6gcptWJdlIqgR"
+      },
+      "name": "The Phantom - 1930 Swing Version",
+      "popularity": 20,
+      "preview_url": null,
+      "track_number": 7,
+      "type": "track",
+      "uri": "spotify:track:13HZnDE1HdFWx5qBWtIKpg"
+    },
+    {
+      "album": {
+        "album_type": "ALBUM",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/0RaR5kDG6RThEm7WOgpLO9"
+            },
+            "href": "https://api.spotify.com/v1/artists/0RaR5kDG6RThEm7WOgpLO9",
+            "id": "0RaR5kDG6RThEm7WOgpLO9",
+            "name": "Nicolas Repac",
+            "type": "artist",
+            "uri": "spotify:artist:0RaR5kDG6RThEm7WOgpLO9"
+          }
+        ],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/7taaeJqw65AyvBSgGZ3dpc"
+        },
+        "href": "https://api.spotify.com/v1/albums/7taaeJqw65AyvBSgGZ3dpc",
+        "id": "7taaeJqw65AyvBSgGZ3dpc",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/ab67616d0000b273b8ac92e57977f1ac2c1f8692",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/ab67616d00001e02b8ac92e57977f1ac2c1f8692",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/ab67616d00004851b8ac92e57977f1ac2c1f8692",
+            "width": 64
+          }
+        ],
+        "is_playable": true,
+        "name": "Swing-Swing",
+        "release_date": "2004-04-20",
+        "release_date_precision": "day",
+        "total_tracks": 17,
+        "type": "album",
+        "uri": "spotify:album:7taaeJqw65AyvBSgGZ3dpc"
+      },
+      "artists": [
+        {
+          "external_urls": {
+            "spotify": "https://open.spotify.com/artist/0RaR5kDG6RThEm7WOgpLO9"
+          },
+          "href": "https://api.spotify.com/v1/artists/0RaR5kDG6RThEm7WOgpLO9",
+          "id": "0RaR5kDG6RThEm7WOgpLO9",
+          "name": "Nicolas Repac",
+          "type": "artist",
+          "uri": "spotify:artist:0RaR5kDG6RThEm7WOgpLO9"
+        }
+      ],
+      "disc_number": 1,
+      "duration_ms": 215373,
+      "explicit": false,
+      "external_ids": {
+        "isrc": "FR2S10380010"
+      },
+      "external_urls": {
+        "spotify": "https://open.spotify.com/track/0GdZreTzOwPwqVb7GvznSF"
+      },
+      "href": "https://api.spotify.com/v1/tracks/0GdZreTzOwPwqVb7GvznSF",
+      "id": "0GdZreTzOwPwqVb7GvznSF",
+      "is_local": false,
+      "is_playable": true,
+      "name": "Revue noire",
+      "popularity": 18,
+      "preview_url": "https://p.scdn.co/mp3-preview/cac4ff7511c638d7e02a57924126dcc2d618e152?cid=27c8986168cb4550ac8c963095f11ecb",
+      "track_number": 1,
+      "type": "track",
+      "uri": "spotify:track:0GdZreTzOwPwqVb7GvznSF"
+    },
+    {
+      "album": {
+        "album_type": "ALBUM",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/37J1PlAkhRK7yrZUtqaUpQ"
+            },
+            "href": "https://api.spotify.com/v1/artists/37J1PlAkhRK7yrZUtqaUpQ",
+            "id": "37J1PlAkhRK7yrZUtqaUpQ",
+            "name": "Caravan Palace",
+            "type": "artist",
+            "uri": "spotify:artist:37J1PlAkhRK7yrZUtqaUpQ"
+          }
+        ],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/38ojnzxpPFT09ee03aCTK7"
+        },
+        "href": "https://api.spotify.com/v1/albums/38ojnzxpPFT09ee03aCTK7",
+        "id": "38ojnzxpPFT09ee03aCTK7",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/ab67616d0000b273d4189ca2964e92b5e5e545ed",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/ab67616d00001e02d4189ca2964e92b5e5e545ed",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/ab67616d00004851d4189ca2964e92b5e5e545ed",
+            "width": 64
+          }
+        ],
+        "is_playable": true,
+        "name": "Panic",
+        "release_date": "2012",
+        "release_date_precision": "year",
+        "total_tracks": 14,
+        "type": "album",
+        "uri": "spotify:album:38ojnzxpPFT09ee03aCTK7"
+      },
+      "artists": [
+        {
+          "external_urls": {
+            "spotify": "https://open.spotify.com/artist/37J1PlAkhRK7yrZUtqaUpQ"
+          },
+          "href": "https://api.spotify.com/v1/artists/37J1PlAkhRK7yrZUtqaUpQ",
+          "id": "37J1PlAkhRK7yrZUtqaUpQ",
+          "name": "Caravan Palace",
+          "type": "artist",
+          "uri": "spotify:artist:37J1PlAkhRK7yrZUtqaUpQ"
+        }
+      ],
+      "disc_number": 1,
+      "duration_ms": 253066,
+      "explicit": false,
+      "external_ids": {
+        "isrc": "FR89R1100006"
+      },
+      "external_urls": {
+        "spotify": "https://open.spotify.com/track/4O6ndj8XSuo96Alsz8Qd90"
+      },
+      "href": "https://api.spotify.com/v1/tracks/4O6ndj8XSuo96Alsz8Qd90",
+      "id": "4O6ndj8XSuo96Alsz8Qd90",
+      "is_local": false,
+      "is_playable": true,
+      "linked_from": {
+        "external_urls": {
+          "spotify": "https://open.spotify.com/track/5UM4eoahsyDfwzUHV9ftqc"
+        },
+        "href": "https://api.spotify.com/v1/tracks/5UM4eoahsyDfwzUHV9ftqc",
+        "id": "5UM4eoahsyDfwzUHV9ftqc",
+        "type": "track",
+        "uri": "spotify:track:5UM4eoahsyDfwzUHV9ftqc"
+      },
+      "name": "Clash",
+      "popularity": 21,
+      "preview_url": "https://p.scdn.co/mp3-preview/bbfd457ddc8592bc321d97c3988704e87bae3399?cid=27c8986168cb4550ac8c963095f11ecb",
+      "track_number": 6,
+      "type": "track",
+      "uri": "spotify:track:4O6ndj8XSuo96Alsz8Qd90"
+    },
+    {
+      "album": {
+        "album_type": "SINGLE",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/00sAT5YX8W3xNd1EuqyHw9"
+            },
+            "href": "https://api.spotify.com/v1/artists/00sAT5YX8W3xNd1EuqyHw9",
+            "id": "00sAT5YX8W3xNd1EuqyHw9",
+            "name": "Dada Life",
+            "type": "artist",
+            "uri": "spotify:artist:00sAT5YX8W3xNd1EuqyHw9"
+          }
+        ],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/5Y7ts1ioBrV9o2SGvD94K6"
+        },
+        "href": "https://api.spotify.com/v1/albums/5Y7ts1ioBrV9o2SGvD94K6",
+        "id": "5Y7ts1ioBrV9o2SGvD94K6",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/ab67616d0000b2730ceea62ed6beb33768014ede",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/ab67616d00001e020ceea62ed6beb33768014ede",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/ab67616d000048510ceea62ed6beb33768014ede",
+            "width": 64
+          }
+        ],
+        "is_playable": true,
+        "name": "Feed The Dada",
+        "release_date": "2012-01-01",
+        "release_date_precision": "day",
+        "total_tracks": 5,
+        "type": "album",
+        "uri": "spotify:album:5Y7ts1ioBrV9o2SGvD94K6"
+      },
+      "artists": [
+        {
+          "external_urls": {
+            "spotify": "https://open.spotify.com/artist/00sAT5YX8W3xNd1EuqyHw9"
+          },
+          "href": "https://api.spotify.com/v1/artists/00sAT5YX8W3xNd1EuqyHw9",
+          "id": "00sAT5YX8W3xNd1EuqyHw9",
+          "name": "Dada Life",
+          "type": "artist",
+          "uri": "spotify:artist:00sAT5YX8W3xNd1EuqyHw9"
+        }
+      ],
+      "disc_number": 1,
+      "duration_ms": 183760,
+      "explicit": false,
+      "external_ids": {
+        "isrc": "SE22J1200111"
+      },
+      "external_urls": {
+        "spotify": "https://open.spotify.com/track/4osxePfXPhLLm1wlKs79Nw"
+      },
+      "href": "https://api.spotify.com/v1/tracks/4osxePfXPhLLm1wlKs79Nw",
+      "id": "4osxePfXPhLLm1wlKs79Nw",
+      "is_local": false,
+      "is_playable": true,
+      "name": "Feed The Dada - Radio Edit",
+      "popularity": 23,
+      "preview_url": null,
+      "track_number": 1,
+      "type": "track",
+      "uri": "spotify:track:4osxePfXPhLLm1wlKs79Nw"
+    },
+    {
+      "album": {
+        "album_type": "ALBUM",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/0DrYwVIjFimP8cLrrcgewl"
+            },
+            "href": "https://api.spotify.com/v1/artists/0DrYwVIjFimP8cLrrcgewl",
+            "id": "0DrYwVIjFimP8cLrrcgewl",
+            "name": "Michael B. Tretow",
+            "type": "artist",
+            "uri": "spotify:artist:0DrYwVIjFimP8cLrrcgewl"
+          }
+        ],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/086geSDk7eYL5J4MIfle35"
+        },
+        "href": "https://api.spotify.com/v1/albums/086geSDk7eYL5J4MIfle35",
+        "id": "086geSDk7eYL5J4MIfle35",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/ab67616d0000b2733d840ea6e189ef0736a6715b",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/ab67616d00001e023d840ea6e189ef0736a6715b",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/ab67616d000048513d840ea6e189ef0736a6715b",
+            "width": 64
+          }
+        ],
+        "is_playable": true,
+        "name": "Let's Boogie",
+        "release_date": "1976-04-06",
+        "release_date_precision": "day",
+        "total_tracks": 13,
+        "type": "album",
+        "uri": "spotify:album:086geSDk7eYL5J4MIfle35"
+      },
+      "artists": [
+        {
+          "external_urls": {
+            "spotify": "https://open.spotify.com/artist/0DrYwVIjFimP8cLrrcgewl"
+          },
+          "href": "https://api.spotify.com/v1/artists/0DrYwVIjFimP8cLrrcgewl",
+          "id": "0DrYwVIjFimP8cLrrcgewl",
+          "name": "Michael B. Tretow",
+          "type": "artist",
+          "uri": "spotify:artist:0DrYwVIjFimP8cLrrcgewl"
         },
         {
           "external_urls": {
-            "spotify": "https://open.spotify.com/artist/1D2oK3cJRq97OXDzu77BFR"
+            "spotify": "https://open.spotify.com/artist/0LcJLqbBmaGUft1e9Mm8HV"
           },
-          "href": "https://api.spotify.com/v1/artists/1D2oK3cJRq97OXDzu77BFR",
-          "id": "1D2oK3cJRq97OXDzu77BFR",
-          "name": "Ras Fraser Jr.",
+          "href": "https://api.spotify.com/v1/artists/0LcJLqbBmaGUft1e9Mm8HV",
+          "id": "0LcJLqbBmaGUft1e9Mm8HV",
+          "name": "ABBA",
           "type": "artist",
-          "uri": "spotify:artist:1D2oK3cJRq97OXDzu77BFR"
+          "uri": "spotify:artist:0LcJLqbBmaGUft1e9Mm8HV"
+        },
+        {
+          "external_urls": {
+            "spotify": "https://open.spotify.com/artist/6zpub6jbY6CdrcqQsDq8P4"
+          },
+          "href": "https://api.spotify.com/v1/artists/6zpub6jbY6CdrcqQsDq8P4",
+          "id": "6zpub6jbY6CdrcqQsDq8P4",
+          "name": "Ted Gärdestad",
+          "type": "artist",
+          "uri": "spotify:artist:6zpub6jbY6CdrcqQsDq8P4"
         }
       ],
       "disc_number": 1,
-      "duration_ms": 199133,
+      "duration_ms": 169400,
       "explicit": false,
-      "external_urls": {
-        "spotify": "https://open.spotify.com/track/1TKYPzH66GwsqyJFKFkBHQ"
+      "external_ids": {
+        "isrc": "SEBGA1602600"
       },
-      "href": "https://api.spotify.com/v1/tracks/1TKYPzH66GwsqyJFKFkBHQ",
-      "id": "1TKYPzH66GwsqyJFKFkBHQ",
+      "external_urls": {
+        "spotify": "https://open.spotify.com/track/0G207Gng7y7XsGxjycXZQx"
+      },
+      "href": "https://api.spotify.com/v1/tracks/0G207Gng7y7XsGxjycXZQx",
+      "id": "0G207Gng7y7XsGxjycXZQx",
+      "is_local": false,
       "is_playable": true,
-      "name": "Music Is Life",
-      "preview_url": "https://p.scdn.co/mp3-preview/546099103387186dfe16743a33edd77e52cec738",
-      "track_number": 1,
+      "name": "Bottom Coming Up (feat. ABBA & Ted Gärdestad)",
+      "popularity": 22,
+      "preview_url": "https://p.scdn.co/mp3-preview/11794ddd69917aeae3766cd3502e20448d580bdd?cid=27c8986168cb4550ac8c963095f11ecb",
+      "track_number": 3,
       "type": "track",
-      "uri": "spotify:track:1TKYPzH66GwsqyJFKFkBHQ"
+      "uri": "spotify:track:0G207Gng7y7XsGxjycXZQx"
     },
     {
+      "album": {
+        "album_type": "ALBUM",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/1nF6ySrA8ZNCWtwHZJ3I4j"
+            },
+            "href": "https://api.spotify.com/v1/artists/1nF6ySrA8ZNCWtwHZJ3I4j",
+            "id": "1nF6ySrA8ZNCWtwHZJ3I4j",
+            "name": "Sandra Reemer",
+            "type": "artist",
+            "uri": "spotify:artist:1nF6ySrA8ZNCWtwHZJ3I4j"
+          }
+        ],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/2sXcqHDS1ZgARRscys9bFg"
+        },
+        "href": "https://api.spotify.com/v1/albums/2sXcqHDS1ZgARRscys9bFg",
+        "id": "2sXcqHDS1ZgARRscys9bFg",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/ab67616d0000b27321a0862786a29df137b44f72",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/ab67616d00001e0221a0862786a29df137b44f72",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/ab67616d0000485121a0862786a29df137b44f72",
+            "width": 64
+          }
+        ],
+        "is_playable": true,
+        "name": "Xandra",
+        "release_date": "1979-01-01",
+        "release_date_precision": "day",
+        "total_tracks": 16,
+        "type": "album",
+        "uri": "spotify:album:2sXcqHDS1ZgARRscys9bFg"
+      },
       "artists": [
         {
           "external_urls": {
-            "spotify": "https://open.spotify.com/artist/1VBflYyxBhnDc9uVib98rw"
+            "spotify": "https://open.spotify.com/artist/1nF6ySrA8ZNCWtwHZJ3I4j"
           },
-          "href": "https://api.spotify.com/v1/artists/1VBflYyxBhnDc9uVib98rw",
-          "id": "1VBflYyxBhnDc9uVib98rw",
-          "name": "Icona Pop",
+          "href": "https://api.spotify.com/v1/artists/1nF6ySrA8ZNCWtwHZJ3I4j",
+          "id": "1nF6ySrA8ZNCWtwHZJ3I4j",
+          "name": "Sandra Reemer",
           "type": "artist",
-          "uri": "spotify:artist:1VBflYyxBhnDc9uVib98rw"
+          "uri": "spotify:artist:1nF6ySrA8ZNCWtwHZJ3I4j"
         }
       ],
       "disc_number": 1,
-      "duration_ms": 187026,
+      "duration_ms": 173786,
       "explicit": false,
-      "external_urls": {
-        "spotify": "https://open.spotify.com/track/15iosIuxC3C53BgsM5Uggs"
+      "external_ids": {
+        "isrc": "NLA307900036"
       },
-      "href": "https://api.spotify.com/v1/tracks/15iosIuxC3C53BgsM5Uggs",
-      "id": "15iosIuxC3C53BgsM5Uggs",
+      "external_urls": {
+        "spotify": "https://open.spotify.com/track/71SOXS3MVAfAD4v8ejH8k0"
+      },
+      "href": "https://api.spotify.com/v1/tracks/71SOXS3MVAfAD4v8ejH8k0",
+      "id": "71SOXS3MVAfAD4v8ejH8k0",
+      "is_local": false,
       "is_playable": true,
-      "name": "All Night",
-      "preview_url": "https://p.scdn.co/mp3-preview/9ee589fa7fe4e96bad3483c20b3405fb59776424",
+      "name": "Colorado",
+      "popularity": 18,
+      "preview_url": null,
+      "track_number": 8,
+      "type": "track",
+      "uri": "spotify:track:71SOXS3MVAfAD4v8ejH8k0"
+    },
+    {
+      "album": {
+        "album_type": "SINGLE",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/1M9FpVD8zpLVz1Ec4A70cS"
+            },
+            "href": "https://api.spotify.com/v1/artists/1M9FpVD8zpLVz1Ec4A70cS",
+            "id": "1M9FpVD8zpLVz1Ec4A70cS",
+            "name": "Inger Berggren",
+            "type": "artist",
+            "uri": "spotify:artist:1M9FpVD8zpLVz1Ec4A70cS"
+          }
+        ],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/0a10uZCw2kGRbPDvL70EAE"
+        },
+        "href": "https://api.spotify.com/v1/albums/0a10uZCw2kGRbPDvL70EAE",
+        "id": "0a10uZCw2kGRbPDvL70EAE",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/ab67616d0000b2737592852d39d245b5ae302c99",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/ab67616d00001e027592852d39d245b5ae302c99",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/ab67616d000048517592852d39d245b5ae302c99",
+            "width": 64
+          }
+        ],
+        "is_playable": true,
+        "name": "Sol och vår",
+        "release_date": "1962-02-02",
+        "release_date_precision": "day",
+        "total_tracks": 2,
+        "type": "album",
+        "uri": "spotify:album:0a10uZCw2kGRbPDvL70EAE"
+      },
+      "artists": [
+        {
+          "external_urls": {
+            "spotify": "https://open.spotify.com/artist/1M9FpVD8zpLVz1Ec4A70cS"
+          },
+          "href": "https://api.spotify.com/v1/artists/1M9FpVD8zpLVz1Ec4A70cS",
+          "id": "1M9FpVD8zpLVz1Ec4A70cS",
+          "name": "Inger Berggren",
+          "type": "artist",
+          "uri": "spotify:artist:1M9FpVD8zpLVz1Ec4A70cS"
+        }
+      ],
+      "disc_number": 1,
+      "duration_ms": 188173,
+      "explicit": false,
+      "external_ids": {
+        "isrc": "SEAMF6236030"
+      },
+      "external_urls": {
+        "spotify": "https://open.spotify.com/track/7xVrhpdprtkRTjU1Z3xG7H"
+      },
+      "href": "https://api.spotify.com/v1/tracks/7xVrhpdprtkRTjU1Z3xG7H",
+      "id": "7xVrhpdprtkRTjU1Z3xG7H",
+      "is_local": false,
+      "is_playable": true,
+      "name": "Sol och vår",
+      "popularity": 23,
+      "preview_url": "https://p.scdn.co/mp3-preview/154546d5fb0a48039a67aab1cf23fb76b86f85dd?cid=27c8986168cb4550ac8c963095f11ecb",
+      "track_number": 1,
+      "type": "track",
+      "uri": "spotify:track:7xVrhpdprtkRTjU1Z3xG7H"
+    },
+    {
+      "album": {
+        "album_type": "ALBUM",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/0RaR5kDG6RThEm7WOgpLO9"
+            },
+            "href": "https://api.spotify.com/v1/artists/0RaR5kDG6RThEm7WOgpLO9",
+            "id": "0RaR5kDG6RThEm7WOgpLO9",
+            "name": "Nicolas Repac",
+            "type": "artist",
+            "uri": "spotify:artist:0RaR5kDG6RThEm7WOgpLO9"
+          }
+        ],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/7taaeJqw65AyvBSgGZ3dpc"
+        },
+        "href": "https://api.spotify.com/v1/albums/7taaeJqw65AyvBSgGZ3dpc",
+        "id": "7taaeJqw65AyvBSgGZ3dpc",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/ab67616d0000b273b8ac92e57977f1ac2c1f8692",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/ab67616d00001e02b8ac92e57977f1ac2c1f8692",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/ab67616d00004851b8ac92e57977f1ac2c1f8692",
+            "width": 64
+          }
+        ],
+        "is_playable": true,
+        "name": "Swing-Swing",
+        "release_date": "2004-04-20",
+        "release_date_precision": "day",
+        "total_tracks": 17,
+        "type": "album",
+        "uri": "spotify:album:7taaeJqw65AyvBSgGZ3dpc"
+      },
+      "artists": [
+        {
+          "external_urls": {
+            "spotify": "https://open.spotify.com/artist/0RaR5kDG6RThEm7WOgpLO9"
+          },
+          "href": "https://api.spotify.com/v1/artists/0RaR5kDG6RThEm7WOgpLO9",
+          "id": "0RaR5kDG6RThEm7WOgpLO9",
+          "name": "Nicolas Repac",
+          "type": "artist",
+          "uri": "spotify:artist:0RaR5kDG6RThEm7WOgpLO9"
+        }
+      ],
+      "disc_number": 1,
+      "duration_ms": 299133,
+      "explicit": false,
+      "external_ids": {
+        "isrc": "FR2S10380020"
+      },
+      "external_urls": {
+        "spotify": "https://open.spotify.com/track/0tjZZfltCs26FapwZJPo9G"
+      },
+      "href": "https://api.spotify.com/v1/tracks/0tjZZfltCs26FapwZJPo9G",
+      "id": "0tjZZfltCs26FapwZJPo9G",
+      "is_local": false,
+      "is_playable": true,
+      "name": "Swinging in the Rain",
+      "popularity": 24,
+      "preview_url": "https://p.scdn.co/mp3-preview/03eb980c4eeb7d849d94e05fdd84042469928beb?cid=27c8986168cb4550ac8c963095f11ecb",
       "track_number": 2,
       "type": "track",
-      "uri": "spotify:track:15iosIuxC3C53BgsM5Uggs"
+      "uri": "spotify:track:0tjZZfltCs26FapwZJPo9G"
+    },
+    {
+      "album": {
+        "album_type": "ALBUM",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/37J1PlAkhRK7yrZUtqaUpQ"
+            },
+            "href": "https://api.spotify.com/v1/artists/37J1PlAkhRK7yrZUtqaUpQ",
+            "id": "37J1PlAkhRK7yrZUtqaUpQ",
+            "name": "Caravan Palace",
+            "type": "artist",
+            "uri": "spotify:artist:37J1PlAkhRK7yrZUtqaUpQ"
+          }
+        ],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/0AQU2cTRwdbTHkkJLmZZpG"
+        },
+        "href": "https://api.spotify.com/v1/albums/0AQU2cTRwdbTHkkJLmZZpG",
+        "id": "0AQU2cTRwdbTHkkJLmZZpG",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/ab67616d0000b27382e8630923961c066aab5887",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/ab67616d00001e0282e8630923961c066aab5887",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/ab67616d0000485182e8630923961c066aab5887",
+            "width": 64
+          }
+        ],
+        "is_playable": true,
+        "name": "Caravan Palace",
+        "release_date": "2008-10-20",
+        "release_date_precision": "day",
+        "total_tracks": 15,
+        "type": "album",
+        "uri": "spotify:album:0AQU2cTRwdbTHkkJLmZZpG"
+      },
+      "artists": [
+        {
+          "external_urls": {
+            "spotify": "https://open.spotify.com/artist/37J1PlAkhRK7yrZUtqaUpQ"
+          },
+          "href": "https://api.spotify.com/v1/artists/37J1PlAkhRK7yrZUtqaUpQ",
+          "id": "37J1PlAkhRK7yrZUtqaUpQ",
+          "name": "Caravan Palace",
+          "type": "artist",
+          "uri": "spotify:artist:37J1PlAkhRK7yrZUtqaUpQ"
+        }
+      ],
+      "disc_number": 1,
+      "duration_ms": 247133,
+      "explicit": false,
+      "external_ids": {
+        "isrc": "FR89R0800006"
+      },
+      "external_urls": {
+        "spotify": "https://open.spotify.com/track/3ljWuHQxtmYJKKLqW9b04m"
+      },
+      "href": "https://api.spotify.com/v1/tracks/3ljWuHQxtmYJKKLqW9b04m",
+      "id": "3ljWuHQxtmYJKKLqW9b04m",
+      "is_local": false,
+      "is_playable": true,
+      "linked_from": {
+        "external_urls": {
+          "spotify": "https://open.spotify.com/track/1UMvwF4tb9EoHJF75Av5Cy"
+        },
+        "href": "https://api.spotify.com/v1/tracks/1UMvwF4tb9EoHJF75Av5Cy",
+        "id": "1UMvwF4tb9EoHJF75Av5Cy",
+        "type": "track",
+        "uri": "spotify:track:1UMvwF4tb9EoHJF75Av5Cy"
+      },
+      "name": "Suzy",
+      "popularity": 23,
+      "preview_url": "https://p.scdn.co/mp3-preview/2e6ac81521e5fc3e31aaa73f438edfeefe039b2a?cid=27c8986168cb4550ac8c963095f11ecb",
+      "track_number": 6,
+      "type": "track",
+      "uri": "spotify:track:3ljWuHQxtmYJKKLqW9b04m"
     }
   ],
   "seeds": [
     {
-      "initialPoolSize": 500,
-      "afterFilteringSize": 380,
-      "afterRelinkingSize": 365,
-      "href": "https://api.spotify.com/v1/artists/4NHQUGzhtTLFvgF5SZesLK",
-      "id": "4NHQUGzhtTLFvgF5SZesLK",
-      "type": "artist"
+      "initialPoolSize": 448,
+      "afterFilteringSize": 120,
+      "afterRelinkingSize": 121,
+      "id": "0LcJLqbBmaGUft1e9Mm8HV",
+      "type": "ARTIST",
+      "href": "https://api.spotify.com/v1/artists/0LcJLqbBmaGUft1e9Mm8HV"
     },
     {
-      "initialPoolSize": 250,
-      "afterFilteringSize": 172,
-      "afterRelinkingSize": 144,
-      "href": "https://api.spotify.com/v1/tracks/0c6xIDDpzE81m2q797ordA",
-      "id": "0c6xIDDpzE81m2q797ordA",
-      "type": "track"
+      "initialPoolSize": 448,
+      "afterFilteringSize": 120,
+      "afterRelinkingSize": 121,
+      "id": "01iyCAUm8EvOFqVWYJ3dVX",
+      "type": "TRACK",
+      "href": "https://api.spotify.com/v1/tracks/01iyCAUm8EvOFqVWYJ3dVX"
+    },
+    {
+      "initialPoolSize": 656,
+      "afterFilteringSize": 174,
+      "afterRelinkingSize": 176,
+      "id": "electro",
+      "type": "GENRE",
+      "href": null
     }
   ]
 }

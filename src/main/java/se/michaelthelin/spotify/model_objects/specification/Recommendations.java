@@ -13,7 +13,7 @@ import java.util.Arrays;
 @JsonDeserialize(builder = Recommendations.Builder.class)
 public class Recommendations extends AbstractModelObject {
   private final RecommendationsSeed[] seeds;
-  private final TrackSimplified[] tracks;
+  private final Track[] tracks;
 
   private Recommendations(final Builder builder) {
     super(builder);
@@ -32,11 +32,11 @@ public class Recommendations extends AbstractModelObject {
   }
 
   /**
-   * Get the (simplified) tracks from the recommendations object.
+   * Get the tracks from the recommendations object.
    *
-   * @return An array of track object (simplified) ordered according to the parameters supplied.
+   * @return An array of track object ordered according to the parameters supplied.
    */
-  public TrackSimplified[] getTracks() {
+  public Track[] getTracks() {
     return tracks;
   }
 
@@ -55,7 +55,7 @@ public class Recommendations extends AbstractModelObject {
    */
   public static final class Builder extends AbstractModelObject.Builder {
     private RecommendationsSeed[] seeds;
-    private TrackSimplified[] tracks;
+    private Track[] tracks;
 
     /**
      * The recommendation seeds setter.
@@ -71,10 +71,10 @@ public class Recommendations extends AbstractModelObject {
     /**
      * The recommended tracks setter.
      *
-     * @param tracks An array of track objects (simplified).
+     * @param tracks An array of track objects.
      * @return A {@link Recommendations.Builder}.
      */
-    public Builder setTracks(TrackSimplified... tracks) {
+    public Builder setTracks(Track... tracks) {
       this.tracks = tracks;
       return this;
     }
@@ -102,7 +102,7 @@ public class Recommendations extends AbstractModelObject {
             : null)
         .setTracks(
           hasAndNotNull(jsonObject, "tracks")
-            ? new TrackSimplified.JsonUtil().createModelObjectArray(
+            ? new Track.JsonUtil().createModelObjectArray(
             jsonObject.getAsJsonArray("tracks"))
             : null)
         .build();
