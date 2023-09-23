@@ -1,6 +1,6 @@
 name: CI
 
-on: [create, pull_request, push]
+on: [pull_request, push]
 
 jobs:
   prepare_jobs:
