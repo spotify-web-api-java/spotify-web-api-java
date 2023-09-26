@@ -1138,6 +1138,34 @@ public class SpotifyApi {
   }
 
   /**
+   * Save one or more episodes to the current user's library.
+   *
+   * @param ids The episode IDs to add to the users library. Maximum: 50 IDs.
+   * @return A {@link SaveEpisodesForCurrentUserRequest.Builder}.
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
+   * @apiNote This endpoint is in <b>beta</b> and could change without warning.
+   */
+  public SaveEpisodesForCurrentUserRequest.Builder saveEpisodesForCurrentUser(String... ids) {
+    return new SaveEpisodesForCurrentUserRequest.Builder(accessToken)
+      .setDefaults(httpManager, scheme, host, port)
+      .ids(concat(ids, ','));
+  }
+
+  /**
+   * Save one or more episodes to the current user's library.
+   *
+   * @param ids The episode IDs to add to the users library. Maximum: 50 IDs.
+   * @return A {@link SaveEpisodesForCurrentUserRequest.Builder}.
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
+   * @apiNote This endpoint is in <b>beta</b> and could change without warning.
+   */
+  public SaveEpisodesForCurrentUserRequest.Builder saveEpisodesForCurrentUser(JsonArray ids) {
+    return new SaveEpisodesForCurrentUserRequest.Builder(accessToken)
+      .setDefaults(httpManager, scheme, host, port)
+      .ids(ids);
+  }
+
+  /**
    * Save tracks in the user's "Your Music" library.
    *
    * @param ids The track IDs to add to the user's library. Maximum: 50 IDs.
