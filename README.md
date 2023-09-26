@@ -272,6 +272,7 @@ access token only once, after which it becomes invalid.
   - [Get User's Saved Tracks](examples/data/library/GetUsersSavedTracksExample.java)
   - [Remove Albums for Current User](examples/data/library/RemoveAlbumsForCurrentUserExample.java)
   - [Remove User's Saved Shows](examples/data/library/RemoveUsersSavedShowsExample.java)
+  - [Remove User's Saved Episodes](examples/data/library/RemoveUsersSavedEpisodesExample.java)
   - [Remove User's Saved Tracks](examples/data/library/RemoveUsersSavedTracksExample.java)
   - [Save Albums for Current User](examples/data/library/SaveAlbumsForCurrentUserExample.java)
   - [Save Shows for Current User](examples/data/library/SaveShowsForCurrentUserExample.java)

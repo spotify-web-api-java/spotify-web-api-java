@@ -1060,6 +1060,34 @@ public class SpotifyApi {
   }
 
   /**
+   * Remove one or more episodes from the current user's library.
+   *
+   * @param ids The Spotify IDs for the episodes to be removed. Maximum: 50 IDs.
+   * @return A {@link RemoveUsersSavedEpisodesRequest.Builder}.
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
+   * @apiNote This endpoint is in <b>beta</b> and could change without warning.
+   */
+  public RemoveUsersSavedEpisodesRequest.Builder removeUsersSavedEpisodes(String... ids) {
+    return new RemoveUsersSavedEpisodesRequest.Builder(accessToken)
+      .setDefaults(httpManager, scheme, host, port)
+      .ids(concat(ids, ','));
+  }
+
+  /**
+   * Remove one or more episodes from the current user's library.
+   *
+   * @param ids The Spotify IDs for the episodes to be removed. Maximum: 50 IDs.
+   * @return A {@link RemoveUsersSavedEpisodesRequest.Builder}.
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
+   * @apiNote This endpoint is in <b>beta</b> and could change without warning.
+   */
+  public RemoveUsersSavedEpisodesRequest.Builder removeUsersSavedEpisodes(JsonArray ids) {
+    return new RemoveUsersSavedEpisodesRequest.Builder(accessToken)
+      .setDefaults(httpManager, scheme, host, port)
+      .ids(ids);
+  }
+
+  /**
    * Remove a track if saved to the user's "Your Music" library.
    *
    * @param ids The track IDs to remove from the user's Your Music library. Maximum: 50 IDs.
