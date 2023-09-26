@@ -987,6 +987,17 @@ public class SpotifyApi {
   }
 
   /**
+   * Get a list of the episodes saved in the current Spotify user's library.
+   *
+   * @return A {@link GetUsersSavedEpisodesRequest.Builder}.
+   * @apiNote This endpoint is in <b>beta</b> and could change without warning.
+   */
+  public GetUsersSavedEpisodesRequest.Builder getUsersSavedEpisodes() {
+    return new GetUsersSavedEpisodesRequest.Builder(accessToken)
+      .setDefaults(httpManager, scheme, host, port);
+  }
+
+  /**
    * Get an user's "Your Music" tracks.
    *
    * @return A {@link GetUsersSavedTracksRequest.Builder}.
