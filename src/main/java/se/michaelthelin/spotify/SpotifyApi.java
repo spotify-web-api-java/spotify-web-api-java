@@ -954,6 +954,20 @@ public class SpotifyApi {
   }
 
   /**
+   * Check if one or more episodes is already saved in the current Spotify user's 'Your Episodes' library.
+   *
+   * @param ids The episode IDs to check for in the user's 'Your Episodes' library. Maximum: 50 IDs.
+   * @return A {@link CheckUsersSavedEpisodesRequest.Builder}.
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
+   * @apiNote This endpoint is in <b>beta</b> and could change without warning.
+   */
+  public CheckUsersSavedEpisodesRequest.Builder checkUsersSavedEpisodes(String... ids) {
+    return new CheckUsersSavedEpisodesRequest.Builder(accessToken)
+      .setDefaults(httpManager, scheme, host, port)
+      .ids(concat(ids, ','));
+  }
+
+  /**
    * Check if a track is saved in the user's "Your Music" library.
    *
    * @param ids The track IDs to check for in the user's Your Music library. Maximum: 50 IDs.
