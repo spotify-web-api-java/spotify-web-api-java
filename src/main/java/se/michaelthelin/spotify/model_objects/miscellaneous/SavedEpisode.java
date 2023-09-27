@@ -1,9 +1,10 @@
-package se.michaelthelin.spotify.model_objects.specification;
+package se.michaelthelin.spotify.model_objects.miscellaneous;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.SpotifyApi;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
+import se.michaelthelin.spotify.model_objects.specification.Episode;
 
 import java.text.ParseException;
 import java.util.Date;

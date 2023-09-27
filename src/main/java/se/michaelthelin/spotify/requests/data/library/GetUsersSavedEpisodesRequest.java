@@ -5,7 +5,7 @@ import com.neovisionaries.i18n.CountryCode;
 import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.model_objects.specification.Paging;
-import se.michaelthelin.spotify.model_objects.specification.SavedEpisode;
+import se.michaelthelin.spotify.model_objects.miscellaneous.SavedEpisode;
 import se.michaelthelin.spotify.requests.data.AbstractDataPagingRequest;
 import se.michaelthelin.spotify.requests.data.AbstractDataRequest;
 
