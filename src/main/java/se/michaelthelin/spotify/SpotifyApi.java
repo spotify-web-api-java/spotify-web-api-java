@@ -955,11 +955,11 @@ public class SpotifyApi {
 
   /**
    * Check if one or more episodes is already saved in the current Spotify user's 'Your Episodes' library.
+   * This endpoint is in <b>beta</b> and could change without warning.
    *
    * @param ids The episode IDs to check for in the user's 'Your Episodes' library. Maximum: 50 IDs.
    * @return A {@link CheckUsersSavedEpisodesRequest.Builder}.
    * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
-   * @apiNote This endpoint is in <b>beta</b> and could change without warning.
    */
   public CheckUsersSavedEpisodesRequest.Builder checkUsersSavedEpisodes(String... ids) {
     return new CheckUsersSavedEpisodesRequest.Builder(accessToken)
@@ -1002,9 +1002,9 @@ public class SpotifyApi {
 
   /**
    * Get a list of the episodes saved in the current Spotify user's library.
+   * This endpoint is in <b>beta</b> and could change without warning.
    *
    * @return A {@link GetUsersSavedEpisodesRequest.Builder}.
-   * @apiNote This endpoint is in <b>beta</b> and could change without warning.
    */
   public GetUsersSavedEpisodesRequest.Builder getUsersSavedEpisodes() {
     return new GetUsersSavedEpisodesRequest.Builder(accessToken)
@@ -1075,11 +1075,11 @@ public class SpotifyApi {
 
   /**
    * Remove one or more episodes from the current user's library.
+   * This endpoint is in <b>beta</b> and could change without warning.
    *
    * @param ids The Spotify IDs for the episodes to be removed. Maximum: 50 IDs.
    * @return A {@link RemoveUsersSavedEpisodesRequest.Builder}.
    * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
-   * @apiNote This endpoint is in <b>beta</b> and could change without warning.
    */
   public RemoveUsersSavedEpisodesRequest.Builder removeUsersSavedEpisodes(String... ids) {
     return new RemoveUsersSavedEpisodesRequest.Builder(accessToken)
@@ -1089,11 +1089,11 @@ public class SpotifyApi {
 
   /**
    * Remove one or more episodes from the current user's library.
+   * This endpoint is in <b>beta</b> and could change without warning.
    *
    * @param ids The Spotify IDs for the episodes to be removed. Maximum: 50 IDs.
    * @return A {@link RemoveUsersSavedEpisodesRequest.Builder}.
    * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
-   * @apiNote This endpoint is in <b>beta</b> and could change without warning.
    */
   public RemoveUsersSavedEpisodesRequest.Builder removeUsersSavedEpisodes(JsonArray ids) {
     return new RemoveUsersSavedEpisodesRequest.Builder(accessToken)
@@ -1156,7 +1156,7 @@ public class SpotifyApi {
   /**
    * Save one or more shows to current Spotify user’s library.
    *
-   * @param ids The show IDs to add to the users library. Maximum: 50 IDs.
+   * @param ids The show IDs to add to the user's library. Maximum: 50 IDs.
    * @return A {@link SaveShowsForCurrentUserRequest.Builder}.
    * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
    */
@@ -1169,7 +1169,7 @@ public class SpotifyApi {
   /**
    * Save one or more shows to current Spotify user’s library.
    *
-   * @param ids The show IDs to add to the users library. Maximum: 50 IDs.
+   * @param ids The show IDs to add to the user's library. Maximum: 50 IDs.
    * @return A {@link SaveShowsForCurrentUserRequest.Builder}.
    * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
    */
@@ -1181,11 +1181,11 @@ public class SpotifyApi {
 
   /**
    * Save one or more episodes to the current user's library.
+   * This endpoint is in <b>beta</b> and could change without warning.
    *
-   * @param ids The episode IDs to add to the users library. Maximum: 50 IDs.
+   * @param ids The episode IDs to add to the user's library. Maximum: 50 IDs.
    * @return A {@link SaveEpisodesForCurrentUserRequest.Builder}.
    * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
-   * @apiNote This endpoint is in <b>beta</b> and could change without warning.
    */
   public SaveEpisodesForCurrentUserRequest.Builder saveEpisodesForCurrentUser(String... ids) {
     return new SaveEpisodesForCurrentUserRequest.Builder(accessToken)
@@ -1195,11 +1195,11 @@ public class SpotifyApi {
 
   /**
    * Save one or more episodes to the current user's library.
+   * This endpoint is in <b>beta</b> and could change without warning.
    *
-   * @param ids The episode IDs to add to the users library. Maximum: 50 IDs.
+   * @param ids The episode IDs to add to the user's library. Maximum: 50 IDs.
    * @return A {@link SaveEpisodesForCurrentUserRequest.Builder}.
    * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
-   * @apiNote This endpoint is in <b>beta</b> and could change without warning.
    */
   public SaveEpisodesForCurrentUserRequest.Builder saveEpisodesForCurrentUser(JsonArray ids) {
     return new SaveEpisodesForCurrentUserRequest.Builder(accessToken)
