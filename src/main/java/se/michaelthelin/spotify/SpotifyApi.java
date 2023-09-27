@@ -547,7 +547,7 @@ public class SpotifyApi {
    *
    * @param id The Spotify album ID of the album you're trying to retrieve.
    * @return A {@link GetAlbumRequest.Builder}.
-   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
    */
   public GetAlbumRequest.Builder getAlbum(String id) {
     return new GetAlbumRequest.Builder(accessToken)
@@ -560,7 +560,7 @@ public class SpotifyApi {
    *
    * @param id The Spotify ID of the album you're trying to retrieve.
    * @return A {@link GetAlbumsTracksRequest.Builder}.
-   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
    */
   public GetAlbumsTracksRequest.Builder getAlbumsTracks(String id) {
     return new GetAlbumsTracksRequest.Builder(accessToken)
@@ -573,7 +573,7 @@ public class SpotifyApi {
    *
    * @param ids The Spotify IDs of all albums you're trying to retrieve. Maximum: 20 IDs.
    * @return A {@link GetSeveralAlbumsRequest.Builder}.
-   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
    */
   public GetSeveralAlbumsRequest.Builder getSeveralAlbums(String... ids) {
     return new GetSeveralAlbumsRequest.Builder(accessToken)
@@ -586,7 +586,7 @@ public class SpotifyApi {
    *
    * @param id The Spotify ID of the artist.
    * @return A {@link GetArtistRequest.Builder}.
-   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
    */
   public GetArtistRequest.Builder getArtist(String id) {
     return new GetArtistRequest.Builder(accessToken)
@@ -599,7 +599,7 @@ public class SpotifyApi {
    *
    * @param id The Spotify ID of the artist.
    * @return A {@link GetArtistsAlbumsRequest.Builder}.
-   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
    */
   public GetArtistsAlbumsRequest.Builder getArtistsAlbums(String id) {
     return new GetArtistsAlbumsRequest.Builder(accessToken)
@@ -613,7 +613,7 @@ public class SpotifyApi {
    * @param id      The Spotify ID of the artist.
    * @param country The ISO 3166-1 alpha-2 country code of the specific country.
    * @return A {@link GetArtistsTopTracksRequest.Builder}.
-   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
    * @see <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">Wikipedia: ISO 3166-1 alpha-2 country codes </a>
    */
   public GetArtistsTopTracksRequest.Builder getArtistsTopTracks(String id, CountryCode country) {
@@ -628,7 +628,7 @@ public class SpotifyApi {
    *
    * @param id The Spotify ID of the artist.
    * @return A {@link GetArtistsRelatedArtistsRequest.Builder}.
-   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
    */
   public GetArtistsRelatedArtistsRequest.Builder getArtistsRelatedArtists(String id) {
     return new GetArtistsRelatedArtistsRequest.Builder(accessToken)
@@ -641,7 +641,7 @@ public class SpotifyApi {
    *
    * @param ids The Spotify IDs of all artists you're trying to retrieve. Maximum: 50 IDs.
    * @return A {@link GetSeveralArtistsRequest.Builder}.
-   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
    */
   public GetSeveralArtistsRequest.Builder getSeveralArtists(String... ids) {
     return new GetSeveralArtistsRequest.Builder(accessToken)
@@ -654,7 +654,7 @@ public class SpotifyApi {
    *
    * @param category_id The Spotify category ID for the category.
    * @return A {@link GetCategoryRequest.Builder}.
-   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
    */
   public GetCategoryRequest.Builder getCategory(String category_id) {
     return new GetCategoryRequest.Builder(accessToken)
@@ -667,7 +667,7 @@ public class SpotifyApi {
    *
    * @param category_id The Spotify category ID for the category.
    * @return A {@link GetCategorysPlaylistsRequest.Builder}.
-   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
    */
   public GetCategorysPlaylistsRequest.Builder getCategorysPlaylists(String category_id) {
     return new GetCategorysPlaylistsRequest.Builder(accessToken)
@@ -730,7 +730,7 @@ public class SpotifyApi {
    *
    * @param id The Spotify ID of the episode.
    * @return A {@link GetEpisodeRequest.Builder}.
-   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
    */
   public GetEpisodeRequest.Builder getEpisode(String id) {
     return new GetEpisodeRequest.Builder(accessToken)
@@ -743,7 +743,7 @@ public class SpotifyApi {
    *
    * @param ids The Spotify IDs of all episodes you're trying to retrieve. Maximum: 50 IDs.
    * @return A {@link GetSeveralEpisodesRequest.Builder}.
-   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
    */
   public GetSeveralEpisodesRequest.Builder getSeveralEpisodes(String... ids) {
     return new GetSeveralEpisodesRequest.Builder(accessToken)
@@ -757,7 +757,7 @@ public class SpotifyApi {
    * @param type The ID type: either artist or user.
    * @param ids  A list of the artist or the user Spotify IDs to check. Maximum: 50 IDs.
    * @return A {@link CheckCurrentUserFollowsArtistsOrUsersRequest.Builder}.
-   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
    */
   public CheckCurrentUserFollowsArtistsOrUsersRequest.Builder checkCurrentUserFollowsArtistsOrUsers(
     ModelObjectType type, String[] ids) {
@@ -775,7 +775,7 @@ public class SpotifyApi {
    * @param ids         A list of Spotify User IDs; the IDs of the users that you want to check to see if they
    *                    follow the playlist. Maximum: 5 IDs.
    * @return A {@link CheckUsersFollowPlaylistRequest.Builder}.
-   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
    */
   public CheckUsersFollowPlaylistRequest.Builder checkUsersFollowPlaylist(
     String owner_id, String playlist_id, String[] ids) {
@@ -792,7 +792,7 @@ public class SpotifyApi {
    * @param type The ID type: either artist or user.
    * @param ids  A list of the artist or the user Spotify IDs. Maximum: 50 IDs.
    * @return A {@link FollowArtistsOrUsersRequest.Builder}.
-   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
    */
   public FollowArtistsOrUsersRequest.Builder followArtistsOrUsers(ModelObjectType type, String[] ids) {
     return new FollowArtistsOrUsersRequest.Builder(accessToken)
@@ -807,7 +807,7 @@ public class SpotifyApi {
    * @param type The ID type: either artist or user.
    * @param ids  A list of the artist or the user Spotify IDs. Maximum: 50 IDs.
    * @return A {@link FollowArtistsOrUsersRequest.Builder}.
-   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
    */
   public FollowArtistsOrUsersRequest.Builder followArtistsOrUsers(ModelObjectType type, JsonArray ids) {
     return new FollowArtistsOrUsersRequest.Builder(accessToken)
@@ -826,7 +826,7 @@ public class SpotifyApi {
    *                    will remain private. To be able to follow playlists privately, the user must have granted the
    *                    playlist-modify-private scope.
    * @return A {@link FollowPlaylistRequest.Builder}.
-   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
    */
   public FollowPlaylistRequest.Builder followPlaylist(String owner_id, String playlist_id, boolean public_) {
     return new FollowPlaylistRequest.Builder(accessToken)
@@ -846,7 +846,7 @@ public class SpotifyApi {
    *                    will remain private. To be able to follow playlists privately, the user must have granted the
    *                    playlist-modify-private scope.
    * @return A {@link FollowPlaylistRequest.Builder}.
-   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
    */
   public se.michaelthelin.spotify.requests.data.follow.FollowPlaylistRequest.Builder followPlaylist(String playlist_id, boolean public_) {
     return new se.michaelthelin.spotify.requests.data.follow.FollowPlaylistRequest.Builder(accessToken)
@@ -861,7 +861,7 @@ public class SpotifyApi {
    *
    * @param type The ID type: currently only artist is supported.
    * @return A {@link GetUsersFollowedArtistsRequest.Builder}.
-   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
    */
   public GetUsersFollowedArtistsRequest.Builder getUsersFollowedArtists(ModelObjectType type) {
     return new GetUsersFollowedArtistsRequest.Builder(accessToken)
@@ -875,7 +875,7 @@ public class SpotifyApi {
    * @param type The ID type: either artist or user.
    * @param ids  A list of the artist or the user Spotify IDs. Maximum: 50 IDs.
    * @return A {@link UnfollowArtistsOrUsersRequest.Builder}.
-   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
    */
   public UnfollowArtistsOrUsersRequest.Builder unfollowArtistsOrUsers(ModelObjectType type, String[] ids) {
     return new UnfollowArtistsOrUsersRequest.Builder(accessToken)
@@ -890,7 +890,7 @@ public class SpotifyApi {
    * @param type The ID type: either artist or user.
    * @param ids  A JSON array of the artist or the user Spotify IDs. Maximum: 50 IDs.
    * @return A {@link UnfollowArtistsOrUsersRequest.Builder}.
-   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
    */
   public UnfollowArtistsOrUsersRequest.Builder unfollowArtistsOrUsers(ModelObjectType type, JsonArray ids) {
     return new UnfollowArtistsOrUsersRequest.Builder(accessToken)
@@ -905,7 +905,7 @@ public class SpotifyApi {
    * @param owner_id    The owners username.
    * @param playlist_id The playlist's ID.
    * @return An {@link UnfollowPlaylistRequest.Builder}.
-   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
    */
   public UnfollowPlaylistRequest.Builder unfollowPlaylist(String owner_id, String playlist_id) {
     return new UnfollowPlaylistRequest.Builder(accessToken)
@@ -919,7 +919,7 @@ public class SpotifyApi {
    *
    * @param playlist_id The playlist's ID.
    * @return An {@link se.michaelthelin.spotify.requests.data.follow.UnfollowPlaylistRequest.Builder}.
-   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
    */
   public se.michaelthelin.spotify.requests.data.follow.UnfollowPlaylistRequest.Builder unfollowPlaylist(String playlist_id) {
     return new se.michaelthelin.spotify.requests.data.follow.UnfollowPlaylistRequest.Builder(accessToken)
@@ -932,7 +932,7 @@ public class SpotifyApi {
    *
    * @param ids The album IDs to check for in the user's Your Music library. Maximum: 50 IDs.
    * @return A {@link CheckUsersSavedAlbumsRequest.Builder}.
-   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
    */
   public CheckUsersSavedAlbumsRequest.Builder checkUsersSavedAlbums(String... ids) {
     return new CheckUsersSavedAlbumsRequest.Builder(accessToken)
@@ -945,10 +945,24 @@ public class SpotifyApi {
    *
    * @param ids The show IDs to check for in the user's Your Music library. Maximum: 50 IDs.
    * @return A {@link CheckUsersSavedShowsRequest.Builder}.
-   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
    */
   public CheckUsersSavedShowsRequest.Builder checkUsersSavedShows(String... ids) {
     return new CheckUsersSavedShowsRequest.Builder(accessToken)
+      .setDefaults(httpManager, scheme, host, port)
+      .ids(concat(ids, ','));
+  }
+
+  /**
+   * Check if one or more episodes is already saved in the current Spotify user's 'Your Episodes' library.
+   * This endpoint is in <b>beta</b> and could change without warning.
+   *
+   * @param ids The episode IDs to check for in the user's 'Your Episodes' library. Maximum: 50 IDs.
+   * @return A {@link CheckUsersSavedEpisodesRequest.Builder}.
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
+   */
+  public CheckUsersSavedEpisodesRequest.Builder checkUsersSavedEpisodes(String... ids) {
+    return new CheckUsersSavedEpisodesRequest.Builder(accessToken)
       .setDefaults(httpManager, scheme, host, port)
       .ids(concat(ids, ','));
   }
@@ -958,7 +972,7 @@ public class SpotifyApi {
    *
    * @param ids The track IDs to check for in the user's Your Music library. Maximum: 50 IDs.
    * @return A {@link CheckUsersSavedTracksRequest.Builder}.
-   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
    */
   public CheckUsersSavedTracksRequest.Builder checkUsersSavedTracks(String... ids) {
     return new CheckUsersSavedTracksRequest.Builder(accessToken)
@@ -987,6 +1001,17 @@ public class SpotifyApi {
   }
 
   /**
+   * Get a list of the episodes saved in the current Spotify user's library.
+   * This endpoint is in <b>beta</b> and could change without warning.
+   *
+   * @return A {@link GetUsersSavedEpisodesRequest.Builder}.
+   */
+  public GetUsersSavedEpisodesRequest.Builder getUsersSavedEpisodes() {
+    return new GetUsersSavedEpisodesRequest.Builder(accessToken)
+      .setDefaults(httpManager, scheme, host, port);
+  }
+
+  /**
    * Get an user's "Your Music" tracks.
    *
    * @return A {@link GetUsersSavedTracksRequest.Builder}.
@@ -1001,7 +1026,7 @@ public class SpotifyApi {
    *
    * @param ids A list of the Spotify IDs. Maximum: 50 IDs.
    * @return A {@link RemoveAlbumsForCurrentUserRequest.Builder}.
-   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
    */
   public RemoveAlbumsForCurrentUserRequest.Builder removeAlbumsForCurrentUser(String... ids) {
     return new RemoveAlbumsForCurrentUserRequest.Builder(accessToken)
@@ -1014,7 +1039,7 @@ public class SpotifyApi {
    *
    * @param ids The Spotify IDs for the albums to be deleted. Maximum: 50 IDs.
    * @return A {@link RemoveAlbumsForCurrentUserRequest.Builder}.
-   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
    */
   public RemoveAlbumsForCurrentUserRequest.Builder removeAlbumsForCurrentUser(JsonArray ids) {
     return new RemoveAlbumsForCurrentUserRequest.Builder(accessToken)
@@ -1027,7 +1052,7 @@ public class SpotifyApi {
    *
    * @param ids The Spotify IDs for the shows to be deleted. Maximum: 50 IDs.
    * @return A {@link RemoveAlbumsForCurrentUserRequest.Builder}.
-   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
    */
   public RemoveUsersSavedShowsRequest.Builder removeUsersSavedShows(String... ids) {
     return new RemoveUsersSavedShowsRequest.Builder(accessToken)
@@ -1040,10 +1065,38 @@ public class SpotifyApi {
    *
    * @param ids The Spotify IDs for the shows to be deleted. Maximum: 50 IDs.
    * @return A {@link RemoveAlbumsForCurrentUserRequest.Builder}.
-   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
    */
   public RemoveUsersSavedShowsRequest.Builder removeUsersSavedShows(JsonArray ids) {
     return new RemoveUsersSavedShowsRequest.Builder(accessToken)
+      .setDefaults(httpManager, scheme, host, port)
+      .ids(ids);
+  }
+
+  /**
+   * Remove one or more episodes from the current user's library.
+   * This endpoint is in <b>beta</b> and could change without warning.
+   *
+   * @param ids The Spotify IDs for the episodes to be removed. Maximum: 50 IDs.
+   * @return A {@link RemoveUsersSavedEpisodesRequest.Builder}.
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
+   */
+  public RemoveUsersSavedEpisodesRequest.Builder removeUsersSavedEpisodes(String... ids) {
+    return new RemoveUsersSavedEpisodesRequest.Builder(accessToken)
+      .setDefaults(httpManager, scheme, host, port)
+      .ids(concat(ids, ','));
+  }
+
+  /**
+   * Remove one or more episodes from the current user's library.
+   * This endpoint is in <b>beta</b> and could change without warning.
+   *
+   * @param ids The Spotify IDs for the episodes to be removed. Maximum: 50 IDs.
+   * @return A {@link RemoveUsersSavedEpisodesRequest.Builder}.
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
+   */
+  public RemoveUsersSavedEpisodesRequest.Builder removeUsersSavedEpisodes(JsonArray ids) {
+    return new RemoveUsersSavedEpisodesRequest.Builder(accessToken)
       .setDefaults(httpManager, scheme, host, port)
       .ids(ids);
   }
@@ -1053,7 +1106,7 @@ public class SpotifyApi {
    *
    * @param ids The track IDs to remove from the user's Your Music library. Maximum: 50 IDs.
    * @return A {@link RemoveUsersSavedTracksRequest.Builder}.
-   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
    */
   public RemoveUsersSavedTracksRequest.Builder removeUsersSavedTracks(String... ids) {
     return new RemoveUsersSavedTracksRequest.Builder(accessToken)
@@ -1066,7 +1119,7 @@ public class SpotifyApi {
    *
    * @param ids The track IDs to remove from the user's Your Music library. Maximum: 50 IDs.
    * @return A {@link RemoveUsersSavedTracksRequest.Builder}.
-   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
    */
   public RemoveUsersSavedTracksRequest.Builder removeUsersSavedTracks(JsonArray ids) {
     return new RemoveUsersSavedTracksRequest.Builder(accessToken)
@@ -1079,7 +1132,7 @@ public class SpotifyApi {
    *
    * @param ids The album IDs to add to the user's library. Maximum: 50 IDs.
    * @return A {@link SaveAlbumsForCurrentUserRequest.Builder}.
-   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
    */
   public SaveAlbumsForCurrentUserRequest.Builder saveAlbumsForCurrentUser(String... ids) {
     return new SaveAlbumsForCurrentUserRequest.Builder(accessToken)
@@ -1092,7 +1145,7 @@ public class SpotifyApi {
    *
    * @param ids The album IDs to add to the user's library. Maximum: 50 IDs.
    * @return A {@link SaveAlbumsForCurrentUserRequest.Builder}.
-   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
    */
   public SaveAlbumsForCurrentUserRequest.Builder saveAlbumsForCurrentUser(JsonArray ids) {
     return new SaveAlbumsForCurrentUserRequest.Builder(accessToken)
@@ -1103,9 +1156,9 @@ public class SpotifyApi {
   /**
    * Save one or more shows to current Spotify user’s library.
    *
-   * @param ids The show IDs to add to the users library. Maximum: 50 IDs.
+   * @param ids The show IDs to add to the user's library. Maximum: 50 IDs.
    * @return A {@link SaveShowsForCurrentUserRequest.Builder}.
-   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
    */
   public SaveShowsForCurrentUserRequest.Builder saveShowsForCurrentUser(String... ids) {
     return new SaveShowsForCurrentUserRequest.Builder(accessToken)
@@ -1116,12 +1169,40 @@ public class SpotifyApi {
   /**
    * Save one or more shows to current Spotify user’s library.
    *
-   * @param ids The show IDs to add to the users library. Maximum: 50 IDs.
+   * @param ids The show IDs to add to the user's library. Maximum: 50 IDs.
    * @return A {@link SaveShowsForCurrentUserRequest.Builder}.
-   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
    */
   public SaveShowsForCurrentUserRequest.Builder saveShowsForCurrentUser(JsonArray ids) {
     return new SaveShowsForCurrentUserRequest.Builder(accessToken)
+      .setDefaults(httpManager, scheme, host, port)
+      .ids(ids);
+  }
+
+  /**
+   * Save one or more episodes to the current user's library.
+   * This endpoint is in <b>beta</b> and could change without warning.
+   *
+   * @param ids The episode IDs to add to the user's library. Maximum: 50 IDs.
+   * @return A {@link SaveEpisodesForCurrentUserRequest.Builder}.
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
+   */
+  public SaveEpisodesForCurrentUserRequest.Builder saveEpisodesForCurrentUser(String... ids) {
+    return new SaveEpisodesForCurrentUserRequest.Builder(accessToken)
+      .setDefaults(httpManager, scheme, host, port)
+      .ids(concat(ids, ','));
+  }
+
+  /**
+   * Save one or more episodes to the current user's library.
+   * This endpoint is in <b>beta</b> and could change without warning.
+   *
+   * @param ids The episode IDs to add to the user's library. Maximum: 50 IDs.
+   * @return A {@link SaveEpisodesForCurrentUserRequest.Builder}.
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
+   */
+  public SaveEpisodesForCurrentUserRequest.Builder saveEpisodesForCurrentUser(JsonArray ids) {
+    return new SaveEpisodesForCurrentUserRequest.Builder(accessToken)
       .setDefaults(httpManager, scheme, host, port)
       .ids(ids);
   }
@@ -1131,7 +1212,7 @@ public class SpotifyApi {
    *
    * @param ids The track IDs to add to the user's library. Maximum: 50 IDs.
    * @return A {@link SaveTracksForUserRequest.Builder}.
-   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
    */
   public SaveTracksForUserRequest.Builder saveTracksForUser(String... ids) {
     return new SaveTracksForUserRequest.Builder(accessToken)
@@ -1144,7 +1225,7 @@ public class SpotifyApi {
    *
    * @param ids The track IDs to add to the user's library. Maximum: 50 IDs.
    * @return A {@link SaveTracksForUserRequest.Builder}.
-   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
    */
   public SaveTracksForUserRequest.Builder saveTracksForUser(JsonArray ids) {
     return new SaveTracksForUserRequest.Builder(accessToken)
@@ -1350,7 +1431,7 @@ public class SpotifyApi {
    *
    * @param uri The uri of the item to add to the queue. Must be a track or an episode uri.
    * @return A {@link AddItemToUsersPlaybackQueueRequest.Builder}.
-   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
    */
   public AddItemToUsersPlaybackQueueRequest.Builder addItemToUsersPlaybackQueue(String uri) {
     return new AddItemToUsersPlaybackQueueRequest.Builder(accessToken)
@@ -1375,7 +1456,7 @@ public class SpotifyApi {
    * @param playlist_id The playlists ID.
    * @param uris        URIs of the tracks or episodes to add. Maximum: 100 item URIs.
    * @return An {@link AddItemsToPlaylistRequest.Builder}.
-   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
    */
   public AddItemsToPlaylistRequest.Builder addItemsToPlaylist(String playlist_id, String[] uris) {
     return new AddItemsToPlaylistRequest.Builder(accessToken)
@@ -1390,7 +1471,7 @@ public class SpotifyApi {
    * @param playlist_id The playlists ID.
    * @param uris        URIs of the tracks or episodes to add. Maximum: 100 item URIs.
    * @return An {@link AddItemsToPlaylistRequest.Builder}.
-   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
    */
   public AddItemsToPlaylistRequest.Builder addItemsToPlaylist(String playlist_id, JsonArray uris) {
     return new AddItemsToPlaylistRequest.Builder(accessToken)
@@ -1404,7 +1485,7 @@ public class SpotifyApi {
    *
    * @param playlist_id The playlists ID.
    * @return A {@link ChangePlaylistsDetailsRequest.Builder}.
-   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
    */
   public ChangePlaylistsDetailsRequest.Builder changePlaylistsDetails(String playlist_id) {
     return new ChangePlaylistsDetailsRequest.Builder(accessToken)
@@ -1418,7 +1499,7 @@ public class SpotifyApi {
    * @param user_id The playlists owner.
    * @param name    The name of the playlist.
    * @return A {@link CreatePlaylistRequest.Builder}.
-   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
    */
   public CreatePlaylistRequest.Builder createPlaylist(String user_id, String name) {
     return new CreatePlaylistRequest.Builder(accessToken)
@@ -1442,7 +1523,7 @@ public class SpotifyApi {
    *
    * @param user_id A Spotify ID of the user.
    * @return A {@link GetListOfUsersPlaylistsRequest.Builder}.
-   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
    */
   public GetListOfUsersPlaylistsRequest.Builder getListOfUsersPlaylists(String user_id) {
     return new GetListOfUsersPlaylistsRequest.Builder(accessToken)
@@ -1455,7 +1536,7 @@ public class SpotifyApi {
    *
    * @param playlist_id The playlists ID.
    * @return A {@link GetPlaylistRequest.Builder}.
-   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
    */
   public GetPlaylistRequest.Builder getPlaylist(String playlist_id) {
     return new GetPlaylistRequest.Builder(accessToken)
@@ -1468,7 +1549,7 @@ public class SpotifyApi {
    *
    * @param playlist_id The Spotify ID for the playlist.
    * @return A {@link GetPlaylistCoverImageRequest.Builder}.
-   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
    */
   public GetPlaylistCoverImageRequest.Builder getPlaylistCoverImage(String playlist_id) {
     return new GetPlaylistCoverImageRequest.Builder(accessToken)
@@ -1481,7 +1562,7 @@ public class SpotifyApi {
    *
    * @param playlist_id The playlists ID.
    * @return A {@link GetPlaylistsItemsRequest.Builder}.
-   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
    */
   public GetPlaylistsItemsRequest.Builder getPlaylistsItems(String playlist_id) {
     return new GetPlaylistsItemsRequest.Builder(accessToken)
@@ -1495,7 +1576,7 @@ public class SpotifyApi {
    * @param playlist_id The playlists ID.
    * @param tracks      URIs of the items to remove. Maximum: 100 track or episode URIs.
    * @return A {@link RemoveItemsFromPlaylistRequest.Builder}.
-   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
    */
   public RemoveItemsFromPlaylistRequest.Builder removeItemsFromPlaylist(
     String playlist_id, JsonArray tracks) {
@@ -1517,7 +1598,7 @@ public class SpotifyApi {
    * @param insert_before The position where the items should be inserted. To reorder the items to the end of the
    *                      playlist, simply set insert_before to the position after the last item.
    * @return A {@link ReorderPlaylistsItemsRequest.Builder}.
-   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
    */
   public ReorderPlaylistsItemsRequest.Builder reorderPlaylistsItems(String playlist_id, int range_start, int insert_before) {
     return new ReorderPlaylistsItemsRequest.Builder(accessToken)
@@ -1533,7 +1614,7 @@ public class SpotifyApi {
    * @param playlist_id The playlists ID.
    * @param uris        URIs of the items to set. Maximum: 100 track or episode URIs.
    * @return A {@link ReplacePlaylistsItemsRequest.Builder}.
-   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
    */
   public ReplacePlaylistsItemsRequest.Builder replacePlaylistsItems(String playlist_id, String[] uris) {
     return new ReplacePlaylistsItemsRequest.Builder(accessToken)
@@ -1548,7 +1629,7 @@ public class SpotifyApi {
    * @param playlist_id The playlists ID.
    * @param uris        URIs of the items to add. Maximum: 100 track or episode URIs.
    * @return A {@link ReplacePlaylistsItemsRequest.Builder}.
-   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
    */
   public ReplacePlaylistsItemsRequest.Builder replacePlaylistsItems(String playlist_id, JsonArray uris) {
     return new ReplacePlaylistsItemsRequest.Builder(accessToken)
@@ -1562,7 +1643,7 @@ public class SpotifyApi {
    *
    * @param playlist_id The Spotify ID for the playlist.
    * @return An {@link UploadCustomPlaylistCoverImageRequest.Builder}.
-   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
    */
   public UploadCustomPlaylistCoverImageRequest.Builder uploadCustomPlaylistCoverImage(String playlist_id) {
     return new UploadCustomPlaylistCoverImageRequest.Builder(accessToken)
@@ -1677,7 +1758,7 @@ public class SpotifyApi {
    *
    * @param id The Spotify ID of the show.
    * @return A {@link GetShowRequest.Builder}.
-   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
    */
   public GetShowRequest.Builder getShow(String id) {
     return new GetShowRequest.Builder(accessToken)
@@ -1690,7 +1771,7 @@ public class SpotifyApi {
    *
    * @param ids The Spotify IDs of all shows you're trying to retrieve. Maximum: 50 IDs.
    * @return A {@link GetSeveralShowsRequest.Builder}.
-   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
    */
   public GetSeveralShowsRequest.Builder getSeveralShows(String... ids) {
     return new GetSeveralShowsRequest.Builder(accessToken)
@@ -1703,7 +1784,7 @@ public class SpotifyApi {
    *
    * @param id The Spotify ID of the show.
    * @return A {@link GetShowsEpisodesRequest.Builder}.
-   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
    */
   public GetShowsEpisodesRequest.Builder getShowEpisodes(String id) {
     return new GetShowsEpisodesRequest.Builder(accessToken)
@@ -1716,7 +1797,7 @@ public class SpotifyApi {
    *
    * @param id The Spotify ID for the track.
    * @return A {@link GetAudioAnalysisForTrackRequest.Builder}.
-   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
    */
   public GetAudioAnalysisForTrackRequest.Builder getAudioAnalysisForTrack(String id) {
     return new GetAudioAnalysisForTrackRequest.Builder(accessToken)
@@ -1729,7 +1810,7 @@ public class SpotifyApi {
    *
    * @param id The Spotify ID of the track.
    * @return A {@link GetAudioFeaturesForTrackRequest.Builder}.
-   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
    */
   public GetAudioFeaturesForTrackRequest.Builder getAudioFeaturesForTrack(String id) {
     return new GetAudioFeaturesForTrackRequest.Builder(accessToken)
@@ -1742,7 +1823,7 @@ public class SpotifyApi {
    *
    * @param ids A comma-separated list of the Spotify IDs for the tracks. Maximum: 100 IDs.
    * @return A {@link GetAudioFeaturesForSeveralTracksRequest.Builder}.
-   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
    */
   public GetAudioFeaturesForSeveralTracksRequest.Builder getAudioFeaturesForSeveralTracks(String... ids) {
     return new GetAudioFeaturesForSeveralTracksRequest.Builder(accessToken)
@@ -1755,7 +1836,7 @@ public class SpotifyApi {
    *
    * @param ids The Spotify IDs of all tracks you're trying to retrieve. Maximum: 50 IDs.
    * @return A {@link GetSeveralTracksRequest.Builder}.
-   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
    */
   public GetSeveralTracksRequest.Builder getSeveralTracks(String... ids) {
     return new GetSeveralTracksRequest.Builder(accessToken)
@@ -1768,7 +1849,7 @@ public class SpotifyApi {
    *
    * @param id The Spotify ID of the track.
    * @return A {@link GetTrackRequest.Builder}.
-   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
    */
   public GetTrackRequest.Builder getTrack(String id) {
     return new GetTrackRequest.Builder(accessToken)
@@ -1791,7 +1872,7 @@ public class SpotifyApi {
    *
    * @param user_id The Spotify ID of the user.
    * @return A {@link GetUsersProfileRequest.Builder}.
-   * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URLs &amp; IDs</a>
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
    */
   public GetUsersProfileRequest.Builder getUsersProfile(String user_id) {
     return new GetUsersProfileRequest.Builder(accessToken)

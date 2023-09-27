@@ -7,7 +7,7 @@ import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 import java.util.Objects;
 
 /**
- * Retrieve information about <a href="https://developer.spotify.com/web-api/get-a-users-available-devices/">Device
+ * Retrieve information about <a href="https://developer.spotify.com/documentation/web-api/reference/get-a-users-available-devices">Device
  * objects</a> by creating instances from this class.
  */
 @JsonDeserialize(builder = Device.Builder.class)

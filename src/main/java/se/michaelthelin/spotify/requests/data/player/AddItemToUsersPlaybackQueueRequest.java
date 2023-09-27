@@ -49,7 +49,7 @@ public class AddItemToUsersPlaybackQueueRequest extends AbstractDataRequest<Stri
      * Your access token must have the {@code user-modify-playback-state} scope authorized in order to control playback.
      *
      * @param accessToken Required. A valid access token from the Spotify Accounts service.
-     * @see <a href="https://developer.spotify.com/web-api/using-scopes/">Spotify: Using Scopes</a>
+     * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/scopes">Spotify: Using Scopes</a>
      */
     public Builder(final String accessToken) {
       super(accessToken);
@@ -61,7 +61,7 @@ public class AddItemToUsersPlaybackQueueRequest extends AbstractDataRequest<Stri
      * @param device_id Optional. The ID of the device this command is targeting. If not supplied, the
      *                  user's currently active device is the target.
      * @return A {@link AddItemToUsersPlaybackQueueRequest.Builder}.
-     * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URIs &amp; IDs</a>
+     * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URIs &amp; IDs</a>
      */
     public Builder device_id(final String device_id) {
       assert (device_id != null);
@@ -75,7 +75,7 @@ public class AddItemToUsersPlaybackQueueRequest extends AbstractDataRequest<Stri
      * @param uri Required. The uri of the item to add to the queue.
      *            Must be a track or an episode uri.
      * @return A {@link AddItemToUsersPlaybackQueueRequest.Builder}.
-     * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URIs &amp; IDs</a>
+     * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URIs &amp; IDs</a>
      */
     public Builder uri(final String uri) {
       assert (uri != null);

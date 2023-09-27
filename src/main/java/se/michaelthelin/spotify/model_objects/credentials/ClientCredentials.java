@@ -7,7 +7,7 @@ import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 import java.util.Objects;
 
 /**
- * Retrieve information about <a href="https://developer.spotify.com/web-api/authorization-guide/#implicit_grant_flow">
+ * Retrieve information about <a href="https://developer.spotify.com/documentation/web-api/tutorials/implicit-flow">
  * Client Credentials</a> by building instances from this class.
  */
 @JsonDeserialize(builder = ClientCredentials.Builder.class)

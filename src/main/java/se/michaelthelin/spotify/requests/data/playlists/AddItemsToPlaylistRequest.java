@@ -34,7 +34,7 @@ public class AddItemsToPlaylistRequest extends AbstractDataRequest<SnapshotResul
    * @return A playlist snapshot ID. The snapshot ID can be used to identify your playlist version in future requests.
    * @throws IOException            In case of networking issues.
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
-   * @see <a href="https://developer.spotify.com/web-api/working-with-playlists/#version-control-and-snapshots">
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/playlists">
    * Spotify: Version Control and Snapshots</a>
    */
   public SnapshotResult execute() throws
@@ -57,7 +57,7 @@ public class AddItemsToPlaylistRequest extends AbstractDataRequest<SnapshotResul
      * {@code playlist-modify-private} scope.
      *
      * @param accessToken Required. A valid access token from the Spotify Accounts service.
-     * @see <a href="https://developer.spotify.com/web-api/using-scopes/">Spotify: Using Scopes</a>
+     * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/scopes">Spotify: Using Scopes</a>
      */
     public Builder(final String accessToken) {
       super(accessToken);
@@ -68,7 +68,7 @@ public class AddItemsToPlaylistRequest extends AbstractDataRequest<SnapshotResul
      *
      * @param playlist_id The Spotify ID for the playlist.
      * @return An {@link AddItemsToPlaylistRequest.Builder}.
-     * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URIs &amp; IDs</a>
+     * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URIs &amp; IDs</a>
      */
     public Builder playlist_id(final String playlist_id) {
       assert (playlist_id != null);
@@ -85,7 +85,7 @@ public class AddItemsToPlaylistRequest extends AbstractDataRequest<SnapshotResul
      *
      * @param uris Optional. A comma-separated list of Spotify track or episode URIs to add. Maximum: 100 item URIs.
      * @return An {@link AddItemsToPlaylistRequest.Builder}.
-     * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URIs &amp; IDs</a>
+     * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URIs &amp; IDs</a>
      */
     public Builder uris(final String uris) {
       assert (uris != null);
@@ -113,7 +113,7 @@ public class AddItemsToPlaylistRequest extends AbstractDataRequest<SnapshotResul
      *
      * @param uris Optional. A JSON array of the Spotify track or episode URIs to add. maximum: 100 item URIs.
      * @return An {@link AddItemsToPlaylistRequest.Builder}.
-     * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URIs &amp; IDs</a>
+     * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URIs &amp; IDs</a>
      */
     public Builder uris(final JsonArray uris) {
       assert (uris != null);

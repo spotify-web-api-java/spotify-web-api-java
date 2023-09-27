@@ -60,7 +60,7 @@ public class SearchShowsRequest extends AbstractDataRequest<Paging<ShowSimplifie
      *
      * @param q Required. The search query's keywords (and optional field filters and operators).
      * @return A {@link SearchShowsRequest.Builder}.
-     * @see <a href="https://developer.spotify.com/web-api/search-item/#tablepress-47">Spotify: Search Query Options</a>
+     * @see <a href="https://developer.spotify.com/documentation/web-api/reference/search">Spotify: Search Query Options</a>
      */
     public Builder q(final String q) {
       assert (q != null);

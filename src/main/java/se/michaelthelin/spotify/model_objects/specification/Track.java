@@ -155,7 +155,7 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
   }
 
   /**
-   * Get the <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify ID</a> of the
+   * Get the <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify ID</a> of the
    * track.
    *
    * @return The Spotify ID for the track.
@@ -167,7 +167,7 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
 
   /**
    * Check whether the track is playable in the market, which may has been specified somewhere before requesting it.
-   * Part of the response when <a href="https://developer.spotify.com/web-api/track-relinking-guide/">Track Relinking
+   * Part of the response when <a href="https://developer.spotify.com/documentation/web-api/concepts/track-relinking">Track Relinking
    * </a> is applied.
    *
    * @return If {@code true}, the track is playable in the given market. Otherwise {@code false}.
@@ -177,7 +177,7 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
   }
 
   /**
-   * Get the track link object of the track if <a href="https://developer.spotify.com/web-api/track-relinking-guide/">
+   * Get the track link object of the track if <a href="https://developer.spotify.com/documentation/web-api/concepts/track-relinking">
    * Track Relinking</a> was applied and the requested track has been replaced with a different track. The track in the
    * {@code linked_from} object contains information about the originally requested track.
    *
@@ -189,7 +189,7 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
 
   /**
    * Get the restrictions of the track. Part of the response when
-   * <a href="https://developer.spotify.com/web-api/track-relinking-guide/">Track Relinking</a> is applied, the original
+   * <a href="https://developer.spotify.com/documentation/web-api/concepts/track-relinking">Track Relinking</a> is applied, the original
    * track is not available in the given market, and Spotify did not have any tracks to relink it with. The track
    * response will still contain metadata for the original track, and a restrictions object containing the reason why
    * the track is not available. <br>
@@ -262,7 +262,7 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
   /**
    * Get the Spotify track URI.
    *
-   * @return The <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify URI</a> for
+   * @return The <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify URI</a> for
    * the track.
    */
   @Override
@@ -515,7 +515,7 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
     /**
      * Set Spotify URI of the track to be built.
      *
-     * @param uri The <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify URI</a>
+     * @param uri The <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify URI</a>
      *            for the track.
      * @return A {@link Track.Builder}.
      */

@@ -57,7 +57,7 @@ public class GetPlaylistCoverImageRequest extends AbstractDataRequest<Image[]> {
      *
      * @param playlist_id The Spotify ID for the playlist.
      * @return A {@link GetPlaylistCoverImageRequest.Builder}.
-     * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URIs &amp; IDs</a>
+     * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URIs &amp; IDs</a>
      */
     public Builder playlist_id(final String playlist_id) {
       assert (playlist_id != null);

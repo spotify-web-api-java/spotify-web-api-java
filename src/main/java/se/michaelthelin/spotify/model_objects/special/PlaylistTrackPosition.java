@@ -25,7 +25,7 @@ public class PlaylistTrackPosition extends AbstractModelObject {
   }
 
   /**
-   * Get the <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify URI</a> of the
+   * Get the <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify URI</a> of the
    * track.
    *
    * @return Spotify track URI.

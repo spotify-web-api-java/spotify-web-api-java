@@ -102,7 +102,7 @@ public class Show extends AbstractModelObject {
 
   /**
    * Get the external URLs of the show. <br>
-   * Example: <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify-URL</a>
+   * Example: <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify-URL</a>
    *
    * @return An {@link ExternalUrl} object.
    */
@@ -122,7 +122,7 @@ public class Show extends AbstractModelObject {
   /**
    * Get the Spotify ID of the show.
    *
-   * @return A <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify show ID</a>.
+   * @return A <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify show ID</a>.
    */
   public String getId() {
     return id;
@@ -194,7 +194,7 @@ public class Show extends AbstractModelObject {
   /**
    * Get the Spotify URI of the show.
    *
-   * @return <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify show URI</a>.
+   * @return <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify show URI</a>.
    */
   public String getUri() {
     return uri;
@@ -316,7 +316,7 @@ public class Show extends AbstractModelObject {
     /**
      * Set the Spotify ID for the show to be built.
      *
-     * @param id <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify show ID</a>.
+     * @param id <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify show ID</a>.
      * @return A {@link Show.Builder}.
      */
     public Builder setId(String id) {
@@ -404,7 +404,7 @@ public class Show extends AbstractModelObject {
     /**
      * Set the Spotify URI for the show to be built.
      *
-     * @param uri The <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify URI</a> for the show.
+     * @param uri The <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify URI</a> for the show.
      * @return A {@link Show.Builder}.
      */
     public Builder setUri(String uri) {

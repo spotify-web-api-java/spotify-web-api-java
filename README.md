@@ -35,7 +35,7 @@ Latest official release:
 <dependency>
   <groupId>se.michaelthelin.spotify</groupId>
   <artifactId>spotify-web-api-java</artifactId>
-  <version>8.1.0</version>
+  <version>8.2.0</version>
 </dependency>
 ```
 
@@ -52,7 +52,7 @@ Latest snapshot:
 
 Latest official release:
 ```Gradle
-implementation 'se.michaelthelin.spotify:spotify-web-api-java:8.1.0'
+implementation 'se.michaelthelin.spotify:spotify-web-api-java:8.2.0'
 ```
 
 Latest snapshot:
@@ -264,15 +264,19 @@ access token only once, after which it becomes invalid.
 
 - **Library**
   - [Check User's Saved Albums](examples/data/library/CheckUsersSavedAlbumsExample.java)
+  - [Check User's Saved Episodes](examples/data/library/CheckUsersSavedEpisodesExample.java)
   - [Check User's Saved Shows](examples/data/library/CheckUsersSavedShowsExample.java)
   - [Check User's Saved Tracks](examples/data/library/CheckUsersSavedTracksExample.java)
   - [Get Current User's Saved Albums](examples/data/library/GetCurrentUsersSavedAlbumsExample.java)
+  - [Get User's Saved Episodes](examples/data/library/GetUsersSavedEpisodesExample.java)
   - [Get User's Saved Shows](examples/data/library/GetUsersSavedShowsExample.java)
   - [Get User's Saved Tracks](examples/data/library/GetUsersSavedTracksExample.java)
   - [Remove Albums for Current User](examples/data/library/RemoveAlbumsForCurrentUserExample.java)
+  - [Remove User's Saved Episodes](examples/data/library/RemoveUsersSavedEpisodesExample.java)
   - [Remove User's Saved Shows](examples/data/library/RemoveUsersSavedShowsExample.java)
   - [Remove User's Saved Tracks](examples/data/library/RemoveUsersSavedTracksExample.java)
   - [Save Albums for Current User](examples/data/library/SaveAlbumsForCurrentUserExample.java)
+  - [Save Episodes for Current User](examples/data/library/SaveEpisodesForCurrentUserExample.java)
   - [Save Shows for Current User](examples/data/library/SaveShowsForCurrentUserExample.java)
   - [Save Tracks for User](examples/data/library/SaveTracksForUserExample.java)
 
@@ -382,7 +386,7 @@ description.
 
 The model objects are entities that form the API's responses in arranged formats. They are mostly specified in the
 [Web API Object Model](https://developer.spotify.com/web-api/object-model/) and in the
-[Web API Authorization Guide](https://developer.spotify.com/web-api/authorization-guide/). Though, unreferenced model
+[Web API Authorization Guide](https://developer.spotify.com/documentation/web-api/concepts/authorization). Though, unreferenced model
 objects exist. This project subdivides those into...
 
 - "miscellaneous" model objects: these are mentioned somewhere in the reference, but not in the model object list

@@ -59,7 +59,7 @@ public class GetPlaylistRequest extends AbstractDataRequest<Playlist> {
      *
      * @param playlist_id The Spotify ID for the playlist.
      * @return A {@link GetPlaylistRequest.Builder}.
-     * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URIs &amp; IDs</a>
+     * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URIs &amp; IDs</a>
      */
     public Builder playlist_id(final String playlist_id) {
       assert (playlist_id != null);
@@ -73,7 +73,7 @@ public class GetPlaylistRequest extends AbstractDataRequest<Playlist> {
      * @param fields Optional. Filters for the query: a comma-separated list of the fields to return.
      *               If omitted, all fields are returned.
      * @return A {@link GetPlaylistRequest.Builder}.
-     * @see <a href="https://developer.spotify.com/web-api/get-playlist/#tablepress-101">
+     * @see <a href="https://developer.spotify.com/documentation/web-api/reference/get-playlist">
      * Spotify: More Details on Playlist Fields</a>
      */
     public Builder fields(final String fields) {
@@ -89,7 +89,7 @@ public class GetPlaylistRequest extends AbstractDataRequest<Playlist> {
      *               parameter if you want to apply Track Relinking.
      * @return A {@link GetPlaylistRequest.Builder}.
      * @see <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">Wikipedia: ISO 3166-1 alpha-2 country codes</a>
-     * @see <a href="https://developer.spotify.com/web-api/track-relinking-guide/">Spotify: Track Relinking Guide</a>
+     * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/track-relinking">Spotify: Track Relinking Guide</a>
      */
     public Builder market(final CountryCode market) {
       assert (market != null);

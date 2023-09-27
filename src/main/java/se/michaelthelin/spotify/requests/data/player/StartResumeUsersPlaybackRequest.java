@@ -50,7 +50,7 @@ public class StartResumeUsersPlaybackRequest extends AbstractDataRequest<String>
      * Your access token must have the {@code user-modify-playback-state} scope authorized in order to control playback.
      *
      * @param accessToken Required. A valid access token from the Spotify Accounts service.
-     * @see <a href="https://developer.spotify.com/web-api/using-scopes/">Spotify: Using Scopes</a>
+     * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/scopes">Spotify: Using Scopes</a>
      */
     public Builder(final String accessToken) {
       super(accessToken);
@@ -62,7 +62,7 @@ public class StartResumeUsersPlaybackRequest extends AbstractDataRequest<String>
      * @param device_id Optional. The ID of the device this command is targeting. If not supplied, the
      *                  user's currently active device is the target.
      * @return A {@link StartResumeUsersPlaybackRequest.Builder}.
-     * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URIs &amp; IDs</a>
+     * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URIs &amp; IDs</a>
      */
     public Builder device_id(final String device_id) {
       assert (device_id != null);
@@ -76,7 +76,7 @@ public class StartResumeUsersPlaybackRequest extends AbstractDataRequest<String>
      * @param context_uri Optional. Spotify URI of the context to play.
      *                    Valid contexts are albums, artists and playlists.
      * @return A {@link StartResumeUsersPlaybackRequest.Builder}.
-     * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URIs &amp; IDs</a>
+     * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URIs &amp; IDs</a>
      */
     public Builder context_uri(final String context_uri) {
       assert (context_uri != null);
@@ -89,7 +89,7 @@ public class StartResumeUsersPlaybackRequest extends AbstractDataRequest<String>
      *
      * @param uris Optional. A JSON array of the Spotify track URIs to play.
      * @return A {@link StartResumeUsersPlaybackRequest.Builder}.
-     * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URIs &amp; IDs</a>
+     * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URIs &amp; IDs</a>
      */
     public Builder uris(final JsonArray uris) {
       assert (uris != null);

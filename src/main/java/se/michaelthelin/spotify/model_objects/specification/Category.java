@@ -46,7 +46,7 @@ public class Category extends AbstractModelObject {
   }
 
   /**
-   * Get the <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify ID</a>
+   * Get the <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify ID</a>
    * of the category.
    *
    * @return The Spotify category ID of the category.

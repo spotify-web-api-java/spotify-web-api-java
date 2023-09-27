@@ -9,7 +9,7 @@ import java.util.Objects;
 /**
  * Retrieve information about Authorization Error objects by building instances from this class.
  *
- * @see <a href="https://developer.spotify.com/web-api/authorization-guide/">Spotify: Authorization Guide</a>
+ * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/authorization">Spotify: Authorization Guide</a>
  */
 @JsonDeserialize(builder = AuthenticationError.Builder.class)
 public class AuthenticationError extends AbstractModelObject {

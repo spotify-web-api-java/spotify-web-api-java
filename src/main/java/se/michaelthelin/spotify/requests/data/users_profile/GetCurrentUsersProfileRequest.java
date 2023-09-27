@@ -50,7 +50,7 @@ public class GetCurrentUsersProfileRequest extends AbstractDataRequest<User> {
      * the user's birthdate requires the {@code user-read-birthdate} scope.
      *
      * @param accessToken Required. A valid access token from the Spotify Accounts service.
-     * @see <a href="https://developer.spotify.com/web-api/using-scopes/">Spotify: Using Scopes</a>
+     * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/scopes">Spotify: Using Scopes</a>
      */
     public Builder(final String accessToken) {
       super(accessToken);

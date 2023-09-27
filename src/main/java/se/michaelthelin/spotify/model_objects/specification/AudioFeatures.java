@@ -109,7 +109,7 @@ public class AudioFeatures extends AbstractModelObject {
   }
 
   /**
-   * Get the <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify ID</a>
+   * Get the <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify ID</a>
    * of the track.
    *
    * @return Spotify track ID.
@@ -219,7 +219,7 @@ public class AudioFeatures extends AbstractModelObject {
   }
 
   /**
-   * Get the <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify URI</a>
+   * Get the <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify URI</a>
    * of the track.
    *
    * @return Spotify track URI.
@@ -453,7 +453,7 @@ public class AudioFeatures extends AbstractModelObject {
     }
 
     /**
-     * Set the <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify URI</a>
+     * Set the <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify URI</a>
      * of the audio feature objects track to be built.
      *
      * @param uri The Spotify track URI.

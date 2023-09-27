@@ -11,7 +11,7 @@ import se.michaelthelin.spotify.model_objects.AbstractModelObject;
  * Track Link objects contain information about originally requested tracks, when the given track is not available in
  * your market region.
  *
- * @see <a href="https://developer.spotify.com/web-api/track-relinking-guide/">Spotify: Track Relinking Guide</a>
+ * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/track-relinking">Spotify: Track Relinking Guide</a>
  */
 @JsonDeserialize(builder = TrackLink.Builder.class)
 public class TrackLink extends AbstractModelObject {
@@ -51,7 +51,7 @@ public class TrackLink extends AbstractModelObject {
   }
 
   /**
-   * Get the <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify ID</a> of the
+   * Get the <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify ID</a> of the
    * track.
    *
    * @return A Spotify track ID.
@@ -70,7 +70,7 @@ public class TrackLink extends AbstractModelObject {
   }
 
   /**
-   * Get the <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify URI</a> of the
+   * Get the <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify URI</a> of the
    * track.
    *
    * @return The Spotify URI for the track.

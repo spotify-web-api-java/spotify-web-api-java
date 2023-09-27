@@ -50,7 +50,7 @@ public class RemoveAlbumsForCurrentUserRequest extends AbstractDataRequest<Strin
      * {@code user-library-modify} scope.
      *
      * @param accessToken Required. A valid access token from the Spotify Accounts service.
-     * @see <a href="https://developer.spotify.com/web-api/using-scopes/">Spotify: Using Scopes</a>
+     * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/scopes">Spotify: Using Scopes</a>
      */
     public Builder(final String accessToken) {
       super(accessToken);
@@ -61,7 +61,7 @@ public class RemoveAlbumsForCurrentUserRequest extends AbstractDataRequest<Strin
      *
      * @param ids Optional. A comma-separated list of the Spotify IDs. Maximum: 50 IDs.
      * @return A {@link RemoveAlbumsForCurrentUserRequest.Builder}.
-     * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URIs &amp; IDs</a>
+     * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URIs &amp; IDs</a>
      */
     public Builder ids(final String ids) {
       assert (ids != null);
@@ -75,7 +75,7 @@ public class RemoveAlbumsForCurrentUserRequest extends AbstractDataRequest<Strin
      * <b>Note:</b> If the ids have already been set with {@link #ids(String)}, any ids added here will be ignored.
      * @param ids Optional. A JSON array of the Spotify IDs. Maximum: 50 IDs.
      * @return A {@link RemoveAlbumsForCurrentUserRequest.Builder}.
-     * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URIs &amp; IDs</a>
+     * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URIs &amp; IDs</a>
      */
     public Builder ids(final JsonArray ids) {
       assert (ids != null);

@@ -38,7 +38,7 @@ public class ExternalUrl extends AbstractModelObject {
    * <br><br>
    * <p>
    * External URL example: <br>
-   * "spotify" - The <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify URL</a>
+   * "spotify" - The <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify URL</a>
    * for the object.
    *
    * @return A {@link Map} of external public URLs to its objects.

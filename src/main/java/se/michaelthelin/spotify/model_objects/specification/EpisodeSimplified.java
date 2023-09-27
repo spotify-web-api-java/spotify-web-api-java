@@ -95,7 +95,7 @@ public class EpisodeSimplified extends AbstractModelObject implements ISearchMod
 
   /**
    * Get the external URLs of the episode. <br>
-   * Example: <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify-URL</a>
+   * Example: <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify-URL</a>
    *
    * @return An {@link ExternalUrl} object.
    */
@@ -115,7 +115,7 @@ public class EpisodeSimplified extends AbstractModelObject implements ISearchMod
   /**
    * Get the Spotify ID of the episode.
    *
-   * @return A <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify episode ID</a>.
+   * @return A <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify episode ID</a>.
    */
   public String getId() {
     return id;
@@ -205,7 +205,7 @@ public class EpisodeSimplified extends AbstractModelObject implements ISearchMod
   /**
    * Get the Spotify URI of the episode.
    *
-   * @return <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify episode URI</a>.
+   * @return <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify episode URI</a>.
    */
   public String getUri() {
     return uri;
@@ -317,7 +317,7 @@ public class EpisodeSimplified extends AbstractModelObject implements ISearchMod
     /**
      * Set the Spotify ID for the episode to be built.
      *
-     * @param id <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify episode ID</a>.
+     * @param id <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify episode ID</a>.
      * @return A {@link EpisodeSimplified.Builder}.
      */
     public Builder setId(String id) {
@@ -427,7 +427,7 @@ public class EpisodeSimplified extends AbstractModelObject implements ISearchMod
     /**
      * Set the Spotify URI for the episode to be built.
      *
-     * @param uri The <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify URI</a> for the episode.
+     * @param uri The <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify URI</a> for the episode.
      * @return A {@link EpisodeSimplified.Builder}.
      */
     public Builder setUri(String uri) {

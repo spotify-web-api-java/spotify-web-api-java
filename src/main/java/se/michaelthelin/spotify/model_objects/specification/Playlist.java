@@ -54,7 +54,7 @@ public class Playlist extends AbstractModelObject {
    *
    * @return {@code true} if the owner allows other users to modify the playlist, {@code false} if not.
    * @see <a
-   * href="https://developer.spotify.com/web-api/working-with-playlists/#public-private-and-collaborative-status">
+   * href="https://developer.spotify.com/documentation/web-api/concepts/playlists">
    * Spotify: Working With Playlists</a>
    */
   public Boolean getIsCollaborative() {
@@ -100,7 +100,7 @@ public class Playlist extends AbstractModelObject {
   }
 
   /**
-   * Get the <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify ID</a>
+   * Get the <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify ID</a>
    * of a playlist.
    *
    * @return The Spotify ID for the playlist.
@@ -115,7 +115,7 @@ public class Playlist extends AbstractModelObject {
    * <b>Note:</b> If returned, the source URL for the image is temporary and will expire in less than a day.
    *
    * @return An array of images in different sizes.
-   * @see <a href="https://developer.spotify.com/web-api/working-with-playlists/#using-playlist-images">
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/playlists">
    * Spotify: Working With Playlists</a>
    */
   public Image[] getImages() {
@@ -146,7 +146,7 @@ public class Playlist extends AbstractModelObject {
    * @return {@code true} the playlist is public, {@code false} the playlist is private, {@code null}
    * the playlist status is not relevant.
    * @see <a
-   * href="https://developer.spotify.com/web-api/working-with-playlists/#public-private-and-collaborative-status">
+   * href="https://developer.spotify.com/documentation/web-api/concepts/playlists">
    * Spotify: Working With Playlists</a>
    */
   public Boolean getIsPublicAccess() {
@@ -183,7 +183,7 @@ public class Playlist extends AbstractModelObject {
   }
 
   /**
-   * Get the <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify URI</a>
+   * Get the <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify URI</a>
    * of a playlist.
    *
    * @return Spotify playlist URI.
@@ -369,7 +369,7 @@ public class Playlist extends AbstractModelObject {
     }
 
     /**
-     * Set the <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify URI</a>
+     * Set the <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify URI</a>
      * of the playlist to be built.
      *
      * @param uri The Spotify playlist URI.

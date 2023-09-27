@@ -8,7 +8,7 @@ import se.michaelthelin.spotify.model_objects.AbstractModelObject;
  * Retrieve information about Snapshot Result objects by building instances from this class. These objects contain a
  * playlist snapshot ID, which is created after adding or removing tracks from a playlist.
  * <p>
- * <a href="https://developer.spotify.com/web-api/working-with-playlists/#version-control-and-snapshots">
+ * <a href="https://developer.spotify.com/documentation/web-api/concepts/playlists">
  * Spotify: Working With Playlists</a>
  */
 @JsonDeserialize(builder = SnapshotResult.Builder.class)

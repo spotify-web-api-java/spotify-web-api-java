@@ -49,7 +49,7 @@ public class TransferUsersPlaybackRequest extends AbstractDataRequest<String> {
      * Your access token must have the {@code user-modify-playback-state} scope authorized in order to control playback.
      *
      * @param accessToken Required. A valid access token from the Spotify Accounts service.
-     * @see <a href="https://developer.spotify.com/web-api/using-scopes/">Spotify: Using Scopes</a>
+     * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/scopes">Spotify: Using Scopes</a>
      */
     public Builder(final String accessToken) {
       super(accessToken);
@@ -62,7 +62,7 @@ public class TransferUsersPlaybackRequest extends AbstractDataRequest<String> {
      *                   started/transferred. <b>Note:</b> Although an array is accepted, only a single
      *                   {@code device_id} is currently supported.
      * @return A {@link TransferUsersPlaybackRequest.Builder}.
-     * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URIs &amp; IDs</a>
+     * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URIs &amp; IDs</a>
      */
     public Builder device_ids(final JsonArray device_ids) {
       assert (device_ids != null);

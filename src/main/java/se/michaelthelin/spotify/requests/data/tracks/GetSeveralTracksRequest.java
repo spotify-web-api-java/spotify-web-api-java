@@ -57,7 +57,7 @@ public class GetSeveralTracksRequest extends AbstractDataRequest<Track[]> {
      *
      * @param ids Required. A comma-separated list of the Spotify IDs for the tracks. Maximum: 50 IDs.
      * @return A {@link GetSeveralTracksRequest.Builder}.
-     * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URIs &amp; IDs</a>
+     * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URIs &amp; IDs</a>
      */
     public Builder ids(final String ids) {
       assert (ids != null);
@@ -72,7 +72,7 @@ public class GetSeveralTracksRequest extends AbstractDataRequest<Track[]> {
      *               parameter if you want to apply Track Relinking.
      * @return A {@link GetSeveralTracksRequest.Builder}.
      * @see <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">Wikipedia: ISO 3166-1 alpha-2 country codes</a>
-     * @see <a href="https://developer.spotify.com/web-api/track-relinking-guide/">Spotify: Track Relinking Guide</a>
+     * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/track-relinking">Spotify: Track Relinking Guide</a>
      */
     public Builder market(final CountryCode market) {
       assert (market != null);

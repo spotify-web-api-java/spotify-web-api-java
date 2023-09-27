@@ -120,7 +120,7 @@ public class TrackSimplified extends AbstractModelObject {
   }
 
   /**
-   * Get the <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify ID</a> of the
+   * Get the <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify ID</a> of the
    * track.
    *
    * @return The Spotify ID for the track.
@@ -131,7 +131,7 @@ public class TrackSimplified extends AbstractModelObject {
 
   /**
    * Check whether the track is playable in the market, which may has been specified somewhere before requesting it.
-   * Part of the response when <a href="https://developer.spotify.com/web-api/track-relinking-guide/">Track Relinking
+   * Part of the response when <a href="https://developer.spotify.com/documentation/web-api/concepts/track-relinking">Track Relinking
    * </a> is applied.
    *
    * @return If {@code true}, the track is playable in the given market. Otherwise {@code false}.
@@ -141,7 +141,7 @@ public class TrackSimplified extends AbstractModelObject {
   }
 
   /**
-   * Get the track link object of the track if <a href="https://developer.spotify.com/web-api/track-relinking-guide/">
+   * Get the track link object of the track if <a href="https://developer.spotify.com/documentation/web-api/concepts/track-relinking">
    * Track Relinking</a> was applied and the requested track has been replaced with a different track. The track in the
    * {@code linked_from} object contains information about the originally requested track.
    *
@@ -191,7 +191,7 @@ public class TrackSimplified extends AbstractModelObject {
   /**
    * Get the Spotify track URI.
    *
-   * @return The <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify URI</a> for
+   * @return The <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify URI</a> for
    * the track.
    */
   public String getUri() {
@@ -392,7 +392,7 @@ public class TrackSimplified extends AbstractModelObject {
     /**
      * Set Spotify URI of the track to be built.
      *
-     * @param uri The <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify URI</a>
+     * @param uri The <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify URI</a>
      *            for the track.
      * @return A {@link TrackSimplified.Builder}.
      */

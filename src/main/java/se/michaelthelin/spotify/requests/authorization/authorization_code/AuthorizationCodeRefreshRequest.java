@@ -12,7 +12,7 @@ import java.io.IOException;
 
 /**
  * Refresh your access token by creating an
- * <a href="https://developer.spotify.com/web-api/authorization-guide/#request-access-token-from-refresh-token">
+ * <a href="https://developer.spotify.com/documentation/web-api/tutorials/code-flow">
  * Authorization Code Refresh</a> request.
  */
 @JsonDeserialize(builder = AuthorizationCodeRefreshRequest.Builder.class)
