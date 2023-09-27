@@ -1,0 +1,188 @@
+{
+  "href": "https://api.spotify.com/v1/me/episodes?offset=0&limit=20&market=SE",
+  "items": [
+    {
+      "added_at": "2023-09-26T00:10:20Z",
+      "episode": {
+        "audio_preview_url": "https://podz-content.spotifycdn.com/audio/clips/6MpLrr6CPm6nmORqQlEmDb/clip_959300_1025599.mp3",
+        "description": "Trae Tha Truth is a rapper, record producer, and philanthropist. His new album \"Stuck In Motion\" will be available October 20. http://onerpm.link/stuckinmotion",
+        "duration_ms": 8080446,
+        "explicit": true,
+        "external_urls": {
+          "spotify": "https://open.spotify.com/episode/7H0fhjEd7ImnED3Iab4RI8"
+        },
+        "href": "https://api.spotify.com/v1/episodes/7H0fhjEd7ImnED3Iab4RI8",
+        "html_description": "<p>Trae Tha Truth is a rapper, record producer, and philanthropist. His new album &#34;Stuck In Motion&#34; will be available October 20.</p><br/><p>http://onerpm.link/stuckinmotion</p>",
+        "id": "7H0fhjEd7ImnED3Iab4RI8",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/ab6765630000ba8a8f9df3cba9b17be2643b46e0",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/ab67656300005f1f8f9df3cba9b17be2643b46e0",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/ab6765630000f68d8f9df3cba9b17be2643b46e0",
+            "width": 64
+          }
+        ],
+        "is_externally_hosted": false,
+        "is_playable": true,
+        "language": "en-US",
+        "languages": [
+          "en-US"
+        ],
+        "name": "#2038 - Trae Tha Truth",
+        "release_date": "2023-09-21",
+        "release_date_precision": "day",
+        "resume_point": {
+          "fully_played": false,
+          "resume_position_ms": 0
+        },
+        "show": {
+          "available_markets": [
+            "AD",
+            "AE"
+          ],
+          "copyrights": [],
+          "description": "The official podcast of comedian Joe Rogan. Follow The Joe Rogan Clips show page for some of the best moments from the episodes.",
+          "explicit": true,
+          "external_urls": {
+            "spotify": "https://open.spotify.com/show/4rOoJ6Egrf8K2IrywzwOMk"
+          },
+          "href": "https://api.spotify.com/v1/shows/4rOoJ6Egrf8K2IrywzwOMk",
+          "html_description": "The official podcast of comedian Joe Rogan. Follow The Joe Rogan Clips show page for some of the best moments from the episodes.",
+          "id": "4rOoJ6Egrf8K2IrywzwOMk",
+          "images": [
+            {
+              "height": 640,
+              "url": "https://i.scdn.co/image/9af79fd06e34dea3cd27c4e1cd6ec7343ce20af4",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://i.scdn.co/image/d3ae59a048dff7e95109aec18803f22bebe82d2f",
+              "width": 300
+            },
+            {
+              "height": 64,
+              "url": "https://i.scdn.co/image/97d6fdf3e55a3a1c10662d132232ccbd53740bc3",
+              "width": 64
+            }
+          ],
+          "is_externally_hosted": false,
+          "languages": [
+            "en-US"
+          ],
+          "media_type": "mixed",
+          "name": "The Joe Rogan Experience",
+          "publisher": "Joe Rogan",
+          "total_episodes": 2191,
+          "type": "show",
+          "uri": "spotify:show:4rOoJ6Egrf8K2IrywzwOMk"
+        },
+        "type": "episode",
+        "uri": "spotify:episode:7H0fhjEd7ImnED3Iab4RI8"
+      }
+    },
+    {
+      "added_at": "2023-09-26T00:10:30Z",
+      "episode": {
+        "audio_preview_url": "https://podz-content.spotifycdn.com/audio/clips/4guzjD0NP63f4v18tpCrm9/clip_1022600_1070900.mp3",
+        "description": "Francis Ngannou is a professional mixed martial artist and boxer currently signed to the Professional Fighters League. Ngannou is scheduled to fight boxer Tyson Fury on October 28. https://francisngannoufoundation.com",
+        "duration_ms": 7133566,
+        "explicit": true,
+        "external_urls": {
+          "spotify": "https://open.spotify.com/episode/7rlqqMHZLSsZewJFhlelXd"
+        },
+        "href": "https://api.spotify.com/v1/episodes/7rlqqMHZLSsZewJFhlelXd",
+        "html_description": "<p>Francis Ngannou is a professional mixed martial artist and boxer currently signed to the Professional Fighters League. Ngannou is scheduled to fight boxer Tyson Fury on October 28.</p><br/><p><a href=\"https://francisngannoufoundation.com/\" rel=\"nofollow\">https://francisngannoufoundation.com</a></p>",
+        "id": "7rlqqMHZLSsZewJFhlelXd",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/ab6765630000ba8afc701a0dfe7e0334853e7ee2",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/ab67656300005f1ffc701a0dfe7e0334853e7ee2",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/ab6765630000f68dfc701a0dfe7e0334853e7ee2",
+            "width": 64
+          }
+        ],
+        "is_externally_hosted": false,
+        "is_playable": true,
+        "language": "en-US",
+        "languages": [
+          "en-US"
+        ],
+        "name": "JRE MMA Show #146 with Francis Ngannou",
+        "release_date": "2023-09-22",
+        "release_date_precision": "day",
+        "resume_point": {
+          "fully_played": false,
+          "resume_position_ms": 0
+        },
+        "show": {
+          "available_markets": [
+            "AD",
+            "AE"
+          ],
+          "copyrights": [],
+          "description": "The official podcast of comedian Joe Rogan. Follow The Joe Rogan Clips show page for some of the best moments from the episodes.",
+          "explicit": true,
+          "external_urls": {
+            "spotify": "https://open.spotify.com/show/4rOoJ6Egrf8K2IrywzwOMk"
+          },
+          "href": "https://api.spotify.com/v1/shows/4rOoJ6Egrf8K2IrywzwOMk",
+          "html_description": "The official podcast of comedian Joe Rogan. Follow The Joe Rogan Clips show page for some of the best moments from the episodes.",
+          "id": "4rOoJ6Egrf8K2IrywzwOMk",
+          "images": [
+            {
+              "height": 640,
+              "url": "https://i.scdn.co/image/9af79fd06e34dea3cd27c4e1cd6ec7343ce20af4",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://i.scdn.co/image/d3ae59a048dff7e95109aec18803f22bebe82d2f",
+              "width": 300
+            },
+            {
+              "height": 64,
+              "url": "https://i.scdn.co/image/97d6fdf3e55a3a1c10662d132232ccbd53740bc3",
+              "width": 64
+            }
+          ],
+          "is_externally_hosted": false,
+          "languages": [
+            "en-US"
+          ],
+          "media_type": "mixed",
+          "name": "The Joe Rogan Experience",
+          "publisher": "Joe Rogan",
+          "total_episodes": 2191,
+          "type": "show",
+          "uri": "spotify:show:4rOoJ6Egrf8K2IrywzwOMk"
+        },
+        "type": "episode",
+        "uri": "spotify:episode:7rlqqMHZLSsZewJFhlelXd"
+      }
+    }
+  ],
+  "limit": 20,
+  "next": null,
+  "offset": 0,
+  "previous": null,
+  "total": 2
+}

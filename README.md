@@ -264,15 +264,19 @@ access token only once, after which it becomes invalid.
 
 - **Library**
   - [Check User's Saved Albums](examples/data/library/CheckUsersSavedAlbumsExample.java)
+  - [Check User's Saved Episodes](examples/data/library/CheckUsersSavedEpisodesExample.java)
   - [Check User's Saved Shows](examples/data/library/CheckUsersSavedShowsExample.java)
   - [Check User's Saved Tracks](examples/data/library/CheckUsersSavedTracksExample.java)
   - [Get Current User's Saved Albums](examples/data/library/GetCurrentUsersSavedAlbumsExample.java)
+  - [Get User's Saved Episodes](examples/data/library/GetUsersSavedEpisodesExample.java)
   - [Get User's Saved Shows](examples/data/library/GetUsersSavedShowsExample.java)
   - [Get User's Saved Tracks](examples/data/library/GetUsersSavedTracksExample.java)
   - [Remove Albums for Current User](examples/data/library/RemoveAlbumsForCurrentUserExample.java)
+  - [Remove User's Saved Episodes](examples/data/library/RemoveUsersSavedEpisodesExample.java)
   - [Remove User's Saved Shows](examples/data/library/RemoveUsersSavedShowsExample.java)
   - [Remove User's Saved Tracks](examples/data/library/RemoveUsersSavedTracksExample.java)
   - [Save Albums for Current User](examples/data/library/SaveAlbumsForCurrentUserExample.java)
+  - [Save Episodes for Current User](examples/data/library/SaveEpisodesForCurrentUserExample.java)
   - [Save Shows for Current User](examples/data/library/SaveShowsForCurrentUserExample.java)
   - [Save Tracks for User](examples/data/library/SaveTracksForUserExample.java)
 

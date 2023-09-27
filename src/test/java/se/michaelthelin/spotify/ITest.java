@@ -74,6 +74,7 @@ public interface ITest<T> {
   String SEED_TRACKS = "01iyCAUm8EvOFqVWYJ3dVX";
   boolean SHOW_DIALOG = true;
   JsonArray SHOWS = JsonParser.parseString("[\"5AvwZVawapvyhJUIx71pdJ\", \"5AvwZVawapvyhJUIx71pdJ\"]").getAsJsonArray();
+  JsonArray EPISODES = JsonParser.parseString("[\"4GI3dxEafwap1sFiTGPKd1\", \"4GI3dxEafwap1sFiTGPKd1\"]").getAsJsonArray();
   String SNAPSHOT_ID = "JbtmHBDBAYu3/bt8BOXKjzKx3i0b6LCa/wVjyl6qQ2Yf6nFXkbmzuEa+ZI/U1yF+";
   String STATE = "track";
   boolean STATE_BOOLEAN = false;

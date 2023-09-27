@@ -954,6 +954,20 @@ public class SpotifyApi {
   }
 
   /**
+   * Check if one or more episodes is already saved in the current Spotify user's 'Your Episodes' library.
+   *
+   * @param ids The episode IDs to check for in the user's 'Your Episodes' library. Maximum: 50 IDs.
+   * @return A {@link CheckUsersSavedEpisodesRequest.Builder}.
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
+   * @apiNote This endpoint is in <b>beta</b> and could change without warning.
+   */
+  public CheckUsersSavedEpisodesRequest.Builder checkUsersSavedEpisodes(String... ids) {
+    return new CheckUsersSavedEpisodesRequest.Builder(accessToken)
+      .setDefaults(httpManager, scheme, host, port)
+      .ids(concat(ids, ','));
+  }
+
+  /**
    * Check if a track is saved in the user's "Your Music" library.
    *
    * @param ids The track IDs to check for in the user's Your Music library. Maximum: 50 IDs.
@@ -983,6 +997,17 @@ public class SpotifyApi {
    */
   public GetUsersSavedShowsRequest.Builder getUsersSavedShows() {
     return new GetUsersSavedShowsRequest.Builder(accessToken)
+      .setDefaults(httpManager, scheme, host, port);
+  }
+
+  /**
+   * Get a list of the episodes saved in the current Spotify user's library.
+   *
+   * @return A {@link GetUsersSavedEpisodesRequest.Builder}.
+   * @apiNote This endpoint is in <b>beta</b> and could change without warning.
+   */
+  public GetUsersSavedEpisodesRequest.Builder getUsersSavedEpisodes() {
+    return new GetUsersSavedEpisodesRequest.Builder(accessToken)
       .setDefaults(httpManager, scheme, host, port);
   }
 
@@ -1044,6 +1069,34 @@ public class SpotifyApi {
    */
   public RemoveUsersSavedShowsRequest.Builder removeUsersSavedShows(JsonArray ids) {
     return new RemoveUsersSavedShowsRequest.Builder(accessToken)
+      .setDefaults(httpManager, scheme, host, port)
+      .ids(ids);
+  }
+
+  /**
+   * Remove one or more episodes from the current user's library.
+   *
+   * @param ids The Spotify IDs for the episodes to be removed. Maximum: 50 IDs.
+   * @return A {@link RemoveUsersSavedEpisodesRequest.Builder}.
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
+   * @apiNote This endpoint is in <b>beta</b> and could change without warning.
+   */
+  public RemoveUsersSavedEpisodesRequest.Builder removeUsersSavedEpisodes(String... ids) {
+    return new RemoveUsersSavedEpisodesRequest.Builder(accessToken)
+      .setDefaults(httpManager, scheme, host, port)
+      .ids(concat(ids, ','));
+  }
+
+  /**
+   * Remove one or more episodes from the current user's library.
+   *
+   * @param ids The Spotify IDs for the episodes to be removed. Maximum: 50 IDs.
+   * @return A {@link RemoveUsersSavedEpisodesRequest.Builder}.
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
+   * @apiNote This endpoint is in <b>beta</b> and could change without warning.
+   */
+  public RemoveUsersSavedEpisodesRequest.Builder removeUsersSavedEpisodes(JsonArray ids) {
+    return new RemoveUsersSavedEpisodesRequest.Builder(accessToken)
       .setDefaults(httpManager, scheme, host, port)
       .ids(ids);
   }
@@ -1122,6 +1175,34 @@ public class SpotifyApi {
    */
   public SaveShowsForCurrentUserRequest.Builder saveShowsForCurrentUser(JsonArray ids) {
     return new SaveShowsForCurrentUserRequest.Builder(accessToken)
+      .setDefaults(httpManager, scheme, host, port)
+      .ids(ids);
+  }
+
+  /**
+   * Save one or more episodes to the current user's library.
+   *
+   * @param ids The episode IDs to add to the users library. Maximum: 50 IDs.
+   * @return A {@link SaveEpisodesForCurrentUserRequest.Builder}.
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
+   * @apiNote This endpoint is in <b>beta</b> and could change without warning.
+   */
+  public SaveEpisodesForCurrentUserRequest.Builder saveEpisodesForCurrentUser(String... ids) {
+    return new SaveEpisodesForCurrentUserRequest.Builder(accessToken)
+      .setDefaults(httpManager, scheme, host, port)
+      .ids(concat(ids, ','));
+  }
+
+  /**
+   * Save one or more episodes to the current user's library.
+   *
+   * @param ids The episode IDs to add to the users library. Maximum: 50 IDs.
+   * @return A {@link SaveEpisodesForCurrentUserRequest.Builder}.
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
+   * @apiNote This endpoint is in <b>beta</b> and could change without warning.
+   */
+  public SaveEpisodesForCurrentUserRequest.Builder saveEpisodesForCurrentUser(JsonArray ids) {
+    return new SaveEpisodesForCurrentUserRequest.Builder(accessToken)
       .setDefaults(httpManager, scheme, host, port)
       .ids(ids);
   }
