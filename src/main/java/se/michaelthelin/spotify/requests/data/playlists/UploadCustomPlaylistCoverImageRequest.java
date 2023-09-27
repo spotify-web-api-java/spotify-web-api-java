@@ -51,7 +51,7 @@ public class UploadCustomPlaylistCoverImageRequest extends AbstractDataRequest<S
      * and/or {@code playlist-modify-private}, depending the public status of the playlist you want to update.
      *
      * @param accessToken Required. A valid access token from the Spotify Accounts service.
-     * @see <a href="https://developer.spotify.com/web-api/using-scopes/">Spotify: Using Scopes</a>
+     * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/scopes">Spotify: Using Scopes</a>
      */
     public Builder(final String accessToken) {
       super(accessToken);
@@ -62,7 +62,7 @@ public class UploadCustomPlaylistCoverImageRequest extends AbstractDataRequest<S
      *
      * @param playlist_id The Spotify ID for the playlist.
      * @return A {@link UploadCustomPlaylistCoverImageRequest.Builder}.
-     * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URIs &amp; IDs</a>
+     * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URIs &amp; IDs</a>
      */
     public Builder playlist_id(final String playlist_id) {
       assert (playlist_id != null);

@@ -8,7 +8,7 @@ import java.util.Objects;
 
 /**
  * Retrieve information about
- * <a href="https://developer.spotify.com/web-api/authorization-guide/#authorization-code-flow">Authorization Code
+ * <a href="https://developer.spotify.com/documentation/web-api/tutorials/code-flow">Authorization Code
  * Credentials</a> by building instances from this class.
  */
 @JsonDeserialize(builder = AuthorizationCodeCredentials.Builder.class)
@@ -49,7 +49,7 @@ public class AuthorizationCodeCredentials extends AbstractModelObject {
 
 
   /**
-   * Get the <a href="https://developer.spotify.com/web-api/using-scopes/">Scopes</a> specified in the authorization
+   * Get the <a href="https://developer.spotify.com/documentation/web-api/concepts/scopes">Scopes</a> specified in the authorization
    * code credentials request.
    *
    * @return The scopes specified in the credentials request.

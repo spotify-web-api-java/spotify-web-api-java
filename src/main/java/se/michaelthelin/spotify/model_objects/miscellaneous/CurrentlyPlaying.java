@@ -12,7 +12,7 @@ import se.michaelthelin.spotify.model_objects.specification.Episode;
 import se.michaelthelin.spotify.model_objects.specification.Track;
 
 /**
- * Retrieve information about <a href="https://developer.spotify.com/web-api/get-the-users-currently-playing-track/">
+ * Retrieve information about <a href="https://developer.spotify.com/documentation/web-api/reference/get-the-users-currently-playing-track">
  * Currently Playing objects</a> by creating instances from this class.
  */
 @JsonDeserialize(builder = CurrentlyPlaying.Builder.class)

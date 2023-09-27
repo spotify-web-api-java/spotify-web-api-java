@@ -35,7 +35,7 @@ public interface IPlaylistItem extends IModelObject {
   public String getHref();
 
   /**
-   * Get the <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify ID</a> of the
+   * Get the <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify ID</a> of the
    * playlist item.
    *
    * @return The Spotify ID for the playlist item.
@@ -60,7 +60,7 @@ public interface IPlaylistItem extends IModelObject {
   /**
    * Get the Spotify playlist item URI.
    *
-   * @return The <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify URI</a> for
+   * @return The <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify URI</a> for
    * the playlist item.
    */
   public String getUri();

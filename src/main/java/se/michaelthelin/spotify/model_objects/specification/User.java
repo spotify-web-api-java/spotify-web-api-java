@@ -16,7 +16,7 @@ import java.util.Objects;
  * <b>Note:</b> Many methods of this model object may return {@code null}, depending on the scopes specified in the
  * authentication request.
  *
- * @see <a href="https://developer.spotify.com/web-api/using-scopes/">Spotify: Using Scopes</a>
+ * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/scopes">Spotify: Using Scopes</a>
  */
 @JsonDeserialize(builder = User.Builder.class)
 public class User extends AbstractModelObject {
@@ -56,7 +56,7 @@ public class User extends AbstractModelObject {
    * {@code user-read-birthdate} scope.
    *
    * @return The user's date-of-birth.
-   * @see <a href="https://developer.spotify.com/web-api/using-scopes/">Spotify: Using Scopes</a>
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/scopes">Spotify: Using Scopes</a>
    */
   public String getBirthdate() {
     return birthdate;
@@ -68,7 +68,7 @@ public class User extends AbstractModelObject {
    * scope.
    *
    * @return An <a href="http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2</a> country code.
-   * @see <a href="https://developer.spotify.com/web-api/using-scopes/">Spotify: Using Scopes</a>
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/scopes">Spotify: Using Scopes</a>
    */
   public CountryCode getCountry() {
     return country;
@@ -91,7 +91,7 @@ public class User extends AbstractModelObject {
    * scope.
    *
    * @return The user's email address, as entered by the user when creating their account.
-   * @see <a href="https://developer.spotify.com/web-api/using-scopes/">Spotify: Using Scopes</a>
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/scopes">Spotify: Using Scopes</a>
    */
   public String getEmail() {
     return email;
@@ -129,7 +129,7 @@ public class User extends AbstractModelObject {
   /**
    * Get the Spotify ID of the user.
    *
-   * @return The <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify user ID</a>
+   * @return The <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify user ID</a>
    * for the user.
    */
   public String getId() {
@@ -152,7 +152,7 @@ public class User extends AbstractModelObject {
    * scope.
    *
    * @return The user's Spotify subscription level: "premium", "free", etc.
-   * @see <a href="https://developer.spotify.com/web-api/using-scopes/">Spotify: Using Scopes</a>
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/scopes">Spotify: Using Scopes</a>
    */
   public ProductType getProduct() {
     return product;
@@ -168,7 +168,7 @@ public class User extends AbstractModelObject {
   }
 
   /**
-   * Get the <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify URI</a> of the
+   * Get the <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify URI</a> of the
    * user.
    *
    * @return The Spotify URI for the user.
@@ -286,7 +286,7 @@ public class User extends AbstractModelObject {
     /**
      * Set user ID of the user to be built.
      *
-     * @param id The <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify user ID
+     * @param id The <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify user ID
      *           </a> for the user.
      * @return A {@link User.Builder}.
      */

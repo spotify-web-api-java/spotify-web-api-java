@@ -58,7 +58,7 @@ public class GetCategoryRequest extends AbstractDataRequest<Category> {
      *
      * @param category_id The Spotify category ID for the category.
      * @return A {@link GetCategoryRequest.Builder}.
-     * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify URIs &amp; IDs</a>
+     * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify URIs &amp; IDs</a>
      */
     public Builder category_id(final String category_id) {
       assert (category_id != null);

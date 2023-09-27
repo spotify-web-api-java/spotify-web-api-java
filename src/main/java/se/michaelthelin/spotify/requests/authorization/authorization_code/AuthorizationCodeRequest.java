@@ -13,7 +13,7 @@ import java.net.URI;
 
 /**
  * Request an access token and refresh token by creating an
- * <a href="https://developer.spotify.com/web-api/authorization-guide/#authorization_code_flow">Authorization Code</a>
+ * <a href="https://developer.spotify.com/documentation/web-api/tutorials/code-flow">Authorization Code</a>
  * request.
  */
 @JsonDeserialize(builder = AuthorizationCodeRequest.Builder.class)

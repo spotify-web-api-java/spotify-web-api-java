@@ -51,7 +51,7 @@ public class GetCurrentUsersSavedAlbumsRequest extends AbstractDataRequest<Pagin
      * The {@code user-library-read} scope must have been authorized by the user.
      *
      * @param accessToken Required. A valid access token from the Spotify Accounts service.
-     * @see <a href="https://developer.spotify.com/web-api/using-scopes/">Spotify: Using Scopes</a>
+     * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/scopes">Spotify: Using Scopes</a>
      */
     public Builder(final String accessToken) {
       super(accessToken);
@@ -89,7 +89,7 @@ public class GetCurrentUsersSavedAlbumsRequest extends AbstractDataRequest<Pagin
      *               Track Relinking.
      * @return A {@link GetCurrentUsersSavedAlbumsRequest.Builder}.
      * @see <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">Wikipedia: ISO 3166-1 alpha-2 country codes</a>
-     * @see <a href="https://developer.spotify.com/web-api/track-relinking-guide/">Spotify: Track Relinking Guide</a>
+     * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/track-relinking">Spotify: Track Relinking Guide</a>
      */
     public Builder market(final CountryCode market) {
       assert (market != null);

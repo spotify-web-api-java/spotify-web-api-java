@@ -21,10 +21,10 @@ public class Error extends AbstractModelObject {
   }
 
   /**
-   * Get the <a href="https://developer.spotify.com/web-api/user-guide/#response-status-codes">HTTP status code</a>
+   * Get the <a href="https://developer.spotify.com/documentation/web-api/concepts/api-calls">HTTP status code</a>
    * of the {@link Error} object.
    *
-   * @return The <a href="https://developer.spotify.com/web-api/user-guide/#response-status-codes">HTTP status code</a>.
+   * @return The <a href="https://developer.spotify.com/documentation/web-api/concepts/api-calls">HTTP status code</a>.
    */
   public Integer getStatus() {
     return status;
@@ -57,10 +57,10 @@ public class Error extends AbstractModelObject {
     private String message;
 
     /**
-     * The error <a href="https://developer.spotify.com/web-api/user-guide/#response-status-codes">HTTP status
+     * The error <a href="https://developer.spotify.com/documentation/web-api/concepts/api-calls">HTTP status
      * code</a> setter.
      *
-     * @param status The <a href="https://developer.spotify.com/web-api/user-guide/#response-status-codes">
+     * @param status The <a href="https://developer.spotify.com/documentation/web-api/concepts/api-calls">
      *               HTTP status code</a>.
      * @return A {@link Error.Builder}.
      */

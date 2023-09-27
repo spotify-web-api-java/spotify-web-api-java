@@ -51,7 +51,7 @@ public class GetUsersSavedShowsRequest extends AbstractDataRequest<Paging<SavedS
      * The {@code user-library-read} scope must have been authorized by the user.
      *
      * @param accessToken Required. A valid access token from the Spotify Accounts service.
-     * @see <a href="https://developer.spotify.com/web-api/using-scopes/">Spotify: Using Scopes</a>
+     * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/scopes">Spotify: Using Scopes</a>
      */
     public Builder(final String accessToken) {
       super(accessToken);

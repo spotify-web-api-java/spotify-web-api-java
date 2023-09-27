@@ -58,7 +58,7 @@ public class CheckCurrentUserFollowsArtistsOrUsersRequest extends AbstractDataRe
      *
      * @param type Required. The ID type: either {@code artist} or {@code user}.
      * @return A {@link CheckCurrentUserFollowsArtistsOrUsersRequest.Builder}.
-     * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify URIs &amp; IDs</a>
+     * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify URIs &amp; IDs</a>
      */
     public Builder type(final ModelObjectType type) {
       assert (type != null);
@@ -72,7 +72,7 @@ public class CheckCurrentUserFollowsArtistsOrUsersRequest extends AbstractDataRe
      * @param ids Required. A comma-separated list of the artist or the user Spotify IDs to check. A maximum of 50 IDs
      *            can be sent in one request.
      * @return A {@link CheckCurrentUserFollowsArtistsOrUsersRequest.Builder}.
-     * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify URIs &amp; IDs</a>
+     * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify URIs &amp; IDs</a>
      */
     public Builder ids(final String ids) {
       assert (ids != null);

@@ -12,7 +12,7 @@ import java.io.IOException;
 
 /**
  * Request an access token by creating a
- * <a href="https://developer.spotify.com/web-api/authorization-guide/#client-credentials-flow">Client Credentials</a>
+ * <a href="https://developer.spotify.com/documentation/web-api/tutorials/client-credentials-flow">Client Credentials</a>
  * request.
  */
 @JsonDeserialize(builder = ClientCredentialsRequest.Builder.class)
