@@ -382,7 +382,7 @@ description.
 
 The model objects are entities that form the API's responses in arranged formats. They are mostly specified in the
 [Web API Object Model](https://developer.spotify.com/web-api/object-model/) and in the
-[Web API Authorization Guide](https://developer.spotify.com/web-api/authorization-guide/). Though, unreferenced model
+[Web API Authorization Guide](https://developer.spotify.com/documentation/web-api/concepts/authorization). Though, unreferenced model
 objects exist. This project subdivides those into...
 
 - "miscellaneous" model objects: these are mentioned somewhere in the reference, but not in the model object list

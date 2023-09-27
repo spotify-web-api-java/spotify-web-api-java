@@ -56,7 +56,7 @@ public class GetAudioFeaturesForTrackRequest extends AbstractDataRequest<AudioFe
      *
      * @param id Required. The Spotify ID for the track.
      * @return A {@link GetAudioFeaturesForTrackRequest.Builder}..
-     * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URIs &amp; IDs</a>
+     * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URIs &amp; IDs</a>
      */
     public Builder id(final String id) {
       assert (id != null);

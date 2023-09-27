@@ -60,7 +60,7 @@ public class GetEpisodeRequest extends AbstractDataRequest<Episode> {
      *
      * @param id The Spotify ID for the episode.
      * @return A {@link GetEpisodeRequest.Builder}.
-     * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URIs &amp; IDs</a>
+     * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URIs &amp; IDs</a>
      */
     public Builder id(final String id) {
       assert (id != null);

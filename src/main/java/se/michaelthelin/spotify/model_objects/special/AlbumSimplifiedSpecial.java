@@ -88,7 +88,7 @@ public class AlbumSimplifiedSpecial extends AbstractModelObject implements ISear
 
   /**
    * Get the external URLs of the album. <br>
-   * Example: <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify-URL</a>
+   * Example: <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify-URL</a>
    *
    * @return An {@link ExternalUrl} object.
    */
@@ -171,7 +171,7 @@ public class AlbumSimplifiedSpecial extends AbstractModelObject implements ISear
   /**
    * Get the Spotify URI of the album.
    *
-   * @return <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify album URI</a>.
+   * @return <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify album URI</a>.
    */
   public String getUri() {
     return uri;
@@ -270,7 +270,7 @@ public class AlbumSimplifiedSpecial extends AbstractModelObject implements ISear
     /**
      * Set album ID of the album to be built.
      *
-     * @param id <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify album ID</a>.
+     * @param id <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify album ID</a>.
      * @return A {@link Album.Builder}.
      */
     public Builder setId(String id) {
@@ -347,7 +347,7 @@ public class AlbumSimplifiedSpecial extends AbstractModelObject implements ISear
     /**
      * Set the Spotify album URI of the album to be built.
      *
-     * @param uri <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">
+     * @param uri <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">
      *            Spotify album URI</a>.
      * @return A {@link AlbumSimplifiedSpecial.Builder}.
      */

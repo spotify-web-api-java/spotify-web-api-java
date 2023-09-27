@@ -49,7 +49,7 @@ public class FollowPlaylistRequest extends AbstractDataRequest<String> {
      * privately requires the {@code playlist-modify-private} scope.
      *
      * @param accessToken Required. A valid access token from the Spotify Accounts service.
-     * @see <a href="https://developer.spotify.com/web-api/using-scopes/">Spotify: Using Scopes</a>
+     * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/scopes">Spotify: Using Scopes</a>
      */
     public Builder(final String accessToken) {
       super(accessToken);
@@ -60,7 +60,7 @@ public class FollowPlaylistRequest extends AbstractDataRequest<String> {
      *
      * @param owner_id The Spotify user ID of the person who owns the playlist.
      * @return A {@link FollowPlaylistRequest.Builder}.
-     * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URIs &amp; IDs</a>
+     * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URIs &amp; IDs</a>
      */
     public Builder owner_id(final String owner_id) {
       assert (owner_id != null);
@@ -74,7 +74,7 @@ public class FollowPlaylistRequest extends AbstractDataRequest<String> {
      * @param playlist_id The Spotify ID of the playlist. Any playlist can be followed, regardless of its public/private
      *                    status, as long as you know its playlist ID.
      * @return A {@link FollowPlaylistRequest.Builder}.
-     * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URIs &amp; IDs</a>
+     * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URIs &amp; IDs</a>
      */
     public Builder playlist_id(final String playlist_id) {
       assert (playlist_id != null);

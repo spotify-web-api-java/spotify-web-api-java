@@ -52,7 +52,7 @@ public class GetUsersFollowedArtistsRequest extends AbstractDataRequest<PagingCu
      * {@code user-follow-read} scope.
      *
      * @param accessToken Required. A valid access token from the Spotify Accounts service.
-     * @see <a href="https://developer.spotify.com/web-api/using-scopes/">Spotify: Using Scopes</a>
+     * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/scopes">Spotify: Using Scopes</a>
      */
     public Builder(final String accessToken) {
       super(accessToken);
@@ -88,7 +88,7 @@ public class GetUsersFollowedArtistsRequest extends AbstractDataRequest<PagingCu
      *
      * @param after Optional. The last artist ID retrieved from the previous request.
      * @return A {@link GetUsersFollowedArtistsRequest.Builder}.
-     * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URIs &amp; IDs</a>
+     * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URIs &amp; IDs</a>
      */
     @Override
     public Builder after(final String after) {

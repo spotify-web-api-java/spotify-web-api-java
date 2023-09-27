@@ -31,7 +31,7 @@ public class RemoveItemsFromPlaylistRequest extends AbstractDataRequest<Snapshot
    * @return A playlist snapshot ID. The snapshot ID can be used to identify your playlist version in future requests.
    * @throws IOException            In case of networking issues.
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
-   * @see <a href="https://developer.spotify.com/web-api/working-with-playlists/#version-control-and-snapshots">
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/playlists">
    * Spotify: Version Control and Snapshots</a>
    */
   public SnapshotResult execute() throws
@@ -54,7 +54,7 @@ public class RemoveItemsFromPlaylistRequest extends AbstractDataRequest<Snapshot
      * {@code playlist-modify-private} scope.
      *
      * @param accessToken Required. A valid access token from the Spotify Accounts service.
-     * @see <a href="https://developer.spotify.com/web-api/using-scopes/">Spotify: Using Scopes</a>
+     * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/scopes">Spotify: Using Scopes</a>
      */
     public Builder(final String accessToken) {
       super(accessToken);
@@ -65,7 +65,7 @@ public class RemoveItemsFromPlaylistRequest extends AbstractDataRequest<Snapshot
      *
      * @param playlist_id The Spotify ID for the playlist.
      * @return An {@link RemoveItemsFromPlaylistRequest.Builder}.
-     * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URIs &amp; IDs</a>
+     * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URIs &amp; IDs</a>
      */
     public Builder playlist_id(final String playlist_id) {
       assert (playlist_id != null);
@@ -87,7 +87,7 @@ public class RemoveItemsFromPlaylistRequest extends AbstractDataRequest<Snapshot
      * @param tracks Required. An array of objects containing Spotify URIs of the items to remove. A maximum of
      *               100 objects can be sent at once
      * @return A {@link RemoveItemsFromPlaylistRequest.Builder}.
-     * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URIs &amp; IDs</a>
+     * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URIs &amp; IDs</a>
      */
     public Builder tracks(final JsonArray tracks) {
       assert (tracks != null);
@@ -108,7 +108,7 @@ public class RemoveItemsFromPlaylistRequest extends AbstractDataRequest<Snapshot
      *                   validate that the specified items exist and in the specified positions and make the changes,
      *                   even if more recent changes have been made to the playlist.
      * @return A {@link RemoveItemsFromPlaylistRequest.Builder}.
-     * @see <a href="https://developer.spotify.com/web-api/working-with-playlists/#version-control-and-snapshots">
+     * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/playlists">
      * Spotify: Version Control and Snapshots</a>
      */
     public Builder snapshotId(final String snapshotId) {

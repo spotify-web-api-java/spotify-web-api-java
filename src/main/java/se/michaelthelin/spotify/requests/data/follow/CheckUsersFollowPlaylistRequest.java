@@ -53,7 +53,7 @@ public class CheckUsersFollowPlaylistRequest extends AbstractDataRequest<Boolean
      * granted access to the {@code playlist-read-private scope}.
      *
      * @param accessToken Required. A valid access token from the Spotify Accounts service.
-     * @see <a href="https://developer.spotify.com/web-api/using-scopes/">Spotify: Using Scopes</a>
+     * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/scopes">Spotify: Using Scopes</a>
      */
     public Builder(final String accessToken) {
       super(accessToken);
@@ -64,7 +64,7 @@ public class CheckUsersFollowPlaylistRequest extends AbstractDataRequest<Boolean
      *
      * @param owner_id The Spotify user ID of the person who owns the playlist.
      * @return A {@link CheckUsersFollowPlaylistRequest.Builder}.
-     * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URIs &amp; IDs</a>
+     * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URIs &amp; IDs</a>
      */
     public Builder owner_id(final String owner_id) {
       assert (owner_id != null);
@@ -77,7 +77,7 @@ public class CheckUsersFollowPlaylistRequest extends AbstractDataRequest<Boolean
      *
      * @param playlist_id The Spotify ID of the playlist.
      * @return A {@link CheckUsersFollowPlaylistRequest.Builder}.
-     * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URIs &amp; IDs</a>
+     * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URIs &amp; IDs</a>
      */
     public Builder playlist_id(final String playlist_id) {
       assert (playlist_id != null);
@@ -91,7 +91,7 @@ public class CheckUsersFollowPlaylistRequest extends AbstractDataRequest<Boolean
      * @param ids Required. A comma-separated list of Spotify User IDs; the ids of the users that you want to check to
      *            see if they follow the playlist. Maximum: 5 ids.
      * @return A {@link CheckUsersFollowPlaylistRequest.Builder}.
-     * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URIs &amp; IDs</a>
+     * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URIs &amp; IDs</a>
      */
     public Builder ids(final String ids) {
       assert (ids != null);

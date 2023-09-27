@@ -56,7 +56,7 @@ public class GetAudioFeaturesForSeveralTracksRequest extends AbstractDataRequest
      *
      * @param ids Required. A comma-separated list of the Spotify IDs for the tracks. Maximum: 100 IDs.
      * @return A {@link GetAudioFeaturesForSeveralTracksRequest.Builder}.
-     * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URIs &amp; IDs</a>
+     * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URIs &amp; IDs</a>
      */
     public Builder ids(final String ids) {
       assert (ids != null);

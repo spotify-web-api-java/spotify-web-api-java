@@ -7,7 +7,7 @@ import se.michaelthelin.spotify.model_objects.specification.Paging;
 import se.michaelthelin.spotify.model_objects.specification.PlaylistSimplified;
 
 /**
- * Retrieve information about <a href="https://developer.spotify.com/web-api/console/get-featured-playlists">
+ * Retrieve information about <a href="https://developer.spotify.com/documentation/web-api/reference/get-featured-playlists">
  * Featured Playlist objects</a> by building instances from this class.
  */
 @JsonDeserialize(builder = FeaturedPlaylists.Builder.class)

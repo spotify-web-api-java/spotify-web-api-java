@@ -484,7 +484,7 @@ public class GetRecommendationsRequest extends AbstractDataRequest<Recommendatio
      * @param seed_artists A comma separated list of Spotify IDs for seed seed_artists. Up to 5 seed values may be
      *                     provided in any combination of seed_artists, seed_tracks and seed_genres.
      * @return A {@link GetRecommendationsRequest.Builder}.
-     * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify URIs &amp; IDs</a>
+     * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify URIs &amp; IDs</a>
      */
     public Builder seed_artists(final String seed_artists) {
       assert (seed_artists != null);
@@ -498,7 +498,7 @@ public class GetRecommendationsRequest extends AbstractDataRequest<Recommendatio
      * @param seed_genres A comma separated list of any seed_genres in the set of available genre seeds. Up to 5 seed
      *                    values may be provided in any combination of seed_artists, seed_tracks and seed_genres.
      * @return A {@link GetRecommendationsRequest.Builder}.
-     * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify URIs &amp; IDs</a>
+     * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify URIs &amp; IDs</a>
      */
     public Builder seed_genres(final String seed_genres) {
       assert (seed_genres != null);
@@ -512,7 +512,7 @@ public class GetRecommendationsRequest extends AbstractDataRequest<Recommendatio
      * @param seed_tracks A comma separated list of Spotify IDs for a seed track. Up to 5 seed values may be provided in
      *                    any combination of seed_artists, seed_tracks and seed_genres.
      * @return A {@link GetRecommendationsRequest.Builder}.
-     * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify URIs &amp; IDs</a>
+     * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify URIs &amp; IDs</a>
      */
     public Builder seed_tracks(final String seed_tracks) {
       assert (seed_tracks != null);

@@ -56,7 +56,7 @@ public class GetUsersProfileRequest extends AbstractDataRequest<User> {
      *
      * @param user_id The user's Spotify user ID.
      * @return A {@link GetUsersProfileRequest.Builder}.
-     * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URIs &amp; IDs</a>
+     * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URIs &amp; IDs</a>
      */
     public Builder user_id(final String user_id) {
       assert (user_id != null);

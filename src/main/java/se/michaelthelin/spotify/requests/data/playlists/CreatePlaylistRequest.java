@@ -51,7 +51,7 @@ public class CreatePlaylistRequest extends AbstractDataRequest<Playlist> {
      * scope; Creating a private playlist requires the {@code playlist-modify-private} scope.
      *
      * @param accessToken Required. A valid access token from the Spotify Accounts service.
-     * @see <a href="https://developer.spotify.com/web-api/using-scopes/">Spotify: Using Scopes</a>
+     * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/scopes">Spotify: Using Scopes</a>
      */
     public Builder(final String accessToken) {
       super(accessToken);
@@ -62,7 +62,7 @@ public class CreatePlaylistRequest extends AbstractDataRequest<Playlist> {
      *
      * @param user_id The user's Spotify user ID.
      * @return A {@link CreatePlaylistRequest.Builder}.
-     * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URIs &amp; IDs</a>
+     * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URIs &amp; IDs</a>
      */
     public Builder user_id(final String user_id) {
       assert (user_id != null);

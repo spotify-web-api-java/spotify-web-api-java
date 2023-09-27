@@ -48,7 +48,7 @@ public class UnfollowPlaylistRequest extends AbstractDataRequest<String> {
      * scope; unfollowing a privately followed playlist requires the {@code playlist-modify-private} scope.
      *
      * @param accessToken Required. A valid access token from the Spotify Accounts service.
-     * @see <a href="https://developer.spotify.com/web-api/using-scopes/">Spotify: Using Scopes</a>
+     * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/scopes">Spotify: Using Scopes</a>
      */
     public Builder(final String accessToken) {
       super(accessToken);
@@ -59,7 +59,7 @@ public class UnfollowPlaylistRequest extends AbstractDataRequest<String> {
      *
      * @param owner_id The Spotify user ID of the person who owns the playlist.
      * @return An {@link UnfollowPlaylistRequest.Builder}.
-     * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URIs &amp; IDs</a>
+     * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URIs &amp; IDs</a>
      */
     public Builder owner_id(final String owner_id) {
       assert (owner_id != null);
@@ -72,7 +72,7 @@ public class UnfollowPlaylistRequest extends AbstractDataRequest<String> {
      *
      * @param playlist_id The Spotify ID of the playlist that is to be no longer followed.
      * @return An {@link UnfollowPlaylistRequest.Builder}.
-     * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URIs &amp; IDs</a>
+     * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URIs &amp; IDs</a>
      */
     public Builder playlist_id(final String playlist_id) {
       assert (playlist_id != null);

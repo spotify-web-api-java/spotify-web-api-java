@@ -7,7 +7,7 @@ import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 /**
  * Retrieve information about Restriction objects by building instances from this class. <br><br>
  * <p>
- * Part of the response when <a href="https://developer.spotify.com/web-api/track-relinking-guide/">Track Relinking</a>
+ * Part of the response when <a href="https://developer.spotify.com/documentation/web-api/concepts/track-relinking">Track Relinking</a>
  * is applied, the original track is not available in the given market, and Spotify did not have any tracks to relink it
  * with. The track response will still contain metadata for the original track, and a restrictions object containing the
  * reason why the track is not available

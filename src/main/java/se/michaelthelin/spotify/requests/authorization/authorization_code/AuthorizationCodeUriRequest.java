@@ -9,7 +9,7 @@ import java.net.URI;
 
 /**
  * Request an authorization code by creating an
- * <a href="https://developer.spotify.com/web-api/authorization-guide/#authorization_code_flow">Authorization Code
+ * <a href="https://developer.spotify.com/documentation/web-api/tutorials/code-flow">Authorization Code
  * URI</a> request.
  */
 @JsonDeserialize(builder = AuthorizationCodeUriRequest.Builder.class)
@@ -132,7 +132,7 @@ public class AuthorizationCodeUriRequest extends AbstractRequest<URI> {
      *              granted only to access publicly available information: that is, only information normally visible in
      *              the Spotify desktop, web and mobile players.
      * @return An {@link AuthorizationCodeUriRequest.Builder}.
-     * @see <a href="https://developer.spotify.com/spotify-web-api/using-scopes/">Spotify: Using Scopes</a>
+     * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/scopes">Spotify: Using Scopes</a>
      */
     public Builder scope(final String scope) {
       assert (scope != null);

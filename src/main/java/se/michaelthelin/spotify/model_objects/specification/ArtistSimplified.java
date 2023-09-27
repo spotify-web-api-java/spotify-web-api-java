@@ -33,7 +33,7 @@ public class ArtistSimplified extends AbstractModelObject {
 
   /**
    * Get the external URLs of the artist. <br>
-   * Example: <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify-URL</a>
+   * Example: <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify-URL</a>
    *
    * @return An {@link ExternalUrl} object.
    */
@@ -53,7 +53,7 @@ public class ArtistSimplified extends AbstractModelObject {
   /**
    * Get the Spotify ID of the artist.
    *
-   * @return A <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify artist ID</a>.
+   * @return A <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify artist ID</a>.
    */
   public String getId() {
     return id;
@@ -80,7 +80,7 @@ public class ArtistSimplified extends AbstractModelObject {
   /**
    * Get the Spotify URI of the artist.
    *
-   * @return <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify artist URI</a>.
+   * @return <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify artist URI</a>.
    */
   public String getUri() {
     return uri;
@@ -133,7 +133,7 @@ public class ArtistSimplified extends AbstractModelObject {
     /**
      * Set artist ID of the artist to be built.
      *
-     * @param id <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify artist ID</a>.
+     * @param id <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify artist ID</a>.
      * @return A {@link ArtistSimplified.Builder}.
      */
     public Builder setId(String id) {
@@ -166,7 +166,7 @@ public class ArtistSimplified extends AbstractModelObject {
     /**
      * Set the Spotify artist URI of the artist to be built.
      *
-     * @param uri <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">
+     * @param uri <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">
      *            Spotify artist URI</a>.
      * @return A {@link ArtistSimplified.Builder}.
      */

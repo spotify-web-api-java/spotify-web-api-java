@@ -8,7 +8,7 @@ import se.michaelthelin.spotify.model_objects.specification.AudioFeatures;
 import java.util.Arrays;
 
 /**
- * Retrieve information about <a href="https://developer.spotify.com/web-api/get-audio-analysis/">
+ * Retrieve information about <a href="https://developer.spotify.com/documentation/web-api/reference/get-audio-analysis">
  * Audio Analysis objects</a> by building instances from this class. <br>
  * These objects contain a great amount of additional information to
  * {@link AudioFeatures} objects. <br><br>

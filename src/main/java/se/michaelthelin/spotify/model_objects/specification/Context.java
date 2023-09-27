@@ -58,7 +58,7 @@ public class Context extends AbstractModelObject {
   }
 
   /**
-   * Get the <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify URI</a>
+   * Get the <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify URI</a>
    * for the context.
    *
    * @return The Spotify URI for the context.
