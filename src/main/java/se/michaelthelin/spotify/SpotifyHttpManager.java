@@ -148,7 +148,7 @@ public class SpotifyHttpManager implements IHttpManager {
     SpotifyWebApiException,
     ParseException {
     assert (uri != null);
-    assert (!uri.toString().equals(""));
+    assert (!uri.toString().isEmpty());
 
     final HttpGet httpGet = new HttpGet(uri);
 
@@ -170,7 +170,7 @@ public class SpotifyHttpManager implements IHttpManager {
     SpotifyWebApiException,
     ParseException {
     assert (uri != null);
-    assert (!uri.toString().equals(""));
+    assert (!uri.toString().isEmpty());
 
     final HttpPost httpPost = new HttpPost(uri);
 
@@ -193,7 +193,7 @@ public class SpotifyHttpManager implements IHttpManager {
     SpotifyWebApiException,
     ParseException {
     assert (uri != null);
-    assert (!uri.toString().equals(""));
+    assert (!uri.toString().isEmpty());
 
     final HttpPut httpPut = new HttpPut(uri);
 
@@ -216,7 +216,7 @@ public class SpotifyHttpManager implements IHttpManager {
     SpotifyWebApiException,
     ParseException {
     assert (uri != null);
-    assert (!uri.toString().equals(""));
+    assert (!uri.toString().isEmpty());
 
     final HttpDelete httpDelete = new HttpDelete(uri);
 
@@ -291,7 +291,7 @@ public class SpotifyHttpManager implements IHttpManager {
       Level.FINE,
       "The http response has body " + responseBody);
 
-    if (responseBody != null && !responseBody.equals("")) {
+    if (responseBody != null && !responseBody.isEmpty()) {
       try {
         final JsonElement jsonElement = JsonParser.parseString(responseBody);
 
