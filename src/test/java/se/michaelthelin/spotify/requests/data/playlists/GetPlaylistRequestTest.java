@@ -58,7 +58,7 @@ public class GetPlaylistRequestTest extends AbstractDataTest<Playlist> {
       .fields("description,owner").build();
 
     ExecutorService executor = Executors.newSingleThreadExecutor();
-    Callable<Playlist> playlistCall = () -> req.execute();
+    Callable<Playlist> playlistCall = req::execute;
 
     try {
       Future<Playlist> submit = executor.submit(playlistCall);
@@ -69,6 +69,7 @@ public class GetPlaylistRequestTest extends AbstractDataTest<Playlist> {
       fail("Timeout, the thread blocked");
     }
   }
+
   @Test
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
