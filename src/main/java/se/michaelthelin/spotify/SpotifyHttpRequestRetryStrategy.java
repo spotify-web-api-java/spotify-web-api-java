@@ -28,7 +28,6 @@
 package se.michaelthelin.spotify;
 
 import org.apache.hc.client5.http.HttpRequestRetryStrategy;
-import org.apache.hc.client5.http.utils.DateUtils;
 import org.apache.hc.core5.annotation.Contract;
 import org.apache.hc.core5.annotation.ThreadingBehavior;
 import org.apache.hc.core5.concurrent.CancellableDependency;
@@ -43,7 +42,6 @@ import java.io.InterruptedIOException;
 import java.net.ConnectException;
 import java.net.NoRouteToHostException;
 import java.net.UnknownHostException;
-import java.time.Instant;
 import java.util.*;
 
 /**
@@ -53,8 +51,6 @@ import java.util.*;
  */
 @Contract(threading = ThreadingBehavior.STATELESS)
 public class SpotifyHttpRequestRetryStrategy implements HttpRequestRetryStrategy {
-
-  public static final SpotifyHttpRequestRetryStrategy INSTANCE = new SpotifyHttpRequestRetryStrategy();
 
   /**
    * Maximum number of allowed retries
@@ -103,7 +99,6 @@ public class SpotifyHttpRequestRetryStrategy implements HttpRequestRetryStrategy
    * <p>
    * and retriable HTTP status codes:<br>
    * <ul>
-   * <li>SC_TOO_MANY_REQUESTS (429)</li>
    * <li>SC_SERVICE_UNAVAILABLE (503)</li>
    * </ul>
    *
@@ -141,7 +136,6 @@ public class SpotifyHttpRequestRetryStrategy implements HttpRequestRetryStrategy
    * <p>
    * and retriable HTTP status codes:<br>
    * <ul>
-   * <li>SC_TOO_MANY_REQUESTS (429)</li>
    * <li>SC_SERVICE_UNAVAILABLE (503)</li>
    * </ul>
    */
@@ -196,24 +190,6 @@ public class SpotifyHttpRequestRetryStrategy implements HttpRequestRetryStrategy
     final HttpContext context) {
     Args.notNull(response, "response");
 
-    final Header header = response.getFirstHeader(HttpHeaders.RETRY_AFTER);
-    TimeValue retryAfter = null;
-    if (header != null) {
-      final String value = header.getValue();
-      try {
-        retryAfter = TimeValue.ofSeconds(Long.parseLong(value));
-      } catch (final NumberFormatException ignore) {
-        final Instant retryAfterDate = DateUtils.parseStandardDate(value);
-        if (retryAfterDate != null) {
-          retryAfter =
-            TimeValue.ofMilliseconds(retryAfterDate.toEpochMilli() - System.currentTimeMillis());
-        }
-      }
-
-      if (TimeValue.isPositive(retryAfter)) {
-        return retryAfter;
-      }
-    }
     return this.defaultRetryInterval;
   }
 
