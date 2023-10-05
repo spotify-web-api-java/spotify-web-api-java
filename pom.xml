@@ -7,7 +7,7 @@
 
   <groupId>se.michaelthelin.spotify</groupId>
   <artifactId>spotify-web-api-java</artifactId>
-  <version>8.2.1</version>
+  <version>8.3.0</version>
   <!--
    DO NOT FORGET
    - to update version numbers in README (2x)
@@ -97,6 +97,12 @@
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-simple</artifactId>
       <version>2.0.9</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.wiremock</groupId>
+      <artifactId>wiremock</artifactId>
+      <version>3.2.0</version>
       <scope>test</scope>
     </dependency>
   </dependencies>

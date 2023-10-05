@@ -7,12 +7,12 @@ import java.util.concurrent.Executors;
 
 public class SpotifyApiThreading {
 
-  public static final ExecutorService THREADPOOL = Executors.newCachedThreadPool();
+  public static final ExecutorService THREAD_POOL = Executors.newCachedThreadPool();
 
   public static <T> CompletableFuture<T> executeAsync(final Callable<T> callable) {
     CompletableFuture<T> future = new CompletableFuture<>();
 
-    SpotifyApiThreading.THREADPOOL.execute(() -> {
+    SpotifyApiThreading.THREAD_POOL.execute(() -> {
       try {
         future.complete(callable.call());
       } catch (Exception e) {
