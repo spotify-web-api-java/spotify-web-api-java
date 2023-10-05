@@ -1,6 +1,7 @@
 package se.michaelthelin.spotify;
 
 import com.google.gson.*;
+import org.apache.hc.client5.http.HttpRequestRetryStrategy;
 import org.apache.hc.client5.http.auth.AuthScope;
 import org.apache.hc.client5.http.auth.UsernamePasswordCredentials;
 import org.apache.hc.client5.http.cache.CacheResponseStatus;
@@ -9,6 +10,7 @@ import org.apache.hc.client5.http.classic.methods.HttpDelete;
 import org.apache.hc.client5.http.classic.methods.HttpGet;
 import org.apache.hc.client5.http.classic.methods.HttpPost;
 import org.apache.hc.client5.http.classic.methods.HttpPut;
+import org.apache.hc.client5.http.config.ConnectionConfig;
 import org.apache.hc.client5.http.config.RequestConfig;
 import org.apache.hc.client5.http.cookie.StandardCookieSpec;
 import org.apache.hc.client5.http.impl.auth.BasicCredentialsProvider;
@@ -17,6 +19,7 @@ import org.apache.hc.client5.http.impl.cache.CachingHttpClients;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
 import org.apache.hc.client5.http.impl.classic.HttpClients;
+import org.apache.hc.client5.http.impl.io.BasicHttpClientConnectionManager;
 import org.apache.hc.core5.http.*;
 import org.apache.hc.core5.http.io.entity.EntityUtils;
 import org.apache.hc.core5.util.Timeout;
@@ -72,34 +75,45 @@ public class SpotifyHttpManager implements IHttpManager {
       );
     }
 
+    ConnectionConfig connectionConfig = ConnectionConfig
+      .custom()
+      .setConnectTimeout(builder.connectTimeout != null
+        ? Timeout.ofMilliseconds(builder.connectTimeout)
+        : ConnectionConfig.DEFAULT.getConnectTimeout())
+      .build();
+    BasicHttpClientConnectionManager connectionManager = new BasicHttpClientConnectionManager();
+    connectionManager.setConnectionConfig(connectionConfig);
     RequestConfig requestConfig = RequestConfig
       .custom()
       .setCookieSpec(StandardCookieSpec.STRICT)
-      .setProxy(proxy)
       .setConnectionRequestTimeout(builder.connectionRequestTimeout != null
         ? Timeout.ofMilliseconds(builder.connectionRequestTimeout)
         : RequestConfig.DEFAULT.getConnectionRequestTimeout())
-      .setConnectTimeout(builder.connectTimeout != null
-        ? Timeout.ofMilliseconds(builder.connectTimeout)
-        : RequestConfig.DEFAULT.getConnectTimeout())
       .setResponseTimeout(builder.socketTimeout != null
         ? Timeout.ofMilliseconds(builder.socketTimeout)
         : RequestConfig.DEFAULT.getResponseTimeout())
       .build();
+    HttpRequestRetryStrategy retryStrategy = new SpotifyHttpRequestRetryStrategy();
 
     this.httpClient = HttpClients
       .custom()
+      .disableContentCompression()
+      .setConnectionManager(connectionManager)
       .setDefaultCredentialsProvider(credentialsProvider)
       .setDefaultRequestConfig(requestConfig)
-      .disableContentCompression()
+      .setProxy(proxy)
+      .setRetryStrategy(retryStrategy)
       .build();
 
     this.httpClientCaching = CachingHttpClients
       .custom()
       .setCacheConfig(cacheConfig)
+      .disableContentCompression()
+      .setConnectionManager(connectionManager)
       .setDefaultCredentialsProvider(credentialsProvider)
       .setDefaultRequestConfig(requestConfig)
-      .disableContentCompression()
+      .setProxy(proxy)
+      .setRetryStrategy(retryStrategy)
       .build();
   }
 

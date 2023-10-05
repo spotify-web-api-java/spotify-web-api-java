@@ -99,6 +99,12 @@
       <version>2.0.9</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>org.wiremock</groupId>
+      <artifactId>wiremock</artifactId>
+      <version>3.2.0</version>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
 
   <packaging>jar</packaging>
