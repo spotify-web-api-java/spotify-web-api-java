@@ -401,7 +401,7 @@ methods as well as an embedded...
 #### Requests
 `src/main/java/se.michaelthelin.spotify/requests/`
 
-The request classes mirror the strucure of Spotify's Web Api endpoints. They are divided into several categories like
+The request classes mirror the structure of Spotify's Web Api endpoints. They are divided into several categories like
 `authorization`, `data/albums` or `data/tracks`. They must extend from `AbstractDataRequest` and contain an
 implementation of the request's `execute` method. They have to embed a builder class too, enabling dynamic request
 creation.
