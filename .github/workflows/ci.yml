@@ -1,10 +1,17 @@
 name: CI
 
-on: [pull_request, push]
+on:
+  pull_request:
+  push:
+    branches:
+      - alpha
+      - beta
+      - master
+      - renovate/**
 
 jobs:
   prepare_jobs:
-    name: 'Prepare: job optimization'
+    name: "Prepare: job optimization"
     runs-on: ubuntu-latest
     outputs:
       pr_found: ${{ steps.pr.outputs.pr_found }}
@@ -16,19 +23,20 @@ jobs:
           filterOutClosed: true
           sha: ${{ github.event.pull_request.head.sha }}
   build:
+    name: Build
     needs: prepare_jobs
     if: needs.prepare_jobs.outputs.pr_found == 'false' || github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        java: [ '11', '21' ]
+        java: ["11", "21"]
     steps:
       - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
-      - name: Set up JDK 11
+      - name: Set up JDK
         uses: actions/setup-java@v3
         with:
           java-version: ${{ matrix.java }}
-          distribution: 'adopt'
+          distribution: "adopt"
           cache: maven
       - name: Build with Maven
         run: mvn -B package --file pom.xml
@@ -48,3 +56,8 @@ jobs:
           ./ci/before-deploy.sh
           cp ./ci/.m2.settings.xml $HOME/.m2/settings.xml
           mvn deploy -P release -DskipTests=true
+      - name: Create release
+        if: startsWith(github.ref, 'refs/tags/') && matrix.java == 11
+        run: npx changelogithub
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
