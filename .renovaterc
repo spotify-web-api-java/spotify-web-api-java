@@ -1,6 +1,5 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "baseBranches": ["develop"],
   "extends": [
     "github>dargmuesli/renovate-config"
   ]
