@@ -9,6 +9,7 @@ on:
       - master
       - renovate/**
     tags:
+      - '[0-9]+.[0-9]+.[0-9]+'
 
 jobs:
   prepare_jobs:
