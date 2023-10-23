@@ -8,6 +8,7 @@ on:
       - beta
       - master
       - renovate/**
+    tags:
 
 jobs:
   prepare_jobs:
