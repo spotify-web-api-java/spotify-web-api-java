@@ -33,7 +33,10 @@ jobs:
       matrix:
         java: ["11", "21"]
     steps:
-      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
+      - name: Checkout git repository
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+        with:
+          fetch-depth: 0 # fetch complete history to find the last git tag
       - name: Set up JDK
         uses: actions/setup-java@v3
         with:
