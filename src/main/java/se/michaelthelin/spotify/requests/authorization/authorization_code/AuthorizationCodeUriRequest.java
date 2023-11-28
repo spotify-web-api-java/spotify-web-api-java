@@ -141,13 +141,13 @@ public class AuthorizationCodeUriRequest extends AbstractRequest<URI> {
     }
 
     public Builder scope(final AuthorizationScope... scopes) {
-      String finalScopes = "";
+      StringBuilder finalScopes = new StringBuilder();
 
       for (AuthorizationScope scope : scopes) {
-        finalScopes += (scope.GetScope() + " ");
+        finalScopes.append(scope.GetScope()).append(" ");
       }
 
-      return scope(finalScopes.trim());
+      return scope(finalScopes.toString().trim());
     }
 
     /**
