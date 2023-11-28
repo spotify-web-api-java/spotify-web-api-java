@@ -61,7 +61,7 @@ public class GetArtistsTopTracksRequest extends AbstractDataRequest<Track[]> {
      */
     public Builder id(final String id) {
       assert (id != null);
-      assert (!id.equals(""));
+      assert (!id.isEmpty());
       return setPathParameter("id", id);
     }
 

@@ -65,7 +65,7 @@ public class AuthorizationCodeRefreshRequest extends AbstractAuthorizationReques
      */
     public Builder refresh_token(final String refresh_token) {
       assert (refresh_token != null);
-      assert (!refresh_token.equals(""));
+      assert (!refresh_token.isEmpty());
       return setBodyParameter("refresh_token", refresh_token);
     }
 

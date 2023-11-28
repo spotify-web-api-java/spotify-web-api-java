@@ -72,7 +72,7 @@ public class ReorderPlaylistsItemsRequest extends AbstractDataRequest<SnapshotRe
      */
     public Builder playlist_id(final String playlist_id) {
       assert (playlist_id != null);
-      assert (!playlist_id.equals(""));
+      assert (!playlist_id.isEmpty());
       return setPathParameter("playlist_id", playlist_id);
     }
 
@@ -123,7 +123,7 @@ public class ReorderPlaylistsItemsRequest extends AbstractDataRequest<SnapshotRe
      */
     public Builder snapshot_id(final String snapshot_id) {
       assert (snapshot_id != null);
-      assert (!snapshot_id.equals(""));
+      assert (!snapshot_id.isEmpty());
       return setBodyParameter("snapshot_id", snapshot_id);
     }
 

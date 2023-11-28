@@ -66,7 +66,7 @@ public class StartResumeUsersPlaybackRequest extends AbstractDataRequest<String>
      */
     public Builder device_id(final String device_id) {
       assert (device_id != null);
-      assert (!device_id.equals(""));
+      assert (!device_id.isEmpty());
       return setQueryParameter("device_id", device_id);
     }
 
@@ -80,7 +80,7 @@ public class StartResumeUsersPlaybackRequest extends AbstractDataRequest<String>
      */
     public Builder context_uri(final String context_uri) {
       assert (context_uri != null);
-      assert (!context_uri.equals(""));
+      assert (!context_uri.isEmpty());
       return setBodyParameter("context_uri", context_uri);
     }
 

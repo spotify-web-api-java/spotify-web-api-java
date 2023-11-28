@@ -64,7 +64,7 @@ public class SkipUsersPlaybackToNextTrackRequest extends AbstractDataRequest<Str
      */
     public Builder device_id(final String device_id) {
       assert (device_id != null);
-      assert (!device_id.equals(""));
+      assert (!device_id.isEmpty());
       return setQueryParameter("device_id", device_id);
     }
 

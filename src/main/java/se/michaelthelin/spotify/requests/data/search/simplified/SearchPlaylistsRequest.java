@@ -64,7 +64,7 @@ public class SearchPlaylistsRequest extends AbstractDataRequest<Paging<PlaylistS
      */
     public Builder q(final String q) {
       assert (q != null);
-      assert (!q.equals(""));
+      assert (!q.isEmpty());
       return setQueryParameter("q", q);
     }
 

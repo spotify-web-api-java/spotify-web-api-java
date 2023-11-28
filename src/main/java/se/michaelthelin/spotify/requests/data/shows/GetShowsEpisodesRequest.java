@@ -67,7 +67,7 @@ public class GetShowsEpisodesRequest extends AbstractDataRequest<Paging<EpisodeS
      */
     public Builder id(final String id) {
       assert (id != null);
-      assert (!id.equals(""));
+      assert (!id.isEmpty());
       return setPathParameter("id", id);
     }
 

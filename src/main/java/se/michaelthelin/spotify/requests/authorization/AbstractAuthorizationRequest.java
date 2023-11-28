@@ -14,8 +14,8 @@ public abstract class AbstractAuthorizationRequest<T> extends AbstractRequest<T>
 
       assert (clientId != null);
       assert (clientSecret != null);
-      assert (!clientId.equals(""));
-      assert (!clientSecret.equals(""));
+      assert (!clientId.isEmpty());
+      assert (!clientSecret.isEmpty());
 
       setHeader("Authorization", "Basic " + Base64.encode((clientId + ":" + clientSecret).getBytes()));
     }

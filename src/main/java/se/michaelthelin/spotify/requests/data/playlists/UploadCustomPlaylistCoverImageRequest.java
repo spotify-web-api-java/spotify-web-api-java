@@ -66,7 +66,7 @@ public class UploadCustomPlaylistCoverImageRequest extends AbstractDataRequest<S
      */
     public Builder playlist_id(final String playlist_id) {
       assert (playlist_id != null);
-      assert (!playlist_id.equals(""));
+      assert (!playlist_id.isEmpty());
       return setPathParameter("playlist_id", playlist_id);
     }
 
@@ -78,7 +78,7 @@ public class UploadCustomPlaylistCoverImageRequest extends AbstractDataRequest<S
      */
     public Builder image_data(final String image_data) {
       assert (image_data != null);
-      assert (!image_data.equals(""));
+      assert (!image_data.isEmpty());
       assert (image_data.getBytes().length <= 256000);
       return setBody(new StringEntity(image_data, ContentType.IMAGE_JPEG));
     }
