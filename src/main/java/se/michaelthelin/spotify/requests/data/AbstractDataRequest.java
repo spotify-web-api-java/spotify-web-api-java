@@ -12,7 +12,7 @@ public abstract class AbstractDataRequest<T> extends AbstractRequest<T> {
       super();
 
       assert (accessToken != null);
-      assert (!accessToken.equals(""));
+      assert (!accessToken.isEmpty());
 
       setHeader("Authorization", "Bearer " + accessToken);
     }

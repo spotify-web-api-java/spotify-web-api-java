@@ -13,7 +13,7 @@ public abstract class AbstractDataPagingRequest<T> extends AbstractDataRequest<T
     protected Builder(String accessToken) {
       super(accessToken);
 
-      assert (!accessToken.equals(""));
+      assert (!accessToken.isEmpty());
 
       setHeader("Authorization", "Bearer " + accessToken);
     }

@@ -65,7 +65,7 @@ public class ChangePlaylistsDetailsRequest extends AbstractDataRequest<String> {
      */
     public Builder playlist_id(final String playlist_id) {
       assert (playlist_id != null);
-      assert (!playlist_id.equals(""));
+      assert (!playlist_id.isEmpty());
       return setPathParameter("playlist_id", playlist_id);
     }
 
@@ -77,7 +77,7 @@ public class ChangePlaylistsDetailsRequest extends AbstractDataRequest<String> {
      */
     public Builder name(final String name) {
       assert (name != null);
-      assert (!name.equals(""));
+      assert (!name.isEmpty());
       return setBodyParameter("name", name);
     }
 
@@ -111,7 +111,7 @@ public class ChangePlaylistsDetailsRequest extends AbstractDataRequest<String> {
      */
     public Builder description(final String description) {
       assert (description != null);
-      assert (!description.equals(""));
+      assert (!description.isEmpty());
       return setBodyParameter("description", description);
     }
 

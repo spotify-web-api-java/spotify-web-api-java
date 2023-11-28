@@ -70,7 +70,7 @@ public class GetListOfUsersPlaylistsRequest extends AbstractDataRequest<Paging<P
      */
     public Builder user_id(final String user_id) {
       assert (user_id != null);
-      assert (!user_id.equals(""));
+      assert (!user_id.isEmpty());
       return setPathParameter("user_id", user_id);
     }
 

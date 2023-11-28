@@ -51,7 +51,7 @@ public class AuthorizationCodePKCERequest extends AbstractRequest<AuthorizationC
      */
     public Builder client_id(final String client_id) {
       assert (client_id != null);
-      assert (!client_id.equals(""));
+      assert (!client_id.isEmpty());
       return setBodyParameter("client_id", client_id);
     }
 
@@ -77,7 +77,7 @@ public class AuthorizationCodePKCERequest extends AbstractRequest<AuthorizationC
      */
     public Builder code(final String code) {
       assert (code != null);
-      assert (!code.equals(""));
+      assert (!code.isEmpty());
       return setBodyParameter("code", code);
     }
 
@@ -104,7 +104,7 @@ public class AuthorizationCodePKCERequest extends AbstractRequest<AuthorizationC
      */
     public Builder code_verifier(String code_verifier) {
       assert (code_verifier != null);
-      assert (!code_verifier.equals(""));
+      assert (!code_verifier.isEmpty());
       return setBodyParameter("code_verifier", code_verifier);
     }
 

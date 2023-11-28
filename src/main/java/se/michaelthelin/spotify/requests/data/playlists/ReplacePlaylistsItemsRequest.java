@@ -67,7 +67,7 @@ public class ReplacePlaylistsItemsRequest extends AbstractDataRequest<String> {
      */
     public Builder playlist_id(final String playlist_id) {
       assert (playlist_id != null);
-      assert (!playlist_id.equals(""));
+      assert (!playlist_id.isEmpty());
       return setPathParameter("playlist_id", playlist_id);
     }
 
@@ -80,7 +80,7 @@ public class ReplacePlaylistsItemsRequest extends AbstractDataRequest<String> {
      */
     public Builder uris(final String uris) {
       assert (uris != null);
-      assert (!uris.equals(""));
+      assert (!uris.isEmpty());
       assert (uris.split(",").length <= 100);
       return setQueryParameter("uris", uris);
     }
