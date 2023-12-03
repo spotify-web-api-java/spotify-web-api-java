@@ -194,7 +194,7 @@ public abstract class AbstractRequest<T> implements IRequest<T> {
     private final List<NameValuePair> queryParameters = new ArrayList<>();
     private final List<Header> headers = new ArrayList<>();
     private final List<NameValuePair> bodyParameters = new ArrayList<>();
-    private IHttpManager httpManager = SpotifyApi.DEFAULT_HTTP_MANAGER;
+    private IHttpManager httpManager = null;
     private String scheme = SpotifyApi.DEFAULT_SCHEME;
     private String host = SpotifyApi.DEFAULT_HOST;
     private Integer port = SpotifyApi.DEFAULT_PORT;

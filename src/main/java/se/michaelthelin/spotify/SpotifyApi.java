@@ -72,9 +72,9 @@ public class SpotifyApi {
   public static final String DEFAULT_HOST = "api.spotify.com";
 
   /**
-   * A HttpManager configured with default settings.
+   * A HttpManager Builder ready to build SpotifyHttpManager
    */
-  public static final IHttpManager DEFAULT_HTTP_MANAGER = new SpotifyHttpManager.Builder().build();
+  public static final SpotifyHttpManager.Builder shmb = new SpotifyHttpManager.Builder();
 
   /**
    * The default port of Spotify API calls.
@@ -1885,7 +1885,8 @@ public class SpotifyApi {
    */
   public static class Builder {
 
-    private IHttpManager httpManager = DEFAULT_HTTP_MANAGER;
+    private SpotifyHttpManager.Builder shmb = new SpotifyHttpManager.Builder();
+    private IHttpManager httpManager = null;
     private String scheme = DEFAULT_SCHEME;
     private String host = DEFAULT_HOST;
     private Integer port = DEFAULT_PORT;
@@ -1898,6 +1899,18 @@ public class SpotifyApi {
     private URI redirectUri;
     private String accessToken;
     private String refreshToken;
+
+    /**
+     * setConnectionManager.
+     *
+     * @return A {@link Builder}.
+     */
+    public Builder setConnectionManager(boolean bPooling) {
+      if (bPooling)
+        shmb.usePooledConnectionManager();
+      httpManager = shmb.build();
+      return this;
+    }
 
     /**
      * The HttpManager setter.
@@ -2048,6 +2061,8 @@ public class SpotifyApi {
      * @return A {@link SpotifyApi} instance.
      */
     public SpotifyApi build() {
+      if (httpManager == null)
+        httpManager = shmb.build();
       return new SpotifyApi(this);
     }
   }

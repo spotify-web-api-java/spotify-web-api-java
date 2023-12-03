@@ -20,6 +20,7 @@ import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
 import org.apache.hc.client5.http.impl.classic.HttpClients;
 import org.apache.hc.client5.http.impl.io.BasicHttpClientConnectionManager;
+import org.apache.hc.client5.http.impl.io.PoolingHttpClientConnectionManager;
 import org.apache.hc.core5.http.*;
 import org.apache.hc.core5.http.io.entity.EntityUtils;
 import org.apache.hc.core5.util.Timeout;
@@ -45,6 +46,7 @@ public class SpotifyHttpManager implements IHttpManager {
   private final Integer connectionRequestTimeout;
   private final Integer connectTimeout;
   private final Integer socketTimeout;
+  private final boolean usePooledConnectionManager;
 
   /**
    * Construct a new SpotifyHttpManager instance.
@@ -59,6 +61,9 @@ public class SpotifyHttpManager implements IHttpManager {
     this.connectionRequestTimeout = builder.connectionRequestTimeout;
     this.connectTimeout = builder.connectTimeout;
     this.socketTimeout = builder.socketTimeout;
+    this.usePooledConnectionManager = builder.usePooledConnectionManager;
+    PoolingHttpClientConnectionManager connectionManagerPooling = null;
+    BasicHttpClientConnectionManager connectionManagerBasic = null;
 
     CacheConfig cacheConfig = CacheConfig.custom()
       .setMaxCacheEntries(cacheMaxEntries != null ? cacheMaxEntries : DEFAULT_CACHE_MAX_ENTRIES)
@@ -81,9 +86,22 @@ public class SpotifyHttpManager implements IHttpManager {
         ? Timeout.ofMilliseconds(builder.connectTimeout)
         : ConnectionConfig.DEFAULT.getConnectTimeout())
       .build();
-    BasicHttpClientConnectionManager connectionManager = new BasicHttpClientConnectionManager();
-    connectionManager.setConnectionConfig(connectionConfig);
-    RequestConfig requestConfig = RequestConfig
+
+    if (usePooledConnectionManager)
+    {
+      connectionManagerPooling = new PoolingHttpClientConnectionManager();
+      connectionManagerPooling.setMaxTotal(5);
+      connectionManagerPooling.setDefaultMaxPerRoute(2);
+      System.out.print("\n\n....... [SpotifyHttpManager] using PoolingConnectionManager....\n\n");
+    }
+    else
+    {
+      connectionManagerBasic = new BasicHttpClientConnectionManager();
+      System.out.print("\n\n....... [SpotifyHttpManager] using BasicConnectionManager....\n\n");
+      connectionManagerBasic.setConnectionConfig(connectionConfig);
+    }
+  
+      RequestConfig requestConfig = RequestConfig
       .custom()
       .setCookieSpec(StandardCookieSpec.STRICT)
       .setConnectionRequestTimeout(builder.connectionRequestTimeout != null
@@ -98,7 +116,7 @@ public class SpotifyHttpManager implements IHttpManager {
     this.httpClient = HttpClients
       .custom()
       .disableContentCompression()
-      .setConnectionManager(connectionManager)
+      .setConnectionManager(usePooledConnectionManager ? connectionManagerPooling : connectionManagerBasic)
       .setDefaultCredentialsProvider(credentialsProvider)
       .setDefaultRequestConfig(requestConfig)
       .setProxy(proxy)
@@ -109,7 +127,7 @@ public class SpotifyHttpManager implements IHttpManager {
       .custom()
       .setCacheConfig(cacheConfig)
       .disableContentCompression()
-      .setConnectionManager(connectionManager)
+      .setConnectionManager(usePooledConnectionManager ? connectionManagerPooling : connectionManagerBasic)
       .setDefaultCredentialsProvider(credentialsProvider)
       .setDefaultRequestConfig(requestConfig)
       .setProxy(proxy)
@@ -366,6 +384,7 @@ public class SpotifyHttpManager implements IHttpManager {
     private Integer connectionRequestTimeout;
     private Integer connectTimeout;
     private Integer socketTimeout;
+    private boolean usePooledConnectionManager = false;
 
     public Builder setProxy(HttpHost proxy) {
       this.proxy = proxy;
@@ -402,6 +421,11 @@ public class SpotifyHttpManager implements IHttpManager {
       return this;
     }
 
+    public Builder usePooledConnectionManager() {
+      this.usePooledConnectionManager = true;
+      return this;
+    }
+    
     public SpotifyHttpManager build() {
       return new SpotifyHttpManager(this);
     }
