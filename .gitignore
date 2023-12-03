@@ -7,5 +7,3 @@ target/
 
 ### Project
 src/main/java/se/michaelthelin/spotify/Main.java
-
-spotify-web-api-java.jar
