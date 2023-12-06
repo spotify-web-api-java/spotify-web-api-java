@@ -1899,6 +1899,7 @@ public class SpotifyApi {
     private URI redirectUri;
     private String accessToken;
     private String refreshToken;
+    private boolean usePoolingConnectionManager = false;
 
     /**
      * The HttpManager setter.
@@ -2043,14 +2044,19 @@ public class SpotifyApi {
       return this;
     }
 
+    public Builder setPoolingConnectionManager() {
+      this.usePoolingConnectionManager = true;
+      return this;
+    }
+
     /**
      * Build a {@link SpotifyApi} instance with the information given to the builder.
      *
      * @return A {@link SpotifyApi} instance.
      */
-    public SpotifyApi build(boolean bPooling) {
-      if (bPooling)
-        spotifyHttpManagerBuilder.setPooledConnectionManager();
+    public SpotifyApi build() {
+      if (usePoolingConnectionManager)
+        spotifyHttpManagerBuilder.setPoolingConnectionManager();
       httpManager = spotifyHttpManagerBuilder.build();
       return new SpotifyApi(this);
     }
