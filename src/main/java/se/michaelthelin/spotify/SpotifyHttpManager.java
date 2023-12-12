@@ -92,7 +92,7 @@ public class SpotifyHttpManager implements IHttpManager {
         connectionManager = new PoolingHttpClientConnectionManager();
         SpotifyApi.LOGGER.log(
           Level.FINE,
-          "SpotifyHttpManager - using PoolingHttpClientConnectionManager.");
+          "Using PoolingHttpClientConnectionManager.");
       }
       else
       {
@@ -100,7 +100,7 @@ public class SpotifyHttpManager implements IHttpManager {
         ((BasicHttpClientConnectionManager)connectionManager).setConnectionConfig(connectionConfig);
         SpotifyApi.LOGGER.log(
           Level.FINE,
-          "SpotifyHttpManager - using BasicHttpClientConnectionManager.");
+          "Using BasicHttpClientConnectionManager.");
       }
     
       RequestConfig requestConfig = RequestConfig
