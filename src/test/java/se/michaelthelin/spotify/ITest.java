@@ -25,7 +25,7 @@ public interface ITest<T> {
     .setRedirectUri(SpotifyHttpManager.makeUri("https://example.com/spotify-redirect"))
     .setAccessToken("taHZ2SdB-bPA3FsK3D7ZN5npZS47cMy-IEySVEGttOhXmqaVAIo0ESvTCLjLBifhHOHOIuhFUKPW1WMDP7w6dj3MAZdWT8CLI2MkZaXbYLTeoDvXesf2eeiLYPBGdx8tIwQJKgV8XdnzH_DONk")
     .setRefreshToken("b0KuPuLw77Z0hQhCsK-GTHoEx_kethtn357V7iqwEpCTIsLgqbBC_vQBTGC6M5rINl0FrqHK-D3cbOsMOlfyVKuQPvpyGcLcxAoLOTpYXc28nVwB7iBq2oKj9G9lHkFOUKn")
-    .build(true);
+    .build();
 
   Date AFTER = new Date(1517087230000L);
   String ALBUM_TYPE = AlbumType.ALBUM.getType();
