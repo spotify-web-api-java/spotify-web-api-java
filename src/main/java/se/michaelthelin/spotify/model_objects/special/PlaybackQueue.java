@@ -11,8 +11,6 @@ import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 import se.michaelthelin.spotify.model_objects.IModelObject;
 import se.michaelthelin.spotify.model_objects.IPlaylistItem;
 import se.michaelthelin.spotify.model_objects.miscellaneous.CurrentlyPlaying;
-import se.michaelthelin.spotify.model_objects.specification.Episode;
-import se.michaelthelin.spotify.model_objects.specification.Track;
 import se.michaelthelin.spotify.model_objects.utils.PlaylistItemFactory;
 
 /**
@@ -124,7 +122,7 @@ public class PlaybackQueue extends AbstractModelObject {
     }
 
     private IPlaylistItem asPlaylistItem(JsonObject trackObj) {
-        return PlaylistItemFactory.createPlaylistItem(trackObj);
+      return PlaylistItemFactory.createPlaylistItem(trackObj);
     }
   }
 }
