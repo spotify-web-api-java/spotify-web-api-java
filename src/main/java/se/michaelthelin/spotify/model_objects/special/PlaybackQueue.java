@@ -11,8 +11,7 @@ import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 import se.michaelthelin.spotify.model_objects.IModelObject;
 import se.michaelthelin.spotify.model_objects.IPlaylistItem;
 import se.michaelthelin.spotify.model_objects.miscellaneous.CurrentlyPlaying;
-import se.michaelthelin.spotify.model_objects.specification.Episode;
-import se.michaelthelin.spotify.model_objects.specification.Track;
+import se.michaelthelin.spotify.model_objects.utils.PlaylistItemFactory;
 
 /**
  * Get the list of items that make up the user's queue.
@@ -123,17 +122,7 @@ public class PlaybackQueue extends AbstractModelObject {
     }
 
     private IPlaylistItem asPlaylistItem(JsonObject trackObj) {
-      IPlaylistItem item = null;
-      if (hasAndNotNull(trackObj, "type")) {
-        String type = trackObj.get("type").getAsString().toLowerCase();
-
-        if (type.equals("track")) {
-          item = new Track.JsonUtil().createModelObject(trackObj);
-        } else if (type.equals("episode")) {
-          item = new Episode.JsonUtil().createModelObject(trackObj);
-        }
-      }
-      return item;
+      return PlaylistItemFactory.createPlaylistItem(trackObj);
     }
   }
 }

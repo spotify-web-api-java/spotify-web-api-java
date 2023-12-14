@@ -5,6 +5,7 @@ import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.SpotifyApi;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 import se.michaelthelin.spotify.model_objects.IPlaylistItem;
+import se.michaelthelin.spotify.model_objects.utils.PlaylistItemFactory;
 
 import java.text.ParseException;
 import java.util.Date;
@@ -154,15 +155,7 @@ public class PlaylistTrack extends AbstractModelObject {
         if (hasAndNotNull(jsonObject, "track")) {
           final JsonObject trackObj = jsonObject.getAsJsonObject("track");
 
-          if (hasAndNotNull(trackObj, "type")) {
-            String type = trackObj.get("type").getAsString().toLowerCase();
-
-            if (type.equals("track")) {
-              track = new Track.JsonUtil().createModelObject(trackObj);
-            } else if (type.equals("episode")) {
-              track = new Episode.JsonUtil().createModelObject(trackObj);
-            }
-          }
+          track = PlaylistItemFactory.createPlaylistItem(trackObj);
         }
 
         return new Builder()
