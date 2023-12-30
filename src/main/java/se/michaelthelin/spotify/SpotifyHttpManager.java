@@ -87,23 +87,20 @@ public class SpotifyHttpManager implements IHttpManager {
         : ConnectionConfig.DEFAULT.getConnectTimeout())
       .build();
 
-      if (usePooledConnectionManager)
-      {
-        connectionManager = new PoolingHttpClientConnectionManager();
-        SpotifyApi.LOGGER.log(
-          Level.FINE,
-          "Using PoolingHttpClientConnectionManager.");
-      }
-      else
-      {
-        connectionManager = new BasicHttpClientConnectionManager();
-        ((BasicHttpClientConnectionManager)connectionManager).setConnectionConfig(connectionConfig);
-        SpotifyApi.LOGGER.log(
-          Level.FINE,
-          "Using BasicHttpClientConnectionManager.");
-      }
-    
-      RequestConfig requestConfig = RequestConfig
+    if (usePooledConnectionManager) {
+      connectionManager = new PoolingHttpClientConnectionManager();
+      SpotifyApi.LOGGER.log(
+        Level.FINE,
+        "Using PoolingHttpClientConnectionManager.");
+    } else {
+      connectionManager = new BasicHttpClientConnectionManager();
+      ((BasicHttpClientConnectionManager) connectionManager).setConnectionConfig(connectionConfig);
+      SpotifyApi.LOGGER.log(
+        Level.FINE,
+        "Using BasicHttpClientConnectionManager.");
+    }
+
+    RequestConfig requestConfig = RequestConfig
       .custom()
       .setCookieSpec(StandardCookieSpec.STRICT)
       .setConnectionRequestTimeout(builder.connectionRequestTimeout != null
@@ -427,7 +424,7 @@ public class SpotifyHttpManager implements IHttpManager {
       this.usePoolingConnectionManager = true;
       return this;
     }
-    
+
     public SpotifyHttpManager build() {
       return new SpotifyHttpManager(this);
     }
