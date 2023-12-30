@@ -2,6 +2,7 @@ package se.michaelthelin.spotify.model_objects.specification;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.Gson;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.neovisionaries.i18n.CountryCode;
 import se.michaelthelin.spotify.enums.ModelObjectType;
@@ -273,11 +274,11 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
   @Override
   public String toString() {
     return "Track(name=" + name + ", artists=" + Arrays.toString(artists) + ", album=" + album + ", availableMarkets="
-        + Arrays.toString(availableMarkets) + ", discNumber=" + discNumber + ", durationMs=" + durationMs
-        + ", explicit=" + explicit + ", externalIds=" + externalIds + ", externalUrls=" + externalUrls + ", href="
-        + href + ", id=" + id + ", isPlayable=" + isPlayable + ", linkedFrom=" + linkedFrom + ", restrictions="
-        + restrictions + ", popularity=" + popularity + ", previewUrl=" + previewUrl + ", trackNumber=" + trackNumber
-        + ", type=" + type + ", uri=" + uri + ")";
+      + Arrays.toString(availableMarkets) + ", discNumber=" + discNumber + ", durationMs=" + durationMs
+      + ", explicit=" + explicit + ", externalIds=" + externalIds + ", externalUrls=" + externalUrls + ", href="
+      + href + ", id=" + id + ", isPlayable=" + isPlayable + ", linkedFrom=" + linkedFrom + ", restrictions="
+      + restrictions + ", popularity=" + popularity + ", previewUrl=" + previewUrl + ", trackNumber=" + trackNumber
+      + ", type=" + type + ", uri=" + uri + ")";
   }
 
   @Override
@@ -561,7 +562,7 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
             : null)
         .setDurationMs(
           hasAndNotNull(jsonObject, "duration_ms")
-            ? jsonObject.get("duration_ms").getAsInt()
+            ? getDurationMsFixed(jsonObject)
             : null)
         .setExplicit(
           hasAndNotNull(jsonObject, "explicit")
@@ -625,6 +626,21 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
             ? jsonObject.get("uri").getAsString()
             : null)
         .build();
+    }
+
+    /**
+     * @deprecated This is a TEMPORARY workaround to handle an edge-case involving local files,
+     * which for some reason have their duration_ms field contain an additional field called totalMilliseconds.
+     * Once Spotify fixes their API, this workaround should be removed!
+     */
+    @Deprecated
+    private static int getDurationMsFixed(JsonObject jsonObject) {
+      JsonElement durationMs = jsonObject.get("duration_ms");
+      if (durationMs.isJsonPrimitive()) {
+        return durationMs.getAsInt();
+      } else {
+        return durationMs.getAsJsonObject().get("totalMilliseconds").getAsInt();
+      }
     }
   }
 
