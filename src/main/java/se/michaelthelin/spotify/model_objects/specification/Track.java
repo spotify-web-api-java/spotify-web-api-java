@@ -632,6 +632,7 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
      * @deprecated This is a TEMPORARY workaround to handle an edge-case involving local files,
      * which for some reason have their duration_ms field contain an additional field called totalMilliseconds.
      * Once Spotify fixes their API, this workaround should be removed!
+     * @see <a href="https://community.spotify.com/t5/Spotify-for-Developers/duration-ms-includes-nonsense-JSON/m-p/5753768">Bug report on Spotify forums</a>
      */
     @Deprecated
     private static int getDurationMsFixed(JsonObject jsonObject) {
