@@ -8,6 +8,7 @@ se.michaelthelin.spotify.model_objects.credentials.error
 se.michaelthelin.spotify.model_objects.miscellaneous
 se.michaelthelin.spotify.model_objects.special
 se.michaelthelin.spotify.model_objects.specification
+se.michaelthelin.spotify.model_objects.utils
 se.michaelthelin.spotify.requests
 se.michaelthelin.spotify.requests.authorization
 se.michaelthelin.spotify.requests.authorization.authorization_code
