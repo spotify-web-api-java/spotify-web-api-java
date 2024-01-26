@@ -17,7 +17,7 @@ public interface IPlaylistItem extends IModelObject {
    *
    * @return The playlist item length in milliseconds.
    */
-  public Integer getDurationMs();
+  Integer getDurationMs();
 
   /**
    * Get the external URLs of the playlist item.<br>
@@ -25,14 +25,14 @@ public interface IPlaylistItem extends IModelObject {
    *
    * @return Known external URLs for this playlist item.
    */
-  public ExternalUrl getExternalUrls();
+  ExternalUrl getExternalUrls();
 
   /**
    * Get the full Spotify Web API endpoint URL of the playlist item.
    *
    * @return A link to the Web API endpoint providing full details of the playlist item.
    */
-  public String getHref();
+  String getHref();
 
   /**
    * Get the <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify ID</a> of the
@@ -40,14 +40,14 @@ public interface IPlaylistItem extends IModelObject {
    *
    * @return The Spotify ID for the playlist item.
    */
-  public String getId();
+  String getId();
 
   /**
    * Get the name of the playlist item.
    *
    * @return playlist item name.
    */
-  public String getName();
+  String getName();
 
   /**
    * Get the type of the IPlaylistItem.
@@ -63,5 +63,5 @@ public interface IPlaylistItem extends IModelObject {
    * @return The <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify URI</a> for
    * the playlist item.
    */
-  public String getUri();
+  String getUri();
 }
