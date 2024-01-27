@@ -4,7 +4,7 @@ import java.io.ByteArrayOutputStream;
 import java.util.Arrays;
 
 /**
- * Source: <a href="https://gist.github.com/EmilHernvall/953733#file-base64-java">...</a>
+ * Source: <a href="https://gist.github.com/EmilHernvall/953733#file-base64-java">EmilHernvall/Base64.java</a>
  * Due to Java version support issues with DataTypeConverter (&lt;=1.7) class and Base64 (&gt;=1.8) class.
  */
 public class Base64 {
