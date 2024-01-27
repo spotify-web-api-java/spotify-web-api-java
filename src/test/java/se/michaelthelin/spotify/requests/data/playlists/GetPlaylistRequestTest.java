@@ -1,8 +1,28 @@
 package se.michaelthelin.spotify.requests.data.playlists;
 
-import com.github.tomakehurst.wiremock.junit5.WireMockTest;
+import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
+import static com.github.tomakehurst.wiremock.client.WireMock.get;
+import static com.github.tomakehurst.wiremock.client.WireMock.stubFor;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.fail;
+
+import java.io.IOException;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
+
 import org.apache.hc.core5.http.ParseException;
 import org.junit.jupiter.api.Test;
+
+import com.github.tomakehurst.wiremock.junit5.WireMockTest;
+
 import se.michaelthelin.spotify.ITest;
 import se.michaelthelin.spotify.SpotifyApi;
 import se.michaelthelin.spotify.SpotifyHttpManager;
@@ -12,12 +32,6 @@ import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.exceptions.detailed.TooManyRequestsException;
 import se.michaelthelin.spotify.model_objects.specification.Playlist;
 import se.michaelthelin.spotify.requests.data.AbstractDataTest;
-
-import java.io.IOException;
-import java.util.concurrent.*;
-
-import static com.github.tomakehurst.wiremock.client.WireMock.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 @WireMockTest(httpPort = 9090)
 public class GetPlaylistRequestTest extends AbstractDataTest<Playlist> {
@@ -35,7 +49,7 @@ public class GetPlaylistRequestTest extends AbstractDataTest<Playlist> {
   }
 
   @Test
-  public void shouldThrowTooManyRequestExceptionAndNotBlockThread_WhenSpotifyReturns429() throws IOException, ParseException, SpotifyWebApiException {
+  public void shouldThrowTooManyRequestExceptionAndNotBlockThread_WhenSpotifyReturns429() {
     SpotifyApi spotifyApi = new SpotifyApi.Builder()
       .setScheme("http")
       .setHost("localhost")
@@ -62,7 +76,7 @@ public class GetPlaylistRequestTest extends AbstractDataTest<Playlist> {
 
     try {
       Future<Playlist> submit = executor.submit(playlistCall);
-      Playlist playlist = submit.get(10, TimeUnit.SECONDS);
+      submit.get(10, TimeUnit.SECONDS);
     } catch (ExecutionException e) {
       assertEquals(e.getCause().getClass(), TooManyRequestsException.class);
     } catch (TimeoutException | InterruptedException e) {

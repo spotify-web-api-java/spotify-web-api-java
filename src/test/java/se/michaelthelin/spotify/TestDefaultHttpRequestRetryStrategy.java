@@ -87,7 +87,7 @@ public class TestDefaultHttpRequestRetryStrategy {
     final HttpResponse response = new BasicHttpResponse(503, "Oopsie");
     response.setHeader(HttpHeaders.RETRY_AFTER, DateUtils.formatStandardDate(Instant.now().plus(100, ChronoUnit.SECONDS)));
 
-    Assertions.assertTrue(this.retryStrategy.getRetryInterval(response, 3, null).compareTo(TimeValue.ZERO_MILLISECONDS) == 0);
+    Assertions.assertEquals(0, this.retryStrategy.getRetryInterval(response, 3, null).compareTo(TimeValue.ZERO_MILLISECONDS));
   }
 
   @Test
