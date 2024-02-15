@@ -18,7 +18,8 @@ This is a Java wrapper/client for the [Spotify Web API](https://developer.spotif
 3. **[General Usage](#General-Usage)**
     1. **[Authorization](#Authorization)**
 4. **[Examples](#Examples)**
-5. **[Contributions](#Contributions)**
+5. **[Spring Boot Example](#Spring-Boot-Example)**
+6. **[Contributions](#Contributions)**
     1. **[Code Overview](#Code-Overview)**
 
 ## Installation
@@ -89,6 +90,21 @@ allprojects {
 See this project's **[Javadoc](https://spotify-web-api-java.github.io/spotify-web-api-java/)**.
 
 *A huge thanks to [c-schuhmann](https://github.com/c-schuhmann) for his amazing work on the documentation!*
+
+## Create a Spotify Access Token
+Before using the Java Wrapper for the Spotify Web API, it is required to acquire an access token from Spotify. Follow the steps below to set up your first Spotify app and obtain an access token:
+
+1. **Create a Spotify Developer Account:** If you haven't already, sign up for a Spotify Developer Account at the **[Spotify Developer Dashboard](https://developer.spotify.com/)**.
+2. **Create a new App:** Once you have logged in to the Developer Dashboard, create a new app. You will need to provide some basic information about your app, such as its name and description.
+3. **Set Redirect URI:** A Redirect URI is necessary to complete the form required to create your first app. The Redirect URI is the URI that spotify will redirect users to after they have been authorized. Generally, this may be the homepage of your web application but for testing purposes you can use `http://localhost:8080/callback`.
+4. **Get Client ID and Client Secret:** After creating the app, you'll receive a Client ID and Client Secret. Click on the _settings_ button - the Client ID can be found here. The Client Secret can be found behind the _View client secret_ link.
+5. **Use CURL to get Access Token:** Use the 
+```
+curl -X POST "https://accounts.spotify.com/api/token" \
+     -H "Content-Type: application/x-www-form-urlencoded" \
+     -d "grant_type=client_credentials&client_id=your-client-id&client_secret=your-client-secret"
+```
+6. Congratulations!! You now have an access token that will expire in 60 minutes. Refer to **[Authorization](#Authorization)** to acquire a better understanding of the authorization process.
 
 ## General Usage
 ```Java
@@ -348,6 +364,34 @@ access token only once, after which it becomes invalid.
 - **User's Profile**
   - [Get Current User's Profile](examples/data/users_profile/GetCurrentUsersProfileExample.java)
   - [Get a User's Profile](examples/data/users_profile/GetUsersProfileExample.java)
+
+## Spring Boot Example
+Spring Boot is an open-source Java framework that can be used to create production-grade web-based applications with very minimal configuration. It is built on top of the Spring framework which offers comprehensive infrastructure support for the development of Java web applications. This specific example provides users with a potential approach to configuring and instantiating the Spotify API Wrapper.
+
+1. Navigate to the **[Spring Initialzr](https://start.spring.io/)**
+2. Next, set **Project** to Maven, and language to Java. The remaining fields can be filled according to your preference.
+3. Add the **Spring Web** dependency (this will allow for API development using Spring MVC).
+4. Click **GENERATE** to create a zip file of the project and open it in your IDE of choice.
+5. Navigate to `src/main/java/com.package` and create a new folder called `Config`.
+6. Within this folder, a singleton instance (bean) of the SpotifyApi class is instantiated. 
+```
+@Configuration
+public class SpotifyConfig {
+    private static final String clientId = "clientId";
+    private static final String clientSecret = "clientSecret";
+    private static final URI redirectUri = SpotifyHttpManager.makeUri("path/to/redirect/URI");
+
+    @Bean
+    public SpotifyApi spotifyApi(){
+        return new SpotifyApi.Builder()
+                .setClientId(clientId)
+                .setClientSecret(clientSecret)
+                .setRedirectUri(redirectUri)
+                .build();
+    }
+}
+```
+7. This instantiated object can then be used throughout the application.
 
 ## Contributions
 See [CONTRIBUTING.md](CONTRIBUTING.md).
