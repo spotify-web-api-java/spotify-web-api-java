@@ -40,8 +40,6 @@ public class Base64 {
   private static final int SHIFT_18 = 18;
 
   public static String encode(byte[] data) {
-    char[] tbl = Arrays.copyOf(ENCODE_TABLE_BASE, ENCODE_TABLE_BASE.length);
-
     StringBuilder buffer = new StringBuilder();
     int pad = 0;
     for (int i = 0; i < data.length; i += 3) {
@@ -72,8 +70,6 @@ public class Base64 {
   }
 
   public static byte[] decode(String data) {
-    int[] tbl = Arrays.copyOf(DECODE_TABLE_BASE, DECODE_TABLE_BASE.length);
-
     byte[] bytes = data.getBytes();
     ByteArrayOutputStream buffer = new ByteArrayOutputStream();
     for (int i = 0; i < bytes.length; ) {
