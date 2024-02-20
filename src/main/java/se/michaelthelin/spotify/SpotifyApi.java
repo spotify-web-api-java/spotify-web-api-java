@@ -74,7 +74,7 @@ public class SpotifyApi {
   /**
    * A HttpManager configured with default settings.
    */
-  public static final IHttpManager DEFAULT_HTTP_MANAGER = new SpotifyHttpManager.Builder().build();
+  public static final IHttpManager DEFAULT_HTTP_MANAGER = new SpotifyHttpManagerBuilder().build();
 
   /**
    * The default port of Spotify API calls.

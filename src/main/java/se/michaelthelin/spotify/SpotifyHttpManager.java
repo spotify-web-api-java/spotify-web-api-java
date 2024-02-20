@@ -45,20 +45,22 @@ public class SpotifyHttpManager implements IHttpManager {
   private final Integer connectionRequestTimeout;
   private final Integer connectTimeout;
   private final Integer socketTimeout;
+  private final SpotifyHttpManagerExecute httpExecute;
+
 
   /**
    * Construct a new SpotifyHttpManager instance.
    *
    * @param builder The builder.
    */
-  public SpotifyHttpManager(Builder builder) {
-    this.proxy = builder.proxy;
-    this.proxyCredentials = builder.proxyCredentials;
-    this.cacheMaxEntries = builder.cacheMaxEntries;
-    this.cacheMaxObjectSize = builder.cacheMaxObjectSize;
-    this.connectionRequestTimeout = builder.connectionRequestTimeout;
-    this.connectTimeout = builder.connectTimeout;
-    this.socketTimeout = builder.socketTimeout;
+  public SpotifyHttpManager(SpotifyHttpManagerBuilder builder) {
+    this.proxy = builder.getProxy();
+    this.proxyCredentials = builder.getProxyCredentials();
+    this.cacheMaxEntries = builder.getCacheMaxEntries();
+    this.cacheMaxObjectSize = builder.getCacheMaxObjectSize();
+    this.connectionRequestTimeout = builder.getConnectionRequestTimeout();
+    this.connectTimeout = builder.getConnectTimeout();
+    this.socketTimeout = builder.getSocketTimeout();
 
     CacheConfig cacheConfig = CacheConfig.custom()
       .setMaxCacheEntries(cacheMaxEntries != null ? cacheMaxEntries : DEFAULT_CACHE_MAX_ENTRIES)
@@ -67,6 +69,7 @@ public class SpotifyHttpManager implements IHttpManager {
       .build();
 
     BasicCredentialsProvider credentialsProvider = new BasicCredentialsProvider();
+    this.httpExecute = new SpotifyHttpManagerExecute();
 
     if (proxy != null) {
       credentialsProvider.setCredentials(
@@ -77,8 +80,8 @@ public class SpotifyHttpManager implements IHttpManager {
 
     ConnectionConfig connectionConfig = ConnectionConfig
       .custom()
-      .setConnectTimeout(builder.connectTimeout != null
-        ? Timeout.ofMilliseconds(builder.connectTimeout)
+      .setConnectTimeout(builder.getConnectTimeout() != null
+        ? Timeout.ofMilliseconds(builder.getConnectTimeout())
         : ConnectionConfig.DEFAULT.getConnectTimeout())
       .build();
     BasicHttpClientConnectionManager connectionManager = new BasicHttpClientConnectionManager();
@@ -86,11 +89,11 @@ public class SpotifyHttpManager implements IHttpManager {
     RequestConfig requestConfig = RequestConfig
       .custom()
       .setCookieSpec(StandardCookieSpec.STRICT)
-      .setConnectionRequestTimeout(builder.connectionRequestTimeout != null
-        ? Timeout.ofMilliseconds(builder.connectionRequestTimeout)
+      .setConnectionRequestTimeout(builder.getConnectionRequestTimeout() != null
+        ? Timeout.ofMilliseconds(builder.getConnectionRequestTimeout())
         : RequestConfig.DEFAULT.getConnectionRequestTimeout())
-      .setResponseTimeout(builder.socketTimeout != null
-        ? Timeout.ofMilliseconds(builder.socketTimeout)
+      .setResponseTimeout(builder.getSocketTimeout() != null
+        ? Timeout.ofMilliseconds(builder.getSocketTimeout())
         : RequestConfig.DEFAULT.getResponseTimeout())
       .build();
     HttpRequestRetryStrategy retryStrategy = new SpotifyHttpRequestRetryStrategy();
@@ -171,7 +174,7 @@ public class SpotifyHttpManager implements IHttpManager {
       Level.FINE,
       "GET request uses these headers: " + GSON.toJson(headers));
 
-    String responseBody = getResponseBody(execute(httpClientCaching, httpGet));
+    String responseBody = httpExecute.getResponseBody(httpExecute.execute(httpClientCaching, httpGet));
 
     httpGet.reset();
 
@@ -194,7 +197,7 @@ public class SpotifyHttpManager implements IHttpManager {
       Level.FINE,
       "POST request uses these headers: " + GSON.toJson(headers));
 
-    String responseBody = getResponseBody(execute(httpClient, httpPost));
+    String responseBody = httpExecute.getResponseBody(httpExecute.execute(httpClient, httpPost));
 
     httpPost.reset();
 
@@ -217,7 +220,7 @@ public class SpotifyHttpManager implements IHttpManager {
       Level.FINE,
       "PUT request uses these headers: " + GSON.toJson(headers));
 
-    String responseBody = getResponseBody(execute(httpClient, httpPut));
+    String responseBody = httpExecute.getResponseBody(httpExecute.execute(httpClient, httpPut));
 
     httpPut.reset();
 
@@ -240,170 +243,10 @@ public class SpotifyHttpManager implements IHttpManager {
       Level.FINE,
       "DELETE request uses these headers: " + GSON.toJson(headers));
 
-    String responseBody = getResponseBody(execute(httpClient, httpDelete));
+    String responseBody = httpExecute.getResponseBody(httpExecute.execute(httpClient, httpDelete));
 
     httpDelete.reset();
 
     return responseBody;
-  }
-
-  private CloseableHttpResponse execute(CloseableHttpClient httpClient, ClassicHttpRequest method) throws
-    IOException {
-    HttpCacheContext context = HttpCacheContext.create();
-    CloseableHttpResponse response = httpClient.execute(method, context);
-
-    try {
-      CacheResponseStatus responseStatus = context.getCacheResponseStatus();
-
-      if (responseStatus != null) {
-        switch (responseStatus) {
-          case CACHE_HIT:
-            SpotifyApi.LOGGER.log(
-              Level.CONFIG,
-              "A response was generated from the cache with no requests sent upstream");
-            break;
-          case CACHE_MODULE_RESPONSE:
-            SpotifyApi.LOGGER.log(
-              Level.CONFIG,
-              "The response was generated directly by the caching module");
-            break;
-          case CACHE_MISS:
-            SpotifyApi.LOGGER.log(
-              Level.CONFIG,
-              "The response came from an upstream server");
-            break;
-          case VALIDATED:
-            SpotifyApi.LOGGER.log(
-              Level.CONFIG,
-              "The response was generated from the cache after validating the entry with the origin server");
-            break;
-          case FAILURE:
-            SpotifyApi.LOGGER.log(
-              Level.CONFIG,
-              "The response came from an upstream server after a cache failure");
-            break;
-        }
-      }
-    } catch (Exception e) {
-      SpotifyApi.LOGGER.log(Level.SEVERE, e.getMessage());
-    }
-
-    return response;
-  }
-
-  private String getResponseBody(CloseableHttpResponse httpResponse) throws
-    IOException,
-    SpotifyWebApiException,
-    ParseException {
-
-    final String responseBody = httpResponse.getEntity() != null
-      ? EntityUtils.toString(httpResponse.getEntity(), "UTF-8")
-      : null;
-    String errorMessage = httpResponse.getReasonPhrase();
-
-    SpotifyApi.LOGGER.log(
-      Level.FINE,
-      "The http response has body " + responseBody);
-
-    if (responseBody != null && !responseBody.isEmpty()) {
-      try {
-        final JsonElement jsonElement = JsonParser.parseString(responseBody);
-
-        if (jsonElement.isJsonObject()) {
-          final JsonObject jsonObject = JsonParser.parseString(responseBody).getAsJsonObject();
-
-          if (jsonObject.has("error")) {
-            if (jsonObject.has("error_description")) {
-              errorMessage = jsonObject.get("error_description").getAsString();
-            } else if (jsonObject.get("error").isJsonObject() && jsonObject.getAsJsonObject("error").has("message")) {
-              errorMessage = jsonObject.getAsJsonObject("error").get("message").getAsString();
-            }
-          }
-        }
-      } catch (JsonSyntaxException e) {
-        // Not necessary
-      }
-    }
-
-    SpotifyApi.LOGGER.log(
-      Level.FINE,
-      "The http response has status code " + httpResponse.getCode());
-
-    switch (httpResponse.getCode()) {
-      case HttpStatus.SC_BAD_REQUEST:
-        throw new BadRequestException(errorMessage);
-      case HttpStatus.SC_UNAUTHORIZED:
-        throw new UnauthorizedException(errorMessage);
-      case HttpStatus.SC_FORBIDDEN:
-        throw new ForbiddenException(errorMessage);
-      case HttpStatus.SC_NOT_FOUND:
-        throw new NotFoundException(errorMessage);
-      case 429: // TOO_MANY_REQUESTS (additional status code, RFC 6585)
-        // Sets "Retry-After" header as described at https://beta.developer.spotify.com/documentation/web-api/#rate-limiting
-        Header header = httpResponse.getFirstHeader("Retry-After");
-
-        if (header != null) {
-          throw new TooManyRequestsException(errorMessage, Integer.parseInt(header.getValue()));
-        } else {
-          throw new TooManyRequestsException(errorMessage);
-        }
-      case HttpStatus.SC_INTERNAL_SERVER_ERROR:
-        throw new InternalServerErrorException(errorMessage);
-      case HttpStatus.SC_BAD_GATEWAY:
-        throw new BadGatewayException(errorMessage);
-      case HttpStatus.SC_SERVICE_UNAVAILABLE:
-        throw new ServiceUnavailableException(errorMessage);
-      default:
-        return responseBody;
-    }
-  }
-
-  public static class Builder {
-    private HttpHost proxy;
-    private UsernamePasswordCredentials proxyCredentials;
-    private Integer cacheMaxEntries;
-    private Integer cacheMaxObjectSize;
-    private Integer connectionRequestTimeout;
-    private Integer connectTimeout;
-    private Integer socketTimeout;
-
-    public Builder setProxy(HttpHost proxy) {
-      this.proxy = proxy;
-      return this;
-    }
-
-    public Builder setProxyCredentials(UsernamePasswordCredentials proxyCredentials) {
-      this.proxyCredentials = proxyCredentials;
-      return this;
-    }
-
-    public Builder setCacheMaxEntries(Integer cacheMaxEntries) {
-      this.cacheMaxEntries = cacheMaxEntries;
-      return this;
-    }
-
-    public Builder setCacheMaxObjectSize(Integer cacheMaxObjectSize) {
-      this.cacheMaxObjectSize = cacheMaxObjectSize;
-      return this;
-    }
-
-    public Builder setConnectionRequestTimeout(Integer connectionRequestTimeout) {
-      this.connectionRequestTimeout = connectionRequestTimeout;
-      return this;
-    }
-
-    public Builder setConnectTimeout(Integer connectTimeout) {
-      this.connectTimeout = connectTimeout;
-      return this;
-    }
-
-    public Builder setSocketTimeout(Integer socketTimeout) {
-      this.socketTimeout = socketTimeout;
-      return this;
-    }
-
-    public SpotifyHttpManager build() {
-      return new SpotifyHttpManager(this);
-    }
   }
 }
