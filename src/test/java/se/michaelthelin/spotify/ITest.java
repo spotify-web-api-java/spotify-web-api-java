@@ -50,6 +50,7 @@ public interface ITest<T> {
   String ID_SHOW = "5AvwZVawapvyhJUIx71pdJ";
   String ID_TRACK = "01iyCAUm8EvOFqVWYJ3dVX";
   String ID_USER = "abbaspotify";
+  String ID_USER_WITH_$ = "$wizzler$";
   String ID_USER_NON_ASCII = "abbaspötify";
   String IMAGE_DATA = readFromFileTry(new File("examples/image_data.txt"));
   int INSERT_BEFORE = 0;

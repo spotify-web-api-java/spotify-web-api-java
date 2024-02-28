@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.logging.Level;
+import java.util.regex.Matcher;
 import java.util.stream.Collectors;
 
 public abstract class AbstractRequest<T> implements IRequest<T> {
@@ -241,7 +242,8 @@ public abstract class AbstractRequest<T> implements IRequest<T> {
       for (NameValuePair nameValuePair : pathParameters) {
         // Don't remove the "\\" before the "}" to prevent a regex issue on Android.
         String key = "\\{" + nameValuePair.getName() + "\\}";
-        builtPath = builtPath.replaceAll(key, nameValuePair.getValue());
+        String value = nameValuePair.getValue();
+        builtPath = builtPath.replaceAll(key, Matcher.quoteReplacement(value));
       }
 
       this.path = builtPath;
