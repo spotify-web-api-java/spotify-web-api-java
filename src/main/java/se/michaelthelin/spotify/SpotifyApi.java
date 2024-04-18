@@ -776,12 +776,32 @@ public class SpotifyApi {
    *                    follow the playlist. Maximum: 5 IDs.
    * @return A {@link CheckUsersFollowPlaylistRequest.Builder}.
    * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
+   *
+   * @deprecated since the endpoint no longer needs the owner_id param. Use {@link #checkUsersFollowPlaylist(String, String[])} instead.
    */
+  @Deprecated(since = "8.3.7")
   public CheckUsersFollowPlaylistRequest.Builder checkUsersFollowPlaylist(
     String owner_id, String playlist_id, String[] ids) {
     return new CheckUsersFollowPlaylistRequest.Builder(accessToken)
       .setDefaults(httpManager, scheme, host, port)
       .owner_id(owner_id)
+      .playlist_id(playlist_id)
+      .ids(concat(ids, ','));
+  }
+
+  /**
+   * Check to see if one or more Spotify users are following a specified playlist.
+   *
+   * @param playlist_id The Spotify ID of the playlist.
+   * @param ids         A list of Spotify User IDs; the IDs of the users that you want to check to see if they
+   *                    follow the playlist. Maximum: 5 IDs.
+   * @return A {@link CheckUsersFollowPlaylistRequest.Builder}.
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
+   */
+  public CheckUsersFollowPlaylistRequest.Builder checkUsersFollowPlaylist(
+    String playlist_id, String[] ids) {
+    return new CheckUsersFollowPlaylistRequest.Builder(accessToken)
+      .setDefaults(httpManager, scheme, host, port)
       .playlist_id(playlist_id)
       .ids(concat(ids, ','));
   }

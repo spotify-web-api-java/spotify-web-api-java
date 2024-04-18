@@ -65,7 +65,10 @@ public class CheckUsersFollowPlaylistRequest extends AbstractDataRequest<Boolean
      * @param owner_id The Spotify user ID of the person who owns the playlist.
      * @return A {@link CheckUsersFollowPlaylistRequest.Builder}.
      * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URIs &amp; IDs</a>
+     *
+     * @deprecated since the endpoint no longer needs it.
      */
+    @Deprecated(since = "8.3.7")
     public Builder owner_id(final String owner_id) {
       assert (owner_id != null);
       assert (!owner_id.isEmpty());
@@ -106,7 +109,7 @@ public class CheckUsersFollowPlaylistRequest extends AbstractDataRequest<Boolean
      */
     @Override
     public CheckUsersFollowPlaylistRequest build() {
-      setPath("/v1/users/{owner_id}/playlists/{playlist_id}/followers/contains");
+      setPath("/v1/playlists/{playlist_id}/followers/contains");
       return new CheckUsersFollowPlaylistRequest(this);
     }
 
