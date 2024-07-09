@@ -68,7 +68,7 @@ public class SpotifyHttpManager implements IHttpManager {
 
     BasicCredentialsProvider credentialsProvider = new BasicCredentialsProvider();
 
-    if (proxy != null) {
+    if (proxy != null && proxyCredentials != null) {
       credentialsProvider.setCredentials(
         new AuthScope(null, proxy.getHostName(), proxy.getPort(), null, proxy.getSchemeName()),
         proxyCredentials
