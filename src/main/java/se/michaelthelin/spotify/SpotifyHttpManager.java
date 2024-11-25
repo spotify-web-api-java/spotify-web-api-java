@@ -20,6 +20,7 @@ import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
 import org.apache.hc.client5.http.impl.classic.HttpClients;
 import org.apache.hc.client5.http.impl.io.BasicHttpClientConnectionManager;
+import org.apache.hc.client5.http.io.HttpClientConnectionManager;
 import org.apache.hc.core5.http.*;
 import org.apache.hc.core5.http.io.entity.EntityUtils;
 import org.apache.hc.core5.util.Timeout;
@@ -75,14 +76,6 @@ public class SpotifyHttpManager implements IHttpManager {
       );
     }
 
-    ConnectionConfig connectionConfig = ConnectionConfig
-      .custom()
-      .setConnectTimeout(builder.connectTimeout != null
-        ? Timeout.ofMilliseconds(builder.connectTimeout)
-        : ConnectionConfig.DEFAULT.getConnectTimeout())
-      .build();
-    BasicHttpClientConnectionManager connectionManager = new BasicHttpClientConnectionManager();
-    connectionManager.setConnectionConfig(connectionConfig);
     RequestConfig requestConfig = RequestConfig
       .custom()
       .setCookieSpec(StandardCookieSpec.STRICT)
@@ -98,7 +91,7 @@ public class SpotifyHttpManager implements IHttpManager {
     this.httpClient = HttpClients
       .custom()
       .disableContentCompression()
-      .setConnectionManager(connectionManager)
+      .setConnectionManager(builder.getConnectionManager())
       .setDefaultCredentialsProvider(credentialsProvider)
       .setDefaultRequestConfig(requestConfig)
       .setProxy(proxy)
@@ -109,7 +102,7 @@ public class SpotifyHttpManager implements IHttpManager {
       .custom()
       .setCacheConfig(cacheConfig)
       .disableContentCompression()
-      .setConnectionManager(connectionManager)
+      .setConnectionManager(builder.getConnectionManager())
       .setDefaultCredentialsProvider(credentialsProvider)
       .setDefaultRequestConfig(requestConfig)
       .setProxy(proxy)
@@ -366,6 +359,7 @@ public class SpotifyHttpManager implements IHttpManager {
     private Integer connectionRequestTimeout;
     private Integer connectTimeout;
     private Integer socketTimeout;
+    private HttpClientConnectionManager connectionManager;
 
     public Builder setProxy(HttpHost proxy) {
       this.proxy = proxy;
@@ -400,6 +394,26 @@ public class SpotifyHttpManager implements IHttpManager {
     public Builder setSocketTimeout(Integer socketTimeout) {
       this.socketTimeout = socketTimeout;
       return this;
+    }
+
+    public Builder setConnectionManager(HttpClientConnectionManager connectionManager) {
+      this.connectionManager = connectionManager;
+      return this;
+    }
+
+    HttpClientConnectionManager getConnectionManager() {
+      if (connectionManager == null) {
+        BasicHttpClientConnectionManager basicHttpClientConnectionManager = new BasicHttpClientConnectionManager();
+        basicHttpClientConnectionManager.setConnectionConfig(ConnectionConfig
+          .custom()
+          .setConnectTimeout(this.connectTimeout != null ?
+            Timeout.ofMilliseconds(this.connectTimeout) :
+            ConnectionConfig.DEFAULT.getConnectTimeout())
+          .build());
+        this.connectionManager = basicHttpClientConnectionManager;
+      }
+
+      return connectionManager;
     }
 
     public SpotifyHttpManager build() {
