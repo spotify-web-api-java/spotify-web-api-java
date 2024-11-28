@@ -406,8 +406,8 @@ public class SpotifyHttpManager implements IHttpManager {
         BasicHttpClientConnectionManager basicHttpClientConnectionManager = new BasicHttpClientConnectionManager();
         basicHttpClientConnectionManager.setConnectionConfig(ConnectionConfig
           .custom()
-          .setConnectTimeout(this.connectTimeout != null ?
-            Timeout.ofMilliseconds(this.connectTimeout) :
+          .setConnectTimeout(connectTimeout != null ?
+            Timeout.ofMilliseconds(connectTimeout) :
             ConnectionConfig.DEFAULT.getConnectTimeout())
           .build());
         connectionManager = basicHttpClientConnectionManager;
