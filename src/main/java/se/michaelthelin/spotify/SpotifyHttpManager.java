@@ -410,7 +410,7 @@ public class SpotifyHttpManager implements IHttpManager {
             Timeout.ofMilliseconds(this.connectTimeout) :
             ConnectionConfig.DEFAULT.getConnectTimeout())
           .build());
-        this.connectionManager = basicHttpClientConnectionManager;
+        connectionManager = basicHttpClientConnectionManager;
       }
 
       return connectionManager;
