@@ -11,7 +11,7 @@
   <!--
    DO NOT FORGET
    - to update version numbers in README (2x)
-   - to update the Javadoc by deleting the docs folder and recreating it
+   - to update the Javadoc by deleting the `apidocs` folder and recreating it
   -->
 
   <name>Spotify Web API Java Client</name>
@@ -204,7 +204,7 @@
             <configuration>
               <filesets>
                 <fileset>
-                  <directory>docs</directory>
+                  <directory>apidocs</directory>
                 </fileset>
               </filesets>
             </configuration>
@@ -223,8 +223,7 @@
               </execution>
             </executions>
             <configuration>
-              <reportOutputDirectory>${project.basedir}</reportOutputDirectory>
-              <destDir>docs</destDir>
+              <outputDirectory>${project.basedir}/</outputDirectory>
             </configuration>
           </plugin>
           <plugin>
