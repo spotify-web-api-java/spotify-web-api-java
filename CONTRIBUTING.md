@@ -18,7 +18,7 @@ projects like this one. They ensure fast processing times and stable releases.
 It is mandatory to stay as close to the
 [Web API Endpoint Reference](https://developer.spotify.com/web-api/endpoint-reference/) as possible. Before changing
 anything in the code base, make sure to take one  - or more - looks into related files/classes and [the project's
-documentation](https://dargmuesli.github.io/spotify-web-api-java/overview-summary.html). The whole code follows simple
+documentation](https://spotify-web-api-java.github.io/spotify-web-api-java/apidocs/). The whole code follows simple
 and consistent code conventions for naming rules and alike. Those should be easy to grasp by comparing to the online
 developer's reference mentioned above. If not: feel free to just ask. It saves your time to be in the clear about those
 conventions before starting to contribute as it significantly lowers the probability to receive change requests from
@@ -30,7 +30,7 @@ qualitative information is provided.
 ## Contribution Completeness
 A contribution has to be *complete* to get accepted. If you cannot complete the requirements, you're welcome to ask for
 help. But bear in mind that this can take its time.
- 
+
 A complete contribution includes the following features:
 
 ### Integrity
@@ -57,5 +57,5 @@ A unit test builds upon JSON fixtures. For code changes, fixture files must only
 1. Create a fork from this repository
 2. Create a branch in your fork in which you develop your contribution (one branch per feature/fix)
 3. Create meaningful and well-separated commits
-4. Make sure your contribution follows the contribution guidelines above 
+4. Make sure your contribution follows the contribution guidelines above
 5. Create a pull request from your feature branch to the correct branch of this project

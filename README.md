@@ -86,7 +86,7 @@ allprojects {
 ```
 
 ## Documentation
-See this project's **[Javadoc](https://spotify-web-api-java.github.io/spotify-web-api-java/)**.
+See this project's **[Javadoc](https://spotify-web-api-java.github.io/spotify-web-api-java/apidocs/)**.
 
 *A huge thanks to [c-schuhmann](https://github.com/c-schuhmann) for his amazing work on the documentation!*
 
