@@ -4,7 +4,7 @@
 
 | Android Developers |
 | ------------------ |
-| You **cannot** use this library for Android app development. Have a look at [adamint/spotify-web-api-kotlin](https://www.github.com/adamint/spotify-web-api-kotlin), [kaaes/spotify-web-api-android](https://www.github.com/kaaes/spotify-web-api-android) and [Spotify's Android SDK](https://developer.spotify.com/technologies/spotify-android-sdk/) and [see why](https://github.com/thelinmichael/spotify-web-api-java/issues/120#issuecomment-363266591). |
+| You **cannot** use this library for Android app development. Have a look at [adamint/spotify-web-api-kotlin](https://www.github.com/adamint/spotify-web-api-kotlin), [kaaes/spotify-web-api-android](https://www.github.com/kaaes/spotify-web-api-android) and [Spotify's Android SDK](https://developer.spotify.com/technologies/spotify-android-sdk/) and [see why](https://github.com/spotify-web-api-java/spotify-web-api-java/issues/120#issuecomment-363266591). |
 
 # Spotify Web API Java
 [![CI](https://github.com/spotify-web-api-java/spotify-web-api-java/actions/workflows/ci.yml/badge.svg)](https://github.com/spotify-web-api-java/spotify-web-api-java/actions/workflows/ci.yml) [![codecov](https://codecov.io/gh/spotify-web-api-java/spotify-web-api-java/branch/develop/graph/badge.svg)](https://codecov.io/gh/spotify-web-api-java/spotify-web-api-java)
@@ -86,7 +86,7 @@ allprojects {
 ```
 
 ## Documentation
-See this project's **[Javadoc](https://spotify-web-api-java.github.io/spotify-web-api-java/)**.
+See this project's **[Javadoc](https://spotify-web-api-java.github.io/spotify-web-api-java/apidocs/)**.
 
 *A huge thanks to [c-schuhmann](https://github.com/c-schuhmann) for his amazing work on the documentation!*
 

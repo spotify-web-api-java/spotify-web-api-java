@@ -6,6 +6,7 @@ import org.apache.hc.core5.http.HttpEntity;
 import java.io.*;
 import java.net.URI;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.util.logging.Level;
 
 import static org.mockito.ArgumentMatchers.nullable;
@@ -21,7 +22,7 @@ public class TestUtil {
   }
 
   private static String readFromFile(File file) throws IOException {
-    BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(file), StandardCharsets.UTF_8));
+    BufferedReader in = new BufferedReader(new InputStreamReader(Files.newInputStream(file.toPath()), StandardCharsets.UTF_8));
     StringBuilder out = new StringBuilder();
     String line;
 

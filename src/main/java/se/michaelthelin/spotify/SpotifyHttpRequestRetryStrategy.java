@@ -149,8 +149,8 @@ public class SpotifyHttpRequestRetryStrategy implements HttpRequestRetryStrategy
     final IOException exception,
     final int execCount,
     final HttpContext context) {
-    Args.notNull(request, "request");
-    Args.notNull(exception, "exception");
+    Objects.requireNonNull(request, "request");
+    Objects.requireNonNull(exception, "exception");
 
     if (execCount > this.maxRetries) {
       // Do not retry if over max retries
@@ -178,7 +178,7 @@ public class SpotifyHttpRequestRetryStrategy implements HttpRequestRetryStrategy
     final HttpResponse response,
     final int execCount,
     final HttpContext context) {
-    Args.notNull(response, "response");
+    Objects.requireNonNull(response, "response");
 
     return execCount <= this.maxRetries && retriableCodes.contains(response.getCode());
   }
@@ -188,7 +188,7 @@ public class SpotifyHttpRequestRetryStrategy implements HttpRequestRetryStrategy
     final HttpResponse response,
     final int execCount,
     final HttpContext context) {
-    Args.notNull(response, "response");
+    Objects.requireNonNull(response, "response");
 
     return this.defaultRetryInterval;
   }

@@ -12,7 +12,6 @@ import java.util.concurrent.CompletionException;
 
 public class CheckUsersFollowPlaylistExample {
   private static final String accessToken = "taHZ2SdB-bPA3FsK3D7ZN5npZS47cMy-IEySVEGttOhXmqaVAIo0ESvTCLjLBifhHOHOIuhFUKPW1WMDP7w6dj3MAZdWT8CLI2MkZaXbYLTeoDvXesf2eeiLYPBGdx8tIwQJKgV8XdnzH_DONk";
-  private static final String ownerId = "abbaspotify";
   private static final String playlistId = "3AGOiaoRXMSjswCLtuNqv5";
   private static final String[] ids = new String[]{"abbaspotify"};
 
@@ -20,7 +19,7 @@ public class CheckUsersFollowPlaylistExample {
     .setAccessToken(accessToken)
     .build();
   private static final CheckUsersFollowPlaylistRequest checkUsersFollowPlaylistRequest = spotifyApi
-    .checkUsersFollowPlaylist(ownerId, playlistId, ids)
+    .checkUsersFollowPlaylist(playlistId, ids)
     .build();
 
   public static void checkUsersFollowPlaylist_Sync() {

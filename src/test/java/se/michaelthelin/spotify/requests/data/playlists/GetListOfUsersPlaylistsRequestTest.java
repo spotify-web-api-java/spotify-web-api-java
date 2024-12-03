@@ -25,6 +25,15 @@ public class GetListOfUsersPlaylistsRequestTest extends AbstractDataTest<Paging<
     .offset(ITest.OFFSET)
     .build();
 
+  private final GetListOfUsersPlaylistsRequest requestWithUserIdWithSymbol$ = ITest.SPOTIFY_API
+    .getListOfUsersPlaylists(ITest.ID_USER_WITH_$)
+    .setHttpManager(
+      TestUtil.MockedHttpManager.returningJson(
+        "requests/data/playlists/GetListOfUsersPlaylistsRequest_UserWith$.json"))
+    .limit(ITest.LIMIT)
+    .offset(ITest.OFFSET)
+    .build();
+
   public GetListOfUsersPlaylistsRequestTest() throws Exception {
   }
 
@@ -44,6 +53,30 @@ public class GetListOfUsersPlaylistsRequestTest extends AbstractDataTest<Paging<
   @Test
   public void shouldReturnDefault_async() throws ExecutionException, InterruptedException {
     shouldReturnDefault(defaultRequest.executeAsync().get());
+  }
+
+  @Test
+  public void shouldReturnDefaultFor_UserId_With_$_async() throws ExecutionException, InterruptedException {
+    Paging<PlaylistSimplified> playlistSimplifiedPaging = requestWithUserIdWithSymbol$.executeAsync().get();
+    assertEquals(
+      "https://api.spotify.com/v1/users/%24wizzler%24/playlists",
+      playlistSimplifiedPaging.getHref());
+    assertEquals(
+      2,
+      playlistSimplifiedPaging.getItems().length);
+    assertEquals(
+      9,
+      (int) playlistSimplifiedPaging.getLimit());
+    assertNull(
+      playlistSimplifiedPaging.getNext());
+    assertEquals(
+      0,
+      (int) playlistSimplifiedPaging.getOffset());
+    assertNull(
+      playlistSimplifiedPaging.getPrevious());
+    assertEquals(
+      9,
+      (int) playlistSimplifiedPaging.getTotal());
   }
 
   public void shouldReturnDefault(final Paging<PlaylistSimplified> playlistSimplifiedPaging) {

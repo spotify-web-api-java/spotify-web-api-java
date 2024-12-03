@@ -7,7 +7,7 @@ import se.michaelthelin.spotify.model_objects.specification.Episode;
 import se.michaelthelin.spotify.model_objects.specification.Track;
 
 public class PlaylistItemFactory {
-  private static final JsonUtil jsonUtil = new JsonUtil() {
+  private static final JsonUtil<?> jsonUtil = new JsonUtil<>() {
     @Override
     public Object createModelObject(JsonObject jsonObject) {
       return null;

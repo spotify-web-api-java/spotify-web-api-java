@@ -52,11 +52,11 @@ public class SpotifyHttpManager implements IHttpManager {
    * @param builder The builder.
    */
   public SpotifyHttpManager(Builder builder) {
+    this.connectionManager = builder.connectionManager;
     this.proxy = builder.proxy;
     this.proxyCredentials = builder.proxyCredentials;
     this.cacheMaxEntries = builder.cacheMaxEntries;
     this.cacheMaxObjectSize = builder.cacheMaxObjectSize;
-    this.connectionManager = builder.connectionManager;
     this.connectionRequestTimeout = builder.connectionRequestTimeout;
     this.socketTimeout = builder.socketTimeout;
 
@@ -68,7 +68,7 @@ public class SpotifyHttpManager implements IHttpManager {
 
     BasicCredentialsProvider credentialsProvider = new BasicCredentialsProvider();
 
-    if (proxy != null) {
+    if (proxy != null && proxyCredentials != null) {
       credentialsProvider.setCredentials(
         new AuthScope(null, proxy.getHostName(), proxy.getPort(), null, proxy.getSchemeName()),
         proxyCredentials
@@ -120,6 +120,10 @@ public class SpotifyHttpManager implements IHttpManager {
     }
   }
 
+  public HttpClientConnectionManager getConnectionManager() {
+    return connectionManager;
+  }
+
   public HttpHost getProxy() {
     return proxy;
   }
@@ -134,10 +138,6 @@ public class SpotifyHttpManager implements IHttpManager {
 
   public Integer getCacheMaxObjectSize() {
     return cacheMaxObjectSize;
-  }
-
-  public HttpClientConnectionManager getConnectionManager() {
-    return connectionManager;
   }
 
   public Integer getConnectionRequestTimeout() {
@@ -359,6 +359,11 @@ public class SpotifyHttpManager implements IHttpManager {
     private Integer connectionRequestTimeout;
     private Integer socketTimeout;
 
+    public Builder setConnectionManager(HttpClientConnectionManager connectionManager) {
+      this.connectionManager = connectionManager;
+      return this;
+    }
+
     public Builder setProxy(HttpHost proxy) {
       this.proxy = proxy;
       return this;
@@ -376,11 +381,6 @@ public class SpotifyHttpManager implements IHttpManager {
 
     public Builder setCacheMaxObjectSize(Integer cacheMaxObjectSize) {
       this.cacheMaxObjectSize = cacheMaxObjectSize;
-      return this;
-    }
-
-    public Builder setConnectionManager(HttpClientConnectionManager connectionManager) {
-      this.connectionManager = connectionManager;
       return this;
     }
 
