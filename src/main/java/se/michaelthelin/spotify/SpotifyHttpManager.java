@@ -10,7 +10,6 @@ import org.apache.hc.client5.http.classic.methods.HttpDelete;
 import org.apache.hc.client5.http.classic.methods.HttpGet;
 import org.apache.hc.client5.http.classic.methods.HttpPost;
 import org.apache.hc.client5.http.classic.methods.HttpPut;
-import org.apache.hc.client5.http.config.ConnectionConfig;
 import org.apache.hc.client5.http.config.RequestConfig;
 import org.apache.hc.client5.http.cookie.StandardCookieSpec;
 import org.apache.hc.client5.http.impl.auth.BasicCredentialsProvider;
@@ -19,7 +18,7 @@ import org.apache.hc.client5.http.impl.cache.CachingHttpClients;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
 import org.apache.hc.client5.http.impl.classic.HttpClients;
-import org.apache.hc.client5.http.impl.io.BasicHttpClientConnectionManager;
+import org.apache.hc.client5.http.impl.io.PoolingHttpClientConnectionManager;
 import org.apache.hc.client5.http.io.HttpClientConnectionManager;
 import org.apache.hc.core5.http.*;
 import org.apache.hc.core5.http.io.entity.EntityUtils;
@@ -45,7 +44,6 @@ public class SpotifyHttpManager implements IHttpManager {
   private final Integer cacheMaxEntries;
   private final Integer cacheMaxObjectSize;
   private final Integer connectionRequestTimeout;
-  private final Integer connectTimeout;
   private final Integer socketTimeout;
 
   /**
@@ -54,12 +52,12 @@ public class SpotifyHttpManager implements IHttpManager {
    * @param builder The builder.
    */
   public SpotifyHttpManager(Builder builder) {
+    this.connectionManager = builder.connectionManager;
     this.proxy = builder.proxy;
     this.proxyCredentials = builder.proxyCredentials;
     this.cacheMaxEntries = builder.cacheMaxEntries;
     this.cacheMaxObjectSize = builder.cacheMaxObjectSize;
     this.connectionRequestTimeout = builder.connectionRequestTimeout;
-    this.connectTimeout = builder.connectTimeout;
     this.socketTimeout = builder.socketTimeout;
 
     CacheConfig cacheConfig = CacheConfig.custom()
@@ -75,19 +73,6 @@ public class SpotifyHttpManager implements IHttpManager {
         new AuthScope(null, proxy.getHostName(), proxy.getPort(), null, proxy.getSchemeName()),
         proxyCredentials
       );
-    }
-
-    if (builder.connectionManager != null) {
-      this.connectionManager = builder.connectionManager;
-    } else {
-      BasicHttpClientConnectionManager basicHttpClientConnectionManager = new BasicHttpClientConnectionManager();
-      basicHttpClientConnectionManager.setConnectionConfig(ConnectionConfig
-        .custom()
-        .setConnectTimeout(connectTimeout != null ?
-          Timeout.ofMilliseconds(connectTimeout) :
-          ConnectionConfig.DEFAULT.getConnectTimeout())
-        .build());
-      this.connectionManager = basicHttpClientConnectionManager;
     }
 
     RequestConfig requestConfig = RequestConfig
@@ -157,10 +142,6 @@ public class SpotifyHttpManager implements IHttpManager {
 
   public Integer getConnectionRequestTimeout() {
     return connectionRequestTimeout;
-  }
-
-  public Integer getConnectTimeout() {
-    return connectTimeout;
   }
 
   public Integer getSocketTimeout() {
@@ -370,13 +351,12 @@ public class SpotifyHttpManager implements IHttpManager {
   }
 
   public static class Builder {
-    private HttpClientConnectionManager connectionManager;
+    private HttpClientConnectionManager connectionManager = new PoolingHttpClientConnectionManager();
     private HttpHost proxy;
     private UsernamePasswordCredentials proxyCredentials;
     private Integer cacheMaxEntries;
     private Integer cacheMaxObjectSize;
     private Integer connectionRequestTimeout;
-    private Integer connectTimeout;
     private Integer socketTimeout;
 
     public Builder setConnectionManager(HttpClientConnectionManager connectionManager) {
@@ -406,11 +386,6 @@ public class SpotifyHttpManager implements IHttpManager {
 
     public Builder setConnectionRequestTimeout(Integer connectionRequestTimeout) {
       this.connectionRequestTimeout = connectionRequestTimeout;
-      return this;
-    }
-
-    public Builder setConnectTimeout(Integer connectTimeout) {
-      this.connectTimeout = connectTimeout;
       return this;
     }
 
