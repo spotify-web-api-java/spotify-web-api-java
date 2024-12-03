@@ -20,6 +20,7 @@ import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
 import org.apache.hc.client5.http.impl.classic.HttpClients;
 import org.apache.hc.client5.http.impl.io.BasicHttpClientConnectionManager;
+import org.apache.hc.client5.http.io.HttpClientConnectionManager;
 import org.apache.hc.core5.http.*;
 import org.apache.hc.core5.http.io.entity.EntityUtils;
 import org.apache.hc.core5.util.Timeout;
@@ -38,6 +39,7 @@ public class SpotifyHttpManager implements IHttpManager {
   private static final Gson GSON = new Gson();
   private final CloseableHttpClient httpClient;
   private final CloseableHttpClient httpClientCaching;
+  private final HttpClientConnectionManager connectionManager;
   private final HttpHost proxy;
   private final UsernamePasswordCredentials proxyCredentials;
   private final Integer cacheMaxEntries;
@@ -75,14 +77,19 @@ public class SpotifyHttpManager implements IHttpManager {
       );
     }
 
-    ConnectionConfig connectionConfig = ConnectionConfig
-      .custom()
-      .setConnectTimeout(builder.connectTimeout != null
-        ? Timeout.ofMilliseconds(builder.connectTimeout)
-        : ConnectionConfig.DEFAULT.getConnectTimeout())
-      .build();
-    BasicHttpClientConnectionManager connectionManager = new BasicHttpClientConnectionManager();
-    connectionManager.setConnectionConfig(connectionConfig);
+    if (builder.connectionManager != null) {
+      this.connectionManager = builder.connectionManager;
+    } else {
+      BasicHttpClientConnectionManager basicHttpClientConnectionManager = new BasicHttpClientConnectionManager();
+      basicHttpClientConnectionManager.setConnectionConfig(ConnectionConfig
+        .custom()
+        .setConnectTimeout(connectTimeout != null ?
+          Timeout.ofMilliseconds(connectTimeout) :
+          ConnectionConfig.DEFAULT.getConnectTimeout())
+        .build());
+      this.connectionManager = basicHttpClientConnectionManager;
+    }
+
     RequestConfig requestConfig = RequestConfig
       .custom()
       .setCookieSpec(StandardCookieSpec.STRICT)
@@ -126,6 +133,10 @@ public class SpotifyHttpManager implements IHttpManager {
         "URI Syntax Exception for \"" + uriString + "\"");
       return null;
     }
+  }
+
+  public HttpClientConnectionManager getConnectionManager() {
+    return connectionManager;
   }
 
   public HttpHost getProxy() {
@@ -359,6 +370,7 @@ public class SpotifyHttpManager implements IHttpManager {
   }
 
   public static class Builder {
+    private HttpClientConnectionManager connectionManager;
     private HttpHost proxy;
     private UsernamePasswordCredentials proxyCredentials;
     private Integer cacheMaxEntries;
@@ -366,6 +378,11 @@ public class SpotifyHttpManager implements IHttpManager {
     private Integer connectionRequestTimeout;
     private Integer connectTimeout;
     private Integer socketTimeout;
+
+    public Builder setConnectionManager(HttpClientConnectionManager connectionManager) {
+      this.connectionManager = connectionManager;
+      return this;
+    }
 
     public Builder setProxy(HttpHost proxy) {
       this.proxy = proxy;
