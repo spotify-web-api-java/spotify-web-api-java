@@ -33,8 +33,6 @@ import java.util.logging.Level;
 
 public class SpotifyHttpManager implements IHttpManager {
 
-  private static final int DEFAULT_CACHE_MAX_ENTRIES = 1000;
-  private static final int DEFAULT_CACHE_MAX_OBJECT_SIZE = 8192;
   private static final Gson GSON = new Gson();
   private final CloseableHttpClient httpClient;
   private final CloseableHttpClient httpClientCaching;
@@ -43,6 +41,7 @@ public class SpotifyHttpManager implements IHttpManager {
   private final UsernamePasswordCredentials proxyCredentials;
   private final Integer cacheMaxEntries;
   private final Integer cacheMaxObjectSize;
+  private final Boolean cacheShared;
   private final Integer connectionRequestTimeout;
   private final Integer socketTimeout;
 
@@ -57,13 +56,14 @@ public class SpotifyHttpManager implements IHttpManager {
     this.proxyCredentials = builder.proxyCredentials;
     this.cacheMaxEntries = builder.cacheMaxEntries;
     this.cacheMaxObjectSize = builder.cacheMaxObjectSize;
+    this.cacheShared = builder.cacheShared;
     this.connectionRequestTimeout = builder.connectionRequestTimeout;
     this.socketTimeout = builder.socketTimeout;
 
     CacheConfig cacheConfig = CacheConfig.custom()
-      .setMaxCacheEntries(cacheMaxEntries != null ? cacheMaxEntries : DEFAULT_CACHE_MAX_ENTRIES)
-      .setMaxObjectSize(cacheMaxObjectSize != null ? cacheMaxObjectSize : DEFAULT_CACHE_MAX_OBJECT_SIZE)
-      .setSharedCache(false)
+      .setMaxCacheEntries(cacheMaxEntries)
+      .setMaxObjectSize(cacheMaxObjectSize)
+      .setSharedCache(cacheShared)
       .build();
 
     BasicCredentialsProvider credentialsProvider = new BasicCredentialsProvider();
@@ -138,6 +138,10 @@ public class SpotifyHttpManager implements IHttpManager {
 
   public Integer getCacheMaxObjectSize() {
     return cacheMaxObjectSize;
+  }
+
+  public Boolean getCacheShared() {
+    return cacheShared;
   }
 
   public Integer getConnectionRequestTimeout() {
@@ -354,8 +358,9 @@ public class SpotifyHttpManager implements IHttpManager {
     private HttpClientConnectionManager connectionManager = new PoolingHttpClientConnectionManager();
     private HttpHost proxy;
     private UsernamePasswordCredentials proxyCredentials;
-    private Integer cacheMaxEntries;
-    private Integer cacheMaxObjectSize;
+    private Integer cacheMaxEntries = CacheConfig.DEFAULT_MAX_CACHE_ENTRIES;
+    private Integer cacheMaxObjectSize = CacheConfig.DEFAULT_MAX_OBJECT_SIZE_BYTES;
+    private Boolean cacheShared = Boolean.FALSE;
     private Integer connectionRequestTimeout;
     private Integer socketTimeout;
 
@@ -381,6 +386,11 @@ public class SpotifyHttpManager implements IHttpManager {
 
     public Builder setCacheMaxObjectSize(Integer cacheMaxObjectSize) {
       this.cacheMaxObjectSize = cacheMaxObjectSize;
+      return this;
+    }
+
+    public Builder setCacheShared(Boolean cacheShared) {
+      this.cacheShared = cacheShared;
       return this;
     }
 
