@@ -170,9 +170,7 @@
     "UY"
   ],
   "disc_number": 1,
-  "duration_ms": {
-    "totalMilliseconds": 222200
-  },
+  "duration_ms": 222200,
   "explicit": false,
   "external_ids": {
     "isrc": "GBFFP0300052"
