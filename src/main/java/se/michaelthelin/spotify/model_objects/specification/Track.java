@@ -562,7 +562,7 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
             : null)
         .setDurationMs(
           hasAndNotNull(jsonObject, "duration_ms")
-            ? getDurationMsFixed(jsonObject) // TODO: use `jsonObject.get("duration_ms").getAsInt()` when Spotify has fixed their API / API description, see method documentation below
+            ? jsonObject.get("duration_ms").getAsInt()
             : null)
         .setExplicit(
           hasAndNotNull(jsonObject, "explicit")
@@ -626,22 +626,6 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
             ? jsonObject.get("uri").getAsString()
             : null)
         .build();
-    }
-
-    /**
-     * @see <a href="https://community.spotify.com/t5/Spotify-for-Developers/duration-ms-includes-nonsense-JSON/m-p/5753768">Bug report on Spotify forums</a>
-     * @deprecated This is a temporary workaround to handle an edge-case involving local files,
-     * which for some reason have their duration_ms field contain an additional field called totalMilliseconds.
-     * Once Spotify fixes their API, this workaround should be removed.
-     */
-    @Deprecated
-    private static int getDurationMsFixed(JsonObject jsonObject) {
-      JsonElement durationMs = jsonObject.get("duration_ms");
-      if (durationMs.isJsonPrimitive()) {
-        return durationMs.getAsInt();
-      } else {
-        return durationMs.getAsJsonObject().get("totalMilliseconds").getAsInt();
-      }
     }
   }
 
