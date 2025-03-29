@@ -18,6 +18,7 @@ import java.util.Objects;
 @JsonDeserialize(builder = PlaylistSimplified.Builder.class)
 public class PlaylistSimplified extends AbstractModelObject implements ISearchModelObject {
   private final Boolean collaborative;
+  private final String description;
   private final ExternalUrl externalUrls;
   private final String href;
   private final String id;
@@ -34,6 +35,7 @@ public class PlaylistSimplified extends AbstractModelObject implements ISearchMo
     super(builder);
 
     this.collaborative = builder.collaborative;
+    this.description = builder.description;
     this.externalUrls = builder.externalUrls;
     this.href = builder.href;
     this.id = builder.id;
@@ -57,6 +59,15 @@ public class PlaylistSimplified extends AbstractModelObject implements ISearchMo
    */
   public Boolean getIsCollaborative() {
     return collaborative;
+  }
+
+  /**
+   * Get the description of the playlist.
+   *
+   * @return The playlist description. Only returned for modified, verified playlists, otherwise null.
+   */
+  public String getDescription() {
+    return description;
   }
 
   /**
@@ -174,9 +185,9 @@ public class PlaylistSimplified extends AbstractModelObject implements ISearchMo
   @Override
   public String toString() {
     return "PlaylistSimplified(name=" + name + ", tracks=" + tracks + ", collaborative=" + collaborative
-        + ", externalUrls=" + externalUrls + ", href=" + href + ", id=" + id + ", images=" + Arrays.toString(images)
-        + ", owner=" + owner + ", publicAccess=" + publicAccess + ", snapshotId=" + snapshotId + ", type=" + type
-        + ", uri=" + uri + ")";
+        + ", description=" + description + ", externalUrls=" + externalUrls + ", href=" + href + ", id=" + id
+        + ", images=" + Arrays.toString(images) + ", owner=" + owner + ", publicAccess=" + publicAccess
+        + ", snapshotId=" + snapshotId + ", type=" + type + ", uri=" + uri + ")";
   }
 
   @Override
@@ -189,6 +200,7 @@ public class PlaylistSimplified extends AbstractModelObject implements ISearchMo
    */
   public static final class Builder extends AbstractModelObject.Builder {
     private Boolean collaborative;
+    private String description;
     private ExternalUrl externalUrls;
     private String href;
     private String id;
@@ -209,6 +221,17 @@ public class PlaylistSimplified extends AbstractModelObject implements ISearchMo
      */
     public Builder setCollaborative(Boolean collaborative) {
       this.collaborative = collaborative;
+      return this;
+    }
+
+    /**
+     * Set the description of the playlist to be built.
+     *
+     * @param description The playlist description.
+     * @return A {@link PlaylistSimplified.Builder}.
+     */
+    public Builder setDescription(String description) {
+      this.description = description;
       return this;
     }
 
@@ -354,6 +377,10 @@ public class PlaylistSimplified extends AbstractModelObject implements ISearchMo
         .setCollaborative(
           hasAndNotNull(jsonObject, "collaborative")
             ? jsonObject.get("collaborative").getAsBoolean()
+            : null)
+        .setDescription(
+          hasAndNotNull(jsonObject, "description")
+            ? jsonObject.get("description").getAsString()
             : null)
         .setExternalUrls(
           hasAndNotNull(jsonObject, "external_urls")
