@@ -45,8 +45,9 @@ public class AuthorizationCodePKCERefreshExample {
       // Example Only. Never block in production code.
       final AuthorizationCodeCredentials authorizationCodeCredentials = authorizationCodeCredentialsFuture.join();
 
-      // Set access token for further "spotifyApi" object usage
+      // Set access and refresh token for further "spotifyApi" object usage
       spotifyApi.setAccessToken(authorizationCodeCredentials.getAccessToken());
+      spotifyApi.setRefreshToken(authorizationCodeCredentials.getRefreshToken());
 
       System.out.println("Expires in: " + authorizationCodeCredentials.getExpiresIn());
     } catch (CompletionException e) {
