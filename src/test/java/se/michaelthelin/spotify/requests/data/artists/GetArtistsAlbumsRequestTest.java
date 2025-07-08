@@ -22,7 +22,7 @@ public class GetArtistsAlbumsRequestTest extends AbstractDataTest<Paging<AlbumSi
     .setHttpManager(
       TestUtil.MockedHttpManager.returningJson(
         "requests/data/artists/GetArtistsAlbumsRequest.json"))
-    .album_type(ITest.ALBUM_TYPE)
+    .include_groups(ITest.ALBUM_TYPE)
     .limit(ITest.LIMIT)
     .market(ITest.MARKET)
     .offset(ITest.OFFSET)
@@ -35,7 +35,7 @@ public class GetArtistsAlbumsRequestTest extends AbstractDataTest<Paging<AlbumSi
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
     assertEquals(
-      "https://api.spotify.com:443/v1/artists/0LcJLqbBmaGUft1e9Mm8HV/albums?album_type=album&limit=10&market=SE&offset=0",
+      "https://api.spotify.com:443/v1/artists/0LcJLqbBmaGUft1e9Mm8HV/albums?include_groups=album&limit=10&market=SE&offset=0",
       defaultRequest.getUri().toString());
   }
 
