@@ -88,16 +88,11 @@ public abstract class AbstractRequest<T> implements IRequest<T> {
 
   public String bodyParametersToJson(List<NameValuePair> bodyParameters) {
     JsonObject jsonObject = new JsonObject();
-    JsonElement jsonElement;
 
     for (NameValuePair nameValuePair : bodyParameters) {
-      try {
-        jsonElement = JsonParser.parseString(nameValuePair.getValue());
-      } catch (JsonSyntaxException e) {
-        jsonElement = new JsonPrimitive(nameValuePair.getValue());
-      }
-
-      jsonObject.add(nameValuePair.getName(), jsonElement);
+      // Always treat parameter values as strings to preserve the caller's intent
+      // This prevents numeric strings like "2025" from being converted to numbers
+      jsonObject.addProperty(nameValuePair.getName(), nameValuePair.getValue());
     }
 
     return jsonObject.toString();
