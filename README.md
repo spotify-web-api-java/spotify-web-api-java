@@ -25,7 +25,7 @@ This is a Java wrapper/client for the [Spotify Web API](https://developer.spotif
 
 The artifact is available through
 [Maven Central](https://mvnrepository.com/artifact/se.michaelthelin.spotify/spotify-web-api-java) via
-[Sonatype](https://oss.sonatype.org/#nexus-search;quick~spotify-web-api-java).
+[Sonatype](https://central.sonatype.com/artifact/se.michaelthelin.spotify/spotify-web-api-java).
 Or to use a snapshot of the latest commit you can use [jitpack.io](https://jitpack.io/) as described [further down below](#Jitpack).
 
 ### Maven
