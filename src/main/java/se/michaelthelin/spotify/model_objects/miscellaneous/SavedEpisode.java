@@ -15,7 +15,9 @@ import java.util.logging.Level;
  */
 @JsonDeserialize(builder = SavedEpisode.Builder.class)
 public class SavedEpisode extends AbstractModelObject {
+  /** The date and time the episode was saved. */
   private final Date addedAt;
+  /** Information about the episode. */
   private final Episode episode;
 
   private SavedEpisode(final SavedEpisode.Builder builder) {
@@ -60,6 +62,13 @@ public class SavedEpisode extends AbstractModelObject {
     private Episode episode;
 
     /**
+     * Default constructor.
+     */
+    public Builder() {
+      super();
+    }
+
+    /**
      * Set the "added at" date of the saved episode to be built.
      *
      * @param addedAt The date and time the episode was saved.
@@ -91,6 +100,14 @@ public class SavedEpisode extends AbstractModelObject {
    * JsonUtil class for building {@link SavedEpisode} instances.
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<SavedEpisode> {
+
+    /**
+     * Default constructor.
+     */
+    public JsonUtil() {
+      super();
+    }
+
     @Override
     public SavedEpisode createModelObject(JsonObject jsonObject) {
       if (jsonObject == null || jsonObject.isJsonNull()) {

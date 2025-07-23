@@ -15,7 +15,9 @@ import java.util.logging.Level;
  */
 @JsonDeserialize(builder = SavedAlbum.Builder.class)
 public class SavedAlbum extends AbstractModelObject {
+  /** The date and time the album was saved. */
   private final Date addedAt;
+  /** Information about the album. */
   private final Album album;
 
   private SavedAlbum(final Builder builder) {
@@ -61,6 +63,13 @@ public class SavedAlbum extends AbstractModelObject {
     private Album album;
 
     /**
+     * Default constructor.
+     */
+    public Builder() {
+      super();
+    }
+
+    /**
      * Set the "added at" date of the saved album to be built.
      *
      * @param addedAt The date and time the album was saved.
@@ -92,6 +101,14 @@ public class SavedAlbum extends AbstractModelObject {
    * JsonUtil class for building {@link SavedAlbum} instances.
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<SavedAlbum> {
+
+    /**
+     * Default constructor.
+     */
+    public JsonUtil() {
+      super();
+    }
+
     public SavedAlbum createModelObject(JsonObject jsonObject) {
       if (jsonObject == null || jsonObject.isJsonNull()) {
         return null;

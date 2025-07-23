@@ -13,9 +13,13 @@ import java.util.Objects;
  */
 @JsonDeserialize(builder = Category.Builder.class)
 public class Category extends AbstractModelObject {
+  /** A link to the Web API endpoint returning full details of the category. */
   private final String href;
+  /** The category icon, in various sizes. */
   private final Image[] icons;
+  /** The Spotify category ID. */
   private final String id;
+  /** The name of the category. */
   private final String name;
 
   private Category(final Builder builder) {
@@ -84,6 +88,13 @@ public class Category extends AbstractModelObject {
     private String name;
 
     /**
+     * Default constructor.
+     */
+    public Builder() {
+      super();
+    }
+
+    /**
      * The category href setter.
      *
      * @param href A link to the Spotify Web API endpoint returning full details of the category.
@@ -137,6 +148,14 @@ public class Category extends AbstractModelObject {
    * JsonUtil class for building {@link Category} instances.
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<Category> {
+
+    /**
+     * Default constructor.
+     */
+    public JsonUtil() {
+      super();
+    }
+
     public Category createModelObject(JsonObject jsonObject) {
       if (jsonObject == null || jsonObject.isJsonNull()) {
         return null;

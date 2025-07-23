@@ -11,7 +11,9 @@ import se.michaelthelin.spotify.model_objects.AbstractModelObject;
  */
 @JsonDeserialize(builder = ResumePoint.Builder.class)
 public class ResumePoint extends AbstractModelObject {
+  /** Whether the episode has been fully played by the user. */
   private final Boolean fullyPlayed;
+  /** The position in milliseconds where the user left off. */
   private final Integer resumePositionMs;
 
   private ResumePoint(final Builder builder) {
@@ -56,6 +58,13 @@ public class ResumePoint extends AbstractModelObject {
     private Integer resumePositionMs;
 
     /**
+     * Default constructor.
+     */
+    public Builder() {
+      super();
+    }
+
+    /**
      * Set whether the episode has been fully played by the user.
      *
      * @param fullyPlayed {@code true} if episode has been fully played by the user.
@@ -87,6 +96,14 @@ public class ResumePoint extends AbstractModelObject {
    * JsonUtil class for building {@link ResumePoint} instances.
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<ResumePoint> {
+
+    /**
+     * Default constructor.
+     */
+    public JsonUtil() {
+      super();
+    }
+
     @Override
     public ResumePoint createModelObject(JsonObject jsonObject) {
       if (jsonObject == null || jsonObject.isJsonNull()) {

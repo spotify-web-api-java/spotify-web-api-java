@@ -16,20 +16,35 @@ import java.util.Objects;
  */
 @JsonDeserialize(builder = TrackSimplified.Builder.class)
 public class TrackSimplified extends AbstractModelObject {
+  /** The artists who performed the track. */
   private final ArtistSimplified[] artists;
+  /** A list of the countries in which the track can be played. */
   private final CountryCode[] availableMarkets;
+  /** The disc number. */
   private final Integer discNumber;
+  /** The track length in milliseconds. */
   private final Integer durationMs;
+  /** Whether the track is explicit. */
   private final Boolean explicit;
+  /** External URLs for the track. */
   private final ExternalUrl externalUrls;
+  /** The Spotify Web API endpoint URL for the track. */
   private final String href;
+  /** The Spotify ID for the track. */
   private final String id;
+  /** Whether the track is playable. */
   private final Boolean isPlayable;
+  /** Information about the original track. */
   private final TrackLink linkedFrom;
+  /** The name of the track. */
   private final String name;
+  /** A link to a 30 second preview of the track. */
   private final String previewUrl;
+  /** The number of the track. */
   private final Integer trackNumber;
+  /** The object type. */
   private final ModelObjectType type;
+  /** The Spotify URI for the track. */
   private final String uri;
 
   private TrackSimplified(final Builder builder) {
@@ -233,6 +248,13 @@ public class TrackSimplified extends AbstractModelObject {
     private String uri;
 
     /**
+     * Default constructor.
+     */
+    public Builder() {
+      super();
+    }
+
+    /**
      * Set the artists of the track to be built.
      *
      * @param artists The artists who performed the track.
@@ -411,6 +433,14 @@ public class TrackSimplified extends AbstractModelObject {
    * JsonUtil class for building {@link TrackSimplified} instances.
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<TrackSimplified> {
+
+    /**
+     * Default constructor.
+     */
+    public JsonUtil() {
+      super();
+    }
+
     public TrackSimplified createModelObject(JsonObject jsonObject) {
       if (jsonObject == null || jsonObject.isJsonNull()) {
         return null;

@@ -8,8 +8,11 @@ import java.util.Map;
  */
 public enum ReleaseDatePrecision {
 
+  /** Day-level precision (YYYY-MM-DD). */
   DAY("day"),
+  /** Month-level precision (YYYY-MM). */
   MONTH("month"),
+  /** Year-level precision (YYYY). */
   YEAR("year");
 
   private static final Map<String, ReleaseDatePrecision> map = new HashMap<>();
@@ -20,12 +23,19 @@ public enum ReleaseDatePrecision {
     }
   }
 
+  /** The precision level identifier. */
   public final String precision;
 
   ReleaseDatePrecision(final String precision) {
     this.precision = precision;
   }
 
+  /**
+   * Get the {@link ReleaseDatePrecision} associated with the given precision string.
+   *
+   * @param precision the precision string
+   * @return the corresponding {@link ReleaseDatePrecision}, or null if not found
+   */
   public static ReleaseDatePrecision keyOf(String precision) {
     return map.get(precision);
   }

@@ -17,15 +17,25 @@ import java.util.Objects;
  */
 @JsonDeserialize(builder = Artist.Builder.class)
 public class Artist extends AbstractModelObject implements IArtistTrackModelObject, ISearchModelObject {
+  /** Known external URLs for this artist. */
   private final ExternalUrl externalUrls;
+  /** Information about the followers of the artist. */
   private final Followers followers;
+  /** A list of the genres the artist is associated with. */
   private final String[] genres;
+  /** A link to the Web API endpoint providing full details of the artist. */
   private final String href;
+  /** The Spotify ID for the artist. */
   private final String id;
+  /** Images of the artist in various sizes. */
   private final Image[] images;
+  /** The name of the artist. */
   private final String name;
+  /** The popularity of the artist (0-100). */
   private final Integer popularity;
+  /** The object type: "artist". */
   private final ModelObjectType type;
+  /** The Spotify URI for the artist. */
   private final String uri;
 
   private Artist(final Builder builder) {
@@ -165,6 +175,13 @@ public class Artist extends AbstractModelObject implements IArtistTrackModelObje
     private String uri;
 
     /**
+     * Default constructor.
+     */
+    public Builder() {
+      super();
+    }
+
+    /**
      * Set external URLs of the artist to be built.
      *
      * @param externalUrls {@link ExternalUrl} object.
@@ -285,6 +302,14 @@ public class Artist extends AbstractModelObject implements IArtistTrackModelObje
    * JsonUtil class for building {@link Artist} instances.
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<Artist> {
+
+    /**
+     * Default constructor.
+     */
+    public JsonUtil() {
+      super();
+    }
+
     public Artist createModelObject(JsonObject jsonObject) {
       if (jsonObject == null || jsonObject.isJsonNull()) {
         return null;

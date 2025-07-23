@@ -10,31 +10,57 @@ import se.michaelthelin.spotify.model_objects.AbstractModelObject;
  */
 @JsonDeserialize(builder = AudioAnalysisTrack.Builder.class)
 public class AudioAnalysisTrack extends AbstractModelObject {
+  /** The number of samples in the track. */
   private final Long numSamples;
+  /** The duration of the track in seconds. */
   private final Float duration;
+  /** MD5 hash of the track's sample data. */
   private final String sampleMd5;
+  /** The offset in seconds where the track analysis starts. */
   private final Integer offsetSeconds;
+  /** The analysis window in seconds. */
   private final Integer windowSeconds;
+  /** The sample rate used for analysis. */
   private final Long analysisSampleRate;
+  /** The number of audio channels analyzed. */
   private final Integer analysisChannels;
+  /** The time when the fade-in ends, in seconds. */
   private final Float endOfFadeIn;
+  /** The time when the fade-out starts, in seconds. */
   private final Float startOfFadeOut;
+  /** The overall loudness of the track in decibels (dB). */
   private final Float loudness;
+  /** The overall estimated tempo of the track in beats per minute (BPM). */
   private final Float tempo;
+  /** The confidence level of the tempo estimation (0.0 to 1.0). */
   private final Float tempoConfidence;
+  /** The time signature of the track. */
   private final Integer timeSignature;
+  /** The confidence level of the time signature estimation (0.0 to 1.0). */
   private final Float timeSignatureConfidence;
+  /** The key the track is in (0 = C, 1 = C♯/D♭, 2 = D, etc.). */
   private final Integer key;
+  /** The confidence level of the key estimation (0.0 to 1.0). */
   private final Float keyConfidence;
+  /** The modality (major or minor) of the track. */
   private final Modality mode;
+  /** The confidence level of the mode estimation (0.0 to 1.0). */
   private final Float modeConfidence;
+  /** The code string for the track. */
   private final String codeString;
+  /** The version of the code analysis. */
   private final Float codeVersion;
+  /** The echoprint string for the track. */
   private final String echoprintString;
+  /** The version of the echoprint analysis. */
   private final Float echoprintVersion;
+  /** The synch string for the track. */
   private final String synchString;
+  /** The version of the synch analysis. */
   private final Float synchVersion;
+  /** The rhythm string for the track. */
   private final String rhythmString;
+  /** The version of the rhythm analysis. */
   private final Float rhythmVersion;
 
   private AudioAnalysisTrack(final Builder builder) {
@@ -308,7 +334,6 @@ public class AudioAnalysisTrack extends AbstractModelObject {
 
   /**
    * Get the rhythm string of the track.
-   * <p>
    *
    * @return The rhythm string of the track.
    */
@@ -373,6 +398,13 @@ public class AudioAnalysisTrack extends AbstractModelObject {
     private Float synchVersion;
     private String rhythmString;
     private Float rhythmVersion;
+
+    /**
+     * Default constructor.
+     */
+    public Builder() {
+      super();
+    }
 
     /**
      * The sample number setter.
@@ -670,6 +702,14 @@ public class AudioAnalysisTrack extends AbstractModelObject {
    * JsonUtil class for building {@link AudioAnalysisTrack} instances.
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<AudioAnalysisTrack> {
+
+    /**
+     * Default constructor.
+     */
+    public JsonUtil() {
+      super();
+    }
+
     public AudioAnalysisTrack createModelObject(JsonObject jsonObject) {
       if (jsonObject == null || jsonObject.isJsonNull()) {
         return null;

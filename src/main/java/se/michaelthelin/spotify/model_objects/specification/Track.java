@@ -21,24 +21,43 @@ import java.util.Objects;
  */
 @JsonDeserialize(builder = Track.Builder.class)
 public class Track extends AbstractModelObject implements IArtistTrackModelObject, ISearchModelObject, IPlaylistItem {
+  /** The album on which the track appears. */
   private final AlbumSimplified album;
+  /** The artists who performed the track. */
   private final ArtistSimplified[] artists;
+  /** A list of the countries in which the track can be played. */
   private final CountryCode[] availableMarkets;
+  /** The disc number. */
   private final Integer discNumber;
+  /** The track length in milliseconds. */
   private final Integer durationMs;
+  /** Whether the track is explicit. */
   private final Boolean explicit;
+  /** External IDs for the track. */
   private final ExternalId externalIds;
+  /** External URLs for the track. */
   private final ExternalUrl externalUrls;
+  /** The Spotify Web API endpoint URL for the track. */
   private final String href;
+  /** The Spotify ID for the track. */
   private final String id;
+  /** Whether the track is playable. */
   private final Boolean isPlayable;
+  /** Information about the original track. */
   private final TrackLink linkedFrom;
+  /** Restrictions on the track. */
   private final Restrictions restrictions;
+  /** The name of the track. */
   private final String name;
+  /** The popularity of the track. */
   private final Integer popularity;
+  /** A link to a 30 second preview of the track. */
   private final String previewUrl;
+  /** The number of the track. */
   private final Integer trackNumber;
+  /** The object type. */
   private final ModelObjectType type;
+  /** The Spotify URI for the track. */
   private final String uri;
 
   private Track(final Builder builder) {
@@ -311,6 +330,13 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
     private String uri;
 
     /**
+     * Default constructor.
+     */
+    public Builder() {
+      super();
+    }
+
+    /**
      * Set the album of the track to be built.
      *
      * @param album The album on which the track appears.
@@ -535,6 +561,14 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
    * JsonUtil class for building {@link Track} instances.
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<Track> {
+
+    /**
+     * Default constructor.
+     */
+    public JsonUtil() {
+      super();
+    }
+
     public Track createModelObject(JsonObject jsonObject) {
       if (jsonObject == null || jsonObject.isJsonNull()) {
         return null;

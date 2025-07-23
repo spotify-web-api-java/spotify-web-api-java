@@ -17,9 +17,13 @@ import java.util.logging.Level;
  */
 @JsonDeserialize(builder = PlaylistTrack.Builder.class)
 public class PlaylistTrack extends AbstractModelObject {
+  /** The date and time the track was added. */
   private final Date addedAt;
+  /** The user who added the track. */
   private final User addedBy;
+  /** Whether the track is a local file. */
   private final Boolean isLocal;
+  /** The track or episode information. */
   private final IPlaylistItem track;
 
   private PlaylistTrack(final Builder builder) {
@@ -91,6 +95,13 @@ public class PlaylistTrack extends AbstractModelObject {
     private IPlaylistItem track;
 
     /**
+     * Default constructor.
+     */
+    public Builder() {
+      super();
+    }
+
+    /**
      * Set the "added at" date of the playlist track to be built.
      *
      * @param addedAt The date and time the track or episode was added.
@@ -144,6 +155,14 @@ public class PlaylistTrack extends AbstractModelObject {
    * JsonUtil class for building {@link PlaylistTrack} instances.
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<PlaylistTrack> {
+
+    /**
+     * Default constructor.
+     */
+    public JsonUtil() {
+      super();
+    }
+
     public PlaylistTrack createModelObject(JsonObject jsonObject) {
       if (jsonObject == null || jsonObject.isJsonNull()) {
         return null;

@@ -11,7 +11,9 @@ import se.michaelthelin.spotify.model_objects.AbstractModelObject;
  */
 @JsonDeserialize(builder = Followers.Builder.class)
 public class Followers extends AbstractModelObject {
+  /** This will always be set to null, as the Web API does not support it at the moment. */
   private final String href;
+  /** The total number of followers. */
   private final Integer total;
 
   private Followers(final Builder builder) {
@@ -58,6 +60,13 @@ public class Followers extends AbstractModelObject {
     private Integer total;
 
     /**
+     * Default constructor.
+     */
+    public Builder() {
+      super();
+    }
+
+    /**
      * The href setter.
      *
      * @param href A link to the Web API endpoint providing full details of the followers; {@code null} if not
@@ -90,6 +99,14 @@ public class Followers extends AbstractModelObject {
    * JsonUtil class for building {@link Followers} instances.
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<Followers> {
+
+    /**
+     * Default constructor.
+     */
+    public JsonUtil() {
+      super();
+    }
+
     public Followers createModelObject(JsonObject jsonObject) {
       if (jsonObject == null || jsonObject.isJsonNull()) {
         return null;

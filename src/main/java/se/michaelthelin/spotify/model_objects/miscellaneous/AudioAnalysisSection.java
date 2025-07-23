@@ -12,15 +12,25 @@ import se.michaelthelin.spotify.model_objects.AbstractModelObject;
  */
 @JsonDeserialize(builder = AudioAnalysisSection.Builder.class)
 public class AudioAnalysisSection extends AbstractModelObject {
+  /** The measure data for this section. */
   private final AudioAnalysisMeasure measure;
+  /** The overall loudness of the section in decibels (dB). */
   private final Float loudness;
+  /** The overall estimated tempo of the section in beats per minute (BPM). */
   private final Float tempo;
+  /** The confidence level of the tempo estimation (0.0 to 1.0). */
   private final Float tempoConfidence;
+  /** The key the section is in (0 = C, 1 = C♯/D♭, 2 = D, etc.). */
   private final Integer key;
+  /** The confidence level of the key estimation (0.0 to 1.0). */
   private final Float keyConfidence;
+  /** The modality (major or minor) of the section. */
   private final Modality mode;
+  /** The confidence level of the mode estimation (0.0 to 1.0). */
   private final Float modeConfidence;
+  /** The time signature of the section. */
   private final Integer timeSignature;
+  /** The confidence level of the time signature estimation (0.0 to 1.0). */
   private final Float timeSignatureConfidence;
 
   private AudioAnalysisSection(final Builder builder) {
@@ -162,6 +172,13 @@ public class AudioAnalysisSection extends AbstractModelObject {
     private Float timeSignatureConfidence;
 
     /**
+     * Default constructor.
+     */
+    public Builder() {
+      super();
+    }
+
+    /**
      * The measure setter.
      *
      * @param measure The measure of the audio analysis section object.
@@ -281,6 +298,14 @@ public class AudioAnalysisSection extends AbstractModelObject {
    * JsonUtil class for building {@link AudioAnalysisSection} instances.
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<AudioAnalysisSection> {
+
+    /**
+     * Default constructor.
+     */
+    public JsonUtil() {
+      super();
+    }
+
     public AudioAnalysisSection createModelObject(JsonObject jsonObject) {
       if (jsonObject == null || jsonObject.isJsonNull()) {
         return null;

@@ -12,13 +12,21 @@ import java.util.Objects;
  */
 @JsonDeserialize(builder = Device.Builder.class)
 public class Device extends AbstractModelObject {
+  /** The device ID. This may be null. */
   private final String id;
+  /** If this device is the currently active device. */
   private final Boolean is_active;
+  /** If this device is currently in a private session. */
   private final Boolean is_private_session;
+  /** Whether controlling this device is restricted. */
   private final Boolean is_restricted;
+  /** The name of the device. */
   private final String name;
+  /** If this device can be used to set the volume. */
   private final Boolean supports_volume;
+  /** Device type, such as "computer", "smartphone" or "speaker". */
   private final String type;
+  /** The current volume in percent. This may be null. */
   private final Integer volume_percent;
 
   private Device(final Builder builder) {
@@ -131,6 +139,13 @@ public class Device extends AbstractModelObject {
     private Integer volume_percent;
 
     /**
+     * Default constructor.
+     */
+    public Builder() {
+      super();
+    }
+
+    /**
      * The device ID setter.
      *
      * @param id The device ID. This may be {@code null}.
@@ -228,6 +243,14 @@ public class Device extends AbstractModelObject {
    * JsonUtil class for building {@link Device} instances.
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<Device> {
+
+    /**
+     * Default constructor.
+     */
+    public JsonUtil() {
+      super();
+    }
+
     public Device createModelObject(JsonObject jsonObject) {
       if (jsonObject == null || jsonObject.isJsonNull()) {
         return null;

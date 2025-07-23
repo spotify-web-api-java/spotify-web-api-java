@@ -11,8 +11,11 @@ import se.michaelthelin.spotify.model_objects.AbstractModelObject;
  */
 @JsonDeserialize(builder = AudioAnalysisMeasure.Builder.class)
 public class AudioAnalysisMeasure extends AbstractModelObject {
+  /** The confidence level of the measure identification (0.0 to 1.0). */
   private final Float confidence;
+  /** The duration of the measure in seconds. */
   private final Float duration;
+  /** The starting time offset of the measure in seconds. */
   private final Float start;
 
   private AudioAnalysisMeasure(final Builder builder) {
@@ -72,6 +75,13 @@ public class AudioAnalysisMeasure extends AbstractModelObject {
     private Float start;
 
     /**
+     * Default constructor.
+     */
+    public Builder() {
+      super();
+    }
+
+    /**
      * The confidence setter.
      *
      * @param confidence The confidence value of the measurement between 0.0 and 1.0.
@@ -114,6 +124,14 @@ public class AudioAnalysisMeasure extends AbstractModelObject {
    * JsonUtil class for building {@link AudioAnalysisMeasure} instances.
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<AudioAnalysisMeasure> {
+
+    /**
+     * Default constructor.
+     */
+    public JsonUtil() {
+      super();
+    }
+
     public AudioAnalysisMeasure createModelObject(JsonObject jsonObject) {
       if (jsonObject == null || jsonObject.isJsonNull()) {
         return null;

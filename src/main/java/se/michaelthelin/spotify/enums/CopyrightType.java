@@ -10,7 +10,9 @@ import java.util.Map;
  */
 public enum CopyrightType {
 
+  /** The copyright for the composition (recording). */
   C("c"),
+  /** The copyright for the sound recording (phonogram). */
   P("p");
 
   private static final Map<String, CopyrightType> map = new HashMap<>();
@@ -21,12 +23,19 @@ public enum CopyrightType {
     }
   }
 
+  /** The copyright type identifier. */
   public final String type;
 
   CopyrightType(final String type) {
     this.type = type;
   }
 
+  /**
+   * Get the {@link CopyrightType} associated with the given type string.
+   *
+   * @param type the copyright type string
+   * @return the corresponding {@link CopyrightType}, or null if not found
+   */
   public static CopyrightType keyOf(String type) {
     return map.get(type);
   }

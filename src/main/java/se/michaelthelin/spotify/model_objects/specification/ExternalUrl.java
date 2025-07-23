@@ -14,6 +14,7 @@ import java.util.Map;
  */
 @JsonDeserialize(builder = ExternalUrl.Builder.class)
 public class ExternalUrl extends AbstractModelObject {
+  /** Known external URLs for this object. */
   private final Map<String, String> externalUrls;
 
   private ExternalUrl(final Builder builder) {
@@ -64,6 +65,13 @@ public class ExternalUrl extends AbstractModelObject {
     private Map<String, String> externalUrls;
 
     /**
+     * Default constructor.
+     */
+    public Builder() {
+      super();
+    }
+
+    /**
      * The external URLs setter.
      *
      * @param externalUrls A {@link Map} of external public URLs to its objects.
@@ -85,6 +93,14 @@ public class ExternalUrl extends AbstractModelObject {
    */
   @SuppressWarnings("unchecked")
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<ExternalUrl> {
+
+    /**
+     * Default constructor.
+     */
+    public JsonUtil() {
+      super();
+    }
+
     public ExternalUrl createModelObject(JsonObject jsonObject) {
       if (jsonObject == null || jsonObject.isJsonNull()) {
         return null;

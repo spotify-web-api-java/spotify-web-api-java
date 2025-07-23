@@ -20,12 +20,19 @@ import java.util.Arrays;
  */
 @JsonDeserialize(builder = AudioAnalysis.Builder.class)
 public class AudioAnalysis extends AbstractModelObject {
+  /** Array of bar intervals in the track. */
   private final AudioAnalysisMeasure[] bars;
+  /** Array of beat intervals in the track. */
   private final AudioAnalysisMeasure[] beats;
+  /** Metadata about the analysis process. */
   private final AudioAnalysisMeta meta;
+  /** Array of section intervals in the track. */
   private final AudioAnalysisSection[] sections;
+  /** Array of segment intervals in the track. */
   private final AudioAnalysisSegment[] segments;
+  /** Array of tatum intervals in the track. */
   private final AudioAnalysisMeasure[] tatums;
+  /** Overall track-level audio analysis. */
   private final AudioAnalysisTrack track;
 
   private AudioAnalysis(final Builder builder) {
@@ -135,6 +142,13 @@ public class AudioAnalysis extends AbstractModelObject {
     private AudioAnalysisTrack track;
 
     /**
+     * Default constructor.
+     */
+    public Builder() {
+      super();
+    }
+
+    /**
      * Track bars setter.
      *
      * @param bars The list of bar markers, in seconds.
@@ -222,6 +236,14 @@ public class AudioAnalysis extends AbstractModelObject {
    * JsonUtil class for building {@link AudioAnalysis} instances.
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<AudioAnalysis> {
+
+    /**
+     * Default constructor.
+     */
+    public JsonUtil() {
+      super();
+    }
+
     public AudioAnalysis createModelObject(JsonObject jsonObject) {
       if (jsonObject == null || jsonObject.isJsonNull()) {
         return null;

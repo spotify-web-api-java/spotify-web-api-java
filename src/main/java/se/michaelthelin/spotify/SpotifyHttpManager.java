@@ -31,6 +31,10 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.logging.Level;
 
+/**
+ * Default implementation of the {@link IHttpManager} interface.
+ * Manages HTTP requests to the Spotify Web API using Apache HttpClient.
+ */
 public class SpotifyHttpManager implements IHttpManager {
 
   private static final Gson GSON = new Gson();
@@ -109,6 +113,12 @@ public class SpotifyHttpManager implements IHttpManager {
       .build();
   }
 
+  /**
+   * Creates a URI from a string, handling any syntax exceptions.
+   *
+   * @param uriString the URI string to parse
+   * @return the parsed URI, or null if the string is invalid
+   */
   public static URI makeUri(String uriString) {
     try {
       return new URI(uriString);
@@ -120,34 +130,74 @@ public class SpotifyHttpManager implements IHttpManager {
     }
   }
 
+  /**
+   * Gets the HTTP client connection manager.
+   *
+   * @return the connection manager
+   */
   public HttpClientConnectionManager getConnectionManager() {
     return connectionManager;
   }
 
+  /**
+   * Gets the HTTP proxy configuration.
+   *
+   * @return the HTTP proxy host, or null if no proxy is configured
+   */
   public HttpHost getProxy() {
     return proxy;
   }
 
+  /**
+   * Gets the proxy authentication credentials.
+   *
+   * @return the proxy credentials, or null if no credentials are configured
+   */
   public UsernamePasswordCredentials getProxyCredentials() {
     return proxyCredentials;
   }
 
+  /**
+   * Gets the maximum number of cache entries.
+   *
+   * @return the maximum cache entries
+   */
   public Integer getCacheMaxEntries() {
     return cacheMaxEntries;
   }
 
+  /**
+   * Gets the maximum size of cached objects.
+   *
+   * @return the maximum cache object size
+   */
   public Integer getCacheMaxObjectSize() {
     return cacheMaxObjectSize;
   }
 
+  /**
+   * Gets whether the cache is shared between multiple HTTP clients.
+   *
+   * @return true if the cache is shared, false otherwise
+   */
   public Boolean getCacheShared() {
     return cacheShared;
   }
 
+  /**
+   * Gets the connection request timeout in milliseconds.
+   *
+   * @return the connection request timeout
+   */
   public Integer getConnectionRequestTimeout() {
     return connectionRequestTimeout;
   }
 
+  /**
+   * Gets the socket timeout in milliseconds.
+   *
+   * @return the socket timeout
+   */
   public Integer getSocketTimeout() {
     return socketTimeout;
   }
@@ -359,6 +409,10 @@ public class SpotifyHttpManager implements IHttpManager {
     }
   }
 
+  /**
+   * Builder class for creating {@link SpotifyHttpManager} instances.
+   * Provides a fluent interface for configuring HTTP client settings.
+   */
   public static class Builder {
     private HttpClientConnectionManager connectionManager = new PoolingHttpClientConnectionManager();
     private HttpHost proxy;
@@ -369,46 +423,106 @@ public class SpotifyHttpManager implements IHttpManager {
     private Integer connectionRequestTimeout;
     private Integer socketTimeout;
 
+    /**
+     * Default constructor.
+     */
+    public Builder() {
+      super();
+    }
+
+    /**
+     * Sets the HTTP client connection manager.
+     *
+     * @param connectionManager the connection manager to use
+     * @return this builder instance for method chaining
+     */
     public Builder setConnectionManager(HttpClientConnectionManager connectionManager) {
       this.connectionManager = connectionManager;
       return this;
     }
 
+    /**
+     * Sets the HTTP proxy configuration.
+     *
+     * @param proxy the HTTP proxy host
+     * @return this builder instance for method chaining
+     */
     public Builder setProxy(HttpHost proxy) {
       this.proxy = proxy;
       return this;
     }
 
+    /**
+     * Sets the proxy authentication credentials.
+     *
+     * @param proxyCredentials the proxy credentials
+     * @return this builder instance for method chaining
+     */
     public Builder setProxyCredentials(UsernamePasswordCredentials proxyCredentials) {
       this.proxyCredentials = proxyCredentials;
       return this;
     }
 
+    /**
+     * Sets the maximum number of cache entries.
+     *
+     * @param cacheMaxEntries the maximum cache entries
+     * @return this builder instance for method chaining
+     */
     public Builder setCacheMaxEntries(Integer cacheMaxEntries) {
       this.cacheMaxEntries = cacheMaxEntries;
       return this;
     }
 
+    /**
+     * Sets the maximum size of cached objects.
+     *
+     * @param cacheMaxObjectSize the maximum cache object size
+     * @return this builder instance for method chaining
+     */
     public Builder setCacheMaxObjectSize(Integer cacheMaxObjectSize) {
       this.cacheMaxObjectSize = cacheMaxObjectSize;
       return this;
     }
 
+    /**
+     * Sets whether the cache is shared between multiple HTTP clients.
+     *
+     * @param cacheShared true if the cache should be shared, false otherwise
+     * @return this builder instance for method chaining
+     */
     public Builder setCacheShared(Boolean cacheShared) {
       this.cacheShared = cacheShared;
       return this;
     }
 
+    /**
+     * Sets the connection request timeout in milliseconds.
+     *
+     * @param connectionRequestTimeout the connection request timeout
+     * @return this builder instance for method chaining
+     */
     public Builder setConnectionRequestTimeout(Integer connectionRequestTimeout) {
       this.connectionRequestTimeout = connectionRequestTimeout;
       return this;
     }
 
+    /**
+     * Sets the socket timeout in milliseconds.
+     *
+     * @param socketTimeout the socket timeout
+     * @return this builder instance for method chaining
+     */
     public Builder setSocketTimeout(Integer socketTimeout) {
       this.socketTimeout = socketTimeout;
       return this;
     }
 
+    /**
+     * Builds a new {@link SpotifyHttpManager} instance with the configured settings.
+     *
+     * @return a new SpotifyHttpManager instance
+     */
     public SpotifyHttpManager build() {
       return new SpotifyHttpManager(this);
     }

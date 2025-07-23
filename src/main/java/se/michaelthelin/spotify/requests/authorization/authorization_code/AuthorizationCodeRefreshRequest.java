@@ -41,6 +41,12 @@ public class AuthorizationCodeRefreshRequest extends AbstractAuthorizationReques
    */
   public static final class Builder extends AbstractAuthorizationRequest.Builder<AuthorizationCodeCredentials, Builder> {
 
+    /**
+     * Creates a new builder for an authorization code refresh request.
+     *
+     * @param clientId the client ID of the Spotify application
+     * @param clientSecret the client secret of the Spotify application
+     */
     public Builder(final String clientId, final String clientSecret) {
       super(clientId, clientSecret);
     }

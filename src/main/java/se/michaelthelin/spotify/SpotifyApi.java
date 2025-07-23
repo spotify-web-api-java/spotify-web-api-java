@@ -86,6 +86,7 @@ public class SpotifyApi {
    */
   public static final String DEFAULT_SCHEME = "https";
 
+  /** Logger instance for this class. */
   public static final Logger LOGGER = Logger.getLogger(SpotifyApi.class.getName());
 
   /**
@@ -175,6 +176,13 @@ public class SpotifyApi {
     return SIMPLE_DATE_FORMAT.get().format(date);
   }
 
+  /**
+   * Creates a SimpleDateFormat with the specified pattern and timezone.
+   *
+   * @param pattern the date pattern
+   * @param id the timezone ID
+   * @return a configured SimpleDateFormat instance
+   */
   public static SimpleDateFormat makeSimpleDateFormat(String pattern, String id) {
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
     simpleDateFormat.setTimeZone(TimeZone.getTimeZone(id));
@@ -1904,7 +1912,6 @@ public class SpotifyApi {
    * Builder class for building {@link SpotifyApi} instances.
    */
   public static class Builder {
-
     private IHttpManager httpManager = DEFAULT_HTTP_MANAGER;
     private String scheme = DEFAULT_SCHEME;
     private String host = DEFAULT_HOST;
@@ -1918,6 +1925,13 @@ public class SpotifyApi {
     private URI redirectUri;
     private String accessToken;
     private String refreshToken;
+
+    /**
+     * Default constructor.
+     */
+    public Builder() {
+      super();
+    }
 
     /**
      * The HttpManager setter.

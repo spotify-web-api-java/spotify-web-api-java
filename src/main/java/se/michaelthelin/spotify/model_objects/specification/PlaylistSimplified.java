@@ -17,18 +17,31 @@ import java.util.Objects;
  */
 @JsonDeserialize(builder = PlaylistSimplified.Builder.class)
 public class PlaylistSimplified extends AbstractModelObject implements ISearchModelObject {
+  /** Whether the playlist is collaborative. */
   private final Boolean collaborative;
+  /** The description of the playlist. */
   private final String description;
+  /** External URLs for the playlist. */
   private final ExternalUrl externalUrls;
+  /** The Spotify Web API endpoint URL for the playlist. */
   private final String href;
+  /** The Spotify ID for the playlist. */
   private final String id;
+  /** Images for the playlist. */
   private final Image[] images;
+  /** The name of the playlist. */
   private final String name;
+  /** The user who owns the playlist. */
   private final User owner;
+  /** Whether the playlist is public. */
   private final Boolean publicAccess;
+  /** The version identifier for the current playlist. */
   private final String snapshotId;
+  /** Information about the tracks of the playlist. */
   private final PlaylistTracksInformation tracks;
+  /** The object type. */
   private final ModelObjectType type;
+  /** The Spotify URI for the playlist. */
   private final String uri;
 
   private PlaylistSimplified(final Builder builder) {
@@ -214,6 +227,13 @@ public class PlaylistSimplified extends AbstractModelObject implements ISearchMo
     private String uri;
 
     /**
+     * Default constructor.
+     */
+    public Builder() {
+      super();
+    }
+
+    /**
      * Set whether the playlist to be built is collaborative or not.
      *
      * @param collaborative {@code true} if the owner allows other users to modify the playlist, {@code false} if not.
@@ -368,6 +388,14 @@ public class PlaylistSimplified extends AbstractModelObject implements ISearchMo
    * JsonUtil class for building {@link PlaylistSimplified} instances.
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<PlaylistSimplified> {
+
+    /**
+     * Default constructor.
+     */
+    public JsonUtil() {
+      super();
+    }
+
     public PlaylistSimplified createModelObject(JsonObject jsonObject) {
       if (jsonObject == null || jsonObject.isJsonNull()) {
         return null;

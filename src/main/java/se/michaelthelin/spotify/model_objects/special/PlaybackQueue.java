@@ -18,7 +18,9 @@ import se.michaelthelin.spotify.model_objects.utils.PlaylistItemFactory;
  */
 @JsonDeserialize(builder = CurrentlyPlaying.Builder.class)
 public class PlaybackQueue extends AbstractModelObject {
+  /** The currently playing track or episode. */
   private final IPlaylistItem currentlyPlaying;
+  /** The tracks or episodes in the queue. */
   private final List<IPlaylistItem> queue;
 
   private PlaybackQueue(final Builder builder) {
@@ -62,9 +64,15 @@ public class PlaybackQueue extends AbstractModelObject {
    * Builder class for building {@link PlaybackQueue} instances.
    */
   public static final class Builder extends AbstractModelObject.Builder {
-
     private IPlaylistItem currentlyPlaying;
     private List<IPlaylistItem> queue;
+
+    /**
+     * Default constructor.
+     */
+    public Builder() {
+      super();
+    }
 
     /**
      * The item representing the user's currently playing item setter.
@@ -98,6 +106,14 @@ public class PlaybackQueue extends AbstractModelObject {
    * JsonUtil class for building {@link PlaybackQueue} instances.
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<PlaybackQueue> {
+
+    /**
+     * Default constructor.
+     */
+    public JsonUtil() {
+      super();
+    }
+
     public PlaybackQueue createModelObject(JsonObject jsonObject) {
       if (jsonObject == null || jsonObject.isJsonNull()) {
         return null;

@@ -14,6 +14,7 @@ import se.michaelthelin.spotify.model_objects.AbstractModelObject;
  */
 @JsonDeserialize(builder = Restrictions.Builder.class)
 public class Restrictions extends AbstractModelObject {
+  /** The reason for the restriction. */
   private final String reason;
 
   private Restrictions(final Builder builder) {
@@ -48,6 +49,13 @@ public class Restrictions extends AbstractModelObject {
     private String reason;
 
     /**
+     * Default constructor.
+     */
+    public Builder() {
+      super();
+    }
+
+    /**
      * The restriction reason setter.
      *
      * @param reason The track restriction reason.
@@ -68,6 +76,14 @@ public class Restrictions extends AbstractModelObject {
    * JSonUtil class for building {@link Restrictions} instances.
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<Restrictions> {
+
+    /**
+     * Default constructor.
+     */
+    public JsonUtil() {
+      super();
+    }
+
     public Restrictions createModelObject(JsonObject jsonObject) {
       if (jsonObject == null || jsonObject.isJsonNull()) {
         return null;

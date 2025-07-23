@@ -15,11 +15,17 @@ import se.michaelthelin.spotify.requests.data.search.interfaces.ISearchModelObje
  */
 @JsonDeserialize(builder = SearchResult.Builder.class)
 public class SearchResult extends AbstractModelObject implements IArtistTrackModelObject, ISearchModelObject {
+  /** A paging object containing album search results. */
   private final Paging<AlbumSimplified> albums;
+  /** A paging object containing artist search results. */
   private final Paging<Artist> artists;
+  /** A paging object containing episode search results. */
   private final Paging<EpisodeSimplified> episodes;
+  /** A paging object containing playlist search results. */
   private final Paging<PlaylistSimplified> playlists;
+  /** A paging object containing show search results. */
   private final Paging<ShowSimplified> shows;
+  /** A paging object containing track search results. */
   private final Paging<Track> tracks;
 
   private SearchResult(final Builder builder) {
@@ -122,6 +128,13 @@ public class SearchResult extends AbstractModelObject implements IArtistTrackMod
     private Paging<Track> tracks;
 
     /**
+     * Default constructor.
+     */
+    public Builder() {
+      super();
+    }
+
+    /**
      * The albums setter.
      *
      * @param albums Albums from the search result.
@@ -197,6 +210,14 @@ public class SearchResult extends AbstractModelObject implements IArtistTrackMod
    * JsonUtil class for building {@link SearchResult} instances.
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<SearchResult> {
+
+    /**
+     * Default constructor.
+     */
+    public JsonUtil() {
+      super();
+    }
+
     public SearchResult createModelObject(JsonObject jsonObject) {
       if (jsonObject == null || jsonObject.isJsonNull()) {
         return null;

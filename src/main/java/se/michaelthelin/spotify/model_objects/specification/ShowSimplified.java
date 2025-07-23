@@ -17,22 +17,42 @@ import java.util.Objects;
  */
 @JsonDeserialize(builder = ShowSimplified.Builder.class)
 public class ShowSimplified extends AbstractModelObject implements ISearchModelObject {
+  /** A list of the countries in which the show can be played. */
   private final CountryCode[] availableMarkets;
+  /** The copyright statements of the show. */
   private final Copyright[] copyrights;
+  /** A description of the show. */
   private final String description;
+  /** Whether the show is explicit. */
   private final Boolean explicit;
+  /** External URLs for the show. */
   private final ExternalUrl externalUrls;
+  /** The Spotify Web API endpoint URL for the show. */
   private final String href;
+  /** The Spotify ID for the show. */
   private final String id;
+  /** Images for the show. */
   private final Image[] images;
+  /** Whether the show is externally hosted. */
   private final Boolean isExternallyHosted;
+  /** The languages spoken in the show. */
   private final String[] languages;
+  /** The media type of the show. */
   private final String mediaType;
+  /** The name of the show. */
   private final String name;
+  /** The publisher of the show. */
   private final String publisher;
+  /** The object type. */
   private final ModelObjectType type;
+  /** The Spotify URI for the show. */
   private final String uri;
 
+  /**
+   * Creates a new ShowSimplified object with the specified builder.
+   *
+   * @param builder the builder containing simplified show configuration
+   */
   public ShowSimplified(Builder builder) {
     super(builder);
     this.availableMarkets = builder.availableMarkets;
@@ -225,6 +245,13 @@ public class ShowSimplified extends AbstractModelObject implements ISearchModelO
     private String uri;
 
     /**
+     * Default constructor.
+     */
+    public Builder() {
+      super();
+    }
+
+    /**
      * Set the available markets of the show to be built.
      *
      * @param availableMarkets A list of the countries in which the show can be played, identified by their
@@ -400,6 +427,14 @@ public class ShowSimplified extends AbstractModelObject implements ISearchModelO
    * JsonUtil class for building {@link ShowSimplified} instances.
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<ShowSimplified> {
+
+    /**
+     * Default constructor.
+     */
+    public JsonUtil() {
+      super();
+    }
+
     @Override
     public ShowSimplified createModelObject(JsonObject jsonObject) {
       if (jsonObject == null || jsonObject.isJsonNull()) {

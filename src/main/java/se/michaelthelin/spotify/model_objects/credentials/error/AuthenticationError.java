@@ -13,7 +13,9 @@ import java.util.Objects;
  */
 @JsonDeserialize(builder = AuthenticationError.Builder.class)
 public class AuthenticationError extends AbstractModelObject {
+  /** The error code returned by the authentication server. */
   private final String error;
+  /** A human-readable description of the error. */
   private final String error_description;
 
   private AuthenticationError(final Builder builder) {
@@ -61,6 +63,13 @@ public class AuthenticationError extends AbstractModelObject {
     private String error_description;
 
     /**
+     * Default constructor.
+     */
+    public Builder() {
+      super();
+    }
+
+    /**
      * The error setter.
      *
      * @param error A high level description of the error as specified in RFC 6749 Section 5.2.
@@ -92,6 +101,14 @@ public class AuthenticationError extends AbstractModelObject {
    * JsonUtil class for building {@link AuthenticationError} instances.
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<AuthenticationError> {
+
+    /**
+     * Default constructor.
+     */
+    public JsonUtil() {
+      super();
+    }
+
     public AuthenticationError createModelObject(JsonObject jsonObject) {
       if (jsonObject == null || jsonObject.isJsonNull()) {
         return null;

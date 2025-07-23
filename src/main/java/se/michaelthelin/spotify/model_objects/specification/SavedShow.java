@@ -16,7 +16,9 @@ import java.util.logging.Level;
  */
 @JsonDeserialize(builder = SavedShow.Builder.class)
 public class SavedShow extends AbstractModelObject {
+  /** The date and time the show was saved. */
   private final Date addedAt;
+  /** Information about the show. */
   private final ShowSimplified show;
 
   private SavedShow(final Builder builder) {
@@ -61,6 +63,13 @@ public class SavedShow extends AbstractModelObject {
     private ShowSimplified show;
 
     /**
+     * Default constructor.
+     */
+    public Builder() {
+      super();
+    }
+
+    /**
      * Set the "added at" date of the saved show to be built.
      *
      * @param addedAt The date and time the show was saved.
@@ -92,6 +101,14 @@ public class SavedShow extends AbstractModelObject {
    * JsonUtil class for building {@link SavedShow} instances.
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<SavedShow> {
+
+    /**
+     * Default constructor.
+     */
+    public JsonUtil() {
+      super();
+    }
+
     @Override
     public SavedShow createModelObject(JsonObject jsonObject) {
       if (jsonObject == null || jsonObject.isJsonNull()) {

@@ -13,10 +13,15 @@ import java.util.Objects;
  */
 @JsonDeserialize(builder = AuthorizationCodeCredentials.Builder.class)
 public class AuthorizationCodeCredentials extends AbstractModelObject {
+  /** The access token used for making authenticated requests. */
   private final String accessToken;
+  /** The type of token, typically "Bearer". */
   private final String tokenType;
+  /** The scopes associated with this token. */
   private final String scope;
+  /** The time in seconds until the access token expires. */
   private final Integer expiresIn;
+  /** The refresh token used to obtain new access tokens. */
   private final String refreshToken;
 
   private AuthorizationCodeCredentials(final Builder builder) {
@@ -99,6 +104,13 @@ public class AuthorizationCodeCredentials extends AbstractModelObject {
     private String refreshToken;
 
     /**
+     * Default constructor.
+     */
+    public Builder() {
+      super();
+    }
+
+    /**
      * The access token setter.
      *
      * @param accessToken An access token that can be provided in subsequent calls,
@@ -164,6 +176,14 @@ public class AuthorizationCodeCredentials extends AbstractModelObject {
    * JsonUtil class for building {@link AuthorizationCodeCredentials} instances.
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<AuthorizationCodeCredentials> {
+
+    /**
+     * Default constructor.
+     */
+    public JsonUtil() {
+      super();
+    }
+
     public AuthorizationCodeCredentials createModelObject(JsonObject jsonObject) {
       if (jsonObject == null || jsonObject.isJsonNull()) {
         return null;

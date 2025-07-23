@@ -12,7 +12,9 @@ import se.michaelthelin.spotify.model_objects.specification.PlaylistSimplified;
  */
 @JsonDeserialize(builder = FeaturedPlaylists.Builder.class)
 public class FeaturedPlaylists extends AbstractModelObject {
+  /** A message describing the featured playlists. */
   private final String message;
+  /** A paging object containing the featured playlists. */
   private final Paging<PlaylistSimplified> playlists;
 
   private FeaturedPlaylists(final Builder builder) {
@@ -59,6 +61,13 @@ public class FeaturedPlaylists extends AbstractModelObject {
     private Paging<PlaylistSimplified> playlists;
 
     /**
+     * Default constructor.
+     */
+    public Builder() {
+      super();
+    }
+
+    /**
      * Set the message, which normally would be displayed on the front page of the "browse" tab.
      *
      * @param message Message to be set.
@@ -90,6 +99,14 @@ public class FeaturedPlaylists extends AbstractModelObject {
    * JsonUtil class for building {@link FeaturedPlaylists} instances.
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<FeaturedPlaylists> {
+
+    /**
+     * Default constructor.
+     */
+    public JsonUtil() {
+      super();
+    }
+
     public FeaturedPlaylists createModelObject(JsonObject jsonObject) {
       if (jsonObject == null || jsonObject.isJsonNull()) {
         return null;

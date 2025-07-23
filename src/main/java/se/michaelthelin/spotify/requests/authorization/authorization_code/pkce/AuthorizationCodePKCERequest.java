@@ -37,8 +37,14 @@ public class AuthorizationCodePKCERequest extends AbstractRequest<AuthorizationC
     return new AuthorizationCodeCredentials.JsonUtil().createModelObject(postJson());
   }
 
+  /**
+   * Builder class for building an {@link AuthorizationCodePKCERequest}.
+   */
   public static final class Builder extends AbstractRequest.Builder<AuthorizationCodeCredentials, Builder> {
 
+    /**
+     * Default constructor.
+     */
     public Builder() {
       super();
     }

@@ -14,6 +14,7 @@ import java.util.Map;
  */
 @JsonDeserialize(builder = ExternalId.Builder.class)
 public class ExternalId extends AbstractModelObject {
+  /** Known external IDs for this object. */
   private final Map<String, String> externalIds;
 
   private ExternalId(final Builder builder) {
@@ -56,6 +57,13 @@ public class ExternalId extends AbstractModelObject {
     private Map<String, String> externalIds;
 
     /**
+     * Default constructor.
+     */
+    public Builder() {
+      super();
+    }
+
+    /**
      * External IDs setter.
      *
      * @param externalIds A {@link Map} of external IDs, containing external identifiers for the object.
@@ -77,6 +85,14 @@ public class ExternalId extends AbstractModelObject {
    */
   @SuppressWarnings("unchecked")
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<ExternalId> {
+
+    /**
+     * Default constructor.
+     */
+    public JsonUtil() {
+      super();
+    }
+
     public ExternalId createModelObject(JsonObject jsonObject) {
       if (jsonObject == null || jsonObject.isJsonNull()) {
         return null;

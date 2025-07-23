@@ -72,6 +72,14 @@ public class SpotifyHttpRequestRetryStrategy implements HttpRequestRetryStrategy
    */
   private final Set<Integer> retriableCodes;
 
+  /**
+   * Protected constructor for creating a new SpotifyHttpRequestRetryStrategy.
+   *
+   * @param maxRetries         the maximum number of retries
+   * @param defaultRetryInterval the default retry interval
+   * @param clazzes           collection of exception classes that should trigger retries
+   * @param codes             collection of HTTP status codes that should trigger retries
+   */
   protected SpotifyHttpRequestRetryStrategy(
     final int maxRetries,
     final TimeValue defaultRetryInterval,
@@ -193,6 +201,12 @@ public class SpotifyHttpRequestRetryStrategy implements HttpRequestRetryStrategy
     return this.defaultRetryInterval;
   }
 
+  /**
+   * Determines if the given HTTP request should be handled as idempotent.
+   *
+   * @param request the HTTP request to check
+   * @return true if the request should be treated as idempotent, false otherwise
+   */
   protected boolean handleAsIdempotent(final HttpRequest request) {
     return Method.isIdempotent(request.getMethod());
   }

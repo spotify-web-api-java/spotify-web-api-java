@@ -17,12 +17,19 @@ import se.michaelthelin.spotify.model_objects.specification.Track;
  */
 @JsonDeserialize(builder = CurrentlyPlaying.Builder.class)
 public class CurrentlyPlaying extends AbstractModelObject {
+  /** The context in which the track is being played. */
   private final Context context;
+  /** Unix timestamp when the request was made. */
   private final Long timestamp;
+  /** The progress into the currently playing track or episode in milliseconds. */
   private final Integer progress_ms;
+  /** If something is currently playing, return true. */
   private final Boolean is_playing;
+  /** The currently playing track or episode. */
   private final IPlaylistItem item;
+  /** The object type of the currently playing item. */
   private final CurrentlyPlayingType currentlyPlayingType;
+  /** Allows to update the user interface based on which playback actions are available. */
   private final Actions actions;
 
   private CurrentlyPlaying(final Builder builder) {
@@ -125,6 +132,13 @@ public class CurrentlyPlaying extends AbstractModelObject {
     private Actions actions;
 
     /**
+     * Default constructor.
+     */
+    public Builder() {
+      super();
+    }
+
+    /**
      * The playing context setter.
      *
      * @param context The context the track was played from. Can be {@code null}.
@@ -211,6 +225,14 @@ public class CurrentlyPlaying extends AbstractModelObject {
    * JsonUtil class for building {@link CurrentlyPlaying} instances.
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<CurrentlyPlaying> {
+
+    /**
+     * Default constructor.
+     */
+    public JsonUtil() {
+      super();
+    }
+
     public CurrentlyPlaying createModelObject(JsonObject jsonObject) {
       if (jsonObject == null || jsonObject.isJsonNull()) {
         return null;

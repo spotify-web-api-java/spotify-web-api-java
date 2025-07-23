@@ -15,7 +15,9 @@ import java.util.logging.Level;
  */
 @JsonDeserialize(builder = SavedTrack.Builder.class)
 public class SavedTrack extends AbstractModelObject {
+  /** The date and time the track was saved. */
   private final Date addedAt;
+  /** Information about the track. */
   private final Track track;
 
   private SavedTrack(final Builder builder) {
@@ -61,6 +63,13 @@ public class SavedTrack extends AbstractModelObject {
     private Track track;
 
     /**
+     * Default constructor.
+     */
+    public Builder() {
+      super();
+    }
+
+    /**
      * Set the "added at" date of the saved track to be built.
      *
      * @param addedAt The date and time the track was saved.
@@ -92,6 +101,14 @@ public class SavedTrack extends AbstractModelObject {
    * JsonUtil class for building {@link SavedTrack} instances.
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<SavedTrack> {
+
+    /**
+     * Default constructor.
+     */
+    public JsonUtil() {
+      super();
+    }
+
     public SavedTrack createModelObject(JsonObject jsonObject) {
       if (jsonObject == null || jsonObject.isJsonNull()) {
         return null;

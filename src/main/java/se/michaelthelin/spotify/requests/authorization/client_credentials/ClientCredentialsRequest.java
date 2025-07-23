@@ -18,6 +18,11 @@ import java.io.IOException;
 @JsonDeserialize(builder = ClientCredentialsRequest.Builder.class)
 public class ClientCredentialsRequest extends AbstractAuthorizationRequest<ClientCredentials> {
 
+  /**
+   * Creates a new client credentials request with the specified builder.
+   *
+   * @param builder the builder containing request configuration
+   */
   public ClientCredentialsRequest(Builder builder) {
     super(builder);
   }
@@ -41,6 +46,12 @@ public class ClientCredentialsRequest extends AbstractAuthorizationRequest<Clien
    */
   public static final class Builder extends AbstractAuthorizationRequest.Builder<ClientCredentials, Builder> {
 
+    /**
+     * Creates a new builder for a client credentials request.
+     *
+     * @param clientId the client ID of the Spotify application
+     * @param clientSecret the client secret of the Spotify application
+     */
     public Builder(final String clientId, final String clientSecret) {
       super(clientId, clientSecret);
     }
