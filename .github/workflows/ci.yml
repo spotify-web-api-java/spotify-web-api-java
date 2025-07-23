@@ -33,6 +33,8 @@ jobs:
     needs: prepare_jobs
     if: needs.prepare_jobs.outputs.pr_found == 'false' || github.event_name == 'pull_request'
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     strategy:
       matrix:
         java: ["11", "21"]
