@@ -350,6 +350,11 @@ public class SpotifyHttpManager implements IHttpManager {
       case HttpStatus.SC_SERVICE_UNAVAILABLE:
         throw new ServiceUnavailableException(errorMessage);
       default:
+        if (httpResponse.getCode() >= 400 && httpResponse.getCode() < 500) {
+          throw new BadRequestException(errorMessage);
+        } else if (httpResponse.getCode() >= 500) {
+          throw new InternalServerErrorException(errorMessage);
+        }
         return responseBody;
     }
   }
