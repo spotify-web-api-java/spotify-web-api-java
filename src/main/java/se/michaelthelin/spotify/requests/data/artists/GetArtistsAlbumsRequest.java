@@ -75,11 +75,28 @@ public class GetArtistsAlbumsRequest extends AbstractDataRequest<Paging<AlbumSim
      *                   supplied, all album types will be returned. Valid values are: {@code album}, {@code single},
      *                   {@code appears_on} and {@code compilation}.
      * @return A {@link GetArtistsAlbumsRequest.Builder}.
+     * @deprecated Use {@link #include_groups(String)} instead.
      */
+    @Deprecated
     public Builder album_type(final String album_type) {
       assert (album_type != null);
       assert (album_type.matches("((^|,)(single|album|appears_on|compilation))+$"));
       return setQueryParameter("album_type", album_type);
+    }
+
+    /**
+     * The include groups filter setter.
+     *
+     * @param include_groups Optional. A comma-separated list of keywords that will be used to filter the response. If not
+     *                   supplied, all album types will be returned. Valid values are: {@code album}, {@code single},
+     *                   {@code appears_on} and {@code compilation}.
+     * @return A {@link GetArtistsAlbumsRequest.Builder}.
+     * @see <a href="https://developer.spotify.com/documentation/web-api/reference/get-an-artists-albums">Spotify Web API References / Get Artist's Albums</a>
+     */
+    public Builder include_groups(final String include_groups) {
+      assert (include_groups != null);
+      assert (include_groups.matches("((^|,)(single|album|appears_on|compilation))+$"));
+      return setQueryParameter("include_groups", include_groups);
     }
 
     /**
