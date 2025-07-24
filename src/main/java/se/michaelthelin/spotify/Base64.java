@@ -8,6 +8,14 @@ import java.util.Arrays;
  * Due to Java version support issues with DataTypeConverter (&lt;=1.7) class and Base64 (&gt;=1.8) class.
  */
 public class Base64 {
+
+  /**
+   * Default constructor.
+   */
+  public Base64() {
+    super();
+  }
+
   private static final char[] ENCODE_TABLE_BASE = {
     'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P',
     'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f',
@@ -39,6 +47,12 @@ public class Base64 {
   private static final int SHIFT_16 = 16;
   private static final int SHIFT_18 = 18;
 
+  /**
+   * Encodes a byte array to a Base64 string.
+   *
+   * @param data the byte array to encode
+   * @return the Base64 encoded string
+   */
   public static String encode(byte[] data) {
     StringBuilder buffer = new StringBuilder();
     int pad = 0;
@@ -69,6 +83,12 @@ public class Base64 {
     return buffer.toString();
   }
 
+  /**
+   * Decodes a Base64 string to a byte array.
+   *
+   * @param data the Base64 string to decode
+   * @return the decoded byte array
+   */
   public static byte[] decode(String data) {
     byte[] bytes = data.getBytes();
     ByteArrayOutputStream buffer = new ByteArrayOutputStream();

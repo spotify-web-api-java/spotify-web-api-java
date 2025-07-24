@@ -8,10 +8,15 @@ import java.util.Map;
  */
 public enum ProductType {
 
+  /** Basic desktop Spotify product. */
   BASIC_DESKTOP("basic-desktop"),
+  /** Daypass Spotify product. */
   DAYPASS("daypass"),
+  /** Free Spotify product. */
   FREE("free"),
+  /** Open Spotify product. */
   OPEN("open"),
+  /** Premium Spotify product. */
   PREMIUM("premium");
 
   private static final Map<String, ProductType> map = new HashMap<>();
@@ -22,12 +27,19 @@ public enum ProductType {
     }
   }
 
+  /** The product type identifier. */
   public final String type;
 
   ProductType(final String type) {
     this.type = type;
   }
 
+  /**
+   * Get the {@link ProductType} associated with the given type string.
+   *
+   * @param type the product type string
+   * @return the corresponding {@link ProductType}, or null if not found
+   */
   public static ProductType keyOf(String type) {
     return map.get(type);
   }

@@ -17,11 +17,17 @@ import java.util.Arrays;
  */
 @JsonDeserialize(builder = PagingCursorbased.Builder.class)
 public class PagingCursorbased<T> extends AbstractModelObject {
+  /** The Spotify Web API endpoint URL. */
   private final String href;
+  /** Array of items in the paging object. */
   private final T[] items;
+  /** Maximum number of items in the response. */
   private final Integer limit;
+  /** URL to the next page of items. */
   private final String next;
+  /** Cursors for cursor-based pagination. */
   private final Cursor[] cursors;
+  /** Total number of items available to return. */
   private final Integer total;
 
   private PagingCursorbased(final PagingCursorbased.Builder<T> builder) {
@@ -114,6 +120,13 @@ public class PagingCursorbased<T> extends AbstractModelObject {
     private Integer total;
 
     /**
+     * Default constructor.
+     */
+    public Builder() {
+      super();
+    }
+
+    /**
      * The href setter.
      *
      * @param href A link to the Web API endpoint returning the full result of the request.
@@ -192,6 +205,14 @@ public class PagingCursorbased<T> extends AbstractModelObject {
    */
   @SuppressWarnings("unchecked")
   public static final class JsonUtil<X> extends AbstractModelObject.JsonUtil<PagingCursorbased<X>> {
+
+    /**
+     * Default constructor.
+     */
+    public JsonUtil() {
+      super();
+    }
+
     public PagingCursorbased<X> createModelObject(JsonObject jsonObject) {
       if (jsonObject == null || jsonObject.isJsonNull()) {
         return null;

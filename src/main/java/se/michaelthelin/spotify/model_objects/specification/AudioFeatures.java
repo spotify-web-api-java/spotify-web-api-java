@@ -15,23 +15,41 @@ import java.util.Objects;
  */
 @JsonDeserialize(builder = AudioFeatures.Builder.class)
 public class AudioFeatures extends AbstractModelObject {
+  /** A confidence measure from 0.0 to 1.0 of whether the track is acoustic. */
   private final Float acousticness;
+  /** A URL to access the full audio analysis of this track. */
   private final String analysisUrl;
+  /** Danceability describes how suitable a track is for dancing. */
   private final Float danceability;
+  /** The duration of the track in milliseconds. */
   private final Integer durationMs;
+  /** Energy is a measure from 0.0 to 1.0 and represents a perceptual measure of intensity and power. */
   private final Float energy;
+  /** The Spotify ID for the track. */
   private final String id;
+  /** Predicts whether a track contains no vocals. */
   private final Float instrumentalness;
+  /** The key the track is in (0 = C, 1 = C♯/D♭, 2 = D, etc.). */
   private final Integer key;
+  /** Detects the presence of an audience in the recording. */
   private final Float liveness;
+  /** The overall loudness of a track in decibels (dB). */
   private final Float loudness;
+  /** Mode indicates the modality (major or minor) of a track. */
   private final Modality mode;
+  /** Speechiness detects the presence of spoken words in a track. */
   private final Float speechiness;
+  /** The overall estimated tempo of a track in beats per minute (BPM). */
   private final Float tempo;
+  /** An estimated overall time signature of a track. */
   private final Integer timeSignature;
+  /** A link to the Web API endpoint providing full details of the track. */
   private final String trackHref;
+  /** The object type. */
   private final ModelObjectType type;
+  /** The Spotify URI for the track. */
   private final String uri;
+  /** A measure from 0.0 to 1.0 describing the musical positiveness conveyed by a track. */
   private final Float valence;
 
   private AudioFeatures(final Builder builder) {
@@ -277,6 +295,13 @@ public class AudioFeatures extends AbstractModelObject {
     private Float valence;
 
     /**
+     * Default constructor.
+     */
+    public Builder() {
+      super();
+    }
+
+    /**
      * Set the acousticness of the audio features object to be built.
      *
      * @param acousticness Acousticness value between 0.0 and 1.0.
@@ -485,6 +510,14 @@ public class AudioFeatures extends AbstractModelObject {
    * JsonUtil class for building {@link AudioFeatures} instances.
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<AudioFeatures> {
+
+    /**
+     * Default constructor.
+     */
+    public JsonUtil() {
+      super();
+    }
+
     public AudioFeatures createModelObject(JsonObject jsonObject) {
       if (jsonObject == null || jsonObject.isJsonNull()) {
         return null;

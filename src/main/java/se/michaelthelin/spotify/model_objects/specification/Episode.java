@@ -17,23 +17,41 @@ import java.util.Objects;
  */
 @JsonDeserialize(builder = Episode.Builder.class)
 public class Episode extends AbstractModelObject implements IPlaylistItem {
+  /** The audio preview URL for the episode. */
   private final String audioPreviewUrl;
+  /** The description of the episode. */
   private final String description;
+  /** The duration of the episode in milliseconds. */
   private final Integer durationMs;
+  /** Whether the episode is explicit. */
   private final Boolean explicit;
+  /** External URLs for the episode. */
   private final ExternalUrl externalUrls;
+  /** The Spotify Web API endpoint URL for the episode. */
   private final String href;
+  /** The Spotify ID for the episode. */
   private final String id;
+  /** Images for the episode. */
   private final Image[] images;
+  /** Whether the episode is externally hosted. */
   private final Boolean isExternallyHosted;
+  /** Whether the episode is playable. */
   private final Boolean isPlayable;
+  /** The languages spoken in the episode. */
   private final String[] languages;
+  /** The name of the episode. */
   private final String name;
+  /** The release date of the episode. */
   private final String releaseDate;
+  /** The precision of the release date. */
   private final ReleaseDatePrecision releaseDatePrecision;
+  /** Resume point for the episode. */
   private final ResumePoint resumePoint;
+  /** The show the episode belongs to. */
   private final ShowSimplified show;
+  /** The object type. */
   private final ModelObjectType type;
+  /** The Spotify URI for the episode. */
   private final String uri;
 
   private Episode(final Builder builder) {
@@ -268,6 +286,13 @@ public class Episode extends AbstractModelObject implements IPlaylistItem {
     private String uri;
 
     /**
+     * Default constructor.
+     */
+    public Builder() {
+      super();
+    }
+
+    /**
      * Set the URL to a audio preview for the episode to be built.
      *
      * @param audioPreviewUrl The URL to an audio preview.
@@ -475,6 +500,14 @@ public class Episode extends AbstractModelObject implements IPlaylistItem {
    * JsonUtil class for building {@link Episode} instances.
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<Episode> {
+
+    /**
+     * Default constructor.
+     */
+    public JsonUtil() {
+      super();
+    }
+
     @Override
     public Episode createModelObject(JsonObject jsonObject) {
       if (jsonObject == null || jsonObject.isJsonNull()) {

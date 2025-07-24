@@ -13,11 +13,17 @@ import java.util.Objects;
  */
 @JsonDeserialize(builder = ArtistSimplified.Builder.class)
 public class ArtistSimplified extends AbstractModelObject {
+  /** Known external URLs for this artist. */
   private final ExternalUrl externalUrls;
+  /** A link to the Web API endpoint providing full details of the artist. */
   private final String href;
+  /** The Spotify ID for the artist. */
   private final String id;
+  /** The name of the artist. */
   private final String name;
+  /** The object type: "artist". */
   private final ModelObjectType type;
+  /** The Spotify URI for the artist. */
   private final String uri;
 
   private ArtistSimplified(final Builder builder) {
@@ -109,6 +115,13 @@ public class ArtistSimplified extends AbstractModelObject {
     private String uri;
 
     /**
+     * Default constructor.
+     */
+    public Builder() {
+      super();
+    }
+
+    /**
      * Set external URLs of the artist to be built.
      *
      * @param externalUrls {@link ExternalUrl} object.
@@ -185,6 +198,14 @@ public class ArtistSimplified extends AbstractModelObject {
    * JsonUtil class for building {@link ArtistSimplified} instances.
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<ArtistSimplified> {
+
+    /**
+     * Default constructor.
+     */
+    public JsonUtil() {
+      super();
+    }
+
     public ArtistSimplified createModelObject(JsonObject jsonObject) {
       if (jsonObject == null || jsonObject.isJsonNull()) {
         return null;

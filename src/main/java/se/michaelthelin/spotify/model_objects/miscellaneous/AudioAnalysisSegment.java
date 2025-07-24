@@ -14,12 +14,19 @@ import java.util.Arrays;
  */
 @JsonDeserialize(builder = AudioAnalysisSegment.Builder.class)
 public class AudioAnalysisSegment extends AbstractModelObject {
+  /** The measure data for this segment. */
   private final AudioAnalysisMeasure measure;
+  /** The onset loudness of the segment in decibels (dB). */
   private final Float loudnessStart;
+  /** The time at which the segment reaches maximum loudness. */
   private final Float loudnessMaxTime;
+  /** The peak loudness of the segment in decibels (dB). */
   private final Float loudnessMax;
+  /** The offset loudness of the segment in decibels (dB). */
   private final Float loudnessEnd;
+  /** Pitch content is given by a vector of 12 float values. */
   private final float[] pitches;
+  /** Timbre is the quality of a musical note or sound. */
   private final float[] timbre;
 
   private AudioAnalysisSegment(final Builder builder) {
@@ -133,6 +140,13 @@ public class AudioAnalysisSegment extends AbstractModelObject {
     private float[] timbre;
 
     /**
+     * Default constructor.
+     */
+    public Builder() {
+      super();
+    }
+
+    /**
      * The measure setter.
      *
      * @param measure The measure of the audio analysis segment object.
@@ -219,6 +233,14 @@ public class AudioAnalysisSegment extends AbstractModelObject {
    * JsonUtil class for building {@link AudioAnalysisSegment} instances.
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<AudioAnalysisSegment> {
+
+    /**
+     * Default constructor.
+     */
+    public JsonUtil() {
+      super();
+    }
+
     public AudioAnalysisSegment createModelObject(JsonObject jsonObject) {
       if (jsonObject == null || jsonObject.isJsonNull()) {
         return null;

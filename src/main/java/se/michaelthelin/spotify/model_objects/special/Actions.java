@@ -12,8 +12,14 @@ import se.michaelthelin.spotify.model_objects.specification.Disallows;
  */
 @JsonDeserialize(builder = Actions.Builder.class)
 public class Actions extends AbstractModelObject {
+  /** Actions that are disallowed in the current context. */
   private final Disallows disallows;
 
+  /**
+   * Create an Actions object.
+   *
+   * @param builder The builder instance.
+   */
   public Actions(Builder builder) {
     super(builder);
     this.disallows = builder.disallows;
@@ -45,6 +51,13 @@ public class Actions extends AbstractModelObject {
     private Disallows disallows;
 
     /**
+     * Default constructor.
+     */
+    public Builder() {
+      super();
+    }
+
+    /**
      * Set the Disallows object of the Actions object to be built.
      *
      * @param disallows The {@link Disallows} object.
@@ -65,6 +78,14 @@ public class Actions extends AbstractModelObject {
    * JsonUtil class for building {@link Actions} instances.
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<Actions> {
+
+    /**
+     * Default constructor.
+     */
+    public JsonUtil() {
+      super();
+    }
+
     @Override
     public Actions createModelObject(JsonObject jsonObject) {
       if (jsonObject == null || jsonObject.isJsonNull()) {

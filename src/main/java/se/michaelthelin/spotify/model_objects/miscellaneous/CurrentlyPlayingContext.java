@@ -18,15 +18,25 @@ import se.michaelthelin.spotify.model_objects.specification.Track;
  */
 @JsonDeserialize(builder = CurrentlyPlayingContext.Builder.class)
 public class CurrentlyPlayingContext extends AbstractModelObject {
+  /** The device that is currently active. */
   private final Device device;
+  /** The repeat state: off, track, context. */
   private final String repeat_state;
+  /** If shuffle is on or off. */
   private final Boolean shuffle_state;
+  /** The context in which the track is being played. */
   private final Context context;
+  /** Unix timestamp when the request was made. */
   private final Long timestamp;
+  /** The progress into the currently playing track or episode in milliseconds. */
   private final Integer progress_ms;
+  /** If something is currently playing, return true. */
   private final Boolean is_playing;
+  /** The currently playing track or episode. */
   private final IPlaylistItem item;
+  /** The object type of the currently playing item. */
   private final CurrentlyPlayingType currentlyPlayingType;
+  /** Allows to update the user interface based on which playback actions are available. */
   private final Actions actions;
 
   private CurrentlyPlayingContext(final Builder builder) {
@@ -163,6 +173,13 @@ public class CurrentlyPlayingContext extends AbstractModelObject {
     private Actions actions;
 
     /**
+     * Default constructor.
+     */
+    public Builder() {
+      super();
+    }
+
+    /**
      * The active device setter.
      *
      * @param device The device that is currently active.
@@ -282,6 +299,14 @@ public class CurrentlyPlayingContext extends AbstractModelObject {
    * JsonUtil class for building {@link CurrentlyPlayingContext} instances.
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<CurrentlyPlayingContext> {
+
+    /**
+     * Default constructor.
+     */
+    public JsonUtil() {
+      super();
+    }
+
     public CurrentlyPlayingContext createModelObject(JsonObject jsonObject) {
       if (jsonObject == null || jsonObject.isJsonNull()) {
         return null;

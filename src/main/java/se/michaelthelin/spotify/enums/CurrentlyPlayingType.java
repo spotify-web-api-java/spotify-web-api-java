@@ -8,9 +8,13 @@ import java.util.Map;
  */
 public enum CurrentlyPlayingType {
 
+  /** A music track. */
   TRACK("track"),
+  /** A podcast episode. */
   EPISODE("episode"),
+  /** An advertisement. */
   AD("ad"),
+  /** Unknown or unsupported content type. */
   UNKNOWN("unknown");
 
   private static final Map<String, CurrentlyPlayingType> map = new HashMap<>();
@@ -28,6 +32,12 @@ public enum CurrentlyPlayingType {
     this.type = type;
   }
 
+  /**
+   * Get the {@link CurrentlyPlayingType} associated with the given type string.
+   *
+   * @param type the currently playing type string
+   * @return the corresponding {@link CurrentlyPlayingType}, or null if not found
+   */
   public static CurrentlyPlayingType keyOf(String type) {
     return map.get(type);
   }

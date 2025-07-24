@@ -12,7 +12,9 @@ import se.michaelthelin.spotify.model_objects.AbstractModelObject;
  */
 @JsonDeserialize(builder = Copyright.Builder.class)
 public class Copyright extends AbstractModelObject {
+  /** The copyright text for this content. */
   private final String text;
+  /** The type of copyright. */
   private final CopyrightType type;
 
   private Copyright(final Builder builder) {
@@ -58,6 +60,13 @@ public class Copyright extends AbstractModelObject {
     private CopyrightType type;
 
     /**
+     * Default constructor.
+     */
+    public Builder() {
+      super();
+    }
+
+    /**
      * The copyright text setter.
      *
      * @param text The copyright text for this album.
@@ -89,6 +98,14 @@ public class Copyright extends AbstractModelObject {
    * JsonUtil class for building {@link Copyright} instances.
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<Copyright> {
+
+    /**
+     * Default constructor.
+     */
+    public JsonUtil() {
+      super();
+    }
+
     public Copyright createModelObject(JsonObject jsonObject) {
       if (jsonObject == null || jsonObject.isJsonNull()) {
         return null;

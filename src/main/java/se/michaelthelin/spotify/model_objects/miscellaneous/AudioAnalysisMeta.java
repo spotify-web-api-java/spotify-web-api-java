@@ -10,12 +10,19 @@ import se.michaelthelin.spotify.model_objects.AbstractModelObject;
  */
 @JsonDeserialize(builder = AudioAnalysisMeta.Builder.class)
 public class AudioAnalysisMeta extends AbstractModelObject {
+  /** The version of the analyzer used. */
   private final String analyzerVersion;
+  /** The platform used for analysis. */
   private final String platform;
+  /** Detailed status of the analysis. */
   private final String detailedStatus;
+  /** The HTTP status code of the analysis. */
   private final Integer statusCode;
+  /** Timestamp when the analysis was performed. */
   private final Long timestamp;
+  /** Time taken to perform the analysis. */
   private final Float analysisTime;
+  /** The input process used for analysis. */
   private final String inputProcess;
 
   private AudioAnalysisMeta(final Builder builder) {
@@ -121,6 +128,13 @@ public class AudioAnalysisMeta extends AbstractModelObject {
     private String inputProcess;
 
     /**
+     * Default constructor.
+     */
+    public Builder() {
+      super();
+    }
+
+    /**
      * The Analyzer software version setter.
      *
      * @param analyzerVersion Analyzer software version.
@@ -207,6 +221,14 @@ public class AudioAnalysisMeta extends AbstractModelObject {
    * JsonUtil class for building {@link AudioAnalysisMeta} instances.
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<AudioAnalysisMeta> {
+
+    /**
+     * Default constructor.
+     */
+    public JsonUtil() {
+      super();
+    }
+
     public AudioAnalysisMeta createModelObject(JsonObject jsonObject) {
       if (jsonObject == null || jsonObject.isJsonNull()) {
         return null;

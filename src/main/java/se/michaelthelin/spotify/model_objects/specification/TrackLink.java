@@ -15,10 +15,15 @@ import se.michaelthelin.spotify.model_objects.AbstractModelObject;
  */
 @JsonDeserialize(builder = TrackLink.Builder.class)
 public class TrackLink extends AbstractModelObject {
+  /** External URLs for the track. */
   private final ExternalUrl externalUrls;
+  /** The Spotify Web API endpoint URL for the track. */
   private final String href;
+  /** The Spotify ID for the track. */
   private final String id;
+  /** The object type. */
   private final ModelObjectType type;
+  /** The Spotify URI for the track. */
   private final String uri;
 
   private TrackLink(final Builder builder) {
@@ -101,6 +106,13 @@ public class TrackLink extends AbstractModelObject {
     private String uri;
 
     /**
+     * Default constructor.
+     */
+    public Builder() {
+      super();
+    }
+
+    /**
      * Set external URLs of the track to be built.
      *
      * @param externalUrls Known external URLs for this track.
@@ -165,6 +177,14 @@ public class TrackLink extends AbstractModelObject {
    * JsonUtil class for building {@link TrackLink} instances.
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<TrackLink> {
+
+    /**
+     * Default constructor.
+     */
+    public JsonUtil() {
+      super();
+    }
+
     public TrackLink createModelObject(JsonObject jsonObject) {
       if (jsonObject == null || jsonObject.isJsonNull()) {
         return null;

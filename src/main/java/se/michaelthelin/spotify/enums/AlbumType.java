@@ -8,8 +8,11 @@ import java.util.Map;
  */
 public enum AlbumType {
 
+  /** Album type. */
   ALBUM("album"),
+  /** Compilation type. */
   COMPILATION("compilation"),
+  /** Single type. */
   SINGLE("single");
 
   private static final Map<String, AlbumType> map = new HashMap<>();
@@ -20,12 +23,19 @@ public enum AlbumType {
     }
   }
 
+  /** The album type string. */
   public final String type;
 
   AlbumType(final String type) {
     this.type = type;
   }
 
+  /**
+   * Get an AlbumType by its type string.
+   *
+   * @param type The album type string.
+   * @return The corresponding AlbumType or null if not found.
+   */
   public static AlbumType keyOf(String type) {
     return map.get(type);
   }

@@ -7,14 +7,28 @@ import org.apache.hc.core5.http.HttpException;
  */
 public class SpotifyWebApiException extends HttpException {
 
+  /**
+   * Creates a new SpotifyWebApiException with no detail message.
+   */
   public SpotifyWebApiException() {
     super();
   }
 
+  /**
+   * Creates a new SpotifyWebApiException with the specified detail message.
+   *
+   * @param message the detail message
+   */
   public SpotifyWebApiException(String message) {
     super(message);
   }
 
+  /**
+   * Creates a new SpotifyWebApiException with the specified detail message and cause.
+   *
+   * @param message the detail message
+   * @param cause   the cause of this exception
+   */
   public SpotifyWebApiException(String message, Throwable cause) {
     super(message, cause);
   }

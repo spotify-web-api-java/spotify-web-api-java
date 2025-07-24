@@ -20,17 +20,29 @@ import java.util.Objects;
  */
 @JsonDeserialize(builder = User.Builder.class)
 public class User extends AbstractModelObject {
+  /** The user's birthdate. */
   private final String birthdate;
+  /** The country of the user. */
   private final CountryCode country;
+  /** The name displayed on the user's profile. */
   private final String displayName;
+  /** The user's email address. */
   private final String email;
+  /** External URLs for the user. */
   private final ExternalUrl externalUrls;
+  /** Information about the followers of the user. */
   private final Followers followers;
+  /** The Spotify Web API endpoint URL for the user. */
   private final String href;
+  /** The Spotify user ID for the user. */
   private final String id;
+  /** The user's profile image. */
   private final Image[] images;
+  /** The user's Spotify subscription level. */
   private final ProductType product;
+  /** The object type. */
   private final ModelObjectType type;
+  /** The Spotify URI for the user. */
   private final String uri;
 
   private User(final Builder builder) {
@@ -207,6 +219,13 @@ public class User extends AbstractModelObject {
     private String uri;
 
     /**
+     * Default constructor.
+     */
+    public Builder() {
+      super();
+    }
+
+    /**
      * Set the birthday of the user object to be built.
      *
      * @param birthdate The user's date-of-birth.
@@ -349,6 +368,14 @@ public class User extends AbstractModelObject {
    * JsonUtil class for building {@link User} instances.
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<User> {
+
+    /**
+     * Default constructor.
+     */
+    public JsonUtil() {
+      super();
+    }
+
     public User createModelObject(JsonObject jsonObject) {
       if (jsonObject == null || jsonObject.isJsonNull()) {
         return null;

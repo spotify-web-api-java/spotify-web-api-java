@@ -8,14 +8,28 @@ import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
  */
 public class ServiceUnavailableException extends SpotifyWebApiException {
 
+  /**
+   * Constructs a new ServiceUnavailableException with no detail message.
+   */
   public ServiceUnavailableException() {
     super();
   }
 
+  /**
+   * Constructs a new ServiceUnavailableException with the specified detail message.
+   *
+   * @param message the detail message
+   */
   public ServiceUnavailableException(String message) {
     super(message);
   }
 
+  /**
+   * Constructs a new ServiceUnavailableException with the specified detail message and cause.
+   *
+   * @param message the detail message
+   * @param cause the cause of this exception
+   */
   public ServiceUnavailableException(String message, Throwable cause) {
     super(message, cause);
   }

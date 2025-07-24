@@ -11,11 +11,17 @@ import se.michaelthelin.spotify.model_objects.AbstractModelObject;
  */
 @JsonDeserialize(builder = RecommendationsSeed.Builder.class)
 public class RecommendationsSeed extends AbstractModelObject {
+  /** The number of tracks available after min and max filters have been applied. */
   private final Integer afterFilteringSize;
+  /** The number of tracks available after relinking for regional availability. */
   private final Integer afterRelinkingSize;
+  /** The href for the seed. */
   private final String href;
+  /** The ID used to select this seed. */
   private final String id;
+  /** The number of recommended tracks available for this seed. */
   private final Integer initialPoolSize;
+  /** The object type. */
   private final ModelObjectType type;
 
   private RecommendationsSeed(final Builder builder) {
@@ -108,6 +114,13 @@ public class RecommendationsSeed extends AbstractModelObject {
     private ModelObjectType type;
 
     /**
+     * Default constructor.
+     */
+    public Builder() {
+      super();
+    }
+
+    /**
      * The after filtering size setter.
      *
      * @param afterFilteringSize The number of tracks available after {@code min_*} and {@code max_*} filters have been
@@ -187,6 +200,14 @@ public class RecommendationsSeed extends AbstractModelObject {
    * JsonUtil class for building {@link RecommendationsSeed} instances.
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<RecommendationsSeed> {
+
+    /**
+     * Default constructor.
+     */
+    public JsonUtil() {
+      super();
+    }
+
     public RecommendationsSeed createModelObject(JsonObject jsonObject) {
       if (jsonObject == null || jsonObject.isJsonNull()) {
         return null;

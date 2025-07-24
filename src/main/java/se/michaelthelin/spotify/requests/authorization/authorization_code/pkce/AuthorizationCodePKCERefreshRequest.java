@@ -42,6 +42,9 @@ public class AuthorizationCodePKCERefreshRequest extends AbstractRequest<Authori
    */
   public static final class Builder extends AbstractRequest.Builder<AuthorizationCodeCredentials, Builder> {
 
+    /**
+     * Default constructor.
+     */
     public Builder() {
       super();
     }

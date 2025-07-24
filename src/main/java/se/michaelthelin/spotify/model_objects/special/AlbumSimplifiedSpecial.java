@@ -26,18 +26,31 @@ import java.util.Objects;
  */
 @JsonDeserialize(builder = AlbumSimplifiedSpecial.Builder.class)
 public class AlbumSimplifiedSpecial extends AbstractModelObject implements ISearchModelObject {
+  /** The type of the album. */
   private final AlbumType albumType;
+  /** The artists who performed the album. */
   private final ArtistSimplified[] artists;
+  /** The markets in which the album is available. */
   private final CountryCode[] availableMarkets;
+  /** Known external URLs for this album. */
   private final ExternalUrl externalUrls;
+  /** A link to the Web API endpoint providing full details of the album. */
   private final String href;
+  /** The Spotify ID for the album. */
   private final String id;
+  /** The cover art for the album in various sizes. */
   private final Image[] images;
+  /** The name of the album. */
   private final String name;
+  /** The date the album was first released. */
   private final String releaseDate;
+  /** The precision with which release_date value is known. */
   private final ReleaseDatePrecision releaseDatePrecision;
+  /** The number of tracks in the album. */
   private final Integer totalTracks;
+  /** The object type: "album". */
   private final ModelObjectType type;
+  /** The Spotify URI for the album. */
   private final String uri;
 
   private AlbumSimplifiedSpecial(final Builder builder) {
@@ -195,7 +208,6 @@ public class AlbumSimplifiedSpecial extends AbstractModelObject implements ISear
    * Builder class for building {@link AlbumSimplifiedSpecial} instances.
    */
   public static final class Builder extends AbstractModelObject.Builder {
-
     private AlbumType albumType;
     private ArtistSimplified[] artists;
     private CountryCode[] availableMarkets;
@@ -209,6 +221,13 @@ public class AlbumSimplifiedSpecial extends AbstractModelObject implements ISear
     private Integer totalTracks;
     private ModelObjectType type;
     private String uri;
+
+    /**
+     * Default constructor.
+     */
+    public Builder() {
+      super();
+    }
 
     /**
      * Set the type of the album to be built.
@@ -366,6 +385,14 @@ public class AlbumSimplifiedSpecial extends AbstractModelObject implements ISear
    * JsonUtil class for building {@link AlbumSimplifiedSpecial} instances.
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<AlbumSimplifiedSpecial> {
+
+    /**
+     * Default constructor.
+     */
+    public JsonUtil() {
+      super();
+    }
+
     public AlbumSimplifiedSpecial createModelObject(JsonObject jsonObject) {
       if (jsonObject == null || jsonObject.isJsonNull()) {
         return null;

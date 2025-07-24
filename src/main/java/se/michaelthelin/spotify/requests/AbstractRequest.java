@@ -22,6 +22,11 @@ import java.util.logging.Level;
 import java.util.regex.Matcher;
 import java.util.stream.Collectors;
 
+/**
+ * Abstract base class for all requests.
+ *
+ * @param <T> The response type.
+ */
 public abstract class AbstractRequest<T> implements IRequest<T> {
 
   private final IHttpManager httpManager;
@@ -31,6 +36,11 @@ public abstract class AbstractRequest<T> implements IRequest<T> {
   private URI uri;
   private HttpEntity body;
 
+  /**
+   * Protected constructor for requests.
+   *
+   * @param builder The builder instance.
+   */
   protected AbstractRequest(Builder<T, ?> builder) {
     assert (builder != null);
     assert (builder.path != null);
@@ -71,6 +81,9 @@ public abstract class AbstractRequest<T> implements IRequest<T> {
       this::execute);
   }
 
+  /**
+   * Initialize the request body based on content type.
+   */
   public void initializeBody() {
     if (body == null && contentType != null) {
       switch (contentType.getMimeType()) {
@@ -86,6 +99,12 @@ public abstract class AbstractRequest<T> implements IRequest<T> {
     }
   }
 
+  /**
+   * Convert body parameters to JSON string.
+   *
+   * @param bodyParameters The body parameters to convert.
+   * @return JSON string representation.
+   */
   public String bodyParametersToJson(List<NameValuePair> bodyParameters) {
     JsonObject jsonObject = new JsonObject();
 
@@ -206,6 +225,12 @@ public abstract class AbstractRequest<T> implements IRequest<T> {
     return bodyParameters;
   }
 
+  /**
+   * Abstract builder class for requests.
+   *
+   * @param <T>  The response type.
+   * @param <BT> The builder type.
+   */
   public static abstract class Builder<T, BT extends Builder<T, ?>> implements IRequest.Builder<T, BT> {
 
     private final List<NameValuePair> pathParameters = new ArrayList<>();
@@ -220,6 +245,9 @@ public abstract class AbstractRequest<T> implements IRequest<T> {
     private ContentType contentType = null;
     private HttpEntity body = null;
 
+    /**
+     * Protected constructor for request builders.
+     */
     protected Builder() {
     }
 

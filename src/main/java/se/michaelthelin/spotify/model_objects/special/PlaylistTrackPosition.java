@@ -14,9 +14,16 @@ import java.util.Objects;
  */
 @JsonDeserialize(builder = PlaylistTrackPosition.Builder.class)
 public class PlaylistTrackPosition extends AbstractModelObject {
+  /** The Spotify URI for the track. */
   private final String uri;
+  /** An array of the track's positions within the playlist. */
   private final int[] positions;
 
+  /**
+   * Creates a new PlaylistTrackPosition with the specified builder.
+   *
+   * @param builder the builder containing track URI and position configuration
+   */
   public PlaylistTrackPosition(final Builder builder) {
     super(builder);
 
@@ -60,11 +67,30 @@ public class PlaylistTrackPosition extends AbstractModelObject {
     private String uri;
     private int[] positions;
 
+    /**
+     * Default constructor.
+     */
+    public Builder() {
+      super();
+    }
+
+    /**
+     * Sets the Spotify URI of the track.
+     *
+     * @param uri the Spotify URI of the track
+     * @return this builder instance for method chaining
+     */
     public Builder setUri(String uri) {
       this.uri = uri;
       return this;
     }
 
+    /**
+     * Sets the positions where the track should be placed in the playlist.
+     *
+     * @param positions the zero-based positions in the playlist
+     * @return this builder instance for method chaining
+     */
     public Builder setPositions(int... positions) {
       this.positions = positions;
       return this;
@@ -80,6 +106,14 @@ public class PlaylistTrackPosition extends AbstractModelObject {
    * JsonUtil class for building {@link PlaylistTrackPosition} instances.
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<PlaylistTrackPosition> {
+
+    /**
+     * Default constructor.
+     */
+    public JsonUtil() {
+      super();
+    }
+
     public PlaylistTrackPosition createModelObject(JsonObject jsonObject) {
       if (jsonObject == null || jsonObject.isJsonNull()) {
         return null;

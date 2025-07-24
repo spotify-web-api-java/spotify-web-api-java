@@ -11,8 +11,11 @@ import se.michaelthelin.spotify.model_objects.AbstractModelObject;
  */
 @JsonDeserialize(builder = Image.Builder.class)
 public class Image extends AbstractModelObject {
+  /** The image height in pixels. */
   private final Integer height;
+  /** The source URL of the image. */
   private final String url;
+  /** The image width in pixels. */
   private final Integer width;
 
   private Image(final Builder builder) {
@@ -69,6 +72,13 @@ public class Image extends AbstractModelObject {
     private Integer width;
 
     /**
+     * Default constructor.
+     */
+    public Builder() {
+      super();
+    }
+
+    /**
      * The height setter.
      *
      * @param height The image height in pixels. If unknown: {@code null}.
@@ -111,6 +121,14 @@ public class Image extends AbstractModelObject {
    * JsonUtil class for building {@link Image} instances.
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<Image> {
+
+    /**
+     * Default constructor.
+     */
+    public JsonUtil() {
+      super();
+    }
+
     public Image createModelObject(JsonObject jsonObject) {
       if (jsonObject == null || jsonObject.isJsonNull()) {
         return null;

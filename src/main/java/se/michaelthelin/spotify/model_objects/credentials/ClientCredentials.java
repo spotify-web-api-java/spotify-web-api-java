@@ -12,8 +12,11 @@ import java.util.Objects;
  */
 @JsonDeserialize(builder = ClientCredentials.Builder.class)
 public class ClientCredentials extends AbstractModelObject {
+  /** The access token used for making authenticated requests. */
   private final String accessToken;
+  /** The type of token, typically "Bearer". */
   private final String tokenType;
+  /** The time in seconds until the access token expires. */
   private final Integer expiresIn;
 
   private ClientCredentials(final Builder builder) {
@@ -71,6 +74,13 @@ public class ClientCredentials extends AbstractModelObject {
     private Integer expiresIn;
 
     /**
+     * Default constructor.
+     */
+    public Builder() {
+      super();
+    }
+
+    /**
      * The access token setter.
      *
      * @param accessToken An access token that can be provided in subsequent calls,
@@ -114,6 +124,14 @@ public class ClientCredentials extends AbstractModelObject {
    * JsonUtil class for building {@link ClientCredentials} instances.
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<ClientCredentials> {
+
+    /**
+     * Default constructor.
+     */
+    public JsonUtil() {
+      super();
+    }
+
     public ClientCredentials createModelObject(JsonObject jsonObject) {
       if (jsonObject == null || jsonObject.isJsonNull()) {
         return null;

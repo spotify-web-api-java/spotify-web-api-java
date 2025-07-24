@@ -10,7 +10,9 @@ import se.michaelthelin.spotify.model_objects.AbstractModelObject;
  */
 @JsonDeserialize(builder = Error.Builder.class)
 public class Error extends AbstractModelObject {
+  /** The HTTP status code. */
   private final Integer status;
+  /** A short description of the cause of the error. */
   private final String message;
 
   private Error(final Builder builder) {
@@ -57,6 +59,13 @@ public class Error extends AbstractModelObject {
     private String message;
 
     /**
+     * Default constructor.
+     */
+    public Builder() {
+      super();
+    }
+
+    /**
      * The error <a href="https://developer.spotify.com/documentation/web-api/concepts/api-calls">HTTP status
      * code</a> setter.
      *
@@ -90,6 +99,14 @@ public class Error extends AbstractModelObject {
    * JsonUtil class for building {@link Error} instances.
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<Error> {
+
+    /**
+     * Default constructor.
+     */
+    public JsonUtil() {
+      super();
+    }
+
     public Error createModelObject(JsonObject jsonObject) {
       if (jsonObject == null || jsonObject.isJsonNull()) {
         return null;

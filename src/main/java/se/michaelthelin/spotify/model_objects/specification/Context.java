@@ -16,9 +16,13 @@ import java.util.Objects;
  */
 @JsonDeserialize(builder = Context.Builder.class)
 public class Context extends AbstractModelObject {
+  /** The object type of the context. */
   private final ModelObjectType type;
+  /** A link to the Web API endpoint providing full details of the track. */
   private final String href;
+  /** External URLs for this context. */
   private final ExternalUrl externalUrls;
+  /** The Spotify URI for the context. */
   private final String uri;
 
   private Context(final Builder builder) {
@@ -87,6 +91,13 @@ public class Context extends AbstractModelObject {
     private String uri;
 
     /**
+     * Default constructor.
+     */
+    public Builder() {
+      super();
+    }
+
+    /**
      * The model object type setter.
      *
      * @param type The {@link ModelObjectType}.
@@ -140,6 +151,14 @@ public class Context extends AbstractModelObject {
    * JsonUtil class for building {@link Context} instances.
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<Context> {
+
+    /**
+     * Default constructor.
+     */
+    public JsonUtil() {
+      super();
+    }
+
     public Context createModelObject(JsonObject jsonObject) {
       if (jsonObject == null || jsonObject.isJsonNull()) {
         return null;

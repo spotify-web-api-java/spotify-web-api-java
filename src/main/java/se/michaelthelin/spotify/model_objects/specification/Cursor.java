@@ -11,6 +11,7 @@ import se.michaelthelin.spotify.model_objects.AbstractModelObject;
  */
 @JsonDeserialize(builder = Cursor.Builder.class)
 public class Cursor extends AbstractModelObject {
+  /** The cursor to use as key to find the next page of items. */
   private final String after;
 
   private Cursor(final Builder builder) {
@@ -48,6 +49,13 @@ public class Cursor extends AbstractModelObject {
     private String after;
 
     /**
+     * Default constructor.
+     */
+    public Builder() {
+      super();
+    }
+
+    /**
      * The after key setter.
      *
      * @param after The cursor to use as key to find the next page of items.
@@ -68,6 +76,14 @@ public class Cursor extends AbstractModelObject {
    * JsonUtil class for building {@link Cursor} instances.
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<Cursor> {
+
+    /**
+     * Default constructor.
+     */
+    public JsonUtil() {
+      super();
+    }
+
     public Cursor createModelObject(JsonObject jsonObject) {
       if (jsonObject == null || jsonObject.isJsonNull()) {
         return null;

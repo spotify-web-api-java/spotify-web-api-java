@@ -8,14 +8,28 @@ import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
  */
 public class InternalServerErrorException extends SpotifyWebApiException {
 
+  /**
+   * Constructs a new InternalServerErrorException with no detail message.
+   */
   public InternalServerErrorException() {
     super();
   }
 
+  /**
+   * Constructs a new InternalServerErrorException with the specified detail message.
+   *
+   * @param message the detail message
+   */
   public InternalServerErrorException(String message) {
     super(message);
   }
 
+  /**
+   * Constructs a new InternalServerErrorException with the specified detail message and cause.
+   *
+   * @param message the detail message
+   * @param cause the cause of this exception
+   */
   public InternalServerErrorException(String message, Throwable cause) {
     super(message, cause);
   }

@@ -9,7 +9,9 @@ import se.michaelthelin.spotify.model_objects.AbstractModelObject;
  */
 @JsonDeserialize(builder = PlaylistTracksInformation.Builder.class)
 public class PlaylistTracksInformation extends AbstractModelObject {
+  /** A link to the Web API endpoint where full details of the playlist's tracks can be retrieved. */
   private final String href;
+  /** Number of tracks in the playlist. */
   private final Integer total;
 
   private PlaylistTracksInformation(final Builder builder) {
@@ -55,6 +57,13 @@ public class PlaylistTracksInformation extends AbstractModelObject {
     private Integer total;
 
     /**
+     * Default constructor.
+     */
+    public Builder() {
+      super();
+    }
+
+    /**
      * Set href of Spotify Web API endpoint of the playlist tracks information object to be built.
      *
      * @param href Spotify Web API endpoint URL.
@@ -86,6 +95,14 @@ public class PlaylistTracksInformation extends AbstractModelObject {
    * JsonUtil class for building {@link PlaylistTracksInformation} instances.
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<PlaylistTracksInformation> {
+
+    /**
+     * Default constructor.
+     */
+    public JsonUtil() {
+      super();
+    }
+
     public PlaylistTracksInformation createModelObject(JsonObject jsonObject) {
       if (jsonObject == null || jsonObject.isJsonNull()) {
         return null;

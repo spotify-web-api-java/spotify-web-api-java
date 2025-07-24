@@ -21,19 +21,33 @@ import java.util.Objects;
  */
 @JsonDeserialize(builder = AlbumSimplified.Builder.class)
 public class AlbumSimplified extends AbstractModelObject implements ISearchModelObject {
+  /** The album group the album belongs to. */
   private final AlbumGroup albumGroup;
+  /** The type of the album. */
   private final AlbumType albumType;
+  /** The artists who performed the album. */
   private final ArtistSimplified[] artists;
+  /** The markets in which the album is available. */
   private final CountryCode[] availableMarkets;
+  /** Known external URLs for this album. */
   private final ExternalUrl externalUrls;
+  /** A link to the Web API endpoint providing full details of the album. */
   private final String href;
+  /** The Spotify ID for the album. */
   private final String id;
+  /** The cover art for the album in various sizes. */
   private final Image[] images;
+  /** The name of the album. */
   private final String name;
+  /** The date the album was first released. */
   private final String releaseDate;
+  /** The precision with which release_date value is known. */
   private final ReleaseDatePrecision releaseDatePrecision;
+  /** Included in the response when a content restriction is applied. */
   private final Restrictions restrictions;
+  /** The object type: "album". */
   private final ModelObjectType type;
+  /** The Spotify URI for the album. */
   private final String uri;
 
   private AlbumSimplified(final Builder builder) {
@@ -201,7 +215,6 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
    * Builder class for building {@link AlbumSimplified} instances.
    */
   public static final class Builder extends AbstractModelObject.Builder {
-
     private AlbumGroup albumGroup;
     private AlbumType albumType;
     private ArtistSimplified[] artists;
@@ -216,6 +229,13 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
     private Restrictions restrictions;
     private ModelObjectType type;
     private String uri;
+
+    /**
+     * Default constructor.
+     */
+    public Builder() {
+      super();
+    }
 
     /**
      * Set the album group of the album to be built.
@@ -383,6 +403,14 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
    * JsonUtil class for building {@link AlbumSimplified} instances.
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<AlbumSimplified> {
+
+    /**
+     * Default constructor.
+     */
+    public JsonUtil() {
+      super();
+    }
+
     public AlbumSimplified createModelObject(JsonObject jsonObject) {
       if (jsonObject == null || jsonObject.isJsonNull()) {
         return null;

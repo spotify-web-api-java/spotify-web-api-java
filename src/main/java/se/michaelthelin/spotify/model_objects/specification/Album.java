@@ -18,23 +18,41 @@ import java.util.Objects;
  */
 @JsonDeserialize(builder = Album.Builder.class)
 public class Album extends AbstractModelObject {
+  /** The type of the album. */
   private final AlbumType albumType;
+  /** The artists who performed the album. */
   private final ArtistSimplified[] artists;
+  /** The markets in which the album is available. */
   private final CountryCode[] availableMarkets;
+  /** The copyright statements of the album. */
   private final Copyright[] copyrights;
+  /** Known external IDs for the album. */
   private final ExternalId externalIds;
+  /** Known external URLs for this album. */
   private final ExternalUrl externalUrls;
+  /** A list of the genres the album is associated with. */
   private final String[] genres;
+  /** A link to the Web API endpoint providing full details of the album. */
   private final String href;
+  /** The Spotify ID for the album. */
   private final String id;
+  /** The cover art for the album in various sizes. */
   private final Image[] images;
+  /** The label for the album. */
   private final String label;
+  /** The name of the album. */
   private final String name;
+  /** The popularity of the album (0-100). */
   private final Integer popularity;
+  /** The date the album was first released. */
   private final String releaseDate;
+  /** The precision with which release_date value is known. */
   private final ReleaseDatePrecision releaseDatePrecision;
+  /** The tracks of the album. */
   private final Paging<TrackSimplified> tracks;
+  /** The object type: "album". */
   private final ModelObjectType type;
+  /** The Spotify URI for the album. */
   private final String uri;
 
   private Album(final Builder builder) {
@@ -246,7 +264,6 @@ public class Album extends AbstractModelObject {
    * Builder class for building {@link Album} instances.
    */
   public static final class Builder extends AbstractModelObject.Builder {
-
     private AlbumType albumType;
     private ArtistSimplified[] artists;
     private CountryCode[] availableMarkets;
@@ -265,6 +282,13 @@ public class Album extends AbstractModelObject {
     private Paging<TrackSimplified> tracks;
     private ModelObjectType type;
     private String uri;
+
+    /**
+     * Default constructor.
+     */
+    public Builder() {
+      super();
+    }
 
     /**
      * Set the type of the album to be built.
@@ -476,6 +500,14 @@ public class Album extends AbstractModelObject {
    * JsonUtil class for building {@link Album} instances.
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<Album> {
+
+    /**
+     * Default constructor.
+     */
+    public JsonUtil() {
+      super();
+    }
+
     public Album createModelObject(JsonObject jsonObject) {
       if (jsonObject == null || jsonObject.isJsonNull()) {
         return null;

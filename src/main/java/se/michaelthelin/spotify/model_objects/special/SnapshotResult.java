@@ -13,6 +13,7 @@ import se.michaelthelin.spotify.model_objects.AbstractModelObject;
  */
 @JsonDeserialize(builder = SnapshotResult.Builder.class)
 public class SnapshotResult extends AbstractModelObject {
+  /** The snapshot_id can be used to identify your playlist version in future requests. */
   private final String snapshotId;
 
   private SnapshotResult(final Builder builder) {
@@ -44,8 +45,22 @@ public class SnapshotResult extends AbstractModelObject {
    * Builder class for building {@link SnapshotResult} instances.
    */
   public static final class Builder extends AbstractModelObject.Builder {
+    /** The snapshot ID of the playlist. */
     public String snapshotId;
 
+    /**
+     * Default constructor.
+     */
+    public Builder() {
+      super();
+    }
+
+    /**
+     * Sets the snapshot ID of the playlist.
+     *
+     * @param snapshotId the snapshot ID
+     * @return this builder instance for method chaining
+     */
     public Builder setSnapshotId(String snapshotId) {
       this.snapshotId = snapshotId;
       return this;
@@ -61,6 +76,14 @@ public class SnapshotResult extends AbstractModelObject {
    * JsonUtil class for building {@link SnapshotResult} instances.
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<SnapshotResult> {
+
+    /**
+     * Default constructor.
+     */
+    public JsonUtil() {
+      super();
+    }
+
     public SnapshotResult createModelObject(JsonObject jsonObject) {
       if (jsonObject == null || jsonObject.isJsonNull()) {
         return null;

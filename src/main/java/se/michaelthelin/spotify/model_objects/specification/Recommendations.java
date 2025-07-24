@@ -12,7 +12,9 @@ import java.util.Arrays;
  */
 @JsonDeserialize(builder = Recommendations.Builder.class)
 public class Recommendations extends AbstractModelObject {
+  /** The seeds used to generate recommendations. */
   private final RecommendationsSeed[] seeds;
+  /** The recommended tracks. */
   private final Track[] tracks;
 
   private Recommendations(final Builder builder) {
@@ -58,6 +60,13 @@ public class Recommendations extends AbstractModelObject {
     private Track[] tracks;
 
     /**
+     * Default constructor.
+     */
+    public Builder() {
+      super();
+    }
+
+    /**
      * The recommendation seeds setter.
      *
      * @param seeds An array of recommendation seed objects.
@@ -89,6 +98,14 @@ public class Recommendations extends AbstractModelObject {
    * JsonUtil class for building {@link Recommendations} instances.
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<Recommendations> {
+
+    /**
+     * Default constructor.
+     */
+    public JsonUtil() {
+      super();
+    }
+
     public Recommendations createModelObject(JsonObject jsonObject) {
       if (jsonObject == null || jsonObject.isJsonNull()) {
         return null;

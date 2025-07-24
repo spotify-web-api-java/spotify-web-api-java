@@ -17,8 +17,14 @@ import java.util.Map;
  */
 @JsonDeserialize(builder = Actions.Builder.class)
 public class Disallows extends AbstractModelObject {
+  /** The set of disallowed actions for the current context. */
   private final EnumSet<Action> disallowedActions;
 
+  /**
+   * Creates a new Disallows object with the specified builder.
+   *
+   * @param builder the builder containing disallowed actions configuration
+   */
   public Disallows(Builder builder) {
     super(builder);
     this.disallowedActions = builder.disallowedActions;
@@ -50,6 +56,13 @@ public class Disallows extends AbstractModelObject {
     private EnumSet<Action> disallowedActions;
 
     /**
+     * Default constructor.
+     */
+    public Builder() {
+      super();
+    }
+
+    /**
      * Set the set of disallowed actions.
      *
      * @param disallowedActions The set of disallowed actions.
@@ -70,6 +83,14 @@ public class Disallows extends AbstractModelObject {
    * JsonUtil class for building {@link Disallows} instances.
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<Disallows> {
+
+    /**
+     * Default constructor.
+     */
+    public JsonUtil() {
+      super();
+    }
+
     @Override
     public Disallows createModelObject(JsonObject jsonObject) {
       if (jsonObject == null || jsonObject.isJsonNull()) {

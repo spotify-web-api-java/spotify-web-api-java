@@ -33,6 +33,9 @@ public class AuthorizationCodeUriRequest extends AbstractRequest<URI> {
    */
   public static final class Builder extends AbstractRequest.Builder<URI, Builder> {
 
+    /**
+     * Default constructor.
+     */
     public Builder() {
       super();
     }
@@ -140,6 +143,12 @@ public class AuthorizationCodeUriRequest extends AbstractRequest<URI> {
       return setQueryParameter("scope", scope);
     }
 
+    /**
+     * Sets the authorization scopes for the request using an array of scopes.
+     *
+     * @param scopes the authorization scopes to request
+     * @return this builder instance for method chaining
+     */
     public Builder scope(final AuthorizationScope... scopes) {
       StringBuilder finalScopes = new StringBuilder();
 

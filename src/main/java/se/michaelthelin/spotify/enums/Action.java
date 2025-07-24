@@ -10,15 +10,25 @@ import java.util.Map;
  */
 public enum Action {
 
+  /** Represents interrupting playback action. */
   INTERRUPTING_PLAYBACK("interrupting_playback"),
+  /** Represents pausing action. */
   PAUSING("pausing"),
+  /** Represents resuming action. */
   RESUMING("resuming"),
+  /** Represents seeking action. */
   SEEKING("seeking"),
+  /** Represents skipping to next track action. */
   SKIPPING_NEXT("skipping_next"),
+  /** Represents skipping to previous track action. */
   SKIPPING_PREV("skipping_prev"),
+  /** Represents toggling repeat context action. */
   TOGGLING_REPEAT_CONTEXT("toggling_repeat_context"),
+  /** Represents toggling shuffle action. */
   TOGGLING_SHUFFLE("toggling_shuffle"),
+  /** Represents toggling repeat track action. */
   TOGGLING_REPEAT_TRACK("toggling_repeat_track"),
+  /** Represents transferring playback action. */
   TRANSFERRING_PLAYBACK("transferring_playback");
 
   private static final Map<String, Action> map = new HashMap<>();
@@ -29,12 +39,19 @@ public enum Action {
     }
   }
 
+  /** The action key string. */
   public final String key;
 
   Action(final String key) {
     this.key = key;
   }
 
+  /**
+   * Get an Action by its key.
+   *
+   * @param key The action key.
+   * @return The corresponding Action or null if not found.
+   */
   public static Action keyOf(String key) {
     return map.get(key);
   }
