@@ -44,7 +44,7 @@ jobs:
         with:
           fetch-depth: 0 # fetch complete history to find the last git tag
       - name: Set up JDK
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v5
         with:
           java-version: ${{ matrix.java }}
           distribution: temurin
