@@ -27,7 +27,6 @@ jobs:
         uses: 8BitJonny/gh-get-current-pr@4.0.0
         with:
           filterOutClosed: true
-          sha: ${{ github.event.pull_request.head.sha }}
   build:
     name: Build
     needs: prepare_jobs
