@@ -27,6 +27,7 @@ jobs:
         uses: 8BitJonny/gh-get-current-pr@4.0.0
         with:
           filterOutClosed: true
+          filterOutDraft: true
   build:
     name: Build
     needs: prepare_jobs
