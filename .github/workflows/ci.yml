@@ -37,7 +37,7 @@ jobs:
       contents: write
     strategy:
       matrix:
-        java: ["11", "21"]
+        java: ["17", "25"]
     steps:
       - name: Checkout git repository
         uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
@@ -56,7 +56,7 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
       - name: Release
-        if: startsWith(github.ref, 'refs/tags/') && matrix.java == 11
+        if: startsWith(github.ref, 'refs/tags/') && matrix.java == 17
         env:
           GPG_KEY_NAME: B70E1EAC
           GPG_PASSPHRASE_KEY: ${{ secrets.GPG_PASSPHRASE_KEY }}
@@ -68,7 +68,7 @@ jobs:
           cp ./ci/.m2.settings.xml $HOME/.m2/settings.xml
           mvn deploy -P release -DskipTests=true
       - name: Create release
-        if: startsWith(github.ref, 'refs/tags/') && matrix.java == 11
+        if: startsWith(github.ref, 'refs/tags/') && matrix.java == 17
         run: npx changelogithub
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
