@@ -350,12 +350,10 @@ public class CurrentlyPlayingContext extends AbstractModelObject {
           hasAndNotNull(jsonObject, "shuffle_state")
             ? jsonObject.get("shuffle_state").getAsBoolean()
             : null)
-                  .setSmart_shuffle(
-              hasAndNotNull(jsonObject, "smart_shuffle")
+          .setSmart_shuffle(              hasAndNotNull(jsonObject, "smart_shuffle")
+              hasAndNotNull(jsonObject, "smart_shuffle")                  :
                   ? jsonObject.get("smart_shuffle").getAsBoolean()
                   : null)
-        .setContext(
-          hasAndNotNull(jsonObject, "context")
             ? new Context.JsonUtil().createModelObject(
             jsonObject.getAsJsonObject("context"))
             : null)
