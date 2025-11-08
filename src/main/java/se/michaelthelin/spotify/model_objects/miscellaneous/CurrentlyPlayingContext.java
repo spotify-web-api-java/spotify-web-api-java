@@ -24,6 +24,8 @@ public class CurrentlyPlayingContext extends AbstractModelObject {
   private final String repeat_state;
   /** If shuffle is on or off. */
   private final Boolean shuffle_state;
+  /** If smart shuffle is on or off. */
+  private final Boolean smart_shuffle;
   /** The context in which the track is being played. */
   private final Context context;
   /** Unix timestamp when the request was made. */
@@ -45,6 +47,7 @@ public class CurrentlyPlayingContext extends AbstractModelObject {
     this.device = builder.device;
     this.repeat_state = builder.repeat_state;
     this.shuffle_state = builder.shuffle_state;
+    this.smart_shuffle = builder.smart_shuffle;
     this.context = builder.context;
     this.timestamp = builder.timestamp;
     this.progress_ms = builder.progress_ms;
@@ -79,6 +82,15 @@ public class CurrentlyPlayingContext extends AbstractModelObject {
    */
   public Boolean getShuffle_state() {
     return shuffle_state;
+  }
+
+  /**
+   * Get smart shuffle state of the device.
+   *
+   * @return If smart shuffle is on or off.
+   */
+  public Boolean getSmart_shuffle() {
+    return smart_shuffle;
   }
 
   /**
@@ -147,9 +159,9 @@ public class CurrentlyPlayingContext extends AbstractModelObject {
   @Override
   public String toString() {
     return "CurrentlyPlayingContext(device=" + device + ", repeat_state=" + repeat_state + ", shuffle_state="
-        + shuffle_state + ", context=" + context + ", timestamp=" + timestamp + ", progress_ms=" + progress_ms
-        + ", is_playing=" + is_playing + ", item=" + item + ", currentlyPlayingType=" + currentlyPlayingType
-        + ", actions=" + actions + ")";
+        + shuffle_state + ", smart_shuffle=" + smart_shuffle + ", context=" + context + ", timestamp=" + timestamp
+        + ", progress_ms=" + progress_ms + ", is_playing=" + is_playing + ", item=" + item + ", currentlyPlayingType="
+        + currentlyPlayingType + ", actions=" + actions + ")";
   }
 
   @Override
@@ -164,6 +176,7 @@ public class CurrentlyPlayingContext extends AbstractModelObject {
     private Device device;
     private String repeat_state;
     private Boolean shuffle_state;
+    private Boolean smart_shuffle;
     private Context context;
     private Long timestamp;
     private Integer progress_ms;
@@ -209,6 +222,16 @@ public class CurrentlyPlayingContext extends AbstractModelObject {
      */
     public Builder setShuffle_state(Boolean shuffle_state) {
       this.shuffle_state = shuffle_state;
+      return this;
+    }
+    /**
+     * The smart shuffle setter.
+     *
+     * @param smart_shuffle If smart shuffle is on or off.
+     * @return A {@link CurrentlyPlayingContext.Builder}.
+     */
+    public Builder setSmart_shuffle(Boolean smart_shuffle) {
+      this.smart_shuffle = smart_shuffle;
       return this;
     }
 
@@ -325,6 +348,10 @@ public class CurrentlyPlayingContext extends AbstractModelObject {
         .setShuffle_state(
           hasAndNotNull(jsonObject, "shuffle_state")
             ? jsonObject.get("shuffle_state").getAsBoolean()
+            : null)
+        .setSmart_shuffle(
+          hasAndNotNull(jsonObject, "smart_shuffle")
+            ? jsonObject.get("smart_shuffle").getAsBoolean()
             : null)
         .setContext(
           hasAndNotNull(jsonObject, "context")
