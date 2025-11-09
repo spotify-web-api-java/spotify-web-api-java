@@ -5,6 +5,7 @@ import com.google.gson.JsonObject;
 import org.junit.jupiter.api.Test;
 import se.michaelthelin.spotify.SpotifyApi;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
@@ -24,14 +25,14 @@ public class StartResumeUsersPlaybackRequestNumericTest {
 
         // Generate the JSON body
         String json = request.bodyParametersToJson(request.getBodyParameters());
-        
+
         // The JSON should contain unquoted number, not a string
-        assertTrue(json.contains("\"position_ms\":10000"), 
-            "position_ms should be an unquoted number. Actual JSON: " + json);
-        
+        assertTrue(json.contains("\"position_ms\":10000"),
+          "position_ms should be an unquoted number. Actual JSON: " + json);
+
         // Should NOT contain quoted string
-        assertTrue(!json.contains("\"position_ms\":\"10000\""), 
-            "position_ms should not be a quoted string. Actual JSON: " + json);
+        assertFalse(json.contains("\"position_ms\":\"10000\""),
+          "position_ms should not be a quoted string. Actual JSON: " + json);
     }
 
     @Test
@@ -40,7 +41,7 @@ public class StartResumeUsersPlaybackRequestNumericTest {
         JsonArray uris = new JsonArray();
         uris.add("spotify:track:test1");
         uris.add("spotify:track:test2");
-        
+
         StartResumeUsersPlaybackRequest request = new SpotifyApi.Builder()
             .setAccessToken("test-token")
             .build()
@@ -50,11 +51,11 @@ public class StartResumeUsersPlaybackRequestNumericTest {
 
         // Generate the JSON body
         String json = request.bodyParametersToJson(request.getBodyParameters());
-        
+
         // The JSON should contain a proper JSON array
-        assertTrue(json.contains("\"uris\":["), 
+        assertTrue(json.contains("\"uris\":["),
             "uris should be a JSON array. Actual JSON: " + json);
-        assertTrue(json.contains("spotify:track:test1"), 
+        assertTrue(json.contains("spotify:track:test1"),
             "uris should contain the track URIs. Actual JSON: " + json);
     }
 
@@ -63,7 +64,7 @@ public class StartResumeUsersPlaybackRequestNumericTest {
         // Create a request with JSON object offset
         JsonObject offset = new JsonObject();
         offset.addProperty("position", 5);
-        
+
         StartResumeUsersPlaybackRequest request = new SpotifyApi.Builder()
             .setAccessToken("test-token")
             .build()
@@ -73,11 +74,11 @@ public class StartResumeUsersPlaybackRequestNumericTest {
 
         // Generate the JSON body
         String json = request.bodyParametersToJson(request.getBodyParameters());
-        
+
         // The JSON should contain a proper JSON object
-        assertTrue(json.contains("\"offset\":{"), 
+        assertTrue(json.contains("\"offset\":{"),
             "offset should be a JSON object. Actual JSON: " + json);
-        assertTrue(json.contains("\"position\":5"), 
+        assertTrue(json.contains("\"position\":5"),
             "offset should contain the position property. Actual JSON: " + json);
     }
 }

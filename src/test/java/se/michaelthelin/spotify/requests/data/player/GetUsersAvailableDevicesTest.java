@@ -57,22 +57,22 @@ public class GetUsersAvailableDevicesTest extends AbstractDataTest<Device[]> {
     Device computerDevice = devices[0];
     Device smartPhoneDevice = devices[1];
 
-    assertEquals(computerDevice.getId(), "5fbb3ba6aa454b5534c4ba43a8c7e8e45a63ad0e");
+    assertEquals("5fbb3ba6aa454b5534c4ba43a8c7e8e45a63ad0e", computerDevice.getId());
     assertFalse(computerDevice.getIs_active());
     assertFalse(computerDevice.getIs_private_session());
     assertFalse(computerDevice.getIs_restricted());
-    assertEquals(computerDevice.getName(), "My fridge");
-    assertEquals(computerDevice.getType(), "Computer");
-    assertEquals(computerDevice.getVolume_percent(), 100);
+    assertEquals("My fridge", computerDevice.getName());
+    assertEquals("Computer", computerDevice.getType());
+    assertEquals(100, computerDevice.getVolume_percent());
     assertTrue(computerDevice.getSupports_volume());
 
-    assertEquals(smartPhoneDevice.getId(), "dc96ab03e8ecad17a70945b000acfef7591cd34e");
+    assertEquals("dc96ab03e8ecad17a70945b000acfef7591cd34e", smartPhoneDevice.getId());
     assertFalse(smartPhoneDevice.getIs_active());
     assertFalse(smartPhoneDevice.getIs_private_session());
     assertFalse(smartPhoneDevice.getIs_restricted());
-    assertEquals(smartPhoneDevice.getName(), "My Smartphone");
-    assertEquals(smartPhoneDevice.getType(), "Smartphone");
-    assertEquals(smartPhoneDevice.getVolume_percent(), 100);
+    assertEquals("My Smartphone", smartPhoneDevice.getName());
+    assertEquals("Smartphone", smartPhoneDevice.getType());
+    assertEquals(100, smartPhoneDevice.getVolume_percent());
     assertFalse(smartPhoneDevice.getSupports_volume());
   }
 

@@ -52,12 +52,12 @@ public class GetTheUsersQueueRequestTest extends AbstractDataTest<PlaybackQueue>
   @Override
   public void shouldReturnDefault(PlaybackQueue type) {
     assertNotNull(type.getCurrentlyPlaying());
-    assertEquals(type.getCurrentlyPlaying().getName(), "Borders");
+    assertEquals("Borders", type.getCurrentlyPlaying().getName());
     assertNotNull(type.getQueue());
-    assertEquals(type.getQueue().size(), 20);
-    assertEquals(type.getQueue().get(0).getName(), "AUSGABE VIERUNDSIEBZIG");
-    assertEquals(type.getQueue().get(0).getType(), ModelObjectType.EPISODE);
-    assertEquals(type.getQueue().get(1).getName(), "Helvegen");
-    assertEquals(type.getQueue().get(1).getType(), ModelObjectType.TRACK);
+    assertEquals(20, type.getQueue().size());
+    assertEquals("AUSGABE VIERUNDSIEBZIG", type.getQueue().get(0).getName());
+    assertEquals(ModelObjectType.EPISODE, type.getQueue().get(0).getType());
+    assertEquals("Helvegen", type.getQueue().get(1).getName());
+    assertEquals(ModelObjectType.TRACK, type.getQueue().get(1).getType());
   }
 }

@@ -3,7 +3,7 @@ package se.michaelthelin.spotify.requests.data.playlists;
 import org.junit.jupiter.api.Test;
 import se.michaelthelin.spotify.SpotifyApi;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
@@ -23,20 +23,20 @@ public class CreatePlaylistRequestNumericStringTest {
 
         // Generate the JSON body
         String json = request.bodyParametersToJson(request.getBodyParameters());
-        
+
         // The JSON should contain quoted strings, not numbers
-        assertTrue(json.contains("\"name\":\"2025\""), 
+        assertTrue(json.contains("\"name\":\"2025\""),
             "Name should be a quoted string, not a number. Actual JSON: " + json);
-        assertTrue(json.contains("\"description\":\"2025\""), 
+        assertTrue(json.contains("\"description\":\"2025\""),
             "Description should be a quoted string, not a number. Actual JSON: " + json);
-            
+
         // Should NOT contain unquoted numbers
-        assertTrue(!json.contains("\"name\":2025"), 
-            "Name should not be an unquoted number. Actual JSON: " + json);
-        assertTrue(!json.contains("\"description\":2025"), 
-            "Description should not be an unquoted number. Actual JSON: " + json);
+        assertFalse(json.contains("\"name\":2025"),
+          "Name should not be an unquoted number. Actual JSON: " + json);
+        assertFalse(json.contains("\"description\":2025"),
+          "Description should not be an unquoted number. Actual JSON: " + json);
     }
-    
+
     @Test
     public void shouldPreserveMixedTypesCorrectly() {
         // Test various edge cases
@@ -48,14 +48,14 @@ public class CreatePlaylistRequestNumericStringTest {
             .build();
 
         String json = request.bodyParametersToJson(request.getBodyParameters());
-        
+
         // Both should remain as strings
-        assertTrue(json.contains("\"name\":\"123.45\""), 
+        assertTrue(json.contains("\"name\":\"123.45\""),
             "Decimal number string should remain quoted. Actual JSON: " + json);
-        assertTrue(json.contains("\"description\":\"abc123\""), 
+        assertTrue(json.contains("\"description\":\"abc123\""),
             "Mixed alphanumeric should remain quoted. Actual JSON: " + json);
     }
-    
+
     @Test
     public void shouldPreserveEmptyAndNullLikeStrings() {
         CreatePlaylistRequest request = new SpotifyApi.Builder()
@@ -66,11 +66,11 @@ public class CreatePlaylistRequestNumericStringTest {
             .build();
 
         String json = request.bodyParametersToJson(request.getBodyParameters());
-        
+
         // Should remain as quoted strings, not become null/boolean literals
-        assertTrue(json.contains("\"name\":\"null\""), 
+        assertTrue(json.contains("\"name\":\"null\""),
             "String 'null' should remain quoted. Actual JSON: " + json);
-        assertTrue(json.contains("\"description\":\"true\""), 
+        assertTrue(json.contains("\"description\":\"true\""),
             "String 'true' should remain quoted. Actual JSON: " + json);
     }
 }

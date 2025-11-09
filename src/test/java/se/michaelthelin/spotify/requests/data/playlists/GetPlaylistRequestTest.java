@@ -71,6 +71,7 @@ public class GetPlaylistRequestTest extends AbstractDataTest<Playlist> {
     GetPlaylistRequest req = spotifyApi.getPlaylist(playlistId)
       .fields("description,owner").build();
 
+    // noinspection resource // TODO: remove this suppression when minimum JDK is 21
     ExecutorService executor = Executors.newSingleThreadExecutor();
     Callable<Playlist> playlistCall = req::execute;
 
@@ -78,7 +79,7 @@ public class GetPlaylistRequestTest extends AbstractDataTest<Playlist> {
       Future<Playlist> submit = executor.submit(playlistCall);
       submit.get(10, TimeUnit.SECONDS);
     } catch (ExecutionException e) {
-      assertEquals(e.getCause().getClass(), TooManyRequestsException.class);
+      assertEquals(TooManyRequestsException.class, e.getCause().getClass());
     } catch (TimeoutException | InterruptedException e) {
       fail("Timeout, the thread blocked");
     }

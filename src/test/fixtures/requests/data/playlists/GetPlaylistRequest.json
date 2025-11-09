@@ -2,7 +2,7 @@
   "collaborative": false,
   "description": "Having friends over for dinner? Here´s the perfect playlist.",
   "external_urls": {
-    "spotify": "http://open.spotify.com/user/spotify/playlist/59ZbFPES4DQwEjBpWHzrtC"
+    "spotify": "https://open.spotify.com/user/spotify/playlist/59ZbFPES4DQwEjBpWHzrtC"
   },
   "followers": {
     "href": null,
@@ -18,7 +18,7 @@
   "name": "Dinner with Friends",
   "owner": {
     "external_urls": {
-      "spotify": "http://open.spotify.com/user/spotify"
+      "spotify": "https://open.spotify.com/user/spotify"
     },
     "href": "https://api.spotify.com/v1/users/spotify",
     "id": "spotify",
@@ -34,7 +34,7 @@
         "added_at": "2014-09-01T04:21:28Z",
         "added_by": {
           "external_urls": {
-            "spotify": "http://open.spotify.com/user/spotify"
+            "spotify": "https://open.spotify.com/user/spotify"
           },
           "href": "https://api.spotify.com/v1/users/spotify",
           "id": "spotify",

@@ -2,7 +2,7 @@
   "collaborative": false,
   "description": null,
   "external_urls": {
-    "spotify": "http://open.spotify.com/user/thelinmichael/playlist/7d2D2S200NyUE5KYs80PwO"
+    "spotify": "https://open.spotify.com/user/thelinmichael/playlist/7d2D2S200NyUE5KYs80PwO"
   },
   "followers": {
     "href": null,
@@ -14,7 +14,7 @@
   "name": "A New Playlist",
   "owner": {
     "external_urls": {
-      "spotify": "http://open.spotify.com/user/thelinmichael"
+      "spotify": "https://open.spotify.com/user/thelinmichael"
     },
     "href": "https://api.spotify.com/v1/users/thelinmichael",
     "id": "thelinmichael",

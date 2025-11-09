@@ -4,7 +4,7 @@
     {
       "collaborative": false,
       "external_urls": {
-        "spotify": "http://open.spotify.com/user/wizzler/playlists/53Y8wT46QIMz5H4WQ8O22c"
+        "spotify": "https://open.spotify.com/user/wizzler/playlists/53Y8wT46QIMz5H4WQ8O22c"
       },
       "href": "https://api.spotify.com/v1/users/wizzler/playlists/53Y8wT46QIMz5H4WQ8O22c",
       "id": "53Y8wT46QIMz5H4WQ8O22c",
@@ -12,7 +12,7 @@
       "name": "Wizzlers Big Playlist",
       "owner": {
         "external_urls": {
-          "spotify": "http://open.spotify.com/user/wizzler"
+          "spotify": "https://open.spotify.com/user/wizzler"
         },
         "href": "https://api.spotify.com/v1/users/wizzler",
         "id": "wizzler",
@@ -31,7 +31,7 @@
     {
       "collaborative": false,
       "external_urls": {
-        "spotify": "http://open.spotify.com/user/wizzlersmate/playlists/1AVZz0mBuGbCEoNRQdYQju"
+        "spotify": "https://open.spotify.com/user/wizzlersmate/playlists/1AVZz0mBuGbCEoNRQdYQju"
       },
       "href": "https://api.spotify.com/v1/users/wizzlersmate/playlists/1AVZz0mBuGbCEoNRQdYQju",
       "id": "1AVZz0mBuGbCEoNRQdYQju",
@@ -39,7 +39,7 @@
       "name": "Another Playlist",
       "owner": {
         "external_urls": {
-          "spotify": "http://open.spotify.com/user/wizzlersmate"
+          "spotify": "https://open.spotify.com/user/wizzlersmate"
         },
         "href": "https://api.spotify.com/v1/users/wizzlersmate",
         "id": "wizzlersmate",
