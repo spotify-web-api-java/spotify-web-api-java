@@ -73,8 +73,6 @@ public class GetInformationAboutUsersCurrentPlaybackRequestTest extends Abstract
       currentlyPlayingContext.getRepeat_state());
     assertFalse(
       currentlyPlayingContext.getShuffle_state());
-    assertFalse(
-      currentlyPlayingContext.getSmart_shuffle());
     assertNull(
       currentlyPlayingContext.getContext());
     assertEquals(
@@ -97,6 +95,8 @@ public class GetInformationAboutUsersCurrentPlaybackRequestTest extends Abstract
     assertEquals(
       2,
       currentlyPlayingContext.getActions().getDisallows().getDisallowedActions().size());
+    assertFalse(
+      currentlyPlayingContext.getSmart_shuffle());
   }
 
   @Test
@@ -117,8 +117,6 @@ public class GetInformationAboutUsersCurrentPlaybackRequestTest extends Abstract
       currentlyPlayingContext.getRepeat_state());
     assertFalse(
       currentlyPlayingContext.getShuffle_state());
-    assertFalse(
-      currentlyPlayingContext.getSmart_shuffle());
     assertNotNull(
       currentlyPlayingContext.getContext());
     assertEquals(
@@ -144,6 +142,8 @@ public class GetInformationAboutUsersCurrentPlaybackRequestTest extends Abstract
     assertEquals(
       4,
       currentlyPlayingContext.getActions().getDisallows().getDisallowedActions().size());
+    assertFalse(
+      currentlyPlayingContext.getSmart_shuffle());
   }
 
   @Test

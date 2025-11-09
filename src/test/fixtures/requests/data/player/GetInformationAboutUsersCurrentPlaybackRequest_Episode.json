@@ -9,7 +9,6 @@
     "volume_percent": 100
   },
   "shuffle_state": false,
-  "smart_shuffle": false,
   "repeat_state": "off",
   "timestamp": 1516669848357,
   "context": {
@@ -184,5 +183,6 @@
       "toggling_shuffle": true
     }
   },
-  "is_playing": true
+  "is_playing": true,
+  "smart_shuffle": false
 }
