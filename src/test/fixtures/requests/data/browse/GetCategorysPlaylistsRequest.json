@@ -5,7 +5,7 @@
       {
         "collaborative": false,
         "external_urls": {
-          "spotify": "http://open.spotify.com/user/spotifybrazilian/playlist/4k7EZPI3uKMz4aRRrLVfen"
+          "spotify": "https://open.spotify.com/user/spotifybrazilian/playlist/4k7EZPI3uKMz4aRRrLVfen"
         },
         "href": "https://api.spotify.com/v1/users/spotifybrazilian/playlists/4k7EZPI3uKMz4aRRrLVfen",
         "id": "4k7EZPI3uKMz4aRRrLVfen",
@@ -19,7 +19,7 @@
         "name": "Noite Eletrônica",
         "owner": {
           "external_urls": {
-            "spotify": "http://open.spotify.com/user/spotifybrazilian"
+            "spotify": "https://open.spotify.com/user/spotifybrazilian"
           },
           "href": "https://api.spotify.com/v1/users/spotifybrazilian",
           "id": "spotifybrazilian",
@@ -38,7 +38,7 @@
       {
         "collaborative": false,
         "external_urls": {
-          "spotify": "http://open.spotify.com/user/spotifybrazilian/playlist/4HZh0C9y80GzHDbHZyX770"
+          "spotify": "https://open.spotify.com/user/spotifybrazilian/playlist/4HZh0C9y80GzHDbHZyX770"
         },
         "href": "https://api.spotify.com/v1/users/spotifybrazilian/playlists/4HZh0C9y80GzHDbHZyX770",
         "id": "4HZh0C9y80GzHDbHZyX770",
@@ -52,7 +52,7 @@
         "name": "Festa Indie",
         "owner": {
           "external_urls": {
-            "spotify": "http://open.spotify.com/user/spotifybrazilian"
+            "spotify": "https://open.spotify.com/user/spotifybrazilian"
           },
           "href": "https://api.spotify.com/v1/users/spotifybrazilian",
           "id": "spotifybrazilian",

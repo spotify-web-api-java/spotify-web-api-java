@@ -6,7 +6,7 @@
       {
         "collaborative": false,
         "external_urls": {
-          "spotify": "http://open.spotify.com/user/spotify/playlist/6ftJBzU2LLQcaKefMi7ee7"
+          "spotify": "https://open.spotify.com/user/spotify/playlist/6ftJBzU2LLQcaKefMi7ee7"
         },
         "href": "https://api.spotify.com/v1/users/spotify/playlists/6ftJBzU2LLQcaKefMi7ee7",
         "id": "6ftJBzU2LLQcaKefMi7ee7",
@@ -20,7 +20,7 @@
         "name": "Monday Morning Mood",
         "owner": {
           "external_urls": {
-            "spotify": "http://open.spotify.com/user/spotify"
+            "spotify": "https://open.spotify.com/user/spotify"
           },
           "href": "https://api.spotify.com/v1/users/spotify",
           "id": "spotify",
@@ -39,7 +39,7 @@
       {
         "collaborative": false,
         "external_urls": {
-          "spotify": "http://open.spotify.com/user/spotify__sverige/playlist/4uOEx4OUrkoGNZoIlWMUbO"
+          "spotify": "https://open.spotify.com/user/spotify__sverige/playlist/4uOEx4OUrkoGNZoIlWMUbO"
         },
         "href": "https://api.spotify.com/v1/users/spotify__sverige/playlists/4uOEx4OUrkoGNZoIlWMUbO",
         "id": "4uOEx4OUrkoGNZoIlWMUbO",
@@ -53,7 +53,7 @@
         "name": "Upp och hoppa!",
         "owner": {
           "external_urls": {
-            "spotify": "http://open.spotify.com/user/spotify__sverige"
+            "spotify": "https://open.spotify.com/user/spotify__sverige"
           },
           "href": "https://api.spotify.com/v1/users/spotify__sverige",
           "id": "spotify__sverige",
