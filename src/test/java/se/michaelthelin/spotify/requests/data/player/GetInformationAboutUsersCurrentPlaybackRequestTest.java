@@ -95,6 +95,8 @@ public class GetInformationAboutUsersCurrentPlaybackRequestTest extends Abstract
     assertEquals(
       2,
       currentlyPlayingContext.getActions().getDisallows().getDisallowedActions().size());
+    assertFalse(
+      currentlyPlayingContext.getSmart_shuffle());
   }
 
   @Test
@@ -140,6 +142,8 @@ public class GetInformationAboutUsersCurrentPlaybackRequestTest extends Abstract
     assertEquals(
       4,
       currentlyPlayingContext.getActions().getDisallows().getDisallowedActions().size());
+    assertFalse(
+      currentlyPlayingContext.getSmart_shuffle());
   }
 
   @Test

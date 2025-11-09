@@ -92,5 +92,6 @@
     }
   },
   "repeat_state": "off",
-  "shuffle_state": false
+  "shuffle_state": false,
+  "smart_shuffle": false
 }

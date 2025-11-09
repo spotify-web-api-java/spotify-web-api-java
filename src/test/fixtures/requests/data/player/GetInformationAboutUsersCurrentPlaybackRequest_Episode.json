@@ -183,5 +183,6 @@
       "toggling_shuffle": true
     }
   },
-  "is_playing": true
+  "is_playing": true,
+  "smart_shuffle": false
 }

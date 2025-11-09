@@ -38,6 +38,8 @@ public class CurrentlyPlayingContext extends AbstractModelObject {
   private final CurrentlyPlayingType currentlyPlayingType;
   /** Allows to update the user interface based on which playback actions are available. */
   private final Actions actions;
+  /** If smart shuffle is on or off. */
+  private final Boolean smart_shuffle;
 
   private CurrentlyPlayingContext(final Builder builder) {
     super(builder);
@@ -52,6 +54,7 @@ public class CurrentlyPlayingContext extends AbstractModelObject {
     this.item = builder.item;
     this.currentlyPlayingType = builder.currentlyPlayingType;
     this.actions = builder.actions;
+    this.smart_shuffle = builder.smart_shuffle;
   }
 
   /**
@@ -79,6 +82,15 @@ public class CurrentlyPlayingContext extends AbstractModelObject {
    */
   public Boolean getShuffle_state() {
     return shuffle_state;
+  }
+
+  /**
+   * Get smart shuffle state of the device.
+   *
+   * @return If smart shuffle is on or off.
+   */
+  public Boolean getSmart_shuffle() {
+    return smart_shuffle;
   }
 
   /**
@@ -149,7 +161,7 @@ public class CurrentlyPlayingContext extends AbstractModelObject {
     return "CurrentlyPlayingContext(device=" + device + ", repeat_state=" + repeat_state + ", shuffle_state="
         + shuffle_state + ", context=" + context + ", timestamp=" + timestamp + ", progress_ms=" + progress_ms
         + ", is_playing=" + is_playing + ", item=" + item + ", currentlyPlayingType=" + currentlyPlayingType
-        + ", actions=" + actions + ")";
+        + ", actions=" + actions + ", smart_shuffle=" + smart_shuffle + ")";
   }
 
   @Override
@@ -171,6 +183,7 @@ public class CurrentlyPlayingContext extends AbstractModelObject {
     private IPlaylistItem item;
     private CurrentlyPlayingType currentlyPlayingType;
     private Actions actions;
+    private Boolean smart_shuffle;
 
     /**
      * Default constructor.
@@ -289,6 +302,17 @@ public class CurrentlyPlayingContext extends AbstractModelObject {
       return this;
     }
 
+    /**
+     * The smart shuffle setter.
+     *
+     * @param smart_shuffle If smart shuffle is on or off.
+     * @return A {@link CurrentlyPlayingContext.Builder}.
+     */
+    public Builder setSmart_shuffle(Boolean smart_shuffle) {
+      this.smart_shuffle = smart_shuffle;
+      return this;
+    }
+
     @Override
     public CurrentlyPlayingContext build() {
       return new CurrentlyPlayingContext(this);
@@ -360,6 +384,10 @@ public class CurrentlyPlayingContext extends AbstractModelObject {
           hasAndNotNull(jsonObject, "actions")
             ? new Actions.JsonUtil().createModelObject(
             jsonObject.getAsJsonObject("actions"))
+            : null)
+        .setSmart_shuffle(
+          hasAndNotNull(jsonObject, "smart_shuffle")
+            ? jsonObject.get("smart_shuffle").getAsBoolean()
             : null)
         .build();
     }
