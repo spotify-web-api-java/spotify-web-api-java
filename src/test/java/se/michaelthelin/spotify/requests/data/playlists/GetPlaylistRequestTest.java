@@ -71,6 +71,7 @@ public class GetPlaylistRequestTest extends AbstractDataTest<Playlist> {
     GetPlaylistRequest req = spotifyApi.getPlaylist(playlistId)
       .fields("description,owner").build();
 
+    // noinspection resource // TODO: remove this suppression when minimum JDK is 21
     ExecutorService executor = Executors.newSingleThreadExecutor();
     Callable<Playlist> playlistCall = req::execute;
 
