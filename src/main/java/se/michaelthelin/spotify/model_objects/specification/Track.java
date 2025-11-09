@@ -2,7 +2,6 @@ package se.michaelthelin.spotify.model_objects.specification;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.Gson;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.neovisionaries.i18n.CountryCode;
 import se.michaelthelin.spotify.enums.ModelObjectType;

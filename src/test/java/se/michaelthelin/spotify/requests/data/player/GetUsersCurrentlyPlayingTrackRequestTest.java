@@ -78,8 +78,9 @@ public class GetUsersCurrentlyPlayingTrackRequestTest extends AbstractDataTest<C
       currentlyPlaying.getIs_playing());
     assertNotNull(
       currentlyPlaying.getItem());
-    assertTrue(
-      currentlyPlaying.getItem() instanceof Track);
+    assertInstanceOf(
+      Track.class,
+      currentlyPlaying.getItem());
     assertNotNull(
       currentlyPlaying.getActions());
     assertEquals(
@@ -107,15 +108,15 @@ public class GetUsersCurrentlyPlayingTrackRequestTest extends AbstractDataTest<C
     assertNotNull(
       currentlyPlaying.getContext());
     assertEquals(
-      currentlyPlaying.getContext().getType(),
-      ModelObjectType.SHOW);
+      ModelObjectType.SHOW,
+      currentlyPlaying.getContext().getType());
     assertEquals(
       3636145,
       (int) currentlyPlaying.getProgress_ms());
     assertNotNull(
       currentlyPlaying.getItem());
-    assertTrue(
-      currentlyPlaying.getItem() instanceof Episode);
+    assertInstanceOf(
+      Episode.class, currentlyPlaying.getItem());
     assertEquals(
       CurrentlyPlayingType.EPISODE,
       currentlyPlaying.getCurrentlyPlayingType());

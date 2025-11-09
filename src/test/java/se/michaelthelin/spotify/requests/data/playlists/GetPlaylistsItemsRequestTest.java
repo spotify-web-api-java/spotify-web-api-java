@@ -69,8 +69,9 @@ public class GetPlaylistsItemsRequestTest extends AbstractDataTest<Paging<Playli
     assertEquals(
       2,
       playlistTrackPaging.getItems().length);
-    assertTrue(
-      playlistTrackPaging.getItems()[0].getTrack() instanceof Track);
+    assertInstanceOf(
+      Track.class,
+      playlistTrackPaging.getItems()[0].getTrack());
     assertEquals(
       100,
       (int) playlistTrackPaging.getLimit());
@@ -103,8 +104,9 @@ public class GetPlaylistsItemsRequestTest extends AbstractDataTest<Paging<Playli
     assertEquals(
       1,
       playlistTrackPaging.getItems().length);
-    assertTrue(
-      playlistTrackPaging.getItems()[0].getTrack() instanceof Episode);
+    assertInstanceOf(
+      Episode.class,
+      playlistTrackPaging.getItems()[0].getTrack());
     assertEquals(
       100,
       (int) playlistTrackPaging.getLimit());

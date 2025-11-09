@@ -1,7 +1,6 @@
 package se.michaelthelin.spotify;
 
 import java.io.ByteArrayOutputStream;
-import java.util.Arrays;
 
 /**
  * Source: <a href="https://gist.github.com/EmilHernvall/953733#file-base64-java">EmilHernvall/Base64.java</a>

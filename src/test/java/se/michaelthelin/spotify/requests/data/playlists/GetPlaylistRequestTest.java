@@ -78,7 +78,7 @@ public class GetPlaylistRequestTest extends AbstractDataTest<Playlist> {
       Future<Playlist> submit = executor.submit(playlistCall);
       submit.get(10, TimeUnit.SECONDS);
     } catch (ExecutionException e) {
-      assertEquals(e.getCause().getClass(), TooManyRequestsException.class);
+      assertEquals(TooManyRequestsException.class, e.getCause().getClass());
     } catch (TimeoutException | InterruptedException e) {
       fail("Timeout, the thread blocked");
     }
