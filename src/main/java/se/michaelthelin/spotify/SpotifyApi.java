@@ -39,6 +39,8 @@ import se.michaelthelin.spotify.requests.data.tracks.*;
 import se.michaelthelin.spotify.requests.data.users_profile.GetCurrentUsersProfileRequest;
 import se.michaelthelin.spotify.requests.data.users_profile.GetUsersProfileRequest;
 
+import java.io.Closeable;
+import java.io.IOException;
 import java.net.URI;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -49,7 +51,7 @@ import java.util.logging.Logger;
 /**
  * Instances of the SpotifyApi class provide access to the Spotify Web API.
  */
-public class SpotifyApi {
+public class SpotifyApi implements Closeable {
 
   /**
    * The default authentication host of Spotify API calls.
@@ -1906,6 +1908,11 @@ public class SpotifyApi {
     return new GetUsersProfileRequest.Builder(accessToken)
       .setDefaults(httpManager, scheme, host, port)
       .user_id(user_id);
+  }
+
+  @Override
+  public void close() throws IOException {
+    httpManager.close();
   }
 
   /**

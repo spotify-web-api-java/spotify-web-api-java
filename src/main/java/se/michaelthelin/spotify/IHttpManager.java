@@ -5,13 +5,14 @@ import org.apache.hc.core5.http.HttpEntity;
 import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 
+import java.io.Closeable;
 import java.io.IOException;
 import java.net.URI;
 
 /**
  * A simple HTTP connection interface.
  */
-public interface IHttpManager {
+public interface IHttpManager extends Closeable {
 
   /**
    * Perform an HTTP GET request to the specified URL.

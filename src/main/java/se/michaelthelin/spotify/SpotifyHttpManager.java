@@ -26,6 +26,7 @@ import org.apache.hc.core5.util.Timeout;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.exceptions.detailed.*;
 
+import java.io.Closeable;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -35,7 +36,7 @@ import java.util.logging.Level;
  * Default implementation of the {@link IHttpManager} interface.
  * Manages HTTP requests to the Spotify Web API using Apache HttpClient.
  */
-public class SpotifyHttpManager implements IHttpManager {
+public class SpotifyHttpManager implements IHttpManager, Closeable {
 
   private static final Gson GSON = new Gson();
   private final CloseableHttpClient httpClient;
@@ -335,6 +336,13 @@ public class SpotifyHttpManager implements IHttpManager {
     }
 
     return response;
+  }
+
+  @Override
+  public void close() throws IOException {
+    httpClient.close();
+    httpClientCaching.close();
+    connectionManager.close();
   }
 
   private String getResponseBody(CloseableHttpResponse httpResponse) throws
