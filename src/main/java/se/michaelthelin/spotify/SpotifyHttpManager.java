@@ -16,12 +16,12 @@ import org.apache.hc.client5.http.impl.auth.BasicCredentialsProvider;
 import org.apache.hc.client5.http.impl.cache.CacheConfig;
 import org.apache.hc.client5.http.impl.cache.CachingHttpClients;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
-import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
 import org.apache.hc.client5.http.impl.classic.HttpClients;
 import org.apache.hc.client5.http.impl.io.PoolingHttpClientConnectionManager;
 import org.apache.hc.client5.http.io.HttpClientConnectionManager;
 import org.apache.hc.core5.http.*;
 import org.apache.hc.core5.http.io.entity.EntityUtils;
+import org.apache.hc.core5.http.io.HttpClientResponseHandler;
 import org.apache.hc.core5.util.Timeout;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.exceptions.detailed.*;
@@ -217,7 +217,7 @@ public class SpotifyHttpManager implements IHttpManager {
       Level.FINE,
       "GET request uses these headers: " + GSON.toJson(headers));
 
-    String responseBody = getResponseBody(execute(httpClientCaching, httpGet));
+    String responseBody = execute(httpClientCaching, httpGet);
 
     httpGet.reset();
 
@@ -240,7 +240,7 @@ public class SpotifyHttpManager implements IHttpManager {
       Level.FINE,
       "POST request uses these headers: " + GSON.toJson(headers));
 
-    String responseBody = getResponseBody(execute(httpClient, httpPost));
+    String responseBody = execute(httpClient, httpPost);
 
     httpPost.reset();
 
@@ -263,7 +263,7 @@ public class SpotifyHttpManager implements IHttpManager {
       Level.FINE,
       "PUT request uses these headers: " + GSON.toJson(headers));
 
-    String responseBody = getResponseBody(execute(httpClient, httpPut));
+    String responseBody = execute(httpClient, httpPut);
 
     httpPut.reset();
 
@@ -286,17 +286,29 @@ public class SpotifyHttpManager implements IHttpManager {
       Level.FINE,
       "DELETE request uses these headers: " + GSON.toJson(headers));
 
-    String responseBody = getResponseBody(execute(httpClient, httpDelete));
+    String responseBody = execute(httpClient, httpDelete);
 
     httpDelete.reset();
 
     return responseBody;
   }
 
-  private CloseableHttpResponse execute(CloseableHttpClient httpClient, ClassicHttpRequest method) throws
-    IOException {
+  private String execute(CloseableHttpClient httpClient, ClassicHttpRequest method) throws
+    IOException, SpotifyWebApiException {
     HttpCacheContext context = HttpCacheContext.create();
-    CloseableHttpResponse response = httpClient.execute(method, context);
+    ResponseHandler responseHandler = new ResponseHandler();
+    String response;
+
+    // TODO: in next major release don't extract cause below, throw http client's new ClientProtocolException
+    try {
+      response = httpClient.execute(method, context, responseHandler);
+    } catch (IOException e) {
+      if (e.getCause() instanceof SpotifyWebApiException) {
+        throw (SpotifyWebApiException) e.getCause();
+      }
+
+      throw e;
+    }
 
     try {
       CacheResponseStatus responseStatus = context.getCacheResponseStatus();
@@ -337,75 +349,77 @@ public class SpotifyHttpManager implements IHttpManager {
     return response;
   }
 
-  private String getResponseBody(CloseableHttpResponse httpResponse) throws
-    IOException,
-    SpotifyWebApiException,
-    ParseException {
+  static class ResponseHandler implements HttpClientResponseHandler<String> {
+    @Override
+    public String handleResponse(ClassicHttpResponse httpResponse) throws
+      IOException,
+      SpotifyWebApiException,
+      ParseException {
+      final String responseBody = httpResponse.getEntity() != null
+        ? EntityUtils.toString(httpResponse.getEntity(), "UTF-8")
+        : null;
+      String errorMessage = httpResponse.getReasonPhrase();
 
-    final String responseBody = httpResponse.getEntity() != null
-      ? EntityUtils.toString(httpResponse.getEntity(), "UTF-8")
-      : null;
-    String errorMessage = httpResponse.getReasonPhrase();
+      SpotifyApi.LOGGER.log(
+        Level.FINE,
+        "The http response has body " + responseBody);
 
-    SpotifyApi.LOGGER.log(
-      Level.FINE,
-      "The http response has body " + responseBody);
+      if (responseBody != null && !responseBody.isEmpty()) {
+        try {
+          final JsonElement jsonElement = JsonParser.parseString(responseBody);
 
-    if (responseBody != null && !responseBody.isEmpty()) {
-      try {
-        final JsonElement jsonElement = JsonParser.parseString(responseBody);
+          if (jsonElement.isJsonObject()) {
+            final JsonObject jsonObject = JsonParser.parseString(responseBody).getAsJsonObject();
 
-        if (jsonElement.isJsonObject()) {
-          final JsonObject jsonObject = JsonParser.parseString(responseBody).getAsJsonObject();
-
-          if (jsonObject.has("error")) {
-            if (jsonObject.has("error_description")) {
-              errorMessage = jsonObject.get("error_description").getAsString();
-            } else if (jsonObject.get("error").isJsonObject() && jsonObject.getAsJsonObject("error").has("message")) {
-              errorMessage = jsonObject.getAsJsonObject("error").get("message").getAsString();
+            if (jsonObject.has("error")) {
+              if (jsonObject.has("error_description")) {
+                errorMessage = jsonObject.get("error_description").getAsString();
+              } else if (jsonObject.get("error").isJsonObject() && jsonObject.getAsJsonObject("error").has("message")) {
+                errorMessage = jsonObject.getAsJsonObject("error").get("message").getAsString();
+              }
             }
           }
+        } catch (JsonSyntaxException e) {
+          // Not necessary
         }
-      } catch (JsonSyntaxException e) {
-        // Not necessary
       }
-    }
 
-    SpotifyApi.LOGGER.log(
-      Level.FINE,
-      "The http response has status code " + httpResponse.getCode());
+      SpotifyApi.LOGGER.log(
+        Level.FINE,
+        "The http response has status code " + httpResponse.getCode());
 
-    switch (httpResponse.getCode()) {
-      case HttpStatus.SC_BAD_REQUEST:
-        throw new BadRequestException(errorMessage);
-      case HttpStatus.SC_UNAUTHORIZED:
-        throw new UnauthorizedException(errorMessage);
-      case HttpStatus.SC_FORBIDDEN:
-        throw new ForbiddenException(errorMessage);
-      case HttpStatus.SC_NOT_FOUND:
-        throw new NotFoundException(errorMessage);
-      case 429: // TOO_MANY_REQUESTS (additional status code, RFC 6585)
-        // Sets "Retry-After" header as described at https://beta.developer.spotify.com/documentation/web-api/#rate-limiting
-        Header header = httpResponse.getFirstHeader("Retry-After");
-
-        if (header != null) {
-          throw new TooManyRequestsException(errorMessage, Integer.parseInt(header.getValue()));
-        } else {
-          throw new TooManyRequestsException(errorMessage);
-        }
-      case HttpStatus.SC_INTERNAL_SERVER_ERROR:
-        throw new InternalServerErrorException(errorMessage);
-      case HttpStatus.SC_BAD_GATEWAY:
-        throw new BadGatewayException(errorMessage);
-      case HttpStatus.SC_SERVICE_UNAVAILABLE:
-        throw new ServiceUnavailableException(errorMessage);
-      default:
-        if (httpResponse.getCode() >= 400 && httpResponse.getCode() < 500) {
+      switch (httpResponse.getCode()) {
+        case HttpStatus.SC_BAD_REQUEST:
           throw new BadRequestException(errorMessage);
-        } else if (httpResponse.getCode() >= 500) {
+        case HttpStatus.SC_UNAUTHORIZED:
+          throw new UnauthorizedException(errorMessage);
+        case HttpStatus.SC_FORBIDDEN:
+          throw new ForbiddenException(errorMessage);
+        case HttpStatus.SC_NOT_FOUND:
+          throw new NotFoundException(errorMessage);
+        case 429: // TOO_MANY_REQUESTS (additional status code, RFC 6585)
+          // Sets "Retry-After" header as described at https://beta.developer.spotify.com/documentation/web-api/#rate-limiting
+          Header header = httpResponse.getFirstHeader("Retry-After");
+
+          if (header != null) {
+            throw new TooManyRequestsException(errorMessage, Integer.parseInt(header.getValue()));
+          } else {
+            throw new TooManyRequestsException(errorMessage);
+          }
+        case HttpStatus.SC_INTERNAL_SERVER_ERROR:
           throw new InternalServerErrorException(errorMessage);
-        }
-        return responseBody;
+        case HttpStatus.SC_BAD_GATEWAY:
+          throw new BadGatewayException(errorMessage);
+        case HttpStatus.SC_SERVICE_UNAVAILABLE:
+          throw new ServiceUnavailableException(errorMessage);
+        default:
+          if (httpResponse.getCode() >= 400 && httpResponse.getCode() < 500) {
+            throw new BadRequestException(errorMessage);
+          } else if (httpResponse.getCode() >= 500) {
+            throw new InternalServerErrorException(errorMessage);
+          }
+          return responseBody;
+      }
     }
   }
 
