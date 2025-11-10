@@ -1,7 +1,6 @@
 name: CI
 
-permissions:
-  contents: read
+permissions: {}
 
 on:
   pull_request:
@@ -9,6 +8,7 @@ on:
     branches:
       - alpha
       - beta
+      - main
       - master
       - renovate/**
     tags:
@@ -16,22 +16,15 @@ on:
       - '[0-9]+.[0-9]+.[0-9]+-RC[0-9]+'
 
 jobs:
-  prepare_jobs:
-    name: "Prepare: job optimization"
-    runs-on: ubuntu-latest
-    outputs:
-      pr_found: ${{ steps.pr.outputs.pr_found }}
-    steps:
-      - name: Get current PR
-        id: pr
-        uses: 8BitJonny/gh-get-current-pr@4.0.0
-        with:
-          filterOutClosed: true
-          filterOutDraft: true
+  ci-optimization:
+    name: CI optimization
+    uses: dargmuesli/github-actions/.github/workflows/ci-optimization.yml@714a68188444d710ffa3e9f35a05f6a9d420931d # 3.2.0
+    permissions:
+      pull-requests: read
   build:
+    needs: ci-optimization
+    if: needs.ci-optimization.outputs.continue == 'true'
     name: Build
-    needs: prepare_jobs
-    if: needs.prepare_jobs.outputs.pr_found == 'false' || github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -46,21 +39,21 @@ jobs:
       - name: Set up JDK
         uses: actions/setup-java@v5
         with:
-          java-version: ${{ matrix.java }}
-          distribution: temurin
           cache: maven
+          distribution: temurin
+          java-version: ${{ matrix.java }}
       - name: Build with Maven
         run: mvn -B package --file pom.xml
       - name: Upload code coverage
-        uses: codecov/codecov-action@v4.0.0-beta.2
+        uses: codecov/codecov-action@v4.0.0
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
       - name: Release
         if: startsWith(github.ref, 'refs/tags/') && matrix.java == 17
         env:
           GPG_KEY_NAME: B70E1EAC
-          GPG_PASSPHRASE_KEY: ${{ secrets.GPG_PASSPHRASE_KEY }}
           GPG_PASSPHRASE_FILE: ${{ secrets.GPG_PASSPHRASE_FILE }}
+          GPG_PASSPHRASE_KEY: ${{ secrets.GPG_PASSPHRASE_KEY }}
           SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
           SONATYPE_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
         run: |
