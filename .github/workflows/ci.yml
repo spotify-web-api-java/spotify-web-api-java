@@ -18,7 +18,7 @@ on:
 jobs:
   ci-optimization:
     name: CI optimization
-    uses: dargmuesli/github-actions/.github/workflows/ci-optimization.yml@a5dc6e8243538aa44ebc8ef9c4a2d2ace56569f8 # 3.2.2
+    uses: dargmuesli/github-actions/.github/workflows/ci-optimization.yml@a87a4ecfffb7ebaffdba60685f39575a14769784 # 3.2.3
     permissions:
       pull-requests: read
   build:
@@ -45,7 +45,7 @@ jobs:
       - name: Build with Maven
         run: mvn -B package --file pom.xml
       - name: Upload code coverage
-        uses: codecov/codecov-action@5a1091511ad55cbe89839c7260b706298ca349f7 # v5.5.1
+        uses: codecov/codecov-action@671740ac38dd9b0130fbe1cec585b89eea48d3de # v5.5.2
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
       - name: Release
