@@ -1,9 +1,7 @@
 package se.michaelthelin.spotify.model_objects.specification;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.google.gson.Gson;
 import com.google.gson.JsonObject;
-import com.neovisionaries.i18n.CountryCode;
 import se.michaelthelin.spotify.enums.ModelObjectType;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 import se.michaelthelin.spotify.model_objects.IPlaylistItem;
@@ -24,16 +22,12 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
   private final AlbumSimplified album;
   /** The artists who performed the track. */
   private final ArtistSimplified[] artists;
-  /** A list of the countries in which the track can be played. */
-  private final CountryCode[] availableMarkets;
   /** The disc number. */
   private final Integer discNumber;
   /** The track length in milliseconds. */
   private final Integer durationMs;
   /** Whether the track is explicit. */
   private final Boolean explicit;
-  /** External IDs for the track. */
-  private final ExternalId externalIds;
   /** External URLs for the track. */
   private final ExternalUrl externalUrls;
   /** The Spotify Web API endpoint URL for the track. */
@@ -42,14 +36,10 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
   private final String id;
   /** Whether the track is playable. */
   private final Boolean isPlayable;
-  /** Information about the original track. */
-  private final TrackLink linkedFrom;
   /** Restrictions on the track. */
   private final Restrictions restrictions;
   /** The name of the track. */
   private final String name;
-  /** The popularity of the track. */
-  private final Integer popularity;
   /** A link to a 30 second preview of the track. */
   private final String previewUrl;
   /** The number of the track. */
@@ -64,19 +54,15 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
 
     this.album = builder.album;
     this.artists = builder.artists;
-    this.availableMarkets = builder.availableMarkets;
     this.discNumber = builder.discNumber;
     this.durationMs = builder.durationMs;
     this.explicit = builder.explicit;
-    this.externalIds = builder.externalIds;
     this.externalUrls = builder.externalUrls;
     this.href = builder.href;
     this.id = builder.id;
     this.isPlayable = builder.isPlayable;
-    this.linkedFrom = builder.linkedFrom;
     this.restrictions = builder.restrictions;
     this.name = builder.name;
-    this.popularity = builder.popularity;
     this.previewUrl = builder.previewUrl;
     this.trackNumber = builder.trackNumber;
     this.type = builder.type;
@@ -101,16 +87,6 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
    */
   public ArtistSimplified[] getArtists() {
     return artists;
-  }
-
-  /**
-   * Get the country codes of all countries, in which the track is available.
-   *
-   * @return A list of the countries in which the track can be played, identified by their
-   * <a href="http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2</a> code.
-   */
-  public CountryCode[] getAvailableMarkets() {
-    return availableMarkets;
   }
 
   /**
@@ -140,16 +116,6 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
    */
   public Boolean getIsExplicit() {
     return explicit;
-  }
-
-  /**
-   * Get the external IDs of the track.<br>
-   * Example: isrc -&gt; "International Standard Recording Code".
-   *
-   * @return Known external IDs for the track.
-   */
-  public ExternalId getExternalIds() {
-    return externalIds;
   }
 
   /**
@@ -196,17 +162,6 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
   }
 
   /**
-   * Get the track link object of the track if <a href="https://developer.spotify.com/documentation/web-api/concepts/track-relinking">
-   * Track Relinking</a> was applied and the requested track has been replaced with a different track. The track in the
-   * {@code linked_from} object contains information about the originally requested track.
-   *
-   * @return The track in the {@code linked_from} object contains information about the originally requested track.
-   */
-  public TrackLink getLinkedFrom() {
-    return linkedFrom;
-  }
-
-  /**
    * Get the restrictions of the track. Part of the response when
    * <a href="https://developer.spotify.com/documentation/web-api/concepts/track-relinking">Track Relinking</a> is applied, the original
    * track is not available in the given market, and Spotify did not have any tracks to relink it with. The track
@@ -229,24 +184,6 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
   @Override
   public String getName() {
     return name;
-  }
-
-  /**
-   * Get the popularity of the track. The value will be between 0 and 100, with 100 being the most popular. <br><br>
-   * <p>
-   * The popularity of a track is a value between 0 and 100, with 100 being the most popular. The popularity is
-   * calculated by algorithm and is based, in the most part, on the total number of plays the track has had and how
-   * recent those plays are.<br><br>
-   * <p>
-   * Generally speaking, songs that are being played a lot now will have a higher popularity than songs that were played
-   * a lot in the past. Duplicate tracks (e.g. the same track from a single and an album) are rated independently.
-   * Artist and album popularity is derived mathematically from track popularity. Note that the popularity value may lag
-   * actual popularity by a few days: the value is not updated in real time.
-   *
-   * @return The popularity of the track. The value will be between 0 and 100, with 100 being the most popular.
-   */
-  public Integer getPopularity() {
-    return popularity;
   }
 
   /**
@@ -291,11 +228,11 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
 
   @Override
   public String toString() {
-    return "Track(name=" + name + ", artists=" + Arrays.toString(artists) + ", album=" + album + ", availableMarkets="
-      + Arrays.toString(availableMarkets) + ", discNumber=" + discNumber + ", durationMs=" + durationMs
-      + ", explicit=" + explicit + ", externalIds=" + externalIds + ", externalUrls=" + externalUrls + ", href="
-      + href + ", id=" + id + ", isPlayable=" + isPlayable + ", linkedFrom=" + linkedFrom + ", restrictions="
-      + restrictions + ", popularity=" + popularity + ", previewUrl=" + previewUrl + ", trackNumber=" + trackNumber
+    return "Track(name=" + name + ", artists=" + Arrays.toString(artists) + ", album=" + album
+      + ", discNumber=" + discNumber + ", durationMs=" + durationMs
+      + ", explicit=" + explicit + ", externalUrls=" + externalUrls + ", href="
+      + href + ", id=" + id + ", isPlayable=" + isPlayable + ", restrictions="
+      + restrictions + ", previewUrl=" + previewUrl + ", trackNumber=" + trackNumber
       + ", type=" + type + ", uri=" + uri + ")";
   }
 
@@ -310,19 +247,15 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
   public static final class Builder extends AbstractModelObject.Builder {
     private AlbumSimplified album;
     private ArtistSimplified[] artists;
-    private CountryCode[] availableMarkets;
     private Integer discNumber;
     private Integer durationMs;
     private Boolean explicit;
-    private ExternalId externalIds;
     private ExternalUrl externalUrls;
     private String href;
     private String id;
     private Boolean isPlayable;
-    private TrackLink linkedFrom;
     private Restrictions restrictions;
     private String name;
-    private Integer popularity;
     private String previewUrl;
     private Integer trackNumber;
     private ModelObjectType type;
@@ -358,18 +291,6 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
     }
 
     /**
-     * Set the available markets of the track to be built.
-     *
-     * @param availableMarkets A list of the countries in which the track can be played, identified by their
-     *                         <a href="http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2</a> code.
-     * @return A {@link Track.Builder}.
-     */
-    public Builder setAvailableMarkets(CountryCode... availableMarkets) {
-      this.availableMarkets = availableMarkets;
-      return this;
-    }
-
-    /**
      * Set the disc number of the track to be built.
      *
      * @param discNumber The disc number (usually 1 unless the album consists of more than one disc).
@@ -400,17 +321,6 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
      */
     public Builder setExplicit(Boolean explicit) {
       this.explicit = explicit;
-      return this;
-    }
-
-    /**
-     * Set the external IDs of the track to be built.
-     *
-     * @param externalIds Known external IDs for the track.
-     * @return A {@link Track.Builder}.
-     */
-    public Builder setExternalIds(ExternalId externalIds) {
-      this.externalIds = externalIds;
       return this;
     }
 
@@ -459,18 +369,6 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
     }
 
     /**
-     * Set the track link object of the track to be built.
-     *
-     * @param linkedFrom The track in the {@code linked_from} object contains information about the originally requested
-     *                   track.
-     * @return A {@link Track.Builder}.
-     */
-    public Builder setLinkedFrom(TrackLink linkedFrom) {
-      this.linkedFrom = linkedFrom;
-      return this;
-    }
-
-    /**
      * Set the restrictions object of the track to be built.
      *
      * @param restrictions The track response will still contain metadata for the original track, and a restrictions
@@ -490,18 +388,6 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
      */
     public Builder setName(String name) {
       this.name = name;
-      return this;
-    }
-
-    /**
-     * Set the popularity of the track to be built.
-     *
-     * @param popularity The popularity of the track. The value will be between 0 and 100, with 100 being the most
-     *                   popular.
-     * @return A {@link Track.Builder}.
-     */
-    public Builder setPopularity(Integer popularity) {
-      this.popularity = popularity;
       return this;
     }
 
@@ -584,11 +470,6 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
             ? new ArtistSimplified.JsonUtil().createModelObjectArray(
             jsonObject.getAsJsonArray("artists"))
             : null)
-        .setAvailableMarkets(
-          hasAndNotNull(jsonObject, "available_markets")
-            ? new Gson().fromJson(
-            jsonObject.getAsJsonArray("available_markets"), CountryCode[].class)
-            : null)
         .setDiscNumber(
           hasAndNotNull(jsonObject, "disc_number")
             ? jsonObject.get("disc_number").getAsInt()
@@ -600,11 +481,6 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
         .setExplicit(
           hasAndNotNull(jsonObject, "explicit")
             ? jsonObject.get("explicit").getAsBoolean()
-            : null)
-        .setExternalIds(
-          hasAndNotNull(jsonObject, "external_ids")
-            ? new ExternalId.JsonUtil().createModelObject(
-            jsonObject.getAsJsonObject("external_ids"))
             : null)
         .setExternalUrls(
           hasAndNotNull(jsonObject, "external_urls")
@@ -623,11 +499,6 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
           hasAndNotNull(jsonObject, "is_playable")
             ? jsonObject.get("is_playable").getAsBoolean()
             : null)
-        .setLinkedFrom(
-          hasAndNotNull(jsonObject, "linked_from")
-            ? new TrackLink.JsonUtil().createModelObject(
-            jsonObject.get("linked_from").getAsJsonObject())
-            : null)
         .setRestrictions(
           hasAndNotNull(jsonObject, "restrictions")
             ? new Restrictions.JsonUtil().createModelObject(
@@ -636,10 +507,6 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
         .setName(
           hasAndNotNull(jsonObject, "name")
             ? jsonObject.get("name").getAsString()
-            : null)
-        .setPopularity(
-          hasAndNotNull(jsonObject, "popularity")
-            ? jsonObject.get("popularity").getAsInt()
             : null)
         .setPreviewUrl(
           hasAndNotNull(jsonObject, "preview_url")
