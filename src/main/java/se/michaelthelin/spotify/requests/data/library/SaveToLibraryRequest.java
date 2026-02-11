@@ -10,27 +10,28 @@ import se.michaelthelin.spotify.requests.data.AbstractDataRequest;
 import java.io.IOException;
 
 /**
- * Save one or more tracks to the current user’s "Your Music" library.
+ * Save a list of Spotify URIs to the user's library.
  */
-@JsonDeserialize(builder = SaveTracksForUserRequest.Builder.class)
-public class SaveTracksForUserRequest extends AbstractDataRequest<String> {
+@JsonDeserialize(builder = SaveToLibraryRequest.Builder.class)
+public class SaveToLibraryRequest extends AbstractDataRequest<String> {
 
   /**
-   * The private {@link SaveTracksForUserRequest} constructor.
+   * The private {@link SaveToLibraryRequest} constructor.
    *
-   * @param builder A {@link SaveTracksForUserRequest.Builder}.
+   * @param builder A {@link SaveToLibraryRequest.Builder}.
    */
-  private SaveTracksForUserRequest(final Builder builder) {
+  private SaveToLibraryRequest(final Builder builder) {
     super(builder);
   }
 
   /**
-   * Save one or more tracks.
+   * Save items to the user's library.
    *
    * @return A string. <b>Note:</b> This endpoint doesn't return something in its response body.
    * @throws IOException            In case of networking issues.
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
    */
+  @Override
   public String execute() throws
     IOException,
     SpotifyWebApiException,
@@ -39,14 +40,14 @@ public class SaveTracksForUserRequest extends AbstractDataRequest<String> {
   }
 
   /**
-   * Builder class for building a {@link SaveTracksForUserRequest}.
+   * Builder class for building a {@link SaveToLibraryRequest}.
    */
   public static final class Builder extends AbstractDataRequest.Builder<String, Builder> {
 
     /**
-     * Create a new {@link SaveTracksForUserRequest.Builder} instance.
+     * Create a new {@link SaveToLibraryRequest.Builder} instance.
      * <p>
-     * Modification of the current user's "Your Music" collection requires authorization of the
+     * Modification of the current user's library requires authorization of the
      * {@code user-library-modify} scope.
      *
      * @param accessToken Required. A valid access token from the Spotify Accounts service.
@@ -57,42 +58,29 @@ public class SaveTracksForUserRequest extends AbstractDataRequest<String> {
     }
 
     /**
-     * The track IDs setter.
+     * The URIs setter.
      *
-     * @param ids Optional. A comma-separated list of the Spotify IDs. Maximum: 50 IDs.
-     * @return A {@link SaveTracksForUserRequest.Builder}.
+     * @param uris Required. A JSON array of Spotify URIs to save. Maximum: 50 URIs.
+     * @return A {@link SaveToLibraryRequest.Builder}.
      * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URIs &amp; IDs</a>
      */
-    public Builder ids(final String ids) {
-      assert (ids != null);
-      assert (ids.split(",").length <= 50);
-      return setQueryParameter("ids", ids);
-    }
-
-    /**
-     * The track IDs setter.
-     *
-     * @param ids Optional. A json array consisting of the Spotify IDs. Maximum: 50 IDs.
-     * @return A {@link SaveTracksForUserRequest.Builder}.
-     * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URIs &amp; IDs</a>
-     */
-    public Builder ids(final JsonArray ids) {
-      assert (ids != null);
-      assert (!ids.isJsonNull());
-      assert (ids.size() <= 50);
-      return setBodyParameter("ids", ids);
+    public Builder uris(final JsonArray uris) {
+      assert (uris != null);
+      assert (!uris.isJsonNull());
+      assert (uris.size() <= 50);
+      return setBodyParameter("uris", uris);
     }
 
     /**
      * The request build method.
      *
-     * @return A custom {@link SaveTracksForUserRequest}.
+     * @return A custom {@link SaveToLibraryRequest}.
      */
     @Override
-    public SaveTracksForUserRequest build() {
+    public SaveToLibraryRequest build() {
       setContentType(ContentType.APPLICATION_JSON);
-      setPath("/v1/me/tracks");
-      return new SaveTracksForUserRequest(this);
+      setPath("/v1/me/library");
+      return new SaveToLibraryRequest(this);
     }
 
     @Override

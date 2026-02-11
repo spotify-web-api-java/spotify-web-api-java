@@ -141,9 +141,27 @@
             <artifactId>maven-compiler-plugin</artifactId>
             <version>3.15.0</version>
             <configuration>
-              <source>9</source>
-              <target>9</target>
+              <release>9</release>
             </configuration>
+          </plugin>
+          <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>build-helper-maven-plugin</artifactId>
+            <version>3.6.0</version>
+            <executions>
+              <execution>
+                <id>add-examples-source</id>
+                <phase>generate-sources</phase>
+                <goals>
+                  <goal>add-source</goal>
+                </goals>
+                <configuration>
+                  <sources>
+                    <source>${project.basedir}/examples</source>
+                  </sources>
+                </configuration>
+              </execution>
+            </executions>
           </plugin>
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
@@ -174,8 +192,7 @@
             <artifactId>maven-compiler-plugin</artifactId>
             <version>3.15.0</version>
             <configuration>
-              <source>9</source>
-              <target>9</target>
+              <release>9</release>
             </configuration>
           </plugin>
           <plugin>

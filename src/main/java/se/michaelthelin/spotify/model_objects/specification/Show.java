@@ -3,7 +3,6 @@ package se.michaelthelin.spotify.model_objects.specification;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
-import com.neovisionaries.i18n.CountryCode;
 import se.michaelthelin.spotify.enums.ModelObjectType;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 
@@ -16,8 +15,6 @@ import java.util.Objects;
  */
 @JsonDeserialize(builder = Show.Builder.class)
 public class Show extends AbstractModelObject {
-  /** A list of the countries in which the show can be played. */
-  private final CountryCode[] availableMarkets;
   /** The copyright statements of the show. */
   private final Copyright[] copyrights;
   /** A description of the show. */
@@ -42,8 +39,6 @@ public class Show extends AbstractModelObject {
   private final String mediaType;
   /** The name of the show. */
   private final String name;
-  /** The publisher of the show. */
-  private final String publisher;
   /** The object type. */
   private final ModelObjectType type;
   /** The Spotify URI for the show. */
@@ -56,7 +51,6 @@ public class Show extends AbstractModelObject {
    */
   public Show(Builder builder) {
     super(builder);
-    this.availableMarkets = builder.availableMarkets;
     this.copyrights = builder.copyrights;
     this.description = builder.description;
     this.explicit = builder.explicit;
@@ -69,19 +63,8 @@ public class Show extends AbstractModelObject {
     this.languages = builder.languages;
     this.mediaType = builder.mediaType;
     this.name = builder.name;
-    this.publisher = builder.publisher;
     this.type = builder.type;
     this.uri = builder.uri;
-  }
-
-  /**
-   * Get a list of the countries in which the show can be played.
-   *
-   * @return An array of <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2 country
-   * * codes</a>.
-   */
-  public CountryCode[] getAvailableMarkets() {
-    return availableMarkets;
   }
 
   /**
@@ -195,15 +178,6 @@ public class Show extends AbstractModelObject {
   }
 
   /**
-   * Get the publisher of the show.
-   *
-   * @return The publisher of the show.
-   */
-  public String getPublisher() {
-    return publisher;
-  }
-
-  /**
    * Get the model object type. In this case "show".
    *
    * @return A {@link ModelObjectType}.
@@ -223,11 +197,11 @@ public class Show extends AbstractModelObject {
 
   @Override
   public String toString() {
-    return "Show(availableMarkets=" + Arrays.toString(availableMarkets) + ", copyrights=" + Arrays.toString(copyrights)
+    return "Show(copyrights=" + Arrays.toString(copyrights)
         + ", description=" + description + ", explicit=" + explicit + ", episodes=" + episodes + ", externalUrls="
         + externalUrls + ", href=" + href + ", id=" + id + ", images=" + Arrays.toString(images)
         + ", isExternallyHosted=" + isExternallyHosted + ", languages=" + Arrays.toString(languages) + ", mediaType="
-        + mediaType + ", name=" + name + ", publisher=" + publisher + ", type=" + type + ", uri=" + uri + ")";
+        + mediaType + ", name=" + name + ", type=" + type + ", uri=" + uri + ")";
   }
 
   @Override
@@ -239,7 +213,6 @@ public class Show extends AbstractModelObject {
    * Builder class for building {@link Show} instances.
    */
   public static final class Builder extends AbstractModelObject.Builder {
-    private CountryCode[] availableMarkets;
     private Copyright[] copyrights;
     private String description;
     private Boolean explicit;
@@ -252,7 +225,6 @@ public class Show extends AbstractModelObject {
     private String[] languages;
     private String mediaType;
     private String name;
-    private String publisher;
     private ModelObjectType type;
     private String uri;
 
@@ -261,18 +233,6 @@ public class Show extends AbstractModelObject {
      */
     public Builder() {
       super();
-    }
-
-    /**
-     * Set the available markets of the show to be built.
-     *
-     * @param availableMarkets A list of the countries in which the show can be played, identified by their
-     *                         <a href="http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2</a> code.
-     * @return A {@link Show.Builder}.
-     */
-    public Builder setAvailableMarkets(CountryCode... availableMarkets) {
-      this.availableMarkets = availableMarkets;
-      return this;
     }
 
     /**
@@ -408,17 +368,6 @@ public class Show extends AbstractModelObject {
     }
 
     /**
-     * Set the publisher for the show to be built.
-     *
-     * @param publisher The publisher of the show.
-     * @return A {@link Show.Builder}.
-     */
-    public Builder setPublisher(String publisher) {
-      this.publisher = publisher;
-      return this;
-    }
-
-    /**
      * Set the type of the model object. In this case "show".
      *
      * @param type The {@link ModelObjectType}.
@@ -465,11 +414,6 @@ public class Show extends AbstractModelObject {
       }
 
       return new Builder()
-        .setAvailableMarkets(
-          hasAndNotNull(jsonObject, "available_markets")
-            ? new Gson().fromJson(
-            jsonObject.getAsJsonArray("available_markets"), CountryCode[].class)
-            : null)
         .setCopyrights(
           hasAndNotNull(jsonObject, "copyrights")
             ? new Gson().fromJson(
@@ -522,10 +466,6 @@ public class Show extends AbstractModelObject {
         .setName(
           hasAndNotNull(jsonObject, "name")
             ? jsonObject.get("name").getAsString()
-            : null)
-        .setPublisher(
-          hasAndNotNull(jsonObject, "publisher")
-            ? jsonObject.get("publisher").getAsString()
             : null)
         .setType(
           hasAndNotNull(jsonObject, "type")

@@ -24,7 +24,7 @@ public class PlaylistTrack extends AbstractModelObject {
   /** Whether the track is a local file. */
   private final Boolean isLocal;
   /** The track or episode information. */
-  private final IPlaylistItem track;
+  private final IPlaylistItem item;
 
   private PlaylistTrack(final Builder builder) {
     super(builder);
@@ -32,7 +32,7 @@ public class PlaylistTrack extends AbstractModelObject {
     this.addedAt = builder.addedAt;
     this.addedBy = builder.addedBy;
     this.isLocal = builder.isLocal;
-    this.track = builder.track;
+    this.item = builder.item;
   }
 
   /**
@@ -70,13 +70,13 @@ public class PlaylistTrack extends AbstractModelObject {
    *
    * @return Information about the track.
    */
-  public IPlaylistItem getTrack() {
-    return track;
+  public IPlaylistItem getItem() {
+    return item;
   }
 
   @Override
   public String toString() {
-    return "PlaylistTrack(track=" + track + ", addedAt=" + addedAt + ", addedBy=" + addedBy + ", isLocal=" + isLocal
+    return "PlaylistTrack(item=" + item + ", addedAt=" + addedAt + ", addedBy=" + addedBy + ", isLocal=" + isLocal
         + ")";
   }
 
@@ -92,7 +92,7 @@ public class PlaylistTrack extends AbstractModelObject {
     private Date addedAt;
     private User addedBy;
     private Boolean isLocal;
-    private IPlaylistItem track;
+    private IPlaylistItem item;
 
     /**
      * Default constructor.
@@ -135,13 +135,13 @@ public class PlaylistTrack extends AbstractModelObject {
     }
 
     /**
-     * Set the full track or episode object of the playlist track to be built.
+     * Set the full track or episode object of the playlist item to be built.
      *
-     * @param track Information about the track.
+     * @param item Information about the item.
      * @return A {@link PlaylistTrack.Builder}.
      */
-    public Builder setTrack(IPlaylistItem track) {
-      this.track = track;
+    public Builder setItem(IPlaylistItem item) {
+      this.item = item;
       return this;
     }
 
@@ -169,12 +169,12 @@ public class PlaylistTrack extends AbstractModelObject {
       }
 
       try {
-        IPlaylistItem track = null;
+        IPlaylistItem item = null;
 
-        if (hasAndNotNull(jsonObject, "track")) {
-          final JsonObject trackObj = jsonObject.getAsJsonObject("track");
+        if (hasAndNotNull(jsonObject, "item")) {
+          final JsonObject trackObj = jsonObject.getAsJsonObject("item");
 
-          track = PlaylistItemFactory.createPlaylistItem(trackObj);
+          item = PlaylistItemFactory.createPlaylistItem(trackObj);
         }
 
         return new Builder()
@@ -191,7 +191,7 @@ public class PlaylistTrack extends AbstractModelObject {
             hasAndNotNull(jsonObject, "is_local")
               ? jsonObject.get("is_local").getAsBoolean()
               : null)
-          .setTrack(track)
+          .setItem(item)
           .build();
       } catch (ParseException e) {
         SpotifyApi.LOGGER.log(Level.SEVERE, e.getMessage());
