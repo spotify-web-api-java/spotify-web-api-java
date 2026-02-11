@@ -7,7 +7,7 @@
 
   <groupId>se.michaelthelin.spotify</groupId>
   <artifactId>spotify-web-api-java</artifactId>
-  <version>9.4.0</version>
+  <version>10.0.0-RC1</version>
   <!--
    DO NOT FORGET
    - to update version numbers in README (2x)
