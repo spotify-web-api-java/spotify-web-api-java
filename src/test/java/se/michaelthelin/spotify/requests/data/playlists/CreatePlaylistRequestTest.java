@@ -17,7 +17,7 @@ import static se.michaelthelin.spotify.Assertions.*;
 
 public class CreatePlaylistRequestTest extends AbstractDataTest<Playlist> {
   private final CreatePlaylistRequest defaultRequest = ITest.SPOTIFY_API
-    .createPlaylist(ITest.ID_USER, ITest.NAME)
+    .createPlaylist(ITest.NAME)
     .setHttpManager(
       TestUtil.MockedHttpManager.returningJson(
         "requests/data/playlists/CreatePlaylistRequest.json"))
@@ -50,7 +50,7 @@ public class CreatePlaylistRequestTest extends AbstractDataTest<Playlist> {
       "description",
       ITest.DESCRIPTION);
     assertEquals(
-      "https://api.spotify.com:443/v1/users/abbaspotify/playlists",
+      "https://api.spotify.com:443/v1/me/playlists",
       defaultRequest.getUri().toString());
   }
 
@@ -93,7 +93,7 @@ public class CreatePlaylistRequestTest extends AbstractDataTest<Playlist> {
       "s0o3TSuYnRLl2jch+oA4OEbKwq/fNxhGBkSPnvhZdmWjNV0q3uCAWuGIhEx8SHIx",
       playlist.getSnapshotId());
     assertNotNull(
-      playlist.getTracks());
+      playlist.getItems());
     assertEquals(
       ModelObjectType.PLAYLIST,
       playlist.getType());

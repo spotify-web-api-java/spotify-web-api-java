@@ -17,7 +17,7 @@ public class CreatePlaylistRequestNumericStringTest {
         CreatePlaylistRequest request = new SpotifyApi.Builder()
             .setAccessToken("test-token")
             .build()
-            .createPlaylist("testuser", "2025")
+            .createPlaylist("2025")
             .description("2025")
             .build();
 
@@ -43,7 +43,7 @@ public class CreatePlaylistRequestNumericStringTest {
         CreatePlaylistRequest request = new SpotifyApi.Builder()
             .setAccessToken("test-token")
             .build()
-            .createPlaylist("testuser", "123.45")  // decimal number as string
+            .createPlaylist("123.45")  // decimal number as string
             .description("abc123")  // mixed alphanumeric
             .build();
 
@@ -61,7 +61,7 @@ public class CreatePlaylistRequestNumericStringTest {
         CreatePlaylistRequest request = new SpotifyApi.Builder()
             .setAccessToken("test-token")
             .build()
-            .createPlaylist("testuser", "null")
+            .createPlaylist("null")
             .description("true")
             .build();
 
