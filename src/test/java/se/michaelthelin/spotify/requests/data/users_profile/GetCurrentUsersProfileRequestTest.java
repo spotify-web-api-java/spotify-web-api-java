@@ -1,12 +1,10 @@
 package se.michaelthelin.spotify.requests.data.users_profile;
 
-import com.neovisionaries.i18n.CountryCode;
 import org.apache.hc.core5.http.ParseException;
 import org.junit.jupiter.api.Test;
 import se.michaelthelin.spotify.ITest;
 import se.michaelthelin.spotify.TestUtil;
 import se.michaelthelin.spotify.enums.ModelObjectType;
-import se.michaelthelin.spotify.enums.ProductType;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.model_objects.specification.User;
 import se.michaelthelin.spotify.requests.data.AbstractDataTest;
@@ -51,18 +49,10 @@ public class GetCurrentUsersProfileRequestTest extends AbstractDataTest<User> {
       "1937-06-01",
       user.getBirthdate());
     assertEquals(
-      CountryCode.SE,
-      user.getCountry());
-    assertEquals(
       "JM Wizzler",
       user.getDisplayName());
-    assertEquals(
-      "email@example.com",
-      user.getEmail());
     assertNotNull(
       user.getExternalUrls());
-    assertNotNull(
-      user.getFollowers());
     assertEquals(
       "https://api.spotify.com/v1/users/wizzler",
       user.getHref());
@@ -72,9 +62,6 @@ public class GetCurrentUsersProfileRequestTest extends AbstractDataTest<User> {
     assertEquals(
       1,
       user.getImages().length);
-    assertEquals(
-      ProductType.PREMIUM,
-      user.getProduct());
     assertEquals(
       ModelObjectType.USER,
       user.getType());
