@@ -1,10 +1,7 @@
 package se.michaelthelin.spotify.model_objects.specification;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.google.gson.Gson;
 import com.google.gson.JsonObject;
-import com.neovisionaries.i18n.CountryCode;
-import se.michaelthelin.spotify.enums.AlbumGroup;
 import se.michaelthelin.spotify.enums.AlbumType;
 import se.michaelthelin.spotify.enums.ModelObjectType;
 import se.michaelthelin.spotify.enums.ReleaseDatePrecision;
@@ -21,14 +18,10 @@ import java.util.Objects;
  */
 @JsonDeserialize(builder = AlbumSimplified.Builder.class)
 public class AlbumSimplified extends AbstractModelObject implements ISearchModelObject {
-  /** The album group the album belongs to. */
-  private final AlbumGroup albumGroup;
   /** The type of the album. */
   private final AlbumType albumType;
   /** The artists who performed the album. */
   private final ArtistSimplified[] artists;
-  /** The markets in which the album is available. */
-  private final CountryCode[] availableMarkets;
   /** Known external URLs for this album. */
   private final ExternalUrl externalUrls;
   /** A link to the Web API endpoint providing full details of the album. */
@@ -53,10 +46,8 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
   private AlbumSimplified(final Builder builder) {
     super(builder);
 
-    this.albumGroup = builder.albumGroup;
     this.albumType = builder.albumType;
     this.artists = builder.artists;
-    this.availableMarkets = builder.availableMarkets;
     this.externalUrls = builder.externalUrls;
     this.href = builder.href;
     this.id = builder.id;
@@ -67,15 +58,6 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
     this.restrictions = builder.restrictions;
     this.type = builder.type;
     this.uri = builder.uri;
-  }
-
-  /**
-   * Get the Spotify Album Group of the album.
-   *
-   * @return The album group date of the album.
-   */
-  public AlbumGroup getAlbumGroup() {
-    return albumGroup;
   }
 
   /**
@@ -94,16 +76,6 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
    */
   public ArtistSimplified[] getArtists() {
     return artists;
-  }
-
-  /**
-   * Get the country codes of all countries, in which the album is available.
-   *
-   * @return An array of <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2 country
-   * codes</a>.
-   */
-  public CountryCode[] getAvailableMarkets() {
-    return availableMarkets;
   }
 
   /**
@@ -199,8 +171,8 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
 
   @Override
   public String toString() {
-    return "AlbumSimplified(artists=" + Arrays.toString(artists) + ", name=" + name + ", albumGroup=" + albumGroup
-        + ", albumType=" + albumType + ", availableMarkets=" + Arrays.toString(availableMarkets) + ", externalUrls="
+    return "AlbumSimplified(artists=" + Arrays.toString(artists) + ", name=" + name
+        + ", albumType=" + albumType + ", externalUrls="
         + externalUrls + ", href=" + href + ", id=" + id + ", images=" + Arrays.toString(images) + ", releaseDate="
         + releaseDate + ", releaseDatePrecision=" + releaseDatePrecision + ", restrictions=" + restrictions + ", type="
         + type + ", uri=" + uri + ")";
@@ -215,10 +187,8 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
    * Builder class for building {@link AlbumSimplified} instances.
    */
   public static final class Builder extends AbstractModelObject.Builder {
-    private AlbumGroup albumGroup;
     private AlbumType albumType;
     private ArtistSimplified[] artists;
-    private CountryCode[] availableMarkets;
     private ExternalUrl externalUrls;
     private String href;
     private String id;
@@ -235,17 +205,6 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
      */
     public Builder() {
       super();
-    }
-
-    /**
-     * Set the album group of the album to be built.
-     *
-     * @param albumGroup The album group of the album.
-     * @return A {@link AlbumSimplified.Builder}.
-     */
-    public Builder setAlbumGroup(AlbumGroup albumGroup) {
-      this.albumGroup = albumGroup;
-      return this;
     }
 
     /**
@@ -267,18 +226,6 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
      */
     public Builder setArtists(ArtistSimplified... artists) {
       this.artists = artists;
-      return this;
-    }
-
-    /**
-     * Set the available markets of the album to be built.
-     *
-     * @param availableMarkets <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">
-     *                         ISO 3166-1 alpha-2 country codes</a>.
-     * @return A {@link AlbumSimplified.Builder}.
-     */
-    public Builder setAvailableMarkets(CountryCode... availableMarkets) {
-      this.availableMarkets = availableMarkets;
       return this;
     }
 
@@ -417,11 +364,6 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
       }
 
       return new AlbumSimplified.Builder()
-        .setAlbumGroup(
-          hasAndNotNull(jsonObject, "album_group")
-            ? AlbumGroup.keyOf(
-            jsonObject.get("album_group").getAsString().toLowerCase())
-            : null)
         .setAlbumType(
           hasAndNotNull(jsonObject, "album_type")
             ? AlbumType.keyOf(
@@ -431,11 +373,6 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
           hasAndNotNull(jsonObject, "artists")
             ? new ArtistSimplified.JsonUtil().createModelObjectArray(
             jsonObject.getAsJsonArray("artists"))
-            : null)
-        .setAvailableMarkets(
-          hasAndNotNull(jsonObject, "available_markets")
-            ? new Gson().fromJson(
-            jsonObject.get("available_markets"), CountryCode[].class)
             : null)
         .setExternalUrls(
           hasAndNotNull(jsonObject, "external_urls")
