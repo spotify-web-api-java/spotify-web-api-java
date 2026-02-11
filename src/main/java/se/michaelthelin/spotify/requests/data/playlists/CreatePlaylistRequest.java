@@ -10,7 +10,7 @@ import se.michaelthelin.spotify.requests.data.AbstractDataRequest;
 import java.io.IOException;
 
 /**
- * Create a playlist for a Spotify user. (The playlist will be empty until you add tracks
+ * Create a playlist for the current user. (The playlist will be empty until you add tracks
  * with an {@link AddItemsToPlaylistRequest}.)
  */
 @JsonDeserialize(builder = CreatePlaylistRequest.Builder.class)
@@ -55,19 +55,6 @@ public class CreatePlaylistRequest extends AbstractDataRequest<Playlist> {
      */
     public Builder(final String accessToken) {
       super(accessToken);
-    }
-
-    /**
-     * The user ID setter.
-     *
-     * @param user_id The user's Spotify user ID.
-     * @return A {@link CreatePlaylistRequest.Builder}.
-     * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URIs &amp; IDs</a>
-     */
-    public Builder user_id(final String user_id) {
-      assert (user_id != null);
-      assert (!user_id.isEmpty());
-      return setPathParameter("user_id", user_id);
     }
 
     /**
@@ -129,7 +116,7 @@ public class CreatePlaylistRequest extends AbstractDataRequest<Playlist> {
     @Override
     public CreatePlaylistRequest build() {
       setContentType(ContentType.APPLICATION_JSON);
-      setPath("/v1/users/{user_id}/playlists");
+      setPath("/v1/me/playlists");
       return new CreatePlaylistRequest(this);
     }
 
