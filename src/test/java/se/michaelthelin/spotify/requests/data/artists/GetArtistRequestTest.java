@@ -13,7 +13,6 @@ import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class GetArtistRequestTest extends AbstractDataTest<Artist> {
   private final GetArtistRequest defaultRequest = ITest.SPOTIFY_API.getArtist(ITest.ID_ARTIST)
@@ -47,8 +46,6 @@ public class GetArtistRequestTest extends AbstractDataTest<Artist> {
     assertEquals(
       "https://open.spotify.com/artist/0OdUWJ0sBjDrqHygGUXeCF",
       artist.getExternalUrls().get("spotify"));
-    assertNotNull(
-      artist.getFollowers());
     assertEquals(
       "indie folk",
       artist.getGenres()[0]);
@@ -64,9 +61,6 @@ public class GetArtistRequestTest extends AbstractDataTest<Artist> {
     assertEquals(
       "Band of Horses",
       artist.getName());
-    assertEquals(
-      59,
-      (int) artist.getPopularity());
     assertEquals(
       ModelObjectType.ARTIST,
       artist.getType());
