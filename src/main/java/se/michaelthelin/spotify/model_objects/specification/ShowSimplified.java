@@ -3,7 +3,6 @@ package se.michaelthelin.spotify.model_objects.specification;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
-import com.neovisionaries.i18n.CountryCode;
 import se.michaelthelin.spotify.enums.ModelObjectType;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 import se.michaelthelin.spotify.requests.data.search.interfaces.ISearchModelObject;
@@ -17,8 +16,6 @@ import java.util.Objects;
  */
 @JsonDeserialize(builder = ShowSimplified.Builder.class)
 public class ShowSimplified extends AbstractModelObject implements ISearchModelObject {
-  /** A list of the countries in which the show can be played. */
-  private final CountryCode[] availableMarkets;
   /** The copyright statements of the show. */
   private final Copyright[] copyrights;
   /** A description of the show. */
@@ -41,8 +38,6 @@ public class ShowSimplified extends AbstractModelObject implements ISearchModelO
   private final String mediaType;
   /** The name of the show. */
   private final String name;
-  /** The publisher of the show. */
-  private final String publisher;
   /** The object type. */
   private final ModelObjectType type;
   /** The Spotify URI for the show. */
@@ -55,7 +50,6 @@ public class ShowSimplified extends AbstractModelObject implements ISearchModelO
    */
   public ShowSimplified(Builder builder) {
     super(builder);
-    this.availableMarkets = builder.availableMarkets;
     this.copyrights = builder.copyrights;
     this.description = builder.description;
     this.explicit = builder.explicit;
@@ -67,19 +61,8 @@ public class ShowSimplified extends AbstractModelObject implements ISearchModelO
     this.languages = builder.languages;
     this.mediaType = builder.mediaType;
     this.name = builder.name;
-    this.publisher = builder.publisher;
     this.type = builder.type;
     this.uri = builder.uri;
-  }
-
-  /**
-   * Get a list of the countries in which the show can be played.
-   *
-   * @return An array of <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2 country
-   * * codes</a>.
-   */
-  public CountryCode[] getAvailableMarkets() {
-    return availableMarkets;
   }
 
   /**
@@ -184,15 +167,6 @@ public class ShowSimplified extends AbstractModelObject implements ISearchModelO
   }
 
   /**
-   * Get the publisher of the show.
-   *
-   * @return The publisher of the show.
-   */
-  public String getPublisher() {
-    return publisher;
-  }
-
-  /**
    * Get the model object type. In this case "show".
    *
    * @return A {@link ModelObjectType}.
@@ -212,11 +186,11 @@ public class ShowSimplified extends AbstractModelObject implements ISearchModelO
 
   @Override
   public String toString() {
-    return "ShowSimplified(availableMarkets=" + Arrays.toString(availableMarkets) + ", copyrights="
+    return "ShowSimplified(copyrights="
         + Arrays.toString(copyrights) + ", description=" + description + ", explicit=" + explicit + ", externalUrls="
         + externalUrls + ", href=" + href + ", id=" + id + ", images=" + Arrays.toString(images)
         + ", isExternallyHosted=" + isExternallyHosted + ", languages=" + Arrays.toString(languages) + ", mediaType="
-        + mediaType + ", name=" + name + ", publisher=" + publisher + ", type=" + type + ", uri=" + uri + ")";
+        + mediaType + ", name=" + name + ", type=" + type + ", uri=" + uri + ")";
   }
 
   @Override
@@ -228,7 +202,6 @@ public class ShowSimplified extends AbstractModelObject implements ISearchModelO
    * Builder class for building {@link ShowSimplified} instances.
    */
   public static final class Builder extends AbstractModelObject.Builder {
-    private CountryCode[] availableMarkets;
     private Copyright[] copyrights;
     private String description;
     private Boolean explicit;
@@ -240,7 +213,6 @@ public class ShowSimplified extends AbstractModelObject implements ISearchModelO
     private String[] languages;
     private String mediaType;
     private String name;
-    private String publisher;
     private ModelObjectType type;
     private String uri;
 
@@ -249,18 +221,6 @@ public class ShowSimplified extends AbstractModelObject implements ISearchModelO
      */
     public Builder() {
       super();
-    }
-
-    /**
-     * Set the available markets of the show to be built.
-     *
-     * @param availableMarkets A list of the countries in which the show can be played, identified by their
-     *                         <a href="http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2</a> code.
-     * @return A {@link ShowSimplified.Builder}.
-     */
-    public Builder setAvailableMarkets(CountryCode... availableMarkets) {
-      this.availableMarkets = availableMarkets;
-      return this;
     }
 
     /**
@@ -385,17 +345,6 @@ public class ShowSimplified extends AbstractModelObject implements ISearchModelO
     }
 
     /**
-     * Set the publisher for the show to be built.
-     *
-     * @param publisher The publisher of the show.
-     * @return A {@link ShowSimplified.Builder}.
-     */
-    public Builder setPublisher(String publisher) {
-      this.publisher = publisher;
-      return this;
-    }
-
-    /**
      * Set the type of the model object. In this case "show".
      *
      * @param type The {@link ModelObjectType}.
@@ -442,11 +391,6 @@ public class ShowSimplified extends AbstractModelObject implements ISearchModelO
       }
 
       return new Builder()
-        .setAvailableMarkets(
-          hasAndNotNull(jsonObject, "available_markets")
-            ? new Gson().fromJson(
-            jsonObject.getAsJsonArray("available_markets"), CountryCode[].class)
-            : null)
         .setCopyrights(
           hasAndNotNull(jsonObject, "copyrights")
             ? new Gson().fromJson(
@@ -494,10 +438,6 @@ public class ShowSimplified extends AbstractModelObject implements ISearchModelO
         .setName(
           hasAndNotNull(jsonObject, "name")
             ? jsonObject.get("name").getAsString()
-            : null)
-        .setPublisher(
-          hasAndNotNull(jsonObject, "publisher")
-            ? jsonObject.get("publisher").getAsString()
             : null)
         .setType(
           hasAndNotNull(jsonObject, "type")
