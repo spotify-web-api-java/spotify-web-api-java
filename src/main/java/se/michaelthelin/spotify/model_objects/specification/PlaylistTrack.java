@@ -135,9 +135,9 @@ public class PlaylistTrack extends AbstractModelObject {
     }
 
     /**
-     * Set the full track or episode object of the playlist track to be built.
+     * Set the full track or episode object of the playlist item to be built.
      *
-     * @param track Information about the track.
+     * @param item Information about the item.
      * @return A {@link PlaylistTrack.Builder}.
      */
     public Builder setItem(IPlaylistItem item) {

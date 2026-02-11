@@ -368,9 +368,9 @@ public class Playlist extends AbstractModelObject {
     }
 
     /**
-     * Set the tracks of the playlist to be built.
+     * Set the items of the playlist to be built.
      *
-     * @param tracks Information about the tracks of the playlist.
+     * @param items Information about the items of the playlist.
      * @return A {@link Playlist.Builder}.
      */
     public Builder setItems(Paging<PlaylistTrack> items) {
