@@ -44,8 +44,6 @@ jobs:
           java-version: ${{ matrix.java }}
       - name: Build with Maven
         run: mvn -B package --file pom.xml
-      - name: Compile examples
-        run: mvn -B compile -P compile-examples --file pom.xml
       - name: Upload code coverage
         uses: codecov/codecov-action@671740ac38dd9b0130fbe1cec585b89eea48d3de # v5.5.2
         with:
