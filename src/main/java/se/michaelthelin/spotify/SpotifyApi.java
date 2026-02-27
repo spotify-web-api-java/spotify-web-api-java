@@ -45,6 +45,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
 import java.util.logging.Logger;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeParseException;
 
 /**
  * Instances of the SpotifyApi class provide access to the Spotify Web API.
@@ -93,7 +97,9 @@ public class SpotifyApi {
    * The date format used by the Spotify Web API. It uses the {@code GMT}  timezone and the following pattern:
    * {@code yyyy-MM-dd'T'HH:mm:ss}
    */
-  private static final ThreadLocal<SimpleDateFormat> SIMPLE_DATE_FORMAT = ThreadLocal.withInitial(() -> makeSimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", "GMT"));
+  private static final DateTimeFormatter SIMPLE_DATE_FORMATTER = DateTimeFormatter
+    .ofPattern("yyyy-MM-dd'T'HH:mm:ss")
+    .withZone(ZoneId.of("GMT"));
 
   private final IHttpManager httpManager;
   private final String scheme;
@@ -163,7 +169,23 @@ public class SpotifyApi {
    * @throws ParseException if the date is not in a valid format
    */
   public static Date parseDefaultDate(String date) throws ParseException {
-    return SIMPLE_DATE_FORMAT.get().parse(date);
+    if (date == null) {
+      throw new ParseException("Date string is null", 0);
+    }
+
+    String parsedDate = date.length() > 19 ? date.substring(0, 19) : date;
+
+    try {
+      return Date.from(LocalDateTime.parse(parsedDate, SIMPLE_DATE_FORMATTER)
+          .atZone(SIMPLE_DATE_FORMATTER.getZone())
+          .toInstant());
+    } catch (DateTimeParseException e) {
+      int errorIndex = e.getErrorIndex();
+      if (errorIndex < 0) {
+        errorIndex = 0;
+      }
+      throw new ParseException(e.getMessage(), errorIndex);
+    }
   }
 
   /**
@@ -173,7 +195,7 @@ public class SpotifyApi {
    * @return the formatted date
    */
   public static String formatDefaultDate(Date date) {
-    return SIMPLE_DATE_FORMAT.get().format(date);
+    return SIMPLE_DATE_FORMATTER.format(date.toInstant());
   }
 
   /**
