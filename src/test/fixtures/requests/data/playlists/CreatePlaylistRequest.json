@@ -1,0 +1,42 @@
+{
+  "collaborative": false,
+  "description": "New playlist description",
+  "external_urls": {
+    "spotify": "https://open.spotify.com/playlist/3cEYpjA9oz9GiPac4AsH4n"
+  },
+  "href": "https://api.spotify.com/v1/playlists/3cEYpjA9oz9GiPac4AsH4n",
+  "id": "3cEYpjA9oz9GiPac4AsH4n",
+  "images": [],
+  "name": "New Playlist",
+  "owner": {
+    "external_urls": {
+      "spotify": "https://open.spotify.com/user/jmperezperez"
+    },
+    "href": "https://api.spotify.com/v1/users/jmperezperez",
+    "id": "jmperezperez",
+    "type": "user",
+    "uri": "spotify:user:jmperezperez"
+  },
+  "public": false,
+  "snapshot_id": "JbtmHBDBAkMzFjnFzSP0aeYCCMP1XSIY5VHZT_jUGrFTzNTa6tnPiSzeBMFIcH2",
+  "items": {
+    "href": "https://api.spotify.com/v1/playlists/3cEYpjA9oz9GiPac4AsH4n/tracks",
+    "limit": 100,
+    "next": null,
+    "offset": 0,
+    "previous": null,
+    "total": 0,
+    "items": []
+  },
+  "tracks": {
+    "href": "https://api.spotify.com/v1/playlists/3cEYpjA9oz9GiPac4AsH4n/tracks",
+    "limit": 100,
+    "next": null,
+    "offset": 0,
+    "previous": null,
+    "total": 0,
+    "items": []
+  },
+  "type": "playlist",
+  "uri": "spotify:playlist:3cEYpjA9oz9GiPac4AsH4n"
+}

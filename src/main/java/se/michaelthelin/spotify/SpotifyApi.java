@@ -1242,6 +1242,18 @@ public class SpotifyApi {
   }
 
   /**
+   * Create a playlist for the current Spotify user.
+   *
+   * @param name The name for the new playlist.
+   * @return A {@link CreatePlaylistRequest.Builder}.
+   */
+  public CreatePlaylistRequest.Builder createPlaylist(String name) {
+    return new CreatePlaylistRequest.Builder(accessToken)
+      .setDefaults(httpManager, scheme, host, port)
+      .name(name);
+  }
+
+  /**
    * Get a list of the playlists owned or followed by the current Spotify user.
    *
    * @return A {@link GetListOfCurrentUsersPlaylistsRequest.Builder}.
