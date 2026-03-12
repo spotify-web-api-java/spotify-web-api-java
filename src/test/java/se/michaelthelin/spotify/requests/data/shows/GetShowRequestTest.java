@@ -44,9 +44,6 @@ public class GetShowRequestTest extends AbstractDataTest<Show> {
 
   public void shouldReturnDefault(final Show show) {
     assertEquals(
-      77,
-      show.getAvailableMarkets().length);
-    assertEquals(
       0,
       show.getCopyrights().length);
     assertEquals(
@@ -81,9 +78,6 @@ public class GetShowRequestTest extends AbstractDataTest<Show> {
     assertEquals(
       "Acht Milliarden – Der Auslands-Podcast",
       show.getName());
-    assertEquals(
-      "DER SPIEGEL",
-      show.getPublisher());
     assertEquals(
       ModelObjectType.SHOW,
       show.getType());

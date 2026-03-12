@@ -13,7 +13,7 @@
         "uri": "spotify:user:spotify_espa%C3%B1a"
       },
       "is_local": false,
-      "track": {
+      "item": {
         "album": {
           "album_type": "single",
           "artists": [

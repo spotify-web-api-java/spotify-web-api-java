@@ -27,7 +27,7 @@
   },
   "public": null,
   "snapshot_id": "bNLWdmhh+HDsbHzhckXeDC0uyKyg4FjPI/KEsKjAE526usnz2LxwgyBoMShVL+z+",
-  "tracks": {
+  "items": {
     "href": "https://api.spotify.com/v1/users/spotify/playlists/59ZbFPES4DQwEjBpWHzrtC/tracks",
     "items": [
       {
@@ -42,7 +42,7 @@
           "uri": "spotify:user:spotify"
         },
         "is_local": false,
-        "track": {
+        "item": {
           "album": {
             "album_type": "single",
             "available_markets": [

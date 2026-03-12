@@ -38,7 +38,7 @@ public class Playlist extends AbstractModelObject {
   /** The version identifier for the current playlist. */
   private final String snapshotId;
   /** Information about the tracks of the playlist. */
-  private final Paging<PlaylistTrack> tracks;
+  private final Paging<PlaylistTrack> items;
   /** The object type. */
   private final ModelObjectType type;
   /** The Spotify URI for the playlist. */
@@ -58,7 +58,7 @@ public class Playlist extends AbstractModelObject {
     this.owner = builder.owner;
     this.publicAccess = builder.publicAccess;
     this.snapshotId = builder.snapshotId;
-    this.tracks = builder.tracks;
+    this.items = builder.items;
     this.type = builder.type;
     this.uri = builder.uri;
   }
@@ -183,8 +183,8 @@ public class Playlist extends AbstractModelObject {
    *
    * @return Information about the tracks of the playlist.
    */
-  public Paging<PlaylistTrack> getTracks() {
-    return tracks;
+  public Paging<PlaylistTrack> getItems() {
+    return items;
   }
 
   /**
@@ -208,7 +208,7 @@ public class Playlist extends AbstractModelObject {
 
   @Override
   public String toString() {
-    return "Playlist(name=" + name + ", description=" + description + ", tracks=" + tracks + ", collaborative="
+    return "Playlist(name=" + name + ", description=" + description + ", items=" + items + ", collaborative="
         + collaborative + ", externalUrls=" + externalUrls + ", followers=" + followers + ", href=" + href + ", id="
         + id + ", images=" + Arrays.toString(images) + ", owner=" + owner + ", publicAccess=" + publicAccess
         + ", snapshotId=" + snapshotId + ", type=" + type + ", uri=" + uri + ")";
@@ -234,7 +234,7 @@ public class Playlist extends AbstractModelObject {
     private User owner;
     private Boolean publicAccess;
     private String snapshotId;
-    private Paging<PlaylistTrack> tracks;
+    private Paging<PlaylistTrack> items;
     private ModelObjectType type;
     private String uri;
 
@@ -368,13 +368,13 @@ public class Playlist extends AbstractModelObject {
     }
 
     /**
-     * Set the tracks of the playlist to be built.
+     * Set the items of the playlist to be built.
      *
-     * @param tracks Information about the tracks of the playlist.
+     * @param items Information about the items of the playlist.
      * @return A {@link Playlist.Builder}.
      */
-    public Builder setTracks(Paging<PlaylistTrack> tracks) {
-      this.tracks = tracks;
+    public Builder setItems(Paging<PlaylistTrack> items) {
+      this.items = items;
       return this;
     }
 
@@ -473,10 +473,10 @@ public class Playlist extends AbstractModelObject {
           hasAndNotNull(jsonObject, "snapshot_id")
             ? jsonObject.get("snapshot_id").getAsString()
             : null)
-        .setTracks(
-          hasAndNotNull(jsonObject, "tracks")
+        .setItems(
+          hasAndNotNull(jsonObject, "items")
             ? new PlaylistTrack.JsonUtil().createModelObjectPaging(
-            jsonObject.getAsJsonObject("tracks"))
+            jsonObject.getAsJsonObject("items"))
             : null)
         .setType(
           hasAndNotNull(jsonObject, "type")
