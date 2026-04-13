@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.enums.ModelObjectType;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
-import se.michaelthelin.spotify.model_objects.IPlaylistItem;
 import se.michaelthelin.spotify.model_objects.miscellaneous.Restrictions;
 import se.michaelthelin.spotify.model_objects.interfaces.ITrack;
 import se.michaelthelin.spotify.requests.data.personalization.interfaces.IArtistTrackModelObject;
@@ -18,7 +17,7 @@ import java.util.Objects;
  * Track objects</a> by building instances from this class.
  */
 @JsonDeserialize(builder = Track.Builder.class)
-public class Track extends AbstractModelObject implements IArtistTrackModelObject, ISearchModelObject, IPlaylistItem, ITrack {
+public class Track extends AbstractModelObject implements IArtistTrackModelObject, ISearchModelObject, ITrack {
   /** The album on which the track appears. */
   private final AlbumSimplified album;
   /** The artists who performed the track. */

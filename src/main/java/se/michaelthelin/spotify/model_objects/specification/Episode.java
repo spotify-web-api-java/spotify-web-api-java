@@ -6,7 +6,6 @@ import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.enums.ModelObjectType;
 import se.michaelthelin.spotify.enums.ReleaseDatePrecision;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
-import se.michaelthelin.spotify.model_objects.IPlaylistItem;
 import se.michaelthelin.spotify.model_objects.interfaces.IEpisode;
 
 import java.util.Arrays;
@@ -17,7 +16,7 @@ import java.util.Objects;
  * episode objects</a> by building instances from this class.
  */
 @JsonDeserialize(builder = Episode.Builder.class)
-public class Episode extends AbstractModelObject implements IPlaylistItem, IEpisode {
+public class Episode extends AbstractModelObject implements IEpisode {
   /** The audio preview URL for the episode. */
   private final String audioPreviewUrl;
   /** The description of the episode. */
