@@ -89,6 +89,13 @@ public interface IPlaylist {
   Boolean getIsPublicAccess();
 
   /**
+   * Get information about the items in the playlist. The concrete type depends on the specific playlist object type.
+   *
+   * @return Item information containing total count.
+   */
+  IHasTotal getItems();
+
+  /**
    * Get the snapshot ID, the version identifier for the current playlist. Can be supplied in other requests to target
    * a specific playlist version.
    *
