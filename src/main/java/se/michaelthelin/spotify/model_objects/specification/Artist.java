@@ -5,6 +5,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.enums.ModelObjectType;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
+import se.michaelthelin.spotify.model_objects.interfaces.IArtist;
 import se.michaelthelin.spotify.requests.data.personalization.interfaces.IArtistTrackModelObject;
 import se.michaelthelin.spotify.requests.data.search.interfaces.ISearchModelObject;
 
@@ -16,7 +17,7 @@ import java.util.Objects;
  * Artist objects</a> by building instances from this class.
  */
 @JsonDeserialize(builder = Artist.Builder.class)
-public class Artist extends AbstractModelObject implements IArtistTrackModelObject, ISearchModelObject {
+public class Artist extends AbstractModelObject implements IArtistTrackModelObject, ISearchModelObject, IArtist {
   /** Known external URLs for this artist. */
   private final ExternalUrl externalUrls;
   /** A list of the genres the artist is associated with. */

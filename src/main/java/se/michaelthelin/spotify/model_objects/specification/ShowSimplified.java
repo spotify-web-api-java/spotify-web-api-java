@@ -5,6 +5,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.enums.ModelObjectType;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
+import se.michaelthelin.spotify.model_objects.interfaces.IShow;
 import se.michaelthelin.spotify.requests.data.search.interfaces.ISearchModelObject;
 
 import java.util.Arrays;
@@ -15,7 +16,7 @@ import java.util.Objects;
  * simplified Show objects</a> by building instances from this class.
  */
 @JsonDeserialize(builder = ShowSimplified.Builder.class)
-public class ShowSimplified extends AbstractModelObject implements ISearchModelObject {
+public class ShowSimplified extends AbstractModelObject implements ISearchModelObject, IShow {
   /** The copyright statements of the show. */
   private final Copyright[] copyrights;
   /** A description of the show. */

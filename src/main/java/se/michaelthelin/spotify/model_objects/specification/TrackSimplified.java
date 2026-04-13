@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.enums.ModelObjectType;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
+import se.michaelthelin.spotify.model_objects.interfaces.ITrack;
 
 import java.util.Arrays;
 import java.util.Objects;
@@ -13,7 +14,7 @@ import java.util.Objects;
  * simplified Track objects</a> by building instances from this class.
  */
 @JsonDeserialize(builder = TrackSimplified.Builder.class)
-public class TrackSimplified extends AbstractModelObject {
+public class TrackSimplified extends AbstractModelObject implements ITrack {
   /** The artists who performed the track. */
   private final ArtistSimplified[] artists;
   /** The disc number. */

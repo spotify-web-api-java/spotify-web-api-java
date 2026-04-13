@@ -5,6 +5,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.enums.ModelObjectType;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
+import se.michaelthelin.spotify.model_objects.interfaces.IShow;
 
 import java.util.Arrays;
 import java.util.Objects;
@@ -14,7 +15,7 @@ import java.util.Objects;
  * Show objects</a> by building instances from this class.
  */
 @JsonDeserialize(builder = Show.Builder.class)
-public class Show extends AbstractModelObject {
+public class Show extends AbstractModelObject implements IShow {
   /** The copyright statements of the show. */
   private final Copyright[] copyrights;
   /** A description of the show. */

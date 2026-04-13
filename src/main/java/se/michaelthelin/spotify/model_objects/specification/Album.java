@@ -7,6 +7,7 @@ import se.michaelthelin.spotify.enums.AlbumType;
 import se.michaelthelin.spotify.enums.ModelObjectType;
 import se.michaelthelin.spotify.enums.ReleaseDatePrecision;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
+import se.michaelthelin.spotify.model_objects.interfaces.IAlbum;
 
 import java.util.Arrays;
 import java.util.Objects;
@@ -16,7 +17,7 @@ import java.util.Objects;
  * Album objects</a> by building instances from this class.
  */
 @JsonDeserialize(builder = Album.Builder.class)
-public class Album extends AbstractModelObject {
+public class Album extends AbstractModelObject implements IAlbum {
   /** The type of the album. */
   private final AlbumType albumType;
   /** The artists who performed the album. */

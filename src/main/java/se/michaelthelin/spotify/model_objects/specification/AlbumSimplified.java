@@ -7,6 +7,7 @@ import se.michaelthelin.spotify.enums.ModelObjectType;
 import se.michaelthelin.spotify.enums.ReleaseDatePrecision;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 import se.michaelthelin.spotify.model_objects.miscellaneous.Restrictions;
+import se.michaelthelin.spotify.model_objects.interfaces.IAlbum;
 import se.michaelthelin.spotify.requests.data.search.interfaces.ISearchModelObject;
 
 import java.util.Arrays;
@@ -17,7 +18,7 @@ import java.util.Objects;
  * simplified Album objects</a> by building instances from this class.
  */
 @JsonDeserialize(builder = AlbumSimplified.Builder.class)
-public class AlbumSimplified extends AbstractModelObject implements ISearchModelObject {
+public class AlbumSimplified extends AbstractModelObject implements ISearchModelObject, IAlbum {
   /** The type of the album. */
   private final AlbumType albumType;
   /** The artists who performed the album. */
