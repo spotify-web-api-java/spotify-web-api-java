@@ -59,3 +59,63 @@ A unit test builds upon JSON fixtures. For code changes, fixture files must only
 3. Create meaningful and well-separated commits
 4. Make sure your contribution follows the contribution guidelines above
 5. Create a pull request from your feature branch to the correct branch of this project
+
+## Release Workflow (Maintainers Only)
+
+Follow these steps to publish a new release:
+
+### 1. Update version numbers
+
+Update the version string in **three places**:
+
+- **`pom.xml`** — the `<version>` element near the top of the file:
+  ```xml
+  <version>X.Y.Z</version>
+  ```
+- **`README.md`** — two occurrences: the Maven `<version>` snippet and the Gradle `implementation` line:
+  ```xml
+  <version>X.Y.Z</version>
+  ```
+  ```groovy
+  implementation 'se.michaelthelin.spotify:spotify-web-api-java:X.Y.Z'
+  ```
+
+### 2. Regenerate Javadoc
+
+The `apidocs/` directory at the project root is the published API documentation and must be regenerated on every release. The `release` Maven profile is configured to delete `apidocs/` and regenerate it.
+
+Run:
+```bash
+mvn clean package -P release -DskipTests=false -Dgpg.skip=true -Dmaven.deploy.skip=true
+```
+
+This will:
+- Delete `target/` and `apidocs/` (via `maven-clean-plugin` fileset in the `release` profile)
+- Compile sources and run all tests (must be 100% green)
+- Regenerate `apidocs/` via the `maven-javadoc-plugin` in the `release` profile
+
+### 3. Commit and tag
+
+Commit all changed files (version bumps + regenerated `apidocs/`):
+```bash
+git add pom.xml README.md apidocs/
+git commit -m "X.Y.Z"
+```
+
+Create a lightweight Git tag matching the version exactly (the CI tag pattern is `X.Y.Z` or `X.Y.Z-RCN`):
+```bash
+git tag X.Y.Z
+```
+
+Push the commit and tag:
+```bash
+git push origin <branch>
+git push origin X.Y.Z
+```
+
+### 4. Automated release via CI
+
+Pushing a tag triggers the GitHub Actions CI workflow (`.github/workflows/ci.yml`), which automatically:
+- Builds and tests on Java 17 and Java 25
+- Deploys the artifact to Maven Central (Sonatype) via `mvn deploy -P release`
+- Creates a GitHub Release via `changelogithub`
