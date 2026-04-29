@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.enums.ModelObjectType;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
+import se.michaelthelin.spotify.model_objects.interfaces.IPlaylist;
 import se.michaelthelin.spotify.model_objects.miscellaneous.PlaylistTracksInformation;
 import se.michaelthelin.spotify.requests.data.playlists.RemoveItemsFromPlaylistRequest;
 import se.michaelthelin.spotify.requests.data.search.interfaces.ISearchModelObject;
@@ -16,7 +17,7 @@ import java.util.Objects;
  * simplified Playlist objects</a> by building instances from this class.
  */
 @JsonDeserialize(builder = PlaylistSimplified.Builder.class)
-public class PlaylistSimplified extends AbstractModelObject implements ISearchModelObject {
+public class PlaylistSimplified extends AbstractModelObject implements ISearchModelObject, IPlaylist<PlaylistTracksInformation> {
   /** Whether the playlist is collaborative. */
   private final Boolean collaborative;
   /** The description of the playlist. */
