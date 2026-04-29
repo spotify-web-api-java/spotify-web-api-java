@@ -4,8 +4,8 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.enums.ModelObjectType;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
-import se.michaelthelin.spotify.model_objects.miscellaneous.PlaylistTracksInformation;
 import se.michaelthelin.spotify.model_objects.interfaces.IPlaylist;
+import se.michaelthelin.spotify.model_objects.miscellaneous.PlaylistTracksInformation;
 import se.michaelthelin.spotify.requests.data.playlists.RemoveItemsFromPlaylistRequest;
 import se.michaelthelin.spotify.requests.data.search.interfaces.ISearchModelObject;
 

@@ -6,8 +6,8 @@ import se.michaelthelin.spotify.enums.AlbumType;
 import se.michaelthelin.spotify.enums.ModelObjectType;
 import se.michaelthelin.spotify.enums.ReleaseDatePrecision;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
-import se.michaelthelin.spotify.model_objects.miscellaneous.Restrictions;
 import se.michaelthelin.spotify.model_objects.interfaces.IAlbum;
+import se.michaelthelin.spotify.model_objects.miscellaneous.Restrictions;
 import se.michaelthelin.spotify.requests.data.search.interfaces.ISearchModelObject;
 
 import java.util.Arrays;
