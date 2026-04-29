@@ -1,37 +1,42 @@
 {
   "collaborative": false,
-  "description": null,
+  "description": "New playlist description",
   "external_urls": {
-    "spotify": "https://open.spotify.com/user/thelinmichael/playlist/7d2D2S200NyUE5KYs80PwO"
+    "spotify": "https://open.spotify.com/playlist/3cEYpjA9oz9GiPac4AsH4n"
   },
-  "followers": {
-    "href": null,
-    "total": 0
-  },
-  "href": "https://api.spotify.com/v1/users/thelinmichael/playlists/7d2D2S200NyUE5KYs80PwO",
-  "id": "7d2D2S200NyUE5KYs80PwO",
+  "href": "https://api.spotify.com/v1/playlists/3cEYpjA9oz9GiPac4AsH4n",
+  "id": "3cEYpjA9oz9GiPac4AsH4n",
   "images": [],
-  "name": "A New Playlist",
+  "name": "New Playlist",
   "owner": {
     "external_urls": {
-      "spotify": "https://open.spotify.com/user/thelinmichael"
+      "spotify": "https://open.spotify.com/user/jmperezperez"
     },
-    "href": "https://api.spotify.com/v1/users/thelinmichael",
-    "id": "thelinmichael",
+    "href": "https://api.spotify.com/v1/users/jmperezperez",
+    "id": "jmperezperez",
     "type": "user",
-    "uri": "spotify:user:thelinmichael"
+    "uri": "spotify:user:jmperezperez"
   },
   "public": false,
-  "snapshot_id": "s0o3TSuYnRLl2jch+oA4OEbKwq/fNxhGBkSPnvhZdmWjNV0q3uCAWuGIhEx8SHIx",
-  "tracks": {
-    "href": "https://api.spotify.com/v1/users/thelinmichael/playlists/7d2D2S200NyUE5KYs80PwO/tracks",
-    "items": [],
+  "snapshot_id": "JbtmHBDBAkMzFjnFzSP0aeYCCMP1XSIY5VHZT_jUGrFTzNTa6tnPiSzeBMFIcH2",
+  "items": {
+    "href": "https://api.spotify.com/v1/playlists/3cEYpjA9oz9GiPac4AsH4n/tracks",
     "limit": 100,
     "next": null,
     "offset": 0,
     "previous": null,
-    "total": 0
+    "total": 0,
+    "items": []
+  },
+  "tracks": {
+    "href": "https://api.spotify.com/v1/playlists/3cEYpjA9oz9GiPac4AsH4n/tracks",
+    "limit": 100,
+    "next": null,
+    "offset": 0,
+    "previous": null,
+    "total": 0,
+    "items": []
   },
   "type": "playlist",
-  "uri": "spotify:user:thelinmichael:playlist:7d2D2S200NyUE5KYs80PwO"
+  "uri": "spotify:playlist:3cEYpjA9oz9GiPac4AsH4n"
 }

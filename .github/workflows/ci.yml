@@ -53,7 +53,7 @@ jobs:
         env:
           GPG_KEY_NAME: B70E1EAC
           GPG_PASSPHRASE_FILE: ${{ secrets.GPG_PASSPHRASE_FILE }}
-          GPG_PASSPHRASE_KEY: ${{ secrets.GPG_PASSPHRASE_KEY }}
+          MAVEN_GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE_KEY }}
           SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
           SONATYPE_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
         run: |

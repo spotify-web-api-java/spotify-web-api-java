@@ -10,8 +10,8 @@ import se.michaelthelin.spotify.requests.data.AbstractDataRequest;
 import java.io.IOException;
 
 /**
- * Create a playlist for a Spotify user. (The playlist will be empty until you add tracks
- * with an {@link AddItemsToPlaylistRequest}.)
+ * Create a playlist for the current Spotify user. (The playlist will be empty until you add tracks.)
+ * Each user is generally limited to a maximum of 11000 playlists.
  */
 @JsonDeserialize(builder = CreatePlaylistRequest.Builder.class)
 public class CreatePlaylistRequest extends AbstractDataRequest<Playlist> {
@@ -47,8 +47,8 @@ public class CreatePlaylistRequest extends AbstractDataRequest<Playlist> {
     /**
      * Create a new {@link CreatePlaylistRequest.Builder}.
      * <p>
-     * Creating a public playlists requires authorization of the {@code playlist-modify-public}
-     * scope; Creating a private playlist requires the {@code playlist-modify-private} scope.
+     * Creating a public playlist for a user requires authorization of the {@code playlist-modify-public}
+     * scope; creating a private playlist requires the {@code playlist-modify-private} scope.
      *
      * @param accessToken Required. A valid access token from the Spotify Accounts service.
      * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/scopes">Spotify: Using Scopes</a>
@@ -58,23 +58,10 @@ public class CreatePlaylistRequest extends AbstractDataRequest<Playlist> {
     }
 
     /**
-     * The user ID setter.
-     *
-     * @param user_id The user's Spotify user ID.
-     * @return A {@link CreatePlaylistRequest.Builder}.
-     * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URIs &amp; IDs</a>
-     */
-    public Builder user_id(final String user_id) {
-      assert (user_id != null);
-      assert (!user_id.isEmpty());
-      return setPathParameter("user_id", user_id);
-    }
-
-    /**
      * The playlist name setter.
      *
-     * @param name Optional. The name for the playlist. This name does not need
-     *             to be unique; a user may have several playlists with the same name.
+     * @param name Required. The name for the new playlist, for example {@code "Your Coolest Playlist"}.
+     *             This name does not need to be unique; a user may have several playlists with the same name.
      * @return A {@link CreatePlaylistRequest.Builder}.
      */
     public Builder name(final String name) {
@@ -85,11 +72,10 @@ public class CreatePlaylistRequest extends AbstractDataRequest<Playlist> {
 
     /**
      * The public status setter.
-     * <p>
-     * <b>Note:</b> To be able to create private playlists, the user must have
-     * granted the {@code playlist-modify-private} scope.
      *
-     * @param public_ Optional. If {@code true} the playlist will be public, if {@code false} it will be private.
+     * @param public_ Optional. Defaults to {@code true}. If {@code true} the playlist will be public, if
+     *                {@code false} it will be private. To be able to create private playlists, the user must
+     *                have granted the {@code playlist-modify-private} scope.
      * @return A {@link CreatePlaylistRequest.Builder}.
      */
     public Builder public_(final Boolean public_) {
@@ -99,9 +85,9 @@ public class CreatePlaylistRequest extends AbstractDataRequest<Playlist> {
     /**
      * The collaborative state setter.
      *
-     * @param collaborative Optional, default {@code false}. If {@code true} the playlist will be collaborative.
-     *                      <b>Note:</b> To create a collaborative playlist you must also set {@link #public_(Boolean)}
-     *                      to {@code false}. To create collaborative playlists you must have granted
+     * @param collaborative Optional. Defaults to {@code false}. If {@code true} the playlist will be collaborative.
+     *                      <b>Note:</b> To create a collaborative playlist you must also set {@code public} to
+     *                      {@code false}. To create collaborative playlists you must have granted
      *                      {@code playlist-modify-private} and {@code playlist-modify-public} scopes.
      * @return A {@link CreatePlaylistRequest.Builder}.
      */
@@ -112,7 +98,7 @@ public class CreatePlaylistRequest extends AbstractDataRequest<Playlist> {
     /**
      * The playlist description setter.
      *
-     * @param description Optional, value for playlist description as displayed in Spotify Clients and in the Web API.
+     * @param description Optional. Value for playlist description as displayed in Spotify Clients and in the Web API.
      * @return A {@link CreatePlaylistRequest.Builder}.
      */
     public Builder description(final String description) {
@@ -122,14 +108,14 @@ public class CreatePlaylistRequest extends AbstractDataRequest<Playlist> {
     }
 
     /**
-     * the request build method.
+     * The request build method.
      *
      * @return A custom {@link CreatePlaylistRequest}.
      */
     @Override
     public CreatePlaylistRequest build() {
       setContentType(ContentType.APPLICATION_JSON);
-      setPath("/v1/users/{user_id}/playlists");
+      setPath("/v1/me/playlists");
       return new CreatePlaylistRequest(this);
     }
 

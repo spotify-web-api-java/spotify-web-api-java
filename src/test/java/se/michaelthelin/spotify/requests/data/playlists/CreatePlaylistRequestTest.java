@@ -4,7 +4,6 @@ import org.apache.hc.core5.http.ParseException;
 import org.junit.jupiter.api.Test;
 import se.michaelthelin.spotify.ITest;
 import se.michaelthelin.spotify.TestUtil;
-import se.michaelthelin.spotify.enums.ModelObjectType;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.model_objects.specification.Playlist;
 import se.michaelthelin.spotify.requests.data.AbstractDataTest;
@@ -12,12 +11,15 @@ import se.michaelthelin.spotify.requests.data.AbstractDataTest;
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static se.michaelthelin.spotify.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static se.michaelthelin.spotify.Assertions.assertHasBodyParameter;
+import static se.michaelthelin.spotify.Assertions.assertHasHeader;
 
 public class CreatePlaylistRequestTest extends AbstractDataTest<Playlist> {
   private final CreatePlaylistRequest defaultRequest = ITest.SPOTIFY_API
-    .createPlaylist(ITest.ID_USER, ITest.NAME)
+    .createPlaylist(ITest.NAME)
     .setHttpManager(
       TestUtil.MockedHttpManager.returningJson(
         "requests/data/playlists/CreatePlaylistRequest.json"))
@@ -50,7 +52,7 @@ public class CreatePlaylistRequestTest extends AbstractDataTest<Playlist> {
       "description",
       ITest.DESCRIPTION);
     assertEquals(
-      "https://api.spotify.com:443/v1/users/abbaspotify/playlists",
+      "https://api.spotify.com:443/v1/me/playlists",
       defaultRequest.getUri().toString());
   }
 
@@ -67,38 +69,28 @@ public class CreatePlaylistRequestTest extends AbstractDataTest<Playlist> {
   public void shouldReturnDefault(final Playlist playlist) {
     assertFalse(
       playlist.getIsCollaborative());
-    assertNull(
+    assertEquals(
+      "New playlist description",
       playlist.getDescription());
     assertNotNull(
       playlist.getExternalUrls());
-    assertNotNull(
-      playlist.getFollowers());
     assertEquals(
-      "https://api.spotify.com/v1/users/thelinmichael/playlists/7d2D2S200NyUE5KYs80PwO",
+      "https://api.spotify.com/v1/playlists/3cEYpjA9oz9GiPac4AsH4n",
       playlist.getHref());
     assertEquals(
-      "7d2D2S200NyUE5KYs80PwO",
+      "3cEYpjA9oz9GiPac4AsH4n",
       playlist.getId());
     assertEquals(
-      0,
-      playlist.getImages().length);
-    assertEquals(
-      "A New Playlist",
+      "New Playlist",
       playlist.getName());
     assertNotNull(
       playlist.getOwner());
     assertFalse(
       playlist.getIsPublicAccess());
     assertEquals(
-      "s0o3TSuYnRLl2jch+oA4OEbKwq/fNxhGBkSPnvhZdmWjNV0q3uCAWuGIhEx8SHIx",
+      "JbtmHBDBAkMzFjnFzSP0aeYCCMP1XSIY5VHZT_jUGrFTzNTa6tnPiSzeBMFIcH2",
       playlist.getSnapshotId());
     assertNotNull(
-      playlist.getTracks());
-    assertEquals(
-      ModelObjectType.PLAYLIST,
-      playlist.getType());
-    assertEquals(
-      "spotify:user:thelinmichael:playlist:7d2D2S200NyUE5KYs80PwO",
-      playlist.getUri());
+      playlist.getItems());
   }
 }

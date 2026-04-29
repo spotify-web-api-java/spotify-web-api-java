@@ -21,7 +21,7 @@
       },
       "public": true,
       "snapshot_id": "bNLWdmhh+HDsbHzhckXeDC0uyKyg4FjPI/KEsKjAE526usnz2LxwgyBoMShVL+z+",
-      "tracks": {
+      "items": {
         "href": "https://api.spotify.com/v1/users/wizzler/playlists/53Y8wT46QIMz5H4WQ8O22c/tracks",
         "total": 30
       },
@@ -48,7 +48,7 @@
       },
       "public": true,
       "snapshot_id": "Y0qg/IT5T02DKpw4uQKc/9RUrqQJ07hbTKyEeDRPOo9LU0g0icBrIXwVkHfQZ/aD",
-      "tracks": {
+      "items": {
         "href": "https://api.spotify.com/v1/users/wizzlersmate/playlists/1AVZz0mBuGbCEoNRQdYQju/tracks",
         "total": 58
       },
