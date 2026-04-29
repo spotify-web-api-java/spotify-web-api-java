@@ -17,7 +17,7 @@ import java.util.Objects;
  * simplified Playlist objects</a> by building instances from this class.
  */
 @JsonDeserialize(builder = PlaylistSimplified.Builder.class)
-public class PlaylistSimplified extends AbstractModelObject implements ISearchModelObject, IPlaylist {
+public class PlaylistSimplified extends AbstractModelObject implements ISearchModelObject, IPlaylist<PlaylistTracksInformation> {
   /** Whether the playlist is collaborative. */
   private final Boolean collaborative;
   /** The description of the playlist. */

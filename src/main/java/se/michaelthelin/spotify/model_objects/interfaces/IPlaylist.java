@@ -12,8 +12,13 @@ import se.michaelthelin.spotify.model_objects.specification.User;
  *
  * <p>This interface provides a common base for {@link Playlist} and
  * {@link PlaylistSimplified} objects.
+ *
+ * @param <T> The concrete type of the items/tracks metadata object. {@link Playlist} uses
+ *            {@link se.michaelthelin.spotify.model_objects.specification.Paging} and
+ *            {@link PlaylistSimplified} uses
+ *            {@link se.michaelthelin.spotify.model_objects.miscellaneous.PlaylistTracksInformation}.
  */
-public interface IPlaylist {
+public interface IPlaylist<T extends IHasTotal> {
   /**
    * Check whether the owner allows other users to modify the playlist.
    *
@@ -93,7 +98,7 @@ public interface IPlaylist {
    *
    * @return Item information containing total count.
    */
-  IHasTotal getItems();
+  T getItems();
 
   /**
    * Get the snapshot ID, the version identifier for the current playlist. Can be supplied in other requests to target
