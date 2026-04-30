@@ -15,10 +15,10 @@
     "duration_ms": 8052140,
     "explicit": false,
     "external_urls": {
-      "spotify": "https://open.spotify.com/episode/4GI3dxEafwap1sFiTGPKd1"
+      "spotify": "https://open.spotify.com/episode/046WGwFKUevqKMA4NQfYUv"
     },
-    "href": "https://api.spotify.com/v1/episodes/4GI3dxEafwap1sFiTGPKd1",
-    "id": "4GI3dxEafwap1sFiTGPKd1",
+    "href": "https://api.spotify.com/v1/episodes/046WGwFKUevqKMA4NQfYUv",
+    "id": "046WGwFKUevqKMA4NQfYUv",
     "images": [
       {
         "height": 327,
@@ -161,7 +161,8 @@
       "uri": "spotify:show:5AvwZVawapvyhJUIx71pdJ"
     },
     "type": "episode",
-    "uri": "spotify:episode:4GI3dxEafwap1sFiTGPKd1"
+    "uri": "spotify:episode:046WGwFKUevqKMA4NQfYUv",
+    "html_description": "<p>We try to convince CNET's Jeff Bakalar that the Witcher's extended universe is amazing while he clues us in on where the real money is made. We've also got updates on the Grand Theft Auto movie, Splatoon, Alex's Mad Max impressions, and hot New York real </p>"
   },
   "currently_playing_type": "episode",
   "actions": {

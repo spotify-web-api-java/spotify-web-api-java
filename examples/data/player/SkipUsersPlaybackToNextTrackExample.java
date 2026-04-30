@@ -2,7 +2,7 @@ package data.player;
 
 import se.michaelthelin.spotify.SpotifyApi;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
-import se.michaelthelin.spotify.requests.data.player.SkipUsersPlaybackToNextTrackRequest;
+import se.michaelthelin.spotify.requests.data.player.SkipToNextRequest;
 import org.apache.hc.core5.http.ParseException;
 
 import java.io.IOException;
@@ -16,8 +16,8 @@ public class SkipUsersPlaybackToNextTrackExample {
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
     .setAccessToken(accessToken)
     .build();
-  private static final SkipUsersPlaybackToNextTrackRequest skipUsersPlaybackToNextTrackRequest = spotifyApi
-    .skipUsersPlaybackToNextTrack()
+  private static final SkipToNextRequest skipUsersPlaybackToNextTrackRequest = spotifyApi
+    .skipToNext()
 //          .device_id("5fbb3ba6aa454b5534c4ba43a8c7e8e45a63ad0e")
     .build();
 

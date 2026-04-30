@@ -4,6 +4,7 @@
     "items": [
       {
         "collaborative": false,
+        "description": "A playlist description.",
         "external_urls": {
           "spotify": "https://open.spotify.com/user/spotify/playlist/37i9dQZF1DWT6VDwxLyl0W"
         },
@@ -38,6 +39,7 @@
       },
       {
         "collaborative": false,
+        "description": "A playlist description.",
         "external_urls": {
           "spotify": "https://open.spotify.com/user/22sf74of2vex22mbg4jglkugy/playlist/3l5sfazmY1FP0wDlNCUunG"
         },
@@ -82,6 +84,7 @@
       },
       {
         "collaborative": false,
+        "description": "A playlist description.",
         "external_urls": {
           "spotify": "https://open.spotify.com/user/22aood6wrht2pipht3ukvoyxa/playlist/1d2XIviyWqrmbxZBQKy8C8"
         },
@@ -126,6 +129,7 @@
       },
       {
         "collaborative": false,
+        "description": "A playlist description.",
         "external_urls": {
           "spotify": "https://open.spotify.com/user/anoymusid/playlist/0qyro9Fdqr1wNcGQjzDh3e"
         },
@@ -170,6 +174,7 @@
       },
       {
         "collaborative": false,
+        "description": "A playlist description.",
         "external_urls": {
           "spotify": "https://open.spotify.com/user/musicdeche/playlist/4YUo5t8gIhxtGFl8tT3Ovq"
         },
@@ -214,6 +219,7 @@
       },
       {
         "collaborative": false,
+        "description": "A playlist description.",
         "external_urls": {
           "spotify": "https://open.spotify.com/user/22fkrew4v2cs7zc6uwii76i4a/playlist/7qlkRPYzSxw24oD83dntuk"
         },
@@ -258,6 +264,7 @@
       },
       {
         "collaborative": false,
+        "description": "A playlist description.",
         "external_urls": {
           "spotify": "https://open.spotify.com/user/muse_official/playlist/2zNu81WarotkZVGvMApl7y"
         },
@@ -292,6 +299,7 @@
       },
       {
         "collaborative": false,
+        "description": "A playlist description.",
         "external_urls": {
           "spotify": "https://open.spotify.com/user/tyronecleggburrell/playlist/4hBO5JpMRFdkWY7KIycz81"
         },
@@ -326,6 +334,7 @@
       },
       {
         "collaborative": false,
+        "description": "A playlist description.",
         "external_urls": {
           "spotify": "https://open.spotify.com/user/eaglestormcatcher/playlist/4dCdOaKewZr04ZiBr1kwbd"
         },
@@ -370,6 +379,7 @@
       },
       {
         "collaborative": false,
+        "description": "A playlist description.",
         "external_urls": {
           "spotify": "https://open.spotify.com/user/doggybluescarf/playlist/1EWgI1FFh0fjZTbCrMUULt"
         },

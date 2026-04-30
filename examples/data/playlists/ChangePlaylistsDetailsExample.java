@@ -2,7 +2,7 @@ package data.playlists;
 
 import se.michaelthelin.spotify.SpotifyApi;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
-import se.michaelthelin.spotify.requests.data.playlists.ChangePlaylistsDetailsRequest;
+import se.michaelthelin.spotify.requests.data.playlists.ChangePlaylistDetailsRequest;
 import org.apache.hc.core5.http.ParseException;
 
 import java.io.IOException;
@@ -17,17 +17,17 @@ public class ChangePlaylistsDetailsExample {
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
     .setAccessToken(accessToken)
     .build();
-  private static final ChangePlaylistsDetailsRequest changePlaylistsDetailsRequest = spotifyApi
-    .changePlaylistsDetails(playlistId)
+  private static final ChangePlaylistDetailsRequest changePlaylistDetailsRequest = spotifyApi
+    .changePlaylistDetails(playlistId)
 //          .name("Abba")
 //          .public_(false)
 //          .collaborative(false)
 //          .description("Amazing music.")
     .build();
 
-  public static void changePlaylistsDetails_Sync() {
+  public static void changePlaylistDetails_Sync() {
     try {
-      final String string = changePlaylistsDetailsRequest.execute();
+      final String string = changePlaylistDetailsRequest.execute();
 
       System.out.println("Null: " + string);
     } catch (IOException | SpotifyWebApiException | ParseException e) {
@@ -35,9 +35,9 @@ public class ChangePlaylistsDetailsExample {
     }
   }
 
-  public static void changePlaylistsDetails_Async() {
+  public static void changePlaylistDetails_Async() {
     try {
-      final CompletableFuture<String> stringFuture = changePlaylistsDetailsRequest.executeAsync();
+      final CompletableFuture<String> stringFuture = changePlaylistDetailsRequest.executeAsync();
 
       // Thread free to do other tasks...
 
@@ -53,7 +53,7 @@ public class ChangePlaylistsDetailsExample {
   }
 
   public static void main(String[] args) {
-    changePlaylistsDetails_Sync();
-    changePlaylistsDetails_Async();
+    changePlaylistDetails_Sync();
+    changePlaylistDetails_Async();
   }
 }

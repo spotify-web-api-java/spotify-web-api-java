@@ -18,13 +18,13 @@ public class GetPlaylistCoverImageExample {
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
     .setAccessToken(accessToken)
     .build();
-  private static final GetPlaylistCoverImageRequest getPlaylistCoverImageRequest = spotifyApi
+  private static final GetPlaylistCoverImageRequest getPlaylistCoverRequest = spotifyApi
     .getPlaylistCoverImage(playlistId)
     .build();
 
-  public static void getPlaylistCoverImage_Sync() {
+  public static void getPlaylistCover_Sync() {
     try {
-      final Image[] images = getPlaylistCoverImageRequest.execute();
+      final Image[] images = getPlaylistCoverRequest.execute();
 
       System.out.println("Length: " + images.length);
     } catch (IOException | SpotifyWebApiException | ParseException e) {
@@ -32,9 +32,9 @@ public class GetPlaylistCoverImageExample {
     }
   }
 
-  public static void getPlaylistCoverImage_Async() {
+  public static void getPlaylistCover_Async() {
     try {
-      final CompletableFuture<Image[]> imagesFuture = getPlaylistCoverImageRequest.executeAsync();
+      final CompletableFuture<Image[]> imagesFuture = getPlaylistCoverRequest.executeAsync();
 
       // Thread free to do other tasks...
 
@@ -50,7 +50,7 @@ public class GetPlaylistCoverImageExample {
   }
 
   public static void main(String[] args) {
-    getPlaylistCoverImage_Sync();
-    getPlaylistCoverImage_Async();
+    getPlaylistCover_Sync();
+    getPlaylistCover_Async();
   }
 }

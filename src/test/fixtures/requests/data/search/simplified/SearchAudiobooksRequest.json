@@ -1,0 +1,43 @@
+{
+  "audiobooks": {
+    "href": "https://api.spotify.com/v1/search?query=Moby&type=audiobook&market=US&offset=5&limit=10",
+    "items": [
+      {
+        "authors": [
+          {
+            "name": "Herman Melville"
+          }
+        ],
+        "available_markets": ["US"],
+        "copyrights": [],
+        "description": "Moby Dick",
+        "html_description": "<p>Moby Dick</p>",
+        "edition": "Unabridged",
+        "explicit": false,
+        "external_urls": {
+          "spotify": "https://open.spotify.com/show/2IEBhnu61ieYGFRPEJIO40"
+        },
+        "href": "https://api.spotify.com/v1/audiobooks/2IEBhnu61ieYGFRPEJIO40",
+        "id": "2IEBhnu61ieYGFRPEJIO40",
+        "images": [],
+        "languages": ["en"],
+        "media_type": "audio",
+        "name": "Moby-Dick",
+        "narrators": [
+          {
+            "name": "Frank Muller"
+          }
+        ],
+        "publisher": "Blackstone Audio",
+        "total_chapters": 135,
+        "type": "audiobook",
+        "uri": "spotify:show:2IEBhnu61ieYGFRPEJIO40"
+      }
+    ],
+    "limit": 10,
+    "next": "https://api.spotify.com/v1/search?query=Moby&type=audiobook&market=US&offset=15&limit=10",
+    "offset": 5,
+    "previous": "https://api.spotify.com/v1/search?query=Moby&type=audiobook&market=US&offset=0&limit=10",
+    "total": 1
+  }
+}

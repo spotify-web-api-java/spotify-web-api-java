@@ -17,8 +17,8 @@ import static se.michaelthelin.spotify.Assertions.assertHasBodyParameter;
 import static se.michaelthelin.spotify.Assertions.assertHasHeader;
 
 public class TransferUsersPlaybackRequestTest extends AbstractDataTest<String> {
-  private final TransferUsersPlaybackRequest defaultRequest = ITest.SPOTIFY_API
-    .transferUsersPlayback(JsonParser.parseString("[\"" + ITest.DEVICE_ID + "\"]").getAsJsonArray())
+  private final TransferPlaybackRequest defaultRequest = ITest.SPOTIFY_API
+    .transferPlayback(JsonParser.parseString("[\"" + ITest.DEVICE_ID + "\"]").getAsJsonArray())
     .setHttpManager(
       TestUtil.MockedHttpManager.returningJson(null))
     .play(ITest.PLAY)

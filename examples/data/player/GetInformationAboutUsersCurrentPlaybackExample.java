@@ -3,7 +3,7 @@ package data.player;
 import se.michaelthelin.spotify.SpotifyApi;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.model_objects.miscellaneous.CurrentlyPlayingContext;
-import se.michaelthelin.spotify.requests.data.player.GetInformationAboutUsersCurrentPlaybackRequest;
+import se.michaelthelin.spotify.requests.data.player.GetPlaybackStateRequest;
 import org.apache.hc.core5.http.ParseException;
 
 import java.io.IOException;
@@ -17,8 +17,8 @@ public class GetInformationAboutUsersCurrentPlaybackExample {
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
     .setAccessToken(accessToken)
     .build();
-  private static final GetInformationAboutUsersCurrentPlaybackRequest getInformationAboutUsersCurrentPlaybackRequest =
-    spotifyApi.getInformationAboutUsersCurrentPlayback()
+  private static final GetPlaybackStateRequest getInformationAboutUsersCurrentPlaybackRequest =
+    spotifyApi.getPlaybackState()
 //                  .market(CountryCode.SE)
 //                  .additionalTypes("track,episode")
       .build();

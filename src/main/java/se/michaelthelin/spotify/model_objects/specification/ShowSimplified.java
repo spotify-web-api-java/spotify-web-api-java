@@ -90,6 +90,7 @@ public class ShowSimplified extends AbstractModelObject implements ISearchModelO
    * @return Whether or not the show has explicit content ({@code true} = yes it does; {@code false} = no it does not
    * <b>OR</b> unknown).
    */
+  @Override
   public Boolean getExplicit() {
     return explicit;
   }

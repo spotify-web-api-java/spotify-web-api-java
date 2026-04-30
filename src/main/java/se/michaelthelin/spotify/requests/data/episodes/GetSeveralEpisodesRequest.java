@@ -1,0 +1,99 @@
+package se.michaelthelin.spotify.requests.data.episodes;
+
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.neovisionaries.i18n.CountryCode;
+import org.apache.hc.core5.http.ParseException;
+import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
+import se.michaelthelin.spotify.model_objects.specification.Episode;
+import se.michaelthelin.spotify.requests.data.AbstractDataRequest;
+
+import java.io.IOException;
+
+/**
+ * Get Spotify catalog information for several episodes based on their Spotify IDs.
+ *
+ * @deprecated This endpoint has been deprecated by Spotify.
+ */
+@Deprecated
+@JsonDeserialize(builder = GetSeveralEpisodesRequest.Builder.class)
+public class GetSeveralEpisodesRequest extends AbstractDataRequest<Episode[]> {
+
+  /**
+   * The private {@link GetSeveralEpisodesRequest} constructor.
+   *
+   * @param builder A {@link GetSeveralEpisodesRequest.Builder}.
+   */
+  private GetSeveralEpisodesRequest(final Builder builder) {
+    super(builder);
+  }
+
+  /**
+   * Get several {@link Episode} objects.
+   *
+   * @return Multiple {@link Episode} objects.
+   * @throws IOException            In case of networking issues.
+   * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
+   */
+  public Episode[] execute() throws
+    IOException,
+    SpotifyWebApiException,
+    ParseException {
+    return new Episode.JsonUtil().createModelObjectArray(getJson(), "episodes");
+  }
+
+  /**
+   * Builder class for building a {@link GetSeveralEpisodesRequest}.
+   */
+  public static final class Builder extends AbstractDataRequest.Builder<Episode[], Builder> {
+
+    /**
+     * Create a new {@link GetSeveralEpisodesRequest.Builder} instance.
+     *
+     * @param accessToken Required. A valid access token from the Spotify Accounts service.
+     */
+    public Builder(final String accessToken) {
+      super(accessToken);
+    }
+
+    /**
+     * The episode IDs setter.
+     *
+     * @param ids Required. A comma-separated list of the Spotify IDs for the episodes. Maximum: 50 IDs.
+     * @return A {@link GetSeveralEpisodesRequest.Builder}.
+     * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URIs &amp; IDs</a>
+     */
+    public Builder ids(final String ids) {
+      assert (ids != null);
+      assert (ids.split(",").length <= 50);
+      return setQueryParameter("ids", ids);
+    }
+
+    /**
+     * The market query parameter setter.
+     *
+     * @param market Optional. An ISO 3166-1 alpha-2 country code.
+     * @return A {@link GetSeveralEpisodesRequest.Builder}.
+     * @see <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">Wikipedia: ISO 3166-1 alpha-2 country codes</a>
+     */
+    public Builder market(final CountryCode market) {
+      assert (market != null);
+      return setQueryParameter("market", market);
+    }
+
+    /**
+     * The request build method.
+     *
+     * @return A custom {@link GetSeveralEpisodesRequest}.
+     */
+    @Override
+    public GetSeveralEpisodesRequest build() {
+      setPath("/v1/episodes");
+      return new GetSeveralEpisodesRequest(this);
+    }
+
+    @Override
+    protected Builder self() {
+      return this;
+    }
+  }
+}

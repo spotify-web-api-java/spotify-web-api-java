@@ -6,7 +6,7 @@ import se.michaelthelin.spotify.enums.ModelObjectType;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 import se.michaelthelin.spotify.model_objects.interfaces.IPlaylist;
 import se.michaelthelin.spotify.model_objects.miscellaneous.PlaylistTracksInformation;
-import se.michaelthelin.spotify.requests.data.playlists.RemoveItemsFromPlaylistRequest;
+import se.michaelthelin.spotify.requests.data.playlists.RemovePlaylistItemsRequest;
 import se.michaelthelin.spotify.requests.data.search.interfaces.ISearchModelObject;
 
 import java.util.Arrays;
@@ -153,7 +153,7 @@ public class PlaylistSimplified extends AbstractModelObject implements ISearchMo
    * href="https://developer.spotify.com/documentation/web-api/concepts/playlists">
    * Spotify: Working With Playlists</a>
    */
-  public Boolean getIsPublicAccess() {
+  public Boolean getPublic() {
     return publicAccess;
   }
 
@@ -162,7 +162,7 @@ public class PlaylistSimplified extends AbstractModelObject implements ISearchMo
    * a specific playlist version.
    *
    * @return The version identifier for the current playlist.
-   * @see RemoveItemsFromPlaylistRequest
+   * @see RemovePlaylistItemsRequest
    */
   public String getSnapshotId() {
     return snapshotId;

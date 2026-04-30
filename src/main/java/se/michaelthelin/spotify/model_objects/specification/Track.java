@@ -6,7 +6,7 @@ import se.michaelthelin.spotify.enums.ModelObjectType;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 import se.michaelthelin.spotify.model_objects.interfaces.ITrack;
 import se.michaelthelin.spotify.model_objects.miscellaneous.Restrictions;
-import se.michaelthelin.spotify.requests.data.personalization.interfaces.IArtistTrackModelObject;
+import se.michaelthelin.spotify.requests.data.users.interfaces.IArtistTrackModelObject;
 import se.michaelthelin.spotify.requests.data.search.interfaces.ISearchModelObject;
 
 import java.util.Arrays;
@@ -114,7 +114,7 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
    * @return Whether or not the track has explicit lyrics ({@code true} = yes it does; {@code false} = no it does not
    * <b>OR</b> unknown).
    */
-  public Boolean getIsExplicit() {
+  public Boolean getExplicit() {
     return explicit;
   }
 

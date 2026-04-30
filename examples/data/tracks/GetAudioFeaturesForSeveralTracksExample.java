@@ -3,7 +3,7 @@ package data.tracks;
 import se.michaelthelin.spotify.SpotifyApi;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.model_objects.specification.AudioFeatures;
-import se.michaelthelin.spotify.requests.data.tracks.GetAudioFeaturesForSeveralTracksRequest;
+import se.michaelthelin.spotify.requests.data.tracks.GetSeveralTracksAudioFeaturesRequest;
 import org.apache.hc.core5.http.ParseException;
 
 import java.io.IOException;
@@ -18,13 +18,13 @@ public class GetAudioFeaturesForSeveralTracksExample {
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
     .setAccessToken(accessToken)
     .build();
-  private static final GetAudioFeaturesForSeveralTracksRequest getAudioFeaturesForSeveralTracksRequest = spotifyApi
-    .getAudioFeaturesForSeveralTracks(ids)
+  private static final GetSeveralTracksAudioFeaturesRequest getSeveralAudioFeaturesRequest = spotifyApi
+    .getSeveralTracksAudioFeatures(ids)
     .build();
 
-  public static void getAudioFeaturesForSeveralTracks_Sync() {
+  public static void getSeveralAudioFeatures_Sync() {
     try {
-      final AudioFeatures[] audioFeatures = getAudioFeaturesForSeveralTracksRequest.execute();
+      final AudioFeatures[] audioFeatures = getSeveralAudioFeaturesRequest.execute();
 
       System.out.println("Length: " + audioFeatures.length);
     } catch (IOException | SpotifyWebApiException | ParseException e) {
@@ -32,9 +32,9 @@ public class GetAudioFeaturesForSeveralTracksExample {
     }
   }
 
-  public static void getAudioFeaturesForSeveralTracks_Async() {
+  public static void getSeveralAudioFeatures_Async() {
     try {
-      final CompletableFuture<AudioFeatures[]> audioFeaturesFuture = getAudioFeaturesForSeveralTracksRequest.executeAsync();
+      final CompletableFuture<AudioFeatures[]> audioFeaturesFuture = getSeveralAudioFeaturesRequest.executeAsync();
 
       // Thread free to do other tasks...
 
@@ -50,7 +50,7 @@ public class GetAudioFeaturesForSeveralTracksExample {
   }
 
   public static void main(String[] args) {
-    getAudioFeaturesForSeveralTracks_Sync();
-    getAudioFeaturesForSeveralTracks_Async();
+    getSeveralAudioFeatures_Sync();
+    getSeveralAudioFeatures_Async();
   }
 }

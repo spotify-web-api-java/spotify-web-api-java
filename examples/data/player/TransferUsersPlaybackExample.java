@@ -4,7 +4,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonParser;
 import se.michaelthelin.spotify.SpotifyApi;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
-import se.michaelthelin.spotify.requests.data.player.TransferUsersPlaybackRequest;
+import se.michaelthelin.spotify.requests.data.player.TransferPlaybackRequest;
 import org.apache.hc.core5.http.ParseException;
 
 import java.io.IOException;
@@ -19,8 +19,8 @@ public class TransferUsersPlaybackExample {
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
     .setAccessToken(accessToken)
     .build();
-  private static final TransferUsersPlaybackRequest transferUsersPlaybackRequest = spotifyApi
-    .transferUsersPlayback(deviceIds)
+  private static final TransferPlaybackRequest transferUsersPlaybackRequest = spotifyApi
+    .transferPlayback(deviceIds)
 //          .play(false)
     .build();
 

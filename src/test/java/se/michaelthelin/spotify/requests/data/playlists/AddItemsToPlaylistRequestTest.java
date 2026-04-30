@@ -39,7 +39,7 @@ public class AddItemsToPlaylistRequestTest extends AbstractDataTest<SnapshotResu
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
     assertEquals(
-      "https://api.spotify.com:443/v1/playlists/3AGOiaoRXMSjswCLtuNqv5/tracks?uris=spotify%3Atrack%3A01iyCAUm8EvOFqVWYJ3dVX%2Cspotify%3Atrack%3A01iyCAUm8EvOFqVWYJ3dVX&position=0",
+      "https://api.spotify.com:443/v1/playlists/3AGOiaoRXMSjswCLtuNqv5/items?uris=spotify%3Atrack%3A01iyCAUm8EvOFqVWYJ3dVX%2Cspotify%3Atrack%3A01iyCAUm8EvOFqVWYJ3dVX&position=0",
       defaultRequest.getUri().toString());
 
     assertHasAuthorizationHeader(bodyRequest);
@@ -53,7 +53,7 @@ public class AddItemsToPlaylistRequestTest extends AbstractDataTest<SnapshotResu
       "position",
       ITest.POSITION);
     assertEquals(
-      "https://api.spotify.com:443/v1/playlists/3AGOiaoRXMSjswCLtuNqv5/tracks",
+      "https://api.spotify.com:443/v1/playlists/3AGOiaoRXMSjswCLtuNqv5/items",
       bodyRequest.getUri().toString());
   }
 

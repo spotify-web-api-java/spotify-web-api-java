@@ -3,7 +3,7 @@ package data.tracks;
 import se.michaelthelin.spotify.SpotifyApi;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.model_objects.miscellaneous.AudioAnalysis;
-import se.michaelthelin.spotify.requests.data.tracks.GetAudioAnalysisForTrackRequest;
+import se.michaelthelin.spotify.requests.data.tracks.GetTracksAudioAnalysisRequest;
 import org.apache.hc.core5.http.ParseException;
 
 import java.io.IOException;
@@ -18,13 +18,13 @@ public class GetAudioAnalysisForTrackExample {
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
     .setAccessToken(accessToken)
     .build();
-  private static final GetAudioAnalysisForTrackRequest getAudioAnalysisForTrackRequest = spotifyApi
-    .getAudioAnalysisForTrack(id)
+  private static final GetTracksAudioAnalysisRequest getAudioAnalysisRequest = spotifyApi
+    .getTracksAudioAnalysis(id)
     .build();
 
-  public static void getAudioAnalysisForTrack_Sync() {
+  public static void getAudioAnalysis_Sync() {
     try {
-      final AudioAnalysis audioAnalysis = getAudioAnalysisForTrackRequest.execute();
+      final AudioAnalysis audioAnalysis = getAudioAnalysisRequest.execute();
 
       System.out.println("Track duration: " + audioAnalysis.getTrack().getDuration());
     } catch (IOException | SpotifyWebApiException | ParseException e) {
@@ -32,9 +32,9 @@ public class GetAudioAnalysisForTrackExample {
     }
   }
 
-  public static void getAudioAnalysisForTrack_Async() {
+  public static void getAudioAnalysis_Async() {
     try {
-      final CompletableFuture<AudioAnalysis> audioAnalysisFuture = getAudioAnalysisForTrackRequest.executeAsync();
+      final CompletableFuture<AudioAnalysis> audioAnalysisFuture = getAudioAnalysisRequest.executeAsync();
 
       // Thread free to do other tasks...
 
@@ -50,7 +50,7 @@ public class GetAudioAnalysisForTrackExample {
   }
 
   public static void main(String[] args) {
-    getAudioAnalysisForTrack_Sync();
-    getAudioAnalysisForTrack_Async();
+    getAudioAnalysis_Sync();
+    getAudioAnalysis_Async();
   }
 }
