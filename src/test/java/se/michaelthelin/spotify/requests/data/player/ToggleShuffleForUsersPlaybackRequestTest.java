@@ -15,8 +15,8 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import static se.michaelthelin.spotify.Assertions.assertHasHeader;
 
 public class ToggleShuffleForUsersPlaybackRequestTest extends AbstractDataTest<String> {
-  private final ToggleShuffleForUsersPlaybackRequest defaultRequest = ITest.SPOTIFY_API
-    .toggleShuffleForUsersPlayback(ITest.STATE_BOOLEAN)
+  private final TogglePlaybackShuffleRequest defaultRequest = ITest.SPOTIFY_API
+    .togglePlaybackShuffle(ITest.STATE_BOOLEAN)
     .setHttpManager(
       TestUtil.MockedHttpManager.returningJson(null))
     .device_id(ITest.DEVICE_ID)

@@ -14,15 +14,15 @@ import java.util.concurrent.ExecutionException;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class GetUsersAvailableDevicesTest extends AbstractDataTest<Device[]> {
-  private final GetUsersAvailableDevicesRequest defaultRequest = ITest.SPOTIFY_API
-    .getUsersAvailableDevices()
+  private final GetAvailableDevicesRequest defaultRequest = ITest.SPOTIFY_API
+    .getAvailableDevices()
     .setHttpManager(
       TestUtil.MockedHttpManager.returningJson(
         "requests/data/player/GetUsersAvailableDevices.json"))
     .build();
 
-  private final GetUsersAvailableDevicesRequest emptyRequest = ITest.SPOTIFY_API
-    .getUsersAvailableDevices()
+  private final GetAvailableDevicesRequest emptyRequest = ITest.SPOTIFY_API
+    .getAvailableDevices()
     .setHttpManager(
       TestUtil.MockedHttpManager.returningJson(
         "requests/data/player/GetUsersAvailableDevices_None.json"))

@@ -6,7 +6,7 @@ import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.enums.ModelObjectType;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 import se.michaelthelin.spotify.model_objects.interfaces.IArtist;
-import se.michaelthelin.spotify.requests.data.personalization.interfaces.IArtistTrackModelObject;
+import se.michaelthelin.spotify.requests.data.users.interfaces.IArtistTrackModelObject;
 import se.michaelthelin.spotify.requests.data.search.interfaces.ISearchModelObject;
 
 import java.util.Arrays;

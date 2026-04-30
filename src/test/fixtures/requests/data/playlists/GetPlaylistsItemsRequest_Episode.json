@@ -1,5 +1,5 @@
 {
-  "href": "https://api.spotify.com/v1/playlists/21THa8j9TaSGuXYNBU5tsC/tracks?offset=0&limit=100&additional_types=episode",
+  "href": "https://api.spotify.com/v1/playlists/21THa8j9TaSGuXYNBU5tsC/items?offset=0&limit=100&additional_types=episode",
   "items": [
     {
       "added_at": "2016-10-11T13:44:40Z",

@@ -107,6 +107,7 @@ public class EpisodeSimplified extends AbstractModelObject implements ISearchMod
    * @return Whether or not the episode has explicit content ({@code true} = yes it does; {@code false} = no it does not
    * <b>OR</b> unknown).
    */
+  @Override
   public Boolean getExplicit() {
     return explicit;
   }
@@ -162,7 +163,8 @@ public class EpisodeSimplified extends AbstractModelObject implements ISearchMod
    *
    * @return True if the episode is playable in the given market. Otherwise false.
    */
-  public Boolean getPlayable() {
+  @Override
+  public Boolean getIsPlayable() {
     return isPlayable;
   }
 

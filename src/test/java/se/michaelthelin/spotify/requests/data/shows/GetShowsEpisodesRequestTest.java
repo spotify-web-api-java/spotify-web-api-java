@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class GetShowsEpisodesRequestTest extends AbstractDataTest<Paging<EpisodeSimplified>> {
 
-  private final GetShowsEpisodesRequest defaultRequest = SPOTIFY_API.getShowEpisodes(ID_SHOW)
+  private final GetShowEpisodesRequest defaultRequest = SPOTIFY_API.getShowEpisodes(ID_SHOW)
     .setHttpManager(
       TestUtil.MockedHttpManager.returningJson(
         "requests/data/shows/GetShowsEpisodesRequest.json"))

@@ -18,7 +18,7 @@ public class GetPlaylistCoverImageRequestTest extends AbstractDataTest<Image[]> 
     .getPlaylistCoverImage(ITest.ID_PLAYLIST)
     .setHttpManager(
       TestUtil.MockedHttpManager.returningJson(
-        "requests/data/playlists/GetPlaylistCoverImageRequest.json"))
+        "requests/data/playlists/GetPlaylistCoverRequest.json"))
     .build();
 
   public GetPlaylistCoverImageRequestTest() throws Exception {

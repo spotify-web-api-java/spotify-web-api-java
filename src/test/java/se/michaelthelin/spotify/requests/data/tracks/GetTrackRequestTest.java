@@ -58,7 +58,7 @@ public class GetTrackRequestTest extends AbstractDataTest<Track> {
       222200,
       (int) track.getDurationMs());
     assertFalse(
-      track.getIsExplicit());
+      track.getExplicit());
     assertNotNull(
       track.getExternalUrls());
     assertEquals(

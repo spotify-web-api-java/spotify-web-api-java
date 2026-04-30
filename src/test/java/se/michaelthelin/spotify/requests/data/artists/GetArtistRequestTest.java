@@ -13,7 +13,6 @@ import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class GetArtistRequestTest extends AbstractDataTest<Artist> {
   private final GetArtistRequest defaultRequest = ITest.SPOTIFY_API.getArtist(ITest.ID_ARTIST)

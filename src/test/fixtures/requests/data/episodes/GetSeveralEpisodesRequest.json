@@ -1,0 +1,30 @@
+{
+  "episodes": [
+    {
+      "audio_preview_url": "https://p.scdn.co/mp3-preview/9b0ebffde166917f35f9eab25af874e765261776",
+      "description": "A sample episode description.",
+      "html_description": "<p>A sample episode description.</p>",
+      "duration_ms": 8052140,
+      "explicit": false,
+      "external_urls": {
+        "spotify": "https://open.spotify.com/episode/4GI3dxEafwap1sFiTGPKd1"
+      },
+      "href": "https://api.spotify.com/v1/episodes/4GI3dxEafwap1sFiTGPKd1",
+      "id": "4GI3dxEafwap1sFiTGPKd1",
+      "images": [],
+      "is_externally_hosted": false,
+      "is_playable": true,
+      "language": "en-US",
+      "languages": ["en-US"],
+      "name": "Sample Episode",
+      "release_date": "2020-01-01",
+      "release_date_precision": "day",
+      "resume_point": {
+        "fully_played": false,
+        "resume_position_ms": 0
+      },
+      "type": "episode",
+      "uri": "spotify:episode:4GI3dxEafwap1sFiTGPKd1"
+    }
+  ]
+}

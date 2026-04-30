@@ -86,7 +86,7 @@ public class CreatePlaylistRequestTest extends AbstractDataTest<Playlist> {
     assertNotNull(
       playlist.getOwner());
     assertFalse(
-      playlist.getIsPublicAccess());
+      playlist.getPublic());
     assertEquals(
       "JbtmHBDBAkMzFjnFzSP0aeYCCMP1XSIY5VHZT_jUGrFTzNTa6tnPiSzeBMFIcH2",
       playlist.getSnapshotId());

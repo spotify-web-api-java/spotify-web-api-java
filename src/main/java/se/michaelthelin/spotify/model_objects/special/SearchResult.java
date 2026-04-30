@@ -4,13 +4,13 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 import se.michaelthelin.spotify.model_objects.specification.*;
-import se.michaelthelin.spotify.requests.data.personalization.interfaces.IArtistTrackModelObject;
-import se.michaelthelin.spotify.requests.data.search.SearchItemRequest;
+import se.michaelthelin.spotify.requests.data.users.interfaces.IArtistTrackModelObject;
+import se.michaelthelin.spotify.requests.data.search.SearchForItemRequest;
 import se.michaelthelin.spotify.requests.data.search.interfaces.ISearchModelObject;
 
 /**
- * Retrieve the searched-for items by building instances from this class. This objects contains
- * for every type specified by the {@code type} parameter in the {@link SearchItemRequest}
+ * Retrieve the searched-for items by building instances from this class. This object contains
+ * for every type specified by the {@code type} parameter in the {@link SearchForItemRequest}
  * the searched-for items wrapped in a {@link Paging} object.
  */
 @JsonDeserialize(builder = SearchResult.Builder.class)
