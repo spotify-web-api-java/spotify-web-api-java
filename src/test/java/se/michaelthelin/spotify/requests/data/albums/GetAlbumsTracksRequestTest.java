@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 
 public class GetAlbumsTracksRequestTest extends AbstractDataTest<Paging<TrackSimplified>> {
 
-  private final GetAlbumsTracksRequest defaultRequest = SPOTIFY_API.getAlbumsTracks(ID_ALBUM)
+  private final GetAlbumTracksRequest defaultRequest = SPOTIFY_API.getAlbumTracks(ID_ALBUM)
     .setHttpManager(
       TestUtil.MockedHttpManager.returningJson(
         "requests/data/albums/GetAlbumsTracksRequest.json"))

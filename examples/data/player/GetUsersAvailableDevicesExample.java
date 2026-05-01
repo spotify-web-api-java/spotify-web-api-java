@@ -3,7 +3,7 @@ package data.player;
 import se.michaelthelin.spotify.SpotifyApi;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.model_objects.miscellaneous.Device;
-import se.michaelthelin.spotify.requests.data.player.GetUsersAvailableDevicesRequest;
+import se.michaelthelin.spotify.requests.data.player.GetAvailableDevicesRequest;
 import org.apache.hc.core5.http.ParseException;
 
 import java.io.IOException;
@@ -17,8 +17,8 @@ public class GetUsersAvailableDevicesExample {
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
     .setAccessToken(accessToken)
     .build();
-  private static final GetUsersAvailableDevicesRequest getUsersAvailableDevicesRequest = spotifyApi
-    .getUsersAvailableDevices()
+  private static final GetAvailableDevicesRequest getUsersAvailableDevicesRequest = spotifyApi
+    .getAvailableDevices()
     .build();
 
   public static void getUsersAvailableDevices_Sync() {

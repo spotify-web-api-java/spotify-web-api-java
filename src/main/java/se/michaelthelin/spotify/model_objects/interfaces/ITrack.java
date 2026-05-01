@@ -35,7 +35,7 @@ public interface ITrack extends IPlaylistItem {
    * @return Whether or not the track has explicit lyrics ({@code true} = yes it does; {@code false} = no it does not
    *         <b>OR</b> unknown).
    */
-  Boolean getIsExplicit();
+  Boolean getExplicit();
 
   /**
    * Check whether the track is playable in the market, which may has been specified somewhere before requesting it.

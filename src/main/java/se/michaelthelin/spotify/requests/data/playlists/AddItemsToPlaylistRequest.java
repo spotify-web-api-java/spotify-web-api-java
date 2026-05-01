@@ -150,7 +150,7 @@ public class AddItemsToPlaylistRequest extends AbstractDataRequest<SnapshotResul
     @Override
     public AddItemsToPlaylistRequest build() {
       setContentType(ContentType.APPLICATION_JSON);
-      setPath("/v1/playlists/{playlist_id}/tracks");
+      setPath("/v1/playlists/{playlist_id}/items");
       return new AddItemsToPlaylistRequest(this);
     }
 

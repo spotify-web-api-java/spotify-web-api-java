@@ -1,0 +1,25 @@
+{
+  "shows": [
+    {
+      "available_markets": ["US", "GB"],
+      "copyrights": [],
+      "description": "A sample podcast description.",
+      "html_description": "<p>A sample podcast description.</p>",
+      "explicit": false,
+      "external_urls": {
+        "spotify": "https://open.spotify.com/show/7iZEp9f2Gg8JvKNqK3t905"
+      },
+      "href": "https://api.spotify.com/v1/shows/7iZEp9f2Gg8JvKNqK3t905",
+      "id": "7iZEp9f2Gg8JvKNqK3t905",
+      "images": [],
+      "is_externally_hosted": false,
+      "languages": ["de"],
+      "media_type": "audio",
+      "name": "Acht Milliarden – Der Auslands-Podcast",
+      "publisher": "DER SPIEGEL",
+      "total_episodes": 20,
+      "type": "show",
+      "uri": "spotify:show:7iZEp9f2Gg8JvKNqK3t905"
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "tracks": [
+    {
+      "album": {
+        "album_type": "album",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/0C0XlULifJtAgn6ZNCW2eu"
+            },
+            "href": "https://api.spotify.com/v1/artists/0C0XlULifJtAgn6ZNCW2eu",
+            "id": "0C0XlULifJtAgn6ZNCW2eu",
+            "name": "The Killers",
+            "type": "artist",
+            "uri": "spotify:artist:0C0XlULifJtAgn6ZNCW2eu"
+          }
+        ],
+        "available_markets": ["US"],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/3JUNfTWU5QUkDG4c8e7PVW"
+        },
+        "href": "https://api.spotify.com/v1/albums/3JUNfTWU5QUkDG4c8e7PVW",
+        "id": "3JUNfTWU5QUkDG4c8e7PVW",
+        "images": [],
+        "name": "Hot Fuss",
+        "release_date": "2004-06-14",
+        "release_date_precision": "day",
+        "total_tracks": 11,
+        "type": "album",
+        "uri": "spotify:album:3JUNfTWU5QUkDG4c8e7PVW"
+      },
+      "artists": [
+        {
+          "external_urls": {
+            "spotify": "https://open.spotify.com/artist/0C0XlULifJtAgn6ZNCW2eu"
+          },
+          "href": "https://api.spotify.com/v1/artists/0C0XlULifJtAgn6ZNCW2eu",
+          "id": "0C0XlULifJtAgn6ZNCW2eu",
+          "name": "The Killers",
+          "type": "artist",
+          "uri": "spotify:artist:0C0XlULifJtAgn6ZNCW2eu"
+        }
+      ],
+      "available_markets": ["US"],
+      "disc_number": 1,
+      "duration_ms": 222586,
+      "explicit": false,
+      "external_ids": {
+        "isrc": "GBUM70400251"
+      },
+      "external_urls": {
+        "spotify": "https://open.spotify.com/track/0eGsygTp906u18L0Oimnem"
+      },
+      "href": "https://api.spotify.com/v1/tracks/0eGsygTp906u18L0Oimnem",
+      "id": "0eGsygTp906u18L0Oimnem",
+      "is_local": false,
+      "name": "Mr. Brightside",
+      "popularity": 85,
+      "preview_url": null,
+      "track_number": 2,
+      "type": "track",
+      "uri": "spotify:track:0eGsygTp906u18L0Oimnem"
+    }
+  ]
+}

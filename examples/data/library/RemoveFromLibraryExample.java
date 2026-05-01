@@ -4,7 +4,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonParser;
 import se.michaelthelin.spotify.SpotifyApi;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
-import se.michaelthelin.spotify.requests.data.library.RemoveFromLibraryRequest;
+import se.michaelthelin.spotify.requests.data.library.RemoveItemsFromLibraryRequest;
 import org.apache.hc.core5.http.ParseException;
 
 import java.io.IOException;
@@ -19,12 +19,12 @@ public class RemoveFromLibraryExample {
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
     .setAccessToken(accessToken)
     .build();
-  private static final RemoveFromLibraryRequest removeFromLibraryRequest = spotifyApi.removeFromLibrary(uris)
+  private static final RemoveItemsFromLibraryRequest removeLibraryItemsRequest = spotifyApi.removeItemsFromLibrary(uris)
     .build();
 
-  public static void removeFromLibrary_Sync() {
+  public static void removeLibraryItems_Sync() {
     try {
-      final String string = removeFromLibraryRequest.execute();
+      final String string = removeLibraryItemsRequest.execute();
 
       System.out.println("Null: " + (string == null));
     } catch (IOException | SpotifyWebApiException | ParseException e) {
@@ -32,9 +32,9 @@ public class RemoveFromLibraryExample {
     }
   }
 
-  public static void removeFromLibrary_Async() {
+  public static void removeLibraryItems_Async() {
     try {
-      final CompletableFuture<String> stringFuture = removeFromLibraryRequest.executeAsync();
+      final CompletableFuture<String> stringFuture = removeLibraryItemsRequest.executeAsync();
 
       // Thread free to do other tasks...
 
@@ -50,7 +50,7 @@ public class RemoveFromLibraryExample {
   }
 
   public static void main(String[] args) {
-    removeFromLibrary_Sync();
-    removeFromLibrary_Async();
+    removeLibraryItems_Sync();
+    removeLibraryItems_Async();
   }
 }

@@ -1,0 +1,45 @@
+{
+  "albums": {
+    "href": "https://api.spotify.com/v1/browse/new-releases?country=SE&offset=0&limit=2",
+    "items": [
+      {
+        "album_type": "SINGLE",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/2RdwBSPQiwcmiDo9kixcl8"
+            },
+            "href": "https://api.spotify.com/v1/artists/2RdwBSPQiwcmiDo9kixcl8",
+            "id": "2RdwBSPQiwcmiDo9kixcl8",
+            "name": "Pharrell Williams",
+            "type": "artist",
+            "uri": "spotify:artist:2RdwBSPQiwcmiDo9kixcl8"
+          }
+        ],
+        "available_markets": ["SE"],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/5ZX4m5aVSmWQ5iHAPQpT71"
+        },
+        "href": "https://api.spotify.com/v1/albums/5ZX4m5aVSmWQ5iHAPQpT71",
+        "id": "5ZX4m5aVSmWQ5iHAPQpT71",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/e6b635ebe3ef4ba22492f5698a7b5d417f78b88a",
+            "width": 640
+          }
+        ],
+        "name": "Runnin'",
+        "release_date": "2016-03-18",
+        "release_date_precision": "day",
+        "type": "album",
+        "uri": "spotify:album:5ZX4m5aVSmWQ5iHAPQpT71"
+      }
+    ],
+    "limit": 2,
+    "next": null,
+    "offset": 0,
+    "previous": null,
+    "total": 1
+  }
+}

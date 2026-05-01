@@ -6,7 +6,7 @@ import se.michaelthelin.spotify.model_objects.specification.Episode;
 import se.michaelthelin.spotify.model_objects.specification.Paging;
 import se.michaelthelin.spotify.model_objects.specification.PlaylistTrack;
 import se.michaelthelin.spotify.model_objects.specification.Track;
-import se.michaelthelin.spotify.requests.data.playlists.GetPlaylistsItemsRequest;
+import se.michaelthelin.spotify.requests.data.playlists.GetPlaylistItemsRequest;
 import org.apache.hc.core5.http.ParseException;
 
 import java.io.IOException;
@@ -21,8 +21,8 @@ public class GetPlaylistsItemsExample {
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
     .setAccessToken(accessToken)
     .build();
-  private static final GetPlaylistsItemsRequest getPlaylistsItemsRequest = spotifyApi
-    .getPlaylistsItems(playlistId)
+  private static final GetPlaylistItemsRequest getPlaylistsItemsRequest = spotifyApi
+    .getPlaylistItems(playlistId)
 //          .fields("description")
 //          .limit(10)
 //          .offset(0)

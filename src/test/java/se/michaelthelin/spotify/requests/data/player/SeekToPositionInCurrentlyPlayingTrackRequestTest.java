@@ -15,8 +15,8 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import static se.michaelthelin.spotify.Assertions.assertHasHeader;
 
 public class SeekToPositionInCurrentlyPlayingTrackRequestTest extends AbstractDataTest<String> {
-  private final SeekToPositionInCurrentlyPlayingTrackRequest defaultRequest = ITest.SPOTIFY_API
-    .seekToPositionInCurrentlyPlayingTrack(ITest.POSITION_MS)
+  private final SeekToPositionRequest defaultRequest = ITest.SPOTIFY_API
+    .seekToPosition(ITest.POSITION_MS)
     .setHttpManager(
       TestUtil.MockedHttpManager.returningJson(null))
     .device_id(ITest.DEVICE_ID)

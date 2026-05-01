@@ -4,7 +4,7 @@ import se.michaelthelin.spotify.SpotifyApi;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.model_objects.specification.EpisodeSimplified;
 import se.michaelthelin.spotify.model_objects.specification.Paging;
-import se.michaelthelin.spotify.requests.data.shows.GetShowsEpisodesRequest;
+import se.michaelthelin.spotify.requests.data.shows.GetShowEpisodesRequest;
 import org.apache.hc.core5.http.ParseException;
 
 import java.io.IOException;
@@ -19,7 +19,7 @@ public class GetShowsEpisodesExample {
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
     .setAccessToken(accessToken)
     .build();
-  private static final GetShowsEpisodesRequest getShowsEpisodesRequest = spotifyApi.getShowEpisodes(id)
+  private static final GetShowEpisodesRequest getShowsEpisodesRequest = spotifyApi.getShowEpisodes(id)
 //          .limit(10)
 //          .offset(0)
 //          .market(CountryCode.SE)

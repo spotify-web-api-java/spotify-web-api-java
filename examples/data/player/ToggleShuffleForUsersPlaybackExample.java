@@ -2,7 +2,7 @@ package data.player;
 
 import se.michaelthelin.spotify.SpotifyApi;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
-import se.michaelthelin.spotify.requests.data.player.ToggleShuffleForUsersPlaybackRequest;
+import se.michaelthelin.spotify.requests.data.player.TogglePlaybackShuffleRequest;
 import org.apache.hc.core5.http.ParseException;
 
 import java.io.IOException;
@@ -17,8 +17,8 @@ public class ToggleShuffleForUsersPlaybackExample {
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
     .setAccessToken(accessToken)
     .build();
-  private static final ToggleShuffleForUsersPlaybackRequest toggleShuffleForUsersPlaybackRequest = spotifyApi
-    .toggleShuffleForUsersPlayback(state)
+  private static final TogglePlaybackShuffleRequest toggleShuffleForUsersPlaybackRequest = spotifyApi
+    .togglePlaybackShuffle(state)
 //          .device_id("5fbb3ba6aa454b5534c4ba43a8c7e8e45a63ad0e")
     .build();
 

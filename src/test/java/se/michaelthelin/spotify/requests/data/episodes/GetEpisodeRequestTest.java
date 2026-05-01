@@ -71,7 +71,7 @@ public class GetEpisodeRequestTest extends AbstractDataTest<Episode> {
     assertFalse(
       episode.getExternallyHosted());
     assertTrue(
-      episode.getPlayable());
+      episode.getIsPlayable());
     assertEquals(
       1,
       episode.getLanguages().length);

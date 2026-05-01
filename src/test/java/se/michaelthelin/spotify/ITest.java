@@ -45,6 +45,8 @@ public interface ITest<T> {
   String ADDITIONAL_TYPES = "track,episode";
   String ID_ALBUM = "5zT1JLIj9E57p3e1rFm9Uq";
   String ID_ARTIST = "0LcJLqbBmaGUft1e9Mm8HV";
+  String ID_AUDIOBOOK = "7isl4tFkclqCygPqGxX8FV";
+  String ID_CHAPTER = "2kFJSKFOkDUEXFOh7WFJUv";
   String ID_EPISODE = "4GI3dxEafwap1sFiTGPKd1";
   String ID_PLAYLIST = "3AGOiaoRXMSjswCLtuNqv5";
   String ID_SHOW = "5AvwZVawapvyhJUIx71pdJ";

@@ -12,6 +12,8 @@ public enum ModelObjectType {
   ALBUM("album"),
   /** Artist object type. */
   ARTIST("artist"),
+  /** Audiobook object type. */
+  AUDIOBOOK("audiobook"),
   /** Audio features object type. */
   AUDIO_FEATURES("audio_features"),
   /** Episode object type. */

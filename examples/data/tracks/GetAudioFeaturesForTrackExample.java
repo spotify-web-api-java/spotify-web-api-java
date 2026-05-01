@@ -3,7 +3,7 @@ package data.tracks;
 import se.michaelthelin.spotify.SpotifyApi;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.model_objects.specification.AudioFeatures;
-import se.michaelthelin.spotify.requests.data.tracks.GetAudioFeaturesForTrackRequest;
+import se.michaelthelin.spotify.requests.data.tracks.GetTracksAudioFeaturesRequest;
 import org.apache.hc.core5.http.ParseException;
 
 import java.io.IOException;
@@ -18,13 +18,13 @@ public class GetAudioFeaturesForTrackExample {
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
     .setAccessToken(accessToken)
     .build();
-  private static final GetAudioFeaturesForTrackRequest getAudioFeaturesForTrackRequest = spotifyApi
-    .getAudioFeaturesForTrack(id)
+  private static final GetTracksAudioFeaturesRequest getAudioFeaturesRequest = spotifyApi
+    .getTracksAudioFeatures(id)
     .build();
 
-  public static void getAudioFeaturesForTrack_Sync() {
+  public static void getAudioFeatures_Sync() {
     try {
-      final AudioFeatures audioFeatures = getAudioFeaturesForTrackRequest.execute();
+      final AudioFeatures audioFeatures = getAudioFeaturesRequest.execute();
 
       System.out.println("ID: " + audioFeatures.getId());
     } catch (IOException | SpotifyWebApiException | ParseException e) {
@@ -32,9 +32,9 @@ public class GetAudioFeaturesForTrackExample {
     }
   }
 
-  public static void getAudioFeaturesForTrack_Async() {
+  public static void getAudioFeatures_Async() {
     try {
-      final CompletableFuture<AudioFeatures> audioFeaturesFuture = getAudioFeaturesForTrackRequest.executeAsync();
+      final CompletableFuture<AudioFeatures> audioFeaturesFuture = getAudioFeaturesRequest.executeAsync();
 
       // Thread free to do other tasks...
 
@@ -50,7 +50,7 @@ public class GetAudioFeaturesForTrackExample {
   }
 
   public static void main(String[] args) {
-    getAudioFeaturesForTrack_Sync();
-    getAudioFeaturesForTrack_Async();
+    getAudioFeatures_Sync();
+    getAudioFeatures_Async();
   }
 }

@@ -4,7 +4,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonParser;
 import se.michaelthelin.spotify.SpotifyApi;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
-import se.michaelthelin.spotify.requests.data.library.SaveToLibraryRequest;
+import se.michaelthelin.spotify.requests.data.library.SaveItemsToLibraryRequest;
 import org.apache.hc.core5.http.ParseException;
 
 import java.io.IOException;
@@ -19,12 +19,12 @@ public class SaveToLibraryExample {
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
     .setAccessToken(accessToken)
     .build();
-  private static final SaveToLibraryRequest saveToLibraryRequest = spotifyApi.saveToLibrary(uris)
+  private static final SaveItemsToLibraryRequest saveLibraryItemsRequest = spotifyApi.saveItemsToLibrary(uris)
     .build();
 
-  public static void saveToLibrary_Sync() {
+  public static void saveLibraryItems_Sync() {
     try {
-      final String string = saveToLibraryRequest.execute();
+      final String string = saveLibraryItemsRequest.execute();
 
       System.out.println("Null: " + (string == null));
     } catch (IOException | SpotifyWebApiException | ParseException e) {
@@ -32,9 +32,9 @@ public class SaveToLibraryExample {
     }
   }
 
-  public static void saveToLibrary_Async() {
+  public static void saveLibraryItems_Async() {
     try {
-      final CompletableFuture<String> stringFuture = saveToLibraryRequest.executeAsync();
+      final CompletableFuture<String> stringFuture = saveLibraryItemsRequest.executeAsync();
 
       // Thread free to do other tasks...
 
@@ -50,7 +50,7 @@ public class SaveToLibraryExample {
   }
 
   public static void main(String[] args) {
-    saveToLibrary_Sync();
-    saveToLibrary_Async();
+    saveLibraryItems_Sync();
+    saveLibraryItems_Async();
   }
 }

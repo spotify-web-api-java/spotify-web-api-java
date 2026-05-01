@@ -91,12 +91,17 @@ public interface IPlaylist<T extends IHasTotal> {
    * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/playlists">
    *      Spotify: Working With Playlists</a>
    */
-  Boolean getIsPublicAccess();
+  Boolean getPublic();
 
   /**
-   * Get information about the items in the playlist. The concrete type depends on the specific playlist object type.
+   * Get the track/item metadata for this playlist.
+   * The concrete type {@code T} is
+   * {@link se.michaelthelin.spotify.model_objects.specification.Paging} for a full
+   * {@link Playlist} and
+   * {@link se.michaelthelin.spotify.model_objects.miscellaneous.PlaylistTracksInformation}
+   * for a {@link PlaylistSimplified}.
    *
-   * @return Item information containing total count.
+   * @return Track/item metadata for the playlist.
    */
   T getItems();
 
@@ -105,7 +110,7 @@ public interface IPlaylist<T extends IHasTotal> {
    * a specific playlist version.
    *
    * @return The version identifier for the current playlist.
-   * @see se.michaelthelin.spotify.requests.data.playlists.RemoveItemsFromPlaylistRequest
+   * @see se.michaelthelin.spotify.requests.data.playlists.RemovePlaylistItemsRequest
    */
   String getSnapshotId();
 
@@ -124,5 +129,3 @@ public interface IPlaylist<T extends IHasTotal> {
    */
   String getUri();
 }
-
-

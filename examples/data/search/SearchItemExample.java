@@ -4,7 +4,7 @@ import se.michaelthelin.spotify.SpotifyApi;
 import se.michaelthelin.spotify.enums.ModelObjectType;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.model_objects.special.SearchResult;
-import se.michaelthelin.spotify.requests.data.search.SearchItemRequest;
+import se.michaelthelin.spotify.requests.data.search.SearchForItemRequest;
 import org.apache.hc.core5.http.ParseException;
 
 import java.io.IOException;
@@ -20,16 +20,16 @@ public class SearchItemExample {
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
     .setAccessToken(accessToken)
     .build();
-  private static final SearchItemRequest searchItemRequest = spotifyApi.searchItem(q, type)
+  private static final SearchForItemRequest searchRequest = spotifyApi.searchForItem(q, type)
 //          .market(CountryCode.SE)
 //          .limit(10)
 //          .offset(0)
 //          .includeExternal("audio")
     .build();
 
-  public static void searchItem_Sync() {
+  public static void search_Sync() {
     try {
-      final SearchResult searchResult = searchItemRequest.execute();
+      final SearchResult searchResult = searchRequest.execute();
 
       System.out.println("Total tracks: " + searchResult.getTracks().getTotal());
     } catch (IOException | SpotifyWebApiException | ParseException e) {
@@ -37,9 +37,9 @@ public class SearchItemExample {
     }
   }
 
-  public static void searchItem_Async() {
+  public static void search_Async() {
     try {
-      final CompletableFuture<SearchResult> searchResultFuture = searchItemRequest.executeAsync();
+      final CompletableFuture<SearchResult> searchResultFuture = searchRequest.executeAsync();
 
       // Thread free to do other tasks...
 
@@ -55,7 +55,7 @@ public class SearchItemExample {
   }
 
   public static void main(String[] args) {
-    searchItem_Sync();
-    searchItem_Async();
+    search_Sync();
+    search_Async();
   }
 }

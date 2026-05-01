@@ -3,7 +3,7 @@ package data.player;
 import se.michaelthelin.spotify.SpotifyApi;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.model_objects.special.PlaybackQueue;
-import se.michaelthelin.spotify.requests.data.player.GetTheUsersQueueRequest;
+import se.michaelthelin.spotify.requests.data.player.GetUsersQueueRequest;
 import org.apache.hc.core5.http.ParseException;
 
 import java.io.IOException;
@@ -18,12 +18,12 @@ public class GetTheUsersQueueExample {
     .setAccessToken(accessToken)
     .build();
 
-  private static final GetTheUsersQueueRequest getTheUsersQueueRequest = spotifyApi.getTheUsersQueue()
+  private static final GetUsersQueueRequest getQueueRequest = spotifyApi.getUsersQueue()
     .build();
 
-  public static void getTheUsersQueue_Sync() {
+  public static void getQueue_Sync() {
     try {
-      final PlaybackQueue playbackQueue = getTheUsersQueueRequest.execute();
+      final PlaybackQueue playbackQueue = getQueueRequest.execute();
 
       System.out.println("Count of items in the queue: " + playbackQueue.getQueue().size());
     } catch (IOException | SpotifyWebApiException | ParseException e) {
@@ -31,9 +31,9 @@ public class GetTheUsersQueueExample {
     }
   }
 
-  public static void getTheUsersQueue_Async() {
+  public static void getQueue_Async() {
     try {
-      final CompletableFuture<PlaybackQueue> playbackQueueFuture = getTheUsersQueueRequest.executeAsync();
+      final CompletableFuture<PlaybackQueue> playbackQueueFuture = getQueueRequest.executeAsync();
 
       // Thread free to do other tasks...
 
@@ -49,7 +49,7 @@ public class GetTheUsersQueueExample {
   }
 
   public static void main(String[] args) {
-    getTheUsersQueue_Sync();
-    getTheUsersQueue_Async();
+    getQueue_Sync();
+    getQueue_Async();
   }
 }

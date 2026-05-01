@@ -15,8 +15,8 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import static se.michaelthelin.spotify.Assertions.assertHasHeader;
 
 public class SetVolumeForUsersPlaybackRequestTest extends AbstractDataTest<String> {
-  private final SetVolumeForUsersPlaybackRequest defaultRequest = ITest.SPOTIFY_API
-    .setVolumeForUsersPlayback(ITest.VOLUME_PERCENT)
+  private final SetPlaybackVolumeRequest defaultRequest = ITest.SPOTIFY_API
+    .setPlaybackVolume(ITest.VOLUME_PERCENT)
     .setHttpManager(
       TestUtil.MockedHttpManager.returningJson(null))
     .device_id(ITest.DEVICE_ID)

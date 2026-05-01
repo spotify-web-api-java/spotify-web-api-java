@@ -1,0 +1,32 @@
+{
+  "albums": [
+    {
+      "album_type": "album",
+      "artists": [
+        {
+          "external_urls": {
+            "spotify": "https://open.spotify.com/artist/2BTZIqw0ntH9MvilQ3ewNY"
+          },
+          "href": "https://api.spotify.com/v1/artists/2BTZIqw0ntH9MvilQ3ewNY",
+          "id": "2BTZIqw0ntH9MvilQ3ewNY",
+          "name": "Cyndi Lauper",
+          "type": "artist",
+          "uri": "spotify:artist:2BTZIqw0ntH9MvilQ3ewNY"
+        }
+      ],
+      "available_markets": ["US", "GB"],
+      "external_urls": {
+        "spotify": "https://open.spotify.com/album/0sNOF9WDwhWunNAHPD3Baj"
+      },
+      "href": "https://api.spotify.com/v1/albums/0sNOF9WDwhWunNAHPD3Baj",
+      "id": "0sNOF9WDwhWunNAHPD3Baj",
+      "images": [],
+      "name": "She's So Unusual",
+      "release_date": "1983",
+      "release_date_precision": "year",
+      "total_tracks": 12,
+      "type": "album",
+      "uri": "spotify:album:0sNOF9WDwhWunNAHPD3Baj"
+    }
+  ]
+}
