@@ -28,7 +28,7 @@
         },
         "public": null,
         "snapshot_id": "PULvu1V2Ps8lzCxNXfNZTw4QbhBpaV0ZORc03Mw6oj6kQw9Ks2REwhL5Xcw/74wL",
-        "tracks": {
+        "items": {
           "href": "https://api.spotify.com/v1/users/spotifybrazilian/playlists/4k7EZPI3uKMz4aRRrLVfen/tracks",
           "total": 100
         },
@@ -61,7 +61,7 @@
         },
         "public": null,
         "snapshot_id": "V66hh9k2HnLCdzHvtoXPv+tm0jp3ODM63SZ0oISfGnlHQxwG/scupDbKgIo99Zfz",
-        "tracks": {
+        "items": {
           "href": "https://api.spotify.com/v1/users/spotifybrazilian/playlists/4HZh0C9y80GzHDbHZyX770/tracks",
           "total": 74
         },

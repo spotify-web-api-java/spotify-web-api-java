@@ -3,7 +3,7 @@ package data.library;
 import se.michaelthelin.spotify.SpotifyApi;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.model_objects.specification.Paging;
-import se.michaelthelin.spotify.model_objects.specification.SavedEpisode;
+import se.michaelthelin.spotify.model_objects.miscellaneous.SavedEpisode;
 import se.michaelthelin.spotify.requests.data.library.GetUsersSavedEpisodesRequest;
 import org.apache.hc.core5.http.ParseException;
 
