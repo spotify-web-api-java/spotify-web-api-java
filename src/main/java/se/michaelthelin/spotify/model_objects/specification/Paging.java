@@ -3,6 +3,7 @@ package se.michaelthelin.spotify.model_objects.specification;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
+import se.michaelthelin.spotify.model_objects.interfaces.IHasTotal;
 
 import java.lang.reflect.ParameterizedType;
 import java.util.Arrays;
@@ -16,7 +17,7 @@ import java.util.Arrays;
  * @param <T> The type of the objects contained in a paging object.
  */
 @JsonDeserialize(builder = Paging.Builder.class)
-public class Paging<T> extends AbstractModelObject {
+public class Paging<T> extends AbstractModelObject implements IHasTotal {
   /** The Spotify Web API endpoint URL. */
   private final String href;
   /** Array of items in the paging object. */
