@@ -7,7 +7,7 @@
 
   <groupId>se.michaelthelin.spotify</groupId>
   <artifactId>spotify-web-api-java</artifactId>
-  <version>9.4.0</version>
+  <version>10.0.0-RC3</version>
   <!--
    DO NOT FORGET
    - to update version numbers in README (2x)
@@ -141,9 +141,27 @@
             <artifactId>maven-compiler-plugin</artifactId>
             <version>3.15.0</version>
             <configuration>
-              <source>9</source>
-              <target>9</target>
+              <release>9</release>
             </configuration>
+          </plugin>
+          <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>build-helper-maven-plugin</artifactId>
+            <version>3.6.0</version>
+            <executions>
+              <execution>
+                <id>add-examples-source</id>
+                <phase>generate-sources</phase>
+                <goals>
+                  <goal>add-source</goal>
+                </goals>
+                <configuration>
+                  <sources>
+                    <source>${project.basedir}/examples</source>
+                  </sources>
+                </configuration>
+              </execution>
+            </executions>
           </plugin>
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
@@ -174,8 +192,7 @@
             <artifactId>maven-compiler-plugin</artifactId>
             <version>3.15.0</version>
             <configuration>
-              <source>9</source>
-              <target>9</target>
+              <release>9</release>
             </configuration>
           </plugin>
           <plugin>
@@ -251,6 +268,12 @@
                 <goals>
                   <goal>sign</goal>
                 </goals>
+                <configuration>
+                  <gpgArguments>
+                    <arg>--pinentry-mode</arg>
+                    <arg>loopback</arg>
+                  </gpgArguments>
+                </configuration>
               </execution>
             </executions>
           </plugin>

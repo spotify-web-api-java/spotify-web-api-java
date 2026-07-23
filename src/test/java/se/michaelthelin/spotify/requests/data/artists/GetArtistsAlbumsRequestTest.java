@@ -4,7 +4,6 @@ import org.apache.hc.core5.http.ParseException;
 import org.junit.jupiter.api.Test;
 import se.michaelthelin.spotify.ITest;
 import se.michaelthelin.spotify.TestUtil;
-import se.michaelthelin.spotify.enums.AlbumGroup;
 import se.michaelthelin.spotify.enums.AlbumType;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.model_objects.specification.AlbumSimplified;
@@ -56,9 +55,6 @@ public class GetArtistsAlbumsRequestTest extends AbstractDataTest<Paging<AlbumSi
     assertEquals(
       2,
       albumSimplifiedPaging.getItems().length);
-    assertEquals(
-      AlbumGroup.SINGLE,
-      albumSimplifiedPaging.getItems()[0].getAlbumGroup());
     assertEquals(
       AlbumType.SINGLE,
       albumSimplifiedPaging.getItems()[0].getAlbumType());
