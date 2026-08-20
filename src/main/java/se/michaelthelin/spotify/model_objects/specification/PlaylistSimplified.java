@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.enums.ModelObjectType;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
+import se.michaelthelin.spotify.model_objects.interfaces.IPlaylist;
 import se.michaelthelin.spotify.model_objects.miscellaneous.PlaylistTracksInformation;
 import se.michaelthelin.spotify.requests.data.playlists.RemoveItemsFromPlaylistRequest;
 import se.michaelthelin.spotify.requests.data.search.interfaces.ISearchModelObject;
@@ -16,7 +17,7 @@ import java.util.Objects;
  * simplified Playlist objects</a> by building instances from this class.
  */
 @JsonDeserialize(builder = PlaylistSimplified.Builder.class)
-public class PlaylistSimplified extends AbstractModelObject implements ISearchModelObject {
+public class PlaylistSimplified extends AbstractModelObject implements ISearchModelObject, IPlaylist<PlaylistTracksInformation> {
   /** Whether the playlist is collaborative. */
   private final Boolean collaborative;
   /** The description of the playlist. */
@@ -38,7 +39,7 @@ public class PlaylistSimplified extends AbstractModelObject implements ISearchMo
   /** The version identifier for the current playlist. */
   private final String snapshotId;
   /** Information about the tracks of the playlist. */
-  private final PlaylistTracksInformation tracks;
+  private final PlaylistTracksInformation items;
   /** The object type. */
   private final ModelObjectType type;
   /** The Spotify URI for the playlist. */
@@ -57,7 +58,7 @@ public class PlaylistSimplified extends AbstractModelObject implements ISearchMo
     this.owner = builder.owner;
     this.publicAccess = builder.publicAccess;
     this.snapshotId = builder.snapshotId;
-    this.tracks = builder.tracks;
+    this.items = builder.items;
     this.type = builder.type;
     this.uri = builder.uri;
   }
@@ -172,8 +173,8 @@ public class PlaylistSimplified extends AbstractModelObject implements ISearchMo
    *
    * @return Information about the tracks of the playlist.
    */
-  public PlaylistTracksInformation getTracks() {
-    return tracks;
+  public PlaylistTracksInformation getItems() {
+    return items;
   }
 
   /**
@@ -197,7 +198,7 @@ public class PlaylistSimplified extends AbstractModelObject implements ISearchMo
 
   @Override
   public String toString() {
-    return "PlaylistSimplified(name=" + name + ", tracks=" + tracks + ", collaborative=" + collaborative
+    return "PlaylistSimplified(name=" + name + ", items=" + items + ", collaborative=" + collaborative
         + ", description=" + description + ", externalUrls=" + externalUrls + ", href=" + href + ", id=" + id
         + ", images=" + Arrays.toString(images) + ", owner=" + owner + ", publicAccess=" + publicAccess
         + ", snapshotId=" + snapshotId + ", type=" + type + ", uri=" + uri + ")";
@@ -222,7 +223,7 @@ public class PlaylistSimplified extends AbstractModelObject implements ISearchMo
     private User owner;
     private Boolean publicAccess;
     private String snapshotId;
-    private PlaylistTracksInformation tracks;
+    private PlaylistTracksInformation items;
     private ModelObjectType type;
     private String uri;
 
@@ -345,13 +346,13 @@ public class PlaylistSimplified extends AbstractModelObject implements ISearchMo
     }
 
     /**
-     * Set some track information of the playlist to be built.
+     * Set some item information of the playlist to be built.
      *
-     * @param tracks A playlist tracks information object.
+     * @param items A playlist tracks information object.
      * @return A {@link PlaylistSimplified.Builder}.
      */
-    public Builder setTracks(PlaylistTracksInformation tracks) {
-      this.tracks = tracks;
+    public Builder setItems(PlaylistTracksInformation items) {
+      this.items = items;
       return this;
     }
 
@@ -445,10 +446,10 @@ public class PlaylistSimplified extends AbstractModelObject implements ISearchMo
           hasAndNotNull(jsonObject, "snapshot_id")
             ? jsonObject.get("snapshot_id").getAsString()
             : null)
-        .setTracks(
-          hasAndNotNull(jsonObject, "tracks")
+        .setItems(
+          hasAndNotNull(jsonObject, "items")
             ? new PlaylistTracksInformation.JsonUtil().createModelObject(
-            jsonObject.getAsJsonObject("tracks"))
+            jsonObject.getAsJsonObject("items"))
             : null)
         .setType(
           hasAndNotNull(jsonObject, "type")

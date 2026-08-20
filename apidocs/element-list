@@ -5,6 +5,7 @@ se.michaelthelin.spotify.exceptions.detailed
 se.michaelthelin.spotify.model_objects
 se.michaelthelin.spotify.model_objects.credentials
 se.michaelthelin.spotify.model_objects.credentials.error
+se.michaelthelin.spotify.model_objects.interfaces
 se.michaelthelin.spotify.model_objects.miscellaneous
 se.michaelthelin.spotify.model_objects.special
 se.michaelthelin.spotify.model_objects.specification

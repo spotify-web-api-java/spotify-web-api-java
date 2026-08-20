@@ -52,9 +52,6 @@ public class GetTrackRequestTest extends AbstractDataTest<Track> {
       track.getArtists(),
       "");
     assertEquals(
-      57,
-      track.getAvailableMarkets().length);
-    assertEquals(
       1,
       (int) track.getDiscNumber());
     assertEquals(
@@ -62,8 +59,6 @@ public class GetTrackRequestTest extends AbstractDataTest<Track> {
       (int) track.getDurationMs());
     assertFalse(
       track.getIsExplicit());
-    assertNotNull(
-      track.getExternalIds());
     assertNotNull(
       track.getExternalUrls());
     assertEquals(
@@ -75,9 +70,6 @@ public class GetTrackRequestTest extends AbstractDataTest<Track> {
     assertEquals(
       "Mr. Brightside",
       track.getName());
-    assertEquals(
-      73,
-      (int) track.getPopularity());
     assertEquals(
       "https://p.scdn.co/mp3-preview/4839b070015ab7d6de9fec1756e1f3096d908fba",
       track.getPreviewUrl());

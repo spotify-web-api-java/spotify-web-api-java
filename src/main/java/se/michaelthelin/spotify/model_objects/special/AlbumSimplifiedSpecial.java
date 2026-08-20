@@ -8,6 +8,7 @@ import se.michaelthelin.spotify.enums.AlbumType;
 import se.michaelthelin.spotify.enums.ModelObjectType;
 import se.michaelthelin.spotify.enums.ReleaseDatePrecision;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
+import se.michaelthelin.spotify.model_objects.interfaces.IAlbum;
 import se.michaelthelin.spotify.model_objects.specification.Album;
 import se.michaelthelin.spotify.model_objects.specification.ArtistSimplified;
 import se.michaelthelin.spotify.model_objects.specification.ExternalUrl;
@@ -25,7 +26,7 @@ import java.util.Objects;
  * specification, although the albums object as returned by the searches API includes it.
  */
 @JsonDeserialize(builder = AlbumSimplifiedSpecial.Builder.class)
-public class AlbumSimplifiedSpecial extends AbstractModelObject implements ISearchModelObject {
+public class AlbumSimplifiedSpecial extends AbstractModelObject implements ISearchModelObject, IAlbum {
   /** The type of the album. */
   private final AlbumType albumType;
   /** The artists who performed the album. */

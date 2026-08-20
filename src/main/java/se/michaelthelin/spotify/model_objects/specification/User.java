@@ -2,9 +2,7 @@ package se.michaelthelin.spotify.model_objects.specification;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.JsonObject;
-import com.neovisionaries.i18n.CountryCode;
 import se.michaelthelin.spotify.enums.ModelObjectType;
-import se.michaelthelin.spotify.enums.ProductType;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 
 import java.util.Arrays;
@@ -22,24 +20,16 @@ import java.util.Objects;
 public class User extends AbstractModelObject {
   /** The user's birthdate. */
   private final String birthdate;
-  /** The country of the user. */
-  private final CountryCode country;
   /** The name displayed on the user's profile. */
   private final String displayName;
-  /** The user's email address. */
-  private final String email;
   /** External URLs for the user. */
   private final ExternalUrl externalUrls;
-  /** Information about the followers of the user. */
-  private final Followers followers;
   /** The Spotify Web API endpoint URL for the user. */
   private final String href;
   /** The Spotify user ID for the user. */
   private final String id;
   /** The user's profile image. */
   private final Image[] images;
-  /** The user's Spotify subscription level. */
-  private final ProductType product;
   /** The object type. */
   private final ModelObjectType type;
   /** The Spotify URI for the user. */
@@ -49,15 +39,11 @@ public class User extends AbstractModelObject {
     super(builder);
 
     this.birthdate = builder.birthdate;
-    this.country = builder.country;
     this.displayName = builder.displayName;
-    this.email = builder.email;
     this.externalUrls = builder.externalUrls;
-    this.followers = builder.followers;
     this.href = builder.href;
     this.id = builder.id;
     this.images = builder.images;
-    this.product = builder.product;
     this.type = builder.type;
     this.uri = builder.uri;
   }
@@ -75,18 +61,6 @@ public class User extends AbstractModelObject {
   }
 
   /**
-   * Get the country code of the users set home country. <br>
-   * <b>Note:</b> This field is only available when the current user has granted access to the {@code user-read-private}
-   * scope.
-   *
-   * @return An <a href="http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2</a> country code.
-   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/scopes">Spotify: Using Scopes</a>
-   */
-  public CountryCode getCountry() {
-    return country;
-  }
-
-  /**
    * Get the users display name if available. <br>
    * If the display name is not available, {@code null} will be returned.
    *
@@ -97,19 +71,6 @@ public class User extends AbstractModelObject {
   }
 
   /**
-   * Get the users email address. <br>
-   * <b>Important!</b> This email address is unverified; there is no proof that it actually belongs to the user. <br>
-   * <b>Note:</b> This field is only available when the current user has granted access to the {@code user-read-email}
-   * scope.
-   *
-   * @return The user's email address, as entered by the user when creating their account.
-   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/scopes">Spotify: Using Scopes</a>
-   */
-  public String getEmail() {
-    return email;
-  }
-
-  /**
    * Get the external URLs of the user. <br>
    * Example: Spotify-URL.
    *
@@ -117,16 +78,6 @@ public class User extends AbstractModelObject {
    */
   public ExternalUrl getExternalUrls() {
     return externalUrls;
-  }
-
-  /**
-   * Get information about the followers of the user. <br>
-   * Example: Follower count.
-   *
-   * @return Information about the followers of the user.
-   */
-  public Followers getFollowers() {
-    return followers;
   }
 
   /**
@@ -158,19 +109,6 @@ public class User extends AbstractModelObject {
   }
 
   /**
-   * Get the product type of the users account. <br>
-   * Product type refers to premium account, free account, etc. <br>
-   * <b>Note:</b> This field is only available when the current user has granted access to the {@code user-read-private}
-   * scope.
-   *
-   * @return The user's Spotify subscription level: "premium", "free", etc.
-   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/scopes">Spotify: Using Scopes</a>
-   */
-  public ProductType getProduct() {
-    return product;
-  }
-
-  /**
    * Get the model object type. In this case "user".
    *
    * @return The object type: "user"
@@ -191,9 +129,9 @@ public class User extends AbstractModelObject {
 
   @Override
   public String toString() {
-    return "User(birthdate=" + birthdate + ", country=" + country + ", displayName=" + displayName + ", email=" + email
-        + ", externalUrls=" + externalUrls + ", followers=" + followers + ", href=" + href + ", id=" + id + ", images="
-        + Arrays.toString(images) + ", product=" + product + ", type=" + type + ", uri=" + uri + ")";
+    return "User(birthdate=" + birthdate + ", displayName=" + displayName
+        + ", externalUrls=" + externalUrls + ", href=" + href + ", id=" + id + ", images="
+        + Arrays.toString(images) + ", type=" + type + ", uri=" + uri + ")";
   }
 
   @Override
@@ -206,15 +144,11 @@ public class User extends AbstractModelObject {
    */
   public static final class Builder extends AbstractModelObject.Builder {
     private String birthdate;
-    private CountryCode country;
     private String displayName;
-    private String email;
     private ExternalUrl externalUrls;
-    private Followers followers;
     private String href;
     private String id;
     private Image[] images;
-    private ProductType product;
     private ModelObjectType type;
     private String uri;
 
@@ -237,17 +171,6 @@ public class User extends AbstractModelObject {
     }
 
     /**
-     * Set the home country of the user object to be built.
-     *
-     * @param country An ISO 3166-1 alpha-2 country code.
-     * @return A {@link User.Builder}.
-     */
-    public Builder setCountry(CountryCode country) {
-      this.country = country;
-      return this;
-    }
-
-    /**
      * Set the display name of the user to be built. If the user hasn't a display name, set {@code null} instead.
      *
      * @param displayName The name displayed on the user's profile. {@code null} if not available.
@@ -259,17 +182,6 @@ public class User extends AbstractModelObject {
     }
 
     /**
-     * Set the email address of the user to be built.
-     *
-     * @param email The user's email address, as entered by the user when creating their account.
-     * @return A {@link User.Builder}.
-     */
-    public Builder setEmail(String email) {
-      this.email = email;
-      return this;
-    }
-
-    /**
      * Set external urls of the user to be built.
      *
      * @param externalUrls Known external URLs for this user.
@@ -277,17 +189,6 @@ public class User extends AbstractModelObject {
      */
     public Builder setExternalUrls(ExternalUrl externalUrls) {
       this.externalUrls = externalUrls;
-      return this;
-    }
-
-    /**
-     * Set the followers object of the user to be built.
-     *
-     * @param followers Information about the followers of the user.
-     * @return A {@link User.Builder}.
-     */
-    public Builder setFollowers(Followers followers) {
-      this.followers = followers;
       return this;
     }
 
@@ -322,17 +223,6 @@ public class User extends AbstractModelObject {
      */
     public Builder setImages(Image... images) {
       this.images = images;
-      return this;
-    }
-
-    /**
-     * Set the product type of the user to be built.
-     *
-     * @param product The user's Spotify subscription level: "premium", "free", etc.
-     * @return A {@link User.Builder}.
-     */
-    public Builder setProduct(ProductType product) {
-      this.product = product;
       return this;
     }
 
@@ -386,28 +276,14 @@ public class User extends AbstractModelObject {
           hasAndNotNull(jsonObject, "birthdate")
             ? jsonObject.get("birthdate").getAsString()
             : null)
-        .setCountry(
-          hasAndNotNull(jsonObject, "country")
-            ? CountryCode.getByCode(
-            jsonObject.get("country").getAsString())
-            : null)
         .setDisplayName(
           hasAndNotNull(jsonObject, "display_name")
             ? jsonObject.get("display_name").getAsString()
-            : null)
-        .setEmail(
-          hasAndNotNull(jsonObject, "email")
-            ? jsonObject.get("email").getAsString()
             : null)
         .setExternalUrls(
           hasAndNotNull(jsonObject, "external_urls")
             ? new ExternalUrl.JsonUtil().createModelObject(
             jsonObject.getAsJsonObject("external_urls"))
-            : null)
-        .setFollowers(
-          hasAndNotNull(jsonObject, "followers")
-            ? new Followers.JsonUtil().createModelObject(
-            jsonObject.getAsJsonObject("followers"))
             : null)
         .setHref(
           hasAndNotNull(jsonObject, "href")
@@ -421,11 +297,6 @@ public class User extends AbstractModelObject {
           hasAndNotNull(jsonObject, "images")
             ? new Image.JsonUtil().createModelObjectArray(
             jsonObject.getAsJsonArray("images"))
-            : null)
-        .setProduct(
-          hasAndNotNull(jsonObject, "product")
-            ? ProductType.keyOf(
-            jsonObject.get("product").getAsString().toLowerCase())
             : null)
         .setType(
           hasAndNotNull(jsonObject, "type")

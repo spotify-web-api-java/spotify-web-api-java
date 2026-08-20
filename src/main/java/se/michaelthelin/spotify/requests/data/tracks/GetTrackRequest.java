@@ -70,7 +70,7 @@ public class GetTrackRequest extends AbstractDataRequest<Track> {
      *
      * @param market Optional. An ISO 3166-1 alpha-2 country code. Provide this
      *               parameter if you want to apply Track Relinking.
-     * @return A {@link GetSeveralTracksRequest.Builder}.
+     * @return A {@link GetTrackRequest.Builder}.
      * @see <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">Wikipedia: ISO 3166-1 alpha-2 country codes</a>
      * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/track-relinking">Spotify: Track Relinking Guide</a>
      */
