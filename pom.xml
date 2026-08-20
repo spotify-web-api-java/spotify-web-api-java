@@ -73,9 +73,9 @@
       <version>2.14.0</version>
     </dependency>
     <dependency>
-      <groupId>com.neovisionaries</groupId>
+      <groupId>co.uk.foundationsedge</groupId>
       <artifactId>nv-i18n</artifactId>
-      <version>1.29</version>
+      <version>1.33</version>
     </dependency>
     <dependency>
       <groupId>org.apache.httpcomponents.client5</groupId>
