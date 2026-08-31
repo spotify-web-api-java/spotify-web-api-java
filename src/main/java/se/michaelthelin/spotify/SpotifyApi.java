@@ -203,7 +203,11 @@ public class SpotifyApi {
    * @param pattern the date pattern
    * @param id the timezone ID
    * @return a configured SimpleDateFormat instance
+   * @deprecated {@link SimpleDateFormat} is mutable and not thread-safe, so instances returned by this
+   * method must not be shared across threads or cached in a static field. Use a {@link DateTimeFormatter}
+   * instead.
    */
+  @Deprecated
   public static SimpleDateFormat makeSimpleDateFormat(String pattern, String id) {
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
     simpleDateFormat.setTimeZone(TimeZone.getTimeZone(id));
