@@ -94,7 +94,7 @@ public class TrackSimplified extends AbstractModelObject implements ITrack {
    * @return Whether or not the track has explicit lyrics ({@code true} = yes it does; {@code false} = no it does not
    * <b>OR</b> unknown).
    */
-  public Boolean getIsExplicit() {
+  public Boolean getExplicit() {
     return explicit;
   }
 

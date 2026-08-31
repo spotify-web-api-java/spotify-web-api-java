@@ -33,6 +33,8 @@ public class Episode extends AbstractModelObject implements IEpisode {
   private final String id;
   /** Images for the episode. */
   private final Image[] images;
+  /** A description of the episode, which may contain HTML tags. */
+  private final String htmlDescription;
   /** Whether the episode is externally hosted. */
   private final Boolean isExternallyHosted;
   /** Whether the episode is playable. */
@@ -64,6 +66,7 @@ public class Episode extends AbstractModelObject implements IEpisode {
     this.href = builder.href;
     this.id = builder.id;
     this.images = builder.images;
+    this.htmlDescription = builder.htmlDescription;
     this.isExternallyHosted = builder.isExternallyHosted;
     this.isPlayable = builder.isPlayable;
     this.languages = builder.languages;
@@ -95,6 +98,15 @@ public class Episode extends AbstractModelObject implements IEpisode {
   }
 
   /**
+   * Get a description of the episode which may contain HTML tags.
+   *
+   * @return The HTML description of the episode.
+   */
+  public String getHtmlDescription() {
+    return htmlDescription;
+  }
+
+  /**
    * Get the duration of the episode in milliseconds.
    *
    * @return The length of the episode in milliseconds.
@@ -110,6 +122,7 @@ public class Episode extends AbstractModelObject implements IEpisode {
    * @return Whether or not the episode has explicit content ({@code true} = yes it does; {@code false} = no it does not
    * <b>OR</b> unknown).
    */
+  @Override
   public Boolean getExplicit() {
     return explicit;
   }
@@ -168,7 +181,8 @@ public class Episode extends AbstractModelObject implements IEpisode {
    *
    * @return True if the episode is playable in the given market. Otherwise false.
    */
-  public Boolean getPlayable() {
+  @Override
+  public Boolean getIsPlayable() {
     return isPlayable;
   }
 
@@ -251,8 +265,9 @@ public class Episode extends AbstractModelObject implements IEpisode {
   public String toString() {
     return "Episode(name=" + name + ", description=" + description + ", show=" + show + ", audioPreviewUrl="
         + audioPreviewUrl + ", durationMs=" + durationMs + ", explicit=" + explicit + ", externalUrls=" + externalUrls
-        + ", href=" + href + ", id=" + id + ", images=" + Arrays.toString(images) + ", isExternallyHosted="
-        + isExternallyHosted + ", isPlayable=" + isPlayable + ", languages=" + Arrays.toString(languages)
+        + ", href=" + href + ", id=" + id + ", images=" + Arrays.toString(images) + ", htmlDescription="
+        + htmlDescription + ", isExternallyHosted=" + isExternallyHosted + ", isPlayable=" + isPlayable
+        + ", languages=" + Arrays.toString(languages)
         + ", releaseDate=" + releaseDate + ", releaseDatePrecision=" + releaseDatePrecision + ", resumePoint="
         + resumePoint + ", type=" + type + ", uri=" + uri + ")";
   }
@@ -274,6 +289,7 @@ public class Episode extends AbstractModelObject implements IEpisode {
     private String href;
     private String id;
     private Image[] images;
+    private String htmlDescription;
     private Boolean isExternallyHosted;
     private Boolean isPlayable;
     private String[] languages;
@@ -311,6 +327,17 @@ public class Episode extends AbstractModelObject implements IEpisode {
      */
     public Builder setDescription(String description) {
       this.description = description;
+      return this;
+    }
+
+    /**
+     * Set the HTML description for the episode to be built.
+     *
+     * @param htmlDescription The description of the episode, which may contain HTML tags.
+     * @return A {@link Episode.Builder}.
+     */
+    public Builder setHtmlDescription(String htmlDescription) {
+      this.htmlDescription = htmlDescription;
       return this;
     }
 
@@ -522,6 +549,10 @@ public class Episode extends AbstractModelObject implements IEpisode {
         .setDescription(
           hasAndNotNull(jsonObject, "description")
             ? jsonObject.get("description").getAsString()
+            : null)
+        .setHtmlDescription(
+          hasAndNotNull(jsonObject, "html_description")
+            ? jsonObject.get("html_description").getAsString()
             : null)
         .setDurationMs(
           hasAndNotNull(jsonObject, "duration_ms")

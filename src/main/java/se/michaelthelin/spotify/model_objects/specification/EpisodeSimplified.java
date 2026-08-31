@@ -34,6 +34,8 @@ public class EpisodeSimplified extends AbstractModelObject implements ISearchMod
   private final String id;
   /** Images for the episode. */
   private final Image[] images;
+  /** A description of the episode, which may contain HTML tags. */
+  private final String htmlDescription;
   /** Whether the episode is externally hosted. */
   private final Boolean isExternallyHosted;
   /** Whether the episode is playable. */
@@ -63,6 +65,7 @@ public class EpisodeSimplified extends AbstractModelObject implements ISearchMod
     this.href = builder.href;
     this.id = builder.id;
     this.images = builder.images;
+    this.htmlDescription = builder.htmlDescription;
     this.isExternallyHosted = builder.isExternallyHosted;
     this.isPlayable = builder.isPlayable;
     this.languages = builder.languages;
@@ -93,6 +96,15 @@ public class EpisodeSimplified extends AbstractModelObject implements ISearchMod
   }
 
   /**
+   * Get a description of the episode which may contain HTML tags.
+   *
+   * @return The HTML description of the episode.
+   */
+  public String getHtmlDescription() {
+    return htmlDescription;
+  }
+
+  /**
    * Get the duration of the episode in milliseconds.
    *
    * @return The length of the episode in milliseconds.
@@ -107,6 +119,7 @@ public class EpisodeSimplified extends AbstractModelObject implements ISearchMod
    * @return Whether or not the episode has explicit content ({@code true} = yes it does; {@code false} = no it does not
    * <b>OR</b> unknown).
    */
+  @Override
   public Boolean getExplicit() {
     return explicit;
   }
@@ -162,7 +175,8 @@ public class EpisodeSimplified extends AbstractModelObject implements ISearchMod
    *
    * @return True if the episode is playable in the given market. Otherwise false.
    */
-  public Boolean getPlayable() {
+  @Override
+  public Boolean getIsPlayable() {
     return isPlayable;
   }
 
@@ -233,7 +247,8 @@ public class EpisodeSimplified extends AbstractModelObject implements ISearchMod
   public String toString() {
     return "EpisodeSimplified(name=" + name + ", audioPreviewUrl=" + audioPreviewUrl + ", description=" + description
         + ", durationMs=" + durationMs + ", explicit=" + explicit + ", externalUrls=" + externalUrls + ", href=" + href
-        + ", id=" + id + ", images=" + Arrays.toString(images) + ", isExternallyHosted=" + isExternallyHosted
+        + ", id=" + id + ", images=" + Arrays.toString(images) + ", htmlDescription=" + htmlDescription
+        + ", isExternallyHosted=" + isExternallyHosted
         + ", isPlayable=" + isPlayable + ", languages=" + Arrays.toString(languages) + ", releaseDate=" + releaseDate
         + ", releaseDatePrecision=" + releaseDatePrecision + ", resumePoint=" + resumePoint + ", type=" + type
         + ", uri=" + uri + ")";
@@ -256,6 +271,7 @@ public class EpisodeSimplified extends AbstractModelObject implements ISearchMod
     private String href;
     private String id;
     private Image[] images;
+    private String htmlDescription;
     private Boolean isExternallyHosted;
     private Boolean isPlayable;
     private String[] languages;
@@ -292,6 +308,17 @@ public class EpisodeSimplified extends AbstractModelObject implements ISearchMod
      */
     public Builder setDescription(String description) {
       this.description = description;
+      return this;
+    }
+
+    /**
+     * Set the HTML description for the episode to be built.
+     *
+     * @param htmlDescription The description of the episode, which may contain HTML tags.
+     * @return A {@link EpisodeSimplified.Builder}.
+     */
+    public Builder setHtmlDescription(String htmlDescription) {
+      this.htmlDescription = htmlDescription;
       return this;
     }
 
@@ -492,6 +519,10 @@ public class EpisodeSimplified extends AbstractModelObject implements ISearchMod
         .setDescription(
           hasAndNotNull(jsonObject, "description")
             ? jsonObject.get("description").getAsString()
+            : null)
+        .setHtmlDescription(
+          hasAndNotNull(jsonObject, "html_description")
+            ? jsonObject.get("html_description").getAsString()
             : null)
         .setDurationMs(
           hasAndNotNull(jsonObject, "duration_ms")

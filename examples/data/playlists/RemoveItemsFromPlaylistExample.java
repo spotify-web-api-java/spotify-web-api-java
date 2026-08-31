@@ -5,7 +5,7 @@ import com.google.gson.JsonParser;
 import se.michaelthelin.spotify.SpotifyApi;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.model_objects.special.SnapshotResult;
-import se.michaelthelin.spotify.requests.data.playlists.RemoveItemsFromPlaylistRequest;
+import se.michaelthelin.spotify.requests.data.playlists.RemovePlaylistItemsRequest;
 import org.apache.hc.core5.http.ParseException;
 
 import java.io.IOException;
@@ -21,14 +21,14 @@ public class RemoveItemsFromPlaylistExample {
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
     .setAccessToken(accessToken)
     .build();
-  private static final RemoveItemsFromPlaylistRequest removeItemsFromPlaylistRequest = spotifyApi
-    .removeItemsFromPlaylist(playlistId, tracks)
+  private static final RemovePlaylistItemsRequest removeItemsPlaylistRequest = spotifyApi
+    .removePlaylistItems(playlistId, tracks)
 //          .snapshotId("JbtmHBDBAYu3/bt8BOXKjzKx3i0b6LCa/wVjyl6qQ2Yf6nFXkbmzuEa+ZI/U1yF+")
     .build();
 
-  public static void removeItemsFromPlaylist_Sync() {
+  public static void removeItemsPlaylist_Sync() {
     try {
-      final SnapshotResult snapshotResult = removeItemsFromPlaylistRequest.execute();
+      final SnapshotResult snapshotResult = removeItemsPlaylistRequest.execute();
 
       System.out.println("Snapshot ID: " + snapshotResult.getSnapshotId());
     } catch (IOException | SpotifyWebApiException | ParseException e) {
@@ -36,9 +36,9 @@ public class RemoveItemsFromPlaylistExample {
     }
   }
 
-  public static void removeItemsFromPlaylist_Async() {
+  public static void removeItemsPlaylist_Async() {
     try {
-      final CompletableFuture<SnapshotResult> snapshotResultFuture = removeItemsFromPlaylistRequest.executeAsync();
+      final CompletableFuture<SnapshotResult> snapshotResultFuture = removeItemsPlaylistRequest.executeAsync();
 
       // Thread free to do other tasks...
 
@@ -54,7 +54,7 @@ public class RemoveItemsFromPlaylistExample {
   }
 
   public static void main(String[] args) {
-    removeItemsFromPlaylist_Sync();
-    removeItemsFromPlaylist_Async();
+    removeItemsPlaylist_Sync();
+    removeItemsPlaylist_Async();
   }
 }

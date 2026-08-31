@@ -6,7 +6,7 @@ import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.enums.ModelObjectType;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 import se.michaelthelin.spotify.model_objects.interfaces.IArtist;
-import se.michaelthelin.spotify.requests.data.personalization.interfaces.IArtistTrackModelObject;
+import se.michaelthelin.spotify.requests.data.users.interfaces.IArtistTrackModelObject;
 import se.michaelthelin.spotify.requests.data.search.interfaces.ISearchModelObject;
 
 import java.util.Arrays;
@@ -20,6 +20,8 @@ import java.util.Objects;
 public class Artist extends AbstractModelObject implements IArtistTrackModelObject, ISearchModelObject, IArtist {
   /** Known external URLs for this artist. */
   private final ExternalUrl externalUrls;
+  /** Information about the followers of the artist. */
+  private final Followers followers;
   /** A list of the genres the artist is associated with. */
   private final String[] genres;
   /** A link to the Web API endpoint providing full details of the artist. */
@@ -30,6 +32,8 @@ public class Artist extends AbstractModelObject implements IArtistTrackModelObje
   private final Image[] images;
   /** The name of the artist. */
   private final String name;
+  /** The popularity of the artist. The value will be between 0 and 100, with 100 being the most popular. */
+  private final Integer popularity;
   /** The object type: "artist". */
   private final ModelObjectType type;
   /** The Spotify URI for the artist. */
@@ -39,11 +43,13 @@ public class Artist extends AbstractModelObject implements IArtistTrackModelObje
     super(builder);
 
     this.externalUrls = builder.externalUrls;
+    this.followers = builder.followers;
     this.genres = builder.genres;
     this.href = builder.href;
     this.id = builder.id;
     this.images = builder.images;
     this.name = builder.name;
+    this.popularity = builder.popularity;
     this.type = builder.type;
     this.uri = builder.uri;
   }
@@ -56,6 +62,15 @@ public class Artist extends AbstractModelObject implements IArtistTrackModelObje
    */
   public ExternalUrl getExternalUrls() {
     return externalUrls;
+  }
+
+  /**
+   * Get information about the followers of the artist.
+   *
+   * @return A {@link Followers} object.
+   */
+  public Followers getFollowers() {
+    return followers;
   }
 
   /**
@@ -105,6 +120,15 @@ public class Artist extends AbstractModelObject implements IArtistTrackModelObje
   }
 
   /**
+   * Get the popularity of the artist. The value will be between 0 and 100, with 100 being the most popular.
+   *
+   * @return The popularity of the artist.
+   */
+  public Integer getPopularity() {
+    return popularity;
+  }
+
+  /**
    * Get the model object type. In this case "artist".
    *
    * @return A {@link ModelObjectType}.
@@ -124,9 +148,9 @@ public class Artist extends AbstractModelObject implements IArtistTrackModelObje
 
   @Override
   public String toString() {
-    return "Artist(name=" + name + ", externalUrls=" + externalUrls + ", genres="
+    return "Artist(name=" + name + ", externalUrls=" + externalUrls + ", followers=" + followers + ", genres="
         + Arrays.toString(genres) + ", href=" + href + ", id=" + id + ", images=" + Arrays.toString(images)
-        + ", type=" + type + ", uri=" + uri + ")";
+        + ", popularity=" + popularity + ", type=" + type + ", uri=" + uri + ")";
   }
 
   @Override
@@ -139,11 +163,13 @@ public class Artist extends AbstractModelObject implements IArtistTrackModelObje
    */
   public static final class Builder extends AbstractModelObject.Builder {
     private ExternalUrl externalUrls;
+    private Followers followers;
     private String[] genres;
     private String href;
     private String id;
     private Image[] images;
     private String name;
+    private Integer popularity;
     private ModelObjectType type;
     private String uri;
 
@@ -162,6 +188,17 @@ public class Artist extends AbstractModelObject implements IArtistTrackModelObje
      */
     public Builder setExternalUrls(ExternalUrl externalUrls) {
       this.externalUrls = externalUrls;
+      return this;
+    }
+
+    /**
+     * Set information about the followers of the artist to be built.
+     *
+     * @param followers A {@link Followers} object.
+     * @return A {@link Artist.Builder}.
+     */
+    public Builder setFollowers(Followers followers) {
+      this.followers = followers;
       return this;
     }
 
@@ -221,6 +258,18 @@ public class Artist extends AbstractModelObject implements IArtistTrackModelObje
     }
 
     /**
+     * Set the popularity of the artist to be built.
+     *
+     * @param popularity The popularity of the artist. The value will be between 0 and 100, with 100 being the
+     *                    most popular.
+     * @return A {@link Artist.Builder}.
+     */
+    public Builder setPopularity(Integer popularity) {
+      this.popularity = popularity;
+      return this;
+    }
+
+    /**
      * Set the type of the model object. In this case "artist".
      *
      * @param type The {@link ModelObjectType}.
@@ -272,6 +321,11 @@ public class Artist extends AbstractModelObject implements IArtistTrackModelObje
             ? new ExternalUrl.JsonUtil().createModelObject(
             jsonObject.getAsJsonObject("external_urls"))
             : null)
+        .setFollowers(
+          hasAndNotNull(jsonObject, "followers")
+            ? new Followers.JsonUtil().createModelObject(
+            jsonObject.getAsJsonObject("followers"))
+            : null)
         .setGenres(
           hasAndNotNull(jsonObject, "genres")
             ? new Gson().fromJson(
@@ -293,6 +347,10 @@ public class Artist extends AbstractModelObject implements IArtistTrackModelObje
         .setName(
           hasAndNotNull(jsonObject, "name")
             ? jsonObject.get("name").getAsString()
+            : null)
+        .setPopularity(
+          hasAndNotNull(jsonObject, "popularity")
+            ? jsonObject.get("popularity").getAsInt()
             : null)
         .setType(
           hasAndNotNull(jsonObject, "type")

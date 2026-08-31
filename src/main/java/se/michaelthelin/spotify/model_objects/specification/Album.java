@@ -34,12 +34,16 @@ public class Album extends AbstractModelObject implements IAlbum {
   private final String id;
   /** The cover art for the album in various sizes. */
   private final Image[] images;
+  /** The label associated with the album. */
+  private final String label;
   /** The name of the album. */
   private final String name;
   /** The date the album was first released. */
   private final String releaseDate;
   /** The precision with which release_date value is known. */
   private final ReleaseDatePrecision releaseDatePrecision;
+  /** The number of tracks in the album. */
+  private final Integer totalTracks;
   /** The tracks of the album. */
   private final Paging<TrackSimplified> tracks;
   /** The object type: "album". */
@@ -58,9 +62,11 @@ public class Album extends AbstractModelObject implements IAlbum {
     this.href = builder.href;
     this.id = builder.id;
     this.images = builder.images;
+    this.label = builder.label;
     this.name = builder.name;
     this.releaseDate = builder.releaseDate;
     this.releaseDatePrecision = builder.releaseDatePrecision;
+    this.totalTracks = builder.totalTracks;
     this.tracks = builder.tracks;
     this.type = builder.type;
     this.uri = builder.uri;
@@ -141,6 +147,15 @@ public class Album extends AbstractModelObject implements IAlbum {
   }
 
   /**
+   * Get the label associated with the album.
+   *
+   * @return The label associated with the album.
+   */
+  public String getLabel() {
+    return label;
+  }
+
+  /**
    * Get the name of the album.
    *
    * @return Album name.
@@ -165,6 +180,15 @@ public class Album extends AbstractModelObject implements IAlbum {
    */
   public ReleaseDatePrecision getReleaseDatePrecision() {
     return releaseDatePrecision;
+  }
+
+  /**
+   * Get the total number of tracks in the album.
+   *
+   * @return The number of tracks in the album.
+   */
+  public Integer getTotalTracks() {
+    return totalTracks;
   }
 
   /**
@@ -199,9 +223,9 @@ public class Album extends AbstractModelObject implements IAlbum {
     return "Album(artists=" + Arrays.toString(artists) + ", name=" + name + ", albumType=" + albumType
         + ", copyrights=" + Arrays.toString(copyrights)
         + ", externalUrls=" + externalUrls + ", genres=" + Arrays.toString(genres)
-        + ", href=" + href + ", id=" + id + ", images=" + Arrays.toString(images)
-        + ", releaseDate=" + releaseDate + ", releaseDatePrecision=" + releaseDatePrecision + ", tracks="
-        + tracks + ", type=" + type + ", uri=" + uri + ")";
+        + ", href=" + href + ", id=" + id + ", images=" + Arrays.toString(images) + ", label=" + label
+        + ", releaseDate=" + releaseDate + ", releaseDatePrecision=" + releaseDatePrecision + ", totalTracks="
+        + totalTracks + ", tracks=" + tracks + ", type=" + type + ", uri=" + uri + ")";
   }
 
   @Override
@@ -221,9 +245,11 @@ public class Album extends AbstractModelObject implements IAlbum {
     private String href;
     private String id;
     private Image[] images;
+    private String label;
     private String name;
     private String releaseDate;
     private ReleaseDatePrecision releaseDatePrecision;
+    private Integer totalTracks;
     private Paging<TrackSimplified> tracks;
     private ModelObjectType type;
     private String uri;
@@ -324,6 +350,17 @@ public class Album extends AbstractModelObject implements IAlbum {
     }
 
     /**
+     * Set the label associated with the album to be built.
+     *
+     * @param label The label associated with the album.
+     * @return A {@link Album.Builder}.
+     */
+    public Builder setLabel(String label) {
+      this.label = label;
+      return this;
+    }
+
+    /**
      * Set the name of the album to be built.
      *
      * @param name The album name.
@@ -353,6 +390,17 @@ public class Album extends AbstractModelObject implements IAlbum {
      */
     public Builder setReleaseDatePrecision(ReleaseDatePrecision releaseDatePrecision) {
       this.releaseDatePrecision = releaseDatePrecision;
+      return this;
+    }
+
+    /**
+     * Set the total number of tracks of the album to be built.
+     *
+     * @param totalTracks The number of tracks in the album.
+     * @return A {@link Album.Builder}.
+     */
+    public Builder setTotalTracks(Integer totalTracks) {
+      this.totalTracks = totalTracks;
       return this;
     }
 
@@ -452,6 +500,10 @@ public class Album extends AbstractModelObject implements IAlbum {
             ? new Image.JsonUtil().createModelObjectArray(
             jsonObject.getAsJsonArray("images"))
             : null)
+        .setLabel(
+          hasAndNotNull(jsonObject, "label")
+            ? jsonObject.get("label").getAsString()
+            : null)
         .setName(
           hasAndNotNull(jsonObject, "name")
             ? jsonObject.get("name").getAsString()
@@ -464,6 +516,10 @@ public class Album extends AbstractModelObject implements IAlbum {
           hasAndNotNull(jsonObject, "release_date_precision")
             ? ReleaseDatePrecision.keyOf(
             jsonObject.get("release_date_precision").getAsString().toLowerCase())
+            : null)
+        .setTotalTracks(
+          hasAndNotNull(jsonObject, "total_tracks")
+            ? jsonObject.get("total_tracks").getAsInt()
             : null)
         .setTracks(
           hasAndNotNull(jsonObject, "tracks")

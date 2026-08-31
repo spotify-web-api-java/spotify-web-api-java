@@ -4,13 +4,13 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 import se.michaelthelin.spotify.model_objects.specification.*;
-import se.michaelthelin.spotify.requests.data.personalization.interfaces.IArtistTrackModelObject;
-import se.michaelthelin.spotify.requests.data.search.SearchItemRequest;
+import se.michaelthelin.spotify.requests.data.users.interfaces.IArtistTrackModelObject;
+import se.michaelthelin.spotify.requests.data.search.SearchForItemRequest;
 import se.michaelthelin.spotify.requests.data.search.interfaces.ISearchModelObject;
 
 /**
- * Retrieve the searched-for items by building instances from this class. This objects contains
- * for every type specified by the {@code type} parameter in the {@link SearchItemRequest}
+ * Retrieve the searched-for items by building instances from this class. This object contains
+ * for every type specified by the {@code type} parameter in the {@link SearchForItemRequest}
  * the searched-for items wrapped in a {@link Paging} object.
  */
 @JsonDeserialize(builder = SearchResult.Builder.class)
@@ -19,6 +19,8 @@ public class SearchResult extends AbstractModelObject implements IArtistTrackMod
   private final Paging<AlbumSimplified> albums;
   /** A paging object containing artist search results. */
   private final Paging<Artist> artists;
+  /** A paging object containing audiobook search results. */
+  private final Paging<AudiobookSimplified> audiobooks;
   /** A paging object containing episode search results. */
   private final Paging<EpisodeSimplified> episodes;
   /** A paging object containing playlist search results. */
@@ -33,6 +35,7 @@ public class SearchResult extends AbstractModelObject implements IArtistTrackMod
 
     this.albums = builder.albums;
     this.artists = builder.artists;
+    this.audiobooks = builder.audiobooks;
     this.episodes = builder.episodes;
     this.playlists = builder.playlists;
     this.shows = builder.shows;
@@ -59,6 +62,17 @@ public class SearchResult extends AbstractModelObject implements IArtistTrackMod
    */
   public Paging<Artist> getArtists() {
     return artists;
+  }
+
+  /**
+   * Get the audiobook objects contained in the search result object. <br>
+   * <b>Note:</b> The search result only contains audiobook objects when the {@code audiobook} parameter has been
+   * specified in the request.
+   *
+   * @return Audiobooks from the search result.
+   */
+  public Paging<AudiobookSimplified> getAudiobooks() {
+    return audiobooks;
   }
 
   /**
@@ -107,8 +121,8 @@ public class SearchResult extends AbstractModelObject implements IArtistTrackMod
 
   @Override
   public String toString() {
-    return "SearchResult(albums=" + albums + ", artists=" + artists + ", episodes=" + episodes + ", playlists="
-        + playlists + ", shows=" + shows + ", tracks=" + tracks + ")";
+    return "SearchResult(albums=" + albums + ", artists=" + artists + ", audiobooks=" + audiobooks + ", episodes="
+        + episodes + ", playlists=" + playlists + ", shows=" + shows + ", tracks=" + tracks + ")";
   }
 
   @Override
@@ -122,6 +136,7 @@ public class SearchResult extends AbstractModelObject implements IArtistTrackMod
   public static final class Builder extends AbstractModelObject.Builder {
     private Paging<AlbumSimplified> albums;
     private Paging<Artist> artists;
+    private Paging<AudiobookSimplified> audiobooks;
     private Paging<EpisodeSimplified> episodes;
     private Paging<PlaylistSimplified> playlists;
     private Paging<ShowSimplified> shows;
@@ -153,6 +168,17 @@ public class SearchResult extends AbstractModelObject implements IArtistTrackMod
      */
     public Builder setArtists(Paging<Artist> artists) {
       this.artists = artists;
+      return this;
+    }
+
+    /**
+     * The audiobooks setter.
+     *
+     * @param audiobooks Audiobooks from the search result.
+     * @return A {@link SearchResult.Builder}.
+     */
+    public Builder setAudiobooks(Paging<AudiobookSimplified> audiobooks) {
+      this.audiobooks = audiobooks;
       return this;
     }
 
@@ -233,6 +259,11 @@ public class SearchResult extends AbstractModelObject implements IArtistTrackMod
           hasAndNotNull(jsonObject, "artists")
             ? new Artist.JsonUtil().createModelObjectPaging(
             jsonObject.getAsJsonObject("artists"))
+            : null)
+        .setAudiobooks(
+          hasAndNotNull(jsonObject, "audiobooks")
+            ? new AudiobookSimplified.JsonUtil().createModelObjectPaging(
+            jsonObject.getAsJsonObject("audiobooks"))
             : null)
         .setEpisodes(
           hasAndNotNull(jsonObject, "episodes")

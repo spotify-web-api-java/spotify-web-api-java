@@ -1,0 +1,62 @@
+{
+  "chapters": [
+    {
+      "audio_preview_url": null,
+      "audiobook": {
+        "authors": [
+          {
+            "name": "Herman Melville"
+          }
+        ],
+        "available_markets": ["US"],
+        "copyrights": [],
+        "description": "Moby Dick",
+        "html_description": "<p>Moby Dick</p>",
+        "edition": "Unabridged",
+        "explicit": false,
+        "external_urls": {
+          "spotify": "https://open.spotify.com/show/2IEBhnu61ieYGFRPEJIO40"
+        },
+        "href": "https://api.spotify.com/v1/audiobooks/2IEBhnu61ieYGFRPEJIO40",
+        "id": "2IEBhnu61ieYGFRPEJIO40",
+        "images": [],
+        "languages": ["en"],
+        "media_type": "audio",
+        "name": "Moby-Dick",
+        "narrators": [
+          {
+            "name": "Frank Muller"
+          }
+        ],
+        "publisher": "Blackstone Audio",
+        "total_chapters": 135,
+        "type": "audiobook",
+        "uri": "spotify:show:2IEBhnu61ieYGFRPEJIO40"
+      },
+      "available_markets": ["US"],
+      "chapter_number": 1,
+      "description": "Chapter 1: Loomings.",
+      "html_description": "<p>Chapter 1: Loomings.</p>",
+      "duration_ms": 540000,
+      "explicit": false,
+      "external_urls": {
+        "spotify": "https://open.spotify.com/episode/5HQIsy4eLtirwOw1rQ9ENK"
+      },
+      "href": "https://api.spotify.com/v1/chapters/5HQIsy4eLtirwOw1rQ9ENK",
+      "id": "5HQIsy4eLtirwOw1rQ9ENK",
+      "images": [],
+      "is_playable": true,
+      "languages": ["en"],
+      "name": "Chapter 1: Loomings.",
+      "release_date": "2020-01-01",
+      "release_date_precision": "day",
+      "resume_point": {
+        "fully_played": false,
+        "resume_position_ms": 0
+      },
+      "type": "episode",
+      "uri": "spotify:episode:5HQIsy4eLtirwOw1rQ9ENK",
+      "restrictions": null
+    }
+  ]
+}

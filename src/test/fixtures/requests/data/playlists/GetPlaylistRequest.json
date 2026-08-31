@@ -127,7 +127,8 @@
             ],
             "name": "I'm Not The Only One",
             "type": "album",
-            "uri": "spotify:album:5GWoXPsTQylMuaZ84PC563"
+            "uri": "spotify:album:5GWoXPsTQylMuaZ84PC563",
+            "total_tracks": 10
           },
           "artists": [
             {

@@ -57,7 +57,7 @@ public interface IEpisode extends IPlaylistItem {
    *
    * @return True if the episode is playable in the given market. Otherwise false.
    */
-  Boolean getPlayable();
+  Boolean getIsPlayable();
 
   /**
    * Get a list of the languages used in the episode, identified by their ISO 639 code.

@@ -172,7 +172,8 @@
       "uri": "spotify:show:5AvwZVawapvyhJUIx71pdJ"
     },
     "type": "episode",
-    "uri": "spotify:episode:78iZfkNcsOJZVhmSQdYNUb"
+    "uri": "spotify:episode:78iZfkNcsOJZVhmSQdYNUb",
+    "html_description": "<p>The crew's all here after their long weekend and they're ready to discuss everything: from Death Stranding, to scented candles, to googling KIDS! We've got it all!</p>"
   },
   "currently_playing_type": "episode",
   "actions": {

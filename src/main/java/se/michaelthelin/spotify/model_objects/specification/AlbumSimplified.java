@@ -31,6 +31,8 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
   private final String id;
   /** The cover art for the album in various sizes. */
   private final Image[] images;
+  /** True if the album is playable in the given market. Otherwise false. */
+  private final Boolean isPlayable;
   /** The name of the album. */
   private final String name;
   /** The date the album was first released. */
@@ -39,6 +41,8 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
   private final ReleaseDatePrecision releaseDatePrecision;
   /** Included in the response when a content restriction is applied. */
   private final Restrictions restrictions;
+  /** The number of tracks in the album. */
+  private final Integer totalTracks;
   /** The object type: "album". */
   private final ModelObjectType type;
   /** The Spotify URI for the album. */
@@ -53,10 +57,12 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
     this.href = builder.href;
     this.id = builder.id;
     this.images = builder.images;
+    this.isPlayable = builder.isPlayable;
     this.name = builder.name;
     this.releaseDate = builder.releaseDate;
     this.releaseDatePrecision = builder.releaseDatePrecision;
     this.restrictions = builder.restrictions;
+    this.totalTracks = builder.totalTracks;
     this.type = builder.type;
     this.uri = builder.uri;
   }
@@ -117,6 +123,15 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
   }
 
   /**
+   * Check whether the album is playable in the given market.
+   *
+   * @return Whether the album is playable in the given market.
+   */
+  public Boolean getIsPlayable() {
+    return isPlayable;
+  }
+
+  /**
    * Get the name of the album.
    *
    * @return Album name.
@@ -153,6 +168,15 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
   }
 
   /**
+   * Get the total number of tracks in the album.
+   *
+   * @return The number of tracks in the album.
+   */
+  public Integer getTotalTracks() {
+    return totalTracks;
+  }
+
+  /**
    * Get the model object type. In this case "album".
    *
    * @return A {@link ModelObjectType}.
@@ -174,9 +198,9 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
   public String toString() {
     return "AlbumSimplified(artists=" + Arrays.toString(artists) + ", name=" + name
         + ", albumType=" + albumType + ", externalUrls="
-        + externalUrls + ", href=" + href + ", id=" + id + ", images=" + Arrays.toString(images) + ", releaseDate="
-        + releaseDate + ", releaseDatePrecision=" + releaseDatePrecision + ", restrictions=" + restrictions + ", type="
-        + type + ", uri=" + uri + ")";
+        + externalUrls + ", href=" + href + ", id=" + id + ", images=" + Arrays.toString(images) + ", isPlayable="
+        + isPlayable + ", releaseDate=" + releaseDate + ", releaseDatePrecision=" + releaseDatePrecision
+        + ", restrictions=" + restrictions + ", totalTracks=" + totalTracks + ", type=" + type + ", uri=" + uri + ")";
   }
 
   @Override
@@ -194,10 +218,12 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
     private String href;
     private String id;
     private Image[] images;
+    private Boolean isPlayable;
     private String name;
     private String releaseDate;
     private ReleaseDatePrecision releaseDatePrecision;
     private Restrictions restrictions;
+    private Integer totalTracks;
     private ModelObjectType type;
     private String uri;
 
@@ -275,6 +301,17 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
     }
 
     /**
+     * Set whether the album to be built is playable in the given market.
+     *
+     * @param isPlayable Whether the album is playable in the given market.
+     * @return A {@link AlbumSimplified.Builder}.
+     */
+    public Builder setIsPlayable(Boolean isPlayable) {
+      this.isPlayable = isPlayable;
+      return this;
+    }
+
+    /**
      * Set the name of the album to be built.
      *
      * @param name The album name.
@@ -315,6 +352,17 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
      */
     public Builder setRestrictions(Restrictions restrictions) {
       this.restrictions = restrictions;
+      return this;
+    }
+
+    /**
+     * Set the total number of tracks of the album to be built.
+     *
+     * @param totalTracks The number of tracks in the album.
+     * @return A {@link AlbumSimplified.Builder}.
+     */
+    public Builder setTotalTracks(Integer totalTracks) {
+      this.totalTracks = totalTracks;
       return this;
     }
 
@@ -393,6 +441,10 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
             ? new Image.JsonUtil().createModelObjectArray(
             jsonObject.getAsJsonArray("images"))
             : null)
+        .setIsPlayable(
+          hasAndNotNull(jsonObject, "is_playable")
+            ? jsonObject.get("is_playable").getAsBoolean()
+            : null)
         .setName(
           hasAndNotNull(jsonObject, "name")
             ? jsonObject.get("name").getAsString()
@@ -410,6 +462,10 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
           hasAndNotNull(jsonObject, "restrictions")
             ? new Restrictions.JsonUtil().createModelObject(
             jsonObject.getAsJsonObject("restrictions"))
+            : null)
+        .setTotalTracks(
+          hasAndNotNull(jsonObject, "total_tracks")
+            ? jsonObject.get("total_tracks").getAsInt()
             : null)
         .setType(
           hasAndNotNull(jsonObject, "type")

@@ -2,7 +2,7 @@ package data.player;
 
 import se.michaelthelin.spotify.SpotifyApi;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
-import se.michaelthelin.spotify.requests.data.player.StartResumeUsersPlaybackRequest;
+import se.michaelthelin.spotify.requests.data.player.StartResumePlaybackRequest;
 import org.apache.hc.core5.http.ParseException;
 
 import java.io.IOException;
@@ -16,8 +16,8 @@ public class StartResumeUsersPlaybackExample {
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
     .setAccessToken(accessToken)
     .build();
-  private static final StartResumeUsersPlaybackRequest startResumeUsersPlaybackRequest = spotifyApi
-    .startResumeUsersPlayback()
+  private static final StartResumePlaybackRequest startUsersPlaybackRequest = spotifyApi
+    .startResumePlayback()
 //          .context_uri("spotify:album:5zT1JLIj9E57p3e1rFm9Uq")
 //          .device_id("5fbb3ba6aa454b5534c4ba43a8c7e8e45a63ad0e")
 //          .offset(JsonParser.parseString("{\"uri\":\"spotify:track:01iyCAUm8EvOFqVWYJ3dVX\"}").getAsJsonObject())
@@ -25,9 +25,9 @@ public class StartResumeUsersPlaybackExample {
 //          .position_ms(10000)
     .build();
 
-  public static void startResumeUsersPlayback_Sync() {
+  public static void startUsersPlayback_Sync() {
     try {
-      final String string = startResumeUsersPlaybackRequest.execute();
+      final String string = startUsersPlaybackRequest.execute();
 
       System.out.println("Null: " + string);
     } catch (IOException | SpotifyWebApiException | ParseException e) {
@@ -35,9 +35,9 @@ public class StartResumeUsersPlaybackExample {
     }
   }
 
-  public static void startResumeUsersPlayback_Async() {
+  public static void startUsersPlayback_Async() {
     try {
-      final CompletableFuture<String> stringFuture = startResumeUsersPlaybackRequest.executeAsync();
+      final CompletableFuture<String> stringFuture = startUsersPlaybackRequest.executeAsync();
 
       // Thread free to do other tasks...
 
@@ -53,7 +53,7 @@ public class StartResumeUsersPlaybackExample {
   }
 
   public static void main(String[] args) {
-    startResumeUsersPlayback_Sync();
-    startResumeUsersPlayback_Async();
+    startUsersPlayback_Sync();
+    startUsersPlayback_Async();
   }
 }

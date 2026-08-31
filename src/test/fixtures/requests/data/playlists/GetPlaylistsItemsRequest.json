@@ -113,7 +113,8 @@
           ],
           "name": "Otra Vez (feat. J Balvin)",
           "type": "album",
-          "uri": "spotify:album:5GjKG3Y8OvSVJO55dQTFyD"
+          "uri": "spotify:album:5GjKG3Y8OvSVJO55dQTFyD",
+          "total_tracks": 10
         },
         "artists": [
           {

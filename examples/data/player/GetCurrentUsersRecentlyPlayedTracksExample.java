@@ -4,7 +4,7 @@ import se.michaelthelin.spotify.SpotifyApi;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.model_objects.specification.PagingCursorbased;
 import se.michaelthelin.spotify.model_objects.specification.PlayHistory;
-import se.michaelthelin.spotify.requests.data.player.GetCurrentUsersRecentlyPlayedTracksRequest;
+import se.michaelthelin.spotify.requests.data.player.GetRecentlyPlayedTracksRequest;
 import org.apache.hc.core5.http.ParseException;
 
 import java.io.IOException;
@@ -18,16 +18,16 @@ public class GetCurrentUsersRecentlyPlayedTracksExample {
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
     .setAccessToken(accessToken)
     .build();
-  private static final GetCurrentUsersRecentlyPlayedTracksRequest getCurrentUsersRecentlyPlayedTracksRequest =
-    spotifyApi.getCurrentUsersRecentlyPlayedTracks()
+  private static final GetRecentlyPlayedTracksRequest getRecentlyPlayedRequest =
+    spotifyApi.getRecentlyPlayedTracks()
 //                  .after(new Date(1517087230000L))
 //                  .before(new Date(1453932420000L))
 //                  .limit(10)
       .build();
 
-  public static void getCurrentUsersRecentlyPlayedTracks_Sync() {
+  public static void getRecentlyPlayed_Sync() {
     try {
-      final PagingCursorbased<PlayHistory> playHistoryPagingCursorbased = getCurrentUsersRecentlyPlayedTracksRequest.execute();
+      final PagingCursorbased<PlayHistory> playHistoryPagingCursorbased = getRecentlyPlayedRequest.execute();
 
       System.out.println("Total: " + playHistoryPagingCursorbased.getTotal());
     } catch (IOException | SpotifyWebApiException | ParseException e) {
@@ -35,9 +35,9 @@ public class GetCurrentUsersRecentlyPlayedTracksExample {
     }
   }
 
-  public static void getCurrentUsersRecentlyPlayedTracks_Async() {
+  public static void getRecentlyPlayed_Async() {
     try {
-      final CompletableFuture<PagingCursorbased<PlayHistory>> pagingCursorbasedFuture = getCurrentUsersRecentlyPlayedTracksRequest.executeAsync();
+      final CompletableFuture<PagingCursorbased<PlayHistory>> pagingCursorbasedFuture = getRecentlyPlayedRequest.executeAsync();
 
       // Thread free to do other tasks...
 
@@ -53,7 +53,7 @@ public class GetCurrentUsersRecentlyPlayedTracksExample {
   }
 
   public static void main(String[] args) {
-    getCurrentUsersRecentlyPlayedTracks_Sync();
-    getCurrentUsersRecentlyPlayedTracks_Async();
+    getRecentlyPlayed_Sync();
+    getRecentlyPlayed_Async();
   }
 }

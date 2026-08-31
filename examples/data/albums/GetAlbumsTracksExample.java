@@ -4,7 +4,7 @@ import se.michaelthelin.spotify.SpotifyApi;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.model_objects.specification.Paging;
 import se.michaelthelin.spotify.model_objects.specification.TrackSimplified;
-import se.michaelthelin.spotify.requests.data.albums.GetAlbumsTracksRequest;
+import se.michaelthelin.spotify.requests.data.albums.GetAlbumTracksRequest;
 import org.apache.hc.core5.http.ParseException;
 
 import java.io.IOException;
@@ -19,7 +19,7 @@ public class GetAlbumsTracksExample {
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
     .setAccessToken(accessToken)
     .build();
-  private static final GetAlbumsTracksRequest getAlbumsTracksRequest = spotifyApi.getAlbumsTracks(id)
+  private static final GetAlbumTracksRequest getAlbumsTracksRequest = spotifyApi.getAlbumTracks(id)
 //          .limit(10)
 //          .offset(0)
 //          .market(CountryCode.SE)
