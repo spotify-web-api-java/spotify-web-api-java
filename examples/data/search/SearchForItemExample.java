@@ -1,8 +1,10 @@
-package data.library;
+package data.search;
 
 import se.michaelthelin.spotify.SpotifyApi;
+import se.michaelthelin.spotify.enums.ModelObjectType;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
-import se.michaelthelin.spotify.requests.data.library.RemoveItemsFromLibraryRequest;
+import se.michaelthelin.spotify.model_objects.special.SearchResult;
+import se.michaelthelin.spotify.requests.data.search.SearchForItemRequest;
 import org.apache.hc.core5.http.ParseException;
 
 import java.io.IOException;
@@ -10,36 +12,41 @@ import java.util.concurrent.CancellationException;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionException;
 
-public class RemoveFromLibraryExample {
+public class SearchForItemExample {
   private static final String accessToken = "taHZ2SdB-bPA3FsK3D7ZN5npZS47cMy-IEySVEGttOhXmqaVAIo0ESvTCLjLBifhHOHOIuhFUKPW1WMDP7w6dj3MAZdWT8CLI2MkZaXbYLTeoDvXesf2eeiLYPBGdx8tIwQJKgV8XdnzH_DONk";
-  private static final String uris = "spotify:track:01iyCAUm8EvOFqVWYJ3dVX";
+  private static final String q = "Abba";
+  private static final String type = ModelObjectType.ARTIST.getType();
 
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
     .setAccessToken(accessToken)
     .build();
-  private static final RemoveItemsFromLibraryRequest removeLibraryItemsRequest = spotifyApi.removeItemsFromLibrary(uris)
+  private static final SearchForItemRequest searchRequest = spotifyApi.searchForItem(q, type)
+//          .market(CountryCode.SE)
+//          .limit(10)
+//          .offset(0)
+//          .includeExternal("audio")
     .build();
 
-  public static void removeLibraryItems_Sync() {
+  public static void search_Sync() {
     try {
-      final String string = removeLibraryItemsRequest.execute();
+      final SearchResult searchResult = searchRequest.execute();
 
-      System.out.println("Null: " + (string == null));
+      System.out.println("Total tracks: " + searchResult.getTracks().getTotal());
     } catch (IOException | SpotifyWebApiException | ParseException e) {
       System.out.println("Error: " + e.getMessage());
     }
   }
 
-  public static void removeLibraryItems_Async() {
+  public static void search_Async() {
     try {
-      final CompletableFuture<String> stringFuture = removeLibraryItemsRequest.executeAsync();
+      final CompletableFuture<SearchResult> searchResultFuture = searchRequest.executeAsync();
 
       // Thread free to do other tasks...
 
       // Example Only. Never block in production code.
-      final String string = stringFuture.join();
+      final SearchResult searchResult = searchResultFuture.join();
 
-      System.out.println("Null: " + (string == null));
+      System.out.println("Total tracks: " + searchResult.getTracks().getTotal());
     } catch (CompletionException e) {
       System.out.println("Error: " + e.getCause().getMessage());
     } catch (CancellationException e) {
@@ -48,7 +55,7 @@ public class RemoveFromLibraryExample {
   }
 
   public static void main(String[] args) {
-    removeLibraryItems_Sync();
-    removeLibraryItems_Async();
+    search_Sync();
+    search_Async();
   }
 }

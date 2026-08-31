@@ -2,8 +2,7 @@ package data.player;
 
 import se.michaelthelin.spotify.SpotifyApi;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
-import se.michaelthelin.spotify.model_objects.miscellaneous.Device;
-import se.michaelthelin.spotify.requests.data.player.GetAvailableDevicesRequest;
+import se.michaelthelin.spotify.requests.data.player.SeekToPositionRequest;
 import org.apache.hc.core5.http.ParseException;
 
 import java.io.IOException;
@@ -11,36 +10,38 @@ import java.util.concurrent.CancellationException;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionException;
 
-public class GetUsersAvailableDevicesExample {
+public class SeekToPositionExample {
   private static final String accessToken = "taHZ2SdB-bPA3FsK3D7ZN5npZS47cMy-IEySVEGttOhXmqaVAIo0ESvTCLjLBifhHOHOIuhFUKPW1WMDP7w6dj3MAZdWT8CLI2MkZaXbYLTeoDvXesf2eeiLYPBGdx8tIwQJKgV8XdnzH_DONk";
+  private static final int positionMs = 10000;
 
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
     .setAccessToken(accessToken)
     .build();
-  private static final GetAvailableDevicesRequest getUsersAvailableDevicesRequest = spotifyApi
-    .getAvailableDevices()
-    .build();
+  private static final SeekToPositionRequest seekToPositionRequest =
+    spotifyApi.seekToPosition(positionMs)
+//                  .device_id("5fbb3ba6aa454b5534c4ba43a8c7e8e45a63ad0e")
+      .build();
 
-  public static void getUsersAvailableDevices_Sync() {
+  public static void seekToPosition_Sync() {
     try {
-      final Device[] devices = getUsersAvailableDevicesRequest.execute();
+      final String string = seekToPositionRequest.execute();
 
-      System.out.println("Length: " + devices.length);
+      System.out.println("Null: " + string);
     } catch (IOException | SpotifyWebApiException | ParseException e) {
       System.out.println("Error: " + e.getMessage());
     }
   }
 
-  public static void getUsersAvailableDevices_Async() {
+  public static void seekToPosition_Async() {
     try {
-      final CompletableFuture<Device[]> devicesFuture = getUsersAvailableDevicesRequest.executeAsync();
+      final CompletableFuture<String> stringFuture = seekToPositionRequest.executeAsync();
 
       // Thread free to do other tasks...
 
       // Example Only. Never block in production code.
-      final Device[] devices = devicesFuture.join();
+      final String string = stringFuture.join();
 
-      System.out.println("Length: " + devices.length);
+      System.out.println("Null: " + string);
     } catch (CompletionException e) {
       System.out.println("Error: " + e.getCause().getMessage());
     } catch (CancellationException e) {
@@ -49,7 +50,7 @@ public class GetUsersAvailableDevicesExample {
   }
 
   public static void main(String[] args) {
-    getUsersAvailableDevices_Sync();
-    getUsersAvailableDevices_Async();
+    seekToPosition_Sync();
+    seekToPosition_Async();
   }
 }

@@ -1,10 +1,8 @@
-package data.shows;
+package data.player;
 
 import se.michaelthelin.spotify.SpotifyApi;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
-import se.michaelthelin.spotify.model_objects.specification.EpisodeSimplified;
-import se.michaelthelin.spotify.model_objects.specification.Paging;
-import se.michaelthelin.spotify.requests.data.shows.GetShowEpisodesRequest;
+import se.michaelthelin.spotify.requests.data.player.PausePlaybackRequest;
 import org.apache.hc.core5.http.ParseException;
 
 import java.io.IOException;
@@ -12,39 +10,36 @@ import java.util.concurrent.CancellationException;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionException;
 
-public class GetShowsEpisodesExample {
+public class PausePlaybackExample {
   private static final String accessToken = "taHZ2SdB-bPA3FsK3D7ZN5npZS47cMy-IEySVEGttOhXmqaVAIo0ESvTCLjLBifhHOHOIuhFUKPW1WMDP7w6dj3MAZdWT8CLI2MkZaXbYLTeoDvXesf2eeiLYPBGdx8tIwQJKgV8XdnzH_DONk";
-  private static final String id = "5AvwZVawapvyhJUIx71pdJ";
 
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
     .setAccessToken(accessToken)
     .build();
-  private static final GetShowEpisodesRequest getShowsEpisodesRequest = spotifyApi.getShowEpisodes(id)
-//          .limit(10)
-//          .offset(0)
-//          .market(CountryCode.SE)
+  private static final PausePlaybackRequest pausePlaybackRequest = spotifyApi.pausePlayback()
+//          .device_id("5fbb3ba6aa454b5534c4ba43a8c7e8e45a63ad0e")
     .build();
 
-  public static void getShowsEpisodes_Sync() {
+  public static void pausePlayback_Sync() {
     try {
-      final Paging<EpisodeSimplified> episodeSimplifiedPaging = getShowsEpisodesRequest.execute();
+      final String string = pausePlaybackRequest.execute();
 
-      System.out.println("Total: " + episodeSimplifiedPaging.getTotal());
+      System.out.println("Null: " + string);
     } catch (IOException | SpotifyWebApiException | ParseException e) {
       System.out.println("Error: " + e.getMessage());
     }
   }
 
-  public static void getShowsEpisodes_Async() {
+  public static void pausePlayback_Async() {
     try {
-      final CompletableFuture<Paging<EpisodeSimplified>> pagingFuture = getShowsEpisodesRequest.executeAsync();
+      final CompletableFuture<String> stringFuture = pausePlaybackRequest.executeAsync();
 
       // Thread free to do other tasks...
 
       // Example Only. Never block in production code.
-      final Paging<EpisodeSimplified> episodeSimplifiedPaging = pagingFuture.join();
+      final String string = stringFuture.join();
 
-      System.out.println("Total: " + episodeSimplifiedPaging.getTotal());
+      System.out.println("Null: " + string);
     } catch (CompletionException e) {
       System.out.println("Error: " + e.getCause().getMessage());
     } catch (CancellationException e) {
@@ -53,7 +48,7 @@ public class GetShowsEpisodesExample {
   }
 
   public static void main(String[] args) {
-    getShowsEpisodes_Sync();
-    getShowsEpisodes_Async();
+    pausePlayback_Sync();
+    pausePlayback_Async();
   }
 }

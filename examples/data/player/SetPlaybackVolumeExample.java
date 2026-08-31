@@ -1,9 +1,8 @@
-package data.tracks;
+package data.player;
 
 import se.michaelthelin.spotify.SpotifyApi;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
-import se.michaelthelin.spotify.model_objects.specification.AudioFeatures;
-import se.michaelthelin.spotify.requests.data.tracks.GetSeveralTracksAudioFeaturesRequest;
+import se.michaelthelin.spotify.requests.data.player.SetPlaybackVolumeRequest;
 import org.apache.hc.core5.http.ParseException;
 
 import java.io.IOException;
@@ -11,37 +10,38 @@ import java.util.concurrent.CancellationException;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionException;
 
-public class GetAudioFeaturesForSeveralTracksExample {
+public class SetPlaybackVolumeExample {
   private static final String accessToken = "taHZ2SdB-bPA3FsK3D7ZN5npZS47cMy-IEySVEGttOhXmqaVAIo0ESvTCLjLBifhHOHOIuhFUKPW1WMDP7w6dj3MAZdWT8CLI2MkZaXbYLTeoDvXesf2eeiLYPBGdx8tIwQJKgV8XdnzH_DONk";
-  private static final String[] ids = new String[]{"01iyCAUm8EvOFqVWYJ3dVX"};
+  private static final int volumePercent = 100;
 
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
     .setAccessToken(accessToken)
     .build();
-  private static final GetSeveralTracksAudioFeaturesRequest getSeveralAudioFeaturesRequest = spotifyApi
-    .getSeveralTracksAudioFeatures(ids)
+  private static final SetPlaybackVolumeRequest setPlaybackVolumeRequest = spotifyApi
+    .setPlaybackVolume(volumePercent)
+//          .device_id("5fbb3ba6aa454b5534c4ba43a8c7e8e45a63ad0e")
     .build();
 
-  public static void getSeveralAudioFeatures_Sync() {
+  public static void setPlaybackVolume_Sync() {
     try {
-      final AudioFeatures[] audioFeatures = getSeveralAudioFeaturesRequest.execute();
+      final String string = setPlaybackVolumeRequest.execute();
 
-      System.out.println("Length: " + audioFeatures.length);
+      System.out.println("Null: " + string);
     } catch (IOException | SpotifyWebApiException | ParseException e) {
       System.out.println("Error: " + e.getMessage());
     }
   }
 
-  public static void getSeveralAudioFeatures_Async() {
+  public static void setPlaybackVolume_Async() {
     try {
-      final CompletableFuture<AudioFeatures[]> audioFeaturesFuture = getSeveralAudioFeaturesRequest.executeAsync();
+      final CompletableFuture<String> stringFuture = setPlaybackVolumeRequest.executeAsync();
 
       // Thread free to do other tasks...
 
       // Example Only. Never block in production code.
-      final AudioFeatures[] audioFeatures = audioFeaturesFuture.join();
+      final String string = stringFuture.join();
 
-      System.out.println("Length: " + audioFeatures.length);
+      System.out.println("Null: " + string);
     } catch (CompletionException e) {
       System.out.println("Error: " + e.getCause().getMessage());
     } catch (CancellationException e) {
@@ -50,7 +50,7 @@ public class GetAudioFeaturesForSeveralTracksExample {
   }
 
   public static void main(String[] args) {
-    getSeveralAudioFeatures_Sync();
-    getSeveralAudioFeatures_Async();
+    setPlaybackVolume_Sync();
+    setPlaybackVolume_Async();
   }
 }

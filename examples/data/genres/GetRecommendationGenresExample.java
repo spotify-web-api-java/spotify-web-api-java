@@ -1,8 +1,9 @@
-package data.player;
+package data.genres;
 
 import se.michaelthelin.spotify.SpotifyApi;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
-import se.michaelthelin.spotify.requests.data.player.StartResumePlaybackRequest;
+import se.michaelthelin.spotify.requests.data.genres.GetRecommendationGenresRequest;
+
 import org.apache.hc.core5.http.ParseException;
 
 import java.io.IOException;
@@ -10,41 +11,35 @@ import java.util.concurrent.CancellationException;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionException;
 
-public class StartResumeUsersPlaybackExample {
+public class GetRecommendationGenresExample {
   private static final String accessToken = "taHZ2SdB-bPA3FsK3D7ZN5npZS47cMy-IEySVEGttOhXmqaVAIo0ESvTCLjLBifhHOHOIuhFUKPW1WMDP7w6dj3MAZdWT8CLI2MkZaXbYLTeoDvXesf2eeiLYPBGdx8tIwQJKgV8XdnzH_DONk";
 
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
     .setAccessToken(accessToken)
     .build();
-  private static final StartResumePlaybackRequest startUsersPlaybackRequest = spotifyApi
-    .startResumePlayback()
-//          .context_uri("spotify:album:5zT1JLIj9E57p3e1rFm9Uq")
-//          .device_id("5fbb3ba6aa454b5534c4ba43a8c7e8e45a63ad0e")
-//          .offset(JsonParser.parseString("{\"uri\":\"spotify:track:01iyCAUm8EvOFqVWYJ3dVX\"}").getAsJsonObject())
-//          .uris(JsonParser.parseString("[\"spotify:track:01iyCAUm8EvOFqVWYJ3dVX\"]").getAsJsonArray())
-//          .position_ms(10000)
+  private static final GetRecommendationGenresRequest getRecommendationGenresRequest = spotifyApi.getRecommendationGenres()
     .build();
 
-  public static void startUsersPlayback_Sync() {
+  public static void getRecommendationGenres_Sync() {
     try {
-      final String string = startUsersPlaybackRequest.execute();
+      final String[] strings = getRecommendationGenresRequest.execute();
 
-      System.out.println("Null: " + string);
+      System.out.println("Length: " + strings.length);
     } catch (IOException | SpotifyWebApiException | ParseException e) {
       System.out.println("Error: " + e.getMessage());
     }
   }
 
-  public static void startUsersPlayback_Async() {
+  public static void getRecommendationGenres_Async() {
     try {
-      final CompletableFuture<String> stringFuture = startUsersPlaybackRequest.executeAsync();
+      final CompletableFuture<String[]> stringsFuture = getRecommendationGenresRequest.executeAsync();
 
       // Thread free to do other tasks...
 
       // Example Only. Never block in production code.
-      final String string = stringFuture.join();
+      final String[] strings = stringsFuture.join();
 
-      System.out.println("Null: " + string);
+      System.out.println("Length: " + strings.length);
     } catch (CompletionException e) {
       System.out.println("Error: " + e.getCause().getMessage());
     } catch (CancellationException e) {
@@ -53,7 +48,7 @@ public class StartResumeUsersPlaybackExample {
   }
 
   public static void main(String[] args) {
-    startUsersPlayback_Sync();
-    startUsersPlayback_Async();
+    getRecommendationGenres_Sync();
+    getRecommendationGenres_Async();
   }
 }

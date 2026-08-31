@@ -2,7 +2,7 @@ package data.player;
 
 import se.michaelthelin.spotify.SpotifyApi;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
-import se.michaelthelin.spotify.requests.data.player.AddItemToPlaybackQueueRequest;
+import se.michaelthelin.spotify.requests.data.player.SkipToNextRequest;
 import org.apache.hc.core5.http.ParseException;
 
 import java.io.IOException;
@@ -10,21 +10,20 @@ import java.util.concurrent.CancellationException;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionException;
 
-public class AddItemToUsersPlaybackQueueExample {
+public class SkipToNextExample {
   private static final String accessToken = "taHZ2SdB-bPA3FsK3D7ZN5npZS47cMy-IEySVEGttOhXmqaVAIo0ESvTCLjLBifhHOHOIuhFUKPW1WMDP7w6dj3MAZdWT8CLI2MkZaXbYLTeoDvXesf2eeiLYPBGdx8tIwQJKgV8XdnzH_DONk";
-  private static final String trackUri = "spotify:track:01iyCAUm8EvOFqVWYJ3dVX";
 
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
     .setAccessToken(accessToken)
     .build();
-  private static final AddItemToPlaybackQueueRequest addToQueueRequest = spotifyApi
-    .addItemToPlaybackQueue(trackUri)
-//    .device_id("5fbb3ba6aa454b5534c4ba43a8c7e8e45a63ad0e")
+  private static final SkipToNextRequest skipToNextRequest = spotifyApi
+    .skipToNext()
+//          .device_id("5fbb3ba6aa454b5534c4ba43a8c7e8e45a63ad0e")
     .build();
 
-  public static void addToQueue_Sync() {
+  public static void skipToNext_Sync() {
     try {
-      final String string = addToQueueRequest.execute();
+      final String string = skipToNextRequest.execute();
 
       System.out.println("Null: " + string);
     } catch (IOException | SpotifyWebApiException | ParseException e) {
@@ -32,9 +31,9 @@ public class AddItemToUsersPlaybackQueueExample {
     }
   }
 
-  public static void addToQueue_Async() {
+  public static void skipToNext_Async() {
     try {
-      final CompletableFuture<String> stringFuture = addToQueueRequest.executeAsync();
+      final CompletableFuture<String> stringFuture = skipToNextRequest.executeAsync();
 
       // Thread free to do other tasks...
 
@@ -50,7 +49,7 @@ public class AddItemToUsersPlaybackQueueExample {
   }
 
   public static void main(String[] args) {
-    addToQueue_Sync();
-    addToQueue_Async();
+    skipToNext_Sync();
+    skipToNext_Async();
   }
 }

@@ -11,21 +11,21 @@ import java.util.concurrent.CancellationException;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionException;
 
-public class GetInformationAboutUsersCurrentPlaybackExample {
+public class GetPlaybackStateExample {
   private static final String accessToken = "taHZ2SdB-bPA3FsK3D7ZN5npZS47cMy-IEySVEGttOhXmqaVAIo0ESvTCLjLBifhHOHOIuhFUKPW1WMDP7w6dj3MAZdWT8CLI2MkZaXbYLTeoDvXesf2eeiLYPBGdx8tIwQJKgV8XdnzH_DONk";
 
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
     .setAccessToken(accessToken)
     .build();
-  private static final GetPlaybackStateRequest getInformationAboutUsersCurrentPlaybackRequest =
+  private static final GetPlaybackStateRequest getPlaybackStateRequest =
     spotifyApi.getPlaybackState()
 //                  .market(CountryCode.SE)
 //                  .additionalTypes("track,episode")
       .build();
 
-  public static void getInformationAboutUsersCurrentPlayback_Sync() {
+  public static void getPlaybackState_Sync() {
     try {
-      final CurrentlyPlayingContext currentlyPlayingContext = getInformationAboutUsersCurrentPlaybackRequest.execute();
+      final CurrentlyPlayingContext currentlyPlayingContext = getPlaybackStateRequest.execute();
 
       System.out.println("Timestamp: " + currentlyPlayingContext.getTimestamp());
     } catch (IOException | SpotifyWebApiException | ParseException e) {
@@ -33,9 +33,9 @@ public class GetInformationAboutUsersCurrentPlaybackExample {
     }
   }
 
-  public static void getInformationAboutUsersCurrentPlayback_Async() {
+  public static void getPlaybackState_Async() {
     try {
-      final CompletableFuture<CurrentlyPlayingContext> currentlyPlayingContextFuture = getInformationAboutUsersCurrentPlaybackRequest.executeAsync();
+      final CompletableFuture<CurrentlyPlayingContext> currentlyPlayingContextFuture = getPlaybackStateRequest.executeAsync();
 
       // Thread free to do other tasks...
 
@@ -51,7 +51,7 @@ public class GetInformationAboutUsersCurrentPlaybackExample {
   }
 
   public static void main(String[] args) {
-    getInformationAboutUsersCurrentPlayback_Sync();
-    getInformationAboutUsersCurrentPlayback_Async();
+    getPlaybackState_Sync();
+    getPlaybackState_Async();
   }
 }

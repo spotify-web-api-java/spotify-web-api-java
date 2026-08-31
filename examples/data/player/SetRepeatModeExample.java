@@ -2,7 +2,7 @@ package data.player;
 
 import se.michaelthelin.spotify.SpotifyApi;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
-import se.michaelthelin.spotify.requests.data.player.TogglePlaybackShuffleRequest;
+import se.michaelthelin.spotify.requests.data.player.SetRepeatModeRequest;
 import org.apache.hc.core5.http.ParseException;
 
 import java.io.IOException;
@@ -10,21 +10,21 @@ import java.util.concurrent.CancellationException;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionException;
 
-public class ToggleShuffleForUsersPlaybackExample {
+public class SetRepeatModeExample {
   private static final String accessToken = "taHZ2SdB-bPA3FsK3D7ZN5npZS47cMy-IEySVEGttOhXmqaVAIo0ESvTCLjLBifhHOHOIuhFUKPW1WMDP7w6dj3MAZdWT8CLI2MkZaXbYLTeoDvXesf2eeiLYPBGdx8tIwQJKgV8XdnzH_DONk";
-  private static final boolean state = true;
+  private static final String state = "track";
 
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
     .setAccessToken(accessToken)
     .build();
-  private static final TogglePlaybackShuffleRequest toggleShuffleForUsersPlaybackRequest = spotifyApi
-    .togglePlaybackShuffle(state)
+  private static final SetRepeatModeRequest setRepeatModeRequest = spotifyApi
+    .setRepeatMode(state)
 //          .device_id("5fbb3ba6aa454b5534c4ba43a8c7e8e45a63ad0e")
     .build();
 
-  public static void toggleShuffleForUsersPlayback_Sync() {
+  public static void setRepeatMode_Sync() {
     try {
-      final String string = toggleShuffleForUsersPlaybackRequest.execute();
+      final String string = setRepeatModeRequest.execute();
 
       System.out.println("Null: " + string);
     } catch (IOException | SpotifyWebApiException | ParseException e) {
@@ -32,9 +32,9 @@ public class ToggleShuffleForUsersPlaybackExample {
     }
   }
 
-  public static void toggleShuffleForUsersPlayback_Async() {
+  public static void setRepeatMode_Async() {
     try {
-      final CompletableFuture<String> stringFuture = toggleShuffleForUsersPlaybackRequest.executeAsync();
+      final CompletableFuture<String> stringFuture = setRepeatModeRequest.executeAsync();
 
       // Thread free to do other tasks...
 
@@ -50,7 +50,7 @@ public class ToggleShuffleForUsersPlaybackExample {
   }
 
   public static void main(String[] args) {
-    toggleShuffleForUsersPlayback_Sync();
-    toggleShuffleForUsersPlayback_Async();
+    setRepeatMode_Sync();
+    setRepeatMode_Async();
   }
 }

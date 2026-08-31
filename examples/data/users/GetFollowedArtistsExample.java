@@ -1,9 +1,12 @@
-package data.player;
+package data.users;
 
 import se.michaelthelin.spotify.SpotifyApi;
+import se.michaelthelin.spotify.enums.ModelObjectType;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
-import se.michaelthelin.spotify.model_objects.special.PlaybackQueue;
-import se.michaelthelin.spotify.requests.data.player.GetUsersQueueRequest;
+import se.michaelthelin.spotify.model_objects.specification.Artist;
+import se.michaelthelin.spotify.model_objects.specification.PagingCursorbased;
+import se.michaelthelin.spotify.requests.data.users.GetFollowedArtistsRequest;
+
 import org.apache.hc.core5.http.ParseException;
 
 import java.io.IOException;
@@ -11,36 +14,39 @@ import java.util.concurrent.CancellationException;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionException;
 
-public class GetTheUsersQueueExample {
+public class GetFollowedArtistsExample {
   private static final String accessToken = "taHZ2SdB-bPA3FsK3D7ZN5npZS47cMy-IEySVEGttOhXmqaVAIo0ESvTCLjLBifhHOHOIuhFUKPW1WMDP7w6dj3MAZdWT8CLI2MkZaXbYLTeoDvXesf2eeiLYPBGdx8tIwQJKgV8XdnzH_DONk";
+  private static final ModelObjectType type = ModelObjectType.ARTIST;
 
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
     .setAccessToken(accessToken)
     .build();
-
-  private static final GetUsersQueueRequest getQueueRequest = spotifyApi.getUsersQueue()
+  private static final GetFollowedArtistsRequest getFollowedRequest = spotifyApi
+    .getFollowedArtists(type)
+//          .after("0LcJLqbBmaGUft1e9Mm8HV")
+//          .limit(10)
     .build();
 
-  public static void getQueue_Sync() {
+  public static void getFollowed_Sync() {
     try {
-      final PlaybackQueue playbackQueue = getQueueRequest.execute();
+      final PagingCursorbased<Artist> artistPagingCursorbased = getFollowedRequest.execute();
 
-      System.out.println("Count of items in the queue: " + playbackQueue.getQueue().size());
+      System.out.println("Total: " + artistPagingCursorbased.getTotal());
     } catch (IOException | SpotifyWebApiException | ParseException e) {
       System.out.println("Error: " + e.getMessage());
     }
   }
 
-  public static void getQueue_Async() {
+  public static void getFollowed_Async() {
     try {
-      final CompletableFuture<PlaybackQueue> playbackQueueFuture = getQueueRequest.executeAsync();
+      final CompletableFuture<PagingCursorbased<Artist>> pagingCursorbasedFuture = getFollowedRequest.executeAsync();
 
       // Thread free to do other tasks...
 
       // Example Only. Never block in production code.
-      final PlaybackQueue playbackQueue = playbackQueueFuture.join();
+      final PagingCursorbased<Artist> artistPagingCursorbased = pagingCursorbasedFuture.join();
 
-      System.out.println("Count of items in the queue: " + playbackQueue.getQueue().size());
+      System.out.println("Total: " + artistPagingCursorbased.getTotal());
     } catch (CompletionException e) {
       System.out.println("Error: " + e.getCause().getMessage());
     } catch (CancellationException e) {
@@ -49,7 +55,7 @@ public class GetTheUsersQueueExample {
   }
 
   public static void main(String[] args) {
-    getQueue_Sync();
-    getQueue_Async();
+    getFollowed_Sync();
+    getFollowed_Async();
   }
 }

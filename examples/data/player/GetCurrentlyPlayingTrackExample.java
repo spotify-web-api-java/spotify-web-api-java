@@ -11,21 +11,21 @@ import java.util.concurrent.CancellationException;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionException;
 
-public class GetUsersCurrentlyPlayingTrackExample {
+public class GetCurrentlyPlayingTrackExample {
   private static final String accessToken = "taHZ2SdB-bPA3FsK3D7ZN5npZS47cMy-IEySVEGttOhXmqaVAIo0ESvTCLjLBifhHOHOIuhFUKPW1WMDP7w6dj3MAZdWT8CLI2MkZaXbYLTeoDvXesf2eeiLYPBGdx8tIwQJKgV8XdnzH_DONk";
 
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
     .setAccessToken(accessToken)
     .build();
-  private static final GetCurrentlyPlayingTrackRequest getUsersCurrentlyPlayingTrackRequest = spotifyApi
+  private static final GetCurrentlyPlayingTrackRequest getCurrentlyPlayingTrackRequest = spotifyApi
     .getCurrentlyPlayingTrack()
 //          .market(CountryCode.SE)
 //          .additionalTypes("track,episode")
     .build();
 
-  public static void getUsersCurrentlyPlayingTrack_Sync() {
+  public static void getCurrentlyPlayingTrack_Sync() {
     try {
-      final CurrentlyPlaying currentlyPlaying = getUsersCurrentlyPlayingTrackRequest.execute();
+      final CurrentlyPlaying currentlyPlaying = getCurrentlyPlayingTrackRequest.execute();
 
       System.out.println("Timestamp: " + currentlyPlaying.getTimestamp());
     } catch (IOException | SpotifyWebApiException | ParseException e) {
@@ -33,9 +33,9 @@ public class GetUsersCurrentlyPlayingTrackExample {
     }
   }
 
-  public static void getUsersCurrentlyPlayingTrack_Async() {
+  public static void getCurrentlyPlayingTrack_Async() {
     try {
-      final CompletableFuture<CurrentlyPlaying> currentlyPlayingFuture = getUsersCurrentlyPlayingTrackRequest.executeAsync();
+      final CompletableFuture<CurrentlyPlaying> currentlyPlayingFuture = getCurrentlyPlayingTrackRequest.executeAsync();
 
       // Thread free to do other tasks...
 
@@ -51,7 +51,7 @@ public class GetUsersCurrentlyPlayingTrackExample {
   }
 
   public static void main(String[] args) {
-    getUsersCurrentlyPlayingTrack_Sync();
-    getUsersCurrentlyPlayingTrack_Async();
+    getCurrentlyPlayingTrack_Sync();
+    getCurrentlyPlayingTrack_Async();
   }
 }

@@ -1,10 +1,9 @@
 package data.player;
 
-import com.google.gson.JsonArray;
-import com.google.gson.JsonParser;
 import se.michaelthelin.spotify.SpotifyApi;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
-import se.michaelthelin.spotify.requests.data.player.TransferPlaybackRequest;
+import se.michaelthelin.spotify.model_objects.miscellaneous.Device;
+import se.michaelthelin.spotify.requests.data.player.GetAvailableDevicesRequest;
 import org.apache.hc.core5.http.ParseException;
 
 import java.io.IOException;
@@ -12,38 +11,36 @@ import java.util.concurrent.CancellationException;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionException;
 
-public class TransferUsersPlaybackExample {
+public class GetAvailableDevicesExample {
   private static final String accessToken = "taHZ2SdB-bPA3FsK3D7ZN5npZS47cMy-IEySVEGttOhXmqaVAIo0ESvTCLjLBifhHOHOIuhFUKPW1WMDP7w6dj3MAZdWT8CLI2MkZaXbYLTeoDvXesf2eeiLYPBGdx8tIwQJKgV8XdnzH_DONk";
-  private static final JsonArray deviceIds = JsonParser.parseString("[\"5fbb3ba6aa454b5534c4ba43a8c7e8e45a63ad0e\"]").getAsJsonArray();
 
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
     .setAccessToken(accessToken)
     .build();
-  private static final TransferPlaybackRequest transferUsersPlaybackRequest = spotifyApi
-    .transferPlayback(deviceIds)
-//          .play(false)
+  private static final GetAvailableDevicesRequest getAvailableDevicesRequest = spotifyApi
+    .getAvailableDevices()
     .build();
 
-  public static void transferUsersPlayback_Sync() {
+  public static void getAvailableDevices_Sync() {
     try {
-      final String string = transferUsersPlaybackRequest.execute();
+      final Device[] devices = getAvailableDevicesRequest.execute();
 
-      System.out.println("Null: " + string);
+      System.out.println("Length: " + devices.length);
     } catch (IOException | SpotifyWebApiException | ParseException e) {
       System.out.println("Error: " + e.getMessage());
     }
   }
 
-  public static void transferUsersPlayback_Async() {
+  public static void getAvailableDevices_Async() {
     try {
-      final CompletableFuture<String> stringFuture = transferUsersPlaybackRequest.executeAsync();
+      final CompletableFuture<Device[]> devicesFuture = getAvailableDevicesRequest.executeAsync();
 
       // Thread free to do other tasks...
 
       // Example Only. Never block in production code.
-      final String string = stringFuture.join();
+      final Device[] devices = devicesFuture.join();
 
-      System.out.println("Null: " + string);
+      System.out.println("Length: " + devices.length);
     } catch (CompletionException e) {
       System.out.println("Error: " + e.getCause().getMessage());
     } catch (CancellationException e) {
@@ -52,7 +49,7 @@ public class TransferUsersPlaybackExample {
   }
 
   public static void main(String[] args) {
-    transferUsersPlayback_Sync();
-    transferUsersPlayback_Async();
+    getAvailableDevices_Sync();
+    getAvailableDevices_Async();
   }
 }

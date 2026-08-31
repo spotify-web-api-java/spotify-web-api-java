@@ -1,11 +1,8 @@
 package data.users;
 
 import se.michaelthelin.spotify.SpotifyApi;
-import se.michaelthelin.spotify.enums.ModelObjectType;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
-import se.michaelthelin.spotify.model_objects.specification.Artist;
-import se.michaelthelin.spotify.model_objects.specification.PagingCursorbased;
-import se.michaelthelin.spotify.requests.data.users.GetFollowedArtistsRequest;
+import se.michaelthelin.spotify.requests.data.users.CheckIfUserFollowsPlaylistRequest;
 
 import org.apache.hc.core5.http.ParseException;
 
@@ -14,39 +11,38 @@ import java.util.concurrent.CancellationException;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionException;
 
-public class GetUsersFollowedArtistsExample {
+public class CheckIfUserFollowsPlaylistExample {
   private static final String accessToken = "taHZ2SdB-bPA3FsK3D7ZN5npZS47cMy-IEySVEGttOhXmqaVAIo0ESvTCLjLBifhHOHOIuhFUKPW1WMDP7w6dj3MAZdWT8CLI2MkZaXbYLTeoDvXesf2eeiLYPBGdx8tIwQJKgV8XdnzH_DONk";
-  private static final ModelObjectType type = ModelObjectType.ARTIST;
+  private static final String playlistId = "3AGOiaoRXMSjswCLtuNqv5";
+  private static final String[] ids = new String[]{"abbaspotify"};
 
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
     .setAccessToken(accessToken)
     .build();
-  private static final GetFollowedArtistsRequest getFollowedRequest = spotifyApi
-    .getFollowedArtists(type)
-//          .after("0LcJLqbBmaGUft1e9Mm8HV")
-//          .limit(10)
+  private static final CheckIfUserFollowsPlaylistRequest checkIfUserFollowsPlaylistRequest = spotifyApi
+    .checkIfUserFollowsPlaylist(playlistId, ids)
     .build();
 
-  public static void getFollowed_Sync() {
+  public static void checkIfUserFollowsPlaylist_Sync() {
     try {
-      final PagingCursorbased<Artist> artistPagingCursorbased = getFollowedRequest.execute();
+      final Boolean[] booleans = checkIfUserFollowsPlaylistRequest.execute();
 
-      System.out.println("Total: " + artistPagingCursorbased.getTotal());
+      System.out.println("Length: " + booleans.length);
     } catch (IOException | SpotifyWebApiException | ParseException e) {
       System.out.println("Error: " + e.getMessage());
     }
   }
 
-  public static void getFollowed_Async() {
+  public static void checkIfUserFollowsPlaylist_Async() {
     try {
-      final CompletableFuture<PagingCursorbased<Artist>> pagingCursorbasedFuture = getFollowedRequest.executeAsync();
+      final CompletableFuture<Boolean[]> booleansFuture = checkIfUserFollowsPlaylistRequest.executeAsync();
 
       // Thread free to do other tasks...
 
       // Example Only. Never block in production code.
-      final PagingCursorbased<Artist> artistPagingCursorbased = pagingCursorbasedFuture.join();
+      final Boolean[] booleans = booleansFuture.join();
 
-      System.out.println("Total: " + artistPagingCursorbased.getTotal());
+      System.out.println("Length: " + booleans.length);
     } catch (CompletionException e) {
       System.out.println("Error: " + e.getCause().getMessage());
     } catch (CancellationException e) {
@@ -55,7 +51,7 @@ public class GetUsersFollowedArtistsExample {
   }
 
   public static void main(String[] args) {
-    getFollowed_Sync();
-    getFollowed_Async();
+    checkIfUserFollowsPlaylist_Sync();
+    checkIfUserFollowsPlaylist_Async();
   }
 }

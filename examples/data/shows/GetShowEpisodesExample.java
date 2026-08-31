@@ -1,9 +1,10 @@
-package data.genres;
+package data.shows;
 
 import se.michaelthelin.spotify.SpotifyApi;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
-import se.michaelthelin.spotify.requests.data.genres.GetRecommendationGenresRequest;
-
+import se.michaelthelin.spotify.model_objects.specification.EpisodeSimplified;
+import se.michaelthelin.spotify.model_objects.specification.Paging;
+import se.michaelthelin.spotify.requests.data.shows.GetShowEpisodesRequest;
 import org.apache.hc.core5.http.ParseException;
 
 import java.io.IOException;
@@ -11,35 +12,39 @@ import java.util.concurrent.CancellationException;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionException;
 
-public class GetAvailableGenreSeedsExample {
+public class GetShowEpisodesExample {
   private static final String accessToken = "taHZ2SdB-bPA3FsK3D7ZN5npZS47cMy-IEySVEGttOhXmqaVAIo0ESvTCLjLBifhHOHOIuhFUKPW1WMDP7w6dj3MAZdWT8CLI2MkZaXbYLTeoDvXesf2eeiLYPBGdx8tIwQJKgV8XdnzH_DONk";
+  private static final String id = "5AvwZVawapvyhJUIx71pdJ";
 
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
     .setAccessToken(accessToken)
     .build();
-  private static final GetRecommendationGenresRequest getRecommendationGenresRequest = spotifyApi.getRecommendationGenres()
+  private static final GetShowEpisodesRequest getShowEpisodesRequest = spotifyApi.getShowEpisodes(id)
+//          .limit(10)
+//          .offset(0)
+//          .market(CountryCode.SE)
     .build();
 
-  public static void getRecommendationGenres_Sync() {
+  public static void getShowEpisodes_Sync() {
     try {
-      final String[] strings = getRecommendationGenresRequest.execute();
+      final Paging<EpisodeSimplified> episodeSimplifiedPaging = getShowEpisodesRequest.execute();
 
-      System.out.println("Length: " + strings.length);
+      System.out.println("Total: " + episodeSimplifiedPaging.getTotal());
     } catch (IOException | SpotifyWebApiException | ParseException e) {
       System.out.println("Error: " + e.getMessage());
     }
   }
 
-  public static void getRecommendationGenres_Async() {
+  public static void getShowEpisodes_Async() {
     try {
-      final CompletableFuture<String[]> stringsFuture = getRecommendationGenresRequest.executeAsync();
+      final CompletableFuture<Paging<EpisodeSimplified>> pagingFuture = getShowEpisodesRequest.executeAsync();
 
       // Thread free to do other tasks...
 
       // Example Only. Never block in production code.
-      final String[] strings = stringsFuture.join();
+      final Paging<EpisodeSimplified> episodeSimplifiedPaging = pagingFuture.join();
 
-      System.out.println("Length: " + strings.length);
+      System.out.println("Total: " + episodeSimplifiedPaging.getTotal());
     } catch (CompletionException e) {
       System.out.println("Error: " + e.getCause().getMessage());
     } catch (CancellationException e) {
@@ -48,7 +53,7 @@ public class GetAvailableGenreSeedsExample {
   }
 
   public static void main(String[] args) {
-    getRecommendationGenres_Sync();
-    getRecommendationGenres_Async();
+    getShowEpisodes_Sync();
+    getShowEpisodes_Async();
   }
 }

@@ -1,8 +1,9 @@
-package data.player;
+package data.tracks;
 
 import se.michaelthelin.spotify.SpotifyApi;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
-import se.michaelthelin.spotify.requests.data.player.SeekToPositionRequest;
+import se.michaelthelin.spotify.model_objects.miscellaneous.AudioAnalysis;
+import se.michaelthelin.spotify.requests.data.tracks.GetTracksAudioAnalysisRequest;
 import org.apache.hc.core5.http.ParseException;
 
 import java.io.IOException;
@@ -10,38 +11,37 @@ import java.util.concurrent.CancellationException;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionException;
 
-public class SeekToPositionInCurrentlyPlayingTrackExample {
+public class GetTracksAudioAnalysisExample {
   private static final String accessToken = "taHZ2SdB-bPA3FsK3D7ZN5npZS47cMy-IEySVEGttOhXmqaVAIo0ESvTCLjLBifhHOHOIuhFUKPW1WMDP7w6dj3MAZdWT8CLI2MkZaXbYLTeoDvXesf2eeiLYPBGdx8tIwQJKgV8XdnzH_DONk";
-  private static final int positionMs = 10000;
+  private static final String id = "01iyCAUm8EvOFqVWYJ3dVX";
 
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
     .setAccessToken(accessToken)
     .build();
-  private static final SeekToPositionRequest seekToPositionInCurrentlyPlayingTrackRequest =
-    spotifyApi.seekToPosition(positionMs)
-//                  .device_id("5fbb3ba6aa454b5534c4ba43a8c7e8e45a63ad0e")
-      .build();
+  private static final GetTracksAudioAnalysisRequest getAudioAnalysisRequest = spotifyApi
+    .getTracksAudioAnalysis(id)
+    .build();
 
-  public static void seekToPositionInCurrentlyPlayingTrack_Sync() {
+  public static void getAudioAnalysis_Sync() {
     try {
-      final String string = seekToPositionInCurrentlyPlayingTrackRequest.execute();
+      final AudioAnalysis audioAnalysis = getAudioAnalysisRequest.execute();
 
-      System.out.println("Null: " + string);
+      System.out.println("Track duration: " + audioAnalysis.getTrack().getDuration());
     } catch (IOException | SpotifyWebApiException | ParseException e) {
       System.out.println("Error: " + e.getMessage());
     }
   }
 
-  public static void seekToPositionInCurrentlyPlayingTrack_Async() {
+  public static void getAudioAnalysis_Async() {
     try {
-      final CompletableFuture<String> stringFuture = seekToPositionInCurrentlyPlayingTrackRequest.executeAsync();
+      final CompletableFuture<AudioAnalysis> audioAnalysisFuture = getAudioAnalysisRequest.executeAsync();
 
       // Thread free to do other tasks...
 
       // Example Only. Never block in production code.
-      final String string = stringFuture.join();
+      final AudioAnalysis audioAnalysis = audioAnalysisFuture.join();
 
-      System.out.println("Null: " + string);
+      System.out.println("Track duration: " + audioAnalysis.getTrack().getDuration());
     } catch (CompletionException e) {
       System.out.println("Error: " + e.getCause().getMessage());
     } catch (CancellationException e) {
@@ -50,7 +50,7 @@ public class SeekToPositionInCurrentlyPlayingTrackExample {
   }
 
   public static void main(String[] args) {
-    seekToPositionInCurrentlyPlayingTrack_Sync();
-    seekToPositionInCurrentlyPlayingTrack_Async();
+    getAudioAnalysis_Sync();
+    getAudioAnalysis_Async();
   }
 }

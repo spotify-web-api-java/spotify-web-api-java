@@ -14,14 +14,14 @@ import java.util.concurrent.CancellationException;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionException;
 
-public class GetPlaylistsItemsExample {
+public class GetPlaylistItemsExample {
   private static final String accessToken = "taHZ2SdB-bPA3FsK3D7ZN5npZS47cMy-IEySVEGttOhXmqaVAIo0ESvTCLjLBifhHOHOIuhFUKPW1WMDP7w6dj3MAZdWT8CLI2MkZaXbYLTeoDvXesf2eeiLYPBGdx8tIwQJKgV8XdnzH_DONk";
   private static final String playlistId = "3AGOiaoRXMSjswCLtuNqv5";
 
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
     .setAccessToken(accessToken)
     .build();
-  private static final GetPlaylistItemsRequest getPlaylistsItemsRequest = spotifyApi
+  private static final GetPlaylistItemsRequest getPlaylistItemsRequest = spotifyApi
     .getPlaylistItems(playlistId)
 //          .fields("description")
 //          .limit(10)
@@ -30,9 +30,9 @@ public class GetPlaylistsItemsExample {
 //          .additionalTypes("track,episode")
     .build();
 
-  public static void getPlaylistsItems_Sync() {
+  public static void getPlaylistItems_Sync() {
     try {
-      final Paging<PlaylistTrack> playlistTrackPaging = getPlaylistsItemsRequest.execute();
+      final Paging<PlaylistTrack> playlistTrackPaging = getPlaylistItemsRequest.execute();
 
       System.out.println("Total: " + playlistTrackPaging.getTotal());
       System.out.println("Track's first artist: " + ((Track) playlistTrackPaging.getItems()[0].getItem()).getArtists()[0]);
@@ -42,9 +42,9 @@ public class GetPlaylistsItemsExample {
     }
   }
 
-  public static void getPlaylistsItems_Async() {
+  public static void getPlaylistItems_Async() {
     try {
-      final CompletableFuture<Paging<PlaylistTrack>> pagingFuture = getPlaylistsItemsRequest.executeAsync();
+      final CompletableFuture<Paging<PlaylistTrack>> pagingFuture = getPlaylistItemsRequest.executeAsync();
 
       // Thread free to do other tasks...
 
@@ -62,7 +62,7 @@ public class GetPlaylistsItemsExample {
   }
 
   public static void main(String[] args) {
-    getPlaylistsItems_Sync();
-    getPlaylistsItems_Async();
+    getPlaylistItems_Sync();
+    getPlaylistItems_Async();
   }
 }

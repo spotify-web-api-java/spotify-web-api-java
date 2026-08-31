@@ -1,8 +1,8 @@
-package data.player;
+package data.playlists;
 
 import se.michaelthelin.spotify.SpotifyApi;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
-import se.michaelthelin.spotify.requests.data.player.PausePlaybackRequest;
+import se.michaelthelin.spotify.requests.data.playlists.ChangePlaylistDetailsRequest;
 import org.apache.hc.core5.http.ParseException;
 
 import java.io.IOException;
@@ -10,19 +10,24 @@ import java.util.concurrent.CancellationException;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionException;
 
-public class PauseUsersPlaybackExample {
+public class ChangePlaylistDetailsExample {
   private static final String accessToken = "taHZ2SdB-bPA3FsK3D7ZN5npZS47cMy-IEySVEGttOhXmqaVAIo0ESvTCLjLBifhHOHOIuhFUKPW1WMDP7w6dj3MAZdWT8CLI2MkZaXbYLTeoDvXesf2eeiLYPBGdx8tIwQJKgV8XdnzH_DONk";
+  private static final String playlistId = "3AGOiaoRXMSjswCLtuNqv5";
 
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
     .setAccessToken(accessToken)
     .build();
-  private static final PausePlaybackRequest pauseUsersPlaybackRequest = spotifyApi.pausePlayback()
-//          .device_id("5fbb3ba6aa454b5534c4ba43a8c7e8e45a63ad0e")
+  private static final ChangePlaylistDetailsRequest changePlaylistDetailsRequest = spotifyApi
+    .changePlaylistDetails(playlistId)
+//          .name("Abba")
+//          .public_(false)
+//          .collaborative(false)
+//          .description("Amazing music.")
     .build();
 
-  public static void pauseUsersPlayback_Sync() {
+  public static void changePlaylistDetails_Sync() {
     try {
-      final String string = pauseUsersPlaybackRequest.execute();
+      final String string = changePlaylistDetailsRequest.execute();
 
       System.out.println("Null: " + string);
     } catch (IOException | SpotifyWebApiException | ParseException e) {
@@ -30,9 +35,9 @@ public class PauseUsersPlaybackExample {
     }
   }
 
-  public static void pauseUsersPlayback_Async() {
+  public static void changePlaylistDetails_Async() {
     try {
-      final CompletableFuture<String> stringFuture = pauseUsersPlaybackRequest.executeAsync();
+      final CompletableFuture<String> stringFuture = changePlaylistDetailsRequest.executeAsync();
 
       // Thread free to do other tasks...
 
@@ -48,7 +53,7 @@ public class PauseUsersPlaybackExample {
   }
 
   public static void main(String[] args) {
-    pauseUsersPlayback_Sync();
-    pauseUsersPlayback_Async();
+    changePlaylistDetails_Sync();
+    changePlaylistDetails_Async();
   }
 }
