@@ -10,7 +10,7 @@ import java.io.IOException;
 /**
  * Save one or more albums to the current user's 'Your Music' library.
  *
- * @deprecated Use {@link SaveItemsToLibraryRequest} instead.
+ * @deprecated Use {@link se.michaelthelin.spotify.requests.data.library.SaveItemsToLibraryRequest SaveItemsToLibraryRequest} instead.
  */
 @Deprecated
 @JsonDeserialize(builder = SaveAlbumsForCurrentUserRequest.Builder.class)
@@ -43,7 +43,7 @@ public class SaveAlbumsForCurrentUserRequest extends AbstractDataRequest<String>
   /**
    * Builder class for building a {@link SaveAlbumsForCurrentUserRequest}.
    *
-   * @deprecated Use {@link SaveItemsToLibraryRequest} instead.
+   * @deprecated Use {@link se.michaelthelin.spotify.requests.data.library.SaveItemsToLibraryRequest SaveItemsToLibraryRequest} instead.
    */
   @Deprecated
   public static final class Builder extends AbstractDataRequest.Builder<String, Builder> {

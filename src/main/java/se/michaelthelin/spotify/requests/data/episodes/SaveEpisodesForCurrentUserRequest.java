@@ -10,7 +10,7 @@ import java.io.IOException;
 /**
  * Save one or more episodes to the current user's library.
  *
- * @deprecated Use {@link SaveItemsToLibraryRequest} instead.
+ * @deprecated Use {@link se.michaelthelin.spotify.requests.data.library.SaveItemsToLibraryRequest SaveItemsToLibraryRequest} instead.
  */
 @Deprecated
 @JsonDeserialize(builder = SaveEpisodesForCurrentUserRequest.Builder.class)
@@ -43,7 +43,7 @@ public class SaveEpisodesForCurrentUserRequest extends AbstractDataRequest<Strin
   /**
    * Builder class for building a {@link SaveEpisodesForCurrentUserRequest}.
    *
-   * @deprecated Use {@link SaveItemsToLibraryRequest} instead.
+   * @deprecated Use {@link se.michaelthelin.spotify.requests.data.library.SaveItemsToLibraryRequest SaveItemsToLibraryRequest} instead.
    */
   @Deprecated
   public static final class Builder extends AbstractDataRequest.Builder<String, Builder> {

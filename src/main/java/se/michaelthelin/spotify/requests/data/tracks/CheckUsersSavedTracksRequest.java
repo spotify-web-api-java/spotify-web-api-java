@@ -12,7 +12,7 @@ import java.io.IOException;
 /**
  * Check if one or more tracks is already saved in the current Spotify user’s "Your Music" library.
  *
- * @deprecated Use {@link CheckUsersSavedItemsRequest} instead.
+ * @deprecated Use {@link se.michaelthelin.spotify.requests.data.library.CheckUsersSavedItemsRequest CheckUsersSavedItemsRequest} instead.
  */
 @Deprecated
 @JsonDeserialize(builder = CheckUsersSavedTracksRequest.Builder.class)

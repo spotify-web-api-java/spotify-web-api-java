@@ -10,7 +10,7 @@ import java.io.IOException;
 /**
  * Save one or more audiobooks to the current Spotify user's library.
  *
- * @deprecated Use {@link SaveItemsToLibraryRequest} instead.
+ * @deprecated Use {@link se.michaelthelin.spotify.requests.data.library.SaveItemsToLibraryRequest SaveItemsToLibraryRequest} instead.
  */
 @Deprecated
 @JsonDeserialize(builder = SaveAudiobooksForCurrentUserRequest.Builder.class)

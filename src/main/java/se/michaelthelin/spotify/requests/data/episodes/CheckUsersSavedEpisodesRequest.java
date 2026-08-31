@@ -12,7 +12,7 @@ import java.io.IOException;
 /**
  * Check if one or more episodes is already saved in the current Spotify user's 'Your Episodes' library.
  *
- * @deprecated Use {@link CheckUsersSavedItemsRequest} instead.
+ * @deprecated Use {@link se.michaelthelin.spotify.requests.data.library.CheckUsersSavedItemsRequest CheckUsersSavedItemsRequest} instead.
  */
 @Deprecated
 @JsonDeserialize(builder = CheckUsersSavedEpisodesRequest.Builder.class)

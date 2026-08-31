@@ -10,7 +10,7 @@ import java.io.IOException;
 /**
  * Remove one or more albums from the current user's 'Your Music' library.
  *
- * @deprecated Use {@link RemoveItemsFromLibraryRequest} instead.
+ * @deprecated Use {@link se.michaelthelin.spotify.requests.data.library.RemoveItemsFromLibraryRequest RemoveItemsFromLibraryRequest} instead.
  */
 @Deprecated
 @JsonDeserialize(builder = RemoveAlbumsForCurrentUserRequest.Builder.class)
@@ -43,7 +43,7 @@ public class RemoveAlbumsForCurrentUserRequest extends AbstractDataRequest<Strin
   /**
    * Builder class for building a {@link RemoveAlbumsForCurrentUserRequest}.
    *
-   * @deprecated Use {@link RemoveItemsFromLibraryRequest} instead.
+   * @deprecated Use {@link se.michaelthelin.spotify.requests.data.library.RemoveItemsFromLibraryRequest RemoveItemsFromLibraryRequest} instead.
    */
   @Deprecated
   public static final class Builder extends AbstractDataRequest.Builder<String, Builder> {
