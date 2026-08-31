@@ -97,8 +97,7 @@ public class SpotifyApi {
    * The date format used by the Spotify Web API. It uses the {@code GMT}  timezone and the following pattern:
    * {@code yyyy-MM-dd'T'HH:mm:ss}
    */
-  private static final DateTimeFormatter SIMPLE_DATE_FORMATTER = DateTimeFormatter
-    .ofPattern("yyyy-MM-dd'T'HH:mm:ss")
+  private static final DateTimeFormatter SIMPLE_DATE_FORMATTER = DateTimeFormatter.ISO_LOCAL_DATE_TIME
     .withZone(ZoneId.of("GMT"));
 
   private final IHttpManager httpManager;
