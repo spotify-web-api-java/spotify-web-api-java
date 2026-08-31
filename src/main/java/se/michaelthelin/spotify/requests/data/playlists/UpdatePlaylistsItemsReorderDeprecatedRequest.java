@@ -10,19 +10,19 @@ import se.michaelthelin.spotify.requests.data.AbstractDataRequest;
 import java.io.IOException;
 
 /**
-  * @deprecated Use the new endpoints instead.
  * Reorder an item or a group of items in a playlist.
  * <p>
  * When reordering items, the timestamp indicating when they were added and the user who added them will
  * be kept untouched. In addition, the users following the playlists won’t be notified about changes in
  * the playlists when the items are reordered.
+ *
+ * @deprecated Use {@link UpdatePlaylistsItemsReorderRequest} instead.
  */
 @Deprecated
 @JsonDeserialize(builder = UpdatePlaylistsItemsReorderDeprecatedRequest.Builder.class)
 public class UpdatePlaylistsItemsReorderDeprecatedRequest extends AbstractDataRequest<SnapshotResult> {
 
   /**
-  * @deprecated Use the new endpoints instead.
    * The private {@link UpdatePlaylistsItemsReorderDeprecatedRequest} constructor.
    *
    * @param builder A {@link UpdatePlaylistsItemsReorderDeprecatedRequest.Builder}.
@@ -32,7 +32,6 @@ public class UpdatePlaylistsItemsReorderDeprecatedRequest extends AbstractDataRe
   }
 
   /**
-  * @deprecated Use the new endpoints instead.
    * Reorder the items in a playlist.
    *
    * @return A playlist snapshot ID. The snapshot ID can be used to identify your playlist version in future requests.
@@ -49,13 +48,14 @@ public class UpdatePlaylistsItemsReorderDeprecatedRequest extends AbstractDataRe
   }
 
   /**
-  * @deprecated Use the new endpoints instead.
    * Builder class for building a {@link UpdatePlaylistsItemsReorderDeprecatedRequest}.
+   *
+   * @deprecated Use {@link UpdatePlaylistsItemsReorderRequest} instead.
    */
+  @Deprecated
   public static final class Builder extends AbstractDataRequest.Builder<SnapshotResult, Builder> {
 
     /**
-  * @deprecated Use the new endpoints instead.
      * Create a new {@link UpdatePlaylistsItemsReorderDeprecatedRequest.Builder}.
      * <p>
      * Reordering items in the current user's public playlists requires authorization of the
@@ -70,7 +70,6 @@ public class UpdatePlaylistsItemsReorderDeprecatedRequest extends AbstractDataRe
     }
 
     /**
-  * @deprecated Use the new endpoints instead.
      * The playlist ID setter.
      *
      * @param playlist_id The Spotify ID for the playlist.
@@ -84,7 +83,6 @@ public class UpdatePlaylistsItemsReorderDeprecatedRequest extends AbstractDataRe
     }
 
     /**
-  * @deprecated Use the new endpoints instead.
      * The range start setter.
      *
      * @param range_start Required. The position of the first item to be reordered.
@@ -97,7 +95,6 @@ public class UpdatePlaylistsItemsReorderDeprecatedRequest extends AbstractDataRe
     }
 
     /**
-  * @deprecated Use the new endpoints instead.
      * The range length setter.
      *
      * @param range_length Optional. The amount of items to be reordered. Defaults to 1 if not set.
@@ -110,7 +107,6 @@ public class UpdatePlaylistsItemsReorderDeprecatedRequest extends AbstractDataRe
     }
 
     /**
-  * @deprecated Use the new endpoints instead.
      * The insert before setter.
      *
      * @param insert_before Required. The position where the items should be inserted. To reorder the items to the
@@ -124,7 +120,6 @@ public class UpdatePlaylistsItemsReorderDeprecatedRequest extends AbstractDataRe
     }
 
     /**
-  * @deprecated Use the new endpoints instead.
      * The playlist snapshot ID setter.
      *
      * @param snapshot_id Optional. The playlist's snapshot ID against which you want to make the changes.
@@ -139,7 +134,6 @@ public class UpdatePlaylistsItemsReorderDeprecatedRequest extends AbstractDataRe
     }
 
     /**
-  * @deprecated Use the new endpoints instead.
      * The request build method.
      *
      * @return A custom {@link UpdatePlaylistsItemsReorderDeprecatedRequest}.

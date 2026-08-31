@@ -1,0 +1,54 @@
+package data.library;
+
+import se.michaelthelin.spotify.SpotifyApi;
+import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
+import se.michaelthelin.spotify.requests.data.library.RemoveItemsFromLibraryRequest;
+import org.apache.hc.core5.http.ParseException;
+
+import java.io.IOException;
+import java.util.concurrent.CancellationException;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
+
+public class RemoveItemsFromLibraryExample {
+  private static final String accessToken = "taHZ2SdB-bPA3FsK3D7ZN5npZS47cMy-IEySVEGttOhXmqaVAIo0ESvTCLjLBifhHOHOIuhFUKPW1WMDP7w6dj3MAZdWT8CLI2MkZaXbYLTeoDvXesf2eeiLYPBGdx8tIwQJKgV8XdnzH_DONk";
+  private static final String uris = "spotify:track:01iyCAUm8EvOFqVWYJ3dVX";
+
+  private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
+    .setAccessToken(accessToken)
+    .build();
+  private static final RemoveItemsFromLibraryRequest removeLibraryItemsRequest = spotifyApi.removeItemsFromLibrary(uris)
+    .build();
+
+  public static void removeLibraryItems_Sync() {
+    try {
+      final String string = removeLibraryItemsRequest.execute();
+
+      System.out.println("Null: " + (string == null));
+    } catch (IOException | SpotifyWebApiException | ParseException e) {
+      System.out.println("Error: " + e.getMessage());
+    }
+  }
+
+  public static void removeLibraryItems_Async() {
+    try {
+      final CompletableFuture<String> stringFuture = removeLibraryItemsRequest.executeAsync();
+
+      // Thread free to do other tasks...
+
+      // Example Only. Never block in production code.
+      final String string = stringFuture.join();
+
+      System.out.println("Null: " + (string == null));
+    } catch (CompletionException e) {
+      System.out.println("Error: " + e.getCause().getMessage());
+    } catch (CancellationException e) {
+      System.out.println("Async operation cancelled.");
+    }
+  }
+
+  public static void main(String[] args) {
+    removeLibraryItems_Sync();
+    removeLibraryItems_Async();
+  }
+}

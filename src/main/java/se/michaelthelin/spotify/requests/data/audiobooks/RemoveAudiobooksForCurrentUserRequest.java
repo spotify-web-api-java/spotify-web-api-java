@@ -10,7 +10,7 @@ import java.io.IOException;
 /**
  * Remove one or more audiobooks from the current Spotify user's library.
  *
- * @deprecated Use {@link RemoveItemsFromLibraryRequest} instead.
+ * @deprecated Use {@link se.michaelthelin.spotify.requests.data.library.RemoveItemsFromLibraryRequest RemoveItemsFromLibraryRequest} instead.
  */
 @Deprecated
 @JsonDeserialize(builder = RemoveAudiobooksForCurrentUserRequest.Builder.class)
