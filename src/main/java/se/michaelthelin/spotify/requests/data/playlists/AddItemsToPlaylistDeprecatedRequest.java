@@ -11,15 +11,15 @@ import se.michaelthelin.spotify.requests.data.AbstractDataRequest;
 import java.io.IOException;
 
 /**
- * @deprecated Use the new endpoints instead.
  * Add one or more items to a user's playlist.
+ *
+ * @deprecated Use {@link AddItemsToPlaylistRequest} instead.
  */
 @Deprecated
 @JsonDeserialize(builder = AddItemsToPlaylistDeprecatedRequest.Builder.class)
 public class AddItemsToPlaylistDeprecatedRequest extends AbstractDataRequest<SnapshotResult> {
 
   /**
-   * @deprecated Use the new endpoints instead.
    * The private {@link AddItemsToPlaylistDeprecatedRequest} constructor.
    *
    * @param builder A {@link AddItemsToPlaylistDeprecatedRequest.Builder}.
@@ -29,7 +29,6 @@ public class AddItemsToPlaylistDeprecatedRequest extends AbstractDataRequest<Sna
   }
 
   /**
-   * @deprecated Use the new endpoints instead.
    * Add items to playlist.
    *
    * @return A playlist snapshot ID. The snapshot ID can be used to identify your playlist version in future requests.
@@ -46,13 +45,14 @@ public class AddItemsToPlaylistDeprecatedRequest extends AbstractDataRequest<Sna
   }
 
   /**
-   * @deprecated Use the new endpoints instead.
    * Builder class for building an {@link AddItemsToPlaylistDeprecatedRequest}.
+   *
+   * @deprecated Use {@link AddItemsToPlaylistRequest} instead.
    */
+  @Deprecated
   public static final class Builder extends AbstractDataRequest.Builder<SnapshotResult, Builder> {
 
     /**
-     * @deprecated Use the new endpoints instead.
      * Create a new {@link AddItemsToPlaylistDeprecatedRequest.Builder}.
      * <p>
      * Adding items to the current user's public playlists requires authorization of the {@code playlist-modify-public}
@@ -67,7 +67,6 @@ public class AddItemsToPlaylistDeprecatedRequest extends AbstractDataRequest<Sna
     }
 
     /**
-     * @deprecated Use the new endpoints instead.
      * The playlist ID setter.
      *
      * @param playlist_id The Spotify ID for the playlist.
@@ -81,7 +80,6 @@ public class AddItemsToPlaylistDeprecatedRequest extends AbstractDataRequest<Sna
     }
 
     /**
-     * @deprecated Use the new endpoints instead.
      * The item URIs setter.
      * <p>
      * <b>Note:</b> It is likely that passing a large number of item URIs as a query parameter will exceed the maximum
@@ -100,7 +98,6 @@ public class AddItemsToPlaylistDeprecatedRequest extends AbstractDataRequest<Sna
     }
 
     /**
-     * @deprecated Use the new endpoints instead.
      * The position setter.
      *
      * @param position Optional. The position to insert the items, a zero-based index. If omitted, the
@@ -113,7 +110,6 @@ public class AddItemsToPlaylistDeprecatedRequest extends AbstractDataRequest<Sna
     }
 
     /**
-     * @deprecated Use the new endpoints instead.
      * The item URIs setter.
      * <p>
      * <b>Note:</b> If the URIs already have been set with {@link #uris(String)}, any URIs listed here will be ignored.
@@ -130,7 +126,6 @@ public class AddItemsToPlaylistDeprecatedRequest extends AbstractDataRequest<Sna
     }
 
     /**
-     * @deprecated Use the new endpoints instead.
      * The position setter. You can set it in the request query string or request body, depending on the
      * {@code use_body} parameter.
      *
@@ -151,7 +146,6 @@ public class AddItemsToPlaylistDeprecatedRequest extends AbstractDataRequest<Sna
     }
 
     /**
-     * @deprecated Use the new endpoints instead.
      * The request build method.
      *
      * @return A custom {@link AddItemsToPlaylistDeprecatedRequest}.

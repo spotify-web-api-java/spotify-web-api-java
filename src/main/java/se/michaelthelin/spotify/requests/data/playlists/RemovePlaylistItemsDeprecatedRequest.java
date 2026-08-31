@@ -11,15 +11,15 @@ import se.michaelthelin.spotify.requests.data.AbstractDataRequest;
 import java.io.IOException;
 
 /**
-  * @deprecated Use the new endpoints instead.
  * Remove one or more items from a user’s playlist.
+ *
+ * @deprecated Use {@link RemovePlaylistItemsRequest} instead.
  */
 @Deprecated
 @JsonDeserialize(builder = RemovePlaylistItemsDeprecatedRequest.Builder.class)
 public class RemovePlaylistItemsDeprecatedRequest extends AbstractDataRequest<SnapshotResult> {
 
   /**
-  * @deprecated Use the new endpoints instead.
    * The private {@link RemovePlaylistItemsDeprecatedRequest} constructor.
    *
    * @param builder A {@link RemovePlaylistItemsDeprecatedRequest.Builder}.
@@ -29,7 +29,6 @@ public class RemovePlaylistItemsDeprecatedRequest extends AbstractDataRequest<Sn
   }
 
   /**
-  * @deprecated Use the new endpoints instead.
    * Remove items from a playlist.
    *
    * @return A playlist snapshot ID. The snapshot ID can be used to identify your playlist version in future requests.
@@ -46,13 +45,14 @@ public class RemovePlaylistItemsDeprecatedRequest extends AbstractDataRequest<Sn
   }
 
   /**
-  * @deprecated Use the new endpoints instead.
    * Builder class for building a {@link RemovePlaylistItemsDeprecatedRequest}.
+   *
+   * @deprecated Use {@link RemovePlaylistItemsRequest} instead.
    */
+  @Deprecated
   public static final class Builder extends AbstractDataRequest.Builder<SnapshotResult, Builder> {
 
     /**
-  * @deprecated Use the new endpoints instead.
      * Create a new {@link RemovePlaylistItemsDeprecatedRequest.Builder}.
      * <p>
      * Removing items from an user's public playlists requires authorization of the {@code playlist-modify-public}
@@ -67,7 +67,6 @@ public class RemovePlaylistItemsDeprecatedRequest extends AbstractDataRequest<Sn
     }
 
     /**
-  * @deprecated Use the new endpoints instead.
      * The playlist ID setter.
      *
      * @param playlist_id The Spotify ID for the playlist.
@@ -81,7 +80,6 @@ public class RemovePlaylistItemsDeprecatedRequest extends AbstractDataRequest<Sn
     }
 
     /**
-  * @deprecated Use the new endpoints instead.
      * The item URIs setter.
      * <p>
      * There are several ways to specify which tracks or episodes to remove, determined by the request parameters.
@@ -105,7 +103,6 @@ public class RemovePlaylistItemsDeprecatedRequest extends AbstractDataRequest<Sn
     }
 
     /**
-  * @deprecated Use the new endpoints instead.
      * The playlist snapshot ID setter.
      * <p>
      * To guard against errors when concurrent edits happen to the same playlist, we recommend specifying a snapshot ID.
@@ -127,7 +124,6 @@ public class RemovePlaylistItemsDeprecatedRequest extends AbstractDataRequest<Sn
     }
 
     /**
-  * @deprecated Use the new endpoints instead.
      * The request build method.
      *
      * @return A custom {@link RemovePlaylistItemsDeprecatedRequest}.

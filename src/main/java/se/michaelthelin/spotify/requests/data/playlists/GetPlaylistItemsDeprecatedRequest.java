@@ -12,15 +12,15 @@ import se.michaelthelin.spotify.requests.data.AbstractDataRequest;
 import java.io.IOException;
 
 /**
-  * @deprecated Use the new endpoints instead.
  * Get full details of the tracks or episodes of a playlist owned by a Spotify user.
+ *
+ * @deprecated Use {@link GetPlaylistItemsRequest} instead.
  */
 @Deprecated
 @JsonDeserialize(builder = GetPlaylistItemsDeprecatedRequest.Builder.class)
 public class GetPlaylistItemsDeprecatedRequest extends AbstractDataRequest<Paging<PlaylistTrack>> {
 
   /**
-  * @deprecated Use the new endpoints instead.
    * The private {@link GetPlaylistItemsDeprecatedRequest} constructor.
    *
    * @param builder A {@link GetPlaylistItemsDeprecatedRequest.Builder}.
@@ -30,7 +30,6 @@ public class GetPlaylistItemsDeprecatedRequest extends AbstractDataRequest<Pagin
   }
 
   /**
-  * @deprecated Use the new endpoints instead.
    * Get a playlist's items.
    *
    * @return A playlist's items.
@@ -45,13 +44,14 @@ public class GetPlaylistItemsDeprecatedRequest extends AbstractDataRequest<Pagin
   }
 
   /**
-  * @deprecated Use the new endpoints instead.
    * Builder class for building a {@link GetPlaylistItemsDeprecatedRequest}.
+   *
+   * @deprecated Use {@link GetPlaylistItemsRequest} instead.
    */
+  @Deprecated
   public static final class Builder extends AbstractDataPagingRequest.Builder<PlaylistTrack, Builder> {
 
     /**
-  * @deprecated Use the new endpoints instead.
      * Create a new {@link GetPlaylistItemsDeprecatedRequest.Builder}.
      * <p>
      * Both Public and Private playlists belonging to any user are retrievable on provision of a valid access token.
@@ -63,7 +63,6 @@ public class GetPlaylistItemsDeprecatedRequest extends AbstractDataRequest<Pagin
     }
 
     /**
-  * @deprecated Use the new endpoints instead.
      * The playlist ID setter.
      *
      * @param playlist_id The Spotify ID for the playlist.
@@ -77,7 +76,6 @@ public class GetPlaylistItemsDeprecatedRequest extends AbstractDataRequest<Pagin
     }
 
     /**
-  * @deprecated Use the new endpoints instead.
      * The fields filter setter.
      *
      * @param fields Optional. Filters for the query: a comma-separated list of the fields to return.
@@ -93,7 +91,6 @@ public class GetPlaylistItemsDeprecatedRequest extends AbstractDataRequest<Pagin
     }
 
     /**
-  * @deprecated Use the new endpoints instead.
      * The limit setter.
      *
      * @param limit Optional. The maximum number of items to return. Default: 50. Minimum: 1. Maximum: 50.
@@ -106,7 +103,6 @@ public class GetPlaylistItemsDeprecatedRequest extends AbstractDataRequest<Pagin
     }
 
     /**
-  * @deprecated Use the new endpoints instead.
      * The offset setter.
      *
      * @param offset Optional. The index of the first item to return. Default: 0 (the first object).
@@ -119,7 +115,6 @@ public class GetPlaylistItemsDeprecatedRequest extends AbstractDataRequest<Pagin
     }
 
     /**
-  * @deprecated Use the new endpoints instead.
      * The market country code setter.
      *
      * @param market Optional. An ISO 3166-1 alpha-2 country code. Provide this
@@ -134,7 +129,6 @@ public class GetPlaylistItemsDeprecatedRequest extends AbstractDataRequest<Pagin
     }
 
     /**
-  * @deprecated Use the new endpoints instead.
      * The additional types setter.
      *
      * @param additionalTypes Optional. A comma-separated list of item types that your client supports
@@ -149,7 +143,6 @@ public class GetPlaylistItemsDeprecatedRequest extends AbstractDataRequest<Pagin
     }
 
     /**
-  * @deprecated Use the new endpoints instead.
      * The request build method.
      *
      * @return A custom {@link GetPlaylistItemsDeprecatedRequest}.

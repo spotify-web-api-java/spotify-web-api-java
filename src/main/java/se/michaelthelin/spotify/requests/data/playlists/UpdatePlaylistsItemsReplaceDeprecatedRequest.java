@@ -11,16 +11,16 @@ import se.michaelthelin.spotify.requests.data.AbstractDataRequest;
 import java.io.IOException;
 
 /**
-  * @deprecated Use the new endpoints instead.
  * Replace all the items in a playlist, overwriting its existing items. This powerful request can be useful for
  * replacing items, re-ordering existing items, or clearing the playlist.
+ *
+ * @deprecated Use {@link UpdatePlaylistsItemsReplaceRequest} instead.
  */
 @Deprecated
 @JsonDeserialize(builder = UpdatePlaylistsItemsReplaceDeprecatedRequest.Builder.class)
 public class UpdatePlaylistsItemsReplaceDeprecatedRequest extends AbstractDataRequest<SnapshotResult> {
 
   /**
-  * @deprecated Use the new endpoints instead.
    * The private {@link UpdatePlaylistsItemsReplaceDeprecatedRequest} constructor.
    *
    * @param builder A {@link UpdatePlaylistsItemsReplaceDeprecatedRequest.Builder}.
@@ -30,7 +30,6 @@ public class UpdatePlaylistsItemsReplaceDeprecatedRequest extends AbstractDataRe
   }
 
   /**
-  * @deprecated Use the new endpoints instead.
    * Replace items in a playlist.
    *
    * @return A playlist snapshot ID. The snapshot ID can be used to identify your playlist version in future requests.
@@ -45,13 +44,14 @@ public class UpdatePlaylistsItemsReplaceDeprecatedRequest extends AbstractDataRe
   }
 
   /**
-  * @deprecated Use the new endpoints instead.
    * Builder class for building a {@link UpdatePlaylistsItemsReplaceDeprecatedRequest}.
+   *
+   * @deprecated Use {@link UpdatePlaylistsItemsReplaceRequest} instead.
    */
+  @Deprecated
   public static final class Builder extends AbstractDataRequest.Builder<SnapshotResult, Builder> {
 
     /**
-  * @deprecated Use the new endpoints instead.
      * Create a new {@link UpdatePlaylistsItemsReplaceDeprecatedRequest.Builder}.
      * <p>
      * Replacing items in the current user's public playlists requires authorization of the
@@ -66,7 +66,6 @@ public class UpdatePlaylistsItemsReplaceDeprecatedRequest extends AbstractDataRe
     }
 
     /**
-  * @deprecated Use the new endpoints instead.
      * The playlist ID setter.
      *
      * @param playlist_id The Spotify ID for the playlist.
@@ -80,7 +79,6 @@ public class UpdatePlaylistsItemsReplaceDeprecatedRequest extends AbstractDataRe
     }
 
     /**
-  * @deprecated Use the new endpoints instead.
      * The item URIs setter.
      *
      * @param uris Optional. A comma-separated list of Spotify track or episode URIs to set. Maximum: 100 track or episode URIs.
@@ -95,7 +93,6 @@ public class UpdatePlaylistsItemsReplaceDeprecatedRequest extends AbstractDataRe
     }
 
     /**
-  * @deprecated Use the new endpoints instead.
      * The item URIs setter.
      * <p>
      * <b>Note:</b> If the URIs have already been set with {@link #uris(String)}, any URIs set here will be ignored.
@@ -112,7 +109,6 @@ public class UpdatePlaylistsItemsReplaceDeprecatedRequest extends AbstractDataRe
     }
 
     /**
-  * @deprecated Use the new endpoints instead.
      * The request build method.
      *
      * @return A custom {@link UpdatePlaylistsItemsReplaceDeprecatedRequest}.

@@ -1622,7 +1622,6 @@ public class SpotifyApi {
   }
 
   /**
-   * @deprecated Use the new endpoints instead.
    * Add items to a playlist (deprecated endpoint).
    * <p>
    * <b>Note:</b> If you want to add a large number of items (&gt;50), use {@link #addItemsToPlaylistDeprecated(String, JsonArray)} to not exceed
@@ -1631,6 +1630,7 @@ public class SpotifyApi {
    * @param uris        URIs of the tracks or episodes to add. Maximum: 100 item URIs.
    * @return An {@link AddItemsToPlaylistDeprecatedRequest.Builder}.
    * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
+   * @deprecated Use {@link #addItemsToPlaylist(String, String[])} instead.
    */
   @Deprecated
   public AddItemsToPlaylistDeprecatedRequest.Builder addItemsToPlaylistDeprecated(String playlist_id, String[] uris) {
@@ -1641,13 +1641,13 @@ public class SpotifyApi {
   }
 
   /**
-   * @deprecated Use the new endpoints instead.
    * Add items to a playlist (deprecated endpoint).
    *
    * @param playlist_id The playlists ID.
    * @param uris        URIs of the tracks or episodes to add. Maximum: 100 item URIs.
    * @return An {@link AddItemsToPlaylistDeprecatedRequest.Builder}.
    * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
+   * @deprecated Use {@link #addItemsToPlaylist(String, JsonArray)} instead.
    */
   @Deprecated
   public AddItemsToPlaylistDeprecatedRequest.Builder addItemsToPlaylistDeprecated(String playlist_id, JsonArray uris) {
@@ -1764,12 +1764,12 @@ public class SpotifyApi {
   }
 
   /**
-   * @deprecated Use the new endpoints instead.
    * Get full details of the tracks or episodes of a playlist owned by a Spotify user (deprecated endpoint).
    *
    * @param playlist_id The playlists ID.
    * @return A {@link GetPlaylistItemsDeprecatedRequest.Builder}.
    * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
+   * @deprecated Use {@link #getPlaylistItems(String)} instead.
    */
   @Deprecated
   public GetPlaylistItemsDeprecatedRequest.Builder getPlaylistItemsDeprecated(String playlist_id) {
@@ -1795,13 +1795,13 @@ public class SpotifyApi {
   }
 
   /**
-   * @deprecated Use the new endpoints instead.
    * Delete items from a playlist (deprecated endpoint).
    *
    * @param playlist_id The playlists ID.
    * @param tracks      URIs of the items to remove. Maximum: 100 track or episode URIs.
    * @return A {@link RemovePlaylistItemsDeprecatedRequest.Builder}.
    * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
+   * @deprecated Use {@link #removePlaylistItems(String, JsonArray)} instead.
    */
   @Deprecated
   public RemovePlaylistItemsDeprecatedRequest.Builder removePlaylistItemsDeprecated(
@@ -1835,7 +1835,6 @@ public class SpotifyApi {
   }
 
   /**
-   * @deprecated Use the new endpoints instead.
    * Reorder an item or a group of items in a playlist (deprecated endpoint). <br><br>
    *
    * @param playlist_id   The Spotify ID for the playlist.
@@ -1844,6 +1843,7 @@ public class SpotifyApi {
    *                      playlist, simply set insert_before to the position after the last item.
    * @return A {@link UpdatePlaylistsItemsReorderDeprecatedRequest.Builder}.
    * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
+   * @deprecated Use {@link #updatePlaylistsItemsReorder(String, int, int)} instead.
    */
   @Deprecated
   public UpdatePlaylistsItemsReorderDeprecatedRequest.Builder updatePlaylistsItemsReorderDeprecated(String playlist_id, int range_start, int insert_before) {
@@ -1885,13 +1885,13 @@ public class SpotifyApi {
   }
 
   /**
-   * @deprecated Use the new endpoints instead.
    * Replace items in a playlist (deprecated endpoint).
    *
    * @param playlist_id The playlists ID.
    * @param uris        URIs of the items to set. Maximum: 100 track or episode URIs.
    * @return A {@link UpdatePlaylistsItemsReplaceDeprecatedRequest.Builder}.
    * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
+   * @deprecated Use {@link #updatePlaylistsItemsReplace(String, String[])} instead.
    */
   @Deprecated
   public UpdatePlaylistsItemsReplaceDeprecatedRequest.Builder updatePlaylistsItemsReplaceDeprecated(String playlist_id, String[] uris) {
@@ -1902,13 +1902,13 @@ public class SpotifyApi {
   }
 
   /**
-   * @deprecated Use the new endpoints instead.
    * Replace items in a playlist (deprecated endpoint).
    *
    * @param playlist_id The playlists ID.
    * @param uris        URIs of the items to add. Maximum: 100 track or episode URIs.
    * @return A {@link UpdatePlaylistsItemsReplaceDeprecatedRequest.Builder}.
    * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
+   * @deprecated Use {@link #updatePlaylistsItemsReplace(String, JsonArray)} instead.
    */
   @Deprecated
   public UpdatePlaylistsItemsReplaceDeprecatedRequest.Builder updatePlaylistsItemsReplaceDeprecated(String playlist_id, JsonArray uris) {
