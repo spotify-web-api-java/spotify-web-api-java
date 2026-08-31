@@ -18,7 +18,7 @@ on:
 jobs:
   ci-optimization:
     name: CI optimization
-    uses: dargmuesli/github-actions/.github/workflows/ci-optimization.yml@e98193e91e9be2af3af784b7a0f25d35bf4eadc5 # 4.0.7
+    uses: dargmuesli/github-actions/.github/workflows/ci-optimization.yml@ab0335fad9df7941df2880f0645d8f685278da1c # 5.9.4
     permissions:
       pull-requests: read
   build:
@@ -33,11 +33,11 @@ jobs:
         java: ["17", "25"]
     steps:
       - name: Checkout git repository
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0 # fetch complete history to find the last git tag
       - name: Set up JDK
-        uses: actions/setup-java@be666c2fcd27ec809703dec50e508c2fdc7f6654 # v5.2.0
+        uses: actions/setup-java@dd06d9cba3e5552c54d9f8ea23572deb30010f7c # v6.0.0
         with:
           cache: maven
           distribution: temurin
@@ -51,7 +51,7 @@ jobs:
         # the removal is what stops the plugin from skipping an already up-to-date output directory
         run: rm -rf target/reports/apidocs && mvn -B -P javadoc-check javadoc:javadoc
       - name: Upload code coverage
-        uses: codecov/codecov-action@671740ac38dd9b0130fbe1cec585b89eea48d3de # v5.5.2
+        uses: codecov/codecov-action@fb8b3582c8e4def4969c97caa2f19720cb33a72f # v7.0.0
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
       - name: Release
