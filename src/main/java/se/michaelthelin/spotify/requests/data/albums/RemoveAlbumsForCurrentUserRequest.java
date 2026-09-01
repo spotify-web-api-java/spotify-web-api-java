@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.requests.data.albums;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.requests.data.AbstractDataRequest;
@@ -13,7 +12,6 @@ import java.io.IOException;
  * @deprecated Use {@link se.michaelthelin.spotify.requests.data.library.RemoveItemsFromLibraryRequest RemoveItemsFromLibraryRequest} instead.
  */
 @Deprecated
-@JsonDeserialize(builder = RemoveAlbumsForCurrentUserRequest.Builder.class)
 public class RemoveAlbumsForCurrentUserRequest extends AbstractDataRequest<String> {
 
   /**

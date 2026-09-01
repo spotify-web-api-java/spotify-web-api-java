@@ -1,14 +1,12 @@
 package se.michaelthelin.spotify.model_objects.miscellaneous;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.google.gson.JsonObject;
+import com.google.gson.annotations.SerializedName;
 import se.michaelthelin.spotify.enums.Modality;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 
 /**
  * Retrieve information about Audio Analysis Track objects by creating instances from this class.
  */
-@JsonDeserialize(builder = AudioAnalysisTrack.Builder.class)
 public class AudioAnalysisTrack extends AbstractModelObject {
   /** The number of samples in the track. */
   private final Long numSamples;
@@ -51,14 +49,17 @@ public class AudioAnalysisTrack extends AbstractModelObject {
   /** The version of the code analysis. */
   private final Float codeVersion;
   /** The echoprint string for the track. */
+  @SerializedName("echoprintstring")
   private final String echoprintString;
   /** The version of the echoprint analysis. */
   private final Float echoprintVersion;
   /** The synch string for the track. */
+  @SerializedName("synchstring")
   private final String synchString;
   /** The version of the synch analysis. */
   private final Float synchVersion;
   /** The rhythm string for the track. */
+  @SerializedName("rhythmstring")
   private final String rhythmString;
   /** The version of the rhythm analysis. */
   private final Float rhythmVersion;
@@ -399,294 +400,135 @@ public class AudioAnalysisTrack extends AbstractModelObject {
     private String rhythmString;
     private Float rhythmVersion;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
 
-    /**
-     * The sample number setter.
-     *
-     * @param numSamples The total number of samples in the track.
-     * @return An {@link AudioAnalysisTrack.Builder}.
-     */
     public Builder setNumSamples(Long numSamples) {
       this.numSamples = numSamples;
       return this;
     }
 
-    /**
-     * The track duration setter.
-     *
-     * @param duration The duration of the track in seconds.
-     * @return An {@link AudioAnalysisTrack.Builder}.
-     */
     public Builder setDuration(Float duration) {
       this.duration = duration;
       return this;
     }
 
-    /**
-     * The sample MD5 setter.
-     *
-     * @param sampleMd5 The sample MD5.
-     * @return An {@link AudioAnalysisTrack.Builder}.
-     */
     public Builder setSampleMd5(String sampleMd5) {
       this.sampleMd5 = sampleMd5;
       return this;
     }
 
-    /**
-     * The offset seconds setter.
-     *
-     * @param offsetSeconds The offset seconds.
-     * @return An {@link AudioAnalysisTrack.Builder}.
-     */
     public Builder setOffsetSeconds(Integer offsetSeconds) {
       this.offsetSeconds = offsetSeconds;
       return this;
     }
 
-    /**
-     * The window seconds setter.
-     *
-     * @param windowSeconds The window seconds.
-     * @return An {@link AudioAnalysisTrack.Builder}.
-     */
     public Builder setWindowSeconds(Integer windowSeconds) {
       this.windowSeconds = windowSeconds;
       return this;
     }
 
-    /**
-     * The analysis sample rate setter.
-     *
-     * @param analysisSampleRate The analysis sample rate.
-     * @return An {@link AudioAnalysisTrack.Builder}.
-     */
     public Builder setAnalysisSampleRate(Long analysisSampleRate) {
       this.analysisSampleRate = analysisSampleRate;
       return this;
     }
 
-    /**
-     * The analysis channels setter.
-     *
-     * @param analysisChannels The analysis channels.
-     * @return An {@link AudioAnalysisTrack.Builder}.
-     */
     public Builder setAnalysisChannels(Integer analysisChannels) {
       this.analysisChannels = analysisChannels;
       return this;
     }
 
-    /**
-     * The end of fade in introduction setter.
-     *
-     * @param endOfFadeIn The end of fade in introduction in seconds.
-     * @return An {@link AudioAnalysisTrack.Builder}.
-     */
     public Builder setEndOfFadeIn(Float endOfFadeIn) {
       this.endOfFadeIn = endOfFadeIn;
       return this;
     }
 
-    /**
-     * The start of fade out setter.
-     *
-     * @param startOfFadeOut The start of the fade out in seconds.
-     * @return An {@link AudioAnalysisTrack.Builder}.
-     */
     public Builder setStartOfFadeOut(Float startOfFadeOut) {
       this.startOfFadeOut = startOfFadeOut;
       return this;
     }
 
-    /**
-     * The average loudness setter.
-     *
-     * @param loudness Average loudness of the track.
-     * @return An {@link AudioAnalysisTrack.Builder}.
-     */
     public Builder setLoudness(Float loudness) {
       this.loudness = loudness;
       return this;
     }
 
-    /**
-     * The estimated tempo setter.
-     *
-     * @param tempo The estimated tempo of the track.
-     * @return An {@link AudioAnalysisTrack.Builder}.
-     */
     public Builder setTempo(Float tempo) {
       this.tempo = tempo;
       return this;
     }
 
-    /**
-     * The tempo confidence setter.
-     *
-     * @param tempoConfidence The tempo confidence of the track.
-     * @return An {@link AudioAnalysisTrack.Builder}.
-     */
     public Builder setTempoConfidence(Float tempoConfidence) {
       this.tempoConfidence = tempoConfidence;
       return this;
     }
 
-    /**
-     * The time signature setter.
-     *
-     * @param timeSignature Time signature value.
-     * @return An {@link AudioAnalysisTrack.Builder}.
-     */
     public Builder setTimeSignature(Integer timeSignature) {
       this.timeSignature = timeSignature;
       return this;
     }
 
-    /**
-     * The time signature confidence setter.
-     *
-     * @param timeSignatureConfidence The time signature confidence.
-     * @return An {@link AudioAnalysisTrack.Builder}.
-     */
     public Builder setTimeSignatureConfidence(Float timeSignatureConfidence) {
       this.timeSignatureConfidence = timeSignatureConfidence;
       return this;
     }
 
-    /**
-     * The track key setter.
-     *
-     * @param key Main key of the track.
-     * @return An {@link AudioAnalysisTrack.Builder}.
-     */
     public Builder setKey(Integer key) {
       this.key = key;
       return this;
     }
 
-    /**
-     * The key confidence setter.
-     *
-     * @param keyConfidence The key confidence of the track.
-     * @return An {@link AudioAnalysisTrack.Builder}.
-     */
     public Builder setKeyConfidence(Float keyConfidence) {
       this.keyConfidence = keyConfidence;
       return this;
     }
 
-    /**
-     * The track modality setter.
-     *
-     * @param mode The modality type of the track.
-     * @return An {@link AudioAnalysisTrack.Builder}.
-     */
     public Builder setMode(Modality mode) {
       this.mode = mode;
       return this;
     }
 
-    /**
-     * The modality confidence setter.
-     *
-     * @param modeConfidence The modality confidence of the track.
-     * @return An {@link AudioAnalysisTrack.Builder}.
-     */
     public Builder setModeConfidence(Float modeConfidence) {
       this.modeConfidence = modeConfidence;
       return this;
     }
 
-    /**
-     * The code string setter.
-     *
-     * @param codeString The code string of the track.
-     * @return An {@link AudioAnalysisTrack.Builder}.
-     */
     public Builder setCodeString(String codeString) {
       this.codeString = codeString;
       return this;
     }
 
-    /**
-     * The code string version setter.
-     *
-     * @param codeVersion The version of the code string.
-     * @return An {@link AudioAnalysisTrack.Builder}.
-     */
     public Builder setCodeVersion(Float codeVersion) {
       this.codeVersion = codeVersion;
       return this;
     }
 
-    /**
-     * The echoprint string setter.
-     *
-     * @param echoprintString The echoprint string of the track.
-     * @return An {@link AudioAnalysisTrack.Builder}.
-     */
     public Builder setEchoprintString(String echoprintString) {
       this.echoprintString = echoprintString;
       return this;
     }
 
-    /**
-     * The echoprint string version setter.
-     *
-     * @param echoprintVersion The version of the echoprint string.
-     * @return An {@link AudioAnalysisTrack.Builder}.
-     */
     public Builder setEchoprintVersion(Float echoprintVersion) {
       this.echoprintVersion = echoprintVersion;
       return this;
     }
 
-    /**
-     * The synch string setter.
-     *
-     * @param synchString The synch string.
-     * @return An {@link AudioAnalysisTrack.Builder}.
-     */
     public Builder setSynchString(String synchString) {
       this.synchString = synchString;
       return this;
     }
 
-    /**
-     * The synch string version setter.
-     *
-     * @param synchVersion The synch string version.
-     * @return An {@link AudioAnalysisTrack.Builder}.
-     */
     public Builder setSynchVersion(Float synchVersion) {
       this.synchVersion = synchVersion;
       return this;
     }
 
-    /**
-     * The rhythm string setter.
-     *
-     * @param rhythmString The rhythm string of the track.
-     * @return An {@link AudioAnalysisTrack.Builder}.
-     */
     public Builder setRhythmString(String rhythmString) {
       this.rhythmString = rhythmString;
       return this;
     }
 
-    /**
-     * The rhythm string version setter.
-     *
-     * @param rhythmVersion The rhythm string version.
-     * @return An {@link AudioAnalysisTrack.Builder}.
-     */
     public Builder setRhythmVersion(Float rhythmVersion) {
       this.rhythmVersion = rhythmVersion;
       return this;
@@ -703,125 +545,9 @@ public class AudioAnalysisTrack extends AbstractModelObject {
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<AudioAnalysisTrack> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }
 
-    public AudioAnalysisTrack createModelObject(JsonObject jsonObject) {
-      if (jsonObject == null || jsonObject.isJsonNull()) {
-        return null;
-      }
-
-      return new AudioAnalysisTrack.Builder()
-        .setAnalysisChannels(
-          hasAndNotNull(jsonObject, "analysis_channels")
-            ? jsonObject.get("analysis_channels").getAsInt()
-            : null)
-        .setAnalysisSampleRate(
-          hasAndNotNull(jsonObject, "analysis_sample_rate")
-            ? jsonObject.get("analysis_sample_rate").getAsLong()
-            : null)
-        .setCodeString(
-          hasAndNotNull(jsonObject, "code_string")
-            ? jsonObject.get("code_string").getAsString()
-            : null)
-        .setCodeVersion(
-          hasAndNotNull(jsonObject, "code_version")
-            ? jsonObject.get("code_version").getAsFloat()
-            : null)
-        .setDuration(
-          hasAndNotNull(jsonObject, "duration")
-            ? jsonObject.get("duration").getAsFloat()
-            : null)
-        .setEchoprintString(
-          hasAndNotNull(jsonObject, "echoprintstring")
-            ? jsonObject.get("echoprintstring").getAsString()
-            : null)
-        .setEchoprintVersion(
-          hasAndNotNull(jsonObject, "echoprint_version")
-            ? jsonObject.get("echoprint_version").getAsFloat()
-            : null)
-        .setEndOfFadeIn(
-          hasAndNotNull(jsonObject, "end_of_face_in")
-            ? jsonObject.get("end_of_face_in").getAsFloat()
-            : null)
-        .setKey(
-          hasAndNotNull(jsonObject, "key")
-            ? jsonObject.get("key").getAsInt()
-            : null)
-        .setKeyConfidence(
-          hasAndNotNull(jsonObject, "key_confidence")
-            ? jsonObject.get("key_confidence").getAsFloat()
-            : null)
-        .setLoudness(
-          hasAndNotNull(jsonObject, "loudness")
-            ? jsonObject.get("loudness").getAsFloat()
-            : null)
-        .setMode(
-          hasAndNotNull(jsonObject, "mode")
-            ? Modality.keyOf(
-            jsonObject.get("mode").getAsInt())
-            : null)
-        .setModeConfidence(
-          hasAndNotNull(jsonObject, "mode_confidence")
-            ? jsonObject.get("mode_confidence").getAsFloat()
-            : null)
-        .setNumSamples(
-          hasAndNotNull(jsonObject, "num_samples")
-            ? jsonObject.get("num_samples").getAsLong()
-            : null)
-        .setOffsetSeconds(
-          hasAndNotNull(jsonObject, "offset_seconds")
-            ? jsonObject.get("offset_seconds").getAsInt()
-            : null)
-        .setRhythmString(
-          hasAndNotNull(jsonObject, "rhythmstring")
-            ? jsonObject.get("rhythmstring").getAsString()
-            : null)
-        .setRhythmVersion(
-          hasAndNotNull(jsonObject, "rhythm_version")
-            ? jsonObject.get("rhythm_version").getAsFloat()
-            : null)
-        .setSampleMd5(
-          hasAndNotNull(jsonObject, "sample_md5")
-            ? jsonObject.get("sample_md5").getAsString()
-            : null)
-        .setStartOfFadeOut(
-          hasAndNotNull(jsonObject, "start_of_fade_out")
-            ? jsonObject.get("start_of_fade_out").getAsFloat()
-            : null)
-        .setSynchString(
-          hasAndNotNull(jsonObject, "synchstring")
-            ? jsonObject.get("synchstring").getAsString()
-            : null)
-        .setSynchVersion(
-          hasAndNotNull(jsonObject, "synch_version")
-            ? jsonObject.get("synch_version").getAsFloat()
-            : null)
-        .setTempo(
-          hasAndNotNull(jsonObject, "tempo")
-            ? jsonObject.get("tempo").getAsFloat()
-            : null)
-        .setTempoConfidence(
-          hasAndNotNull(jsonObject, "tempo_confidence")
-            ? jsonObject.get("tempo_confidence").getAsFloat()
-            : null)
-        .setTimeSignature(
-          hasAndNotNull(jsonObject, "time_signature")
-            ? jsonObject.get("time_signature").getAsInt()
-            : null)
-        .setTimeSignatureConfidence(
-          hasAndNotNull(jsonObject, "time_signature_confidence")
-            ? jsonObject.get("time_signature_confidence").getAsFloat()
-            : null)
-        .setWindowSeconds(
-          hasAndNotNull(jsonObject, "windows_seconds")
-            ? jsonObject.get("windows_seconds").getAsInt()
-            : null)
-        .build();
-    }
   }
 }

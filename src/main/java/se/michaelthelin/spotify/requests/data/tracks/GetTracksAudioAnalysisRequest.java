@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.requests.data.tracks;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.model_objects.miscellaneous.AudioAnalysis;
@@ -14,7 +13,6 @@ import java.io.IOException;
  * @deprecated This endpoint has been deprecated by Spotify.
  */
 @Deprecated
-@JsonDeserialize(builder = GetTracksAudioAnalysisRequest.Builder.class)
 public class GetTracksAudioAnalysisRequest extends AbstractDataRequest<AudioAnalysis> {
 
   /**

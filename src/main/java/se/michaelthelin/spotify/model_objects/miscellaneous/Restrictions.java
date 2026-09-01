@@ -1,7 +1,5 @@
 package se.michaelthelin.spotify.model_objects.miscellaneous;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 
 /**
@@ -12,7 +10,6 @@ import se.michaelthelin.spotify.model_objects.AbstractModelObject;
  * with. The track response will still contain metadata for the original track, and a restrictions object containing the
  * reason why the track is not available
  */
-@JsonDeserialize(builder = Restrictions.Builder.class)
 public class Restrictions extends AbstractModelObject {
   /** The reason for the restriction. */
   private final String reason;
@@ -48,19 +45,10 @@ public class Restrictions extends AbstractModelObject {
   public static final class Builder extends AbstractModelObject.Builder {
     private String reason;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
 
-    /**
-     * The restriction reason setter.
-     *
-     * @param reason The track restriction reason.
-     * @return A {@link Restrictions.Builder}.
-     */
     public Builder setReason(String reason) {
       this.reason = reason;
       return this;
@@ -77,24 +65,9 @@ public class Restrictions extends AbstractModelObject {
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<Restrictions> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }
 
-    public Restrictions createModelObject(JsonObject jsonObject) {
-      if (jsonObject == null || jsonObject.isJsonNull()) {
-        return null;
-      }
-
-      return new Restrictions.Builder()
-        .setReason(
-          hasAndNotNull(jsonObject, "reason")
-            ? jsonObject.get("reason").getAsString()
-            : null)
-        .build();
-    }
   }
 }

@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.requests.data.episodes;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.Gson;
 import com.google.gson.JsonParser;
 import org.apache.hc.core5.http.ParseException;
@@ -15,7 +14,6 @@ import java.io.IOException;
  * @deprecated Use {@link se.michaelthelin.spotify.requests.data.library.CheckUsersSavedItemsRequest CheckUsersSavedItemsRequest} instead.
  */
 @Deprecated
-@JsonDeserialize(builder = CheckUsersSavedEpisodesRequest.Builder.class)
 public class CheckUsersSavedEpisodesRequest extends AbstractDataRequest<Boolean[]> {
 
   /**

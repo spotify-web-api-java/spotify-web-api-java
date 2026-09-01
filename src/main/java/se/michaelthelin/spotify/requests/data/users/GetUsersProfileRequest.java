@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.requests.data.users;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.model_objects.specification.User;
@@ -14,7 +13,6 @@ import java.io.IOException;
  * @deprecated This endpoint is deprecated.
  */
 @Deprecated
-@JsonDeserialize(builder = GetUsersProfileRequest.Builder.class)
 public class GetUsersProfileRequest extends AbstractDataRequest<User> {
 
   /**

@@ -1,7 +1,5 @@
 package se.michaelthelin.spotify.model_objects.miscellaneous;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 
 import java.util.Objects;
@@ -10,7 +8,6 @@ import java.util.Objects;
  * Retrieve information about <a href="https://developer.spotify.com/documentation/web-api/reference/get-a-users-available-devices">Device
  * objects</a> by creating instances from this class.
  */
-@JsonDeserialize(builder = Device.Builder.class)
 public class Device extends AbstractModelObject {
   /** The device ID. This may be null. */
   private final String id;
@@ -138,96 +135,45 @@ public class Device extends AbstractModelObject {
     private String type;
     private Integer volume_percent;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
 
-    /**
-     * The device ID setter.
-     *
-     * @param id The device ID. This may be {@code null}.
-     * @return A {@link Device.Builder}.
-     */
     public Builder setId(String id) {
       this.id = id;
       return this;
     }
 
-    /**
-     * The active device state setter.
-     *
-     * @param is_active If this device is the currently active device.
-     * @return A {@link Device.Builder}.
-     */
     public Builder setIs_active(Boolean is_active) {
       this.is_active = is_active;
       return this;
     }
 
-    /**
-     * The private session state setter.
-     *
-     * @param is_private_session If this device is currently in a private session.
-     * @return A {@link Device.Builder}.
-     */
     public Builder setIs_private_session(Boolean is_private_session) {
       this.is_private_session = is_private_session;
       return this;
     }
 
-    /**
-     * The device restriction state setter.
-     *
-     * @param is_restricted Whether controlling this device is restricted.
-     * @return A {@link Device.Builder}.
-     */
     public Builder setIs_restricted(Boolean is_restricted) {
       this.is_restricted = is_restricted;
       return this;
     }
 
-    /**
-     * The device name setter.
-     *
-     * @param name The name of the device.
-     * @return A {@link Device.Builder}.
-     */
     public Builder setName(String name) {
       this.name = name;
       return this;
     }
 
-    /**
-     * The supports volume state setter.
-     *
-     * @param supports_volume If this device can be used to set the volume.
-     * @return A {@link Device.Builder}.
-     */
     public Builder setSupports_volume(Boolean supports_volume) {
       this.supports_volume = supports_volume;
       return this;
     }
 
-    /**
-     * The device type setter.
-     *
-     * @param type Device type, such as "Computer", "Smartphone" or "Speaker".
-     * @return A {@link Device.Builder}.
-     */
     public Builder setType(String type) {
       this.type = type;
       return this;
     }
 
-    /**
-     * The device volume setter.
-     *
-     * @param volume_percent The current volume in percent. This may be {@code null}.
-     * @return A {@link Device.Builder}.
-     */
     public Builder setVolume_percent(Integer volume_percent) {
       this.volume_percent = volume_percent;
       return this;
@@ -244,53 +190,10 @@ public class Device extends AbstractModelObject {
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<Device> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }
 
-    public Device createModelObject(JsonObject jsonObject) {
-      if (jsonObject == null || jsonObject.isJsonNull()) {
-        return null;
-      }
-
-      return new Device.Builder()
-        .setId(
-          hasAndNotNull(jsonObject, "id")
-            ? jsonObject.get("id").getAsString()
-            : null)
-        .setIs_active(
-          hasAndNotNull(jsonObject, "is_active")
-            ? jsonObject.get("is_active").getAsBoolean()
-            : null)
-        .setIs_private_session(
-          hasAndNotNull(jsonObject, "is_private_session")
-            ? jsonObject.get("is_private_session").getAsBoolean()
-            : null)
-        .setIs_restricted(
-          hasAndNotNull(jsonObject, "is_restricted")
-            ? jsonObject.get("is_restricted").getAsBoolean()
-            : null)
-        .setName(
-          hasAndNotNull(jsonObject, "name")
-            ? jsonObject.get("name").getAsString()
-            : null)
-        .setSupports_volume(
-          hasAndNotNull(jsonObject, "supports_volume")
-            ? jsonObject.get("supports_volume").getAsBoolean()
-            : null)
-        .setType(
-          hasAndNotNull(jsonObject, "type")
-            ? jsonObject.get("type").getAsString()
-            : null)
-        .setVolume_percent(
-          hasAndNotNull(jsonObject, "volume_percent")
-            ? jsonObject.get("volume_percent").getAsInt()
-            : null)
-        .build();
-    }
   }
 
   @Override

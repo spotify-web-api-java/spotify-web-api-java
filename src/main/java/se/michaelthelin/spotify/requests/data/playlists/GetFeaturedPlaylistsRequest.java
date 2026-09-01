@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.requests.data.playlists;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.neovisionaries.i18n.CountryCode;
 import com.neovisionaries.i18n.LanguageCode;
 import org.apache.hc.core5.http.ParseException;
@@ -18,7 +17,6 @@ import java.util.Date;
  * @deprecated This endpoint has been deprecated by Spotify.
  */
 @Deprecated
-@JsonDeserialize(builder = GetFeaturedPlaylistsRequest.Builder.class)
 public class GetFeaturedPlaylistsRequest extends AbstractDataRequest<FeaturedPlaylists> {
 
   /**

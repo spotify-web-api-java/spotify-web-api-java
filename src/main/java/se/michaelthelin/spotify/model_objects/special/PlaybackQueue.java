@@ -3,7 +3,6 @@ package se.michaelthelin.spotify.model_objects.special;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
@@ -16,7 +15,6 @@ import se.michaelthelin.spotify.model_objects.utils.PlaylistItemFactory;
 /**
  * Get the list of items that make up the user's queue.
  */
-@JsonDeserialize(builder = CurrentlyPlaying.Builder.class)
 public class PlaybackQueue extends AbstractModelObject {
   /** The currently playing track or episode. */
   private final IPlaylistItem currentlyPlaying;
@@ -67,30 +65,15 @@ public class PlaybackQueue extends AbstractModelObject {
     private IPlaylistItem currentlyPlaying;
     private List<IPlaylistItem> queue;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
 
-    /**
-     * The item representing the user's currently playing item setter.
-     *
-     * @param currentlyPlaying The item representing the user's currently playing item.
-     * @return A {@link PlaybackQueue.Builder}.
-     */
     public Builder setCurrentlyPlaying(IPlaylistItem currentlyPlaying) {
       this.currentlyPlaying = currentlyPlaying;
       return this;
     }
 
-    /**
-     * The items that are in the user's queue for the upcoming playback setter.
-     *
-     * @param queue The items that are in the user's queue for the upcoming playback.
-     * @return A {@link PlaybackQueue.Builder}.
-     */
     public Builder setQueue(List<IPlaylistItem> queue) {
       this.queue = queue;
       return this;
@@ -105,11 +88,10 @@ public class PlaybackQueue extends AbstractModelObject {
   /**
    * JsonUtil class for building {@link PlaybackQueue} instances.
    */
+  // Do not delete this override: it returns an empty list for a missing "queue",
+  // where the inherited reflective createModelObject would leave the field null.
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<PlaybackQueue> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }

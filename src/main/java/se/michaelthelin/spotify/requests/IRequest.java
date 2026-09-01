@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.requests;
 
-import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 import org.apache.hc.core5.http.*;
 import se.michaelthelin.spotify.IHttpManager;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
@@ -137,7 +136,6 @@ public interface IRequest<T> {
    * @param <T> the type of object the built request will return
    * @param <BT> the specific builder type extending this interface
    */
-  @JsonPOJOBuilder(withPrefix = "set")
   interface Builder<T, BT extends Builder<T, ?>> {
 
     /**

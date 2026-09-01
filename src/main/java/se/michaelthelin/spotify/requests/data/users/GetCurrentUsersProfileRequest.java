@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.requests.data.users;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.model_objects.specification.User;
@@ -11,7 +10,6 @@ import java.io.IOException;
 /**
  * Get detailed profile information about the current user (including the current user’s username).
  */
-@JsonDeserialize(builder = GetCurrentUsersProfileRequest.Builder.class)
 public class GetCurrentUsersProfileRequest extends AbstractDataRequest<User> {
 
   /**

@@ -1,7 +1,5 @@
 package se.michaelthelin.spotify.model_objects.specification;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.enums.ModelObjectType;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 
@@ -14,7 +12,6 @@ import java.util.Objects;
  *
  * @see PlayHistory
  */
-@JsonDeserialize(builder = Context.Builder.class)
 public class Context extends AbstractModelObject {
   /** The object type of the context. */
   private final ModelObjectType type;
@@ -90,52 +87,25 @@ public class Context extends AbstractModelObject {
     private ExternalUrl externalUrls;
     private String uri;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
 
-    /**
-     * The model object type setter.
-     *
-     * @param type The {@link ModelObjectType}.
-     * @return A {@link Context.Builder}.
-     */
     public Builder setType(ModelObjectType type) {
       this.type = type;
       return this;
     }
 
-    /**
-     * The context href setter.
-     *
-     * @param href A link to the Spotify Web API endpoint providing full details of the track.
-     * @return A {@link Context.Builder}.
-     */
     public Builder setHref(String href) {
       this.href = href;
       return this;
     }
 
-    /**
-     * The external URLs setter.
-     *
-     * @param externalUrls External URLs for this context.
-     * @return A {@link Context.Builder}.
-     */
     public Builder setExternalUrls(ExternalUrl externalUrls) {
       this.externalUrls = externalUrls;
       return this;
     }
 
-    /**
-     * The Spotify URI setter.
-     *
-     * @param uri Spotify URI for this context.
-     * @return A {@link Context.Builder}.
-     */
     public Builder setUri(String uri) {
       this.uri = uri;
       return this;
@@ -152,39 +122,10 @@ public class Context extends AbstractModelObject {
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<Context> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }
 
-    public Context createModelObject(JsonObject jsonObject) {
-      if (jsonObject == null || jsonObject.isJsonNull()) {
-        return null;
-      }
-
-      return new Context.Builder()
-        .setType(
-          hasAndNotNull(jsonObject, "type")
-            ? ModelObjectType.keyOf(
-            jsonObject.get("type").getAsString().toLowerCase())
-            : null)
-        .setHref(
-          hasAndNotNull(jsonObject, "href")
-            ? jsonObject.get("href").getAsString()
-            : null)
-        .setExternalUrls(
-          hasAndNotNull(jsonObject, "external_urls")
-            ? new ExternalUrl.JsonUtil().createModelObject(
-            jsonObject.getAsJsonObject("external_urls"))
-            : null)
-        .setUri(
-          hasAndNotNull(jsonObject, "uri")
-            ? jsonObject.get("uri").getAsString()
-            : null)
-        .build();
-    }
   }
 
   @Override

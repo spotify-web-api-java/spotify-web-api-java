@@ -1,13 +1,10 @@
 package se.michaelthelin.spotify.model_objects.specification;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 
 /**
  * Retrieve information about the current user's explicit content settings by building instances from this class.
  */
-@JsonDeserialize(builder = ExplicitContentSettings.Builder.class)
 public class ExplicitContentSettings extends AbstractModelObject {
   /** When true, indicates that explicit content should not be played. */
   private final Boolean filterEnabled;
@@ -56,30 +53,15 @@ public class ExplicitContentSettings extends AbstractModelObject {
     private Boolean filterEnabled;
     private Boolean filterLocked;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
 
-    /**
-     * Set whether explicit content should not be played.
-     *
-     * @param filterEnabled {@code true} if explicit content should not be played.
-     * @return A {@link ExplicitContentSettings.Builder}.
-     */
     public Builder setFilterEnabled(Boolean filterEnabled) {
       this.filterEnabled = filterEnabled;
       return this;
     }
 
-    /**
-     * Set whether the explicit content setting is locked.
-     *
-     * @param filterLocked {@code true} if the explicit content setting is locked and can't be changed by the user.
-     * @return A {@link ExplicitContentSettings.Builder}.
-     */
     public Builder setFilterLocked(Boolean filterLocked) {
       this.filterLocked = filterLocked;
       return this;
@@ -96,28 +78,9 @@ public class ExplicitContentSettings extends AbstractModelObject {
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<ExplicitContentSettings> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }
 
-    public ExplicitContentSettings createModelObject(JsonObject jsonObject) {
-      if (jsonObject == null || jsonObject.isJsonNull()) {
-        return null;
-      }
-
-      return new ExplicitContentSettings.Builder()
-        .setFilterEnabled(
-          hasAndNotNull(jsonObject, "filter_enabled")
-            ? jsonObject.get("filter_enabled").getAsBoolean()
-            : null)
-        .setFilterLocked(
-          hasAndNotNull(jsonObject, "filter_locked")
-            ? jsonObject.get("filter_locked").getAsBoolean()
-            : null)
-        .build();
-    }
   }
 }

@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.requests.data.episodes;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.neovisionaries.i18n.CountryCode;
 import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
@@ -14,7 +13,6 @@ import java.io.IOException;
 /**
  * Get a list of the episodes saved in the current Spotify user's library.
  */
-@JsonDeserialize(builder = GetUsersSavedEpisodesRequest.Builder.class)
 public class GetUsersSavedEpisodesRequest extends AbstractDataRequest<Paging<SavedEpisode>> {
 
   /**

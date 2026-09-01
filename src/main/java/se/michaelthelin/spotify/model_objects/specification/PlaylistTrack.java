@@ -1,21 +1,14 @@
 package se.michaelthelin.spotify.model_objects.specification;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.google.gson.JsonObject;
-import se.michaelthelin.spotify.SpotifyApi;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 import se.michaelthelin.spotify.model_objects.IPlaylistItem;
-import se.michaelthelin.spotify.model_objects.utils.PlaylistItemFactory;
 
-import java.text.ParseException;
 import java.util.Date;
-import java.util.logging.Level;
 
 /**
  * Retrieve information about <a href="https://developer.spotify.com/web-api/object-model/#playlist-track-object">
  * Playlist Track objects</a> by building instances from this class.
  */
-@JsonDeserialize(builder = PlaylistTrack.Builder.class)
 public class PlaylistTrack extends AbstractModelObject {
   /** The date and time the track was added. */
   private final Date addedAt;
@@ -94,52 +87,25 @@ public class PlaylistTrack extends AbstractModelObject {
     private Boolean isLocal;
     private IPlaylistItem item;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
 
-    /**
-     * Set the "added at" date of the playlist track to be built.
-     *
-     * @param addedAt The date and time the track or episode was added.
-     * @return A {@link PlaylistTrack.Builder}.
-     */
     public Builder setAddedAt(Date addedAt) {
       this.addedAt = addedAt;
       return this;
     }
 
-    /**
-     * Set the user who added the track or episode to the playlist.
-     *
-     * @param addedBy The Spotify user who added the track or episode.
-     * @return A {@link PlaylistTrack.Builder}.
-     */
     public Builder setAddedBy(User addedBy) {
       this.addedBy = addedBy;
       return this;
     }
 
-    /**
-     * Set whether the track to be built is local or not.
-     *
-     * @param isLocal Whether this track or episode is a local file or not.
-     * @return A {@link PlaylistTrack.Builder}.
-     */
     public Builder setIsLocal(Boolean isLocal) {
       this.isLocal = isLocal;
       return this;
     }
 
-    /**
-     * Set the full track or episode object of the playlist item to be built.
-     *
-     * @param item Information about the item.
-     * @return A {@link PlaylistTrack.Builder}.
-     */
     public Builder setItem(IPlaylistItem item) {
       this.item = item;
       return this;
@@ -156,47 +122,9 @@ public class PlaylistTrack extends AbstractModelObject {
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<PlaylistTrack> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }
 
-    public PlaylistTrack createModelObject(JsonObject jsonObject) {
-      if (jsonObject == null || jsonObject.isJsonNull()) {
-        return null;
-      }
-
-      try {
-        IPlaylistItem item = null;
-
-        if (hasAndNotNull(jsonObject, "item")) {
-          final JsonObject trackObj = jsonObject.getAsJsonObject("item");
-
-          item = PlaylistItemFactory.createPlaylistItem(trackObj);
-        }
-
-        return new Builder()
-          .setAddedAt(
-            hasAndNotNull(jsonObject, "added_at")
-              ? SpotifyApi.parseDefaultDate(jsonObject.get("added_at").getAsString())
-              : null)
-          .setAddedBy(
-            hasAndNotNull(jsonObject, "added_by")
-              ? new User.JsonUtil().createModelObject(
-              jsonObject.get("added_by").getAsJsonObject())
-              : null)
-          .setIsLocal(
-            hasAndNotNull(jsonObject, "is_local")
-              ? jsonObject.get("is_local").getAsBoolean()
-              : null)
-          .setItem(item)
-          .build();
-      } catch (ParseException e) {
-        SpotifyApi.LOGGER.log(Level.SEVERE, e.getMessage());
-        return null;
-      }
-    }
   }
 }

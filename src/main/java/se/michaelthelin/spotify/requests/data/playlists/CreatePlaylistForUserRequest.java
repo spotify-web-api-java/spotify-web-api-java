@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.requests.data.playlists;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import org.apache.hc.core5.http.ContentType;
 import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
@@ -15,7 +14,6 @@ import java.io.IOException;
  * @deprecated This endpoint is deprecated. Use {@link CreatePlaylistRequest} with the current user's ID instead.
  */
 @Deprecated
-@JsonDeserialize(builder = CreatePlaylistForUserRequest.Builder.class)
 public class CreatePlaylistForUserRequest extends AbstractDataRequest<Playlist> {
 
   /**

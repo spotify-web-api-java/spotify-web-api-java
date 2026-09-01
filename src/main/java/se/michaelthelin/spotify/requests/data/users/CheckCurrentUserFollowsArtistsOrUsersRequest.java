@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.requests.data.users;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.Gson;
 import com.google.gson.JsonParser;
 import org.apache.hc.core5.http.ParseException;
@@ -16,7 +15,6 @@ import java.io.IOException;
  * @deprecated This endpoint has been deprecated by Spotify.
  */
 @Deprecated
-@JsonDeserialize(builder = CheckCurrentUserFollowsArtistsOrUsersRequest.Builder.class)
 public class CheckCurrentUserFollowsArtistsOrUsersRequest extends AbstractDataRequest<Boolean[]> {
 
   /**

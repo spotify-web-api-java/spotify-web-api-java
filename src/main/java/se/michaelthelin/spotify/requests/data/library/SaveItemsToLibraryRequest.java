@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.requests.data.library;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.requests.data.AbstractDataRequest;
@@ -10,7 +9,6 @@ import java.io.IOException;
 /**
  * Save a list of Spotify URIs to the user's library.
  */
-@JsonDeserialize(builder = SaveItemsToLibraryRequest.Builder.class)
 public class SaveItemsToLibraryRequest extends AbstractDataRequest<String> {
 
   /**

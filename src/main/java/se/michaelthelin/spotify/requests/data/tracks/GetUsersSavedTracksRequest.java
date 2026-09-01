@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.requests.data.tracks;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.neovisionaries.i18n.CountryCode;
 import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
@@ -14,7 +13,6 @@ import java.io.IOException;
 /**
  * Get a list of the songs saved in the current Spotify user’s "Your Music" library.
  */
-@JsonDeserialize(builder = GetUsersSavedTracksRequest.Builder.class)
 public class GetUsersSavedTracksRequest extends AbstractDataRequest<Paging<SavedTrack>> {
 
   /**

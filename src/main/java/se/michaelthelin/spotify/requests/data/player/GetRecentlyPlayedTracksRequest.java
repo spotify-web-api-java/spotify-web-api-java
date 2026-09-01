@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.requests.data.player;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.SpotifyApi;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
@@ -26,7 +25,6 @@ import java.util.Date;
  * {@code after} parameter, the endpoint  will return the most recently played songs, and the {@code next}
  * link will page back in time.
  */
-@JsonDeserialize(builder = GetRecentlyPlayedTracksRequest.Builder.class)
 public class GetRecentlyPlayedTracksRequest extends AbstractDataRequest<PagingCursorbased<PlayHistory>> {
 
   /**

@@ -1,8 +1,5 @@
 package se.michaelthelin.spotify.model_objects.specification;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.enums.ModelObjectType;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 import se.michaelthelin.spotify.model_objects.interfaces.IArtist;
@@ -16,7 +13,6 @@ import java.util.Objects;
  * Retrieve information about <a href="https://developer.spotify.com/web-api/object-model/#artist-object-full">
  * Artist objects</a> by building instances from this class.
  */
-@JsonDeserialize(builder = Artist.Builder.class)
 public class Artist extends AbstractModelObject implements IArtistTrackModelObject, ISearchModelObject, IArtist {
   /** Known external URLs for this artist. */
   private final ExternalUrl externalUrls;
@@ -173,120 +169,55 @@ public class Artist extends AbstractModelObject implements IArtistTrackModelObje
     private ModelObjectType type;
     private String uri;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
 
-    /**
-     * Set external URLs of the artist to be built.
-     *
-     * @param externalUrls {@link ExternalUrl} object.
-     * @return A {@link Artist.Builder}.
-     */
     public Builder setExternalUrls(ExternalUrl externalUrls) {
       this.externalUrls = externalUrls;
       return this;
     }
 
-    /**
-     * Set information about the followers of the artist to be built.
-     *
-     * @param followers A {@link Followers} object.
-     * @return A {@link Artist.Builder}.
-     */
     public Builder setFollowers(Followers followers) {
       this.followers = followers;
       return this;
     }
 
-    /**
-     * Set the genres of the artist to be built.
-     *
-     * @param genres Genre names.
-     * @return A {@link Artist.Builder}.
-     */
     public Builder setGenres(String... genres) {
       this.genres = genres;
       return this;
     }
 
-    /**
-     * Set href of Spotify Web API endpoint of the artist to be built.
-     *
-     * @param href Spotify Web API endpoint URL.
-     * @return A {@link Artist.Builder}.
-     */
     public Builder setHref(String href) {
       this.href = href;
       return this;
     }
 
-    /**
-     * Set artist ID of the artist to be built.
-     *
-     * @param id <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify artist ID</a>.
-     * @return A {@link Artist.Builder}.
-     */
     public Builder setId(String id) {
       this.id = id;
       return this;
     }
 
-    /**
-     * Set the images of the artist to be built, like the header image.
-     *
-     * @param images {@link Image} objects.
-     * @return A {@link Artist.Builder}.
-     */
     public Builder setImages(Image... images) {
       this.images = images;
       return this;
     }
 
-    /**
-     * Set the name of the artist to be built.
-     *
-     * @param name The artist name.
-     * @return A {@link Artist.Builder}.
-     */
     public Builder setName(String name) {
       this.name = name;
       return this;
     }
 
-    /**
-     * Set the popularity of the artist to be built.
-     *
-     * @param popularity The popularity of the artist. The value will be between 0 and 100, with 100 being the
-     *                    most popular.
-     * @return A {@link Artist.Builder}.
-     */
     public Builder setPopularity(Integer popularity) {
       this.popularity = popularity;
       return this;
     }
 
-    /**
-     * Set the type of the model object. In this case "artist".
-     *
-     * @param type The {@link ModelObjectType}.
-     * @return A {@link Artist.Builder}.
-     */
     public Builder setType(ModelObjectType type) {
       this.type = type;
       return this;
     }
 
-    /**
-     * Set the Spotify artist URI of the artist to be built.
-     *
-     * @param uri <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">
-     *            Spotify artist URI</a>.
-     * @return A {@link Artist.Builder}.
-     */
     public Builder setUri(String uri) {
       this.uri = uri;
       return this;
@@ -303,66 +234,10 @@ public class Artist extends AbstractModelObject implements IArtistTrackModelObje
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<Artist> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }
 
-    public Artist createModelObject(JsonObject jsonObject) {
-      if (jsonObject == null || jsonObject.isJsonNull()) {
-        return null;
-      }
-
-      return new Artist.Builder()
-        .setExternalUrls(
-          hasAndNotNull(jsonObject, "external_urls")
-            ? new ExternalUrl.JsonUtil().createModelObject(
-            jsonObject.getAsJsonObject("external_urls"))
-            : null)
-        .setFollowers(
-          hasAndNotNull(jsonObject, "followers")
-            ? new Followers.JsonUtil().createModelObject(
-            jsonObject.getAsJsonObject("followers"))
-            : null)
-        .setGenres(
-          hasAndNotNull(jsonObject, "genres")
-            ? new Gson().fromJson(
-            jsonObject.getAsJsonArray("genres"), String[].class)
-            : null)
-        .setHref(
-          hasAndNotNull(jsonObject, "href")
-            ? jsonObject.get("href").getAsString()
-            : null)
-        .setId(
-          hasAndNotNull(jsonObject, "id")
-            ? jsonObject.get("id").getAsString()
-            : null)
-        .setImages(
-          hasAndNotNull(jsonObject, "images")
-            ? new Image.JsonUtil().createModelObjectArray(
-            jsonObject.getAsJsonArray("images"))
-            : null)
-        .setName(
-          hasAndNotNull(jsonObject, "name")
-            ? jsonObject.get("name").getAsString()
-            : null)
-        .setPopularity(
-          hasAndNotNull(jsonObject, "popularity")
-            ? jsonObject.get("popularity").getAsInt()
-            : null)
-        .setType(
-          hasAndNotNull(jsonObject, "type")
-            ? ModelObjectType.keyOf(
-            jsonObject.get("type").getAsString().toLowerCase())
-            : null)
-        .setUri(
-          hasAndNotNull(jsonObject, "uri")
-            ? jsonObject.get("uri").getAsString()
-            : null)
-        .build();
-    }
   }
 
   @Override

@@ -1,7 +1,5 @@
 package se.michaelthelin.spotify.model_objects.specification;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 
 import java.util.Objects;
@@ -10,7 +8,6 @@ import java.util.Objects;
  * Retrieve information about <a href="https://developer.spotify.com/documentation/web-api/reference/get-an-audiobook">
  * Narrator objects</a> by building instances from this class.
  */
-@JsonDeserialize(builder = Narrator.Builder.class)
 public class Narrator extends AbstractModelObject {
   /** The name of the Narrator. */
   private final String name;
@@ -45,19 +42,10 @@ public class Narrator extends AbstractModelObject {
   public static final class Builder extends AbstractModelObject.Builder {
     private String name;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
 
-    /**
-     * Set the name of the Narrator to be built.
-     *
-     * @param name The name of the Narrator.
-     * @return A {@link Narrator.Builder}.
-     */
     public Builder setName(String name) {
       this.name = name;
       return this;
@@ -74,26 +62,10 @@ public class Narrator extends AbstractModelObject {
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<Narrator> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }
 
-    @Override
-    public Narrator createModelObject(JsonObject jsonObject) {
-      if (jsonObject == null || jsonObject.isJsonNull()) {
-        return null;
-      }
-
-      return new Builder()
-        .setName(
-          hasAndNotNull(jsonObject, "name")
-            ? jsonObject.get("name").getAsString()
-            : null)
-        .build();
-    }
   }
 
   @Override

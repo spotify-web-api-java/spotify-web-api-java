@@ -1,21 +1,16 @@
 package se.michaelthelin.spotify.model_objects.miscellaneous;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.enums.CurrentlyPlayingType;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 import se.michaelthelin.spotify.model_objects.IPlaylistItem;
 import se.michaelthelin.spotify.model_objects.special.Actions;
 import se.michaelthelin.spotify.model_objects.specification.Context;
 import se.michaelthelin.spotify.model_objects.specification.Disallows;
-import se.michaelthelin.spotify.model_objects.specification.Episode;
-import se.michaelthelin.spotify.model_objects.specification.Track;
 
 /**
  * Retrieve information about <a href="https://developer.spotify.com/documentation/web-api/reference/get-the-users-currently-playing-track">
  * Currently Playing objects</a> by creating instances from this class.
  */
-@JsonDeserialize(builder = CurrentlyPlaying.Builder.class)
 public class CurrentlyPlaying extends AbstractModelObject {
   /** The context in which the track is being played. */
   private final Context context;
@@ -131,85 +126,40 @@ public class CurrentlyPlaying extends AbstractModelObject {
     private CurrentlyPlayingType currentlyPlayingType;
     private Actions actions;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
 
-    /**
-     * The playing context setter.
-     *
-     * @param context The context the track was played from. Can be {@code null}.
-     * @return A {@link CurrentlyPlaying.Builder}.
-     */
     public Builder setContext(Context context) {
       this.context = context;
       return this;
     }
 
-    /**
-     * The timestamp setter.
-     *
-     * @param timestamp Unix Millisecond Timestamp when data was fetched.
-     * @return A {@link CurrentlyPlaying.Builder}.
-     */
     public Builder setTimestamp(Long timestamp) {
       this.timestamp = timestamp;
       return this;
     }
 
-    /**
-     * The current track progress setter.
-     *
-     * @param progress_ms Progress into the currently playing track. Can be {@code null}.
-     * @return A {@link CurrentlyPlaying.Builder}.
-     */
     public Builder setProgress_ms(Integer progress_ms) {
       this.progress_ms = progress_ms;
       return this;
     }
 
-    /**
-     * The playing state setter.
-     *
-     * @param is_playing If something is currently playing.
-     * @return A {@link CurrentlyPlaying.Builder}.
-     */
     public Builder setIs_playing(Boolean is_playing) {
       this.is_playing = is_playing;
       return this;
     }
 
-    /**
-     * The currently playing item setter.
-     *
-     * @param item The currently playing item. Can be {@code null}.
-     * @return A {@link CurrentlyPlaying.Builder}.
-     */
     public Builder setItem(IPlaylistItem item) {
       this.item = item;
       return this;
     }
 
-    /**
-     * The currently playing type setter.
-     *
-     * @param currentlyPlayingType The type of the currently playing item.
-     * @return A {@link CurrentlyPlaying.Builder}.
-     */
     public Builder setCurrentlyPlayingType(CurrentlyPlayingType currentlyPlayingType) {
       this.currentlyPlayingType = currentlyPlayingType;
       return this;
     }
 
-    /**
-     * The actions setter.
-     *
-     * @param actions A {@link Actions} object which contains a {@link Disallows} object.
-     * @return A {@link CurrentlyPlaying.Builder}.
-     */
     public Builder setActions(Actions actions) {
       this.actions = actions;
       return this;
@@ -226,55 +176,9 @@ public class CurrentlyPlaying extends AbstractModelObject {
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<CurrentlyPlaying> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }
 
-    public CurrentlyPlaying createModelObject(JsonObject jsonObject) {
-      if (jsonObject == null || jsonObject.isJsonNull()) {
-        return null;
-      }
-
-      return new CurrentlyPlaying.Builder()
-        .setContext(
-          hasAndNotNull(jsonObject, "context")
-            ? new Context.JsonUtil().createModelObject(
-            jsonObject.getAsJsonObject("context"))
-            : null)
-        .setTimestamp(
-          hasAndNotNull(jsonObject, "timestamp")
-            ? jsonObject.get("timestamp").getAsLong()
-            : null)
-        .setProgress_ms(
-          hasAndNotNull(jsonObject, "progress_ms")
-            ? jsonObject.get("progress_ms").getAsInt()
-            : null)
-        .setIs_playing(
-          hasAndNotNull(jsonObject, "is_playing")
-            ? jsonObject.get("is_playing").getAsBoolean()
-            : null)
-        .setItem(
-          hasAndNotNull(jsonObject, "item") && hasAndNotNull(jsonObject, "currently_playing_type")
-            ? (jsonObject.get("currently_playing_type").getAsString().equals("track")
-            ? new Track.JsonUtil().createModelObject(jsonObject.getAsJsonObject("item"))
-            : jsonObject.get("currently_playing_type").getAsString().equals("episode")
-            ? new Episode.JsonUtil().createModelObject(jsonObject.getAsJsonObject("item"))
-            : null)
-            : null)
-        .setCurrentlyPlayingType(
-          hasAndNotNull(jsonObject, "currently_playing_type")
-            ? CurrentlyPlayingType.keyOf(
-            jsonObject.get("currently_playing_type").getAsString().toLowerCase())
-            : null)
-        .setActions(
-          hasAndNotNull(jsonObject, "actions")
-            ? new Actions.JsonUtil().createModelObject(
-            jsonObject.getAsJsonObject("actions"))
-            : null)
-        .build();
-    }
   }
 }

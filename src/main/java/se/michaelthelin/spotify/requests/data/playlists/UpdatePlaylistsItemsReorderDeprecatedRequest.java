@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.requests.data.playlists;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import org.apache.hc.core5.http.ContentType;
 import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
@@ -19,7 +18,6 @@ import java.io.IOException;
  * @deprecated Use {@link UpdatePlaylistsItemsReorderRequest} instead.
  */
 @Deprecated
-@JsonDeserialize(builder = UpdatePlaylistsItemsReorderDeprecatedRequest.Builder.class)
 public class UpdatePlaylistsItemsReorderDeprecatedRequest extends AbstractDataRequest<SnapshotResult> {
 
   /**

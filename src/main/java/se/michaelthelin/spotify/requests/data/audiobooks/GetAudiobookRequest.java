@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.requests.data.audiobooks;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.neovisionaries.i18n.CountryCode;
 import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
@@ -14,7 +13,6 @@ import java.io.IOException;
  *
  * <p><b>Note:</b> Audiobooks are only available for the US, UK, Ireland, New Zealand and Australia markets.
  */
-@JsonDeserialize(builder = GetAudiobookRequest.Builder.class)
 public class GetAudiobookRequest extends AbstractDataRequest<Audiobook> {
 
   /**

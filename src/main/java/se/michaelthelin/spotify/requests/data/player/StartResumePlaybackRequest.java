@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.requests.data.player;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import org.apache.hc.core5.http.ContentType;
@@ -13,7 +12,6 @@ import java.io.IOException;
 /**
  * Start a new context or resume current playback on the user’s active device.
  */
-@JsonDeserialize(builder = StartResumePlaybackRequest.Builder.class)
 public class StartResumePlaybackRequest extends AbstractDataRequest<String> {
 
   /**

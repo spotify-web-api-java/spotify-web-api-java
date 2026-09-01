@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.requests.data.categories;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.model_objects.specification.Category;
@@ -16,7 +15,6 @@ import java.io.IOException;
  * @deprecated Use the Search API instead.
  */
 @Deprecated
-@JsonDeserialize(builder = GetSeveralBrowseCategoriesRequest.Builder.class)
 public class GetSeveralBrowseCategoriesRequest extends AbstractDataRequest<Paging<Category>> {
 
   /**

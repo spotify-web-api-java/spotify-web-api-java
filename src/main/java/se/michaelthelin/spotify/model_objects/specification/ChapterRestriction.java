@@ -1,7 +1,5 @@
 package se.michaelthelin.spotify.model_objects.specification;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 
 import java.util.Objects;
@@ -19,7 +17,6 @@ import java.util.Objects;
  * </ul>
  * Additional reasons may be added in the future.
  */
-@JsonDeserialize(builder = ChapterRestriction.Builder.class)
 public class ChapterRestriction extends AbstractModelObject {
   /** The reason for the restriction. */
   private final String reason;
@@ -54,19 +51,10 @@ public class ChapterRestriction extends AbstractModelObject {
   public static final class Builder extends AbstractModelObject.Builder {
     private String reason;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
 
-    /**
-     * Set the restriction reason.
-     *
-     * @param reason The restriction reason.
-     * @return A {@link ChapterRestriction.Builder}.
-     */
     public Builder setReason(String reason) {
       this.reason = reason;
       return this;
@@ -83,26 +71,10 @@ public class ChapterRestriction extends AbstractModelObject {
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<ChapterRestriction> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }
 
-    @Override
-    public ChapterRestriction createModelObject(JsonObject jsonObject) {
-      if (jsonObject == null || jsonObject.isJsonNull()) {
-        return null;
-      }
-
-      return new Builder()
-        .setReason(
-          hasAndNotNull(jsonObject, "reason")
-            ? jsonObject.get("reason").getAsString()
-            : null)
-        .build();
-    }
   }
 
   @Override

@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.requests.data.library;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.Gson;
 import com.google.gson.JsonParser;
 import org.apache.hc.core5.http.ParseException;
@@ -13,7 +12,6 @@ import java.io.IOException;
  * Check if one or more items are already saved in the current user's library.
  * Accepts Spotify URIs for tracks, albums, episodes, shows, audiobooks, artists, users, and playlists.
  */
-@JsonDeserialize(builder = CheckUsersSavedItemsRequest.Builder.class)
 public class CheckUsersSavedItemsRequest extends AbstractDataRequest<Boolean[]> {
 
   /**

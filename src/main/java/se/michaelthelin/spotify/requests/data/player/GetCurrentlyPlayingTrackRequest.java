@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.requests.data.player;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.neovisionaries.i18n.CountryCode;
 import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
@@ -12,7 +11,6 @@ import java.io.IOException;
 /**
  * Get the object currently being played on the user’s Spotify account.
  */
-@JsonDeserialize(builder = GetCurrentlyPlayingTrackRequest.Builder.class)
 public class GetCurrentlyPlayingTrackRequest extends AbstractDataRequest<CurrentlyPlaying> {
 
   /**

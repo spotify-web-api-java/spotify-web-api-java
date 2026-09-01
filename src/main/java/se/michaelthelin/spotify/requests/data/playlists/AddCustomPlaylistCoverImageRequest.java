@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.requests.data.playlists;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import org.apache.hc.core5.http.ContentType;
 import org.apache.hc.core5.http.ParseException;
 import org.apache.hc.core5.http.io.entity.StringEntity;
@@ -12,7 +11,6 @@ import java.io.IOException;
 /**
  * Replace the image used to represent a specific playlist.
  */
-@JsonDeserialize(builder = AddCustomPlaylistCoverImageRequest.Builder.class)
 public class AddCustomPlaylistCoverImageRequest extends AbstractDataRequest<String> {
 
   /**

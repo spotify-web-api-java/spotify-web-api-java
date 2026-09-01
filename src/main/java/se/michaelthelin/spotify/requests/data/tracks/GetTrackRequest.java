@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.requests.data.tracks;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.neovisionaries.i18n.CountryCode;
 import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
@@ -12,7 +11,6 @@ import java.io.IOException;
 /**
  * Get Spotify catalog information for a single track identified by its unique Spotify ID.
  */
-@JsonDeserialize(builder = GetTrackRequest.Builder.class)
 public class GetTrackRequest extends AbstractDataRequest<Track> {
 
   /**

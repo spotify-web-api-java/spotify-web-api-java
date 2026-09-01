@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.model_objects.specification;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.enums.Action;
@@ -15,7 +14,6 @@ import java.util.Map;
  * <a href="https://developer.spotify.com/web-api/object-model/#disallows-object">Disallows objects</a>
  * by building instances from this class.
  */
-@JsonDeserialize(builder = Actions.Builder.class)
 public class Disallows extends AbstractModelObject {
   /** The set of disallowed actions for the current context. */
   private final EnumSet<Action> disallowedActions;
@@ -55,19 +53,10 @@ public class Disallows extends AbstractModelObject {
   public static final class Builder extends AbstractModelObject.Builder {
     private EnumSet<Action> disallowedActions;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
 
-    /**
-     * Set the set of disallowed actions.
-     *
-     * @param disallowedActions The set of disallowed actions.
-     * @return A {@link Disallows.Builder}.
-     */
     public Builder setDisallowedActions(EnumSet<Action> disallowedActions) {
       this.disallowedActions = disallowedActions;
       return this;
@@ -82,11 +71,11 @@ public class Disallows extends AbstractModelObject {
   /**
    * JsonUtil class for building {@link Disallows} instances.
    */
+  // Do not delete this override: ModelObjectGson registers an adapter for Disallows that
+  // delegates here, and the inherited reflective createModelObject would call that
+  // adapter straight back into this class.
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<Disallows> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }

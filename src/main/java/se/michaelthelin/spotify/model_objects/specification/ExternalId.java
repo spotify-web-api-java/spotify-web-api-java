@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.model_objects.specification;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
@@ -12,7 +11,6 @@ import java.util.Map;
  * <a href="https://developer.spotify.com/web-api/object-model/#external-id-object">External ID objects</a>
  * by building instances from this class.
  */
-@JsonDeserialize(builder = ExternalId.Builder.class)
 public class ExternalId extends AbstractModelObject {
   /** Known external IDs for this object. */
   private final Map<String, String> externalIds;
@@ -56,19 +54,10 @@ public class ExternalId extends AbstractModelObject {
   public static final class Builder extends AbstractModelObject.Builder {
     private Map<String, String> externalIds;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
 
-    /**
-     * External IDs setter.
-     *
-     * @param externalIds A {@link Map} of external IDs, containing external identifiers for the object.
-     * @return A {@link ExternalId.Builder}.
-     */
     public Builder setExternalIds(Map<String, String> externalIds) {
       this.externalIds = externalIds;
       return this;
@@ -84,11 +73,11 @@ public class ExternalId extends AbstractModelObject {
    * JsonUtil class for building {@link ExternalId} instances.
    */
   @SuppressWarnings("unchecked")
+  // Do not delete this override: ModelObjectGson registers an adapter for ExternalId that
+  // delegates here, and the inherited reflective createModelObject would call that
+  // adapter straight back into this class.
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<ExternalId> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }

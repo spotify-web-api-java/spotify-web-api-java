@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.requests.data.playlists;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.JsonArray;
 import org.apache.hc.core5.http.ContentType;
 import org.apache.hc.core5.http.ParseException;
@@ -14,7 +13,6 @@ import java.io.IOException;
  * Replace all the items in a playlist, overwriting its existing items. This powerful request can be useful for
  * replacing items, re-ordering existing items, or clearing the playlist.
  */
-@JsonDeserialize(builder = UpdatePlaylistsItemsReplaceRequest.Builder.class)
 public class UpdatePlaylistsItemsReplaceRequest extends AbstractDataRequest<SnapshotResult> {
 
   /**

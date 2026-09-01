@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.requests.data.playlists;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.neovisionaries.i18n.CountryCode;
 import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
@@ -17,7 +16,6 @@ import java.io.IOException;
  * @deprecated Use the Search API instead.
  */
 @Deprecated
-@JsonDeserialize(builder = GetCategoryPlaylistsRequest.Builder.class)
 public class GetCategoryPlaylistsRequest extends AbstractDataRequest<Paging<PlaylistSimplified>> {
 
   /**

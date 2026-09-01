@@ -1,7 +1,5 @@
 package se.michaelthelin.spotify.model_objects.specification;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.enums.ModelObjectType;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 
@@ -16,7 +14,6 @@ import java.util.Objects;
  *
  * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/scopes">Spotify: Using Scopes</a>
  */
-@JsonDeserialize(builder = User.Builder.class)
 public class User extends AbstractModelObject {
   /** An alphanumeric string identifying the account, not publicly visible. */
   private final String accountId;
@@ -243,163 +240,75 @@ public class User extends AbstractModelObject {
     private ModelObjectType type;
     private String uri;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
 
-    /**
-     * Set the account ID of the user object to be built.
-     *
-     * @param accountId An alphanumeric string identifying the account.
-     * @return A {@link User.Builder}.
-     */
     public Builder setAccountId(String accountId) {
       this.accountId = accountId;
       return this;
     }
 
-    /**
-     * Set the birthday of the user object to be built.
-     *
-     * @param birthdate The user's date-of-birth.
-     * @return A {@link User.Builder}.
-     */
     public Builder setBirthdate(String birthdate) {
       this.birthdate = birthdate;
       return this;
     }
 
-    /**
-     * Set the country of the user to be built.
-     *
-     * @param country An ISO 3166-1 alpha-2 country code.
-     * @return A {@link User.Builder}.
-     */
     public Builder setCountry(String country) {
       this.country = country;
       return this;
     }
 
-    /**
-     * Set the display name of the user to be built. If the user hasn't a display name, set {@code null} instead.
-     *
-     * @param displayName The name displayed on the user's profile. {@code null} if not available.
-     * @return A {@link User.Builder}.
-     */
     public Builder setDisplayName(String displayName) {
       this.displayName = displayName;
       return this;
     }
 
-    /**
-     * Set the email address of the user to be built.
-     *
-     * @param email The user's email address.
-     * @return A {@link User.Builder}.
-     */
     public Builder setEmail(String email) {
       this.email = email;
       return this;
     }
 
-    /**
-     * Set the explicit content settings of the user to be built.
-     *
-     * @param explicitContent A {@link ExplicitContentSettings} object.
-     * @return A {@link User.Builder}.
-     */
     public Builder setExplicitContent(ExplicitContentSettings explicitContent) {
       this.explicitContent = explicitContent;
       return this;
     }
 
-    /**
-     * Set external urls of the user to be built.
-     *
-     * @param externalUrls Known external URLs for this user.
-     * @return A {@link User.Builder}.
-     */
     public Builder setExternalUrls(ExternalUrl externalUrls) {
       this.externalUrls = externalUrls;
       return this;
     }
 
-    /**
-     * Set information about the followers of the user to be built.
-     *
-     * @param followers A {@link Followers} object.
-     * @return A {@link User.Builder}.
-     */
     public Builder setFollowers(Followers followers) {
       this.followers = followers;
       return this;
     }
 
-    /**
-     * Set href of Spotify api endpoint of the user to be built.
-     *
-     * @param href A link to the Spotify Web API endpoint for this user.
-     * @return A {@link User.Builder}.
-     */
     public Builder setHref(String href) {
       this.href = href;
       return this;
     }
 
-    /**
-     * Set user ID of the user to be built.
-     *
-     * @param id The <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify user ID
-     *           </a> for the user.
-     * @return A {@link User.Builder}.
-     */
     public Builder setId(String id) {
       this.id = id;
       return this;
     }
 
-    /**
-     * Set the profile image of the user to be built.
-     *
-     * @param images The user's profile image.
-     * @return A {@link User.Builder}.
-     */
     public Builder setImages(Image... images) {
       this.images = images;
       return this;
     }
 
-    /**
-     * Set the Spotify subscription level of the user to be built.
-     *
-     * @param product The user's Spotify subscription level: {@code "premium"}, {@code "free"}, or {@code "open"}.
-     * @return A {@link User.Builder}.
-     */
     public Builder setProduct(String product) {
       this.product = product;
       return this;
     }
 
-    /**
-     * Set the type of the model object. In this case "user".
-     *
-     * @param type The object type: "user"
-     * @return A {@link User.Builder}.
-     */
     public Builder setType(ModelObjectType type) {
       this.type = type;
       return this;
     }
 
-    /**
-     * Set the Spotify URI of the user to be built.
-     *
-     * @param uri The Spotify URI for the user.
-     * @return A {@link User.Builder}.
-     */
     public Builder setUri(String uri) {
       this.uri = uri;
       return this;
@@ -416,82 +325,10 @@ public class User extends AbstractModelObject {
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<User> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }
 
-    public User createModelObject(JsonObject jsonObject) {
-      if (jsonObject == null || jsonObject.isJsonNull()) {
-        return null;
-      }
-
-      return new User.Builder()
-        .setAccountId(
-          hasAndNotNull(jsonObject, "account_id")
-            ? jsonObject.get("account_id").getAsString()
-            : null)
-        .setBirthdate(
-          hasAndNotNull(jsonObject, "birthdate")
-            ? jsonObject.get("birthdate").getAsString()
-            : null)
-        .setCountry(
-          hasAndNotNull(jsonObject, "country")
-            ? jsonObject.get("country").getAsString()
-            : null)
-        .setDisplayName(
-          hasAndNotNull(jsonObject, "display_name")
-            ? jsonObject.get("display_name").getAsString()
-            : null)
-        .setEmail(
-          hasAndNotNull(jsonObject, "email")
-            ? jsonObject.get("email").getAsString()
-            : null)
-        .setExplicitContent(
-          hasAndNotNull(jsonObject, "explicit_content")
-            ? new ExplicitContentSettings.JsonUtil().createModelObject(
-            jsonObject.getAsJsonObject("explicit_content"))
-            : null)
-        .setExternalUrls(
-          hasAndNotNull(jsonObject, "external_urls")
-            ? new ExternalUrl.JsonUtil().createModelObject(
-            jsonObject.getAsJsonObject("external_urls"))
-            : null)
-        .setFollowers(
-          hasAndNotNull(jsonObject, "followers")
-            ? new Followers.JsonUtil().createModelObject(
-            jsonObject.getAsJsonObject("followers"))
-            : null)
-        .setHref(
-          hasAndNotNull(jsonObject, "href")
-            ? jsonObject.get("href").getAsString()
-            : null)
-        .setId(
-          hasAndNotNull(jsonObject, "id")
-            ? jsonObject.get("id").getAsString()
-            : null)
-        .setImages(
-          hasAndNotNull(jsonObject, "images")
-            ? new Image.JsonUtil().createModelObjectArray(
-            jsonObject.getAsJsonArray("images"))
-            : null)
-        .setProduct(
-          hasAndNotNull(jsonObject, "product")
-            ? jsonObject.get("product").getAsString()
-            : null)
-        .setType(
-          hasAndNotNull(jsonObject, "type")
-            ? ModelObjectType.keyOf(
-            jsonObject.get("type").getAsString().toLowerCase())
-            : null)
-        .setUri(
-          hasAndNotNull(jsonObject, "uri")
-            ? jsonObject.get("uri").getAsString()
-            : null)
-        .build();
-    }
   }
 
   @Override

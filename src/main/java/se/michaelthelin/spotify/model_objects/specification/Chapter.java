@@ -1,8 +1,5 @@
 package se.michaelthelin.spotify.model_objects.specification;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.enums.ModelObjectType;
 import se.michaelthelin.spotify.enums.ReleaseDatePrecision;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
@@ -14,7 +11,6 @@ import java.util.Objects;
  * Retrieve information about <a href="https://developer.spotify.com/documentation/web-api/reference/get-a-chapter">
  * Chapter objects</a> by building instances from this class.
  */
-@JsonDeserialize(builder = Chapter.Builder.class)
 public class Chapter extends AbstractModelObject {
   /** A URL to a 30 second preview (MP3 format) of the chapter. {@code null} if not available. */
   private final String audioPreviewUrl;
@@ -314,239 +310,110 @@ public class Chapter extends AbstractModelObject {
     private ChapterRestriction restrictions;
     private AudiobookSimplified audiobook;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
 
-    /**
-     * Set the audio preview URL.
-     *
-     * @param audioPreviewUrl A URL to a 30 second preview (MP3 format) of the chapter.
-     * @return A {@link Chapter.Builder}.
-     */
     public Builder setAudioPreviewUrl(String audioPreviewUrl) {
       this.audioPreviewUrl = audioPreviewUrl;
       return this;
     }
 
-    /**
-     * Set the available markets.
-     *
-     * @param availableMarkets ISO 3166-1 alpha-2 country codes.
-     * @return A {@link Chapter.Builder}.
-     */
     public Builder setAvailableMarkets(String... availableMarkets) {
       this.availableMarkets = availableMarkets;
       return this;
     }
 
-    /**
-     * Set the chapter number.
-     *
-     * @param chapterNumber The number of the chapter.
-     * @return A {@link Chapter.Builder}.
-     */
     public Builder setChapterNumber(Integer chapterNumber) {
       this.chapterNumber = chapterNumber;
       return this;
     }
 
-    /**
-     * Set the description.
-     *
-     * @param description A description of the chapter.
-     * @return A {@link Chapter.Builder}.
-     */
     public Builder setDescription(String description) {
       this.description = description;
       return this;
     }
 
-    /**
-     * Set the HTML description.
-     *
-     * @param htmlDescription A description of the chapter (may contain HTML tags).
-     * @return A {@link Chapter.Builder}.
-     */
     public Builder setHtmlDescription(String htmlDescription) {
       this.htmlDescription = htmlDescription;
       return this;
     }
 
-    /**
-     * Set the duration in milliseconds.
-     *
-     * @param durationMs The chapter length in milliseconds.
-     * @return A {@link Chapter.Builder}.
-     */
     public Builder setDurationMs(Integer durationMs) {
       this.durationMs = durationMs;
       return this;
     }
 
-    /**
-     * Set whether the chapter is explicit.
-     *
-     * @param explicit Whether or not the chapter has explicit content.
-     * @return A {@link Chapter.Builder}.
-     */
     public Builder setExplicit(Boolean explicit) {
       this.explicit = explicit;
       return this;
     }
 
-    /**
-     * Set the external URLs.
-     *
-     * @param externalUrls The {@link ExternalUrl} for the chapter object.
-     * @return A {@link Chapter.Builder}.
-     */
     public Builder setExternalUrls(ExternalUrl externalUrls) {
       this.externalUrls = externalUrls;
       return this;
     }
 
-    /**
-     * Set the href.
-     *
-     * @param href A link to the Web API endpoint providing full details of the chapter.
-     * @return A {@link Chapter.Builder}.
-     */
     public Builder setHref(String href) {
       this.href = href;
       return this;
     }
 
-    /**
-     * Set the Spotify ID.
-     *
-     * @param id The Spotify ID for the chapter.
-     * @return A {@link Chapter.Builder}.
-     */
     public Builder setId(String id) {
       this.id = id;
       return this;
     }
 
-    /**
-     * Set the cover art images.
-     *
-     * @param images {@link Image} objects.
-     * @return A {@link Chapter.Builder}.
-     */
     public Builder setImages(Image... images) {
       this.images = images;
       return this;
     }
 
-    /**
-     * Set whether the chapter is playable.
-     *
-     * @param isPlayable True if the chapter is playable in the given market.
-     * @return A {@link Chapter.Builder}.
-     */
     public Builder setPlayable(Boolean isPlayable) {
       this.isPlayable = isPlayable;
       return this;
     }
 
-    /**
-     * Set the languages.
-     *
-     * @param languages ISO 639 language codes.
-     * @return A {@link Chapter.Builder}.
-     */
     public Builder setLanguages(String... languages) {
       this.languages = languages;
       return this;
     }
 
-    /**
-     * Set the name.
-     *
-     * @param name The name of the chapter.
-     * @return A {@link Chapter.Builder}.
-     */
     public Builder setName(String name) {
       this.name = name;
       return this;
     }
 
-    /**
-     * Set the release date.
-     *
-     * @param releaseDate The date the chapter was first released.
-     * @return A {@link Chapter.Builder}.
-     */
     public Builder setReleaseDate(String releaseDate) {
       this.releaseDate = releaseDate;
       return this;
     }
 
-    /**
-     * Set the release date precision.
-     *
-     * @param releaseDatePrecision The precision with which {@code release_date} value is known.
-     * @return A {@link Chapter.Builder}.
-     */
     public Builder setReleaseDatePrecision(ReleaseDatePrecision releaseDatePrecision) {
       this.releaseDatePrecision = releaseDatePrecision;
       return this;
     }
 
-    /**
-     * Set the resume point.
-     *
-     * @param resumePoint The user's most recent position in the chapter.
-     * @return A {@link Chapter.Builder}.
-     */
     public Builder setResumePoint(ResumePoint resumePoint) {
       this.resumePoint = resumePoint;
       return this;
     }
 
-    /**
-     * Set the model object type.
-     *
-     * @param type The {@link ModelObjectType}.
-     * @return A {@link Chapter.Builder}.
-     */
     public Builder setType(ModelObjectType type) {
       this.type = type;
       return this;
     }
 
-    /**
-     * Set the Spotify URI.
-     *
-     * @param uri The Spotify URI for the chapter.
-     * @return A {@link Chapter.Builder}.
-     */
     public Builder setUri(String uri) {
       this.uri = uri;
       return this;
     }
 
-    /**
-     * Set the content restrictions.
-     *
-     * @param restrictions A {@link ChapterRestriction} object.
-     * @return A {@link Chapter.Builder}.
-     */
     public Builder setRestrictions(ChapterRestriction restrictions) {
       this.restrictions = restrictions;
       return this;
     }
 
-    /**
-     * Set the audiobook for which the chapter belongs.
-     *
-     * @param audiobook A {@link AudiobookSimplified} object.
-     * @return A {@link Chapter.Builder}.
-     */
     public Builder setAudiobook(AudiobookSimplified audiobook) {
       this.audiobook = audiobook;
       return this;
@@ -563,106 +430,10 @@ public class Chapter extends AbstractModelObject {
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<Chapter> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }
 
-    @Override
-    public Chapter createModelObject(JsonObject jsonObject) {
-      if (jsonObject == null || jsonObject.isJsonNull()) {
-        return null;
-      }
-
-      return new Builder()
-        .setAudioPreviewUrl(
-          hasAndNotNull(jsonObject, "audio_preview_url")
-            ? jsonObject.get("audio_preview_url").getAsString()
-            : null)
-        .setAvailableMarkets(
-          hasAndNotNull(jsonObject, "available_markets")
-            ? new Gson().fromJson(jsonObject.getAsJsonArray("available_markets"), String[].class)
-            : null)
-        .setChapterNumber(
-          hasAndNotNull(jsonObject, "chapter_number")
-            ? jsonObject.get("chapter_number").getAsInt()
-            : null)
-        .setDescription(
-          hasAndNotNull(jsonObject, "description")
-            ? jsonObject.get("description").getAsString()
-            : null)
-        .setHtmlDescription(
-          hasAndNotNull(jsonObject, "html_description")
-            ? jsonObject.get("html_description").getAsString()
-            : null)
-        .setDurationMs(
-          hasAndNotNull(jsonObject, "duration_ms")
-            ? jsonObject.get("duration_ms").getAsInt()
-            : null)
-        .setExplicit(
-          hasAndNotNull(jsonObject, "explicit")
-            ? jsonObject.get("explicit").getAsBoolean()
-            : null)
-        .setExternalUrls(
-          hasAndNotNull(jsonObject, "external_urls")
-            ? new ExternalUrl.JsonUtil().createModelObject(jsonObject.getAsJsonObject("external_urls"))
-            : null)
-        .setHref(
-          hasAndNotNull(jsonObject, "href")
-            ? jsonObject.get("href").getAsString()
-            : null)
-        .setId(
-          hasAndNotNull(jsonObject, "id")
-            ? jsonObject.get("id").getAsString()
-            : null)
-        .setImages(
-          hasAndNotNull(jsonObject, "images")
-            ? new Image.JsonUtil().createModelObjectArray(jsonObject.getAsJsonArray("images"))
-            : null)
-        .setPlayable(
-          hasAndNotNull(jsonObject, "is_playable")
-            ? jsonObject.get("is_playable").getAsBoolean()
-            : null)
-        .setLanguages(
-          hasAndNotNull(jsonObject, "languages")
-            ? new Gson().fromJson(jsonObject.getAsJsonArray("languages"), String[].class)
-            : null)
-        .setName(
-          hasAndNotNull(jsonObject, "name")
-            ? jsonObject.get("name").getAsString()
-            : null)
-        .setReleaseDate(
-          hasAndNotNull(jsonObject, "release_date")
-            ? jsonObject.get("release_date").getAsString()
-            : null)
-        .setReleaseDatePrecision(
-          hasAndNotNull(jsonObject, "release_date_precision")
-            ? ReleaseDatePrecision.keyOf(jsonObject.get("release_date_precision").getAsString().toLowerCase())
-            : null)
-        .setResumePoint(
-          hasAndNotNull(jsonObject, "resume_point")
-            ? new ResumePoint.JsonUtil().createModelObject(jsonObject.getAsJsonObject("resume_point"))
-            : null)
-        .setType(
-          hasAndNotNull(jsonObject, "type")
-            ? ModelObjectType.keyOf(jsonObject.get("type").getAsString().toLowerCase())
-            : null)
-        .setUri(
-          hasAndNotNull(jsonObject, "uri")
-            ? jsonObject.get("uri").getAsString()
-            : null)
-        .setRestrictions(
-          hasAndNotNull(jsonObject, "restrictions")
-            ? new ChapterRestriction.JsonUtil().createModelObject(jsonObject.getAsJsonObject("restrictions"))
-            : null)
-        .setAudiobook(
-          hasAndNotNull(jsonObject, "audiobook")
-            ? new AudiobookSimplified.JsonUtil().createModelObject(jsonObject.getAsJsonObject("audiobook"))
-            : null)
-        .build();
-    }
   }
 
   @Override

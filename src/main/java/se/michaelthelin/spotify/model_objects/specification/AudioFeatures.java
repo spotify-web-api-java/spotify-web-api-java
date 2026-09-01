@@ -1,7 +1,5 @@
 package se.michaelthelin.spotify.model_objects.specification;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.enums.Modality;
 import se.michaelthelin.spotify.enums.ModelObjectType;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
@@ -13,7 +11,6 @@ import java.util.Objects;
  * Retrieve information about <a href="https://developer.spotify.com/web-api/object-model/#audio-features-object">
  * Audio Feature objects</a> by building instances from this class.
  */
-@JsonDeserialize(builder = AudioFeatures.Builder.class)
 public class AudioFeatures extends AbstractModelObject {
   /** A confidence measure from 0.0 to 1.0 of whether the track is acoustic. */
   private final Float acousticness;
@@ -294,207 +291,95 @@ public class AudioFeatures extends AbstractModelObject {
     private String uri;
     private Float valence;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
 
-    /**
-     * Set the acousticness of the audio features object to be built.
-     *
-     * @param acousticness Acousticness value between 0.0 and 1.0.
-     * @return An {@link AudioFeatures.Builder}.
-     */
     public Builder setAcousticness(Float acousticness) {
       this.acousticness = acousticness;
       return this;
     }
 
-    /**
-     * Set the Spotify Web API audio analysis endpoint URL of the audio features object to be built.
-     *
-     * @param analysisUrl Spotify Web API endpoint URL.
-     * @return An {@link AudioFeatures.Builder}.
-     */
     public Builder setAnalysisUrl(String analysisUrl) {
       this.analysisUrl = analysisUrl;
       return this;
     }
 
-    /**
-     * Set the danceability of the audio features object to be built.
-     *
-     * @param danceability Danceability value between 0.0 and 1.0.
-     * @return An {@link AudioFeatures.Builder}.
-     */
     public Builder setDanceability(Float danceability) {
       this.danceability = danceability;
       return this;
     }
 
-    /**
-     * Set the duration in milliseconds of the audio features object to be built.
-     *
-     * @param durationMs Duration in milliseconds.
-     * @return An {@link AudioFeatures.Builder}.
-     */
     public Builder setDurationMs(Integer durationMs) {
       this.durationMs = durationMs;
       return this;
     }
 
-    /**
-     * Set the energy of the audio features object to be built.
-     *
-     * @param energy Energy value between 0.0 and 1.0.
-     * @return An {@link AudioFeatures.Builder}.
-     */
     public Builder setEnergy(Float energy) {
       this.energy = energy;
       return this;
     }
 
-    /**
-     * Set the Spotify track ID of the audio features object to be built.
-     *
-     * @param id Spotify track ID.
-     * @return An {@link AudioFeatures.Builder}.
-     */
     public Builder setId(String id) {
       this.id = id;
       return this;
     }
 
-    /**
-     * Set the instrumentalness of the audio features object to be built.
-     *
-     * @param instrumentalness Instrumentalness value between 0.0 and 1.0.
-     * @return An {@link AudioFeatures.Builder}.
-     */
     public Builder setInstrumentalness(Float instrumentalness) {
       this.instrumentalness = instrumentalness;
       return this;
     }
 
-    /**
-     * Set the key of the audio features object to be built.
-     *
-     * @param key Track key.
-     * @return An {@link AudioFeatures.Builder}.
-     */
     public Builder setKey(Integer key) {
       this.key = key;
       return this;
     }
 
-    /**
-     * Set the liveness of the audio features object to be built.
-     *
-     * @param liveness Liveness value between 0.0 and 1.0.
-     * @return An {@link AudioFeatures.Builder}.
-     */
     public Builder setLiveness(Float liveness) {
       this.liveness = liveness;
       return this;
     }
 
-    /**
-     * Set the loudness of the audio features object to be built.
-     *
-     * @param loudness Loudness value between 0.0 and 1.0.
-     * @return An {@link AudioFeatures.Builder}.
-     */
     public Builder setLoudness(Float loudness) {
       this.loudness = loudness;
       return this;
     }
 
-    /**
-     * Set the mode of the audio features object to be built.
-     *
-     * @param mode Track mode.
-     * @return An {@link AudioFeatures.Builder}.
-     */
     public Builder setMode(Modality mode) {
       this.mode = mode;
       return this;
     }
 
-    /**
-     * Set the speechiness of the audio features object to be built.
-     *
-     * @param speechiness Speechiness value between 0.0 and 1.0.
-     * @return An {@link AudioFeatures.Builder}.
-     */
     public Builder setSpeechiness(Float speechiness) {
       this.speechiness = speechiness;
       return this;
     }
 
-    /**
-     * Set the tempo of the audio features object to be built.
-     *
-     * @param tempo Tempo value in beats per minute.
-     * @return An {@link AudioFeatures.Builder}.
-     */
     public Builder setTempo(Float tempo) {
       this.tempo = tempo;
       return this;
     }
 
-    /**
-     * Set the time signature of the audio features object to be built.
-     *
-     * @param timeSignature Time signature of the track.
-     * @return An {@link AudioFeatures.Builder}.
-     */
     public Builder setTimeSignature(Integer timeSignature) {
       this.timeSignature = timeSignature;
       return this;
     }
 
-    /**
-     * Set the track href to the Spotify Web API endpoint of the audio features object to be built.
-     *
-     * @param trackHref Spotify Web API endpoint URL.
-     * @return An {@link AudioFeatures.Builder}.
-     */
     public Builder setTrackHref(String trackHref) {
       this.trackHref = trackHref;
       return this;
     }
 
-    /**
-     * Set the type of the model object. In this case "audio_features".
-     *
-     * @param type The {@link ModelObjectType}.
-     * @return An {@link AudioFeatures.Builder}.
-     */
     public Builder setType(ModelObjectType type) {
       this.type = type;
       return this;
     }
 
-    /**
-     * Set the <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify URI</a>
-     * of the audio feature objects track to be built.
-     *
-     * @param uri The Spotify track URI.
-     * @return An {@link AudioFeatures.Builder}.
-     */
     public Builder setUri(String uri) {
       this.uri = uri;
       return this;
     }
 
-    /**
-     * Set the valence of the audio features object to be built.
-     *
-     * @param valence Valence value between 0.0 and 1.0.
-     * @return An {@link AudioFeatures.Builder}.
-     */
     public Builder setValence(Float valence) {
       this.valence = valence;
       return this;
@@ -511,95 +396,10 @@ public class AudioFeatures extends AbstractModelObject {
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<AudioFeatures> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }
 
-    public AudioFeatures createModelObject(JsonObject jsonObject) {
-      if (jsonObject == null || jsonObject.isJsonNull()) {
-        return null;
-      }
-
-      return new AudioFeatures.Builder()
-        .setAcousticness(
-          hasAndNotNull(jsonObject, "acousticness")
-            ? jsonObject.get("acousticness").getAsFloat()
-            : null)
-        .setAnalysisUrl(
-          hasAndNotNull(jsonObject, "analysis_url")
-            ? jsonObject.get("analysis_url").getAsString()
-            : null)
-        .setDanceability(
-          hasAndNotNull(jsonObject, "danceability")
-            ? jsonObject.get("danceability").getAsFloat()
-            : null)
-        .setDurationMs(
-          hasAndNotNull(jsonObject, "duration_ms")
-            ? jsonObject.get("duration_ms").getAsInt()
-            : null)
-        .setEnergy(
-          hasAndNotNull(jsonObject, "energy")
-            ? jsonObject.get("energy").getAsFloat()
-            : null)
-        .setId(
-          hasAndNotNull(jsonObject, "id")
-            ? jsonObject.get("id").getAsString()
-            : null)
-        .setInstrumentalness(
-          hasAndNotNull(jsonObject, "instrumentalness")
-            ? jsonObject.get("instrumentalness").getAsFloat()
-            : null)
-        .setKey(
-          hasAndNotNull(jsonObject, "key")
-            ? jsonObject.get("key").getAsInt()
-            : null)
-        .setLiveness(
-          hasAndNotNull(jsonObject, "liveness")
-            ? jsonObject.get("liveness").getAsFloat()
-            : null)
-        .setLoudness(
-          hasAndNotNull(jsonObject, "loudness")
-            ? jsonObject.get("loudness").getAsFloat()
-            : null)
-        .setMode(
-          hasAndNotNull(jsonObject, "mode")
-            ? Modality.keyOf(
-            jsonObject.get("mode").getAsInt())
-            : null)
-        .setSpeechiness(
-          hasAndNotNull(jsonObject, "speechiness")
-            ? jsonObject.get("speechiness").getAsFloat()
-            : null)
-        .setTempo(
-          hasAndNotNull(jsonObject, "tempo")
-            ? jsonObject.get("tempo").getAsFloat()
-            : null)
-        .setTimeSignature(
-          hasAndNotNull(jsonObject, "time_signature")
-            ? jsonObject.get("time_signature").getAsInt()
-            : null)
-        .setTrackHref(
-          hasAndNotNull(jsonObject, "track_href")
-            ? jsonObject.get("track_href").getAsString()
-            : null)
-        .setType(
-          hasAndNotNull(jsonObject, "type")
-            ? ModelObjectType.keyOf(
-            jsonObject.get("type").getAsString().toLowerCase())
-            : null)
-        .setUri(
-          hasAndNotNull(jsonObject, "uri")
-            ? jsonObject.get("uri").getAsString()
-            : null)
-        .setValence(
-          hasAndNotNull(jsonObject, "valence")
-            ? jsonObject.get("valence").getAsFloat()
-            : null)
-        .build();
-    }
   }
 
   @Override

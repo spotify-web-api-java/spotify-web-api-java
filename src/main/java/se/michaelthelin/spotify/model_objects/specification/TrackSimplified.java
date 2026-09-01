@@ -1,7 +1,5 @@
 package se.michaelthelin.spotify.model_objects.specification;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.enums.ModelObjectType;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 import se.michaelthelin.spotify.model_objects.interfaces.ITrack;
@@ -13,7 +11,6 @@ import java.util.Objects;
  * Retrieve information about <a href="https://developer.spotify.com/web-api/object-model/#track-object-simplified">
  * simplified Track objects</a> by building instances from this class.
  */
-@JsonDeserialize(builder = TrackSimplified.Builder.class)
 public class TrackSimplified extends AbstractModelObject implements ITrack {
   /** The artists who performed the track. */
   private final ArtistSimplified[] artists;
@@ -216,153 +213,70 @@ public class TrackSimplified extends AbstractModelObject implements ITrack {
     private ModelObjectType type;
     private String uri;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
 
-    /**
-     * Set the artists of the track to be built.
-     *
-     * @param artists The artists who performed the track.
-     * @return A {@link TrackSimplified.Builder}.
-     */
     public Builder setArtists(ArtistSimplified... artists) {
       this.artists = artists;
       return this;
     }
 
-    /**
-     * Set the disc number of the track to be built.
-     *
-     * @param discNumber The disc number (usually 1 unless the album consists of more than one disc).
-     * @return A {@link TrackSimplified.Builder}.
-     */
     public Builder setDiscNumber(Integer discNumber) {
       this.discNumber = discNumber;
       return this;
     }
 
-    /**
-     * Set the duration in milliseconds of the track to be built.
-     *
-     * @param durationMs The track length in milliseconds.
-     * @return A {@link TrackSimplified.Builder}.
-     */
     public Builder setDurationMs(Integer durationMs) {
       this.durationMs = durationMs;
       return this;
     }
 
-    /**
-     * Set whether the track to be built is explicit or not.
-     *
-     * @param explicit Whether or not the track has explicit lyrics ({@code true} = yes it does; {@code false} = no it
-     *                 does not <b>OR</b> unknown).
-     * @return A {@link TrackSimplified.Builder}.
-     */
     public Builder setExplicit(Boolean explicit) {
       this.explicit = explicit;
       return this;
     }
 
-    /**
-     * Set external URLs of the track to be built.
-     *
-     * @param externalUrls Known external URLs for the track.
-     * @return A {@link TrackSimplified.Builder}.
-     */
     public Builder setExternalUrls(ExternalUrl externalUrls) {
       this.externalUrls = externalUrls;
       return this;
     }
 
-    /**
-     * Set href of Spotify Web API endpoint of the track to be built.
-     *
-     * @param href A link to the Web API endpoint providing full details of the track.
-     * @return A {@link TrackSimplified.Builder}.
-     */
     public Builder setHref(String href) {
       this.href = href;
       return this;
     }
 
-    /**
-     * Set track ID of the track to be built.
-     *
-     * @param id The Spotify ID for the track.
-     * @return A {@link TrackSimplified.Builder}.
-     */
     public Builder setId(String id) {
       this.id = id;
       return this;
     }
 
-    /**
-     * Set whether the track to be built is playable in your market region or not.
-     *
-     * @param isPlayable If {@code true}, the track is playable in the given market. Otherwise {@code false}.
-     * @return A {@link TrackSimplified.Builder}.
-     */
     public Builder setIsPlayable(Boolean isPlayable) {
       this.isPlayable = isPlayable;
       return this;
     }
 
-    /**
-     * Set the name of the track to be built.
-     *
-     * @param name Track name.
-     * @return A {@link TrackSimplified.Builder}.
-     */
     public Builder setName(String name) {
       this.name = name;
       return this;
     }
 
-    /**
-     * Set the preview URL of the track to be built.
-     *
-     * @param previewUrl A link to a 30 second preview (MP3 format) of the track. {@code null} if not available.
-     * @return A {@link TrackSimplified.Builder}.
-     */
     public Builder setPreviewUrl(String previewUrl) {
       this.previewUrl = previewUrl;
       return this;
     }
 
-    /**
-     * Set the track number of the track to be built.
-     *
-     * @param trackNumber The track number.
-     * @return A {@link TrackSimplified.Builder}.
-     */
     public Builder setTrackNumber(Integer trackNumber) {
       this.trackNumber = trackNumber;
       return this;
     }
 
-    /**
-     * Set the type of the model object. In this case "track".
-     *
-     * @param type The object type: "track".
-     * @return A {@link TrackSimplified.Builder}.
-     */
     public Builder setType(ModelObjectType type) {
       this.type = type;
       return this;
     }
 
-    /**
-     * Set Spotify URI of the track to be built.
-     *
-     * @param uri The <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify URI</a>
-     *            for the track.
-     * @return A {@link TrackSimplified.Builder}.
-     */
     public Builder setUri(String uri) {
       this.uri = uri;
       return this;
@@ -379,76 +293,10 @@ public class TrackSimplified extends AbstractModelObject implements ITrack {
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<TrackSimplified> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }
 
-    public TrackSimplified createModelObject(JsonObject jsonObject) {
-      if (jsonObject == null || jsonObject.isJsonNull()) {
-        return null;
-      }
-
-      return new Builder()
-        .setArtists(
-          hasAndNotNull(jsonObject, "artists")
-            ? new ArtistSimplified.JsonUtil().createModelObjectArray(
-            jsonObject.getAsJsonArray("artists"))
-            : null)
-        .setDiscNumber(
-          hasAndNotNull(jsonObject, "disc_number")
-            ? jsonObject.get("disc_number").getAsInt()
-            : null)
-        .setDurationMs(
-          hasAndNotNull(jsonObject, "duration_ms")
-            ? jsonObject.get("duration_ms").getAsInt()
-            : null)
-        .setExplicit(
-          hasAndNotNull(jsonObject, "explicit")
-            ? jsonObject.get("explicit").getAsBoolean()
-            : null)
-        .setExternalUrls(
-          hasAndNotNull(jsonObject, "external_urls")
-            ? new ExternalUrl.JsonUtil().createModelObject(
-            jsonObject.getAsJsonObject("external_urls"))
-            : null)
-        .setHref(
-          hasAndNotNull(jsonObject, "href")
-            ? jsonObject.get("href").getAsString()
-            : null)
-        .setId(
-          hasAndNotNull(jsonObject, "id")
-            ? jsonObject.get("id").getAsString()
-            : null)
-        .setIsPlayable(
-          hasAndNotNull(jsonObject, "is_playable")
-            ? jsonObject.get("is_playable").getAsBoolean()
-            : null)
-        .setName(
-          hasAndNotNull(jsonObject, "name")
-            ? jsonObject.get("name").getAsString()
-            : null)
-        .setPreviewUrl(
-          hasAndNotNull(jsonObject, "preview_url")
-            ? jsonObject.get("preview_url").getAsString()
-            : null)
-        .setTrackNumber(
-          hasAndNotNull(jsonObject, "track_number")
-            ? jsonObject.get("track_number").getAsInt()
-            : null)
-        .setType(
-          hasAndNotNull(jsonObject, "type")
-            ? ModelObjectType.keyOf(
-            jsonObject.get("type").getAsString().toLowerCase())
-            : null)
-        .setUri(
-          hasAndNotNull(jsonObject, "uri")
-            ? jsonObject.get("uri").getAsString()
-            : null)
-        .build();
-    }
   }
 
   @Override

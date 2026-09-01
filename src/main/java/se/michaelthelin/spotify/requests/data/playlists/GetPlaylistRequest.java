@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.requests.data.playlists;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.neovisionaries.i18n.CountryCode;
 import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
@@ -12,7 +11,6 @@ import java.io.IOException;
 /**
  * Get a playlist owned by a Spotify user.
  */
-@JsonDeserialize(builder = GetPlaylistRequest.Builder.class)
 public class GetPlaylistRequest extends AbstractDataRequest<Playlist> {
 
   /**

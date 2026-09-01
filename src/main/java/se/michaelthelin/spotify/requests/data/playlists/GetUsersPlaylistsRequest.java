@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.requests.data.playlists;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.model_objects.specification.Paging;
@@ -16,7 +15,6 @@ import java.io.IOException;
  * @deprecated This endpoint is deprecated.
  */
 @Deprecated
-@JsonDeserialize(builder = GetUsersPlaylistsRequest.Builder.class)
 public class GetUsersPlaylistsRequest extends AbstractDataRequest<Paging<PlaylistSimplified>> {
 
   /**

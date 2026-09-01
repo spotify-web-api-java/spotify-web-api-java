@@ -1,8 +1,5 @@
 package se.michaelthelin.spotify.model_objects.specification;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.enums.ModelObjectType;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 
@@ -13,7 +10,6 @@ import java.util.Objects;
  * Retrieve information about <a href="https://developer.spotify.com/documentation/web-api/reference/get-an-audiobook">
  * simplified Audiobook objects</a> by building instances from this class.
  */
-@JsonDeserialize(builder = AudiobookSimplified.Builder.class)
 public class AudiobookSimplified extends AbstractModelObject {
   /** The author(s) for the audiobook. */
   private final Author[] authors;
@@ -287,217 +283,100 @@ public class AudiobookSimplified extends AbstractModelObject {
     private String uri;
     private Integer totalChapters;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
 
-    /**
-     * Set the authors.
-     *
-     * @param authors The author(s) for the audiobook.
-     * @return A {@link AudiobookSimplified.Builder}.
-     */
     public Builder setAuthors(Author... authors) {
       this.authors = authors;
       return this;
     }
 
-    /**
-     * Set the available markets.
-     *
-     * @param availableMarkets ISO 3166-1 alpha-2 country codes.
-     * @return A {@link AudiobookSimplified.Builder}.
-     */
     public Builder setAvailableMarkets(String... availableMarkets) {
       this.availableMarkets = availableMarkets;
       return this;
     }
 
-    /**
-     * Set the copyrights.
-     *
-     * @param copyrights The copyright statements of the audiobook.
-     * @return A {@link AudiobookSimplified.Builder}.
-     */
     public Builder setCopyrights(Copyright... copyrights) {
       this.copyrights = copyrights;
       return this;
     }
 
-    /**
-     * Set the description.
-     *
-     * @param description A description of the audiobook.
-     * @return A {@link AudiobookSimplified.Builder}.
-     */
     public Builder setDescription(String description) {
       this.description = description;
       return this;
     }
 
-    /**
-     * Set the HTML description.
-     *
-     * @param htmlDescription A description of the audiobook (may contain HTML tags).
-     * @return A {@link AudiobookSimplified.Builder}.
-     */
     public Builder setHtmlDescription(String htmlDescription) {
       this.htmlDescription = htmlDescription;
       return this;
     }
 
-    /**
-     * Set the edition.
-     *
-     * @param edition The edition of the audiobook.
-     * @return A {@link AudiobookSimplified.Builder}.
-     */
     public Builder setEdition(String edition) {
       this.edition = edition;
       return this;
     }
 
-    /**
-     * Set whether the audiobook is explicit.
-     *
-     * @param explicit Whether or not the audiobook has explicit content.
-     * @return A {@link AudiobookSimplified.Builder}.
-     */
     public Builder setExplicit(Boolean explicit) {
       this.explicit = explicit;
       return this;
     }
 
-    /**
-     * Set the external URLs.
-     *
-     * @param externalUrls The {@link ExternalUrl} for the audiobook object.
-     * @return A {@link AudiobookSimplified.Builder}.
-     */
     public Builder setExternalUrls(ExternalUrl externalUrls) {
       this.externalUrls = externalUrls;
       return this;
     }
 
-    /**
-     * Set the href.
-     *
-     * @param href A link to the Web API endpoint providing full details of the audiobook.
-     * @return A {@link AudiobookSimplified.Builder}.
-     */
     public Builder setHref(String href) {
       this.href = href;
       return this;
     }
 
-    /**
-     * Set the Spotify ID.
-     *
-     * @param id The Spotify ID for the audiobook.
-     * @return A {@link AudiobookSimplified.Builder}.
-     */
     public Builder setId(String id) {
       this.id = id;
       return this;
     }
 
-    /**
-     * Set the cover art images.
-     *
-     * @param images {@link Image} objects.
-     * @return A {@link AudiobookSimplified.Builder}.
-     */
     public Builder setImages(Image... images) {
       this.images = images;
       return this;
     }
 
-    /**
-     * Set the languages.
-     *
-     * @param languages ISO 639 language codes.
-     * @return A {@link AudiobookSimplified.Builder}.
-     */
     public Builder setLanguages(String... languages) {
       this.languages = languages;
       return this;
     }
 
-    /**
-     * Set the media type.
-     *
-     * @param mediaType The media type of the audiobook.
-     * @return A {@link AudiobookSimplified.Builder}.
-     */
     public Builder setMediaType(String mediaType) {
       this.mediaType = mediaType;
       return this;
     }
 
-    /**
-     * Set the name.
-     *
-     * @param name The name of the audiobook.
-     * @return A {@link AudiobookSimplified.Builder}.
-     */
     public Builder setName(String name) {
       this.name = name;
       return this;
     }
 
-    /**
-     * Set the narrators.
-     *
-     * @param narrators The narrator(s) for the audiobook.
-     * @return A {@link AudiobookSimplified.Builder}.
-     */
     public Builder setNarrators(Narrator... narrators) {
       this.narrators = narrators;
       return this;
     }
 
-    /**
-     * Set the publisher.
-     *
-     * @param publisher The publisher of the audiobook.
-     * @return A {@link AudiobookSimplified.Builder}.
-     */
     public Builder setPublisher(String publisher) {
       this.publisher = publisher;
       return this;
     }
 
-    /**
-     * Set the model object type.
-     *
-     * @param type The {@link ModelObjectType}.
-     * @return A {@link AudiobookSimplified.Builder}.
-     */
     public Builder setType(ModelObjectType type) {
       this.type = type;
       return this;
     }
 
-    /**
-     * Set the Spotify URI.
-     *
-     * @param uri The Spotify URI for the audiobook.
-     * @return A {@link AudiobookSimplified.Builder}.
-     */
     public Builder setUri(String uri) {
       this.uri = uri;
       return this;
     }
 
-    /**
-     * Set the total number of chapters.
-     *
-     * @param totalChapters The number of chapters in this audiobook.
-     * @return A {@link AudiobookSimplified.Builder}.
-     */
     public Builder setTotalChapters(Integer totalChapters) {
       this.totalChapters = totalChapters;
       return this;
@@ -514,98 +393,10 @@ public class AudiobookSimplified extends AbstractModelObject {
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<AudiobookSimplified> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }
 
-    @Override
-    public AudiobookSimplified createModelObject(JsonObject jsonObject) {
-      if (jsonObject == null || jsonObject.isJsonNull()) {
-        return null;
-      }
-
-      return new Builder()
-        .setAuthors(
-          hasAndNotNull(jsonObject, "authors")
-            ? new Author.JsonUtil().createModelObjectArray(jsonObject.getAsJsonArray("authors"))
-            : null)
-        .setAvailableMarkets(
-          hasAndNotNull(jsonObject, "available_markets")
-            ? new Gson().fromJson(jsonObject.getAsJsonArray("available_markets"), String[].class)
-            : null)
-        .setCopyrights(
-          hasAndNotNull(jsonObject, "copyrights")
-            ? new Copyright.JsonUtil().createModelObjectArray(jsonObject.getAsJsonArray("copyrights"))
-            : null)
-        .setDescription(
-          hasAndNotNull(jsonObject, "description")
-            ? jsonObject.get("description").getAsString()
-            : null)
-        .setHtmlDescription(
-          hasAndNotNull(jsonObject, "html_description")
-            ? jsonObject.get("html_description").getAsString()
-            : null)
-        .setEdition(
-          hasAndNotNull(jsonObject, "edition")
-            ? jsonObject.get("edition").getAsString()
-            : null)
-        .setExplicit(
-          hasAndNotNull(jsonObject, "explicit")
-            ? jsonObject.get("explicit").getAsBoolean()
-            : null)
-        .setExternalUrls(
-          hasAndNotNull(jsonObject, "external_urls")
-            ? new ExternalUrl.JsonUtil().createModelObject(jsonObject.getAsJsonObject("external_urls"))
-            : null)
-        .setHref(
-          hasAndNotNull(jsonObject, "href")
-            ? jsonObject.get("href").getAsString()
-            : null)
-        .setId(
-          hasAndNotNull(jsonObject, "id")
-            ? jsonObject.get("id").getAsString()
-            : null)
-        .setImages(
-          hasAndNotNull(jsonObject, "images")
-            ? new Image.JsonUtil().createModelObjectArray(jsonObject.getAsJsonArray("images"))
-            : null)
-        .setLanguages(
-          hasAndNotNull(jsonObject, "languages")
-            ? new Gson().fromJson(jsonObject.getAsJsonArray("languages"), String[].class)
-            : null)
-        .setMediaType(
-          hasAndNotNull(jsonObject, "media_type")
-            ? jsonObject.get("media_type").getAsString()
-            : null)
-        .setName(
-          hasAndNotNull(jsonObject, "name")
-            ? jsonObject.get("name").getAsString()
-            : null)
-        .setNarrators(
-          hasAndNotNull(jsonObject, "narrators")
-            ? new Narrator.JsonUtil().createModelObjectArray(jsonObject.getAsJsonArray("narrators"))
-            : null)
-        .setPublisher(
-          hasAndNotNull(jsonObject, "publisher")
-            ? jsonObject.get("publisher").getAsString()
-            : null)
-        .setType(
-          hasAndNotNull(jsonObject, "type")
-            ? ModelObjectType.keyOf(jsonObject.get("type").getAsString().toLowerCase())
-            : null)
-        .setUri(
-          hasAndNotNull(jsonObject, "uri")
-            ? jsonObject.get("uri").getAsString()
-            : null)
-        .setTotalChapters(
-          hasAndNotNull(jsonObject, "total_chapters")
-            ? jsonObject.get("total_chapters").getAsInt()
-            : null)
-        .build();
-    }
   }
 
   @Override

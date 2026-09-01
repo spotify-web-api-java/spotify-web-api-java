@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.requests.data.albums;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.neovisionaries.i18n.CountryCode;
 import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
@@ -15,7 +14,6 @@ import java.io.IOException;
  * Get Spotify catalog information about an album's tracks. Optional parameters can be used to limit the number of
  * tracks returned.
  */
-@JsonDeserialize(builder = GetAlbumTracksRequest.Builder.class)
 public class GetAlbumTracksRequest extends AbstractDataRequest<Paging<TrackSimplified>> {
 
   /**

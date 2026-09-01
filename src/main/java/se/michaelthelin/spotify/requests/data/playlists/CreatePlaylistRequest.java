@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.requests.data.playlists;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import org.apache.hc.core5.http.ContentType;
 import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
@@ -13,7 +12,6 @@ import java.io.IOException;
  * Create a playlist for the current Spotify user. (The playlist will be empty until you add tracks.)
  * Each user is generally limited to a maximum of 11000 playlists.
  */
-@JsonDeserialize(builder = CreatePlaylistRequest.Builder.class)
 public class CreatePlaylistRequest extends AbstractDataRequest<Playlist> {
 
   /**

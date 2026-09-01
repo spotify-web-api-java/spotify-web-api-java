@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.requests.data.player;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import org.apache.hc.core5.http.ContentType;
 import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
@@ -15,7 +14,6 @@ import java.io.IOException;
  * Returning to the start of the current track should be performed using a
  * {@link SeekToPositionRequest}.
  */
-@JsonDeserialize(builder = SkipToPreviousRequest.Builder.class)
 public class SkipToPreviousRequest extends AbstractDataRequest<String> {
 
   /**
