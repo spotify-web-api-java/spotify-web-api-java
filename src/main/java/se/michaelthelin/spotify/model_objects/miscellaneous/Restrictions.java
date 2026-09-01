@@ -45,19 +45,10 @@ public class Restrictions extends AbstractModelObject {
   public static final class Builder extends AbstractModelObject.Builder {
     private String reason;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
 
-    /**
-     * The restriction reason setter.
-     *
-     * @param reason The track restriction reason.
-     * @return A {@link Restrictions.Builder}.
-     */
     public Builder setReason(String reason) {
       this.reason = reason;
       return this;
@@ -74,9 +65,6 @@ public class Restrictions extends AbstractModelObject {
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<Restrictions> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }

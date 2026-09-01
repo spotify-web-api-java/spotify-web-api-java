@@ -291,9 +291,6 @@ public class AudioFeatures extends AbstractModelObject {
     private String uri;
     private Float valence;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
@@ -508,9 +505,6 @@ public class AudioFeatures extends AbstractModelObject {
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<AudioFeatures> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }

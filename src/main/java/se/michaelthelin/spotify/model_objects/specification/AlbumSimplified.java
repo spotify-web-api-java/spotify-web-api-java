@@ -224,9 +224,6 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
     private ModelObjectType type;
     private String uri;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
@@ -264,12 +261,6 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
       return this;
     }
 
-    /**
-     * Set href of Spotify Web API endpoint of the album to be built.
-     *
-     * @param href Spotify Web API endpoint URL.
-     * @return A {@link AlbumSimplified.Builder}.
-     */
     public Builder setHref(String href) {
       this.href = href;
       return this;
@@ -297,34 +288,16 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
       return this;
     }
 
-    /**
-     * Set whether the album to be built is playable in the given market.
-     *
-     * @param isPlayable Whether the album is playable in the given market.
-     * @return A {@link AlbumSimplified.Builder}.
-     */
     public Builder setIsPlayable(Boolean isPlayable) {
       this.isPlayable = isPlayable;
       return this;
     }
 
-    /**
-     * Set the name of the album to be built.
-     *
-     * @param name The album name.
-     * @return A {@link AlbumSimplified.Builder}.
-     */
     public Builder setName(String name) {
       this.name = name;
       return this;
     }
 
-    /**
-     * Set the release date of the album to be built.
-     *
-     * @param releaseDate The release date of the album.
-     * @return A {@link AlbumSimplified.Builder}.
-     */
     public Builder setReleaseDate(String releaseDate) {
       this.releaseDate = releaseDate;
       return this;
@@ -341,23 +314,11 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
       return this;
     }
 
-    /**
-     * Set the restrictions of the album to be built.
-     *
-     * @param restrictions The restrictions of the album.
-     * @return A {@link AlbumSimplified.Builder}.
-     */
     public Builder setRestrictions(Restrictions restrictions) {
       this.restrictions = restrictions;
       return this;
     }
 
-    /**
-     * Set the total number of tracks of the album to be built.
-     *
-     * @param totalTracks The number of tracks in the album.
-     * @return A {@link AlbumSimplified.Builder}.
-     */
     public Builder setTotalTracks(Integer totalTracks) {
       this.totalTracks = totalTracks;
       return this;
@@ -397,9 +358,6 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<AlbumSimplified> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }

@@ -129,85 +129,40 @@ public class Paging<T> extends AbstractModelObject implements IHasTotal {
     private String previous;
     private Integer total;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
 
-    /**
-     * The href setter.
-     *
-     * @param href A link to the Web API endpoint returning the full result of the request.
-     * @return A {@link Paging.Builder}.
-     */
     public Builder<T> setHref(String href) {
       this.href = href;
       return this;
     }
 
-    /**
-     * The items setter.
-     *
-     * @param items A page of items.
-     * @return A {@link Paging.Builder}.
-     */
     public Builder<T> setItems(T[] items) {
       this.items = items;
       return this;
     }
 
-    /**
-     * The request limit setter.
-     *
-     * @param limit The maximum number of items in the response (as set in the query or by default).
-     * @return A {@link Paging.Builder}.
-     */
     public Builder<T> setLimit(Integer limit) {
       this.limit = limit;
       return this;
     }
 
-    /**
-     * The next URL setter.
-     *
-     * @param next URL to the next page of items. ({@code null} if none)
-     * @return A {@link Paging.Builder}.
-     */
     public Builder<T> setNext(String next) {
       this.next = next;
       return this;
     }
 
-    /**
-     * The offset setter.
-     *
-     * @param offset The offset of the items returned (as set in the query or by default).
-     * @return A {@link Paging.Builder}.
-     */
     public Builder<T> setOffset(Integer offset) {
       this.offset = offset;
       return this;
     }
 
-    /**
-     * The previous URL setter.
-     *
-     * @param previous URL to the previous page of items. ({@code null} if none)
-     * @return A {@link Paging.Builder}.
-     */
     public Builder<T> setPrevious(String previous) {
       this.previous = previous;
       return this;
     }
 
-    /**
-     * The total amount setter.
-     *
-     * @param total The total number of items available to return.
-     * @return A {@link Paging.Builder}.
-     */
     public Builder<T> setTotal(Integer total) {
       this.total = total;
       return this;
@@ -227,9 +182,6 @@ public class Paging<T> extends AbstractModelObject implements IHasTotal {
   @SuppressWarnings("unchecked")
   public static final class JsonUtil<X> extends AbstractModelObject.JsonUtil<Paging<X>> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }

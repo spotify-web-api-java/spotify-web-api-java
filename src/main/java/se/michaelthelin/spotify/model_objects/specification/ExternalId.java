@@ -54,9 +54,6 @@ public class ExternalId extends AbstractModelObject {
   public static final class Builder extends AbstractModelObject.Builder {
     private Map<String, String> externalIds;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
@@ -84,9 +81,6 @@ public class ExternalId extends AbstractModelObject {
   @SuppressWarnings("unchecked")
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<ExternalId> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }

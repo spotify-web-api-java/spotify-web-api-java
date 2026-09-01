@@ -250,9 +250,6 @@ public class Album extends AbstractModelObject implements IAlbum {
     private ModelObjectType type;
     private String uri;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
@@ -301,23 +298,11 @@ public class Album extends AbstractModelObject implements IAlbum {
       return this;
     }
 
-    /**
-     * Set the genres of the album to be built.
-     *
-     * @param genres Genre names.
-     * @return A {@link Album.Builder}.
-     */
     public Builder setGenres(String... genres) {
       this.genres = genres;
       return this;
     }
 
-    /**
-     * Set href of Spotify Web API endpoint of the album to be built.
-     *
-     * @param href Spotify Web API endpoint URL.
-     * @return A {@link Album.Builder}.
-     */
     public Builder setHref(String href) {
       this.href = href;
       return this;
@@ -345,34 +330,16 @@ public class Album extends AbstractModelObject implements IAlbum {
       return this;
     }
 
-    /**
-     * Set the label associated with the album to be built.
-     *
-     * @param label The label associated with the album.
-     * @return A {@link Album.Builder}.
-     */
     public Builder setLabel(String label) {
       this.label = label;
       return this;
     }
 
-    /**
-     * Set the name of the album to be built.
-     *
-     * @param name The album name.
-     * @return A {@link Album.Builder}.
-     */
     public Builder setName(String name) {
       this.name = name;
       return this;
     }
 
-    /**
-     * Set the release date of the album to be built.
-     *
-     * @param releaseDate The release date of the album.
-     * @return A {@link Album.Builder}.
-     */
     public Builder setReleaseDate(String releaseDate) {
       this.releaseDate = releaseDate;
       return this;
@@ -389,12 +356,6 @@ public class Album extends AbstractModelObject implements IAlbum {
       return this;
     }
 
-    /**
-     * Set the total number of tracks of the album to be built.
-     *
-     * @param totalTracks The number of tracks in the album.
-     * @return A {@link Album.Builder}.
-     */
     public Builder setTotalTracks(Integer totalTracks) {
       this.totalTracks = totalTracks;
       return this;
@@ -445,9 +406,6 @@ public class Album extends AbstractModelObject implements IAlbum {
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<Album> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }

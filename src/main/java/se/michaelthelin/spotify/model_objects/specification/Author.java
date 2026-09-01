@@ -42,9 +42,6 @@ public class Author extends AbstractModelObject {
   public static final class Builder extends AbstractModelObject.Builder {
     private String name;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
@@ -71,9 +68,6 @@ public class Author extends AbstractModelObject {
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<Author> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }

@@ -56,31 +56,15 @@ public class Followers extends AbstractModelObject {
     private String href;
     private Integer total;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
 
-    /**
-     * The href setter.
-     *
-     * @param href A link to the Web API endpoint providing full details of the followers; {@code null} if not
-     *             available.
-     * @return A {@link Followers.Builder}.
-     */
     public Builder setHref(String href) {
       this.href = href;
       return this;
     }
 
-    /**
-     * The follower count setter.
-     *
-     * @param total The total number of followers.
-     * @return A {@link Followers.Builder}.
-     */
     public Builder setTotal(Integer total) {
       this.total = total;
       return this;
@@ -97,9 +81,6 @@ public class Followers extends AbstractModelObject {
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<Followers> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }

@@ -296,85 +296,40 @@ public class Audiobook extends AbstractModelObject {
     private Integer totalChapters;
     private Paging<ChapterSimplified> chapters;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
 
-    /**
-     * Set the authors.
-     *
-     * @param authors The author(s) for the audiobook.
-     * @return A {@link Audiobook.Builder}.
-     */
     public Builder setAuthors(Author... authors) {
       this.authors = authors;
       return this;
     }
 
-    /**
-     * Set the available markets.
-     *
-     * @param availableMarkets ISO 3166-1 alpha-2 country codes.
-     * @return A {@link Audiobook.Builder}.
-     */
     public Builder setAvailableMarkets(String... availableMarkets) {
       this.availableMarkets = availableMarkets;
       return this;
     }
 
-    /**
-     * Set the copyrights.
-     *
-     * @param copyrights The copyright statements of the audiobook.
-     * @return A {@link Audiobook.Builder}.
-     */
     public Builder setCopyrights(Copyright... copyrights) {
       this.copyrights = copyrights;
       return this;
     }
 
-    /**
-     * Set the description.
-     *
-     * @param description A description of the audiobook.
-     * @return A {@link Audiobook.Builder}.
-     */
     public Builder setDescription(String description) {
       this.description = description;
       return this;
     }
 
-    /**
-     * Set the HTML description.
-     *
-     * @param htmlDescription A description of the audiobook (may contain HTML tags).
-     * @return A {@link Audiobook.Builder}.
-     */
     public Builder setHtmlDescription(String htmlDescription) {
       this.htmlDescription = htmlDescription;
       return this;
     }
 
-    /**
-     * Set the edition.
-     *
-     * @param edition The edition of the audiobook.
-     * @return A {@link Audiobook.Builder}.
-     */
     public Builder setEdition(String edition) {
       this.edition = edition;
       return this;
     }
 
-    /**
-     * Set whether the audiobook is explicit.
-     *
-     * @param explicit Whether or not the audiobook has explicit content.
-     * @return A {@link Audiobook.Builder}.
-     */
     public Builder setExplicit(Boolean explicit) {
       this.explicit = explicit;
       return this;
@@ -391,23 +346,11 @@ public class Audiobook extends AbstractModelObject {
       return this;
     }
 
-    /**
-     * Set the href.
-     *
-     * @param href A link to the Web API endpoint providing full details of the audiobook.
-     * @return A {@link Audiobook.Builder}.
-     */
     public Builder setHref(String href) {
       this.href = href;
       return this;
     }
 
-    /**
-     * Set the Spotify ID.
-     *
-     * @param id The Spotify ID for the audiobook.
-     * @return A {@link Audiobook.Builder}.
-     */
     public Builder setId(String id) {
       this.id = id;
       return this;
@@ -424,56 +367,26 @@ public class Audiobook extends AbstractModelObject {
       return this;
     }
 
-    /**
-     * Set the languages.
-     *
-     * @param languages ISO 639 language codes.
-     * @return A {@link Audiobook.Builder}.
-     */
     public Builder setLanguages(String... languages) {
       this.languages = languages;
       return this;
     }
 
-    /**
-     * Set the media type.
-     *
-     * @param mediaType The media type of the audiobook.
-     * @return A {@link Audiobook.Builder}.
-     */
     public Builder setMediaType(String mediaType) {
       this.mediaType = mediaType;
       return this;
     }
 
-    /**
-     * Set the name.
-     *
-     * @param name The name of the audiobook.
-     * @return A {@link Audiobook.Builder}.
-     */
     public Builder setName(String name) {
       this.name = name;
       return this;
     }
 
-    /**
-     * Set the narrators.
-     *
-     * @param narrators The narrator(s) for the audiobook.
-     * @return A {@link Audiobook.Builder}.
-     */
     public Builder setNarrators(Narrator... narrators) {
       this.narrators = narrators;
       return this;
     }
 
-    /**
-     * Set the publisher.
-     *
-     * @param publisher The publisher of the audiobook.
-     * @return A {@link Audiobook.Builder}.
-     */
     public Builder setPublisher(String publisher) {
       this.publisher = publisher;
       return this;
@@ -490,23 +403,11 @@ public class Audiobook extends AbstractModelObject {
       return this;
     }
 
-    /**
-     * Set the Spotify URI.
-     *
-     * @param uri The Spotify URI for the audiobook.
-     * @return A {@link Audiobook.Builder}.
-     */
     public Builder setUri(String uri) {
       this.uri = uri;
       return this;
     }
 
-    /**
-     * Set the total number of chapters.
-     *
-     * @param totalChapters The number of chapters in this audiobook.
-     * @return A {@link Audiobook.Builder}.
-     */
     public Builder setTotalChapters(Integer totalChapters) {
       this.totalChapters = totalChapters;
       return this;
@@ -534,9 +435,6 @@ public class Audiobook extends AbstractModelObject {
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<Audiobook> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }

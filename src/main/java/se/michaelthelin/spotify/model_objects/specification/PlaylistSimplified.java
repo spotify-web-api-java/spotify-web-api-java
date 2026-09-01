@@ -226,141 +226,65 @@ public class PlaylistSimplified extends AbstractModelObject implements ISearchMo
     private ModelObjectType type;
     private String uri;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
 
-    /**
-     * Set whether the playlist to be built is collaborative or not.
-     *
-     * @param collaborative {@code true} if the owner allows other users to modify the playlist, {@code false} if not.
-     * @return A {@link PlaylistSimplified.Builder}.
-     */
     public Builder setCollaborative(Boolean collaborative) {
       this.collaborative = collaborative;
       return this;
     }
 
-    /**
-     * Set the description of the playlist to be built.
-     *
-     * @param description The playlist description.
-     * @return A {@link PlaylistSimplified.Builder}.
-     */
     public Builder setDescription(String description) {
       this.description = description;
       return this;
     }
 
-    /**
-     * Set the external URLs of the playlist to be built.
-     *
-     * @param externalUrls Known external URLs for this playlist.
-     * @return A {@link PlaylistSimplified.Builder}.
-     */
     public Builder setExternalUrls(ExternalUrl externalUrls) {
       this.externalUrls = externalUrls;
       return this;
     }
 
-    /**
-     * Set the link to the Spotify Web API endpoint providing full details of the playlist.
-     *
-     * @param href A link to the Spotify Web API endpoint providing full details of the playlist.
-     * @return A {@link PlaylistSimplified.Builder}.
-     */
     public Builder setHref(String href) {
       this.href = href;
       return this;
     }
 
-    /**
-     * Set the Spotify ID for the playlist to be built.
-     *
-     * @param id The Spotify ID for the playlist.
-     * @return A {@link PlaylistSimplified.Builder}.
-     */
     public Builder setId(String id) {
       this.id = id;
       return this;
     }
 
-    /**
-     * Set the cover image of the playlist to be built.
-     *
-     * @param images An array of images in different sizes.
-     * @return A {@link PlaylistSimplified.Builder}.
-     */
     public Builder setImages(Image... images) {
       this.images = images;
       return this;
     }
 
-    /**
-     * Set the name of the playlist to be built.
-     *
-     * @param name The playlist name.
-     * @return A {@link PlaylistSimplified.Builder}.
-     */
     public Builder setName(String name) {
       this.name = name;
       return this;
     }
 
-    /**
-     * Set the owner of the playlist to be built.
-     *
-     * @param owner A user object.
-     * @return A {@link PlaylistSimplified.Builder}.
-     */
     public Builder setOwner(User owner) {
       this.owner = owner;
       return this;
     }
 
-    /**
-     * Set whether the playlist to be built is available in public or not.
-     *
-     * @param publicAccess {@code true} the playlist is public, {@code false} the playlist is private, {@code null}
-     *                     the playlist status is not relevant.
-     * @return A {@link PlaylistSimplified.Builder}.
-     */
     public Builder setPublicAccess(Boolean publicAccess) {
       this.publicAccess = publicAccess;
       return this;
     }
 
-    /**
-     * Set the version identifier for the playlist to be built.
-     *
-     * @param snapshotId The version identifier for the playlist.
-     * @return A {@link PlaylistSimplified.Builder}.
-     */
     public Builder setSnapshotId(String snapshotId) {
       this.snapshotId = snapshotId;
       return this;
     }
 
-    /**
-     * Set some item information of the playlist to be built.
-     *
-     * @param items A playlist tracks information object.
-     * @return A {@link PlaylistSimplified.Builder}.
-     */
     public Builder setItems(PlaylistTracksInformation items) {
       this.items = items;
       return this;
     }
 
-    /**
-     * Set the type of the model object. In this case "playlist".
-     *
-     * @param type The model object type.
-     * @return A {@link PlaylistSimplified.Builder}.
-     */
     public Builder setType(ModelObjectType type) {
       this.type = type;
       return this;
@@ -389,9 +313,6 @@ public class PlaylistSimplified extends AbstractModelObject implements ISearchMo
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<PlaylistSimplified> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }

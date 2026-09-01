@@ -56,30 +56,15 @@ public class SavedShow extends AbstractModelObject {
     private Date addedAt;
     private ShowSimplified show;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
 
-    /**
-     * Set the "added at" date of the saved show to be built.
-     *
-     * @param addedAt The date and time the show was saved.
-     * @return A {@link SavedShow.Builder}.
-     */
     public Builder setAddedAt(Date addedAt) {
       this.addedAt = addedAt;
       return this;
     }
 
-    /**
-     * Set the full show object of the saved show to be built.
-     *
-     * @param show Information about the show.
-     * @return A {@link SavedShow.Builder}.
-     */
     public Builder setShow(ShowSimplified show) {
       this.show = show;
       return this;
@@ -96,9 +81,6 @@ public class SavedShow extends AbstractModelObject {
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<SavedShow> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }

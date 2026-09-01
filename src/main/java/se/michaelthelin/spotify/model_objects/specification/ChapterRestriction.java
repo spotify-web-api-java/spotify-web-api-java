@@ -51,19 +51,10 @@ public class ChapterRestriction extends AbstractModelObject {
   public static final class Builder extends AbstractModelObject.Builder {
     private String reason;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
 
-    /**
-     * Set the restriction reason.
-     *
-     * @param reason The restriction reason.
-     * @return A {@link ChapterRestriction.Builder}.
-     */
     public Builder setReason(String reason) {
       this.reason = reason;
       return this;
@@ -80,9 +71,6 @@ public class ChapterRestriction extends AbstractModelObject {
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<ChapterRestriction> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }

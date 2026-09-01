@@ -53,30 +53,15 @@ public class ExplicitContentSettings extends AbstractModelObject {
     private Boolean filterEnabled;
     private Boolean filterLocked;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
 
-    /**
-     * Set whether explicit content should not be played.
-     *
-     * @param filterEnabled {@code true} if explicit content should not be played.
-     * @return A {@link ExplicitContentSettings.Builder}.
-     */
     public Builder setFilterEnabled(Boolean filterEnabled) {
       this.filterEnabled = filterEnabled;
       return this;
     }
 
-    /**
-     * Set whether the explicit content setting is locked.
-     *
-     * @param filterLocked {@code true} if the explicit content setting is locked and can't be changed by the user.
-     * @return A {@link ExplicitContentSettings.Builder}.
-     */
     public Builder setFilterLocked(Boolean filterLocked) {
       this.filterLocked = filterLocked;
       return this;
@@ -93,9 +78,6 @@ public class ExplicitContentSettings extends AbstractModelObject {
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<ExplicitContentSettings> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }

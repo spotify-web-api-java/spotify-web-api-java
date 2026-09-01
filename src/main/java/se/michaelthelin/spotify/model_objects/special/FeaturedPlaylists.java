@@ -57,30 +57,15 @@ public class FeaturedPlaylists extends AbstractModelObject {
     private String message;
     private Paging<PlaylistSimplified> playlists;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
 
-    /**
-     * Set the message, which normally would be displayed on the front page of the "browse" tab.
-     *
-     * @param message Message to be set.
-     * @return A {@link FeaturedPlaylists.Builder}.
-     */
     public Builder setMessage(String message) {
       this.message = message;
       return this;
     }
 
-    /**
-     * Set a page of playlists contained in the featured playlists object to be built.
-     *
-     * @param playlists A page of simplified playlists.
-     * @return A {@link FeaturedPlaylists.Builder}.
-     */
     public Builder setPlaylists(Paging<PlaylistSimplified> playlists) {
       this.playlists = playlists;
       return this;
@@ -97,9 +82,6 @@ public class FeaturedPlaylists extends AbstractModelObject {
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<FeaturedPlaylists> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }

@@ -238,152 +238,70 @@ public class Playlist extends AbstractModelObject implements IPlaylist<Paging<Pl
     private ModelObjectType type;
     private String uri;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
 
-    /**
-     * Set whether the playlist to be built is collaborative or not.
-     *
-     * @param collaborative {@code true} if the owner allows other users to modify the playlist, {@code false} if not.
-     * @return A {@link Playlist.Builder}.
-     */
     public Builder setCollaborative(Boolean collaborative) {
       this.collaborative = collaborative;
       return this;
     }
 
-    /**
-     * Set the description of the playlist to be built.
-     *
-     * @param description Playlist description.
-     * @return A {@link Playlist.Builder}.
-     */
     public Builder setDescription(String description) {
       this.description = description;
       return this;
     }
 
-    /**
-     * Set the external URLs of the playlist to be built.
-     *
-     * @param externalUrls Known external URLs for this playlist.
-     * @return A {@link Playlist.Builder}.
-     */
     public Builder setExternalUrls(ExternalUrl externalUrls) {
       this.externalUrls = externalUrls;
       return this;
     }
 
-    /**
-     * Set information about the followers of the playlist to be built.
-     *
-     * @param followers Information about the followers of the playlist.
-     * @return A {@link Playlist.Builder}.
-     */
     public Builder setFollowers(Followers followers) {
       this.followers = followers;
       return this;
     }
 
-    /**
-     * Set the link to the Spotify Web API endpoint providing full details of the playlist.
-     *
-     * @param href A link to the Spotify Web API endpoint providing full details of the playlist.
-     * @return A {@link Playlist.Builder}.
-     */
     public Builder setHref(String href) {
       this.href = href;
       return this;
     }
 
-    /**
-     * Set the Spotify ID for the playlist to be built.
-     *
-     * @param id The Spotify ID for the playlist.
-     * @return A {@link Playlist.Builder}.
-     */
     public Builder setId(String id) {
       this.id = id;
       return this;
     }
 
-    /**
-     * Set the cover image of the playlist to be built.
-     *
-     * @param images An array of images in different sizes.
-     * @return A {@link Playlist.Builder}.
-     */
     public Builder setImages(Image... images) {
       this.images = images;
       return this;
     }
 
-    /**
-     * Set the name of the playlist to be built.
-     *
-     * @param name The playlist name.
-     * @return A {@link Playlist.Builder}.
-     */
     public Builder setName(String name) {
       this.name = name;
       return this;
     }
 
-    /**
-     * Set the owner of the playlist to be built.
-     *
-     * @param owner A user object.
-     * @return A {@link Playlist.Builder}.
-     */
     public Builder setOwner(User owner) {
       this.owner = owner;
       return this;
     }
 
-    /**
-     * Set whether the playlist to be built is available in public or not.
-     *
-     * @param publicAccess {@code true} the playlist is public, {@code false} the playlist is private, {@code null}
-     *                     the playlist status is not relevant.
-     * @return A {@link Playlist.Builder}.
-     */
     public Builder setPublicAccess(Boolean publicAccess) {
       this.publicAccess = publicAccess;
       return this;
     }
 
-    /**
-     * Set the version identifier for the playlist to be built.
-     *
-     * @param snapshotId The version identifier for the playlist.
-     * @return A {@link Playlist.Builder}.
-     */
     public Builder setSnapshotId(String snapshotId) {
       this.snapshotId = snapshotId;
       return this;
     }
 
-    /**
-     * Set the items of the playlist to be built.
-     *
-     * @param items Information about the items of the playlist.
-     * @return A {@link Playlist.Builder}.
-     */
     public Builder setItems(Paging<PlaylistTrack> items) {
       this.items = items;
       return this;
     }
 
-    /**
-     * Set the type of the model object. In this case "playlist".
-     *
-     * @param type The model object type.
-     * @return A {@link Playlist.Builder}.
-     */
     public Builder setType(ModelObjectType type) {
       this.type = type;
       return this;
@@ -412,9 +330,6 @@ public class Playlist extends AbstractModelObject implements IPlaylist<Paging<Pl
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<Playlist> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }

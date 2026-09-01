@@ -53,19 +53,10 @@ public class Disallows extends AbstractModelObject {
   public static final class Builder extends AbstractModelObject.Builder {
     private EnumSet<Action> disallowedActions;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
 
-    /**
-     * Set the set of disallowed actions.
-     *
-     * @param disallowedActions The set of disallowed actions.
-     * @return A {@link Disallows.Builder}.
-     */
     public Builder setDisallowedActions(EnumSet<Action> disallowedActions) {
       this.disallowedActions = disallowedActions;
       return this;
@@ -82,9 +73,6 @@ public class Disallows extends AbstractModelObject {
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<Disallows> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }

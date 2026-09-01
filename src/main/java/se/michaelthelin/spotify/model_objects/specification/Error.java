@@ -55,9 +55,6 @@ public class Error extends AbstractModelObject {
     private Integer status;
     private String message;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
@@ -75,12 +72,6 @@ public class Error extends AbstractModelObject {
       return this;
     }
 
-    /**
-     * The error message setter.
-     *
-     * @param message A short description of the cause of the error.
-     * @return A {@link Error.Builder}.
-     */
     public Builder setMessage(String message) {
       this.message = message;
       return this;
@@ -97,9 +88,6 @@ public class Error extends AbstractModelObject {
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<Error> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }

@@ -114,31 +114,15 @@ public class RecommendationsSeed extends AbstractModelObject {
     private Integer initialPoolSize;
     private ModelObjectType type;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
 
-    /**
-     * The after filtering size setter.
-     *
-     * @param afterFilteringSize The number of tracks available after {@code min_*} and {@code max_*} filters have been
-     *                           applied.
-     * @return A {@link RecommendationsSeed.Builder}.
-     */
     public Builder setAfterFilteringSize(Integer afterFilteringSize) {
       this.afterFilteringSize = afterFilteringSize;
       return this;
     }
 
-    /**
-     * The after relinking size setter.
-     *
-     * @param afterRelinkingSize The number of tracks available after relinking for regional availability.
-     * @return A {@link RecommendationsSeed.Builder}.
-     */
     public Builder setAfterRelinkingSize(Integer afterRelinkingSize) {
       this.afterRelinkingSize = afterRelinkingSize;
       return this;
@@ -157,35 +141,16 @@ public class RecommendationsSeed extends AbstractModelObject {
       return this;
     }
 
-    /**
-     * The ID setter.
-     *
-     * @param id The ID used to select this seed. This will be the same as the string used in the {@code seed_artists},
-     *           {@code seed_tracks} or {@code seed_genres} request parameter.
-     * @return A {@link RecommendationsSeed.Builder}.
-     */
     public Builder setId(String id) {
       this.id = id;
       return this;
     }
 
-    /**
-     * The initial pool size setter.
-     *
-     * @param initialPoolSize The number of recommended tracks available for this seed.
-     * @return A {@link RecommendationsSeed.Builder}.
-     */
     public Builder setInitialPoolSize(Integer initialPoolSize) {
       this.initialPoolSize = initialPoolSize;
       return this;
     }
 
-    /**
-     * The model object type setter.
-     *
-     * @param type The model object type of this seed. One of {@code artist}, {@code track} or {@code genre}.
-     * @return A {@link RecommendationsSeed.Builder}.
-     */
     public Builder setType(ModelObjectType type) {
       this.type = type;
       return this;
@@ -202,9 +167,6 @@ public class RecommendationsSeed extends AbstractModelObject {
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<RecommendationsSeed> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }

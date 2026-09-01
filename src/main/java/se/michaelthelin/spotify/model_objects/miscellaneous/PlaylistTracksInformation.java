@@ -54,30 +54,15 @@ public class PlaylistTracksInformation extends AbstractModelObject implements IH
     private String href;
     private Integer total;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
 
-    /**
-     * Set href of Spotify Web API endpoint of the playlist tracks information object to be built.
-     *
-     * @param href Spotify Web API endpoint URL.
-     * @return A {@link PlaylistTracksInformation.Builder}.
-     */
     public Builder setHref(String href) {
       this.href = href;
       return this;
     }
 
-    /**
-     * Set the total amount of tracks in the playlist.
-     *
-     * @param total Total amount of tracks.
-     * @return A {@link PlaylistTracksInformation.Builder}.
-     */
     public Builder setTotal(Integer total) {
       this.total = total;
       return this;
@@ -94,9 +79,6 @@ public class PlaylistTracksInformation extends AbstractModelObject implements IH
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<PlaylistTracksInformation> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }

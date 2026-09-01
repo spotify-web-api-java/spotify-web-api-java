@@ -278,63 +278,30 @@ public class EpisodeSimplified extends AbstractModelObject implements ISearchMod
     private ModelObjectType type;
     private String uri;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
 
-    /**
-     * Set the URL to a audio preview for the episode to be built.
-     *
-     * @param audioPreviewUrl The URL to an audio preview.
-     * @return A {@link EpisodeSimplified.Builder}.
-     */
     public Builder setAudioPreviewUrl(String audioPreviewUrl) {
       this.audioPreviewUrl = audioPreviewUrl;
       return this;
     }
 
-    /**
-     * Set the description for the episode to be built.
-     *
-     * @param description The description of the episode.
-     * @return A {@link EpisodeSimplified.Builder}.
-     */
     public Builder setDescription(String description) {
       this.description = description;
       return this;
     }
 
-    /**
-     * Set the HTML description for the episode to be built.
-     *
-     * @param htmlDescription The description of the episode, which may contain HTML tags.
-     * @return A {@link EpisodeSimplified.Builder}.
-     */
     public Builder setHtmlDescription(String htmlDescription) {
       this.htmlDescription = htmlDescription;
       return this;
     }
 
-    /**
-     * Set the duration for the episode to be built.
-     *
-     * @param durationMs The duration of the episode in milliseconds.
-     * @return A {@link EpisodeSimplified.Builder}.
-     */
     public Builder setDurationMs(Integer durationMs) {
       this.durationMs = durationMs;
       return this;
     }
 
-    /**
-     * Set whether the episode to be built is explicit or not.
-     *
-     * @param explicit Whether or not the episode has explicit content (true = yes it does; false = no it does not OR unknown).
-     * @return A {@link EpisodeSimplified.Builder}.
-     */
     public Builder setExplicit(Boolean explicit) {
       this.explicit = explicit;
       return this;
@@ -351,12 +318,6 @@ public class EpisodeSimplified extends AbstractModelObject implements ISearchMod
       return this;
     }
 
-    /**
-     * Set the link to the Web API endpoint providing full details of the episode to be built.
-     *
-     * @param href The link to the Web API endpoint providing full details of the episode.
-     * @return A {@link EpisodeSimplified.Builder}.
-     */
     public Builder setHref(String href) {
       this.href = href;
       return this;
@@ -384,23 +345,11 @@ public class EpisodeSimplified extends AbstractModelObject implements ISearchMod
       return this;
     }
 
-    /**
-     * Set whether the episode to be built is hosted outside of Spotify's CDN.
-     *
-     * @param externallyHosted True if the episode is hosted outside of Spotify’s CDN.
-     * @return A {@link EpisodeSimplified.Builder}.
-     */
     public Builder setExternallyHosted(Boolean externallyHosted) {
       isExternallyHosted = externallyHosted;
       return this;
     }
 
-    /**
-     * Set whether the episode to be built is playable in the given market.
-     *
-     * @param playable True if the episode is playable in the given market. Otherwise false.
-     * @return A {@link EpisodeSimplified.Builder}.
-     */
     public Builder setPlayable(Boolean playable) {
       isPlayable = playable;
       return this;
@@ -417,23 +366,11 @@ public class EpisodeSimplified extends AbstractModelObject implements ISearchMod
       return this;
     }
 
-    /**
-     * Set the name for the episode to be built.
-     *
-     * @param name The name of the episode.
-     * @return A {@link EpisodeSimplified.Builder}.
-     */
     public Builder setName(String name) {
       this.name = name;
       return this;
     }
 
-    /**
-     * Set the release date for the episode to be built.
-     *
-     * @param releaseDate The release date of the episode.
-     * @return A {@link EpisodeSimplified.Builder}.
-     */
     public Builder setReleaseDate(String releaseDate) {
       this.releaseDate = releaseDate;
       return this;
@@ -494,9 +431,6 @@ public class EpisodeSimplified extends AbstractModelObject implements ISearchMod
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<EpisodeSimplified> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }

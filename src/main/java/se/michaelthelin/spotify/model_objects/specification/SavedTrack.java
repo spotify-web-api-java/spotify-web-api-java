@@ -56,30 +56,15 @@ public class SavedTrack extends AbstractModelObject {
     private Date addedAt;
     private Track track;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
 
-    /**
-     * Set the "added at" date of the saved track to be built.
-     *
-     * @param addedAt The date and time the track was saved.
-     * @return A {@link SavedTrack.Builder}.
-     */
     public Builder setAddedAt(Date addedAt) {
       this.addedAt = addedAt;
       return this;
     }
 
-    /**
-     * Set the full track object of the saved track to be built.
-     *
-     * @param track Information about the track.
-     * @return A {@link SavedTrack.Builder}.
-     */
     public Builder setTrack(Track track) {
       this.track = track;
       return this;
@@ -96,9 +81,6 @@ public class SavedTrack extends AbstractModelObject {
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<SavedTrack> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }

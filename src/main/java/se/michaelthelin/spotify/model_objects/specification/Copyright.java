@@ -56,9 +56,6 @@ public class Copyright extends AbstractModelObject {
     private String text;
     private CopyrightType type;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
@@ -96,9 +93,6 @@ public class Copyright extends AbstractModelObject {
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<Copyright> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }

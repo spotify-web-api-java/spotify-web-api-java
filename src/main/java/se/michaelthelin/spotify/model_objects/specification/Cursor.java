@@ -45,19 +45,10 @@ public class Cursor extends AbstractModelObject {
   public static final class Builder extends AbstractModelObject.Builder {
     private String after;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
 
-    /**
-     * The after key setter.
-     *
-     * @param after The cursor to use as key to find the next page of items.
-     * @return A {@link Cursor.Builder}.
-     */
     public Builder setAfter(String after) {
       this.after = after;
       return this;
@@ -74,9 +65,6 @@ public class Cursor extends AbstractModelObject {
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<Cursor> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }

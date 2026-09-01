@@ -138,9 +138,6 @@ public class AudioAnalysis extends AbstractModelObject {
     private AudioAnalysisMeasure[] tatums;
     private AudioAnalysisTrack track;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
@@ -234,9 +231,6 @@ public class AudioAnalysis extends AbstractModelObject {
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<AudioAnalysis> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }

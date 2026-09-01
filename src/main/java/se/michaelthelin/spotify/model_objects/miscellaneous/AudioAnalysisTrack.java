@@ -400,9 +400,6 @@ public class AudioAnalysisTrack extends AbstractModelObject {
     private String rhythmString;
     private Float rhythmVersion;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
@@ -704,9 +701,6 @@ public class AudioAnalysisTrack extends AbstractModelObject {
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<AudioAnalysisTrack> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }

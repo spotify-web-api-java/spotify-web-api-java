@@ -65,30 +65,15 @@ public class PlaybackQueue extends AbstractModelObject {
     private IPlaylistItem currentlyPlaying;
     private List<IPlaylistItem> queue;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
 
-    /**
-     * The item representing the user's currently playing item setter.
-     *
-     * @param currentlyPlaying The item representing the user's currently playing item.
-     * @return A {@link PlaybackQueue.Builder}.
-     */
     public Builder setCurrentlyPlaying(IPlaylistItem currentlyPlaying) {
       this.currentlyPlaying = currentlyPlaying;
       return this;
     }
 
-    /**
-     * The items that are in the user's queue for the upcoming playback setter.
-     *
-     * @param queue The items that are in the user's queue for the upcoming playback.
-     * @return A {@link PlaybackQueue.Builder}.
-     */
     public Builder setQueue(List<IPlaylistItem> queue) {
       this.queue = queue;
       return this;
@@ -105,9 +90,6 @@ public class PlaybackQueue extends AbstractModelObject {
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<PlaybackQueue> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }

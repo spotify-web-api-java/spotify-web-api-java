@@ -62,9 +62,6 @@ public class ExternalUrl extends AbstractModelObject {
   public static final class Builder extends AbstractModelObject.Builder {
     private Map<String, String> externalUrls;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
@@ -92,9 +89,6 @@ public class ExternalUrl extends AbstractModelObject {
   @SuppressWarnings("unchecked")
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<ExternalUrl> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }

@@ -135,9 +135,6 @@ public class AudioAnalysisSegment extends AbstractModelObject {
     private float[] pitches;
     private float[] timbre;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
@@ -230,9 +227,6 @@ public class AudioAnalysisSegment extends AbstractModelObject {
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<AudioAnalysisSegment> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }

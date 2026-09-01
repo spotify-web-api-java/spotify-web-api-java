@@ -56,30 +56,15 @@ public class SavedEpisode extends AbstractModelObject {
     private Date addedAt;
     private Episode episode;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
 
-    /**
-     * Set the "added at" date of the saved episode to be built.
-     *
-     * @param addedAt The date and time the episode was saved.
-     * @return A {@link SavedEpisode.Builder}.
-     */
     public Builder setAddedAt(Date addedAt) {
       this.addedAt = addedAt;
       return this;
     }
 
-    /**
-     * Set the full episode object of the saved episode to be built.
-     *
-     * @param episode Information about the episode.
-     * @return A {@link SavedEpisode.Builder}.
-     */
     public Builder setEpisode(Episode episode) {
       this.episode = episode;
       return this;
@@ -96,9 +81,6 @@ public class SavedEpisode extends AbstractModelObject {
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<SavedEpisode> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }

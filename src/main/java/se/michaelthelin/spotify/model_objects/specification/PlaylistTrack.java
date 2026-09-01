@@ -87,52 +87,25 @@ public class PlaylistTrack extends AbstractModelObject {
     private Boolean isLocal;
     private IPlaylistItem item;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
 
-    /**
-     * Set the "added at" date of the playlist track to be built.
-     *
-     * @param addedAt The date and time the track or episode was added.
-     * @return A {@link PlaylistTrack.Builder}.
-     */
     public Builder setAddedAt(Date addedAt) {
       this.addedAt = addedAt;
       return this;
     }
 
-    /**
-     * Set the user who added the track or episode to the playlist.
-     *
-     * @param addedBy The Spotify user who added the track or episode.
-     * @return A {@link PlaylistTrack.Builder}.
-     */
     public Builder setAddedBy(User addedBy) {
       this.addedBy = addedBy;
       return this;
     }
 
-    /**
-     * Set whether the track to be built is local or not.
-     *
-     * @param isLocal Whether this track or episode is a local file or not.
-     * @return A {@link PlaylistTrack.Builder}.
-     */
     public Builder setIsLocal(Boolean isLocal) {
       this.isLocal = isLocal;
       return this;
     }
 
-    /**
-     * Set the full track or episode object of the playlist item to be built.
-     *
-     * @param item Information about the item.
-     * @return A {@link PlaylistTrack.Builder}.
-     */
     public Builder setItem(IPlaylistItem item) {
       this.item = item;
       return this;
@@ -149,9 +122,6 @@ public class PlaylistTrack extends AbstractModelObject {
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<PlaylistTrack> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }

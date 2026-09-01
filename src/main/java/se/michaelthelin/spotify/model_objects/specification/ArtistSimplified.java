@@ -112,9 +112,6 @@ public class ArtistSimplified extends AbstractModelObject implements IArtist {
     private ModelObjectType type;
     private String uri;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
@@ -130,12 +127,6 @@ public class ArtistSimplified extends AbstractModelObject implements IArtist {
       return this;
     }
 
-    /**
-     * Set href of Spotify Web API endpoint of the artist to be built.
-     *
-     * @param href Spotify Web API endpoint URL.
-     * @return A {@link ArtistSimplified.Builder}.
-     */
     public Builder setHref(String href) {
       this.href = href;
       return this;
@@ -152,12 +143,6 @@ public class ArtistSimplified extends AbstractModelObject implements IArtist {
       return this;
     }
 
-    /**
-     * Set the name of the artist to be built.
-     *
-     * @param name The artist name.
-     * @return A {@link ArtistSimplified.Builder}.
-     */
     public Builder setName(String name) {
       this.name = name;
       return this;
@@ -197,9 +182,6 @@ public class ArtistSimplified extends AbstractModelObject implements IArtist {
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<ArtistSimplified> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }

@@ -124,9 +124,6 @@ public class AudioAnalysisMeta extends AbstractModelObject {
     private Float analysisTime;
     private String inputProcess;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
@@ -219,9 +216,6 @@ public class AudioAnalysisMeta extends AbstractModelObject {
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<AudioAnalysisMeta> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }

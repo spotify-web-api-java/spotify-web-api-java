@@ -42,19 +42,10 @@ public class Narrator extends AbstractModelObject {
   public static final class Builder extends AbstractModelObject.Builder {
     private String name;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
 
-    /**
-     * Set the name of the Narrator to be built.
-     *
-     * @param name The name of the Narrator.
-     * @return A {@link Narrator.Builder}.
-     */
     public Builder setName(String name) {
       this.name = name;
       return this;
@@ -71,9 +62,6 @@ public class Narrator extends AbstractModelObject {
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<Narrator> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }

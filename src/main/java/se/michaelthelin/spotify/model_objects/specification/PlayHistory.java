@@ -69,41 +69,20 @@ public class PlayHistory extends AbstractModelObject {
     private Date playedAt;
     private Context context;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
 
-    /**
-     * The track setter.
-     *
-     * @param track The track the user listened to.
-     * @return A {@link PlayHistory.Builder}.
-     */
     public Builder setTrack(Track track) {
       this.track = track;
       return this;
     }
 
-    /**
-     * The played at date setter.
-     *
-     * @param playedAt The date and time the track was played.
-     * @return A {@link PlayHistory.Builder}.
-     */
     public Builder setPlayedAt(Date playedAt) {
       this.playedAt = playedAt;
       return this;
     }
 
-    /**
-     * The context setter.
-     *
-     * @param context The context the track was played from.
-     * @return A {@link PlayHistory.Builder}.
-     */
     public Builder setContext(Context context) {
       this.context = context;
       return this;
@@ -120,9 +99,6 @@ public class PlayHistory extends AbstractModelObject {
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<PlayHistory> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }

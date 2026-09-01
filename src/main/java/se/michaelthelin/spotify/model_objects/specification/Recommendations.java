@@ -56,30 +56,15 @@ public class Recommendations extends AbstractModelObject {
     private RecommendationsSeed[] seeds;
     private Track[] tracks;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
 
-    /**
-     * The recommendation seeds setter.
-     *
-     * @param seeds An array of recommendation seed objects.
-     * @return A {@link Recommendations.Builder}.
-     */
     public Builder setSeeds(RecommendationsSeed... seeds) {
       this.seeds = seeds;
       return this;
     }
 
-    /**
-     * The recommended tracks setter.
-     *
-     * @param tracks An array of track objects.
-     * @return A {@link Recommendations.Builder}.
-     */
     public Builder setTracks(Track... tracks) {
       this.tracks = tracks;
       return this;
@@ -96,9 +81,6 @@ public class Recommendations extends AbstractModelObject {
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<Recommendations> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }

@@ -195,6 +195,11 @@
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-javadoc-plugin</artifactId>
             <version>3.12.0</version>
+            <configuration>
+              <!-- accessors and builder setters in model_objects carry no prose of their own,
+                   so only broken syntax and dead references should be reported -->
+              <doclint>all,-missing</doclint>
+            </configuration>
           </plugin>
         </plugins>
       </build>
@@ -256,6 +261,7 @@
               </execution>
             </executions>
             <configuration>
+              <doclint>all,-missing</doclint>
               <outputDirectory>${project.basedir}/</outputDirectory>
             </configuration>
           </plugin>

@@ -54,30 +54,15 @@ public class ResumePoint extends AbstractModelObject {
     private Boolean fullyPlayed;
     private Integer resumePositionMs;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
 
-    /**
-     * Set whether the episode has been fully played by the user.
-     *
-     * @param fullyPlayed {@code true} if episode has been fully played by the user.
-     * @return A {@link ResumePoint.Builder}.
-     */
     public Builder setFullyPlayed(Boolean fullyPlayed) {
       this.fullyPlayed = fullyPlayed;
       return this;
     }
 
-    /**
-     * Set the user’s most recent position in the episode in milliseconds.
-     *
-     * @param resumePositionMs The user’s most recent position in the episode in milliseconds.
-     * @return A {@link ResumePoint.Builder}.
-     */
     public Builder setResumePositionMs(Integer resumePositionMs) {
       this.resumePositionMs = resumePositionMs;
       return this;
@@ -94,9 +79,6 @@ public class ResumePoint extends AbstractModelObject {
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<ResumePoint> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }

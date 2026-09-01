@@ -68,41 +68,20 @@ public class Image extends AbstractModelObject {
     private String url;
     private Integer width;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
 
-    /**
-     * The height setter.
-     *
-     * @param height The image height in pixels. If unknown: {@code null}.
-     * @return A {@link Image.Builder}.
-     */
     public Builder setHeight(Integer height) {
       this.height = height;
       return this;
     }
 
-    /**
-     * The source URL setter.
-     *
-     * @param url The source URL of the image.
-     * @return A {@link Image.Builder}.
-     */
     public Builder setUrl(String url) {
       this.url = url;
       return this;
     }
 
-    /**
-     * The width setter.
-     *
-     * @param width The image width in pixels. If unknown: {@code null}.
-     * @return A {@link Image.Builder}.
-     */
     public Builder setWidth(Integer width) {
       this.width = width;
       return this;
@@ -119,9 +98,6 @@ public class Image extends AbstractModelObject {
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<Image> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }

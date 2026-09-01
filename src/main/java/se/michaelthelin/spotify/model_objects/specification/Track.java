@@ -258,52 +258,25 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
     private ModelObjectType type;
     private String uri;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
 
-    /**
-     * Set the album of the track to be built.
-     *
-     * @param album The album on which the track appears.
-     * @return A {@link Track.Builder}.
-     */
     public Builder setAlbum(AlbumSimplified album) {
       this.album = album;
       return this;
     }
 
-    /**
-     * Set the artists of the track to be built.
-     *
-     * @param artists The artists who performed the track.
-     * @return A {@link Track.Builder}.
-     */
     public Builder setArtists(ArtistSimplified... artists) {
       this.artists = artists;
       return this;
     }
 
-    /**
-     * Set the disc number of the track to be built.
-     *
-     * @param discNumber The disc number (usually 1 unless the album consists of more than one disc).
-     * @return A {@link Track.Builder}.
-     */
     public Builder setDiscNumber(Integer discNumber) {
       this.discNumber = discNumber;
       return this;
     }
 
-    /**
-     * Set the duration in milliseconds of the track to be built.
-     *
-     * @param durationMs The track length in milliseconds.
-     * @return A {@link Track.Builder}.
-     */
     public Builder setDurationMs(Integer durationMs) {
       this.durationMs = durationMs;
       return this;
@@ -321,101 +294,46 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
       return this;
     }
 
-    /**
-     * Set external URLs of the track to be built.
-     *
-     * @param externalUrls Known external URLs for the track.
-     * @return A {@link Track.Builder}.
-     */
     public Builder setExternalUrls(ExternalUrl externalUrls) {
       this.externalUrls = externalUrls;
       return this;
     }
 
-    /**
-     * Set href of Spotify Web API endpoint of the track to be built.
-     *
-     * @param href A link to the Web API endpoint providing full details of the track.
-     * @return A {@link Track.Builder}.
-     */
     public Builder setHref(String href) {
       this.href = href;
       return this;
     }
 
-    /**
-     * Set track ID of the track to be built.
-     *
-     * @param id The Spotify ID for the track.
-     * @return A {@link Track.Builder}.
-     */
     public Builder setId(String id) {
       this.id = id;
       return this;
     }
 
-    /**
-     * Set whether the track to be built is playable in your market region or not.
-     *
-     * @param isPlayable If {@code true}, the track is playable in the given market. Otherwise {@code false}.
-     * @return A {@link Track.Builder}.
-     */
     public Builder setIsPlayable(Boolean isPlayable) {
       this.isPlayable = isPlayable;
       return this;
     }
 
-    /**
-     * Set the restrictions object of the track to be built.
-     *
-     * @param restrictions The track response will still contain metadata for the original track, and a restrictions
-     *                     object containing the reason why the track is not available.
-     * @return A {@link Track.Builder}.
-     */
     public Builder setRestrictions(Restrictions restrictions) {
       this.restrictions = restrictions;
       return this;
     }
 
-    /**
-     * Set the name of the track to be built.
-     *
-     * @param name Track name.
-     * @return A {@link Track.Builder}.
-     */
     public Builder setName(String name) {
       this.name = name;
       return this;
     }
 
-    /**
-     * Set the preview URL of the track to be built.
-     *
-     * @param previewUrl A link to a 30 second preview (MP3 format) of the track. {@code null} if not available.
-     * @return A {@link Track.Builder}.
-     */
     public Builder setPreviewUrl(String previewUrl) {
       this.previewUrl = previewUrl;
       return this;
     }
 
-    /**
-     * Set the track number of the track to be built.
-     *
-     * @param trackNumber The track number.
-     * @return A {@link Track.Builder}.
-     */
     public Builder setTrackNumber(Integer trackNumber) {
       this.trackNumber = trackNumber;
       return this;
     }
 
-    /**
-     * Set the type of the model object. In this case "track".
-     *
-     * @param type The object type: "track".
-     * @return A {@link Track.Builder}.
-     */
     public Builder setType(ModelObjectType type) {
       this.type = type;
       return this;
@@ -444,9 +362,6 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<Track> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }

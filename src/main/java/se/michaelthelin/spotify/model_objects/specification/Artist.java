@@ -169,9 +169,6 @@ public class Artist extends AbstractModelObject implements IArtistTrackModelObje
     private ModelObjectType type;
     private String uri;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
@@ -198,23 +195,11 @@ public class Artist extends AbstractModelObject implements IArtistTrackModelObje
       return this;
     }
 
-    /**
-     * Set the genres of the artist to be built.
-     *
-     * @param genres Genre names.
-     * @return A {@link Artist.Builder}.
-     */
     public Builder setGenres(String... genres) {
       this.genres = genres;
       return this;
     }
 
-    /**
-     * Set href of Spotify Web API endpoint of the artist to be built.
-     *
-     * @param href Spotify Web API endpoint URL.
-     * @return A {@link Artist.Builder}.
-     */
     public Builder setHref(String href) {
       this.href = href;
       return this;
@@ -242,24 +227,11 @@ public class Artist extends AbstractModelObject implements IArtistTrackModelObje
       return this;
     }
 
-    /**
-     * Set the name of the artist to be built.
-     *
-     * @param name The artist name.
-     * @return A {@link Artist.Builder}.
-     */
     public Builder setName(String name) {
       this.name = name;
       return this;
     }
 
-    /**
-     * Set the popularity of the artist to be built.
-     *
-     * @param popularity The popularity of the artist. The value will be between 0 and 100, with 100 being the
-     *                    most popular.
-     * @return A {@link Artist.Builder}.
-     */
     public Builder setPopularity(Integer popularity) {
       this.popularity = popularity;
       return this;
@@ -299,9 +271,6 @@ public class Artist extends AbstractModelObject implements IArtistTrackModelObje
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<Artist> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }

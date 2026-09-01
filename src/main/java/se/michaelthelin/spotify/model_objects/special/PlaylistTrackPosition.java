@@ -63,30 +63,15 @@ public class PlaylistTrackPosition extends AbstractModelObject {
     private String uri;
     private int[] positions;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
 
-    /**
-     * Sets the Spotify URI of the track.
-     *
-     * @param uri the Spotify URI of the track
-     * @return this builder instance for method chaining
-     */
     public Builder setUri(String uri) {
       this.uri = uri;
       return this;
     }
 
-    /**
-     * Sets the positions where the track should be placed in the playlist.
-     *
-     * @param positions the zero-based positions in the playlist
-     * @return this builder instance for method chaining
-     */
     public Builder setPositions(int... positions) {
       this.positions = positions;
       return this;
@@ -103,9 +88,6 @@ public class PlaylistTrackPosition extends AbstractModelObject {
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<PlaylistTrackPosition> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }

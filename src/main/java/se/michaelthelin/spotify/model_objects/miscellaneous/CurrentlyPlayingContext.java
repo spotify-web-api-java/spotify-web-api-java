@@ -180,107 +180,50 @@ public class CurrentlyPlayingContext extends AbstractModelObject {
     private Actions actions;
     private Boolean smart_shuffle;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
 
-    /**
-     * The active device setter.
-     *
-     * @param device The device that is currently active.
-     * @return A {@link CurrentlyPlayingContext.Builder}.
-     */
     public Builder setDevice(Device device) {
       this.device = device;
       return this;
     }
 
-    /**
-     * The repeat state setter.
-     *
-     * @param repeat_state The repeat state.
-     * @return A {@link CurrentlyPlayingContext.Builder}.
-     */
     public Builder setRepeat_state(String repeat_state) {
       this.repeat_state = repeat_state;
       return this;
     }
 
-    /**
-     * The shuffle state setter.
-     *
-     * @param shuffle_state If shuffle is on or off.
-     * @return A {@link CurrentlyPlayingContext.Builder}.
-     */
     public Builder setShuffle_state(Boolean shuffle_state) {
       this.shuffle_state = shuffle_state;
       return this;
     }
 
-    /**
-     * The playing context setter.
-     *
-     * @param context A Context Object. Can be {@code null}.
-     * @return A {@link CurrentlyPlayingContext.Builder}.
-     */
     public Builder setContext(Context context) {
       this.context = context;
       return this;
     }
 
-    /**
-     * The timestamp setter.
-     *
-     * @param timestamp Unix Millisecond Timestamp when data was fetched.
-     * @return A {@link CurrentlyPlayingContext.Builder}.
-     */
     public Builder setTimestamp(Long timestamp) {
       this.timestamp = timestamp;
       return this;
     }
 
-    /**
-     * The item progress setter.
-     *
-     * @param progress_ms Progress into the currently playing item. Can be {@code null}.
-     * @return A {@link CurrentlyPlayingContext.Builder}.
-     */
     public Builder setProgress_ms(Integer progress_ms) {
       this.progress_ms = progress_ms;
       return this;
     }
 
-    /**
-     * The playing state setter.
-     *
-     * @param is_playing If something is currently playing.
-     * @return A {@link CurrentlyPlayingContext.Builder}.
-     */
     public Builder setIs_playing(Boolean is_playing) {
       this.is_playing = is_playing;
       return this;
     }
 
-    /**
-     * The currently playing item setter.
-     *
-     * @param item If something is currently playing.
-     * @return A {@link CurrentlyPlayingContext.Builder}.
-     */
     public Builder setItem(IPlaylistItem item) {
       this.item = item;
       return this;
     }
 
-    /**
-     * The currently playing type setter.
-     *
-     * @param currentlyPlayingType The type of the currently playing item.
-     * @return A {@link CurrentlyPlayingContext.Builder}.
-     */
     public Builder setCurrentlyPlayingType(CurrentlyPlayingType currentlyPlayingType) {
       this.currentlyPlayingType = currentlyPlayingType;
       return this;
@@ -297,12 +240,6 @@ public class CurrentlyPlayingContext extends AbstractModelObject {
       return this;
     }
 
-    /**
-     * The smart shuffle setter.
-     *
-     * @param smart_shuffle If smart shuffle is on or off.
-     * @return A {@link CurrentlyPlayingContext.Builder}.
-     */
     public Builder setSmart_shuffle(Boolean smart_shuffle) {
       this.smart_shuffle = smart_shuffle;
       return this;
@@ -319,9 +256,6 @@ public class CurrentlyPlayingContext extends AbstractModelObject {
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<CurrentlyPlayingContext> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }

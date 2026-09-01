@@ -35,9 +35,6 @@ public abstract class AbstractModelObject implements IModelObject {
    * Each model object needs to implement its own builder class.
    */
   public static abstract class Builder implements IModelObject.Builder {
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
@@ -50,9 +47,6 @@ public abstract class AbstractModelObject implements IModelObject {
    */
   public static abstract class JsonUtil<T> implements IModelObject.IJsonUtil<T> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }

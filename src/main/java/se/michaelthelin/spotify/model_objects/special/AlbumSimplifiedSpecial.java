@@ -219,9 +219,6 @@ public class AlbumSimplifiedSpecial extends AbstractModelObject implements ISear
     private ModelObjectType type;
     private String uri;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
@@ -272,12 +269,6 @@ public class AlbumSimplifiedSpecial extends AbstractModelObject implements ISear
       return this;
     }
 
-    /**
-     * Set href of Spotify Web API endpoint of the album to be built.
-     *
-     * @param href Spotify Web API endpoint URL.
-     * @return A {@link AlbumSimplifiedSpecial.Builder}.
-     */
     public Builder setHref(String href) {
       this.href = href;
       return this;
@@ -305,23 +296,11 @@ public class AlbumSimplifiedSpecial extends AbstractModelObject implements ISear
       return this;
     }
 
-    /**
-     * Set the name of the album to be built.
-     *
-     * @param name The album name.
-     * @return A {@link AlbumSimplifiedSpecial.Builder}.
-     */
     public Builder setName(String name) {
       this.name = name;
       return this;
     }
 
-    /**
-     * Set the release date of the album to be built.
-     *
-     * @param releaseDate The release date of the album.
-     * @return A {@link AlbumSimplifiedSpecial.Builder}.
-     */
     public Builder setReleaseDate(String releaseDate) {
       this.releaseDate = releaseDate;
       return this;
@@ -338,12 +317,6 @@ public class AlbumSimplifiedSpecial extends AbstractModelObject implements ISear
       return this;
     }
 
-    /**
-     * Set the number of total tracks of the album to be built.
-     *
-     * @param totalTracks The number of total tracks of the album.
-     * @return A {@link AlbumSimplifiedSpecial.Builder}.
-     */
     public Builder setTotalTracks(Integer totalTracks) {
       this.totalTracks = totalTracks;
       return this;
@@ -383,9 +356,6 @@ public class AlbumSimplifiedSpecial extends AbstractModelObject implements ISear
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<AlbumSimplifiedSpecial> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }

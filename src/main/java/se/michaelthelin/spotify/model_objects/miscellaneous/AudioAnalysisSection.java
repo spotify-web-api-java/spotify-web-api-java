@@ -168,9 +168,6 @@ public class AudioAnalysisSection extends AbstractModelObject {
     private Integer timeSignature;
     private Float timeSignatureConfidence;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
@@ -296,9 +293,6 @@ public class AudioAnalysisSection extends AbstractModelObject {
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<AudioAnalysisSection> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }

@@ -214,9 +214,6 @@ public class ShowSimplified extends AbstractModelObject implements ISearchModelO
     private ModelObjectType type;
     private String uri;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
@@ -232,23 +229,11 @@ public class ShowSimplified extends AbstractModelObject implements ISearchModelO
       return this;
     }
 
-    /**
-     * Set the description for the show to be built.
-     *
-     * @param description The description of the show.
-     * @return A {@link ShowSimplified.Builder}.
-     */
     public Builder setDescription(String description) {
       this.description = description;
       return this;
     }
 
-    /**
-     * Set whether the show to be built is explicit or not.
-     *
-     * @param explicit Whether or not the show has explicit content (true = yes it does; false = no it does not OR unknown).
-     * @return A {@link ShowSimplified.Builder}.
-     */
     public Builder setExplicit(Boolean explicit) {
       this.explicit = explicit;
       return this;
@@ -265,12 +250,6 @@ public class ShowSimplified extends AbstractModelObject implements ISearchModelO
       return this;
     }
 
-    /**
-     * Set the link to the Web API endpoint providing full details of the show to be built.
-     *
-     * @param href The link to the Web API endpoint providing full details of the show.
-     * @return A {@link ShowSimplified.Builder}.
-     */
     public Builder setHref(String href) {
       this.href = href;
       return this;
@@ -298,12 +277,6 @@ public class ShowSimplified extends AbstractModelObject implements ISearchModelO
       return this;
     }
 
-    /**
-     * Set whether the show to be built is hosted outside of Spotify's CDN.
-     *
-     * @param externallyHosted True if the show is hosted outside of Spotify’s CDN.
-     * @return A {@link ShowSimplified.Builder}.
-     */
     public Builder setExternallyHosted(Boolean externallyHosted) {
       isExternallyHosted = externallyHosted;
       return this;
@@ -320,23 +293,11 @@ public class ShowSimplified extends AbstractModelObject implements ISearchModelO
       return this;
     }
 
-    /**
-     * Set the media type of the show.
-     *
-     * @param mediaType The media type of the show.
-     * @return A {@link ShowSimplified.Builder}.
-     */
     public Builder setMediaType(String mediaType) {
       this.mediaType = mediaType;
       return this;
     }
 
-    /**
-     * Set the name for the show to be built.
-     *
-     * @param name The name of the show.
-     * @return A {@link ShowSimplified.Builder}.
-     */
     public Builder setName(String name) {
       this.name = name;
       return this;
@@ -375,9 +336,6 @@ public class ShowSimplified extends AbstractModelObject implements ISearchModelO
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<ShowSimplified> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }

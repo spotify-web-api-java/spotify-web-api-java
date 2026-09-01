@@ -240,63 +240,30 @@ public class User extends AbstractModelObject {
     private ModelObjectType type;
     private String uri;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
 
-    /**
-     * Set the account ID of the user object to be built.
-     *
-     * @param accountId An alphanumeric string identifying the account.
-     * @return A {@link User.Builder}.
-     */
     public Builder setAccountId(String accountId) {
       this.accountId = accountId;
       return this;
     }
 
-    /**
-     * Set the birthday of the user object to be built.
-     *
-     * @param birthdate The user's date-of-birth.
-     * @return A {@link User.Builder}.
-     */
     public Builder setBirthdate(String birthdate) {
       this.birthdate = birthdate;
       return this;
     }
 
-    /**
-     * Set the country of the user to be built.
-     *
-     * @param country An ISO 3166-1 alpha-2 country code.
-     * @return A {@link User.Builder}.
-     */
     public Builder setCountry(String country) {
       this.country = country;
       return this;
     }
 
-    /**
-     * Set the display name of the user to be built. If the user hasn't a display name, set {@code null} instead.
-     *
-     * @param displayName The name displayed on the user's profile. {@code null} if not available.
-     * @return A {@link User.Builder}.
-     */
     public Builder setDisplayName(String displayName) {
       this.displayName = displayName;
       return this;
     }
 
-    /**
-     * Set the email address of the user to be built.
-     *
-     * @param email The user's email address.
-     * @return A {@link User.Builder}.
-     */
     public Builder setEmail(String email) {
       this.email = email;
       return this;
@@ -313,12 +280,6 @@ public class User extends AbstractModelObject {
       return this;
     }
 
-    /**
-     * Set external urls of the user to be built.
-     *
-     * @param externalUrls Known external URLs for this user.
-     * @return A {@link User.Builder}.
-     */
     public Builder setExternalUrls(ExternalUrl externalUrls) {
       this.externalUrls = externalUrls;
       return this;
@@ -335,12 +296,6 @@ public class User extends AbstractModelObject {
       return this;
     }
 
-    /**
-     * Set href of Spotify api endpoint of the user to be built.
-     *
-     * @param href A link to the Spotify Web API endpoint for this user.
-     * @return A {@link User.Builder}.
-     */
     public Builder setHref(String href) {
       this.href = href;
       return this;
@@ -358,45 +313,21 @@ public class User extends AbstractModelObject {
       return this;
     }
 
-    /**
-     * Set the profile image of the user to be built.
-     *
-     * @param images The user's profile image.
-     * @return A {@link User.Builder}.
-     */
     public Builder setImages(Image... images) {
       this.images = images;
       return this;
     }
 
-    /**
-     * Set the Spotify subscription level of the user to be built.
-     *
-     * @param product The user's Spotify subscription level: {@code "premium"}, {@code "free"}, or {@code "open"}.
-     * @return A {@link User.Builder}.
-     */
     public Builder setProduct(String product) {
       this.product = product;
       return this;
     }
 
-    /**
-     * Set the type of the model object. In this case "user".
-     *
-     * @param type The object type: "user"
-     * @return A {@link User.Builder}.
-     */
     public Builder setType(ModelObjectType type) {
       this.type = type;
       return this;
     }
 
-    /**
-     * Set the Spotify URI of the user to be built.
-     *
-     * @param uri The Spotify URI for the user.
-     * @return A {@link User.Builder}.
-     */
     public Builder setUri(String uri) {
       this.uri = uri;
       return this;
@@ -413,9 +344,6 @@ public class User extends AbstractModelObject {
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<User> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }

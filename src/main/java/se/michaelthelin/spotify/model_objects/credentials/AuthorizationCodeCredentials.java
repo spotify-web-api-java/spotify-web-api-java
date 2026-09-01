@@ -100,9 +100,6 @@ public class AuthorizationCodeCredentials extends AbstractModelObject {
     private Integer expiresIn;
     private String refreshToken;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
@@ -174,9 +171,6 @@ public class AuthorizationCodeCredentials extends AbstractModelObject {
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<AuthorizationCodeCredentials> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }

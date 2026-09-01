@@ -139,85 +139,40 @@ public class SearchResult extends AbstractModelObject implements IArtistTrackMod
     private Paging<ShowSimplified> shows;
     private Paging<Track> tracks;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
 
-    /**
-     * The albums setter.
-     *
-     * @param albums Albums from the search result.
-     * @return A {@link SearchResult.Builder}.
-     */
     public Builder setAlbums(Paging<AlbumSimplified> albums) {
       this.albums = albums;
       return this;
     }
 
-    /**
-     * The artists setter.
-     *
-     * @param artists Artists from the search result.
-     * @return A {@link SearchResult.Builder}.
-     */
     public Builder setArtists(Paging<Artist> artists) {
       this.artists = artists;
       return this;
     }
 
-    /**
-     * The audiobooks setter.
-     *
-     * @param audiobooks Audiobooks from the search result.
-     * @return A {@link SearchResult.Builder}.
-     */
     public Builder setAudiobooks(Paging<AudiobookSimplified> audiobooks) {
       this.audiobooks = audiobooks;
       return this;
     }
 
-    /**
-     * The episodes setter.
-     *
-     * @param episodes Episodes from the search result.
-     * @return A {@link SearchResult.Builder}.
-     */
     public Builder setEpisodes(Paging<EpisodeSimplified> episodes) {
       this.episodes = episodes;
       return this;
     }
 
-    /**
-     * The playlists setter.
-     *
-     * @param playlists Playlists from the search result.
-     * @return A {@link SearchResult.Builder}.
-     */
     public Builder setPlaylists(Paging<PlaylistSimplified> playlists) {
       this.playlists = playlists;
       return this;
     }
 
-    /**
-     * The shows setter.
-     *
-     * @param shows Shows from the search result.
-     * @return A {@link SearchResult.Builder}.
-     */
     public Builder setShows(Paging<ShowSimplified> shows) {
       this.shows = shows;
       return this;
     }
 
-    /**
-     * The tracks setter.
-     *
-     * @param tracks Tracks from the search result.
-     * @return A {@link SearchResult.Builder}.
-     */
     public Builder setTracks(Paging<Track> tracks) {
       this.tracks = tracks;
       return this;
@@ -234,9 +189,6 @@ public class SearchResult extends AbstractModelObject implements IArtistTrackMod
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<SearchResult> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }

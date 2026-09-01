@@ -71,9 +71,6 @@ public class AudioAnalysisMeasure extends AbstractModelObject {
     private Float duration;
     private Float start;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
@@ -122,9 +119,6 @@ public class AudioAnalysisMeasure extends AbstractModelObject {
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<AudioAnalysisMeasure> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }

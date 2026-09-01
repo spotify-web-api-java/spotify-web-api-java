@@ -87,9 +87,6 @@ public class Context extends AbstractModelObject {
     private ExternalUrl externalUrls;
     private String uri;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
@@ -105,34 +102,16 @@ public class Context extends AbstractModelObject {
       return this;
     }
 
-    /**
-     * The context href setter.
-     *
-     * @param href A link to the Spotify Web API endpoint providing full details of the track.
-     * @return A {@link Context.Builder}.
-     */
     public Builder setHref(String href) {
       this.href = href;
       return this;
     }
 
-    /**
-     * The external URLs setter.
-     *
-     * @param externalUrls External URLs for this context.
-     * @return A {@link Context.Builder}.
-     */
     public Builder setExternalUrls(ExternalUrl externalUrls) {
       this.externalUrls = externalUrls;
       return this;
     }
 
-    /**
-     * The Spotify URI setter.
-     *
-     * @param uri Spotify URI for this context.
-     * @return A {@link Context.Builder}.
-     */
     public Builder setUri(String uri) {
       this.uri = uri;
       return this;
@@ -149,9 +128,6 @@ public class Context extends AbstractModelObject {
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<Context> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }

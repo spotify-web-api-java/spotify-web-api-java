@@ -102,63 +102,30 @@ public class TrackLink extends AbstractModelObject {
     private ModelObjectType type;
     private String uri;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
 
-    /**
-     * Set external URLs of the track to be built.
-     *
-     * @param externalUrls Known external URLs for this track.
-     * @return A {@link TrackLink.Builder}.
-     */
     public Builder setExternalUrls(ExternalUrl externalUrls) {
       this.externalUrls = externalUrls;
       return this;
     }
 
-    /**
-     * Set href of Spotify Web API endpoint of the track to be built.
-     *
-     * @param href A link to the Web API endpoint providing full details of the track.
-     * @return A {@link TrackLink.Builder}.
-     */
     public Builder setHref(String href) {
       this.href = href;
       return this;
     }
 
-    /**
-     * Set the Spotify ID of the track to be built.
-     *
-     * @param id A Spotify track ID.
-     * @return A {@link TrackLink.Builder}.
-     */
     public Builder setId(String id) {
       this.id = id;
       return this;
     }
 
-    /**
-     * Set the type of the model object. In this case "track".
-     *
-     * @param type The object type: "track".
-     * @return A {@link TrackLink.Builder}.
-     */
     public Builder setType(ModelObjectType type) {
       this.type = type;
       return this;
     }
 
-    /**
-     * Set the Spotify URI of the track to be built.
-     *
-     * @param uri The Spotify URI for the track.
-     * @return A {@link TrackLink.Builder}.
-     */
     public Builder setUri(String uri) {
       this.uri = uri;
       return this;
@@ -175,9 +142,6 @@ public class TrackLink extends AbstractModelObject {
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<TrackLink> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }

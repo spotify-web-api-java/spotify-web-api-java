@@ -59,9 +59,6 @@ public class AuthenticationError extends AbstractModelObject {
     private String error;
     private String error_description;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
@@ -99,9 +96,6 @@ public class AuthenticationError extends AbstractModelObject {
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<AuthenticationError> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }

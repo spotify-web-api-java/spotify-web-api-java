@@ -47,9 +47,6 @@ public class Actions extends AbstractModelObject {
   public static final class Builder extends AbstractModelObject.Builder {
     private Disallows disallows;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
@@ -76,9 +73,6 @@ public class Actions extends AbstractModelObject {
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<Actions> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }

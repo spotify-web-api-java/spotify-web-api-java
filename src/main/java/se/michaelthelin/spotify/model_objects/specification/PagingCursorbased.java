@@ -116,74 +116,35 @@ public class PagingCursorbased<T> extends AbstractModelObject implements IHasTot
     private Cursor[] cursors;
     private Integer total;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
 
-    /**
-     * The href setter.
-     *
-     * @param href A link to the Web API endpoint returning the full result of the request.
-     * @return A {@link PagingCursorbased.Builder}.
-     */
     public Builder<T> setHref(String href) {
       this.href = href;
       return this;
     }
 
-    /**
-     * The items setter.
-     *
-     * @param items A page of items.
-     * @return A {@link PagingCursorbased.Builder}.
-     */
     public Builder<T> setItems(T[] items) {
       this.items = items;
       return this;
     }
 
-    /**
-     * The request limit setter.
-     *
-     * @param limit The maximum number of items in the response (as set in the query or by default).
-     * @return A {@link PagingCursorbased.Builder}.
-     */
     public Builder<T> setLimit(Integer limit) {
       this.limit = limit;
       return this;
     }
 
-    /**
-     * The next URL setter.
-     *
-     * @param next URL to the next page of items. ({@code null} if none)
-     * @return A {@link PagingCursorbased.Builder}.
-     */
     public Builder<T> setNext(String next) {
       this.next = next;
       return this;
     }
 
-    /**
-     * The cursor setter.
-     *
-     * @param cursors The cursors used to find the next set of items.
-     * @return A {@link PagingCursorbased.Builder}.
-     */
     public Builder<T> setCursors(Cursor... cursors) {
       this.cursors = cursors;
       return this;
     }
 
-    /**
-     * The total amount setter.
-     *
-     * @param total The total number of items available to return.
-     * @return A {@link PagingCursorbased.Builder}.
-     */
     public Builder<T> setTotal(Integer total) {
       this.total = total;
       return this;
@@ -203,9 +164,6 @@ public class PagingCursorbased<T> extends AbstractModelObject implements IHasTot
   @SuppressWarnings("unchecked")
   public static final class JsonUtil<X> extends AbstractModelObject.JsonUtil<PagingCursorbased<X>> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }

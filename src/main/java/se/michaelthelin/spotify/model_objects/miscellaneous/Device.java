@@ -135,96 +135,45 @@ public class Device extends AbstractModelObject {
     private String type;
     private Integer volume_percent;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
 
-    /**
-     * The device ID setter.
-     *
-     * @param id The device ID. This may be {@code null}.
-     * @return A {@link Device.Builder}.
-     */
     public Builder setId(String id) {
       this.id = id;
       return this;
     }
 
-    /**
-     * The active device state setter.
-     *
-     * @param is_active If this device is the currently active device.
-     * @return A {@link Device.Builder}.
-     */
     public Builder setIs_active(Boolean is_active) {
       this.is_active = is_active;
       return this;
     }
 
-    /**
-     * The private session state setter.
-     *
-     * @param is_private_session If this device is currently in a private session.
-     * @return A {@link Device.Builder}.
-     */
     public Builder setIs_private_session(Boolean is_private_session) {
       this.is_private_session = is_private_session;
       return this;
     }
 
-    /**
-     * The device restriction state setter.
-     *
-     * @param is_restricted Whether controlling this device is restricted.
-     * @return A {@link Device.Builder}.
-     */
     public Builder setIs_restricted(Boolean is_restricted) {
       this.is_restricted = is_restricted;
       return this;
     }
 
-    /**
-     * The device name setter.
-     *
-     * @param name The name of the device.
-     * @return A {@link Device.Builder}.
-     */
     public Builder setName(String name) {
       this.name = name;
       return this;
     }
 
-    /**
-     * The supports volume state setter.
-     *
-     * @param supports_volume If this device can be used to set the volume.
-     * @return A {@link Device.Builder}.
-     */
     public Builder setSupports_volume(Boolean supports_volume) {
       this.supports_volume = supports_volume;
       return this;
     }
 
-    /**
-     * The device type setter.
-     *
-     * @param type Device type, such as "Computer", "Smartphone" or "Speaker".
-     * @return A {@link Device.Builder}.
-     */
     public Builder setType(String type) {
       this.type = type;
       return this;
     }
 
-    /**
-     * The device volume setter.
-     *
-     * @param volume_percent The current volume in percent. This may be {@code null}.
-     * @return A {@link Device.Builder}.
-     */
     public Builder setVolume_percent(Integer volume_percent) {
       this.volume_percent = volume_percent;
       return this;
@@ -241,9 +190,6 @@ public class Device extends AbstractModelObject {
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<Device> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }

@@ -126,74 +126,35 @@ public class CurrentlyPlaying extends AbstractModelObject {
     private CurrentlyPlayingType currentlyPlayingType;
     private Actions actions;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
 
-    /**
-     * The playing context setter.
-     *
-     * @param context The context the track was played from. Can be {@code null}.
-     * @return A {@link CurrentlyPlaying.Builder}.
-     */
     public Builder setContext(Context context) {
       this.context = context;
       return this;
     }
 
-    /**
-     * The timestamp setter.
-     *
-     * @param timestamp Unix Millisecond Timestamp when data was fetched.
-     * @return A {@link CurrentlyPlaying.Builder}.
-     */
     public Builder setTimestamp(Long timestamp) {
       this.timestamp = timestamp;
       return this;
     }
 
-    /**
-     * The current track progress setter.
-     *
-     * @param progress_ms Progress into the currently playing track. Can be {@code null}.
-     * @return A {@link CurrentlyPlaying.Builder}.
-     */
     public Builder setProgress_ms(Integer progress_ms) {
       this.progress_ms = progress_ms;
       return this;
     }
 
-    /**
-     * The playing state setter.
-     *
-     * @param is_playing If something is currently playing.
-     * @return A {@link CurrentlyPlaying.Builder}.
-     */
     public Builder setIs_playing(Boolean is_playing) {
       this.is_playing = is_playing;
       return this;
     }
 
-    /**
-     * The currently playing item setter.
-     *
-     * @param item The currently playing item. Can be {@code null}.
-     * @return A {@link CurrentlyPlaying.Builder}.
-     */
     public Builder setItem(IPlaylistItem item) {
       this.item = item;
       return this;
     }
 
-    /**
-     * The currently playing type setter.
-     *
-     * @param currentlyPlayingType The type of the currently playing item.
-     * @return A {@link CurrentlyPlaying.Builder}.
-     */
     public Builder setCurrentlyPlayingType(CurrentlyPlayingType currentlyPlayingType) {
       this.currentlyPlayingType = currentlyPlayingType;
       return this;
@@ -221,9 +182,6 @@ public class CurrentlyPlaying extends AbstractModelObject {
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<CurrentlyPlaying> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }

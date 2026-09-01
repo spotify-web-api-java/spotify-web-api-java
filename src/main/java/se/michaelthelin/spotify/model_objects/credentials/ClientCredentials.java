@@ -70,42 +70,20 @@ public class ClientCredentials extends AbstractModelObject {
     private String tokenType;
     private Integer expiresIn;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
 
-    /**
-     * The access token setter.
-     *
-     * @param accessToken An access token that can be provided in subsequent calls,
-     *                    for example to Spotify Web API services.
-     * @return A {@link ClientCredentials.Builder}.
-     */
     public Builder setAccessToken(String accessToken) {
       this.accessToken = accessToken;
       return this;
     }
 
-    /**
-     * The access token type setter.
-     *
-     * @param tokenType How the access token may be used: always &quot;Bearer&quot;.
-     * @return A {@link ClientCredentials.Builder}.
-     */
     public Builder setTokenType(String tokenType) {
       this.tokenType = tokenType;
       return this;
     }
 
-    /**
-     * The expiration time setter.
-     *
-     * @param expiresIn The time period (in seconds) for which the access token is valid.
-     * @return A {@link ClientCredentials.Builder}.
-     */
     public Builder setExpiresIn(Integer expiresIn) {
       this.expiresIn = expiresIn;
       return this;
@@ -122,9 +100,6 @@ public class ClientCredentials extends AbstractModelObject {
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<ClientCredentials> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }

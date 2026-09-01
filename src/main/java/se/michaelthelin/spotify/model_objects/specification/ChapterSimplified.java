@@ -297,85 +297,40 @@ public class ChapterSimplified extends AbstractModelObject {
     private String uri;
     private ChapterRestriction restrictions;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
 
-    /**
-     * Set the audio preview URL.
-     *
-     * @param audioPreviewUrl A URL to a 30 second preview (MP3 format) of the chapter.
-     * @return A {@link ChapterSimplified.Builder}.
-     */
     public Builder setAudioPreviewUrl(String audioPreviewUrl) {
       this.audioPreviewUrl = audioPreviewUrl;
       return this;
     }
 
-    /**
-     * Set the available markets.
-     *
-     * @param availableMarkets ISO 3166-1 alpha-2 country codes.
-     * @return A {@link ChapterSimplified.Builder}.
-     */
     public Builder setAvailableMarkets(String... availableMarkets) {
       this.availableMarkets = availableMarkets;
       return this;
     }
 
-    /**
-     * Set the chapter number.
-     *
-     * @param chapterNumber The number of the chapter.
-     * @return A {@link ChapterSimplified.Builder}.
-     */
     public Builder setChapterNumber(Integer chapterNumber) {
       this.chapterNumber = chapterNumber;
       return this;
     }
 
-    /**
-     * Set the description.
-     *
-     * @param description A description of the chapter.
-     * @return A {@link ChapterSimplified.Builder}.
-     */
     public Builder setDescription(String description) {
       this.description = description;
       return this;
     }
 
-    /**
-     * Set the HTML description.
-     *
-     * @param htmlDescription A description of the chapter (may contain HTML tags).
-     * @return A {@link ChapterSimplified.Builder}.
-     */
     public Builder setHtmlDescription(String htmlDescription) {
       this.htmlDescription = htmlDescription;
       return this;
     }
 
-    /**
-     * Set the duration in milliseconds.
-     *
-     * @param durationMs The chapter length in milliseconds.
-     * @return A {@link ChapterSimplified.Builder}.
-     */
     public Builder setDurationMs(Integer durationMs) {
       this.durationMs = durationMs;
       return this;
     }
 
-    /**
-     * Set whether the chapter is explicit.
-     *
-     * @param explicit Whether or not the chapter has explicit content.
-     * @return A {@link ChapterSimplified.Builder}.
-     */
     public Builder setExplicit(Boolean explicit) {
       this.explicit = explicit;
       return this;
@@ -392,23 +347,11 @@ public class ChapterSimplified extends AbstractModelObject {
       return this;
     }
 
-    /**
-     * Set the href.
-     *
-     * @param href A link to the Web API endpoint providing full details of the chapter.
-     * @return A {@link ChapterSimplified.Builder}.
-     */
     public Builder setHref(String href) {
       this.href = href;
       return this;
     }
 
-    /**
-     * Set the Spotify ID.
-     *
-     * @param id The Spotify ID for the chapter.
-     * @return A {@link ChapterSimplified.Builder}.
-     */
     public Builder setId(String id) {
       this.id = id;
       return this;
@@ -425,67 +368,31 @@ public class ChapterSimplified extends AbstractModelObject {
       return this;
     }
 
-    /**
-     * Set whether the chapter is playable.
-     *
-     * @param isPlayable True if the chapter is playable in the given market.
-     * @return A {@link ChapterSimplified.Builder}.
-     */
     public Builder setPlayable(Boolean isPlayable) {
       this.isPlayable = isPlayable;
       return this;
     }
 
-    /**
-     * Set the languages.
-     *
-     * @param languages ISO 639 language codes.
-     * @return A {@link ChapterSimplified.Builder}.
-     */
     public Builder setLanguages(String... languages) {
       this.languages = languages;
       return this;
     }
 
-    /**
-     * Set the name.
-     *
-     * @param name The name of the chapter.
-     * @return A {@link ChapterSimplified.Builder}.
-     */
     public Builder setName(String name) {
       this.name = name;
       return this;
     }
 
-    /**
-     * Set the release date.
-     *
-     * @param releaseDate The date the chapter was first released.
-     * @return A {@link ChapterSimplified.Builder}.
-     */
     public Builder setReleaseDate(String releaseDate) {
       this.releaseDate = releaseDate;
       return this;
     }
 
-    /**
-     * Set the release date precision.
-     *
-     * @param releaseDatePrecision The precision with which {@code release_date} value is known.
-     * @return A {@link ChapterSimplified.Builder}.
-     */
     public Builder setReleaseDatePrecision(ReleaseDatePrecision releaseDatePrecision) {
       this.releaseDatePrecision = releaseDatePrecision;
       return this;
     }
 
-    /**
-     * Set the resume point.
-     *
-     * @param resumePoint The user's most recent position in the chapter.
-     * @return A {@link ChapterSimplified.Builder}.
-     */
     public Builder setResumePoint(ResumePoint resumePoint) {
       this.resumePoint = resumePoint;
       return this;
@@ -502,12 +409,6 @@ public class ChapterSimplified extends AbstractModelObject {
       return this;
     }
 
-    /**
-     * Set the Spotify URI.
-     *
-     * @param uri The Spotify URI for the chapter.
-     * @return A {@link ChapterSimplified.Builder}.
-     */
     public Builder setUri(String uri) {
       this.uri = uri;
       return this;
@@ -535,9 +436,6 @@ public class ChapterSimplified extends AbstractModelObject {
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<ChapterSimplified> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }
