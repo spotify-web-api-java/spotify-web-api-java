@@ -56,6 +56,9 @@ public class GetAlbumRequestTest extends AbstractDataTest<Album> {
     assertEquals(
       "P",
       album.getCopyrights()[0].getType().toString());
+    assertEquals(
+      "5099749994324",
+      album.getExternalIds().getExternalIds().get("upc"));
     assertNotNull(
       album.getExternalUrls());
     assertEquals(
