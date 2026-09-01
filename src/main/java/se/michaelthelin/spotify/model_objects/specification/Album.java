@@ -24,6 +24,8 @@ public class Album extends AbstractModelObject implements IAlbum {
   private final ArtistSimplified[] artists;
   /** The copyright statements of the album. */
   private final Copyright[] copyrights;
+  /** Known external IDs for the album. */
+  private final ExternalId externalIds;
   /** Known external URLs for this album. */
   private final ExternalUrl externalUrls;
   /** A list of the genres the album is associated with. */
@@ -57,6 +59,7 @@ public class Album extends AbstractModelObject implements IAlbum {
     this.albumType = builder.albumType;
     this.artists = builder.artists;
     this.copyrights = builder.copyrights;
+    this.externalIds = builder.externalIds;
     this.externalUrls = builder.externalUrls;
     this.genres = builder.genres;
     this.href = builder.href;
@@ -97,6 +100,16 @@ public class Album extends AbstractModelObject implements IAlbum {
    */
   public Copyright[] getCopyrights() {
     return copyrights;
+  }
+
+  /**
+   * Get the external IDs of the album.<br>
+   * Example: upc -&gt; "Universal Product Code".
+   *
+   * @return Known external IDs for the album.
+   */
+  public ExternalId getExternalIds() {
+    return externalIds;
   }
 
   /**
@@ -222,7 +235,7 @@ public class Album extends AbstractModelObject implements IAlbum {
   public String toString() {
     return "Album(artists=" + Arrays.toString(artists) + ", name=" + name + ", albumType=" + albumType
         + ", copyrights=" + Arrays.toString(copyrights)
-        + ", externalUrls=" + externalUrls + ", genres=" + Arrays.toString(genres)
+        + ", externalIds=" + externalIds + ", externalUrls=" + externalUrls + ", genres=" + Arrays.toString(genres)
         + ", href=" + href + ", id=" + id + ", images=" + Arrays.toString(images) + ", label=" + label
         + ", releaseDate=" + releaseDate + ", releaseDatePrecision=" + releaseDatePrecision + ", totalTracks="
         + totalTracks + ", tracks=" + tracks + ", type=" + type + ", uri=" + uri + ")";
@@ -240,6 +253,7 @@ public class Album extends AbstractModelObject implements IAlbum {
     private AlbumType albumType;
     private ArtistSimplified[] artists;
     private Copyright[] copyrights;
+    private ExternalId externalIds;
     private ExternalUrl externalUrls;
     private String[] genres;
     private String href;
@@ -291,6 +305,17 @@ public class Album extends AbstractModelObject implements IAlbum {
      */
     public Builder setCopyrights(Copyright... copyrights) {
       this.copyrights = copyrights;
+      return this;
+    }
+
+    /**
+     * Set the external IDs of the album to be built.
+     *
+     * @param externalIds Known external IDs for the album.
+     * @return A {@link Album.Builder}.
+     */
+    public Builder setExternalIds(ExternalId externalIds) {
+      this.externalIds = externalIds;
       return this;
     }
 
@@ -476,6 +501,11 @@ public class Album extends AbstractModelObject implements IAlbum {
           hasAndNotNull(jsonObject, "copyrights")
             ? new Copyright.JsonUtil().createModelObjectArray(
             jsonObject.getAsJsonArray("copyrights"))
+            : null)
+        .setExternalIds(
+          hasAndNotNull(jsonObject, "external_ids")
+            ? new ExternalId.JsonUtil().createModelObject(
+            jsonObject.getAsJsonObject("external_ids"))
             : null)
         .setExternalUrls(
           hasAndNotNull(jsonObject, "external_urls")
