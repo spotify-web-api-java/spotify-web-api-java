@@ -58,12 +58,6 @@ public class ExternalId extends AbstractModelObject {
       super();
     }
 
-    /**
-     * External IDs setter.
-     *
-     * @param externalIds A {@link Map} of external IDs, containing external identifiers for the object.
-     * @return A {@link ExternalId.Builder}.
-     */
     public Builder setExternalIds(Map<String, String> externalIds) {
       this.externalIds = externalIds;
       return this;

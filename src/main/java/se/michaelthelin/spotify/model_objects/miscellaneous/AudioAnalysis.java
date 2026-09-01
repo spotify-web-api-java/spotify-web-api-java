@@ -142,79 +142,36 @@ public class AudioAnalysis extends AbstractModelObject {
       super();
     }
 
-    /**
-     * Track bars setter.
-     *
-     * @param bars The list of bar markers, in seconds.
-     * @return An {@link AudioAnalysis.Builder}.
-     */
     public Builder setBars(AudioAnalysisMeasure[] bars) {
       this.bars = bars;
       return this;
     }
 
-    /**
-     * The track beats setter.
-     *
-     * @param beats The list of beat markers, in seconds.
-     * @return An {@link AudioAnalysis.Builder}.
-     */
     public Builder setBeats(AudioAnalysisMeasure[] beats) {
       this.beats = beats;
       return this;
     }
 
-    /**
-     * The anaylzer metadata setter.
-     *
-     * @param meta Analyze, compute, and track information.
-     * @return An {@link AudioAnalysis.Builder}.
-     */
     public Builder setMeta(AudioAnalysisMeta meta) {
       this.meta = meta;
       return this;
     }
 
-    /**
-     * The track sections setter.
-     *
-     * @param sections The set of section markers, in seconds.
-     * @return An {@link AudioAnalysis.Builder}.
-     */
     public Builder setSections(AudioAnalysisSection[] sections) {
       this.sections = sections;
       return this;
     }
 
-    /**
-     * The track segments setter.
-     *
-     * @param segments The set of sound entities (typically under a second) each relatively uniform in timbre and
-     *                 harmony.
-     * @return An {@link AudioAnalysis.Builder}.
-     */
     public Builder setSegments(AudioAnalysisSegment[] segments) {
       this.segments = segments;
       return this;
     }
 
-    /**
-     * The track tatums setter.
-     *
-     * @param tatums Get the list of tatum markers, in seconds.
-     * @return An {@link AudioAnalysis.Builder}.
-     */
     public Builder setTatums(AudioAnalysisMeasure[] tatums) {
       this.tatums = tatums;
       return this;
     }
 
-    /**
-     * The track data setter.
-     *
-     * @param track Track data of audio analysis object.
-     * @return An {@link AudioAnalysis.Builder}.
-     */
     public Builder setTrack(AudioAnalysisTrack track) {
       this.track = track;
       return this;

@@ -51,12 +51,6 @@ public class Actions extends AbstractModelObject {
       super();
     }
 
-    /**
-     * Set the Disallows object of the Actions object to be built.
-     *
-     * @param disallows The {@link Disallows} object.
-     * @return A {@link Actions.Builder}.
-     */
     public Builder setDisallows(Disallows disallows) {
       this.disallows = disallows;
       return this;

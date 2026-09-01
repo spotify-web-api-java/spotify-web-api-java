@@ -116,12 +116,6 @@ public class ArtistSimplified extends AbstractModelObject implements IArtist {
       super();
     }
 
-    /**
-     * Set external URLs of the artist to be built.
-     *
-     * @param externalUrls {@link ExternalUrl} object.
-     * @return A {@link ArtistSimplified.Builder}.
-     */
     public Builder setExternalUrls(ExternalUrl externalUrls) {
       this.externalUrls = externalUrls;
       return this;
@@ -132,12 +126,6 @@ public class ArtistSimplified extends AbstractModelObject implements IArtist {
       return this;
     }
 
-    /**
-     * Set artist ID of the artist to be built.
-     *
-     * @param id <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify artist ID</a>.
-     * @return A {@link ArtistSimplified.Builder}.
-     */
     public Builder setId(String id) {
       this.id = id;
       return this;
@@ -148,24 +136,11 @@ public class ArtistSimplified extends AbstractModelObject implements IArtist {
       return this;
     }
 
-    /**
-     * Set the type of the model object. In this case "artist".
-     *
-     * @param type The {@link ModelObjectType}.
-     * @return A {@link ArtistSimplified.Builder}.
-     */
     public Builder setType(ModelObjectType type) {
       this.type = type;
       return this;
     }
 
-    /**
-     * Set the Spotify artist URI of the artist to be built.
-     *
-     * @param uri <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">
-     *            Spotify artist URI</a>.
-     * @return A {@link ArtistSimplified.Builder}.
-     */
     public Builder setUri(String uri) {
       this.uri = uri;
       return this;

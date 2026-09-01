@@ -173,23 +173,11 @@ public class Artist extends AbstractModelObject implements IArtistTrackModelObje
       super();
     }
 
-    /**
-     * Set external URLs of the artist to be built.
-     *
-     * @param externalUrls {@link ExternalUrl} object.
-     * @return A {@link Artist.Builder}.
-     */
     public Builder setExternalUrls(ExternalUrl externalUrls) {
       this.externalUrls = externalUrls;
       return this;
     }
 
-    /**
-     * Set information about the followers of the artist to be built.
-     *
-     * @param followers A {@link Followers} object.
-     * @return A {@link Artist.Builder}.
-     */
     public Builder setFollowers(Followers followers) {
       this.followers = followers;
       return this;
@@ -205,23 +193,11 @@ public class Artist extends AbstractModelObject implements IArtistTrackModelObje
       return this;
     }
 
-    /**
-     * Set artist ID of the artist to be built.
-     *
-     * @param id <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify artist ID</a>.
-     * @return A {@link Artist.Builder}.
-     */
     public Builder setId(String id) {
       this.id = id;
       return this;
     }
 
-    /**
-     * Set the images of the artist to be built, like the header image.
-     *
-     * @param images {@link Image} objects.
-     * @return A {@link Artist.Builder}.
-     */
     public Builder setImages(Image... images) {
       this.images = images;
       return this;
@@ -237,24 +213,11 @@ public class Artist extends AbstractModelObject implements IArtistTrackModelObje
       return this;
     }
 
-    /**
-     * Set the type of the model object. In this case "artist".
-     *
-     * @param type The {@link ModelObjectType}.
-     * @return A {@link Artist.Builder}.
-     */
     public Builder setType(ModelObjectType type) {
       this.type = type;
       return this;
     }
 
-    /**
-     * Set the Spotify artist URI of the artist to be built.
-     *
-     * @param uri <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">
-     *            Spotify artist URI</a>.
-     * @return A {@link Artist.Builder}.
-     */
     public Builder setUri(String uri) {
       this.uri = uri;
       return this;

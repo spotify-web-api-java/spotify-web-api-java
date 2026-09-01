@@ -268,34 +268,16 @@ public class Album extends AbstractModelObject implements IAlbum {
       super();
     }
 
-    /**
-     * Set the type of the album to be built.
-     *
-     * @param albumType The {@link AlbumType}.
-     * @return A {@link Album.Builder}.
-     */
     public Builder setAlbumType(AlbumType albumType) {
       this.albumType = albumType;
       return this;
     }
 
-    /**
-     * Set the artists of the album to be built.
-     *
-     * @param artists {@link ArtistSimplified} objects.
-     * @return A {@link Album.Builder}.
-     */
     public Builder setArtists(ArtistSimplified... artists) {
       this.artists = artists;
       return this;
     }
 
-    /**
-     * Set the copyrights of the album to be built.
-     *
-     * @param copyrights {@link Copyright} objects.
-     * @return A {@link Album.Builder}.
-     */
     public Builder setCopyrights(Copyright... copyrights) {
       this.copyrights = copyrights;
       return this;
@@ -306,12 +288,6 @@ public class Album extends AbstractModelObject implements IAlbum {
       return this;
     }
 
-    /**
-     * Set external URLs of the album to be built.
-     *
-     * @param externalUrls {@link ExternalUrl} object.
-     * @return A {@link Album.Builder}.
-     */
     public Builder setExternalUrls(ExternalUrl externalUrls) {
       this.externalUrls = externalUrls;
       return this;
@@ -327,23 +303,11 @@ public class Album extends AbstractModelObject implements IAlbum {
       return this;
     }
 
-    /**
-     * Set album ID of the album to be built.
-     *
-     * @param id <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify album ID</a>.
-     * @return A {@link Album.Builder}.
-     */
     public Builder setId(String id) {
       this.id = id;
       return this;
     }
 
-    /**
-     * Set the cover art in different sizes of the album to be built.
-     *
-     * @param images {@link Image} objects.
-     * @return A {@link Album.Builder}.
-     */
     public Builder setImages(Image... images) {
       this.images = images;
       return this;
@@ -364,12 +328,6 @@ public class Album extends AbstractModelObject implements IAlbum {
       return this;
     }
 
-    /**
-     * Set the release date precision of the album to be built.
-     *
-     * @param releaseDatePrecision The {@link ReleaseDatePrecision} of the album.
-     * @return A {@link Album.Builder}.
-     */
     public Builder setReleaseDatePrecision(ReleaseDatePrecision releaseDatePrecision) {
       this.releaseDatePrecision = releaseDatePrecision;
       return this;
@@ -380,35 +338,16 @@ public class Album extends AbstractModelObject implements IAlbum {
       return this;
     }
 
-    /**
-     * Set the tracks of the album to be built.
-     *
-     * @param tracks A {@link Paging} object containing {@link TrackSimplified} objects.
-     * @return A {@link Album.Builder}.
-     */
     public Builder setTracks(Paging<TrackSimplified> tracks) {
       this.tracks = tracks;
       return this;
     }
 
-    /**
-     * Set the type of the model object. In this case "album".
-     *
-     * @param type The {@link ModelObjectType}.
-     * @return A {@link Album.Builder}.
-     */
     public Builder setType(ModelObjectType type) {
       this.type = type;
       return this;
     }
 
-    /**
-     * Set the Spotify album URI of the album to be built.
-     *
-     * @param uri <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">
-     *            Spotify album URI</a>.
-     * @return A {@link Album.Builder}.
-     */
     public Builder setUri(String uri) {
       this.uri = uri;
       return this;

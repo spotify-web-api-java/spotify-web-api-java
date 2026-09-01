@@ -230,12 +230,6 @@ public class Show extends AbstractModelObject implements IShow {
       super();
     }
 
-    /**
-     * Set the copyrights of the show to be built.
-     *
-     * @param copyrights {@link Copyright} objects.
-     * @return A {@link Show.Builder}.
-     */
     public Builder setCopyrights(Copyright... copyrights) {
       this.copyrights = copyrights;
       return this;
@@ -251,23 +245,11 @@ public class Show extends AbstractModelObject implements IShow {
       return this;
     }
 
-    /**
-     * Set a list of the show's episodes.
-     *
-     * @param episodes A {@link Paging} object containing {@link EpisodeSimplified} objects.
-     * @return A {@link Show.Builder}.
-     */
     public Builder setEpisodes(Paging<EpisodeSimplified> episodes) {
       this.episodes = episodes;
       return this;
     }
 
-    /**
-     * Set the external URLs for the show to be built.
-     *
-     * @param externalUrls The {@link ExternalUrl} for the show object.
-     * @return A {@link Show.Builder}.
-     */
     public Builder setExternalUrls(ExternalUrl externalUrls) {
       this.externalUrls = externalUrls;
       return this;
@@ -278,23 +260,11 @@ public class Show extends AbstractModelObject implements IShow {
       return this;
     }
 
-    /**
-     * Set the Spotify ID for the show to be built.
-     *
-     * @param id <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify show ID</a>.
-     * @return A {@link Show.Builder}.
-     */
     public Builder setId(String id) {
       this.id = id;
       return this;
     }
 
-    /**
-     * Set the cover art for the show to be built.
-     *
-     * @param images {@link Image} objects.
-     * @return A {@link Show.Builder}.
-     */
     public Builder setImages(Image... images) {
       this.images = images;
       return this;
@@ -305,12 +275,6 @@ public class Show extends AbstractModelObject implements IShow {
       return this;
     }
 
-    /**
-     * Set a list of the languages used in the show to be built.
-     *
-     * @param languages An array of <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2 country codes</a>.
-     * @return A {@link Show.Builder}.
-     */
     public Builder setLanguages(String[] languages) {
       this.languages = languages;
       return this;
@@ -326,23 +290,11 @@ public class Show extends AbstractModelObject implements IShow {
       return this;
     }
 
-    /**
-     * Set the type of the model object. In this case "show".
-     *
-     * @param type The {@link ModelObjectType}.
-     * @return A {@link Show.Builder}.
-     */
     public Builder setType(ModelObjectType type) {
       this.type = type;
       return this;
     }
 
-    /**
-     * Set the Spotify URI for the show to be built.
-     *
-     * @param uri The <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify URI</a> for the show.
-     * @return A {@link Show.Builder}.
-     */
     public Builder setUri(String uri) {
       this.uri = uri;
       return this;

@@ -60,23 +60,11 @@ public class Copyright extends AbstractModelObject {
       super();
     }
 
-    /**
-     * The copyright text setter.
-     *
-     * @param text The copyright text for this album.
-     * @return A {@link Copyright.Builder}
-     */
     public Builder setText(String text) {
       this.text = text;
       return this;
     }
 
-    /**
-     * The copyright type setter.
-     *
-     * @param type The type of copyright: C = the copyright, P = the sound recording (performance) copyright.
-     * @return A {@link Copyright.Builder}
-     */
     public Builder setType(CopyrightType type) {
       this.type = type;
       return this;

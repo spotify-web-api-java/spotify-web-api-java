@@ -229,12 +229,6 @@ public class CurrentlyPlayingContext extends AbstractModelObject {
       return this;
     }
 
-    /**
-     * The actions setter.
-     *
-     * @param actions A {@link Actions} object which contains a {@link Disallows} object.
-     * @return A {@link CurrentlyPlayingContext.Builder}.
-     */
     public Builder setActions(Actions actions) {
       this.actions = actions;
       return this;

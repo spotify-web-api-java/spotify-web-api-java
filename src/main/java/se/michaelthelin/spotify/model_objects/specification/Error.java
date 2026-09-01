@@ -59,14 +59,6 @@ public class Error extends AbstractModelObject {
       super();
     }
 
-    /**
-     * The error <a href="https://developer.spotify.com/documentation/web-api/concepts/api-calls">HTTP status
-     * code</a> setter.
-     *
-     * @param status The <a href="https://developer.spotify.com/documentation/web-api/concepts/api-calls">
-     *               HTTP status code</a>.
-     * @return A {@link Error.Builder}.
-     */
     public Builder setStatus(Integer status) {
       this.status = status;
       return this;

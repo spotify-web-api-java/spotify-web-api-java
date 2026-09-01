@@ -336,12 +336,6 @@ public class ChapterSimplified extends AbstractModelObject {
       return this;
     }
 
-    /**
-     * Set the external URLs.
-     *
-     * @param externalUrls The {@link ExternalUrl} for the chapter object.
-     * @return A {@link ChapterSimplified.Builder}.
-     */
     public Builder setExternalUrls(ExternalUrl externalUrls) {
       this.externalUrls = externalUrls;
       return this;
@@ -357,12 +351,6 @@ public class ChapterSimplified extends AbstractModelObject {
       return this;
     }
 
-    /**
-     * Set the cover art images.
-     *
-     * @param images {@link Image} objects.
-     * @return A {@link ChapterSimplified.Builder}.
-     */
     public Builder setImages(Image... images) {
       this.images = images;
       return this;
@@ -398,12 +386,6 @@ public class ChapterSimplified extends AbstractModelObject {
       return this;
     }
 
-    /**
-     * Set the model object type.
-     *
-     * @param type The {@link ModelObjectType}.
-     * @return A {@link ChapterSimplified.Builder}.
-     */
     public Builder setType(ModelObjectType type) {
       this.type = type;
       return this;
@@ -414,12 +396,6 @@ public class ChapterSimplified extends AbstractModelObject {
       return this;
     }
 
-    /**
-     * Set the content restrictions.
-     *
-     * @param restrictions A {@link ChapterRestriction} object.
-     * @return A {@link ChapterSimplified.Builder}.
-     */
     public Builder setRestrictions(ChapterRestriction restrictions) {
       this.restrictions = restrictions;
       return this;

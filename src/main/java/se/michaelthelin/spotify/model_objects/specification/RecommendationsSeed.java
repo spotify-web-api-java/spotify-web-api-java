@@ -128,14 +128,6 @@ public class RecommendationsSeed extends AbstractModelObject {
       return this;
     }
 
-    /**
-     * The href setter.
-     *
-     * @param href A link to the full track or artist data for this seed. For tracks this will be a link to a
-     *             {@link Track} object. For artists a link to an {@link Artist} Object. For genre seeds, this value
-     *             will be {@code null}.
-     * @return A {@link RecommendationsSeed.Builder}.
-     */
     public Builder setHref(String href) {
       this.href = href;
       return this;

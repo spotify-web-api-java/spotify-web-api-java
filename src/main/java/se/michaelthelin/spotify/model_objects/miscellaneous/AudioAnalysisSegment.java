@@ -139,78 +139,36 @@ public class AudioAnalysisSegment extends AbstractModelObject {
       super();
     }
 
-    /**
-     * The measure setter.
-     *
-     * @param measure The measure of the audio analysis segment object.
-     * @return An {@link AudioAnalysisSegment.Builder}.
-     */
     public Builder setMeasure(AudioAnalysisMeasure measure) {
       this.measure = measure;
       return this;
     }
 
-    /**
-     * The start loudness setter.
-     *
-     * @param loudnessStart The loudness level at the start of the segment.
-     * @return An {@link AudioAnalysisSegment.Builder}.
-     */
     public Builder setLoudnessStart(Float loudnessStart) {
       this.loudnessStart = loudnessStart;
       return this;
     }
 
-    /**
-     * The max loudness time setter.
-     *
-     * @param loudnessMaxTime The offset within the segment of the point of maximum loudness.
-     * @return An {@link AudioAnalysisSegment.Builder}.
-     */
     public Builder setLoudnessMaxTime(Float loudnessMaxTime) {
       this.loudnessMaxTime = loudnessMaxTime;
       return this;
     }
 
-    /**
-     * The max loudness setter.
-     *
-     * @param loudnessMax The peak loudness value within the segment.
-     * @return An {@link AudioAnalysisSegment.Builder}.
-     */
     public Builder setLoudnessMax(Float loudnessMax) {
       this.loudnessMax = loudnessMax;
       return this;
     }
 
-    /**
-     * The end loudness setter.
-     *
-     * @param loudnessEnd The loudness level at the end of the segment.
-     * @return An {@link AudioAnalysisSegment.Builder}.
-     */
     public Builder setLoudnessEnd(Float loudnessEnd) {
       this.loudnessEnd = loudnessEnd;
       return this;
     }
 
-    /**
-     * The pitches setter.
-     *
-     * @param pitches The pitches of the segment.
-     * @return An {@link AudioAnalysisSegment.Builder}.
-     */
     public Builder setPitches(float[] pitches) {
       this.pitches = pitches;
       return this;
     }
 
-    /**
-     * The timbre setter.
-     *
-     * @param timbre The timbre of the track.
-     * @return An {@link AudioAnalysisSegment.Builder}.
-     */
     public Builder setTimbre(float[] timbre) {
       this.timbre = timbre;
       return this;

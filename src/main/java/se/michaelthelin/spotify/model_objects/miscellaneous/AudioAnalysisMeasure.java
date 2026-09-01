@@ -75,34 +75,16 @@ public class AudioAnalysisMeasure extends AbstractModelObject {
       super();
     }
 
-    /**
-     * The confidence setter.
-     *
-     * @param confidence The confidence value of the measurement between 0.0 and 1.0.
-     * @return An {@link AudioAnalysisMeasure.Builder}.
-     */
     public Builder setConfidence(Float confidence) {
       this.confidence = confidence;
       return this;
     }
 
-    /**
-     * The duration setter.
-     *
-     * @param duration The duration of the measurement in seconds.
-     * @return An {@link AudioAnalysisMeasure.Builder}.
-     */
     public Builder setDuration(Float duration) {
       this.duration = duration;
       return this;
     }
 
-    /**
-     * The start point setter.
-     *
-     * @param start The start point of the measurement.
-     * @return An {@link AudioAnalysisMeasure.Builder}.
-     */
     public Builder setStart(Float start) {
       this.start = start;
       return this;

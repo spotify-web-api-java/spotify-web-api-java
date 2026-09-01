@@ -326,12 +326,6 @@ public class Episode extends AbstractModelObject implements IEpisode {
       return this;
     }
 
-    /**
-     * Set the external URLs for the episode to be built.
-     *
-     * @param externalUrls The {@link ExternalUrl} for the episode object.
-     * @return A {@link Episode.Builder}.
-     */
     public Builder setExternalUrls(ExternalUrl externalUrls) {
       this.externalUrls = externalUrls;
       return this;
@@ -342,23 +336,11 @@ public class Episode extends AbstractModelObject implements IEpisode {
       return this;
     }
 
-    /**
-     * Set the Spotify ID for the episode to be built.
-     *
-     * @param id <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify episode ID</a>.
-     * @return A {@link Episode.Builder}.
-     */
     public Builder setId(String id) {
       this.id = id;
       return this;
     }
 
-    /**
-     * Set the cover art for the episode to be built.
-     *
-     * @param images {@link Image} objects.
-     * @return A {@link Episode.Builder}.
-     */
     public Builder setImages(Image... images) {
       this.images = images;
       return this;
@@ -374,12 +356,6 @@ public class Episode extends AbstractModelObject implements IEpisode {
       return this;
     }
 
-    /**
-     * Set a list of the languages used in the episode to be built.
-     *
-     * @param languages An array of <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2 country codes</a>.
-     * @return A {@link Episode.Builder}.
-     */
     public Builder setLanguages(String... languages) {
       this.languages = languages;
       return this;
@@ -395,56 +371,26 @@ public class Episode extends AbstractModelObject implements IEpisode {
       return this;
     }
 
-    /**
-     * Set the release date precision for the episode to be built.
-     *
-     * @param releaseDatePrecision The {@link ReleaseDatePrecision} of the episode.
-     * @return A {@link Episode.Builder}.
-     */
     public Builder setReleaseDatePrecision(ReleaseDatePrecision releaseDatePrecision) {
       this.releaseDatePrecision = releaseDatePrecision;
       return this;
     }
 
-    /**
-     * Set the user's most recent resume point for the episode to be built.
-     *
-     * @param resumePoint The {@link ResumePoint} of the episode.
-     * @return A {@link Episode.Builder}.
-     */
     public Builder setResumePoint(ResumePoint resumePoint) {
       this.resumePoint = resumePoint;
       return this;
     }
 
-    /**
-     * Set the show the episode to be built belongs on.
-     *
-     * @param show The {@link ShowSimplified} the episode belongs on.
-     * @return A {@link Episode.Builder}.
-     */
     public Builder setShow(ShowSimplified show) {
       this.show = show;
       return this;
     }
 
-    /**
-     * Set the type of model object. In this case "episode".
-     *
-     * @param type The {@link ModelObjectType}.
-     * @return A {@link Episode.Builder}.
-     */
     public Builder setType(ModelObjectType type) {
       this.type = type;
       return this;
     }
 
-    /**
-     * Set the Spotify URI for the episode to be built.
-     *
-     * @param uri The <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify URI</a> for the episode.
-     * @return A {@link Episode.Builder}.
-     */
     public Builder setUri(String uri) {
       this.uri = uri;
       return this;

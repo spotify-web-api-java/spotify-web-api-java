@@ -46,12 +46,6 @@ public class Author extends AbstractModelObject {
       super();
     }
 
-    /**
-     * Set the name of the author to be built.
-     *
-     * @param name The name of the author.
-     * @return An {@link Author.Builder}.
-     */
     public Builder setName(String name) {
       this.name = name;
       return this;

@@ -91,12 +91,6 @@ public class Context extends AbstractModelObject {
       super();
     }
 
-    /**
-     * The model object type setter.
-     *
-     * @param type The {@link ModelObjectType}.
-     * @return A {@link Context.Builder}.
-     */
     public Builder setType(ModelObjectType type) {
       this.type = type;
       return this;

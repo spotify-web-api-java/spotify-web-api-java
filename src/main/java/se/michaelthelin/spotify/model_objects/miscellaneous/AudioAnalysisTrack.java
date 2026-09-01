@@ -404,287 +404,131 @@ public class AudioAnalysisTrack extends AbstractModelObject {
       super();
     }
 
-    /**
-     * The sample number setter.
-     *
-     * @param numSamples The total number of samples in the track.
-     * @return An {@link AudioAnalysisTrack.Builder}.
-     */
     public Builder setNumSamples(Long numSamples) {
       this.numSamples = numSamples;
       return this;
     }
 
-    /**
-     * The track duration setter.
-     *
-     * @param duration The duration of the track in seconds.
-     * @return An {@link AudioAnalysisTrack.Builder}.
-     */
     public Builder setDuration(Float duration) {
       this.duration = duration;
       return this;
     }
 
-    /**
-     * The sample MD5 setter.
-     *
-     * @param sampleMd5 The sample MD5.
-     * @return An {@link AudioAnalysisTrack.Builder}.
-     */
     public Builder setSampleMd5(String sampleMd5) {
       this.sampleMd5 = sampleMd5;
       return this;
     }
 
-    /**
-     * The offset seconds setter.
-     *
-     * @param offsetSeconds The offset seconds.
-     * @return An {@link AudioAnalysisTrack.Builder}.
-     */
     public Builder setOffsetSeconds(Integer offsetSeconds) {
       this.offsetSeconds = offsetSeconds;
       return this;
     }
 
-    /**
-     * The window seconds setter.
-     *
-     * @param windowSeconds The window seconds.
-     * @return An {@link AudioAnalysisTrack.Builder}.
-     */
     public Builder setWindowSeconds(Integer windowSeconds) {
       this.windowSeconds = windowSeconds;
       return this;
     }
 
-    /**
-     * The analysis sample rate setter.
-     *
-     * @param analysisSampleRate The analysis sample rate.
-     * @return An {@link AudioAnalysisTrack.Builder}.
-     */
     public Builder setAnalysisSampleRate(Long analysisSampleRate) {
       this.analysisSampleRate = analysisSampleRate;
       return this;
     }
 
-    /**
-     * The analysis channels setter.
-     *
-     * @param analysisChannels The analysis channels.
-     * @return An {@link AudioAnalysisTrack.Builder}.
-     */
     public Builder setAnalysisChannels(Integer analysisChannels) {
       this.analysisChannels = analysisChannels;
       return this;
     }
 
-    /**
-     * The end of fade in introduction setter.
-     *
-     * @param endOfFadeIn The end of fade in introduction in seconds.
-     * @return An {@link AudioAnalysisTrack.Builder}.
-     */
     public Builder setEndOfFadeIn(Float endOfFadeIn) {
       this.endOfFadeIn = endOfFadeIn;
       return this;
     }
 
-    /**
-     * The start of fade out setter.
-     *
-     * @param startOfFadeOut The start of the fade out in seconds.
-     * @return An {@link AudioAnalysisTrack.Builder}.
-     */
     public Builder setStartOfFadeOut(Float startOfFadeOut) {
       this.startOfFadeOut = startOfFadeOut;
       return this;
     }
 
-    /**
-     * The average loudness setter.
-     *
-     * @param loudness Average loudness of the track.
-     * @return An {@link AudioAnalysisTrack.Builder}.
-     */
     public Builder setLoudness(Float loudness) {
       this.loudness = loudness;
       return this;
     }
 
-    /**
-     * The estimated tempo setter.
-     *
-     * @param tempo The estimated tempo of the track.
-     * @return An {@link AudioAnalysisTrack.Builder}.
-     */
     public Builder setTempo(Float tempo) {
       this.tempo = tempo;
       return this;
     }
 
-    /**
-     * The tempo confidence setter.
-     *
-     * @param tempoConfidence The tempo confidence of the track.
-     * @return An {@link AudioAnalysisTrack.Builder}.
-     */
     public Builder setTempoConfidence(Float tempoConfidence) {
       this.tempoConfidence = tempoConfidence;
       return this;
     }
 
-    /**
-     * The time signature setter.
-     *
-     * @param timeSignature Time signature value.
-     * @return An {@link AudioAnalysisTrack.Builder}.
-     */
     public Builder setTimeSignature(Integer timeSignature) {
       this.timeSignature = timeSignature;
       return this;
     }
 
-    /**
-     * The time signature confidence setter.
-     *
-     * @param timeSignatureConfidence The time signature confidence.
-     * @return An {@link AudioAnalysisTrack.Builder}.
-     */
     public Builder setTimeSignatureConfidence(Float timeSignatureConfidence) {
       this.timeSignatureConfidence = timeSignatureConfidence;
       return this;
     }
 
-    /**
-     * The track key setter.
-     *
-     * @param key Main key of the track.
-     * @return An {@link AudioAnalysisTrack.Builder}.
-     */
     public Builder setKey(Integer key) {
       this.key = key;
       return this;
     }
 
-    /**
-     * The key confidence setter.
-     *
-     * @param keyConfidence The key confidence of the track.
-     * @return An {@link AudioAnalysisTrack.Builder}.
-     */
     public Builder setKeyConfidence(Float keyConfidence) {
       this.keyConfidence = keyConfidence;
       return this;
     }
 
-    /**
-     * The track modality setter.
-     *
-     * @param mode The modality type of the track.
-     * @return An {@link AudioAnalysisTrack.Builder}.
-     */
     public Builder setMode(Modality mode) {
       this.mode = mode;
       return this;
     }
 
-    /**
-     * The modality confidence setter.
-     *
-     * @param modeConfidence The modality confidence of the track.
-     * @return An {@link AudioAnalysisTrack.Builder}.
-     */
     public Builder setModeConfidence(Float modeConfidence) {
       this.modeConfidence = modeConfidence;
       return this;
     }
 
-    /**
-     * The code string setter.
-     *
-     * @param codeString The code string of the track.
-     * @return An {@link AudioAnalysisTrack.Builder}.
-     */
     public Builder setCodeString(String codeString) {
       this.codeString = codeString;
       return this;
     }
 
-    /**
-     * The code string version setter.
-     *
-     * @param codeVersion The version of the code string.
-     * @return An {@link AudioAnalysisTrack.Builder}.
-     */
     public Builder setCodeVersion(Float codeVersion) {
       this.codeVersion = codeVersion;
       return this;
     }
 
-    /**
-     * The echoprint string setter.
-     *
-     * @param echoprintString The echoprint string of the track.
-     * @return An {@link AudioAnalysisTrack.Builder}.
-     */
     public Builder setEchoprintString(String echoprintString) {
       this.echoprintString = echoprintString;
       return this;
     }
 
-    /**
-     * The echoprint string version setter.
-     *
-     * @param echoprintVersion The version of the echoprint string.
-     * @return An {@link AudioAnalysisTrack.Builder}.
-     */
     public Builder setEchoprintVersion(Float echoprintVersion) {
       this.echoprintVersion = echoprintVersion;
       return this;
     }
 
-    /**
-     * The synch string setter.
-     *
-     * @param synchString The synch string.
-     * @return An {@link AudioAnalysisTrack.Builder}.
-     */
     public Builder setSynchString(String synchString) {
       this.synchString = synchString;
       return this;
     }
 
-    /**
-     * The synch string version setter.
-     *
-     * @param synchVersion The synch string version.
-     * @return An {@link AudioAnalysisTrack.Builder}.
-     */
     public Builder setSynchVersion(Float synchVersion) {
       this.synchVersion = synchVersion;
       return this;
     }
 
-    /**
-     * The rhythm string setter.
-     *
-     * @param rhythmString The rhythm string of the track.
-     * @return An {@link AudioAnalysisTrack.Builder}.
-     */
     public Builder setRhythmString(String rhythmString) {
       this.rhythmString = rhythmString;
       return this;
     }
 
-    /**
-     * The rhythm string version setter.
-     *
-     * @param rhythmVersion The rhythm string version.
-     * @return An {@link AudioAnalysisTrack.Builder}.
-     */
     public Builder setRhythmVersion(Float rhythmVersion) {
       this.rhythmVersion = rhythmVersion;
       return this;

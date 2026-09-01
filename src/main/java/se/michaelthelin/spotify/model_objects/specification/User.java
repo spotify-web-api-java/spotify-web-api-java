@@ -269,12 +269,6 @@ public class User extends AbstractModelObject {
       return this;
     }
 
-    /**
-     * Set the explicit content settings of the user to be built.
-     *
-     * @param explicitContent A {@link ExplicitContentSettings} object.
-     * @return A {@link User.Builder}.
-     */
     public Builder setExplicitContent(ExplicitContentSettings explicitContent) {
       this.explicitContent = explicitContent;
       return this;
@@ -285,12 +279,6 @@ public class User extends AbstractModelObject {
       return this;
     }
 
-    /**
-     * Set information about the followers of the user to be built.
-     *
-     * @param followers A {@link Followers} object.
-     * @return A {@link User.Builder}.
-     */
     public Builder setFollowers(Followers followers) {
       this.followers = followers;
       return this;
@@ -301,13 +289,6 @@ public class User extends AbstractModelObject {
       return this;
     }
 
-    /**
-     * Set user ID of the user to be built.
-     *
-     * @param id The <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify user ID
-     *           </a> for the user.
-     * @return A {@link User.Builder}.
-     */
     public Builder setId(String id) {
       this.id = id;
       return this;

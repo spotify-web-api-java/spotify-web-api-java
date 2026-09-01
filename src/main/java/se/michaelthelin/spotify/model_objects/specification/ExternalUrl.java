@@ -66,12 +66,6 @@ public class ExternalUrl extends AbstractModelObject {
       super();
     }
 
-    /**
-     * The external URLs setter.
-     *
-     * @param externalUrls A {@link Map} of external public URLs to its objects.
-     * @return A {@link ExternalUrl.Builder}.
-     */
     public Builder setExternalUrls(Map<String, String> externalUrls) {
       this.externalUrls = externalUrls;
       return this;

@@ -172,111 +172,51 @@ public class AudioAnalysisSection extends AbstractModelObject {
       super();
     }
 
-    /**
-     * The measure setter.
-     *
-     * @param measure The measure of the audio analysis section object.
-     * @return An {@link AudioAnalysisSection.Builder}.
-     */
     public Builder setMeasure(AudioAnalysisMeasure measure) {
       this.measure = measure;
       return this;
     }
 
-    /**
-     * The loudness setter.
-     *
-     * @param loudness The loudness of the section.
-     * @return An {@link AudioAnalysisSection.Builder}.
-     */
     public Builder setLoudness(Float loudness) {
       this.loudness = loudness;
       return this;
     }
 
-    /**
-     * The tempo setter.
-     *
-     * @param tempo The tempo of the section.
-     * @return An {@link AudioAnalysisSection.Builder}.
-     */
     public Builder setTempo(Float tempo) {
       this.tempo = tempo;
       return this;
     }
 
-    /**
-     * The tempo confidence setter.
-     *
-     * @param tempoConfidence The tempo confidence of the section.
-     * @return An {@link AudioAnalysisSection.Builder}.
-     */
     public Builder setTempoConfidence(Float tempoConfidence) {
       this.tempoConfidence = tempoConfidence;
       return this;
     }
 
-    /**
-     * The key setter.
-     *
-     * @param key Main key of the section.
-     * @return An {@link AudioAnalysisSection.Builder}.
-     */
     public Builder setKey(Integer key) {
       this.key = key;
       return this;
     }
 
-    /**
-     * The key confidence setter.
-     *
-     * @param keyConfidence The key confidence of the section.
-     * @return An {@link AudioAnalysisSection.Builder}.
-     */
     public Builder setKeyConfidence(Float keyConfidence) {
       this.keyConfidence = keyConfidence;
       return this;
     }
 
-    /**
-     * The mode setter.
-     *
-     * @param mode The modality type of the section.
-     * @return An {@link AudioAnalysisSection.Builder}.
-     */
     public Builder setMode(Modality mode) {
       this.mode = mode;
       return this;
     }
 
-    /**
-     * The mode confidence setter.
-     *
-     * @param modeConfidence The modality confidence of the section.
-     * @return An {@link AudioAnalysisSection.Builder}.
-     */
     public Builder setModeConfidence(Float modeConfidence) {
       this.modeConfidence = modeConfidence;
       return this;
     }
 
-    /**
-     * The time signature setter.
-     *
-     * @param timeSignature Time signature value of the section.
-     * @return An {@link AudioAnalysisSection.Builder}.
-     */
     public Builder setTimeSignature(Integer timeSignature) {
       this.timeSignature = timeSignature;
       return this;
     }
 
-    /**
-     * The time signature confidence setter.
-     *
-     * @param timeSignatureConfidence The time signature confidence of the section.
-     * @return An {@link AudioAnalysisSection.Builder}.
-     */
     public Builder setTimeSignatureConfidence(Float timeSignatureConfidence) {
       this.timeSignatureConfidence = timeSignatureConfidence;
       return this;

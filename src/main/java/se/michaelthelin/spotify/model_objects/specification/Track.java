@@ -296,13 +296,6 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
       return this;
     }
 
-    /**
-     * Set whether the track to be built is explicit or not.
-     *
-     * @param explicit Whether or not the track has explicit lyrics ({@code true} = yes it does; {@code false} = no it
-     *                 does not <b>OR</b> unknown).
-     * @return A {@link Track.Builder}.
-     */
     public Builder setExplicit(Boolean explicit) {
       this.explicit = explicit;
       return this;
@@ -358,13 +351,6 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
       return this;
     }
 
-    /**
-     * Set Spotify URI of the track to be built.
-     *
-     * @param uri The <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify URI</a>
-     *            for the track.
-     * @return A {@link Track.Builder}.
-     */
     public Builder setUri(String uri) {
       this.uri = uri;
       return this;

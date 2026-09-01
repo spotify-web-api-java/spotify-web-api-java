@@ -290,13 +290,6 @@ public class PlaylistSimplified extends AbstractModelObject implements ISearchMo
       return this;
     }
 
-    /**
-     * Set the <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify URI</a>
-     * of the playlist to be built.
-     *
-     * @param uri The Spotify playlist URI.
-     * @return A {@link PlaylistSimplified.Builder}.
-     */
     public Builder setUri(String uri) {
       this.uri = uri;
       return this;

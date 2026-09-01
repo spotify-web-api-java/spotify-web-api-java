@@ -63,23 +63,11 @@ public class AuthenticationError extends AbstractModelObject {
       super();
     }
 
-    /**
-     * The error setter.
-     *
-     * @param error A high level description of the error as specified in RFC 6749 Section 5.2.
-     * @return An {@link AuthenticationError.Builder}.
-     */
     public Builder setError(String error) {
       this.error = error;
       return this;
     }
 
-    /**
-     * The error description setter.
-     *
-     * @param error_description A more detailed description of the error as specified in RFC 6749 Section 4.1.2.1.
-     * @return An {@link AuthenticationError.Builder}.
-     */
     public Builder setError_description(String error_description) {
       this.error_description = error_description;
       return this;
