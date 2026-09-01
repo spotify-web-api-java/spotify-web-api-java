@@ -15,10 +15,11 @@ This is a Java wrapper/client for the [Spotify Web API](https://developer.spotif
 1. **[Installation](#Installation)**
     1. **[Jitpack](#Jitpack)**
 2. **[Documentation](#Documentation)**
-3. **[General Usage](#General-Usage)**
+3. **[Migration](#Migration)**
+4. **[General Usage](#General-Usage)**
     1. **[Authorization](#Authorization)**
-4. **[Examples](#Examples)**
-5. **[Contributions](#Contributions)**
+5. **[Examples](#Examples)**
+6. **[Contributions](#Contributions)**
     1. **[Code Overview](#Code-Overview)**
 
 ## Installation
@@ -89,6 +90,9 @@ allprojects {
 See this project's **[Javadoc](https://spotify-web-api-java.github.io/spotify-web-api-java/apidocs/)**.
 
 *A huge thanks to [c-schuhmann](https://github.com/c-schuhmann) for his amazing work on the documentation!*
+
+## Migration
+Upgrading from an earlier major version? See the **[migration guide](MIGRATION.md)**.
 
 ## General Usage
 ```Java
