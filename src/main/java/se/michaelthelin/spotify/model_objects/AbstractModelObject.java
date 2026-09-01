@@ -134,22 +134,6 @@ public abstract class AbstractModelObject implements IModelObject {
     /**
      * {@inheritDoc}
      */
-    @SuppressWarnings("unchecked")
-    public <X> X[] createModelObjectArray(final JsonArray jsonArray, Class<X> clazz) {
-      X[] array = (X[]) Array.newInstance(clazz, jsonArray.size());
-
-      for (int i = 0; i < jsonArray.size(); i++) {
-        JsonElement jsonElement = jsonArray.get(i);
-        JsonObject jsonObject = jsonElement.getAsJsonObject();
-        array[i] = (X) createModelObject(jsonObject);
-      }
-
-      return array;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
     public Paging<T> createModelObjectPaging(final JsonObject jsonObject) {
       if (jsonObject == null || jsonObject.isJsonNull()) {
         return null;

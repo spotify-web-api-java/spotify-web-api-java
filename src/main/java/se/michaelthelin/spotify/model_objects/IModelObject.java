@@ -94,16 +94,6 @@ public interface IModelObject extends Serializable {
     T[] createModelObjectArray(final String json, final String key);
 
     /**
-     * Create an array of model objects out of a json array object and a {@link Class} object.
-     *
-     * @param jsonArray A json array object.
-     * @param clazz     The class object.
-     * @param <X>       The model object type of the array and class object.
-     * @return A model object array.
-     */
-    <X> X[] createModelObjectArray(final JsonArray jsonArray, final Class<X> clazz);
-
-    /**
      * Create a paging of model objects out of a json object.
      *
      * @param jsonObject A json object.

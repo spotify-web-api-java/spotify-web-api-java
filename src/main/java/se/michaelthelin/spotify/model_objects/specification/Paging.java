@@ -174,17 +174,4 @@ public class Paging<T> extends AbstractModelObject implements IHasTotal {
     }
   }
 
-  /**
-   * JsonUtil class for building {@link Paging} instances.
-   *
-   * @param <X> The type of the objects contained in a paging object.
-   */
-  @SuppressWarnings("unchecked")
-  public static final class JsonUtil<X> extends AbstractModelObject.JsonUtil<Paging<X>> {
-
-    public JsonUtil() {
-      super();
-    }
-
-  }
 }

@@ -156,17 +156,4 @@ public class PagingCursorbased<T> extends AbstractModelObject implements IHasTot
     }
   }
 
-  /**
-   * JsonUtil class for building {@link PagingCursorbased} instances.
-   *
-   * @param <X> The type of the objects contained in a paging object.
-   */
-  @SuppressWarnings("unchecked")
-  public static final class JsonUtil<X> extends AbstractModelObject.JsonUtil<PagingCursorbased<X>> {
-
-    public JsonUtil() {
-      super();
-    }
-
-  }
 }
