@@ -104,6 +104,25 @@
 
   <packaging>jar</packaging>
 
+  <!-- activating any profile switches off the activeByDefault "default" one, so config that every build needs belongs here rather than in a profile that "mvn deploy -P release" turns off -->
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>3.5.1</version>
+        <configuration>
+          <archive>
+            <manifestEntries>
+              <!-- JPMS consumers "requires se.michaelthelin.spotify"; without this the name is derived from the file name instead and their module graph breaks -->
+              <Automatic-Module-Name>se.michaelthelin.spotify</Automatic-Module-Name>
+            </manifestEntries>
+          </archive>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
   <profiles>
     <profile>
       <id>default</id>
@@ -163,18 +182,6 @@
             <artifactId>maven-surefire-plugin</artifactId>
             <version>3.5.6</version>
           </plugin>
-          <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-jar-plugin</artifactId>
-            <version>3.5.1</version>
-            <configuration>
-              <archive>
-                <manifestEntries>
-                  <Automatic-Module-Name>se.michaelthelin.spotify</Automatic-Module-Name>
-                </manifestEntries>
-              </archive>
-            </configuration>
-          </plugin>
         </plugins>
       </build>
     </profile>
@@ -199,6 +206,8 @@
               <!-- accessors and builder setters in model_objects carry no prose of their own,
                    so only broken syntax and dead references should be reported -->
               <doclint>all,-missing</doclint>
+              <!-- the jar carries an Automatic-Module-Name, which is enough for javadoc to switch to the modular layout; the published pages live at package paths, so keep generating them there -->
+              <legacyMode>true</legacyMode>
             </configuration>
           </plugin>
         </plugins>
@@ -262,6 +271,8 @@
             </executions>
             <configuration>
               <doclint>all,-missing</doclint>
+              <!-- see the javadoc-check profile: an Automatic-Module-Name alone flips javadoc to the modular layout and would move every published page -->
+              <legacyMode>true</legacyMode>
               <outputDirectory>${project.basedir}/</outputDirectory>
             </configuration>
           </plugin>
