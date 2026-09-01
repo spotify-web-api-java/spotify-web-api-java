@@ -135,7 +135,7 @@ public class ReorderPlaylistsItemsRequest extends AbstractDataRequest<SnapshotRe
     @Override
     public ReorderPlaylistsItemsRequest build() {
       setContentType(ContentType.APPLICATION_JSON);
-      setPath("/v1/playlists/{playlist_id}/tracks");
+      setPath("/v1/playlists/{playlist_id}/items");
       return new ReorderPlaylistsItemsRequest(this);
     }
 

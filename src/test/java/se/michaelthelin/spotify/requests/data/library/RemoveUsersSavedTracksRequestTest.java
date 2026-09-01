@@ -22,7 +22,7 @@ public class RemoveUsersSavedTracksRequestTest extends AbstractDataTest<String> 
       TestUtil.MockedHttpManager.returningJson(null))
     .build();
   private final RemoveUsersSavedTracksRequest bodyRequest = ITest.SPOTIFY_API
-    .removeUsersSavedTracks(ITest.TRACKS)
+    .removeUsersSavedTracks(ITest.ITEMS)
     .setHttpManager(
       TestUtil.MockedHttpManager.returningJson(null))
     .build();
@@ -41,7 +41,7 @@ public class RemoveUsersSavedTracksRequestTest extends AbstractDataTest<String> 
     assertHasHeader(defaultRequest, "Content-Type", "application/json");
     assertHasBodyParameter(bodyRequest,
       "ids",
-      ITest.TRACKS);
+      ITest.ITEMS);
     assertEquals("https://api.spotify.com:443/v1/me/tracks",
       bodyRequest.getUri().toString());
   }

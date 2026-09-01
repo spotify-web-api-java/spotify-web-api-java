@@ -31,18 +31,18 @@ public class PlaylistItemFactory {
    * Determines the type of item (track or episode) based on the "type" field
    * and creates the appropriate model object.
    *
-   * @param trackObj the JSON object containing playlist item data
+   * @param itemObj the JSON object containing playlist item data
    * @return the created playlist item, or null if the type is not recognized
    */
-  public static IPlaylistItem createPlaylistItem(JsonObject trackObj) {
+  public static IPlaylistItem createPlaylistItem(JsonObject itemObj) {
     IPlaylistItem item = null;
-    if (jsonUtil.hasAndNotNull(trackObj, "type")) {
-      String type = trackObj.get("type").getAsString().toLowerCase();
+    if (jsonUtil.hasAndNotNull(itemObj, "type")) {
+      String type = itemObj.get("type").getAsString().toLowerCase();
 
       if (type.equals("track")) {
-        item = new Track.JsonUtil().createModelObject(trackObj);
+        item = new Track.JsonUtil().createModelObject(itemObj);
       } else if (type.equals("episode")) {
-        item = new Episode.JsonUtil().createModelObject(trackObj);
+        item = new Episode.JsonUtil().createModelObject(itemObj);
       }
     }
     return item;

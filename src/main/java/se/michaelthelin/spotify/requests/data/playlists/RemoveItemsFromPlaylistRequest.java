@@ -84,16 +84,16 @@ public class RemoveItemsFromPlaylistRequest extends AbstractDataRequest<Snapshot
      * {@code [{ "uri": "spotify:track:4iV5W9uYEdYUVa79Axb7Rh", "positions": [0,3] },
      * { "uri": "spotify:track:1301WleyT98MSxVHPZCA6M", "positions": [7] }] }
      *
-     * @param tracks Required. An array of objects containing Spotify URIs of the items to remove. A maximum of
+     * @param items Required. An array of objects containing Spotify URIs of the items to remove. A maximum of
      *               100 objects can be sent at once
      * @return A {@link RemoveItemsFromPlaylistRequest.Builder}.
      * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URIs &amp; IDs</a>
      */
-    public Builder tracks(final JsonArray tracks) {
-      assert (tracks != null);
-      assert (!tracks.isJsonNull());
-      assert (tracks.size() <= 100);
-      return setBodyParameter("tracks", tracks);
+    public Builder items(final JsonArray items) {
+      assert (items != null);
+      assert (!items.isJsonNull());
+      assert (items.size() <= 100);
+      return setBodyParameter("items", items);
     }
 
     /**
@@ -125,7 +125,7 @@ public class RemoveItemsFromPlaylistRequest extends AbstractDataRequest<Snapshot
     @Override
     public RemoveItemsFromPlaylistRequest build() {
       setContentType(ContentType.APPLICATION_JSON);
-      setPath("/v1/playlists/{playlist_id}/tracks");
+      setPath("/v1/playlists/{playlist_id}/items");
       return new RemoveItemsFromPlaylistRequest(this);
     }
 

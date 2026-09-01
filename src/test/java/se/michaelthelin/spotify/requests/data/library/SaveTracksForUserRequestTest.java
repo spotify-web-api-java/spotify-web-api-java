@@ -22,7 +22,7 @@ public class SaveTracksForUserRequestTest extends AbstractDataTest<String> {
       TestUtil.MockedHttpManager.returningJson(null))
     .build();
   private final SaveTracksForUserRequest bodyRequest = ITest.SPOTIFY_API
-    .saveTracksForUser(ITest.TRACKS)
+    .saveTracksForUser(ITest.ITEMS)
     .setHttpManager(
       TestUtil.MockedHttpManager.returningJson(null))
     .build();
@@ -42,7 +42,7 @@ public class SaveTracksForUserRequestTest extends AbstractDataTest<String> {
     assertHasBodyParameter(
       bodyRequest,
       "ids",
-      ITest.TRACKS);
+      ITest.ITEMS);
     assertEquals(
       "https://api.spotify.com:443/v1/me/tracks",
       bodyRequest.getUri().toString());

@@ -109,7 +109,7 @@ public class ReplacePlaylistsItemsRequest extends AbstractDataRequest<String> {
     @Override
     public ReplacePlaylistsItemsRequest build() {
       setContentType(ContentType.APPLICATION_JSON);
-      setPath("/v1/playlists/{playlist_id}/tracks");
+      setPath("/v1/playlists/{playlist_id}/items");
       return new ReplacePlaylistsItemsRequest(this);
     }
 

@@ -16,7 +16,7 @@ import static se.michaelthelin.spotify.Assertions.assertHasBodyParameter;
 
 public class RemoveItemsFromPlaylistRequestTest extends AbstractDataTest<SnapshotResult> {
   private final RemoveItemsFromPlaylistRequest defaultRequest = ITest.SPOTIFY_API
-    .removeItemsFromPlaylist(ITest.ID_PLAYLIST, ITest.TRACKS)
+    .removeItemsFromPlaylist(ITest.ID_PLAYLIST, ITest.ITEMS)
     .setHttpManager(
       TestUtil.MockedHttpManager.returningJson(
         "requests/data/playlists/RemoveItemsFromPlaylistRequest.json"))
@@ -31,10 +31,10 @@ public class RemoveItemsFromPlaylistRequestTest extends AbstractDataTest<Snapsho
     assertHasAuthorizationHeader(defaultRequest);
     assertHasBodyParameter(
       defaultRequest,
-      "tracks",
-      ITest.TRACKS);
+      "items",
+      ITest.ITEMS);
     assertEquals(
-      "https://api.spotify.com:443/v1/playlists/3AGOiaoRXMSjswCLtuNqv5/tracks",
+      "https://api.spotify.com:443/v1/playlists/3AGOiaoRXMSjswCLtuNqv5/items",
       defaultRequest.getUri().toString());
   }
 

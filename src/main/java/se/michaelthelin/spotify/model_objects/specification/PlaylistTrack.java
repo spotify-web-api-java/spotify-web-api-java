@@ -169,12 +169,12 @@ public class PlaylistTrack extends AbstractModelObject {
       }
 
       try {
-        IPlaylistItem track = null;
+        IPlaylistItem item = null;
 
-        if (hasAndNotNull(jsonObject, "track")) {
-          final JsonObject trackObj = jsonObject.getAsJsonObject("track");
+        if (hasAndNotNull(jsonObject, "item")) {
+          final JsonObject itemObj = jsonObject.getAsJsonObject("item");
 
-          track = PlaylistItemFactory.createPlaylistItem(trackObj);
+          item = PlaylistItemFactory.createPlaylistItem(itemObj);
         }
 
         return new Builder()
@@ -191,7 +191,7 @@ public class PlaylistTrack extends AbstractModelObject {
             hasAndNotNull(jsonObject, "is_local")
               ? jsonObject.get("is_local").getAsBoolean()
               : null)
-          .setTrack(track)
+          .setTrack(item)
           .build();
       } catch (ParseException e) {
         SpotifyApi.LOGGER.log(Level.SEVERE, e.getMessage());

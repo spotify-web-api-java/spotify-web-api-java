@@ -81,7 +81,7 @@ public interface ITest<T> {
   boolean STATE_BOOLEAN = false;
   int TARGET_POPULARITY = 20;
   String TIME_RANGE = "medium_term";
-  JsonArray TRACKS = JsonParser.parseString("[\"01iyCAUm8EvOFqVWYJ3dVX\", \"01iyCAUm8EvOFqVWYJ3dVX\"]").getAsJsonArray();
+  JsonArray ITEMS = JsonParser.parseString("[\"01iyCAUm8EvOFqVWYJ3dVX\", \"01iyCAUm8EvOFqVWYJ3dVX\"]").getAsJsonArray();
   Date TIMESTAMP = new Date(1414054800000L);
   ModelObjectType TYPE = ModelObjectType.ARTIST;
   JsonArray URIS = JsonParser.parseString("[\"spotify:track:01iyCAUm8EvOFqVWYJ3dVX\",\"spotify:track:01iyCAUm8EvOFqVWYJ3dVX\"]").getAsJsonArray();

@@ -48,7 +48,7 @@ public class GetPlaylistsItemsRequestTest extends AbstractDataTest<Paging<Playli
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
     assertEquals(
-      "https://api.spotify.com:443/v1/playlists/3AGOiaoRXMSjswCLtuNqv5/tracks?fields=description&limit=10&market=SE&offset=0&additional_types=track%2Cepisode",
+      "https://api.spotify.com:443/v1/playlists/3AGOiaoRXMSjswCLtuNqv5/items?fields=description&limit=10&market=SE&offset=0&additional_types=track%2Cepisode",
       defaultRequest.getUri().toString());
   }
 
@@ -64,7 +64,7 @@ public class GetPlaylistsItemsRequestTest extends AbstractDataTest<Paging<Playli
 
   public void shouldReturnDefault(final Paging<PlaylistTrack> playlistTrackPaging) {
     assertEquals(
-      "https://api.spotify.com/v1/users/spotify_espa%C3%B1a/playlists/21THa8j9TaSGuXYNBU5tsC/tracks",
+      "https://api.spotify.com/v1/users/spotify_espa%C3%B1a/playlists/21THa8j9TaSGuXYNBU5tsC/items",
       playlistTrackPaging.getHref());
     assertEquals(
       2,
@@ -99,7 +99,7 @@ public class GetPlaylistsItemsRequestTest extends AbstractDataTest<Paging<Playli
 
   public void shouldReturnDefaultEpisode(final Paging<PlaylistTrack> playlistTrackPaging) {
     assertEquals(
-      "https://api.spotify.com/v1/playlists/21THa8j9TaSGuXYNBU5tsC/tracks?offset=0&limit=100&additional_types=episode",
+      "https://api.spotify.com/v1/playlists/21THa8j9TaSGuXYNBU5tsC/items?offset=0&limit=100&additional_types=episode",
       playlistTrackPaging.getHref());
     assertEquals(
       1,

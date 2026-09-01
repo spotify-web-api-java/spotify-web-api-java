@@ -49,7 +49,7 @@ public class ReorderPlaylistsItemsRequestTest extends AbstractDataTest<SnapshotR
       "snapshot_id",
       ITest.SNAPSHOT_ID);
     assertEquals(
-      "https://api.spotify.com:443/v1/playlists/3AGOiaoRXMSjswCLtuNqv5/tracks",
+      "https://api.spotify.com:443/v1/playlists/3AGOiaoRXMSjswCLtuNqv5/items",
       defaultRequest.getUri().toString());
   }
 

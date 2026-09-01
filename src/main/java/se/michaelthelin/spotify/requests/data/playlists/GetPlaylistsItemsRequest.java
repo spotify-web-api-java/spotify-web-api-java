@@ -12,7 +12,7 @@ import se.michaelthelin.spotify.requests.data.AbstractDataRequest;
 import java.io.IOException;
 
 /**
- * Get full details of the tracks or episodes of a playlist owned by a Spotify user.
+ * Get full details of the tracks or episodes of a playlist owned or collaborated on by the current user.
  */
 @JsonDeserialize(builder = GetPlaylistsItemsRequest.Builder.class)
 public class GetPlaylistsItemsRequest extends AbstractDataRequest<Paging<PlaylistTrack>> {
@@ -48,7 +48,7 @@ public class GetPlaylistsItemsRequest extends AbstractDataRequest<Paging<Playlis
     /**
      * Create a new {@link GetPlaylistsItemsRequest.Builder}.
      * <p>
-     * Both Public and Private playlists belonging to any user are retrievable on provision of a valid access token.
+     * Playlists read have to have the current user as the owner or collaborator. Otherwise, a {@code 403 Forbidden} status code will be returned.
      *
      * @param accessToken Required. A valid access token from the Spotify Accounts service.
      */
@@ -75,7 +75,7 @@ public class GetPlaylistsItemsRequest extends AbstractDataRequest<Paging<Playlis
      * @param fields Optional. Filters for the query: a comma-separated list of the fields to return.
      *               If omitted, all fields are returned.
      * @return A {@link GetPlaylistsItemsRequest.Builder}.
-     * @see <a href="https://developer.spotify.com/documentation/web-api/reference/get-playlists-tracks">
+     * @see <a href="https://developer.spotify.com/documentation/web-api/reference/get-playlists-items">
      * Spotify: More Details on Playlist Fields</a>
      */
     public Builder fields(final String fields) {
@@ -143,7 +143,7 @@ public class GetPlaylistsItemsRequest extends AbstractDataRequest<Paging<Playlis
      */
     @Override
     public GetPlaylistsItemsRequest build() {
-      setPath("/v1/playlists/{playlist_id}/tracks");
+      setPath("/v1/playlists/{playlist_id}/items");
       return new GetPlaylistsItemsRequest(this);
     }
 

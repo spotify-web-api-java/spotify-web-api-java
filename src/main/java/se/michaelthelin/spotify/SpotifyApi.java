@@ -1627,16 +1627,16 @@ public class SpotifyApi {
    * Delete items from a playlist
    *
    * @param playlist_id The playlists ID.
-   * @param tracks      URIs of the items to remove. Maximum: 100 track or episode URIs.
+   * @param items      URIs of the items to remove. Maximum: 100 track or episode URIs.
    * @return A {@link RemoveItemsFromPlaylistRequest.Builder}.
    * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
    */
   public RemoveItemsFromPlaylistRequest.Builder removeItemsFromPlaylist(
-    String playlist_id, JsonArray tracks) {
+    String playlist_id, JsonArray items) {
     return new RemoveItemsFromPlaylistRequest.Builder(accessToken)
       .setDefaults(httpManager, scheme, host, port)
       .playlist_id(playlist_id)
-      .tracks(tracks);
+      .items(items);
   }
 
   /**

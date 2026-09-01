@@ -1,5 +1,5 @@
 {
-  "href": "https://api.spotify.com/v1/users/spotify_espa%C3%B1a/playlists/21THa8j9TaSGuXYNBU5tsC/tracks",
+  "href": "https://api.spotify.com/v1/users/spotify_espa%C3%B1a/playlists/21THa8j9TaSGuXYNBU5tsC/items",
   "items": [
     {
       "added_at": "2016-10-11T13:44:40Z",
@@ -13,7 +13,7 @@
         "uri": "spotify:user:spotify_espa%C3%B1a"
       },
       "is_local": false,
-      "track": {
+      "item": {
         "album": {
           "album_type": "single",
           "artists": [
