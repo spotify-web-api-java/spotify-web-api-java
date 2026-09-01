@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.model_objects.special;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 import se.michaelthelin.spotify.model_objects.specification.Paging;
 import se.michaelthelin.spotify.model_objects.specification.PlaylistSimplified;
@@ -9,7 +8,6 @@ import se.michaelthelin.spotify.model_objects.specification.PlaylistSimplified;
  * Retrieve information about <a href="https://developer.spotify.com/documentation/web-api/reference/get-featured-playlists">
  * Featured Playlist objects</a> by building instances from this class.
  */
-@JsonDeserialize(builder = FeaturedPlaylists.Builder.class)
 public class FeaturedPlaylists extends AbstractModelObject {
   /** A message describing the featured playlists. */
   private final String message;

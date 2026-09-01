@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.model_objects.specification;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 
 import java.util.Date;
@@ -9,7 +8,6 @@ import java.util.Date;
  * Retrieve information about <a href="https://developer.spotify.com/web-api/object-model/#saved-album-object">
  * Saved Album objects</a> by building instances from this class.
  */
-@JsonDeserialize(builder = SavedAlbum.Builder.class)
 public class SavedAlbum extends AbstractModelObject {
   /** The date and time the album was saved. */
   private final Date addedAt;

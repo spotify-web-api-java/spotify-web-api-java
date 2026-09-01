@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.model_objects.miscellaneous;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 
 import java.util.Arrays;
@@ -10,7 +9,6 @@ import java.util.Arrays;
  * Segments are sound entities (typically under a second) each relatively uniform in timbre and harmony. They are
  * characterized by their perceptual onsets and duration in seconds, loudness (dB), pitch and timbral content.
  */
-@JsonDeserialize(builder = AudioAnalysisSegment.Builder.class)
 public class AudioAnalysisSegment extends AbstractModelObject {
   /** The measure data for this segment. */
   private final AudioAnalysisMeasure measure;

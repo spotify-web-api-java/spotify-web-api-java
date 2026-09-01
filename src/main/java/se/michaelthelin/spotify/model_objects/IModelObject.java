@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.model_objects;
 
-import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.model_objects.specification.Paging;
@@ -24,7 +23,6 @@ public interface IModelObject extends Serializable {
   /**
    * Interface with methods used in builder classes of model objects.
    */
-  @JsonPOJOBuilder(withPrefix = "set")
   interface Builder {
 
     /**

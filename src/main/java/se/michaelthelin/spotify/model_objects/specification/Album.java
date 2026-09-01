@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.model_objects.specification;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import se.michaelthelin.spotify.enums.AlbumType;
 import se.michaelthelin.spotify.enums.ModelObjectType;
 import se.michaelthelin.spotify.enums.ReleaseDatePrecision;
@@ -14,7 +13,6 @@ import java.util.Objects;
  * Retrieve information about <a href="https://developer.spotify.com/web-api/object-model/#album-object-full">
  * Album objects</a> by building instances from this class.
  */
-@JsonDeserialize(builder = Album.Builder.class)
 public class Album extends AbstractModelObject implements IAlbum {
   /** The type of the album. */
   private final AlbumType albumType;

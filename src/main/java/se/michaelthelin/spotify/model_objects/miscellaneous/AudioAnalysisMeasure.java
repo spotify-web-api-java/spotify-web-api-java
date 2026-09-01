@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.model_objects.miscellaneous;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 
 /**
@@ -8,7 +7,6 @@ import se.michaelthelin.spotify.model_objects.AbstractModelObject;
  * These objects can store the data of various {@link AudioAnalysis} measurements, like {@code tatums}, {@code bars} and
  * {@code beats}.
  */
-@JsonDeserialize(builder = AudioAnalysisMeasure.Builder.class)
 public class AudioAnalysisMeasure extends AbstractModelObject {
   /** The confidence level of the measure identification (0.0 to 1.0). */
   private final Float confidence;

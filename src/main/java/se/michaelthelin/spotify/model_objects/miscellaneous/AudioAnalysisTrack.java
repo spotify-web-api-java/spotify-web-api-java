@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.model_objects.miscellaneous;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.annotations.SerializedName;
 import se.michaelthelin.spotify.enums.Modality;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
@@ -8,7 +7,6 @@ import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 /**
  * Retrieve information about Audio Analysis Track objects by creating instances from this class.
  */
-@JsonDeserialize(builder = AudioAnalysisTrack.Builder.class)
 public class AudioAnalysisTrack extends AbstractModelObject {
   /** The number of samples in the track. */
   private final Long numSamples;

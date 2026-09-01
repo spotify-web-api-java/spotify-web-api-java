@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.model_objects.miscellaneous;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import se.michaelthelin.spotify.enums.CurrentlyPlayingType;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 import se.michaelthelin.spotify.model_objects.IPlaylistItem;
@@ -13,7 +12,6 @@ import se.michaelthelin.spotify.model_objects.specification.Disallows;
  * <a href="https://developer.spotify.com/documentation/web-api/reference/get-information-about-the-users-current-playback">Currently Playing
  * Context objects</a> by creating instances from this class.
  */
-@JsonDeserialize(builder = CurrentlyPlayingContext.Builder.class)
 public class CurrentlyPlayingContext extends AbstractModelObject {
   /** The device that is currently active. */
   private final Device device;

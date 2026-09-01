@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.model_objects.specification;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import se.michaelthelin.spotify.enums.ModelObjectType;
 import se.michaelthelin.spotify.enums.ReleaseDatePrecision;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
@@ -12,7 +11,6 @@ import java.util.Objects;
  * Retrieve information about <a href="https://developer.spotify.com/documentation/web-api/reference/get-a-chapter">
  * simplified Chapter objects</a> by building instances from this class.
  */
-@JsonDeserialize(builder = ChapterSimplified.Builder.class)
 public class ChapterSimplified extends AbstractModelObject {
   /** A URL to a 30 second preview (MP3 format) of the chapter. {@code null} if not available. */
   private final String audioPreviewUrl;

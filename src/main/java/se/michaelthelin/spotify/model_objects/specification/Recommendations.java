@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.model_objects.specification;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 
 import java.util.Arrays;
@@ -9,7 +8,6 @@ import java.util.Arrays;
  * Retrieve information about <a href="https://developer.spotify.com/web-api/object-model/#recommendations-object">
  * Recommendation objects</a> by building instances from this class.
  */
-@JsonDeserialize(builder = Recommendations.Builder.class)
 public class Recommendations extends AbstractModelObject {
   /** The seeds used to generate recommendations. */
   private final RecommendationsSeed[] seeds;

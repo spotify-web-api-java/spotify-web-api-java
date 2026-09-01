@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.model_objects.specification;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import se.michaelthelin.spotify.enums.CopyrightType;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 
@@ -9,7 +8,6 @@ import se.michaelthelin.spotify.model_objects.AbstractModelObject;
  * <a href="https://developer.spotify.com/web-api/object-model/#copyright-object">Copyright objects</a>
  * by building instances from this class.
  */
-@JsonDeserialize(builder = Copyright.Builder.class)
 public class Copyright extends AbstractModelObject {
   /** The copyright text for this content. */
   private final String text;

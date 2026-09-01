@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.requests.authorization.authorization_code;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import se.michaelthelin.spotify.SpotifyApi;
 import se.michaelthelin.spotify.enums.AuthorizationScope;
 import se.michaelthelin.spotify.requests.AbstractRequest;
@@ -12,7 +11,6 @@ import java.net.URI;
  * <a href="https://developer.spotify.com/documentation/web-api/tutorials/code-flow">Authorization Code
  * URI</a> request.
  */
-@JsonDeserialize(builder = AuthorizationCodeUriRequest.Builder.class)
 public class AuthorizationCodeUriRequest extends AbstractRequest<URI> {
 
   private AuthorizationCodeUriRequest(Builder builder) {

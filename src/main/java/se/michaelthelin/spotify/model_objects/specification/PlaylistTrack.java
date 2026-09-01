@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.model_objects.specification;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 import se.michaelthelin.spotify.model_objects.IPlaylistItem;
 
@@ -10,7 +9,6 @@ import java.util.Date;
  * Retrieve information about <a href="https://developer.spotify.com/web-api/object-model/#playlist-track-object">
  * Playlist Track objects</a> by building instances from this class.
  */
-@JsonDeserialize(builder = PlaylistTrack.Builder.class)
 public class PlaylistTrack extends AbstractModelObject {
   /** The date and time the track was added. */
   private final Date addedAt;

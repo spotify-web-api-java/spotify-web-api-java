@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.model_objects.specification;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 
 /**
@@ -8,7 +7,6 @@ import se.michaelthelin.spotify.model_objects.AbstractModelObject;
  * <a href="https://developer.spotify.com/web-api/object-model/#followers-object">Follower objects</a>
  * by building instances from this class.
  */
-@JsonDeserialize(builder = Followers.Builder.class)
 public class Followers extends AbstractModelObject {
   /** This will always be set to null, as the Web API does not support it at the moment. */
   private final String href;

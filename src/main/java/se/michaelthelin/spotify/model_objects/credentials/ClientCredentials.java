@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.model_objects.credentials;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 
 import java.util.Objects;
@@ -9,7 +8,6 @@ import java.util.Objects;
  * Retrieve information about <a href="https://developer.spotify.com/documentation/web-api/tutorials/implicit-flow">
  * Client Credentials</a> by building instances from this class.
  */
-@JsonDeserialize(builder = ClientCredentials.Builder.class)
 public class ClientCredentials extends AbstractModelObject {
   /** The access token used for making authenticated requests. */
   private final String accessToken;

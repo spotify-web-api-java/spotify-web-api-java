@@ -1,13 +1,11 @@
 package se.michaelthelin.spotify.model_objects.specification;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 
 /**
  * Retrieve information about <a href="https://developer.spotify.com/web-api/object-model/#error-object">
  * Error objects</a> by building instances from this class.
  */
-@JsonDeserialize(builder = Error.Builder.class)
 public class Error extends AbstractModelObject {
   /** The HTTP status code. */
   private final Integer status;

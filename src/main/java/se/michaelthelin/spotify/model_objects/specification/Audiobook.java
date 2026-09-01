@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.model_objects.specification;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import se.michaelthelin.spotify.enums.ModelObjectType;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 
@@ -11,7 +10,6 @@ import java.util.Objects;
  * Retrieve information about <a href="https://developer.spotify.com/documentation/web-api/reference/get-an-audiobook">
  * Audiobook objects</a> by building instances from this class.
  */
-@JsonDeserialize(builder = Audiobook.Builder.class)
 public class Audiobook extends AbstractModelObject {
   /** The author(s) for the audiobook. */
   private final Author[] authors;

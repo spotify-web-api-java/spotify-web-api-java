@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.model_objects.special;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 import se.michaelthelin.spotify.model_objects.specification.*;
 import se.michaelthelin.spotify.requests.data.users.interfaces.IArtistTrackModelObject;
@@ -12,7 +11,6 @@ import se.michaelthelin.spotify.requests.data.search.interfaces.ISearchModelObje
  * for every type specified by the {@code type} parameter in the {@link SearchForItemRequest}
  * the searched-for items wrapped in a {@link Paging} object.
  */
-@JsonDeserialize(builder = SearchResult.Builder.class)
 public class SearchResult extends AbstractModelObject implements IArtistTrackModelObject, ISearchModelObject {
   /** A paging object containing album search results. */
   private final Paging<AlbumSimplified> albums;

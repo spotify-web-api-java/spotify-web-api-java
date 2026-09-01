@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.model_objects.credentials;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 
 import java.util.Objects;
@@ -10,7 +9,6 @@ import java.util.Objects;
  * <a href="https://developer.spotify.com/documentation/web-api/tutorials/code-flow">Authorization Code
  * Credentials</a> by building instances from this class.
  */
-@JsonDeserialize(builder = AuthorizationCodeCredentials.Builder.class)
 public class AuthorizationCodeCredentials extends AbstractModelObject {
   /** The access token used for making authenticated requests. */
   private final String accessToken;

@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.model_objects.special;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.neovisionaries.i18n.CountryCode;
 import se.michaelthelin.spotify.enums.AlbumType;
 import se.michaelthelin.spotify.enums.ModelObjectType;
@@ -23,7 +22,6 @@ import java.util.Objects;
  * This class exists because it includes the property {@code totalTracks}, which is not documented in the official
  * specification, although the albums object as returned by the searches API includes it.
  */
-@JsonDeserialize(builder = AlbumSimplifiedSpecial.Builder.class)
 public class AlbumSimplifiedSpecial extends AbstractModelObject implements ISearchModelObject, IAlbum {
   /** The type of the album. */
   private final AlbumType albumType;

@@ -1,13 +1,11 @@
 package se.michaelthelin.spotify.model_objects.miscellaneous;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 import se.michaelthelin.spotify.model_objects.interfaces.IHasTotal;
 
 /**
  * Retrieve information about Playlist Track Information objects by building instances from this class.
  */
-@JsonDeserialize(builder = PlaylistTracksInformation.Builder.class)
 public class PlaylistTracksInformation extends AbstractModelObject implements IHasTotal {
   /** A link to the Web API endpoint where full details of the playlist's tracks can be retrieved. */
   private final String href;

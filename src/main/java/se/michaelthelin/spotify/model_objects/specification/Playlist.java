@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.model_objects.specification;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.annotations.SerializedName;
 import se.michaelthelin.spotify.enums.ModelObjectType;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
@@ -14,7 +13,6 @@ import java.util.Objects;
  * Retrieve information about <a href="https://developer.spotify.com/web-api/object-model/#playlist-object-full">
  * Playlist objects</a> by building instances from this class.
  */
-@JsonDeserialize(builder = Playlist.Builder.class)
 public class Playlist extends AbstractModelObject implements IPlaylist<Paging<PlaylistTrack>> {
   /** Whether the playlist is collaborative. */
   private final Boolean collaborative;

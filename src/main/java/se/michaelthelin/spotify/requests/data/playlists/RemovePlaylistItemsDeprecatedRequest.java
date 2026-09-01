@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.requests.data.playlists;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.JsonArray;
 import org.apache.hc.core5.http.ContentType;
 import org.apache.hc.core5.http.ParseException;
@@ -16,7 +15,6 @@ import java.io.IOException;
  * @deprecated Use {@link RemovePlaylistItemsRequest} instead.
  */
 @Deprecated
-@JsonDeserialize(builder = RemovePlaylistItemsDeprecatedRequest.Builder.class)
 public class RemovePlaylistItemsDeprecatedRequest extends AbstractDataRequest<SnapshotResult> {
 
   /**

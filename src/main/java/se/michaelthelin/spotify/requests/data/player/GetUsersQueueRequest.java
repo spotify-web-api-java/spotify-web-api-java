@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import org.apache.hc.core5.http.ParseException;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.model_objects.special.PlaybackQueue;
@@ -18,7 +17,6 @@ import se.michaelthelin.spotify.requests.data.AbstractDataRequest;
  *  The endpoint does not support paging since the queue is not expected to be large.
  *  Therefore, the request will return a {@link PlaybackQueue} object including a List of {@link se.michaelthelin.spotify.model_objects.IPlaylistItem}.
  */
-@JsonDeserialize(builder = GetUsersQueueRequest.Builder.class)
 public class GetUsersQueueRequest extends AbstractDataRequest<PlaybackQueue> {
 
   /**

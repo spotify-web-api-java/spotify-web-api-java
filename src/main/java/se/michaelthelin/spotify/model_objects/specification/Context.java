@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.model_objects.specification;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import se.michaelthelin.spotify.enums.ModelObjectType;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 
@@ -13,7 +12,6 @@ import java.util.Objects;
  *
  * @see PlayHistory
  */
-@JsonDeserialize(builder = Context.Builder.class)
 public class Context extends AbstractModelObject {
   /** The object type of the context. */
   private final ModelObjectType type;

@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.requests.data.playlists;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import org.apache.hc.core5.http.ContentType;
 import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
@@ -16,7 +15,6 @@ import java.io.IOException;
  * be kept untouched. In addition, the users following the playlists won’t be notified about changes in
  * the playlists when the items are reordered.
  */
-@JsonDeserialize(builder = UpdatePlaylistsItemsReorderRequest.Builder.class)
 public class UpdatePlaylistsItemsReorderRequest extends AbstractDataRequest<SnapshotResult> {
 
   /**

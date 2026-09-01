@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.model_objects.specification;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.annotations.SerializedName;
 import se.michaelthelin.spotify.enums.ModelObjectType;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
@@ -9,7 +8,6 @@ import se.michaelthelin.spotify.model_objects.AbstractModelObject;
  * Retrieve information about <a href="https://developer.spotify.com/web-api/object-model/#recommendations-seed-object">
  * Recommendation Seed objects</a> by building instances from this class.
  */
-@JsonDeserialize(builder = RecommendationsSeed.Builder.class)
 public class RecommendationsSeed extends AbstractModelObject {
   /** The number of tracks available after min and max filters have been applied. */
   @SerializedName("afterFilteringSize")

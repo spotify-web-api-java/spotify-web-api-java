@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.model_objects.specification;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
@@ -12,7 +11,6 @@ import java.util.Map;
  * <a href="https://developer.spotify.com/web-api/object-model/#external-id-object">External ID objects</a>
  * by building instances from this class.
  */
-@JsonDeserialize(builder = ExternalId.Builder.class)
 public class ExternalId extends AbstractModelObject {
   /** Known external IDs for this object. */
   private final Map<String, String> externalIds;

@@ -3,7 +3,6 @@
 // descriptor to use if the library is ever built as an explicit module, in which case Gson needs
 // the model packages opened to it in order to populate their fields reflectively.
 module se.michaelthelin.spotify {
-  requires com.fasterxml.jackson.databind;
   requires com.google.gson;
   requires nv.i18n;
   requires org.apache.httpcomponents.client5.httpclient5.cache;

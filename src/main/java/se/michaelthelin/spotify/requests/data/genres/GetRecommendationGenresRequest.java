@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.requests.data.genres;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.Gson;
 import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
@@ -17,7 +16,6 @@ import java.util.List;
  * @deprecated This endpoint has been deprecated by Spotify.
  */
 @Deprecated
-@JsonDeserialize(builder = GetRecommendationGenresRequest.Builder.class)
 public class GetRecommendationGenresRequest extends AbstractDataRequest<String[]> {
 
   /**

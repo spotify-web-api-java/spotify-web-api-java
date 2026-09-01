@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.model_objects.specification;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 
 import java.util.Objects;
@@ -9,7 +8,6 @@ import java.util.Objects;
  * Retrieve information about <a href="https://developer.spotify.com/documentation/web-api/reference/get-an-audiobook">
  * Narrator objects</a> by building instances from this class.
  */
-@JsonDeserialize(builder = Narrator.Builder.class)
 public class Narrator extends AbstractModelObject {
   /** The name of the Narrator. */
   private final String name;

@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.model_objects.special;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 
 /**
@@ -10,7 +9,6 @@ import se.michaelthelin.spotify.model_objects.AbstractModelObject;
  * <a href="https://developer.spotify.com/documentation/web-api/concepts/playlists">
  * Spotify: Working With Playlists</a>
  */
-@JsonDeserialize(builder = SnapshotResult.Builder.class)
 public class SnapshotResult extends AbstractModelObject {
   /** The snapshot_id can be used to identify your playlist version in future requests. */
   private final String snapshotId;

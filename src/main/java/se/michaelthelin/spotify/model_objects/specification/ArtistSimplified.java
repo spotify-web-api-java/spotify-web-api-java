@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.model_objects.specification;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import se.michaelthelin.spotify.enums.ModelObjectType;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 import se.michaelthelin.spotify.model_objects.interfaces.IArtist;
@@ -11,7 +10,6 @@ import java.util.Objects;
  * Retrieve information about <a href="https://developer.spotify.com/web-api/object-model/#artist-object-simplified">
  * simplified Artist objects</a> by building instances from this class.
  */
-@JsonDeserialize(builder = ArtistSimplified.Builder.class)
 public class ArtistSimplified extends AbstractModelObject implements IArtist {
   /** Known external URLs for this artist. */
   private final ExternalUrl externalUrls;

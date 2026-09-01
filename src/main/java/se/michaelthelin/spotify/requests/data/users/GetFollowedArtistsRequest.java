@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.requests.data.users;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.enums.ModelObjectType;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
@@ -14,7 +13,6 @@ import java.io.IOException;
 /**
  * Get the current user’s followed artists.
  */
-@JsonDeserialize(builder = GetFollowedArtistsRequest.Builder.class)
 public class GetFollowedArtistsRequest extends AbstractDataRequest<PagingCursorbased<Artist>> {
 
   /**

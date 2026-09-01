@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.model_objects.specification;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 
 import java.util.Date;
@@ -9,7 +8,6 @@ import java.util.Date;
  * Retrieve information about <a href="https://developer.spotify.com/documentation/web-api/reference/get-users-saved-episodes">
  * Saved Episode objects</a> by building instances from this class.
  */
-@JsonDeserialize(builder = SavedEpisode.Builder.class)
 public class SavedEpisode extends AbstractModelObject {
   /** The date and time the episode was saved. */
   private final Date addedAt;

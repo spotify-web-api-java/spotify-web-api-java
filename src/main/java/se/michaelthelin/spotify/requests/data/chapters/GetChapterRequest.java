@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.requests.data.chapters;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.neovisionaries.i18n.CountryCode;
 import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
@@ -13,7 +12,6 @@ import java.io.IOException;
  * Get Spotify catalog information for a single audiobook chapter. Chapters are only available within the US, UK,
  * Ireland, New Zealand and Australia markets.
  */
-@JsonDeserialize(builder = GetChapterRequest.Builder.class)
 public class GetChapterRequest extends AbstractDataRequest<Chapter> {
 
   /**

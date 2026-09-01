@@ -1,13 +1,11 @@
 package se.michaelthelin.spotify.model_objects.miscellaneous;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 
 /**
  * Retrieve information about Audio Analysis Metadata objects by creating instances from this class. <br>
  * These objects only contain metadata created by the Analyzer software.
  */
-@JsonDeserialize(builder = AudioAnalysisMeta.Builder.class)
 public class AudioAnalysisMeta extends AbstractModelObject {
   /** The version of the analyzer used. */
   private final String analyzerVersion;

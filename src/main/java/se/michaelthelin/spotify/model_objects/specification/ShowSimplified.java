@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.model_objects.specification;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import se.michaelthelin.spotify.enums.ModelObjectType;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 import se.michaelthelin.spotify.model_objects.interfaces.IShow;
@@ -13,7 +12,6 @@ import java.util.Objects;
  * Retrieve information about <a href="https://developer.spotify.com/documentation/web-api/reference/object-model/#show-object-simplified">
  * simplified Show objects</a> by building instances from this class.
  */
-@JsonDeserialize(builder = ShowSimplified.Builder.class)
 public class ShowSimplified extends AbstractModelObject implements ISearchModelObject, IShow {
   /** The copyright statements of the show. */
   private final Copyright[] copyrights;

@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.model_objects.special;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 import se.michaelthelin.spotify.model_objects.specification.Disallows;
 
@@ -9,7 +8,6 @@ import se.michaelthelin.spotify.model_objects.specification.Disallows;
  * contain information to allow to update the user interface based on which playback actions are
  * available within the current context. These objects contain a {@link Disallows} object.
  */
-@JsonDeserialize(builder = Actions.Builder.class)
 public class Actions extends AbstractModelObject {
   /** Actions that are disallowed in the current context. */
   private final Disallows disallows;

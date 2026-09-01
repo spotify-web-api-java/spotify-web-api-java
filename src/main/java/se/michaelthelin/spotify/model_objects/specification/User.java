@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.model_objects.specification;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import se.michaelthelin.spotify.enums.ModelObjectType;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 
@@ -15,7 +14,6 @@ import java.util.Objects;
  *
  * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/scopes">Spotify: Using Scopes</a>
  */
-@JsonDeserialize(builder = User.Builder.class)
 public class User extends AbstractModelObject {
   /** An alphanumeric string identifying the account, not publicly visible. */
   private final String accountId;

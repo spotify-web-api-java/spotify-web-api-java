@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.requests.authorization.authorization_code.pkce;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import org.apache.hc.core5.http.ContentType;
 import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.SpotifyApi;
@@ -15,7 +14,6 @@ import java.io.IOException;
  * <a href="https://developer.spotify.com/documentation/general/guides/authorization-guide/#6-requesting-a-refreshed-access-token">
  * Authorization Code Refresh</a> request.
  */
-@JsonDeserialize(builder = AuthorizationCodePKCERefreshRequest.Builder.class)
 public class AuthorizationCodePKCERefreshRequest extends AbstractRequest<AuthorizationCodeCredentials> {
 
   private AuthorizationCodePKCERefreshRequest(Builder builder) {

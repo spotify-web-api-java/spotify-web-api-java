@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.requests.data.tracks;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.neovisionaries.i18n.CountryCode;
 import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
@@ -21,7 +20,6 @@ import java.io.IOException;
  * @deprecated This endpoint has been deprecated by Spotify.
  */
 @Deprecated
-@JsonDeserialize(builder = GetRecommendationsRequest.Builder.class)
 public class GetRecommendationsRequest extends AbstractDataRequest<Recommendations> {
 
   /**

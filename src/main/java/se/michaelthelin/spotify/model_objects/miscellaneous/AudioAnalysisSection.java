@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.model_objects.miscellaneous;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import se.michaelthelin.spotify.enums.Modality;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 
@@ -9,7 +8,6 @@ import se.michaelthelin.spotify.model_objects.AbstractModelObject;
  * Sections are defined by large variations in rhythm or timbre, e.g. chorus, verse, bridge, guitar solo, etc. Each
  * section contains its own descriptions of tempo, key, mode, time_signature, and loudness.
  */
-@JsonDeserialize(builder = AudioAnalysisSection.Builder.class)
 public class AudioAnalysisSection extends AbstractModelObject {
   /** The measure data for this section. */
   private final AudioAnalysisMeasure measure;

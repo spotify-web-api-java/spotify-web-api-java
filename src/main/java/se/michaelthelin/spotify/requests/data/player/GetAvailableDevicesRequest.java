@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.requests.data.player;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.model_objects.miscellaneous.Device;
@@ -11,7 +10,6 @@ import java.io.IOException;
 /**
  * Get information about a user’s available devices.
  */
-@JsonDeserialize(builder = GetAvailableDevicesRequest.Builder.class)
 public class GetAvailableDevicesRequest extends AbstractDataRequest<Device[]> {
 
   /**

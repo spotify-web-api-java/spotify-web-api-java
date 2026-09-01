@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.model_objects.specification;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import se.michaelthelin.spotify.enums.ModelObjectType;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 
@@ -12,7 +11,6 @@ import se.michaelthelin.spotify.model_objects.AbstractModelObject;
  *
  * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/track-relinking">Spotify: Track Relinking Guide</a>
  */
-@JsonDeserialize(builder = TrackLink.Builder.class)
 public class TrackLink extends AbstractModelObject {
   /** External URLs for the track. */
   private final ExternalUrl externalUrls;

@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.requests.data.audiobooks;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.model_objects.specification.AudiobookSimplified;
@@ -13,7 +12,6 @@ import java.io.IOException;
 /**
  * Get a list of the audiobooks saved in the current Spotify user's "Your Music" library.
  */
-@JsonDeserialize(builder = GetUsersSavedAudiobooksRequest.Builder.class)
 public class GetUsersSavedAudiobooksRequest extends AbstractDataRequest<Paging<AudiobookSimplified>> {
 
   /**

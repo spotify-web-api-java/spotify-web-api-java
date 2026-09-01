@@ -3,7 +3,6 @@ package se.michaelthelin.spotify.model_objects.special;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
@@ -16,7 +15,6 @@ import se.michaelthelin.spotify.model_objects.utils.PlaylistItemFactory;
 /**
  * Get the list of items that make up the user's queue.
  */
-@JsonDeserialize(builder = CurrentlyPlaying.Builder.class)
 public class PlaybackQueue extends AbstractModelObject {
   /** The currently playing track or episode. */
   private final IPlaylistItem currentlyPlaying;

@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.requests.data.search;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.neovisionaries.i18n.CountryCode;
 import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
@@ -12,7 +11,6 @@ import java.io.IOException;
 /**
  * Get Spotify catalog information about artists, albums, episodes, playlists, shows or tracks that match a keyword string.
  */
-@JsonDeserialize(builder = SearchForItemRequest.Builder.class)
 public class SearchForItemRequest extends AbstractDataRequest<SearchResult> {
 
   /**

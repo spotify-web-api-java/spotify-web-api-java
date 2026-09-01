@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.model_objects.specification;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 
 import java.util.Arrays;
@@ -10,7 +9,6 @@ import java.util.Objects;
  * Retrieve information about <a href="https://developer.spotify.com/web-api/object-model/#category-object">
  * Category objects</a> by building instances from this class.
  */
-@JsonDeserialize(builder = Category.Builder.class)
 public class Category extends AbstractModelObject {
   /** A link to the Web API endpoint returning full details of the category. */
   private final String href;

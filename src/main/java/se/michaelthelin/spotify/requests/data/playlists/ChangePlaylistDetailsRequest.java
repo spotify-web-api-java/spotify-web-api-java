@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.requests.data.playlists;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import org.apache.hc.core5.http.ContentType;
 import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
@@ -11,7 +10,6 @@ import java.io.IOException;
 /**
  * Change a playlist’s name and public/private state. (The user must, of course, own the playlist.)
  */
-@JsonDeserialize(builder = ChangePlaylistDetailsRequest.Builder.class)
 public class ChangePlaylistDetailsRequest extends AbstractDataRequest<String> {
 
   /**

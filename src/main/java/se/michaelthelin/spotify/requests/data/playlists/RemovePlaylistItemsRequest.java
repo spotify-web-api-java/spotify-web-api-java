@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.requests.data.playlists;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.JsonArray;
 import org.apache.hc.core5.http.ContentType;
 import org.apache.hc.core5.http.ParseException;
@@ -13,7 +12,6 @@ import java.io.IOException;
 /**
  * Remove one or more items from a user’s playlist.
  */
-@JsonDeserialize(builder = RemovePlaylistItemsRequest.Builder.class)
 public class RemovePlaylistItemsRequest extends AbstractDataRequest<SnapshotResult> {
 
   /**

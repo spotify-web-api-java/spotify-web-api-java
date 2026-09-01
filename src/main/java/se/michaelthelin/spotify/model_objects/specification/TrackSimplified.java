@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.model_objects.specification;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import se.michaelthelin.spotify.enums.ModelObjectType;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 import se.michaelthelin.spotify.model_objects.interfaces.ITrack;
@@ -12,7 +11,6 @@ import java.util.Objects;
  * Retrieve information about <a href="https://developer.spotify.com/web-api/object-model/#track-object-simplified">
  * simplified Track objects</a> by building instances from this class.
  */
-@JsonDeserialize(builder = TrackSimplified.Builder.class)
 public class TrackSimplified extends AbstractModelObject implements ITrack {
   /** The artists who performed the track. */
   private final ArtistSimplified[] artists;

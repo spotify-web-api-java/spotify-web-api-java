@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.model_objects.specification;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
@@ -12,7 +11,6 @@ import java.util.Map;
  * <a href="https://developer.spotify.com/web-api/object-model/#external-url-object">External URL objects</a>
  * by building instances from this class.
  */
-@JsonDeserialize(builder = ExternalUrl.Builder.class)
 public class ExternalUrl extends AbstractModelObject {
   /** Known external URLs for this object. */
   private final Map<String, String> externalUrls;

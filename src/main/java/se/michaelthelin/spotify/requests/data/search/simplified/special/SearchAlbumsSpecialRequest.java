@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.requests.data.search.simplified.special;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.neovisionaries.i18n.CountryCode;
 import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
@@ -17,7 +16,6 @@ import java.io.IOException;
  * This class exists because it includes the property {@code totalTracks}, which is not documented in the official
  * specification, although the albums object as returned by the searches API includes it.
  */
-@JsonDeserialize(builder = SearchAlbumsSpecialRequest.Builder.class)
 public class SearchAlbumsSpecialRequest extends AbstractDataRequest<Paging<AlbumSimplifiedSpecial>> {
 
   /**

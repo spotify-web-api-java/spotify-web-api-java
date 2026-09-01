@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.model_objects.specification;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 
 /**
@@ -8,7 +7,6 @@ import se.michaelthelin.spotify.model_objects.AbstractModelObject;
  * <a href="https://developer.spotify.com/web-api/object-model/#resume-point-object">Resume Point objects</a>
  * by building instances from this class.
  */
-@JsonDeserialize(builder = ResumePoint.Builder.class)
 public class ResumePoint extends AbstractModelObject {
   /** Whether the episode has been fully played by the user. */
   private final Boolean fullyPlayed;

@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.model_objects.miscellaneous;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 import se.michaelthelin.spotify.model_objects.specification.AudioFeatures;
 
@@ -17,7 +16,6 @@ import java.util.Arrays;
  * on the side of Spotify, so it is possible that this Javadoc page (and other Audio Analysis related Javadoc pages)
  * contains speculative information about a few of its corresponding methods.
  */
-@JsonDeserialize(builder = AudioAnalysis.Builder.class)
 public class AudioAnalysis extends AbstractModelObject {
   /** Array of bar intervals in the track. */
   private final AudioAnalysisMeasure[] bars;

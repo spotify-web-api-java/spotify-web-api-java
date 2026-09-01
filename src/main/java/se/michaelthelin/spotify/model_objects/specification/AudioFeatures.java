@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.model_objects.specification;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import se.michaelthelin.spotify.enums.Modality;
 import se.michaelthelin.spotify.enums.ModelObjectType;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
@@ -12,7 +11,6 @@ import java.util.Objects;
  * Retrieve information about <a href="https://developer.spotify.com/web-api/object-model/#audio-features-object">
  * Audio Feature objects</a> by building instances from this class.
  */
-@JsonDeserialize(builder = AudioFeatures.Builder.class)
 public class AudioFeatures extends AbstractModelObject {
   /** A confidence measure from 0.0 to 1.0 of whether the track is acoustic. */
   private final Float acousticness;

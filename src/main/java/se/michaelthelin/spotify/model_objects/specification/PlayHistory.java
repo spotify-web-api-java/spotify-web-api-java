@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.model_objects.specification;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 
 import java.util.Date;
@@ -9,7 +8,6 @@ import java.util.Date;
  * Retrieve information about <a href="https://developer.spotify.com/web-api/object-model/#play-history-object">
  * Play History objects</a> by building instances from this class.
  */
-@JsonDeserialize(builder = PlayHistory.Builder.class)
 public class PlayHistory extends AbstractModelObject {
   /** The track that was played. */
   private final Track track;

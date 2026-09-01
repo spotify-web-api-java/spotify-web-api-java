@@ -1,12 +1,10 @@
 package se.michaelthelin.spotify.model_objects.specification;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 
 /**
  * Retrieve information about the current user's explicit content settings by building instances from this class.
  */
-@JsonDeserialize(builder = ExplicitContentSettings.Builder.class)
 public class ExplicitContentSettings extends AbstractModelObject {
   /** When true, indicates that explicit content should not be played. */
   private final Boolean filterEnabled;

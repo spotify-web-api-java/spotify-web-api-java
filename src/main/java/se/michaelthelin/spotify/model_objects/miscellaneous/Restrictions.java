@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.model_objects.miscellaneous;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 
 /**
@@ -11,7 +10,6 @@ import se.michaelthelin.spotify.model_objects.AbstractModelObject;
  * with. The track response will still contain metadata for the original track, and a restrictions object containing the
  * reason why the track is not available
  */
-@JsonDeserialize(builder = Restrictions.Builder.class)
 public class Restrictions extends AbstractModelObject {
   /** The reason for the restriction. */
   private final String reason;

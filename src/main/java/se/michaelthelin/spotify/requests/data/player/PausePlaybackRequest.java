@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.requests.data.player;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import org.apache.hc.core5.http.ContentType;
 import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
@@ -11,7 +10,6 @@ import java.io.IOException;
 /**
  * Pause playback on the user’s account.
  */
-@JsonDeserialize(builder = PausePlaybackRequest.Builder.class)
 public class PausePlaybackRequest extends AbstractDataRequest<String> {
 
   /**

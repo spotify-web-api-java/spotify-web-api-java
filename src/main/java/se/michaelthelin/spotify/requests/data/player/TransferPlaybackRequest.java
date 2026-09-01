@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.requests.data.player;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.JsonArray;
 import org.apache.hc.core5.http.ContentType;
 import org.apache.hc.core5.http.ParseException;
@@ -12,7 +11,6 @@ import java.io.IOException;
 /**
  * Transfer playback to a new device and determine if it should start playing.
  */
-@JsonDeserialize(builder = TransferPlaybackRequest.Builder.class)
 public class TransferPlaybackRequest extends AbstractDataRequest<String> {
 
   /**

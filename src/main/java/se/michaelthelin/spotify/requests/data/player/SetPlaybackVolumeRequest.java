@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.requests.data.player;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import org.apache.hc.core5.http.ContentType;
 import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
@@ -11,7 +10,6 @@ import java.io.IOException;
 /**
  * Set the volume for the user’s current playback device.
  */
-@JsonDeserialize(builder = SetPlaybackVolumeRequest.Builder.class)
 public class SetPlaybackVolumeRequest extends AbstractDataRequest<String> {
 
   /**

@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.model_objects.specification;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import se.michaelthelin.spotify.enums.ModelObjectType;
 import se.michaelthelin.spotify.enums.ReleaseDatePrecision;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
@@ -14,7 +13,6 @@ import java.util.Objects;
  * Retrieve information about <a href="https://developer.spotify.com/documentation/web-api/reference/object-model/#episode-object-simplified">
  * simplified Episode objects</a> by building instances from this class.
  */
-@JsonDeserialize(builder = EpisodeSimplified.Builder.class)
 public class EpisodeSimplified extends AbstractModelObject implements ISearchModelObject, IEpisode {
   /** The audio preview URL for the episode. */
   private final String audioPreviewUrl;

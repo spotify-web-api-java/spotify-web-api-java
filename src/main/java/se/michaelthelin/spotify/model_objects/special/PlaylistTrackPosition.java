@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.model_objects.special;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 
 import java.util.Arrays;
@@ -10,7 +9,6 @@ import java.util.Objects;
  * Retrieve information about Playlist Track Position objects by building instances from this class. These objects
  * contain the position in a playlist, where tracks should be added in a request.
  */
-@JsonDeserialize(builder = PlaylistTrackPosition.Builder.class)
 public class PlaylistTrackPosition extends AbstractModelObject {
   /** The Spotify URI for the track. */
   private final String uri;

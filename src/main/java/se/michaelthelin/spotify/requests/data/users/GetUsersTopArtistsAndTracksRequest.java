@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.requests.data.users;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.enums.ModelObjectType;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
@@ -22,7 +21,6 @@ import java.io.IOException;
  *
  * @param <T> The request {@link ModelObjectType}: artist or track.
  */
-@JsonDeserialize(builder = GetUsersTopArtistsAndTracksRequest.Builder.class)
 public class GetUsersTopArtistsAndTracksRequest<T extends IArtistTrackModelObject> extends AbstractDataRequest<Paging<T>> {
 
   private final AbstractModelObject.JsonUtil<T> tClass;
