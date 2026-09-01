@@ -1,7 +1,6 @@
 package se.michaelthelin.spotify.model_objects.credentials;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 
 import java.util.Objects;
@@ -184,34 +183,6 @@ public class AuthorizationCodeCredentials extends AbstractModelObject {
       super();
     }
 
-    public AuthorizationCodeCredentials createModelObject(JsonObject jsonObject) {
-      if (jsonObject == null || jsonObject.isJsonNull()) {
-        return null;
-      }
-
-      return new AuthorizationCodeCredentials.Builder()
-        .setAccessToken(
-          hasAndNotNull(jsonObject, "access_token")
-            ? jsonObject.get("access_token").getAsString()
-            : null)
-        .setTokenType(
-          hasAndNotNull(jsonObject, "token_type")
-            ? jsonObject.get("token_type").getAsString()
-            : null)
-        .setScope(
-          hasAndNotNull(jsonObject, "scope")
-            ? jsonObject.get("scope").getAsString()
-            : null)
-        .setExpiresIn(
-          hasAndNotNull(jsonObject, "expires_in")
-            ? jsonObject.get("expires_in").getAsInt()
-            : null)
-        .setRefreshToken(
-          hasAndNotNull(jsonObject, "refresh_token")
-            ? jsonObject.get("refresh_token").getAsString()
-            : null)
-        .build();
-    }
   }
 
   @Override

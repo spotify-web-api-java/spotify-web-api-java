@@ -1,8 +1,6 @@
 package se.michaelthelin.spotify.model_objects.specification;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.enums.ModelObjectType;
 import se.michaelthelin.spotify.enums.ReleaseDatePrecision;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
@@ -505,93 +503,6 @@ public class EpisodeSimplified extends AbstractModelObject implements ISearchMod
       super();
     }
 
-    @Override
-    public EpisodeSimplified createModelObject(JsonObject jsonObject) {
-      if (jsonObject == null || jsonObject.isJsonNull()) {
-        return null;
-      }
-
-      return new Builder()
-        .setAudioPreviewUrl(
-          hasAndNotNull(jsonObject, "audio_preview_url")
-            ? jsonObject.get("audio_preview_url").getAsString()
-            : null)
-        .setDescription(
-          hasAndNotNull(jsonObject, "description")
-            ? jsonObject.get("description").getAsString()
-            : null)
-        .setHtmlDescription(
-          hasAndNotNull(jsonObject, "html_description")
-            ? jsonObject.get("html_description").getAsString()
-            : null)
-        .setDurationMs(
-          hasAndNotNull(jsonObject, "duration_ms")
-            ? jsonObject.get("duration_ms").getAsInt()
-            : null)
-        .setExplicit(
-          hasAndNotNull(jsonObject, "explicit")
-            ? jsonObject.get("explicit").getAsBoolean()
-            : null)
-        .setExternalUrls(
-          hasAndNotNull(jsonObject, "external_urls")
-            ? new ExternalUrl.JsonUtil().createModelObject(
-            jsonObject.getAsJsonObject("external_urls"))
-            : null)
-        .setHref(
-          hasAndNotNull(jsonObject, "href")
-            ? jsonObject.get("href").getAsString()
-            : null)
-        .setId(
-          hasAndNotNull(jsonObject, "id")
-            ? jsonObject.get("id").getAsString()
-            : null)
-        .setImages(
-          hasAndNotNull(jsonObject, "images")
-            ? new Image.JsonUtil().createModelObjectArray(
-            jsonObject.getAsJsonArray("images"))
-            : null)
-        .setExternallyHosted(
-          hasAndNotNull(jsonObject, "is_externally_hosted")
-            ? jsonObject.get("is_externally_hosted").getAsBoolean()
-            : null)
-        .setPlayable(
-          hasAndNotNull(jsonObject, "is_playable")
-            ? jsonObject.get("is_playable").getAsBoolean()
-            : null)
-        .setLanguages(
-          hasAndNotNull(jsonObject, "languages")
-            ? new Gson().fromJson(
-            jsonObject.getAsJsonArray("languages"), String[].class)
-            : null)
-        .setName(
-          hasAndNotNull(jsonObject, "name")
-            ? jsonObject.get("name").getAsString()
-            : null)
-        .setReleaseDate(
-          hasAndNotNull(jsonObject, "release_date")
-            ? jsonObject.get("release_date").getAsString()
-            : null)
-        .setReleaseDatePrecision(
-          hasAndNotNull(jsonObject, "release_date_precision")
-            ? ReleaseDatePrecision.keyOf(
-            jsonObject.get("release_date_precision").getAsString().toLowerCase())
-            : null)
-        .setResumePoint(
-          hasAndNotNull(jsonObject, "resume_point")
-            ? new ResumePoint.JsonUtil().createModelObject(
-            jsonObject.getAsJsonObject("resume_point"))
-            : null)
-        .setType(
-          hasAndNotNull(jsonObject, "type")
-            ? ModelObjectType.keyOf(
-            jsonObject.get("type").getAsString().toLowerCase())
-            : null)
-        .setUri(
-          hasAndNotNull(jsonObject, "uri")
-            ? jsonObject.get("uri").getAsString()
-            : null)
-        .build();
-    }
   }
 
   @Override

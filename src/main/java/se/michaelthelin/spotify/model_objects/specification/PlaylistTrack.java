@@ -1,15 +1,10 @@
 package se.michaelthelin.spotify.model_objects.specification;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.google.gson.JsonObject;
-import se.michaelthelin.spotify.SpotifyApi;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 import se.michaelthelin.spotify.model_objects.IPlaylistItem;
-import se.michaelthelin.spotify.model_objects.utils.PlaylistItemFactory;
 
-import java.text.ParseException;
 import java.util.Date;
-import java.util.logging.Level;
 
 /**
  * Retrieve information about <a href="https://developer.spotify.com/web-api/object-model/#playlist-track-object">
@@ -163,40 +158,5 @@ public class PlaylistTrack extends AbstractModelObject {
       super();
     }
 
-    public PlaylistTrack createModelObject(JsonObject jsonObject) {
-      if (jsonObject == null || jsonObject.isJsonNull()) {
-        return null;
-      }
-
-      try {
-        IPlaylistItem item = null;
-
-        if (hasAndNotNull(jsonObject, "item")) {
-          final JsonObject trackObj = jsonObject.getAsJsonObject("item");
-
-          item = PlaylistItemFactory.createPlaylistItem(trackObj);
-        }
-
-        return new Builder()
-          .setAddedAt(
-            hasAndNotNull(jsonObject, "added_at")
-              ? SpotifyApi.parseDefaultDate(jsonObject.get("added_at").getAsString())
-              : null)
-          .setAddedBy(
-            hasAndNotNull(jsonObject, "added_by")
-              ? new User.JsonUtil().createModelObject(
-              jsonObject.get("added_by").getAsJsonObject())
-              : null)
-          .setIsLocal(
-            hasAndNotNull(jsonObject, "is_local")
-              ? jsonObject.get("is_local").getAsBoolean()
-              : null)
-          .setItem(item)
-          .build();
-      } catch (ParseException e) {
-        SpotifyApi.LOGGER.log(Level.SEVERE, e.getMessage());
-        return null;
-      }
-    }
   }
 }

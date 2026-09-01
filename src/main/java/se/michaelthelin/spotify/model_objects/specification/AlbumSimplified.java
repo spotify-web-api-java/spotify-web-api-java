@@ -1,7 +1,6 @@
 package se.michaelthelin.spotify.model_objects.specification;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.enums.AlbumType;
 import se.michaelthelin.spotify.enums.ModelObjectType;
 import se.michaelthelin.spotify.enums.ReleaseDatePrecision;
@@ -407,77 +406,6 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
       super();
     }
 
-    public AlbumSimplified createModelObject(JsonObject jsonObject) {
-      if (jsonObject == null || jsonObject.isJsonNull()) {
-        return null;
-      }
-
-      return new AlbumSimplified.Builder()
-        .setAlbumType(
-          hasAndNotNull(jsonObject, "album_type")
-            ? AlbumType.keyOf(
-            jsonObject.get("album_type").getAsString().toLowerCase())
-            : null)
-        .setArtists(
-          hasAndNotNull(jsonObject, "artists")
-            ? new ArtistSimplified.JsonUtil().createModelObjectArray(
-            jsonObject.getAsJsonArray("artists"))
-            : null)
-        .setExternalUrls(
-          hasAndNotNull(jsonObject, "external_urls")
-            ? new ExternalUrl.JsonUtil().createModelObject(
-            jsonObject.getAsJsonObject("external_urls"))
-            : null)
-        .setHref(
-          hasAndNotNull(jsonObject, "href")
-            ? jsonObject.get("href").getAsString()
-            : null)
-        .setId(
-          hasAndNotNull(jsonObject, "id")
-            ? jsonObject.get("id").getAsString()
-            : null)
-        .setImages(
-          hasAndNotNull(jsonObject, "images")
-            ? new Image.JsonUtil().createModelObjectArray(
-            jsonObject.getAsJsonArray("images"))
-            : null)
-        .setIsPlayable(
-          hasAndNotNull(jsonObject, "is_playable")
-            ? jsonObject.get("is_playable").getAsBoolean()
-            : null)
-        .setName(
-          hasAndNotNull(jsonObject, "name")
-            ? jsonObject.get("name").getAsString()
-            : null)
-        .setReleaseDate(
-          hasAndNotNull(jsonObject, "release_date")
-            ? jsonObject.get("release_date").getAsString()
-            : null)
-        .setReleaseDatePrecision(
-          hasAndNotNull(jsonObject, "release_date_precision")
-            ? ReleaseDatePrecision.keyOf(
-            jsonObject.get("release_date_precision").getAsString().toLowerCase())
-            : null)
-        .setRestrictions(
-          hasAndNotNull(jsonObject, "restrictions")
-            ? new Restrictions.JsonUtil().createModelObject(
-            jsonObject.getAsJsonObject("restrictions"))
-            : null)
-        .setTotalTracks(
-          hasAndNotNull(jsonObject, "total_tracks")
-            ? jsonObject.get("total_tracks").getAsInt()
-            : null)
-        .setType(
-          hasAndNotNull(jsonObject, "type")
-            ? ModelObjectType.keyOf(
-            jsonObject.get("type").getAsString().toLowerCase())
-            : null)
-        .setUri(
-          hasAndNotNull(jsonObject, "uri")
-            ? jsonObject.get("uri").getAsString()
-            : null)
-        .build();
-    }
   }
 
   @Override

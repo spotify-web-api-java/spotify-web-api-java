@@ -1,7 +1,6 @@
 package se.michaelthelin.spotify.model_objects.special;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 import se.michaelthelin.spotify.model_objects.specification.*;
 import se.michaelthelin.spotify.requests.data.users.interfaces.IArtistTrackModelObject;
@@ -244,49 +243,6 @@ public class SearchResult extends AbstractModelObject implements IArtistTrackMod
       super();
     }
 
-    public SearchResult createModelObject(JsonObject jsonObject) {
-      if (jsonObject == null || jsonObject.isJsonNull()) {
-        return null;
-      }
-
-      return new SearchResult.Builder()
-        .setAlbums(
-          hasAndNotNull(jsonObject, "albums")
-            ? new AlbumSimplified.JsonUtil().createModelObjectPaging(
-            jsonObject.getAsJsonObject("albums"))
-            : null)
-        .setArtists(
-          hasAndNotNull(jsonObject, "artists")
-            ? new Artist.JsonUtil().createModelObjectPaging(
-            jsonObject.getAsJsonObject("artists"))
-            : null)
-        .setAudiobooks(
-          hasAndNotNull(jsonObject, "audiobooks")
-            ? new AudiobookSimplified.JsonUtil().createModelObjectPaging(
-            jsonObject.getAsJsonObject("audiobooks"))
-            : null)
-        .setEpisodes(
-          hasAndNotNull(jsonObject, "episodes")
-            ? new EpisodeSimplified.JsonUtil().createModelObjectPaging(
-            jsonObject.getAsJsonObject("episodes"))
-            : null)
-        .setPlaylists(
-          hasAndNotNull(jsonObject, "playlists")
-            ? new PlaylistSimplified.JsonUtil().createModelObjectPaging(
-            jsonObject.getAsJsonObject("playlists"))
-            : null)
-        .setShows(
-          hasAndNotNull(jsonObject, "shows")
-            ? new ShowSimplified.JsonUtil().createModelObjectPaging(
-            jsonObject.getAsJsonObject("shows"))
-            : null)
-        .setTracks(
-          hasAndNotNull(jsonObject, "tracks")
-            ? new Track.JsonUtil().createModelObjectPaging(
-            jsonObject.getAsJsonObject("tracks"))
-            : null)
-        .build();
-    }
   }
 
 }

@@ -1,7 +1,6 @@
 package se.michaelthelin.spotify.model_objects.miscellaneous;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 import se.michaelthelin.spotify.model_objects.interfaces.IHasTotal;
 
@@ -104,21 +103,5 @@ public class PlaylistTracksInformation extends AbstractModelObject implements IH
       super();
     }
 
-    public PlaylistTracksInformation createModelObject(JsonObject jsonObject) {
-      if (jsonObject == null || jsonObject.isJsonNull()) {
-        return null;
-      }
-
-      return new PlaylistTracksInformation.Builder()
-        .setHref(
-          hasAndNotNull(jsonObject, "href")
-            ? jsonObject.get("href").getAsString()
-            : null)
-        .setTotal(
-          hasAndNotNull(jsonObject, "total")
-            ? jsonObject.get("total").getAsInt()
-            : null)
-        .build();
-    }
   }
 }

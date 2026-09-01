@@ -1,7 +1,6 @@
 package se.michaelthelin.spotify.model_objects.specification;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 
 /**
@@ -107,21 +106,5 @@ public class Error extends AbstractModelObject {
       super();
     }
 
-    public Error createModelObject(JsonObject jsonObject) {
-      if (jsonObject == null || jsonObject.isJsonNull()) {
-        return null;
-      }
-
-      return new Error.Builder()
-        .setStatus(
-          hasAndNotNull(jsonObject, "status")
-            ? jsonObject.get("status").getAsInt()
-            : null)
-        .setMessage(
-          hasAndNotNull(jsonObject, "message")
-            ? jsonObject.get("message").getAsString()
-            : null)
-        .build();
-    }
   }
 }

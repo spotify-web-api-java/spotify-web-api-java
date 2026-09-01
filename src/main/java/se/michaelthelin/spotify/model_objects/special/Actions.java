@@ -1,7 +1,6 @@
 package se.michaelthelin.spotify.model_objects.special;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 import se.michaelthelin.spotify.model_objects.specification.Disallows;
 
@@ -86,20 +85,6 @@ public class Actions extends AbstractModelObject {
       super();
     }
 
-    @Override
-    public Actions createModelObject(JsonObject jsonObject) {
-      if (jsonObject == null || jsonObject.isJsonNull()) {
-        return null;
-      }
-
-      return new Builder()
-        .setDisallows(
-          hasAndNotNull(jsonObject, "disallows")
-            ? new Disallows.JsonUtil().createModelObject(
-            jsonObject.getAsJsonObject("disallows"))
-            : null)
-        .build();
-    }
   }
 
 }

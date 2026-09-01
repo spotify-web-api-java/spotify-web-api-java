@@ -1,7 +1,6 @@
 package se.michaelthelin.spotify.model_objects.specification;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 
 /**
@@ -103,21 +102,5 @@ public class ExplicitContentSettings extends AbstractModelObject {
       super();
     }
 
-    public ExplicitContentSettings createModelObject(JsonObject jsonObject) {
-      if (jsonObject == null || jsonObject.isJsonNull()) {
-        return null;
-      }
-
-      return new ExplicitContentSettings.Builder()
-        .setFilterEnabled(
-          hasAndNotNull(jsonObject, "filter_enabled")
-            ? jsonObject.get("filter_enabled").getAsBoolean()
-            : null)
-        .setFilterLocked(
-          hasAndNotNull(jsonObject, "filter_locked")
-            ? jsonObject.get("filter_locked").getAsBoolean()
-            : null)
-        .build();
-    }
   }
 }

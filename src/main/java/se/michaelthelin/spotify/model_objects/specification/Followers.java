@@ -1,7 +1,6 @@
 package se.michaelthelin.spotify.model_objects.specification;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 
 /**
@@ -107,21 +106,5 @@ public class Followers extends AbstractModelObject {
       super();
     }
 
-    public Followers createModelObject(JsonObject jsonObject) {
-      if (jsonObject == null || jsonObject.isJsonNull()) {
-        return null;
-      }
-
-      return new Followers.Builder()
-        .setHref(
-          hasAndNotNull(jsonObject, "href")
-            ? jsonObject.get("href").getAsString()
-            : null)
-        .setTotal(
-          hasAndNotNull(jsonObject, "total")
-            ? jsonObject.get("total").getAsInt()
-            : null)
-        .build();
-    }
   }
 }

@@ -1,8 +1,6 @@
 package se.michaelthelin.spotify.model_objects.special;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 
 import java.util.Arrays;
@@ -114,23 +112,6 @@ public class PlaylistTrackPosition extends AbstractModelObject {
       super();
     }
 
-    public PlaylistTrackPosition createModelObject(JsonObject jsonObject) {
-      if (jsonObject == null || jsonObject.isJsonNull()) {
-        return null;
-      }
-
-      return new PlaylistTrackPosition.Builder()
-        .setPositions(
-          hasAndNotNull(jsonObject, "positions")
-            ? new Gson().fromJson(
-            jsonObject.getAsJsonArray("positions"), int[].class)
-            : null)
-        .setUri(
-          hasAndNotNull(jsonObject, "uri")
-            ? jsonObject.get("uri").getAsString()
-            : null)
-        .build();
-    }
   }
 
   @Override

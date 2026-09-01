@@ -1,11 +1,9 @@
 package se.michaelthelin.spotify.model_objects.specification;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 import se.michaelthelin.spotify.model_objects.interfaces.IHasTotal;
 
-import java.lang.reflect.ParameterizedType;
 import java.util.Arrays;
 
 /**
@@ -214,40 +212,5 @@ public class PagingCursorbased<T> extends AbstractModelObject implements IHasTot
       super();
     }
 
-    public PagingCursorbased<X> createModelObject(JsonObject jsonObject) {
-      if (jsonObject == null || jsonObject.isJsonNull()) {
-        return null;
-      }
-
-      return new Builder<X>()
-        .setHref(
-          hasAndNotNull(jsonObject, "href")
-            ? jsonObject.get("href").getAsString()
-            : null)
-        .setItems(
-          hasAndNotNull(jsonObject, "items")
-            ? createModelObjectArray(
-            jsonObject.getAsJsonArray("items"), (Class<X>) ((ParameterizedType) getClass()
-              .getGenericSuperclass()).getActualTypeArguments()[0])
-            : null)
-        .setLimit(
-          hasAndNotNull(jsonObject, "limit")
-            ? jsonObject.get("limit").getAsInt()
-            : null)
-        .setNext(
-          hasAndNotNull(jsonObject, "next")
-            ? jsonObject.get("next").getAsString()
-            : null)
-        .setCursors(
-          hasAndNotNull(jsonObject, "cursors")
-            ? new Cursor.JsonUtil().createModelObjectArray(
-            jsonObject.getAsJsonArray("cursors"))
-            : null)
-        .setTotal(
-          hasAndNotNull(jsonObject, "total")
-            ? jsonObject.get("total").getAsInt()
-            : null)
-        .build();
-    }
   }
 }

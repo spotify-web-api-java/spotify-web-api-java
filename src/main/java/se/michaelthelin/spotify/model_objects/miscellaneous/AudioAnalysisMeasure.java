@@ -1,7 +1,6 @@
 package se.michaelthelin.spotify.model_objects.miscellaneous;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 
 /**
@@ -132,25 +131,5 @@ public class AudioAnalysisMeasure extends AbstractModelObject {
       super();
     }
 
-    public AudioAnalysisMeasure createModelObject(JsonObject jsonObject) {
-      if (jsonObject == null || jsonObject.isJsonNull()) {
-        return null;
-      }
-
-      return new AudioAnalysisMeasure.Builder()
-        .setConfidence(
-          hasAndNotNull(jsonObject, "confidence")
-            ? jsonObject.get("confidence").getAsFloat()
-            : null)
-        .setDuration(
-          hasAndNotNull(jsonObject, "duration")
-            ? jsonObject.get("duration").getAsFloat()
-            : null)
-        .setStart(
-          hasAndNotNull(jsonObject, "start")
-            ? jsonObject.get("start").getAsFloat()
-            : null)
-        .build();
-    }
   }
 }

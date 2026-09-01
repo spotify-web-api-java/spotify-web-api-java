@@ -1,7 +1,7 @@
 package se.michaelthelin.spotify.model_objects.specification;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.google.gson.JsonObject;
+import com.google.gson.annotations.SerializedName;
 import se.michaelthelin.spotify.enums.ModelObjectType;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 
@@ -12,14 +12,17 @@ import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 @JsonDeserialize(builder = RecommendationsSeed.Builder.class)
 public class RecommendationsSeed extends AbstractModelObject {
   /** The number of tracks available after min and max filters have been applied. */
+  @SerializedName("afterFilteringSize")
   private final Integer afterFilteringSize;
   /** The number of tracks available after relinking for regional availability. */
+  @SerializedName("afterRelinkingSize")
   private final Integer afterRelinkingSize;
   /** The href for the seed. */
   private final String href;
   /** The ID used to select this seed. */
   private final String id;
   /** The number of recommended tracks available for this seed. */
+  @SerializedName("initialPoolSize")
   private final Integer initialPoolSize;
   /** The object type. */
   private final ModelObjectType type;
@@ -208,38 +211,5 @@ public class RecommendationsSeed extends AbstractModelObject {
       super();
     }
 
-    public RecommendationsSeed createModelObject(JsonObject jsonObject) {
-      if (jsonObject == null || jsonObject.isJsonNull()) {
-        return null;
-      }
-
-      return new RecommendationsSeed.Builder()
-        .setAfterFilteringSize(
-          hasAndNotNull(jsonObject, "afterFilteringSize")
-            ? jsonObject.get("afterFilteringSize").getAsInt()
-            : null)
-        .setAfterRelinkingSize(
-          hasAndNotNull(jsonObject, "afterRelinkingSize")
-            ? jsonObject.get("afterRelinkingSize").getAsInt()
-            : null)
-        .setHref(
-          hasAndNotNull(jsonObject, "href")
-            ? jsonObject.get("href").getAsString()
-            : null)
-        .setId(
-          hasAndNotNull(jsonObject, "id")
-            ? jsonObject.get("id").getAsString()
-            : null)
-        .setInitialPoolSize(
-          hasAndNotNull(jsonObject, "initialPoolSize")
-            ? jsonObject.get("initialPoolSize").getAsInt()
-            : null)
-        .setType(
-          hasAndNotNull(jsonObject, "type")
-            ? ModelObjectType.keyOf(
-            jsonObject.get("type").getAsString().toLowerCase())
-            : null)
-        .build();
-    }
   }
 }

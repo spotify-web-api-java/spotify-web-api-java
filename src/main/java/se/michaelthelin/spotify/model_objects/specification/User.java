@@ -1,7 +1,6 @@
 package se.michaelthelin.spotify.model_objects.specification;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.enums.ModelObjectType;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 
@@ -423,75 +422,6 @@ public class User extends AbstractModelObject {
       super();
     }
 
-    public User createModelObject(JsonObject jsonObject) {
-      if (jsonObject == null || jsonObject.isJsonNull()) {
-        return null;
-      }
-
-      return new User.Builder()
-        .setAccountId(
-          hasAndNotNull(jsonObject, "account_id")
-            ? jsonObject.get("account_id").getAsString()
-            : null)
-        .setBirthdate(
-          hasAndNotNull(jsonObject, "birthdate")
-            ? jsonObject.get("birthdate").getAsString()
-            : null)
-        .setCountry(
-          hasAndNotNull(jsonObject, "country")
-            ? jsonObject.get("country").getAsString()
-            : null)
-        .setDisplayName(
-          hasAndNotNull(jsonObject, "display_name")
-            ? jsonObject.get("display_name").getAsString()
-            : null)
-        .setEmail(
-          hasAndNotNull(jsonObject, "email")
-            ? jsonObject.get("email").getAsString()
-            : null)
-        .setExplicitContent(
-          hasAndNotNull(jsonObject, "explicit_content")
-            ? new ExplicitContentSettings.JsonUtil().createModelObject(
-            jsonObject.getAsJsonObject("explicit_content"))
-            : null)
-        .setExternalUrls(
-          hasAndNotNull(jsonObject, "external_urls")
-            ? new ExternalUrl.JsonUtil().createModelObject(
-            jsonObject.getAsJsonObject("external_urls"))
-            : null)
-        .setFollowers(
-          hasAndNotNull(jsonObject, "followers")
-            ? new Followers.JsonUtil().createModelObject(
-            jsonObject.getAsJsonObject("followers"))
-            : null)
-        .setHref(
-          hasAndNotNull(jsonObject, "href")
-            ? jsonObject.get("href").getAsString()
-            : null)
-        .setId(
-          hasAndNotNull(jsonObject, "id")
-            ? jsonObject.get("id").getAsString()
-            : null)
-        .setImages(
-          hasAndNotNull(jsonObject, "images")
-            ? new Image.JsonUtil().createModelObjectArray(
-            jsonObject.getAsJsonArray("images"))
-            : null)
-        .setProduct(
-          hasAndNotNull(jsonObject, "product")
-            ? jsonObject.get("product").getAsString()
-            : null)
-        .setType(
-          hasAndNotNull(jsonObject, "type")
-            ? ModelObjectType.keyOf(
-            jsonObject.get("type").getAsString().toLowerCase())
-            : null)
-        .setUri(
-          hasAndNotNull(jsonObject, "uri")
-            ? jsonObject.get("uri").getAsString()
-            : null)
-        .build();
-    }
   }
 
   @Override

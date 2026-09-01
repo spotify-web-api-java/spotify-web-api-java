@@ -1,13 +1,9 @@
 package se.michaelthelin.spotify.model_objects.specification;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.google.gson.JsonObject;
-import se.michaelthelin.spotify.SpotifyApi;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 
-import java.text.ParseException;
 import java.util.Date;
-import java.util.logging.Level;
 
 /**
  * Retrieve information about <a href="https://developer.spotify.com/documentation/web-api/reference/get-users-saved-episodes">
@@ -109,27 +105,5 @@ public class SavedEpisode extends AbstractModelObject {
       super();
     }
 
-    public SavedEpisode createModelObject(JsonObject jsonObject) {
-      if (jsonObject == null || jsonObject.isJsonNull()) {
-        return null;
-      }
-
-      try {
-        return new Builder()
-          .setAddedAt(
-            hasAndNotNull(jsonObject, "added_at")
-              ? SpotifyApi.parseDefaultDate(jsonObject.get("added_at").getAsString())
-              : null)
-          .setEpisode(
-            hasAndNotNull(jsonObject, "episode")
-              ? new Episode.JsonUtil().createModelObject(
-              jsonObject.getAsJsonObject("episode"))
-              : null)
-          .build();
-      } catch (ParseException e) {
-        SpotifyApi.LOGGER.log(Level.SEVERE, e.getMessage());
-        return null;
-      }
-    }
   }
 }

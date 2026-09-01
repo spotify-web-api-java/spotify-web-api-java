@@ -1,7 +1,6 @@
 package se.michaelthelin.spotify.model_objects.specification;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 
 import java.util.Arrays;
@@ -106,23 +105,5 @@ public class Recommendations extends AbstractModelObject {
       super();
     }
 
-    public Recommendations createModelObject(JsonObject jsonObject) {
-      if (jsonObject == null || jsonObject.isJsonNull()) {
-        return null;
-      }
-
-      return new Recommendations.Builder()
-        .setSeeds(
-          hasAndNotNull(jsonObject, "seeds")
-            ? new RecommendationsSeed.JsonUtil().createModelObjectArray(
-            jsonObject.getAsJsonArray("seeds"))
-            : null)
-        .setTracks(
-          hasAndNotNull(jsonObject, "tracks")
-            ? new Track.JsonUtil().createModelObjectArray(
-            jsonObject.getAsJsonArray("tracks"))
-            : null)
-        .build();
-    }
   }
 }

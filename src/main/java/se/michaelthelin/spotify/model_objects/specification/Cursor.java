@@ -1,7 +1,6 @@
 package se.michaelthelin.spotify.model_objects.specification;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 
 /**
@@ -84,17 +83,5 @@ public class Cursor extends AbstractModelObject {
       super();
     }
 
-    public Cursor createModelObject(JsonObject jsonObject) {
-      if (jsonObject == null || jsonObject.isJsonNull()) {
-        return null;
-      }
-
-      return new Cursor.Builder()
-        .setAfter(
-          hasAndNotNull(jsonObject, "after")
-            ? jsonObject.get("after").getAsString()
-            : null)
-        .build();
-    }
   }
 }

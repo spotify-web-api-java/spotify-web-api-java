@@ -1,8 +1,6 @@
 package se.michaelthelin.spotify.model_objects.specification;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.enums.ModelObjectType;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 import se.michaelthelin.spotify.model_objects.interfaces.IShow;
@@ -409,77 +407,6 @@ public class Show extends AbstractModelObject implements IShow {
       super();
     }
 
-    @Override
-    public Show createModelObject(JsonObject jsonObject) {
-      if (jsonObject == null || jsonObject.isJsonNull()) {
-        return null;
-      }
-
-      return new Builder()
-        .setCopyrights(
-          hasAndNotNull(jsonObject, "copyrights")
-            ? new Gson().fromJson(
-            jsonObject.getAsJsonArray("copyrights"), Copyright[].class)
-            : null)
-        .setDescription(
-          hasAndNotNull(jsonObject, "description")
-            ? jsonObject.get("description").getAsString()
-            : null)
-        .setExplicit(
-          hasAndNotNull(jsonObject, "explicit")
-            ? jsonObject.get("explicit").getAsBoolean()
-            : null)
-        .setEpisodes(
-          hasAndNotNull(jsonObject, "episodes")
-            ? new EpisodeSimplified.JsonUtil().createModelObjectPaging(
-            jsonObject.getAsJsonObject("episodes"))
-            : null)
-        .setExternalUrls(
-          hasAndNotNull(jsonObject, "external_urls")
-            ? new ExternalUrl.JsonUtil().createModelObject(
-            jsonObject.getAsJsonObject("external_urls"))
-            : null)
-        .setHref(
-          hasAndNotNull(jsonObject, "href")
-            ? jsonObject.get("href").getAsString()
-            : null)
-        .setId(
-          hasAndNotNull(jsonObject, "id")
-            ? jsonObject.get("id").getAsString()
-            : null)
-        .setImages(
-          hasAndNotNull(jsonObject, "images")
-            ? new Image.JsonUtil().createModelObjectArray(
-            jsonObject.getAsJsonArray("images"))
-            : null)
-        .setExternallyHosted(
-          hasAndNotNull(jsonObject, "is_externally_hosted")
-            ? jsonObject.get("is_externally_hosted").getAsBoolean()
-            : null)
-        .setLanguages(
-          hasAndNotNull(jsonObject, "languages")
-            ? new Gson().fromJson(
-            jsonObject.getAsJsonArray("languages"), String[].class)
-            : null)
-        .setMediaType(
-          hasAndNotNull(jsonObject, "media_type")
-            ? jsonObject.get("media_type").getAsString()
-            : null)
-        .setName(
-          hasAndNotNull(jsonObject, "name")
-            ? jsonObject.get("name").getAsString()
-            : null)
-        .setType(
-          hasAndNotNull(jsonObject, "type")
-            ? ModelObjectType.keyOf(
-            jsonObject.get("type").getAsString().toLowerCase())
-            : null)
-        .setUri(
-          hasAndNotNull(jsonObject, "uri")
-            ? jsonObject.get("uri").getAsString()
-            : null)
-        .build();
-    }
   }
 
   @Override

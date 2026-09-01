@@ -1,7 +1,6 @@
 package se.michaelthelin.spotify.model_objects.special;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 
 /**
@@ -84,17 +83,5 @@ public class SnapshotResult extends AbstractModelObject {
       super();
     }
 
-    public SnapshotResult createModelObject(JsonObject jsonObject) {
-      if (jsonObject == null || jsonObject.isJsonNull()) {
-        return null;
-      }
-
-      return new SnapshotResult.Builder()
-        .setSnapshotId(
-          hasAndNotNull(jsonObject, "snapshot_id")
-            ? jsonObject.get("snapshot_id").getAsString()
-            : null)
-        .build();
-    }
   }
 }

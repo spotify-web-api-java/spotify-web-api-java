@@ -1,7 +1,6 @@
 package se.michaelthelin.spotify.model_objects.miscellaneous;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 
 /**
@@ -229,41 +228,5 @@ public class AudioAnalysisMeta extends AbstractModelObject {
       super();
     }
 
-    public AudioAnalysisMeta createModelObject(JsonObject jsonObject) {
-      if (jsonObject == null || jsonObject.isJsonNull()) {
-        return null;
-      }
-
-      return new AudioAnalysisMeta.Builder()
-        .setAnalysisTime(
-          hasAndNotNull(jsonObject, "analysis_time")
-            ? jsonObject.get("analysis_time").getAsFloat()
-            : null)
-        .setAnalyzerVersion(
-          hasAndNotNull(jsonObject, "analyzer_version")
-            ? jsonObject.get("analyzer_version").getAsString()
-            : null)
-        .setDetailedStatus(
-          hasAndNotNull(jsonObject, "detailed_status")
-            ? jsonObject.get("detailed_status").getAsString()
-            : null)
-        .setInputProcess(
-          hasAndNotNull(jsonObject, "input_process")
-            ? jsonObject.get("input_process").getAsString()
-            : null)
-        .setPlatform(
-          hasAndNotNull(jsonObject, "platform")
-            ? jsonObject.get("platform").getAsString()
-            : null)
-        .setStatusCode(
-          hasAndNotNull(jsonObject, "status_code")
-            ? jsonObject.get("status_code").getAsInt()
-            : null)
-        .setTimestamp(
-          hasAndNotNull(jsonObject, "timestamp")
-            ? jsonObject.get("timestamp").getAsLong()
-            : null)
-        .build();
-    }
   }
 }

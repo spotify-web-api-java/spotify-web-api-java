@@ -1,7 +1,6 @@
 package se.michaelthelin.spotify.model_objects.specification;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 
 /**
@@ -129,25 +128,5 @@ public class Image extends AbstractModelObject {
       super();
     }
 
-    public Image createModelObject(JsonObject jsonObject) {
-      if (jsonObject == null || jsonObject.isJsonNull()) {
-        return null;
-      }
-
-      return new Image.Builder()
-        .setHeight(
-          hasAndNotNull(jsonObject, "height")
-            ? jsonObject.get("height").getAsInt()
-            : null)
-        .setUrl(
-          hasAndNotNull(jsonObject, "url")
-            ? jsonObject.get("url").getAsString()
-            : null)
-        .setWidth(
-          hasAndNotNull(jsonObject, "width")
-            ? jsonObject.get("width").getAsInt()
-            : null)
-        .build();
-    }
   }
 }

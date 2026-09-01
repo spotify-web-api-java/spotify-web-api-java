@@ -1,7 +1,6 @@
 package se.michaelthelin.spotify.model_objects.miscellaneous;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 import se.michaelthelin.spotify.model_objects.specification.AudioFeatures;
 
@@ -244,48 +243,5 @@ public class AudioAnalysis extends AbstractModelObject {
       super();
     }
 
-    public AudioAnalysis createModelObject(JsonObject jsonObject) {
-      if (jsonObject == null || jsonObject.isJsonNull()) {
-        return null;
-      }
-
-      return new AudioAnalysis.Builder()
-        .setBars(
-          hasAndNotNull(jsonObject, "bars")
-            ? new AudioAnalysisMeasure.JsonUtil().createModelObjectArray(
-            jsonObject.getAsJsonArray("bars"))
-            : null)
-        .setBeats(
-          hasAndNotNull(jsonObject, "beats")
-            ? new AudioAnalysisMeasure.JsonUtil().createModelObjectArray(
-            jsonObject.getAsJsonArray("beats"))
-            : null)
-        .setMeta(
-          hasAndNotNull(jsonObject, "meta")
-            ? new AudioAnalysisMeta.JsonUtil().createModelObject(
-            jsonObject.getAsJsonObject("meta"))
-            : null)
-        .setSections(
-          hasAndNotNull(jsonObject, "sections")
-            ? new AudioAnalysisSection.JsonUtil().createModelObjectArray(
-            jsonObject.getAsJsonArray("sections"))
-            : null)
-        .setSegments(
-          hasAndNotNull(jsonObject, "segments")
-            ? new AudioAnalysisSegment.JsonUtil().createModelObjectArray(
-            jsonObject.getAsJsonArray("segments"))
-            : null)
-        .setTatums(
-          hasAndNotNull(jsonObject, "tatums")
-            ? new AudioAnalysisMeasure.JsonUtil().createModelObjectArray(
-            jsonObject.getAsJsonArray("tatums"))
-            : null)
-        .setTrack(
-          hasAndNotNull(jsonObject, "track")
-            ? new AudioAnalysisTrack.JsonUtil().createModelObject(
-            jsonObject.getAsJsonObject("track"))
-            : null)
-        .build();
-    }
   }
 }

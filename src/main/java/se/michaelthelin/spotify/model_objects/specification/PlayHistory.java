@@ -1,13 +1,9 @@
 package se.michaelthelin.spotify.model_objects.specification;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.google.gson.JsonObject;
-import se.michaelthelin.spotify.SpotifyApi;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 
-import java.text.ParseException;
 import java.util.Date;
-import java.util.logging.Level;
 
 /**
  * Retrieve information about <a href="https://developer.spotify.com/web-api/object-model/#play-history-object">
@@ -133,32 +129,5 @@ public class PlayHistory extends AbstractModelObject {
       super();
     }
 
-    public PlayHistory createModelObject(JsonObject jsonObject) {
-      if (jsonObject == null || jsonObject.isJsonNull()) {
-        return null;
-      }
-
-      try {
-        return new Builder()
-          .setTrack(
-            hasAndNotNull(jsonObject, "track")
-              ? new Track.JsonUtil().createModelObject(
-              jsonObject.getAsJsonObject("track"))
-              : null)
-          .setPlayedAt(
-            hasAndNotNull(jsonObject, "played_at")
-              ? SpotifyApi.parseDefaultDate(jsonObject.get("played_at").getAsString())
-              : null)
-          .setContext(
-            hasAndNotNull(jsonObject, "context")
-              ? new Context.JsonUtil().createModelObject(
-              jsonObject.getAsJsonObject("context"))
-              : null)
-          .build();
-      } catch (ParseException e) {
-        SpotifyApi.LOGGER.log(Level.SEVERE, e.getMessage());
-        return null;
-      }
-    }
   }
 }

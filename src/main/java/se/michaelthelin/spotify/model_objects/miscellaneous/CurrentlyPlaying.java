@@ -1,15 +1,12 @@
 package se.michaelthelin.spotify.model_objects.miscellaneous;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.enums.CurrentlyPlayingType;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 import se.michaelthelin.spotify.model_objects.IPlaylistItem;
 import se.michaelthelin.spotify.model_objects.special.Actions;
 import se.michaelthelin.spotify.model_objects.specification.Context;
 import se.michaelthelin.spotify.model_objects.specification.Disallows;
-import se.michaelthelin.spotify.model_objects.specification.Episode;
-import se.michaelthelin.spotify.model_objects.specification.Track;
 
 /**
  * Retrieve information about <a href="https://developer.spotify.com/documentation/web-api/reference/get-the-users-currently-playing-track">
@@ -233,48 +230,5 @@ public class CurrentlyPlaying extends AbstractModelObject {
       super();
     }
 
-    public CurrentlyPlaying createModelObject(JsonObject jsonObject) {
-      if (jsonObject == null || jsonObject.isJsonNull()) {
-        return null;
-      }
-
-      return new CurrentlyPlaying.Builder()
-        .setContext(
-          hasAndNotNull(jsonObject, "context")
-            ? new Context.JsonUtil().createModelObject(
-            jsonObject.getAsJsonObject("context"))
-            : null)
-        .setTimestamp(
-          hasAndNotNull(jsonObject, "timestamp")
-            ? jsonObject.get("timestamp").getAsLong()
-            : null)
-        .setProgress_ms(
-          hasAndNotNull(jsonObject, "progress_ms")
-            ? jsonObject.get("progress_ms").getAsInt()
-            : null)
-        .setIs_playing(
-          hasAndNotNull(jsonObject, "is_playing")
-            ? jsonObject.get("is_playing").getAsBoolean()
-            : null)
-        .setItem(
-          hasAndNotNull(jsonObject, "item") && hasAndNotNull(jsonObject, "currently_playing_type")
-            ? (jsonObject.get("currently_playing_type").getAsString().equals("track")
-            ? new Track.JsonUtil().createModelObject(jsonObject.getAsJsonObject("item"))
-            : jsonObject.get("currently_playing_type").getAsString().equals("episode")
-            ? new Episode.JsonUtil().createModelObject(jsonObject.getAsJsonObject("item"))
-            : null)
-            : null)
-        .setCurrentlyPlayingType(
-          hasAndNotNull(jsonObject, "currently_playing_type")
-            ? CurrentlyPlayingType.keyOf(
-            jsonObject.get("currently_playing_type").getAsString().toLowerCase())
-            : null)
-        .setActions(
-          hasAndNotNull(jsonObject, "actions")
-            ? new Actions.JsonUtil().createModelObject(
-            jsonObject.getAsJsonObject("actions"))
-            : null)
-        .build();
-    }
   }
 }

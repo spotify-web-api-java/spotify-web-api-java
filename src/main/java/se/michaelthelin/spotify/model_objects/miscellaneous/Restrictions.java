@@ -1,7 +1,6 @@
 package se.michaelthelin.spotify.model_objects.miscellaneous;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 
 /**
@@ -84,17 +83,5 @@ public class Restrictions extends AbstractModelObject {
       super();
     }
 
-    public Restrictions createModelObject(JsonObject jsonObject) {
-      if (jsonObject == null || jsonObject.isJsonNull()) {
-        return null;
-      }
-
-      return new Restrictions.Builder()
-        .setReason(
-          hasAndNotNull(jsonObject, "reason")
-            ? jsonObject.get("reason").getAsString()
-            : null)
-        .build();
-    }
   }
 }

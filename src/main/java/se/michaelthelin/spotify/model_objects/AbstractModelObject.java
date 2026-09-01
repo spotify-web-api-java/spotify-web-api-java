@@ -1,12 +1,13 @@
 package se.michaelthelin.spotify.model_objects;
 
 import com.google.gson.*;
-import se.michaelthelin.spotify.model_objects.specification.Cursor;
+import com.google.gson.reflect.TypeToken;
 import se.michaelthelin.spotify.model_objects.specification.Paging;
 import se.michaelthelin.spotify.model_objects.specification.PagingCursorbased;
 
 import java.lang.reflect.Array;
 import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 
 /**
  * This abstract class (and its wrapping classes) is used as a sort of template for other model object classes and
@@ -54,6 +55,33 @@ public abstract class AbstractModelObject implements IModelObject {
      */
     public JsonUtil() {
       super();
+    }
+
+    /**
+     * Deserializes a model object reflectively.
+     * <p>
+     * Every model object whose JSON mirrors its fields inherits this. The three whose shape does
+     * not ({@code Disallows} and the two external-identifier maps) override it, and
+     * {@code ModelObjectGson} routes nested occurrences of those back through the override.
+     *
+     * @param jsonObject The JSON to read, which may be {@code null} or JSON null.
+     * @return The model object, or {@code null}.
+     */
+    public T createModelObject(final JsonObject jsonObject) {
+      if (jsonObject == null || jsonObject.isJsonNull()) {
+        return null;
+      }
+
+      return ModelObjectGson.GSON.fromJson(jsonObject, modelType());
+    }
+
+    /**
+     * The model type this JsonUtil produces, taken from the type argument it was declared with.
+     *
+     * @return The type passed to {@link Gson#fromJson(JsonElement, Type)}.
+     */
+    protected Type modelType() {
+      return ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
     }
 
     /**
@@ -129,36 +157,12 @@ public abstract class AbstractModelObject implements IModelObject {
      * {@inheritDoc}
      */
     public Paging<T> createModelObjectPaging(final JsonObject jsonObject) {
-      return new Paging.Builder<T>()
-        .setHref(
-          hasAndNotNull(jsonObject, "href")
-            ? jsonObject.get("href").getAsString()
-            : null)
-        .setItems(
-          hasAndNotNull(jsonObject, "items")
-            ? createModelObjectArray(jsonObject.getAsJsonArray("items"))
-            : null)
-        .setLimit(
-          hasAndNotNull(jsonObject, "limit")
-            ? jsonObject.get("limit").getAsInt()
-            : null)
-        .setNext(
-          hasAndNotNull(jsonObject, "next")
-            ? jsonObject.get("next").getAsString()
-            : null)
-        .setOffset(
-          hasAndNotNull(jsonObject, "offset")
-            ? jsonObject.get("offset").getAsInt()
-            : null)
-        .setPrevious(
-          hasAndNotNull(jsonObject, "previous")
-            ? jsonObject.get("previous").getAsString()
-            : null)
-        .setTotal(
-          hasAndNotNull(jsonObject, "total")
-            ? jsonObject.get("total").getAsInt()
-            : null)
-        .build();
+      if (jsonObject == null || jsonObject.isJsonNull()) {
+        return null;
+      }
+
+      return ModelObjectGson.GSON.fromJson(
+        jsonObject, TypeToken.getParameterized(Paging.class, modelType()).getType());
     }
 
     /**
@@ -179,32 +183,12 @@ public abstract class AbstractModelObject implements IModelObject {
      * {@inheritDoc}
      */
     public PagingCursorbased<T> createModelObjectPagingCursorbased(final JsonObject jsonObject) {
-      return new PagingCursorbased.Builder<T>()
-        .setHref(
-          hasAndNotNull(jsonObject, "href")
-            ? jsonObject.get("href").getAsString()
-            : null)
-        .setItems(
-          hasAndNotNull(jsonObject, "items")
-            ? createModelObjectArray(jsonObject.getAsJsonArray("items"))
-            : null)
-        .setLimit(
-          hasAndNotNull(jsonObject, "limit")
-            ? jsonObject.get("limit").getAsInt()
-            : null)
-        .setNext(
-          hasAndNotNull(jsonObject, "next")
-            ? jsonObject.get("next").getAsString()
-            : null)
-        .setCursors(
-          hasAndNotNull(jsonObject, "cursors")
-            ? new Cursor.JsonUtil().createModelObject(jsonObject.getAsJsonObject("cursors"))
-            : null)
-        .setTotal(
-          hasAndNotNull(jsonObject, "total")
-            ? jsonObject.get("total").getAsInt()
-            : null)
-        .build();
+      if (jsonObject == null || jsonObject.isJsonNull()) {
+        return null;
+      }
+
+      return ModelObjectGson.GSON.fromJson(
+        jsonObject, TypeToken.getParameterized(PagingCursorbased.class, modelType()).getType());
     }
 
     /**

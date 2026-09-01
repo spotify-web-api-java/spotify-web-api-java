@@ -1,7 +1,6 @@
 package se.michaelthelin.spotify.model_objects.specification;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 
 /**
@@ -104,23 +103,6 @@ public class ResumePoint extends AbstractModelObject {
       super();
     }
 
-    @Override
-    public ResumePoint createModelObject(JsonObject jsonObject) {
-      if (jsonObject == null || jsonObject.isJsonNull()) {
-        return null;
-      }
-
-      return new Builder()
-        .setFullyPlayed(
-          hasAndNotNull(jsonObject, "fully_played")
-            ? jsonObject.get("fully_played").getAsBoolean()
-            : null)
-        .setResumePositionMs(
-          hasAndNotNull(jsonObject, "resume_position_ms")
-            ? jsonObject.get("resume_position_ms").getAsInt()
-            : null)
-        .build();
-    }
   }
 
 }

@@ -1,7 +1,6 @@
 package se.michaelthelin.spotify.model_objects.special;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 import se.michaelthelin.spotify.model_objects.specification.Paging;
 import se.michaelthelin.spotify.model_objects.specification.PlaylistSimplified;
@@ -107,22 +106,5 @@ public class FeaturedPlaylists extends AbstractModelObject {
       super();
     }
 
-    public FeaturedPlaylists createModelObject(JsonObject jsonObject) {
-      if (jsonObject == null || jsonObject.isJsonNull()) {
-        return null;
-      }
-
-      return new FeaturedPlaylists.Builder()
-        .setMessage(
-          hasAndNotNull(jsonObject, "message")
-            ? jsonObject.get("message").getAsString()
-            : null)
-        .setPlaylists(
-          hasAndNotNull(jsonObject, "playlists")
-            ? new PlaylistSimplified.JsonUtil().createModelObjectPaging(
-            jsonObject.getAsJsonObject("playlists"))
-            : null)
-        .build();
-    }
   }
 }

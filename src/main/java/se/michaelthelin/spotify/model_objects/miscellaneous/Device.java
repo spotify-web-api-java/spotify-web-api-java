@@ -1,7 +1,6 @@
 package se.michaelthelin.spotify.model_objects.miscellaneous;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 
 import java.util.Objects;
@@ -251,46 +250,6 @@ public class Device extends AbstractModelObject {
       super();
     }
 
-    public Device createModelObject(JsonObject jsonObject) {
-      if (jsonObject == null || jsonObject.isJsonNull()) {
-        return null;
-      }
-
-      return new Device.Builder()
-        .setId(
-          hasAndNotNull(jsonObject, "id")
-            ? jsonObject.get("id").getAsString()
-            : null)
-        .setIs_active(
-          hasAndNotNull(jsonObject, "is_active")
-            ? jsonObject.get("is_active").getAsBoolean()
-            : null)
-        .setIs_private_session(
-          hasAndNotNull(jsonObject, "is_private_session")
-            ? jsonObject.get("is_private_session").getAsBoolean()
-            : null)
-        .setIs_restricted(
-          hasAndNotNull(jsonObject, "is_restricted")
-            ? jsonObject.get("is_restricted").getAsBoolean()
-            : null)
-        .setName(
-          hasAndNotNull(jsonObject, "name")
-            ? jsonObject.get("name").getAsString()
-            : null)
-        .setSupports_volume(
-          hasAndNotNull(jsonObject, "supports_volume")
-            ? jsonObject.get("supports_volume").getAsBoolean()
-            : null)
-        .setType(
-          hasAndNotNull(jsonObject, "type")
-            ? jsonObject.get("type").getAsString()
-            : null)
-        .setVolume_percent(
-          hasAndNotNull(jsonObject, "volume_percent")
-            ? jsonObject.get("volume_percent").getAsInt()
-            : null)
-        .build();
-    }
   }
 
   @Override

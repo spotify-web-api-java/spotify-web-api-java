@@ -1,7 +1,6 @@
 package se.michaelthelin.spotify.model_objects.specification;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.enums.CopyrightType;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 
@@ -106,22 +105,5 @@ public class Copyright extends AbstractModelObject {
       super();
     }
 
-    public Copyright createModelObject(JsonObject jsonObject) {
-      if (jsonObject == null || jsonObject.isJsonNull()) {
-        return null;
-      }
-
-      return new Copyright.Builder()
-        .setText(
-          hasAndNotNull(jsonObject, "text")
-            ? jsonObject.get("text").getAsString()
-            : null)
-        .setType(
-          hasAndNotNull(jsonObject, "type")
-            ? CopyrightType.keyOf(
-            jsonObject.get("type").getAsString().toLowerCase())
-            : null)
-        .build();
-    }
   }
 }

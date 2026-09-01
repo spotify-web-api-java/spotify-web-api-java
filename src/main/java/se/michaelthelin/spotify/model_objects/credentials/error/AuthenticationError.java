@@ -1,7 +1,6 @@
 package se.michaelthelin.spotify.model_objects.credentials.error;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 
 import java.util.Objects;
@@ -109,22 +108,6 @@ public class AuthenticationError extends AbstractModelObject {
       super();
     }
 
-    public AuthenticationError createModelObject(JsonObject jsonObject) {
-      if (jsonObject == null || jsonObject.isJsonNull()) {
-        return null;
-      }
-
-      return new AuthenticationError.Builder()
-        .setError(
-          hasAndNotNull(jsonObject, "error")
-            ? jsonObject.get("error").getAsString()
-            : null)
-        .setError_description(
-          hasAndNotNull(jsonObject, "error_description")
-            ? jsonObject.get("error_description").getAsString()
-            : null)
-        .build();
-    }
   }
 
   @Override

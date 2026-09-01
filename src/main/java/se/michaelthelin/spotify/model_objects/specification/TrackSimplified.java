@@ -1,7 +1,6 @@
 package se.michaelthelin.spotify.model_objects.specification;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.enums.ModelObjectType;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 import se.michaelthelin.spotify.model_objects.interfaces.ITrack;
@@ -386,69 +385,6 @@ public class TrackSimplified extends AbstractModelObject implements ITrack {
       super();
     }
 
-    public TrackSimplified createModelObject(JsonObject jsonObject) {
-      if (jsonObject == null || jsonObject.isJsonNull()) {
-        return null;
-      }
-
-      return new Builder()
-        .setArtists(
-          hasAndNotNull(jsonObject, "artists")
-            ? new ArtistSimplified.JsonUtil().createModelObjectArray(
-            jsonObject.getAsJsonArray("artists"))
-            : null)
-        .setDiscNumber(
-          hasAndNotNull(jsonObject, "disc_number")
-            ? jsonObject.get("disc_number").getAsInt()
-            : null)
-        .setDurationMs(
-          hasAndNotNull(jsonObject, "duration_ms")
-            ? jsonObject.get("duration_ms").getAsInt()
-            : null)
-        .setExplicit(
-          hasAndNotNull(jsonObject, "explicit")
-            ? jsonObject.get("explicit").getAsBoolean()
-            : null)
-        .setExternalUrls(
-          hasAndNotNull(jsonObject, "external_urls")
-            ? new ExternalUrl.JsonUtil().createModelObject(
-            jsonObject.getAsJsonObject("external_urls"))
-            : null)
-        .setHref(
-          hasAndNotNull(jsonObject, "href")
-            ? jsonObject.get("href").getAsString()
-            : null)
-        .setId(
-          hasAndNotNull(jsonObject, "id")
-            ? jsonObject.get("id").getAsString()
-            : null)
-        .setIsPlayable(
-          hasAndNotNull(jsonObject, "is_playable")
-            ? jsonObject.get("is_playable").getAsBoolean()
-            : null)
-        .setName(
-          hasAndNotNull(jsonObject, "name")
-            ? jsonObject.get("name").getAsString()
-            : null)
-        .setPreviewUrl(
-          hasAndNotNull(jsonObject, "preview_url")
-            ? jsonObject.get("preview_url").getAsString()
-            : null)
-        .setTrackNumber(
-          hasAndNotNull(jsonObject, "track_number")
-            ? jsonObject.get("track_number").getAsInt()
-            : null)
-        .setType(
-          hasAndNotNull(jsonObject, "type")
-            ? ModelObjectType.keyOf(
-            jsonObject.get("type").getAsString().toLowerCase())
-            : null)
-        .setUri(
-          hasAndNotNull(jsonObject, "uri")
-            ? jsonObject.get("uri").getAsString()
-            : null)
-        .build();
-    }
   }
 
   @Override

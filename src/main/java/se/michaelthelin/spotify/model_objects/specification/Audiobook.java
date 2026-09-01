@@ -1,8 +1,6 @@
 package se.michaelthelin.spotify.model_objects.specification;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.enums.ModelObjectType;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 
@@ -545,96 +543,6 @@ public class Audiobook extends AbstractModelObject {
       super();
     }
 
-    @Override
-    public Audiobook createModelObject(JsonObject jsonObject) {
-      if (jsonObject == null || jsonObject.isJsonNull()) {
-        return null;
-      }
-
-      return new Builder()
-        .setAuthors(
-          hasAndNotNull(jsonObject, "authors")
-            ? new Author.JsonUtil().createModelObjectArray(jsonObject.getAsJsonArray("authors"))
-            : null)
-        .setAvailableMarkets(
-          hasAndNotNull(jsonObject, "available_markets")
-            ? new Gson().fromJson(jsonObject.getAsJsonArray("available_markets"), String[].class)
-            : null)
-        .setCopyrights(
-          hasAndNotNull(jsonObject, "copyrights")
-            ? new Copyright.JsonUtil().createModelObjectArray(jsonObject.getAsJsonArray("copyrights"))
-            : null)
-        .setDescription(
-          hasAndNotNull(jsonObject, "description")
-            ? jsonObject.get("description").getAsString()
-            : null)
-        .setHtmlDescription(
-          hasAndNotNull(jsonObject, "html_description")
-            ? jsonObject.get("html_description").getAsString()
-            : null)
-        .setEdition(
-          hasAndNotNull(jsonObject, "edition")
-            ? jsonObject.get("edition").getAsString()
-            : null)
-        .setExplicit(
-          hasAndNotNull(jsonObject, "explicit")
-            ? jsonObject.get("explicit").getAsBoolean()
-            : null)
-        .setExternalUrls(
-          hasAndNotNull(jsonObject, "external_urls")
-            ? new ExternalUrl.JsonUtil().createModelObject(jsonObject.getAsJsonObject("external_urls"))
-            : null)
-        .setHref(
-          hasAndNotNull(jsonObject, "href")
-            ? jsonObject.get("href").getAsString()
-            : null)
-        .setId(
-          hasAndNotNull(jsonObject, "id")
-            ? jsonObject.get("id").getAsString()
-            : null)
-        .setImages(
-          hasAndNotNull(jsonObject, "images")
-            ? new Image.JsonUtil().createModelObjectArray(jsonObject.getAsJsonArray("images"))
-            : null)
-        .setLanguages(
-          hasAndNotNull(jsonObject, "languages")
-            ? new Gson().fromJson(jsonObject.getAsJsonArray("languages"), String[].class)
-            : null)
-        .setMediaType(
-          hasAndNotNull(jsonObject, "media_type")
-            ? jsonObject.get("media_type").getAsString()
-            : null)
-        .setName(
-          hasAndNotNull(jsonObject, "name")
-            ? jsonObject.get("name").getAsString()
-            : null)
-        .setNarrators(
-          hasAndNotNull(jsonObject, "narrators")
-            ? new Narrator.JsonUtil().createModelObjectArray(jsonObject.getAsJsonArray("narrators"))
-            : null)
-        .setPublisher(
-          hasAndNotNull(jsonObject, "publisher")
-            ? jsonObject.get("publisher").getAsString()
-            : null)
-        .setType(
-          hasAndNotNull(jsonObject, "type")
-            ? ModelObjectType.keyOf(jsonObject.get("type").getAsString().toLowerCase())
-            : null)
-        .setUri(
-          hasAndNotNull(jsonObject, "uri")
-            ? jsonObject.get("uri").getAsString()
-            : null)
-        .setTotalChapters(
-          hasAndNotNull(jsonObject, "total_chapters")
-            ? jsonObject.get("total_chapters").getAsInt()
-            : null)
-        .setChapters(
-          hasAndNotNull(jsonObject, "chapters")
-            ? new ChapterSimplified.JsonUtil().createModelObjectPaging(
-                jsonObject.getAsJsonObject("chapters"))
-            : null)
-        .build();
-    }
   }
 
   @Override
