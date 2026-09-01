@@ -88,6 +88,8 @@ public class PlaybackQueue extends AbstractModelObject {
   /**
    * JsonUtil class for building {@link PlaybackQueue} instances.
    */
+  // Do not delete this override: it returns an empty list for a missing "queue",
+  // where the inherited reflective createModelObject would leave the field null.
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<PlaybackQueue> {
 
     public JsonUtil() {

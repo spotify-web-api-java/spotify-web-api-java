@@ -79,6 +79,9 @@ public class ExternalId extends AbstractModelObject {
    * JsonUtil class for building {@link ExternalId} instances.
    */
   @SuppressWarnings("unchecked")
+  // Do not delete this override: ModelObjectGson registers an adapter for ExternalId that
+  // delegates here, and the inherited reflective createModelObject would call that
+  // adapter straight back into this class.
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<ExternalId> {
 
     public JsonUtil() {

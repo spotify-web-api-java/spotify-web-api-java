@@ -71,6 +71,9 @@ public class Disallows extends AbstractModelObject {
   /**
    * JsonUtil class for building {@link Disallows} instances.
    */
+  // Do not delete this override: ModelObjectGson registers an adapter for Disallows that
+  // delegates here, and the inherited reflective createModelObject would call that
+  // adapter straight back into this class.
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<Disallows> {
 
     public JsonUtil() {

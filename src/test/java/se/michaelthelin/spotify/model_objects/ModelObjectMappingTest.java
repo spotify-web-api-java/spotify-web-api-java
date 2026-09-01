@@ -7,6 +7,7 @@ import se.michaelthelin.spotify.enums.Modality;
 import se.michaelthelin.spotify.enums.ModelObjectType;
 import se.michaelthelin.spotify.model_objects.miscellaneous.AudioAnalysis;
 import se.michaelthelin.spotify.model_objects.specification.Album;
+import se.michaelthelin.spotify.model_objects.specification.ExternalId;
 import se.michaelthelin.spotify.model_objects.specification.Playlist;
 import se.michaelthelin.spotify.model_objects.specification.Recommendations;
 
@@ -80,8 +81,28 @@ public class ModelObjectMappingTest {
 
     assertEquals(AlbumType.ALBUM, album.getAlbumType());
     assertEquals(ModelObjectType.ALBUM, album.getType());
-    assertNotNull(album.getExternalUrls().get("spotify"));
     assertNotNull(album.getArtists()[0].getName());
     assertNotNull(album.getTracks().getItems()[0].getName());
+  }
+
+  /**
+   * A map-shaped model object keeps a hand-written parser, because its JSON is the map itself
+   * rather than one key per field. Reflection would map the sole field to an "external_urls" or
+   * "external_ids" key that is not there and hand back a null map.
+   * <p>
+   * ExternalUrl is nested in most responses, so {@code ModelObjectGson} also registers an adapter
+   * that delegates to the same parser. ExternalId currently has no model object holding it, which
+   * is why it is read here on its own.
+   */
+  @Test
+  public void mapShapedObjectsAreReadByTheirOwnParser() throws IOException {
+    Album album = new Album.JsonUtil()
+      .createModelObject(fixture("requests/data/albums/GetAlbumRequest.json"));
+
+    assertEquals("https://open.spotify.com/album/0sNOF9WDwhWunNAHPD3Baj",
+      album.getExternalUrls().get("spotify"));
+
+    ExternalId externalId = new ExternalId.JsonUtil().createModelObject("{\"upc\": \"5099749994324\"}");
+    assertEquals("5099749994324", externalId.getExternalIds().get("upc"));
   }
 }

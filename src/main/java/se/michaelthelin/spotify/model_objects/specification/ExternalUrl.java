@@ -87,6 +87,9 @@ public class ExternalUrl extends AbstractModelObject {
    * JsonUtil class for building {@link ExternalUrl} instances.
    */
   @SuppressWarnings("unchecked")
+  // Do not delete this override: ModelObjectGson registers an adapter for ExternalUrl that
+  // delegates here, and the inherited reflective createModelObject would call that
+  // adapter straight back into this class.
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<ExternalUrl> {
 
     public JsonUtil() {
