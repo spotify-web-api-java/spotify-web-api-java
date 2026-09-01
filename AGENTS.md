@@ -8,9 +8,8 @@ This file provides context for AI coding agents working in this repository.
 
 - **Group ID:** `se.michaelthelin.spotify`
 - **Artifact ID:** `spotify-web-api-java`
-- **Current Version:** `10.0.0-RC1`
 - **Build Tool:** Maven (`pom.xml`)
-- **Java Version:** 17+
+- **Java Version:** compiled with `--release 9`; CI builds on JDK 17 and 25
 
 ## Repository Structure
 
@@ -49,7 +48,6 @@ Create `src/main/java/se/michaelthelin/spotify/requests/data/<category>/<Endpoin
 
 Key patterns:
 - Extend `AbstractDataRequest<ReturnType>` (or `AbstractDataPagingRequest` for paginated results).
-- Annotate with `@JsonDeserialize(builder = <ClassName>.Builder.class)`.
 - Implement `execute()` which calls `getJson()`, `postJson()`, `putJson()`, or `deleteJson()` as appropriate.
 - Add a `static final class Builder` with:
   - Path parameters set via `setPathParameter("key", value)`
@@ -104,6 +102,10 @@ mvn test -Dtest="*Playlist*"
 
 ## Key Conventions
 
+- **Model objects are deserialized reflectively** by the shared Gson in
+  `model_objects/ModelObjectGson.java`, so a new field needs no parsing code.
+  Add `@SerializedName` only when the wire name is not the snake_case form of the field,
+  and add a type adapter only for a shape reflection cannot express.
 - **Trailing underscores** on Java-reserved words: e.g., `public_` for the `public` field.
 - **Assertions** in tests are imported from both JUnit 5 (`org.junit.jupiter.api.Assertions`) and the project's own `se.michaelthelin.spotify.Assertions`.
 - **Nullable fields** from the API should be tested with `assertNull(...)` when the fixture returns `null`.
