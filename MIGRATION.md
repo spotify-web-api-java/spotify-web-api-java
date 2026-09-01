@@ -151,9 +151,6 @@ There is no replacement.
 | `Track` | `getAvailableMarkets()`, `getLinkedFrom()`, `getPopularity()` |
 | `TrackSimplified` | `getAvailableMarkets()`, `getLinkedFrom()` |
 
-`Album.getExternalIds()` and `Track.getExternalIds()` were removed as well, so ISRC, EAN and UPC codes are no longer reachable.
-Unlike the fields above, `external_ids` is still a required property on both objects in the specification, and the `ExternalId` model object is still there with nothing returning it.
-
 #### New getters and model objects
 
 `Album` and `AlbumSimplified` gained `getTotalTracks()`, `AlbumSimplified` also `getIsPlayable()`, `Episode` and `EpisodeSimplified` `getHtmlDescription()`, `User` `getAccountId()` and `getExplicitContent()`, and `SearchResult` `getAudiobooks()`.
