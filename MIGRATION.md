@@ -233,7 +233,7 @@ Nothing changes for code that goes through the library.
 
 ### Deprecations
 
-49 of the 114 request builders carry `@Deprecated`, up from 1 in 9.4.0.
+49 of the 114 request builders carry `@Deprecated`, up from none in 9.4.0, where the marker only ever sat on individual builder methods.
 That number is large because it now tracks Spotify's specification: a builder is deprecated when the endpoint behind it is marked deprecated there, not because this library plans to remove it.
 
 None of them are scheduled for removal, and they keep working for clients whose credentials still reach the endpoint.
