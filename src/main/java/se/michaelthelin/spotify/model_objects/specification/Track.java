@@ -28,6 +28,8 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
   private final Integer durationMs;
   /** Whether the track is explicit. */
   private final Boolean explicit;
+  /** Known external IDs for the track. */
+  private final ExternalId externalIds;
   /** External URLs for the track. */
   private final ExternalUrl externalUrls;
   /** The Spotify Web API endpoint URL for the track. */
@@ -57,6 +59,7 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
     this.discNumber = builder.discNumber;
     this.durationMs = builder.durationMs;
     this.explicit = builder.explicit;
+    this.externalIds = builder.externalIds;
     this.externalUrls = builder.externalUrls;
     this.href = builder.href;
     this.id = builder.id;
@@ -116,6 +119,16 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
    */
   public Boolean getExplicit() {
     return explicit;
+  }
+
+  /**
+   * Get the external IDs of the track.<br>
+   * Example: isrc -&gt; "International Standard Recording Code".
+   *
+   * @return Known external IDs for the track.
+   */
+  public ExternalId getExternalIds() {
+    return externalIds;
   }
 
   /**
@@ -230,7 +243,7 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
   public String toString() {
     return "Track(name=" + name + ", artists=" + Arrays.toString(artists) + ", album=" + album
       + ", discNumber=" + discNumber + ", durationMs=" + durationMs
-      + ", explicit=" + explicit + ", externalUrls=" + externalUrls + ", href="
+      + ", explicit=" + explicit + ", externalIds=" + externalIds + ", externalUrls=" + externalUrls + ", href="
       + href + ", id=" + id + ", isPlayable=" + isPlayable + ", restrictions="
       + restrictions + ", previewUrl=" + previewUrl + ", trackNumber=" + trackNumber
       + ", type=" + type + ", uri=" + uri + ")";
@@ -250,6 +263,7 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
     private Integer discNumber;
     private Integer durationMs;
     private Boolean explicit;
+    private ExternalId externalIds;
     private ExternalUrl externalUrls;
     private String href;
     private String id;
@@ -321,6 +335,17 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
      */
     public Builder setExplicit(Boolean explicit) {
       this.explicit = explicit;
+      return this;
+    }
+
+    /**
+     * Set the external IDs of the track to be built.
+     *
+     * @param externalIds Known external IDs for the track.
+     * @return A {@link Track.Builder}.
+     */
+    public Builder setExternalIds(ExternalId externalIds) {
+      this.externalIds = externalIds;
       return this;
     }
 
@@ -481,6 +506,11 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
         .setExplicit(
           hasAndNotNull(jsonObject, "explicit")
             ? jsonObject.get("explicit").getAsBoolean()
+            : null)
+        .setExternalIds(
+          hasAndNotNull(jsonObject, "external_ids")
+            ? new ExternalId.JsonUtil().createModelObject(
+            jsonObject.getAsJsonObject("external_ids"))
             : null)
         .setExternalUrls(
           hasAndNotNull(jsonObject, "external_urls")

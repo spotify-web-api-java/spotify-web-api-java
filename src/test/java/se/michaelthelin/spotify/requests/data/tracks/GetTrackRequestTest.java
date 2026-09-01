@@ -59,6 +59,9 @@ public class GetTrackRequestTest extends AbstractDataTest<Track> {
       (int) track.getDurationMs());
     assertFalse(
       track.getExplicit());
+    assertEquals(
+      "GBFFP0300052",
+      track.getExternalIds().getExternalIds().get("isrc"));
     assertNotNull(
       track.getExternalUrls());
     assertEquals(
