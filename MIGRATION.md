@@ -151,12 +151,30 @@ There is no replacement.
 | `Track` | `getAvailableMarkets()`, `getLinkedFrom()`, `getPopularity()` |
 | `TrackSimplified` | `getAvailableMarkets()`, `getLinkedFrom()` |
 
+#### Removed classes
+
+Nothing in the library referred to these any more, in most cases because 10.0.0 dropped the getter that used them.
+
+| v9 type | Why it went |
+|---|---|
+| `AlbumGroup` | backed `AlbumSimplified.getAlbumGroup()`, which the specification deprecated |
+| `ProductType` | backed the user product getter, which the specification deprecated |
+| `PlaylistTrackPosition` | never referenced by any request or model object |
+| `Paging.JsonUtil`, `PagingCursorbased.JsonUtil` | resolved their type argument to a parameterized type rather than a class, so instantiating either always threw |
+
+A `Paging` object is built through the JsonUtil of the type it contains, which is how every request already built one.
+The `IModelObject` array helper that took an explicit element class is gone as well, having had no callers.
+
 #### New getters and model objects
 
 `Album` and `AlbumSimplified` gained `getTotalTracks()`, `AlbumSimplified` also `getIsPlayable()`, `Episode` and `EpisodeSimplified` `getHtmlDescription()`, `User` `getAccountId()` and `getExplicitContent()`, and `SearchResult` `getAudiobooks()`.
 
 Audiobooks and chapters are new: `Audiobook`, `AudiobookSimplified`, `Chapter`, `ChapterSimplified`, `ChapterRestriction`, `Author` and `Narrator`.
 `ExplicitContentSettings` backs the new `User.getExplicitContent()`.
+
+Three getters that always returned `null` in 9.4.0 now return a value, because the parser was reading a key the API does not send.
+`AudioAnalysisTrack` fixes `getWindowSeconds()` and `getEndOfFadeIn()`, and `AudioAnalysisSection` fixes `getMode()`.
+Code that null-checked them will now take the other branch.
 
 Seven interfaces were extracted so that full and simplified objects can be handled through one type: `IAlbum`, `IArtist`, `IEpisode`, `IPlaylist`, `IShow`, `ITrack` and `IHasTotal`.
 
@@ -203,6 +221,15 @@ Playlist items on the `/items` path, replacing the `/tracks` path:
 | `updatePlaylistsItemsReplace` | `PUT /playlists/{playlist_id}/items` |
 
 And `getAvailableMarkets` ⚠️ for `GET /markets`.
+
+### Deserialization
+
+Model objects are deserialized reflectively by Gson.
+The Jackson annotations every model carried are gone, along with the Jackson dependency itself, because nothing in the library ever constructed an ObjectMapper.
+
+This only affects you if you fed these model classes into your own ObjectMapper.
+The `@JsonDeserialize` annotations gave you builder-based deserialization for free, and you now have to configure that yourself.
+Nothing changes for code that goes through the library.
 
 ### Deprecations
 

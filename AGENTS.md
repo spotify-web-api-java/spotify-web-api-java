@@ -84,6 +84,19 @@ Extend `AbstractDataTest<ReturnType>`. Tests should:
 
 Common test constants are in `ITest.java` (e.g., `ITest.NAME`, `ITest.ID_PLAYLIST`, `ITest.PUBLIC`).
 
+### 5. Add an example and index it
+
+Create `examples/.../<EndpointName>Example.java` and link it from the example index in `README.md`.
+Mark the link with ⚠️ if the request class carries `@Deprecated`.
+
+`./ci/check-docs.py` enforces all of this and runs in CI.
+It checks that every `SpotifyApi` method has an example, that example file names match their request class, that the README index is complete and its ⚠️ markers match the code, that each request's verb and path exist in `spec/openapi.yaml` with matching deprecation, and that every current-API name written in `MIGRATION.md` still resolves.
+
+### Renaming or removing public API
+
+Record it in `MIGRATION.md` under the relevant `#### ` heading.
+Names that no longer exist have to sit in a table column whose header contains "v9", or inside a code fence under a `// v9` marker, otherwise the docs check reports them as stale.
+
 ## Building and Testing
 
 ```bash
