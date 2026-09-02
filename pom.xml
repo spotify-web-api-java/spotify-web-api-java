@@ -201,8 +201,6 @@
               <!-- accessors and builder setters in model_objects carry no prose of their own,
                    so only broken syntax and dead references should be reported -->
               <doclint>all,-missing</doclint>
-              <!-- the jar carries an Automatic-Module-Name, which is enough for javadoc to switch to the modular layout; the published pages live at package paths, so keep generating them there -->
-              <legacyMode>true</legacyMode>
             </configuration>
           </plugin>
         </plugins>
@@ -266,8 +264,6 @@
             </executions>
             <configuration>
               <doclint>all,-missing</doclint>
-              <!-- see the javadoc-check profile: an Automatic-Module-Name alone flips javadoc to the modular layout and would move every published page -->
-              <legacyMode>true</legacyMode>
               <outputDirectory>${project.basedir}/</outputDirectory>
             </configuration>
           </plugin>
