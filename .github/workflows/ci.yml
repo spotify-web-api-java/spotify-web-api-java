@@ -18,7 +18,7 @@ on:
 jobs:
   ci-optimization:
     name: CI optimization
-    uses: dargmuesli/github-actions/.github/workflows/ci-optimization.yml@ab0335fad9df7941df2880f0645d8f685278da1c # 5.9.4
+    uses: dargmuesli/github-actions/.github/workflows/ci-optimization.yml@8da8c1b192d3098dd3b50303232a04fbf8c90b53 # 5.9.5
     permissions:
       pull-requests: read
   build:
