@@ -221,6 +221,15 @@ def check_deprecation_matches_spec():
             report("deprecation", f"{source.stem} disagrees with the spec, which marks {verb} {endpoint} {state}")
 
 
+def check_examples_version():
+    """The examples are a separate Maven project, so their version has to be bumped with the library's."""
+    first_version = re.compile(r"<version>([^<]+)</version>", re.M)
+    library = first_version.search((ROOT / "pom.xml").read_text()).group(1)
+    examples = first_version.search((EXAMPLES / "pom.xml").read_text()).group(1)
+    if library != examples:
+        report("version", f"examples/pom.xml is {examples}, but the library is {library}")
+
+
 def rel(path):
     return str(path.relative_to(ROOT))
 
@@ -233,6 +242,7 @@ def main():
     check_readme(examples)
     check_migration_guide()
     check_deprecation_matches_spec()
+    check_examples_version()
 
     if problems:
         print("\n".join(sorted(problems)))

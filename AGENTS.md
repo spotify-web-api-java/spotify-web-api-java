@@ -89,8 +89,16 @@ Common test constants are in `ITest.java` (e.g., `ITest.NAME`, `ITest.ID_PLAYLIS
 Create `examples/.../<EndpointName>Example.java` and link it from the example index in `README.md`.
 Mark the link with ⚠️ if the request class carries `@Deprecated`.
 
+The examples are a separate Maven project that compiles against the installed library as its own module, which is how a missing `exports` gets caught.
+Build them with `mvn -B install -DskipTests=true && mvn -B -f examples/pom.xml clean compile`; the `clean` matters, because an incremental build reuses classes compiled against the previous module descriptor.
+An example may only use packages the library exports, and only types reachable through the library's own `requires transitive`.
+
 `./ci/check-docs.py` enforces all of this and runs in CI.
 It checks that every `SpotifyApi` method has an example, that example file names match their request class, that the README index is complete and its ⚠️ markers match the code, that each request's verb and path exist in `spec/openapi.yaml` with matching deprecation, and that every current-API name written in `MIGRATION.md` still resolves.
+
+### Releasing
+
+The version lives in `pom.xml`, `README.md` and `examples/pom.xml`, and `ci/check-docs.py` fails if the examples fall behind the library.
 
 ### Renaming or removing public API
 
