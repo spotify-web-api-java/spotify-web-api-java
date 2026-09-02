@@ -748,7 +748,11 @@ public class SpotifyApi {
    * @return A {@link GetArtistsRelatedArtistsRequest.Builder}.
    * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
    *
-   * @deprecated This endpoint has been deprecated by Spotify.
+   * @deprecated Spotify restricted this endpoint on November 27, 2024 as part of a platform security update.
+   * It is unavailable to apps still in Development Mode without a granted quota extension, and to apps registered on or after that date.
+   * Apps that already had Extended Quota Mode access to this endpoint before that date are unaffected and can ignore this notice.
+   * Spotify has not announced a replacement.
+   * @see <a href="https://developer.spotify.com/blog/2024-11-27-changes-to-the-web-api">Spotify: Changes to the Web API</a>
    */
   @Deprecated
   public GetArtistsRelatedArtistsRequest.Builder getArtistsRelatedArtists(String id) {
@@ -834,9 +838,12 @@ public class SpotifyApi {
    * @param category_id The Spotify category ID for the category.
    * @return A {@link GetCategoryPlaylistsRequest.Builder}.
    * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
-
    *
-   * @deprecated Use the Search API instead.
+   * @deprecated Spotify restricted this endpoint on November 27, 2024 as part of a platform security update.
+   * It is unavailable to apps still in Development Mode without a granted quota extension, and to apps registered on or after that date.
+   * Apps that already had Extended Quota Mode access to this endpoint before that date are unaffected and can ignore this notice.
+   * Spotify has not announced a replacement; searching for playlists by category name via the Search API is the closest approximation.
+   * @see <a href="https://developer.spotify.com/blog/2024-11-27-changes-to-the-web-api">Spotify: Changes to the Web API</a>
    */
   @Deprecated
   public GetCategoryPlaylistsRequest.Builder getCategoryPlaylists(String category_id) {
@@ -850,7 +857,11 @@ public class SpotifyApi {
    *
    * @return A {@link GetFeaturedPlaylistsRequest.Builder}.
    *
-   * @deprecated This endpoint has been deprecated by Spotify.
+   * @deprecated Spotify restricted this endpoint on November 27, 2024 as part of a platform security update.
+   * It is unavailable to apps still in Development Mode without a granted quota extension, and to apps registered on or after that date.
+   * Apps that already had Extended Quota Mode access to this endpoint before that date are unaffected and can ignore this notice.
+   * Spotify has not announced a replacement.
+   * @see <a href="https://developer.spotify.com/blog/2024-11-27-changes-to-the-web-api">Spotify: Changes to the Web API</a>
    */
   @Deprecated
   public GetFeaturedPlaylistsRequest.Builder getFeaturedPlaylists() {
@@ -863,7 +874,11 @@ public class SpotifyApi {
    *
    * @return A {@link GetRecommendationsRequest.Builder}.
    *
-   * @deprecated This endpoint has been deprecated by Spotify.
+   * @deprecated Spotify restricted this endpoint on November 27, 2024 as part of a platform security update.
+   * It is unavailable to apps still in Development Mode without a granted quota extension, and to apps registered on or after that date.
+   * Apps that already had Extended Quota Mode access to this endpoint before that date are unaffected and can ignore this notice.
+   * Spotify has not announced a replacement.
+   * @see <a href="https://developer.spotify.com/blog/2024-11-27-changes-to-the-web-api">Spotify: Changes to the Web API</a>
    */
   @Deprecated
   public GetRecommendationsRequest.Builder getRecommendations() {
@@ -876,7 +891,11 @@ public class SpotifyApi {
    *
    * @return A {@link GetRecommendationGenresRequest.Builder}.
    *
-   * @deprecated This endpoint has been deprecated by Spotify.
+   * @deprecated Spotify restricted this endpoint on November 27, 2024 as part of a platform security update, alongside {@link #getRecommendations()}.
+   * It is unavailable to apps still in Development Mode without a granted quota extension, and to apps registered on or after that date.
+   * Apps that already had Extended Quota Mode access to this endpoint before that date are unaffected and can ignore this notice.
+   * Spotify has not announced a replacement.
+   * @see <a href="https://developer.spotify.com/blog/2024-11-27-changes-to-the-web-api">Spotify: Changes to the Web API</a>
    */
   @Deprecated
   public GetRecommendationGenresRequest.Builder getRecommendationGenres() {
@@ -2118,9 +2137,12 @@ public class SpotifyApi {
    * @param id The Spotify ID for the track.
    * @return A {@link GetTracksAudioAnalysisRequest.Builder}.
    * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
-
    *
-   * @deprecated This endpoint has been deprecated by Spotify.
+   * @deprecated Spotify restricted this endpoint on November 27, 2024 as part of a platform security update.
+   * It is unavailable to apps still in Development Mode without a granted quota extension, and to apps registered on or after that date.
+   * Apps that already had Extended Quota Mode access to this endpoint before that date are unaffected and can ignore this notice.
+   * Spotify has not announced a replacement.
+   * @see <a href="https://developer.spotify.com/blog/2024-11-27-changes-to-the-web-api">Spotify: Changes to the Web API</a>
    */
   @Deprecated
   public GetTracksAudioAnalysisRequest.Builder getTracksAudioAnalysis(String id) {
@@ -2135,9 +2157,12 @@ public class SpotifyApi {
    * @param id The Spotify ID of the track.
    * @return A {@link GetTracksAudioFeaturesRequest.Builder}.
    * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
-
    *
-   * @deprecated This endpoint has been deprecated by Spotify.
+   * @deprecated Spotify restricted this endpoint on November 27, 2024 as part of a platform security update.
+   * It is unavailable to apps still in Development Mode without a granted quota extension, and to apps registered on or after that date.
+   * Apps that already had Extended Quota Mode access to this endpoint before that date are unaffected and can ignore this notice.
+   * Spotify has not announced a replacement.
+   * @see <a href="https://developer.spotify.com/blog/2024-11-27-changes-to-the-web-api">Spotify: Changes to the Web API</a>
    */
   @Deprecated
   public GetTracksAudioFeaturesRequest.Builder getTracksAudioFeatures(String id) {
@@ -2152,9 +2177,12 @@ public class SpotifyApi {
    * @param ids A comma-separated list of the Spotify IDs for the tracks. Maximum: 100 IDs.
    * @return A {@link GetSeveralTracksAudioFeaturesRequest.Builder}.
    * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
-
    *
-   * @deprecated This endpoint has been deprecated by Spotify.
+   * @deprecated Spotify restricted this endpoint on November 27, 2024 as part of a platform security update.
+   * It is unavailable to apps still in Development Mode without a granted quota extension, and to apps registered on or after that date.
+   * Apps that already had Extended Quota Mode access to this endpoint before that date are unaffected and can ignore this notice.
+   * Spotify has not announced a replacement.
+   * @see <a href="https://developer.spotify.com/blog/2024-11-27-changes-to-the-web-api">Spotify: Changes to the Web API</a>
    */
   @Deprecated
   public GetSeveralTracksAudioFeaturesRequest.Builder getSeveralTracksAudioFeatures(String... ids) {
