@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>se.michaelthelin.spotify</groupId>
+  <artifactId>spotify-web-api-java-examples</artifactId>
+  <version>10.0.0-RC7</version>
+
+  <name>Spotify Web API Java Client Examples</name>
+  <description>
+    Compiles the examples against the built library so they cannot drift from the API they document.
+    This is a separate project on purpose: as its own module it reads the library the way a consumer
+    does, through the module path, so a package the library forgets to export fails here rather than
+    in someone else's build. It is never deployed.
+  </description>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>se.michaelthelin.spotify</groupId>
+      <artifactId>spotify-web-api-java</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <!-- the examples are browsed and linked to by path from README.md, so they stay where they are
+         rather than moving under a conventional src/main/java; the build output goes to the library's
+         target directory to keep it out of the source tree that this points at -->
+    <sourceDirectory>${project.basedir}</sourceDirectory>
+    <directory>${project.basedir}/../target/examples</directory>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.15.0</version>
+        <configuration>
+          <release>9</release>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
