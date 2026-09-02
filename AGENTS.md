@@ -2,6 +2,9 @@
 
 This file provides context for AI coding agents working in this repository.
 
+Read [CONTRIBUTING.md](CONTRIBUTING.md) first: it carries the rules a contribution is judged against and the release procedure, and it applies to agents exactly as it does to people.
+This file covers the mechanics of the codebase and does not repeat them.
+
 ## Project Overview
 
 **spotify-web-api-java** is a Java wrapper library for the [Spotify Web API](https://developer.spotify.com/documentation/web-api/). It provides typed request builders and model objects for all Spotify API endpoints.
@@ -98,7 +101,8 @@ It checks that every `SpotifyApi` method has an example, that example file names
 
 ### Releasing
 
-The version lives in `pom.xml`, `README.md` and `examples/pom.xml`, and `ci/check-docs.py` fails if the examples fall behind the library.
+See the release workflow in [CONTRIBUTING.md](CONTRIBUTING.md#release-workflow-maintainers-only).
+Note that the version lives in three files, and `ci/check-docs.py` fails when they disagree.
 
 ### Renaming or removing public API
 
