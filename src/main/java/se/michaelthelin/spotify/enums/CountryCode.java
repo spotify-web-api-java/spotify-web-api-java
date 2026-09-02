@@ -20,7 +20,7 @@ public enum CountryCode {
   AE,
   /** Afghanistan. */
   AF,
-  /** Antigua & Barbuda. */
+  /** Antigua &amp; Barbuda. */
   AG,
   /** Anguilla. */
   AI,
@@ -46,7 +46,7 @@ public enum CountryCode {
   AX,
   /** Azerbaijan. */
   AZ,
-  /** Bosnia & Herzegovina. */
+  /** Bosnia &amp; Herzegovina. */
   BA,
   /** Barbados. */
   BB,
@@ -192,7 +192,7 @@ public enum CountryCode {
   GQ,
   /** Greece. */
   GR,
-  /** South Georgia & South Sandwich Islands. */
+  /** South Georgia &amp; South Sandwich Islands. */
   GS,
   /** Guatemala. */
   GT,
@@ -204,7 +204,7 @@ public enum CountryCode {
   GY,
   /** Hong Kong SAR China. */
   HK,
-  /** Heard & McDonald Islands. */
+  /** Heard &amp; McDonald Islands. */
   HM,
   /** Honduras. */
   HN,
@@ -252,7 +252,7 @@ public enum CountryCode {
   KI,
   /** Comoros. */
   KM,
-  /** St. Kitts & Nevis. */
+  /** St. Kitts &amp; Nevis. */
   KN,
   /** North Korea. */
   KP,
@@ -372,7 +372,7 @@ public enum CountryCode {
   PK,
   /** Poland. */
   PL,
-  /** St. Pierre & Miquelon. */
+  /** St. Pierre &amp; Miquelon. */
   PM,
   /** Pitcairn Islands. */
   PN,
@@ -414,7 +414,7 @@ public enum CountryCode {
   SH,
   /** Slovenia. */
   SI,
-  /** Svalbard & Jan Mayen. */
+  /** Svalbard &amp; Jan Mayen. */
   SJ,
   /** Slovakia. */
   SK,
@@ -430,7 +430,7 @@ public enum CountryCode {
   SR,
   /** South Sudan. */
   SS,
-  /** São Tomé & Príncipe. */
+  /** São Tomé &amp; Príncipe. */
   ST,
   /** El Salvador. */
   SV,
@@ -440,7 +440,7 @@ public enum CountryCode {
   SY,
   /** Eswatini. */
   SZ,
-  /** Turks & Caicos Islands. */
+  /** Turks &amp; Caicos Islands. */
   TC,
   /** Chad. */
   TD,
@@ -464,7 +464,7 @@ public enum CountryCode {
   TO,
   /** Türkiye. */
   TR,
-  /** Trinidad & Tobago. */
+  /** Trinidad &amp; Tobago. */
   TT,
   /** Tuvalu. */
   TV,
@@ -486,7 +486,7 @@ public enum CountryCode {
   UZ,
   /** Vatican City. */
   VA,
-  /** St. Vincent & Grenadines. */
+  /** St. Vincent &amp; Grenadines. */
   VC,
   /** Venezuela. */
   VE,
@@ -498,7 +498,7 @@ public enum CountryCode {
   VN,
   /** Vanuatu. */
   VU,
-  /** Wallis & Futuna. */
+  /** Wallis &amp; Futuna. */
   WF,
   /** Samoa. */
   WS,

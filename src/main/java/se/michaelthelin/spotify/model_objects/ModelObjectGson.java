@@ -12,6 +12,7 @@ import com.google.gson.stream.JsonWriter;
 import se.michaelthelin.spotify.SpotifyApi;
 import se.michaelthelin.spotify.enums.AlbumType;
 import se.michaelthelin.spotify.enums.CopyrightType;
+import se.michaelthelin.spotify.enums.CountryCode;
 import se.michaelthelin.spotify.enums.CurrentlyPlayingType;
 import se.michaelthelin.spotify.enums.Modality;
 import se.michaelthelin.spotify.enums.ModelObjectType;
@@ -46,6 +47,7 @@ final class ModelObjectGson {
     .registerTypeAdapter(Date.class, date())
     .registerTypeAdapter(AlbumType.class, fromString(AlbumType::keyOf))
     .registerTypeAdapter(CopyrightType.class, fromString(CopyrightType::keyOf))
+    .registerTypeAdapter(CountryCode.class, fromString(CountryCode::getByCode))
     .registerTypeAdapter(CurrentlyPlayingType.class, fromString(CurrentlyPlayingType::keyOf))
     .registerTypeAdapter(ModelObjectType.class, fromString(ModelObjectType::keyOf))
     .registerTypeAdapter(ReleaseDatePrecision.class, fromString(ReleaseDatePrecision::keyOf))
