@@ -68,11 +68,6 @@
       <version>2.14.0</version>
     </dependency>
     <dependency>
-      <groupId>com.neovisionaries</groupId>
-      <artifactId>nv-i18n</artifactId>
-      <version>1.29</version>
-    </dependency>
-    <dependency>
       <groupId>org.apache.httpcomponents.client5</groupId>
       <artifactId>httpclient5-cache</artifactId>
       <version>5.6.4</version>

@@ -1,15 +1,16 @@
 package se.michaelthelin.spotify.requests.data.playlists;
 
-import com.neovisionaries.i18n.CountryCode;
-import com.neovisionaries.i18n.LanguageCode;
 import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.SpotifyApi;
+import se.michaelthelin.spotify.enums.CountryCode;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.model_objects.special.FeaturedPlaylists;
 import se.michaelthelin.spotify.requests.data.AbstractDataRequest;
 
 import java.io.IOException;
 import java.util.Date;
+import java.util.List;
+import java.util.Locale;
 
 /**
  * Get a list of Spotify featured playlists (shown, for example, on a Spotify player’s "Browse" tab).
@@ -76,7 +77,7 @@ public class GetFeaturedPlaylistsRequest extends AbstractDataRequest<FeaturedPla
       assert (locale.contains("_"));
       String[] localeParts = locale.split("_");
       assert (localeParts.length == 2);
-      assert (LanguageCode.getByCode(localeParts[0]) != null);
+      assert (List.of(Locale.getISOLanguages()).contains(localeParts[0]));
       assert (CountryCode.getByCode(localeParts[1]) != null);
       return setQueryParameter("locale", locale);
     }
