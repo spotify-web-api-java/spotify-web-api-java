@@ -3,11 +3,13 @@ package se.michaelthelin.spotify.model_objects;
 import org.junit.jupiter.api.Test;
 import se.michaelthelin.spotify.TestUtil;
 import se.michaelthelin.spotify.enums.AlbumType;
+import se.michaelthelin.spotify.enums.CountryCode;
 import se.michaelthelin.spotify.enums.Modality;
 import se.michaelthelin.spotify.enums.ModelObjectType;
 import se.michaelthelin.spotify.model_objects.miscellaneous.AudioAnalysis;
 import se.michaelthelin.spotify.model_objects.specification.Album;
 import se.michaelthelin.spotify.model_objects.specification.Playlist;
+import se.michaelthelin.spotify.model_objects.special.AlbumSimplifiedSpecial;
 import se.michaelthelin.spotify.model_objects.specification.Recommendations;
 
 import java.io.IOException;
@@ -101,5 +103,26 @@ public class ModelObjectMappingTest {
       album.getExternalUrls().get("spotify"));
 
     assertEquals("5099749994324", album.getExternalIds().getExternalIds().get("upc"));
+  }
+
+  /**
+   * The adapter registered for {@link CountryCode} has to reach the elements of a
+   * {@code CountryCode[]} field too, which is the only shape the enum appears in on a model object.
+   * A missing adapter does not fail: Gson would fall back to matching the constant name and hand
+   * back an array of nulls for anything it could not match.
+   */
+  @Test
+  public void countryCodeArraysAreReadElementWise() {
+    AlbumSimplifiedSpecial album = new AlbumSimplifiedSpecial.JsonUtil().createModelObject(
+      "{\"name\":\"Wish\",\"available_markets\":[\"SE\",\"xk\",\"ZZ\"]}");
+
+    CountryCode[] markets = album.getAvailableMarkets();
+
+    assertEquals(3, markets.length);
+    assertEquals(CountryCode.SE, markets[0]);
+    // XK is user-assigned rather than ISO-assigned, and Spotify serves it as a market
+    assertEquals(CountryCode.XK, markets[1]);
+    // an unknown code nulls its own element instead of failing the whole object
+    assertNull(markets[2]);
   }
 }

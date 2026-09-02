@@ -3,10 +3,9 @@ package se.michaelthelin.spotify;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.neovisionaries.i18n.CountryCode;
-import com.neovisionaries.i18n.LanguageCode;
 import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.enums.AlbumType;
+import se.michaelthelin.spotify.enums.CountryCode;
 import se.michaelthelin.spotify.enums.ModelObjectType;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 
@@ -57,7 +56,7 @@ public interface ITest<T> {
   String IMAGE_DATA = readFromFileTry(new File("examples/image_data.txt"));
   int INSERT_BEFORE = 0;
   int LIMIT = 10;
-  String LOCALE = LanguageCode.sv + "_" + CountryCode.SE;
+  String LOCALE = "sv_" + CountryCode.SE;
   CountryCode MARKET = CountryCode.SE;
   int MAX_POPULARITY = 50;
   int MIN_POPULARITY = 10;

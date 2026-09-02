@@ -1,7 +1,7 @@
 package se.michaelthelin.spotify.model_objects.special;
 
-import com.neovisionaries.i18n.CountryCode;
 import se.michaelthelin.spotify.enums.AlbumType;
+import se.michaelthelin.spotify.enums.CountryCode;
 import se.michaelthelin.spotify.enums.ModelObjectType;
 import se.michaelthelin.spotify.enums.ReleaseDatePrecision;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;

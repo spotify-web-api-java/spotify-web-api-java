@@ -1,7 +1,7 @@
 package se.michaelthelin.spotify.requests.data.player;
 
-import com.neovisionaries.i18n.CountryCode;
 import org.apache.hc.core5.http.ParseException;
+import se.michaelthelin.spotify.enums.CountryCode;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.model_objects.miscellaneous.CurrentlyPlayingContext;
 import se.michaelthelin.spotify.requests.data.AbstractDataRequest;

@@ -37,6 +37,18 @@ spotifyApi.createPlaylist("My playlist").build().execute();
 Spotify dropped the `{owner_id}` path segment, so `followPlaylist(String owner_id, String playlist_id, boolean public_)` and `unfollowPlaylist(String owner_id, String playlist_id)` are gone.
 The remaining overloads take the playlist ID alone, and they moved from `requests.data.follow.legacy` to `requests.data.users`.
 
+**`CountryCode` now comes from this library.**
+The `com.neovisionaries:nv-i18n` dependency is gone, so every `market` and `country` parameter takes the `CountryCode` in `se.michaelthelin.spotify.enums` instead.
+The constant names are the same, so this is an import change and nothing else.
+
+```java
+// v9
+import com.neovisionaries.i18n.CountryCode;
+
+// v10
+import se.michaelthelin.spotify.enums.CountryCode;
+```
+
 **Playlist item accessors were renamed.**
 `Playlist.getTracks()` and `PlaylistSimplified.getTracks()` are now `getItems()`, and `PlaylistTrack.getTrack()` is now `getItem()`.
 The return types are unchanged, so these are a straight substitution once you know the new name.
@@ -226,10 +238,22 @@ And `getAvailableMarkets` ⚠️ for `GET /markets`.
 
 Model objects are deserialized reflectively by Gson.
 The Jackson annotations every model carried are gone, along with the Jackson dependency itself, because nothing in the library ever constructed an ObjectMapper.
+With nv-i18n dropped as well, the library now pulls in only Gson and HttpComponents.
 
 This only affects you if you fed these model classes into your own ObjectMapper.
 The `@JsonDeserialize` annotations gave you builder-based deserialization for free, and you now have to configure that yourself.
 Nothing changes for code that goes through the library.
+
+### Java modules
+
+The jar is an explicit module named `se.michaelthelin.spotify`, replacing the `Automatic-Module-Name` it carried before.
+The name is unchanged, so an existing `requires se.michaelthelin.spotify;` keeps working.
+
+What changes is that the module now declares its dependencies, so a consumer on the module path no longer has to guess.
+Gson and both HttpComponents modules are `requires transitive`, because types from all three appear in this library's own public signatures.
+That also means a `jlink` image can include the library as a real module rather than folding it into a merged one.
+
+Nothing in this affects code on the classpath.
 
 ### Deprecations
 

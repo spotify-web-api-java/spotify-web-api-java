@@ -93,6 +93,8 @@ def current_api():
     """Every name a reader can still write: packages, classes, methods, plus which of them are deprecated."""
     packages, classes, members = set(), {}, set()
     for source in SOURCES.rglob("*.java"):
+        if source.name == "module-info.java":  # a module declaration, not a package of names
+            continue
         text = source.read_text()
         package = re.search(r"^package ([\w.]+);", text, re.M).group(1)
         packages.add(package)
