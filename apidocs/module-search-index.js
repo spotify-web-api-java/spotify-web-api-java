@@ -1,1 +1,1 @@
-moduleSearchIndex = [];updateSearchResults();
+moduleSearchIndex = [{"l":"se.michaelthelin.spotify"}];updateSearchResults();

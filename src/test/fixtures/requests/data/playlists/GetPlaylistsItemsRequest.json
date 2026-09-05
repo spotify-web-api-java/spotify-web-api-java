@@ -13,7 +13,7 @@
         "uri": "spotify:user:spotify_espa%C3%B1a"
       },
       "is_local": false,
-      "track": {
+      "item": {
         "album": {
           "album_type": "single",
           "artists": [
@@ -113,7 +113,8 @@
           ],
           "name": "Otra Vez (feat. J Balvin)",
           "type": "album",
-          "uri": "spotify:album:5GjKG3Y8OvSVJO55dQTFyD"
+          "uri": "spotify:album:5GjKG3Y8OvSVJO55dQTFyD",
+          "total_tracks": 10
         },
         "artists": [
           {

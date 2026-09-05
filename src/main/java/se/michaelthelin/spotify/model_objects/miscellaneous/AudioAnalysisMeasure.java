@@ -1,7 +1,5 @@
 package se.michaelthelin.spotify.model_objects.miscellaneous;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 
 /**
@@ -9,7 +7,6 @@ import se.michaelthelin.spotify.model_objects.AbstractModelObject;
  * These objects can store the data of various {@link AudioAnalysis} measurements, like {@code tatums}, {@code bars} and
  * {@code beats}.
  */
-@JsonDeserialize(builder = AudioAnalysisMeasure.Builder.class)
 public class AudioAnalysisMeasure extends AbstractModelObject {
   /** The confidence level of the measure identification (0.0 to 1.0). */
   private final Float confidence;
@@ -74,41 +71,20 @@ public class AudioAnalysisMeasure extends AbstractModelObject {
     private Float duration;
     private Float start;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
 
-    /**
-     * The confidence setter.
-     *
-     * @param confidence The confidence value of the measurement between 0.0 and 1.0.
-     * @return An {@link AudioAnalysisMeasure.Builder}.
-     */
     public Builder setConfidence(Float confidence) {
       this.confidence = confidence;
       return this;
     }
 
-    /**
-     * The duration setter.
-     *
-     * @param duration The duration of the measurement in seconds.
-     * @return An {@link AudioAnalysisMeasure.Builder}.
-     */
     public Builder setDuration(Float duration) {
       this.duration = duration;
       return this;
     }
 
-    /**
-     * The start point setter.
-     *
-     * @param start The start point of the measurement.
-     * @return An {@link AudioAnalysisMeasure.Builder}.
-     */
     public Builder setStart(Float start) {
       this.start = start;
       return this;
@@ -125,32 +101,9 @@ public class AudioAnalysisMeasure extends AbstractModelObject {
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<AudioAnalysisMeasure> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }
 
-    public AudioAnalysisMeasure createModelObject(JsonObject jsonObject) {
-      if (jsonObject == null || jsonObject.isJsonNull()) {
-        return null;
-      }
-
-      return new AudioAnalysisMeasure.Builder()
-        .setConfidence(
-          hasAndNotNull(jsonObject, "confidence")
-            ? jsonObject.get("confidence").getAsFloat()
-            : null)
-        .setDuration(
-          hasAndNotNull(jsonObject, "duration")
-            ? jsonObject.get("duration").getAsFloat()
-            : null)
-        .setStart(
-          hasAndNotNull(jsonObject, "start")
-            ? jsonObject.get("start").getAsFloat()
-            : null)
-        .build();
-    }
   }
 }

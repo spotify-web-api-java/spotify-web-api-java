@@ -1,7 +1,5 @@
 package se.michaelthelin.spotify.model_objects.miscellaneous;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 import se.michaelthelin.spotify.model_objects.specification.AudioFeatures;
 
@@ -18,7 +16,6 @@ import java.util.Arrays;
  * on the side of Spotify, so it is possible that this Javadoc page (and other Audio Analysis related Javadoc pages)
  * contains speculative information about a few of its corresponding methods.
  */
-@JsonDeserialize(builder = AudioAnalysis.Builder.class)
 public class AudioAnalysis extends AbstractModelObject {
   /** Array of bar intervals in the track. */
   private final AudioAnalysisMeasure[] bars;
@@ -141,86 +138,40 @@ public class AudioAnalysis extends AbstractModelObject {
     private AudioAnalysisMeasure[] tatums;
     private AudioAnalysisTrack track;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
 
-    /**
-     * Track bars setter.
-     *
-     * @param bars The list of bar markers, in seconds.
-     * @return An {@link AudioAnalysis.Builder}.
-     */
     public Builder setBars(AudioAnalysisMeasure[] bars) {
       this.bars = bars;
       return this;
     }
 
-    /**
-     * The track beats setter.
-     *
-     * @param beats The list of beat markers, in seconds.
-     * @return An {@link AudioAnalysis.Builder}.
-     */
     public Builder setBeats(AudioAnalysisMeasure[] beats) {
       this.beats = beats;
       return this;
     }
 
-    /**
-     * The anaylzer metadata setter.
-     *
-     * @param meta Analyze, compute, and track information.
-     * @return An {@link AudioAnalysis.Builder}.
-     */
     public Builder setMeta(AudioAnalysisMeta meta) {
       this.meta = meta;
       return this;
     }
 
-    /**
-     * The track sections setter.
-     *
-     * @param sections The set of section markers, in seconds.
-     * @return An {@link AudioAnalysis.Builder}.
-     */
     public Builder setSections(AudioAnalysisSection[] sections) {
       this.sections = sections;
       return this;
     }
 
-    /**
-     * The track segments setter.
-     *
-     * @param segments The set of sound entities (typically under a second) each relatively uniform in timbre and
-     *                 harmony.
-     * @return An {@link AudioAnalysis.Builder}.
-     */
     public Builder setSegments(AudioAnalysisSegment[] segments) {
       this.segments = segments;
       return this;
     }
 
-    /**
-     * The track tatums setter.
-     *
-     * @param tatums Get the list of tatum markers, in seconds.
-     * @return An {@link AudioAnalysis.Builder}.
-     */
     public Builder setTatums(AudioAnalysisMeasure[] tatums) {
       this.tatums = tatums;
       return this;
     }
 
-    /**
-     * The track data setter.
-     *
-     * @param track Track data of audio analysis object.
-     * @return An {@link AudioAnalysis.Builder}.
-     */
     public Builder setTrack(AudioAnalysisTrack track) {
       this.track = track;
       return this;
@@ -237,55 +188,9 @@ public class AudioAnalysis extends AbstractModelObject {
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<AudioAnalysis> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }
 
-    public AudioAnalysis createModelObject(JsonObject jsonObject) {
-      if (jsonObject == null || jsonObject.isJsonNull()) {
-        return null;
-      }
-
-      return new AudioAnalysis.Builder()
-        .setBars(
-          hasAndNotNull(jsonObject, "bars")
-            ? new AudioAnalysisMeasure.JsonUtil().createModelObjectArray(
-            jsonObject.getAsJsonArray("bars"))
-            : null)
-        .setBeats(
-          hasAndNotNull(jsonObject, "beats")
-            ? new AudioAnalysisMeasure.JsonUtil().createModelObjectArray(
-            jsonObject.getAsJsonArray("beats"))
-            : null)
-        .setMeta(
-          hasAndNotNull(jsonObject, "meta")
-            ? new AudioAnalysisMeta.JsonUtil().createModelObject(
-            jsonObject.getAsJsonObject("meta"))
-            : null)
-        .setSections(
-          hasAndNotNull(jsonObject, "sections")
-            ? new AudioAnalysisSection.JsonUtil().createModelObjectArray(
-            jsonObject.getAsJsonArray("sections"))
-            : null)
-        .setSegments(
-          hasAndNotNull(jsonObject, "segments")
-            ? new AudioAnalysisSegment.JsonUtil().createModelObjectArray(
-            jsonObject.getAsJsonArray("segments"))
-            : null)
-        .setTatums(
-          hasAndNotNull(jsonObject, "tatums")
-            ? new AudioAnalysisMeasure.JsonUtil().createModelObjectArray(
-            jsonObject.getAsJsonArray("tatums"))
-            : null)
-        .setTrack(
-          hasAndNotNull(jsonObject, "track")
-            ? new AudioAnalysisTrack.JsonUtil().createModelObject(
-            jsonObject.getAsJsonObject("track"))
-            : null)
-        .build();
-    }
   }
 }

@@ -1,7 +1,5 @@
 package se.michaelthelin.spotify.model_objects.credentials;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 
 import java.util.Objects;
@@ -10,7 +8,6 @@ import java.util.Objects;
  * Retrieve information about <a href="https://developer.spotify.com/documentation/web-api/tutorials/implicit-flow">
  * Client Credentials</a> by building instances from this class.
  */
-@JsonDeserialize(builder = ClientCredentials.Builder.class)
 public class ClientCredentials extends AbstractModelObject {
   /** The access token used for making authenticated requests. */
   private final String accessToken;
@@ -73,42 +70,20 @@ public class ClientCredentials extends AbstractModelObject {
     private String tokenType;
     private Integer expiresIn;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
 
-    /**
-     * The access token setter.
-     *
-     * @param accessToken An access token that can be provided in subsequent calls,
-     *                    for example to Spotify Web API services.
-     * @return A {@link ClientCredentials.Builder}.
-     */
     public Builder setAccessToken(String accessToken) {
       this.accessToken = accessToken;
       return this;
     }
 
-    /**
-     * The access token type setter.
-     *
-     * @param tokenType How the access token may be used: always &quot;Bearer&quot;.
-     * @return A {@link ClientCredentials.Builder}.
-     */
     public Builder setTokenType(String tokenType) {
       this.tokenType = tokenType;
       return this;
     }
 
-    /**
-     * The expiration time setter.
-     *
-     * @param expiresIn The time period (in seconds) for which the access token is valid.
-     * @return A {@link ClientCredentials.Builder}.
-     */
     public Builder setExpiresIn(Integer expiresIn) {
       this.expiresIn = expiresIn;
       return this;
@@ -125,33 +100,10 @@ public class ClientCredentials extends AbstractModelObject {
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<ClientCredentials> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }
 
-    public ClientCredentials createModelObject(JsonObject jsonObject) {
-      if (jsonObject == null || jsonObject.isJsonNull()) {
-        return null;
-      }
-
-      return new ClientCredentials.Builder()
-        .setAccessToken(
-          hasAndNotNull(jsonObject, "access_token")
-            ? jsonObject.get("access_token").getAsString()
-            : null)
-        .setTokenType(
-          hasAndNotNull(jsonObject, "token_type")
-            ? jsonObject.get("token_type").getAsString()
-            : null)
-        .setExpiresIn(
-          hasAndNotNull(jsonObject, "expires_in")
-            ? jsonObject.get("expires_in").getAsInt()
-            : null)
-        .build();
-    }
   }
 
   @Override

@@ -51,16 +51,14 @@ public class GetAlbumRequestTest extends AbstractDataTest<Album> {
     assertNotNull(
       album.getArtists());
     assertEquals(
-      57,
-      album.getAvailableMarkets().length);
-    assertEquals(
       1,
       album.getCopyrights().length);
     assertEquals(
       "P",
       album.getCopyrights()[0].getType().toString());
-    assertNotNull(
-      album.getExternalIds());
+    assertEquals(
+      "5099749994324",
+      album.getExternalIds().getExternalIds().get("upc"));
     assertNotNull(
       album.getExternalUrls());
     assertEquals(
@@ -75,14 +73,9 @@ public class GetAlbumRequestTest extends AbstractDataTest<Album> {
     assertEquals(
       3,
       album.getImages().length);
-    assertNull(
-      album.getLabel());
     assertEquals(
       "She's So Unusual",
       album.getName());
-    assertEquals(
-      39,
-      (int) album.getPopularity());
     assertEquals(
       "1983",
       album.getReleaseDate());

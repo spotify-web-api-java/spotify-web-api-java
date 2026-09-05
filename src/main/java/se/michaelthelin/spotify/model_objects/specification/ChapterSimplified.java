@@ -1,0 +1,438 @@
+package se.michaelthelin.spotify.model_objects.specification;
+
+import se.michaelthelin.spotify.enums.ModelObjectType;
+import se.michaelthelin.spotify.enums.ReleaseDatePrecision;
+import se.michaelthelin.spotify.model_objects.AbstractModelObject;
+
+import java.util.Arrays;
+import java.util.Objects;
+
+/**
+ * Retrieve information about <a href="https://developer.spotify.com/documentation/web-api/reference/get-a-chapter">
+ * simplified Chapter objects</a> by building instances from this class.
+ */
+public class ChapterSimplified extends AbstractModelObject {
+  /** A URL to a 30 second preview (MP3 format) of the chapter. {@code null} if not available. */
+  private final String audioPreviewUrl;
+  /** A list of the countries in which the chapter can be played. */
+  private final String[] availableMarkets;
+  /** The number of the chapter. */
+  private final Integer chapterNumber;
+  /** A description of the chapter. HTML tags are stripped away from this field. */
+  private final String description;
+  /** A description of the chapter. This field may contain HTML tags. */
+  private final String htmlDescription;
+  /** The chapter length in milliseconds. */
+  private final Integer durationMs;
+  /** Whether or not the chapter has explicit content. */
+  private final Boolean explicit;
+  /** External URLs for this chapter. */
+  private final ExternalUrl externalUrls;
+  /** A link to the Web API endpoint providing full details of the chapter. */
+  private final String href;
+  /** The Spotify ID for the chapter. */
+  private final String id;
+  /** The cover art for the chapter in various sizes, widest first. */
+  private final Image[] images;
+  /** True if the chapter is playable in the given market. Otherwise false. */
+  private final Boolean isPlayable;
+  /** A list of the languages used in the chapter. */
+  private final String[] languages;
+  /** The name of the chapter. */
+  private final String name;
+  /** The date the chapter was first released. */
+  private final String releaseDate;
+  /** The precision with which {@code release_date} value is known. */
+  private final ReleaseDatePrecision releaseDatePrecision;
+  /** The user's most recent position in the chapter. */
+  private final ResumePoint resumePoint;
+  /** The object type. */
+  private final ModelObjectType type;
+  /** The Spotify URI for the chapter. */
+  private final String uri;
+  /** Included in the response when a content restriction is applied. */
+  private final ChapterRestriction restrictions;
+
+  private ChapterSimplified(final Builder builder) {
+    super(builder);
+    this.audioPreviewUrl = builder.audioPreviewUrl;
+    this.availableMarkets = builder.availableMarkets;
+    this.chapterNumber = builder.chapterNumber;
+    this.description = builder.description;
+    this.htmlDescription = builder.htmlDescription;
+    this.durationMs = builder.durationMs;
+    this.explicit = builder.explicit;
+    this.externalUrls = builder.externalUrls;
+    this.href = builder.href;
+    this.id = builder.id;
+    this.images = builder.images;
+    this.isPlayable = builder.isPlayable;
+    this.languages = builder.languages;
+    this.name = builder.name;
+    this.releaseDate = builder.releaseDate;
+    this.releaseDatePrecision = builder.releaseDatePrecision;
+    this.resumePoint = builder.resumePoint;
+    this.type = builder.type;
+    this.uri = builder.uri;
+    this.restrictions = builder.restrictions;
+  }
+
+  /**
+   * Get a URL to a 30 second preview (MP3 format) of the chapter. {@code null} if not available.
+   *
+   * @return A URL to an audio preview.
+   */
+  public String getAudioPreviewUrl() {
+    return audioPreviewUrl;
+  }
+
+  /**
+   * Get a list of the countries in which the chapter can be played.
+   *
+   * @return An array of <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2 country codes</a>.
+   */
+  public String[] getAvailableMarkets() {
+    return availableMarkets;
+  }
+
+  /**
+   * Get the number of the chapter.
+   *
+   * @return The number of the chapter.
+   */
+  public Integer getChapterNumber() {
+    return chapterNumber;
+  }
+
+  /**
+   * Get a description of the chapter. HTML tags are stripped away from this field.
+   *
+   * @return The description of the chapter.
+   */
+  public String getDescription() {
+    return description;
+  }
+
+  /**
+   * Get a description of the chapter. This field may contain HTML tags.
+   *
+   * @return The HTML description of the chapter.
+   */
+  public String getHtmlDescription() {
+    return htmlDescription;
+  }
+
+  /**
+   * Get the duration of the chapter in milliseconds.
+   *
+   * @return The chapter length in milliseconds.
+   */
+  public Integer getDurationMs() {
+    return durationMs;
+  }
+
+  /**
+   * Check whether the chapter is explicit or not.
+   *
+   * @return Whether or not the chapter has explicit content.
+   */
+  public Boolean getExplicit() {
+    return explicit;
+  }
+
+  /**
+   * Get the external URLs of the chapter.
+   *
+   * @return An {@link ExternalUrl} object.
+   */
+  public ExternalUrl getExternalUrls() {
+    return externalUrls;
+  }
+
+  /**
+   * Get the full Spotify Web API endpoint URL of the chapter.
+   *
+   * @return A link to the Web API endpoint providing full details of the chapter.
+   */
+  public String getHref() {
+    return href;
+  }
+
+  /**
+   * Get the Spotify ID of the chapter.
+   *
+   * @return A <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify chapter ID</a>.
+   */
+  public String getId() {
+    return id;
+  }
+
+  /**
+   * Get the cover art for the chapter in various sizes, widest first.
+   *
+   * @return An array of {@link Image} objects.
+   */
+  public Image[] getImages() {
+    return images;
+  }
+
+  /**
+   * Check whether the chapter is playable in the given market.
+   *
+   * @return True if the chapter is playable in the given market. Otherwise false.
+   */
+  public Boolean getPlayable() {
+    return isPlayable;
+  }
+
+  /**
+   * Get a list of the languages used in the chapter.
+   *
+   * @return An array of ISO 639 language codes.
+   */
+  public String[] getLanguages() {
+    return languages;
+  }
+
+  /**
+   * Get the name of the chapter.
+   *
+   * @return The name of the chapter.
+   */
+  public String getName() {
+    return name;
+  }
+
+  /**
+   * Get the release date of the chapter.
+   *
+   * @return The date the chapter was first released.
+   */
+  public String getReleaseDate() {
+    return releaseDate;
+  }
+
+  /**
+   * Get the precision of the release date.
+   *
+   * @return The precision with which {@code release_date} value is known.
+   */
+  public ReleaseDatePrecision getReleaseDatePrecision() {
+    return releaseDatePrecision;
+  }
+
+  /**
+   * Get the user's most recent position in the chapter.
+   *
+   * @return A {@link ResumePoint} object.
+   */
+  public ResumePoint getResumePoint() {
+    return resumePoint;
+  }
+
+  /**
+   * Get the model object type. In this case "episode".
+   *
+   * @return A {@link ModelObjectType}.
+   */
+  public ModelObjectType getType() {
+    return type;
+  }
+
+  /**
+   * Get the Spotify URI of the chapter.
+   *
+   * @return <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify chapter URI</a>.
+   */
+  public String getUri() {
+    return uri;
+  }
+
+  /**
+   * Get the content restriction applied, if any.
+   *
+   * @return A {@link ChapterRestriction} object, or {@code null}.
+   */
+  public ChapterRestriction getRestrictions() {
+    return restrictions;
+  }
+
+  @Override
+  public String toString() {
+    return "ChapterSimplified(audioPreviewUrl=" + audioPreviewUrl + ", chapterNumber=" + chapterNumber
+        + ", description=" + description + ", durationMs=" + durationMs + ", explicit=" + explicit
+        + ", externalUrls=" + externalUrls + ", href=" + href + ", id=" + id + ", images=" + Arrays.toString(images)
+        + ", isPlayable=" + isPlayable + ", languages=" + Arrays.toString(languages) + ", name=" + name
+        + ", releaseDate=" + releaseDate + ", releaseDatePrecision=" + releaseDatePrecision
+        + ", resumePoint=" + resumePoint + ", type=" + type + ", uri=" + uri + ")";
+  }
+
+  @Override
+  public Builder builder() {
+    return new Builder();
+  }
+
+  /**
+   * Builder class for building {@link ChapterSimplified} instances.
+   */
+  public static final class Builder extends AbstractModelObject.Builder {
+    private String audioPreviewUrl;
+    private String[] availableMarkets;
+    private Integer chapterNumber;
+    private String description;
+    private String htmlDescription;
+    private Integer durationMs;
+    private Boolean explicit;
+    private ExternalUrl externalUrls;
+    private String href;
+    private String id;
+    private Image[] images;
+    private Boolean isPlayable;
+    private String[] languages;
+    private String name;
+    private String releaseDate;
+    private ReleaseDatePrecision releaseDatePrecision;
+    private ResumePoint resumePoint;
+    private ModelObjectType type;
+    private String uri;
+    private ChapterRestriction restrictions;
+
+    public Builder() {
+      super();
+    }
+
+    public Builder setAudioPreviewUrl(String audioPreviewUrl) {
+      this.audioPreviewUrl = audioPreviewUrl;
+      return this;
+    }
+
+    public Builder setAvailableMarkets(String... availableMarkets) {
+      this.availableMarkets = availableMarkets;
+      return this;
+    }
+
+    public Builder setChapterNumber(Integer chapterNumber) {
+      this.chapterNumber = chapterNumber;
+      return this;
+    }
+
+    public Builder setDescription(String description) {
+      this.description = description;
+      return this;
+    }
+
+    public Builder setHtmlDescription(String htmlDescription) {
+      this.htmlDescription = htmlDescription;
+      return this;
+    }
+
+    public Builder setDurationMs(Integer durationMs) {
+      this.durationMs = durationMs;
+      return this;
+    }
+
+    public Builder setExplicit(Boolean explicit) {
+      this.explicit = explicit;
+      return this;
+    }
+
+    public Builder setExternalUrls(ExternalUrl externalUrls) {
+      this.externalUrls = externalUrls;
+      return this;
+    }
+
+    public Builder setHref(String href) {
+      this.href = href;
+      return this;
+    }
+
+    public Builder setId(String id) {
+      this.id = id;
+      return this;
+    }
+
+    public Builder setImages(Image... images) {
+      this.images = images;
+      return this;
+    }
+
+    public Builder setPlayable(Boolean isPlayable) {
+      this.isPlayable = isPlayable;
+      return this;
+    }
+
+    public Builder setLanguages(String... languages) {
+      this.languages = languages;
+      return this;
+    }
+
+    public Builder setName(String name) {
+      this.name = name;
+      return this;
+    }
+
+    public Builder setReleaseDate(String releaseDate) {
+      this.releaseDate = releaseDate;
+      return this;
+    }
+
+    public Builder setReleaseDatePrecision(ReleaseDatePrecision releaseDatePrecision) {
+      this.releaseDatePrecision = releaseDatePrecision;
+      return this;
+    }
+
+    public Builder setResumePoint(ResumePoint resumePoint) {
+      this.resumePoint = resumePoint;
+      return this;
+    }
+
+    public Builder setType(ModelObjectType type) {
+      this.type = type;
+      return this;
+    }
+
+    public Builder setUri(String uri) {
+      this.uri = uri;
+      return this;
+    }
+
+    public Builder setRestrictions(ChapterRestriction restrictions) {
+      this.restrictions = restrictions;
+      return this;
+    }
+
+    @Override
+    public ChapterSimplified build() {
+      return new ChapterSimplified(this);
+    }
+  }
+
+  /**
+   * JsonUtil class for building {@link ChapterSimplified} instances.
+   */
+  public static final class JsonUtil extends AbstractModelObject.JsonUtil<ChapterSimplified> {
+
+    public JsonUtil() {
+      super();
+    }
+
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    ChapterSimplified chapter = (ChapterSimplified) o;
+    return Objects.equals(id, chapter.id) && Objects.equals(name, chapter.name)
+        && Objects.equals(uri, chapter.uri);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(id, name, uri);
+  }
+}

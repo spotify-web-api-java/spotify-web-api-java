@@ -1,8 +1,7 @@
 package se.michaelthelin.spotify.requests.data.tracks;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.neovisionaries.i18n.CountryCode;
 import org.apache.hc.core5.http.ParseException;
+import se.michaelthelin.spotify.enums.CountryCode;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.model_objects.specification.Track;
 import se.michaelthelin.spotify.requests.data.AbstractDataRequest;
@@ -11,8 +10,10 @@ import java.io.IOException;
 
 /**
  * Get Spotify catalog information for multiple tracks based on their Spotify IDs.
+ *
+ * @deprecated This endpoint has been deprecated by Spotify.
  */
-@JsonDeserialize(builder = GetSeveralTracksRequest.Builder.class)
+@Deprecated
 public class GetSeveralTracksRequest extends AbstractDataRequest<Track[]> {
 
   /**
@@ -25,7 +26,7 @@ public class GetSeveralTracksRequest extends AbstractDataRequest<Track[]> {
   }
 
   /**
-   * Get several tracks.
+   * Get several {@link Track} objects.
    *
    * @return Multiple {@link Track} objects.
    * @throws IOException            In case of networking issues.
@@ -44,7 +45,7 @@ public class GetSeveralTracksRequest extends AbstractDataRequest<Track[]> {
   public static final class Builder extends AbstractDataRequest.Builder<Track[], Builder> {
 
     /**
-     * Create a new {@link GetSeveralTracksRequest.Builder}.
+     * Create a new {@link GetSeveralTracksRequest.Builder} instance.
      *
      * @param accessToken Required. A valid access token from the Spotify Accounts service.
      */
@@ -66,13 +67,12 @@ public class GetSeveralTracksRequest extends AbstractDataRequest<Track[]> {
     }
 
     /**
-     * The market country code setter.
+     * The market query parameter setter.
      *
-     * @param market Optional. An ISO 3166-1 alpha-2 country code. Provide this
-     *               parameter if you want to apply Track Relinking.
+     * @param market Optional. An ISO 3166-1 alpha-2 country code. Provide this parameter if you want to apply
+     *               Track Relinking.
      * @return A {@link GetSeveralTracksRequest.Builder}.
      * @see <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">Wikipedia: ISO 3166-1 alpha-2 country codes</a>
-     * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/track-relinking">Spotify: Track Relinking Guide</a>
      */
     public Builder market(final CountryCode market) {
       assert (market != null);

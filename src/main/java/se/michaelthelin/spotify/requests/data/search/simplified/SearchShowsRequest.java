@@ -1,21 +1,18 @@
 package se.michaelthelin.spotify.requests.data.search.simplified;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.neovisionaries.i18n.CountryCode;
 import org.apache.hc.core5.http.ParseException;
+import se.michaelthelin.spotify.enums.CountryCode;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.model_objects.specification.Paging;
 import se.michaelthelin.spotify.model_objects.specification.ShowSimplified;
 import se.michaelthelin.spotify.requests.data.AbstractDataPagingRequest;
 import se.michaelthelin.spotify.requests.data.AbstractDataRequest;
-import se.michaelthelin.spotify.requests.data.search.SearchItemRequest;
 
 import java.io.IOException;
 
 /**
  * Get Spotify catalog information about shows that match a keyword string.
  */
-@JsonDeserialize(builder = SearchShowsRequest.Builder.class)
 public class SearchShowsRequest extends AbstractDataRequest<Paging<ShowSimplified>> {
 
   /**
@@ -116,7 +113,7 @@ public class SearchShowsRequest extends AbstractDataRequest<Paging<ShowSimplifie
      * @param includeExternal Optional. Possible values: {@code audio}. If {@code audio} is set
      *                        the response will include any relevant audio content that is hosted externally.
      *                        By default external content is filtered out from responses.
-     * @return A {@link SearchItemRequest.Builder}.
+     * @return A {@link SearchShowsRequest.Builder}.
      */
     public Builder includeExternal(String includeExternal) {
       assert (includeExternal != null);

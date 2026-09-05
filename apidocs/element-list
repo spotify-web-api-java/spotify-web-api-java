@@ -1,3 +1,4 @@
+module:se.michaelthelin.spotify
 se.michaelthelin.spotify
 se.michaelthelin.spotify.enums
 se.michaelthelin.spotify.exceptions
@@ -5,6 +6,7 @@ se.michaelthelin.spotify.exceptions.detailed
 se.michaelthelin.spotify.model_objects
 se.michaelthelin.spotify.model_objects.credentials
 se.michaelthelin.spotify.model_objects.credentials.error
+se.michaelthelin.spotify.model_objects.interfaces
 se.michaelthelin.spotify.model_objects.miscellaneous
 se.michaelthelin.spotify.model_objects.special
 se.michaelthelin.spotify.model_objects.specification
@@ -17,15 +19,13 @@ se.michaelthelin.spotify.requests.authorization.client_credentials
 se.michaelthelin.spotify.requests.data
 se.michaelthelin.spotify.requests.data.albums
 se.michaelthelin.spotify.requests.data.artists
-se.michaelthelin.spotify.requests.data.browse
-se.michaelthelin.spotify.requests.data.browse.miscellaneous
+se.michaelthelin.spotify.requests.data.audiobooks
+se.michaelthelin.spotify.requests.data.categories
+se.michaelthelin.spotify.requests.data.chapters
 se.michaelthelin.spotify.requests.data.episodes
-se.michaelthelin.spotify.requests.data.follow
-se.michaelthelin.spotify.requests.data.follow.legacy
+se.michaelthelin.spotify.requests.data.genres
 se.michaelthelin.spotify.requests.data.library
-se.michaelthelin.spotify.requests.data.personalization
-se.michaelthelin.spotify.requests.data.personalization.interfaces
-se.michaelthelin.spotify.requests.data.personalization.simplified
+se.michaelthelin.spotify.requests.data.markets
 se.michaelthelin.spotify.requests.data.player
 se.michaelthelin.spotify.requests.data.playlists
 se.michaelthelin.spotify.requests.data.search
@@ -34,4 +34,6 @@ se.michaelthelin.spotify.requests.data.search.simplified
 se.michaelthelin.spotify.requests.data.search.simplified.special
 se.michaelthelin.spotify.requests.data.shows
 se.michaelthelin.spotify.requests.data.tracks
-se.michaelthelin.spotify.requests.data.users_profile
+se.michaelthelin.spotify.requests.data.users
+se.michaelthelin.spotify.requests.data.users.interfaces
+se.michaelthelin.spotify.requests.data.users.simplified

@@ -41,7 +41,8 @@
       ],
       "name": "Arrival",
       "type": "album",
-      "uri": "spotify:album:79ZX48114T8NH36MnOTtl7"
+      "uri": "spotify:album:79ZX48114T8NH36MnOTtl7",
+      "total_tracks": 10
     },
     "artists": [
       {

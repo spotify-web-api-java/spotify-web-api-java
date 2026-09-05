@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.requests.data.artists;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.model_objects.specification.Artist;
@@ -11,8 +10,10 @@ import java.io.IOException;
 /**
  * Get Spotify catalog information about artists similar to a given artist. Similarity is based on analysis of the
  * Spotify community’s listening history.
+ *
+ * @deprecated This endpoint has been deprecated by Spotify.
  */
-@JsonDeserialize(builder = GetArtistsRelatedArtistsRequest.Builder.class)
+@Deprecated
 public class GetArtistsRelatedArtistsRequest extends AbstractDataRequest<Artist[]> {
 
   /**

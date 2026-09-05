@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.model_objects;
 
-import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.model_objects.specification.Paging;
@@ -24,7 +23,6 @@ public interface IModelObject extends Serializable {
   /**
    * Interface with methods used in builder classes of model objects.
    */
-  @JsonPOJOBuilder(withPrefix = "set")
   interface Builder {
 
     /**
@@ -94,16 +92,6 @@ public interface IModelObject extends Serializable {
      * @return A model object array. The type depends on this methods implementation.
      */
     T[] createModelObjectArray(final String json, final String key);
-
-    /**
-     * Create an array of model objects out of a json array object and a {@link Class} object.
-     *
-     * @param jsonArray A json array object.
-     * @param clazz     The class object.
-     * @param <X>       The model object type of the array and class object.
-     * @return A model object array.
-     */
-    <X> X[] createModelObjectArray(final JsonArray jsonArray, final Class<X> clazz);
 
     /**
      * Create a paging of model objects out of a json object.

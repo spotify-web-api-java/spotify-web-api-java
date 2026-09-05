@@ -12,9 +12,11 @@ import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class GetSeveralArtistsRequestTest extends AbstractDataTest<Artist[]> {
-  private final GetSeveralArtistsRequest defaultRequest = ITest.SPOTIFY_API.getSeveralArtists(ITest.ID_ARTIST, ITest.ID_ARTIST)
+  private final GetSeveralArtistsRequest defaultRequest = ITest.SPOTIFY_API
+    .getSeveralArtists(ITest.ID_ARTIST)
     .setHttpManager(
       TestUtil.MockedHttpManager.returningJson(
         "requests/data/artists/GetSeveralArtistsRequest.json"))
@@ -27,7 +29,7 @@ public class GetSeveralArtistsRequestTest extends AbstractDataTest<Artist[]> {
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
     assertEquals(
-      "https://api.spotify.com:443/v1/artists?ids=0LcJLqbBmaGUft1e9Mm8HV%2C0LcJLqbBmaGUft1e9Mm8HV",
+      "https://api.spotify.com:443/v1/artists?ids=0LcJLqbBmaGUft1e9Mm8HV",
       defaultRequest.getUri().toString());
   }
 
@@ -42,8 +44,8 @@ public class GetSeveralArtistsRequestTest extends AbstractDataTest<Artist[]> {
   }
 
   public void shouldReturnDefault(final Artist[] artists) {
-    assertEquals(
-      2,
-      artists.length);
+    assertNotNull(artists);
+    assertEquals(1, artists.length);
+    assertEquals("0OdUWJ0sBjDrqHygGUXeCF", artists[0].getId());
   }
 }

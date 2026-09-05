@@ -1,7 +1,5 @@
 package se.michaelthelin.spotify.model_objects.specification;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 
 /**
@@ -9,7 +7,6 @@ import se.michaelthelin.spotify.model_objects.AbstractModelObject;
  * <a href="https://developer.spotify.com/web-api/object-model/#resume-point-object">Resume Point objects</a>
  * by building instances from this class.
  */
-@JsonDeserialize(builder = ResumePoint.Builder.class)
 public class ResumePoint extends AbstractModelObject {
   /** Whether the episode has been fully played by the user. */
   private final Boolean fullyPlayed;
@@ -57,30 +54,15 @@ public class ResumePoint extends AbstractModelObject {
     private Boolean fullyPlayed;
     private Integer resumePositionMs;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
 
-    /**
-     * Set whether the episode has been fully played by the user.
-     *
-     * @param fullyPlayed {@code true} if episode has been fully played by the user.
-     * @return A {@link ResumePoint.Builder}.
-     */
     public Builder setFullyPlayed(Boolean fullyPlayed) {
       this.fullyPlayed = fullyPlayed;
       return this;
     }
 
-    /**
-     * Set the user’s most recent position in the episode in milliseconds.
-     *
-     * @param resumePositionMs The user’s most recent position in the episode in milliseconds.
-     * @return A {@link ResumePoint.Builder}.
-     */
     public Builder setResumePositionMs(Integer resumePositionMs) {
       this.resumePositionMs = resumePositionMs;
       return this;
@@ -97,30 +79,10 @@ public class ResumePoint extends AbstractModelObject {
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<ResumePoint> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }
 
-    @Override
-    public ResumePoint createModelObject(JsonObject jsonObject) {
-      if (jsonObject == null || jsonObject.isJsonNull()) {
-        return null;
-      }
-
-      return new Builder()
-        .setFullyPlayed(
-          hasAndNotNull(jsonObject, "fully_played")
-            ? jsonObject.get("fully_played").getAsBoolean()
-            : null)
-        .setResumePositionMs(
-          hasAndNotNull(jsonObject, "resume_position_ms")
-            ? jsonObject.get("resume_position_ms").getAsInt()
-            : null)
-        .build();
-    }
   }
 
 }

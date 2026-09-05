@@ -6,194 +6,64 @@
         "artists": [
           {
             "external_urls": {
-              "spotify": "https://open.spotify.com/artist/43ZHCT0cAZBISjO8DG9PnE"
+              "spotify": "https://open.spotify.com/artist/0OdUWJ0sBjDrqHygGUXeCF"
             },
-            "href": "https://api.spotify.com/v1/artists/43ZHCT0cAZBISjO8DG9PnE",
-            "id": "43ZHCT0cAZBISjO8DG9PnE",
-            "name": "Elvis Presley",
+            "href": "https://api.spotify.com/v1/artists/0OdUWJ0sBjDrqHygGUXeCF",
+            "id": "0OdUWJ0sBjDrqHygGUXeCF",
+            "name": "Band of Horses",
             "type": "artist",
-            "uri": "spotify:artist:43ZHCT0cAZBISjO8DG9PnE"
+            "uri": "spotify:artist:0OdUWJ0sBjDrqHygGUXeCF"
           }
         ],
         "available_markets": [
-          "AD",
-          "AR",
-          "AT",
-          "AU",
-          "BE",
-          "BG",
-          "BO",
-          "BR",
-          "CA",
-          "CH",
-          "CL",
-          "CO",
-          "CR",
-          "CY",
-          "CZ",
-          "DE",
-          "DK",
-          "DO",
-          "EC",
-          "EE",
-          "ES",
-          "FI",
-          "FR",
-          "GB",
-          "GR",
-          "GT",
-          "HK",
-          "HN",
-          "HU",
-          "ID",
-          "IE",
-          "IS",
-          "IT",
-          "JP",
-          "LI",
-          "LT",
-          "LU",
-          "LV",
-          "MC",
-          "MT",
-          "MX",
-          "MY",
-          "NI",
-          "NL",
-          "NO",
-          "NZ",
-          "PA",
-          "PE",
-          "PH",
-          "PL",
-          "PT",
-          "PY",
-          "SE",
-          "SG",
-          "SK",
-          "SV",
-          "TR",
-          "TW",
-          "US",
-          "UY"
+          "US"
         ],
         "external_urls": {
-          "spotify": "https://open.spotify.com/album/7xe8VI48TxUpU1IIo0RfGi"
+          "spotify": "https://open.spotify.com/album/1oR3KrPIp4CbagPa3PhtPp"
         },
-        "href": "https://api.spotify.com/v1/albums/7xe8VI48TxUpU1IIo0RfGi",
-        "id": "7xe8VI48TxUpU1IIo0RfGi",
-        "images": [
-          {
-            "height": 640,
-            "url": "https://i.scdn.co/image/4295b5ff74d4f944367144acbe616b6f62d20b17",
-            "width": 640
-          },
-          {
-            "height": 300,
-            "url": "https://i.scdn.co/image/203104e5843248c700b078f391d4bc759c5d7f47",
-            "width": 300
-          },
-          {
-            "height": 64,
-            "url": "https://i.scdn.co/image/0c0a172373b0211c590b241270d05b70889075a1",
-            "width": 64
-          }
-        ],
-        "name": "Blue Hawaii",
+        "href": "https://api.spotify.com/v1/albums/1oR3KrPIp4CbagPa3PhtPp",
+        "id": "1oR3KrPIp4CbagPa3PhtPp",
+        "images": [],
+        "name": "Everything All the Time",
+        "release_date": "2006-03-21",
+        "release_date_precision": "day",
+        "total_tracks": 10,
         "type": "album",
-        "uri": "spotify:album:7xe8VI48TxUpU1IIo0RfGi"
+        "uri": "spotify:album:1oR3KrPIp4CbagPa3PhtPp"
       },
       "artists": [
         {
           "external_urls": {
-            "spotify": "https://open.spotify.com/artist/43ZHCT0cAZBISjO8DG9PnE"
+            "spotify": "https://open.spotify.com/artist/0OdUWJ0sBjDrqHygGUXeCF"
           },
-          "href": "https://api.spotify.com/v1/artists/43ZHCT0cAZBISjO8DG9PnE",
-          "id": "43ZHCT0cAZBISjO8DG9PnE",
-          "name": "Elvis Presley",
+          "href": "https://api.spotify.com/v1/artists/0OdUWJ0sBjDrqHygGUXeCF",
+          "id": "0OdUWJ0sBjDrqHygGUXeCF",
+          "name": "Band of Horses",
           "type": "artist",
-          "uri": "spotify:artist:43ZHCT0cAZBISjO8DG9PnE"
+          "uri": "spotify:artist:0OdUWJ0sBjDrqHygGUXeCF"
         }
       ],
       "available_markets": [
-        "AD",
-        "AR",
-        "AT",
-        "AU",
-        "BE",
-        "BG",
-        "BO",
-        "BR",
-        "CA",
-        "CH",
-        "CL",
-        "CO",
-        "CR",
-        "CY",
-        "CZ",
-        "DE",
-        "DK",
-        "DO",
-        "EC",
-        "EE",
-        "ES",
-        "FI",
-        "FR",
-        "GB",
-        "GR",
-        "GT",
-        "HK",
-        "HN",
-        "HU",
-        "ID",
-        "IE",
-        "IS",
-        "IT",
-        "JP",
-        "LI",
-        "LT",
-        "LU",
-        "LV",
-        "MC",
-        "MT",
-        "MX",
-        "MY",
-        "NI",
-        "NL",
-        "NO",
-        "NZ",
-        "PA",
-        "PE",
-        "PH",
-        "PL",
-        "PT",
-        "PY",
-        "SE",
-        "SG",
-        "SK",
-        "SV",
-        "TR",
-        "TW",
-        "US",
-        "UY"
+        "US"
       ],
       "disc_number": 1,
-      "duration_ms": 179773,
+      "duration_ms": 252040,
       "explicit": false,
       "external_ids": {
-        "isrc": "USRC16101350"
+        "isrc": "USSM10600772"
       },
       "external_urls": {
-        "spotify": "https://open.spotify.com/track/44AyOl4qVkzS48vBsbNXaC"
+        "spotify": "https://open.spotify.com/track/6hDH3YWFdse1K7GPSGZPen"
       },
-      "href": "https://api.spotify.com/v1/tracks/44AyOl4qVkzS48vBsbNXaC",
-      "id": "44AyOl4qVkzS48vBsbNXaC",
-      "name": "Can't Help Falling in Love",
-      "popularity": 70,
-      "preview_url": "https://p.scdn.co/mp3-preview/26e409b39a2da6dc18fab61020c90be2938dc0e9",
-      "track_number": 5,
+      "href": "https://api.spotify.com/v1/tracks/6hDH3YWFdse1K7GPSGZPen",
+      "id": "6hDH3YWFdse1K7GPSGZPen",
+      "is_local": false,
+      "name": "The Funeral",
+      "popularity": 72,
+      "preview_url": null,
+      "track_number": 2,
       "type": "track",
-      "uri": "spotify:track:44AyOl4qVkzS48vBsbNXaC"
+      "uri": "spotify:track:6hDH3YWFdse1K7GPSGZPen"
     }
   ]
 }

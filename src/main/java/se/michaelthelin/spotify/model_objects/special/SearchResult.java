@@ -1,24 +1,23 @@
 package se.michaelthelin.spotify.model_objects.special;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 import se.michaelthelin.spotify.model_objects.specification.*;
-import se.michaelthelin.spotify.requests.data.personalization.interfaces.IArtistTrackModelObject;
-import se.michaelthelin.spotify.requests.data.search.SearchItemRequest;
+import se.michaelthelin.spotify.requests.data.users.interfaces.IArtistTrackModelObject;
+import se.michaelthelin.spotify.requests.data.search.SearchForItemRequest;
 import se.michaelthelin.spotify.requests.data.search.interfaces.ISearchModelObject;
 
 /**
- * Retrieve the searched-for items by building instances from this class. This objects contains
- * for every type specified by the {@code type} parameter in the {@link SearchItemRequest}
+ * Retrieve the searched-for items by building instances from this class. This object contains
+ * for every type specified by the {@code type} parameter in the {@link SearchForItemRequest}
  * the searched-for items wrapped in a {@link Paging} object.
  */
-@JsonDeserialize(builder = SearchResult.Builder.class)
 public class SearchResult extends AbstractModelObject implements IArtistTrackModelObject, ISearchModelObject {
   /** A paging object containing album search results. */
   private final Paging<AlbumSimplified> albums;
   /** A paging object containing artist search results. */
   private final Paging<Artist> artists;
+  /** A paging object containing audiobook search results. */
+  private final Paging<AudiobookSimplified> audiobooks;
   /** A paging object containing episode search results. */
   private final Paging<EpisodeSimplified> episodes;
   /** A paging object containing playlist search results. */
@@ -33,6 +32,7 @@ public class SearchResult extends AbstractModelObject implements IArtistTrackMod
 
     this.albums = builder.albums;
     this.artists = builder.artists;
+    this.audiobooks = builder.audiobooks;
     this.episodes = builder.episodes;
     this.playlists = builder.playlists;
     this.shows = builder.shows;
@@ -59,6 +59,17 @@ public class SearchResult extends AbstractModelObject implements IArtistTrackMod
    */
   public Paging<Artist> getArtists() {
     return artists;
+  }
+
+  /**
+   * Get the audiobook objects contained in the search result object. <br>
+   * <b>Note:</b> The search result only contains audiobook objects when the {@code audiobook} parameter has been
+   * specified in the request.
+   *
+   * @return Audiobooks from the search result.
+   */
+  public Paging<AudiobookSimplified> getAudiobooks() {
+    return audiobooks;
   }
 
   /**
@@ -107,8 +118,8 @@ public class SearchResult extends AbstractModelObject implements IArtistTrackMod
 
   @Override
   public String toString() {
-    return "SearchResult(albums=" + albums + ", artists=" + artists + ", episodes=" + episodes + ", playlists="
-        + playlists + ", shows=" + shows + ", tracks=" + tracks + ")";
+    return "SearchResult(albums=" + albums + ", artists=" + artists + ", audiobooks=" + audiobooks + ", episodes="
+        + episodes + ", playlists=" + playlists + ", shows=" + shows + ", tracks=" + tracks + ")";
   }
 
   @Override
@@ -122,79 +133,46 @@ public class SearchResult extends AbstractModelObject implements IArtistTrackMod
   public static final class Builder extends AbstractModelObject.Builder {
     private Paging<AlbumSimplified> albums;
     private Paging<Artist> artists;
+    private Paging<AudiobookSimplified> audiobooks;
     private Paging<EpisodeSimplified> episodes;
     private Paging<PlaylistSimplified> playlists;
     private Paging<ShowSimplified> shows;
     private Paging<Track> tracks;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
 
-    /**
-     * The albums setter.
-     *
-     * @param albums Albums from the search result.
-     * @return A {@link SearchResult.Builder}.
-     */
     public Builder setAlbums(Paging<AlbumSimplified> albums) {
       this.albums = albums;
       return this;
     }
 
-    /**
-     * The artists setter.
-     *
-     * @param artists Artists from the search result.
-     * @return A {@link SearchResult.Builder}.
-     */
     public Builder setArtists(Paging<Artist> artists) {
       this.artists = artists;
       return this;
     }
 
-    /**
-     * The episodes setter.
-     *
-     * @param episodes Episodes from the search result.
-     * @return A {@link SearchResult.Builder}.
-     */
+    public Builder setAudiobooks(Paging<AudiobookSimplified> audiobooks) {
+      this.audiobooks = audiobooks;
+      return this;
+    }
+
     public Builder setEpisodes(Paging<EpisodeSimplified> episodes) {
       this.episodes = episodes;
       return this;
     }
 
-    /**
-     * The playlists setter.
-     *
-     * @param playlists Playlists from the search result.
-     * @return A {@link SearchResult.Builder}.
-     */
     public Builder setPlaylists(Paging<PlaylistSimplified> playlists) {
       this.playlists = playlists;
       return this;
     }
 
-    /**
-     * The shows setter.
-     *
-     * @param shows Shows from the search result.
-     * @return A {@link SearchResult.Builder}.
-     */
     public Builder setShows(Paging<ShowSimplified> shows) {
       this.shows = shows;
       return this;
     }
 
-    /**
-     * The tracks setter.
-     *
-     * @param tracks Tracks from the search result.
-     * @return A {@link SearchResult.Builder}.
-     */
     public Builder setTracks(Paging<Track> tracks) {
       this.tracks = tracks;
       return this;
@@ -211,51 +189,10 @@ public class SearchResult extends AbstractModelObject implements IArtistTrackMod
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<SearchResult> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }
 
-    public SearchResult createModelObject(JsonObject jsonObject) {
-      if (jsonObject == null || jsonObject.isJsonNull()) {
-        return null;
-      }
-
-      return new SearchResult.Builder()
-        .setAlbums(
-          hasAndNotNull(jsonObject, "albums")
-            ? new AlbumSimplified.JsonUtil().createModelObjectPaging(
-            jsonObject.getAsJsonObject("albums"))
-            : null)
-        .setArtists(
-          hasAndNotNull(jsonObject, "artists")
-            ? new Artist.JsonUtil().createModelObjectPaging(
-            jsonObject.getAsJsonObject("artists"))
-            : null)
-        .setEpisodes(
-          hasAndNotNull(jsonObject, "episodes")
-            ? new EpisodeSimplified.JsonUtil().createModelObjectPaging(
-            jsonObject.getAsJsonObject("episodes"))
-            : null)
-        .setPlaylists(
-          hasAndNotNull(jsonObject, "playlists")
-            ? new PlaylistSimplified.JsonUtil().createModelObjectPaging(
-            jsonObject.getAsJsonObject("playlists"))
-            : null)
-        .setShows(
-          hasAndNotNull(jsonObject, "shows")
-            ? new ShowSimplified.JsonUtil().createModelObjectPaging(
-            jsonObject.getAsJsonObject("shows"))
-            : null)
-        .setTracks(
-          hasAndNotNull(jsonObject, "tracks")
-            ? new Track.JsonUtil().createModelObjectPaging(
-            jsonObject.getAsJsonObject("tracks"))
-            : null)
-        .build();
-    }
   }
 
 }

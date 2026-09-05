@@ -1,8 +1,7 @@
 package se.michaelthelin.spotify.requests.data.artists;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.neovisionaries.i18n.CountryCode;
 import org.apache.hc.core5.http.ParseException;
+import se.michaelthelin.spotify.enums.CountryCode;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.model_objects.specification.AlbumSimplified;
 import se.michaelthelin.spotify.model_objects.specification.Paging;
@@ -15,7 +14,6 @@ import java.io.IOException;
  * Get Spotify catalog information about an artist’s albums. Optional parameters can be specified in the query string to
  * filter and sort the response.
  */
-@JsonDeserialize(builder = GetArtistsAlbumsRequest.Builder.class)
 public class GetArtistsAlbumsRequest extends AbstractDataRequest<Paging<AlbumSimplified>> {
 
   /**

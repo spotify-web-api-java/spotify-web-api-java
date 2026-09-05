@@ -11,9 +11,13 @@ import java.util.concurrent.CancellationException;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionException;
 
+/**
+ * @deprecated Get Spotify catalog information for multiple tracks based on their Spotify IDs.
+ */
+@Deprecated
 public class GetSeveralTracksExample {
   private static final String accessToken = "taHZ2SdB-bPA3FsK3D7ZN5npZS47cMy-IEySVEGttOhXmqaVAIo0ESvTCLjLBifhHOHOIuhFUKPW1WMDP7w6dj3MAZdWT8CLI2MkZaXbYLTeoDvXesf2eeiLYPBGdx8tIwQJKgV8XdnzH_DONk";
-  private static final String[] ids = new String[]{"01iyCAUm8EvOFqVWYJ3dVX"};
+  private static final String ids = "01iyCAUm8EvOFqVWYJ3dVX";
 
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
     .setAccessToken(accessToken)
@@ -26,7 +30,7 @@ public class GetSeveralTracksExample {
     try {
       final Track[] tracks = getSeveralTracksRequest.execute();
 
-      System.out.println("Length: " + tracks.length);
+      System.out.println("Number of tracks: " + tracks.length);
     } catch (IOException | SpotifyWebApiException | ParseException e) {
       System.out.println("Error: " + e.getMessage());
     }
@@ -41,7 +45,7 @@ public class GetSeveralTracksExample {
       // Example Only. Never block in production code.
       final Track[] tracks = tracksFuture.join();
 
-      System.out.println("Length: " + tracks.length);
+      System.out.println("Number of tracks: " + tracks.length);
     } catch (CompletionException e) {
       System.out.println("Error: " + e.getCause().getMessage());
     } catch (CancellationException e) {

@@ -15,8 +15,8 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import static se.michaelthelin.spotify.Assertions.assertHasHeader;
 
 public class SkipUsersPlaybackToNextTrackRequestTest extends AbstractDataTest<String> {
-  private final SkipUsersPlaybackToNextTrackRequest defaultRequest = ITest.SPOTIFY_API
-    .skipUsersPlaybackToNextTrack()
+  private final SkipToNextRequest defaultRequest = ITest.SPOTIFY_API
+    .skipToNext()
     .setHttpManager(
       TestUtil.MockedHttpManager.returningJson(null))
     .device_id(ITest.DEVICE_ID)

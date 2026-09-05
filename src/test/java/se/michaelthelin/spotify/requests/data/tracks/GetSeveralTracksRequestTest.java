@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class GetSeveralTracksRequestTest extends AbstractDataTest<Track[]> {
   private final GetSeveralTracksRequest defaultRequest = ITest.SPOTIFY_API
@@ -19,7 +20,6 @@ public class GetSeveralTracksRequestTest extends AbstractDataTest<Track[]> {
     .setHttpManager(
       TestUtil.MockedHttpManager.returningJson(
         "requests/data/tracks/GetSeveralTracksRequest.json"))
-    .market(ITest.MARKET)
     .build();
 
   public GetSeveralTracksRequestTest() throws Exception {
@@ -29,7 +29,7 @@ public class GetSeveralTracksRequestTest extends AbstractDataTest<Track[]> {
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
     assertEquals(
-      "https://api.spotify.com:443/v1/tracks?ids=01iyCAUm8EvOFqVWYJ3dVX&market=SE",
+      "https://api.spotify.com:443/v1/tracks?ids=01iyCAUm8EvOFqVWYJ3dVX",
       defaultRequest.getUri().toString());
   }
 
@@ -44,8 +44,8 @@ public class GetSeveralTracksRequestTest extends AbstractDataTest<Track[]> {
   }
 
   public void shouldReturnDefault(final Track[] tracks) {
-    assertEquals(
-      2,
-      tracks.length);
+    assertNotNull(tracks);
+    assertEquals(1, tracks.length);
+    assertEquals("0eGsygTp906u18L0Oimnem", tracks[0].getId());
   }
 }

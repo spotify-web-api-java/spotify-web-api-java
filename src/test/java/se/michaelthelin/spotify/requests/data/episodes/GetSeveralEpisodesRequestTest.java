@@ -12,14 +12,14 @@ import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class GetSeveralEpisodesRequestTest extends AbstractDataTest<Episode[]> {
   private final GetSeveralEpisodesRequest defaultRequest = ITest.SPOTIFY_API
-    .getSeveralEpisodes(ITest.ID_EPISODE, ITest.ID_EPISODE)
+    .getSeveralEpisodes(ITest.ID_EPISODE)
     .setHttpManager(
       TestUtil.MockedHttpManager.returningJson(
         "requests/data/episodes/GetSeveralEpisodesRequest.json"))
-    .market(ITest.MARKET)
     .build();
 
   public GetSeveralEpisodesRequestTest() throws Exception {
@@ -29,7 +29,7 @@ public class GetSeveralEpisodesRequestTest extends AbstractDataTest<Episode[]> {
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
     assertEquals(
-      "https://api.spotify.com:443/v1/episodes?ids=4GI3dxEafwap1sFiTGPKd1%2C4GI3dxEafwap1sFiTGPKd1&market=SE",
+      "https://api.spotify.com:443/v1/episodes?ids=046WGwFKUevqKMA4NQfYUv",
       defaultRequest.getUri().toString());
   }
 
@@ -44,8 +44,8 @@ public class GetSeveralEpisodesRequestTest extends AbstractDataTest<Episode[]> {
   }
 
   public void shouldReturnDefault(final Episode[] episodes) {
-    assertEquals(
-      2,
-      episodes.length);
+    assertNotNull(episodes);
+    assertEquals(1, episodes.length);
+    assertEquals("046WGwFKUevqKMA4NQfYUv", episodes[0].getId());
   }
 }

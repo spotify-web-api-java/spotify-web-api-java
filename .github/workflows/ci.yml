@@ -43,7 +43,19 @@ jobs:
           distribution: temurin
           java-version: ${{ matrix.java }}
       - name: Build with Maven
-        run: mvn -B package --file pom.xml
+        # install, so the examples below compile against this build rather than the released artifact
+        run: mvn -B install --file pom.xml
+      - name: Compile examples against the built module
+        # the examples are their own module, so they read the library the way a consumer does and a
+        # missing export fails here; clean, because an incremental build would reuse classes compiled
+        # against the previous descriptor and report nothing
+        run: mvn -B -f examples/pom.xml clean compile
+      - name: Check documentation consistency
+        run: ./ci/check-docs.py
+      - name: Build Javadoc
+        # the tag-triggered release below attaches Javadoc, so a broken reference must fail here, not after tagging
+        # the removal is what stops the plugin from skipping an already up-to-date output directory
+        run: rm -rf target/reports/apidocs && mvn -B -P javadoc-check javadoc:javadoc
       - name: Upload code coverage
         uses: codecov/codecov-action@fb8b3582c8e4def4969c97caa2f19720cb33a72f # v7.0.0
         with:
@@ -53,7 +65,7 @@ jobs:
         env:
           GPG_KEY_NAME: B70E1EAC
           GPG_PASSPHRASE_FILE: ${{ secrets.GPG_PASSPHRASE_FILE }}
-          GPG_PASSPHRASE_KEY: ${{ secrets.GPG_PASSPHRASE_KEY }}
+          MAVEN_GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE_KEY }}
           SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
           SONATYPE_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
         run: |
