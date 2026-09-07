@@ -3,10 +3,9 @@ package se.michaelthelin.spotify;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.neovisionaries.i18n.CountryCode;
-import com.neovisionaries.i18n.LanguageCode;
 import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.enums.AlbumType;
+import se.michaelthelin.spotify.enums.CountryCode;
 import se.michaelthelin.spotify.enums.ModelObjectType;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 
@@ -45,7 +44,9 @@ public interface ITest<T> {
   String ADDITIONAL_TYPES = "track,episode";
   String ID_ALBUM = "5zT1JLIj9E57p3e1rFm9Uq";
   String ID_ARTIST = "0LcJLqbBmaGUft1e9Mm8HV";
-  String ID_EPISODE = "4GI3dxEafwap1sFiTGPKd1";
+  String ID_AUDIOBOOK = "2IEBhnu61ieYGFRPEJIO40";
+  String ID_CHAPTER = "5HQIsy4eLtirwOw1rQ9ENK";
+  String ID_EPISODE = "046WGwFKUevqKMA4NQfYUv";
   String ID_PLAYLIST = "3AGOiaoRXMSjswCLtuNqv5";
   String ID_SHOW = "5AvwZVawapvyhJUIx71pdJ";
   String ID_TRACK = "01iyCAUm8EvOFqVWYJ3dVX";
@@ -55,7 +56,7 @@ public interface ITest<T> {
   String IMAGE_DATA = readFromFileTry(new File("examples/image_data.txt"));
   int INSERT_BEFORE = 0;
   int LIMIT = 10;
-  String LOCALE = LanguageCode.sv + "_" + CountryCode.SE;
+  String LOCALE = "sv_" + CountryCode.SE;
   CountryCode MARKET = CountryCode.SE;
   int MAX_POPULARITY = 50;
   int MIN_POPULARITY = 10;
@@ -75,7 +76,7 @@ public interface ITest<T> {
   String SEED_TRACKS = "01iyCAUm8EvOFqVWYJ3dVX";
   boolean SHOW_DIALOG = true;
   JsonArray SHOWS = JsonParser.parseString("[\"5AvwZVawapvyhJUIx71pdJ\", \"5AvwZVawapvyhJUIx71pdJ\"]").getAsJsonArray();
-  JsonArray EPISODES = JsonParser.parseString("[\"4GI3dxEafwap1sFiTGPKd1\", \"4GI3dxEafwap1sFiTGPKd1\"]").getAsJsonArray();
+  JsonArray EPISODES = JsonParser.parseString("[\"046WGwFKUevqKMA4NQfYUv\", \"046WGwFKUevqKMA4NQfYUv\"]").getAsJsonArray();
   String SNAPSHOT_ID = "JbtmHBDBAYu3/bt8BOXKjzKx3i0b6LCa/wVjyl6qQ2Yf6nFXkbmzuEa+ZI/U1yF+";
   String STATE = "track";
   boolean STATE_BOOLEAN = false;

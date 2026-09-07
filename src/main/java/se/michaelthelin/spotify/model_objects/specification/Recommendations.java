@@ -1,7 +1,5 @@
 package se.michaelthelin.spotify.model_objects.specification;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 
 import java.util.Arrays;
@@ -10,7 +8,6 @@ import java.util.Arrays;
  * Retrieve information about <a href="https://developer.spotify.com/web-api/object-model/#recommendations-object">
  * Recommendation objects</a> by building instances from this class.
  */
-@JsonDeserialize(builder = Recommendations.Builder.class)
 public class Recommendations extends AbstractModelObject {
   /** The seeds used to generate recommendations. */
   private final RecommendationsSeed[] seeds;
@@ -59,30 +56,15 @@ public class Recommendations extends AbstractModelObject {
     private RecommendationsSeed[] seeds;
     private Track[] tracks;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
 
-    /**
-     * The recommendation seeds setter.
-     *
-     * @param seeds An array of recommendation seed objects.
-     * @return A {@link Recommendations.Builder}.
-     */
     public Builder setSeeds(RecommendationsSeed... seeds) {
       this.seeds = seeds;
       return this;
     }
 
-    /**
-     * The recommended tracks setter.
-     *
-     * @param tracks An array of track objects.
-     * @return A {@link Recommendations.Builder}.
-     */
     public Builder setTracks(Track... tracks) {
       this.tracks = tracks;
       return this;
@@ -99,30 +81,9 @@ public class Recommendations extends AbstractModelObject {
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<Recommendations> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }
 
-    public Recommendations createModelObject(JsonObject jsonObject) {
-      if (jsonObject == null || jsonObject.isJsonNull()) {
-        return null;
-      }
-
-      return new Recommendations.Builder()
-        .setSeeds(
-          hasAndNotNull(jsonObject, "seeds")
-            ? new RecommendationsSeed.JsonUtil().createModelObjectArray(
-            jsonObject.getAsJsonArray("seeds"))
-            : null)
-        .setTracks(
-          hasAndNotNull(jsonObject, "tracks")
-            ? new Track.JsonUtil().createModelObjectArray(
-            jsonObject.getAsJsonArray("tracks"))
-            : null)
-        .build();
-    }
   }
 }

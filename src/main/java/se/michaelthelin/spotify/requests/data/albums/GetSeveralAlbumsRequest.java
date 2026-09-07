@@ -1,8 +1,7 @@
 package se.michaelthelin.spotify.requests.data.albums;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.neovisionaries.i18n.CountryCode;
 import org.apache.hc.core5.http.ParseException;
+import se.michaelthelin.spotify.enums.CountryCode;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.model_objects.specification.Album;
 import se.michaelthelin.spotify.requests.data.AbstractDataRequest;
@@ -10,9 +9,11 @@ import se.michaelthelin.spotify.requests.data.AbstractDataRequest;
 import java.io.IOException;
 
 /**
- * Get Spotify catalog information for multiple albums identified by their Spotify IDs.
+ * Get Spotify catalog information for several albums identified by their Spotify IDs.
+ *
+ * @deprecated This endpoint has been deprecated by Spotify.
  */
-@JsonDeserialize(builder = GetSeveralAlbumsRequest.Builder.class)
+@Deprecated
 public class GetSeveralAlbumsRequest extends AbstractDataRequest<Album[]> {
 
   /**
@@ -25,9 +26,9 @@ public class GetSeveralAlbumsRequest extends AbstractDataRequest<Album[]> {
   }
 
   /**
-   * Get multiple albums.
+   * Get several {@link Album} objects.
    *
-   * @return An array containing albums.
+   * @return Multiple {@link Album} objects.
    * @throws IOException            In case of networking issues.
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
    */
@@ -53,11 +54,11 @@ public class GetSeveralAlbumsRequest extends AbstractDataRequest<Album[]> {
     }
 
     /**
-     * The IDs query parameter setter.
+     * The album IDs setter.
      *
      * @param ids Required. A comma-separated list of the Spotify IDs for the albums. Maximum: 20 IDs.
      * @return A {@link GetSeveralAlbumsRequest.Builder}.
-     * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify URIs &amp; IDs</a>
+     * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URIs &amp; IDs</a>
      */
     public Builder ids(final String ids) {
       assert (ids != null);
@@ -68,11 +69,10 @@ public class GetSeveralAlbumsRequest extends AbstractDataRequest<Album[]> {
     /**
      * The market query parameter setter.
      *
-     * @param market Optional. An ISO 3166-1 alpha-2 country code. Provide this parameter if you want to apply Track
-     *               Relinking.
+     * @param market Optional. An ISO 3166-1 alpha-2 country code. Provide this parameter if you want to apply
+     *               Track Relinking.
      * @return A {@link GetSeveralAlbumsRequest.Builder}.
      * @see <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">Wikipedia: ISO 3166-1 alpha-2 country codes</a>
-     * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/track-relinking">Spotify: Track Relinking Guide</a>
      */
     public Builder market(final CountryCode market) {
       assert (market != null);

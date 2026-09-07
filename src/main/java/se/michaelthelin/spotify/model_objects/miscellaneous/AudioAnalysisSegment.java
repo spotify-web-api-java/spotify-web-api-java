@@ -1,8 +1,5 @@
 package se.michaelthelin.spotify.model_objects.miscellaneous;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 
 import java.util.Arrays;
@@ -12,7 +9,6 @@ import java.util.Arrays;
  * Segments are sound entities (typically under a second) each relatively uniform in timbre and harmony. They are
  * characterized by their perceptual onsets and duration in seconds, loudness (dB), pitch and timbral content.
  */
-@JsonDeserialize(builder = AudioAnalysisSegment.Builder.class)
 public class AudioAnalysisSegment extends AbstractModelObject {
   /** The measure data for this segment. */
   private final AudioAnalysisMeasure measure;
@@ -139,85 +135,40 @@ public class AudioAnalysisSegment extends AbstractModelObject {
     private float[] pitches;
     private float[] timbre;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
 
-    /**
-     * The measure setter.
-     *
-     * @param measure The measure of the audio analysis segment object.
-     * @return An {@link AudioAnalysisSegment.Builder}.
-     */
     public Builder setMeasure(AudioAnalysisMeasure measure) {
       this.measure = measure;
       return this;
     }
 
-    /**
-     * The start loudness setter.
-     *
-     * @param loudnessStart The loudness level at the start of the segment.
-     * @return An {@link AudioAnalysisSegment.Builder}.
-     */
     public Builder setLoudnessStart(Float loudnessStart) {
       this.loudnessStart = loudnessStart;
       return this;
     }
 
-    /**
-     * The max loudness time setter.
-     *
-     * @param loudnessMaxTime The offset within the segment of the point of maximum loudness.
-     * @return An {@link AudioAnalysisSegment.Builder}.
-     */
     public Builder setLoudnessMaxTime(Float loudnessMaxTime) {
       this.loudnessMaxTime = loudnessMaxTime;
       return this;
     }
 
-    /**
-     * The max loudness setter.
-     *
-     * @param loudnessMax The peak loudness value within the segment.
-     * @return An {@link AudioAnalysisSegment.Builder}.
-     */
     public Builder setLoudnessMax(Float loudnessMax) {
       this.loudnessMax = loudnessMax;
       return this;
     }
 
-    /**
-     * The end loudness setter.
-     *
-     * @param loudnessEnd The loudness level at the end of the segment.
-     * @return An {@link AudioAnalysisSegment.Builder}.
-     */
     public Builder setLoudnessEnd(Float loudnessEnd) {
       this.loudnessEnd = loudnessEnd;
       return this;
     }
 
-    /**
-     * The pitches setter.
-     *
-     * @param pitches The pitches of the segment.
-     * @return An {@link AudioAnalysisSegment.Builder}.
-     */
     public Builder setPitches(float[] pitches) {
       this.pitches = pitches;
       return this;
     }
 
-    /**
-     * The timbre setter.
-     *
-     * @param timbre The timbre of the track.
-     * @return An {@link AudioAnalysisSegment.Builder}.
-     */
     public Builder setTimbre(float[] timbre) {
       this.timbre = timbre;
       return this;
@@ -234,46 +185,9 @@ public class AudioAnalysisSegment extends AbstractModelObject {
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<AudioAnalysisSegment> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }
 
-    public AudioAnalysisSegment createModelObject(JsonObject jsonObject) {
-      if (jsonObject == null || jsonObject.isJsonNull()) {
-        return null;
-      }
-
-      return new AudioAnalysisSegment.Builder()
-        .setLoudnessEnd(
-          hasAndNotNull(jsonObject, "loudness_end")
-            ? jsonObject.get("loudness_end").getAsFloat()
-            : null)
-        .setLoudnessMax(
-          hasAndNotNull(jsonObject, "loudness_max")
-            ? jsonObject.get("loudness_max").getAsFloat()
-            : null)
-        .setLoudnessMaxTime(
-          hasAndNotNull(jsonObject, "loudness_max_time")
-            ? jsonObject.get("loudness_max_time").getAsFloat()
-            : null)
-        .setLoudnessStart(
-          hasAndNotNull(jsonObject, "loudness_start")
-            ? jsonObject.get("loudness_start").getAsFloat()
-            : null)
-        .setMeasure(
-          new AudioAnalysisMeasure.JsonUtil().createModelObject(jsonObject))
-        .setPitches(
-          hasAndNotNull(jsonObject, "pitches")
-            ? new Gson().fromJson(jsonObject.getAsJsonArray("pitches"), float[].class)
-            : null)
-        .setTimbre(
-          hasAndNotNull(jsonObject, "timbre")
-            ? new Gson().fromJson(jsonObject.getAsJsonArray("timbre"), float[].class)
-            : null)
-        .build();
-    }
   }
 }

@@ -1,7 +1,5 @@
 package se.michaelthelin.spotify.model_objects.credentials.error;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 
 import java.util.Objects;
@@ -11,7 +9,6 @@ import java.util.Objects;
  *
  * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/authorization">Spotify: Authorization Guide</a>
  */
-@JsonDeserialize(builder = AuthenticationError.Builder.class)
 public class AuthenticationError extends AbstractModelObject {
   /** The error code returned by the authentication server. */
   private final String error;
@@ -62,30 +59,15 @@ public class AuthenticationError extends AbstractModelObject {
     private String error;
     private String error_description;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
 
-    /**
-     * The error setter.
-     *
-     * @param error A high level description of the error as specified in RFC 6749 Section 5.2.
-     * @return An {@link AuthenticationError.Builder}.
-     */
     public Builder setError(String error) {
       this.error = error;
       return this;
     }
 
-    /**
-     * The error description setter.
-     *
-     * @param error_description A more detailed description of the error as specified in RFC 6749 Section 4.1.2.1.
-     * @return An {@link AuthenticationError.Builder}.
-     */
     public Builder setError_description(String error_description) {
       this.error_description = error_description;
       return this;
@@ -102,29 +84,10 @@ public class AuthenticationError extends AbstractModelObject {
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<AuthenticationError> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }
 
-    public AuthenticationError createModelObject(JsonObject jsonObject) {
-      if (jsonObject == null || jsonObject.isJsonNull()) {
-        return null;
-      }
-
-      return new AuthenticationError.Builder()
-        .setError(
-          hasAndNotNull(jsonObject, "error")
-            ? jsonObject.get("error").getAsString()
-            : null)
-        .setError_description(
-          hasAndNotNull(jsonObject, "error_description")
-            ? jsonObject.get("error_description").getAsString()
-            : null)
-        .build();
-    }
   }
 
   @Override

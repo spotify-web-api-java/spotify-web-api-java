@@ -1,10 +1,8 @@
 package se.michaelthelin.spotify.model_objects.specification;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
+import se.michaelthelin.spotify.model_objects.interfaces.IHasTotal;
 
-import java.lang.reflect.ParameterizedType;
 import java.util.Arrays;
 
 /**
@@ -15,8 +13,7 @@ import java.util.Arrays;
  *
  * @param <T> The type of the objects contained in a paging object.
  */
-@JsonDeserialize(builder = PagingCursorbased.Builder.class)
-public class PagingCursorbased<T> extends AbstractModelObject {
+public class PagingCursorbased<T> extends AbstractModelObject implements IHasTotal {
   /** The Spotify Web API endpoint URL. */
   private final String href;
   /** Array of items in the paging object. */
@@ -119,74 +116,35 @@ public class PagingCursorbased<T> extends AbstractModelObject {
     private Cursor[] cursors;
     private Integer total;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
 
-    /**
-     * The href setter.
-     *
-     * @param href A link to the Web API endpoint returning the full result of the request.
-     * @return A {@link PagingCursorbased.Builder}.
-     */
     public Builder<T> setHref(String href) {
       this.href = href;
       return this;
     }
 
-    /**
-     * The items setter.
-     *
-     * @param items A page of items.
-     * @return A {@link PagingCursorbased.Builder}.
-     */
     public Builder<T> setItems(T[] items) {
       this.items = items;
       return this;
     }
 
-    /**
-     * The request limit setter.
-     *
-     * @param limit The maximum number of items in the response (as set in the query or by default).
-     * @return A {@link PagingCursorbased.Builder}.
-     */
     public Builder<T> setLimit(Integer limit) {
       this.limit = limit;
       return this;
     }
 
-    /**
-     * The next URL setter.
-     *
-     * @param next URL to the next page of items. ({@code null} if none)
-     * @return A {@link PagingCursorbased.Builder}.
-     */
     public Builder<T> setNext(String next) {
       this.next = next;
       return this;
     }
 
-    /**
-     * The cursor setter.
-     *
-     * @param cursors The cursors used to find the next set of items.
-     * @return A {@link PagingCursorbased.Builder}.
-     */
     public Builder<T> setCursors(Cursor... cursors) {
       this.cursors = cursors;
       return this;
     }
 
-    /**
-     * The total amount setter.
-     *
-     * @param total The total number of items available to return.
-     * @return A {@link PagingCursorbased.Builder}.
-     */
     public Builder<T> setTotal(Integer total) {
       this.total = total;
       return this;
@@ -198,55 +156,4 @@ public class PagingCursorbased<T> extends AbstractModelObject {
     }
   }
 
-  /**
-   * JsonUtil class for building {@link PagingCursorbased} instances.
-   *
-   * @param <X> The type of the objects contained in a paging object.
-   */
-  @SuppressWarnings("unchecked")
-  public static final class JsonUtil<X> extends AbstractModelObject.JsonUtil<PagingCursorbased<X>> {
-
-    /**
-     * Default constructor.
-     */
-    public JsonUtil() {
-      super();
-    }
-
-    public PagingCursorbased<X> createModelObject(JsonObject jsonObject) {
-      if (jsonObject == null || jsonObject.isJsonNull()) {
-        return null;
-      }
-
-      return new Builder<X>()
-        .setHref(
-          hasAndNotNull(jsonObject, "href")
-            ? jsonObject.get("href").getAsString()
-            : null)
-        .setItems(
-          hasAndNotNull(jsonObject, "items")
-            ? createModelObjectArray(
-            jsonObject.getAsJsonArray("items"), (Class<X>) ((ParameterizedType) getClass()
-              .getGenericSuperclass()).getActualTypeArguments()[0])
-            : null)
-        .setLimit(
-          hasAndNotNull(jsonObject, "limit")
-            ? jsonObject.get("limit").getAsInt()
-            : null)
-        .setNext(
-          hasAndNotNull(jsonObject, "next")
-            ? jsonObject.get("next").getAsString()
-            : null)
-        .setCursors(
-          hasAndNotNull(jsonObject, "cursors")
-            ? new Cursor.JsonUtil().createModelObjectArray(
-            jsonObject.getAsJsonArray("cursors"))
-            : null)
-        .setTotal(
-          hasAndNotNull(jsonObject, "total")
-            ? jsonObject.get("total").getAsInt()
-            : null)
-        .build();
-    }
-  }
 }

@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.requests.authorization.authorization_code.pkce;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import org.apache.hc.core5.http.ContentType;
 import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.SpotifyApi;
@@ -16,7 +15,6 @@ import java.net.URI;
  * <a href="https://developer.spotify.com/documentation/general/guides/authorization-guide/#4-your-app-exchanges-the-code-for-an-access-token">Authorization Code</a>
  * request.
  */
-@JsonDeserialize(builder = AuthorizationCodePKCERequest.Builder.class)
 public class AuthorizationCodePKCERequest extends AbstractRequest<AuthorizationCodeCredentials> {
 
   private AuthorizationCodePKCERequest(Builder builder) {

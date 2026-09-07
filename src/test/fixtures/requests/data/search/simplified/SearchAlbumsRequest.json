@@ -104,7 +104,8 @@
         ],
         "name": "Absolution",
         "type": "album",
-        "uri": "spotify:album:0HcHPBu9aaF1MxOiZmUQTl"
+        "uri": "spotify:album:0HcHPBu9aaF1MxOiZmUQTl",
+        "total_tracks": 10
       },
       {
         "album_type": "album",
@@ -145,7 +146,8 @@
         ],
         "name": "Origin Of Symmetry (New 09 version)",
         "type": "album",
-        "uri": "spotify:album:1AP6uGYHdakRgwuWQsP5pK"
+        "uri": "spotify:album:1AP6uGYHdakRgwuWQsP5pK",
+        "total_tracks": 10
       },
       {
         "album_type": "album",
@@ -249,7 +251,8 @@
         ],
         "name": "Muse",
         "type": "album",
-        "uri": "spotify:album:7EyDVKiEcQw9tE44UpcLWJ"
+        "uri": "spotify:album:7EyDVKiEcQw9tE44UpcLWJ",
+        "total_tracks": 10
       },
       {
         "album_type": "single",
@@ -353,7 +356,8 @@
         ],
         "name": "Dig Down",
         "type": "album",
-        "uri": "spotify:album:2mugumSqUWxhW2InJ9dPTv"
+        "uri": "spotify:album:2mugumSqUWxhW2InJ9dPTv",
+        "total_tracks": 10
       },
       {
         "album_type": "album",
@@ -457,7 +461,8 @@
         ],
         "name": "Showbiz",
         "type": "album",
-        "uri": "spotify:album:6AyUVv7MnxxTuijp4WmrhO"
+        "uri": "spotify:album:6AyUVv7MnxxTuijp4WmrhO",
+        "total_tracks": 10
       },
       {
         "album_type": "album",
@@ -561,7 +566,8 @@
         ],
         "name": "Live At Rome Olympic Stadium",
         "type": "album",
-        "uri": "spotify:album:2m7L60M210ABzrY9GLyBPZ"
+        "uri": "spotify:album:2m7L60M210ABzrY9GLyBPZ",
+        "total_tracks": 10
       },
       {
         "album_type": "album",
@@ -665,7 +671,8 @@
         ],
         "name": "Hullabaloo Soundtrack",
         "type": "album",
-        "uri": "spotify:album:5eJTvSeghTKoqN3Ly4TqEf"
+        "uri": "spotify:album:5eJTvSeghTKoqN3Ly4TqEf",
+        "total_tracks": 10
       },
       {
         "album_type": "album",
@@ -769,7 +776,8 @@
         ],
         "name": "HAARP (Live From Wembley Stadium)",
         "type": "album",
-        "uri": "spotify:album:7IEp2DUicr3uqt2BTEQfMX"
+        "uri": "spotify:album:7IEp2DUicr3uqt2BTEQfMX",
+        "total_tracks": 10
       },
       {
         "album_type": "single",
@@ -873,7 +881,8 @@
         ],
         "name": "Muse",
         "type": "album",
-        "uri": "spotify:album:3eCiclCiwjiy72p2fhXHub"
+        "uri": "spotify:album:3eCiclCiwjiy72p2fhXHub",
+        "total_tracks": 10
       },
       {
         "album_type": "single",
@@ -977,7 +986,8 @@
         ],
         "name": "Muse",
         "type": "album",
-        "uri": "spotify:album:7twRq45szqKHttKsuktIGY"
+        "uri": "spotify:album:7twRq45szqKHttKsuktIGY",
+        "total_tracks": 10
       }
     ],
     "limit": 10,

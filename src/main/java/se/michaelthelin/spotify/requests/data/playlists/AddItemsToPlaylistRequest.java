@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.requests.data.playlists;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.gson.JsonArray;
 import org.apache.hc.core5.http.ContentType;
 import org.apache.hc.core5.http.ParseException;
@@ -16,7 +15,6 @@ import java.io.IOException;
  * Use this endpoint to add Spotify tracks or episodes to a user’s playlist, sending their Spotify URI.
  * Note that local tracks can’t be added.
  */
-@JsonDeserialize(builder = AddItemsToPlaylistRequest.Builder.class)
 public class AddItemsToPlaylistRequest extends AbstractDataRequest<SnapshotResult> {
 
   /**
@@ -150,7 +148,7 @@ public class AddItemsToPlaylistRequest extends AbstractDataRequest<SnapshotResul
     @Override
     public AddItemsToPlaylistRequest build() {
       setContentType(ContentType.APPLICATION_JSON);
-      setPath("/v1/playlists/{playlist_id}/tracks");
+      setPath("/v1/playlists/{playlist_id}/items");
       return new AddItemsToPlaylistRequest(this);
     }
 

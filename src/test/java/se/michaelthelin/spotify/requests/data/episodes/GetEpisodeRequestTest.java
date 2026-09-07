@@ -31,7 +31,7 @@ public class GetEpisodeRequestTest extends AbstractDataTest<Episode> {
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
     assertEquals(
-      "https://api.spotify.com:443/v1/episodes/4GI3dxEafwap1sFiTGPKd1?market=SE",
+      "https://api.spotify.com:443/v1/episodes/046WGwFKUevqKMA4NQfYUv?market=SE",
       defaultRequest.getUri().toString());
   }
 
@@ -60,7 +60,7 @@ public class GetEpisodeRequestTest extends AbstractDataTest<Episode> {
     assertNotNull(
       episode.getExternalUrls());
     assertEquals(
-      "https://api.spotify.com/v1/episodes/4GI3dxEafwap1sFiTGPKd1",
+      "https://api.spotify.com/v1/episodes/046WGwFKUevqKMA4NQfYUv",
       episode.getHref());
     assertEquals(
       ITest.ID_EPISODE,
@@ -71,7 +71,7 @@ public class GetEpisodeRequestTest extends AbstractDataTest<Episode> {
     assertFalse(
       episode.getExternallyHosted());
     assertTrue(
-      episode.getPlayable());
+      episode.getIsPlayable());
     assertEquals(
       1,
       episode.getLanguages().length);
@@ -97,7 +97,7 @@ public class GetEpisodeRequestTest extends AbstractDataTest<Episode> {
       ModelObjectType.EPISODE,
       episode.getType());
     assertEquals(
-      "spotify:episode:4GI3dxEafwap1sFiTGPKd1",
+      "spotify:episode:046WGwFKUevqKMA4NQfYUv",
       episode.getUri());
   }
 }

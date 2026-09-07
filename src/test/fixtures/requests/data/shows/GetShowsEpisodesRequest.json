@@ -38,7 +38,8 @@
       "release_date": "2019-09-03",
       "release_date_precision": "day",
       "type": "episode",
-      "uri": "spotify:episode:0Q86acNRm6V9GYx55SXKwf"
+      "uri": "spotify:episode:0Q86acNRm6V9GYx55SXKwf",
+      "html_description": "<p>Följ med Tobias Svanelid till Sveriges äldsta tegelkyrka, till Edsleskog mitt i den dalsländska granskogen, där ett religiöst skrytbygge skulle resas över ett skändligt brott.  I Edsleskog i Dalsland gräver arkeologerna nu ut vad som en gång verkar ha varit en av Sveriges största medeltidskyrkor, och kanske också den äldsta som byggts i tegel, 1200-talets high-tech-material. Tobias Svanelid reser dit för att höra historien om den märkliga och bortglömda kyrkan som grundlades på platsen för ett prästmord och dessutom kan ha varit Skarabiskopens försök att lägga beslag på det vilda Dalsland. Dessutom om sjudagarsveckan  idag ett välkänt koncept runt hela världen, men hur gammal är egentligen veckans historia? Dick Harrison vet svaret.</p>"
     },
     {
       "audio_preview_url": "https://p.scdn.co/mp3-preview/a712dea885b8d4090a61f0a903094181bd7d2005",
@@ -74,7 +75,8 @@
       "release_date": "2019-08-27",
       "release_date_precision": "day",
       "type": "episode",
-      "uri": "spotify:episode:1spUiev4ggXPq95a7KKHjW"
+      "uri": "spotify:episode:1spUiev4ggXPq95a7KKHjW",
+      "html_description": "<p>Electrolux firar hundra år av att ha dammsugit folkhemmet rent. Följ med Tobias Svanelid genom företagets historia och hör om dess grundare Axel Wenner-Gren - folkhemmets Elon Musk.  1919 drog Axel Wenner-Gren igång företaget som skulle komma att städa rent i folkhemmet Sverige och samtidigt göra sin grundare ofantligt rik. Författaren Ronald Fagerfjäll har färdigställt Electrolux jubileumsbok och guidar runt bland hundraåriga dammsugare och kylskåp. Men Wenner-grens sista projekt skulle bli ett fiasko, i Wennergrenland i British Columbia krossades de flesta av entreprenörens drömmar berättar den kanadensiske historikern Frank Leonard. Dessutom reder Dick Harrison ut huruvida Julius Caesar fått gå på plankan.</p>"
     }
   ],
   "limit": 2,

@@ -1,8 +1,7 @@
 package se.michaelthelin.spotify.requests.data.tracks;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.neovisionaries.i18n.CountryCode;
 import org.apache.hc.core5.http.ParseException;
+import se.michaelthelin.spotify.enums.CountryCode;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.model_objects.specification.Track;
 import se.michaelthelin.spotify.requests.data.AbstractDataRequest;
@@ -12,7 +11,6 @@ import java.io.IOException;
 /**
  * Get Spotify catalog information for a single track identified by its unique Spotify ID.
  */
-@JsonDeserialize(builder = GetTrackRequest.Builder.class)
 public class GetTrackRequest extends AbstractDataRequest<Track> {
 
   /**
@@ -70,7 +68,7 @@ public class GetTrackRequest extends AbstractDataRequest<Track> {
      *
      * @param market Optional. An ISO 3166-1 alpha-2 country code. Provide this
      *               parameter if you want to apply Track Relinking.
-     * @return A {@link GetSeveralTracksRequest.Builder}.
+     * @return A {@link GetTrackRequest.Builder}.
      * @see <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">Wikipedia: ISO 3166-1 alpha-2 country codes</a>
      * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/track-relinking">Spotify: Track Relinking Guide</a>
      */

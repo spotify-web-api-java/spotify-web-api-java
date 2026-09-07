@@ -1,11 +1,11 @@
 package se.michaelthelin.spotify.model_objects.specification;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.google.gson.JsonObject;
+import com.google.gson.annotations.SerializedName;
 import se.michaelthelin.spotify.enums.ModelObjectType;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
+import se.michaelthelin.spotify.model_objects.interfaces.IPlaylist;
 import se.michaelthelin.spotify.model_objects.miscellaneous.PlaylistTracksInformation;
-import se.michaelthelin.spotify.requests.data.playlists.RemoveItemsFromPlaylistRequest;
+import se.michaelthelin.spotify.requests.data.playlists.RemovePlaylistItemsRequest;
 import se.michaelthelin.spotify.requests.data.search.interfaces.ISearchModelObject;
 
 import java.util.Arrays;
@@ -15,8 +15,7 @@ import java.util.Objects;
  * Retrieve information about <a href="https://developer.spotify.com/web-api/object-model/#playlist-object-simplified">
  * simplified Playlist objects</a> by building instances from this class.
  */
-@JsonDeserialize(builder = PlaylistSimplified.Builder.class)
-public class PlaylistSimplified extends AbstractModelObject implements ISearchModelObject {
+public class PlaylistSimplified extends AbstractModelObject implements ISearchModelObject, IPlaylist<PlaylistTracksInformation> {
   /** Whether the playlist is collaborative. */
   private final Boolean collaborative;
   /** The description of the playlist. */
@@ -34,11 +33,12 @@ public class PlaylistSimplified extends AbstractModelObject implements ISearchMo
   /** The user who owns the playlist. */
   private final User owner;
   /** Whether the playlist is public. */
+  @SerializedName("public")
   private final Boolean publicAccess;
   /** The version identifier for the current playlist. */
   private final String snapshotId;
   /** Information about the tracks of the playlist. */
-  private final PlaylistTracksInformation tracks;
+  private final PlaylistTracksInformation items;
   /** The object type. */
   private final ModelObjectType type;
   /** The Spotify URI for the playlist. */
@@ -57,7 +57,7 @@ public class PlaylistSimplified extends AbstractModelObject implements ISearchMo
     this.owner = builder.owner;
     this.publicAccess = builder.publicAccess;
     this.snapshotId = builder.snapshotId;
-    this.tracks = builder.tracks;
+    this.items = builder.items;
     this.type = builder.type;
     this.uri = builder.uri;
   }
@@ -152,7 +152,7 @@ public class PlaylistSimplified extends AbstractModelObject implements ISearchMo
    * href="https://developer.spotify.com/documentation/web-api/concepts/playlists">
    * Spotify: Working With Playlists</a>
    */
-  public Boolean getIsPublicAccess() {
+  public Boolean getPublic() {
     return publicAccess;
   }
 
@@ -161,7 +161,7 @@ public class PlaylistSimplified extends AbstractModelObject implements ISearchMo
    * a specific playlist version.
    *
    * @return The version identifier for the current playlist.
-   * @see RemoveItemsFromPlaylistRequest
+   * @see RemovePlaylistItemsRequest
    */
   public String getSnapshotId() {
     return snapshotId;
@@ -172,8 +172,8 @@ public class PlaylistSimplified extends AbstractModelObject implements ISearchMo
    *
    * @return Information about the tracks of the playlist.
    */
-  public PlaylistTracksInformation getTracks() {
-    return tracks;
+  public PlaylistTracksInformation getItems() {
+    return items;
   }
 
   /**
@@ -197,7 +197,7 @@ public class PlaylistSimplified extends AbstractModelObject implements ISearchMo
 
   @Override
   public String toString() {
-    return "PlaylistSimplified(name=" + name + ", tracks=" + tracks + ", collaborative=" + collaborative
+    return "PlaylistSimplified(name=" + name + ", items=" + items + ", collaborative=" + collaborative
         + ", description=" + description + ", externalUrls=" + externalUrls + ", href=" + href + ", id=" + id
         + ", images=" + Arrays.toString(images) + ", owner=" + owner + ", publicAccess=" + publicAccess
         + ", snapshotId=" + snapshotId + ", type=" + type + ", uri=" + uri + ")";
@@ -222,157 +222,74 @@ public class PlaylistSimplified extends AbstractModelObject implements ISearchMo
     private User owner;
     private Boolean publicAccess;
     private String snapshotId;
-    private PlaylistTracksInformation tracks;
+    private PlaylistTracksInformation items;
     private ModelObjectType type;
     private String uri;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
 
-    /**
-     * Set whether the playlist to be built is collaborative or not.
-     *
-     * @param collaborative {@code true} if the owner allows other users to modify the playlist, {@code false} if not.
-     * @return A {@link PlaylistSimplified.Builder}.
-     */
     public Builder setCollaborative(Boolean collaborative) {
       this.collaborative = collaborative;
       return this;
     }
 
-    /**
-     * Set the description of the playlist to be built.
-     *
-     * @param description The playlist description.
-     * @return A {@link PlaylistSimplified.Builder}.
-     */
     public Builder setDescription(String description) {
       this.description = description;
       return this;
     }
 
-    /**
-     * Set the external URLs of the playlist to be built.
-     *
-     * @param externalUrls Known external URLs for this playlist.
-     * @return A {@link PlaylistSimplified.Builder}.
-     */
     public Builder setExternalUrls(ExternalUrl externalUrls) {
       this.externalUrls = externalUrls;
       return this;
     }
 
-    /**
-     * Set the link to the Spotify Web API endpoint providing full details of the playlist.
-     *
-     * @param href A link to the Spotify Web API endpoint providing full details of the playlist.
-     * @return A {@link PlaylistSimplified.Builder}.
-     */
     public Builder setHref(String href) {
       this.href = href;
       return this;
     }
 
-    /**
-     * Set the Spotify ID for the playlist to be built.
-     *
-     * @param id The Spotify ID for the playlist.
-     * @return A {@link PlaylistSimplified.Builder}.
-     */
     public Builder setId(String id) {
       this.id = id;
       return this;
     }
 
-    /**
-     * Set the cover image of the playlist to be built.
-     *
-     * @param images An array of images in different sizes.
-     * @return A {@link PlaylistSimplified.Builder}.
-     */
     public Builder setImages(Image... images) {
       this.images = images;
       return this;
     }
 
-    /**
-     * Set the name of the playlist to be built.
-     *
-     * @param name The playlist name.
-     * @return A {@link PlaylistSimplified.Builder}.
-     */
     public Builder setName(String name) {
       this.name = name;
       return this;
     }
 
-    /**
-     * Set the owner of the playlist to be built.
-     *
-     * @param owner A user object.
-     * @return A {@link PlaylistSimplified.Builder}.
-     */
     public Builder setOwner(User owner) {
       this.owner = owner;
       return this;
     }
 
-    /**
-     * Set whether the playlist to be built is available in public or not.
-     *
-     * @param publicAccess {@code true} the playlist is public, {@code false} the playlist is private, {@code null}
-     *                     the playlist status is not relevant.
-     * @return A {@link PlaylistSimplified.Builder}.
-     */
     public Builder setPublicAccess(Boolean publicAccess) {
       this.publicAccess = publicAccess;
       return this;
     }
 
-    /**
-     * Set the version identifier for the playlist to be built.
-     *
-     * @param snapshotId The version identifier for the playlist.
-     * @return A {@link PlaylistSimplified.Builder}.
-     */
     public Builder setSnapshotId(String snapshotId) {
       this.snapshotId = snapshotId;
       return this;
     }
 
-    /**
-     * Set some track information of the playlist to be built.
-     *
-     * @param tracks A playlist tracks information object.
-     * @return A {@link PlaylistSimplified.Builder}.
-     */
-    public Builder setTracks(PlaylistTracksInformation tracks) {
-      this.tracks = tracks;
+    public Builder setItems(PlaylistTracksInformation items) {
+      this.items = items;
       return this;
     }
 
-    /**
-     * Set the type of the model object. In this case "playlist".
-     *
-     * @param type The model object type.
-     * @return A {@link PlaylistSimplified.Builder}.
-     */
     public Builder setType(ModelObjectType type) {
       this.type = type;
       return this;
     }
 
-    /**
-     * Set the <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify URI</a>
-     * of the playlist to be built.
-     *
-     * @param uri The Spotify playlist URI.
-     * @return A {@link PlaylistSimplified.Builder}.
-     */
     public Builder setUri(String uri) {
       this.uri = uri;
       return this;
@@ -389,78 +306,10 @@ public class PlaylistSimplified extends AbstractModelObject implements ISearchMo
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<PlaylistSimplified> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }
 
-    public PlaylistSimplified createModelObject(JsonObject jsonObject) {
-      if (jsonObject == null || jsonObject.isJsonNull()) {
-        return null;
-      }
-
-      return new PlaylistSimplified.Builder()
-        .setCollaborative(
-          hasAndNotNull(jsonObject, "collaborative")
-            ? jsonObject.get("collaborative").getAsBoolean()
-            : null)
-        .setDescription(
-          hasAndNotNull(jsonObject, "description")
-            ? jsonObject.get("description").getAsString()
-            : null)
-        .setExternalUrls(
-          hasAndNotNull(jsonObject, "external_urls")
-            ? new ExternalUrl.JsonUtil().createModelObject(
-            jsonObject.getAsJsonObject("external_urls"))
-            : null)
-        .setHref(
-          hasAndNotNull(jsonObject, "href")
-            ? jsonObject.get("href").getAsString()
-            : null)
-        .setId(
-          hasAndNotNull(jsonObject, "id")
-            ? jsonObject.get("id").getAsString()
-            : null)
-        .setImages(
-          hasAndNotNull(jsonObject, "images")
-            ? new Image.JsonUtil().createModelObjectArray(
-            jsonObject.getAsJsonArray("images"))
-            : null)
-        .setName(
-          hasAndNotNull(jsonObject, "name")
-            ? jsonObject.get("name").getAsString()
-            : null)
-        .setOwner(
-          hasAndNotNull(jsonObject, "owner")
-            ? new User.JsonUtil().createModelObject(
-            jsonObject.getAsJsonObject("owner"))
-            : null)
-        .setPublicAccess(
-          hasAndNotNull(jsonObject, "public")
-            ? jsonObject.get("public").getAsBoolean()
-            : null)
-        .setSnapshotId(
-          hasAndNotNull(jsonObject, "snapshot_id")
-            ? jsonObject.get("snapshot_id").getAsString()
-            : null)
-        .setTracks(
-          hasAndNotNull(jsonObject, "tracks")
-            ? new PlaylistTracksInformation.JsonUtil().createModelObject(
-            jsonObject.getAsJsonObject("tracks"))
-            : null)
-        .setType(
-          hasAndNotNull(jsonObject, "type")
-            ? ModelObjectType.keyOf(
-            jsonObject.get("type").getAsString().toLowerCase())
-            : null)
-        .setUri(
-          hasAndNotNull(jsonObject, "uri")
-            ? jsonObject.get("uri").getAsString()
-            : null)
-        .build();
-    }
   }
 
   @Override

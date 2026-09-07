@@ -1,8 +1,7 @@
 package se.michaelthelin.spotify.requests.data.episodes;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.neovisionaries.i18n.CountryCode;
 import org.apache.hc.core5.http.ParseException;
+import se.michaelthelin.spotify.enums.CountryCode;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.model_objects.specification.Episode;
 import se.michaelthelin.spotify.requests.data.AbstractDataRequest;
@@ -10,9 +9,11 @@ import se.michaelthelin.spotify.requests.data.AbstractDataRequest;
 import java.io.IOException;
 
 /**
- * Get Spotify catalog information for multiple episodes based on their Spotify IDs.
+ * Get Spotify catalog information for several episodes based on their Spotify IDs.
+ *
+ * @deprecated This endpoint has been deprecated by Spotify.
  */
-@JsonDeserialize(builder = GetSeveralEpisodesRequest.Builder.class)
+@Deprecated
 public class GetSeveralEpisodesRequest extends AbstractDataRequest<Episode[]> {
 
   /**
@@ -25,13 +26,12 @@ public class GetSeveralEpisodesRequest extends AbstractDataRequest<Episode[]> {
   }
 
   /**
-   * Get several episodes.
+   * Get several {@link Episode} objects.
    *
    * @return Multiple {@link Episode} objects.
    * @throws IOException            In case of networking issues.
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
    */
-  @Override
   public Episode[] execute() throws
     IOException,
     SpotifyWebApiException,
@@ -45,9 +45,7 @@ public class GetSeveralEpisodesRequest extends AbstractDataRequest<Episode[]> {
   public static final class Builder extends AbstractDataRequest.Builder<Episode[], Builder> {
 
     /**
-     * Create a new {@link GetSeveralEpisodesRequest.Builder}.
-     * <p>
-     * Reading the user’s resume points on episode objects requires the {@code user-read-playback-position} scope.
+     * Create a new {@link GetSeveralEpisodesRequest.Builder} instance.
      *
      * @param accessToken Required. A valid access token from the Spotify Accounts service.
      */
@@ -69,11 +67,7 @@ public class GetSeveralEpisodesRequest extends AbstractDataRequest<Episode[]> {
     }
 
     /**
-     * The market country code setter.<p>
-     * If a country code is specified, only shows and episodes that are available in that market will be returned.
-     * If a valid user access token is specified in the request header, the country associated with the user account will take priority over this parameter.
-     * <i>Note: If neither market or user country are provided, the content is considered unavailable for the client.</i><p>
-     * Users can view the country that is associated with their account in the account settings.
+     * The market query parameter setter.
      *
      * @param market Optional. An ISO 3166-1 alpha-2 country code.
      * @return A {@link GetSeveralEpisodesRequest.Builder}.
@@ -96,7 +90,7 @@ public class GetSeveralEpisodesRequest extends AbstractDataRequest<Episode[]> {
     }
 
     @Override
-    protected GetSeveralEpisodesRequest.Builder self() {
+    protected Builder self() {
       return this;
     }
   }

@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.requests.data.artists;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.model_objects.specification.Artist;
@@ -10,8 +9,10 @@ import java.io.IOException;
 
 /**
  * Get Spotify catalog information for several artists based on their Spotify IDs.
+ *
+ * @deprecated This endpoint has been deprecated by Spotify.
  */
-@JsonDeserialize(builder = GetSeveralArtistsRequest.Builder.class)
+@Deprecated
 public class GetSeveralArtistsRequest extends AbstractDataRequest<Artist[]> {
 
   /**
@@ -26,7 +27,7 @@ public class GetSeveralArtistsRequest extends AbstractDataRequest<Artist[]> {
   /**
    * Get several {@link Artist} objects.
    *
-   * @return An array with {@link Artist} objects.
+   * @return Multiple {@link Artist} objects.
    * @throws IOException            In case of networking issues.
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
    */
@@ -56,7 +57,7 @@ public class GetSeveralArtistsRequest extends AbstractDataRequest<Artist[]> {
      *
      * @param ids Required. A comma-separated list of the Spotify IDs for the artists. Maximum: 50 IDs.
      * @return A {@link GetSeveralArtistsRequest.Builder}.
-     * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify URIs &amp; IDs</a>
+     * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URIs &amp; IDs</a>
      */
     public Builder ids(final String ids) {
       assert (ids != null);

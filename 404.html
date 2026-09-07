@@ -1,0 +1,37 @@
+---
+permalink: /404.html
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Page not found</title>
+  <script>
+    // Javadoc switched to its modular layout in 10.0.0-RC7, which inserted the module name into the
+    // path of every class page. Deep links to the old paths are in the wild, in older releases and
+    // in search results, so translate them here instead of serving a dead end. GitHub Pages has no
+    // server-side redirects, and this is one file rather than a stub per page.
+    (function () {
+      var path = location.pathname;
+      var moved = path
+        .replace(/\/apidocs\/se\/michaelthelin\/spotify\//, "/apidocs/se.michaelthelin.spotify/se/michaelthelin/spotify/")
+        .replace(/\/apidocs\/overview-summary\.html$/, "/apidocs/index.html");
+
+      if (moved !== path) {
+        location.replace(moved + location.search + location.hash);
+      }
+    })();
+  </script>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 4rem auto; max-width: 40rem; padding: 0 1rem; }
+  </style>
+</head>
+<body>
+  <h1>Page not found</h1>
+  <p>
+    If you followed a link to the API documentation, it may point at a path used before 10.0.0-RC7.
+    Try the <a href="/spotify-web-api-java/apidocs/">current documentation</a>.
+  </p>
+</body>
+</html>

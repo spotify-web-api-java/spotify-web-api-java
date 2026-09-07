@@ -15,10 +15,11 @@ This is a Java wrapper/client for the [Spotify Web API](https://developer.spotif
 1. **[Installation](#Installation)**
     1. **[Jitpack](#Jitpack)**
 2. **[Documentation](#Documentation)**
-3. **[General Usage](#General-Usage)**
+3. **[Migration](#Migration)**
+4. **[General Usage](#General-Usage)**
     1. **[Authorization](#Authorization)**
-4. **[Examples](#Examples)**
-5. **[Contributions](#Contributions)**
+5. **[Examples](#Examples)**
+6. **[Contributions](#Contributions)**
     1. **[Code Overview](#Code-Overview)**
 
 ## Installation
@@ -35,7 +36,7 @@ Latest official release:
 <dependency>
   <groupId>se.michaelthelin.spotify</groupId>
   <artifactId>spotify-web-api-java</artifactId>
-  <version>9.4.0</version>
+  <version>10.0.0-RC7</version>
 </dependency>
 ```
 
@@ -52,7 +53,7 @@ Latest snapshot:
 
 Latest official release:
 ```Gradle
-implementation 'se.michaelthelin.spotify:spotify-web-api-java:9.4.0'
+implementation 'se.michaelthelin.spotify:spotify-web-api-java:10.0.0-RC7'
 ```
 
 Latest snapshot:
@@ -89,6 +90,9 @@ allprojects {
 See this project's **[Javadoc](https://spotify-web-api-java.github.io/spotify-web-api-java/apidocs/)**.
 
 *A huge thanks to [c-schuhmann](https://github.com/c-schuhmann) for his amazing work on the documentation!*
+
+## Migration
+Upgrading from an earlier major version? See the **[migration guide](MIGRATION.md)**.
 
 ## General Usage
 ```Java
@@ -222,133 +226,162 @@ access token only once, after which it becomes invalid.
 
 
 ## Examples
+
+> Endpoints that Spotify deprecated are marked with ⚠️.
+> They keep working for clients whose credentials still reach them and none of them are scheduled for removal.
+> See the `@deprecated` Javadoc tag on the corresponding request class for the recommended alternative.
+
 - **Albums**
   - [Get an Album](examples/data/albums/GetAlbumExample.java)
-  - [Get an Album's Tracks](examples/data/albums/GetAlbumsTracksExample.java)
-  - [Get several Albums](examples/data/albums/GetSeveralAlbumsExample.java)
+  - [Get an Album's Tracks](examples/data/albums/GetAlbumTracksExample.java)
+  - ⚠️ [Get Several Albums](examples/data/albums/GetSeveralAlbumsExample.java)
+  - ⚠️ [Get New Releases](examples/data/albums/GetNewReleasesExample.java)
+  - ⚠️ [Check User's Saved Albums](examples/data/albums/CheckUsersSavedAlbumsExample.java)
+  - [Get Current User's Saved Albums](examples/data/albums/GetUsersSavedAlbumsExample.java)
+  - ⚠️ [Save Albums for Current User](examples/data/albums/SaveAlbumsForCurrentUserExample.java)
+  - ⚠️ [Remove Albums for Current User](examples/data/albums/RemoveAlbumsForCurrentUserExample.java)
 
 
 - **Artists**
   - [Get an Artist](examples/data/artists/GetArtistExample.java)
   - [Get an Artist's Albums](examples/data/artists/GetArtistsAlbumsExample.java)
-  - [Get an Artist's Top Tracks](examples/data/artists/GetArtistsTopTracksExample.java)
-  - [Get an Artist's Related Artists](examples/data/artists/GetArtistsRelatedArtistsExample.java)
-  - [Get Several Artists](examples/data/artists/GetSeveralArtistsExample.java)
+  - ⚠️ [Get an Artist's Related Artists](examples/data/artists/GetArtistsRelatedArtistsExample.java)
+  - ⚠️ [Get an Artist's Top Tracks](examples/data/artists/GetArtistsTopTracksExample.java)
+  - ⚠️ [Get Several Artists](examples/data/artists/GetSeveralArtistsExample.java)
 
 
-- **Browse**
-  - Miscellaneous
-    - [Get Available Genre Seeds](examples/data/browse/miscellaneous/GetAvailableGenreSeedsExample.java)
-  - [Get a Category](examples/data/browse/GetCategoryExample.java)
-  - [Get a Category's Playlists](examples/data/browse/GetCategorysPlaylistsExample.java)
-  - [Get a List of Categories](examples/data/browse/GetListOfCategoriesExample.java)
-  - [Get a List of Featured Playlists](examples/data/browse/GetListOfFeaturedPlaylistsExample.java)
-  - [Get a List of New Releases](examples/data/browse/GetListOfNewReleasesExample.java)
-  - [Get Recommendations](examples/data/browse/GetRecommendationsExample.java)
+- **Audiobooks**
+  - [Get an Audiobook](examples/data/audiobooks/GetAudiobookExample.java)
+  - [Get an Audiobook's Chapters](examples/data/audiobooks/GetAudiobookChaptersExample.java)
+  - ⚠️ [Get Several Audiobooks](examples/data/audiobooks/GetSeveralAudiobooksExample.java)
+  - [Get User's Saved Audiobooks](examples/data/audiobooks/GetUsersSavedAudiobooksExample.java)
+  - ⚠️ [Check User's Saved Audiobooks](examples/data/audiobooks/CheckUsersSavedAudiobooksExample.java)
+  - ⚠️ [Save Audiobooks for Current User](examples/data/audiobooks/SaveAudiobooksForCurrentUserExample.java)
+  - ⚠️ [Remove Audiobooks for Current User](examples/data/audiobooks/RemoveAudiobooksForCurrentUserExample.java)
+
+
+- **Browsing & Discovery**
+  - ⚠️ [Get Available Genre Seeds](examples/data/genres/GetRecommendationGenresExample.java)
+  - ⚠️ [Get Categories](examples/data/categories/GetSeveralBrowseCategoriesExample.java)
+  - ⚠️ [Get a Category](examples/data/categories/GetSingleBrowseCategoryExample.java)
+  - ⚠️ [Get a Category's Playlists](examples/data/playlists/GetCategoryPlaylistsExample.java)
+  - ⚠️ [Get Featured Playlists](examples/data/playlists/GetFeaturedPlaylistsExample.java)
+  - ⚠️ [Get Available Markets](examples/data/markets/GetAvailableMarketsExample.java)
+
+
+- **Chapters**
+  - [Get a Chapter](examples/data/chapters/GetChapterExample.java)
+  - ⚠️ [Get Several Chapters](examples/data/chapters/GetSeveralChaptersExample.java)
 
 
 - **Episodes**
   - [Get an Episode](examples/data/episodes/GetEpisodeExample.java)
-  - [Get several Episodes](examples/data/episodes/GetSeveralEpisodesExample.java)
+  - ⚠️ [Get Several Episodes](examples/data/episodes/GetSeveralEpisodesExample.java)
+  - ⚠️ [Check User's Saved Episodes](examples/data/episodes/CheckUsersSavedEpisodesExample.java)
+  - [Get User's Saved Episodes](examples/data/episodes/GetUsersSavedEpisodesExample.java)
+  - ⚠️ [Save Episodes for Current User](examples/data/episodes/SaveEpisodesForCurrentUserExample.java)
+  - ⚠️ [Remove Episodes for Current User](examples/data/episodes/RemoveEpisodesForCurrentUserExample.java)
 
 
-- **Follow**
-  - [Check if Current User Follows Artists or Users](examples/data/follow/CheckCurrentUserFollowsArtistsOrUsersExample.java)
-  - [Check if Users Follow a Playlist](examples/data/follow/CheckUsersFollowPlaylistExample.java)
-  - [Follow Artists or Users](examples/data/follow/FollowArtistsOrUsersExample.java)
-  - [Follow a Playlist](examples/data/follow/FollowPlaylistExample.java)
-  - [Get User's Followed Artists](examples/data/follow/GetUsersFollowedArtistsExample.java)
-  - [Unfollow Artists or Users](examples/data/follow/UnfollowArtistsOrUsersExample.java)
-  - [Unfollow a Playlist](examples/data/follow/UnfollowPlaylistExample.java)
-
-
-- **Library**
-  - [Check User's Saved Albums](examples/data/library/CheckUsersSavedAlbumsExample.java)
-  - [Check User's Saved Episodes](examples/data/library/CheckUsersSavedEpisodesExample.java)
-  - [Check User's Saved Shows](examples/data/library/CheckUsersSavedShowsExample.java)
-  - [Check User's Saved Tracks](examples/data/library/CheckUsersSavedTracksExample.java)
-  - [Get Current User's Saved Albums](examples/data/library/GetCurrentUsersSavedAlbumsExample.java)
-  - [Get User's Saved Episodes](examples/data/library/GetUsersSavedEpisodesExample.java)
-  - [Get User's Saved Shows](examples/data/library/GetUsersSavedShowsExample.java)
-  - [Get User's Saved Tracks](examples/data/library/GetUsersSavedTracksExample.java)
-  - [Remove Albums for Current User](examples/data/library/RemoveAlbumsForCurrentUserExample.java)
-  - [Remove User's Saved Episodes](examples/data/library/RemoveUsersSavedEpisodesExample.java)
-  - [Remove User's Saved Shows](examples/data/library/RemoveUsersSavedShowsExample.java)
-  - [Remove User's Saved Tracks](examples/data/library/RemoveUsersSavedTracksExample.java)
-  - [Save Albums for Current User](examples/data/library/SaveAlbumsForCurrentUserExample.java)
-  - [Save Episodes for Current User](examples/data/library/SaveEpisodesForCurrentUserExample.java)
-  - [Save Shows for Current User](examples/data/library/SaveShowsForCurrentUserExample.java)
-  - [Save Tracks for User](examples/data/library/SaveTracksForUserExample.java)
+- **Library (Unified Save/Remove/Check API)**
+  - [Save Items to Library](examples/data/library/SaveItemsToLibraryExample.java)
+  - [Remove Items from Library](examples/data/library/RemoveItemsFromLibraryExample.java)
+  - [Check User's Saved Items](examples/data/library/CheckUsersSavedItemsExample.java)
 
 
 - **Personalization**
+  - [Get a User's Top Artists and Tracks](examples/data/users/GetUsersTopArtistsAndTracksExample.java)
   - Simplified
-    - [Get a User's Top Artists](examples/data/personalization/simplified/GetUsersTopArtistsExample.java)
-    - [Get a User's Top Tracks](examples/data/personalization/simplified/GetUsersTopTracksExample.java)
-  - [Get a User's Top Artists and Tracks](examples/data/personalization/GetUsersTopArtistsAndTracksExample.java)
+    - [Get a User's Top Artists](examples/data/users/simplified/GetUsersTopArtistsExample.java)
+    - [Get a User's Top Tracks](examples/data/users/simplified/GetUsersTopTracksExample.java)
 
 
 - **Player**
-  - [Add Item to User's Playback Queue](examples/data/player/AddItemToUsersPlaybackQueueExample.java)
-  - [Get a User's Available Devices](examples/data/player/GetUsersAvailableDevicesExample.java)
-  - [Get Information About The User's Current Playback](examples/data/player/GetInformationAboutUsersCurrentPlaybackExample.java)
-  - [Get Current User's Recently Played Tracks](examples/data/player/GetCurrentUsersRecentlyPlayedTracksExample.java)
-  - [Get the User's Currently Playing Track](examples/data/player/GetUsersCurrentlyPlayingTrackExample.java)
-  - [Pause a User's Playback](examples/data/player/PauseUsersPlaybackExample.java)
-  - [Seek To Position In Currently Playing Track](examples/data/player/SeekToPositionInCurrentlyPlayingTrackExample.java)
-  - [Set Repeat Mode On User's Playback](examples/data/player/SetRepeatModeOnUsersPlaybackExample.java)
-  - [Set Volume For User's Playback](examples/data/player/SetVolumeForUsersPlaybackExample.java)
-  - [Skip User's Playback To Next Track](examples/data/player/SkipUsersPlaybackToNextTrackExample.java)
-  - [Skip User's Playback To Previous Track](examples/data/player/SkipUsersPlaybackToPreviousTrackExample.java)
-  - [Start/Resume a User's Playback](examples/data/player/StartResumeUsersPlaybackExample.java)
-  - [Toggle Shuffle For User's Playback](examples/data/player/ToggleShuffleForUsersPlaybackExample.java)
-  - [Transfer a User's Playback](examples/data/player/TransferUsersPlaybackExample.java)
+  - [Get Available Devices](examples/data/player/GetAvailableDevicesExample.java)
+  - [Get Current Playback State](examples/data/player/GetPlaybackStateExample.java)
+  - [Get Currently Playing Track](examples/data/player/GetCurrentlyPlayingTrackExample.java)
+  - [Get Recently Played Tracks](examples/data/player/GetRecentlyPlayedTracksExample.java)
+  - [Get User's Queue](examples/data/player/GetUsersQueueExample.java)
+  - [Start/Resume Playback](examples/data/player/StartResumePlaybackExample.java)
+  - [Pause Playback](examples/data/player/PausePlaybackExample.java)
+  - [Skip to Next Track](examples/data/player/SkipToNextExample.java)
+  - [Skip to Previous Track](examples/data/player/SkipToPreviousExample.java)
+  - [Seek to Position](examples/data/player/SeekToPositionExample.java)
+  - [Set Repeat Mode](examples/data/player/SetRepeatModeExample.java)
+  - [Toggle Shuffle](examples/data/player/TogglePlaybackShuffleExample.java)
+  - [Set Volume](examples/data/player/SetPlaybackVolumeExample.java)
+  - [Transfer Playback](examples/data/player/TransferPlaybackExample.java)
+  - [Add Item to Queue](examples/data/player/AddItemToPlaybackQueueExample.java)
 
 
 - **Playlists**
-  - [Add Items to a Playlist](examples/data/playlists/AddItemsToPlaylistExample.java)
-  - [Change a Playlist's Details](examples/data/playlists/ChangePlaylistsDetailsExample.java)
-  - [Create a Playlist](examples/data/playlists/CreatePlaylistExample.java)
-  - [Get a List of Current User's Playlists](examples/data/playlists/GetListOfCurrentUsersPlaylistsExample.java)
-  - [Get a List of a User's Playlists](examples/data/playlists/GetListOfUsersPlaylistsExample.java)
   - [Get a Playlist](examples/data/playlists/GetPlaylistExample.java)
+  - [Get Current User's Playlists](examples/data/playlists/GetCurrentUsersPlaylistsExample.java)
+  - ⚠️ [Get a User's Playlists](examples/data/playlists/GetUsersPlaylistsExample.java)
+  - [Create a Playlist](examples/data/playlists/CreatePlaylistExample.java)
+  - ⚠️ [Create a Playlist for a User](examples/data/playlists/CreatePlaylistForUserExample.java)
+  - [Get a Playlist's Items](examples/data/playlists/GetPlaylistItemsExample.java)
   - [Get a Playlist Cover Image](examples/data/playlists/GetPlaylistCoverImageExample.java)
-  - [Get a Playlist's Items](examples/data/playlists/GetPlaylistsItemsExample.java)
-  - [Remove Items from a Playlist](examples/data/playlists/RemoveItemsFromPlaylistExample.java)
-  - [Reorder a Playlist's Items](examples/data/playlists/ReorderPlaylistsItemsExample.java)
-  - [Replace a Playlist's Items](examples/data/playlists/ReplacePlaylistsItemsExample.java)
-  - [Upload a Custom Playlist Cover Image](examples/data/playlists/UploadCustomPlaylistCoverImageExample.java)
+  - [Add Items to a Playlist](examples/data/playlists/AddItemsToPlaylistExample.java)
+  - [Remove Items from a Playlist](examples/data/playlists/RemovePlaylistItemsExample.java)
+  - [Update Playlist Details](examples/data/playlists/ChangePlaylistDetailsExample.java)
+  - [Reorder Playlist Items](examples/data/playlists/UpdatePlaylistsItemsReorderExample.java)
+  - [Replace Playlist Items](examples/data/playlists/UpdatePlaylistsItemsReplaceExample.java)
+  - [Upload Playlist Cover Image](examples/data/playlists/AddCustomPlaylistCoverImageExample.java)
+  - Legacy `/tracks` path
+    - ⚠️ [Get a Playlist's Items](examples/data/playlists/GetPlaylistItemsDeprecatedExample.java)
+    - ⚠️ [Add Items to a Playlist](examples/data/playlists/AddItemsToPlaylistDeprecatedExample.java)
+    - ⚠️ [Remove Items from a Playlist](examples/data/playlists/RemovePlaylistItemsDeprecatedExample.java)
+    - ⚠️ [Reorder Playlist Items](examples/data/playlists/UpdatePlaylistsItemsReorderDeprecatedExample.java)
+    - ⚠️ [Replace Playlist Items](examples/data/playlists/UpdatePlaylistsItemsReplaceDeprecatedExample.java)
 
 
 - **Search**
-  - Simplified
+  - [Search for Item](examples/data/search/SearchForItemExample.java)
+  - Simplified (Direct Type Search)
     - [Search Albums](examples/data/search/simplified/SearchAlbumsExample.java)
     - [Search Artists](examples/data/search/simplified/SearchArtistsExample.java)
+    - [Search Audiobooks](examples/data/search/simplified/SearchAudiobooksExample.java)
+    - [Search Tracks](examples/data/search/simplified/SearchTracksExample.java)
+    - [Search Shows](examples/data/search/simplified/SearchShowsExample.java)
     - [Search Episodes](examples/data/search/simplified/SearchEpisodesExample.java)
     - [Search Playlists](examples/data/search/simplified/SearchPlaylistsExample.java)
-    - [Search Shows](examples/data/search/simplified/SearchShowsExample.java)
-    - [Search Tracks](examples/data/search/simplified/SearchTracksExample.java)
-  - [Search Item](examples/data/search/SearchItemExample.java)
+    - [Search Albums (Extended Model)](examples/data/search/simplified/special/SearchAlbumsSpecialExample.java)
 
 
 - **Shows**
   - [Get a Show](examples/data/shows/GetShowExample.java)
-  - [Get several Show](examples/data/shows/GetSeveralShowsExample.java)
-  - [Get a Show's Episodes](examples/data/shows/GetShowsEpisodesExample.java)
+  - [Get a Show's Episodes](examples/data/shows/GetShowEpisodesExample.java)
+  - ⚠️ [Get Several Shows](examples/data/shows/GetSeveralShowsExample.java)
+  - ⚠️ [Check User's Saved Shows](examples/data/shows/CheckUsersSavedShowsExample.java)
+  - [Get User's Saved Shows](examples/data/shows/GetUsersSavedShowsExample.java)
+  - ⚠️ [Save Shows for Current User](examples/data/shows/SaveShowsForCurrentUserExample.java)
+  - ⚠️ [Remove Shows for Current User](examples/data/shows/RemoveShowsForCurrentUserExample.java)
 
 
 - **Tracks**
-  - [Get Audio Analysis for a Track](examples/data/tracks/GetAudioAnalysisForTrackExample.java)
-  - [Get Audio Features for a Track](examples/data/tracks/GetAudioFeaturesForTrackExample.java)
-  - [Get Audio Features for Several Tracks](examples/data/tracks/GetAudioFeaturesForSeveralTracksExample.java)
-  - [Get Several Tracks](examples/data/tracks/GetSeveralTracksExample.java)
   - [Get a Track](examples/data/tracks/GetTrackExample.java)
+  - ⚠️ [Get Several Tracks](examples/data/tracks/GetSeveralTracksExample.java)
+  - ⚠️ [Check User's Saved Tracks](examples/data/tracks/CheckUsersSavedTracksExample.java)
+  - [Get User's Saved Tracks](examples/data/tracks/GetUsersSavedTracksExample.java)
+  - ⚠️ [Save Tracks for Current User](examples/data/tracks/SaveTracksForCurrentUserExample.java)
+  - ⚠️ [Remove User's Saved Tracks](examples/data/tracks/RemoveUsersSavedTracksExample.java)
+  - ⚠️ [Get Audio Features for a Track](examples/data/tracks/GetTracksAudioFeaturesExample.java)
+  - ⚠️ [Get Audio Features for Several Tracks](examples/data/tracks/GetSeveralTracksAudioFeaturesExample.java)
+  - ⚠️ [Get Audio Analysis for a Track](examples/data/tracks/GetTracksAudioAnalysisExample.java)
+  - ⚠️ [Get Recommendations](examples/data/tracks/GetRecommendationsExample.java)
 
 
-- **User's Profile**
-  - [Get Current User's Profile](examples/data/users_profile/GetCurrentUsersProfileExample.java)
-  - [Get a User's Profile](examples/data/users_profile/GetUsersProfileExample.java)
-
+- **User's Profile & Following**
+  - [Get Current User's Profile](examples/data/users/GetCurrentUsersProfileExample.java)
+  - ⚠️ [Get a User's Profile](examples/data/users/GetUsersProfileExample.java)
+  - [Get User's Followed Artists](examples/data/users/GetFollowedArtistsExample.java)
+  - ⚠️ [Follow Artists or Users](examples/data/users/FollowArtistsOrUsersExample.java)
+  - ⚠️ [Unfollow Artists or Users](examples/data/users/UnfollowArtistsOrUsersExample.java)
+  - ⚠️ [Check if User Follows Artists or Users](examples/data/users/CheckCurrentUserFollowsArtistsOrUsersExample.java)
+  - ⚠️ [Follow a Playlist](examples/data/users/FollowPlaylistExample.java)
+  - ⚠️ [Unfollow a Playlist](examples/data/users/UnfollowPlaylistExample.java)
+  - ⚠️ [Check if Users Follow a Playlist](examples/data/users/CheckIfUserFollowsPlaylistExample.java)
 ## Contributions
 See [CONTRIBUTING.md](CONTRIBUTING.md).
 

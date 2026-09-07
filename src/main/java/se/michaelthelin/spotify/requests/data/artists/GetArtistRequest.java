@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.requests.data.artists;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.model_objects.specification.Artist;
@@ -11,7 +10,6 @@ import java.io.IOException;
 /**
  * Get Spotify catalog information for a single artist identified by their unique Spotify ID.
  */
-@JsonDeserialize(builder = GetArtistRequest.Builder.class)
 public class GetArtistRequest extends AbstractDataRequest<Artist> {
 
   /**

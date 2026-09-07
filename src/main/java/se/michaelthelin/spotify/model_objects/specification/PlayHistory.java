@@ -1,19 +1,13 @@
 package se.michaelthelin.spotify.model_objects.specification;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.google.gson.JsonObject;
-import se.michaelthelin.spotify.SpotifyApi;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 
-import java.text.ParseException;
 import java.util.Date;
-import java.util.logging.Level;
 
 /**
  * Retrieve information about <a href="https://developer.spotify.com/web-api/object-model/#play-history-object">
  * Play History objects</a> by building instances from this class.
  */
-@JsonDeserialize(builder = PlayHistory.Builder.class)
 public class PlayHistory extends AbstractModelObject {
   /** The track that was played. */
   private final Track track;
@@ -75,41 +69,20 @@ public class PlayHistory extends AbstractModelObject {
     private Date playedAt;
     private Context context;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
 
-    /**
-     * The track setter.
-     *
-     * @param track The track the user listened to.
-     * @return A {@link PlayHistory.Builder}.
-     */
     public Builder setTrack(Track track) {
       this.track = track;
       return this;
     }
 
-    /**
-     * The played at date setter.
-     *
-     * @param playedAt The date and time the track was played.
-     * @return A {@link PlayHistory.Builder}.
-     */
     public Builder setPlayedAt(Date playedAt) {
       this.playedAt = playedAt;
       return this;
     }
 
-    /**
-     * The context setter.
-     *
-     * @param context The context the track was played from.
-     * @return A {@link PlayHistory.Builder}.
-     */
     public Builder setContext(Context context) {
       this.context = context;
       return this;
@@ -126,39 +99,9 @@ public class PlayHistory extends AbstractModelObject {
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<PlayHistory> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }
 
-    public PlayHistory createModelObject(JsonObject jsonObject) {
-      if (jsonObject == null || jsonObject.isJsonNull()) {
-        return null;
-      }
-
-      try {
-        return new Builder()
-          .setTrack(
-            hasAndNotNull(jsonObject, "track")
-              ? new Track.JsonUtil().createModelObject(
-              jsonObject.getAsJsonObject("track"))
-              : null)
-          .setPlayedAt(
-            hasAndNotNull(jsonObject, "played_at")
-              ? SpotifyApi.parseDefaultDate(jsonObject.get("played_at").getAsString())
-              : null)
-          .setContext(
-            hasAndNotNull(jsonObject, "context")
-              ? new Context.JsonUtil().createModelObject(
-              jsonObject.getAsJsonObject("context"))
-              : null)
-          .build();
-      } catch (ParseException e) {
-        SpotifyApi.LOGGER.log(Level.SEVERE, e.getMessage());
-        return null;
-      }
-    }
   }
 }

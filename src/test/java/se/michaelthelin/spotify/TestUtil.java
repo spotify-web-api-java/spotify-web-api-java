@@ -17,7 +17,7 @@ public class TestUtil {
 
   private static final String FIXTURE_DIR = "src/test/fixtures/";
 
-  private static String readTestData(String fileName) throws IOException {
+  public static String readTestData(String fileName) throws IOException {
     return readFromFile(new File(FIXTURE_DIR, fileName));
   }
 

@@ -19,9 +19,6 @@ public class PlaylistItemFactory {
     }
   };
 
-  /**
-   * Default constructor.
-   */
   public PlaylistItemFactory() {
     super();
   }

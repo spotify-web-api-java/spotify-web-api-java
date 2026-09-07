@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.requests.data.playlists;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.model_objects.specification.Image;
@@ -11,7 +10,6 @@ import java.io.IOException;
 /**
  * Get the current image associated with a specific playlist.
  */
-@JsonDeserialize(builder = GetPlaylistCoverImageRequest.Builder.class)
 public class GetPlaylistCoverImageRequest extends AbstractDataRequest<Image[]> {
 
   /**

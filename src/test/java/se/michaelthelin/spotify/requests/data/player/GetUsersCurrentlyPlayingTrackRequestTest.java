@@ -18,8 +18,8 @@ import java.util.concurrent.ExecutionException;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class GetUsersCurrentlyPlayingTrackRequestTest extends AbstractDataTest<CurrentlyPlaying> {
-  private final GetUsersCurrentlyPlayingTrackRequest defaultRequest = ITest.SPOTIFY_API
-    .getUsersCurrentlyPlayingTrack()
+  private final GetCurrentlyPlayingTrackRequest defaultRequest = ITest.SPOTIFY_API
+    .getCurrentlyPlayingTrack()
     .setHttpManager(
       TestUtil.MockedHttpManager.returningJson(
         "requests/data/player/GetUsersCurrentlyPlayingTrackRequest.json"))
@@ -27,8 +27,8 @@ public class GetUsersCurrentlyPlayingTrackRequestTest extends AbstractDataTest<C
     .additionalTypes(ITest.ADDITIONAL_TYPES)
     .build();
 
-  private final GetUsersCurrentlyPlayingTrackRequest defaultEpisodeRequest = ITest.SPOTIFY_API
-    .getUsersCurrentlyPlayingTrack()
+  private final GetCurrentlyPlayingTrackRequest defaultEpisodeRequest = ITest.SPOTIFY_API
+    .getCurrentlyPlayingTrack()
     .setHttpManager(
       TestUtil.MockedHttpManager.returningJson(
         "requests/data/player/GetUsersCurrentlyPlayingTrackRequest_Episode.json"))
@@ -36,8 +36,8 @@ public class GetUsersCurrentlyPlayingTrackRequestTest extends AbstractDataTest<C
     .additionalTypes(ITest.ADDITIONAL_TYPES)
     .build();
 
-  private final GetUsersCurrentlyPlayingTrackRequest emptyRequest = ITest.SPOTIFY_API
-    .getUsersCurrentlyPlayingTrack()
+  private final GetCurrentlyPlayingTrackRequest emptyRequest = ITest.SPOTIFY_API
+    .getCurrentlyPlayingTrack()
     .setHttpManager(
       TestUtil.MockedHttpManager.returningJson(null))
     .market(ITest.MARKET)

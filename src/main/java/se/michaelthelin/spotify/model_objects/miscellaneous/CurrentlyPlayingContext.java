@@ -1,22 +1,17 @@
 package se.michaelthelin.spotify.model_objects.miscellaneous;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.enums.CurrentlyPlayingType;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 import se.michaelthelin.spotify.model_objects.IPlaylistItem;
 import se.michaelthelin.spotify.model_objects.special.Actions;
 import se.michaelthelin.spotify.model_objects.specification.Context;
 import se.michaelthelin.spotify.model_objects.specification.Disallows;
-import se.michaelthelin.spotify.model_objects.specification.Episode;
-import se.michaelthelin.spotify.model_objects.specification.Track;
 
 /**
  * Retrieve information about
  * <a href="https://developer.spotify.com/documentation/web-api/reference/get-information-about-the-users-current-playback">Currently Playing
  * Context objects</a> by creating instances from this class.
  */
-@JsonDeserialize(builder = CurrentlyPlayingContext.Builder.class)
 public class CurrentlyPlayingContext extends AbstractModelObject {
   /** The device that is currently active. */
   private final Device device;
@@ -185,129 +180,60 @@ public class CurrentlyPlayingContext extends AbstractModelObject {
     private Actions actions;
     private Boolean smart_shuffle;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
 
-    /**
-     * The active device setter.
-     *
-     * @param device The device that is currently active.
-     * @return A {@link CurrentlyPlayingContext.Builder}.
-     */
     public Builder setDevice(Device device) {
       this.device = device;
       return this;
     }
 
-    /**
-     * The repeat state setter.
-     *
-     * @param repeat_state The repeat state.
-     * @return A {@link CurrentlyPlayingContext.Builder}.
-     */
     public Builder setRepeat_state(String repeat_state) {
       this.repeat_state = repeat_state;
       return this;
     }
 
-    /**
-     * The shuffle state setter.
-     *
-     * @param shuffle_state If shuffle is on or off.
-     * @return A {@link CurrentlyPlayingContext.Builder}.
-     */
     public Builder setShuffle_state(Boolean shuffle_state) {
       this.shuffle_state = shuffle_state;
       return this;
     }
 
-    /**
-     * The playing context setter.
-     *
-     * @param context A Context Object. Can be {@code null}.
-     * @return A {@link CurrentlyPlayingContext.Builder}.
-     */
     public Builder setContext(Context context) {
       this.context = context;
       return this;
     }
 
-    /**
-     * The timestamp setter.
-     *
-     * @param timestamp Unix Millisecond Timestamp when data was fetched.
-     * @return A {@link CurrentlyPlayingContext.Builder}.
-     */
     public Builder setTimestamp(Long timestamp) {
       this.timestamp = timestamp;
       return this;
     }
 
-    /**
-     * The item progress setter.
-     *
-     * @param progress_ms Progress into the currently playing item. Can be {@code null}.
-     * @return A {@link CurrentlyPlayingContext.Builder}.
-     */
     public Builder setProgress_ms(Integer progress_ms) {
       this.progress_ms = progress_ms;
       return this;
     }
 
-    /**
-     * The playing state setter.
-     *
-     * @param is_playing If something is currently playing.
-     * @return A {@link CurrentlyPlayingContext.Builder}.
-     */
     public Builder setIs_playing(Boolean is_playing) {
       this.is_playing = is_playing;
       return this;
     }
 
-    /**
-     * The currently playing item setter.
-     *
-     * @param item If something is currently playing.
-     * @return A {@link CurrentlyPlayingContext.Builder}.
-     */
     public Builder setItem(IPlaylistItem item) {
       this.item = item;
       return this;
     }
 
-    /**
-     * The currently playing type setter.
-     *
-     * @param currentlyPlayingType The type of the currently playing item.
-     * @return A {@link CurrentlyPlayingContext.Builder}.
-     */
     public Builder setCurrentlyPlayingType(CurrentlyPlayingType currentlyPlayingType) {
       this.currentlyPlayingType = currentlyPlayingType;
       return this;
     }
 
-    /**
-     * The actions setter.
-     *
-     * @param actions A {@link Actions} object which contains a {@link Disallows} object.
-     * @return A {@link CurrentlyPlayingContext.Builder}.
-     */
     public Builder setActions(Actions actions) {
       this.actions = actions;
       return this;
     }
 
-    /**
-     * The smart shuffle setter.
-     *
-     * @param smart_shuffle If smart shuffle is on or off.
-     * @return A {@link CurrentlyPlayingContext.Builder}.
-     */
     public Builder setSmart_shuffle(Boolean smart_shuffle) {
       this.smart_shuffle = smart_shuffle;
       return this;
@@ -324,72 +250,9 @@ public class CurrentlyPlayingContext extends AbstractModelObject {
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<CurrentlyPlayingContext> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }
 
-    public CurrentlyPlayingContext createModelObject(JsonObject jsonObject) {
-      if (jsonObject == null || jsonObject.isJsonNull()) {
-        return null;
-      }
-
-      return new Builder()
-        .setDevice(
-          hasAndNotNull(jsonObject, "device")
-            ? new Device.JsonUtil().createModelObject(
-            jsonObject.getAsJsonObject("device"))
-            : null)
-        .setRepeat_state(
-          hasAndNotNull(jsonObject, "repeat_state")
-            ? jsonObject.get("repeat_state").getAsString()
-            : null)
-        .setShuffle_state(
-          hasAndNotNull(jsonObject, "shuffle_state")
-            ? jsonObject.get("shuffle_state").getAsBoolean()
-            : null)
-        .setContext(
-          hasAndNotNull(jsonObject, "context")
-            ? new Context.JsonUtil().createModelObject(
-            jsonObject.getAsJsonObject("context"))
-            : null)
-        .setTimestamp(
-          hasAndNotNull(jsonObject, "timestamp")
-            ? jsonObject.get("timestamp").getAsLong()
-            : null)
-        .setProgress_ms(
-          hasAndNotNull(jsonObject, "progress_ms")
-            ? jsonObject.get("progress_ms").getAsInt()
-            : null)
-        .setIs_playing(
-          hasAndNotNull(jsonObject, "is_playing")
-            ? jsonObject.get("is_playing").getAsBoolean()
-            : null)
-        .setItem(
-          hasAndNotNull(jsonObject, "item") && hasAndNotNull(jsonObject, "currently_playing_type")
-            ? (jsonObject.get("currently_playing_type").getAsString().equals("track")
-            ? new Track.JsonUtil().createModelObject(jsonObject.getAsJsonObject("item"))
-            : jsonObject.get("currently_playing_type").getAsString().equals("episode")
-            ? new Episode.JsonUtil().createModelObject(jsonObject.getAsJsonObject("item"))
-            : null)
-            : null)
-        .setCurrentlyPlayingType(
-          hasAndNotNull(jsonObject, "currently_playing_type")
-            ? CurrentlyPlayingType.keyOf(
-            jsonObject.get("currently_playing_type").getAsString().toLowerCase())
-            : null)
-        .setActions(
-          hasAndNotNull(jsonObject, "actions")
-            ? new Actions.JsonUtil().createModelObject(
-            jsonObject.getAsJsonObject("actions"))
-            : null)
-        .setSmart_shuffle(
-          hasAndNotNull(jsonObject, "smart_shuffle")
-            ? jsonObject.get("smart_shuffle").getAsBoolean()
-            : null)
-        .build();
-    }
   }
 }

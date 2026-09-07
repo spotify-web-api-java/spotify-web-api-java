@@ -13,16 +13,12 @@ import java.util.concurrent.CompletionException;
 
 public class CreatePlaylistExample {
   private static final String accessToken = "taHZ2SdB-bPA3FsK3D7ZN5npZS47cMy-IEySVEGttOhXmqaVAIo0ESvTCLjLBifhHOHOIuhFUKPW1WMDP7w6dj3MAZdWT8CLI2MkZaXbYLTeoDvXesf2eeiLYPBGdx8tIwQJKgV8XdnzH_DONk";
-  private static final String userId = "abbaspotify";
   private static final String name = "Abba";
 
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
     .setAccessToken(accessToken)
     .build();
-  private static final CreatePlaylistRequest createPlaylistRequest = spotifyApi.createPlaylist(userId, name)
-//          .collaborative(false)
-//          .public_(false)
-//          .description("Amazing music.")
+  private static final CreatePlaylistRequest createPlaylistRequest = spotifyApi.createPlaylist(name)
     .build();
 
   public static void createPlaylist_Sync() {

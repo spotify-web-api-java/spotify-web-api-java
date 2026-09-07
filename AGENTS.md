@@ -1,0 +1,138 @@
+# AGENTS.md
+
+This file provides context for AI coding agents working in this repository.
+
+Read [CONTRIBUTING.md](CONTRIBUTING.md) first: it carries the rules a contribution is judged against and the release procedure, and it applies to agents exactly as it does to people.
+This file covers the mechanics of the codebase and does not repeat them.
+
+## Project Overview
+
+**spotify-web-api-java** is a Java wrapper library for the [Spotify Web API](https://developer.spotify.com/documentation/web-api/). It provides typed request builders and model objects for all Spotify API endpoints.
+
+- **Group ID:** `se.michaelthelin.spotify`
+- **Artifact ID:** `spotify-web-api-java`
+- **Build Tool:** Maven (`pom.xml`)
+- **Java Version:** compiled with `--release 9`; CI builds on JDK 17 and 25
+
+## Repository Structure
+
+```
+src/
+├── main/java/se/michaelthelin/spotify/
+│   ├── SpotifyApi.java              # Main entry point – all endpoint builders exposed here
+│   ├── SpotifyHttpManager.java      # HTTP client wrapper
+│   ├── enums/                       # Enum types (ModelObjectType, etc.)
+│   ├── exceptions/                  # Exception hierarchy
+│   ├── model_objects/               # POJOs for API response objects
+│   │   ├── specification/           # Core model objects (Playlist, Track, Album, etc.)
+│   │   ├── special/                 # Composite/special models
+│   │   └── miscellaneous/           # Supporting models
+│   └── requests/
+│       └── data/                    # One subfolder per API category
+│           ├── albums/
+│           ├── artists/
+│           ├── playlists/           # Playlist endpoint request classes
+│           └── ...
+└── test/
+    ├── java/se/michaelthelin/spotify/
+    │   ├── ITest.java               # Shared test constants (IDs, names, etc.)
+    │   ├── TestUtil.java            # Mock HTTP manager helpers
+    │   └── requests/data/           # Unit tests mirroring main structure
+    └── fixtures/requests/data/      # JSON fixture files for mock HTTP responses
+```
+
+## Adding a New Endpoint
+
+To add a new Spotify API endpoint, follow these steps:
+
+### 1. Create a Request class
+
+Create `src/main/java/se/michaelthelin/spotify/requests/data/<category>/<EndpointName>Request.java`.
+
+Key patterns:
+- Extend `AbstractDataRequest<ReturnType>` (or `AbstractDataPagingRequest` for paginated results).
+- Implement `execute()` which calls `getJson()`, `postJson()`, `putJson()`, or `deleteJson()` as appropriate.
+- Add a `static final class Builder` with:
+  - Path parameters set via `setPathParameter("key", value)`
+  - Query parameters set via `setQueryParameter("key", value)`
+  - Body parameters set via `setBodyParameter("key", value)`
+  - `build()` method that calls `setPath("/v1/...")` and `setContentType(...)` for POST/PUT requests
+  - `self()` returning `this`
+
+**Endpoint URL reference:** Use the new `POST /v1/me/playlists` style paths (not the older `/v1/users/{user_id}/...` style where Spotify has migrated endpoints).
+
+### 2. Expose the method in SpotifyApi
+
+In `SpotifyApi.java`, add a public method that:
+- Returns `<EndpointName>Request.Builder`
+- Creates a new builder via `new <EndpointName>Request.Builder(accessToken)`
+- Chains `.setDefaults(httpManager, scheme, host, port)`
+- Sets any required path parameters
+
+Methods are grouped by API category (albums, artists, playlists, etc.).
+
+### 3. Add a fixture file
+
+Create `src/test/fixtures/requests/data/<category>/<EndpointName>Request.json` with a sample API response.
+
+### 4. Add a test class
+
+Create `src/test/java/se/michaelthelin/spotify/requests/data/<category>/<EndpointName>RequestTest.java`.
+
+Extend `AbstractDataTest<ReturnType>`. Tests should:
+- Verify the built URI using `assertEquals("https://api.spotify.com:443/v1/...", request.getUri().toString())`
+- Verify headers with `assertHasHeader(...)` and `assertHasAuthorizationHeader(...)`
+- Verify body parameters with `assertHasBodyParameter(...)` (from `se.michaelthelin.spotify.Assertions`)
+- Verify the deserialized response via `shouldReturnDefault(...)` for both sync and async execution
+
+Common test constants are in `ITest.java` (e.g., `ITest.NAME`, `ITest.ID_PLAYLIST`, `ITest.PUBLIC`).
+
+### 5. Add an example and index it
+
+Create `examples/.../<EndpointName>Example.java` and link it from the example index in `README.md`.
+Mark the link with ⚠️ if the request class carries `@Deprecated`.
+
+The examples are a separate Maven project that compiles against the installed library as its own module, which is how a missing `exports` gets caught.
+Build them with `mvn -B install -DskipTests=true && mvn -B -f examples/pom.xml clean compile`; the `clean` matters, because an incremental build reuses classes compiled against the previous module descriptor.
+An example may only use packages the library exports, and only types reachable through the library's own `requires transitive`.
+
+`./ci/check-docs.py` enforces all of this and runs in CI.
+It checks that every `SpotifyApi` method has an example, that example file names match their request class, that the README index is complete and its ⚠️ markers match the code, that each request's verb and path exist in `spec/openapi.yaml` with matching deprecation, and that every current-API name written in `MIGRATION.md` still resolves.
+
+### Releasing
+
+See the release workflow in [CONTRIBUTING.md](CONTRIBUTING.md#release-workflow-maintainers-only).
+Note that the version lives in three files, and `ci/check-docs.py` fails when they disagree.
+
+### Renaming or removing public API
+
+Record it in `MIGRATION.md` under the relevant `#### ` heading.
+Names that no longer exist have to sit in a table column whose header contains "v9", or inside a code fence under a `// v9` marker, otherwise the docs check reports them as stale.
+
+## Building and Testing
+
+```bash
+# Compile
+mvn compile
+
+# Run all tests
+mvn test
+
+# Run a specific test class
+mvn test -Dtest="CreatePlaylistRequestTest"
+
+# Run tests matching a pattern
+mvn test -Dtest="*Playlist*"
+```
+
+## Key Conventions
+
+- **Model objects are deserialized reflectively** by the shared Gson in
+  `model_objects/ModelObjectGson.java`, so a new field needs no parsing code.
+  Add `@SerializedName` only when the wire name is not the snake_case form of the field,
+  and add a type adapter only for a shape reflection cannot express.
+- **Trailing underscores** on Java-reserved words: e.g., `public_` for the `public` field.
+- **Assertions** in tests are imported from both JUnit 5 (`org.junit.jupiter.api.Assertions`) and the project's own `se.michaelthelin.spotify.Assertions`.
+- **Nullable fields** from the API should be tested with `assertNull(...)` when the fixture returns `null`.
+- **POST/PUT** requests must set `ContentType.APPLICATION_JSON` in the `build()` method.
+- **Path patterns** use `{param_name}` placeholders set with `setPathParameter("param_name", value)`.

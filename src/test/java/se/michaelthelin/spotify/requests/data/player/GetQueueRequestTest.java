@@ -1,0 +1,63 @@
+package se.michaelthelin.spotify.requests.data.player;
+
+import org.apache.hc.core5.http.ParseException;
+import org.junit.jupiter.api.Test;
+import se.michaelthelin.spotify.ITest;
+import se.michaelthelin.spotify.TestUtil;
+import se.michaelthelin.spotify.enums.ModelObjectType;
+import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
+import se.michaelthelin.spotify.model_objects.special.PlaybackQueue;
+import se.michaelthelin.spotify.requests.data.AbstractDataTest;
+
+import java.io.IOException;
+import java.util.concurrent.ExecutionException;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+public class GetQueueRequestTest extends AbstractDataTest<PlaybackQueue> {
+
+  private final GetUsersQueueRequest defaultRequest = ITest.SPOTIFY_API
+    .getUsersQueue()
+    .setHttpManager(
+      TestUtil.MockedHttpManager.returningJson("requests/data/player/GetQueueRequest.json"))
+    .build();
+
+  public GetQueueRequestTest() throws Exception {
+    assertEquals("https://api.spotify.com:443/v1/me/player/queue",
+      defaultRequest.getUri().toString());
+  }
+
+
+  @Override
+  @Test
+  public void shouldComplyWithReference() {
+    assertHasAuthorizationHeader(defaultRequest);
+    assertEquals(
+      "https://api.spotify.com:443/v1/me/player/queue",
+      defaultRequest.getUri().toString());
+  }
+
+  @Override
+  @Test
+  public void shouldReturnDefault_sync() throws IOException, SpotifyWebApiException, ParseException {
+    shouldReturnDefault(defaultRequest.execute());
+  }
+
+  @Override
+  @Test
+  public void shouldReturnDefault_async() throws ExecutionException, InterruptedException {
+    shouldReturnDefault(defaultRequest.executeAsync().get());
+  }
+
+  @Override
+  public void shouldReturnDefault(PlaybackQueue type) {
+    assertNotNull(type.getCurrentlyPlaying());
+    assertEquals("Borders", type.getCurrentlyPlaying().getName());
+    assertNotNull(type.getQueue());
+    assertEquals(20, type.getQueue().size());
+    assertEquals("AUSGABE VIERUNDSIEBZIG", type.getQueue().get(0).getName());
+    assertEquals(ModelObjectType.EPISODE, type.getQueue().get(0).getType());
+    assertEquals("Helvegen", type.getQueue().get(1).getName());
+    assertEquals(ModelObjectType.TRACK, type.getQueue().get(1).getType());
+  }
+}

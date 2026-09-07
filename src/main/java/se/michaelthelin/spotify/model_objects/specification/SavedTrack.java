@@ -1,19 +1,13 @@
 package se.michaelthelin.spotify.model_objects.specification;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.google.gson.JsonObject;
-import se.michaelthelin.spotify.SpotifyApi;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 
-import java.text.ParseException;
 import java.util.Date;
-import java.util.logging.Level;
 
 /**
  * Retrieve information about <a href="https://developer.spotify.com/web-api/object-model/#saved-track-object">
  * Saved Track objects</a> by building instances from this class.
  */
-@JsonDeserialize(builder = SavedTrack.Builder.class)
 public class SavedTrack extends AbstractModelObject {
   /** The date and time the track was saved. */
   private final Date addedAt;
@@ -62,30 +56,15 @@ public class SavedTrack extends AbstractModelObject {
     private Date addedAt;
     private Track track;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
 
-    /**
-     * Set the "added at" date of the saved track to be built.
-     *
-     * @param addedAt The date and time the track was saved.
-     * @return A {@link SavedTrack.Builder}.
-     */
     public Builder setAddedAt(Date addedAt) {
       this.addedAt = addedAt;
       return this;
     }
 
-    /**
-     * Set the full track object of the saved track to be built.
-     *
-     * @param track Information about the track.
-     * @return A {@link SavedTrack.Builder}.
-     */
     public Builder setTrack(Track track) {
       this.track = track;
       return this;
@@ -102,34 +81,9 @@ public class SavedTrack extends AbstractModelObject {
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<SavedTrack> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }
 
-    public SavedTrack createModelObject(JsonObject jsonObject) {
-      if (jsonObject == null || jsonObject.isJsonNull()) {
-        return null;
-      }
-
-      try {
-        return new Builder()
-          .setAddedAt(
-            hasAndNotNull(jsonObject, "added_at")
-              ? SpotifyApi.parseDefaultDate(jsonObject.get("added_at").getAsString())
-              : null)
-          .setTrack(
-            hasAndNotNull(jsonObject, "track")
-              ? new Track.JsonUtil().createModelObject(
-              jsonObject.getAsJsonObject("track"))
-              : null)
-          .build();
-      } catch (ParseException e) {
-        SpotifyApi.LOGGER.log(Level.SEVERE, e.getMessage());
-        return null;
-      }
-    }
   }
 }

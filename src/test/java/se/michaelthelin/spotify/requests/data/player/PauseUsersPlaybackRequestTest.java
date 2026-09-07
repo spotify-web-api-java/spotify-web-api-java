@@ -15,8 +15,8 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import static se.michaelthelin.spotify.Assertions.assertHasHeader;
 
 public class PauseUsersPlaybackRequestTest extends AbstractDataTest<String> {
-  private final PauseUsersPlaybackRequest defaultRequest = ITest.SPOTIFY_API
-    .pauseUsersPlayback()
+  private final PausePlaybackRequest defaultRequest = ITest.SPOTIFY_API
+    .pausePlayback()
     .setHttpManager(
       TestUtil.MockedHttpManager.returningJson(null))
     .device_id(ITest.DEVICE_ID)

@@ -1,8 +1,7 @@
 package se.michaelthelin.spotify.requests.data.artists;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.neovisionaries.i18n.CountryCode;
 import org.apache.hc.core5.http.ParseException;
+import se.michaelthelin.spotify.enums.CountryCode;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.model_objects.specification.Track;
 import se.michaelthelin.spotify.requests.data.AbstractDataRequest;
@@ -10,9 +9,11 @@ import se.michaelthelin.spotify.requests.data.AbstractDataRequest;
 import java.io.IOException;
 
 /**
- * Get Spotify catalog information about an artist’s top tracks by country.
+ * Get Spotify catalog information about an artist's top tracks by country.
+ *
+ * @deprecated This endpoint has been deprecated by Spotify.
  */
-@JsonDeserialize(builder = GetArtistsTopTracksRequest.Builder.class)
+@Deprecated
 public class GetArtistsTopTracksRequest extends AbstractDataRequest<Track[]> {
 
   /**
@@ -25,9 +26,9 @@ public class GetArtistsTopTracksRequest extends AbstractDataRequest<Track[]> {
   }
 
   /**
-   * Get the top {@link Track} objects.
+   * Get an artist's top tracks.
    *
-   * @return An array of {@link Track} objects.
+   * @return Multiple {@link Track} objects.
    * @throws IOException            In case of networking issues.
    * @throws SpotifyWebApiException The Web API returned an error further specified in this exception's root cause.
    */
@@ -53,11 +54,11 @@ public class GetArtistsTopTracksRequest extends AbstractDataRequest<Track[]> {
     }
 
     /**
-     * The artist ID setter.
+     * The artist ID path parameter setter.
      *
-     * @param id The Spotify ID for the artist.
+     * @param id Required. The Spotify ID for the artist.
      * @return A {@link GetArtistsTopTracksRequest.Builder}.
-     * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify URIs &amp; IDs</a>
+     * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URIs &amp; IDs</a>
      */
     public Builder id(final String id) {
       assert (id != null);
@@ -66,15 +67,16 @@ public class GetArtistsTopTracksRequest extends AbstractDataRequest<Track[]> {
     }
 
     /**
-     * The country code setter.
+     * The market query parameter setter.
      *
-     * @param country Required. The country: an ISO 3166-1 alpha-2 country code.
+     * @param market Optional. An ISO 3166-1 alpha-2 country code. Provide this parameter if you want to apply
+     *               Track Relinking.
      * @return A {@link GetArtistsTopTracksRequest.Builder}.
      * @see <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">Wikipedia: ISO 3166-1 alpha-2 country codes</a>
      */
-    public Builder country(final CountryCode country) {
-      assert (country != null);
-      return setQueryParameter("country", country);
+    public Builder market(final CountryCode market) {
+      assert (market != null);
+      return setQueryParameter("market", market);
     }
 
     /**

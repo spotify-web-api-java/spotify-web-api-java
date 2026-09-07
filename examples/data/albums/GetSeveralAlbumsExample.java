@@ -11,9 +11,13 @@ import java.util.concurrent.CancellationException;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionException;
 
+/**
+ * @deprecated Get Spotify catalog information for several albums identified by their Spotify IDs.
+ */
+@Deprecated
 public class GetSeveralAlbumsExample {
   private static final String accessToken = "taHZ2SdB-bPA3FsK3D7ZN5npZS47cMy-IEySVEGttOhXmqaVAIo0ESvTCLjLBifhHOHOIuhFUKPW1WMDP7w6dj3MAZdWT8CLI2MkZaXbYLTeoDvXesf2eeiLYPBGdx8tIwQJKgV8XdnzH_DONk";
-  private static final String[] ids = new String[]{"0LcJLqbBmaGUft1e9Mm8HV"};
+  private static final String ids = "5zT1JLIj9E57p3e1rFm9Uq";
 
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
     .setAccessToken(accessToken)
@@ -26,7 +30,7 @@ public class GetSeveralAlbumsExample {
     try {
       final Album[] albums = getSeveralAlbumsRequest.execute();
 
-      System.out.println("Length: " + albums.length);
+      System.out.println("Number of albums: " + albums.length);
     } catch (IOException | SpotifyWebApiException | ParseException e) {
       System.out.println("Error: " + e.getMessage());
     }
@@ -41,7 +45,7 @@ public class GetSeveralAlbumsExample {
       // Example Only. Never block in production code.
       final Album[] albums = albumsFuture.join();
 
-      System.out.println("Length: " + albums.length);
+      System.out.println("Number of albums: " + albums.length);
     } catch (CompletionException e) {
       System.out.println("Error: " + e.getCause().getMessage());
     } catch (CancellationException e) {

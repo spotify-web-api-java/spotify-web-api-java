@@ -1,0 +1,89 @@
+package se.michaelthelin.spotify.model_objects.specification;
+
+import se.michaelthelin.spotify.model_objects.AbstractModelObject;
+
+import java.util.Date;
+
+/**
+ * Retrieve information about <a href="https://developer.spotify.com/documentation/web-api/reference/get-users-saved-episodes">
+ * Saved Episode objects</a> by building instances from this class.
+ */
+public class SavedEpisode extends AbstractModelObject {
+  /** The date and time the episode was saved. */
+  private final Date addedAt;
+  /** Information about the episode. */
+  private final Episode episode;
+
+  private SavedEpisode(final Builder builder) {
+    super(builder);
+
+    this.addedAt = builder.addedAt;
+    this.episode = builder.episode;
+  }
+
+  /**
+   * Get the date and time the episode was saved.
+   *
+   * @return The date and time the episode was saved.
+   */
+  public Date getAddedAt() {
+    return addedAt;
+  }
+
+  /**
+   * Get information about the episode from a saved episode object.
+   *
+   * @return Information about the episode.
+   */
+  public Episode getEpisode() {
+    return episode;
+  }
+
+  @Override
+  public String toString() {
+    return "SavedEpisode(addedAt=" + addedAt + ", episode=" + episode + ")";
+  }
+
+  @Override
+  public Builder builder() {
+    return new Builder();
+  }
+
+  /**
+   * Builder class for building {@link SavedEpisode} instances.
+   */
+  public static final class Builder extends AbstractModelObject.Builder {
+    private Date addedAt;
+    private Episode episode;
+
+    public Builder() {
+      super();
+    }
+
+    public Builder setAddedAt(Date addedAt) {
+      this.addedAt = addedAt;
+      return this;
+    }
+
+    public Builder setEpisode(Episode episode) {
+      this.episode = episode;
+      return this;
+    }
+
+    @Override
+    public SavedEpisode build() {
+      return new SavedEpisode(this);
+    }
+  }
+
+  /**
+   * JsonUtil class for building {@link SavedEpisode} instances.
+   */
+  public static final class JsonUtil extends AbstractModelObject.JsonUtil<SavedEpisode> {
+
+    public JsonUtil() {
+      super();
+    }
+
+  }
+}

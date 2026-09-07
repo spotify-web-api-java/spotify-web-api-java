@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.requests.authorization.authorization_code;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import org.apache.hc.core5.http.ContentType;
 import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.SpotifyApi;
@@ -15,7 +14,6 @@ import java.io.IOException;
  * <a href="https://developer.spotify.com/documentation/web-api/tutorials/code-flow">
  * Authorization Code Refresh</a> request.
  */
-@JsonDeserialize(builder = AuthorizationCodeRefreshRequest.Builder.class)
 public class AuthorizationCodeRefreshRequest extends AbstractAuthorizationRequest<AuthorizationCodeCredentials> {
 
   private AuthorizationCodeRefreshRequest(Builder builder) {

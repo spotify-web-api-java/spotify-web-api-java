@@ -1,7 +1,5 @@
 package se.michaelthelin.spotify.model_objects.specification;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 
 /**
@@ -9,7 +7,6 @@ import se.michaelthelin.spotify.model_objects.AbstractModelObject;
  * <a href="https://developer.spotify.com/web-api/object-model/#followers-object">Follower objects</a>
  * by building instances from this class.
  */
-@JsonDeserialize(builder = Followers.Builder.class)
 public class Followers extends AbstractModelObject {
   /** This will always be set to null, as the Web API does not support it at the moment. */
   private final String href;
@@ -59,31 +56,15 @@ public class Followers extends AbstractModelObject {
     private String href;
     private Integer total;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
 
-    /**
-     * The href setter.
-     *
-     * @param href A link to the Web API endpoint providing full details of the followers; {@code null} if not
-     *             available.
-     * @return A {@link Followers.Builder}.
-     */
     public Builder setHref(String href) {
       this.href = href;
       return this;
     }
 
-    /**
-     * The follower count setter.
-     *
-     * @param total The total number of followers.
-     * @return A {@link Followers.Builder}.
-     */
     public Builder setTotal(Integer total) {
       this.total = total;
       return this;
@@ -100,28 +81,9 @@ public class Followers extends AbstractModelObject {
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<Followers> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }
 
-    public Followers createModelObject(JsonObject jsonObject) {
-      if (jsonObject == null || jsonObject.isJsonNull()) {
-        return null;
-      }
-
-      return new Followers.Builder()
-        .setHref(
-          hasAndNotNull(jsonObject, "href")
-            ? jsonObject.get("href").getAsString()
-            : null)
-        .setTotal(
-          hasAndNotNull(jsonObject, "total")
-            ? jsonObject.get("total").getAsInt()
-            : null)
-        .build();
-    }
   }
 }

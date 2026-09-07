@@ -1,7 +1,5 @@
 package se.michaelthelin.spotify.model_objects.specification;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 
 import java.util.Arrays;
@@ -11,7 +9,6 @@ import java.util.Objects;
  * Retrieve information about <a href="https://developer.spotify.com/web-api/object-model/#category-object">
  * Category objects</a> by building instances from this class.
  */
-@JsonDeserialize(builder = Category.Builder.class)
 public class Category extends AbstractModelObject {
   /** A link to the Web API endpoint returning full details of the category. */
   private final String href;
@@ -87,52 +84,25 @@ public class Category extends AbstractModelObject {
     private String id;
     private String name;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
 
-    /**
-     * The category href setter.
-     *
-     * @param href A link to the Spotify Web API endpoint returning full details of the category.
-     * @return A Category builder.
-     */
     public Builder setHref(String href) {
       this.href = href;
       return this;
     }
 
-    /**
-     * The category icon setter.
-     *
-     * @param icons The category icon, in various sizes.
-     * @return A Category builder.
-     */
     public Builder setIcons(Image... icons) {
       this.icons = icons;
       return this;
     }
 
-    /**
-     * The category ID setter.
-     *
-     * @param id The Spotify category ID of the category.
-     * @return A Category builder.
-     */
     public Builder setId(String id) {
       this.id = id;
       return this;
     }
 
-    /**
-     * The category name setter.
-     *
-     * @param name The name of the category.
-     * @return A Category builder.
-     */
     public Builder setName(String name) {
       this.name = name;
       return this;
@@ -149,38 +119,10 @@ public class Category extends AbstractModelObject {
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<Category> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }
 
-    public Category createModelObject(JsonObject jsonObject) {
-      if (jsonObject == null || jsonObject.isJsonNull()) {
-        return null;
-      }
-
-      return new Category.Builder()
-        .setHref(
-          hasAndNotNull(jsonObject, "href")
-            ? jsonObject.get("href").getAsString()
-            : null)
-        .setIcons(
-          hasAndNotNull(jsonObject, "icons")
-            ? new Image.JsonUtil().createModelObjectArray(
-            jsonObject.getAsJsonArray("icons"))
-            : null)
-        .setId(
-          hasAndNotNull(jsonObject, "id")
-            ? jsonObject.get("id").getAsString()
-            : null)
-        .setName(
-          hasAndNotNull(jsonObject, "name")
-            ? jsonObject.get("name").getAsString()
-            : null)
-        .build();
-    }
   }
 
   @Override

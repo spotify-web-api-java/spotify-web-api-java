@@ -1,7 +1,5 @@
 package se.michaelthelin.spotify.model_objects.special;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 import se.michaelthelin.spotify.model_objects.specification.Disallows;
 
@@ -10,7 +8,6 @@ import se.michaelthelin.spotify.model_objects.specification.Disallows;
  * contain information to allow to update the user interface based on which playback actions are
  * available within the current context. These objects contain a {@link Disallows} object.
  */
-@JsonDeserialize(builder = Actions.Builder.class)
 public class Actions extends AbstractModelObject {
   /** Actions that are disallowed in the current context. */
   private final Disallows disallows;
@@ -50,19 +47,10 @@ public class Actions extends AbstractModelObject {
   public static final class Builder extends AbstractModelObject.Builder {
     private Disallows disallows;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
 
-    /**
-     * Set the Disallows object of the Actions object to be built.
-     *
-     * @param disallows The {@link Disallows} object.
-     * @return A {@link Actions.Builder}.
-     */
     public Builder setDisallows(Disallows disallows) {
       this.disallows = disallows;
       return this;
@@ -79,27 +67,10 @@ public class Actions extends AbstractModelObject {
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<Actions> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }
 
-    @Override
-    public Actions createModelObject(JsonObject jsonObject) {
-      if (jsonObject == null || jsonObject.isJsonNull()) {
-        return null;
-      }
-
-      return new Builder()
-        .setDisallows(
-          hasAndNotNull(jsonObject, "disallows")
-            ? new Disallows.JsonUtil().createModelObject(
-            jsonObject.getAsJsonObject("disallows"))
-            : null)
-        .build();
-    }
   }
 
 }

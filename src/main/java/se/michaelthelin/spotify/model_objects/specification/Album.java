@@ -1,13 +1,10 @@
 package se.michaelthelin.spotify.model_objects.specification;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-import com.neovisionaries.i18n.CountryCode;
 import se.michaelthelin.spotify.enums.AlbumType;
 import se.michaelthelin.spotify.enums.ModelObjectType;
 import se.michaelthelin.spotify.enums.ReleaseDatePrecision;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
+import se.michaelthelin.spotify.model_objects.interfaces.IAlbum;
 
 import java.util.Arrays;
 import java.util.Objects;
@@ -16,14 +13,11 @@ import java.util.Objects;
  * Retrieve information about <a href="https://developer.spotify.com/web-api/object-model/#album-object-full">
  * Album objects</a> by building instances from this class.
  */
-@JsonDeserialize(builder = Album.Builder.class)
-public class Album extends AbstractModelObject {
+public class Album extends AbstractModelObject implements IAlbum {
   /** The type of the album. */
   private final AlbumType albumType;
   /** The artists who performed the album. */
   private final ArtistSimplified[] artists;
-  /** The markets in which the album is available. */
-  private final CountryCode[] availableMarkets;
   /** The copyright statements of the album. */
   private final Copyright[] copyrights;
   /** Known external IDs for the album. */
@@ -38,16 +32,16 @@ public class Album extends AbstractModelObject {
   private final String id;
   /** The cover art for the album in various sizes. */
   private final Image[] images;
-  /** The label for the album. */
+  /** The label associated with the album. */
   private final String label;
   /** The name of the album. */
   private final String name;
-  /** The popularity of the album (0-100). */
-  private final Integer popularity;
   /** The date the album was first released. */
   private final String releaseDate;
   /** The precision with which release_date value is known. */
   private final ReleaseDatePrecision releaseDatePrecision;
+  /** The number of tracks in the album. */
+  private final Integer totalTracks;
   /** The tracks of the album. */
   private final Paging<TrackSimplified> tracks;
   /** The object type: "album". */
@@ -60,7 +54,6 @@ public class Album extends AbstractModelObject {
 
     this.albumType = builder.albumType;
     this.artists = builder.artists;
-    this.availableMarkets = builder.availableMarkets;
     this.copyrights = builder.copyrights;
     this.externalIds = builder.externalIds;
     this.externalUrls = builder.externalUrls;
@@ -70,9 +63,9 @@ public class Album extends AbstractModelObject {
     this.images = builder.images;
     this.label = builder.label;
     this.name = builder.name;
-    this.popularity = builder.popularity;
     this.releaseDate = builder.releaseDate;
     this.releaseDatePrecision = builder.releaseDatePrecision;
+    this.totalTracks = builder.totalTracks;
     this.tracks = builder.tracks;
     this.type = builder.type;
     this.uri = builder.uri;
@@ -97,16 +90,6 @@ public class Album extends AbstractModelObject {
   }
 
   /**
-   * Get the country codes of all countries, in which the album is available.
-   *
-   * @return An array of <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2 country
-   * codes</a>.
-   */
-  public CountryCode[] getAvailableMarkets() {
-    return availableMarkets;
-  }
-
-  /**
    * Get all copyright texts of the album.
    *
    * @return An array of {@link Copyright} objects.
@@ -116,10 +99,10 @@ public class Album extends AbstractModelObject {
   }
 
   /**
-   * Get the external IDs of the album. <br>
+   * Get the external IDs of the album.<br>
    * Example: upc -&gt; "Universal Product Code".
    *
-   * @return An array of {@link ExternalId} objects.
+   * @return Known external IDs for the album.
    */
   public ExternalId getExternalIds() {
     return externalIds;
@@ -173,9 +156,9 @@ public class Album extends AbstractModelObject {
   }
 
   /**
-   * Get the label for the album.
+   * Get the label associated with the album.
    *
-   * @return The label for the album.
+   * @return The label associated with the album.
    */
   public String getLabel() {
     return label;
@@ -188,16 +171,6 @@ public class Album extends AbstractModelObject {
    */
   public String getName() {
     return name;
-  }
-
-  /**
-   * Get the popularity of the album in a range between 0 and 100. (higher = more popular) <br>
-   * The popularity of the album is based on the popularity of its individual tracks.
-   *
-   * @return The popularity of the album.
-   */
-  public Integer getPopularity() {
-    return popularity;
   }
 
   /**
@@ -216,6 +189,15 @@ public class Album extends AbstractModelObject {
    */
   public ReleaseDatePrecision getReleaseDatePrecision() {
     return releaseDatePrecision;
+  }
+
+  /**
+   * Get the total number of tracks in the album.
+   *
+   * @return The number of tracks in the album.
+   */
+  public Integer getTotalTracks() {
+    return totalTracks;
   }
 
   /**
@@ -248,11 +230,11 @@ public class Album extends AbstractModelObject {
   @Override
   public String toString() {
     return "Album(artists=" + Arrays.toString(artists) + ", name=" + name + ", albumType=" + albumType
-        + ", availableMarkets=" + Arrays.toString(availableMarkets) + ", copyrights=" + Arrays.toString(copyrights)
+        + ", copyrights=" + Arrays.toString(copyrights)
         + ", externalIds=" + externalIds + ", externalUrls=" + externalUrls + ", genres=" + Arrays.toString(genres)
-        + ", href=" + href + ", id=" + id + ", images=" + Arrays.toString(images) + ", label=" + label + ", popularity="
-        + popularity + ", releaseDate=" + releaseDate + ", releaseDatePrecision=" + releaseDatePrecision + ", tracks="
-        + tracks + ", type=" + type + ", uri=" + uri + ")";
+        + ", href=" + href + ", id=" + id + ", images=" + Arrays.toString(images) + ", label=" + label
+        + ", releaseDate=" + releaseDate + ", releaseDatePrecision=" + releaseDatePrecision + ", totalTracks="
+        + totalTracks + ", tracks=" + tracks + ", type=" + type + ", uri=" + uri + ")";
   }
 
   @Override
@@ -266,7 +248,6 @@ public class Album extends AbstractModelObject {
   public static final class Builder extends AbstractModelObject.Builder {
     private AlbumType albumType;
     private ArtistSimplified[] artists;
-    private CountryCode[] availableMarkets;
     private Copyright[] copyrights;
     private ExternalId externalIds;
     private ExternalUrl externalUrls;
@@ -276,215 +257,97 @@ public class Album extends AbstractModelObject {
     private Image[] images;
     private String label;
     private String name;
-    private Integer popularity;
     private String releaseDate;
     private ReleaseDatePrecision releaseDatePrecision;
+    private Integer totalTracks;
     private Paging<TrackSimplified> tracks;
     private ModelObjectType type;
     private String uri;
 
-    /**
-     * Default constructor.
-     */
     public Builder() {
       super();
     }
 
-    /**
-     * Set the type of the album to be built.
-     *
-     * @param albumType The {@link AlbumType}.
-     * @return A {@link Album.Builder}.
-     */
     public Builder setAlbumType(AlbumType albumType) {
       this.albumType = albumType;
       return this;
     }
 
-    /**
-     * Set the artists of the album to be built.
-     *
-     * @param artists {@link ArtistSimplified} objects.
-     * @return A {@link Album.Builder}.
-     */
     public Builder setArtists(ArtistSimplified... artists) {
       this.artists = artists;
       return this;
     }
 
-    /**
-     * Set the available markets of the album to be built.
-     *
-     * @param availableMarkets <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">
-     *                         ISO 3166-1 alpha-2 country codes</a>.
-     * @return A {@link Album.Builder}.
-     */
-    public Builder setAvailableMarkets(CountryCode... availableMarkets) {
-      this.availableMarkets = availableMarkets;
-      return this;
-    }
-
-    /**
-     * Set the copyrights of the album to be built.
-     *
-     * @param copyrights {@link Copyright} objects.
-     * @return A {@link Album.Builder}.
-     */
     public Builder setCopyrights(Copyright... copyrights) {
       this.copyrights = copyrights;
       return this;
     }
 
-    /**
-     * Set the external IDs of the album to be built.
-     *
-     * @param externalIds {@link ExternalId} object.
-     * @return A {@link Album.Builder}.
-     */
     public Builder setExternalIds(ExternalId externalIds) {
       this.externalIds = externalIds;
       return this;
     }
 
-    /**
-     * Set external URLs of the album to be built.
-     *
-     * @param externalUrls {@link ExternalUrl} object.
-     * @return A {@link Album.Builder}.
-     */
     public Builder setExternalUrls(ExternalUrl externalUrls) {
       this.externalUrls = externalUrls;
       return this;
     }
 
-    /**
-     * Set the genres of the album to be built.
-     *
-     * @param genres Genre names.
-     * @return A {@link Album.Builder}.
-     */
     public Builder setGenres(String... genres) {
       this.genres = genres;
       return this;
     }
 
-    /**
-     * Set href of Spotify Web API endpoint of the album to be built.
-     *
-     * @param href Spotify Web API endpoint URL.
-     * @return A {@link Album.Builder}.
-     */
     public Builder setHref(String href) {
       this.href = href;
       return this;
     }
 
-    /**
-     * Set album ID of the album to be built.
-     *
-     * @param id <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify album ID</a>.
-     * @return A {@link Album.Builder}.
-     */
     public Builder setId(String id) {
       this.id = id;
       return this;
     }
 
-    /**
-     * Set the cover art in different sizes of the album to be built.
-     *
-     * @param images {@link Image} objects.
-     * @return A {@link Album.Builder}.
-     */
     public Builder setImages(Image... images) {
       this.images = images;
       return this;
     }
 
-    /**
-     * Set the label of the album to be built.
-     *
-     * @param label The album label.
-     * @return A {@link Album.Builder}.
-     */
     public Builder setLabel(String label) {
       this.label = label;
       return this;
     }
 
-    /**
-     * Set the name of the album to be built.
-     *
-     * @param name The album name.
-     * @return A {@link Album.Builder}.
-     */
     public Builder setName(String name) {
       this.name = name;
       return this;
     }
 
-    /**
-     * Set the popularity of the album to be built.
-     *
-     * @param popularity The popularity of the album between 0 and 100.
-     * @return A {@link Album.Builder}.
-     */
-    public Builder setPopularity(Integer popularity) {
-      this.popularity = popularity;
-      return this;
-    }
-
-    /**
-     * Set the release date of the album to be built.
-     *
-     * @param releaseDate The release date of the album.
-     * @return A {@link Album.Builder}.
-     */
     public Builder setReleaseDate(String releaseDate) {
       this.releaseDate = releaseDate;
       return this;
     }
 
-    /**
-     * Set the release date precision of the album to be built.
-     *
-     * @param releaseDatePrecision The {@link ReleaseDatePrecision} of the album.
-     * @return A {@link Album.Builder}.
-     */
     public Builder setReleaseDatePrecision(ReleaseDatePrecision releaseDatePrecision) {
       this.releaseDatePrecision = releaseDatePrecision;
       return this;
     }
 
-    /**
-     * Set the tracks of the album to be built.
-     *
-     * @param tracks A {@link Paging} object containing {@link TrackSimplified} objects.
-     * @return A {@link Album.Builder}.
-     */
+    public Builder setTotalTracks(Integer totalTracks) {
+      this.totalTracks = totalTracks;
+      return this;
+    }
+
     public Builder setTracks(Paging<TrackSimplified> tracks) {
       this.tracks = tracks;
       return this;
     }
 
-    /**
-     * Set the type of the model object. In this case "album".
-     *
-     * @param type The {@link ModelObjectType}.
-     * @return A {@link Album.Builder}.
-     */
     public Builder setType(ModelObjectType type) {
       this.type = type;
       return this;
     }
 
-    /**
-     * Set the Spotify album URI of the album to be built.
-     *
-     * @param uri <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">
-     *            Spotify album URI</a>.
-     * @return A {@link Album.Builder}.
-     */
     public Builder setUri(String uri) {
       this.uri = uri;
       return this;
@@ -501,104 +364,10 @@ public class Album extends AbstractModelObject {
    */
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<Album> {
 
-    /**
-     * Default constructor.
-     */
     public JsonUtil() {
       super();
     }
 
-    public Album createModelObject(JsonObject jsonObject) {
-      if (jsonObject == null || jsonObject.isJsonNull()) {
-        return null;
-      }
-
-      return new Album.Builder()
-        .setAlbumType(
-          hasAndNotNull(jsonObject, "album_type")
-            ? AlbumType.keyOf(
-            jsonObject.get("album_type").getAsString().toLowerCase())
-            : null)
-        .setArtists(
-          hasAndNotNull(jsonObject, "artists")
-            ? new ArtistSimplified.JsonUtil().createModelObjectArray(
-            jsonObject.getAsJsonArray("artists"))
-            : null)
-        .setAvailableMarkets(
-          hasAndNotNull(jsonObject, "available_markets")
-            ? new Gson().fromJson(
-            jsonObject.getAsJsonArray("available_markets"), CountryCode[].class)
-            : null)
-        .setCopyrights(
-          hasAndNotNull(jsonObject, "copyrights")
-            ? new Copyright.JsonUtil().createModelObjectArray(
-            jsonObject.getAsJsonArray("copyrights"))
-            : null)
-        .setExternalIds(
-          hasAndNotNull(jsonObject, "external_ids")
-            ? new ExternalId.JsonUtil().createModelObject(
-            jsonObject.getAsJsonObject("external_ids"))
-            : null)
-        .setExternalUrls(
-          hasAndNotNull(jsonObject, "external_urls")
-            ? new ExternalUrl.JsonUtil().createModelObject(
-            jsonObject.getAsJsonObject("external_urls"))
-            : null)
-        .setGenres(
-          hasAndNotNull(jsonObject, "genres")
-            ? new Gson().fromJson(
-            jsonObject.getAsJsonArray("genres"), String[].class)
-            : null)
-        .setHref(
-          hasAndNotNull(jsonObject, "href")
-            ? jsonObject.get("href").getAsString()
-            : null)
-        .setId(
-          hasAndNotNull(jsonObject, "id")
-            ? jsonObject.get("id").getAsString()
-            : null)
-        .setImages(
-          hasAndNotNull(jsonObject, "images")
-            ? new Image.JsonUtil().createModelObjectArray(
-            jsonObject.getAsJsonArray("images"))
-            : null)
-        .setLabel(
-          hasAndNotNull(jsonObject, "label")
-            ? jsonObject.get("label").getAsString()
-            : null)
-        .setName(
-          hasAndNotNull(jsonObject, "name")
-            ? jsonObject.get("name").getAsString()
-            : null)
-        .setPopularity(
-          hasAndNotNull(jsonObject, "popularity")
-            ? jsonObject.get("popularity").getAsInt()
-            : null)
-        .setReleaseDate(
-          hasAndNotNull(jsonObject, "release_date")
-            ? jsonObject.get("release_date").getAsString()
-            : null)
-        .setReleaseDatePrecision(
-          hasAndNotNull(jsonObject, "release_date_precision")
-            ? ReleaseDatePrecision.keyOf(
-            jsonObject.get("release_date_precision").getAsString().toLowerCase())
-            : null)
-        .setTracks(
-          hasAndNotNull(jsonObject, "tracks")
-            ? new TrackSimplified.JsonUtil().createModelObjectPaging(
-            jsonObject.getAsJsonObject("tracks"))
-            : null)
-        .setType(
-          hasAndNotNull(jsonObject, "type")
-            ? ModelObjectType.keyOf(
-            jsonObject.get("type").getAsString().toLowerCase())
-            : null)
-        .setUri(
-          hasAndNotNull(jsonObject, "uri")
-            ? jsonObject.get("uri").getAsString()
-            : null)
-        .build();
-    }
   }
 
   @Override
@@ -610,12 +379,12 @@ public class Album extends AbstractModelObject {
       return false;
     }
     Album album = (Album) o;
-    return Objects.equals(id, album.id) && Objects.equals(label, album.label) && Objects.equals(name, album.name) &&
+    return Objects.equals(id, album.id) && Objects.equals(name, album.name) &&
       Objects.equals(releaseDate, album.releaseDate) && Objects.equals(uri, album.uri);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, label, name, releaseDate, uri);
+    return Objects.hash(id, name, releaseDate, uri);
   }
 }
