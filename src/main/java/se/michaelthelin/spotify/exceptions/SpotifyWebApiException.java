@@ -7,6 +7,9 @@ import org.apache.hc.core5.http.HttpException;
  */
 public class SpotifyWebApiException extends HttpException {
 
+  /** The reason from a player error response, e.g. {@code PREMIUM_REQUIRED}. */
+  private String reason;
+
   /**
    * Creates a new SpotifyWebApiException with no detail message.
    */
@@ -31,6 +34,25 @@ public class SpotifyWebApiException extends HttpException {
    */
   public SpotifyWebApiException(String message, Throwable cause) {
     super(message, cause);
+  }
+
+  /**
+   * Gets the reason from a player error response, e.g. {@code PREMIUM_REQUIRED} or
+   * {@code NO_ACTIVE_DEVICE}.
+   *
+   * @return the reason, or {@code null} if the error response did not contain one
+   */
+  public String getReason() {
+    return reason;
+  }
+
+  /**
+   * Sets the reason from a player error response.
+   *
+   * @param reason the reason
+   */
+  public void setReason(String reason) {
+    this.reason = reason;
   }
 
 }
