@@ -359,6 +359,7 @@ public class SpotifyHttpManager implements IHttpManager {
         ? EntityUtils.toString(httpResponse.getEntity(), "UTF-8")
         : null;
       String errorMessage = httpResponse.getReasonPhrase();
+      String reason = null;
 
       SpotifyApi.LOGGER.log(
         Level.FINE,
@@ -374,8 +375,16 @@ public class SpotifyHttpManager implements IHttpManager {
             if (jsonObject.has("error")) {
               if (jsonObject.has("error_description")) {
                 errorMessage = jsonObject.get("error_description").getAsString();
-              } else if (jsonObject.get("error").isJsonObject() && jsonObject.getAsJsonObject("error").has("message")) {
-                errorMessage = jsonObject.getAsJsonObject("error").get("message").getAsString();
+              } else if (jsonObject.get("error").isJsonObject()) {
+                JsonObject error = jsonObject.getAsJsonObject("error");
+
+                if (error.has("message")) {
+                  errorMessage = error.get("message").getAsString();
+                }
+
+                if (error.has("reason")) {
+                  reason = error.get("reason").getAsString();
+                }
               }
             }
           }
@@ -390,36 +399,41 @@ public class SpotifyHttpManager implements IHttpManager {
 
       switch (httpResponse.getCode()) {
         case HttpStatus.SC_BAD_REQUEST:
-          throw new BadRequestException(errorMessage);
+          throw withReason(new BadRequestException(errorMessage), reason);
         case HttpStatus.SC_UNAUTHORIZED:
-          throw new UnauthorizedException(errorMessage);
+          throw withReason(new UnauthorizedException(errorMessage), reason);
         case HttpStatus.SC_FORBIDDEN:
-          throw new ForbiddenException(errorMessage);
+          throw withReason(new ForbiddenException(errorMessage), reason);
         case HttpStatus.SC_NOT_FOUND:
-          throw new NotFoundException(errorMessage);
+          throw withReason(new NotFoundException(errorMessage), reason);
         case 429: // TOO_MANY_REQUESTS (additional status code, RFC 6585)
           // Sets "Retry-After" header as described at https://beta.developer.spotify.com/documentation/web-api/#rate-limiting
           Header header = httpResponse.getFirstHeader("Retry-After");
 
           if (header != null) {
-            throw new TooManyRequestsException(errorMessage, Integer.parseInt(header.getValue()));
+            throw withReason(new TooManyRequestsException(errorMessage, Integer.parseInt(header.getValue())), reason);
           } else {
-            throw new TooManyRequestsException(errorMessage);
+            throw withReason(new TooManyRequestsException(errorMessage), reason);
           }
         case HttpStatus.SC_INTERNAL_SERVER_ERROR:
-          throw new InternalServerErrorException(errorMessage);
+          throw withReason(new InternalServerErrorException(errorMessage), reason);
         case HttpStatus.SC_BAD_GATEWAY:
-          throw new BadGatewayException(errorMessage);
+          throw withReason(new BadGatewayException(errorMessage), reason);
         case HttpStatus.SC_SERVICE_UNAVAILABLE:
-          throw new ServiceUnavailableException(errorMessage);
+          throw withReason(new ServiceUnavailableException(errorMessage), reason);
         default:
           if (httpResponse.getCode() >= 400 && httpResponse.getCode() < 500) {
-            throw new BadRequestException(errorMessage);
+            throw withReason(new BadRequestException(errorMessage), reason);
           } else if (httpResponse.getCode() >= 500) {
-            throw new InternalServerErrorException(errorMessage);
+            throw withReason(new InternalServerErrorException(errorMessage), reason);
           }
           return responseBody;
       }
+    }
+
+    private static SpotifyWebApiException withReason(SpotifyWebApiException exception, String reason) {
+      exception.setReason(reason);
+      return exception;
     }
   }
 

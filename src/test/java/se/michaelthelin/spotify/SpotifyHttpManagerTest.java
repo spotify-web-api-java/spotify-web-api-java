@@ -3,6 +3,7 @@ package se.michaelthelin.spotify;
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 import org.apache.hc.core5.http.Header;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import se.michaelthelin.spotify.SpotifyHttpManager.Builder;
@@ -41,5 +42,34 @@ class SpotifyHttpManagerTest {
 
     Assertions.assertThrows(SpotifyWebApiException.class, () ->
       spotifyHttpManager.get(URI.create("http://localhost:9090/test/foo/"), new Header[0]));
+  }
+
+  @Test
+  public void exposesPlayerErrorReasonOnSpotifyWebApiException() {
+
+    stubFor(get("/test/foo/")
+      .willReturn(aResponse()
+        .withStatus(403)
+        .withBody("{\"error\": {\"status\": 403, \"message\": \"Player command failed: Premium required\", \"reason\": \"PREMIUM_REQUIRED\"}}")));
+
+    SpotifyWebApiException exception = Assertions.assertThrows(SpotifyWebApiException.class, () ->
+      spotifyHttpManager.get(URI.create("http://localhost:9090/test/foo/"), new Header[0]));
+
+    Assertions.assertEquals("Player command failed: Premium required", exception.getMessage());
+    Assertions.assertEquals("PREMIUM_REQUIRED", exception.getReason());
+  }
+
+  @Test
+  public void keepsReasonNullWhenErrorResponseHasNoReason() {
+
+    stubFor(get("/test/foo/")
+      .willReturn(aResponse()
+        .withStatus(403)
+        .withBody("{\"error\": {\"status\": 403, \"message\": \"Player command failed\"}}")));
+
+    SpotifyWebApiException exception = Assertions.assertThrows(SpotifyWebApiException.class, () ->
+      spotifyHttpManager.get(URI.create("http://localhost:9090/test/foo/"), new Header[0]));
+
+    Assertions.assertNull(exception.getReason());
   }
 }
