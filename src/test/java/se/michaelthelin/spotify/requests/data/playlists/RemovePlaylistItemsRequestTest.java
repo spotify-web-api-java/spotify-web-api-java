@@ -1,5 +1,9 @@
 package se.michaelthelin.spotify.requests.data.playlists;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import org.apache.hc.core5.http.ParseException;
 import org.junit.jupiter.api.Test;
 import se.michaelthelin.spotify.ITest;
@@ -12,6 +16,7 @@ import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static se.michaelthelin.spotify.Assertions.assertHasBodyParameter;
 import static se.michaelthelin.spotify.Assertions.assertHasHeader;
 
@@ -52,6 +57,29 @@ public class RemovePlaylistItemsRequestTest extends AbstractDataTest<SnapshotRes
   @Test
   public void shouldReturnDefault_async() throws ExecutionException, InterruptedException {
     shouldReturnDefault(defaultRequest.executeAsync().get());
+  }
+
+  @Test
+  public void shouldSerializeItemsAsJsonArray_notJsonString() {
+    JsonArray uris = new JsonArray();
+    JsonObject first = new JsonObject();
+    first.addProperty("uri", "spotify:track:01iyCAUm8EvOFqVWYJ3dVX");
+    uris.add(first);
+
+    RemovePlaylistItemsRequest request = ITest.SPOTIFY_API
+      .removePlaylistItems(ITest.ID_PLAYLIST, uris)
+      .snapshotId(ITest.SNAPSHOT_ID)
+      .build();
+
+    JsonElement items = JsonParser.parseString(
+      request.bodyParametersToJson(request.getBodyParameters())
+    ).getAsJsonObject().get("items");
+
+    // Regression: "items" used to be emitted as an escaped JSON string, which Spotify rejects.
+    assertTrue(items.isJsonArray(), "items must be a JSON array, not a string: " + items);
+    assertEquals(
+      "spotify:track:01iyCAUm8EvOFqVWYJ3dVX",
+      items.getAsJsonArray().get(0).getAsJsonObject().get("uri").getAsString());
   }
 
   public void shouldReturnDefault(final SnapshotResult snapshotResult) {

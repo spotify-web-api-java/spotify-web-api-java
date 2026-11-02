@@ -108,11 +108,14 @@ public abstract class AbstractRequest<T> implements IRequest<T> {
   public String bodyParametersToJson(List<NameValuePair> bodyParameters) {
     JsonObject jsonObject = new JsonObject();
 
-    // Parameters that should be parsed as their original types (not strings)
-    // These are parameters that accept Integer, Boolean, JsonArray, or JsonObject types
+    // Body parameters whose value is not a plain String (Integer, Boolean, JsonArray or JsonObject)
+    // and must be re-parsed into that JSON type. Every parameter that carries a non-String value has
+    // to be listed here; a name that is missing is emitted as a JSON string instead. "items" (remove
+    // playlist items) was one of those until it was added. To drop this list, preserve the value's
+    // runtime type in setBodyParameter and serialize by type here instead.
     java.util.Set<String> numericAndStructuredParams = java.util.Set.of(
-      "collaborative", "device_ids", "ids", "insert_before", "offset", 
-      "play", "position", "position_ms", "public", "range_length", 
+      "collaborative", "device_ids", "ids", "insert_before", "items", "offset",
+      "play", "position", "position_ms", "public", "range_length",
       "range_start", "tracks", "uris"
     );
 
