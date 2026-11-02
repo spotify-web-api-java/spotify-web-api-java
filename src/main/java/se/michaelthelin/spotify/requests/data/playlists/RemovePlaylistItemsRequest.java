@@ -1,6 +1,7 @@
 package se.michaelthelin.spotify.requests.data.playlists;
 
 import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import org.apache.hc.core5.http.ContentType;
 import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
@@ -8,6 +9,7 @@ import se.michaelthelin.spotify.model_objects.special.SnapshotResult;
 import se.michaelthelin.spotify.requests.data.AbstractDataRequest;
 
 import java.io.IOException;
+import java.util.Collection;
 
 /**
  * Remove one or more items from a user’s playlist.
@@ -92,6 +94,32 @@ public class RemovePlaylistItemsRequest extends AbstractDataRequest<SnapshotResu
       assert (!tracks.isJsonNull());
       assert (tracks.size() <= 100);
       return setBodyParameter("items", tracks);
+    }
+
+    /**
+     * The item URIs setter.
+     * <p>
+     * Convenience overload of {@link #tracks(JsonArray)} for removing every occurrence of the given
+     * items. Each URI is wrapped into the {@code { "uri": ... } } object the API expects, so callers
+     * do not have to build a {@link JsonArray} themselves. Use {@link #tracks(JsonArray)} to remove
+     * only specific occurrences via the {@code positions} field.
+     *
+     * @param tracks Required. The Spotify URIs of the items to remove. A maximum of 100 URIs can be
+     *               sent at once.
+     * @return A {@link RemovePlaylistItemsRequest.Builder}.
+     * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URIs &amp; IDs</a>
+     */
+    public Builder tracks(final Collection<String> tracks) {
+      assert (tracks != null);
+      assert (!tracks.isEmpty());
+      assert (tracks.size() <= 100);
+      JsonArray array = new JsonArray();
+      for (String uri : tracks) {
+        JsonObject item = new JsonObject();
+        item.addProperty("uri", uri);
+        array.add(item);
+      }
+      return tracks(array);
     }
 
     /**
