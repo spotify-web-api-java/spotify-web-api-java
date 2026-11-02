@@ -68,6 +68,7 @@ import se.michaelthelin.spotify.requests.data.users.GetUsersTopArtistsAndTracksR
 import java.net.URI;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Collection;
 import java.util.Date;
 import java.util.TimeZone;
 import java.util.logging.Logger;
@@ -1832,6 +1833,22 @@ public class SpotifyApi {
    */
   public RemovePlaylistItemsRequest.Builder removePlaylistItems(
     String playlist_id, JsonArray tracks) {
+    return new RemovePlaylistItemsRequest.Builder(accessToken)
+      .setDefaults(httpManager, scheme, host, port)
+      .playlist_id(playlist_id)
+      .tracks(tracks);
+  }
+
+  /**
+   * Delete items from a playlist
+   *
+   * @param playlist_id The playlists ID.
+   * @param tracks      URIs of the items to remove. Maximum: 100 track or episode URIs.
+   * @return A {@link RemovePlaylistItemsRequest.Builder}.
+   * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URLs &amp; IDs</a>
+   */
+  public RemovePlaylistItemsRequest.Builder removePlaylistItems(
+    String playlist_id, Collection<String> tracks) {
     return new RemovePlaylistItemsRequest.Builder(accessToken)
       .setDefaults(httpManager, scheme, host, port)
       .playlist_id(playlist_id)

@@ -13,6 +13,7 @@ import se.michaelthelin.spotify.model_objects.special.SnapshotResult;
 import se.michaelthelin.spotify.requests.data.AbstractDataTest;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.concurrent.ExecutionException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -80,6 +81,23 @@ public class RemovePlaylistItemsRequestTest extends AbstractDataTest<SnapshotRes
     assertEquals(
       "spotify:track:01iyCAUm8EvOFqVWYJ3dVX",
       items.getAsJsonArray().get(0).getAsJsonObject().get("uri").getAsString());
+  }
+
+  @Test
+  public void shouldWrapTrackUrisFromCollection() {
+    RemovePlaylistItemsRequest request = ITest.SPOTIFY_API
+      .removePlaylistItems(ITest.ID_PLAYLIST, Arrays.asList(
+        "spotify:track:01iyCAUm8EvOFqVWYJ3dVX",
+        "spotify:track:4iV5W9uYEdYUVa79Axb7Rh"))
+      .build();
+
+    JsonElement items = JsonParser.parseString(
+      request.bodyParametersToJson(request.getBodyParameters())
+    ).getAsJsonObject().get("items");
+
+    assertEquals(
+      "[{\"uri\":\"spotify:track:01iyCAUm8EvOFqVWYJ3dVX\"},{\"uri\":\"spotify:track:4iV5W9uYEdYUVa79Axb7Rh\"}]",
+      items.toString());
   }
 
   public void shouldReturnDefault(final SnapshotResult snapshotResult) {
