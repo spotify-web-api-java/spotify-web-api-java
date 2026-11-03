@@ -49,6 +49,9 @@ To add a new Spotify API endpoint, follow these steps:
 
 Create `src/main/java/se/michaelthelin/spotify/requests/data/<category>/<EndpointName>Request.java`.
 
+If the operation only uses what `codegen/generate-requests.py` supports, list it in `codegen/requests.yaml` and run the script instead of writing the class by hand; CI fails when a listed class differs from what the script produces, so never edit one by hand.
+`./codegen/survey.py` shows which existing requests the generator can already produce and why the others cannot.
+
 Key patterns:
 - Extend `AbstractDataRequest<ReturnType>` (or `AbstractDataPagingRequest` for paginated results).
 - Implement `execute()` which calls `getJson()`, `postJson()`, `putJson()`, or `deleteJson()` as appropriate.

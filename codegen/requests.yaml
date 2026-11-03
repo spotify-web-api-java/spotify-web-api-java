@@ -1,0 +1,27 @@
+# Request classes generated from spec/openapi.yaml by codegen/generate-requests.py.
+#
+# Each entry names a request class and the spec operation it implements. Everything else, namely the
+# verb, path, parameters, their types and documentation, the deprecation and the response parsing, is
+# read from the spec. An entry only says more where the spec cannot express what this library does.
+#
+# Optional keys per request:
+#   params:   the spec parameters to expose, in this order (default: all query and path parameters)
+#   returns:  the model class, where the spec schema name does not map onto it by convention
+
+albums:
+  CheckUsersSavedAlbumsRequest:
+    operation: check-users-saved-albums
+  GetAlbumRequest:
+    operation: get-an-album
+  GetAlbumTracksRequest:
+    operation: get-an-albums-tracks
+  GetNewReleasesRequest:
+    operation: get-new-releases
+  GetSeveralAlbumsRequest:
+    operation: get-multiple-albums
+  GetUsersSavedAlbumsRequest:
+    operation: get-users-saved-albums
+  RemoveAlbumsForCurrentUserRequest:
+    operation: remove-albums-user
+  SaveAlbumsForCurrentUserRequest:
+    operation: save-albums-user

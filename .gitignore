@@ -7,3 +7,4 @@ target/
 
 ### Project
 src/main/java/se/michaelthelin/spotify/Main.java
+__pycache__/

@@ -64,6 +64,12 @@ jobs:
           mvn -B japicmp:cmp -Dapi.baseline="$baseline" -Dapi.breakOnIncompatible="$break_on_incompatible" || status=$?
           if [ -f target/japicmp/default-cli.md ]; then cat target/japicmp/default-cli.md >> "$GITHUB_STEP_SUMMARY"; fi
           exit $status
+      - name: Check generated request classes
+        # the classes listed in codegen/requests.yaml are generated from spec/openapi.yaml; a hand edit or a spec
+        # update without regenerating fails here
+        run: |
+          python3 -m pip install --quiet pyyaml==6.0.2
+          ./codegen/generate-requests.py --check
       - name: Check documentation consistency
         run: ./ci/check-docs.py
       - name: Build Javadoc
