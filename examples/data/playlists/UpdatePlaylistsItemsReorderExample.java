@@ -22,7 +22,9 @@ public class UpdatePlaylistsItemsReorderExample {
     .setAccessToken(accessToken)
     .build();
   private static final UpdatePlaylistsItemsReorderRequest reorderPlaylistsItemsRequest = spotifyApi.
-    updatePlaylistsItemsReorder(playlistId, rangeStart, insertBefore)
+    updatePlaylistsItemsReorder(playlistId)
+    .range_start(rangeStart)
+    .insert_before(insertBefore)
 //          .range_length(rangeLength)
 //          .snapshot_id("JbtmHBDBAYu3/bt8BOXKjzKx3i0b6LCa/wVjyl6qQ2Yf6nFXkbmzuEa+ZI/U1yF+")
     .build();
