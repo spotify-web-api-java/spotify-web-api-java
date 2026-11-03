@@ -1,5 +1,6 @@
 package se.michaelthelin.spotify.requests.data;
 
+import se.michaelthelin.spotify.internal.Preconditions;
 import se.michaelthelin.spotify.requests.AbstractRequest;
 
 /**
@@ -32,8 +33,7 @@ public abstract class AbstractDataRequest<T> extends AbstractRequest<T> {
     protected Builder(String accessToken) {
       super();
 
-      assert (accessToken != null);
-      assert (!accessToken.isEmpty());
+      Preconditions.assertNotEmpty(accessToken);
 
       setHeader("Authorization", "Bearer " + accessToken);
     }

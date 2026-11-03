@@ -5,6 +5,7 @@ import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.SpotifyApi;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.internal.ModelObjectJson;
+import se.michaelthelin.spotify.internal.Preconditions;
 import se.michaelthelin.spotify.model_objects.credentials.AuthorizationCodeCredentials;
 import se.michaelthelin.spotify.requests.authorization.AbstractAuthorizationRequest;
 
@@ -72,8 +73,7 @@ public class AuthorizationCodeRequest extends AbstractAuthorizationRequest<Autho
      * @return An {@link AuthorizationCodeRequest.Builder}.
      */
     public Builder code(final String code) {
-      assert (code != null);
-      assert (!code.isEmpty());
+      Preconditions.assertNotEmpty(code);
       return setBodyParameter("code", code);
     }
 

@@ -2,6 +2,7 @@ package se.michaelthelin.spotify.requests.authorization.authorization_code;
 
 import se.michaelthelin.spotify.SpotifyApi;
 import se.michaelthelin.spotify.enums.AuthorizationScope;
+import se.michaelthelin.spotify.internal.Preconditions;
 import se.michaelthelin.spotify.requests.AbstractRequest;
 
 import java.net.URI;
@@ -45,8 +46,7 @@ public class AuthorizationCodeUriRequest extends AbstractRequest<URI> {
      * @return An {@link AuthorizationCodeUriRequest.Builder}.
      */
     public Builder client_id(final String client_id) {
-      assert (client_id != null);
-      assert (!client_id.isEmpty());
+      Preconditions.assertNotEmpty(client_id);
       return setQueryParameter("client_id", client_id);
     }
 
@@ -103,8 +103,7 @@ public class AuthorizationCodeUriRequest extends AbstractRequest<URI> {
      * Authorization Code Flow with Proof Key for Code Exchange (PKCE)</a>
      */
     public Builder code_challenge(String code_challenge) {
-      assert (code_challenge != null);
-      assert (!code_challenge.isEmpty());
+      Preconditions.assertNotEmpty(code_challenge);
       return setQueryParameter("code_challenge", code_challenge);
     }
 
@@ -121,8 +120,7 @@ public class AuthorizationCodeUriRequest extends AbstractRequest<URI> {
      * @see <a href="https://tools.ietf.org/html/rfc6749#section-10.12">RFC 6749: Cross-Site Request Forgery</a>
      */
     public Builder state(final String state) {
-      assert (state != null);
-      assert (!state.isEmpty());
+      Preconditions.assertNotEmpty(state);
       return setQueryParameter("state", state);
     }
 
@@ -136,8 +134,7 @@ public class AuthorizationCodeUriRequest extends AbstractRequest<URI> {
      * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/scopes">Spotify: Using Scopes</a>
      */
     public Builder scope(final String scope) {
-      assert (scope != null);
-      assert (!scope.isEmpty());
+      Preconditions.assertNotEmpty(scope);
       return setQueryParameter("scope", scope);
     }
 

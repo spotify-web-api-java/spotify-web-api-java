@@ -5,6 +5,7 @@ import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.SpotifyApi;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.internal.ModelObjectJson;
+import se.michaelthelin.spotify.internal.Preconditions;
 import se.michaelthelin.spotify.model_objects.credentials.AuthorizationCodeCredentials;
 import se.michaelthelin.spotify.requests.AbstractRequest;
 
@@ -55,8 +56,7 @@ public class AuthorizationCodePKCERequest extends AbstractRequest<AuthorizationC
      * @return An {@link AuthorizationCodePKCERequest.Builder}.
      */
     public Builder client_id(final String client_id) {
-      assert (client_id != null);
-      assert (!client_id.isEmpty());
+      Preconditions.assertNotEmpty(client_id);
       return setBodyParameter("client_id", client_id);
     }
 
@@ -81,8 +81,7 @@ public class AuthorizationCodePKCERequest extends AbstractRequest<AuthorizationC
      * @return An {@link AuthorizationCodePKCERequest.Builder}.
      */
     public Builder code(final String code) {
-      assert (code != null);
-      assert (!code.isEmpty());
+      Preconditions.assertNotEmpty(code);
       return setBodyParameter("code", code);
     }
 
@@ -108,8 +107,7 @@ public class AuthorizationCodePKCERequest extends AbstractRequest<AuthorizationC
      *      Authorization Code Flow with Proof Key for Code Exchange (PKCE)</a>
      */
     public Builder code_verifier(String code_verifier) {
-      assert (code_verifier != null);
-      assert (!code_verifier.isEmpty());
+      Preconditions.assertNotEmpty(code_verifier);
       return setBodyParameter("code_verifier", code_verifier);
     }
 
