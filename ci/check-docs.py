@@ -113,11 +113,16 @@ def current_api():
 def check_migration_guide():
     """The guide's current-API side must still resolve, so a later rename cannot leave it lying.
 
-    Columns headed "v9" and code lines under a `// v9` marker describe a released past and are read as-is.
+    Columns headed with an older major version (e.g. "v9" or "v10" while the library is on 11) and code lines
+    under a marker like `// v10` describe a released past and are read as-is.
     This proves the names exist and that their ⚠️ matches the code; it cannot prove a mapping is the right one.
     """
     packages, classes, methods, members = current_api()
     text = MIGRATION.read_text()
+    major = int(re.search(r"<version>(\d+)\.", (ROOT / "pom.xml").read_text()).group(1))
+
+    def past(label):
+        return any(int(n) < major for n in re.findall(r"\bv(\d+)\b", label))
     legacy = set()
     findings = []
 
@@ -142,7 +147,7 @@ def check_migration_guide():
             if re.fullmatch(r"\s*// v\d+", line):
                 marker = line.strip()
             for method in re.findall(r"spotifyApi\.(\w+)\(", line):
-                if marker == "// v9":
+                if marker and past(marker):
                     legacy.add(method)
                 elif method not in methods:
                     findings.append((number, f"`spotifyApi.{method}` does not exist"))
@@ -153,7 +158,7 @@ def check_migration_guide():
             continue
         cells = [c.strip() for c in line.strip("|").split("|")]
         if not header:
-            header = ["v9" in c for c in cells]
+            header = [past(c) for c in cells]
             continue
         if set("".join(cells)) <= set("-: "):
             continue
@@ -180,7 +185,7 @@ def check_migration_guide():
                 continue
             name = re.match(r"[A-Za-z_][A-Za-z0-9_]*", token).group(0)
             if name not in legacy and token.split("(")[0] not in legacy and not resolve(token):
-                findings.append((number, f"`{token}` does not exist and no table lists it as a v9 name"))
+                findings.append((number, f"`{token}` does not exist and no table lists it as a past version's name"))
 
     for target in re.findall(r"\]\((?!http)([^)#]+)", text):
         if not (ROOT / target).exists():

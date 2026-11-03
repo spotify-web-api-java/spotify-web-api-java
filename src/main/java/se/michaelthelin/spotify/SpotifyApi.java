@@ -1,7 +1,5 @@
 package se.michaelthelin.spotify;
 
-import com.google.gson.JsonArray;
-import se.michaelthelin.spotify.enums.ModelObjectType;
 import se.michaelthelin.spotify.model_objects.specification.Artist;
 import se.michaelthelin.spotify.model_objects.specification.Track;
 import se.michaelthelin.spotify.requests.authorization.authorization_code.AuthorizationCodeRefreshRequest;
@@ -10,18 +8,12 @@ import se.michaelthelin.spotify.requests.authorization.authorization_code.Author
 import se.michaelthelin.spotify.requests.authorization.authorization_code.pkce.AuthorizationCodePKCERefreshRequest;
 import se.michaelthelin.spotify.requests.authorization.authorization_code.pkce.AuthorizationCodePKCERequest;
 import se.michaelthelin.spotify.requests.authorization.client_credentials.ClientCredentialsRequest;
-import se.michaelthelin.spotify.requests.data.artists.*;
-import se.michaelthelin.spotify.requests.data.categories.*;
 import se.michaelthelin.spotify.requests.data.users.interfaces.IArtistTrackModelObject;
-import se.michaelthelin.spotify.requests.data.player.*;
-import se.michaelthelin.spotify.requests.data.playlists.*;
-import se.michaelthelin.spotify.requests.data.search.simplified.*;
-import se.michaelthelin.spotify.requests.data.tracks.*;
+import se.michaelthelin.spotify.requests.data.playlists.AddCustomPlaylistCoverImageRequest;
 import se.michaelthelin.spotify.requests.data.users.GetUsersTopArtistsAndTracksRequest;
 import java.net.URI;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Collection;
 import java.util.Date;
 import java.util.TimeZone;
 import java.util.logging.Logger;

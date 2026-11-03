@@ -38,6 +38,8 @@ A complete contribution includes the following features:
 Make sure that your contribution embeds well into the already existing code. For example, the unified folder/package
 structure must be used wherever possible.
 
+The data request classes and the `SpotifyApi` methods that create them are generated from `spec/openapi.yaml` by `codegen/generate.py`, so a new endpoint is one line in `codegen/requests.yaml` plus a run of that script, and a generated file is never edited by hand. [AGENTS.md](AGENTS.md#adding-a-new-endpoint) describes the steps.
+
 The library is an explicit Java module, so a class in a **new** package is unreachable for callers until that package is added to `exports` in `src/main/java/module-info.java`.
 The examples are compiled as a separate module against the built library, which is what turns a forgotten `exports` into a build failure here rather than in someone else's project.
 
