@@ -5,6 +5,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import org.apache.hc.core5.http.ParseException;
+import org.apache.hc.core5.http.io.entity.EntityUtils;
 import org.junit.jupiter.api.Test;
 import se.michaelthelin.spotify.ITest;
 import se.michaelthelin.spotify.TestUtil;
@@ -61,7 +62,7 @@ public class RemovePlaylistItemsRequestTest extends AbstractDataTest<SnapshotRes
   }
 
   @Test
-  public void shouldSerializeItemsAsJsonArray_notJsonString() {
+  public void shouldSerializeItemsAsJsonArray_notJsonString() throws IOException, ParseException {
     JsonArray uris = new JsonArray();
     JsonObject first = new JsonObject();
     first.addProperty("uri", "spotify:track:01iyCAUm8EvOFqVWYJ3dVX");
@@ -72,8 +73,9 @@ public class RemovePlaylistItemsRequestTest extends AbstractDataTest<SnapshotRes
       .snapshotId(ITest.SNAPSHOT_ID)
       .build();
 
+    request.initializeBody();
     JsonElement items = JsonParser.parseString(
-      request.bodyParametersToJson(request.getBodyParameters())
+      EntityUtils.toString(request.getBody())
     ).getAsJsonObject().get("items");
 
     // Regression: "items" used to be emitted as an escaped JSON string, which Spotify rejects.
@@ -84,15 +86,16 @@ public class RemovePlaylistItemsRequestTest extends AbstractDataTest<SnapshotRes
   }
 
   @Test
-  public void shouldWrapTrackUrisFromCollection() {
+  public void shouldWrapTrackUrisFromCollection() throws IOException, ParseException {
     RemovePlaylistItemsRequest request = ITest.SPOTIFY_API
       .removePlaylistItems(ITest.ID_PLAYLIST, Arrays.asList(
         "spotify:track:01iyCAUm8EvOFqVWYJ3dVX",
         "spotify:track:4iV5W9uYEdYUVa79Axb7Rh"))
       .build();
 
+    request.initializeBody();
     JsonElement items = JsonParser.parseString(
-      request.bodyParametersToJson(request.getBodyParameters())
+      EntityUtils.toString(request.getBody())
     ).getAsJsonObject().get("items");
 
     assertEquals(

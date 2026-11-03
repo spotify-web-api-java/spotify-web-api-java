@@ -2,8 +2,12 @@ package se.michaelthelin.spotify.requests.data.player;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import org.apache.hc.core5.http.ParseException;
+import org.apache.hc.core5.http.io.entity.EntityUtils;
 import org.junit.jupiter.api.Test;
 import se.michaelthelin.spotify.SpotifyApi;
+
+import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -14,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class StartUsersPlaybackRequestNumericTest {
 
     @Test
-    public void shouldPreserveNumericParametersAsNumbers() {
+    public void shouldPreserveNumericParametersAsNumbers() throws IOException, ParseException {
         // Create a request with numeric position_ms parameter
         StartResumePlaybackRequest request = new SpotifyApi.Builder()
             .setAccessToken("test-token")
@@ -23,8 +27,9 @@ public class StartUsersPlaybackRequestNumericTest {
             .position_ms(10000)
             .build();
 
-        // Generate the JSON body
-        String json = request.bodyParametersToJson(request.getBodyParameters());
+        // Build the body the same way the client sends it
+        request.initializeBody();
+        String json = EntityUtils.toString(request.getBody());
 
         // The JSON should contain unquoted number, not a string
         assertTrue(json.contains("\"position_ms\":10000"),
@@ -36,7 +41,7 @@ public class StartUsersPlaybackRequestNumericTest {
     }
 
     @Test
-    public void shouldPreserveBooleanParametersAsBooleans() {
+    public void shouldPreserveBooleanParametersAsBooleans() throws IOException, ParseException {
         // Create a request with JSON array uris
         JsonArray uris = new JsonArray();
         uris.add("spotify:track:test1");
@@ -49,8 +54,9 @@ public class StartUsersPlaybackRequestNumericTest {
             .uris(uris)
             .build();
 
-        // Generate the JSON body
-        String json = request.bodyParametersToJson(request.getBodyParameters());
+        // Build the body the same way the client sends it
+        request.initializeBody();
+        String json = EntityUtils.toString(request.getBody());
 
         // The JSON should contain a proper JSON array
         assertTrue(json.contains("\"uris\":["),
@@ -60,7 +66,7 @@ public class StartUsersPlaybackRequestNumericTest {
     }
 
     @Test
-    public void shouldPreserveJsonObjectParameters() {
+    public void shouldPreserveJsonObjectParameters() throws IOException, ParseException {
         // Create a request with JSON object offset
         JsonObject offset = new JsonObject();
         offset.addProperty("position", 5);
@@ -72,8 +78,9 @@ public class StartUsersPlaybackRequestNumericTest {
             .offset(offset)
             .build();
 
-        // Generate the JSON body
-        String json = request.bodyParametersToJson(request.getBodyParameters());
+        // Build the body the same way the client sends it
+        request.initializeBody();
+        String json = EntityUtils.toString(request.getBody());
 
         // The JSON should contain a proper JSON object
         assertTrue(json.contains("\"offset\":{"),
