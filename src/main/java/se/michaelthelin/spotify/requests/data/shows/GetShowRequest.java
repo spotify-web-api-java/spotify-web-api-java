@@ -3,6 +3,7 @@ package se.michaelthelin.spotify.requests.data.shows;
 import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.enums.CountryCode;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
+import se.michaelthelin.spotify.internal.ModelObjectJson;
 import se.michaelthelin.spotify.model_objects.specification.Show;
 import se.michaelthelin.spotify.requests.data.AbstractDataRequest;
 
@@ -34,7 +35,7 @@ public class GetShowRequest extends AbstractDataRequest<Show> {
     IOException,
     SpotifyWebApiException,
     ParseException {
-    return new Show.JsonUtil().createModelObject(getJson());
+    return ModelObjectJson.object(getJson(), Show.class);
   }
 
   /**

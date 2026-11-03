@@ -4,6 +4,7 @@ import org.apache.hc.core5.http.ContentType;
 import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.SpotifyApi;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
+import se.michaelthelin.spotify.internal.ModelObjectJson;
 import se.michaelthelin.spotify.model_objects.credentials.ClientCredentials;
 import se.michaelthelin.spotify.requests.authorization.AbstractAuthorizationRequest;
 
@@ -36,7 +37,7 @@ public class ClientCredentialsRequest extends AbstractAuthorizationRequest<Clien
     IOException,
     SpotifyWebApiException,
     ParseException {
-    return new ClientCredentials.JsonUtil().createModelObject(postJson());
+    return ModelObjectJson.object(postJson(), ClientCredentials.class);
   }
 
   /**

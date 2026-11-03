@@ -2,6 +2,7 @@ package se.michaelthelin.spotify.requests.data.users;
 
 import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
+import se.michaelthelin.spotify.internal.ModelObjectJson;
 import se.michaelthelin.spotify.model_objects.specification.User;
 import se.michaelthelin.spotify.requests.data.AbstractDataRequest;
 
@@ -32,7 +33,7 @@ public class GetCurrentUsersProfileRequest extends AbstractDataRequest<User> {
     IOException,
     SpotifyWebApiException,
     ParseException {
-    return new User.JsonUtil().createModelObject(getJson());
+    return ModelObjectJson.object(getJson(), User.class);
   }
 
   /**

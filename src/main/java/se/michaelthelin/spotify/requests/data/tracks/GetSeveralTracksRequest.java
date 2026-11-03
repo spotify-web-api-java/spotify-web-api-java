@@ -3,6 +3,7 @@ package se.michaelthelin.spotify.requests.data.tracks;
 import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.enums.CountryCode;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
+import se.michaelthelin.spotify.internal.ModelObjectJson;
 import se.michaelthelin.spotify.model_objects.specification.Track;
 import se.michaelthelin.spotify.requests.data.AbstractDataRequest;
 
@@ -36,7 +37,7 @@ public class GetSeveralTracksRequest extends AbstractDataRequest<Track[]> {
     IOException,
     SpotifyWebApiException,
     ParseException {
-    return new Track.JsonUtil().createModelObjectArray(getJson(), "tracks");
+    return ModelObjectJson.array(getJson(), "tracks", Track.class);
   }
 
   /**

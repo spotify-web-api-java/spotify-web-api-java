@@ -4,6 +4,7 @@ import com.google.gson.JsonArray;
 import org.apache.hc.core5.http.ContentType;
 import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
+import se.michaelthelin.spotify.internal.ModelObjectJson;
 import se.michaelthelin.spotify.model_objects.special.SnapshotResult;
 import se.michaelthelin.spotify.requests.data.AbstractDataRequest;
 
@@ -37,7 +38,7 @@ public class UpdatePlaylistsItemsReplaceRequest extends AbstractDataRequest<Snap
     IOException,
     SpotifyWebApiException,
     ParseException {
-    return new SnapshotResult.JsonUtil().createModelObject(putJson());
+    return ModelObjectJson.object(putJson(), SnapshotResult.class);
   }
 
   /**

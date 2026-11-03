@@ -2,6 +2,7 @@ package se.michaelthelin.spotify.model_objects;
 
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
+import se.michaelthelin.spotify.internal.ModelObjectGson;
 import se.michaelthelin.spotify.model_objects.specification.Paging;
 import se.michaelthelin.spotify.model_objects.specification.PagingCursorbased;
 
@@ -54,9 +55,8 @@ public abstract class AbstractModelObject implements IModelObject {
     /**
      * Deserializes a model object reflectively.
      * <p>
-     * Every model object whose JSON mirrors its fields inherits this. The three whose shape does
-     * not ({@code Disallows} and the two external-identifier maps) override it, and
-     * {@code ModelObjectGson} routes nested occurrences of those back through the override.
+     * The few model objects whose JSON does not mirror their fields are read by adapters registered on
+     * the shared Gson instance, so this covers them as well.
      *
      * @param jsonObject The JSON to read, which may be {@code null} or JSON null.
      * @return The model object, or {@code null}.

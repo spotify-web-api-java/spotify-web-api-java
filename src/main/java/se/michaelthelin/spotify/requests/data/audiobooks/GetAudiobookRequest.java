@@ -3,6 +3,7 @@ package se.michaelthelin.spotify.requests.data.audiobooks;
 import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.enums.CountryCode;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
+import se.michaelthelin.spotify.internal.ModelObjectJson;
 import se.michaelthelin.spotify.model_objects.specification.Audiobook;
 import se.michaelthelin.spotify.requests.data.AbstractDataRequest;
 
@@ -35,7 +36,7 @@ public class GetAudiobookRequest extends AbstractDataRequest<Audiobook> {
     IOException,
     SpotifyWebApiException,
     ParseException {
-    return new Audiobook.JsonUtil().createModelObject(getJson());
+    return ModelObjectJson.object(getJson(), Audiobook.class);
   }
 
   /**
