@@ -4,6 +4,7 @@ import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.enums.CountryCode;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.internal.ModelObjectJson;
+import se.michaelthelin.spotify.internal.Preconditions;
 import se.michaelthelin.spotify.model_objects.specification.Album;
 import se.michaelthelin.spotify.requests.data.AbstractDataRequest;
 
@@ -60,8 +61,7 @@ public class GetAlbumRequest extends AbstractDataRequest<Album> {
      * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify URIs &amp; IDs</a>
      */
     public Builder id(final String id) {
-      assert (id != null);
-      assert (!id.isEmpty());
+      Preconditions.assertNotEmpty(id);
       return setPathParameter("id", id);
     }
 

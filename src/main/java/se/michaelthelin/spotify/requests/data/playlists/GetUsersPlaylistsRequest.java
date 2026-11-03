@@ -3,6 +3,7 @@ package se.michaelthelin.spotify.requests.data.playlists;
 import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.internal.ModelObjectJson;
+import se.michaelthelin.spotify.internal.Preconditions;
 import se.michaelthelin.spotify.model_objects.specification.Paging;
 import se.michaelthelin.spotify.model_objects.specification.PlaylistSimplified;
 import se.michaelthelin.spotify.requests.data.AbstractDataPagingRequest;
@@ -66,8 +67,7 @@ public class GetUsersPlaylistsRequest extends AbstractDataRequest<Paging<Playlis
      * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URIs &amp; IDs</a>
      */
     public Builder user_id(final String user_id) {
-      assert (user_id != null);
-      assert (!user_id.isEmpty());
+      Preconditions.assertNotEmpty(user_id);
       return setPathParameter("user_id", user_id);
     }
 

@@ -4,6 +4,7 @@ import org.apache.hc.core5.http.ContentType;
 import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.internal.ModelObjectJson;
+import se.michaelthelin.spotify.internal.Preconditions;
 import se.michaelthelin.spotify.model_objects.specification.Playlist;
 import se.michaelthelin.spotify.requests.data.AbstractDataRequest;
 
@@ -64,8 +65,7 @@ public class CreatePlaylistRequest extends AbstractDataRequest<Playlist> {
      * @return A {@link CreatePlaylistRequest.Builder}.
      */
     public Builder name(final String name) {
-      assert (name != null);
-      assert (!name.isEmpty());
+      Preconditions.assertNotEmpty(name);
       return setBodyParameter("name", name);
     }
 
@@ -101,8 +101,7 @@ public class CreatePlaylistRequest extends AbstractDataRequest<Playlist> {
      * @return A {@link CreatePlaylistRequest.Builder}.
      */
     public Builder description(final String description) {
-      assert (description != null);
-      assert (!description.isEmpty());
+      Preconditions.assertNotEmpty(description);
       return setBodyParameter("description", description);
     }
 

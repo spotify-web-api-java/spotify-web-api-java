@@ -4,6 +4,7 @@ import org.apache.hc.core5.http.ContentType;
 import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.internal.ModelObjectJson;
+import se.michaelthelin.spotify.internal.Preconditions;
 import se.michaelthelin.spotify.model_objects.specification.Playlist;
 import se.michaelthelin.spotify.requests.data.AbstractDataRequest;
 
@@ -69,8 +70,7 @@ public class CreatePlaylistForUserRequest extends AbstractDataRequest<Playlist> 
      * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URIs &amp; IDs</a>
      */
     public Builder user_id(final String user_id) {
-      assert (user_id != null);
-      assert (!user_id.isEmpty());
+      Preconditions.assertNotEmpty(user_id);
       return setPathParameter("user_id", user_id);
     }
 
@@ -81,8 +81,7 @@ public class CreatePlaylistForUserRequest extends AbstractDataRequest<Playlist> 
      * @return A {@link CreatePlaylistForUserRequest.Builder}.
      */
     public Builder name(final String name) {
-      assert (name != null);
-      assert (!name.isEmpty());
+      Preconditions.assertNotEmpty(name);
       return setBodyParameter("name", name);
     }
 
@@ -113,8 +112,7 @@ public class CreatePlaylistForUserRequest extends AbstractDataRequest<Playlist> 
      * @return A {@link CreatePlaylistForUserRequest.Builder}.
      */
     public Builder description(final String description) {
-      assert (description != null);
-      assert (!description.isEmpty());
+      Preconditions.assertNotEmpty(description);
       return setBodyParameter("description", description);
     }
 
