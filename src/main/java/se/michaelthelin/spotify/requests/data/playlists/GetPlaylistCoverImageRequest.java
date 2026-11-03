@@ -2,6 +2,7 @@ package se.michaelthelin.spotify.requests.data.playlists;
 
 import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
+import se.michaelthelin.spotify.internal.ModelObjectJson;
 import se.michaelthelin.spotify.model_objects.specification.Image;
 import se.michaelthelin.spotify.requests.data.AbstractDataRequest;
 
@@ -32,7 +33,7 @@ public class GetPlaylistCoverImageRequest extends AbstractDataRequest<Image[]> {
     IOException,
     SpotifyWebApiException,
     ParseException {
-    return new Image.JsonUtil().createModelObjectArray(getJson());
+    return ModelObjectJson.array(getJson(), Image.class);
   }
 
   /**

@@ -3,6 +3,7 @@ package se.michaelthelin.spotify.requests.data.playlists;
 import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.enums.CountryCode;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
+import se.michaelthelin.spotify.internal.ModelObjectJson;
 import se.michaelthelin.spotify.model_objects.specification.Paging;
 import se.michaelthelin.spotify.model_objects.specification.PlaylistSimplified;
 import se.michaelthelin.spotify.requests.data.AbstractDataPagingRequest;
@@ -38,7 +39,7 @@ public class GetCategoryPlaylistsRequest extends AbstractDataRequest<Paging<Play
     IOException,
     SpotifyWebApiException,
     ParseException {
-    return new PlaylistSimplified.JsonUtil().createModelObjectPaging(getJson(), "playlists");
+    return ModelObjectJson.paging(getJson(), "playlists", PlaylistSimplified.class);
   }
 
   /**

@@ -1,16 +1,13 @@
 package se.michaelthelin.spotify.model_objects.special;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 import se.michaelthelin.spotify.model_objects.IModelObject;
 import se.michaelthelin.spotify.model_objects.IPlaylistItem;
 import se.michaelthelin.spotify.model_objects.miscellaneous.CurrentlyPlaying;
-import se.michaelthelin.spotify.model_objects.utils.PlaylistItemFactory;
 
 /**
  * Get the list of items that make up the user's queue.
@@ -88,39 +85,17 @@ public class PlaybackQueue extends AbstractModelObject {
   /**
    * JsonUtil class for building {@link PlaybackQueue} instances.
    */
-  // Do not delete this override: it returns an empty list for a missing "queue",
-  // where the inherited reflective createModelObject would leave the field null.
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<PlaybackQueue> {
 
     public JsonUtil() {
       super();
     }
 
+    // Kept only so callers compiled against this override, whose erased return type differs from the
+    // inherited one, still link. The model's JSON shape is handled by an adapter in ModelObjectGson.
+    @Override
     public PlaybackQueue createModelObject(JsonObject jsonObject) {
-      if (jsonObject == null || jsonObject.isJsonNull()) {
-        return null;
-      }
-
-      IPlaylistItem currentlyPlaying = hasAndNotNull(jsonObject, "currently_playing")
-        ? asPlaylistItem(jsonObject.getAsJsonObject("currently_playing"))
-        : null;
-
-      List<IPlaylistItem> queue = new ArrayList<>();
-      if (hasAndNotNull(jsonObject, "queue")) {
-        for (JsonElement jsonElement : jsonObject.getAsJsonArray("queue")) {
-          IPlaylistItem queueItem = asPlaylistItem(jsonElement.getAsJsonObject());
-          queue.add(queueItem);
-        }
-      }
-
-      return new PlaybackQueue.Builder()
-        .setCurrentlyPlaying(currentlyPlaying)
-        .setQueue(queue)
-        .build();
-    }
-
-    private IPlaylistItem asPlaylistItem(JsonObject trackObj) {
-      return PlaylistItemFactory.createPlaylistItem(trackObj);
+      return super.createModelObject(jsonObject);
     }
   }
 }

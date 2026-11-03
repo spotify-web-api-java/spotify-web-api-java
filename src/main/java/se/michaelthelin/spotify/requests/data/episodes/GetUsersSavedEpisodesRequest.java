@@ -3,6 +3,7 @@ package se.michaelthelin.spotify.requests.data.episodes;
 import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.enums.CountryCode;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
+import se.michaelthelin.spotify.internal.ModelObjectJson;
 import se.michaelthelin.spotify.model_objects.specification.Paging;
 import se.michaelthelin.spotify.model_objects.specification.SavedEpisode;
 import se.michaelthelin.spotify.requests.data.AbstractDataPagingRequest;
@@ -36,7 +37,7 @@ public class GetUsersSavedEpisodesRequest extends AbstractDataRequest<Paging<Sav
     IOException,
     SpotifyWebApiException,
     ParseException {
-    return new SavedEpisode.JsonUtil().createModelObjectPaging(getJson());
+    return ModelObjectJson.paging(getJson(), SavedEpisode.class);
   }
 
   /**

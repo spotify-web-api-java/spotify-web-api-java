@@ -3,6 +3,7 @@ package se.michaelthelin.spotify.requests.data.search.simplified;
 import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.enums.CountryCode;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
+import se.michaelthelin.spotify.internal.ModelObjectJson;
 import se.michaelthelin.spotify.model_objects.specification.Artist;
 import se.michaelthelin.spotify.model_objects.specification.Paging;
 import se.michaelthelin.spotify.requests.data.AbstractDataPagingRequest;
@@ -35,7 +36,7 @@ public class SearchArtistsRequest extends AbstractDataRequest<Paging<Artist>> {
     IOException,
     SpotifyWebApiException,
     ParseException {
-    return new Artist.JsonUtil().createModelObjectPaging(getJson(), "artists");
+    return ModelObjectJson.paging(getJson(), "artists", Artist.class);
   }
 
   /**

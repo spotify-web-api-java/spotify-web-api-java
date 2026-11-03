@@ -1,13 +1,11 @@
 package se.michaelthelin.spotify.model_objects.specification;
 
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.enums.Action;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 import se.michaelthelin.spotify.model_objects.special.Actions;
 
 import java.util.EnumSet;
-import java.util.Map;
 
 /**
  * Retrieve information about
@@ -71,33 +69,17 @@ public class Disallows extends AbstractModelObject {
   /**
    * JsonUtil class for building {@link Disallows} instances.
    */
-  // Do not delete this override: ModelObjectGson registers an adapter for Disallows that
-  // delegates here, and the inherited reflective createModelObject would call that
-  // adapter straight back into this class.
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<Disallows> {
 
     public JsonUtil() {
       super();
     }
 
+    // Kept only so callers compiled against this override, whose erased return type differs from the
+    // inherited one, still link. The model's JSON shape is handled by an adapter in ModelObjectGson.
     @Override
     public Disallows createModelObject(JsonObject jsonObject) {
-      if (jsonObject == null || jsonObject.isJsonNull()) {
-        return null;
-      }
-
-      EnumSet<Action> disallowedActions = EnumSet.noneOf(Action.class);
-      for (Map.Entry<String, JsonElement> entry : jsonObject.entrySet()) {
-        if (entry.getValue().getAsJsonPrimitive().getAsBoolean()) {
-          disallowedActions.add(
-            Action.keyOf(entry.getKey().toLowerCase()));
-        }
-      }
-
-      return new Builder()
-        .setDisallowedActions(
-          disallowedActions)
-        .build();
+      return super.createModelObject(jsonObject);
     }
   }
 

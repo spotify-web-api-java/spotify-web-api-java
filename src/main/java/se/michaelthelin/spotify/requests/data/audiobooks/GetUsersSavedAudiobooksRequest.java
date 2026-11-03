@@ -2,6 +2,7 @@ package se.michaelthelin.spotify.requests.data.audiobooks;
 
 import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
+import se.michaelthelin.spotify.internal.ModelObjectJson;
 import se.michaelthelin.spotify.model_objects.specification.AudiobookSimplified;
 import se.michaelthelin.spotify.model_objects.specification.Paging;
 import se.michaelthelin.spotify.requests.data.AbstractDataPagingRequest;
@@ -34,7 +35,7 @@ public class GetUsersSavedAudiobooksRequest extends AbstractDataRequest<Paging<A
     IOException,
     SpotifyWebApiException,
     ParseException {
-    return new AudiobookSimplified.JsonUtil().createModelObjectPaging(getJson());
+    return ModelObjectJson.paging(getJson(), AudiobookSimplified.class);
   }
 
   /**

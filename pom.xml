@@ -145,6 +145,10 @@
             <breakBuildOnBinaryIncompatibleModifications>${api.breakOnIncompatible}</breakBuildOnBinaryIncompatibleModifications>
             <breakBuildOnSourceIncompatibleModifications>${api.breakOnIncompatible}</breakBuildOnSourceIncompatibleModifications>
             <onlyModified>true</onlyModified>
+            <excludes>
+              <!-- not exported from the module, so no caller can depend on it -->
+              <exclude>se.michaelthelin.spotify.internal</exclude>
+            </excludes>
           </parameter>
         </configuration>
       </plugin>
