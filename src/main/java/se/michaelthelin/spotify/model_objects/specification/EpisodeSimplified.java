@@ -380,7 +380,11 @@ public class EpisodeSimplified extends AbstractModelObject implements ISearchMod
 
   /**
    * JsonUtil class for building {@link EpisodeSimplified} instances.
+   *
+   * @deprecated Responses are deserialized by the library itself, so there is no need to call this.
+   *             It will be removed in the next major version.
    */
+  @Deprecated
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<EpisodeSimplified> {
 
     public JsonUtil() {

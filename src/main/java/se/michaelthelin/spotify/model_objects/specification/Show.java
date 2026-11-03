@@ -308,7 +308,11 @@ public class Show extends AbstractModelObject implements IShow {
 
   /**
    * JsonUtil class for building {@link Show} instances.
+   *
+   * @deprecated Responses are deserialized by the library itself, so there is no need to call this.
+   *             It will be removed in the next major version.
    */
+  @Deprecated
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<Show> {
 
     public JsonUtil() {

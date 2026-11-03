@@ -38,7 +38,10 @@ public interface IModelObject extends Serializable {
    * Interface with methods used in JsonUtil classes of model objects.
    *
    * @param <T> Type of the corresponding model object.
+   * @deprecated Responses are deserialized by the library itself, so there is no need to call this.
+   *             It will be removed in the next major version.
    */
+  @Deprecated
   interface IJsonUtil<T> {
 
     /**
