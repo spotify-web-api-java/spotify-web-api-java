@@ -50,6 +50,20 @@ jobs:
         # missing export fails here; clean, because an incremental build would reuse classes compiled
         # against the previous descriptor and report nothing
         run: mvn -B -f examples/pom.xml clean compile
+      - name: Check API compatibility
+        # compares the jar built above against the last stable release; HEAD^ so that on a release tag the baseline is
+        # the release before it, which is already on Maven Central, and RCs are skipped because they promise nothing
+        # a major version bump (the X.0.0-RCN line on beta) may break the API, so there the report is informational
+        run: |
+          baseline=$(git describe --tags --abbrev=0 --exclude '*-RC*' HEAD^)
+          version=$(mvn -B -q help:evaluate -Dexpression=project.version -DforceStdout)
+          break_on_incompatible=true
+          if [ "${version%%.*}" -gt "${baseline%%.*}" ]; then break_on_incompatible=false; fi
+          echo "Comparing $version against $baseline, failing on incompatible changes: $break_on_incompatible"
+          status=0
+          mvn -B japicmp:cmp -Dapi.baseline="$baseline" -Dapi.breakOnIncompatible="$break_on_incompatible" || status=$?
+          if [ -f target/japicmp/default-cli.md ]; then cat target/japicmp/default-cli.md >> "$GITHUB_STEP_SUMMARY"; fi
+          exit $status
       - name: Check documentation consistency
         run: ./ci/check-docs.py
       - name: Build Javadoc
