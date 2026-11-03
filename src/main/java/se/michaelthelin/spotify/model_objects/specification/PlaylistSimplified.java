@@ -304,8 +304,9 @@ public class PlaylistSimplified extends AbstractModelObject implements ISearchMo
   /**
    * JsonUtil class for building {@link PlaylistSimplified} instances.
    *
-   * @deprecated Responses are deserialized by the library itself, so there is no need to call this.
-   *             It will be removed in the next major version.
+   * @deprecated Requests already return model objects. To read JSON obtained some other way, use
+   *             {@link se.michaelthelin.spotify.model_objects.ModelObjects} instead. This will be removed
+   *             in the next major version.
    */
   @Deprecated
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<PlaylistSimplified> {

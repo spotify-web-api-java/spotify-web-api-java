@@ -131,7 +131,8 @@ mvn test -Dtest="*Playlist*"
 ## Key Conventions
 
 - **Model objects are deserialized reflectively** by the shared Gson in
-  `model_objects/ModelObjectGson.java`, so a new field needs no parsing code.
+  `internal/ModelObjectGson.java`, so a new field needs no parsing code.
+  To read JSON outside a request, callers use the public `model_objects/ModelObjects`.
   Add `@SerializedName` only when the wire name is not the snake_case form of the field,
   and add a type adapter only for a shape reflection cannot express.
 - **Trailing underscores** on Java-reserved words: e.g., `public_` for the `public` field.

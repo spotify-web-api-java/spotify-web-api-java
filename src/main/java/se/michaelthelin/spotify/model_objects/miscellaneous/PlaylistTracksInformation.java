@@ -77,8 +77,9 @@ public class PlaylistTracksInformation extends AbstractModelObject implements IH
   /**
    * JsonUtil class for building {@link PlaylistTracksInformation} instances.
    *
-   * @deprecated Responses are deserialized by the library itself, so there is no need to call this.
-   *             It will be removed in the next major version.
+   * @deprecated Requests already return model objects. To read JSON obtained some other way, use
+   *             {@link se.michaelthelin.spotify.model_objects.ModelObjects} instead. This will be removed
+   *             in the next major version.
    */
   @Deprecated
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<PlaylistTracksInformation> {

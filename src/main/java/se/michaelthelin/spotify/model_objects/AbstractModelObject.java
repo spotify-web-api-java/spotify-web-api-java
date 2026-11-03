@@ -45,8 +45,9 @@ public abstract class AbstractModelObject implements IModelObject {
    * Each model object needs to implement its own JsonUtil class. <br>
    *
    * @param <T> The model object type of the corresponding JsonUtil.
-   * @deprecated Responses are deserialized by the library itself, so there is no need to call this.
-   *             It will be removed in the next major version.
+   * @deprecated Requests already return model objects. To read JSON obtained some other way, use
+   *             {@link se.michaelthelin.spotify.model_objects.ModelObjects} instead. This will be removed
+   *             in the next major version.
    */
   @Deprecated
   public static abstract class JsonUtil<T> implements IModelObject.IJsonUtil<T> {

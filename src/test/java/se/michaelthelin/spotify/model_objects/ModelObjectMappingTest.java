@@ -31,8 +31,8 @@ public class ModelObjectMappingTest {
 
   @Test
   public void seedsKeepTheirCamelCaseWireNames() throws IOException {
-    Recommendations recommendations = new Recommendations.JsonUtil()
-      .createModelObject(fixture("requests/data/tracks/GetRecommendationsRequest.json"));
+    Recommendations recommendations = ModelObjects.fromJson(
+      fixture("requests/data/tracks/GetRecommendationsRequest.json"), Recommendations.class);
 
     assertEquals(448, (int) recommendations.getSeeds()[0].getInitialPoolSize());
     assertEquals(120, (int) recommendations.getSeeds()[0].getAfterFilteringSize());
@@ -42,16 +42,16 @@ public class ModelObjectMappingTest {
   @Test
   public void seedTypeIsReadCaseInsensitively() throws IOException {
     // the fixture sends "ARTIST", the enum's wire name is "artist"
-    Recommendations recommendations = new Recommendations.JsonUtil()
-      .createModelObject(fixture("requests/data/tracks/GetRecommendationsRequest.json"));
+    Recommendations recommendations = ModelObjects.fromJson(
+      fixture("requests/data/tracks/GetRecommendationsRequest.json"), Recommendations.class);
 
     assertEquals(ModelObjectType.ARTIST, recommendations.getSeeds()[0].getType());
   }
 
   @Test
   public void playlistVisibilityComesFromThePublicKey() throws IOException {
-    Playlist playlist = new Playlist.JsonUtil()
-      .createModelObject(fixture("requests/data/playlists/GetPlaylistRequest.json"));
+    Playlist playlist = ModelObjects.fromJson(
+      fixture("requests/data/playlists/GetPlaylistRequest.json"), Playlist.class);
 
     // the fixture sends "public": null, so the field is null rather than absent
     assertNull(playlist.getPublic());
@@ -60,8 +60,8 @@ public class ModelObjectMappingTest {
 
   @Test
   public void audioAnalysisReadsTheFieldsTheSpecDefines() throws IOException {
-    AudioAnalysis analysis = new AudioAnalysis.JsonUtil()
-      .createModelObject(fixture("requests/data/tracks/GetAudioAnalysisRequest.json"));
+    AudioAnalysis analysis = ModelObjects.fromJson(
+      fixture("requests/data/tracks/GetAudioAnalysisRequest.json"), AudioAnalysis.class);
 
     // window_seconds and end_of_fade_in were previously read under misspelled keys and so were
     // always null; the section's mode was guarded on a "type" key that sections do not carry
@@ -77,8 +77,8 @@ public class ModelObjectMappingTest {
 
   @Test
   public void albumTypeAndNestedObjectsResolve() throws IOException {
-    Album album = new Album.JsonUtil()
-      .createModelObject(fixture("requests/data/albums/GetAlbumRequest.json"));
+    Album album = ModelObjects.fromJson(
+      fixture("requests/data/albums/GetAlbumRequest.json"), Album.class);
 
     assertEquals(AlbumType.ALBUM, album.getAlbumType());
     assertEquals(ModelObjectType.ALBUM, album.getType());
@@ -96,8 +96,8 @@ public class ModelObjectMappingTest {
    */
   @Test
   public void mapShapedObjectsAreReadByTheirOwnParser() throws IOException {
-    Album album = new Album.JsonUtil()
-      .createModelObject(fixture("requests/data/albums/GetAlbumRequest.json"));
+    Album album = ModelObjects.fromJson(
+      fixture("requests/data/albums/GetAlbumRequest.json"), Album.class);
 
     assertEquals("https://open.spotify.com/album/0sNOF9WDwhWunNAHPD3Baj",
       album.getExternalUrls().get("spotify"));
@@ -113,8 +113,8 @@ public class ModelObjectMappingTest {
    */
   @Test
   public void countryCodeArraysAreReadElementWise() {
-    AlbumSimplifiedSpecial album = new AlbumSimplifiedSpecial.JsonUtil().createModelObject(
-      "{\"name\":\"Wish\",\"available_markets\":[\"SE\",\"xk\",\"ZZ\"]}");
+    AlbumSimplifiedSpecial album = ModelObjects.fromJson(
+      "{\"name\":\"Wish\",\"available_markets\":[\"SE\",\"xk\",\"ZZ\"]}", AlbumSimplifiedSpecial.class);
 
     CountryCode[] markets = album.getAvailableMarkets();
 
