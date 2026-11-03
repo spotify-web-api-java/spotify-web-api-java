@@ -404,7 +404,11 @@ public class Episode extends AbstractModelObject implements IEpisode {
 
   /**
    * JsonUtil class for building {@link Episode} instances.
+   *
+   * @deprecated Responses are deserialized by the library itself, so there is no need to call this.
+   *             It will be removed in the next major version.
    */
+  @Deprecated
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<Episode> {
 
     public JsonUtil() {

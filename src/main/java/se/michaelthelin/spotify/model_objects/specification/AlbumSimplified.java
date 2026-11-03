@@ -306,7 +306,11 @@ public class AlbumSimplified extends AbstractModelObject implements ISearchModel
 
   /**
    * JsonUtil class for building {@link AlbumSimplified} instances.
+   *
+   * @deprecated Responses are deserialized by the library itself, so there is no need to call this.
+   *             It will be removed in the next major version.
    */
+  @Deprecated
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<AlbumSimplified> {
 
     public JsonUtil() {

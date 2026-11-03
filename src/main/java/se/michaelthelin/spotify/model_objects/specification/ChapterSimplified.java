@@ -409,7 +409,11 @@ public class ChapterSimplified extends AbstractModelObject {
 
   /**
    * JsonUtil class for building {@link ChapterSimplified} instances.
+   *
+   * @deprecated Responses are deserialized by the library itself, so there is no need to call this.
+   *             It will be removed in the next major version.
    */
+  @Deprecated
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<ChapterSimplified> {
 
     public JsonUtil() {

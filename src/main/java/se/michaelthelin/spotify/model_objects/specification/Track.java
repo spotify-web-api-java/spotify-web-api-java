@@ -364,7 +364,11 @@ public class Track extends AbstractModelObject implements IArtistTrackModelObjec
 
   /**
    * JsonUtil class for building {@link Track} instances.
+   *
+   * @deprecated Responses are deserialized by the library itself, so there is no need to call this.
+   *             It will be removed in the next major version.
    */
+  @Deprecated
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<Track> {
 
     public JsonUtil() {
