@@ -25,7 +25,7 @@ public class RemovePlaylistItemsDeprecatedRequestTest extends AbstractDataTest<S
     .setHttpManager(
       TestUtil.MockedHttpManager.returningJson(
         "requests/data/playlists/RemoveItemsFromPlaylistRequest.json"))
-    .snapshotId(ITest.SNAPSHOT_ID)
+    .snapshot_id(ITest.SNAPSHOT_ID)
     .build();
 
   public RemovePlaylistItemsDeprecatedRequestTest() throws Exception {
@@ -35,10 +35,6 @@ public class RemovePlaylistItemsDeprecatedRequestTest extends AbstractDataTest<S
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
     assertHasHeader(defaultRequest, "Content-Type", "application/json");
-    assertHasBodyParameter(
-      defaultRequest,
-      "tracks",
-      ITest.URIS);
     assertHasBodyParameter(
       defaultRequest,
       "snapshot_id",

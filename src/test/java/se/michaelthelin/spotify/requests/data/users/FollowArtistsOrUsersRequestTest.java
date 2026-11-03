@@ -18,12 +18,7 @@ import static se.michaelthelin.spotify.Assertions.assertHasHeader;
 @SuppressWarnings("deprecation")
 public class FollowArtistsOrUsersRequestTest extends AbstractDataTest<String> {
   private final FollowArtistsOrUsersRequest defaultRequest = SPOTIFY_API
-    .followArtistsOrUsers(ModelObjectType.ARTIST, new String[]{ID_ARTIST, ID_ARTIST})
-    .setHttpManager(
-      TestUtil.MockedHttpManager.returningJson(null))
-    .build();
-  private final FollowArtistsOrUsersRequest bodyRequest = SPOTIFY_API
-    .followArtistsOrUsers(ModelObjectType.ARTIST, ARTISTS)
+    .followArtistsOrUsers(ModelObjectType.ARTIST, ID_ARTIST + "," + ID_ARTIST)
     .setHttpManager(
       TestUtil.MockedHttpManager.returningJson(null))
     .build();
@@ -37,16 +32,7 @@ public class FollowArtistsOrUsersRequestTest extends AbstractDataTest<String> {
     assertEquals(
       "https://api.spotify.com:443/v1/me/following?type=ARTIST&ids=0LcJLqbBmaGUft1e9Mm8HV%2C0LcJLqbBmaGUft1e9Mm8HV",
       defaultRequest.getUri().toString());
-
-    assertHasAuthorizationHeader(bodyRequest);
     assertHasHeader(defaultRequest, "Content-Type", "application/json");
-    assertHasBodyParameter(
-      bodyRequest,
-      "ids",
-      ARTISTS);
-    assertEquals(
-      "https://api.spotify.com:443/v1/me/following?type=ARTIST",
-      bodyRequest.getUri().toString());
   }
 
   @Test

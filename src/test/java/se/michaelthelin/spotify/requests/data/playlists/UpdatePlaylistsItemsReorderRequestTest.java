@@ -17,7 +17,9 @@ import static se.michaelthelin.spotify.Assertions.assertHasHeader;
 
 public class UpdatePlaylistsItemsReorderRequestTest extends AbstractDataTest<SnapshotResult> {
   private final UpdatePlaylistsItemsReorderRequest defaultRequest = ITest.SPOTIFY_API
-    .updatePlaylistsItemsReorder(ITest.ID_PLAYLIST, ITest.RANGE_START, ITest.INSERT_BEFORE)
+    .updatePlaylistsItemsReorder(ITest.ID_PLAYLIST)
+    .range_start(ITest.RANGE_START)
+    .insert_before(ITest.INSERT_BEFORE)
     .setHttpManager(
       TestUtil.MockedHttpManager.returningJson(
         "requests/data/playlists/ReorderPlaylistsItemsRequest.json"))

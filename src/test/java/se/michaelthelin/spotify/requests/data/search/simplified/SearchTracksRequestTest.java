@@ -23,7 +23,7 @@ public class SearchTracksRequestTest extends AbstractDataTest<Paging<Track>> {
     .limit(ITest.LIMIT)
     .market(ITest.MARKET)
     .offset(ITest.OFFSET)
-    .includeExternal("audio")
+    .include_external("audio")
     .build();
 
   public SearchTracksRequestTest() throws Exception {
