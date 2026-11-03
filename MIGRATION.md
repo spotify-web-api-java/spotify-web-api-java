@@ -1,5 +1,12 @@
 # Migration Guide
 
+## 10.0.0 → 11.0.0
+
+### Removed methods
+
+`AbstractRequest.bodyParametersToJson(List<NameValuePair>)` was an internal serialization helper, and the serializer now reads the typed values the builders store, so the method is private.
+Build the body with `initializeBody()` and read it from `getBody()`.
+
 ## 9.4.0 → 10.0.0
 
 Version 10 aligns the library with Spotify's OpenAPI specification.
