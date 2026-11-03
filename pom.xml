@@ -115,6 +115,39 @@
           </archive>
         </configuration>
       </plugin>
+      <plugin>
+        <!--
+         API compatibility gate against the last stable release, bound to no phase so local builds need no network;
+         CI runs it after "mvn install", and locally it is:
+           mvn package -DskipTests && mvn japicmp:cmp -Dapi.baseline=<last stable release>
+         any binary or source incompatible change fails, unless -Dapi.breakOnIncompatible=false, which CI passes
+         when the major version went up (the X.0.0-RCN line on beta); japicmp's own semantic versioning mode cannot
+         be used, because between releases the version still equals the baseline and it then rejects even additions
+        -->
+        <groupId>com.github.siom79.japicmp</groupId>
+        <artifactId>japicmp-maven-plugin</artifactId>
+        <version>0.26.5</version>
+        <configuration>
+          <oldVersion>
+            <dependency>
+              <groupId>${project.groupId}</groupId>
+              <artifactId>${project.artifactId}</artifactId>
+              <version>${api.baseline}</version>
+              <type>jar</type>
+            </dependency>
+          </oldVersion>
+          <newVersion>
+            <file>
+              <path>${project.build.directory}/${project.build.finalName}.jar</path>
+            </file>
+          </newVersion>
+          <parameter>
+            <breakBuildOnBinaryIncompatibleModifications>${api.breakOnIncompatible}</breakBuildOnBinaryIncompatibleModifications>
+            <breakBuildOnSourceIncompatibleModifications>${api.breakOnIncompatible}</breakBuildOnSourceIncompatibleModifications>
+            <onlyModified>true</onlyModified>
+          </parameter>
+        </configuration>
+      </plugin>
     </plugins>
   </build>
 
@@ -311,6 +344,7 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <api.breakOnIncompatible>true</api.breakOnIncompatible>
   </properties>
 
 </project>

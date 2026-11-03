@@ -71,6 +71,8 @@ A unit test builds upon JSON fixtures. For code changes, fixture files must only
 
    `beta` accumulates that next major and is released as `X.Y.Z-RCN` until it is ready, so a breaking change only reaches `main` through the release pull request. While a `beta` line is open, follow-up fixes to code that exists only there belong on `beta` too. Ask in the issue if you are unsure.
 
+   CI enforces this split: it compares the built jar against the last stable release with [japicmp](https://siom79.github.io/japicmp/) and fails on any binary or source incompatible change, unless the version in `pom.xml` has a higher major number than that release, as it does on `beta`. To run the check locally, use `mvn package -DskipTests && mvn japicmp:cmp -Dapi.baseline=<last stable release>` and read the report in `target/japicmp/`.
+
 ## Release Workflow (Maintainers Only)
 
 Follow these steps to publish a new release:
