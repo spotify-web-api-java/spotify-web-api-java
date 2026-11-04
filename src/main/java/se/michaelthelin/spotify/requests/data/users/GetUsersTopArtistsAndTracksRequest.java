@@ -3,7 +3,7 @@ package se.michaelthelin.spotify.requests.data.users;
 import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.enums.ModelObjectType;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
-import se.michaelthelin.spotify.model_objects.AbstractModelObject;
+import se.michaelthelin.spotify.internal.ModelObjectJson;
 import se.michaelthelin.spotify.model_objects.specification.Artist;
 import se.michaelthelin.spotify.model_objects.specification.Paging;
 import se.michaelthelin.spotify.model_objects.specification.Track;
@@ -23,15 +23,15 @@ import java.io.IOException;
  */
 public class GetUsersTopArtistsAndTracksRequest<T extends IArtistTrackModelObject> extends AbstractDataRequest<Paging<T>> {
 
-  private final AbstractModelObject.JsonUtil<T> tClass;
+  private final Class<T> tClass;
 
   /**
    * The private {@link GetUsersTopArtistsAndTracksRequest} constructor.
    *
    * @param builder A {@link GetUsersTopArtistsAndTracksRequest.Builder}.
-   * @param tClass  A {@link AbstractModelObject.JsonUtil}.
+   * @param tClass  The item type of the returned paging.
    */
-  private GetUsersTopArtistsAndTracksRequest(final Builder<T> builder, final AbstractModelObject.JsonUtil<T> tClass) {
+  private GetUsersTopArtistsAndTracksRequest(final Builder<T> builder, final Class<T> tClass) {
     super(builder);
     this.tClass = tClass;
   }
@@ -47,7 +47,7 @@ public class GetUsersTopArtistsAndTracksRequest<T extends IArtistTrackModelObjec
     IOException,
     SpotifyWebApiException,
     ParseException {
-    return tClass.createModelObjectPaging(getJson());
+    return ModelObjectJson.paging(getJson(), tClass);
   }
 
   /**
@@ -60,7 +60,7 @@ public class GetUsersTopArtistsAndTracksRequest<T extends IArtistTrackModelObjec
    */
   public static final class Builder<T extends IArtistTrackModelObject> extends AbstractDataPagingRequest.Builder<T, Builder<T>> {
 
-    private AbstractModelObject.JsonUtil<T> tClass;
+    private Class<T> tClass;
 
     /**
      * Create a new {@link GetUsersTopArtistsAndTracksRequest.Builder} instance.
@@ -88,11 +88,11 @@ public class GetUsersTopArtistsAndTracksRequest<T extends IArtistTrackModelObjec
       final String pluralType;
       switch (type.getType()) {
         case "artist":
-          tClass = (AbstractModelObject.JsonUtil<T>) new Artist.JsonUtil();
+          tClass = (Class<T>) (Class<?>) Artist.class;
           pluralType = "artists";
           break;
         case "track":
-          tClass = (AbstractModelObject.JsonUtil<T>) new Track.JsonUtil();
+          tClass = (Class<T>) (Class<?>) Track.class;
           pluralType = "tracks";
           break;
         default:

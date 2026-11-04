@@ -3,6 +3,8 @@ package se.michaelthelin.spotify.requests.data.search.simplified;
 import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.enums.CountryCode;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
+import se.michaelthelin.spotify.internal.ModelObjectJson;
+import se.michaelthelin.spotify.internal.Preconditions;
 import se.michaelthelin.spotify.model_objects.specification.AlbumSimplified;
 import se.michaelthelin.spotify.model_objects.specification.Paging;
 import se.michaelthelin.spotify.requests.data.AbstractDataPagingRequest;
@@ -35,7 +37,7 @@ public class SearchAlbumsRequest extends AbstractDataRequest<Paging<AlbumSimplif
     IOException,
     SpotifyWebApiException,
     ParseException {
-    return new AlbumSimplified.JsonUtil().createModelObjectPaging(getJson(), "albums");
+    return ModelObjectJson.paging(getJson(), "albums", AlbumSimplified.class);
   }
 
   /**
@@ -60,8 +62,7 @@ public class SearchAlbumsRequest extends AbstractDataRequest<Paging<AlbumSimplif
      * @see <a href="https://developer.spotify.com/documentation/web-api/reference/search">Spotify: Search Query Options</a>
      */
     public Builder q(final String q) {
-      assert (q != null);
-      assert (!q.isEmpty());
+      Preconditions.assertNotEmpty(q);
       return setQueryParameter("q", q);
     }
 

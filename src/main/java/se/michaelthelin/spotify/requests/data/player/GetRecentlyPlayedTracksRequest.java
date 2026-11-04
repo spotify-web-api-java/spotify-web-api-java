@@ -3,6 +3,7 @@ package se.michaelthelin.spotify.requests.data.player;
 import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.SpotifyApi;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
+import se.michaelthelin.spotify.internal.ModelObjectJson;
 import se.michaelthelin.spotify.model_objects.specification.PagingCursorbased;
 import se.michaelthelin.spotify.model_objects.specification.PlayHistory;
 import se.michaelthelin.spotify.requests.data.AbstractDataPagingCursorbasedRequest;
@@ -47,7 +48,7 @@ public class GetRecentlyPlayedTracksRequest extends AbstractDataRequest<PagingCu
     IOException,
     SpotifyWebApiException,
     ParseException {
-    return new PlayHistory.JsonUtil().createModelObjectPagingCursorbased(getJson());
+    return ModelObjectJson.pagingCursorbased(getJson(), PlayHistory.class);
   }
 
   /**

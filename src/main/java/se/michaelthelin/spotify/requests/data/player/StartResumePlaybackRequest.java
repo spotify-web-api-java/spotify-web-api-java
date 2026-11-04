@@ -5,6 +5,7 @@ import com.google.gson.JsonObject;
 import org.apache.hc.core5.http.ContentType;
 import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
+import se.michaelthelin.spotify.internal.Preconditions;
 import se.michaelthelin.spotify.requests.data.AbstractDataRequest;
 
 import java.io.IOException;
@@ -63,8 +64,7 @@ public class StartResumePlaybackRequest extends AbstractDataRequest<String> {
      * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URIs &amp; IDs</a>
      */
     public Builder device_id(final String device_id) {
-      assert (device_id != null);
-      assert (!device_id.isEmpty());
+      Preconditions.assertNotEmpty(device_id);
       return setQueryParameter("device_id", device_id);
     }
 
@@ -77,8 +77,7 @@ public class StartResumePlaybackRequest extends AbstractDataRequest<String> {
      * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URIs &amp; IDs</a>
      */
     public Builder context_uri(final String context_uri) {
-      assert (context_uri != null);
-      assert (!context_uri.isEmpty());
+      Preconditions.assertNotEmpty(context_uri);
       return setBodyParameter("context_uri", context_uri);
     }
 

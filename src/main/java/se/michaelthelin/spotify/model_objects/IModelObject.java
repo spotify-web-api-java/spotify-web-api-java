@@ -38,7 +38,11 @@ public interface IModelObject extends Serializable {
    * Interface with methods used in JsonUtil classes of model objects.
    *
    * @param <T> Type of the corresponding model object.
+   * @deprecated Requests already return model objects. To read JSON obtained some other way, use
+   *             {@link se.michaelthelin.spotify.model_objects.ModelObjects} instead. This will be removed
+   *             in the next major version.
    */
+  @Deprecated
   interface IJsonUtil<T> {
 
     /**

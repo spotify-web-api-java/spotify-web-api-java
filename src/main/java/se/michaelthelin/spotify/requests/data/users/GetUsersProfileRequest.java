@@ -2,6 +2,8 @@ package se.michaelthelin.spotify.requests.data.users;
 
 import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
+import se.michaelthelin.spotify.internal.ModelObjectJson;
+import se.michaelthelin.spotify.internal.Preconditions;
 import se.michaelthelin.spotify.model_objects.specification.User;
 import se.michaelthelin.spotify.requests.data.AbstractDataRequest;
 
@@ -35,7 +37,7 @@ public class GetUsersProfileRequest extends AbstractDataRequest<User> {
     IOException,
     SpotifyWebApiException,
     ParseException {
-    return new User.JsonUtil().createModelObject(getJson());
+    return ModelObjectJson.object(getJson(), User.class);
   }
 
   /**
@@ -63,8 +65,7 @@ public class GetUsersProfileRequest extends AbstractDataRequest<User> {
      * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URIs &amp; IDs</a>
      */
     public Builder user_id(final String user_id) {
-      assert (user_id != null);
-      assert (!user_id.isEmpty());
+      Preconditions.assertNotEmpty(user_id);
       return setPathParameter("user_id", user_id);
     }
 

@@ -1,15 +1,17 @@
-package se.michaelthelin.spotify.model_objects;
+package se.michaelthelin.spotify.internal;
 
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.TypeAdapter;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonToken;
 import com.google.gson.stream.JsonWriter;
 import se.michaelthelin.spotify.SpotifyApi;
+import se.michaelthelin.spotify.enums.Action;
 import se.michaelthelin.spotify.enums.AlbumType;
 import se.michaelthelin.spotify.enums.CopyrightType;
 import se.michaelthelin.spotify.enums.CountryCode;
@@ -17,6 +19,8 @@ import se.michaelthelin.spotify.enums.CurrentlyPlayingType;
 import se.michaelthelin.spotify.enums.Modality;
 import se.michaelthelin.spotify.enums.ModelObjectType;
 import se.michaelthelin.spotify.enums.ReleaseDatePrecision;
+import se.michaelthelin.spotify.model_objects.IPlaylistItem;
+import se.michaelthelin.spotify.model_objects.special.PlaybackQueue;
 import se.michaelthelin.spotify.model_objects.specification.Cursor;
 import se.michaelthelin.spotify.model_objects.specification.Disallows;
 import se.michaelthelin.spotify.model_objects.specification.ExternalId;
@@ -24,6 +28,10 @@ import se.michaelthelin.spotify.model_objects.specification.ExternalUrl;
 import se.michaelthelin.spotify.model_objects.utils.PlaylistItemFactory;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.EnumSet;
+import java.util.List;
+import java.util.Map;
 import java.text.ParseException;
 import java.util.Date;
 import java.util.Locale;
@@ -37,12 +45,17 @@ import java.util.logging.Level;
  * Spotify's JSON uses snake_case, so the field naming policy covers the bulk of the mapping and a
  * field only needs {@code @SerializedName} where the wire name is not the snake_case form of the
  * Java field. The adapters below cover the cases reflection cannot express on its own: the wire
- * formats of the enums, Spotify's date format, the polymorphic playlist item, and the three model
- * objects whose JSON shape does not mirror their fields.
+ * formats of the enums, Spotify's date format, the polymorphic playlist item, the three model
+ * objects whose JSON shape does not mirror their fields, and the playback queue's empty default.
+ * <p>
+ * This package is not exported, so nothing here is public API.
  */
-final class ModelObjectGson {
+public final class ModelObjectGson {
 
-  static final Gson GSON = new GsonBuilder()
+  /**
+   * The instance every model object is read with.
+   */
+  public static final Gson GSON = new GsonBuilder()
     .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
     .registerTypeAdapter(Date.class, date())
     .registerTypeAdapter(AlbumType.class, fromString(AlbumType::keyOf))
@@ -54,9 +67,10 @@ final class ModelObjectGson {
     .registerTypeAdapter(Modality.class, fromInt(Modality::keyOf))
     .registerTypeAdapter(IPlaylistItem.class, object(PlaylistItemFactory::createPlaylistItem))
     .registerTypeAdapter(Cursor[].class, cursors())
-    .registerTypeAdapter(Disallows.class, object(new Disallows.JsonUtil()::createModelObject))
-    .registerTypeAdapter(ExternalId.class, object(new ExternalId.JsonUtil()::createModelObject))
-    .registerTypeAdapter(ExternalUrl.class, object(new ExternalUrl.JsonUtil()::createModelObject))
+    .registerTypeAdapter(Disallows.class, object(ModelObjectGson::disallows))
+    .registerTypeAdapter(ExternalId.class, object(ModelObjectGson::externalId))
+    .registerTypeAdapter(ExternalUrl.class, object(ModelObjectGson::externalUrl))
+    .registerTypeAdapter(PlaybackQueue.class, object(ModelObjectGson::playbackQueue))
     .create();
 
   private ModelObjectGson() {
@@ -64,11 +78,10 @@ final class ModelObjectGson {
 
   /**
    * Adapts a type whose JSON shape does not mirror its fields by handing the whole object to a
-   * hand-written reader. Only register this for a model that overrides
-   * {@link AbstractModelObject.JsonUtil#createModelObject(com.google.gson.JsonObject)}, otherwise
-   * the default implementation calls back into {@link #GSON} and recurses forever.
+   * hand-written reader. The reader must not read the same type through {@link #GSON} again, or it
+   * recurses forever.
    */
-  private static <T> TypeAdapter<T> object(Function<com.google.gson.JsonObject, T> reader) {
+  private static <T> TypeAdapter<T> object(Function<JsonObject, T> reader) {
     return new NullSafeAdapter<T>() {
       @Override
       T readValue(JsonReader in) throws IOException {
@@ -135,6 +148,68 @@ final class ModelObjectGson {
         }
       }
     };
+  }
+
+  /**
+   * Spotify sends the disallowed actions as an object of flags, of which only the set ones count.
+   */
+  private static Disallows disallows(JsonObject jsonObject) {
+    EnumSet<Action> disallowedActions = EnumSet.noneOf(Action.class);
+    for (Map.Entry<String, JsonElement> entry : jsonObject.entrySet()) {
+      if (entry.getValue().getAsJsonPrimitive().getAsBoolean()) {
+        disallowedActions.add(Action.keyOf(entry.getKey().toLowerCase()));
+      }
+    }
+
+    return new Disallows.Builder()
+      .setDisallowedActions(disallowedActions)
+      .build();
+  }
+
+  @SuppressWarnings("unchecked")
+  private static ExternalId externalId(JsonObject jsonObject) {
+    return new ExternalId.Builder()
+      .setExternalIds(new Gson().fromJson(jsonObject, Map.class))
+      .build();
+  }
+
+  @SuppressWarnings("unchecked")
+  private static ExternalUrl externalUrl(JsonObject jsonObject) {
+    return new ExternalUrl.Builder()
+      .setExternalUrls(new Gson().fromJson(jsonObject, Map.class))
+      .build();
+  }
+
+  /**
+   * A missing {@code queue} reads as an empty list rather than {@code null}, which callers rely on.
+   */
+  private static PlaybackQueue playbackQueue(JsonObject jsonObject) {
+    IPlaylistItem currentlyPlaying = hasAndNotNull(jsonObject, "currently_playing")
+      ? PlaylistItemFactory.createPlaylistItem(jsonObject.getAsJsonObject("currently_playing"))
+      : null;
+
+    List<IPlaylistItem> queue = new ArrayList<>();
+    if (hasAndNotNull(jsonObject, "queue")) {
+      for (JsonElement jsonElement : jsonObject.getAsJsonArray("queue")) {
+        queue.add(PlaylistItemFactory.createPlaylistItem(jsonElement.getAsJsonObject()));
+      }
+    }
+
+    return new PlaybackQueue.Builder()
+      .setCurrentlyPlaying(currentlyPlaying)
+      .setQueue(queue)
+      .build();
+  }
+
+  /**
+   * Whether the object has the member with a value other than JSON null.
+   *
+   * @param jsonObject The object to look in.
+   * @param memberName The member to look for.
+   * @return Whether the member is present and not null.
+   */
+  public static boolean hasAndNotNull(JsonObject jsonObject, String memberName) {
+    return jsonObject.has(memberName) && !jsonObject.get(memberName).isJsonNull();
   }
 
   private abstract static class NullSafeAdapter<T> extends TypeAdapter<T> {

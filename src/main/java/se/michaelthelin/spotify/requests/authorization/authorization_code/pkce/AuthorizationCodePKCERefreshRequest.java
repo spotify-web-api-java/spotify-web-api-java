@@ -4,6 +4,8 @@ import org.apache.hc.core5.http.ContentType;
 import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.SpotifyApi;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
+import se.michaelthelin.spotify.internal.ModelObjectJson;
+import se.michaelthelin.spotify.internal.Preconditions;
 import se.michaelthelin.spotify.model_objects.credentials.AuthorizationCodeCredentials;
 import se.michaelthelin.spotify.requests.AbstractRequest;
 
@@ -31,7 +33,7 @@ public class AuthorizationCodePKCERefreshRequest extends AbstractRequest<Authori
     IOException,
     SpotifyWebApiException,
     ParseException {
-    return new AuthorizationCodeCredentials.JsonUtil().createModelObject(postJson());
+    return ModelObjectJson.object(postJson(), AuthorizationCodeCredentials.class);
   }
 
 
@@ -66,8 +68,7 @@ public class AuthorizationCodePKCERefreshRequest extends AbstractRequest<Authori
      * @return An {@link AuthorizationCodePKCERefreshRequest.Builder}.
      */
     public Builder refresh_token(final String refresh_token) {
-      assert (refresh_token != null);
-      assert (!refresh_token.isEmpty());
+      Preconditions.assertNotEmpty(refresh_token);
       return setBodyParameter("refresh_token", refresh_token);
     }
 
@@ -78,8 +79,7 @@ public class AuthorizationCodePKCERefreshRequest extends AbstractRequest<Authori
      * @return An {@link AuthorizationCodePKCERefreshRequest.Builder}.
      */
     public Builder client_id(final String client_id) {
-      assert (client_id != null);
-      assert (!client_id.isEmpty());
+      Preconditions.assertNotEmpty(client_id);
       return setBodyParameter("client_id", client_id);
     }
 

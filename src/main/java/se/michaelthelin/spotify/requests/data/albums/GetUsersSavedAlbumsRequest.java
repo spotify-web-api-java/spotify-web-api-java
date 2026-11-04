@@ -3,6 +3,7 @@ package se.michaelthelin.spotify.requests.data.albums;
 import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.enums.CountryCode;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
+import se.michaelthelin.spotify.internal.ModelObjectJson;
 import se.michaelthelin.spotify.model_objects.specification.Paging;
 import se.michaelthelin.spotify.model_objects.specification.SavedAlbum;
 import se.michaelthelin.spotify.requests.data.AbstractDataPagingRequest;
@@ -35,7 +36,7 @@ public class GetUsersSavedAlbumsRequest extends AbstractDataRequest<Paging<Saved
     IOException,
     SpotifyWebApiException,
     ParseException {
-    return new SavedAlbum.JsonUtil().createModelObjectPaging(getJson());
+    return ModelObjectJson.paging(getJson(), SavedAlbum.class);
   }
 
   /**
