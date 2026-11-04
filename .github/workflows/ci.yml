@@ -60,6 +60,11 @@ jobs:
           break_on_incompatible=true
           if [ "${version%%.*}" -gt "${baseline%%.*}" ]; then break_on_incompatible=false; fi
           echo "Comparing $version against $baseline, failing on incompatible changes: $break_on_incompatible"
+          # When the branch version equals the baseline (the normal case between releases) the build step has
+          # installed that version into the local repo, which would shadow the genuine release the gate must
+          # compare against and leave japicmp comparing the branch against itself; drop the baseline so it
+          # re-resolves from Maven Central
+          rm -rf "$HOME/.m2/repository/se/michaelthelin/spotify/spotify-web-api-java/$baseline"
           status=0
           mvn -B japicmp:cmp -Dapi.baseline="$baseline" -Dapi.breakOnIncompatible="$break_on_incompatible" || status=$?
           if [ -f target/japicmp/default-cli.md ]; then cat target/japicmp/default-cli.md >> "$GITHUB_STEP_SUMMARY"; fi
