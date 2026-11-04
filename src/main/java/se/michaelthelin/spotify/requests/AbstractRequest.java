@@ -11,6 +11,7 @@ import se.michaelthelin.spotify.IHttpManager;
 import se.michaelthelin.spotify.SpotifyApi;
 import se.michaelthelin.spotify.SpotifyApiThreading;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
+import se.michaelthelin.spotify.internal.Preconditions;
 
 import java.io.IOException;
 import java.net.URI;
@@ -249,8 +250,7 @@ public abstract class AbstractRequest<T> implements IRequest<T> {
     }
 
     public BT setScheme(final String scheme) {
-      assert (scheme != null);
-      assert (!scheme.isEmpty());
+      Preconditions.assertNotEmpty(scheme);
       this.scheme = scheme;
       return self();
     }
@@ -270,8 +270,7 @@ public abstract class AbstractRequest<T> implements IRequest<T> {
     }
 
     public BT setPath(final String path) {
-      assert (path != null);
-      assert (!path.isEmpty());
+      Preconditions.assertNotEmpty(path);
 
       String builtPath = path;
 
@@ -307,16 +306,14 @@ public abstract class AbstractRequest<T> implements IRequest<T> {
     }
 
     public <X> BT setQueryParameter(final String name, final X value) {
-      assert (name != null);
-      assert (!name.isEmpty());
+      Preconditions.assertNotEmpty(name);
       assert (value != null);
       listAddOnce(this.queryParameters, new BasicNameValuePair(name, String.valueOf(value)));
       return self();
     }
 
     public <X> BT setHeader(final String name, final X value) {
-      assert (name != null);
-      assert (!name.isEmpty());
+      Preconditions.assertNotEmpty(name);
       assert (value != null);
       listAddOnce(this.headers, new BasicHeader(name, String.valueOf(value)));
       return self();
@@ -334,8 +331,7 @@ public abstract class AbstractRequest<T> implements IRequest<T> {
     }
 
     public <X> BT setBodyParameter(final String name, final X value) {
-      assert (name != null);
-      assert (!name.isEmpty());
+      Preconditions.assertNotEmpty(name);
       assert (value != null);
       listAddOnce(this.bodyParameters, new BodyParameter(name, value));
       return self();

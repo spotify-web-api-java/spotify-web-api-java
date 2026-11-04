@@ -2,6 +2,7 @@ package se.michaelthelin.spotify.requests.data.users.simplified;
 
 import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
+import se.michaelthelin.spotify.internal.ModelObjectJson;
 import se.michaelthelin.spotify.model_objects.specification.Paging;
 import se.michaelthelin.spotify.model_objects.specification.Track;
 import se.michaelthelin.spotify.requests.data.AbstractDataPagingRequest;
@@ -44,7 +45,7 @@ public class GetUsersTopTracksRequest extends AbstractDataRequest<Paging<Track>>
     IOException,
     SpotifyWebApiException,
     ParseException {
-    return new Track.JsonUtil().createModelObjectPaging(getJson());
+    return ModelObjectJson.paging(getJson(), Track.class);
   }
 
   /**

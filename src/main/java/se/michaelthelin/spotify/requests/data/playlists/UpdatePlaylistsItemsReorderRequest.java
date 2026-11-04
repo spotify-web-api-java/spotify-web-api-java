@@ -3,6 +3,8 @@ package se.michaelthelin.spotify.requests.data.playlists;
 import org.apache.hc.core5.http.ContentType;
 import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
+import se.michaelthelin.spotify.internal.ModelObjectJson;
+import se.michaelthelin.spotify.internal.Preconditions;
 import se.michaelthelin.spotify.model_objects.special.SnapshotResult;
 import se.michaelthelin.spotify.requests.data.AbstractDataRequest;
 
@@ -39,7 +41,7 @@ public class UpdatePlaylistsItemsReorderRequest extends AbstractDataRequest<Snap
     IOException,
     SpotifyWebApiException,
     ParseException {
-    return new SnapshotResult.JsonUtil().createModelObject(putJson());
+    return ModelObjectJson.object(putJson(), SnapshotResult.class);
   }
 
   /**
@@ -69,8 +71,7 @@ public class UpdatePlaylistsItemsReorderRequest extends AbstractDataRequest<Snap
      * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URIs &amp; IDs</a>
      */
     public Builder playlist_id(final String playlist_id) {
-      assert (playlist_id != null);
-      assert (!playlist_id.isEmpty());
+      Preconditions.assertNotEmpty(playlist_id);
       return setPathParameter("playlist_id", playlist_id);
     }
 
@@ -120,8 +121,7 @@ public class UpdatePlaylistsItemsReorderRequest extends AbstractDataRequest<Snap
      * Spotify: Version Control and Snapshots</a>
      */
     public Builder snapshot_id(final String snapshot_id) {
-      assert (snapshot_id != null);
-      assert (!snapshot_id.isEmpty());
+      Preconditions.assertNotEmpty(snapshot_id);
       return setBodyParameter("snapshot_id", snapshot_id);
     }
 

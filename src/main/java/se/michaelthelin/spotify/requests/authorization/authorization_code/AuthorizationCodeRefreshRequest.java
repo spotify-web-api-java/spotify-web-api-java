@@ -4,6 +4,8 @@ import org.apache.hc.core5.http.ContentType;
 import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.SpotifyApi;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
+import se.michaelthelin.spotify.internal.ModelObjectJson;
+import se.michaelthelin.spotify.internal.Preconditions;
 import se.michaelthelin.spotify.model_objects.credentials.AuthorizationCodeCredentials;
 import se.michaelthelin.spotify.requests.authorization.AbstractAuthorizationRequest;
 
@@ -31,7 +33,7 @@ public class AuthorizationCodeRefreshRequest extends AbstractAuthorizationReques
     IOException,
     SpotifyWebApiException,
     ParseException {
-    return new AuthorizationCodeCredentials.JsonUtil().createModelObject(postJson());
+    return ModelObjectJson.object(postJson(), AuthorizationCodeCredentials.class);
   }
 
   /**
@@ -68,8 +70,7 @@ public class AuthorizationCodeRefreshRequest extends AbstractAuthorizationReques
      * @return An {@link AuthorizationCodeRefreshRequest.Builder}.
      */
     public Builder refresh_token(final String refresh_token) {
-      assert (refresh_token != null);
-      assert (!refresh_token.isEmpty());
+      Preconditions.assertNotEmpty(refresh_token);
       return setBodyParameter("refresh_token", refresh_token);
     }
 

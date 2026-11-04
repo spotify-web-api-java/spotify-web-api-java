@@ -6,6 +6,7 @@ import org.apache.hc.core5.http.ParseException;
 
 
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
+import se.michaelthelin.spotify.internal.ModelObjectJson;
 import se.michaelthelin.spotify.model_objects.special.PlaybackQueue;
 import se.michaelthelin.spotify.requests.data.AbstractDataRequest;
 
@@ -38,7 +39,7 @@ public class GetUsersQueueRequest extends AbstractDataRequest<PlaybackQueue> {
    */
   @Override
   public PlaybackQueue execute() throws IOException, SpotifyWebApiException, ParseException {
-    return new PlaybackQueue.JsonUtil().createModelObject(getJson());
+    return ModelObjectJson.object(getJson(), PlaybackQueue.class);
   }
 
   /**

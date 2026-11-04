@@ -2,6 +2,7 @@ package se.michaelthelin.spotify.requests.data.player;
 
 import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
+import se.michaelthelin.spotify.internal.ModelObjectJson;
 import se.michaelthelin.spotify.model_objects.miscellaneous.Device;
 import se.michaelthelin.spotify.requests.data.AbstractDataRequest;
 
@@ -32,7 +33,7 @@ public class GetAvailableDevicesRequest extends AbstractDataRequest<Device[]> {
     IOException,
     SpotifyWebApiException,
     ParseException {
-    return new Device.JsonUtil().createModelObjectArray(getJson(), "devices");
+    return ModelObjectJson.array(getJson(), "devices", Device.class);
   }
 
   /**

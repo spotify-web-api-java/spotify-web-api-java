@@ -18,7 +18,7 @@ on:
 jobs:
   ci-optimization:
     name: CI optimization
-    uses: dargmuesli/github-actions/.github/workflows/ci-optimization.yml@318a575af13dfd54dca497f6b190b0ac70ded4ed # 5.9.11
+    uses: dargmuesli/github-actions/.github/workflows/ci-optimization.yml@a6f1094d5440ad0158a4c6f10d1c43109a4c983b # 5.9.12
     permissions:
       pull-requests: read
   build:
@@ -50,6 +50,25 @@ jobs:
         # missing export fails here; clean, because an incremental build would reuse classes compiled
         # against the previous descriptor and report nothing
         run: mvn -B -f examples/pom.xml clean compile
+      - name: Check API compatibility
+        # compares the jar built above against the last stable release; HEAD^ so that on a release tag the baseline is
+        # the release before it, which is already on Maven Central, and RCs are skipped because they promise nothing
+        # a major version bump (the X.0.0-RCN line on beta) may break the API, so there the report is informational
+        run: |
+          baseline=$(git describe --tags --abbrev=0 --exclude '*-RC*' HEAD^)
+          version=$(mvn -B -q help:evaluate -Dexpression=project.version -DforceStdout)
+          break_on_incompatible=true
+          if [ "${version%%.*}" -gt "${baseline%%.*}" ]; then break_on_incompatible=false; fi
+          echo "Comparing $version against $baseline, failing on incompatible changes: $break_on_incompatible"
+          # When the branch version equals the baseline (the normal case between releases) the build step has
+          # installed that version into the local repo, which would shadow the genuine release the gate must
+          # compare against and leave japicmp comparing the branch against itself; drop the baseline so it
+          # re-resolves from Maven Central
+          rm -rf "$HOME/.m2/repository/se/michaelthelin/spotify/spotify-web-api-java/$baseline"
+          status=0
+          mvn -B japicmp:cmp -Dapi.baseline="$baseline" -Dapi.breakOnIncompatible="$break_on_incompatible" || status=$?
+          if [ -f target/japicmp/default-cli.md ]; then cat target/japicmp/default-cli.md >> "$GITHUB_STEP_SUMMARY"; fi
+          exit $status
       - name: Check documentation consistency
         run: ./ci/check-docs.py
       - name: Build Javadoc

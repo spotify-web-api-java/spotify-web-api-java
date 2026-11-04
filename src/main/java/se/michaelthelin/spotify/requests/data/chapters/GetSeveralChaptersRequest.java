@@ -3,6 +3,7 @@ package se.michaelthelin.spotify.requests.data.chapters;
 import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.enums.CountryCode;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
+import se.michaelthelin.spotify.internal.ModelObjectJson;
 import se.michaelthelin.spotify.model_objects.specification.Chapter;
 import se.michaelthelin.spotify.requests.data.AbstractDataRequest;
 
@@ -37,7 +38,7 @@ public class GetSeveralChaptersRequest extends AbstractDataRequest<Chapter[]> {
     IOException,
     SpotifyWebApiException,
     ParseException {
-    return new Chapter.JsonUtil().createModelObjectArray(getJson(), "chapters");
+    return ModelObjectJson.array(getJson(), "chapters", Chapter.class);
   }
 
   /**

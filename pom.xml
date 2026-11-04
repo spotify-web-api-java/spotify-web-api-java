@@ -115,6 +115,49 @@
           </archive>
         </configuration>
       </plugin>
+      <plugin>
+        <!--
+         API compatibility gate against the last stable release, bound to no phase so local builds need no network.
+         Locally it is:
+           mvn package -DskipTests && mvn japicmp:cmp -Dapi.baseline=<last stable release>
+         When the branch version equals the baseline (the normal case between releases), a build installed into the
+         local repo (mvn install, as when building the examples) sits at that coordinate and shadows the genuine
+         release, so japicmp would compare the branch against itself; clear the baseline first, which re-fetches it
+         from Maven Central:
+           rm -rf ~/.m2/repository/se/michaelthelin/spotify/spotify-web-api-java/<last stable release>
+         CI performs that clearing in the workflow. Any binary or source incompatible change fails, unless
+         -Dapi.breakOnIncompatible=false, which CI passes when the major version went up (the X.0.0-RCN line on
+         beta); japicmp's own semantic versioning mode cannot be used, because between releases the version still
+         equals the baseline and it then rejects even additions
+        -->
+        <groupId>com.github.siom79.japicmp</groupId>
+        <artifactId>japicmp-maven-plugin</artifactId>
+        <version>0.26.5</version>
+        <configuration>
+          <oldVersion>
+            <dependency>
+              <groupId>${project.groupId}</groupId>
+              <artifactId>${project.artifactId}</artifactId>
+              <version>${api.baseline}</version>
+              <type>jar</type>
+            </dependency>
+          </oldVersion>
+          <newVersion>
+            <file>
+              <path>${project.build.directory}/${project.build.finalName}.jar</path>
+            </file>
+          </newVersion>
+          <parameter>
+            <breakBuildOnBinaryIncompatibleModifications>${api.breakOnIncompatible}</breakBuildOnBinaryIncompatibleModifications>
+            <breakBuildOnSourceIncompatibleModifications>${api.breakOnIncompatible}</breakBuildOnSourceIncompatibleModifications>
+            <onlyModified>true</onlyModified>
+            <excludes>
+              <!-- not exported from the module, so no caller can depend on it -->
+              <exclude>se.michaelthelin.spotify.internal</exclude>
+            </excludes>
+          </parameter>
+        </configuration>
+      </plugin>
     </plugins>
   </build>
 
@@ -311,6 +354,7 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <api.breakOnIncompatible>true</api.breakOnIncompatible>
   </properties>
 
 </project>

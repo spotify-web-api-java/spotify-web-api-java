@@ -2,6 +2,7 @@ package se.michaelthelin.spotify.requests.data.users;
 
 import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
+import se.michaelthelin.spotify.internal.Preconditions;
 import se.michaelthelin.spotify.requests.data.AbstractDataRequest;
 
 import java.io.IOException;
@@ -63,8 +64,7 @@ public class UnfollowPlaylistRequest extends AbstractDataRequest<String> {
      * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URIs &amp; IDs</a>
      */
     public Builder playlist_id(final String playlist_id) {
-      assert (playlist_id != null);
-      assert (!playlist_id.isEmpty());
+      Preconditions.assertNotEmpty(playlist_id);
       return setPathParameter("playlist_id", playlist_id);
     }
 

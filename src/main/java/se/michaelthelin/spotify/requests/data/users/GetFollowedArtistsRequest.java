@@ -3,6 +3,7 @@ package se.michaelthelin.spotify.requests.data.users;
 import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.enums.ModelObjectType;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
+import se.michaelthelin.spotify.internal.ModelObjectJson;
 import se.michaelthelin.spotify.model_objects.specification.Artist;
 import se.michaelthelin.spotify.model_objects.specification.PagingCursorbased;
 import se.michaelthelin.spotify.requests.data.AbstractDataPagingCursorbasedRequest;
@@ -35,7 +36,7 @@ public class GetFollowedArtistsRequest extends AbstractDataRequest<PagingCursorb
     IOException,
     SpotifyWebApiException,
     ParseException {
-    return new Artist.JsonUtil().createModelObjectPagingCursorbased(getJson(), "artists");
+    return ModelObjectJson.pagingCursorbased(getJson(), "artists", Artist.class);
   }
 
   /**

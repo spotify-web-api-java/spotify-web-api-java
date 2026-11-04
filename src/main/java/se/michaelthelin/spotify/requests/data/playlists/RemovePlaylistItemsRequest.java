@@ -5,6 +5,8 @@ import com.google.gson.JsonObject;
 import org.apache.hc.core5.http.ContentType;
 import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
+import se.michaelthelin.spotify.internal.ModelObjectJson;
+import se.michaelthelin.spotify.internal.Preconditions;
 import se.michaelthelin.spotify.model_objects.special.SnapshotResult;
 import se.michaelthelin.spotify.requests.data.AbstractDataRequest;
 
@@ -38,7 +40,7 @@ public class RemovePlaylistItemsRequest extends AbstractDataRequest<SnapshotResu
     IOException,
     SpotifyWebApiException,
     ParseException {
-    return new SnapshotResult.JsonUtil().createModelObject(deleteJson());
+    return ModelObjectJson.object(deleteJson(), SnapshotResult.class);
   }
 
   /**
@@ -68,8 +70,7 @@ public class RemovePlaylistItemsRequest extends AbstractDataRequest<SnapshotResu
      * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URIs &amp; IDs</a>
      */
     public Builder playlist_id(final String playlist_id) {
-      assert (playlist_id != null);
-      assert (!playlist_id.isEmpty());
+      Preconditions.assertNotEmpty(playlist_id);
       return setPathParameter("playlist_id", playlist_id);
     }
 
@@ -110,8 +111,7 @@ public class RemovePlaylistItemsRequest extends AbstractDataRequest<SnapshotResu
      * @see <a href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify: URIs &amp; IDs</a>
      */
     public Builder tracks(final Collection<String> tracks) {
-      assert (tracks != null);
-      assert (!tracks.isEmpty());
+      Preconditions.assertNotEmpty(tracks);
       assert (tracks.size() <= 100);
       JsonArray array = new JsonArray();
       for (String uri : tracks) {
@@ -138,8 +138,7 @@ public class RemovePlaylistItemsRequest extends AbstractDataRequest<SnapshotResu
      * Spotify: Version Control and Snapshots</a>
      */
     public Builder snapshotId(final String snapshotId) {
-      assert (snapshotId != null);
-      assert (!snapshotId.isEmpty());
+      Preconditions.assertNotEmpty(snapshotId);
       return setBodyParameter("snapshot_id", snapshotId);
     }
 

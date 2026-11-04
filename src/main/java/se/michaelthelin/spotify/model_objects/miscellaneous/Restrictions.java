@@ -62,7 +62,12 @@ public class Restrictions extends AbstractModelObject {
 
   /**
    * JSonUtil class for building {@link Restrictions} instances.
+   *
+   * @deprecated Requests already return model objects. To read JSON obtained some other way, use
+   *             {@link se.michaelthelin.spotify.model_objects.ModelObjects} instead. This will be removed
+   *             in the next major version.
    */
+  @Deprecated
   public static final class JsonUtil extends AbstractModelObject.JsonUtil<Restrictions> {
 
     public JsonUtil() {

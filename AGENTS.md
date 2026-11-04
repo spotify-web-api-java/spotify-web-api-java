@@ -106,6 +106,9 @@ Note that the version lives in three files, and `ci/check-docs.py` fails when th
 
 ### Renaming or removing public API
 
+This is a breaking change, so it belongs on `beta`: the japicmp step in CI fails on `main` for any binary or source incompatible change against the last stable release.
+Watch for breaks that do not look like one, such as dropping a covariant `execute()` override in favour of the inherited generic one, which changes the erased return type.
+
 Record it in `MIGRATION.md` under the relevant `#### ` heading.
 Names that no longer exist have to sit in a table column whose header contains "v9", or inside a code fence under a `// v9` marker, otherwise the docs check reports them as stale.
 
@@ -128,7 +131,8 @@ mvn test -Dtest="*Playlist*"
 ## Key Conventions
 
 - **Model objects are deserialized reflectively** by the shared Gson in
-  `model_objects/ModelObjectGson.java`, so a new field needs no parsing code.
+  `internal/ModelObjectGson.java`, so a new field needs no parsing code.
+  To read JSON outside a request, callers use the public `model_objects/ModelObjects`.
   Add `@SerializedName` only when the wire name is not the snake_case form of the field,
   and add a type adapter only for a shape reflection cannot express.
 - **Trailing underscores** on Java-reserved words: e.g., `public_` for the `public` field.

@@ -2,6 +2,7 @@ package se.michaelthelin.spotify.requests.data.tracks;
 
 import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
+import se.michaelthelin.spotify.internal.ModelObjectJson;
 import se.michaelthelin.spotify.model_objects.specification.AudioFeatures;
 import se.michaelthelin.spotify.requests.data.AbstractDataRequest;
 
@@ -35,7 +36,7 @@ public class GetSeveralTracksAudioFeaturesRequest extends AbstractDataRequest<Au
     IOException,
     SpotifyWebApiException,
     ParseException {
-    return new AudioFeatures.JsonUtil().createModelObjectArray(getJson(), "audio_features");
+    return ModelObjectJson.array(getJson(), "audio_features", AudioFeatures.class);
   }
 
   /**
