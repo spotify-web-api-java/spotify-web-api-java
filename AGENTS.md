@@ -27,12 +27,12 @@ src/
 │   │   ├── specification/           # Core model objects (Playlist, Track, Album, etc.)
 │   │   ├── special/                 # Composite/special models
 │   │   └── miscellaneous/           # Supporting models
-│   └── requests/
-│       └── data/                    # One subfolder per API category
-│           ├── albums/
-│           ├── artists/
-│           ├── playlists/           # Playlist endpoint request classes
-│           └── ...
+│   └── requests/data/               # Hand-written request infrastructure (bases, paging interfaces,
+│                                    # the two non-generated concrete classes)
+├── generated/java/se/michaelthelin/spotify/requests/data/
+│   ├── albums/                      # Generated request classes, one subfolder per API category.
+│   ├── artists/                     # Same package as main, committed so a build needs no Python;
+│   └── ...                          # pom.xml adds the root, and a generated file is never edited by hand
 └── test/
     ├── java/se/michaelthelin/spotify/
     │   ├── ITest.java               # Shared test constants (IDs, names, etc.)
@@ -48,6 +48,7 @@ To add a new Spotify API endpoint, follow these steps:
 ### 1. Generate the request class and its SpotifyApi method
 
 Request classes and the `SpotifyApi` methods that create them are generated from `spec/openapi.yaml`; never edit them by hand, because CI fails when a generated file differs from what the generator produces.
+Generated classes are written to `src/generated/java`, in the same package as the hand-written request infrastructure in `src/main/java`; `pom.xml` adds that root via `build-helper-maven-plugin`, so the JAR and the module see both roots.
 
 Add one line to `codegen/requests.yaml` under the class's package, mapping the class name to the spec's `operationId`, then run the generator:
 

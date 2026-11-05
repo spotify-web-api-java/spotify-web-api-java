@@ -437,7 +437,8 @@ methods as well as an embedded...
 The request classes mirror the structure of Spotify's Web Api endpoints. They are divided into several categories like
 `authorization`, `data/albums` or `data/tracks`. They must extend from `AbstractDataRequest` and contain an
 implementation of the request's `execute` method. They have to embed a builder class too, enabling dynamic request
-creation.
+creation. The data request classes are generated from `spec/openapi.yaml` and committed under `src/generated/java`,
+in the same package as the hand-written ones.
 
 #### Tests
 `src/test/java/se.michaelthelin.spotify/`

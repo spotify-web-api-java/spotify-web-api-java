@@ -19,6 +19,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 SPEC = ROOT / "spec/openapi.yaml"
 DESCRIPTOR = ROOT / "codegen/requests.yaml"
 SOURCES = ROOT / "src/main/java"
+GENERATED = ROOT / "src/generated/java"
 BASE = "se.michaelthelin.spotify"
 DATA = BASE + ".requests.data"
 MODELS = SOURCES / "se/michaelthelin/spotify/model_objects"
@@ -493,7 +494,7 @@ def main():
         for cls, entry in classes.items():
             try:
                 request = Request(spec, package, cls, entry)
-                files[SOURCES / DATA.replace(".", "/") / package / (cls + ".java")] = request.render()
+                files[GENERATED / DATA.replace(".", "/") / package / (cls + ".java")] = request.render()
                 requests.append(request)
             except Unsupported as e:
                 failures.append(f"{package}/{cls}: {e}")

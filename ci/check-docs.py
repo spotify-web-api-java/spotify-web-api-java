@@ -9,13 +9,14 @@ import re
 import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-API = ROOT / "src/main/java/se/michaelthelin/spotify/SpotifyApi.java"
-REQUESTS = ROOT / "src/main/java/se/michaelthelin/spotify/requests"
-DATA_REQUESTS = REQUESTS / "data"
+# The generated request classes live in their own source root, in the same package as the hand-written ones.
+SOURCE_ROOTS = (ROOT / "src/main/java", ROOT / "src/generated/java")
+API = SOURCE_ROOTS[0] / "se/michaelthelin/spotify/SpotifyApi.java"
+REQUESTS = tuple(root / "se/michaelthelin/spotify/requests" for root in SOURCE_ROOTS)
+DATA_REQUESTS = tuple(root / "data" for root in REQUESTS)
 EXAMPLES = ROOT / "examples"
 README = ROOT / "README.md"
 MIGRATION = ROOT / "MIGRATION.md"
-SOURCES = ROOT / "src/main/java"
 SPEC = ROOT / "spec/openapi.yaml"
 
 # Convenience wrappers this library adds on top of /me/top/{type}, no spec counterpart.
@@ -37,7 +38,7 @@ def request_class_of(example):
 
 
 def request_source(name):
-    return next(REQUESTS.rglob(name + ".java"), None)
+    return next((p for root in REQUESTS for p in root.rglob(name + ".java")), None)
 
 
 def is_deprecated(java_file):
@@ -92,15 +93,16 @@ def check_readme(examples):
 def current_api():
     """Every name a reader can still write: packages, classes, methods, plus which of them are deprecated."""
     packages, classes, members = set(), {}, set()
-    for source in SOURCES.rglob("*.java"):
-        if source.name == "module-info.java":  # a module declaration, not a package of names
-            continue
-        text = source.read_text()
-        package = re.search(r"^package ([\w.]+);", text, re.M).group(1)
-        packages.add(package)
-        packages.add(package.replace("se.michaelthelin.spotify.", ""))
-        classes[source.stem] = bool(re.search(r"^@Deprecated", text, re.M))
-        members.update(re.findall(r"^  public [A-Za-z0-9_.<>\[\], ]+? (\w+)\(", text, re.M))
+    for root in SOURCE_ROOTS:
+        for source in root.rglob("*.java"):
+            if source.name == "module-info.java":  # a module declaration, not a package of names
+                continue
+            text = source.read_text()
+            package = re.search(r"^package ([\w.]+);", text, re.M).group(1)
+            packages.add(package)
+            packages.add(package.replace("se.michaelthelin.spotify.", ""))
+            classes[source.stem] = bool(re.search(r"^@Deprecated", text, re.M))
+            members.update(re.findall(r"^  public [A-Za-z0-9_.<>\[\], ]+? (\w+)\(", text, re.M))
 
     methods = {}
     for deprecated, request, method in re.findall(
@@ -209,7 +211,7 @@ def check_deprecation_matches_spec():
             spec[(verb, path)] = True
 
     verbs = (("deleteJson", "DELETE"), ("putJson", "PUT"), ("postJson", "POST"), ("getJson", "GET"))
-    for source in sorted(DATA_REQUESTS.rglob("*Request.java")):
+    for source in sorted(p for root in DATA_REQUESTS for p in root.rglob("*Request.java")):
         if source.stem in SPEC_EXEMPT:
             continue
         text = source.read_text()
