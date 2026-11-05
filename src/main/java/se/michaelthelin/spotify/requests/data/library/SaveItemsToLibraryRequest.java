@@ -60,6 +60,7 @@ public class SaveItemsToLibraryRequest extends AbstractDataRequest<String> {
      */
     public Builder uris(final String uris) {
       Preconditions.assertNotEmpty(uris);
+      assert (uris.split(",").length <= 40);
       return setQueryParameter("uris", uris);
     }
 

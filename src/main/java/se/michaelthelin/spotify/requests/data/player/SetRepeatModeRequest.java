@@ -57,6 +57,7 @@ public class SetRepeatModeRequest extends AbstractDataRequest<String> {
      */
     public Builder state(final String state) {
       Preconditions.assertNotEmpty(state);
+      assert (state.matches("track|context|off"));
       return setQueryParameter("state", state);
     }
 

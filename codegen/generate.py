@@ -272,7 +272,7 @@ class Parameter:
             imports.add(BASE + ".internal.Preconditions")
             if enum:
                 checks.append(f'assert ({name}.matches("{"|".join(enum)}"));')
-            most = re.search(r"Maximum: (\d+) IDs|maximum of (\d+) (?:IDs|items)", description)
+            most = re.search(r"Maximum: (\d+) (?:IDs?|id|URIs)|maximum of (\d+) (?:IDs|items)", description)
             if most:
                 checks.append(f'assert ({name}.split(",").length <= {most.group(1) or most.group(2)});')
             return "String", imports, checks

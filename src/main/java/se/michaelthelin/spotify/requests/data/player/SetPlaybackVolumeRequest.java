@@ -56,7 +56,7 @@ public class SetPlaybackVolumeRequest extends AbstractDataRequest<String> {
      */
     public Builder volume_percent(final Integer volume_percent) {
       assert (volume_percent != null);
-      assert (volume_percent >= 0);
+      assert (0 <= volume_percent && volume_percent <= 100);
       return setQueryParameter("volume_percent", volume_percent);
     }
 

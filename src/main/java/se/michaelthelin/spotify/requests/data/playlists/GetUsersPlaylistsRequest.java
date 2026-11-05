@@ -92,7 +92,7 @@ public class GetUsersPlaylistsRequest extends AbstractDataRequest<Paging<Playlis
     @Override
     public Builder offset(final Integer offset) {
       assert (offset != null);
-      assert (offset >= 0);
+      assert (0 <= offset && offset <= 100000);
       return setQueryParameter("offset", offset);
     }
 

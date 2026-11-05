@@ -63,6 +63,10 @@ It needs PyYAML (`pip install pyyaml`).
 
 If the spec itself is updated, rerun the generator and review the diff: it is the API change.
 
+The vendored spec is the published spec plus the constraints the generated setters assert.
+Where the published spec states a bound only in prose, the copy carries it as a schema field (`minimum`, `maximum` or `enum`), because the generated checks read schema fields.
+Count limits on comma-separated parameters are read from the description phrasing `Maximum: N IDs`, `URIs` or `id`, so those bounds stay in the description.
+
 ### 2. Add a fixture file
 
 Create `src/test/fixtures/requests/data/<category>/<EndpointName>Request.json` with a sample API response.

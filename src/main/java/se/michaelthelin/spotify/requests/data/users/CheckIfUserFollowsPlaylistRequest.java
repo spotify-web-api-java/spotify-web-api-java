@@ -78,6 +78,7 @@ public class CheckIfUserFollowsPlaylistRequest extends AbstractDataRequest<Boole
      */
     public Builder ids(final String ids) {
       Preconditions.assertNotEmpty(ids);
+      assert (ids.split(",").length <= 1);
       return setQueryParameter("ids", ids);
     }
 
