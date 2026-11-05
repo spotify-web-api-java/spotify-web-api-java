@@ -38,7 +38,7 @@ Latest official release:
 <dependency>
   <groupId>se.michaelthelin.spotify</groupId>
   <artifactId>spotify-web-api-java</artifactId>
-  <version>11.0.0-RC1</version>
+  <version>11.0.0-RC2</version>
 </dependency>
 ```
 
@@ -55,7 +55,7 @@ Latest snapshot:
 
 Latest official release:
 ```Gradle
-implementation 'se.michaelthelin.spotify:spotify-web-api-java:11.0.0-RC1'
+implementation 'se.michaelthelin.spotify:spotify-web-api-java:11.0.0-RC2'
 ```
 
 Latest snapshot:
