@@ -6,10 +6,11 @@
  */
 module se.michaelthelin.spotify {
   // types from these appear in this library's own public signatures, so callers need them too
-  requires transitive com.google.gson;
   requires transitive org.apache.httpcomponents.client5.httpclient5;
   requires transitive org.apache.httpcomponents.core5.httpcore5;
 
+  // used internally only: no public signature takes or returns a Gson type
+  requires com.google.gson;
   requires org.apache.httpcomponents.client5.httpclient5.cache;
   requires java.logging;
 

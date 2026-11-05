@@ -78,6 +78,12 @@ PlaylistItemFactory and its package `se.michaelthelin.spotify.model_objects.util
 `AbstractRequest.bodyParametersToJson(List<NameValuePair>)` was an internal serialization helper, and the serializer now reads the typed values the builders store, so the method is private.
 Build the body with `initializeBody()` and read it from `getBody()`.
 
+### Java modules
+
+Gson is no longer `requires transitive`, only `requires`: with the JsonUtil classes removed and request bodies taking a List or a Map, no public signature takes or returns a Gson type anymore.
+A module that uses Gson itself, and only read it through this library, now needs its own `requires com.google.gson;`.
+Gson is still a regular Maven dependency of the library, so nothing changes for code on the classpath or for dependency resolution.
+
 ## 9.4.0 → 10.0.0
 
 Version 10 aligns the library with Spotify's OpenAPI specification.
