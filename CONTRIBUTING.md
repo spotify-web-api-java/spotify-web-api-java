@@ -34,13 +34,25 @@ mvn clean install
 mvn test
 ```
 
+Changing a request class, or anything in `spec/openapi.yaml` or `codegen/requests.yaml`, also needs Python 3 with
+PyYAML (`pip install pyyaml`) to run the generator:
+
+```bash
+# regenerate the request classes and their SpotifyApi methods
+./codegen/generate.py
+
+# only check that the committed ones are up to date, as CI does
+./codegen/generate.py --check
+```
+
 The examples under `examples/` are a separate Maven project that compiles against the installed library, and
 `./ci/check-docs.py` checks the documentation against the code; CI runs both.
 [AGENTS.md](AGENTS.md) lists these commands and the step-by-step recipe for adding an endpoint.
 
 ## Code Overview
-The library's code lives in `src/main/java/se/michaelthelin/spotify/`, divided into four parts that `SpotifyApi` ties
-together.
+The hand-written code lives in `src/main/java/se/michaelthelin/spotify/`, divided into four parts that `SpotifyApi` ties
+together. The generated request classes sit in `src/generated/java/` under the same packages; Maven adds that directory
+as a second source root, so the jar contains both.
 
 - **`enums/`** holds the fixed value sets Spotify uses, such as `ModelObjectType` or `CountryCode`.
 - **`exceptions/`** has one exception per HTTP status code the API answers with, each carrying Spotify's error
@@ -52,7 +64,11 @@ together.
   request.
 - **`requests/`** mirrors Spotify's endpoints, under `authorization/` and `data/<category>/`. A data request extends
   `AbstractDataRequest`, implements `execute()` and embeds a builder, and `SpotifyApi` has one method per request that
-  creates that builder.
+  creates that builder. The data requests and those `SpotifyApi` methods are generated from `spec/openapi.yaml`, as
+  described under [Integrity](#integrity): `codegen/requests.yaml` maps each class to its spec operation, and the
+  methods sit between `// <generated-requests>` markers in `SpotifyApi.java`. `src/main/java` keeps the hand-written
+  infrastructure (base classes, paging interfaces) and the two requests the generator does not produce,
+  `GetUsersTopArtistsAndTracksRequest` and `AddCustomPlaylistCoverImageRequest`.
 
 The tests in `src/test/java/se/michaelthelin/spotify/` mirror this structure and use [JUnit](https://junit.org/) and
 [Mockito](https://site.mockito.org/). They read the responses they expect from JSON fixtures in `src/test/fixtures/`;
