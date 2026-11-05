@@ -1,12 +1,7 @@
 # Contributing to Spotify Web API Java
 
-## Your Questions
-Please consider asking questions in help networks like
-[StackOverflow](https://stackoverflow.com/questions/tagged/spotify-web-api-java) using the label `spotify-web-api-java`.
-Posting your question there will result in quick and helpful answers.
-
-Issues should only be used to file bug reports and ask questions that are targeted specifically at **this** project's
-source code.
+Questions about *using* the library are best asked as described under [Support](README.md#support) in the README;
+this guide is about changing it.
 
 ## Information Quality
 Every constructive contribution is highly appreciated. They help to keep this project up-to-date and running,
@@ -27,6 +22,41 @@ maintainers and thereby the time one has to wait for merges.
 
 Issues that do not provide enough information, that are unclear or not understandable will be closed until more
 qualitative information is provided.
+
+## Development Setup
+Building needs a JDK 17 or later (CI builds on 17 and 25; the library itself targets Java 9) and Maven:
+
+```bash
+# build, test and install the library into the local Maven repository
+mvn clean install
+
+# run the tests only
+mvn test
+```
+
+The examples under `examples/` are a separate Maven project that compiles against the installed library, and
+`./ci/check-docs.py` checks the documentation against the code; CI runs both.
+[AGENTS.md](AGENTS.md) lists these commands and the step-by-step recipe for adding an endpoint.
+
+## Code Overview
+The library's code lives in `src/main/java/se/michaelthelin/spotify/`, divided into four parts that `SpotifyApi` ties
+together.
+
+- **`enums/`** holds the fixed value sets Spotify uses, such as `ModelObjectType` or `CountryCode`.
+- **`exceptions/`** has one exception per HTTP status code the API answers with, each carrying Spotify's error
+  description.
+- **`model_objects/`** holds the objects responses are read into. `specification/` has the objects Spotify's reference
+  defines, `miscellaneous/` the ones it mentions without defining them, and `special/` the ones that only appear in
+  responses. A model object has private fields, public getters and a builder, and is read reflectively by a shared
+  Gson instance, so a new field needs no parsing code. `ModelObjects` reads model objects from JSON obtained outside a
+  request.
+- **`requests/`** mirrors Spotify's endpoints, under `authorization/` and `data/<category>/`. A data request extends
+  `AbstractDataRequest`, implements `execute()` and embeds a builder, and `SpotifyApi` has one method per request that
+  creates that builder.
+
+The tests in `src/test/java/se/michaelthelin/spotify/` mirror this structure and use [JUnit](https://junit.org/) and
+[Mockito](https://site.mockito.org/). They read the responses they expect from JSON fixtures in `src/test/fixtures/`;
+see [Fixtures](#fixtures) for when those may change.
 
 ## Contribution Completeness
 A contribution has to be *complete* to get accepted. If you cannot complete the requirements, you're welcome to ask for

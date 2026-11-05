@@ -4,12 +4,12 @@
 
 | Android Developers |
 | - |
-| You **cannot** use this library for Android app development. Have a look at [adamint/spotify-web-api-kotlin](https://www.github.com/adamint/spotify-web-api-kotlin), [kaaes/spotify-web-api-android](https://www.github.com/kaaes/spotify-web-api-android) and [Spotify's Android SDK](https://developer.spotify.com/technologies/spotify-android-sdk/) and [see why](https://github.com/spotify-web-api-java/spotify-web-api-java/issues/120#issuecomment-363266591). |
+| You **cannot** use this library for Android app development. Have a look at [adamint/spotify-web-api-kotlin](https://www.github.com/adamint/spotify-web-api-kotlin), [kaaes/spotify-web-api-android](https://www.github.com/kaaes/spotify-web-api-android) and [Spotify's Android SDK](https://developer.spotify.com/documentation/android) and [see why](https://github.com/spotify-web-api-java/spotify-web-api-java/issues/120#issuecomment-363266591). |
 
 # Spotify Web API Java
-[![CI](https://github.com/spotify-web-api-java/spotify-web-api-java/actions/workflows/ci.yml/badge.svg)](https://github.com/spotify-web-api-java/spotify-web-api-java/actions/workflows/ci.yml) [![codecov](https://codecov.io/gh/spotify-web-api-java/spotify-web-api-java/branch/develop/graph/badge.svg)](https://codecov.io/gh/spotify-web-api-java/spotify-web-api-java)
+[![CI](https://github.com/spotify-web-api-java/spotify-web-api-java/actions/workflows/ci.yml/badge.svg)](https://github.com/spotify-web-api-java/spotify-web-api-java/actions/workflows/ci.yml) [![codecov](https://codecov.io/gh/spotify-web-api-java/spotify-web-api-java/branch/main/graph/badge.svg)](https://codecov.io/gh/spotify-web-api-java/spotify-web-api-java)
 
-This is a Java wrapper/client for the [Spotify Web API](https://developer.spotify.com/web-api/).
+This is a Java wrapper/client for the [Spotify Web API](https://developer.spotify.com/documentation/web-api).
 
 ## Table of Contents
 1. **[Installation](#Installation)**
@@ -19,8 +19,8 @@ This is a Java wrapper/client for the [Spotify Web API](https://developer.spotif
 4. **[General Usage](#General-Usage)**
     1. **[Authorization](#Authorization)**
 5. **[Examples](#Examples)**
-6. **[Contributions](#Contributions)**
-    1. **[Code Overview](#Code-Overview)**
+6. **[Support](#Support)**
+7. **[Contributions](#Contributions)**
 
 ## Installation
 
@@ -28,6 +28,8 @@ The artifact is available through
 [Maven Central](https://mvnrepository.com/artifact/se.michaelthelin.spotify/spotify-web-api-java) via
 [Sonatype](https://central.sonatype.com/artifact/se.michaelthelin.spotify/spotify-web-api-java).
 Or to use a snapshot of the latest commit you can use [jitpack.io](https://jitpack.io/) as described [further down below](#Jitpack).
+
+The library requires Java 9 or later. It is an explicit Java module named `se.michaelthelin.spotify`, so on the module path add `requires se.michaelthelin.spotify;` to your `module-info.java`; on the classpath nothing is needed.
 
 ### Maven
 
@@ -43,9 +45,9 @@ Latest official release:
 Latest snapshot:
 ```XML
 <dependency>
-  <groupId>com.github.thelinmichael</groupId>
+  <groupId>com.github.spotify-web-api-java</groupId>
   <artifactId>spotify-web-api-java</artifactId>
-  <version>master-SNAPSHOT</version>
+  <version>main-SNAPSHOT</version>
 </dependency>
 ```
 
@@ -58,14 +60,14 @@ implementation 'se.michaelthelin.spotify:spotify-web-api-java:11.0.0-RC1'
 
 Latest snapshot:
 ```Gradle
-implementation 'com.github.thelinmichael:spotify-web-api-java:master-SNAPSHOT'
+implementation 'com.github.spotify-web-api-java:spotify-web-api-java:main-SNAPSHOT'
 ```
 
 ---
 
 ### Jitpack
 
-In order to use Jitpack you need to add their repository to your `pom.xml`:
+In order to use Jitpack you need to add their repository to your build:
 
 #### Maven
 ```XML
@@ -121,7 +123,7 @@ void getSomething_Sync() {
 void getSomething_Async() {
   try {
     // Execute the request asynchronous
-    final Future<Something> somethingFuture = getSomethingRequest.executeAsync();
+    final CompletableFuture<Something> somethingFuture = getSomethingRequest.executeAsync();
 
     // Do other things...
 
@@ -137,10 +139,10 @@ void getSomething_Async() {
 ```
 
 ### Authorization
-**Please see [Spotify's Authorization Guide](https://developer.spotify.com/documentation/general/guides/authorization-guide/) too!**
+**Please see [Spotify's authorization guide](https://developer.spotify.com/documentation/web-api/concepts/authorization) too!**
 
 For authorization requests the API object requires at least to have
-[your application](https://developer.spotify.com/my-applications)'s client ID and client secret set as its properties.
+[your application](https://developer.spotify.com/dashboard)'s client ID and client secret set as its properties.
 When using the authorization code flow, the application's redirect URI is required too. Those properties will then be
 automatically used by functions that depend on them.
 
@@ -184,10 +186,8 @@ When you've fetched an access and refresh token, you have to add them to your AP
 requests. The implementer has to handle the access token's expiration.
 
 ```Java
-spotifyApi
-  .setAccessToken("<your_access_token>")
-  .setRefreshToken("<your_refresh_token>")
-  .build();
+spotifyApi.setAccessToken("<your_access_token>");
+spotifyApi.setRefreshToken("<your_refresh_token>");
 ```
 
 #### [Authorization Code Flow with Proof Key for Code Exchange (PKCE)](https://tools.ietf.org/html/rfc7636)
@@ -382,73 +382,14 @@ access token only once, after which it becomes invalid.
   - ⚠️ [Follow a Playlist](examples/data/users/FollowPlaylistExample.java)
   - ⚠️ [Unfollow a Playlist](examples/data/users/UnfollowPlaylistExample.java)
   - ⚠️ [Check if Users Follow a Playlist](examples/data/users/CheckIfUserFollowsPlaylistExample.java)
+
+## Support
+Please ask questions about using the library in help networks like
+[StackOverflow](https://stackoverflow.com/questions/tagged/spotify-web-api-java) with the tag `spotify-web-api-java`,
+where they get quick and helpful answers.
+
+Issues are for bug reports and for questions about **this** project's source code.
+
 ## Contributions
-See [CONTRIBUTING.md](CONTRIBUTING.md).
-
-- Build: `mvn clean install`
-- Test: `mvn clean test`
-
-Requirements: Java, Maven.
-
-### Code Overview
-This project's main Java package is divided into four sections:
-- enumerations
-- exceptions
-- model objects
-- requests.
-
-Those unit-tested parts are connected through various classes that make the API accessible for other Java projects. You
-can find details about specific parts or single classes in the sections below.
-
-#### Enumerations
-`src/main/java/se.michaelthelin.spotify/enums/`
-
-Enumerations allow elements to "be of a type" and limit them to a known value set. They are currently not specified in a
-unique place, but are rather scrambled across the online reference. Thus, the reference only allows for construction
-of enum classes from this sparse information.
-
-#### Exceptions
-`src/main/java/se.michaelthelin.spotify/exceptions/`
-
-Exceptions are thrown when errors occur. They are following RFC-specified
-[HTTP status codes](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes) and are packed with a more detailed error
-description.
-
-#### Model Objects
-`src/main/java/se.michaelthelin.spotify/model_objects/`
-
-The model objects are entities that form the API's responses in arranged formats. They are mostly specified in the
-[Web API Object Model](https://developer.spotify.com/web-api/object-model/) and in the
-[Web API Authorization Guide](https://developer.spotify.com/documentation/web-api/concepts/authorization). Though, unreferenced model
-objects exist. This project subdivides those into...
-
-- "miscellaneous" model objects: these are mentioned somewhere in the reference, but not in the model object list
-- "special" model objects: these are not mentioned at all, but appear in API answers nonetheless.
-
-Java classes representing those model objects include private instance variables, a private constructor, but public getter
-methods as well as an embedded...
-
-1. builder class, including the setter functions and a public build method
-2. JSON-util class, implementing the `createModelObject` method.
-
-#### Requests
-`src/main/java/se.michaelthelin.spotify/requests/`
-
-The request classes mirror the structure of Spotify's Web Api endpoints. They are divided into several categories like
-`authorization`, `data/albums` or `data/tracks`. They must extend from `AbstractDataRequest` and contain an
-implementation of the request's `execute` method. They have to embed a builder class too, enabling dynamic request
-creation. The data request classes are generated from `spec/openapi.yaml` and committed under `src/generated/java`,
-in the same package as the hand-written ones.
-
-#### Tests
-`src/test/java/se.michaelthelin.spotify/`
-
-Unit tests ensure that implemented features work. This project's unit tests are implemented with [JUnit](http://junit.org/)
-and [mockito](http://site.mockito.org/) for mocking.
-
-##### Fixtures
-`src/test/fixtures/`
-
-Fixtures are JSON files that represent the data returned from the API server. We use the examples directly provided by
-the [Web API Endpoint Reference](https://developer.spotify.com/web-api/endpoint-reference/) with minor tweaks. Tweaks
-are needed because the reference sometimes contains invalid data examples.
+Contributions are very welcome. [CONTRIBUTING.md](CONTRIBUTING.md) describes how the code is organized, how to build
+and test it, and what a pull request needs to be accepted.
