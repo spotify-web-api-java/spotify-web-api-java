@@ -184,20 +184,4 @@ public class SearchResult extends AbstractModelObject implements IArtistTrackMod
     }
   }
 
-  /**
-   * JsonUtil class for building {@link SearchResult} instances.
-   *
-   * @deprecated Requests already return model objects. To read JSON obtained some other way, use
-   *             {@link se.michaelthelin.spotify.model_objects.ModelObjects} instead. This will be removed
-   *             in the next major version.
-   */
-  @Deprecated
-  public static final class JsonUtil extends AbstractModelObject.JsonUtil<SearchResult> {
-
-    public JsonUtil() {
-      super();
-    }
-
-  }
-
 }

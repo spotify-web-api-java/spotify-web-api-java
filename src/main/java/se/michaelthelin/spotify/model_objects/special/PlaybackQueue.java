@@ -2,12 +2,9 @@ package se.michaelthelin.spotify.model_objects.special;
 
 import java.util.List;
 
-import com.google.gson.JsonObject;
-
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 import se.michaelthelin.spotify.model_objects.IModelObject;
 import se.michaelthelin.spotify.model_objects.IPlaylistItem;
-import se.michaelthelin.spotify.model_objects.miscellaneous.CurrentlyPlaying;
 
 /**
  * Get the list of items that make up the user's queue.
@@ -79,28 +76,6 @@ public class PlaybackQueue extends AbstractModelObject {
     @Override
     public PlaybackQueue build() {
       return new PlaybackQueue(this);
-    }
-  }
-
-  /**
-   * JsonUtil class for building {@link PlaybackQueue} instances.
-   *
-   * @deprecated Requests already return model objects. To read JSON obtained some other way, use
-   *             {@link se.michaelthelin.spotify.model_objects.ModelObjects} instead. This will be removed
-   *             in the next major version.
-   */
-  @Deprecated
-  public static final class JsonUtil extends AbstractModelObject.JsonUtil<PlaybackQueue> {
-
-    public JsonUtil() {
-      super();
-    }
-
-    // Kept only so callers compiled against this override, whose erased return type differs from the
-    // inherited one, still link. The model's JSON shape is handled by an adapter in ModelObjectGson.
-    @Override
-    public PlaybackQueue createModelObject(JsonObject jsonObject) {
-      return super.createModelObject(jsonObject);
     }
   }
 }

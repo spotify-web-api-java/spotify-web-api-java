@@ -23,9 +23,10 @@ import se.michaelthelin.spotify.model_objects.IPlaylistItem;
 import se.michaelthelin.spotify.model_objects.special.PlaybackQueue;
 import se.michaelthelin.spotify.model_objects.specification.Cursor;
 import se.michaelthelin.spotify.model_objects.specification.Disallows;
+import se.michaelthelin.spotify.model_objects.specification.Episode;
 import se.michaelthelin.spotify.model_objects.specification.ExternalId;
 import se.michaelthelin.spotify.model_objects.specification.ExternalUrl;
-import se.michaelthelin.spotify.model_objects.utils.PlaylistItemFactory;
+import se.michaelthelin.spotify.model_objects.specification.Track;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -65,7 +66,7 @@ public final class ModelObjectGson {
     .registerTypeAdapter(ModelObjectType.class, fromString(ModelObjectType::keyOf))
     .registerTypeAdapter(ReleaseDatePrecision.class, fromString(ReleaseDatePrecision::keyOf))
     .registerTypeAdapter(Modality.class, fromInt(Modality::keyOf))
-    .registerTypeAdapter(IPlaylistItem.class, object(PlaylistItemFactory::createPlaylistItem))
+    .registerTypeAdapter(IPlaylistItem.class, object(ModelObjectGson::playlistItem))
     .registerTypeAdapter(Cursor[].class, cursors())
     .registerTypeAdapter(Disallows.class, object(ModelObjectGson::disallows))
     .registerTypeAdapter(ExternalId.class, object(ModelObjectGson::externalId))
@@ -185,13 +186,13 @@ public final class ModelObjectGson {
    */
   private static PlaybackQueue playbackQueue(JsonObject jsonObject) {
     IPlaylistItem currentlyPlaying = hasAndNotNull(jsonObject, "currently_playing")
-      ? PlaylistItemFactory.createPlaylistItem(jsonObject.getAsJsonObject("currently_playing"))
+      ? playlistItem(jsonObject.getAsJsonObject("currently_playing"))
       : null;
 
     List<IPlaylistItem> queue = new ArrayList<>();
     if (hasAndNotNull(jsonObject, "queue")) {
       for (JsonElement jsonElement : jsonObject.getAsJsonArray("queue")) {
-        queue.add(PlaylistItemFactory.createPlaylistItem(jsonElement.getAsJsonObject()));
+        queue.add(playlistItem(jsonElement.getAsJsonObject()));
       }
     }
 
@@ -199,6 +200,24 @@ public final class ModelObjectGson {
       .setCurrentlyPlaying(currentlyPlaying)
       .setQueue(queue)
       .build();
+  }
+
+  /**
+   * A playlist or queue item is a track or an episode, told apart by its {@code type}; any other type reads as
+   * {@code null}.
+   */
+  private static IPlaylistItem playlistItem(JsonObject jsonObject) {
+    if (!hasAndNotNull(jsonObject, "type")) {
+      return null;
+    }
+    switch (jsonObject.get("type").getAsString().toLowerCase(Locale.ROOT)) {
+      case "track":
+        return GSON.fromJson(jsonObject, Track.class);
+      case "episode":
+        return GSON.fromJson(jsonObject, Episode.class);
+      default:
+        return null;
+    }
   }
 
   /**
