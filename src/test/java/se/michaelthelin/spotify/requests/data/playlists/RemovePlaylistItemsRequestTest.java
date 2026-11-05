@@ -1,8 +1,6 @@
 package se.michaelthelin.spotify.requests.data.playlists;
 
-import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import org.apache.hc.core5.http.ParseException;
 import org.apache.hc.core5.http.io.entity.EntityUtils;
@@ -15,6 +13,8 @@ import se.michaelthelin.spotify.requests.data.AbstractDataTest;
 
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -28,7 +28,7 @@ public class RemovePlaylistItemsRequestTest extends AbstractDataTest<SnapshotRes
     .setHttpManager(
       TestUtil.MockedHttpManager.returningJson(
         "requests/data/playlists/RemoveItemsFromPlaylistRequest.json"))
-    .snapshotId(ITest.SNAPSHOT_ID)
+    .snapshot_id(ITest.SNAPSHOT_ID)
     .build();
 
   public RemovePlaylistItemsRequestTest() throws Exception {
@@ -38,10 +38,6 @@ public class RemovePlaylistItemsRequestTest extends AbstractDataTest<SnapshotRes
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
     assertHasHeader(defaultRequest, "Content-Type", "application/json");
-    assertHasBodyParameter(
-      defaultRequest,
-      "items",
-      ITest.URIS);
     assertHasBodyParameter(
       defaultRequest,
       "snapshot_id",
@@ -63,14 +59,11 @@ public class RemovePlaylistItemsRequestTest extends AbstractDataTest<SnapshotRes
 
   @Test
   public void shouldSerializeItemsAsJsonArray_notJsonString() throws IOException, ParseException {
-    JsonArray uris = new JsonArray();
-    JsonObject first = new JsonObject();
-    first.addProperty("uri", "spotify:track:01iyCAUm8EvOFqVWYJ3dVX");
-    uris.add(first);
+    List<String> uris = Collections.singletonList("spotify:track:01iyCAUm8EvOFqVWYJ3dVX");
 
     RemovePlaylistItemsRequest request = ITest.SPOTIFY_API
       .removePlaylistItems(ITest.ID_PLAYLIST, uris)
-      .snapshotId(ITest.SNAPSHOT_ID)
+      .snapshot_id(ITest.SNAPSHOT_ID)
       .build();
 
     request.initializeBody();

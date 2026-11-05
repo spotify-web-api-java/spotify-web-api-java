@@ -1,13 +1,15 @@
 package se.michaelthelin.spotify.requests.data.player;
 
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
 import org.apache.hc.core5.http.ParseException;
 import org.apache.hc.core5.http.io.entity.EntityUtils;
 import org.junit.jupiter.api.Test;
 import se.michaelthelin.spotify.SpotifyApi;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -42,10 +44,8 @@ public class StartUsersPlaybackRequestNumericTest {
 
     @Test
     public void shouldPreserveBooleanParametersAsBooleans() throws IOException, ParseException {
-        // Create a request with JSON array uris
-        JsonArray uris = new JsonArray();
-        uris.add("spotify:track:test1");
-        uris.add("spotify:track:test2");
+        // Create a request with a list of uris
+        List<String> uris = Arrays.asList("spotify:track:test1", "spotify:track:test2");
 
         StartResumePlaybackRequest request = new SpotifyApi.Builder()
             .setAccessToken("test-token")
@@ -67,9 +67,8 @@ public class StartUsersPlaybackRequestNumericTest {
 
     @Test
     public void shouldPreserveJsonObjectParameters() throws IOException, ParseException {
-        // Create a request with JSON object offset
-        JsonObject offset = new JsonObject();
-        offset.addProperty("position", 5);
+        // Create a request with an offset object
+        Map<String, Object> offset = Collections.singletonMap("position", 5);
 
         StartResumePlaybackRequest request = new SpotifyApi.Builder()
             .setAccessToken("test-token")

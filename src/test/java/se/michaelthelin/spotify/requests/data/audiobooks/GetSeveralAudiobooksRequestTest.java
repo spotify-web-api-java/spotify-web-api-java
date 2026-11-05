@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import se.michaelthelin.spotify.ITest;
 import se.michaelthelin.spotify.TestUtil;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
-import se.michaelthelin.spotify.model_objects.specification.AudiobookSimplified;
+import se.michaelthelin.spotify.model_objects.specification.Audiobook;
 import se.michaelthelin.spotify.requests.data.AbstractDataTest;
 
 import java.io.IOException;
@@ -14,7 +14,7 @@ import java.util.concurrent.ExecutionException;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-public class GetSeveralAudiobooksRequestTest extends AbstractDataTest<AudiobookSimplified[]> {
+public class GetSeveralAudiobooksRequestTest extends AbstractDataTest<Audiobook[]> {
   private final GetSeveralAudiobooksRequest defaultRequest = ITest.SPOTIFY_API
     .getSeveralAudiobooks(ITest.ID_AUDIOBOOK)
     .setHttpManager(
@@ -43,7 +43,7 @@ public class GetSeveralAudiobooksRequestTest extends AbstractDataTest<AudiobookS
     shouldReturnDefault(defaultRequest.executeAsync().get());
   }
 
-  public void shouldReturnDefault(final AudiobookSimplified[] audiobooks) {
+  public void shouldReturnDefault(final Audiobook[] audiobooks) {
     assertNotNull(audiobooks);
     assertEquals(1, audiobooks.length);
     assertEquals("2IEBhnu61ieYGFRPEJIO40", audiobooks[0].getId());

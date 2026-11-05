@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.requests.data.playlists;
 
-import com.google.gson.Gson;
 import org.apache.hc.core5.http.ParseException;
 import org.junit.jupiter.api.Test;
 import se.michaelthelin.spotify.ITest;
@@ -18,18 +17,12 @@ import static se.michaelthelin.spotify.Assertions.assertHasHeader;
 
 public class AddItemsToPlaylistRequestTest extends AbstractDataTest<SnapshotResult> {
   private final AddItemsToPlaylistRequest defaultRequest = ITest.SPOTIFY_API
-    .addItemsToPlaylist(ITest.ID_PLAYLIST, new Gson().fromJson(ITest.URIS, String[].class))
+    .addItemsToPlaylist(ITest.ID_PLAYLIST)
+    .uris(String.join(",", ITest.URIS))
     .setHttpManager(
       TestUtil.MockedHttpManager.returningJson(
         "requests/data/playlists/AddItemsToPlaylistRequest.json"))
     .position(ITest.POSITION)
-    .build();
-  private final AddItemsToPlaylistRequest bodyRequest = ITest.SPOTIFY_API
-    .addItemsToPlaylist(ITest.ID_PLAYLIST, ITest.URIS)
-    .setHttpManager(
-      TestUtil.MockedHttpManager.returningJson(
-        "requests/data/playlists/AddItemsToPlaylistRequest.json"))
-    .position(ITest.POSITION, true)
     .build();
 
   public AddItemsToPlaylistRequestTest() throws Exception {
@@ -41,20 +34,7 @@ public class AddItemsToPlaylistRequestTest extends AbstractDataTest<SnapshotResu
     assertEquals(
       "https://api.spotify.com:443/v1/playlists/3AGOiaoRXMSjswCLtuNqv5/items?uris=spotify%3Atrack%3A01iyCAUm8EvOFqVWYJ3dVX%2Cspotify%3Atrack%3A01iyCAUm8EvOFqVWYJ3dVX&position=0",
       defaultRequest.getUri().toString());
-
-    assertHasAuthorizationHeader(bodyRequest);
     assertHasHeader(defaultRequest, "Content-Type", "application/json");
-    assertHasBodyParameter(
-      bodyRequest,
-      "uris",
-      ITest.URIS);
-    assertHasBodyParameter(
-      bodyRequest,
-      "position",
-      ITest.POSITION);
-    assertEquals(
-      "https://api.spotify.com:443/v1/playlists/3AGOiaoRXMSjswCLtuNqv5/items",
-      bodyRequest.getUri().toString());
   }
 
   @Test

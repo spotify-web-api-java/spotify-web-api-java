@@ -17,7 +17,9 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 import java.util.logging.Level;
 import java.util.regex.Matcher;
@@ -113,6 +115,8 @@ public abstract class AbstractRequest<T> implements IRequest<T> {
         jsonObject.addProperty(bodyParameter.getName(), (Boolean) value);
       } else if (value instanceof Number) {
         jsonObject.addProperty(bodyParameter.getName(), (Number) value);
+      } else if (value instanceof Collection || value instanceof Map) {
+        jsonObject.add(bodyParameter.getName(), new Gson().toJsonTree(value));
       } else {
         jsonObject.addProperty(bodyParameter.getName(), String.valueOf(value));
       }

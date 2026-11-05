@@ -22,7 +22,7 @@ public class SearchShowsRequestTest extends AbstractDataTest<Paging<ShowSimplifi
     .limit(ITest.LIMIT)
     .market(ITest.MARKET)
     .offset(ITest.OFFSET)
-    .includeExternal("audio")
+    .include_external("audio")
     .build();
 
   public SearchShowsRequestTest() throws Exception {

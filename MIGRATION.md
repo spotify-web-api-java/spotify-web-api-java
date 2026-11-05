@@ -2,6 +2,61 @@
 
 ## 10.0.0 → 11.0.0
 
+### Generated request API
+
+The data request classes and the `SpotifyApi` methods that create them are now generated from Spotify's OpenAPI specification, so they follow it exactly where the hand-written ones had drifted.
+Three rules cover most of the changes below:
+
+- A `SpotifyApi` method takes the operation's required parameters, with the same type as their builder setters. Varargs, String[] and Gson overloads are gone; pass a comma-separated String for a query list, and set optional parameters on the builder.
+- Every builder setter is named exactly like the wire parameter, as most already were.
+- A request body array is a `List<String>` and a body object a `Map<String, Object>`, instead of a Gson JsonArray or JsonObject.
+
+Where an operation accepts the same parameter in the query string and in the body, only the query parameter is offered: Spotify ignores the body field when both are sent.
+The body variants that used to exist (`uris` and `position` when adding playlist items, `uris` when replacing them, `ids` when following or unfollowing) are therefore gone.
+
+#### Changed `SpotifyApi` methods
+
+| v10 call | 11.0.0 call |
+|---|---|
+| `checkUsersSavedAlbums(String...)` ⚠️, likewise for episodes, shows and tracks | `checkUsersSavedAlbums` ⚠️ with one comma-separated String |
+| `getSeveralTracksAudioFeatures(String...)` ⚠️ | `getSeveralTracksAudioFeatures` with one comma-separated String ⚠️ |
+| `checkCurrentUserFollowsArtistsOrUsers(ModelObjectType, String[])` ⚠️ | `checkCurrentUserFollowsArtistsOrUsers` with a comma-separated String ⚠️ |
+| `followArtistsOrUsers(ModelObjectType, String[])` ⚠️, and its `JsonArray` overload | `followArtistsOrUsers` with a comma-separated String ⚠️ |
+| `unfollowArtistsOrUsers(ModelObjectType, String[])` ⚠️, and its `JsonArray` overload | `unfollowArtistsOrUsers` with a comma-separated String ⚠️ |
+| `checkIfUserFollowsPlaylist(String, String[])` ⚠️ | `checkIfUserFollowsPlaylist(playlist_id)` ⚠️, then `.ids(String)` |
+| `followPlaylist(String, boolean)` ⚠️ | `followPlaylist(playlist_id)` ⚠️, then `.public_(Boolean)` |
+| `addItemsToPlaylist(String, String[])`, and its `JsonArray` overload | `addItemsToPlaylist(playlist_id)`, then `.uris(String)` and `.position(Integer)` |
+| `addItemsToPlaylistDeprecated(String, String[])` ⚠️, and its `JsonArray` overload | `addItemsToPlaylistDeprecated(playlist_id)` ⚠️, then `.uris(String)` |
+| `updatePlaylistsItemsReplace(String, String[])`, and its `JsonArray` overload | `updatePlaylistsItemsReplace(playlist_id)`, then `.uris(String)` |
+| `updatePlaylistsItemsReplaceDeprecated(String, String[])` ⚠️, and its `JsonArray` overload | `updatePlaylistsItemsReplaceDeprecated(playlist_id)` ⚠️, then `.uris(String)` |
+| `updatePlaylistsItemsReorder(String, int, int)` | `updatePlaylistsItemsReorder(playlist_id)`, then `.range_start(Integer)` and `.insert_before(Integer)` |
+| `updatePlaylistsItemsReorderDeprecated(String, int, int)` ⚠️ | `updatePlaylistsItemsReorderDeprecated(playlist_id)` ⚠️, then `.range_start(Integer)` and `.insert_before(Integer)` |
+| `removePlaylistItems(String, JsonArray)`, and its `Collection` overload | `removePlaylistItems(String, List<String>)` with the URIs; each is sent as `{"uri": ...}` |
+| `removePlaylistItemsDeprecated(String, JsonArray)` ⚠️ | `removePlaylistItemsDeprecated(String, List<String>)` ⚠️ with the URIs |
+| `saveTracksForCurrentUser(String)` ⚠️ | `saveTracksForCurrentUser()` ⚠️, then `.ids(List<String>)` or `.timestamped_ids(...)`: the spec moved the IDs into the body |
+| `transferPlayback(JsonArray)` | `transferPlayback(List<String>)` |
+| `seekToPosition(int)`, `setPlaybackVolume(int)`, `togglePlaybackShuffle(boolean)` | the same methods taking an Integer or a Boolean; source compatible, but recompile |
+
+#### Changed builder setters
+
+| v10 setter | 11.0.0 setter |
+|---|---|
+| `additionalTypes(String)` on the playlist and playback requests | `.additional_types(String)` |
+| `includeExternal(String)` on the search requests | `.include_external(String)` |
+| `snapshotId(String)` on `RemovePlaylistItemsRequest` and `RemovePlaylistItemsDeprecatedRequest` ⚠️ | `.snapshot_id(String)` |
+| `tracks(JsonArray)` on `RemovePlaylistItemsRequest` | `.items(List<String>)` with the URIs |
+| `uris(JsonArray)` and `offset(JsonObject)` on `StartResumePlaybackRequest` | `.uris(List<String>)` and `.offset(Map<String, Object>)` |
+| `device_ids(JsonArray)` on `TransferPlaybackRequest` | `.device_ids(List<String>)` |
+| `after(Date)` and `before(Date)` on `GetRecentlyPlayedTracksRequest` | `.after(Long)` and `.before(Long)`, Unix timestamps in milliseconds as the spec defines them; the date form was not what Spotify reads |
+| `country(CountryCode)` on `GetCategoryPlaylistsRequest` ⚠️ and `GetFeaturedPlaylistsRequest` ⚠️, `timestamp(Date)` on the latter, `album_type(String)` on `GetArtistsAlbumsRequest` | removed; the spec no longer has these parameters (use `include_groups` for artist albums) |
+
+#### Changed return types
+
+| Request | v10 return type | 11.0.0 return type |
+|---|---|---|
+| `GetSeveralAudiobooksRequest` | `AudiobookSimplified[]` | `Audiobook[]`, the full objects the endpoint returns |
+| `GetCategoryPlaylistsRequest` ⚠️ | `Paging<PlaylistSimplified>` | `FeaturedPlaylists`, which also carries the response's "message"; call `getPlaylists()` for the paging |
+
 ### Removed methods
 
 `AbstractRequest.bodyParametersToJson(List<NameValuePair>)` was an internal serialization helper, and the serializer now reads the typed values the builders store, so the method is private.

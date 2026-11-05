@@ -95,6 +95,31 @@ public final class ModelObjectJson {
   }
 
   /**
+   * Reads a JSON value that is no model object, such as an array of strings or booleans.
+   *
+   * @param json The response body.
+   * @param type The Java type, for example {@code String[].class}.
+   * @param <T>  The Java type.
+   * @return The value.
+   */
+  public static <T> T plain(final String json, final Class<T> type) {
+    return ModelObjectGson.GSON.fromJson(JsonParser.parseString(json), type);
+  }
+
+  /**
+   * Reads a JSON value that is no model object and is a member of the top-level object.
+   *
+   * @param json The response body.
+   * @param key  The member holding the value.
+   * @param type The Java type, for example {@code String[].class}.
+   * @param <T>  The Java type.
+   * @return The value.
+   */
+  public static <T> T plain(final String json, final String key, final Class<T> type) {
+    return ModelObjectGson.GSON.fromJson(JsonParser.parseString(json).getAsJsonObject().get(key), type);
+  }
+
+  /**
    * Reads a top-level paging object.
    *
    * @param json The response body.

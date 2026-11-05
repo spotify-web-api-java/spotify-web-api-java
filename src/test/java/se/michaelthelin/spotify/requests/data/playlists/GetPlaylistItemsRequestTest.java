@@ -26,7 +26,7 @@ public class GetPlaylistItemsRequestTest extends AbstractDataTest<Paging<Playlis
     .limit(ITest.LIMIT)
     .offset(ITest.OFFSET)
     .market(ITest.MARKET)
-    .additionalTypes(ITest.ADDITIONAL_TYPES)
+    .additional_types(ITest.ADDITIONAL_TYPES)
     .build();
 
   public GetPlaylistItemsRequestTest() throws Exception {

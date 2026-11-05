@@ -22,7 +22,7 @@ public class StartUsersPlaybackRequestTest extends AbstractDataTest<String> {
       TestUtil.MockedHttpManager.returningJson(null))
     .context_uri(ITest.CONTEXT_URI)
     .device_id(ITest.DEVICE_ID)
-    .offset(ITest.OFFSET_JSON)
+    .offset(ITest.PLAYBACK_OFFSET)
     .uris(ITest.URIS)
     .position_ms(ITest.POSITION_MS)
     .build();
@@ -45,7 +45,7 @@ public class StartUsersPlaybackRequestTest extends AbstractDataTest<String> {
     assertHasBodyParameter(
       defaultRequest,
       "offset",
-      ITest.OFFSET_JSON);
+      ITest.PLAYBACK_OFFSET);
     assertHasBodyParameter(
       defaultRequest,
       "position_ms",

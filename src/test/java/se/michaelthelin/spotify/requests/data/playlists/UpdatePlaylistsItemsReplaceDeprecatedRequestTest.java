@@ -21,13 +21,8 @@ import static se.michaelthelin.spotify.Assertions.assertHasHeader;
 @Deprecated
 public class UpdatePlaylistsItemsReplaceDeprecatedRequestTest extends AbstractDataTest<SnapshotResult> {
   private final UpdatePlaylistsItemsReplaceDeprecatedRequest defaultRequest = ITest.SPOTIFY_API
-    .updatePlaylistsItemsReplaceDeprecated(ITest.ID_PLAYLIST, new String[]{ITest.ID_TRACK})
-    .setHttpManager(
-      TestUtil.MockedHttpManager.returningJson(
-        "requests/data/playlists/ReplacePlaylistsItemsRequest.json"))
-    .build();
-  private final UpdatePlaylistsItemsReplaceDeprecatedRequest bodyRequest = ITest.SPOTIFY_API
-    .updatePlaylistsItemsReplaceDeprecated(ITest.ID_PLAYLIST, ITest.URIS)
+    .updatePlaylistsItemsReplaceDeprecated(ITest.ID_PLAYLIST)
+    .uris(ITest.ID_TRACK)
     .setHttpManager(
       TestUtil.MockedHttpManager.returningJson(
         "requests/data/playlists/ReplacePlaylistsItemsRequest.json"))
@@ -42,16 +37,6 @@ public class UpdatePlaylistsItemsReplaceDeprecatedRequestTest extends AbstractDa
     assertEquals(
       "https://api.spotify.com:443/v1/playlists/3AGOiaoRXMSjswCLtuNqv5/tracks?uris=01iyCAUm8EvOFqVWYJ3dVX",
       defaultRequest.getUri().toString());
-
-    assertHasAuthorizationHeader(bodyRequest);
-    assertHasHeader(bodyRequest, "Content-Type", "application/json");
-    assertHasBodyParameter(
-      bodyRequest,
-      "uris",
-      ITest.URIS);
-    assertEquals(
-      "https://api.spotify.com:443/v1/playlists/3AGOiaoRXMSjswCLtuNqv5/tracks",
-      bodyRequest.getUri().toString());
   }
 
   @Test

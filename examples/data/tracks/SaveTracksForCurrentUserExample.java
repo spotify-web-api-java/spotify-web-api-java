@@ -5,6 +5,8 @@ import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.requests.data.tracks.SaveTracksForCurrentUserRequest;
 import org.apache.hc.core5.http.ParseException;
 
+import java.util.List;
+import java.util.Collections;
 import java.io.IOException;
 import java.util.concurrent.CancellationException;
 import java.util.concurrent.CompletableFuture;
@@ -16,12 +18,13 @@ import java.util.concurrent.CompletionException;
 @Deprecated
 public class SaveTracksForCurrentUserExample {
   private static final String accessToken = "taHZ2SdB-bPA3FsK3D7ZN5npZS47cMy-IEySVEGttOhXmqaVAIo0ESvTCLjLBifhHOHOIuhFUKPW1WMDP7w6dj3MAZdWT8CLI2MkZaXbYLTeoDvXesf2eeiLYPBGdx8tIwQJKgV8XdnzH_DONk";
-  private static final String ids = "01iyCAUm8EvOFqVWYJ3dVX";
+  private static final List<String> ids = Collections.singletonList("01iyCAUm8EvOFqVWYJ3dVX");
 
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
     .setAccessToken(accessToken)
     .build();
-  private static final SaveTracksForCurrentUserRequest saveTracksForCurrentUserRequest = spotifyApi.saveTracksForCurrentUser(ids)
+  private static final SaveTracksForCurrentUserRequest saveTracksForCurrentUserRequest = spotifyApi.saveTracksForCurrentUser()
+    .ids(ids)
     .build();
 
   public static void saveTracksForCurrentUser_Sync() {
