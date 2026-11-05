@@ -24,7 +24,6 @@ module se.michaelthelin.spotify {
   exports se.michaelthelin.spotify.model_objects.miscellaneous;
   exports se.michaelthelin.spotify.model_objects.special;
   exports se.michaelthelin.spotify.model_objects.specification;
-  exports se.michaelthelin.spotify.model_objects.utils;
   exports se.michaelthelin.spotify.requests;
   exports se.michaelthelin.spotify.requests.authorization;
   exports se.michaelthelin.spotify.requests.authorization.authorization_code;

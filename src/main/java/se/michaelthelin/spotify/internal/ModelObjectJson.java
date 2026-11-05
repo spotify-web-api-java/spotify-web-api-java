@@ -14,9 +14,8 @@ import java.lang.reflect.Array;
 /**
  * Reads a response body into model objects, which is what every request's {@code execute()} does.
  * <p>
- * This replaces going through a model's {@code JsonUtil}, which only ever delegated to
- * {@link ModelObjectGson#GSON}. The parsing steps are the ones {@code AbstractModelObject.JsonUtil}
- * takes, so a malformed or empty body fails exactly as it did there.
+ * Everything goes through {@link ModelObjectGson#GSON}; a {@code null} body reads as {@code null}, and a
+ * malformed body, or one of a different shape than requested, throws an unchecked exception.
  * <p>
  * This package is not exported, so nothing here is public API.
  */

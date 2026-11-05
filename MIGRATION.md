@@ -57,6 +57,22 @@ The body variants that used to exist (`uris` and `position` when adding playlist
 | `GetSeveralAudiobooksRequest` | `AudiobookSimplified[]` | `Audiobook[]`, the full objects the endpoint returns |
 | `GetCategoryPlaylistsRequest` ⚠️ | `Paging<PlaylistSimplified>` | `FeaturedPlaylists`, which also carries the response's "message"; call `getPlaylists()` for the paging |
 
+### Removed classes
+
+The JsonUtil classes, deprecated since 10.x, are gone: every model's nested JsonUtil (e.g. `Album.JsonUtil`), their base class `AbstractModelObject.JsonUtil` and the interface `IModelObject.IJsonUtil`.
+Requests already return model objects; to read JSON obtained some other way, such as a cached response, use `ModelObjects`:
+
+| Removed call | Replacement |
+|---|---|
+| `new Album.JsonUtil().createModelObject(json)` | `ModelObjects.fromJson(json, Album.class)` |
+| `new Album.JsonUtil().createModelObjectArray(json)` | `ModelObjects.arrayFromJson(json, Album.class)` |
+| `new Album.JsonUtil().createModelObjectPaging(json)` | `ModelObjects.pagingFromJson(json, Album.class)` |
+| `new Album.JsonUtil().createModelObjectPagingCursorbased(json)` | `ModelObjects.pagingCursorbasedFromJson(json, Album.class)` |
+
+`ModelObjects` takes the JSON as a String. The variants that took a Gson JsonObject or JsonArray, or that read a named member of the JSON (the overloads with a key), have no replacement: parse the JSON and pass the part you need as a String.
+
+PlaylistItemFactory and its package `se.michaelthelin.spotify.model_objects.utils` are gone too. Its only method turned a Gson JsonObject into a track or an episode, which `ModelObjects.fromJson` does through the model type you pass; playlist and queue items inside a response are still read the same way.
+
 ### Removed methods
 
 `AbstractRequest.bodyParametersToJson(List<NameValuePair>)` was an internal serialization helper, and the serializer now reads the typed values the builders store, so the method is private.
