@@ -18,7 +18,7 @@ import static se.michaelthelin.spotify.Assertions.assertHasHeader;
 public class UpdatePlaylistsItemsReplaceRequestTest extends AbstractDataTest<SnapshotResult> {
   private final UpdatePlaylistsItemsReplaceRequest defaultRequest = ITest.SPOTIFY_API
     .updatePlaylistsItemsReplace(ITest.ID_PLAYLIST)
-    .uris(ITest.ID_TRACK)
+    .uris(ITest.URIS)
     .setHttpManager(
       TestUtil.MockedHttpManager.returningJson(
         "requests/data/playlists/ReplacePlaylistsItemsRequest.json"))
@@ -31,8 +31,9 @@ public class UpdatePlaylistsItemsReplaceRequestTest extends AbstractDataTest<Sna
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
     assertEquals(
-      "https://api.spotify.com:443/v1/playlists/3AGOiaoRXMSjswCLtuNqv5/items?uris=01iyCAUm8EvOFqVWYJ3dVX",
+      "https://api.spotify.com:443/v1/playlists/3AGOiaoRXMSjswCLtuNqv5/items",
       defaultRequest.getUri().toString());
+    assertHasBodyParameter(defaultRequest, "uris", ITest.URIS);
   }
 
   @Test

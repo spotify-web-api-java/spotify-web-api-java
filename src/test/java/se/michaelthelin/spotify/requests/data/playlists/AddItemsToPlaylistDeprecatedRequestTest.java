@@ -22,7 +22,7 @@ import static se.michaelthelin.spotify.Assertions.assertHasHeader;
 public class AddItemsToPlaylistDeprecatedRequestTest extends AbstractDataTest<SnapshotResult> {
   private final AddItemsToPlaylistDeprecatedRequest defaultRequest = ITest.SPOTIFY_API
     .addItemsToPlaylistDeprecated(ITest.ID_PLAYLIST)
-    .uris(String.join(",", ITest.URIS))
+    .uris(ITest.URIS)
     .setHttpManager(
       TestUtil.MockedHttpManager.returningJson(
         "requests/data/playlists/AddItemsToPlaylistRequest.json"))
@@ -36,8 +36,10 @@ public class AddItemsToPlaylistDeprecatedRequestTest extends AbstractDataTest<Sn
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
     assertEquals(
-      "https://api.spotify.com:443/v1/playlists/3AGOiaoRXMSjswCLtuNqv5/tracks?uris=spotify%3Atrack%3A01iyCAUm8EvOFqVWYJ3dVX%2Cspotify%3Atrack%3A01iyCAUm8EvOFqVWYJ3dVX&position=0",
+      "https://api.spotify.com:443/v1/playlists/3AGOiaoRXMSjswCLtuNqv5/tracks",
       defaultRequest.getUri().toString());
+    assertHasBodyParameter(defaultRequest, "uris", ITest.URIS);
+    assertHasBodyParameter(defaultRequest, "position", ITest.POSITION);
     assertHasHeader(defaultRequest, "Content-Type", "application/json");
   }
 

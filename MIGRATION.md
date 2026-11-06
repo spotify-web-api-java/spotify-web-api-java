@@ -11,8 +11,8 @@ Three rules cover most of the changes below:
 - Every builder setter is named exactly like the wire parameter, as most already were.
 - A request body array is a `List<String>` and a body object a `Map<String, Object>`, instead of a Gson JsonArray or JsonObject.
 
-Where an operation accepts the same parameter in the query string and in the body, only the query parameter is offered: Spotify ignores the body field when both are sent.
-The body variants that used to exist (`uris` and `position` when adding playlist items, `uris` when replacing them, `ids` when following or unfollowing) are therefore gone.
+Where an operation accepts the same parameter in the query string and in the body, only the body parameter is offered, as a `List<String>`: the query string caps how many IDs or URIs fit into the request URI.
+The query variants that used to exist (`uris` and `position` when adding playlist items, `uris` when replacing them, `ids` when saving or removing albums, episodes or tracks and when following or unfollowing) are therefore gone.
 
 #### Changed `SpotifyApi` methods
 
@@ -21,18 +21,19 @@ The body variants that used to exist (`uris` and `position` when adding playlist
 | `checkUsersSavedAlbums(String...)` ⚠️, likewise for episodes, shows and tracks | `checkUsersSavedAlbums` ⚠️ with one comma-separated String |
 | `getSeveralTracksAudioFeatures(String...)` ⚠️ | `getSeveralTracksAudioFeatures` with one comma-separated String ⚠️ |
 | `checkCurrentUserFollowsArtistsOrUsers(ModelObjectType, String[])` ⚠️ | `checkCurrentUserFollowsArtistsOrUsers` with a comma-separated String ⚠️ |
-| `followArtistsOrUsers(ModelObjectType, String[])` ⚠️, and its `JsonArray` overload | `followArtistsOrUsers` with a comma-separated String ⚠️ |
-| `unfollowArtistsOrUsers(ModelObjectType, String[])` ⚠️, and its `JsonArray` overload | `unfollowArtistsOrUsers` with a comma-separated String ⚠️ |
+| `followArtistsOrUsers(ModelObjectType, String[])` ⚠️, and its `JsonArray` overload | `followArtistsOrUsers(ModelObjectType, List<String>)` ⚠️ |
+| `unfollowArtistsOrUsers(ModelObjectType, String[])` ⚠️, and its `JsonArray` overload | `unfollowArtistsOrUsers(ModelObjectType, List<String>)` ⚠️ |
 | `checkIfUserFollowsPlaylist(String, String[])` ⚠️ | `checkIfUserFollowsPlaylist(playlist_id)` ⚠️, then `.ids(String)` |
 | `followPlaylist(String, boolean)` ⚠️ | `followPlaylist(playlist_id)` ⚠️, then `.public_(Boolean)` |
-| `addItemsToPlaylist(String, String[])`, and its `JsonArray` overload | `addItemsToPlaylist(playlist_id)`, then `.uris(String)` and `.position(Integer)` |
-| `addItemsToPlaylistDeprecated(String, String[])` ⚠️, and its `JsonArray` overload | `addItemsToPlaylistDeprecated(playlist_id)` ⚠️, then `.uris(String)` |
-| `updatePlaylistsItemsReplace(String, String[])`, and its `JsonArray` overload | `updatePlaylistsItemsReplace(playlist_id)`, then `.uris(String)` |
-| `updatePlaylistsItemsReplaceDeprecated(String, String[])` ⚠️, and its `JsonArray` overload | `updatePlaylistsItemsReplaceDeprecated(playlist_id)` ⚠️, then `.uris(String)` |
+| `addItemsToPlaylist(String, String[])`, and its `JsonArray` overload | `addItemsToPlaylist(playlist_id)`, then `.uris(List<String>)` and `.position(Integer)` |
+| `addItemsToPlaylistDeprecated(String, String[])` ⚠️, and its `JsonArray` overload | `addItemsToPlaylistDeprecated(playlist_id)` ⚠️, then `.uris(List<String>)` and `.position(Integer)` |
+| `updatePlaylistsItemsReplace(String, String[])`, and its `JsonArray` overload | `updatePlaylistsItemsReplace(playlist_id)`, then `.uris(List<String>)` |
+| `updatePlaylistsItemsReplaceDeprecated(String, String[])` ⚠️, and its `JsonArray` overload | `updatePlaylistsItemsReplaceDeprecated(playlist_id)` ⚠️, then `.uris(List<String>)` |
 | `updatePlaylistsItemsReorder(String, int, int)` | `updatePlaylistsItemsReorder(playlist_id)`, then `.range_start(Integer)` and `.insert_before(Integer)` |
 | `updatePlaylistsItemsReorderDeprecated(String, int, int)` ⚠️ | `updatePlaylistsItemsReorderDeprecated(playlist_id)` ⚠️, then `.range_start(Integer)` and `.insert_before(Integer)` |
 | `removePlaylistItems(String, JsonArray)`, and its `Collection` overload | `removePlaylistItems(String, List<String>)` with the URIs; each is sent as `{"uri": ...}` |
 | `removePlaylistItemsDeprecated(String, JsonArray)` ⚠️ | `removePlaylistItemsDeprecated(String, List<String>)` ⚠️ with the URIs |
+| `saveAlbumsForCurrentUser(String)` ⚠️, likewise `removeAlbumsForCurrentUser`, `saveEpisodesForCurrentUser`, `removeEpisodesForCurrentUser` and `removeUsersSavedTracks` | the same methods taking a `List<String>` of IDs ⚠️, sent in the body |
 | `saveTracksForCurrentUser(String)` ⚠️ | `saveTracksForCurrentUser()` ⚠️, then `.ids(List<String>)` or `.timestamped_ids(...)`: the spec moved the IDs into the body |
 | `transferPlayback(JsonArray)` | `transferPlayback(List<String>)` |
 | `seekToPosition(int)`, `setPlaybackVolume(int)`, `togglePlaybackShuffle(boolean)` | the same methods taking an Integer or a Boolean; source compatible, but recompile |

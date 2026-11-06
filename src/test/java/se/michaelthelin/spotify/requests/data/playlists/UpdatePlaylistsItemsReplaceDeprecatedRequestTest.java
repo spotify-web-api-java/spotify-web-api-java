@@ -22,7 +22,7 @@ import static se.michaelthelin.spotify.Assertions.assertHasHeader;
 public class UpdatePlaylistsItemsReplaceDeprecatedRequestTest extends AbstractDataTest<SnapshotResult> {
   private final UpdatePlaylistsItemsReplaceDeprecatedRequest defaultRequest = ITest.SPOTIFY_API
     .updatePlaylistsItemsReplaceDeprecated(ITest.ID_PLAYLIST)
-    .uris(ITest.ID_TRACK)
+    .uris(ITest.URIS)
     .setHttpManager(
       TestUtil.MockedHttpManager.returningJson(
         "requests/data/playlists/ReplacePlaylistsItemsRequest.json"))
@@ -35,8 +35,9 @@ public class UpdatePlaylistsItemsReplaceDeprecatedRequestTest extends AbstractDa
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
     assertEquals(
-      "https://api.spotify.com:443/v1/playlists/3AGOiaoRXMSjswCLtuNqv5/tracks?uris=01iyCAUm8EvOFqVWYJ3dVX",
+      "https://api.spotify.com:443/v1/playlists/3AGOiaoRXMSjswCLtuNqv5/tracks",
       defaultRequest.getUri().toString());
+    assertHasBodyParameter(defaultRequest, "uris", ITest.URIS);
   }
 
   @Test
