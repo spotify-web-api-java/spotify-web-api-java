@@ -45,9 +45,15 @@ PyYAML (`pip install pyyaml`) to run the generator:
 ./codegen/generate.py --check
 ```
 
-The examples under `examples/` are a separate Maven project that compiles against the installed library, and
+The examples under `examples/` are a separate Maven project that compiles against the installed library as its own module, so build the library first and then the examples:
+
+```bash
+mvn -B install -DskipTests=true && mvn -B -f examples/pom.xml clean compile
+```
+
+The `clean` matters, because an incremental build reuses classes compiled against the previous module descriptor.
 `./ci/check-docs.py` checks the documentation against the code; CI runs both.
-[AGENTS.md](AGENTS.md) lists these commands and the step-by-step recipe for adding an endpoint.
+[AGENTS.md](AGENTS.md) carries the step-by-step recipe for adding an endpoint.
 
 ## Code Overview
 The hand-written code lives in `src/main/java/se/michaelthelin/spotify/`, divided into four parts that `SpotifyApi` ties
@@ -92,6 +98,7 @@ Count limits on comma-separated parameters are read from the description phrasin
 
 The library is an explicit Java module, so a class in a **new** package is unreachable for callers until that package is added to `exports` in `src/main/java/module-info.java`.
 The examples are compiled as a separate module against the built library, which is what turns a forgotten `exports` into a build failure here rather than in someone else's project.
+An example may only use packages the library exports, and only types reachable through the library's own `requires transitive`.
 
 ### Documentation
 Document what a reader of the published API reference needs: types, getters and the methods on `SpotifyApi`.
@@ -101,6 +108,9 @@ What is still enforced is that every reference resolves: a dead `{@link}` fails 
 
 A new endpoint also needs an example under `examples/` and a link from the index in `README.md`, and a renamed or removed public name needs an entry in `MIGRATION.md`.
 `ci/check-docs.py` fails without them.
+
+In `MIGRATION.md`, record the change under the relevant `####` heading.
+A table column whose header names a major version older than the one in `pom.xml` (e.g. `v9` while the library is on 10, `v10` while it is on 11), and code lines under a marker like `// v10`, are read as describing a released past; every other name the guide mentions must still resolve against the current API, and a ⚠️ in the guide must match the code's deprecation state.
 
 ### Test Coverage
 Unit tests help to assure that functionality works. Due to that contribution approval requires them to be included for
@@ -123,7 +133,7 @@ A unit test builds upon JSON fixtures. For code changes, fixture files must only
 
    `beta` accumulates that next major and is released as `X.Y.Z-RCN` until it is ready, so a breaking change only reaches `main` through the release pull request. While a `beta` line is open, follow-up fixes to code that exists only there belong on `beta` too. Ask in the issue if you are unsure.
 
-   CI enforces this split: it compares the built jar against the last stable release with [japicmp](https://siom79.github.io/japicmp/) and fails on any binary or source incompatible change, unless the version in `pom.xml` has a higher major number than that release, as it does on `beta`. To run the check locally, use `mvn package -DskipTests && mvn japicmp:cmp -Dapi.baseline=<last stable release>` and read the report in `target/japicmp/`.
+   CI enforces this split: it compares the built jar against the last stable release with [japicmp](https://siom79.github.io/japicmp/) and fails on any binary or source incompatible change, unless the version in `pom.xml` has a higher major number than that release, as it does on `beta`. Watch for breaks that do not look like one, such as dropping a covariant `execute()` override in favour of the inherited generic one, which changes the erased return type. To run the check locally, use `mvn package -DskipTests && mvn japicmp:cmp -Dapi.baseline=<last stable release>` and read the report in `target/japicmp/`.
 
 ## Release Workflow (Maintainers Only)
 
@@ -156,7 +166,7 @@ This will:
 
 ### 3. Commit and tag
 
-Pre-releases are cut from `beta` and tagged `X.Y.Z-RCN`; stable releases are cut from `main` and tagged `X.Y.Z`. CI reacts to both patterns and to nothing else.
+Pre-releases are cut from `beta` and tagged `X.Y.Z-RCN`, with `N` one past the last `X.Y.Z-RC` tag on that branch; stable releases are cut from `main` and tagged `X.Y.Z`. CI reacts to both patterns and to nothing else.
 
 Commit the version bumps together with the regenerated documentation:
 ```bash

@@ -41,6 +41,10 @@ src/
     └── fixtures/requests/data/      # JSON fixture files for mock HTTP responses
 ```
 
+## Choosing a branch
+
+When unsure whether a change belongs on `main` or `beta`: read step 5 and the japicmp paragraph in the "Contribution Flow" section of [CONTRIBUTING.md](CONTRIBUTING.md).
+
 ## Adding a New Endpoint
 
 To add a new Spotify API endpoint, follow these steps:
@@ -87,25 +91,19 @@ Common test constants are in `ITest.java` (e.g., `ITest.NAME`, `ITest.ID_PLAYLIS
 Create `examples/.../<EndpointName>Example.java` and link it from the example index in `README.md`.
 Mark the link with ⚠️ if the request class carries `@Deprecated`.
 
-The examples are a separate Maven project that compiles against the installed library as its own module, which is how a missing `exports` gets caught.
-Build them with `mvn -B install -DskipTests=true && mvn -B -f examples/pom.xml clean compile`; the `clean` matters, because an incremental build reuses classes compiled against the previous module descriptor.
-An example may only use packages the library exports, and only types reachable through the library's own `requires transitive`.
+The examples are a separate Maven module that compiles against the installed library, which is how a missing `exports` gets caught; the build command is in the "Development Setup" section of [CONTRIBUTING.md](CONTRIBUTING.md), and the module rules an example must follow are in its "Integrity" section.
 
 `./ci/check-docs.py` enforces all of this and runs in CI.
 It checks that every `SpotifyApi` method has an example, that example file names match their request class, that the README index is complete and its ⚠️ markers match the code, that each request's verb and path exist in `spec/openapi.yaml` with matching deprecation, and that every current-API name written in `MIGRATION.md` still resolves.
 
 ### Releasing
 
-See the release workflow in [CONTRIBUTING.md](CONTRIBUTING.md#release-workflow-maintainers-only).
-Note that the version lives in three files, and `ci/check-docs.py` fails when they disagree.
+When asked to cut a release or RC, or before changing a version number: read the [Release Workflow (Maintainers Only)](CONTRIBUTING.md#release-workflow-maintainers-only) section of [CONTRIBUTING.md](CONTRIBUTING.md) in full before touching anything.
+It names the files that carry the version, the command that regenerates `apidocs/`, and the commit, tag, and push order, and step 3 states the tag patterns CI reacts to and how the next RC number is derived.
 
 ### Renaming or removing public API
 
-This is a breaking change, so it belongs on `beta`: the japicmp step in CI fails on `main` for any binary or source incompatible change against the last stable release.
-Watch for breaks that do not look like one, such as dropping a covariant `execute()` override in favour of the inherited generic one, which changes the erased return type.
-
-Record it in `MIGRATION.md` under the relevant `#### ` heading.
-Names that no longer exist have to sit in a table column whose header names an older major version (`v10` once the library is on 11), or inside a code fence under a marker like `// v10`, otherwise the docs check reports them as stale.
+When renaming or removing a public name, or when a change might be binary or source incompatible: before writing it, read the japicmp paragraph in the "Contribution Flow" section and the "Documentation" section of [CONTRIBUTING.md](CONTRIBUTING.md); they cover which branch the change belongs on and how a `MIGRATION.md` entry must be written so `ci/check-docs.py` accepts it.
 
 ## Building and Testing
 
