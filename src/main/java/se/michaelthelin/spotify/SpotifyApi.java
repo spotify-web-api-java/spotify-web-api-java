@@ -756,16 +756,18 @@ public class SpotifyApi {
    * Use <a href="https://developer.spotify.com/documentation/web-api/reference/remove-library-items">Remove Items from
    * Library</a> instead.
    *
-   * @param ids A comma-separated list of the <a
-   *            href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify IDs</a> for
-   *            the albums. Maximum: 20 IDs.
+   * @param ids A JSON array of the <a
+   *            href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify IDs</a>.
+   *            For example: {@code ["4iV5W9uYEdYUVa79Axb7Rh", "1301WleyT98MSxVHPZCA6M"]}<br>A maximum of 50 items can
+   *            be specified in one request. <i><b>Note</b>: if the {@code ids} parameter is present in the query
+   *            string, any IDs listed here in the body will be ignored.</i>
    * @return A {@link RemoveAlbumsForCurrentUserRequest.Builder}.
    * @see <a href="https://developer.spotify.com/documentation/web-api/reference/remove-albums-user">Spotify Web API reference</a>
    *
    * @deprecated This endpoint has been deprecated by Spotify.
    */
   @Deprecated
-  public RemoveAlbumsForCurrentUserRequest.Builder removeAlbumsForCurrentUser(String ids) {
+  public RemoveAlbumsForCurrentUserRequest.Builder removeAlbumsForCurrentUser(List<String> ids) {
     return new RemoveAlbumsForCurrentUserRequest.Builder(accessToken)
       .setDefaults(httpManager, scheme, host, port)
       .ids(ids);
@@ -776,16 +778,18 @@ public class SpotifyApi {
    * <a href="https://developer.spotify.com/documentation/web-api/reference/save-library-items">Save Items to
    * Library</a> instead.
    *
-   * @param ids A comma-separated list of the <a
-   *            href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify IDs</a> for
-   *            the albums. Maximum: 20 IDs.
+   * @param ids A JSON array of the <a
+   *            href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify IDs</a>.
+   *            For example: {@code ["4iV5W9uYEdYUVa79Axb7Rh", "1301WleyT98MSxVHPZCA6M"]}<br>A maximum of 50 items can
+   *            be specified in one request. <i><b>Note</b>: if the {@code ids} parameter is present in the query
+   *            string, any IDs listed here in the body will be ignored.</i>
    * @return A {@link SaveAlbumsForCurrentUserRequest.Builder}.
    * @see <a href="https://developer.spotify.com/documentation/web-api/reference/save-albums-user">Spotify Web API reference</a>
    *
    * @deprecated This endpoint has been deprecated by Spotify.
    */
   @Deprecated
-  public SaveAlbumsForCurrentUserRequest.Builder saveAlbumsForCurrentUser(String ids) {
+  public SaveAlbumsForCurrentUserRequest.Builder saveAlbumsForCurrentUser(List<String> ids) {
     return new SaveAlbumsForCurrentUserRequest.Builder(accessToken)
       .setDefaults(httpManager, scheme, host, port)
       .ids(ids);
@@ -1128,16 +1132,17 @@ public class SpotifyApi {
    * href="https://developer.spotify.com/documentation/web-api/reference/remove-library-items">Remove Items from
    * Library</a> instead.
    *
-   * @param ids A comma-separated list of the <a
+   * @param ids A JSON array of the <a
    *            href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify IDs</a>.
-   *            For example: {@code ids=4iV5W9uYEdYUVa79Axb7Rh,1301WleyT98MSxVHPZCA6M}. Maximum: 50 IDs.
+   *            <br>A maximum of 50 items can be specified in one request. <i><b>Note</b>: if the {@code ids} parameter
+   *            is present in the query string, any IDs listed here in the body will be ignored.</i>
    * @return A {@link RemoveEpisodesForCurrentUserRequest.Builder}.
    * @see <a href="https://developer.spotify.com/documentation/web-api/reference/remove-episodes-user">Spotify Web API reference</a>
    *
    * @deprecated This endpoint has been deprecated by Spotify.
    */
   @Deprecated
-  public RemoveEpisodesForCurrentUserRequest.Builder removeEpisodesForCurrentUser(String ids) {
+  public RemoveEpisodesForCurrentUserRequest.Builder removeEpisodesForCurrentUser(List<String> ids) {
     return new RemoveEpisodesForCurrentUserRequest.Builder(accessToken)
       .setDefaults(httpManager, scheme, host, port)
       .ids(ids);
@@ -1148,16 +1153,17 @@ public class SpotifyApi {
    * href="https://developer.spotify.com/documentation/web-api/reference/save-library-items">Save Items to Library</a>
    * instead.
    *
-   * @param ids A comma-separated list of the <a
+   * @param ids A JSON array of the <a
    *            href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify IDs</a>.
-   *            Maximum: 50 IDs.
+   *            <br>A maximum of 50 items can be specified in one request. <i><b>Note</b>: if the {@code ids} parameter
+   *            is present in the query string, any IDs listed here in the body will be ignored.</i>
    * @return A {@link SaveEpisodesForCurrentUserRequest.Builder}.
    * @see <a href="https://developer.spotify.com/documentation/web-api/reference/save-episodes-user">Spotify Web API reference</a>
    *
    * @deprecated This endpoint has been deprecated by Spotify.
    */
   @Deprecated
-  public SaveEpisodesForCurrentUserRequest.Builder saveEpisodesForCurrentUser(String ids) {
+  public SaveEpisodesForCurrentUserRequest.Builder saveEpisodesForCurrentUser(List<String> ids) {
     return new SaveEpisodesForCurrentUserRequest.Builder(accessToken)
       .setDefaults(httpManager, scheme, host, port)
       .ids(ids);
@@ -2278,16 +2284,18 @@ public class SpotifyApi {
    * Use <a href="https://developer.spotify.com/documentation/web-api/reference/remove-library-items">Remove Items from
    * Library</a> instead.
    *
-   * @param ids A comma-separated list of the <a
+   * @param ids A JSON array of the <a
    *            href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify IDs</a>.
-   *            For example: {@code ids=4iV5W9uYEdYUVa79Axb7Rh,1301WleyT98MSxVHPZCA6M}. Maximum: 50 IDs.
+   *            For example: {@code ["4iV5W9uYEdYUVa79Axb7Rh", "1301WleyT98MSxVHPZCA6M"]}<br>A maximum of 50 items can
+   *            be specified in one request. <i><b>Note</b>: if the {@code ids} parameter is present in the query
+   *            string, any IDs listed here in the body will be ignored.</i>
    * @return A {@link RemoveUsersSavedTracksRequest.Builder}.
    * @see <a href="https://developer.spotify.com/documentation/web-api/reference/remove-tracks-user">Spotify Web API reference</a>
    *
    * @deprecated This endpoint has been deprecated by Spotify.
    */
   @Deprecated
-  public RemoveUsersSavedTracksRequest.Builder removeUsersSavedTracks(String ids) {
+  public RemoveUsersSavedTracksRequest.Builder removeUsersSavedTracks(List<String> ids) {
     return new RemoveUsersSavedTracksRequest.Builder(accessToken)
       .setDefaults(httpManager, scheme, host, port)
       .ids(ids);
@@ -2359,16 +2367,18 @@ public class SpotifyApi {
    * Items to Library</a> instead.
    *
    * @param type The ID type.
-   * @param ids A comma-separated list of the artist or the user <a
-   *            href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify IDs</a>. A
-   *            maximum of 50 IDs can be sent in one request.
+   * @param ids A JSON array of the artist or user <a
+   *            href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify IDs</a>.
+   *            For example: {@code {ids:["74ASZWbe4lXaubB36ztrGX", "08td7MxkoHQkXnWAYD8d6Q"]}}. A maximum of 50 IDs can
+   *            be sent in one request. <i><b>Note</b>: if the {@code ids} parameter is present in the query string, any
+   *            IDs listed here in the body will be ignored.</i>
    * @return A {@link FollowArtistsOrUsersRequest.Builder}.
    * @see <a href="https://developer.spotify.com/documentation/web-api/reference/follow-artists-users">Spotify Web API reference</a>
    *
    * @deprecated This endpoint has been deprecated by Spotify.
    */
   @Deprecated
-  public FollowArtistsOrUsersRequest.Builder followArtistsOrUsers(ModelObjectType type, String ids) {
+  public FollowArtistsOrUsersRequest.Builder followArtistsOrUsers(ModelObjectType type, List<String> ids) {
     return new FollowArtistsOrUsersRequest.Builder(accessToken)
       .setDefaults(httpManager, scheme, host, port)
       .type(type)
@@ -2443,17 +2453,18 @@ public class SpotifyApi {
    * Items from Library</a> instead.
    *
    * @param type The ID type: either {@code artist} or {@code user}.
-   * @param ids A comma-separated list of the artist or the user <a
+   * @param ids A JSON array of the artist or user <a
    *            href="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids">Spotify IDs</a>.
-   *            For example: {@code ids=74ASZWbe4lXaubB36ztrGX,08td7MxkoHQkXnWAYD8d6Q}. A maximum of 50 IDs can be sent
-   *            in one request.
+   *            For example: {@code {ids:["74ASZWbe4lXaubB36ztrGX", "08td7MxkoHQkXnWAYD8d6Q"]}}. A maximum of 50 IDs can
+   *            be sent in one request. <i><b>Note</b>: if the {@code ids} parameter is present in the query string, any
+   *            IDs listed here in the body will be ignored.</i>
    * @return A {@link UnfollowArtistsOrUsersRequest.Builder}.
    * @see <a href="https://developer.spotify.com/documentation/web-api/reference/unfollow-artists-users">Spotify Web API reference</a>
    *
    * @deprecated This endpoint has been deprecated by Spotify.
    */
   @Deprecated
-  public UnfollowArtistsOrUsersRequest.Builder unfollowArtistsOrUsers(ModelObjectType type, String ids) {
+  public UnfollowArtistsOrUsersRequest.Builder unfollowArtistsOrUsers(ModelObjectType type, List<String> ids) {
     return new UnfollowArtistsOrUsersRequest.Builder(accessToken)
       .setDefaults(httpManager, scheme, host, port)
       .type(type)

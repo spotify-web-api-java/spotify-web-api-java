@@ -319,10 +319,16 @@ def parameters(spec, op, entry):
         raise Unsupported(f"{next(iter(content))} request body")
     if content:
         schema = spec.deref(content["application/json"]["schema"])
-        taken = {p.name for p in params}
+        at = {p.name: i for i, p in enumerate(params)}
         for name, prop in schema.get("properties", {}).items():
-            if name not in taken:  # a body field duplicating a query parameter is ignored by Spotify when both are sent
-                params.append(Parameter(name, "body", spec.deref(prop), name in schema.get("required", [])))
+            required = name in schema.get("required", [])
+            if name in at:
+                # the spec offers the same field as a query parameter too, which caps it at the URI length, so the body
+                # field takes its place and is required wherever the query parameter was
+                query = params[at[name]]
+                params[at[name]] = Parameter(name, "body", spec.deref(prop), required or query.required)
+            else:
+                params.append(Parameter(name, "body", spec.deref(prop), required))
     fixed = entry.get("fixed", {})
     params = [p for p in params if p.name not in fixed]
     if "params" in entry:
