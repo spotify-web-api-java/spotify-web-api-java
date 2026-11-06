@@ -8,15 +8,17 @@ import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.requests.data.AbstractDataTest;
 
 import java.io.IOException;
+import java.util.Collections;
 import java.util.concurrent.ExecutionException;
 
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static se.michaelthelin.spotify.Assertions.assertHasBodyParameter;
 
 @SuppressWarnings("deprecation")
 public class SaveEpisodesForCurrentUserRequestTest extends AbstractDataTest<String> {
   private final SaveEpisodesForCurrentUserRequest defaultRequest = ITest.SPOTIFY_API
-    .saveEpisodesForCurrentUser(ITest.ID_EPISODE)
+    .saveEpisodesForCurrentUser(Collections.singletonList(ITest.ID_EPISODE))
     .setHttpManager(
       TestUtil.MockedHttpManager.returningJson(null))
     .build();
@@ -28,8 +30,9 @@ public class SaveEpisodesForCurrentUserRequestTest extends AbstractDataTest<Stri
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
     assertEquals(
-      "https://api.spotify.com:443/v1/me/episodes?ids=046WGwFKUevqKMA4NQfYUv",
+      "https://api.spotify.com:443/v1/me/episodes",
       defaultRequest.getUri().toString());
+    assertHasBodyParameter(defaultRequest, "ids", Collections.singletonList(ITest.ID_EPISODE));
   }
 
   @Test

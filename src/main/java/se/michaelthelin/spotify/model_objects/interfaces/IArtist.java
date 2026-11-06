@@ -56,4 +56,3 @@ public interface IArtist {
   String getUri();
 }
 
-

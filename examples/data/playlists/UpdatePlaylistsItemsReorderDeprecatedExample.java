@@ -26,7 +26,9 @@ public class UpdatePlaylistsItemsReorderDeprecatedExample {
     .setAccessToken(accessToken)
     .build();
   private static final UpdatePlaylistsItemsReorderDeprecatedRequest reorderPlaylistsItemsRequest = spotifyApi.
-    updatePlaylistsItemsReorderDeprecated(playlistId, rangeStart, insertBefore)
+    updatePlaylistsItemsReorderDeprecated(playlistId)
+    .range_start(rangeStart)
+    .insert_before(insertBefore)
 //          .range_length(rangeLength)
 //          .snapshot_id("JbtmHBDBAYu3/bt8BOXKjzKx3i0b6LCa/wVjyl6qQ2Yf6nFXkbmzuEa+ZI/U1yF+")
     .build();

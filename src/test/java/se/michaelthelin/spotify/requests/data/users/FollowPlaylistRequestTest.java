@@ -17,7 +17,8 @@ import static se.michaelthelin.spotify.Assertions.assertHasHeader;
 @SuppressWarnings("deprecation")
 public class FollowPlaylistRequestTest extends AbstractDataTest<String> {
   private final FollowPlaylistRequest defaultRequest = SPOTIFY_API
-    .followPlaylist(ID_PLAYLIST, PUBLIC)
+    .followPlaylist(ID_PLAYLIST)
+    .public_(PUBLIC)
     .setHttpManager(
       TestUtil.MockedHttpManager.returningJson(null))
     .build();

@@ -14,9 +14,8 @@ import java.lang.reflect.Array;
 /**
  * Reads a response body into model objects, which is what every request's {@code execute()} does.
  * <p>
- * This replaces going through a model's {@code JsonUtil}, which only ever delegated to
- * {@link ModelObjectGson#GSON}. The parsing steps are the ones {@code AbstractModelObject.JsonUtil}
- * takes, so a malformed or empty body fails exactly as it did there.
+ * Everything goes through {@link ModelObjectGson#GSON}; a {@code null} body reads as {@code null}, and a
+ * malformed body, or one of a different shape than requested, throws an unchecked exception.
  * <p>
  * This package is not exported, so nothing here is public API.
  */
@@ -92,6 +91,31 @@ public final class ModelObjectJson {
     }
 
     return array;
+  }
+
+  /**
+   * Reads a JSON value that is no model object, such as an array of strings or booleans.
+   *
+   * @param json The response body.
+   * @param type The Java type, for example {@code String[].class}.
+   * @param <T>  The Java type.
+   * @return The value.
+   */
+  public static <T> T plain(final String json, final Class<T> type) {
+    return ModelObjectGson.GSON.fromJson(JsonParser.parseString(json), type);
+  }
+
+  /**
+   * Reads a JSON value that is no model object and is a member of the top-level object.
+   *
+   * @param json The response body.
+   * @param key  The member holding the value.
+   * @param type The Java type, for example {@code String[].class}.
+   * @param <T>  The Java type.
+   * @return The value.
+   */
+  public static <T> T plain(final String json, final String key, final Class<T> type) {
+    return ModelObjectGson.GSON.fromJson(JsonParser.parseString(json).getAsJsonObject().get(key), type);
   }
 
   /**

@@ -19,11 +19,9 @@ public class GetFeaturedPlaylistsRequestTest extends AbstractDataTest<FeaturedPl
     .setHttpManager(
       TestUtil.MockedHttpManager.returningJson(
         "requests/data/playlists/GetFeaturedPlaylistsRequest.json"))
-    .country(COUNTRY)
     .limit(LIMIT)
     .locale(LOCALE)
     .offset(OFFSET)
-    .timestamp(TIMESTAMP)
     .build();
 
   public GetFeaturedPlaylistsRequestTest() throws Exception {
@@ -33,7 +31,7 @@ public class GetFeaturedPlaylistsRequestTest extends AbstractDataTest<FeaturedPl
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
     assertEquals(
-      "https://api.spotify.com:443/v1/browse/featured-playlists?country=SE&limit=10&locale=sv_SE&offset=0&timestamp=2014-10-23T09%3A00%3A00",
+      "https://api.spotify.com:443/v1/browse/featured-playlists?limit=10&locale=sv_SE&offset=0",
       defaultRequest.getUri().toString());
   }
 

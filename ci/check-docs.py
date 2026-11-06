@@ -9,13 +9,14 @@ import re
 import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-API = ROOT / "src/main/java/se/michaelthelin/spotify/SpotifyApi.java"
-REQUESTS = ROOT / "src/main/java/se/michaelthelin/spotify/requests"
-DATA_REQUESTS = REQUESTS / "data"
+# The generated request classes live in their own source root, in the same package as the hand-written ones.
+SOURCE_ROOTS = (ROOT / "src/main/java", ROOT / "src/generated/java")
+API = SOURCE_ROOTS[0] / "se/michaelthelin/spotify/SpotifyApi.java"
+REQUESTS = tuple(root / "se/michaelthelin/spotify/requests" for root in SOURCE_ROOTS)
+DATA_REQUESTS = tuple(root / "data" for root in REQUESTS)
 EXAMPLES = ROOT / "examples"
 README = ROOT / "README.md"
 MIGRATION = ROOT / "MIGRATION.md"
-SOURCES = ROOT / "src/main/java"
 SPEC = ROOT / "spec/openapi.yaml"
 
 # Convenience wrappers this library adds on top of /me/top/{type}, no spec counterpart.
@@ -37,7 +38,7 @@ def request_class_of(example):
 
 
 def request_source(name):
-    return next(REQUESTS.rglob(name + ".java"), None)
+    return next((p for root in REQUESTS for p in root.rglob(name + ".java")), None)
 
 
 def is_deprecated(java_file):
@@ -92,15 +93,16 @@ def check_readme(examples):
 def current_api():
     """Every name a reader can still write: packages, classes, methods, plus which of them are deprecated."""
     packages, classes, members = set(), {}, set()
-    for source in SOURCES.rglob("*.java"):
-        if source.name == "module-info.java":  # a module declaration, not a package of names
-            continue
-        text = source.read_text()
-        package = re.search(r"^package ([\w.]+);", text, re.M).group(1)
-        packages.add(package)
-        packages.add(package.replace("se.michaelthelin.spotify.", ""))
-        classes[source.stem] = bool(re.search(r"^@Deprecated", text, re.M))
-        members.update(re.findall(r"^  public [A-Za-z0-9_.<>\[\], ]+? (\w+)\(", text, re.M))
+    for root in SOURCE_ROOTS:
+        for source in root.rglob("*.java"):
+            if source.name == "module-info.java":  # a module declaration, not a package of names
+                continue
+            text = source.read_text()
+            package = re.search(r"^package ([\w.]+);", text, re.M).group(1)
+            packages.add(package)
+            packages.add(package.replace("se.michaelthelin.spotify.", ""))
+            classes[source.stem] = bool(re.search(r"^@Deprecated", text, re.M))
+            members.update(re.findall(r"^  public [A-Za-z0-9_.<>\[\], ]+? (\w+)\(", text, re.M))
 
     methods = {}
     for deprecated, request, method in re.findall(
@@ -113,11 +115,16 @@ def current_api():
 def check_migration_guide():
     """The guide's current-API side must still resolve, so a later rename cannot leave it lying.
 
-    Columns headed "v9" and code lines under a `// v9` marker describe a released past and are read as-is.
+    Columns headed with an older major version (e.g. "v9" or "v10" while the library is on 11) and code lines
+    under a marker like `// v10` describe a released past and are read as-is.
     This proves the names exist and that their ⚠️ matches the code; it cannot prove a mapping is the right one.
     """
     packages, classes, methods, members = current_api()
     text = MIGRATION.read_text()
+    major = int(re.search(r"<version>(\d+)\.", (ROOT / "pom.xml").read_text()).group(1))
+
+    def past(label):
+        return any(int(n) < major for n in re.findall(r"\bv(\d+)\b", label))
     legacy = set()
     findings = []
 
@@ -142,7 +149,7 @@ def check_migration_guide():
             if re.fullmatch(r"\s*// v\d+", line):
                 marker = line.strip()
             for method in re.findall(r"spotifyApi\.(\w+)\(", line):
-                if marker == "// v9":
+                if marker and past(marker):
                     legacy.add(method)
                 elif method not in methods:
                     findings.append((number, f"`spotifyApi.{method}` does not exist"))
@@ -153,7 +160,7 @@ def check_migration_guide():
             continue
         cells = [c.strip() for c in line.strip("|").split("|")]
         if not header:
-            header = ["v9" in c for c in cells]
+            header = [past(c) for c in cells]
             continue
         if set("".join(cells)) <= set("-: "):
             continue
@@ -180,7 +187,7 @@ def check_migration_guide():
                 continue
             name = re.match(r"[A-Za-z_][A-Za-z0-9_]*", token).group(0)
             if name not in legacy and token.split("(")[0] not in legacy and not resolve(token):
-                findings.append((number, f"`{token}` does not exist and no table lists it as a v9 name"))
+                findings.append((number, f"`{token}` does not exist and no table lists it as a past version's name"))
 
     for target in re.findall(r"\]\((?!http)([^)#]+)", text):
         if not (ROOT / target).exists():
@@ -204,7 +211,7 @@ def check_deprecation_matches_spec():
             spec[(verb, path)] = True
 
     verbs = (("deleteJson", "DELETE"), ("putJson", "PUT"), ("postJson", "POST"), ("getJson", "GET"))
-    for source in sorted(DATA_REQUESTS.rglob("*Request.java")):
+    for source in sorted(p for root in DATA_REQUESTS for p in root.rglob("*Request.java")):
         if source.stem in SPEC_EXEMPT:
             continue
         text = source.read_text()

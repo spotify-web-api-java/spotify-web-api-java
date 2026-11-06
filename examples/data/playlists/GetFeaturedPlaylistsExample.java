@@ -20,10 +20,8 @@ public class GetFeaturedPlaylistsExample {
     .build();
   private static final GetFeaturedPlaylistsRequest getFeaturedPlaylistsRequest = spotifyApi
     .getFeaturedPlaylists()
-//          .country(CountryCode.SE)
 //          .limit(10)
 //          .offset(0)
-//          .timestamp(new Date(1414054800000L))
     .build();
 
   public static void getFeaturedPlaylists_Sync() {

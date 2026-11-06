@@ -24,7 +24,7 @@ public class SearchForItemExample {
 //          .market(CountryCode.SE)
 //          .limit(10)
 //          .offset(0)
-//          .includeExternal("audio")
+//          .include_external("audio")
     .build();
 
   public static void search_Sync() {

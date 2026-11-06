@@ -30,7 +30,7 @@ public class GetPlaylistItemsDeprecatedRequestTest extends AbstractDataTest<Pagi
     .limit(ITest.LIMIT)
     .offset(ITest.OFFSET)
     .market(ITest.MARKET)
-    .additionalTypes(ITest.ADDITIONAL_TYPES)
+    .additional_types(ITest.ADDITIONAL_TYPES)
     .build();
 
   public GetPlaylistItemsDeprecatedRequestTest() throws Exception {

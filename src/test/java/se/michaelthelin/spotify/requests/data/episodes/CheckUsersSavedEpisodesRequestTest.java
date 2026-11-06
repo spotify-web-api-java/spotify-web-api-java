@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @SuppressWarnings("deprecation")
 public class CheckUsersSavedEpisodesRequestTest extends AbstractDataTest<Boolean[]> {
   private final CheckUsersSavedEpisodesRequest defaultRequest = ITest.SPOTIFY_API
-    .checkUsersSavedEpisodes(ITest.ID_EPISODE, ITest.ID_EPISODE)
+    .checkUsersSavedEpisodes(ITest.ID_EPISODE + "," + ITest.ID_EPISODE)
     .setHttpManager(
       TestUtil.MockedHttpManager.returningJson(
         "requests/data/episodes/CheckUsersSavedEpisodesRequest.json"))

@@ -20,7 +20,7 @@ public class GetPlaybackStateExample {
   private static final GetPlaybackStateRequest getPlaybackStateRequest =
     spotifyApi.getPlaybackState()
 //                  .market(CountryCode.SE)
-//                  .additionalTypes("track,episode")
+//                  .additional_types("track,episode")
       .build();
 
   public static void getPlaybackState_Sync() {

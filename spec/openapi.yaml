@@ -1428,6 +1428,8 @@ paths:
             default: 0
             example: 5
             type: integer
+            minimum: 0
+            maximum: 100000
       responses:
         '200':
           $ref: '#/components/responses/PagedPlaylists'
@@ -2271,6 +2273,8 @@ paths:
             default: 0
             example: 5
             type: integer
+            minimum: 0
+            maximum: 100000
       responses:
         '200':
           $ref: '#/components/responses/PagedPlaylists'
@@ -3839,6 +3843,7 @@ paths:
               **off** will turn repeat off.
             example: context
             type: string
+            enum: ['track', 'context', 'off']
         - name: device_id
           required: false
           in: query
@@ -3880,6 +3885,8 @@ paths:
               The volume to set. Must be a value from 0 to 100 inclusive.
             example: 50
             type: integer
+            minimum: 0
+            maximum: 100
         - name: device_id
           required: false
           in: query

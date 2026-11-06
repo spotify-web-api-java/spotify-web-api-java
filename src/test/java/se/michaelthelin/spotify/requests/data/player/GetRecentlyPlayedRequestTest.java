@@ -33,7 +33,7 @@ public class GetRecentlyPlayedRequestTest extends AbstractDataTest<PagingCursorb
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
     assertEquals(
-      "https://api.spotify.com:443/v1/me/player/recently-played?after=2018-01-27T21%3A07%3A10&before=2016-01-27T22%3A07%3A00&limit=10",
+      "https://api.spotify.com:443/v1/me/player/recently-played?after=1517087230000&before=1453932420000&limit=10",
       defaultRequest.getUri().toString());
   }
 

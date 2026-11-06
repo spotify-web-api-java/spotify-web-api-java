@@ -20,8 +20,8 @@ public class GetRecentlyPlayedTracksExample {
     .build();
   private static final GetRecentlyPlayedTracksRequest getRecentlyPlayedRequest =
     spotifyApi.getRecentlyPlayedTracks()
-//                  .after(new Date(1517087230000L))
-//                  .before(new Date(1453932420000L))
+//                  .after(1517087230000L)
+//                  .before(1453932420000L)
 //                  .limit(10)
       .build();
 
