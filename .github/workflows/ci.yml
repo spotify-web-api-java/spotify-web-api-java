@@ -69,6 +69,13 @@ jobs:
           mvn -B japicmp:cmp -Dapi.baseline="$baseline" -Dapi.breakOnIncompatible="$break_on_incompatible" || status=$?
           if [ -f target/japicmp/default-cli.md ]; then cat target/japicmp/default-cli.md >> "$GITHUB_STEP_SUMMARY"; fi
           exit $status
+      - name: Check generated request classes
+        # the request classes and SpotifyApi's request methods are generated from spec/openapi.yaml; a hand edit, or a
+        # spec or descriptor change without regenerating, fails here (a venv, as the runner's system pip refuses installs)
+        run: |
+          python3 -m venv "$RUNNER_TEMP/codegen"
+          "$RUNNER_TEMP/codegen/bin/pip" install --quiet pyyaml==6.0.2
+          "$RUNNER_TEMP/codegen/bin/python" codegen/generate.py --check
       - name: Check documentation consistency
         run: ./ci/check-docs.py
       - name: Build Javadoc

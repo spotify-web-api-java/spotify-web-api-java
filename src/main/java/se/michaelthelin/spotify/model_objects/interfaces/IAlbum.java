@@ -96,4 +96,3 @@ public interface IAlbum {
   String getUri();
 }
 
-

@@ -4,6 +4,7 @@ import org.apache.hc.core5.http.ParseException;
 import org.junit.jupiter.api.Test;
 import se.michaelthelin.spotify.TestUtil;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
+import se.michaelthelin.spotify.model_objects.special.FeaturedPlaylists;
 import se.michaelthelin.spotify.model_objects.specification.Paging;
 import se.michaelthelin.spotify.model_objects.specification.PlaylistSimplified;
 import se.michaelthelin.spotify.requests.data.AbstractDataTest;
@@ -15,12 +16,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
 @SuppressWarnings("deprecation")
-public class GetCategoryPlaylistsRequestTest extends AbstractDataTest<Paging<PlaylistSimplified>> {
+public class GetCategoryPlaylistsRequestTest extends AbstractDataTest<FeaturedPlaylists> {
   private final GetCategoryPlaylistsRequest defaultRequest = SPOTIFY_API.getCategoryPlaylists(CATEGORY_ID)
     .setHttpManager(
       TestUtil.MockedHttpManager.returningJson(
         "requests/data/playlists/GetCategoryPlaylistsRequest.json"))
-    .country(COUNTRY)
     .limit(LIMIT)
     .offset(OFFSET)
     .build();
@@ -32,7 +32,7 @@ public class GetCategoryPlaylistsRequestTest extends AbstractDataTest<Paging<Pla
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
     assertEquals(
-      "https://api.spotify.com:443/v1/browse/categories/dinner/playlists?country=SE&limit=10&offset=0",
+      "https://api.spotify.com:443/v1/browse/categories/dinner/playlists?limit=10&offset=0",
       defaultRequest.getUri().toString());
   }
 
@@ -46,7 +46,8 @@ public class GetCategoryPlaylistsRequestTest extends AbstractDataTest<Paging<Pla
     shouldReturnDefault(defaultRequest.executeAsync().get());
   }
 
-  public void shouldReturnDefault(final Paging<PlaylistSimplified> playlistSimplifiedPaging) {
+  public void shouldReturnDefault(final FeaturedPlaylists featuredPlaylists) {
+    final Paging<PlaylistSimplified> playlistSimplifiedPaging = featuredPlaylists.getPlaylists();
     assertEquals(
       "https://api.spotify.com/v1/browse/categories/party/playlists?country=BR&offset=0&limit=2",
       playlistSimplifiedPaging.getHref());

@@ -49,7 +49,6 @@ public class AuthorizationCodeCredentials extends AbstractModelObject {
     return tokenType;
   }
 
-
   /**
    * Get the <a href="https://developer.spotify.com/documentation/web-api/concepts/scopes">Scopes</a> specified in the authorization
    * code credentials request.
@@ -133,22 +132,6 @@ public class AuthorizationCodeCredentials extends AbstractModelObject {
     public AuthorizationCodeCredentials build() {
       return new AuthorizationCodeCredentials(this);
     }
-  }
-
-  /**
-   * JsonUtil class for building {@link AuthorizationCodeCredentials} instances.
-   *
-   * @deprecated Requests already return model objects. To read JSON obtained some other way, use
-   *             {@link se.michaelthelin.spotify.model_objects.ModelObjects} instead. This will be removed
-   *             in the next major version.
-   */
-  @Deprecated
-  public static final class JsonUtil extends AbstractModelObject.JsonUtil<AuthorizationCodeCredentials> {
-
-    public JsonUtil() {
-      super();
-    }
-
   }
 
   @Override

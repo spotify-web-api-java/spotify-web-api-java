@@ -21,7 +21,9 @@ import static se.michaelthelin.spotify.Assertions.assertHasHeader;
 @Deprecated
 public class UpdatePlaylistsItemsReorderDeprecatedRequestTest extends AbstractDataTest<SnapshotResult> {
   private final UpdatePlaylistsItemsReorderDeprecatedRequest defaultRequest = ITest.SPOTIFY_API
-    .updatePlaylistsItemsReorderDeprecated(ITest.ID_PLAYLIST, ITest.RANGE_START, ITest.INSERT_BEFORE)
+    .updatePlaylistsItemsReorderDeprecated(ITest.ID_PLAYLIST)
+    .range_start(ITest.RANGE_START)
+    .insert_before(ITest.INSERT_BEFORE)
     .setHttpManager(
       TestUtil.MockedHttpManager.returningJson(
         "requests/data/playlists/ReorderPlaylistsItemsRequest.json"))

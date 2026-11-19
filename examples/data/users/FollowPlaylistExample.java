@@ -20,7 +20,8 @@ public class FollowPlaylistExample {
     .setAccessToken(accessToken)
     .build();
   private static final FollowPlaylistRequest followPlaylistRequest = spotifyApi
-    .followPlaylist(playlistId, public_)
+    .followPlaylist(playlistId)
+    .public_(public_)
     .build();
 
   public static void followPlaylist_Sync() {

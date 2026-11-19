@@ -7,7 +7,7 @@
 
   <groupId>se.michaelthelin.spotify</groupId>
   <artifactId>spotify-web-api-java</artifactId>
-  <version>10.1.0</version>
+  <version>11.0.0-RC3</version>
   <!--
    DO NOT FORGET
    - to update version numbers in README (2x)
@@ -102,6 +102,27 @@
   <!-- activating any profile switches off the activeByDefault "default" one, so config that every build needs belongs here rather than in a profile that "mvn deploy -P release" turns off -->
   <build>
     <plugins>
+      <plugin>
+        <!-- the generated request classes are committed under src/generated/java, in the same package as the
+             hand-written ones, so a build needs no Python; the compiler and the Javadoc pick the root up from
+             the compile sources -->
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>build-helper-maven-plugin</artifactId>
+        <version>3.6.1</version>
+        <executions>
+          <execution>
+            <id>add-generated-source</id>
+            <goals>
+              <goal>add-source</goal>
+            </goals>
+            <configuration>
+              <sources>
+                <source>src/generated/java</source>
+              </sources>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>

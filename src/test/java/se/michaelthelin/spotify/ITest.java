@@ -1,7 +1,7 @@
 package se.michaelthelin.spotify;
 
 import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
+
 import com.google.gson.JsonParser;
 import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.enums.AlbumType;
@@ -11,7 +11,10 @@ import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Date;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
 import static se.michaelthelin.spotify.TestUtil.readFromFileTry;
@@ -26,12 +29,11 @@ public interface ITest<T> {
     .setRefreshToken("b0KuPuLw77Z0hQhCsK-GTHoEx_kethtn357V7iqwEpCTIsLgqbBC_vQBTGC6M5rINl0FrqHK-D3cbOsMOlfyVKuQPvpyGcLcxAoLOTpYXc28nVwB7iBq2oKj9G9lHkFOUKn")
     .build();
 
-  Date AFTER = new Date(1517087230000L);
+  Long AFTER = 1517087230000L;
   String ALBUM_TYPE = AlbumType.ALBUM.getType();
   JsonArray ALBUMS = JsonParser.parseString("[\"5zT1JLIj9E57p3e1rFm9Uq\", \"5zT1JLIj9E57p3e1rFm9Uq\"]" ).getAsJsonArray();
-  JsonArray ARTISTS = JsonParser.parseString("[\"0LcJLqbBmaGUft1e9Mm8HV\", \"0LcJLqbBmaGUft1e9Mm8HV\"]" ).getAsJsonArray();
   String AUTHORIZATION_CODE = "c-oGaPdYJF3tu3oUZRUiBHWQvm4oHnBrsxfHackYzzomKJiy5te1k04LJdr6XxjACe9TonpJR8NPOQ3o5btASx_oMw4trmXLYdkda77wY0NJ9Scl69lKvGiOfdnRi5Q0IbBu185Y0TZgyUJz3Auqqv-Wk7zjRke4DzqYEc3ucyUBOq08j5223te-G2K72aL9PxgVJaEHBbLvhdJscCy-zcyU29EZoNlG_E5";
-  Date BEFORE = new Date(1453932420000L);
+  Long BEFORE = 1453932420000L;
   String CATEGORY_ID = "dinner";
   String CODE_VERIFIER = "NlJx4kD4opk4HY7zBM6WfUHxX7HoF8A2TUhOIPGA74w";
   String CODE_CHALLENGE = "w6iZIj99vHGtEx_NVl9u3sthTN646vvkiP8OMCGfPmo";
@@ -62,7 +64,7 @@ public interface ITest<T> {
   int MIN_POPULARITY = 10;
   String NAME = "Abba";
   int OFFSET = 0;
-  JsonObject OFFSET_JSON = JsonParser.parseString("{\"uri\":\"spotify:track:01iyCAUm8EvOFqVWYJ3dVX\"}").getAsJsonObject();
+  Map<String, Object> PLAYBACK_OFFSET = Collections.singletonMap("uri", "spotify:track:01iyCAUm8EvOFqVWYJ3dVX");
   boolean PLAY = false;
   int POSITION = 0;
   int POSITION_MS = 10000;
@@ -83,9 +85,8 @@ public interface ITest<T> {
   int TARGET_POPULARITY = 20;
   String TIME_RANGE = "medium_term";
   JsonArray TRACKS = JsonParser.parseString("[\"01iyCAUm8EvOFqVWYJ3dVX\", \"01iyCAUm8EvOFqVWYJ3dVX\"]").getAsJsonArray();
-  Date TIMESTAMP = new Date(1414054800000L);
   ModelObjectType TYPE = ModelObjectType.ARTIST;
-  JsonArray URIS = JsonParser.parseString("[\"spotify:track:01iyCAUm8EvOFqVWYJ3dVX\",\"spotify:track:01iyCAUm8EvOFqVWYJ3dVX\"]").getAsJsonArray();
+  List<String> URIS = Arrays.asList("spotify:track:01iyCAUm8EvOFqVWYJ3dVX", "spotify:track:01iyCAUm8EvOFqVWYJ3dVX");
   int VOLUME_PERCENT = 100;
 
   void shouldComplyWithReference();

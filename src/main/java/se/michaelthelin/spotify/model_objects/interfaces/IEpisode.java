@@ -88,4 +88,3 @@ public interface IEpisode extends IPlaylistItem {
   ResumePoint getResumePoint();
 }
 
-

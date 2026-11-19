@@ -75,20 +75,4 @@ public class SavedShow extends AbstractModelObject {
       return new SavedShow(this);
     }
   }
-
-  /**
-   * JsonUtil class for building {@link SavedShow} instances.
-   *
-   * @deprecated Requests already return model objects. To read JSON obtained some other way, use
-   *             {@link se.michaelthelin.spotify.model_objects.ModelObjects} instead. This will be removed
-   *             in the next major version.
-   */
-  @Deprecated
-  public static final class JsonUtil extends AbstractModelObject.JsonUtil<SavedShow> {
-
-    public JsonUtil() {
-      super();
-    }
-
-  }
 }

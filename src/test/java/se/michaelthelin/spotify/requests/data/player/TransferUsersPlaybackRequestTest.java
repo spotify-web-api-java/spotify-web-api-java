@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.requests.data.player;
 
-import com.google.gson.JsonParser;
 import org.apache.hc.core5.http.ParseException;
 import org.junit.jupiter.api.Test;
 import se.michaelthelin.spotify.ITest;
@@ -9,6 +8,7 @@ import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.requests.data.AbstractDataTest;
 
 import java.io.IOException;
+import java.util.Collections;
 import java.util.concurrent.ExecutionException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -18,7 +18,7 @@ import static se.michaelthelin.spotify.Assertions.assertHasHeader;
 
 public class TransferUsersPlaybackRequestTest extends AbstractDataTest<String> {
   private final TransferPlaybackRequest defaultRequest = ITest.SPOTIFY_API
-    .transferPlayback(JsonParser.parseString("[\"" + ITest.DEVICE_ID + "\"]").getAsJsonArray())
+    .transferPlayback(Collections.singletonList(ITest.DEVICE_ID))
     .setHttpManager(
       TestUtil.MockedHttpManager.returningJson(null))
     .play(ITest.PLAY)
@@ -34,7 +34,7 @@ public class TransferUsersPlaybackRequestTest extends AbstractDataTest<String> {
     assertHasBodyParameter(
       defaultRequest,
       "device_ids",
-      "[\"" + ITest.DEVICE_ID + "\"]");
+      Collections.singletonList(ITest.DEVICE_ID));
     assertHasBodyParameter(
       defaultRequest,
       "play",

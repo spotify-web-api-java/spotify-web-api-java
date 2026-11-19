@@ -13,7 +13,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CheckIfUserFollowsPlaylistRequestTest extends AbstractDataTest<Boolean[]> {
   private final CheckIfUserFollowsPlaylistRequest defaultRequest = SPOTIFY_API
-    .checkIfUserFollowsPlaylist(ID_PLAYLIST, new String[]{ID_USER})
+    .checkIfUserFollowsPlaylist(ID_PLAYLIST)
+    .ids(ID_USER)
     .setHttpManager(
       TestUtil.MockedHttpManager.returningJson(
         "requests/data/users/CheckIfUserFollowsPlaylistRequest.json"))

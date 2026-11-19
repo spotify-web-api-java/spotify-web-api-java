@@ -2,7 +2,7 @@ package data.audiobooks;
 
 import se.michaelthelin.spotify.SpotifyApi;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
-import se.michaelthelin.spotify.model_objects.specification.AudiobookSimplified;
+import se.michaelthelin.spotify.model_objects.specification.Audiobook;
 import se.michaelthelin.spotify.requests.data.audiobooks.GetSeveralAudiobooksRequest;
 import org.apache.hc.core5.http.ParseException;
 
@@ -27,7 +27,7 @@ public class GetSeveralAudiobooksExample {
 
   public static void getSeveralAudiobooks_Sync() {
     try {
-      final AudiobookSimplified[] audiobooks = getSeveralAudiobooksRequest.execute();
+      final Audiobook[] audiobooks = getSeveralAudiobooksRequest.execute();
 
       System.out.println("Number of audiobooks: " + audiobooks.length);
     } catch (IOException | SpotifyWebApiException | ParseException e) {
@@ -37,12 +37,12 @@ public class GetSeveralAudiobooksExample {
 
   public static void getSeveralAudiobooks_Async() {
     try {
-      final CompletableFuture<AudiobookSimplified[]> audiobooksFuture = getSeveralAudiobooksRequest.executeAsync();
+      final CompletableFuture<Audiobook[]> audiobooksFuture = getSeveralAudiobooksRequest.executeAsync();
 
       // Thread free to do other tasks...
 
       // Example Only. Never block in production code.
-      final AudiobookSimplified[] audiobooks = audiobooksFuture.join();
+      final Audiobook[] audiobooks = audiobooksFuture.join();
 
       System.out.println("Number of audiobooks: " + audiobooks.length);
     } catch (CompletionException e) {

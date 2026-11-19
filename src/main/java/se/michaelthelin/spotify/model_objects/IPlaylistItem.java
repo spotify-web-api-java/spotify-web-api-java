@@ -5,7 +5,6 @@ import se.michaelthelin.spotify.model_objects.specification.Episode;
 import se.michaelthelin.spotify.model_objects.specification.ExternalUrl;
 import se.michaelthelin.spotify.model_objects.specification.Track;
 
-
 /**
  * This interface represents objects returned by the API that can be played, saved in a playlist, etc,
  * currently {@link Episode} and {@link Track}.

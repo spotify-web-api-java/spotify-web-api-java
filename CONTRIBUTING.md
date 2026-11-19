@@ -34,6 +34,17 @@ mvn clean install
 mvn test
 ```
 
+Changing a request class, or anything in `spec/openapi.yaml` or `codegen/requests.yaml`, also needs Python 3 with
+PyYAML (`pip install pyyaml`) to run the generator:
+
+```bash
+# regenerate the request classes and their SpotifyApi methods
+./codegen/generate.py
+
+# only check that the committed ones are up to date, as CI does
+./codegen/generate.py --check
+```
+
 The examples under `examples/` are a separate Maven project that compiles against the installed library as its own module, so build the library first and then the examples:
 
 ```bash
@@ -45,8 +56,9 @@ The `clean` matters, because an incremental build reuses classes compiled agains
 [AGENTS.md](AGENTS.md) carries the step-by-step recipe for adding an endpoint.
 
 ## Code Overview
-The library's code lives in `src/main/java/se/michaelthelin/spotify/`, divided into four parts that `SpotifyApi` ties
-together.
+The hand-written code lives in `src/main/java/se/michaelthelin/spotify/`, divided into four parts that `SpotifyApi` ties
+together. The generated request classes sit in `src/generated/java/` under the same packages; Maven adds that directory
+as a second source root, so the jar contains both.
 
 - **`enums/`** holds the fixed value sets Spotify uses, such as `ModelObjectType` or `CountryCode`.
 - **`exceptions/`** has one exception per HTTP status code the API answers with, each carrying Spotify's error
@@ -58,7 +70,11 @@ together.
   request.
 - **`requests/`** mirrors Spotify's endpoints, under `authorization/` and `data/<category>/`. A data request extends
   `AbstractDataRequest`, implements `execute()` and embeds a builder, and `SpotifyApi` has one method per request that
-  creates that builder.
+  creates that builder. The data requests and those `SpotifyApi` methods are generated from `spec/openapi.yaml`, as
+  described under [Integrity](#integrity): `codegen/requests.yaml` maps each class to its spec operation, and the
+  methods sit between `// <generated-requests>` markers in `SpotifyApi.java`. `src/main/java` keeps the hand-written
+  infrastructure (base classes, paging interfaces) and the two requests the generator does not produce,
+  `GetUsersTopArtistsAndTracksRequest` and `AddCustomPlaylistCoverImageRequest`.
 
 The tests in `src/test/java/se/michaelthelin/spotify/` mirror this structure and use [JUnit](https://junit.org/) and
 [Mockito](https://site.mockito.org/). They read the responses they expect from JSON fixtures in `src/test/fixtures/`;
@@ -73,6 +89,12 @@ A complete contribution includes the following features:
 ### Integrity
 Make sure that your contribution embeds well into the already existing code. For example, the unified folder/package
 structure must be used wherever possible.
+
+The data request classes and the `SpotifyApi` methods that create them are generated from `spec/openapi.yaml` by `codegen/generate.py`, so a new endpoint is one line in `codegen/requests.yaml` plus a run of that script, and a generated file is never edited by hand. The generated classes are committed under `src/generated/java`, in the same package as the hand-written code. [AGENTS.md](AGENTS.md#adding-a-new-endpoint) describes the steps.
+
+The vendored `spec/openapi.yaml` is the published spec plus the constraints the generated setters assert.
+Where the published spec states a bound only in prose, the copy carries it as a schema field (`minimum`, `maximum` or `enum`), because the generated checks read schema fields.
+Count limits on comma-separated parameters are read from the description phrasing `Maximum: N IDs`, `URIs` or `id`, so those bounds stay in the description.
 
 The library is an explicit Java module, so a class in a **new** package is unreachable for callers until that package is added to `exports` in `src/main/java/module-info.java`.
 The examples are compiled as a separate module against the built library, which is what turns a forgotten `exports` into a build failure here rather than in someone else's project.

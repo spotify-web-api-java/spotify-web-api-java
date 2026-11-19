@@ -1,3 +1,6 @@
+# the generated request classes are pinned by codegen/generate.py --check, not by line coverage
+ignore:
+  - "src/generated/**"
 coverage:
   status:
     project:

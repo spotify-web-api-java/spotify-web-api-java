@@ -23,7 +23,7 @@ public class SearchPlaylistsRequestTest extends AbstractDataTest<Paging<Playlist
     .limit(ITest.LIMIT)
     .market(ITest.MARKET)
     .offset(ITest.OFFSET)
-    .includeExternal("audio")
+    .include_external("audio")
     .build();
 
   public SearchPlaylistsRequestTest() throws Exception {

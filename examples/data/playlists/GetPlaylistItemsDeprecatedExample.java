@@ -31,7 +31,7 @@ public class GetPlaylistItemsDeprecatedExample {
 //          .limit(10)
 //          .offset(0)
 //          .market(CountryCode.SE)
-//          .additionalTypes("track,episode")
+//          .additional_types("track,episode")
     .build();
 
   public static void getPlaylistItemsDeprecated_Sync() {

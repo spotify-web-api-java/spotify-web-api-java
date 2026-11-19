@@ -23,7 +23,7 @@ public class SearchAlbumsExample {
 //          .market(CountryCode.SE)
 //          .limit(10)
 //          .offset(0)
-//          .includeExternal("audio")
+//          .include_external("audio")
     .build();
 
   public static void searchAlbums_Sync() {

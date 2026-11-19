@@ -2,8 +2,7 @@ package data.playlists;
 
 import se.michaelthelin.spotify.SpotifyApi;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
-import se.michaelthelin.spotify.model_objects.specification.Paging;
-import se.michaelthelin.spotify.model_objects.specification.PlaylistSimplified;
+import se.michaelthelin.spotify.model_objects.special.FeaturedPlaylists;
 import se.michaelthelin.spotify.requests.data.playlists.GetCategoryPlaylistsRequest;
 
 import org.apache.hc.core5.http.ParseException;
@@ -21,16 +20,15 @@ public class GetCategoryPlaylistsExample {
     .setAccessToken(accessToken)
     .build();
   private static final GetCategoryPlaylistsRequest getCategoryRequest = spotifyApi.getCategoryPlaylists(categoryId)
-//          .country(CountryCode.SE)
 //          .limit(10)
 //          .offset(0)
     .build();
 
   public static void getCategoryPlaylists_Sync() {
     try {
-      final Paging<PlaylistSimplified> playlistSimplifiedPaging = getCategoryRequest.execute();
+      final FeaturedPlaylists featuredPlaylists = getCategoryRequest.execute();
 
-      System.out.println("Total: " + playlistSimplifiedPaging.getTotal());
+      System.out.println("Total: " + featuredPlaylists.getPlaylists().getTotal());
     } catch (IOException | SpotifyWebApiException | ParseException e) {
       System.out.println("Error: " + e.getMessage());
     }
@@ -38,14 +36,14 @@ public class GetCategoryPlaylistsExample {
 
   public static void getCategoryPlaylists_Async() {
     try {
-      final CompletableFuture<Paging<PlaylistSimplified>> pagingFuture = getCategoryRequest.executeAsync();
+      final CompletableFuture<FeaturedPlaylists> pagingFuture = getCategoryRequest.executeAsync();
 
       // Thread free to do other tasks...
 
       // Example Only. Never block in production code.
-      final Paging<PlaylistSimplified> playlistSimplifiedPaging = pagingFuture.join();
+      final FeaturedPlaylists featuredPlaylists = pagingFuture.join();
 
-      System.out.println("Total: " + playlistSimplifiedPaging.getTotal());
+      System.out.println("Total: " + featuredPlaylists.getPlaylists().getTotal());
     } catch (CompletionException e) {
       System.out.println("Error: " + e.getCause().getMessage());
     } catch (CancellationException e) {

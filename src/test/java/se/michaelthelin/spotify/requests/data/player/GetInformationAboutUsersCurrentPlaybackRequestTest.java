@@ -24,7 +24,7 @@ public class GetInformationAboutUsersCurrentPlaybackRequestTest extends Abstract
       TestUtil.MockedHttpManager.returningJson(
         "requests/data/player/GetInformationAboutUsersCurrentPlaybackRequest.json"))
     .market(ITest.MARKET)
-    .additionalTypes(ITest.ADDITIONAL_TYPES)
+    .additional_types(ITest.ADDITIONAL_TYPES)
     .build();
 
   private final GetPlaybackStateRequest defaultEpisodeRequest = ITest.SPOTIFY_API
@@ -33,7 +33,7 @@ public class GetInformationAboutUsersCurrentPlaybackRequestTest extends Abstract
       TestUtil.MockedHttpManager.returningJson(
         "requests/data/player/GetInformationAboutUsersCurrentPlaybackRequest_Episode.json"))
     .market(ITest.MARKET)
-    .additionalTypes(ITest.ADDITIONAL_TYPES)
+    .additional_types(ITest.ADDITIONAL_TYPES)
     .build();
 
   private final GetPlaybackStateRequest emptyRequest = ITest.SPOTIFY_API
@@ -41,7 +41,7 @@ public class GetInformationAboutUsersCurrentPlaybackRequestTest extends Abstract
     .setHttpManager(
       TestUtil.MockedHttpManager.returningJson(null))
     .market(ITest.MARKET)
-    .additionalTypes(ITest.ADDITIONAL_TYPES)
+    .additional_types(ITest.ADDITIONAL_TYPES)
     .build();
 
   public GetInformationAboutUsersCurrentPlaybackRequestTest() throws Exception {

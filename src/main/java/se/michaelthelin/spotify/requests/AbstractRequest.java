@@ -17,7 +17,9 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 import java.util.logging.Level;
 import java.util.regex.Matcher;
@@ -33,7 +35,7 @@ public abstract class AbstractRequest<T> implements IRequest<T> {
   private final IHttpManager httpManager;
   private final List<Header> headers;
   private final ContentType contentType;
-  private final List<NameValuePair> bodyParameters;
+  private final List<BodyParameter> bodyParameters;
   private URI uri;
   private HttpEntity body;
 
@@ -90,57 +92,47 @@ public abstract class AbstractRequest<T> implements IRequest<T> {
       switch (contentType.getMimeType()) {
         case "application/json":
           body = new StringEntity(
-            bodyParametersToJson(bodyParameters),
+            bodyParametersToJson(),
             ContentType.APPLICATION_JSON);
           break;
         case "application/x-www-form-urlencoded":
-          body = new UrlEncodedFormEntity(bodyParameters);
+          body = new UrlEncodedFormEntity(bodyParametersToNameValuePairs());
           break;
       }
     }
   }
 
-  /**
-   * Convert body parameters to JSON string.
-   *
-   * @param bodyParameters The body parameters to convert.
-   * @return JSON string representation.
-   */
-  public String bodyParametersToJson(List<NameValuePair> bodyParameters) {
+  // Serialize by the value's runtime type rather than by parameter name, so no parameter has to
+  // be listed to keep its type; a String value (including one that looks numeric) stays a string.
+  private String bodyParametersToJson() {
     JsonObject jsonObject = new JsonObject();
 
-    // Body parameters whose value is not a plain String (Integer, Boolean, JsonArray or JsonObject)
-    // and must be re-parsed into that JSON type. Every parameter that carries a non-String value has
-    // to be listed here; a name that is missing is emitted as a JSON string instead. "items" (remove
-    // playlist items) was one of those until it was added. To drop this list, preserve the value's
-    // runtime type in setBodyParameter and serialize by type here instead.
-    java.util.Set<String> numericAndStructuredParams = java.util.Set.of(
-      "collaborative", "device_ids", "ids", "insert_before", "items", "offset",
-      "play", "position", "position_ms", "public", "range_length",
-      "range_start", "tracks", "uris"
-    );
-
-    for (NameValuePair nameValuePair : bodyParameters) {
-      String name = nameValuePair.getName();
-      String value = nameValuePair.getValue();
-      
-      if (numericAndStructuredParams.contains(name)) {
-        // For known numeric/boolean/structured parameters, parse as JSON to preserve type
-        try {
-          JsonElement jsonElement = JsonParser.parseString(value);
-          jsonObject.add(name, jsonElement);
-        } catch (JsonSyntaxException e) {
-          // Fallback to string if parsing fails
-          jsonObject.addProperty(name, value);
-        }
+    for (BodyParameter bodyParameter : bodyParameters) {
+      Object value = bodyParameter.getValue();
+      if (value instanceof JsonElement) {
+        jsonObject.add(bodyParameter.getName(), (JsonElement) value);
+      } else if (value instanceof Boolean) {
+        jsonObject.addProperty(bodyParameter.getName(), (Boolean) value);
+      } else if (value instanceof Number) {
+        jsonObject.addProperty(bodyParameter.getName(), (Number) value);
+      } else if (value instanceof Collection || value instanceof Map) {
+        jsonObject.add(bodyParameter.getName(), new Gson().toJsonTree(value));
       } else {
-        // For string parameters (like name, description), always keep as string
-        // This prevents numeric strings like "2025" from being converted to numbers
-        jsonObject.addProperty(name, value);
+        jsonObject.addProperty(bodyParameter.getName(), String.valueOf(value));
       }
     }
 
     return jsonObject.toString();
+  }
+
+  private List<NameValuePair> bodyParametersToNameValuePairs() {
+    List<NameValuePair> nameValuePairs = new ArrayList<>(bodyParameters.size());
+    for (BodyParameter bodyParameter : bodyParameters) {
+      nameValuePairs.add(new BasicNameValuePair(
+        bodyParameter.getName(),
+        String.valueOf(bodyParameter.getValue())));
+    }
+    return nameValuePairs;
   }
 
   public String getJson() throws
@@ -226,7 +218,7 @@ public abstract class AbstractRequest<T> implements IRequest<T> {
   }
 
   public List<NameValuePair> getBodyParameters() {
-    return bodyParameters;
+    return bodyParametersToNameValuePairs();
   }
 
   /**
@@ -240,7 +232,7 @@ public abstract class AbstractRequest<T> implements IRequest<T> {
     private final List<NameValuePair> pathParameters = new ArrayList<>();
     private final List<NameValuePair> queryParameters = new ArrayList<>();
     private final List<Header> headers = new ArrayList<>();
-    private final List<NameValuePair> bodyParameters = new ArrayList<>();
+    private final List<BodyParameter> bodyParameters = new ArrayList<>();
     private IHttpManager httpManager = SpotifyApi.DEFAULT_HTTP_MANAGER;
     private String scheme = SpotifyApi.DEFAULT_SCHEME;
     private String host = SpotifyApi.DEFAULT_HOST;
@@ -345,7 +337,7 @@ public abstract class AbstractRequest<T> implements IRequest<T> {
     public <X> BT setBodyParameter(final String name, final X value) {
       Preconditions.assertNotEmpty(name);
       assert (value != null);
-      listAddOnce(this.bodyParameters, new BasicNameValuePair(name, String.valueOf(value)));
+      listAddOnce(this.bodyParameters, new BodyParameter(name, value));
       return self();
     }
 
@@ -354,6 +346,13 @@ public abstract class AbstractRequest<T> implements IRequest<T> {
         .filter(nameValuePair -> nameValuePair.getName().equals(newNameValuePair.getName()))
         .collect(Collectors.toList()));
       nameValuePairs.add(newNameValuePair);
+    }
+
+    private void listAddOnce(List<BodyParameter> bodyParameters, BodyParameter newBodyParameter) {
+      bodyParameters.removeAll(bodyParameters.stream()
+        .filter(bodyParameter -> bodyParameter.getName().equals(newBodyParameter.getName()))
+        .collect(Collectors.toList()));
+      bodyParameters.add(newBodyParameter);
     }
 
     private void listAddOnce(List<Header> headers, Header newHeader) {
@@ -369,5 +368,30 @@ public abstract class AbstractRequest<T> implements IRequest<T> {
      * @return This instance.
      */
     protected abstract BT self();
+  }
+
+  /**
+   * A body parameter that keeps the runtime type of the value passed to
+   * {@link Builder#setBodyParameter}, so the JSON serializer can emit it with the right type
+   * instead of stringifying it on the way in.
+   */
+  private static final class BodyParameter {
+    private final String name;
+    private final Object value;
+
+    private BodyParameter(final String name, final Object value) {
+      assert (name != null);
+      assert (value != null);
+      this.name = name;
+      this.value = value;
+    }
+
+    private String getName() {
+      return name;
+    }
+
+    private Object getValue() {
+      return value;
+    }
   }
 }

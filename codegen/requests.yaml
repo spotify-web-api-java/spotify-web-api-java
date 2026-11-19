@@ -1,0 +1,184 @@
+# The request classes codegen/generate.py produces, by package below se.michaelthelin.spotify.requests.data.
+#
+# Each entry maps a class to the spec operation it sends. Everything else is read from spec/openapi.yaml.
+# The optional keys record where this library deliberately differs from the spec:
+#   returns:  the return type, where the response schema does not say it (e.g. a model the spec lacks)
+#   key:      with returns, the member of the response object that holds the value
+#   fixed:    parameters the class sets itself instead of exposing them (e.g. the search type)
+#   params:   the parameters to expose, in this order, for a class covering part of an operation
+#   args:     the SpotifyApi method's arguments, where the spec's required list does not fit
+#
+# Not listed, so still written by hand: GetUsersTopArtistsAndTracksRequest (generic over its item type)
+# and AddCustomPlaylistCoverImageRequest (sends a JPEG body).
+
+albums:
+  CheckUsersSavedAlbumsRequest: {operation: check-users-saved-albums}
+  GetAlbumRequest: {operation: get-an-album}
+  GetAlbumTracksRequest: {operation: get-an-albums-tracks}
+  GetNewReleasesRequest: {operation: get-new-releases}
+  GetSeveralAlbumsRequest: {operation: get-multiple-albums}
+  GetUsersSavedAlbumsRequest: {operation: get-users-saved-albums}
+  RemoveAlbumsForCurrentUserRequest: {operation: remove-albums-user}
+  SaveAlbumsForCurrentUserRequest: {operation: save-albums-user}
+artists:
+  GetArtistRequest: {operation: get-an-artist}
+  GetArtistsAlbumsRequest: {operation: get-an-artists-albums}
+  GetArtistsRelatedArtistsRequest: {operation: get-an-artists-related-artists}
+  GetArtistsTopTracksRequest: {operation: get-an-artists-top-tracks}
+  GetSeveralArtistsRequest: {operation: get-multiple-artists}
+audiobooks:
+  CheckUsersSavedAudiobooksRequest: {operation: check-users-saved-audiobooks}
+  GetAudiobookChaptersRequest: {operation: get-audiobook-chapters}
+  GetAudiobookRequest: {operation: get-an-audiobook}
+  GetSeveralAudiobooksRequest: {operation: get-multiple-audiobooks}
+  GetUsersSavedAudiobooksRequest: {operation: get-users-saved-audiobooks}
+  RemoveAudiobooksForCurrentUserRequest: {operation: remove-audiobooks-user}
+  SaveAudiobooksForCurrentUserRequest: {operation: save-audiobooks-user}
+categories:
+  GetSeveralBrowseCategoriesRequest: {operation: get-categories}
+  GetSingleBrowseCategoryRequest: {operation: get-a-category}
+chapters:
+  GetChapterRequest: {operation: get-a-chapter}
+  GetSeveralChaptersRequest: {operation: get-several-chapters}
+episodes:
+  CheckUsersSavedEpisodesRequest: {operation: check-users-saved-episodes}
+  GetEpisodeRequest: {operation: get-an-episode}
+  GetSeveralEpisodesRequest: {operation: get-multiple-episodes}
+  GetUsersSavedEpisodesRequest: {operation: get-users-saved-episodes}
+  RemoveEpisodesForCurrentUserRequest: {operation: remove-episodes-user}
+  SaveEpisodesForCurrentUserRequest: {operation: save-episodes-user}
+genres:
+  GetRecommendationGenresRequest: {operation: get-recommendation-genres}
+library:
+  CheckUsersSavedItemsRequest: {operation: check-library-contains}
+  RemoveItemsFromLibraryRequest: {operation: remove-library-items}
+  SaveItemsToLibraryRequest: {operation: save-library-items}
+markets:
+  GetAvailableMarketsRequest: {operation: get-available-markets}
+player:
+  AddItemToPlaybackQueueRequest: {operation: add-to-queue}
+  GetAvailableDevicesRequest: {operation: get-a-users-available-devices}
+  GetCurrentlyPlayingTrackRequest: {operation: get-the-users-currently-playing-track, returns: CurrentlyPlaying}
+  GetPlaybackStateRequest: {operation: get-information-about-the-users-current-playback}
+  GetRecentlyPlayedTracksRequest: {operation: get-recently-played}
+  GetUsersQueueRequest: {operation: get-queue}
+  PausePlaybackRequest: {operation: pause-a-users-playback}
+  SeekToPositionRequest: {operation: seek-to-position-in-currently-playing-track}
+  SetPlaybackVolumeRequest: {operation: set-volume-for-users-playback}
+  SetRepeatModeRequest: {operation: set-repeat-mode-on-users-playback}
+  SkipToNextRequest: {operation: skip-users-playback-to-next-track}
+  SkipToPreviousRequest: {operation: skip-users-playback-to-previous-track}
+  StartResumePlaybackRequest: {operation: start-a-users-playback}
+  TogglePlaybackShuffleRequest: {operation: toggle-shuffle-for-users-playback}
+  TransferPlaybackRequest: {operation: transfer-a-users-playback}
+playlists:
+  AddItemsToPlaylistDeprecatedRequest: {operation: add-tracks-to-playlist}
+  AddItemsToPlaylistRequest: {operation: add-items-to-playlist}
+  ChangePlaylistDetailsRequest: {operation: change-playlist-details}
+  CreatePlaylistForUserRequest: {operation: create-playlist-for-user}
+  CreatePlaylistRequest: {operation: create-playlist}
+  GetCategoryPlaylistsRequest: {operation: get-a-categories-playlists}
+  GetCurrentUsersPlaylistsRequest: {operation: get-a-list-of-current-users-playlists}
+  GetFeaturedPlaylistsRequest: {operation: get-featured-playlists}
+  GetPlaylistCoverImageRequest: {operation: get-playlist-cover}
+  GetPlaylistItemsDeprecatedRequest: {operation: get-playlists-tracks}
+  GetPlaylistItemsRequest: {operation: get-playlists-items}
+  GetPlaylistRequest: {operation: get-playlist}
+  GetUsersPlaylistsRequest: {operation: get-list-users-playlists}
+  RemovePlaylistItemsDeprecatedRequest: {operation: remove-tracks-playlist}
+  RemovePlaylistItemsRequest: {operation: remove-items-playlist}
+  UpdatePlaylistsItemsReorderDeprecatedRequest:
+    operation: reorder-or-replace-playlists-tracks
+    params: [playlist_id, range_start, insert_before, range_length, snapshot_id]
+  UpdatePlaylistsItemsReorderRequest:
+    operation: reorder-or-replace-playlists-items
+    params: [playlist_id, range_start, insert_before, range_length, snapshot_id]
+  UpdatePlaylistsItemsReplaceDeprecatedRequest:
+    operation: reorder-or-replace-playlists-tracks
+    params: [playlist_id, uris]
+  UpdatePlaylistsItemsReplaceRequest:
+    operation: reorder-or-replace-playlists-items
+    params: [playlist_id, uris]
+search:
+  SearchForItemRequest: {operation: search, returns: SearchResult}
+search/simplified:
+  SearchAlbumsRequest:
+    operation: search
+    returns: Paging<AlbumSimplified>
+    key: albums
+    fixed: {type: album}
+  SearchArtistsRequest:
+    operation: search
+    returns: Paging<Artist>
+    key: artists
+    fixed: {type: artist}
+  SearchAudiobooksRequest:
+    operation: search
+    returns: Paging<AudiobookSimplified>
+    key: audiobooks
+    fixed: {type: audiobook}
+  SearchEpisodesRequest:
+    operation: search
+    returns: Paging<EpisodeSimplified>
+    key: episodes
+    fixed: {type: episode}
+  SearchPlaylistsRequest:
+    operation: search
+    returns: Paging<PlaylistSimplified>
+    key: playlists
+    fixed: {type: playlist}
+  SearchShowsRequest:
+    operation: search
+    returns: Paging<ShowSimplified>
+    key: shows
+    fixed: {type: show}
+  SearchTracksRequest:
+    operation: search
+    returns: Paging<Track>
+    key: tracks
+    fixed: {type: track}
+search/simplified/special:
+  SearchAlbumsSpecialRequest:
+    operation: search
+    returns: Paging<AlbumSimplifiedSpecial>
+    key: albums
+    fixed: {type: album}
+shows:
+  CheckUsersSavedShowsRequest: {operation: check-users-saved-shows}
+  GetSeveralShowsRequest: {operation: get-multiple-shows}
+  GetShowEpisodesRequest: {operation: get-a-shows-episodes}
+  GetShowRequest: {operation: get-a-show}
+  GetUsersSavedShowsRequest: {operation: get-users-saved-shows}
+  RemoveShowsForCurrentUserRequest: {operation: remove-shows-user}
+  SaveShowsForCurrentUserRequest: {operation: save-shows-user}
+tracks:
+  CheckUsersSavedTracksRequest: {operation: check-users-saved-tracks}
+  # the spec marks every seed list required, but any one of them is enough
+  GetRecommendationsRequest: {operation: get-recommendations, args: []}
+  GetSeveralTracksAudioFeaturesRequest: {operation: get-several-audio-features}
+  GetSeveralTracksRequest: {operation: get-several-tracks}
+  GetTrackRequest: {operation: get-track}
+  GetTracksAudioAnalysisRequest: {operation: get-audio-analysis}
+  GetTracksAudioFeaturesRequest: {operation: get-audio-features}
+  GetUsersSavedTracksRequest: {operation: get-users-saved-tracks}
+  RemoveUsersSavedTracksRequest: {operation: remove-tracks-user}
+  SaveTracksForCurrentUserRequest: {operation: save-tracks-user}
+users:
+  CheckCurrentUserFollowsArtistsOrUsersRequest: {operation: check-current-user-follows}
+  CheckIfUserFollowsPlaylistRequest: {operation: check-if-user-follows-playlist}
+  FollowArtistsOrUsersRequest: {operation: follow-artists-users}
+  FollowPlaylistRequest: {operation: follow-playlist}
+  GetCurrentUsersProfileRequest: {operation: get-current-users-profile}
+  GetFollowedArtistsRequest: {operation: get-followed}
+  GetUsersProfileRequest: {operation: get-users-profile}
+  UnfollowArtistsOrUsersRequest: {operation: unfollow-artists-users}
+  UnfollowPlaylistRequest: {operation: unfollow-playlist}
+users/simplified:
+  GetUsersTopArtistsRequest:
+    operation: get-users-top-artists-and-tracks
+    returns: Paging<Artist>
+    fixed: {type: artists}
+  GetUsersTopTracksRequest:
+    operation: get-users-top-artists-and-tracks
+    returns: Paging<Track>
+    fixed: {type: tracks}

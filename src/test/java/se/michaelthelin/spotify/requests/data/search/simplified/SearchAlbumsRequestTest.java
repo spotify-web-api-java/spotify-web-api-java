@@ -22,7 +22,7 @@ public class SearchAlbumsRequestTest extends AbstractDataTest<Paging<AlbumSimpli
     .limit(ITest.LIMIT)
     .market(ITest.MARKET)
     .offset(ITest.OFFSET)
-    .includeExternal("audio")
+    .include_external("audio")
     .build();
 
   public SearchAlbumsRequestTest() throws Exception {

@@ -23,7 +23,7 @@ public class SearchShowsExample {
 //          .market(CountryCode.SE)
 //          .limit(10)
 //          .offset(0)
-//          .includeExternal("audio")
+//          .include_external("audio")
     .build();
 
   public static void searchShows_Sync() {

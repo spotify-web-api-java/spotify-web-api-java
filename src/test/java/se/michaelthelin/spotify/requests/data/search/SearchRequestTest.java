@@ -25,7 +25,7 @@ public class SearchRequestTest extends AbstractDataTest<SearchResult> {
     .limit(ITest.LIMIT)
     .market(ITest.MARKET)
     .offset(ITest.OFFSET)
-    .includeExternal("audio")
+    .include_external("audio")
     .build();
 
   public SearchRequestTest() throws Exception {

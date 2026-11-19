@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @SuppressWarnings("deprecation")
 public class CheckCurrentUserFollowsArtistsOrUsersRequestTest extends AbstractDataTest<Boolean[]> {
   private final CheckCurrentUserFollowsArtistsOrUsersRequest defaultRequest = SPOTIFY_API
-    .checkCurrentUserFollowsArtistsOrUsers(ModelObjectType.ARTIST, new String[]{ID_ARTIST, ID_ARTIST})
+    .checkCurrentUserFollowsArtistsOrUsers(ModelObjectType.ARTIST, ID_ARTIST + "," + ID_ARTIST)
     .setHttpManager(
       TestUtil.MockedHttpManager.returningJson(
         "requests/data/users/CheckCurrentUserFollowsArtistsOrUsersRequest.json"))

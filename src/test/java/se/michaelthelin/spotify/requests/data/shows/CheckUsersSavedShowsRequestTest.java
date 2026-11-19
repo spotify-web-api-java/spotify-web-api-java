@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SuppressWarnings("deprecation")
 public class CheckUsersSavedShowsRequestTest extends AbstractDataTest<Boolean[]> {
-  private final CheckUsersSavedShowsRequest defaultRequest = ITest.SPOTIFY_API.checkUsersSavedShows(ITest.ID_SHOW, ITest.ID_SHOW)
+  private final CheckUsersSavedShowsRequest defaultRequest = ITest.SPOTIFY_API.checkUsersSavedShows(ITest.ID_SHOW + "," + ITest.ID_SHOW)
     .setHttpManager(
       TestUtil.MockedHttpManager.returningJson(
         "requests/data/shows/CheckUsersSavedShowsRequest.json"))

@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SuppressWarnings("deprecation")
 public class CheckUsersSavedTracksRequestTest extends AbstractDataTest<Boolean[]> {
-  private final CheckUsersSavedTracksRequest defaultRequest = ITest.SPOTIFY_API.checkUsersSavedTracks(ITest.ID_TRACK, ITest.ID_TRACK)
+  private final CheckUsersSavedTracksRequest defaultRequest = ITest.SPOTIFY_API.checkUsersSavedTracks(ITest.ID_TRACK + "," + ITest.ID_TRACK)
     .setHttpManager(
       TestUtil.MockedHttpManager.returningJson(
         "requests/data/tracks/CheckUsersSavedTracksRequest.json"))

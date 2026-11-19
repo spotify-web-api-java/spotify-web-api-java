@@ -1,6 +1,5 @@
 package se.michaelthelin.spotify.model_objects.specification;
 
-import com.google.gson.JsonObject;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 
 import java.util.Map;
@@ -65,27 +64,6 @@ public class ExternalId extends AbstractModelObject {
     @Override
     public ExternalId build() {
       return new ExternalId(this);
-    }
-  }
-
-  /**
-   * JsonUtil class for building {@link ExternalId} instances.
-   *
-   * @deprecated Requests already return model objects. To read JSON obtained some other way, use
-   *             {@link se.michaelthelin.spotify.model_objects.ModelObjects} instead. This will be removed
-   *             in the next major version.
-   */
-  @Deprecated
-  public static final class JsonUtil extends AbstractModelObject.JsonUtil<ExternalId> {
-
-    public JsonUtil() {
-      super();
-    }
-
-    // Kept only so callers compiled against this override, whose erased return type differs from the
-    // inherited one, still link. The model's JSON shape is handled by an adapter in ModelObjectGson.
-    public ExternalId createModelObject(JsonObject jsonObject) {
-      return super.createModelObject(jsonObject);
     }
   }
 }

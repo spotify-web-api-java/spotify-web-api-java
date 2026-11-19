@@ -20,7 +20,7 @@ public class GetCurrentlyPlayingTrackExample {
   private static final GetCurrentlyPlayingTrackRequest getCurrentlyPlayingTrackRequest = spotifyApi
     .getCurrentlyPlayingTrack()
 //          .market(CountryCode.SE)
-//          .additionalTypes("track,episode")
+//          .additional_types("track,episode")
     .build();
 
   public static void getCurrentlyPlayingTrack_Sync() {

@@ -24,7 +24,7 @@ public class GetUsersCurrentlyPlayingTrackRequestTest extends AbstractDataTest<C
       TestUtil.MockedHttpManager.returningJson(
         "requests/data/player/GetUsersCurrentlyPlayingTrackRequest.json"))
     .market(ITest.MARKET)
-    .additionalTypes(ITest.ADDITIONAL_TYPES)
+    .additional_types(ITest.ADDITIONAL_TYPES)
     .build();
 
   private final GetCurrentlyPlayingTrackRequest defaultEpisodeRequest = ITest.SPOTIFY_API
@@ -33,7 +33,7 @@ public class GetUsersCurrentlyPlayingTrackRequestTest extends AbstractDataTest<C
       TestUtil.MockedHttpManager.returningJson(
         "requests/data/player/GetUsersCurrentlyPlayingTrackRequest_Episode.json"))
     .market(ITest.MARKET)
-    .additionalTypes(ITest.ADDITIONAL_TYPES)
+    .additional_types(ITest.ADDITIONAL_TYPES)
     .build();
 
   private final GetCurrentlyPlayingTrackRequest emptyRequest = ITest.SPOTIFY_API
@@ -41,7 +41,7 @@ public class GetUsersCurrentlyPlayingTrackRequestTest extends AbstractDataTest<C
     .setHttpManager(
       TestUtil.MockedHttpManager.returningJson(null))
     .market(ITest.MARKET)
-    .additionalTypes(ITest.ADDITIONAL_TYPES)
+    .additional_types(ITest.ADDITIONAL_TYPES)
     .build();
 
   public GetUsersCurrentlyPlayingTrackRequestTest() throws Exception {

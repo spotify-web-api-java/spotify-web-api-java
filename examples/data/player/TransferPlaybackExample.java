@@ -1,12 +1,12 @@
 package data.player;
 
-import com.google.gson.JsonArray;
-import com.google.gson.JsonParser;
 import se.michaelthelin.spotify.SpotifyApi;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.requests.data.player.TransferPlaybackRequest;
 import org.apache.hc.core5.http.ParseException;
 
+import java.util.List;
+import java.util.Collections;
 import java.io.IOException;
 import java.util.concurrent.CancellationException;
 import java.util.concurrent.CompletableFuture;
@@ -14,7 +14,7 @@ import java.util.concurrent.CompletionException;
 
 public class TransferPlaybackExample {
   private static final String accessToken = "taHZ2SdB-bPA3FsK3D7ZN5npZS47cMy-IEySVEGttOhXmqaVAIo0ESvTCLjLBifhHOHOIuhFUKPW1WMDP7w6dj3MAZdWT8CLI2MkZaXbYLTeoDvXesf2eeiLYPBGdx8tIwQJKgV8XdnzH_DONk";
-  private static final JsonArray deviceIds = JsonParser.parseString("[\"5fbb3ba6aa454b5534c4ba43a8c7e8e45a63ad0e\"]").getAsJsonArray();
+  private static final List<String> deviceIds = Collections.singletonList("5fbb3ba6aa454b5534c4ba43a8c7e8e45a63ad0e");
 
   private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
     .setAccessToken(accessToken)

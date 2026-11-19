@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @SuppressWarnings("deprecation")
 public class GetSeveralAudioFeaturesRequestTest extends AbstractDataTest<AudioFeatures[]> {
   private final GetSeveralTracksAudioFeaturesRequest defaultRequest = ITest.SPOTIFY_API
-    .getSeveralTracksAudioFeatures(ITest.ID_TRACK, ITest.ID_TRACK)
+    .getSeveralTracksAudioFeatures(ITest.ID_TRACK + "," + ITest.ID_TRACK)
     .setHttpManager(
       TestUtil.MockedHttpManager.returningJson(
         "requests/data/tracks/GetSeveralAudioFeaturesRequest.json"))

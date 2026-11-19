@@ -8,14 +8,16 @@ import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.requests.data.AbstractDataTest;
 
 import java.io.IOException;
+import java.util.Collections;
 import java.util.concurrent.ExecutionException;
 
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static se.michaelthelin.spotify.Assertions.assertHasBodyParameter;
 
 public class RemoveTracksForCurrentUserRequestTest extends AbstractDataTest<String> {
   private final RemoveUsersSavedTracksRequest defaultRequest = ITest.SPOTIFY_API
-    .removeUsersSavedTracks(ITest.ID_TRACK)
+    .removeUsersSavedTracks(Collections.singletonList(ITest.ID_TRACK))
     .setHttpManager(
       TestUtil.MockedHttpManager.returningJson(null))
     .build();
@@ -27,8 +29,9 @@ public class RemoveTracksForCurrentUserRequestTest extends AbstractDataTest<Stri
   public void shouldComplyWithReference() {
     assertHasAuthorizationHeader(defaultRequest);
     assertEquals(
-      "https://api.spotify.com:443/v1/me/tracks?ids=01iyCAUm8EvOFqVWYJ3dVX",
+      "https://api.spotify.com:443/v1/me/tracks",
       defaultRequest.getUri().toString());
+    assertHasBodyParameter(defaultRequest, "ids", Collections.singletonList(ITest.ID_TRACK));
   }
 
   @Test

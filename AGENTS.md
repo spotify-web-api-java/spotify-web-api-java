@@ -27,12 +27,12 @@ src/
 │   │   ├── specification/           # Core model objects (Playlist, Track, Album, etc.)
 │   │   ├── special/                 # Composite/special models
 │   │   └── miscellaneous/           # Supporting models
-│   └── requests/
-│       └── data/                    # One subfolder per API category
-│           ├── albums/
-│           ├── artists/
-│           ├── playlists/           # Playlist endpoint request classes
-│           └── ...
+│   └── requests/data/               # Hand-written request infrastructure (bases, paging interfaces,
+│                                    # the two non-generated concrete classes)
+├── generated/java/se/michaelthelin/spotify/requests/data/
+│   ├── albums/                      # Generated request classes, one subfolder per API category.
+│   ├── artists/                     # Same package as main, committed so a build needs no Python;
+│   └── ...                          # pom.xml adds the root, and a generated file is never edited by hand
 └── test/
     ├── java/se/michaelthelin/spotify/
     │   ├── ITest.java               # Shared test constants (IDs, names, etc.)
@@ -49,37 +49,32 @@ When unsure whether a change belongs on `main` or `beta`: read step 5 and the ja
 
 To add a new Spotify API endpoint, follow these steps:
 
-### 1. Create a Request class
+### 1. Generate the request class and its SpotifyApi method
 
-Create `src/main/java/se/michaelthelin/spotify/requests/data/<category>/<EndpointName>Request.java`.
+Request classes and the `SpotifyApi` methods that create them are generated from `spec/openapi.yaml`; never edit them by hand, because CI fails when a generated file differs from what the generator produces.
+Generated classes are written to `src/generated/java`, in the same package as the hand-written request infrastructure in `src/main/java`; `pom.xml` adds that root via `build-helper-maven-plugin`, so the JAR and the module see both roots.
 
-Key patterns:
-- Extend `AbstractDataRequest<ReturnType>` (or `AbstractDataPagingRequest` for paginated results).
-- Implement `execute()` which calls `getJson()`, `postJson()`, `putJson()`, or `deleteJson()` as appropriate.
-- Add a `static final class Builder` with:
-  - Path parameters set via `setPathParameter("key", value)`
-  - Query parameters set via `setQueryParameter("key", value)`
-  - Body parameters set via `setBodyParameter("key", value)`
-  - `build()` method that calls `setPath("/v1/...")` and `setContentType(...)` for POST/PUT requests
-  - `self()` returning `this`
+Add one line to `codegen/requests.yaml` under the class's package, mapping the class name to the spec's `operationId`, then run the generator:
 
-**Endpoint URL reference:** Use the new `POST /v1/me/playlists` style paths (not the older `/v1/users/{user_id}/...` style where Spotify has migrated endpoints).
+```bash
+./codegen/generate.py
+```
 
-### 2. Expose the method in SpotifyApi
+The generator reads the verb, path, parameters, their types and argument checks, the Javadoc, the deprecation and the response type from the spec.
+The `SpotifyApi` method takes the operation's required parameters; every parameter also has a setter on the builder, named exactly like the wire parameter.
+An entry only says more where this library deliberately differs from the spec; the keys (`returns`, `key`, `fixed`, `params`, `args`) are described at the top of `codegen/requests.yaml`.
+If the operation uses a shape the generator does not support yet, it stops with the reason; extend `codegen/generate.py` rather than writing the class by hand.
+It needs PyYAML (`pip install pyyaml`).
 
-In `SpotifyApi.java`, add a public method that:
-- Returns `<EndpointName>Request.Builder`
-- Creates a new builder via `new <EndpointName>Request.Builder(accessToken)`
-- Chains `.setDefaults(httpManager, scheme, host, port)`
-- Sets any required path parameters
+If the spec itself is updated, rerun the generator and review the diff: it is the API change.
 
-Methods are grouped by API category (albums, artists, playlists, etc.).
+The vendored `spec/openapi.yaml` is not the published spec verbatim; before updating it, read the "Integrity" section of [CONTRIBUTING.md](CONTRIBUTING.md), which says what the copy adds and why.
 
-### 3. Add a fixture file
+### 2. Add a fixture file
 
 Create `src/test/fixtures/requests/data/<category>/<EndpointName>Request.json` with a sample API response.
 
-### 4. Add a test class
+### 3. Add a test class
 
 Create `src/test/java/se/michaelthelin/spotify/requests/data/<category>/<EndpointName>RequestTest.java`.
 
@@ -91,7 +86,7 @@ Extend `AbstractDataTest<ReturnType>`. Tests should:
 
 Common test constants are in `ITest.java` (e.g., `ITest.NAME`, `ITest.ID_PLAYLIST`, `ITest.PUBLIC`).
 
-### 5. Add an example and index it
+### 4. Add an example and index it
 
 Create `examples/.../<EndpointName>Example.java` and link it from the example index in `README.md`.
 Mark the link with ⚠️ if the request class carries `@Deprecated`.
@@ -136,5 +131,4 @@ mvn test -Dtest="*Playlist*"
 - **Trailing underscores** on Java-reserved words: e.g., `public_` for the `public` field.
 - **Assertions** in tests are imported from both JUnit 5 (`org.junit.jupiter.api.Assertions`) and the project's own `se.michaelthelin.spotify.Assertions`.
 - **Nullable fields** from the API should be tested with `assertNull(...)` when the fixture returns `null`.
-- **POST/PUT** requests must set `ContentType.APPLICATION_JSON` in the `build()` method.
-- **Path patterns** use `{param_name}` placeholders set with `setPathParameter("param_name", value)`.
+- **POST/PUT** requests always send a JSON body, an empty `{}` if they have no body parameters; the generator does this.
